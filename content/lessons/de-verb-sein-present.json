@@ -6,19 +6,19 @@
   "locales": ["en", "fr", "de"],
   "title": "Das Verb sein im Präsens",
   "objective": {
-    "en": "Conjugate sein in all persons to give your name, origin, job and state: ich bin, du bist, er ist, wir sind, ihr seid, Sie sind.",
-    "fr": "Conjuguer sein à toutes les personnes pour indiquer nom, origine, métier et état : ich bin, du bist, er ist, wir sind, ihr seid, Sie sind.",
-    "de": "Das Verb sein in allen Personen konjugieren, um Namen, Herkunft, Beruf und Befinden anzugeben: ich bin, du bist, er ist, wir sind, ihr seid, Sie sind."
+    "en": "Conjugate the irregular verb sein in the present tense with all pronouns to give your name, origin, job and how you feel.",
+    "fr": "Conjuguer le verbe irrégulier sein au présent avec tous les pronoms pour dire son nom, son origine, son métier et comment on va.",
+    "de": "Das unregelmäßige Verb sein im Präsens mit allen Pronomen konjugieren, um Name, Herkunft, Beruf und Befinden anzugeben."
   },
-  "estimatedMinutes": 16,
+  "estimatedMinutes": 15,
   "provenance": {
     "generator": "ft lessons:author",
     "model": "sonnet",
-    "promptVersion": "author-2",
-    "generatedAt": "2026-11-01T20:17:06.107Z",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:24:42.400Z",
     "inputHashes": {
       "outline": "8dc29e96db071d76ac54cf5f0e2b0b109ad884c2375477f247cefc399984d8e4",
-      "brief": "7d21b2bd66967d0b231f0e46da001eac86495fcdd337946fa8810237d9f26c7e"
+      "brief": "498494944d29099c482e50b43eb790bd450cfb674a23de39f2d93c6d41b16a9d"
     }
   },
   "kind": "grammar",
@@ -29,9 +29,9 @@
       "role": "explanation",
       "blockId": "block-singular",
       "label": {
-        "en": "Singular: ich, du, er/sie/es",
-        "fr": "Singulier : ich, du, er/sie/es",
-        "de": "Singular: ich, du, er/sie/es"
+        "en": "Singular forms: ich, du, er/sie/es",
+        "fr": "Les formes du singulier : ich, du, er/sie/es",
+        "de": "Die Singularformen: ich, du, er/sie/es"
       },
       "pages": [
         {
@@ -47,26 +47,26 @@
             {
               "type": "grammar_explanation",
               "itemId": "block-singular-explanation",
-              "ruleIds": ["rule-singular", "rule-usage"],
+              "ruleIds": ["rule-singular-forms"],
               "heading": {
                 "en": "sein in the singular",
                 "fr": "sein au singulier",
                 "de": "sein im Singular"
               },
               "text": {
-                "en": "`sein` (to be) is **irregular**: learn its forms by heart. In the singular you say `ich bin`, `du bist` and `er/sie/es ist`.\n\nUse `sein` for your name, origin, job or how you feel: `Ich bin Anna.` `Er ist Lehrer.` `Du bist müde.`\n\n- Before a job there is no article: `Sie ist Ärztin.`\n- `du bist` ends in -st, but `er ist` has only -t.",
-                "fr": "`sein` (être) est **irrégulier** : apprenez ses formes par cœur. Au singulier, on dit `ich bin`, `du bist` et `er/sie/es ist`.\n\nOn utilise `sein` pour le nom, l'origine, le métier ou l'état : `Ich bin Anna.` `Er ist Lehrer.` `Du bist müde.`\n\n- Devant un métier, pas d'article : `Sie ist Ärztin.`\n- `du bist` finit par -st, mais `er ist` seulement par -t.",
-                "de": "`sein` ist **unregelmäßig**: Lerne die Formen auswendig. Im Singular sagt man `ich bin`, `du bist` und `er/sie/es ist`.\n\nMit `sein` nennst du Name, Herkunft, Beruf oder Befinden: `Ich bin Anna.` `Er ist Lehrer.` `Du bist müde.`\n\n- Vor einem Beruf steht kein Artikel: `Sie ist Ärztin.`\n- `du bist` endet auf -st, `er ist` nur auf -t."
+                "en": "`sein` (to be) is **irregular**: learn its forms by heart. In the singular you say `ich bin`, `du bist` and `er/sie/es ist`.\n\nUse `sein` for your name, origin, job or how you feel: `Ich bin Lena.` `Er ist Lehrer.` `Sie ist müde.`\n\n- `du bist` ends in -st, `er ist` ends in -t: do not mix them up.\n- A job on its own has no article: `Sie ist Ärztin.`",
+                "fr": "`sein` (être) est **irrégulier** : apprenez ses formes par cœur. Au singulier, on dit `ich bin`, `du bist` et `er/sie/es ist`.\n\nUtilisez `sein` pour dire votre nom, votre origine, votre métier ou comment vous allez : `Ich bin Lena.` `Er ist Lehrer.` `Sie ist müde.`\n\n- `du bist` finit par -st, `er ist` par -t : ne les confondez pas.\n- Un métier seul n'a pas d'article : `Sie ist Ärztin.`",
+                "de": "`sein` ist **unregelmäßig**: Lerne die Formen auswendig. Im Singular sagt man `ich bin`, `du bist` und `er/sie/es ist`.\n\nMit `sein` nennst du deinen Namen, deine Herkunft, deinen Beruf oder dein Befinden: `Ich bin Lena.` `Er ist Lehrer.` `Sie ist müde.`\n\n- `du bist` endet auf -st, `er ist` auf -t: Verwechsle sie nicht.\n- Ein Beruf allein steht ohne Artikel: `Sie ist Ärztin.`"
               },
               "formTable": [
-                { "subject": "ich", "form": "bin", "example": "Ich bin Anna." },
+                { "subject": "ich", "form": "bin", "example": "Ich bin Lena." },
                 { "subject": "du", "form": "bist", "example": "Du bist müde." },
-                { "subject": "er / sie / es", "form": "ist", "example": "Er ist Lehrer." }
+                { "subject": "er / sie / es", "form": "ist", "example": "Sie ist aus Polen." }
               ],
               "examples": [
                 {
-                  "text": "Ich bin Anna.",
-                  "translation": { "en": "I am Anna.", "fr": "Je suis Anna." }
+                  "text": "Ich bin Lena.",
+                  "translation": { "en": "I am Lena.", "fr": "Je suis Lena." }
                 },
                 {
                   "text": "Du bist müde.",
@@ -77,8 +77,11 @@
                   "translation": { "en": "He is a teacher.", "fr": "Il est professeur." }
                 },
                 {
-                  "text": "Sie ist Ärztin.",
-                  "translation": { "en": "She is a doctor.", "fr": "Elle est médecin." }
+                  "text": "Sie ist aus Polen.",
+                  "translation": {
+                    "en": "She is from Poland.",
+                    "fr": "Elle est originaire de Pologne."
+                  }
                 }
               ]
             }
@@ -98,7 +101,7 @@
       "pages": [
         {
           "pageId": "ex-sg-choice-1",
-          "estimatedDurationS": 12,
+          "estimatedDurationS": 10,
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
@@ -110,7 +113,7 @@
               "type": "grammar_gap_choice",
               "itemId": "ex-sg-choice-1",
               "before": "Ich",
-              "after": "Student.",
+              "after": "Anna.",
               "choices": [
                 { "choiceId": "c-1", "text": "bin" },
                 { "choiceId": "c-2", "text": "bist" },
@@ -119,7 +122,7 @@
               ],
               "answerChoiceId": "c-1",
               "hint": null,
-              "ruleIds": ["rule-singular"],
+              "ruleIds": ["rule-singular-forms"],
               "answerExplanation": {
                 "en": "With ich, sein is bin.",
                 "fr": "Avec ich, sein devient bin.",
@@ -130,7 +133,7 @@
         },
         {
           "pageId": "ex-sg-choice-2",
-          "estimatedDurationS": 12,
+          "estimatedDurationS": 10,
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
@@ -142,7 +145,7 @@
               "type": "grammar_gap_choice",
               "itemId": "ex-sg-choice-2",
               "before": "Du",
-              "after": "aus Spanien?",
+              "after": "aus Spanien.",
               "choices": [
                 { "choiceId": "c-1", "text": "bin" },
                 { "choiceId": "c-2", "text": "ist" },
@@ -151,18 +154,18 @@
               ],
               "answerChoiceId": "c-3",
               "hint": null,
-              "ruleIds": ["rule-singular", "rule-usage"],
+              "ruleIds": ["rule-singular-forms"],
               "answerExplanation": {
-                "en": "With du, sein is bist.",
-                "fr": "Avec du, sein devient bist.",
-                "de": "Zu du gehört die Form bist."
+                "en": "With du, sein is bist; ist goes with er, sie, es.",
+                "fr": "Avec du, sein devient bist ; ist va avec er, sie, es.",
+                "de": "Zu du gehört bist; ist gehört zu er, sie, es."
               }
             }
           ]
         },
         {
           "pageId": "ex-sg-choice-3",
-          "estimatedDurationS": 12,
+          "estimatedDurationS": 10,
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
@@ -173,53 +176,21 @@
             {
               "type": "grammar_gap_choice",
               "itemId": "ex-sg-choice-3",
-              "before": "Maria",
-              "after": "Köchin.",
-              "choices": [
-                { "choiceId": "c-1", "text": "ist" },
-                { "choiceId": "c-2", "text": "bist" },
-                { "choiceId": "c-3", "text": "bin" },
-                { "choiceId": "c-4", "text": "sind" }
-              ],
-              "answerChoiceId": "c-1",
-              "hint": null,
-              "ruleIds": ["rule-usage"],
-              "answerExplanation": {
-                "en": "Maria is 3rd person singular (like sie), so sein is ist.",
-                "fr": "Maria est à la 3e personne du singulier (comme sie) : sein devient ist.",
-                "de": "Maria ist 3. Person Singular (wie sie), also heißt sein ist."
-              }
-            }
-          ]
-        },
-        {
-          "pageId": "ex-sg-choice-4",
-          "estimatedDurationS": 12,
-          "timeLimitS": null,
-          "instructions": {
-            "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
-            "de": "Wähle das Wort, das den Satz ergänzt."
-          },
-          "items": [
-            {
-              "type": "grammar_gap_choice",
-              "itemId": "ex-sg-choice-4",
-              "before": "Es",
-              "after": "heute kalt.",
+              "before": "Mein Vater",
+              "after": "Lehrer.",
               "choices": [
                 { "choiceId": "c-1", "text": "bin" },
                 { "choiceId": "c-2", "text": "bist" },
-                { "choiceId": "c-3", "text": "seid" },
+                { "choiceId": "c-3", "text": "sind" },
                 { "choiceId": "c-4", "text": "ist" }
               ],
               "answerChoiceId": "c-4",
               "hint": null,
-              "ruleIds": ["rule-singular"],
+              "ruleIds": ["rule-singular-forms"],
               "answerExplanation": {
-                "en": "With er, sie, es, sein is ist.",
-                "fr": "Avec er, sie, es, sein devient ist.",
-                "de": "Zu er, sie, es gehört die Form ist."
+                "en": "Mein Vater is 3rd person singular (like er), so sein is ist.",
+                "fr": "Mein Vater est à la 3e personne du singulier (comme er) : sein devient ist.",
+                "de": "Mein Vater ist 3. Person Singular (wie er), also heißt sein ist."
               }
             }
           ]
@@ -238,7 +209,7 @@
       "pages": [
         {
           "pageId": "ex-sg-typing-1",
-          "estimatedDurationS": 18,
+          "estimatedDurationS": 15,
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
@@ -250,14 +221,14 @@
               "type": "grammar_gap_typing",
               "itemId": "ex-sg-typing-1",
               "before": "Ich",
-              "after": "Tim.",
+              "after": "müde.",
               "accepted": { "answers": ["bin"] },
               "hint": {
                 "en": "sein, 1st person singular",
                 "fr": "sein, 1re personne du singulier",
                 "de": "sein, 1. Person Singular"
               },
-              "ruleIds": ["rule-singular"],
+              "ruleIds": ["rule-singular-forms"],
               "answerExplanation": {
                 "en": "With ich, sein is bin.",
                 "fr": "Avec ich, sein devient bin.",
@@ -268,7 +239,7 @@
         },
         {
           "pageId": "ex-sg-typing-2",
-          "estimatedDurationS": 18,
+          "estimatedDurationS": 15,
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
@@ -287,7 +258,7 @@
                 "fr": "sein, 2e personne du singulier",
                 "de": "sein, 2. Person Singular"
               },
-              "ruleIds": ["rule-singular", "rule-usage"],
+              "ruleIds": ["rule-singular-forms"],
               "answerExplanation": {
                 "en": "With du, sein is bist.",
                 "fr": "Avec du, sein devient bist.",
@@ -298,7 +269,7 @@
         },
         {
           "pageId": "ex-sg-typing-3",
-          "estimatedDurationS": 18,
+          "estimatedDurationS": 15,
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
@@ -309,19 +280,19 @@
             {
               "type": "grammar_gap_typing",
               "itemId": "ex-sg-typing-3",
-              "before": "Mein Vater",
-              "after": "Busfahrer.",
+              "before": "Maria",
+              "after": "Ärztin.",
               "accepted": { "answers": ["ist"] },
               "hint": {
                 "en": "sein, 3rd person singular",
                 "fr": "sein, 3e personne du singulier",
                 "de": "sein, 3. Person Singular"
               },
-              "ruleIds": ["rule-usage"],
+              "ruleIds": ["rule-singular-forms"],
               "answerExplanation": {
-                "en": "Mein Vater is 3rd person singular (like er), so sein is ist.",
-                "fr": "Mein Vater est à la 3e personne du singulier (comme er) : sein devient ist.",
-                "de": "Mein Vater ist 3. Person Singular (wie er), also heißt sein ist."
+                "en": "Maria is 3rd person singular (like sie), so sein is ist.",
+                "fr": "Maria est à la 3e personne du singulier (comme sie) : sein devient ist.",
+                "de": "Maria ist 3. Person Singular (wie sie), also heißt sein ist."
               }
             }
           ]
@@ -350,11 +321,11 @@
               "tokens": [
                 { "tokenId": "t-1", "text": "Ich" },
                 { "tokenId": "t-2", "text": "bist" },
-                { "tokenId": "t-3", "text": "Lehrerin" }
+                { "tokenId": "t-3", "text": "hier" }
               ],
               "faultyTokenId": "t-2",
               "correction": { "mode": "type", "accepted": { "answers": ["bin"] }, "choices": [] },
-              "ruleIds": ["rule-singular"],
+              "ruleIds": ["rule-singular-forms"],
               "answerExplanation": {
                 "en": "Ich takes bin, not bist: ich bin.",
                 "fr": "Avec ich, on dit bin et non bist : ich bin.",
@@ -380,15 +351,11 @@
                 { "tokenId": "t-1", "text": "Du" },
                 { "tokenId": "t-2", "text": "ist" },
                 { "tokenId": "t-3", "text": "aus" },
-                { "tokenId": "t-4", "text": "Berlin" }
+                { "tokenId": "t-4", "text": "Spanien" }
               ],
               "faultyTokenId": "t-2",
-              "correction": {
-                "mode": "select",
-                "accepted": { "answers": ["bist"] },
-                "choices": ["bist", "bin", "ist"]
-              },
-              "ruleIds": ["rule-singular"],
+              "correction": { "mode": "type", "accepted": { "answers": ["bist"] }, "choices": [] },
+              "ruleIds": ["rule-singular-forms"],
               "answerExplanation": {
                 "en": "Du takes bist; ist is the form for er, sie, es.",
                 "fr": "Avec du, on écrit bist ; ist est la forme de er, sie, es.",
@@ -411,17 +378,21 @@
               "type": "grammar_error_spotter",
               "itemId": "ex-sg-spot-3",
               "tokens": [
-                { "tokenId": "t-1", "text": "Anna" },
+                { "tokenId": "t-1", "text": "Er" },
                 { "tokenId": "t-2", "text": "bin" },
-                { "tokenId": "t-3", "text": "müde" }
+                { "tokenId": "t-3", "text": "Koch" }
               ],
               "faultyTokenId": "t-2",
-              "correction": { "mode": "type", "accepted": { "answers": ["ist"] }, "choices": [] },
-              "ruleIds": ["rule-singular"],
+              "correction": {
+                "mode": "select",
+                "accepted": { "answers": ["ist"] },
+                "choices": ["ist", "bist", "sind"]
+              },
+              "ruleIds": ["rule-singular-forms"],
               "answerExplanation": {
-                "en": "Anna is 3rd person singular (like sie), so sein is ist.",
-                "fr": "Anna est à la 3e personne du singulier (comme sie) : sein devient ist.",
-                "de": "Anna ist 3. Person Singular (wie sie), also heißt sein ist."
+                "en": "Er is 3rd person singular, so sein is ist.",
+                "fr": "Er est à la 3e personne du singulier : sein devient ist.",
+                "de": "Er ist 3. Person Singular, also heißt sein ist."
               }
             }
           ]
@@ -433,9 +404,9 @@
       "role": "explanation",
       "blockId": "block-plural",
       "label": {
-        "en": "Plural and polite form: wir, ihr, sie, Sie",
-        "fr": "Pluriel et politesse : wir, ihr, sie, Sie",
-        "de": "Plural und Höflichkeitsform: wir, ihr, sie, Sie"
+        "en": "Plural forms and the polite Sie",
+        "fr": "Les formes du pluriel et le Sie de politesse",
+        "de": "Die Pluralformen und das höfliche Sie"
       },
       "pages": [
         {
@@ -451,38 +422,44 @@
             {
               "type": "grammar_explanation",
               "itemId": "block-plural-explanation",
-              "ruleIds": ["rule-plural", "rule-usage"],
+              "ruleIds": ["rule-plural-forms", "rule-formal-sie"],
               "heading": {
                 "en": "sein in the plural",
                 "fr": "sein au pluriel",
                 "de": "sein im Plural"
               },
               "text": {
-                "en": "In the plural you say `wir sind`, `ihr seid` and `sie sind`.\n\n- `ihr seid` is for several friends or family members: `Ihr seid müde.`\n- The polite `Sie sind` is written with a capital S: `Sind Sie Frau Berger?`\n- `wir sind` and `sie sind` use the same verb form: `sind`.",
-                "fr": "Au pluriel, on dit `wir sind`, `ihr seid` et `sie sind`.\n\n- `ihr seid` s'emploie pour plusieurs amis ou membres de la famille : `Ihr seid müde.`\n- Le `Sie sind` de politesse s'écrit avec un S majuscule : `Sind Sie Frau Berger?`\n- `wir sind` et `sie sind` ont la même forme verbale : `sind`.",
-                "de": "Im Plural sagt man `wir sind`, `ihr seid` und `sie sind`.\n\n- `ihr seid` sagst du zu mehreren Freunden oder Familienmitgliedern: `Ihr seid müde.`\n- Das höfliche `Sie sind` schreibt man mit großem S: `Sind Sie Frau Berger?`\n- `wir sind` und `sie sind` haben dieselbe Verbform: `sind`."
+                "en": "In the plural you say `wir sind`, `ihr seid` and `sie sind`.\n\nThe polite **Sie** is written with a capital letter. With `Sie` you address one person or several, and the verb is `Sie sind`.\n\n- `wir sind`, `sie sind` and `Sie sind` share the same verb form.\n- `ihr seid` is the plural of `du`: use it for several friends or family members.\n- `sie ist` means one woman, `sie sind` several people: the verb shows the difference.",
+                "fr": "Au pluriel, on dit `wir sind`, `ihr seid` et `sie sind`.\n\nLe **Sie** de politesse s'écrit avec une majuscule. Avec `Sie`, on s'adresse à une ou plusieurs personnes, et le verbe est `Sie sind`.\n\n- `wir sind`, `sie sind` et `Sie sind` ont la même forme verbale.\n- `ihr seid` est le pluriel de `du` : employez-le pour plusieurs amis ou membres de la famille.\n- `sie ist` signifie une femme, `sie sind` plusieurs personnes : le verbe montre la différence.",
+                "de": "Im Plural sagt man `wir sind`, `ihr seid` und `sie sind`.\n\nDas höfliche **Sie** schreibt man groß. Mit `Sie` sprichst du eine oder mehrere Personen an, und das Verb heißt `Sie sind`.\n\n- `wir sind`, `sie sind` und `Sie sind` haben dieselbe Verbform.\n- `ihr seid` ist der Plural von `du`: Benutze es für mehrere Freunde oder Familienmitglieder.\n- `sie ist` bedeutet eine Frau, `sie sind` mehrere Personen: Das Verb zeigt den Unterschied."
               },
               "formTable": [
-                { "subject": "wir", "form": "sind", "example": "Wir sind aus Polen." },
+                { "subject": "wir", "form": "sind", "example": "Wir sind in Berlin." },
                 { "subject": "ihr", "form": "seid", "example": "Ihr seid Freunde." },
-                { "subject": "sie / Sie", "form": "sind", "example": "Sind Sie Frau Berger?" }
+                { "subject": "sie / Sie", "form": "sind", "example": "Die Kinder sind zu Hause." }
               ],
               "examples": [
                 {
-                  "text": "Wir sind aus Polen.",
-                  "translation": { "en": "We are from Poland.", "fr": "Nous sommes de Pologne." }
+                  "text": "Wir sind in Berlin.",
+                  "translation": { "en": "We are in Berlin.", "fr": "Nous sommes à Berlin." }
                 },
                 {
                   "text": "Ihr seid Freunde.",
                   "translation": { "en": "You are friends.", "fr": "Vous êtes amis." }
                 },
                 {
-                  "text": "Sind Sie Frau Berger?",
-                  "translation": { "en": "Are you Ms Berger?", "fr": "Êtes-vous Madame Berger ?" }
+                  "text": "Die Kinder sind zu Hause.",
+                  "translation": {
+                    "en": "The children are at home.",
+                    "fr": "Les enfants sont à la maison."
+                  }
                 },
                 {
-                  "text": "Sie sind in Berlin.",
-                  "translation": { "en": "They are in Berlin.", "fr": "Ils sont à Berlin." }
+                  "text": "Frau Meier, Sie sind sehr nett.",
+                  "translation": {
+                    "en": "Ms Meier, you are very kind.",
+                    "fr": "Madame Meier, vous êtes très gentille."
+                  }
                 }
               ]
             }
@@ -513,7 +490,7 @@
             {
               "type": "grammar_person_matching",
               "itemId": "ex-pl-persons-1",
-              "ruleIds": ["rule-singular", "rule-plural"],
+              "ruleIds": ["rule-singular-forms", "rule-plural-forms"],
               "mode": "forms",
               "rows": [
                 {
@@ -573,13 +550,13 @@
                 },
                 {
                   "person": "3pl",
-                  "pronoun": "sie / Sie",
+                  "pronoun": "sie (Plural) / Sie",
                   "native": null,
                   "answer": "sind",
                   "answerExplanation": {
-                    "en": "With sie (they) and polite Sie, sein is sind.",
-                    "fr": "Avec sie (ils) et le Sie de politesse, sein devient sind.",
-                    "de": "Zu sie (Plural) und höflichem Sie gehört die Form sind."
+                    "en": "With plural sie and with the polite Sie, sein is sind.",
+                    "fr": "Avec sie (pluriel) et avec le Sie de politesse, sein devient sind.",
+                    "de": "Zu sie (Plural) und zum höflichen Sie gehört die Form sind."
                   }
                 }
               ]
@@ -611,7 +588,7 @@
             {
               "type": "grammar_pronoun_form_typing",
               "itemId": "ex-pl-typing-1",
-              "ruleIds": ["rule-plural"],
+              "ruleIds": ["rule-plural-forms", "rule-formal-sie"],
               "rows": [
                 {
                   "rowId": "r-1",
@@ -635,12 +612,12 @@
                 },
                 {
                   "rowId": "r-3",
-                  "pronoun": "sie",
+                  "pronoun": "Sie (formal)",
                   "accepted": { "answers": ["sind"] },
                   "answerExplanation": {
-                    "en": "With sie (they), sein is sind.",
-                    "fr": "Avec sie (ils), sein devient sind.",
-                    "de": "Zu sie (Plural) gehört die Form sind."
+                    "en": "With the polite Sie, sein is sind.",
+                    "fr": "Avec le Sie de politesse, sein devient sind.",
+                    "de": "Zum höflichen Sie gehört die Form sind."
                   }
                 }
               ]
@@ -660,36 +637,36 @@
             {
               "type": "grammar_pronoun_form_typing",
               "itemId": "ex-pl-typing-2",
-              "ruleIds": ["rule-plural"],
+              "ruleIds": ["rule-plural-forms"],
               "rows": [
                 {
                   "rowId": "r-1",
-                  "pronoun": "du",
-                  "accepted": { "answers": ["bist"] },
+                  "pronoun": "ihr",
+                  "accepted": { "answers": ["seid"] },
                   "answerExplanation": {
-                    "en": "With du, sein is bist.",
-                    "fr": "Avec du, sein devient bist.",
-                    "de": "Zu du gehört die Form bist."
+                    "en": "With ihr, sein is seid.",
+                    "fr": "Avec ihr, sein devient seid.",
+                    "de": "Zu ihr gehört die Form seid."
                   }
                 },
                 {
                   "rowId": "r-2",
+                  "pronoun": "sie (Plural)",
+                  "accepted": { "answers": ["sind"] },
+                  "answerExplanation": {
+                    "en": "With plural sie, sein is sind.",
+                    "fr": "Avec sie (pluriel), sein devient sind.",
+                    "de": "Zu sie (Plural) gehört die Form sind."
+                  }
+                },
+                {
+                  "rowId": "r-3",
                   "pronoun": "wir",
                   "accepted": { "answers": ["sind"] },
                   "answerExplanation": {
                     "en": "With wir, sein is sind.",
                     "fr": "Avec wir, sein devient sind.",
                     "de": "Zu wir gehört die Form sind."
-                  }
-                },
-                {
-                  "rowId": "r-3",
-                  "pronoun": "Sie",
-                  "accepted": { "answers": ["sind"] },
-                  "answerExplanation": {
-                    "en": "With polite Sie, sein is sind.",
-                    "fr": "Avec le Sie de politesse, sein devient sind.",
-                    "de": "Zum höflichen Sie gehört die Form sind."
                   }
                 }
               ]
@@ -710,7 +687,7 @@
       "pages": [
         {
           "pageId": "ex-pl-choice-1",
-          "estimatedDurationS": 12,
+          "estimatedDurationS": 10,
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
@@ -722,7 +699,7 @@
               "type": "grammar_gap_choice",
               "itemId": "ex-pl-choice-1",
               "before": "Wir",
-              "after": "Studenten.",
+              "after": "in Wien.",
               "choices": [
                 { "choiceId": "c-1", "text": "sind" },
                 { "choiceId": "c-2", "text": "seid" },
@@ -731,7 +708,7 @@
               ],
               "answerChoiceId": "c-1",
               "hint": null,
-              "ruleIds": ["rule-plural"],
+              "ruleIds": ["rule-plural-forms"],
               "answerExplanation": {
                 "en": "With wir, sein is sind.",
                 "fr": "Avec wir, sein devient sind.",
@@ -742,7 +719,7 @@
         },
         {
           "pageId": "ex-pl-choice-2",
-          "estimatedDurationS": 12,
+          "estimatedDurationS": 10,
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
@@ -754,16 +731,16 @@
               "type": "grammar_gap_choice",
               "itemId": "ex-pl-choice-2",
               "before": "Ihr",
-              "after": "heute spät.",
+              "after": "meine Freunde.",
               "choices": [
                 { "choiceId": "c-1", "text": "sind" },
-                { "choiceId": "c-2", "text": "bist" },
-                { "choiceId": "c-3", "text": "seid" },
+                { "choiceId": "c-2", "text": "seid" },
+                { "choiceId": "c-3", "text": "bist" },
                 { "choiceId": "c-4", "text": "ist" }
               ],
-              "answerChoiceId": "c-3",
+              "answerChoiceId": "c-2",
               "hint": null,
-              "ruleIds": ["rule-plural"],
+              "ruleIds": ["rule-plural-forms"],
               "answerExplanation": {
                 "en": "With ihr, sein is seid.",
                 "fr": "Avec ihr, sein devient seid.",
@@ -774,7 +751,7 @@
         },
         {
           "pageId": "ex-pl-choice-3",
-          "estimatedDurationS": 12,
+          "estimatedDurationS": 10,
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
@@ -785,28 +762,28 @@
             {
               "type": "grammar_gap_choice",
               "itemId": "ex-pl-choice-3",
-              "before": "Entschuldigung,",
-              "after": "Sie Herr Klein?",
+              "before": "Entschuldigung, Herr Braun,",
+              "after": "Sie Arzt?",
               "choices": [
                 { "choiceId": "c-1", "text": "seid" },
                 { "choiceId": "c-2", "text": "sind" },
-                { "choiceId": "c-3", "text": "bist" },
-                { "choiceId": "c-4", "text": "ist" }
+                { "choiceId": "c-3", "text": "ist" },
+                { "choiceId": "c-4", "text": "bin" }
               ],
               "answerChoiceId": "c-2",
               "hint": null,
-              "ruleIds": ["rule-plural", "rule-usage"],
+              "ruleIds": ["rule-formal-sie"],
               "answerExplanation": {
-                "en": "Polite Sie always takes sind, even for one person.",
-                "fr": "Le Sie de politesse prend toujours sind, même pour une seule personne.",
-                "de": "Das höfliche Sie steht immer mit sind, auch für eine Person."
+                "en": "The polite Sie always goes with sind, even for one person.",
+                "fr": "Le Sie de politesse va avec sind, même pour une seule personne.",
+                "de": "Das höfliche Sie steht mit sind, auch für eine einzelne Person."
               }
             }
           ]
         },
         {
           "pageId": "ex-pl-choice-4",
-          "estimatedDurationS": 12,
+          "estimatedDurationS": 10,
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
@@ -817,21 +794,21 @@
             {
               "type": "grammar_gap_choice",
               "itemId": "ex-pl-choice-4",
-              "before": "Tom und Lisa",
-              "after": "Freunde.",
+              "before": "Anna und Tim",
+              "after": "Studenten.",
               "choices": [
-                { "choiceId": "c-1", "text": "ist" },
-                { "choiceId": "c-2", "text": "seid" },
+                { "choiceId": "c-1", "text": "seid" },
+                { "choiceId": "c-2", "text": "ist" },
                 { "choiceId": "c-3", "text": "sind" },
                 { "choiceId": "c-4", "text": "bin" }
               ],
               "answerChoiceId": "c-3",
               "hint": null,
-              "ruleIds": ["rule-plural", "rule-usage"],
+              "ruleIds": ["rule-plural-forms"],
               "answerExplanation": {
-                "en": "Tom und Lisa is 3rd person plural (like sie), so sein is sind.",
-                "fr": "Tom und Lisa est à la 3e personne du pluriel (comme sie) : sein devient sind.",
-                "de": "Tom und Lisa ist 3. Person Plural (wie sie), also heißt sein sind."
+                "en": "Anna und Tim is 3rd person plural (like sie), so sein is sind.",
+                "fr": "Anna und Tim est à la 3e personne du pluriel (comme sie) : sein devient sind.",
+                "de": "Anna und Tim ist 3. Person Plural (wie sie), also heißt sein sind."
               }
             }
           ]
@@ -850,7 +827,7 @@
       "pages": [
         {
           "pageId": "ex-pl-gap-1",
-          "estimatedDurationS": 18,
+          "estimatedDurationS": 15,
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
@@ -862,14 +839,14 @@
               "type": "grammar_gap_typing",
               "itemId": "ex-pl-gap-1",
               "before": "Wir",
-              "after": "Kollegen.",
+              "after": "zu Hause.",
               "accepted": { "answers": ["sind"] },
               "hint": {
                 "en": "sein, 1st person plural",
                 "fr": "sein, 1re personne du pluriel",
                 "de": "sein, 1. Person Plural"
               },
-              "ruleIds": ["rule-plural"],
+              "ruleIds": ["rule-plural-forms"],
               "answerExplanation": {
                 "en": "With wir, sein is sind.",
                 "fr": "Avec wir, sein devient sind.",
@@ -880,7 +857,7 @@
         },
         {
           "pageId": "ex-pl-gap-2",
-          "estimatedDurationS": 18,
+          "estimatedDurationS": 15,
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
@@ -892,14 +869,14 @@
               "type": "grammar_gap_typing",
               "itemId": "ex-pl-gap-2",
               "before": "Ihr",
-              "after": "aus Wien?",
+              "after": "sehr nett.",
               "accepted": { "answers": ["seid"] },
               "hint": {
                 "en": "sein, 2nd person plural",
                 "fr": "sein, 2e personne du pluriel",
                 "de": "sein, 2. Person Plural"
               },
-              "ruleIds": ["rule-plural", "rule-usage"],
+              "ruleIds": ["rule-plural-forms"],
               "answerExplanation": {
                 "en": "With ihr, sein is seid.",
                 "fr": "Avec ihr, sein devient seid.",
@@ -910,7 +887,7 @@
         },
         {
           "pageId": "ex-pl-gap-3",
-          "estimatedDurationS": 18,
+          "estimatedDurationS": 15,
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
@@ -921,15 +898,45 @@
             {
               "type": "grammar_gap_typing",
               "itemId": "ex-pl-gap-3",
+              "before": "Herr Schmidt,",
+              "after": "Sie aus Deutschland?",
+              "accepted": { "answers": ["sind"] },
+              "hint": {
+                "en": "sein, polite Sie",
+                "fr": "sein, Sie de politesse",
+                "de": "sein, höfliches Sie"
+              },
+              "ruleIds": ["rule-formal-sie"],
+              "answerExplanation": {
+                "en": "The polite Sie goes with sind.",
+                "fr": "Le Sie de politesse va avec sind.",
+                "de": "Das höfliche Sie steht mit sind."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-pl-gap-4",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-pl-gap-4",
               "before": "Meine Eltern",
-              "after": "Lehrer.",
+              "after": "in Spanien.",
               "accepted": { "answers": ["sind"] },
               "hint": {
                 "en": "sein, 3rd person plural",
                 "fr": "sein, 3e personne du pluriel",
                 "de": "sein, 3. Person Plural"
               },
-              "ruleIds": ["rule-plural", "rule-usage"],
+              "ruleIds": ["rule-plural-forms"],
               "answerExplanation": {
                 "en": "Meine Eltern is 3rd person plural (like sie), so sein is sind.",
                 "fr": "Meine Eltern est à la 3e personne du pluriel (comme sie) : sein devient sind.",
@@ -967,8 +974,8 @@
       "pages": [
         {
           "pageId": "exam-forms",
-          "estimatedDurationS": 60,
-          "timeLimitS": 120,
+          "estimatedDurationS": 90,
+          "timeLimitS": 150,
           "instructions": {
             "en": "Type the form for each pronoun.",
             "fr": "Écrivez la forme pour chaque pronom.",
@@ -978,7 +985,7 @@
             {
               "type": "grammar_pronoun_form_typing",
               "itemId": "exam-forms-1",
-              "ruleIds": ["rule-singular", "rule-plural"],
+              "ruleIds": ["rule-singular-forms"],
               "rows": [
                 {
                   "rowId": "r-1",
@@ -1002,6 +1009,23 @@
                 },
                 {
                   "rowId": "r-3",
+                  "pronoun": "er",
+                  "accepted": { "answers": ["ist"] },
+                  "answerExplanation": {
+                    "en": "With er, sein is ist.",
+                    "fr": "Avec er, sein devient ist.",
+                    "de": "Zu er gehört die Form ist."
+                  }
+                }
+              ]
+            },
+            {
+              "type": "grammar_pronoun_form_typing",
+              "itemId": "exam-forms-2",
+              "ruleIds": ["rule-plural-forms"],
+              "rows": [
+                {
+                  "rowId": "r-1",
                   "pronoun": "wir",
                   "accepted": { "answers": ["sind"] },
                   "answerExplanation": {
@@ -1011,13 +1035,23 @@
                   }
                 },
                 {
-                  "rowId": "r-4",
+                  "rowId": "r-2",
                   "pronoun": "ihr",
                   "accepted": { "answers": ["seid"] },
                   "answerExplanation": {
                     "en": "With ihr, sein is seid.",
                     "fr": "Avec ihr, sein devient seid.",
                     "de": "Zu ihr gehört die Form seid."
+                  }
+                },
+                {
+                  "rowId": "r-3",
+                  "pronoun": "sie (Plural)",
+                  "accepted": { "answers": ["sind"] },
+                  "answerExplanation": {
+                    "en": "With plural sie, sein is sind.",
+                    "fr": "Avec sie (pluriel), sein devient sind.",
+                    "de": "Zu sie (Plural) gehört die Form sind."
                   }
                 }
               ]
@@ -1026,8 +1060,8 @@
         },
         {
           "pageId": "exam-gaps",
-          "estimatedDurationS": 80,
-          "timeLimitS": 140,
+          "estimatedDurationS": 60,
+          "timeLimitS": 100,
           "instructions": {
             "en": "Type the missing words.",
             "fr": "Écrivez les mots manquants.",
@@ -1037,65 +1071,65 @@
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-gaps-1",
-              "before": "Ich",
-              "after": "Verkäuferin.",
-              "accepted": { "answers": ["bin"] },
+              "before": "Mein Bruder",
+              "after": "Koch.",
+              "accepted": { "answers": ["ist"] },
               "hint": null,
-              "ruleIds": ["rule-singular", "rule-usage"],
+              "ruleIds": ["rule-singular-forms"],
               "answerExplanation": {
-                "en": "With ich, sein is bin.",
-                "fr": "Avec ich, sein devient bin.",
-                "de": "Zu ich gehört die Form bin."
+                "en": "Mein Bruder is 3rd person singular (like er), so sein is ist.",
+                "fr": "Mein Bruder est à la 3e personne du singulier (comme er) : sein devient ist.",
+                "de": "Mein Bruder ist 3. Person Singular (wie er), also heißt sein ist."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-gaps-2",
-              "before": "Du",
-              "after": "sehr nett.",
-              "accepted": { "answers": ["bist"] },
+              "before": "Die Lehrer",
+              "after": "im Garten.",
+              "accepted": { "answers": ["sind"] },
               "hint": null,
-              "ruleIds": ["rule-singular"],
+              "ruleIds": ["rule-plural-forms"],
               "answerExplanation": {
-                "en": "With du, sein is bist.",
-                "fr": "Avec du, sein devient bist.",
-                "de": "Zu du gehört die Form bist."
+                "en": "Die Lehrer is 3rd person plural (like sie), so sein is sind.",
+                "fr": "Die Lehrer est à la 3e personne du pluriel (comme sie) : sein devient sind.",
+                "de": "Die Lehrer ist 3. Person Plural (wie sie), also heißt sein sind."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-gaps-3",
-              "before": "Herr Weber",
-              "after": "aus Hamburg.",
-              "accepted": { "answers": ["ist"] },
+              "before": "Frau Keller,",
+              "after": "Sie müde?",
+              "accepted": { "answers": ["sind"] },
               "hint": null,
-              "ruleIds": ["rule-usage"],
+              "ruleIds": ["rule-formal-sie"],
               "answerExplanation": {
-                "en": "Herr Weber is 3rd person singular (like er), so sein is ist.",
-                "fr": "Herr Weber est à la 3e personne du singulier (comme er) : sein devient ist.",
-                "de": "Herr Weber ist 3. Person Singular (wie er), also heißt sein ist."
+                "en": "The polite Sie goes with sind.",
+                "fr": "Le Sie de politesse va avec sind.",
+                "de": "Das höfliche Sie steht mit sind."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-gaps-4",
-              "before": "Das Wetter",
-              "after": "heute schön.",
-              "accepted": { "answers": ["ist"] },
+              "before": "Ihr",
+              "after": "heute spät.",
+              "accepted": { "answers": ["seid"] },
               "hint": null,
-              "ruleIds": ["rule-singular"],
+              "ruleIds": ["rule-plural-forms"],
               "answerExplanation": {
-                "en": "Das Wetter is 3rd person singular (like es), so sein is ist.",
-                "fr": "Das Wetter est à la 3e personne du singulier (comme es) : sein devient ist.",
-                "de": "Das Wetter ist 3. Person Singular (wie es), also heißt sein ist."
+                "en": "With ihr, sein is seid.",
+                "fr": "Avec ihr, sein devient seid.",
+                "de": "Zu ihr gehört die Form seid."
               }
             }
           ]
         },
         {
           "pageId": "exam-order",
-          "estimatedDurationS": 75,
-          "timeLimitS": 140,
+          "estimatedDurationS": 60,
+          "timeLimitS": 100,
           "instructions": {
             "en": "Put the words in the right order.",
             "fr": "Mettez les mots dans le bon ordre.",
@@ -1106,36 +1140,34 @@
               "type": "grammar_word_order",
               "itemId": "exam-order-1",
               "tokens": [
-                { "tokenId": "t-1", "text": "Österreich" },
-                { "tokenId": "t-2", "text": "sind" },
-                { "tokenId": "t-3", "text": "Wir" },
-                { "tokenId": "t-4", "text": "." },
-                { "tokenId": "t-5", "text": "aus" }
+                { "tokenId": "t-1", "text": "du" },
+                { "tokenId": "t-2", "text": "Studentin" },
+                { "tokenId": "t-3", "text": "Bist" },
+                { "tokenId": "t-4", "text": "?" }
               ],
-              "acceptedOrders": [["t-3", "t-2", "t-5", "t-1", "t-4"]],
-              "ruleIds": ["rule-plural", "rule-usage"],
+              "acceptedOrders": [["t-3", "t-1", "t-2", "t-4"]],
+              "ruleIds": ["rule-singular-forms"],
               "answerExplanation": {
-                "en": "The verb sind comes second: Wir sind aus Österreich.",
-                "fr": "Le verbe sind est en deuxième position : Wir sind aus Österreich.",
-                "de": "Das Verb sind steht an zweiter Stelle: Wir sind aus Österreich."
+                "en": "In a yes/no question the verb comes first: Bist du Studentin?",
+                "fr": "Dans une question fermée, le verbe vient en premier : Bist du Studentin ?",
+                "de": "In der Ja/Nein-Frage steht das Verb an erster Stelle: Bist du Studentin?"
               }
             },
             {
               "type": "grammar_word_order",
               "itemId": "exam-order-2",
               "tokens": [
-                { "tokenId": "t-1", "text": "sehr" },
-                { "tokenId": "t-2", "text": "nett" },
-                { "tokenId": "t-3", "text": "seid" },
-                { "tokenId": "t-4", "text": "Ihr" },
-                { "tokenId": "t-5", "text": "." }
+                { "tokenId": "t-1", "text": "müde" },
+                { "tokenId": "t-2", "text": "Seid" },
+                { "tokenId": "t-3", "text": "?" },
+                { "tokenId": "t-4", "text": "ihr" }
               ],
-              "acceptedOrders": [["t-4", "t-3", "t-1", "t-2", "t-5"]],
-              "ruleIds": ["rule-plural"],
+              "acceptedOrders": [["t-2", "t-4", "t-1", "t-3"]],
+              "ruleIds": ["rule-plural-forms"],
               "answerExplanation": {
-                "en": "With ihr, sein is seid, in second position: Ihr seid sehr nett.",
-                "fr": "Avec ihr, sein devient seid, en deuxième position : Ihr seid sehr nett.",
-                "de": "Zu ihr gehört seid an zweiter Stelle: Ihr seid sehr nett."
+                "en": "In a yes/no question the verb comes first: Seid ihr müde?",
+                "fr": "Dans une question fermée, le verbe vient en premier : Seid ihr müde ?",
+                "de": "In der Ja/Nein-Frage steht das Verb an erster Stelle: Seid ihr müde?"
               }
             },
             {
@@ -1143,16 +1175,16 @@
               "itemId": "exam-order-3",
               "tokens": [
                 { "tokenId": "t-1", "text": "Lehrer" },
-                { "tokenId": "t-2", "text": "Sie" },
-                { "tokenId": "t-3", "text": "Sind" },
+                { "tokenId": "t-2", "text": "Sind" },
+                { "tokenId": "t-3", "text": "Sie" },
                 { "tokenId": "t-4", "text": "?" }
               ],
-              "acceptedOrders": [["t-3", "t-2", "t-1", "t-4"]],
-              "ruleIds": ["rule-plural", "rule-usage"],
+              "acceptedOrders": [["t-2", "t-3", "t-1", "t-4"]],
+              "ruleIds": ["rule-formal-sie"],
               "answerExplanation": {
                 "en": "In a yes/no question the verb comes first: Sind Sie Lehrer?",
                 "fr": "Dans une question fermée, le verbe vient en premier : Sind Sie Lehrer ?",
-                "de": "In der Ja/Nein-Frage steht das Verb am Anfang: Sind Sie Lehrer?"
+                "de": "In der Ja/Nein-Frage steht das Verb an erster Stelle: Sind Sie Lehrer?"
               }
             }
           ]

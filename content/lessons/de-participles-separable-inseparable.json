@@ -6,19 +6,19 @@
   "locales": ["en", "fr", "de"],
   "title": "Partizip II: trennbare, untrennbare und -ieren-Verben",
   "objective": {
-    "en": "Form the past participle of separable, inseparable and -ieren verbs correctly, with ge- in the middle or no ge- at all.",
-    "fr": "Former correctement le participe passé des verbes séparables, inséparables et en -ieren, avec ge- au milieu ou sans ge-.",
-    "de": "Das Partizip II trennbarer, untrennbarer und -ieren-Verben richtig bilden: mit ge- in der Mitte oder ganz ohne ge-."
+    "en": "Form the past participle with ge in the middle for separable verbs and without ge for inseparable and -ieren verbs: eingekauft, besucht, telefoniert.",
+    "fr": "Former le participe passé avec ge au milieu pour les verbes séparables et sans ge pour les verbes inséparables et en -ieren : eingekauft, besucht, telefoniert.",
+    "de": "Das Partizip II trennbarer Verben mit ge in der Mitte und untrennbarer sowie -ieren-Verben ohne ge bilden: eingekauft, besucht, telefoniert."
   },
   "estimatedMinutes": 19,
   "provenance": {
     "generator": "ft lessons:author",
     "model": "sonnet",
-    "promptVersion": "author-2",
-    "generatedAt": "2026-11-01T20:22:00.958Z",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:26:14.095Z",
     "inputHashes": {
       "outline": "75267f078da17556e2db2ce21080e34550abf0bbfd3c5ae45461fa35c5f2615f",
-      "brief": "1c580a89f0ccbb25491178529d1748bb04c9d6c4d5a2490d759d3f050e4e2ccc"
+      "brief": "b6e35e7eca381f9ed11aafaa6f5da7825f8da503e0a22af2058c601ba3c936d3"
     }
   },
   "kind": "grammar",
@@ -29,9 +29,9 @@
       "role": "explanation",
       "blockId": "block-trennbar",
       "label": {
-        "en": "Separable verbs: ge- in the middle",
-        "fr": "Verbes séparables : ge- au milieu",
-        "de": "Trennbare Verben: ge- in der Mitte"
+        "en": "Separable verbs: ge in the middle",
+        "fr": "Verbes séparables : ge au milieu",
+        "de": "Trennbare Verben: ge in der Mitte"
       },
       "pages": [
         {
@@ -47,47 +47,50 @@
             {
               "type": "grammar_explanation",
               "itemId": "block-trennbar-explanation",
-              "ruleIds": ["rule-trennbar"],
+              "ruleIds": ["rule-haben", "rule-trennbar"],
               "heading": {
-                "en": "ge- in the middle",
-                "fr": "ge- au milieu",
-                "de": "ge- in der Mitte"
+                "en": "Separable verbs in the Perfekt",
+                "fr": "Les verbes séparables au parfait",
+                "de": "Trennbare Verben im Perfekt"
               },
               "text": {
-                "en": "Separable verbs have a stressed prefix like `ein-`, `an-`, `auf-` or `ab-`. In the past participle, **ge-** goes in the middle, between the prefix and the stem: `einkaufen` → `eingekauft`.\n\nHow to build it: prefix + **ge** + stem + **-t** (regular) or **-en** (often irregular): `anrufen` → `angerufen`.\n\n- `aufräumen` → `aufgeräumt`\n- `abholen` → `abgeholt`\n- `fernsehen` → `ferngesehen`\n\nIn the perfect tense the participle stays in one piece: `Ich habe eingekauft.`",
-                "fr": "Les verbes séparables ont un préfixe accentué comme `ein-`, `an-`, `auf-` ou `ab-`. Au participe passé, **ge-** se place au milieu, entre le préfixe et le radical : `einkaufen` → `eingekauft`.\n\nConstruction : préfixe + **ge** + radical + **-t** (réguliers) ou **-en** (souvent irréguliers) : `anrufen` → `angerufen`.\n\n- `aufräumen` → `aufgeräumt`\n- `abholen` → `abgeholt`\n- `fernsehen` → `ferngesehen`\n\nAu parfait, le participe reste en un seul morceau : `Ich habe eingekauft.`",
-                "de": "Trennbare Verben haben eine betonte Vorsilbe wie `ein-`, `an-`, `auf-` oder `ab-`. Im Partizip II steht **ge-** in der Mitte, zwischen Vorsilbe und Stamm: `einkaufen` → `eingekauft`.\n\nSo bildest du es: Vorsilbe + **ge** + Stamm + **-t** (regelmäßig) oder **-en** (oft unregelmäßig): `anrufen` → `angerufen`.\n\n- `aufräumen` → `aufgeräumt`\n- `abholen` → `abgeholt`\n- `fernsehen` → `ferngesehen`\n\nIm Perfekt bleibt das Partizip in einem Stück: `Ich habe eingekauft.`"
+                "en": "The Perfekt uses `haben` + past participle. The participle stands at the end of the sentence: `Ich habe gestern eingekauft.`\n\nWith **separable** verbs, `ge` goes in the middle, between the prefix and the verb stem: `einkaufen` → `eingekauft`, `anrufen` → `angerufen`, `aufräumen` → `aufgeräumt`.\n\n- Regular participles end in `t`: `abholen` → `abgeholt`.\n- Some participles end in `en`: `einladen` → `eingeladen`, `anfangen` → `angefangen`. Learn these forms by heart.",
+                "fr": "Le parfait se forme avec `haben` + participe passé. Le participe est à la fin de la phrase : `Ich habe gestern eingekauft.`\n\nAvec les verbes **séparables**, `ge` se place au milieu, entre le préfixe et le radical : `einkaufen` → `eingekauft`, `anrufen` → `angerufen`, `aufräumen` → `aufgeräumt`.\n\n- Les participes réguliers se terminent par `t` : `abholen` → `abgeholt`.\n- Certains participes se terminent par `en` : `einladen` → `eingeladen`, `anfangen` → `angefangen`. Il faut apprendre ces formes par cœur.",
+                "de": "Im Perfekt steht `haben` + Partizip II. Das Partizip steht am Satzende: `Ich habe gestern eingekauft.`\n\nBei **trennbaren** Verben steht `ge` in der Mitte, zwischen Präfix und Verbstamm: `einkaufen` → `eingekauft`, `anrufen` → `angerufen`, `aufräumen` → `aufgeräumt`.\n\n- Regelmäßige Partizipien enden auf `t`: `abholen` → `abgeholt`.\n- Manche Partizipien enden auf `en`: `einladen` → `eingeladen`, `anfangen` → `angefangen`. Diese Formen lernst du am besten auswendig."
               },
               "formTable": [
-                {
-                  "subject": "einkaufen",
-                  "form": "eingekauft",
-                  "example": "Ich habe heute eingekauft."
-                },
-                { "subject": "anrufen", "form": "angerufen", "example": "Er hat mich angerufen." },
-                {
-                  "subject": "aufräumen",
-                  "form": "aufgeräumt",
-                  "example": "Wir haben die Wohnung aufgeräumt."
-                }
+                { "subject": "einkaufen", "form": "eingekauft", "example": null },
+                { "subject": "anrufen", "form": "angerufen", "example": null },
+                { "subject": "aufräumen", "form": "aufgeräumt", "example": null },
+                { "subject": "abholen", "form": "abgeholt", "example": null }
               ],
               "examples": [
                 {
-                  "text": "Ich habe heute eingekauft.",
+                  "text": "Ich habe gestern im Supermarkt eingekauft.",
                   "translation": {
-                    "en": "I did the shopping today.",
-                    "fr": "J'ai fait les courses aujourd'hui."
+                    "en": "I went shopping at the supermarket yesterday.",
+                    "fr": "J’ai fait les courses au supermarché hier."
                   }
                 },
                 {
-                  "text": "Er hat mich angerufen.",
-                  "translation": { "en": "He called me.", "fr": "Il m'a appelé." }
+                  "text": "Meine Schwester hat ihren Freund angerufen.",
+                  "translation": {
+                    "en": "My sister called her boyfriend.",
+                    "fr": "Ma sœur a appelé son petit ami."
+                  }
                 },
                 {
-                  "text": "Wir haben die Wohnung aufgeräumt.",
+                  "text": "Wir haben das Zimmer aufgeräumt.",
                   "translation": {
-                    "en": "We tidied up the flat.",
-                    "fr": "Nous avons rangé l'appartement."
+                    "en": "We tidied up the room.",
+                    "fr": "Nous avons rangé la chambre."
+                  }
+                },
+                {
+                  "text": "Er hat die Kinder von der Schule abgeholt.",
+                  "translation": {
+                    "en": "He picked up the children from school.",
+                    "fr": "Il est allé chercher les enfants à l’école."
                   }
                 }
               ]
@@ -97,7 +100,7 @@
       ]
     },
     {
-      "id": "ex-sep-choice",
+      "id": "ex-t-choice",
       "role": "exercise",
       "blockId": "block-trennbar",
       "label": {
@@ -107,8 +110,8 @@
       },
       "pages": [
         {
-          "pageId": "ex-sep-choice-1",
-          "estimatedDurationS": 60,
+          "pageId": "ex-t-choice-1",
+          "estimatedDurationS": 12,
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
@@ -118,68 +121,40 @@
           "items": [
             {
               "type": "grammar_gap_choice",
-              "itemId": "ex-sep-choice-1",
-              "before": "Meine Mutter hat mich gestern",
+              "itemId": "ex-t-choice-1",
+              "before": "Ich habe meine Oma gestern",
               "after": ".",
               "choices": [
-                { "choiceId": "c-1", "text": "angerufen" },
-                { "choiceId": "c-2", "text": "geanrufen" },
-                { "choiceId": "c-3", "text": "anrufen" },
-                { "choiceId": "c-4", "text": "angeruft" }
+                { "choiceId": "c-1", "text": "geanrufen" },
+                { "choiceId": "c-2", "text": "angerufen" },
+                { "choiceId": "c-3", "text": "angeruft" },
+                { "choiceId": "c-4", "text": "anrufen" }
               ],
-              "answerChoiceId": "c-1",
+              "answerChoiceId": "c-2",
               "hint": null,
               "ruleIds": ["rule-trennbar"],
               "answerExplanation": {
-                "en": "Anrufen is separable: an + ge + rufen = angerufen.",
-                "fr": "Anrufen est séparable : an + ge + rufen = angerufen.",
-                "de": "Anrufen ist trennbar: an + ge + rufen = angerufen."
+                "en": "anrufen is separable: an + ge + rufen = angerufen.",
+                "fr": "anrufen est séparable : an + ge + rufen = angerufen.",
+                "de": "anrufen ist trennbar: an + ge + rufen = angerufen."
               }
-            },
+            }
+          ]
+        },
+        {
+          "pageId": "ex-t-choice-2",
+          "estimatedDurationS": 12,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
             {
               "type": "grammar_gap_choice",
-              "itemId": "ex-sep-choice-2",
-              "before": "Wir haben das Zimmer",
-              "after": ".",
-              "choices": [
-                { "choiceId": "c-1", "text": "geaufräumt" },
-                { "choiceId": "c-2", "text": "aufräumt" },
-                { "choiceId": "c-3", "text": "aufgeräumt" },
-                { "choiceId": "c-4", "text": "aufgeräumen" }
-              ],
-              "answerChoiceId": "c-3",
-              "hint": null,
-              "ruleIds": ["rule-trennbar"],
-              "answerExplanation": {
-                "en": "Aufräumen is separable: auf + ge + räumt = aufgeräumt.",
-                "fr": "Aufräumen est séparable : auf + ge + räumt = aufgeräumt.",
-                "de": "Aufräumen ist trennbar: auf + ge + räumt = aufgeräumt."
-              }
-            },
-            {
-              "type": "grammar_gap_choice",
-              "itemId": "ex-sep-choice-3",
-              "before": "Der Unterricht hat um acht Uhr",
-              "after": ".",
-              "choices": [
-                { "choiceId": "c-1", "text": "geanfangen" },
-                { "choiceId": "c-2", "text": "anfangt" },
-                { "choiceId": "c-3", "text": "angefangt" },
-                { "choiceId": "c-4", "text": "angefangen" }
-              ],
-              "answerChoiceId": "c-4",
-              "hint": null,
-              "ruleIds": ["rule-trennbar"],
-              "answerExplanation": {
-                "en": "Anfangen is separable: an + ge + fangen = angefangen.",
-                "fr": "Anfangen est séparable : an + ge + fangen = angefangen.",
-                "de": "Anfangen ist trennbar: an + ge + fangen = angefangen."
-              }
-            },
-            {
-              "type": "grammar_gap_choice",
-              "itemId": "ex-sep-choice-4",
-              "before": "Sie hat ihre Freundin vom Bahnhof",
+              "itemId": "ex-t-choice-2",
+              "before": "Sie hat ihren Sohn von der Schule",
               "after": ".",
               "choices": [
                 { "choiceId": "c-1", "text": "abgeholt" },
@@ -191,9 +166,73 @@
               "hint": null,
               "ruleIds": ["rule-trennbar"],
               "answerExplanation": {
-                "en": "Abholen is separable: ab + ge + holt = abgeholt.",
-                "fr": "Abholen est séparable : ab + ge + holt = abgeholt.",
-                "de": "Abholen ist trennbar: ab + ge + holt = abgeholt."
+                "en": "abholen is separable: ab + ge + holt = abgeholt.",
+                "fr": "abholen est séparable : ab + ge + holt = abgeholt.",
+                "de": "abholen ist trennbar: ab + ge + holt = abgeholt."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-t-choice-3",
+          "estimatedDurationS": 12,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-t-choice-3",
+              "before": "Der Film hat schon um acht Uhr",
+              "after": ".",
+              "choices": [
+                { "choiceId": "c-1", "text": "geanfangen" },
+                { "choiceId": "c-2", "text": "anfangt" },
+                { "choiceId": "c-3", "text": "angefangt" },
+                { "choiceId": "c-4", "text": "angefangen" }
+              ],
+              "answerChoiceId": "c-4",
+              "hint": null,
+              "ruleIds": ["rule-trennbar"],
+              "answerExplanation": {
+                "en": "anfangen is separable: an + ge + fangen = angefangen.",
+                "fr": "anfangen est séparable : an + ge + fangen = angefangen.",
+                "de": "anfangen ist trennbar: an + ge + fangen = angefangen."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-t-choice-4",
+          "estimatedDurationS": 12,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-t-choice-4",
+              "before": "Hast du das Fenster",
+              "after": "?",
+              "choices": [
+                { "choiceId": "c-1", "text": "geaufmacht" },
+                { "choiceId": "c-2", "text": "aufmacht" },
+                { "choiceId": "c-3", "text": "aufgemacht" },
+                { "choiceId": "c-4", "text": "aufgemachen" }
+              ],
+              "answerChoiceId": "c-3",
+              "hint": null,
+              "ruleIds": ["rule-trennbar"],
+              "answerExplanation": {
+                "en": "aufmachen is separable: auf + ge + macht = aufgemacht.",
+                "fr": "aufmachen est séparable : auf + ge + macht = aufgemacht.",
+                "de": "aufmachen ist trennbar: auf + ge + macht = aufgemacht."
               }
             }
           ]
@@ -201,7 +240,7 @@
       ]
     },
     {
-      "id": "ex-sep-typing",
+      "id": "ex-t-typing",
       "role": "exercise",
       "blockId": "block-trennbar",
       "label": {
@@ -211,8 +250,8 @@
       },
       "pages": [
         {
-          "pageId": "ex-sep-typing-1",
-          "estimatedDurationS": 80,
+          "pageId": "ex-t-typing-1",
+          "estimatedDurationS": 20,
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
@@ -222,58 +261,94 @@
           "items": [
             {
               "type": "grammar_gap_typing",
-              "itemId": "ex-sep-typing-1",
-              "before": "Ich habe die Fenster",
-              "after": ".",
-              "accepted": { "answers": ["aufgemacht"] },
-              "hint": { "en": "aufmachen", "fr": "aufmachen", "de": "aufmachen" },
-              "ruleIds": ["rule-trennbar"],
-              "answerExplanation": {
-                "en": "Aufmachen is separable: auf + ge + macht = aufgemacht.",
-                "fr": "Aufmachen est séparable : auf + ge + macht = aufgemacht.",
-                "de": "Aufmachen ist trennbar: auf + ge + macht = aufgemacht."
-              }
-            },
-            {
-              "type": "grammar_gap_typing",
-              "itemId": "ex-sep-typing-2",
-              "before": "Wir haben Oma zum Geburtstag",
+              "itemId": "ex-t-typing-1",
+              "before": "Meine Eltern haben uns zum Essen",
               "after": ".",
               "accepted": { "answers": ["eingeladen"] },
               "hint": { "en": "einladen", "fr": "einladen", "de": "einladen" },
               "ruleIds": ["rule-trennbar"],
               "answerExplanation": {
-                "en": "Einladen is separable: ein + ge + laden = eingeladen.",
-                "fr": "Einladen est séparable : ein + ge + laden = eingeladen.",
-                "de": "Einladen ist trennbar: ein + ge + laden = eingeladen."
+                "en": "einladen: ein + ge + laden = eingeladen (the participle ends in -en).",
+                "fr": "einladen : ein + ge + laden = eingeladen (le participe se termine par -en).",
+                "de": "einladen: ein + ge + laden = eingeladen (das Partizip endet auf -en)."
               }
-            },
+            }
+          ]
+        },
+        {
+          "pageId": "ex-t-typing-2",
+          "estimatedDurationS": 20,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
             {
               "type": "grammar_gap_typing",
-              "itemId": "ex-sep-typing-3",
-              "before": "Er hat seinem Freund ein Geschenk",
+              "itemId": "ex-t-typing-2",
+              "before": "Ich habe die Wohnung gestern",
               "after": ".",
-              "accepted": { "answers": ["mitgebracht"] },
-              "hint": { "en": "mitbringen", "fr": "mitbringen", "de": "mitbringen" },
+              "accepted": { "answers": ["aufgeräumt"] },
+              "hint": { "en": "aufräumen", "fr": "aufräumen", "de": "aufräumen" },
               "ruleIds": ["rule-trennbar"],
               "answerExplanation": {
-                "en": "Mitbringen is separable: mit + ge + bracht = mitgebracht.",
-                "fr": "Mitbringen est séparable : mit + ge + bracht = mitgebracht.",
-                "de": "Mitbringen ist trennbar: mit + ge + bracht = mitgebracht."
+                "en": "aufräumen: auf + ge + räumt = aufgeräumt.",
+                "fr": "aufräumen : auf + ge + räumt = aufgeräumt.",
+                "de": "aufräumen: auf + ge + räumt = aufgeräumt."
               }
-            },
+            }
+          ]
+        },
+        {
+          "pageId": "ex-t-typing-3",
+          "estimatedDurationS": 20,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
             {
               "type": "grammar_gap_typing",
-              "itemId": "ex-sep-typing-4",
-              "before": "Ich habe gestern den ganzen Abend",
+              "itemId": "ex-t-typing-3",
+              "before": "Wir haben das Fenster",
               "after": ".",
-              "accepted": { "answers": ["ferngesehen"] },
-              "hint": { "en": "fernsehen", "fr": "fernsehen", "de": "fernsehen" },
+              "accepted": { "answers": ["zugemacht"] },
+              "hint": { "en": "zumachen", "fr": "zumachen", "de": "zumachen" },
               "ruleIds": ["rule-trennbar"],
               "answerExplanation": {
-                "en": "Fernsehen is separable: fern + ge + sehen = ferngesehen.",
-                "fr": "Fernsehen est séparable : fern + ge + sehen = ferngesehen.",
-                "de": "Fernsehen ist trennbar: fern + ge + sehen = ferngesehen."
+                "en": "zumachen: zu + ge + macht = zugemacht.",
+                "fr": "zumachen : zu + ge + macht = zugemacht.",
+                "de": "zumachen: zu + ge + macht = zugemacht."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-t-typing-4",
+          "estimatedDurationS": 20,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-t-typing-4",
+              "before": "Du hast mich gestern Abend nicht",
+              "after": ".",
+              "accepted": { "answers": ["angerufen"] },
+              "hint": { "en": "anrufen", "fr": "anrufen", "de": "anrufen" },
+              "ruleIds": ["rule-trennbar"],
+              "answerExplanation": {
+                "en": "anrufen: an + ge + rufen = angerufen.",
+                "fr": "anrufen : an + ge + rufen = angerufen.",
+                "de": "anrufen: an + ge + rufen = angerufen."
               }
             }
           ]
@@ -281,14 +356,112 @@
       ]
     },
     {
-      "id": "ex-sep-order",
+      "id": "ex-t-persons",
       "role": "exercise",
       "blockId": "block-trennbar",
-      "label": { "en": "Word order 1", "fr": "Ordre des mots 1", "de": "Wortstellung 1" },
+      "label": {
+        "en": "Person matching",
+        "fr": "Relier les personnes",
+        "de": "Personen verbinden"
+      },
       "pages": [
         {
-          "pageId": "ex-sep-order-1",
-          "estimatedDurationS": 75,
+          "pageId": "ex-t-persons-1",
+          "estimatedDurationS": 90,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Connect each pronoun with its partner.",
+            "fr": "Reliez chaque pronom à son partenaire.",
+            "de": "Verbinde jedes Pronomen mit seinem Partner."
+          },
+          "items": [
+            {
+              "type": "grammar_person_matching",
+              "itemId": "ex-t-persons-1",
+              "ruleIds": ["rule-haben"],
+              "mode": "forms",
+              "rows": [
+                {
+                  "person": "1sg",
+                  "pronoun": "ich (haben)",
+                  "native": null,
+                  "answer": "habe",
+                  "answerExplanation": {
+                    "en": "With ich, haben is habe.",
+                    "fr": "Avec ich, haben devient habe.",
+                    "de": "Zu ich gehört habe."
+                  }
+                },
+                {
+                  "person": "2sg",
+                  "pronoun": "du (haben)",
+                  "native": null,
+                  "answer": "hast",
+                  "answerExplanation": {
+                    "en": "With du, haben is hast.",
+                    "fr": "Avec du, haben devient hast.",
+                    "de": "Zu du gehört hast."
+                  }
+                },
+                {
+                  "person": "3sg",
+                  "pronoun": "er / sie / es (haben)",
+                  "native": null,
+                  "answer": "hat",
+                  "answerExplanation": {
+                    "en": "With er, sie, es, haben is hat.",
+                    "fr": "Avec er, sie, es, haben devient hat.",
+                    "de": "Zu er, sie, es gehört hat."
+                  }
+                },
+                {
+                  "person": "1pl",
+                  "pronoun": "wir (haben)",
+                  "native": null,
+                  "answer": "haben",
+                  "answerExplanation": {
+                    "en": "With wir, haben is haben.",
+                    "fr": "Avec wir, haben reste haben.",
+                    "de": "Zu wir gehört haben."
+                  }
+                },
+                {
+                  "person": "2pl",
+                  "pronoun": "ihr (haben)",
+                  "native": null,
+                  "answer": "habt",
+                  "answerExplanation": {
+                    "en": "With ihr, haben is habt.",
+                    "fr": "Avec ihr, haben devient habt.",
+                    "de": "Zu ihr gehört habt."
+                  }
+                },
+                {
+                  "person": "3pl",
+                  "pronoun": "sie / Sie (haben)",
+                  "native": null,
+                  "answer": "haben",
+                  "answerExplanation": {
+                    "en": "With plural sie and polite Sie, haben is haben.",
+                    "fr": "Avec sie (pluriel) et Sie (politesse), haben reste haben.",
+                    "de": "Zu sie (Plural) und Sie (höflich) gehört haben."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-t-order",
+      "role": "exercise",
+      "blockId": "block-trennbar",
+      "label": { "en": "Word order", "fr": "Ordre des mots", "de": "Wortstellung" },
+      "pages": [
+        {
+          "pageId": "ex-t-order-1",
+          "estimatedDurationS": 30,
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
@@ -298,63 +471,83 @@
           "items": [
             {
               "type": "grammar_word_order",
-              "itemId": "ex-sep-order-1",
+              "itemId": "ex-t-order-1",
               "tokens": [
-                { "tokenId": "t-5", "text": "zugemacht" },
-                { "tokenId": "t-3", "text": "das" },
-                { "tokenId": "t-1", "text": "Wir" },
-                { "tokenId": "t-6", "text": "." },
-                { "tokenId": "t-4", "text": "Fenster" },
-                { "tokenId": "t-2", "text": "haben" }
-              ],
-              "acceptedOrders": [
-                ["t-1", "t-2", "t-3", "t-4", "t-5", "t-6"],
-                ["t-3", "t-4", "t-2", "t-1", "t-5", "t-6"]
-              ],
-              "ruleIds": ["rule-trennbar"],
-              "answerExplanation": {
-                "en": "The participle zugemacht (zu + ge + macht) goes at the end.",
-                "fr": "Le participe zugemacht (zu + ge + macht) se place à la fin.",
-                "de": "Das Partizip zugemacht (zu + ge + macht) steht am Ende."
-              }
-            },
-            {
-              "type": "grammar_word_order",
-              "itemId": "ex-sep-order-2",
-              "tokens": [
-                { "tokenId": "t-6", "text": "angesehen" },
+                { "tokenId": "t-1", "text": "angerufen" },
                 { "tokenId": "t-2", "text": "du" },
-                { "tokenId": "t-7", "text": "?" },
-                { "tokenId": "t-4", "text": "Film" },
-                { "tokenId": "t-1", "text": "Hast" },
-                { "tokenId": "t-5", "text": "schon" },
-                { "tokenId": "t-3", "text": "den" }
+                { "tokenId": "t-3", "text": "?" },
+                { "tokenId": "t-4", "text": "Hast" },
+                { "tokenId": "t-5", "text": "mich" }
               ],
-              "acceptedOrders": [["t-1", "t-2", "t-3", "t-4", "t-5", "t-6", "t-7"]],
-              "ruleIds": ["rule-trennbar"],
+              "acceptedOrders": [["t-4", "t-2", "t-5", "t-1", "t-3"]],
+              "ruleIds": ["rule-haben", "rule-trennbar"],
               "answerExplanation": {
-                "en": "In the question, hast comes first and angesehen (an + ge + sehen) stays at the end.",
-                "fr": "Dans la question, hast vient en premier et angesehen (an + ge + sehen) reste à la fin.",
-                "de": "In der Frage steht hast vorn und angesehen (an + ge + sehen) am Ende."
+                "en": "In a yes/no question haben comes first and the participle angerufen comes last.",
+                "fr": "Dans une question fermée, haben est en premier et le participe angerufen à la fin.",
+                "de": "In der Ja/Nein-Frage steht haben am Anfang und das Partizip angerufen am Ende."
               }
-            },
+            }
+          ]
+        },
+        {
+          "pageId": "ex-t-order-2",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in the right order.",
+            "fr": "Mettez les mots dans le bon ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
             {
               "type": "grammar_word_order",
-              "itemId": "ex-sep-order-3",
+              "itemId": "ex-t-order-2",
               "tokens": [
-                { "tokenId": "t-4", "text": "Teller" },
-                { "tokenId": "t-1", "text": "Er" },
-                { "tokenId": "t-6", "text": "." },
-                { "tokenId": "t-5", "text": "abgewaschen" },
-                { "tokenId": "t-3", "text": "den" },
-                { "tokenId": "t-2", "text": "hat" }
+                { "tokenId": "t-1", "text": "aufgemacht" },
+                { "tokenId": "t-2", "text": "Tür" },
+                { "tokenId": "t-3", "text": "hast" },
+                { "tokenId": "t-4", "text": "?" },
+                { "tokenId": "t-5", "text": "Warum" },
+                { "tokenId": "t-6", "text": "die" },
+                { "tokenId": "t-7", "text": "du" }
               ],
-              "acceptedOrders": [["t-1", "t-2", "t-3", "t-4", "t-5", "t-6"]],
-              "ruleIds": ["rule-trennbar"],
+              "acceptedOrders": [["t-5", "t-3", "t-7", "t-6", "t-2", "t-1", "t-4"]],
+              "ruleIds": ["rule-haben", "rule-trennbar"],
               "answerExplanation": {
-                "en": "The participle abgewaschen (ab + ge + waschen) goes at the end.",
-                "fr": "Le participe abgewaschen (ab + ge + waschen) se place à la fin.",
-                "de": "Das Partizip abgewaschen (ab + ge + waschen) steht am Ende."
+                "en": "The question word comes first, then hast; the participle aufgemacht goes at the end.",
+                "fr": "Le mot interrogatif est en premier, puis hast ; le participe aufgemacht est à la fin.",
+                "de": "Das Fragewort steht vorn, dann hast; das Partizip aufgemacht steht am Ende."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-t-order-3",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in the right order.",
+            "fr": "Mettez les mots dans le bon ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-t-order-3",
+              "tokens": [
+                { "tokenId": "t-1", "text": "Film" },
+                { "tokenId": "t-2", "text": "?" },
+                { "tokenId": "t-3", "text": "angefangen" },
+                { "tokenId": "t-4", "text": "hat" },
+                { "tokenId": "t-5", "text": "Wann" },
+                { "tokenId": "t-6", "text": "der" }
+              ],
+              "acceptedOrders": [["t-5", "t-4", "t-6", "t-1", "t-3", "t-2"]],
+              "ruleIds": ["rule-haben", "rule-trennbar"],
+              "answerExplanation": {
+                "en": "The auxiliary hat is in second position and the participle angefangen is last.",
+                "fr": "L’auxiliaire hat est en deuxième position et le participe angefangen est en dernier.",
+                "de": "Das Hilfsverb hat steht an zweiter Stelle, das Partizip angefangen am Ende."
               }
             }
           ]
@@ -366,9 +559,9 @@
       "role": "explanation",
       "blockId": "block-untrennbar",
       "label": {
-        "en": "No ge-: be-, ver-, er- and -ieren",
-        "fr": "Sans ge- : be-, ver-, er- et -ieren",
-        "de": "Ohne ge-: be-, ver-, er- und -ieren"
+        "en": "Inseparable and -ieren verbs: no ge",
+        "fr": "Verbes inséparables et en -ieren : sans ge",
+        "de": "Untrennbare und -ieren-Verben: ohne ge"
       },
       "pages": [
         {
@@ -386,43 +579,28 @@
               "itemId": "block-untrennbar-explanation",
               "ruleIds": ["rule-untrennbar", "rule-ieren"],
               "heading": {
-                "en": "No ge- in the participle",
-                "fr": "Pas de ge- au participe",
-                "de": "Kein ge- im Partizip"
+                "en": "No ge in the participle",
+                "fr": "Pas de ge au participe",
+                "de": "Kein ge im Partizip"
               },
               "text": {
-                "en": "Inseparable verbs have an unstressed prefix: **be-**, **ver-**, **er-**. They form the past participle **without ge-**: `besuchen` → `besucht`, `verkaufen` → `verkauft`, `erklären` → `erklärt`.\n\nVerbs ending in **-ieren** also take no ge-: `telefonieren` → `telefoniert`, `studieren` → `studiert`.\n\n- No **ge-** after `be-`, `ver-` or `er-`.\n- No **ge-** with `-ieren`.\n- Compare: `einkaufen` → `eingekauft`, but `verkaufen` → `verkauft`.\n\nIn the perfect tense: `Wir haben telefoniert.`",
-                "fr": "Les verbes inséparables ont un préfixe inaccentué : **be-**, **ver-**, **er-**. Ils forment le participe passé **sans ge-** : `besuchen` → `besucht`, `verkaufen` → `verkauft`, `erklären` → `erklärt`.\n\nLes verbes en **-ieren** n'ont pas non plus de ge- : `telefonieren` → `telefoniert`, `studieren` → `studiert`.\n\n- Pas de **ge-** après `be-`, `ver-` ou `er-`.\n- Pas de **ge-** avec `-ieren`.\n- Comparez : `einkaufen` → `eingekauft`, mais `verkaufen` → `verkauft`.\n\nAu parfait : `Wir haben telefoniert.`",
-                "de": "Untrennbare Verben haben eine unbetonte Vorsilbe: **be-**, **ver-**, **er-**. Sie bilden das Partizip II **ohne ge-**: `besuchen` → `besucht`, `verkaufen` → `verkauft`, `erklären` → `erklärt`.\n\nAuch Verben auf **-ieren** haben kein ge-: `telefonieren` → `telefoniert`, `studieren` → `studiert`.\n\n- Kein **ge-** nach `be-`, `ver-` oder `er-`.\n- Kein **ge-** bei `-ieren`.\n- Vergleiche: `einkaufen` → `eingekauft`, aber `verkaufen` → `verkauft`.\n\nIm Perfekt: `Wir haben telefoniert.`"
+                "en": "With **inseparable** verbs the past participle has no `ge`. Typical prefixes are `be`, `ver` and `er`: `besuchen` → `besucht`, `verkaufen` → `verkauft`, `erklären` → `erklärt`.\n\nVerbs ending in **-ieren** also form the participle without `ge`: `telefonieren` → `telefoniert`, `reparieren` → `repariert`.\n\n- Some participles end in `en`: `verstehen` → `verstanden`, `bekommen` → `bekommen`.\n- Compare: `kaufen` → `gekauft`, but `verkaufen` → `verkauft`.",
+                "fr": "Avec les verbes **inséparables**, le participe passé n’a pas de `ge`. Les préfixes typiques sont `be`, `ver` et `er` : `besuchen` → `besucht`, `verkaufen` → `verkauft`, `erklären` → `erklärt`.\n\nLes verbes en **-ieren** forment aussi le participe sans `ge` : `telefonieren` → `telefoniert`, `reparieren` → `repariert`.\n\n- Certains participes se terminent par `en` : `verstehen` → `verstanden`, `bekommen` → `bekommen`.\n- Comparez : `kaufen` → `gekauft`, mais `verkaufen` → `verkauft`.",
+                "de": "Bei **untrennbaren** Verben hat das Partizip II kein `ge`. Typische Vorsilben sind `be`, `ver` und `er`: `besuchen` → `besucht`, `verkaufen` → `verkauft`, `erklären` → `erklärt`.\n\nAuch Verben auf **-ieren** bilden das Partizip ohne `ge`: `telefonieren` → `telefoniert`, `reparieren` → `repariert`.\n\n- Manche Partizipien enden auf `en`: `verstehen` → `verstanden`, `bekommen` → `bekommen`.\n- Vergleiche: `kaufen` → `gekauft`, aber `verkaufen` → `verkauft`."
               },
               "formTable": [
-                {
-                  "subject": "besuchen",
-                  "form": "besucht",
-                  "example": "Ich habe meine Oma besucht."
-                },
-                {
-                  "subject": "verkaufen",
-                  "form": "verkauft",
-                  "example": "Er hat sein altes Auto verkauft."
-                },
-                {
-                  "subject": "telefonieren",
-                  "form": "telefoniert",
-                  "example": "Wir haben lange telefoniert."
-                },
-                {
-                  "subject": "studieren",
-                  "form": "studiert",
-                  "example": "Sie hat in Wien studiert."
-                }
+                { "subject": "besuchen", "form": "besucht", "example": null },
+                { "subject": "verkaufen", "form": "verkauft", "example": null },
+                { "subject": "erklären", "form": "erklärt", "example": null },
+                { "subject": "telefonieren", "form": "telefoniert", "example": null },
+                { "subject": "reparieren", "form": "repariert", "example": null }
               ],
               "examples": [
                 {
-                  "text": "Ich habe meine Oma besucht.",
+                  "text": "Wir haben unsere Tante besucht.",
                   "translation": {
-                    "en": "I visited my grandma.",
-                    "fr": "J'ai rendu visite à ma grand-mère."
+                    "en": "We visited our aunt.",
+                    "fr": "Nous avons rendu visite à notre tante."
                   }
                 },
                 {
@@ -433,17 +611,17 @@
                   }
                 },
                 {
-                  "text": "Wir haben lange telefoniert.",
+                  "text": "Die Lehrerin hat die Regel erklärt.",
                   "translation": {
-                    "en": "We talked on the phone for a long time.",
-                    "fr": "Nous avons longtemps téléphoné."
+                    "en": "The teacher explained the rule.",
+                    "fr": "La professeure a expliqué la règle."
                   }
                 },
                 {
-                  "text": "Sie hat in Wien studiert.",
+                  "text": "Ich habe lange mit Anna telefoniert.",
                   "translation": {
-                    "en": "She studied in Vienna.",
-                    "fr": "Elle a fait ses études à Vienne."
+                    "en": "I talked to Anna on the phone for a long time.",
+                    "fr": "J’ai longuement téléphoné avec Anna."
                   }
                 }
               ]
@@ -453,7 +631,7 @@
       ]
     },
     {
-      "id": "ex-insep-choice",
+      "id": "ex-u-choice",
       "role": "exercise",
       "blockId": "block-untrennbar",
       "label": {
@@ -463,8 +641,8 @@
       },
       "pages": [
         {
-          "pageId": "ex-insep-choice-1",
-          "estimatedDurationS": 60,
+          "pageId": "ex-u-choice-1",
+          "estimatedDurationS": 12,
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
@@ -474,82 +652,150 @@
           "items": [
             {
               "type": "grammar_gap_choice",
-              "itemId": "ex-insep-choice-1",
-              "before": "Gestern haben wir den Zoo",
+              "itemId": "ex-u-choice-1",
+              "before": "Am Wochenende haben wir unsere Großeltern",
               "after": ".",
               "choices": [
-                { "choiceId": "c-1", "text": "besucht" },
-                { "choiceId": "c-2", "text": "gebesucht" },
-                { "choiceId": "c-3", "text": "besuchet" },
-                { "choiceId": "c-4", "text": "begesucht" }
+                { "choiceId": "c-1", "text": "gebesucht" },
+                { "choiceId": "c-2", "text": "begesucht" },
+                { "choiceId": "c-3", "text": "besucht" },
+                { "choiceId": "c-4", "text": "besuchen" }
+              ],
+              "answerChoiceId": "c-3",
+              "hint": null,
+              "ruleIds": ["rule-untrennbar"],
+              "answerExplanation": {
+                "en": "besuchen starts with be-: no ge, so the participle is besucht.",
+                "fr": "besuchen commence par be- : pas de ge, donc le participe est besucht.",
+                "de": "besuchen beginnt mit be-: kein ge, also besucht."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-u-choice-2",
+          "estimatedDurationS": 12,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-u-choice-2",
+              "before": "Der Händler hat das Fahrrad",
+              "after": ".",
+              "choices": [
+                { "choiceId": "c-1", "text": "verkauft" },
+                { "choiceId": "c-2", "text": "geverkauft" },
+                { "choiceId": "c-3", "text": "vergekauft" },
+                { "choiceId": "c-4", "text": "verkaufen" }
               ],
               "answerChoiceId": "c-1",
               "hint": null,
               "ruleIds": ["rule-untrennbar"],
               "answerExplanation": {
-                "en": "Besuchen starts with be-: no ge-, so besucht.",
-                "fr": "Besuchen commence par be- : pas de ge-, donc besucht.",
-                "de": "Besuchen beginnt mit be-: kein ge-, also besucht."
+                "en": "verkaufen starts with ver-: no ge, so the participle is verkauft.",
+                "fr": "verkaufen commence par ver- : pas de ge, donc le participe est verkauft.",
+                "de": "verkaufen beginnt mit ver-: kein ge, also verkauft."
               }
-            },
+            }
+          ]
+        },
+        {
+          "pageId": "ex-u-choice-3",
+          "estimatedDurationS": 12,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
             {
               "type": "grammar_gap_choice",
-              "itemId": "ex-insep-choice-2",
-              "before": "Mein Vater hat sein Fahrrad",
+              "itemId": "ex-u-choice-3",
+              "before": "Mein Bruder hat sein Handy",
               "after": ".",
               "choices": [
-                { "choiceId": "c-1", "text": "geverkauft" },
-                { "choiceId": "c-2", "text": "verkaufen" },
-                { "choiceId": "c-3", "text": "verkaufet" },
-                { "choiceId": "c-4", "text": "verkauft" }
+                { "choiceId": "c-1", "text": "gerepariert" },
+                { "choiceId": "c-2", "text": "reparieren" },
+                { "choiceId": "c-3", "text": "reparierte" },
+                { "choiceId": "c-4", "text": "repariert" }
               ],
               "answerChoiceId": "c-4",
               "hint": null,
-              "ruleIds": ["rule-untrennbar"],
+              "ruleIds": ["rule-ieren"],
               "answerExplanation": {
-                "en": "Verkaufen starts with ver-: no ge-, so verkauft.",
-                "fr": "Verkaufen commence par ver- : pas de ge-, donc verkauft.",
-                "de": "Verkaufen beginnt mit ver-: kein ge-, also verkauft."
+                "en": "reparieren ends in -ieren: no ge, so the participle is repariert.",
+                "fr": "reparieren se termine par -ieren : pas de ge, donc le participe est repariert.",
+                "de": "reparieren endet auf -ieren: kein ge, also repariert."
               }
-            },
+            }
+          ]
+        },
+        {
+          "pageId": "ex-u-choice-4",
+          "estimatedDurationS": 12,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
             {
               "type": "grammar_gap_choice",
-              "itemId": "ex-insep-choice-3",
-              "before": "Die Studentin hat in Berlin",
-              "after": ".",
+              "itemId": "ex-u-choice-4",
+              "before": "Hast du die Aufgabe",
+              "after": "?",
               "choices": [
-                { "choiceId": "c-1", "text": "gestudiert" },
-                { "choiceId": "c-2", "text": "studiert" },
-                { "choiceId": "c-3", "text": "studierd" },
-                { "choiceId": "c-4", "text": "studierten" }
+                { "choiceId": "c-1", "text": "geverstanden" },
+                { "choiceId": "c-2", "text": "verstanden" },
+                { "choiceId": "c-3", "text": "verstehen" },
+                { "choiceId": "c-4", "text": "verstandet" }
               ],
               "answerChoiceId": "c-2",
               "hint": null,
-              "ruleIds": ["rule-ieren"],
-              "answerExplanation": {
-                "en": "Studieren ends in -ieren: no ge-, so studiert.",
-                "fr": "Studieren se termine par -ieren : pas de ge-, donc studiert.",
-                "de": "Studieren endet auf -ieren: kein ge-, also studiert."
-              }
-            },
-            {
-              "type": "grammar_gap_choice",
-              "itemId": "ex-insep-choice-4",
-              "before": "Die Lehrerin hat die Regel",
-              "after": ".",
-              "choices": [
-                { "choiceId": "c-1", "text": "erklärt" },
-                { "choiceId": "c-2", "text": "geerklärt" },
-                { "choiceId": "c-3", "text": "erklären" },
-                { "choiceId": "c-4", "text": "ergeklärt" }
-              ],
-              "answerChoiceId": "c-1",
-              "hint": null,
               "ruleIds": ["rule-untrennbar"],
               "answerExplanation": {
-                "en": "Erklären starts with er-: no ge-, so erklärt.",
-                "fr": "Erklären commence par er- : pas de ge-, donc erklärt.",
-                "de": "Erklären beginnt mit er-: kein ge-, also erklärt."
+                "en": "verstehen starts with ver-: no ge, the participle is verstanden.",
+                "fr": "verstehen commence par ver- : pas de ge, le participe est verstanden.",
+                "de": "verstehen beginnt mit ver-: kein ge, das Partizip ist verstanden."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-u-choice-5",
+          "estimatedDurationS": 12,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-u-choice-5",
+              "before": "Meine Schwester hat in Berlin",
+              "after": ".",
+              "choices": [
+                { "choiceId": "c-1", "text": "gestudiert" },
+                { "choiceId": "c-2", "text": "studieren" },
+                { "choiceId": "c-3", "text": "studiert" },
+                { "choiceId": "c-4", "text": "studierte" }
+              ],
+              "answerChoiceId": "c-3",
+              "hint": null,
+              "ruleIds": ["rule-ieren"],
+              "answerExplanation": {
+                "en": "studieren ends in -ieren: no ge, so the participle is studiert.",
+                "fr": "studieren se termine par -ieren : pas de ge, donc le participe est studiert.",
+                "de": "studieren endet auf -ieren: kein ge, also studiert."
               }
             }
           ]
@@ -557,7 +803,7 @@
       ]
     },
     {
-      "id": "ex-insep-typing",
+      "id": "ex-u-typing",
       "role": "exercise",
       "blockId": "block-untrennbar",
       "label": {
@@ -567,8 +813,8 @@
       },
       "pages": [
         {
-          "pageId": "ex-insep-typing-1",
-          "estimatedDurationS": 80,
+          "pageId": "ex-u-typing-1",
+          "estimatedDurationS": 20,
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
@@ -578,58 +824,94 @@
           "items": [
             {
               "type": "grammar_gap_typing",
-              "itemId": "ex-insep-typing-1",
-              "before": "Ich habe die Rechnung",
+              "itemId": "ex-u-typing-1",
+              "before": "Der Lehrer hat das Wort",
+              "after": ".",
+              "accepted": { "answers": ["erklärt"] },
+              "hint": { "en": "erklären", "fr": "erklären", "de": "erklären" },
+              "ruleIds": ["rule-untrennbar"],
+              "answerExplanation": {
+                "en": "erklären starts with er-: no ge, so erklärt.",
+                "fr": "erklären commence par er- : pas de ge, donc erklärt.",
+                "de": "erklären beginnt mit er-: kein ge, also erklärt."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-u-typing-2",
+          "estimatedDurationS": 20,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-u-typing-2",
+              "before": "Ich habe die Rechnung noch nicht",
               "after": ".",
               "accepted": { "answers": ["bezahlt"] },
               "hint": { "en": "bezahlen", "fr": "bezahlen", "de": "bezahlen" },
               "ruleIds": ["rule-untrennbar"],
               "answerExplanation": {
-                "en": "Bezahlen starts with be-: no ge-, so bezahlt.",
-                "fr": "Bezahlen commence par be- : pas de ge-, donc bezahlt.",
-                "de": "Bezahlen beginnt mit be-: kein ge-, also bezahlt."
+                "en": "bezahlen starts with be-: no ge, so bezahlt.",
+                "fr": "bezahlen commence par be- : pas de ge, donc bezahlt.",
+                "de": "bezahlen beginnt mit be-: kein ge, also bezahlt."
               }
-            },
+            }
+          ]
+        },
+        {
+          "pageId": "ex-u-typing-3",
+          "estimatedDurationS": 20,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
             {
               "type": "grammar_gap_typing",
-              "itemId": "ex-insep-typing-2",
-              "before": "Er hat die Aufgabe",
+              "itemId": "ex-u-typing-3",
+              "before": "Wir haben gestern Abend lange miteinander",
+              "after": ".",
+              "accepted": { "answers": ["telefoniert"] },
+              "hint": { "en": "telefonieren", "fr": "telefonieren", "de": "telefonieren" },
+              "ruleIds": ["rule-ieren"],
+              "answerExplanation": {
+                "en": "telefonieren ends in -ieren: no ge, so telefoniert.",
+                "fr": "telefonieren se termine par -ieren : pas de ge, donc telefoniert.",
+                "de": "telefonieren endet auf -ieren: kein ge, also telefoniert."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-u-typing-4",
+          "estimatedDurationS": 20,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-u-typing-4",
+              "before": "Die Polizei hat das Auto",
               "after": ".",
               "accepted": { "answers": ["kontrolliert"] },
               "hint": { "en": "kontrollieren", "fr": "kontrollieren", "de": "kontrollieren" },
               "ruleIds": ["rule-ieren"],
               "answerExplanation": {
-                "en": "Kontrollieren ends in -ieren: no ge-, so kontrolliert.",
-                "fr": "Kontrollieren se termine par -ieren : pas de ge-, donc kontrolliert.",
-                "de": "Kontrollieren endet auf -ieren: kein ge-, also kontrolliert."
-              }
-            },
-            {
-              "type": "grammar_gap_typing",
-              "itemId": "ex-insep-typing-3",
-              "before": "Ich habe den Dom",
-              "after": ".",
-              "accepted": { "answers": ["fotografiert"] },
-              "hint": { "en": "fotografieren", "fr": "fotografieren", "de": "fotografieren" },
-              "ruleIds": ["rule-ieren"],
-              "answerExplanation": {
-                "en": "Fotografieren ends in -ieren: no ge-, so fotografiert.",
-                "fr": "Fotografieren se termine par -ieren : pas de ge-, donc fotografiert.",
-                "de": "Fotografieren endet auf -ieren: kein ge-, also fotografiert."
-              }
-            },
-            {
-              "type": "grammar_gap_typing",
-              "itemId": "ex-insep-typing-4",
-              "before": "Ich habe den Zug",
-              "after": ".",
-              "accepted": { "answers": ["verpasst"] },
-              "hint": { "en": "verpassen", "fr": "verpassen", "de": "verpassen" },
-              "ruleIds": ["rule-untrennbar"],
-              "answerExplanation": {
-                "en": "Verpassen starts with ver-: no ge-, so verpasst.",
-                "fr": "Verpassen commence par ver- : pas de ge-, donc verpasst.",
-                "de": "Verpassen beginnt mit ver-: kein ge-, also verpasst."
+                "en": "kontrollieren ends in -ieren: no ge, so kontrolliert.",
+                "fr": "kontrollieren se termine par -ieren : pas de ge, donc kontrolliert.",
+                "de": "kontrollieren endet auf -ieren: kein ge, also kontrolliert."
               }
             }
           ]
@@ -637,14 +919,14 @@
       ]
     },
     {
-      "id": "ex-insep-spot",
+      "id": "ex-u-spot",
       "role": "exercise",
       "blockId": "block-untrennbar",
       "label": { "en": "Error spotting", "fr": "Repérer l’erreur", "de": "Fehler finden" },
       "pages": [
         {
-          "pageId": "ex-insep-spot-1",
-          "estimatedDurationS": 75,
+          "pageId": "ex-u-spot-1",
+          "estimatedDurationS": 25,
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it.",
@@ -654,17 +936,16 @@
           "items": [
             {
               "type": "grammar_error_spotter",
-              "itemId": "ex-insep-spot-1",
+              "itemId": "ex-u-spot-1",
               "tokens": [
-                { "tokenId": "t-1", "text": "Mein" },
-                { "tokenId": "t-2", "text": "Opa" },
-                { "tokenId": "t-3", "text": "hat" },
-                { "tokenId": "t-4", "text": "uns" },
-                { "tokenId": "t-5", "text": "gestern" },
-                { "tokenId": "t-6", "text": "gebesucht" },
-                { "tokenId": "t-7", "text": "." }
+                { "tokenId": "t-1", "text": "Wir" },
+                { "tokenId": "t-2", "text": "haben" },
+                { "tokenId": "t-3", "text": "die" },
+                { "tokenId": "t-4", "text": "Oma" },
+                { "tokenId": "t-5", "text": "gebesucht" },
+                { "tokenId": "t-6", "text": "." }
               ],
-              "faultyTokenId": "t-6",
+              "faultyTokenId": "t-5",
               "correction": {
                 "mode": "type",
                 "accepted": { "answers": ["besucht"] },
@@ -672,156 +953,118 @@
               },
               "ruleIds": ["rule-untrennbar"],
               "answerExplanation": {
-                "en": "Besuchen has the prefix be-, so the participle is besucht, without ge-.",
-                "fr": "Besuchen a le préfixe be- : le participe est besucht, sans ge-.",
-                "de": "Besuchen hat die Vorsilbe be-, also heißt das Partizip besucht, ohne ge-."
+                "en": "besuchen starts with be-: the participle is besucht, not gebesucht.",
+                "fr": "besuchen commence par be- : le participe est besucht, pas gebesucht.",
+                "de": "besuchen beginnt mit be-: Das Partizip ist besucht, nicht gebesucht."
               }
-            },
+            }
+          ]
+        },
+        {
+          "pageId": "ex-u-spot-2",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Find the wrong word and correct it.",
+            "fr": "Trouvez le mot faux et corrigez-le.",
+            "de": "Finde das falsche Wort und korrigiere es."
+          },
+          "items": [
             {
               "type": "grammar_error_spotter",
-              "itemId": "ex-insep-spot-2",
+              "itemId": "ex-u-spot-2",
               "tokens": [
-                { "tokenId": "t-1", "text": "Wir" },
-                { "tokenId": "t-2", "text": "haben" },
-                { "tokenId": "t-3", "text": "im" },
-                { "tokenId": "t-4", "text": "Café" },
-                { "tokenId": "t-5", "text": "gebezahlt" },
-                { "tokenId": "t-6", "text": "." }
-              ],
-              "faultyTokenId": "t-5",
-              "correction": {
-                "mode": "select",
-                "accepted": { "answers": ["bezahlt"] },
-                "choices": ["bezahlt", "gebezahlt", "bezahlen"]
-              },
-              "ruleIds": ["rule-untrennbar"],
-              "answerExplanation": {
-                "en": "Bezahlen has the prefix be-, so the participle is bezahlt, without ge-.",
-                "fr": "Bezahlen a le préfixe be- : le participe est bezahlt, sans ge-.",
-                "de": "Bezahlen hat die Vorsilbe be-, also heißt das Partizip bezahlt, ohne ge-."
-              }
-            },
-            {
-              "type": "grammar_error_spotter",
-              "itemId": "ex-insep-spot-3",
-              "tokens": [
-                { "tokenId": "t-1", "text": "Sie" },
+                { "tokenId": "t-1", "text": "Er" },
                 { "tokenId": "t-2", "text": "hat" },
-                { "tokenId": "t-3", "text": "die" },
-                { "tokenId": "t-4", "text": "Seite" },
-                { "tokenId": "t-5", "text": "gekopiert" },
+                { "tokenId": "t-3", "text": "sein" },
+                { "tokenId": "t-4", "text": "Fahrrad" },
+                { "tokenId": "t-5", "text": "geverkauft" },
                 { "tokenId": "t-6", "text": "." }
               ],
               "faultyTokenId": "t-5",
               "correction": {
                 "mode": "type",
-                "accepted": { "answers": ["kopiert"] },
+                "accepted": { "answers": ["verkauft"] },
+                "choices": []
+              },
+              "ruleIds": ["rule-untrennbar"],
+              "answerExplanation": {
+                "en": "verkaufen starts with ver-: the participle is verkauft, not geverkauft.",
+                "fr": "verkaufen commence par ver- : le participe est verkauft, pas geverkauft.",
+                "de": "verkaufen beginnt mit ver-: Das Partizip ist verkauft, nicht geverkauft."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-u-spot-3",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Find the wrong word and correct it.",
+            "fr": "Trouvez le mot faux et corrigez-le.",
+            "de": "Finde das falsche Wort und korrigiere es."
+          },
+          "items": [
+            {
+              "type": "grammar_error_spotter",
+              "itemId": "ex-u-spot-3",
+              "tokens": [
+                { "tokenId": "t-1", "text": "Sie" },
+                { "tokenId": "t-2", "text": "hat" },
+                { "tokenId": "t-3", "text": "gestern" },
+                { "tokenId": "t-4", "text": "lange" },
+                { "tokenId": "t-5", "text": "getelefoniert" },
+                { "tokenId": "t-6", "text": "." }
+              ],
+              "faultyTokenId": "t-5",
+              "correction": {
+                "mode": "select",
+                "accepted": { "answers": ["telefoniert"] },
+                "choices": ["telefoniert", "getelefoniert", "telefonieren"]
+              },
+              "ruleIds": ["rule-ieren"],
+              "answerExplanation": {
+                "en": "telefonieren ends in -ieren: the participle is telefoniert, not getelefoniert.",
+                "fr": "telefonieren se termine par -ieren : le participe est telefoniert, pas getelefoniert.",
+                "de": "telefonieren endet auf -ieren: Das Partizip ist telefoniert, nicht getelefoniert."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-u-spot-4",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Find the wrong word and correct it.",
+            "fr": "Trouvez le mot faux et corrigez-le.",
+            "de": "Finde das falsche Wort und korrigiere es."
+          },
+          "items": [
+            {
+              "type": "grammar_error_spotter",
+              "itemId": "ex-u-spot-4",
+              "tokens": [
+                { "tokenId": "t-1", "text": "Mein" },
+                { "tokenId": "t-2", "text": "Vater" },
+                { "tokenId": "t-3", "text": "hat" },
+                { "tokenId": "t-4", "text": "Medizin" },
+                { "tokenId": "t-5", "text": "gestudiert" },
+                { "tokenId": "t-6", "text": "." }
+              ],
+              "faultyTokenId": "t-5",
+              "correction": {
+                "mode": "type",
+                "accepted": { "answers": ["studiert"] },
                 "choices": []
               },
               "ruleIds": ["rule-ieren"],
               "answerExplanation": {
-                "en": "Kopieren ends in -ieren, so the participle is kopiert, without ge-.",
-                "fr": "Kopieren se termine par -ieren : le participe est kopiert, sans ge-.",
-                "de": "Kopieren endet auf -ieren, also heißt das Partizip kopiert, ohne ge-."
+                "en": "studieren ends in -ieren: the participle is studiert, not gestudiert.",
+                "fr": "studieren se termine par -ieren : le participe est studiert, pas gestudiert.",
+                "de": "studieren endet auf -ieren: Das Partizip ist studiert, nicht gestudiert."
               }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "ex-insep-persons",
-      "role": "exercise",
-      "blockId": "block-untrennbar",
-      "label": {
-        "en": "Person matching",
-        "fr": "Relier les personnes",
-        "de": "Personen verbinden"
-      },
-      "pages": [
-        {
-          "pageId": "ex-insep-persons-1",
-          "estimatedDurationS": 120,
-          "timeLimitS": null,
-          "instructions": {
-            "en": "Connect each pronoun with its partner.",
-            "fr": "Reliez chaque pronom à son partenaire.",
-            "de": "Verbinde jedes Pronomen mit seinem Partner."
-          },
-          "items": [
-            {
-              "type": "grammar_person_matching",
-              "itemId": "ex-insep-persons-1",
-              "ruleIds": ["rule-trennbar", "rule-untrennbar", "rule-ieren"],
-              "mode": "forms",
-              "rows": [
-                {
-                  "person": "1sg",
-                  "pronoun": "ich",
-                  "native": null,
-                  "answer": "habe eingekauft",
-                  "answerExplanation": {
-                    "en": "Ich takes habe; einkaufen is separable, so eingekauft.",
-                    "fr": "Avec ich : habe ; einkaufen est séparable, donc eingekauft.",
-                    "de": "Zu ich gehört habe; einkaufen ist trennbar, also eingekauft."
-                  }
-                },
-                {
-                  "person": "2sg",
-                  "pronoun": "du",
-                  "native": null,
-                  "answer": "hast angerufen",
-                  "answerExplanation": {
-                    "en": "Du takes hast; anrufen is separable: an + ge + rufen.",
-                    "fr": "Avec du : hast ; anrufen est séparable : an + ge + rufen.",
-                    "de": "Zu du gehört hast; anrufen ist trennbar: an + ge + rufen."
-                  }
-                },
-                {
-                  "person": "3sg",
-                  "pronoun": "er / sie / es",
-                  "native": null,
-                  "answer": "hat besucht",
-                  "answerExplanation": {
-                    "en": "Er takes hat; besuchen starts with be-, so no ge-.",
-                    "fr": "Avec er : hat ; besuchen commence par be-, donc pas de ge-.",
-                    "de": "Zu er gehört hat; besuchen beginnt mit be-, also kein ge-."
-                  }
-                },
-                {
-                  "person": "1pl",
-                  "pronoun": "wir",
-                  "native": null,
-                  "answer": "haben verkauft",
-                  "answerExplanation": {
-                    "en": "Wir takes haben; verkaufen starts with ver-, so no ge-.",
-                    "fr": "Avec wir : haben ; verkaufen commence par ver-, donc pas de ge-.",
-                    "de": "Zu wir gehört haben; verkaufen beginnt mit ver-, also kein ge-."
-                  }
-                },
-                {
-                  "person": "2pl",
-                  "pronoun": "ihr",
-                  "native": null,
-                  "answer": "habt telefoniert",
-                  "answerExplanation": {
-                    "en": "Ihr takes habt; telefonieren ends in -ieren, so no ge-.",
-                    "fr": "Avec ihr : habt ; telefonieren se termine par -ieren, donc pas de ge-.",
-                    "de": "Zu ihr gehört habt; telefonieren endet auf -ieren, also kein ge-."
-                  }
-                },
-                {
-                  "person": "3pl",
-                  "pronoun": "sie",
-                  "native": null,
-                  "answer": "haben aufgeräumt",
-                  "answerExplanation": {
-                    "en": "Sie (they) takes haben; aufräumen is separable: auf + ge + räumt.",
-                    "fr": "Avec sie (ils) : haben ; aufräumen est séparable : auf + ge + räumt.",
-                    "de": "Zu sie (Plural) gehört haben; aufräumen ist trennbar: auf + ge + räumt."
-                  }
-                }
-              ]
             }
           ]
         }
@@ -853,9 +1096,9 @@
       "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
       "pages": [
         {
-          "pageId": "exam-gap-sep",
-          "estimatedDurationS": 100,
-          "timeLimitS": 160,
+          "pageId": "exam-gaps",
+          "estimatedDurationS": 120,
+          "timeLimitS": 180,
           "instructions": {
             "en": "Type the missing words.",
             "fr": "Écrivez les mots manquants.",
@@ -864,133 +1107,93 @@
           "items": [
             {
               "type": "grammar_gap_typing",
-              "itemId": "exam-gap-sep-1",
-              "before": "Ich habe das Licht",
-              "after": ".",
-              "accepted": { "answers": ["ausgemacht"] },
+              "itemId": "exam-gaps-1",
+              "before": "Gestern hat meine Mutter mich",
+              "after": ". (anrufen)",
+              "accepted": { "answers": ["angerufen"] },
               "hint": null,
               "ruleIds": ["rule-trennbar"],
               "answerExplanation": {
-                "en": "Ausmachen is separable: aus + ge + macht = ausgemacht.",
-                "fr": "Ausmachen est séparable : aus + ge + macht = ausgemacht.",
-                "de": "Ausmachen ist trennbar: aus + ge + macht = ausgemacht."
+                "en": "anrufen is separable: an + ge + rufen = angerufen.",
+                "fr": "anrufen est séparable : an + ge + rufen = angerufen.",
+                "de": "anrufen ist trennbar: an + ge + rufen = angerufen."
               }
             },
             {
               "type": "grammar_gap_typing",
-              "itemId": "exam-gap-sep-2",
-              "before": "Sie hat den Brief",
-              "after": ".",
-              "accepted": { "answers": ["abgeschickt"] },
+              "itemId": "exam-gaps-2",
+              "before": "Am Samstag haben wir viel für die Party",
+              "after": ". (einkaufen)",
+              "accepted": { "answers": ["eingekauft"] },
               "hint": null,
               "ruleIds": ["rule-trennbar"],
               "answerExplanation": {
-                "en": "Abschicken is separable: ab + ge + schickt = abgeschickt.",
-                "fr": "Abschicken est séparable : ab + ge + schickt = abgeschickt.",
-                "de": "Abschicken ist trennbar: ab + ge + schickt = abgeschickt."
+                "en": "einkaufen is separable: ein + ge + kauft = eingekauft.",
+                "fr": "einkaufen est séparable : ein + ge + kauft = eingekauft.",
+                "de": "einkaufen ist trennbar: ein + ge + kauft = eingekauft."
               }
             },
             {
               "type": "grammar_gap_typing",
-              "itemId": "exam-gap-sep-3",
-              "before": "Er hat die Adresse",
-              "after": ".",
-              "accepted": { "answers": ["aufgeschrieben"] },
+              "itemId": "exam-gaps-3",
+              "before": "Er hat die Kinder zum Geburtstag",
+              "after": ". (einladen)",
+              "accepted": { "answers": ["eingeladen"] },
               "hint": null,
               "ruleIds": ["rule-trennbar"],
               "answerExplanation": {
-                "en": "Aufschreiben is separable: auf + ge + schrieben = aufgeschrieben.",
-                "fr": "Aufschreiben est séparable : auf + ge + schrieben = aufgeschrieben.",
-                "de": "Aufschreiben ist trennbar: auf + ge + schrieben = aufgeschrieben."
+                "en": "einladen is separable: ein + ge + laden = eingeladen.",
+                "fr": "einladen est séparable : ein + ge + laden = eingeladen.",
+                "de": "einladen ist trennbar: ein + ge + laden = eingeladen."
               }
             },
             {
               "type": "grammar_gap_typing",
-              "itemId": "exam-gap-sep-4",
-              "before": "Die Schüler haben dem Lehrer",
-              "after": ".",
-              "accepted": { "answers": ["zugehört"] },
-              "hint": null,
-              "ruleIds": ["rule-trennbar"],
-              "answerExplanation": {
-                "en": "Zuhören is separable: zu + ge + hört = zugehört.",
-                "fr": "Zuhören est séparable : zu + ge + hört = zugehört.",
-                "de": "Zuhören ist trennbar: zu + ge + hört = zugehört."
-              }
-            }
-          ]
-        },
-        {
-          "pageId": "exam-gap-insep",
-          "estimatedDurationS": 100,
-          "timeLimitS": 160,
-          "instructions": {
-            "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
-            "de": "Schreib die fehlenden Wörter."
-          },
-          "items": [
-            {
-              "type": "grammar_gap_typing",
-              "itemId": "exam-gap-insep-1",
-              "before": "Wir haben die Tickets im Internet",
-              "after": ".",
-              "accepted": { "answers": ["bestellt"] },
+              "itemId": "exam-gaps-4",
+              "before": "Ich habe gestern einen Brief von Oma",
+              "after": ". (bekommen)",
+              "accepted": { "answers": ["bekommen"] },
               "hint": null,
               "ruleIds": ["rule-untrennbar"],
               "answerExplanation": {
-                "en": "Bestellen starts with be-: no ge-, so bestellt.",
-                "fr": "Bestellen commence par be- : pas de ge-, donc bestellt.",
-                "de": "Bestellen beginnt mit be-: kein ge-, also bestellt."
+                "en": "bekommen starts with be-: no ge, and the participle is bekommen.",
+                "fr": "bekommen commence par be- : pas de ge, et le participe est bekommen.",
+                "de": "bekommen beginnt mit be-: kein ge, das Partizip ist bekommen."
               }
             },
             {
               "type": "grammar_gap_typing",
-              "itemId": "exam-gap-insep-2",
-              "before": "Wir haben in Spanien viel",
-              "after": ".",
-              "accepted": { "answers": ["erlebt"] },
-              "hint": null,
-              "ruleIds": ["rule-untrennbar"],
-              "answerExplanation": {
-                "en": "Erleben starts with er-: no ge-, so erlebt.",
-                "fr": "Erleben commence par er- : pas de ge-, donc erlebt.",
-                "de": "Erleben beginnt mit er-: kein ge-, also erlebt."
-              }
-            },
-            {
-              "type": "grammar_gap_typing",
-              "itemId": "exam-gap-insep-3",
-              "before": "Der Lehrer hat den Text",
-              "after": ".",
-              "accepted": { "answers": ["korrigiert"] },
+              "itemId": "exam-gaps-5",
+              "before": "Der Fotograf hat die Gäste",
+              "after": ". (fotografieren)",
+              "accepted": { "answers": ["fotografiert"] },
               "hint": null,
               "ruleIds": ["rule-ieren"],
               "answerExplanation": {
-                "en": "Korrigieren ends in -ieren: no ge-, so korrigiert.",
-                "fr": "Korrigieren se termine par -ieren : pas de ge-, donc korrigiert.",
-                "de": "Korrigieren endet auf -ieren: kein ge-, also korrigiert."
+                "en": "fotografieren ends in -ieren: no ge, so fotografiert.",
+                "fr": "fotografieren se termine par -ieren : pas de ge, donc fotografiert.",
+                "de": "fotografieren endet auf -ieren: kein ge, also fotografiert."
               }
             },
             {
               "type": "grammar_gap_typing",
-              "itemId": "exam-gap-insep-4",
-              "before": "Wir haben die Party",
-              "after": ".",
-              "accepted": { "answers": ["organisiert"] },
+              "itemId": "exam-gaps-6",
+              "before": "Hast du das Essen schon",
+              "after": "? (probieren)",
+              "accepted": { "answers": ["probiert"] },
               "hint": null,
               "ruleIds": ["rule-ieren"],
               "answerExplanation": {
-                "en": "Organisieren ends in -ieren: no ge-, so organisiert.",
-                "fr": "Organisieren se termine par -ieren : pas de ge-, donc organisiert.",
-                "de": "Organisieren endet auf -ieren: kein ge-, also organisiert."
+                "en": "probieren ends in -ieren: no ge, so probiert.",
+                "fr": "probieren se termine par -ieren : pas de ge, donc probiert.",
+                "de": "probieren endet auf -ieren: kein ge, also probiert."
               }
             }
           ]
         },
         {
           "pageId": "exam-order",
-          "estimatedDurationS": 90,
+          "estimatedDurationS": 100,
           "timeLimitS": 150,
           "instructions": {
             "en": "Put the words in the right order.",
@@ -1002,59 +1205,128 @@
               "type": "grammar_word_order",
               "itemId": "exam-order-1",
               "tokens": [
-                { "tokenId": "t-4", "text": "Opa" },
-                { "tokenId": "t-1", "text": "Ich" },
-                { "tokenId": "t-6", "text": "." },
-                { "tokenId": "t-5", "text": "angerufen" },
-                { "tokenId": "t-3", "text": "meinen" },
-                { "tokenId": "t-2", "text": "habe" }
+                { "tokenId": "t-1", "text": "angerufen" },
+                { "tokenId": "t-2", "text": "den" },
+                { "tokenId": "t-3", "text": "?" },
+                { "tokenId": "t-4", "text": "Wann" },
+                { "tokenId": "t-5", "text": "du" },
+                { "tokenId": "t-6", "text": "Arzt" },
+                { "tokenId": "t-7", "text": "hast" }
               ],
-              "acceptedOrders": [["t-1", "t-2", "t-3", "t-4", "t-5", "t-6"]],
-              "ruleIds": ["rule-trennbar"],
+              "acceptedOrders": [["t-4", "t-7", "t-5", "t-2", "t-6", "t-1", "t-3"]],
+              "ruleIds": ["rule-haben", "rule-trennbar"],
               "answerExplanation": {
-                "en": "Anrufen is separable: an + ge + rufen = angerufen, at the end.",
-                "fr": "Anrufen est séparable : an + ge + rufen = angerufen, à la fin.",
-                "de": "Anrufen ist trennbar: an + ge + rufen = angerufen, am Ende."
+                "en": "The question word comes first, then hast; the participle angerufen goes at the end.",
+                "fr": "Le mot interrogatif est en premier, puis hast ; le participe angerufen est à la fin.",
+                "de": "Das Fragewort steht vorn, dann hast; das Partizip angerufen steht am Ende."
               }
             },
             {
               "type": "grammar_word_order",
               "itemId": "exam-order-2",
               "tokens": [
-                { "tokenId": "t-5", "text": "reserviert" },
-                { "tokenId": "t-3", "text": "die" },
-                { "tokenId": "t-1", "text": "Wir" },
-                { "tokenId": "t-6", "text": "." },
-                { "tokenId": "t-4", "text": "Karten" },
-                { "tokenId": "t-2", "text": "haben" }
+                { "tokenId": "t-1", "text": "Wort" },
+                { "tokenId": "t-2", "text": "erklärt" },
+                { "tokenId": "t-3", "text": "Max" },
+                { "tokenId": "t-4", "text": "?" },
+                { "tokenId": "t-5", "text": "hat" },
+                { "tokenId": "t-6", "text": "das" },
+                { "tokenId": "t-7", "text": "Warum" }
               ],
-              "acceptedOrders": [["t-1", "t-2", "t-3", "t-4", "t-5", "t-6"]],
-              "ruleIds": ["rule-ieren"],
+              "acceptedOrders": [["t-7", "t-5", "t-3", "t-6", "t-1", "t-2", "t-4"]],
+              "ruleIds": ["rule-haben", "rule-untrennbar"],
               "answerExplanation": {
-                "en": "Reservieren ends in -ieren: no ge-, so reserviert.",
-                "fr": "Reservieren se termine par -ieren : pas de ge-, donc reserviert.",
-                "de": "Reservieren endet auf -ieren: kein ge-, also reserviert."
+                "en": "hat is in second position; the participle erklärt (no ge) goes at the end.",
+                "fr": "hat est en deuxième position ; le participe erklärt (sans ge) est à la fin.",
+                "de": "hat steht an zweiter Stelle; das Partizip erklärt (ohne ge) steht am Ende."
               }
             },
             {
               "type": "grammar_word_order",
               "itemId": "exam-order-3",
               "tokens": [
-                { "tokenId": "t-6", "text": "verkauft" },
-                { "tokenId": "t-2", "text": "Tante" },
-                { "tokenId": "t-4", "text": "das" },
-                { "tokenId": "t-1", "text": "Meine" },
-                { "tokenId": "t-7", "text": "." },
-                { "tokenId": "t-5", "text": "Haus" },
-                { "tokenId": "t-3", "text": "hat" }
+                { "tokenId": "t-1", "text": "gestern" },
+                { "tokenId": "t-2", "text": "telefoniert" },
+                { "tokenId": "t-3", "text": "?" },
+                { "tokenId": "t-4", "text": "Wo" },
+                { "tokenId": "t-5", "text": "ihr" },
+                { "tokenId": "t-6", "text": "habt" }
               ],
-              "acceptedOrders": [["t-1", "t-2", "t-3", "t-4", "t-5", "t-6", "t-7"]],
-              "ruleIds": ["rule-untrennbar"],
+              "acceptedOrders": [["t-4", "t-6", "t-5", "t-1", "t-2", "t-3"]],
+              "ruleIds": ["rule-haben", "rule-ieren"],
               "answerExplanation": {
-                "en": "Verkaufen starts with ver-: no ge-, so verkauft.",
-                "fr": "Verkaufen commence par ver- : pas de ge-, donc verkauft.",
-                "de": "Verkaufen beginnt mit ver-: kein ge-, also verkauft."
+                "en": "habt follows the question word; the participle telefoniert (no ge) is last.",
+                "fr": "habt suit le mot interrogatif ; le participe telefoniert (sans ge) est en dernier.",
+                "de": "habt steht nach dem Fragewort; das Partizip telefoniert (ohne ge) steht am Ende."
               }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "exam-order-4",
+              "tokens": [
+                { "tokenId": "t-1", "text": "Tür" },
+                { "tokenId": "t-2", "text": "zugemacht" },
+                { "tokenId": "t-3", "text": "Wer" },
+                { "tokenId": "t-4", "text": "die" },
+                { "tokenId": "t-5", "text": "?" },
+                { "tokenId": "t-6", "text": "hat" }
+              ],
+              "acceptedOrders": [["t-3", "t-6", "t-4", "t-1", "t-2", "t-5"]],
+              "ruleIds": ["rule-haben", "rule-trennbar"],
+              "answerExplanation": {
+                "en": "Wer is the subject, hat comes second and zugemacht (zu + ge + macht) is last.",
+                "fr": "Wer est le sujet, hat est en deuxième position et zugemacht (zu + ge + macht) est en dernier.",
+                "de": "Wer ist das Subjekt, hat steht an zweiter Stelle und zugemacht (zu + ge + macht) am Ende."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "exam-haben",
+          "estimatedDurationS": 60,
+          "timeLimitS": 100,
+          "instructions": {
+            "en": "Type the form for each pronoun.",
+            "fr": "Écrivez la forme pour chaque pronom.",
+            "de": "Schreib die Form zu jedem Pronomen."
+          },
+          "items": [
+            {
+              "type": "grammar_pronoun_form_typing",
+              "itemId": "exam-haben-1",
+              "ruleIds": ["rule-haben"],
+              "rows": [
+                {
+                  "rowId": "r-1",
+                  "pronoun": "er (haben)",
+                  "accepted": { "answers": ["hat"] },
+                  "answerExplanation": {
+                    "en": "With er, haben is hat.",
+                    "fr": "Avec er, haben devient hat.",
+                    "de": "Zu er gehört hat."
+                  }
+                },
+                {
+                  "rowId": "r-2",
+                  "pronoun": "wir (haben)",
+                  "accepted": { "answers": ["haben"] },
+                  "answerExplanation": {
+                    "en": "With wir, haben is haben.",
+                    "fr": "Avec wir, haben reste haben.",
+                    "de": "Zu wir gehört haben."
+                  }
+                },
+                {
+                  "rowId": "r-3",
+                  "pronoun": "ihr (haben)",
+                  "accepted": { "answers": ["habt"] },
+                  "answerExplanation": {
+                    "en": "With ihr, haben is habt.",
+                    "fr": "Avec ihr, haben devient habt.",
+                    "de": "Zu ihr gehört habt."
+                  }
+                }
+              ]
             }
           ]
         }

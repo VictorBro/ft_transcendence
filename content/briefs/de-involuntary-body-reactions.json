@@ -1,0 +1,592 @@
+{
+  "schemaVersion": 2,
+  "id": "de-involuntary-body-reactions",
+  "lang": "de",
+  "level": "C2",
+  "locales": ["en", "fr", "de"],
+  "title": "Unwillkürliche Körperreaktionen",
+  "objective": {
+    "en": "Name about twelve involuntary body reactions, from flinching and blushing to hiccups and goosebumps.",
+    "fr": "Nommer une douzaine de réactions involontaires du corps, du sursaut et de la rougeur au hoquet et à la chair de poule.",
+    "de": "Etwa zwölf unwillkürliche Körperreaktionen vom Zusammenzucken bis zum Schluckauf genau benennen."
+  },
+  "estimatedMinutes": 20,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:36:29.471Z",
+    "inputHashes": { "outline": "84b6ee277d00014909851eb0e856734f168baa974ee2a5c7f130de0bd08d2b8c" }
+  },
+  "kind": "vocabulary",
+  "theme": "health",
+  "coverageNotes": {
+    "en": "Twelve involuntary reactions in two groups: those triggered by shock or emotion, and those of everyday physical life (cold, eating, tiredness).",
+    "fr": "Douze réactions involontaires en deux groupes : celles provoquées par un choc ou une émotion, et celles de la vie physique quotidienne (froid, repas, fatigue).",
+    "de": "Zwölf unwillkürliche Reaktionen in zwei Gruppen: solche, die durch Schreck oder Gefühle ausgelöst werden, und solche des körperlichen Alltags (Kälte, Essen, Müdigkeit)."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve words match the outline intent and fit two groups of six.",
+    "fr": "Douze mots correspondent à l’intention du plan et forment deux groupes de six.",
+    "de": "Zwölf Wörter entsprechen der Vorgabe der Gliederung und ergeben zwei Gruppen zu sechs."
+  },
+  "difficultyBalance": {
+    "en": "Mostly demanding C2 verbs with fine shades of meaning (erbleichen, erschauern, frösteln, schlottern) next to a few more common words.",
+    "fr": "Surtout des verbes exigeants de niveau C2 aux nuances fines (erbleichen, erschauern, frösteln, schlottern), à côté de quelques mots plus courants.",
+    "de": "Überwiegend anspruchsvolle C2-Verben mit feinen Bedeutungsunterschieden (erbleichen, erschauern, frösteln, schlottern) neben einigen geläufigeren Wörtern."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "schreck",
+      "label": { "en": "Shock and emotion", "fr": "Choc et émotion", "de": "Schreck und Gefühle" },
+      "targetIds": [
+        "zusammenzucken",
+        "erroeten",
+        "erbleichen",
+        "erschauern",
+        "gaensehaut",
+        "herzklopfen"
+      ],
+      "introduction": {
+        "en": "These reactions are triggered by **shock, shame or fear**. You do not control them:\n\n- `zusammenzucken`\n- `erröten`\n- `erbleichen`\n- `erschauern`\n- `die Gänsehaut`\n- `das Herzklopfen`",
+        "fr": "Ces réactions sont déclenchées par un **choc, la honte ou la peur**. On ne les contrôle pas :\n\n- `zusammenzucken`\n- `erröten`\n- `erbleichen`\n- `erschauern`\n- `die Gänsehaut`\n- `das Herzklopfen`",
+        "de": "Diese Reaktionen werden durch **Schreck, Scham oder Angst** ausgelöst. Man kann sie nicht steuern:\n\n- `zusammenzucken`\n- `erröten`\n- `erbleichen`\n- `erschauern`\n- `die Gänsehaut`\n- `das Herzklopfen`"
+      }
+    },
+    {
+      "id": "alltag",
+      "label": {
+        "en": "Cold, eating and tiredness",
+        "fr": "Froid, repas et fatigue",
+        "de": "Kälte, Essen und Müdigkeit"
+      },
+      "targetIds": ["froesteln", "schlottern", "verschlucken", "schluckauf", "niesen", "gaehnen"],
+      "introduction": {
+        "en": "These reactions belong to **everyday physical life**: cold, eating, breathing and tiredness:\n\n- `frösteln`\n- `schlottern`\n- `sich verschlucken`\n- `der Schluckauf`\n- `niesen`\n- `gähnen`",
+        "fr": "Ces réactions font partie de la **vie physique quotidienne** : froid, repas, respiration et fatigue :\n\n- `frösteln`\n- `schlottern`\n- `sich verschlucken`\n- `der Schluckauf`\n- `niesen`\n- `gähnen`",
+        "de": "Diese Reaktionen gehören zum **körperlichen Alltag**: Kälte, Essen, Atmen und Müdigkeit:\n\n- `frösteln`\n- `schlottern`\n- `sich verschlucken`\n- `der Schluckauf`\n- `niesen`\n- `gähnen`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "zusammenzucken",
+      "term": "zusammenzucken",
+      "translations": { "en": ["to flinch"], "fr": ["sursauter"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "zusammenzucken",
+      "examForms": ["zusammenzucken"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/tsuˈzamənˌtsʊkn̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Bei dem lauten Knall zuckte sie zusammen.",
+        "translation": {
+          "en": "At the loud bang she flinched.",
+          "fr": "Au bruit sec, elle a sursauté."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Zusammenzucken is a sudden, involuntary movement caused by a shock.",
+        "fr": "Zusammenzucken désigne un mouvement soudain et involontaire provoqué par un choc.",
+        "de": "Zusammenzucken ist eine plötzliche, unwillkürliche Bewegung nach einem Schreck."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Beim lauten Knall musste ich unwillkürlich ",
+        "after": ".",
+        "accepted": { "answers": ["zusammenzucken"] },
+        "referenceTargetIds": ["zusammenzucken", "gaensehaut", "schluckauf", "herzklopfen"],
+        "explanation": {
+          "en": "Only zusammenzucken is a verb that fits after „musste ich“.",
+          "fr": "Seul « zusammenzucken » est un verbe qui convient après « musste ich ».",
+          "de": "Nur „zusammenzucken“ ist ein Verb, das nach „musste ich“ passt."
+        }
+      },
+      "listeningOptionTargetIds": ["zusammenzucken", "erschauern", "erbleichen", "erroeten"]
+    },
+    {
+      "id": "erroeten",
+      "term": "erröten",
+      "translations": { "en": ["to blush"], "fr": ["rougir"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "erröten",
+      "examForms": ["erröten"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɛɐ̯ˈʁøːtn̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Bei dem Lob errötete er bis über beide Ohren.",
+        "translation": {
+          "en": "At the praise he blushed to the tips of his ears.",
+          "fr": "Sous le compliment, il a rougi jusqu’aux oreilles."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Erröten means that the face turns red from shame, embarrassment or shyness.",
+        "fr": "Erröten signifie que le visage devient rouge de honte, de gêne ou de timidité.",
+        "de": "Erröten heißt, dass das Gesicht aus Scham, Verlegenheit oder Schüchternheit rot wird."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Bei dem unerwarteten Kompliment begann sie zu ",
+        "after": ".",
+        "accepted": { "answers": ["erröten"] },
+        "referenceTargetIds": ["erroeten", "schluckauf", "gaensehaut", "herzklopfen"],
+        "explanation": {
+          "en": "Only erröten is a verb that fits after „zu“.",
+          "fr": "Seul « erröten » est un verbe qui convient après « zu ».",
+          "de": "Nur „erröten“ ist ein Verb, das nach „zu“ passt."
+        }
+      },
+      "listeningOptionTargetIds": ["erroeten", "erbleichen", "erschauern", "zusammenzucken"]
+    },
+    {
+      "id": "erbleichen",
+      "term": "erbleichen",
+      "translations": { "en": ["to turn pale"], "fr": ["pâlir"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "erbleichen",
+      "examForms": ["erbleichen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɛɐ̯ˈblaɪ̯çn̩/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Als er die Nachricht las, erbleichte er.",
+        "translation": {
+          "en": "When he read the news, he turned pale.",
+          "fr": "En lisant la nouvelle, il a pâli."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Erbleichen is the opposite of erröten: the face loses its colour, for example from shock or fear.",
+        "fr": "Erbleichen est le contraire d’erröten : le visage perd ses couleurs, par exemple sous le choc ou de peur.",
+        "de": "Erbleichen ist das Gegenteil von erröten: Das Gesicht verliert seine Farbe, etwa vor Schreck oder Angst."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Als er die Nachricht las, schien er zu ",
+        "after": ".",
+        "accepted": { "answers": ["erbleichen"] },
+        "referenceTargetIds": ["erbleichen", "schluckauf", "herzklopfen", "gaensehaut"],
+        "explanation": {
+          "en": "Only erbleichen is a verb that fits after „schien er zu“.",
+          "fr": "Seul « erbleichen » est un verbe qui convient après « schien er zu ».",
+          "de": "Nur „erbleichen“ ist ein Verb, das nach „schien er zu“ passt."
+        }
+      },
+      "listeningOptionTargetIds": ["erbleichen", "erroeten", "erschauern", "froesteln"]
+    },
+    {
+      "id": "erschauern",
+      "term": "erschauern",
+      "translations": { "en": ["to shudder"], "fr": ["frémir"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "erschauern",
+      "examForms": ["erschauern"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɛɐ̯ˈʃaʊ̯ɐn/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Beim Anblick des dunklen Kellers erschauerte sie.",
+        "translation": {
+          "en": "At the sight of the dark cellar she shuddered.",
+          "fr": "À la vue de la cave sombre, elle a frémi."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Erschauern is a brief shiver caused by fear, disgust or deep emotion, not by cold.",
+        "fr": "Erschauern est un bref frisson causé par la peur, le dégoût ou une forte émotion, pas par le froid.",
+        "de": "Erschauern ist ein kurzes Schaudern aus Angst, Ekel oder tiefer Rührung, nicht wegen der Kälte."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Beim Anblick des dunklen Kellers begann sie vor Angst zu ",
+        "after": ".",
+        "accepted": { "answers": ["erschauern"] },
+        "referenceTargetIds": ["erschauern", "schluckauf", "gaensehaut", "herzklopfen"],
+        "explanation": {
+          "en": "Only erschauern is a verb that fits after „vor Angst zu“.",
+          "fr": "Seul « erschauern » est un verbe qui convient après « vor Angst zu ».",
+          "de": "Nur „erschauern“ ist ein Verb, das nach „vor Angst zu“ passt."
+        }
+      },
+      "listeningOptionTargetIds": ["erschauern", "schlottern", "erbleichen", "zusammenzucken"]
+    },
+    {
+      "id": "gaensehaut",
+      "term": "Gänsehaut",
+      "translations": { "en": ["goosebumps"], "fr": ["chair de poule"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Gänsehaut",
+      "examForms": ["die Gänsehaut"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈɡɛnzəˌhaʊ̯t/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Bei dieser Musik bekomme ich jedes Mal eine Gänsehaut.",
+        "translation": {
+          "en": "This music gives me goosebumps every time.",
+          "fr": "Cette musique me donne chaque fois la chair de poule."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Gänsehaut appears from cold, fear or strong emotion; one „bekommt“ or „hat“ it.",
+        "fr": "La Gänsehaut apparaît sous l’effet du froid, de la peur ou d’une forte émotion ; on la « bekommt » ou on l’« hat ».",
+        "de": "Die Gänsehaut entsteht durch Kälte, Angst oder starke Gefühle; man „bekommt“ oder „hat“ sie."
+      },
+      "genderExplanation": {
+        "en": "Gänsehaut is feminine: die Gänsehaut.",
+        "fr": "Gänsehaut est féminin : die Gänsehaut.",
+        "de": "Gänsehaut ist feminin: die Gänsehaut."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Bei der Musik bekam ich eine ",
+        "after": ".",
+        "accepted": { "answers": ["Gänsehaut", "gänsehaut"] },
+        "referenceTargetIds": ["gaensehaut", "zusammenzucken", "niesen", "gaehnen"],
+        "explanation": {
+          "en": "„eine“ needs a feminine noun, and only Gänsehaut fits.",
+          "fr": "« eine » exige un nom féminin, et seul « Gänsehaut » convient.",
+          "de": "„eine“ verlangt ein feminines Nomen, und nur „Gänsehaut“ passt."
+        }
+      },
+      "listeningOptionTargetIds": ["gaensehaut", "herzklopfen", "schluckauf", "erschauern"]
+    },
+    {
+      "id": "herzklopfen",
+      "term": "Herzklopfen",
+      "translations": { "en": ["pounding heart"], "fr": ["palpitations"] },
+      "wordClass": "noun",
+      "genders": ["neuter"],
+      "number": "singular",
+      "teachingForm": "das Herzklopfen",
+      "examForms": ["das Herzklopfen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈhɛʁtsˌklɔpfn̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Vor der Prüfung hatte er heftiges Herzklopfen.",
+        "translation": {
+          "en": "Before the exam his heart was pounding.",
+          "fr": "Avant l’examen, il avait le cœur qui battait fort."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Das Herzklopfen is a strong, noticeable heartbeat caused by excitement, fear or love.",
+        "fr": "Das Herzklopfen est un battement de cœur fort et perceptible dû à l’excitation, à la peur ou à l’amour.",
+        "de": "Das Herzklopfen ist ein starker, spürbarer Herzschlag aus Aufregung, Angst oder Verliebtheit."
+      },
+      "genderExplanation": {
+        "en": "Herzklopfen is neuter: das Herzklopfen.",
+        "fr": "Herzklopfen est neutre : das Herzklopfen.",
+        "de": "Herzklopfen ist sächlich: das Herzklopfen."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Vor der Prüfung hatte er starkes ",
+        "after": ".",
+        "accepted": { "answers": ["Herzklopfen", "herzklopfen"] },
+        "referenceTargetIds": ["herzklopfen", "gaensehaut", "schluckauf", "niesen"],
+        "explanation": {
+          "en": "„starkes“ points to a neuter noun: Herzklopfen.",
+          "fr": "« starkes » renvoie à un nom neutre : Herzklopfen.",
+          "de": "„starkes“ verlangt ein sächliches Nomen: Herzklopfen."
+        }
+      },
+      "listeningOptionTargetIds": ["herzklopfen", "schluckauf", "gaensehaut", "schlottern"]
+    },
+    {
+      "id": "froesteln",
+      "term": "frösteln",
+      "translations": { "en": ["to feel chilly"], "fr": ["frissonner de froid"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "frösteln",
+      "examForms": ["frösteln"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈfʁœstl̩n/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Im kühlen Flur fröstelte ich leicht.",
+        "translation": {
+          "en": "In the cool hallway I felt slightly chilly.",
+          "fr": "Dans le couloir frais, j’ai légèrement frissonné."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Frösteln is a mild shiver from slight cold; it is weaker than schlottern.",
+        "fr": "Frösteln est un léger frisson dû à un froid modéré ; c’est plus faible que schlottern.",
+        "de": "Frösteln ist ein leichtes Schaudern bei geringer Kälte; es ist schwächer als schlottern."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Im kühlen Zimmer begann ich leicht zu ",
+        "after": ".",
+        "accepted": { "answers": ["frösteln"] },
+        "referenceTargetIds": ["froesteln", "gaensehaut", "herzklopfen", "schluckauf"],
+        "explanation": {
+          "en": "Only frösteln is a verb that fits after „leicht zu“.",
+          "fr": "Seul « frösteln » est un verbe qui convient après « leicht zu ».",
+          "de": "Nur „frösteln“ ist ein Verb, das nach „leicht zu“ passt."
+        }
+      },
+      "listeningOptionTargetIds": ["froesteln", "schlottern", "erschauern", "niesen"]
+    },
+    {
+      "id": "schlottern",
+      "term": "schlottern",
+      "translations": { "en": ["to shake with cold"], "fr": ["trembler"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "schlottern",
+      "examForms": ["schlottern"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʃlɔtɐn/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Nach dem Bad im See schlotterte er am ganzen Körper.",
+        "translation": {
+          "en": "After the swim in the lake he shook all over.",
+          "fr": "Après la baignade dans le lac, il tremblait de tout son corps."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Schlottern is strong, uncontrolled trembling from intense cold or fear.",
+        "fr": "Schlottern désigne un fort tremblement incontrôlé dû à un froid intense ou à la peur.",
+        "de": "Schlottern ist ein starkes, unkontrolliertes Zittern bei großer Kälte oder Angst."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Nach dem Sturz ins Eiswasser fing er an, vor Kälte zu ",
+        "after": ".",
+        "accepted": { "answers": ["schlottern"] },
+        "referenceTargetIds": ["schlottern", "schluckauf", "herzklopfen", "gaensehaut"],
+        "explanation": {
+          "en": "Only schlottern is a verb that fits after „vor Kälte zu“.",
+          "fr": "Seul « schlottern » est un verbe qui convient après « vor Kälte zu ».",
+          "de": "Nur „schlottern“ ist ein Verb, das nach „vor Kälte zu“ passt."
+        }
+      },
+      "listeningOptionTargetIds": ["schlottern", "froesteln", "erschauern", "zusammenzucken"]
+    },
+    {
+      "id": "verschlucken",
+      "term": "sich verschlucken",
+      "translations": { "en": ["to choke on something"], "fr": ["avaler de travers"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "sich verschlucken",
+      "examForms": ["sich verschlucken"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/zɪç fɛɐ̯ˈʃlʊkn̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Beim Lachen habe ich mich am Tee verschluckt.",
+        "translation": {
+          "en": "While laughing I choked on my tea.",
+          "fr": "En riant, j’ai avalé mon thé de travers."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Sich verschlucken means that food or drink goes down the wrong way and makes you cough.",
+        "fr": "Sich verschlucken signifie qu’un aliment ou une boisson passe de travers et fait tousser.",
+        "de": "Sich verschlucken heißt, dass Essen oder Trinken in die falsche Röhre gerät und Husten auslöst."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Beim Lachen hat er sich ",
+        "after": ".",
+        "accepted": { "answers": ["verschluckt"] },
+        "referenceTargetIds": ["verschlucken", "niesen", "gaehnen", "schluckauf"],
+        "explanation": {
+          "en": "„hat er sich“ needs the participle verschluckt; niesen and gähnen are not reflexive.",
+          "fr": "« hat er sich » exige le participe « verschluckt » ; niesen et gähnen ne sont pas pronominaux.",
+          "de": "„hat er sich“ verlangt das Partizip „verschluckt“; niesen und gähnen sind nicht reflexiv."
+        }
+      },
+      "listeningOptionTargetIds": ["verschlucken", "schluckauf", "niesen", "gaehnen"]
+    },
+    {
+      "id": "schluckauf",
+      "term": "Schluckauf",
+      "translations": { "en": ["hiccups"], "fr": ["hoquet"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "der Schluckauf",
+      "examForms": ["der Schluckauf"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʃlʊkˌʔaʊ̯f/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Nach dem hastigen Essen bekam sie den Schluckauf.",
+        "translation": {
+          "en": "After the hasty meal she got the hiccups.",
+          "fr": "Après le repas avalé trop vite, elle a eu le hoquet."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Der Schluckauf is a repeated, involuntary contraction of the diaphragm with a short sound.",
+        "fr": "Der Schluckauf est une contraction répétée et involontaire du diaphragme, avec un bref son.",
+        "de": "Der Schluckauf ist eine wiederholte, unwillkürliche Zwerchfellkontraktion mit einem kurzen Laut."
+      },
+      "genderExplanation": {
+        "en": "Schluckauf is masculine: der Schluckauf.",
+        "fr": "Schluckauf est masculin : der Schluckauf.",
+        "de": "Schluckauf ist maskulin: der Schluckauf."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Nach der hastigen Mahlzeit bekam sie den ",
+        "after": ".",
+        "accepted": { "answers": ["Schluckauf", "schluckauf"] },
+        "referenceTargetIds": ["schluckauf", "gaensehaut", "herzklopfen", "niesen"],
+        "explanation": {
+          "en": "„den“ points to a masculine noun: Schluckauf.",
+          "fr": "« den » renvoie à un nom masculin : Schluckauf.",
+          "de": "„den“ verlangt ein maskulines Nomen: Schluckauf."
+        }
+      },
+      "listeningOptionTargetIds": ["schluckauf", "verschlucken", "herzklopfen", "gaensehaut"]
+    },
+    {
+      "id": "niesen",
+      "term": "niesen",
+      "translations": { "en": ["to sneeze"], "fr": ["éternuer"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "niesen",
+      "examForms": ["niesen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈniːzn̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Der Pfeffer kitzelte mich in der Nase, und ich musste niesen.",
+        "translation": {
+          "en": "The pepper tickled my nose and I had to sneeze.",
+          "fr": "Le poivre m’a chatouillé le nez et j’ai dû éternuer."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Niesen is a sudden, explosive release of air through the nose, usually after an irritation.",
+        "fr": "Niesen est une expulsion soudaine et explosive d’air par le nez, souvent après une irritation.",
+        "de": "Niesen ist ein plötzliches, explosionsartiges Ausstoßen von Luft durch die Nase, meist nach einem Reiz."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Der Pfeffer kitzelte in der Nase, und ich musste laut ",
+        "after": ".",
+        "accepted": { "answers": ["niesen"] },
+        "referenceTargetIds": ["niesen", "schluckauf", "gaensehaut", "herzklopfen"],
+        "explanation": {
+          "en": "Only niesen is a verb that fits after „musste laut“.",
+          "fr": "Seul « niesen » est un verbe qui convient après « musste laut ».",
+          "de": "Nur „niesen“ ist ein Verb, das nach „musste laut“ passt."
+        }
+      },
+      "listeningOptionTargetIds": ["niesen", "gaehnen", "verschlucken", "schluckauf"]
+    },
+    {
+      "id": "gaehnen",
+      "term": "gähnen",
+      "translations": { "en": ["to yawn"], "fr": ["bâiller"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "gähnen",
+      "examForms": ["gähnen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈɡɛːnən/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Nach der langen Sitzung musste sie herzhaft gähnen.",
+        "translation": {
+          "en": "After the long meeting she had to yawn heartily.",
+          "fr": "Après la longue réunion, elle a dû bâiller à pleine bouche."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Gähnen is a deep, involuntary intake of breath with an open mouth, from tiredness or boredom.",
+        "fr": "Gähnen est une profonde inspiration involontaire, bouche ouverte, due à la fatigue ou à l’ennui.",
+        "de": "Gähnen ist ein tiefes, unwillkürliches Einatmen mit offenem Mund, aus Müdigkeit oder Langeweile."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Vor Müdigkeit musste er ständig ",
+        "after": ".",
+        "accepted": { "answers": ["gähnen"] },
+        "referenceTargetIds": ["gaehnen", "schluckauf", "gaensehaut", "herzklopfen"],
+        "explanation": {
+          "en": "Only gähnen is a verb that fits after „musste er ständig“.",
+          "fr": "Seul « gähnen » est un verbe qui convient après « musste er ständig ».",
+          "de": "Nur „gähnen“ ist ein Verb, das nach „musste er ständig“ passt."
+        }
+      },
+      "listeningOptionTargetIds": ["gaehnen", "niesen", "erschauern", "verschlucken"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

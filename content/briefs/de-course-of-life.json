@@ -1,0 +1,639 @@
+{
+  "schemaVersion": 2,
+  "id": "de-course-of-life",
+  "lang": "de",
+  "level": "C2",
+  "locales": ["en", "fr", "de"],
+  "title": "Lebenswege",
+  "objective": {
+    "en": "Narrate a whole life with twelve precise words, from the Werdegang to the Nachlass.",
+    "fr": "Raconter toute une vie avec douze mots précis, du Werdegang au Nachlass.",
+    "de": "Ein Leben mit zwölf treffenden Wörtern erzählen: vom Werdegang bis zum Nachlass."
+  },
+  "estimatedMinutes": 20,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:37:12.781Z",
+    "inputHashes": { "outline": "ca787736d1bc4f15c8db1d23d68c1fc6f98b4b6400a71c4fd382f66addc8221d" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Twelve words in two groups: the course of a life (path, formative years, turning point, career, life plan, midlife) and its end and afterlife (twilight years, old age, obituary, estate, legacy, posthumous).",
+    "fr": "Douze mots en deux groupes : le cours d’une vie (parcours, années de formation, tournant, carrière, projet de vie, milieu de la vie) et sa fin et sa postérité (soir de la vie, grand âge, nécrologie, succession, legs, posthume).",
+    "de": "Zwölf Wörter in zwei Gruppen: der Verlauf eines Lebens (Werdegang, prägende Jahre, Wendepunkt, Laufbahn, Lebensentwurf, Lebensmitte) und sein Ende und Nachleben (Lebensabend, Greisenalter, Nachruf, Nachlass, Vermächtnis, posthum)."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve words fit the outline and allow two matching pages of six.",
+    "fr": "Douze mots correspondent au plan et donnent deux pages d’association de six.",
+    "de": "Zwölf Wörter entsprechen der Gliederung und ergeben zwei Zuordnungsseiten mit je sechs."
+  },
+  "difficultyBalance": {
+    "en": "Mostly demanding C2 words; the compounds with Leben are easier to guess.",
+    "fr": "Surtout des mots exigeants de niveau C2 ; les composés en Leben sont plus faciles à deviner.",
+    "de": "Überwiegend anspruchsvolle C2-Wörter; die Zusammensetzungen mit Leben sind leichter zu erschließen."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "verlauf",
+      "label": { "en": "The path of a life", "fr": "Le chemin d’une vie", "de": "Der Lebensweg" },
+      "targetIds": [
+        "werdegang",
+        "praegende-jahre",
+        "wendepunkt",
+        "laufbahn",
+        "lebensentwurf",
+        "lebensmitte"
+      ],
+      "introduction": {
+        "en": "These words describe how a life **unfolds**:\n\n- `der Werdegang`\n- `die prägenden Jahre`\n- `der Wendepunkt`\n- `die Laufbahn`\n- `der Lebensentwurf`\n- `die Lebensmitte`",
+        "fr": "Ces mots décrivent **le déroulement** d’une vie :\n\n- `der Werdegang`\n- `die prägenden Jahre`\n- `der Wendepunkt`\n- `die Laufbahn`\n- `der Lebensentwurf`\n- `die Lebensmitte`",
+        "de": "Diese Wörter beschreiben, wie sich ein Leben **entfaltet**:\n\n- `der Werdegang`\n- `die prägenden Jahre`\n- `der Wendepunkt`\n- `die Laufbahn`\n- `der Lebensentwurf`\n- `die Lebensmitte`"
+      }
+    },
+    {
+      "id": "ende",
+      "label": {
+        "en": "Ending and afterlife",
+        "fr": "La fin et la postérité",
+        "de": "Lebensende und Nachwelt"
+      },
+      "targetIds": [
+        "lebensabend",
+        "greisenalter",
+        "nachruf",
+        "nachlass",
+        "vermaechtnis",
+        "posthum"
+      ],
+      "introduction": {
+        "en": "These words cover the **last years** of a life and what remains afterwards:\n\n- `der Lebensabend`\n- `das Greisenalter`\n- `der Nachruf`\n- `der Nachlass`\n- `das Vermächtnis`\n- `posthum`",
+        "fr": "Ces mots couvrent **les dernières années** d’une vie et ce qui reste ensuite :\n\n- `der Lebensabend`\n- `das Greisenalter`\n- `der Nachruf`\n- `der Nachlass`\n- `das Vermächtnis`\n- `posthum`",
+        "de": "Diese Wörter betreffen die **letzten Jahre** eines Lebens und das, was danach bleibt:\n\n- `der Lebensabend`\n- `das Greisenalter`\n- `der Nachruf`\n- `der Nachlass`\n- `das Vermächtnis`\n- `posthum`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "werdegang",
+      "term": "Werdegang",
+      "translations": { "en": ["trajectory", "background"], "fr": ["parcours"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "der Werdegang",
+      "examForms": ["der Werdegang"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "[ˈveːɐ̯dəɡaŋ]",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Ihr Werdegang führte von der Dorfschule bis an die Universität.",
+        "translation": {
+          "en": "Her path led from the village school to the university.",
+          "fr": "Son parcours l’a menée de l’école du village à l’université."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Der Werdegang is the path by which someone became who they are: training, stations, development.",
+        "fr": "Der Werdegang est le parcours par lequel quelqu’un est devenu ce qu’il est : formation, étapes, évolution.",
+        "de": "Der Werdegang ist der Weg, auf dem jemand wurde, wer er ist: Ausbildung, Stationen, Entwicklung."
+      },
+      "genderExplanation": {
+        "en": "Werdegang is masculine, so it takes der.",
+        "fr": "Werdegang est masculin : on dit der Werdegang.",
+        "de": "Werdegang ist maskulin: der Werdegang."
+      },
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "trajectory (of a person’s life and training)",
+        "fr": "parcours (de vie et de formation d’une personne)"
+      },
+      "gap": {
+        "before": "Sein ",
+        "after": " vom Lehrling zum Direktor, Station für Station, beeindruckt alle.",
+        "accepted": { "answers": ["Werdegang"] },
+        "referenceTargetIds": ["werdegang", "wendepunkt", "lebensmitte", "praegende-jahre"],
+        "explanation": {
+          "en": "Only Werdegang fits: it describes a path station by station, and it is masculine.",
+          "fr": "Seul « Werdegang » convient : il décrit un parcours étape par étape et il est masculin.",
+          "de": "Nur „Werdegang“ passt: Er beschreibt einen Weg Station für Station und ist maskulin."
+        }
+      },
+      "listeningOptionTargetIds": ["werdegang", "wendepunkt", "laufbahn", "lebensentwurf"]
+    },
+    {
+      "id": "praegende-jahre",
+      "term": "prägende Jahre",
+      "translations": { "en": ["formative years"], "fr": ["années de formation"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "die prägenden Jahre",
+      "examForms": ["die prägenden Jahre"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "[diː ˈpʁɛːɡn̩dn̩ ˈjaːʁə]",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Die prägenden Jahre verbrachte er auf einem Bauernhof.",
+        "translation": {
+          "en": "He spent his formative years on a farm.",
+          "fr": "Il a passé ses années de formation dans une ferme."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die prägenden Jahre are the years that shape a person for life; the expression is always plural.",
+        "fr": "Die prägenden Jahre sont les années qui marquent une personne pour la vie ; l’expression est toujours au pluriel.",
+        "de": "Die prägenden Jahre sind die Jahre, die einen Menschen fürs Leben formen; der Ausdruck steht immer im Plural."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Die ",
+        "after": ", die sie im Internat verbrachte, bestimmten ihr ganzes Leben.",
+        "accepted": { "answers": ["prägenden Jahre"] },
+        "referenceTargetIds": ["praegende-jahre", "werdegang", "lebensmitte", "wendepunkt"],
+        "explanation": {
+          "en": "Only the plural expression fits: the verb bestimmten is plural.",
+          "fr": "Seule l’expression au pluriel convient : le verbe bestimmten est au pluriel.",
+          "de": "Nur der Plural-Ausdruck passt: Das Verb „bestimmten“ steht im Plural."
+        }
+      },
+      "listeningOptionTargetIds": ["praegende-jahre", "werdegang", "lebensmitte", "wendepunkt"]
+    },
+    {
+      "id": "wendepunkt",
+      "term": "Wendepunkt",
+      "translations": { "en": ["turning point"], "fr": ["tournant"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "der Wendepunkt",
+      "examForms": ["der Wendepunkt"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "[ˈvɛndəˌpʊŋkt]",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Die Reise nach Indien wurde zum Wendepunkt ihres Lebens.",
+        "translation": {
+          "en": "The trip to India became the turning point of her life.",
+          "fr": "Le voyage en Inde est devenu le tournant de sa vie."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Der Wendepunkt is the moment after which a life takes a different direction.",
+        "fr": "Der Wendepunkt est le moment après lequel une vie prend une autre direction.",
+        "de": "Der Wendepunkt ist der Moment, nach dem ein Leben eine andere Richtung nimmt."
+      },
+      "genderExplanation": {
+        "en": "Wendepunkt is masculine, so it takes der.",
+        "fr": "Wendepunkt est masculin : on dit der Wendepunkt.",
+        "de": "Wendepunkt ist maskulin: der Wendepunkt."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Der Tod des Vaters war der ",
+        "after": ", der sein Leben in zwei Hälften teilte.",
+        "accepted": { "answers": ["Wendepunkt"] },
+        "referenceTargetIds": ["wendepunkt", "lebensmitte", "praegende-jahre", "laufbahn"],
+        "explanation": {
+          "en": "Only Wendepunkt fits: a single event that divides a life, and it is masculine.",
+          "fr": "Seul « Wendepunkt » convient : un événement unique qui partage une vie, et il est masculin.",
+          "de": "Nur „Wendepunkt“ passt: ein einzelnes Ereignis, das ein Leben teilt, und er ist maskulin."
+        }
+      },
+      "listeningOptionTargetIds": ["wendepunkt", "werdegang", "laufbahn", "lebensmitte"]
+    },
+    {
+      "id": "laufbahn",
+      "term": "Laufbahn",
+      "translations": { "en": ["career"], "fr": ["carrière"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Laufbahn",
+      "examForms": ["die Laufbahn"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "[ˈlaʊ̯fbaːn]",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Seine Laufbahn begann als Volontär bei einer Zeitung.",
+        "translation": {
+          "en": "His career began as a trainee at a newspaper.",
+          "fr": "Sa carrière a commencé comme stagiaire dans un journal."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Laufbahn is the professional course of a person, with its posts and promotions.",
+        "fr": "Die Laufbahn est le cours professionnel d’une personne, avec ses postes et ses promotions.",
+        "de": "Die Laufbahn ist der berufliche Weg eines Menschen mit seinen Stationen und Aufstiegen."
+      },
+      "genderExplanation": {
+        "en": "Laufbahn is feminine, so it takes die.",
+        "fr": "Laufbahn est féminin : on dit die Laufbahn.",
+        "de": "Laufbahn ist feminin: die Laufbahn."
+      },
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "career (professional path)",
+        "fr": "carrière (parcours professionnel)"
+      },
+      "gap": {
+        "before": "Nach dreißig Jahren im diplomatischen Dienst blickte er auf eine glänzende ",
+        "after": " zurück.",
+        "accepted": { "answers": ["Laufbahn"] },
+        "referenceTargetIds": ["laufbahn", "lebensmitte", "werdegang", "wendepunkt"],
+        "explanation": {
+          "en": "Only Laufbahn fits: thirty years of service make a career, and eine requires a feminine noun.",
+          "fr": "Seul « Laufbahn » convient : trente ans de service font une carrière, et eine exige un nom féminin.",
+          "de": "Nur „Laufbahn“ passt: Dreißig Dienstjahre ergeben eine Laufbahn, und „eine“ verlangt ein feminines Nomen."
+        }
+      },
+      "listeningOptionTargetIds": ["laufbahn", "werdegang", "wendepunkt", "lebensentwurf"]
+    },
+    {
+      "id": "lebensentwurf",
+      "term": "Lebensentwurf",
+      "translations": { "en": ["life plan"], "fr": ["projet de vie"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "der Lebensentwurf",
+      "examForms": ["der Lebensentwurf"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "[ˈleːbn̩sʔɛntˌvʊʁf]",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Ein Leben ohne feste Stelle war nie sein Lebensentwurf.",
+        "translation": {
+          "en": "A life without a permanent job was never his life plan.",
+          "fr": "Une vie sans emploi fixe n’a jamais été son projet de vie."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Der Lebensentwurf is the idea of how one wants to shape one’s own life.",
+        "fr": "Der Lebensentwurf est l’idée de la manière dont on veut façonner sa propre vie.",
+        "de": "Der Lebensentwurf ist die Vorstellung davon, wie man sein eigenes Leben gestalten will."
+      },
+      "genderExplanation": {
+        "en": "Lebensentwurf is masculine, so it takes der.",
+        "fr": "Lebensentwurf est masculin : on dit der Lebensentwurf.",
+        "de": "Lebensentwurf ist maskulin: der Lebensentwurf."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Ihr ",
+        "after": ", ihr Plan davon, wie sie leben wollte, sah keine Kinder vor.",
+        "accepted": { "answers": ["Lebensentwurf"] },
+        "referenceTargetIds": ["lebensentwurf", "werdegang", "wendepunkt", "laufbahn"],
+        "explanation": {
+          "en": "Only Lebensentwurf fits: it is the plan for how to live, and it takes Ihr.",
+          "fr": "Seul « Lebensentwurf » convient : c’est le plan de la manière de vivre, et il prend Ihr.",
+          "de": "Nur „Lebensentwurf“ passt: Er ist der Plan, wie man leben will, und steht mit „Ihr“."
+        }
+      },
+      "listeningOptionTargetIds": ["lebensentwurf", "lebensmitte", "lebensabend", "werdegang"]
+    },
+    {
+      "id": "lebensmitte",
+      "term": "Lebensmitte",
+      "translations": { "en": ["midlife"], "fr": ["milieu de la vie"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Lebensmitte",
+      "examForms": ["die Lebensmitte"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "[ˈleːbn̩sˌmɪtə]",
+      "difficulty": "core",
+      "context": {
+        "sentence": "In der Lebensmitte wechselte sie noch einmal den Beruf.",
+        "translation": {
+          "en": "In midlife she changed careers once more.",
+          "fr": "Au milieu de sa vie, elle a encore changé de métier."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Lebensmitte is the period around forty to fifty, halfway through a life.",
+        "fr": "Die Lebensmitte est la période autour de quarante à cinquante ans, à mi-chemin de la vie.",
+        "de": "Die Lebensmitte ist die Zeit um vierzig bis fünfzig, etwa auf halber Strecke des Lebens."
+      },
+      "genderExplanation": {
+        "en": "Lebensmitte is feminine, so it takes die.",
+        "fr": "Lebensmitte est féminin : on dit die Lebensmitte.",
+        "de": "Lebensmitte ist feminin: die Lebensmitte."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Mit vierzig befindet man sich oft in der ",
+        "after": ", also etwa auf halber Strecke des Lebens.",
+        "accepted": { "answers": ["Lebensmitte"] },
+        "referenceTargetIds": ["lebensmitte", "lebensentwurf", "wendepunkt", "werdegang"],
+        "explanation": {
+          "en": "Only Lebensmitte fits: halfway through life, and in der needs a feminine noun.",
+          "fr": "Seul « Lebensmitte » convient : à mi-chemin de la vie, et in der exige un nom féminin.",
+          "de": "Nur „Lebensmitte“ passt: auf halber Strecke des Lebens, und „in der“ verlangt ein feminines Nomen."
+        }
+      },
+      "listeningOptionTargetIds": ["lebensmitte", "lebensentwurf", "lebensabend", "wendepunkt"]
+    },
+    {
+      "id": "lebensabend",
+      "term": "Lebensabend",
+      "translations": { "en": ["twilight years"], "fr": ["soir de la vie"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "der Lebensabend",
+      "examForms": ["der Lebensabend"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "[ˈleːbn̩sˌʔaːbn̩t]",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Den Lebensabend verbringen sie in einem Häuschen am Meer.",
+        "translation": {
+          "en": "They spend their twilight years in a little house by the sea.",
+          "fr": "Ils passent le soir de leur vie dans une petite maison au bord de la mer."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Der Lebensabend is the calm last stretch of a life, a gentle image of old age.",
+        "fr": "Der Lebensabend est la dernière période paisible d’une vie, une image douce de la vieillesse.",
+        "de": "Der Lebensabend ist die ruhige letzte Zeit eines Lebens, ein sanftes Bild für das Alter."
+      },
+      "genderExplanation": {
+        "en": "Lebensabend is masculine, so it takes der.",
+        "fr": "Lebensabend est masculin : on dit der Lebensabend.",
+        "de": "Lebensabend ist maskulin: der Lebensabend."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Er verbringt seinen ",
+        "after": " auf dem Land, ruhig und ohne Verpflichtungen.",
+        "accepted": { "answers": ["Lebensabend"] },
+        "referenceTargetIds": ["lebensabend", "greisenalter", "nachlass", "nachruf"],
+        "explanation": {
+          "en": "Only Lebensabend fits: one spends it in peace, and seinen needs a masculine noun.",
+          "fr": "Seul « Lebensabend » convient : on le passe en paix, et seinen exige un nom masculin.",
+          "de": "Nur „Lebensabend“ passt: Man verbringt ihn in Ruhe, und „seinen“ verlangt ein maskulines Nomen."
+        }
+      },
+      "listeningOptionTargetIds": ["lebensabend", "lebensmitte", "greisenalter", "nachlass"]
+    },
+    {
+      "id": "greisenalter",
+      "term": "Greisenalter",
+      "translations": { "en": ["old age"], "fr": ["vieillesse"] },
+      "wordClass": "noun",
+      "genders": ["neuter"],
+      "number": "singular",
+      "teachingForm": "das Greisenalter",
+      "examForms": ["das Greisenalter"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "[ˈɡʁaɪ̯zn̩ˌʔaltɐ]",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Im Greisenalter erkannte er seine Kinder oft nicht mehr.",
+        "translation": {
+          "en": "In extreme old age he often no longer recognised his children.",
+          "fr": "Dans son grand âge, il ne reconnaissait souvent plus ses enfants."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Das Greisenalter is the age of the very old, a formal and literary word for advanced old age.",
+        "fr": "Das Greisenalter est l’âge des très vieilles personnes, un mot soutenu et littéraire pour le grand âge.",
+        "de": "Das Greisenalter ist das Alter der sehr Alten, ein gehobenes, literarisches Wort für hohes Alter."
+      },
+      "genderExplanation": {
+        "en": "Greisenalter is neuter, so it takes das.",
+        "fr": "Greisenalter est neutre : on dit das Greisenalter.",
+        "de": "Greisenalter ist neutral: das Greisenalter."
+      },
+      "matchingLabel": { "en": "old age (advanced)", "fr": "grand âge" },
+      "examPrompt": {
+        "en": "old age (very advanced, literary)",
+        "fr": "vieillesse (très avancée, littéraire)"
+      },
+      "gap": {
+        "before": "Erst im ",
+        "after": " – jenseits der neunzig – ließ sein Gedächtnis nach.",
+        "accepted": { "answers": ["Greisenalter"] },
+        "referenceTargetIds": ["greisenalter", "nachlass", "vermaechtnis", "posthum"],
+        "explanation": {
+          "en": "Only Greisenalter fits: it is a time of life beyond ninety.",
+          "fr": "Seul « Greisenalter » convient : c’est une période de la vie au-delà de quatre-vingt-dix ans.",
+          "de": "Nur „Greisenalter“ passt: Es ist eine Lebensphase jenseits der neunzig."
+        }
+      },
+      "listeningOptionTargetIds": ["greisenalter", "lebensabend", "nachlass", "nachruf"]
+    },
+    {
+      "id": "nachruf",
+      "term": "Nachruf",
+      "translations": { "en": ["obituary"], "fr": ["nécrologie"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "der Nachruf",
+      "examForms": ["der Nachruf"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "[ˈnaːxˌʁuːf]",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Im Nachruf wurde ihre Bescheidenheit hervorgehoben.",
+        "translation": {
+          "en": "The obituary emphasised her modesty.",
+          "fr": "La nécrologie a souligné sa modestie."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Der Nachruf is a written tribute to a person who has just died.",
+        "fr": "Der Nachruf est un hommage écrit à une personne qui vient de mourir.",
+        "de": "Der Nachruf ist eine schriftliche Würdigung eines Menschen, der gerade gestorben ist."
+      },
+      "genderExplanation": {
+        "en": "Nachruf is masculine, so it takes der.",
+        "fr": "Nachruf est masculin : on dit der Nachruf.",
+        "de": "Nachruf ist maskulin: der Nachruf."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Die Zeitung widmete dem verstorbenen Dirigenten einen langen ",
+        "after": ", in dem sein Lebenswerk gewürdigt wurde.",
+        "accepted": { "answers": ["Nachruf"] },
+        "referenceTargetIds": ["nachruf", "nachlass", "lebensabend", "greisenalter"],
+        "explanation": {
+          "en": "Only Nachruf fits: a newspaper prints a tribute to the deceased.",
+          "fr": "Seul « Nachruf » convient : un journal publie un hommage au défunt.",
+          "de": "Nur „Nachruf“ passt: Eine Zeitung druckt eine Würdigung des Verstorbenen."
+        }
+      },
+      "listeningOptionTargetIds": ["nachruf", "nachlass", "vermaechtnis", "lebensabend"]
+    },
+    {
+      "id": "nachlass",
+      "term": "Nachlass",
+      "translations": { "en": ["estate"], "fr": ["succession"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "der Nachlass",
+      "examForms": ["der Nachlass"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "[ˈnaːxˌlas]",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Der Nachlass des Dichters liegt im Literaturarchiv.",
+        "translation": {
+          "en": "The poet’s literary estate is held in the literature archive.",
+          "fr": "Le fonds du poète se trouve aux archives littéraires."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Der Nachlass is everything a person leaves behind at death: belongings, letters, manuscripts.",
+        "fr": "Der Nachlass est tout ce qu’une personne laisse à sa mort : biens, lettres, manuscrits.",
+        "de": "Der Nachlass ist alles, was ein Mensch bei seinem Tod hinterlässt: Besitz, Briefe, Manuskripte."
+      },
+      "genderExplanation": {
+        "en": "Nachlass is masculine, so it takes der.",
+        "fr": "Nachlass est masculin : on dit der Nachlass.",
+        "de": "Nachlass ist maskulin: der Nachlass."
+      },
+      "matchingLabel": null,
+      "examPrompt": { "en": "estate (of a deceased person)", "fr": "succession (d’un défunt)" },
+      "gap": {
+        "before": "Die Tochter ordnete den ",
+        "after": " ihres Vaters: Briefe, Notizbücher und unveröffentlichte Manuskripte.",
+        "accepted": { "answers": ["Nachlass"] },
+        "referenceTargetIds": ["nachlass", "nachruf", "lebensabend", "posthum"],
+        "explanation": {
+          "en": "Only Nachlass fits: letters, notebooks and manuscripts are what a person leaves behind.",
+          "fr": "Seul « Nachlass » convient : lettres, carnets et manuscrits sont ce qu’une personne laisse.",
+          "de": "Nur „Nachlass“ passt: Briefe, Notizbücher und Manuskripte hinterlässt ein Mensch."
+        }
+      },
+      "listeningOptionTargetIds": ["nachlass", "nachruf", "vermaechtnis", "posthum"]
+    },
+    {
+      "id": "vermaechtnis",
+      "term": "Vermächtnis",
+      "translations": { "en": ["legacy"], "fr": ["legs"] },
+      "wordClass": "noun",
+      "genders": ["neuter"],
+      "number": "singular",
+      "teachingForm": "das Vermächtnis",
+      "examForms": ["das Vermächtnis"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "[fɛɐ̯ˈmɛçtnɪs]",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Das Vermächtnis der Gründerin lebt in der Stiftung weiter.",
+        "translation": {
+          "en": "The founder’s legacy lives on in the foundation.",
+          "fr": "Le legs de la fondatrice perdure dans la fondation."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Das Vermächtnis is what a person deliberately passes on to others: a gift, a wish, a task.",
+        "fr": "Das Vermächtnis est ce qu’une personne transmet délibérément aux autres : un don, un vœu, une mission.",
+        "de": "Das Vermächtnis ist das, was ein Mensch bewusst an andere weitergibt: eine Gabe, ein Wunsch, eine Aufgabe."
+      },
+      "genderExplanation": {
+        "en": "Vermächtnis is neuter, so it takes das.",
+        "fr": "Vermächtnis est neutre : on dit das Vermächtnis.",
+        "de": "Vermächtnis ist neutral: das Vermächtnis."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Sein ",
+        "after": " an die Stadt war die Stiftung, die bis heute Stipendien vergibt.",
+        "accepted": { "answers": ["Vermächtnis"] },
+        "referenceTargetIds": ["vermaechtnis", "greisenalter", "nachruf", "lebensabend"],
+        "explanation": {
+          "en": "Only Vermächtnis fits: a deliberate gift to the city, and Sein needs a neuter noun here.",
+          "fr": "Seul « Vermächtnis » convient : un don délibéré à la ville, et Sein exige ici un nom neutre.",
+          "de": "Nur „Vermächtnis“ passt: eine bewusste Gabe an die Stadt, und „Sein“ verlangt hier ein neutrales Nomen."
+        }
+      },
+      "listeningOptionTargetIds": ["vermaechtnis", "nachlass", "nachruf", "greisenalter"]
+    },
+    {
+      "id": "posthum",
+      "term": "posthum",
+      "translations": { "en": ["posthumous", "posthumously"], "fr": ["posthume"] },
+      "wordClass": "adverb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "posthum",
+      "examForms": ["posthum"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "[ˈpoːsthuːm]",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Der Maler wurde posthum mit einer Retrospektive geehrt.",
+        "translation": {
+          "en": "The painter was honoured posthumously with a retrospective.",
+          "fr": "Le peintre a été honoré à titre posthume par une rétrospective."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Posthum means after someone’s death: something happens when the person is already dead.",
+        "fr": "Posthum signifie après la mort de quelqu’un : quelque chose arrive quand la personne est déjà morte.",
+        "de": "Posthum bedeutet nach dem Tod eines Menschen: Etwas geschieht, wenn die Person schon gestorben ist."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "posthumously (after death)",
+        "fr": "à titre posthume (après la mort)"
+      },
+      "gap": {
+        "before": "Der Roman erschien erst ",
+        "after": ", drei Jahre nach dem Tod des Autors.",
+        "accepted": { "answers": ["posthum"] },
+        "referenceTargetIds": ["posthum", "nachruf", "lebensabend", "vermaechtnis"],
+        "explanation": {
+          "en": "Only posthum fits: an adverb is needed, and the book appeared after the author’s death.",
+          "fr": "Seul « posthum » convient : il faut un adverbe, et le livre est paru après la mort de l’auteur.",
+          "de": "Nur „posthum“ passt: Gesucht ist ein Adverb, und das Buch erschien nach dem Tod des Autors."
+        }
+      },
+      "listeningOptionTargetIds": ["posthum", "nachruf", "nachlass", "lebensabend"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

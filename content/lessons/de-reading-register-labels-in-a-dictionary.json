@@ -1,0 +1,404 @@
+{
+  "schemaVersion": 2,
+  "id": "de-reading-register-labels-in-a-dictionary",
+  "lang": "de",
+  "level": "C1",
+  "locales": ["en", "fr", "de"],
+  "title": "Stilangaben im Wörterbuch lesen",
+  "objective": {
+    "en": "Read entries of a monolingual dictionary and use style labels such as gehoben, umgangssprachlich or abwertend to choose between synonyms like schreiten, gehen and latschen.",
+    "fr": "Lire des articles d’un dictionnaire monolingue et choisir entre des synonymes comme schreiten, gehen et latschen grâce aux indications de registre.",
+    "de": "Einträge eines einsprachigen Wörterbuchs lesen und mithilfe der Stilangaben zwischen Synonymen wie schreiten, gehen und latschen wählen."
+  },
+  "estimatedMinutes": 11,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:37:15.488Z",
+    "inputHashes": {
+      "outline": "d59d70e43bcbb252e4b8e3ab7fa8eb42e9f8477815d106973afc780f339d1dad",
+      "brief": "8e91f8ca8ed0e66cadd81207dac211b7e9da4254bc595e67cf6f9ddb6f5060f9"
+    }
+  },
+  "kind": "reading",
+  "theme": "language",
+  "genre": "dictionary_entry",
+  "documents": [
+    {
+      "documentId": "main",
+      "title": null,
+      "meta": ["Deutsches Bedeutungswörterbuch (Auszug)", "Hinweise zu den Stilangaben"],
+      "paragraphs": [
+        "Stilangaben stehen in eckigen Klammern vor der Bedeutung und zeigen, in welcher Situation ein Wort passt. Wörter ohne Angabe gelten als stilistisch neutral; sie sind in fast jedem Zusammenhang möglich.",
+        "gehoben bezeichnet Wörter, die vor allem in Schriftsprache, Literatur und feierlicher Rede vorkommen; im Gespräch unter Freunden wirken sie leicht geziert. umgangssprachlich kennzeichnet Wörter der gesprochenen Alltagssprache, die in einem förmlichen Brief oder Gutachten unpassend wären. abwertend zeigt an, dass die Sprecherin oder der Sprecher mit dem Wort eine negative Haltung ausdrückt, und zwar unabhängig vom Stil; ein Wort kann also zugleich umgangssprachlich und abwertend sein. veraltet markiert Wörter, die kaum noch jemand benutzt, während scherzhaft einen Gebrauch meint, der absichtlich übertrieben oder spielerisch ist.",
+        "gehen: sich zu Fuß fortbewegen. Stilistisch neutral und in allen Textsorten möglich. Wir gingen langsam nach Hause.\nschreiten [gehoben]: sich mit gemessenen, würdevollen Schritten fortbewegen. Der Präsident schritt die Ehrenformation ab.\nlatschen [umgangssprachlich, abwertend]: mit schleppenden, nachlässigen Schritten gehen. Er latschte unwillig hinter uns her.\nlustwandeln [veraltet, scherzhaft]: gemächlich und genießerisch spazieren gehen. Wir lustwandelten durch den Park.",
+        "Hinweis zum Gebrauch: Wer in einem Bewerbungsschreiben schreibt, man sei durch die Abteilung gelatscht, wählt ein Wort, das nicht nur zu salopp ist, sondern auch Geringschätzung ausdrückt. Umgekehrt klingt es in einer Geburtstagsrede unfreiwillig komisch, wenn jemand zum Buffet schreitet. Ein Wort, das gehoben ist, kann also ebenso danebengehen wie ein umgangssprachliches, wenn Anlass und Publikum nicht dazu passen.",
+        "essen: Nahrung zu sich nehmen. Stilistisch neutral.\nspeisen [gehoben]: eine Mahlzeit einnehmen, besonders in einem Restaurant oder bei einem Festessen. Die Gäste speisten auf der Terrasse.\nfuttern [umgangssprachlich, scherzhaft]: mit großem Appetit essen. Du hast schon wieder die ganze Tüte gefuttert!\nfressen [umgangssprachlich, abwertend, wenn von Menschen gesagt]: gierig und ohne Manieren essen. Schau dir an, wie der frisst.",
+        "Die Beispiele zeigen: Die Stilangabe sagt nichts darüber, ob ein Wort richtig oder falsch ist, sondern nur, wo es hinpasst. Wer zwischen Synonymen wählt, sollte deshalb drei Fragen stellen: Wer spricht oder schreibt? Zu wem? Und welche Haltung soll mitschwingen? Ein Wort, das mit „abwertend“ gekennzeichnet ist, lässt sich selten neutral verwenden; wer es trotzdem tut, wird als abfällig verstanden. Mehrere Angaben stehen manchmal nebeneinander, weil sie sich ergänzen: umgangssprachlich beschreibt den Stil, scherzhaft oder abwertend die Absicht.",
+        "Merke: Die Angaben sind Erfahrungswerte der Redaktion, die sich mit dem Sprachgebrauch ändern. Was heute als umgangssprachlich gilt, kann in dreißig Jahren neutral sein; was heute gehoben klingt, kann morgen veraltet wirken. Wer ein Wörterbuch nutzt, sollte daher möglichst eine aktuelle Auflage verwenden."
+      ],
+      "highlights": [
+        { "keywordId": "gehoben", "text": "gehoben" },
+        { "keywordId": "umgangssprachlich", "text": "umgangssprachlich" },
+        { "keywordId": "abwertend", "text": "abwertend" },
+        { "keywordId": "veraltet", "text": "veraltet" },
+        { "keywordId": "scherzhaft", "text": "scherzhaft" }
+      ]
+    },
+    {
+      "documentId": "exam",
+      "title": "reden",
+      "meta": ["Deutsches Bedeutungswörterbuch (Auszug)"],
+      "paragraphs": [
+        "reden: sich mündlich mitteilen, sprechen. Stilistisch neutral und in jedem Zusammenhang möglich. Wir redeten bis spät in die Nacht.\nkundtun [gehoben]: etwas öffentlich und feierlich mitteilen. Die Regierung tat ihre Absicht kund.\nplaudern: sich zwanglos und angenehm unterhalten. Stilistisch neutral, aber nur für ein leichtes Gespräch gebräuchlich.\nquatschen [umgangssprachlich]: sich locker unterhalten, oft länger als nötig. Wir haben noch eine Stunde im Flur gequatscht.\nschwafeln [umgangssprachlich, abwertend]: weitschweifig und inhaltsleer reden. Er schwafelt in jeder Sitzung von Visionen.",
+        "Stilfragen: In einer Ansprache vor dem Stadtrat würde niemand sagen, die Vorrednerin habe geschwafelt, selbst wenn er es so empfindet; das Wort wäre eine offene Beleidigung. Im Freundeskreis dagegen ist quatschen völlig unauffällig, und niemand hört darin einen Vorwurf. Wer hingegen im Gespräch mit Kollegen ständig etwas kundtut, statt es zu sagen, wirkt steif und manchmal unfreiwillig komisch. Entscheidend ist also nicht, welches Wort das schönste ist, sondern welches zur Lage passt und welche Haltung man dem Gegenüber zeigen will.",
+        "Mund: Körperöffnung zum Sprechen und Essen. Stilistisch neutral. Sie presste den Mund zusammen.\nMaul [umgangssprachlich, abwertend, wenn von Menschen gesagt]: Mund. Die Wendung Halt das Maul! gilt als grob und beleidigend.\nMundwerk [umgangssprachlich]: die Art und Fähigkeit zu sprechen. Sie hat ein flinkes Mundwerk.\nSchnauze [umgangssprachlich, abwertend]: Mund, besonders als Ausdruck von Frechheit. Er hat eine große Schnauze."
+      ],
+      "highlights": []
+    }
+  ],
+  "steps": [
+    {
+      "id": "flashcards",
+      "stage": "flashcards",
+      "role": "exercise",
+      "label": { "en": "Flashcards", "fr": "Cartes mémoire", "de": "Karteikarten" },
+      "pages": [
+        {
+          "pageId": "flashcards",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Turn each card to learn the key words of the text.",
+            "fr": "Retournez chaque carte pour découvrir les mots clés du texte.",
+            "de": "Dreh jede Karte um und lerne die Schlüsselwörter des Textes."
+          },
+          "items": [
+            {
+              "type": "reading_flashcards",
+              "itemId": "cards",
+              "keywordIds": ["gehoben", "umgangssprachlich", "abwertend", "veraltet", "scherzhaft"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matching",
+      "stage": "matching",
+      "role": "exercise",
+      "label": { "en": "Matching", "fr": "Association", "de": "Zuordnen" },
+      "pages": [
+        {
+          "pageId": "matching",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each key word with its meaning.",
+            "fr": "Associez chaque mot clé à son sens.",
+            "de": "Ordne jedem Schlüsselwort seine Bedeutung zu."
+          },
+          "items": [
+            {
+              "type": "reading_keyword_matching",
+              "itemId": "matching",
+              "keywordIds": ["gehoben", "umgangssprachlich", "abwertend", "veraltet", "scherzhaft"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skim",
+      "stage": "skim",
+      "role": "exercise",
+      "label": { "en": "Skim", "fr": "Survol", "de": "Überfliegen" },
+      "pages": [
+        {
+          "pageId": "skim",
+          "estimatedDurationS": 190,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Look over the document quickly. When the time is up it is put away; then answer the question.",
+            "fr": "Parcourez rapidement le document. À la fin du temps, il disparaît ; répondez ensuite à la question.",
+            "de": "Überfliege das Dokument. Wenn die Zeit um ist, verschwindet es; beantworte dann die Frage."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "skim-document",
+              "documentId": "main",
+              "view": "skim",
+              "skimSeconds": 170
+            },
+            {
+              "type": "reading_skim_choice",
+              "itemId": "skim-question",
+              "focus": "purpose",
+              "question": "Wozu dient der Auszug vor allem?",
+              "options": [
+                {
+                  "optionId": "o1",
+                  "text": "Er fordert dazu auf, umgangssprachliche Wörter ganz zu vermeiden."
+                },
+                {
+                  "optionId": "o2",
+                  "text": "Er erklärt, wie man Stilangaben liest und damit passende Synonyme wählt."
+                },
+                {
+                  "optionId": "o3",
+                  "text": "Er belegt, dass die deutsche Sprache immer lässiger wird."
+                },
+                {
+                  "optionId": "o4",
+                  "text": "Er legt fest, welche Wörter in Prüfungen erlaubt sind."
+                }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "The text explains the labels, shows entries and gives advice on choosing between synonyms. It does not forbid anything.",
+                "fr": "Le texte explique les indications, montre des articles et donne des conseils pour choisir entre synonymes. Il n’interdit rien.",
+                "de": "Der Text erklärt die Angaben, zeigt Einträge und gibt Hinweise zur Wahl zwischen Synonymen. Er verbietet nichts."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "detail",
+      "stage": "detail",
+      "role": "exercise",
+      "label": { "en": "Detail", "fr": "Détails", "de": "Details" },
+      "pages": [
+        {
+          "pageId": "detail",
+          "estimatedDurationS": 120,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the document carefully and answer the questions.",
+            "fr": "Lisez le document attentivement et répondez aux questions.",
+            "de": "Lies das Dokument genau und beantworte die Fragen."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "detail-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-neutral",
+              "question": "Was bedeutet es, wenn ein Eintrag keine Stilangabe hat?",
+              "options": [
+                { "optionId": "o1", "text": "Das Wort ist veraltet." },
+                {
+                  "optionId": "o2",
+                  "text": "Das Wort ist stilistisch neutral und fast überall möglich."
+                },
+                { "optionId": "o3", "text": "Das Wort gilt als gehoben." },
+                { "optionId": "o4", "text": "Das Wort ist in der Schriftsprache falsch." }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "Words without a label count as stylistically neutral and are possible in almost any context.",
+                "fr": "Les mots sans indication sont stylistiquement neutres et possibles dans presque tous les contextes.",
+                "de": "Wörter ohne Angabe gelten als stilistisch neutral und sind in fast jedem Zusammenhang möglich."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-latschen",
+              "question": "Was drückt latschen im Unterschied zu gehen zusätzlich aus?",
+              "options": [
+                { "optionId": "o1", "text": "Feierliche, würdevolle Schritte" },
+                { "optionId": "o2", "text": "Besonders schnelles Laufen" },
+                { "optionId": "o3", "text": "Nachlässige Schritte und oft Geringschätzung" },
+                { "optionId": "o4", "text": "Einen veralteten Gebrauch" }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "Latschen means walking with dragging, careless steps and is labelled umgangssprachlich and abwertend.",
+                "fr": "Latschen désigne une marche traînante et négligée ; le mot est marqué umgangssprachlich et abwertend.",
+                "de": "Latschen heißt mit schleppenden, nachlässigen Schritten gehen und ist als umgangssprachlich und abwertend gekennzeichnet."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "q-futtern",
+              "statement": "Das Verb futtern ist im Eintrag als abwertend gekennzeichnet.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: futtern is umgangssprachlich and scherzhaft. Only fressen (said of people) is abwertend.",
+                "fr": "Faux : futtern est umgangssprachlich et scherzhaft. Seul fressen (dit de personnes) est abwertend.",
+                "de": "Falsch: futtern ist umgangssprachlich und scherzhaft. Nur fressen (von Menschen gesagt) ist abwertend."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "q-gehoben",
+              "statement": "Ein gehobenes Wort passt immer, weil es besonders höflich klingt.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: the text says an elevated word can miss the mark just like a colloquial one, e.g. schreiten to the buffet.",
+                "fr": "Faux : le texte dit qu’un mot soutenu peut être aussi déplacé qu’un mot familier, par ex. schreiten vers le buffet.",
+                "de": "Falsch: Laut Text kann ein gehobenes Wort ebenso danebengehen wie ein umgangssprachliches, etwa schreiten zum Buffet."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "structure",
+      "stage": "structure",
+      "role": "exercise",
+      "label": { "en": "Structure", "fr": "Structure", "de": "Aufbau" },
+      "pages": [
+        {
+          "pageId": "structure",
+          "estimatedDurationS": 90,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the information in the order the text gives it.",
+            "fr": "Remettez les informations dans l’ordre du texte.",
+            "de": "Bring die Informationen in die Reihenfolge des Textes."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "structure-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_order",
+              "itemId": "order",
+              "pieces": [
+                {
+                  "pieceId": "p3",
+                  "text": "Warnung, dass auch gehobene Wörter unpassend sein können"
+                },
+                { "pieceId": "p1", "text": "Erklärung, wofür die Stilangaben stehen" },
+                { "pieceId": "p6", "text": "Hinweis auf den Wandel der Angaben" },
+                { "pieceId": "p2", "text": "Einträge zu gehen, schreiten und latschen" },
+                { "pieceId": "p5", "text": "Drei Fragen für die Wahl zwischen Synonymen" },
+                { "pieceId": "p4", "text": "Einträge zu essen, speisen und fressen" }
+              ],
+              "acceptedOrders": [["p1", "p2", "p3", "p4", "p5", "p6"]],
+              "answerExplanation": {
+                "en": "First the labels are explained, then the walking entries, the usage warning, the eating entries, the three questions and finally the note that labels change.",
+                "fr": "D’abord les indications sont expliquées, puis viennent les articles sur marcher, la mise en garde, les articles sur manger, les trois questions et enfin la remarque sur l’évolution des indications.",
+                "de": "Zuerst werden die Angaben erklärt, dann folgen die Einträge zum Gehen, die Warnung, die Einträge zum Essen, die drei Fragen und zuletzt der Hinweis auf den Wandel."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "stage": "exam",
+      "role": "exam",
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam",
+          "estimatedDurationS": 188,
+          "timeLimitS": 285,
+          "instructions": {
+            "en": "Read the new document and answer the questions. No help this time.",
+            "fr": "Lisez le nouveau document et répondez aux questions. Cette fois, sans aide.",
+            "de": "Lies das neue Dokument und beantworte die Fragen. Diesmal ohne Hilfe."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "exam-document",
+              "documentId": "exam",
+              "view": "exam",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-kundtun",
+              "question": "Welche Stilangabe trägt kundtun?",
+              "options": [
+                { "optionId": "o1", "text": "umgangssprachlich" },
+                { "optionId": "o2", "text": "abwertend" },
+                { "optionId": "o3", "text": "gehoben" },
+                { "optionId": "o4", "text": "scherzhaft" }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "The entry reads kundtun [gehoben].",
+                "fr": "L’article indique kundtun [gehoben].",
+                "de": "Im Eintrag steht kundtun [gehoben]."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-stadtrat",
+              "question": "Warum sagt man in einer Ansprache vor dem Stadtrat nicht, jemand habe geschwafelt?",
+              "options": [
+                { "optionId": "o1", "text": "Das Wort ist veraltet." },
+                { "optionId": "o2", "text": "Das Wort ist zu förmlich." },
+                { "optionId": "o3", "text": "Das Wort bedeutet etwas anderes." },
+                { "optionId": "o4", "text": "Das Wort wäre eine offene Beleidigung." }
+              ],
+              "answerOptionId": "o4",
+              "answerExplanation": {
+                "en": "Schwafeln is abwertend and would be an open insult in such a speech.",
+                "fr": "Schwafeln est abwertend et serait une insulte ouverte dans un tel discours.",
+                "de": "Schwafeln ist abwertend und wäre in einer solchen Ansprache eine offene Beleidigung."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "x-quatschen",
+              "statement": "Unter Freunden klingt quatschen wie ein Vorwurf.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: among friends quatschen is completely unremarkable.",
+                "fr": "Faux : entre amis, quatschen est tout à fait banal.",
+                "de": "Falsch: Im Freundeskreis ist quatschen völlig unauffällig."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-schnauze",
+              "question": "Welches Wort bezeichnet den Mund besonders als Ausdruck von Frechheit?",
+              "options": [
+                { "optionId": "o1", "text": "Mund" },
+                { "optionId": "o2", "text": "Schnauze" },
+                { "optionId": "o3", "text": "Mundwerk" },
+                { "optionId": "o4", "text": "Maul" }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "Schnauze is defined as mouth, especially as an expression of cheekiness. Maul is just labelled as rude when said of people.",
+                "fr": "Schnauze est défini comme la bouche, surtout comme expression d’impertinence. Maul est seulement marqué comme grossier pour les personnes.",
+                "de": "Schnauze wird als Mund besonders als Ausdruck von Frechheit erklärt. Maul ist nur als grob gekennzeichnet, wenn von Menschen gesagt."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "x-mundwerk",
+              "statement": "Das Wort Mundwerk ist im Eintrag als abwertend gekennzeichnet.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: Mundwerk is only labelled umgangssprachlich.",
+                "fr": "Faux : Mundwerk est seulement marqué umgangssprachlich.",
+                "de": "Falsch: Mundwerk trägt nur die Angabe umgangssprachlich."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

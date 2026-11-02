@@ -1,0 +1,404 @@
+{
+  "schemaVersion": 2,
+  "id": "de-reading-a-long-newspaper-portrait",
+  "lang": "de",
+  "level": "C1",
+  "locales": ["en", "fr", "de"],
+  "title": "Ein langes Zeitungsporträt lesen",
+  "objective": {
+    "en": "Read a long newspaper portrait of a sculptor and infer her character from scenes, even where her self-image and the author’s view differ.",
+    "fr": "Lire le long portrait d’une sculptrice dans un hebdomadaire et déduire son caractère à partir de scènes, même quand son image d’elle-même et le regard de l’autrice divergent.",
+    "de": "Ein langes Porträt einer Bildhauerin lesen und ihren Charakter aus Szenen erschließen, auch wo Selbstbild und Blick der Autorin auseinandergehen."
+  },
+  "estimatedMinutes": 12,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:37:24.464Z",
+    "inputHashes": {
+      "outline": "3ade460a6b1225e6c339aebc1dd0a0189f1041edce399e75e598be206043e2e9",
+      "brief": "27a419e3f95dcbbcbbbe42d9bf8ac49d9ecdc150e4e186445f65e102aae4ec5e"
+    }
+  },
+  "kind": "reading",
+  "theme": "personal_identification",
+  "genre": "article",
+  "documents": [
+    {
+      "documentId": "main",
+      "title": "Die Frau, die dem Stein zuhört",
+      "meta": ["Von Katrin Moll", "Porträt, Seite 3"],
+      "paragraphs": [
+        "Wenn man Hanna Brandt fragt, was sie ausmache, antwortet sie ohne Zögern: nichts Besonderes. „Ich bin ein bescheidener Mensch“, sagt sie, „ich arbeite einfach, mehr ist da nicht.“ Sie sagt es in ihrem Atelier, einer ehemaligen Ziegelei vor den Toren von Kassel, in der es nach nassem Ton und kaltem Metall riecht. Draußen stehen drei Granitblöcke im Regen, jeder so groß wie ein Kleinwagen.",
+        "Brandt ist einundsechzig, trägt einen ausgewaschenen Arbeitsanzug und hat Hände, die aussehen wie Werkzeuge. Ihre Skulpturen, vorwiegend Frauenfiguren aus hellem Stein, stehen vor Rathäusern und Bahnhöfen, eine steht seit Jahren in der Eingangshalle eines Berliner Ministeriums. Über Preise spricht sie nur, wenn man sie danach fragt, und auch dann beiläufig, als ginge es um das Wetter.",
+        "Am Dienstagvormittag kommt ein Lieferant mit einer Holzkiste für den Transport einer Büste nach Hamburg. Brandt klopft einmal gegen die Seitenwand, hört kurz hin und schüttelt den Kopf. „Zu dünn. Bauen Sie sie neu.“ Der Mann erklärt, die Spedition verlange nur die Norm, die Kiste erfülle sie. Brandt sagt nichts mehr, sie schaut ihn bloß an. Zwanzig Minuten später sägt er neue Bretter zurecht. Man könnte das unnachgiebig nennen. Sie nennt es Sorgfalt.",
+        "Als eine Fotografin der Zeitung ein Bild von ihr machen will, ziert sie sich: Sie sei nicht wichtig, man solle lieber die Figuren zeigen. Es dauert eine halbe Stunde, bis sie sich neben den Granit stellt, und selbst dann dreht sie das Gesicht weg. Ihre Assistentin Jule, die seit elf Jahren hier arbeitet, lacht leise. „Sie sagt immer, sie sei unwichtig. Aber wehe, jemand rückt ihre Werkbank einen Zentimeter.“",
+        "Am Nachmittag zeigt ihr ein junger Bildhauer, Samir, eine Arbeit, an der er seit Wochen sitzt. Brandt umrundet die Figur zweimal. „Der Arm ist falsch“, sagt sie, „alles andere ist gut.“ Samir wehrt sich, sie winkt ab. Am Ende lässt er den Arm abschlagen. Später erzählt Jule, Brandt zahle Samirs Miete seit einem Jahr, ohne dass er es wisse. Brandt selbst würde das nie erwähnen; als ich sie darauf anspreche, schweigt sie zuerst und sagt dann nur: „Das ist doch nichts.“",
+        "Wer sie bei der Arbeit sieht, versteht, warum ihre Skulpturen so ruhig wirken und sie selbst so wenig. Für eine Figur, die bald vor einem Krankenhaus in Leipzig stehen soll, arbeitet sie seit vierzehn Monaten, sechs Tage die Woche, oft bis nach Mitternacht. „Verbissen“, sagt ihr früherer Mann, ein Architekt, den ich telefonisch erreiche, „war sie schon immer. Sie hat nie verstanden, dass man auch einmal aufhören darf.“ Brandt sieht das anders. Sie sei schlicht ungeduldig mit Dingen, die nicht gut genug sind.",
+        "Am Abend, als Jule und Samir gegangen sind, steht Brandt allein vor dem größten der drei Blöcke und legt die Hand auf den nassen Stein. „Wissen Sie“, sagt sie, „ich bin eigentlich ganz einfach.“ Ich nicke und schreibe nichts auf. Draußen wird es dunkel, im Atelier brennt noch Licht, und ich weiß, dass es noch lange brennen wird."
+      ],
+      "highlights": [
+        { "keywordId": "beilaeufig", "text": "beiläufig" },
+        { "keywordId": "unnachgiebig", "text": "unnachgiebig" },
+        { "keywordId": "sich-zieren", "text": "ziert sie sich" },
+        { "keywordId": "abwinken", "text": "winkt ab" },
+        { "keywordId": "verbissen", "text": "Verbissen" }
+      ]
+    },
+    {
+      "documentId": "exam",
+      "title": "Der Mann, der nie Zeit hat",
+      "meta": ["Von Jonas Reiter", "Porträt, Seite 5"],
+      "paragraphs": [
+        "Wolfgang Specht, 58, Inhaber einer Schreinerei in Freiburg, sagt von sich, er sei ein ruhiger Typ. „Ich lasse mich nicht aus der Ruhe bringen“, erklärt er und schaut dabei zum dritten Mal auf die Uhr. Sein Telefon klingelt, er geht nicht dran, es klingelt wieder, er geht dran und spricht zwei Minuten lang so leise und freundlich, dass man ihn beneiden könnte.",
+        "Kaum hat er aufgelegt, wird seine Stimme scharf. Sein Geselle hat eine Tischplatte um drei Millimeter zu schmal gesägt. Specht sagt nicht viel, er legt nur das Maßband daneben und wartet. Der Geselle, ein stiller junger Mann namens Ben, trägt die Platte wortlos hinaus. „So ist er“, sagt Ben später, „aber ich habe bei keinem mehr gelernt.“",
+        "Zeit, sagt Specht, habe er nie. Die Kunden müssten warten, die Familie auch. Seine Tochter Mia erzählt, dass er zu ihrer Abschlussfeier eine Stunde zu spät kam, mit Sägemehl im Haar und einem Blumenstrauß, den er an der Tankstelle gekauft hatte. „Ich war sauer“, sagt sie. „Und dann hat er geweint, vor allen Leuten. Das hätte er nie zugegeben.“",
+        "Am Ende des Tages fegt Specht die Werkstatt selbst, obwohl er dafür jemanden bezahlt. Er fege lieber allein, sagt er, dabei könne er denken. Worüber? Er zuckt mit den Schultern. „Über nichts. Ich bin ein einfacher Mensch.“ Dann löscht er das Licht, schließt zweimal ab und prüft die Tür ein drittes Mal."
+      ],
+      "highlights": []
+    }
+  ],
+  "steps": [
+    {
+      "id": "flashcards",
+      "stage": "flashcards",
+      "role": "exercise",
+      "label": { "en": "Flashcards", "fr": "Cartes mémoire", "de": "Karteikarten" },
+      "pages": [
+        {
+          "pageId": "flashcards",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Turn each card to learn the key words of the text.",
+            "fr": "Retournez chaque carte pour découvrir les mots clés du texte.",
+            "de": "Dreh jede Karte um und lerne die Schlüsselwörter des Textes."
+          },
+          "items": [
+            {
+              "type": "reading_flashcards",
+              "itemId": "cards",
+              "keywordIds": ["beilaeufig", "abwinken", "unnachgiebig", "verbissen", "sich-zieren"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matching",
+      "stage": "matching",
+      "role": "exercise",
+      "label": { "en": "Matching", "fr": "Association", "de": "Zuordnen" },
+      "pages": [
+        {
+          "pageId": "matching",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each key word with its meaning.",
+            "fr": "Associez chaque mot clé à son sens.",
+            "de": "Ordne jedem Schlüsselwort seine Bedeutung zu."
+          },
+          "items": [
+            {
+              "type": "reading_keyword_matching",
+              "itemId": "matching",
+              "keywordIds": ["beilaeufig", "abwinken", "unnachgiebig", "verbissen", "sich-zieren"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skim",
+      "stage": "skim",
+      "role": "exercise",
+      "label": { "en": "Skim", "fr": "Survol", "de": "Überfliegen" },
+      "pages": [
+        {
+          "pageId": "skim",
+          "estimatedDurationS": 220,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Look over the document quickly. When the time is up it is put away; then answer the question.",
+            "fr": "Parcourez rapidement le document. À la fin du temps, il disparaît ; répondez ensuite à la question.",
+            "de": "Überfliege das Dokument. Wenn die Zeit um ist, verschwindet es; beantworte dann die Frage."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "skim-document",
+              "documentId": "main",
+              "view": "skim",
+              "skimSeconds": 200
+            },
+            {
+              "type": "reading_skim_choice",
+              "itemId": "skim-question",
+              "focus": "purpose",
+              "question": "Was will die Autorin mit diesem Porträt vor allem zeigen?",
+              "options": [
+                {
+                  "optionId": "o1",
+                  "text": "Wie Brandts Skulpturen Schritt für Schritt entstehen"
+                },
+                {
+                  "optionId": "o2",
+                  "text": "Dass Brandt anders ist, als sie sich selbst beschreibt"
+                },
+                { "optionId": "o3", "text": "Dass Brandt als Künstlerin zu Unrecht unbekannt ist" },
+                { "optionId": "o4", "text": "Wie man öffentliche Aufträge für Skulpturen bekommt" }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "Brandt calls herself modest and simple, but the scenes show her strict, proud and secretly generous. The author lets the contrast speak.",
+                "fr": "Brandt se dit modeste et simple, mais les scènes la montrent stricte, fière et secrètement généreuse. L’autrice laisse parler le contraste.",
+                "de": "Brandt nennt sich bescheiden und einfach, doch die Szenen zeigen sie streng, stolz und heimlich großzügig. Die Autorin lässt den Kontrast wirken."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "detail",
+      "stage": "detail",
+      "role": "exercise",
+      "label": { "en": "Detail", "fr": "Détails", "de": "Details" },
+      "pages": [
+        {
+          "pageId": "detail",
+          "estimatedDurationS": 120,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the document carefully and answer the questions.",
+            "fr": "Lisez le document attentivement et répondez aux questions.",
+            "de": "Lies das Dokument genau und beantworte die Fragen."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "detail-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-selbstbild",
+              "question": "Wie beschreibt Brandt sich selbst?",
+              "options": [
+                { "optionId": "o1", "text": "Als streng und anspruchsvoll" },
+                { "optionId": "o2", "text": "Als ehrgeizig und erfolgshungrig" },
+                { "optionId": "o3", "text": "Als bescheiden und nicht besonders wichtig" },
+                { "optionId": "o4", "text": "Als großzügig und hilfsbereit" }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "She says ich bin ein bescheidener Mensch and calls herself unwichtig. The others are what the scenes suggest, not her own words.",
+                "fr": "Elle dit ich bin ein bescheidener Mensch et se dit unwichtig. Les autres traits sont ce que suggèrent les scènes, pas ses propres mots.",
+                "de": "Sie sagt „ich bin ein bescheidener Mensch“ und nennt sich unwichtig. Die anderen Züge zeigen erst die Szenen, nicht ihre eigenen Worte."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-kiste",
+              "question": "Warum muss die Transportkiste neu gebaut werden?",
+              "options": [
+                { "optionId": "o1", "text": "Weil sie nach Brandts Urteil nicht stabil genug ist" },
+                { "optionId": "o2", "text": "Weil sie die Norm der Spedition nicht erfüllt" },
+                { "optionId": "o3", "text": "Weil sie für die Büste zu klein ist" },
+                { "optionId": "o4", "text": "Weil der Lieferant sie zu spät bringt" }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "Brandt knocks on the wall and says zu dünn. The crate meets the standard (die Kiste erfülle sie); only her own judgement counts.",
+                "fr": "Brandt frappe contre la paroi et dit zu dünn. La caisse respecte la norme (die Kiste erfülle sie) ; seul son jugement compte.",
+                "de": "Brandt klopft gegen die Wand und sagt „zu dünn“. Die Kiste erfüllt die Norm („die Kiste erfülle sie“); nur ihr eigenes Urteil zählt."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "q-samir",
+              "statement": "Samir weiß, dass Brandt seine Miete bezahlt.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: Jule says Brandt pays the rent ohne dass er es wisse, without his knowing.",
+                "fr": "Faux : Jule dit que Brandt paie le loyer ohne dass er es wisse, à son insu.",
+                "de": "Falsch: Jule sagt, Brandt zahle die Miete, „ohne dass er es wisse“."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-jule",
+              "question": "Wie reagiert Jule auf Brandts Satz, sie sei unwichtig?",
+              "options": [
+                { "optionId": "o1", "text": "Sie stimmt zu und lobt Brandts Bescheidenheit" },
+                { "optionId": "o2", "text": "Sie widerspricht empört der Fotografin" },
+                {
+                  "optionId": "o3",
+                  "text": "Sie lacht leise und verweist darauf, wie wichtig Brandt ihre Werkbank ist"
+                },
+                { "optionId": "o4", "text": "Sie erzählt von Brandts Preisen und Aufträgen" }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "Jule laughs quietly and adds: wehe, jemand rückt ihre Werkbank einen Zentimeter. So Brandt cares a lot about her own things.",
+                "fr": "Jule rit doucement et ajoute : wehe, jemand rückt ihre Werkbank einen Zentimeter. Brandt tient donc beaucoup à ses affaires.",
+                "de": "Jule lacht leise und sagt: „Aber wehe, jemand rückt ihre Werkbank einen Zentimeter.“ Brandt ist ihre Ordnung also sehr wichtig."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "structure",
+      "stage": "structure",
+      "role": "exercise",
+      "label": { "en": "Structure", "fr": "Structure", "de": "Aufbau" },
+      "pages": [
+        {
+          "pageId": "structure",
+          "estimatedDurationS": 75,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the information in the order the text gives it.",
+            "fr": "Remettez les informations dans l’ordre du texte.",
+            "de": "Bring die Informationen in die Reihenfolge des Textes."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "structure-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_order",
+              "itemId": "order",
+              "pieces": [
+                { "pieceId": "p-samir", "text": "Samir muss den Arm seiner Figur ändern." },
+                { "pieceId": "p-abend", "text": "Brandt steht abends allein vor dem Stein." },
+                { "pieceId": "p-kiste", "text": "Brandt lässt eine Transportkiste neu bauen." },
+                { "pieceId": "p-mann", "text": "Brandts früherer Mann nennt sie verbissen." },
+                { "pieceId": "p-foto", "text": "Brandt sträubt sich gegen das Foto." }
+              ],
+              "acceptedOrders": [["p-kiste", "p-foto", "p-samir", "p-mann", "p-abend"]],
+              "answerExplanation": {
+                "en": "Order in the text: crate (Dienstagvormittag), photo, Samir (Nachmittag), the ex-husband by phone, and the evening scene at the end.",
+                "fr": "Ordre du texte : la caisse (Dienstagvormittag), la photo, Samir (Nachmittag), l’ex-mari au téléphone, puis la scène du soir à la fin.",
+                "de": "Reihenfolge im Text: Kiste (Dienstagvormittag), Foto, Samir (Nachmittag), der frühere Mann am Telefon, am Ende die Abendszene."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "stage": "exam",
+      "role": "exam",
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam",
+          "estimatedDurationS": 197,
+          "timeLimitS": 300,
+          "instructions": {
+            "en": "Read the new document and answer the questions. No help this time.",
+            "fr": "Lisez le nouveau document et répondez aux questions. Cette fois, sans aide.",
+            "de": "Lies das neue Dokument und beantworte die Fragen. Diesmal ohne Hilfe."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "exam-document",
+              "documentId": "exam",
+              "view": "exam",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-selbst",
+              "question": "Wie sieht Specht sich selbst?",
+              "options": [
+                { "optionId": "o1", "text": "Als ruhigen, einfachen Menschen" },
+                { "optionId": "o2", "text": "Als ungeduldigen Chef" },
+                { "optionId": "o3", "text": "Als sparsamen Handwerker" },
+                { "optionId": "o4", "text": "Als großzügigen Vater" }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "He calls himself ein ruhiger Typ and ein einfacher Mensch.",
+                "fr": "Il se dit ein ruhiger Typ et ein einfacher Mensch.",
+                "de": "Er nennt sich „ein ruhiger Typ“ und „ein einfacher Mensch“."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "x-telefon",
+              "statement": "Am Telefon wird Specht unfreundlich und laut.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: he speaks leise und freundlich. His voice only becomes sharp after the call.",
+                "fr": "Faux : il parle leise und freundlich. Sa voix ne devient sèche qu’après l’appel.",
+                "de": "Falsch: Er spricht „leise und freundlich“. Erst nach dem Gespräch wird seine Stimme scharf."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-geselle",
+              "question": "Warum wird Specht gegenüber seinem Gesellen scharf?",
+              "options": [
+                { "optionId": "o1", "text": "Weil Ben zu spät zur Arbeit gekommen ist" },
+                { "optionId": "o2", "text": "Weil Ben das Telefon nicht abgenommen hat" },
+                { "optionId": "o3", "text": "Weil Ben die Werkstatt nicht gefegt hat" },
+                { "optionId": "o4", "text": "Weil Ben eine Tischplatte zu schmal gesägt hat" }
+              ],
+              "answerOptionId": "o4",
+              "answerExplanation": {
+                "en": "The table top is three millimetres too narrow. Specht sweeps the workshop himself, so o3 is wrong.",
+                "fr": "Le plateau est trop étroit de trois millimètres. Specht balaie lui-même l’atelier, donc o3 est faux.",
+                "de": "Die Tischplatte ist drei Millimeter zu schmal. Die Werkstatt fegt Specht selbst, o3 ist also falsch."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-abschluss",
+              "question": "Was verrät die Szene bei Mias Abschlussfeier über ihren Vater?",
+              "options": [
+                {
+                  "optionId": "o1",
+                  "text": "Dass ihn der Moment mehr berührt, als er zugeben würde"
+                },
+                { "optionId": "o2", "text": "Dass ihm die Familie gleichgültig geworden ist" },
+                { "optionId": "o3", "text": "Dass er sich für Mias Noten schämt" },
+                { "optionId": "o4", "text": "Dass er die Feier absichtlich versäumt hat" }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "He is late, brings a bought bouquet and then cries in front of everyone, what he would never admit. Under the busy surface he is moved.",
+                "fr": "Il est en retard, apporte un bouquet acheté et pleure devant tout le monde, ce qu’il n’avouerait jamais. Sous l’agitation, il est ému.",
+                "de": "Er kommt zu spät, bringt einen gekauften Strauß und weint vor allen, was er nie zugeben würde. Unter der Hektik ist er gerührt."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "x-fegen",
+              "statement": "Specht überlässt das Fegen der Werkstatt einem Angestellten.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: he sweeps the workshop himself, although he pays someone to do it.",
+                "fr": "Faux : il balaie l’atelier lui-même, bien qu’il paie quelqu’un pour le faire.",
+                "de": "Falsch: Er fegt die Werkstatt selbst, obwohl er dafür jemanden bezahlt."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

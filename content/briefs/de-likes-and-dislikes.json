@@ -1,0 +1,602 @@
+{
+  "schemaVersion": 2,
+  "id": "de-likes-and-dislikes",
+  "lang": "de",
+  "level": "B1",
+  "locales": ["en", "fr", "de"],
+  "title": "Vorlieben und Abneigungen",
+  "objective": {
+    "en": "Express strong likes and dislikes with about twelve words.",
+    "fr": "Exprimer de fortes préférences et aversions avec une douzaine de mots.",
+    "de": "Starke Vorlieben und Abneigungen mit etwa zwölf Wörtern ausdrücken."
+  },
+  "estimatedMinutes": 20,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:30:20.955Z",
+    "inputHashes": { "outline": "b597e551e4c46f341e5f4fc71eb4f7c9b6adcc982b70d98947efdd1ba8655ef9" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Twelve words for strong feelings of liking and disliking: five nouns (preference, aversion, passion, enthusiasm, taste), adjectives, two verbs and the expressions with können. The lesson comes before the emotions lesson and the past tenses.",
+    "fr": "Douze mots pour exprimer de fortes préférences et aversions : cinq noms (préférence, aversion, passion, enthousiasme, goût), des adjectifs, deux verbes et les expressions avec können. La leçon précède celle sur les émotions et les temps du passé.",
+    "de": "Zwölf Wörter für starke Zuneigung und Abneigung: fünf Nomen (Vorliebe, Abneigung, Leidenschaft, Begeisterung, Geschmack), Adjektive, zwei Verben und die Ausdrücke mit können. Die Lektion steht vor der Lektion zu Gefühlen und den Vergangenheitsformen."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve words fit the intent of about twelve and give two even groups.",
+    "fr": "Douze mots correspondent à l’objectif d’environ douze et donnent deux groupes équilibrés.",
+    "de": "Zwölf Wörter entsprechen der Vorgabe von etwa zwölf und ergeben zwei ausgewogene Gruppen."
+  },
+  "difficultyBalance": {
+    "en": "Most words are core B1 vocabulary; the nouns Abneigung and Begeisterung and the fixed expressions are more demanding.",
+    "fr": "La plupart des mots sont du vocabulaire B1 de base ; les noms Abneigung et Begeisterung et les expressions figées sont plus difficiles.",
+    "de": "Die meisten Wörter gehören zum B1-Grundwortschatz; die Nomen Abneigung und Begeisterung und die festen Ausdrücke sind anspruchsvoller."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "nomen",
+      "label": {
+        "en": "Nouns of liking and disliking",
+        "fr": "Noms pour aimer et ne pas aimer",
+        "de": "Nomen für Zuneigung und Abneigung"
+      },
+      "targetIds": ["vorliebe", "abneigung", "leidenschaft", "begeisterung", "geschmack"],
+      "introduction": {
+        "en": "These **nouns** name what you like or dislike:\n\n- `die Vorliebe`\n- `die Abneigung`\n- `die Leidenschaft`\n- `die Begeisterung`\n- `der Geschmack`\n\nFour of them are **feminine**; only `der Geschmack` is masculine.",
+        "fr": "Ces **noms** désignent ce que l’on aime ou n’aime pas :\n\n- `die Vorliebe`\n- `die Abneigung`\n- `die Leidenschaft`\n- `die Begeisterung`\n- `der Geschmack`\n\nQuatre sont **féminins** ; seul `der Geschmack` est masculin.",
+        "de": "Diese **Nomen** benennen, was man mag oder nicht mag:\n\n- `die Vorliebe`\n- `die Abneigung`\n- `die Leidenschaft`\n- `die Begeisterung`\n- `der Geschmack`\n\nVier davon sind **feminin**, nur `der Geschmack` ist maskulin."
+      }
+    },
+    {
+      "id": "ausdruecke",
+      "label": {
+        "en": "Adjectives, verbs and expressions",
+        "fr": "Adjectifs, verbes et expressions",
+        "de": "Adjektive, Verben und Ausdrücke"
+      },
+      "targetIds": [
+        "begeistert",
+        "verrueckt",
+        "ausstehen",
+        "leiden",
+        "bevorzugen",
+        "schwaermen",
+        "ekelhaft"
+      ],
+      "introduction": {
+        "en": "With these words and **expressions** you say how strongly you feel:\n\n- `begeistert`\n- `verrückt nach`\n- `nicht ausstehen können`\n- `nicht leiden können`\n- `bevorzugen`\n- `schwärmen für`\n- `ekelhaft`\n\nFor strong dislike, use `nicht ausstehen können` or `nicht leiden können`.",
+        "fr": "Avec ces mots et ces **expressions**, vous dites à quel point vous ressentez quelque chose :\n\n- `begeistert`\n- `verrückt nach`\n- `nicht ausstehen können`\n- `nicht leiden können`\n- `bevorzugen`\n- `schwärmen für`\n- `ekelhaft`\n\nPour une forte aversion, utilisez `nicht ausstehen können` ou `nicht leiden können`.",
+        "de": "Mit diesen Wörtern und **Ausdrücken** sagst du, wie stark ein Gefühl ist:\n\n- `begeistert`\n- `verrückt nach`\n- `nicht ausstehen können`\n- `nicht leiden können`\n- `bevorzugen`\n- `schwärmen für`\n- `ekelhaft`\n\nFür starke Abneigung verwendest du `nicht ausstehen können` oder `nicht leiden können`."
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "vorliebe",
+      "term": "Vorliebe",
+      "translations": { "en": ["preference"], "fr": ["préférence"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Vorliebe",
+      "examForms": ["die Vorliebe"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈfoːɐ̯ˌliːbə/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Er hat eine Vorliebe für scharfes Essen.",
+        "translation": {
+          "en": "He has a preference for spicy food.",
+          "fr": "Il a une préférence pour la nourriture épicée."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Vorliebe is a special liking for something.",
+        "fr": "Die Vorliebe est un goût particulier pour quelque chose.",
+        "de": "Die Vorliebe ist eine besondere Zuneigung zu etwas."
+      },
+      "genderExplanation": {
+        "en": "Vorliebe is feminine, so it takes the article die.",
+        "fr": "Vorliebe est féminin : on dit die Vorliebe.",
+        "de": "Vorliebe ist feminin, daher steht der Artikel die."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Er hat eine besondere ",
+        "after": " für scharfes Essen.",
+        "accepted": { "answers": ["Vorliebe", "Leidenschaft"] },
+        "referenceTargetIds": ["vorliebe", "geschmack", "bevorzugen", "ekelhaft"],
+        "explanation": {
+          "en": "Only the feminine noun Vorliebe fits here; Geschmack is masculine.",
+          "fr": "Seul le nom féminin Vorliebe convient ici ; Geschmack est masculin.",
+          "de": "Hier passt nur das feminine Nomen Vorliebe; Geschmack ist maskulin."
+        }
+      },
+      "listeningOptionTargetIds": ["vorliebe", "abneigung", "leidenschaft", "begeisterung"]
+    },
+    {
+      "id": "abneigung",
+      "term": "Abneigung",
+      "translations": { "en": ["aversion"], "fr": ["aversion"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Abneigung",
+      "examForms": ["die Abneigung"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈapˌnaɪ̯ɡʊŋ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Sie hat eine starke Abneigung gegen Spinnen.",
+        "translation": {
+          "en": "She has a strong aversion to spiders.",
+          "fr": "Elle a une forte aversion pour les araignées."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Abneigung is a strong feeling of not liking something.",
+        "fr": "Die Abneigung est le sentiment fort de ne pas aimer quelque chose.",
+        "de": "Die Abneigung ist das starke Gefühl, etwas nicht zu mögen."
+      },
+      "genderExplanation": {
+        "en": "Abneigung is feminine, so it takes the article die.",
+        "fr": "Abneigung est féminin : on dit die Abneigung.",
+        "de": "Abneigung ist feminin, daher steht der Artikel die."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Sie hat eine starke ",
+        "after": " gegen Spinnen.",
+        "accepted": { "answers": ["Abneigung"] },
+        "referenceTargetIds": ["abneigung", "begeistert", "schwaermen", "geschmack"],
+        "explanation": {
+          "en": "Only Abneigung fits with „gegen“; Geschmack is masculine.",
+          "fr": "Seul Abneigung convient avec « gegen » ; Geschmack est masculin.",
+          "de": "Nur Abneigung passt zu „gegen“; Geschmack ist maskulin."
+        }
+      },
+      "listeningOptionTargetIds": ["abneigung", "vorliebe", "leidenschaft", "begeisterung"]
+    },
+    {
+      "id": "leidenschaft",
+      "term": "Leidenschaft",
+      "translations": { "en": ["passion"], "fr": ["passion"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Leidenschaft",
+      "examForms": ["die Leidenschaft"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈlaɪ̯dn̩ʃaft/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Fotografieren ist meine Leidenschaft.",
+        "translation": {
+          "en": "Photography is my passion.",
+          "fr": "La photographie est ma passion."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Leidenschaft is a very strong interest in something you love doing.",
+        "fr": "Die Leidenschaft est un intérêt très fort pour ce que l’on aime faire.",
+        "de": "Die Leidenschaft ist ein sehr starkes Interesse an etwas, das man gern tut."
+      },
+      "genderExplanation": {
+        "en": "Leidenschaft is feminine, so it takes the article die.",
+        "fr": "Leidenschaft est féminin : on dit die Leidenschaft.",
+        "de": "Leidenschaft ist feminin, daher steht der Artikel die."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Fotografieren ist meine große ",
+        "after": ".",
+        "accepted": { "answers": ["Leidenschaft", "Vorliebe"] },
+        "referenceTargetIds": ["leidenschaft", "verrueckt", "bevorzugen", "ausstehen"],
+        "explanation": {
+          "en": "After „meine große“ you need a feminine noun: Leidenschaft.",
+          "fr": "Après « meine große », il faut un nom féminin : Leidenschaft.",
+          "de": "Nach „meine große“ braucht man ein feminines Nomen: Leidenschaft."
+        }
+      },
+      "listeningOptionTargetIds": ["leidenschaft", "vorliebe", "abneigung", "begeisterung"]
+    },
+    {
+      "id": "begeisterung",
+      "term": "Begeisterung",
+      "translations": { "en": ["enthusiasm"], "fr": ["enthousiasme"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Begeisterung",
+      "examForms": ["die Begeisterung"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/bəˈɡaɪ̯stərʊŋ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Die Kinder spielten mit großer Begeisterung.",
+        "translation": {
+          "en": "The children played with great enthusiasm.",
+          "fr": "Les enfants jouaient avec beaucoup d’enthousiasme."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Begeisterung is great joy and excitement about something.",
+        "fr": "Die Begeisterung est une grande joie et un grand enthousiasme pour quelque chose.",
+        "de": "Die Begeisterung ist große Freude und Aufregung über etwas."
+      },
+      "genderExplanation": {
+        "en": "Begeisterung is feminine, so it takes the article die.",
+        "fr": "Begeisterung est féminin : on dit die Begeisterung.",
+        "de": "Begeisterung ist feminin, daher steht der Artikel die."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Die Kinder spielten mit großer ",
+        "after": " im Garten.",
+        "accepted": { "answers": ["Begeisterung", "Leidenschaft"] },
+        "referenceTargetIds": ["begeisterung", "ekelhaft", "leiden", "geschmack"],
+        "explanation": {
+          "en": "„Mit großer“ needs a feminine noun: Begeisterung.",
+          "fr": "« Mit großer » demande un nom féminin : Begeisterung.",
+          "de": "„Mit großer“ verlangt ein feminines Nomen: Begeisterung."
+        }
+      },
+      "listeningOptionTargetIds": ["begeisterung", "begeistert", "vorliebe", "abneigung"]
+    },
+    {
+      "id": "geschmack",
+      "term": "Geschmack",
+      "translations": { "en": ["taste"], "fr": ["goût"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "der Geschmack",
+      "examForms": ["der Geschmack"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɡəˈʃmak/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Das Essen hat einen sehr guten Geschmack.",
+        "translation": {
+          "en": "The food has a very good taste.",
+          "fr": "Le repas a très bon goût."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Der Geschmack is how food tastes, or what someone likes.",
+        "fr": "Der Geschmack est le goût d’un aliment ou ce que quelqu’un aime.",
+        "de": "Der Geschmack ist, wie etwas schmeckt oder was jemand mag."
+      },
+      "genderExplanation": {
+        "en": "Geschmack is masculine, so it takes the article der.",
+        "fr": "Geschmack est masculin : on dit der Geschmack.",
+        "de": "Geschmack ist maskulin, daher steht der Artikel der."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Das Essen hat einen sehr guten ",
+        "after": ".",
+        "accepted": { "answers": ["Geschmack"] },
+        "referenceTargetIds": ["geschmack", "abneigung", "begeistert", "schwaermen"],
+        "explanation": {
+          "en": "„Einen guten“ needs a masculine noun: Geschmack.",
+          "fr": "« Einen guten » demande un nom masculin : Geschmack.",
+          "de": "„Einen guten“ verlangt ein maskulines Nomen: Geschmack."
+        }
+      },
+      "listeningOptionTargetIds": ["geschmack", "begeisterung", "vorliebe", "leidenschaft"]
+    },
+    {
+      "id": "begeistert",
+      "term": "begeistert",
+      "translations": { "en": ["enthusiastic"], "fr": ["enthousiaste"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "begeistert",
+      "examForms": ["begeistert"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/bəˈɡaɪ̯stɐt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Wir sind von dem Konzert begeistert.",
+        "translation": {
+          "en": "We are enthusiastic about the concert.",
+          "fr": "Nous sommes enthousiasmés par le concert."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Begeistert describes someone who is very excited and pleased about something.",
+        "fr": "Begeistert décrit une personne très enthousiaste et ravie de quelque chose.",
+        "de": "Begeistert beschreibt jemanden, der sich sehr über etwas freut."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Wir sind von dem Konzert total ",
+        "after": ".",
+        "accepted": { "answers": ["begeistert"] },
+        "referenceTargetIds": ["begeistert", "vorliebe", "bevorzugen", "ausstehen"],
+        "explanation": {
+          "en": "After „sind“ you need an adjective: begeistert.",
+          "fr": "Après « sind », il faut un adjectif : begeistert.",
+          "de": "Nach „sind“ braucht man ein Adjektiv: begeistert."
+        }
+      },
+      "listeningOptionTargetIds": ["begeistert", "begeisterung", "bevorzugen", "ekelhaft"]
+    },
+    {
+      "id": "verrueckt",
+      "term": "verrückt nach",
+      "translations": { "en": ["crazy about"], "fr": ["fou de"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "verrückt nach",
+      "examForms": ["verrückt nach"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/fɛɐ̯ˈʁʏkt naːx/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Meine Schwester ist verrückt nach Schokoladeneis.",
+        "translation": {
+          "en": "My sister is crazy about chocolate ice cream.",
+          "fr": "Ma sœur est folle de glace au chocolat."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Verrückt nach is a colloquial way to say you love something very much.",
+        "fr": "Verrückt nach est une façon familière de dire qu’on adore quelque chose.",
+        "de": "Verrückt nach ist umgangssprachlich und heißt, dass man etwas sehr mag."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Meine Schwester ist total ",
+        "after": " Schokoladeneis.",
+        "accepted": { "answers": ["verrückt nach"] },
+        "referenceTargetIds": ["verrueckt", "leidenschaft", "ekelhaft", "schwaermen"],
+        "explanation": {
+          "en": "„Ist total … Schokoladeneis“ needs verrückt nach.",
+          "fr": "« Ist total … Schokoladeneis » demande verrückt nach.",
+          "de": "„Ist total … Schokoladeneis“ verlangt verrückt nach."
+        }
+      },
+      "listeningOptionTargetIds": ["verrueckt", "begeistert", "ekelhaft", "bevorzugen"]
+    },
+    {
+      "id": "ausstehen",
+      "term": "nicht ausstehen können",
+      "translations": { "en": ["can't stand"], "fr": ["ne pas supporter"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "nicht ausstehen können",
+      "examForms": ["nicht ausstehen können"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/nɪçt ˈaʊ̯sˌʃteːən ˈkœnən/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Ich kann laute Nachbarn nicht ausstehen.",
+        "translation": {
+          "en": "I can't stand loud neighbours.",
+          "fr": "Je ne supporte pas les voisins bruyants."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Nicht ausstehen können means you strongly dislike a person or thing.",
+        "fr": "Nicht ausstehen können signifie qu’on déteste fortement une personne ou une chose.",
+        "de": "Nicht ausstehen können heißt, dass man jemanden oder etwas überhaupt nicht mag."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Ich kann Leute, die ständig lügen, ",
+        "after": ".",
+        "accepted": { "answers": ["nicht ausstehen", "nicht leiden"] },
+        "referenceTargetIds": ["ausstehen", "begeisterung", "geschmack", "ekelhaft"],
+        "explanation": {
+          "en": "With „kann“ and a negative feeling you use nicht ausstehen.",
+          "fr": "Avec « kann » et un sentiment négatif, on utilise nicht ausstehen.",
+          "de": "Mit „kann“ und einem negativen Gefühl steht nicht ausstehen."
+        }
+      },
+      "listeningOptionTargetIds": ["ausstehen", "leiden", "bevorzugen", "schwaermen"]
+    },
+    {
+      "id": "leiden",
+      "term": "nicht leiden können",
+      "translations": { "en": ["can't bear"], "fr": ["ne pas pouvoir souffrir"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "nicht leiden können",
+      "examForms": ["nicht leiden können"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/nɪçt ˈlaɪ̯dn̩ ˈkœnən/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Meinen Chef kann ich nicht leiden.",
+        "translation": { "en": "I can't bear my boss.", "fr": "Je ne peux pas souffrir mon chef." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Nicht leiden können means you really dislike someone.",
+        "fr": "Nicht leiden können signifie qu’on n’aime vraiment pas quelqu’un.",
+        "de": "Nicht leiden können heißt, dass man jemanden wirklich nicht mag."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Meinen neuen Nachbarn kann ich leider ",
+        "after": ". Er ist so unfreundlich.",
+        "accepted": { "answers": ["nicht leiden", "nicht ausstehen"] },
+        "referenceTargetIds": ["leiden", "abneigung", "begeistert", "verrueckt"],
+        "explanation": {
+          "en": "„Kann ich leider“ with a dislike needs nicht leiden.",
+          "fr": "« Kann ich leider » avec une aversion demande nicht leiden.",
+          "de": "„Kann ich leider“ mit einer Abneigung verlangt nicht leiden."
+        }
+      },
+      "listeningOptionTargetIds": ["leiden", "ausstehen", "bevorzugen", "schwaermen"]
+    },
+    {
+      "id": "bevorzugen",
+      "term": "bevorzugen",
+      "translations": { "en": ["prefer"], "fr": ["préférer"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "bevorzugen",
+      "examForms": ["bevorzugen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/bəˈfoːɐ̯ˌtsuːɡn̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Viele Leute bevorzugen Tee am Abend.",
+        "translation": {
+          "en": "Many people prefer tea in the evening.",
+          "fr": "Beaucoup de gens préfèrent le thé le soir."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Bevorzugen means to like one thing better than another, or to treat someone better.",
+        "fr": "Bevorzugen signifie préférer une chose à une autre, ou favoriser quelqu’un.",
+        "de": "Bevorzugen heißt, etwas lieber zu mögen als etwas anderes oder jemanden besser zu behandeln."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Ich will niemanden ",
+        "after": ", alle sollen gleich behandelt werden.",
+        "accepted": { "answers": ["bevorzugen"] },
+        "referenceTargetIds": ["bevorzugen", "vorliebe", "ekelhaft", "begeisterung"],
+        "explanation": {
+          "en": "After „will niemanden“ you need a verb: bevorzugen.",
+          "fr": "Après « will niemanden », il faut un verbe : bevorzugen.",
+          "de": "Nach „will niemanden“ braucht man ein Verb: bevorzugen."
+        }
+      },
+      "listeningOptionTargetIds": ["bevorzugen", "vorliebe", "begeistert", "verrueckt"]
+    },
+    {
+      "id": "schwaermen",
+      "term": "schwärmen für",
+      "translations": { "en": ["rave about"], "fr": ["s’enthousiasmer pour"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "schwärmen für",
+      "examForms": ["schwärmen für"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʃvɛʁmən fyːɐ̯/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Sie schwärmt für ihren Lieblingssänger.",
+        "translation": {
+          "en": "She raves about her favourite singer.",
+          "fr": "Elle s’enthousiasme pour son chanteur préféré."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Schwärmen für means to talk with great admiration about a person or thing.",
+        "fr": "Schwärmen für signifie parler avec beaucoup d’admiration d’une personne ou d’une chose.",
+        "de": "Schwärmen für heißt, voller Bewunderung von jemandem oder etwas zu sprechen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Sie kann stundenlang ",
+        "after": " für ihren Lieblingssänger.",
+        "accepted": { "answers": ["schwärmen"] },
+        "referenceTargetIds": ["schwaermen", "geschmack", "abneigung", "ausstehen"],
+        "explanation": {
+          "en": "After „kann stundenlang“ you need an infinitive verb: schwärmen.",
+          "fr": "Après « kann stundenlang », il faut un verbe à l’infinitif : schwärmen.",
+          "de": "Nach „kann stundenlang“ braucht man ein Verb im Infinitiv: schwärmen."
+        }
+      },
+      "listeningOptionTargetIds": ["schwaermen", "bevorzugen", "verrueckt", "begeistert"]
+    },
+    {
+      "id": "ekelhaft",
+      "term": "ekelhaft",
+      "translations": { "en": ["disgusting"], "fr": ["dégoûtant"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "ekelhaft",
+      "examForms": ["ekelhaft"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈeːkl̩haft/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Der Geruch im Keller ist ekelhaft.",
+        "translation": {
+          "en": "The smell in the cellar is disgusting.",
+          "fr": "L’odeur dans la cave est dégoûtante."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Ekelhaft describes something that makes you feel sick or very unhappy.",
+        "fr": "Ekelhaft décrit quelque chose qui donne la nausée ou qui est très désagréable.",
+        "de": "Ekelhaft beschreibt etwas, das einem Übelkeit macht oder sehr unangenehm ist."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Der Kaffee schmeckt ",
+        "after": "! Ich trinke ihn nicht.",
+        "accepted": { "answers": ["ekelhaft"] },
+        "referenceTargetIds": ["ekelhaft", "leidenschaft", "bevorzugen", "begeistert"],
+        "explanation": {
+          "en": "After „schmeckt“ you need an adjective that fits the dislike: ekelhaft.",
+          "fr": "Après « schmeckt », il faut un adjectif qui exprime le dégoût : ekelhaft.",
+          "de": "Nach „schmeckt“ braucht man ein Adjektiv, das zur Abneigung passt: ekelhaft."
+        }
+      },
+      "listeningOptionTargetIds": ["ekelhaft", "abneigung", "ausstehen", "leiden"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

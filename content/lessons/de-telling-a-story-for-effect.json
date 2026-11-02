@@ -1,0 +1,1026 @@
+{
+  "schemaVersion": 2,
+  "id": "de-telling-a-story-for-effect",
+  "lang": "de",
+  "level": "C2",
+  "locales": ["en", "fr", "de"],
+  "title": "Eine Geschichte pointiert erzählen",
+  "objective": {
+    "en": "Tell an anecdote with suspense, timing and a punchline: build expectation, announce the unbelievable and wrap the story up.",
+    "fr": "Raconter une anecdote avec suspense, rythme et chute : créer l’attente, annoncer l’incroyable et conclure le récit.",
+    "de": "Eine Anekdote mit Spannung, Timing und Pointe erzählen: Erwartung aufbauen, Unglaubliches ankündigen und die Geschichte auf den Punkt bringen."
+  },
+  "estimatedMinutes": 13,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:39:58.800Z",
+    "inputHashes": {
+      "outline": "3e1324d01d0009ef9aa1048a6cd3762bd3459f2ec936ea61b6099bfe6919a9c1",
+      "brief": "365adff70f6f45644d7d8045a485a092f7a07f5acda8f1cdbb6a97d0cde8cd7d"
+    }
+  },
+  "kind": "functions",
+  "theme": "personal_identification",
+  "steps": [
+    {
+      "id": "flashcards",
+      "stage": "flashcards",
+      "role": "presentation",
+      "label": { "en": "Flashcards", "fr": "Cartes mémoire", "de": "Karteikarten" },
+      "pages": [
+        {
+          "pageId": "cards-expressions",
+          "estimatedDurationS": 48,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Recall each expression, then turn the card to check it.",
+            "fr": "Rappelez-vous chaque expression, puis retournez la carte pour vérifier.",
+            "de": "Erinnere dich an jeden Ausdruck und dreh dann die Karte um."
+          },
+          "items": [
+            {
+              "type": "function_flashcards",
+              "itemId": "cards-expressions",
+              "side": "expressions",
+              "ids": [
+                "stell-dir-vor",
+                "und-jetzt-kommts",
+                "ob-dus-glaubst",
+                "lange-rede-kurzer-sinn"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue",
+      "stage": "dialogue",
+      "role": "presentation",
+      "label": { "en": "Dialogue", "fr": "Dialogue", "de": "Dialog" },
+      "pages": [
+        {
+          "pageId": "dialogue",
+          "estimatedDurationS": 140,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read and listen. Turn a line to see its translation and a note.",
+            "fr": "Lisez et écoutez. Retournez une réplique pour voir sa traduction et une remarque.",
+            "de": "Lies und hör zu. Dreh eine Zeile um, um Übersetzung und Hinweis zu sehen."
+          },
+          "items": [
+            {
+              "type": "function_dialogue",
+              "itemId": "dialogue",
+              "lines": [
+                {
+                  "lineId": "line-1",
+                  "roleId": "freund",
+                  "text": "Du bist gestern erst nach dem ersten Lied gekommen. Was war denn los?",
+                  "translation": {
+                    "en": "You only arrived after the first song yesterday. What was going on?",
+                    "fr": "Tu n’es arrivée qu’après la première chanson hier. Que s’est-il passé ?"
+                  },
+                  "note": {
+                    "en": "The friend asks and gives the storyteller her cue.",
+                    "fr": "L’ami pose la question et donne le signal à la narratrice.",
+                    "de": "Der Freund fragt nach und gibt der Erzählerin das Stichwort."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-2",
+                  "roleId": "erzaehlerin",
+                  "text": "Stell dir vor: Ich suche eine halbe Stunde lang meinen Schlüssel!",
+                  "translation": {
+                    "en": "Imagine this: I spend half an hour looking for my key!",
+                    "fr": "Figure-toi : je cherche ma clé pendant une demi-heure !"
+                  },
+                  "note": {
+                    "en": "Stell dir vor opens the story. The present tense makes it vivid.",
+                    "fr": "Stell dir vor ouvre le récit. Le présent le rend vivant.",
+                    "de": "Stell dir vor eröffnet die Geschichte. Das Präsens macht sie lebendig."
+                  },
+                  "expressionIds": ["stell-dir-vor"]
+                },
+                {
+                  "lineId": "line-3",
+                  "roleId": "freund",
+                  "text": "Hattest du ihn nicht in der Manteltasche?",
+                  "translation": {
+                    "en": "Didn’t you have it in your coat pocket?",
+                    "fr": "Tu ne l’avais pas dans la poche de ton manteau ?"
+                  },
+                  "note": {
+                    "en": "A natural question from the listener.",
+                    "fr": "Une question naturelle de l’auditeur.",
+                    "de": "Eine natürliche Frage des Zuhörers."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-4",
+                  "roleId": "erzaehlerin",
+                  "text": "Nein. Ich habe jede Tasche umgedreht, und dann – und jetzt kommt’s – sehe ich, dass die Kühlschranktür einen Spalt offen steht.",
+                  "translation": {
+                    "en": "No. I turned out every pocket, and then – and now comes the best part – I see that the fridge door is slightly open.",
+                    "fr": "Non. J’ai retourné chaque poche, et puis – et maintenant, tiens-toi bien – je vois que la porte du frigo est entrouverte."
+                  },
+                  "note": {
+                    "en": "The pause with dashes and Und jetzt kommt’s builds suspense.",
+                    "fr": "La pause avec les tirets et Und jetzt kommt’s crée du suspense.",
+                    "de": "Die Pause mit Gedankenstrichen und Und jetzt kommt’s baut Spannung auf."
+                  },
+                  "expressionIds": ["und-jetzt-kommts"]
+                },
+                {
+                  "lineId": "line-5",
+                  "roleId": "freund",
+                  "text": "Und? Was hast du im Kühlschrank gefunden?",
+                  "translation": {
+                    "en": "And? What did you find in the fridge?",
+                    "fr": "Et ? Qu’as-tu trouvé dans le frigo ?"
+                  },
+                  "note": {
+                    "en": "The listener plays along with the suspense.",
+                    "fr": "L’auditeur joue le jeu du suspense.",
+                    "de": "Der Zuhörer spielt beim Spannungsaufbau mit."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-6",
+                  "roleId": "erzaehlerin",
+                  "text": "Ob du’s glaubst oder nicht: Der Schlüssel lag neben der Butter!",
+                  "translation": {
+                    "en": "Believe it or not: the key was lying next to the butter!",
+                    "fr": "Crois-le ou non : la clé était à côté du beurre !"
+                  },
+                  "note": {
+                    "en": "Ob du’s glaubst oder nicht prepares the unbelievable punchline.",
+                    "fr": "Ob du’s glaubst oder nicht prépare la chute incroyable.",
+                    "de": "Ob du’s glaubst oder nicht bereitet die unglaubliche Pointe vor."
+                  },
+                  "expressionIds": ["ob-dus-glaubst"]
+                },
+                {
+                  "lineId": "line-7",
+                  "roleId": "freund",
+                  "text": "Wie kam er denn dorthin?",
+                  "translation": {
+                    "en": "How did it get there?",
+                    "fr": "Comment est-elle arrivée là ?"
+                  },
+                  "note": {
+                    "en": "The friend asks for the explanation.",
+                    "fr": "L’ami demande l’explication.",
+                    "de": "Der Freund fragt nach der Erklärung."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-8",
+                  "roleId": "erzaehlerin",
+                  "text": "Ich hatte ihn beim Einkaufen mit der Milch eingeräumt. Lange Rede, kurzer Sinn: Ich kam zu spät zum Konzert.",
+                  "translation": {
+                    "en": "I had put it away with the milk after shopping. Long story short: I was late for the concert.",
+                    "fr": "Je l’avais rangée avec le lait après les courses. Pour faire court : je suis arrivée en retard au concert."
+                  },
+                  "note": {
+                    "en": "Lange Rede, kurzer Sinn sums up the whole story.",
+                    "fr": "Lange Rede, kurzer Sinn résume toute l’histoire.",
+                    "de": "Lange Rede, kurzer Sinn fasst die ganze Geschichte zusammen."
+                  },
+                  "expressionIds": ["lange-rede-kurzer-sinn"]
+                },
+                {
+                  "lineId": "line-9",
+                  "roleId": "freund",
+                  "text": "Und hat man dich noch hineingelassen?",
+                  "translation": {
+                    "en": "And did they still let you in?",
+                    "fr": "Et t’a-t-on quand même laissée entrer ?"
+                  },
+                  "note": {
+                    "en": "A last question rounds off the exchange.",
+                    "fr": "Une dernière question clôt l’échange.",
+                    "de": "Eine letzte Frage rundet das Gespräch ab."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-10",
+                  "roleId": "erzaehlerin",
+                  "text": "Ja, in der Pause. Seitdem trage ich den Schlüssel an einem Band um den Hals.",
+                  "translation": {
+                    "en": "Yes, during the break. Since then I wear the key on a string around my neck.",
+                    "fr": "Oui, pendant l’entracte. Depuis, je porte la clé à un cordon autour du cou."
+                  },
+                  "note": {
+                    "en": "A small second punchline ends the anecdote.",
+                    "fr": "Une petite seconde chute termine l’anecdote.",
+                    "de": "Eine kleine zweite Pointe beschließt die Anekdote."
+                  },
+                  "expressionIds": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matching",
+      "stage": "matching",
+      "role": "exercise",
+      "label": { "en": "Matching", "fr": "Association", "de": "Zuordnen" },
+      "pages": [
+        {
+          "pageId": "match-expressions-1",
+          "estimatedDurationS": 48,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each expression with its translation.",
+            "fr": "Associez chaque expression à sa traduction.",
+            "de": "Ordne jedem Ausdruck seine Übersetzung zu."
+          },
+          "items": [
+            {
+              "type": "function_matching",
+              "itemId": "match-expressions-1",
+              "side": "expressions",
+              "pairs": [
+                {
+                  "id": "stell-dir-vor",
+                  "answerExplanation": {
+                    "en": "Opens a story with surprising news.",
+                    "fr": "Ouvre un récit par une nouvelle surprenante.",
+                    "de": "Eröffnet eine Erzählung mit einer überraschenden Neuigkeit."
+                  }
+                },
+                {
+                  "id": "und-jetzt-kommts",
+                  "answerExplanation": {
+                    "en": "Builds suspense right before the punchline.",
+                    "fr": "Crée du suspense juste avant la chute.",
+                    "de": "Baut unmittelbar vor der Pointe Spannung auf."
+                  }
+                },
+                {
+                  "id": "ob-dus-glaubst",
+                  "answerExplanation": {
+                    "en": "Announces something hard to believe that is true.",
+                    "fr": "Annonce quelque chose de difficile à croire mais vrai.",
+                    "de": "Kündigt etwas schwer Glaubhaftes an, das stimmt."
+                  }
+                },
+                {
+                  "id": "lange-rede-kurzer-sinn",
+                  "answerExplanation": {
+                    "en": "Sums up a long story in one sentence.",
+                    "fr": "Résume un long récit en une phrase.",
+                    "de": "Fasst eine lange Geschichte in einem Satz zusammen."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-gaps",
+      "stage": "dialogue_gaps",
+      "role": "exercise",
+      "label": { "en": "Dialogue gaps", "fr": "Dialogue à trous", "de": "Dialoglücken" },
+      "pages": [
+        {
+          "pageId": "gap-1",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-1",
+              "expressionId": "stell-dir-vor",
+              "context": {
+                "roleId": "freund",
+                "text": "Du strahlst ja über das ganze Gesicht. Gibt es etwas zu erzählen?"
+              },
+              "roleId": "erzaehlerin",
+              "before": "",
+              "after": ", was mir gestern passiert ist!",
+              "choiceExpressionIds": [
+                "stell-dir-vor",
+                "und-jetzt-kommts",
+                "ob-dus-glaubst",
+                "lange-rede-kurzer-sinn"
+              ],
+              "answerExplanation": {
+                "en": "She opens her story with Stell dir vor.",
+                "fr": "Elle ouvre son récit avec Stell dir vor.",
+                "de": "Sie eröffnet ihre Geschichte mit Stell dir vor."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-2",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-2",
+              "expressionId": "und-jetzt-kommts",
+              "context": {
+                "roleId": "freund",
+                "text": "Spann mich nicht auf die Folter – die Pointe, bitte!"
+              },
+              "roleId": "erzaehlerin",
+              "before": "Also gut.",
+              "after": "– halt dich fest: Der Hase hatte meinen Schlüssel im Maul.",
+              "choiceExpressionIds": [
+                "lange-rede-kurzer-sinn",
+                "und-jetzt-kommts",
+                "stell-dir-vor",
+                "ob-dus-glaubst"
+              ],
+              "answerExplanation": {
+                "en": "Und jetzt kommt’s builds suspense right before the punchline.",
+                "fr": "Und jetzt kommt’s crée du suspense juste avant la chute.",
+                "de": "Und jetzt kommt’s baut unmittelbar vor der Pointe Spannung auf."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-3",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-3",
+              "expressionId": "ob-dus-glaubst",
+              "context": {
+                "roleId": "freund",
+                "text": "Das klingt wie erfunden! Stimmt das wirklich?"
+              },
+              "roleId": "erzaehlerin",
+              "before": "",
+              "after": ", es ist alles genau so passiert.",
+              "choiceExpressionIds": [
+                "stell-dir-vor",
+                "lange-rede-kurzer-sinn",
+                "und-jetzt-kommts",
+                "ob-dus-glaubst"
+              ],
+              "answerExplanation": {
+                "en": "The friend doubts the story, so she answers with Ob du’s glaubst oder nicht.",
+                "fr": "L’ami doute de l’histoire, elle répond donc avec Ob du’s glaubst oder nicht.",
+                "de": "Der Freund zweifelt, deshalb antwortet sie mit Ob du’s glaubst oder nicht."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-4",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-4",
+              "expressionId": "lange-rede-kurzer-sinn",
+              "context": { "roleId": "freund", "text": "Kannst du es bitte kurz machen?" },
+              "roleId": "erzaehlerin",
+              "before": "",
+              "after": ": Wir haben die Wohnung genommen.",
+              "choiceExpressionIds": [
+                "ob-dus-glaubst",
+                "und-jetzt-kommts",
+                "lange-rede-kurzer-sinn",
+                "stell-dir-vor"
+              ],
+              "answerExplanation": {
+                "en": "She is asked to be brief, so she sums up with Lange Rede, kurzer Sinn.",
+                "fr": "On lui demande d’être brève, elle résume donc avec Lange Rede, kurzer Sinn.",
+                "de": "Sie soll sich kurzfassen, also fasst sie mit Lange Rede, kurzer Sinn zusammen."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "word-order",
+      "stage": "word_order",
+      "role": "exercise",
+      "label": { "en": "Word order", "fr": "Ordre des mots", "de": "Wortstellung" },
+      "pages": [
+        {
+          "pageId": "order-1",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-1",
+              "expressionId": "stell-dir-vor",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Stell" },
+                { "tokenId": "t2", "text": "dir" },
+                { "tokenId": "t3", "text": "vor," },
+                { "tokenId": "t4", "text": "wen" },
+                { "tokenId": "t5", "text": "ich" },
+                { "tokenId": "t6", "text": "getroffen" },
+                { "tokenId": "t7", "text": "habe!" }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7"]],
+              "answerExplanation": {
+                "en": "Stell dir vor opens, then the subordinate clause with the verb at the end.",
+                "fr": "Stell dir vor ouvre, puis vient la subordonnée avec le verbe à la fin.",
+                "de": "Stell dir vor steht am Anfang, dann folgt der Nebensatz mit dem Verb am Ende."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-2",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-2",
+              "expressionId": "und-jetzt-kommts",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Und" },
+                { "tokenId": "t2", "text": "jetzt" },
+                { "tokenId": "t3", "text": "kommt’s:" },
+                { "tokenId": "t4", "text": "Die" },
+                { "tokenId": "t5", "text": "Tür" },
+                { "tokenId": "t6", "text": "geht" },
+                { "tokenId": "t7", "text": "auf." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7"]],
+              "answerExplanation": {
+                "en": "Und jetzt kommt’s comes first, then the punchline.",
+                "fr": "Und jetzt kommt’s vient d’abord, puis la chute.",
+                "de": "Zuerst Und jetzt kommt’s, dann die Pointe."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-3",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-3",
+              "expressionId": "ob-dus-glaubst",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Ob" },
+                { "tokenId": "t2", "text": "du’s" },
+                { "tokenId": "t3", "text": "glaubst" },
+                { "tokenId": "t4", "text": "oder" },
+                { "tokenId": "t5", "text": "nicht," },
+                { "tokenId": "t6", "text": "ich" },
+                { "tokenId": "t7", "text": "habe" },
+                { "tokenId": "t8", "text": "die" },
+                { "tokenId": "t9", "text": "Prüfung" },
+                { "tokenId": "t10", "text": "bestanden." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [
+                ["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9", "t10"],
+                ["t1", "t2", "t3", "t4", "t5", "t8", "t9", "t7", "t6", "t10"]
+              ],
+              "answerExplanation": {
+                "en": "After the comma the main clause follows; the object may also come first.",
+                "fr": "Après la virgule vient la principale ; le complément peut aussi venir en premier.",
+                "de": "Nach dem Komma folgt der Hauptsatz; das Objekt darf auch vorn stehen."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-4",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-4",
+              "expressionId": "lange-rede-kurzer-sinn",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Lange" },
+                { "tokenId": "t2", "text": "Rede," },
+                { "tokenId": "t3", "text": "kurzer" },
+                { "tokenId": "t4", "text": "Sinn:" },
+                { "tokenId": "t5", "text": "Wir" },
+                { "tokenId": "t6", "text": "kamen" },
+                { "tokenId": "t7", "text": "zu" },
+                { "tokenId": "t8", "text": "spät." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [
+                ["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8"],
+                ["t1", "t2", "t3", "t4", "t7", "t8", "t6", "t5"]
+              ],
+              "answerExplanation": {
+                "en": "The summary phrase comes first, then the result.",
+                "fr": "La formule de résumé vient d’abord, puis le résultat.",
+                "de": "Zuerst die Zusammenfassungsformel, dann das Ergebnis."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "listening",
+      "stage": "listening",
+      "role": "exercise",
+      "label": { "en": "Listening", "fr": "Écoute", "de": "Hören" },
+      "pages": [
+        {
+          "pageId": "listening-1",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-1",
+              "expressionId": "stell-dir-vor",
+              "context": { "roleId": "freund", "text": "Du strahlst ja! Was ist denn passiert?" },
+              "roleId": "erzaehlerin",
+              "options": [
+                { "optionId": "o1", "text": "Stell dir vor, ich habe im Lotto gewonnen!" },
+                { "optionId": "o2", "text": "Der Zug fährt um acht Uhr ab." },
+                { "optionId": "o3", "text": "Nein danke, ich nehme einen Kaffee." },
+                { "optionId": "o4", "text": "Gern, ich komme morgen vorbei." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "She answers with news and opens it with Stell dir vor.",
+                "fr": "Elle répond par une nouvelle qu’elle ouvre avec Stell dir vor.",
+                "de": "Sie antwortet mit einer Neuigkeit und eröffnet sie mit Stell dir vor."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-2",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-2",
+              "expressionId": "und-jetzt-kommts",
+              "context": { "roleId": "freund", "text": "Du hast die Tür aufgemacht. Und dann?" },
+              "roleId": "erzaehlerin",
+              "options": [
+                { "optionId": "o1", "text": "Und jetzt kommt’s: Dahinter stand mein Chef!" },
+                { "optionId": "o2", "text": "Nein danke, ich nehme einen Kaffee." },
+                { "optionId": "o3", "text": "Das Wetter ist heute wunderbar." },
+                { "optionId": "o4", "text": "Ich wohne seit zwei Jahren in Köln." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "The story goes on and she builds suspense before the punchline.",
+                "fr": "Le récit continue et elle crée du suspense avant la chute.",
+                "de": "Die Geschichte geht weiter, und sie baut vor der Pointe Spannung auf."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-3",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-3",
+              "expressionId": "ob-dus-glaubst",
+              "context": {
+                "roleId": "freund",
+                "text": "Das klingt wie erfunden! Stimmt das wirklich?"
+              },
+              "roleId": "erzaehlerin",
+              "options": [
+                { "optionId": "o1", "text": "Das Wetter ist heute wunderbar." },
+                {
+                  "optionId": "o2",
+                  "text": "Ob du’s glaubst oder nicht, es ist genau so passiert."
+                },
+                { "optionId": "o3", "text": "Ich wohne seit zwei Jahren in Köln." },
+                { "optionId": "o4", "text": "Gern, ich komme morgen vorbei." }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "The friend doubts it, and she confirms it with Ob du’s glaubst oder nicht.",
+                "fr": "L’ami en doute, et elle le confirme avec Ob du’s glaubst oder nicht.",
+                "de": "Der Freund zweifelt, und sie bestätigt es mit Ob du’s glaubst oder nicht."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-4",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-4",
+              "expressionId": "lange-rede-kurzer-sinn",
+              "context": { "roleId": "freund", "text": "Mach es bitte kurz: Wie ging es aus?" },
+              "roleId": "erzaehlerin",
+              "options": [
+                { "optionId": "o1", "text": "Der Zug fährt um acht Uhr ab." },
+                { "optionId": "o2", "text": "Ich wohne seit zwei Jahren in Köln." },
+                { "optionId": "o3", "text": "Nein danke, ich nehme einen Kaffee." },
+                { "optionId": "o4", "text": "Lange Rede, kurzer Sinn: Wir haben gewonnen." }
+              ],
+              "answerOptionId": "o4",
+              "answerExplanation": {
+                "en": "She is asked to be brief and sums up with Lange Rede, kurzer Sinn.",
+                "fr": "On lui demande d’être brève et elle résume avec Lange Rede, kurzer Sinn.",
+                "de": "Sie soll sich kurzfassen und fasst mit Lange Rede, kurzer Sinn zusammen."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "stage": "exam",
+      "role": "exam",
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam-replies-1",
+          "estimatedDurationS": 120,
+          "timeLimitS": 180,
+          "instructions": {
+            "en": "Build the answer. Not every word fits.",
+            "fr": "Construisez la réponse. Tous les mots ne servent pas.",
+            "de": "Bilde die Antwort. Nicht jedes Wort passt."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "reply-1",
+              "expressionId": "stell-dir-vor",
+              "context": { "roleId": "freund", "text": "Du strahlst ja so! Gibt es Neuigkeiten?" },
+              "roleId": "erzaehlerin",
+              "tokens": [
+                { "tokenId": "t1", "text": "Stell" },
+                { "tokenId": "t2", "text": "dir" },
+                { "tokenId": "t3", "text": "vor," },
+                { "tokenId": "t4", "text": "ich" },
+                { "tokenId": "t5", "text": "fahre" },
+                { "tokenId": "t6", "text": "nach" },
+                { "tokenId": "t7", "text": "Wien" },
+                { "tokenId": "t8", "text": "fährst" },
+                { "tokenId": "t9", "text": "wir" }
+              ],
+              "distractorTokenIds": ["t8", "t9"],
+              "acceptedOrders": [
+                ["t1", "t2", "t3", "t4", "t5", "t6", "t7"],
+                ["t1", "t2", "t3", "t6", "t7", "t5", "t4"]
+              ],
+              "answerExplanation": {
+                "en": "Stell dir vor opens; with ich the verb is fahre.",
+                "fr": "Stell dir vor ouvre ; avec ich le verbe est fahre.",
+                "de": "Stell dir vor eröffnet; zu ich gehört die Form fahre."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-2",
+              "expressionId": "und-jetzt-kommts",
+              "context": {
+                "roleId": "freund",
+                "text": "Du hast das Paket also doch aufgemacht. Was war drin?"
+              },
+              "roleId": "erzaehlerin",
+              "tokens": [
+                { "tokenId": "t1", "text": "Und" },
+                { "tokenId": "t2", "text": "jetzt" },
+                { "tokenId": "t3", "text": "kommt’s:" },
+                { "tokenId": "t4", "text": "Es" },
+                { "tokenId": "t5", "text": "war" },
+                { "tokenId": "t6", "text": "leer." },
+                { "tokenId": "t7", "text": "waren" },
+                { "tokenId": "t8", "text": "leere" }
+              ],
+              "distractorTokenIds": ["t7", "t8"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]],
+              "answerExplanation": {
+                "en": "Und jetzt kommt’s, then the punchline: Es war leer.",
+                "fr": "Und jetzt kommt’s, puis la chute : Es war leer.",
+                "de": "Und jetzt kommt’s, dann die Pointe: Es war leer."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-3",
+              "expressionId": "ob-dus-glaubst",
+              "context": { "roleId": "freund", "text": "Hat es mit der Prüfung geklappt?" },
+              "roleId": "erzaehlerin",
+              "tokens": [
+                { "tokenId": "t1", "text": "Ob" },
+                { "tokenId": "t2", "text": "du’s" },
+                { "tokenId": "t3", "text": "glaubst" },
+                { "tokenId": "t4", "text": "oder" },
+                { "tokenId": "t5", "text": "nicht," },
+                { "tokenId": "t6", "text": "es" },
+                { "tokenId": "t7", "text": "hat geklappt" },
+                { "tokenId": "t8", "text": "mir" },
+                { "tokenId": "t9", "text": "dir" }
+              ],
+              "distractorTokenIds": ["t8", "t9"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7"]],
+              "answerExplanation": {
+                "en": "Ob du’s glaubst oder nicht, then a main clause: es hat geklappt.",
+                "fr": "Ob du’s glaubst oder nicht, puis une principale : es hat geklappt.",
+                "de": "Ob du’s glaubst oder nicht, dann ein Hauptsatz: es hat geklappt."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-4",
+              "expressionId": "lange-rede-kurzer-sinn",
+              "context": {
+                "roleId": "freund",
+                "text": "Komm bitte zum Punkt: Was ist aus eurem Plan geworden?"
+              },
+              "roleId": "erzaehlerin",
+              "tokens": [
+                { "tokenId": "t1", "text": "Lange" },
+                { "tokenId": "t2", "text": "Rede," },
+                { "tokenId": "t3", "text": "kurzer" },
+                { "tokenId": "t4", "text": "Sinn:" },
+                { "tokenId": "t5", "text": "Der" },
+                { "tokenId": "t6", "text": "Plan" },
+                { "tokenId": "t7", "text": "ist geplatzt." },
+                { "tokenId": "t8", "text": "sind geplatzt." }
+              ],
+              "distractorTokenIds": ["t8"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7"]],
+              "answerExplanation": {
+                "en": "The singular Plan goes with ist geplatzt.",
+                "fr": "Le singulier Plan va avec ist geplatzt.",
+                "de": "Zum Singular Plan gehört ist geplatzt."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "exam-dialogue",
+          "estimatedDurationS": 140,
+          "timeLimitS": 210,
+          "instructions": {
+            "en": "Fill each gap with an expression from this lesson.",
+            "fr": "Complétez chaque trou avec une expression de la leçon.",
+            "de": "Fülle jede Lücke mit einem Ausdruck aus dieser Lektion."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_typing",
+              "itemId": "exam-dialogue",
+              "lines": [
+                {
+                  "lineId": "exam-line-1",
+                  "roleId": "freund",
+                  "before": "Du siehst aufgeregt aus. Was ist los?",
+                  "translation": {
+                    "en": "You look excited. What’s going on?",
+                    "fr": "Tu as l’air excitée. Que se passe-t-il ?"
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-2",
+                  "roleId": "erzaehlerin",
+                  "before": "",
+                  "translation": {
+                    "en": "Imagine who I saw in the elevator!",
+                    "fr": "Figure-toi qui j’ai vu dans l’ascenseur !"
+                  },
+                  "gap": {
+                    "gapId": "gap-1",
+                    "expressionId": "stell-dir-vor",
+                    "accepted": { "answers": ["Stell dir vor", "stell dir vor"] },
+                    "answerExplanation": {
+                      "en": "She opens her news with Stell dir vor.",
+                      "fr": "Elle ouvre sa nouvelle avec Stell dir vor.",
+                      "de": "Sie eröffnet ihre Neuigkeit mit Stell dir vor."
+                    }
+                  },
+                  "after": ", wen ich im Fahrstuhl gesehen habe!"
+                },
+                {
+                  "lineId": "exam-line-3",
+                  "roleId": "freund",
+                  "before": "Jetzt bin ich gespannt. Wer war es denn?",
+                  "translation": {
+                    "en": "Now I’m curious. Who was it?",
+                    "fr": "Maintenant, je suis curieux. Qui était-ce ?"
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-4",
+                  "roleId": "erzaehlerin",
+                  "before": "Mein alter Mathelehrer. Er hat mich sofort erkannt.",
+                  "translation": {
+                    "en": "My old maths teacher. He recognised me immediately.",
+                    "fr": "Mon ancien prof de maths. Il m’a tout de suite reconnue."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-5",
+                  "roleId": "freund",
+                  "before": "Das klingt wie erfunden!",
+                  "translation": {
+                    "en": "That sounds made up!",
+                    "fr": "On dirait une invention !"
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-6",
+                  "roleId": "erzaehlerin",
+                  "before": "",
+                  "translation": {
+                    "en": "Believe it or not, it’s the plain truth.",
+                    "fr": "Crois-le ou non, c’est la pure vérité."
+                  },
+                  "gap": {
+                    "gapId": "gap-2",
+                    "expressionId": "ob-dus-glaubst",
+                    "accepted": {
+                      "answers": [
+                        "Ob du’s glaubst oder nicht",
+                        "ob du’s glaubst oder nicht",
+                        "Ob du's glaubst oder nicht",
+                        "ob du's glaubst oder nicht"
+                      ]
+                    },
+                    "answerExplanation": {
+                      "en": "He doubts her, so she insists with Ob du’s glaubst oder nicht.",
+                      "fr": "Il doute d’elle, elle insiste donc avec Ob du’s glaubst oder nicht.",
+                      "de": "Er zweifelt, deshalb beharrt sie mit Ob du’s glaubst oder nicht."
+                    }
+                  },
+                  "after": ", es ist die reine Wahrheit."
+                },
+                {
+                  "lineId": "exam-line-7",
+                  "roleId": "freund",
+                  "before": "Und worüber habt ihr geredet?",
+                  "translation": {
+                    "en": "And what did you talk about?",
+                    "fr": "Et de quoi avez-vous parlé ?"
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-8",
+                  "roleId": "erzaehlerin",
+                  "before": "Über die Schulzeit. Er wusste noch jeden meiner Streiche.",
+                  "translation": {
+                    "en": "About our school days. He still remembered each of my pranks.",
+                    "fr": "De l’époque du lycée. Il se souvenait encore de chacune de mes bêtises."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-9",
+                  "roleId": "freund",
+                  "before": "Du erzählst so ausführlich. Kannst du es bitte kurz machen? Wie endete das Gespräch?",
+                  "translation": {
+                    "en": "You’re telling it in such detail. Could you please keep it short? How did the conversation end?",
+                    "fr": "Tu racontes avec tant de détails. Peux-tu faire court ? Comment la conversation s’est-elle terminée ?"
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-10",
+                  "roleId": "erzaehlerin",
+                  "before": "Also gut.",
+                  "translation": {
+                    "en": "All right. Long story short: he invited me to dinner.",
+                    "fr": "D’accord. Pour faire court : il m’a invitée à dîner."
+                  },
+                  "gap": {
+                    "gapId": "gap-3",
+                    "expressionId": "lange-rede-kurzer-sinn",
+                    "accepted": {
+                      "answers": ["Lange Rede, kurzer Sinn", "lange Rede, kurzer Sinn"]
+                    },
+                    "answerExplanation": {
+                      "en": "She was asked to be brief and sums up with Lange Rede, kurzer Sinn.",
+                      "fr": "On lui a demandé d’être brève, elle résume avec Lange Rede, kurzer Sinn.",
+                      "de": "Sie sollte sich kurzfassen und fasst mit Lange Rede, kurzer Sinn zusammen."
+                    }
+                  },
+                  "after": ": Er hat mich zum Essen eingeladen."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

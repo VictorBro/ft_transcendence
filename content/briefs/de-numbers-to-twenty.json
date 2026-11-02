@@ -10,89 +10,80 @@
     "fr": "Compter de zéro à vingt et dire un numéro de téléphone chiffre par chiffre.",
     "de": "Von null bis zwanzig zählen und eine Telefonnummer Ziffer für Ziffer sagen."
   },
-  "estimatedMinutes": 37,
+  "estimatedMinutes": 31,
   "provenance": {
     "generator": "ft lessons:author",
     "model": "sonnet",
-    "promptVersion": "author-2",
-    "generatedAt": "2026-11-01T20:16:40.975Z",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:23:59.014Z",
     "inputHashes": { "outline": "234a9f25454fcb842fbf2aba748d6241b89cdf9756518a87f79b39e9cbd8c4b0" }
   },
   "kind": "vocabulary",
   "theme": "personal_identification",
   "coverageNotes": {
-    "en": "The numbers 0 to 20, with the usual phone variant zwo for zwei, plus the nouns die Zahl and die Telefonnummer needed to talk about numbers.",
-    "fr": "Les nombres de 0 à 20, avec la variante téléphonique zwo pour zwei, plus les noms die Zahl et die Telefonnummer pour parler des nombres.",
-    "de": "Die Zahlen von 0 bis 20 mit der Telefonvariante zwo für zwei sowie die Nomen die Zahl und die Telefonnummer, um über Zahlen zu sprechen."
+    "en": "The numbers from 0 to 12, then sixteen, seventeen and twenty, plus three words for talking about numbers: Zahl, Telefonnummer and Ziffer.",
+    "fr": "Les nombres de 0 à 12, puis seize, dix-sept et vingt, et trois mots pour parler des nombres : Zahl, Telefonnummer et Ziffer.",
+    "de": "Die Zahlen von 0 bis 12, dann sechzehn, siebzehn und zwanzig, dazu drei Wörter, um über Zahlen zu sprechen: Zahl, Telefonnummer und Ziffer."
   },
-  "targetCount": 23,
+  "targetCount": 19,
   "countRationale": {
-    "en": "Twenty-one numbers form one closed set; two nouns let learners talk about them.",
-    "fr": "Vingt et un nombres forment un ensemble fermé ; deux noms permettent d’en parler.",
-    "de": "Einundzwanzig Zahlen bilden eine geschlossene Menge; zwei Nomen erlauben, darüber zu sprechen."
+    "en": "Nineteen words are enough for A1 counting and phone numbers without overloading the learner.",
+    "fr": "Dix-neuf mots suffisent pour compter et dire un numéro de téléphone au niveau A1 sans surcharger l’apprenant.",
+    "de": "Neunzehn Wörter reichen auf A1, um zu zählen und Telefonnummern zu sagen, ohne zu überfordern."
   },
   "difficultyBalance": {
-    "en": "Most numbers are core; those easily confused in sound or spelling (sechs, sieben, sechzehn, siebzehn, zwölf, zwanzig) are demanding.",
-    "fr": "La plupart des nombres sont de base ; ceux qu’on confond à l’oreille ou à l’écrit (sechs, sieben, sechzehn, siebzehn, zwölf, zwanzig) sont plus difficiles.",
-    "de": "Die meisten Zahlen sind Grundwörter; die leicht verwechselbaren (sechs, sieben, sechzehn, siebzehn, zwölf, zwanzig) sind anspruchsvoll."
+    "en": "Most numbers are core; zwölf, sechzehn, siebzehn and Telefonnummer are harder to spell or say.",
+    "fr": "La plupart des nombres sont de base ; zwölf, sechzehn, siebzehn et Telefonnummer sont plus difficiles à écrire ou à dire.",
+    "de": "Die meisten Zahlen sind Grundwortschatz; zwölf, sechzehn, siebzehn und Telefonnummer sind schwerer zu schreiben und zu sprechen."
   },
   "prerequisites": [],
   "groups": [
     {
-      "id": "zero-to-ten",
-      "label": { "en": "From 0 to 10", "fr": "De 0 à 10", "de": "Von 0 bis 10" },
-      "targetIds": [
-        "null",
-        "eins",
-        "zwei",
-        "drei",
-        "vier",
-        "fuenf",
-        "sechs",
-        "sieben",
-        "acht",
-        "neun",
-        "zehn"
-      ],
+      "id": "null-fuenf",
+      "label": { "en": "Zero to five", "fr": "De zéro à cinq", "de": "Von null bis fünf" },
+      "targetIds": ["null", "eins", "zwei", "drei", "vier", "fuenf"],
       "introduction": {
-        "en": "Count from zero to ten. On the phone, people often say `zwo` instead of `zwei`, so it is not confused with `drei`.\n\nThe numbers:\n\n- `null, eins, zwei, drei`\n- `vier, fünf, sechs, sieben`\n- `acht, neun, zehn`",
-        "fr": "Comptez de zéro à dix. Au téléphone, on dit souvent `zwo` au lieu de `zwei`, pour ne pas le confondre avec `drei`.\n\nLes nombres :\n\n- `null, eins, zwei, drei`\n- `vier, fünf, sechs, sieben`\n- `acht, neun, zehn`",
-        "de": "Zähle von null bis zehn. Am Telefon sagt man oft `zwo` statt `zwei`, damit es nicht mit `drei` verwechselt wird.\n\nDie Zahlen:\n\n- `null, eins, zwei, drei`\n- `vier, fünf, sechs, sieben`\n- `acht, neun, zehn`"
+        "en": "Count from **zero to five** and say each number aloud:\n\n- `null`\n- `eins`\n- `zwei` (on the phone often `zwo`)\n- `drei`\n- `vier`\n- `fünf`",
+        "fr": "Comptez **de zéro à cinq** et dites chaque nombre à voix haute :\n\n- `null`\n- `eins`\n- `zwei` (au téléphone souvent `zwo`)\n- `drei`\n- `vier`\n- `fünf`",
+        "de": "Zähle **von null bis fünf** und sprich jede Zahl laut aus:\n\n- `null`\n- `eins`\n- `zwei` (am Telefon oft `zwo`)\n- `drei`\n- `vier`\n- `fünf`"
       }
     },
     {
-      "id": "eleven-to-twenty",
-      "label": { "en": "From 11 to 20", "fr": "De 11 à 20", "de": "Von 11 bis 20" },
-      "targetIds": [
-        "elf",
-        "zwoelf",
-        "dreizehn",
-        "vierzehn",
-        "fuenfzehn",
-        "sechzehn",
-        "siebzehn",
-        "achtzehn",
-        "neunzehn",
-        "zwanzig"
-      ],
+      "id": "sechs-zwoelf",
+      "label": { "en": "Six to twelve", "fr": "De six à douze", "de": "Von sechs bis zwölf" },
+      "targetIds": ["sechs", "sieben", "acht", "neun", "zehn", "elf", "zwoelf"],
       "introduction": {
-        "en": "From 13 to 19 the numbers end in `-zehn`. Watch out: `sechzehn` and `siebzehn` lose some letters of `sechs` and `sieben`.\n\nThe numbers:\n\n- `elf, zwölf, dreizehn, vierzehn`\n- `fünfzehn, sechzehn, siebzehn`\n- `achtzehn, neunzehn, zwanzig`",
-        "fr": "De 13 à 19, les nombres se terminent par `-zehn`. Attention : `sechzehn` et `siebzehn` perdent des lettres de `sechs` et `sieben`.\n\nLes nombres :\n\n- `elf, zwölf, dreizehn, vierzehn`\n- `fünfzehn, sechzehn, siebzehn`\n- `achtzehn, neunzehn, zwanzig`",
-        "de": "Von 13 bis 19 enden die Zahlen auf `-zehn`. Achtung: `sechzehn` und `siebzehn` verlieren Buchstaben von `sechs` und `sieben`.\n\nDie Zahlen:\n\n- `elf, zwölf, dreizehn, vierzehn`\n- `fünfzehn, sechzehn, siebzehn`\n- `achtzehn, neunzehn, zwanzig`"
+        "en": "From six to twelve, every number is a new word. Pay attention to **sechs** and **sieben**, which are easy to mix up:\n\n- `sechs`, `sieben`\n- `acht`, `neun`\n- `zehn`, `elf`, `zwölf`",
+        "fr": "De six à douze, chaque nombre est un mot nouveau. Faites attention à **sechs** et **sieben**, faciles à confondre :\n\n- `sechs`, `sieben`\n- `acht`, `neun`\n- `zehn`, `elf`, `zwölf`",
+        "de": "Von sechs bis zwölf ist jede Zahl ein neues Wort. Achte auf **sechs** und **sieben**, die man leicht verwechselt:\n\n- `sechs`, `sieben`\n- `acht`, `neun`\n- `zehn`, `elf`, `zwölf`"
       }
     },
     {
-      "id": "talking-about-numbers",
+      "id": "sechzehn-zwanzig",
+      "label": {
+        "en": "Sixteen to twenty",
+        "fr": "De seize à vingt",
+        "de": "Von sechzehn bis zwanzig"
+      },
+      "targetIds": ["sechzehn", "siebzehn", "zwanzig"],
+      "introduction": {
+        "en": "The numbers from 13 to 19 end in `-zehn`. Two of them lose letters: **sechzehn** (not sechszehn) and **siebzehn**:\n\n- `sechzehn`\n- `siebzehn`\n- `zwanzig`",
+        "fr": "Les nombres de 13 à 19 se terminent par `-zehn`. Deux d’entre eux perdent des lettres : **sechzehn** (et non sechszehn) et **siebzehn** :\n\n- `sechzehn`\n- `siebzehn`\n- `zwanzig`",
+        "de": "Die Zahlen von 13 bis 19 enden auf `-zehn`. Bei zwei von ihnen fallen Buchstaben weg: **sechzehn** (nicht sechszehn) und **siebzehn**:\n\n- `sechzehn`\n- `siebzehn`\n- `zwanzig`"
+      }
+    },
+    {
+      "id": "woerter",
       "label": {
         "en": "Talking about numbers",
         "fr": "Parler des nombres",
         "de": "Über Zahlen sprechen"
       },
-      "targetIds": ["zahl", "telefonnummer"],
+      "targetIds": ["zahl", "telefonnummer", "ziffer"],
       "introduction": {
-        "en": "Two useful nouns, both feminine:\n\n- `die Zahl`\n- `die Telefonnummer`\n\nSay a phone number digit by digit: `null, eins, sieben, eins`.",
-        "fr": "Deux noms utiles, tous deux féminins :\n\n- `die Zahl`\n- `die Telefonnummer`\n\nDites un numéro de téléphone chiffre par chiffre : `null, eins, sieben, eins`.",
-        "de": "Zwei nützliche Nomen, beide feminin:\n\n- `die Zahl`\n- `die Telefonnummer`\n\nSag eine Telefonnummer Ziffer für Ziffer: `null, eins, sieben, eins`."
+        "en": "Three words help you talk about numbers. All three are **feminine**:\n\n- `die Zahl`\n- `die Telefonnummer`\n- `die Ziffer`",
+        "fr": "Trois mots aident à parler des nombres. Tous les trois sont **féminins** :\n\n- `die Zahl`\n- `die Telefonnummer`\n- `die Ziffer`",
+        "de": "Drei Wörter helfen dir, über Zahlen zu sprechen. Alle drei sind **feminin**:\n\n- `die Zahl`\n- `die Telefonnummer`\n- `die Ziffer`"
       }
     }
   ],
@@ -111,14 +102,17 @@
       "pronunciation": "/nʊl/",
       "difficulty": "core",
       "context": {
-        "sentence": "Null Grad ist kalt.",
-        "translation": { "en": "Zero degrees is cold.", "fr": "Zéro degré, c’est froid." }
+        "sentence": "Meine Nummer beginnt mit null.",
+        "translation": {
+          "en": "My number starts with zero.",
+          "fr": "Mon numéro commence par zéro."
+        }
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "Null is the number 0.",
-        "fr": "Null est le nombre 0.",
-        "de": "Null ist die Zahl 0."
+        "en": "Null is the German word for zero (0).",
+        "fr": "Null est le mot allemand pour zéro (0).",
+        "de": "Null ist das deutsche Wort für die Zahl 0."
       },
       "genderExplanation": null,
       "matchingLabel": null,
@@ -129,12 +123,12 @@
         "accepted": { "answers": ["null"] },
         "referenceTargetIds": ["null", "eins", "zwei", "drei"],
         "explanation": {
-          "en": "10 − 10 = 0, so null fits.",
-          "fr": "10 − 10 = 0, donc « null » convient.",
-          "de": "10 − 10 = 0, also passt „null“."
+          "en": "Ten minus ten leaves nothing: null.",
+          "fr": "Dix moins dix égale zéro : null.",
+          "de": "Zehn minus zehn ergibt nichts: null."
         }
       },
-      "listeningOptionTargetIds": ["null", "neun", "zehn", "elf"]
+      "listeningOptionTargetIds": ["null", "neun", "vier", "zehn"]
     },
     {
       "id": "eins",
@@ -150,30 +144,30 @@
       "pronunciation": "/aɪns/",
       "difficulty": "core",
       "context": {
-        "sentence": "Das ist Zimmer eins.",
-        "translation": { "en": "This is room one.", "fr": "C’est la chambre un." }
+        "sentence": "Hier ist Zimmer eins.",
+        "translation": { "en": "Here is room one.", "fr": "Voici la chambre un." }
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "Eins is the number 1.",
-        "fr": "Eins est le nombre 1.",
-        "de": "Eins ist die Zahl 1."
+        "en": "When you count, one is eins, with an s at the end.",
+        "fr": "Quand on compte, un se dit eins, avec un s à la fin.",
+        "de": "Beim Zählen sagt man eins, mit einem s am Ende."
       },
       "genderExplanation": null,
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Null plus eins ist ",
-        "after": ".",
+        "before": "Null, ",
+        "after": ", zwei, drei.",
         "accepted": { "answers": ["eins"] },
-        "referenceTargetIds": ["eins", "zwei", "drei", "vier"],
+        "referenceTargetIds": ["eins", "null", "zwei", "drei"],
         "explanation": {
-          "en": "0 + 1 = 1, so eins fits.",
-          "fr": "0 + 1 = 1, donc « eins » convient.",
-          "de": "0 + 1 = 1, also passt „eins“."
+          "en": "After zero comes one: eins.",
+          "fr": "Après zéro vient un : eins.",
+          "de": "Nach null kommt eins."
         }
       },
-      "listeningOptionTargetIds": ["eins", "zwei", "drei", "elf"]
+      "listeningOptionTargetIds": ["eins", "elf", "zehn", "zwei"]
     },
     {
       "id": "zwei",
@@ -189,34 +183,34 @@
       "pronunciation": "/tsvaɪ/",
       "difficulty": "core",
       "context": {
-        "sentence": "Ich habe zwei Brüder.",
-        "translation": { "en": "I have two brothers.", "fr": "J’ai deux frères." }
+        "sentence": "Wir sind zwei.",
+        "translation": { "en": "There are two of us.", "fr": "Nous sommes deux." }
       },
       "ambiguityNote": {
-        "en": "On the phone, zwei is often said zwo so it is not confused with drei.",
-        "fr": "Au téléphone, on dit souvent zwo pour zwei, afin de ne pas confondre avec drei.",
-        "de": "Am Telefon sagt man oft zwo statt zwei, damit es nicht mit drei verwechselt wird."
+        "en": "On the phone people often say zwo, so that zwei is not confused with drei.",
+        "fr": "Au téléphone on dit souvent zwo, pour ne pas confondre zwei avec drei.",
+        "de": "Am Telefon sagt man oft zwo, damit man zwei nicht mit drei verwechselt."
       },
       "explanation": {
-        "en": "Zwei is the number 2; on the phone people often say zwo.",
-        "fr": "Zwei est le nombre 2 ; au téléphone, on dit souvent zwo.",
-        "de": "Zwei ist die Zahl 2; am Telefon sagt man oft zwo."
+        "en": "Two is zwei; on the phone you may also hear zwo.",
+        "fr": "Deux se dit zwei ; au téléphone on entend aussi zwo.",
+        "de": "Zwei heißt zwei; am Telefon hört man auch zwo."
       },
       "genderExplanation": null,
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Eins plus eins ist ",
-        "after": ".",
+        "before": "Eins, ",
+        "after": ", drei, vier.",
         "accepted": { "answers": ["zwei", "zwo"] },
-        "referenceTargetIds": ["zwei", "drei", "vier", "fuenf"],
+        "referenceTargetIds": ["zwei", "eins", "drei", "vier"],
         "explanation": {
-          "en": "1 + 1 = 2, so zwei (or zwo) fits.",
-          "fr": "1 + 1 = 2, donc « zwei » (ou « zwo ») convient.",
-          "de": "1 + 1 = 2, also passt „zwei“ (oder „zwo“)."
+          "en": "Between one and three comes two: zwei or zwo.",
+          "fr": "Entre un et trois vient deux : zwei ou zwo.",
+          "de": "Zwischen eins und drei kommt zwei, am Telefon auch zwo."
         }
       },
-      "listeningOptionTargetIds": ["zwei", "drei", "vier", "eins"]
+      "listeningOptionTargetIds": ["zwei", "drei", "sechs", "zwoelf"]
     },
     {
       "id": "drei",
@@ -232,30 +226,30 @@
       "pronunciation": "/draɪ/",
       "difficulty": "core",
       "context": {
-        "sentence": "Wir sind drei Personen.",
-        "translation": { "en": "We are three people.", "fr": "Nous sommes trois personnes." }
+        "sentence": "Wir sind drei.",
+        "translation": { "en": "There are three of us.", "fr": "Nous sommes trois." }
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "Drei is the number 3.",
-        "fr": "Drei est le nombre 3.",
-        "de": "Drei ist die Zahl 3."
+        "en": "Three is drei. Do not confuse it with zwei.",
+        "fr": "Trois se dit drei. Ne le confondez pas avec zwei.",
+        "de": "Drei heißt drei. Verwechsle es nicht mit zwei."
       },
       "genderExplanation": null,
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Zwei plus eins ist ",
-        "after": ".",
+        "before": "Zwei, ",
+        "after": ", vier, fünf.",
         "accepted": { "answers": ["drei"] },
         "referenceTargetIds": ["drei", "zwei", "vier", "fuenf"],
         "explanation": {
-          "en": "2 + 1 = 3, so drei fits.",
-          "fr": "2 + 1 = 3, donc « drei » convient.",
-          "de": "2 + 1 = 3, also passt „drei“."
+          "en": "Between two and four comes three: drei.",
+          "fr": "Entre deux et quatre vient trois : drei.",
+          "de": "Zwischen zwei und vier kommt drei."
         }
       },
-      "listeningOptionTargetIds": ["drei", "zwei", "dreizehn", "vier"]
+      "listeningOptionTargetIds": ["drei", "zwei", "vier", "zehn"]
     },
     {
       "id": "vier",
@@ -268,33 +262,33 @@
       "examForms": ["vier"],
       "articleException": null,
       "genderVariants": [],
-      "pronunciation": "/fiːɐ/",
+      "pronunciation": "/fiːɐ̯/",
       "difficulty": "core",
       "context": {
-        "sentence": "Das Auto hat vier Räder.",
-        "translation": { "en": "The car has four wheels.", "fr": "La voiture a quatre roues." }
+        "sentence": "Es ist vier Uhr.",
+        "translation": { "en": "It is four o’clock.", "fr": "Il est quatre heures." }
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "Vier is the number 4.",
-        "fr": "Vier est le nombre 4.",
-        "de": "Vier ist die Zahl 4."
+        "en": "Four is vier. It begins with v but sounds like f.",
+        "fr": "Quatre se dit vier. Il commence par v mais se prononce comme f.",
+        "de": "Vier schreibt man mit v, spricht es aber wie f."
       },
       "genderExplanation": null,
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Zwei plus zwei ist ",
-        "after": ".",
+        "before": "Drei, ",
+        "after": ", fünf, sechs.",
         "accepted": { "answers": ["vier"] },
         "referenceTargetIds": ["vier", "drei", "fuenf", "sechs"],
         "explanation": {
-          "en": "2 + 2 = 4, so vier fits.",
-          "fr": "2 + 2 = 4, donc « vier » convient.",
-          "de": "2 + 2 = 4, also passt „vier“."
+          "en": "Between three and five comes four: vier.",
+          "fr": "Entre trois et cinq vient quatre : vier.",
+          "de": "Zwischen drei und fünf kommt vier."
         }
       },
-      "listeningOptionTargetIds": ["vier", "fuenf", "vierzehn", "drei"]
+      "listeningOptionTargetIds": ["vier", "fuenf", "drei", "elf"]
     },
     {
       "id": "fuenf",
@@ -304,36 +298,36 @@
       "genders": [],
       "number": null,
       "teachingForm": "fünf",
-      "examForms": ["fünf"],
+      "examForms": ["fünf", "fuenf"],
       "articleException": null,
       "genderVariants": [],
       "pronunciation": "/fʏnf/",
       "difficulty": "core",
       "context": {
-        "sentence": "Meine Hand hat fünf Finger.",
-        "translation": { "en": "My hand has five fingers.", "fr": "Ma main a cinq doigts." }
+        "sentence": "Es ist fünf Uhr.",
+        "translation": { "en": "It is five o’clock.", "fr": "Il est cinq heures." }
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "Fünf is the number 5; it is written with an umlaut on the u.",
-        "fr": "Fünf est le nombre 5 ; il s’écrit avec un tréma sur le u.",
-        "de": "Fünf ist die Zahl 5; es wird mit Umlaut auf dem u geschrieben."
+        "en": "Five is fünf, with an umlaut on the u.",
+        "fr": "Cinq se dit fünf, avec un tréma sur le u.",
+        "de": "Fünf schreibt man mit Umlaut über dem u."
       },
       "genderExplanation": null,
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Vier plus eins ist ",
-        "after": ".",
-        "accepted": { "answers": ["fünf"] },
+        "before": "Vier, ",
+        "after": ", sechs, sieben.",
+        "accepted": { "answers": ["fünf", "fuenf"] },
         "referenceTargetIds": ["fuenf", "vier", "sechs", "sieben"],
         "explanation": {
-          "en": "4 + 1 = 5, so fünf fits.",
-          "fr": "4 + 1 = 5, donc « fünf » convient.",
-          "de": "4 + 1 = 5, also passt „fünf“."
+          "en": "Between four and six comes five: fünf.",
+          "fr": "Entre quatre et six vient cinq : fünf.",
+          "de": "Zwischen vier und sechs kommt fünf."
         }
       },
-      "listeningOptionTargetIds": ["fuenf", "fuenfzehn", "vier", "elf"]
+      "listeningOptionTargetIds": ["fuenf", "vier", "elf", "zwoelf"]
     },
     {
       "id": "sechs",
@@ -347,32 +341,32 @@
       "articleException": null,
       "genderVariants": [],
       "pronunciation": "/zɛks/",
-      "difficulty": "demanding",
+      "difficulty": "core",
       "context": {
         "sentence": "Es ist sechs Uhr.",
         "translation": { "en": "It is six o’clock.", "fr": "Il est six heures." }
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "Sechs is the number 6; do not mix it up with sieben (7).",
-        "fr": "Sechs est le nombre 6 ; ne le confondez pas avec sieben (7).",
-        "de": "Sechs ist die Zahl 6; nicht mit sieben (7) verwechseln."
+        "en": "Six is sechs; the ch is silent in the sound ks.",
+        "fr": "Six se dit sechs ; on prononce ks.",
+        "de": "Sechs spricht man wie „ks“: sechs."
       },
       "genderExplanation": null,
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Drei plus drei ist ",
-        "after": ".",
+        "before": "Fünf, ",
+        "after": ", sieben, acht.",
         "accepted": { "answers": ["sechs"] },
         "referenceTargetIds": ["sechs", "fuenf", "sieben", "acht"],
         "explanation": {
-          "en": "3 + 3 = 6, so sechs fits.",
-          "fr": "3 + 3 = 6, donc « sechs » convient.",
-          "de": "3 + 3 = 6, also passt „sechs“."
+          "en": "Between five and seven comes six: sechs.",
+          "fr": "Entre cinq et sept vient six : sechs.",
+          "de": "Zwischen fünf und sieben kommt sechs."
         }
       },
-      "listeningOptionTargetIds": ["sechs", "sechzehn", "sieben", "siebzehn"]
+      "listeningOptionTargetIds": ["sechs", "sieben", "sechzehn", "siebzehn"]
     },
     {
       "id": "sieben",
@@ -386,32 +380,32 @@
       "articleException": null,
       "genderVariants": [],
       "pronunciation": "/ˈziːbn̩/",
-      "difficulty": "demanding",
+      "difficulty": "core",
       "context": {
-        "sentence": "Die Woche hat sieben Tage.",
-        "translation": { "en": "The week has seven days.", "fr": "La semaine a sept jours." }
+        "sentence": "Ich komme um sieben Uhr.",
+        "translation": { "en": "I am coming at seven o’clock.", "fr": "Je viens à sept heures." }
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "Sieben is the number 7; do not mix it up with sechs (6).",
-        "fr": "Sieben est le nombre 7 ; ne le confondez pas avec sechs (6).",
-        "de": "Sieben ist die Zahl 7; nicht mit sechs (6) verwechseln."
+        "en": "Seven is sieben. The s is voiced, like a z.",
+        "fr": "Sept se dit sieben. Le s se prononce comme un z.",
+        "de": "Sieben beginnt mit einem weichen s, wie ein z."
       },
       "genderExplanation": null,
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Sechs plus eins ist ",
-        "after": ".",
+        "before": "Sechs, ",
+        "after": ", acht, neun.",
         "accepted": { "answers": ["sieben"] },
         "referenceTargetIds": ["sieben", "sechs", "acht", "neun"],
         "explanation": {
-          "en": "6 + 1 = 7, so sieben fits.",
-          "fr": "6 + 1 = 7, donc « sieben » convient.",
-          "de": "6 + 1 = 7, also passt „sieben“."
+          "en": "Between six and eight comes seven: sieben.",
+          "fr": "Entre six et huit vient sept : sieben.",
+          "de": "Zwischen sechs und acht kommt sieben."
         }
       },
-      "listeningOptionTargetIds": ["sieben", "siebzehn", "sechs", "sechzehn"]
+      "listeningOptionTargetIds": ["sieben", "sechs", "siebzehn", "neun"]
     },
     {
       "id": "acht",
@@ -427,30 +421,30 @@
       "pronunciation": "/axt/",
       "difficulty": "core",
       "context": {
-        "sentence": "Ich arbeite acht Stunden.",
-        "translation": { "en": "I work eight hours.", "fr": "Je travaille huit heures." }
+        "sentence": "Das Kind ist acht Jahre alt.",
+        "translation": { "en": "The child is eight years old.", "fr": "L’enfant a huit ans." }
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "Acht is the number 8.",
-        "fr": "Acht est le nombre 8.",
-        "de": "Acht ist die Zahl 8."
+        "en": "Eight is acht, pronounced with a soft rasping ch before t.",
+        "fr": "Huit se dit acht, avec un ch guttural devant le t.",
+        "de": "Acht spricht man mit dem ch-Laut vor dem t."
       },
       "genderExplanation": null,
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Vier plus vier ist ",
-        "after": ".",
+        "before": "Sieben, ",
+        "after": ", neun, zehn.",
         "accepted": { "answers": ["acht"] },
         "referenceTargetIds": ["acht", "sieben", "neun", "zehn"],
         "explanation": {
-          "en": "4 + 4 = 8, so acht fits.",
-          "fr": "4 + 4 = 8, donc « acht » convient.",
-          "de": "4 + 4 = 8, also passt „acht“."
+          "en": "Between seven and nine comes eight: acht.",
+          "fr": "Entre sept et neuf vient huit : acht.",
+          "de": "Zwischen sieben und neun kommt acht."
         }
       },
-      "listeningOptionTargetIds": ["acht", "achtzehn", "neun", "zehn"]
+      "listeningOptionTargetIds": ["acht", "neun", "drei", "sechs"]
     },
     {
       "id": "neun",
@@ -466,33 +460,30 @@
       "pronunciation": "/nɔʏn/",
       "difficulty": "core",
       "context": {
-        "sentence": "Der Zug kommt um neun.",
-        "translation": {
-          "en": "The train arrives at nine.",
-          "fr": "Le train arrive à neuf heures."
-        }
+        "sentence": "Er ist neun Jahre alt.",
+        "translation": { "en": "He is nine years old.", "fr": "Il a neuf ans." }
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "Neun is the number 9.",
-        "fr": "Neun est le nombre 9.",
-        "de": "Neun ist die Zahl 9."
+        "en": "Nine is neun, pronounced “noyn”.",
+        "fr": "Neuf se dit neun, prononcé « noïn ».",
+        "de": "Neun spricht man wie „noyn“."
       },
       "genderExplanation": null,
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Drei mal drei ist ",
-        "after": ".",
+        "before": "Acht, ",
+        "after": ", zehn, elf.",
         "accepted": { "answers": ["neun"] },
         "referenceTargetIds": ["neun", "acht", "zehn", "elf"],
         "explanation": {
-          "en": "3 × 3 = 9, so neun fits.",
-          "fr": "3 × 3 = 9, donc « neun » convient.",
-          "de": "3 × 3 = 9, also passt „neun“."
+          "en": "Between eight and ten comes nine: neun.",
+          "fr": "Entre huit et dix vient neuf : neun.",
+          "de": "Zwischen acht und zehn kommt neun."
         }
       },
-      "listeningOptionTargetIds": ["neun", "neunzehn", "null", "acht"]
+      "listeningOptionTargetIds": ["neun", "null", "drei", "eins"]
     },
     {
       "id": "zehn",
@@ -508,30 +499,30 @@
       "pronunciation": "/tseːn/",
       "difficulty": "core",
       "context": {
-        "sentence": "Ich warte zehn Minuten.",
-        "translation": { "en": "I wait ten minutes.", "fr": "J’attends dix minutes." }
+        "sentence": "Wir haben zehn Minuten.",
+        "translation": { "en": "We have ten minutes.", "fr": "Nous avons dix minutes." }
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "Zehn is the number 10.",
-        "fr": "Zehn est le nombre 10.",
-        "de": "Zehn ist die Zahl 10."
+        "en": "Ten is zehn. The h only makes the e long.",
+        "fr": "Dix se dit zehn. Le h allonge simplement le e.",
+        "de": "Zehn schreibt man mit h; es dehnt nur das e."
       },
       "genderExplanation": null,
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Fünf plus fünf ist ",
-        "after": ".",
+        "before": "Neun, ",
+        "after": ", elf, zwölf.",
         "accepted": { "answers": ["zehn"] },
         "referenceTargetIds": ["zehn", "neun", "elf", "zwoelf"],
         "explanation": {
-          "en": "5 + 5 = 10, so zehn fits.",
-          "fr": "5 + 5 = 10, donc « zehn » convient.",
-          "de": "5 + 5 = 10, also passt „zehn“."
+          "en": "Between nine and eleven comes ten: zehn.",
+          "fr": "Entre neuf et onze vient dix : zehn.",
+          "de": "Zwischen neun und elf kommt zehn."
         }
       },
-      "listeningOptionTargetIds": ["zehn", "zwanzig", "zwoelf", "elf"]
+      "listeningOptionTargetIds": ["zehn", "zwei", "zwanzig", "sechzehn"]
     },
     {
       "id": "elf",
@@ -547,33 +538,30 @@
       "pronunciation": "/ɛlf/",
       "difficulty": "core",
       "context": {
-        "sentence": "Ein Fußballteam hat elf Spieler.",
-        "translation": {
-          "en": "A football team has eleven players.",
-          "fr": "Une équipe de football a onze joueurs."
-        }
+        "sentence": "Sie ist elf Jahre alt.",
+        "translation": { "en": "She is eleven years old.", "fr": "Elle a onze ans." }
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "Elf is the number 11.",
-        "fr": "Elf est le nombre 11.",
-        "de": "Elf ist die Zahl 11."
+        "en": "Eleven is elf, a short word with no -zehn ending.",
+        "fr": "Onze se dit elf, un mot court sans la terminaison -zehn.",
+        "de": "Elf ist ein kurzes Wort ohne die Endung -zehn."
       },
       "genderExplanation": null,
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Zehn plus eins ist ",
+        "before": "Neun plus zwei ist ",
         "after": ".",
         "accepted": { "answers": ["elf"] },
-        "referenceTargetIds": ["elf", "zehn", "zwoelf", "dreizehn"],
+        "referenceTargetIds": ["elf", "neun", "zehn", "zwoelf"],
         "explanation": {
-          "en": "10 + 1 = 11, so elf fits.",
-          "fr": "10 + 1 = 11, donc « elf » convient.",
-          "de": "10 + 1 = 11, also passt „elf“."
+          "en": "Nine plus two makes eleven: elf.",
+          "fr": "Neuf plus deux font onze : elf.",
+          "de": "Neun plus zwei ergibt elf."
         }
       },
-      "listeningOptionTargetIds": ["elf", "zwoelf", "zehn", "eins"]
+      "listeningOptionTargetIds": ["elf", "fuenf", "zwoelf", "eins"]
     },
     {
       "id": "zwoelf",
@@ -583,162 +571,36 @@
       "genders": [],
       "number": null,
       "teachingForm": "zwölf",
-      "examForms": ["zwölf"],
+      "examForms": ["zwölf", "zwoelf"],
       "articleException": null,
       "genderVariants": [],
       "pronunciation": "/tsvœlf/",
       "difficulty": "demanding",
       "context": {
-        "sentence": "Das Jahr hat zwölf Monate.",
-        "translation": { "en": "The year has twelve months.", "fr": "L’année a douze mois." }
+        "sentence": "Es ist zwölf Uhr.",
+        "translation": { "en": "It is twelve o’clock.", "fr": "Il est douze heures." }
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "Zwölf is the number 12; it is written with an umlaut on the o.",
-        "fr": "Zwölf est le nombre 12 ; il s’écrit avec un tréma sur le o.",
-        "de": "Zwölf ist die Zahl 12; es wird mit Umlaut auf dem o geschrieben."
+        "en": "Twelve is zwölf, with an umlaut on the o.",
+        "fr": "Douze se dit zwölf, avec un tréma sur le o.",
+        "de": "Zwölf schreibt man mit Umlaut über dem o."
       },
       "genderExplanation": null,
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Sechs plus sechs ist ",
+        "before": "Zehn plus zwei ist ",
         "after": ".",
-        "accepted": { "answers": ["zwölf"] },
-        "referenceTargetIds": ["zwoelf", "elf", "dreizehn", "vierzehn"],
+        "accepted": { "answers": ["zwölf", "zwoelf"] },
+        "referenceTargetIds": ["zwoelf", "zehn", "elf", "zwei"],
         "explanation": {
-          "en": "6 + 6 = 12, so zwölf fits.",
-          "fr": "6 + 6 = 12, donc « zwölf » convient.",
-          "de": "6 + 6 = 12, also passt „zwölf“."
+          "en": "Ten plus two makes twelve: zwölf.",
+          "fr": "Dix plus deux font douze : zwölf.",
+          "de": "Zehn plus zwei ergibt zwölf."
         }
       },
-      "listeningOptionTargetIds": ["zwoelf", "zwanzig", "elf", "zwei"]
-    },
-    {
-      "id": "dreizehn",
-      "term": "dreizehn",
-      "translations": { "en": ["thirteen"], "fr": ["treize"] },
-      "wordClass": "numeral",
-      "genders": [],
-      "number": null,
-      "teachingForm": "dreizehn",
-      "examForms": ["dreizehn"],
-      "articleException": null,
-      "genderVariants": [],
-      "pronunciation": "/ˈdraɪtseːn/",
-      "difficulty": "core",
-      "context": {
-        "sentence": "Mein Bruder ist dreizehn Jahre alt.",
-        "translation": {
-          "en": "My brother is thirteen years old.",
-          "fr": "Mon frère a treize ans."
-        }
-      },
-      "ambiguityNote": null,
-      "explanation": {
-        "en": "Dreizehn is 13: drei + zehn.",
-        "fr": "Dreizehn est 13 : drei + zehn.",
-        "de": "Dreizehn ist 13: drei + zehn."
-      },
-      "genderExplanation": null,
-      "matchingLabel": null,
-      "examPrompt": null,
-      "gap": {
-        "before": "Zehn plus drei ist ",
-        "after": ".",
-        "accepted": { "answers": ["dreizehn"] },
-        "referenceTargetIds": ["dreizehn", "zwoelf", "vierzehn", "fuenfzehn"],
-        "explanation": {
-          "en": "10 + 3 = 13, so dreizehn fits.",
-          "fr": "10 + 3 = 13, donc « dreizehn » convient.",
-          "de": "10 + 3 = 13, also passt „dreizehn“."
-        }
-      },
-      "listeningOptionTargetIds": ["dreizehn", "drei", "vierzehn", "zehn"]
-    },
-    {
-      "id": "vierzehn",
-      "term": "vierzehn",
-      "translations": { "en": ["fourteen"], "fr": ["quatorze"] },
-      "wordClass": "numeral",
-      "genders": [],
-      "number": null,
-      "teachingForm": "vierzehn",
-      "examForms": ["vierzehn"],
-      "articleException": null,
-      "genderVariants": [],
-      "pronunciation": "/ˈfɪʁtseːn/",
-      "difficulty": "core",
-      "context": {
-        "sentence": "Der Kurs dauert vierzehn Tage.",
-        "translation": {
-          "en": "The course lasts fourteen days.",
-          "fr": "Le cours dure quatorze jours."
-        }
-      },
-      "ambiguityNote": null,
-      "explanation": {
-        "en": "Vierzehn is 14: vier + zehn.",
-        "fr": "Vierzehn est 14 : vier + zehn.",
-        "de": "Vierzehn ist 14: vier + zehn."
-      },
-      "genderExplanation": null,
-      "matchingLabel": null,
-      "examPrompt": null,
-      "gap": {
-        "before": "Sieben plus sieben ist ",
-        "after": ".",
-        "accepted": { "answers": ["vierzehn"] },
-        "referenceTargetIds": ["vierzehn", "dreizehn", "fuenfzehn", "sechzehn"],
-        "explanation": {
-          "en": "7 + 7 = 14, so vierzehn fits.",
-          "fr": "7 + 7 = 14, donc « vierzehn » convient.",
-          "de": "7 + 7 = 14, also passt „vierzehn“."
-        }
-      },
-      "listeningOptionTargetIds": ["vierzehn", "vier", "dreizehn", "fuenfzehn"]
-    },
-    {
-      "id": "fuenfzehn",
-      "term": "fünfzehn",
-      "translations": { "en": ["fifteen"], "fr": ["quinze"] },
-      "wordClass": "numeral",
-      "genders": [],
-      "number": null,
-      "teachingForm": "fünfzehn",
-      "examForms": ["fünfzehn"],
-      "articleException": null,
-      "genderVariants": [],
-      "pronunciation": "/ˈfʏnftseːn/",
-      "difficulty": "core",
-      "context": {
-        "sentence": "Das Buch kostet fünfzehn Euro.",
-        "translation": {
-          "en": "The book costs fifteen euros.",
-          "fr": "Le livre coûte quinze euros."
-        }
-      },
-      "ambiguityNote": null,
-      "explanation": {
-        "en": "Fünfzehn is 15: fünf + zehn.",
-        "fr": "Fünfzehn est 15 : fünf + zehn.",
-        "de": "Fünfzehn ist 15: fünf + zehn."
-      },
-      "genderExplanation": null,
-      "matchingLabel": null,
-      "examPrompt": null,
-      "gap": {
-        "before": "Zehn plus fünf ist ",
-        "after": ".",
-        "accepted": { "answers": ["fünfzehn"] },
-        "referenceTargetIds": ["fuenfzehn", "vierzehn", "sechzehn", "siebzehn"],
-        "explanation": {
-          "en": "10 + 5 = 15, so fünfzehn fits.",
-          "fr": "10 + 5 = 15, donc « fünfzehn » convient.",
-          "de": "10 + 5 = 15, also passt „fünfzehn“."
-        }
-      },
-      "listeningOptionTargetIds": ["fuenfzehn", "fuenf", "vierzehn", "sechzehn"]
+      "listeningOptionTargetIds": ["zwoelf", "elf", "zwanzig", "zwei"]
     },
     {
       "id": "sechzehn",
@@ -759,9 +621,9 @@
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "Sechzehn is 16: sechs loses its s.",
-        "fr": "Sechzehn est 16 : sechs perd son s.",
-        "de": "Sechzehn ist 16: Bei sechs fällt das s weg."
+        "en": "Sixteen is sechzehn: sechs loses its final s before zehn.",
+        "fr": "Seize se dit sechzehn : sechs perd son s final devant zehn.",
+        "de": "Bei sechzehn verliert sechs das s am Ende."
       },
       "genderExplanation": null,
       "matchingLabel": null,
@@ -770,14 +632,14 @@
         "before": "Acht plus acht ist ",
         "after": ".",
         "accepted": { "answers": ["sechzehn"] },
-        "referenceTargetIds": ["sechzehn", "fuenfzehn", "siebzehn", "achtzehn"],
+        "referenceTargetIds": ["sechzehn", "siebzehn", "acht", "zwanzig"],
         "explanation": {
-          "en": "8 + 8 = 16, so sechzehn fits.",
-          "fr": "8 + 8 = 16, donc « sechzehn » convient.",
-          "de": "8 + 8 = 16, also passt „sechzehn“."
+          "en": "Eight plus eight makes sixteen: sechzehn.",
+          "fr": "Huit plus huit font seize : sechzehn.",
+          "de": "Acht plus acht ergibt sechzehn."
         }
       },
-      "listeningOptionTargetIds": ["sechzehn", "sechs", "siebzehn", "fuenfzehn"]
+      "listeningOptionTargetIds": ["sechzehn", "sechs", "siebzehn", "zehn"]
     },
     {
       "id": "siebzehn",
@@ -793,17 +655,14 @@
       "pronunciation": "/ˈziːptseːn/",
       "difficulty": "demanding",
       "context": {
-        "sentence": "Ich wohne in Zimmer siebzehn.",
-        "translation": {
-          "en": "I live in room seventeen.",
-          "fr": "J’habite dans la chambre dix-sept."
-        }
+        "sentence": "Mein Bruder ist siebzehn.",
+        "translation": { "en": "My brother is seventeen.", "fr": "Mon frère a dix-sept ans." }
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "Siebzehn is 17: sieben loses its -en.",
-        "fr": "Siebzehn est 17 : sieben perd son -en.",
-        "de": "Siebzehn ist 17: Bei sieben fällt das -en weg."
+        "en": "Seventeen is siebzehn: sieben loses its ending -en before zehn.",
+        "fr": "Dix-sept se dit siebzehn : sieben perd sa terminaison -en devant zehn.",
+        "de": "Bei siebzehn verliert sieben die Endung -en."
       },
       "genderExplanation": null,
       "matchingLabel": null,
@@ -812,98 +671,14 @@
         "before": "Zehn plus sieben ist ",
         "after": ".",
         "accepted": { "answers": ["siebzehn"] },
-        "referenceTargetIds": ["siebzehn", "sechzehn", "achtzehn", "neunzehn"],
+        "referenceTargetIds": ["siebzehn", "sechzehn", "sieben", "zehn"],
         "explanation": {
-          "en": "10 + 7 = 17, so siebzehn fits.",
-          "fr": "10 + 7 = 17, donc « siebzehn » convient.",
-          "de": "10 + 7 = 17, also passt „siebzehn“."
+          "en": "Ten plus seven makes seventeen: siebzehn.",
+          "fr": "Dix plus sept font dix-sept : siebzehn.",
+          "de": "Zehn plus sieben ergibt siebzehn."
         }
       },
-      "listeningOptionTargetIds": ["siebzehn", "sieben", "sechzehn", "achtzehn"]
-    },
-    {
-      "id": "achtzehn",
-      "term": "achtzehn",
-      "translations": { "en": ["eighteen"], "fr": ["dix-huit"] },
-      "wordClass": "numeral",
-      "genders": [],
-      "number": null,
-      "teachingForm": "achtzehn",
-      "examForms": ["achtzehn"],
-      "articleException": null,
-      "genderVariants": [],
-      "pronunciation": "/ˈaxtseːn/",
-      "difficulty": "core",
-      "context": {
-        "sentence": "Mit achtzehn ist man erwachsen.",
-        "translation": {
-          "en": "At eighteen you are an adult.",
-          "fr": "À dix-huit ans, on est adulte."
-        }
-      },
-      "ambiguityNote": null,
-      "explanation": {
-        "en": "Achtzehn is 18: acht + zehn.",
-        "fr": "Achtzehn est 18 : acht + zehn.",
-        "de": "Achtzehn ist 18: acht + zehn."
-      },
-      "genderExplanation": null,
-      "matchingLabel": null,
-      "examPrompt": null,
-      "gap": {
-        "before": "Neun plus neun ist ",
-        "after": ".",
-        "accepted": { "answers": ["achtzehn"] },
-        "referenceTargetIds": ["achtzehn", "siebzehn", "neunzehn", "zwanzig"],
-        "explanation": {
-          "en": "9 + 9 = 18, so achtzehn fits.",
-          "fr": "9 + 9 = 18, donc « achtzehn » convient.",
-          "de": "9 + 9 = 18, also passt „achtzehn“."
-        }
-      },
-      "listeningOptionTargetIds": ["achtzehn", "acht", "neunzehn", "siebzehn"]
-    },
-    {
-      "id": "neunzehn",
-      "term": "neunzehn",
-      "translations": { "en": ["nineteen"], "fr": ["dix-neuf"] },
-      "wordClass": "numeral",
-      "genders": [],
-      "number": null,
-      "teachingForm": "neunzehn",
-      "examForms": ["neunzehn"],
-      "articleException": null,
-      "genderVariants": [],
-      "pronunciation": "/ˈnɔʏntseːn/",
-      "difficulty": "core",
-      "context": {
-        "sentence": "Das Zimmer hat neunzehn Quadratmeter.",
-        "translation": {
-          "en": "The room is nineteen square metres.",
-          "fr": "La chambre fait dix-neuf mètres carrés."
-        }
-      },
-      "ambiguityNote": null,
-      "explanation": {
-        "en": "Neunzehn is 19: neun + zehn.",
-        "fr": "Neunzehn est 19 : neun + zehn.",
-        "de": "Neunzehn ist 19: neun + zehn."
-      },
-      "genderExplanation": null,
-      "matchingLabel": null,
-      "examPrompt": null,
-      "gap": {
-        "before": "Zehn plus neun ist ",
-        "after": ".",
-        "accepted": { "answers": ["neunzehn"] },
-        "referenceTargetIds": ["neunzehn", "achtzehn", "zwanzig", "siebzehn"],
-        "explanation": {
-          "en": "10 + 9 = 19, so neunzehn fits.",
-          "fr": "10 + 9 = 19, donc « neunzehn » convient.",
-          "de": "10 + 9 = 19, also passt „neunzehn“."
-        }
-      },
-      "listeningOptionTargetIds": ["neunzehn", "neun", "achtzehn", "zwanzig"]
+      "listeningOptionTargetIds": ["siebzehn", "sieben", "sechzehn", "zehn"]
     },
     {
       "id": "zwanzig",
@@ -917,19 +692,16 @@
       "articleException": null,
       "genderVariants": [],
       "pronunciation": "/ˈtsvantsɪç/",
-      "difficulty": "demanding",
+      "difficulty": "core",
       "context": {
-        "sentence": "Zwanzig Leute sind im Kurs.",
-        "translation": {
-          "en": "Twenty people are in the course.",
-          "fr": "Vingt personnes sont dans le cours."
-        }
+        "sentence": "Ich bin zwanzig Jahre alt.",
+        "translation": { "en": "I am twenty years old.", "fr": "J’ai vingt ans." }
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "Zwanzig is the number 20; it ends in -zig, not -zehn.",
-        "fr": "Zwanzig est le nombre 20 ; il se termine par -zig, pas par -zehn.",
-        "de": "Zwanzig ist die Zahl 20; es endet auf -zig, nicht auf -zehn."
+        "en": "Twenty is zwanzig. It ends in -zig, not -zehn.",
+        "fr": "Vingt se dit zwanzig. Il se termine par -zig, et non par -zehn.",
+        "de": "Zwanzig endet auf -zig, nicht auf -zehn."
       },
       "genderExplanation": null,
       "matchingLabel": null,
@@ -938,14 +710,14 @@
         "before": "Zehn plus zehn ist ",
         "after": ".",
         "accepted": { "answers": ["zwanzig"] },
-        "referenceTargetIds": ["zwanzig", "neunzehn", "achtzehn", "siebzehn"],
+        "referenceTargetIds": ["zwanzig", "zehn", "sechzehn", "siebzehn"],
         "explanation": {
-          "en": "10 + 10 = 20, so zwanzig fits.",
-          "fr": "10 + 10 = 20, donc « zwanzig » convient.",
-          "de": "10 + 10 = 20, also passt „zwanzig“."
+          "en": "Ten plus ten makes twenty: zwanzig.",
+          "fr": "Dix plus dix font vingt : zwanzig.",
+          "de": "Zehn plus zehn ergibt zwanzig."
         }
       },
-      "listeningOptionTargetIds": ["zwanzig", "zwoelf", "neunzehn", "zehn"]
+      "listeningOptionTargetIds": ["zwanzig", "zwei", "zwoelf", "zehn"]
     },
     {
       "id": "zahl",
@@ -962,38 +734,38 @@
       "difficulty": "core",
       "context": {
         "sentence": "Welche Zahl ist das?",
-        "translation": { "en": "Which number is that?", "fr": "Quel nombre est-ce ?" }
+        "translation": { "en": "Which number is that?", "fr": "Quel est ce nombre ?" }
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "Die Zahl is a number such as 7 or 15.",
-        "fr": "Die Zahl est un nombre comme 7 ou 15.",
-        "de": "Die Zahl ist eine Zahl wie 7 oder 15."
+        "en": "Die Zahl is a number such as 7, 12 or 20.",
+        "fr": "Die Zahl est un nombre comme 7, 12 ou 20.",
+        "de": "Die Zahl ist ein Zahlwert wie 7, 12 oder 20."
       },
       "genderExplanation": {
         "en": "Zahl is feminine, so the article is die: die Zahl.",
-        "fr": "Zahl est féminin, donc l’article est die : die Zahl.",
-        "de": "Zahl ist feminin, daher lautet der Artikel die: die Zahl."
+        "fr": "Zahl est féminin : on dit die Zahl.",
+        "de": "Zahl ist feminin, der Artikel ist also die: die Zahl."
       },
       "matchingLabel": null,
-      "examPrompt": null,
+      "examPrompt": { "en": "number (7, 12, 20…)", "fr": "nombre (7, 12, 20…)" },
       "gap": {
-        "before": "Sieben ist eine ",
+        "before": "Zwölf ist eine ",
         "after": ".",
         "accepted": { "answers": ["Zahl"] },
-        "referenceTargetIds": ["zahl", "telefonnummer", "sieben", "acht"],
+        "referenceTargetIds": ["zahl", "telefonnummer", "elf", "zehn"],
         "explanation": {
-          "en": "Seven is a number, so Zahl fits.",
-          "fr": "Sept est un nombre, donc « Zahl » convient.",
-          "de": "Sieben ist eine Zahl, also passt „Zahl“."
+          "en": "Twelve is a number: eine Zahl.",
+          "fr": "Douze est un nombre : eine Zahl.",
+          "de": "Zwölf ist eine Zahl."
         }
       },
-      "listeningOptionTargetIds": ["zahl", "telefonnummer", "zehn", "null"]
+      "listeningOptionTargetIds": ["zahl", "ziffer", "drei", "zwei"]
     },
     {
       "id": "telefonnummer",
       "term": "Telefonnummer",
-      "translations": { "en": ["phone number"], "fr": ["numéro de téléphone"] },
+      "translations": { "en": ["phone number", "telephone number"], "fr": ["numéro de téléphone"] },
       "wordClass": "noun",
       "genders": ["feminine"],
       "number": "singular",
@@ -1014,27 +786,73 @@
       "explanation": {
         "en": "Die Telefonnummer is the number you dial to call someone.",
         "fr": "Die Telefonnummer est le numéro qu’on compose pour appeler quelqu’un.",
-        "de": "Die Telefonnummer ist die Nummer, die man wählt, um jemanden anzurufen."
+        "de": "Die Telefonnummer wählt man, um jemanden anzurufen."
       },
       "genderExplanation": {
         "en": "Telefonnummer is feminine, so the article is die: die Telefonnummer.",
-        "fr": "Telefonnummer est féminin, donc l’article est die : die Telefonnummer.",
-        "de": "Telefonnummer ist feminin, daher lautet der Artikel die: die Telefonnummer."
+        "fr": "Telefonnummer est féminin : on dit die Telefonnummer.",
+        "de": "Telefonnummer ist feminin, der Artikel ist also die: die Telefonnummer."
       },
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Meine ",
-        "after": " ist 0171 234 567.",
+        "before": "Wie ist deine ",
+        "after": "? – Null, eins, sieben, acht, vier, zwei.",
         "accepted": { "answers": ["Telefonnummer"] },
-        "referenceTargetIds": ["telefonnummer", "acht", "neun", "zehn"],
+        "referenceTargetIds": ["telefonnummer", "ziffer", "eins", "vier"],
         "explanation": {
-          "en": "A string of digits like this is a phone number, so Telefonnummer fits.",
-          "fr": "Une suite de chiffres comme celle-ci est un numéro de téléphone, donc « Telefonnummer » convient.",
-          "de": "Eine Ziffernfolge wie diese ist eine Telefonnummer, also passt „Telefonnummer“."
+          "en": "You answer a phone number with digits: Telefonnummer.",
+          "fr": "On répond à un numéro de téléphone avec des chiffres : Telefonnummer.",
+          "de": "Auf die Frage nach der Telefonnummer antwortet man mit Ziffern."
         }
       },
-      "listeningOptionTargetIds": ["telefonnummer", "zahl", "null", "neun"]
+      "listeningOptionTargetIds": ["telefonnummer", "zahl", "ziffer", "null"]
+    },
+    {
+      "id": "ziffer",
+      "term": "Ziffer",
+      "translations": { "en": ["digit"], "fr": ["chiffre"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Ziffer",
+      "examForms": ["die Ziffer"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈtsɪfɐ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Die Zahl 25 hat zwei Ziffern.",
+        "translation": {
+          "en": "The number 25 has two digits.",
+          "fr": "Le nombre 25 a deux chiffres."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Ziffer is a single digit from 0 to 9.",
+        "fr": "Die Ziffer est un seul chiffre de 0 à 9.",
+        "de": "Die Ziffer ist ein einzelnes Zeichen von 0 bis 9."
+      },
+      "genderExplanation": {
+        "en": "Ziffer is feminine, so the article is die: die Ziffer.",
+        "fr": "Ziffer est féminin : on dit die Ziffer.",
+        "de": "Ziffer ist feminin, der Artikel ist also die: die Ziffer."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Die Zahl 7 hat eine ",
+        "after": ".",
+        "accepted": { "answers": ["Ziffer"] },
+        "referenceTargetIds": ["ziffer", "zahl", "telefonnummer", "sieben"],
+        "explanation": {
+          "en": "The number 7 is made of one digit: eine Ziffer.",
+          "fr": "Le nombre 7 est formé d’un seul chiffre : eine Ziffer.",
+          "de": "Die Zahl 7 besteht aus einer Ziffer."
+        }
+      },
+      "listeningOptionTargetIds": ["ziffer", "zahl", "zehn", "sechs"]
     }
   ],
   "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }

@@ -6,99 +6,86 @@
   "locales": ["en", "fr", "de"],
   "title": "Vom eigenen Leben erzählen",
   "objective": {
-    "en": "Tell others about key moments of your life and ask back: where you grew up, how long you have lived somewhere, what you used to be.",
-    "fr": "Raconter les étapes importantes de sa vie et poser la question en retour : où l’on a grandi, depuis quand on habite quelque part, ce qu’on était avant.",
-    "de": "Von wichtigen Stationen deines Lebens erzählen und nachfragen: wo du aufgewachsen bist, wie lange du wohnst, was du früher warst."
+    "en": "Talk about key moments of your life (where you grew up, how long you have lived somewhere, what you used to do) and ask back.",
+    "fr": "Parler des grandes étapes de sa vie (où l’on a grandi, depuis quand on habite quelque part, ce qu’on faisait avant) et poser la question en retour.",
+    "de": "Von wichtigen Stationen des eigenen Lebens erzählen (wo man aufgewachsen ist, seit wann man wo wohnt, was man früher war) und nachfragen."
   },
-  "estimatedMinutes": 15,
+  "estimatedMinutes": 17,
   "provenance": {
     "generator": "ft lessons:author",
     "model": "sonnet",
-    "promptVersion": "author-2",
-    "generatedAt": "2026-11-01T20:22:22.779Z",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:28:10.584Z",
     "inputHashes": { "outline": "d61c14b09b5c367e878f362bbefa4f8bbb722395bc7795023c1352a5b059dcd1" }
   },
   "kind": "functions",
   "theme": "personal_identification",
   "situation": {
-    "en": "Two colleagues, Jonas and Ayşe, get to know each other better at a work event.",
-    "fr": "Deux collègues, Jonas et Ayşe, font mieux connaissance lors d’un événement au travail.",
-    "de": "Zwei Kollegen, Jonas und Ayşe, lernen sich bei einer Firmenfeier besser kennen."
+    "en": "Two neighbours meet on the stairs and tell each other about their lives.",
+    "fr": "Deux voisins se rencontrent dans l’escalier et se racontent leur vie.",
+    "de": "Zwei Nachbarn begegnen sich im Treppenhaus und erzählen einander von ihrem Leben."
   },
   "coverageNotes": {
-    "en": "Asking and telling where one grew up (Wo bist du aufgewachsen? / Ich bin in Izmir aufgewachsen), saying how long one has lived somewhere (Ich wohne seit …), saying what one used to be (Früher war ich …) and handing the question back (Und du?).",
-    "fr": "Demander et dire où l’on a grandi (Wo bist du aufgewachsen? / Ich bin in Izmir aufgewachsen), dire depuis quand on habite quelque part (Ich wohne seit …), dire ce qu’on était avant (Früher war ich …) et renvoyer la question (Und du?).",
-    "de": "Fragen und sagen, wo man aufgewachsen ist (Wo bist du aufgewachsen? / Ich bin in Izmir aufgewachsen), sagen, seit wann man irgendwo wohnt (Ich wohne seit …), sagen, was man früher war (Früher war ich …), und die Frage zurückgeben (Und du?)."
+    "en": "Where you grew up (aufgewachsen), how long you have lived somewhere (Seit zwei Jahren, Wie lange wohnst du schon), what you used to be (Früher war ich) and asking back (Und du?).",
+    "fr": "Où l’on a grandi (aufgewachsen), depuis quand on habite quelque part (Seit zwei Jahren, Wie lange wohnst du schon), ce qu’on était avant (Früher war ich) et poser la question en retour (Und du?).",
+    "de": "Wo man aufgewachsen ist (aufgewachsen), wie lange man irgendwo wohnt (Seit zwei Jahren, Wie lange wohnst du schon), was man früher war (Früher war ich) und nachfragen (Und du?)."
   },
   "prerequisites": [],
   "roles": [
-    { "id": "jonas", "label": "Jonas", "translation": { "en": "Jonas", "fr": "Jonas" } },
-    { "id": "ayse", "label": "Ayşe", "translation": { "en": "Ayşe", "fr": "Ayşe" } }
+    {
+      "id": "nachbarin",
+      "label": "die Nachbarin",
+      "translation": { "en": "the neighbour (f.)", "fr": "la voisine" }
+    },
+    {
+      "id": "nachbar",
+      "label": "der Nachbar",
+      "translation": { "en": "the neighbour (m.)", "fr": "le voisin" }
+    }
   ],
   "expressions": [
     {
-      "id": "wo-aufgewachsen",
-      "text": "Wo bist du aufgewachsen?",
-      "openEnd": false,
-      "translations": { "en": ["Where did you grow up?"], "fr": ["Où as-tu grandi ?"] },
-      "explanation": {
-        "en": "Asks a friend where they spent their childhood (du). The verb is in the perfect: bist … aufgewachsen.",
-        "fr": "Demande à un ami où il a passé son enfance (du). Le verbe est au parfait : bist … aufgewachsen.",
-        "de": "Fragt Freunde, wo sie ihre Kindheit verbracht haben (du). Das Verb steht im Perfekt: bist … aufgewachsen."
-      },
-      "example": {
-        "text": "Hallo Tom! Wo bist du aufgewachsen?",
-        "translation": {
-          "en": "Hello Tom! Where did you grow up?",
-          "fr": "Salut Tom ! Où as-tu grandi ?"
-        }
-      }
-    },
-    {
       "id": "aufgewachsen",
-      "text": "Ich bin in Izmir aufgewachsen",
+      "text": "aufgewachsen",
       "openEnd": false,
-      "translations": { "en": ["I grew up in Izmir."], "fr": ["J’ai grandi à Izmir."] },
+      "translations": { "en": ["I grew up"], "fr": ["j’ai grandi"] },
       "explanation": {
-        "en": "Tells where you spent your childhood. Aufwachsen forms the perfect with sein: ich bin aufgewachsen.",
-        "fr": "Dit où l’on a passé son enfance. Aufwachsen forme le parfait avec sein : ich bin aufgewachsen.",
-        "de": "Sagt, wo man seine Kindheit verbracht hat. Aufwachsen bildet das Perfekt mit sein: ich bin aufgewachsen."
+        "en": "Says where you grew up. Perfect with sein: Ich bin in … aufgewachsen. Ask: Wo bist du aufgewachsen?",
+        "fr": "Pour dire où l’on a grandi. Parfait avec sein : Ich bin in … aufgewachsen. Question : Wo bist du aufgewachsen ?",
+        "de": "Sagt, wo man groß geworden ist. Perfekt mit sein: Ich bin in … aufgewachsen. Frage: Wo bist du aufgewachsen?"
       },
       "example": {
-        "text": "Ich bin in Izmir aufgewachsen, aber ich lebe jetzt in Kassel.",
-        "translation": {
-          "en": "I grew up in Izmir, but I now live in Kassel.",
-          "fr": "J’ai grandi à Izmir, mais je vis maintenant à Kassel."
-        }
+        "text": "Ich bin in Izmir aufgewachsen.",
+        "translation": { "en": "I grew up in Izmir.", "fr": "J’ai grandi à Izmir." }
       }
     },
     {
-      "id": "wohne-seit",
-      "text": "Ich wohne seit",
+      "id": "seit-zwei-jahren",
+      "text": "Seit zwei Jahren",
       "openEnd": true,
-      "translations": { "en": ["I have been living here for"], "fr": ["J’habite ici depuis"] },
+      "translations": { "en": ["For two years"], "fr": ["Depuis deux ans"] },
       "explanation": {
-        "en": "Seit with the present tense says how long something has lasted: Ich wohne seit zwei Jahren in Kassel.",
-        "fr": "Seit avec le présent dit depuis combien de temps quelque chose dure : Ich wohne seit zwei Jahren in Kassel.",
-        "de": "Seit mit dem Präsens sagt, wie lange etwas schon dauert: Ich wohne seit zwei Jahren in Kassel."
+        "en": "Seit + dative and the present tense: something began in the past and still lasts. The verb comes second.",
+        "fr": "Seit + datif et présent : quelque chose a commencé dans le passé et dure encore. Le verbe est en deuxième position.",
+        "de": "Seit + Dativ und Präsens: Etwas hat in der Vergangenheit begonnen und dauert noch an. Das Verb steht an zweiter Stelle."
       },
       "example": {
-        "text": "Ich wohne seit zwei Jahren in Kassel.",
+        "text": "Seit zwei Jahren wohne ich in Kassel.",
         "translation": {
-          "en": "I have been living in Kassel for two years.",
+          "en": "I have lived in Kassel for two years.",
           "fr": "J’habite à Kassel depuis deux ans."
         }
       }
     },
     {
-      "id": "frueher",
+      "id": "frueher-war-ich",
       "text": "Früher war ich",
       "openEnd": true,
-      "translations": { "en": ["In the past I was"], "fr": ["Avant, j’étais"] },
+      "translations": { "en": ["I used to be"], "fr": ["Avant, j’étais"] },
       "explanation": {
-        "en": "Früher introduces something that was true in the past but is not any more. War is the past of sein.",
-        "fr": "Früher introduit quelque chose qui était vrai avant mais ne l’est plus. War est le passé de sein.",
-        "de": "Früher leitet etwas ein, das in der Vergangenheit galt, aber nicht mehr gilt. War ist das Präteritum von sein."
+        "en": "Talks about a past situation that is over now: Früher war ich + job. The verb war stays in second place.",
+        "fr": "Parle d’une situation passée qui est terminée : Früher war ich + métier. Le verbe war reste en deuxième position.",
+        "de": "Spricht über eine frühere Situation, die vorbei ist: Früher war ich + Beruf. Das Verb war steht an zweiter Stelle."
       },
       "example": {
         "text": "Früher war ich Lehrerin.",
@@ -111,16 +98,115 @@
       "openEnd": false,
       "translations": { "en": ["And you?"], "fr": ["Et toi ?"] },
       "explanation": {
-        "en": "Hands the question back after you have answered. With adults you do not know, say Und Sie?",
-        "fr": "Renvoie la question après avoir répondu. Avec des adultes que l’on ne connaît pas, on dit Und Sie ?",
-        "de": "Gibt die Frage zurück, nachdem du geantwortet hast. Bei Erwachsenen, die du nicht kennst, sagst du Und Sie?"
+        "en": "Asks the other person the same question after you have answered. Informal (du); with someone you call Sie, say Und Sie?",
+        "fr": "Pose la même question à l’autre personne après avoir répondu. Familier (du) ; avec quelqu’un que l’on vouvoie, on dit Und Sie ?",
+        "de": "Gibt die Frage an den anderen zurück, nachdem man selbst geantwortet hat. Informell (du); bei Sie sagt man Und Sie?"
       },
       "example": {
-        "text": "Ich wohne in Kassel. Und du?",
-        "translation": { "en": "I live in Kassel. And you?", "fr": "J’habite à Kassel. Et toi ?" }
+        "text": "Ich komme aus Berlin. Und du?",
+        "translation": {
+          "en": "I come from Berlin. And you?",
+          "fr": "Je viens de Berlin. Et toi ?"
+        }
+      }
+    },
+    {
+      "id": "wie-lange",
+      "text": "Wie lange wohnst du schon",
+      "openEnd": true,
+      "translations": {
+        "en": ["How long have you been living"],
+        "fr": ["Depuis combien de temps habites-tu"]
+      },
+      "explanation": {
+        "en": "Asks how long someone has lived somewhere: present tense with schon. Wie lange wohnst du schon in …?",
+        "fr": "Demande depuis combien de temps quelqu’un habite quelque part : présent avec schon. Wie lange wohnst du schon in … ?",
+        "de": "Fragt, wie lange jemand schon irgendwo wohnt: Präsens mit schon. Wie lange wohnst du schon in …?"
+      },
+      "example": {
+        "text": "Wie lange wohnst du schon in Köln?",
+        "translation": {
+          "en": "How long have you been living in Cologne?",
+          "fr": "Depuis combien de temps habites-tu à Cologne ?"
+        }
       }
     }
   ],
-  "words": [],
+  "words": [
+    {
+      "id": "stadt",
+      "term": "Stadt",
+      "teachingForm": "die Stadt",
+      "translations": { "en": ["city"], "fr": ["ville"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "explanation": {
+        "en": "Feminine noun: die Stadt.",
+        "fr": "Nom féminin : die Stadt.",
+        "de": "Feminines Nomen: die Stadt."
+      },
+      "example": {
+        "text": "Kassel ist eine schöne Stadt.",
+        "translation": { "en": "Kassel is a nice city.", "fr": "Kassel est une belle ville." }
+      }
+    },
+    {
+      "id": "dorf",
+      "term": "Dorf",
+      "teachingForm": "das Dorf",
+      "translations": { "en": ["village"], "fr": ["village"] },
+      "wordClass": "noun",
+      "genders": ["neuter"],
+      "explanation": {
+        "en": "Neuter noun: das Dorf.",
+        "fr": "Nom neutre : das Dorf.",
+        "de": "Neutrales Nomen: das Dorf."
+      },
+      "example": {
+        "text": "Meine Oma wohnt in einem kleinen Dorf.",
+        "translation": {
+          "en": "My grandma lives in a small village.",
+          "fr": "Ma grand-mère habite dans un petit village."
+        }
+      }
+    },
+    {
+      "id": "beruf",
+      "term": "Beruf",
+      "teachingForm": "der Beruf",
+      "translations": { "en": ["profession", "occupation"], "fr": ["profession", "métier"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "explanation": {
+        "en": "Masculine noun: der Beruf.",
+        "fr": "Nom masculin : der Beruf.",
+        "de": "Maskulines Nomen: der Beruf."
+      },
+      "example": {
+        "text": "Mein Beruf gefällt mir sehr.",
+        "translation": { "en": "I like my profession a lot.", "fr": "J’aime beaucoup mon métier." }
+      }
+    },
+    {
+      "id": "lehrerin",
+      "term": "Lehrerin",
+      "teachingForm": "die Lehrerin",
+      "translations": {
+        "en": ["teacher (f.)", "female teacher"],
+        "fr": ["enseignante", "professeure"]
+      },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "explanation": {
+        "en": "Feminine noun: die Lehrerin. The man is der Lehrer.",
+        "fr": "Nom féminin : die Lehrerin. L’homme est der Lehrer.",
+        "de": "Feminines Nomen: die Lehrerin. Der Mann ist der Lehrer."
+      },
+      "example": {
+        "text": "Meine Schwester ist Lehrerin.",
+        "translation": { "en": "My sister is a teacher.", "fr": "Ma sœur est enseignante." }
+      }
+    }
+  ],
   "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
 }

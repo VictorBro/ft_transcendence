@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 2,
+  "id": "de-telling-a-story-for-effect",
+  "lang": "de",
+  "level": "C2",
+  "locales": ["en", "fr", "de"],
+  "title": "Eine Geschichte pointiert erzählen",
+  "objective": {
+    "en": "Tell an anecdote with suspense, timing and a punchline: build expectation, announce the unbelievable and wrap the story up.",
+    "fr": "Raconter une anecdote avec suspense, rythme et chute : créer l’attente, annoncer l’incroyable et conclure le récit.",
+    "de": "Eine Anekdote mit Spannung, Timing und Pointe erzählen: Erwartung aufbauen, Unglaubliches ankündigen und die Geschichte auf den Punkt bringen."
+  },
+  "estimatedMinutes": 13,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:39:58.800Z",
+    "inputHashes": { "outline": "3e1324d01d0009ef9aa1048a6cd3762bd3459f2ec936ea61b6099bfe6919a9c1" }
+  },
+  "kind": "functions",
+  "theme": "personal_identification",
+  "situation": {
+    "en": "A friend tells another friend a funny story about a lost key; the friend listens and asks questions.",
+    "fr": "Une amie raconte à un ami une histoire drôle sur une clé perdue ; l’ami écoute et pose des questions.",
+    "de": "Eine Freundin erzählt einem Freund eine lustige Geschichte über einen verlorenen Schlüssel; der Freund hört zu und fragt nach."
+  },
+  "coverageNotes": {
+    "en": "Four storytelling devices: opening hook (Stell dir vor), building suspense before the punchline (Und jetzt kommt’s), announcing something unbelievable (Ob du’s glaubst oder nicht) and summing up (Lange Rede, kurzer Sinn).",
+    "fr": "Quatre procédés de narration : accroche d’ouverture (Stell dir vor), suspense avant la chute (Und jetzt kommt’s), annonce de l’incroyable (Ob du’s glaubst oder nicht) et conclusion (Lange Rede, kurzer Sinn).",
+    "de": "Vier Erzählmittel: der Einstieg (Stell dir vor), der Spannungsaufbau vor der Pointe (Und jetzt kommt’s), die Ankündigung von Unglaublichem (Ob du’s glaubst oder nicht) und die Zusammenfassung (Lange Rede, kurzer Sinn)."
+  },
+  "prerequisites": [],
+  "roles": [
+    {
+      "id": "erzaehlerin",
+      "label": "die Erzählerin",
+      "translation": { "en": "the storyteller", "fr": "la narratrice" }
+    },
+    { "id": "freund", "label": "der Freund", "translation": { "en": "the friend", "fr": "l’ami" } }
+  ],
+  "expressions": [
+    {
+      "id": "stell-dir-vor",
+      "text": "Stell dir vor",
+      "openEnd": true,
+      "translations": {
+        "en": ["Imagine this", "Just imagine"],
+        "fr": ["Figure-toi", "Imagine-toi"]
+      },
+      "explanation": {
+        "en": "Opens a story with a surprising piece of news; informal (du). A comma or a colon and the story follow.",
+        "fr": "Ouvre un récit par une nouvelle surprenante ; informel (tu). Une virgule ou deux-points et le récit suivent.",
+        "de": "Eröffnet eine Erzählung mit einer überraschenden Neuigkeit; informell (du). Danach folgen Komma oder Doppelpunkt und die Geschichte."
+      },
+      "example": {
+        "text": "Stell dir vor, mein Bruder hat gestern geheiratet!",
+        "translation": {
+          "en": "Imagine, my brother got married yesterday!",
+          "fr": "Figure-toi que mon frère s’est marié hier !"
+        }
+      }
+    },
+    {
+      "id": "und-jetzt-kommts",
+      "text": "Und jetzt kommt’s",
+      "openEnd": false,
+      "translations": {
+        "en": ["And now comes the best part"],
+        "fr": ["Et maintenant, tiens-toi bien"]
+      },
+      "explanation": {
+        "en": "Builds suspense right before the punchline; a colon usually follows.",
+        "fr": "Crée du suspense juste avant la chute ; en général suivi de deux-points.",
+        "de": "Baut unmittelbar vor der Pointe Spannung auf; meist folgt ein Doppelpunkt."
+      },
+      "example": {
+        "text": "Wir standen vor dem Tresor. Und jetzt kommt’s: Er war offen!",
+        "translation": {
+          "en": "We stood in front of the safe. And now comes the best part: it was open!",
+          "fr": "Nous étions devant le coffre. Et maintenant, tiens-toi bien : il était ouvert !"
+        }
+      }
+    },
+    {
+      "id": "ob-dus-glaubst",
+      "text": "Ob du’s glaubst oder nicht",
+      "openEnd": true,
+      "translations": { "en": ["Believe it or not"], "fr": ["Crois-le ou non"] },
+      "explanation": {
+        "en": "Announces something hard to believe that is nevertheless true; informal (du). A comma and a main clause follow.",
+        "fr": "Annonce quelque chose de difficile à croire mais pourtant vrai ; informel (tu). Une virgule et une proposition principale suivent.",
+        "de": "Kündigt etwas schwer Glaubhaftes an, das trotzdem stimmt; informell (du). Danach folgen ein Komma und ein Hauptsatz."
+      },
+      "example": {
+        "text": "Ob du’s glaubst oder nicht, ich habe den Marathon geschafft.",
+        "translation": {
+          "en": "Believe it or not, I finished the marathon.",
+          "fr": "Crois-le ou non, j’ai terminé le marathon."
+        }
+      }
+    },
+    {
+      "id": "lange-rede-kurzer-sinn",
+      "text": "Lange Rede, kurzer Sinn",
+      "openEnd": true,
+      "translations": { "en": ["Long story short"], "fr": ["Pour faire court"] },
+      "explanation": {
+        "en": "Wraps up a long story in one sentence; a colon and the result follow.",
+        "fr": "Résume un long récit en une phrase ; deux-points et le résultat suivent.",
+        "de": "Fasst eine lange Geschichte in einem Satz zusammen; danach folgen ein Doppelpunkt und das Ergebnis."
+      },
+      "example": {
+        "text": "Lange Rede, kurzer Sinn: Wir haben das Haus gekauft.",
+        "translation": {
+          "en": "Long story short: we bought the house.",
+          "fr": "Pour faire court : nous avons acheté la maison."
+        }
+      }
+    }
+  ],
+  "words": [],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

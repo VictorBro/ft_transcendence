@@ -6,36 +6,36 @@
   "locales": ["en", "fr", "de"],
   "title": "Perfekt: haben oder sein?",
   "objective": {
-    "en": "Choose the right helper verb in the Perfekt: sein for change of place or state and with sein and bleiben, otherwise haben.",
-    "fr": "Choisir le bon auxiliaire au Perfekt : sein pour un changement de lieu ou d’état, avec sein et bleiben, sinon haben.",
-    "de": "Im Perfekt das richtige Hilfsverb wählen: sein bei Orts- und Zustandswechsel und bei sein und bleiben, sonst haben."
+    "en": "Choose sein for a change of place or state and for sein and bleiben in the Perfekt, and haben otherwise: Ich bin nach Rom gefahren. Wer hat das Auto gefahren?",
+    "fr": "Choisir sein pour un changement de lieu ou d'état et pour sein et bleiben au Perfekt, et haben dans les autres cas : Ich bin nach Rom gefahren. Wer hat das Auto gefahren ?",
+    "de": "Im Perfekt sein bei Orts- und Zustandswechsel und bei sein und bleiben wählen, sonst haben: Ich bin nach Rom gefahren. Wer hat das Auto gefahren?"
   },
   "estimatedMinutes": 15,
   "provenance": {
     "generator": "ft lessons:author",
     "model": "sonnet",
-    "promptVersion": "author-2",
-    "generatedAt": "2026-11-01T20:21:26.544Z",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:25:03.998Z",
     "inputHashes": {
       "outline": "cf82694de82623842a7f972f4b20ebcd3f1e296d37a14b9b11afdf86173856ab",
-      "brief": "051c922c8e4c62fa91c7e0941541009dab669b6fc657210c48d239f603d84a13"
+      "brief": "3c34011f39a0d3bb62f7e39abe34986a8ffd440f36a3a84f89f111c1dda5c694"
     }
   },
   "kind": "grammar",
   "topic": "verb_usage",
   "steps": [
     {
-      "id": "block-a-explanation",
+      "id": "b-wechsel-expl",
       "role": "explanation",
-      "blockId": "block-a",
+      "blockId": "b-wechsel",
       "label": {
-        "en": "sein: change of place, change of state, bleiben",
-        "fr": "sein : changement de lieu, changement d’état, bleiben",
-        "de": "sein: Ortswechsel, Zustandswechsel, bleiben"
+        "en": "sein for a change of place or state",
+        "fr": "sein pour un changement de lieu ou d'état",
+        "de": "sein bei Orts- und Zustandswechsel"
       },
       "pages": [
         {
-          "pageId": "block-a-explanation",
+          "pageId": "b-wechsel-expl",
           "estimatedDurationS": 120,
           "timeLimitS": null,
           "instructions": {
@@ -46,34 +46,25 @@
           "items": [
             {
               "type": "grammar_explanation",
-              "itemId": "block-a-explanation",
-              "ruleIds": ["r-sein-ort", "r-sein-zustand", "r-sein-bleiben"],
+              "itemId": "b-wechsel-expl",
+              "ruleIds": ["r-ort", "r-zustand"],
               "heading": {
-                "en": "The helper verb sein",
-                "fr": "L’auxiliaire sein",
-                "de": "Das Hilfsverb sein"
+                "en": "haben or sein: change of place or state",
+                "fr": "haben ou sein : changement de lieu ou d'état",
+                "de": "haben oder sein: Orts- und Zustandswechsel"
               },
               "text": {
-                "en": "In the Perfekt, the helper verb is `haben` or `sein`. Use **sein** for a change of place, a change of state, and for `sein` and `bleiben` themselves.\n\n- Change of place: `Ich bin nach Rom gefahren.` `Sie ist nach Hause gegangen.`\n- Change of state: `Er ist eingeschlafen.` `Wir sind früh aufgewacht.`\n- `sein` and `bleiben`: `Ich bin krank gewesen.` `Sie ist zu Hause geblieben.`\n\nAsk yourself: does someone go from A to B, or from one state to another? Then you need `sein`.",
-                "fr": "Au Perfekt, l’auxiliaire est `haben` ou `sein`. On emploie **sein** pour un changement de lieu, un changement d’état, et pour `sein` et `bleiben` eux-mêmes.\n\n- Changement de lieu : `Ich bin nach Rom gefahren.` `Sie ist nach Hause gegangen.`\n- Changement d’état : `Er ist eingeschlafen.` `Wir sind früh aufgewacht.`\n- `sein` et `bleiben` : `Ich bin krank gewesen.` `Sie ist zu Hause geblieben.`\n\nDemandez-vous : quelqu’un va-t-il de A à B, ou passe-t-il d’un état à un autre ? Alors il faut `sein`.",
-                "de": "Im Perfekt ist das Hilfsverb `haben` oder `sein`. Du nimmst **sein** bei Ortswechsel, bei Zustandswechsel und bei `sein` und `bleiben` selbst.\n\n- Ortswechsel: `Ich bin nach Rom gefahren.` `Sie ist nach Hause gegangen.`\n- Zustandswechsel: `Er ist eingeschlafen.` `Wir sind früh aufgewacht.`\n- `sein` und `bleiben`: `Ich bin krank gewesen.` `Sie ist zu Hause geblieben.`\n\nFrag dich: Geht jemand von A nach B oder von einem Zustand in einen anderen? Dann brauchst du `sein`."
+                "en": "In the Perfekt you need `haben` or `sein` as the auxiliary verb. Use `sein` when someone **changes place**: `Ich bin nach Rom gefahren.` `Wir sind geflogen.`\n\nUse `sein` also when something **changes state**: `Er ist eingeschlafen.` `Ich bin aufgewacht.`\n\n- `Er ist eingeschlafen.` describes the change into sleep, but `Er hat acht Stunden geschlafen.` only tells how long, with no change.\n- Ask yourself: does the place or the state change? Then use `sein`.",
+                "fr": "Au Perfekt, on utilise `haben` ou `sein` comme auxiliaire. On utilise `sein` quand quelqu'un **change de lieu** : `Ich bin nach Rom gefahren.` `Wir sind geflogen.`\n\nOn utilise aussi `sein` quand quelque chose **change d'état** : `Er ist eingeschlafen.` `Ich bin aufgewacht.`\n\n- `Er ist eingeschlafen.` décrit le passage au sommeil, mais `Er hat acht Stunden geschlafen.` indique seulement la durée, sans changement.\n- Demandez-vous : le lieu ou l'état change-t-il ? Alors utilisez `sein`.",
+                "de": "Im Perfekt brauchst du `haben` oder `sein` als Hilfsverb. Du nimmst `sein`, wenn jemand den **Ort wechselt**: `Ich bin nach Rom gefahren.` `Wir sind geflogen.`\n\nDu nimmst `sein` auch, wenn sich ein **Zustand ändert**: `Er ist eingeschlafen.` `Ich bin aufgewacht.`\n\n- `Er ist eingeschlafen.` beschreibt den Wechsel in den Schlaf, `Er hat acht Stunden geschlafen.` nennt nur die Dauer, ohne Wechsel.\n- Frag dich: Wechselt der Ort oder der Zustand? Dann nimmst du `sein`."
               },
               "formTable": [
                 {
-                  "subject": "ich",
-                  "form": "bin gefahren",
+                  "subject": "Ortswechsel",
+                  "form": "sein",
                   "example": "Ich bin nach Rom gefahren."
                 },
-                {
-                  "subject": "er",
-                  "form": "ist eingeschlafen",
-                  "example": "Er ist eingeschlafen."
-                },
-                {
-                  "subject": "sie",
-                  "form": "ist geblieben",
-                  "example": "Sie ist zu Hause geblieben."
-                }
+                { "subject": "Zustandswechsel", "form": "sein", "example": "Er ist eingeschlafen." }
               ],
               "examples": [
                 {
@@ -81,21 +72,18 @@
                   "translation": { "en": "I went to Rome.", "fr": "Je suis allé à Rome." }
                 },
                 {
+                  "text": "Ich bin aufgewacht.",
+                  "translation": { "en": "I woke up.", "fr": "Je me suis réveillé." }
+                },
+                {
                   "text": "Er ist eingeschlafen.",
-                  "translation": { "en": "He fell asleep.", "fr": "Il s’est endormi." }
+                  "translation": { "en": "He fell asleep.", "fr": "Il s'est endormi." }
                 },
                 {
-                  "text": "Sie ist zu Hause geblieben.",
+                  "text": "Er hat acht Stunden geschlafen.",
                   "translation": {
-                    "en": "She stayed at home.",
-                    "fr": "Elle est restée à la maison."
-                  }
-                },
-                {
-                  "text": "Wir sind früh aufgewacht.",
-                  "translation": {
-                    "en": "We woke up early.",
-                    "fr": "Nous nous sommes réveillés tôt."
+                    "en": "He slept for eight hours.",
+                    "fr": "Il a dormi huit heures."
                   }
                 }
               ]
@@ -105,18 +93,18 @@
       ]
     },
     {
-      "id": "ex-a-choice",
+      "id": "ex-w-choice",
       "role": "exercise",
-      "blockId": "block-a",
+      "blockId": "b-wechsel",
       "label": {
-        "en": "Choose the helper verb",
-        "fr": "Choisir l’auxiliaire",
+        "en": "Choose the auxiliary",
+        "fr": "Choisir l'auxiliaire",
         "de": "Hilfsverb wählen"
       },
       "pages": [
         {
-          "pageId": "ex-a-choice-1",
-          "estimatedDurationS": 60,
+          "pageId": "ex-w-choice-1",
+          "estimatedDurationS": 50,
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
@@ -126,82 +114,82 @@
           "items": [
             {
               "type": "grammar_gap_choice",
-              "itemId": "ex-a-choice-1",
-              "before": "Wir",
-              "after": "gestern nach München geflogen.",
+              "itemId": "ex-w-choice-1",
+              "before": "Ich",
+              "after": "nach Rom gefahren.",
               "choices": [
-                { "choiceId": "c-1", "text": "sind" },
-                { "choiceId": "c-2", "text": "haben" },
-                { "choiceId": "c-3", "text": "seid" },
-                { "choiceId": "c-4", "text": "hat" }
-              ],
-              "answerChoiceId": "c-1",
-              "hint": null,
-              "ruleIds": ["r-sein-ort"],
-              "answerExplanation": {
-                "en": "Flying to Munich is a change of place, so: wir sind geflogen.",
-                "fr": "Aller à Munich en avion est un changement de lieu : wir sind geflogen.",
-                "de": "Nach München fliegen ist ein Ortswechsel: wir sind geflogen."
-              }
-            },
-            {
-              "type": "grammar_gap_choice",
-              "itemId": "ex-a-choice-2",
-              "before": "Das Baby",
-              "after": "endlich eingeschlafen.",
-              "choices": [
-                { "choiceId": "c-1", "text": "ist" },
-                { "choiceId": "c-2", "text": "hat" },
-                { "choiceId": "c-3", "text": "sind" },
-                { "choiceId": "c-4", "text": "haben" }
-              ],
-              "answerChoiceId": "c-1",
-              "hint": null,
-              "ruleIds": ["r-sein-zustand"],
-              "answerExplanation": {
-                "en": "Falling asleep is a change of state, so: ist eingeschlafen.",
-                "fr": "S’endormir est un changement d’état : ist eingeschlafen.",
-                "de": "Einschlafen ist ein Zustandswechsel: ist eingeschlafen."
-              }
-            },
-            {
-              "type": "grammar_gap_choice",
-              "itemId": "ex-a-choice-3",
-              "before": "Meine Tante",
-              "after": "den ganzen Tag zu Hause geblieben.",
-              "choices": [
-                { "choiceId": "c-1", "text": "hat" },
-                { "choiceId": "c-2", "text": "ist" },
-                { "choiceId": "c-3", "text": "bin" },
-                { "choiceId": "c-4", "text": "haben" }
-              ],
-              "answerChoiceId": "c-2",
-              "hint": null,
-              "ruleIds": ["r-sein-bleiben"],
-              "answerExplanation": {
-                "en": "bleiben always takes sein: ist geblieben.",
-                "fr": "bleiben se construit toujours avec sein : ist geblieben.",
-                "de": "bleiben steht immer mit sein: ist geblieben."
-              }
-            },
-            {
-              "type": "grammar_gap_choice",
-              "itemId": "ex-a-choice-4",
-              "before": "Die Kinder",
-              "after": "schnell nach Hause gelaufen.",
-              "choices": [
-                { "choiceId": "c-1", "text": "sind" },
-                { "choiceId": "c-2", "text": "haben" },
+                { "choiceId": "c-1", "text": "bin" },
+                { "choiceId": "c-2", "text": "habe" },
                 { "choiceId": "c-3", "text": "ist" },
                 { "choiceId": "c-4", "text": "hat" }
               ],
               "answerChoiceId": "c-1",
               "hint": null,
-              "ruleIds": ["r-sein-ort"],
+              "ruleIds": ["r-ort"],
               "answerExplanation": {
-                "en": "Running home is a change of place: sind gelaufen.",
-                "fr": "Courir jusqu’à la maison est un changement de lieu : sind gelaufen.",
-                "de": "Nach Hause laufen ist ein Ortswechsel: sind gelaufen."
+                "en": "Going to Rome is a change of place: sein, so ich bin.",
+                "fr": "Aller à Rome est un changement de lieu : sein, donc ich bin.",
+                "de": "Nach Rom fahren ist ein Ortswechsel: sein, also ich bin."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-w-choice-2",
+              "before": "Wir",
+              "after": "gestern nach Berlin geflogen.",
+              "choices": [
+                { "choiceId": "c-1", "text": "haben" },
+                { "choiceId": "c-2", "text": "hat" },
+                { "choiceId": "c-3", "text": "sind" },
+                { "choiceId": "c-4", "text": "ist" }
+              ],
+              "answerChoiceId": "c-3",
+              "hint": null,
+              "ruleIds": ["r-ort"],
+              "answerExplanation": {
+                "en": "Flying to Berlin is a change of place: sein, so wir sind.",
+                "fr": "Voler vers Berlin est un changement de lieu : sein, donc wir sind.",
+                "de": "Nach Berlin fliegen ist ein Ortswechsel: sein, also wir sind."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-w-choice-3",
+              "before": "Er",
+              "after": "vor dem Fernseher eingeschlafen.",
+              "choices": [
+                { "choiceId": "c-1", "text": "hat" },
+                { "choiceId": "c-2", "text": "habe" },
+                { "choiceId": "c-3", "text": "sind" },
+                { "choiceId": "c-4", "text": "ist" }
+              ],
+              "answerChoiceId": "c-4",
+              "hint": null,
+              "ruleIds": ["r-zustand"],
+              "answerExplanation": {
+                "en": "Falling asleep is a change of state: sein, so er ist.",
+                "fr": "S'endormir est un changement d'état : sein, donc er ist.",
+                "de": "Einschlafen ist ein Zustandswechsel: sein, also er ist."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-w-choice-4",
+              "before": "Die Kinder",
+              "after": "um sieben Uhr aufgewacht.",
+              "choices": [
+                { "choiceId": "c-1", "text": "haben" },
+                { "choiceId": "c-2", "text": "sind" },
+                { "choiceId": "c-3", "text": "bin" },
+                { "choiceId": "c-4", "text": "ist" }
+              ],
+              "answerChoiceId": "c-2",
+              "hint": null,
+              "ruleIds": ["r-zustand"],
+              "answerExplanation": {
+                "en": "Waking up is a change of state: sein, so die Kinder sind.",
+                "fr": "Se réveiller est un changement d'état : sein, donc die Kinder sind.",
+                "de": "Aufwachen ist ein Zustandswechsel: sein, also die Kinder sind."
               }
             }
           ]
@@ -209,18 +197,18 @@
       ]
     },
     {
-      "id": "ex-a-typing",
+      "id": "ex-w-typing",
       "role": "exercise",
-      "blockId": "block-a",
+      "blockId": "b-wechsel",
       "label": {
-        "en": "Type the helper verb",
-        "fr": "Écrire l’auxiliaire",
+        "en": "Type the auxiliary",
+        "fr": "Écrire l'auxiliaire",
         "de": "Hilfsverb schreiben"
       },
       "pages": [
         {
-          "pageId": "ex-a-typing-1",
-          "estimatedDurationS": 80,
+          "pageId": "ex-w-typing-1",
+          "estimatedDurationS": 70,
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
@@ -230,70 +218,58 @@
           "items": [
             {
               "type": "grammar_gap_typing",
-              "itemId": "ex-a-typing-1",
-              "before": "Ich",
-              "after": "um sieben Uhr aufgewacht.",
-              "accepted": { "answers": ["bin"] },
-              "hint": {
-                "en": "change of state",
-                "fr": "changement d’état",
-                "de": "Zustandswechsel"
-              },
-              "ruleIds": ["r-sein-zustand"],
-              "answerExplanation": {
-                "en": "Waking up is a change of state: ich bin aufgewacht.",
-                "fr": "Se réveiller est un changement d’état : ich bin aufgewacht.",
-                "de": "Aufwachen ist ein Zustandswechsel: ich bin aufgewacht."
-              }
-            },
-            {
-              "type": "grammar_gap_typing",
-              "itemId": "ex-a-typing-2",
-              "before": "Die Gäste",
-              "after": "um elf Uhr nach Hause gegangen.",
-              "accepted": { "answers": ["sind"] },
-              "hint": { "en": "change of place", "fr": "changement de lieu", "de": "Ortswechsel" },
-              "ruleIds": ["r-sein-ort"],
-              "answerExplanation": {
-                "en": "Going home is a change of place: sie sind gegangen.",
-                "fr": "Rentrer est un changement de lieu : sie sind gegangen.",
-                "de": "Nach Hause gehen ist ein Ortswechsel: sie sind gegangen."
-              }
-            },
-            {
-              "type": "grammar_gap_typing",
-              "itemId": "ex-a-typing-3",
-              "before": "Mein Bruder",
-              "after": "im Urlaub in Hamburg geblieben.",
-              "accepted": { "answers": ["ist"] },
-              "hint": {
-                "en": "the verb bleiben",
-                "fr": "le verbe bleiben",
-                "de": "das Verb bleiben"
-              },
-              "ruleIds": ["r-sein-bleiben"],
-              "answerExplanation": {
-                "en": "bleiben takes sein: er ist geblieben.",
-                "fr": "bleiben se construit avec sein : er ist geblieben.",
-                "de": "bleiben steht mit sein: er ist geblieben."
-              }
-            },
-            {
-              "type": "grammar_gap_typing",
-              "itemId": "ex-a-typing-4",
+              "itemId": "ex-w-typing-1",
               "before": "Du",
-              "after": "gestern sehr müde gewesen.",
+              "after": "heute früh zur Schule gegangen?",
               "accepted": { "answers": ["bist"] },
-              "hint": {
-                "en": "the verb sein itself",
-                "fr": "le verbe sein lui-même",
-                "de": "das Verb sein selbst"
-              },
-              "ruleIds": ["r-sein-bleiben"],
+              "hint": { "en": "auxiliary verb", "fr": "verbe auxiliaire", "de": "Hilfsverb" },
+              "ruleIds": ["r-ort"],
               "answerExplanation": {
-                "en": "sein itself takes sein: du bist gewesen.",
-                "fr": "sein se construit lui-même avec sein : du bist gewesen.",
-                "de": "sein steht selbst mit sein: du bist gewesen."
+                "en": "Going to school is a change of place: sein, so du bist.",
+                "fr": "Aller à l'école est un changement de lieu : sein, donc du bist.",
+                "de": "Zur Schule gehen ist ein Ortswechsel: sein, also du bist."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-w-typing-2",
+              "before": "Meine Eltern",
+              "after": "am Samstag zu uns gekommen.",
+              "accepted": { "answers": ["sind"] },
+              "hint": { "en": "auxiliary verb", "fr": "verbe auxiliaire", "de": "Hilfsverb" },
+              "ruleIds": ["r-ort"],
+              "answerExplanation": {
+                "en": "Coming to us is a change of place: sein, so meine Eltern sind.",
+                "fr": "Venir chez nous est un changement de lieu : sein, donc meine Eltern sind.",
+                "de": "Zu uns kommen ist ein Ortswechsel: sein, also meine Eltern sind."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-w-typing-3",
+              "before": "Ich",
+              "after": "heute Morgen um sechs Uhr aufgewacht.",
+              "accepted": { "answers": ["bin"] },
+              "hint": { "en": "auxiliary verb", "fr": "verbe auxiliaire", "de": "Hilfsverb" },
+              "ruleIds": ["r-zustand"],
+              "answerExplanation": {
+                "en": "Waking up is a change of state: sein, so ich bin.",
+                "fr": "Se réveiller est un changement d'état : sein, donc ich bin.",
+                "de": "Aufwachen ist ein Zustandswechsel: sein, also ich bin."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-w-typing-4",
+              "before": "Das Baby",
+              "after": "im Auto eingeschlafen.",
+              "accepted": { "answers": ["ist"] },
+              "hint": { "en": "auxiliary verb", "fr": "verbe auxiliaire", "de": "Hilfsverb" },
+              "ruleIds": ["r-zustand"],
+              "answerExplanation": {
+                "en": "Falling asleep is a change of state: sein, so das Baby ist.",
+                "fr": "S'endormir est un changement d'état : sein, donc das Baby ist.",
+                "de": "Einschlafen ist ein Zustandswechsel: sein, also das Baby ist."
               }
             }
           ]
@@ -301,101 +277,106 @@
       ]
     },
     {
-      "id": "ex-a-order",
+      "id": "ex-w-spot",
       "role": "exercise",
-      "blockId": "block-a",
-      "label": {
-        "en": "Build sentences with sein",
-        "fr": "Construire des phrases avec sein",
-        "de": "Sätze mit sein bilden"
-      },
+      "blockId": "b-wechsel",
+      "label": { "en": "Error spotting", "fr": "Repérer l’erreur", "de": "Fehler finden" },
       "pages": [
         {
-          "pageId": "ex-a-order-1",
-          "estimatedDurationS": 100,
+          "pageId": "ex-w-spot-1",
+          "estimatedDurationS": 90,
           "timeLimitS": null,
           "instructions": {
-            "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
-            "de": "Bring die Wörter in die richtige Reihenfolge."
+            "en": "Find the wrong word and correct it.",
+            "fr": "Trouvez le mot faux et corrigez-le.",
+            "de": "Finde das falsche Wort und korrigiere es."
           },
           "items": [
             {
-              "type": "grammar_word_order",
-              "itemId": "ex-a-order-1",
+              "type": "grammar_error_spotter",
+              "itemId": "ex-w-spot-1",
               "tokens": [
-                { "tokenId": "t-1", "text": "gefahren" },
-                { "tokenId": "t-2", "text": "Er" },
-                { "tokenId": "t-3", "text": "nach" },
-                { "tokenId": "t-4", "text": "ist" },
-                { "tokenId": "t-5", "text": "gestern" },
-                { "tokenId": "t-6", "text": "Wien" },
-                { "tokenId": "t-7", "text": "." }
+                { "tokenId": "t-1", "text": "Ich" },
+                { "tokenId": "t-2", "text": "habe" },
+                { "tokenId": "t-3", "text": "gestern" },
+                { "tokenId": "t-4", "text": "nach" },
+                { "tokenId": "t-5", "text": "Hamburg" },
+                { "tokenId": "t-6", "text": "gefahren" }
               ],
-              "acceptedOrders": [["t-2", "t-4", "t-5", "t-3", "t-6", "t-1", "t-7"]],
-              "ruleIds": ["r-sein-ort"],
+              "faultyTokenId": "t-2",
+              "correction": { "mode": "type", "accepted": { "answers": ["bin"] }, "choices": [] },
+              "ruleIds": ["r-ort"],
               "answerExplanation": {
-                "en": "Travelling to Vienna is a change of place: er ist gefahren.",
-                "fr": "Aller à Vienne est un changement de lieu : er ist gefahren.",
-                "de": "Nach Wien fahren ist ein Ortswechsel: er ist gefahren."
+                "en": "Going to Hamburg is a change of place: ich bin gefahren.",
+                "fr": "Aller à Hambourg est un changement de lieu : ich bin gefahren.",
+                "de": "Nach Hamburg fahren ist ein Ortswechsel: ich bin gefahren."
               }
             },
             {
-              "type": "grammar_word_order",
-              "itemId": "ex-a-order-2",
+              "type": "grammar_error_spotter",
+              "itemId": "ex-w-spot-2",
               "tokens": [
-                { "tokenId": "t-1", "text": "spät" },
-                { "tokenId": "t-2", "text": "eingeschlafen" },
-                { "tokenId": "t-3", "text": "Wir" },
-                { "tokenId": "t-4", "text": "sind" },
-                { "tokenId": "t-5", "text": "." }
+                { "tokenId": "t-1", "text": "Das" },
+                { "tokenId": "t-2", "text": "Kind" },
+                { "tokenId": "t-3", "text": "hat" },
+                { "tokenId": "t-4", "text": "im" },
+                { "tokenId": "t-5", "text": "Bus" },
+                { "tokenId": "t-6", "text": "eingeschlafen" }
               ],
-              "acceptedOrders": [["t-3", "t-4", "t-1", "t-2", "t-5"]],
-              "ruleIds": ["r-sein-zustand"],
+              "faultyTokenId": "t-3",
+              "correction": {
+                "mode": "select",
+                "accepted": { "answers": ["ist"] },
+                "choices": ["ist", "hat", "sind"]
+              },
+              "ruleIds": ["r-zustand"],
               "answerExplanation": {
-                "en": "Falling asleep is a change of state: wir sind eingeschlafen.",
-                "fr": "S’endormir est un changement d’état : wir sind eingeschlafen.",
-                "de": "Einschlafen ist ein Zustandswechsel: wir sind eingeschlafen."
+                "en": "Falling asleep is a change of state: das Kind ist eingeschlafen.",
+                "fr": "S'endormir est un changement d'état : das Kind ist eingeschlafen.",
+                "de": "Einschlafen ist ein Zustandswechsel: das Kind ist eingeschlafen."
               }
             },
             {
-              "type": "grammar_word_order",
-              "itemId": "ex-a-order-3",
+              "type": "grammar_error_spotter",
+              "itemId": "ex-w-spot-3",
               "tokens": [
-                { "tokenId": "t-1", "text": "geblieben" },
-                { "tokenId": "t-2", "text": "Sie" },
-                { "tokenId": "t-3", "text": "zu" },
-                { "tokenId": "t-4", "text": "ist" },
-                { "tokenId": "t-5", "text": "am" },
-                { "tokenId": "t-6", "text": "Hause" },
-                { "tokenId": "t-7", "text": "Sonntag" },
-                { "tokenId": "t-8", "text": "." }
+                { "tokenId": "t-1", "text": "Mein" },
+                { "tokenId": "t-2", "text": "Bruder" },
+                { "tokenId": "t-3", "text": "hat" },
+                { "tokenId": "t-4", "text": "gestern" },
+                { "tokenId": "t-5", "text": "zu" },
+                { "tokenId": "t-6", "text": "Fuß" },
+                { "tokenId": "t-7", "text": "nach" },
+                { "tokenId": "t-8", "text": "Hause" },
+                { "tokenId": "t-9", "text": "gegangen" }
               ],
-              "acceptedOrders": [["t-2", "t-4", "t-5", "t-7", "t-3", "t-6", "t-1", "t-8"]],
-              "ruleIds": ["r-sein-bleiben"],
+              "faultyTokenId": "t-3",
+              "correction": { "mode": "type", "accepted": { "answers": ["ist"] }, "choices": [] },
+              "ruleIds": ["r-ort"],
               "answerExplanation": {
-                "en": "bleiben takes sein: sie ist geblieben.",
-                "fr": "bleiben se construit avec sein : sie ist geblieben.",
-                "de": "bleiben steht mit sein: sie ist geblieben."
+                "en": "Going home is a change of place: mein Bruder ist gegangen.",
+                "fr": "Rentrer chez soi est un changement de lieu : mein Bruder ist gegangen.",
+                "de": "Nach Hause gehen ist ein Ortswechsel: mein Bruder ist gegangen."
               }
             },
             {
-              "type": "grammar_word_order",
-              "itemId": "ex-a-order-4",
+              "type": "grammar_error_spotter",
+              "itemId": "ex-w-spot-4",
               "tokens": [
-                { "tokenId": "t-1", "text": "gereist" },
-                { "tokenId": "t-2", "text": "Ihr" },
-                { "tokenId": "t-3", "text": "Köln" },
-                { "tokenId": "t-4", "text": "seid" },
-                { "tokenId": "t-5", "text": "nach" },
-                { "tokenId": "t-6", "text": "." }
+                { "tokenId": "t-1", "text": "Ich" },
+                { "tokenId": "t-2", "text": "habe" },
+                { "tokenId": "t-3", "text": "heute" },
+                { "tokenId": "t-4", "text": "Morgen" },
+                { "tokenId": "t-5", "text": "früh" },
+                { "tokenId": "t-6", "text": "aufgewacht" }
               ],
-              "acceptedOrders": [["t-2", "t-4", "t-5", "t-3", "t-1", "t-6"]],
-              "ruleIds": ["r-sein-ort"],
+              "faultyTokenId": "t-2",
+              "correction": { "mode": "type", "accepted": { "answers": ["bin"] }, "choices": [] },
+              "ruleIds": ["r-zustand"],
               "answerExplanation": {
-                "en": "Travelling to Cologne is a change of place: ihr seid gereist.",
-                "fr": "Voyager à Cologne est un changement de lieu : ihr seid gereist.",
-                "de": "Nach Köln reisen ist ein Ortswechsel: ihr seid gereist."
+                "en": "Waking up is a change of state: ich bin aufgewacht.",
+                "fr": "Se réveiller est un changement d'état : ich bin aufgewacht.",
+                "de": "Aufwachen ist ein Zustandswechsel: ich bin aufgewacht."
               }
             }
           ]
@@ -403,17 +384,17 @@
       ]
     },
     {
-      "id": "block-b-explanation",
+      "id": "b-bleiben-expl",
       "role": "explanation",
-      "blockId": "block-b",
+      "blockId": "b-bleiben-haben",
       "label": {
-        "en": "haben as the default, and fahren in two ways",
-        "fr": "haben par défaut, et fahren de deux façons",
-        "de": "haben als Normalfall und fahren auf zwei Arten"
+        "en": "sein, bleiben and haben",
+        "fr": "sein, bleiben et haben",
+        "de": "sein, bleiben und haben"
       },
       "pages": [
         {
-          "pageId": "block-b-explanation",
+          "pageId": "b-bleiben-expl",
           "estimatedDurationS": 120,
           "timeLimitS": null,
           "instructions": {
@@ -424,57 +405,49 @@
           "items": [
             {
               "type": "grammar_explanation",
-              "itemId": "block-b-explanation",
-              "ruleIds": ["r-haben", "r-sein-ort"],
+              "itemId": "b-bleiben-expl",
+              "ruleIds": ["r-bleiben", "r-haben"],
               "heading": {
-                "en": "The helper verb haben",
-                "fr": "L’auxiliaire haben",
-                "de": "Das Hilfsverb haben"
+                "en": "sein, bleiben and haben",
+                "fr": "sein, bleiben et haben",
+                "de": "sein, bleiben und haben"
               },
               "text": {
-                "en": "Most other verbs form the Perfekt with **haben**: verbs with an accusative object, and verbs with no change of place or state.\n\n- `Ich habe einen Brief geschrieben.` (the letter is the object)\n- `Er hat lange geschlafen.` (no change of state)\n\nWatch out for `fahren`: with an accusative object it takes `haben`, without an object and with a goal it takes `sein`.\n\n- `Wer hat das Auto gefahren?` (the car is the object)\n- `Ich bin nach Rom gefahren.` (Rome is the goal)",
-                "fr": "La plupart des autres verbes forment le Perfekt avec **haben** : les verbes avec un objet à l’accusatif et les verbes sans changement de lieu ni d’état.\n\n- `Ich habe einen Brief geschrieben.` (la lettre est l’objet)\n- `Er hat lange geschlafen.` (pas de changement d’état)\n\nAttention à `fahren` : avec un objet à l’accusatif, il prend `haben` ; sans objet et avec une destination, il prend `sein`.\n\n- `Wer hat das Auto gefahren?` (la voiture est l’objet)\n- `Ich bin nach Rom gefahren.` (Rome est la destination)",
-                "de": "Die meisten anderen Verben bilden das Perfekt mit **haben**: Verben mit Akkusativobjekt und Verben ohne Orts- oder Zustandswechsel.\n\n- `Ich habe einen Brief geschrieben.` (der Brief ist das Objekt)\n- `Er hat lange geschlafen.` (kein Zustandswechsel)\n\nAchtung bei `fahren`: Mit Akkusativobjekt steht `haben`, ohne Objekt und mit einem Ziel steht `sein`.\n\n- `Wer hat das Auto gefahren?` (das Auto ist das Objekt)\n- `Ich bin nach Rom gefahren.` (Rom ist das Ziel)"
+                "en": "With the verbs `sein` and `bleiben` the auxiliary is `sein`: `Ich bin müde gewesen.` `Wir sind zu Hause geblieben.`\n\nOtherwise use `haben`, especially with an object in the accusative: `Ich habe einen Kuchen gegessen.` `Wer hat das Auto gefahren?`\n\n- `fahren` with a place: `Ich bin nach Rom gefahren.`\n- `fahren` with an object: `Ich habe das Auto gefahren.`\n- Not sure? Check: is the verb `sein` or `bleiben`, or does the place or state change? If not, use `haben`.",
+                "fr": "Avec les verbes `sein` et `bleiben`, on utilise `sein` comme auxiliaire : `Ich bin müde gewesen.` `Wir sind zu Hause geblieben.`\n\nDans les autres cas, on utilise `haben`, surtout avec un complément à l'accusatif : `Ich habe einen Kuchen gegessen.` `Wer hat das Auto gefahren?`\n\n- `fahren` avec un lieu : `Ich bin nach Rom gefahren.`\n- `fahren` avec un objet : `Ich habe das Auto gefahren.`\n- Un doute ? Vérifiez : le verbe est-il `sein` ou `bleiben`, ou le lieu ou l'état change-t-il ? Sinon, utilisez `haben`.",
+                "de": "Bei den Verben `sein` und `bleiben` nimmst du `sein` als Hilfsverb: `Ich bin müde gewesen.` `Wir sind zu Hause geblieben.`\n\nSonst nimmst du `haben`, besonders bei einem Akkusativobjekt: `Ich habe einen Kuchen gegessen.` `Wer hat das Auto gefahren?`\n\n- `fahren` mit Ortsangabe: `Ich bin nach Rom gefahren.`\n- `fahren` mit Objekt: `Ich habe das Auto gefahren.`\n- Unsicher? Prüfe: Ist das Verb `sein` oder `bleiben`, oder wechselt der Ort oder der Zustand? Sonst nimmst du `haben`."
               },
               "formTable": [
                 {
-                  "subject": "ich",
-                  "form": "habe geschrieben",
-                  "example": "Ich habe einen Brief geschrieben."
+                  "subject": "sein, bleiben",
+                  "form": "sein",
+                  "example": "Wir sind zu Hause geblieben."
                 },
                 {
-                  "subject": "er",
-                  "form": "hat geschlafen",
-                  "example": "Er hat lange geschlafen."
-                },
-                {
-                  "subject": "wir",
-                  "form": "haben gespielt",
-                  "example": "Wir haben Fußball gespielt."
+                  "subject": "sonst",
+                  "form": "haben",
+                  "example": "Ich habe einen Kuchen gegessen."
                 }
               ],
               "examples": [
                 {
-                  "text": "Ich habe einen Brief geschrieben.",
-                  "translation": { "en": "I wrote a letter.", "fr": "J’ai écrit une lettre." }
+                  "text": "Ich bin müde gewesen.",
+                  "translation": { "en": "I was tired.", "fr": "J'ai été fatigué." }
+                },
+                {
+                  "text": "Wir sind zu Hause geblieben.",
+                  "translation": {
+                    "en": "We stayed at home.",
+                    "fr": "Nous sommes restés à la maison."
+                  }
+                },
+                {
+                  "text": "Ich habe einen Kuchen gegessen.",
+                  "translation": { "en": "I ate a cake.", "fr": "J'ai mangé un gâteau." }
                 },
                 {
                   "text": "Wer hat das Auto gefahren?",
                   "translation": { "en": "Who drove the car?", "fr": "Qui a conduit la voiture ?" }
-                },
-                {
-                  "text": "Er hat lange geschlafen.",
-                  "translation": {
-                    "en": "He slept for a long time.",
-                    "fr": "Il a dormi longtemps."
-                  }
-                },
-                {
-                  "text": "Wir haben Fußball gespielt.",
-                  "translation": {
-                    "en": "We played football.",
-                    "fr": "Nous avons joué au football."
-                  }
                 }
               ]
             }
@@ -485,16 +458,16 @@
     {
       "id": "ex-b-choice",
       "role": "exercise",
-      "blockId": "block-b",
+      "blockId": "b-bleiben-haben",
       "label": {
-        "en": "Choose the helper verb",
-        "fr": "Choisir l’auxiliaire",
+        "en": "Choose the auxiliary",
+        "fr": "Choisir l'auxiliaire",
         "de": "Hilfsverb wählen"
       },
       "pages": [
         {
           "pageId": "ex-b-choice-1",
-          "estimatedDurationS": 60,
+          "estimatedDurationS": 50,
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
@@ -505,81 +478,81 @@
             {
               "type": "grammar_gap_choice",
               "itemId": "ex-b-choice-1",
-              "before": "Ich",
-              "after": "gestern einen Film gesehen.",
+              "before": "Wir",
+              "after": "am Sonntag zu Hause geblieben.",
               "choices": [
-                { "choiceId": "c-1", "text": "habe" },
-                { "choiceId": "c-2", "text": "bin" },
+                { "choiceId": "c-1", "text": "haben" },
+                { "choiceId": "c-2", "text": "sind" },
                 { "choiceId": "c-3", "text": "hat" },
-                { "choiceId": "c-4", "text": "sind" }
+                { "choiceId": "c-4", "text": "seid" }
               ],
-              "answerChoiceId": "c-1",
+              "answerChoiceId": "c-2",
               "hint": null,
-              "ruleIds": ["r-haben"],
+              "ruleIds": ["r-bleiben"],
               "answerExplanation": {
-                "en": "einen Film is an accusative object, so: ich habe gesehen.",
-                "fr": "einen Film est un objet à l’accusatif : ich habe gesehen.",
-                "de": "einen Film ist ein Akkusativobjekt: ich habe gesehen."
+                "en": "bleiben always forms the Perfekt with sein here: wir sind geblieben.",
+                "fr": "bleiben forme ici le Perfekt avec sein : wir sind geblieben.",
+                "de": "bleiben bildet das Perfekt mit sein: wir sind geblieben."
               }
             },
             {
               "type": "grammar_gap_choice",
               "itemId": "ex-b-choice-2",
-              "before": "Wer",
-              "after": "das Auto in die Garage gefahren?",
+              "before": "Ich",
+              "after": "gestern einen Kuchen gegessen.",
               "choices": [
-                { "choiceId": "c-1", "text": "hat" },
+                { "choiceId": "c-1", "text": "bin" },
                 { "choiceId": "c-2", "text": "ist" },
-                { "choiceId": "c-3", "text": "haben" },
-                { "choiceId": "c-4", "text": "sind" }
+                { "choiceId": "c-3", "text": "habe" },
+                { "choiceId": "c-4", "text": "hat" }
               ],
-              "answerChoiceId": "c-1",
+              "answerChoiceId": "c-3",
               "hint": null,
               "ruleIds": ["r-haben"],
               "answerExplanation": {
-                "en": "das Auto is the object, so fahren takes haben: hat gefahren.",
-                "fr": "das Auto est l’objet, donc fahren prend haben : hat gefahren.",
-                "de": "das Auto ist das Objekt, also steht fahren mit haben: hat gefahren."
+                "en": "Eating a cake has an accusative object and no change: ich habe gegessen.",
+                "fr": "Manger un gâteau a un objet à l'accusatif et aucun changement : ich habe gegessen.",
+                "de": "Einen Kuchen essen hat ein Akkusativobjekt und keinen Wechsel: ich habe gegessen."
               }
             },
             {
               "type": "grammar_gap_choice",
               "itemId": "ex-b-choice-3",
-              "before": "Mein Vater",
-              "after": "nach Italien gefahren.",
+              "before": "Wer",
+              "after": "das Auto gefahren?",
               "choices": [
-                { "choiceId": "c-1", "text": "hat" },
-                { "choiceId": "c-2", "text": "ist" },
-                { "choiceId": "c-3", "text": "habe" },
-                { "choiceId": "c-4", "text": "haben" }
+                { "choiceId": "c-1", "text": "ist" },
+                { "choiceId": "c-2", "text": "hat" },
+                { "choiceId": "c-3", "text": "sind" },
+                { "choiceId": "c-4", "text": "habe" }
               ],
               "answerChoiceId": "c-2",
               "hint": null,
-              "ruleIds": ["r-sein-ort"],
+              "ruleIds": ["r-haben"],
               "answerExplanation": {
-                "en": "No object and a goal (Italien): ist gefahren.",
-                "fr": "Pas d’objet et une destination (Italien) : ist gefahren.",
-                "de": "Kein Objekt, aber ein Ziel (Italien): ist gefahren."
+                "en": "Das Auto is an accusative object, so haben: wer hat gefahren?",
+                "fr": "Das Auto est un complément à l'accusatif, donc haben : wer hat gefahren ?",
+                "de": "Das Auto ist ein Akkusativobjekt, also haben: wer hat gefahren?"
               }
             },
             {
               "type": "grammar_gap_choice",
               "itemId": "ex-b-choice-4",
-              "before": "Die Schüler",
-              "after": "viel gelernt.",
+              "before": "Lena",
+              "after": "eine Woche in Wien geblieben.",
               "choices": [
-                { "choiceId": "c-1", "text": "haben" },
-                { "choiceId": "c-2", "text": "sind" },
-                { "choiceId": "c-3", "text": "hat" },
-                { "choiceId": "c-4", "text": "ist" }
+                { "choiceId": "c-1", "text": "hat" },
+                { "choiceId": "c-2", "text": "bin" },
+                { "choiceId": "c-3", "text": "ist" },
+                { "choiceId": "c-4", "text": "sind" }
               ],
-              "answerChoiceId": "c-1",
+              "answerChoiceId": "c-3",
               "hint": null,
-              "ruleIds": ["r-haben"],
+              "ruleIds": ["r-bleiben"],
               "answerExplanation": {
-                "en": "Learning is no change of place or state: sie haben gelernt.",
-                "fr": "Apprendre n’est ni un changement de lieu ni d’état : sie haben gelernt.",
-                "de": "Lernen ist kein Orts- oder Zustandswechsel: sie haben gelernt."
+                "en": "bleiben takes sein: Lena ist geblieben.",
+                "fr": "bleiben prend sein : Lena ist geblieben.",
+                "de": "bleiben bildet das Perfekt mit sein: Lena ist geblieben."
               }
             }
           ]
@@ -589,16 +562,16 @@
     {
       "id": "ex-b-typing",
       "role": "exercise",
-      "blockId": "block-b",
+      "blockId": "b-bleiben-haben",
       "label": {
-        "en": "Type the helper verb",
-        "fr": "Écrire l’auxiliaire",
+        "en": "Type the auxiliary",
+        "fr": "Écrire l'auxiliaire",
         "de": "Hilfsverb schreiben"
       },
       "pages": [
         {
           "pageId": "ex-b-typing-1",
-          "estimatedDurationS": 80,
+          "estimatedDurationS": 70,
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
@@ -609,61 +582,57 @@
             {
               "type": "grammar_gap_typing",
               "itemId": "ex-b-typing-1",
-              "before": "Er",
-              "after": "den ganzen Abend Musik gehört.",
-              "accepted": { "answers": ["hat"] },
-              "hint": { "en": "object: Musik", "fr": "objet : Musik", "de": "Objekt: Musik" },
+              "before": "Ich",
+              "after": "letzte Woche viel gearbeitet.",
+              "accepted": { "answers": ["habe"] },
+              "hint": { "en": "auxiliary verb", "fr": "verbe auxiliaire", "de": "Hilfsverb" },
               "ruleIds": ["r-haben"],
               "answerExplanation": {
-                "en": "Musik is an accusative object: er hat gehört.",
-                "fr": "Musik est un objet à l’accusatif : er hat gehört.",
-                "de": "Musik ist ein Akkusativobjekt: er hat gehört."
+                "en": "Working involves no change of place or state: haben, so ich habe.",
+                "fr": "Travailler n'implique aucun changement de lieu ou d'état : haben, donc ich habe.",
+                "de": "Arbeiten ist kein Orts- oder Zustandswechsel: haben, also ich habe."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "ex-b-typing-2",
-              "before": "Wir",
-              "after": "am Wochenende nach Bremen gefahren.",
-              "accepted": { "answers": ["sind"] },
-              "hint": { "en": "change of place", "fr": "changement de lieu", "de": "Ortswechsel" },
-              "ruleIds": ["r-sein-ort"],
+              "before": "Du",
+              "after": "gestern lange bei Anna geblieben?",
+              "accepted": { "answers": ["bist"] },
+              "hint": { "en": "auxiliary verb", "fr": "verbe auxiliaire", "de": "Hilfsverb" },
+              "ruleIds": ["r-bleiben"],
               "answerExplanation": {
-                "en": "Travelling to Bremen is a change of place: wir sind gefahren.",
-                "fr": "Aller à Brême est un changement de lieu : wir sind gefahren.",
-                "de": "Nach Bremen fahren ist ein Ortswechsel: wir sind gefahren."
+                "en": "bleiben takes sein: du bist geblieben.",
+                "fr": "bleiben prend sein : du bist geblieben.",
+                "de": "bleiben bildet das Perfekt mit sein: du bist geblieben."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "ex-b-typing-3",
-              "before": "Ihr",
-              "after": "gestern Pizza gegessen.",
-              "accepted": { "answers": ["habt"] },
-              "hint": { "en": "object: Pizza", "fr": "objet : Pizza", "de": "Objekt: Pizza" },
+              "before": "Die Kinder",
+              "after": "im Garten Fußball gespielt.",
+              "accepted": { "answers": ["haben"] },
+              "hint": { "en": "auxiliary verb", "fr": "verbe auxiliaire", "de": "Hilfsverb" },
               "ruleIds": ["r-haben"],
               "answerExplanation": {
-                "en": "Pizza is an accusative object: ihr habt gegessen.",
-                "fr": "Pizza est un objet à l’accusatif : ihr habt gegessen.",
-                "de": "Pizza ist ein Akkusativobjekt: ihr habt gegessen."
+                "en": "Playing involves no change of place or state: haben, so die Kinder haben.",
+                "fr": "Jouer n'implique aucun changement de lieu ou d'état : haben, donc die Kinder haben.",
+                "de": "Spielen ist kein Orts- oder Zustandswechsel: haben, also die Kinder haben."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "ex-b-typing-4",
-              "before": "Ich",
-              "after": "schon drei Stunden gearbeitet.",
-              "accepted": { "answers": ["habe"] },
-              "hint": {
-                "en": "no change of place or state",
-                "fr": "pas de changement de lieu ni d’état",
-                "de": "kein Orts- oder Zustandswechsel"
-              },
-              "ruleIds": ["r-haben"],
+              "before": "Mein Vater",
+              "after": "gestern bis zehn Uhr im Büro geblieben.",
+              "accepted": { "answers": ["ist"] },
+              "hint": { "en": "auxiliary verb", "fr": "verbe auxiliaire", "de": "Hilfsverb" },
+              "ruleIds": ["r-bleiben"],
               "answerExplanation": {
-                "en": "Working changes neither place nor state: ich habe gearbeitet.",
-                "fr": "Travailler ne change ni le lieu ni l’état : ich habe gearbeitet.",
-                "de": "Arbeiten ändert weder Ort noch Zustand: ich habe gearbeitet."
+                "en": "bleiben takes sein: mein Vater ist geblieben.",
+                "fr": "bleiben prend sein : mein Vater ist geblieben.",
+                "de": "bleiben bildet das Perfekt mit sein: mein Vater ist geblieben."
               }
             }
           ]
@@ -671,90 +640,74 @@
       ]
     },
     {
-      "id": "ex-b-spot",
+      "id": "ex-b-order",
       "role": "exercise",
-      "blockId": "block-b",
-      "label": {
-        "en": "Spot the wrong helper verb",
-        "fr": "Repérer le mauvais auxiliaire",
-        "de": "Falsches Hilfsverb finden"
-      },
+      "blockId": "b-bleiben-haben",
+      "label": { "en": "Word order", "fr": "Ordre des mots", "de": "Wortstellung" },
       "pages": [
         {
-          "pageId": "ex-b-spot-1",
+          "pageId": "ex-b-order-1",
           "estimatedDurationS": 75,
           "timeLimitS": null,
           "instructions": {
-            "en": "Find the wrong word and correct it.",
-            "fr": "Trouvez le mot faux et corrigez-le.",
-            "de": "Finde das falsche Wort und korrigiere es."
+            "en": "Put the words in the right order.",
+            "fr": "Mettez les mots dans le bon ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
             {
-              "type": "grammar_error_spotter",
-              "itemId": "ex-b-spot-1",
+              "type": "grammar_word_order",
+              "itemId": "ex-b-order-1",
               "tokens": [
-                { "tokenId": "t-1", "text": "Ich" },
-                { "tokenId": "t-2", "text": "bin" },
-                { "tokenId": "t-3", "text": "einen" },
-                { "tokenId": "t-4", "text": "Kuchen" },
-                { "tokenId": "t-5", "text": "gebacken" },
-                { "tokenId": "t-6", "text": "." }
+                { "tokenId": "t-1", "text": "geschrieben" },
+                { "tokenId": "t-2", "text": "Ich" },
+                { "tokenId": "t-3", "text": "eine" },
+                { "tokenId": "t-4", "text": "habe" },
+                { "tokenId": "t-5", "text": "E-Mail" }
               ],
-              "faultyTokenId": "t-2",
-              "correction": { "mode": "type", "accepted": { "answers": ["habe"] }, "choices": [] },
+              "acceptedOrders": [["t-2", "t-4", "t-3", "t-5", "t-1"]],
               "ruleIds": ["r-haben"],
               "answerExplanation": {
-                "en": "einen Kuchen is an accusative object, so: ich habe gebacken.",
-                "fr": "einen Kuchen est un objet à l’accusatif : ich habe gebacken.",
-                "de": "einen Kuchen ist ein Akkusativobjekt: ich habe gebacken."
+                "en": "Writing an e-mail takes haben; the participle goes to the end.",
+                "fr": "Écrire un e-mail prend haben ; le participe va à la fin.",
+                "de": "Eine E-Mail schreiben bildet das Perfekt mit haben; das Partizip steht am Ende."
               }
             },
             {
-              "type": "grammar_error_spotter",
-              "itemId": "ex-b-spot-2",
+              "type": "grammar_word_order",
+              "itemId": "ex-b-order-2",
               "tokens": [
-                { "tokenId": "t-1", "text": "Wir" },
-                { "tokenId": "t-2", "text": "haben" },
-                { "tokenId": "t-3", "text": "nach" },
-                { "tokenId": "t-4", "text": "Dresden" },
-                { "tokenId": "t-5", "text": "gefahren" },
-                { "tokenId": "t-6", "text": "." }
+                { "tokenId": "t-1", "text": "geblieben" },
+                { "tokenId": "t-2", "text": "zu" },
+                { "tokenId": "t-3", "text": "Er" },
+                { "tokenId": "t-4", "text": "Hause" },
+                { "tokenId": "t-5", "text": "ist" }
               ],
-              "faultyTokenId": "t-2",
-              "correction": {
-                "mode": "select",
-                "accepted": { "answers": ["sind"] },
-                "choices": ["sind", "hat", "habe"]
-              },
-              "ruleIds": ["r-sein-ort"],
+              "acceptedOrders": [["t-3", "t-5", "t-2", "t-4", "t-1"]],
+              "ruleIds": ["r-bleiben"],
               "answerExplanation": {
-                "en": "Going to Dresden is a change of place: wir sind gefahren.",
-                "fr": "Aller à Dresde est un changement de lieu : wir sind gefahren.",
-                "de": "Nach Dresden fahren ist ein Ortswechsel: wir sind gefahren."
+                "en": "bleiben takes sein; the participle goes to the end.",
+                "fr": "bleiben prend sein ; le participe va à la fin.",
+                "de": "bleiben bildet das Perfekt mit sein; das Partizip steht am Ende."
               }
             },
             {
-              "type": "grammar_error_spotter",
-              "itemId": "ex-b-spot-3",
+              "type": "grammar_word_order",
+              "itemId": "ex-b-order-3",
               "tokens": [
-                { "tokenId": "t-1", "text": "Mein" },
-                { "tokenId": "t-2", "text": "Opa" },
-                { "tokenId": "t-3", "text": "hat" },
-                { "tokenId": "t-4", "text": "gestern" },
-                { "tokenId": "t-5", "text": "in" },
-                { "tokenId": "t-6", "text": "den" },
-                { "tokenId": "t-7", "text": "Park" },
-                { "tokenId": "t-8", "text": "gegangen" },
-                { "tokenId": "t-9", "text": "." }
+                { "tokenId": "t-1", "text": "?" },
+                { "tokenId": "t-2", "text": "Auto" },
+                { "tokenId": "t-3", "text": "gefahren" },
+                { "tokenId": "t-4", "text": "Wer" },
+                { "tokenId": "t-5", "text": "das" },
+                { "tokenId": "t-6", "text": "hat" }
               ],
-              "faultyTokenId": "t-3",
-              "correction": { "mode": "type", "accepted": { "answers": ["ist"] }, "choices": [] },
-              "ruleIds": ["r-sein-ort"],
+              "acceptedOrders": [["t-4", "t-6", "t-5", "t-2", "t-3", "t-1"]],
+              "ruleIds": ["r-haben"],
               "answerExplanation": {
-                "en": "Walking into the park is a change of place: er ist gegangen.",
-                "fr": "Aller dans le parc est un changement de lieu : er ist gegangen.",
-                "de": "In den Park gehen ist ein Ortswechsel: er ist gegangen."
+                "en": "With an accusative object (das Auto) the auxiliary is haben.",
+                "fr": "Avec un complément à l'accusatif (das Auto), l'auxiliaire est haben.",
+                "de": "Mit Akkusativobjekt (das Auto) ist das Hilfsverb haben."
               }
             }
           ]
@@ -788,96 +741,96 @@
       "pages": [
         {
           "pageId": "exam-gaps",
-          "estimatedDurationS": 90,
-          "timeLimitS": 150,
+          "estimatedDurationS": 120,
+          "timeLimitS": 200,
           "instructions": {
-            "en": "Answer every item before the time runs out.",
-            "fr": "Répondez à chaque question avant la fin du temps imparti.",
-            "de": "Beantworte jede Aufgabe, bevor die Zeit abläuft."
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
           },
           "items": [
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-gaps-1",
-              "before": "Das Kind",
-              "after": "im Auto eingeschlafen.",
-              "accepted": { "answers": ["ist"] },
+              "before": "Am Wochenende",
+              "after": "wir nach Köln gefahren.",
+              "accepted": { "answers": ["sind"] },
               "hint": null,
-              "ruleIds": ["r-sein-zustand"],
+              "ruleIds": ["r-ort"],
               "answerExplanation": {
-                "en": "Falling asleep is a change of state: ist eingeschlafen.",
-                "fr": "S’endormir est un changement d’état : ist eingeschlafen.",
-                "de": "Einschlafen ist ein Zustandswechsel: ist eingeschlafen."
+                "en": "Going to Cologne is a change of place: sein, so wir sind.",
+                "fr": "Aller à Cologne est un changement de lieu : sein, donc wir sind.",
+                "de": "Nach Köln fahren ist ein Ortswechsel: sein, also wir sind."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-gaps-2",
-              "before": "Meine Eltern",
-              "after": "letzten Sommer nach Spanien geflogen.",
-              "accepted": { "answers": ["sind"] },
+              "before": "Nach dem Essen",
+              "after": "ich sofort eingeschlafen.",
+              "accepted": { "answers": ["bin"] },
               "hint": null,
-              "ruleIds": ["r-sein-ort"],
+              "ruleIds": ["r-zustand"],
               "answerExplanation": {
-                "en": "Flying to Spain is a change of place: sie sind geflogen.",
-                "fr": "Aller en Espagne en avion est un changement de lieu : sie sind geflogen.",
-                "de": "Nach Spanien fliegen ist ein Ortswechsel: sie sind geflogen."
+                "en": "Falling asleep is a change of state: sein, so ich bin.",
+                "fr": "S'endormir est un changement d'état : sein, donc ich bin.",
+                "de": "Einschlafen ist ein Zustandswechsel: sein, also ich bin."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-gaps-3",
-              "before": "Wir",
-              "after": "am Samstag im Bett geblieben.",
-              "accepted": { "answers": ["sind"] },
+              "before": "Meine Freundin",
+              "after": "gestern zu spät gekommen.",
+              "accepted": { "answers": ["ist"] },
               "hint": null,
-              "ruleIds": ["r-sein-bleiben"],
+              "ruleIds": ["r-ort"],
               "answerExplanation": {
-                "en": "bleiben takes sein: wir sind geblieben.",
-                "fr": "bleiben se construit avec sein : wir sind geblieben.",
-                "de": "bleiben steht mit sein: wir sind geblieben."
+                "en": "Coming (late) is a change of place: sein, so meine Freundin ist.",
+                "fr": "Venir (en retard) est un changement de lieu : sein, donc meine Freundin ist.",
+                "de": "Kommen ist ein Ortswechsel: sein, also meine Freundin ist."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-gaps-4",
-              "before": "Sie",
-              "after": "gestern Abend lange telefoniert.",
-              "accepted": { "answers": ["hat"] },
+              "before": "Ihr",
+              "after": "den ganzen Tag im Bett geblieben?",
+              "accepted": { "answers": ["seid"] },
               "hint": null,
-              "ruleIds": ["r-haben"],
+              "ruleIds": ["r-bleiben"],
               "answerExplanation": {
-                "en": "Phoning changes neither place nor state: sie hat telefoniert.",
-                "fr": "Téléphoner ne change ni le lieu ni l’état : sie hat telefoniert.",
-                "de": "Telefonieren ändert weder Ort noch Zustand: sie hat telefoniert."
+                "en": "bleiben takes sein: ihr seid geblieben.",
+                "fr": "bleiben prend sein : ihr seid geblieben.",
+                "de": "bleiben bildet das Perfekt mit sein: ihr seid geblieben."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-gaps-5",
-              "before": "Du",
-              "after": "heute viel gearbeitet.",
-              "accepted": { "answers": ["hast"] },
+              "before": "Wir",
+              "after": "gestern einen Film gesehen.",
+              "accepted": { "answers": ["haben"] },
               "hint": null,
               "ruleIds": ["r-haben"],
               "answerExplanation": {
-                "en": "Working changes neither place nor state: du hast gearbeitet.",
-                "fr": "Travailler ne change ni le lieu ni l’état : du hast gearbeitet.",
-                "de": "Arbeiten ändert weder Ort noch Zustand: du hast gearbeitet."
+                "en": "Seeing a film has an accusative object: haben, so wir haben.",
+                "fr": "Voir un film a un objet à l'accusatif : haben, donc wir haben.",
+                "de": "Einen Film sehen hat ein Akkusativobjekt: haben, also wir haben."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-gaps-6",
-              "before": "Ihr",
-              "after": "mit dem Zug nach Leipzig gefahren?",
-              "accepted": { "answers": ["seid"] },
+              "before": "Der Lehrer",
+              "after": "die Aufgaben an die Tafel geschrieben.",
+              "accepted": { "answers": ["hat"] },
               "hint": null,
-              "ruleIds": ["r-sein-ort"],
+              "ruleIds": ["r-haben"],
               "answerExplanation": {
-                "en": "Going to Leipzig is a change of place: ihr seid gefahren.",
-                "fr": "Aller à Leipzig est un changement de lieu : ihr seid gefahren.",
-                "de": "Nach Leipzig fahren ist ein Ortswechsel: ihr seid gefahren."
+                "en": "Writing the tasks has an accusative object: haben, so der Lehrer hat.",
+                "fr": "Écrire les exercices a un objet à l'accusatif : haben, donc der Lehrer hat.",
+                "de": "Die Aufgaben schreiben hat ein Akkusativobjekt: haben, also der Lehrer hat."
               }
             }
           ]
@@ -887,95 +840,86 @@
           "estimatedDurationS": 80,
           "timeLimitS": 140,
           "instructions": {
-            "en": "Answer every item before the time runs out.",
-            "fr": "Répondez à chaque question avant la fin du temps imparti.",
-            "de": "Beantworte jede Aufgabe, bevor die Zeit abläuft."
+            "en": "Put the words in the right order.",
+            "fr": "Mettez les mots dans le bon ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
             {
               "type": "grammar_word_order",
               "itemId": "exam-order-1",
               "tokens": [
-                { "tokenId": "t-1", "text": "gefahren" },
-                { "tokenId": "t-2", "text": "Mein" },
-                { "tokenId": "t-3", "text": "mit" },
-                { "tokenId": "t-4", "text": "Onkel" },
+                { "tokenId": "t-1", "text": "nach" },
+                { "tokenId": "t-2", "text": "geflogen" },
+                { "tokenId": "t-3", "text": "Mein" },
+                { "tokenId": "t-4", "text": "Spanien" },
                 { "tokenId": "t-5", "text": "ist" },
-                { "tokenId": "t-6", "text": "dem" },
-                { "tokenId": "t-7", "text": "Rad" },
-                { "tokenId": "t-8", "text": "zur" },
-                { "tokenId": "t-9", "text": "Arbeit" },
-                { "tokenId": "t-10", "text": "." }
+                { "tokenId": "t-6", "text": "Bruder" }
               ],
-              "acceptedOrders": [
-                ["t-2", "t-4", "t-5", "t-3", "t-6", "t-7", "t-8", "t-9", "t-1", "t-10"]
-              ],
-              "ruleIds": ["r-sein-ort"],
+              "acceptedOrders": [["t-3", "t-6", "t-5", "t-1", "t-4", "t-2"]],
+              "ruleIds": ["r-ort"],
               "answerExplanation": {
-                "en": "Going to work is a change of place: er ist gefahren.",
-                "fr": "Aller au travail est un changement de lieu : er ist gefahren.",
-                "de": "Zur Arbeit fahren ist ein Ortswechsel: er ist gefahren."
+                "en": "Flying to Spain is a change of place: sein.",
+                "fr": "Voler vers l'Espagne est un changement de lieu : sein.",
+                "de": "Nach Spanien fliegen ist ein Ortswechsel: sein."
               }
             },
             {
               "type": "grammar_word_order",
               "itemId": "exam-order-2",
               "tokens": [
-                { "tokenId": "t-1", "text": "gespielt" },
-                { "tokenId": "t-2", "text": "Die" },
-                { "tokenId": "t-3", "text": "haben" },
-                { "tokenId": "t-4", "text": "Kinder" },
-                { "tokenId": "t-5", "text": "im" },
-                { "tokenId": "t-6", "text": "Garten" },
-                { "tokenId": "t-7", "text": "." }
+                { "tokenId": "t-1", "text": "aufgewacht" },
+                { "tokenId": "t-2", "text": "früh" },
+                { "tokenId": "t-3", "text": "Das" },
+                { "tokenId": "t-4", "text": "ist" },
+                { "tokenId": "t-5", "text": "Kind" }
               ],
-              "acceptedOrders": [["t-2", "t-4", "t-3", "t-5", "t-6", "t-1", "t-7"]],
-              "ruleIds": ["r-haben"],
+              "acceptedOrders": [["t-3", "t-5", "t-4", "t-2", "t-1"]],
+              "ruleIds": ["r-zustand"],
               "answerExplanation": {
-                "en": "Playing is no change of place or state: sie haben gespielt.",
-                "fr": "Jouer n’est ni un changement de lieu ni d’état : sie haben gespielt.",
-                "de": "Spielen ist kein Orts- oder Zustandswechsel: sie haben gespielt."
+                "en": "Waking up is a change of state: sein.",
+                "fr": "Se réveiller est un changement d'état : sein.",
+                "de": "Aufwachen ist ein Zustandswechsel: sein."
               }
             },
             {
               "type": "grammar_word_order",
               "itemId": "exam-order-3",
               "tokens": [
-                { "tokenId": "t-1", "text": "eingeschlafen" },
-                { "tokenId": "t-2", "text": "Der" },
-                { "tokenId": "t-3", "text": "vor" },
-                { "tokenId": "t-4", "text": "Opa" },
-                { "tokenId": "t-5", "text": "ist" },
-                { "tokenId": "t-6", "text": "dem" },
-                { "tokenId": "t-7", "text": "Fernseher" },
-                { "tokenId": "t-8", "text": "." }
+                { "tokenId": "t-1", "text": "bestellt" },
+                { "tokenId": "t-2", "text": "Pizza" },
+                { "tokenId": "t-3", "text": "gestern" },
+                { "tokenId": "t-4", "text": "haben" },
+                { "tokenId": "t-5", "text": "Wir" }
               ],
-              "acceptedOrders": [["t-2", "t-4", "t-5", "t-3", "t-6", "t-7", "t-1", "t-8"]],
-              "ruleIds": ["r-sein-zustand"],
+              "acceptedOrders": [
+                ["t-5", "t-4", "t-3", "t-2", "t-1"],
+                ["t-5", "t-4", "t-2", "t-3", "t-1"]
+              ],
+              "ruleIds": ["r-haben"],
               "answerExplanation": {
-                "en": "Falling asleep is a change of state: er ist eingeschlafen.",
-                "fr": "S’endormir est un changement d’état : er ist eingeschlafen.",
-                "de": "Einschlafen ist ein Zustandswechsel: er ist eingeschlafen."
+                "en": "Ordering pizza has an accusative object: haben.",
+                "fr": "Commander une pizza a un objet à l'accusatif : haben.",
+                "de": "Pizza bestellen hat ein Akkusativobjekt: haben."
               }
             },
             {
               "type": "grammar_word_order",
               "itemId": "exam-order-4",
               "tokens": [
-                { "tokenId": "t-1", "text": "getrunken" },
-                { "tokenId": "t-2", "text": "Ich" },
-                { "tokenId": "t-3", "text": "Morgen" },
-                { "tokenId": "t-4", "text": "habe" },
-                { "tokenId": "t-5", "text": "heute" },
-                { "tokenId": "t-6", "text": "Kaffee" },
-                { "tokenId": "t-7", "text": "." }
+                { "tokenId": "t-1", "text": "?" },
+                { "tokenId": "t-2", "text": "nicht" },
+                { "tokenId": "t-3", "text": "bist" },
+                { "tokenId": "t-4", "text": "geblieben" },
+                { "tokenId": "t-5", "text": "du" },
+                { "tokenId": "t-6", "text": "Warum" }
               ],
-              "acceptedOrders": [["t-2", "t-4", "t-5", "t-3", "t-6", "t-1", "t-7"]],
-              "ruleIds": ["r-haben"],
+              "acceptedOrders": [["t-6", "t-3", "t-5", "t-2", "t-4", "t-1"]],
+              "ruleIds": ["r-bleiben"],
               "answerExplanation": {
-                "en": "Kaffee is an accusative object: ich habe getrunken.",
-                "fr": "Kaffee est un objet à l’accusatif : ich habe getrunken.",
-                "de": "Kaffee ist ein Akkusativobjekt: ich habe getrunken."
+                "en": "bleiben takes sein: du bist geblieben.",
+                "fr": "bleiben prend sein : du bist geblieben.",
+                "de": "bleiben bildet das Perfekt mit sein: du bist geblieben."
               }
             }
           ]

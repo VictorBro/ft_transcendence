@@ -1,0 +1,447 @@
+{
+  "schemaVersion": 2,
+  "id": "de-reading-a-biography-that-weighs-its-sources",
+  "lang": "de",
+  "level": "C2",
+  "locales": ["en", "fr", "de"],
+  "title": "Eine Biografie mit widersprüchlichen Quellen lesen",
+  "objective": {
+    "en": "Read a biography chapter that compares conflicting accounts of a painter and follow how the biographer judges the credibility of each source.",
+    "fr": "Lire un chapitre de biographie qui compare des témoignages contradictoires sur une peintre et comprendre comment la biographe juge la crédibilité de chaque source.",
+    "de": "Ein Biografiekapitel mit widersprüchlichen Zeugnissen über eine Malerin lesen und verstehen, wie die Biografin die Glaubwürdigkeit jeder Quelle beurteilt."
+  },
+  "estimatedMinutes": 12,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:38:10.694Z",
+    "inputHashes": {
+      "outline": "008d13ebbbd29eab614a807f1415506454ff2e3f6b45330992b6f5ad03bb650d",
+      "brief": "ede716f86ff74aa96b84a3a4973616deaae264067df4618735ddca65a3886282"
+    }
+  },
+  "kind": "reading",
+  "theme": "personal_identification",
+  "genre": "other",
+  "documents": [
+    {
+      "documentId": "main",
+      "title": null,
+      "meta": [
+        "Aus: Annemarie Vogt, »Lichtfänger. Das Leben der Malerin Clara Hellwig«",
+        "Kapitel 7: Drei Zeugen, ein Schweigen"
+      ],
+      "paragraphs": [
+        "Warum Clara Hellwig 1937 aufhörte, öffentlich auszustellen, ist die Frage, an der jede Darstellung ihres Lebens bisher gescheitert ist oder sich vorbeigemogelt hat. Dabei fehlt es nicht an Zeugnissen. Es fehlt an solchen, die sich vertragen.",
+        "Da ist zunächst die Schwester. Margarete Hellwig, die ihre Erinnerungen 1968 niederschrieb, versichert, Clara habe damals aus gesundheitlichen Gründen aufgegeben: ein Lungenleiden, lange Kuraufenthalte im Allgäu, ein ärztlich verordneter Rückzug. Der Bericht ist liebevoll, detailreich und stellenweise von großer Eindringlichkeit; wer ihn liest, glaubt die Kranke förmlich im Liegestuhl zu sehen. Doch Margarete war nicht nur Zeugin, sondern auch Hüterin des Familiennamens. Ihr Mann bekleidete nach 1945 ein Amt in der Stadtverwaltung, und eine Schwester, die aus politischen Gründen aus dem Kunstbetrieb gedrängt worden war, hätte in diesem Haus unbequeme Fragen aufgeworfen. Man darf daher vermuten, dass Margarete manches beschönigt hat, ohne es je bewusst zu verfälschen.",
+        "Ganz anders klingt der Galerist Julius Brenner. In seinen Briefen an einen Sammler in Zürich, die zwischen 1935 und 1938 entstanden sind, ist von Krankheit mit keinem Wort die Rede. Stattdessen beklagt er, Hellwig habe mehrere Angebote ausgeschlagen und sich geweigert, ihre großen Landschaften mit den Wolkenbändern „für den Geschmack der Zeit“ umzumalen. Brenners Briefe haben einen unschätzbaren Vorzug: Sie wurden geschrieben, als die Ereignisse noch nicht bekannt waren, also ohne Blick auf ihren Ausgang. Zugleich war der Galerist keineswegs uneigennützig. Er wollte verkaufen, und eine Malerin, die sich dem Markt entzog, kostete ihn Geld. Seine Empörung ist daher auch eine geschäftliche, und man sollte sie nicht mit einem Urteil über Hellwigs Haltung verwechseln.",
+        "Die dritte Stimme gehört Ilse Raabe, einer ehemaligen Schülerin, die 1979 als Fünfundsechzigjährige für ein Rundfunkporträt befragt wurde. Sie erzählt, Hellwig sei eines Morgens im Atelier von zwei Männern in Ledermänteln aufgesucht worden und habe danach nie wieder einen Pinsel in die Hand genommen. Die Szene ist so plastisch, dass sie sich unwillkürlich einprägt; gerade das macht misstrauisch. Was man im Nachhinein erzählt, ordnet sich gern zu einem einzigen, einprägsamen Bild. Raabe nennt das Atelier in der Gartenstraße, doch Hellwig hatte es nachweislich schon 1935 aufgegeben, und von einem endgültigen Verzicht auf das Malen kann keine Rede sein, denn die Nachlassverzeichnisse führen Arbeiten bis 1949. Raabes Erzählung ist also im Einzelnen fragwürdig, auch wenn sie im Kern etwas Richtiges treffen könnte: Sie bewahrt die Atmosphäre der Bedrohung, nicht die Chronologie.",
+        "Bleibt das Dokument. Im Staatsarchiv liegt ein Schreiben der Reichskammer der bildenden Künste vom Frühjahr 1937, das Hellwig die Mitgliedschaft verweigert; ohne sie war ihr jede öffentliche Ausstellung untersagt. Das Schreiben ist nüchtern, fast gelangweilt, und gerade deshalb schwer anzuzweifeln: Es wollte niemanden überzeugen. Es erhärtet, was Brenner andeutet und Raabe nur ahnen lässt, und es widerlegt die Erklärung der Schwester zwar nicht vollständig, entzieht ihr aber den Boden.",
+        "Daraus folgt kein einfaches Urteil. Keine der drei Stimmen ist wertlos, keine ist verlässlich in allem. Die Schwester kennt die Wahrheit des Alltags, nicht die der Behörden; der Galerist kennt den Markt, aber nicht das Innere der Malerin; die Schülerin kennt die Angst, aber nicht die Daten. Wer Zeugen wägt, fragt deshalb weniger, ob jemand lügt, als wovon er überhaupt wissen konnte, wann er schrieb und was er zu verlieren hatte. Auf diese drei Fragen, nach Nähe, Zeitpunkt und Interesse, stützt sich das Folgende. Wo sie sich beantworten lassen, vertraue ich dem Zeugen; wo nicht, vermerke ich es.",
+        "Dass Clara Hellwig selbst nie ein Wort über jenes Frühjahr hinterlassen hat, ist kein Zufall und auch kein Beweis. Ein Schweigen kann Scham bedeuten, Vorsicht oder schlichte Müdigkeit; die Quellen erlauben es nicht, zwischen ihnen zu entscheiden."
+      ],
+      "highlights": [
+        { "keywordId": "zeugnis", "text": "Zeugnissen" },
+        { "keywordId": "beschoenigen", "text": "beschönigt" },
+        { "keywordId": "im-nachhinein", "text": "im Nachhinein" },
+        { "keywordId": "fragwuerdig", "text": "fragwürdig" },
+        { "keywordId": "erhaerten", "text": "erhärtet" }
+      ]
+    },
+    {
+      "documentId": "exam",
+      "title": null,
+      "meta": [
+        "Aus: Ernst Kalkbrenner, »Der Himmel der Marie Lorenz«",
+        "Kapitel 4: Wer sah den Kometen zuerst?"
+      ],
+      "paragraphs": [
+        "Am Abend des 14. Oktober 1881 will Marie Lorenz, Lehrerin in einem Dorf bei Kassel, einen unbekannten Kometen im Sternbild Löwe entdeckt haben. Drei Tage später meldete die Sternwarte in Göttingen denselben Kometen und gab an, ihn am selben Abend gesehen zu haben. Wer ihn zuerst sah, entschied über den Namen, und der steht bis heute nicht auf Lorenz' Seite.",
+        "Lorenz selbst schrieb am 19. Oktober einen Brief an die Sternwarte, in dem sie ihre Beobachtung schildert. Der Brief ist auffallend genau: Uhrzeit, Position, die Helligkeit im Vergleich zu zwei Nachbarsternen. Man möchte ihm glauben. Doch er wurde erst geschrieben, nachdem sie in der Zeitung von der Göttinger Meldung gelesen hatte, und wer einen Anspruch anmeldet, ist in eigener Sache befangen.",
+        "Der Direktor der Sternwarte, Professor Hellmuth, hielt in seinem Jahresbericht dagegen fest, eine Lehrerin ohne akademische Ausbildung sei zu einer solchen Beobachtung gar nicht imstande gewesen. Das klingt nach einem Befund, ist aber ein Vorurteil. Hellmuth hatte ein Interesse daran, dass der Ruhm bei seinem Haus blieb, und er schrieb, ohne Lorenz je gesprochen zu haben. Sein Bericht sagt mehr über die Ordnung der Wissenschaft als über den Himmel von 1881.",
+        "Bleibt das Beobachtungsbuch des Assistenten Karl Duve. Unter dem 14. Oktober vermerkt er Wolken; der Himmel über Göttingen sei bis Mitternacht geschlossen gewesen. Allerdings schrieb Duve seine Einträge oft nachträglich, wie Tinte und Zeilenabstände verraten, und sein Buch ist damit als Beleg nur bedingt tauglich. Erst eine unabhängige Wetterkarte der Seewarte, die für ganz Südniedersachsen Bewölkung ausweist, erhärtet seine Angabe. Damit wird der Göttinger Anspruch brüchig. Bewiesen ist Lorenz' Entdeckung damit nicht; wahrscheinlich ist sie.",
+        "Der Biograf wägt hier nicht Personen, sondern Abstände: den Abstand zwischen Ereignis und Aufzeichnung und den Abstand zwischen dem Schreibenden und seinem Vorteil."
+      ],
+      "highlights": []
+    }
+  ],
+  "steps": [
+    {
+      "id": "flashcards",
+      "stage": "flashcards",
+      "role": "exercise",
+      "label": { "en": "Flashcards", "fr": "Cartes mémoire", "de": "Karteikarten" },
+      "pages": [
+        {
+          "pageId": "flashcards",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Turn each card to learn the key words of the text.",
+            "fr": "Retournez chaque carte pour découvrir les mots clés du texte.",
+            "de": "Dreh jede Karte um und lerne die Schlüsselwörter des Textes."
+          },
+          "items": [
+            {
+              "type": "reading_flashcards",
+              "itemId": "cards",
+              "keywordIds": ["zeugnis", "beschoenigen", "im-nachhinein", "fragwuerdig", "erhaerten"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matching",
+      "stage": "matching",
+      "role": "exercise",
+      "label": { "en": "Matching", "fr": "Association", "de": "Zuordnen" },
+      "pages": [
+        {
+          "pageId": "matching",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each key word with its meaning.",
+            "fr": "Associez chaque mot clé à son sens.",
+            "de": "Ordne jedem Schlüsselwort seine Bedeutung zu."
+          },
+          "items": [
+            {
+              "type": "reading_keyword_matching",
+              "itemId": "matching",
+              "keywordIds": ["zeugnis", "beschoenigen", "im-nachhinein", "fragwuerdig", "erhaerten"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skim",
+      "stage": "skim",
+      "role": "exercise",
+      "label": { "en": "Skim", "fr": "Survol", "de": "Überfliegen" },
+      "pages": [
+        {
+          "pageId": "skim",
+          "estimatedDurationS": 235,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Look over the document quickly. When the time is up it is put away; then answer the question.",
+            "fr": "Parcourez rapidement le document. À la fin du temps, il disparaît ; répondez ensuite à la question.",
+            "de": "Überfliege das Dokument. Wenn die Zeit um ist, verschwindet es; beantworte dann die Frage."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "skim-document",
+              "documentId": "main",
+              "view": "skim",
+              "skimSeconds": 215
+            },
+            {
+              "type": "reading_skim_choice",
+              "itemId": "skim-question",
+              "focus": "purpose",
+              "question": "Wozu dient dieser Abschnitt der Biografie vor allem?",
+              "options": [
+                {
+                  "optionId": "o1",
+                  "text": "Er soll Clara Hellwigs Gemälde beschreiben und deuten"
+                },
+                {
+                  "optionId": "o2",
+                  "text": "Er soll beweisen, dass Margaretes Darstellung im Kern richtig ist"
+                },
+                {
+                  "optionId": "o3",
+                  "text": "Er soll zeigen, wie die Biografin widersprüchliche Zeugen auf ihre Glaubwürdigkeit prüft"
+                },
+                {
+                  "optionId": "o4",
+                  "text": "Er soll vor gefälschten Briefen im Kunsthandel warnen"
+                }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "The chapter sets three witnesses and an archive document side by side and asks of each what it could know, when it was written and what its author had at stake.",
+                "fr": "Le chapitre met côte à côte trois témoins et un document d’archives et demande pour chacun ce qu’il pouvait savoir, quand il a écrit et ce qu’il avait en jeu.",
+                "de": "Das Kapitel stellt drei Zeugen und ein Archivdokument nebeneinander und fragt bei jedem, was er wissen konnte, wann er schrieb und was für ihn auf dem Spiel stand."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "detail",
+      "stage": "detail",
+      "role": "exercise",
+      "label": { "en": "Detail", "fr": "Détails", "de": "Details" },
+      "pages": [
+        {
+          "pageId": "detail",
+          "estimatedDurationS": 120,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the document carefully and answer the questions.",
+            "fr": "Lisez le document attentivement et répondez aux questions.",
+            "de": "Lies das Dokument genau und beantworte die Fragen."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "detail-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-sister",
+              "question": "Warum ist der Bericht der Schwester nur mit Vorsicht zu benutzen?",
+              "options": [
+                { "optionId": "o1", "text": "Margarete lebte zur Zeit der Ereignisse im Ausland" },
+                {
+                  "optionId": "o2",
+                  "text": "Margarete schrieb 1968 und hatte Grund, den Ruf der Familie zu schützen"
+                },
+                { "optionId": "o3", "text": "Margarete hat Clara nie persönlich gekannt" },
+                { "optionId": "o4", "text": "Margarete war selbst Malerin und neidisch auf Clara" }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "She wrote decades later, and her husband held an office after 1945, so a sister pushed out for political reasons would have been awkward. The biographer suspects glossing over, not lying.",
+                "fr": "Elle écrit des décennies plus tard, et son mari occupait un poste après 1945 ; une sœur écartée pour des raisons politiques aurait gêné. La biographe soupçonne un enjolivement, non un mensonge.",
+                "de": "Sie schrieb Jahrzehnte später, und ihr Mann hatte nach 1945 ein Amt; eine aus politischen Gründen verdrängte Schwester wäre unbequem gewesen. Die Biografin vermutet Beschönigung, keine Lüge."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-brenner",
+              "question": "Welchen Vorzug haben die Briefe des Galeristen Brenner?",
+              "options": [
+                { "optionId": "o1", "text": "Sie sind frei von jedem geschäftlichen Interesse" },
+                { "optionId": "o2", "text": "Sie wurden von einer Behörde beglaubigt" },
+                { "optionId": "o3", "text": "Sie schildern Claras Krankheit sehr ausführlich" },
+                {
+                  "optionId": "o4",
+                  "text": "Sie entstanden, bevor der Ausgang der Ereignisse bekannt war"
+                }
+              ],
+              "answerOptionId": "o4",
+              "answerExplanation": {
+                "en": "The letters date from 1935–1938, so they were written without hindsight. But Brenner wanted to sell paintings, so his anger is partly commercial.",
+                "fr": "Les lettres datent de 1935–1938 ; elles ont été écrites sans recul. Mais Brenner voulait vendre, sa colère est donc en partie commerciale.",
+                "de": "Die Briefe stammen aus den Jahren 1935 bis 1938, entstanden also ohne Rückblick. Brenner wollte aber verkaufen, seine Empörung ist daher zum Teil geschäftlich."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "q-raabe",
+              "statement": "Ilse Raabes Erzählung ist auch in den Einzelheiten verlässlich, weil sie so anschaulich ist.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: the vividness arouses suspicion. She names a studio Hellwig had given up in 1935 and claims she never painted again, yet works exist up to 1949.",
+                "fr": "Faux : le caractère vivant éveille la méfiance. Elle cite un atelier que Hellwig avait quitté en 1935 et affirme qu’elle n’a plus jamais peint, alors que des œuvres existent jusqu’en 1949.",
+                "de": "Falsch: Gerade die Anschaulichkeit macht misstrauisch. Raabe nennt ein Atelier, das Hellwig 1935 aufgegeben hatte, und behauptet, sie habe nie wieder gemalt, doch es gibt Arbeiten bis 1949."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-archive",
+              "question": "Warum hält die Biografin das Schreiben der Reichskammer für schwer anzuzweifeln?",
+              "options": [
+                { "optionId": "o1", "text": "Es wurde von Clara Hellwig selbst unterzeichnet" },
+                { "optionId": "o2", "text": "Es wurde erst vierzig Jahre später verfasst" },
+                {
+                  "optionId": "o3",
+                  "text": "Es ist nüchtern abgefasst und wollte niemanden überzeugen"
+                },
+                { "optionId": "o4", "text": "Es wurde von Brenner bestätigt" }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "A dry official letter has no stake in persuading anyone, so it is more trustworthy than the three accounts. It corroborates a political cause.",
+                "fr": "Une lettre officielle sèche n’a aucun intérêt à convaincre, elle est donc plus digne de foi que les trois récits. Elle étaye une cause politique.",
+                "de": "Ein nüchternes Amtsschreiben hat kein Interesse, jemanden zu überzeugen, und ist daher glaubwürdiger als die drei Berichte. Es erhärtet eine politische Ursache."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "structure",
+      "stage": "structure",
+      "role": "exercise",
+      "label": { "en": "Structure", "fr": "Structure", "de": "Aufbau" },
+      "pages": [
+        {
+          "pageId": "structure",
+          "estimatedDurationS": 75,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the information in the order the text gives it.",
+            "fr": "Remettez les informations dans l’ordre du texte.",
+            "de": "Bring die Informationen in die Reihenfolge des Textes."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "structure-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_order",
+              "itemId": "order",
+              "pieces": [
+                {
+                  "pieceId": "p3",
+                  "text": "Die Schülerin schildert den Besuch zweier Männer im Atelier."
+                },
+                { "pieceId": "p1", "text": "Die Schwester erklärt den Rückzug mit Krankheit." },
+                {
+                  "pieceId": "p5",
+                  "text": "Die Biografin nennt drei Fragen zur Prüfung von Zeugen."
+                },
+                {
+                  "pieceId": "p2",
+                  "text": "Der Galerist beklagt Claras Weigerung, sich dem Markt anzupassen."
+                },
+                {
+                  "pieceId": "p4",
+                  "text": "Ein Archivschreiben belegt die verweigerte Mitgliedschaft."
+                }
+              ],
+              "acceptedOrders": [["p1", "p2", "p3", "p4", "p5"]],
+              "answerExplanation": {
+                "en": "The chapter first presents the sister, then the gallery owner, then the student, then the archive document, and only at the end states its three guiding questions.",
+                "fr": "Le chapitre présente d’abord la sœur, puis le galeriste, puis l’élève, puis le document d’archives, et n’énonce qu’à la fin ses trois questions directrices.",
+                "de": "Das Kapitel stellt erst die Schwester vor, dann den Galeristen, dann die Schülerin, dann das Archivdokument und nennt erst am Ende seine drei Leitfragen."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "stage": "exam",
+      "role": "exam",
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam",
+          "estimatedDurationS": 208,
+          "timeLimitS": 315,
+          "instructions": {
+            "en": "Read the new document and answer the questions. No help this time.",
+            "fr": "Lisez le nouveau document et répondez aux questions. Cette fois, sans aide.",
+            "de": "Lies das neue Dokument und beantworte die Fragen. Diesmal ohne Hilfe."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "exam-document",
+              "documentId": "exam",
+              "view": "exam",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-letter",
+              "question": "Warum ist der Brief von Marie Lorenz mit Vorsicht zu lesen?",
+              "options": [
+                { "optionId": "o1", "text": "Er enthält keine Angaben zu Ort und Uhrzeit" },
+                {
+                  "optionId": "o2",
+                  "text": "Sie schrieb ihn, nachdem sie die Göttinger Meldung gelesen hatte"
+                },
+                { "optionId": "o3", "text": "Er wurde von der Sternwarte verfasst" },
+                { "optionId": "o4", "text": "Er beschreibt einen anderen Kometen" }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "The letter is precise, but it was written after she had read the Göttingen announcement, and anyone claiming credit is biased in their own cause.",
+                "fr": "La lettre est précise, mais elle a été écrite après la lecture de l’annonce de Göttingen, et celui qui revendique un mérite est partial dans sa propre cause.",
+                "de": "Der Brief ist genau, entstand aber nach der Lektüre der Göttinger Meldung, und wer einen Anspruch anmeldet, ist in eigener Sache befangen."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "x-director",
+              "statement": "Professor Hellmuth hatte Lorenz persönlich befragt, bevor er seinen Bericht schrieb.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: he wrote without ever having spoken to Lorenz.",
+                "fr": "Faux : il a écrit sans avoir jamais parlé à Lorenz.",
+                "de": "Falsch: Er schrieb, ohne je mit Lorenz gesprochen zu haben."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-report",
+              "question": "Was wirft der Biograf dem Jahresbericht des Direktors vor?",
+              "options": [
+                {
+                  "optionId": "o1",
+                  "text": "Er enthält Rechenfehler bei der Position des Kometen"
+                },
+                { "optionId": "o2", "text": "Er wurde erst nach dem Tod von Lorenz verfasst" },
+                {
+                  "optionId": "o3",
+                  "text": "Er bestätigt Lorenz’ Beobachtung, ohne sie zu nennen"
+                },
+                {
+                  "optionId": "o4",
+                  "text": "Er beruht auf einem Vorurteil, und der Direktor hatte ein Interesse am Ruhm seines Hauses"
+                }
+              ],
+              "answerOptionId": "o4",
+              "answerExplanation": {
+                "en": "The report sounds like a finding but is a prejudice, and Hellmuth wanted the glory to stay with his observatory.",
+                "fr": "Le rapport a l’air d’un constat mais c’est un préjugé, et Hellmuth voulait que la gloire reste à son observatoire.",
+                "de": "Der Bericht klingt nach einem Befund, ist aber ein Vorurteil, und Hellmuth wollte, dass der Ruhm bei seiner Sternwarte blieb."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-log",
+              "question": "Was macht das Beobachtungsbuch von Karl Duve als Beleg nur bedingt tauglich?",
+              "options": [
+                { "optionId": "o1", "text": "Es enthält keinerlei Wetterangaben" },
+                { "optionId": "o2", "text": "Es wurde von Lorenz selbst geführt" },
+                {
+                  "optionId": "o3",
+                  "text": "Die Einträge wurden oft erst nachträglich geschrieben"
+                },
+                { "optionId": "o4", "text": "Es stammt aus einem anderen Jahr" }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "Ink and line spacing show that Duve often wrote his entries afterwards. Only the independent weather map corroborates his remark about clouds.",
+                "fr": "L’encre et l’interligne montrent que Duve écrivait souvent ses notes après coup. Seule la carte météo indépendante étaye sa remarque sur les nuages.",
+                "de": "Tinte und Zeilenabstände verraten, dass Duve seine Einträge oft nachträglich schrieb. Erst die unabhängige Wetterkarte erhärtet seine Angabe zu den Wolken."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "x-proven",
+              "statement": "Der Biograf hält Lorenz’ Entdeckung für bewiesen.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: he calls the discovery probable, but not proven.",
+                "fr": "Faux : il juge la découverte probable, mais non prouvée.",
+                "de": "Falsch: Er hält die Entdeckung für wahrscheinlich, aber nicht für bewiesen."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

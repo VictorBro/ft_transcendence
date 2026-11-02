@@ -1,0 +1,577 @@
+{
+  "schemaVersion": 2,
+  "id": "de-verbs-of-walking",
+  "lang": "de",
+  "level": "C2",
+  "locales": ["en", "fr", "de"],
+  "title": "Verben des Gehens",
+  "objective": {
+    "en": "Distinguish twelve verbs for ways of walking and use them precisely.",
+    "fr": "Distinguer douze verbes pour les manières de marcher et les employer avec précision.",
+    "de": "Zwölf Verben für Arten des Gehens unterscheiden und treffend verwenden."
+  },
+  "estimatedMinutes": 19,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:36:36.459Z",
+    "inputHashes": { "outline": "92a684e445b0e664da653866545402fb2e5820c599f74e396e8bdc4dab2d45a4" }
+  },
+  "kind": "vocabulary",
+  "theme": "language",
+  "coverageNotes": {
+    "en": "Twelve verbs of walking, split into calm or dignified walking and heavy, unsteady or quick walking. Verbs of looking, speaking and body reactions belong to other lessons.",
+    "fr": "Douze verbes de marche, répartis entre la marche calme ou digne et la marche lourde, incertaine ou rapide. Les verbes du regard, de la parole et des réactions du corps relèvent d’autres leçons.",
+    "de": "Zwölf Verben des Gehens, aufgeteilt in gemächliches oder würdevolles Gehen sowie schweres, unsicheres oder flinkes Gehen. Verben des Sehens, Sprechens und Körperreaktionen gehören in andere Lektionen."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve verbs make two groups of six, which fits the matching pages and keeps the nuances distinguishable.",
+    "fr": "Douze verbes forment deux groupes de six, ce qui correspond aux pages d’association et permet de bien distinguer les nuances.",
+    "de": "Zwölf Verben ergeben zwei Gruppen zu sechs, passend zu den Zuordnungsseiten, und die Nuancen bleiben unterscheidbar."
+  },
+  "difficultyBalance": {
+    "en": "Most verbs are demanding because they differ only by nuance; the more familiar ones (hinken, waten) anchor each group.",
+    "fr": "La plupart des verbes sont difficiles, car ils ne se distinguent que par des nuances ; les plus connus (hinken, waten) servent d’appui.",
+    "de": "Die meisten Verben sind anspruchsvoll, weil sie sich nur in Nuancen unterscheiden; bekanntere wie hinken und waten dienen als Anker."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "gemaechlich",
+      "label": {
+        "en": "Calm and dignified walking",
+        "fr": "Marche calme et digne",
+        "de": "Gemächlich und würdevoll gehen"
+      },
+      "targetIds": ["schlendern", "schleichen", "trotten", "schreiten", "stolzieren", "watscheln"],
+      "introduction": {
+        "en": "These verbs describe **slow or measured** walking, each with a different attitude:\n\n- `schlendern`: without a goal or hurry\n- `schleichen`: quietly, so as not to be noticed\n- `trotten`: tired and unwilling\n- `schreiten`: solemn and dignified\n- `stolzieren`: vain and self-satisfied\n- `watscheln`: swaying like a duck",
+        "fr": "Ces verbes décrivent une marche **lente ou mesurée**, chacun avec une attitude différente :\n\n- `schlendern` : sans but ni hâte\n- `schleichen` : discrètement, pour ne pas être remarqué\n- `trotten` : fatigué et sans entrain\n- `schreiten` : solennel et digne\n- `stolzieren` : vaniteux et content de soi\n- `watscheln` : en se balançant comme un canard",
+        "de": "Diese Verben beschreiben ein **langsames oder gemessenes** Gehen, jedes mit anderer Haltung:\n\n- `schlendern`: ohne Ziel und Eile\n- `schleichen`: leise, um nicht bemerkt zu werden\n- `trotten`: müde und lustlos\n- `schreiten`: feierlich und würdevoll\n- `stolzieren`: eitel und selbstgefällig\n- `watscheln`: schaukelnd wie eine Ente"
+      }
+    },
+    {
+      "id": "schwer-flink",
+      "label": {
+        "en": "Heavy, unsteady and quick walking",
+        "fr": "Marche lourde, incertaine et rapide",
+        "de": "Schwer, unsicher und flink gehen"
+      },
+      "targetIds": ["stapfen", "hinken", "taumeln", "waten", "huschen", "trippeln"],
+      "introduction": {
+        "en": "These verbs describe **heavy, unsteady or quick** walking:\n\n- `stapfen`: with heavy steps\n- `hinken`: because of an injured leg\n- `taumeln`: unsteadily, close to falling\n- `waten`: through water, mud or snow\n- `huschen`: quickly and almost unseen\n- `trippeln`: with short, quick steps",
+        "fr": "Ces verbes décrivent une marche **lourde, incertaine ou rapide** :\n\n- `stapfen` : à pas lourds\n- `hinken` : à cause d’une jambe blessée\n- `taumeln` : de façon instable, près de tomber\n- `waten` : dans l’eau, la boue ou la neige\n- `huschen` : vite et presque sans être vu\n- `trippeln` : à petits pas rapides",
+        "de": "Diese Verben beschreiben ein **schweres, unsicheres oder flinkes** Gehen:\n\n- `stapfen`: mit schweren Schritten\n- `hinken`: wegen eines verletzten Beins\n- `taumeln`: unsicher, fast fallend\n- `waten`: durch Wasser, Schlamm oder Schnee\n- `huschen`: schnell und kaum sichtbar\n- `trippeln`: mit kurzen, schnellen Schritten"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "schlendern",
+      "term": "schlendern",
+      "translations": { "en": ["to stroll", "to saunter"], "fr": ["flâner"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "schlendern",
+      "examForms": ["schlendern"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʃlɛndɐn/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Am Sonntag schlendern wir durch die Altstadt.",
+        "translation": {
+          "en": "On Sunday we stroll through the old town.",
+          "fr": "Le dimanche, nous flânons dans la vieille ville."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Schlendern means walking relaxed, without a goal or hurry.",
+        "fr": "Schlendern signifie marcher de façon détendue, sans but ni hâte.",
+        "de": "Schlendern bedeutet, entspannt ohne Ziel und Eile zu gehen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Wir haben Zeit und möchten ohne Ziel an den Schaufenstern entlang ",
+        "after": ".",
+        "accepted": { "answers": ["schlendern"] },
+        "referenceTargetIds": ["schlendern", "hinken", "waten", "huschen"],
+        "explanation": {
+          "en": "Only schlendern fits: relaxed, goalless walking past shop windows.",
+          "fr": "Seul « schlendern » convient : marcher détendu et sans but devant les vitrines.",
+          "de": "Nur „schlendern“ passt: entspanntes Gehen ohne Ziel an Schaufenstern entlang."
+        }
+      },
+      "listeningOptionTargetIds": ["schlendern", "schleichen", "schreiten", "stolzieren"]
+    },
+    {
+      "id": "schleichen",
+      "term": "schleichen",
+      "translations": { "en": ["to creep"], "fr": ["marcher à pas de loup"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "schleichen",
+      "examForms": ["schleichen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʃlaɪçn̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Der Dieb schleicht um das Haus.",
+        "translation": {
+          "en": "The thief creeps around the house.",
+          "fr": "Le voleur rôde à pas de loup autour de la maison."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Schleichen means moving slowly and quietly so as not to be heard or noticed.",
+        "fr": "Schleichen signifie avancer lentement et silencieusement pour ne pas être entendu ni remarqué.",
+        "de": "Schleichen bedeutet, sich langsam und leise zu bewegen, um nicht gehört oder bemerkt zu werden."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Um niemanden zu wecken, musste er ganz langsam und lautlos aus dem Haus ",
+        "after": ".",
+        "accepted": { "answers": ["schleichen"] },
+        "referenceTargetIds": ["schleichen", "stapfen", "waten", "hinken"],
+        "explanation": {
+          "en": "Only schleichen fits: slow and silent so as not to wake anyone.",
+          "fr": "Seul « schleichen » convient : lent et silencieux pour ne réveiller personne.",
+          "de": "Nur „schleichen“ passt: langsam und lautlos, um niemanden zu wecken."
+        }
+      },
+      "listeningOptionTargetIds": ["schleichen", "schlendern", "schreiten", "huschen"]
+    },
+    {
+      "id": "trotten",
+      "term": "trotten",
+      "translations": { "en": ["to trudge"], "fr": ["marcher d’un pas traînant"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "trotten",
+      "examForms": ["trotten"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈtʁɔtn̩/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Die Kinder trotten müde nach Hause.",
+        "translation": {
+          "en": "The children trudge home, tired.",
+          "fr": "Les enfants rentrent chez eux d’un pas traînant, fatigués."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Trotten means walking slowly and listlessly, tired or unwilling.",
+        "fr": "Trotten signifie marcher lentement et sans entrain, fatigué ou à contrecœur.",
+        "de": "Trotten bedeutet, langsam und lustlos zu gehen, müde oder widerwillig."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Nach dem langen Schultag begann der Junge, mit hängenden Schultern und ohne jede Eile hinter den anderen her zu ",
+        "after": ".",
+        "accepted": { "answers": ["trotten"] },
+        "referenceTargetIds": ["trotten", "huschen", "taumeln", "stolzieren"],
+        "explanation": {
+          "en": "Only trotten fits: drooping shoulders and no energy.",
+          "fr": "Seul « trotten » convient : épaules tombantes et sans énergie.",
+          "de": "Nur „trotten“ passt: hängende Schultern und keine Energie."
+        }
+      },
+      "listeningOptionTargetIds": ["trotten", "trippeln", "stapfen", "taumeln"]
+    },
+    {
+      "id": "schreiten",
+      "term": "schreiten",
+      "translations": { "en": ["to stride"], "fr": ["avancer d’un pas mesuré"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "schreiten",
+      "examForms": ["schreiten"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʃʁaɪtn̩/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Die Braut schreitet langsam zum Altar.",
+        "translation": {
+          "en": "The bride walks slowly to the altar.",
+          "fr": "La mariée avance lentement vers l’autel."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Schreiten is elevated style for walking with measured, dignified steps.",
+        "fr": "Schreiten est un terme soutenu pour marcher à pas mesurés et dignes.",
+        "de": "Schreiten ist gehobener Stil für ein Gehen mit gemessenen, würdevollen Schritten."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Feierlich und mit würdevoller Haltung begann die Braut, zum Altar zu ",
+        "after": ".",
+        "accepted": { "answers": ["schreiten"] },
+        "referenceTargetIds": ["schreiten", "watscheln", "trippeln", "hinken"],
+        "explanation": {
+          "en": "Only schreiten fits: solemn, dignified walking.",
+          "fr": "Seul « schreiten » convient : marche solennelle et digne.",
+          "de": "Nur „schreiten“ passt: feierliches, würdevolles Gehen."
+        }
+      },
+      "listeningOptionTargetIds": ["schreiten", "schleichen", "schlendern", "stolzieren"]
+    },
+    {
+      "id": "stolzieren",
+      "term": "stolzieren",
+      "translations": { "en": ["to strut"], "fr": ["se pavaner"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "stolzieren",
+      "examForms": ["stolzieren"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ʃtɔlˈtsiːʁən/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Der Pfau stolziert über den Rasen.",
+        "translation": {
+          "en": "The peacock struts across the lawn.",
+          "fr": "Le paon se pavane sur la pelouse."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Stolzieren means walking with an upright, vain, self-satisfied air.",
+        "fr": "Stolzieren signifie marcher d’un air droit, vaniteux et content de soi.",
+        "de": "Stolzieren bedeutet, aufrecht, eitel und selbstgefällig zu gehen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Der Pfau begann, mit aufgestelltem Rad eitel und selbstgefällig über den Rasen zu ",
+        "after": ".",
+        "accepted": { "answers": ["stolzieren"] },
+        "referenceTargetIds": ["stolzieren", "schleichen", "waten", "taumeln"],
+        "explanation": {
+          "en": "Only stolzieren fits: vain, showy walking.",
+          "fr": "Seul « stolzieren » convient : marche vaniteuse et ostentatoire.",
+          "de": "Nur „stolzieren“ passt: eitles, zur Schau gestelltes Gehen."
+        }
+      },
+      "listeningOptionTargetIds": ["stolzieren", "schlendern", "schreiten", "trippeln"]
+    },
+    {
+      "id": "watscheln",
+      "term": "watscheln",
+      "translations": { "en": ["to waddle"], "fr": ["se dandiner"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "watscheln",
+      "examForms": ["watscheln"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈvaːtʃl̩n/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Die Ente watschelt zum Teich.",
+        "translation": {
+          "en": "The duck waddles to the pond.",
+          "fr": "Le canard se dandine jusqu’à l’étang."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Watscheln means walking heavily with a swaying gait, like a duck.",
+        "fr": "Watscheln signifie marcher lourdement en se balançant, comme un canard.",
+        "de": "Watscheln bedeutet, schwerfällig und schaukelnd wie eine Ente zu gehen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Die Enten begannen, mit ihrem schaukelnden Gang schwerfällig zum Teich zu ",
+        "after": ".",
+        "accepted": { "answers": ["watscheln"] },
+        "referenceTargetIds": ["watscheln", "schleichen", "huschen", "stolzieren"],
+        "explanation": {
+          "en": "Only watscheln fits: the swaying, heavy gait of ducks.",
+          "fr": "Seul « watscheln » convient : la démarche lourde et balancée des canards.",
+          "de": "Nur „watscheln“ passt: der schaukelnde, schwere Gang der Enten."
+        }
+      },
+      "listeningOptionTargetIds": ["watscheln", "waten", "taumeln", "huschen"]
+    },
+    {
+      "id": "stapfen",
+      "term": "stapfen",
+      "translations": { "en": ["to stomp"], "fr": ["marcher à pas lourds"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "stapfen",
+      "examForms": ["stapfen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʃtapfn̩/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Er stapft wütend durch den Flur.",
+        "translation": {
+          "en": "He stomps angrily down the hallway.",
+          "fr": "Il traverse le couloir à pas lourds, furieux."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Stapfen means walking with heavy, firm steps, often angrily or through snow.",
+        "fr": "Stapfen signifie marcher à pas lourds et fermes, souvent avec colère ou dans la neige.",
+        "de": "Stapfen bedeutet, mit schweren, festen Schritten zu gehen, oft wütend oder durch Schnee."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Wütend und mit schweren Schritten begann er, durch den Flur zu ",
+        "after": ".",
+        "accepted": { "answers": ["stapfen"] },
+        "referenceTargetIds": ["stapfen", "trippeln", "schleichen", "schlendern"],
+        "explanation": {
+          "en": "Only stapfen fits: angry, heavy steps.",
+          "fr": "Seul « stapfen » convient : pas lourds et colériques.",
+          "de": "Nur „stapfen“ passt: wütende, schwere Schritte."
+        }
+      },
+      "listeningOptionTargetIds": ["stapfen", "trotten", "trippeln", "stolzieren"]
+    },
+    {
+      "id": "hinken",
+      "term": "hinken",
+      "translations": { "en": ["to limp"], "fr": ["boiter"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "hinken",
+      "examForms": ["hinken"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈhɪŋkn̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Nach dem Unfall hinkt er leicht.",
+        "translation": {
+          "en": "He limps slightly after the accident.",
+          "fr": "Depuis l’accident, il boite légèrement."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Hinken means walking unevenly because a leg or foot is hurt.",
+        "fr": "Hinken signifie marcher de façon inégale parce qu’une jambe ou un pied est blessé.",
+        "de": "Hinken bedeutet, ungleichmäßig zu gehen, weil ein Bein oder Fuß verletzt ist."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Seit dem Skiunfall muss er das verletzte Bein schonen und deshalb leicht ",
+        "after": ".",
+        "accepted": { "answers": ["hinken"] },
+        "referenceTargetIds": ["hinken", "huschen", "schreiten", "trippeln"],
+        "explanation": {
+          "en": "Only hinken fits: walking unevenly because of an injured leg.",
+          "fr": "Seul « hinken » convient : marcher de façon inégale à cause d’une jambe blessée.",
+          "de": "Nur „hinken“ passt: ungleichmäßiges Gehen wegen eines verletzten Beins."
+        }
+      },
+      "listeningOptionTargetIds": ["hinken", "huschen", "schleichen", "trippeln"]
+    },
+    {
+      "id": "taumeln",
+      "term": "taumeln",
+      "translations": { "en": ["to stagger"], "fr": ["chanceler"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "taumeln",
+      "examForms": ["taumeln"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈtaʊ̯mln̩/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Der Boxer taumelt durch den Ring.",
+        "translation": {
+          "en": "The boxer staggers across the ring.",
+          "fr": "Le boxeur chancelle dans le ring."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Taumeln means moving unsteadily, close to falling, from dizziness or exhaustion.",
+        "fr": "Taumeln signifie avancer de façon instable, près de tomber, par vertige ou épuisement.",
+        "de": "Taumeln bedeutet, sich unsicher und fast fallend zu bewegen, etwa vor Schwindel oder Erschöpfung."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Nach dem Schlag auf den Kopf begann der Boxer, benommen durch den Ring zu ",
+        "after": ".",
+        "accepted": { "answers": ["taumeln"] },
+        "referenceTargetIds": ["taumeln", "schlendern", "trippeln", "schleichen"],
+        "explanation": {
+          "en": "Only taumeln fits: dazed and close to falling.",
+          "fr": "Seul « taumeln » convient : étourdi et près de tomber.",
+          "de": "Nur „taumeln“ passt: benommen und fast fallend."
+        }
+      },
+      "listeningOptionTargetIds": ["taumeln", "watscheln", "trotten", "stolzieren"]
+    },
+    {
+      "id": "waten",
+      "term": "waten",
+      "translations": { "en": ["to wade"], "fr": ["patauger"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "waten",
+      "examForms": ["waten"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈvaːtn̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Wir wateten durch das flache Wasser.",
+        "translation": {
+          "en": "We waded through the shallow water.",
+          "fr": "Nous avons pataugé dans l’eau peu profonde."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Waten means walking through water, mud or similar, with the legs sunk in.",
+        "fr": "Waten signifie marcher dans l’eau, la boue ou similaire, les jambes enfoncées.",
+        "de": "Waten bedeutet, durch Wasser, Schlamm o. Ä. zu gehen, mit eingesunkenen Beinen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Als der Fluss über die Ufer trat, mussten wir bis zu den Knien im Wasser durch die Straße ",
+        "after": ".",
+        "accepted": { "answers": ["waten"] },
+        "referenceTargetIds": ["waten", "stolzieren", "trotten", "huschen"],
+        "explanation": {
+          "en": "Only waten fits: walking knee-deep in water.",
+          "fr": "Seul « waten » convient : marcher dans l’eau jusqu’aux genoux.",
+          "de": "Nur „waten“ passt: Gehen im knietiefen Wasser."
+        }
+      },
+      "listeningOptionTargetIds": ["waten", "watscheln", "stapfen", "taumeln"]
+    },
+    {
+      "id": "huschen",
+      "term": "huschen",
+      "translations": { "en": ["to scurry"], "fr": ["filer"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "huschen",
+      "examForms": ["huschen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈhʊʃn̩/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Die Maus huscht hinter den Schrank.",
+        "translation": {
+          "en": "The mouse scurries behind the cupboard.",
+          "fr": "La souris file derrière l’armoire."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Huschen means moving quickly and lightly, almost unseen.",
+        "fr": "Huschen signifie se déplacer vite et légèrement, presque sans être vu.",
+        "de": "Huschen bedeutet, sich schnell und leicht, fast unbemerkt zu bewegen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Die Maus sah die Katze und begann, blitzschnell hinter den Schrank zu ",
+        "after": ".",
+        "accepted": { "answers": ["huschen"] },
+        "referenceTargetIds": ["huschen", "trotten", "watscheln", "hinken"],
+        "explanation": {
+          "en": "Only huschen fits: a quick, light dash.",
+          "fr": "Seul « huschen » convient : un déplacement rapide et léger.",
+          "de": "Nur „huschen“ passt: eine schnelle, leichte Bewegung."
+        }
+      },
+      "listeningOptionTargetIds": ["huschen", "hinken", "schleichen", "trippeln"]
+    },
+    {
+      "id": "trippeln",
+      "term": "trippeln",
+      "translations": { "en": ["to patter along"], "fr": ["trottiner"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "trippeln",
+      "examForms": ["trippeln"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈtʁɪpl̩n/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Das Mädchen trippelt hinter der Mutter her.",
+        "translation": {
+          "en": "The girl patters along behind her mother.",
+          "fr": "La fillette trottine derrière sa mère."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Trippeln means walking with short, quick steps, like a small child.",
+        "fr": "Trippeln signifie marcher à petits pas rapides, comme un jeune enfant.",
+        "de": "Trippeln bedeutet, mit kurzen, schnellen Schritten zu gehen, etwa wie ein kleines Kind."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Das kleine Mädchen begann, mit kurzen, schnellen Schritten hinter seiner Mutter her zu ",
+        "after": ".",
+        "accepted": { "answers": ["trippeln"] },
+        "referenceTargetIds": ["trippeln", "stapfen", "taumeln", "schreiten"],
+        "explanation": {
+          "en": "Only trippeln fits: short, quick steps.",
+          "fr": "Seul « trippeln » convient : petits pas rapides.",
+          "de": "Nur „trippeln“ passt: kurze, schnelle Schritte."
+        }
+      },
+      "listeningOptionTargetIds": ["trippeln", "trotten", "stapfen", "stolzieren"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

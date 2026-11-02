@@ -6,19 +6,19 @@
   "locales": ["en", "fr", "de"],
   "title": "Zeitangaben mit seit, vor und in",
   "objective": {
-    "en": "Use seit with the present for how long something has lasted, vor for the past and in for the future: seit zwei Jahren, vor einem Monat, in drei Tagen.",
-    "fr": "Dire depuis combien de temps avec seit et le présent, quand c'était avec vor, et quand ce sera avec in : seit zwei Jahren, vor einem Monat, in drei Tagen.",
-    "de": "Mit seit, vor und in Zeiträume und Zeitpunkte angeben: seit zwei Jahren, vor einem Monat, in drei Tagen."
+    "en": "Use seit with the present for how long something has lasted, vor for when it was, and in for when it will be: seit zwei Jahren, vor einem Monat, in drei Tagen.",
+    "fr": "Utiliser seit avec le présent pour la durée, vor pour dire quand c'était et in pour dire quand ce sera : seit zwei Jahren, vor einem Monat, in drei Tagen.",
+    "de": "Mit seit und Präsens sagen, wie lange etwas schon dauert, mit vor, wann es war, und mit in, wann es sein wird: seit zwei Jahren, vor einem Monat."
   },
   "estimatedMinutes": 17,
   "provenance": {
     "generator": "ft lessons:author",
     "model": "sonnet",
-    "promptVersion": "author-2",
-    "generatedAt": "2026-11-01T20:22:19.394Z",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:25:42.583Z",
     "inputHashes": {
       "outline": "50feb1ee8e4f91a06fee86b84a61f369cfab44a7607e4ef5406dc40100ea2ad7",
-      "brief": "53019d7a2cb401f42a1cbd96caf50f076edb63c0211c00aa64890f8e856c3b88"
+      "brief": "5be32b950ffda407efb0fee29fdbcdf6335f275c2fa7c3574f10afd780dabd45"
     }
   },
   "kind": "grammar",
@@ -29,7 +29,7 @@
       "role": "explanation",
       "blockId": "block-seit",
       "label": {
-        "en": "seit: how long it has lasted",
+        "en": "seit: how long already",
         "fr": "seit : depuis combien de temps",
         "de": "seit: wie lange schon"
       },
@@ -47,61 +47,61 @@
             {
               "type": "grammar_explanation",
               "itemId": "block-seit-explanation",
-              "ruleIds": ["rule-seit", "rule-dative-endings"],
+              "ruleIds": ["rule-seit"],
               "heading": {
                 "en": "seit + dative + present",
                 "fr": "seit + datif + présent",
                 "de": "seit + Dativ + Präsens"
               },
               "text": {
-                "en": "`seit` + dative with the **present tense** says how long something has been going on: `Ich wohne seit einem Jahr hier.`\n\nThe period of time is in the dative, so the article and the noun change:\n\n- `seit einem Jahr`, `seit einem Monat`: masculine and neuter take -em.\n- `seit einer Woche`: feminine takes -er.\n- `seit zwei Jahren`, `seit drei Tagen`: plural nouns take -n.\n\nAsk with `Seit wann wohnst du hier?` or `Wie lange wohnst du schon hier?`\n\nUse the present, not the perfect: `Ich lerne seit zwei Jahren Deutsch.`",
-                "fr": "`seit` + datif avec le **présent** dit depuis combien de temps quelque chose dure : `Ich wohne seit einem Jahr hier.`\n\nLa durée est au datif, donc l'article et le nom changent :\n\n- `seit einem Jahr`, `seit einem Monat` : le masculin et le neutre prennent -em.\n- `seit einer Woche` : le féminin prend -er.\n- `seit zwei Jahren`, `seit drei Tagen` : le pluriel prend -n.\n\nOn demande `Seit wann wohnst du hier?` ou `Wie lange wohnst du schon hier?`\n\nUtilisez le présent, pas le parfait : `Ich lerne seit zwei Jahren Deutsch.`",
-                "de": "`seit` + Dativ mit dem **Präsens** sagt, wie lange etwas schon dauert: `Ich wohne seit einem Jahr hier.`\n\nDer Zeitraum steht im Dativ, also ändern sich Artikel und Nomen:\n\n- `seit einem Jahr`, `seit einem Monat`: Maskulinum und Neutrum bekommen -em.\n- `seit einer Woche`: Das Femininum bekommt -er.\n- `seit zwei Jahren`, `seit drei Tagen`: Nomen im Plural bekommen -n.\n\nFrage mit `Seit wann wohnst du hier?` oder `Wie lange wohnst du schon hier?`\n\nBenutze das Präsens, nicht das Perfekt: `Ich lerne seit zwei Jahren Deutsch.`"
+                "en": "Use `seit` + dative + present tense for something that began in the past and still continues: `Ich wohne seit zwei Jahren in Kassel.`\n\n- `seit einem Jahr`, `seit einer Woche`, `seit zwei Monaten`: the dative follows it, and plural nouns usually end in -n.\n- The verb stays in the present tense, not in the perfect.\n\nQuestion: `Seit wann lernst du Deutsch?`",
+                "fr": "Utilisez `seit` + datif + présent pour ce qui a commencé dans le passé et continue encore : `Ich wohne seit zwei Jahren in Kassel.`\n\n- `seit einem Jahr`, `seit einer Woche`, `seit zwei Monaten` : le datif suit ce mot, et les noms au pluriel se terminent le plus souvent par -n.\n- Le verbe reste au présent, pas au parfait.\n\nQuestion : `Seit wann lernst du Deutsch?`",
+                "de": "Mit `seit` + Dativ + Präsens sagst du, was in der Vergangenheit begonnen hat und noch andauert: `Ich wohne seit zwei Jahren in Kassel.`\n\n- `seit einem Jahr`, `seit einer Woche`, `seit zwei Monaten`: Danach steht der Dativ, und Nomen im Plural enden meist auf -n.\n- Das Verb bleibt im Präsens, nicht im Perfekt.\n\nFrage: `Seit wann lernst du Deutsch?`"
               },
               "formTable": [
                 {
                   "subject": "das Jahr",
                   "form": "seit einem Jahr",
-                  "example": "Ich arbeite seit einem Jahr hier."
+                  "example": "Ich wohne seit einem Jahr hier."
                 },
                 {
                   "subject": "die Woche",
                   "form": "seit einer Woche",
-                  "example": "Er ist seit einer Woche krank."
+                  "example": "Sie lernt seit einer Woche Deutsch."
                 },
                 {
-                  "subject": "die Tage (Pl.)",
-                  "form": "seit drei Tagen",
-                  "example": "Es regnet seit drei Tagen."
+                  "subject": "die Monate",
+                  "form": "seit zwei Monaten",
+                  "example": "Wir sind seit zwei Monaten hier."
                 }
               ],
               "examples": [
                 {
-                  "text": "Ich lerne seit zwei Jahren Deutsch.",
+                  "text": "Ich wohne seit zwei Jahren in Kassel.",
                   "translation": {
-                    "en": "I have been learning German for two years.",
-                    "fr": "J'apprends l'allemand depuis deux ans."
+                    "en": "I have been living in Kassel for two years.",
+                    "fr": "Je vis à Kassel depuis deux ans."
                   }
                 },
                 {
-                  "text": "Wir wohnen seit einem Monat in Kassel.",
+                  "text": "Sie arbeitet seit einem Monat hier.",
                   "translation": {
-                    "en": "We have lived in Kassel for a month.",
-                    "fr": "Nous habitons à Kassel depuis un mois."
+                    "en": "She has been working here for a month.",
+                    "fr": "Elle travaille ici depuis un mois."
                   }
                 },
                 {
-                  "text": "Sie arbeitet seit einer Woche bei einer Bank.",
+                  "text": "Seit wann lernst du Deutsch?",
                   "translation": {
-                    "en": "She has been working at a bank for a week.",
-                    "fr": "Elle travaille dans une banque depuis une semaine."
+                    "en": "Since when have you been learning German?",
+                    "fr": "Depuis quand apprends-tu l'allemand ?"
                   }
                 },
                 {
-                  "text": "Seit wann bist du krank?",
+                  "text": "Wir sind seit einer Woche in Berlin.",
                   "translation": {
-                    "en": "Since when have you been ill?",
-                    "fr": "Depuis quand es-tu malade ?"
+                    "en": "We have been in Berlin for a week.",
+                    "fr": "Nous sommes à Berlin depuis une semaine."
                   }
                 }
               ]
@@ -121,7 +121,7 @@
       },
       "pages": [
         {
-          "pageId": "ex-seit-choice-1",
+          "pageId": "ex-seit-choice-p",
           "estimatedDurationS": 60,
           "timeLimitS": null,
           "instructions": {
@@ -132,82 +132,86 @@
           "items": [
             {
               "type": "grammar_gap_choice",
-              "itemId": "ex-seit-choice-1",
-              "before": "Ich wohne seit",
-              "after": "Jahr in Berlin.",
+              "itemId": "sc-1",
+              "before": "Wir wohnen seit",
+              "after": "Jahren in Berlin.",
               "choices": [
-                { "choiceId": "c-1", "text": "einem" },
-                { "choiceId": "c-2", "text": "einer" },
-                { "choiceId": "c-3", "text": "ein" },
-                { "choiceId": "c-4", "text": "einen" }
-              ],
-              "answerChoiceId": "c-1",
-              "hint": null,
-              "ruleIds": ["rule-seit", "rule-dative-endings"],
-              "answerExplanation": {
-                "en": "Das Jahr is neuter, so the dative after seit is einem Jahr.",
-                "fr": "Das Jahr est neutre, donc le datif après seit est einem Jahr.",
-                "de": "Das Jahr ist neutral, also steht nach seit der Dativ einem Jahr."
-              }
-            },
-            {
-              "type": "grammar_gap_choice",
-              "itemId": "ex-seit-choice-2",
-              "before": "Sie arbeitet seit",
-              "after": "Woche hier.",
-              "choices": [
-                { "choiceId": "c-1", "text": "einer" },
+                { "choiceId": "c-1", "text": "zwei" },
                 { "choiceId": "c-2", "text": "einem" },
-                { "choiceId": "c-3", "text": "eine" },
-                { "choiceId": "c-4", "text": "einen" }
-              ],
-              "answerChoiceId": "c-1",
-              "hint": null,
-              "ruleIds": ["rule-dative-endings"],
-              "answerExplanation": {
-                "en": "Die Woche is feminine, so the dative is einer Woche.",
-                "fr": "Die Woche est féminin, donc le datif est einer Woche.",
-                "de": "Die Woche ist feminin, also heißt der Dativ einer Woche."
-              }
-            },
-            {
-              "type": "grammar_gap_choice",
-              "itemId": "ex-seit-choice-3",
-              "before": "Wir kennen uns seit drei",
-              "after": ".",
-              "choices": [
-                { "choiceId": "c-1", "text": "Tag" },
-                { "choiceId": "c-2", "text": "Tage" },
-                { "choiceId": "c-3", "text": "Tagen" },
-                { "choiceId": "c-4", "text": "Tages" }
-              ],
-              "answerChoiceId": "c-3",
-              "hint": null,
-              "ruleIds": ["rule-dative-endings"],
-              "answerExplanation": {
-                "en": "Plural nouns take -n in the dative: seit drei Tagen.",
-                "fr": "Au datif, les noms au pluriel prennent -n : seit drei Tagen.",
-                "de": "Nomen im Plural bekommen im Dativ ein -n: seit drei Tagen."
-              }
-            },
-            {
-              "type": "grammar_gap_choice",
-              "itemId": "ex-seit-choice-4",
-              "before": "Er",
-              "after": "seit zwei Monaten Gitarre.",
-              "choices": [
-                { "choiceId": "c-1", "text": "spielt" },
-                { "choiceId": "c-2", "text": "hat gespielt" },
-                { "choiceId": "c-3", "text": "spielte" },
-                { "choiceId": "c-4", "text": "wird spielen" }
+                { "choiceId": "c-3", "text": "einer" },
+                { "choiceId": "c-4", "text": "ein" }
               ],
               "answerChoiceId": "c-1",
               "hint": null,
               "ruleIds": ["rule-seit"],
               "answerExplanation": {
-                "en": "With seit the verb stays in the present: Er spielt seit zwei Monaten Gitarre.",
-                "fr": "Avec seit, le verbe reste au présent : Er spielt seit zwei Monaten Gitarre.",
-                "de": "Mit seit bleibt das Verb im Präsens: Er spielt seit zwei Monaten Gitarre."
+                "en": "Jahren is plural, so only a number like zwei fits: seit zwei Jahren.",
+                "fr": "Jahren est au pluriel, donc seul un nombre comme zwei convient : seit zwei Jahren.",
+                "de": "Jahren ist Plural, also passt nur eine Zahl wie zwei: seit zwei Jahren."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "sc-2",
+              "before": "Sie arbeitet seit",
+              "after": "Woche in einem Café.",
+              "choices": [
+                { "choiceId": "c-1", "text": "einem" },
+                { "choiceId": "c-2", "text": "eine" },
+                { "choiceId": "c-3", "text": "einer" },
+                { "choiceId": "c-4", "text": "ein" }
+              ],
+              "answerChoiceId": "c-3",
+              "hint": null,
+              "ruleIds": ["rule-seit"],
+              "answerExplanation": {
+                "en": "Woche is feminine; after seit the dative is einer Woche.",
+                "fr": "Woche est féminin ; après seit, le datif est einer Woche.",
+                "de": "Woche ist feminin; nach seit lautet der Dativ einer Woche."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "sc-3",
+              "before": "Ich lerne",
+              "after": "einem Jahr Spanisch.",
+              "choices": [
+                { "choiceId": "c-1", "text": "vor" },
+                { "choiceId": "c-2", "text": "seit" },
+                { "choiceId": "c-3", "text": "in" },
+                { "choiceId": "c-4", "text": "mit" }
+              ],
+              "answerChoiceId": "c-2",
+              "hint": {
+                "en": "It began earlier and still continues.",
+                "fr": "Cela a commencé avant et continue encore.",
+                "de": "Es hat früher begonnen und dauert noch an."
+              },
+              "ruleIds": ["rule-seit"],
+              "answerExplanation": {
+                "en": "Something that began in the past and still continues takes seit.",
+                "fr": "Ce qui a commencé dans le passé et continue prend seit.",
+                "de": "Was früher begann und noch andauert, steht mit seit."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "sc-4",
+              "before": "",
+              "after": "wann wohnst du hier?",
+              "choices": [
+                { "choiceId": "c-1", "text": "Vor" },
+                { "choiceId": "c-2", "text": "In" },
+                { "choiceId": "c-3", "text": "Seit" },
+                { "choiceId": "c-4", "text": "Bei" }
+              ],
+              "answerChoiceId": "c-3",
+              "hint": null,
+              "ruleIds": ["rule-seit"],
+              "answerExplanation": {
+                "en": "Seit wann...? asks how long something has lasted.",
+                "fr": "Seit wann...? demande depuis combien de temps quelque chose dure.",
+                "de": "Seit wann...? fragt, wie lange etwas schon dauert."
               }
             }
           ]
@@ -225,7 +229,7 @@
       },
       "pages": [
         {
-          "pageId": "ex-seit-typing-1",
+          "pageId": "ex-seit-typing-p",
           "estimatedDurationS": 80,
           "timeLimitS": null,
           "instructions": {
@@ -236,66 +240,74 @@
           "items": [
             {
               "type": "grammar_gap_typing",
-              "itemId": "ex-seit-typing-1",
-              "before": "Wir lernen",
-              "after": "zwei Jahren Englisch.",
-              "accepted": { "answers": ["seit"] },
+              "itemId": "st-1",
+              "before": "Wir wohnen seit zwei",
+              "after": "in Hamburg.",
+              "accepted": { "answers": ["Jahren"] },
               "hint": {
-                "en": "for a period that is still going on",
-                "fr": "pour une durée qui continue encore",
-                "de": "für einen Zeitraum, der noch andauert"
+                "en": "das Jahr, dative plural",
+                "fr": "das Jahr, datif pluriel",
+                "de": "das Jahr, Dativ Plural"
               },
               "ruleIds": ["rule-seit"],
               "answerExplanation": {
-                "en": "seit + present says how long something has lasted until now.",
-                "fr": "seit + présent dit depuis combien de temps quelque chose dure jusqu'à maintenant.",
-                "de": "seit + Präsens sagt, wie lange etwas bis jetzt dauert."
+                "en": "After a number the dative plural of Jahr is Jahren.",
+                "fr": "Après un nombre, le datif pluriel de Jahr est Jahren.",
+                "de": "Nach einer Zahl lautet der Dativ Plural von Jahr Jahren."
               }
             },
             {
               "type": "grammar_gap_typing",
-              "itemId": "ex-seit-typing-2",
-              "before": "Ich wohne seit",
-              "after": "Monat in Köln.",
-              "accepted": { "answers": ["einem"] },
+              "itemId": "st-2",
+              "before": "Sie lebt",
+              "after": "einem Jahr in Wien.",
+              "accepted": { "answers": ["seit"] },
               "hint": {
-                "en": "masculine, dative",
-                "fr": "masculin, datif",
-                "de": "maskulin, Dativ"
+                "en": "since; it still continues",
+                "fr": "depuis ; cela continue encore",
+                "de": "seit; es dauert noch an"
               },
-              "ruleIds": ["rule-dative-endings"],
+              "ruleIds": ["rule-seit"],
               "answerExplanation": {
-                "en": "Der Monat is masculine, so the dative is einem Monat.",
-                "fr": "Der Monat est masculin, donc le datif est einem Monat.",
-                "de": "Der Monat ist maskulin, also heißt der Dativ einem Monat."
+                "en": "A situation that still continues takes seit with the present.",
+                "fr": "Une situation qui continue prend seit avec le présent.",
+                "de": "Ein Zustand, der noch andauert, steht mit seit und Präsens."
               }
             },
             {
               "type": "grammar_gap_typing",
-              "itemId": "ex-seit-typing-3",
-              "before": "Meine Tante ist seit",
-              "after": "Woche im Krankenhaus.",
-              "accepted": { "answers": ["einer"] },
-              "hint": { "en": "feminine, dative", "fr": "féminin, datif", "de": "feminin, Dativ" },
-              "ruleIds": ["rule-dative-endings"],
+              "itemId": "st-3",
+              "before": "Ich wohne seit einer",
+              "after": "in München.",
+              "accepted": { "answers": ["Woche"] },
+              "hint": {
+                "en": "die Woche, dative singular",
+                "fr": "die Woche, datif singulier",
+                "de": "die Woche, Dativ Singular"
+              },
+              "ruleIds": ["rule-seit"],
               "answerExplanation": {
-                "en": "Die Woche is feminine, so the dative is einer Woche.",
-                "fr": "Die Woche est féminin, donc le datif est einer Woche.",
-                "de": "Die Woche ist feminin, also heißt der Dativ einer Woche."
+                "en": "Feminine nouns keep their form: einer Woche.",
+                "fr": "Les noms féminins gardent leur forme : einer Woche.",
+                "de": "Feminine Nomen bleiben gleich: einer Woche."
               }
             },
             {
               "type": "grammar_gap_typing",
-              "itemId": "ex-seit-typing-4",
-              "before": "Das Baby schläft seit zwei",
-              "after": ".",
-              "accepted": { "answers": ["Stunden"] },
-              "hint": { "en": "plural, dative", "fr": "pluriel, datif", "de": "Plural, Dativ" },
-              "ruleIds": ["rule-dative-endings"],
+              "itemId": "st-4",
+              "before": "Wir sind seit zwei",
+              "after": "verheiratet.",
+              "accepted": { "answers": ["Monaten"] },
+              "hint": {
+                "en": "der Monat, dative plural",
+                "fr": "der Monat, datif pluriel",
+                "de": "der Monat, Dativ Plural"
+              },
+              "ruleIds": ["rule-seit"],
               "answerExplanation": {
-                "en": "Plural nouns take -n in the dative: seit zwei Stunden.",
-                "fr": "Au datif, les noms au pluriel prennent -n : seit zwei Stunden.",
-                "de": "Nomen im Plural bekommen im Dativ ein -n: seit zwei Stunden."
+                "en": "The dative plural of Monat is Monaten.",
+                "fr": "Le datif pluriel de Monat est Monaten.",
+                "de": "Der Dativ Plural von Monat ist Monaten."
               }
             }
           ]
@@ -306,11 +318,11 @@
       "id": "ex-seit-spot",
       "role": "exercise",
       "blockId": "block-seit",
-      "label": { "en": "Error spotting 1", "fr": "Repérer l'erreur 1", "de": "Fehler finden 1" },
+      "label": { "en": "Error spotting 1", "fr": "Repérer l’erreur 1", "de": "Fehler finden 1" },
       "pages": [
         {
-          "pageId": "ex-seit-spot-1",
-          "estimatedDurationS": 90,
+          "pageId": "ex-seit-spot-p",
+          "estimatedDurationS": 75,
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it.",
@@ -320,78 +332,74 @@
           "items": [
             {
               "type": "grammar_error_spotter",
-              "itemId": "ex-seit-spot-1",
+              "itemId": "ss-1",
               "tokens": [
-                { "tokenId": "t-1", "text": "Ich" },
-                { "tokenId": "t-2", "text": "wohne" },
+                { "tokenId": "t-1", "text": "Wir" },
+                { "tokenId": "t-2", "text": "lernen" },
                 { "tokenId": "t-3", "text": "seit" },
-                { "tokenId": "t-4", "text": "zwei" },
-                { "tokenId": "t-5", "text": "Jahr" },
-                { "tokenId": "t-6", "text": "in" },
-                { "tokenId": "t-7", "text": "Wien" },
-                { "tokenId": "t-8", "text": "." }
+                { "tokenId": "t-4", "text": "drei" },
+                { "tokenId": "t-5", "text": "Monate" },
+                { "tokenId": "t-6", "text": "Deutsch" },
+                { "tokenId": "t-7", "text": "." }
               ],
               "faultyTokenId": "t-5",
               "correction": {
                 "mode": "type",
-                "accepted": { "answers": ["Jahren"] },
-                "choices": []
-              },
-              "ruleIds": ["rule-dative-endings"],
-              "answerExplanation": {
-                "en": "After zwei the noun is plural, and the dative plural takes -n: zwei Jahren.",
-                "fr": "Après zwei, le nom est au pluriel et le datif pluriel prend -n : zwei Jahren.",
-                "de": "Nach zwei steht der Plural, und der Dativ Plural bekommt -n: zwei Jahren."
-              }
-            },
-            {
-              "type": "grammar_error_spotter",
-              "itemId": "ex-seit-spot-2",
-              "tokens": [
-                { "tokenId": "t-1", "text": "Sie" },
-                { "tokenId": "t-2", "text": "lernt" },
-                { "tokenId": "t-3", "text": "seit" },
-                { "tokenId": "t-4", "text": "einem" },
-                { "tokenId": "t-5", "text": "Woche" },
-                { "tokenId": "t-6", "text": "Deutsch" },
-                { "tokenId": "t-7", "text": "." }
-              ],
-              "faultyTokenId": "t-4",
-              "correction": {
-                "mode": "select",
-                "accepted": { "answers": ["einer"] },
-                "choices": ["einer", "einem", "eine"]
-              },
-              "ruleIds": ["rule-dative-endings"],
-              "answerExplanation": {
-                "en": "Die Woche is feminine, so the dative is einer Woche.",
-                "fr": "Die Woche est féminin, donc le datif est einer Woche.",
-                "de": "Die Woche ist feminin, also heißt der Dativ einer Woche."
-              }
-            },
-            {
-              "type": "grammar_error_spotter",
-              "itemId": "ex-seit-spot-3",
-              "tokens": [
-                { "tokenId": "t-1", "text": "Wir" },
-                { "tokenId": "t-2", "text": "wohnten" },
-                { "tokenId": "t-3", "text": "seit" },
-                { "tokenId": "t-4", "text": "einem" },
-                { "tokenId": "t-5", "text": "Monat" },
-                { "tokenId": "t-6", "text": "hier" },
-                { "tokenId": "t-7", "text": "." }
-              ],
-              "faultyTokenId": "t-2",
-              "correction": {
-                "mode": "type",
-                "accepted": { "answers": ["wohnen"] },
+                "accepted": { "answers": ["Monaten"] },
                 "choices": []
               },
               "ruleIds": ["rule-seit"],
               "answerExplanation": {
-                "en": "With seit the verb is in the present: Wir wohnen seit einem Monat hier.",
-                "fr": "Avec seit, le verbe est au présent : Wir wohnen seit einem Monat hier.",
-                "de": "Mit seit steht das Verb im Präsens: Wir wohnen seit einem Monat hier."
+                "en": "After seit the plural is in the dative: drei Monaten.",
+                "fr": "Après seit, le pluriel est au datif : drei Monaten.",
+                "de": "Nach seit steht der Plural im Dativ: drei Monaten."
+              }
+            },
+            {
+              "type": "grammar_error_spotter",
+              "itemId": "ss-2",
+              "tokens": [
+                { "tokenId": "t-1", "text": "Ich" },
+                { "tokenId": "t-2", "text": "wohne" },
+                { "tokenId": "t-3", "text": "vor" },
+                { "tokenId": "t-4", "text": "zwei" },
+                { "tokenId": "t-5", "text": "Jahren" },
+                { "tokenId": "t-6", "text": "in" },
+                { "tokenId": "t-7", "text": "Kassel" },
+                { "tokenId": "t-8", "text": "." }
+              ],
+              "faultyTokenId": "t-3",
+              "correction": {
+                "mode": "select",
+                "accepted": { "answers": ["seit"] },
+                "choices": ["seit", "für", "bei"]
+              },
+              "ruleIds": ["rule-seit"],
+              "answerExplanation": {
+                "en": "Wohne is present and the situation continues, so it is seit, not vor.",
+                "fr": "Wohne est au présent et la situation continue : seit, pas vor.",
+                "de": "Wohne ist Präsens und die Situation dauert an, also seit, nicht vor."
+              }
+            },
+            {
+              "type": "grammar_error_spotter",
+              "itemId": "ss-3",
+              "tokens": [
+                { "tokenId": "t-1", "text": "Sie" },
+                { "tokenId": "t-2", "text": "wohnt" },
+                { "tokenId": "t-3", "text": "seit" },
+                { "tokenId": "t-4", "text": "einem" },
+                { "tokenId": "t-5", "text": "Woche" },
+                { "tokenId": "t-6", "text": "hier" },
+                { "tokenId": "t-7", "text": "." }
+              ],
+              "faultyTokenId": "t-4",
+              "correction": { "mode": "type", "accepted": { "answers": ["einer"] }, "choices": [] },
+              "ruleIds": ["rule-seit"],
+              "answerExplanation": {
+                "en": "Woche is feminine, so the dative is einer Woche.",
+                "fr": "Woche est féminin, donc le datif est einer Woche.",
+                "de": "Woche ist feminin, also heißt der Dativ einer Woche."
               }
             }
           ]
@@ -410,7 +418,7 @@
       "pages": [
         {
           "pageId": "block-vor-in-explanation",
-          "estimatedDurationS": 130,
+          "estimatedDurationS": 150,
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
@@ -421,56 +429,61 @@
             {
               "type": "grammar_explanation",
               "itemId": "block-vor-in-explanation",
-              "ruleIds": ["rule-vor", "rule-in", "rule-dative-endings"],
+              "ruleIds": ["rule-vor", "rule-in"],
               "heading": {
                 "en": "vor = ago, in = from now",
                 "fr": "vor = il y a, in = dans",
-                "de": "vor = zurückliegend, in = von jetzt an"
+                "de": "vor = früher, in = später"
               },
               "text": {
-                "en": "`vor` + dative looks back from now. It means **ago** and goes with the past: `Vor einem Monat war ich in Wien.`\n\n`in` + dative looks ahead from now. The verb stays in the **present**, the time phrase shows the future: `In drei Tagen beginnt der Kurs.`\n\n- `vor zwei Wochen`: two weeks ago.\n- `in zwei Wochen`: two weeks from now.\n- `seit zwei Wochen`: for two weeks, and it still goes on.\n\nThe endings are the same as after `seit`: `einem`, `einer`, and -n in the plural.",
-                "fr": "`vor` + datif regarde en arrière à partir de maintenant. Il signifie **il y a** et va avec le passé : `Vor einem Monat war ich in Wien.`\n\n`in` + datif regarde vers l'avenir à partir de maintenant. Le verbe reste au **présent**, l'expression de temps indique le futur : `In drei Tagen beginnt der Kurs.`\n\n- `vor zwei Wochen` : il y a deux semaines.\n- `in zwei Wochen` : dans deux semaines.\n- `seit zwei Wochen` : depuis deux semaines, et cela continue.\n\nLes terminaisons sont les mêmes qu'après `seit` : `einem`, `einer`, et -n au pluriel.",
-                "de": "`vor` + Dativ schaut von jetzt aus zurück. Es sagt, wie lange etwas **zurückliegt**, und steht mit der Vergangenheit: `Vor einem Monat war ich in Wien.`\n\n`in` + Dativ schaut von jetzt aus nach vorn. Das Verb bleibt im **Präsens**, die Zeitangabe zeigt die Zukunft: `In drei Tagen beginnt der Kurs.`\n\n- `vor zwei Wochen`: So lange liegt es zurück.\n- `in zwei Wochen`: Von jetzt an gerechnet zwei Wochen später.\n- `seit zwei Wochen`: Es dauert seit zwei Wochen und geht noch weiter.\n\nDie Endungen sind dieselben wie nach `seit`: `einem`, `einer` und -n im Plural."
+                "en": "`vor` + dative says when something happened in the past: `Ich war vor einem Monat in Rom.` `in` + dative says when something will happen: `Der Kurs beginnt in drei Tagen.`\n\n- `vor zwei Tagen` = two days ago; `in zwei Tagen` = two days from now.\n- `seit` counts up to now, `vor` points to a moment in the past, `in` to a moment in the future.\n- All three take the dative: `einem Jahr`, `einer Woche`, `zwei Monaten`.\n\nDo not mix them up: `vor einer Woche` is past, `in einer Woche` is future.",
+                "fr": "`vor` + datif indique quand quelque chose a eu lieu dans le passé : `Ich war vor einem Monat in Rom.` `in` + datif indique quand quelque chose aura lieu : `Der Kurs beginnt in drei Tagen.`\n\n- `vor zwei Tagen` = il y a deux jours ; `in zwei Tagen` = dans deux jours.\n- `seit` compte jusqu'à maintenant, `vor` renvoie à un moment du passé, `in` à un moment du futur.\n- Les trois prennent le datif : `einem Jahr`, `einer Woche`, `zwei Monaten`.\n\nNe les confondez pas : `vor einer Woche` est passé, `in einer Woche` est futur.",
+                "de": "`vor` + Dativ sagt, wann etwas in der Vergangenheit war: `Ich war vor einem Monat in Rom.` `in` + Dativ sagt, wann etwas in der Zukunft sein wird: `Der Kurs beginnt in drei Tagen.`\n\n- `vor zwei Tagen`: so lange ist es her; `in zwei Tagen`: so lange dauert es noch.\n- `seit` zählt bis jetzt, `vor` zeigt auf einen Moment in der Vergangenheit, `in` auf einen Moment in der Zukunft.\n- Alle drei stehen mit dem Dativ: `einem Jahr`, `einer Woche`, `zwei Monaten`.\n\nVerwechsle sie nicht: `vor einer Woche` ist Vergangenheit, `in einer Woche` ist Zukunft."
               },
               "formTable": [
                 {
-                  "subject": "vor (zurück)",
-                  "form": "vor einer Stunde",
-                  "example": "Er ist vor einer Stunde gegangen."
+                  "subject": "Vergangenheit",
+                  "form": "vor einem Monat",
+                  "example": "Ich war vor einem Monat in Rom."
                 },
                 {
-                  "subject": "in (voraus)",
-                  "form": "in zwei Tagen",
-                  "example": "In zwei Tagen ist Sonntag."
+                  "subject": "Zukunft",
+                  "form": "in einer Woche",
+                  "example": "Meine Schwester kommt in einer Woche."
+                },
+                {
+                  "subject": "Zukunft",
+                  "form": "in drei Tagen",
+                  "example": "Der Kurs beginnt in drei Tagen."
                 }
               ],
               "examples": [
                 {
-                  "text": "Vor einem Monat war ich in Wien.",
+                  "text": "Ich war vor einem Monat in Rom.",
                   "translation": {
-                    "en": "A month ago I was in Vienna.",
-                    "fr": "Il y a un mois, j'étais à Vienne."
+                    "en": "I was in Rome a month ago.",
+                    "fr": "J'étais à Rome il y a un mois."
                   }
                 },
                 {
-                  "text": "In drei Tagen beginnt der Kurs.",
+                  "text": "Der Kurs beginnt in drei Tagen.",
                   "translation": {
                     "en": "The course starts in three days.",
                     "fr": "Le cours commence dans trois jours."
                   }
                 },
                 {
-                  "text": "Sie hat vor einem Jahr geheiratet.",
+                  "text": "Vor zwei Tagen war das Wetter schön.",
                   "translation": {
-                    "en": "She got married a year ago.",
-                    "fr": "Elle s'est mariée il y a un an."
+                    "en": "Two days ago the weather was nice.",
+                    "fr": "Il y a deux jours, il faisait beau."
                   }
                 },
                 {
-                  "text": "In einer Stunde habe ich Pause.",
+                  "text": "Meine Schwester kommt in einer Woche.",
                   "translation": {
-                    "en": "I have a break in an hour.",
-                    "fr": "J'ai une pause dans une heure."
+                    "en": "My sister is coming in a week.",
+                    "fr": "Ma sœur vient dans une semaine."
                   }
                 }
               ]
@@ -490,7 +503,7 @@
       },
       "pages": [
         {
-          "pageId": "ex-vi-choice-1",
+          "pageId": "ex-vi-choice-p",
           "estimatedDurationS": 60,
           "timeLimitS": null,
           "instructions": {
@@ -501,182 +514,98 @@
           "items": [
             {
               "type": "grammar_gap_choice",
-              "itemId": "ex-vi-choice-1",
-              "before": "",
-              "after": "zwei Wochen fahre ich nach Spanien.",
-              "choices": [
-                { "choiceId": "c-1", "text": "In" },
-                { "choiceId": "c-2", "text": "Vor" },
-                { "choiceId": "c-3", "text": "Seit" },
-                { "choiceId": "c-4", "text": "Mit" }
-              ],
-              "answerChoiceId": "c-1",
-              "hint": null,
-              "ruleIds": ["rule-in"],
-              "answerExplanation": {
-                "en": "The trip is in the future, counted from now: in zwei Wochen.",
-                "fr": "Le voyage est dans le futur, à partir de maintenant : in zwei Wochen.",
-                "de": "Die Reise liegt in der Zukunft, von jetzt an gerechnet: in zwei Wochen."
-              }
-            },
-            {
-              "type": "grammar_gap_choice",
-              "itemId": "ex-vi-choice-2",
-              "before": "",
-              "after": "einem Jahr hat er das Haus gekauft.",
-              "choices": [
-                { "choiceId": "c-1", "text": "In" },
-                { "choiceId": "c-2", "text": "Seit" },
-                { "choiceId": "c-3", "text": "Vor" },
-                { "choiceId": "c-4", "text": "Mit" }
-              ],
-              "answerChoiceId": "c-3",
-              "hint": null,
-              "ruleIds": ["rule-vor"],
-              "answerExplanation": {
-                "en": "The purchase is over: vor einem Jahr means a year ago.",
-                "fr": "L'achat est terminé : vor einem Jahr signifie il y a un an.",
-                "de": "Der Kauf ist vorbei: vor einem Jahr heißt, dass es ein Jahr zurückliegt."
-              }
-            },
-            {
-              "type": "grammar_gap_choice",
-              "itemId": "ex-vi-choice-3",
-              "before": "Das Konzert beginnt",
-              "after": "einer Stunde.",
+              "itemId": "vc-1",
+              "before": "Ich war",
+              "after": "zwei Tagen im Kino.",
               "choices": [
                 { "choiceId": "c-1", "text": "vor" },
                 { "choiceId": "c-2", "text": "seit" },
                 { "choiceId": "c-3", "text": "in" },
-                { "choiceId": "c-4", "text": "mit" }
+                { "choiceId": "c-4", "text": "ab" }
               ],
-              "answerChoiceId": "c-3",
-              "hint": null,
-              "ruleIds": ["rule-in"],
+              "answerChoiceId": "c-1",
+              "hint": {
+                "en": "It is already over.",
+                "fr": "C'est déjà passé.",
+                "de": "Es ist schon vorbei."
+              },
+              "ruleIds": ["rule-vor"],
               "answerExplanation": {
-                "en": "The concert has not started yet: in einer Stunde means one hour from now.",
-                "fr": "Le concert n'a pas encore commencé : in einer Stunde signifie dans une heure.",
-                "de": "Das Konzert hat noch nicht begonnen: in einer Stunde heißt eine Stunde von jetzt an."
+                "en": "A moment in the past is vor: vor zwei Tagen.",
+                "fr": "Un moment du passé se dit vor : vor zwei Tagen.",
+                "de": "Ein Zeitpunkt in der Vergangenheit steht mit vor: vor zwei Tagen."
               }
             },
             {
               "type": "grammar_gap_choice",
-              "itemId": "ex-vi-choice-4",
-              "before": "Wir waren vor drei",
-              "after": "in Hamburg.",
+              "itemId": "vc-2",
+              "before": "Der Zug kommt",
+              "after": "zehn Minuten.",
               "choices": [
-                { "choiceId": "c-1", "text": "Tage" },
-                { "choiceId": "c-2", "text": "Tagen" },
-                { "choiceId": "c-3", "text": "Tag" },
-                { "choiceId": "c-4", "text": "Tages" }
+                { "choiceId": "c-1", "text": "in" },
+                { "choiceId": "c-2", "text": "vor" },
+                { "choiceId": "c-3", "text": "seit" },
+                { "choiceId": "c-4", "text": "mit" }
               ],
-              "answerChoiceId": "c-2",
-              "hint": null,
-              "ruleIds": ["rule-vor", "rule-dative-endings"],
+              "answerChoiceId": "c-1",
+              "hint": {
+                "en": "It will happen later.",
+                "fr": "Cela arrivera plus tard.",
+                "de": "Es passiert später."
+              },
+              "ruleIds": ["rule-in"],
               "answerExplanation": {
-                "en": "After vor, plural nouns take -n in the dative: vor drei Tagen.",
-                "fr": "Après vor, les noms au pluriel prennent -n au datif : vor drei Tagen.",
-                "de": "Nach vor bekommen Nomen im Plural im Dativ ein -n: vor drei Tagen."
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "ex-vi-order",
-      "role": "exercise",
-      "blockId": "block-vor-in",
-      "label": { "en": "Word order", "fr": "Ordre des mots", "de": "Wortstellung" },
-      "pages": [
-        {
-          "pageId": "ex-vi-order-1",
-          "estimatedDurationS": 100,
-          "timeLimitS": null,
-          "instructions": {
-            "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
-            "de": "Bring die Wörter in die richtige Reihenfolge."
-          },
-          "items": [
-            {
-              "type": "grammar_word_order",
-              "itemId": "ex-vi-order-1",
-              "tokens": [
-                { "tokenId": "t-1", "text": "war" },
-                { "tokenId": "t-2", "text": "krank" },
-                { "tokenId": "t-3", "text": "Vor" },
-                { "tokenId": "t-4", "text": "." },
-                { "tokenId": "t-5", "text": "einer" },
-                { "tokenId": "t-6", "text": "ich" },
-                { "tokenId": "t-7", "text": "Woche" }
-              ],
-              "acceptedOrders": [["t-3", "t-5", "t-7", "t-1", "t-6", "t-2", "t-4"]],
-              "ruleIds": ["rule-vor", "rule-dative-endings"],
-              "answerExplanation": {
-                "en": "vor einer Woche says how long ago; the verb war comes second.",
-                "fr": "vor einer Woche dit il y a combien de temps ; le verbe war est en deuxième position.",
-                "de": "vor einer Woche sagt, wie lange es zurückliegt; das Verb war steht auf Position 2."
+                "en": "A moment in the future is in: in zehn Minuten.",
+                "fr": "Un moment du futur se dit in : in zehn Minuten.",
+                "de": "Ein Zeitpunkt in der Zukunft steht mit in: in zehn Minuten."
               }
             },
             {
-              "type": "grammar_word_order",
-              "itemId": "ex-vi-order-2",
-              "tokens": [
-                { "tokenId": "t-1", "text": "kommt" },
-                { "tokenId": "t-2", "text": "In" },
-                { "tokenId": "t-3", "text": "Bruder" },
-                { "tokenId": "t-4", "text": "Tagen" },
-                { "tokenId": "t-5", "text": "mein" },
-                { "tokenId": "t-6", "text": "zwei" },
-                { "tokenId": "t-7", "text": "." }
+              "type": "grammar_gap_choice",
+              "itemId": "vc-3",
+              "before": "Meine Eltern waren",
+              "after": "einer Woche hier.",
+              "choices": [
+                { "choiceId": "c-1", "text": "in" },
+                { "choiceId": "c-2", "text": "seit" },
+                { "choiceId": "c-3", "text": "vor" },
+                { "choiceId": "c-4", "text": "ab" }
               ],
-              "acceptedOrders": [["t-2", "t-6", "t-4", "t-1", "t-5", "t-3", "t-7"]],
-              "ruleIds": ["rule-in", "rule-dative-endings"],
+              "answerChoiceId": "c-3",
+              "hint": {
+                "en": "It is already over.",
+                "fr": "C'est déjà passé.",
+                "de": "Es ist schon vorbei."
+              },
+              "ruleIds": ["rule-vor"],
               "answerExplanation": {
-                "en": "in zwei Tagen is the future, with the present tense; the verb kommt comes second.",
-                "fr": "in zwei Tagen exprime le futur avec le présent ; le verbe kommt est en deuxième position.",
-                "de": "in zwei Tagen zeigt die Zukunft, mit Präsens; das Verb kommt steht auf Position 2."
+                "en": "Waren and a finished visit point to the past: vor einer Woche.",
+                "fr": "Waren et une visite terminée renvoient au passé : vor einer Woche.",
+                "de": "Waren und ein beendeter Besuch zeigen die Vergangenheit: vor einer Woche."
               }
             },
             {
-              "type": "grammar_word_order",
-              "itemId": "ex-vi-order-3",
-              "tokens": [
-                { "tokenId": "t-1", "text": "gespielt" },
-                { "tokenId": "t-2", "text": "Tagen" },
-                { "tokenId": "t-3", "text": "Wir" },
-                { "tokenId": "t-4", "text": "vor" },
-                { "tokenId": "t-5", "text": "haben" },
-                { "tokenId": "t-6", "text": "zwei" },
-                { "tokenId": "t-7", "text": "." }
+              "type": "grammar_gap_choice",
+              "itemId": "vc-4",
+              "before": "Wir fahren",
+              "after": "zwei Wochen in Urlaub.",
+              "choices": [
+                { "choiceId": "c-1", "text": "vor" },
+                { "choiceId": "c-2", "text": "bei" },
+                { "choiceId": "c-3", "text": "seit" },
+                { "choiceId": "c-4", "text": "in" }
               ],
-              "acceptedOrders": [["t-3", "t-5", "t-4", "t-6", "t-2", "t-1", "t-7"]],
-              "ruleIds": ["rule-vor", "rule-dative-endings"],
+              "answerChoiceId": "c-4",
+              "hint": {
+                "en": "It will happen later.",
+                "fr": "Cela arrivera plus tard.",
+                "de": "Es passiert später."
+              },
+              "ruleIds": ["rule-in"],
               "answerExplanation": {
-                "en": "vor zwei Tagen means two days ago; the participle gespielt goes to the end.",
-                "fr": "vor zwei Tagen signifie il y a deux jours ; le participe gespielt va à la fin.",
-                "de": "vor zwei Tagen heißt, dass es zwei Tage zurückliegt; das Partizip gespielt steht am Ende."
-              }
-            },
-            {
-              "type": "grammar_word_order",
-              "itemId": "ex-vi-order-4",
-              "tokens": [
-                { "tokenId": "t-1", "text": "Stunde" },
-                { "tokenId": "t-2", "text": "beginnt" },
-                { "tokenId": "t-3", "text": "Die" },
-                { "tokenId": "t-4", "text": "in" },
-                { "tokenId": "t-5", "text": "einer" },
-                { "tokenId": "t-6", "text": "Party" },
-                { "tokenId": "t-7", "text": "." }
-              ],
-              "acceptedOrders": [["t-3", "t-6", "t-2", "t-4", "t-5", "t-1", "t-7"]],
-              "ruleIds": ["rule-in", "rule-dative-endings"],
-              "answerExplanation": {
-                "en": "in einer Stunde means one hour from now; Stunde is feminine, so einer.",
-                "fr": "in einer Stunde signifie dans une heure ; Stunde est féminin, donc einer.",
-                "de": "in einer Stunde heißt eine Stunde von jetzt an; Stunde ist feminin, also einer."
+                "en": "The holiday is still to come, so: in zwei Wochen.",
+                "fr": "Les vacances sont à venir, donc : in zwei Wochen.",
+                "de": "Der Urlaub kommt noch, also: in zwei Wochen."
               }
             }
           ]
@@ -694,8 +623,8 @@
       },
       "pages": [
         {
-          "pageId": "ex-vi-typing-1",
-          "estimatedDurationS": 100,
+          "pageId": "ex-vi-typing-p",
+          "estimatedDurationS": 80,
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
@@ -705,80 +634,226 @@
           "items": [
             {
               "type": "grammar_gap_typing",
-              "itemId": "ex-vi-typing-1",
-              "before": "Wir haben das Auto",
-              "after": "drei Wochen gekauft.",
+              "itemId": "vt-1",
+              "before": "Mein Onkel war",
+              "after": "drei Tagen hier.",
               "accepted": { "answers": ["vor"] },
               "hint": {
-                "en": "ago, in the past",
-                "fr": "il y a, dans le passé",
-                "de": "zurückliegend, Vergangenheit"
+                "en": "ago: it is over",
+                "fr": "il y a : c'est passé",
+                "de": "früher: es ist vorbei"
               },
               "ruleIds": ["rule-vor"],
               "answerExplanation": {
-                "en": "The purchase is over, so vor drei Wochen means three weeks ago.",
-                "fr": "L'achat est terminé, donc vor drei Wochen signifie il y a trois semaines.",
-                "de": "Der Kauf ist vorbei, also heißt vor drei Wochen, dass es drei Wochen zurückliegt."
+                "en": "A past moment: vor drei Tagen.",
+                "fr": "Un moment passé : vor drei Tagen.",
+                "de": "Ein Zeitpunkt in der Vergangenheit: vor drei Tagen."
               }
             },
             {
               "type": "grammar_gap_typing",
-              "itemId": "ex-vi-typing-2",
-              "before": "Der Bus kommt",
-              "after": "fünf Minuten.",
+              "itemId": "vt-2",
+              "before": "Der Film beginnt",
+              "after": "einer Stunde.",
               "accepted": { "answers": ["in"] },
               "hint": {
-                "en": "from now, in the future",
-                "fr": "dans, dans le futur",
-                "de": "von jetzt an, Zukunft"
+                "en": "later, in the future",
+                "fr": "plus tard, dans le futur",
+                "de": "später, in der Zukunft"
               },
               "ruleIds": ["rule-in"],
               "answerExplanation": {
-                "en": "The bus has not arrived yet: in fünf Minuten means five minutes from now.",
-                "fr": "Le bus n'est pas encore arrivé : in fünf Minuten signifie dans cinq minutes.",
-                "de": "Der Bus ist noch nicht da: in fünf Minuten heißt fünf Minuten von jetzt an."
+                "en": "A future moment: in einer Stunde.",
+                "fr": "Un moment futur : in einer Stunde.",
+                "de": "Ein Zeitpunkt in der Zukunft: in einer Stunde."
               }
             },
             {
               "type": "grammar_gap_typing",
-              "itemId": "ex-vi-typing-3",
-              "before": "Mein Onkel war vor drei",
-              "after": "in Rom.",
-              "accepted": { "answers": ["Monaten"] },
-              "hint": { "en": "plural, dative", "fr": "pluriel, datif", "de": "Plural, Dativ" },
-              "ruleIds": ["rule-vor", "rule-dative-endings"],
-              "answerExplanation": {
-                "en": "Plural nouns take -n in the dative: vor drei Monaten.",
-                "fr": "Au datif, les noms au pluriel prennent -n : vor drei Monaten.",
-                "de": "Nomen im Plural bekommen im Dativ ein -n: vor drei Monaten."
-              }
-            },
-            {
-              "type": "grammar_gap_typing",
-              "itemId": "ex-vi-typing-4",
-              "before": "Die Prüfung ist in",
-              "after": "Woche.",
-              "accepted": { "answers": ["einer"] },
-              "hint": { "en": "feminine, dative", "fr": "féminin, datif", "de": "feminin, Dativ" },
-              "ruleIds": ["rule-in", "rule-dative-endings"],
-              "answerExplanation": {
-                "en": "Die Woche is feminine, so the dative is in einer Woche.",
-                "fr": "Die Woche est féminin, donc le datif est in einer Woche.",
-                "de": "Die Woche ist feminin, also heißt der Dativ in einer Woche."
-              }
-            },
-            {
-              "type": "grammar_gap_typing",
-              "itemId": "ex-vi-typing-5",
-              "before": "Ich bin vor",
-              "after": "Jahr nach Deutschland gekommen.",
+              "itemId": "vt-3",
+              "before": "Ich war vor",
+              "after": "Monat in Italien.",
               "accepted": { "answers": ["einem"] },
-              "hint": { "en": "neuter, dative", "fr": "neutre, datif", "de": "neutral, Dativ" },
-              "ruleIds": ["rule-vor", "rule-dative-endings"],
+              "hint": {
+                "en": "der Monat, dative",
+                "fr": "der Monat, datif",
+                "de": "der Monat, Dativ"
+              },
+              "ruleIds": ["rule-vor"],
               "answerExplanation": {
-                "en": "Das Jahr is neuter, so the dative is vor einem Jahr.",
-                "fr": "Das Jahr est neutre, donc le datif est vor einem Jahr.",
-                "de": "Das Jahr ist neutral, also heißt der Dativ vor einem Jahr."
+                "en": "Masculine dative: einem Monat.",
+                "fr": "Datif masculin : einem Monat.",
+                "de": "Dativ maskulin: einem Monat."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "vt-4",
+              "before": "Der Bus kommt in zwei",
+              "after": ".",
+              "accepted": { "answers": ["Minuten"] },
+              "hint": {
+                "en": "die Minute, dative plural",
+                "fr": "die Minute, datif pluriel",
+                "de": "die Minute, Dativ Plural"
+              },
+              "ruleIds": ["rule-in"],
+              "answerExplanation": {
+                "en": "The dative plural of Minute is Minuten.",
+                "fr": "Le datif pluriel de Minute est Minuten.",
+                "de": "Der Dativ Plural von Minute ist Minuten."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-vi-order",
+      "role": "exercise",
+      "blockId": "block-vor-in",
+      "label": { "en": "Word order", "fr": "Ordre des mots", "de": "Wortstellung" },
+      "pages": [
+        {
+          "pageId": "ex-vi-order-p",
+          "estimatedDurationS": 75,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in the right order.",
+            "fr": "Mettez les mots dans le bon ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "grammar_word_order",
+              "itemId": "vo-1",
+              "tokens": [
+                { "tokenId": "t-4", "text": "einem" },
+                { "tokenId": "t-1", "text": "Ich" },
+                { "tokenId": "t-7", "text": "Spanien" },
+                { "tokenId": "t-3", "text": "vor" },
+                { "tokenId": "t-8", "text": "." },
+                { "tokenId": "t-2", "text": "war" },
+                { "tokenId": "t-6", "text": "in" },
+                { "tokenId": "t-5", "text": "Monat" }
+              ],
+              "acceptedOrders": [
+                ["t-1", "t-2", "t-3", "t-4", "t-5", "t-6", "t-7", "t-8"],
+                ["t-1", "t-2", "t-6", "t-7", "t-3", "t-4", "t-5", "t-8"]
+              ],
+              "ruleIds": ["rule-vor"],
+              "answerExplanation": {
+                "en": "vor einem Monat names a past moment; it can also come after the place.",
+                "fr": "vor einem Monat désigne un moment passé ; il peut aussi suivre le lieu.",
+                "de": "vor einem Monat nennt einen vergangenen Zeitpunkt; es kann auch nach dem Ort stehen."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "vo-2",
+              "tokens": [
+                { "tokenId": "t-7", "text": "Wien" },
+                { "tokenId": "t-3", "text": "in" },
+                { "tokenId": "t-1", "text": "Wir" },
+                { "tokenId": "t-8", "text": "." },
+                { "tokenId": "t-5", "text": "Woche" },
+                { "tokenId": "t-2", "text": "fahren" },
+                { "tokenId": "t-6", "text": "nach" },
+                { "tokenId": "t-4", "text": "einer" }
+              ],
+              "acceptedOrders": [
+                ["t-1", "t-2", "t-3", "t-4", "t-5", "t-6", "t-7", "t-8"],
+                ["t-1", "t-2", "t-6", "t-7", "t-3", "t-4", "t-5", "t-8"]
+              ],
+              "ruleIds": ["rule-in"],
+              "answerExplanation": {
+                "en": "in einer Woche names a future moment; the time phrase can also come last.",
+                "fr": "in einer Woche désigne un moment futur ; l'indication de temps peut aussi venir à la fin.",
+                "de": "in einer Woche nennt einen zukünftigen Zeitpunkt; die Zeitangabe kann auch am Ende stehen."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "vo-3",
+              "tokens": [
+                { "tokenId": "t-5", "text": "Tagen" },
+                { "tokenId": "t-8", "text": "." },
+                { "tokenId": "t-1", "text": "Sie" },
+                { "tokenId": "t-7", "text": "da" },
+                { "tokenId": "t-3", "text": "in" },
+                { "tokenId": "t-6", "text": "wieder" },
+                { "tokenId": "t-2", "text": "ist" },
+                { "tokenId": "t-4", "text": "zwei" }
+              ],
+              "acceptedOrders": [["t-1", "t-2", "t-3", "t-4", "t-5", "t-6", "t-7", "t-8"]],
+              "ruleIds": ["rule-in"],
+              "answerExplanation": {
+                "en": "in zwei Tagen: the plural noun takes -n in the dative.",
+                "fr": "in zwei Tagen : le nom au pluriel prend -n au datif.",
+                "de": "in zwei Tagen: Das Nomen im Plural bekommt im Dativ -n."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-vi-spot",
+      "role": "exercise",
+      "blockId": "block-vor-in",
+      "label": { "en": "Error spotting 2", "fr": "Repérer l’erreur 2", "de": "Fehler finden 2" },
+      "pages": [
+        {
+          "pageId": "ex-vi-spot-p",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Find the wrong word and correct it.",
+            "fr": "Trouvez le mot faux et corrigez-le.",
+            "de": "Finde das falsche Wort und korrigiere es."
+          },
+          "items": [
+            {
+              "type": "grammar_error_spotter",
+              "itemId": "vs-1",
+              "tokens": [
+                { "tokenId": "t-1", "text": "Wir" },
+                { "tokenId": "t-2", "text": "waren" },
+                { "tokenId": "t-3", "text": "in" },
+                { "tokenId": "t-4", "text": "drei" },
+                { "tokenId": "t-5", "text": "Tagen" },
+                { "tokenId": "t-6", "text": "in" },
+                { "tokenId": "t-7", "text": "Rom" },
+                { "tokenId": "t-8", "text": "." }
+              ],
+              "faultyTokenId": "t-3",
+              "correction": { "mode": "type", "accepted": { "answers": ["vor"] }, "choices": [] },
+              "ruleIds": ["rule-vor"],
+              "answerExplanation": {
+                "en": "Waren is past, so the time phrase needs vor: vor drei Tagen.",
+                "fr": "Waren est au passé, donc l'indication de temps demande vor : vor drei Tagen.",
+                "de": "Waren ist Vergangenheit, also braucht die Zeitangabe vor: vor drei Tagen."
+              }
+            },
+            {
+              "type": "grammar_error_spotter",
+              "itemId": "vs-2",
+              "tokens": [
+                { "tokenId": "t-1", "text": "Der" },
+                { "tokenId": "t-2", "text": "Kurs" },
+                { "tokenId": "t-3", "text": "beginnt" },
+                { "tokenId": "t-4", "text": "in" },
+                { "tokenId": "t-5", "text": "eine" },
+                { "tokenId": "t-6", "text": "Woche" },
+                { "tokenId": "t-7", "text": "." }
+              ],
+              "faultyTokenId": "t-5",
+              "correction": { "mode": "type", "accepted": { "answers": ["einer"] }, "choices": [] },
+              "ruleIds": ["rule-in"],
+              "answerExplanation": {
+                "en": "After in with a time span the dative is used: einer Woche.",
+                "fr": "Après in avec une durée, on utilise le datif : einer Woche.",
+                "de": "Nach in mit einer Zeitspanne steht der Dativ: einer Woche."
               }
             }
           ]
@@ -812,8 +887,8 @@
       "pages": [
         {
           "pageId": "exam-seit",
-          "estimatedDurationS": 90,
-          "timeLimitS": 140,
+          "estimatedDurationS": 60,
+          "timeLimitS": 100,
           "instructions": {
             "en": "Type the missing words.",
             "fr": "Écrivez les mots manquants.",
@@ -823,65 +898,51 @@
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-seit-1",
-              "before": "Meine Eltern wohnen",
-              "after": "zehn Jahren in Ulm.",
-              "accepted": { "answers": ["seit"] },
+              "before": "",
+              "after": "wann arbeitet Lena schon hier?",
+              "accepted": { "answers": ["Seit", "seit"] },
               "hint": null,
               "ruleIds": ["rule-seit"],
               "answerExplanation": {
-                "en": "They still live there, so it is seit + present.",
-                "fr": "Ils y habitent encore, donc c'est seit + présent.",
-                "de": "Sie wohnen noch dort, also steht seit + Präsens."
+                "en": "Seit wann...? asks how long something has lasted.",
+                "fr": "Seit wann...? demande depuis combien de temps quelque chose dure.",
+                "de": "Seit wann...? fragt, wie lange etwas schon dauert."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-seit-2",
-              "before": "Ich arbeite seit",
-              "after": "Tag als Kellner.",
-              "accepted": { "answers": ["einem"] },
+              "before": "Ich wohne",
+              "after": "einem Jahr in Leipzig und bin noch immer gern hier.",
+              "accepted": { "answers": ["seit"] },
               "hint": null,
-              "ruleIds": ["rule-dative-endings"],
+              "ruleIds": ["rule-seit"],
               "answerExplanation": {
-                "en": "Der Tag is masculine, so the dative is einem Tag.",
-                "fr": "Der Tag est masculin, donc le datif est einem Tag.",
-                "de": "Der Tag ist maskulin, also heißt der Dativ einem Tag."
+                "en": "The situation still continues, so: seit einem Jahr.",
+                "fr": "La situation continue encore, donc : seit einem Jahr.",
+                "de": "Die Situation dauert noch an, also: seit einem Jahr."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-seit-3",
-              "before": "Der Hund ist seit",
-              "after": "Woche krank.",
-              "accepted": { "answers": ["einer"] },
-              "hint": null,
-              "ruleIds": ["rule-dative-endings"],
-              "answerExplanation": {
-                "en": "Die Woche is feminine, so the dative is einer Woche.",
-                "fr": "Die Woche est féminin, donc le datif est einer Woche.",
-                "de": "Die Woche ist feminin, also heißt der Dativ einer Woche."
-              }
-            },
-            {
-              "type": "grammar_gap_typing",
-              "itemId": "exam-seit-4",
-              "before": "Wir sind seit drei",
-              "after": "verheiratet.",
+              "before": "Sie lernt seit drei",
+              "after": "Chinesisch. (der Monat)",
               "accepted": { "answers": ["Monaten"] },
               "hint": null,
-              "ruleIds": ["rule-dative-endings"],
+              "ruleIds": ["rule-seit"],
               "answerExplanation": {
-                "en": "Plural nouns take -n in the dative: seit drei Monaten.",
-                "fr": "Au datif, les noms au pluriel prennent -n : seit drei Monaten.",
-                "de": "Nomen im Plural bekommen im Dativ ein -n: seit drei Monaten."
+                "en": "The dative plural of Monat is Monaten.",
+                "fr": "Le datif pluriel de Monat est Monaten.",
+                "de": "Der Dativ Plural von Monat ist Monaten."
               }
             }
           ]
         },
         {
-          "pageId": "exam-past-future",
-          "estimatedDurationS": 90,
-          "timeLimitS": 140,
+          "pageId": "exam-vor-in",
+          "estimatedDurationS": 80,
+          "timeLimitS": 130,
           "instructions": {
             "en": "Type the missing words.",
             "fr": "Écrivez les mots manquants.",
@@ -890,66 +951,66 @@
           "items": [
             {
               "type": "grammar_gap_typing",
-              "itemId": "exam-past-future-1",
-              "before": "Das Kind ist",
-              "after": "einer Stunde eingeschlafen.",
+              "itemId": "exam-vor-in-1",
+              "before": "Das Konzert war",
+              "after": "einer Woche, aber ich denke noch oft daran.",
               "accepted": { "answers": ["vor"] },
               "hint": null,
               "ruleIds": ["rule-vor"],
               "answerExplanation": {
-                "en": "The child fell asleep earlier: vor einer Stunde means an hour ago.",
-                "fr": "L'enfant s'est endormi plus tôt : vor einer Stunde signifie il y a une heure.",
-                "de": "Das Kind ist früher eingeschlafen: vor einer Stunde heißt, dass es eine Stunde zurückliegt."
+                "en": "The concert is in the past: vor einer Woche.",
+                "fr": "Le concert est passé : vor einer Woche.",
+                "de": "Das Konzert liegt in der Vergangenheit: vor einer Woche."
               }
             },
             {
               "type": "grammar_gap_typing",
-              "itemId": "exam-past-future-2",
-              "before": "Der Unterricht endet",
-              "after": "zehn Minuten.",
+              "itemId": "exam-vor-in-2",
+              "before": "Die Prüfung ist",
+              "after": "zehn Tagen, deshalb lerne ich jetzt viel.",
               "accepted": { "answers": ["in"] },
               "hint": null,
               "ruleIds": ["rule-in"],
               "answerExplanation": {
-                "en": "The lesson has not ended yet: in zehn Minuten means ten minutes from now.",
-                "fr": "Le cours n'est pas encore fini : in zehn Minuten signifie dans dix minutes.",
-                "de": "Der Unterricht ist noch nicht zu Ende: in zehn Minuten heißt zehn Minuten von jetzt an."
+                "en": "The exam is still to come: in zehn Tagen.",
+                "fr": "L'examen est à venir : in zehn Tagen.",
+                "de": "Die Prüfung kommt noch: in zehn Tagen."
               }
             },
             {
               "type": "grammar_gap_typing",
-              "itemId": "exam-past-future-3",
-              "before": "Sie hat vor drei",
-              "after": "ihre Prüfung gemacht.",
+              "itemId": "exam-vor-in-3",
+              "before": "Die Pause beginnt in einer",
+              "after": ". (die Stunde)",
+              "accepted": { "answers": ["Stunde"] },
+              "hint": null,
+              "ruleIds": ["rule-in"],
+              "answerExplanation": {
+                "en": "Feminine nouns keep their form in the dative: einer Stunde.",
+                "fr": "Les noms féminins gardent leur forme au datif : einer Stunde.",
+                "de": "Feminine Nomen bleiben im Dativ gleich: einer Stunde."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-vor-in-4",
+              "before": "Anna war vor drei",
+              "after": "in Paris. (die Woche)",
               "accepted": { "answers": ["Wochen"] },
               "hint": null,
-              "ruleIds": ["rule-vor", "rule-dative-endings"],
+              "ruleIds": ["rule-vor"],
               "answerExplanation": {
-                "en": "Plural nouns take -n in the dative: vor drei Wochen.",
-                "fr": "Au datif, les noms au pluriel prennent -n : vor drei Wochen.",
-                "de": "Nomen im Plural bekommen im Dativ ein -n: vor drei Wochen."
-              }
-            },
-            {
-              "type": "grammar_gap_typing",
-              "itemId": "exam-past-future-4",
-              "before": "Das Paket ist in zwei",
-              "after": "hier.",
-              "accepted": { "answers": ["Tagen"] },
-              "hint": null,
-              "ruleIds": ["rule-in", "rule-dative-endings"],
-              "answerExplanation": {
-                "en": "Plural nouns take -n in the dative: in zwei Tagen.",
-                "fr": "Au datif, les noms au pluriel prennent -n : in zwei Tagen.",
-                "de": "Nomen im Plural bekommen im Dativ ein -n: in zwei Tagen."
+                "en": "The dative plural of Woche is Wochen.",
+                "fr": "Le datif pluriel de Woche est Wochen.",
+                "de": "Der Dativ Plural von Woche ist Wochen."
               }
             }
           ]
         },
         {
           "pageId": "exam-order",
-          "estimatedDurationS": 90,
-          "timeLimitS": 150,
+          "estimatedDurationS": 75,
+          "timeLimitS": 120,
           "instructions": {
             "en": "Put the words in the right order.",
             "fr": "Mettez les mots dans le bon ordre.",
@@ -960,60 +1021,69 @@
               "type": "grammar_word_order",
               "itemId": "exam-order-1",
               "tokens": [
-                { "tokenId": "t-1", "text": "Spanisch" },
-                { "tokenId": "t-2", "text": "Er" },
-                { "tokenId": "t-3", "text": "seit" },
-                { "tokenId": "t-4", "text": "Wochen" },
-                { "tokenId": "t-5", "text": "lernt" },
-                { "tokenId": "t-6", "text": "drei" },
-                { "tokenId": "t-7", "text": "." }
+                { "tokenId": "t-5", "text": "drei" },
+                { "tokenId": "t-1", "text": "Mein" },
+                { "tokenId": "t-9", "text": "." },
+                { "tokenId": "t-7", "text": "in" },
+                { "tokenId": "t-3", "text": "wohnt" },
+                { "tokenId": "t-6", "text": "Jahren" },
+                { "tokenId": "t-2", "text": "Bruder" },
+                { "tokenId": "t-8", "text": "Köln" },
+                { "tokenId": "t-4", "text": "seit" }
               ],
-              "acceptedOrders": [["t-2", "t-5", "t-3", "t-6", "t-4", "t-1", "t-7"]],
-              "ruleIds": ["rule-seit", "rule-dative-endings"],
+              "acceptedOrders": [
+                ["t-1", "t-2", "t-3", "t-4", "t-5", "t-6", "t-7", "t-8", "t-9"],
+                ["t-1", "t-2", "t-3", "t-7", "t-8", "t-4", "t-5", "t-6", "t-9"]
+              ],
+              "ruleIds": ["rule-seit"],
               "answerExplanation": {
-                "en": "seit drei Wochen with the present verb lernt says how long it has lasted.",
-                "fr": "seit drei Wochen avec le verbe au présent lernt dit depuis combien de temps cela dure.",
-                "de": "seit drei Wochen mit dem Präsens lernt sagt, wie lange es schon dauert."
+                "en": "seit drei Jahren: the situation continues; the time phrase can also come last.",
+                "fr": "seit drei Jahren : la situation continue ; l'indication de temps peut aussi venir à la fin.",
+                "de": "seit drei Jahren: Die Situation dauert an; die Zeitangabe kann auch am Ende stehen."
               }
             },
             {
               "type": "grammar_word_order",
               "itemId": "exam-order-2",
               "tokens": [
-                { "tokenId": "t-1", "text": "krank" },
-                { "tokenId": "t-2", "text": "Ich" },
-                { "tokenId": "t-3", "text": "Monaten" },
+                { "tokenId": "t-5", "text": "zwei" },
+                { "tokenId": "t-2", "text": "Spiel" },
+                { "tokenId": "t-7", "text": "." },
                 { "tokenId": "t-4", "text": "vor" },
-                { "tokenId": "t-5", "text": "war" },
-                { "tokenId": "t-6", "text": "zwei" },
-                { "tokenId": "t-7", "text": "." }
+                { "tokenId": "t-1", "text": "Das" },
+                { "tokenId": "t-6", "text": "Stunden" },
+                { "tokenId": "t-3", "text": "war" }
               ],
-              "acceptedOrders": [["t-2", "t-5", "t-4", "t-6", "t-3", "t-1", "t-7"]],
-              "ruleIds": ["rule-vor", "rule-dative-endings"],
+              "acceptedOrders": [["t-1", "t-2", "t-3", "t-4", "t-5", "t-6", "t-7"]],
+              "ruleIds": ["rule-vor"],
               "answerExplanation": {
-                "en": "vor zwei Monaten means two months ago, with the plural ending -n.",
-                "fr": "vor zwei Monaten signifie il y a deux mois, avec la terminaison -n du pluriel.",
-                "de": "vor zwei Monaten heißt, dass es zwei Monate zurückliegt, mit der Pluralendung -n."
+                "en": "vor zwei Stunden: a moment in the past.",
+                "fr": "vor zwei Stunden : un moment du passé.",
+                "de": "vor zwei Stunden: ein Zeitpunkt in der Vergangenheit."
               }
             },
             {
               "type": "grammar_word_order",
               "itemId": "exam-order-3",
               "tokens": [
-                { "tokenId": "t-1", "text": "Minuten" },
-                { "tokenId": "t-2", "text": "beginnt" },
-                { "tokenId": "t-3", "text": "Der" },
+                { "tokenId": "t-6", "text": "Woche" },
+                { "tokenId": "t-8", "text": "." },
+                { "tokenId": "t-2", "text": "sehen" },
+                { "tokenId": "t-5", "text": "einer" },
+                { "tokenId": "t-1", "text": "Wir" },
+                { "tokenId": "t-7", "text": "wieder" },
                 { "tokenId": "t-4", "text": "in" },
-                { "tokenId": "t-5", "text": "Film" },
-                { "tokenId": "t-6", "text": "zehn" },
-                { "tokenId": "t-7", "text": "." }
+                { "tokenId": "t-3", "text": "uns" }
               ],
-              "acceptedOrders": [["t-3", "t-5", "t-2", "t-4", "t-6", "t-1", "t-7"]],
-              "ruleIds": ["rule-in", "rule-dative-endings"],
+              "acceptedOrders": [
+                ["t-1", "t-2", "t-3", "t-4", "t-5", "t-6", "t-7", "t-8"],
+                ["t-1", "t-2", "t-3", "t-7", "t-4", "t-5", "t-6", "t-8"]
+              ],
+              "ruleIds": ["rule-in"],
               "answerExplanation": {
-                "en": "in zehn Minuten means ten minutes from now, with the plural ending -n.",
-                "fr": "in zehn Minuten signifie dans dix minutes, avec la terminaison -n du pluriel.",
-                "de": "in zehn Minuten heißt zehn Minuten von jetzt an, mit der Pluralendung -n."
+                "en": "in einer Woche: a moment in the future; wieder may come before it.",
+                "fr": "in einer Woche : un moment du futur ; wieder peut venir avant.",
+                "de": "in einer Woche: ein Zeitpunkt in der Zukunft; wieder kann davor stehen."
               }
             }
           ]

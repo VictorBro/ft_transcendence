@@ -6,19 +6,19 @@
   "locales": ["en", "fr", "de"],
   "title": "Regelmäßige Verben im Präsens",
   "objective": {
-    "en": "Conjugate regular verbs in the present: -e, -st, -t, -en, plus -est and -et after -t and -d, and only -t after -s, -ß and -z.",
-    "fr": "Conjuguer les verbes réguliers au présent : -e, -st, -t, -en, puis -est et -et après -t et -d, et seulement -t après -s, -ß et -z.",
-    "de": "Regelmäßige Verben im Präsens konjugieren: -e, -st, -t, -en, dazu -est und -et nach -t und -d und nur -t nach -s, -ß und -z."
+    "en": "Conjugate regular verbs in the present tense: -e, -st, -t, -en, with -est and -et after t and d, and only -t after s, ß and z.",
+    "fr": "Conjuguer les verbes réguliers au présent : -e, -st, -t, -en, avec -est et -et après t et d, et seulement -t après s, ß et z.",
+    "de": "Regelmäßige Verben im Präsens konjugieren: ich wohne, du arbeitest, du heißt, er arbeitet, mit den Endungen -e, -st, -t, -en, -est und -et."
   },
-  "estimatedMinutes": 16,
+  "estimatedMinutes": 14,
   "provenance": {
     "generator": "ft lessons:author",
     "model": "sonnet",
-    "promptVersion": "author-2",
-    "generatedAt": "2026-11-01T20:17:51.214Z",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:26:20.648Z",
     "inputHashes": {
       "outline": "8cceb639c384c32b03e07b4c9d2ad50f68d80764e7cf46653d96458e3c595c72",
-      "brief": "b2bf904e171521301b81f8fd5876231e87b180bdac8b0fc06103d4d436293ee8"
+      "brief": "d170fe527ca2849afafc25ff9746361b831c01c9af4a074dbe76c37a644d2c29"
     }
   },
   "kind": "grammar",
@@ -29,14 +29,14 @@
       "role": "explanation",
       "blockId": "block-endings",
       "label": {
-        "en": "Regular endings: -e, -st, -t, -en",
+        "en": "The regular endings: -e, -st, -t, -en",
         "fr": "Les terminaisons régulières : -e, -st, -t, -en",
-        "de": "Die regulären Endungen: -e, -st, -t, -en"
+        "de": "Die regelmäßigen Endungen: -e, -st, -t, -en"
       },
       "pages": [
         {
           "pageId": "block-endings-explanation",
-          "estimatedDurationS": 90,
+          "estimatedDurationS": 120,
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
@@ -49,39 +49,45 @@
               "itemId": "block-endings-explanation",
               "ruleIds": ["rule-endings"],
               "heading": {
-                "en": "Stem + ending",
-                "fr": "Radical + terminaison",
-                "de": "Stamm + Endung"
+                "en": "Stem and ending",
+                "fr": "Radical et terminaison",
+                "de": "Stamm und Endung"
               },
               "text": {
-                "en": "Most verbs are **regular**: take the stem (the infinitive without `-en`) and add the ending. Example: `wohnen` → stem `wohn-`.\n\n- `ich wohne`, `du wohnst`, `er/sie/es wohnt`\n- `wir wohnen`, `ihr wohnt`, `sie/Sie wohnen`\n\nWith `wir` and `sie/Sie` the verb looks like the infinitive. It works the same for `lernen`: `ich lerne`, `du lernst`.",
-                "fr": "La plupart des verbes sont **réguliers** : on prend le radical (l'infinitif sans `-en`) et on ajoute la terminaison. Exemple : `wohnen` → radical `wohn-`.\n\n- `ich wohne`, `du wohnst`, `er/sie/es wohnt`\n- `wir wohnen`, `ihr wohnt`, `sie/Sie wohnen`\n\nAvec `wir` et `sie/Sie`, le verbe ressemble à l'infinitif. C'est pareil pour `lernen` : `ich lerne`, `du lernst`.",
-                "de": "Die meisten Verben sind **regelmäßig**: Du nimmst den Stamm (den Infinitiv ohne `-en`) und hängst die Endung an. Beispiel: `wohnen` → Stamm `wohn-`.\n\n- `ich wohne`, `du wohnst`, `er/sie/es wohnt`\n- `wir wohnen`, `ihr wohnt`, `sie/Sie wohnen`\n\nBei `wir` und `sie/Sie` sieht das Verb wie der Infinitiv aus. Bei `lernen` ist es genauso: `ich lerne`, `du lernst`."
+                "en": "Regular German verbs have a **stem** and an **ending**. Remove **-en** from the infinitive `wohnen` and add the ending that fits the pronoun: `ich wohne`, `du wohnst`, `er/sie/es wohnt`.\n\nIn the plural you say `wir wohnen`, `ihr wohnt` and `sie wohnen`. The polite `Sie wohnen` has the same form as `sie wohnen`.\n\n- `wir` and `sie/Sie` keep the infinitive form: `wir lernen`, `Sie lernen`.\n- `er/sie/es` and `ihr` both end in **-t**: `er lernt`, `ihr lernt`.\n- After `du` the ending is **-st**: not `du wohnt`, but `du wohnst`.",
+                "fr": "Les verbes réguliers allemands ont un **radical** et une **terminaison**. Enlevez **-en** de l'infinitif `wohnen` et ajoutez la terminaison qui correspond au pronom : `ich wohne`, `du wohnst`, `er/sie/es wohnt`.\n\nAu pluriel, on dit `wir wohnen`, `ihr wohnt` et `sie wohnen`. La forme de politesse `Sie wohnen` est identique à `sie wohnen`.\n\n- `wir` et `sie/Sie` gardent la forme de l'infinitif : `wir lernen`, `Sie lernen`.\n- `er/sie/es` et `ihr` se terminent tous deux par **-t** : `er lernt`, `ihr lernt`.\n- Après `du`, la terminaison est **-st** : pas `du wohnt`, mais `du wohnst`.",
+                "de": "Regelmäßige Verben haben einen **Stamm** und eine **Endung**. Streiche **-en** vom Infinitiv `wohnen` und hänge die Endung an, die zum Pronomen passt: `ich wohne`, `du wohnst`, `er/sie/es wohnt`.\n\nIm Plural sagt man `wir wohnen`, `ihr wohnt` und `sie wohnen`. Die Höflichkeitsform `Sie wohnen` sieht aus wie `sie wohnen`.\n\n- `wir` und `sie/Sie` behalten die Form des Infinitivs: `wir lernen`, `Sie lernen`.\n- `er/sie/es` und `ihr` enden beide auf **-t**: `er lernt`, `ihr lernt`.\n- Nach `du` steht die Endung **-st**: nicht `du wohnt`, sondern `du wohnst`."
               },
               "formTable": [
                 { "subject": "ich", "form": "wohne", "example": "Ich wohne in Wien." },
-                { "subject": "du", "form": "wohnst", "example": "Du wohnst in Graz." },
-                { "subject": "er / sie / es", "form": "wohnt", "example": "Sie wohnt in Bern." },
-                { "subject": "wir", "form": "wohnen", "example": "Wir wohnen in Köln." },
-                { "subject": "ihr", "form": "wohnt", "example": "Ihr wohnt in Linz." },
-                { "subject": "sie / Sie", "form": "wohnen", "example": "Sie wohnen in Zürich." }
+                { "subject": "du", "form": "wohnst", "example": "Du wohnst in Berlin." },
+                { "subject": "er / sie / es", "form": "wohnt", "example": "Sie wohnt in Hamburg." },
+                { "subject": "wir", "form": "wohnen", "example": "Wir wohnen in Bonn." },
+                { "subject": "ihr", "form": "wohnt", "example": "Ihr wohnt in Köln." },
+                { "subject": "sie / Sie", "form": "wohnen", "example": "Sie wohnen in Hamburg." }
               ],
               "examples": [
                 {
-                  "text": "Ich lerne Deutsch.",
-                  "translation": { "en": "I am learning German.", "fr": "J'apprends l'allemand." }
+                  "text": "Ich wohne in Wien.",
+                  "translation": { "en": "I live in Vienna.", "fr": "J'habite à Vienne." }
                 },
                 {
-                  "text": "Du wohnst in Berlin.",
-                  "translation": { "en": "You live in Berlin.", "fr": "Tu habites à Berlin." }
+                  "text": "Du lernst Spanisch.",
+                  "translation": {
+                    "en": "You are learning Spanish.",
+                    "fr": "Tu apprends l'espagnol."
+                  }
                 },
                 {
-                  "text": "Er kommt aus Polen.",
-                  "translation": { "en": "He comes from Poland.", "fr": "Il vient de Pologne." }
+                  "text": "Wir lernen zusammen.",
+                  "translation": {
+                    "en": "We are learning together.",
+                    "fr": "Nous apprenons ensemble."
+                  }
                 },
                 {
-                  "text": "Wir spielen Tennis.",
-                  "translation": { "en": "We play tennis.", "fr": "Nous jouons au tennis." }
+                  "text": "Ihr wohnt in Hamburg.",
+                  "translation": { "en": "You live in Hamburg.", "fr": "Vous habitez à Hambourg." }
                 }
               ]
             }
@@ -90,7 +96,279 @@
       ]
     },
     {
-      "id": "ex-b1-match",
+      "id": "ex-end-choice",
+      "role": "exercise",
+      "blockId": "block-endings",
+      "label": {
+        "en": "Multiple-choice gaps 1",
+        "fr": "Phrases à trous à choix multiple 1",
+        "de": "Lücken mit Auswahl 1"
+      },
+      "pages": [
+        {
+          "pageId": "ex-end-choice-1",
+          "estimatedDurationS": 12,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-end-choice-1",
+              "before": "Ich",
+              "after": "in Berlin.",
+              "choices": [
+                { "choiceId": "c-1", "text": "wohnst" },
+                { "choiceId": "c-2", "text": "wohnt" },
+                { "choiceId": "c-3", "text": "wohne" },
+                { "choiceId": "c-4", "text": "wohnen" }
+              ],
+              "answerChoiceId": "c-3",
+              "hint": null,
+              "ruleIds": ["rule-endings"],
+              "answerExplanation": {
+                "en": "With ich, the verb ends in -e: ich wohne.",
+                "fr": "Avec ich, le verbe se termine par -e : ich wohne.",
+                "de": "Zu ich gehört die Endung -e: ich wohne."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-end-choice-2",
+          "estimatedDurationS": 12,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-end-choice-2",
+              "before": "Du",
+              "after": "Deutsch.",
+              "choices": [
+                { "choiceId": "c-1", "text": "lerne" },
+                { "choiceId": "c-2", "text": "lernt" },
+                { "choiceId": "c-3", "text": "lernen" },
+                { "choiceId": "c-4", "text": "lernst" }
+              ],
+              "answerChoiceId": "c-4",
+              "hint": null,
+              "ruleIds": ["rule-endings"],
+              "answerExplanation": {
+                "en": "With du, the ending is -st: du lernst.",
+                "fr": "Avec du, la terminaison est -st : du lernst.",
+                "de": "Zu du gehört die Endung -st: du lernst."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-end-choice-3",
+          "estimatedDurationS": 12,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-end-choice-3",
+              "before": "Wir",
+              "after": "aus Polen.",
+              "choices": [
+                { "choiceId": "c-1", "text": "komme" },
+                { "choiceId": "c-2", "text": "kommst" },
+                { "choiceId": "c-3", "text": "kommt" },
+                { "choiceId": "c-4", "text": "kommen" }
+              ],
+              "answerChoiceId": "c-4",
+              "hint": null,
+              "ruleIds": ["rule-endings"],
+              "answerExplanation": {
+                "en": "With wir, the verb keeps the infinitive form: wir kommen.",
+                "fr": "Avec wir, le verbe garde la forme de l'infinitif : wir kommen.",
+                "de": "Zu wir gehört die Form des Infinitivs: wir kommen."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-end-choice-4",
+          "estimatedDurationS": 12,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-end-choice-4",
+              "before": "Er",
+              "after": "Fußball.",
+              "choices": [
+                { "choiceId": "c-1", "text": "spiele" },
+                { "choiceId": "c-2", "text": "spielst" },
+                { "choiceId": "c-3", "text": "spielt" },
+                { "choiceId": "c-4", "text": "spielen" }
+              ],
+              "answerChoiceId": "c-3",
+              "hint": null,
+              "ruleIds": ["rule-endings"],
+              "answerExplanation": {
+                "en": "With er, sie, es, the ending is -t: er spielt.",
+                "fr": "Avec er, sie, es, la terminaison est -t : er spielt.",
+                "de": "Zu er, sie, es gehört die Endung -t: er spielt."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-end-typing",
+      "role": "exercise",
+      "blockId": "block-endings",
+      "label": {
+        "en": "Typed gaps 1",
+        "fr": "Phrases à trous à écrire 1",
+        "de": "Lücken zum Schreiben 1"
+      },
+      "pages": [
+        {
+          "pageId": "ex-end-typing-1",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-end-typing-1",
+              "before": "Ich",
+              "after": "gern Tee.",
+              "accepted": { "answers": ["koche"] },
+              "hint": {
+                "en": "kochen, 1st person singular",
+                "fr": "kochen, 1re personne du singulier",
+                "de": "kochen, 1. Person Singular"
+              },
+              "ruleIds": ["rule-endings"],
+              "answerExplanation": {
+                "en": "With ich, the verb ends in -e: ich koche.",
+                "fr": "Avec ich, le verbe se termine par -e : ich koche.",
+                "de": "Zu ich gehört die Endung -e: ich koche."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-end-typing-2",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-end-typing-2",
+              "before": "Du",
+              "after": "in Wien.",
+              "accepted": { "answers": ["wohnst"] },
+              "hint": {
+                "en": "wohnen, 2nd person singular",
+                "fr": "wohnen, 2e personne du singulier",
+                "de": "wohnen, 2. Person Singular"
+              },
+              "ruleIds": ["rule-endings"],
+              "answerExplanation": {
+                "en": "With du, the ending is -st: du wohnst.",
+                "fr": "Avec du, la terminaison est -st : du wohnst.",
+                "de": "Zu du gehört die Endung -st: du wohnst."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-end-typing-3",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-end-typing-3",
+              "before": "Lena",
+              "after": "Deutsch.",
+              "accepted": { "answers": ["lernt"] },
+              "hint": {
+                "en": "lernen, 3rd person singular",
+                "fr": "lernen, 3e personne du singulier",
+                "de": "lernen, 3. Person Singular"
+              },
+              "ruleIds": ["rule-endings"],
+              "answerExplanation": {
+                "en": "Lena is 3rd person singular (like sie), so the ending is -t: lernt.",
+                "fr": "Lena est à la 3e personne du singulier (comme sie) : la terminaison est -t, lernt.",
+                "de": "Lena ist 3. Person Singular (wie sie), also endet das Verb auf -t: lernt."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-end-typing-4",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-end-typing-4",
+              "before": "Wir",
+              "after": "Fußball.",
+              "accepted": { "answers": ["spielen"] },
+              "hint": {
+                "en": "spielen, 1st person plural",
+                "fr": "spielen, 1re personne du pluriel",
+                "de": "spielen, 1. Person Plural"
+              },
+              "ruleIds": ["rule-endings"],
+              "answerExplanation": {
+                "en": "With wir, the verb keeps the infinitive form: wir spielen.",
+                "fr": "Avec wir, le verbe garde la forme de l'infinitif : wir spielen.",
+                "de": "Zu wir gehört die Form des Infinitivs: wir spielen."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-end-persons",
       "role": "exercise",
       "blockId": "block-endings",
       "label": {
@@ -100,7 +378,7 @@
       },
       "pages": [
         {
-          "pageId": "ex-b1-match-1",
+          "pageId": "ex-end-persons-1",
           "estimatedDurationS": 60,
           "timeLimitS": null,
           "instructions": {
@@ -111,295 +389,77 @@
           "items": [
             {
               "type": "grammar_person_matching",
-              "itemId": "ex-b1-match-1",
+              "itemId": "ex-end-persons-1",
               "ruleIds": ["rule-endings"],
               "mode": "forms",
               "rows": [
                 {
                   "person": "1sg",
-                  "pronoun": "ich (wohnen)",
+                  "pronoun": "ich",
                   "native": null,
                   "answer": "wohne",
                   "answerExplanation": {
-                    "en": "Stem wohn- + -e: ich wohne.",
-                    "fr": "Radical wohn- + -e : ich wohne.",
-                    "de": "Stamm wohn- + -e: ich wohne."
+                    "en": "With ich, the verb ends in -e: ich wohne.",
+                    "fr": "Avec ich, le verbe se termine par -e : ich wohne.",
+                    "de": "Zu ich gehört die Endung -e: ich wohne."
                   }
                 },
                 {
                   "person": "2sg",
-                  "pronoun": "du (wohnen)",
+                  "pronoun": "du",
                   "native": null,
                   "answer": "wohnst",
                   "answerExplanation": {
-                    "en": "Stem wohn- + -st: du wohnst.",
-                    "fr": "Radical wohn- + -st : du wohnst.",
-                    "de": "Stamm wohn- + -st: du wohnst."
+                    "en": "With du, the ending is -st: du wohnst.",
+                    "fr": "Avec du, la terminaison est -st : du wohnst.",
+                    "de": "Zu du gehört die Endung -st: du wohnst."
                   }
                 },
                 {
                   "person": "3sg",
-                  "pronoun": "er / sie / es (wohnen)",
+                  "pronoun": "er / sie / es",
                   "native": null,
                   "answer": "wohnt",
                   "answerExplanation": {
-                    "en": "Stem wohn- + -t: er wohnt.",
-                    "fr": "Radical wohn- + -t : er wohnt.",
-                    "de": "Stamm wohn- + -t: er wohnt."
+                    "en": "With er, sie, es, the ending is -t: er wohnt.",
+                    "fr": "Avec er, sie, es, la terminaison est -t : er wohnt.",
+                    "de": "Zu er, sie, es gehört die Endung -t: er wohnt."
                   }
                 },
                 {
                   "person": "1pl",
-                  "pronoun": "wir (wohnen)",
+                  "pronoun": "wir",
                   "native": null,
                   "answer": "wohnen",
                   "answerExplanation": {
-                    "en": "Stem wohn- + -en: wir wohnen, like the infinitive.",
-                    "fr": "Radical wohn- + -en : wir wohnen, comme l'infinitif.",
-                    "de": "Stamm wohn- + -en: wir wohnen, wie der Infinitiv."
+                    "en": "With wir, the verb keeps the infinitive form: wir wohnen.",
+                    "fr": "Avec wir, le verbe garde la forme de l'infinitif : wir wohnen.",
+                    "de": "Zu wir gehört die Form des Infinitivs: wir wohnen."
                   }
                 },
                 {
                   "person": "2pl",
-                  "pronoun": "ihr (wohnen)",
+                  "pronoun": "ihr",
                   "native": null,
                   "answer": "wohnt",
                   "answerExplanation": {
-                    "en": "Stem wohn- + -t: ihr wohnt.",
-                    "fr": "Radical wohn- + -t : ihr wohnt.",
-                    "de": "Stamm wohn- + -t: ihr wohnt."
+                    "en": "With ihr, the ending is -t: ihr wohnt.",
+                    "fr": "Avec ihr, la terminaison est -t : ihr wohnt.",
+                    "de": "Zu ihr gehört die Endung -t: ihr wohnt."
                   }
                 },
                 {
                   "person": "3pl",
-                  "pronoun": "sie / Sie (wohnen)",
+                  "pronoun": "sie / Sie",
                   "native": null,
                   "answer": "wohnen",
                   "answerExplanation": {
-                    "en": "Stem wohn- + -en: sie/Sie wohnen, like the infinitive.",
-                    "fr": "Radical wohn- + -en : sie/Sie wohnen, comme l'infinitif.",
-                    "de": "Stamm wohn- + -en: sie/Sie wohnen, wie der Infinitiv."
+                    "en": "With sie and Sie, the verb keeps the infinitive form: sie wohnen.",
+                    "fr": "Avec sie et Sie, le verbe garde la forme de l'infinitif : sie wohnen.",
+                    "de": "Zu sie und Sie gehört die Form des Infinitivs: sie wohnen."
                   }
                 }
               ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "ex-b1-choice",
-      "role": "exercise",
-      "blockId": "block-endings",
-      "label": {
-        "en": "Multiple-choice gaps 1",
-        "fr": "Phrases à trous à choix multiple 1",
-        "de": "Lücken mit Auswahl 1"
-      },
-      "pages": [
-        {
-          "pageId": "ex-b1-choice-1",
-          "estimatedDurationS": 60,
-          "timeLimitS": null,
-          "instructions": {
-            "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
-            "de": "Wähle das Wort, das den Satz ergänzt."
-          },
-          "items": [
-            {
-              "type": "grammar_gap_choice",
-              "itemId": "ex-b1-choice-1",
-              "before": "Ich",
-              "after": "in Hamburg.",
-              "choices": [
-                { "choiceId": "c-1", "text": "wohnst" },
-                { "choiceId": "c-2", "text": "wohne" },
-                { "choiceId": "c-3", "text": "wohnt" },
-                { "choiceId": "c-4", "text": "wohnen" }
-              ],
-              "answerChoiceId": "c-2",
-              "hint": { "en": "wohnen", "fr": "wohnen", "de": "wohnen" },
-              "ruleIds": ["rule-endings"],
-              "answerExplanation": {
-                "en": "Ich takes -e: ich wohne.",
-                "fr": "Ich prend -e : ich wohne.",
-                "de": "Zu ich gehört -e: ich wohne."
-              }
-            },
-            {
-              "type": "grammar_gap_choice",
-              "itemId": "ex-b1-choice-2",
-              "before": "Du",
-              "after": "Deutsch.",
-              "choices": [
-                { "choiceId": "c-1", "text": "lerne" },
-                { "choiceId": "c-2", "text": "lernt" },
-                { "choiceId": "c-3", "text": "lernst" },
-                { "choiceId": "c-4", "text": "lernen" }
-              ],
-              "answerChoiceId": "c-3",
-              "hint": { "en": "lernen", "fr": "lernen", "de": "lernen" },
-              "ruleIds": ["rule-endings"],
-              "answerExplanation": {
-                "en": "Du takes -st: du lernst.",
-                "fr": "Du prend -st : du lernst.",
-                "de": "Zu du gehört -st: du lernst."
-              }
-            },
-            {
-              "type": "grammar_gap_choice",
-              "itemId": "ex-b1-choice-3",
-              "before": "Anna",
-              "after": "aus Italien.",
-              "choices": [
-                { "choiceId": "c-1", "text": "komme" },
-                { "choiceId": "c-2", "text": "kommst" },
-                { "choiceId": "c-3", "text": "kommen" },
-                { "choiceId": "c-4", "text": "kommt" }
-              ],
-              "answerChoiceId": "c-4",
-              "hint": { "en": "kommen", "fr": "kommen", "de": "kommen" },
-              "ruleIds": ["rule-endings"],
-              "answerExplanation": {
-                "en": "Anna is like er/sie/es: the ending is -t, so kommt.",
-                "fr": "Anna correspond à er/sie/es : la terminaison est -t, donc kommt.",
-                "de": "Anna entspricht er/sie/es: Die Endung ist -t, also kommt."
-              }
-            },
-            {
-              "type": "grammar_gap_choice",
-              "itemId": "ex-b1-choice-4",
-              "before": "Wir",
-              "after": "jeden Tag Fußball.",
-              "choices": [
-                { "choiceId": "c-1", "text": "spiele" },
-                { "choiceId": "c-2", "text": "spielst" },
-                { "choiceId": "c-3", "text": "spielt" },
-                { "choiceId": "c-4", "text": "spielen" }
-              ],
-              "answerChoiceId": "c-4",
-              "hint": { "en": "spielen", "fr": "spielen", "de": "spielen" },
-              "ruleIds": ["rule-endings"],
-              "answerExplanation": {
-                "en": "Wir takes -en: wir spielen.",
-                "fr": "Wir prend -en : wir spielen.",
-                "de": "Zu wir gehört -en: wir spielen."
-              }
-            },
-            {
-              "type": "grammar_gap_choice",
-              "itemId": "ex-b1-choice-5",
-              "before": "Ihr",
-              "after": "in Wien.",
-              "choices": [
-                { "choiceId": "c-1", "text": "wohnt" },
-                { "choiceId": "c-2", "text": "wohne" },
-                { "choiceId": "c-3", "text": "wohnst" },
-                { "choiceId": "c-4", "text": "wohnen" }
-              ],
-              "answerChoiceId": "c-1",
-              "hint": { "en": "wohnen", "fr": "wohnen", "de": "wohnen" },
-              "ruleIds": ["rule-endings"],
-              "answerExplanation": {
-                "en": "Ihr takes -t: ihr wohnt.",
-                "fr": "Ihr prend -t : ihr wohnt.",
-                "de": "Zu ihr gehört -t: ihr wohnt."
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "ex-b1-typing",
-      "role": "exercise",
-      "blockId": "block-endings",
-      "label": {
-        "en": "Typed gaps 1",
-        "fr": "Phrases à trous à écrire 1",
-        "de": "Lücken zum Schreiben 1"
-      },
-      "pages": [
-        {
-          "pageId": "ex-b1-typing-1",
-          "estimatedDurationS": 75,
-          "timeLimitS": null,
-          "instructions": {
-            "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
-            "de": "Schreib die fehlenden Wörter."
-          },
-          "items": [
-            {
-              "type": "grammar_gap_typing",
-              "itemId": "ex-b1-typing-1",
-              "before": "Ich",
-              "after": "(lernen) Englisch.",
-              "accepted": { "answers": ["lerne"] },
-              "hint": { "en": "ending -e", "fr": "terminaison -e", "de": "Endung -e" },
-              "ruleIds": ["rule-endings"],
-              "answerExplanation": {
-                "en": "Ich takes -e: ich lerne.",
-                "fr": "Ich prend -e : ich lerne.",
-                "de": "Zu ich gehört -e: ich lerne."
-              }
-            },
-            {
-              "type": "grammar_gap_typing",
-              "itemId": "ex-b1-typing-2",
-              "before": "Du",
-              "after": "(wohnen) in Wien.",
-              "accepted": { "answers": ["wohnst"] },
-              "hint": { "en": "ending -st", "fr": "terminaison -st", "de": "Endung -st" },
-              "ruleIds": ["rule-endings"],
-              "answerExplanation": {
-                "en": "Du takes -st: du wohnst.",
-                "fr": "Du prend -st : du wohnst.",
-                "de": "Zu du gehört -st: du wohnst."
-              }
-            },
-            {
-              "type": "grammar_gap_typing",
-              "itemId": "ex-b1-typing-3",
-              "before": "Er",
-              "after": "(kommen) aus Spanien.",
-              "accepted": { "answers": ["kommt"] },
-              "hint": { "en": "ending -t", "fr": "terminaison -t", "de": "Endung -t" },
-              "ruleIds": ["rule-endings"],
-              "answerExplanation": {
-                "en": "Er takes -t: er kommt.",
-                "fr": "Er prend -t : er kommt.",
-                "de": "Zu er gehört -t: er kommt."
-              }
-            },
-            {
-              "type": "grammar_gap_typing",
-              "itemId": "ex-b1-typing-4",
-              "before": "Wir",
-              "after": "(spielen) Gitarre.",
-              "accepted": { "answers": ["spielen"] },
-              "hint": { "en": "ending -en", "fr": "terminaison -en", "de": "Endung -en" },
-              "ruleIds": ["rule-endings"],
-              "answerExplanation": {
-                "en": "Wir takes -en: wir spielen.",
-                "fr": "Wir prend -en : wir spielen.",
-                "de": "Zu wir gehört -en: wir spielen."
-              }
-            },
-            {
-              "type": "grammar_gap_typing",
-              "itemId": "ex-b1-typing-5",
-              "before": "Ihr",
-              "after": "(lernen) Französisch.",
-              "accepted": { "answers": ["lernt"] },
-              "hint": { "en": "ending -t", "fr": "terminaison -t", "de": "Endung -t" },
-              "ruleIds": ["rule-endings"],
-              "answerExplanation": {
-                "en": "Ihr takes -t: ihr lernt.",
-                "fr": "Ihr prend -t : ihr lernt.",
-                "de": "Zu ihr gehört -t: ihr lernt."
-              }
             }
           ]
         }
@@ -410,9 +470,9 @@
       "role": "explanation",
       "blockId": "block-et-s",
       "label": {
-        "en": "After -t, -d, -s, -ß, -z",
-        "fr": "Après -t, -d, -s, -ß, -z",
-        "de": "Nach -t, -d, -s, -ß, -z"
+        "en": "Special stems: t, d and s, ß, z",
+        "fr": "Radicaux particuliers : t, d et s, ß, z",
+        "de": "Besondere Stämme: t, d und s, ß, z"
       },
       "pages": [
         {
@@ -428,70 +488,48 @@
             {
               "type": "grammar_explanation",
               "itemId": "block-et-s-explanation",
-              "ruleIds": ["rule-et-ending", "rule-s-sound"],
+              "ruleIds": ["rule-et-endings", "rule-s-sounds"],
               "heading": {
-                "en": "Extra e, or no s",
-                "fr": "Un e en plus, ou pas de s",
-                "de": "Ein e mehr oder kein s"
+                "en": "Stems in t, d and s, ß, z",
+                "fr": "Radicaux en t, d et s, ß, z",
+                "de": "Stämme auf t, d und s, ß, z"
               },
               "text": {
-                "en": "If the stem ends in `-t` or `-d`, the ending `-st` would be hard to say. So an **e** is added: `-est` and `-et`.\n\n- `arbeiten` → `du arbeitest`, `er arbeitet`, `ihr arbeitet`\n- `warten` → `du wartest`; `finden` → `du findest`, `ihr findet`\n\nIf the stem ends in `-s`, `-ß` or `-z`, the **s** of the ending `-st` is dropped. The du form then ends only in `-t`: `heißen` → `du heißt`, `tanzen` → `du tanzt`, `reisen` → `du reist`.\n\nWith `ich`, `wir` and `sie/Sie` nothing changes: `ich arbeite`, `wir arbeiten`.",
-                "fr": "Si le radical se termine par `-t` ou `-d`, la terminaison `-st` serait difficile à prononcer. On ajoute donc un **e** : `-est` et `-et`.\n\n- `arbeiten` → `du arbeitest`, `er arbeitet`, `ihr arbeitet`\n- `warten` → `du wartest` ; `finden` → `du findest`, `ihr findet`\n\nSi le radical se termine par `-s`, `-ß` ou `-z`, le **s** de la terminaison `-st` disparaît. La forme en du se termine alors seulement par `-t` : `heißen` → `du heißt`, `tanzen` → `du tanzt`, `reisen` → `du reist`.\n\nAvec `ich`, `wir` et `sie/Sie`, rien ne change : `ich arbeite`, `wir arbeiten`.",
-                "de": "Endet der Stamm auf `-t` oder `-d`, wäre die Endung `-st` schwer zu sprechen. Darum kommt ein **e** dazu: `-est` und `-et`.\n\n- `arbeiten` → `du arbeitest`, `er arbeitet`, `ihr arbeitet`\n- `warten` → `du wartest`; `finden` → `du findest`, `ihr findet`\n\nEndet der Stamm auf `-s`, `-ß` oder `-z`, fällt das **s** der Endung `-st` weg. Die du-Form endet dann nur auf `-t`: `heißen` → `du heißt`, `tanzen` → `du tanzt`, `reisen` → `du reist`.\n\nBei `ich`, `wir` und `sie/Sie` ändert sich nichts: `ich arbeite`, `wir arbeiten`."
+                "en": "After a stem ending in **t** or **d** the endings get an extra **e**: `arbeiten` becomes `du arbeitest`, `er arbeitet` and `ihr arbeitet`. The same goes for `finden`: `du findest`, `er findet`.\n\nAfter **s**, **ß** or **z** the ending **-st** would be hard to say, so `du` only gets **-t**: `heißen` becomes `du heißt`, `tanzen` becomes `du tanzt`, `reisen` becomes `du reist`.\n\n- `du`, `er/sie/es` and `ihr` get the extra **e** after t or d; `ich arbeite` and `wir arbeiten` stay as before.\n- `du heißt` and `er heißt` look the same: the pronoun tells you who is meant.",
+                "fr": "Après un radical en **t** ou **d**, les terminaisons prennent un **e** supplémentaire : `arbeiten` donne `du arbeitest`, `er arbeitet` et `ihr arbeitet`. Même chose pour `finden` : `du findest`, `er findet`.\n\nAprès **s**, **ß** ou **z**, la terminaison **-st** serait difficile à prononcer ; `du` reçoit donc seulement **-t** : `heißen` donne `du heißt`, `tanzen` donne `du tanzt`, `reisen` donne `du reist`.\n\n- `du`, `er/sie/es` et `ihr` reçoivent le **e** supplémentaire après t ou d ; `ich arbeite` et `wir arbeiten` restent comme avant.\n- `du heißt` et `er heißt` sont identiques : le pronom indique de qui on parle.",
+                "de": "Nach einem Stamm auf **t** oder **d** bekommen die Endungen ein zusätzliches **e**: `arbeiten` wird zu `du arbeitest`, `er arbeitet` und `ihr arbeitet`. Genauso `finden`: `du findest`, `er findet`.\n\nNach **s**, **ß** oder **z** wäre die Endung **-st** schwer zu sprechen, deshalb bekommt `du` nur **-t**: `heißen` wird zu `du heißt`, `tanzen` wird zu `du tanzt`, `reisen` wird zu `du reist`.\n\n- `du`, `er/sie/es` und `ihr` bekommen das zusätzliche **e** nach t oder d; `ich arbeite` und `wir arbeiten` bleiben wie vorher.\n- `du heißt` und `er heißt` sehen gleich aus: Das Pronomen zeigt, wer gemeint ist."
               },
               "formTable": [
-                { "subject": "ich (arbeiten)", "form": "arbeite", "example": "Ich arbeite viel." },
-                {
-                  "subject": "du (arbeiten)",
-                  "form": "arbeitest",
-                  "example": "Du arbeitest viel."
-                },
-                {
-                  "subject": "er / sie / es (arbeiten)",
-                  "form": "arbeitet",
-                  "example": "Er arbeitet viel."
-                },
-                {
-                  "subject": "wir (arbeiten)",
-                  "form": "arbeiten",
-                  "example": "Wir arbeiten viel."
-                },
-                {
-                  "subject": "ihr (arbeiten)",
-                  "form": "arbeitet",
-                  "example": "Ihr arbeitet viel."
-                },
-                {
-                  "subject": "sie / Sie (arbeiten)",
-                  "form": "arbeiten",
-                  "example": "Sie arbeiten viel."
-                },
-                { "subject": "du (heißen)", "form": "heißt", "example": "Du heißt Lena." },
-                { "subject": "du (tanzen)", "form": "tanzt", "example": "Du tanzt gut." }
+                { "subject": "ich", "form": "arbeite", "example": null },
+                { "subject": "du", "form": "arbeitest", "example": "Du arbeitest in Wien." },
+                { "subject": "er / sie / es", "form": "arbeitet", "example": null },
+                { "subject": "wir", "form": "arbeiten", "example": null },
+                { "subject": "ihr", "form": "arbeitet", "example": null },
+                { "subject": "sie / Sie", "form": "arbeiten", "example": null },
+                { "subject": "du (heißen)", "form": "heißt", "example": "Du heißt Max." },
+                { "subject": "du (tanzen)", "form": "tanzt", "example": "Du tanzt sehr gut." },
+                { "subject": "du (reisen)", "form": "reist", "example": null }
               ],
               "examples": [
                 {
-                  "text": "Du arbeitest in einem Café.",
-                  "translation": {
-                    "en": "You work in a café.",
-                    "fr": "Tu travailles dans un café."
-                  }
+                  "text": "Du arbeitest in Wien.",
+                  "translation": { "en": "You work in Vienna.", "fr": "Tu travailles à Vienne." }
                 },
                 {
-                  "text": "Er wartet auf den Bus.",
-                  "translation": { "en": "He is waiting for the bus.", "fr": "Il attend le bus." }
-                },
-                {
-                  "text": "Ihr findet das Hotel.",
-                  "translation": { "en": "You find the hotel.", "fr": "Vous trouvez l'hôtel." }
+                  "text": "Er findet den Bahnhof.",
+                  "translation": { "en": "He finds the station.", "fr": "Il trouve la gare." }
                 },
                 {
                   "text": "Du heißt Max.",
                   "translation": { "en": "Your name is Max.", "fr": "Tu t'appelles Max." }
                 },
                 {
-                  "text": "Sie tanzt gern.",
-                  "translation": { "en": "She likes dancing.", "fr": "Elle aime danser." }
+                  "text": "Du tanzt sehr gut.",
+                  "translation": { "en": "You dance very well.", "fr": "Tu danses très bien." }
+                },
+                {
+                  "text": "Er reist nach Polen.",
+                  "translation": { "en": "He travels to Poland.", "fr": "Il voyage en Pologne." }
                 }
               ]
             }
@@ -500,7 +538,7 @@
       ]
     },
     {
-      "id": "ex-b2-forms",
+      "id": "ex-et-typing",
       "role": "exercise",
       "blockId": "block-et-s",
       "label": {
@@ -510,8 +548,8 @@
       },
       "pages": [
         {
-          "pageId": "ex-b2-forms-1",
-          "estimatedDurationS": 90,
+          "pageId": "ex-et-typing-1",
+          "estimatedDurationS": 45,
           "timeLimitS": null,
           "instructions": {
             "en": "Type the form for each pronoun.",
@@ -521,54 +559,66 @@
           "items": [
             {
               "type": "grammar_pronoun_form_typing",
-              "itemId": "ex-b2-forms-1",
-              "ruleIds": ["rule-et-ending"],
+              "itemId": "ex-et-typing-1",
+              "ruleIds": ["rule-et-endings"],
               "rows": [
                 {
                   "rowId": "r-1",
                   "pronoun": "du (arbeiten)",
                   "accepted": { "answers": ["arbeitest"] },
                   "answerExplanation": {
-                    "en": "The stem ends in -t, so du takes -est: du arbeitest.",
-                    "fr": "Le radical finit par -t, donc du prend -est : du arbeitest.",
-                    "de": "Der Stamm endet auf -t, darum bekommt du -est: du arbeitest."
+                    "en": "The stem ends in t, so du needs -est: arbeitest.",
+                    "fr": "Le radical finit par t, donc du prend -est : arbeitest.",
+                    "de": "Der Stamm endet auf t, also braucht du -est: arbeitest."
                   }
                 },
                 {
                   "rowId": "r-2",
-                  "pronoun": "er (warten)",
-                  "accepted": { "answers": ["wartet"] },
+                  "pronoun": "er (finden)",
+                  "accepted": { "answers": ["findet"] },
                   "answerExplanation": {
-                    "en": "The stem ends in -t, so er takes -et: er wartet.",
-                    "fr": "Le radical finit par -t, donc er prend -et : er wartet.",
-                    "de": "Der Stamm endet auf -t, darum bekommt er -et: er wartet."
+                    "en": "The stem ends in d, so er needs -et: findet.",
+                    "fr": "Le radical finit par d, donc er prend -et : findet.",
+                    "de": "Der Stamm endet auf d, also braucht er -et: findet."
                   }
                 },
                 {
                   "rowId": "r-3",
-                  "pronoun": "ihr (finden)",
-                  "accepted": { "answers": ["findet"] },
+                  "pronoun": "ihr (warten)",
+                  "accepted": { "answers": ["wartet"] },
                   "answerExplanation": {
-                    "en": "The stem ends in -d, so ihr takes -et: ihr findet.",
-                    "fr": "Le radical finit par -d, donc ihr prend -et : ihr findet.",
-                    "de": "Der Stamm endet auf -d, darum bekommt ihr -et: ihr findet."
+                    "en": "The stem ends in t, so ihr needs -et: wartet.",
+                    "fr": "Le radical finit par t, donc ihr prend -et : wartet.",
+                    "de": "Der Stamm endet auf t, also braucht ihr -et: wartet."
                   }
                 }
               ]
-            },
+            }
+          ]
+        },
+        {
+          "pageId": "ex-et-typing-2",
+          "estimatedDurationS": 45,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the form for each pronoun.",
+            "fr": "Écrivez la forme pour chaque pronom.",
+            "de": "Schreib die Form zu jedem Pronomen."
+          },
+          "items": [
             {
               "type": "grammar_pronoun_form_typing",
-              "itemId": "ex-b2-forms-2",
-              "ruleIds": ["rule-s-sound"],
+              "itemId": "ex-et-typing-2",
+              "ruleIds": ["rule-s-sounds"],
               "rows": [
                 {
                   "rowId": "r-1",
                   "pronoun": "du (heißen)",
                   "accepted": { "answers": ["heißt"] },
                   "answerExplanation": {
-                    "en": "The stem ends in -ß, so du takes only -t: du heißt.",
-                    "fr": "Le radical finit par -ß, donc du prend seulement -t : du heißt.",
-                    "de": "Der Stamm endet auf -ß, darum bekommt du nur -t: du heißt."
+                    "en": "The stem ends in ß, so du only needs -t: heißt.",
+                    "fr": "Le radical finit par ß, donc du prend seulement -t : heißt.",
+                    "de": "Der Stamm endet auf ß, also braucht du nur -t: heißt."
                   }
                 },
                 {
@@ -576,9 +626,9 @@
                   "pronoun": "du (tanzen)",
                   "accepted": { "answers": ["tanzt"] },
                   "answerExplanation": {
-                    "en": "The stem ends in -z, so du takes only -t: du tanzt.",
-                    "fr": "Le radical finit par -z, donc du prend seulement -t : du tanzt.",
-                    "de": "Der Stamm endet auf -z, darum bekommt du nur -t: du tanzt."
+                    "en": "The stem ends in z, so du only needs -t: tanzt.",
+                    "fr": "Le radical finit par z, donc du prend seulement -t : tanzt.",
+                    "de": "Der Stamm endet auf z, also braucht du nur -t: tanzt."
                   }
                 },
                 {
@@ -586,9 +636,9 @@
                   "pronoun": "du (reisen)",
                   "accepted": { "answers": ["reist"] },
                   "answerExplanation": {
-                    "en": "The stem ends in -s, so du takes only -t: du reist.",
-                    "fr": "Le radical finit par -s, donc du prend seulement -t : du reist.",
-                    "de": "Der Stamm endet auf -s, darum bekommt du nur -t: du reist."
+                    "en": "The stem ends in s, so du only needs -t: reist.",
+                    "fr": "Le radical finit par s, donc du prend seulement -t : reist.",
+                    "de": "Der Stamm endet auf s, also braucht du nur -t: reist."
                   }
                 }
               ]
@@ -598,7 +648,7 @@
       ]
     },
     {
-      "id": "ex-b2-choice",
+      "id": "ex-et-choice",
       "role": "exercise",
       "blockId": "block-et-s",
       "label": {
@@ -608,8 +658,8 @@
       },
       "pages": [
         {
-          "pageId": "ex-b2-choice-1",
-          "estimatedDurationS": 48,
+          "pageId": "ex-et-choice-1",
+          "estimatedDurationS": 12,
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
@@ -619,82 +669,118 @@
           "items": [
             {
               "type": "grammar_gap_choice",
-              "itemId": "ex-b2-choice-1",
+              "itemId": "ex-et-choice-1",
               "before": "Du",
-              "after": "im Büro.",
+              "after": "in einem Café.",
               "choices": [
                 { "choiceId": "c-1", "text": "arbeitst" },
                 { "choiceId": "c-2", "text": "arbeitest" },
-                { "choiceId": "c-3", "text": "arbeitet" },
-                { "choiceId": "c-4", "text": "arbeiten" }
+                { "choiceId": "c-3", "text": "arbeite" },
+                { "choiceId": "c-4", "text": "arbeitet" }
               ],
               "answerChoiceId": "c-2",
-              "hint": { "en": "arbeiten", "fr": "arbeiten", "de": "arbeiten" },
-              "ruleIds": ["rule-et-ending"],
+              "hint": { "en": "verb: arbeiten", "fr": "verbe : arbeiten", "de": "Verb: arbeiten" },
+              "ruleIds": ["rule-et-endings"],
               "answerExplanation": {
-                "en": "The stem arbeit- ends in -t, so du takes -est.",
-                "fr": "Le radical arbeit- finit par -t, donc du prend -est.",
-                "de": "Der Stamm arbeit- endet auf -t, darum bekommt du -est."
+                "en": "The stem ends in t, so du needs -est: arbeitest.",
+                "fr": "Le radical finit par t, donc du prend -est : arbeitest.",
+                "de": "Der Stamm endet auf t, also braucht du -est: arbeitest."
               }
-            },
+            }
+          ]
+        },
+        {
+          "pageId": "ex-et-choice-2",
+          "estimatedDurationS": 12,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
             {
               "type": "grammar_gap_choice",
-              "itemId": "ex-b2-choice-2",
-              "before": "Ihr",
-              "after": "auf den Zug.",
+              "itemId": "ex-et-choice-2",
+              "before": "Er",
+              "after": "den Weg.",
               "choices": [
-                { "choiceId": "c-1", "text": "warte" },
-                { "choiceId": "c-2", "text": "wartest" },
-                { "choiceId": "c-3", "text": "wartet" },
-                { "choiceId": "c-4", "text": "warten" }
+                { "choiceId": "c-1", "text": "findt" },
+                { "choiceId": "c-2", "text": "findet" },
+                { "choiceId": "c-3", "text": "findest" },
+                { "choiceId": "c-4", "text": "finde" }
               ],
-              "answerChoiceId": "c-3",
-              "hint": { "en": "warten", "fr": "warten", "de": "warten" },
-              "ruleIds": ["rule-et-ending"],
+              "answerChoiceId": "c-2",
+              "hint": { "en": "verb: finden", "fr": "verbe : finden", "de": "Verb: finden" },
+              "ruleIds": ["rule-et-endings"],
               "answerExplanation": {
-                "en": "The stem wart- ends in -t, so ihr takes -et.",
-                "fr": "Le radical wart- finit par -t, donc ihr prend -et.",
-                "de": "Der Stamm wart- endet auf -t, darum bekommt ihr -et."
+                "en": "The stem ends in d, so er needs -et: findet.",
+                "fr": "Le radical finit par d, donc er prend -et : findet.",
+                "de": "Der Stamm endet auf d, also braucht er -et: findet."
               }
-            },
+            }
+          ]
+        },
+        {
+          "pageId": "ex-et-choice-3",
+          "estimatedDurationS": 12,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
             {
               "type": "grammar_gap_choice",
-              "itemId": "ex-b2-choice-3",
+              "itemId": "ex-et-choice-3",
               "before": "Du",
-              "after": "Lena, oder?",
+              "after": "Max.",
               "choices": [
-                { "choiceId": "c-1", "text": "heißst" },
-                { "choiceId": "c-2", "text": "heißet" },
+                { "choiceId": "c-1", "text": "heißt" },
+                { "choiceId": "c-2", "text": "heiße" },
                 { "choiceId": "c-3", "text": "heißen" },
-                { "choiceId": "c-4", "text": "heißt" }
+                { "choiceId": "c-4", "text": "heißst" }
               ],
-              "answerChoiceId": "c-4",
-              "hint": { "en": "heißen", "fr": "heißen", "de": "heißen" },
-              "ruleIds": ["rule-s-sound"],
+              "answerChoiceId": "c-1",
+              "hint": { "en": "verb: heißen", "fr": "verbe : heißen", "de": "Verb: heißen" },
+              "ruleIds": ["rule-s-sounds"],
               "answerExplanation": {
-                "en": "The stem heiß- ends in -ß, so du takes only -t.",
-                "fr": "Le radical heiß- finit par -ß, donc du prend seulement -t.",
-                "de": "Der Stamm heiß- endet auf -ß, darum bekommt du nur -t."
+                "en": "The stem ends in ß, so du only needs -t: heißt.",
+                "fr": "Le radical finit par ß, donc du prend seulement -t : heißt.",
+                "de": "Der Stamm endet auf ß, also braucht du nur -t: heißt."
               }
-            },
+            }
+          ]
+        },
+        {
+          "pageId": "ex-et-choice-4",
+          "estimatedDurationS": 12,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
             {
               "type": "grammar_gap_choice",
-              "itemId": "ex-b2-choice-4",
-              "before": "Du",
-              "after": "gern.",
+              "itemId": "ex-et-choice-4",
+              "before": "Ihr",
+              "after": "am Bahnhof.",
               "choices": [
-                { "choiceId": "c-1", "text": "tanzst" },
-                { "choiceId": "c-2", "text": "tanzt" },
-                { "choiceId": "c-3", "text": "tanzet" },
-                { "choiceId": "c-4", "text": "tanzen" }
+                { "choiceId": "c-1", "text": "wartet" },
+                { "choiceId": "c-2", "text": "warten" },
+                { "choiceId": "c-3", "text": "wartest" },
+                { "choiceId": "c-4", "text": "warte" }
               ],
-              "answerChoiceId": "c-2",
-              "hint": { "en": "tanzen", "fr": "tanzen", "de": "tanzen" },
-              "ruleIds": ["rule-s-sound"],
+              "answerChoiceId": "c-1",
+              "hint": { "en": "verb: warten", "fr": "verbe : warten", "de": "Verb: warten" },
+              "ruleIds": ["rule-et-endings"],
               "answerExplanation": {
-                "en": "The stem tanz- ends in -z, so du takes only -t.",
-                "fr": "Le radical tanz- finit par -z, donc du prend seulement -t.",
-                "de": "Der Stamm tanz- endet auf -z, darum bekommt du nur -t."
+                "en": "The stem ends in t, so ihr needs -et: wartet.",
+                "fr": "Le radical finit par t, donc ihr prend -et : wartet.",
+                "de": "Der Stamm endet auf t, also braucht ihr -et: wartet."
               }
             }
           ]
@@ -702,14 +788,14 @@
       ]
     },
     {
-      "id": "ex-b2-spot",
+      "id": "ex-et-spot",
       "role": "exercise",
       "blockId": "block-et-s",
       "label": { "en": "Error spotting", "fr": "Repérer l’erreur", "de": "Fehler finden" },
       "pages": [
         {
-          "pageId": "ex-b2-spot-1",
-          "estimatedDurationS": 75,
+          "pageId": "ex-et-spot-1",
+          "estimatedDurationS": 25,
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it.",
@@ -719,12 +805,12 @@
           "items": [
             {
               "type": "grammar_error_spotter",
-              "itemId": "ex-b2-spot-1",
+              "itemId": "ex-et-spot-1",
               "tokens": [
                 { "tokenId": "t-1", "text": "Du" },
                 { "tokenId": "t-2", "text": "arbeitst" },
-                { "tokenId": "t-3", "text": "heute" },
-                { "tokenId": "t-4", "text": "viel" },
+                { "tokenId": "t-3", "text": "in" },
+                { "tokenId": "t-4", "text": "Wien" },
                 { "tokenId": "t-5", "text": "." }
               ],
               "faultyTokenId": "t-2",
@@ -733,149 +819,80 @@
                 "accepted": { "answers": ["arbeitest"] },
                 "choices": []
               },
-              "ruleIds": ["rule-et-ending"],
+              "ruleIds": ["rule-et-endings"],
               "answerExplanation": {
-                "en": "The stem arbeit- ends in -t, so du needs -est: du arbeitest.",
-                "fr": "Le radical arbeit- finit par -t, donc du prend -est : du arbeitest.",
-                "de": "Der Stamm arbeit- endet auf -t, darum braucht du -est: du arbeitest."
+                "en": "The stem ends in t, so du needs -est: arbeitest.",
+                "fr": "Le radical finit par t, donc du prend -est : arbeitest.",
+                "de": "Der Stamm endet auf t, also braucht du -est: arbeitest."
               }
-            },
+            }
+          ]
+        },
+        {
+          "pageId": "ex-et-spot-2",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Find the wrong word and correct it.",
+            "fr": "Trouvez le mot faux et corrigez-le.",
+            "de": "Finde das falsche Wort und korrigiere es."
+          },
+          "items": [
             {
               "type": "grammar_error_spotter",
-              "itemId": "ex-b2-spot-2",
+              "itemId": "ex-et-spot-2",
               "tokens": [
                 { "tokenId": "t-1", "text": "Du" },
-                { "tokenId": "t-2", "text": "heißst" },
-                { "tokenId": "t-3", "text": "Anna" },
+                { "tokenId": "t-2", "text": "tanzst" },
+                { "tokenId": "t-3", "text": "gut" },
                 { "tokenId": "t-4", "text": "." }
               ],
               "faultyTokenId": "t-2",
               "correction": {
                 "mode": "select",
-                "accepted": { "answers": ["heißt"] },
-                "choices": ["heißt", "heißet", "heißen"]
+                "accepted": { "answers": ["tanzt"] },
+                "choices": ["tanzt", "tanzen", "tanze"]
               },
-              "ruleIds": ["rule-s-sound"],
+              "ruleIds": ["rule-s-sounds"],
               "answerExplanation": {
-                "en": "The stem heiß- ends in -ß, so du takes only -t: du heißt.",
-                "fr": "Le radical heiß- finit par -ß, donc du prend seulement -t : du heißt.",
-                "de": "Der Stamm heiß- endet auf -ß, darum bekommt du nur -t: du heißt."
+                "en": "The stem ends in z, so du only needs -t: tanzt.",
+                "fr": "Le radical finit par z, donc du prend seulement -t : tanzt.",
+                "de": "Der Stamm endet auf z, also braucht du nur -t: tanzt."
               }
-            },
+            }
+          ]
+        },
+        {
+          "pageId": "ex-et-spot-3",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Find the wrong word and correct it.",
+            "fr": "Trouvez le mot faux et corrigez-le.",
+            "de": "Finde das falsche Wort und korrigiere es."
+          },
+          "items": [
             {
               "type": "grammar_error_spotter",
-              "itemId": "ex-b2-spot-3",
+              "itemId": "ex-et-spot-3",
               "tokens": [
-                { "tokenId": "t-1", "text": "Er" },
-                { "tokenId": "t-2", "text": "wartest" },
-                { "tokenId": "t-3", "text": "auf" },
-                { "tokenId": "t-4", "text": "Anna" },
+                { "tokenId": "t-1", "text": "Ihr" },
+                { "tokenId": "t-2", "text": "findest" },
+                { "tokenId": "t-3", "text": "den" },
+                { "tokenId": "t-4", "text": "Weg" },
                 { "tokenId": "t-5", "text": "." }
               ],
               "faultyTokenId": "t-2",
               "correction": {
                 "mode": "type",
-                "accepted": { "answers": ["wartet"] },
+                "accepted": { "answers": ["findet"] },
                 "choices": []
               },
-              "ruleIds": ["rule-et-ending"],
+              "ruleIds": ["rule-et-endings"],
               "answerExplanation": {
-                "en": "Er takes -et: er wartet; -est is only for du.",
-                "fr": "Er prend -et : er wartet ; -est est réservé à du.",
-                "de": "Zu er gehört -et: er wartet; -est gibt es nur bei du."
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "ex-b2-order",
-      "role": "exercise",
-      "blockId": "block-et-s",
-      "label": { "en": "Word order", "fr": "Ordre des mots", "de": "Wortstellung" },
-      "pages": [
-        {
-          "pageId": "ex-b2-order-1",
-          "estimatedDurationS": 80,
-          "timeLimitS": null,
-          "instructions": {
-            "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
-            "de": "Bring die Wörter in die richtige Reihenfolge."
-          },
-          "items": [
-            {
-              "type": "grammar_word_order",
-              "itemId": "ex-b2-order-1",
-              "tokens": [
-                { "tokenId": "t-1", "text": "heute" },
-                { "tokenId": "t-2", "text": "Ihr" },
-                { "tokenId": "t-3", "text": "nicht" },
-                { "tokenId": "t-4", "text": "." },
-                { "tokenId": "t-5", "text": "arbeitet" }
-              ],
-              "acceptedOrders": [["t-2", "t-5", "t-1", "t-3", "t-4"]],
-              "ruleIds": ["rule-et-ending"],
-              "answerExplanation": {
-                "en": "After a stem in -t, ihr takes -et: ihr arbeitet. The verb is in position 2.",
-                "fr": "Après un radical en -t, ihr prend -et : ihr arbeitet. Le verbe est en position 2.",
-                "de": "Nach einem Stamm auf -t bekommt ihr -et: ihr arbeitet. Das Verb steht auf Position 2."
-              }
-            },
-            {
-              "type": "grammar_word_order",
-              "itemId": "ex-b2-order-2",
-              "tokens": [
-                { "tokenId": "t-1", "text": "auf" },
-                { "tokenId": "t-2", "text": "Du" },
-                { "tokenId": "t-3", "text": "mich" },
-                { "tokenId": "t-4", "text": "hier" },
-                { "tokenId": "t-5", "text": "." },
-                { "tokenId": "t-6", "text": "wartest" }
-              ],
-              "acceptedOrders": [["t-2", "t-6", "t-4", "t-1", "t-3", "t-5"]],
-              "ruleIds": ["rule-et-ending"],
-              "answerExplanation": {
-                "en": "After a stem in -t, du takes -est: du wartest. The verb is in position 2.",
-                "fr": "Après un radical en -t, du prend -est : du wartest. Le verbe est en position 2.",
-                "de": "Nach einem Stamm auf -t bekommt du -est: du wartest. Das Verb steht auf Position 2."
-              }
-            },
-            {
-              "type": "grammar_word_order",
-              "itemId": "ex-b2-order-3",
-              "tokens": [
-                { "tokenId": "t-1", "text": "gut" },
-                { "tokenId": "t-2", "text": "sehr" },
-                { "tokenId": "t-3", "text": "." },
-                { "tokenId": "t-4", "text": "tanzt" },
-                { "tokenId": "t-5", "text": "Du" }
-              ],
-              "acceptedOrders": [["t-5", "t-4", "t-2", "t-1", "t-3"]],
-              "ruleIds": ["rule-s-sound"],
-              "answerExplanation": {
-                "en": "The stem tanz- ends in -z, so du takes only -t: du tanzt.",
-                "fr": "Le radical tanz- finit par -z, donc du prend seulement -t : du tanzt.",
-                "de": "Der Stamm tanz- endet auf -z, darum bekommt du nur -t: du tanzt."
-              }
-            },
-            {
-              "type": "grammar_word_order",
-              "itemId": "ex-b2-order-4",
-              "tokens": [
-                { "tokenId": "t-1", "text": "Tom" },
-                { "tokenId": "t-2", "text": "nicht" },
-                { "tokenId": "t-3", "text": "heißt" },
-                { "tokenId": "t-4", "text": "." },
-                { "tokenId": "t-5", "text": "Du" }
-              ],
-              "acceptedOrders": [["t-5", "t-3", "t-2", "t-1", "t-4"]],
-              "ruleIds": ["rule-s-sound"],
-              "answerExplanation": {
-                "en": "The stem heiß- ends in -ß, so du takes only -t: du heißt.",
-                "fr": "Le radical heiß- finit par -ß, donc du prend seulement -t : du heißt.",
-                "de": "Der Stamm heiß- endet auf -ß, darum bekommt du nur -t: du heißt."
+                "en": "With ihr, the stem find- needs -et: findet.",
+                "fr": "Avec ihr, le radical find- prend -et : findet.",
+                "de": "Zu ihr gehört bei dem Stamm find- die Endung -et: findet."
               }
             }
           ]
@@ -908,9 +925,68 @@
       "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
       "pages": [
         {
-          "pageId": "exam-gaps",
-          "estimatedDurationS": 75,
+          "pageId": "exam-forms",
+          "estimatedDurationS": 60,
           "timeLimitS": 120,
+          "instructions": {
+            "en": "Type the form for each pronoun.",
+            "fr": "Écrivez la forme pour chaque pronom.",
+            "de": "Schreib die Form zu jedem Pronomen."
+          },
+          "items": [
+            {
+              "type": "grammar_pronoun_form_typing",
+              "itemId": "exam-forms-1",
+              "ruleIds": ["rule-endings", "rule-et-endings", "rule-s-sounds"],
+              "rows": [
+                {
+                  "rowId": "r-1",
+                  "pronoun": "du (warten)",
+                  "accepted": { "answers": ["wartest"] },
+                  "answerExplanation": {
+                    "en": "The stem ends in t, so du needs -est: wartest.",
+                    "fr": "Le radical finit par t, donc du prend -est : wartest.",
+                    "de": "Der Stamm endet auf t, also braucht du -est: wartest."
+                  }
+                },
+                {
+                  "rowId": "r-2",
+                  "pronoun": "er (tanzen)",
+                  "accepted": { "answers": ["tanzt"] },
+                  "answerExplanation": {
+                    "en": "With er, the ending is -t: tanzt.",
+                    "fr": "Avec er, la terminaison est -t : tanzt.",
+                    "de": "Zu er gehört die Endung -t: tanzt."
+                  }
+                },
+                {
+                  "rowId": "r-3",
+                  "pronoun": "ihr (kommen)",
+                  "accepted": { "answers": ["kommt"] },
+                  "answerExplanation": {
+                    "en": "With ihr, the ending is -t: kommt.",
+                    "fr": "Avec ihr, la terminaison est -t : kommt.",
+                    "de": "Zu ihr gehört die Endung -t: kommt."
+                  }
+                },
+                {
+                  "rowId": "r-4",
+                  "pronoun": "ich (finden)",
+                  "accepted": { "answers": ["finde"] },
+                  "answerExplanation": {
+                    "en": "With ich, the verb ends in -e: finde.",
+                    "fr": "Avec ich, le verbe se termine par -e : finde.",
+                    "de": "Zu ich gehört die Endung -e: finde."
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "pageId": "exam-gaps",
+          "estimatedDurationS": 48,
+          "timeLimitS": 90,
           "instructions": {
             "en": "Type the missing words.",
             "fr": "Écrivez les mots manquants.",
@@ -920,79 +996,65 @@
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-gaps-1",
-              "before": "Ich",
-              "after": "(wohnen) seit einem Jahr in Salzburg.",
-              "accepted": { "answers": ["wohne"] },
+              "before": "Du",
+              "after": "sehr gut Englisch. (lernen)",
+              "accepted": { "answers": ["lernst"] },
               "hint": null,
               "ruleIds": ["rule-endings"],
               "answerExplanation": {
-                "en": "Ich takes -e: ich wohne.",
-                "fr": "Ich prend -e : ich wohne.",
-                "de": "Zu ich gehört -e: ich wohne."
+                "en": "With du, the ending is -st: du lernst.",
+                "fr": "Avec du, la terminaison est -st : du lernst.",
+                "de": "Zu du gehört die Endung -st: du lernst."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-gaps-2",
-              "before": "Du",
-              "after": "(arbeiten) bei einer Bank.",
-              "accepted": { "answers": ["arbeitest"] },
+              "before": "Ihr",
+              "after": "heute lange. (arbeiten)",
+              "accepted": { "answers": ["arbeitet"] },
               "hint": null,
-              "ruleIds": ["rule-et-ending"],
+              "ruleIds": ["rule-et-endings"],
               "answerExplanation": {
-                "en": "The stem ends in -t, so du takes -est: du arbeitest.",
-                "fr": "Le radical finit par -t, donc du prend -est : du arbeitest.",
-                "de": "Der Stamm endet auf -t, darum bekommt du -est: du arbeitest."
+                "en": "The stem ends in t, so ihr needs -et: arbeitet.",
+                "fr": "Le radical finit par t, donc ihr prend -et : arbeitet.",
+                "de": "Der Stamm endet auf t, also braucht ihr -et: arbeitet."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-gaps-3",
-              "before": "Ihr",
-              "after": "(warten) vor dem Kino.",
-              "accepted": { "answers": ["wartet"] },
+              "before": "Du",
+              "after": "so schön! (tanzen)",
+              "accepted": { "answers": ["tanzt"] },
               "hint": null,
-              "ruleIds": ["rule-et-ending"],
+              "ruleIds": ["rule-s-sounds"],
               "answerExplanation": {
-                "en": "The stem ends in -t, so ihr takes -et: ihr wartet.",
-                "fr": "Le radical finit par -t, donc ihr prend -et : ihr wartet.",
-                "de": "Der Stamm endet auf -t, darum bekommt ihr -et: ihr wartet."
+                "en": "The stem ends in z, so du only needs -t: tanzt.",
+                "fr": "Le radical finit par z, donc du prend seulement -t : tanzt.",
+                "de": "Der Stamm endet auf z, also braucht du nur -t: tanzt."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-gaps-4",
-              "before": "Du",
-              "after": "(reisen) gern mit dem Zug.",
-              "accepted": { "answers": ["reist"] },
-              "hint": null,
-              "ruleIds": ["rule-s-sound"],
-              "answerExplanation": {
-                "en": "The stem ends in -s, so du takes only -t: du reist.",
-                "fr": "Le radical finit par -s, donc du prend seulement -t : du reist.",
-                "de": "Der Stamm endet auf -s, darum bekommt du nur -t: du reist."
-              }
-            },
-            {
-              "type": "grammar_gap_typing",
-              "itemId": "exam-gaps-5",
-              "before": "Wir",
-              "after": "(lernen) heute Grammatik.",
-              "accepted": { "answers": ["lernen"] },
+              "before": "Lena und Max",
+              "after": "in Köln. (wohnen)",
+              "accepted": { "answers": ["wohnen"] },
               "hint": null,
               "ruleIds": ["rule-endings"],
               "answerExplanation": {
-                "en": "Wir takes -en: wir lernen.",
-                "fr": "Wir prend -en : wir lernen.",
-                "de": "Zu wir gehört -en: wir lernen."
+                "en": "Lena und Max is 3rd person plural (like sie), so the verb keeps the infinitive form: wohnen.",
+                "fr": "Lena und Max est à la 3e personne du pluriel (comme sie) : le verbe garde la forme de l'infinitif, wohnen.",
+                "de": "Lena und Max ist 3. Person Plural (wie sie), also bleibt die Infinitivform: wohnen."
               }
             }
           ]
         },
         {
           "pageId": "exam-order",
-          "estimatedDurationS": 75,
-          "timeLimitS": 120,
+          "estimatedDurationS": 45,
+          "timeLimitS": 90,
           "instructions": {
             "en": "Put the words in the right order.",
             "fr": "Mettez les mots dans le bon ordre.",
@@ -1003,116 +1065,64 @@
               "type": "grammar_word_order",
               "itemId": "exam-order-1",
               "tokens": [
-                { "tokenId": "t-1", "text": "nicht" },
-                { "tokenId": "t-2", "text": "Sonntag" },
-                { "tokenId": "t-3", "text": "Er" },
-                { "tokenId": "t-4", "text": "." },
-                { "tokenId": "t-5", "text": "am" },
-                { "tokenId": "t-6", "text": "arbeitet" }
+                { "tokenId": "t-3", "text": "in" },
+                { "tokenId": "t-5", "text": "." },
+                { "tokenId": "t-1", "text": "Lena" },
+                { "tokenId": "t-4", "text": "Köln" },
+                { "tokenId": "t-2", "text": "arbeitet" }
               ],
-              "acceptedOrders": [["t-3", "t-6", "t-5", "t-2", "t-1", "t-4"]],
-              "ruleIds": ["rule-et-ending"],
+              "acceptedOrders": [
+                ["t-1", "t-2", "t-3", "t-4", "t-5"],
+                ["t-3", "t-4", "t-2", "t-1", "t-5"]
+              ],
+              "ruleIds": ["rule-et-endings"],
               "answerExplanation": {
-                "en": "The stem ends in -t, so er takes -et: er arbeitet.",
-                "fr": "Le radical finit par -t, donc er prend -et : er arbeitet.",
-                "de": "Der Stamm endet auf -t, darum bekommt er -et: er arbeitet."
+                "en": "The stem arbeit- ends in t, so Lena (like sie) needs -et: arbeitet. The verb stays in 2nd position.",
+                "fr": "Le radical arbeit- finit par t, donc Lena (comme sie) prend -et : arbeitet. Le verbe reste en 2e position.",
+                "de": "Der Stamm arbeit- endet auf t, also braucht Lena (wie sie) -et: arbeitet. Das Verb bleibt auf Position 2."
               }
             },
             {
               "type": "grammar_word_order",
               "itemId": "exam-order-2",
               "tokens": [
-                { "tokenId": "t-1", "text": "Fenster" },
-                { "tokenId": "t-2", "text": "dem" },
-                { "tokenId": "t-3", "text": "." },
-                { "tokenId": "t-4", "text": "Du" },
-                { "tokenId": "t-5", "text": "sitzt" },
-                { "tokenId": "t-6", "text": "neben" }
+                { "tokenId": "t-3", "text": "nach" },
+                { "tokenId": "t-1", "text": "Du" },
+                { "tokenId": "t-5", "text": "." },
+                { "tokenId": "t-4", "text": "Berlin" },
+                { "tokenId": "t-2", "text": "reist" }
               ],
-              "acceptedOrders": [["t-4", "t-5", "t-6", "t-2", "t-1", "t-3"]],
-              "ruleIds": ["rule-s-sound"],
+              "acceptedOrders": [
+                ["t-1", "t-2", "t-3", "t-4", "t-5"],
+                ["t-3", "t-4", "t-2", "t-1", "t-5"]
+              ],
+              "ruleIds": ["rule-s-sounds"],
               "answerExplanation": {
-                "en": "The stem sitz- ends in -z, so du takes only -t: du sitzt.",
-                "fr": "Le radical sitz- finit par -z, donc du prend seulement -t : du sitzt.",
-                "de": "Der Stamm sitz- endet auf -z, darum bekommt du nur -t: du sitzt."
+                "en": "The stem reis- ends in s, so du only needs -t: reist. The verb stays in 2nd position.",
+                "fr": "Le radical reis- finit par s, donc du prend seulement -t : reist. Le verbe reste en 2e position.",
+                "de": "Der Stamm reis- endet auf s, also braucht du nur -t: reist. Das Verb bleibt auf Position 2."
               }
             },
             {
               "type": "grammar_word_order",
               "itemId": "exam-order-3",
               "tokens": [
-                { "tokenId": "t-1", "text": "aus" },
-                { "tokenId": "t-2", "text": "." },
-                { "tokenId": "t-3", "text": "kommen" },
-                { "tokenId": "t-4", "text": "Österreich" },
-                { "tokenId": "t-5", "text": "Wir" }
+                { "tokenId": "t-4", "text": "Bonn" },
+                { "tokenId": "t-2", "text": "wohnt" },
+                { "tokenId": "t-5", "text": "." },
+                { "tokenId": "t-1", "text": "Er" },
+                { "tokenId": "t-3", "text": "in" }
               ],
-              "acceptedOrders": [["t-5", "t-3", "t-1", "t-4", "t-2"]],
+              "acceptedOrders": [
+                ["t-1", "t-2", "t-3", "t-4", "t-5"],
+                ["t-3", "t-4", "t-2", "t-1", "t-5"]
+              ],
               "ruleIds": ["rule-endings"],
               "answerExplanation": {
-                "en": "Wir takes -en: wir kommen.",
-                "fr": "Wir prend -en : wir kommen.",
-                "de": "Zu wir gehört -en: wir kommen."
+                "en": "With er, the ending is -t: wohnt. The verb stays in 2nd position.",
+                "fr": "Avec er, la terminaison est -t : wohnt. Le verbe reste en 2e position.",
+                "de": "Zu er gehört die Endung -t: wohnt. Das Verb bleibt auf Position 2."
               }
-            }
-          ]
-        },
-        {
-          "pageId": "exam-forms",
-          "estimatedDurationS": 60,
-          "timeLimitS": 100,
-          "instructions": {
-            "en": "Type the form for each pronoun.",
-            "fr": "Écrivez la forme pour chaque pronom.",
-            "de": "Schreib die Form zu jedem Pronomen."
-          },
-          "items": [
-            {
-              "type": "grammar_pronoun_form_typing",
-              "itemId": "exam-forms-1",
-              "ruleIds": ["rule-endings", "rule-et-ending", "rule-s-sound"],
-              "rows": [
-                {
-                  "rowId": "r-1",
-                  "pronoun": "du (baden)",
-                  "accepted": { "answers": ["badest"] },
-                  "answerExplanation": {
-                    "en": "The stem bad- ends in -d, so du takes -est: du badest.",
-                    "fr": "Le radical bad- finit par -d, donc du prend -est : du badest.",
-                    "de": "Der Stamm bad- endet auf -d, darum bekommt du -est: du badest."
-                  }
-                },
-                {
-                  "rowId": "r-2",
-                  "pronoun": "ihr (finden)",
-                  "accepted": { "answers": ["findet"] },
-                  "answerExplanation": {
-                    "en": "The stem ends in -d, so ihr takes -et: ihr findet.",
-                    "fr": "Le radical finit par -d, donc ihr prend -et : ihr findet.",
-                    "de": "Der Stamm endet auf -d, darum bekommt ihr -et: ihr findet."
-                  }
-                },
-                {
-                  "rowId": "r-3",
-                  "pronoun": "du (kommen)",
-                  "accepted": { "answers": ["kommst"] },
-                  "answerExplanation": {
-                    "en": "Regular stem komm- + -st: du kommst.",
-                    "fr": "Radical régulier komm- + -st : du kommst.",
-                    "de": "Regelmäßiger Stamm komm- + -st: du kommst."
-                  }
-                },
-                {
-                  "rowId": "r-4",
-                  "pronoun": "du (tanzen)",
-                  "accepted": { "answers": ["tanzt"] },
-                  "answerExplanation": {
-                    "en": "The stem ends in -z, so du takes only -t: du tanzt.",
-                    "fr": "Le radical finit par -z, donc du prend seulement -t : du tanzt.",
-                    "de": "Der Stamm endet auf -z, darum bekommt du nur -t: du tanzt."
-                  }
-                }
-              ]
             }
           ]
         }

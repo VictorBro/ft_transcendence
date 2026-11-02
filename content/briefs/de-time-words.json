@@ -4,37 +4,37 @@
   "lang": "de",
   "level": "A2",
   "locales": ["en", "fr", "de"],
-  "title": "Zeitadverbien: bald, montags, manchmal",
+  "title": "Adverbien der Zeit: bald, montags, manchmal",
   "objective": {
-    "en": "Understand and use time adverbs for points in time and frequency, such as bald, montags and manchmal.",
-    "fr": "Comprendre et utiliser des adverbes de temps pour le moment et la fréquence, comme bald, montags et manchmal.",
-    "de": "Zeitadverbien für Zeitpunkt und Häufigkeit verstehen und benutzen, zum Beispiel bald, montags und manchmal."
+    "en": "Understand and use 14 time adverbs for points in time and frequency, such as bald, montags and manchmal.",
+    "fr": "Comprendre et utiliser 14 adverbes de temps pour le moment et la fréquence, comme bald, montags et manchmal.",
+    "de": "Vierzehn Zeitadverbien für Zeitpunkt und Häufigkeit verstehen und benutzen, z. B. bald, montags, manchmal."
   },
-  "estimatedMinutes": 23,
+  "estimatedMinutes": 22,
   "provenance": {
     "generator": "ft lessons:author",
     "model": "sonnet",
-    "promptVersion": "author-2",
-    "generatedAt": "2026-11-01T20:20:13.612Z",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:24:06.968Z",
     "inputHashes": { "outline": "6d9e34d52a546bf9d94ece641310e593f50594a5913e0259a3c9b54f77d25376" }
   },
   "kind": "vocabulary",
   "theme": "daily_life",
   "coverageNotes": {
-    "en": "Fourteen time adverbs: six for points in time, three for regular times of day or week, and five for frequency from always to never.",
-    "fr": "Quatorze adverbes de temps : six pour le moment, trois pour les moments réguliers du jour ou de la semaine et cinq pour la fréquence, de toujours à jamais.",
-    "de": "Vierzehn Zeitadverbien: sechs für den Zeitpunkt, drei für regelmäßige Tages- oder Wochenzeiten und fünf für die Häufigkeit von immer bis nie."
+    "en": "All 14 adverbs of the outline entry: six for points in time (vorgestern, übermorgen, damals, früher, gleich, bald) and eight for daily rhythm and frequency (morgens, abends, montags, immer, oft, manchmal, selten, nie).",
+    "fr": "Les 14 adverbes du plan : six pour le moment (vorgestern, übermorgen, damals, früher, gleich, bald) et huit pour le rythme quotidien et la fréquence (morgens, abends, montags, immer, oft, manchmal, selten, nie).",
+    "de": "Alle 14 Adverbien des Plans: sechs für den Zeitpunkt (vorgestern, übermorgen, damals, früher, gleich, bald) und acht für Tagesrhythmus und Häufigkeit (morgens, abends, montags, immer, oft, manchmal, selten, nie)."
   },
   "targetCount": 14,
   "countRationale": {
-    "en": "Fourteen words match the outline and fit three small groups for A2.",
-    "fr": "Quatorze mots correspondent au plan et forment trois petits groupes pour le niveau A2.",
-    "de": "Vierzehn Wörter entsprechen der Gliederung und bilden drei kleine Gruppen für A2."
+    "en": "Fourteen words form two natural groups and fit an A2 lesson of about ten minutes.",
+    "fr": "Quatorze mots forment deux groupes naturels et conviennent à une leçon A2 d’une dizaine de minutes.",
+    "de": "Vierzehn Wörter bilden zwei natürliche Gruppen und passen in eine A2-Lektion von etwa zehn Minuten."
   },
   "difficultyBalance": {
-    "en": "Most words are core; früher, damals and the -s forms morgens, abends, montags are more demanding.",
-    "fr": "La plupart des mots sont de base ; früher, damals et les formes en -s morgens, abends, montags sont plus difficiles.",
-    "de": "Die meisten Wörter sind Grundwörter; früher, damals und die s-Formen morgens, abends, montags sind anspruchsvoller."
+    "en": "Most words are core. Damals, früher and selten are harder because they are close in meaning to other words.",
+    "fr": "La plupart des mots sont de base. Damals, früher et selten sont plus difficiles, car leur sens est proche d’autres mots.",
+    "de": "Die meisten Wörter sind Grundwortschatz. Damals, früher und selten sind schwieriger, weil sie anderen Wörtern in der Bedeutung nahe sind."
   },
   "prerequisites": [],
   "groups": [
@@ -43,29 +43,23 @@
       "label": { "en": "Points in time", "fr": "Le moment", "de": "Zeitpunkt" },
       "targetIds": ["vorgestern", "uebermorgen", "damals", "frueher", "gleich", "bald"],
       "introduction": {
-        "en": "These adverbs say **when** something happens: `vorgestern`, `damals` and `früher` for the past, `gleich` and `bald` for the near future, `übermorgen` for the day after tomorrow.",
-        "fr": "Ces adverbes disent **quand** quelque chose a lieu : `vorgestern`, `damals` et `früher` pour le passé, `gleich` et `bald` pour le futur proche, `übermorgen` pour après-demain.",
-        "de": "Diese Adverbien sagen, **wann** etwas geschieht: `vorgestern`, `damals` und `früher` für die Vergangenheit, `gleich` und `bald` für die nahe Zukunft, `übermorgen` für den übernächsten Tag."
+        "en": "These adverbs say **when** something happens:\n\n- `vorgestern`, `übermorgen`: two days back or ahead\n- `damals`, `früher`: in the past\n- `gleich`, `bald`: in the near future\n\n`gleich` means very soon; `bald` is less exact.",
+        "fr": "Ces adverbes disent **quand** quelque chose a lieu :\n\n- `vorgestern`, `übermorgen` : deux jours avant ou après aujourd’hui\n- `damals`, `früher` : dans le passé\n- `gleich`, `bald` : dans un futur proche\n\n`gleich` veut dire très bientôt ; `bald` est moins précis.",
+        "de": "Diese Adverbien sagen, **wann** etwas passiert:\n\n- `vorgestern`, `übermorgen`: zwei Tage davor oder danach\n- `damals`, `früher`: in der Vergangenheit\n- `gleich`, `bald`: in naher Zukunft\n\n`gleich` heißt sehr bald; `bald` ist ungenauer."
       }
     },
     {
-      "id": "regelmaessig",
-      "label": { "en": "Regular times", "fr": "Moments réguliers", "de": "Regelmäßige Zeiten" },
-      "targetIds": ["morgens", "abends", "montags"],
+      "id": "rhythmus",
+      "label": {
+        "en": "Daily rhythm and frequency",
+        "fr": "Rythme quotidien et fréquence",
+        "de": "Tagesrhythmus und Häufigkeit"
+      },
+      "targetIds": ["morgens", "abends", "montags", "immer", "oft", "manchmal", "selten", "nie"],
       "introduction": {
-        "en": "With an **-s** at the end, these adverbs say that something happens regularly: `morgens` every morning, `abends` every evening, `montags` every Monday.",
-        "fr": "Avec un **-s** à la fin, ces adverbes disent que quelque chose se répète : `morgens` chaque matin, `abends` chaque soir, `montags` chaque lundi.",
-        "de": "Mit einem **-s** am Ende sagen diese Adverbien, dass etwas regelmäßig geschieht: `morgens` jeden Morgen, `abends` jeden Abend, `montags` jeden Montag."
-      }
-    },
-    {
-      "id": "haeufigkeit",
-      "label": { "en": "Frequency", "fr": "Fréquence", "de": "Häufigkeit" },
-      "targetIds": ["immer", "oft", "manchmal", "selten", "nie"],
-      "introduction": {
-        "en": "These adverbs say **how often** something happens, from `immer` through `oft`, `manchmal` and `selten` to `nie`.",
-        "fr": "Ces adverbes disent **à quelle fréquence** quelque chose a lieu, de `immer` à `nie` en passant par `oft`, `manchmal` et `selten`.",
-        "de": "Diese Adverbien sagen, **wie oft** etwas geschieht, von `immer` über `oft`, `manchmal` und `selten` bis `nie`."
+        "en": "Adverbs ending in **-s** show when something happens regularly: `morgens`, `abends`, `montags`.\n\nThese five say **how often**, from most to least:\n\n- `immer`\n- `oft`\n- `manchmal`\n- `selten`\n- `nie`",
+        "fr": "Les adverbes en **-s** montrent quand quelque chose se répète : `morgens`, `abends`, `montags`.\n\nCes cinq mots disent **à quelle fréquence**, du plus au moins fréquent :\n\n- `immer`\n- `oft`\n- `manchmal`\n- `selten`\n- `nie`",
+        "de": "Adverbien auf **-s** zeigen, wann etwas regelmäßig passiert: `morgens`, `abends`, `montags`.\n\nDiese fünf Wörter sagen, **wie oft**, vom häufigsten zum seltensten:\n\n- `immer`\n- `oft`\n- `manchmal`\n- `selten`\n- `nie`"
       }
     }
   ],
@@ -81,33 +75,33 @@
       "examForms": ["vorgestern"],
       "articleException": null,
       "genderVariants": [],
-      "pronunciation": "/ˈfoːɐ̯ˌɡɛstɐn/",
+      "pronunciation": "/ˈfoːɐ̯ɡɛstɐn/",
       "difficulty": "core",
       "context": {
-        "sentence": "Vorgestern habe ich meine Oma besucht.",
+        "sentence": "Vorgestern war ich im Kino.",
         "translation": {
-          "en": "The day before yesterday I visited my grandma.",
-          "fr": "Avant-hier, j’ai rendu visite à ma grand-mère."
+          "en": "The day before yesterday I was at the cinema.",
+          "fr": "Avant-hier, j’étais au cinéma."
         }
       },
       "ambiguityNote": null,
       "explanation": {
         "en": "Vorgestern means two days ago, the day before yesterday.",
         "fr": "Vorgestern signifie il y a deux jours, avant-hier.",
-        "de": "Vorgestern bedeutet: vor zwei Tagen, der Tag vor gestern."
+        "de": "Vorgestern bedeutet vor zwei Tagen, der Tag vor gestern."
       },
       "genderExplanation": null,
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Heute ist Freitag. Ich war ",
-        "after": " im Kino, am Mittwoch.",
+        "before": "Heute ist Donnerstag. Wir waren ",
+        "after": ", am Dienstag, im Kino.",
         "accepted": { "answers": ["vorgestern"] },
         "referenceTargetIds": ["vorgestern", "uebermorgen", "bald", "nie"],
         "explanation": {
-          "en": "Wednesday was two days ago, so vorgestern fits.",
-          "fr": "Mercredi était il y a deux jours, donc vorgestern convient.",
-          "de": "Mittwoch war vor zwei Tagen, also passt vorgestern."
+          "en": "Tuesday was two days ago, so vorgestern fits.",
+          "fr": "Mardi, c’était il y a deux jours : vorgestern convient.",
+          "de": "Dienstag war vor zwei Tagen, also passt vorgestern."
         }
       },
       "listeningOptionTargetIds": ["vorgestern", "uebermorgen", "morgens", "montags"]
@@ -126,33 +120,33 @@
       "pronunciation": "/ˈyːbɐˌmɔʁɡn̩/",
       "difficulty": "core",
       "context": {
-        "sentence": "Übermorgen fahren wir nach Hamburg.",
+        "sentence": "Übermorgen habe ich einen Termin.",
         "translation": {
-          "en": "The day after tomorrow we are going to Hamburg.",
-          "fr": "Après-demain, nous allons à Hambourg."
+          "en": "The day after tomorrow I have an appointment.",
+          "fr": "Après-demain, j’ai un rendez-vous."
         }
       },
       "ambiguityNote": null,
       "explanation": {
         "en": "Übermorgen means in two days, the day after tomorrow.",
         "fr": "Übermorgen signifie dans deux jours, après-demain.",
-        "de": "Übermorgen bedeutet: in zwei Tagen, der Tag nach morgen."
+        "de": "Übermorgen bedeutet in zwei Tagen, der Tag nach morgen."
       },
       "genderExplanation": null,
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Heute ist Freitag. Wir fahren ",
-        "after": " nach Berlin, am Sonntag.",
+        "before": "Heute ist Montag. Mein Zug fährt ",
+        "after": ", am Mittwoch.",
         "accepted": { "answers": ["übermorgen"] },
         "referenceTargetIds": ["uebermorgen", "vorgestern", "damals", "frueher"],
         "explanation": {
-          "en": "Sunday is in two days, so übermorgen fits.",
-          "fr": "Dimanche est dans deux jours, donc übermorgen convient.",
-          "de": "Sonntag ist in zwei Tagen, also passt übermorgen."
+          "en": "Wednesday is two days from now, and the verb is in the present: übermorgen fits.",
+          "fr": "Mercredi, c’est dans deux jours, et le verbe est au présent : übermorgen convient.",
+          "de": "Mittwoch ist in zwei Tagen, und das Verb steht im Präsens: übermorgen passt."
         }
       },
-      "listeningOptionTargetIds": ["uebermorgen", "vorgestern", "morgens", "montags"]
+      "listeningOptionTargetIds": ["vorgestern", "uebermorgen", "morgens", "montags"]
     },
     {
       "id": "damals",
@@ -168,30 +162,34 @@
       "pronunciation": "/ˈdaːmaːls/",
       "difficulty": "demanding",
       "context": {
-        "sentence": "Damals hatte ich noch kein Handy.",
+        "sentence": "Damals hatten wir kein Auto.",
         "translation": {
-          "en": "Back then I did not have a mobile phone yet.",
-          "fr": "À l’époque, je n’avais pas encore de portable."
+          "en": "Back then we had no car.",
+          "fr": "À l’époque, nous n’avions pas de voiture."
         }
       },
-      "ambiguityNote": null,
+      "ambiguityNote": {
+        "en": "Damals points to one past time that was just mentioned; früher compares the past with now.",
+        "fr": "Damals renvoie à un moment passé précis déjà mentionné ; früher compare le passé avec le présent.",
+        "de": "Damals verweist auf eine bestimmte Zeit in der Vergangenheit, die schon genannt wurde; früher vergleicht die Vergangenheit mit heute."
+      },
       "explanation": {
-        "en": "Damals points to one specific time in the past that was just mentioned.",
-        "fr": "Damals renvoie à un moment précis du passé dont on vient de parler.",
-        "de": "Damals verweist auf einen bestimmten Zeitpunkt in der Vergangenheit, der gerade genannt wurde."
+        "en": "Damals means at that time in the past, a period you have just mentioned.",
+        "fr": "Damals signifie à ce moment-là dans le passé, une période déjà mentionnée.",
+        "de": "Damals bedeutet zu jener Zeit in der Vergangenheit, einer Zeit, die man gerade genannt hat."
       },
       "genderExplanation": null,
       "matchingLabel": null,
       "examPrompt": { "en": "back then (at that time)", "fr": "à l’époque (à ce moment-là)" },
       "gap": {
-        "before": "Im Jahr 1990 war ich zehn. Ich wohnte ",
-        "after": " in Wien.",
+        "before": "Im Sommer 2010 war ich in Köln. Ich hatte ",
+        "after": " wenig Geld.",
         "accepted": { "answers": ["damals"] },
-        "referenceTargetIds": ["damals", "bald", "gleich", "montags"],
+        "referenceTargetIds": ["damals", "uebermorgen", "bald", "gleich"],
         "explanation": {
-          "en": "The sentence points back to the year 1990, so damals fits.",
-          "fr": "La phrase renvoie à l’année 1990, donc damals convient.",
-          "de": "Der Satz verweist auf das Jahr 1990, also passt damals."
+          "en": "The sentence is in the past and refers to summer 2010: damals fits.",
+          "fr": "La phrase est au passé et renvoie à l’été 2010 : damals convient.",
+          "de": "Der Satz steht in der Vergangenheit und bezieht sich auf den Sommer 2010: damals passt."
         }
       },
       "listeningOptionTargetIds": ["damals", "manchmal", "montags", "abends"]
@@ -199,7 +197,7 @@
     {
       "id": "frueher",
       "term": "früher",
-      "translations": { "en": ["formerly"], "fr": ["autrefois"] },
+      "translations": { "en": ["in the past", "formerly"], "fr": ["autrefois", "avant"] },
       "wordClass": "adverb",
       "genders": [],
       "number": null,
@@ -210,38 +208,45 @@
       "pronunciation": "/ˈfʁyːɐ/",
       "difficulty": "demanding",
       "context": {
-        "sentence": "Früher war ich Lehrerin.",
-        "translation": { "en": "I used to be a teacher.", "fr": "Autrefois, j’étais enseignante." }
+        "sentence": "Früher habe ich in Berlin gewohnt.",
+        "translation": { "en": "I used to live in Berlin.", "fr": "Avant, j’habitais à Berlin." }
       },
-      "ambiguityNote": null,
+      "ambiguityNote": {
+        "en": "Früher compares the past with the present: it was so before, now it is different.",
+        "fr": "Früher compare le passé et le présent : avant c’était ainsi, maintenant c’est différent.",
+        "de": "Früher vergleicht die Vergangenheit mit der Gegenwart: Früher war es so, heute ist es anders."
+      },
       "explanation": {
-        "en": "Früher describes how things were in the past, in contrast to now.",
-        "fr": "Früher décrit comment les choses étaient dans le passé, par contraste avec le présent.",
-        "de": "Früher beschreibt, wie es in der Vergangenheit war, im Gegensatz zu jetzt."
+        "en": "Früher means in earlier times, as opposed to now.",
+        "fr": "Früher signifie autrefois, par opposition à maintenant.",
+        "de": "Früher bedeutet in früherer Zeit, im Gegensatz zu heute."
       },
       "genderExplanation": null,
       "matchingLabel": null,
       "examPrompt": {
-        "en": "formerly (earlier in life, not now)",
-        "fr": "autrefois (avant, pas maintenant)"
+        "en": "formerly, in earlier times (not now)",
+        "fr": "autrefois, dans le passé (plus maintenant)"
       },
       "gap": {
-        "before": "Jetzt wohne ich in Kassel, aber ",
-        "after": " wohnte ich in Izmir.",
+        "before": "Heute fahre ich mit dem Bus, aber ",
+        "after": " bin ich immer mit dem Fahrrad gefahren.",
         "accepted": { "answers": ["früher"] },
-        "referenceTargetIds": ["frueher", "uebermorgen", "bald", "morgens"],
+        "referenceTargetIds": ["frueher", "uebermorgen", "gleich", "nie"],
         "explanation": {
-          "en": "The contrast with “now” points to the past, so früher fits.",
-          "fr": "Le contraste avec « maintenant » indique le passé, donc früher convient.",
-          "de": "Der Gegensatz zu „jetzt“ weist auf die Vergangenheit, also passt früher."
+          "en": "The sentence contrasts today with the past: früher fits.",
+          "fr": "La phrase oppose aujourd’hui au passé : früher convient.",
+          "de": "Der Satz stellt heute und die Vergangenheit gegenüber: früher passt."
         }
       },
-      "listeningOptionTargetIds": ["frueher", "gleich", "selten", "bald"]
+      "listeningOptionTargetIds": ["frueher", "bald", "gleich", "selten"]
     },
     {
       "id": "gleich",
       "term": "gleich",
-      "translations": { "en": ["in a moment"], "fr": ["tout de suite"] },
+      "translations": {
+        "en": ["in a moment", "right away"],
+        "fr": ["tout de suite", "dans un instant"]
+      },
       "wordClass": "adverb",
       "genders": [],
       "number": null,
@@ -252,30 +257,30 @@
       "pronunciation": "/ɡlaɪ̯ç/",
       "difficulty": "core",
       "context": {
-        "sentence": "Ich komme gleich.",
-        "translation": { "en": "I am coming in a moment.", "fr": "J’arrive tout de suite." }
+        "sentence": "Ich rufe dich gleich an.",
+        "translation": { "en": "I’ll call you in a moment.", "fr": "Je t’appelle tout de suite." }
       },
       "ambiguityNote": null,
       "explanation": {
         "en": "Gleich means in a few minutes, very soon.",
         "fr": "Gleich signifie dans quelques minutes, très bientôt.",
-        "de": "Gleich bedeutet: in wenigen Minuten, sehr bald."
+        "de": "Gleich bedeutet in ein paar Minuten, sehr bald."
       },
       "genderExplanation": null,
       "matchingLabel": null,
-      "examPrompt": { "en": "in a moment (right away)", "fr": "tout de suite (dans un instant)" },
+      "examPrompt": { "en": "right away, in a moment", "fr": "tout de suite, dans un instant" },
       "gap": {
         "before": "Warte bitte, ich komme ",
         "after": " zu dir.",
         "accepted": { "answers": ["gleich"] },
-        "referenceTargetIds": ["gleich", "vorgestern", "nie", "damals"],
+        "referenceTargetIds": ["gleich", "damals", "vorgestern", "morgens"],
         "explanation": {
-          "en": "“Please wait” shows it will happen in a moment, so gleich fits.",
-          "fr": "« Attends » montre que cela aura lieu dans un instant, donc gleich convient.",
-          "de": "„Warte bitte“ zeigt, dass es gleich passiert, also passt gleich."
+          "en": "Someone is asked to wait, so the action is about to happen: gleich fits.",
+          "fr": "On demande d’attendre, donc l’action va avoir lieu dans un instant : gleich convient.",
+          "de": "Man soll warten, also passiert es gleich: gleich passt."
         }
       },
-      "listeningOptionTargetIds": ["gleich", "frueher", "selten", "immer"]
+      "listeningOptionTargetIds": ["frueher", "bald", "gleich", "selten"]
     },
     {
       "id": "bald",
@@ -291,38 +296,42 @@
       "pronunciation": "/balt/",
       "difficulty": "core",
       "context": {
-        "sentence": "Bald habe ich Urlaub.",
-        "translation": {
-          "en": "Soon I will be on holiday.",
-          "fr": "Bientôt, j’aurai des vacances."
-        }
+        "sentence": "Bald sind Ferien.",
+        "translation": { "en": "Holidays are coming soon.", "fr": "Les vacances arrivent bientôt." }
       },
-      "ambiguityNote": null,
+      "ambiguityNote": {
+        "en": "Bald is less exact than gleich: it can be days or weeks, not only minutes.",
+        "fr": "Bald est moins précis que gleich : cela peut être des jours ou des semaines, pas seulement des minutes.",
+        "de": "Bald ist ungenauer als gleich: Es können Tage oder Wochen sein, nicht nur Minuten."
+      },
       "explanation": {
-        "en": "Bald means in the near future, but not as quickly as gleich.",
-        "fr": "Bald signifie dans un futur proche, mais moins vite que gleich.",
-        "de": "Bald bedeutet: in naher Zukunft, aber nicht so schnell wie gleich."
+        "en": "Bald means in the near future, but not necessarily in a few minutes.",
+        "fr": "Bald signifie dans un futur proche, pas forcément dans quelques minutes.",
+        "de": "Bald bedeutet in naher Zukunft, aber nicht unbedingt in ein paar Minuten."
       },
       "genderExplanation": null,
       "matchingLabel": null,
-      "examPrompt": null,
+      "examPrompt": {
+        "en": "soon (in a few days or weeks)",
+        "fr": "bientôt (dans quelques jours ou semaines)"
+      },
       "gap": {
-        "before": "Es ist schon Juni. Der Sommer ist ",
-        "after": " da.",
+        "before": "Nur noch zwei Wochen, dann habe ich Urlaub. Der Urlaub beginnt ",
+        "after": ".",
         "accepted": { "answers": ["bald"] },
-        "referenceTargetIds": ["bald", "vorgestern", "selten", "damals"],
+        "referenceTargetIds": ["bald", "vorgestern", "damals", "nie"],
         "explanation": {
-          "en": "In June summer is near, so bald fits.",
-          "fr": "En juin, l’été est proche, donc bald convient.",
-          "de": "Im Juni ist der Sommer nah, also passt bald."
+          "en": "The holiday starts in two weeks, so bald fits.",
+          "fr": "Les vacances commencent dans deux semaines : bald convient.",
+          "de": "Der Urlaub beginnt in zwei Wochen, also passt bald."
         }
       },
-      "listeningOptionTargetIds": ["bald", "gleich", "damals", "abends"]
+      "listeningOptionTargetIds": ["frueher", "bald", "gleich", "selten"]
     },
     {
       "id": "morgens",
       "term": "morgens",
-      "translations": { "en": ["in the mornings"], "fr": ["le matin"] },
+      "translations": { "en": ["in the morning"], "fr": ["le matin"] },
       "wordClass": "adverb",
       "genders": [],
       "number": null,
@@ -331,37 +340,37 @@
       "articleException": null,
       "genderVariants": [],
       "pronunciation": "/ˈmɔʁɡn̩s/",
-      "difficulty": "demanding",
+      "difficulty": "core",
       "context": {
         "sentence": "Morgens trinke ich Tee.",
-        "translation": { "en": "In the mornings I drink tea.", "fr": "Le matin, je bois du thé." }
+        "translation": { "en": "In the morning I drink tea.", "fr": "Le matin, je bois du thé." }
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "Morgens means every morning, as a habit.",
-        "fr": "Morgens signifie chaque matin, comme habitude.",
-        "de": "Morgens bedeutet: jeden Morgen, als Gewohnheit."
+        "en": "Morgens means every morning, in the morning as a habit.",
+        "fr": "Morgens signifie tous les matins, le matin comme habitude.",
+        "de": "Morgens bedeutet jeden Morgen, als Gewohnheit."
       },
       "genderExplanation": null,
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Ich trinke ",
-        "after": " Kaffee, aber nicht am Abend.",
+        "before": "Ich stehe ",
+        "after": " um sechs Uhr auf, dann frühstücke ich.",
         "accepted": { "answers": ["morgens"] },
         "referenceTargetIds": ["morgens", "abends", "vorgestern", "damals"],
         "explanation": {
-          "en": "“Not in the evening” means the coffee is in the morning, so morgens fits.",
-          "fr": "« Pas le soir » signifie que le café se boit le matin, donc morgens convient.",
-          "de": "„Nicht am Abend“ heißt, der Kaffee ist am Morgen, also passt morgens."
+          "en": "You have breakfast after getting up, so morgens fits.",
+          "fr": "On prend le petit-déjeuner après le lever : morgens convient.",
+          "de": "Man frühstückt nach dem Aufstehen, also passt morgens."
         }
       },
-      "listeningOptionTargetIds": ["morgens", "montags", "abends", "uebermorgen"]
+      "listeningOptionTargetIds": ["vorgestern", "uebermorgen", "morgens", "montags"]
     },
     {
       "id": "abends",
       "term": "abends",
-      "translations": { "en": ["in the evenings"], "fr": ["le soir"] },
+      "translations": { "en": ["in the evening"], "fr": ["le soir"] },
       "wordClass": "adverb",
       "genders": [],
       "number": null,
@@ -370,35 +379,32 @@
       "articleException": null,
       "genderVariants": [],
       "pronunciation": "/ˈaːbn̩ts/",
-      "difficulty": "demanding",
+      "difficulty": "core",
       "context": {
-        "sentence": "Abends sehe ich gern einen Film.",
-        "translation": {
-          "en": "In the evenings I like to watch a film.",
-          "fr": "Le soir, j’aime regarder un film."
-        }
+        "sentence": "Abends lese ich gern.",
+        "translation": { "en": "In the evening I like reading.", "fr": "Le soir, j’aime lire." }
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "Abends means every evening, as a habit.",
-        "fr": "Abends signifie chaque soir, comme habitude.",
-        "de": "Abends bedeutet: jeden Abend, als Gewohnheit."
+        "en": "Abends means every evening, in the evening as a habit.",
+        "fr": "Abends signifie tous les soirs, le soir comme habitude.",
+        "de": "Abends bedeutet jeden Abend, als Gewohnheit."
       },
       "genderExplanation": null,
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Die Kinder gehen ",
-        "after": " um 20 Uhr ins Bett, wenn es dunkel wird.",
+        "before": "Wenn die Sonne untergeht, essen wir ",
+        "after": " zusammen.",
         "accepted": { "answers": ["abends"] },
         "referenceTargetIds": ["abends", "morgens", "vorgestern", "damals"],
         "explanation": {
-          "en": "It gets dark in the evening, so abends fits.",
-          "fr": "Il fait nuit le soir, donc abends convient.",
-          "de": "Es wird am Abend dunkel, also passt abends."
+          "en": "The sun sets in the evening, so abends fits.",
+          "fr": "Le soleil se couche le soir : abends convient.",
+          "de": "Die Sonne geht am Abend unter, also passt abends."
         }
       },
-      "listeningOptionTargetIds": ["abends", "morgens", "montags", "bald"]
+      "listeningOptionTargetIds": ["damals", "manchmal", "montags", "abends"]
     },
     {
       "id": "montags",
@@ -412,35 +418,35 @@
       "articleException": null,
       "genderVariants": [],
       "pronunciation": "/ˈmoːntaːks/",
-      "difficulty": "demanding",
+      "difficulty": "core",
       "context": {
-        "sentence": "Montags habe ich Deutschkurs.",
+        "sentence": "Montags arbeite ich zu Hause.",
         "translation": {
-          "en": "On Mondays I have a German class.",
-          "fr": "Le lundi, j’ai cours d’allemand."
+          "en": "On Mondays I work from home.",
+          "fr": "Le lundi, je travaille à la maison."
         }
       },
       "ambiguityNote": null,
       "explanation": {
         "en": "Montags means every Monday. Other days work the same way: dienstags, mittwochs.",
-        "fr": "Montags signifie chaque lundi. Les autres jours se forment pareil : dienstags, mittwochs.",
-        "de": "Montags bedeutet: jeden Montag. Die anderen Tage funktionieren genauso: dienstags, mittwochs."
+        "fr": "Montags signifie chaque lundi. Les autres jours se forment de la même façon : dienstags, mittwochs.",
+        "de": "Montags bedeutet jeden Montag. Die anderen Tage funktionieren genauso: dienstags, mittwochs."
       },
       "genderExplanation": null,
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Ich habe ",
-        "after": " Deutschkurs. Der Kurs ist jeden Montag.",
+        "before": "Der Deutschkurs ist jeden Montag. Ich habe ",
+        "after": " Deutschkurs.",
         "accepted": { "answers": ["montags"] },
-        "referenceTargetIds": ["montags", "vorgestern", "damals", "nie"],
+        "referenceTargetIds": ["montags", "vorgestern", "damals", "selten"],
         "explanation": {
-          "en": "“Every Monday” is montags.",
-          "fr": "« Chaque lundi » se dit montags.",
-          "de": "„Jeden Montag“ heißt montags."
+          "en": "The course is every Monday, so montags fits.",
+          "fr": "Le cours a lieu chaque lundi : montags convient.",
+          "de": "Der Kurs ist jeden Montag, also passt montags."
         }
       },
-      "listeningOptionTargetIds": ["montags", "morgens", "manchmal", "damals"]
+      "listeningOptionTargetIds": ["vorgestern", "uebermorgen", "morgens", "montags"]
     },
     {
       "id": "immer",
@@ -456,27 +462,27 @@
       "pronunciation": "/ˈɪmɐ/",
       "difficulty": "core",
       "context": {
-        "sentence": "Ich trinke immer Tee.",
-        "translation": { "en": "I always drink tea.", "fr": "Je bois toujours du thé." }
+        "sentence": "Er ist immer freundlich.",
+        "translation": { "en": "He is always friendly.", "fr": "Il est toujours aimable." }
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "Immer means every time, one hundred percent.",
-        "fr": "Immer signifie à chaque fois, cent pour cent.",
-        "de": "Immer bedeutet: jedes Mal, hundert Prozent."
+        "en": "Immer means every time, without exception.",
+        "fr": "Immer signifie chaque fois, sans exception.",
+        "de": "Immer bedeutet jedes Mal, ohne Ausnahme."
       },
       "genderExplanation": null,
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Mein Bruder ist ",
-        "after": " pünktlich. Er kommt jeden Tag rechtzeitig.",
+        "before": "Meine Oma trinkt ",
+        "after": " Tee, ohne Ausnahme, jeden Tag.",
         "accepted": { "answers": ["immer"] },
-        "referenceTargetIds": ["immer", "nie", "vorgestern", "gleich"],
+        "referenceTargetIds": ["immer", "nie", "selten", "manchmal"],
         "explanation": {
-          "en": "“Every day on time” means always, so immer fits.",
-          "fr": "« Chaque jour à l’heure » signifie toujours, donc immer convient.",
-          "de": "„Jeden Tag rechtzeitig“ heißt immer, also passt immer."
+          "en": "Without exception, every day: that is immer.",
+          "fr": "Sans exception, tous les jours : c’est immer.",
+          "de": "Ohne Ausnahme, jeden Tag: das ist immer."
         }
       },
       "listeningOptionTargetIds": ["immer", "nie", "oft", "selten"]
@@ -495,14 +501,14 @@
       "pronunciation": "/ɔft/",
       "difficulty": "core",
       "context": {
-        "sentence": "Wir gehen oft ins Café.",
-        "translation": { "en": "We often go to the café.", "fr": "Nous allons souvent au café." }
+        "sentence": "Wir fahren oft ans Meer.",
+        "translation": { "en": "We often go to the sea.", "fr": "Nous allons souvent à la mer." }
       },
       "ambiguityNote": null,
       "explanation": {
         "en": "Oft means many times, but not every time.",
-        "fr": "Oft signifie beaucoup de fois, mais pas à chaque fois.",
-        "de": "Oft bedeutet: viele Male, aber nicht jedes Mal."
+        "fr": "Oft signifie plusieurs fois, mais pas chaque fois.",
+        "de": "Oft bedeutet viele Male, aber nicht jedes Mal."
       },
       "genderExplanation": null,
       "matchingLabel": null,
@@ -511,14 +517,14 @@
         "before": "Ich gehe ",
         "after": " ins Kino, fast jede Woche.",
         "accepted": { "answers": ["oft"] },
-        "referenceTargetIds": ["oft", "nie", "vorgestern", "bald"],
+        "referenceTargetIds": ["oft", "selten", "nie", "immer"],
         "explanation": {
-          "en": "“Almost every week” means often, so oft fits.",
-          "fr": "« Presque chaque semaine » signifie souvent, donc oft convient.",
-          "de": "„Fast jede Woche“ heißt oft, also passt oft."
+          "en": "Almost every week is often, but not always: oft fits.",
+          "fr": "Presque chaque semaine, c’est souvent mais pas toujours : oft convient.",
+          "de": "Fast jede Woche ist häufig, aber nicht immer: oft passt."
         }
       },
-      "listeningOptionTargetIds": ["oft", "nie", "immer", "selten"]
+      "listeningOptionTargetIds": ["immer", "nie", "oft", "selten"]
     },
     {
       "id": "manchmal",
@@ -534,33 +540,30 @@
       "pronunciation": "/ˈmançmaːl/",
       "difficulty": "core",
       "context": {
-        "sentence": "Manchmal esse ich im Restaurant.",
-        "translation": {
-          "en": "Sometimes I eat in a restaurant.",
-          "fr": "Parfois, je mange au restaurant."
-        }
+        "sentence": "Manchmal gehe ich zu Fuß.",
+        "translation": { "en": "Sometimes I walk.", "fr": "Parfois, je vais à pied." }
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "Manchmal means now and then, on some occasions.",
+        "en": "Manchmal means now and then, in some cases.",
         "fr": "Manchmal signifie de temps en temps, dans certains cas.",
-        "de": "Manchmal bedeutet: ab und zu, bei manchen Gelegenheiten."
+        "de": "Manchmal bedeutet ab und zu, in manchen Fällen."
       },
       "genderExplanation": null,
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Ich trinke ",
-        "after": " Tee, aber nicht jeden Tag.",
+        "before": "Ich koche nicht jeden Tag, aber ",
+        "after": " koche ich, zum Beispiel am Sonntag.",
         "accepted": { "answers": ["manchmal"] },
-        "referenceTargetIds": ["manchmal", "immer", "vorgestern", "uebermorgen"],
+        "referenceTargetIds": ["manchmal", "immer", "nie", "vorgestern"],
         "explanation": {
-          "en": "“Not every day” means now and then, so manchmal fits.",
-          "fr": "« Pas tous les jours » signifie de temps en temps, donc manchmal convient.",
-          "de": "„Nicht jeden Tag“ heißt ab und zu, also passt manchmal."
+          "en": "Not every day, but now and then: manchmal fits.",
+          "fr": "Pas tous les jours, mais de temps en temps : manchmal convient.",
+          "de": "Nicht jeden Tag, aber ab und zu: manchmal passt."
         }
       },
-      "listeningOptionTargetIds": ["manchmal", "damals", "montags", "immer"]
+      "listeningOptionTargetIds": ["damals", "manchmal", "montags", "abends"]
     },
     {
       "id": "selten",
@@ -574,32 +577,32 @@
       "articleException": null,
       "genderVariants": [],
       "pronunciation": "/ˈzɛltn̩/",
-      "difficulty": "core",
+      "difficulty": "demanding",
       "context": {
-        "sentence": "Mein Vater kocht selten.",
-        "translation": { "en": "My father rarely cooks.", "fr": "Mon père cuisine rarement." }
+        "sentence": "Sie ruft selten an.",
+        "translation": { "en": "She rarely calls.", "fr": "Elle appelle rarement." }
       },
       "ambiguityNote": null,
       "explanation": {
         "en": "Selten means very few times, almost never.",
         "fr": "Selten signifie très peu de fois, presque jamais.",
-        "de": "Selten bedeutet: sehr wenige Male, fast nie."
+        "de": "Selten bedeutet sehr wenige Male, fast nie."
       },
       "genderExplanation": null,
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Ich esse ",
-        "after": " Fleisch, nur zweimal im Jahr.",
+        "before": "Ich sehe meine Cousine ",
+        "after": ", nur ein- oder zweimal im Jahr.",
         "accepted": { "answers": ["selten"] },
-        "referenceTargetIds": ["selten", "immer", "oft", "gleich"],
+        "referenceTargetIds": ["selten", "oft", "immer", "morgens"],
         "explanation": {
-          "en": "“Only twice a year” means rarely, so selten fits.",
-          "fr": "« Seulement deux fois par an » signifie rarement, donc selten convient.",
-          "de": "„Nur zweimal im Jahr“ heißt selten, also passt selten."
+          "en": "One or two times a year is very rare: selten fits.",
+          "fr": "Une ou deux fois par an, c’est très rare : selten convient.",
+          "de": "Ein- oder zweimal im Jahr ist sehr wenig: selten passt."
         }
       },
-      "listeningOptionTargetIds": ["selten", "frueher", "oft", "nie"]
+      "listeningOptionTargetIds": ["immer", "nie", "oft", "selten"]
     },
     {
       "id": "nie",
@@ -615,30 +618,33 @@
       "pronunciation": "/niː/",
       "difficulty": "core",
       "context": {
-        "sentence": "Ich trinke nie Kaffee.",
-        "translation": { "en": "I never drink coffee.", "fr": "Je ne bois jamais de café." }
+        "sentence": "Ich war noch nie in Wien.",
+        "translation": {
+          "en": "I have never been to Vienna.",
+          "fr": "Je ne suis jamais allé à Vienne."
+        }
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "Nie means not one single time. It already makes the sentence negative, so no nicht is needed.",
-        "fr": "Nie signifie pas une seule fois. Il rend déjà la phrase négative, donc nicht n’est pas nécessaire.",
-        "de": "Nie bedeutet: kein einziges Mal. Es macht den Satz schon negativ, nicht ist also nicht nötig."
+        "en": "Nie means not at any time, zero times.",
+        "fr": "Nie signifie à aucun moment, zéro fois.",
+        "de": "Nie bedeutet zu keiner Zeit, null Mal."
       },
       "genderExplanation": null,
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
         "before": "Ich esse ",
-        "after": " Fisch, ich mag ihn überhaupt nicht.",
+        "after": " Fleisch, auch nicht am Sonntag.",
         "accepted": { "answers": ["nie"] },
-        "referenceTargetIds": ["nie", "immer", "oft", "manchmal"],
+        "referenceTargetIds": ["nie", "oft", "immer", "manchmal"],
         "explanation": {
-          "en": "“Not at all” means not once, so nie fits.",
-          "fr": "« Pas du tout » signifie pas une seule fois, donc nie convient.",
-          "de": "„Überhaupt nicht“ heißt kein einziges Mal, also passt nie."
+          "en": "Not even on Sunday means never: nie fits.",
+          "fr": "Pas même le dimanche, cela veut dire jamais : nie convient.",
+          "de": "Auch nicht am Sonntag heißt null Mal: nie passt."
         }
       },
-      "listeningOptionTargetIds": ["nie", "oft", "immer", "selten"]
+      "listeningOptionTargetIds": ["immer", "nie", "oft", "selten"]
     }
   ],
   "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }

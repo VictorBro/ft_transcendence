@@ -1,0 +1,1284 @@
+{
+  "schemaVersion": 2,
+  "id": "de-telling-about-a-past-experience",
+  "lang": "de",
+  "level": "B1",
+  "locales": ["en", "fr", "de"],
+  "title": "Von einem Erlebnis erzählen",
+  "objective": {
+    "en": "Tell a personal experience vividly and say how you felt: Damals war ich nervös. Plötzlich klingelte das Telefon.",
+    "fr": "Raconter une expérience personnelle de façon vivante et dire ce qu’on a ressenti : Damals war ich nervös. Plötzlich klingelte das Telefon.",
+    "de": "Ein Erlebnis lebendig erzählen und sagen, wie man sich dabei gefühlt hat: Damals war ich nervös. Plötzlich klingelte das Telefon."
+  },
+  "estimatedMinutes": 17,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:32:41.635Z",
+    "inputHashes": {
+      "outline": "383fa98ef25cd587723224a2b68806896167eb9ed96cfef3a1a6e9bd261be244",
+      "brief": "919137bf6b8821d735e04bf0eb2f90e86b8756ee6b3fa2a9b44cf1c4bd1d87e4"
+    }
+  },
+  "kind": "functions",
+  "theme": "personal_identification",
+  "steps": [
+    {
+      "id": "flashcards",
+      "stage": "flashcards",
+      "role": "presentation",
+      "label": { "en": "Flashcards", "fr": "Cartes mémoire", "de": "Karteikarten" },
+      "pages": [
+        {
+          "pageId": "cards-expressions",
+          "estimatedDurationS": 72,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Recall each expression, then turn the card to check it.",
+            "fr": "Rappelez-vous chaque expression, puis retournez la carte pour vérifier.",
+            "de": "Erinnere dich an jeden Ausdruck und dreh dann die Karte um."
+          },
+          "items": [
+            {
+              "type": "function_flashcards",
+              "itemId": "cards-expressions",
+              "side": "expressions",
+              "ids": [
+                "damals-war-ich",
+                "ploetzlich",
+                "zum-glueck",
+                "am-ende-war-ich",
+                "ich-fuehlte-mich",
+                "was-dann-passiert"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue",
+      "stage": "dialogue",
+      "role": "presentation",
+      "label": { "en": "Dialogue", "fr": "Dialogue", "de": "Dialog" },
+      "pages": [
+        {
+          "pageId": "dialogue",
+          "estimatedDurationS": 140,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read and listen. Turn a line to see its translation and a note.",
+            "fr": "Lisez et écoutez. Retournez une réplique pour voir sa traduction et une remarque.",
+            "de": "Lies und hör zu. Dreh eine Zeile um, um Übersetzung und Hinweis zu sehen."
+          },
+          "items": [
+            {
+              "type": "function_dialogue",
+              "itemId": "dialogue",
+              "lines": [
+                {
+                  "lineId": "line-1",
+                  "roleId": "zuhoerer",
+                  "text": "Erzähl mal von deinem Vorstellungsgespräch letztes Jahr!",
+                  "translation": {
+                    "en": "Tell me about your job interview last year!",
+                    "fr": "Raconte-moi ton entretien d’embauche de l’année dernière !"
+                  },
+                  "note": {
+                    "en": "The listener asks for a story.",
+                    "fr": "L’auditeur demande un récit.",
+                    "de": "Der Zuhörer bittet um eine Erzählung."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-2",
+                  "roleId": "erzaehlerin",
+                  "text": "Damals war ich ziemlich nervös.",
+                  "translation": {
+                    "en": "Back then I was quite nervous.",
+                    "fr": "À l’époque, j’étais assez nerveuse."
+                  },
+                  "note": {
+                    "en": "Damals sets the scene in the past; war ich gives the feeling.",
+                    "fr": "Damals pose la scène dans le passé ; war ich donne le sentiment.",
+                    "de": "Damals stellt die Szene in die Vergangenheit; war ich nennt das Gefühl."
+                  },
+                  "expressionIds": ["damals-war-ich"]
+                },
+                {
+                  "lineId": "line-3",
+                  "roleId": "zuhoerer",
+                  "text": "Warum denn?",
+                  "translation": { "en": "Why?", "fr": "Pourquoi donc ?" },
+                  "note": {
+                    "en": "A short question that invites more detail.",
+                    "fr": "Une courte question qui invite à donner plus de détails.",
+                    "de": "Eine kurze Frage, die zu mehr Details einlädt."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-4",
+                  "roleId": "erzaehlerin",
+                  "text": "Ich fühlte mich ganz unsicher, denn ich suchte schon lange eine Stelle.",
+                  "translation": {
+                    "en": "I felt completely unsure, because I had been looking for a job for a long time.",
+                    "fr": "Je me sentais très incertaine, car je cherchais un emploi depuis longtemps."
+                  },
+                  "note": {
+                    "en": "Ich fühlte mich + adjective names the feeling.",
+                    "fr": "Ich fühlte mich + adjectif nomme le sentiment.",
+                    "de": "Ich fühlte mich + Adjektiv nennt das Gefühl."
+                  },
+                  "expressionIds": ["ich-fuehlte-mich"]
+                },
+                {
+                  "lineId": "line-5",
+                  "roleId": "zuhoerer",
+                  "text": "Und wie lief das Gespräch?",
+                  "translation": {
+                    "en": "And how did the interview go?",
+                    "fr": "Et comment l’entretien s’est-il passé ?"
+                  },
+                  "note": {
+                    "en": "The listener asks about the course of events.",
+                    "fr": "L’auditeur interroge sur le déroulement.",
+                    "de": "Der Zuhörer fragt nach dem Verlauf."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-6",
+                  "roleId": "erzaehlerin",
+                  "text": "Zum Glück war die Chefin sehr freundlich.",
+                  "translation": {
+                    "en": "Luckily, the boss was very friendly.",
+                    "fr": "Heureusement, la patronne était très aimable."
+                  },
+                  "note": {
+                    "en": "Zum Glück introduces a good turn of events.",
+                    "fr": "Zum Glück introduit une tournure heureuse.",
+                    "de": "Zum Glück leitet eine gute Wendung ein."
+                  },
+                  "expressionIds": ["zum-glueck"]
+                },
+                {
+                  "lineId": "line-7",
+                  "roleId": "zuhoerer",
+                  "text": "Was ist dann passiert?",
+                  "translation": {
+                    "en": "What happened then?",
+                    "fr": "Que s’est-il passé ensuite ?"
+                  },
+                  "note": {
+                    "en": "This question keeps the story going.",
+                    "fr": "Cette question fait avancer le récit.",
+                    "de": "Diese Frage bringt die Geschichte weiter."
+                  },
+                  "expressionIds": ["was-dann-passiert"]
+                },
+                {
+                  "lineId": "line-8",
+                  "roleId": "erzaehlerin",
+                  "text": "Ich fuhr nach Hause. Plötzlich klingelte das Telefon.",
+                  "translation": {
+                    "en": "I drove home. Suddenly the phone rang.",
+                    "fr": "Je suis rentrée en voiture. Soudain, le téléphone a sonné."
+                  },
+                  "note": {
+                    "en": "Plötzlich is followed by the verb in the simple past.",
+                    "fr": "Plötzlich est suivi du verbe au prétérit.",
+                    "de": "Nach Plötzlich steht das Verb im Präteritum."
+                  },
+                  "expressionIds": ["ploetzlich"]
+                },
+                {
+                  "lineId": "line-9",
+                  "roleId": "zuhoerer",
+                  "text": "Und wer war das?",
+                  "translation": { "en": "And who was that?", "fr": "Et qui était-ce ?" },
+                  "note": {
+                    "en": "The listener is curious.",
+                    "fr": "L’auditeur est curieux.",
+                    "de": "Der Zuhörer ist neugierig."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-10",
+                  "roleId": "erzaehlerin",
+                  "text": "Die Chefin! Ich bekam die Stelle. Am Ende war ich richtig stolz.",
+                  "translation": {
+                    "en": "The boss! I got the job. In the end I was really proud.",
+                    "fr": "La patronne ! J’ai eu le poste. À la fin, j’étais vraiment fière."
+                  },
+                  "note": {
+                    "en": "Am Ende war ich closes the story with the final feeling.",
+                    "fr": "Am Ende war ich termine le récit avec le sentiment final.",
+                    "de": "Am Ende war ich schließt die Geschichte mit dem Schlussgefühl ab."
+                  },
+                  "expressionIds": ["am-ende-war-ich"]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matching",
+      "stage": "matching",
+      "role": "exercise",
+      "label": { "en": "Matching", "fr": "Association", "de": "Zuordnen" },
+      "pages": [
+        {
+          "pageId": "match-expressions-1",
+          "estimatedDurationS": 72,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each expression with its translation.",
+            "fr": "Associez chaque expression à sa traduction.",
+            "de": "Ordne jedem Ausdruck seine Übersetzung zu."
+          },
+          "items": [
+            {
+              "type": "function_matching",
+              "itemId": "match-expressions-1",
+              "side": "expressions",
+              "pairs": [
+                {
+                  "id": "damals-war-ich",
+                  "answerExplanation": {
+                    "en": "Sets a past scene and says how you felt: Damals war ich + adjective.",
+                    "fr": "Pose une scène passée et dit ce qu’on ressentait : Damals war ich + adjectif.",
+                    "de": "Beschreibt eine Szene in der Vergangenheit und wie man sich fühlte: Damals war ich + Adjektiv."
+                  }
+                },
+                {
+                  "id": "ploetzlich",
+                  "answerExplanation": {
+                    "en": "Introduces a sudden event: Plötzlich + verb in the simple past.",
+                    "fr": "Introduit un événement soudain : Plötzlich + verbe au prétérit.",
+                    "de": "Leitet ein plötzliches Ereignis ein: Plötzlich + Verb im Präteritum."
+                  }
+                },
+                {
+                  "id": "zum-glueck",
+                  "answerExplanation": {
+                    "en": "Says that something turned out well: Zum Glück + verb.",
+                    "fr": "Dit que quelque chose s’est bien passé : Zum Glück + verbe.",
+                    "de": "Sagt, dass etwas gut ausging: Zum Glück + Verb."
+                  }
+                },
+                {
+                  "id": "am-ende-war-ich",
+                  "answerExplanation": {
+                    "en": "Closes the story and gives the final feeling: Am Ende war ich + adjective.",
+                    "fr": "Termine le récit et donne le sentiment final : Am Ende war ich + adjectif.",
+                    "de": "Schließt die Geschichte ab und nennt das Gefühl am Schluss: Am Ende war ich + Adjektiv."
+                  }
+                },
+                {
+                  "id": "ich-fuehlte-mich",
+                  "answerExplanation": {
+                    "en": "Names a feeling in the past: Ich fühlte mich + adjective.",
+                    "fr": "Nomme un sentiment passé : Ich fühlte mich + adjectif.",
+                    "de": "Nennt ein Gefühl in der Vergangenheit: Ich fühlte mich + Adjektiv."
+                  }
+                },
+                {
+                  "id": "was-dann-passiert",
+                  "answerExplanation": {
+                    "en": "The listener's question to keep the story going.",
+                    "fr": "La question de l’auditeur pour faire avancer le récit.",
+                    "de": "Die Frage des Zuhörers, damit die Geschichte weitergeht."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-gaps",
+      "stage": "dialogue_gaps",
+      "role": "exercise",
+      "label": { "en": "Dialogue gaps", "fr": "Dialogue à trous", "de": "Dialoglücken" },
+      "pages": [
+        {
+          "pageId": "gap-1",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-1",
+              "expressionId": "damals-war-ich",
+              "context": {
+                "roleId": "zuhoerer",
+                "text": "Wie hast du dich vor dem Gespräch gefühlt?"
+              },
+              "roleId": "erzaehlerin",
+              "before": "",
+              "after": "ziemlich nervös.",
+              "choiceExpressionIds": [
+                "damals-war-ich",
+                "ploetzlich",
+                "zum-glueck",
+                "was-dann-passiert"
+              ],
+              "answerExplanation": {
+                "en": "Damals war ich + adjective describes the past feeling.",
+                "fr": "Damals war ich + adjectif décrit le sentiment passé.",
+                "de": "Damals war ich + Adjektiv beschreibt das Gefühl in der Vergangenheit."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-2",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-2",
+              "expressionId": "ploetzlich",
+              "context": { "roleId": "zuhoerer", "text": "Was war an dem Abend los?" },
+              "roleId": "erzaehlerin",
+              "before": "Wir saßen gemütlich zu Hause.",
+              "after": "klingelte es an der Tür.",
+              "choiceExpressionIds": [
+                "ploetzlich",
+                "damals-war-ich",
+                "am-ende-war-ich",
+                "ich-fuehlte-mich"
+              ],
+              "answerExplanation": {
+                "en": "A sudden event: Plötzlich, then the verb.",
+                "fr": "Un événement soudain : Plötzlich, puis le verbe.",
+                "de": "Ein plötzliches Ereignis: Plötzlich, dann das Verb."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-3",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-3",
+              "expressionId": "zum-glueck",
+              "context": { "roleId": "zuhoerer", "text": "Hattest du gestern Probleme?" },
+              "roleId": "erzaehlerin",
+              "before": "Ja. Ich verlor meinen Schlüssel.",
+              "after": "fand ihn meine Nachbarin.",
+              "choiceExpressionIds": [
+                "zum-glueck",
+                "damals-war-ich",
+                "am-ende-war-ich",
+                "ich-fuehlte-mich"
+              ],
+              "answerExplanation": {
+                "en": "A good turn after a problem: Zum Glück.",
+                "fr": "Une tournure heureuse après un problème : Zum Glück.",
+                "de": "Eine gute Wendung nach einem Problem: Zum Glück."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-4",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-4",
+              "expressionId": "am-ende-war-ich",
+              "context": { "roleId": "zuhoerer", "text": "Und nach dem Marathon?" },
+              "roleId": "erzaehlerin",
+              "before": "Ich lief den ganzen Marathon.",
+              "after": "total müde.",
+              "choiceExpressionIds": [
+                "am-ende-war-ich",
+                "ploetzlich",
+                "zum-glueck",
+                "was-dann-passiert"
+              ],
+              "answerExplanation": {
+                "en": "The end of the story and the final feeling: Am Ende war ich.",
+                "fr": "La fin du récit et le sentiment final : Am Ende war ich.",
+                "de": "Das Ende der Geschichte und das Schlussgefühl: Am Ende war ich."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-5",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-5",
+              "expressionId": "ich-fuehlte-mich",
+              "context": {
+                "roleId": "zuhoerer",
+                "text": "Wie war der erste Tag in der neuen Schule?"
+              },
+              "roleId": "erzaehlerin",
+              "before": "",
+              "after": "am Anfang ein bisschen fremd.",
+              "choiceExpressionIds": [
+                "ich-fuehlte-mich",
+                "ploetzlich",
+                "zum-glueck",
+                "was-dann-passiert"
+              ],
+              "answerExplanation": {
+                "en": "Ich fühlte mich + adjective names the feeling.",
+                "fr": "Ich fühlte mich + adjectif nomme le sentiment.",
+                "de": "Ich fühlte mich + Adjektiv nennt das Gefühl."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-6",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-6",
+              "expressionId": "was-dann-passiert",
+              "context": {
+                "roleId": "erzaehlerin",
+                "text": "Ich hörte ein lautes Geräusch aus der Küche."
+              },
+              "roleId": "zuhoerer",
+              "before": "Wirklich?",
+              "after": "Erzähl weiter!",
+              "choiceExpressionIds": [
+                "was-dann-passiert",
+                "damals-war-ich",
+                "ploetzlich",
+                "am-ende-war-ich"
+              ],
+              "answerExplanation": {
+                "en": "The listener asks what happened next.",
+                "fr": "L’auditeur demande ce qui s’est passé ensuite.",
+                "de": "Der Zuhörer fragt, wie es weiterging."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "word-order",
+      "stage": "word_order",
+      "role": "exercise",
+      "label": { "en": "Word order", "fr": "Ordre des mots", "de": "Wortstellung" },
+      "pages": [
+        {
+          "pageId": "order-1",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-1",
+              "expressionId": "damals-war-ich",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Damals" },
+                { "tokenId": "t2", "text": "war" },
+                { "tokenId": "t3", "text": "ich" },
+                { "tokenId": "t4", "text": "total" },
+                { "tokenId": "t5", "text": "aufgeregt" },
+                { "tokenId": "t6", "text": "." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]],
+              "answerExplanation": {
+                "en": "Damals starts the sentence, then the verb war and the subject ich.",
+                "fr": "Damals ouvre la phrase, puis viennent le verbe war et le sujet ich.",
+                "de": "Damals steht am Anfang, dann folgen das Verb war und das Subjekt ich."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-2",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-2",
+              "expressionId": "ploetzlich",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Plötzlich" },
+                { "tokenId": "t2", "text": "hörte" },
+                { "tokenId": "t3", "text": "ich" },
+                { "tokenId": "t4", "text": "einen" },
+                { "tokenId": "t5", "text": "lauten" },
+                { "tokenId": "t6", "text": "Knall" },
+                { "tokenId": "t7", "text": "." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7"]],
+              "answerExplanation": {
+                "en": "After Plötzlich the verb comes second, then the subject.",
+                "fr": "Après Plötzlich, le verbe est en deuxième position, puis vient le sujet.",
+                "de": "Nach Plötzlich steht das Verb an zweiter Stelle, dann das Subjekt."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-3",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-3",
+              "expressionId": "zum-glueck",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Zum" },
+                { "tokenId": "t2", "text": "Glück" },
+                { "tokenId": "t3", "text": "regnete" },
+                { "tokenId": "t4", "text": "es" },
+                { "tokenId": "t5", "text": "nicht" },
+                { "tokenId": "t6", "text": "." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]],
+              "answerExplanation": {
+                "en": "Zum Glück takes the first place, the verb comes right after it.",
+                "fr": "Zum Glück occupe la première place, le verbe vient juste après.",
+                "de": "Zum Glück steht an erster Stelle, direkt danach das Verb."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-4",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-4",
+              "expressionId": "am-ende-war-ich",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Am" },
+                { "tokenId": "t2", "text": "Ende" },
+                { "tokenId": "t3", "text": "war" },
+                { "tokenId": "t4", "text": "ich" },
+                { "tokenId": "t5", "text": "sehr" },
+                { "tokenId": "t6", "text": "glücklich" },
+                { "tokenId": "t7", "text": "." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7"]],
+              "answerExplanation": {
+                "en": "Am Ende, then war ich, then the feeling.",
+                "fr": "Am Ende, puis war ich, puis le sentiment.",
+                "de": "Am Ende, dann war ich, dann das Gefühl."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-5",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-5",
+              "expressionId": "ich-fuehlte-mich",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Ich" },
+                { "tokenId": "t2", "text": "fühlte" },
+                { "tokenId": "t3", "text": "mich" },
+                { "tokenId": "t4", "text": "sehr" },
+                { "tokenId": "t5", "text": "allein" },
+                { "tokenId": "t6", "text": "." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]],
+              "answerExplanation": {
+                "en": "Ich fühlte mich, then the adjective with its intensifier.",
+                "fr": "Ich fühlte mich, puis l’adjectif avec son adverbe d’intensité.",
+                "de": "Ich fühlte mich, dann das Adjektiv mit seiner Steigerung."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-6",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-6",
+              "expressionId": "was-dann-passiert",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Und" },
+                { "tokenId": "t2", "text": "was" },
+                { "tokenId": "t3", "text": "ist" },
+                { "tokenId": "t4", "text": "dann" },
+                { "tokenId": "t5", "text": "passiert" },
+                { "tokenId": "t6", "text": "?" }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]],
+              "answerExplanation": {
+                "en": "In the question the verb ist comes right after was; passiert closes it.",
+                "fr": "Dans la question, le verbe ist suit directement was ; passiert la termine.",
+                "de": "In der Frage steht das Verb ist direkt nach was; passiert steht am Ende."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "listening",
+      "stage": "listening",
+      "role": "exercise",
+      "label": { "en": "Listening", "fr": "Écoute", "de": "Hören" },
+      "pages": [
+        {
+          "pageId": "listening-1",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-1",
+              "expressionId": "damals-war-ich",
+              "context": {
+                "roleId": "zuhoerer",
+                "text": "Wie hast du dich vor der Prüfung gefühlt?"
+              },
+              "roleId": "erzaehlerin",
+              "options": [
+                { "optionId": "o1", "text": "Damals war ich sehr nervös." },
+                { "optionId": "o2", "text": "Plötzlich klingelte das Telefon." },
+                { "optionId": "o3", "text": "Was ist dann passiert?" },
+                { "optionId": "o4", "text": "Gestern ging ich ins Kino." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "The question is about a feeling in the past: Damals war ich + adjective.",
+                "fr": "La question porte sur un sentiment passé : Damals war ich + adjectif.",
+                "de": "Die Frage betrifft ein Gefühl in der Vergangenheit: Damals war ich + Adjektiv."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-2",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-2",
+              "expressionId": "ploetzlich",
+              "context": {
+                "roleId": "zuhoerer",
+                "text": "Du warst allein im Haus. Was hast du gehört?"
+              },
+              "roleId": "erzaehlerin",
+              "options": [
+                { "optionId": "o1", "text": "Plötzlich hörte ich Schritte im Flur." },
+                { "optionId": "o2", "text": "Damals war ich ziemlich nervös." },
+                { "optionId": "o3", "text": "Am Ende war ich richtig müde." },
+                { "optionId": "o4", "text": "Was ist dann passiert?" }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "She says what she heard, with a sudden event: Plötzlich hörte ich.",
+                "fr": "Elle dit ce qu’elle a entendu, avec un événement soudain : Plötzlich hörte ich.",
+                "de": "Sie sagt, was sie hörte, mit einem plötzlichen Ereignis: Plötzlich hörte ich."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-3",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-3",
+              "expressionId": "zum-glueck",
+              "context": { "roleId": "zuhoerer", "text": "Wie war das Wetter auf der Wanderung?" },
+              "roleId": "erzaehlerin",
+              "options": [
+                { "optionId": "o1", "text": "Zum Glück schien die Sonne den ganzen Tag." },
+                { "optionId": "o2", "text": "Ich fühlte mich ganz allein." },
+                { "optionId": "o3", "text": "Was ist dann passiert?" },
+                { "optionId": "o4", "text": "Plötzlich klingelte das Telefon." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "Only this reply talks about the weather, with Zum Glück for the good turn.",
+                "fr": "Seule cette réponse parle du temps, avec Zum Glück pour la tournure heureuse.",
+                "de": "Nur diese Antwort spricht vom Wetter, mit Zum Glück für die gute Wendung."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-4",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-4",
+              "expressionId": "am-ende-war-ich",
+              "context": { "roleId": "zuhoerer", "text": "Wie ging der Tag für dich zu Ende?" },
+              "roleId": "erzaehlerin",
+              "options": [
+                { "optionId": "o1", "text": "Am Ende war ich einfach nur glücklich." },
+                { "optionId": "o2", "text": "Zum Glück regnete es nicht." },
+                { "optionId": "o3", "text": "Was ist dann passiert?" },
+                { "optionId": "o4", "text": "Damals wohnte ich in Köln." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "The question is about the end of the day: Am Ende war ich + feeling.",
+                "fr": "La question porte sur la fin de la journée : Am Ende war ich + sentiment.",
+                "de": "Die Frage betrifft das Ende des Tages: Am Ende war ich + Gefühl."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-5",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-5",
+              "expressionId": "ich-fuehlte-mich",
+              "context": {
+                "roleId": "zuhoerer",
+                "text": "Du standest vor deiner Klasse. Wie hast du dich gefühlt?"
+              },
+              "roleId": "erzaehlerin",
+              "options": [
+                { "optionId": "o1", "text": "Ich fühlte mich ziemlich aufgeregt." },
+                { "optionId": "o2", "text": "Zum Glück regnete es nicht." },
+                { "optionId": "o3", "text": "Was ist dann passiert?" },
+                { "optionId": "o4", "text": "Plötzlich hörte ich einen Knall." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "She names her feeling: Ich fühlte mich + adjective.",
+                "fr": "Elle nomme son sentiment : Ich fühlte mich + adjectif.",
+                "de": "Sie nennt ihr Gefühl: Ich fühlte mich + Adjektiv."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-6",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-6",
+              "expressionId": "was-dann-passiert",
+              "context": {
+                "roleId": "erzaehlerin",
+                "text": "Ich öffnete die Tür, und niemand war da."
+              },
+              "roleId": "zuhoerer",
+              "options": [
+                { "optionId": "o1", "text": "Oh nein! Was ist dann passiert?" },
+                { "optionId": "o2", "text": "Damals war ich ziemlich nervös." },
+                { "optionId": "o3", "text": "Am Ende war ich richtig stolz." },
+                { "optionId": "o4", "text": "Zum Glück regnete es nicht." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "The listener reacts and asks what happened next.",
+                "fr": "L’auditeur réagit et demande ce qui s’est passé ensuite.",
+                "de": "Der Zuhörer reagiert und fragt, wie es weiterging."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "stage": "exam",
+      "role": "exam",
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam-replies-1",
+          "estimatedDurationS": 120,
+          "timeLimitS": 180,
+          "instructions": {
+            "en": "Build the answer. Not every word fits.",
+            "fr": "Construisez la réponse. Tous les mots ne servent pas.",
+            "de": "Bilde die Antwort. Nicht jedes Wort passt."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "reply-1",
+              "expressionId": "damals-war-ich",
+              "context": {
+                "roleId": "zuhoerer",
+                "text": "Wie hast du dich vor deinem ersten Auftritt gefühlt?"
+              },
+              "roleId": "erzaehlerin",
+              "tokens": [
+                { "tokenId": "t1", "text": "Damals" },
+                { "tokenId": "t2", "text": "war" },
+                { "tokenId": "t3", "text": "ich" },
+                { "tokenId": "t4", "text": "wahnsinnig" },
+                { "tokenId": "t5", "text": "aufgeregt" },
+                { "tokenId": "t6", "text": "." },
+                { "tokenId": "t7", "text": "mich" },
+                { "tokenId": "t8", "text": "dem" }
+              ],
+              "distractorTokenIds": ["t7", "t8"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]],
+              "answerExplanation": {
+                "en": "Damals war ich + adjective describes the past feeling.",
+                "fr": "Damals war ich + adjectif décrit le sentiment passé.",
+                "de": "Damals war ich + Adjektiv beschreibt das Gefühl in der Vergangenheit."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-2",
+              "expressionId": "ploetzlich",
+              "context": {
+                "roleId": "zuhoerer",
+                "text": "Du schliefst schon fast. Was weckte dich?"
+              },
+              "roleId": "erzaehlerin",
+              "tokens": [
+                { "tokenId": "t1", "text": "Plötzlich" },
+                { "tokenId": "t2", "text": "weckte" },
+                { "tokenId": "t3", "text": "mich" },
+                { "tokenId": "t4", "text": "ein" },
+                { "tokenId": "t5", "text": "lauter" },
+                { "tokenId": "t6", "text": "Knall" },
+                { "tokenId": "t7", "text": "." },
+                { "tokenId": "t8", "text": "dem" }
+              ],
+              "distractorTokenIds": ["t8"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7"]],
+              "answerExplanation": {
+                "en": "Plötzlich comes first, then the verb in the simple past.",
+                "fr": "Plötzlich vient en premier, puis le verbe au prétérit.",
+                "de": "Plötzlich steht zuerst, dann das Verb im Präteritum."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-3",
+              "expressionId": "zum-glueck",
+              "context": { "roleId": "zuhoerer", "text": "Hast du den Bus noch erreicht?" },
+              "roleId": "erzaehlerin",
+              "tokens": [
+                { "tokenId": "t1", "text": "Zum" },
+                { "tokenId": "t2", "text": "Glück" },
+                { "tokenId": "t3", "text": "kam" },
+                { "tokenId": "t4", "text": "der" },
+                { "tokenId": "t5", "text": "Bus" },
+                { "tokenId": "t6", "text": "zehn" },
+                { "tokenId": "t7", "text": "Minuten" },
+                { "tokenId": "t8", "text": "zu" },
+                { "tokenId": "t9", "text": "spät" },
+                { "tokenId": "t10", "text": "." },
+                { "tokenId": "t11", "text": "am" }
+              ],
+              "distractorTokenIds": ["t11"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9", "t10"]],
+              "answerExplanation": {
+                "en": "Zum Glück, then the verb kam, then the subject.",
+                "fr": "Zum Glück, puis le verbe kam, puis le sujet.",
+                "de": "Zum Glück, dann das Verb kam, dann das Subjekt."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-4",
+              "expressionId": "am-ende-war-ich",
+              "context": {
+                "roleId": "zuhoerer",
+                "text": "Und wie hast du dich nach dem Wettkampf gefühlt?"
+              },
+              "roleId": "erzaehlerin",
+              "tokens": [
+                { "tokenId": "t1", "text": "Am" },
+                { "tokenId": "t2", "text": "Ende" },
+                { "tokenId": "t3", "text": "war" },
+                { "tokenId": "t4", "text": "ich" },
+                { "tokenId": "t5", "text": "einfach" },
+                { "tokenId": "t6", "text": "nur" },
+                { "tokenId": "t7", "text": "erleichtert" },
+                { "tokenId": "t8", "text": "." },
+                { "tokenId": "t9", "text": "bei" }
+              ],
+              "distractorTokenIds": ["t9"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8"]],
+              "answerExplanation": {
+                "en": "Am Ende war ich + feeling closes the story.",
+                "fr": "Am Ende war ich + sentiment termine le récit.",
+                "de": "Am Ende war ich + Gefühl schließt die Geschichte ab."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "exam-dialogue",
+          "estimatedDurationS": 216,
+          "timeLimitS": 324,
+          "instructions": {
+            "en": "Fill each gap with an expression from this lesson.",
+            "fr": "Complétez chaque trou avec une expression de la leçon.",
+            "de": "Fülle jede Lücke mit einem Ausdruck aus dieser Lektion."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_typing",
+              "itemId": "exam-dialogue",
+              "lines": [
+                {
+                  "lineId": "exam-line-1",
+                  "roleId": "zuhoerer",
+                  "before": "Erzähl mal von deiner ersten Reise allein!",
+                  "translation": {
+                    "en": "Tell me about your first trip alone!",
+                    "fr": "Raconte-moi ton premier voyage seule !"
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-2",
+                  "roleId": "erzaehlerin",
+                  "before": "",
+                  "translation": {
+                    "en": "Back then I was only eighteen and quite unsure.",
+                    "fr": "À l’époque, je n’avais que dix-huit ans et j’étais assez peu sûre de moi."
+                  },
+                  "gap": {
+                    "gapId": "gap-1",
+                    "expressionId": "damals-war-ich",
+                    "accepted": { "answers": ["Damals war ich", "damals war ich"] },
+                    "answerExplanation": {
+                      "en": "She sets the scene in the past: Damals war ich.",
+                      "fr": "Elle pose la scène dans le passé : Damals war ich.",
+                      "de": "Sie stellt die Szene in die Vergangenheit: Damals war ich."
+                    }
+                  },
+                  "after": "erst achtzehn und ziemlich unsicher."
+                },
+                {
+                  "lineId": "exam-line-3",
+                  "roleId": "zuhoerer",
+                  "before": "Und wie war die Fahrt nach Wien?",
+                  "translation": {
+                    "en": "And how was the journey to Vienna?",
+                    "fr": "Et comment s’est passé le trajet jusqu’à Vienne ?"
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-4",
+                  "roleId": "erzaehlerin",
+                  "before": "Der Zug fuhr pünktlich ab.",
+                  "translation": {
+                    "en": "The train left on time. Suddenly it stopped in the middle of the track.",
+                    "fr": "Le train est parti à l’heure. Soudain, il s’est arrêté au milieu de la voie."
+                  },
+                  "gap": {
+                    "gapId": "gap-2",
+                    "expressionId": "ploetzlich",
+                    "accepted": { "answers": ["Plötzlich", "plötzlich"] },
+                    "answerExplanation": {
+                      "en": "A sudden event: Plötzlich.",
+                      "fr": "Un événement soudain : Plötzlich.",
+                      "de": "Ein plötzliches Ereignis: Plötzlich."
+                    }
+                  },
+                  "after": "blieb er mitten auf der Strecke stehen."
+                },
+                {
+                  "lineId": "exam-line-5",
+                  "roleId": "zuhoerer",
+                  "before": "Das ist ja schlimm!",
+                  "translation": {
+                    "en": "That's terrible! What happened then?",
+                    "fr": "C’est terrible ! Que s’est-il passé ensuite ?"
+                  },
+                  "gap": {
+                    "gapId": "gap-5",
+                    "expressionId": "was-dann-passiert",
+                    "accepted": {
+                      "answers": [
+                        "Was ist dann passiert?",
+                        "Was ist dann passiert ?",
+                        "Was ist dann passiert",
+                        "was ist dann passiert?"
+                      ]
+                    },
+                    "answerExplanation": {
+                      "en": "The listener asks what happened next: Was ist dann passiert?",
+                      "fr": "L’auditeur demande ce qui s’est passé ensuite : Was ist dann passiert ?",
+                      "de": "Der Zuhörer fragt, wie es weiterging: Was ist dann passiert?"
+                    }
+                  },
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-6",
+                  "roleId": "erzaehlerin",
+                  "before": "Wir warteten zwei Stunden, und mein Handy hatte keinen Akku.",
+                  "translation": {
+                    "en": "We waited two hours, and my phone had no battery.",
+                    "fr": "Nous avons attendu deux heures, et mon téléphone n’avait plus de batterie."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-7",
+                  "roleId": "zuhoerer",
+                  "before": "Wie hast du dich dabei gefühlt?",
+                  "translation": {
+                    "en": "How did you feel about it?",
+                    "fr": "Comment t’es-tu sentie ?"
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-8",
+                  "roleId": "erzaehlerin",
+                  "before": "Es wurde dunkel, und",
+                  "translation": {
+                    "en": "It got dark, and I felt completely lost.",
+                    "fr": "La nuit est tombée, et je me sentais complètement perdue."
+                  },
+                  "gap": {
+                    "gapId": "gap-8",
+                    "expressionId": "ich-fuehlte-mich",
+                    "accepted": {
+                      "answers": ["ich fühlte mich", "Ich fühlte mich", "ich war", "Ich war"]
+                    },
+                    "answerExplanation": {
+                      "en": "She names her feeling: ich fühlte mich.",
+                      "fr": "Elle nomme son sentiment : ich fühlte mich.",
+                      "de": "Sie nennt ihr Gefühl: ich fühlte mich."
+                    }
+                  },
+                  "after": "ganz verloren."
+                },
+                {
+                  "lineId": "exam-line-9",
+                  "roleId": "zuhoerer",
+                  "before": "Und hat dir jemand geholfen?",
+                  "translation": {
+                    "en": "And did anyone help you?",
+                    "fr": "Et quelqu’un t’a-t-il aidée ?"
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-10",
+                  "roleId": "erzaehlerin",
+                  "before": "",
+                  "translation": {
+                    "en": "Luckily, a friendly conductor came and helped me.",
+                    "fr": "Heureusement, une contrôleuse aimable est venue et m’a aidée."
+                  },
+                  "gap": {
+                    "gapId": "gap-10",
+                    "expressionId": "zum-glueck",
+                    "accepted": { "answers": ["Zum Glück", "zum Glück", "Plötzlich", "plötzlich"] },
+                    "answerExplanation": {
+                      "en": "A good turn of events: Zum Glück.",
+                      "fr": "Une tournure heureuse : Zum Glück.",
+                      "de": "Eine gute Wendung: Zum Glück."
+                    }
+                  },
+                  "after": "kam eine freundliche Schaffnerin und half mir."
+                },
+                {
+                  "lineId": "exam-line-11",
+                  "roleId": "zuhoerer",
+                  "before": "Bist du am Ende in Wien angekommen?",
+                  "translation": {
+                    "en": "Did you arrive in Vienna in the end?",
+                    "fr": "Es-tu finalement arrivée à Vienne ?"
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-12",
+                  "roleId": "erzaehlerin",
+                  "before": "Ja,",
+                  "translation": {
+                    "en": "Yes, in the end I was proud, because I had managed everything alone.",
+                    "fr": "Oui, à la fin j’étais fière, parce que j’avais tout réussi toute seule."
+                  },
+                  "gap": {
+                    "gapId": "gap-12",
+                    "expressionId": "am-ende-war-ich",
+                    "accepted": {
+                      "answers": [
+                        "am Ende war ich",
+                        "Am Ende war ich",
+                        "damals war ich",
+                        "Damals war ich"
+                      ]
+                    },
+                    "answerExplanation": {
+                      "en": "The end of the story and the final feeling: am Ende war ich.",
+                      "fr": "La fin du récit et le sentiment final : am Ende war ich.",
+                      "de": "Das Ende der Geschichte und das Schlussgefühl: am Ende war ich."
+                    }
+                  },
+                  "after": "stolz, weil ich alles allein geschafft habe."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

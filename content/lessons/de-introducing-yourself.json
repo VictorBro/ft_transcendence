@@ -6,19 +6,19 @@
   "locales": ["en", "fr", "de"],
   "title": "Sich vorstellen",
   "objective": {
-    "en": "Introduce yourself with your name, origin and home town, and ask the other person the same questions.",
-    "fr": "Se présenter avec son nom, son origine et son lieu de vie, et poser les mêmes questions à l’autre personne.",
+    "en": "Introduce yourself with your name, origin and home, and ask the other person the same questions.",
+    "fr": "Se présenter avec son nom, son origine et son lieu d’habitation, et poser les mêmes questions à l’autre personne.",
     "de": "Sich mit Namen, Herkunft und Wohnort vorstellen und das Gegenüber dasselbe fragen."
   },
   "estimatedMinutes": 16,
   "provenance": {
     "generator": "ft lessons:author",
     "model": "sonnet",
-    "promptVersion": "author-2",
-    "generatedAt": "2026-11-01T20:17:17.976Z",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:25:26.266Z",
     "inputHashes": {
       "outline": "58475ae506a4898f744a43c656a43bd2e6fde8c3c817746312ba0d9ef1576bf0",
-      "brief": "6e148a09bbede0db3a3277b78c4aa97c6d6f08d44ea12467cf8d62bf74dd61a4"
+      "brief": "8c4418a239a97a4e3a0642a2f1a4d727cf60954e8af9d5437e37444e5e4ea277"
     }
   },
   "kind": "functions",
@@ -79,118 +79,115 @@
               "lines": [
                 {
                   "lineId": "line-1",
-                  "roleId": "frau",
-                  "text": "Hallo! Ich heiße Lena. Wie heißt du?",
+                  "roleId": "tom",
+                  "text": "Hallo! Ich heiße Tom. Wie heißt du?",
                   "translation": {
-                    "en": "Hello! My name is Lena. What’s your name?",
-                    "fr": "Salut ! Je m’appelle Lena. Comment tu t’appelles ?"
+                    "en": "Hello! My name is Tom. What is your name?",
+                    "fr": "Salut ! Je m’appelle Tom. Comment tu t’appelles ?"
                   },
                   "note": {
-                    "en": "Say your name with Ich heiße, then ask Wie heißt du?",
-                    "fr": "Dites votre nom avec Ich heiße, puis demandez Wie heißt du ?",
-                    "de": "Sag deinen Namen mit Ich heiße und frag dann Wie heißt du?"
+                    "en": "Tom says his name first, then asks for hers.",
+                    "fr": "Tom dit d’abord son nom, puis demande le sien.",
+                    "de": "Tom nennt zuerst seinen Namen und fragt dann nach ihrem."
                   },
                   "expressionIds": ["ich-heisse", "wie-heisst-du"]
                 },
                 {
                   "lineId": "line-2",
-                  "roleId": "mann",
-                  "text": "Ich heiße Max. Freut mich, Lena.",
+                  "roleId": "lena",
+                  "text": "Hallo, Tom. Ich heiße Lena.",
                   "translation": {
-                    "en": "My name is Max. Nice to meet you, Lena.",
-                    "fr": "Je m’appelle Max. Enchanté, Lena."
+                    "en": "Hello, Tom. My name is Lena.",
+                    "fr": "Salut, Tom. Je m’appelle Lena."
                   },
                   "note": {
-                    "en": "Freut mich is a friendly reply when you meet someone.",
-                    "fr": "Freut mich est une réponse aimable quand on rencontre quelqu’un.",
-                    "de": "Freut mich ist eine freundliche Antwort beim Kennenlernen."
+                    "en": "Ich heiße + name answers the question.",
+                    "fr": "Ich heiße + prénom répond à la question.",
+                    "de": "Ich heiße + Name beantwortet die Frage."
                   },
                   "expressionIds": ["ich-heisse"]
                 },
                 {
                   "lineId": "line-3",
-                  "roleId": "frau",
-                  "text": "Freut mich auch. Woher kommst du, Max?",
+                  "roleId": "tom",
+                  "text": "Woher kommst du, Lena?",
                   "translation": {
-                    "en": "Nice to meet you too. Where are you from, Max?",
-                    "fr": "Enchantée aussi. D’où viens-tu, Max ?"
+                    "en": "Where are you from, Lena?",
+                    "fr": "Tu viens d’où, Lena ?"
                   },
                   "note": {
-                    "en": "Woher asks about the origin. The verb comes second.",
-                    "fr": "Woher interroge sur l’origine. Le verbe est en deuxième position.",
-                    "de": "Woher fragt nach der Herkunft. Das Verb steht auf Position 2."
+                    "en": "The question word woher comes first, the verb second.",
+                    "fr": "Le mot interrogatif woher vient en premier, le verbe en deuxième.",
+                    "de": "Das Fragewort woher steht vorn, das Verb an zweiter Stelle."
                   },
                   "expressionIds": ["woher-kommst-du"]
                 },
                 {
                   "lineId": "line-4",
-                  "roleId": "mann",
-                  "text": "Ich komme aus Österreich. Und du?",
+                  "roleId": "lena",
+                  "text": "Ich komme aus Polen. Und woher kommst du?",
                   "translation": {
-                    "en": "I come from Austria. And you?",
-                    "fr": "Je viens d’Autriche. Et toi ?"
+                    "en": "I come from Poland. And where are you from?",
+                    "fr": "Je viens de Pologne. Et toi, tu viens d’où ?"
                   },
                   "note": {
-                    "en": "Und du? returns the question to the other person.",
-                    "fr": "Und du ? renvoie la question à l’autre personne.",
-                    "de": "Und du? gibt die Frage an das Gegenüber zurück."
+                    "en": "Und … asks the same question back.",
+                    "fr": "Und … renvoie la même question.",
+                    "de": "Mit Und … gibst du die Frage zurück."
                   },
-                  "expressionIds": ["ich-komme-aus"]
+                  "expressionIds": ["ich-komme-aus", "woher-kommst-du"]
                 },
                 {
                   "lineId": "line-5",
-                  "roleId": "frau",
-                  "text": "Ich komme aus Polen. Und du, wo wohnst du?",
+                  "roleId": "tom",
+                  "text": "Ich komme aus Österreich. Wo wohnst du?",
                   "translation": {
-                    "en": "I come from Poland. And you, where do you live?",
-                    "fr": "Je viens de Pologne. Et toi, où habites-tu ?"
+                    "en": "I come from Austria. Where do you live?",
+                    "fr": "Je viens d’Autriche. Où habites-tu ?"
                   },
                   "note": {
-                    "en": "Wo asks for the place where someone lives.",
-                    "fr": "Wo interroge sur le lieu où l’on habite.",
-                    "de": "Wo fragt nach dem Ort, an dem jemand wohnt."
+                    "en": "Origin and home are two different questions.",
+                    "fr": "L’origine et le lieu d’habitation sont deux questions différentes.",
+                    "de": "Herkunft und Wohnort sind zwei verschiedene Fragen."
                   },
                   "expressionIds": ["ich-komme-aus", "wo-wohnst-du"]
                 },
                 {
                   "lineId": "line-6",
-                  "roleId": "mann",
-                  "text": "Ich wohne in Wien. Wo wohnst du?",
+                  "roleId": "lena",
+                  "text": "Ich wohne in Berlin. Und du?",
                   "translation": {
-                    "en": "I live in Vienna. Where do you live?",
-                    "fr": "J’habite à Vienne. Où habites-tu ?"
+                    "en": "I live in Berlin. And you?",
+                    "fr": "J’habite à Berlin. Et toi ?"
                   },
                   "note": {
-                    "en": "Answer first, then ask the same question back.",
-                    "fr": "Répondez d’abord, puis posez la même question.",
-                    "de": "Antworte zuerst und stell dann dieselbe Frage zurück."
+                    "en": "Und du? is a short way to ask the same thing.",
+                    "fr": "Und du ? est une façon courte de poser la même question.",
+                    "de": "Und du? ist eine kurze Art, dasselbe zu fragen."
                   },
-                  "expressionIds": ["ich-wohne-in", "wo-wohnst-du"]
+                  "expressionIds": ["ich-wohne-in"]
                 },
                 {
                   "lineId": "line-7",
-                  "roleId": "frau",
-                  "text": "Ich wohne in Berlin. Bis später!",
-                  "translation": {
-                    "en": "I live in Berlin. See you later!",
-                    "fr": "J’habite à Berlin. À tout à l’heure !"
-                  },
+                  "roleId": "tom",
+                  "text": "Ich wohne in Wien.",
+                  "translation": { "en": "I live in Vienna.", "fr": "J’habite à Vienne." },
                   "note": {
-                    "en": "Bis später! ends the conversation.",
-                    "fr": "Bis später ! termine la conversation.",
-                    "de": "Bis später! beendet das Gespräch."
+                    "en": "Wien is the German name of Vienna.",
+                    "fr": "Wien est le nom allemand de Vienne.",
+                    "de": "Wien ist der deutsche Name der Stadt."
                   },
                   "expressionIds": ["ich-wohne-in"]
                 },
                 {
                   "lineId": "line-8",
-                  "roleId": "mann",
-                  "text": "Tschüss, Lena!",
-                  "translation": { "en": "Bye, Lena!", "fr": "Salut, Lena !" },
+                  "roleId": "lena",
+                  "text": "Super! Tschüs, Tom.",
+                  "translation": { "en": "Great! Bye, Tom.", "fr": "Super ! Salut, Tom." },
                   "note": {
-                    "en": "Tschüss is an informal goodbye.",
-                    "fr": "Tschüss est un au revoir informel.",
-                    "de": "Tschüss ist ein lockerer Abschied."
+                    "en": "Tschüs is an informal goodbye.",
+                    "fr": "Tschüs est un au revoir informel.",
+                    "de": "Tschüs ist eine informelle Verabschiedung."
                   },
                   "expressionIds": []
                 }
@@ -226,47 +223,47 @@
                   "answerExplanation": {
                     "en": "Ich heiße + name says your name.",
                     "fr": "Ich heiße + prénom dit votre nom.",
-                    "de": "Ich heiße + Name nennt deinen Namen."
+                    "de": "Mit Ich heiße + Name sagst du deinen Namen."
                   }
                 },
                 {
                   "id": "wie-heisst-du",
                   "answerExplanation": {
-                    "en": "Wie heißt du? asks for the name.",
-                    "fr": "Wie heißt du ? demande le nom.",
-                    "de": "Wie heißt du? fragt nach dem Namen."
+                    "en": "Asks for the name of a friend (du).",
+                    "fr": "Demande le nom d’un ami (du).",
+                    "de": "Fragt einen Freund nach dem Namen (du)."
                   }
                 },
                 {
                   "id": "ich-komme-aus",
                   "answerExplanation": {
-                    "en": "Ich komme aus + country says where you are from.",
-                    "fr": "Ich komme aus + pays dit d’où vous venez.",
-                    "de": "Ich komme aus + Land sagt, woher du kommst."
+                    "en": "Ich komme aus + place says where you are from.",
+                    "fr": "Ich komme aus + lieu dit d’où vous venez.",
+                    "de": "Mit Ich komme aus + Ort sagst du, woher du kommst."
                   }
                 },
                 {
                   "id": "woher-kommst-du",
                   "answerExplanation": {
-                    "en": "Woher kommst du? asks about the origin.",
-                    "fr": "Woher kommst du ? interroge sur l’origine.",
-                    "de": "Woher kommst du? fragt nach der Herkunft."
+                    "en": "Asks where someone is from (du).",
+                    "fr": "Demande d’où vient quelqu’un (du).",
+                    "de": "Fragt, woher jemand kommt (du)."
                   }
                 },
                 {
                   "id": "ich-wohne-in",
                   "answerExplanation": {
-                    "en": "Ich wohne in + town says where you live.",
-                    "fr": "Ich wohne in + ville dit où vous habitez.",
-                    "de": "Ich wohne in + Stadt sagt, wo du wohnst."
+                    "en": "Ich wohne in + place says where you live.",
+                    "fr": "Ich wohne in + lieu dit où vous habitez.",
+                    "de": "Mit Ich wohne in + Ort sagst du, wo du wohnst."
                   }
                 },
                 {
                   "id": "wo-wohnst-du",
                   "answerExplanation": {
-                    "en": "Wo wohnst du? asks where someone lives.",
-                    "fr": "Wo wohnst du ? demande où quelqu’un habite.",
-                    "de": "Wo wohnst du? fragt nach dem Wohnort."
+                    "en": "Asks where someone lives (du).",
+                    "fr": "Demande où habite quelqu’un (du).",
+                    "de": "Fragt, wo jemand wohnt (du)."
                   }
                 }
               ]
@@ -294,21 +291,21 @@
             {
               "type": "function_dialogue_gap_choice",
               "itemId": "gap-1",
-              "expressionId": "wie-heisst-du",
-              "context": { "roleId": "frau", "text": "Hallo! Ich bin neu im Kurs." },
-              "roleId": "mann",
-              "before": "Hallo! Ich heiße Max.",
-              "after": "",
+              "expressionId": "ich-heisse",
+              "context": { "roleId": "tom", "text": "Hallo! Wie heißt du?" },
+              "roleId": "lena",
+              "before": "Hallo!",
+              "after": "Lena.",
               "choiceExpressionIds": [
-                "wie-heisst-du",
-                "woher-kommst-du",
-                "wo-wohnst-du",
-                "ich-heisse"
+                "ich-heisse",
+                "ich-komme-aus",
+                "ich-wohne-in",
+                "wie-heisst-du"
               ],
               "answerExplanation": {
-                "en": "He has said his name and now asks for hers.",
-                "fr": "Il a dit son nom et demande maintenant le sien.",
-                "de": "Er hat seinen Namen genannt und fragt jetzt nach ihrem."
+                "en": "She answers the question about her name: Ich heiße Lena.",
+                "fr": "Elle répond à la question sur son nom : Ich heiße Lena.",
+                "de": "Sie antwortet auf die Frage nach ihrem Namen: Ich heiße Lena."
               }
             }
           ]
@@ -326,21 +323,21 @@
             {
               "type": "function_dialogue_gap_choice",
               "itemId": "gap-2",
-              "expressionId": "ich-heisse",
-              "context": { "roleId": "mann", "text": "Hallo! Wie heißt du?" },
-              "roleId": "frau",
-              "before": "",
-              "after": "Lena.",
+              "expressionId": "wie-heisst-du",
+              "context": { "roleId": "lena", "text": "Hallo!" },
+              "roleId": "tom",
+              "before": "Hallo, ich heiße Tom.",
+              "after": "",
               "choiceExpressionIds": [
+                "wie-heisst-du",
                 "ich-heisse",
                 "ich-komme-aus",
-                "ich-wohne-in",
-                "wie-heisst-du"
+                "ich-wohne-in"
               ],
               "answerExplanation": {
-                "en": "She is asked her name, so she answers with Ich heiße.",
-                "fr": "On lui demande son nom, elle répond avec Ich heiße.",
-                "de": "Sie wird nach dem Namen gefragt und antwortet mit Ich heiße."
+                "en": "After his own name, Tom asks for hers: Wie heißt du?",
+                "fr": "Après son nom, Tom demande le sien : Wie heißt du ?",
+                "de": "Nach seinem Namen fragt Tom nach ihrem: Wie heißt du?"
               }
             }
           ]
@@ -358,21 +355,21 @@
             {
               "type": "function_dialogue_gap_choice",
               "itemId": "gap-3",
-              "expressionId": "woher-kommst-du",
-              "context": { "roleId": "mann", "text": "Ich heiße Max." },
-              "roleId": "frau",
-              "before": "Freut mich, Max.",
-              "after": "",
+              "expressionId": "ich-komme-aus",
+              "context": { "roleId": "tom", "text": "Woher kommst du?" },
+              "roleId": "lena",
+              "before": "",
+              "after": "Polen.",
               "choiceExpressionIds": [
-                "woher-kommst-du",
-                "wo-wohnst-du",
                 "ich-komme-aus",
-                "wie-heisst-du"
+                "ich-heisse",
+                "wie-heisst-du",
+                "woher-kommst-du"
               ],
               "answerExplanation": {
-                "en": "She already knows his name and now asks where he is from.",
-                "fr": "Elle connaît son nom et demande maintenant d’où il vient.",
-                "de": "Sie kennt seinen Namen und fragt jetzt nach der Herkunft."
+                "en": "Woher asks about origin, so she answers Ich komme aus Polen.",
+                "fr": "Woher interroge sur l’origine, donc elle répond Ich komme aus Polen.",
+                "de": "Woher fragt nach der Herkunft, also antwortet sie Ich komme aus Polen."
               }
             }
           ]
@@ -390,21 +387,21 @@
             {
               "type": "function_dialogue_gap_choice",
               "itemId": "gap-4",
-              "expressionId": "ich-komme-aus",
-              "context": { "roleId": "frau", "text": "Woher kommst du?" },
-              "roleId": "mann",
-              "before": "",
-              "after": "Italien.",
+              "expressionId": "woher-kommst-du",
+              "context": { "roleId": "lena", "text": "Hallo, ich heiße Lena." },
+              "roleId": "tom",
+              "before": "Hallo, Lena!",
+              "after": "",
               "choiceExpressionIds": [
-                "ich-komme-aus",
-                "ich-wohne-in",
+                "woher-kommst-du",
                 "ich-heisse",
-                "woher-kommst-du"
+                "ich-komme-aus",
+                "ich-wohne-in"
               ],
               "answerExplanation": {
-                "en": "He answers a question about his origin: Ich komme aus.",
-                "fr": "Il répond à une question sur l’origine : Ich komme aus.",
-                "de": "Er antwortet auf eine Frage zur Herkunft: Ich komme aus."
+                "en": "Her name is known now, so Tom asks the next question: Woher kommst du?",
+                "fr": "Il connaît maintenant son nom, donc Tom pose la question suivante : Woher kommst du ?",
+                "de": "Ihr Name ist bekannt, also stellt Tom die nächste Frage: Woher kommst du?"
               }
             }
           ]
@@ -422,21 +419,21 @@
             {
               "type": "function_dialogue_gap_choice",
               "itemId": "gap-5",
-              "expressionId": "wo-wohnst-du",
-              "context": { "roleId": "frau", "text": "Ich komme aus Polen." },
-              "roleId": "mann",
-              "before": "Aha!",
-              "after": "",
+              "expressionId": "ich-wohne-in",
+              "context": { "roleId": "tom", "text": "Wo wohnst du?" },
+              "roleId": "lena",
+              "before": "",
+              "after": "Berlin.",
               "choiceExpressionIds": [
-                "wo-wohnst-du",
-                "woher-kommst-du",
+                "ich-wohne-in",
+                "ich-heisse",
                 "wie-heisst-du",
-                "ich-wohne-in"
+                "wo-wohnst-du"
               ],
               "answerExplanation": {
-                "en": "Her origin is known, so he asks about her home.",
-                "fr": "Son origine est connue, il demande donc où elle habite.",
-                "de": "Die Herkunft ist bekannt, also fragt er nach dem Wohnort."
+                "en": "Wo asks where she lives, so she answers Ich wohne in Berlin.",
+                "fr": "Wo demande où elle habite, donc elle répond Ich wohne in Berlin.",
+                "de": "Wo fragt nach dem Wohnort, also antwortet sie Ich wohne in Berlin."
               }
             }
           ]
@@ -454,21 +451,21 @@
             {
               "type": "function_dialogue_gap_choice",
               "itemId": "gap-6",
-              "expressionId": "ich-wohne-in",
-              "context": { "roleId": "frau", "text": "Wo wohnst du, Max?" },
-              "roleId": "mann",
-              "before": "",
-              "after": "Köln.",
+              "expressionId": "wo-wohnst-du",
+              "context": { "roleId": "lena", "text": "Ich komme aus Polen." },
+              "roleId": "tom",
+              "before": "Aha, Polen!",
+              "after": "",
               "choiceExpressionIds": [
-                "ich-wohne-in",
-                "ich-komme-aus",
+                "wo-wohnst-du",
                 "ich-heisse",
-                "wo-wohnst-du"
+                "ich-komme-aus",
+                "ich-wohne-in"
               ],
               "answerExplanation": {
-                "en": "He is asked where he lives: Ich wohne in + town.",
-                "fr": "On lui demande où il habite : Ich wohne in + ville.",
-                "de": "Er wird nach dem Wohnort gefragt: Ich wohne in + Stadt."
+                "en": "Her origin is known, so Tom now asks where she lives: Wo wohnst du?",
+                "fr": "Son origine est connue, donc Tom demande maintenant où elle habite : Wo wohnst du ?",
+                "de": "Ihre Herkunft ist bekannt, also fragt Tom jetzt nach dem Wohnort: Wo wohnst du?"
               }
             }
           ]
@@ -501,7 +498,7 @@
                 { "tokenId": "t1", "text": "Hallo," },
                 { "tokenId": "t2", "text": "ich" },
                 { "tokenId": "t3", "text": "heiße" },
-                { "tokenId": "t4", "text": "Tom" }
+                { "tokenId": "t4", "text": "Lena." }
               ],
               "distractorTokenIds": [],
               "acceptedOrders": [["t1", "t2", "t3", "t4"]],
@@ -530,17 +527,17 @@
               "context": null,
               "roleId": null,
               "tokens": [
-                { "tokenId": "t1", "text": "Wie" },
-                { "tokenId": "t2", "text": "heißt" },
-                { "tokenId": "t3", "text": "du" },
-                { "tokenId": "t4", "text": "?" }
+                { "tokenId": "t1", "text": "Hallo!" },
+                { "tokenId": "t2", "text": "Wie" },
+                { "tokenId": "t3", "text": "heißt" },
+                { "tokenId": "t4", "text": "du?" }
               ],
               "distractorTokenIds": [],
               "acceptedOrders": [["t1", "t2", "t3", "t4"]],
               "answerExplanation": {
-                "en": "The question word is first, the verb second.",
-                "fr": "Le mot interrogatif est en premier, le verbe en deuxième.",
-                "de": "Das Fragewort steht vorn, das Verb auf Position 2."
+                "en": "The question word Wie comes first, the verb second.",
+                "fr": "Le mot interrogatif Wie vient en premier, le verbe en deuxième.",
+                "de": "Das Fragewort Wie steht vorn, das Verb an zweiter Stelle."
               }
             }
           ]
@@ -565,14 +562,14 @@
                 { "tokenId": "t1", "text": "Ich" },
                 { "tokenId": "t2", "text": "komme" },
                 { "tokenId": "t3", "text": "aus" },
-                { "tokenId": "t4", "text": "Spanien" }
+                { "tokenId": "t4", "text": "Polen." }
               ],
               "distractorTokenIds": [],
               "acceptedOrders": [["t1", "t2", "t3", "t4"]],
               "answerExplanation": {
-                "en": "Ich komme aus, then the country.",
-                "fr": "Ich komme aus, puis le pays.",
-                "de": "Ich komme aus, dann das Land."
+                "en": "Ich komme aus, then the place.",
+                "fr": "Ich komme aus, puis le lieu.",
+                "de": "Ich komme aus, dann der Ort."
               }
             }
           ]
@@ -594,19 +591,17 @@
               "context": null,
               "roleId": null,
               "tokens": [
-                { "tokenId": "t1", "text": "Hallo," },
-                { "tokenId": "t2", "text": "Tom." },
-                { "tokenId": "t3", "text": "Woher" },
-                { "tokenId": "t4", "text": "kommst" },
-                { "tokenId": "t5", "text": "du" },
-                { "tokenId": "t6", "text": "?" }
+                { "tokenId": "t1", "text": "Und" },
+                { "tokenId": "t2", "text": "woher" },
+                { "tokenId": "t3", "text": "kommst" },
+                { "tokenId": "t4", "text": "du?" }
               ],
               "distractorTokenIds": [],
-              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]],
+              "acceptedOrders": [["t1", "t2", "t3", "t4"]],
               "answerExplanation": {
-                "en": "Greet first, then ask Woher kommst du?",
-                "fr": "On salue d’abord, puis on demande Woher kommst du ?",
-                "de": "Erst grüßen, dann Woher kommst du? fragen."
+                "en": "Und first, then woher and the verb in second place.",
+                "fr": "Und d’abord, puis woher et le verbe en deuxième position.",
+                "de": "Erst Und, dann woher und das Verb an zweiter Stelle."
               }
             }
           ]
@@ -631,14 +626,14 @@
                 { "tokenId": "t1", "text": "Ich" },
                 { "tokenId": "t2", "text": "wohne" },
                 { "tokenId": "t3", "text": "in" },
-                { "tokenId": "t4", "text": "München" }
+                { "tokenId": "t4", "text": "Berlin." }
               ],
               "distractorTokenIds": [],
               "acceptedOrders": [["t1", "t2", "t3", "t4"]],
               "answerExplanation": {
-                "en": "Ich wohne in, then the town.",
-                "fr": "Ich wohne in, puis la ville.",
-                "de": "Ich wohne in, dann die Stadt."
+                "en": "Ich wohne in, then the place.",
+                "fr": "Ich wohne in, puis le lieu.",
+                "de": "Ich wohne in, dann der Ort."
               }
             }
           ]
@@ -660,18 +655,17 @@
               "context": null,
               "roleId": null,
               "tokens": [
-                { "tokenId": "t1", "text": "Entschuldigung," },
+                { "tokenId": "t1", "text": "Und" },
                 { "tokenId": "t2", "text": "wo" },
                 { "tokenId": "t3", "text": "wohnst" },
-                { "tokenId": "t4", "text": "du" },
-                { "tokenId": "t5", "text": "?" }
+                { "tokenId": "t4", "text": "du?" }
               ],
               "distractorTokenIds": [],
-              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5"]],
+              "acceptedOrders": [["t1", "t2", "t3", "t4"]],
               "answerExplanation": {
-                "en": "After wo comes the verb, then du.",
-                "fr": "Après wo vient le verbe, puis du.",
-                "de": "Nach wo kommt das Verb, dann du."
+                "en": "Und first, then wo and the verb in second place.",
+                "fr": "Und d’abord, puis wo et le verbe en deuxième position.",
+                "de": "Erst Und, dann wo und das Verb an zweiter Stelle."
               }
             }
           ]
@@ -698,19 +692,19 @@
               "type": "function_listening_choice",
               "itemId": "listening-1",
               "expressionId": "ich-heisse",
-              "context": { "roleId": "mann", "text": "Hallo! Wie heißt du?" },
-              "roleId": "frau",
+              "context": { "roleId": "tom", "text": "Hallo! Wie heißt du?" },
+              "roleId": "lena",
               "options": [
                 { "optionId": "o1", "text": "Ich heiße Lena." },
-                { "optionId": "o2", "text": "Ich komme aus Polen." },
-                { "optionId": "o3", "text": "Ich wohne in Berlin." },
-                { "optionId": "o4", "text": "Freut mich." }
+                { "optionId": "o2", "text": "Ich wohne in Berlin." },
+                { "optionId": "o3", "text": "Ich komme aus Polen." },
+                { "optionId": "o4", "text": "Woher kommst du?" }
               ],
               "answerOptionId": "o1",
               "answerExplanation": {
-                "en": "He asks for her name, so she says Ich heiße.",
-                "fr": "Il demande son nom, elle dit donc Ich heiße.",
-                "de": "Er fragt nach dem Namen, also sagt sie Ich heiße."
+                "en": "He asks for her name, so she answers with Ich heiße.",
+                "fr": "Il demande son nom, donc elle répond avec Ich heiße.",
+                "de": "Er fragt nach ihrem Namen, also antwortet sie mit Ich heiße."
               }
             }
           ]
@@ -729,19 +723,19 @@
               "type": "function_listening_choice",
               "itemId": "listening-2",
               "expressionId": "wie-heisst-du",
-              "context": { "roleId": "mann", "text": "Hallo! Ich bin neu hier." },
-              "roleId": "frau",
+              "context": { "roleId": "lena", "text": "Hallo!" },
+              "roleId": "tom",
               "options": [
                 { "optionId": "o1", "text": "Hallo! Wie heißt du?" },
-                { "optionId": "o2", "text": "Ich wohne in Köln." },
-                { "optionId": "o3", "text": "Ich komme aus Polen." },
-                { "optionId": "o4", "text": "Tschüss!" }
+                { "optionId": "o2", "text": "Tschüs, Lena!" },
+                { "optionId": "o3", "text": "Ich wohne in Wien." },
+                { "optionId": "o4", "text": "Ich komme aus Wien." }
               ],
               "answerOptionId": "o1",
               "answerExplanation": {
-                "en": "She greets him and asks for his name.",
-                "fr": "Elle le salue et lui demande son nom.",
-                "de": "Sie grüßt ihn und fragt nach seinem Namen."
+                "en": "After the greeting, Tom asks her name.",
+                "fr": "Après la salutation, Tom demande son nom.",
+                "de": "Nach dem Gruß fragt Tom nach ihrem Namen."
               }
             }
           ]
@@ -760,19 +754,19 @@
               "type": "function_listening_choice",
               "itemId": "listening-3",
               "expressionId": "ich-komme-aus",
-              "context": { "roleId": "frau", "text": "Woher kommst du?" },
-              "roleId": "mann",
+              "context": { "roleId": "tom", "text": "Woher kommst du?" },
+              "roleId": "lena",
               "options": [
-                { "optionId": "o1", "text": "Ich komme aus der Türkei." },
-                { "optionId": "o2", "text": "Ich heiße Max." },
-                { "optionId": "o3", "text": "Ich wohne in Wien." },
+                { "optionId": "o1", "text": "Ich komme aus Polen." },
+                { "optionId": "o2", "text": "Ich heiße Lena." },
+                { "optionId": "o3", "text": "Wo wohnst du?" },
                 { "optionId": "o4", "text": "Wie heißt du?" }
               ],
               "answerOptionId": "o1",
               "answerExplanation": {
-                "en": "A question about origin gets the answer Ich komme aus.",
-                "fr": "À une question sur l’origine, on répond Ich komme aus.",
-                "de": "Auf die Frage nach der Herkunft antwortet man mit Ich komme aus."
+                "en": "Woher asks about origin, so the answer starts with Ich komme aus.",
+                "fr": "Woher interroge sur l’origine, donc la réponse commence par Ich komme aus.",
+                "de": "Woher fragt nach der Herkunft, also beginnt die Antwort mit Ich komme aus."
               }
             }
           ]
@@ -791,19 +785,19 @@
               "type": "function_listening_choice",
               "itemId": "listening-4",
               "expressionId": "woher-kommst-du",
-              "context": { "roleId": "frau", "text": "Hallo, ich heiße Anna." },
-              "roleId": "mann",
+              "context": { "roleId": "lena", "text": "Hallo, ich heiße Lena." },
+              "roleId": "tom",
               "options": [
-                { "optionId": "o1", "text": "Freut mich, Anna. Woher kommst du?" },
-                { "optionId": "o2", "text": "Ich komme aus Rom." },
-                { "optionId": "o3", "text": "Ich wohne in Bonn." },
-                { "optionId": "o4", "text": "Tschüss, Anna!" }
+                { "optionId": "o1", "text": "Hallo, Lena! Woher kommst du?" },
+                { "optionId": "o2", "text": "Wie heißt du?" },
+                { "optionId": "o3", "text": "Ich heiße Lena." },
+                { "optionId": "o4", "text": "Tschüs, Lena!" }
               ],
               "answerOptionId": "o1",
               "answerExplanation": {
-                "en": "He is glad to meet her and asks where she is from.",
-                "fr": "Il est content de la rencontrer et demande d’où elle vient.",
-                "de": "Er freut sich und fragt, woher sie kommt."
+                "en": "She has said her name, so the next question is Woher kommst du?",
+                "fr": "Elle a dit son nom, donc la question suivante est Woher kommst du ?",
+                "de": "Sie hat ihren Namen gesagt, also ist die nächste Frage Woher kommst du?"
               }
             }
           ]
@@ -822,19 +816,19 @@
               "type": "function_listening_choice",
               "itemId": "listening-5",
               "expressionId": "ich-wohne-in",
-              "context": { "roleId": "mann", "text": "Wo wohnst du?" },
-              "roleId": "frau",
+              "context": { "roleId": "tom", "text": "Wo wohnst du?" },
+              "roleId": "lena",
               "options": [
-                { "optionId": "o1", "text": "Ich wohne in Dresden." },
-                { "optionId": "o2", "text": "Ich komme aus Polen." },
-                { "optionId": "o3", "text": "Ich heiße Lena." },
+                { "optionId": "o1", "text": "Ich wohne in Berlin." },
+                { "optionId": "o2", "text": "Ich heiße Lena." },
+                { "optionId": "o3", "text": "Wie heißt du?" },
                 { "optionId": "o4", "text": "Woher kommst du?" }
               ],
               "answerOptionId": "o1",
               "answerExplanation": {
-                "en": "A question about the home town gets Ich wohne in.",
-                "fr": "À une question sur le lieu de vie, on répond Ich wohne in.",
-                "de": "Auf die Frage nach dem Wohnort antwortet man mit Ich wohne in."
+                "en": "Wo asks about the home, so the answer starts with Ich wohne in.",
+                "fr": "Wo interroge sur le lieu d’habitation, donc la réponse commence par Ich wohne in.",
+                "de": "Wo fragt nach dem Wohnort, also beginnt die Antwort mit Ich wohne in."
               }
             }
           ]
@@ -853,19 +847,19 @@
               "type": "function_listening_choice",
               "itemId": "listening-6",
               "expressionId": "wo-wohnst-du",
-              "context": { "roleId": "frau", "text": "Ich komme aus Polen." },
-              "roleId": "mann",
+              "context": { "roleId": "lena", "text": "Ich komme aus Polen." },
+              "roleId": "tom",
               "options": [
-                { "optionId": "o1", "text": "Interessant! Wo wohnst du?" },
-                { "optionId": "o2", "text": "Ich heiße Max." },
-                { "optionId": "o3", "text": "Ich komme aus Wien." },
-                { "optionId": "o4", "text": "Bis später!" }
+                { "optionId": "o1", "text": "Aha! Wo wohnst du?" },
+                { "optionId": "o2", "text": "Tschüs, Lena!" },
+                { "optionId": "o3", "text": "Ich komme aus Polen." },
+                { "optionId": "o4", "text": "Woher kommst du?" }
               ],
               "answerOptionId": "o1",
               "answerExplanation": {
-                "en": "He reacts and asks where she lives.",
-                "fr": "Il réagit et demande où elle habite.",
-                "de": "Er reagiert und fragt, wo sie wohnt."
+                "en": "Her origin is known, so Tom asks where she lives.",
+                "fr": "Son origine est connue, donc Tom demande où elle habite.",
+                "de": "Ihre Herkunft ist bekannt, also fragt Tom nach dem Wohnort."
               }
             }
           ]
@@ -892,17 +886,18 @@
               "type": "function_word_order",
               "itemId": "reply-1",
               "expressionId": "ich-heisse",
-              "context": { "roleId": "mann", "text": "Hallo! Wie heißt du?" },
-              "roleId": "frau",
+              "context": { "roleId": "lena", "text": "Hallo! Wie heißt du?" },
+              "roleId": "tom",
               "tokens": [
-                { "tokenId": "t1", "text": "Ich" },
-                { "tokenId": "t2", "text": "heiße" },
-                { "tokenId": "t3", "text": "Sophie" },
-                { "tokenId": "t4", "text": "bin" },
-                { "tokenId": "t5", "text": "heißt" }
+                { "tokenId": "t1", "text": "Hallo," },
+                { "tokenId": "t2", "text": "ich" },
+                { "tokenId": "t3", "text": "heiße" },
+                { "tokenId": "t4", "text": "Tom." },
+                { "tokenId": "t5", "text": "heißt" },
+                { "tokenId": "t6", "text": "wohne" }
               ],
-              "distractorTokenIds": ["t4", "t5"],
-              "acceptedOrders": [["t1", "t2", "t3"]],
+              "distractorTokenIds": ["t5", "t6"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4"]],
               "answerExplanation": {
                 "en": "After ich the verb ends in -e: ich heiße.",
                 "fr": "Après ich, le verbe finit en -e : ich heiße.",
@@ -913,77 +908,75 @@
               "type": "function_word_order",
               "itemId": "reply-2",
               "expressionId": "ich-komme-aus",
-              "context": { "roleId": "frau", "text": "Woher kommst du, Max?" },
-              "roleId": "mann",
+              "context": { "roleId": "tom", "text": "Woher kommst du?" },
+              "roleId": "lena",
               "tokens": [
                 { "tokenId": "t1", "text": "Ich" },
                 { "tokenId": "t2", "text": "komme" },
                 { "tokenId": "t3", "text": "aus" },
-                { "tokenId": "t4", "text": "Brasilien" },
+                { "tokenId": "t4", "text": "Spanien." },
                 { "tokenId": "t5", "text": "kommst" },
                 { "tokenId": "t6", "text": "in" }
               ],
               "distractorTokenIds": ["t5", "t6"],
               "acceptedOrders": [["t1", "t2", "t3", "t4"]],
               "answerExplanation": {
-                "en": "With ich the verb is komme; the origin follows aus.",
-                "fr": "Avec ich, le verbe est komme ; l’origine suit aus.",
-                "de": "Mit ich heißt das Verb komme; die Herkunft folgt nach aus."
+                "en": "With ich the verb is komme, and origin goes with aus.",
+                "fr": "Avec ich, le verbe est komme, et l’origine se dit avec aus.",
+                "de": "Mit ich heißt das Verb komme, und die Herkunft steht mit aus."
               }
             },
             {
               "type": "function_word_order",
               "itemId": "reply-3",
               "expressionId": "ich-wohne-in",
-              "context": { "roleId": "frau", "text": "Und wo wohnst du, Max?" },
-              "roleId": "mann",
+              "context": { "roleId": "lena", "text": "Wo wohnst du?" },
+              "roleId": "tom",
               "tokens": [
                 { "tokenId": "t1", "text": "Ich" },
                 { "tokenId": "t2", "text": "wohne" },
                 { "tokenId": "t3", "text": "in" },
-                { "tokenId": "t4", "text": "Hamburg" },
-                { "tokenId": "t5", "text": "wohnt" },
+                { "tokenId": "t4", "text": "Hamburg." },
+                { "tokenId": "t5", "text": "wohnst" },
                 { "tokenId": "t6", "text": "aus" }
               ],
               "distractorTokenIds": ["t5", "t6"],
               "acceptedOrders": [["t1", "t2", "t3", "t4"]],
               "answerExplanation": {
-                "en": "Ich wohne in + town: in is used for the place of living.",
-                "fr": "Ich wohne in + ville : in indique le lieu de vie.",
-                "de": "Ich wohne in + Stadt: in steht beim Wohnort."
+                "en": "The home goes with in: Ich wohne in Hamburg.",
+                "fr": "Le lieu d’habitation se dit avec in : Ich wohne in Hamburg.",
+                "de": "Der Wohnort steht mit in: Ich wohne in Hamburg."
               }
             },
             {
               "type": "function_word_order",
               "itemId": "reply-4",
-              "expressionId": "woher-kommst-du",
-              "context": { "roleId": "mann", "text": "Hallo! Ich heiße Max." },
-              "roleId": "frau",
+              "expressionId": "wo-wohnst-du",
+              "context": { "roleId": "lena", "text": "Ich komme aus Spanien." },
+              "roleId": "tom",
               "tokens": [
-                { "tokenId": "t1", "text": "Freut" },
-                { "tokenId": "t2", "text": "mich auch," },
-                { "tokenId": "t3", "text": "Max." },
-                { "tokenId": "t4", "text": "Woher" },
-                { "tokenId": "t5", "text": "kommst" },
-                { "tokenId": "t6", "text": "du" },
-                { "tokenId": "t7", "text": "?" },
-                { "tokenId": "t8", "text": "wohin" },
-                { "tokenId": "t9", "text": "kommt" }
+                { "tokenId": "t1", "text": "Aha!" },
+                { "tokenId": "t2", "text": "Und" },
+                { "tokenId": "t3", "text": "wo" },
+                { "tokenId": "t4", "text": "wohnst" },
+                { "tokenId": "t5", "text": "du?" },
+                { "tokenId": "t6", "text": "wohne" },
+                { "tokenId": "t7", "text": "woher" }
               ],
-              "distractorTokenIds": ["t8", "t9"],
-              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7"]],
+              "distractorTokenIds": ["t6", "t7"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5"]],
               "answerExplanation": {
-                "en": "Woher asks about the origin; with du the verb is kommst.",
-                "fr": "Woher interroge sur l’origine ; avec du, le verbe est kommst.",
-                "de": "Woher fragt nach der Herkunft; mit du heißt das Verb kommst."
+                "en": "Wo asks where, and after du the verb ends in -st: wohnst.",
+                "fr": "Wo demande où, et après du le verbe finit en -st : wohnst.",
+                "de": "Wo fragt nach dem Ort, und nach du endet das Verb auf -st: wohnst."
               }
             }
           ]
         },
         {
           "pageId": "exam-dialogue",
-          "estimatedDurationS": 144,
-          "timeLimitS": 216,
+          "estimatedDurationS": 160,
+          "timeLimitS": 240,
           "instructions": {
             "en": "Fill each gap with an expression from this lesson.",
             "fr": "Complétez chaque trou avec une expression de la leçon.",
@@ -996,30 +989,27 @@
               "lines": [
                 {
                   "lineId": "exam-line-1",
-                  "roleId": "frau",
-                  "before": "Hallo! Ich bin neu hier.",
-                  "translation": {
-                    "en": "Hello! I’m new here.",
-                    "fr": "Salut ! Je suis nouvelle ici."
-                  },
+                  "roleId": "lena",
+                  "before": "Guten Tag!",
+                  "translation": { "en": "Good day!", "fr": "Bonjour !" },
                   "gap": null,
                   "after": ""
                 },
                 {
                   "lineId": "exam-line-2",
-                  "roleId": "mann",
-                  "before": "Hallo! Willkommen.",
+                  "roleId": "tom",
+                  "before": "Guten Tag!",
                   "translation": {
-                    "en": "Hello! Welcome. What’s your name?",
-                    "fr": "Salut ! Bienvenue. Comment tu t’appelles ?"
+                    "en": "Good day! What is your name?",
+                    "fr": "Bonjour ! Comment tu t’appelles ?"
                   },
                   "gap": {
                     "gapId": "gap-1",
                     "expressionId": "wie-heisst-du",
-                    "accepted": { "answers": ["Wie heißt du"] },
+                    "accepted": { "answers": ["Wie heißt du", "wie heißt du"] },
                     "answerExplanation": {
-                      "en": "He asks for her name: Wie heißt du?",
-                      "fr": "Il demande son nom : Wie heißt du ?",
+                      "en": "He asks her name: Wie heißt du?",
+                      "fr": "Il lui demande son nom : Wie heißt du ?",
                       "de": "Er fragt nach ihrem Namen: Wie heißt du?"
                     }
                   },
@@ -1027,85 +1017,119 @@
                 },
                 {
                   "lineId": "exam-line-3",
-                  "roleId": "frau",
+                  "roleId": "lena",
                   "before": "",
-                  "translation": { "en": "My name is Mia.", "fr": "Je m’appelle Mia." },
+                  "translation": {
+                    "en": "My name is Lena. And you?",
+                    "fr": "Je m’appelle Lena. Et toi ?"
+                  },
                   "gap": {
                     "gapId": "gap-2",
                     "expressionId": "ich-heisse",
-                    "accepted": { "answers": ["Ich heiße"] },
+                    "accepted": { "answers": ["Ich heiße", "ich heiße", "Ich bin", "ich bin"] },
                     "answerExplanation": {
-                      "en": "She says her name: Ich heiße Mia.",
-                      "fr": "Elle dit son nom : Ich heiße Mia.",
-                      "de": "Sie nennt ihren Namen: Ich heiße Mia."
+                      "en": "She says her name: Ich heiße Lena.",
+                      "fr": "Elle dit son nom : Ich heiße Lena.",
+                      "de": "Sie nennt ihren Namen: Ich heiße Lena."
                     }
                   },
-                  "after": "Mia."
+                  "after": "Lena. Und du?"
                 },
                 {
                   "lineId": "exam-line-4",
-                  "roleId": "mann",
-                  "before": "Freut mich, Mia. Ich komme aus Österreich.",
+                  "roleId": "tom",
+                  "before": "Hallo, Lena. Ich heiße Tom.",
                   "translation": {
-                    "en": "Nice to meet you, Mia. I come from Austria.",
-                    "fr": "Enchanté, Mia. Je viens d’Autriche."
+                    "en": "Hello, Lena. My name is Tom.",
+                    "fr": "Salut, Lena. Je m’appelle Tom."
                   },
                   "gap": null,
                   "after": ""
                 },
                 {
                   "lineId": "exam-line-5",
-                  "roleId": "frau",
-                  "before": "Schön! Ich komme aus Polen.",
+                  "roleId": "lena",
+                  "before": "Aha, Tom.",
                   "translation": {
-                    "en": "Nice! I come from Poland.",
-                    "fr": "Super ! Je viens de Pologne."
+                    "en": "I see, Tom. Where are you from?",
+                    "fr": "Ah, Tom. Tu viens d’où ?"
                   },
-                  "gap": null,
-                  "after": ""
-                },
-                {
-                  "lineId": "exam-line-6",
-                  "roleId": "mann",
-                  "before": "Und",
-                  "translation": { "en": "And where do you live?", "fr": "Et où habites-tu ?" },
                   "gap": {
                     "gapId": "gap-3",
-                    "expressionId": "wo-wohnst-du",
-                    "accepted": { "answers": ["wo wohnst du", "Wo wohnst du"] },
+                    "expressionId": "woher-kommst-du",
+                    "accepted": {
+                      "answers": [
+                        "Woher kommst du",
+                        "woher kommst du",
+                        "Woher bist du",
+                        "woher bist du"
+                      ]
+                    },
                     "answerExplanation": {
-                      "en": "He asks where she lives: Wo wohnst du?",
-                      "fr": "Il demande où elle habite : Wo wohnst du ?",
-                      "de": "Er fragt nach ihrem Wohnort: Wo wohnst du?"
+                      "en": "She asks about his origin: Woher kommst du?",
+                      "fr": "Elle lui demande son origine : Woher kommst du ?",
+                      "de": "Sie fragt nach seiner Herkunft: Woher kommst du?"
                     }
                   },
                   "after": "?"
                 },
                 {
-                  "lineId": "exam-line-7",
-                  "roleId": "frau",
+                  "lineId": "exam-line-6",
+                  "roleId": "tom",
                   "before": "",
-                  "translation": { "en": "I live in Leipzig.", "fr": "J’habite à Leipzig." },
+                  "translation": { "en": "I come from Italy.", "fr": "Je viens d’Italie." },
                   "gap": {
                     "gapId": "gap-4",
-                    "expressionId": "ich-wohne-in",
-                    "accepted": { "answers": ["Ich wohne in"] },
+                    "expressionId": "ich-komme-aus",
+                    "accepted": {
+                      "answers": ["Ich komme aus", "ich komme aus", "Ich bin aus", "ich bin aus"]
+                    },
                     "answerExplanation": {
-                      "en": "She says where she lives: Ich wohne in Leipzig.",
-                      "fr": "Elle dit où elle habite : Ich wohne in Leipzig.",
-                      "de": "Sie nennt ihren Wohnort: Ich wohne in Leipzig."
+                      "en": "He says where he is from: Ich komme aus Italien.",
+                      "fr": "Il dit d’où il vient : Ich komme aus Italien.",
+                      "de": "Er sagt, woher er kommt: Ich komme aus Italien."
                     }
                   },
-                  "after": "Leipzig."
+                  "after": "Italien."
+                },
+                {
+                  "lineId": "exam-line-7",
+                  "roleId": "lena",
+                  "before": "Aha! Ich komme aus Polen.",
+                  "translation": {
+                    "en": "I see! I come from Poland.",
+                    "fr": "Ah ! Moi, je viens de Pologne."
+                  },
+                  "gap": null,
+                  "after": ""
                 },
                 {
                   "lineId": "exam-line-8",
-                  "roleId": "mann",
-                  "before": "Toll! Bis morgen im Kurs, Mia.",
+                  "roleId": "tom",
+                  "before": "Ich wohne in Wien. Und du?",
                   "translation": {
-                    "en": "Great! See you tomorrow in class, Mia.",
-                    "fr": "Génial ! À demain en cours, Mia."
+                    "en": "I live in Vienna. And you?",
+                    "fr": "J’habite à Vienne. Et toi ?"
                   },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-9",
+                  "roleId": "lena",
+                  "before": "Ich wohne in Berlin. Tschüs, Tom!",
+                  "translation": {
+                    "en": "I live in Berlin. Bye, Tom!",
+                    "fr": "J’habite à Berlin. Salut, Tom !"
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-10",
+                  "roleId": "tom",
+                  "before": "Tschüs, Lena!",
+                  "translation": { "en": "Bye, Lena!", "fr": "Salut, Lena !" },
                   "gap": null,
                   "after": ""
                 }

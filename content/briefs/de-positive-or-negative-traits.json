@@ -1,0 +1,620 @@
+{
+  "schemaVersion": 2,
+  "id": "de-positive-or-negative-traits",
+  "lang": "de",
+  "level": "C1",
+  "locales": ["en", "fr", "de"],
+  "title": "Wertende Wortpaare für Eigenschaften",
+  "objective": {
+    "en": "Name the same trait kindly or critically with twelve paired adjectives, such as sparsam and knauserig.",
+    "fr": "Nommer un même trait avec bienveillance ou avec critique grâce à douze adjectifs en paires, comme sparsam et knauserig.",
+    "de": "Dieselbe Eigenschaft wohlwollend oder kritisch benennen, mit zwölf Adjektiven in Paaren, etwa sparsam und knauserig."
+  },
+  "estimatedMinutes": 19,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:37:24.407Z",
+    "inputHashes": { "outline": "6ee519f71f5d08db4eb8750e44037131a13d9465e586cb92d82d00dee29c46c6" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Twelve character adjectives in six pairs: each pair names one trait, once with approval and once with criticism. The words do not repeat the character adjectives of neighbouring lessons.",
+    "fr": "Douze adjectifs de caractère en six paires : chaque paire nomme un même trait, une fois avec approbation et une fois avec critique. Les mots ne reprennent pas les adjectifs des leçons voisines.",
+    "de": "Zwölf Charakteradjektive in sechs Paaren: Jedes Paar benennt eine Eigenschaft, einmal anerkennend und einmal kritisch. Die Wörter wiederholen nicht die Adjektive der Nachbarlektionen."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve words in two groups of six keep the pairs together and fit the matching pages.",
+    "fr": "Douze mots en deux groupes de six gardent les paires ensemble et correspondent aux pages d’association.",
+    "de": "Zwölf Wörter in zwei Sechsergruppen halten die Paare zusammen und passen zu den Zuordnungsseiten."
+  },
+  "difficultyBalance": {
+    "en": "Most words are demanding C1 vocabulary; the more common ones, such as stur and sparsam, are core.",
+    "fr": "La plupart des mots relèvent du vocabulaire exigeant du niveau C1 ; les plus courants, comme stur et sparsam, sont de base.",
+    "de": "Die meisten Wörter sind anspruchsvoller C1-Wortschatz; häufigere wie stur und sparsam gelten als Grundwortschatz."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "geld-wille-selbstbild",
+      "label": {
+        "en": "Money, will and self-image",
+        "fr": "Argent, volonté et image de soi",
+        "de": "Geld, Wille und Selbstbild"
+      },
+      "targetIds": ["sparsam", "knauserig", "beharrlich", "stur", "selbstsicher", "ueberheblich"],
+      "introduction": {
+        "en": "The same trait can sound **approving** or **critical**. Compare the pairs:\n\n- `sparsam` – `knauserig`: dealing with money\n- `beharrlich` – `stur`: holding on to a goal or an opinion\n- `selbstsicher` – `überheblich`: how someone sees themselves",
+        "fr": "Un même trait peut sonner de façon **élogieuse** ou **critique**. Comparez les paires :\n\n- `sparsam` – `knauserig` : le rapport à l’argent\n- `beharrlich` – `stur` : s’accrocher à un but ou à une opinion\n- `selbstsicher` – `überheblich` : la manière dont on se voit",
+        "de": "Dieselbe Eigenschaft kann **anerkennend** oder **kritisch** klingen. Vergleiche die Paare:\n\n- `sparsam` – `knauserig`: der Umgang mit Geld\n- `beharrlich` – `stur`: an einem Ziel oder einer Meinung festhalten\n- `selbstsicher` – `überheblich`: wie jemand sich selbst sieht"
+      }
+    },
+    {
+      "id": "reden-streben-gefuehl",
+      "label": {
+        "en": "Talking, striving and feeling",
+        "fr": "Parler, aspirer et ressentir",
+        "de": "Reden, Streben und Empfinden"
+      },
+      "targetIds": [
+        "redselig",
+        "geschwaetzig",
+        "ehrgeizig",
+        "verbissen",
+        "feinfuehlig",
+        "empfindlich"
+      ],
+      "introduction": {
+        "en": "Here too, the first word of each pair is rather **kind**, the second rather **critical**:\n\n- `redselig` – `geschwätzig`: talking a lot\n- `ehrgeizig` – `verbissen`: wanting to succeed\n- `feinfühlig` – `empfindlich`: reacting to feelings and criticism",
+        "fr": "Ici aussi, le premier mot de chaque paire est plutôt **bienveillant**, le second plutôt **critique** :\n\n- `redselig` – `geschwätzig` : parler beaucoup\n- `ehrgeizig` – `verbissen` : vouloir réussir\n- `feinfühlig` – `empfindlich` : réagir aux sentiments et aux critiques",
+        "de": "Auch hier ist das erste Wort jedes Paars eher **wohlwollend**, das zweite eher **kritisch**:\n\n- `redselig` – `geschwätzig`: viel reden\n- `ehrgeizig` – `verbissen`: Erfolg haben wollen\n- `feinfühlig` – `empfindlich`: auf Gefühle und Kritik reagieren"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "sparsam",
+      "term": "sparsam",
+      "translations": { "en": ["thrifty", "economical"], "fr": ["économe"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "sparsam",
+      "examForms": ["sparsam"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʃpaːɐ̯zaːm/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Meine Großmutter ist sparsam und wirft nichts weg.",
+        "translation": {
+          "en": "My grandmother is thrifty and throws nothing away.",
+          "fr": "Ma grand-mère est économe et ne jette rien."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Sparsam is approving: someone who handles money carefully. The critical counterpart is knauserig.",
+        "fr": "Sparsam est élogieux : qui gère son argent avec prudence. L’équivalent critique est knauserig.",
+        "de": "Sparsam ist anerkennend: Wer sparsam ist, geht vorsichtig mit Geld um. Das kritische Gegenstück ist knauserig."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "thrifty (approving: careful with money)",
+        "fr": "économe (élogieux : prudent avec l’argent)"
+      },
+      "gap": {
+        "before": "Meine Großmutter kauft nur, was sie braucht, und lebt sehr ",
+        "after": ". Sie hat nie Schulden.",
+        "accepted": { "answers": ["sparsam"] },
+        "referenceTargetIds": ["sparsam", "redselig", "ehrgeizig", "empfindlich"],
+        "explanation": {
+          "en": "Only sparsam describes someone who buys only what is needed and has no debts.",
+          "fr": "Seul « sparsam » décrit quelqu’un qui n’achète que le nécessaire et n’a pas de dettes.",
+          "de": "Nur „sparsam“ beschreibt jemanden, der nur das Nötige kauft und keine Schulden hat."
+        }
+      },
+      "listeningOptionTargetIds": ["sparsam", "selbstsicher", "stur", "verbissen"]
+    },
+    {
+      "id": "knauserig",
+      "term": "knauserig",
+      "translations": { "en": ["stingy"], "fr": ["radin"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "knauserig",
+      "examForms": ["knauserig"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈknaʊ̯zəʁɪç/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Er ist so knauserig, dass er nie eine Runde ausgibt.",
+        "translation": {
+          "en": "He is so stingy that he never buys a round.",
+          "fr": "Il est si radin qu’il ne paie jamais une tournée."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Knauserig is critical: someone who is unpleasantly unwilling to spend or give. Its kinder counterpart is sparsam.",
+        "fr": "Knauserig est critique : qui rechigne désagréablement à dépenser ou à donner. L’équivalent bienveillant est sparsam.",
+        "de": "Knauserig ist kritisch: Wer knauserig ist, gibt unangenehm ungern Geld aus. Das wohlwollende Gegenstück ist sparsam."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "stingy (critical: unwilling to spend)",
+        "fr": "radin (critique : qui rechigne à dépenser)"
+      },
+      "gap": {
+        "before": "Er ist so ",
+        "after": ", dass er nicht einmal ein Trinkgeld gibt.",
+        "accepted": { "answers": ["knauserig"] },
+        "referenceTargetIds": ["knauserig", "stur", "selbstsicher", "feinfuehlig"],
+        "explanation": {
+          "en": "Not even leaving a tip shows an unwillingness to give: knauserig.",
+          "fr": "Ne pas laisser même un pourboire montre qu’on rechigne à donner : « knauserig ».",
+          "de": "Nicht einmal ein Trinkgeld zu geben zeigt, dass jemand ungern gibt: knauserig."
+        }
+      },
+      "listeningOptionTargetIds": ["knauserig", "sparsam", "beharrlich", "geschwaetzig"]
+    },
+    {
+      "id": "beharrlich",
+      "term": "beharrlich",
+      "translations": { "en": ["persistent"], "fr": ["persévérant"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "beharrlich",
+      "examForms": ["beharrlich"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/bəˈhaʁlɪç/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Mit beharrlicher Arbeit erreichte sie ihr Ziel.",
+        "translation": {
+          "en": "With persistent work she reached her goal.",
+          "fr": "Par un travail persévérant, elle a atteint son but."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Beharrlich is approving: someone who keeps going patiently toward a goal. The critical counterpart is stur.",
+        "fr": "Beharrlich est élogieux : qui poursuit patiemment un but. L’équivalent critique est stur.",
+        "de": "Beharrlich ist anerkennend: Wer beharrlich ist, verfolgt geduldig ein Ziel. Das kritische Gegenstück ist stur."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "persistent (approving: keeps going toward a goal)",
+        "fr": "persévérant (élogieux : poursuit un but)"
+      },
+      "gap": {
+        "before": "Sie blieb ",
+        "after": " und bewarb sich nach jeder Absage erneut, bis es klappte.",
+        "accepted": { "answers": ["beharrlich"] },
+        "referenceTargetIds": ["beharrlich", "geschwaetzig", "ueberheblich", "knauserig"],
+        "explanation": {
+          "en": "Applying again after every rejection until it works is persistence: beharrlich.",
+          "fr": "Se représenter après chaque refus jusqu’à réussir, c’est de la persévérance : « beharrlich ».",
+          "de": "Sich nach jeder Absage erneut zu bewerben, bis es klappt, ist Beharrlichkeit: beharrlich."
+        }
+      },
+      "listeningOptionTargetIds": ["beharrlich", "stur", "verbissen", "empfindlich"]
+    },
+    {
+      "id": "stur",
+      "term": "stur",
+      "translations": { "en": ["stubborn"], "fr": ["têtu"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "stur",
+      "examForms": ["stur"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ʃtuːɐ̯/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Er bleibt stur bei seiner Meinung, auch wenn er unrecht hat.",
+        "translation": {
+          "en": "He sticks stubbornly to his opinion, even when he is wrong.",
+          "fr": "Il s’en tient obstinément à son opinion, même quand il a tort."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Stur is critical: someone who refuses to give in, even against good arguments. Its kinder counterpart is beharrlich.",
+        "fr": "Stur est critique : qui refuse de céder, même face à de bons arguments. L’équivalent bienveillant est beharrlich.",
+        "de": "Stur ist kritisch: Wer stur ist, gibt nicht nach, auch gegen gute Argumente. Das wohlwollende Gegenstück ist beharrlich."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "stubborn (critical: refuses to give in)",
+        "fr": "têtu (critique : refuse de céder)"
+      },
+      "gap": {
+        "before": "Er ist so ",
+        "after": ", dass er nie zugibt, dass er sich geirrt hat.",
+        "accepted": { "answers": ["stur"] },
+        "referenceTargetIds": ["stur", "sparsam", "redselig", "feinfuehlig"],
+        "explanation": {
+          "en": "Never admitting a mistake is the mark of a stubborn person: stur.",
+          "fr": "Ne jamais admettre une erreur est le propre d’une personne têtue : « stur ».",
+          "de": "Einen Irrtum nie zuzugeben, ist typisch für einen sturen Menschen: stur."
+        }
+      },
+      "listeningOptionTargetIds": ["stur", "sparsam", "beharrlich", "selbstsicher"]
+    },
+    {
+      "id": "selbstsicher",
+      "term": "selbstsicher",
+      "translations": { "en": ["self-confident"], "fr": ["sûr de soi"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "selbstsicher",
+      "examForms": ["selbstsicher"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈzɛlpstˌzɪçɐ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Sie trat selbstsicher vor das Publikum.",
+        "translation": {
+          "en": "She stepped confidently in front of the audience.",
+          "fr": "Elle s’est avancée avec assurance devant le public."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Selbstsicher is approving: someone who trusts their own abilities. The critical counterpart is überheblich.",
+        "fr": "Selbstsicher est élogieux : qui a confiance en ses capacités. L’équivalent critique est überheblich.",
+        "de": "Selbstsicher ist anerkennend: Wer selbstsicher ist, vertraut den eigenen Fähigkeiten. Das kritische Gegenstück ist überheblich."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "self-confident (approving: trusts own abilities)",
+        "fr": "sûr de soi (élogieux : a confiance en ses capacités)"
+      },
+      "gap": {
+        "before": "Beim Vorstellungsgespräch trat sie ruhig und ",
+        "after": " auf.",
+        "accepted": { "answers": ["selbstsicher"] },
+        "referenceTargetIds": ["selbstsicher", "knauserig", "geschwaetzig", "empfindlich"],
+        "explanation": {
+          "en": "Appearing calm at an interview fits a self-confident person: selbstsicher.",
+          "fr": "Se montrer calme lors d’un entretien convient à une personne sûre d’elle : « selbstsicher ».",
+          "de": "Ruhig in einem Vorstellungsgespräch aufzutreten passt zu einem selbstsicheren Menschen: selbstsicher."
+        }
+      },
+      "listeningOptionTargetIds": ["selbstsicher", "ueberheblich", "sparsam", "redselig"]
+    },
+    {
+      "id": "ueberheblich",
+      "term": "überheblich",
+      "translations": { "en": ["arrogant", "condescending"], "fr": ["arrogant"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "überheblich",
+      "examForms": ["überheblich"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈyːbɐˌheːplɪç/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Sein überheblicher Ton ärgert alle Kollegen.",
+        "translation": {
+          "en": "His arrogant tone annoys all his colleagues.",
+          "fr": "Son ton arrogant agace tous ses collègues."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Überheblich is critical: someone who feels better than others and shows it. Its kinder counterpart is selbstsicher.",
+        "fr": "Überheblich est critique : qui se croit supérieur aux autres et le montre. L’équivalent bienveillant est selbstsicher.",
+        "de": "Überheblich ist kritisch: Wer überheblich ist, hält sich für besser als andere und zeigt es. Das wohlwollende Gegenstück ist selbstsicher."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "arrogant (critical: feels better than others)",
+        "fr": "arrogant (critique : se croit supérieur aux autres)"
+      },
+      "gap": {
+        "before": "Er sieht auf seine Kollegen herab und wirkt dadurch ",
+        "after": ".",
+        "accepted": { "answers": ["überheblich"] },
+        "referenceTargetIds": ["ueberheblich", "beharrlich", "sparsam", "redselig"],
+        "explanation": {
+          "en": "Looking down on colleagues is typical of someone arrogant: überheblich.",
+          "fr": "Regarder ses collègues de haut est typique d’une personne arrogante : « überheblich ».",
+          "de": "Auf Kollegen herabzusehen ist typisch für jemanden, der überheblich ist: überheblich."
+        }
+      },
+      "listeningOptionTargetIds": ["ueberheblich", "selbstsicher", "empfindlich", "ehrgeizig"]
+    },
+    {
+      "id": "redselig",
+      "term": "redselig",
+      "translations": { "en": ["talkative"], "fr": ["loquace"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "redselig",
+      "examForms": ["redselig"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʁeːtˌzeːlɪç/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Auf der Feier war er besonders redselig.",
+        "translation": {
+          "en": "At the party he was especially talkative.",
+          "fr": "À la fête, il était particulièrement loquace."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Redselig is rather kind: someone who likes to talk and tells a lot. The critical counterpart is geschwätzig.",
+        "fr": "Redselig est plutôt bienveillant : qui aime parler et raconte beaucoup. L’équivalent critique est geschwätzig.",
+        "de": "Redselig ist eher wohlwollend: Wer redselig ist, redet gern und erzählt viel. Das kritische Gegenstück ist geschwätzig."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "talkative (kind: likes to talk)",
+        "fr": "loquace (bienveillant : aime parler)"
+      },
+      "gap": {
+        "before": "Nach dem Wein wurde er ",
+        "after": " und erzählte uns seine ganze Lebensgeschichte.",
+        "accepted": { "answers": ["redselig"] },
+        "referenceTargetIds": ["redselig", "stur", "ehrgeizig", "knauserig"],
+        "explanation": {
+          "en": "Telling a whole life story after some wine describes a talkative person: redselig.",
+          "fr": "Raconter toute sa vie après un peu de vin décrit une personne loquace : « redselig ».",
+          "de": "Nach etwas Wein die ganze Lebensgeschichte zu erzählen, beschreibt einen redseligen Menschen: redselig."
+        }
+      },
+      "listeningOptionTargetIds": ["redselig", "geschwaetzig", "feinfuehlig", "selbstsicher"]
+    },
+    {
+      "id": "geschwaetzig",
+      "term": "geschwätzig",
+      "translations": { "en": ["garrulous", "gossipy"], "fr": ["bavard"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "geschwätzig",
+      "examForms": ["geschwätzig"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɡəˈʃvɛt͡sɪç/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Meine Nachbarin ist geschwätzig und erzählt alles weiter.",
+        "translation": {
+          "en": "My neighbour is gossipy and passes everything on.",
+          "fr": "Ma voisine est bavarde et répète tout."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Geschwätzig is critical: someone who talks too much, often about unimportant things or secrets. Its kinder counterpart is redselig.",
+        "fr": "Geschwätzig est critique : qui parle trop, souvent de choses sans importance ou de secrets. L’équivalent bienveillant est redselig.",
+        "de": "Geschwätzig ist kritisch: Wer geschwätzig ist, redet zu viel, oft über Unwichtiges oder Geheimnisse. Das wohlwollende Gegenstück ist redselig."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "garrulous (critical: talks too much)",
+        "fr": "bavard (critique : parle trop)"
+      },
+      "gap": {
+        "before": "Sie ist so ",
+        "after": ", dass jedes Geheimnis am nächsten Tag im ganzen Büro bekannt ist.",
+        "accepted": { "answers": ["geschwätzig"] },
+        "referenceTargetIds": ["geschwaetzig", "sparsam", "selbstsicher", "verbissen"],
+        "explanation": {
+          "en": "Passing on every secret by the next day is typical of a gossipy person: geschwätzig.",
+          "fr": "Répandre chaque secret dès le lendemain est typique d’une personne bavarde : « geschwätzig ».",
+          "de": "Jedes Geheimnis bis zum nächsten Tag weiterzuerzählen, ist typisch für einen geschwätzigen Menschen: geschwätzig."
+        }
+      },
+      "listeningOptionTargetIds": ["geschwaetzig", "redselig", "beharrlich", "knauserig"]
+    },
+    {
+      "id": "ehrgeizig",
+      "term": "ehrgeizig",
+      "translations": { "en": ["ambitious"], "fr": ["ambitieux"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "ehrgeizig",
+      "examForms": ["ehrgeizig"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈeːɐ̯ˌɡaɪ̯t͡sɪç/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Die Studentin ist ehrgeizig und lernt jeden Abend.",
+        "translation": {
+          "en": "The student is ambitious and studies every evening.",
+          "fr": "L’étudiante est ambitieuse et étudie chaque soir."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Ehrgeizig is approving: someone who wants to achieve something. The critical counterpart is verbissen.",
+        "fr": "Ehrgeizig est élogieux : qui veut réussir quelque chose. L’équivalent critique est verbissen.",
+        "de": "Ehrgeizig ist anerkennend: Wer ehrgeizig ist, will etwas erreichen. Das kritische Gegenstück ist verbissen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "ambitious (approving: wants to achieve something)",
+        "fr": "ambitieux (élogieux : veut réussir)"
+      },
+      "gap": {
+        "before": "Er ist sehr ",
+        "after": " und will mit dreißig Abteilungsleiter werden.",
+        "accepted": { "answers": ["ehrgeizig"] },
+        "referenceTargetIds": ["ehrgeizig", "sparsam", "empfindlich", "geschwaetzig"],
+        "explanation": {
+          "en": "Wanting to become head of department at thirty shows ambition: ehrgeizig.",
+          "fr": "Vouloir devenir chef de service à trente ans montre de l’ambition : « ehrgeizig ».",
+          "de": "Mit dreißig Abteilungsleiter werden zu wollen, zeigt Ehrgeiz: ehrgeizig."
+        }
+      },
+      "listeningOptionTargetIds": ["ehrgeizig", "verbissen", "beharrlich", "redselig"]
+    },
+    {
+      "id": "verbissen",
+      "term": "verbissen",
+      "translations": { "en": ["dogged", "grimly determined"], "fr": ["acharné"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "verbissen",
+      "examForms": ["verbissen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/fɛɐ̯ˈbɪsn̩/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Er kämpfte verbissen um jeden Punkt.",
+        "translation": {
+          "en": "He fought doggedly for every point.",
+          "fr": "Il s’est battu avec acharnement pour chaque point."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Verbissen is critical: someone who pursues a goal so tensely that all lightness is lost. Its kinder counterpart is ehrgeizig.",
+        "fr": "Verbissen est critique : qui poursuit un but avec une telle crispation que toute légèreté disparaît. L’équivalent bienveillant est ehrgeizig.",
+        "de": "Verbissen ist kritisch: Wer verbissen ist, verfolgt ein Ziel so angespannt, dass alle Leichtigkeit verloren geht. Das wohlwollende Gegenstück ist ehrgeizig."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "dogged (critical: tense and joyless in pursuit of a goal)",
+        "fr": "acharné (critique : crispé et sans joie dans la poursuite d’un but)"
+      },
+      "gap": {
+        "before": "Er trainierte ",
+        "after": " weiter, obwohl ihm der Sport längst keine Freude mehr machte.",
+        "accepted": { "answers": ["verbissen"] },
+        "referenceTargetIds": ["verbissen", "feinfuehlig", "redselig", "sparsam"],
+        "explanation": {
+          "en": "Training on without any joy left is done in a dogged, tense way: verbissen.",
+          "fr": "S’entraîner sans plus aucun plaisir, c’est le faire de façon crispée et acharnée : « verbissen ».",
+          "de": "Ohne jede Freude weiterzutrainieren, geschieht verbissen."
+        }
+      },
+      "listeningOptionTargetIds": ["verbissen", "ehrgeizig", "empfindlich", "stur"]
+    },
+    {
+      "id": "feinfuehlig",
+      "term": "feinfühlig",
+      "translations": { "en": ["sensitive", "considerate"], "fr": ["délicat", "plein de tact"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "feinfühlig",
+      "examForms": ["feinfühlig"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈfaɪ̯nˌfyːlɪç/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Sie ist feinfühlig und spürt sofort, wenn jemand traurig ist.",
+        "translation": {
+          "en": "She is sensitive and immediately senses when someone is sad.",
+          "fr": "Elle est délicate et sent tout de suite quand quelqu’un est triste."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Feinfühlig is approving: someone who notices the feelings of others and treats them with care. The critical counterpart is empfindlich.",
+        "fr": "Feinfühlig est élogieux : qui perçoit les sentiments des autres et les ménage. L’équivalent critique est empfindlich.",
+        "de": "Feinfühlig ist anerkennend: Wer feinfühlig ist, nimmt die Gefühle anderer wahr und geht behutsam damit um. Das kritische Gegenstück ist empfindlich."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "sensitive (approving: notices others’ feelings)",
+        "fr": "délicat (élogieux : perçoit les sentiments des autres)"
+      },
+      "gap": {
+        "before": "Sie ist so ",
+        "after": ", dass sie sofort merkt, wenn jemand traurig ist.",
+        "accepted": { "answers": ["feinfühlig"] },
+        "referenceTargetIds": ["feinfuehlig", "stur", "knauserig", "ueberheblich"],
+        "explanation": {
+          "en": "Noticing at once that someone is sad shows sensitivity to others: feinfühlig.",
+          "fr": "Remarquer aussitôt que quelqu’un est triste montre de la délicatesse envers les autres : « feinfühlig ».",
+          "de": "Sofort zu merken, dass jemand traurig ist, zeigt Einfühlungsvermögen: feinfühlig."
+        }
+      },
+      "listeningOptionTargetIds": ["feinfuehlig", "empfindlich", "selbstsicher", "geschwaetzig"]
+    },
+    {
+      "id": "empfindlich",
+      "term": "empfindlich",
+      "translations": { "en": ["oversensitive", "touchy"], "fr": ["susceptible"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "empfindlich",
+      "examForms": ["empfindlich"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɛmˈpfɪntlɪç/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Er ist empfindlich und nimmt jede Kritik persönlich.",
+        "translation": {
+          "en": "He is touchy and takes every criticism personally.",
+          "fr": "Il est susceptible et prend toute critique pour lui."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Empfindlich is critical here: someone who is quickly hurt and takes remarks personally. Its kinder counterpart is feinfühlig.",
+        "fr": "Empfindlich est ici critique : qui est vite blessé et prend les remarques pour lui. L’équivalent bienveillant est feinfühlig.",
+        "de": "Empfindlich ist hier kritisch: Wer empfindlich ist, fühlt sich schnell verletzt und nimmt Bemerkungen persönlich. Das wohlwollende Gegenstück ist feinfühlig."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "oversensitive (critical: quickly hurt, takes things personally)",
+        "fr": "susceptible (critique : vite blessé, prend tout pour lui)"
+      },
+      "gap": {
+        "before": "Er ist sehr ",
+        "after": " und nimmt jede Kritik sofort persönlich.",
+        "accepted": { "answers": ["empfindlich"] },
+        "referenceTargetIds": ["empfindlich", "beharrlich", "redselig", "sparsam"],
+        "explanation": {
+          "en": "Taking every criticism personally describes a touchy person: empfindlich.",
+          "fr": "Prendre toute critique pour soi décrit une personne susceptible : « empfindlich ».",
+          "de": "Jede Kritik persönlich zu nehmen, beschreibt einen empfindlichen Menschen: empfindlich."
+        }
+      },
+      "listeningOptionTargetIds": ["empfindlich", "feinfuehlig", "ueberheblich", "knauserig"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

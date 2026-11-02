@@ -1,0 +1,621 @@
+{
+  "schemaVersion": 2,
+  "id": "de-mood-idioms",
+  "lang": "de",
+  "level": "B2",
+  "locales": ["en", "fr", "de"],
+  "title": "Gute und schlechte Laune in Wendungen",
+  "objective": {
+    "en": "Understand and use colloquial German idioms for good and bad moods.",
+    "fr": "Comprendre et utiliser des expressions allemandes familières pour la bonne et la mauvaise humeur.",
+    "de": "Umgangssprachliche Wendungen für gute und schlechte Laune verstehen und im Alltag verwenden."
+  },
+  "estimatedMinutes": 20,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:30:59.890Z",
+    "inputHashes": { "outline": "298c6fbf69846c51412b75f49c80578f1add8e23fae5309d7d2a4935ce8f1131" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Twelve colloquial idioms in three groups: good mood, sadness, and anger or frustration. Every idiom is taught in the infinitive, as it appears in dictionaries.",
+    "fr": "Douze expressions familières en trois groupes : bonne humeur, tristesse, colère ou frustration. Chaque expression est enseignée à l’infinitif, comme dans les dictionnaires.",
+    "de": "Zwölf umgangssprachliche Wendungen in drei Gruppen: gute Laune, Traurigkeit sowie Wut und Frust. Jede Wendung wird im Infinitiv gelernt, wie im Wörterbuch."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve idioms fit the outline and give a manageable number of pages at B2.",
+    "fr": "Douze expressions correspondent au plan et donnent un nombre de pages raisonnable au niveau B2.",
+    "de": "Zwölf Wendungen entsprechen der Gliederung und ergeben auf B2-Niveau eine gut machbare Seitenzahl."
+  },
+  "difficultyBalance": {
+    "en": "Most idioms are common and core; the more figurative ones (aus der Haut fahren, mit dem falschen Fuß aufgestanden sein) are demanding.",
+    "fr": "La plupart des expressions sont courantes ; les plus imagées (aus der Haut fahren, mit dem falschen Fuß aufgestanden sein) sont plus exigeantes.",
+    "de": "Die meisten Wendungen sind gängig; die bildhafteren (aus der Haut fahren, mit dem falschen Fuß aufgestanden sein) sind anspruchsvoller."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "gute-laune",
+      "label": { "en": "Good mood", "fr": "Bonne humeur", "de": "Gute Laune" },
+      "targetIds": ["gut-drauf", "wolke-sieben", "beide-ohren"],
+      "introduction": {
+        "en": "Good moods are often expressed with colloquial phrases. These three are **informal** and very common:\n\n- `gut drauf sein`\n- `auf Wolke sieben schweben`\n- `über beide Ohren strahlen`",
+        "fr": "La bonne humeur s’exprime souvent par des expressions familières. Ces trois-là sont **informelles** et très courantes :\n\n- `gut drauf sein`\n- `auf Wolke sieben schweben`\n- `über beide Ohren strahlen`",
+        "de": "Gute Stimmung wird oft mit umgangssprachlichen Wendungen ausgedrückt. Diese drei sind **informell** und sehr häufig:\n\n- `gut drauf sein`\n- `auf Wolke sieben schweben`\n- `über beide Ohren strahlen`"
+      }
+    },
+    {
+      "id": "traurig",
+      "label": { "en": "Feeling down", "fr": "Avoir le moral bas", "de": "Niedergeschlagen sein" },
+      "targetIds": ["truebsal", "kopf-haengen", "geknickt"],
+      "introduction": {
+        "en": "When someone is sad or discouraged, Germans like to use vivid images. Learn these **three** phrases:\n\n- `Trübsal blasen`\n- `den Kopf hängen lassen`\n- `geknickt sein`",
+        "fr": "Quand quelqu’un est triste ou découragé, on utilise volontiers des images vives en allemand. Apprenez ces **trois** expressions :\n\n- `Trübsal blasen`\n- `den Kopf hängen lassen`\n- `geknickt sein`",
+        "de": "Wenn jemand traurig oder entmutigt ist, nutzt man im Deutschen gern bildhafte Ausdrücke. Lerne diese **drei** Wendungen:\n\n- `Trübsal blasen`\n- `den Kopf hängen lassen`\n- `geknickt sein`"
+      }
+    },
+    {
+      "id": "wut",
+      "label": {
+        "en": "Anger and frustration",
+        "fr": "Colère et frustration",
+        "de": "Wut und Frust"
+      },
+      "targetIds": [
+        "nase-voll",
+        "falscher-fuss",
+        "aus-der-haut",
+        "hundertachtzig",
+        "ausrasten",
+        "stinksauer"
+      ],
+      "introduction": {
+        "en": "Anger and frustration have the richest idioms. They differ in **intensity**: from mild annoyance to a real outburst.\n\n- `die Nase voll haben`\n- `mit dem falschen Fuß aufgestanden sein`\n- `aus der Haut fahren`\n- `auf hundertachtzig sein`\n- `ausrasten`\n- `stinksauer sein`",
+        "fr": "La colère et la frustration ont les expressions les plus riches. Elles diffèrent par leur **intensité** : de l’agacement léger à l’explosion.\n\n- `die Nase voll haben`\n- `mit dem falschen Fuß aufgestanden sein`\n- `aus der Haut fahren`\n- `auf hundertachtzig sein`\n- `ausrasten`\n- `stinksauer sein`",
+        "de": "Für Wut und Frust gibt es die meisten Wendungen. Sie unterscheiden sich in der **Intensität**: vom leichten Ärger bis zum echten Ausbruch.\n\n- `die Nase voll haben`\n- `mit dem falschen Fuß aufgestanden sein`\n- `aus der Haut fahren`\n- `auf hundertachtzig sein`\n- `ausrasten`\n- `stinksauer sein`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "gut-drauf",
+      "term": "gut drauf sein",
+      "translations": { "en": ["to be in a good mood"], "fr": ["être de bonne humeur"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "gut drauf sein",
+      "examForms": ["gut drauf sein", "gute Laune haben", "gut gelaunt sein"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɡuːt ˈdʁaʊf zaɪn/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Nach dem Urlaub ist Lena richtig gut drauf.",
+        "translation": {
+          "en": "After the holiday Lena is in a really good mood.",
+          "fr": "Après les vacances, Lena est vraiment de bonne humeur."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Gut drauf sein is an informal way to say that someone is in a good mood.",
+        "fr": "Gut drauf sein est une façon familière de dire que quelqu’un est de bonne humeur.",
+        "de": "Gut drauf sein sagt man umgangssprachlich, wenn jemand gute Laune hat."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "to be in a good mood (informal)",
+        "fr": "être de bonne humeur (familier)"
+      },
+      "gap": {
+        "before": "Nach dem Urlaub ist Lena richtig gut ",
+        "after": " – sie lacht den ganzen Tag.",
+        "accepted": { "answers": ["drauf"] },
+        "referenceTargetIds": ["gut-drauf", "truebsal", "nase-voll", "aus-der-haut"],
+        "explanation": {
+          "en": "Only gut drauf sein fits: someone who laughs all day is in a good mood.",
+          "fr": "Seul gut drauf sein convient : quelqu’un qui rit toute la journée est de bonne humeur.",
+          "de": "Nur gut drauf sein passt: Wer den ganzen Tag lacht, hat gute Laune."
+        }
+      },
+      "listeningOptionTargetIds": ["gut-drauf", "geknickt", "ausrasten", "truebsal"]
+    },
+    {
+      "id": "wolke-sieben",
+      "term": "auf Wolke sieben schweben",
+      "translations": { "en": ["to be on cloud nine"], "fr": ["être aux anges"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "auf Wolke sieben schweben",
+      "examForms": ["auf Wolke sieben schweben", "auf Wolke sieben sein"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/aʊf ˈvɔlkə ˈziːbn̩ ˈʃveːbn̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Seit der Hochzeit schwebt sie auf Wolke sieben.",
+        "translation": {
+          "en": "Since the wedding she has been on cloud nine.",
+          "fr": "Depuis le mariage, elle est aux anges."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Auf Wolke sieben schweben means to be extremely happy, often because of love or great news.",
+        "fr": "Auf Wolke sieben schweben signifie être extrêmement heureux, souvent à cause de l’amour ou d’une grande nouvelle.",
+        "de": "Auf Wolke sieben schweben heißt, überglücklich zu sein, oft wegen der Liebe oder einer tollen Nachricht."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Seit der Hochzeit schwebt sie auf ",
+        "after": " sieben.",
+        "accepted": { "answers": ["Wolke"] },
+        "referenceTargetIds": ["wolke-sieben", "nase-voll", "kopf-haengen", "ausrasten"],
+        "explanation": {
+          "en": "The idiom is auf Wolke sieben schweben: the missing word is Wolke.",
+          "fr": "L’expression est auf Wolke sieben schweben : le mot manquant est Wolke.",
+          "de": "Die Wendung heißt auf Wolke sieben schweben: Das fehlende Wort ist Wolke."
+        }
+      },
+      "listeningOptionTargetIds": ["wolke-sieben", "nase-voll", "kopf-haengen", "hundertachtzig"]
+    },
+    {
+      "id": "beide-ohren",
+      "term": "über beide Ohren strahlen",
+      "translations": { "en": ["to beam from ear to ear"], "fr": ["sourire jusqu’aux oreilles"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "über beide Ohren strahlen",
+      "examForms": ["über beide Ohren strahlen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈyːbɐ ˈbaɪdə ˈoːʁən ˈʃtʁaːlən/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Der Gewinner strahlte über beide Ohren.",
+        "translation": {
+          "en": "The winner beamed from ear to ear.",
+          "fr": "Le gagnant souriait jusqu’aux oreilles."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Über beide Ohren strahlen means to smile very broadly out of joy.",
+        "fr": "Über beide Ohren strahlen signifie sourire très largement de joie.",
+        "de": "Über beide Ohren strahlen heißt, vor Freude ganz breit zu lächeln."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Als sie das Zeugnis sah, strahlte sie über beide ",
+        "after": ".",
+        "accepted": { "answers": ["Ohren"] },
+        "referenceTargetIds": ["beide-ohren", "nase-voll", "truebsal", "aus-der-haut"],
+        "explanation": {
+          "en": "A good report makes her happy: she beams über beide Ohren.",
+          "fr": "Un bon bulletin la rend heureuse : elle sourit über beide Ohren.",
+          "de": "Ein gutes Zeugnis macht sie froh: Sie strahlt über beide Ohren."
+        }
+      },
+      "listeningOptionTargetIds": ["beide-ohren", "gut-drauf", "aus-der-haut", "geknickt"]
+    },
+    {
+      "id": "truebsal",
+      "term": "Trübsal blasen",
+      "translations": { "en": ["to mope"], "fr": ["broyer du noir"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "Trübsal blasen",
+      "examForms": ["Trübsal blasen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈtʁyːpzaːl ˈblaːzn̩/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Sie sitzt zu Hause und bläst Trübsal.",
+        "translation": {
+          "en": "She sits at home and mopes.",
+          "fr": "Elle reste chez elle à broyer du noir."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Trübsal blasen means to be sad and gloomy without doing anything about it.",
+        "fr": "Trübsal blasen signifie être triste et morose sans rien faire.",
+        "de": "Trübsal blasen heißt, traurig und niedergedrückt zu sein, ohne etwas dagegen zu tun."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Statt Trübsal zu ",
+        "after": ", solltest du lieber etwas unternehmen.",
+        "accepted": { "answers": ["blasen"] },
+        "referenceTargetIds": ["truebsal", "gut-drauf", "wolke-sieben", "aus-der-haut"],
+        "explanation": {
+          "en": "The fixed phrase is Trübsal blasen; the verb is blasen.",
+          "fr": "L’expression figée est Trübsal blasen ; le verbe est blasen.",
+          "de": "Die feste Wendung heißt Trübsal blasen; das Verb ist blasen."
+        }
+      },
+      "listeningOptionTargetIds": ["truebsal", "ausrasten", "kopf-haengen", "stinksauer"]
+    },
+    {
+      "id": "kopf-haengen",
+      "term": "den Kopf hängen lassen",
+      "translations": { "en": ["to get downhearted"], "fr": ["se laisser abattre"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "den Kopf hängen lassen",
+      "examForms": ["den Kopf hängen lassen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/deːn kɔpf ˈhɛŋən ˈlasn̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Er hat verloren, aber er lässt den Kopf nicht hängen.",
+        "translation": {
+          "en": "He lost, but he doesn’t let it get him down.",
+          "fr": "Il a perdu, mais il ne se laisse pas abattre."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Den Kopf hängen lassen means to become discouraged after a setback. It is often used in the negative as advice.",
+        "fr": "Den Kopf hängen lassen signifie se décourager après un échec. On l’emploie souvent à la forme négative comme conseil.",
+        "de": "Den Kopf hängen lassen heißt, nach einem Rückschlag mutlos zu werden. Oft steht es verneint als Rat."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "to let oneself be discouraged (idiom with a body part)",
+        "fr": "se laisser abattre (expression avec une partie du corps)"
+      },
+      "gap": {
+        "before": "Lass doch nicht gleich den ",
+        "after": " hängen – beim nächsten Mal klappt es bestimmt!",
+        "accepted": { "answers": ["Kopf"] },
+        "referenceTargetIds": ["kopf-haengen", "hundertachtzig", "stinksauer", "beide-ohren"],
+        "explanation": {
+          "en": "The advice not to give up matches den Kopf hängen lassen.",
+          "fr": "Le conseil de ne pas se décourager correspond à den Kopf hängen lassen.",
+          "de": "Der Rat, nicht aufzugeben, passt zu den Kopf hängen lassen."
+        }
+      },
+      "listeningOptionTargetIds": ["kopf-haengen", "falscher-fuss", "truebsal", "wolke-sieben"]
+    },
+    {
+      "id": "geknickt",
+      "term": "geknickt sein",
+      "translations": { "en": ["to be dejected"], "fr": ["être abattu"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "geknickt sein",
+      "examForms": ["geknickt sein", "niedergeschlagen sein"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɡəˈknɪkt zaɪn/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Du siehst geknickt aus. Was ist los?",
+        "translation": {
+          "en": "You look dejected. What’s wrong?",
+          "fr": "Tu as l’air abattu. Qu’est-ce qui se passe ?"
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Geknickt sein describes someone who is sad and disappointed, like a bent stalk.",
+        "fr": "Geknickt sein décrit quelqu’un de triste et déçu, comme une tige pliée.",
+        "de": "Geknickt sein beschreibt jemanden, der traurig und enttäuscht ist, wie ein geknickter Halm."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "to be dejected (informal adjective)",
+        "fr": "être abattu (adjectif familier)"
+      },
+      "gap": {
+        "before": "Nach der schlechten Note war Tim ziemlich ",
+        "after": " und sagte kaum ein Wort.",
+        "accepted": { "answers": ["geknickt"] },
+        "referenceTargetIds": ["geknickt", "wolke-sieben", "nase-voll", "kopf-haengen"],
+        "explanation": {
+          "en": "Tim is sad after the bad grade, so geknickt fits.",
+          "fr": "Tim est triste après la mauvaise note, donc geknickt convient.",
+          "de": "Tim ist nach der schlechten Note traurig, deshalb passt geknickt."
+        }
+      },
+      "listeningOptionTargetIds": ["geknickt", "gut-drauf", "ausrasten", "stinksauer"]
+    },
+    {
+      "id": "nase-voll",
+      "term": "die Nase voll haben",
+      "translations": { "en": ["to be fed up"], "fr": ["en avoir marre"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "die Nase voll haben",
+      "examForms": ["die Nase voll haben"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/diː ˈnaːzə fɔl ˈhaːbn̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ich habe die Nase voll von diesem Wetter.",
+        "translation": { "en": "I’m fed up with this weather.", "fr": "J’en ai marre de ce temps." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Nase voll haben means to have had enough of something. The thing you are tired of follows with von.",
+        "fr": "Die Nase voll haben signifie en avoir assez de quelque chose. Ce qui lasse se construit avec von.",
+        "de": "Die Nase voll haben heißt, von etwas genug zu haben. Wovon man genug hat, steht mit von."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "to be fed up (idiom with a body part)",
+        "fr": "en avoir marre (expression avec une partie du corps)"
+      },
+      "gap": {
+        "before": "Ich habe die ",
+        "after": " voll: Seit drei Wochen regnet es jeden Tag.",
+        "accepted": { "answers": ["Nase"] },
+        "referenceTargetIds": ["nase-voll", "gut-drauf", "aus-der-haut", "truebsal"],
+        "explanation": {
+          "en": "Being tired of the rain every day is expressed with die Nase voll haben.",
+          "fr": "Être las de la pluie tous les jours s’exprime par die Nase voll haben.",
+          "de": "Genug vom täglichen Regen zu haben, drückt man mit die Nase voll haben aus."
+        }
+      },
+      "listeningOptionTargetIds": ["nase-voll", "wolke-sieben", "falscher-fuss", "hundertachtzig"]
+    },
+    {
+      "id": "falscher-fuss",
+      "term": "mit dem falschen Fuß aufgestanden sein",
+      "translations": {
+        "en": ["to have got out of bed on the wrong side"],
+        "fr": ["s’être levé du pied gauche"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "mit dem falschen Fuß aufgestanden sein",
+      "examForms": [
+        "mit dem falschen Fuß aufgestanden sein",
+        "mit dem linken Fuß aufgestanden sein"
+      ],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/mɪt deːm ˈfalʃn̩ fuːs ˈaʊfɡəʃtandn̩ zaɪn/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Heute meckert er über alles. Er ist wohl mit dem falschen Fuß aufgestanden.",
+        "translation": {
+          "en": "Today he complains about everything. He must have got out of bed on the wrong side.",
+          "fr": "Aujourd’hui, il râle sur tout. Il s’est sûrement levé du pied gauche."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "This idiom explains a bad mood without a clear reason: the day simply started badly.",
+        "fr": "Cette expression explique une mauvaise humeur sans raison claire : la journée a simplement mal commencé.",
+        "de": "Diese Wendung erklärt schlechte Laune ohne klaren Grund: Der Tag hat einfach schlecht begonnen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Heute meckert er über alles; er ist wohl mit dem falschen ",
+        "after": " aufgestanden.",
+        "accepted": { "answers": ["Fuß", "Fuss"] },
+        "referenceTargetIds": ["falscher-fuss", "geknickt", "stinksauer", "wolke-sieben"],
+        "explanation": {
+          "en": "Someone grumpy for no reason got up mit dem falschen Fuß.",
+          "fr": "Quelqu’un de grincheux sans raison s’est levé mit dem falschen Fuß.",
+          "de": "Wer ohne Grund schlecht gelaunt ist, ist mit dem falschen Fuß aufgestanden."
+        }
+      },
+      "listeningOptionTargetIds": ["falscher-fuss", "nase-voll", "beide-ohren", "aus-der-haut"]
+    },
+    {
+      "id": "aus-der-haut",
+      "term": "aus der Haut fahren",
+      "translations": { "en": ["to blow one’s top"], "fr": ["sortir de ses gonds"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "aus der Haut fahren",
+      "examForms": ["aus der Haut fahren"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/aʊs deːɐ̯ haʊt ˈfaːʁən/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Wenn man ihn warten lässt, fährt er schnell aus der Haut.",
+        "translation": {
+          "en": "If you keep him waiting, he quickly blows his top.",
+          "fr": "Quand on le fait attendre, il sort vite de ses gonds."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Aus der Haut fahren describes a sudden outburst, while auf hundertachtzig sein describes a state of anger.",
+        "fr": "Aus der Haut fahren décrit un accès soudain, alors que auf hundertachtzig sein décrit un état de colère.",
+        "de": "Aus der Haut fahren beschreibt einen plötzlichen Ausbruch, auf hundertachtzig sein dagegen einen Zustand der Wut."
+      },
+      "explanation": {
+        "en": "Aus der Haut fahren means to lose one’s temper suddenly and visibly.",
+        "fr": "Aus der Haut fahren signifie perdre son calme soudainement et de façon visible.",
+        "de": "Aus der Haut fahren heißt, plötzlich und sichtbar die Beherrschung zu verlieren."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "to lose one’s temper suddenly (idiom with a body part: the skin)",
+        "fr": "perdre soudain son calme (expression avec une partie du corps : la peau)"
+      },
+      "gap": {
+        "before": "Bei jeder Kleinigkeit würde er am liebsten aus der ",
+        "after": " fahren.",
+        "accepted": { "answers": ["Haut"] },
+        "referenceTargetIds": ["aus-der-haut", "hundertachtzig", "geknickt", "kopf-haengen"],
+        "explanation": {
+          "en": "The idiom is aus der Haut fahren: the missing word is Haut.",
+          "fr": "L’expression est aus der Haut fahren : le mot manquant est Haut.",
+          "de": "Die Wendung heißt aus der Haut fahren: Das fehlende Wort ist Haut."
+        }
+      },
+      "listeningOptionTargetIds": ["aus-der-haut", "hundertachtzig", "ausrasten", "kopf-haengen"]
+    },
+    {
+      "id": "hundertachtzig",
+      "term": "auf hundertachtzig sein",
+      "translations": { "en": ["to be fuming"], "fr": ["être hors de soi"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "auf hundertachtzig sein",
+      "examForms": ["auf hundertachtzig sein", "auf 180 sein"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/aʊf ˈhʊndɐtˈʔaxtsɪç zaɪn/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Mein Chef ist heute auf hundertachtzig.",
+        "translation": {
+          "en": "My boss is fuming today.",
+          "fr": "Mon chef est hors de lui aujourd’hui."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Auf hundertachtzig sein means to be extremely angry. The image is a car going 180 km/h.",
+        "fr": "Auf hundertachtzig sein signifie être extrêmement en colère. L’image est celle d’une voiture à 180 km/h.",
+        "de": "Auf hundertachtzig sein heißt, extrem wütend zu sein. Das Bild ist ein Auto mit 180 km/h."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "to be furious (idiom with a number)",
+        "fr": "être furieux (expression avec un nombre)"
+      },
+      "gap": {
+        "before": "Der Chef ist auf ",
+        "after": ", weil der Server schon wieder ausgefallen ist.",
+        "accepted": { "answers": ["hundertachtzig", "180"] },
+        "referenceTargetIds": ["hundertachtzig", "gut-drauf", "truebsal", "beide-ohren"],
+        "explanation": {
+          "en": "The boss is angry about the server, so auf hundertachtzig fits.",
+          "fr": "Le chef est en colère à cause du serveur, donc auf hundertachtzig convient.",
+          "de": "Der Chef ärgert sich über den Server, deshalb passt auf hundertachtzig."
+        }
+      },
+      "listeningOptionTargetIds": ["hundertachtzig", "stinksauer", "wolke-sieben", "truebsal"]
+    },
+    {
+      "id": "ausrasten",
+      "term": "ausrasten",
+      "translations": { "en": ["to flip out"], "fr": ["péter les plombs"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "ausrasten",
+      "examForms": ["ausrasten"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈaʊsˌʁastn̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Wenn du das noch einmal sagst, rastet er aus.",
+        "translation": {
+          "en": "If you say that again, he’ll flip out.",
+          "fr": "Si tu répètes ça, il va péter les plombs."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Ausrasten is a separable verb: it means to lose control out of anger (er rastet aus).",
+        "fr": "Ausrasten est un verbe séparable : il signifie perdre le contrôle sous l’effet de la colère (er rastet aus).",
+        "de": "Ausrasten ist ein trennbares Verb: Es heißt, vor Wut die Kontrolle zu verlieren (er rastet aus)."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "to flip out (a single informal verb)",
+        "fr": "péter les plombs (un seul verbe familier)"
+      },
+      "gap": {
+        "before": "Wenn du mein Handy noch einmal kaputt machst, rastet er total ",
+        "after": ".",
+        "accepted": { "answers": ["aus"] },
+        "referenceTargetIds": ["ausrasten", "gut-drauf", "geknickt", "beide-ohren"],
+        "explanation": {
+          "en": "The separable verb ausrasten sends its prefix aus to the end of the clause.",
+          "fr": "Le verbe séparable ausrasten envoie son préfixe aus en fin de proposition.",
+          "de": "Das trennbare Verb ausrasten stellt sein Präfix aus ans Satzende."
+        }
+      },
+      "listeningOptionTargetIds": ["ausrasten", "aus-der-haut", "gut-drauf", "geknickt"]
+    },
+    {
+      "id": "stinksauer",
+      "term": "stinksauer sein",
+      "translations": { "en": ["to be hopping mad"], "fr": ["être furax"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "stinksauer sein",
+      "examForms": ["stinksauer sein"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʃtɪŋkˌzaʊɐ zaɪn/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ich bin stinksauer auf meinen Bruder.",
+        "translation": {
+          "en": "I’m hopping mad at my brother.",
+          "fr": "Je suis furax contre mon frère."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Stinksauer intensifies sauer (angry); it is very colloquial and used with sein.",
+        "fr": "Stinksauer renforce sauer (fâché) ; très familier, il s’emploie avec sein.",
+        "de": "Stinksauer verstärkt sauer; es ist sehr umgangssprachlich und steht mit sein."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "to be hopping mad (compound adjective with sein)",
+        "fr": "être furax (adjectif composé avec sein)"
+      },
+      "gap": {
+        "before": "Ich bin richtig ",
+        "after": ", weil du mein Fahrrad genommen hast, ohne zu fragen.",
+        "accepted": { "answers": ["stinksauer"] },
+        "referenceTargetIds": ["stinksauer", "wolke-sieben", "beide-ohren", "gut-drauf"],
+        "explanation": {
+          "en": "Taking a bike without asking makes someone angry, so stinksauer fits.",
+          "fr": "Prendre un vélo sans demander met en colère, donc stinksauer convient.",
+          "de": "Wer ein Fahrrad ohne zu fragen nimmt, macht andere wütend: Es passt stinksauer."
+        }
+      },
+      "listeningOptionTargetIds": ["stinksauer", "hundertachtzig", "nase-voll", "beide-ohren"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

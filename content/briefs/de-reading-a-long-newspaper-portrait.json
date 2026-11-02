@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 2,
+  "id": "de-reading-a-long-newspaper-portrait",
+  "lang": "de",
+  "level": "C1",
+  "locales": ["en", "fr", "de"],
+  "title": "Ein langes Zeitungsporträt lesen",
+  "objective": {
+    "en": "Read a long newspaper portrait of a sculptor and infer her character from scenes, even where her self-image and the author’s view differ.",
+    "fr": "Lire le long portrait d’une sculptrice dans un hebdomadaire et déduire son caractère à partir de scènes, même quand son image d’elle-même et le regard de l’autrice divergent.",
+    "de": "Ein langes Porträt einer Bildhauerin lesen und ihren Charakter aus Szenen erschließen, auch wo Selbstbild und Blick der Autorin auseinandergehen."
+  },
+  "estimatedMinutes": 12,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:37:24.464Z",
+    "inputHashes": { "outline": "3ade460a6b1225e6c339aebc1dd0a0189f1041edce399e75e598be206043e2e9" }
+  },
+  "kind": "reading",
+  "theme": "personal_identification",
+  "genre": "article",
+  "situation": {
+    "en": "The journalist Katrin Moll spends a day in the studio of the sculptor Hanna Brandt and writes a long portrait for a weekly newspaper.",
+    "fr": "La journaliste Katrin Moll passe une journée dans l’atelier de la sculptrice Hanna Brandt et écrit un long portrait pour un hebdomadaire.",
+    "de": "Die Journalistin Katrin Moll verbringt einen Tag im Atelier der Bildhauerin Hanna Brandt und schreibt für eine Wochenzeitung ein langes Porträt."
+  },
+  "readerTask": {
+    "en": "Work out what Brandt is really like from the scenes shown, and notice where her own description of herself does not match them.",
+    "fr": "Comprendre comment est vraiment Brandt à partir des scènes montrées, et repérer où sa description d’elle-même ne correspond pas.",
+    "de": "Aus den gezeigten Szenen erschließen, wie Brandt wirklich ist, und bemerken, wo ihre Selbstbeschreibung nicht dazu passt."
+  },
+  "keywords": [
+    {
+      "id": "beilaeufig",
+      "term": "beiläufig",
+      "translations": {
+        "en": ["casually", "in passing"],
+        "fr": ["en passant", "avec désinvolture"]
+      },
+      "explanation": {
+        "en": "Said or done as if it were unimportant. It can be modesty, or a way of hiding how much something matters.",
+        "fr": "Dit ou fait comme si cela n’avait pas d’importance. Cela peut être de la modestie, ou une façon de cacher l’importance de la chose.",
+        "de": "So gesagt oder getan, als wäre es unwichtig. Das kann Bescheidenheit sein oder ein Weg, zu verbergen, wie wichtig etwas ist."
+      }
+    },
+    {
+      "id": "abwinken",
+      "term": "abwinken",
+      "translations": {
+        "en": ["to wave something away", "to decline with a gesture"],
+        "fr": ["refuser d’un geste", "balayer d’un geste"]
+      },
+      "explanation": {
+        "en": "To reject a remark, a thanks or an objection with a hand gesture or a short word, without discussing it.",
+        "fr": "Rejeter une remarque, un remerciement ou une objection d’un geste de la main ou d’un mot bref, sans en discuter.",
+        "de": "Eine Bemerkung, einen Dank oder einen Einwand mit einer Handbewegung oder einem kurzen Wort zurückweisen, ohne darüber zu reden."
+      }
+    },
+    {
+      "id": "unnachgiebig",
+      "term": "unnachgiebig",
+      "translations": { "en": ["unyielding", "inflexible"], "fr": ["inflexible", "intransigeant"] },
+      "explanation": {
+        "en": "Not ready to give way, even when others push or object. The word judges neutrally to critically.",
+        "fr": "Qui refuse de céder, même quand les autres insistent ou objectent. Le mot est neutre à critique.",
+        "de": "Nicht bereit nachzugeben, auch wenn andere drängen oder widersprechen. Das Wort wertet neutral bis kritisch."
+      }
+    },
+    {
+      "id": "verbissen",
+      "term": "verbissen",
+      "translations": { "en": ["dogged", "grimly determined"], "fr": ["acharné", "obstiné"] },
+      "explanation": {
+        "en": "Pursuing a goal with so much tension that there is no room for ease or humour. Usually critical.",
+        "fr": "Qui poursuit un but avec une telle tension qu’il ne reste de place ni pour la détente ni pour l’humour. Généralement critique.",
+        "de": "Ein Ziel mit so viel Anspannung verfolgen, dass kein Platz für Gelassenheit oder Humor bleibt. Meist kritisch gemeint."
+      }
+    },
+    {
+      "id": "sich-zieren",
+      "term": "sich zieren",
+      "translations": {
+        "en": ["to make a fuss", "to be coy"],
+        "fr": ["faire des manières", "se faire prier"]
+      },
+      "explanation": {
+        "en": "To hesitate and resist at first, although one may be willing in the end; often to seem modest.",
+        "fr": "Hésiter et résister d’abord, bien qu’on soit peut-être prêt à accepter à la fin ; souvent pour paraître modeste.",
+        "de": "Anfangs zögern und sich sträuben, obwohl man am Ende vielleicht bereit ist; oft, um bescheiden zu wirken."
+      }
+    }
+  ],
+  "documents": {
+    "main": {
+      "targetWords": 496,
+      "contents": {
+        "en": "A long newspaper portrait of the sculptor Hanna Brandt, 61, in her studio near Kassel. She calls herself modest and unimportant. Scenes show her unyielding about a transport crate, coy with the photographer, sharply correcting a young sculptor yet secretly paying his rent, and called dogged by her ex-husband. At the end she says she is quite simple.",
+        "fr": "Long portrait de presse de la sculptrice Hanna Brandt, 61 ans, dans son atelier près de Kassel. Elle se dit modeste et sans importance. Les scènes la montrent inflexible à propos d’une caisse de transport, réticente devant la photographe, corrigeant sèchement un jeune sculpteur tout en payant en secret son loyer, et jugée acharnée par son ex-mari. À la fin, elle dit être assez simple.",
+        "de": "Ein langes Zeitungsporträt der Bildhauerin Hanna Brandt, 61, in ihrem Atelier bei Kassel. Sie nennt sich bescheiden und unwichtig. Szenen zeigen sie unnachgiebig bei einer Transportkiste, zimperlich vor der Fotografin, scharf im Urteil über einen jungen Bildhauer, dessen Miete sie heimlich zahlt, und von ihrem Exmann verbissen genannt. Am Ende sagt sie, sie sei ganz einfach."
+      }
+    },
+    "exam": {
+      "targetWords": 242,
+      "contents": {
+        "en": "A short portrait of the carpenter Wolfgang Specht, 58, from Freiburg. He says he is calm and simple, but looks at the clock, is sharp with his journeyman over a table top that is too narrow, arrives late and in tears at his daughter’s graduation, and checks the door three times.",
+        "fr": "Court portrait du menuisier Wolfgang Specht, 58 ans, de Fribourg. Il se dit calme et simple, mais regarde l’heure, est sec avec son compagnon à cause d’un plateau trop étroit, arrive en retard et en larmes à la remise de diplôme de sa fille, et vérifie trois fois la porte.",
+        "de": "Ein kurzes Porträt des Schreiners Wolfgang Specht, 58, aus Freiburg. Er nennt sich ruhig und einfach, schaut aber auf die Uhr, ist scharf zu seinem Gesellen wegen einer zu schmalen Tischplatte, kommt zu spät und weint bei der Abschlussfeier seiner Tochter und prüft die Tür dreimal."
+      }
+    }
+  },
+  "skim": { "focus": "purpose" },
+  "detailQuestions": [
+    {
+      "id": "q-selbstbild",
+      "type": "reading_choice",
+      "focus": {
+        "en": "How Brandt describes herself",
+        "fr": "Comment Brandt se décrit elle-même",
+        "de": "Wie Brandt sich selbst beschreibt"
+      }
+    },
+    {
+      "id": "q-kiste",
+      "type": "reading_choice",
+      "focus": {
+        "en": "Why the crate must be rebuilt",
+        "fr": "Pourquoi la caisse doit être refaite",
+        "de": "Warum die Kiste neu gebaut werden muss"
+      }
+    },
+    {
+      "id": "q-samir",
+      "type": "reading_true_false",
+      "focus": {
+        "en": "What Samir knows about the rent",
+        "fr": "Ce que Samir sait du loyer",
+        "de": "Was Samir über die Miete weiß"
+      }
+    },
+    {
+      "id": "q-jule",
+      "type": "reading_choice",
+      "focus": {
+        "en": "How Jule reacts to Brandt’s claim of being unimportant",
+        "fr": "Comment Jule réagit à l’affirmation de Brandt d’être sans importance",
+        "de": "Wie Jule auf Brandts Behauptung reagiert, unwichtig zu sein"
+      }
+    }
+  ],
+  "exam": { "types": ["reading_choice", "reading_true_false"] },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

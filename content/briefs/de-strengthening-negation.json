@@ -1,0 +1,243 @@
+{
+  "schemaVersion": 2,
+  "id": "de-strengthening-negation",
+  "lang": "de",
+  "level": "B2",
+  "locales": ["en", "fr", "de"],
+  "title": "Verstärkte Verneinung: gar nicht, überhaupt kein",
+  "objective": {
+    "en": "Strengthen a negation with gar, überhaupt and nicht einmal and build it up with geschweige denn, each in the right place.",
+    "fr": "Renforcer une négation avec gar, überhaupt et nicht einmal et la faire monter avec geschweige denn, chaque fois à la bonne place.",
+    "de": "Eine Verneinung mit gar, überhaupt und nicht einmal verstärken und mit geschweige denn steigern, jeweils an der richtigen Stelle."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:34:48.534Z",
+    "inputHashes": { "outline": "c5910209a885f7fbe858e865764777c13a1b820a8ce45e23ceade4f370da0f5f" }
+  },
+  "kind": "grammar",
+  "topic": "negation",
+  "scopeBoundaries": {
+    "en": "Covers gar and überhaupt before nicht, kein- and nichts, nicht einmal, and geschweige denn after a negated or limited statement. Excludes other particles of emphasis and the basic rules of nicht and kein.",
+    "fr": "Couvre gar et überhaupt devant nicht, kein- et nichts, nicht einmal, et geschweige denn après une phrase négative ou limitée. Exclut les autres particules de renforcement et les règles de base de nicht et kein.",
+    "de": "Behandelt gar und überhaupt vor nicht, kein- und nichts, nicht einmal sowie geschweige denn nach einer verneinten oder eingeschränkten Aussage. Ausgeschlossen sind andere Verstärkungspartikeln und die Grundregeln von nicht und kein."
+  },
+  "prerequisites": [
+    {
+      "en": "Basic negation with nicht, kein- and nichts",
+      "fr": "La négation simple avec nicht, kein- et nichts",
+      "de": "Einfache Verneinung mit nicht, kein- und nichts"
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-gar",
+      "summary": {
+        "en": "Gar stands directly before nicht, kein- or nichts and strengthens the negation: gar nicht, gar keine, gar nichts.",
+        "fr": "Gar se place directement devant nicht, kein- ou nichts et renforce la négation : gar nicht, gar keine, gar nichts.",
+        "de": "Gar steht direkt vor nicht, kein- oder nichts und verstärkt die Verneinung: gar nicht, gar keine, gar nichts."
+      }
+    },
+    {
+      "id": "rule-ueberhaupt",
+      "summary": {
+        "en": "Überhaupt strengthens a negation in the same place as gar: überhaupt nicht, überhaupt kein-, überhaupt nichts.",
+        "fr": "Überhaupt renforce une négation à la même place que gar : überhaupt nicht, überhaupt kein-, überhaupt nichts.",
+        "de": "Überhaupt verstärkt eine Verneinung an derselben Stelle wie gar: überhaupt nicht, überhaupt kein-, überhaupt nichts."
+      }
+    },
+    {
+      "id": "rule-nicht-einmal",
+      "summary": {
+        "en": "Nicht einmal (spoken: nicht mal) stands directly before the stressed word and names the least that is missing.",
+        "fr": "Nicht einmal (à l’oral : nicht mal) se place directement devant le mot mis en relief et nomme le strict minimum qui manque.",
+        "de": "Nicht einmal (gesprochen: nicht mal) steht direkt vor dem betonten Wort und nennt das Mindeste, das fehlt."
+      }
+    },
+    {
+      "id": "rule-geschweige-denn",
+      "summary": {
+        "en": "Geschweige denn follows a negated or limited statement, after a comma, and adds something bigger that applies even less.",
+        "fr": "Geschweige denn suit une phrase négative ou limitée, après une virgule, et ajoute quelque chose de plus grand qui vaut encore moins.",
+        "de": "Geschweige denn folgt nach einem Komma auf eine verneinte oder eingeschränkte Aussage und nennt etwas Größeres, das erst recht nicht gilt."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-gar-ueberhaupt",
+      "title": {
+        "en": "Strengthening with gar and überhaupt",
+        "fr": "Renforcer avec gar et überhaupt",
+        "de": "Verstärken mit gar und überhaupt"
+      },
+      "ruleIds": ["rule-gar", "rule-ueberhaupt"],
+      "explanationPlan": {
+        "en": "Show that gar and überhaupt strengthen nicht, kein- and nichts and stand directly before them. Give pairs such as nicht / gar nicht and keine / gar keine, with the endings of kein-. Warn against doubling the negation.",
+        "fr": "Montrer que gar et überhaupt renforcent nicht, kein- et nichts et se placent directement devant. Donner des paires comme nicht / gar nicht et keine / gar keine, avec les terminaisons de kein-. Mettre en garde contre le doublement de la négation.",
+        "de": "Zeigen, dass gar und überhaupt nicht, kein- und nichts verstärken und direkt davor stehen. Paare wie nicht / gar nicht und keine / gar keine mit den Endungen von kein- geben. Vor der doppelten Verneinung warnen."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "Ich habe gar keine Zeit.",
+          "translation": { "en": "I have no time at all.", "fr": "Je n’ai pas du tout de temps." }
+        },
+        {
+          "text": "Das stimmt überhaupt nicht.",
+          "translation": { "en": "That is not true at all.", "fr": "Ce n’est pas du tout vrai." }
+        },
+        {
+          "text": "Er hat gar nichts gesagt.",
+          "translation": { "en": "He said nothing at all.", "fr": "Il n’a rien dit du tout." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Gar and überhaupt come directly before nicht, kein- or nichts and do not replace them.",
+          "fr": "Gar et überhaupt se placent directement devant nicht, kein- ou nichts et ne les remplacent pas.",
+          "de": "Gar und überhaupt stehen direkt vor nicht, kein- oder nichts und ersetzen sie nicht."
+        },
+        {
+          "en": "Do not double the negation: not gar nicht keine Zeit, but gar keine Zeit.",
+          "fr": "Ne doublez pas la négation : pas gar nicht keine Zeit, mais gar keine Zeit.",
+          "de": "Die Verneinung nicht doppeln: nicht gar nicht keine Zeit, sondern gar keine Zeit."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-b1-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-gar", "rule-ueberhaupt"],
+          "estimatedDurationS": 48
+        },
+        {
+          "id": "ex-b1-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-gar", "rule-ueberhaupt"],
+          "estimatedDurationS": 80
+        },
+        {
+          "id": "ex-b1-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-gar", "rule-ueberhaupt"],
+          "estimatedDurationS": 75
+        }
+      ]
+    },
+    {
+      "id": "block-einmal-geschweige",
+      "title": {
+        "en": "Building up: nicht einmal and geschweige denn",
+        "fr": "Renchérir : nicht einmal et geschweige denn",
+        "de": "Steigern: nicht einmal und geschweige denn"
+      },
+      "ruleIds": ["rule-nicht-einmal", "rule-geschweige-denn"],
+      "explanationPlan": {
+        "en": "Explain nicht einmal as the least that is missing, placed directly before the stressed word, and contrast it with einmal nicht. Then explain geschweige denn after a negated or limited first part, with a comma and usually no verb.",
+        "fr": "Expliquer nicht einmal comme le strict minimum qui manque, placé directement devant le mot mis en relief, et l’opposer à einmal nicht. Expliquer ensuite geschweige denn après une première partie négative ou limitée, avec une virgule et le plus souvent sans verbe.",
+        "de": "Nicht einmal als das Mindeste erklären, das fehlt, direkt vor dem betonten Wort, und von einmal nicht abgrenzen. Dann geschweige denn nach einem verneinten oder eingeschränkten ersten Teil erklären, mit Komma und meist ohne Verb."
+      },
+      "explanationDurationS": 150,
+      "examples": [
+        {
+          "text": "Er hat nicht einmal angerufen.",
+          "translation": { "en": "He didn’t even call.", "fr": "Il n’a même pas appelé." }
+        },
+        {
+          "text": "Er kann kaum gehen, geschweige denn laufen.",
+          "translation": {
+            "en": "He can hardly walk, let alone run.",
+            "fr": "Il peut à peine marcher, encore moins courir."
+          }
+        },
+        {
+          "text": "Sie spricht kaum Englisch, geschweige denn Chinesisch.",
+          "translation": {
+            "en": "She hardly speaks English, let alone Chinese.",
+            "fr": "Elle parle à peine anglais, encore moins chinois."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Nicht einmal (not even) is not the same as einmal nicht (once not).",
+          "fr": "Nicht einmal (même pas) n’est pas la même chose que einmal nicht (une fois pas).",
+          "de": "Nicht einmal (nicht einmal) ist nicht dasselbe wie einmal nicht (ein Mal nicht)."
+        },
+        {
+          "en": "Geschweige denn follows a negated or limited statement; after a positive statement it makes no sense.",
+          "fr": "Geschweige denn suit une phrase négative ou limitée ; après une phrase positive, il n’a pas de sens.",
+          "de": "Geschweige denn folgt auf eine verneinte oder eingeschränkte Aussage; nach einer positiven Aussage ergibt es keinen Sinn."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-b2-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-nicht-einmal", "rule-geschweige-denn"],
+          "estimatedDurationS": 48
+        },
+        {
+          "id": "ex-b2-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 3,
+          "ruleIds": ["rule-nicht-einmal", "rule-geschweige-denn"],
+          "estimatedDurationS": 75
+        },
+        {
+          "id": "ex-b2-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 3,
+          "ruleIds": ["rule-nicht-einmal", "rule-geschweige-denn"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-b2-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-nicht-einmal", "rule-geschweige-denn"],
+          "estimatedDurationS": 75
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-gar",
+        "type": "grammar_gap_typing",
+        "itemCount": 3,
+        "ruleIds": ["rule-gar", "rule-ueberhaupt"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["rule-gar", "rule-ueberhaupt", "rule-geschweige-denn"],
+        "estimatedDurationS": 75,
+        "timeLimitS": 120
+      },
+      {
+        "pageId": "exam-einmal",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-nicht-einmal", "rule-geschweige-denn"],
+        "estimatedDurationS": 80,
+        "timeLimitS": 130
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

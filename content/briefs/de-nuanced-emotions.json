@@ -1,0 +1,781 @@
+{
+  "schemaVersion": 2,
+  "id": "de-nuanced-emotions",
+  "lang": "de",
+  "level": "C1",
+  "locales": ["en", "fr", "de"],
+  "title": "Gefühle in feinen Abstufungen",
+  "objective": {
+    "en": "Name about fifteen mixed and subtle feelings precisely, such as Wehmut, Genugtuung and zwiespältig.",
+    "fr": "Nommer une quinzaine de sentiments mêlés et nuancés avec précision, comme Wehmut, Genugtuung et zwiespältig.",
+    "de": "Etwa fünfzehn gemischte und feine Gefühle genau benennen, etwa die Wehmut, die Genugtuung und zwiespältig."
+  },
+  "estimatedMinutes": 25,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:37:21.665Z",
+    "inputHashes": { "outline": "2716177a7699ddbaa5e73b4f3df7e49088a7fc1476c70cbc02b30a01989f90ad" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Fifteen words for subtle feelings in three groups: looking back and longing, hurt and satisfaction, insecurity and inner conflict. Ten nouns and five adjectives.",
+    "fr": "Quinze mots pour des sentiments nuancés en trois groupes : regard en arrière et nostalgie, blessure et satisfaction, insécurité et conflit intérieur. Dix noms et cinq adjectifs.",
+    "de": "Fünfzehn Wörter für feine Gefühle in drei Gruppen: Rückblick und Sehnsucht, Kränkung und Genugtuung, Unsicherheit und innerer Zwiespalt. Zehn Nomen und fünf Adjektive."
+  },
+  "targetCount": 15,
+  "countRationale": {
+    "en": "Fifteen words match the outline and keep the lesson manageable at C1.",
+    "fr": "Quinze mots correspondent au plan et gardent la leçon gérable au niveau C1.",
+    "de": "Fünfzehn Wörter entsprechen der Gliederung und halten die Lektion auf C1 überschaubar."
+  },
+  "difficultyBalance": {
+    "en": "Most words are core C1 vocabulary; a few close neighbours (Groll, Missgunst, Genugtuung) are demanding.",
+    "fr": "La plupart des mots sont du vocabulaire C1 de base ; quelques voisins proches (Groll, Missgunst, Genugtuung) sont exigeants.",
+    "de": "Die meisten Wörter gehören zum C1-Kernwortschatz; einige enge Nachbarn (Groll, Missgunst, Genugtuung) sind anspruchsvoll."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "rueckblick",
+      "label": {
+        "en": "Looking back and longing",
+        "fr": "Regard en arrière et nostalgie",
+        "de": "Rückblick und Sehnsucht"
+      },
+      "targetIds": ["wehmut", "sehnsucht", "ruehrung", "ausgelassen", "niedergeschlagen"],
+      "introduction": {
+        "en": "Some feelings look back, some reach forward, some are simply bright or dark. Compare these **five** words:\n\n- `die Wehmut`\n- `die Sehnsucht`\n- `die Rührung`\n- `ausgelassen`\n- `niedergeschlagen`",
+        "fr": "Certains sentiments regardent en arrière, d’autres vers l’avenir, d’autres sont simplement lumineux ou sombres. Comparez ces **cinq** mots :\n\n- `die Wehmut`\n- `die Sehnsucht`\n- `die Rührung`\n- `ausgelassen`\n- `niedergeschlagen`",
+        "de": "Manche Gefühle blicken zurück, manche streben nach vorn, manche sind einfach hell oder dunkel. Vergleiche diese **fünf** Wörter:\n\n- `die Wehmut`\n- `die Sehnsucht`\n- `die Rührung`\n- `ausgelassen`\n- `niedergeschlagen`"
+      }
+    },
+    {
+      "id": "kraenkung",
+      "label": {
+        "en": "Hurt, resentment and satisfaction",
+        "fr": "Blessure, rancune et satisfaction",
+        "de": "Kränkung, Groll und Genugtuung"
+      },
+      "targetIds": ["groll", "missgunst", "schadenfreude", "genugtuung", "reue", "gekraenkt"],
+      "introduction": {
+        "en": "These words describe feelings between people: hurt, envy, malicious joy and redress. Note the **six** forms:\n\n- `der Groll`\n- `die Missgunst`\n- `die Schadenfreude`\n- `die Genugtuung`\n- `die Reue`\n- `gekränkt`",
+        "fr": "Ces mots décrivent des sentiments entre les personnes : blessure, envie, joie mauvaise et réparation. Notez les **six** formes :\n\n- `der Groll`\n- `die Missgunst`\n- `die Schadenfreude`\n- `die Genugtuung`\n- `die Reue`\n- `gekränkt`",
+        "de": "Diese Wörter beschreiben Gefühle zwischen Menschen: Kränkung, Neid, Freude am Unglück anderer und Wiedergutmachung. Beachte die **sechs** Formen:\n\n- `der Groll`\n- `die Missgunst`\n- `die Schadenfreude`\n- `die Genugtuung`\n- `die Reue`\n- `gekränkt`"
+      }
+    },
+    {
+      "id": "zwiespalt",
+      "label": {
+        "en": "Insecurity and inner conflict",
+        "fr": "Insécurité et conflit intérieur",
+        "de": "Unsicherheit und Zwiespalt"
+      },
+      "targetIds": ["verlegenheit", "unbehagen", "beklommen", "zwiespaeltig"],
+      "introduction": {
+        "en": "Here the feeling is unclear or uncomfortable. Learn these **four** words:\n\n- `die Verlegenheit`\n- `das Unbehagen`\n- `beklommen`\n- `zwiespältig`",
+        "fr": "Ici, le sentiment est flou ou désagréable. Apprenez ces **quatre** mots :\n\n- `die Verlegenheit`\n- `das Unbehagen`\n- `beklommen`\n- `zwiespältig`",
+        "de": "Hier ist das Gefühl unklar oder unangenehm. Lerne diese **vier** Wörter:\n\n- `die Verlegenheit`\n- `das Unbehagen`\n- `beklommen`\n- `zwiespältig`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "wehmut",
+      "term": "Wehmut",
+      "translations": {
+        "en": ["wistfulness", "wistful nostalgia"],
+        "fr": ["la nostalgie", "la mélancolie douce"]
+      },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Wehmut",
+      "examForms": ["die Wehmut"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈveːmuːt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Beim Anblick der alten Schule überkam sie Wehmut.",
+        "translation": {
+          "en": "At the sight of the old school, a wistful feeling came over her.",
+          "fr": "À la vue de l’ancienne école, une douce nostalgie la saisit."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Wehmut is a gentle, bittersweet sadness about something that is past.",
+        "fr": "La Wehmut est une tristesse douce et douce-amère à propos du passé.",
+        "de": "Wehmut ist eine sanfte, bittersüße Traurigkeit über Vergangenes."
+      },
+      "genderExplanation": {
+        "en": "Wehmut is feminine, although Mut is masculine: die Wehmut.",
+        "fr": "Wehmut est féminin, bien que Mut soit masculin : die Wehmut.",
+        "de": "Wehmut ist feminin, obwohl Mut maskulin ist: die Wehmut."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Beim Anblick des Elternhauses empfand er leise ",
+        "after": " darüber, dass seine Kindheit vorbei war.",
+        "accepted": { "answers": ["Wehmut"] },
+        "referenceTargetIds": ["wehmut", "groll", "ausgelassen", "beklommen"],
+        "explanation": {
+          "en": "Wehmut is the gentle sadness about a past time.",
+          "fr": "La Wehmut est la douce tristesse d’un temps révolu.",
+          "de": "Wehmut ist die sanfte Traurigkeit über eine vergangene Zeit."
+        }
+      },
+      "listeningOptionTargetIds": ["wehmut", "sehnsucht", "ruehrung", "reue"]
+    },
+    {
+      "id": "sehnsucht",
+      "term": "Sehnsucht",
+      "translations": { "en": ["longing", "yearning"], "fr": ["le désir ardent", "l’aspiration"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Sehnsucht",
+      "examForms": ["die Sehnsucht"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈzeːnzʊxt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Er spürte große Sehnsucht nach den Bergen.",
+        "translation": {
+          "en": "He felt a great longing for the mountains.",
+          "fr": "Il ressentait un grand désir de retrouver les montagnes."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Sehnsucht is a strong longing for something absent or out of reach, usually with nach.",
+        "fr": "La Sehnsucht est un désir intense de quelque chose d’absent ou d’inaccessible, généralement avec nach.",
+        "de": "Sehnsucht ist ein starkes Verlangen nach etwas Abwesendem oder Unerreichbarem, meist mit nach."
+      },
+      "genderExplanation": {
+        "en": "Sehnsucht is feminine, like Sucht: die Sehnsucht.",
+        "fr": "Sehnsucht est féminin, comme Sucht : die Sehnsucht.",
+        "de": "Sehnsucht ist feminin, wie Sucht: die Sehnsucht."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Im Büro hatte sie große ",
+        "after": " nach dem Meer.",
+        "accepted": { "answers": ["Sehnsucht"] },
+        "referenceTargetIds": ["sehnsucht", "groll", "verlegenheit", "gekraenkt"],
+        "explanation": {
+          "en": "Only Sehnsucht goes with nach and a place you miss.",
+          "fr": "Seule la Sehnsucht va avec nach et un lieu qui manque.",
+          "de": "Nur Sehnsucht passt zu nach und einem Ort, den man vermisst."
+        }
+      },
+      "listeningOptionTargetIds": ["wehmut", "sehnsucht", "ruehrung", "reue"]
+    },
+    {
+      "id": "ruehrung",
+      "term": "Rührung",
+      "translations": {
+        "en": ["tender emotion", "being moved"],
+        "fr": ["l’attendrissement", "l’émotion"]
+      },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Rührung",
+      "examForms": ["die Rührung"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʁyːʁʊŋ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Vor Rührung kamen ihr die Tränen.",
+        "translation": {
+          "en": "She was moved to tears.",
+          "fr": "L’émotion lui fit monter les larmes aux yeux."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Rührung is the warm feeling of being deeply touched, often close to tears.",
+        "fr": "La Rührung est le sentiment chaleureux d’être profondément touché, souvent proche des larmes.",
+        "de": "Rührung ist das warme Gefühl, tief berührt zu sein, oft kurz vor den Tränen."
+      },
+      "genderExplanation": {
+        "en": "Rührung ends in -ung and is feminine: die Rührung.",
+        "fr": "Rührung se termine en -ung et est féminin : die Rührung.",
+        "de": "Rührung endet auf -ung und ist feminin: die Rührung."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Als die Schüler ihm zum Abschied ein Lied sangen, konnte der Lehrer vor ",
+        "after": " kaum sprechen.",
+        "accepted": { "answers": ["Rührung"] },
+        "referenceTargetIds": ["ruehrung", "missgunst", "unbehagen", "groll"],
+        "explanation": {
+          "en": "Vor Rührung means being too moved by a warm gesture to speak.",
+          "fr": "Vor Rührung signifie être trop ému par un geste chaleureux pour parler.",
+          "de": "Vor Rührung heißt: von einer warmen Geste zu bewegt, um zu sprechen."
+        }
+      },
+      "listeningOptionTargetIds": ["wehmut", "sehnsucht", "ruehrung", "reue"]
+    },
+    {
+      "id": "ausgelassen",
+      "term": "ausgelassen",
+      "translations": { "en": ["exuberant", "boisterous"], "fr": ["exubérant", "déchaîné"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "ausgelassen",
+      "examForms": ["ausgelassen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈaʊ̯sɡəˌlasn̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Die Kinder tanzten ausgelassen durch den Garten.",
+        "translation": {
+          "en": "The children danced exuberantly through the garden.",
+          "fr": "Les enfants dansaient de façon exubérante dans le jardin."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Ausgelassen describes wild, carefree cheerfulness without restraint.",
+        "fr": "Ausgelassen décrit une gaieté sauvage et insouciante, sans retenue.",
+        "de": "Ausgelassen beschreibt eine wilde, unbeschwerte Fröhlichkeit ohne Zurückhaltung."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Nach der bestandenen Prüfung feierten alle ",
+        "after": " bis spät in die Nacht.",
+        "accepted": { "answers": ["ausgelassen"] },
+        "referenceTargetIds": ["ausgelassen", "niedergeschlagen", "gekraenkt", "beklommen"],
+        "explanation": {
+          "en": "Only ausgelassen fits a loud, happy celebration.",
+          "fr": "Seul ausgelassen convient à une fête bruyante et joyeuse.",
+          "de": "Nur ausgelassen passt zu einer lauten, fröhlichen Feier."
+        }
+      },
+      "listeningOptionTargetIds": ["ausgelassen", "niedergeschlagen", "gekraenkt", "beklommen"]
+    },
+    {
+      "id": "niedergeschlagen",
+      "term": "niedergeschlagen",
+      "translations": { "en": ["downcast", "dejected"], "fr": ["abattu", "démoralisé"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "niedergeschlagen",
+      "examForms": ["niedergeschlagen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈniːdɐɡəˌʃlaːɡn̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Nach der Niederlage wirkte das Team niedergeschlagen.",
+        "translation": {
+          "en": "After the defeat the team seemed downcast.",
+          "fr": "Après la défaite, l’équipe semblait abattue."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Niedergeschlagen means sad and without energy after a setback.",
+        "fr": "Niedergeschlagen signifie triste et sans énergie après un revers.",
+        "de": "Niedergeschlagen heißt traurig und ohne Antrieb nach einem Rückschlag."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Nach der Absage seiner Bewerbung saß er den ganzen Abend mutlos und ",
+        "after": " auf dem Sofa.",
+        "accepted": { "answers": ["niedergeschlagen"] },
+        "referenceTargetIds": ["niedergeschlagen", "ausgelassen", "zwiespaeltig", "groll"],
+        "explanation": {
+          "en": "Mutlos and the rejection point to niedergeschlagen, not a happy mood.",
+          "fr": "Mutlos et le refus indiquent niedergeschlagen, pas une humeur joyeuse.",
+          "de": "Mutlos und die Absage weisen auf niedergeschlagen, nicht auf gute Laune."
+        }
+      },
+      "listeningOptionTargetIds": ["ausgelassen", "niedergeschlagen", "gekraenkt", "beklommen"]
+    },
+    {
+      "id": "groll",
+      "term": "Groll",
+      "translations": { "en": ["resentment", "grudge"], "fr": ["la rancune", "le ressentiment"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "der Groll",
+      "examForms": ["der Groll"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɡʁɔl/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Nach so vielen Jahren hegte er immer noch Groll gegen sie.",
+        "translation": {
+          "en": "After so many years he still held a grudge against her.",
+          "fr": "Après tant d’années, il lui en voulait encore."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Groll is lingering, often hidden anger against someone, usually with gegen.",
+        "fr": "Le Groll est une colère durable, souvent cachée, contre quelqu’un, généralement avec gegen.",
+        "de": "Groll ist ein anhaltender, oft verborgener Ärger auf jemanden, meist mit gegen."
+      },
+      "genderExplanation": {
+        "en": "Groll is masculine: der Groll.",
+        "fr": "Groll est masculin : der Groll.",
+        "de": "Groll ist maskulin: der Groll."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Seit dem Streit hegte er einen tiefen ",
+        "after": " gegen seinen Bruder.",
+        "accepted": { "answers": ["Groll"] },
+        "referenceTargetIds": ["groll", "wehmut", "unbehagen", "ruehrung"],
+        "explanation": {
+          "en": "Einen tiefen needs a masculine noun, and Groll goes with gegen.",
+          "fr": "Einen tiefen demande un nom masculin, et Groll va avec gegen.",
+          "de": "Einen tiefen verlangt ein maskulines Nomen, und Groll passt zu gegen."
+        }
+      },
+      "listeningOptionTargetIds": ["groll", "missgunst", "genugtuung", "schadenfreude"]
+    },
+    {
+      "id": "missgunst",
+      "term": "Missgunst",
+      "translations": {
+        "en": ["begrudging envy", "ill will"],
+        "fr": ["l’envie malveillante", "la malveillance"]
+      },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Missgunst",
+      "examForms": ["die Missgunst"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈmɪsɡʊnst/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Ihr Erfolg weckte bei manchen Kollegen Missgunst.",
+        "translation": {
+          "en": "Her success aroused begrudging envy in some colleagues.",
+          "fr": "Son succès suscita l’envie malveillante de certains collègues."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Missgunst means resenting that someone else has success or luck.",
+        "fr": "La Missgunst consiste à en vouloir à quelqu’un pour son succès ou sa chance.",
+        "de": "Missgunst heißt, jemandem Erfolg oder Glück nicht zu gönnen."
+      },
+      "genderExplanation": {
+        "en": "Missgunst is feminine: die Missgunst.",
+        "fr": "Missgunst est féminin : die Missgunst.",
+        "de": "Missgunst ist feminin: die Missgunst."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Statt sich mit ihr zu freuen, reagierten einige Kollegen mit ",
+        "after": " auf ihre Beförderung.",
+        "accepted": { "answers": ["Missgunst"] },
+        "referenceTargetIds": ["missgunst", "sehnsucht", "ruehrung", "wehmut"],
+        "explanation": {
+          "en": "Statt sich zu freuen shows a hostile reaction to someone else’s success.",
+          "fr": "Statt sich zu freuen montre une réaction hostile au succès d’autrui.",
+          "de": "Statt sich zu freuen zeigt eine feindselige Reaktion auf fremden Erfolg."
+        }
+      },
+      "listeningOptionTargetIds": ["groll", "missgunst", "genugtuung", "schadenfreude"]
+    },
+    {
+      "id": "schadenfreude",
+      "term": "Schadenfreude",
+      "translations": {
+        "en": ["schadenfreude", "malicious glee"],
+        "fr": ["la joie mauvaise", "la joie malveillante"]
+      },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Schadenfreude",
+      "examForms": ["die Schadenfreude"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʃaːdn̩ˌfʁɔʏdə/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Er konnte seine Schadenfreude kaum verbergen.",
+        "translation": {
+          "en": "He could hardly hide his glee at their misfortune.",
+          "fr": "Il pouvait à peine cacher sa joie du malheur des autres."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Schadenfreude is the pleasure felt at another person’s misfortune.",
+        "fr": "La Schadenfreude est le plaisir ressenti devant le malheur d’autrui.",
+        "de": "Schadenfreude ist die Freude über das Unglück eines anderen."
+      },
+      "genderExplanation": {
+        "en": "Schadenfreude is feminine, like Freude: die Schadenfreude.",
+        "fr": "Schadenfreude est féminin, comme Freude : die Schadenfreude.",
+        "de": "Schadenfreude ist feminin, wie Freude: die Schadenfreude."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Als der Angeber durchfiel, spürte mancher im Saal heimlich ",
+        "after": ", obwohl er es nie zugegeben hätte.",
+        "accepted": { "answers": ["Schadenfreude"] },
+        "referenceTargetIds": ["schadenfreude", "sehnsucht", "reue", "unbehagen"],
+        "explanation": {
+          "en": "Pleasure at a show-off’s failure is Schadenfreude.",
+          "fr": "Le plaisir devant l’échec d’un vantard est de la Schadenfreude.",
+          "de": "Die Freude über das Scheitern eines Angebers ist Schadenfreude."
+        }
+      },
+      "listeningOptionTargetIds": ["groll", "missgunst", "genugtuung", "schadenfreude"]
+    },
+    {
+      "id": "genugtuung",
+      "term": "Genugtuung",
+      "translations": {
+        "en": ["vindication", "satisfaction"],
+        "fr": ["la satisfaction morale", "la réparation"]
+      },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Genugtuung",
+      "examForms": ["die Genugtuung"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɡəˈnuːkˌtuːʊŋ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Mit Genugtuung las sie die Entschuldigung des Chefs.",
+        "translation": {
+          "en": "She read her boss’s apology with a sense of vindication.",
+          "fr": "Elle lut les excuses du chef avec une satisfaction morale."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Genugtuung is the satisfaction of seeing justice done or being proven right.",
+        "fr": "La Genugtuung est la satisfaction de voir justice rendue ou d’avoir raison.",
+        "de": "Genugtuung ist die Zufriedenheit darüber, dass Recht geschieht oder man recht hatte."
+      },
+      "genderExplanation": {
+        "en": "Genugtuung ends in -ung and is feminine: die Genugtuung.",
+        "fr": "Genugtuung se termine en -ung et est féminin : die Genugtuung.",
+        "de": "Genugtuung endet auf -ung und ist feminin: die Genugtuung."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Nach Jahren des Streits erhielt sie endlich eine Entschuldigung und empfand tiefe ",
+        "after": ".",
+        "accepted": { "answers": ["Genugtuung"] },
+        "referenceTargetIds": ["genugtuung", "groll", "unbehagen", "missgunst"],
+        "explanation": {
+          "en": "A long-awaited apology brings Genugtuung.",
+          "fr": "Des excuses longtemps attendues apportent de la Genugtuung.",
+          "de": "Eine lang erwartete Entschuldigung bringt Genugtuung."
+        }
+      },
+      "listeningOptionTargetIds": ["groll", "missgunst", "genugtuung", "schadenfreude"]
+    },
+    {
+      "id": "reue",
+      "term": "Reue",
+      "translations": { "en": ["remorse", "regret"], "fr": ["le remords", "le repentir"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Reue",
+      "examForms": ["die Reue"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʁɔʏə/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Er empfand aufrichtige Reue über seinen Fehler.",
+        "translation": {
+          "en": "He felt sincere remorse for his mistake.",
+          "fr": "Il éprouvait un sincère remords pour son erreur."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Reue is regret tinged with guilt over something you did yourself.",
+        "fr": "La Reue est un regret teinté de culpabilité pour ce qu’on a fait soi-même.",
+        "de": "Reue ist ein von Schuld getragenes Bedauern über das eigene Tun."
+      },
+      "genderExplanation": {
+        "en": "Reue is feminine: die Reue.",
+        "fr": "Reue est féminin : die Reue.",
+        "de": "Reue ist feminin: die Reue."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Er bereute seinen Fehler und zeigte aufrichtige ",
+        "after": " über sein Verhalten.",
+        "accepted": { "answers": ["Reue"] },
+        "referenceTargetIds": ["reue", "groll", "sehnsucht", "beklommen"],
+        "explanation": {
+          "en": "Regretting your own mistake is Reue.",
+          "fr": "Regretter sa propre erreur, c’est la Reue.",
+          "de": "Den eigenen Fehler zu bereuen heißt Reue empfinden."
+        }
+      },
+      "listeningOptionTargetIds": ["wehmut", "sehnsucht", "ruehrung", "reue"]
+    },
+    {
+      "id": "gekraenkt",
+      "term": "gekränkt",
+      "translations": {
+        "en": ["offended", "hurt"],
+        "fr": ["vexé", "blessé dans son amour-propre"]
+      },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "gekränkt",
+      "examForms": ["gekränkt"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɡəˈkʁɛŋkt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Er war gekränkt, weil niemand seine Idee lobte.",
+        "translation": {
+          "en": "He was offended because nobody praised his idea.",
+          "fr": "Il était vexé parce que personne n’avait loué son idée."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Gekränkt means hurt in your pride by a remark or by being ignored.",
+        "fr": "Gekränkt signifie blessé dans son amour-propre par une remarque ou par l’indifférence.",
+        "de": "Gekränkt heißt in seinem Stolz verletzt, etwa durch eine Bemerkung oder Nichtbeachtung."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Weil niemand sein Angebot würdigte, fühlte er sich ",
+        "after": " und zog sich zurück.",
+        "accepted": { "answers": ["gekränkt"] },
+        "referenceTargetIds": ["gekraenkt", "ausgelassen", "zwiespaeltig", "sehnsucht"],
+        "explanation": {
+          "en": "Being unappreciated and withdrawing shows hurt pride: gekränkt.",
+          "fr": "Ne pas être apprécié et se retirer montre un amour-propre blessé : gekränkt.",
+          "de": "Nicht gewürdigt zu werden und sich zurückzuziehen zeigt verletzten Stolz: gekränkt."
+        }
+      },
+      "listeningOptionTargetIds": ["ausgelassen", "niedergeschlagen", "gekraenkt", "beklommen"]
+    },
+    {
+      "id": "verlegenheit",
+      "term": "Verlegenheit",
+      "translations": { "en": ["embarrassment"], "fr": ["l’embarras", "la gêne"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Verlegenheit",
+      "examForms": ["die Verlegenheit"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/fɛɐ̯ˈleːɡn̩haɪt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Seine Verlegenheit war ihm deutlich anzusehen.",
+        "translation": {
+          "en": "His embarrassment was clearly visible.",
+          "fr": "Son embarras se voyait nettement."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Verlegenheit is the awkward self-consciousness of an uncomfortable situation.",
+        "fr": "La Verlegenheit est la gêne d’une situation inconfortable où l’on se sent observé.",
+        "de": "Verlegenheit ist die befangene Unsicherheit in einer unangenehmen Situation."
+      },
+      "genderExplanation": {
+        "en": "Verlegenheit ends in -heit and is feminine: die Verlegenheit.",
+        "fr": "Verlegenheit se termine en -heit et est féminin : die Verlegenheit.",
+        "de": "Verlegenheit endet auf -heit und ist feminin: die Verlegenheit."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Als alle ihn ansahen, wurde er rot und suchte vor ",
+        "after": " nach Worten.",
+        "accepted": { "answers": ["Verlegenheit"] },
+        "referenceTargetIds": ["verlegenheit", "groll", "missgunst", "genugtuung"],
+        "explanation": {
+          "en": "Blushing under everyone’s eyes shows Verlegenheit.",
+          "fr": "Rougir sous le regard de tous montre de la Verlegenheit.",
+          "de": "Rot zu werden unter den Blicken aller zeigt Verlegenheit."
+        }
+      },
+      "listeningOptionTargetIds": ["verlegenheit", "unbehagen", "beklommen", "zwiespaeltig"]
+    },
+    {
+      "id": "unbehagen",
+      "term": "Unbehagen",
+      "translations": {
+        "en": ["unease", "discomfort"],
+        "fr": ["le malaise", "l’inquiétude diffuse"]
+      },
+      "wordClass": "noun",
+      "genders": ["neuter"],
+      "number": "singular",
+      "teachingForm": "das Unbehagen",
+      "examForms": ["das Unbehagen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʊnbəˌhaːɡn̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Das Schweigen am Tisch bereitete ihr Unbehagen.",
+        "translation": {
+          "en": "The silence at the table made her uneasy.",
+          "fr": "Le silence à table lui causait un malaise."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Unbehagen is a vague uncomfortable feeling, often without a clear cause.",
+        "fr": "Le Unbehagen est un sentiment vague de malaise, souvent sans cause claire.",
+        "de": "Unbehagen ist ein unbestimmtes, unangenehmes Gefühl, oft ohne klaren Grund."
+      },
+      "genderExplanation": {
+        "en": "Unbehagen is neuter: das Unbehagen.",
+        "fr": "Unbehagen est neutre : das Unbehagen.",
+        "de": "Unbehagen ist neutral: das Unbehagen."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Mit wachsendem ",
+        "after": " sah sie, wie der Fremde näher kam.",
+        "accepted": { "answers": ["Unbehagen"] },
+        "referenceTargetIds": ["unbehagen", "sehnsucht", "wehmut", "schadenfreude"],
+        "explanation": {
+          "en": "Mit wachsendem needs a neuter noun, and a stranger approaching causes Unbehagen.",
+          "fr": "Mit wachsendem demande un nom neutre, et un inconnu qui approche cause du Unbehagen.",
+          "de": "Mit wachsendem verlangt ein neutrales Nomen, und ein näher kommender Fremder löst Unbehagen aus."
+        }
+      },
+      "listeningOptionTargetIds": ["verlegenheit", "unbehagen", "beklommen", "zwiespaeltig"]
+    },
+    {
+      "id": "beklommen",
+      "term": "beklommen",
+      "translations": {
+        "en": ["apprehensive", "oppressed with anxiety"],
+        "fr": ["oppressé", "angoissé"]
+      },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "beklommen",
+      "examForms": ["beklommen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/bəˈklɔmən/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Beklommen betrat er das Büro des Direktors.",
+        "translation": {
+          "en": "Apprehensively he entered the director’s office.",
+          "fr": "Oppressé, il entra dans le bureau du directeur."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Beklommen describes a tight, anxious feeling before something uncertain.",
+        "fr": "Beklommen décrit une sensation d’oppression anxieuse avant quelque chose d’incertain.",
+        "de": "Beklommen beschreibt ein beengtes, ängstliches Gefühl vor etwas Ungewissem."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Vor dem schwierigen Gespräch mit dem Chef war ihr ",
+        "after": " zumute.",
+        "accepted": { "answers": ["beklommen"] },
+        "referenceTargetIds": ["beklommen", "ausgelassen", "gekraenkt", "genugtuung"],
+        "explanation": {
+          "en": "Before a difficult talk, one feels beklommen; zumute needs an adjective.",
+          "fr": "Avant une conversation difficile, on est beklommen ; zumute demande un adjectif.",
+          "de": "Vor einem schwierigen Gespräch ist man beklommen; zumute verlangt ein Adjektiv."
+        }
+      },
+      "listeningOptionTargetIds": ["ausgelassen", "niedergeschlagen", "gekraenkt", "beklommen"]
+    },
+    {
+      "id": "zwiespaeltig",
+      "term": "zwiespältig",
+      "translations": { "en": ["ambivalent", "conflicted"], "fr": ["partagé", "ambivalent"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "zwiespältig",
+      "examForms": ["zwiespältig"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈtsviːˌʃpɛltɪç/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Sie blickte zwiespältig auf den Umzug.",
+        "translation": {
+          "en": "She had mixed feelings about the move.",
+          "fr": "Elle avait des sentiments partagés à propos du déménagement."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Zwiespältig means torn between two opposing feelings or opinions.",
+        "fr": "Zwiespältig signifie déchiré entre deux sentiments ou opinions opposés.",
+        "de": "Zwiespältig heißt hin- und hergerissen zwischen zwei gegensätzlichen Gefühlen oder Meinungen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Seine Gefühle gegenüber dem Umzug waren ",
+        "after": ": Er freute sich darauf, hatte aber auch Angst davor.",
+        "accepted": { "answers": ["zwiespältig"] },
+        "referenceTargetIds": ["zwiespaeltig", "ausgelassen", "ruehrung", "groll"],
+        "explanation": {
+          "en": "Joy and fear at once make a feeling zwiespältig.",
+          "fr": "La joie et la peur à la fois rendent un sentiment zwiespältig.",
+          "de": "Freude und Angst zugleich machen ein Gefühl zwiespältig."
+        }
+      },
+      "listeningOptionTargetIds": ["verlegenheit", "unbehagen", "beklommen", "zwiespaeltig"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

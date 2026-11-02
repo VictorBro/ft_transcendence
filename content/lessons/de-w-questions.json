@@ -6,7 +6,7 @@
   "locales": ["en", "fr", "de"],
   "title": "W-Fragen: wer, was, wo, woher, wie",
   "objective": {
-    "en": "Form questions with wer, was, wo, woher and wie and put the verb on position 2 in both question and answer.",
+    "en": "Form questions with wer, was, wo, woher and wie and put the verb in position 2 in both the question and the answer.",
     "fr": "Former des questions avec wer, was, wo, woher et wie et placer le verbe en position 2 dans la question et la réponse.",
     "de": "Fragen mit wer, was, wo, woher und wie bilden und das Verb in Frage und Antwort auf Position 2 stellen."
   },
@@ -14,28 +14,28 @@
   "provenance": {
     "generator": "ft lessons:author",
     "model": "sonnet",
-    "promptVersion": "author-2",
-    "generatedAt": "2026-11-01T20:17:42.343Z",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:25:45.414Z",
     "inputHashes": {
       "outline": "372344dcdc29bbd95cdacb1743a622bd44099603a04cdda585c6117fa0f49fa9",
-      "brief": "fa071cc5b345937c87961b8def65ad64ab8b307930635fc7a52c35a5848e470e"
+      "brief": "712e0417f8e234c8006d504716d17236dbef2569dd902edc0959d28d15239a82"
     }
   },
   "kind": "grammar",
   "topic": "syntax_and_sentence_structure",
   "steps": [
     {
-      "id": "block-words-explanation",
+      "id": "block-wer-was-explanation",
       "role": "explanation",
-      "blockId": "block-words",
+      "blockId": "block-wer-was",
       "label": {
-        "en": "The question words",
-        "fr": "Les mots interrogatifs",
-        "de": "Die Fragewörter"
+        "en": "wer and was: people and things",
+        "fr": "wer et was : personnes et choses",
+        "de": "wer und was: Personen und Dinge"
       },
       "pages": [
         {
-          "pageId": "block-words-explanation",
+          "pageId": "block-wer-was-explanation",
           "estimatedDurationS": 100,
           "timeLimitS": null,
           "instructions": {
@@ -46,17 +46,17 @@
           "items": [
             {
               "type": "grammar_explanation",
-              "itemId": "block-words-explanation",
-              "ruleIds": ["rule-words"],
+              "itemId": "block-wer-was-explanation",
+              "ruleIds": ["rule-wer-was", "rule-verb-second"],
               "heading": {
-                "en": "The five question words",
-                "fr": "Les cinq mots interrogatifs",
-                "de": "Die fünf Fragewörter"
+                "en": "Questions with wer and was",
+                "fr": "Les questions avec wer et was",
+                "de": "Fragen mit wer und was"
               },
               "text": {
-                "en": "A W-question starts with a question word. These are the five you need now:\n\n- `wer` asks for a person: `Wer ist das?`\n- `was` asks for a thing or an activity: `Was machst du?`\n- `wo` asks for a place: `Wo wohnst du?`\n- `woher` asks for the origin: `Woher kommst du?`\n- `wie` asks for the manner or the name: `Wie heißt du?`\n\nDo not mix up `wo` (where) and `woher` (where from).",
-                "fr": "Une question en W commence par un mot interrogatif. Voici les cinq mots dont vous avez besoin maintenant :\n\n- `wer` demande une personne : `Wer ist das?`\n- `was` demande une chose ou une activité : `Was machst du?`\n- `wo` demande un lieu : `Wo wohnst du?`\n- `woher` demande l'origine : `Woher kommst du?`\n- `wie` demande la manière ou le nom : `Wie heißt du?`\n\nNe confondez pas `wo` (où) et `woher` (d'où).",
-                "de": "Eine W-Frage beginnt mit einem Fragewort. Diese fünf Wörter brauchst du jetzt:\n\n- `wer` fragt nach einer Person: `Wer ist das?`\n- `was` fragt nach einer Sache oder einer Tätigkeit: `Was machst du?`\n- `wo` fragt nach einem Ort: `Wo wohnst du?`\n- `woher` fragt nach der Herkunft: `Woher kommst du?`\n- `wie` fragt nach der Art oder dem Namen: `Wie heißt du?`\n\nVerwechsle nicht `wo` (an welchem Ort) und `woher` (aus welchem Ort)."
+                "en": "A **W-question** starts with a question word. The answer gives information, not just yes or no.\n\n- `wer` asks about people: `Wer ist das?` – `Das ist Lena.`\n- `was` asks about things and activities: `Was machst du?` – `Ich lerne Deutsch.`\n\nIn a W-question the verb is in **position 2**, right after the question word: `Was machst du?` The verb is also in position 2 in the answer: `Ich lerne Deutsch.`",
+                "fr": "Une **question en W** commence par un mot interrogatif. La réponse donne une information, pas seulement oui ou non.\n\n- `wer` interroge sur les personnes : `Wer ist das?` – `Das ist Lena.`\n- `was` interroge sur les choses et les activités : `Was machst du?` – `Ich lerne Deutsch.`\n\nDans une question en W, le verbe est en **position 2**, juste après le mot interrogatif : `Was machst du?` Dans la réponse aussi, le verbe est en position 2 : `Ich lerne Deutsch.`",
+                "de": "Eine **W-Frage** beginnt mit einem Fragewort. Die Antwort gibt eine Information, nicht nur ja oder nein.\n\n- `wer` fragt nach Personen: `Wer ist das?` – `Das ist Lena.`\n- `was` fragt nach Dingen und Tätigkeiten: `Was machst du?` – `Ich lerne Deutsch.`\n\nIn einer W-Frage steht das Verb auf **Position 2**, direkt nach dem Fragewort: `Was machst du?` Auch in der Antwort steht das Verb auf Position 2: `Ich lerne Deutsch.`"
               },
               "formTable": [],
               "examples": [
@@ -66,8 +66,311 @@
                 },
                 {
                   "text": "Was machst du?",
-                  "translation": { "en": "What are you doing?", "fr": "Que fais-tu ?" }
+                  "translation": { "en": "What are you doing?", "fr": "Qu'est-ce que tu fais ?" }
                 },
+                {
+                  "text": "Ich lerne Deutsch.",
+                  "translation": { "en": "I am learning German.", "fr": "J'apprends l'allemand." }
+                },
+                {
+                  "text": "Wer spricht Spanisch?",
+                  "translation": { "en": "Who speaks Spanish?", "fr": "Qui parle espagnol ?" }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-b1-choice",
+      "role": "exercise",
+      "blockId": "block-wer-was",
+      "label": {
+        "en": "Multiple-choice gaps",
+        "fr": "Phrases à trous à choix multiple",
+        "de": "Lücken mit Auswahl"
+      },
+      "pages": [
+        {
+          "pageId": "ex-b1-choice",
+          "estimatedDurationS": 48,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-b1-choice-1",
+              "before": "",
+              "after": "ist das? – Das ist Tom.",
+              "choices": [
+                { "choiceId": "c-1", "text": "Was" },
+                { "choiceId": "c-2", "text": "Wer" },
+                { "choiceId": "c-3", "text": "Wo" },
+                { "choiceId": "c-4", "text": "Woher" }
+              ],
+              "answerChoiceId": "c-2",
+              "hint": {
+                "en": "You ask about a person.",
+                "fr": "On interroge sur une personne.",
+                "de": "Du fragst nach einer Person."
+              },
+              "ruleIds": ["rule-wer-was"],
+              "answerExplanation": {
+                "en": "Tom is a person, so you ask with wer.",
+                "fr": "Tom est une personne : on demande avec wer.",
+                "de": "Tom ist eine Person, also fragst du mit wer."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-b1-choice-2",
+              "before": "",
+              "after": "machst du? – Ich arbeite.",
+              "choices": [
+                { "choiceId": "c-1", "text": "Wer" },
+                { "choiceId": "c-2", "text": "Wo" },
+                { "choiceId": "c-3", "text": "Was" },
+                { "choiceId": "c-4", "text": "Woher" }
+              ],
+              "answerChoiceId": "c-3",
+              "hint": null,
+              "ruleIds": ["rule-wer-was"],
+              "answerExplanation": {
+                "en": "You ask about an activity, so you use was.",
+                "fr": "On interroge sur une activité : on utilise was.",
+                "de": "Du fragst nach einer Tätigkeit, also nimmst du was."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-b1-choice-3",
+              "before": "Was",
+              "after": "du? – Ich lerne Deutsch.",
+              "choices": [
+                { "choiceId": "c-1", "text": "macht" },
+                { "choiceId": "c-2", "text": "machst" },
+                { "choiceId": "c-3", "text": "mache" },
+                { "choiceId": "c-4", "text": "machen" }
+              ],
+              "answerChoiceId": "c-2",
+              "hint": null,
+              "ruleIds": ["rule-verb-second"],
+              "answerExplanation": {
+                "en": "With du the verb machen becomes machst, in position 2.",
+                "fr": "Avec du, le verbe machen devient machst, en position 2.",
+                "de": "Zu du gehört die Form machst, auf Position 2."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-b1-choice-4",
+              "before": "Wer",
+              "after": "Spanisch? – Anna spricht Spanisch.",
+              "choices": [
+                { "choiceId": "c-1", "text": "sprichst" },
+                { "choiceId": "c-2", "text": "spricht" },
+                { "choiceId": "c-3", "text": "sprechen" },
+                { "choiceId": "c-4", "text": "sprecht" }
+              ],
+              "answerChoiceId": "c-2",
+              "hint": null,
+              "ruleIds": ["rule-wer-was", "rule-verb-second"],
+              "answerExplanation": {
+                "en": "Anna is one person, so the verb is spricht, in position 2.",
+                "fr": "Anna est une seule personne : le verbe est spricht, en position 2.",
+                "de": "Anna ist eine Person, also heißt das Verb spricht, auf Position 2."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-b1-typing",
+      "role": "exercise",
+      "blockId": "block-wer-was",
+      "label": {
+        "en": "Typed gaps",
+        "fr": "Phrases à trous à écrire",
+        "de": "Lücken zum Schreiben"
+      },
+      "pages": [
+        {
+          "pageId": "ex-b1-typing",
+          "estimatedDurationS": 60,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-b1-typing-1",
+              "before": "",
+              "after": "wohnt hier? – Anna wohnt hier.",
+              "accepted": { "answers": ["Wer"] },
+              "hint": {
+                "en": "asks about a person",
+                "fr": "interroge sur une personne",
+                "de": "fragt nach einer Person"
+              },
+              "ruleIds": ["rule-wer-was"],
+              "answerExplanation": {
+                "en": "Anna is a person, so you ask with wer.",
+                "fr": "Anna est une personne : on demande avec wer.",
+                "de": "Anna ist eine Person, also fragst du mit wer."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-b1-typing-2",
+              "before": "",
+              "after": "sprichst du? – Ich spreche Spanisch.",
+              "accepted": { "answers": ["Was"] },
+              "hint": {
+                "en": "asks about a thing or an activity",
+                "fr": "interroge sur une chose ou une activité",
+                "de": "fragt nach einer Sache oder Tätigkeit"
+              },
+              "ruleIds": ["rule-wer-was"],
+              "answerExplanation": {
+                "en": "You ask what someone speaks, so you use was.",
+                "fr": "On demande ce que quelqu'un parle : on utilise was.",
+                "de": "Du fragst, was jemand spricht, also nimmst du was."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-b1-typing-3",
+              "before": "Was",
+              "after": "du? – Ich lerne Deutsch.",
+              "accepted": { "answers": ["machst"] },
+              "hint": { "en": "machen", "fr": "machen", "de": "machen" },
+              "ruleIds": ["rule-verb-second"],
+              "answerExplanation": {
+                "en": "With du the verb machen becomes machst, in position 2.",
+                "fr": "Avec du, le verbe machen devient machst, en position 2.",
+                "de": "Zu du gehört die Form machst, auf Position 2."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-b1-order",
+      "role": "exercise",
+      "blockId": "block-wer-was",
+      "label": { "en": "Word order", "fr": "Ordre des mots", "de": "Wortstellung" },
+      "pages": [
+        {
+          "pageId": "ex-b1-order",
+          "estimatedDurationS": 75,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in the right order.",
+            "fr": "Mettez les mots dans le bon ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-b1-order-1",
+              "tokens": [
+                { "tokenId": "t-1", "text": "hier" },
+                { "tokenId": "t-2", "text": "Wer" },
+                { "tokenId": "t-3", "text": "?" },
+                { "tokenId": "t-4", "text": "wohnt" }
+              ],
+              "acceptedOrders": [["t-2", "t-4", "t-1", "t-3"]],
+              "ruleIds": ["rule-wer-was", "rule-verb-second"],
+              "answerExplanation": {
+                "en": "The question word comes first, then the verb in position 2.",
+                "fr": "Le mot interrogatif vient en premier, puis le verbe en position 2.",
+                "de": "Zuerst kommt das Fragewort, dann das Verb auf Position 2."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-b1-order-2",
+              "tokens": [
+                { "tokenId": "t-1", "text": "du" },
+                { "tokenId": "t-2", "text": "?" },
+                { "tokenId": "t-3", "text": "Was" },
+                { "tokenId": "t-4", "text": "machst" }
+              ],
+              "acceptedOrders": [["t-3", "t-4", "t-1", "t-2"]],
+              "ruleIds": ["rule-wer-was", "rule-verb-second"],
+              "answerExplanation": {
+                "en": "After was comes the verb machst, then the subject du.",
+                "fr": "Après was vient le verbe machst, puis le sujet du.",
+                "de": "Nach was kommt das Verb machst, dann das Subjekt du."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-b1-order-3",
+              "tokens": [
+                { "tokenId": "t-1", "text": "Spanisch" },
+                { "tokenId": "t-2", "text": "Wer" },
+                { "tokenId": "t-3", "text": "?" },
+                { "tokenId": "t-4", "text": "lernt" }
+              ],
+              "acceptedOrders": [["t-2", "t-4", "t-1", "t-3"]],
+              "ruleIds": ["rule-wer-was", "rule-verb-second"],
+              "answerExplanation": {
+                "en": "Wer is in position 1 and the verb lernt in position 2.",
+                "fr": "Wer est en position 1 et le verbe lernt en position 2.",
+                "de": "Wer steht auf Position 1 und das Verb lernt auf Position 2."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "block-wo-woher-wie-explanation",
+      "role": "explanation",
+      "blockId": "block-wo-woher-wie",
+      "label": {
+        "en": "wo, woher and wie: place, origin, name",
+        "fr": "wo, woher et wie : lieu, origine, nom",
+        "de": "wo, woher und wie: Ort, Herkunft, Name"
+      },
+      "pages": [
+        {
+          "pageId": "block-wo-woher-wie-explanation",
+          "estimatedDurationS": 120,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the explanation and the examples.",
+            "fr": "Lisez l’explication et les exemples.",
+            "de": "Lies die Erklärung und die Beispiele."
+          },
+          "items": [
+            {
+              "type": "grammar_explanation",
+              "itemId": "block-wo-woher-wie-explanation",
+              "ruleIds": ["rule-wo-woher-wie", "rule-verb-second"],
+              "heading": {
+                "en": "Questions with wo, woher and wie",
+                "fr": "Les questions avec wo, woher et wie",
+                "de": "Fragen mit wo, woher und wie"
+              },
+              "text": {
+                "en": "Three more question words:\n\n- `wo` asks about a place: `Wo wohnst du?` – `Ich wohne in Berlin.`\n- `woher` asks where someone comes from: `Woher kommst du?` – `Ich komme aus Polen.`\n- `wie` asks how, and also for a name: `Wie heißt du?` – `Ich heiße Lena.`\n\nThe verb is in position 2 here too and changes with the person: `Wo wohnt Anna?` – `Anna wohnt in Wien.` The question word stays in position 1.",
+                "fr": "Trois autres mots interrogatifs :\n\n- `wo` interroge sur le lieu : `Wo wohnst du?` – `Ich wohne in Berlin.`\n- `woher` interroge sur l'origine : `Woher kommst du?` – `Ich komme aus Polen.`\n- `wie` interroge sur la manière, et aussi sur le nom : `Wie heißt du?` – `Ich heiße Lena.`\n\nIci aussi, le verbe est en position 2 et change selon la personne : `Wo wohnt Anna?` – `Anna wohnt in Wien.` Le mot interrogatif reste en position 1.",
+                "de": "Drei weitere Fragewörter:\n\n- `wo` fragt nach dem Ort: `Wo wohnst du?` – `Ich wohne in Berlin.`\n- `woher` fragt nach der Herkunft: `Woher kommst du?` – `Ich komme aus Polen.`\n- `wie` fragt nach der Art und Weise, auch nach dem Namen: `Wie heißt du?` – `Ich heiße Lena.`\n\nDas Verb steht auch hier auf Position 2 und ändert sich mit der Person: `Wo wohnt Anna?` – `Anna wohnt in Wien.` Das Fragewort bleibt auf Position 1."
+              },
+              "formTable": [],
+              "examples": [
                 {
                   "text": "Wo wohnst du?",
                   "translation": { "en": "Where do you live?", "fr": "Où habites-tu ?" }
@@ -79,298 +382,6 @@
                 {
                   "text": "Wie heißt du?",
                   "translation": { "en": "What is your name?", "fr": "Comment t'appelles-tu ?" }
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "ex-w-choice",
-      "role": "exercise",
-      "blockId": "block-words",
-      "label": {
-        "en": "Choose the question word",
-        "fr": "Choisir le mot interrogatif",
-        "de": "Fragewort wählen"
-      },
-      "pages": [
-        {
-          "pageId": "ex-w-choice-p1",
-          "estimatedDurationS": 72,
-          "timeLimitS": null,
-          "instructions": {
-            "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
-            "de": "Wähle das Wort, das den Satz ergänzt."
-          },
-          "items": [
-            {
-              "type": "grammar_gap_choice",
-              "itemId": "ex-w-choice-1",
-              "before": "",
-              "after": "heißt du? – Ich heiße Lena.",
-              "choices": [
-                { "choiceId": "c-1", "text": "Wo" },
-                { "choiceId": "c-2", "text": "Wie" },
-                { "choiceId": "c-3", "text": "Wer" },
-                { "choiceId": "c-4", "text": "Was" }
-              ],
-              "answerChoiceId": "c-2",
-              "hint": null,
-              "ruleIds": ["rule-words"],
-              "answerExplanation": {
-                "en": "To ask for a name, use wie: Wie heißt du?",
-                "fr": "Pour demander le nom, on utilise wie : Wie heißt du ?",
-                "de": "Nach dem Namen fragst du mit wie: Wie heißt du?"
-              }
-            },
-            {
-              "type": "grammar_gap_choice",
-              "itemId": "ex-w-choice-2",
-              "before": "",
-              "after": "kommst du? – Ich komme aus Polen.",
-              "choices": [
-                { "choiceId": "c-1", "text": "Woher" },
-                { "choiceId": "c-2", "text": "Was" },
-                { "choiceId": "c-3", "text": "Wie" },
-                { "choiceId": "c-4", "text": "Wer" }
-              ],
-              "answerChoiceId": "c-1",
-              "hint": null,
-              "ruleIds": ["rule-words"],
-              "answerExplanation": {
-                "en": "Woher asks where someone comes from.",
-                "fr": "Woher demande d'où quelqu'un vient.",
-                "de": "Nach der Herkunft fragst du mit woher."
-              }
-            },
-            {
-              "type": "grammar_gap_choice",
-              "itemId": "ex-w-choice-3",
-              "before": "",
-              "after": "wohnst du? – Ich wohne in Berlin.",
-              "choices": [
-                { "choiceId": "c-1", "text": "Wer" },
-                { "choiceId": "c-2", "text": "Woher" },
-                { "choiceId": "c-3", "text": "Wo" },
-                { "choiceId": "c-4", "text": "Wie" }
-              ],
-              "answerChoiceId": "c-3",
-              "hint": null,
-              "ruleIds": ["rule-words"],
-              "answerExplanation": {
-                "en": "Wo asks for a place.",
-                "fr": "Wo demande un lieu.",
-                "de": "Nach dem Ort fragst du mit wo."
-              }
-            },
-            {
-              "type": "grammar_gap_choice",
-              "itemId": "ex-w-choice-4",
-              "before": "",
-              "after": "ist das? – Das ist Herr Braun.",
-              "choices": [
-                { "choiceId": "c-1", "text": "Was" },
-                { "choiceId": "c-2", "text": "Wo" },
-                { "choiceId": "c-3", "text": "Woher" },
-                { "choiceId": "c-4", "text": "Wer" }
-              ],
-              "answerChoiceId": "c-4",
-              "hint": { "en": "a person", "fr": "une personne", "de": "eine Person" },
-              "ruleIds": ["rule-words"],
-              "answerExplanation": {
-                "en": "Wer asks for a person.",
-                "fr": "Wer demande une personne.",
-                "de": "Nach einer Person fragst du mit wer."
-              }
-            },
-            {
-              "type": "grammar_gap_choice",
-              "itemId": "ex-w-choice-5",
-              "before": "",
-              "after": "machst du? – Ich lerne Deutsch.",
-              "choices": [
-                { "choiceId": "c-1", "text": "Wie" },
-                { "choiceId": "c-2", "text": "Was" },
-                { "choiceId": "c-3", "text": "Wo" },
-                { "choiceId": "c-4", "text": "Woher" }
-              ],
-              "answerChoiceId": "c-2",
-              "hint": null,
-              "ruleIds": ["rule-words"],
-              "answerExplanation": {
-                "en": "Was asks for an activity or a thing.",
-                "fr": "Was demande une activité ou une chose.",
-                "de": "Nach einer Tätigkeit oder Sache fragst du mit was."
-              }
-            },
-            {
-              "type": "grammar_gap_choice",
-              "itemId": "ex-w-choice-6",
-              "before": "",
-              "after": "heißt deine Lehrerin? – Sie heißt Frau Weber.",
-              "choices": [
-                { "choiceId": "c-1", "text": "Woher" },
-                { "choiceId": "c-2", "text": "Wie" },
-                { "choiceId": "c-3", "text": "Wer" },
-                { "choiceId": "c-4", "text": "Wo" }
-              ],
-              "answerChoiceId": "c-2",
-              "hint": null,
-              "ruleIds": ["rule-words"],
-              "answerExplanation": {
-                "en": "With heißen, you ask for the name with wie.",
-                "fr": "Avec heißen, on demande le nom avec wie.",
-                "de": "Mit heißen fragst du mit wie nach dem Namen."
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "ex-w-typing",
-      "role": "exercise",
-      "blockId": "block-words",
-      "label": {
-        "en": "Type the question word",
-        "fr": "Écrire le mot interrogatif",
-        "de": "Fragewort schreiben"
-      },
-      "pages": [
-        {
-          "pageId": "ex-w-typing-p1",
-          "estimatedDurationS": 100,
-          "timeLimitS": null,
-          "instructions": {
-            "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
-            "de": "Schreib die fehlenden Wörter."
-          },
-          "items": [
-            {
-              "type": "grammar_gap_typing",
-              "itemId": "ex-w-typing-1",
-              "before": "",
-              "after": "ist das? – Das ist mein Bruder.",
-              "accepted": { "answers": ["Wer"] },
-              "hint": { "en": "a person", "fr": "une personne", "de": "eine Person" },
-              "ruleIds": ["rule-words"],
-              "answerExplanation": {
-                "en": "Wer asks for a person.",
-                "fr": "Wer demande une personne.",
-                "de": "Nach einer Person fragst du mit wer."
-              }
-            },
-            {
-              "type": "grammar_gap_typing",
-              "itemId": "ex-w-typing-2",
-              "before": "",
-              "after": "kommt Ali? – Er kommt aus Spanien.",
-              "accepted": { "answers": ["Woher"] },
-              "hint": { "en": "the origin", "fr": "l'origine", "de": "die Herkunft" },
-              "ruleIds": ["rule-words"],
-              "answerExplanation": {
-                "en": "Woher asks where someone comes from.",
-                "fr": "Woher demande d'où quelqu'un vient.",
-                "de": "Nach der Herkunft fragst du mit woher."
-              }
-            },
-            {
-              "type": "grammar_gap_typing",
-              "itemId": "ex-w-typing-3",
-              "before": "",
-              "after": "wohnen Sie? – Ich wohne in Zürich.",
-              "accepted": { "answers": ["Wo"] },
-              "hint": { "en": "the place", "fr": "le lieu", "de": "der Ort" },
-              "ruleIds": ["rule-words"],
-              "answerExplanation": {
-                "en": "Wo asks for a place.",
-                "fr": "Wo demande un lieu.",
-                "de": "Nach dem Ort fragst du mit wo."
-              }
-            },
-            {
-              "type": "grammar_gap_typing",
-              "itemId": "ex-w-typing-4",
-              "before": "",
-              "after": "heißt du? – Ich heiße Mia.",
-              "accepted": { "answers": ["Wie"] },
-              "hint": { "en": "the name", "fr": "le nom", "de": "der Name" },
-              "ruleIds": ["rule-words"],
-              "answerExplanation": {
-                "en": "To ask for a name, use wie.",
-                "fr": "Pour demander le nom, on utilise wie.",
-                "de": "Nach dem Namen fragst du mit wie."
-              }
-            },
-            {
-              "type": "grammar_gap_typing",
-              "itemId": "ex-w-typing-5",
-              "before": "",
-              "after": "macht Tom? – Er lernt Deutsch.",
-              "accepted": { "answers": ["Was"] },
-              "hint": { "en": "an activity", "fr": "une activité", "de": "eine Tätigkeit" },
-              "ruleIds": ["rule-words"],
-              "answerExplanation": {
-                "en": "Was asks for an activity.",
-                "fr": "Was demande une activité.",
-                "de": "Nach einer Tätigkeit fragst du mit was."
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "block-position-explanation",
-      "role": "explanation",
-      "blockId": "block-position",
-      "label": {
-        "en": "The verb on position 2",
-        "fr": "Le verbe en position 2",
-        "de": "Das Verb auf Position 2"
-      },
-      "pages": [
-        {
-          "pageId": "block-position-explanation",
-          "estimatedDurationS": 110,
-          "timeLimitS": null,
-          "instructions": {
-            "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
-            "de": "Lies die Erklärung und die Beispiele."
-          },
-          "items": [
-            {
-              "type": "grammar_explanation",
-              "itemId": "block-position-explanation",
-              "ruleIds": ["rule-verb-q", "rule-verb-a"],
-              "heading": {
-                "en": "Verb on position 2",
-                "fr": "Le verbe en position 2",
-                "de": "Das Verb auf Position 2"
-              },
-              "text": {
-                "en": "In a W-question the question word is on position 1 and the **verb** is always on position 2: `Woher kommst du?`\n\nIn the answer, too, the verb stays on position 2: `Ich komme aus Polen.`\n\n- Question: `Wo wohnt Anna?`\n- Answer: `Anna wohnt in Wien.`\n\nOnly the verb ending changes with the person: `ich komme`, `du kommst`, `er kommt`.",
-                "fr": "Dans une question en W, le mot interrogatif est en position 1 et le **verbe** est toujours en position 2 : `Woher kommst du?`\n\nDans la réponse aussi, le verbe reste en position 2 : `Ich komme aus Polen.`\n\n- Question : `Wo wohnt Anna?`\n- Réponse : `Anna wohnt in Wien.`\n\nSeule la terminaison du verbe change selon la personne : `ich komme`, `du kommst`, `er kommt`.",
-                "de": "In einer W-Frage steht das Fragewort auf Position 1 und das **Verb** immer auf Position 2: `Woher kommst du?`\n\nAuch in der Antwort bleibt das Verb auf Position 2: `Ich komme aus Polen.`\n\n- Frage: `Wo wohnt Anna?`\n- Antwort: `Anna wohnt in Wien.`\n\nNur die Endung des Verbs ändert sich mit der Person: `ich komme`, `du kommst`, `er kommt`."
-              },
-              "formTable": [],
-              "examples": [
-                {
-                  "text": "Woher kommst du?",
-                  "translation": { "en": "Where are you from?", "fr": "D'où viens-tu ?" }
-                },
-                {
-                  "text": "Ich komme aus Polen.",
-                  "translation": { "en": "I come from Poland.", "fr": "Je viens de Pologne." }
-                },
-                {
-                  "text": "Wo wohnt Anna?",
-                  "translation": { "en": "Where does Anna live?", "fr": "Où habite Anna ?" }
                 },
                 {
                   "text": "Anna wohnt in Wien.",
@@ -383,123 +394,103 @@
       ]
     },
     {
-      "id": "ex-v-order",
+      "id": "ex-b2-choice",
       "role": "exercise",
-      "blockId": "block-position",
-      "label": { "en": "Word order", "fr": "Ordre des mots", "de": "Wortstellung" },
+      "blockId": "block-wo-woher-wie",
+      "label": {
+        "en": "Multiple-choice gaps",
+        "fr": "Phrases à trous à choix multiple",
+        "de": "Lücken mit Auswahl"
+      },
       "pages": [
         {
-          "pageId": "ex-v-order-p1",
-          "estimatedDurationS": 120,
+          "pageId": "ex-b2-choice",
+          "estimatedDurationS": 48,
           "timeLimitS": null,
           "instructions": {
-            "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
-            "de": "Bring die Wörter in die richtige Reihenfolge."
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
             {
-              "type": "grammar_word_order",
-              "itemId": "ex-v-order-1",
-              "tokens": [
-                { "tokenId": "t-1", "text": "du" },
-                { "tokenId": "t-2", "text": "Woher" },
-                { "tokenId": "t-3", "text": "?" },
-                { "tokenId": "t-4", "text": "kommst" }
+              "type": "grammar_gap_choice",
+              "itemId": "ex-b2-choice-1",
+              "before": "",
+              "after": "kommst du? – Ich komme aus Polen.",
+              "choices": [
+                { "choiceId": "c-1", "text": "Wo" },
+                { "choiceId": "c-2", "text": "Woher" },
+                { "choiceId": "c-3", "text": "Wer" },
+                { "choiceId": "c-4", "text": "Was" }
               ],
-              "acceptedOrders": [["t-2", "t-4", "t-1", "t-3"]],
-              "ruleIds": ["rule-verb-q"],
+              "answerChoiceId": "c-2",
+              "hint": null,
+              "ruleIds": ["rule-wo-woher-wie"],
               "answerExplanation": {
-                "en": "Question word first, verb second, then the subject: Woher kommst du?",
-                "fr": "Le mot interrogatif d'abord, le verbe en second, puis le sujet : Woher kommst du ?",
-                "de": "Zuerst das Fragewort, dann das Verb, dann das Subjekt: Woher kommst du?"
+                "en": "Polen is where you come from, so you ask with woher.",
+                "fr": "La Pologne est le pays d'origine : on demande avec woher.",
+                "de": "Polen ist die Herkunft, also fragst du mit woher."
               }
             },
             {
-              "type": "grammar_word_order",
-              "itemId": "ex-v-order-2",
-              "tokens": [
-                { "tokenId": "t-1", "text": "Polen" },
-                { "tokenId": "t-2", "text": "aus" },
-                { "tokenId": "t-3", "text": "Ich" },
-                { "tokenId": "t-4", "text": "komme" },
-                { "tokenId": "t-5", "text": "." }
+              "type": "grammar_gap_choice",
+              "itemId": "ex-b2-choice-2",
+              "before": "",
+              "after": "wohnst du? – Ich wohne in Berlin.",
+              "choices": [
+                { "choiceId": "c-1", "text": "Woher" },
+                { "choiceId": "c-2", "text": "Wer" },
+                { "choiceId": "c-3", "text": "Wo" },
+                { "choiceId": "c-4", "text": "Was" }
               ],
-              "acceptedOrders": [["t-3", "t-4", "t-2", "t-1", "t-5"]],
-              "ruleIds": ["rule-verb-a"],
+              "answerChoiceId": "c-3",
+              "hint": null,
+              "ruleIds": ["rule-wo-woher-wie"],
               "answerExplanation": {
-                "en": "In the answer the verb is on position 2, after the subject: Ich komme aus Polen.",
-                "fr": "Dans la réponse, le verbe est en position 2, après le sujet : Ich komme aus Polen.",
-                "de": "In der Antwort steht das Verb auf Position 2, nach dem Subjekt: Ich komme aus Polen."
+                "en": "Berlin is a place where you live, so you ask with wo.",
+                "fr": "Berlin est un lieu de résidence : on demande avec wo.",
+                "de": "Berlin ist ein Ort, an dem du wohnst, also fragst du mit wo."
               }
             },
             {
-              "type": "grammar_word_order",
-              "itemId": "ex-v-order-3",
-              "tokens": [
-                { "tokenId": "t-1", "text": "Anna" },
-                { "tokenId": "t-2", "text": "wohnt" },
-                { "tokenId": "t-3", "text": "?" },
-                { "tokenId": "t-4", "text": "Wo" }
+              "type": "grammar_gap_choice",
+              "itemId": "ex-b2-choice-3",
+              "before": "",
+              "after": "heißt du? – Ich heiße Lena.",
+              "choices": [
+                { "choiceId": "c-1", "text": "Wo" },
+                { "choiceId": "c-2", "text": "Wie" },
+                { "choiceId": "c-3", "text": "Woher" },
+                { "choiceId": "c-4", "text": "Wer" }
               ],
-              "acceptedOrders": [["t-4", "t-2", "t-1", "t-3"]],
-              "ruleIds": ["rule-verb-q"],
+              "answerChoiceId": "c-2",
+              "hint": null,
+              "ruleIds": ["rule-wo-woher-wie"],
               "answerExplanation": {
-                "en": "Wo is on position 1 and the verb wohnt on position 2.",
-                "fr": "Wo est en position 1 et le verbe wohnt en position 2.",
-                "de": "Wo steht auf Position 1 und das Verb wohnt auf Position 2."
+                "en": "You ask for a name with wie.",
+                "fr": "On demande le nom avec wie.",
+                "de": "Nach dem Namen fragst du mit wie."
               }
             },
             {
-              "type": "grammar_word_order",
-              "itemId": "ex-v-order-4",
-              "tokens": [
-                { "tokenId": "t-1", "text": "in" },
-                { "tokenId": "t-2", "text": "Wien" },
-                { "tokenId": "t-3", "text": "wohnt" },
-                { "tokenId": "t-4", "text": "Er" },
-                { "tokenId": "t-5", "text": "." }
+              "type": "grammar_gap_choice",
+              "itemId": "ex-b2-choice-4",
+              "before": "Woher",
+              "after": "Anna? – Anna kommt aus Spanien.",
+              "choices": [
+                { "choiceId": "c-1", "text": "kommt" },
+                { "choiceId": "c-2", "text": "kommst" },
+                { "choiceId": "c-3", "text": "komme" },
+                { "choiceId": "c-4", "text": "kommen" }
               ],
-              "acceptedOrders": [["t-4", "t-3", "t-1", "t-2", "t-5"]],
-              "ruleIds": ["rule-verb-a"],
+              "answerChoiceId": "c-1",
+              "hint": null,
+              "ruleIds": ["rule-verb-second"],
               "answerExplanation": {
-                "en": "The subject Er is first, the verb wohnt is on position 2.",
-                "fr": "Le sujet Er est en premier, le verbe wohnt est en position 2.",
-                "de": "Das Subjekt Er steht vorn, das Verb wohnt auf Position 2."
-              }
-            },
-            {
-              "type": "grammar_word_order",
-              "itemId": "ex-v-order-5",
-              "tokens": [
-                { "tokenId": "t-1", "text": "heißt" },
-                { "tokenId": "t-2", "text": "?" },
-                { "tokenId": "t-3", "text": "Wie" },
-                { "tokenId": "t-4", "text": "du" }
-              ],
-              "acceptedOrders": [["t-3", "t-1", "t-4", "t-2"]],
-              "ruleIds": ["rule-verb-q"],
-              "answerExplanation": {
-                "en": "Wie is on position 1 and the verb heißt on position 2.",
-                "fr": "Wie est en position 1 et le verbe heißt en position 2.",
-                "de": "Wie steht auf Position 1 und das Verb heißt auf Position 2."
-              }
-            },
-            {
-              "type": "grammar_word_order",
-              "itemId": "ex-v-order-6",
-              "tokens": [
-                { "tokenId": "t-1", "text": "Lena" },
-                { "tokenId": "t-2", "text": "heiße" },
-                { "tokenId": "t-3", "text": "." },
-                { "tokenId": "t-4", "text": "Ich" }
-              ],
-              "acceptedOrders": [["t-4", "t-2", "t-1", "t-3"]],
-              "ruleIds": ["rule-verb-a"],
-              "answerExplanation": {
-                "en": "Ich is first, the verb heiße is on position 2.",
-                "fr": "Ich est en premier, le verbe heiße est en position 2.",
-                "de": "Ich steht vorn, das Verb heiße steht auf Position 2."
+                "en": "Anna is one person, so the verb is kommt, in position 2.",
+                "fr": "Anna est une seule personne : le verbe est kommt, en position 2.",
+                "de": "Anna ist eine Person, also heißt das Verb kommt, auf Position 2."
               }
             }
           ]
@@ -507,9 +498,9 @@
       ]
     },
     {
-      "id": "ex-v-gap",
+      "id": "ex-b2-typing",
       "role": "exercise",
-      "blockId": "block-position",
+      "blockId": "block-wo-woher-wie",
       "label": {
         "en": "Typed gaps",
         "fr": "Phrases à trous à écrire",
@@ -517,7 +508,7 @@
       },
       "pages": [
         {
-          "pageId": "ex-v-gap-p1",
+          "pageId": "ex-b2-typing",
           "estimatedDurationS": 80,
           "timeLimitS": null,
           "instructions": {
@@ -528,58 +519,70 @@
           "items": [
             {
               "type": "grammar_gap_typing",
-              "itemId": "ex-v-gap-1",
+              "itemId": "ex-b2-typing-1",
+              "before": "",
+              "after": "wohnst du? – Ich wohne in Wien.",
+              "accepted": { "answers": ["Wo"] },
+              "hint": {
+                "en": "asks about a place",
+                "fr": "interroge sur le lieu",
+                "de": "fragt nach dem Ort"
+              },
+              "ruleIds": ["rule-wo-woher-wie"],
+              "answerExplanation": {
+                "en": "Wien is a place, so you ask with wo.",
+                "fr": "Vienne est un lieu : on demande avec wo.",
+                "de": "Wien ist ein Ort, also fragst du mit wo."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-b2-typing-2",
+              "before": "",
+              "after": "kommt Tom? – Tom kommt aus Österreich.",
+              "accepted": { "answers": ["Woher"] },
+              "hint": {
+                "en": "asks about origin",
+                "fr": "interroge sur l'origine",
+                "de": "fragt nach der Herkunft"
+              },
+              "ruleIds": ["rule-wo-woher-wie"],
+              "answerExplanation": {
+                "en": "Österreich is where Tom comes from, so you ask with woher.",
+                "fr": "L'Autriche est le pays d'origine de Tom : on demande avec woher.",
+                "de": "Österreich ist Toms Herkunft, also fragst du mit woher."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-b2-typing-3",
+              "before": "",
+              "after": "heißt du? – Ich heiße Ana.",
+              "accepted": { "answers": ["Wie"] },
+              "hint": {
+                "en": "asks for a name",
+                "fr": "interroge sur le nom",
+                "de": "fragt nach dem Namen"
+              },
+              "ruleIds": ["rule-wo-woher-wie"],
+              "answerExplanation": {
+                "en": "You ask for a name with wie.",
+                "fr": "On demande le nom avec wie.",
+                "de": "Nach dem Namen fragst du mit wie."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-b2-typing-4",
               "before": "Woher",
-              "after": "du?",
-              "accepted": { "answers": ["kommst"] },
-              "hint": { "en": "kommen", "fr": "kommen", "de": "kommen" },
-              "ruleIds": ["rule-verb-q"],
+              "after": "ihr? – Wir kommen aus Spanien.",
+              "accepted": { "answers": ["kommt"] },
+              "hint": { "en": "kommen, ihr", "fr": "kommen, ihr", "de": "kommen, ihr" },
+              "ruleIds": ["rule-verb-second"],
               "answerExplanation": {
-                "en": "The verb is on position 2 and matches du: kommst.",
-                "fr": "Le verbe est en position 2 et s'accorde avec du : kommst.",
-                "de": "Das Verb steht auf Position 2 und passt zu du: kommst."
-              }
-            },
-            {
-              "type": "grammar_gap_typing",
-              "itemId": "ex-v-gap-2",
-              "before": "Wo",
-              "after": "Anna?",
-              "accepted": { "answers": ["wohnt"] },
-              "hint": { "en": "wohnen", "fr": "wohnen", "de": "wohnen" },
-              "ruleIds": ["rule-verb-q"],
-              "answerExplanation": {
-                "en": "The verb is on position 2 and matches Anna: wohnt.",
-                "fr": "Le verbe est en position 2 et s'accorde avec Anna : wohnt.",
-                "de": "Das Verb steht auf Position 2 und passt zu Anna: wohnt."
-              }
-            },
-            {
-              "type": "grammar_gap_typing",
-              "itemId": "ex-v-gap-3",
-              "before": "Ich",
-              "after": "in Berlin.",
-              "accepted": { "answers": ["wohne"] },
-              "hint": { "en": "wohnen", "fr": "wohnen", "de": "wohnen" },
-              "ruleIds": ["rule-verb-a"],
-              "answerExplanation": {
-                "en": "After Ich the verb takes -e: wohne, on position 2.",
-                "fr": "Après Ich, le verbe prend -e : wohne, en position 2.",
-                "de": "Nach Ich hat das Verb die Endung -e: wohne, auf Position 2."
-              }
-            },
-            {
-              "type": "grammar_gap_typing",
-              "itemId": "ex-v-gap-4",
-              "before": "Er",
-              "after": "Deutsch.",
-              "accepted": { "answers": ["lernt"] },
-              "hint": { "en": "lernen", "fr": "lernen", "de": "lernen" },
-              "ruleIds": ["rule-verb-a"],
-              "answerExplanation": {
-                "en": "After Er the verb takes -t: lernt, on position 2.",
-                "fr": "Après Er, le verbe prend -t : lernt, en position 2.",
-                "de": "Nach Er hat das Verb die Endung -t: lernt, auf Position 2."
+                "en": "With ihr the verb kommen becomes kommt, in position 2.",
+                "fr": "Avec ihr, le verbe kommen devient kommt, en position 2.",
+                "de": "Zu ihr gehört die Form kommt, auf Position 2."
               }
             }
           ]
@@ -587,14 +590,86 @@
       ]
     },
     {
-      "id": "ex-v-spot",
+      "id": "ex-b2-order",
       "role": "exercise",
-      "blockId": "block-position",
+      "blockId": "block-wo-woher-wie",
+      "label": { "en": "Word order", "fr": "Ordre des mots", "de": "Wortstellung" },
+      "pages": [
+        {
+          "pageId": "ex-b2-order",
+          "estimatedDurationS": 75,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in the right order.",
+            "fr": "Mettez les mots dans le bon ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-b2-order-1",
+              "tokens": [
+                { "tokenId": "t-1", "text": "du" },
+                { "tokenId": "t-2", "text": "?" },
+                { "tokenId": "t-3", "text": "Woher" },
+                { "tokenId": "t-4", "text": "kommst" }
+              ],
+              "acceptedOrders": [["t-3", "t-4", "t-1", "t-2"]],
+              "ruleIds": ["rule-wo-woher-wie", "rule-verb-second"],
+              "answerExplanation": {
+                "en": "Woher is in position 1 and the verb kommst in position 2.",
+                "fr": "Woher est en position 1 et le verbe kommst en position 2.",
+                "de": "Woher steht auf Position 1 und das Verb kommst auf Position 2."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-b2-order-2",
+              "tokens": [
+                { "tokenId": "t-1", "text": "Anna" },
+                { "tokenId": "t-2", "text": "wohnt" },
+                { "tokenId": "t-3", "text": "?" },
+                { "tokenId": "t-4", "text": "Wo" }
+              ],
+              "acceptedOrders": [["t-4", "t-2", "t-1", "t-3"]],
+              "ruleIds": ["rule-wo-woher-wie", "rule-verb-second"],
+              "answerExplanation": {
+                "en": "Wo is first, then the verb wohnt, then the subject Anna.",
+                "fr": "Wo vient en premier, puis le verbe wohnt, puis le sujet Anna.",
+                "de": "Zuerst kommt wo, dann das Verb wohnt, dann das Subjekt Anna."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-b2-order-3",
+              "tokens": [
+                { "tokenId": "t-1", "text": "Deutsch" },
+                { "tokenId": "t-2", "text": "Wo" },
+                { "tokenId": "t-3", "text": "?" },
+                { "tokenId": "t-4", "text": "lernst" },
+                { "tokenId": "t-5", "text": "du" }
+              ],
+              "acceptedOrders": [["t-2", "t-4", "t-5", "t-1", "t-3"]],
+              "ruleIds": ["rule-wo-woher-wie", "rule-verb-second"],
+              "answerExplanation": {
+                "en": "Wo is in position 1 and the verb lernst in position 2.",
+                "fr": "Wo est en position 1 et le verbe lernst en position 2.",
+                "de": "Wo steht auf Position 1 und das Verb lernst auf Position 2."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-b2-spot",
+      "role": "exercise",
+      "blockId": "block-wo-woher-wie",
       "label": { "en": "Error spotting", "fr": "Repérer l’erreur", "de": "Fehler finden" },
       "pages": [
         {
-          "pageId": "ex-v-spot-p1",
-          "estimatedDurationS": 100,
+          "pageId": "ex-b2-spot",
+          "estimatedDurationS": 75,
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it.",
@@ -604,10 +679,28 @@
           "items": [
             {
               "type": "grammar_error_spotter",
-              "itemId": "ex-v-spot-1",
+              "itemId": "ex-b2-spot-1",
               "tokens": [
                 { "tokenId": "t-1", "text": "Woher" },
-                { "tokenId": "t-2", "text": "kommt" },
+                { "tokenId": "t-2", "text": "wohnst" },
+                { "tokenId": "t-3", "text": "du" },
+                { "tokenId": "t-4", "text": "?" }
+              ],
+              "faultyTokenId": "t-1",
+              "correction": { "mode": "type", "accepted": { "answers": ["Wo"] }, "choices": [] },
+              "ruleIds": ["rule-wo-woher-wie"],
+              "answerExplanation": {
+                "en": "You ask where someone lives with wo, not woher.",
+                "fr": "On demande où quelqu'un habite avec wo, pas avec woher.",
+                "de": "Nach dem Wohnort fragst du mit wo, nicht mit woher."
+              }
+            },
+            {
+              "type": "grammar_error_spotter",
+              "itemId": "ex-b2-spot-2",
+              "tokens": [
+                { "tokenId": "t-1", "text": "Woher" },
+                { "tokenId": "t-2", "text": "kommen" },
                 { "tokenId": "t-3", "text": "du" },
                 { "tokenId": "t-4", "text": "?" }
               ],
@@ -617,70 +710,33 @@
                 "accepted": { "answers": ["kommst"] },
                 "choices": []
               },
-              "ruleIds": ["rule-verb-q"],
+              "ruleIds": ["rule-verb-second"],
               "answerExplanation": {
-                "en": "With du the verb ends in -st: kommst.",
-                "fr": "Avec du, le verbe se termine par -st : kommst.",
-                "de": "Zu du gehört die Endung -st: kommst."
+                "en": "With du the verb is kommst.",
+                "fr": "Avec du, le verbe est kommst.",
+                "de": "Zu du gehört die Form kommst."
               }
             },
             {
               "type": "grammar_error_spotter",
-              "itemId": "ex-v-spot-2",
+              "itemId": "ex-b2-spot-3",
               "tokens": [
-                { "tokenId": "t-1", "text": "Wo" },
-                { "tokenId": "t-2", "text": "wohnst" },
-                { "tokenId": "t-3", "text": "Anna" },
+                { "tokenId": "t-1", "text": "Was" },
+                { "tokenId": "t-2", "text": "heißt" },
+                { "tokenId": "t-3", "text": "du" },
                 { "tokenId": "t-4", "text": "?" }
               ],
-              "faultyTokenId": "t-2",
+              "faultyTokenId": "t-1",
               "correction": {
                 "mode": "select",
-                "accepted": { "answers": ["wohnt"] },
-                "choices": ["wohnt", "wohnst", "wohne"]
+                "accepted": { "answers": ["Wie"] },
+                "choices": ["Wie", "Wer", "Wo"]
               },
-              "ruleIds": ["rule-verb-q"],
+              "ruleIds": ["rule-wo-woher-wie"],
               "answerExplanation": {
-                "en": "With Anna (like er, sie) the verb ends in -t: wohnt.",
-                "fr": "Avec Anna (comme er, sie), le verbe se termine par -t : wohnt.",
-                "de": "Zu Anna (wie er, sie) gehört die Endung -t: wohnt."
-              }
-            },
-            {
-              "type": "grammar_error_spotter",
-              "itemId": "ex-v-spot-3",
-              "tokens": [
-                { "tokenId": "t-1", "text": "Ich" },
-                { "tokenId": "t-2", "text": "kommen" },
-                { "tokenId": "t-3", "text": "aus" },
-                { "tokenId": "t-4", "text": "Spanien" },
-                { "tokenId": "t-5", "text": "." }
-              ],
-              "faultyTokenId": "t-2",
-              "correction": { "mode": "type", "accepted": { "answers": ["komme"] }, "choices": [] },
-              "ruleIds": ["rule-verb-a"],
-              "answerExplanation": {
-                "en": "With ich the verb ends in -e: komme.",
-                "fr": "Avec ich, le verbe se termine par -e : komme.",
-                "de": "Zu ich gehört die Endung -e: komme."
-              }
-            },
-            {
-              "type": "grammar_error_spotter",
-              "itemId": "ex-v-spot-4",
-              "tokens": [
-                { "tokenId": "t-1", "text": "Anna" },
-                { "tokenId": "t-2", "text": "lernen" },
-                { "tokenId": "t-3", "text": "Deutsch" },
-                { "tokenId": "t-4", "text": "." }
-              ],
-              "faultyTokenId": "t-2",
-              "correction": { "mode": "type", "accepted": { "answers": ["lernt"] }, "choices": [] },
-              "ruleIds": ["rule-verb-a"],
-              "answerExplanation": {
-                "en": "With Anna (like er, sie) the verb ends in -t: lernt.",
-                "fr": "Avec Anna (comme er, sie), le verbe se termine par -t : lernt.",
-                "de": "Zu Anna (wie er, sie) gehört die Endung -t: lernt."
+                "en": "You ask for a name with wie, not was.",
+                "fr": "On demande le nom avec wie, pas avec was.",
+                "de": "Nach dem Namen fragst du mit wie, nicht mit was."
               }
             }
           ]
@@ -713,9 +769,9 @@
       "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
       "pages": [
         {
-          "pageId": "exam-wh",
+          "pageId": "exam-question-words",
           "estimatedDurationS": 100,
-          "timeLimitS": 150,
+          "timeLimitS": 160,
           "instructions": {
             "en": "Type the missing words.",
             "fr": "Écrivez les mots manquants.",
@@ -724,72 +780,112 @@
           "items": [
             {
               "type": "grammar_gap_typing",
-              "itemId": "exam-wh-1",
+              "itemId": "exam-question-words-1",
               "before": "",
-              "after": "wohnt Herr Schmidt? – Er wohnt in Hamburg.",
-              "accepted": { "answers": ["Wo"] },
-              "hint": null,
-              "ruleIds": ["rule-words"],
-              "answerExplanation": {
-                "en": "Wo asks for a place.",
-                "fr": "Wo demande un lieu.",
-                "de": "Nach dem Ort fragst du mit wo."
-              }
-            },
-            {
-              "type": "grammar_gap_typing",
-              "itemId": "exam-wh-2",
-              "before": "",
-              "after": "kommt Frau Yilmaz? – Sie kommt aus der Türkei.",
-              "accepted": { "answers": ["Woher"] },
-              "hint": null,
-              "ruleIds": ["rule-words"],
-              "answerExplanation": {
-                "en": "Woher asks where someone comes from.",
-                "fr": "Woher demande d'où quelqu'un vient.",
-                "de": "Nach der Herkunft fragst du mit woher."
-              }
-            },
-            {
-              "type": "grammar_gap_typing",
-              "itemId": "exam-wh-3",
-              "before": "",
-              "after": "ist die Frau dort? – Das ist meine Lehrerin.",
+              "after": "arbeitet hier? – Frau Weber arbeitet hier.",
               "accepted": { "answers": ["Wer"] },
               "hint": null,
-              "ruleIds": ["rule-words"],
+              "ruleIds": ["rule-wer-was"],
               "answerExplanation": {
-                "en": "Wer asks for a person.",
-                "fr": "Wer demande une personne.",
-                "de": "Nach einer Person fragst du mit wer."
+                "en": "Frau Weber is a person, so you ask with wer.",
+                "fr": "Frau Weber est une personne : on demande avec wer.",
+                "de": "Frau Weber ist eine Person, also fragst du mit wer."
               }
             },
             {
               "type": "grammar_gap_typing",
-              "itemId": "exam-wh-4",
+              "itemId": "exam-question-words-2",
               "before": "",
-              "after": "heißt dein Bruder? – Er heißt Paul.",
-              "accepted": { "answers": ["Wie"] },
-              "hint": null,
-              "ruleIds": ["rule-words"],
-              "answerExplanation": {
-                "en": "To ask for a name, use wie.",
-                "fr": "Pour demander le nom, on utilise wie.",
-                "de": "Nach dem Namen fragst du mit wie."
-              }
-            },
-            {
-              "type": "grammar_gap_typing",
-              "itemId": "exam-wh-5",
-              "before": "",
-              "after": "lernst du? – Ich lerne Spanisch.",
+              "after": "lernst du? – Ich lerne Französisch.",
               "accepted": { "answers": ["Was"] },
               "hint": null,
-              "ruleIds": ["rule-words"],
+              "ruleIds": ["rule-wer-was"],
               "answerExplanation": {
-                "en": "Was asks for an activity or a thing.",
-                "fr": "Was demande une activité ou une chose.",
-                "de": "Nach einer Tätigkeit oder Sache fragst du mit was."
+                "en": "You ask what someone learns, so you use was.",
+                "fr": "On demande ce que quelqu'un apprend : on utilise was.",
+                "de": "Du fragst, was jemand lernt, also nimmst du was."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-question-words-3",
+              "before": "",
+              "after": "kommt Frau Weber? – Sie kommt aus Österreich.",
+              "accepted": { "answers": ["Woher"] },
+              "hint": null,
+              "ruleIds": ["rule-wo-woher-wie"],
+              "answerExplanation": {
+                "en": "Österreich is where she comes from, so you ask with woher.",
+                "fr": "L'Autriche est son pays d'origine : on demande avec woher.",
+                "de": "Österreich ist ihre Herkunft, also fragst du mit woher."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-question-words-4",
+              "before": "",
+              "after": "heißt er? – Er heißt Paul.",
+              "accepted": { "answers": ["Wie"] },
+              "hint": null,
+              "ruleIds": ["rule-wo-woher-wie"],
+              "answerExplanation": {
+                "en": "You ask for a name with wie.",
+                "fr": "On demande le nom avec wie.",
+                "de": "Nach dem Namen fragst du mit wie."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "exam-verbs",
+          "estimatedDurationS": 75,
+          "timeLimitS": 120,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-verbs-1",
+              "before": "Wo",
+              "after": "ihr? – Wir wohnen in Wien.",
+              "accepted": { "answers": ["wohnt"] },
+              "hint": null,
+              "ruleIds": ["rule-verb-second"],
+              "answerExplanation": {
+                "en": "With ihr the verb wohnen becomes wohnt, in position 2.",
+                "fr": "Avec ihr, le verbe wohnen devient wohnt, en position 2.",
+                "de": "Zu ihr gehört die Form wohnt, auf Position 2."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-verbs-2",
+              "before": "Woher",
+              "after": "Sie? – Ich komme aus Spanien.",
+              "accepted": { "answers": ["kommen"] },
+              "hint": null,
+              "ruleIds": ["rule-verb-second"],
+              "answerExplanation": {
+                "en": "With Sie the verb kommen stays kommen, in position 2.",
+                "fr": "Avec Sie, le verbe reste kommen, en position 2.",
+                "de": "Zu Sie gehört die Form kommen, auf Position 2."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-verbs-3",
+              "before": "Wie",
+              "after": "du? – Ich heiße Mia.",
+              "accepted": { "answers": ["heißt"] },
+              "hint": null,
+              "ruleIds": ["rule-verb-second"],
+              "answerExplanation": {
+                "en": "With du the verb heißen becomes heißt, in position 2.",
+                "fr": "Avec du, le verbe heißen devient heißt, en position 2.",
+                "de": "Zu du gehört die Form heißt, auf Position 2."
               }
             }
           ]
@@ -808,127 +904,69 @@
               "type": "grammar_word_order",
               "itemId": "exam-order-1",
               "tokens": [
-                { "tokenId": "t-1", "text": "Ali" },
-                { "tokenId": "t-2", "text": "?" },
-                { "tokenId": "t-3", "text": "kommt" },
-                { "tokenId": "t-4", "text": "Woher" }
+                { "tokenId": "t-1", "text": "Frau" },
+                { "tokenId": "t-2", "text": "Weber" },
+                { "tokenId": "t-3", "text": "arbeitet" },
+                { "tokenId": "t-4", "text": "Wo" },
+                { "tokenId": "t-5", "text": "?" }
               ],
-              "acceptedOrders": [["t-4", "t-3", "t-1", "t-2"]],
-              "ruleIds": ["rule-verb-q"],
+              "acceptedOrders": [["t-4", "t-3", "t-1", "t-2", "t-5"]],
+              "ruleIds": ["rule-verb-second"],
               "answerExplanation": {
-                "en": "Question word first, verb second: Woher kommt Ali?",
-                "fr": "Le mot interrogatif d'abord, le verbe en second : Woher kommt Ali ?",
-                "de": "Zuerst das Fragewort, dann das Verb: Woher kommt Ali?"
+                "en": "Wo is first and the verb arbeitet is in position 2.",
+                "fr": "Wo vient en premier et le verbe arbeitet est en position 2.",
+                "de": "Wo steht zuerst und das Verb arbeitet steht auf Position 2."
               }
             },
             {
               "type": "grammar_word_order",
               "itemId": "exam-order-2",
               "tokens": [
-                { "tokenId": "t-1", "text": "Deutsch" },
-                { "tokenId": "t-2", "text": "Wo" },
+                { "tokenId": "t-1", "text": "Sie" },
+                { "tokenId": "t-2", "text": "kommen" },
                 { "tokenId": "t-3", "text": "?" },
-                { "tokenId": "t-4", "text": "Mia" },
-                { "tokenId": "t-5", "text": "lernt" }
+                { "tokenId": "t-4", "text": "Woher" }
               ],
-              "acceptedOrders": [["t-2", "t-5", "t-4", "t-1", "t-3"]],
-              "ruleIds": ["rule-verb-q"],
+              "acceptedOrders": [["t-4", "t-2", "t-1", "t-3"]],
+              "ruleIds": ["rule-verb-second"],
               "answerExplanation": {
-                "en": "Wo is on position 1 and the verb lernt on position 2.",
-                "fr": "Wo est en position 1 et le verbe lernt en position 2.",
-                "de": "Wo steht auf Position 1 und das Verb lernt auf Position 2."
+                "en": "Woher is first and the verb kommen is in position 2.",
+                "fr": "Woher vient en premier et le verbe kommen est en position 2.",
+                "de": "Woher steht zuerst und das Verb kommen steht auf Position 2."
               }
             },
             {
               "type": "grammar_word_order",
               "itemId": "exam-order-3",
               "tokens": [
-                { "tokenId": "t-1", "text": "lernt" },
-                { "tokenId": "t-2", "text": "." },
-                { "tokenId": "t-3", "text": "Deutsch" },
-                { "tokenId": "t-4", "text": "Mia" }
+                { "tokenId": "t-1", "text": "Tom" },
+                { "tokenId": "t-2", "text": "Was" },
+                { "tokenId": "t-3", "text": "trinkt" },
+                { "tokenId": "t-4", "text": "?" }
               ],
-              "acceptedOrders": [
-                ["t-4", "t-1", "t-3", "t-2"],
-                ["t-3", "t-1", "t-4", "t-2"]
-              ],
-              "ruleIds": ["rule-verb-a"],
+              "acceptedOrders": [["t-2", "t-3", "t-1", "t-4"]],
+              "ruleIds": ["rule-verb-second"],
               "answerExplanation": {
-                "en": "The verb lernt stays on position 2, whether Mia or Deutsch comes first.",
-                "fr": "Le verbe lernt reste en position 2, que Mia ou Deutsch soit en premier.",
-                "de": "Das Verb lernt bleibt auf Position 2, ob Mia oder Deutsch vorn steht."
+                "en": "Was is first and the verb trinkt is in position 2.",
+                "fr": "Was vient en premier et le verbe trinkt est en position 2.",
+                "de": "Was steht zuerst und das Verb trinkt steht auf Position 2."
               }
             },
             {
               "type": "grammar_word_order",
               "itemId": "exam-order-4",
               "tokens": [
-                { "tokenId": "t-1", "text": "Bonn" },
-                { "tokenId": "t-2", "text": "wohnen" },
-                { "tokenId": "t-3", "text": "." },
-                { "tokenId": "t-4", "text": "in" },
-                { "tokenId": "t-5", "text": "Wir" }
+                { "tokenId": "t-1", "text": "Französisch" },
+                { "tokenId": "t-2", "text": "Wer" },
+                { "tokenId": "t-3", "text": "spricht" },
+                { "tokenId": "t-4", "text": "?" }
               ],
-              "acceptedOrders": [["t-5", "t-2", "t-4", "t-1", "t-3"]],
-              "ruleIds": ["rule-verb-a"],
+              "acceptedOrders": [["t-2", "t-3", "t-1", "t-4"]],
+              "ruleIds": ["rule-verb-second"],
               "answerExplanation": {
-                "en": "The subject Wir is first, the verb wohnen is on position 2.",
-                "fr": "Le sujet Wir est en premier, le verbe wohnen est en position 2.",
-                "de": "Das Subjekt Wir steht vorn, das Verb wohnen auf Position 2."
-              }
-            }
-          ]
-        },
-        {
-          "pageId": "exam-answer",
-          "estimatedDurationS": 60,
-          "timeLimitS": 100,
-          "instructions": {
-            "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
-            "de": "Schreib die fehlenden Wörter."
-          },
-          "items": [
-            {
-              "type": "grammar_gap_typing",
-              "itemId": "exam-answer-1",
-              "before": "Wo",
-              "after": "Herr Braun?",
-              "accepted": { "answers": ["wohnt"] },
-              "hint": null,
-              "ruleIds": ["rule-verb-q"],
-              "answerExplanation": {
-                "en": "The verb is on position 2 and matches Herr Braun: wohnt.",
-                "fr": "Le verbe est en position 2 et s'accorde avec Herr Braun : wohnt.",
-                "de": "Das Verb steht auf Position 2 und passt zu Herr Braun: wohnt."
-              }
-            },
-            {
-              "type": "grammar_gap_typing",
-              "itemId": "exam-answer-2",
-              "before": "Ich",
-              "after": "Mark.",
-              "accepted": { "answers": ["heiße"] },
-              "hint": null,
-              "ruleIds": ["rule-verb-a"],
-              "answerExplanation": {
-                "en": "After Ich the verb takes -e: heiße, on position 2.",
-                "fr": "Après Ich, le verbe prend -e : heiße, en position 2.",
-                "de": "Nach Ich hat das Verb die Endung -e: heiße, auf Position 2."
-              }
-            },
-            {
-              "type": "grammar_gap_typing",
-              "itemId": "exam-answer-3",
-              "before": "Lena",
-              "after": "aus Italien.",
-              "accepted": { "answers": ["kommt"] },
-              "hint": null,
-              "ruleIds": ["rule-verb-a"],
-              "answerExplanation": {
-                "en": "After Lena (like sie) the verb takes -t: kommt, on position 2.",
-                "fr": "Après Lena (comme sie), le verbe prend -t : kommt, en position 2.",
-                "de": "Nach Lena (wie sie) hat das Verb die Endung -t: kommt, auf Position 2."
+                "en": "Wer is first and the verb spricht is in position 2.",
+                "fr": "Wer vient en premier et le verbe spricht est en position 2.",
+                "de": "Wer steht zuerst und das Verb spricht steht auf Position 2."
               }
             }
           ]

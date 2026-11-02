@@ -6,19 +6,19 @@
   "locales": ["en", "fr", "de"],
   "title": "Personalpronomen im Nominativ",
   "objective": {
-    "en": "Use the German pronouns ich, du, er, sie, es, wir, ihr, sie and Sie, and choose du for friends and family or Sie for strangers and at work.",
-    "fr": "Employer les pronoms allemands ich, du, er, sie, es, wir, ihr, sie et Sie, et choisir du pour les amis et la famille ou Sie pour les inconnus et au travail.",
-    "de": "Die Personalpronomen ich, du, er, sie, es, wir, ihr, sie und Sie verwenden und du für Freunde und Familie, Sie für Fremde und im Beruf wählen."
+    "en": "Use the pronouns ich, du, er, sie, es, wir, ihr, sie and Sie, and choose du for friends and family or Sie for strangers.",
+    "fr": "Utiliser les pronoms ich, du, er, sie, es, wir, ihr, sie et Sie, et choisir du pour les amis et la famille ou Sie pour les inconnus.",
+    "de": "Die Personalpronomen ich, du, er, sie, es, wir, ihr, sie und Sie verwenden; du für Freunde, Sie für Fremde wählen."
   },
-  "estimatedMinutes": 17,
+  "estimatedMinutes": 19,
   "provenance": {
     "generator": "ft lessons:author",
     "model": "sonnet",
-    "promptVersion": "author-2",
-    "generatedAt": "2026-11-01T20:18:26.620Z",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:27:30.071Z",
     "inputHashes": {
       "outline": "0e9b8abd6500de99cd12021d59da070c227e69ac3f32c1096528c2a67d8af0ca",
-      "brief": "abd430522b49908f888c74a3960cd614fafe64fefed47d89b7d43483d104c8fc"
+      "brief": "7ab853ad4047b9596f006fb1b2e348106c9251ef12847dcc2a45bb9e87d6a8a7"
     }
   },
   "kind": "grammar",
@@ -29,9 +29,9 @@
       "role": "explanation",
       "blockId": "block-singular",
       "label": {
-        "en": "One person or thing: ich, du, er, sie, es",
-        "fr": "Une personne ou une chose : ich, du, er, sie, es",
-        "de": "Eine Person oder Sache: ich, du, er, sie, es"
+        "en": "Singular: ich, du, er, sie, es",
+        "fr": "Singulier : ich, du, er, sie, es",
+        "de": "Singular: ich, du, er, sie, es"
       },
       "pages": [
         {
@@ -47,102 +47,38 @@
             {
               "type": "grammar_explanation",
               "itemId": "block-singular-explanation",
-              "ruleIds": ["rule-singular"],
+              "ruleIds": ["r-singular"],
               "heading": {
-                "en": "Pronouns for one person or thing",
-                "fr": "Les pronoms pour une personne ou une chose",
-                "de": "Pronomen für eine Person oder Sache"
+                "en": "Pronouns for one person",
+                "fr": "Les pronoms pour une personne",
+                "de": "Pronomen für eine Person"
               },
               "text": {
-                "en": "In German a **pronoun** replaces a name. For one person or thing you use `ich`, `du`, `er`, `sie` or `es`.\n\n- `ich` means I. Inside a sentence it has a small letter.\n- `du` means you, said to one friend, a child or a relative.\n- `er` is a man or a masculine word, `sie` a woman or a feminine word, `es` a neuter word.\n\nThings have a gender, too: `der Tisch` becomes `er`, `die Lampe` becomes `sie`, `das Buch` becomes `es`.",
-                "fr": "En allemand, un **pronom** remplace un nom. Pour une personne ou une chose, on emploie `ich`, `du`, `er`, `sie` ou `es`.\n\n- `ich` veut dire je. Dans une phrase, il s’écrit avec une minuscule.\n- `du` veut dire tu : on le dit à un ami, un enfant ou un proche.\n- `er` désigne un homme ou un mot masculin, `sie` une femme ou un mot féminin, `es` un mot neutre.\n\nLes choses ont aussi un genre : `der Tisch` devient `er`, `die Lampe` devient `sie`, `das Buch` devient `es`.",
-                "de": "Im Deutschen ersetzt ein **Pronomen** einen Namen. Für eine Person oder eine Sache verwendest du `ich`, `du`, `er`, `sie` oder `es`.\n\n- `ich` meint den Sprecher selbst. Mitten im Satz schreibst du es klein.\n- `du` sagst du zu einem Freund, einem Kind oder einem Verwandten.\n- `er` steht für einen Mann oder ein maskulines Wort, `sie` für eine Frau oder ein feminines Wort, `es` für ein neutrales Wort.\n\nAuch Dinge haben ein Genus: `der Tisch` wird zu `er`, `die Lampe` wird zu `sie`, `das Buch` wird zu `es`."
+                "en": "Many sentences start with a pronoun. For one person there are five: `ich` (I), `du` (you, to a friend), `er` (he), `sie` (she) and `es` (it).\n\n- The verb ending changes with the pronoun: `ich wohne`, `du wohnst`, `er/sie/es wohnt`.\n- For things the pronoun follows the article: `der` → `er`, `die` → `sie`, `das` → `es`.\n\nThe pronoun `ich` has a capital letter only at the start of a sentence.",
+                "fr": "Beaucoup de phrases commencent par un pronom. Pour une seule personne, il y en a cinq : `ich` (je), `du` (tu, à un ami), `er` (il), `sie` (elle) et `es` (il ou elle pour une chose).\n\n- La terminaison du verbe change avec le pronom : `ich wohne`, `du wohnst`, `er/sie/es wohnt`.\n- Pour les choses, le pronom suit l'article : `der` → `er`, `die` → `sie`, `das` → `es`.\n\nLe pronom `ich` ne prend une majuscule qu'au début de la phrase.",
+                "de": "Viele Sätze beginnen mit einem Pronomen. Für eine Person gibt es fünf: `ich`, `du` (zu einem Freund), `er` (ein Mann), `sie` (eine Frau) und `es` (ein Ding oder etwas Neutrales).\n\n- Die Verbendung ändert sich mit dem Pronomen: `ich wohne`, `du wohnst`, `er/sie/es wohnt`.\n- Bei Dingen richtet sich das Pronomen nach dem Artikel: `der` → `er`, `die` → `sie`, `das` → `es`.\n\nDas Pronomen `ich` wird nur am Satzanfang großgeschrieben."
               },
-              "formTable": [],
+              "formTable": [
+                { "subject": "ich", "form": "wohne", "example": "Ich wohne in Berlin." },
+                { "subject": "du", "form": "wohnst", "example": "Du kommst aus Wien." },
+                { "subject": "er / sie / es", "form": "wohnt", "example": "Er heißt Paul." }
+              ],
               "examples": [
                 {
-                  "text": "Ich komme aus Berlin.",
-                  "translation": { "en": "I come from Berlin.", "fr": "Je viens de Berlin." }
+                  "text": "Ich wohne in Berlin.",
+                  "translation": { "en": "I live in Berlin.", "fr": "J'habite à Berlin." }
+                },
+                {
+                  "text": "Du kommst aus Wien.",
+                  "translation": { "en": "You come from Vienna.", "fr": "Tu viens de Vienne." }
                 },
                 {
                   "text": "Er heißt Paul.",
                   "translation": { "en": "He is called Paul.", "fr": "Il s'appelle Paul." }
                 },
                 {
-                  "text": "Sie wohnt in Hamburg.",
-                  "translation": { "en": "She lives in Hamburg.", "fr": "Elle habite à Hambourg." }
-                },
-                {
-                  "text": "Das Heft ist alt. Es ist blau.",
-                  "translation": {
-                    "en": "The notebook is old. It is blue.",
-                    "fr": "Le cahier est vieux. Il est bleu."
-                  }
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "ex-sg-match",
-      "role": "exercise",
-      "blockId": "block-singular",
-      "label": {
-        "en": "Person matching",
-        "fr": "Relier les personnes",
-        "de": "Personen verbinden"
-      },
-      "pages": [
-        {
-          "pageId": "ex-sg-match-1",
-          "estimatedDurationS": 45,
-          "timeLimitS": null,
-          "instructions": {
-            "en": "Connect each pronoun with its partner.",
-            "fr": "Reliez chaque pronom à son partenaire.",
-            "de": "Verbinde jedes Pronomen mit seinem Partner."
-          },
-          "items": [
-            {
-              "type": "grammar_person_matching",
-              "itemId": "ex-sg-match-1",
-              "ruleIds": ["rule-singular"],
-              "mode": "translation",
-              "rows": [
-                {
-                  "person": "1sg",
-                  "pronoun": null,
-                  "native": { "en": "I", "fr": "je" },
-                  "answer": "ich",
-                  "answerExplanation": {
-                    "en": "The speaker says ich.",
-                    "fr": "Celui qui parle dit ich.",
-                    "de": "Der Sprecher sagt ich."
-                  }
-                },
-                {
-                  "person": "2sg",
-                  "pronoun": null,
-                  "native": { "en": "you (one friend)", "fr": "tu (un ami)" },
-                  "answer": "du",
-                  "answerExplanation": {
-                    "en": "To one friend you say du.",
-                    "fr": "À un ami, on dit du.",
-                    "de": "Zu einem Freund sagst du du."
-                  }
-                },
-                {
-                  "person": "3sg",
-                  "pronoun": null,
-                  "native": { "en": "he", "fr": "il" },
-                  "answer": "er",
-                  "answerExplanation": {
-                    "en": "A man is er.",
-                    "fr": "Un homme se dit er.",
-                    "de": "Ein Mann ist er."
-                  }
+                  "text": "Sie wohnt in Zürich.",
+                  "translation": { "en": "She lives in Zurich.", "fr": "Elle habite à Zurich." }
                 }
               ]
             }
@@ -155,14 +91,14 @@
       "role": "exercise",
       "blockId": "block-singular",
       "label": {
-        "en": "Multiple-choice gaps 1",
-        "fr": "Phrases à trous à choix multiple 1",
-        "de": "Lücken mit Auswahl 1"
+        "en": "Choose the pronoun 1",
+        "fr": "Choisir le pronom 1",
+        "de": "Pronomen wählen 1"
       },
       "pages": [
         {
           "pageId": "ex-sg-choice-1",
-          "estimatedDurationS": 40,
+          "estimatedDurationS": 48,
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
@@ -174,7 +110,7 @@
               "type": "grammar_gap_choice",
               "itemId": "ex-sg-choice-1",
               "before": "",
-              "after": "heiße Anna.",
+              "after": "wohne in Berlin.",
               "choices": [
                 { "choiceId": "c-1", "text": "Ich" },
                 { "choiceId": "c-2", "text": "Du" },
@@ -182,76 +118,72 @@
                 { "choiceId": "c-4", "text": "Wir" }
               ],
               "answerChoiceId": "c-1",
-              "hint": {
-                "en": "I (the speaker)",
-                "fr": "je (celui qui parle)",
-                "de": "ich (der Sprecher)"
-              },
-              "ruleIds": ["rule-singular"],
+              "hint": null,
+              "ruleIds": ["r-singular"],
               "answerExplanation": {
-                "en": "The speaker talks about himself or herself: ich.",
-                "fr": "Celui qui parle parle de lui-même : ich.",
-                "de": "Der Sprecher spricht über sich selbst: ich."
+                "en": "With ich the verb ends in -e: ich wohne.",
+                "fr": "Avec ich, le verbe finit par -e : ich wohne.",
+                "de": "Bei ich endet das Verb auf -e: ich wohne."
               }
             },
             {
               "type": "grammar_gap_choice",
               "itemId": "ex-sg-choice-2",
-              "before": "Paul ist mein Bruder.",
-              "after": "wohnt in Wien.",
+              "before": "",
+              "after": "kommst aus Wien.",
+              "choices": [
+                { "choiceId": "c-1", "text": "Du" },
+                { "choiceId": "c-2", "text": "Er" },
+                { "choiceId": "c-3", "text": "Ihr" },
+                { "choiceId": "c-4", "text": "Ich" }
+              ],
+              "answerChoiceId": "c-1",
+              "hint": null,
+              "ruleIds": ["r-singular"],
+              "answerExplanation": {
+                "en": "With du the verb ends in -st: du kommst.",
+                "fr": "Avec du, le verbe finit par -st : du kommst.",
+                "de": "Bei du endet das Verb auf -st: du kommst."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-sg-choice-3",
+              "before": "Peter wohnt in Hamburg.",
+              "after": "kommt aus Berlin.",
+              "choices": [
+                { "choiceId": "c-1", "text": "Er" },
+                { "choiceId": "c-2", "text": "Sie" },
+                { "choiceId": "c-3", "text": "Es" },
+                { "choiceId": "c-4", "text": "Ich" }
+              ],
+              "answerChoiceId": "c-1",
+              "hint": null,
+              "ruleIds": ["r-singular"],
+              "answerExplanation": {
+                "en": "Peter is a man, so the pronoun is er.",
+                "fr": "Peter est un homme, donc le pronom est er.",
+                "de": "Peter ist ein Mann, also steht er."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-sg-choice-4",
+              "before": "Anna wohnt in Wien.",
+              "after": "kommt aus Graz.",
               "choices": [
                 { "choiceId": "c-1", "text": "Sie" },
                 { "choiceId": "c-2", "text": "Er" },
                 { "choiceId": "c-3", "text": "Es" },
                 { "choiceId": "c-4", "text": "Du" }
               ],
-              "answerChoiceId": "c-2",
+              "answerChoiceId": "c-1",
               "hint": null,
-              "ruleIds": ["rule-singular"],
+              "ruleIds": ["r-singular"],
               "answerExplanation": {
-                "en": "Paul is a man, so you say er.",
-                "fr": "Paul est un homme, donc on dit er.",
-                "de": "Paul ist ein Mann, also sagst du er."
-              }
-            },
-            {
-              "type": "grammar_gap_choice",
-              "itemId": "ex-sg-choice-3",
-              "before": "Anna ist meine Freundin.",
-              "after": "kommt aus Polen.",
-              "choices": [
-                { "choiceId": "c-1", "text": "Es" },
-                { "choiceId": "c-2", "text": "Er" },
-                { "choiceId": "c-3", "text": "Ich" },
-                { "choiceId": "c-4", "text": "Sie" }
-              ],
-              "answerChoiceId": "c-4",
-              "hint": null,
-              "ruleIds": ["rule-singular"],
-              "answerExplanation": {
-                "en": "Anna is a woman, so you say sie.",
-                "fr": "Anna est une femme, donc on dit sie.",
-                "de": "Anna ist eine Frau, also sagst du sie."
-              }
-            },
-            {
-              "type": "grammar_gap_choice",
-              "itemId": "ex-sg-choice-4",
-              "before": "Das Buch ist neu.",
-              "after": "ist rot.",
-              "choices": [
-                { "choiceId": "c-1", "text": "Du" },
-                { "choiceId": "c-2", "text": "Sie" },
-                { "choiceId": "c-3", "text": "Es" },
-                { "choiceId": "c-4", "text": "Er" }
-              ],
-              "answerChoiceId": "c-3",
-              "hint": null,
-              "ruleIds": ["rule-singular"],
-              "answerExplanation": {
-                "en": "Das Buch is neuter, so it is replaced by es.",
-                "fr": "Das Buch est neutre, donc on le remplace par es.",
-                "de": "Das Buch ist sächlich, deshalb steht es."
+                "en": "Anna is a woman, so the pronoun is sie.",
+                "fr": "Anna est une femme, donc le pronom est sie.",
+                "de": "Anna ist eine Frau, also steht sie."
               }
             }
           ]
@@ -263,14 +195,14 @@
       "role": "exercise",
       "blockId": "block-singular",
       "label": {
-        "en": "Typed gaps 1",
-        "fr": "Phrases à trous à écrire 1",
-        "de": "Lücken zum Schreiben 1"
+        "en": "Type the pronoun 1",
+        "fr": "Écrire le pronom 1",
+        "de": "Pronomen schreiben 1"
       },
       "pages": [
         {
           "pageId": "ex-sg-typing-1",
-          "estimatedDurationS": 60,
+          "estimatedDurationS": 80,
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
@@ -281,57 +213,156 @@
             {
               "type": "grammar_gap_typing",
               "itemId": "ex-sg-typing-1",
-              "before": "Mia,",
-              "after": "kommst aus Spanien?",
-              "accepted": { "answers": ["du"] },
-              "hint": { "en": "you (one friend)", "fr": "tu (un ami)", "de": "du (ein Freund)" },
-              "ruleIds": ["rule-singular"],
+              "before": "",
+              "after": "heiße Paul.",
+              "accepted": { "answers": ["Ich"] },
+              "hint": {
+                "en": "1st person singular: you talk about yourself",
+                "fr": "1re personne du singulier : on parle de soi",
+                "de": "1. Person Singular: man spricht über sich"
+              },
+              "ruleIds": ["r-singular"],
               "answerExplanation": {
-                "en": "Mia is a friend you talk to: du.",
-                "fr": "Mia est une amie à qui on parle : du.",
-                "de": "Mia ist eine Freundin, die du ansprichst: du."
+                "en": "With ich the verb ends in -e: ich heiße.",
+                "fr": "Avec ich, le verbe finit par -e : ich heiße.",
+                "de": "Bei ich endet das Verb auf -e: ich heiße."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "ex-sg-typing-2",
-              "before": "Tom ist mein Freund.",
-              "after": "wohnt in Graz.",
-              "accepted": { "answers": ["Er"] },
-              "hint": { "en": "he", "fr": "il", "de": "er" },
-              "ruleIds": ["rule-singular"],
+              "before": "Anna, wohnst",
+              "after": "in Bonn?",
+              "accepted": { "answers": ["du"] },
+              "hint": {
+                "en": "you, to a friend",
+                "fr": "tu, à une amie",
+                "de": "zu einer Freundin"
+              },
+              "ruleIds": ["r-singular"],
               "answerExplanation": {
-                "en": "Tom is a man, so you say er.",
-                "fr": "Tom est un homme, donc on dit er.",
-                "de": "Tom ist ein Mann, also sagst du er."
+                "en": "You talk to Anna, so du, with the ending -st: du wohnst.",
+                "fr": "Vous parlez à Anna, donc du, avec la terminaison -st : du wohnst.",
+                "de": "Du sprichst mit Anna, also du, mit der Endung -st: du wohnst."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "ex-sg-typing-3",
-              "before": "Die Lampe ist alt.",
-              "after": "steht im Zimmer.",
-              "accepted": { "answers": ["Sie"] },
-              "hint": { "en": "die Lampe", "fr": "die Lampe", "de": "die Lampe" },
-              "ruleIds": ["rule-singular"],
+              "before": "Das Hotel in Zürich?",
+              "after": "heißt Alpenblick.",
+              "accepted": { "answers": ["Es"] },
+              "hint": {
+                "en": "for a neuter noun: das Hotel",
+                "fr": "pour un nom neutre : das Hotel",
+                "de": "für ein Neutrum: das Hotel"
+              },
+              "ruleIds": ["r-singular"],
               "answerExplanation": {
-                "en": "Die Lampe is feminine, so it is replaced by sie.",
-                "fr": "Die Lampe est féminin, donc on la remplace par sie.",
-                "de": "Die Lampe ist feminin, deshalb steht sie."
+                "en": "Das Hotel has the article das, so the pronoun is es.",
+                "fr": "Das Hotel a l'article das, donc le pronom est es.",
+                "de": "Das Hotel hat den Artikel das, also steht es."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "ex-sg-typing-4",
-              "before": "",
-              "after": "lerne Deutsch.",
-              "accepted": { "answers": ["Ich"] },
-              "hint": { "en": "I", "fr": "je", "de": "ich" },
-              "ruleIds": ["rule-singular"],
+              "before": "Lena?",
+              "after": "wohnt in Hamburg.",
+              "accepted": { "answers": ["Sie"] },
+              "hint": { "en": "for a woman", "fr": "pour une femme", "de": "für eine Frau" },
+              "ruleIds": ["r-singular"],
               "answerExplanation": {
-                "en": "The speaker says ich.",
-                "fr": "Celui qui parle dit ich.",
-                "de": "Der Sprecher sagt ich."
+                "en": "Lena is a woman, so the pronoun is sie.",
+                "fr": "Lena est une femme, donc le pronom est sie.",
+                "de": "Lena ist eine Frau, also steht sie."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-sg-spot",
+      "role": "exercise",
+      "blockId": "block-singular",
+      "label": { "en": "Error spotting", "fr": "Repérer l’erreur", "de": "Fehler finden" },
+      "pages": [
+        {
+          "pageId": "ex-sg-spot-1",
+          "estimatedDurationS": 75,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Find the wrong word and correct it.",
+            "fr": "Trouvez le mot faux et corrigez-le.",
+            "de": "Finde das falsche Wort und korrigiere es."
+          },
+          "items": [
+            {
+              "type": "grammar_error_spotter",
+              "itemId": "ex-sg-spot-1",
+              "tokens": [
+                { "tokenId": "t-1", "text": "Anna" },
+                { "tokenId": "t-2", "text": "?" },
+                { "tokenId": "t-3", "text": "Er" },
+                { "tokenId": "t-4", "text": "wohnt" },
+                { "tokenId": "t-5", "text": "in" },
+                { "tokenId": "t-6", "text": "Bonn" },
+                { "tokenId": "t-7", "text": "." }
+              ],
+              "faultyTokenId": "t-3",
+              "correction": { "mode": "type", "accepted": { "answers": ["Sie"] }, "choices": [] },
+              "ruleIds": ["r-singular"],
+              "answerExplanation": {
+                "en": "Anna is a woman: she is sie, not er.",
+                "fr": "Anna est une femme : elle se dit sie, pas er.",
+                "de": "Anna ist eine Frau: Sie heißt sie, nicht er."
+              }
+            },
+            {
+              "type": "grammar_error_spotter",
+              "itemId": "ex-sg-spot-2",
+              "tokens": [
+                { "tokenId": "t-1", "text": "Peter" },
+                { "tokenId": "t-2", "text": "?" },
+                { "tokenId": "t-3", "text": "Sie" },
+                { "tokenId": "t-4", "text": "kommt" },
+                { "tokenId": "t-5", "text": "aus" },
+                { "tokenId": "t-6", "text": "Wien" },
+                { "tokenId": "t-7", "text": "." }
+              ],
+              "faultyTokenId": "t-3",
+              "correction": {
+                "mode": "select",
+                "accepted": { "answers": ["Er"] },
+                "choices": ["Er", "Es", "Ich"]
+              },
+              "ruleIds": ["r-singular"],
+              "answerExplanation": {
+                "en": "Peter is a man: he is er, not sie.",
+                "fr": "Peter est un homme : il se dit er, pas sie.",
+                "de": "Peter ist ein Mann: Er heißt er, nicht sie."
+              }
+            },
+            {
+              "type": "grammar_error_spotter",
+              "itemId": "ex-sg-spot-3",
+              "tokens": [
+                { "tokenId": "t-1", "text": "Lena" },
+                { "tokenId": "t-2", "text": "," },
+                { "tokenId": "t-3", "text": "wohnst" },
+                { "tokenId": "t-4", "text": "ich" },
+                { "tokenId": "t-5", "text": "in" },
+                { "tokenId": "t-6", "text": "Bonn" },
+                { "tokenId": "t-7", "text": "?" }
+              ],
+              "faultyTokenId": "t-4",
+              "correction": { "mode": "type", "accepted": { "answers": ["du"] }, "choices": [] },
+              "ruleIds": ["r-singular"],
+              "answerExplanation": {
+                "en": "You talk to Lena: du, not ich. The ending -st goes with du.",
+                "fr": "Vous parlez à Lena : du, pas ich. La terminaison -st va avec du.",
+                "de": "Du sprichst mit Lena: du, nicht ich. Die Endung -st gehört zu du."
               }
             }
           ]
@@ -343,9 +374,9 @@
       "role": "explanation",
       "blockId": "block-plural",
       "label": {
-        "en": "Several people or things: wir, ihr, sie",
-        "fr": "Plusieurs personnes ou choses : wir, ihr, sie",
-        "de": "Mehrere Personen oder Sachen: wir, ihr, sie"
+        "en": "Plural: wir, ihr, sie",
+        "fr": "Pluriel : wir, ihr, sie",
+        "de": "Plural: wir, ihr, sie"
       },
       "pages": [
         {
@@ -361,36 +392,37 @@
             {
               "type": "grammar_explanation",
               "itemId": "block-plural-explanation",
-              "ruleIds": ["rule-plural"],
+              "ruleIds": ["r-plural"],
               "heading": {
                 "en": "Pronouns for several people",
                 "fr": "Les pronoms pour plusieurs personnes",
                 "de": "Pronomen für mehrere Personen"
               },
               "text": {
-                "en": "For several people or things you use `wir`, `ihr` or `sie`.\n\n- `wir` means we: you and other people.\n- `ihr` means you, said to several friends, children or relatives.\n- `sie` means they: several people or things you talk about.\n\nCareful: `sie` can mean she or they. The verb shows which one: `sie kommt` is she, `sie kommen` is they.",
-                "fr": "Pour plusieurs personnes ou choses, on emploie `wir`, `ihr` ou `sie`.\n\n- `wir` veut dire nous : vous et d’autres personnes.\n- `ihr` veut dire vous, quand on parle à plusieurs amis, enfants ou proches.\n- `sie` veut dire ils ou elles : plusieurs personnes ou choses dont on parle.\n\nAttention : `sie` peut signifier elle ou ils. Le verbe montre lequel : `sie kommt` veut dire elle, `sie kommen` veut dire ils.",
-                "de": "Für mehrere Personen oder Sachen verwendest du `wir`, `ihr` oder `sie`.\n\n- `wir` meint dich und andere Menschen.\n- `ihr` sagst du zu mehreren Freunden, Kindern oder Verwandten.\n- `sie` steht für mehrere Personen oder Sachen, über die du sprichst.\n\nAchtung: `sie` kann eine Frau oder mehrere Personen meinen. Das Verb zeigt den Unterschied: `sie kommt` ist eine Frau, `sie kommen` sind mehrere."
+                "en": "For several people there are three pronouns: `wir` (we), `ihr` (you, to several friends) and `sie` (they).\n\n- The verb follows the pronoun: `wir wohnen`, `ihr wohnt`, `sie wohnen`.\n- `sie` means she or they, and the verb shows which: `sie wohnt` is one woman, `sie wohnen` are several people.\n\nUse `ihr` for a group of people that you would each call `du`.",
+                "fr": "Pour plusieurs personnes, il y a trois pronoms : `wir` (nous), `ihr` (vous, à plusieurs amis) et `sie` (ils, elles).\n\n- Le verbe suit le pronom : `wir wohnen`, `ihr wohnt`, `sie wohnen`.\n- `sie` signifie elle ou ils/elles, et le verbe indique lequel : `sie wohnt` est une seule femme, `sie wohnen` sont plusieurs personnes.\n\nUtilisez `ihr` pour un groupe de personnes que vous appelleriez chacune `du`.",
+                "de": "Für mehrere Personen gibt es drei Pronomen: `wir`, `ihr` (zu mehreren Freunden) und `sie` (andere Personen).\n\n- Das Verb folgt dem Pronomen: `wir wohnen`, `ihr wohnt`, `sie wohnen`.\n- Das Verb zeigt, was `sie` bedeutet: `sie wohnt` ist eine Frau, `sie wohnen` sind mehrere Personen.\n\nVerwende `ihr` für eine Gruppe von Personen, die du einzeln mit `du` ansprichst."
               },
-              "formTable": [],
+              "formTable": [
+                { "subject": "wir", "form": "wohnen", "example": "Wir wohnen in Hamburg." },
+                { "subject": "ihr", "form": "wohnt", "example": "Ihr kommt aus Wien." },
+                { "subject": "sie", "form": "wohnen", "example": "Sie heißen Müller." }
+              ],
               "examples": [
                 {
-                  "text": "Wir lernen Deutsch.",
-                  "translation": {
-                    "en": "We are learning German.",
-                    "fr": "Nous apprenons l'allemand."
-                  }
+                  "text": "Wir wohnen in Hamburg.",
+                  "translation": { "en": "We live in Hamburg.", "fr": "Nous habitons à Hambourg." }
                 },
                 {
-                  "text": "Ihr wohnt in Köln.",
-                  "translation": {
-                    "en": "You (all) live in Cologne.",
-                    "fr": "Vous habitez à Cologne."
-                  }
+                  "text": "Ihr kommt aus Wien.",
+                  "translation": { "en": "You come from Vienna.", "fr": "Vous venez de Vienne." }
                 },
                 {
-                  "text": "Sie kommen aus Italien.",
-                  "translation": { "en": "They come from Italy.", "fr": "Ils viennent d'Italie." }
+                  "text": "Sie heißen Müller.",
+                  "translation": {
+                    "en": "They are called Müller.",
+                    "fr": "Ils s'appellent Müller."
+                  }
                 }
               ]
             }
@@ -399,7 +431,7 @@
       ]
     },
     {
-      "id": "ex-pl-match",
+      "id": "ex-pl-persons",
       "role": "exercise",
       "blockId": "block-plural",
       "label": {
@@ -409,8 +441,8 @@
       },
       "pages": [
         {
-          "pageId": "ex-pl-match-1",
-          "estimatedDurationS": 45,
+          "pageId": "ex-pl-persons-1",
+          "estimatedDurationS": 90,
           "timeLimitS": null,
           "instructions": {
             "en": "Connect each pronoun with its partner.",
@@ -420,19 +452,52 @@
           "items": [
             {
               "type": "grammar_person_matching",
-              "itemId": "ex-pl-match-1",
-              "ruleIds": ["rule-plural"],
+              "itemId": "ex-pl-persons-1",
+              "ruleIds": ["r-singular", "r-plural"],
               "mode": "translation",
               "rows": [
+                {
+                  "person": "1sg",
+                  "pronoun": null,
+                  "native": { "en": "I", "fr": "je" },
+                  "answer": "ich",
+                  "answerExplanation": {
+                    "en": "You talk about yourself: ich.",
+                    "fr": "On parle de soi : ich.",
+                    "de": "Man spricht über sich selbst: ich."
+                  }
+                },
+                {
+                  "person": "2sg",
+                  "pronoun": null,
+                  "native": { "en": "you (one friend)", "fr": "tu (un ami)" },
+                  "answer": "du",
+                  "answerExplanation": {
+                    "en": "You talk to one friend: du.",
+                    "fr": "On parle à un ami : du.",
+                    "de": "Man spricht mit einem Freund: du."
+                  }
+                },
+                {
+                  "person": "3sg",
+                  "pronoun": null,
+                  "native": { "en": "he / she / it", "fr": "il / elle" },
+                  "answer": "er / sie / es",
+                  "answerExplanation": {
+                    "en": "One other person or thing: er, sie or es.",
+                    "fr": "Une autre personne ou une chose : er, sie ou es.",
+                    "de": "Eine andere Person oder ein Ding: er, sie oder es."
+                  }
+                },
                 {
                   "person": "1pl",
                   "pronoun": null,
                   "native": { "en": "we", "fr": "nous" },
                   "answer": "wir",
                   "answerExplanation": {
-                    "en": "You and other people: wir.",
+                    "en": "You and others: wir.",
                     "fr": "Vous et d'autres personnes : wir.",
-                    "de": "Du und andere Menschen: wir."
+                    "de": "Du und andere: wir."
                   }
                 },
                 {
@@ -441,20 +506,20 @@
                   "native": { "en": "you (several friends)", "fr": "vous (plusieurs amis)" },
                   "answer": "ihr",
                   "answerExplanation": {
-                    "en": "To several friends you say ihr.",
-                    "fr": "À plusieurs amis, on dit ihr.",
-                    "de": "Zu mehreren Freunden sagst du ihr."
+                    "en": "You talk to several friends: ihr.",
+                    "fr": "On parle à plusieurs amis : ihr.",
+                    "de": "Man spricht mit mehreren Freunden: ihr."
                   }
                 },
                 {
                   "person": "3pl",
                   "pronoun": null,
-                  "native": { "en": "they", "fr": "ils, elles" },
+                  "native": { "en": "they", "fr": "ils / elles" },
                   "answer": "sie",
                   "answerExplanation": {
-                    "en": "Several people you talk about: sie.",
-                    "fr": "Plusieurs personnes dont on parle : sie.",
-                    "de": "Mehrere Personen, über die du sprichst: sie."
+                    "en": "Several other people: sie.",
+                    "fr": "Plusieurs autres personnes : sie.",
+                    "de": "Mehrere andere Personen: sie."
                   }
                 }
               ]
@@ -468,14 +533,14 @@
       "role": "exercise",
       "blockId": "block-plural",
       "label": {
-        "en": "Multiple-choice gaps 2",
-        "fr": "Phrases à trous à choix multiple 2",
-        "de": "Lücken mit Auswahl 2"
+        "en": "Choose the pronoun 2",
+        "fr": "Choisir le pronom 2",
+        "de": "Pronomen wählen 2"
       },
       "pages": [
         {
           "pageId": "ex-pl-choice-1",
-          "estimatedDurationS": 40,
+          "estimatedDurationS": 36,
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
@@ -486,85 +551,61 @@
             {
               "type": "grammar_gap_choice",
               "itemId": "ex-pl-choice-1",
-              "before": "Du und ich lernen zusammen.",
-              "after": "lernen jeden Tag.",
+              "before": "Eva und ich?",
+              "after": "wohnen in Wien.",
               "choices": [
-                { "choiceId": "c-1", "text": "Ihr" },
-                { "choiceId": "c-2", "text": "Wir" },
-                { "choiceId": "c-3", "text": "Sie" },
-                { "choiceId": "c-4", "text": "Er" }
+                { "choiceId": "c-1", "text": "Wir" },
+                { "choiceId": "c-2", "text": "Ihr" },
+                { "choiceId": "c-3", "text": "Er" },
+                { "choiceId": "c-4", "text": "Du" }
               ],
-              "answerChoiceId": "c-2",
+              "answerChoiceId": "c-1",
               "hint": null,
-              "ruleIds": ["rule-plural"],
+              "ruleIds": ["r-plural"],
               "answerExplanation": {
-                "en": "You and I together: wir.",
-                "fr": "Toi et moi ensemble : wir.",
-                "de": "Du und ich zusammen: wir."
+                "en": "Eva and I are we: wir wohnen.",
+                "fr": "Eva et moi, c'est nous : wir wohnen.",
+                "de": "Eva und ich sind wir: wir wohnen."
               }
             },
             {
               "type": "grammar_gap_choice",
               "itemId": "ex-pl-choice-2",
-              "before": "Kinder,",
-              "after": "spielt im Garten?",
+              "before": "Eva und Tom, wohnt",
+              "after": "in Bonn?",
               "choices": [
-                { "choiceId": "c-1", "text": "Ich" },
-                { "choiceId": "c-2", "text": "Ihr" },
-                { "choiceId": "c-3", "text": "Wir" },
-                { "choiceId": "c-4", "text": "Er" }
+                { "choiceId": "c-1", "text": "ihr" },
+                { "choiceId": "c-2", "text": "du" },
+                { "choiceId": "c-3", "text": "wir" },
+                { "choiceId": "c-4", "text": "ich" }
               ],
-              "answerChoiceId": "c-2",
-              "hint": {
-                "en": "you, said to several children",
-                "fr": "vous, à plusieurs enfants",
-                "de": "ihr, zu mehreren Kindern"
-              },
-              "ruleIds": ["rule-plural"],
+              "answerChoiceId": "c-1",
+              "hint": null,
+              "ruleIds": ["r-plural"],
               "answerExplanation": {
-                "en": "You talk to several children: ihr.",
-                "fr": "On parle à plusieurs enfants : ihr.",
-                "de": "Du sprichst mit mehreren Kindern: ihr."
+                "en": "You talk to two friends, so ihr, with the ending -t: ihr wohnt.",
+                "fr": "Vous parlez à deux amis, donc ihr, avec la terminaison -t : ihr wohnt.",
+                "de": "Du sprichst mit zwei Freunden, also ihr, mit der Endung -t: ihr wohnt."
               }
             },
             {
               "type": "grammar_gap_choice",
               "itemId": "ex-pl-choice-3",
-              "before": "Anna und Tom sind Freunde.",
-              "after": "wohnen in Bonn.",
+              "before": "Mia und Jan wohnen in Ulm.",
+              "after": "kommen aus Köln.",
               "choices": [
                 { "choiceId": "c-1", "text": "Sie" },
-                { "choiceId": "c-2", "text": "Wir" },
-                { "choiceId": "c-3", "text": "Ihr" },
-                { "choiceId": "c-4", "text": "Du" }
+                { "choiceId": "c-2", "text": "Du" },
+                { "choiceId": "c-3", "text": "Er" },
+                { "choiceId": "c-4", "text": "Ich" }
               ],
               "answerChoiceId": "c-1",
               "hint": null,
-              "ruleIds": ["rule-plural"],
+              "ruleIds": ["r-plural"],
               "answerExplanation": {
-                "en": "Anna and Tom are two people you talk about: sie.",
-                "fr": "Anna et Tom sont deux personnes dont on parle : sie.",
-                "de": "Anna und Tom sind zwei Personen, über die du sprichst: sie."
-              }
-            },
-            {
-              "type": "grammar_gap_choice",
-              "itemId": "ex-pl-choice-4",
-              "before": "Mein Bruder und ich kochen heute.",
-              "after": "essen um sieben.",
-              "choices": [
-                { "choiceId": "c-1", "text": "Er" },
-                { "choiceId": "c-2", "text": "Ihr" },
-                { "choiceId": "c-3", "text": "Ich" },
-                { "choiceId": "c-4", "text": "Wir" }
-              ],
-              "answerChoiceId": "c-4",
-              "hint": null,
-              "ruleIds": ["rule-plural"],
-              "answerExplanation": {
-                "en": "My brother and I together: wir.",
-                "fr": "Mon frère et moi ensemble : wir.",
-                "de": "Mein Bruder und ich zusammen: wir."
+                "en": "Mia and Jan are they: sie, with the ending -en: sie kommen.",
+                "fr": "Mia et Jan, c'est ils : sie, avec la terminaison -en : sie kommen.",
+                "de": "Mia und Jan sind sie: sie, mit der Endung -en: sie kommen."
               }
             }
           ]
@@ -576,9 +617,9 @@
       "role": "exercise",
       "blockId": "block-plural",
       "label": {
-        "en": "Typed gaps 2",
-        "fr": "Phrases à trous à écrire 2",
-        "de": "Lücken zum Schreiben 2"
+        "en": "Type the pronoun 2",
+        "fr": "Écrire le pronom 2",
+        "de": "Pronomen schreiben 2"
       },
       "pages": [
         {
@@ -594,139 +635,55 @@
             {
               "type": "grammar_gap_typing",
               "itemId": "ex-pl-typing-1",
-              "before": "Eva und Ben sind Freunde.",
-              "after": "spielen Fußball.",
-              "accepted": { "answers": ["Sie"] },
-              "hint": { "en": "they", "fr": "ils", "de": "sie (mehrere)" },
-              "ruleIds": ["rule-plural"],
+              "before": "Tim und ich?",
+              "after": "kommen aus Ulm.",
+              "accepted": { "answers": ["Wir"] },
+              "hint": {
+                "en": "1st person plural",
+                "fr": "1re personne du pluriel",
+                "de": "1. Person Plural"
+              },
+              "ruleIds": ["r-plural"],
               "answerExplanation": {
-                "en": "Eva and Ben are several people you talk about: sie.",
-                "fr": "Eva et Ben sont plusieurs personnes dont on parle : sie.",
-                "de": "Eva und Ben sind mehrere Personen, über die du sprichst: sie."
+                "en": "Tim and I are we: wir kommen.",
+                "fr": "Tim et moi, c'est nous : wir kommen.",
+                "de": "Tim und ich sind wir: wir kommen."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "ex-pl-typing-2",
-              "before": "Mia und Nele,",
-              "after": "lernt gut.",
-              "accepted": { "answers": ["ihr"] },
+              "before": "Paul und Eva?",
+              "after": "wohnen in Zürich.",
+              "accepted": { "answers": ["Sie"] },
               "hint": {
-                "en": "you, said to two friends",
-                "fr": "vous, à deux amies",
-                "de": "ihr, zu zwei Freundinnen"
+                "en": "3rd person plural: they",
+                "fr": "3e personne du pluriel : ils",
+                "de": "3. Person Plural: sie"
               },
-              "ruleIds": ["rule-plural"],
+              "ruleIds": ["r-plural"],
               "answerExplanation": {
-                "en": "You talk to two friends: ihr.",
-                "fr": "On parle à deux amies : ihr.",
-                "de": "Du sprichst mit zwei Freundinnen: ihr."
+                "en": "Paul and Eva are they: sie wohnen.",
+                "fr": "Paul et Eva, c'est ils : sie wohnen.",
+                "de": "Paul und Eva sind sie: sie wohnen."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "ex-pl-typing-3",
-              "before": "Die Bücher sind neu.",
-              "after": "liegen hier.",
-              "accepted": { "answers": ["Sie"] },
+              "before": "Tim und Anna, kommt",
+              "after": "aus Wien?",
+              "accepted": { "answers": ["ihr"] },
               "hint": {
-                "en": "they (die Bücher)",
-                "fr": "ils (die Bücher)",
-                "de": "sie (die Bücher)"
+                "en": "you, to several friends",
+                "fr": "vous, à plusieurs amis",
+                "de": "zu mehreren Freunden"
               },
-              "ruleIds": ["rule-plural"],
+              "ruleIds": ["r-plural"],
               "answerExplanation": {
-                "en": "Die Bücher is a plural, so it is replaced by sie.",
-                "fr": "Die Bücher est un pluriel, donc on le remplace par sie.",
-                "de": "Die Bücher ist ein Plural, deshalb steht sie."
-              }
-            },
-            {
-              "type": "grammar_gap_typing",
-              "itemId": "ex-pl-typing-4",
-              "before": "Lena und ich haben Hunger.",
-              "after": "kochen Suppe.",
-              "accepted": { "answers": ["Wir"] },
-              "hint": { "en": "we", "fr": "nous", "de": "wir" },
-              "ruleIds": ["rule-plural"],
-              "answerExplanation": {
-                "en": "Lena and I together: wir.",
-                "fr": "Lena et moi ensemble : wir.",
-                "de": "Lena und ich zusammen: wir."
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "ex-pl-order",
-      "role": "exercise",
-      "blockId": "block-plural",
-      "label": { "en": "Word order", "fr": "Ordre des mots", "de": "Wortstellung" },
-      "pages": [
-        {
-          "pageId": "ex-pl-order-1",
-          "estimatedDurationS": 60,
-          "timeLimitS": null,
-          "instructions": {
-            "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
-            "de": "Bring die Wörter in die richtige Reihenfolge."
-          },
-          "items": [
-            {
-              "type": "grammar_word_order",
-              "itemId": "ex-pl-order-1",
-              "tokens": [
-                { "tokenId": "t-1", "text": "in" },
-                { "tokenId": "t-2", "text": "wohnen" },
-                { "tokenId": "t-3", "text": "." },
-                { "tokenId": "t-4", "text": "Wir" },
-                { "tokenId": "t-5", "text": "Graz" }
-              ],
-              "acceptedOrders": [["t-4", "t-2", "t-1", "t-5", "t-3"]],
-              "ruleIds": ["rule-plural"],
-              "answerExplanation": {
-                "en": "The pronoun wir comes first, then the verb: Wir wohnen in Graz.",
-                "fr": "Le pronom wir vient d’abord, puis le verbe : Wir wohnen in Graz.",
-                "de": "Zuerst steht das Pronomen wir, dann das Verb: Wir wohnen in Graz."
-              }
-            },
-            {
-              "type": "grammar_word_order",
-              "itemId": "ex-pl-order-2",
-              "tokens": [
-                { "tokenId": "t-1", "text": "Fußball" },
-                { "tokenId": "t-2", "text": "Ihr" },
-                { "tokenId": "t-3", "text": "." },
-                { "tokenId": "t-4", "text": "heute" },
-                { "tokenId": "t-5", "text": "spielt" }
-              ],
-              "acceptedOrders": [["t-2", "t-5", "t-4", "t-1", "t-3"]],
-              "ruleIds": ["rule-plural"],
-              "answerExplanation": {
-                "en": "The pronoun ihr comes first, then the verb: Ihr spielt heute Fußball.",
-                "fr": "Le pronom ihr vient d’abord, puis le verbe : Ihr spielt heute Fußball.",
-                "de": "Zuerst steht das Pronomen ihr, dann das Verb: Ihr spielt heute Fußball."
-              }
-            },
-            {
-              "type": "grammar_word_order",
-              "itemId": "ex-pl-order-3",
-              "tokens": [
-                { "tokenId": "t-1", "text": "aus" },
-                { "tokenId": "t-2", "text": "." },
-                { "tokenId": "t-3", "text": "Spanien" },
-                { "tokenId": "t-4", "text": "Sie" },
-                { "tokenId": "t-5", "text": "kommen" }
-              ],
-              "acceptedOrders": [["t-4", "t-5", "t-1", "t-3", "t-2"]],
-              "ruleIds": ["rule-plural"],
-              "answerExplanation": {
-                "en": "The pronoun sie comes first, then the verb: Sie kommen aus Spanien.",
-                "fr": "Le pronom sie vient d’abord, puis le verbe : Sie kommen aus Spanien.",
-                "de": "Zuerst steht das Pronomen sie, dann das Verb: Sie kommen aus Spanien."
+                "en": "You talk to two friends: ihr kommt.",
+                "fr": "Vous parlez à deux amis : ihr kommt.",
+                "de": "Du sprichst mit zwei Freunden: ihr kommt."
               }
             }
           ]
@@ -741,7 +698,7 @@
       "pages": [
         {
           "pageId": "block-formal-explanation",
-          "estimatedDurationS": 120,
+          "estimatedDurationS": 100,
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
@@ -752,35 +709,41 @@
             {
               "type": "grammar_explanation",
               "itemId": "block-formal-explanation",
-              "ruleIds": ["rule-formal"],
-              "heading": {
-                "en": "Informal du, polite Sie",
-                "fr": "du familier, Sie de politesse",
-                "de": "Informelles du, höfliches Sie"
-              },
+              "ruleIds": ["r-formal"],
+              "heading": { "en": "du or Sie?", "fr": "du ou Sie ?", "de": "du oder Sie?" },
               "text": {
-                "en": "`Sie` with a capital letter is the polite way to say you. It works for one person or several, and its verb is the same as for plural `sie`.\n\n- Use `du` for friends, family, children and people you know well.\n- Use `Sie` for strangers, at work, in shops and at the doctor.\n- `Sie` always has a capital letter. `du` and `ihr` have a small letter inside a sentence.\n\nWhen you are unsure, choose `Sie`. Someone may then offer you `du`.",
-                "fr": "`Sie` avec une majuscule est la forme de politesse pour dire vous. Elle s’emploie pour une ou plusieurs personnes, et son verbe est le même que pour le pluriel `sie`.\n\n- Employez `du` avec les amis, la famille, les enfants et les personnes que vous connaissez bien.\n- Employez `Sie` avec les inconnus, au travail, dans les magasins et chez le médecin.\n- `Sie` prend toujours une majuscule. `du` et `ihr` s’écrivent avec une minuscule au milieu d’une phrase.\n\nEn cas de doute, choisissez `Sie`. On pourra alors vous proposer `du`.",
-                "de": "`Sie` mit großem Anfangsbuchstaben ist die höfliche Anrede. Sie gilt für eine Person oder mehrere, und das Verb ist dasselbe wie bei `sie` im Plural.\n\n- Sag `du` zu Freunden, zur Familie, zu Kindern und zu Menschen, die du gut kennst.\n- Sag `Sie` zu Fremden, bei der Arbeit, im Geschäft und beim Arzt.\n- `Sie` schreibst du immer groß. `du` und `ihr` schreibst du mitten im Satz klein.\n\nWenn du unsicher bist, wähle `Sie`. Vielleicht bietet man dir dann das `du` an."
+                "en": "With friends, family and children you say `du`. With strangers, in shops and often at work you say `Sie`.\n\n- `Sie` always has a capital letter and takes the same verb form as `sie` (they): `Sie wohnen`.\n- `Sie` is used for one person or for several, while `du` is for one person only.\n\nIf you are unsure, `Sie` is the safer choice; the other person can offer you `du`.",
+                "fr": "Avec les amis, la famille et les enfants, on dit `du`. Avec des inconnus, dans les magasins et souvent au travail, on dit `Sie`.\n\n- `Sie` prend toujours une majuscule et se conjugue comme `sie` (ils, elles) : `Sie wohnen`.\n- `Sie` s'emploie pour une ou plusieurs personnes, alors que `du` ne s'emploie que pour une seule.\n\nEn cas de doute, `Sie` est le choix le plus sûr ; l'autre personne peut vous proposer `du`.",
+                "de": "Mit Freunden, Familie und Kindern sagst du `du`. Mit Fremden, im Geschäft und oft bei der Arbeit sagst du `Sie`.\n\n- `Sie` wird immer großgeschrieben und hat dieselbe Verbform wie `sie` (mehrere Personen): `Sie wohnen`.\n- `Sie` gilt für eine oder für mehrere Personen, `du` nur für eine Person.\n\nWenn du unsicher bist, ist `Sie` die sicherere Wahl; die andere Person kann dir das `du` anbieten."
               },
-              "formTable": [],
+              "formTable": [
+                { "subject": "du", "form": "wohnst", "example": "Wohnst du in Köln?" },
+                { "subject": "Sie", "form": "wohnen", "example": "Wohnen Sie in Köln?" }
+              ],
               "examples": [
                 {
-                  "text": "Lukas, hast du Hunger?",
-                  "translation": { "en": "Lukas, are you hungry?", "fr": "Lukas, as-tu faim ?" }
+                  "text": "Kommst du aus Ulm?",
+                  "translation": { "en": "Do you come from Ulm?", "fr": "Tu viens d'Ulm ?" }
                 },
                 {
-                  "text": "Frau Berger, haben Sie Zeit?",
+                  "text": "Kommen Sie aus Ulm, Frau Roth?",
                   "translation": {
-                    "en": "Mrs Berger, do you have time?",
-                    "fr": "Madame Berger, avez-vous le temps ?"
+                    "en": "Do you come from Ulm, Ms Roth?",
+                    "fr": "Vous venez d'Ulm, Madame Roth ?"
                   }
                 },
                 {
-                  "text": "Guten Tag, wie heißen Sie?",
+                  "text": "Wie heißt du?",
                   "translation": {
-                    "en": "Hello, what is your name?",
-                    "fr": "Bonjour, comment vous appelez-vous ?"
+                    "en": "What is your name? (to a friend)",
+                    "fr": "Comment tu t'appelles ?"
+                  }
+                },
+                {
+                  "text": "Wie heißen Sie?",
+                  "translation": {
+                    "en": "What is your name? (formal)",
+                    "fr": "Comment vous appelez-vous ?"
                   }
                 }
               ]
@@ -790,14 +753,18 @@
       ]
     },
     {
-      "id": "ex-fo-choice",
+      "id": "ex-fm-choice",
       "role": "exercise",
       "blockId": "block-formal",
-      "label": { "en": "du or Sie", "fr": "du ou Sie", "de": "du oder Sie" },
+      "label": {
+        "en": "Choose the pronoun 3",
+        "fr": "Choisir le pronom 3",
+        "de": "Pronomen wählen 3"
+      },
       "pages": [
         {
-          "pageId": "ex-fo-choice-1",
-          "estimatedDurationS": 40,
+          "pageId": "ex-fm-choice-1",
+          "estimatedDurationS": 48,
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
@@ -807,90 +774,82 @@
           "items": [
             {
               "type": "grammar_gap_choice",
-              "itemId": "ex-fo-choice-1",
-              "before": "Herr Weber, haben",
-              "after": "einen Termin?",
+              "itemId": "ex-fm-choice-1",
+              "before": "Herr Schmidt, wohnen",
+              "after": "in Berlin?",
+              "choices": [
+                { "choiceId": "c-1", "text": "Sie" },
+                { "choiceId": "c-2", "text": "du" },
+                { "choiceId": "c-3", "text": "wir" },
+                { "choiceId": "c-4", "text": "ihr" }
+              ],
+              "answerChoiceId": "c-1",
+              "hint": null,
+              "ruleIds": ["r-formal"],
+              "answerExplanation": {
+                "en": "You address Herr Schmidt formally: Sie wohnen.",
+                "fr": "Vous vous adressez à Herr Schmidt avec politesse : Sie wohnen.",
+                "de": "Du sprichst Herrn Schmidt höflich an: Sie wohnen."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-fm-choice-2",
+              "before": "Tim, kommst",
+              "after": "aus Wien?",
               "choices": [
                 { "choiceId": "c-1", "text": "du" },
                 { "choiceId": "c-2", "text": "Sie" },
                 { "choiceId": "c-3", "text": "ihr" },
-                { "choiceId": "c-4", "text": "wir" }
-              ],
-              "answerChoiceId": "c-2",
-              "hint": {
-                "en": "to an adult you do not know",
-                "fr": "à un adulte que vous ne connaissez pas",
-                "de": "zu einem Erwachsenen, den du nicht kennst"
-              },
-              "ruleIds": ["rule-formal"],
-              "answerExplanation": {
-                "en": "To a stranger you use the polite Sie.",
-                "fr": "À un inconnu, on emploie le Sie de politesse.",
-                "de": "Zu einem Fremden sagst du höflich Sie."
-              }
-            },
-            {
-              "type": "grammar_gap_choice",
-              "itemId": "ex-fo-choice-2",
-              "before": "Mama, kannst",
-              "after": "mir helfen?",
-              "choices": [
-                { "choiceId": "c-1", "text": "Sie" },
-                { "choiceId": "c-2", "text": "ihr" },
-                { "choiceId": "c-3", "text": "du" },
                 { "choiceId": "c-4", "text": "er" }
               ],
-              "answerChoiceId": "c-3",
-              "hint": { "en": "to your mother", "fr": "à votre mère", "de": "zu deiner Mutter" },
-              "ruleIds": ["rule-formal"],
+              "answerChoiceId": "c-1",
+              "hint": null,
+              "ruleIds": ["r-formal"],
               "answerExplanation": {
-                "en": "To family you use du.",
-                "fr": "À la famille, on dit du.",
-                "de": "Zur Familie sagst du du."
+                "en": "You talk to Tim, one person: du kommst.",
+                "fr": "Vous parlez à Tim, une seule personne : du kommst.",
+                "de": "Du sprichst mit Tim, einer Person: du kommst."
               }
             },
             {
               "type": "grammar_gap_choice",
-              "itemId": "ex-fo-choice-3",
-              "before": "Tim, möchtest",
-              "after": "Tee?",
+              "itemId": "ex-fm-choice-3",
+              "before": "Guten Tag! Wie heißen",
+              "after": "?",
               "choices": [
                 { "choiceId": "c-1", "text": "Sie" },
                 { "choiceId": "c-2", "text": "du" },
-                { "choiceId": "c-3", "text": "er" },
-                { "choiceId": "c-4", "text": "wir" }
+                { "choiceId": "c-3", "text": "ihr" },
+                { "choiceId": "c-4", "text": "ich" }
               ],
-              "answerChoiceId": "c-2",
-              "hint": { "en": "to a friend", "fr": "à un ami", "de": "zu einem Freund" },
-              "ruleIds": ["rule-formal"],
+              "answerChoiceId": "c-1",
+              "hint": null,
+              "ruleIds": ["r-formal"],
               "answerExplanation": {
-                "en": "To a friend you use du.",
-                "fr": "À un ami, on dit du.",
-                "de": "Zu einem Freund sagst du du."
+                "en": "The formal Sie takes the plural verb form: Sie heißen.",
+                "fr": "Le Sie de politesse prend la forme verbale du pluriel : Sie heißen.",
+                "de": "Das höfliche Sie hat die Pluralform des Verbs: Sie heißen."
               }
             },
             {
               "type": "grammar_gap_choice",
-              "itemId": "ex-fo-choice-4",
-              "before": "Entschuldigung, können",
-              "after": "mir helfen?",
+              "itemId": "ex-fm-choice-4",
+              "before": "Frau Meier und Herr Braun, wohnen",
+              "after": "in Wien?",
               "choices": [
-                { "choiceId": "c-1", "text": "du" },
+                { "choiceId": "c-1", "text": "Sie" },
                 { "choiceId": "c-2", "text": "ihr" },
                 { "choiceId": "c-3", "text": "wir" },
-                { "choiceId": "c-4", "text": "Sie" }
+                { "choiceId": "c-4", "text": "du" }
               ],
-              "answerChoiceId": "c-4",
-              "hint": {
-                "en": "to a stranger in the street",
-                "fr": "à un inconnu dans la rue",
-                "de": "zu einem Fremden auf der Straße"
-              },
-              "ruleIds": ["rule-formal"],
+              "answerChoiceId": "c-1",
+              "hint": null,
+              "ruleIds": ["r-formal"],
               "answerExplanation": {
-                "en": "To a stranger you use the polite Sie.",
-                "fr": "À un inconnu, on emploie le Sie de politesse.",
-                "de": "Zu einem Fremden sagst du höflich Sie."
+                "en": "Two people you address formally: Sie wohnen.",
+                "fr": "Deux personnes à qui vous vous adressez avec politesse : Sie wohnen.",
+                "de": "Zwei Personen, die du höflich ansprichst: Sie wohnen."
               }
             }
           ]
@@ -898,87 +857,149 @@
       ]
     },
     {
-      "id": "ex-fo-spot",
+      "id": "ex-fm-order",
       "role": "exercise",
       "blockId": "block-formal",
-      "label": { "en": "Error spotting", "fr": "Repérer l’erreur", "de": "Fehler finden" },
+      "label": { "en": "Word order", "fr": "Ordre des mots", "de": "Wortstellung" },
       "pages": [
         {
-          "pageId": "ex-fo-spot-1",
-          "estimatedDurationS": 75,
+          "pageId": "ex-fm-order-1",
+          "estimatedDurationS": 60,
           "timeLimitS": null,
           "instructions": {
-            "en": "Find the wrong word and correct it.",
-            "fr": "Trouvez le mot faux et corrigez-le.",
-            "de": "Finde das falsche Wort und korrigiere es."
+            "en": "Put the words in the right order.",
+            "fr": "Mettez les mots dans le bon ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
             {
-              "type": "grammar_error_spotter",
-              "itemId": "ex-fo-spot-1",
+              "type": "grammar_word_order",
+              "itemId": "ex-fm-order-1",
               "tokens": [
-                { "tokenId": "t-1", "text": "Frau" },
-                { "tokenId": "t-2", "text": "Berger" },
-                { "tokenId": "t-3", "text": "," },
-                { "tokenId": "t-4", "text": "können" },
-                { "tokenId": "t-5", "text": "du" },
-                { "tokenId": "t-6", "text": "mir" },
-                { "tokenId": "t-7", "text": "helfen" },
-                { "tokenId": "t-8", "text": "?" }
+                { "tokenId": "t-1", "text": "Sie" },
+                { "tokenId": "t-2", "text": "Wie" },
+                { "tokenId": "t-3", "text": "?" },
+                { "tokenId": "t-4", "text": "heißen" }
               ],
-              "faultyTokenId": "t-5",
-              "correction": { "mode": "type", "accepted": { "answers": ["Sie"] }, "choices": [] },
-              "ruleIds": ["rule-formal"],
+              "acceptedOrders": [["t-2", "t-4", "t-1", "t-3"]],
+              "ruleIds": ["r-formal"],
               "answerExplanation": {
-                "en": "Frau Berger is addressed politely: Sie, not du.",
-                "fr": "On s’adresse poliment à Frau Berger : Sie, et non du.",
-                "de": "Frau Berger spricht man höflich an: Sie, nicht du."
+                "en": "The formal Sie takes the plural verb form: Wie heißen Sie?",
+                "fr": "Le Sie de politesse prend la forme verbale du pluriel : Wie heißen Sie ?",
+                "de": "Das höfliche Sie hat die Pluralform des Verbs: Wie heißen Sie?"
               }
             },
             {
-              "type": "grammar_error_spotter",
-              "itemId": "ex-fo-spot-2",
+              "type": "grammar_word_order",
+              "itemId": "ex-fm-order-2",
               "tokens": [
-                { "tokenId": "t-1", "text": "Herr" },
-                { "tokenId": "t-2", "text": "Lang" },
-                { "tokenId": "t-3", "text": "," },
-                { "tokenId": "t-4", "text": "möchten" },
-                { "tokenId": "t-5", "text": "sie" },
-                { "tokenId": "t-6", "text": "einen" },
-                { "tokenId": "t-7", "text": "Kaffee" },
-                { "tokenId": "t-8", "text": "?" }
+                { "tokenId": "t-1", "text": "du" },
+                { "tokenId": "t-2", "text": "Woher" },
+                { "tokenId": "t-3", "text": "?" },
+                { "tokenId": "t-4", "text": "kommst" }
               ],
-              "faultyTokenId": "t-5",
-              "correction": {
-                "mode": "select",
-                "accepted": { "answers": ["Sie"] },
-                "choices": ["Sie", "sie", "ihr"]
+              "acceptedOrders": [["t-2", "t-4", "t-1", "t-3"]],
+              "ruleIds": ["r-formal"],
+              "answerExplanation": {
+                "en": "With du the verb ends in -st: Woher kommst du?",
+                "fr": "Avec du, le verbe finit par -st : Woher kommst du ?",
+                "de": "Bei du endet das Verb auf -st: Woher kommst du?"
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-fm-order-3",
+              "tokens": [
+                { "tokenId": "t-1", "text": "in" },
+                { "tokenId": "t-2", "text": "Sie" },
+                { "tokenId": "t-3", "text": "Wien" },
+                { "tokenId": "t-4", "text": "?" },
+                { "tokenId": "t-5", "text": "Wohnen" }
+              ],
+              "acceptedOrders": [["t-5", "t-2", "t-1", "t-3", "t-4"]],
+              "ruleIds": ["r-formal"],
+              "answerExplanation": {
+                "en": "A question with the formal Sie: Wohnen Sie in Wien?",
+                "fr": "Une question avec le Sie de politesse : Wohnen Sie in Wien ?",
+                "de": "Eine Frage mit dem höflichen Sie: Wohnen Sie in Wien?"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-fm-typing",
+      "role": "exercise",
+      "blockId": "block-formal",
+      "label": {
+        "en": "Type the pronoun 3",
+        "fr": "Écrire le pronom 3",
+        "de": "Pronomen schreiben 3"
+      },
+      "pages": [
+        {
+          "pageId": "ex-fm-typing-1",
+          "estimatedDurationS": 60,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-fm-typing-1",
+              "before": "Frau Weber, kommen",
+              "after": "aus Bonn?",
+              "accepted": { "answers": ["Sie"] },
+              "hint": {
+                "en": "formal: you do not know her well",
+                "fr": "politesse : vous ne la connaissez pas bien",
+                "de": "höflich: Du kennst sie nicht gut"
               },
-              "ruleIds": ["rule-formal"],
+              "ruleIds": ["r-formal"],
               "answerExplanation": {
-                "en": "The polite you is written with a capital letter: Sie.",
-                "fr": "Le vous de politesse s’écrit avec une majuscule : Sie.",
-                "de": "Die höfliche Anrede schreibt man groß: Sie."
+                "en": "Frau Weber is addressed formally: Sie kommen.",
+                "fr": "On s'adresse à Frau Weber avec politesse : Sie kommen.",
+                "de": "Frau Weber wird höflich angesprochen: Sie kommen."
               }
             },
             {
-              "type": "grammar_error_spotter",
-              "itemId": "ex-fo-spot-3",
-              "tokens": [
-                { "tokenId": "t-1", "text": "Tim" },
-                { "tokenId": "t-2", "text": "," },
-                { "tokenId": "t-3", "text": "wie" },
-                { "tokenId": "t-4", "text": "heißt" },
-                { "tokenId": "t-5", "text": "Sie" },
-                { "tokenId": "t-6", "text": "?" }
-              ],
-              "faultyTokenId": "t-5",
-              "correction": { "mode": "type", "accepted": { "answers": ["du"] }, "choices": [] },
-              "ruleIds": ["rule-formal"],
+              "type": "grammar_gap_typing",
+              "itemId": "ex-fm-typing-2",
+              "before": "Ben, wohnst",
+              "after": "in Hamburg?",
+              "accepted": { "answers": ["du"] },
+              "hint": {
+                "en": "Ben is a friend",
+                "fr": "Ben est un ami",
+                "de": "Ben ist ein Freund"
+              },
+              "ruleIds": ["r-formal"],
               "answerExplanation": {
-                "en": "Tim is a friend, so you say du, not Sie.",
-                "fr": "Tim est un ami, donc on dit du et non Sie.",
-                "de": "Tim ist ein Freund, also sagst du du, nicht Sie."
+                "en": "Ben is a friend: du wohnst.",
+                "fr": "Ben est un ami : du wohnst.",
+                "de": "Ben ist ein Freund: du wohnst."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-fm-typing-3",
+              "before": "Herr Weber und Frau Roth, kommen",
+              "after": "aus Graz?",
+              "accepted": { "answers": ["Sie"] },
+              "hint": {
+                "en": "formal: two people you do not know well",
+                "fr": "politesse : deux personnes que vous connaissez peu",
+                "de": "höflich: zwei Personen, die du nicht gut kennst"
+              },
+              "ruleIds": ["r-formal"],
+              "answerExplanation": {
+                "en": "Two people addressed formally: Sie kommen.",
+                "fr": "Deux personnes à qui l'on s'adresse avec politesse : Sie kommen.",
+                "de": "Zwei Personen, die höflich angesprochen werden: Sie kommen."
               }
             }
           ]
@@ -1012,8 +1033,8 @@
       "pages": [
         {
           "pageId": "exam-pronouns",
-          "estimatedDurationS": 60,
-          "timeLimitS": 100,
+          "estimatedDurationS": 100,
+          "timeLimitS": 150,
           "instructions": {
             "en": "Type the missing words.",
             "fr": "Écrivez les mots manquants.",
@@ -1023,65 +1044,79 @@
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-pronouns-1",
-              "before": "Mein Onkel arbeitet in Köln.",
-              "after": "mag seinen Beruf.",
-              "accepted": { "answers": ["Er"] },
+              "before": "Hallo!",
+              "after": "heiße Jonas.",
+              "accepted": { "answers": ["Ich"] },
               "hint": null,
-              "ruleIds": ["rule-singular"],
+              "ruleIds": ["r-singular"],
               "answerExplanation": {
-                "en": "My uncle is a man, so you say er.",
-                "fr": "Mon oncle est un homme, donc on dit er.",
-                "de": "Mein Onkel ist ein Mann, also sagst du er."
+                "en": "With ich the verb ends in -e: ich heiße.",
+                "fr": "Avec ich, le verbe finit par -e : ich heiße.",
+                "de": "Bei ich endet das Verb auf -e: ich heiße."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-pronouns-2",
-              "before": "Lisa und Jonas sind Nachbarn.",
-              "after": "grüßen mich oft.",
+              "before": "Sara wohnt in Köln.",
+              "after": "kommt aus Graz.",
               "accepted": { "answers": ["Sie"] },
               "hint": null,
-              "ruleIds": ["rule-plural"],
+              "ruleIds": ["r-singular"],
               "answerExplanation": {
-                "en": "Lisa and Jonas are several people you talk about: sie.",
-                "fr": "Lisa et Jonas sont plusieurs personnes dont on parle : sie.",
-                "de": "Lisa und Jonas sind mehrere Personen, über die du sprichst: sie."
+                "en": "Sara is a woman, so the pronoun is sie.",
+                "fr": "Sara est une femme, donc le pronom est sie.",
+                "de": "Sara ist eine Frau, also steht sie."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-pronouns-3",
-              "before": "Das Auto ist alt.",
-              "after": "fährt langsam.",
-              "accepted": { "answers": ["Es"] },
+              "before": "Wohnt ihr in Bonn? – Ja,",
+              "after": "wohnen in Bonn.",
+              "accepted": { "answers": ["wir"] },
               "hint": null,
-              "ruleIds": ["rule-singular"],
+              "ruleIds": ["r-plural"],
               "answerExplanation": {
-                "en": "Das Auto is neuter, so it is replaced by es.",
-                "fr": "Das Auto est neutre, donc on le remplace par es.",
-                "de": "Das Auto ist sächlich, deshalb steht es."
+                "en": "The answer speaks about the group including the speaker: wir wohnen.",
+                "fr": "La réponse parle du groupe dont le locuteur fait partie : wir wohnen.",
+                "de": "Die Antwort spricht über die Gruppe mit dem Sprecher: wir wohnen."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-pronouns-4",
-              "before": "Tom und ich sind Kollegen.",
-              "after": "arbeiten in Zürich.",
-              "accepted": { "answers": ["Wir"] },
+              "before": "Hallo Mia und Tom! Wo wohnt",
+              "after": "?",
+              "accepted": { "answers": ["ihr"] },
               "hint": null,
-              "ruleIds": ["rule-plural"],
+              "ruleIds": ["r-plural"],
               "answerExplanation": {
-                "en": "Tom and I together: wir.",
-                "fr": "Tom et moi ensemble : wir.",
-                "de": "Tom und ich zusammen: wir."
+                "en": "You talk to two friends: ihr wohnt.",
+                "fr": "Vous parlez à deux amis : ihr wohnt.",
+                "de": "Du sprichst mit zwei Freunden: ihr wohnt."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-pronouns-5",
+              "before": "Nina, wo wohnst",
+              "after": "?",
+              "accepted": { "answers": ["du"] },
+              "hint": null,
+              "ruleIds": ["r-singular"],
+              "answerExplanation": {
+                "en": "You talk to one friend: du wohnst.",
+                "fr": "Vous parlez à une amie : du wohnst.",
+                "de": "Du sprichst mit einer Freundin: du wohnst."
               }
             }
           ]
         },
         {
           "pageId": "exam-formal",
-          "estimatedDurationS": 45,
-          "timeLimitS": 70,
+          "estimatedDurationS": 60,
+          "timeLimitS": 90,
           "instructions": {
             "en": "Type the missing words.",
             "fr": "Écrivez les mots manquants.",
@@ -1091,43 +1126,43 @@
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-formal-1",
-              "before": "Frau Kunz, wohnen",
-              "after": "in Basel?",
+              "before": "Herr Lang, wo wohnen",
+              "after": "?",
               "accepted": { "answers": ["Sie"] },
               "hint": null,
-              "ruleIds": ["rule-formal"],
+              "ruleIds": ["r-formal"],
               "answerExplanation": {
-                "en": "Frau Kunz is addressed politely: Sie.",
-                "fr": "On s’adresse poliment à Frau Kunz : Sie.",
-                "de": "Frau Kunz spricht man höflich an: Sie."
+                "en": "Herr Lang is addressed formally: Sie wohnen.",
+                "fr": "On s'adresse à Herr Lang avec politesse : Sie wohnen.",
+                "de": "Herr Lang wird höflich angesprochen: Sie wohnen."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-formal-2",
-              "before": "Oma, willst",
-              "after": "mit mir spielen?",
+              "before": "Mia, woher kommst",
+              "after": "?",
               "accepted": { "answers": ["du"] },
               "hint": null,
-              "ruleIds": ["rule-formal"],
+              "ruleIds": ["r-formal"],
               "answerExplanation": {
-                "en": "To your grandmother you say du.",
-                "fr": "À sa grand-mère, on dit du.",
-                "de": "Zu deiner Oma sagst du du."
+                "en": "You talk to one friend: du kommst.",
+                "fr": "Vous parlez à une amie : du kommst.",
+                "de": "Du sprichst mit einer Freundin: du kommst."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-formal-3",
-              "before": "Guten Tag! Kommen",
-              "after": "aus Österreich?",
+              "before": "Frau Roth und Herr Kern, woher kommen",
+              "after": "?",
               "accepted": { "answers": ["Sie"] },
               "hint": null,
-              "ruleIds": ["rule-formal"],
+              "ruleIds": ["r-formal"],
               "answerExplanation": {
-                "en": "To a stranger you use the polite Sie.",
-                "fr": "À un inconnu, on emploie le Sie de politesse.",
-                "de": "Zu einem Fremden sagst du höflich Sie."
+                "en": "Two people addressed formally: Sie kommen.",
+                "fr": "Deux personnes à qui l'on s'adresse avec politesse : Sie kommen.",
+                "de": "Zwei Personen, die höflich angesprochen werden: Sie kommen."
               }
             }
           ]
@@ -1146,55 +1181,51 @@
               "type": "grammar_word_order",
               "itemId": "exam-order-1",
               "tokens": [
-                { "tokenId": "t-1", "text": "in" },
-                { "tokenId": "t-2", "text": "Wohnen" },
-                { "tokenId": "t-3", "text": "?" },
-                { "tokenId": "t-4", "text": "Berlin" },
-                { "tokenId": "t-5", "text": "Sie" }
+                { "tokenId": "t-1", "text": "du" },
+                { "tokenId": "t-2", "text": "?" },
+                { "tokenId": "t-3", "text": "Wo" },
+                { "tokenId": "t-4", "text": "wohnst" }
               ],
-              "acceptedOrders": [["t-2", "t-5", "t-1", "t-4", "t-3"]],
-              "ruleIds": ["rule-formal"],
+              "acceptedOrders": [["t-3", "t-4", "t-1", "t-2"]],
+              "ruleIds": ["r-formal"],
               "answerExplanation": {
-                "en": "The polite question starts with the verb and Sie: Wohnen Sie in Berlin?",
-                "fr": "La question polie commence par le verbe et Sie : Wohnen Sie in Berlin ?",
-                "de": "Die höfliche Frage beginnt mit Verb und Sie: Wohnen Sie in Berlin?"
+                "en": "With du the verb ends in -st: Wo wohnst du?",
+                "fr": "Avec du, le verbe finit par -st : Wo wohnst du ?",
+                "de": "Bei du endet das Verb auf -st: Wo wohnst du?"
               }
             },
             {
               "type": "grammar_word_order",
               "itemId": "exam-order-2",
               "tokens": [
-                { "tokenId": "t-1", "text": "du" },
-                { "tokenId": "t-2", "text": "Italien" },
-                { "tokenId": "t-3", "text": "Kommst" },
-                { "tokenId": "t-4", "text": "?" },
-                { "tokenId": "t-5", "text": "aus" }
+                { "tokenId": "t-1", "text": "?" },
+                { "tokenId": "t-2", "text": "Sie" },
+                { "tokenId": "t-3", "text": "wohnen" },
+                { "tokenId": "t-4", "text": "Wo" }
               ],
-              "acceptedOrders": [["t-3", "t-1", "t-5", "t-2", "t-4"]],
-              "ruleIds": ["rule-formal"],
+              "acceptedOrders": [["t-4", "t-3", "t-2", "t-1"]],
+              "ruleIds": ["r-formal"],
               "answerExplanation": {
-                "en": "A question to a friend starts with the verb and du: Kommst du aus Italien?",
-                "fr": "Une question à un ami commence par le verbe et du : Kommst du aus Italien ?",
-                "de": "Eine Frage an einen Freund beginnt mit Verb und du: Kommst du aus Italien?"
+                "en": "The formal Sie takes the plural verb form: Wo wohnen Sie?",
+                "fr": "Le Sie de politesse prend la forme verbale du pluriel : Wo wohnen Sie ?",
+                "de": "Das höfliche Sie hat die Pluralform des Verbs: Wo wohnen Sie?"
               }
             },
             {
               "type": "grammar_word_order",
               "itemId": "exam-order-3",
               "tokens": [
-                { "tokenId": "t-1", "text": "zu" },
-                { "tokenId": "t-2", "text": "arbeiten" },
-                { "tokenId": "t-3", "text": "heute" },
-                { "tokenId": "t-4", "text": "Hause" },
-                { "tokenId": "t-5", "text": "." },
-                { "tokenId": "t-6", "text": "Wir" }
+                { "tokenId": "t-1", "text": "ihr" },
+                { "tokenId": "t-2", "text": "Woher" },
+                { "tokenId": "t-3", "text": "?" },
+                { "tokenId": "t-4", "text": "kommt" }
               ],
-              "acceptedOrders": [["t-6", "t-2", "t-3", "t-1", "t-4", "t-5"]],
-              "ruleIds": ["rule-plural"],
+              "acceptedOrders": [["t-2", "t-4", "t-1", "t-3"]],
+              "ruleIds": ["r-plural"],
               "answerExplanation": {
-                "en": "The pronoun wir comes first, then the verb: Wir arbeiten heute zu Hause.",
-                "fr": "Le pronom wir vient d’abord, puis le verbe : Wir arbeiten heute zu Hause.",
-                "de": "Zuerst steht das Pronomen wir, dann das Verb: Wir arbeiten heute zu Hause."
+                "en": "With ihr the verb ends in -t: Woher kommt ihr?",
+                "fr": "Avec ihr, le verbe finit par -t : Woher kommt ihr ?",
+                "de": "Bei ihr endet das Verb auf -t: Woher kommt ihr?"
               }
             }
           ]

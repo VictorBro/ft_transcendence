@@ -6,19 +6,19 @@
   "locales": ["en", "fr", "de"],
   "title": "Besitz: Annas Auto, das Auto von Anna",
   "objective": {
-    "en": "Show possession with -s, with an apostrophe and with von: Annas Auto, Max' Fahrrad, das Haus von meinen Eltern.",
-    "fr": "Exprimer la possession avec -s, avec l'apostrophe et avec von : Annas Auto, Max' Fahrrad, das Haus von meinen Eltern.",
-    "de": "Besitz mit -s, mit Apostroph und mit von angeben: Annas Auto, Max' Fahrrad, das Haus von meinen Eltern."
+    "en": "Say who something belongs to: with -s after names (Annas Auto), with an apostrophe after -s, -x, -z (Max' Fahrrad) and with von plus dative (das Haus von meinen Eltern).",
+    "fr": "Dire à qui appartient quelque chose : avec -s après un prénom (Annas Auto), avec une apostrophe après -s, -x, -z (Max' Fahrrad) et avec von et le datif (das Haus von meinen Eltern).",
+    "de": "Besitz angeben: mit -s bei Namen (Annas Auto), mit Apostroph nach -s, -x, -z (Max' Fahrrad) und mit von und Dativ (das Haus von meinen Eltern)."
   },
-  "estimatedMinutes": 17,
+  "estimatedMinutes": 15,
   "provenance": {
     "generator": "ft lessons:author",
     "model": "sonnet",
-    "promptVersion": "author-2",
-    "generatedAt": "2026-11-01T20:21:44.316Z",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:25:37.096Z",
     "inputHashes": {
       "outline": "e1d7290f5fe688d571176e54741dc6438dcdcf29c1e0c3206e5861270ee51671",
-      "brief": "203ae1a402a93d2d8007d754c271e73bde8c1082c82cafe47edc37b51ba05fd9"
+      "brief": "e40534c43f0d8d129b8b149537eaa752354d2d015ffa656acdbdb7fc4ad4859b"
     }
   },
   "kind": "grammar",
@@ -29,9 +29,9 @@
       "role": "explanation",
       "blockId": "block-names",
       "label": {
-        "en": "Names: Annas Auto, Max' Fahrrad",
-        "fr": "Les prénoms : Annas Auto, Max' Fahrrad",
-        "de": "Namen: Annas Auto, Max' Fahrrad"
+        "en": "Names with -s or an apostrophe",
+        "fr": "Les prénoms avec -s ou une apostrophe",
+        "de": "Namen mit -s oder Apostroph"
       },
       "pages": [
         {
@@ -49,41 +49,45 @@
               "itemId": "block-names-explanation",
               "ruleIds": ["rule-name-s", "rule-apostrophe"],
               "heading": {
-                "en": "Possession with names",
-                "fr": "La possession avec les prénoms",
-                "de": "Besitz bei Namen"
+                "en": "Names with -s",
+                "fr": "Les prénoms avec -s",
+                "de": "Namen mit -s"
               },
               "text": {
-                "en": "With names, add **-s** without an apostrophe: `Annas Auto`, `Toms Handy`. The owner comes first, the thing owned second, with no article.\n\nAfter a name ending in -s, -x or -z, do not add another -s. Write only an apostrophe: `Max' Fahrrad`, `Alex' Tasche`, `Franz' Hund`.\n\n- Wrong: `Anna's Auto`. The English 's is not used in German.\n- In speech, people often say `das Fahrrad von Max` instead.",
-                "fr": "Avec les prénoms, ajoutez **-s** sans apostrophe : `Annas Auto`, `Toms Handy`. Le possesseur vient d’abord, l’objet ensuite, sans article.\n\nAprès un prénom en -s, -x ou -z, n’ajoutez pas de -s. Écrivez seulement une apostrophe : `Max' Fahrrad`, `Alex' Tasche`, `Franz' Hund`.\n\n- Faux : `Anna's Auto`. Le 's anglais n’existe pas en allemand.\n- À l’oral, on dit souvent `das Fahrrad von Max` à la place.",
-                "de": "Bei Namen hängst du **-s** ohne Apostroph an: `Annas Auto`, `Toms Handy`. Der Besitzer steht zuerst, die Sache danach, ohne Artikel.\n\nNach einem Namen auf -s, -x oder -z kommt kein weiteres -s. Du schreibst nur einen Apostroph: `Max' Fahrrad`, `Alex' Tasche`, `Franz' Hund`.\n\n- Falsch: `Anna's Auto`. Das englische 's gibt es im Deutschen nicht.\n- Gesprochen sagt man oft stattdessen `das Fahrrad von Max`."
+                "en": "To say who something belongs to, add **-s** to a name and put it before the noun: `Annas Auto`, `Toms Handy`. There is no article and no apostrophe.\n\nIf the name ends in -s, -x or -z, you add only an apostrophe: `Max' Fahrrad`, `Felix' Tasche`, `Moritz' Handy`.\n\n- `Lisas Katze` – the cat of Lisa.\n- `Lars' Buch` – the book of Lars.\n- Not `Anna's Auto`: in German there is no apostrophe before the s.",
+                "fr": "Pour dire à qui appartient quelque chose, on ajoute **-s** à un prénom et on le place devant le nom : `Annas Auto`, `Toms Handy`. Il n'y a ni article ni apostrophe.\n\nSi le prénom finit par -s, -x ou -z, on ajoute seulement une apostrophe : `Max' Fahrrad`, `Felix' Tasche`, `Moritz' Handy`.\n\n- `Lisas Katze` – le chat de Lisa.\n- `Lars' Buch` – le livre de Lars.\n- Pas `Anna's Auto` : en allemand, il n'y a pas d'apostrophe devant le s.",
+                "de": "Um zu sagen, wem etwas gehört, hängst du an einen Namen ein **-s** und stellst ihn vor das Nomen: `Annas Auto`, `Toms Handy`. Es steht kein Artikel und kein Apostroph.\n\nEndet der Name auf -s, -x oder -z, setzt du nur einen Apostroph: `Max' Fahrrad`, `Felix' Tasche`, `Moritz' Handy`.\n\n- `Lisas Katze` – die Katze von Lisa.\n- `Lars' Buch` – das Buch von Lars.\n- Nicht `Anna's Auto`: Im Deutschen steht vor dem s kein Apostroph."
               },
               "formTable": [
-                { "subject": "Tom", "form": "Toms", "example": "Toms Handy" },
-                { "subject": "Anna", "form": "Annas", "example": "Annas Auto" },
-                { "subject": "Max", "form": "Max'", "example": "Max' Fahrrad" },
-                { "subject": "Franz", "form": "Franz'", "example": "Franz' Hund" }
+                { "subject": "Anna", "form": "Annas", "example": "Annas Auto ist rot." },
+                { "subject": "Tom", "form": "Toms", "example": "Toms Handy ist neu." },
+                { "subject": "Max", "form": "Max'", "example": "Max' Fahrrad ist kaputt." },
+                { "subject": "Felix", "form": "Felix'", "example": "Felix' Tasche ist schwer." }
               ],
               "examples": [
                 {
-                  "text": "Annas Auto ist neu.",
+                  "text": "Das ist Annas Auto.",
+                  "translation": { "en": "That is Anna's car.", "fr": "C'est la voiture d'Anna." }
+                },
+                {
+                  "text": "Max' Fahrrad ist kaputt.",
                   "translation": {
-                    "en": "Anna's car is new.",
-                    "fr": "La voiture d'Anna est neuve."
+                    "en": "Max's bike is broken.",
+                    "fr": "Le vélo de Max est cassé."
                   }
                 },
                 {
-                  "text": "Max' Fahrrad steht im Hof.",
+                  "text": "Wo ist Toms Handy?",
                   "translation": {
-                    "en": "Max's bike is in the yard.",
-                    "fr": "Le vélo de Max est dans la cour."
+                    "en": "Where is Tom's phone?",
+                    "fr": "Où est le téléphone de Tom ?"
                   }
                 },
                 {
-                  "text": "Toms Handy liegt auf dem Tisch.",
+                  "text": "Moritz' Tasche ist schwer.",
                   "translation": {
-                    "en": "Tom's phone is on the table.",
-                    "fr": "Le portable de Tom est sur la table."
+                    "en": "Moritz's bag is heavy.",
+                    "fr": "Le sac de Moritz est lourd."
                   }
                 }
               ]
@@ -93,18 +97,18 @@
       ]
     },
     {
-      "id": "ex-n-choice",
+      "id": "ex-s-choice",
       "role": "exercise",
       "blockId": "block-names",
       "label": {
-        "en": "Multiple-choice gaps",
-        "fr": "Phrases à trous à choix multiple",
-        "de": "Lücken mit Auswahl"
+        "en": "Multiple-choice gaps 1",
+        "fr": "Phrases à trous à choix multiple 1",
+        "de": "Lücken mit Auswahl 1"
       },
       "pages": [
         {
-          "pageId": "ex-n-choice-1",
-          "estimatedDurationS": 60,
+          "pageId": "ex-s-choice-1",
+          "estimatedDurationS": 48,
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
@@ -114,82 +118,82 @@
           "items": [
             {
               "type": "grammar_gap_choice",
-              "itemId": "ex-n-choice-1",
+              "itemId": "ex-s-choice-1",
               "before": "Das ist",
               "after": "Auto.",
               "choices": [
-                { "choiceId": "c-1", "text": "Anna's" },
-                { "choiceId": "c-2", "text": "Annas" },
+                { "choiceId": "c-1", "text": "Annas" },
+                { "choiceId": "c-2", "text": "Anna's" },
                 { "choiceId": "c-3", "text": "Anna" },
-                { "choiceId": "c-4", "text": "Anna von" }
+                { "choiceId": "c-4", "text": "Annas'" }
               ],
-              "answerChoiceId": "c-2",
+              "answerChoiceId": "c-1",
               "hint": null,
               "ruleIds": ["rule-name-s"],
               "answerExplanation": {
-                "en": "A name takes -s without an apostrophe: Annas Auto.",
-                "fr": "Un prénom prend -s sans apostrophe : Annas Auto.",
-                "de": "Ein Name bekommt -s ohne Apostroph: Annas Auto."
+                "en": "Add -s to the name, with no apostrophe: Annas Auto.",
+                "fr": "On ajoute -s au prénom, sans apostrophe : Annas Auto.",
+                "de": "An den Namen kommt -s, ohne Apostroph: Annas Auto."
               }
             },
             {
               "type": "grammar_gap_choice",
-              "itemId": "ex-n-choice-2",
-              "before": "Wo ist",
-              "after": "Fahrrad?",
+              "itemId": "ex-s-choice-2",
+              "before": "Das ist",
+              "after": "Fahrrad.",
               "choices": [
                 { "choiceId": "c-1", "text": "Maxs" },
                 { "choiceId": "c-2", "text": "Max's" },
-                { "choiceId": "c-3", "text": "Max" },
-                { "choiceId": "c-4", "text": "Max'" }
-              ],
-              "answerChoiceId": "c-4",
-              "hint": null,
-              "ruleIds": ["rule-apostrophe"],
-              "answerExplanation": {
-                "en": "After -x only an apostrophe follows: Max' Fahrrad.",
-                "fr": "Après -x, on met seulement une apostrophe : Max' Fahrrad.",
-                "de": "Nach -x steht nur ein Apostroph: Max' Fahrrad."
-              }
-            },
-            {
-              "type": "grammar_gap_choice",
-              "itemId": "ex-n-choice-3",
-              "before": "Ich suche",
-              "after": "Schlüssel.",
-              "choices": [
-                { "choiceId": "c-1", "text": "Lisa" },
-                { "choiceId": "c-2", "text": "Lisa's" },
-                { "choiceId": "c-3", "text": "Lisas" },
-                { "choiceId": "c-4", "text": "Lisas'" }
+                { "choiceId": "c-3", "text": "Max'" },
+                { "choiceId": "c-4", "text": "Max" }
               ],
               "answerChoiceId": "c-3",
               "hint": null,
-              "ruleIds": ["rule-name-s"],
+              "ruleIds": ["rule-apostrophe"],
               "answerExplanation": {
-                "en": "Lisa takes -s without an apostrophe: Lisas Schlüssel.",
-                "fr": "Lisa prend -s sans apostrophe : Lisas Schlüssel.",
-                "de": "Lisa bekommt -s ohne Apostroph: Lisas Schlüssel."
+                "en": "Max ends in -x: only an apostrophe, Max' Fahrrad.",
+                "fr": "Max finit par -x : seulement une apostrophe, Max' Fahrrad.",
+                "de": "Max endet auf -x: nur ein Apostroph, Max' Fahrrad."
               }
             },
             {
               "type": "grammar_gap_choice",
-              "itemId": "ex-n-choice-4",
-              "before": "Wir besuchen",
-              "after": "Eltern.",
+              "itemId": "ex-s-choice-3",
+              "before": "Hier liegt",
+              "after": "Tasche.",
               "choices": [
-                { "choiceId": "c-1", "text": "Franz" },
-                { "choiceId": "c-2", "text": "Franz'" },
-                { "choiceId": "c-3", "text": "Franzs" },
-                { "choiceId": "c-4", "text": "Franz's" }
+                { "choiceId": "c-1", "text": "Felixs" },
+                { "choiceId": "c-2", "text": "Felix'" },
+                { "choiceId": "c-3", "text": "Felix's" },
+                { "choiceId": "c-4", "text": "Felix" }
               ],
               "answerChoiceId": "c-2",
               "hint": null,
               "ruleIds": ["rule-apostrophe"],
               "answerExplanation": {
-                "en": "Franz ends in -z, so only an apostrophe follows: Franz' Eltern.",
-                "fr": "Franz finit par -z, donc seulement une apostrophe : Franz' Eltern.",
-                "de": "Franz endet auf -z, also steht nur ein Apostroph: Franz' Eltern."
+                "en": "Felix ends in -x: only an apostrophe, Felix' Tasche.",
+                "fr": "Felix finit par -x : seulement une apostrophe, Felix' Tasche.",
+                "de": "Felix endet auf -x: nur ein Apostroph, Felix' Tasche."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-s-choice-4",
+              "before": "Ich kenne",
+              "after": "Katze.",
+              "choices": [
+                { "choiceId": "c-1", "text": "Lisa's" },
+                { "choiceId": "c-2", "text": "Lisa" },
+                { "choiceId": "c-3", "text": "Lisas'" },
+                { "choiceId": "c-4", "text": "Lisas" }
+              ],
+              "answerChoiceId": "c-4",
+              "hint": null,
+              "ruleIds": ["rule-name-s"],
+              "answerExplanation": {
+                "en": "Lisa ends in -a, so just add -s: Lisas Katze.",
+                "fr": "Lisa finit par -a, on ajoute simplement -s : Lisas Katze.",
+                "de": "Lisa endet auf -a, also kommt einfach -s dazu: Lisas Katze."
               }
             }
           ]
@@ -197,18 +201,18 @@
       ]
     },
     {
-      "id": "ex-n-typing",
+      "id": "ex-s-typing",
       "role": "exercise",
       "blockId": "block-names",
       "label": {
-        "en": "Typed gaps",
-        "fr": "Phrases à trous à écrire",
-        "de": "Lücken zum Schreiben"
+        "en": "Typed gaps 1",
+        "fr": "Phrases à trous à écrire 1",
+        "de": "Lücken zum Schreiben 1"
       },
       "pages": [
         {
-          "pageId": "ex-n-typing-1",
-          "estimatedDurationS": 80,
+          "pageId": "ex-s-typing-1",
+          "estimatedDurationS": 60,
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
@@ -218,70 +222,58 @@
           "items": [
             {
               "type": "grammar_gap_typing",
-              "itemId": "ex-n-typing-1",
+              "itemId": "ex-s-typing-1",
               "before": "Das ist",
               "after": "Hund.",
-              "accepted": { "answers": ["Toms"] },
-              "hint": { "en": "Tom: add -s", "fr": "Tom : ajoutez -s", "de": "Tom: -s anhängen" },
+              "accepted": { "answers": ["Pauls"] },
+              "hint": { "en": "Name: Paul", "fr": "Prénom : Paul", "de": "Name: Paul" },
               "ruleIds": ["rule-name-s"],
               "answerExplanation": {
-                "en": "Tom takes -s without an apostrophe: Toms Hund.",
-                "fr": "Tom prend -s sans apostrophe : Toms Hund.",
-                "de": "Tom bekommt -s ohne Apostroph: Toms Hund."
+                "en": "Add -s to the name: Pauls Hund.",
+                "fr": "On ajoute -s au prénom : Pauls Hund.",
+                "de": "An den Namen kommt -s: Pauls Hund."
               }
             },
             {
               "type": "grammar_gap_typing",
-              "itemId": "ex-n-typing-2",
-              "before": "Wo ist",
-              "after": "Brille?",
-              "accepted": { "answers": ["Lukas'", "Lukas’"] },
-              "hint": {
-                "en": "Lukas ends in -s",
-                "fr": "Lukas finit par -s",
-                "de": "Lukas endet auf -s"
-              },
+              "itemId": "ex-s-typing-2",
+              "before": "Heute ist",
+              "after": "Jacke nass.",
+              "accepted": { "answers": ["Luis'", "Luis’"] },
+              "hint": { "en": "Name: Luis", "fr": "Prénom : Luis", "de": "Name: Luis" },
               "ruleIds": ["rule-apostrophe"],
               "answerExplanation": {
-                "en": "Lukas ends in -s, so only an apostrophe follows: Lukas' Brille.",
-                "fr": "Lukas finit par -s, donc seulement une apostrophe : Lukas' Brille.",
-                "de": "Lukas endet auf -s, also steht nur ein Apostroph: Lukas' Brille."
+                "en": "Luis ends in -s: only an apostrophe, Luis' Jacke.",
+                "fr": "Luis finit par -s : seulement une apostrophe, Luis' Jacke.",
+                "de": "Luis endet auf -s: nur ein Apostroph, Luis' Jacke."
               }
             },
             {
               "type": "grammar_gap_typing",
-              "itemId": "ex-n-typing-3",
+              "itemId": "ex-s-typing-3",
+              "before": "Wir besuchen",
+              "after": "Wohnung.",
+              "accepted": { "answers": ["Nadines"] },
+              "hint": { "en": "Name: Nadine", "fr": "Prénom : Nadine", "de": "Name: Nadine" },
+              "ruleIds": ["rule-name-s"],
+              "answerExplanation": {
+                "en": "Add -s to the name: Nadines Wohnung.",
+                "fr": "On ajoute -s au prénom : Nadines Wohnung.",
+                "de": "An den Namen kommt -s: Nadines Wohnung."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-s-typing-4",
               "before": "Das ist",
-              "after": "Zimmer.",
-              "accepted": { "answers": ["Sophies"] },
-              "hint": {
-                "en": "Sophie: add -s",
-                "fr": "Sophie : ajoutez -s",
-                "de": "Sophie: -s anhängen"
-              },
-              "ruleIds": ["rule-name-s"],
-              "answerExplanation": {
-                "en": "Sophie takes -s without an apostrophe: Sophies Zimmer.",
-                "fr": "Sophie prend -s sans apostrophe : Sophies Zimmer.",
-                "de": "Sophie bekommt -s ohne Apostroph: Sophies Zimmer."
-              }
-            },
-            {
-              "type": "grammar_gap_typing",
-              "itemId": "ex-n-typing-4",
-              "before": "Hier wohnt",
-              "after": "Familie.",
-              "accepted": { "answers": ["Moritz'", "Moritz’"] },
-              "hint": {
-                "en": "Moritz ends in -z",
-                "fr": "Moritz finit par -z",
-                "de": "Moritz endet auf -z"
-              },
+              "after": "Buch.",
+              "accepted": { "answers": ["Klaus'", "Klaus’"] },
+              "hint": { "en": "Name: Klaus", "fr": "Prénom : Klaus", "de": "Name: Klaus" },
               "ruleIds": ["rule-apostrophe"],
               "answerExplanation": {
-                "en": "Moritz ends in -z, so only an apostrophe follows: Moritz' Familie.",
-                "fr": "Moritz finit par -z, donc seulement une apostrophe : Moritz' Familie.",
-                "de": "Moritz endet auf -z, also steht nur ein Apostroph: Moritz' Familie."
+                "en": "Klaus ends in -s: only an apostrophe, Klaus' Buch.",
+                "fr": "Klaus finit par -s : seulement une apostrophe, Klaus' Buch.",
+                "de": "Klaus endet auf -s: nur ein Apostroph, Klaus' Buch."
               }
             }
           ]
@@ -289,13 +281,87 @@
       ]
     },
     {
-      "id": "ex-n-spot",
+      "id": "ex-s-order",
       "role": "exercise",
       "blockId": "block-names",
-      "label": { "en": "Error spotting", "fr": "Repérer l’erreur", "de": "Fehler finden" },
+      "label": { "en": "Word order 1", "fr": "Ordre des mots 1", "de": "Wortstellung 1" },
       "pages": [
         {
-          "pageId": "ex-n-spot-1",
+          "pageId": "ex-s-order-1",
+          "estimatedDurationS": 60,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in the right order.",
+            "fr": "Mettez les mots dans le bon ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-s-order-1",
+              "tokens": [
+                { "tokenId": "t-1", "text": "Annas" },
+                { "tokenId": "t-2", "text": "?" },
+                { "tokenId": "t-3", "text": "ist" },
+                { "tokenId": "t-4", "text": "Wo" },
+                { "tokenId": "t-5", "text": "Auto" }
+              ],
+              "acceptedOrders": [["t-4", "t-3", "t-1", "t-5", "t-2"]],
+              "ruleIds": ["rule-name-s"],
+              "answerExplanation": {
+                "en": "The name with -s comes before the noun: Wo ist Annas Auto?",
+                "fr": "Le prénom avec -s se place devant le nom : Wo ist Annas Auto ?",
+                "de": "Der Name mit -s steht vor dem Nomen: Wo ist Annas Auto?"
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-s-order-2",
+              "tokens": [
+                { "tokenId": "t-1", "text": "Fahrrad" },
+                { "tokenId": "t-2", "text": "Das" },
+                { "tokenId": "t-3", "text": "." },
+                { "tokenId": "t-4", "text": "Max'" },
+                { "tokenId": "t-5", "text": "ist" }
+              ],
+              "acceptedOrders": [["t-2", "t-5", "t-4", "t-1", "t-3"]],
+              "ruleIds": ["rule-apostrophe"],
+              "answerExplanation": {
+                "en": "Max' stands before the noun: Das ist Max' Fahrrad.",
+                "fr": "Max' se place devant le nom : Das ist Max' Fahrrad.",
+                "de": "Max' steht vor dem Nomen: Das ist Max' Fahrrad."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-s-order-3",
+              "tokens": [
+                { "tokenId": "t-1", "text": "Franz'" },
+                { "tokenId": "t-2", "text": "Wo" },
+                { "tokenId": "t-3", "text": "?" },
+                { "tokenId": "t-4", "text": "Auto" },
+                { "tokenId": "t-5", "text": "steht" }
+              ],
+              "acceptedOrders": [["t-2", "t-5", "t-1", "t-4", "t-3"]],
+              "ruleIds": ["rule-apostrophe"],
+              "answerExplanation": {
+                "en": "Franz' stands before the noun: Wo steht Franz' Auto?",
+                "fr": "Franz' se place devant le nom : Wo steht Franz' Auto ?",
+                "de": "Franz' steht vor dem Nomen: Wo steht Franz' Auto?"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-s-spot",
+      "role": "exercise",
+      "blockId": "block-names",
+      "label": { "en": "Error spotting 1", "fr": "Repérer l’erreur 1", "de": "Fehler finden 1" },
+      "pages": [
+        {
+          "pageId": "ex-s-spot-1",
           "estimatedDurationS": 75,
           "timeLimitS": null,
           "instructions": {
@@ -306,67 +372,63 @@
           "items": [
             {
               "type": "grammar_error_spotter",
-              "itemId": "ex-n-spot-1",
+              "itemId": "ex-s-spot-1",
               "tokens": [
-                { "tokenId": "t-1", "text": "Ich" },
-                { "tokenId": "t-2", "text": "suche" },
-                { "tokenId": "t-3", "text": "Paul's" },
-                { "tokenId": "t-4", "text": "Buch" },
+                { "tokenId": "t-1", "text": "Das" },
+                { "tokenId": "t-2", "text": "ist" },
+                { "tokenId": "t-3", "text": "Anna's" },
+                { "tokenId": "t-4", "text": "Auto" },
                 { "tokenId": "t-5", "text": "." }
               ],
               "faultyTokenId": "t-3",
-              "correction": { "mode": "type", "accepted": { "answers": ["Pauls"] }, "choices": [] },
+              "correction": { "mode": "type", "accepted": { "answers": ["Annas"] }, "choices": [] },
               "ruleIds": ["rule-name-s"],
               "answerExplanation": {
-                "en": "Paul takes -s without an apostrophe: Pauls Buch.",
-                "fr": "Paul prend -s sans apostrophe : Pauls Buch.",
-                "de": "Paul bekommt -s ohne Apostroph: Pauls Buch."
+                "en": "In German there is no apostrophe before the s: Annas Auto.",
+                "fr": "En allemand, il n'y a pas d'apostrophe devant le s : Annas Auto.",
+                "de": "Im Deutschen steht vor dem s kein Apostroph: Annas Auto."
               }
             },
             {
               "type": "grammar_error_spotter",
-              "itemId": "ex-n-spot-2",
+              "itemId": "ex-s-spot-2",
               "tokens": [
                 { "tokenId": "t-1", "text": "Das" },
                 { "tokenId": "t-2", "text": "ist" },
                 { "tokenId": "t-3", "text": "Maxs" },
-                { "tokenId": "t-4", "text": "Rucksack" },
+                { "tokenId": "t-4", "text": "Fahrrad" },
                 { "tokenId": "t-5", "text": "." }
               ],
               "faultyTokenId": "t-3",
               "correction": {
                 "mode": "select",
                 "accepted": { "answers": ["Max'"] },
-                "choices": ["Max'", "Maxs", "Max's"]
+                "choices": ["Max'", "Maxs", "Max"]
               },
               "ruleIds": ["rule-apostrophe"],
               "answerExplanation": {
-                "en": "Max ends in -x, so only an apostrophe follows: Max' Rucksack.",
-                "fr": "Max finit par -x, donc seulement une apostrophe : Max' Rucksack.",
-                "de": "Max endet auf -x, also steht nur ein Apostroph: Max' Rucksack."
+                "en": "Max ends in -x: only an apostrophe, Max' Fahrrad.",
+                "fr": "Max finit par -x : seulement une apostrophe, Max' Fahrrad.",
+                "de": "Max endet auf -x: nur ein Apostroph, Max' Fahrrad."
               }
             },
             {
               "type": "grammar_error_spotter",
-              "itemId": "ex-n-spot-3",
+              "itemId": "ex-s-spot-3",
               "tokens": [
-                { "tokenId": "t-1", "text": "Wir" },
-                { "tokenId": "t-2", "text": "besuchen" },
-                { "tokenId": "t-3", "text": "Alex's" },
-                { "tokenId": "t-4", "text": "Bruder" },
-                { "tokenId": "t-5", "text": "." }
+                { "tokenId": "t-1", "text": "Wo" },
+                { "tokenId": "t-2", "text": "ist" },
+                { "tokenId": "t-3", "text": "Lisas'" },
+                { "tokenId": "t-4", "text": "Katze" },
+                { "tokenId": "t-5", "text": "?" }
               ],
               "faultyTokenId": "t-3",
-              "correction": {
-                "mode": "type",
-                "accepted": { "answers": ["Alex'", "Alex’"] },
-                "choices": []
-              },
-              "ruleIds": ["rule-apostrophe"],
+              "correction": { "mode": "type", "accepted": { "answers": ["Lisas"] }, "choices": [] },
+              "ruleIds": ["rule-name-s"],
               "answerExplanation": {
-                "en": "Alex ends in -x, so only an apostrophe follows: Alex' Bruder.",
-                "fr": "Alex finit par -x, donc seulement une apostrophe : Alex' Bruder.",
-                "de": "Alex endet auf -x, also steht nur ein Apostroph: Alex' Bruder."
+                "en": "Lisa ends in -a, so no apostrophe: Lisas Katze.",
+                "fr": "Lisa finit par -a, donc pas d'apostrophe : Lisas Katze.",
+                "de": "Lisa endet auf -a, also kein Apostroph: Lisas Katze."
               }
             }
           ]
@@ -378,14 +440,14 @@
       "role": "explanation",
       "blockId": "block-von",
       "label": {
-        "en": "With von: das Auto von Anna",
-        "fr": "Avec von : das Auto von Anna",
-        "de": "Mit von: das Auto von Anna"
+        "en": "Possession with von and the dative",
+        "fr": "La possession avec von et le datif",
+        "de": "Besitz mit von und Dativ"
       },
       "pages": [
         {
           "pageId": "block-von-explanation",
-          "estimatedDurationS": 120,
+          "estimatedDurationS": 130,
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
@@ -396,42 +458,34 @@
             {
               "type": "grammar_explanation",
               "itemId": "block-von-explanation",
-              "ruleIds": ["rule-von"],
+              "ruleIds": ["rule-von-dative"],
               "heading": {
-                "en": "Possession with von",
-                "fr": "La possession avec von",
-                "de": "Besitz mit von"
+                "en": "von and the dative",
+                "fr": "von et le datif",
+                "de": "von und der Dativ"
               },
               "text": {
-                "en": "Besides the -s form, you can show possession with `von` and the **dative**: `das Auto von Anna`. This works with every noun and is common in speech.\n\nAfter `von`, the article is dative: `von dem` (often `vom`), `von der`, `von den`. A plural noun also takes -n: `von den Kindern`.\n\n- `das Fahrrad vom Lehrer`\n- `das Handy von der Nachbarin`\n- `das Haus von meinen Eltern`",
-                "fr": "En plus de la forme en -s, on exprime la possession avec `von` et le **datif** : `das Auto von Anna`. Cela marche avec tous les noms et s’emploie beaucoup à l’oral.\n\nAprès `von`, l’article est au datif : `von dem` (souvent `vom`), `von der`, `von den`. Un nom au pluriel prend aussi -n : `von den Kindern`.\n\n- `das Fahrrad vom Lehrer`\n- `das Handy von der Nachbarin`\n- `das Haus von meinen Eltern`",
-                "de": "Neben der Form mit -s gibst du Besitz mit `von` und dem **Dativ** an: `das Auto von Anna`. Das geht mit jedem Nomen und ist gesprochen häufig.\n\nNach `von` steht der Artikel im Dativ: `von dem` (oft `vom`), `von der`, `von den`. Ein Nomen im Plural bekommt außerdem -n: `von den Kindern`.\n\n- `das Fahrrad vom Lehrer`\n- `das Handy von der Nachbarin`\n- `das Haus von meinen Eltern`"
+                "en": "Another way is `von` with the **dative**: `das Auto von Anna`, `das Haus von meinen Eltern`. The thing comes first, then `von`.\n\nThe article takes the dative form, and `von dem` becomes `vom`:\n\n- `das Buch von der Lehrerin` – feminine: der.\n- `das Fahrrad vom Lehrer` – masculine: von + dem = vom.\n- `die Spiele von den Kindern` – plural: den, and -n on the noun.\n\nThe -s form is for names. For `die Eltern` or `der Lehrer` you use `von`.",
+                "fr": "Une autre possibilité est `von` avec le **datif** : `das Auto von Anna`, `das Haus von meinen Eltern`. La chose vient d'abord, puis `von`.\n\nL'article prend la forme du datif, et `von dem` devient `vom` :\n\n- `das Buch von der Lehrerin` – féminin : der.\n- `das Fahrrad vom Lehrer` – masculin : von + dem = vom.\n- `die Spiele von den Kindern` – pluriel : den, et -n au nom.\n\nLa forme en -s sert pour les prénoms. Pour `die Eltern` ou `der Lehrer`, on utilise `von`.",
+                "de": "Eine andere Möglichkeit ist `von` mit dem **Dativ**: `das Auto von Anna`, `das Haus von meinen Eltern`. Zuerst steht die Sache, dann `von`.\n\nDer Artikel steht im Dativ, und `von dem` wird zu `vom`:\n\n- `das Buch von der Lehrerin` – feminin: der.\n- `das Fahrrad vom Lehrer` – maskulin: von + dem = vom.\n- `die Spiele von den Kindern` – Plural: den und -n am Nomen.\n\nDie s-Form gilt für Namen. Bei `die Eltern` oder `der Lehrer` nimmst du `von`."
               },
               "formTable": [
                 {
-                  "subject": "der Lehrer",
-                  "form": "vom Lehrer",
-                  "example": "das Fahrrad vom Lehrer"
+                  "subject": "von + der",
+                  "form": "von der",
+                  "example": "das Buch von der Lehrerin"
                 },
+                { "subject": "von + dem", "form": "vom", "example": "das Fahrrad vom Lehrer" },
                 {
-                  "subject": "die Nachbarin",
-                  "form": "von der Nachbarin",
-                  "example": "das Handy von der Nachbarin"
-                },
-                { "subject": "das Kind", "form": "vom Kind", "example": "das Spielzeug vom Kind" },
-                {
-                  "subject": "die Kinder",
-                  "form": "von den Kindern",
-                  "example": "die Freunde von den Kindern"
+                  "subject": "von + den",
+                  "form": "von den",
+                  "example": "die Spiele von den Kindern"
                 }
               ],
               "examples": [
                 {
-                  "text": "Das Auto von Anna ist neu.",
-                  "translation": {
-                    "en": "Anna's car is new.",
-                    "fr": "La voiture d'Anna est neuve."
-                  }
+                  "text": "Das ist das Auto von Anna.",
+                  "translation": { "en": "That is Anna's car.", "fr": "C'est la voiture d'Anna." }
                 },
                 {
                   "text": "Das Haus von meinen Eltern ist groß.",
@@ -441,17 +495,17 @@
                   }
                 },
                 {
-                  "text": "Das ist das Fahrrad vom Lehrer.",
+                  "text": "Das Fahrrad vom Lehrer ist neu.",
                   "translation": {
-                    "en": "That is the teacher's bike.",
-                    "fr": "C'est le vélo du professeur."
+                    "en": "The teacher's bike is new.",
+                    "fr": "Le vélo du professeur est neuf."
                   }
                 },
                 {
-                  "text": "Die Katze von der Nachbarin ist süß.",
+                  "text": "Die Spiele von den Kindern liegen hier.",
                   "translation": {
-                    "en": "The neighbour's cat is cute.",
-                    "fr": "Le chat de la voisine est mignon."
+                    "en": "The children's games are here.",
+                    "fr": "Les jeux des enfants sont ici."
                   }
                 }
               ]
@@ -461,18 +515,18 @@
       ]
     },
     {
-      "id": "ex-v-choice",
+      "id": "ex-von-choice",
       "role": "exercise",
       "blockId": "block-von",
       "label": {
-        "en": "Multiple-choice gaps",
-        "fr": "Phrases à trous à choix multiple",
-        "de": "Lücken mit Auswahl"
+        "en": "Multiple-choice gaps 2",
+        "fr": "Phrases à trous à choix multiple 2",
+        "de": "Lücken mit Auswahl 2"
       },
       "pages": [
         {
-          "pageId": "ex-v-choice-1",
-          "estimatedDurationS": 60,
+          "pageId": "ex-von-choice-1",
+          "estimatedDurationS": 48,
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
@@ -482,82 +536,82 @@
           "items": [
             {
               "type": "grammar_gap_choice",
-              "itemId": "ex-v-choice-1",
-              "before": "Das ist das Fahrrad von",
+              "itemId": "ex-von-choice-1",
+              "before": "Das ist das Buch von",
               "after": "Lehrerin.",
               "choices": [
-                { "choiceId": "c-1", "text": "dem" },
+                { "choiceId": "c-1", "text": "der" },
+                { "choiceId": "c-2", "text": "die" },
+                { "choiceId": "c-3", "text": "dem" },
+                { "choiceId": "c-4", "text": "den" }
+              ],
+              "answerChoiceId": "c-1",
+              "hint": null,
+              "ruleIds": ["rule-von-dative"],
+              "answerExplanation": {
+                "en": "Die Lehrerin is feminine, so the dative after von is der.",
+                "fr": "Die Lehrerin est féminin, donc le datif après von est der.",
+                "de": "Die Lehrerin ist feminin, also ist der Dativ nach von der."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-von-choice-2",
+              "before": "Das ist das Fahrrad von",
+              "after": "Lehrer.",
+              "choices": [
+                { "choiceId": "c-1", "text": "der" },
                 { "choiceId": "c-2", "text": "den" },
-                { "choiceId": "c-3", "text": "der" },
+                { "choiceId": "c-3", "text": "die" },
+                { "choiceId": "c-4", "text": "dem" }
+              ],
+              "answerChoiceId": "c-4",
+              "hint": null,
+              "ruleIds": ["rule-von-dative"],
+              "answerExplanation": {
+                "en": "Der Lehrer is masculine, so the dative after von is dem.",
+                "fr": "Der Lehrer est masculin, donc le datif après von est dem.",
+                "de": "Der Lehrer ist maskulin, also ist der Dativ nach von dem."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-von-choice-3",
+              "before": "Das Haus von",
+              "after": "Eltern ist groß.",
+              "choices": [
+                { "choiceId": "c-1", "text": "meine" },
+                { "choiceId": "c-2", "text": "meinen" },
+                { "choiceId": "c-3", "text": "meiner" },
+                { "choiceId": "c-4", "text": "meinem" }
+              ],
+              "answerChoiceId": "c-2",
+              "hint": null,
+              "ruleIds": ["rule-von-dative"],
+              "answerExplanation": {
+                "en": "Eltern is plural, so after von the dative is meinen.",
+                "fr": "Eltern est au pluriel, donc après von le datif est meinen.",
+                "de": "Eltern ist Plural, also ist der Dativ nach von meinen."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-von-choice-4",
+              "before": "Das sind die Spiele von",
+              "after": "Kindern.",
+              "choices": [
+                { "choiceId": "c-1", "text": "dem" },
+                { "choiceId": "c-2", "text": "der" },
+                { "choiceId": "c-3", "text": "den" },
                 { "choiceId": "c-4", "text": "die" }
               ],
               "answerChoiceId": "c-3",
               "hint": null,
-              "ruleIds": ["rule-von"],
+              "ruleIds": ["rule-von-dative"],
               "answerExplanation": {
-                "en": "Lehrerin is feminine; after von it takes the dative der.",
-                "fr": "Lehrerin est féminin ; après von, il prend le datif der.",
-                "de": "Lehrerin ist feminin; nach von steht der Dativ der."
-              }
-            },
-            {
-              "type": "grammar_gap_choice",
-              "itemId": "ex-v-choice-2",
-              "before": "Wo ist das Handy von",
-              "after": "Kind?",
-              "choices": [
-                { "choiceId": "c-1", "text": "der" },
-                { "choiceId": "c-2", "text": "dem" },
-                { "choiceId": "c-3", "text": "den" },
-                { "choiceId": "c-4", "text": "das" }
-              ],
-              "answerChoiceId": "c-2",
-              "hint": null,
-              "ruleIds": ["rule-von"],
-              "answerExplanation": {
-                "en": "Kind is neuter; after von it takes the dative dem.",
-                "fr": "Kind est neutre ; après von, il prend le datif dem.",
-                "de": "Kind ist neutral; nach von steht der Dativ dem."
-              }
-            },
-            {
-              "type": "grammar_gap_choice",
-              "itemId": "ex-v-choice-3",
-              "before": "Wir kennen die Freunde von",
-              "after": "Kindern.",
-              "choices": [
-                { "choiceId": "c-1", "text": "die" },
-                { "choiceId": "c-2", "text": "dem" },
-                { "choiceId": "c-3", "text": "der" },
-                { "choiceId": "c-4", "text": "den" }
-              ],
-              "answerChoiceId": "c-4",
-              "hint": null,
-              "ruleIds": ["rule-von"],
-              "answerExplanation": {
-                "en": "In the plural, von takes den, and the noun gets -n: von den Kindern.",
-                "fr": "Au pluriel, von prend den et le nom reçoit -n : von den Kindern.",
-                "de": "Im Plural steht nach von den, und das Nomen bekommt -n: von den Kindern."
-              }
-            },
-            {
-              "type": "grammar_gap_choice",
-              "itemId": "ex-v-choice-4",
-              "before": "Das ist das Haus von",
-              "after": "Eltern.",
-              "choices": [
-                { "choiceId": "c-1", "text": "meinem" },
-                { "choiceId": "c-2", "text": "meiner" },
-                { "choiceId": "c-3", "text": "meinen" },
-                { "choiceId": "c-4", "text": "meine" }
-              ],
-              "answerChoiceId": "c-3",
-              "hint": null,
-              "ruleIds": ["rule-von"],
-              "answerExplanation": {
-                "en": "Eltern is plural, so after von the dative is meinen.",
-                "fr": "Eltern est au pluriel, donc après von le datif est meinen.",
-                "de": "Eltern ist Plural, also heißt es nach von im Dativ meinen."
+                "en": "Kindern is dative plural, so the article is den.",
+                "fr": "Kindern est un datif pluriel, donc l'article est den.",
+                "de": "Kindern ist Dativ Plural, also ist der Artikel den."
               }
             }
           ]
@@ -565,18 +619,18 @@
       ]
     },
     {
-      "id": "ex-v-typing",
+      "id": "ex-von-typing",
       "role": "exercise",
       "blockId": "block-von",
       "label": {
-        "en": "Typed gaps",
-        "fr": "Phrases à trous à écrire",
-        "de": "Lücken zum Schreiben"
+        "en": "Typed gaps 2",
+        "fr": "Phrases à trous à écrire 2",
+        "de": "Lücken zum Schreiben 2"
       },
       "pages": [
         {
-          "pageId": "ex-v-typing-1",
-          "estimatedDurationS": 80,
+          "pageId": "ex-von-typing-1",
+          "estimatedDurationS": 60,
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
@@ -586,70 +640,62 @@
           "items": [
             {
               "type": "grammar_gap_typing",
-              "itemId": "ex-v-typing-1",
-              "before": "Das ist die Tasche von",
-              "after": "Frau.",
-              "accepted": { "answers": ["der"] },
-              "hint": {
-                "en": "die Frau, dative",
-                "fr": "die Frau, datif",
-                "de": "die Frau, Dativ"
-              },
-              "ruleIds": ["rule-von"],
-              "answerExplanation": {
-                "en": "Frau is feminine; after von it takes the dative der.",
-                "fr": "Frau est féminin ; après von, il prend le datif der.",
-                "de": "Frau ist feminin; nach von steht der Dativ der."
-              }
-            },
-            {
-              "type": "grammar_gap_typing",
-              "itemId": "ex-v-typing-2",
-              "before": "Hier ist das Heft von",
-              "after": "Schüler.",
-              "accepted": { "answers": ["dem"] },
-              "hint": {
-                "en": "der Schüler, dative",
-                "fr": "der Schüler, datif",
-                "de": "der Schüler, Dativ"
-              },
-              "ruleIds": ["rule-von"],
-              "answerExplanation": {
-                "en": "Schüler is masculine; after von it takes the dative dem.",
-                "fr": "Schüler est masculin ; après von, il prend le datif dem.",
-                "de": "Schüler ist maskulin; nach von steht der Dativ dem."
-              }
-            },
-            {
-              "type": "grammar_gap_typing",
-              "itemId": "ex-v-typing-3",
-              "before": "Das sind die Spielzeuge von",
-              "after": "Kindern.",
-              "accepted": { "answers": ["den"] },
-              "hint": { "en": "plural, dative", "fr": "pluriel, datif", "de": "Plural, Dativ" },
-              "ruleIds": ["rule-von"],
-              "answerExplanation": {
-                "en": "In the plural, von takes den: von den Kindern.",
-                "fr": "Au pluriel, von prend den : von den Kindern.",
-                "de": "Im Plural steht nach von den: von den Kindern."
-              }
-            },
-            {
-              "type": "grammar_gap_typing",
-              "itemId": "ex-v-typing-4",
+              "itemId": "ex-von-typing-1",
               "before": "Das ist das Auto",
               "after": "Anna.",
               "accepted": { "answers": ["von"] },
-              "hint": {
-                "en": "a preposition, no -s",
-                "fr": "une préposition, pas de -s",
-                "de": "eine Präposition, kein -s"
-              },
-              "ruleIds": ["rule-von"],
+              "hint": { "en": "preposition", "fr": "préposition", "de": "Präposition" },
+              "ruleIds": ["rule-von-dative"],
               "answerExplanation": {
-                "en": "With von you do not add -s to the name: das Auto von Anna.",
-                "fr": "Avec von, on n’ajoute pas -s au prénom : das Auto von Anna.",
-                "de": "Mit von bekommt der Name kein -s: das Auto von Anna."
+                "en": "The owner follows after von: das Auto von Anna.",
+                "fr": "Le possesseur vient après von : das Auto von Anna.",
+                "de": "Der Besitzer steht nach von: das Auto von Anna."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-von-typing-2",
+              "before": "Das Fahrrad",
+              "after": "Lehrer ist neu.",
+              "accepted": { "answers": ["vom", "von dem"] },
+              "hint": { "en": "von + dem", "fr": "von + dem", "de": "von + dem" },
+              "ruleIds": ["rule-von-dative"],
+              "answerExplanation": {
+                "en": "Von and dem become vom: das Fahrrad vom Lehrer.",
+                "fr": "Von et dem deviennent vom : das Fahrrad vom Lehrer.",
+                "de": "Von und dem werden zu vom: das Fahrrad vom Lehrer."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-von-typing-3",
+              "before": "Das ist das Haus von",
+              "after": "Eltern.",
+              "accepted": { "answers": ["meinen"] },
+              "hint": { "en": "mein-, plural", "fr": "mein-, pluriel", "de": "mein-, Plural" },
+              "ruleIds": ["rule-von-dative"],
+              "answerExplanation": {
+                "en": "Eltern is plural, so after von the dative is meinen.",
+                "fr": "Eltern est au pluriel, donc après von le datif est meinen.",
+                "de": "Eltern ist Plural, also ist der Dativ nach von meinen."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-von-typing-4",
+              "before": "Wo sind die Schuhe von",
+              "after": "Kindern?",
+              "accepted": { "answers": ["den"] },
+              "hint": {
+                "en": "plural, definite article",
+                "fr": "pluriel, article défini",
+                "de": "Plural, bestimmter Artikel"
+              },
+              "ruleIds": ["rule-von-dative"],
+              "answerExplanation": {
+                "en": "Kindern is dative plural, so the article is den.",
+                "fr": "Kindern est un datif pluriel, donc l'article est den.",
+                "de": "Kindern ist Dativ Plural, also ist der Artikel den."
               }
             }
           ]
@@ -657,14 +703,14 @@
       ]
     },
     {
-      "id": "ex-v-order",
+      "id": "ex-von-order",
       "role": "exercise",
       "blockId": "block-von",
-      "label": { "en": "Word order", "fr": "Ordre des mots", "de": "Wortstellung" },
+      "label": { "en": "Word order 2", "fr": "Ordre des mots 2", "de": "Wortstellung 2" },
       "pages": [
         {
-          "pageId": "ex-v-order-1",
-          "estimatedDurationS": 120,
+          "pageId": "ex-von-order-1",
+          "estimatedDurationS": 60,
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
@@ -674,85 +720,64 @@
           "items": [
             {
               "type": "grammar_word_order",
-              "itemId": "ex-v-order-1",
+              "itemId": "ex-von-order-1",
               "tokens": [
-                { "tokenId": "t-1", "text": "ist" },
-                { "tokenId": "t-2", "text": "Tim" },
-                { "tokenId": "t-3", "text": "Haus" },
-                { "tokenId": "t-4", "text": "alt" },
-                { "tokenId": "t-5", "text": "Das" },
-                { "tokenId": "t-6", "text": "von" },
-                { "tokenId": "t-7", "text": "." }
-              ],
-              "acceptedOrders": [["t-5", "t-3", "t-6", "t-2", "t-1", "t-4", "t-7"]],
-              "ruleIds": ["rule-von"],
-              "answerExplanation": {
-                "en": "The owner follows the thing owned with von: das Haus von Tim.",
-                "fr": "Avec von, le possesseur suit l’objet : das Haus von Tim.",
-                "de": "Mit von folgt der Besitzer nach der Sache: das Haus von Tim."
-              }
-            },
-            {
-              "type": "grammar_word_order",
-              "itemId": "ex-v-order-2",
-              "tokens": [
-                { "tokenId": "t-1", "text": "Lehrerin" },
-                { "tokenId": "t-2", "text": "das" },
-                { "tokenId": "t-3", "text": "von" },
-                { "tokenId": "t-4", "text": "Wo" },
-                { "tokenId": "t-5", "text": "?" },
-                { "tokenId": "t-6", "text": "Fahrrad" },
-                { "tokenId": "t-7", "text": "der" },
-                { "tokenId": "t-8", "text": "ist" }
-              ],
-              "acceptedOrders": [["t-4", "t-8", "t-2", "t-6", "t-3", "t-7", "t-1", "t-5"]],
-              "ruleIds": ["rule-von"],
-              "answerExplanation": {
-                "en": "Lehrerin is feminine, so von is followed by der: von der Lehrerin.",
-                "fr": "Lehrerin est féminin, donc von est suivi de der : von der Lehrerin.",
-                "de": "Lehrerin ist feminin, also folgt auf von der: von der Lehrerin."
-              }
-            },
-            {
-              "type": "grammar_word_order",
-              "itemId": "ex-v-order-3",
-              "tokens": [
-                { "tokenId": "t-1", "text": "den" },
-                { "tokenId": "t-2", "text": "Ich" },
-                { "tokenId": "t-3", "text": "Kindern" },
-                { "tokenId": "t-4", "text": "Freunde" },
-                { "tokenId": "t-5", "text": "kenne" },
-                { "tokenId": "t-6", "text": "von" },
-                { "tokenId": "t-7", "text": "die" },
-                { "tokenId": "t-8", "text": "." }
-              ],
-              "acceptedOrders": [["t-2", "t-5", "t-7", "t-4", "t-6", "t-1", "t-3", "t-8"]],
-              "ruleIds": ["rule-von"],
-              "answerExplanation": {
-                "en": "In the plural, von takes den and the noun gets -n: von den Kindern.",
-                "fr": "Au pluriel, von prend den et le nom reçoit -n : von den Kindern.",
-                "de": "Im Plural steht nach von den, und das Nomen bekommt -n: von den Kindern."
-              }
-            },
-            {
-              "type": "grammar_word_order",
-              "itemId": "ex-v-order-4",
-              "tokens": [
-                { "tokenId": "t-1", "text": "schön" },
-                { "tokenId": "t-2", "text": "Chef" },
-                { "tokenId": "t-3", "text": "Geschenk" },
-                { "tokenId": "t-4", "text": "dem" },
-                { "tokenId": "t-5", "text": "Das" },
+                { "tokenId": "t-1", "text": "von" },
+                { "tokenId": "t-2", "text": "Das" },
+                { "tokenId": "t-3", "text": "Anna" },
+                { "tokenId": "t-4", "text": "." },
+                { "tokenId": "t-5", "text": "das" },
                 { "tokenId": "t-6", "text": "ist" },
-                { "tokenId": "t-7", "text": "von" },
-                { "tokenId": "t-8", "text": "." }
+                { "tokenId": "t-7", "text": "Auto" }
               ],
-              "acceptedOrders": [["t-5", "t-3", "t-7", "t-4", "t-2", "t-6", "t-1", "t-8"]],
-              "ruleIds": ["rule-von"],
+              "acceptedOrders": [["t-2", "t-6", "t-5", "t-7", "t-1", "t-3", "t-4"]],
+              "ruleIds": ["rule-von-dative"],
               "answerExplanation": {
-                "en": "Chef is masculine, so von is followed by dem: von dem Chef.",
-                "fr": "Chef est masculin, donc von est suivi de dem : von dem Chef.",
-                "de": "Chef ist maskulin, also folgt auf von dem: von dem Chef."
+                "en": "The thing comes first, then von and the owner.",
+                "fr": "La chose vient d'abord, puis von et le possesseur.",
+                "de": "Zuerst steht die Sache, dann von und der Besitzer."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-von-order-2",
+              "tokens": [
+                { "tokenId": "t-1", "text": "Eltern" },
+                { "tokenId": "t-2", "text": "Wo" },
+                { "tokenId": "t-3", "text": "von" },
+                { "tokenId": "t-4", "text": "?" },
+                { "tokenId": "t-5", "text": "Haus" },
+                { "tokenId": "t-6", "text": "deinen" },
+                { "tokenId": "t-7", "text": "ist" },
+                { "tokenId": "t-8", "text": "das" }
+              ],
+              "acceptedOrders": [["t-2", "t-7", "t-8", "t-5", "t-3", "t-6", "t-1", "t-4"]],
+              "ruleIds": ["rule-von-dative"],
+              "answerExplanation": {
+                "en": "After von comes the dative: von deinen Eltern.",
+                "fr": "Après von vient le datif : von deinen Eltern.",
+                "de": "Nach von steht der Dativ: von deinen Eltern."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-von-order-3",
+              "tokens": [
+                { "tokenId": "t-1", "text": "Buch" },
+                { "tokenId": "t-2", "text": "der" },
+                { "tokenId": "t-3", "text": "Wo" },
+                { "tokenId": "t-4", "text": "Lehrerin" },
+                { "tokenId": "t-5", "text": "?" },
+                { "tokenId": "t-6", "text": "liegt" },
+                { "tokenId": "t-7", "text": "das" },
+                { "tokenId": "t-8", "text": "von" }
+              ],
+              "acceptedOrders": [["t-3", "t-6", "t-7", "t-1", "t-8", "t-2", "t-4", "t-5"]],
+              "ruleIds": ["rule-von-dative"],
+              "answerExplanation": {
+                "en": "Feminine dative after von: von der Lehrerin.",
+                "fr": "Datif féminin après von : von der Lehrerin.",
+                "de": "Feminin im Dativ nach von: von der Lehrerin."
               }
             }
           ]
@@ -786,8 +811,8 @@
       "pages": [
         {
           "pageId": "exam-names",
-          "estimatedDurationS": 100,
-          "timeLimitS": 160,
+          "estimatedDurationS": 60,
+          "timeLimitS": 100,
           "instructions": {
             "en": "Type the missing words.",
             "fr": "Écrivez les mots manquants.",
@@ -798,64 +823,64 @@
               "type": "grammar_gap_typing",
               "itemId": "exam-names-1",
               "before": "Das ist",
-              "after": "Garten.",
-              "accepted": { "answers": ["Julias"] },
+              "after": "Hund. (Ben)",
+              "accepted": { "answers": ["Bens"] },
               "hint": null,
               "ruleIds": ["rule-name-s"],
               "answerExplanation": {
-                "en": "Julia takes -s without an apostrophe: Julias Garten.",
-                "fr": "Julia prend -s sans apostrophe : Julias Garten.",
-                "de": "Julia bekommt -s ohne Apostroph: Julias Garten."
+                "en": "Add -s to the name: Bens Hund.",
+                "fr": "On ajoute -s au prénom : Bens Hund.",
+                "de": "An den Namen kommt -s: Bens Hund."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-names-2",
-              "before": "Ich liebe",
-              "after": "Katze.",
-              "accepted": { "answers": ["Felix'", "Felix’"] },
+              "before": "Hier ist",
+              "after": "Brille. (Hans)",
+              "accepted": { "answers": ["Hans'", "Hans’"] },
               "hint": null,
               "ruleIds": ["rule-apostrophe"],
               "answerExplanation": {
-                "en": "Felix ends in -x, so only an apostrophe follows: Felix' Katze.",
-                "fr": "Felix finit par -x, donc seulement une apostrophe : Felix' Katze.",
-                "de": "Felix endet auf -x, also steht nur ein Apostroph: Felix' Katze."
+                "en": "Hans ends in -s: only an apostrophe, Hans' Brille.",
+                "fr": "Hans finit par -s : seulement une apostrophe, Hans' Brille.",
+                "de": "Hans endet auf -s: nur ein Apostroph, Hans' Brille."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-names-3",
-              "before": "Wo ist",
-              "after": "Mütze?",
-              "accepted": { "answers": ["Pias"] },
+              "before": "Wir besuchen",
+              "after": "Eltern. (Julia)",
+              "accepted": { "answers": ["Julias"] },
               "hint": null,
               "ruleIds": ["rule-name-s"],
               "answerExplanation": {
-                "en": "Pia takes -s without an apostrophe: Pias Mütze.",
-                "fr": "Pia prend -s sans apostrophe : Pias Mütze.",
-                "de": "Pia bekommt -s ohne Apostroph: Pias Mütze."
+                "en": "Add -s to the name: Julias Eltern.",
+                "fr": "On ajoute -s au prénom : Julias Eltern.",
+                "de": "An den Namen kommt -s: Julias Eltern."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-names-4",
-              "before": "Hier liegt",
-              "after": "Mantel.",
-              "accepted": { "answers": ["Hans'", "Hans’"] },
+              "before": "Das ist",
+              "after": "Schlüssel. (Alex)",
+              "accepted": { "answers": ["Alex'", "Alex’"] },
               "hint": null,
               "ruleIds": ["rule-apostrophe"],
               "answerExplanation": {
-                "en": "Hans ends in -s, so only an apostrophe follows: Hans' Mantel.",
-                "fr": "Hans finit par -s, donc seulement une apostrophe : Hans' Mantel.",
-                "de": "Hans endet auf -s, also steht nur ein Apostroph: Hans' Mantel."
+                "en": "Alex ends in -x: only an apostrophe, Alex' Schlüssel.",
+                "fr": "Alex finit par -x : seulement une apostrophe, Alex' Schlüssel.",
+                "de": "Alex endet auf -x: nur ein Apostroph, Alex' Schlüssel."
               }
             }
           ]
         },
         {
           "pageId": "exam-von",
-          "estimatedDurationS": 75,
-          "timeLimitS": 120,
+          "estimatedDurationS": 60,
+          "timeLimitS": 100,
           "instructions": {
             "en": "Type the missing words.",
             "fr": "Écrivez les mots manquants.",
@@ -865,51 +890,65 @@
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-von-1",
-              "before": "Das ist die Tasche",
-              "after": "Frau Meier.",
-              "accepted": { "answers": ["von"] },
+              "before": "Das ist das Zimmer von",
+              "after": "Schwester. (mein)",
+              "accepted": { "answers": ["meiner"] },
               "hint": null,
-              "ruleIds": ["rule-von"],
+              "ruleIds": ["rule-von-dative"],
               "answerExplanation": {
-                "en": "Possession with a title and name is shown with von: die Tasche von Frau Meier.",
-                "fr": "La possession avec un titre et un nom s’exprime avec von : die Tasche von Frau Meier.",
-                "de": "Besitz bei Titel und Name gibst du mit von an: die Tasche von Frau Meier."
+                "en": "Die Schwester is feminine, so the dative after von is meiner.",
+                "fr": "Die Schwester est féminin, donc le datif après von est meiner.",
+                "de": "Die Schwester ist feminin, also ist der Dativ nach von meiner."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-von-2",
-              "before": "Wo ist das Buch von",
-              "after": "Mädchen?",
-              "accepted": { "answers": ["dem"] },
+              "before": "Wo ist die Tasche",
+              "after": "Lehrerin?",
+              "accepted": { "answers": ["von der"] },
               "hint": null,
-              "ruleIds": ["rule-von"],
+              "ruleIds": ["rule-von-dative"],
               "answerExplanation": {
-                "en": "Mädchen is neuter; after von it takes the dative dem.",
-                "fr": "Mädchen est neutre ; après von, il prend le datif dem.",
-                "de": "Mädchen ist neutral; nach von steht der Dativ dem."
+                "en": "Von takes the dative, and the feminine article is der: von der Lehrerin.",
+                "fr": "Von demande le datif, et l'article féminin est der : von der Lehrerin.",
+                "de": "Von verlangt den Dativ, und der feminine Artikel ist der: von der Lehrerin."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-von-3",
-              "before": "Ich kenne den Lehrer von",
-              "after": "Kindern.",
-              "accepted": { "answers": ["den"] },
+              "before": "Der Hund",
+              "after": "Kind ist klein.",
+              "accepted": { "answers": ["vom", "von dem"] },
               "hint": null,
-              "ruleIds": ["rule-von"],
+              "ruleIds": ["rule-von-dative"],
               "answerExplanation": {
-                "en": "In the plural, von takes den: von den Kindern.",
-                "fr": "Au pluriel, von prend den : von den Kindern.",
-                "de": "Im Plural steht nach von den: von den Kindern."
+                "en": "Das Kind in the dative is dem Kind, and von dem becomes vom.",
+                "fr": "Das Kind au datif donne dem Kind, et von dem devient vom.",
+                "de": "Das Kind im Dativ ist dem Kind, und von dem wird zu vom."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-von-4",
+              "before": "Die Hausaufgaben",
+              "after": "Kindern sind schwer.",
+              "accepted": { "answers": ["von den"] },
+              "hint": null,
+              "ruleIds": ["rule-von-dative"],
+              "answerExplanation": {
+                "en": "Von takes the dative, and the plural article is den: von den Kindern.",
+                "fr": "Von demande le datif, et l'article pluriel est den : von den Kindern.",
+                "de": "Von verlangt den Dativ, und der Pluralartikel ist den: von den Kindern."
               }
             }
           ]
         },
         {
           "pageId": "exam-order",
-          "estimatedDurationS": 90,
-          "timeLimitS": 150,
+          "estimatedDurationS": 60,
+          "timeLimitS": 100,
           "instructions": {
             "en": "Put the words in the right order.",
             "fr": "Mettez les mots dans le bon ordre.",
@@ -920,56 +959,57 @@
               "type": "grammar_word_order",
               "itemId": "exam-order-1",
               "tokens": [
-                { "tokenId": "t-1", "text": "kaputt" },
-                { "tokenId": "t-2", "text": "Lena" },
-                { "tokenId": "t-3", "text": "ist" },
-                { "tokenId": "t-4", "text": "Fahrrad" },
-                { "tokenId": "t-5", "text": "von" },
-                { "tokenId": "t-6", "text": "Das" },
-                { "tokenId": "t-7", "text": "." }
+                { "tokenId": "t-1", "text": "Handy" },
+                { "tokenId": "t-2", "text": "Wo" },
+                { "tokenId": "t-3", "text": "?" },
+                { "tokenId": "t-4", "text": "Gabis" },
+                { "tokenId": "t-5", "text": "ist" }
               ],
-              "acceptedOrders": [["t-6", "t-4", "t-5", "t-2", "t-3", "t-1", "t-7"]],
-              "ruleIds": ["rule-von"],
+              "acceptedOrders": [["t-2", "t-5", "t-4", "t-1", "t-3"]],
+              "ruleIds": ["rule-name-s"],
               "answerExplanation": {
-                "en": "The owner follows the thing owned with von: das Fahrrad von Lena.",
-                "fr": "Avec von, le possesseur suit l’objet : das Fahrrad von Lena.",
-                "de": "Mit von folgt der Besitzer nach der Sache: das Fahrrad von Lena."
+                "en": "The name with -s comes before the noun: Gabis Handy.",
+                "fr": "Le prénom avec -s se place devant le nom : Gabis Handy.",
+                "de": "Der Name mit -s steht vor dem Nomen: Gabis Handy."
               }
             },
             {
               "type": "grammar_word_order",
               "itemId": "exam-order-2",
               "tokens": [
-                { "tokenId": "t-1", "text": "Jacke" },
+                { "tokenId": "t-1", "text": "Lars'" },
                 { "tokenId": "t-2", "text": "?" },
                 { "tokenId": "t-3", "text": "Wo" },
-                { "tokenId": "t-4", "text": "Karls" },
-                { "tokenId": "t-5", "text": "ist" }
+                { "tokenId": "t-4", "text": "Brille" },
+                { "tokenId": "t-5", "text": "liegt" }
               ],
-              "acceptedOrders": [["t-3", "t-5", "t-4", "t-1", "t-2"]],
-              "ruleIds": ["rule-name-s"],
+              "acceptedOrders": [["t-3", "t-5", "t-1", "t-4", "t-2"]],
+              "ruleIds": ["rule-apostrophe"],
               "answerExplanation": {
-                "en": "The name with -s comes before the thing owned: Karls Jacke.",
-                "fr": "Le prénom avec -s précède l’objet : Karls Jacke.",
-                "de": "Der Name mit -s steht vor der Sache: Karls Jacke."
+                "en": "Lars ends in -s: Lars' stands before the noun.",
+                "fr": "Lars finit par -s : Lars' se place devant le nom.",
+                "de": "Lars endet auf -s: Lars' steht vor dem Nomen."
               }
             },
             {
               "type": "grammar_word_order",
               "itemId": "exam-order-3",
               "tokens": [
-                { "tokenId": "t-1", "text": "Ball" },
-                { "tokenId": "t-2", "text": "sehe" },
-                { "tokenId": "t-3", "text": "." },
-                { "tokenId": "t-4", "text": "Max'" },
-                { "tokenId": "t-5", "text": "Ich" }
+                { "tokenId": "t-1", "text": "Auto" },
+                { "tokenId": "t-2", "text": "deinem" },
+                { "tokenId": "t-3", "text": "Wo" },
+                { "tokenId": "t-4", "text": "?" },
+                { "tokenId": "t-5", "text": "von" },
+                { "tokenId": "t-6", "text": "ist" },
+                { "tokenId": "t-7", "text": "Vater" },
+                { "tokenId": "t-8", "text": "das" }
               ],
-              "acceptedOrders": [["t-5", "t-2", "t-4", "t-1", "t-3"]],
-              "ruleIds": ["rule-apostrophe"],
+              "acceptedOrders": [["t-3", "t-6", "t-8", "t-1", "t-5", "t-2", "t-7", "t-4"]],
+              "ruleIds": ["rule-von-dative"],
               "answerExplanation": {
-                "en": "Max ends in -x, so only an apostrophe follows: Max' Ball.",
-                "fr": "Max finit par -x, donc seulement une apostrophe : Max' Ball.",
-                "de": "Max endet auf -x, also steht nur ein Apostroph: Max' Ball."
+                "en": "The thing comes first, then von and the dative: von deinem Vater.",
+                "fr": "La chose vient d'abord, puis von et le datif : von deinem Vater.",
+                "de": "Zuerst steht die Sache, dann von und der Dativ: von deinem Vater."
               }
             }
           ]

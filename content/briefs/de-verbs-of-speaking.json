@@ -1,0 +1,588 @@
+{
+  "schemaVersion": 2,
+  "id": "de-verbs-of-speaking",
+  "lang": "de",
+  "level": "C2",
+  "locales": ["en", "fr", "de"],
+  "title": "Verben des Sprechens",
+  "objective": {
+    "en": "Distinguish ways of speaking precisely, from flüstern and nuscheln to keifen and brüllen.",
+    "fr": "Distinguer précisément les manières de parler, de flüstern et nuscheln à keifen et brüllen.",
+    "de": "Arten des Sprechens genau unterscheiden: von flüstern und nuscheln bis keifen und brüllen."
+  },
+  "estimatedMinutes": 19,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:37:11.792Z",
+    "inputHashes": { "outline": "5c5fb3df4d247af7ede6eed56bda82e6d1def86d04f6bec93337dcb0e54c76bd" }
+  },
+  "kind": "vocabulary",
+  "theme": "language",
+  "coverageNotes": {
+    "en": "Twelve verbs of speaking in two groups: quiet or indistinct speech, and confused, shrill or loud speech. Each verb names the manner of speaking, not only the act.",
+    "fr": "Douze verbes du parler en deux groupes : la parole basse ou peu distincte, puis la parole confuse, stridente ou forte. Chaque verbe nomme la manière de parler, pas seulement l’acte.",
+    "de": "Zwölf Verben des Sprechens in zwei Gruppen: leises oder undeutliches Sprechen sowie wirres, schrilles oder lautes Sprechen. Jedes Verb benennt die Art des Sprechens, nicht nur den Vorgang."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve verbs fill two groups of six, enough to contrast nuances without overloading C2 learners.",
+    "fr": "Douze verbes forment deux groupes de six, assez pour contraster les nuances sans surcharger des apprenants C2.",
+    "de": "Zwölf Verben ergeben zwei Gruppen zu je sechs, genug für feine Unterschiede, ohne C2-Lernende zu überladen."
+  },
+  "difficultyBalance": {
+    "en": "Common verbs such as flüstern and brüllen anchor the lesson; raunen, säuseln and keifen are the demanding ones.",
+    "fr": "Des verbes courants comme flüstern et brüllen ancrent la leçon ; raunen, säuseln et keifen sont les plus exigeants.",
+    "de": "Geläufige Verben wie flüstern und brüllen bilden den Anker; raunen, säuseln und keifen sind die anspruchsvolleren."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "leise",
+      "label": {
+        "en": "Quiet and indistinct speech",
+        "fr": "Parole basse et peu distincte",
+        "de": "Leises und undeutliches Sprechen"
+      },
+      "targetIds": ["fluestern", "murmeln", "raunen", "saeuseln", "nuscheln", "stammeln"],
+      "introduction": {
+        "en": "These verbs describe **quiet** or **indistinct** speech:\n\n- `flüstern`: without a full voice, so that others cannot hear\n- `murmeln`: quietly and half to oneself\n- `raunen`: in a secretive, hinting tone\n- `säuseln`: softly, often flattering\n- `nuscheln`: indistinctly, mouth barely open\n- `stammeln`: haltingly, from nerves or embarrassment",
+        "fr": "Ces verbes décrivent une parole **basse** ou **peu distincte** :\n\n- `flüstern` : sans voix pleine, pour que les autres n’entendent pas\n- `murmeln` : à voix basse et à moitié pour soi\n- `raunen` : sur un ton secret, plein d’allusions\n- `säuseln` : doucement, souvent de façon flatteuse\n- `nuscheln` : de façon indistincte, la bouche à peine ouverte\n- `stammeln` : en hésitant, par émotion ou par gêne",
+        "de": "Diese Verben beschreiben **leises** oder **undeutliches** Sprechen:\n\n- `flüstern`: ohne volle Stimme, damit andere nichts hören\n- `murmeln`: leise und halb für sich\n- `raunen`: geheimnisvoll, mit Andeutungen\n- `säuseln`: sanft, oft schmeichelnd\n- `nuscheln`: undeutlich, mit kaum geöffnetem Mund\n- `stammeln`: stockend, aus Aufregung oder Verlegenheit"
+      }
+    },
+    {
+      "id": "laut",
+      "label": {
+        "en": "Confused, shrill and loud speech",
+        "fr": "Parole confuse, stridente et forte",
+        "de": "Wirres, schrilles und lautes Sprechen"
+      },
+      "targetIds": ["lallen", "schwafeln", "zischen", "keifen", "kreischen", "bruellen"],
+      "introduction": {
+        "en": "These verbs describe **confused**, **shrill** or **loud** speech:\n\n- `lallen`: with a heavy tongue, for example when drunk\n- `schwafeln` (colloquial): talking at length without substance\n- `zischen`: sharply through the teeth\n- `keifen`: scolding in a shrill, quarrelsome voice\n- `kreischen`: crying out high and piercingly\n- `brüllen`: shouting very loudly and roughly",
+        "fr": "Ces verbes décrivent une parole **confuse**, **stridente** ou **forte** :\n\n- `lallen` : la langue pâteuse, par exemple en état d’ivresse\n- `schwafeln` (familier) : parler longuement sans rien dire\n- `zischen` : sèchement entre les dents\n- `keifen` : gronder d’une voix aigre et querelleuse\n- `kreischen` : crier d’une voix haute et perçante\n- `brüllen` : crier très fort et rudement",
+        "de": "Diese Verben beschreiben **wirres**, **schrilles** oder **lautes** Sprechen:\n\n- `lallen`: mit schwerer Zunge, etwa betrunken\n- `schwafeln` (ugs.): lange und inhaltsleer reden\n- `zischen`: scharf durch die Zähne\n- `keifen`: schrill und zänkisch schimpfen\n- `kreischen`: hoch und durchdringend schreien\n- `brüllen`: sehr laut und derb rufen"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "fluestern",
+      "term": "flüstern",
+      "translations": { "en": ["whisper"], "fr": ["chuchoter"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "flüstern",
+      "examForms": ["flüstern"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈflʏstɐn/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Sie flüsterte ihm das Geheimnis ins Ohr.",
+        "translation": {
+          "en": "She whispered the secret in his ear.",
+          "fr": "Elle lui a chuchoté le secret à l’oreille."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Flüstern means speaking without a full voice so that others cannot hear.",
+        "fr": "Flüstern signifie parler sans voix pleine pour que les autres n’entendent pas.",
+        "de": "Flüstern heißt, ohne volle Stimme zu sprechen, damit andere nichts hören."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Die Schülerin ",
+        "after": " ihrem Nachbarn die Lösung ins Ohr, damit der Lehrer nichts hört.",
+        "accepted": { "answers": ["flüstert"] },
+        "referenceTargetIds": ["fluestern", "bruellen", "schwafeln", "kreischen"],
+        "explanation": {
+          "en": "Flüstern fits: she does not want the teacher to hear.",
+          "fr": "Flüstern convient : elle ne veut pas que le professeur entende.",
+          "de": "Flüstern passt: Der Lehrer soll nichts hören."
+        }
+      },
+      "listeningOptionTargetIds": ["fluestern", "raunen", "saeuseln", "schwafeln"]
+    },
+    {
+      "id": "murmeln",
+      "term": "murmeln",
+      "translations": { "en": ["murmur"], "fr": ["murmurer"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "murmeln",
+      "examForms": ["murmeln"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈmʊʁmln̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Er murmelte eine Entschuldigung und verließ den Raum.",
+        "translation": {
+          "en": "He murmured an apology and left the room.",
+          "fr": "Il murmura une excuse et quitta la pièce."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Murmeln is quiet and half to oneself; nuscheln is unclear because of poor articulation.",
+        "fr": "Murmeln est bas et à moitié pour soi ; nuscheln est peu clair à cause d’une mauvaise articulation.",
+        "de": "Murmeln ist leise und halb für sich; nuscheln ist wegen schlechter Artikulation unklar."
+      },
+      "explanation": {
+        "en": "Murmeln means speaking quietly and half to oneself, often without a particular listener.",
+        "fr": "Murmeln signifie parler bas, à moitié pour soi, souvent sans destinataire précis.",
+        "de": "Murmeln heißt, leise und halb für sich zu sprechen, oft ohne bestimmten Adressaten."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "murmur (quietly, half to oneself)",
+        "fr": "murmurer (à voix basse, à moitié pour soi)"
+      },
+      "gap": {
+        "before": "Der alte Mann ",
+        "after": " beim Zeitunglesen leise vor sich hin.",
+        "accepted": { "answers": ["murmelt"] },
+        "referenceTargetIds": ["murmeln", "keifen", "kreischen", "bruellen"],
+        "explanation": {
+          "en": "Murmeln fits: he speaks quietly, to himself.",
+          "fr": "Murmeln convient : il parle bas, pour lui-même.",
+          "de": "Murmeln passt: Er spricht leise, für sich."
+        }
+      },
+      "listeningOptionTargetIds": ["murmeln", "nuscheln", "stammeln", "lallen"]
+    },
+    {
+      "id": "raunen",
+      "term": "raunen",
+      "translations": { "en": ["whisper secretively"], "fr": ["murmurer mystérieusement"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "raunen",
+      "examForms": ["raunen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʁaʊnən/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Man raunt, die Firma stehe vor dem Aus.",
+        "translation": {
+          "en": "People whisper that the company is about to collapse.",
+          "fr": "On murmure que l’entreprise est au bord de la faillite."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Raunen means speaking in a low, secretive voice, often passing on a hint or a rumour.",
+        "fr": "Raunen signifie parler d’une voix basse et secrète, souvent pour transmettre une allusion ou une rumeur.",
+        "de": "Raunen heißt, mit leiser, geheimnisvoller Stimme zu sprechen, oft mit einer Andeutung oder einem Gerücht."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Auf dem Flur ",
+        "after": " man sich geheimnisvoll zu, der Direktor werde bald zurücktreten.",
+        "accepted": { "answers": ["raunt"] },
+        "referenceTargetIds": ["raunen", "bruellen", "kreischen", "schwafeln"],
+        "explanation": {
+          "en": "Raunen fits: a secretive rumour is passed on.",
+          "fr": "Raunen convient : on se transmet une rumeur en secret.",
+          "de": "Raunen passt: Ein Gerücht wird geheimnisvoll weitergegeben."
+        }
+      },
+      "listeningOptionTargetIds": ["fluestern", "raunen", "saeuseln", "schwafeln"]
+    },
+    {
+      "id": "saeuseln",
+      "term": "säuseln",
+      "translations": { "en": ["speak in a honeyed tone"], "fr": ["susurrer"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "säuseln",
+      "examForms": ["säuseln"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈzɔʏzln̩/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Er säuselte ihr Komplimente ins Ohr.",
+        "translation": {
+          "en": "He cooed compliments in her ear.",
+          "fr": "Il lui susurrait des compliments à l’oreille."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Säuseln means speaking softly and gently, often in a flattering or ingratiating way.",
+        "fr": "Säuseln signifie parler doucement, souvent d’un ton flatteur ou enjôleur.",
+        "de": "Säuseln heißt, sanft zu sprechen, oft schmeichelnd oder einschmeichelnd."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Der Verkäufer ",
+        "after": " mit honigsüßer Stimme: „Für Sie mache ich einen Sonderpreis.“",
+        "accepted": { "answers": ["säuselte"] },
+        "referenceTargetIds": ["saeuseln", "bruellen", "keifen", "lallen"],
+        "explanation": {
+          "en": "Säuseln fits: the honeyed voice is ingratiating.",
+          "fr": "Säuseln convient : la voix mielleuse est enjôleuse.",
+          "de": "Säuseln passt: Die honigsüße Stimme ist schmeichelnd."
+        }
+      },
+      "listeningOptionTargetIds": ["fluestern", "raunen", "saeuseln", "schwafeln"]
+    },
+    {
+      "id": "nuscheln",
+      "term": "nuscheln",
+      "translations": { "en": ["mumble"], "fr": ["marmonner"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "nuscheln",
+      "examForms": ["nuscheln"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈnʊʃln̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Der Arzt nuschelte so, dass ich nichts verstand.",
+        "translation": {
+          "en": "The doctor mumbled so much that I understood nothing.",
+          "fr": "Le médecin marmonnait tellement que je n’ai rien compris."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Nuscheln means speaking indistinctly, with the mouth barely open.",
+        "fr": "Nuscheln signifie parler de façon indistincte, la bouche à peine ouverte.",
+        "de": "Nuscheln heißt, undeutlich und mit kaum geöffnetem Mund zu sprechen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "mumble (indistinctly, mouth barely open)",
+        "fr": "marmonner (de façon indistincte, la bouche à peine ouverte)"
+      },
+      "gap": {
+        "before": "Ich verstehe dich kaum, weil du so ",
+        "after": " und den Mund kaum aufmachst.",
+        "accepted": { "answers": ["nuschelst"] },
+        "referenceTargetIds": ["nuscheln", "bruellen", "zischen", "kreischen"],
+        "explanation": {
+          "en": "Nuscheln fits: the mouth is barely open, so speech is unclear.",
+          "fr": "Nuscheln convient : la bouche est à peine ouverte, la parole est peu claire.",
+          "de": "Nuscheln passt: Der Mund ist kaum offen, das Gesprochene ist unklar."
+        }
+      },
+      "listeningOptionTargetIds": ["murmeln", "nuscheln", "stammeln", "lallen"]
+    },
+    {
+      "id": "stammeln",
+      "term": "stammeln",
+      "translations": { "en": ["stammer"], "fr": ["balbutier"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "stammeln",
+      "examForms": ["stammeln"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʃtaməln/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Er stammelte eine verworrene Erklärung.",
+        "translation": {
+          "en": "He stammered a confused explanation.",
+          "fr": "Il balbutia une explication confuse."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Stammeln means speaking haltingly and incoherently, for example from nerves or embarrassment.",
+        "fr": "Stammeln signifie parler en hésitant et sans suite, par exemple par émotion ou par gêne.",
+        "de": "Stammeln heißt, stockend und zusammenhanglos zu sprechen, etwa aus Aufregung oder Verlegenheit."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Vor lauter Verlegenheit ",
+        "after": " er nur ein paar zusammenhanglose Worte.",
+        "accepted": { "answers": ["stammelte"] },
+        "referenceTargetIds": ["stammeln", "saeuseln", "keifen", "zischen"],
+        "explanation": {
+          "en": "Stammeln fits: embarrassment makes his speech halting and incoherent.",
+          "fr": "Stammeln convient : la gêne rend sa parole hésitante et sans suite.",
+          "de": "Stammeln passt: Die Verlegenheit macht das Sprechen stockend und zusammenhanglos."
+        }
+      },
+      "listeningOptionTargetIds": ["murmeln", "nuscheln", "stammeln", "lallen"]
+    },
+    {
+      "id": "lallen",
+      "term": "lallen",
+      "translations": { "en": ["slur one's words"], "fr": ["parler d’une voix pâteuse"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "lallen",
+      "examForms": ["lallen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈlalən/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Der Betrunkene lallte unverständliche Worte.",
+        "translation": {
+          "en": "The drunk man slurred unintelligible words.",
+          "fr": "L’homme ivre bredouillait des mots incompréhensibles."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Lallen means speaking with a heavy tongue and barely intelligibly, typically when drunk or half asleep.",
+        "fr": "Lallen signifie parler la langue pâteuse et à peine compréhensiblement, typiquement ivre ou à moitié endormi.",
+        "de": "Lallen heißt, mit schwerer Zunge und kaum verständlich zu sprechen, typischerweise betrunken oder schlaftrunken."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Nach dem fünften Bier ",
+        "after": " er nur noch, seine Zunge gehorchte ihm nicht mehr.",
+        "accepted": { "answers": ["lallte"] },
+        "referenceTargetIds": ["lallen", "fluestern", "raunen", "zischen"],
+        "explanation": {
+          "en": "Lallen fits: his tongue no longer obeys him after the beer.",
+          "fr": "Lallen convient : sa langue ne lui obéit plus après la bière.",
+          "de": "Lallen passt: Die Zunge gehorcht ihm nach dem Bier nicht mehr."
+        }
+      },
+      "listeningOptionTargetIds": ["murmeln", "nuscheln", "stammeln", "lallen"]
+    },
+    {
+      "id": "schwafeln",
+      "term": "schwafeln",
+      "translations": { "en": ["waffle", "blather"], "fr": ["radoter", "bavasser"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "schwafeln",
+      "examForms": ["schwafeln"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʃvaːfln̩/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Er schwafelt in jeder Sitzung über Dinge, von denen er nichts versteht.",
+        "translation": {
+          "en": "In every meeting he waffles on about things he knows nothing about.",
+          "fr": "À chaque réunion, il radote sur des sujets qu’il ne connaît pas."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Schwafeln (colloquial) means talking at length without any substance.",
+        "fr": "Schwafeln (familier) signifie parler longuement sans rien dire de substantiel.",
+        "de": "Schwafeln (ugs.) heißt, lange und ohne Inhalt zu reden."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Der Redner ",
+        "after": " schon eine Stunde und hat noch immer nichts Konkretes gesagt.",
+        "accepted": { "answers": ["schwafelt"] },
+        "referenceTargetIds": ["schwafeln", "zischen", "raunen", "saeuseln"],
+        "explanation": {
+          "en": "Schwafeln fits: an hour of talk with nothing concrete said.",
+          "fr": "Schwafeln convient : une heure de discours sans rien de concret.",
+          "de": "Schwafeln passt: Eine Stunde Gerede ohne Konkretes."
+        }
+      },
+      "listeningOptionTargetIds": ["fluestern", "raunen", "saeuseln", "schwafeln"]
+    },
+    {
+      "id": "zischen",
+      "term": "zischen",
+      "translations": { "en": ["hiss"], "fr": ["siffler"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "zischen",
+      "examForms": ["zischen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈtsɪʃn̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "„Raus hier!“, zischte er.",
+        "translation": { "en": "“Get out!” he hissed.", "fr": "« Dehors ! », siffla-t-il." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Zischen means speaking sharply through the teeth with a hissing sound, often in anger.",
+        "fr": "Zischen signifie parler sèchement entre les dents avec un sifflement, souvent par colère.",
+        "de": "Zischen heißt, scharf durch die Zähne und mit zischendem Laut zu sprechen, oft aus Wut."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "„Sei endlich still!“, ",
+        "after": " sie ihm zwischen den Zähnen zu.",
+        "accepted": { "answers": ["zischte"] },
+        "referenceTargetIds": ["zischen", "lallen", "schwafeln", "saeuseln"],
+        "explanation": {
+          "en": "Zischen fits: a sharp command through clenched teeth.",
+          "fr": "Zischen convient : un ordre sec entre les dents serrées.",
+          "de": "Zischen passt: Ein scharfer Befehl zwischen den Zähnen."
+        }
+      },
+      "listeningOptionTargetIds": ["zischen", "kreischen", "keifen", "bruellen"]
+    },
+    {
+      "id": "keifen",
+      "term": "keifen",
+      "translations": { "en": ["nag shrilly"], "fr": ["criailler"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "keifen",
+      "examForms": ["keifen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈkaɪfn̩/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Die beiden Nachbarinnen keiften sich über den Gartenzaun an.",
+        "translation": {
+          "en": "The two neighbours were screeching at each other over the garden fence.",
+          "fr": "Les deux voisines se criaillaient dessus par-dessus la clôture du jardin."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Keifen is scolding in a shrill, quarrelsome voice; kreischen is a piercing cry that need not scold.",
+        "fr": "Keifen, c’est gronder d’une voix aigre et querelleuse ; kreischen est un cri perçant qui ne gronde pas forcément.",
+        "de": "Keifen ist schrilles, zänkisches Schimpfen; kreischen ist ein durchdringender Schrei, der nicht schimpfen muss."
+      },
+      "explanation": {
+        "en": "Keifen means scolding in a shrill, quarrelsome voice.",
+        "fr": "Keifen signifie gronder d’une voix aigre et querelleuse.",
+        "de": "Keifen heißt, mit schriller, zänkischer Stimme zu schimpfen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Die Nachbarin ",
+        "after": " schon seit einer Stunde mit schriller, zänkischer Stimme über den Lärm im Treppenhaus.",
+        "accepted": { "answers": ["keift"] },
+        "referenceTargetIds": ["keifen", "fluestern", "murmeln", "saeuseln"],
+        "explanation": {
+          "en": "Keifen fits: shrill, quarrelsome complaining.",
+          "fr": "Keifen convient : des reproches aigres et querelleurs.",
+          "de": "Keifen passt: schrilles, zänkisches Schimpfen."
+        }
+      },
+      "listeningOptionTargetIds": ["zischen", "kreischen", "keifen", "bruellen"]
+    },
+    {
+      "id": "kreischen",
+      "term": "kreischen",
+      "translations": { "en": ["screech"], "fr": ["crier d’une voix stridente"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "kreischen",
+      "examForms": ["kreischen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈkʁaɪʃn̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Die Fans kreischten, als die Band die Bühne betrat.",
+        "translation": {
+          "en": "The fans screamed as the band came on stage.",
+          "fr": "Les fans hurlaient quand le groupe est monté sur scène."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Kreischen means crying out in a high, piercing voice, from fear, excitement or anger.",
+        "fr": "Kreischen signifie crier d’une voix haute et perçante, par peur, enthousiasme ou colère.",
+        "de": "Kreischen heißt, mit hoher, durchdringender Stimme zu schreien, aus Angst, Begeisterung oder Wut."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Als die Maus über den Boden huschte, ",
+        "after": " die Kinder vor Schreck.",
+        "accepted": { "answers": ["kreischten"] },
+        "referenceTargetIds": ["kreischen", "murmeln", "raunen", "nuscheln"],
+        "explanation": {
+          "en": "Kreischen fits: a high, piercing cry of fright.",
+          "fr": "Kreischen convient : un cri aigu et perçant de frayeur.",
+          "de": "Kreischen passt: ein hoher, durchdringender Schreckensschrei."
+        }
+      },
+      "listeningOptionTargetIds": ["zischen", "kreischen", "keifen", "bruellen"]
+    },
+    {
+      "id": "bruellen",
+      "term": "brüllen",
+      "translations": { "en": ["bellow", "roar"], "fr": ["hurler"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "brüllen",
+      "examForms": ["brüllen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈbʁʏlən/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Der Feldwebel brüllte seine Befehle über den Hof.",
+        "translation": {
+          "en": "The sergeant bellowed his orders across the yard.",
+          "fr": "L’adjudant hurlait ses ordres à travers la cour."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Brüllen means shouting very loudly and roughly.",
+        "fr": "Brüllen signifie crier très fort et rudement.",
+        "de": "Brüllen heißt, sehr laut und derb zu rufen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Der Trainer ",
+        "after": " seine Anweisungen so laut über den Platz, dass man ihn im ganzen Stadion hörte.",
+        "accepted": { "answers": ["brüllt"] },
+        "referenceTargetIds": ["bruellen", "fluestern", "raunen", "saeuseln"],
+        "explanation": {
+          "en": "Brüllen fits: he is heard in the whole stadium.",
+          "fr": "Brüllen convient : on l’entend dans tout le stade.",
+          "de": "Brüllen passt: Man hört ihn im ganzen Stadion."
+        }
+      },
+      "listeningOptionTargetIds": ["zischen", "kreischen", "keifen", "bruellen"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

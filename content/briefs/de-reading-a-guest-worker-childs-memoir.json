@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 2,
+  "id": "de-reading-a-guest-worker-childs-memoir",
+  "lang": "de",
+  "level": "C1",
+  "locales": ["en", "fr", "de"],
+  "title": "Erinnerungen eines Gastarbeiterkindes lesen",
+  "objective": {
+    "en": "Read memories of a childhood as the daughter of Turkish guest workers and infer shame, pride and alienation from what is shown rather than said.",
+    "fr": "Lire des souvenirs d’une enfance de fille de travailleurs turcs et deviner honte, fierté et étrangeté à partir de ce qui est montré plutôt que dit.",
+    "de": "Erinnerungen einer Tochter türkischer Gastarbeiter lesen und Scham, Stolz und Fremdheit aus dem erschließen, was gezeigt statt gesagt wird."
+  },
+  "estimatedMinutes": 12,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:37:15.451Z",
+    "inputHashes": { "outline": "311160f01251e5f44af05ab1d522da2d7b9597e1529cc252762f9ccc0d993fbe" }
+  },
+  "kind": "reading",
+  "theme": "personal_identification",
+  "genre": "other",
+  "situation": {
+    "en": "An adult woman writes in her memoirs about her childhood in Cologne in the 1970s, as the daughter of Turkish guest workers.",
+    "fr": "Une femme adulte raconte dans ses mémoires son enfance à Cologne dans les années 1970, comme fille de travailleurs turcs.",
+    "de": "Eine erwachsene Frau erzählt in ihren Erinnerungen von ihrer Kindheit in Köln in den 1970er Jahren als Tochter türkischer Gastarbeiter."
+  },
+  "readerTask": {
+    "en": "Work out what the narrator feels from scenes (lunch, parents’ evening, the office, the journey) and put the scenes in order.",
+    "fr": "Deviner ce que ressent la narratrice à partir des scènes (repas, réunion de parents, administration, voyage) et remettre les scènes dans l’ordre.",
+    "de": "Aus den Szenen (Pausenbrot, Elternabend, Amt, Reise) erschließen, was die Erzählerin fühlt, und die Szenen ordnen."
+  },
+  "keywords": [
+    {
+      "id": "verstecken",
+      "term": "verstecken",
+      "translations": { "en": ["to hide"], "fr": ["cacher"] },
+      "explanation": {
+        "en": "To put something where nobody can see it. The narrator hides her bread out of shame.",
+        "fr": "Mettre quelque chose là où personne ne le voit. La narratrice cache son pain par honte.",
+        "de": "Etwas so hinlegen, dass niemand es sieht. Die Erzählerin versteckt ihr Brot aus Scham."
+      }
+    },
+    {
+      "id": "schwerhoerig",
+      "term": "schwerhörig",
+      "translations": { "en": ["hard of hearing"], "fr": ["malentendant"] },
+      "explanation": {
+        "en": "Not hearing well. The teacher speaks to the father as if he were, though he only has less German.",
+        "fr": "Qui entend mal. L’enseignante parle au père comme s’il l’était, alors qu’il maîtrise seulement moins l’allemand.",
+        "de": "Schlecht hörend. Die Lehrerin spricht den Vater so an, obwohl er nur weniger Deutsch kann."
+      }
+    },
+    {
+      "id": "haltung",
+      "term": "die Haltung",
+      "translations": { "en": ["posture", "bearing"], "fr": ["la posture", "le maintien"] },
+      "explanation": {
+        "en": "How someone holds their body. A straight posture can show dignity.",
+        "fr": "La façon dont on tient son corps. Une posture droite peut montrer de la dignité.",
+        "de": "Wie jemand seinen Körper hält. Eine gerade Haltung kann Würde zeigen."
+      }
+    },
+    {
+      "id": "uebersetzen",
+      "term": "übersetzen",
+      "translations": { "en": ["to translate", "to interpret"], "fr": ["traduire"] },
+      "explanation": {
+        "en": "To render in another language. The eight-year-old does this for her mother at the office.",
+        "fr": "Rendre dans une autre langue. La fillette de huit ans le fait pour sa mère à l’administration.",
+        "de": "In eine andere Sprache übertragen. Das achtjährige Kind tut das für die Mutter auf dem Amt."
+      }
+    },
+    {
+      "id": "aussprechen",
+      "term": "aussprechen",
+      "translations": {
+        "en": ["to say out loud", "to voice"],
+        "fr": ["exprimer", "dire à voix haute"]
+      },
+      "explanation": {
+        "en": "To say openly what one feels or thinks. The mother does not voice what she understands.",
+        "fr": "Dire ouvertement ce qu’on ressent ou pense. La mère n’exprime pas ce qu’elle comprend.",
+        "de": "Offen sagen, was man fühlt oder denkt. Die Mutter spricht nicht aus, was sie versteht."
+      }
+    }
+  ],
+  "documents": {
+    "main": {
+      "targetWords": 460,
+      "contents": {
+        "en": "Five scenes: the girl eats her cheese sandwiches in the school toilet; the father in his only suit at parents’ evening, and the walk home two steps behind; the mother, loud at home but silent at the office while the child translates; the first drive to Turkey, where cousins laugh at her accent; years later, the mother serves tea when she understands something unsaid.",
+        "fr": "Cinq scènes : la fillette mange ses sandwichs au fromage dans les toilettes de l’école ; le père dans son seul costume à la réunion de parents, puis le retour deux pas derrière ; la mère, bruyante à la maison mais muette à l’administration pendant que l’enfant traduit ; le premier voyage en Turquie, où les cousines rient de son accent ; des années plus tard, la mère sert du thé quand elle comprend un non-dit.",
+        "de": "Fünf Szenen: Das Mädchen isst seine Käsebrote auf der Schultoilette; der Vater im einzigen Anzug beim Elternabend und der Heimweg zwei Schritte hinter den Eltern; die Mutter, zu Hause laut, auf dem Amt still, während das Kind übersetzt; die erste Autofahrt in die Türkei, wo die Cousinen über ihren Akzent lachen; Jahre später stellt die Mutter Tee hin, wenn sie etwas Unausgesprochenes versteht."
+      }
+    },
+    "exam": {
+      "targetWords": 240,
+      "contents": {
+        "en": "Another memoir: a son recalls a Sunday fair in Wolfsburg in 1973, his father’s calm politeness after a mocking remark, and a neighbour who finally asks for help and calls the father by his surname.",
+        "fr": "Un autre souvenir : un fils évoque une fête foraine à Wolfsburg en 1973, la politesse calme de son père après une remarque moqueuse, et un voisin qui demande enfin de l’aide et appelle le père par son nom.",
+        "de": "Eine weitere Erinnerung: Ein Sohn erinnert sich an eine Kirmes in Wolfsburg 1973, an die ruhige Höflichkeit seines Vaters nach einer spöttischen Bemerkung und an einen Nachbarn, der endlich um Hilfe bittet und den Vater mit Nachnamen anspricht."
+      }
+    }
+  },
+  "skim": { "focus": "author" },
+  "detailQuestions": [
+    {
+      "id": "q-brot",
+      "type": "reading_choice",
+      "focus": {
+        "en": "Why she eats her sandwiches in the toilet",
+        "fr": "Pourquoi elle mange ses sandwichs aux toilettes",
+        "de": "Warum sie ihre Brote auf der Toilette isst"
+      }
+    },
+    {
+      "id": "q-vater",
+      "type": "reading_choice",
+      "focus": {
+        "en": "What the father’s hand on her head shows",
+        "fr": "Ce que montre la main du père sur sa tête",
+        "de": "Was die Hand des Vaters auf ihrem Kopf zeigt"
+      }
+    },
+    {
+      "id": "q-amt",
+      "type": "reading_true_false",
+      "focus": {
+        "en": "The mother at home and at the office",
+        "fr": "La mère à la maison et à l’administration",
+        "de": "Die Mutter zu Hause und auf dem Amt"
+      }
+    },
+    {
+      "id": "q-reise",
+      "type": "reading_choice",
+      "focus": {
+        "en": "How she reacts to the cousins’ laughter",
+        "fr": "Comment elle réagit au rire des cousines",
+        "de": "Wie sie auf das Lachen der Cousinen reagiert"
+      }
+    }
+  ],
+  "exam": { "types": ["reading_choice", "reading_true_false"] },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

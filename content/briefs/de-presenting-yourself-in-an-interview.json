@@ -1,0 +1,271 @@
+{
+  "schemaVersion": 2,
+  "id": "de-presenting-yourself-in-an-interview",
+  "lang": "de",
+  "level": "C1",
+  "locales": ["en", "fr", "de"],
+  "title": "Sich in einem ausführlichen Interview darstellen",
+  "objective": {
+    "en": "In a portrait interview, reflect on your career, interpret turning points and explain what drives you.",
+    "fr": "Dans un entretien de portrait, revenir sur son parcours, interpréter les tournants et dire ce qui nous motive.",
+    "de": "Im Porträtinterview den eigenen Werdegang reflektieren, Wendepunkte deuten und erklären, was einen antreibt."
+  },
+  "estimatedMinutes": 20,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:39:35.553Z",
+    "inputHashes": { "outline": "6729375d2cab94dccbc544f007f6dec3fca33c930499a9a4524a10bffa61a5c9" }
+  },
+  "kind": "functions",
+  "theme": "personal_identification",
+  "situation": {
+    "en": "A journalist interviews an architect for a long newspaper portrait about his career.",
+    "fr": "Une journaliste interroge un architecte pour un long portrait de presse sur son parcours.",
+    "de": "Eine Journalistin interviewt einen Architekten für ein langes Zeitungsporträt über seinen Werdegang."
+  },
+  "coverageNotes": {
+    "en": "Naming a deeper motivation (Was mich antreibt, ist), judging cautiously in hindsight (Rückblickend würde ich sagen, dass), interpreting turning points (Ein Wendepunkt war für mich), describing lasting influence (Das hat mich nachhaltig geprägt), explaining a deliberate decision and admitting doubts (Ich habe mich bewusst dafür entschieden, Wenn ich ehrlich bin).",
+    "fr": "Nommer une motivation profonde (Was mich antreibt, ist), juger avec prudence rétrospectivement (Rückblickend würde ich sagen, dass), interpréter les tournants (Ein Wendepunkt war für mich), décrire une influence durable (Das hat mich nachhaltig geprägt), expliquer une décision délibérée et avouer des doutes (Ich habe mich bewusst dafür entschieden, Wenn ich ehrlich bin).",
+    "de": "Eine tiefere Motivation benennen (Was mich antreibt, ist), im Rückblick vorsichtig urteilen (Rückblickend würde ich sagen, dass), Wendepunkte deuten (Ein Wendepunkt war für mich), nachhaltigen Einfluss beschreiben (Das hat mich nachhaltig geprägt), eine bewusste Entscheidung erklären und Zweifel zugeben (Ich habe mich bewusst dafür entschieden, Wenn ich ehrlich bin)."
+  },
+  "prerequisites": [],
+  "roles": [
+    {
+      "id": "interviewerin",
+      "label": "die Interviewerin",
+      "translation": { "en": "the interviewer", "fr": "l’intervieweuse" }
+    },
+    {
+      "id": "architekt",
+      "label": "der Architekt",
+      "translation": { "en": "the architect", "fr": "l’architecte" }
+    }
+  ],
+  "expressions": [
+    {
+      "id": "was-mich-antreibt",
+      "text": "Was mich antreibt, ist",
+      "openEnd": true,
+      "translations": { "en": ["What drives me is"], "fr": ["Ce qui me motive, c’est"] },
+      "explanation": {
+        "en": "Names your deeper motivation; a noun or a clause follows. Typical of reflective, formal interviews.",
+        "fr": "Nomme sa motivation profonde ; un nom ou une proposition suit. Typique des entretiens réfléchis et soignés.",
+        "de": "Nennt die tiefere Motivation; danach folgt ein Nomen oder ein Satz. Typisch für reflektierte, gehobene Interviews."
+      },
+      "example": {
+        "text": "Was mich antreibt, ist die Neugier auf andere Menschen.",
+        "translation": {
+          "en": "What drives me is curiosity about other people.",
+          "fr": "Ce qui me motive, c’est la curiosité envers les autres."
+        }
+      }
+    },
+    {
+      "id": "rueckblickend",
+      "text": "Rückblickend würde ich sagen, dass",
+      "openEnd": true,
+      "translations": {
+        "en": ["Looking back, I would say that"],
+        "fr": ["Avec le recul, je dirais que"]
+      },
+      "explanation": {
+        "en": "A cautious, reflective judgement about the past; the dass-clause has its verb at the end.",
+        "fr": "Un jugement prudent et réfléchi sur le passé ; dans la proposition en dass, le verbe est à la fin.",
+        "de": "Ein vorsichtiges, reflektierendes Urteil über die Vergangenheit; im dass-Satz steht das Verb am Ende."
+      },
+      "example": {
+        "text": "Rückblickend würde ich sagen, dass der Umzug ein Wendepunkt war.",
+        "translation": {
+          "en": "Looking back, I would say that the move was a turning point.",
+          "fr": "Avec le recul, je dirais que le déménagement a été un tournant."
+        }
+      }
+    },
+    {
+      "id": "wendepunkt-war",
+      "text": "Ein Wendepunkt war für mich",
+      "openEnd": true,
+      "translations": {
+        "en": ["A turning point for me was"],
+        "fr": ["Un tournant pour moi a été"]
+      },
+      "explanation": {
+        "en": "Interprets an event as a turning point in your life; a noun phrase follows.",
+        "fr": "Interprète un événement comme un tournant de sa vie ; un groupe nominal suit.",
+        "de": "Deutet ein Ereignis als Wendepunkt im eigenen Leben; danach folgt eine Nominalgruppe."
+      },
+      "example": {
+        "text": "Ein Wendepunkt war für mich der Umzug nach Leipzig.",
+        "translation": {
+          "en": "A turning point for me was the move to Leipzig.",
+          "fr": "Un tournant pour moi a été le déménagement à Leipzig."
+        }
+      }
+    },
+    {
+      "id": "nachhaltig-gepraegt",
+      "text": "Das hat mich nachhaltig geprägt",
+      "openEnd": false,
+      "translations": {
+        "en": ["That left a lasting mark on me"],
+        "fr": ["Cela m’a durablement marqué"]
+      },
+      "explanation": {
+        "en": "Says that an experience shaped you in the long term; it refers back to what was just mentioned.",
+        "fr": "Dit qu’une expérience nous a marqué durablement ; elle renvoie à ce qui vient d’être dit.",
+        "de": "Sagt, dass eine Erfahrung einen langfristig beeinflusst hat; der Ausdruck verweist auf das zuvor Genannte."
+      },
+      "example": {
+        "text": "Die Jahre im Ausland waren hart. Das hat mich nachhaltig geprägt.",
+        "translation": {
+          "en": "The years abroad were hard. That left a lasting mark on me.",
+          "fr": "Les années à l’étranger ont été dures. Cela m’a durablement marqué."
+        }
+      }
+    },
+    {
+      "id": "bewusst-entschieden",
+      "text": "Ich habe mich bewusst dafür entschieden",
+      "openEnd": false,
+      "translations": {
+        "en": ["I deliberately decided to do so"],
+        "fr": ["J’ai décidé en connaissance de cause"]
+      },
+      "explanation": {
+        "en": "Stresses that a decision was not a coincidence; it can be followed by a zu-infinitive clause.",
+        "fr": "Souligne qu’une décision n’était pas le fruit du hasard ; elle peut être suivie d’une proposition infinitive avec zu.",
+        "de": "Betont, dass eine Entscheidung kein Zufall war; es kann ein Infinitivsatz mit zu folgen."
+      },
+      "example": {
+        "text": "Ich habe mich bewusst dafür entschieden, das Risiko einzugehen.",
+        "translation": {
+          "en": "I deliberately decided to take the risk.",
+          "fr": "J’ai décidé en connaissance de cause de prendre le risque."
+        }
+      }
+    },
+    {
+      "id": "wenn-ich-ehrlich-bin",
+      "text": "Wenn ich ehrlich bin",
+      "openEnd": true,
+      "translations": { "en": ["If I’m honest"], "fr": ["Pour être honnête"] },
+      "explanation": {
+        "en": "Introduces an admission, such as a doubt or a weakness; the main clause that follows begins with its verb.",
+        "fr": "Introduit un aveu, par exemple un doute ou une faiblesse ; la principale qui suit commence par le verbe.",
+        "de": "Leitet ein Eingeständnis ein, etwa einen Zweifel oder eine Schwäche; der folgende Hauptsatz beginnt mit dem Verb."
+      },
+      "example": {
+        "text": "Wenn ich ehrlich bin, hatte ich damals große Zweifel.",
+        "translation": {
+          "en": "If I’m honest, I had great doubts back then.",
+          "fr": "Pour être honnête, j’avais de grands doutes à l’époque."
+        }
+      }
+    }
+  ],
+  "words": [
+    {
+      "id": "werdegang",
+      "term": "Werdegang",
+      "teachingForm": "der Werdegang",
+      "translations": { "en": ["career path", "career"], "fr": ["parcours", "carrière"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "explanation": {
+        "en": "Masculine noun: der Werdegang, the course of a person’s development or career.",
+        "fr": "Nom masculin : der Werdegang, le parcours de développement ou de carrière d’une personne.",
+        "de": "Maskulines Nomen: der Werdegang, die Entwicklung eines Menschen oder seiner Laufbahn."
+      },
+      "example": {
+        "text": "Ihr beruflicher Werdegang war alles andere als geradlinig.",
+        "translation": {
+          "en": "Her professional career was anything but straightforward.",
+          "fr": "Son parcours professionnel était tout sauf linéaire."
+        }
+      }
+    },
+    {
+      "id": "wendepunkt",
+      "term": "Wendepunkt",
+      "teachingForm": "der Wendepunkt",
+      "translations": { "en": ["turning point"], "fr": ["tournant"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "explanation": {
+        "en": "Masculine noun: der Wendepunkt.",
+        "fr": "Nom masculin : der Wendepunkt.",
+        "de": "Maskulines Nomen: der Wendepunkt."
+      },
+      "example": {
+        "text": "Der Unfall wurde zum Wendepunkt in seinem Leben.",
+        "translation": {
+          "en": "The accident became a turning point in his life.",
+          "fr": "L’accident est devenu un tournant dans sa vie."
+        }
+      }
+    },
+    {
+      "id": "neugier",
+      "term": "Neugier",
+      "teachingForm": "die Neugier",
+      "translations": { "en": ["curiosity"], "fr": ["curiosité"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "explanation": {
+        "en": "Feminine noun: die Neugier. The variant die Neugierde also exists.",
+        "fr": "Nom féminin : die Neugier. La variante die Neugierde existe aussi.",
+        "de": "Feminines Nomen: die Neugier. Auch die Variante die Neugierde ist gebräuchlich."
+      },
+      "example": {
+        "text": "Seine Neugier hat ihn in viele Länder geführt.",
+        "translation": {
+          "en": "His curiosity has taken him to many countries.",
+          "fr": "Sa curiosité l’a mené dans de nombreux pays."
+        }
+      }
+    },
+    {
+      "id": "rueckschlag",
+      "term": "Rückschlag",
+      "teachingForm": "der Rückschlag",
+      "translations": { "en": ["setback"], "fr": ["revers"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "explanation": {
+        "en": "Masculine noun: der Rückschlag.",
+        "fr": "Nom masculin : der Rückschlag.",
+        "de": "Maskulines Nomen: der Rückschlag."
+      },
+      "example": {
+        "text": "Nach dem Rückschlag fing sie noch einmal von vorn an.",
+        "translation": {
+          "en": "After the setback she started over once more.",
+          "fr": "Après le revers, elle a recommencé depuis le début."
+        }
+      }
+    },
+    {
+      "id": "vorbild",
+      "term": "Vorbild",
+      "teachingForm": "das Vorbild",
+      "translations": { "en": ["role model"], "fr": ["modèle"] },
+      "wordClass": "noun",
+      "genders": ["neuter"],
+      "explanation": {
+        "en": "Neuter noun: das Vorbild.",
+        "fr": "Nom neutre : das Vorbild.",
+        "de": "Neutrales Nomen: das Vorbild."
+      },
+      "example": {
+        "text": "Meine Großmutter war immer mein Vorbild.",
+        "translation": {
+          "en": "My grandmother was always my role model.",
+          "fr": "Ma grand-mère a toujours été mon modèle."
+        }
+      }
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

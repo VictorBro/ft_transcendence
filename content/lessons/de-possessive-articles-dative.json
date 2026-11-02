@@ -6,19 +6,19 @@
   "locales": ["en", "fr", "de"],
   "title": "Possessivartikel im Dativ",
   "objective": {
-    "en": "Form possessive articles in the dative: mit meinem Bruder, bei unserer Oma, mit euren Kindern.",
-    "fr": "Former les adjectifs possessifs au datif : mit meinem Bruder, bei unserer Oma, mit euren Kindern.",
-    "de": "Possessivartikel im Dativ richtig bilden: mit meinem Bruder, bei unserer Oma, mit euren Kindern."
+    "en": "Use possessive articles in the dative with -em, -er and -en: mit meinem Bruder, bei unserer Oma, mit euren Kindern.",
+    "fr": "Utiliser les articles possessifs au datif avec -em, -er et -en : mit meinem Bruder, bei unserer Oma, mit euren Kindern.",
+    "de": "Possessivartikel im Dativ mit -em, -er und -en verwenden: mit meinem Bruder, bei unserer Oma, mit euren Kindern."
   },
   "estimatedMinutes": 17,
   "provenance": {
     "generator": "ft lessons:author",
     "model": "sonnet",
-    "promptVersion": "author-2",
-    "generatedAt": "2026-11-01T20:22:35.403Z",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:26:00.160Z",
     "inputHashes": {
       "outline": "8348670aae8efa875b2f18c4738826ec3d6d5eb59908efa21107153ac9b61943",
-      "brief": "5f2db40adac06a89d474100a7d0b9219c392088c18c9564eb9ba3a098838b3f5"
+      "brief": "22e475fd6b635196768d5b88e50583880d86bf3a41fda7ebaebe2d2ff465e974"
     }
   },
   "kind": "grammar",
@@ -28,11 +28,7 @@
       "id": "block-singular-explanation",
       "role": "explanation",
       "blockId": "block-singular",
-      "label": {
-        "en": "Singular: -em and -er",
-        "fr": "Singulier : -em et -er",
-        "de": "Singular: -em und -er"
-      },
+      "label": { "en": "Explanation", "fr": "Explication", "de": "Erklärung" },
       "pages": [
         {
           "pageId": "block-singular-explanation",
@@ -47,61 +43,61 @@
             {
               "type": "grammar_explanation",
               "itemId": "block-singular-explanation",
-              "ruleIds": ["rule-em", "rule-er"],
+              "ruleIds": ["r-sg"],
               "heading": {
-                "en": "Possessive articles in the dative singular",
-                "fr": "Les adjectifs possessifs au datif singulier",
-                "de": "Possessivartikel im Dativ Singular"
+                "en": "Possessive articles in the dative: singular",
+                "fr": "Articles possessifs au datif : singulier",
+                "de": "Possessivartikel im Dativ: Singular"
               },
               "text": {
-                "en": "After many prepositions such as `mit`, `bei`, `von` and `zu`, German uses the **dative**. The possessive article then takes the same endings as `ein`: `-em` for masculine and neuter nouns, `-er` for feminine nouns.\n\n- masculine: `mit meinem Bruder`\n- neuter: `mit meinem Kind`\n- feminine: `bei unserer Oma`\n\nThe stem depends on the owner: `ich` → `mein-`, `du` → `dein-`, `wir` → `unser-`. Only the ending changes with the noun.",
-                "fr": "Après beaucoup de prépositions comme `mit`, `bei`, `von` et `zu`, l’allemand utilise le **datif**. L’adjectif possessif prend alors les mêmes terminaisons que `ein` : `-em` pour le masculin et le neutre, `-er` pour le féminin.\n\n- masculin : `mit meinem Bruder`\n- neutre : `mit meinem Kind`\n- féminin : `bei unserer Oma`\n\nLe radical dépend du possesseur : `ich` → `mein-`, `du` → `dein-`, `wir` → `unser-`. Seule la terminaison change avec le nom.",
-                "de": "Nach vielen Präpositionen wie `mit`, `bei`, `von` und `zu` steht der **Dativ**. Der Possessivartikel hat dann dieselben Endungen wie `ein`: `-em` bei maskulinen und neutralen Nomen, `-er` bei femininen Nomen.\n\n- maskulin: `mit meinem Bruder`\n- neutral: `mit meinem Kind`\n- feminin: `bei unserer Oma`\n\nDer Stamm hängt vom Besitzer ab: `ich` → `mein-`, `du` → `dein-`, `wir` → `unser-`. Nur die Endung ändert sich mit dem Nomen."
+                "en": "After mit, bei, zu and von the dative is used. The possessive article agrees with the noun: for masculine and neuter nouns it ends in **-em**, for feminine nouns in **-er**.\n\n- `mit meinem Bruder` (masculine)\n- `mit meinem Kind` (neuter)\n- `bei unserer Oma` (feminine)\n\nThis holds for all possessive articles: `mit deinem Vater`, `zu seiner Schwester`, `bei ihrem Onkel`.",
+                "fr": "Après mit, bei, zu et von, on utilise le datif. L'article possessif s'accorde avec le nom : au masculin et au neutre il se termine par **-em**, au féminin par **-er**.\n\n- `mit meinem Bruder` (masculin)\n- `mit meinem Kind` (neutre)\n- `bei unserer Oma` (féminin)\n\nCela vaut pour tous les articles possessifs : `mit deinem Vater`, `zu seiner Schwester`, `bei ihrem Onkel`.",
+                "de": "Nach mit, bei, zu und von steht der Dativ. Der Possessivartikel richtet sich nach dem Nomen: Bei maskulinen und neutralen Nomen endet er auf **-em**, bei femininen Nomen auf **-er**.\n\n- `mit meinem Bruder` (maskulin)\n- `mit meinem Kind` (neutral)\n- `bei unserer Oma` (feminin)\n\nDas gilt für alle Possessivartikel: `mit deinem Vater`, `zu seiner Schwester`, `bei ihrem Onkel`."
               },
               "formTable": [
                 {
                   "subject": "der Bruder",
                   "form": "meinem Bruder",
-                  "example": "Das Buch ist von meinem Bruder."
+                  "example": "Ich fahre mit meinem Bruder in die Stadt."
                 },
                 {
                   "subject": "das Kind",
                   "form": "meinem Kind",
-                  "example": "Er spricht mit meinem Kind."
+                  "example": "Wir gehen mit unserem Kind in den Park."
                 },
                 {
                   "subject": "die Oma",
-                  "form": "unserer Oma",
-                  "example": "Wir sind bei unserer Oma."
+                  "form": "meiner Oma",
+                  "example": "Ich wohne bei meiner Oma."
                 }
               ],
               "examples": [
                 {
-                  "text": "Ich fahre mit meinem Bruder.",
+                  "text": "Ich fahre mit meinem Bruder in die Stadt.",
                   "translation": {
-                    "en": "I am going with my brother.",
-                    "fr": "Je vais avec mon frère."
+                    "en": "I'm going to town with my brother.",
+                    "fr": "Je vais en ville avec mon frère."
                   }
                 },
                 {
-                  "text": "Du spielst mit deinem Kind.",
+                  "text": "Sie wohnt bei ihrer Tante.",
                   "translation": {
-                    "en": "You are playing with your child.",
-                    "fr": "Tu joues avec ton enfant."
+                    "en": "She lives with her aunt.",
+                    "fr": "Elle habite chez sa tante."
                   }
                 },
                 {
-                  "text": "Wir wohnen bei unserer Oma.",
+                  "text": "Wir gehen mit unserem Kind in den Park.",
                   "translation": {
-                    "en": "We live with our grandma.",
-                    "fr": "Nous habitons chez notre grand-mère."
+                    "en": "We are going to the park with our child.",
+                    "fr": "Nous allons au parc avec notre enfant."
                   }
                 },
                 {
-                  "text": "Das ist ein Geschenk von meiner Mutter.",
+                  "text": "Er spricht mit seiner Chefin.",
                   "translation": {
-                    "en": "That is a gift from my mother.",
-                    "fr": "C’est un cadeau de ma mère."
+                    "en": "He is talking to his boss.",
+                    "fr": "Il parle avec sa patronne."
                   }
                 }
               ]
@@ -115,13 +111,13 @@
       "role": "exercise",
       "blockId": "block-singular",
       "label": {
-        "en": "Multiple-choice gaps 1",
-        "fr": "Phrases à trous à choix multiple 1",
-        "de": "Lücken mit Auswahl 1"
+        "en": "Multiple-choice gaps",
+        "fr": "Phrases à trous à choix multiple",
+        "de": "Lücken mit Auswahl"
       },
       "pages": [
         {
-          "pageId": "ex-sg-choice-p",
+          "pageId": "ex-sg-choice-1",
           "estimatedDurationS": 60,
           "timeLimitS": null,
           "instructions": {
@@ -134,20 +130,20 @@
               "type": "grammar_gap_choice",
               "itemId": "ex-sg-choice-1",
               "before": "Ich fahre mit",
-              "after": "Bruder nach Berlin.",
+              "after": "Bruder nach Hamburg.",
               "choices": [
-                { "choiceId": "c1", "text": "meiner" },
-                { "choiceId": "c2", "text": "meinem" },
-                { "choiceId": "c3", "text": "meinen" },
-                { "choiceId": "c4", "text": "mein" }
+                { "choiceId": "c-1", "text": "meinem" },
+                { "choiceId": "c-2", "text": "meiner" },
+                { "choiceId": "c-3", "text": "meinen" },
+                { "choiceId": "c-4", "text": "mein" }
               ],
-              "answerChoiceId": "c2",
+              "answerChoiceId": "c-1",
               "hint": null,
-              "ruleIds": ["rule-em"],
+              "ruleIds": ["r-sg"],
               "answerExplanation": {
-                "en": "Masculine and neuter nouns take -em in the dative: mit meinem Bruder.",
-                "fr": "Au datif, le masculin et le neutre prennent -em : mit meinem Bruder.",
-                "de": "Maskuline und neutrale Nomen haben im Dativ -em: mit meinem Bruder."
+                "en": "Bruder is masculine, so the possessive ends in -em: mit meinem Bruder.",
+                "fr": "Bruder est masculin, donc l'article possessif se termine par -em : mit meinem Bruder.",
+                "de": "Bruder ist maskulin, also endet der Possessivartikel auf -em: mit meinem Bruder."
               }
             },
             {
@@ -156,58 +152,78 @@
               "before": "Wir wohnen bei",
               "after": "Oma.",
               "choices": [
-                { "choiceId": "c1", "text": "unserem" },
-                { "choiceId": "c2", "text": "unseren" },
-                { "choiceId": "c3", "text": "unserer" },
-                { "choiceId": "c4", "text": "unser" }
+                { "choiceId": "c-1", "text": "unserem" },
+                { "choiceId": "c-2", "text": "unserer" },
+                { "choiceId": "c-3", "text": "unseren" },
+                { "choiceId": "c-4", "text": "unser" }
               ],
-              "answerChoiceId": "c3",
+              "answerChoiceId": "c-2",
               "hint": null,
-              "ruleIds": ["rule-er"],
+              "ruleIds": ["r-sg"],
               "answerExplanation": {
-                "en": "Feminine nouns take -er in the dative: bei unserer Oma.",
-                "fr": "Au datif, le féminin prend -er : bei unserer Oma.",
-                "de": "Feminine Nomen haben im Dativ -er: bei unserer Oma."
+                "en": "Oma is feminine, so the possessive ends in -er: bei unserer Oma.",
+                "fr": "Oma est féminin, donc l'article possessif se termine par -er : bei unserer Oma.",
+                "de": "Oma ist feminin, also endet der Possessivartikel auf -er: bei unserer Oma."
               }
             },
             {
               "type": "grammar_gap_choice",
               "itemId": "ex-sg-choice-3",
-              "before": "Du spielst mit",
-              "after": "Hund im Park.",
+              "before": "Mia spielt mit",
+              "after": "Kind im Garten.",
               "choices": [
-                { "choiceId": "c1", "text": "dein" },
-                { "choiceId": "c2", "text": "deinem" },
-                { "choiceId": "c3", "text": "deiner" },
-                { "choiceId": "c4", "text": "deinen" }
+                { "choiceId": "c-1", "text": "ihrer" },
+                { "choiceId": "c-2", "text": "ihren" },
+                { "choiceId": "c-3", "text": "ihrem" },
+                { "choiceId": "c-4", "text": "ihre" }
               ],
-              "answerChoiceId": "c2",
+              "answerChoiceId": "c-3",
               "hint": null,
-              "ruleIds": ["rule-em"],
+              "ruleIds": ["r-sg"],
               "answerExplanation": {
-                "en": "Masculine and neuter nouns take -em in the dative: mit deinem Hund.",
-                "fr": "Au datif, le masculin et le neutre prennent -em : mit deinem Hund.",
-                "de": "Maskuline und neutrale Nomen haben im Dativ -em: mit deinem Hund."
+                "en": "Kind is neuter, so the possessive ends in -em: mit ihrem Kind.",
+                "fr": "Kind est neutre, donc l'article possessif se termine par -em : mit ihrem Kind.",
+                "de": "Kind ist neutral, also endet der Possessivartikel auf -em: mit ihrem Kind."
               }
             },
             {
               "type": "grammar_gap_choice",
               "itemId": "ex-sg-choice-4",
-              "before": "Anna spricht mit",
-              "after": "Lehrerin.",
+              "before": "Kommst du heute zu",
+              "after": "Schwester?",
               "choices": [
-                { "choiceId": "c1", "text": "ihrem" },
-                { "choiceId": "c2", "text": "ihrer" },
-                { "choiceId": "c3", "text": "ihren" },
-                { "choiceId": "c4", "text": "ihr" }
+                { "choiceId": "c-1", "text": "deinem" },
+                { "choiceId": "c-2", "text": "deinen" },
+                { "choiceId": "c-3", "text": "dein" },
+                { "choiceId": "c-4", "text": "deiner" }
               ],
-              "answerChoiceId": "c2",
+              "answerChoiceId": "c-4",
               "hint": null,
-              "ruleIds": ["rule-er"],
+              "ruleIds": ["r-sg"],
               "answerExplanation": {
-                "en": "Feminine nouns take -er in the dative: mit ihrer Lehrerin.",
-                "fr": "Au datif, le féminin prend -er : mit ihrer Lehrerin.",
-                "de": "Feminine Nomen haben im Dativ -er: mit ihrer Lehrerin."
+                "en": "Schwester is feminine, so the possessive ends in -er: zu deiner Schwester.",
+                "fr": "Schwester est féminin, donc l'article possessif se termine par -er : zu deiner Schwester.",
+                "de": "Schwester ist feminin, also endet der Possessivartikel auf -er: zu deiner Schwester."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-sg-choice-5",
+              "before": "Das ist ein Geschenk von",
+              "after": "Vater.",
+              "choices": [
+                { "choiceId": "c-1", "text": "seiner" },
+                { "choiceId": "c-2", "text": "seinem" },
+                { "choiceId": "c-3", "text": "seinen" },
+                { "choiceId": "c-4", "text": "sein" }
+              ],
+              "answerChoiceId": "c-2",
+              "hint": null,
+              "ruleIds": ["r-sg"],
+              "answerExplanation": {
+                "en": "Vater is masculine, so the possessive ends in -em: von seinem Vater.",
+                "fr": "Vater est masculin, donc l'article possessif se termine par -em : von seinem Vater.",
+                "de": "Vater ist maskulin, also endet der Possessivartikel auf -em: von seinem Vater."
               }
             }
           ]
@@ -219,14 +235,14 @@
       "role": "exercise",
       "blockId": "block-singular",
       "label": {
-        "en": "Typed gaps 1",
-        "fr": "Phrases à trous à écrire 1",
-        "de": "Lücken zum Schreiben 1"
+        "en": "Typed gaps",
+        "fr": "Phrases à trous à écrire",
+        "de": "Lücken zum Schreiben"
       },
       "pages": [
         {
-          "pageId": "ex-sg-typing-p",
-          "estimatedDurationS": 80,
+          "pageId": "ex-sg-typing-1",
+          "estimatedDurationS": 75,
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
@@ -237,73 +253,75 @@
             {
               "type": "grammar_gap_typing",
               "itemId": "ex-sg-typing-1",
-              "before": "Ich spiele mit",
-              "after": "Kind im Garten.",
-              "accepted": { "answers": ["meinem"] },
-              "hint": {
-                "en": "mein-, dative neuter",
-                "fr": "mein-, datif neutre",
-                "de": "mein-, Dativ neutral"
-              },
-              "ruleIds": ["rule-em"],
+              "before": "Ich esse mit",
+              "after": "Mutter.",
+              "accepted": { "answers": ["meiner"] },
+              "hint": { "en": "mein-, feminine", "fr": "mein-, féminin", "de": "mein-, feminin" },
+              "ruleIds": ["r-sg"],
               "answerExplanation": {
-                "en": "Masculine and neuter nouns take -em in the dative: mit meinem Kind.",
-                "fr": "Au datif, le masculin et le neutre prennent -em : mit meinem Kind.",
-                "de": "Maskuline und neutrale Nomen haben im Dativ -em: mit meinem Kind."
+                "en": "Mutter is feminine, so the possessive ends in -er: mit meiner Mutter.",
+                "fr": "Mutter est féminin, donc l'article possessif se termine par -er : mit meiner Mutter.",
+                "de": "Mutter ist feminin, also endet der Possessivartikel auf -er: mit meiner Mutter."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "ex-sg-typing-2",
-              "before": "Wir helfen",
-              "after": "Mutter im Garten.",
-              "accepted": { "answers": ["unserer"] },
+              "before": "Du wohnst bei",
+              "after": "Onkel.",
+              "accepted": { "answers": ["deinem"] },
               "hint": {
-                "en": "unser-, dative feminine",
-                "fr": "unser-, datif féminin",
-                "de": "unser-, Dativ feminin"
+                "en": "dein-, masculine",
+                "fr": "dein-, masculin",
+                "de": "dein-, maskulin"
               },
-              "ruleIds": ["rule-er"],
+              "ruleIds": ["r-sg"],
               "answerExplanation": {
-                "en": "Feminine nouns take -er in the dative: unserer Mutter.",
-                "fr": "Au datif, le féminin prend -er : unserer Mutter.",
-                "de": "Feminine Nomen haben im Dativ -er: unserer Mutter."
+                "en": "Onkel is masculine, so the possessive ends in -em: bei deinem Onkel.",
+                "fr": "Onkel est masculin, donc l'article possessif se termine par -em : bei deinem Onkel.",
+                "de": "Onkel ist maskulin, also endet der Possessivartikel auf -em: bei deinem Onkel."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "ex-sg-typing-3",
-              "before": "Max wohnt bei",
-              "after": "Onkel in Köln.",
-              "accepted": { "answers": ["seinem"] },
-              "hint": {
-                "en": "sein-, dative masculine",
-                "fr": "sein-, datif masculin",
-                "de": "sein-, Dativ maskulin"
-              },
-              "ruleIds": ["rule-em"],
+              "before": "Er telefoniert mit",
+              "after": "Freundin.",
+              "accepted": { "answers": ["seiner"] },
+              "hint": { "en": "sein-, feminine", "fr": "sein-, féminin", "de": "sein-, feminin" },
+              "ruleIds": ["r-sg"],
               "answerExplanation": {
-                "en": "Masculine and neuter nouns take -em in the dative: bei seinem Onkel.",
-                "fr": "Au datif, le masculin et le neutre prennent -em : bei seinem Onkel.",
-                "de": "Maskuline und neutrale Nomen haben im Dativ -em: bei seinem Onkel."
+                "en": "Freundin is feminine, so the possessive ends in -er: mit seiner Freundin.",
+                "fr": "Freundin est féminin, donc l'article possessif se termine par -er : mit seiner Freundin.",
+                "de": "Freundin ist feminin, also endet der Possessivartikel auf -er: mit seiner Freundin."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "ex-sg-typing-4",
-              "before": "Du gehst mit",
-              "after": "Schwester ins Kino.",
-              "accepted": { "answers": ["deiner"] },
-              "hint": {
-                "en": "dein-, dative feminine",
-                "fr": "dein-, datif féminin",
-                "de": "dein-, Dativ feminin"
-              },
-              "ruleIds": ["rule-er"],
+              "before": "Wir fahren mit",
+              "after": "Auto zum See.",
+              "accepted": { "answers": ["unserem"] },
+              "hint": { "en": "unser-, neuter", "fr": "unser-, neutre", "de": "unser-, neutral" },
+              "ruleIds": ["r-sg"],
               "answerExplanation": {
-                "en": "Feminine nouns take -er in the dative: mit deiner Schwester.",
-                "fr": "Au datif, le féminin prend -er : mit deiner Schwester.",
-                "de": "Feminine Nomen haben im Dativ -er: mit deiner Schwester."
+                "en": "Auto is neuter, so the possessive ends in -em: mit unserem Auto.",
+                "fr": "Auto est neutre, donc l'article possessif se termine par -em : mit unserem Auto.",
+                "de": "Auto ist neutral, also endet der Possessivartikel auf -em: mit unserem Auto."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-sg-typing-5",
+              "before": "Sie fährt zu",
+              "after": "Großvater.",
+              "accepted": { "answers": ["ihrem"] },
+              "hint": { "en": "ihr-, masculine", "fr": "ihr-, masculin", "de": "ihr-, maskulin" },
+              "ruleIds": ["r-sg"],
+              "answerExplanation": {
+                "en": "Großvater is masculine, so the possessive ends in -em: zu ihrem Großvater.",
+                "fr": "Großvater est masculin, donc l'article possessif se termine par -em : zu ihrem Großvater.",
+                "de": "Großvater ist maskulin, also endet der Possessivartikel auf -em: zu ihrem Großvater."
               }
             }
           ]
@@ -314,10 +332,10 @@
       "id": "ex-sg-spot",
       "role": "exercise",
       "blockId": "block-singular",
-      "label": { "en": "Error spotting 1", "fr": "Repérer l’erreur 1", "de": "Fehler finden 1" },
+      "label": { "en": "Error spotting", "fr": "Repérer l’erreur", "de": "Fehler finden" },
       "pages": [
         {
-          "pageId": "ex-sg-spot-p",
+          "pageId": "ex-sg-spot-1",
           "estimatedDurationS": 75,
           "timeLimitS": null,
           "instructions": {
@@ -330,76 +348,71 @@
               "type": "grammar_error_spotter",
               "itemId": "ex-sg-spot-1",
               "tokens": [
-                { "tokenId": "t1", "text": "Ich" },
-                { "tokenId": "t2", "text": "fahre" },
-                { "tokenId": "t3", "text": "mit" },
-                { "tokenId": "t4", "text": "meiner" },
-                { "tokenId": "t5", "text": "Bruder" },
-                { "tokenId": "t6", "text": "nach" },
-                { "tokenId": "t7", "text": "Hamburg" },
-                { "tokenId": "t8", "text": "." }
+                { "tokenId": "t-1", "text": "Ich" },
+                { "tokenId": "t-2", "text": "wohne" },
+                { "tokenId": "t-3", "text": "bei" },
+                { "tokenId": "t-4", "text": "meinem" },
+                { "tokenId": "t-5", "text": "Tante" }
               ],
-              "faultyTokenId": "t4",
+              "faultyTokenId": "t-4",
               "correction": {
                 "mode": "type",
-                "accepted": { "answers": ["meinem"] },
+                "accepted": { "answers": ["meiner"] },
                 "choices": []
               },
-              "ruleIds": ["rule-em"],
+              "ruleIds": ["r-sg"],
               "answerExplanation": {
-                "en": "Masculine and neuter nouns take -em in the dative: mit meinem Bruder.",
-                "fr": "Au datif, le masculin et le neutre prennent -em : mit meinem Bruder.",
-                "de": "Maskuline und neutrale Nomen haben im Dativ -em: mit meinem Bruder."
+                "en": "Tante is feminine, so the possessive ends in -er: bei meiner Tante.",
+                "fr": "Tante est féminin, donc l'article possessif se termine par -er : bei meiner Tante.",
+                "de": "Tante ist feminin, also endet der Possessivartikel auf -er: bei meiner Tante."
               }
             },
             {
               "type": "grammar_error_spotter",
               "itemId": "ex-sg-spot-2",
               "tokens": [
-                { "tokenId": "t1", "text": "Wir" },
-                { "tokenId": "t2", "text": "wohnen" },
-                { "tokenId": "t3", "text": "bei" },
-                { "tokenId": "t4", "text": "unserem" },
-                { "tokenId": "t5", "text": "Tante" },
-                { "tokenId": "t6", "text": "in" },
-                { "tokenId": "t7", "text": "Wien" },
-                { "tokenId": "t8", "text": "." }
+                { "tokenId": "t-1", "text": "Wir" },
+                { "tokenId": "t-2", "text": "spielen" },
+                { "tokenId": "t-3", "text": "mit" },
+                { "tokenId": "t-4", "text": "unserer" },
+                { "tokenId": "t-5", "text": "Hund" }
               ],
-              "faultyTokenId": "t4",
+              "faultyTokenId": "t-4",
               "correction": {
                 "mode": "select",
-                "accepted": { "answers": ["unserer"] },
-                "choices": ["unserer", "unserem", "unseren"]
+                "accepted": { "answers": ["unserem"] },
+                "choices": ["unserem", "unserer", "unseren"]
               },
-              "ruleIds": ["rule-er"],
+              "ruleIds": ["r-sg"],
               "answerExplanation": {
-                "en": "Feminine nouns take -er in the dative: bei unserer Tante.",
-                "fr": "Au datif, le féminin prend -er : bei unserer Tante.",
-                "de": "Feminine Nomen haben im Dativ -er: bei unserer Tante."
+                "en": "Hund is masculine, so the possessive ends in -em: mit unserem Hund.",
+                "fr": "Hund est masculin, donc l'article possessif se termine par -em : mit unserem Hund.",
+                "de": "Hund ist maskulin, also endet der Possessivartikel auf -em: mit unserem Hund."
               }
             },
             {
               "type": "grammar_error_spotter",
               "itemId": "ex-sg-spot-3",
               "tokens": [
-                { "tokenId": "t1", "text": "Du" },
-                { "tokenId": "t2", "text": "sprichst" },
-                { "tokenId": "t3", "text": "mit" },
-                { "tokenId": "t4", "text": "deiner" },
-                { "tokenId": "t5", "text": "Lehrer" },
-                { "tokenId": "t6", "text": "." }
+                { "tokenId": "t-1", "text": "Er" },
+                { "tokenId": "t-2", "text": "geht" },
+                { "tokenId": "t-3", "text": "mit" },
+                { "tokenId": "t-4", "text": "seiner" },
+                { "tokenId": "t-5", "text": "Kind" },
+                { "tokenId": "t-6", "text": "zum" },
+                { "tokenId": "t-7", "text": "Arzt" }
               ],
-              "faultyTokenId": "t4",
+              "faultyTokenId": "t-4",
               "correction": {
                 "mode": "type",
-                "accepted": { "answers": ["deinem"] },
+                "accepted": { "answers": ["seinem"] },
                 "choices": []
               },
-              "ruleIds": ["rule-em"],
+              "ruleIds": ["r-sg"],
               "answerExplanation": {
-                "en": "Masculine and neuter nouns take -em in the dative: mit deinem Lehrer.",
-                "fr": "Au datif, le masculin et le neutre prennent -em : mit deinem Lehrer.",
-                "de": "Maskuline und neutrale Nomen haben im Dativ -em: mit deinem Lehrer."
+                "en": "Kind is neuter, so the possessive ends in -em: mit seinem Kind.",
+                "fr": "Kind est neutre, donc l'article possessif se termine par -em : mit seinem Kind.",
+                "de": "Kind ist neutral, also endet der Possessivartikel auf -em: mit seinem Kind."
               }
             }
           ]
@@ -410,11 +423,7 @@
       "id": "block-plural-explanation",
       "role": "explanation",
       "blockId": "block-plural",
-      "label": {
-        "en": "Plural: -en, -n and eur-",
-        "fr": "Pluriel : -en, -n et eur-",
-        "de": "Plural: -en, -n und eur-"
-      },
+      "label": { "en": "Explanation", "fr": "Explication", "de": "Erklärung" },
       "pages": [
         {
           "pageId": "block-plural-explanation",
@@ -429,71 +438,62 @@
             {
               "type": "grammar_explanation",
               "itemId": "block-plural-explanation",
-              "ruleIds": ["rule-plural", "rule-eur"],
+              "ruleIds": ["r-pl", "r-euer"],
               "heading": {
-                "en": "Dative plural and eur-",
-                "fr": "Datif pluriel et eur-",
-                "de": "Dativ Plural und eur-"
+                "en": "Dative plural and euer",
+                "fr": "Datif pluriel et euer",
+                "de": "Dativ Plural und euer"
               },
               "text": {
-                "en": "In the **dative plural** every possessive article ends in `-en` and the noun gets an extra `-n`: `mit meinen Freunden`, `mit unseren Kindern`.\n\nIf the plural already ends in `-n` or `-s`, nothing is added: `mit meinen Schwestern`, `mit meinen Autos`.\n\nWith `euer` the e before the r drops when an ending is added: `mit eurem Hund`, `bei eurer Tante`, `mit euren Kindern`. Never write `euerem`.",
-                "fr": "Au **datif pluriel**, tous les adjectifs possessifs se terminent par `-en` et le nom prend un `-n` supplémentaire : `mit meinen Freunden`, `mit unseren Kindern`.\n\nSi le pluriel se termine déjà par `-n` ou `-s`, on n’ajoute rien : `mit meinen Schwestern`, `mit meinen Autos`.\n\nAvec `euer`, le e devant le r tombe quand on ajoute une terminaison : `mit eurem Hund`, `bei eurer Tante`, `mit euren Kindern`. N’écrivez jamais `euerem`.",
-                "de": "Im **Dativ Plural** enden alle Possessivartikel auf `-en` und das Nomen bekommt ein zusätzliches `-n`: `mit meinen Freunden`, `mit unseren Kindern`.\n\nEndet der Plural schon auf `-n` oder `-s`, kommt nichts dazu: `mit meinen Schwestern`, `mit meinen Autos`.\n\nBei `euer` fällt das e vor dem r weg, sobald eine Endung kommt: `mit eurem Hund`, `bei eurer Tante`, `mit euren Kindern`. Schreibe nie `euerem`."
+                "en": "In the dative plural every possessive article ends in **-en**, and the noun gets an **-n**: `mit meinen Freunden`, `bei unseren Kindern`.\n\nThe noun gets no extra -n when its plural already ends in -n or -s: `mit meinen Eltern`, `mit meinen Autos`.\n\nWith `euer` the second e drops out before an ending: `mit eurem Bruder`, `bei eurer Oma`, `mit euren Kindern`.",
+                "fr": "Au datif pluriel, tous les articles possessifs se terminent par **-en**, et le nom prend un **-n** : `mit meinen Freunden`, `bei unseren Kindern`.\n\nLe nom ne prend pas de -n supplémentaire quand son pluriel se termine déjà par -n ou -s : `mit meinen Eltern`, `mit meinen Autos`.\n\nAvec `euer`, le deuxième e disparaît devant une terminaison : `mit eurem Bruder`, `bei eurer Oma`, `mit euren Kindern`.",
+                "de": "Im Dativ Plural enden alle Possessivartikel auf **-en**, und das Nomen bekommt ein **-n**: `mit meinen Freunden`, `bei unseren Kindern`.\n\nKein zusätzliches -n gibt es, wenn der Plural schon auf -n oder -s endet: `mit meinen Eltern`, `mit meinen Autos`.\n\nBei `euer` fällt das zweite e vor einer Endung weg: `mit eurem Bruder`, `bei eurer Oma`, `mit euren Kindern`."
               },
               "formTable": [
                 {
                   "subject": "die Freunde",
                   "form": "meinen Freunden",
-                  "example": "Ich gehe mit meinen Freunden ins Kino."
+                  "example": "Ich fahre mit meinen Freunden an den See."
+                },
+                {
+                  "subject": "die Eltern",
+                  "form": "meinen Eltern",
+                  "example": "Wir wohnen bei unseren Eltern."
                 },
                 {
                   "subject": "die Kinder",
-                  "form": "unseren Kindern",
-                  "example": "Wir spielen mit unseren Kindern."
+                  "form": "euren Kindern",
+                  "example": "Spielt ihr mit euren Kindern?"
                 },
-                {
-                  "subject": "die Schwestern",
-                  "form": "meinen Schwestern",
-                  "example": "Ich wohne bei meinen Schwestern."
-                },
-                {
-                  "subject": "euer Hund",
-                  "form": "eurem Hund",
-                  "example": "Wie geht es eurem Hund?"
-                },
-                {
-                  "subject": "eure Tante",
-                  "form": "eurer Tante",
-                  "example": "Wir sind bei eurer Tante."
-                }
+                { "subject": "euer", "form": "eurem / eurer / euren", "example": null }
               ],
               "examples": [
                 {
-                  "text": "Ich wohne bei meinen Eltern.",
+                  "text": "Er spielt mit seinen Freunden Fußball.",
                   "translation": {
-                    "en": "I live with my parents.",
-                    "fr": "J’habite chez mes parents."
+                    "en": "He plays football with his friends.",
+                    "fr": "Il joue au football avec ses amis."
                   }
                 },
                 {
-                  "text": "Wir spielen mit unseren Kindern.",
+                  "text": "Wir wohnen bei unseren Eltern.",
                   "translation": {
-                    "en": "We are playing with our children.",
-                    "fr": "Nous jouons avec nos enfants."
+                    "en": "We live with our parents.",
+                    "fr": "Nous habitons chez nos parents."
                   }
                 },
                 {
-                  "text": "Wohnt ihr bei eurer Tante?",
+                  "text": "Fahrt ihr mit eurem Bruder?",
                   "translation": {
-                    "en": "Do you live with your aunt?",
-                    "fr": "Vous habitez chez votre tante ?"
+                    "en": "Are you going with your brother?",
+                    "fr": "Vous partez avec votre frère ?"
                   }
                 },
                 {
-                  "text": "Wie geht es euren Eltern?",
+                  "text": "Ich spreche mit meinen Nachbarn.",
                   "translation": {
-                    "en": "How are your parents?",
-                    "fr": "Comment vont vos parents ?"
+                    "en": "I'm talking to my neighbours.",
+                    "fr": "Je parle avec mes voisins."
                   }
                 }
               ]
@@ -507,13 +507,13 @@
       "role": "exercise",
       "blockId": "block-plural",
       "label": {
-        "en": "Multiple-choice gaps 2",
-        "fr": "Phrases à trous à choix multiple 2",
-        "de": "Lücken mit Auswahl 2"
+        "en": "Multiple-choice gaps",
+        "fr": "Phrases à trous à choix multiple",
+        "de": "Lücken mit Auswahl"
       },
       "pages": [
         {
-          "pageId": "ex-pl-choice-p",
+          "pageId": "ex-pl-choice-1",
           "estimatedDurationS": 60,
           "timeLimitS": null,
           "instructions": {
@@ -525,81 +525,101 @@
             {
               "type": "grammar_gap_choice",
               "itemId": "ex-pl-choice-1",
-              "before": "Ich esse heute mit",
-              "after": "Freunden.",
+              "before": "Ich fahre mit",
+              "after": "Freunden an den See.",
               "choices": [
-                { "choiceId": "c1", "text": "meinen" },
-                { "choiceId": "c2", "text": "meinem" },
-                { "choiceId": "c3", "text": "meiner" },
-                { "choiceId": "c4", "text": "meine" }
+                { "choiceId": "c-1", "text": "meinen" },
+                { "choiceId": "c-2", "text": "meinem" },
+                { "choiceId": "c-3", "text": "meiner" },
+                { "choiceId": "c-4", "text": "meine" }
               ],
-              "answerChoiceId": "c1",
+              "answerChoiceId": "c-1",
               "hint": null,
-              "ruleIds": ["rule-plural"],
+              "ruleIds": ["r-pl"],
               "answerExplanation": {
-                "en": "The dative plural ends in -en, and the noun gets -n: mit meinen Freunden.",
-                "fr": "Au datif pluriel, on a -en et le nom prend -n : mit meinen Freunden.",
-                "de": "Im Dativ Plural steht -en, und das Nomen bekommt -n: mit meinen Freunden."
+                "en": "In the dative plural the possessive ends in -en: mit meinen Freunden.",
+                "fr": "Au datif pluriel, l'article possessif se termine par -en : mit meinen Freunden.",
+                "de": "Im Dativ Plural endet der Possessivartikel auf -en: mit meinen Freunden."
               }
             },
             {
               "type": "grammar_gap_choice",
               "itemId": "ex-pl-choice-2",
-              "before": "Wir fahren mit",
-              "after": "Kindern an den See.",
+              "before": "Sie sprechen mit",
+              "after": "Lehrern.",
               "choices": [
-                { "choiceId": "c1", "text": "unsere" },
-                { "choiceId": "c2", "text": "unserer" },
-                { "choiceId": "c3", "text": "unserem" },
-                { "choiceId": "c4", "text": "unseren" }
+                { "choiceId": "c-1", "text": "ihrem" },
+                { "choiceId": "c-2", "text": "ihrer" },
+                { "choiceId": "c-3", "text": "ihre" },
+                { "choiceId": "c-4", "text": "ihren" }
               ],
-              "answerChoiceId": "c4",
+              "answerChoiceId": "c-4",
               "hint": null,
-              "ruleIds": ["rule-plural"],
+              "ruleIds": ["r-pl"],
               "answerExplanation": {
-                "en": "The dative plural ends in -en, and the noun gets -n: mit unseren Kindern.",
-                "fr": "Au datif pluriel, on a -en et le nom prend -n : mit unseren Kindern.",
-                "de": "Im Dativ Plural steht -en, und das Nomen bekommt -n: mit unseren Kindern."
+                "en": "In the dative plural the possessive ends in -en: mit ihren Lehrern.",
+                "fr": "Au datif pluriel, l'article possessif se termine par -en : mit ihren Lehrern.",
+                "de": "Im Dativ Plural endet der Possessivartikel auf -en: mit ihren Lehrern."
               }
             },
             {
               "type": "grammar_gap_choice",
               "itemId": "ex-pl-choice-3",
-              "before": "Wohnt ihr noch bei",
-              "after": "Eltern?",
+              "before": "Ich gehe heute zu",
+              "after": "Großeltern.",
               "choices": [
-                { "choiceId": "c1", "text": "eurem" },
-                { "choiceId": "c2", "text": "eurer" },
-                { "choiceId": "c3", "text": "euren" },
-                { "choiceId": "c4", "text": "eure" }
+                { "choiceId": "c-1", "text": "meinem" },
+                { "choiceId": "c-2", "text": "meiner" },
+                { "choiceId": "c-3", "text": "meine" },
+                { "choiceId": "c-4", "text": "meinen" }
               ],
-              "answerChoiceId": "c3",
+              "answerChoiceId": "c-4",
               "hint": null,
-              "ruleIds": ["rule-eur", "rule-plural"],
+              "ruleIds": ["r-pl"],
               "answerExplanation": {
-                "en": "With euer the e before r drops, and the plural ends in -en: bei euren Eltern.",
-                "fr": "Avec euer, le e devant r tombe, et le pluriel a -en : bei euren Eltern.",
-                "de": "Bei euer fällt das e vor dem r weg, und im Plural steht -en: bei euren Eltern."
+                "en": "In the dative plural the possessive ends in -en: zu meinen Großeltern.",
+                "fr": "Au datif pluriel, l'article possessif se termine par -en : zu meinen Großeltern.",
+                "de": "Im Dativ Plural endet der Possessivartikel auf -en: zu meinen Großeltern."
               }
             },
             {
               "type": "grammar_gap_choice",
               "itemId": "ex-pl-choice-4",
-              "before": "Geht ihr oft mit",
-              "after": "Hund spazieren?",
+              "before": "Wohnt ihr noch bei",
+              "after": "Eltern?",
               "choices": [
-                { "choiceId": "c1", "text": "euerem" },
-                { "choiceId": "c2", "text": "eurer" },
-                { "choiceId": "c3", "text": "euren" },
-                { "choiceId": "c4", "text": "eurem" }
+                { "choiceId": "c-1", "text": "euren" },
+                { "choiceId": "c-2", "text": "eurem" },
+                { "choiceId": "c-3", "text": "eurer" },
+                { "choiceId": "c-4", "text": "euer" }
               ],
-              "answerChoiceId": "c4",
+              "answerChoiceId": "c-1",
               "hint": null,
-              "ruleIds": ["rule-eur"],
+              "ruleIds": ["r-euer"],
               "answerExplanation": {
-                "en": "With euer the e before r drops: mit eurem Hund.",
-                "fr": "Avec euer, le e devant r tombe : mit eurem Hund.",
-                "de": "Bei euer fällt das e vor dem r weg: mit eurem Hund."
+                "en": "Eltern is plural and euer loses its second e: bei euren Eltern.",
+                "fr": "Eltern est un pluriel et euer perd son deuxième e : bei euren Eltern.",
+                "de": "Eltern ist Plural und euer verliert das zweite e: bei euren Eltern."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-pl-choice-5",
+              "before": "Kommt ihr mit",
+              "after": "Hund?",
+              "choices": [
+                { "choiceId": "c-1", "text": "eurer" },
+                { "choiceId": "c-2", "text": "euren" },
+                { "choiceId": "c-3", "text": "eurem" },
+                { "choiceId": "c-4", "text": "euer" }
+              ],
+              "answerChoiceId": "c-3",
+              "hint": null,
+              "ruleIds": ["r-euer"],
+              "answerExplanation": {
+                "en": "Hund is masculine, so the ending is -em and euer loses its second e: mit eurem Hund.",
+                "fr": "Hund est masculin, donc la terminaison est -em et euer perd son deuxième e : mit eurem Hund.",
+                "de": "Hund ist maskulin, also lautet die Endung -em und euer verliert das zweite e: mit eurem Hund."
               }
             }
           ]
@@ -607,18 +627,14 @@
       ]
     },
     {
-      "id": "ex-pl-typing",
+      "id": "ex-pl-noun",
       "role": "exercise",
       "blockId": "block-plural",
-      "label": {
-        "en": "Typed gaps 2",
-        "fr": "Phrases à trous à écrire 2",
-        "de": "Lücken zum Schreiben 2"
-      },
+      "label": { "en": "Plural nouns", "fr": "Noms au pluriel", "de": "Nomen im Plural" },
       "pages": [
         {
-          "pageId": "ex-pl-typing-p",
-          "estimatedDurationS": 80,
+          "pageId": "ex-pl-noun-1",
+          "estimatedDurationS": 72,
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
@@ -628,74 +644,154 @@
           "items": [
             {
               "type": "grammar_gap_typing",
-              "itemId": "ex-pl-typing-1",
-              "before": "Ich habe zwei Brüder. Ich spiele oft mit meinen",
-              "after": "Fußball.",
-              "accepted": { "answers": ["Brüdern"] },
+              "itemId": "ex-pl-noun-1",
+              "before": "Wir sind bei unseren",
+              "after": "zu Besuch.",
+              "accepted": { "answers": ["Freunden"] },
               "hint": {
-                "en": "dative plural of the noun",
-                "fr": "datif pluriel du nom",
-                "de": "Dativ Plural des Nomens"
+                "en": "der Freund → dative plural",
+                "fr": "der Freund → datif pluriel",
+                "de": "der Freund → Dativ Plural"
               },
-              "ruleIds": ["rule-plural"],
+              "ruleIds": ["r-pl"],
               "answerExplanation": {
-                "en": "The dative plural ends in -en, and the noun gets -n: mit meinen Brüdern.",
-                "fr": "Au datif pluriel, on a -en et le nom prend -n : mit meinen Brüdern.",
-                "de": "Im Dativ Plural steht -en, und das Nomen bekommt -n: mit meinen Brüdern."
+                "en": "In the dative plural the noun gets -n: bei unseren Freunden.",
+                "fr": "Au datif pluriel, le nom prend -n : bei unseren Freunden.",
+                "de": "Im Dativ Plural bekommt das Nomen -n: bei unseren Freunden."
               }
             },
             {
               "type": "grammar_gap_typing",
-              "itemId": "ex-pl-typing-2",
-              "before": "Ich habe zwei Schwestern. Ich gehe oft mit meinen",
-              "after": "ins Kino.",
-              "accepted": { "answers": ["Schwestern"] },
+              "itemId": "ex-pl-noun-2",
+              "before": "Sie spielt mit ihren",
+              "after": "im Park.",
+              "accepted": { "answers": ["Kindern"] },
               "hint": {
-                "en": "dative plural of the noun",
-                "fr": "datif pluriel du nom",
-                "de": "Dativ Plural des Nomens"
+                "en": "das Kind → dative plural",
+                "fr": "das Kind → datif pluriel",
+                "de": "das Kind → Dativ Plural"
               },
-              "ruleIds": ["rule-plural"],
+              "ruleIds": ["r-pl"],
               "answerExplanation": {
-                "en": "The dative plural ends in -en; the noun already ends in -n, so nothing is added: mit meinen Schwestern.",
-                "fr": "Au datif pluriel, on a -en ; le nom finit déjà par -n, on n’ajoute rien : mit meinen Schwestern.",
-                "de": "Im Dativ Plural steht -en; das Nomen endet schon auf -n, es kommt nichts dazu: mit meinen Schwestern."
+                "en": "The plural Kinder gets -n in the dative: mit ihren Kindern.",
+                "fr": "Le pluriel Kinder prend -n au datif : mit ihren Kindern.",
+                "de": "Der Plural Kinder bekommt im Dativ -n: mit ihren Kindern."
               }
             },
             {
               "type": "grammar_gap_typing",
-              "itemId": "ex-pl-typing-3",
-              "before": "Ihr spielt mit",
-              "after": "Kindern im Hof.",
-              "accepted": { "answers": ["euren"] },
+              "itemId": "ex-pl-noun-3",
+              "before": "Er wohnt bei seinen",
+              "after": "in Wien.",
+              "accepted": { "answers": ["Eltern"] },
               "hint": {
-                "en": "euer-, dative plural",
-                "fr": "euer-, datif pluriel",
-                "de": "euer-, Dativ Plural"
+                "en": "die Eltern (the plural already ends in -n)",
+                "fr": "die Eltern (le pluriel se termine déjà par -n)",
+                "de": "die Eltern (der Plural endet schon auf -n)"
               },
-              "ruleIds": ["rule-eur", "rule-plural"],
+              "ruleIds": ["r-pl"],
               "answerExplanation": {
-                "en": "With euer the e before r drops, and the plural ends in -en: mit euren Kindern.",
-                "fr": "Avec euer, le e devant r tombe, et le pluriel a -en : mit euren Kindern.",
-                "de": "Bei euer fällt das e vor dem r weg, und im Plural steht -en: mit euren Kindern."
+                "en": "Eltern already ends in -n, so nothing is added: bei seinen Eltern.",
+                "fr": "Eltern se termine déjà par -n, donc on n'ajoute rien : bei seinen Eltern.",
+                "de": "Eltern endet schon auf -n, also kommt nichts dazu: bei seinen Eltern."
               }
             },
             {
               "type": "grammar_gap_typing",
-              "itemId": "ex-pl-typing-4",
-              "before": "Ihr wohnt bei",
-              "after": "Tante in Bonn.",
+              "itemId": "ex-pl-noun-4",
+              "before": "Er spielt mit seinen",
+              "after": "im Hof.",
+              "accepted": { "answers": ["Autos"] },
+              "hint": {
+                "en": "das Auto → plural in -s",
+                "fr": "das Auto → pluriel en -s",
+                "de": "das Auto → Plural auf -s"
+              },
+              "ruleIds": ["r-pl"],
+              "answerExplanation": {
+                "en": "The plural Autos ends in -s, so no -n is added: mit seinen Autos.",
+                "fr": "Le pluriel Autos se termine par -s, donc on n'ajoute pas de -n : mit seinen Autos.",
+                "de": "Der Plural Autos endet auf -s, also kommt kein -n dazu: mit seinen Autos."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-pl-euer",
+      "role": "exercise",
+      "blockId": "block-plural",
+      "label": { "en": "euer in the dative", "fr": "euer au datif", "de": "euer im Dativ" },
+      "pages": [
+        {
+          "pageId": "ex-pl-euer-1",
+          "estimatedDurationS": 60,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-pl-euer-1",
+              "before": "Habt ihr schon mit",
+              "after": "Lehrerin gesprochen?",
               "accepted": { "answers": ["eurer"] },
-              "hint": {
-                "en": "euer-, dative feminine",
-                "fr": "euer-, datif féminin",
-                "de": "euer-, Dativ feminin"
-              },
-              "ruleIds": ["rule-eur"],
+              "hint": { "en": "euer-, feminine", "fr": "euer-, féminin", "de": "euer-, feminin" },
+              "ruleIds": ["r-euer"],
               "answerExplanation": {
-                "en": "With euer the e before r drops: bei eurer Tante.",
-                "fr": "Avec euer, le e devant r tombe : bei eurer Tante.",
-                "de": "Bei euer fällt das e vor dem r weg: bei eurer Tante."
+                "en": "Lehrerin is feminine: the ending is -er and euer loses its second e: mit eurer Lehrerin.",
+                "fr": "Lehrerin est féminin : la terminaison est -er et euer perd son deuxième e : mit eurer Lehrerin.",
+                "de": "Lehrerin ist feminin: Die Endung ist -er und euer verliert das zweite e: mit eurer Lehrerin."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-pl-euer-2",
+              "before": "Fahrt ihr zu",
+              "after": "Großvater?",
+              "accepted": { "answers": ["eurem"] },
+              "hint": {
+                "en": "euer-, masculine",
+                "fr": "euer-, masculin",
+                "de": "euer-, maskulin"
+              },
+              "ruleIds": ["r-euer"],
+              "answerExplanation": {
+                "en": "Großvater is masculine: the ending is -em and euer loses its second e: zu eurem Großvater.",
+                "fr": "Großvater est masculin : la terminaison est -em et euer perd son deuxième e : zu eurem Großvater.",
+                "de": "Großvater ist maskulin: Die Endung ist -em und euer verliert das zweite e: zu eurem Großvater."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-pl-euer-3",
+              "before": "Ich möchte mit",
+              "after": "Kindern sprechen.",
+              "accepted": { "answers": ["euren"] },
+              "hint": { "en": "euer-, plural", "fr": "euer-, pluriel", "de": "euer-, Plural" },
+              "ruleIds": ["r-euer"],
+              "answerExplanation": {
+                "en": "Dative plural: the ending is -en and euer loses its second e: mit euren Kindern.",
+                "fr": "Datif pluriel : la terminaison est -en et euer perd son deuxième e : mit euren Kindern.",
+                "de": "Dativ Plural: Die Endung ist -en und euer verliert das zweite e: mit euren Kindern."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-pl-euer-4",
+              "before": "Kommt ihr mit",
+              "after": "Auto?",
+              "accepted": { "answers": ["eurem"] },
+              "hint": { "en": "euer-, neuter", "fr": "euer-, neutre", "de": "euer-, neutral" },
+              "ruleIds": ["r-euer"],
+              "answerExplanation": {
+                "en": "Auto is neuter: the ending is -em and euer loses its second e: mit eurem Auto.",
+                "fr": "Auto est neutre : la terminaison est -em et euer perd son deuxième e : mit eurem Auto.",
+                "de": "Auto ist neutral: Die Endung ist -em und euer verliert das zweite e: mit eurem Auto."
               }
             }
           ]
@@ -706,10 +802,10 @@
       "id": "ex-pl-order",
       "role": "exercise",
       "blockId": "block-plural",
-      "label": { "en": "Word order 1", "fr": "Ordre des mots 1", "de": "Wortstellung 1" },
+      "label": { "en": "Word order", "fr": "Ordre des mots", "de": "Wortstellung" },
       "pages": [
         {
-          "pageId": "ex-pl-order-p",
+          "pageId": "ex-pl-order-1",
           "estimatedDurationS": 75,
           "timeLimitS": null,
           "instructions": {
@@ -722,125 +818,62 @@
               "type": "grammar_word_order",
               "itemId": "ex-pl-order-1",
               "tokens": [
-                { "tokenId": "w4", "text": "meinen" },
-                { "tokenId": "w7", "text": "Italien" },
-                { "tokenId": "w1", "text": "Ich" },
-                { "tokenId": "w5", "text": "Freunden" },
-                { "tokenId": "w3", "text": "mit" },
-                { "tokenId": "w8", "text": "." },
-                { "tokenId": "w2", "text": "fahre" },
-                { "tokenId": "w6", "text": "nach" }
+                { "tokenId": "w-1", "text": "meinen" },
+                { "tokenId": "w-2", "text": "Ich" },
+                { "tokenId": "w-3", "text": "Eltern" },
+                { "tokenId": "w-4", "text": "bei" },
+                { "tokenId": "w-5", "text": "wohne" },
+                { "tokenId": "w-6", "text": "." }
               ],
-              "acceptedOrders": [["w1", "w2", "w3", "w4", "w5", "w6", "w7", "w8"]],
-              "ruleIds": ["rule-plural"],
+              "acceptedOrders": [["w-2", "w-5", "w-4", "w-1", "w-3", "w-6"]],
+              "ruleIds": ["r-pl"],
               "answerExplanation": {
-                "en": "The dative plural ends in -en, and the noun gets -n: mit meinen Freunden.",
-                "fr": "Au datif pluriel, on a -en et le nom prend -n : mit meinen Freunden.",
-                "de": "Im Dativ Plural steht -en, und das Nomen bekommt -n: mit meinen Freunden."
+                "en": "The verb is in second place, then bei meinen Eltern in the dative plural.",
+                "fr": "Le verbe est en deuxième position, puis bei meinen Eltern au datif pluriel.",
+                "de": "Das Verb steht an zweiter Stelle, dann bei meinen Eltern im Dativ Plural."
               }
             },
             {
               "type": "grammar_word_order",
               "itemId": "ex-pl-order-2",
               "tokens": [
-                { "tokenId": "w3", "text": "mit" },
-                { "tokenId": "w5", "text": "Eltern" },
-                { "tokenId": "w1", "text": "Kommt" },
-                { "tokenId": "w6", "text": "?" },
-                { "tokenId": "w4", "text": "euren" },
-                { "tokenId": "w2", "text": "ihr" }
+                { "tokenId": "w-1", "text": "euren" },
+                { "tokenId": "w-2", "text": "ihr" },
+                { "tokenId": "w-3", "text": "?" },
+                { "tokenId": "w-4", "text": "Wohnt" },
+                { "tokenId": "w-5", "text": "Großeltern" },
+                { "tokenId": "w-6", "text": "bei" }
               ],
-              "acceptedOrders": [["w1", "w2", "w3", "w4", "w5", "w6"]],
-              "ruleIds": ["rule-eur", "rule-plural"],
+              "acceptedOrders": [["w-4", "w-2", "w-6", "w-1", "w-5", "w-3"]],
+              "ruleIds": ["r-euer"],
               "answerExplanation": {
-                "en": "With euer the e before r drops, and the plural ends in -en: mit euren Eltern.",
-                "fr": "Avec euer, le e devant r tombe, et le pluriel a -en : mit euren Eltern.",
-                "de": "Bei euer fällt das e vor dem r weg, und im Plural steht -en: mit euren Eltern."
+                "en": "In a yes/no question the verb comes first; bei is followed by euren, which has lost its second e.",
+                "fr": "Dans une question fermée, le verbe vient en premier ; bei est suivi de euren, qui a perdu son deuxième e.",
+                "de": "In der Ja/Nein-Frage steht das Verb vorn; nach bei folgt euren, das sein zweites e verloren hat."
               }
             },
             {
               "type": "grammar_word_order",
               "itemId": "ex-pl-order-3",
               "tokens": [
-                { "tokenId": "w5", "text": "Nachbarn" },
-                { "tokenId": "w2", "text": "sprechen" },
-                { "tokenId": "w6", "text": "." },
-                { "tokenId": "w1", "text": "Wir" },
-                { "tokenId": "w4", "text": "unseren" },
-                { "tokenId": "w3", "text": "mit" }
+                { "tokenId": "w-1", "text": "Kindern" },
+                { "tokenId": "w-2", "text": "zum" },
+                { "tokenId": "w-3", "text": "Wir" },
+                { "tokenId": "w-4", "text": "unseren" },
+                { "tokenId": "w-5", "text": "." },
+                { "tokenId": "w-6", "text": "fahren" },
+                { "tokenId": "w-7", "text": "See" },
+                { "tokenId": "w-8", "text": "mit" }
               ],
-              "acceptedOrders": [["w1", "w2", "w3", "w4", "w5", "w6"]],
-              "ruleIds": ["rule-plural"],
-              "answerExplanation": {
-                "en": "The dative plural ends in -en, and the noun gets -n: mit unseren Nachbarn.",
-                "fr": "Au datif pluriel, on a -en et le nom prend -n : mit unseren Nachbarn.",
-                "de": "Im Dativ Plural steht -en, und das Nomen bekommt -n: mit unseren Nachbarn."
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "ex-pl-spot",
-      "role": "exercise",
-      "blockId": "block-plural",
-      "label": { "en": "Error spotting 2", "fr": "Repérer l’erreur 2", "de": "Fehler finden 2" },
-      "pages": [
-        {
-          "pageId": "ex-pl-spot-p",
-          "estimatedDurationS": 50,
-          "timeLimitS": null,
-          "instructions": {
-            "en": "Find the wrong word and correct it.",
-            "fr": "Trouvez le mot faux et corrigez-le.",
-            "de": "Finde das falsche Wort und korrigiere es."
-          },
-          "items": [
-            {
-              "type": "grammar_error_spotter",
-              "itemId": "ex-pl-spot-1",
-              "tokens": [
-                { "tokenId": "t1", "text": "Ich" },
-                { "tokenId": "t2", "text": "spiele" },
-                { "tokenId": "t3", "text": "oft" },
-                { "tokenId": "t4", "text": "mit" },
-                { "tokenId": "t5", "text": "meinen" },
-                { "tokenId": "t6", "text": "Freunde" },
-                { "tokenId": "t7", "text": "Fußball" },
-                { "tokenId": "t8", "text": "." }
+              "acceptedOrders": [
+                ["w-3", "w-6", "w-8", "w-4", "w-1", "w-2", "w-7", "w-5"],
+                ["w-3", "w-6", "w-2", "w-7", "w-8", "w-4", "w-1", "w-5"]
               ],
-              "faultyTokenId": "t6",
-              "correction": {
-                "mode": "type",
-                "accepted": { "answers": ["Freunden"] },
-                "choices": []
-              },
-              "ruleIds": ["rule-plural"],
+              "ruleIds": ["r-pl"],
               "answerExplanation": {
-                "en": "The dative plural ends in -en, and the noun gets -n: mit meinen Freunden.",
-                "fr": "Au datif pluriel, on a -en et le nom prend -n : mit meinen Freunden.",
-                "de": "Im Dativ Plural steht -en, und das Nomen bekommt -n: mit meinen Freunden."
-              }
-            },
-            {
-              "type": "grammar_error_spotter",
-              "itemId": "ex-pl-spot-2",
-              "tokens": [
-                { "tokenId": "t1", "text": "Fahrt" },
-                { "tokenId": "t2", "text": "ihr" },
-                { "tokenId": "t3", "text": "mit" },
-                { "tokenId": "t4", "text": "euerem" },
-                { "tokenId": "t5", "text": "Auto" },
-                { "tokenId": "t6", "text": "?" }
-              ],
-              "faultyTokenId": "t4",
-              "correction": { "mode": "type", "accepted": { "answers": ["eurem"] }, "choices": [] },
-              "ruleIds": ["rule-eur"],
-              "answerExplanation": {
-                "en": "With euer the e before r drops: mit eurem Auto.",
-                "fr": "Avec euer, le e devant r tombe : mit eurem Auto.",
-                "de": "Bei euer fällt das e vor dem r weg: mit eurem Auto."
+                "en": "Both orders are correct: mit unseren Kindern can come before or after zum See.",
+                "fr": "Les deux ordres sont corrects : mit unseren Kindern peut venir avant ou après zum See.",
+                "de": "Beide Reihenfolgen sind richtig: mit unseren Kindern kann vor oder nach zum See stehen."
               }
             }
           ]
@@ -874,8 +907,8 @@
       "pages": [
         {
           "pageId": "exam-singular",
-          "estimatedDurationS": 80,
-          "timeLimitS": 130,
+          "estimatedDurationS": 90,
+          "timeLimitS": 150,
           "instructions": {
             "en": "Type the missing words.",
             "fr": "Écrivez les mots manquants.",
@@ -885,65 +918,65 @@
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-singular-1",
-              "before": "Ich fahre am Wochenende mit",
-              "after": "Vater nach Dresden.",
-              "accepted": { "answers": ["meinem"] },
+              "before": "Ich gehe am Samstag mit",
+              "after": "Schwester ins Kino. (mein)",
+              "accepted": { "answers": ["meiner"] },
               "hint": null,
-              "ruleIds": ["rule-em"],
+              "ruleIds": ["r-sg"],
               "answerExplanation": {
-                "en": "Masculine and neuter nouns take -em in the dative: mit meinem Vater.",
-                "fr": "Au datif, le masculin et le neutre prennent -em : mit meinem Vater.",
-                "de": "Maskuline und neutrale Nomen haben im Dativ -em: mit meinem Vater."
+                "en": "Schwester is feminine, so the possessive ends in -er: mit meiner Schwester.",
+                "fr": "Schwester est féminin, donc l'article possessif se termine par -er : mit meiner Schwester.",
+                "de": "Schwester ist feminin, also endet der Possessivartikel auf -er: mit meiner Schwester."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-singular-2",
-              "before": "Lena wohnt bei",
-              "after": "Oma in Leipzig.",
-              "accepted": { "answers": ["ihrer"] },
+              "before": "Wir fahren am Sonntag zu",
+              "after": "Oma nach Köln. (unser)",
+              "accepted": { "answers": ["unserer"] },
               "hint": null,
-              "ruleIds": ["rule-er"],
+              "ruleIds": ["r-sg"],
               "answerExplanation": {
-                "en": "Feminine nouns take -er in the dative: bei ihrer Oma.",
-                "fr": "Au datif, le féminin prend -er : bei ihrer Oma.",
-                "de": "Feminine Nomen haben im Dativ -er: bei ihrer Oma."
+                "en": "Oma is feminine, so the possessive ends in -er: zu unserer Oma.",
+                "fr": "Oma est féminin, donc l'article possessif se termine par -er : zu unserer Oma.",
+                "de": "Oma ist feminin, also endet der Possessivartikel auf -er: zu unserer Oma."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-singular-3",
-              "before": "Du sprichst gern mit",
-              "after": "Opa.",
+              "before": "Du arbeitest gern mit",
+              "after": "Chef. (dein)",
               "accepted": { "answers": ["deinem"] },
               "hint": null,
-              "ruleIds": ["rule-em"],
+              "ruleIds": ["r-sg"],
               "answerExplanation": {
-                "en": "Masculine and neuter nouns take -em in the dative: mit deinem Opa.",
-                "fr": "Au datif, le masculin et le neutre prennent -em : mit deinem Opa.",
-                "de": "Maskuline und neutrale Nomen haben im Dativ -em: mit deinem Opa."
+                "en": "Chef is masculine, so the possessive ends in -em: mit deinem Chef.",
+                "fr": "Chef est masculin, donc l'article possessif se termine par -em : mit deinem Chef.",
+                "de": "Chef ist maskulin, also endet der Possessivartikel auf -em: mit deinem Chef."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-singular-4",
-              "before": "Wir feiern Weihnachten mit",
-              "after": "Familie.",
-              "accepted": { "answers": ["unserer"] },
+              "before": "Anna wohnt bei",
+              "after": "Freund. (ihr)",
+              "accepted": { "answers": ["ihrem"] },
               "hint": null,
-              "ruleIds": ["rule-er"],
+              "ruleIds": ["r-sg"],
               "answerExplanation": {
-                "en": "Feminine nouns take -er in the dative: mit unserer Familie.",
-                "fr": "Au datif, le féminin prend -er : mit unserer Familie.",
-                "de": "Feminine Nomen haben im Dativ -er: mit unserer Familie."
+                "en": "Freund is masculine, so the possessive ends in -em: bei ihrem Freund.",
+                "fr": "Freund est masculin, donc l'article possessif se termine par -em : bei ihrem Freund.",
+                "de": "Freund ist maskulin, also endet der Possessivartikel auf -em: bei ihrem Freund."
               }
             }
           ]
         },
         {
           "pageId": "exam-plural",
-          "estimatedDurationS": 80,
-          "timeLimitS": 130,
+          "estimatedDurationS": 100,
+          "timeLimitS": 160,
           "instructions": {
             "en": "Type the missing words.",
             "fr": "Écrivez les mots manquants.",
@@ -953,57 +986,57 @@
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-plural-1",
-              "before": "Ich habe viele Freunde. Ich gehe gern mit meinen",
-              "after": "tanzen.",
-              "accepted": { "answers": ["Freunden"] },
+              "before": "Ich esse gern mit",
+              "after": "Kollegen. (mein)",
+              "accepted": { "answers": ["meinen"] },
               "hint": null,
-              "ruleIds": ["rule-plural"],
+              "ruleIds": ["r-pl"],
               "answerExplanation": {
-                "en": "The dative plural ends in -en, and the noun gets -n: mit meinen Freunden.",
-                "fr": "Au datif pluriel, on a -en et le nom prend -n : mit meinen Freunden.",
-                "de": "Im Dativ Plural steht -en, und das Nomen bekommt -n: mit meinen Freunden."
+                "en": "In the dative plural the possessive ends in -en: mit meinen Kollegen.",
+                "fr": "Au datif pluriel, l'article possessif se termine par -en : mit meinen Kollegen.",
+                "de": "Im Dativ Plural endet der Possessivartikel auf -en: mit meinen Kollegen."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-plural-2",
-              "before": "Wir wandern oft mit",
-              "after": "Großeltern.",
-              "accepted": { "answers": ["unseren"] },
+              "before": "Am Wochenende spiele ich mit meinen",
+              "after": "Fußball. (Freund)",
+              "accepted": { "answers": ["Freunden"] },
               "hint": null,
-              "ruleIds": ["rule-plural"],
+              "ruleIds": ["r-pl"],
               "answerExplanation": {
-                "en": "The dative plural ends in -en; the noun already ends in -n, so nothing is added: mit unseren Großeltern.",
-                "fr": "Au datif pluriel, on a -en ; le nom finit déjà par -n, on n’ajoute rien : mit unseren Großeltern.",
-                "de": "Im Dativ Plural steht -en; das Nomen endet schon auf -n, es kommt nichts dazu: mit unseren Großeltern."
+                "en": "In the dative plural the noun gets -n: mit meinen Freunden.",
+                "fr": "Au datif pluriel, le nom prend -n : mit meinen Freunden.",
+                "de": "Im Dativ Plural bekommt das Nomen -n: mit meinen Freunden."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-plural-3",
-              "before": "Ihr fahrt mit",
-              "after": "Fahrrädern zur Schule.",
+              "before": "Habt ihr mit",
+              "after": "Lehrern gesprochen? (euer)",
               "accepted": { "answers": ["euren"] },
               "hint": null,
-              "ruleIds": ["rule-eur", "rule-plural"],
+              "ruleIds": ["r-euer"],
               "answerExplanation": {
-                "en": "With euer the e before r drops, and the plural ends in -en: mit euren Fahrrädern.",
-                "fr": "Avec euer, le e devant r tombe, et le pluriel a -en : mit euren Fahrrädern.",
-                "de": "Bei euer fällt das e vor dem r weg, und im Plural steht -en: mit euren Fahrrädern."
+                "en": "Dative plural: the ending is -en and euer loses its second e: mit euren Lehrern.",
+                "fr": "Datif pluriel : la terminaison est -en et euer perd son deuxième e : mit euren Lehrern.",
+                "de": "Dativ Plural: Die Endung ist -en und euer verliert das zweite e: mit euren Lehrern."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-plural-4",
-              "before": "Ihr arbeitet gern mit",
-              "after": "Chef.",
-              "accepted": { "answers": ["eurem"] },
+              "before": "Ihr geht heute zu",
+              "after": "Tante. (euer)",
+              "accepted": { "answers": ["eurer"] },
               "hint": null,
-              "ruleIds": ["rule-eur"],
+              "ruleIds": ["r-euer"],
               "answerExplanation": {
-                "en": "With euer the e before r drops: mit eurem Chef.",
-                "fr": "Avec euer, le e devant r tombe : mit eurem Chef.",
-                "de": "Bei euer fällt das e vor dem r weg: mit eurem Chef."
+                "en": "Tante is feminine: the ending is -er and euer loses its second e: zu eurer Tante.",
+                "fr": "Tante est féminin : la terminaison est -er et euer perd son deuxième e : zu eurer Tante.",
+                "de": "Tante ist feminin: Die Endung ist -er und euer verliert das zweite e: zu eurer Tante."
               }
             }
           ]
@@ -1011,7 +1044,7 @@
         {
           "pageId": "exam-order",
           "estimatedDurationS": 75,
-          "timeLimitS": 120,
+          "timeLimitS": 130,
           "instructions": {
             "en": "Put the words in the right order.",
             "fr": "Mettez les mots dans le bon ordre.",
@@ -1022,61 +1055,61 @@
               "type": "grammar_word_order",
               "itemId": "exam-order-1",
               "tokens": [
-                { "tokenId": "w4", "text": "meiner" },
-                { "tokenId": "w1", "text": "Ich" },
-                { "tokenId": "w6", "text": "." },
-                { "tokenId": "w3", "text": "bei" },
-                { "tokenId": "w5", "text": "Schwester" },
-                { "tokenId": "w2", "text": "wohne" }
+                { "tokenId": "w-1", "text": "Bruder" },
+                { "tokenId": "w-2", "text": "lernst" },
+                { "tokenId": "w-3", "text": "." },
+                { "tokenId": "w-4", "text": "deinem" },
+                { "tokenId": "w-5", "text": "Du" },
+                { "tokenId": "w-6", "text": "mit" }
               ],
-              "acceptedOrders": [["w1", "w2", "w3", "w4", "w5", "w6"]],
-              "ruleIds": ["rule-er"],
+              "acceptedOrders": [["w-5", "w-2", "w-6", "w-4", "w-1", "w-3"]],
+              "ruleIds": ["r-sg"],
               "answerExplanation": {
-                "en": "Feminine nouns take -er in the dative: bei meiner Schwester.",
-                "fr": "Au datif, le féminin prend -er : bei meiner Schwester.",
-                "de": "Feminine Nomen haben im Dativ -er: bei meiner Schwester."
+                "en": "Bruder is masculine, so the dative is mit deinem Bruder, after the verb.",
+                "fr": "Bruder est masculin, donc le datif est mit deinem Bruder, après le verbe.",
+                "de": "Bruder ist maskulin, also lautet der Dativ mit deinem Bruder, nach dem Verb."
               }
             },
             {
               "type": "grammar_word_order",
               "itemId": "exam-order-2",
               "tokens": [
-                { "tokenId": "w6", "text": "Fußball" },
-                { "tokenId": "w3", "text": "mit" },
-                { "tokenId": "w1", "text": "Er" },
-                { "tokenId": "w7", "text": "." },
-                { "tokenId": "w5", "text": "Sohn" },
-                { "tokenId": "w2", "text": "spielt" },
-                { "tokenId": "w4", "text": "seinem" }
+                { "tokenId": "w-1", "text": "ihren" },
+                { "tokenId": "w-2", "text": "Sie" },
+                { "tokenId": "w-3", "text": "mit" },
+                { "tokenId": "w-4", "text": "." },
+                { "tokenId": "w-5", "text": "Freundinnen" },
+                { "tokenId": "w-6", "text": "tanzt" }
               ],
-              "acceptedOrders": [
-                ["w1", "w2", "w3", "w4", "w5", "w6", "w7"],
-                ["w1", "w2", "w6", "w3", "w4", "w5", "w7"]
-              ],
-              "ruleIds": ["rule-em"],
+              "acceptedOrders": [["w-2", "w-6", "w-3", "w-1", "w-5", "w-4"]],
+              "ruleIds": ["r-pl"],
               "answerExplanation": {
-                "en": "Masculine and neuter nouns take -em in the dative: mit seinem Sohn.",
-                "fr": "Au datif, le masculin et le neutre prennent -em : mit seinem Sohn.",
-                "de": "Maskuline und neutrale Nomen haben im Dativ -em: mit seinem Sohn."
+                "en": "Dative plural: mit ihren Freundinnen; the plural already ends in -n.",
+                "fr": "Datif pluriel : mit ihren Freundinnen ; le pluriel se termine déjà par -n.",
+                "de": "Dativ Plural: mit ihren Freundinnen; der Plural endet schon auf -n."
               }
             },
             {
               "type": "grammar_word_order",
               "itemId": "exam-order-3",
               "tokens": [
-                { "tokenId": "w5", "text": "Freunden" },
-                { "tokenId": "w2", "text": "tanzen" },
-                { "tokenId": "w1", "text": "Wir" },
-                { "tokenId": "w6", "text": "." },
-                { "tokenId": "w3", "text": "mit" },
-                { "tokenId": "w4", "text": "unseren" }
+                { "tokenId": "w-1", "text": "Nachbarn" },
+                { "tokenId": "w-2", "text": "Karten" },
+                { "tokenId": "w-3", "text": "Ihr" },
+                { "tokenId": "w-4", "text": "euren" },
+                { "tokenId": "w-5", "text": "." },
+                { "tokenId": "w-6", "text": "mit" },
+                { "tokenId": "w-7", "text": "spielt" }
               ],
-              "acceptedOrders": [["w1", "w2", "w3", "w4", "w5", "w6"]],
-              "ruleIds": ["rule-plural"],
+              "acceptedOrders": [
+                ["w-3", "w-7", "w-6", "w-4", "w-1", "w-2", "w-5"],
+                ["w-3", "w-7", "w-2", "w-6", "w-4", "w-1", "w-5"]
+              ],
+              "ruleIds": ["r-euer"],
               "answerExplanation": {
-                "en": "The dative plural ends in -en, and the noun gets -n: mit unseren Freunden.",
-                "fr": "Au datif pluriel, on a -en et le nom prend -n : mit unseren Freunden.",
-                "de": "Im Dativ Plural steht -en, und das Nomen bekommt -n: mit unseren Freunden."
+                "en": "Both orders are correct: Karten can come before or after mit euren Nachbarn.",
+                "fr": "Les deux ordres sont corrects : Karten peut venir avant ou après mit euren Nachbarn.",
+                "de": "Beide Reihenfolgen sind richtig: Karten kann vor oder nach mit euren Nachbarn stehen."
               }
             }
           ]

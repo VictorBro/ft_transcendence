@@ -6,55 +6,63 @@
   "locales": ["en", "fr", "de"],
   "title": "Partizip II: trennbare, untrennbare und -ieren-Verben",
   "objective": {
-    "en": "Form the past participle of separable, inseparable and -ieren verbs correctly, with ge- in the middle or no ge- at all.",
-    "fr": "Former correctement le participe passé des verbes séparables, inséparables et en -ieren, avec ge- au milieu ou sans ge-.",
-    "de": "Das Partizip II trennbarer, untrennbarer und -ieren-Verben richtig bilden: mit ge- in der Mitte oder ganz ohne ge-."
+    "en": "Form the past participle with ge in the middle for separable verbs and without ge for inseparable and -ieren verbs: eingekauft, besucht, telefoniert.",
+    "fr": "Former le participe passé avec ge au milieu pour les verbes séparables et sans ge pour les verbes inséparables et en -ieren : eingekauft, besucht, telefoniert.",
+    "de": "Das Partizip II trennbarer Verben mit ge in der Mitte und untrennbarer sowie -ieren-Verben ohne ge bilden: eingekauft, besucht, telefoniert."
   },
   "estimatedMinutes": 19,
   "provenance": {
     "generator": "ft lessons:author",
     "model": "sonnet",
-    "promptVersion": "author-2",
-    "generatedAt": "2026-11-01T20:22:00.958Z",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:26:14.095Z",
     "inputHashes": { "outline": "75267f078da17556e2db2ce21080e34550abf0bbfd3c5ae45461fa35c5f2615f" }
   },
   "kind": "grammar",
   "topic": "verbs_morphology",
   "scopeBoundaries": {
-    "en": "Participles of separable verbs, verbs with be-, ver-, er- and verbs in -ieren. Excludes the choice of haben or sein, irregular vowel groups and other prefixes.",
-    "fr": "Participes des verbes séparables, des verbes en be-, ver-, er- et en -ieren. Exclut le choix entre haben et sein, les groupes de voyelles irréguliers et les autres préfixes.",
-    "de": "Partizipien trennbarer Verben, von Verben mit be-, ver-, er- und Verben auf -ieren. Nicht enthalten: haben oder sein, unregelmäßige Vokalgruppen und andere Vorsilben."
+    "en": "Covers the participle of separable, inseparable and -ieren verbs, with haben as the auxiliary. Excludes sein in the Perfekt, irregular participle groups, and the Präteritum.",
+    "fr": "Couvre le participe des verbes séparables, inséparables et en -ieren, avec haben comme auxiliaire. Exclut sein au parfait, les groupes de participes irréguliers et le prétérit.",
+    "de": "Behandelt das Partizip II trennbarer, untrennbarer und -ieren-Verben mit haben als Hilfsverb. Nicht behandelt: sein im Perfekt, Gruppen unregelmäßiger Partizipien und das Präteritum."
   },
   "prerequisites": [
     {
-      "en": "The present tense of regular verbs and the pronouns ich, du, er, wir, ihr, sie.",
-      "fr": "Le présent des verbes réguliers et les pronoms ich, du, er, wir, ihr, sie.",
-      "de": "Das Präsens regelmäßiger Verben und die Pronomen ich, du, er, wir, ihr, sie."
+      "en": "The Perfekt with haben and the present tense of haben",
+      "fr": "Le parfait avec haben et le présent de haben",
+      "de": "Das Perfekt mit haben und das Präsens von haben"
     }
   ],
   "rules": [
     {
+      "id": "rule-haben",
+      "summary": {
+        "en": "In the Perfekt, haben (conjugated) is in second position and the participle stands at the end: Ich habe ... eingekauft.",
+        "fr": "Au parfait, haben (conjugué) est en deuxième position et le participe est à la fin : Ich habe ... eingekauft.",
+        "de": "Im Perfekt steht haben (konjugiert) an zweiter Stelle und das Partizip II am Ende: Ich habe ... eingekauft."
+      }
+    },
+    {
       "id": "rule-trennbar",
       "summary": {
-        "en": "Separable verbs put ge- in the middle of the participle: einkaufen → eingekauft.",
-        "fr": "Les verbes séparables placent ge- au milieu du participe : einkaufen → eingekauft.",
-        "de": "Trennbare Verben haben ge- in der Mitte des Partizips: einkaufen → eingekauft."
+        "en": "Separable verbs put ge between the prefix and the stem: einkaufen → eingekauft, anrufen → angerufen.",
+        "fr": "Les verbes séparables placent ge entre le préfixe et le radical : einkaufen → eingekauft, anrufen → angerufen.",
+        "de": "Trennbare Verben haben ge zwischen Präfix und Stamm: einkaufen → eingekauft, anrufen → angerufen."
       }
     },
     {
       "id": "rule-untrennbar",
       "summary": {
-        "en": "Verbs with be-, ver-, er- form the participle without ge-: besuchen → besucht.",
-        "fr": "Les verbes en be-, ver-, er- forment le participe sans ge- : besuchen → besucht.",
-        "de": "Verben mit be-, ver-, er- bilden das Partizip ohne ge-: besuchen → besucht."
+        "en": "Verbs with the prefixes be-, ver- and er- form the participle without ge: besuchen → besucht, verkaufen → verkauft.",
+        "fr": "Les verbes avec les préfixes be-, ver- et er- forment le participe sans ge : besuchen → besucht, verkaufen → verkauft.",
+        "de": "Verben mit den Vorsilben be-, ver- und er- bilden das Partizip II ohne ge: besuchen → besucht, verkaufen → verkauft."
       }
     },
     {
       "id": "rule-ieren",
       "summary": {
-        "en": "Verbs in -ieren form the participle without ge-: telefonieren → telefoniert.",
-        "fr": "Les verbes en -ieren forment le participe sans ge- : telefonieren → telefoniert.",
-        "de": "Verben auf -ieren bilden das Partizip ohne ge-: telefonieren → telefoniert."
+        "en": "Verbs ending in -ieren form the participle without ge: telefonieren → telefoniert.",
+        "fr": "Les verbes en -ieren forment le participe sans ge : telefonieren → telefoniert.",
+        "de": "Verben auf -ieren bilden das Partizip II ohne ge: telefonieren → telefoniert."
       }
     }
   ],
@@ -62,85 +70,102 @@
     {
       "id": "block-trennbar",
       "title": {
-        "en": "Separable verbs: ge- in the middle",
-        "fr": "Verbes séparables : ge- au milieu",
-        "de": "Trennbare Verben: ge- in der Mitte"
+        "en": "Separable verbs: ge in the middle",
+        "fr": "Verbes séparables : ge au milieu",
+        "de": "Trennbare Verben: ge in der Mitte"
       },
-      "ruleIds": ["rule-trennbar"],
+      "ruleIds": ["rule-haben", "rule-trennbar"],
       "explanationPlan": {
-        "en": "Show that separable verbs have a stressed prefix (ein-, an-, auf-, ab-) and put ge- between prefix and stem in the participle. Give einkaufen, anrufen, aufräumen, abholen, fernsehen.",
-        "fr": "Montrer que les verbes séparables ont un préfixe accentué (ein-, an-, auf-, ab-) et placent ge- entre le préfixe et le radical au participe. Donner einkaufen, anrufen, aufräumen, abholen, fernsehen.",
-        "de": "Zeigen, dass trennbare Verben eine betonte Vorsilbe haben (ein-, an-, auf-, ab-) und im Partizip ge- zwischen Vorsilbe und Stamm steht. Beispiele: einkaufen, anrufen, aufräumen, abholen, fernsehen."
+        "en": "Recall the Perfekt with haben and the participle at the end. Show that separable verbs take ge between prefix and stem (eingekauft, angerufen, aufgeräumt, abgeholt) and that some participles end in -en.",
+        "fr": "Rappeler le parfait avec haben et le participe à la fin. Montrer que les verbes séparables prennent ge entre le préfixe et le radical (eingekauft, angerufen, aufgeräumt, abgeholt) et que certains participes se terminent par -en.",
+        "de": "Das Perfekt mit haben und das Partizip am Ende wiederholen. Zeigen, dass trennbare Verben ge zwischen Präfix und Stamm haben (eingekauft, angerufen, aufgeräumt, abgeholt) und dass manche Partizipien auf -en enden."
       },
       "explanationDurationS": 120,
       "examples": [
         {
-          "text": "Ich habe heute eingekauft.",
+          "text": "Ich habe gestern im Supermarkt eingekauft.",
           "translation": {
-            "en": "I did the shopping today.",
-            "fr": "J'ai fait les courses aujourd'hui."
+            "en": "I went shopping at the supermarket yesterday.",
+            "fr": "J’ai fait les courses au supermarché hier."
           }
         },
         {
-          "text": "Er hat mich angerufen.",
-          "translation": { "en": "He called me.", "fr": "Il m'a appelé." }
+          "text": "Meine Schwester hat ihren Freund angerufen.",
+          "translation": {
+            "en": "My sister called her boyfriend.",
+            "fr": "Ma sœur a appelé son petit ami."
+          }
         },
         {
-          "text": "Wir haben die Wohnung aufgeräumt.",
-          "translation": { "en": "We tidied up the flat.", "fr": "Nous avons rangé l'appartement." }
+          "text": "Wir haben das Zimmer aufgeräumt.",
+          "translation": { "en": "We tidied up the room.", "fr": "Nous avons rangé la chambre." }
+        },
+        {
+          "text": "Er hat die Kinder von der Schule abgeholt.",
+          "translation": {
+            "en": "He picked up the children from school.",
+            "fr": "Il est allé chercher les enfants à l’école."
+          }
         }
       ],
       "pitfalls": [
         {
-          "en": "Do not put ge- at the start: eingekauft, not geeinkauft.",
-          "fr": "Ne mettez pas ge- au début : eingekauft, pas geeinkauft.",
-          "de": "Setze ge- nicht an den Anfang: eingekauft, nicht geeinkauft."
+          "en": "Do not add a second ge: say eingekauft, not geeinkauft.",
+          "fr": "N’ajoutez pas de second ge : on dit eingekauft, pas geeinkauft.",
+          "de": "Kein zweites ge: Es heißt eingekauft, nicht geeinkauft."
         }
       ],
       "exercises": [
         {
-          "id": "ex-sep-choice",
+          "id": "ex-t-choice",
           "type": "grammar_gap_choice",
           "itemCount": 4,
           "ruleIds": ["rule-trennbar"],
-          "estimatedDurationS": 60
+          "estimatedDurationS": 48
         },
         {
-          "id": "ex-sep-typing",
+          "id": "ex-t-typing",
           "type": "grammar_gap_typing",
           "itemCount": 4,
           "ruleIds": ["rule-trennbar"],
           "estimatedDurationS": 80
         },
         {
-          "id": "ex-sep-order",
+          "id": "ex-t-persons",
+          "type": "grammar_person_matching",
+          "itemCount": 1,
+          "ruleIds": ["rule-haben"],
+          "estimatedDurationS": 90
+        },
+        {
+          "id": "ex-t-order",
           "type": "grammar_word_order",
           "itemCount": 3,
-          "ruleIds": ["rule-trennbar"],
-          "estimatedDurationS": 75
+          "ruleIds": ["rule-haben", "rule-trennbar"],
+          "estimatedDurationS": 90
         }
       ]
     },
     {
       "id": "block-untrennbar",
       "title": {
-        "en": "No ge-: be-, ver-, er- and -ieren",
-        "fr": "Sans ge- : be-, ver-, er- et -ieren",
-        "de": "Ohne ge-: be-, ver-, er- und -ieren"
+        "en": "Inseparable and -ieren verbs: no ge",
+        "fr": "Verbes inséparables et en -ieren : sans ge",
+        "de": "Untrennbare und -ieren-Verben: ohne ge"
       },
       "ruleIds": ["rule-untrennbar", "rule-ieren"],
       "explanationPlan": {
-        "en": "Explain that verbs with the unstressed prefixes be-, ver-, er- and verbs in -ieren have no ge- in the participle. Give besuchen, verkaufen, erklären, telefonieren, studieren and contrast einkaufen with verkaufen.",
-        "fr": "Expliquer que les verbes à préfixes inaccentués be-, ver-, er- et les verbes en -ieren n'ont pas de ge- au participe. Donner besuchen, verkaufen, erklären, telefonieren, studieren et opposer einkaufen à verkaufen.",
-        "de": "Erklären, dass Verben mit den unbetonten Vorsilben be-, ver-, er- und Verben auf -ieren kein ge- im Partizip haben. Beispiele: besuchen, verkaufen, erklären, telefonieren, studieren; einkaufen und verkaufen vergleichen."
+        "en": "Explain that verbs with be-, ver-, er- and verbs ending in -ieren have no ge in the participle (besucht, verkauft, erklärt, telefoniert, repariert). Contrast kaufen → gekauft with verkaufen → verkauft and mention verstanden and bekommen.",
+        "fr": "Expliquer que les verbes en be-, ver-, er- et les verbes en -ieren n’ont pas de ge au participe (besucht, verkauft, erklärt, telefoniert, repariert). Opposer kaufen → gekauft à verkaufen → verkauft et mentionner verstanden et bekommen.",
+        "de": "Erklären, dass Verben mit be-, ver-, er- und Verben auf -ieren im Partizip kein ge haben (besucht, verkauft, erklärt, telefoniert, repariert). kaufen → gekauft und verkaufen → verkauft gegenüberstellen; verstanden und bekommen erwähnen."
       },
       "explanationDurationS": 150,
       "examples": [
         {
-          "text": "Ich habe meine Oma besucht.",
+          "text": "Wir haben unsere Tante besucht.",
           "translation": {
-            "en": "I visited my grandma.",
-            "fr": "J'ai rendu visite à ma grand-mère."
+            "en": "We visited our aunt.",
+            "fr": "Nous avons rendu visite à notre tante."
           }
         },
         {
@@ -148,91 +173,100 @@
           "translation": { "en": "He sold his old car.", "fr": "Il a vendu sa vieille voiture." }
         },
         {
-          "text": "Wir haben lange telefoniert.",
+          "text": "Die Lehrerin hat die Regel erklärt.",
           "translation": {
-            "en": "We talked on the phone for a long time.",
-            "fr": "Nous avons longtemps téléphoné."
+            "en": "The teacher explained the rule.",
+            "fr": "La professeure a expliqué la règle."
           }
         },
         {
-          "text": "Sie hat in Wien studiert.",
+          "text": "Ich habe lange mit Anna telefoniert.",
           "translation": {
-            "en": "She studied in Vienna.",
-            "fr": "Elle a fait ses études à Vienne."
+            "en": "I talked to Anna on the phone for a long time.",
+            "fr": "J’ai longuement téléphoné avec Anna."
           }
         }
       ],
       "pitfalls": [
         {
-          "en": "Do not confuse einkaufen (eingekauft) with verkaufen (verkauft).",
-          "fr": "Ne confondez pas einkaufen (eingekauft) et verkaufen (verkauft).",
-          "de": "Verwechsle nicht einkaufen (eingekauft) mit verkaufen (verkauft)."
+          "en": "Do not put ge in front of be-, ver-, er- or -ieren verbs: besucht, not gebesucht.",
+          "fr": "Ne mettez pas ge devant les verbes en be-, ver-, er- ou -ieren : besucht, pas gebesucht.",
+          "de": "Kein ge vor be-, ver-, er- oder -ieren-Verben: besucht, nicht gebesucht."
         },
         {
-          "en": "Verbs in -ieren never take ge-: telefoniert, not getelefoniert.",
-          "fr": "Les verbes en -ieren n'ont jamais ge- : telefoniert, pas getelefoniert.",
-          "de": "Verben auf -ieren haben nie ge-: telefoniert, nicht getelefoniert."
+          "en": "Compare gekauft (from kaufen) and verkauft (from verkaufen): only the first has ge.",
+          "fr": "Comparez gekauft (de kaufen) et verkauft (de verkaufen) : seul le premier a ge.",
+          "de": "Vergleiche gekauft (von kaufen) und verkauft (von verkaufen): Nur das erste hat ge."
         }
       ],
       "exercises": [
         {
-          "id": "ex-insep-choice",
+          "id": "ex-u-choice",
           "type": "grammar_gap_choice",
-          "itemCount": 4,
+          "itemCount": 5,
           "ruleIds": ["rule-untrennbar", "rule-ieren"],
           "estimatedDurationS": 60
         },
         {
-          "id": "ex-insep-typing",
+          "id": "ex-u-typing",
           "type": "grammar_gap_typing",
           "itemCount": 4,
           "ruleIds": ["rule-untrennbar", "rule-ieren"],
           "estimatedDurationS": 80
         },
         {
-          "id": "ex-insep-spot",
+          "id": "ex-u-spot",
           "type": "grammar_error_spotter",
-          "itemCount": 3,
+          "itemCount": 4,
           "ruleIds": ["rule-untrennbar", "rule-ieren"],
-          "estimatedDurationS": 75
-        },
-        {
-          "id": "ex-insep-persons",
-          "type": "grammar_person_matching",
-          "itemCount": 1,
-          "ruleIds": ["rule-trennbar", "rule-untrennbar", "rule-ieren"],
-          "estimatedDurationS": 120
+          "estimatedDurationS": 100
         }
       ]
     }
   ],
-  "newVerbs": [],
+  "newVerbs": [
+    { "infinitive": "einkaufen", "translations": { "en": "to shop", "fr": "faire les courses" } },
+    { "infinitive": "anrufen", "translations": { "en": "to call", "fr": "appeler" } },
+    { "infinitive": "aufräumen", "translations": { "en": "to tidy up", "fr": "ranger" } },
+    { "infinitive": "abholen", "translations": { "en": "to pick up", "fr": "aller chercher" } },
+    { "infinitive": "einladen", "translations": { "en": "to invite", "fr": "inviter" } },
+    { "infinitive": "besuchen", "translations": { "en": "to visit", "fr": "rendre visite à" } },
+    { "infinitive": "verkaufen", "translations": { "en": "to sell", "fr": "vendre" } },
+    { "infinitive": "erklären", "translations": { "en": "to explain", "fr": "expliquer" } },
+    { "infinitive": "bezahlen", "translations": { "en": "to pay", "fr": "payer" } },
+    { "infinitive": "telefonieren", "translations": { "en": "to phone", "fr": "téléphoner" } },
+    { "infinitive": "reparieren", "translations": { "en": "to repair", "fr": "réparer" } },
+    {
+      "infinitive": "studieren",
+      "translations": { "en": "to study at university", "fr": "faire des études" }
+    }
+  ],
   "feedbackPlaceholder": { "estimatedDurationS": 30 },
   "exam": {
     "pages": [
       {
-        "pageId": "exam-gap-sep",
+        "pageId": "exam-gaps",
         "type": "grammar_gap_typing",
-        "itemCount": 4,
-        "ruleIds": ["rule-trennbar"],
-        "estimatedDurationS": 100,
-        "timeLimitS": 160
-      },
-      {
-        "pageId": "exam-gap-insep",
-        "type": "grammar_gap_typing",
-        "itemCount": 4,
-        "ruleIds": ["rule-untrennbar", "rule-ieren"],
-        "estimatedDurationS": 100,
-        "timeLimitS": 160
+        "itemCount": 6,
+        "ruleIds": ["rule-trennbar", "rule-untrennbar", "rule-ieren"],
+        "estimatedDurationS": 120,
+        "timeLimitS": 180
       },
       {
         "pageId": "exam-order",
         "type": "grammar_word_order",
-        "itemCount": 3,
-        "ruleIds": ["rule-trennbar", "rule-untrennbar", "rule-ieren"],
-        "estimatedDurationS": 90,
+        "itemCount": 4,
+        "ruleIds": ["rule-haben", "rule-trennbar", "rule-untrennbar", "rule-ieren"],
+        "estimatedDurationS": 100,
         "timeLimitS": 150
+      },
+      {
+        "pageId": "exam-haben",
+        "type": "grammar_pronoun_form_typing",
+        "itemCount": 1,
+        "ruleIds": ["rule-haben"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
       }
     ]
   },

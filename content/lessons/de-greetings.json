@@ -6,19 +6,19 @@
   "locales": ["en", "fr", "de"],
   "title": "Begrüßen und verabschieden",
   "objective": {
-    "en": "Greet and say goodbye in the right way for the person and the time of day.",
-    "fr": "Saluer et prendre congé de façon adaptée à la personne et au moment de la journée.",
+    "en": "Greet people and say goodbye in the right way for the person and the time of day.",
+    "fr": "Saluer et prendre congé de la bonne façon selon la personne et le moment de la journée.",
     "de": "Je nach Person und Tageszeit passend grüßen und sich verabschieden."
   },
   "estimatedMinutes": 16,
   "provenance": {
     "generator": "ft lessons:author",
     "model": "sonnet",
-    "promptVersion": "author-2",
-    "generatedAt": "2026-11-01T20:17:55.996Z",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:26:17.435Z",
     "inputHashes": {
       "outline": "174827f90457f662b6674fa1821fb113aceeca5ef87db9f4bf1686d2295c7ed3",
-      "brief": "4e87f8ba75673635e6f5a2dc43717d85ee2cd9e862e810926da0d45d9b2a92c6"
+      "brief": "c46b7caf64553ed43c22b3f69a52d4706f60993644f9045b1f622d3aa004b047"
     }
   },
   "kind": "functions",
@@ -49,8 +49,8 @@
                 "guten-tag",
                 "guten-abend",
                 "hallo",
-                "tschuess",
-                "auf-wiedersehen"
+                "auf-wiedersehen",
+                "tschuess"
               ]
             }
           ]
@@ -79,144 +79,141 @@
               "lines": [
                 {
                   "lineId": "line-1",
-                  "roleId": "keller",
-                  "text": "Guten Morgen, Lena!",
-                  "translation": { "en": "Good morning, Lena!", "fr": "Bonjour, Lena !" },
+                  "roleId": "lena",
+                  "text": "Guten Morgen, Tim!",
+                  "translation": { "en": "Good morning, Tim!", "fr": "Bonjour, Tim !" },
                   "note": {
                     "en": "Morning greeting, used until about 10 or 11 o’clock.",
-                    "fr": "Salutation du matin, jusqu’à environ 10 ou 11 heures.",
-                    "de": "Morgengruß, etwa bis 10 oder 11 Uhr."
+                    "fr": "Salutation du matin, utilisée jusqu’à 10 ou 11 heures environ.",
+                    "de": "Morgengruß, gebraucht bis etwa 10 oder 11 Uhr."
                   },
                   "expressionIds": ["guten-morgen"]
                 },
                 {
                   "lineId": "line-2",
-                  "roleId": "lena",
-                  "text": "Guten Morgen, Frau Keller! Wie geht es Ihnen?",
+                  "roleId": "tim",
+                  "text": "Hallo, Lena! Wohin gehst du?",
                   "translation": {
-                    "en": "Good morning, Mrs Keller! How are you?",
-                    "fr": "Bonjour, madame Keller ! Comment allez-vous ?"
+                    "en": "Hi, Lena! Where are you going?",
+                    "fr": "Salut, Lena ! Où vas-tu ?"
                   },
                   "note": {
-                    "en": "Lena uses Sie with her teacher: Ihnen.",
-                    "fr": "Lena vouvoie sa professeure : Ihnen.",
-                    "de": "Lena siezt ihre Lehrerin: Ihnen."
+                    "en": "Hallo is informal and works at any time of day.",
+                    "fr": "Hallo est informel et s’utilise à toute heure.",
+                    "de": "Hallo ist informell und passt zu jeder Tageszeit."
                   },
-                  "expressionIds": ["guten-morgen"]
+                  "expressionIds": ["hallo"]
                 },
                 {
                   "lineId": "line-3",
-                  "roleId": "keller",
-                  "text": "Gut, danke. Und dir?",
-                  "translation": { "en": "Fine, thanks. And you?", "fr": "Bien, merci. Et toi ?" },
+                  "roleId": "lena",
+                  "text": "Zur Arbeit. Tschüss!",
+                  "translation": { "en": "To work. Bye!", "fr": "Au travail. Salut !" },
                   "note": {
-                    "en": "The teacher uses du with Lena: dir.",
-                    "fr": "La professeure tutoie Lena : dir.",
-                    "de": "Die Lehrerin duzt Lena: dir."
+                    "en": "Tschüss is the informal goodbye.",
+                    "fr": "Tschüss est l’au revoir informel.",
+                    "de": "Tschüss ist die informelle Verabschiedung."
                   },
-                  "expressionIds": []
+                  "expressionIds": ["tschuess"]
                 },
                 {
                   "lineId": "line-4",
-                  "roleId": "lena",
-                  "text": "Auch gut, danke. Bis später!",
-                  "translation": {
-                    "en": "Also fine, thanks. See you later!",
-                    "fr": "Bien aussi, merci. À tout à l’heure !"
-                  },
+                  "roleId": "tim",
+                  "text": "Tschüss! Bis zum Mittag.",
+                  "translation": { "en": "Bye! See you at noon.", "fr": "Salut ! À midi." },
                   "note": {
-                    "en": "Bis später! means see you later today.",
-                    "fr": "Bis später ! veut dire à tout à l’heure.",
-                    "de": "Bis später! sagt man, wenn man sich am selben Tag wiedersieht."
+                    "en": "Bis zum Mittag means see you at noon.",
+                    "fr": "Bis zum Mittag signifie à midi.",
+                    "de": "Bis zum Mittag heißt: Wir sehen uns zu Mittag."
                   },
                   "expressionIds": []
                 },
                 {
                   "lineId": "line-5",
-                  "roleId": "keller",
-                  "text": "Hallo, Lena! Schön, dich zu sehen.",
-                  "translation": {
-                    "en": "Hello, Lena! Nice to see you.",
-                    "fr": "Salut, Lena ! Content de te voir."
-                  },
-                  "note": {
-                    "en": "Later that day. Hallo is informal and fits any time of day.",
-                    "fr": "Plus tard dans la journée. Hallo est familier et convient à toute heure.",
-                    "de": "Später am Tag. Hallo ist informell und passt zu jeder Tageszeit."
-                  },
-                  "expressionIds": ["hallo"]
-                },
-                {
-                  "lineId": "line-6",
                   "roleId": "lena",
-                  "text": "Guten Tag, Frau Keller!",
+                  "text": "Guten Tag, Tim! Jetzt ist Mittag.",
                   "translation": {
-                    "en": "Good day, Mrs Keller!",
-                    "fr": "Bonjour, madame Keller !"
+                    "en": "Hello, Tim! It is noon now.",
+                    "fr": "Bonjour, Tim ! C’est midi."
                   },
                   "note": {
-                    "en": "Lena stays polite with her teacher. Guten Tag fits the daytime.",
-                    "fr": "Lena reste polie avec sa professeure. Guten Tag convient pour la journée.",
-                    "de": "Lena bleibt höflich gegenüber der Lehrerin. Guten Tag passt tagsüber."
+                    "en": "Later, at noon: Guten Tag is the greeting for the daytime.",
+                    "fr": "Plus tard, à midi : Guten Tag est la salutation de la journée.",
+                    "de": "Später, zu Mittag: Guten Tag ist der Gruß für den Tag."
                   },
                   "expressionIds": ["guten-tag"]
                 },
                 {
-                  "lineId": "line-7",
-                  "roleId": "keller",
-                  "text": "Der Kurs ist zu Ende. Tschüss, Lena!",
+                  "lineId": "line-6",
+                  "roleId": "tim",
+                  "text": "Gut, wir essen zusammen.",
                   "translation": {
-                    "en": "The course is over. Bye, Lena!",
-                    "fr": "Le cours est terminé. Tchao, Lena !"
+                    "en": "Good, let’s eat together.",
+                    "fr": "Bien, mangeons ensemble."
                   },
                   "note": {
-                    "en": "Tschüss is informal; the teacher says it to Lena (du).",
-                    "fr": "Tschüss est familier ; la professeure le dit à Lena (du).",
-                    "de": "Tschüss ist informell; die Lehrerin sagt es zu Lena (du)."
+                    "en": "Tim answers and suggests lunch.",
+                    "fr": "Tim répond et propose de déjeuner.",
+                    "de": "Tim antwortet und schlägt das Mittagessen vor."
                   },
-                  "expressionIds": ["tschuess"]
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-7",
+                  "roleId": "lena",
+                  "text": "Ja, gern! Bis heute Abend.",
+                  "translation": {
+                    "en": "Yes, gladly! See you this evening.",
+                    "fr": "Oui, avec plaisir ! À ce soir."
+                  },
+                  "note": {
+                    "en": "Bis heute Abend means see you this evening.",
+                    "fr": "Bis heute Abend signifie à ce soir.",
+                    "de": "Bis heute Abend heißt: Wir sehen uns heute Abend."
+                  },
+                  "expressionIds": []
                 },
                 {
                   "lineId": "line-8",
-                  "roleId": "lena",
-                  "text": "Auf Wiedersehen, Frau Keller! Einen schönen Abend!",
+                  "roleId": "tim",
+                  "text": "Guten Abend, Lena! Das war ein langer Tag.",
                   "translation": {
-                    "en": "Goodbye, Mrs Keller! Have a nice evening!",
-                    "fr": "Au revoir, madame Keller ! Bonne soirée !"
+                    "en": "Good evening, Lena! That was a long day.",
+                    "fr": "Bonsoir, Lena ! Quelle longue journée."
                   },
                   "note": {
-                    "en": "Auf Wiedersehen is the polite goodbye.",
-                    "fr": "Auf Wiedersehen est l’au revoir poli.",
-                    "de": "Auf Wiedersehen ist die höfliche Verabschiedung."
-                  },
-                  "expressionIds": ["auf-wiedersehen"]
-                },
-                {
-                  "lineId": "line-9",
-                  "roleId": "keller",
-                  "text": "Danke, dir auch. Guten Abend!",
-                  "translation": {
-                    "en": "Thanks, you too. Good evening!",
-                    "fr": "Merci, à toi aussi. Bonsoir !"
-                  },
-                  "note": {
-                    "en": "In the evening, Guten Abend greets and also says goodbye.",
-                    "fr": "Le soir, Guten Abend sert à saluer et aussi à prendre congé.",
-                    "de": "Abends grüßt man mit Guten Abend und verabschiedet sich auch damit."
+                    "en": "In the evening, from about six o’clock: Guten Abend.",
+                    "fr": "Le soir, à partir de 18 heures environ : Guten Abend.",
+                    "de": "Am Abend, ab etwa 18 Uhr: Guten Abend."
                   },
                   "expressionIds": ["guten-abend"]
                 },
                 {
-                  "lineId": "line-10",
+                  "lineId": "line-9",
                   "roleId": "lena",
-                  "text": "Bis morgen!",
-                  "translation": { "en": "See you tomorrow!", "fr": "À demain !" },
+                  "text": "Ja, ich gehe jetzt nach Hause.",
+                  "translation": {
+                    "en": "Yes, I am going home now.",
+                    "fr": "Oui, je rentre maintenant."
+                  },
                   "note": {
-                    "en": "Bis morgen! means see you tomorrow.",
-                    "fr": "Bis morgen ! veut dire à demain.",
-                    "de": "Bis morgen! sagt man, wenn man sich am nächsten Tag wiedersieht."
+                    "en": "Lena says she is leaving.",
+                    "fr": "Lena dit qu’elle s’en va.",
+                    "de": "Lena sagt, dass sie jetzt geht."
                   },
                   "expressionIds": []
+                },
+                {
+                  "lineId": "line-10",
+                  "roleId": "tim",
+                  "text": "Auf Wiedersehen, Lena!",
+                  "translation": { "en": "Goodbye, Lena!", "fr": "Au revoir, Lena !" },
+                  "note": {
+                    "en": "Auf Wiedersehen is the polite goodbye; it also works between friends.",
+                    "fr": "Auf Wiedersehen est l’au revoir poli ; il convient aussi entre amis.",
+                    "de": "Auf Wiedersehen ist die höfliche Verabschiedung; es passt auch unter Freunden."
+                  },
+                  "expressionIds": ["auf-wiedersehen"]
                 }
               ]
             }
@@ -257,7 +254,7 @@
                   "id": "guten-tag",
                   "answerExplanation": {
                     "en": "Guten Tag is the polite greeting during the day.",
-                    "fr": "Guten Tag est la salutation polie dans la journée.",
+                    "fr": "Guten Tag est la salutation polie de la journée.",
                     "de": "Guten Tag ist der höfliche Gruß tagsüber."
                   }
                 },
@@ -272,17 +269,9 @@
                 {
                   "id": "hallo",
                   "answerExplanation": {
-                    "en": "Hallo is the informal greeting.",
-                    "fr": "Hallo est la salutation familière.",
-                    "de": "Hallo ist der informelle Gruß."
-                  }
-                },
-                {
-                  "id": "tschuess",
-                  "answerExplanation": {
-                    "en": "Tschüss is the informal goodbye.",
-                    "fr": "Tschüss est l’au revoir familier.",
-                    "de": "Tschüss ist die informelle Verabschiedung."
+                    "en": "Hallo is the informal greeting for friends.",
+                    "fr": "Hallo est la salutation informelle pour les amis.",
+                    "de": "Hallo ist der informelle Gruß für Freunde."
                   }
                 },
                 {
@@ -291,6 +280,14 @@
                     "en": "Auf Wiedersehen is the polite goodbye.",
                     "fr": "Auf Wiedersehen est l’au revoir poli.",
                     "de": "Auf Wiedersehen ist die höfliche Verabschiedung."
+                  }
+                },
+                {
+                  "id": "tschuess",
+                  "answerExplanation": {
+                    "en": "Tschüss is the informal goodbye.",
+                    "fr": "Tschüss est l’au revoir informel.",
+                    "de": "Tschüss ist die informelle Verabschiedung."
                   }
                 }
               ]
@@ -319,15 +316,15 @@
               "type": "function_dialogue_gap_choice",
               "itemId": "gap-1",
               "expressionId": "guten-morgen",
-              "context": { "roleId": "keller", "text": "Lena, du bist früh heute!" },
+              "context": { "roleId": "tim", "text": "Es ist sieben Uhr am Morgen." },
               "roleId": "lena",
-              "before": "Ja, ich bin früh.",
-              "after": "!",
-              "choiceExpressionIds": ["guten-morgen", "guten-abend", "tschuess", "auf-wiedersehen"],
+              "before": "",
+              "after": ", Tim!",
+              "choiceExpressionIds": ["guten-abend", "guten-morgen", "auf-wiedersehen", "tschuess"],
               "answerExplanation": {
-                "en": "It is early in the day, so Lena says Guten Morgen.",
-                "fr": "C’est tôt dans la journée, donc Lena dit Guten Morgen.",
-                "de": "Es ist früh am Tag, deshalb sagt Lena Guten Morgen."
+                "en": "It is seven in the morning, so Lena says Guten Morgen.",
+                "fr": "Il est sept heures du matin, donc Lena dit Guten Morgen.",
+                "de": "Es ist sieben Uhr morgens, also sagt Lena Guten Morgen."
               }
             }
           ]
@@ -346,15 +343,18 @@
               "type": "function_dialogue_gap_choice",
               "itemId": "gap-2",
               "expressionId": "guten-tag",
-              "context": { "roleId": "lena", "text": "Frau Keller, da kommt Herr Braun." },
-              "roleId": "keller",
-              "before": "Ah, Herr Braun!",
-              "after": "!",
-              "choiceExpressionIds": ["guten-tag", "guten-morgen", "guten-abend", "tschuess"],
+              "context": {
+                "roleId": "lena",
+                "text": "Ah, Tim! Du kommst zum Mittagessen, es ist zwölf Uhr."
+              },
+              "roleId": "tim",
+              "before": "",
+              "after": ", Lena!",
+              "choiceExpressionIds": ["guten-morgen", "guten-abend", "tschuess", "guten-tag"],
               "answerExplanation": {
-                "en": "It is daytime and Herr Braun is addressed politely: Guten Tag.",
-                "fr": "C’est la journée et Herr Braun est salué poliment : Guten Tag.",
-                "de": "Es ist Tag und Herr Braun wird höflich begrüßt: Guten Tag."
+                "en": "At twelve o’clock the greeting of the daytime fits: Guten Tag.",
+                "fr": "À midi, la salutation de la journée convient : Guten Tag.",
+                "de": "Um zwölf Uhr passt der Gruß für den Tag: Guten Tag."
               }
             }
           ]
@@ -373,15 +373,15 @@
               "type": "function_dialogue_gap_choice",
               "itemId": "gap-3",
               "expressionId": "guten-abend",
-              "context": { "roleId": "keller", "text": "Es ist achtzehn Uhr, Lena." },
+              "context": { "roleId": "tim", "text": "Da bin ich! Es ist acht Uhr abends." },
               "roleId": "lena",
-              "before": "Schon sechs Uhr abends.",
-              "after": "!",
-              "choiceExpressionIds": ["guten-abend", "guten-morgen", "guten-tag", "hallo"],
+              "before": "",
+              "after": ", Tim!",
+              "choiceExpressionIds": ["guten-morgen", "tschuess", "auf-wiedersehen", "guten-abend"],
               "answerExplanation": {
-                "en": "At 6 pm it is evening: Guten Abend.",
-                "fr": "À 18 heures, c’est le soir : Guten Abend.",
-                "de": "Um 18 Uhr ist es Abend: Guten Abend."
+                "en": "It is eight in the evening and Tim arrives: Guten Abend.",
+                "fr": "Il est vingt heures et Tim arrive : Guten Abend.",
+                "de": "Es ist acht Uhr abends und Tim kommt an: Guten Abend."
               }
             }
           ]
@@ -400,15 +400,18 @@
               "type": "function_dialogue_gap_choice",
               "itemId": "gap-4",
               "expressionId": "hallo",
-              "context": { "roleId": "lena", "text": "Frau Keller, das ist meine Freundin Anna." },
-              "roleId": "keller",
+              "context": {
+                "roleId": "tim",
+                "text": "Schön, dich zu sehen! Es ist drei Uhr am Nachmittag."
+              },
+              "roleId": "lena",
               "before": "",
-              "after": "Anna! Wie geht’s?",
-              "choiceExpressionIds": ["hallo", "tschuess", "auf-wiedersehen", "guten-abend"],
+              "after": ", Tim!",
+              "choiceExpressionIds": ["guten-morgen", "hallo", "guten-abend", "tschuess"],
               "answerExplanation": {
-                "en": "Anna is a young friend (du), so the informal Hallo fits.",
-                "fr": "Anna est une amie (du), donc le Hallo familier convient.",
-                "de": "Anna ist eine Freundin (du), deshalb passt das informelle Hallo."
+                "en": "It is afternoon and they are friends: Hallo fits; Morgen and Abend do not.",
+                "fr": "C’est l’après-midi et ce sont des amis : Hallo convient ; Morgen et Abend non.",
+                "de": "Es ist Nachmittag und sie sind Freunde: Hallo passt; Morgen und Abend nicht."
               }
             }
           ]
@@ -426,16 +429,19 @@
             {
               "type": "function_dialogue_gap_choice",
               "itemId": "gap-5",
-              "expressionId": "tschuess",
-              "context": { "roleId": "lena", "text": "Ich gehe jetzt, Frau Keller." },
-              "roleId": "keller",
-              "before": "Okay, Lena. Bis morgen.",
-              "after": "!",
-              "choiceExpressionIds": ["tschuess", "guten-morgen", "guten-tag", "guten-abend"],
+              "expressionId": "auf-wiedersehen",
+              "context": {
+                "roleId": "tim",
+                "text": "Danke für das Gespräch. Das war alles für heute."
+              },
+              "roleId": "lena",
+              "before": "",
+              "after": ", Tim!",
+              "choiceExpressionIds": ["guten-morgen", "hallo", "auf-wiedersehen", "guten-tag"],
               "answerExplanation": {
-                "en": "Someone leaves, and the teacher uses the informal goodbye with Lena: Tschüss.",
-                "fr": "Quelqu’un part et la professeure prend congé familièrement de Lena : Tschüss.",
-                "de": "Jemand geht, und die Lehrerin verabschiedet sich informell von Lena: Tschüss."
+                "en": "The conversation is over, so Lena says goodbye: Auf Wiedersehen.",
+                "fr": "La conversation est finie, donc Lena prend congé : Auf Wiedersehen.",
+                "de": "Das Gespräch ist zu Ende, also verabschiedet sich Lena: Auf Wiedersehen."
               }
             }
           ]
@@ -453,16 +459,16 @@
             {
               "type": "function_dialogue_gap_choice",
               "itemId": "gap-6",
-              "expressionId": "auf-wiedersehen",
-              "context": { "roleId": "keller", "text": "Der Kurs ist heute zu Ende, Lena." },
-              "roleId": "lena",
-              "before": "Danke, Frau Keller.",
-              "after": "!",
-              "choiceExpressionIds": ["auf-wiedersehen", "guten-morgen", "guten-abend", "hallo"],
+              "expressionId": "tschuess",
+              "context": { "roleId": "lena", "text": "Ich gehe jetzt zum Sport, Tim." },
+              "roleId": "tim",
+              "before": "",
+              "after": ", Lena! Bis morgen.",
+              "choiceExpressionIds": ["hallo", "guten-morgen", "guten-tag", "tschuess"],
               "answerExplanation": {
-                "en": "The class is over and Lena says a polite goodbye to her teacher.",
-                "fr": "Le cours est fini et Lena dit poliment au revoir à sa professeure.",
-                "de": "Der Kurs ist vorbei und Lena verabschiedet sich höflich von ihrer Lehrerin."
+                "en": "Lena is leaving and they are friends: Tschüss.",
+                "fr": "Lena s’en va et ce sont des amis : Tschüss.",
+                "de": "Lena geht und sie sind Freunde: Tschüss."
               }
             }
           ]
@@ -527,14 +533,14 @@
                 { "tokenId": "t1", "text": "Guten" },
                 { "tokenId": "t2", "text": "Tag," },
                 { "tokenId": "t3", "text": "Herr" },
-                { "tokenId": "t4", "text": "Schmidt!" }
+                { "tokenId": "t4", "text": "Braun!" }
               ],
               "distractorTokenIds": [],
               "acceptedOrders": [["t1", "t2", "t3", "t4"]],
               "answerExplanation": {
-                "en": "Guten Tag, then the person you greet.",
-                "fr": "Guten Tag, puis la personne qu’on salue.",
-                "de": "Guten Tag, dann die Person, die man grüßt."
+                "en": "Guten Tag first, then the polite title and the name.",
+                "fr": "Guten Tag d’abord, puis le titre poli et le nom.",
+                "de": "Zuerst Guten Tag, dann die höfliche Anrede und der Name."
               }
             }
           ]
@@ -558,14 +564,15 @@
               "tokens": [
                 { "tokenId": "t1", "text": "Guten" },
                 { "tokenId": "t2", "text": "Abend," },
-                { "tokenId": "t3", "text": "Tom!" }
+                { "tokenId": "t3", "text": "Herr" },
+                { "tokenId": "t4", "text": "Wolf!" }
               ],
               "distractorTokenIds": [],
-              "acceptedOrders": [["t1", "t2", "t3"]],
+              "acceptedOrders": [["t1", "t2", "t3", "t4"]],
               "answerExplanation": {
-                "en": "Guten Abend comes before the name.",
-                "fr": "Guten Abend vient avant le nom.",
-                "de": "Guten Abend steht vor dem Namen."
+                "en": "The greeting comes first, then the title and the name.",
+                "fr": "La salutation vient d’abord, puis le titre et le nom.",
+                "de": "Zuerst kommt der Gruß, dann die Anrede und der Name."
               }
             }
           ]
@@ -588,15 +595,16 @@
               "roleId": null,
               "tokens": [
                 { "tokenId": "t1", "text": "Hallo," },
-                { "tokenId": "t2", "text": "wie" },
-                { "tokenId": "t3", "text": "geht’s?" }
+                { "tokenId": "t2", "text": "ich" },
+                { "tokenId": "t3", "text": "bin" },
+                { "tokenId": "t4", "text": "Lena." }
               ],
               "distractorTokenIds": [],
-              "acceptedOrders": [["t1", "t2", "t3"]],
+              "acceptedOrders": [["t1", "t2", "t3", "t4"]],
               "answerExplanation": {
-                "en": "Hallo first, then the question wie geht’s?",
-                "fr": "Hallo d’abord, puis la question wie geht’s ?",
-                "de": "Zuerst Hallo, dann die Frage wie geht’s?"
+                "en": "Hallo first, then you say who you are.",
+                "fr": "Hallo d’abord, puis on dit qui on est.",
+                "de": "Zuerst Hallo, dann sagt man, wer man ist."
               }
             }
           ]
@@ -614,21 +622,21 @@
             {
               "type": "function_word_order",
               "itemId": "order-5",
-              "expressionId": "tschuess",
+              "expressionId": "auf-wiedersehen",
               "context": null,
               "roleId": null,
               "tokens": [
-                { "tokenId": "t1", "text": "Tschüss," },
-                { "tokenId": "t2", "text": "Anna," },
-                { "tokenId": "t3", "text": "bis" },
-                { "tokenId": "t4", "text": "bald!" }
+                { "tokenId": "t1", "text": "Auf" },
+                { "tokenId": "t2", "text": "Wiedersehen," },
+                { "tokenId": "t3", "text": "Frau" },
+                { "tokenId": "t4", "text": "Weber!" }
               ],
               "distractorTokenIds": [],
               "acceptedOrders": [["t1", "t2", "t3", "t4"]],
               "answerExplanation": {
-                "en": "Tschüss, the name, then bis bald.",
-                "fr": "Tschüss, le nom, puis bis bald.",
-                "de": "Tschüss, der Name, dann bis bald."
+                "en": "Auf Wiedersehen is two words, then the name.",
+                "fr": "Auf Wiedersehen s’écrit en deux mots, puis vient le nom.",
+                "de": "Auf Wiedersehen besteht aus zwei Wörtern, dann folgt der Name."
               }
             }
           ]
@@ -646,21 +654,21 @@
             {
               "type": "function_word_order",
               "itemId": "order-6",
-              "expressionId": "auf-wiedersehen",
+              "expressionId": "tschuess",
               "context": null,
               "roleId": null,
               "tokens": [
-                { "tokenId": "t1", "text": "Auf" },
-                { "tokenId": "t2", "text": "Wiedersehen," },
-                { "tokenId": "t3", "text": "Herr" },
-                { "tokenId": "t4", "text": "Braun!" }
+                { "tokenId": "t1", "text": "Tschüss," },
+                { "tokenId": "t2", "text": "bis" },
+                { "tokenId": "t3", "text": "morgen," },
+                { "tokenId": "t4", "text": "Lena!" }
               ],
               "distractorTokenIds": [],
               "acceptedOrders": [["t1", "t2", "t3", "t4"]],
               "answerExplanation": {
-                "en": "Auf Wiedersehen is two words, then the name.",
-                "fr": "Auf Wiedersehen s’écrit en deux mots, puis le nom.",
-                "de": "Auf Wiedersehen sind zwei Wörter, dann folgt der Name."
+                "en": "Tschüss first, then bis morgen and the name.",
+                "fr": "Tschüss d’abord, puis bis morgen et le nom.",
+                "de": "Zuerst Tschüss, dann bis morgen und der Name."
               }
             }
           ]
@@ -687,19 +695,19 @@
               "type": "function_listening_choice",
               "itemId": "listening-1",
               "expressionId": "guten-morgen",
-              "context": { "roleId": "keller", "text": "Es ist sieben Uhr morgens, Lena." },
+              "context": { "roleId": "tim", "text": "Es ist sieben Uhr morgens, Lena." },
               "roleId": "lena",
               "options": [
-                { "optionId": "o1", "text": "Guten Morgen, Frau Keller!" },
-                { "optionId": "o2", "text": "Guten Abend, Frau Keller!" },
-                { "optionId": "o3", "text": "Auf Wiedersehen, Frau Keller!" },
-                { "optionId": "o4", "text": "Tschüss, Frau Keller!" }
+                { "optionId": "o1", "text": "Guten Abend, Tim!" },
+                { "optionId": "o2", "text": "Guten Morgen, Tim!" },
+                { "optionId": "o3", "text": "Auf Wiedersehen, Tim!" },
+                { "optionId": "o4", "text": "Tschüss, Tim!" }
               ],
-              "answerOptionId": "o1",
+              "answerOptionId": "o2",
               "answerExplanation": {
-                "en": "It is seven in the morning: Guten Morgen.",
-                "fr": "Il est sept heures du matin : Guten Morgen.",
-                "de": "Es ist sieben Uhr morgens: Guten Morgen."
+                "en": "It is morning, so the greeting is Guten Morgen.",
+                "fr": "C’est le matin, donc la salutation est Guten Morgen.",
+                "de": "Es ist Morgen, also lautet der Gruß Guten Morgen."
               }
             }
           ]
@@ -718,19 +726,19 @@
               "type": "function_listening_choice",
               "itemId": "listening-2",
               "expressionId": "guten-tag",
-              "context": { "roleId": "keller", "text": "Es ist zwölf Uhr mittags, Lena." },
+              "context": { "roleId": "tim", "text": "Es ist zwölf Uhr mittags, Lena." },
               "roleId": "lena",
               "options": [
-                { "optionId": "o1", "text": "Guten Tag, Frau Keller!" },
-                { "optionId": "o2", "text": "Guten Morgen, Frau Keller!" },
-                { "optionId": "o3", "text": "Guten Abend, Frau Keller!" },
-                { "optionId": "o4", "text": "Tschüss, Frau Keller!" }
+                { "optionId": "o1", "text": "Guten Morgen, Tim!" },
+                { "optionId": "o2", "text": "Guten Abend, Tim!" },
+                { "optionId": "o3", "text": "Guten Tag, Tim!" },
+                { "optionId": "o4", "text": "Tschüss, Tim!" }
               ],
-              "answerOptionId": "o1",
+              "answerOptionId": "o3",
               "answerExplanation": {
-                "en": "At noon you greet politely with Guten Tag.",
-                "fr": "À midi, on salue poliment avec Guten Tag.",
-                "de": "Mittags grüßt man höflich mit Guten Tag."
+                "en": "At noon the greeting is Guten Tag.",
+                "fr": "À midi, la salutation est Guten Tag.",
+                "de": "Zu Mittag lautet der Gruß Guten Tag."
               }
             }
           ]
@@ -749,19 +757,19 @@
               "type": "function_listening_choice",
               "itemId": "listening-3",
               "expressionId": "guten-abend",
-              "context": { "roleId": "lena", "text": "Es ist neunzehn Uhr, Frau Keller." },
-              "roleId": "keller",
+              "context": { "roleId": "tim", "text": "Da bin ich! Es ist acht Uhr abends." },
+              "roleId": "lena",
               "options": [
-                { "optionId": "o1", "text": "Guten Abend, Lena!" },
-                { "optionId": "o2", "text": "Guten Morgen, Lena!" },
-                { "optionId": "o3", "text": "Guten Tag, Lena!" },
-                { "optionId": "o4", "text": "Auf Wiedersehen, Lena!" }
+                { "optionId": "o1", "text": "Guten Morgen, Tim!" },
+                { "optionId": "o2", "text": "Auf Wiedersehen, Tim!" },
+                { "optionId": "o3", "text": "Tschüss, Tim!" },
+                { "optionId": "o4", "text": "Guten Abend, Tim!" }
               ],
-              "answerOptionId": "o1",
+              "answerOptionId": "o4",
               "answerExplanation": {
-                "en": "At 7 pm it is evening: Guten Abend.",
-                "fr": "À 19 heures, c’est le soir : Guten Abend.",
-                "de": "Um 19 Uhr ist Abend: Guten Abend."
+                "en": "Tim arrives in the evening, so Lena says Guten Abend.",
+                "fr": "Tim arrive le soir, donc Lena dit Guten Abend.",
+                "de": "Tim kommt am Abend an, also sagt Lena Guten Abend."
               }
             }
           ]
@@ -780,19 +788,22 @@
               "type": "function_listening_choice",
               "itemId": "listening-4",
               "expressionId": "hallo",
-              "context": { "roleId": "lena", "text": "Hier kommt mein Freund Tom." },
-              "roleId": "keller",
+              "context": {
+                "roleId": "tim",
+                "text": "Schön, dich zu sehen! Es ist drei Uhr am Nachmittag."
+              },
+              "roleId": "lena",
               "options": [
-                { "optionId": "o1", "text": "Hallo, Tom!" },
-                { "optionId": "o2", "text": "Tschüss, Tom!" },
-                { "optionId": "o3", "text": "Auf Wiedersehen, Tom!" },
-                { "optionId": "o4", "text": "Danke, Tom!" }
+                { "optionId": "o1", "text": "Guten Morgen, Tim!" },
+                { "optionId": "o2", "text": "Guten Abend, Tim!" },
+                { "optionId": "o3", "text": "Tschüss, Tim!" },
+                { "optionId": "o4", "text": "Hallo, Tim!" }
               ],
-              "answerOptionId": "o1",
+              "answerOptionId": "o4",
               "answerExplanation": {
-                "en": "Someone arrives, so you greet him: Hallo.",
-                "fr": "Quelqu’un arrive, donc on le salue : Hallo.",
-                "de": "Jemand kommt, also begrüßt man ihn: Hallo."
+                "en": "Friends greet each other with Hallo; Morgen and Abend do not fit the afternoon.",
+                "fr": "Des amis se saluent avec Hallo ; Morgen et Abend ne conviennent pas à l’après-midi.",
+                "de": "Freunde grüßen sich mit Hallo; Morgen und Abend passen nicht zum Nachmittag."
               }
             }
           ]
@@ -810,20 +821,23 @@
             {
               "type": "function_listening_choice",
               "itemId": "listening-5",
-              "expressionId": "tschuess",
-              "context": { "roleId": "lena", "text": "Ich gehe jetzt nach Hause." },
-              "roleId": "keller",
+              "expressionId": "auf-wiedersehen",
+              "context": {
+                "roleId": "tim",
+                "text": "Danke für Ihren Besuch. Das Gespräch ist zu Ende."
+              },
+              "roleId": "lena",
               "options": [
-                { "optionId": "o1", "text": "Tschüss, Lena! Bis morgen!" },
-                { "optionId": "o2", "text": "Guten Morgen, Lena!" },
-                { "optionId": "o3", "text": "Hallo, Lena!" },
-                { "optionId": "o4", "text": "Wie geht’s, Lena?" }
+                { "optionId": "o1", "text": "Auf Wiedersehen, Tim!" },
+                { "optionId": "o2", "text": "Guten Morgen, Tim!" },
+                { "optionId": "o3", "text": "Guten Abend, Tim!" },
+                { "optionId": "o4", "text": "Hallo, Tim!" }
               ],
               "answerOptionId": "o1",
               "answerExplanation": {
-                "en": "Lena is leaving, so the teacher says goodbye: Tschüss.",
-                "fr": "Lena part, donc la professeure prend congé : Tschüss.",
-                "de": "Lena geht, also verabschiedet sich die Lehrerin: Tschüss."
+                "en": "The conversation is over and the tone is polite (Sie): Auf Wiedersehen.",
+                "fr": "La conversation est finie et le ton est poli (Sie) : Auf Wiedersehen.",
+                "de": "Das Gespräch ist zu Ende und der Ton ist höflich (Sie): Auf Wiedersehen."
               }
             }
           ]
@@ -841,20 +855,23 @@
             {
               "type": "function_listening_choice",
               "itemId": "listening-6",
-              "expressionId": "auf-wiedersehen",
-              "context": { "roleId": "keller", "text": "Der Kurs ist zu Ende." },
-              "roleId": "lena",
+              "expressionId": "tschuess",
+              "context": {
+                "roleId": "lena",
+                "text": "Ich gehe jetzt nach Hause, Tim. Bis morgen!"
+              },
+              "roleId": "tim",
               "options": [
-                { "optionId": "o1", "text": "Auf Wiedersehen, Frau Keller!" },
-                { "optionId": "o2", "text": "Guten Morgen, Frau Keller!" },
-                { "optionId": "o3", "text": "Hallo, Frau Keller!" },
-                { "optionId": "o4", "text": "Wie geht es Ihnen?" }
+                { "optionId": "o1", "text": "Guten Morgen, Lena!" },
+                { "optionId": "o2", "text": "Tschüss, Lena!" },
+                { "optionId": "o3", "text": "Hallo, Lena!" },
+                { "optionId": "o4", "text": "Guten Tag, Lena!" }
               ],
-              "answerOptionId": "o1",
+              "answerOptionId": "o2",
               "answerExplanation": {
-                "en": "The class is over, and Lena says a polite goodbye.",
-                "fr": "Le cours est fini et Lena dit poliment au revoir.",
-                "de": "Der Kurs ist vorbei, und Lena verabschiedet sich höflich."
+                "en": "Lena is leaving, so Tim says the informal goodbye: Tschüss.",
+                "fr": "Lena s’en va, donc Tim dit l’au revoir informel : Tschüss.",
+                "de": "Lena geht, also sagt Tim die informelle Verabschiedung: Tschüss."
               }
             }
           ]
@@ -880,104 +897,97 @@
             {
               "type": "function_word_order",
               "itemId": "reply-1",
-              "expressionId": "guten-morgen",
+              "expressionId": "guten-tag",
               "context": {
-                "roleId": "keller",
-                "text": "Da kommt Herr Braun, Lena. Es ist acht Uhr morgens."
+                "roleId": "lena",
+                "text": "Da kommt Frau Berger. Es ist gerade Mittag."
               },
-              "roleId": "lena",
+              "roleId": "tim",
               "tokens": [
                 { "tokenId": "t1", "text": "Guten" },
-                { "tokenId": "t2", "text": "Morgen," },
-                { "tokenId": "t3", "text": "Herr" },
-                { "tokenId": "t4", "text": "Braun!" },
-                { "tokenId": "t5", "text": "Abend" },
-                { "tokenId": "t6", "text": "Hallo," }
+                { "tokenId": "t2", "text": "Tag," },
+                { "tokenId": "t3", "text": "Frau" },
+                { "tokenId": "t4", "text": "Berger!" },
+                { "tokenId": "t5", "text": "Abend," }
               ],
-              "distractorTokenIds": ["t5", "t6"],
+              "distractorTokenIds": ["t5"],
               "acceptedOrders": [["t1", "t2", "t3", "t4"]],
               "answerExplanation": {
-                "en": "It is morning, so: Guten Morgen, then the name.",
-                "fr": "C’est le matin, donc : Guten Morgen, puis le nom.",
-                "de": "Es ist Morgen, also: Guten Morgen, dann der Name."
+                "en": "At noon the greeting is Guten Tag, not Guten Abend.",
+                "fr": "À midi, la salutation est Guten Tag, pas Guten Abend.",
+                "de": "Zu Mittag sagt man Guten Tag, nicht Guten Abend."
               }
             },
             {
               "type": "function_word_order",
               "itemId": "reply-2",
-              "expressionId": "guten-abend",
-              "context": {
-                "roleId": "keller",
-                "text": "Es ist neunzehn Uhr. Da ist Frau Weber, Lena."
-              },
+              "expressionId": "hallo",
+              "context": { "roleId": "tim", "text": "Das ist Mia, meine Freundin." },
               "roleId": "lena",
               "tokens": [
-                { "tokenId": "t1", "text": "Guten" },
-                { "tokenId": "t2", "text": "Abend," },
-                { "tokenId": "t3", "text": "Frau" },
-                { "tokenId": "t4", "text": "Weber!" },
-                { "tokenId": "t5", "text": "Morgen," },
-                { "tokenId": "t6", "text": "Tag," }
+                { "tokenId": "t1", "text": "Hallo," },
+                { "tokenId": "t2", "text": "Mia," },
+                { "tokenId": "t3", "text": "ich" },
+                { "tokenId": "t4", "text": "bin" },
+                { "tokenId": "t5", "text": "Lena." },
+                { "tokenId": "t6", "text": "bist" }
               ],
-              "distractorTokenIds": ["t5", "t6"],
-              "acceptedOrders": [["t1", "t2", "t3", "t4"]],
+              "distractorTokenIds": ["t6"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5"]],
               "answerExplanation": {
-                "en": "At 7 pm you say Guten Abend.",
-                "fr": "À 19 heures, on dit Guten Abend.",
-                "de": "Um 19 Uhr sagt man Guten Abend."
+                "en": "With ich the verb is bin, not bist.",
+                "fr": "Avec ich, le verbe est bin, pas bist.",
+                "de": "Zu ich gehört bin, nicht bist."
               }
             },
             {
               "type": "function_word_order",
               "itemId": "reply-3",
-              "expressionId": "hallo",
-              "context": { "roleId": "lena", "text": "Frau Keller, das ist mein Bruder Max." },
-              "roleId": "keller",
+              "expressionId": "tschuess",
+              "context": { "roleId": "lena", "text": "Ich muss jetzt gehen, Tim." },
+              "roleId": "tim",
               "tokens": [
-                { "tokenId": "t1", "text": "Hallo," },
-                { "tokenId": "t2", "text": "Max!" },
-                { "tokenId": "t3", "text": "Wie" },
-                { "tokenId": "t4", "text": "geht’s?" },
-                { "tokenId": "t5", "text": "Tschüss," },
-                { "tokenId": "t6", "text": "Guten" }
+                { "tokenId": "t1", "text": "Tschüss," },
+                { "tokenId": "t2", "text": "Lena," },
+                { "tokenId": "t3", "text": "bis" },
+                { "tokenId": "t4", "text": "morgen!" },
+                { "tokenId": "t5", "text": "gestern" }
               ],
-              "distractorTokenIds": ["t5", "t6"],
+              "distractorTokenIds": ["t5"],
               "acceptedOrders": [["t1", "t2", "t3", "t4"]],
               "answerExplanation": {
-                "en": "Max is a young person (du), so the informal Hallo fits.",
-                "fr": "Max est un jeune (du), donc le Hallo familier convient.",
-                "de": "Max ist jung (du), deshalb passt das informelle Hallo."
+                "en": "Bis morgen means see you tomorrow; gestern means yesterday.",
+                "fr": "Bis morgen signifie à demain ; gestern signifie hier.",
+                "de": "Bis morgen heißt: Wir sehen uns morgen; gestern bedeutet das Gegenteil."
               }
             },
             {
               "type": "function_word_order",
               "itemId": "reply-4",
               "expressionId": "auf-wiedersehen",
-              "context": { "roleId": "keller", "text": "Wir sind fertig für heute." },
+              "context": { "roleId": "tim", "text": "Danke für Ihren Besuch, Frau Berger." },
               "roleId": "lena",
               "tokens": [
-                { "tokenId": "t1", "text": "Danke" },
-                { "tokenId": "t2", "text": "und" },
-                { "tokenId": "t3", "text": "auf" },
-                { "tokenId": "t4", "text": "Wiedersehen," },
-                { "tokenId": "t5", "text": "Frau" },
-                { "tokenId": "t6", "text": "Keller!" },
-                { "tokenId": "t7", "text": "Tschüss" }
+                { "tokenId": "t1", "text": "Auf" },
+                { "tokenId": "t2", "text": "Wiedersehen" },
+                { "tokenId": "t3", "text": "und" },
+                { "tokenId": "t4", "text": "danke!" },
+                { "tokenId": "t5", "text": "Tschüss" }
               ],
-              "distractorTokenIds": ["t7"],
-              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]],
+              "distractorTokenIds": ["t5"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4"]],
               "answerExplanation": {
-                "en": "Lena thanks her teacher and says a polite goodbye.",
-                "fr": "Lena remercie sa professeure et prend poliment congé.",
-                "de": "Lena bedankt sich bei ihrer Lehrerin und verabschiedet sich höflich."
+                "en": "With Sie the polite goodbye is Auf Wiedersehen, not the informal Tschüss.",
+                "fr": "Avec Sie, l’au revoir poli est Auf Wiedersehen, pas le Tschüss informel.",
+                "de": "Bei Sie ist Auf Wiedersehen die höfliche Verabschiedung, nicht das informelle Tschüss."
               }
             }
           ]
         },
         {
           "pageId": "exam-dialogue",
-          "estimatedDurationS": 124,
-          "timeLimitS": 186,
+          "estimatedDurationS": 140,
+          "timeLimitS": 210,
           "instructions": {
             "en": "Fill each gap with an expression from this lesson.",
             "fr": "Complétez chaque trou avec une expression de la leçon.",
@@ -990,42 +1000,42 @@
               "lines": [
                 {
                   "lineId": "exam-line-1",
-                  "roleId": "keller",
-                  "before": "Ach, du bist es, Lena.",
+                  "roleId": "tim",
+                  "before": "",
                   "translation": {
-                    "en": "Oh, it’s you, Lena. Hello!",
-                    "fr": "Ah, c’est toi, Lena. Bonjour !"
+                    "en": "Good morning, Lena! You are early.",
+                    "fr": "Bonjour, Lena ! Tu es en avance."
                   },
                   "gap": {
-                    "gapId": "gap-1",
-                    "expressionId": "guten-tag",
-                    "accepted": { "answers": ["Guten Tag"] },
+                    "gapId": "egap-1",
+                    "expressionId": "guten-morgen",
+                    "accepted": { "answers": ["Guten Morgen", "Hallo", "Guten Tag"] },
                     "answerExplanation": {
-                      "en": "Daytime greeting: Guten Tag.",
-                      "fr": "Salutation de la journée : Guten Tag.",
-                      "de": "Gruß tagsüber: Guten Tag."
+                      "en": "It is morning: Guten Morgen.",
+                      "fr": "C’est le matin : Guten Morgen.",
+                      "de": "Es ist Morgen: Guten Morgen."
                     }
                   },
-                  "after": "!"
+                  "after": ", Lena! Du bist früh."
                 },
                 {
                   "lineId": "exam-line-2",
                   "roleId": "lena",
-                  "before": "Frau Keller, ich habe eine Frage.",
+                  "before": "Ja, ich habe heute viel zu tun.",
                   "translation": {
-                    "en": "Mrs Keller, I have a question.",
-                    "fr": "Madame Keller, j’ai une question."
+                    "en": "Yes, I have a lot to do today.",
+                    "fr": "Oui, j’ai beaucoup à faire aujourd’hui."
                   },
                   "gap": null,
                   "after": ""
                 },
                 {
                   "lineId": "exam-line-3",
-                  "roleId": "keller",
-                  "before": "Ja, bitte. Was ist los?",
+                  "roleId": "tim",
+                  "before": "Ich auch. Wir sehen uns am Mittag.",
                   "translation": {
-                    "en": "Yes, please. What’s the matter?",
-                    "fr": "Oui, bien sûr. Qu’y a-t-il ?"
+                    "en": "Me too. We will see each other at noon.",
+                    "fr": "Moi aussi. On se voit à midi."
                   },
                   "gap": null,
                   "after": ""
@@ -1033,67 +1043,92 @@
                 {
                   "lineId": "exam-line-4",
                   "roleId": "lena",
-                  "before": "Wann ist der Test?",
-                  "translation": { "en": "When is the test?", "fr": "Quand a lieu le test ?" },
+                  "before": "Gut. Bis später.",
+                  "translation": {
+                    "en": "Good. See you later.",
+                    "fr": "D’accord. À tout à l’heure."
+                  },
                   "gap": null,
                   "after": ""
                 },
                 {
                   "lineId": "exam-line-5",
-                  "roleId": "keller",
-                  "before": "Der Test ist morgen um zehn Uhr.",
+                  "roleId": "tim",
+                  "before": "",
                   "translation": {
-                    "en": "The test is tomorrow at ten o’clock.",
-                    "fr": "Le test a lieu demain à dix heures."
+                    "en": "Good afternoon, Lena! Are you hungry?",
+                    "fr": "Bonjour, Lena ! Tu as faim ?"
+                  },
+                  "gap": {
+                    "gapId": "egap-2",
+                    "expressionId": "guten-tag",
+                    "accepted": { "answers": ["Guten Tag", "Hallo"] },
+                    "answerExplanation": {
+                      "en": "It is noon: Guten Tag.",
+                      "fr": "C’est midi : Guten Tag.",
+                      "de": "Es ist Mittag: Guten Tag."
+                    }
+                  },
+                  "after": ", Lena! Hast du Hunger?"
+                },
+                {
+                  "lineId": "exam-line-6",
+                  "roleId": "lena",
+                  "before": "Ja, sehr. Wir essen zusammen.",
+                  "translation": {
+                    "en": "Yes, very. We will eat together.",
+                    "fr": "Oui, beaucoup. Nous mangeons ensemble."
                   },
                   "gap": null,
                   "after": ""
                 },
                 {
-                  "lineId": "exam-line-6",
-                  "roleId": "lena",
-                  "before": "Danke schön, Frau Keller.",
-                  "translation": {
-                    "en": "Thank you very much, Mrs Keller. Goodbye!",
-                    "fr": "Merci beaucoup, madame Keller. Au revoir !"
-                  },
-                  "gap": {
-                    "gapId": "gap-6",
-                    "expressionId": "auf-wiedersehen",
-                    "accepted": { "answers": ["Auf Wiedersehen"] },
-                    "answerExplanation": {
-                      "en": "Polite goodbye to the teacher: Auf Wiedersehen.",
-                      "fr": "Au revoir poli à la professeure : Auf Wiedersehen.",
-                      "de": "Höfliche Verabschiedung von der Lehrerin: Auf Wiedersehen."
-                    }
-                  },
-                  "after": "!"
-                },
-                {
                   "lineId": "exam-line-7",
-                  "roleId": "keller",
-                  "before": "Gern. Bis morgen.",
+                  "roleId": "tim",
+                  "before": "Ich bin schon im Kurs. Es ist acht Uhr abends.",
                   "translation": {
-                    "en": "You’re welcome. See you tomorrow. Bye!",
-                    "fr": "Avec plaisir. À demain. Tchao !"
+                    "en": "I am already in the class. It is eight in the evening.",
+                    "fr": "Je suis déjà au cours. Il est vingt heures."
                   },
-                  "gap": {
-                    "gapId": "gap-7",
-                    "expressionId": "tschuess",
-                    "accepted": { "answers": ["Tschüss", "Tschüs"] },
-                    "answerExplanation": {
-                      "en": "The teacher says the informal goodbye to Lena: Tschüss.",
-                      "fr": "La professeure prend congé familièrement de Lena : Tschüss.",
-                      "de": "Die Lehrerin verabschiedet sich informell von Lena: Tschüss."
-                    }
-                  },
-                  "after": "!"
+                  "gap": null,
+                  "after": ""
                 },
                 {
                   "lineId": "exam-line-8",
                   "roleId": "lena",
-                  "before": "Ja, bis morgen!",
-                  "translation": { "en": "Yes, see you tomorrow!", "fr": "Oui, à demain !" },
+                  "before": "",
+                  "translation": {
+                    "en": "Good evening, Tim! Sorry, I am late.",
+                    "fr": "Bonsoir, Tim ! Désolée, je suis en retard."
+                  },
+                  "gap": {
+                    "gapId": "egap-3",
+                    "expressionId": "guten-abend",
+                    "accepted": { "answers": ["Guten Abend", "Hallo"] },
+                    "answerExplanation": {
+                      "en": "It is evening: Guten Abend.",
+                      "fr": "C’est le soir : Guten Abend.",
+                      "de": "Es ist Abend: Guten Abend."
+                    }
+                  },
+                  "after": ", Tim! Entschuldigung, ich bin spät."
+                },
+                {
+                  "lineId": "exam-line-9",
+                  "roleId": "tim",
+                  "before": "Kein Problem. Setz dich.",
+                  "translation": {
+                    "en": "No problem. Sit down.",
+                    "fr": "Pas de problème. Assieds-toi."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-10",
+                  "roleId": "lena",
+                  "before": "Danke.",
+                  "translation": { "en": "Thanks.", "fr": "Merci." },
                   "gap": null,
                   "after": ""
                 }

@@ -7,36 +7,36 @@
   "title": "Unregelmäßige Partizipien",
   "objective": {
     "en": "Learn irregular participles in groups with the same vowel change and recognise mixed verbs: getrunken, geschrieben, geflogen, gebracht, gedacht, gewusst.",
-    "fr": "Apprendre les participes irréguliers par groupes de même changement de voyelle et reconnaître les verbes mixtes : getrunken, geschrieben, geflogen, gebracht, gedacht, gewusst.",
+    "fr": "Apprendre les participes irréguliers par groupes avec le même changement de voyelle et reconnaître les verbes mixtes : getrunken, geschrieben, geflogen, gebracht, gedacht, gewusst.",
     "de": "Unregelmäßige Partizipien in Gruppen mit gleichem Vokalwechsel lernen und gemischte Verben erkennen: getrunken, geschrieben, geflogen, gebracht, gedacht, gewusst."
   },
-  "estimatedMinutes": 15,
+  "estimatedMinutes": 16,
   "provenance": {
     "generator": "ft lessons:author",
     "model": "sonnet",
-    "promptVersion": "author-2",
-    "generatedAt": "2026-11-01T20:21:56.642Z",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:26:23.953Z",
     "inputHashes": {
       "outline": "9b842641e3907850fef9e6e524a92d5dd699fb3e3188c31180eda1b23aaf989a",
-      "brief": "55178b1dc73a6574019c81aed4f281c9824367228750e307e530ebafa872059e"
+      "brief": "238961fee5e2ae9a57d6f36c298ac69a2df7acd50e6310c0489cfcf4725be20f"
     }
   },
   "kind": "grammar",
   "topic": "verbs_morphology",
   "steps": [
     {
-      "id": "block-strong-explanation",
+      "id": "b-iu-eiie-explanation",
       "role": "explanation",
-      "blockId": "block-strong",
+      "blockId": "b-iu-eiie",
       "label": {
-        "en": "Strong verbs: vowel groups",
-        "fr": "Verbes forts : groupes de voyelles",
-        "de": "Starke Verben: Vokalgruppen"
+        "en": "Participles with i → u and ei → ie",
+        "fr": "Participes avec i → u et ei → ie",
+        "de": "Partizipien mit i → u und ei → ie"
       },
       "pages": [
         {
-          "pageId": "block-strong-explanation",
-          "estimatedDurationS": 150,
+          "pageId": "b-iu-eiie-explanation",
+          "estimatedDurationS": 130,
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
@@ -46,62 +46,53 @@
           "items": [
             {
               "type": "grammar_explanation",
-              "itemId": "block-strong-explanation",
-              "ruleIds": ["rule-ei-ie", "rule-i-u", "rule-o"],
+              "itemId": "b-iu-eiie-explanation",
+              "ruleIds": ["rule-i-u", "rule-ei-ie"],
               "heading": {
-                "en": "Strong verbs in the participle",
-                "fr": "Les verbes forts au participe",
-                "de": "Starke Verben im Partizip"
+                "en": "Irregular participles: i → u and ei → ie",
+                "fr": "Participes irréguliers : i → u et ei → ie",
+                "de": "Unregelmäßige Partizipien: i → u und ei → ie"
               },
               "text": {
-                "en": "Strong verbs form the participle II with `ge-` and the ending `-en`, and the stem vowel often changes. Learn them in groups with the same vowel change:\n\n- `ei` → `ie`: `schreiben` → `geschrieben`, `leihen` → `geliehen`\n- `i` → `u`: `trinken` → `getrunken`, `singen` → `gesungen`, `finden` → `gefunden`\n- `o` in the participle: `fliegen` → `geflogen`, `sprechen` → `gesprochen`, `nehmen` → `genommen`\n\nThe participle does not follow from the infinitive alone: learn each one together with its verb.",
-                "fr": "Les verbes forts forment le participe II avec `ge-` et la terminaison `-en`, et la voyelle du radical change souvent. Apprenez-les par groupes avec le même changement de voyelle :\n\n- `ei` → `ie` : `schreiben` → `geschrieben`, `leihen` → `geliehen`\n- `i` → `u` : `trinken` → `getrunken`, `singen` → `gesungen`, `finden` → `gefunden`\n- `o` au participe : `fliegen` → `geflogen`, `sprechen` → `gesprochen`, `nehmen` → `genommen`\n\nLe participe ne se déduit pas de l'infinitif seul : apprenez chacun avec son verbe.",
-                "de": "Starke Verben bilden das Partizip II mit `ge-` und der Endung `-en`, und der Stammvokal ändert sich oft. Lerne sie in Gruppen mit demselben Vokalwechsel:\n\n- `ei` → `ie`: `schreiben` → `geschrieben`, `leihen` → `geliehen`\n- `i` → `u`: `trinken` → `getrunken`, `singen` → `gesungen`, `finden` → `gefunden`\n- `o` im Partizip: `fliegen` → `geflogen`, `sprechen` → `gesprochen`, `nehmen` → `genommen`\n\nDas Partizip lässt sich nicht allein aus dem Infinitiv ableiten: Lerne jedes zusammen mit seinem Verb."
+                "en": "Many verbs form the past participle **irregularly**: it ends in `-en` and the vowel in the stem often changes. It is easiest to learn the verbs in groups with the same change.\n\n- **i → u**: `trinken – getrunken`, `singen – gesungen`, `finden – gefunden`\n- **ei → ie**: `schreiben – geschrieben`, `leihen – geliehen`\n\nIn the perfect tense the participle stands at the end of the sentence: `Ich habe Tee getrunken.` Regular verbs end in `-t` instead: `gemacht`.",
+                "fr": "Beaucoup de verbes forment le participe passé de façon **irrégulière** : il se termine par `-en` et la voyelle du radical change souvent. Le plus simple est d’apprendre les verbes par groupes ayant le même changement.\n\n- **i → u** : `trinken – getrunken`, `singen – gesungen`, `finden – gefunden`\n- **ei → ie** : `schreiben – geschrieben`, `leihen – geliehen`\n\nAu parfait, le participe se place à la fin de la phrase : `Ich habe Tee getrunken.` Les verbes réguliers se terminent en revanche par `-t` : `gemacht`.",
+                "de": "Viele Verben bilden das Partizip II **unregelmäßig**: Es endet auf `-en` und der Vokal im Stamm ändert sich oft. Am besten lernst du die Verben in Gruppen mit gleichem Wechsel.\n\n- **i → u**: `trinken – getrunken`, `singen – gesungen`, `finden – gefunden`\n- **ei → ie**: `schreiben – geschrieben`, `leihen – geliehen`\n\nIm Perfekt steht das Partizip am Satzende: `Ich habe Tee getrunken.` Regelmäßige Verben enden dagegen auf `-t`: `gemacht`."
               },
               "formTable": [
+                { "subject": "trinken", "form": "getrunken", "example": "Ich habe Tee getrunken." },
+                { "subject": "singen", "form": "gesungen", "example": "Wir haben laut gesungen." },
+                {
+                  "subject": "finden",
+                  "form": "gefunden",
+                  "example": "Ich habe meinen Schlüssel gefunden."
+                },
                 {
                   "subject": "schreiben",
                   "form": "geschrieben",
-                  "example": "Ich habe einen Brief geschrieben."
+                  "example": "Sie hat eine Karte geschrieben."
                 },
                 {
-                  "subject": "trinken",
-                  "form": "getrunken",
-                  "example": "Wir haben Tee getrunken."
-                },
-                {
-                  "subject": "singen",
-                  "form": "gesungen",
-                  "example": "Sie hat gestern ein Lied gesungen."
-                },
-                {
-                  "subject": "fliegen",
-                  "form": "geflogen",
-                  "example": "Wir sind nach Wien geflogen."
+                  "subject": "leihen",
+                  "form": "geliehen",
+                  "example": "Er hat mir sein Fahrrad geliehen."
                 }
               ],
               "examples": [
                 {
-                  "text": "Ich habe einen Brief geschrieben.",
-                  "translation": { "en": "I wrote a letter.", "fr": "J'ai écrit une lettre." }
+                  "text": "Ich habe Tee getrunken.",
+                  "translation": { "en": "I drank tea.", "fr": "J’ai bu du thé." }
                 },
                 {
-                  "text": "Wir haben Tee getrunken.",
-                  "translation": { "en": "We drank tea.", "fr": "Nous avons bu du thé." }
+                  "text": "Wir haben laut gesungen.",
+                  "translation": { "en": "We sang loudly.", "fr": "Nous avons chanté fort." }
                 },
                 {
-                  "text": "Sie hat gestern ein Lied gesungen.",
-                  "translation": {
-                    "en": "She sang a song yesterday.",
-                    "fr": "Elle a chanté une chanson hier."
-                  }
+                  "text": "Sie hat eine Karte geschrieben.",
+                  "translation": { "en": "She wrote a card.", "fr": "Elle a écrit une carte." }
                 },
                 {
-                  "text": "Wir sind nach Wien geflogen.",
-                  "translation": {
-                    "en": "We flew to Vienna.",
-                    "fr": "Nous avons pris l'avion pour Vienne."
-                  }
+                  "text": "Er hat mir sein Fahrrad geliehen.",
+                  "translation": { "en": "He lent me his bike.", "fr": "Il m’a prêté son vélo." }
                 }
               ]
             }
@@ -110,74 +101,9 @@
       ]
     },
     {
-      "id": "ex-s-persons",
+      "id": "e1",
       "role": "exercise",
-      "blockId": "block-strong",
-      "label": {
-        "en": "Person matching",
-        "fr": "Relier les personnes",
-        "de": "Personen verbinden"
-      },
-      "pages": [
-        {
-          "pageId": "ex-s-persons-1",
-          "estimatedDurationS": 45,
-          "timeLimitS": null,
-          "instructions": {
-            "en": "Connect each pronoun with its partner.",
-            "fr": "Reliez chaque pronom à son partenaire.",
-            "de": "Verbinde jedes Pronomen mit seinem Partner."
-          },
-          "items": [
-            {
-              "type": "grammar_person_matching",
-              "itemId": "ex-s-persons-1",
-              "ruleIds": ["rule-i-u"],
-              "mode": "forms",
-              "rows": [
-                {
-                  "person": "1sg",
-                  "pronoun": "ich",
-                  "native": null,
-                  "answer": "habe getrunken",
-                  "answerExplanation": {
-                    "en": "With ich, haben is habe; trinken has the participle getrunken.",
-                    "fr": "Avec ich, haben devient habe ; trinken a le participe getrunken.",
-                    "de": "Zu ich gehört habe; trinken hat das Partizip getrunken."
-                  }
-                },
-                {
-                  "person": "2sg",
-                  "pronoun": "du",
-                  "native": null,
-                  "answer": "hast getrunken",
-                  "answerExplanation": {
-                    "en": "With du, haben is hast; the participle stays getrunken.",
-                    "fr": "Avec du, haben devient hast ; le participe reste getrunken.",
-                    "de": "Zu du gehört hast; das Partizip bleibt getrunken."
-                  }
-                },
-                {
-                  "person": "3sg",
-                  "pronoun": "er / sie / es",
-                  "native": null,
-                  "answer": "hat getrunken",
-                  "answerExplanation": {
-                    "en": "With er, sie, es, haben is hat; the participle stays getrunken.",
-                    "fr": "Avec er, sie, es, haben devient hat ; le participe reste getrunken.",
-                    "de": "Zu er, sie, es gehört hat; das Partizip bleibt getrunken."
-                  }
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "ex-s-choice",
-      "role": "exercise",
-      "blockId": "block-strong",
+      "blockId": "b-iu-eiie",
       "label": {
         "en": "Multiple-choice gaps 1",
         "fr": "Phrases à trous à choix multiple 1",
@@ -185,8 +111,8 @@
       },
       "pages": [
         {
-          "pageId": "ex-s-choice-1",
-          "estimatedDurationS": 60,
+          "pageId": "e1-p1",
+          "estimatedDurationS": 10,
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
@@ -196,102 +122,90 @@
           "items": [
             {
               "type": "grammar_gap_choice",
-              "itemId": "ex-s-choice-1",
-              "before": "Gestern habe ich einen langen Text",
+              "itemId": "e1-1",
+              "before": "Ich habe gestern Tee",
+              "after": ".",
+              "choices": [
+                { "choiceId": "c-1", "text": "getrinken" },
+                { "choiceId": "c-2", "text": "getrunken" },
+                { "choiceId": "c-3", "text": "getrunkt" },
+                { "choiceId": "c-4", "text": "getrank" }
+              ],
+              "answerChoiceId": "c-2",
+              "hint": { "en": "Verb: trinken", "fr": "Verbe : trinken", "de": "Verb: trinken" },
+              "ruleIds": ["rule-i-u"],
+              "answerExplanation": {
+                "en": "trinken changes i to u: getrunken.",
+                "fr": "trinken : le i devient u : getrunken.",
+                "de": "Bei trinken wird i zu u: getrunken."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "e1-p2",
+          "estimatedDurationS": 10,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "e1-2",
+              "before": "Sie hat mir einen langen Brief",
               "after": ".",
               "choices": [
                 { "choiceId": "c-1", "text": "geschreibt" },
-                { "choiceId": "c-2", "text": "geschrieben" },
-                { "choiceId": "c-3", "text": "geschreiben" },
-                { "choiceId": "c-4", "text": "gescrieben" }
+                { "choiceId": "c-2", "text": "geschrieb" },
+                { "choiceId": "c-3", "text": "geschrieben" },
+                { "choiceId": "c-4", "text": "geschriebt" }
               ],
-              "answerChoiceId": "c-2",
-              "hint": null,
+              "answerChoiceId": "c-3",
+              "hint": {
+                "en": "Verb: schreiben",
+                "fr": "Verbe : schreiben",
+                "de": "Verb: schreiben"
+              },
               "ruleIds": ["rule-ei-ie"],
               "answerExplanation": {
-                "en": "schreiben is strong: ei becomes ie, so the participle is geschrieben.",
-                "fr": "schreiben est fort : ei devient ie, donc le participe est geschrieben.",
-                "de": "schreiben ist stark: ei wird zu ie, das Partizip heißt geschrieben."
+                "en": "schreiben changes ei to ie: geschrieben.",
+                "fr": "schreiben : ei devient ie : geschrieben.",
+                "de": "Bei schreiben wird ei zu ie: geschrieben."
               }
-            },
+            }
+          ]
+        },
+        {
+          "pageId": "e1-p3",
+          "estimatedDurationS": 10,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
             {
               "type": "grammar_gap_choice",
-              "itemId": "ex-s-choice-2",
-              "before": "Hast du schon deine Milch",
-              "after": "?",
-              "choices": [
-                { "choiceId": "c-1", "text": "getrinkt" },
-                { "choiceId": "c-2", "text": "getrinken" },
-                { "choiceId": "c-3", "text": "getrunken" },
-                { "choiceId": "c-4", "text": "getrunkt" }
-              ],
-              "answerChoiceId": "c-3",
-              "hint": null,
-              "ruleIds": ["rule-i-u"],
-              "answerExplanation": {
-                "en": "trinken is strong: i becomes u and the ending is -en: getrunken.",
-                "fr": "trinken est fort : i devient u et la terminaison est -en : getrunken.",
-                "de": "trinken ist stark: i wird zu u und die Endung ist -en: getrunken."
-              }
-            },
-            {
-              "type": "grammar_gap_choice",
-              "itemId": "ex-s-choice-3",
-              "before": "Der Vogel hat schön",
+              "itemId": "e1-3",
+              "before": "Wir haben das Lied laut",
               "after": ".",
               "choices": [
-                { "choiceId": "c-1", "text": "gesingt" },
-                { "choiceId": "c-2", "text": "gesangen" },
-                { "choiceId": "c-3", "text": "gesongen" },
-                { "choiceId": "c-4", "text": "gesungen" }
-              ],
-              "answerChoiceId": "c-4",
-              "hint": null,
-              "ruleIds": ["rule-i-u"],
-              "answerExplanation": {
-                "en": "singen is strong: i becomes u, so the participle is gesungen.",
-                "fr": "singen est fort : i devient u, donc le participe est gesungen.",
-                "de": "singen ist stark: i wird zu u, das Partizip heißt gesungen."
-              }
-            },
-            {
-              "type": "grammar_gap_choice",
-              "itemId": "ex-s-choice-4",
-              "before": "Er hat mit dem Chef",
-              "after": ".",
-              "choices": [
-                { "choiceId": "c-1", "text": "gesprochen" },
-                { "choiceId": "c-2", "text": "gesprecht" },
-                { "choiceId": "c-3", "text": "gesprechen" },
-                { "choiceId": "c-4", "text": "gesprocht" }
+                { "choiceId": "c-1", "text": "gesungen" },
+                { "choiceId": "c-2", "text": "gesingt" },
+                { "choiceId": "c-3", "text": "gesangen" },
+                { "choiceId": "c-4", "text": "gesongen" }
               ],
               "answerChoiceId": "c-1",
-              "hint": null,
-              "ruleIds": ["rule-o"],
+              "hint": { "en": "Verb: singen", "fr": "Verbe : singen", "de": "Verb: singen" },
+              "ruleIds": ["rule-i-u"],
               "answerExplanation": {
-                "en": "sprechen is strong and has o in the participle: gesprochen.",
-                "fr": "sprechen est fort et a o au participe : gesprochen.",
-                "de": "sprechen ist stark und hat o im Partizip: gesprochen."
-              }
-            },
-            {
-              "type": "grammar_gap_choice",
-              "itemId": "ex-s-choice-5",
-              "before": "Sie hat das Buch aus dem Regal",
-              "after": ".",
-              "choices": [
-                { "choiceId": "c-1", "text": "genommt" },
-                { "choiceId": "c-2", "text": "genemmen" },
-                { "choiceId": "c-3", "text": "genommen" },
-                { "choiceId": "c-4", "text": "genamen" }
-              ],
-              "answerChoiceId": "c-3",
-              "hint": null,
-              "ruleIds": ["rule-o"],
-              "answerExplanation": {
-                "en": "nehmen is strong and has o in the participle: genommen, with double m.",
-                "fr": "nehmen est fort et a o au participe : genommen, avec deux m.",
-                "de": "nehmen ist stark und hat o im Partizip: genommen, mit doppeltem m."
+                "en": "singen changes i to u: gesungen.",
+                "fr": "singen : i devient u : gesungen.",
+                "de": "Bei singen wird i zu u: gesungen."
               }
             }
           ]
@@ -299,9 +213,9 @@
       ]
     },
     {
-      "id": "ex-s-typing",
+      "id": "e2",
       "role": "exercise",
-      "blockId": "block-strong",
+      "blockId": "b-iu-eiie",
       "label": {
         "en": "Typed gaps 1",
         "fr": "Phrases à trous à écrire 1",
@@ -309,8 +223,8 @@
       },
       "pages": [
         {
-          "pageId": "ex-s-typing-1",
-          "estimatedDurationS": 75,
+          "pageId": "e2-p1",
+          "estimatedDurationS": 15,
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
@@ -320,72 +234,68 @@
           "items": [
             {
               "type": "grammar_gap_typing",
-              "itemId": "ex-s-typing-1",
-              "before": "Meine Schwester hat mir eine Karte",
-              "after": ".",
-              "accepted": { "answers": ["geschrieben"] },
-              "hint": { "en": "schreiben", "fr": "schreiben", "de": "schreiben" },
-              "ruleIds": ["rule-ei-ie"],
-              "answerExplanation": {
-                "en": "schreiben is strong: ei becomes ie, so the participle is geschrieben.",
-                "fr": "schreiben est fort : ei devient ie, donc le participe est geschrieben.",
-                "de": "schreiben ist stark: ei wird zu ie, das Partizip heißt geschrieben."
-              }
-            },
-            {
-              "type": "grammar_gap_typing",
-              "itemId": "ex-s-typing-2",
-              "before": "Ich habe mir ein Buch",
-              "after": ".",
-              "accepted": { "answers": ["geliehen"] },
-              "hint": { "en": "leihen", "fr": "leihen", "de": "leihen" },
-              "ruleIds": ["rule-ei-ie"],
-              "answerExplanation": {
-                "en": "leihen is strong: ei becomes ie, so the participle is geliehen.",
-                "fr": "leihen est fort : ei devient ie, donc le participe est geliehen.",
-                "de": "leihen ist stark: ei wird zu ie, das Partizip heißt geliehen."
-              }
-            },
-            {
-              "type": "grammar_gap_typing",
-              "itemId": "ex-s-typing-3",
-              "before": "Hast du meinen Schlüssel",
+              "itemId": "e2-1",
+              "before": "Hast du deine Brille",
               "after": "?",
               "accepted": { "answers": ["gefunden"] },
-              "hint": { "en": "finden", "fr": "finden", "de": "finden" },
+              "hint": { "en": "Verb: finden", "fr": "Verbe : finden", "de": "Verb: finden" },
               "ruleIds": ["rule-i-u"],
               "answerExplanation": {
-                "en": "finden is strong: i becomes u, so the participle is gefunden.",
-                "fr": "finden est fort : i devient u, donc le participe est gefunden.",
-                "de": "finden ist stark: i wird zu u, das Partizip heißt gefunden."
+                "en": "finden changes i to u: gefunden.",
+                "fr": "finden : i devient u : gefunden.",
+                "de": "Bei finden wird i zu u: gefunden."
               }
-            },
+            }
+          ]
+        },
+        {
+          "pageId": "e2-p2",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
             {
               "type": "grammar_gap_typing",
-              "itemId": "ex-s-typing-4",
-              "before": "Wir haben zwei Flaschen Saft",
+              "itemId": "e2-2",
+              "before": "Er hat mir sein Buch",
               "after": ".",
-              "accepted": { "answers": ["getrunken"] },
-              "hint": { "en": "trinken", "fr": "trinken", "de": "trinken" },
+              "accepted": { "answers": ["geliehen"] },
+              "hint": { "en": "Verb: leihen", "fr": "Verbe : leihen", "de": "Verb: leihen" },
+              "ruleIds": ["rule-ei-ie"],
+              "answerExplanation": {
+                "en": "leihen changes ei to ie: geliehen.",
+                "fr": "leihen : ei devient ie : geliehen.",
+                "de": "Bei leihen wird ei zu ie: geliehen."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "e2-p3",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "e2-3",
+              "before": "Die Kinder haben im Chor",
+              "after": ".",
+              "accepted": { "answers": ["gesungen"] },
+              "hint": { "en": "Verb: singen", "fr": "Verbe : singen", "de": "Verb: singen" },
               "ruleIds": ["rule-i-u"],
               "answerExplanation": {
-                "en": "trinken is strong: i becomes u, so the participle is getrunken.",
-                "fr": "trinken est fort : i devient u, donc le participe est getrunken.",
-                "de": "trinken ist stark: i wird zu u, das Partizip heißt getrunken."
-              }
-            },
-            {
-              "type": "grammar_gap_typing",
-              "itemId": "ex-s-typing-5",
-              "before": "Wir haben lange miteinander",
-              "after": ".",
-              "accepted": { "answers": ["gesprochen"] },
-              "hint": { "en": "sprechen", "fr": "sprechen", "de": "sprechen" },
-              "ruleIds": ["rule-o"],
-              "answerExplanation": {
-                "en": "sprechen is strong and has o in the participle: gesprochen.",
-                "fr": "sprechen est fort et a o au participe : gesprochen.",
-                "de": "sprechen ist stark und hat o im Partizip: gesprochen."
+                "en": "singen changes i to u: gesungen.",
+                "fr": "singen : i devient u : gesungen.",
+                "de": "Bei singen wird i zu u: gesungen."
               }
             }
           ]
@@ -393,14 +303,14 @@
       ]
     },
     {
-      "id": "ex-s-spot",
+      "id": "e3",
       "role": "exercise",
-      "blockId": "block-strong",
+      "blockId": "b-iu-eiie",
       "label": { "en": "Error spotting", "fr": "Repérer l’erreur", "de": "Fehler finden" },
       "pages": [
         {
-          "pageId": "ex-s-spot-1",
-          "estimatedDurationS": 80,
+          "pageId": "e3-p1",
+          "estimatedDurationS": 25,
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it.",
@@ -410,62 +320,17 @@
           "items": [
             {
               "type": "grammar_error_spotter",
-              "itemId": "ex-s-spot-1",
+              "itemId": "e3-1",
               "tokens": [
-                { "tokenId": "t-1", "text": "Er" },
-                { "tokenId": "t-2", "text": "hat" },
-                { "tokenId": "t-3", "text": "mir" },
-                { "tokenId": "t-4", "text": "eine" },
-                { "tokenId": "t-5", "text": "Karte" },
-                { "tokenId": "t-6", "text": "geschreibt" }
+                { "tokenId": "t-1", "text": "Du" },
+                { "tokenId": "t-2", "text": "hast" },
+                { "tokenId": "t-3", "text": "zu" },
+                { "tokenId": "t-4", "text": "viel" },
+                { "tokenId": "t-5", "text": "Kaffee" },
+                { "tokenId": "t-6", "text": "getrinkt" },
+                { "tokenId": "t-7", "text": "." }
               ],
               "faultyTokenId": "t-6",
-              "correction": {
-                "mode": "type",
-                "accepted": { "answers": ["geschrieben"] },
-                "choices": []
-              },
-              "ruleIds": ["rule-ei-ie"],
-              "answerExplanation": {
-                "en": "schreiben is strong, so the ending is -en, not -t: geschrieben.",
-                "fr": "schreiben est fort, donc la terminaison est -en et non -t : geschrieben.",
-                "de": "schreiben ist stark, die Endung ist also -en, nicht -t: geschrieben."
-              }
-            },
-            {
-              "type": "grammar_error_spotter",
-              "itemId": "ex-s-spot-2",
-              "tokens": [
-                { "tokenId": "t-1", "text": "Wir" },
-                { "tokenId": "t-2", "text": "sind" },
-                { "tokenId": "t-3", "text": "nach" },
-                { "tokenId": "t-4", "text": "Berlin" },
-                { "tokenId": "t-5", "text": "geflogt" }
-              ],
-              "faultyTokenId": "t-5",
-              "correction": {
-                "mode": "select",
-                "accepted": { "answers": ["geflogen"] },
-                "choices": ["geflogen", "geflogt", "gefliegen"]
-              },
-              "ruleIds": ["rule-o"],
-              "answerExplanation": {
-                "en": "fliegen is strong and has o in the participle: geflogen.",
-                "fr": "fliegen est fort et a o au participe : geflogen.",
-                "de": "fliegen ist stark und hat o im Partizip: geflogen."
-              }
-            },
-            {
-              "type": "grammar_error_spotter",
-              "itemId": "ex-s-spot-3",
-              "tokens": [
-                { "tokenId": "t-1", "text": "Sie" },
-                { "tokenId": "t-2", "text": "haben" },
-                { "tokenId": "t-3", "text": "viel" },
-                { "tokenId": "t-4", "text": "Wasser" },
-                { "tokenId": "t-5", "text": "getrinkt" }
-              ],
-              "faultyTokenId": "t-5",
               "correction": {
                 "mode": "type",
                 "accepted": { "answers": ["getrunken"] },
@@ -473,33 +338,82 @@
               },
               "ruleIds": ["rule-i-u"],
               "answerExplanation": {
-                "en": "trinken is strong: i becomes u and the ending is -en: getrunken.",
-                "fr": "trinken est fort : i devient u et la terminaison est -en : getrunken.",
-                "de": "trinken ist stark: i wird zu u und die Endung ist -en: getrunken."
+                "en": "The participle of trinken is getrunken, not getrinkt.",
+                "fr": "Le participe de trinken est getrunken, pas getrinkt.",
+                "de": "Das Partizip von trinken ist getrunken, nicht getrinkt."
               }
-            },
+            }
+          ]
+        },
+        {
+          "pageId": "e3-p2",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Find the wrong word and correct it.",
+            "fr": "Trouvez le mot faux et corrigez-le.",
+            "de": "Finde das falsche Wort und korrigiere es."
+          },
+          "items": [
             {
               "type": "grammar_error_spotter",
-              "itemId": "ex-s-spot-4",
+              "itemId": "e3-2",
               "tokens": [
                 { "tokenId": "t-1", "text": "Ich" },
                 { "tokenId": "t-2", "text": "habe" },
-                { "tokenId": "t-3", "text": "den" },
-                { "tokenId": "t-4", "text": "Hund" },
-                { "tokenId": "t-5", "text": "nicht" },
-                { "tokenId": "t-6", "text": "gefindet" }
+                { "tokenId": "t-3", "text": "dir" },
+                { "tokenId": "t-4", "text": "eine" },
+                { "tokenId": "t-5", "text": "Karte" },
+                { "tokenId": "t-6", "text": "geschreibt" },
+                { "tokenId": "t-7", "text": "." }
               ],
               "faultyTokenId": "t-6",
               "correction": {
                 "mode": "select",
+                "accepted": { "answers": ["geschrieben"] },
+                "choices": ["geschrieben", "geschreibt", "geschriebt"]
+              },
+              "ruleIds": ["rule-ei-ie"],
+              "answerExplanation": {
+                "en": "The participle of schreiben is geschrieben, not geschreibt.",
+                "fr": "Le participe de schreiben est geschrieben, pas geschreibt.",
+                "de": "Das Partizip von schreiben ist geschrieben, nicht geschreibt."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "e3-p3",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Find the wrong word and correct it.",
+            "fr": "Trouvez le mot faux et corrigez-le.",
+            "de": "Finde das falsche Wort und korrigiere es."
+          },
+          "items": [
+            {
+              "type": "grammar_error_spotter",
+              "itemId": "e3-3",
+              "tokens": [
+                { "tokenId": "t-1", "text": "Wir" },
+                { "tokenId": "t-2", "text": "haben" },
+                { "tokenId": "t-3", "text": "den" },
+                { "tokenId": "t-4", "text": "Schlüssel" },
+                { "tokenId": "t-5", "text": "gefinden" },
+                { "tokenId": "t-6", "text": "." }
+              ],
+              "faultyTokenId": "t-5",
+              "correction": {
+                "mode": "type",
                 "accepted": { "answers": ["gefunden"] },
-                "choices": ["gefunden", "gefinden", "gefundet"]
+                "choices": []
               },
               "ruleIds": ["rule-i-u"],
               "answerExplanation": {
-                "en": "finden is strong: i becomes u, so the participle is gefunden.",
-                "fr": "finden est fort : i devient u, donc le participe est gefunden.",
-                "de": "finden ist stark: i wird zu u, das Partizip heißt gefunden."
+                "en": "The participle of finden is gefunden, not gefinden.",
+                "fr": "Le participe de finden est gefunden, pas gefinden.",
+                "de": "Das Partizip von finden ist gefunden, nicht gefinden."
               }
             }
           ]
@@ -507,17 +421,13 @@
       ]
     },
     {
-      "id": "block-mixed-explanation",
+      "id": "b-o-explanation",
       "role": "explanation",
-      "blockId": "block-mixed",
-      "label": {
-        "en": "Mixed verbs: new vowel, ending -t",
-        "fr": "Verbes mixtes : nouvelle voyelle, terminaison -t",
-        "de": "Gemischte Verben: neuer Vokal, Endung -t"
-      },
+      "blockId": "b-o",
+      "label": { "en": "Participles with o", "fr": "Participes avec o", "de": "Partizipien mit o" },
       "pages": [
         {
-          "pageId": "block-mixed-explanation",
+          "pageId": "b-o-explanation",
           "estimatedDurationS": 120,
           "timeLimitS": null,
           "instructions": {
@@ -528,45 +438,58 @@
           "items": [
             {
               "type": "grammar_explanation",
-              "itemId": "block-mixed-explanation",
-              "ruleIds": ["rule-mixed"],
+              "itemId": "b-o-explanation",
+              "ruleIds": ["rule-o"],
               "heading": {
-                "en": "Mixed verbs in the participle",
-                "fr": "Les verbes mixtes au participe",
-                "de": "Gemischte Verben im Partizip"
+                "en": "Participles with o",
+                "fr": "Participes avec o",
+                "de": "Partizipien mit o"
               },
               "text": {
-                "en": "Mixed verbs change the stem vowel like strong verbs, but they end in `-t` like regular verbs: `ge-` + changed stem + `-t`.\n\n- `bringen` → `gebracht`, `denken` → `gedacht`\n- `wissen` → `gewusst`, `kennen` → `gekannt`, `nennen` → `genannt`\n\nHow to recognise them: a participle on `-en` belongs to a strong verb (`getrunken`), a participle on `-t` with a changed vowel belongs to a mixed verb (`gebracht`). A regular verb keeps its vowel: `gemacht`.",
-                "fr": "Les verbes mixtes changent la voyelle du radical comme les verbes forts, mais se terminent par `-t` comme les verbes réguliers : `ge-` + radical modifié + `-t`.\n\n- `bringen` → `gebracht`, `denken` → `gedacht`\n- `wissen` → `gewusst`, `kennen` → `gekannt`, `nennen` → `genannt`\n\nPour les reconnaître : un participe en `-en` appartient à un verbe fort (`getrunken`), un participe en `-t` avec une voyelle changée appartient à un verbe mixte (`gebracht`). Un verbe régulier garde sa voyelle : `gemacht`.",
-                "de": "Gemischte Verben ändern den Stammvokal wie starke Verben, enden aber wie regelmäßige Verben auf `-t`: `ge-` + veränderter Stamm + `-t`.\n\n- `bringen` → `gebracht`, `denken` → `gedacht`\n- `wissen` → `gewusst`, `kennen` → `gekannt`, `nennen` → `genannt`\n\nSo erkennst du sie: Ein Partizip auf `-en` gehört zu einem starken Verb (`getrunken`), ein Partizip auf `-t` mit verändertem Vokal zu einem gemischten Verb (`gebracht`). Ein regelmäßiges Verb behält seinen Vokal: `gemacht`."
+                "en": "In another group the participle has an **o**:\n\n- `fliegen – geflogen`\n- `schließen – geschlossen`\n- `nehmen – genommen`\n- `sprechen – gesprochen`\n- `helfen – geholfen`\n\nWith `nehmen` the consonant changes as well: `genommen`. Here too the participle ends in `-en` and stands at the end of the sentence in the perfect tense: `Wer hat das Fenster geschlossen?`",
+                "fr": "Dans un autre groupe, le participe contient un **o** :\n\n- `fliegen – geflogen`\n- `schließen – geschlossen`\n- `nehmen – genommen`\n- `sprechen – gesprochen`\n- `helfen – geholfen`\n\nAvec `nehmen`, la consonne change aussi : `genommen`. Ici aussi, le participe se termine par `-en` et se place à la fin de la phrase au parfait : `Wer hat das Fenster geschlossen?`",
+                "de": "Bei einer weiteren Gruppe steht im Partizip ein **o**:\n\n- `fliegen – geflogen`\n- `schließen – geschlossen`\n- `nehmen – genommen`\n- `sprechen – gesprochen`\n- `helfen – geholfen`\n\nBei `nehmen` ändert sich auch der Konsonant: `genommen`. Auch hier endet das Partizip auf `-en` und steht im Perfekt am Satzende: `Wer hat das Fenster geschlossen?`"
               },
               "formTable": [
                 {
-                  "subject": "bringen",
-                  "form": "gebracht",
-                  "example": "Er hat mir ein Buch gebracht."
+                  "subject": "fliegen",
+                  "form": "geflogen",
+                  "example": "Der Pilot hat das Flugzeug sicher geflogen."
                 },
-                { "subject": "denken", "form": "gedacht", "example": "Ich habe an dich gedacht." },
-                { "subject": "wissen", "form": "gewusst", "example": "Das habe ich nicht gewusst." }
+                {
+                  "subject": "schließen",
+                  "form": "geschlossen",
+                  "example": "Ich habe die Tür geschlossen."
+                },
+                { "subject": "nehmen", "form": "genommen", "example": "Sie hat den Bus genommen." },
+                {
+                  "subject": "sprechen",
+                  "form": "gesprochen",
+                  "example": "Wir haben lange gesprochen."
+                },
+                { "subject": "helfen", "form": "geholfen", "example": "Ich habe ihr geholfen." }
               ],
               "examples": [
                 {
-                  "text": "Er hat mir ein Buch gebracht.",
-                  "translation": { "en": "He brought me a book.", "fr": "Il m'a apporté un livre." }
-                },
-                {
-                  "text": "Ich habe an dich gedacht.",
-                  "translation": { "en": "I thought of you.", "fr": "J'ai pensé à toi." }
-                },
-                {
-                  "text": "Das habe ich nicht gewusst.",
-                  "translation": { "en": "I did not know that.", "fr": "Je ne le savais pas." }
-                },
-                {
-                  "text": "Wir haben den Mann nicht gekannt.",
+                  "text": "Der Pilot hat das Flugzeug sicher geflogen.",
                   "translation": {
-                    "en": "We did not know the man.",
-                    "fr": "Nous ne connaissions pas l'homme."
+                    "en": "The pilot flew the plane safely.",
+                    "fr": "Le pilote a piloté l’avion en toute sécurité."
+                  }
+                },
+                {
+                  "text": "Ich habe die Tür geschlossen.",
+                  "translation": { "en": "I closed the door.", "fr": "J’ai fermé la porte." }
+                },
+                {
+                  "text": "Sie hat den Bus genommen.",
+                  "translation": { "en": "She took the bus.", "fr": "Elle a pris le bus." }
+                },
+                {
+                  "text": "Wir haben lange gesprochen.",
+                  "translation": {
+                    "en": "We talked for a long time.",
+                    "fr": "Nous avons parlé longtemps."
                   }
                 }
               ]
@@ -576,9 +499,9 @@
       ]
     },
     {
-      "id": "ex-m-choice",
+      "id": "e4",
       "role": "exercise",
-      "blockId": "block-mixed",
+      "blockId": "b-o",
       "label": {
         "en": "Multiple-choice gaps 2",
         "fr": "Phrases à trous à choix multiple 2",
@@ -586,8 +509,8 @@
       },
       "pages": [
         {
-          "pageId": "ex-m-choice-1",
-          "estimatedDurationS": 50,
+          "pageId": "e4-p1",
+          "estimatedDurationS": 10,
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
@@ -597,162 +520,86 @@
           "items": [
             {
               "type": "grammar_gap_choice",
-              "itemId": "ex-m-choice-1",
-              "before": "Wir haben dir Blumen",
+              "itemId": "e4-1",
+              "before": "Der Pilot hat heute ein kleines Flugzeug",
               "after": ".",
               "choices": [
-                { "choiceId": "c-1", "text": "gebringt" },
-                { "choiceId": "c-2", "text": "gebracht" },
-                { "choiceId": "c-3", "text": "gebrungen" },
-                { "choiceId": "c-4", "text": "gebrochen" }
-              ],
-              "answerChoiceId": "c-2",
-              "hint": null,
-              "ruleIds": ["rule-mixed"],
-              "answerExplanation": {
-                "en": "bringen is a mixed verb: new vowel and ending -t, so gebracht.",
-                "fr": "bringen est un verbe mixte : nouvelle voyelle et terminaison -t, donc gebracht.",
-                "de": "bringen ist ein gemischtes Verb: neuer Vokal und Endung -t, also gebracht."
-              }
-            },
-            {
-              "type": "grammar_gap_choice",
-              "itemId": "ex-m-choice-2",
-              "before": "Ich habe lange darüber",
-              "after": ".",
-              "choices": [
-                { "choiceId": "c-1", "text": "gedenkt" },
-                { "choiceId": "c-2", "text": "gedenken" },
-                { "choiceId": "c-3", "text": "gedachen" },
-                { "choiceId": "c-4", "text": "gedacht" }
+                { "choiceId": "c-1", "text": "geflogt" },
+                { "choiceId": "c-2", "text": "gefliegt" },
+                { "choiceId": "c-3", "text": "geflugen" },
+                { "choiceId": "c-4", "text": "geflogen" }
               ],
               "answerChoiceId": "c-4",
-              "hint": null,
-              "ruleIds": ["rule-mixed"],
+              "hint": { "en": "Verb: fliegen", "fr": "Verbe : fliegen", "de": "Verb: fliegen" },
+              "ruleIds": ["rule-o"],
               "answerExplanation": {
-                "en": "denken is a mixed verb: e becomes a and the ending is -t: gedacht.",
-                "fr": "denken est un verbe mixte : e devient a et la terminaison est -t : gedacht.",
-                "de": "denken ist ein gemischtes Verb: e wird zu a und die Endung ist -t: gedacht."
-              }
-            },
-            {
-              "type": "grammar_gap_choice",
-              "itemId": "ex-m-choice-3",
-              "before": "Das habe ich wirklich nicht",
-              "after": ".",
-              "choices": [
-                { "choiceId": "c-1", "text": "gewusst" },
-                { "choiceId": "c-2", "text": "gewisst" },
-                { "choiceId": "c-3", "text": "gewust" },
-                { "choiceId": "c-4", "text": "gewossen" }
-              ],
-              "answerChoiceId": "c-1",
-              "hint": null,
-              "ruleIds": ["rule-mixed"],
-              "answerExplanation": {
-                "en": "wissen is a mixed verb: the participle is gewusst, with u and -t.",
-                "fr": "wissen est un verbe mixte : le participe est gewusst, avec u et -t.",
-                "de": "wissen ist ein gemischtes Verb: Das Partizip heißt gewusst, mit u und -t."
-              }
-            },
-            {
-              "type": "grammar_gap_choice",
-              "itemId": "ex-m-choice-4",
-              "before": "Wir haben das Mädchen schon lange",
-              "after": ".",
-              "choices": [
-                { "choiceId": "c-1", "text": "gekennt" },
-                { "choiceId": "c-2", "text": "gekant" },
-                { "choiceId": "c-3", "text": "gekannt" },
-                { "choiceId": "c-4", "text": "gekonnt" }
-              ],
-              "answerChoiceId": "c-3",
-              "hint": null,
-              "ruleIds": ["rule-mixed"],
-              "answerExplanation": {
-                "en": "kennen is a mixed verb: e becomes a, so gekannt, with double n.",
-                "fr": "kennen est un verbe mixte : e devient a, donc gekannt, avec deux n.",
-                "de": "kennen ist ein gemischtes Verb: e wird zu a, also gekannt, mit doppeltem n."
+                "en": "fliegen has an o in the participle: geflogen.",
+                "fr": "fliegen : le participe contient un o : geflogen.",
+                "de": "fliegen hat im Partizip ein o: geflogen."
               }
             }
           ]
-        }
-      ]
-    },
-    {
-      "id": "ex-m-typing",
-      "role": "exercise",
-      "blockId": "block-mixed",
-      "label": {
-        "en": "Typed gaps 2",
-        "fr": "Phrases à trous à écrire 2",
-        "de": "Lücken zum Schreiben 2"
-      },
-      "pages": [
+        },
         {
-          "pageId": "ex-m-typing-1",
-          "estimatedDurationS": 60,
+          "pageId": "e4-p2",
+          "estimatedDurationS": 10,
           "timeLimitS": null,
           "instructions": {
-            "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
-            "de": "Schreib die fehlenden Wörter."
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
             {
-              "type": "grammar_gap_typing",
-              "itemId": "ex-m-typing-1",
-              "before": "Er hat seiner Mutter Kuchen",
+              "type": "grammar_gap_choice",
+              "itemId": "e4-2",
+              "before": "Meine Nachbarin hat mir mit den Taschen",
               "after": ".",
-              "accepted": { "answers": ["gebracht"] },
-              "hint": { "en": "bringen", "fr": "bringen", "de": "bringen" },
-              "ruleIds": ["rule-mixed"],
+              "choices": [
+                { "choiceId": "c-1", "text": "gehilft" },
+                { "choiceId": "c-2", "text": "geholfen" },
+                { "choiceId": "c-3", "text": "gehelft" },
+                { "choiceId": "c-4", "text": "gehalfen" }
+              ],
+              "answerChoiceId": "c-2",
+              "hint": { "en": "Verb: helfen", "fr": "Verbe : helfen", "de": "Verb: helfen" },
+              "ruleIds": ["rule-o"],
               "answerExplanation": {
-                "en": "bringen is a mixed verb: the participle is gebracht.",
-                "fr": "bringen est un verbe mixte : le participe est gebracht.",
-                "de": "bringen ist ein gemischtes Verb: Das Partizip heißt gebracht."
+                "en": "helfen has an o in the participle: geholfen.",
+                "fr": "helfen : le participe contient un o : geholfen.",
+                "de": "helfen hat im Partizip ein o: geholfen."
               }
-            },
+            }
+          ]
+        },
+        {
+          "pageId": "e4-p3",
+          "estimatedDurationS": 10,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
             {
-              "type": "grammar_gap_typing",
-              "itemId": "ex-m-typing-2",
-              "before": "Wir haben an den Test",
+              "type": "grammar_gap_choice",
+              "itemId": "e4-3",
+              "before": "Ich habe mir zwei Äpfel",
               "after": ".",
-              "accepted": { "answers": ["gedacht"] },
-              "hint": { "en": "denken", "fr": "denken", "de": "denken" },
-              "ruleIds": ["rule-mixed"],
+              "choices": [
+                { "choiceId": "c-1", "text": "genomen" },
+                { "choiceId": "c-2", "text": "genehmt" },
+                { "choiceId": "c-3", "text": "genommen" },
+                { "choiceId": "c-4", "text": "genamen" }
+              ],
+              "answerChoiceId": "c-3",
+              "hint": { "en": "Verb: nehmen", "fr": "Verbe : nehmen", "de": "Verb: nehmen" },
+              "ruleIds": ["rule-o"],
               "answerExplanation": {
-                "en": "denken is a mixed verb: the participle is gedacht.",
-                "fr": "denken est un verbe mixte : le participe est gedacht.",
-                "de": "denken ist ein gemischtes Verb: Das Partizip heißt gedacht."
-              }
-            },
-            {
-              "type": "grammar_gap_typing",
-              "itemId": "ex-m-typing-3",
-              "before": "Wusstest du das schon? Nein, ich habe es nicht",
-              "after": ".",
-              "accepted": { "answers": ["gewusst"] },
-              "hint": { "en": "wissen", "fr": "wissen", "de": "wissen" },
-              "ruleIds": ["rule-mixed"],
-              "answerExplanation": {
-                "en": "wissen is a mixed verb: the participle is gewusst.",
-                "fr": "wissen est un verbe mixte : le participe est gewusst.",
-                "de": "wissen ist ein gemischtes Verb: Das Partizip heißt gewusst."
-              }
-            },
-            {
-              "type": "grammar_gap_typing",
-              "itemId": "ex-m-typing-4",
-              "before": "Wie hat der Student sein Haustier",
-              "after": "?",
-              "accepted": { "answers": ["genannt"] },
-              "hint": { "en": "nennen", "fr": "nennen", "de": "nennen" },
-              "ruleIds": ["rule-mixed"],
-              "answerExplanation": {
-                "en": "nennen is a mixed verb: e becomes a, so the participle is genannt.",
-                "fr": "nennen est un verbe mixte : e devient a, donc le participe est genannt.",
-                "de": "nennen ist ein gemischtes Verb: e wird zu a, das Partizip heißt genannt."
+                "en": "nehmen becomes genommen, with an o and a double m.",
+                "fr": "nehmen devient genommen, avec un o et deux m.",
+                "de": "nehmen wird zu genommen, mit o und doppeltem m."
               }
             }
           ]
@@ -760,14 +607,14 @@
       ]
     },
     {
-      "id": "ex-m-order",
+      "id": "e5",
       "role": "exercise",
-      "blockId": "block-mixed",
+      "blockId": "b-o",
       "label": { "en": "Word order", "fr": "Ordre des mots", "de": "Wortstellung" },
       "pages": [
         {
-          "pageId": "ex-m-order-1",
-          "estimatedDurationS": 60,
+          "pageId": "e5-p1",
+          "estimatedDurationS": 20,
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
@@ -777,59 +624,445 @@
           "items": [
             {
               "type": "grammar_word_order",
-              "itemId": "ex-m-order-1",
+              "itemId": "e5-1",
               "tokens": [
-                { "tokenId": "t-1", "text": "gebracht" },
-                { "tokenId": "t-2", "text": "Ich" },
-                { "tokenId": "t-3", "text": "eine" },
-                { "tokenId": "t-4", "text": "habe" },
-                { "tokenId": "t-5", "text": "dir" },
-                { "tokenId": "t-6", "text": "Postkarte" },
-                { "tokenId": "t-7", "text": "." }
+                { "tokenId": "t-1", "text": "geschlossen" },
+                { "tokenId": "t-2", "text": "du" },
+                { "tokenId": "t-3", "text": "?" },
+                { "tokenId": "t-4", "text": "Hast" },
+                { "tokenId": "t-5", "text": "das" },
+                { "tokenId": "t-6", "text": "Fenster" }
               ],
-              "acceptedOrders": [["t-2", "t-4", "t-5", "t-3", "t-6", "t-1", "t-7"]],
-              "ruleIds": ["rule-mixed"],
+              "acceptedOrders": [["t-4", "t-2", "t-5", "t-6", "t-1", "t-3"]],
+              "ruleIds": ["rule-o"],
               "answerExplanation": {
-                "en": "The participle goes to the end of the sentence: Ich habe dir eine Postkarte gebracht.",
-                "fr": "Le participe se place à la fin de la phrase : Ich habe dir eine Postkarte gebracht.",
-                "de": "Das Partizip steht am Satzende: Ich habe dir eine Postkarte gebracht."
+                "en": "In a yes/no question the verb comes first and the participle stands at the end.",
+                "fr": "Dans une question fermée, le verbe vient en premier et le participe se place à la fin.",
+                "de": "In der Ja/Nein-Frage steht das Verb an erster Stelle und das Partizip am Ende."
               }
-            },
+            }
+          ]
+        },
+        {
+          "pageId": "e5-p2",
+          "estimatedDurationS": 20,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in the right order.",
+            "fr": "Mettez les mots dans le bon ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
             {
               "type": "grammar_word_order",
-              "itemId": "ex-m-order-2",
+              "itemId": "e5-2",
               "tokens": [
-                { "tokenId": "t-1", "text": "gedacht" },
-                { "tokenId": "t-2", "text": "Wir" },
-                { "tokenId": "t-3", "text": "nicht" },
-                { "tokenId": "t-4", "text": "haben" },
-                { "tokenId": "t-5", "text": "daran" },
-                { "tokenId": "t-6", "text": "." }
+                { "tokenId": "t-1", "text": "genommen" },
+                { "tokenId": "t-2", "text": "Kaffee" },
+                { "tokenId": "t-3", "text": "hat" },
+                { "tokenId": "t-4", "text": "?" },
+                { "tokenId": "t-5", "text": "Wer" },
+                { "tokenId": "t-6", "text": "meinen" }
               ],
-              "acceptedOrders": [["t-2", "t-4", "t-3", "t-5", "t-1", "t-6"]],
-              "ruleIds": ["rule-mixed"],
+              "acceptedOrders": [["t-5", "t-3", "t-6", "t-2", "t-1", "t-4"]],
+              "ruleIds": ["rule-o"],
               "answerExplanation": {
-                "en": "haben is in second place, the participle gedacht at the end.",
-                "fr": "haben est en deuxième position, le participe gedacht à la fin.",
-                "de": "haben steht an zweiter Stelle, das Partizip gedacht am Ende."
+                "en": "After the question word comes hat, and the participle genommen stands at the end.",
+                "fr": "Après le mot interrogatif vient hat, et le participe genommen se place à la fin.",
+                "de": "Nach dem Fragewort steht hat, und das Partizip genommen steht am Ende."
               }
-            },
+            }
+          ]
+        },
+        {
+          "pageId": "e5-p3",
+          "estimatedDurationS": 20,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in the right order.",
+            "fr": "Mettez les mots dans le bon ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
             {
               "type": "grammar_word_order",
-              "itemId": "ex-m-order-3",
+              "itemId": "e5-3",
               "tokens": [
-                { "tokenId": "t-1", "text": "gewusst" },
-                { "tokenId": "t-2", "text": "das" },
-                { "tokenId": "t-3", "text": "Hast" },
-                { "tokenId": "t-4", "text": "du" },
-                { "tokenId": "t-5", "text": "?" }
+                { "tokenId": "t-1", "text": "?" },
+                { "tokenId": "t-2", "text": "Eva" },
+                { "tokenId": "t-3", "text": "geholfen" },
+                { "tokenId": "t-4", "text": "Habt" },
+                { "tokenId": "t-5", "text": "ihr" }
               ],
-              "acceptedOrders": [["t-3", "t-4", "t-2", "t-1", "t-5"]],
+              "acceptedOrders": [["t-4", "t-5", "t-2", "t-3", "t-1"]],
+              "ruleIds": ["rule-o"],
+              "answerExplanation": {
+                "en": "The verb habt comes first and the participle geholfen stands at the end.",
+                "fr": "Le verbe habt vient en premier et le participe geholfen se place à la fin.",
+                "de": "Das Verb habt steht an erster Stelle und das Partizip geholfen am Ende."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "b-mixed-explanation",
+      "role": "explanation",
+      "blockId": "b-mixed",
+      "label": {
+        "en": "Mixed verbs with -t",
+        "fr": "Verbes mixtes avec -t",
+        "de": "Gemischte Verben mit -t"
+      },
+      "pages": [
+        {
+          "pageId": "b-mixed-explanation",
+          "estimatedDurationS": 150,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the explanation and the examples.",
+            "fr": "Lisez l’explication et les exemples.",
+            "de": "Lies die Erklärung und die Beispiele."
+          },
+          "items": [
+            {
+              "type": "grammar_explanation",
+              "itemId": "b-mixed-explanation",
+              "ruleIds": ["rule-mixed"],
+              "heading": {
+                "en": "Mixed verbs: vowel change and -t",
+                "fr": "Verbes mixtes : changement de voyelle et -t",
+                "de": "Gemischte Verben: Vokalwechsel und -t"
+              },
+              "text": {
+                "en": "Mixed verbs combine both: a vowel change like the irregular verbs and the ending `-t` like regular verbs. You have to learn them one by one:\n\n- `bringen – gebracht`\n- `denken – gedacht`\n- `wissen – gewusst`\n- `kennen – gekannt`\n\nHere the participle ends in `-t`, not in `-en`: `Ich habe an dich gedacht.`\n\nWith `bringen` and `denken` the consonant changes as well.",
+                "fr": "Les verbes mixtes combinent les deux : un changement de voyelle comme les verbes irréguliers et la terminaison `-t` comme les verbes réguliers. Il faut les apprendre un par un :\n\n- `bringen – gebracht`\n- `denken – gedacht`\n- `wissen – gewusst`\n- `kennen – gekannt`\n\nIci, le participe se termine par `-t` et non par `-en` : `Ich habe an dich gedacht.`\n\nAvec `bringen` et `denken`, la consonne change aussi.",
+                "de": "Gemischte Verben verbinden beides: einen Vokalwechsel wie bei den unregelmäßigen Verben und die Endung `-t` wie bei regelmäßigen Verben. Sie musst du einzeln lernen:\n\n- `bringen – gebracht`\n- `denken – gedacht`\n- `wissen – gewusst`\n- `kennen – gekannt`\n\nDas Partizip endet hier auf `-t`, nicht auf `-en`: `Ich habe an dich gedacht.`\n\nBei `bringen` und `denken` ändert sich auch der Konsonant."
+              },
+              "formTable": [
+                {
+                  "subject": "bringen",
+                  "form": "gebracht",
+                  "example": "Sie hat mir Blumen gebracht."
+                },
+                { "subject": "denken", "form": "gedacht", "example": "Ich habe an dich gedacht." },
+                {
+                  "subject": "wissen",
+                  "form": "gewusst",
+                  "example": "Ich habe das nicht gewusst."
+                },
+                { "subject": "kennen", "form": "gekannt", "example": "Ich habe ihn gut gekannt." }
+              ],
+              "examples": [
+                {
+                  "text": "Sie hat mir Blumen gebracht.",
+                  "translation": {
+                    "en": "She brought me flowers.",
+                    "fr": "Elle m’a apporté des fleurs."
+                  }
+                },
+                {
+                  "text": "Ich habe an dich gedacht.",
+                  "translation": { "en": "I thought of you.", "fr": "J’ai pensé à toi." }
+                },
+                {
+                  "text": "Ich habe das nicht gewusst.",
+                  "translation": { "en": "I didn’t know that.", "fr": "Je ne le savais pas." }
+                },
+                {
+                  "text": "Ich habe ihn gut gekannt.",
+                  "translation": { "en": "I knew him well.", "fr": "Je le connaissais bien." }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "e6",
+      "role": "exercise",
+      "blockId": "b-mixed",
+      "label": {
+        "en": "Person matching",
+        "fr": "Relier les personnes",
+        "de": "Personen verbinden"
+      },
+      "pages": [
+        {
+          "pageId": "e6-p1",
+          "estimatedDurationS": 48,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Connect each pronoun with its partner.",
+            "fr": "Reliez chaque pronom à son partenaire.",
+            "de": "Verbinde jedes Pronomen mit seinem Partner."
+          },
+          "items": [
+            {
+              "type": "grammar_person_matching",
+              "itemId": "e6-1",
+              "ruleIds": ["rule-mixed"],
+              "mode": "forms",
+              "rows": [
+                {
+                  "person": "1sg",
+                  "pronoun": "ich",
+                  "native": null,
+                  "answer": "habe gebracht",
+                  "answerExplanation": {
+                    "en": "With ich, haben is habe: ich habe gebracht.",
+                    "fr": "Avec ich, haben devient habe : ich habe gebracht.",
+                    "de": "Zu ich gehört habe: ich habe gebracht."
+                  }
+                },
+                {
+                  "person": "2sg",
+                  "pronoun": "du",
+                  "native": null,
+                  "answer": "hast gebracht",
+                  "answerExplanation": {
+                    "en": "With du, haben is hast: du hast gebracht.",
+                    "fr": "Avec du, haben devient hast : du hast gebracht.",
+                    "de": "Zu du gehört hast: du hast gebracht."
+                  }
+                },
+                {
+                  "person": "3sg",
+                  "pronoun": "er / sie / es",
+                  "native": null,
+                  "answer": "hat gebracht",
+                  "answerExplanation": {
+                    "en": "With er, sie, es, haben is hat: er hat gebracht.",
+                    "fr": "Avec er, sie, es, haben devient hat : er hat gebracht.",
+                    "de": "Zu er, sie, es gehört hat: er hat gebracht."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "e7",
+      "role": "exercise",
+      "blockId": "b-mixed",
+      "label": {
+        "en": "Multiple-choice gaps 3",
+        "fr": "Phrases à trous à choix multiple 3",
+        "de": "Lücken mit Auswahl 3"
+      },
+      "pages": [
+        {
+          "pageId": "e7-p1",
+          "estimatedDurationS": 10,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "e7-1",
+              "before": "Sie hat uns frische Brötchen",
+              "after": ".",
+              "choices": [
+                { "choiceId": "c-1", "text": "gebringt" },
+                { "choiceId": "c-2", "text": "gebracht" },
+                { "choiceId": "c-3", "text": "gebrungen" },
+                { "choiceId": "c-4", "text": "gebrangen" }
+              ],
+              "answerChoiceId": "c-2",
+              "hint": { "en": "Verb: bringen", "fr": "Verbe : bringen", "de": "Verb: bringen" },
               "ruleIds": ["rule-mixed"],
               "answerExplanation": {
-                "en": "In a yes/no question the verb comes first and the participle gewusst stays at the end.",
-                "fr": "Dans une question fermée, le verbe vient en premier et le participe gewusst reste à la fin.",
-                "de": "In der Ja-Nein-Frage steht das Verb vorn, das Partizip gewusst bleibt am Ende."
+                "en": "bringen is a mixed verb: gebracht, with -t.",
+                "fr": "bringen est un verbe mixte : gebracht, avec -t.",
+                "de": "bringen ist ein gemischtes Verb: gebracht, mit -t."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "e7-p2",
+          "estimatedDurationS": 10,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "e7-2",
+              "before": "Ich habe lange an den Test",
+              "after": ".",
+              "choices": [
+                { "choiceId": "c-1", "text": "gedenkt" },
+                { "choiceId": "c-2", "text": "gedachen" },
+                { "choiceId": "c-3", "text": "gedacht" },
+                { "choiceId": "c-4", "text": "gedenken" }
+              ],
+              "answerChoiceId": "c-3",
+              "hint": { "en": "Verb: denken", "fr": "Verbe : denken", "de": "Verb: denken" },
+              "ruleIds": ["rule-mixed"],
+              "answerExplanation": {
+                "en": "denken is a mixed verb: gedacht, with -t.",
+                "fr": "denken est un verbe mixte : gedacht, avec -t.",
+                "de": "denken ist ein gemischtes Verb: gedacht, mit -t."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "e7-p3",
+          "estimatedDurationS": 10,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "e7-3",
+              "before": "Das habe ich nicht",
+              "after": ".",
+              "choices": [
+                { "choiceId": "c-1", "text": "gewusst" },
+                { "choiceId": "c-2", "text": "gewisst" },
+                { "choiceId": "c-3", "text": "gewust" },
+                { "choiceId": "c-4", "text": "gewiesen" }
+              ],
+              "answerChoiceId": "c-1",
+              "hint": { "en": "Verb: wissen", "fr": "Verbe : wissen", "de": "Verb: wissen" },
+              "ruleIds": ["rule-mixed"],
+              "answerExplanation": {
+                "en": "wissen is a mixed verb: gewusst, with u and -t.",
+                "fr": "wissen est un verbe mixte : gewusst, avec u et -t.",
+                "de": "wissen ist ein gemischtes Verb: gewusst, mit u und -t."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "e8",
+      "role": "exercise",
+      "blockId": "b-mixed",
+      "label": {
+        "en": "Typed gaps 2",
+        "fr": "Phrases à trous à écrire 2",
+        "de": "Lücken zum Schreiben 2"
+      },
+      "pages": [
+        {
+          "pageId": "e8-p1",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "e8-1",
+              "before": "Mein Bruder hat mir ein Geschenk",
+              "after": ".",
+              "accepted": { "answers": ["gebracht"] },
+              "hint": { "en": "Verb: bringen", "fr": "Verbe : bringen", "de": "Verb: bringen" },
+              "ruleIds": ["rule-mixed"],
+              "answerExplanation": {
+                "en": "bringen is a mixed verb: gebracht.",
+                "fr": "bringen est un verbe mixte : gebracht.",
+                "de": "bringen ist ein gemischtes Verb: gebracht."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "e8-p2",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "e8-2",
+              "before": "Hast du an meinen Geburtstag",
+              "after": "?",
+              "accepted": { "answers": ["gedacht"] },
+              "hint": { "en": "Verb: denken", "fr": "Verbe : denken", "de": "Verb: denken" },
+              "ruleIds": ["rule-mixed"],
+              "answerExplanation": {
+                "en": "denken is a mixed verb: gedacht.",
+                "fr": "denken est un verbe mixte : gedacht.",
+                "de": "denken ist ein gemischtes Verb: gedacht."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "e8-p3",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "e8-3",
+              "before": "Wir haben unsere Nachbarn nicht gut",
+              "after": ".",
+              "accepted": { "answers": ["gekannt"] },
+              "hint": { "en": "Verb: kennen", "fr": "Verbe : kennen", "de": "Verb: kennen" },
+              "ruleIds": ["rule-mixed"],
+              "answerExplanation": {
+                "en": "kennen is a mixed verb: gekannt.",
+                "fr": "kennen est un verbe mixte : gekannt.",
+                "de": "kennen ist ein gemischtes Verb: gekannt."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "e8-p4",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "e8-4",
+              "before": "Er hat die Antwort leider nicht",
+              "after": ".",
+              "accepted": { "answers": ["gewusst"] },
+              "hint": { "en": "Verb: wissen", "fr": "Verbe : wissen", "de": "Verb: wissen" },
+              "ruleIds": ["rule-mixed"],
+              "answerExplanation": {
+                "en": "wissen is a mixed verb: gewusst.",
+                "fr": "wissen est un verbe mixte : gewusst.",
+                "de": "wissen ist ein gemischtes Verb: gewusst."
               }
             }
           ]
@@ -866,65 +1099,65 @@
           "estimatedDurationS": 60,
           "timeLimitS": 100,
           "instructions": {
-            "en": "Answer every item before the time runs out.",
-            "fr": "Répondez à chaque question avant la fin du temps imparti.",
-            "de": "Beantworte jede Aufgabe, bevor die Zeit abläuft."
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
           },
           "items": [
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-strong-1",
-              "before": "Meine Oma hat uns einen langen Brief",
-              "after": ".",
-              "accepted": { "answers": ["geschrieben"] },
+              "before": "Ich habe gestern zu viel Wasser",
+              "after": ". (trinken)",
+              "accepted": { "answers": ["getrunken"] },
               "hint": null,
-              "ruleIds": ["rule-ei-ie"],
+              "ruleIds": ["rule-i-u"],
               "answerExplanation": {
-                "en": "schreiben is strong: ei becomes ie, so the participle is geschrieben.",
-                "fr": "schreiben est fort : ei devient ie, donc le participe est geschrieben.",
-                "de": "schreiben ist stark: ei wird zu ie, das Partizip heißt geschrieben."
+                "en": "trinken changes i to u: getrunken.",
+                "fr": "trinken : le i devient u : getrunken.",
+                "de": "Bei trinken wird i zu u: getrunken."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-strong-2",
-              "before": "Der Chor hat das Lied schön",
-              "after": ".",
-              "accepted": { "answers": ["gesungen"] },
+              "before": "Meine Mutter hat mir eine lange E-Mail",
+              "after": ". (schreiben)",
+              "accepted": { "answers": ["geschrieben"] },
               "hint": null,
-              "ruleIds": ["rule-i-u"],
+              "ruleIds": ["rule-ei-ie"],
               "answerExplanation": {
-                "en": "singen is strong: i becomes u, so the participle is gesungen.",
-                "fr": "singen est fort : i devient u, donc le participe est gesungen.",
-                "de": "singen ist stark: i wird zu u, das Partizip heißt gesungen."
+                "en": "schreiben changes ei to ie: geschrieben.",
+                "fr": "schreiben : ei devient ie : geschrieben.",
+                "de": "Bei schreiben wird ei zu ie: geschrieben."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-strong-3",
-              "before": "Der Pilot hat die Maschine sicher",
-              "after": ".",
-              "accepted": { "answers": ["geflogen"] },
+              "before": "Wir haben lange mit dem Direktor",
+              "after": ". (sprechen)",
+              "accepted": { "answers": ["gesprochen"] },
               "hint": null,
               "ruleIds": ["rule-o"],
               "answerExplanation": {
-                "en": "fliegen is strong and has o in the participle: geflogen.",
-                "fr": "fliegen est fort et a o au participe : geflogen.",
-                "de": "fliegen ist stark und hat o im Partizip: geflogen."
+                "en": "sprechen has an o in the participle: gesprochen.",
+                "fr": "sprechen : le participe contient un o : gesprochen.",
+                "de": "sprechen hat im Partizip ein o: gesprochen."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-strong-4",
-              "before": "Hast du schon ein Stück Kuchen",
-              "after": "?",
-              "accepted": { "answers": ["genommen"] },
+              "before": "Die Kinder haben ein neues Lied",
+              "after": ". (singen)",
+              "accepted": { "answers": ["gesungen"] },
               "hint": null,
-              "ruleIds": ["rule-o"],
+              "ruleIds": ["rule-i-u"],
               "answerExplanation": {
-                "en": "nehmen is strong and has o in the participle: genommen.",
-                "fr": "nehmen est fort et a o au participe : genommen.",
-                "de": "nehmen ist stark und hat o im Partizip: genommen."
+                "en": "singen changes i to u: gesungen.",
+                "fr": "singen : i devient u : gesungen.",
+                "de": "Bei singen wird i zu u: gesungen."
               }
             }
           ]
@@ -932,53 +1165,53 @@
         {
           "pageId": "exam-mixed",
           "estimatedDurationS": 45,
-          "timeLimitS": 75,
+          "timeLimitS": 80,
           "instructions": {
-            "en": "Answer every item before the time runs out.",
-            "fr": "Répondez à chaque question avant la fin du temps imparti.",
-            "de": "Beantworte jede Aufgabe, bevor die Zeit abläuft."
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
           },
           "items": [
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-mixed-1",
-              "before": "Hat er dir die Zeitung",
-              "after": "?",
+              "before": "Der Kellner hat uns die Rechnung",
+              "after": ". (bringen)",
               "accepted": { "answers": ["gebracht"] },
               "hint": null,
               "ruleIds": ["rule-mixed"],
               "answerExplanation": {
-                "en": "bringen is a mixed verb: the participle is gebracht.",
-                "fr": "bringen est un verbe mixte : le participe est gebracht.",
-                "de": "bringen ist ein gemischtes Verb: Das Partizip heißt gebracht."
+                "en": "bringen is a mixed verb: gebracht.",
+                "fr": "bringen est un verbe mixte : gebracht.",
+                "de": "bringen ist ein gemischtes Verb: gebracht."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-mixed-2",
-              "before": "Daran habe ich gar nicht",
-              "after": ".",
+              "before": "Ich habe heute Morgen an meine Oma",
+              "after": ". (denken)",
               "accepted": { "answers": ["gedacht"] },
               "hint": null,
               "ruleIds": ["rule-mixed"],
               "answerExplanation": {
-                "en": "denken is a mixed verb: the participle is gedacht.",
-                "fr": "denken est un verbe mixte : le participe est gedacht.",
-                "de": "denken ist ein gemischtes Verb: Das Partizip heißt gedacht."
+                "en": "denken is a mixed verb: gedacht.",
+                "fr": "denken est un verbe mixte : gedacht.",
+                "de": "denken ist ein gemischtes Verb: gedacht."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-mixed-3",
-              "before": "Ich habe diese Stadt früher gut",
-              "after": ".",
-              "accepted": { "answers": ["gekannt"] },
+              "before": "Wir haben die Lösung leider nicht",
+              "after": ". (wissen)",
+              "accepted": { "answers": ["gewusst"] },
               "hint": null,
               "ruleIds": ["rule-mixed"],
               "answerExplanation": {
-                "en": "kennen is a mixed verb: e becomes a, so the participle is gekannt.",
-                "fr": "kennen est un verbe mixte : e devient a, donc le participe est gekannt.",
-                "de": "kennen ist ein gemischtes Verb: e wird zu a, das Partizip heißt gekannt."
+                "en": "wissen is a mixed verb: gewusst.",
+                "fr": "wissen est un verbe mixte : gewusst.",
+                "de": "wissen ist ein gemischtes Verb: gewusst."
               }
             }
           ]
@@ -988,68 +1221,66 @@
           "estimatedDurationS": 60,
           "timeLimitS": 100,
           "instructions": {
-            "en": "Answer every item before the time runs out.",
-            "fr": "Répondez à chaque question avant la fin du temps imparti.",
-            "de": "Beantworte jede Aufgabe, bevor die Zeit abläuft."
+            "en": "Put the words in the right order.",
+            "fr": "Mettez les mots dans le bon ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
             {
               "type": "grammar_word_order",
               "itemId": "exam-order-1",
               "tokens": [
-                { "tokenId": "t-1", "text": "geschrieben" },
-                { "tokenId": "t-2", "text": "Er" },
-                { "tokenId": "t-3", "text": "einen" },
-                { "tokenId": "t-4", "text": "hat" },
-                { "tokenId": "t-5", "text": "gestern" },
-                { "tokenId": "t-6", "text": "Brief" },
-                { "tokenId": "t-7", "text": "." }
+                { "tokenId": "t-1", "text": "?" },
+                { "tokenId": "t-2", "text": "Brief" },
+                { "tokenId": "t-3", "text": "geschrieben" },
+                { "tokenId": "t-4", "text": "Hast" },
+                { "tokenId": "t-5", "text": "den" },
+                { "tokenId": "t-6", "text": "du" }
               ],
-              "acceptedOrders": [["t-2", "t-4", "t-5", "t-3", "t-6", "t-1", "t-7"]],
+              "acceptedOrders": [["t-4", "t-6", "t-5", "t-2", "t-3", "t-1"]],
               "ruleIds": ["rule-ei-ie"],
               "answerExplanation": {
-                "en": "hat is in second place, the participle geschrieben at the end.",
-                "fr": "hat est en deuxième position, le participe geschrieben à la fin.",
-                "de": "hat steht an zweiter Stelle, das Partizip geschrieben am Ende."
+                "en": "The verb hast comes first and the participle geschrieben stands at the end.",
+                "fr": "Le verbe hast vient en premier et le participe geschrieben se place à la fin.",
+                "de": "Das Verb hast steht an erster Stelle und das Partizip geschrieben am Ende."
               }
             },
             {
               "type": "grammar_word_order",
               "itemId": "exam-order-2",
               "tokens": [
-                { "tokenId": "t-1", "text": "getrunken" },
-                { "tokenId": "t-2", "text": "Wir" },
-                { "tokenId": "t-3", "text": "nur" },
-                { "tokenId": "t-4", "text": "haben" },
-                { "tokenId": "t-5", "text": "Wasser" },
-                { "tokenId": "t-6", "text": "." }
+                { "tokenId": "t-1", "text": "lange" },
+                { "tokenId": "t-2", "text": "?" },
+                { "tokenId": "t-3", "text": "Hat" },
+                { "tokenId": "t-4", "text": "gesprochen" },
+                { "tokenId": "t-5", "text": "der" },
+                { "tokenId": "t-6", "text": "Lehrer" }
               ],
-              "acceptedOrders": [["t-2", "t-4", "t-3", "t-5", "t-1", "t-6"]],
-              "ruleIds": ["rule-i-u"],
+              "acceptedOrders": [["t-3", "t-5", "t-6", "t-1", "t-4", "t-2"]],
+              "ruleIds": ["rule-o"],
               "answerExplanation": {
-                "en": "haben is in second place, the participle getrunken at the end.",
-                "fr": "haben est en deuxième position, le participe getrunken à la fin.",
-                "de": "haben steht an zweiter Stelle, das Partizip getrunken am Ende."
+                "en": "The verb hat comes first and the participle gesprochen stands at the end.",
+                "fr": "Le verbe hat vient en premier et le participe gesprochen se place à la fin.",
+                "de": "Das Verb hat steht an erster Stelle und das Partizip gesprochen am Ende."
               }
             },
             {
               "type": "grammar_word_order",
               "itemId": "exam-order-3",
               "tokens": [
-                { "tokenId": "t-1", "text": "gewusst" },
-                { "tokenId": "t-2", "text": "Sie" },
-                { "tokenId": "t-3", "text": "die" },
+                { "tokenId": "t-1", "text": "gebracht" },
+                { "tokenId": "t-2", "text": "Paket" },
+                { "tokenId": "t-3", "text": "?" },
                 { "tokenId": "t-4", "text": "hat" },
-                { "tokenId": "t-5", "text": "nicht" },
-                { "tokenId": "t-6", "text": "Antwort" },
-                { "tokenId": "t-7", "text": "." }
+                { "tokenId": "t-5", "text": "Wer" },
+                { "tokenId": "t-6", "text": "das" }
               ],
-              "acceptedOrders": [["t-2", "t-4", "t-3", "t-6", "t-5", "t-1", "t-7"]],
+              "acceptedOrders": [["t-5", "t-4", "t-6", "t-2", "t-1", "t-3"]],
               "ruleIds": ["rule-mixed"],
               "answerExplanation": {
-                "en": "hat is in second place, the participle gewusst at the end.",
-                "fr": "hat est en deuxième position, le participe gewusst à la fin.",
-                "de": "hat steht an zweiter Stelle, das Partizip gewusst am Ende."
+                "en": "After the question word comes hat, and the participle gebracht stands at the end.",
+                "fr": "Après le mot interrogatif vient hat, et le participe gebracht se place à la fin.",
+                "de": "Nach dem Fragewort steht hat, und das Partizip gebracht steht am Ende."
               }
             }
           ]

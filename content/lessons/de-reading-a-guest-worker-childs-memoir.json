@@ -1,0 +1,402 @@
+{
+  "schemaVersion": 2,
+  "id": "de-reading-a-guest-worker-childs-memoir",
+  "lang": "de",
+  "level": "C1",
+  "locales": ["en", "fr", "de"],
+  "title": "Erinnerungen eines Gastarbeiterkindes lesen",
+  "objective": {
+    "en": "Read memories of a childhood as the daughter of Turkish guest workers and infer shame, pride and alienation from what is shown rather than said.",
+    "fr": "Lire des souvenirs d’une enfance de fille de travailleurs turcs et deviner honte, fierté et étrangeté à partir de ce qui est montré plutôt que dit.",
+    "de": "Erinnerungen einer Tochter türkischer Gastarbeiter lesen und Scham, Stolz und Fremdheit aus dem erschließen, was gezeigt statt gesagt wird."
+  },
+  "estimatedMinutes": 12,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:37:15.451Z",
+    "inputHashes": {
+      "outline": "311160f01251e5f44af05ab1d522da2d7b9597e1529cc252762f9ccc0d993fbe",
+      "brief": "4ccd32408a7f78227f0135a8f0cd41a0a532353cc359273b2869137bf0d2ce11"
+    }
+  },
+  "kind": "reading",
+  "theme": "personal_identification",
+  "genre": "other",
+  "documents": [
+    {
+      "documentId": "main",
+      "title": "Zwei Schritte hinter meinen Eltern",
+      "meta": ["Aus den Erinnerungen von Hülya Demir", "Köln-Kalk, 1976"],
+      "paragraphs": [
+        "Jeden Morgen packte meine Mutter mir zwei Brote ein, mit Schafskäse und Gurke, in Pergamentpapier gewickelt. In der Schule aß ich sie auf der Toilette. Die anderen Kinder hatten Leberwurst und Äpfel, und wenn Frau Behrens fragte, warum ich in der Pause nie im Klassenzimmer bleibe, sagte ich, ich müsse noch Hausaufgaben abschreiben. Nie hat jemand mich gezwungen, mein Brot zu verstecken. Ich habe es einfach getan, so selbstverständlich, wie man den Mantel an die Garderobe hängt.",
+        "Am Elternabend trug mein Vater seinen einzigen Anzug, den dunkelblauen von der Hochzeit meines Onkels. Er setzte sich in die letzte Reihe und hielt seine Mütze auf den Knien, als wartete er auf einen Bescheid. Ich saß neben ihm und studierte die Maserung des Tisches. Als Frau Behrens ihn ansprach, langsam und laut, als sei er schwerhörig, nickte er zu jedem Satz. Auf dem Heimweg ging ich zwei Schritte hinter meinen Eltern, damit niemand uns für eine Familie hielt. Mein Vater sagte nichts. Er verlangsamte nur seinen Schritt, bis ich wieder neben ihm war, und legte mir, ohne mich anzusehen, die Hand auf den Kopf.",
+        "Zu Hause war es anders. Dort war meine Mutter eine Frau, die den ganzen Block mit ihrem Lachen weckte, die Nachbarinnen aus drei Stockwerken zum Tee einlud und Geschichten aus Kayseri erzählte, bei denen sich alle die Bäuche hielten. Auf dem Amt dagegen sagte sie nur „Ja“ und „Danke“, und ich, acht Jahre alt, übersetzte, was sie gern gesagt hätte. Ich lernte früh, welche Wörter einen Beamten freundlich stimmen und welche nicht. Ich war stolz darauf, das gebe ich zu, auf eine Art, die sich anfühlte wie ein schlecht sitzender Schuh: Ich war die Einzige, die das konnte, und wünschte mir trotzdem, ich müsste es nicht können.",
+        "Im Sommer 1976 fuhren wir zum ersten Mal mit dem Auto in die Türkei, zwei Tage und zwei Nächte, den Kofferraum voller Geschenke. An der Grenze zeigte mein Vater seinen Pass mit gerader Haltung, wie jemand, der nichts zu verbergen hat. In Kayseri riefen die Cousinen mich „Almancı“, die Deutsche, und lachten über meinen Akzent, wenn ich Türkisch sprach. Ich lachte mit, weil ich nicht wusste, was ich sonst tun sollte. Abends lag ich auf dem Dach, zwischen den Matratzen, und fragte mich, in welcher Sprache man eigentlich träumt, wenn man in keiner ganz zu Hause ist.",
+        "Wenn ich heute in der Straßenbahn Kinder sehe, die ihr Pausenbrot auf der Toilette essen, erkenne ich sie sofort. Meine Mutter fragte mich einmal, Jahre später, warum ich als Kind nie jemanden zum Spielen mitgebracht habe. Ich sagte, ich hätte keine Zeit gehabt. Sie nickte und stellte mir ein Glas Tee hin, wie sie es immer tat, wenn sie etwas verstand, das sie nicht aussprechen wollte."
+      ],
+      "highlights": [
+        { "keywordId": "verstecken", "text": "verstecken" },
+        { "keywordId": "schwerhoerig", "text": "schwerhörig" },
+        { "keywordId": "haltung", "text": "Haltung" },
+        { "keywordId": "uebersetzen", "text": "übersetzte" },
+        { "keywordId": "aussprechen", "text": "aussprechen" }
+      ]
+    },
+    {
+      "documentId": "exam",
+      "title": null,
+      "meta": ["Aus den Erinnerungen von Mehmet Aksoy", "Wolfsburg, 1973"],
+      "paragraphs": [
+        "Mein Vater arbeitete am Band im Volkswagenwerk, und er wusch sich jeden Abend die Hände so gründlich, als wolle er das Werk aus seiner Haut schrubben. Sonntags aber, auf dem Weg zur Kirmes, zog er sein weißes Hemd an und kämmte sich zweimal. Ich ging neben ihm her, aufrecht, und sah mich um, ob uns jemand beobachtete.",
+        "Am Schießstand gewann er für mich einen Plüschbären. Der Budenbesitzer sagte etwas zu seinem Kollegen und lachte, und mein Vater, der jedes Wort verstanden hatte, bedankte sich höflich, als wäre nichts gewesen. Den Bären trug ich den ganzen Abend im Arm. Erst zu Hause stellte ich fest, dass ich ihn nicht mehr mochte.",
+        "Herr Krüger von nebenan, der uns jahrelang nur mit einem knappen Nicken grüßte, stand am nächsten Morgen an der Gartenhecke. Er fragte, ob mein Vater sich mal sein Moped ansehen könne, es springe nicht an. Zwanzig Minuten später lagen beide auf dem Pflaster, und die Teile des Motors breiteten sich vor ihnen aus wie ein Puzzle. Als es knatterte, klopfte Herr Krüger meinem Vater auf die Schulter. Mein Vater lächelte, zum ersten Mal seit Tagen.",
+        "Beim Abendessen sagte meine Mutter: „Siehst du, sie sind nicht alle so.“ Mein Vater schwieg, schob den Reis auf seinem Teller hin und her und sagte schließlich, Krüger habe ihn Herr Aksoy genannt. Zum ersten Mal. Ich merkte, dass er diesen Satz schon den ganzen Tag mit sich herumtrug."
+      ],
+      "highlights": []
+    }
+  ],
+  "steps": [
+    {
+      "id": "flashcards",
+      "stage": "flashcards",
+      "role": "exercise",
+      "label": { "en": "Flashcards", "fr": "Cartes mémoire", "de": "Karteikarten" },
+      "pages": [
+        {
+          "pageId": "flashcards",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Turn each card to learn the key words of the text.",
+            "fr": "Retournez chaque carte pour découvrir les mots clés du texte.",
+            "de": "Dreh jede Karte um und lerne die Schlüsselwörter des Textes."
+          },
+          "items": [
+            {
+              "type": "reading_flashcards",
+              "itemId": "cards",
+              "keywordIds": ["verstecken", "schwerhoerig", "haltung", "uebersetzen", "aussprechen"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matching",
+      "stage": "matching",
+      "role": "exercise",
+      "label": { "en": "Matching", "fr": "Association", "de": "Zuordnen" },
+      "pages": [
+        {
+          "pageId": "matching",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each key word with its meaning.",
+            "fr": "Associez chaque mot clé à son sens.",
+            "de": "Ordne jedem Schlüsselwort seine Bedeutung zu."
+          },
+          "items": [
+            {
+              "type": "reading_keyword_matching",
+              "itemId": "matching",
+              "keywordIds": ["verstecken", "schwerhoerig", "haltung", "uebersetzen", "aussprechen"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skim",
+      "stage": "skim",
+      "role": "exercise",
+      "label": { "en": "Skim", "fr": "Survol", "de": "Überfliegen" },
+      "pages": [
+        {
+          "pageId": "skim",
+          "estimatedDurationS": 210,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Look over the document quickly. When the time is up it is put away; then answer the question.",
+            "fr": "Parcourez rapidement le document. À la fin du temps, il disparaît ; répondez ensuite à la question.",
+            "de": "Überfliege das Dokument. Wenn die Zeit um ist, verschwindet es; beantworte dann die Frage."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "skim-document",
+              "documentId": "main",
+              "view": "skim",
+              "skimSeconds": 190
+            },
+            {
+              "type": "reading_skim_choice",
+              "itemId": "skim-question",
+              "focus": "author",
+              "question": "Wer schreibt hier, und woran erinnert sich die Autorin?",
+              "options": [
+                { "optionId": "o1", "text": "Eine Lehrerin erinnert sich an ihre Schüler." },
+                {
+                  "optionId": "o2",
+                  "text": "Eine Journalistin schreibt über Gastarbeiter in Köln."
+                },
+                {
+                  "optionId": "o3",
+                  "text": "Eine Frau erinnert sich an ihre Kindheit als Tochter türkischer Eltern in Deutschland."
+                },
+                {
+                  "optionId": "o4",
+                  "text": "Eine Touristin berichtet von ihrer Reise in die Türkei."
+                }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "The text is told in the first person (meine Mutter, mein Vater) and looks back on a childhood in 1970s Germany with Turkish parents.",
+                "fr": "Le texte est à la première personne (meine Mutter, mein Vater) et évoque une enfance dans l’Allemagne des années 1970 avec des parents turcs.",
+                "de": "Der Text ist in der Ich-Form erzählt (meine Mutter, mein Vater) und blickt auf eine Kindheit mit türkischen Eltern im Deutschland der 1970er Jahre zurück."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "detail",
+      "stage": "detail",
+      "role": "exercise",
+      "label": { "en": "Detail", "fr": "Détails", "de": "Details" },
+      "pages": [
+        {
+          "pageId": "detail",
+          "estimatedDurationS": 120,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the document carefully and answer the questions.",
+            "fr": "Lisez le document attentivement et répondez aux questions.",
+            "de": "Lies das Dokument genau und beantworte die Fragen."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "detail-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-brot",
+              "question": "Warum isst die Erzählerin ihre Brote auf der Toilette?",
+              "options": [
+                { "optionId": "o1", "text": "Sie hat in der Pause keinen Hunger." },
+                { "optionId": "o2", "text": "Frau Behrens hat es ihr verboten." },
+                { "optionId": "o3", "text": "Sie will nicht, dass die anderen ihr Essen sehen." },
+                { "optionId": "o4", "text": "Sie braucht Ruhe für ihre Hausaufgaben." }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "Nobody forces her; she hides the bread because her sandwiches differ from the others’ and she is ashamed. The homework is only an excuse.",
+                "fr": "Personne ne l’y force ; elle cache son pain parce qu’il diffère de celui des autres et qu’elle a honte. Les devoirs ne sont qu’une excuse.",
+                "de": "Niemand zwingt sie; sie versteckt das Brot, weil es anders ist als das der anderen und sie sich schämt. Die Hausaufgaben sind nur eine Ausrede."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-vater",
+              "question": "Was zeigt die Hand des Vaters auf dem Kopf der Tochter?",
+              "options": [
+                { "optionId": "o1", "text": "Er ist wütend, dass sie hinter ihm geht." },
+                {
+                  "optionId": "o2",
+                  "text": "Er versteht, wie sie sich fühlt, und tröstet sie wortlos."
+                },
+                { "optionId": "o3", "text": "Er will, dass sie schneller geht." },
+                { "optionId": "o4", "text": "Er möchte sie für ihre Noten loben." }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "He says nothing but slows down until she is beside him again: a silent gesture that shows he understands her shame.",
+                "fr": "Il ne dit rien mais ralentit jusqu’à ce qu’elle soit de nouveau à côté de lui : un geste silencieux qui montre qu’il comprend sa honte.",
+                "de": "Er sagt nichts, wird aber langsamer, bis sie wieder neben ihm ist: eine stumme Geste, die zeigt, dass er ihre Scham versteht."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "q-amt",
+              "statement": "Die Mutter wirkt zu Hause und auf dem Amt gleich selbstsicher.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: at home she is loud and merry, at the office she says only „Ja“ and „Danke“ and the child has to speak for her.",
+                "fr": "Faux : à la maison elle est bruyante et joyeuse, à l’administration elle ne dit que « Ja » et « Danke » et l’enfant doit parler pour elle.",
+                "de": "Falsch: Zu Hause ist sie laut und fröhlich, auf dem Amt sagt sie nur „Ja“ und „Danke“, und das Kind muss für sie sprechen."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-reise",
+              "question": "Wie reagiert die Erzählerin, als die Cousinen über ihren Akzent lachen?",
+              "options": [
+                { "optionId": "o1", "text": "Sie wird wütend und schweigt." },
+                { "optionId": "o2", "text": "Sie lacht mit, obwohl sie unsicher ist." },
+                { "optionId": "o3", "text": "Sie spricht von da an nur noch Deutsch." },
+                { "optionId": "o4", "text": "Sie erklärt, Deutsch sei ihre Muttersprache." }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "She laughs along because she does not know what else to do: in Germany and in Turkey she feels she does not fully belong.",
+                "fr": "Elle rit avec elles parce qu’elle ne sait pas quoi faire d’autre : en Allemagne comme en Turquie, elle sent qu’elle n’appartient pas tout à fait.",
+                "de": "Sie lacht mit, weil sie nicht weiß, was sie sonst tun soll: In Deutschland wie in der Türkei fühlt sie sich nicht ganz zugehörig."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "structure",
+      "stage": "structure",
+      "role": "exercise",
+      "label": { "en": "Structure", "fr": "Structure", "de": "Aufbau" },
+      "pages": [
+        {
+          "pageId": "structure",
+          "estimatedDurationS": 75,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the scenes in the order the text tells them, from first to last.",
+            "fr": "Remettez les scènes dans l’ordre où le texte les raconte, de la première à la dernière.",
+            "de": "Bring die Szenen in die Reihenfolge, in der der Text sie erzählt."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "structure-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_order",
+              "itemId": "order",
+              "pieces": [
+                { "pieceId": "p3", "text": "Das Kind übersetzt für die Mutter auf dem Amt." },
+                { "pieceId": "p5", "text": "Jahre später stellt die Mutter wortlos Tee hin." },
+                { "pieceId": "p1", "text": "Die Brote werden auf der Toilette gegessen." },
+                { "pieceId": "p4", "text": "Die Cousinen lachen über den Akzent." },
+                { "pieceId": "p2", "text": "Die Familie geht vom Elternabend nach Hause." }
+              ],
+              "acceptedOrders": [["p1", "p2", "p3", "p4", "p5"]],
+              "answerExplanation": {
+                "en": "Order of the text: school lunch, parents’ evening and walk home, the office, the journey to Turkey in 1976, and finally the conversation with the mother years later.",
+                "fr": "Ordre du texte : le repas à l’école, la réunion de parents et le retour, l’administration, le voyage en Turquie en 1976, enfin la conversation avec la mère des années plus tard.",
+                "de": "Reihenfolge im Text: Pausenbrot, Elternabend und Heimweg, das Amt, die Reise in die Türkei 1976 und zuletzt das Gespräch mit der Mutter Jahre später."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "stage": "exam",
+      "role": "exam",
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam",
+          "estimatedDurationS": 197,
+          "timeLimitS": 300,
+          "instructions": {
+            "en": "Read the new document and answer the questions. No help this time.",
+            "fr": "Lisez le nouveau document et répondez aux questions. Cette fois, sans aide.",
+            "de": "Lies das neue Dokument und beantworte die Fragen. Diesmal ohne Hilfe."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "exam-document",
+              "documentId": "exam",
+              "view": "exam",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-reaktion",
+              "question": "Wie verhält sich der Vater nach der Bemerkung des Budenbesitzers?",
+              "options": [
+                { "optionId": "o1", "text": "Er versteht sie nicht und lächelt." },
+                { "optionId": "o2", "text": "Er verlangt eine Entschuldigung." },
+                { "optionId": "o3", "text": "Er versteht sie, bleibt aber höflich und ruhig." },
+                { "optionId": "o4", "text": "Er verlässt wütend den Schießstand." }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "He had understood every word, yet thanks the man politely as if nothing had happened: dignity instead of anger.",
+                "fr": "Il avait compris chaque mot, mais remercie poliment comme si de rien n’était : de la dignité plutôt que de la colère.",
+                "de": "Er hatte jedes Wort verstanden, bedankt sich aber höflich, als wäre nichts gewesen: Würde statt Wut."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "x-baer",
+              "statement": "Am Ende des Abends freut sich der Erzähler noch immer über den Plüschbären.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: at home he realises he no longer likes the bear; the remark has spoiled the present for him.",
+                "fr": "Faux : à la maison il constate qu’il n’aime plus l’ours ; la remarque lui a gâché le cadeau.",
+                "de": "Falsch: Zu Hause merkt er, dass er den Bären nicht mehr mag; die Bemerkung hat ihm das Geschenk verdorben."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-krueger",
+              "question": "Was möchte Herr Krüger am nächsten Morgen vom Vater?",
+              "options": [
+                { "optionId": "o1", "text": "Er soll sein Moped reparieren." },
+                { "optionId": "o2", "text": "Er soll leiser sein." },
+                { "optionId": "o3", "text": "Er soll mit ihm zur Kirmes gehen." },
+                { "optionId": "o4", "text": "Er soll ihm Arbeit im Werk besorgen." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "He asks whether the father could look at his moped, which will not start.",
+                "fr": "Il demande si le père peut regarder son mobylette, qui ne démarre pas.",
+                "de": "Er fragt, ob der Vater sich sein Moped ansehen könne, das nicht anspringt."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-anrede",
+              "question": "Warum trägt der Vater den Satz „Herr Aksoy“ den ganzen Tag mit sich herum?",
+              "options": [
+                { "optionId": "o1", "text": "Er mag seinen Nachnamen nicht." },
+                { "optionId": "o2", "text": "Er hat Krüger nicht richtig verstanden." },
+                { "optionId": "o3", "text": "Er will den Namen vergessen." },
+                { "optionId": "o4", "text": "Die respektvolle Anrede bedeutet ihm viel." }
+              ],
+              "answerOptionId": "o4",
+              "answerExplanation": {
+                "en": "After years of curt nods, being called „Herr Aksoy“ is recognition; he keeps thinking about it and only mentions it at dinner.",
+                "fr": "Après des années de hochements de tête secs, être appelé « Herr Aksoy » est une marque de reconnaissance ; il y repense et n’en parle qu’au dîner.",
+                "de": "Nach Jahren knapper Nicker ist „Herr Aksoy“ eine Anerkennung; er denkt daran und erwähnt es erst beim Abendessen."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "x-mutter",
+              "statement": "Die Mutter sieht in Herrn Krügers Verhalten ein Zeichen dafür, dass nicht alle Nachbarn abweisend sind.",
+              "answer": "true",
+              "answerExplanation": {
+                "en": "True: her remark „Siehst du, sie sind nicht alle so“ says exactly that.",
+                "fr": "Vrai : sa remarque « Siehst du, sie sind nicht alle so » dit exactement cela.",
+                "de": "Richtig: Ihr Satz „Siehst du, sie sind nicht alle so“ sagt genau das."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

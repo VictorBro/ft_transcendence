@@ -6,60 +6,64 @@
   "locales": ["en", "fr", "de"],
   "title": "Wie fühlst du dich?",
   "objective": {
-    "en": "Say how you feel with about ten adjectives.",
-    "fr": "Dire comment on se sent avec une dizaine d’adjectifs.",
-    "de": "Mit etwa zehn Adjektiven sagen, wie man sich fühlt."
+    "en": "Say how you feel with about ten adjectives: gut, müde, froh, hungrig.",
+    "fr": "Dire comment on se sent avec une dizaine d’adjectifs : gut, müde, froh, hungrig.",
+    "de": "Mit etwa zehn Adjektiven sagen, wie man sich fühlt: gut, müde, froh, hungrig."
   },
   "estimatedMinutes": 16,
   "provenance": {
     "generator": "ft lessons:author",
     "model": "sonnet",
-    "promptVersion": "author-2",
-    "generatedAt": "2026-11-01T20:15:31.030Z",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:23:04.437Z",
     "inputHashes": { "outline": "5f1870f3758bd548424d6f1df40ac8fcc36c72b0d46aaf76d160fff1981c198e" }
   },
   "kind": "vocabulary",
   "theme": "personal_identification",
   "coverageNotes": {
-    "en": "Ten adjectives for feelings and physical states: good, great, bad, happy, sad, tired, awake, hungry, thirsty, full.",
-    "fr": "Dix adjectifs pour les sentiments et les états physiques : bien, super, mal, content, triste, fatigué, éveillé, affamé, assoiffé, rassasié.",
-    "de": "Zehn Adjektive für Gefühle und körperliche Zustände: gut, prima, schlecht, froh, traurig, müde, wach, hungrig, durstig, satt."
+    "en": "Ten common adjectives for feelings and physical states at A1: general well-being (gut, prima, schlecht), energy (müde, wach), mood (froh, traurig) and needs (hungrig, durstig, satt).",
+    "fr": "Dix adjectifs courants pour les sentiments et les états physiques au niveau A1 : le bien-être (gut, prima, schlecht), l’énergie (müde, wach), l’humeur (froh, traurig) et les besoins (hungrig, durstig, satt).",
+    "de": "Zehn häufige Adjektive für Gefühle und körperliche Zustände auf A1: Wohlbefinden (gut, prima, schlecht), Energie (müde, wach), Stimmung (froh, traurig) und Bedürfnisse (hungrig, durstig, satt)."
   },
   "targetCount": 10,
   "countRationale": {
-    "en": "Ten words fit the A1 intent and give two groups of five.",
-    "fr": "Dix mots correspondent à l’intention A1 et donnent deux groupes de cinq.",
-    "de": "Zehn Wörter passen zur A1-Absicht und ergeben zwei Gruppen mit je fünf Wörtern."
+    "en": "Ten words fit the intent of about ten adjectives and make two groups of five.",
+    "fr": "Dix mots correspondent à l’intention d’une dizaine d’adjectifs et forment deux groupes de cinq.",
+    "de": "Zehn Wörter entsprechen der Vorgabe von etwa zehn Adjektiven und ergeben zwei Fünfergruppen."
   },
   "difficultyBalance": {
-    "en": "Mostly core words; traurig and durstig are harder to spell and pronounce.",
-    "fr": "Surtout des mots de base ; traurig et durstig sont plus difficiles à écrire et à prononcer.",
-    "de": "Meist Grundwörter; traurig und durstig sind schwieriger zu schreiben und auszusprechen."
+    "en": "All words are short and frequent; satt and froh are the least obvious for learners.",
+    "fr": "Tous les mots sont courts et fréquents ; satt et froh sont les moins évidents pour les apprenants.",
+    "de": "Alle Wörter sind kurz und häufig; satt und froh sind für Lernende am wenigsten offensichtlich."
   },
   "prerequisites": [],
   "groups": [
     {
-      "id": "stimmung",
+      "id": "befinden",
       "label": {
-        "en": "Mood and general state",
-        "fr": "Humeur et état général",
-        "de": "Stimmung und Befinden"
+        "en": "Well-being and energy",
+        "fr": "Bien-être et énergie",
+        "de": "Wohlbefinden und Energie"
       },
-      "targetIds": ["gut", "prima", "schlecht", "froh", "traurig"],
+      "targetIds": ["gut", "prima", "schlecht", "muede", "wach"],
       "introduction": {
-        "en": "Use these words to say **how you feel**:\n\n- `Es geht mir gut.`\n- `Es geht mir prima.`\n- `Es geht mir schlecht.`\n- `Ich bin froh.`\n- `Ich bin traurig.`",
-        "fr": "Avec ces mots, vous dites **comment vous vous sentez** :\n\n- `Es geht mir gut.`\n- `Es geht mir prima.`\n- `Es geht mir schlecht.`\n- `Ich bin froh.`\n- `Ich bin traurig.`",
-        "de": "Mit diesen Wörtern sagst du, **wie es dir geht**:\n\n- `Es geht mir gut.`\n- `Es geht mir prima.`\n- `Es geht mir schlecht.`\n- `Ich bin froh.`\n- `Ich bin traurig.`"
+        "en": "Say how you feel with **es geht mir** or **ich bin** and an adjective: `Es geht mir gut.` `Ich bin müde.`\n\n- `gut`: good, well\n- `prima`: great\n- `schlecht`: bad\n- `müde`: tired\n- `wach`: awake",
+        "fr": "Dites comment vous vous sentez avec **es geht mir** ou **ich bin** et un adjectif : `Es geht mir gut.` `Ich bin müde.`\n\n- `gut` : bien\n- `prima` : super\n- `schlecht` : mal, mauvais\n- `müde` : fatigué\n- `wach` : éveillé",
+        "de": "Sag mit **es geht mir** oder **ich bin** und einem Adjektiv, wie du dich fühlst: `Es geht mir gut.` `Ich bin müde.`\n\n- `gut`: nicht schlecht, in Ordnung\n- `prima`: sehr gut\n- `schlecht`: nicht gut\n- `müde`: man möchte schlafen\n- `wach`: nicht mehr im Schlaf"
       }
     },
     {
-      "id": "koerper",
-      "label": { "en": "Body and needs", "fr": "Corps et besoins", "de": "Körper und Bedürfnisse" },
-      "targetIds": ["muede", "wach", "hungrig", "durstig", "satt"],
+      "id": "stimmung",
+      "label": {
+        "en": "Mood and needs",
+        "fr": "Humeur et besoins",
+        "de": "Stimmung und Bedürfnisse"
+      },
+      "targetIds": ["froh", "traurig", "hungrig", "durstig", "satt"],
       "introduction": {
-        "en": "Your body also tells you **how you are**:\n\n- `Ich bin müde.`\n- `Ich bin wach.`\n- `Ich bin hungrig.`\n- `Ich bin durstig.`\n- `Ich bin satt.`",
-        "fr": "Votre corps dit aussi **comment vous allez** :\n\n- `Ich bin müde.`\n- `Ich bin wach.`\n- `Ich bin hungrig.`\n- `Ich bin durstig.`\n- `Ich bin satt.`",
-        "de": "Auch dein Körper sagt dir, **wie du dich fühlst**:\n\n- `Ich bin müde.`\n- `Ich bin wach.`\n- `Ich bin hungrig.`\n- `Ich bin durstig.`\n- `Ich bin satt.`"
+        "en": "These adjectives describe your mood and your body, always with **ich bin**: `Ich bin froh.` `Ich bin hungrig.`\n\n- `froh`: happy, glad\n- `traurig`: sad\n- `hungrig`: hungry\n- `durstig`: thirsty\n- `satt`: full, no longer hungry",
+        "fr": "Ces adjectifs décrivent l’humeur et le corps, toujours avec **ich bin** : `Ich bin froh.` `Ich bin hungrig.`\n\n- `froh` : content\n- `traurig` : triste\n- `hungrig` : qui a faim\n- `durstig` : qui a soif\n- `satt` : rassasié, qui n’a plus faim",
+        "de": "Diese Adjektive beschreiben Stimmung und Körper, immer mit **ich bin**: `Ich bin froh.` `Ich bin hungrig.`\n\n- `froh`: sich freuen\n- `traurig`: nicht fröhlich\n- `hungrig`: man möchte essen\n- `durstig`: man möchte trinken\n- `satt`: man möchte nicht mehr essen"
       }
     }
   ],
@@ -75,33 +79,33 @@
       "examForms": ["gut"],
       "articleException": null,
       "genderVariants": [],
-      "pronunciation": "/guːt/",
+      "pronunciation": "/ɡuːt/",
       "difficulty": "core",
       "context": {
-        "sentence": "Es geht mir gut.",
-        "translation": { "en": "I am doing well.", "fr": "Je vais bien." }
+        "sentence": "Danke, es geht mir gut.",
+        "translation": { "en": "Thanks, I am well.", "fr": "Merci, je vais bien." }
       },
       "ambiguityNote": null,
       "explanation": {
         "en": "Gut means good or well: Es geht mir gut.",
-        "fr": "Gut signifie « bien » : Es geht mir gut.",
-        "de": "Gut bedeutet, dass es einem nicht schlecht geht: Es geht mir gut."
+        "fr": "Gut signifie bien : Es geht mir gut.",
+        "de": "Gut heißt, dass alles in Ordnung ist: Es geht mir gut."
       },
       "genderExplanation": null,
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Es geht mir ",
+        "before": "Danke, es geht mir ",
         "after": ".",
         "accepted": { "answers": ["gut"] },
-        "referenceTargetIds": ["gut", "muede", "hungrig", "durstig"],
+        "referenceTargetIds": ["gut", "traurig", "hungrig", "wach"],
         "explanation": {
-          "en": "Only gut fits after Es geht mir.",
-          "fr": "Seul « gut » convient après Es geht mir.",
-          "de": "Nur „gut“ passt nach Es geht mir."
+          "en": "After „es geht mir“ only gut fits here.",
+          "fr": "Après « es geht mir », seul gut convient ici.",
+          "de": "Nach „es geht mir“ passt hier nur gut."
         }
       },
-      "listeningOptionTargetIds": ["gut", "satt", "wach", "froh"]
+      "listeningOptionTargetIds": ["gut", "prima", "schlecht", "satt"]
     },
     {
       "id": "prima",
@@ -114,7 +118,7 @@
       "examForms": ["prima"],
       "articleException": null,
       "genderVariants": [],
-      "pronunciation": "/ˈpʁiːma/",
+      "pronunciation": "/ˈpriːma/",
       "difficulty": "core",
       "context": {
         "sentence": "Mir geht es prima!",
@@ -122,30 +126,30 @@
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "Prima means great, even better than gut.",
-        "fr": "Prima signifie « super », encore mieux que gut.",
-        "de": "Prima bedeutet sehr gut, noch besser als gut."
+        "en": "Prima means great, even better than gut. It never changes its ending.",
+        "fr": "Prima signifie super, encore mieux que gut. Il ne change pas de terminaison.",
+        "de": "Prima bedeutet sehr gut, noch besser als gut. Es bekommt keine Endung."
       },
       "genderExplanation": null,
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Das Konzert war ",
-        "after": "! Ich will wieder hin.",
+        "before": "Ich habe Urlaub, die Sonne scheint, und es geht mir ",
+        "after": "!",
         "accepted": { "answers": ["prima"] },
-        "referenceTargetIds": ["prima", "hungrig", "durstig", "satt"],
+        "referenceTargetIds": ["prima", "durstig", "hungrig", "satt"],
         "explanation": {
-          "en": "Only prima describes a concert you want to see again.",
-          "fr": "Seul « prima » décrit un concert qu’on veut revoir.",
-          "de": "Nur „prima“ passt zu einem Konzert, das man noch einmal sehen will."
+          "en": "After „es geht mir“ only prima fits here.",
+          "fr": "Après « es geht mir », seul prima convient ici.",
+          "de": "Nach „es geht mir“ passt hier nur prima."
         }
       },
-      "listeningOptionTargetIds": ["prima", "traurig", "wach", "satt"]
+      "listeningOptionTargetIds": ["prima", "traurig", "gut", "wach"]
     },
     {
       "id": "schlecht",
       "term": "schlecht",
-      "translations": { "en": ["bad", "unwell"], "fr": ["mal"] },
+      "translations": { "en": ["bad"], "fr": ["mal", "mauvais"] },
       "wordClass": "adjective",
       "genders": [],
       "number": null,
@@ -161,106 +165,25 @@
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "Schlecht means bad: Es geht mir schlecht.",
-        "fr": "Schlecht signifie « mal » : Es geht mir schlecht.",
+        "en": "Schlecht is the opposite of gut: Es geht mir schlecht.",
+        "fr": "Schlecht est le contraire de gut : Es geht mir schlecht.",
         "de": "Schlecht ist das Gegenteil von gut: Es geht mir schlecht."
       },
       "genderExplanation": null,
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Ich habe Fieber. Mir geht es ",
+        "before": "Ich habe Fieber. Es geht mir ",
         "after": ".",
         "accepted": { "answers": ["schlecht"] },
-        "referenceTargetIds": ["schlecht", "satt", "durstig", "wach"],
+        "referenceTargetIds": ["schlecht", "froh", "satt", "wach"],
         "explanation": {
-          "en": "With a fever you feel schlecht.",
-          "fr": "Avec de la fièvre, on va « schlecht ».",
-          "de": "Mit Fieber geht es einem schlecht."
+          "en": "With a fever, es geht mir schlecht is the only sentence that fits.",
+          "fr": "Avec de la fièvre, seul « es geht mir schlecht » convient.",
+          "de": "Mit Fieber passt nur: Es geht mir schlecht."
         }
       },
-      "listeningOptionTargetIds": ["schlecht", "gut", "satt", "wach"]
-    },
-    {
-      "id": "froh",
-      "term": "froh",
-      "translations": { "en": ["happy", "glad"], "fr": ["content"] },
-      "wordClass": "adjective",
-      "genders": [],
-      "number": null,
-      "teachingForm": "froh",
-      "examForms": ["froh"],
-      "articleException": null,
-      "genderVariants": [],
-      "pronunciation": "/fʁoː/",
-      "difficulty": "core",
-      "context": {
-        "sentence": "Ich bin froh, dass du da bist.",
-        "translation": {
-          "en": "I am glad that you are here.",
-          "fr": "Je suis content que tu sois là."
-        }
-      },
-      "ambiguityNote": null,
-      "explanation": {
-        "en": "Froh means happy or glad: Ich bin froh.",
-        "fr": "Froh signifie « content » : Ich bin froh.",
-        "de": "Froh bedeutet, dass man sich freut: Ich bin froh."
-      },
-      "genderExplanation": null,
-      "matchingLabel": null,
-      "examPrompt": null,
-      "gap": {
-        "before": "Ich bin ",
-        "after": ", denn morgen ist Urlaub.",
-        "accepted": { "answers": ["froh"] },
-        "referenceTargetIds": ["froh", "hungrig", "durstig", "satt"],
-        "explanation": {
-          "en": "Holiday tomorrow makes you froh.",
-          "fr": "Des vacances demain rendent « froh ».",
-          "de": "Wegen des Urlaubs ist man froh."
-        }
-      },
-      "listeningOptionTargetIds": ["froh", "gut", "wach", "satt"]
-    },
-    {
-      "id": "traurig",
-      "term": "traurig",
-      "translations": { "en": ["sad"], "fr": ["triste"] },
-      "wordClass": "adjective",
-      "genders": [],
-      "number": null,
-      "teachingForm": "traurig",
-      "examForms": ["traurig"],
-      "articleException": null,
-      "genderVariants": [],
-      "pronunciation": "/ˈtʁaʊ̯ʁɪç/",
-      "difficulty": "demanding",
-      "context": {
-        "sentence": "Ich bin heute traurig.",
-        "translation": { "en": "I am sad today.", "fr": "Je suis triste aujourd’hui." }
-      },
-      "ambiguityNote": null,
-      "explanation": {
-        "en": "Traurig means sad: Ich bin traurig.",
-        "fr": "Traurig signifie « triste » : Ich bin traurig.",
-        "de": "Traurig ist das Gegenteil von froh: Ich bin traurig."
-      },
-      "genderExplanation": null,
-      "matchingLabel": null,
-      "examPrompt": null,
-      "gap": {
-        "before": "Mein Hund ist weg. Ich bin sehr ",
-        "after": ".",
-        "accepted": { "answers": ["traurig"] },
-        "referenceTargetIds": ["traurig", "satt", "durstig", "wach"],
-        "explanation": {
-          "en": "Losing your dog makes you traurig.",
-          "fr": "Perdre son chien rend « traurig ».",
-          "de": "Wenn der Hund weg ist, ist man traurig."
-        }
-      },
-      "listeningOptionTargetIds": ["traurig", "durstig", "hungrig", "prima"]
+      "listeningOptionTargetIds": ["schlecht", "wach", "satt", "gut"]
     },
     {
       "id": "muede",
@@ -276,14 +199,17 @@
       "pronunciation": "/ˈmyːdə/",
       "difficulty": "core",
       "context": {
-        "sentence": "Ich bin sehr müde.",
-        "translation": { "en": "I am very tired.", "fr": "Je suis très fatigué." }
+        "sentence": "Ich bin am Abend sehr müde.",
+        "translation": {
+          "en": "I am very tired in the evening.",
+          "fr": "Le soir, je suis très fatigué."
+        }
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "Müde means tired. The ü is written with an umlaut.",
-        "fr": "Müde signifie « fatigué ». Le ü s’écrit avec un tréma.",
-        "de": "Müde bedeutet, dass man schlafen möchte. Das ü schreibt man mit Umlaut."
+        "en": "Müde means tired. It is written with an umlaut (ü).",
+        "fr": "Müde signifie fatigué. Il s’écrit avec un tréma (ü).",
+        "de": "Müde heißt, dass man schlafen möchte. Es wird mit Umlaut (ü) geschrieben."
       },
       "genderExplanation": null,
       "matchingLabel": null,
@@ -292,14 +218,14 @@
         "before": "Ich gehe ins Bett, denn ich bin ",
         "after": ".",
         "accepted": { "answers": ["müde"] },
-        "referenceTargetIds": ["muede", "durstig", "satt", "traurig"],
+        "referenceTargetIds": ["muede", "durstig", "satt", "froh"],
         "explanation": {
-          "en": "You go to bed because you are müde.",
-          "fr": "On va au lit parce qu’on est « müde ».",
+          "en": "You go to bed because you are tired.",
+          "fr": "On va au lit parce qu’on est fatigué.",
           "de": "Man geht ins Bett, weil man müde ist."
         }
       },
-      "listeningOptionTargetIds": ["muede", "gut", "froh", "prima"]
+      "listeningOptionTargetIds": ["muede", "wach", "gut", "traurig"]
     },
     {
       "id": "wach",
@@ -315,35 +241,119 @@
       "pronunciation": "/vax/",
       "difficulty": "core",
       "context": {
-        "sentence": "Bist du schon wach?",
-        "translation": { "en": "Are you awake already?", "fr": "Tu es déjà réveillé ?" }
+        "sentence": "Am Morgen bin ich schnell wach.",
+        "translation": {
+          "en": "In the morning I wake up quickly.",
+          "fr": "Le matin, je suis vite réveillé."
+        }
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "Wach means awake, not asleep.",
-        "fr": "Wach signifie « éveillé », pas endormi.",
-        "de": "Wach bedeutet, dass man nicht schläft."
+        "en": "Wach means awake and is the opposite of müde here.",
+        "fr": "Wach signifie éveillé, ici le contraire de müde.",
+        "de": "Wach bedeutet nicht schlafend und ist hier das Gegenteil von müde."
       },
       "genderExplanation": null,
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Um sechs Uhr bin ich schon ",
-        "after": " und stehe auf.",
+        "before": "Ich bin nicht müde, ich bin ganz ",
+        "after": " und habe viel Energie.",
         "accepted": { "answers": ["wach"] },
-        "referenceTargetIds": ["wach", "satt", "durstig", "traurig"],
+        "referenceTargetIds": ["wach", "schlecht", "traurig", "satt"],
         "explanation": {
-          "en": "You get up when you are wach.",
-          "fr": "On se lève quand on est « wach ».",
-          "de": "Wer aufsteht, ist wach."
+          "en": "Not tired and full of energy: wach.",
+          "fr": "Pas fatigué et plein d’énergie : wach.",
+          "de": "Nicht müde und voller Energie: wach."
         }
       },
-      "listeningOptionTargetIds": ["wach", "satt", "schlecht", "prima"]
+      "listeningOptionTargetIds": ["wach", "satt", "froh", "gut"]
+    },
+    {
+      "id": "froh",
+      "term": "froh",
+      "translations": { "en": ["happy", "glad"], "fr": ["content"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "froh",
+      "examForms": ["froh"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/froː/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Wir sind froh, dass du da bist.",
+        "translation": {
+          "en": "We are glad that you are here.",
+          "fr": "Nous sommes contents que tu sois là."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Froh means happy or glad about something.",
+        "fr": "Froh signifie content de quelque chose.",
+        "de": "Froh bedeutet, dass man sich über etwas freut."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Ich habe die Prüfung bestanden und bin sehr ",
+        "after": ".",
+        "accepted": { "answers": ["froh"] },
+        "referenceTargetIds": ["froh", "durstig", "schlecht", "wach"],
+        "explanation": {
+          "en": "Passing an exam makes you froh.",
+          "fr": "Réussir un examen rend froh.",
+          "de": "Eine bestandene Prüfung macht froh."
+        }
+      },
+      "listeningOptionTargetIds": ["froh", "prima", "traurig", "satt"]
+    },
+    {
+      "id": "traurig",
+      "term": "traurig",
+      "translations": { "en": ["sad"], "fr": ["triste"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "traurig",
+      "examForms": ["traurig"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈtraʊ̯rɪç/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Warum bist du so traurig?",
+        "translation": { "en": "Why are you so sad?", "fr": "Pourquoi es-tu si triste ?" }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Traurig means sad and is the opposite of froh.",
+        "fr": "Traurig signifie triste, le contraire de froh.",
+        "de": "Traurig ist das Gegenteil von froh."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Mein Hund ist krank. Ich bin sehr ",
+        "after": ".",
+        "accepted": { "answers": ["traurig"] },
+        "referenceTargetIds": ["traurig", "satt", "prima", "durstig"],
+        "explanation": {
+          "en": "A sick dog makes you traurig.",
+          "fr": "Un chien malade rend traurig.",
+          "de": "Ein kranker Hund macht traurig."
+        }
+      },
+      "listeningOptionTargetIds": ["traurig", "durstig", "hungrig", "froh"]
     },
     {
       "id": "hungrig",
       "term": "hungrig",
-      "translations": { "en": ["hungry"], "fr": ["affamé"] },
+      "translations": { "en": ["hungry"], "fr": ["affamé", "qui a faim"] },
       "wordClass": "adjective",
       "genders": [],
       "number": null,
@@ -351,38 +361,38 @@
       "examForms": ["hungrig"],
       "articleException": null,
       "genderVariants": [],
-      "pronunciation": "/ˈhʊŋʁɪç/",
+      "pronunciation": "/ˈhʊŋɡrɪç/",
       "difficulty": "core",
       "context": {
-        "sentence": "Ich bin sehr hungrig.",
-        "translation": { "en": "I am very hungry.", "fr": "J’ai très faim." }
+        "sentence": "Nach dem Sport bin ich hungrig.",
+        "translation": { "en": "After sport I am hungry.", "fr": "Après le sport, j’ai faim." }
       },
       "ambiguityNote": null,
       "explanation": {
         "en": "Hungrig means hungry: you want to eat.",
-        "fr": "Hungrig signifie « affamé » : on veut manger.",
-        "de": "Hungrig bedeutet, dass man essen möchte."
+        "fr": "Hungrig signifie qui a faim : on veut manger.",
+        "de": "Hungrig heißt, dass man essen möchte."
       },
       "genderExplanation": null,
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Ich habe seit heute früh nichts gegessen und bin ",
+        "before": "Ich habe seit gestern nichts gegessen. Ich bin sehr ",
         "after": ".",
         "accepted": { "answers": ["hungrig"] },
-        "referenceTargetIds": ["hungrig", "prima", "schlecht", "satt"],
+        "referenceTargetIds": ["hungrig", "satt", "durstig", "gut"],
         "explanation": {
-          "en": "After eating nothing you are hungrig.",
-          "fr": "Sans rien manger, on est « hungrig ».",
-          "de": "Wer nichts gegessen hat, ist hungrig."
+          "en": "Nothing eaten since yesterday: hungrig.",
+          "fr": "Rien mangé depuis hier : hungrig.",
+          "de": "Seit gestern nichts gegessen: hungrig."
         }
       },
-      "listeningOptionTargetIds": ["hungrig", "durstig", "traurig", "wach"]
+      "listeningOptionTargetIds": ["hungrig", "durstig", "traurig", "schlecht"]
     },
     {
       "id": "durstig",
       "term": "durstig",
-      "translations": { "en": ["thirsty"], "fr": ["assoiffé"] },
+      "translations": { "en": ["thirsty"], "fr": ["assoiffé", "qui a soif"] },
       "wordClass": "adjective",
       "genders": [],
       "number": null,
@@ -391,35 +401,35 @@
       "articleException": null,
       "genderVariants": [],
       "pronunciation": "/ˈdʊʁstɪç/",
-      "difficulty": "demanding",
+      "difficulty": "core",
       "context": {
-        "sentence": "Ich bin durstig und trinke Wasser.",
+        "sentence": "Bei Hitze bin ich oft durstig.",
         "translation": {
-          "en": "I am thirsty and drink water.",
-          "fr": "J’ai soif et je bois de l’eau."
+          "en": "In the heat I am often thirsty.",
+          "fr": "Quand il fait chaud, j’ai souvent soif."
         }
       },
       "ambiguityNote": null,
       "explanation": {
         "en": "Durstig means thirsty: you want to drink.",
-        "fr": "Durstig signifie « assoiffé » : on veut boire.",
-        "de": "Durstig bedeutet, dass man trinken möchte."
+        "fr": "Durstig signifie qui a soif : on veut boire.",
+        "de": "Durstig heißt, dass man trinken möchte."
       },
       "genderExplanation": null,
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Ich trinke ein Glas Wasser, denn ich bin ",
+        "before": "Es ist heiß, und ich habe nichts getrunken. Ich bin ",
         "after": ".",
         "accepted": { "answers": ["durstig"] },
-        "referenceTargetIds": ["durstig", "satt", "traurig", "wach"],
+        "referenceTargetIds": ["durstig", "froh", "traurig", "wach"],
         "explanation": {
-          "en": "Water is for when you are durstig.",
-          "fr": "On boit de l’eau quand on est « durstig ».",
-          "de": "Wasser trinkt man, wenn man durstig ist."
+          "en": "Hot and nothing to drink: durstig.",
+          "fr": "Chaud et rien bu : durstig.",
+          "de": "Heiß und nichts getrunken: durstig."
         }
       },
-      "listeningOptionTargetIds": ["durstig", "hungrig", "traurig", "muede"]
+      "listeningOptionTargetIds": ["durstig", "hungrig", "muede", "wach"]
     },
     {
       "id": "satt",
@@ -433,32 +443,32 @@
       "articleException": null,
       "genderVariants": [],
       "pronunciation": "/zat/",
-      "difficulty": "core",
+      "difficulty": "demanding",
       "context": {
         "sentence": "Danke, ich bin satt.",
-        "translation": { "en": "Thank you, I am full.", "fr": "Merci, je n’ai plus faim." }
+        "translation": { "en": "Thanks, I am full.", "fr": "Merci, je n’ai plus faim." }
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "Satt means full after eating; it is the opposite of hungrig.",
-        "fr": "Satt signifie « rassasié » après le repas ; c’est le contraire de hungrig.",
-        "de": "Satt bedeutet, dass man genug gegessen hat; es ist das Gegenteil von hungrig."
+        "en": "Satt means full after eating: you do not want more food.",
+        "fr": "Satt signifie rassasié après un repas : on ne veut plus manger.",
+        "de": "Satt heißt, dass man genug gegessen hat und nicht mehr essen möchte."
       },
       "genderExplanation": null,
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Danke, das reicht. Ich bin ",
+        "before": "Danke, ich möchte nichts mehr essen. Ich bin ",
         "after": ".",
         "accepted": { "answers": ["satt"] },
-        "referenceTargetIds": ["satt", "hungrig", "durstig", "traurig"],
+        "referenceTargetIds": ["satt", "hungrig", "traurig", "prima"],
         "explanation": {
-          "en": "After a big meal you say you are satt.",
-          "fr": "Après un grand repas, on dit qu’on est « satt ».",
-          "de": "Nach einem großen Essen ist man satt."
+          "en": "No more food wanted: satt.",
+          "fr": "Plus envie de manger : satt.",
+          "de": "Nichts mehr essen wollen: satt."
         }
       },
-      "listeningOptionTargetIds": ["satt", "wach", "schlecht", "prima"]
+      "listeningOptionTargetIds": ["satt", "gut", "schlecht", "hungrig"]
     }
   ],
   "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
