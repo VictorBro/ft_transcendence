@@ -931,28 +931,28 @@
               "type": "grammar_gap_typing",
               "itemId": "exam-gaps1-3",
               "before": "Nous vous rembourserons, mais seulement",
-              "after": "le produit est en bon état.",
+              "after": "le stock le permettra.",
               "accepted": { "answers": ["dans la mesure où"] },
               "hint": null,
               "ruleIds": ["rule-limited-cause"],
               "answerExplanation": {
-                "en": "Mais seulement limits the refund to a condition being true: only dans la mesure où fits after it.",
-                "fr": "Mais seulement limite le remboursement à une condition vérifiée : seul dans la mesure où convient après.",
-                "de": "Mais seulement begrenzt die Rückerstattung auf eine zutreffende Bedingung: Danach passt nur dans la mesure où."
+                "en": "The clause is in the future (permettra), so si does not fit, and mais seulement limits the refund, which a plain cause such as vu que or étant donné que cannot do: dans la mesure où.",
+                "fr": "La proposition est au futur (permettra), donc si ne convient pas, et mais seulement limite le remboursement, ce qu'une simple cause comme vu que ou étant donné que ne fait pas : dans la mesure où.",
+                "de": "Der Nebensatz steht im Futur (permettra), deshalb passt si nicht, und mais seulement begrenzt die Rückerstattung, was ein einfacher Grund wie vu que oder étant donné que nicht kann: dans la mesure où."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-gaps1-4",
-              "before": "Ce plan n'est réaliste que",
-              "after": "les employés acceptent de le suivre.",
+              "before": "Ce plan ne sera réaliste que",
+              "after": "les employés accepteront de le suivre.",
               "accepted": { "answers": ["dans la mesure où"] },
               "hint": null,
               "ruleIds": ["rule-limited-cause"],
               "answerExplanation": {
-                "en": "Ne… que sets a limit: the plan is realistic only as far as the employees follow it, so dans la mesure où.",
-                "fr": "Ne… que pose une limite : le plan n'est réaliste que si les employés le suivent, donc dans la mesure où.",
-                "de": "Ne… que setzt eine Grenze: Der Plan ist nur realistisch, soweit die Mitarbeiter ihm folgen, also dans la mesure où."
+                "en": "The clause is in the future (accepteront), so si does not fit, and ne… que sets a limit that a plain cause such as vu que or étant donné que cannot express: dans la mesure où.",
+                "fr": "La proposition est au futur (accepteront), donc si ne convient pas, et ne… que pose une limite qu'une simple cause comme vu que ou étant donné que n'exprime pas : dans la mesure où.",
+                "de": "Der Nebensatz steht im Futur (accepteront), deshalb passt si nicht, und ne… que setzt eine Grenze, die ein einfacher Grund wie vu que oder étant donné que nicht ausdrückt: dans la mesure où."
               }
             }
           ]

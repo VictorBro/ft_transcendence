@@ -1234,43 +1234,43 @@
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-avoir-1",
-              "before": "À huit heures, les enfants",
-              "after": "leur petit-déjeuner. (finir)",
+              "before": "Quand le bus est arrivé, les enfants",
+              "after": "leur petit-déjeuner et ils sont montés tout de suite. (finir)",
               "accepted": { "answers": ["avaient fini"] },
               "hint": null,
               "ruleIds": ["rule-avoir-forms"],
               "answerExplanation": {
-                "en": "With les enfants (ils): avaient + the participle fini.",
-                "fr": "Avec les enfants (ils) : avaient + le participe fini.",
-                "de": "Zu les enfants (ils): avaient + Partizip fini."
+                "en": "Breakfast was finished before the bus arrived: plus-que-parfait. With les enfants (ils): avaient + the participle fini.",
+                "fr": "Le petit-déjeuner était fini avant l'arrivée du bus : plus-que-parfait. Avec les enfants (ils) : avaient + le participe fini.",
+                "de": "Das Frühstück war vor der Ankunft des Busses beendet: plus-que-parfait. Zu les enfants (ils): avaient + Partizip fini."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-avoir-2",
               "before": "Quand le professeur est entré, nous",
-              "after": "tous nos livres. (ouvrir)",
+              "after": "tous nos livres cinq minutes plus tôt. (ouvrir)",
               "accepted": { "answers": ["avions ouvert"] },
               "hint": null,
               "ruleIds": ["rule-avoir-forms"],
               "answerExplanation": {
-                "en": "With nous: avions + the participle ouvert.",
-                "fr": "Avec nous : avions + le participe ouvert.",
-                "de": "Zu nous: avions + Partizip ouvert."
+                "en": "Cinq minutes plus tôt puts the books before the teacher came in: with nous, avions + the participle ouvert.",
+                "fr": "Cinq minutes plus tôt place les livres avant l’entrée du professeur : avec nous, avions + le participe ouvert.",
+                "de": "Cinq minutes plus tôt liegt vor dem Eintreten des Lehrers: zu nous avions + Partizip ouvert."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-avoir-3",
-              "before": "Madame, hier vous",
+              "before": "Quand vous êtes arrivée à la maison, vous",
               "after": "votre sac dans le train. (laisser)",
               "accepted": { "answers": ["aviez laissé"] },
               "hint": null,
               "ruleIds": ["rule-avoir-forms"],
               "answerExplanation": {
-                "en": "With vous: aviez + the participle laissé.",
-                "fr": "Avec vous : aviez + le participe laissé.",
-                "de": "Zu vous: aviez + Partizip laissé."
+                "en": "The bag was left in the train before you arrived home: plus-que-parfait. With vous: aviez + the participle laissé.",
+                "fr": "Le sac est resté dans le train avant votre arrivée à la maison : plus-que-parfait. Avec vous : aviez + le participe laissé.",
+                "de": "Die Tasche blieb im Zug, bevor Sie nach Hause kamen: plus-que-parfait. Zu vous: aviez + Partizip laissé."
               }
             },
             {

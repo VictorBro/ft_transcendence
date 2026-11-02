@@ -916,14 +916,14 @@
               "type": "grammar_gap_typing",
               "itemId": "exam-sens-3",
               "before": "Elle est l’une des rares journalistes qui",
-              "after": "(oser) interviewer ce chef d’État.",
+              "after": "(oser, présent) interviewer ce chef d’État.",
               "accepted": { "answers": ["osent"] },
               "hint": null,
               "ruleIds": ["r-relatif"],
               "answerExplanation": {
-                "en": "After l’une des + plural noun, qui stands for the group: the verb is plural, osent.",
-                "fr": "Après l’une des + nom pluriel, qui représente le groupe : le verbe est au pluriel, osent.",
-                "de": "Nach l’une des + Nomen im Plural steht qui für die Gruppe: Das Verb steht im Plural, osent."
+                "en": "After l’une des + plural noun, qui stands for the group: the verb is in the present plural, osent.",
+                "fr": "Après l’une des + nom pluriel, qui représente le groupe : le verbe est au présent, au pluriel, osent.",
+                "de": "Nach l’une des + Nomen im Plural steht qui für die Gruppe: Das Verb steht im Präsens Plural, osent."
               }
             },
             {

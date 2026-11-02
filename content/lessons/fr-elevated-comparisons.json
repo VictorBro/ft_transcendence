@@ -1217,13 +1217,13 @@
               "itemId": "exam-gaps-2-1",
               "before": "Ce qu'il m'offre, ce n'est",
               "after": "que la direction de l'entreprise.",
-              "accepted": { "answers": ["rien de moins", "ni plus ni moins"] },
+              "accepted": { "answers": ["rien de moins", "ni plus ni moins", "rien d'autre"] },
               "hint": null,
               "ruleIds": ["r-rien-de-moins"],
               "answerExplanation": {
-                "en": "Rien de moins que stresses the scale of the offer; ni plus ni moins que, which says it is exactly that, is also correct.",
-                "fr": "Rien de moins que souligne l'ampleur de l'offre ; ni plus ni moins que, qui dit que c'est exactement cela, est aussi correct.",
-                "de": "Rien de moins que betont das Ausmaß des Angebots; auch ni plus ni moins que, das sagt, dass es genau das ist, ist richtig."
+                "en": "All three are correct: rien de moins que and ni plus ni moins que stress the scale of the offer; rien d'autre que stresses that it is exactly that offer.",
+                "fr": "Les trois sont corrects : rien de moins que et ni plus ni moins que soulignent l'ampleur de l'offre ; rien d'autre que souligne que c'est cette offre-là et pas une autre.",
+                "de": "Alle drei sind richtig: rien de moins que und ni plus ni moins que betonen das Ausmaß des Angebots; rien d'autre que betont, dass es genau dieses Angebot ist."
               }
             },
             {

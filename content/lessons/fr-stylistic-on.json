@@ -725,14 +725,14 @@
               "faultyTokenId": "t-6",
               "correction": {
                 "mode": "type",
-                "accepted": { "answers": ["parties"] },
+                "accepted": { "answers": ["parties", "parti"] },
                 "choices": []
               },
               "ruleIds": ["rule-agreement"],
               "answerExplanation": {
-                "en": "Here on means nous, all women. Once the participle agrees with them, it must be feminine plural: parties, not the masculine partis.",
-                "fr": "Ici on signifie nous, des femmes. Dès lors que le participe s'accorde avec elles, il se met au féminin pluriel : parties, et non le masculin partis.",
-                "de": "Hier bedeutet on nous, lauter Frauen. Wird das Partizip an sie angeglichen, steht es im Femininum Plural: parties, nicht das maskuline partis."
+                "en": "Here on means nous, and the real persons are all women, so the masculine plural partis is wrong. Either the participle agrees with them in the feminine plural, parties, or it stays in the masculine singular of on, parti.",
+                "fr": "Ici on signifie nous, et les personnes réelles sont toutes des femmes : le masculin pluriel partis est donc fautif. Soit le participe s'accorde avec elles au féminin pluriel, parties, soit il reste au masculin singulier de on, parti.",
+                "de": "Hier bedeutet on nous, und die realen Personen sind lauter Frauen, daher ist der maskuline Plural partis falsch. Entweder wird das Partizip an sie angeglichen, im Femininum Plural parties, oder es bleibt im Maskulinum Singular von on, parti."
               }
             },
             {

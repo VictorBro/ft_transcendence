@@ -117,12 +117,12 @@
       "gap": {
         "before": "Pour construire un exposé, il faut ",
         "after": " définir les termes du sujet, puis annoncer le plan.",
-        "accepted": { "answers": ["tout d'abord"] },
+        "accepted": { "answers": ["tout d'abord", "en premier lieu"] },
         "referenceTargetIds": ["tout-dabord", "en-somme", "pour-conclure", "par-consequent"],
         "explanation": {
-          "en": "The sentence describes the first step, so only tout d'abord fits.",
-          "fr": "La phrase décrit la première étape : seul « tout d'abord » convient.",
-          "de": "Der Satz beschreibt den ersten Schritt, daher passt nur „tout d'abord“."
+          "en": "The sentence describes the first step, before puis, so tout d'abord or en premier lieu fits: both open the first point.",
+          "fr": "La phrase décrit la première étape, avant « puis » : « tout d'abord » ou « en premier lieu » convient, car les deux ouvrent le premier point.",
+          "de": "Der Satz beschreibt den ersten Schritt vor „puis“, daher passt „tout d'abord“ oder „en premier lieu“: Beide eröffnen den ersten Punkt."
         }
       },
       "listeningOptionTargetIds": ["tout-dabord", "premier-lieu", "second-lieu", "enfin"]
@@ -162,12 +162,12 @@
       "gap": {
         "before": "Je défends cette idée pour deux raisons : ",
         "after": ", elle est juste ; en second lieu, elle est utile.",
-        "accepted": { "answers": ["en premier lieu"] },
+        "accepted": { "answers": ["en premier lieu", "tout d'abord"] },
         "referenceTargetIds": ["premier-lieu", "en-somme", "en-effet", "pour-conclure"],
         "explanation": {
-          "en": "The second reason begins with en second lieu, so the first one needs en premier lieu.",
-          "fr": "La seconde raison commence par « en second lieu » : la première demande « en premier lieu ».",
-          "de": "Der zweite Grund beginnt mit „en second lieu“, der erste braucht also „en premier lieu“."
+          "en": "The second reason begins with en second lieu, so the first one needs a connector that opens the first point: en premier lieu or tout d'abord.",
+          "fr": "La seconde raison commence par « en second lieu » : la première demande un connecteur qui ouvre le premier point, « en premier lieu » ou « tout d'abord ».",
+          "de": "Der zweite Grund beginnt mit „en second lieu“, der erste braucht also einen Konnektor, der den ersten Punkt eröffnet: „en premier lieu“ oder „tout d'abord“."
         }
       },
       "listeningOptionTargetIds": ["tout-dabord", "premier-lieu", "second-lieu", "enfin"]

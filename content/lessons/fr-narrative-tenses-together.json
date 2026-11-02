@@ -1093,14 +1093,14 @@
               "type": "grammar_gap_typing",
               "itemId": "exam-scene-event-2",
               "before": "Ce jour-là, Julie",
-              "after": "son premier marathon. (courir)",
+              "after": "son premier marathon en quatre heures. (courir)",
               "accepted": { "answers": ["a couru"] },
               "hint": null,
               "ruleIds": ["r-event"],
               "answerExplanation": {
-                "en": "A finished event on one day: passé composé, a couru.",
-                "fr": "Un événement terminé, ce jour-là : passé composé, a couru.",
-                "de": "Ein abgeschlossenes Ereignis an einem Tag: passé composé, a couru."
+                "en": "En quatre heures sums up a finished event: passé composé, a couru.",
+                "fr": "En quatre heures résume un événement terminé : passé composé, a couru.",
+                "de": "En quatre heures fasst ein abgeschlossenes Ereignis zusammen: passé composé, a couru."
               }
             },
             {
@@ -1161,14 +1161,14 @@
               "type": "grammar_gap_typing",
               "itemId": "exam-before-2",
               "before": "Quand nous sommes arrivés au cinéma, le film",
-              "after": "(commencer).",
+              "after": "dix minutes plus tôt. (commencer)",
               "accepted": { "answers": ["avait commencé"] },
               "hint": null,
               "ruleIds": ["r-before"],
               "answerExplanation": {
-                "en": "The film started before our arrival: plus-que-parfait, avait commencé.",
-                "fr": "Le film a commencé avant notre arrivée : plus-que-parfait, avait commencé.",
-                "de": "Der Film begann vor unserer Ankunft: plus-que-parfait, avait commencé."
+                "en": "Dix minutes plus tôt puts the start of the film before our arrival: plus-que-parfait, avait commencé.",
+                "fr": "Dix minutes plus tôt place le début du film avant notre arrivée : plus-que-parfait, avait commencé.",
+                "de": "Dix minutes plus tôt legt den Filmbeginn vor unsere Ankunft: plus-que-parfait, avait commencé."
               }
             },
             {
