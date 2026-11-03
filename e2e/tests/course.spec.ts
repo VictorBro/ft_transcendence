@@ -65,16 +65,33 @@ test.describe('course home', () => {
     );
   });
 
-  // Surviving a reload is what separates a PATCH from a select that just moved.
+  /**
+   * Surviving a new visit is what separates a PATCH from a select that just
+   * moved: the select shows the pick at once, before the save. The visit is in
+   * a second tab, since a reload during the save's router.refresh() is aborted
+   * by Firefox (NS_BINDING_ABORTED, #176).
+   */
   test('changing the daily goal persists', async ({ onboarded }) => {
     await placeCourse(onboarded, SECOND_COURSE);
     await onboarded.goto(`/en/learn/${SECOND_COURSE.lang}`);
 
     await onboarded.getByRole('combobox', { name: 'Daily goal' }).selectOption('60');
     await expect(onboarded.getByRole('combobox', { name: 'Daily goal' })).toHaveValue('60');
+    await expect
+      .poll(async () => {
+        const { courses } = await (await onboarded.request.get('/api/courses')).json();
+        return courses.find((course: { lang: string }) => course.lang === SECOND_COURSE.lang)
+          .dailyGoal;
+      })
+      .toBe(60);
 
-    await onboarded.reload();
-    await expect(onboarded.getByRole('combobox', { name: 'Daily goal' })).toHaveValue('60');
+    const next = await onboarded.context().newPage();
+    try {
+      await next.goto(`/en/learn/${SECOND_COURSE.lang}`);
+      await expect(next.getByRole('combobox', { name: 'Daily goal' })).toHaveValue('60');
+    } finally {
+      await next.close();
+    }
   });
 
   /**
