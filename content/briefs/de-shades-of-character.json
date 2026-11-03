@@ -6,57 +6,57 @@
   "locales": ["en", "fr", "de"],
   "title": "Charakterzüge genauer beschreiben",
   "objective": {
-    "en": "Describe people more precisely with twelve character adjectives such as selbstbewusst, großzügig and gelassen.",
-    "fr": "Décrire les gens plus précisément avec douze adjectifs de caractère comme selbstbewusst, großzügig et gelassen.",
-    "de": "Menschen mit zwölf Charakteradjektiven wie selbstbewusst, großzügig und gelassen genauer beschreiben."
+    "en": "Describe people more precisely with twelve character adjectives such as zurückhaltend, zielstrebig and eingebildet.",
+    "fr": "Décrire les gens plus précisément avec douze adjectifs de caractère comme zurückhaltend, zielstrebig et eingebildet.",
+    "de": "Menschen mit zwölf Charakteradjektiven wie zurückhaltend, zielstrebig und eingebildet genauer beschreiben."
   },
   "estimatedMinutes": 19,
   "provenance": {
     "generator": "ft lessons:author",
-    "model": "sonnet",
+    "model": "opus",
     "promptVersion": "author-3",
-    "generatedAt": "2026-11-02T12:30:13.285Z",
-    "inputHashes": { "outline": "64dd210b23041f1fe8ad126785d6fa8140d96a404057707a557e52db52f20ed0" }
+    "generatedAt": "2026-11-03T21:07:34.116Z",
+    "inputHashes": { "outline": "860e27e7aa5cb7d19b48f993049b6940d8a8c3031e7efddfe79ea884ed879766" }
   },
   "kind": "vocabulary",
   "theme": "personal_identification",
   "coverageNotes": {
-    "en": "Twelve character adjectives in two groups: how a person presents themselves and feels, and how a person treats others. Further compound adjectives in -freudig, -bewusst and -bereit and words about attitudes are left to the following lessons.",
-    "fr": "Douze adjectifs de caractère en deux groupes : comment une personne se présente et se sent, et comment elle se comporte avec les autres. D’autres adjectifs composés en -freudig, -bewusst et -bereit et les mots sur les attitudes sont traités dans les leçons suivantes.",
-    "de": "Zwölf Charakteradjektive in zwei Gruppen: wie sich eine Person zeigt und fühlt und wie sie mit anderen umgeht. Weitere zusammengesetzte Adjektive auf -freudig, -bewusst und -bereit sowie Wörter für Einstellungen folgen in den nächsten Lektionen."
+    "en": "Twelve character adjectives in two groups: temperament and drive, and how a person deals with others and with money. The basic character words of B1 (schüchtern, ehrgeizig, großzügig, hilfsbereit, zuverlässig, neugierig, gelassen) are not taught again; compound adjectives in -freudig, -bewusst and -bereit and words about attitudes follow in the next lessons.",
+    "fr": "Douze adjectifs de caractère en deux groupes : le tempérament et la motivation, puis la façon de se comporter avec les autres et avec l’argent. Les mots de caractère de base du B1 (schüchtern, ehrgeizig, großzügig, hilfsbereit, zuverlässig, neugierig, gelassen) ne sont pas repris ; les adjectifs composés en -freudig, -bewusst et -bereit et les mots sur les attitudes suivent dans les leçons suivantes.",
+    "de": "Zwölf Charakteradjektive in zwei Gruppen: Temperament und Antrieb sowie der Umgang mit anderen und mit Geld. Die Grundwörter aus B1 (schüchtern, ehrgeizig, großzügig, hilfsbereit, zuverlässig, neugierig, gelassen) werden nicht wiederholt; zusammengesetzte Adjektive auf -freudig, -bewusst und -bereit sowie Wörter für Einstellungen folgen in den nächsten Lektionen."
   },
   "targetCount": 12,
   "countRationale": {
     "en": "Twelve words match the outline and give two balanced groups of six that fit on one matching page each.",
-    "fr": "Douze mots correspondent au plan et forment deux groupes équilibrés de six, chacun sur une page d'association.",
+    "fr": "Douze mots correspondent au plan et forment deux groupes équilibrés de six, chacun sur une page d’association.",
     "de": "Zwölf Wörter entsprechen der Gliederung und ergeben zwei ausgewogene Gruppen zu je sechs, die jeweils auf eine Zuordnungsseite passen."
   },
   "difficultyBalance": {
-    "en": "Seven core words and five more demanding ones, including look-alikes such as geizig and ehrgeizig.",
-    "fr": "Sept mots de base et cinq plus difficiles, dont des mots qui se ressemblent comme geizig et ehrgeizig.",
-    "de": "Sieben Grundwörter und fünf anspruchsvollere, darunter ähnlich klingende Wörter wie geizig und ehrgeizig."
+    "en": "Seven core words and five more demanding ones, among them the long rechthaberisch and verschwenderisch and the double meaning of eingebildet.",
+    "fr": "Sept mots de base et cinq plus difficiles, dont les longs rechthaberisch et verschwenderisch et le double sens de eingebildet.",
+    "de": "Sieben Grundwörter und fünf anspruchsvollere, darunter die langen Wörter rechthaberisch und verschwenderisch und die Doppelbedeutung von eingebildet."
   },
   "prerequisites": [],
   "groups": [
     {
-      "id": "selbstbild",
+      "id": "temperament",
       "label": {
-        "en": "Self-image and mood",
-        "fr": "Image de soi et humeur",
-        "de": "Auftreten und Gemütslage"
+        "en": "Temperament and drive",
+        "fr": "Tempérament et motivation",
+        "de": "Temperament und Antrieb"
       },
       "targetIds": [
         "selbstbewusst",
-        "schuechtern",
-        "bescheiden",
-        "ehrgeizig",
-        "gelassen",
-        "launisch"
+        "zurueckhaltend",
+        "gesellig",
+        "ausgeglichen",
+        "zielstrebig",
+        "belastbar"
       ],
       "introduction": {
-        "en": "These adjectives describe how a person **presents themselves** and how they feel inside:\n\n- `selbstbewusst` and `schüchtern` are opposites in social situations.\n- `bescheiden` and `ehrgeizig` describe the attitude to success and goals.\n- `gelassen` and `launisch` describe a person's mood.",
-        "fr": "Ces adjectifs décrivent comment une personne **se présente** et ce qu'elle ressent :\n\n- `selbstbewusst` et `schüchtern` sont des contraires en société.\n- `bescheiden` et `ehrgeizig` décrivent l'attitude face à la réussite et aux objectifs.\n- `gelassen` et `launisch` décrivent l'humeur d'une personne.",
-        "de": "Diese Adjektive beschreiben, wie sich ein Mensch **zeigt** und wie er sich innerlich fühlt:\n\n- `selbstbewusst` und `schüchtern` sind Gegensätze im Umgang mit anderen.\n- `bescheiden` und `ehrgeizig` beschreiben die Haltung zu Erfolg und Zielen.\n- `gelassen` und `launisch` beschreiben die Stimmung eines Menschen."
+        "en": "These adjectives describe how a person **comes across** and how they handle goals and pressure:\n\n- `selbstbewusst` and `zurückhaltend`: sure of oneself, or holding back.\n- `gesellig` and `ausgeglichen`: liking company, and staying calm and content.\n- `zielstrebig` and `belastbar`: following a goal, and coping with stress.",
+        "fr": "Ces adjectifs décrivent l’**impression** que donne une personne et sa façon de gérer les objectifs et la pression :\n\n- `selbstbewusst` et `zurückhaltend` : sûr de soi, ou en retrait.\n- `gesellig` et `ausgeglichen` : qui aime la compagnie, et qui reste calme et satisfait.\n- `zielstrebig` et `belastbar` : qui poursuit un objectif, et qui résiste au stress.",
+        "de": "Diese Adjektive beschreiben, wie ein Mensch **wirkt** und wie er mit Zielen und Druck umgeht:\n\n- `selbstbewusst` und `zurückhaltend`: selbstsicher oder eher still.\n- `gesellig` und `ausgeglichen`: gern unter Menschen, ruhig und zufrieden.\n- `zielstrebig` und `belastbar`: ein Ziel verfolgen und Stress aushalten."
       }
     },
     {
@@ -67,17 +67,17 @@
         "de": "Umgang mit anderen"
       },
       "targetIds": [
-        "grosszuegig",
         "geizig",
-        "hilfsbereit",
+        "verschwenderisch",
         "ruecksichtslos",
-        "zuverlaessig",
-        "neugierig"
+        "rechthaberisch",
+        "eingebildet",
+        "weltoffen"
       ],
       "introduction": {
-        "en": "These adjectives say how a person **treats other people**:\n\n- `großzügig` and `geizig` are opposites when it comes to money.\n- `hilfsbereit` and `rücksichtslos` show whether someone thinks of others.\n- `zuverlässig` and `neugierig` describe reliability and interest in others.",
-        "fr": "Ces adjectifs disent comment une personne **traite les autres** :\n\n- `großzügig` et `geizig` sont des contraires quand il s'agit d'argent.\n- `hilfsbereit` et `rücksichtslos` montrent si quelqu'un pense aux autres.\n- `zuverlässig` et `neugierig` décrivent la fiabilité et l'intérêt pour les autres.",
-        "de": "Diese Adjektive sagen, wie ein Mensch **andere behandelt**:\n\n- `großzügig` und `geizig` sind Gegensätze, wenn es um Geld geht.\n- `hilfsbereit` und `rücksichtslos` zeigen, ob jemand an andere denkt.\n- `zuverlässig` und `neugierig` beschreiben Verlässlichkeit und Interesse an anderen."
+        "en": "These adjectives say how a person **treats others** and their money:\n\n- `geizig` and `verschwenderisch` are opposites: too little and too much spending.\n- `rücksichtslos`, `rechthaberisch` and `eingebildet` are criticisms: not thinking of others, always being right, feeling superior.\n- `weltoffen` is praise: open to other cultures.",
+        "fr": "Ces adjectifs disent comment une personne **traite les autres** et son argent :\n\n- `geizig` et `verschwenderisch` sont des contraires : trop peu et trop de dépenses.\n- `rücksichtslos`, `rechthaberisch` et `eingebildet` sont des critiques : ne pas penser aux autres, vouloir toujours avoir raison, se croire supérieur.\n- `weltoffen` est un compliment : ouvert aux autres cultures.",
+        "de": "Diese Adjektive sagen, wie ein Mensch **mit anderen** und mit Geld umgeht:\n\n- `geizig` und `verschwenderisch` sind Gegensätze: zu wenig und zu viel ausgeben.\n- `rücksichtslos`, `rechthaberisch` und `eingebildet` sind Kritik: nicht an andere denken, immer recht haben wollen, sich für besser halten.\n- `weltoffen` ist ein Lob: offen für andere Kulturen."
       }
     }
   ],
@@ -99,13 +99,13 @@
         "sentence": "Die neue Kollegin wirkt sehr selbstbewusst.",
         "translation": {
           "en": "The new colleague seems very self-confident.",
-          "fr": "La nouvelle collègue paraît très sûre d'elle."
+          "fr": "La nouvelle collègue paraît très sûre d’elle."
         }
       },
       "ambiguityNote": null,
       "explanation": {
         "en": "Selbstbewusst describes someone who trusts their own abilities and acts without fear.",
-        "fr": "Selbstbewusst décrit quelqu'un qui a confiance en ses capacités et agit sans crainte.",
+        "fr": "Selbstbewusst décrit quelqu’un qui a confiance en ses capacités et agit sans crainte.",
         "de": "Selbstbewusst beschreibt jemanden, der seinen Fähigkeiten vertraut und ohne Angst auftritt."
       },
       "genderExplanation": null,
@@ -115,270 +115,231 @@
         "before": "Sie ist sehr ",
         "after": " und hält ohne Angst vor 200 Leuten eine Rede.",
         "accepted": { "answers": ["selbstbewusst"] },
-        "referenceTargetIds": ["selbstbewusst", "schuechtern", "geizig", "hilfsbereit"],
+        "referenceTargetIds": ["selbstbewusst", "zurueckhaltend", "geizig", "verschwenderisch"],
         "explanation": {
           "en": "Someone who speaks to 200 people without fear is selbstbewusst.",
-          "fr": "Quelqu'un qui parle sans crainte devant 200 personnes est selbstbewusst.",
+          "fr": "Quelqu’un qui parle sans crainte devant 200 personnes est selbstbewusst.",
           "de": "Wer ohne Angst vor 200 Leuten spricht, ist selbstbewusst."
         }
       },
-      "listeningOptionTargetIds": ["selbstbewusst", "bescheiden", "hilfsbereit", "schuechtern"]
+      "listeningOptionTargetIds": ["selbstbewusst", "zurueckhaltend", "zielstrebig", "weltoffen"]
     },
     {
-      "id": "schuechtern",
-      "term": "schüchtern",
-      "translations": { "en": ["shy"], "fr": ["timide"] },
+      "id": "zurueckhaltend",
+      "term": "zurückhaltend",
+      "translations": { "en": ["reserved"], "fr": ["réservé"] },
       "wordClass": "adjective",
       "genders": [],
       "number": null,
-      "teachingForm": "schüchtern",
-      "examForms": ["schüchtern"],
+      "teachingForm": "zurückhaltend",
+      "examForms": ["zurückhaltend"],
       "articleException": null,
       "genderVariants": [],
-      "pronunciation": "/ˈʃʏçtɐn/",
+      "pronunciation": "/t͡suˈʁʏkˌhaltn̩t/",
       "difficulty": "core",
       "context": {
-        "sentence": "Als Kind war er sehr schüchtern und sprach kaum mit Fremden.",
+        "sentence": "Am Anfang ist er etwas zurückhaltend, aber dann taut er auf.",
         "translation": {
-          "en": "As a child he was very shy and hardly spoke to strangers.",
-          "fr": "Enfant, il était très timide et parlait à peine aux inconnus."
-        }
-      },
-      "ambiguityNote": null,
-      "explanation": {
-        "en": "Schüchtern describes someone who feels uneasy with other people and speaks little. The ü has an umlaut.",
-        "fr": "Schüchtern décrit quelqu'un qui est mal à l'aise avec les autres et parle peu. Le ü porte un tréma (Umlaut).",
-        "de": "Schüchtern beschreibt jemanden, der sich vor anderen unsicher fühlt und wenig spricht. Das ü hat einen Umlaut."
-      },
-      "genderExplanation": null,
-      "matchingLabel": null,
-      "examPrompt": null,
-      "gap": {
-        "before": "Der Junge ist sehr ",
-        "after": ", er wird rot und schaut zu Boden, wenn man ihn anspricht.",
-        "accepted": { "answers": ["schüchtern"] },
-        "referenceTargetIds": ["schuechtern", "selbstbewusst", "ehrgeizig", "grosszuegig"],
-        "explanation": {
-          "en": "Blushing and looking at the floor when spoken to shows he is schüchtern.",
-          "fr": "Rougir et regarder le sol quand on lui parle montre qu'il est schüchtern.",
-          "de": "Wer rot wird und zu Boden schaut, wenn man ihn anspricht, ist schüchtern."
-        }
-      },
-      "listeningOptionTargetIds": ["schuechtern", "selbstbewusst", "bescheiden", "gelassen"]
-    },
-    {
-      "id": "bescheiden",
-      "term": "bescheiden",
-      "translations": { "en": ["modest"], "fr": ["modeste"] },
-      "wordClass": "adjective",
-      "genders": [],
-      "number": null,
-      "teachingForm": "bescheiden",
-      "examForms": ["bescheiden"],
-      "articleException": null,
-      "genderVariants": [],
-      "pronunciation": "/bəˈʃaɪdn̩/",
-      "difficulty": "core",
-      "context": {
-        "sentence": "Trotz ihres Erfolgs ist die Ärztin bescheiden geblieben.",
-        "translation": {
-          "en": "Despite her success the doctor has stayed modest.",
-          "fr": "Malgré son succès, la médecin est restée modeste."
-        }
-      },
-      "ambiguityNote": null,
-      "explanation": {
-        "en": "Bescheiden describes someone who does not boast about their achievements or demand much for themselves.",
-        "fr": "Bescheiden décrit quelqu'un qui ne se vante pas de ses réussites et n'exige pas beaucoup pour lui-même.",
-        "de": "Bescheiden beschreibt jemanden, der nicht mit seinen Leistungen prahlt und für sich selbst wenig verlangt."
-      },
-      "genderExplanation": null,
-      "matchingLabel": null,
-      "examPrompt": null,
-      "gap": {
-        "before": "Obwohl er den Preis gewonnen hat, bleibt er ",
-        "after": " und spricht nicht über seinen Erfolg.",
-        "accepted": { "answers": ["bescheiden"] },
-        "referenceTargetIds": ["bescheiden", "ruecksichtslos", "launisch", "neugierig"],
-        "explanation": {
-          "en": "Not talking about one's own success is typical of a bescheiden person.",
-          "fr": "Ne pas parler de son propre succès est typique d'une personne bescheiden.",
-          "de": "Nicht über den eigenen Erfolg zu sprechen, ist typisch für einen bescheidenen Menschen."
-        }
-      },
-      "listeningOptionTargetIds": ["bescheiden", "schuechtern", "gelassen", "ruecksichtslos"]
-    },
-    {
-      "id": "ehrgeizig",
-      "term": "ehrgeizig",
-      "translations": { "en": ["ambitious"], "fr": ["ambitieux"] },
-      "wordClass": "adjective",
-      "genders": [],
-      "number": null,
-      "teachingForm": "ehrgeizig",
-      "examForms": ["ehrgeizig"],
-      "articleException": null,
-      "genderVariants": [],
-      "pronunciation": "/ˈeːɐ̯ˌɡaɪtsɪç/",
-      "difficulty": "demanding",
-      "context": {
-        "sentence": "Er ist so ehrgeizig, dass er schon mit dreißig Abteilungsleiter werden will.",
-        "translation": {
-          "en": "He is so ambitious that he wants to become head of department at thirty.",
-          "fr": "Il est si ambitieux qu'il veut devenir chef de service dès trente ans."
+          "en": "At first he is a little reserved, but then he opens up.",
+          "fr": "Au début, il est un peu réservé, mais ensuite il se détend."
         }
       },
       "ambiguityNote": {
-        "en": "Do not confuse ehrgeizig (ambitious) with geizig (stingy): the first part Ehr- means honour.",
-        "fr": "Ne confondez pas ehrgeizig (ambitieux) et geizig (avare) : la première partie Ehr- signifie l'honneur.",
-        "de": "Nicht verwechseln: ehrgeizig (will viel erreichen) und geizig (gibt ungern Geld aus). Der erste Teil Ehr- kommt von Ehre."
+        "en": "Zurückhaltend is not the same as schüchtern: a reserved person holds back by choice, a shy one out of fear.",
+        "fr": "Zurückhaltend n’est pas schüchtern : une personne réservée se retient par choix, une personne timide par peur.",
+        "de": "Zurückhaltend ist nicht dasselbe wie schüchtern: Wer zurückhaltend ist, hält sich bewusst zurück, wer schüchtern ist, aus Angst."
       },
       "explanation": {
-        "en": "Ehrgeizig describes someone who strongly wants to succeed and reach high goals.",
-        "fr": "Ehrgeizig décrit quelqu'un qui veut fortement réussir et atteindre de hauts objectifs.",
-        "de": "Ehrgeizig beschreibt jemanden, der unbedingt Erfolg haben und hohe Ziele erreichen will."
+        "en": "Zurückhaltend describes someone who keeps to themselves, speaks little about themselves and does not push forward.",
+        "fr": "Zurückhaltend décrit quelqu’un qui reste en retrait, parle peu de lui-même et ne se met pas en avant.",
+        "de": "Zurückhaltend beschreibt jemanden, der sich nicht in den Vordergrund drängt und wenig von sich erzählt."
       },
       "genderExplanation": null,
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Sie arbeitet jeden Abend für die Prüfung, denn sie ist sehr ",
-        "after": " und will die Beste im Kurs sein.",
-        "accepted": { "answers": ["ehrgeizig"] },
-        "referenceTargetIds": ["ehrgeizig", "gelassen", "bescheiden", "schuechtern"],
+        "before": "Auf Partys ist er eher ",
+        "after": ": Er hört lieber zu und erzählt wenig von sich.",
+        "accepted": { "answers": ["zurückhaltend"] },
+        "referenceTargetIds": ["zurueckhaltend", "gesellig", "rechthaberisch", "verschwenderisch"],
         "explanation": {
-          "en": "Wanting to be the best and working hard for it is ehrgeizig.",
-          "fr": "Vouloir être la meilleure et travailler dur pour cela, c'est être ehrgeizig.",
-          "de": "Die Beste sein zu wollen und dafür hart zu arbeiten, ist ehrgeizig."
+          "en": "Listening rather than talking about oneself is zurückhaltend.",
+          "fr": "Écouter plutôt que parler de soi, c’est être zurückhaltend.",
+          "de": "Lieber zuzuhören, als von sich zu erzählen, ist zurückhaltend."
         }
       },
-      "listeningOptionTargetIds": ["ehrgeizig", "geizig", "neugierig", "grosszuegig"]
+      "listeningOptionTargetIds": ["zurueckhaltend", "ausgeglichen", "rechthaberisch", "gesellig"]
     },
     {
-      "id": "gelassen",
-      "term": "gelassen",
-      "translations": { "en": ["calm and composed"], "fr": ["serein"] },
+      "id": "gesellig",
+      "term": "gesellig",
+      "translations": { "en": ["sociable"], "fr": ["sociable"] },
       "wordClass": "adjective",
       "genders": [],
       "number": null,
-      "teachingForm": "gelassen",
-      "examForms": ["gelassen"],
+      "teachingForm": "gesellig",
+      "examForms": ["gesellig"],
       "articleException": null,
       "genderVariants": [],
-      "pronunciation": "/ɡəˈlasn̩/",
-      "difficulty": "demanding",
-      "context": {
-        "sentence": "Im Stau blieb sie ganz gelassen und hörte Musik.",
-        "translation": {
-          "en": "In the traffic jam she stayed completely calm and listened to music.",
-          "fr": "Dans les embouteillages, elle est restée parfaitement sereine et a écouté de la musique."
-        }
-      },
-      "ambiguityNote": null,
-      "explanation": {
-        "en": "Gelassen describes someone who stays calm and does not get upset in difficult situations.",
-        "fr": "Gelassen décrit quelqu'un qui reste calme et ne s'énerve pas dans les situations difficiles.",
-        "de": "Gelassen beschreibt jemanden, der auch in schwierigen Situationen ruhig bleibt und sich nicht aufregt."
-      },
-      "genderExplanation": null,
-      "matchingLabel": null,
-      "examPrompt": null,
-      "gap": {
-        "before": "Vor der Prüfung bleibt er völlig ",
-        "after": ", während alle anderen nervös sind.",
-        "accepted": { "answers": ["gelassen"] },
-        "referenceTargetIds": ["gelassen", "launisch", "neugierig", "ehrgeizig"],
-        "explanation": {
-          "en": "Staying calm while everyone else is nervous is gelassen.",
-          "fr": "Rester calme alors que tous les autres sont nerveux, c'est être gelassen.",
-          "de": "Ruhig zu bleiben, während alle anderen nervös sind, ist gelassen."
-        }
-      },
-      "listeningOptionTargetIds": ["gelassen", "launisch", "bescheiden", "schuechtern"]
-    },
-    {
-      "id": "launisch",
-      "term": "launisch",
-      "translations": { "en": ["moody"], "fr": ["lunatique"] },
-      "wordClass": "adjective",
-      "genders": [],
-      "number": null,
-      "teachingForm": "launisch",
-      "examForms": ["launisch"],
-      "articleException": null,
-      "genderVariants": [],
-      "pronunciation": "/ˈlaʊnɪʃ/",
-      "difficulty": "demanding",
-      "context": {
-        "sentence": "Mein Chef ist launisch: Heute lacht er, morgen schimpft er.",
-        "translation": {
-          "en": "My boss is moody: today he laughs, tomorrow he grumbles.",
-          "fr": "Mon chef est lunatique : aujourd'hui il rit, demain il râle."
-        }
-      },
-      "ambiguityNote": null,
-      "explanation": {
-        "en": "Launisch describes someone whose mood changes quickly and without a clear reason.",
-        "fr": "Launisch décrit quelqu'un dont l'humeur change vite et sans raison claire.",
-        "de": "Launisch beschreibt jemanden, dessen Stimmung sich schnell und ohne klaren Grund ändert."
-      },
-      "genderExplanation": null,
-      "matchingLabel": null,
-      "examPrompt": null,
-      "gap": {
-        "before": "Mal lacht sie, mal schreit sie. Sie ist sehr ",
-        "after": ", man weiß nie, wie ihre Laune ist.",
-        "accepted": { "answers": ["launisch"] },
-        "referenceTargetIds": ["launisch", "gelassen", "zuverlaessig", "grosszuegig"],
-        "explanation": {
-          "en": "Changing between laughing and shouting without warning is launisch.",
-          "fr": "Passer du rire aux cris sans prévenir, c'est être launisch.",
-          "de": "Zwischen Lachen und Schreien ohne Vorwarnung zu wechseln, ist launisch."
-        }
-      },
-      "listeningOptionTargetIds": ["launisch", "gelassen", "zuverlaessig", "neugierig"]
-    },
-    {
-      "id": "grosszuegig",
-      "term": "großzügig",
-      "translations": { "en": ["generous"], "fr": ["généreux"] },
-      "wordClass": "adjective",
-      "genders": [],
-      "number": null,
-      "teachingForm": "großzügig",
-      "examForms": ["großzügig"],
-      "articleException": null,
-      "genderVariants": [],
-      "pronunciation": "/ˈɡʁoːsˌt͡syːɡɪç/",
+      "pronunciation": "/ɡəˈzɛlɪç/",
       "difficulty": "core",
       "context": {
-        "sentence": "Mein Onkel ist sehr großzügig und gibt immer ein hohes Trinkgeld.",
+        "sentence": "Unsere Nachbarn sind sehr gesellig und feiern oft im Garten.",
         "translation": {
-          "en": "My uncle is very generous and always leaves a big tip.",
-          "fr": "Mon oncle est très généreux et laisse toujours un gros pourboire."
+          "en": "Our neighbours are very sociable and often have parties in the garden.",
+          "fr": "Nos voisins sont très sociables et font souvent la fête dans le jardin."
         }
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "Großzügig describes someone who gladly gives money, time or things to others. The ß is the sharp s.",
-        "fr": "Großzügig décrit quelqu'un qui donne volontiers de l'argent, du temps ou des choses aux autres. Le ß est le s dur (Eszett).",
-        "de": "Großzügig beschreibt jemanden, der anderen gern Geld, Zeit oder Dinge gibt. Das ß ist das scharfe s."
+        "en": "Gesellig describes someone who likes being with other people and enjoys company.",
+        "fr": "Gesellig décrit quelqu’un qui aime être avec les autres et apprécie la compagnie.",
+        "de": "Gesellig beschreibt jemanden, der gern mit anderen Menschen zusammen ist."
       },
       "genderExplanation": null,
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Er ist sehr ",
-        "after": " und zahlt gern für alle.",
-        "accepted": { "answers": ["großzügig"] },
-        "referenceTargetIds": ["grosszuegig", "geizig", "ruecksichtslos", "schuechtern"],
+        "before": "Sie ist sehr ",
+        "after": " und lädt fast jedes Wochenende Freunde zum Essen ein.",
+        "accepted": { "answers": ["gesellig"] },
+        "referenceTargetIds": ["gesellig", "zurueckhaltend", "geizig", "belastbar"],
         "explanation": {
-          "en": "Paying gladly for everyone is großzügig.",
-          "fr": "Payer volontiers pour tout le monde, c'est être großzügig.",
-          "de": "Gern für alle zu zahlen, ist großzügig."
+          "en": "Inviting friends over almost every weekend shows she is gesellig.",
+          "fr": "Inviter des amis presque chaque week-end montre qu’elle est gesellig.",
+          "de": "Fast jedes Wochenende Freunde einzuladen, zeigt, dass sie gesellig ist."
         }
       },
-      "listeningOptionTargetIds": ["grosszuegig", "geizig", "ehrgeizig", "zuverlaessig"]
+      "listeningOptionTargetIds": ["gesellig", "geizig", "eingebildet", "zurueckhaltend"]
+    },
+    {
+      "id": "ausgeglichen",
+      "term": "ausgeglichen",
+      "translations": { "en": ["balanced", "even-tempered"], "fr": ["équilibré"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "ausgeglichen",
+      "examForms": ["ausgeglichen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈaʊ̯sɡəˌɡlɪçn̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Nach dem Urlaub fühle ich mich wieder ausgeglichen.",
+        "translation": {
+          "en": "After the holiday I feel balanced again.",
+          "fr": "Après les vacances, je me sens de nouveau équilibré."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Ausgeglichen describes someone who is calm and content and whose mood rarely swings.",
+        "fr": "Ausgeglichen décrit quelqu’un de calme et satisfait, dont l’humeur change rarement.",
+        "de": "Ausgeglichen beschreibt jemanden, der ruhig und zufrieden ist und dessen Stimmung selten schwankt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Seit sie Yoga macht, ist sie viel ",
+        "after": ": ruhig, zufrieden und selten schlecht gelaunt.",
+        "accepted": { "answers": ["ausgeglichen"] },
+        "referenceTargetIds": ["ausgeglichen", "rechthaberisch", "verschwenderisch", "geizig"],
+        "explanation": {
+          "en": "Calm, content and rarely in a bad mood: that is ausgeglichen.",
+          "fr": "Calme, satisfaite et rarement de mauvaise humeur : c’est être ausgeglichen.",
+          "de": "Ruhig, zufrieden und selten schlecht gelaunt: Das ist ausgeglichen."
+        }
+      },
+      "listeningOptionTargetIds": ["ausgeglichen", "eingebildet", "belastbar", "zurueckhaltend"]
+    },
+    {
+      "id": "zielstrebig",
+      "term": "zielstrebig",
+      "translations": { "en": ["determined", "single-minded"], "fr": ["déterminé"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "zielstrebig",
+      "examForms": ["zielstrebig"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈt͡siːlˌʃtʁeːbɪç/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Er hat sein Studium zielstrebig in drei Jahren abgeschlossen.",
+        "translation": {
+          "en": "He finished his degree in three years with determination.",
+          "fr": "Il a terminé ses études en trois ans, avec détermination."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Zielstrebig describes someone who follows a goal steadily and does not let anything distract them.",
+        "fr": "Zielstrebig décrit quelqu’un qui poursuit un objectif avec constance et ne se laisse pas distraire.",
+        "de": "Zielstrebig beschreibt jemanden, der ein Ziel konsequent verfolgt und sich nicht ablenken lässt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Sie ist sehr ",
+        "after": ": Seit der Schule will sie Ärztin werden, und nichts bringt sie davon ab.",
+        "accepted": { "answers": ["zielstrebig"] },
+        "referenceTargetIds": ["zielstrebig", "gesellig", "geizig", "zurueckhaltend"],
+        "explanation": {
+          "en": "Following one goal for years without giving up is zielstrebig.",
+          "fr": "Poursuivre un seul objectif pendant des années sans renoncer, c’est être zielstrebig.",
+          "de": "Jahrelang ein Ziel zu verfolgen, ohne aufzugeben, ist zielstrebig."
+        }
+      },
+      "listeningOptionTargetIds": ["zielstrebig", "selbstbewusst", "eingebildet", "belastbar"]
+    },
+    {
+      "id": "belastbar",
+      "term": "belastbar",
+      "translations": {
+        "en": ["resilient", "able to work under pressure"],
+        "fr": ["résistant au stress"]
+      },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "belastbar",
+      "examForms": ["belastbar"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/bəˈlastbaːɐ̯/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Für diese Stelle suchen wir jemanden, der belastbar ist.",
+        "translation": {
+          "en": "For this job we are looking for someone who can work under pressure.",
+          "fr": "Pour ce poste, nous cherchons quelqu’un qui résiste au stress."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Belastbar describes someone who can cope with a lot of stress and work. It is common in job adverts.",
+        "fr": "Belastbar décrit quelqu’un qui supporte beaucoup de stress et de travail. Le mot est fréquent dans les offres d’emploi.",
+        "de": "Belastbar beschreibt jemanden, der viel Stress und Arbeit aushält. Das Wort steht oft in Stellenanzeigen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Im Krankenhaus muss man sehr ",
+        "after": " sein, denn man arbeitet lange Schichten unter großem Stress.",
+        "accepted": { "answers": ["belastbar"] },
+        "referenceTargetIds": ["belastbar", "gesellig", "eingebildet", "verschwenderisch"],
+        "explanation": {
+          "en": "Coping with long shifts and a lot of stress requires someone belastbar.",
+          "fr": "Supporter de longues gardes et beaucoup de stress demande d’être belastbar.",
+          "de": "Wer lange Schichten und viel Stress aushält, ist belastbar."
+        }
+      },
+      "listeningOptionTargetIds": ["belastbar", "ausgeglichen", "zielstrebig", "weltoffen"]
     },
     {
       "id": "geizig",
@@ -391,23 +352,23 @@
       "examForms": ["geizig"],
       "articleException": null,
       "genderVariants": [],
-      "pronunciation": "/ˈɡaɪtsɪç/",
-      "difficulty": "demanding",
+      "pronunciation": "/ˈɡaɪ̯tsɪç/",
+      "difficulty": "core",
       "context": {
         "sentence": "Er ist so geizig, dass er nie ein Trinkgeld gibt.",
         "translation": {
           "en": "He is so stingy that he never leaves a tip.",
-          "fr": "Il est si avare qu'il ne laisse jamais de pourboire."
+          "fr": "Il est si avare qu’il ne laisse jamais de pourboire."
         }
       },
       "ambiguityNote": {
         "en": "Do not confuse geizig (stingy) with ehrgeizig (ambitious): they sound alike but mean different things.",
-        "fr": "Ne confondez pas geizig (avare) et ehrgeizig (ambitieux) : ils se ressemblent à l'oreille mais n'ont pas le même sens.",
+        "fr": "Ne confondez pas geizig (avare) et ehrgeizig (ambitieux) : ils se ressemblent à l’oreille mais n’ont pas le même sens.",
         "de": "Nicht verwechseln: geizig (gibt ungern Geld aus) und ehrgeizig (will viel erreichen) klingen ähnlich, bedeuten aber Verschiedenes."
       },
       "explanation": {
         "en": "Geizig describes someone who does not want to spend or give money, even when it would be normal.",
-        "fr": "Geizig décrit quelqu'un qui ne veut pas dépenser ni donner d'argent, même quand ce serait normal.",
+        "fr": "Geizig décrit quelqu’un qui ne veut pas dépenser ni donner d’argent, même quand ce serait normal.",
         "de": "Geizig beschreibt jemanden, der kein Geld ausgeben oder abgeben will, auch wenn es normal wäre."
       },
       "genderExplanation": null,
@@ -415,63 +376,67 @@
       "examPrompt": null,
       "gap": {
         "before": "Er ist so ",
-        "after": ", dass er nie ein Trinkgeld gibt und jeden Cent zweimal umdreht.",
+        "after": ", dass er jeden Cent zweimal umdreht und nie jemanden einlädt.",
         "accepted": { "answers": ["geizig"] },
-        "referenceTargetIds": ["geizig", "grosszuegig", "hilfsbereit", "neugierig"],
+        "referenceTargetIds": ["geizig", "verschwenderisch", "gesellig", "weltoffen"],
         "explanation": {
-          "en": "Counting every cent and never tipping is geizig.",
-          "fr": "Compter chaque centime et ne jamais donner de pourboire, c'est être geizig.",
-          "de": "Jeden Cent zu zählen und nie Trinkgeld zu geben, ist geizig."
+          "en": "Counting every cent and never treating anyone is geizig.",
+          "fr": "Compter chaque centime et n’inviter jamais personne, c’est être geizig.",
+          "de": "Jeden Cent zweimal umzudrehen und nie jemanden einzuladen, ist geizig."
         }
       },
-      "listeningOptionTargetIds": ["geizig", "ehrgeizig", "neugierig", "grosszuegig"]
+      "listeningOptionTargetIds": ["geizig", "verschwenderisch", "eingebildet", "gesellig"]
     },
     {
-      "id": "hilfsbereit",
-      "term": "hilfsbereit",
-      "translations": { "en": ["helpful"], "fr": ["serviable"] },
+      "id": "verschwenderisch",
+      "term": "verschwenderisch",
+      "translations": { "en": ["wasteful", "extravagant"], "fr": ["dépensier", "gaspilleur"] },
       "wordClass": "adjective",
       "genders": [],
       "number": null,
-      "teachingForm": "hilfsbereit",
-      "examForms": ["hilfsbereit"],
+      "teachingForm": "verschwenderisch",
+      "examForms": ["verschwenderisch"],
       "articleException": null,
       "genderVariants": [],
-      "pronunciation": "/ˈhɪlfsbəˌʁaɪt/",
-      "difficulty": "core",
+      "pronunciation": "/fɛɐ̯ˈʃvɛndəʁɪʃ/",
+      "difficulty": "demanding",
       "context": {
-        "sentence": "Meine Nachbarn sind sehr hilfsbereit und tragen mir die Einkäufe.",
+        "sentence": "Mit seinem Geld ist er ziemlich verschwenderisch.",
         "translation": {
-          "en": "My neighbours are very helpful and carry my shopping for me.",
-          "fr": "Mes voisins sont très serviables et me portent mes courses."
+          "en": "He is rather extravagant with his money.",
+          "fr": "Il est plutôt dépensier avec son argent."
         }
       },
-      "ambiguityNote": null,
+      "ambiguityNote": {
+        "en": "Verschwenderisch is the opposite of geizig: one spends too much, the other too little.",
+        "fr": "Verschwenderisch est le contraire de geizig : l’un dépense trop, l’autre trop peu.",
+        "de": "Verschwenderisch ist das Gegenteil von geizig: Der eine gibt zu viel aus, der andere zu wenig."
+      },
       "explanation": {
-        "en": "Hilfsbereit describes someone who is always ready to help other people.",
-        "fr": "Hilfsbereit décrit quelqu'un qui est toujours prêt à aider les autres.",
-        "de": "Hilfsbereit beschreibt jemanden, der immer bereit ist, anderen zu helfen."
+        "en": "Verschwenderisch describes someone who spends or uses much more than necessary: money, food or energy.",
+        "fr": "Verschwenderisch décrit quelqu’un qui dépense ou consomme bien plus que nécessaire : argent, nourriture ou énergie.",
+        "de": "Verschwenderisch beschreibt jemanden, der viel mehr ausgibt oder verbraucht als nötig: Geld, Essen oder Energie."
       },
       "genderExplanation": null,
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Meine Nachbarin ist sehr ",
-        "after": ": Sie trägt älteren Leuten die Einkäufe nach oben.",
-        "accepted": { "answers": ["hilfsbereit"] },
-        "referenceTargetIds": ["hilfsbereit", "ruecksichtslos", "geizig", "launisch"],
+        "before": "Er ist sehr ",
+        "after": ": Er kauft ständig teure Dinge, die er nie benutzt, und wirft viel Essen weg.",
+        "accepted": { "answers": ["verschwenderisch"] },
+        "referenceTargetIds": ["verschwenderisch", "geizig", "zurueckhaltend", "ausgeglichen"],
         "explanation": {
-          "en": "Carrying shopping for older people shows she is hilfsbereit.",
-          "fr": "Porter les courses des personnes âgées montre qu'elle est hilfsbereit.",
-          "de": "Älteren Leuten die Einkäufe zu tragen, zeigt, dass sie hilfsbereit ist."
+          "en": "Buying things you never use and throwing food away is verschwenderisch.",
+          "fr": "Acheter des choses qu’on n’utilise jamais et jeter de la nourriture, c’est être verschwenderisch.",
+          "de": "Dinge zu kaufen, die man nie benutzt, und Essen wegzuwerfen, ist verschwenderisch."
         }
       },
-      "listeningOptionTargetIds": ["hilfsbereit", "selbstbewusst", "ruecksichtslos", "bescheiden"]
+      "listeningOptionTargetIds": ["verschwenderisch", "geizig", "rechthaberisch", "ruecksichtslos"]
     },
     {
       "id": "ruecksichtslos",
       "term": "rücksichtslos",
-      "translations": { "en": ["inconsiderate"], "fr": ["sans égards"] },
+      "translations": { "en": ["inconsiderate", "reckless"], "fr": ["sans égards"] },
       "wordClass": "adjective",
       "genders": [],
       "number": null,
@@ -480,7 +445,7 @@
       "articleException": null,
       "genderVariants": [],
       "pronunciation": "/ˈʁʏkzɪçtsˌloːs/",
-      "difficulty": "demanding",
+      "difficulty": "core",
       "context": {
         "sentence": "Der Autofahrer fuhr rücksichtslos an den Radfahrern vorbei.",
         "translation": {
@@ -490,9 +455,9 @@
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "Rücksichtslos describes someone who does not think about the feelings or needs of others. The ü has an umlaut.",
-        "fr": "Rücksichtslos décrit quelqu'un qui ne pense pas aux sentiments ni aux besoins des autres. Le ü porte un tréma (Umlaut).",
-        "de": "Rücksichtslos beschreibt jemanden, der nicht an die Gefühle oder Bedürfnisse anderer denkt. Das ü hat einen Umlaut."
+        "en": "Rücksichtslos describes someone who does not think about the feelings or needs of others.",
+        "fr": "Rücksichtslos décrit quelqu’un qui ne pense pas aux sentiments ni aux besoins des autres.",
+        "de": "Rücksichtslos beschreibt jemanden, der nicht an die Gefühle oder Bedürfnisse anderer denkt."
       },
       "genderExplanation": null,
       "matchingLabel": null,
@@ -501,98 +466,160 @@
         "before": "Er ist ",
         "after": ": Er hört nachts laut Musik und denkt nie an die Nachbarn.",
         "accepted": { "answers": ["rücksichtslos"] },
-        "referenceTargetIds": ["ruecksichtslos", "hilfsbereit", "bescheiden", "zuverlaessig"],
+        "referenceTargetIds": ["ruecksichtslos", "zielstrebig", "ausgeglichen", "zurueckhaltend"],
         "explanation": {
           "en": "Never thinking of the neighbours is rücksichtslos.",
-          "fr": "Ne jamais penser aux voisins, c'est être rücksichtslos.",
+          "fr": "Ne jamais penser aux voisins, c’est être rücksichtslos.",
           "de": "Nie an die Nachbarn zu denken, ist rücksichtslos."
         }
       },
-      "listeningOptionTargetIds": ["ruecksichtslos", "zuverlaessig", "hilfsbereit", "launisch"]
+      "listeningOptionTargetIds": [
+        "ruecksichtslos",
+        "rechthaberisch",
+        "verschwenderisch",
+        "weltoffen"
+      ]
     },
     {
-      "id": "zuverlaessig",
-      "term": "zuverlässig",
-      "translations": { "en": ["reliable"], "fr": ["fiable"] },
+      "id": "rechthaberisch",
+      "term": "rechthaberisch",
+      "translations": {
+        "en": ["always wanting to be right", "opinionated"],
+        "fr": ["qui veut toujours avoir raison"]
+      },
       "wordClass": "adjective",
       "genders": [],
       "number": null,
-      "teachingForm": "zuverlässig",
-      "examForms": ["zuverlässig"],
+      "teachingForm": "rechthaberisch",
+      "examForms": ["rechthaberisch"],
       "articleException": null,
       "genderVariants": [],
-      "pronunciation": "/ˈt͡suːfɛɐ̯ˌlɛsɪç/",
-      "difficulty": "core",
+      "pronunciation": "/ˈʁɛçtˌhaːbəʁɪʃ/",
+      "difficulty": "demanding",
       "context": {
-        "sentence": "Man kann sich auf Tom verlassen, er ist sehr zuverlässig.",
+        "sentence": "Mein Onkel ist rechthaberisch und lässt niemanden ausreden.",
         "translation": {
-          "en": "You can rely on Tom, he is very reliable.",
-          "fr": "On peut compter sur Tom, il est très fiable."
+          "en": "My uncle always has to be right and never lets anyone finish.",
+          "fr": "Mon oncle veut toujours avoir raison et ne laisse personne finir."
         }
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "Zuverlässig describes someone you can depend on, who does what they promise. The ä has an umlaut.",
-        "fr": "Zuverlässig décrit quelqu'un sur qui on peut compter et qui fait ce qu'il promet. Le ä porte un tréma (Umlaut).",
-        "de": "Zuverlässig beschreibt jemanden, auf den man sich verlassen kann und der tut, was er verspricht. Das ä hat einen Umlaut."
+        "en": "Rechthaberisch describes someone who always has to be right and never admits a mistake. The word comes from recht haben.",
+        "fr": "Rechthaberisch décrit quelqu’un qui doit toujours avoir raison et n’admet jamais une erreur. Le mot vient de recht haben.",
+        "de": "Rechthaberisch beschreibt jemanden, der immer recht haben will und nie einen Fehler zugibt. Das Wort kommt von recht haben."
       },
       "genderExplanation": null,
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Auf Lena kann man sich verlassen: Sie ist ",
-        "after": " und kommt immer pünktlich.",
-        "accepted": { "answers": ["zuverlässig"] },
-        "referenceTargetIds": ["zuverlaessig", "launisch", "schuechtern", "ruecksichtslos"],
+        "before": "Mit ihm kann man nicht diskutieren. Er ist so ",
+        "after": ", dass er in jedem Gespräch recht behalten muss.",
+        "accepted": { "answers": ["rechthaberisch"] },
+        "referenceTargetIds": ["rechthaberisch", "gesellig", "belastbar", "geizig"],
         "explanation": {
-          "en": "Someone you can rely on who is always on time is zuverlässig.",
-          "fr": "Quelqu'un sur qui on peut compter et qui est toujours à l'heure est zuverlässig.",
-          "de": "Wer immer pünktlich ist und auf den man sich verlassen kann, ist zuverlässig."
+          "en": "Having to be right in every conversation is rechthaberisch.",
+          "fr": "Devoir avoir raison dans chaque conversation, c’est être rechthaberisch.",
+          "de": "In jedem Gespräch recht behalten zu müssen, ist rechthaberisch."
         }
       },
-      "listeningOptionTargetIds": ["zuverlaessig", "grosszuegig", "ruecksichtslos", "launisch"]
+      "listeningOptionTargetIds": [
+        "rechthaberisch",
+        "eingebildet",
+        "ruecksichtslos",
+        "verschwenderisch"
+      ]
     },
     {
-      "id": "neugierig",
-      "term": "neugierig",
-      "translations": { "en": ["curious"], "fr": ["curieux"] },
+      "id": "eingebildet",
+      "term": "eingebildet",
+      "translations": {
+        "en": ["conceited", "arrogant"],
+        "fr": ["prétentieux", "imbu de soi-même"]
+      },
       "wordClass": "adjective",
       "genders": [],
       "number": null,
-      "teachingForm": "neugierig",
-      "examForms": ["neugierig"],
+      "teachingForm": "eingebildet",
+      "examForms": ["eingebildet"],
       "articleException": null,
       "genderVariants": [],
-      "pronunciation": "/ˈnɔɪɡiːʁɪç/",
-      "difficulty": "core",
+      "pronunciation": "/ˈaɪ̯nɡəˌbɪldət/",
+      "difficulty": "demanding",
       "context": {
-        "sentence": "Die Kinder sind neugierig und wollen alles wissen.",
+        "sentence": "Seit seiner Beförderung ist er ziemlich eingebildet.",
         "translation": {
-          "en": "The children are curious and want to know everything.",
-          "fr": "Les enfants sont curieux et veulent tout savoir."
+          "en": "Since his promotion he has been rather conceited.",
+          "fr": "Depuis sa promotion, il est plutôt prétentieux."
         }
       },
-      "ambiguityNote": null,
+      "ambiguityNote": {
+        "en": "Eingebildet also means imagined: eine eingebildete Krankheit is an illness that exists only in the mind.",
+        "fr": "Eingebildet veut aussi dire imaginaire : eine eingebildete Krankheit est une maladie qui n’existe que dans la tête.",
+        "de": "Eingebildet heißt auch „nur vorgestellt“: Eine eingebildete Krankheit gibt es nur im Kopf."
+      },
       "explanation": {
-        "en": "Neugierig describes someone who wants to find out new things or learn about other people's lives.",
-        "fr": "Neugierig décrit quelqu'un qui veut découvrir des choses nouvelles ou en savoir plus sur la vie des autres.",
-        "de": "Neugierig beschreibt jemanden, der Neues herausfinden oder das Leben anderer kennenlernen möchte."
+        "en": "Eingebildet describes someone who thinks they are better than other people.",
+        "fr": "Eingebildet décrit quelqu’un qui se croit meilleur que les autres.",
+        "de": "Eingebildet beschreibt jemanden, der glaubt, er sei besser als andere."
       },
       "genderExplanation": null,
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Das Kind ist sehr ",
-        "after": " und stellt den ganzen Tag Fragen: Warum? Wie funktioniert das?",
-        "accepted": { "answers": ["neugierig"] },
-        "referenceTargetIds": ["neugierig", "geizig", "hilfsbereit", "ruecksichtslos"],
+        "before": "Seit sie berühmt ist, ist sie ziemlich ",
+        "after": " und glaubt, sie sei etwas Besseres.",
+        "accepted": { "answers": ["eingebildet"] },
+        "referenceTargetIds": ["eingebildet", "gesellig", "belastbar", "verschwenderisch"],
         "explanation": {
-          "en": "Asking questions all day because you want to know things is neugierig.",
-          "fr": "Poser des questions toute la journée parce qu'on veut savoir, c'est être neugierig.",
-          "de": "Den ganzen Tag Fragen zu stellen, weil man etwas wissen will, ist neugierig."
+          "en": "Believing you are something better than others is eingebildet.",
+          "fr": "Se croire supérieur aux autres, c’est être eingebildet.",
+          "de": "Zu glauben, man sei etwas Besseres, ist eingebildet."
         }
       },
-      "listeningOptionTargetIds": ["neugierig", "ehrgeizig", "geizig", "zuverlaessig"]
+      "listeningOptionTargetIds": ["eingebildet", "selbstbewusst", "rechthaberisch", "ausgeglichen"]
+    },
+    {
+      "id": "weltoffen",
+      "term": "weltoffen",
+      "translations": { "en": ["open-minded", "cosmopolitan"], "fr": ["ouvert sur le monde"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "weltoffen",
+      "examForms": ["weltoffen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈvɛltˌʔɔfn̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Hamburg gilt als weltoffene Stadt.",
+        "translation": {
+          "en": "Hamburg is seen as a cosmopolitan city.",
+          "fr": "Hambourg passe pour une ville ouverte sur le monde."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Weltoffen describes someone who is open to other countries, cultures and ways of life.",
+        "fr": "Weltoffen décrit quelqu’un qui est ouvert aux autres pays, cultures et modes de vie.",
+        "de": "Weltoffen beschreibt jemanden, der offen für andere Länder, Kulturen und Lebensweisen ist."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Sie ist sehr ",
+        "after": ": Sie reist gern, lernt fremde Sprachen und interessiert sich für andere Kulturen.",
+        "accepted": { "answers": ["weltoffen"] },
+        "referenceTargetIds": ["weltoffen", "geizig", "rechthaberisch", "zurueckhaltend"],
+        "explanation": {
+          "en": "Travelling, learning languages and being interested in other cultures is weltoffen.",
+          "fr": "Voyager, apprendre des langues et s’intéresser aux autres cultures, c’est être weltoffen.",
+          "de": "Gern zu reisen, Sprachen zu lernen und sich für andere Kulturen zu interessieren, ist weltoffen."
+        }
+      },
+      "listeningOptionTargetIds": ["weltoffen", "belastbar", "gesellig", "selbstbewusst"]
     }
   ],
   "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
