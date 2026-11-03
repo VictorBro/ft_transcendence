@@ -13,17 +13,17 @@
   "estimatedMinutes": 22,
   "provenance": {
     "generator": "ft lessons:author",
-    "model": "sonnet",
+    "model": "opus",
     "promptVersion": "author-3",
-    "generatedAt": "2026-11-02T12:30:35.367Z",
+    "generatedAt": "2026-11-03T21:07:36.366Z",
     "inputHashes": { "outline": "cab181a862378e433ce94820879f1ae8138b3ea6fabdcdedd89e19ee5c369985" }
   },
   "kind": "vocabulary",
   "theme": "relations",
   "coverageNotes": {
-    "en": "Thirteen words on friendship: five nouns (friendship, circle of friends, mate, trust, argument), four verbs and phrases (get along, argue, make up, become friends) and adjectives for a good friend (loyal, honest, helpful, reliable).",
-    "fr": "Treize mots sur l’amitié : cinq noms (amitié, cercle d’amis, copain, confiance, dispute), des verbes et expressions (bien s’entendre, se disputer, se réconcilier, se lier d’amitié) et des adjectifs pour un bon ami (fidèle, honnête, serviable, fiable).",
-    "de": "Dreizehn Wörter zur Freundschaft: fünf Nomen (Freundschaft, Freundeskreis, Kumpel, Vertrauen, Streit), Verben und Wendungen (sich gut verstehen, sich streiten, sich vertragen, sich anfreunden) und Adjektive für einen guten Freund (treu, ehrlich, hilfsbereit, zuverlässig)."
+    "en": "Thirteen words on friendship: five nouns (friendship, circle of friends, mate, trust, argument), verbs and phrases (get along, argue, make up, become friends, rely on, let down, miss) and the adjective treu. The character adjectives ehrlich, hilfsbereit and zuverlässig belong to de-personality-traits and are not taught again here.",
+    "fr": "Treize mots sur l’amitié : cinq noms (amitié, cercle d’amis, copain, confiance, dispute), des verbes et expressions (bien s’entendre, se disputer, se réconcilier, se lier d’amitié, compter sur, laisser tomber, manquer) et l’adjectif treu. Les adjectifs de caractère ehrlich, hilfsbereit et zuverlässig relèvent de de-personality-traits et ne sont pas repris ici.",
+    "de": "Dreizehn Wörter zur Freundschaft: fünf Nomen (Freundschaft, Freundeskreis, Kumpel, Vertrauen, Streit), Verben und Wendungen (sich gut verstehen, sich streiten, sich vertragen, sich anfreunden, sich verlassen auf, jemanden im Stich lassen, vermissen) und das Adjektiv treu. Die Charakteradjektive ehrlich, hilfsbereit und zuverlässig gehören zu de-personality-traits und werden hier nicht wiederholt."
   },
   "targetCount": 13,
   "countRationale": {
@@ -32,9 +32,9 @@
     "de": "Dreizehn Wörter entsprechen der Vorgabe von etwa dreizehn und halten die Lektion bei rund zwanzig Minuten."
   },
   "difficultyBalance": {
-    "en": "Most words are core B1 vocabulary; the reflexive verbs and the colloquial Kumpel are more demanding.",
-    "fr": "La plupart des mots sont du vocabulaire B1 de base ; les verbes pronominaux et le familier Kumpel sont plus exigeants.",
-    "de": "Die meisten Wörter gehören zum B1-Grundwortschatz; die reflexiven Verben und das umgangssprachliche Kumpel sind anspruchsvoller."
+    "en": "Most words are core B1 vocabulary; the reflexive verbs, the fixed phrase im Stich lassen and the colloquial Kumpel are more demanding.",
+    "fr": "La plupart des mots sont du vocabulaire B1 de base ; les verbes pronominaux, l’expression figée im Stich lassen et le familier Kumpel sont plus exigeants.",
+    "de": "Die meisten Wörter gehören zum B1-Grundwortschatz; die reflexiven Verben, die feste Wendung im Stich lassen und das umgangssprachliche Kumpel sind anspruchsvoller."
   },
   "prerequisites": [],
   "groups": [
@@ -64,15 +64,15 @@
         "verstehen",
         "streiten",
         "vertragen",
-        "ehrlich",
-        "hilfsbereit",
+        "vermissen",
+        "stich",
         "anfreunden",
-        "zuverlaessig"
+        "verlassen"
       ],
       "introduction": {
-        "en": "Now the words that describe a good friend and what happens between friends:\n\n- `treu`\n- `sich gut verstehen`\n- `sich streiten`\n- `sich vertragen`\n- `ehrlich`\n- `hilfsbereit`\n- `sich anfreunden`\n- `zuverlässig`\n\nWith **sich** verbs the pronoun changes with the subject: `ich streite mich`, `wir streiten uns`.",
-        "fr": "Voici maintenant les mots qui décrivent un bon ami et ce qui se passe entre amis :\n\n- `treu`\n- `sich gut verstehen`\n- `sich streiten`\n- `sich vertragen`\n- `ehrlich`\n- `hilfsbereit`\n- `sich anfreunden`\n- `zuverlässig`\n\nAvec les verbes en **sich**, le pronom change avec le sujet : `ich streite mich`, `wir streiten uns`.",
-        "de": "Jetzt die Wörter, die einen guten Freund beschreiben, und was zwischen Freunden passiert:\n\n- `treu`\n- `sich gut verstehen`\n- `sich streiten`\n- `sich vertragen`\n- `ehrlich`\n- `hilfsbereit`\n- `sich anfreunden`\n- `zuverlässig`\n\nBei Verben mit **sich** ändert sich das Pronomen mit dem Subjekt: `ich streite mich`, `wir streiten uns`."
+        "en": "Now the words for what a good friend does and what happens between friends:\n\n- `treu`\n- `sich gut verstehen`\n- `sich streiten`\n- `sich vertragen`\n- `vermissen`\n- `jemanden im Stich lassen`\n- `sich anfreunden`\n- `sich verlassen auf`\n\nWith **sich** verbs the pronoun changes with the subject: `ich streite mich`, `wir streiten uns`.",
+        "fr": "Voici maintenant les mots pour ce que fait un bon ami et ce qui se passe entre amis :\n\n- `treu`\n- `sich gut verstehen`\n- `sich streiten`\n- `sich vertragen`\n- `vermissen`\n- `jemanden im Stich lassen`\n- `sich anfreunden`\n- `sich verlassen auf`\n\nAvec les verbes en **sich**, le pronom change avec le sujet : `ich streite mich`, `wir streiten uns`.",
+        "de": "Jetzt die Wörter dafür, was ein guter Freund tut und was zwischen Freunden passiert:\n\n- `treu`\n- `sich gut verstehen`\n- `sich streiten`\n- `sich vertragen`\n- `vermissen`\n- `jemanden im Stich lassen`\n- `sich anfreunden`\n- `sich verlassen auf`\n\nBei Verben mit **sich** ändert sich das Pronomen mit dem Subjekt: `ich streite mich`, `wir streiten uns`."
       }
     }
   ],
@@ -114,7 +114,7 @@
         "before": "Unsere ",
         "after": " hält schon seit der Schulzeit.",
         "accepted": { "answers": ["Freundschaft"] },
-        "referenceTargetIds": ["freundschaft", "streit", "treu", "ehrlich"],
+        "referenceTargetIds": ["freundschaft", "streit", "treu", "vermissen"],
         "explanation": {
           "en": "Only Freundschaft fits: it is feminine and can last for years.",
           "fr": "Seul « Freundschaft » convient : il est féminin et peut durer des années.",
@@ -160,7 +160,7 @@
         "before": "Mein ",
         "after": " ist groß: Zu meinem Geburtstag kommen dreißig Leute.",
         "accepted": { "answers": ["Freundeskreis"] },
-        "referenceTargetIds": ["freundeskreis", "vertrauen", "hilfsbereit", "streiten"],
+        "referenceTargetIds": ["freundeskreis", "vertrauen", "stich", "streiten"],
         "explanation": {
           "en": "Only Freundeskreis fits: it is a group of people.",
           "fr": "Seul « Freundeskreis » convient : c’est un groupe de personnes.",
@@ -210,7 +210,7 @@
         "before": "Mit meinem ",
         "after": " Tom gehe ich jeden Freitag Fußball spielen.",
         "accepted": { "answers": ["Kumpel"] },
-        "referenceTargetIds": ["kumpel", "freundschaft", "zuverlaessig", "vertragen"],
+        "referenceTargetIds": ["kumpel", "freundschaft", "verlassen", "vertragen"],
         "explanation": {
           "en": "Only Kumpel fits: it names a person, followed by his name.",
           "fr": "Seul « Kumpel » convient : c’est une personne, suivie de son prénom.",
@@ -256,7 +256,7 @@
         "before": "Ich habe volles ",
         "after": " zu dir und erzähle dir alles.",
         "accepted": { "answers": ["Vertrauen"] },
-        "referenceTargetIds": ["vertrauen", "streit", "freundschaft", "ehrlich"],
+        "referenceTargetIds": ["vertrauen", "streit", "freundschaft", "vermissen"],
         "explanation": {
           "en": "Only Vertrauen fits: volles needs a neuter noun, and you tell everything to someone you trust.",
           "fr": "Seul « Vertrauen » convient : volles demande un nom neutre, et on dit tout à quelqu’un en qui on a confiance.",
@@ -428,7 +428,7 @@
         "before": "Die Kinder ",
         "after": " sich jeden Tag um das Spielzeug.",
         "accepted": { "answers": ["streiten"] },
-        "referenceTargetIds": ["streiten", "verstehen", "anfreunden", "hilfsbereit"],
+        "referenceTargetIds": ["streiten", "verstehen", "anfreunden", "stich"],
         "explanation": {
           "en": "Only streiten fits: children fight over a toy.",
           "fr": "Seul « streiten » convient : des enfants se disputent à cause d’un jouet.",
@@ -477,7 +477,7 @@
         "before": "Nach dem Streit haben sie sich schnell wieder ",
         "after": ".",
         "accepted": { "answers": ["vertragen"] },
-        "referenceTargetIds": ["vertragen", "streiten", "ehrlich", "kumpel"],
+        "referenceTargetIds": ["vertragen", "streiten", "vermissen", "kumpel"],
         "explanation": {
           "en": "Only vertragen fits: the past participle is the same as the infinitive, and it means they made up after the argument.",
           "fr": "Seul « vertragen » convient : le participe passé est identique à l’infinitif, et cela signifie qu’ils se sont réconciliés après la dispute.",
@@ -487,88 +487,92 @@
       "listeningOptionTargetIds": ["vertragen", "vertrauen", "verstehen", "streiten"]
     },
     {
-      "id": "ehrlich",
-      "term": "ehrlich",
-      "translations": { "en": ["honest"], "fr": ["honnête"] },
-      "wordClass": "adjective",
+      "id": "vermissen",
+      "term": "vermissen",
+      "translations": { "en": ["to miss"], "fr": ["manquer (à quelqu’un)"] },
+      "wordClass": "verb",
       "genders": [],
       "number": null,
-      "teachingForm": "ehrlich",
-      "examForms": ["ehrlich"],
+      "teachingForm": "vermissen",
+      "examForms": ["vermissen"],
       "articleException": null,
       "genderVariants": [],
-      "pronunciation": "/ˈeːɐ̯lɪç/",
+      "pronunciation": "/fɛɐ̯ˈmɪsn̩/",
       "difficulty": "core",
       "context": {
-        "sentence": "Mein bester Freund ist immer ehrlich.",
+        "sentence": "Ich vermisse meine Freunde aus der Schulzeit.",
         "translation": {
-          "en": "My best friend is always honest.",
-          "fr": "Mon meilleur ami est toujours honnête."
+          "en": "I miss my friends from school.",
+          "fr": "Mes amis de l’école me manquent."
         }
       },
-      "ambiguityNote": null,
+      "ambiguityNote": {
+        "en": "The person who misses is the subject: Ich vermisse dich means I miss you.",
+        "fr": "Celui à qui l’autre manque est le sujet : Ich vermisse dich veut dire « tu me manques ».",
+        "de": "Wer jemanden vermisst, ist das Subjekt: Ich vermisse dich."
+      },
       "explanation": {
-        "en": "Ehrlich describes someone who tells the truth.",
-        "fr": "Ehrlich décrit quelqu’un qui dit la vérité.",
-        "de": "Ehrlich beschreibt jemanden, der die Wahrheit sagt."
+        "en": "Vermissen means to feel sad because someone is not with you.",
+        "fr": "Vermissen signifie être triste parce que quelqu’un n’est pas là.",
+        "de": "Vermissen heißt, traurig zu sein, weil jemand nicht da ist."
       },
       "genderExplanation": null,
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Sei ",
-        "after": " zu mir: Hat dir mein Geschenk gefallen?",
-        "accepted": { "answers": ["ehrlich"] },
-        "referenceTargetIds": ["ehrlich", "treu", "hilfsbereit", "anfreunden"],
+        "before": "Seit Anna nach Berlin gezogen ist, habe ich sie sehr ",
+        "after": ".",
+        "accepted": { "answers": ["vermisst"] },
+        "referenceTargetIds": ["vermissen", "vertragen", "anfreunden", "streiten"],
         "explanation": {
-          "en": "Only ehrlich fits: you ask for the truth about the gift.",
-          "fr": "Seul « ehrlich » convient : on demande la vérité sur le cadeau.",
-          "de": "Nur „ehrlich“ passt: Man verlangt die Wahrheit über das Geschenk."
+          "en": "Only vermisst fits: Anna has moved away and you are sad she is not there.",
+          "fr": "Seul « vermisst » convient : Anna est partie et elle vous manque.",
+          "de": "Nur „vermisst“ passt: Anna ist weggezogen, und man ist traurig, dass sie nicht da ist."
         }
       },
-      "listeningOptionTargetIds": ["ehrlich", "hilfsbereit", "zuverlaessig", "treu"]
+      "listeningOptionTargetIds": ["vermissen", "verlassen", "vertrauen", "vertragen"]
     },
     {
-      "id": "hilfsbereit",
-      "term": "hilfsbereit",
-      "translations": { "en": ["helpful"], "fr": ["serviable"] },
-      "wordClass": "adjective",
+      "id": "stich",
+      "term": "jemanden im Stich lassen",
+      "translations": { "en": ["to let someone down"], "fr": ["laisser tomber quelqu’un"] },
+      "wordClass": "phrase",
       "genders": [],
       "number": null,
-      "teachingForm": "hilfsbereit",
-      "examForms": ["hilfsbereit"],
+      "teachingForm": "jemanden im Stich lassen",
+      "examForms": ["jemanden im Stich lassen"],
       "articleException": null,
       "genderVariants": [],
-      "pronunciation": "/ˈhɪlfsbəˌʁaɪ̯t/",
-      "difficulty": "core",
+      "pronunciation": "/ˈjeːmandn̩ ɪm ʃtɪç ˈlasn̩/",
+      "difficulty": "demanding",
       "context": {
-        "sentence": "Meine Freunde sind sehr hilfsbereit.",
+        "sentence": "Als ich Hilfe brauchte, hat er mich im Stich gelassen.",
         "translation": {
-          "en": "My friends are very helpful.",
-          "fr": "Mes amis sont très serviables."
+          "en": "When I needed help, he let me down.",
+          "fr": "Quand j’avais besoin d’aide, il m’a laissé tomber."
         }
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "Hilfsbereit describes someone who is always ready to help.",
-        "fr": "Hilfsbereit décrit quelqu’un qui est toujours prêt à aider.",
-        "de": "Hilfsbereit beschreibt jemanden, der immer bereit ist zu helfen."
+        "en": "Jemanden im Stich lassen means not to help someone when they need you. Stich is a noun and has a capital letter.",
+        "fr": "Jemanden im Stich lassen signifie ne pas aider quelqu’un quand il a besoin de vous. Stich est un nom et prend une majuscule.",
+        "de": "Jemanden im Stich lassen heißt, jemandem nicht zu helfen, wenn er einen braucht. Stich ist ein Nomen und wird großgeschrieben."
       },
       "genderExplanation": null,
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Meine Nachbarin ist sehr ",
-        "after": ": Sie trägt mir immer die Einkäufe nach oben.",
-        "accepted": { "answers": ["hilfsbereit"] },
-        "referenceTargetIds": ["hilfsbereit", "ehrlich", "vertrauen", "freundeskreis"],
+        "before": "Ein echter Freund lässt dich nicht im ",
+        "after": ", wenn du Probleme hast.",
+        "accepted": { "answers": ["Stich"] },
+        "referenceTargetIds": ["stich", "treu", "anfreunden", "verstehen"],
         "explanation": {
-          "en": "Only hilfsbereit fits: carrying the shopping is a way of helping.",
-          "fr": "Seul « hilfsbereit » convient : porter les courses, c’est une façon d’aider.",
-          "de": "Nur „hilfsbereit“ passt: Die Einkäufe zu tragen ist eine Art zu helfen."
+          "en": "Only Stich fits: jemanden im Stich lassen is a fixed phrase.",
+          "fr": "Seul « Stich » convient : « jemanden im Stich lassen » est une expression figée.",
+          "de": "Nur „Stich“ passt: „jemanden im Stich lassen“ ist eine feste Wendung."
         }
       },
-      "listeningOptionTargetIds": ["hilfsbereit", "ehrlich", "zuverlaessig", "anfreunden"]
+      "listeningOptionTargetIds": ["stich", "streit", "streiten", "treu"]
     },
     {
       "id": "anfreunden",
@@ -603,7 +607,7 @@
         "before": "Im Sprachkurs konnte sich Mia schnell mit Jana ",
         "after": ".",
         "accepted": { "answers": ["anfreunden"] },
-        "referenceTargetIds": ["anfreunden", "treu", "hilfsbereit", "freundschaft"],
+        "referenceTargetIds": ["anfreunden", "treu", "stich", "freundschaft"],
         "explanation": {
           "en": "Only anfreunden fits: after konnte you need an infinitive verb, and two classmates become friends.",
           "fr": "Seul « anfreunden » convient : après konnte il faut un verbe à l’infinitif, et deux camarades de cours deviennent amies.",
@@ -613,43 +617,50 @@
       "listeningOptionTargetIds": ["anfreunden", "freundschaft", "freundeskreis", "treu"]
     },
     {
-      "id": "zuverlaessig",
-      "term": "zuverlässig",
-      "translations": { "en": ["reliable"], "fr": ["fiable"] },
-      "wordClass": "adjective",
+      "id": "verlassen",
+      "term": "sich verlassen auf",
+      "translations": { "en": ["to rely on", "to count on"], "fr": ["compter sur"] },
+      "wordClass": "verb",
       "genders": [],
       "number": null,
-      "teachingForm": "zuverlässig",
-      "examForms": ["zuverlässig"],
+      "teachingForm": "sich verlassen auf",
+      "examForms": ["sich verlassen auf"],
       "articleException": null,
       "genderVariants": [],
-      "pronunciation": "/ˈtsuːfɛɐ̯ˌlɛsɪç/",
-      "difficulty": "core",
+      "pronunciation": "/zɪç fɛɐ̯ˈlasn̩ aʊ̯f/",
+      "difficulty": "demanding",
       "context": {
-        "sentence": "Ein guter Freund ist zuverlässig.",
-        "translation": { "en": "A good friend is reliable.", "fr": "Un bon ami est fiable." }
+        "sentence": "Auf meine beste Freundin kann ich mich immer verlassen.",
+        "translation": {
+          "en": "I can always rely on my best friend.",
+          "fr": "Je peux toujours compter sur ma meilleure amie."
+        }
       },
-      "ambiguityNote": null,
+      "ambiguityNote": {
+        "en": "Without auf, verlassen means to leave: Er hat seine Frau verlassen.",
+        "fr": "Sans auf, verlassen veut dire quitter : Er hat seine Frau verlassen.",
+        "de": "Ohne „auf“ heißt verlassen „weggehen“: Er hat seine Frau verlassen."
+      },
       "explanation": {
-        "en": "Zuverlässig describes someone you can always count on.",
-        "fr": "Zuverlässig décrit quelqu’un sur qui on peut toujours compter.",
-        "de": "Zuverlässig beschreibt jemanden, auf den man sich immer verlassen kann."
+        "en": "Sich auf jemanden verlassen means to be sure that someone will help you and keep their word.",
+        "fr": "Sich auf jemanden verlassen signifie être sûr que quelqu’un vous aidera et tiendra parole.",
+        "de": "Sich auf jemanden verlassen heißt, sicher zu sein, dass jemand hilft und sein Wort hält."
       },
       "genderExplanation": null,
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Leon kommt immer pünktlich und tut, was er verspricht. Er ist sehr ",
-        "after": ".",
-        "accepted": { "answers": ["zuverlässig"] },
-        "referenceTargetIds": ["zuverlaessig", "freundeskreis", "streiten", "vertrauen"],
+        "before": "Du kannst dich immer auf mich ",
+        "after": ": Ich helfe dir beim Umzug.",
+        "accepted": { "answers": ["verlassen"] },
+        "referenceTargetIds": ["verlassen", "vertragen", "verstehen", "treu"],
         "explanation": {
-          "en": "Only zuverlässig fits: it is the adjective for someone who is punctual and keeps promises.",
-          "fr": "Seul « zuverlässig » convient : c’est l’adjectif pour quelqu’un de ponctuel qui tient ses promesses.",
-          "de": "Nur „zuverlässig“ passt: Es ist das Adjektiv für jemanden, der pünktlich ist und seine Versprechen hält."
+          "en": "Only verlassen fits: sich auf jemanden verlassen is the phrase, with dich and auf mich.",
+          "fr": "Seul « verlassen » convient : l’expression est « sich auf jemanden verlassen », avec dich et auf mich.",
+          "de": "Nur „verlassen“ passt: Die Wendung ist „sich auf jemanden verlassen“, mit „dich“ und „auf mich“."
         }
       },
-      "listeningOptionTargetIds": ["zuverlaessig", "ehrlich", "hilfsbereit", "treu"]
+      "listeningOptionTargetIds": ["verlassen", "vertragen", "vertrauen", "verstehen"]
     }
   ],
   "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
