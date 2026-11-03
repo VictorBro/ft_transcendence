@@ -1,0 +1,588 @@
+{
+  "schemaVersion": 2,
+  "id": "en-names-and-nicknames",
+  "lang": "en",
+  "level": "B1",
+  "locales": ["en", "fr", "de"],
+  "title": "Names and nicknames",
+  "objective": {
+    "en": "Talk about names and what people call you: middle name, full name, nickname, maiden name and naming someone after a person.",
+    "fr": "Parler des noms et de la façon dont on vous appelle : deuxième prénom, nom complet, surnom, nom de jeune fille, donner le nom de quelqu'un.",
+    "de": "Über Namen sprechen und darüber, wie man genannt wird: zweiter Vorname, vollständiger Name, Spitzname, Mädchenname, jemanden nach jemandem benennen."
+  },
+  "estimatedMinutes": 19,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:33:09.490Z",
+    "inputHashes": { "outline": "2a0babd6c2ca72451fdfbcbdc42b02e93de47669880c8529a14a02a53164da03" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Twelve words and phrases: the parts of a name (given name, middle name, surname, full name, initials, maiden name) and the words for nicknames, changed names and naming people (nickname, married name, stage name, go by, be short for, name someone after).",
+    "fr": "Douze mots et expressions : les parties d'un nom (prénom, deuxième prénom, nom de famille, nom complet, initiales, nom de jeune fille) et les mots pour les surnoms, les noms changés et le fait de nommer quelqu'un (surnom, nom d'épouse, nom de scène, go by, be short for, name someone after).",
+    "de": "Zwölf Wörter und Wendungen: die Teile eines Namens (Vorname, zweiter Vorname, Nachname, vollständiger Name, Initialen, Mädchenname) und die Wörter für Spitznamen, geänderte Namen und Namensgebung (Spitzname, Ehename, Künstlername, go by, be short for, name someone after)."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve items fit the intent and give two groups of six, which suits one short B1 lesson.",
+    "fr": "Douze éléments correspondent à l'objectif et donnent deux groupes de six, adaptés à une courte leçon B1.",
+    "de": "Zwölf Einträge passen zum Ziel und ergeben zwei Gruppen zu je sechs, passend für eine kurze B1-Lektion."
+  },
+  "difficultyBalance": {
+    "en": "Most items are transparent compound nouns; the three verb phrases (go by, be short for, name someone after) are the harder ones.",
+    "fr": "La plupart des éléments sont des noms composés transparents ; les trois expressions verbales (go by, be short for, name someone after) sont les plus difficiles.",
+    "de": "Die meisten Einträge sind durchsichtige zusammengesetzte Nomen; die drei Verbwendungen (go by, be short for, name someone after) sind die schwierigeren."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "parts-of-a-name",
+      "label": {
+        "en": "The parts of a name",
+        "fr": "Les parties d'un nom",
+        "de": "Die Teile eines Namens"
+      },
+      "targetIds": ["given-name", "middle-name", "surname", "full-name", "initials", "maiden-name"],
+      "introduction": {
+        "en": "Learn **six words** for the parts of a name:\n\n- `given name`\n- `middle name`\n- `surname`\n- `full name`\n- `initials`\n- `maiden name`\n\nYour `full name` is your `given name`, your `middle name` and your `surname` together.",
+        "fr": "Apprenez **six mots** pour les parties d'un nom :\n\n- `given name`\n- `middle name`\n- `surname`\n- `full name`\n- `initials`\n- `maiden name`\n\nVotre `full name` réunit votre `given name`, votre `middle name` et votre `surname`.",
+        "de": "Lerne **sechs Wörter** für die Teile eines Namens:\n\n- `given name`\n- `middle name`\n- `surname`\n- `full name`\n- `initials`\n- `maiden name`\n\nDein `full name` besteht aus `given name`, `middle name` und `surname` zusammen."
+      }
+    },
+    {
+      "id": "nicknames-and-naming",
+      "label": {
+        "en": "Nicknames and naming people",
+        "fr": "Surnoms et façons de nommer",
+        "de": "Spitznamen und Namensgebung"
+      },
+      "targetIds": ["nickname", "married-name", "stage-name", "go-by", "short-for", "name-after"],
+      "introduction": {
+        "en": "Now learn **six more** words and phrases about the names people use:\n\n- `nickname`\n- `married name`\n- `stage name`\n- `go by`\n- `be short for`\n- `name someone after`\n\nThe last three are verb phrases: `She goes by Liz.` `Liz is short for Elizabeth.`",
+        "fr": "Apprenez maintenant **six autres** mots et expressions sur les noms que l'on utilise :\n\n- `nickname`\n- `married name`\n- `stage name`\n- `go by`\n- `be short for`\n- `name someone after`\n\nLes trois derniers sont des expressions verbales : `She goes by Liz.` `Liz is short for Elizabeth.`",
+        "de": "Lerne jetzt **sechs weitere** Wörter und Wendungen für die Namen, die man benutzt:\n\n- `nickname`\n- `married name`\n- `stage name`\n- `go by`\n- `be short for`\n- `name someone after`\n\nDie letzten drei sind Verbwendungen: `She goes by Liz.` `Liz is short for Elizabeth.`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "given-name",
+      "term": "given name",
+      "translations": { "fr": ["prénom"], "de": ["Vorname"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "given name",
+      "examForms": ["given name", "first name"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈɡɪvn neɪm/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "My given name is Daniel, but my surname is Brown.",
+        "translation": {
+          "fr": "Mon prénom est Daniel, mais mon nom de famille est Brown.",
+          "de": "Mein Vorname ist Daniel, aber mein Nachname ist Brown."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Your given name is the name your parents chose for you; it is also called your first name.",
+        "fr": "Le given name est le nom que vos parents ont choisi pour vous ; on dit aussi first name.",
+        "de": "Der given name ist der Name, den deine Eltern für dich gewählt haben; man sagt auch first name."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "My first name, or ",
+        "after": ", is Daniel.",
+        "accepted": { "answers": ["given name"] },
+        "referenceTargetIds": ["given-name", "surname", "full-name", "maiden-name"],
+        "explanation": {
+          "en": "A first name is also called a given name.",
+          "fr": "Un first name s'appelle aussi un given name.",
+          "de": "Ein first name heißt auch given name."
+        }
+      },
+      "listeningOptionTargetIds": ["given-name", "middle-name", "surname", "full-name"]
+    },
+    {
+      "id": "middle-name",
+      "term": "middle name",
+      "translations": { "fr": ["deuxième prénom"], "de": ["zweiter Vorname"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "middle name",
+      "examForms": ["middle name"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈmɪdl neɪm/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Her middle name is Rose.",
+        "translation": {
+          "fr": "Son deuxième prénom est Rose.",
+          "de": "Ihr zweiter Vorname ist Rose."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A middle name comes between the given name and the surname.",
+        "fr": "Le middle name se place entre le prénom et le nom de famille.",
+        "de": "Der middle name steht zwischen Vorname und Nachname."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "My first name is Anna and my ",
+        "after": " is Marie, so my full name is Anna Marie Smith.",
+        "accepted": { "answers": ["middle name"] },
+        "referenceTargetIds": ["middle-name", "nickname", "initials", "maiden-name"],
+        "explanation": {
+          "en": "The name between the first name and the surname is the middle name.",
+          "fr": "Le nom entre le prénom et le nom de famille est le middle name.",
+          "de": "Der Name zwischen Vorname und Nachname ist der middle name."
+        }
+      },
+      "listeningOptionTargetIds": ["given-name", "middle-name", "surname", "full-name"]
+    },
+    {
+      "id": "surname",
+      "term": "surname",
+      "translations": { "fr": ["nom de famille"], "de": ["Nachname"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "surname",
+      "examForms": ["surname", "last name", "family name"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈsɜːneɪm/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Please spell your surname for me.",
+        "translation": {
+          "fr": "Pouvez-vous épeler votre nom de famille, s'il vous plaît ?",
+          "de": "Bitte buchstabieren Sie mir Ihren Nachnamen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Your surname is your family name; it is also called your last name.",
+        "fr": "Le surname est le nom de famille ; on dit aussi last name.",
+        "de": "Der surname ist der Familienname; man sagt auch last name."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "In English, the ",
+        "after": " usually comes last, as in Smith.",
+        "accepted": { "answers": ["surname", "last name", "family name"] },
+        "referenceTargetIds": ["surname", "given-name", "middle-name", "initials"],
+        "explanation": {
+          "en": "Smith is a surname, the family name at the end of a full name.",
+          "fr": "Smith est un surname, le nom de famille placé à la fin du nom complet.",
+          "de": "Smith ist ein surname, der Familienname am Ende des vollständigen Namens."
+        }
+      },
+      "listeningOptionTargetIds": ["given-name", "middle-name", "surname", "full-name"]
+    },
+    {
+      "id": "full-name",
+      "term": "full name",
+      "translations": { "fr": ["nom complet"], "de": ["vollständiger Name"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "full name",
+      "examForms": ["full name"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌfʊl ˈneɪm/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Write your full name at the top of the form.",
+        "translation": {
+          "fr": "Écrivez votre nom complet en haut du formulaire.",
+          "de": "Schreiben Sie Ihren vollständigen Namen oben auf das Formular."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Your full name includes all your names, not just the first one.",
+        "fr": "Le full name comprend tous vos noms, pas seulement le premier.",
+        "de": "Der full name umfasst alle deine Namen, nicht nur den ersten."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Please write your ",
+        "after": " on the form: first name and surname.",
+        "accepted": { "answers": ["full name"] },
+        "referenceTargetIds": ["full-name", "nickname", "initials", "stage-name"],
+        "explanation": {
+          "en": "First name and surname together make your full name.",
+          "fr": "Le prénom et le nom de famille ensemble forment le full name.",
+          "de": "Vorname und Nachname zusammen bilden den full name."
+        }
+      },
+      "listeningOptionTargetIds": ["given-name", "middle-name", "surname", "full-name"]
+    },
+    {
+      "id": "initials",
+      "term": "initials",
+      "translations": { "fr": ["initiales"], "de": ["Initialen"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "plural",
+      "teachingForm": "initials",
+      "examForms": ["initials"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɪˈnɪʃlz/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Just write your initials at the bottom of the page.",
+        "translation": {
+          "fr": "Écrivez simplement vos initiales en bas de la page.",
+          "de": "Schreiben Sie einfach Ihre Initialen unten auf die Seite."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Initials are the first letters of your names, such as J.K.B.",
+        "fr": "Les initials sont les premières lettres de vos noms, par exemple J.K.B.",
+        "de": "Initials sind die Anfangsbuchstaben deiner Namen, zum Beispiel J.K.B."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Her name is Jane Kate Brown, so her ",
+        "after": " are J.K.B.",
+        "accepted": { "answers": ["initials"] },
+        "referenceTargetIds": ["initials", "nickname", "surname", "middle-name"],
+        "explanation": {
+          "en": "J.K.B. are the first letters of her names, so they are her initials.",
+          "fr": "J.K.B. sont les premières lettres de ses noms : ce sont ses initials.",
+          "de": "J.K.B. sind die Anfangsbuchstaben ihrer Namen, also ihre initials."
+        }
+      },
+      "listeningOptionTargetIds": ["initials", "maiden-name", "middle-name", "married-name"]
+    },
+    {
+      "id": "maiden-name",
+      "term": "maiden name",
+      "translations": { "fr": ["nom de jeune fille"], "de": ["Mädchenname"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "maiden name",
+      "examForms": ["maiden name"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈmeɪdn neɪm/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "The bank asked for my mother's maiden name.",
+        "translation": {
+          "fr": "La banque a demandé le nom de jeune fille de ma mère.",
+          "de": "Die Bank hat nach dem Mädchennamen meiner Mutter gefragt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A maiden name is a woman's surname before she gets married.",
+        "fr": "Le maiden name est le nom de famille d'une femme avant son mariage.",
+        "de": "Der maiden name ist der Nachname einer Frau vor der Heirat."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Mrs Hill was born Clark, so Clark is her ",
+        "after": ".",
+        "accepted": { "answers": ["maiden name"] },
+        "referenceTargetIds": ["maiden-name", "given-name", "initials", "middle-name"],
+        "explanation": {
+          "en": "The surname she had before marriage is her maiden name.",
+          "fr": "Le nom de famille d'avant le mariage est son maiden name.",
+          "de": "Der Nachname vor der Heirat ist ihr maiden name."
+        }
+      },
+      "listeningOptionTargetIds": ["initials", "maiden-name", "middle-name", "married-name"]
+    },
+    {
+      "id": "nickname",
+      "term": "nickname",
+      "translations": { "fr": ["surnom"], "de": ["Spitzname"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "nickname",
+      "examForms": ["nickname"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈnɪkneɪm/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "His nickname at school was Tiny, because he was so tall.",
+        "translation": {
+          "fr": "À l'école, son surnom était Tiny, parce qu'il était très grand.",
+          "de": "In der Schule war sein Spitzname Tiny, weil er so groß war."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A nickname is an informal name that friends and family use instead of your real name.",
+        "fr": "Un nickname est un nom informel que les amis et la famille utilisent à la place du vrai nom.",
+        "de": "Ein nickname ist ein informeller Name, den Freunde und Familie statt des richtigen Namens benutzen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Everyone at school calls him Tiny. It is only a ",
+        "after": ", because he is very tall.",
+        "accepted": { "answers": ["nickname"] },
+        "referenceTargetIds": ["nickname", "middle-name", "surname", "maiden-name"],
+        "explanation": {
+          "en": "Tiny is an informal name given by friends, so it is a nickname.",
+          "fr": "Tiny est un nom informel donné par les amis : c'est un nickname.",
+          "de": "Tiny ist ein informeller Name von Freunden, also ein nickname."
+        }
+      },
+      "listeningOptionTargetIds": ["nickname", "married-name", "stage-name", "go-by"]
+    },
+    {
+      "id": "married-name",
+      "term": "married name",
+      "translations": { "fr": ["nom d'épouse"], "de": ["Ehename"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "married name",
+      "examForms": ["married name"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈmærid neɪm/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "She kept her maiden name at work and uses her married name at home.",
+        "translation": {
+          "fr": "Elle a gardé son nom de jeune fille au travail et utilise son nom d'épouse à la maison.",
+          "de": "Sie hat bei der Arbeit ihren Mädchennamen behalten und benutzt zu Hause ihren Ehenamen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A married name is the surname someone uses after getting married.",
+        "fr": "Le married name est le nom de famille que l'on utilise après le mariage.",
+        "de": "Der married name ist der Nachname, den man nach der Heirat benutzt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "After the wedding she took her husband's surname, so Hill is now her ",
+        "after": ".",
+        "accepted": { "answers": ["married name"] },
+        "referenceTargetIds": ["married-name", "given-name", "nickname", "initials"],
+        "explanation": {
+          "en": "The surname she uses after the wedding is her married name.",
+          "fr": "Le nom de famille qu'elle utilise après le mariage est son married name.",
+          "de": "Der Nachname, den sie nach der Hochzeit benutzt, ist ihr married name."
+        }
+      },
+      "listeningOptionTargetIds": ["nickname", "married-name", "stage-name", "go-by"]
+    },
+    {
+      "id": "stage-name",
+      "term": "stage name",
+      "translations": { "fr": ["nom de scène"], "de": ["Künstlername"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "stage name",
+      "examForms": ["stage name"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈsteɪdʒ neɪm/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "The singer chose a stage name that was easy to remember.",
+        "translation": {
+          "fr": "La chanteuse a choisi un nom de scène facile à retenir.",
+          "de": "Die Sängerin wählte einen Künstlernamen, der leicht zu merken war."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A stage name is a name an actor or singer uses instead of their real name.",
+        "fr": "Un stage name est un nom qu'un acteur ou un chanteur utilise à la place de son vrai nom.",
+        "de": "Ein stage name ist ein Name, den Schauspieler oder Sänger statt ihres echten Namens benutzen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Actors often use a ",
+        "after": " on posters instead of their real name.",
+        "accepted": { "answers": ["stage name"] },
+        "referenceTargetIds": ["stage-name", "middle-name", "maiden-name", "initials"],
+        "explanation": {
+          "en": "An actor's public name instead of the real one is a stage name.",
+          "fr": "Le nom public d'un acteur à la place du vrai nom est un stage name.",
+          "de": "Der öffentliche Name eines Schauspielers statt des echten Namens ist ein stage name."
+        }
+      },
+      "listeningOptionTargetIds": ["nickname", "married-name", "stage-name", "go-by"]
+    },
+    {
+      "id": "go-by",
+      "term": "go by",
+      "translations": { "fr": ["se faire appeler"], "de": ["sich nennen"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "go by",
+      "examForms": ["go by"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɡəʊ baɪ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "My name is Alexander, but I go by Alex.",
+        "translation": {
+          "fr": "Je m'appelle Alexander, mais je me fais appeler Alex.",
+          "de": "Ich heiße Alexander, aber ich nenne mich Alex."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Go by + a name means that this is the name you ask people to use for you.",
+        "fr": "Go by + un nom signifie que c'est le nom que vous demandez aux gens d'utiliser.",
+        "de": "Go by + Name bedeutet, dass das der Name ist, mit dem man dich ansprechen soll."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "My name is Elizabeth, but I ",
+        "after": " Liz.",
+        "accepted": { "answers": ["go by"] },
+        "referenceTargetIds": ["go-by", "name-after", "short-for", "nickname"],
+        "explanation": {
+          "en": "I go by Liz means people call me Liz.",
+          "fr": "I go by Liz signifie que les gens m'appellent Liz.",
+          "de": "I go by Liz bedeutet, dass mich die Leute Liz nennen."
+        }
+      },
+      "listeningOptionTargetIds": ["nickname", "married-name", "stage-name", "go-by"]
+    },
+    {
+      "id": "short-for",
+      "term": "be short for",
+      "translations": { "fr": ["être le diminutif de"], "de": ["die Kurzform von etwas sein"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "be short for",
+      "examForms": ["be short for", "short for"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/bi ˈʃɔːt fɔː/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Bill is short for William.",
+        "translation": {
+          "fr": "Bill est le diminutif de William.",
+          "de": "Bill ist die Kurzform von William."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "X is short for Y means that X is a shorter form of the full name Y.",
+        "fr": "X is short for Y signifie que X est une forme plus courte du nom complet Y.",
+        "de": "X is short for Y bedeutet, dass X eine kürzere Form des vollen Namens Y ist."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Bill is ",
+        "after": " William.",
+        "accepted": { "answers": ["short for"] },
+        "referenceTargetIds": ["short-for", "go-by", "nickname", "name-after"],
+        "explanation": {
+          "en": "Bill is a shorter form of William, so Bill is short for William.",
+          "fr": "Bill est une forme plus courte de William : Bill is short for William.",
+          "de": "Bill ist eine kürzere Form von William: Bill is short for William."
+        }
+      },
+      "listeningOptionTargetIds": ["short-for", "go-by", "name-after", "nickname"]
+    },
+    {
+      "id": "name-after",
+      "term": "name someone after",
+      "translations": {
+        "fr": ["donner à quelqu'un le nom de"],
+        "de": ["jemanden nach jemandem benennen"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "name someone after",
+      "examForms": ["name someone after", "name after"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/neɪm ˈsʌmwʌn ˈɑːftə/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "They named their son after his grandfather.",
+        "translation": {
+          "fr": "Ils ont donné à leur fils le nom de son grand-père.",
+          "de": "Sie haben ihren Sohn nach seinem Großvater benannt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Name someone after another person means to give a child the same name as that person.",
+        "fr": "Name someone after signifie donner à un enfant le même nom qu'une autre personne.",
+        "de": "Name someone after bedeutet, einem Kind den gleichen Namen wie einer anderen Person zu geben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "When their son was born, they decided to ",
+        "after": " his grandfather, so the baby is called George.",
+        "accepted": {
+          "answers": [
+            "name him after",
+            "name their son after",
+            "name the baby after",
+            "name the boy after",
+            "name the child after"
+          ]
+        },
+        "referenceTargetIds": ["name-after", "go-by", "nickname", "stage-name"],
+        "explanation": {
+          "en": "They chose the grandfather's name for the baby, so they named him after him.",
+          "fr": "Ils ont choisi le nom du grand-père pour le bébé : ils l'ont nommé d'après lui.",
+          "de": "Sie haben den Namen des Großvaters für das Baby gewählt: Sie haben es nach ihm benannt."
+        }
+      },
+      "listeningOptionTargetIds": ["short-for", "go-by", "name-after", "nickname"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

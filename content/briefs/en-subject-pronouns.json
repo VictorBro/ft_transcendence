@@ -1,0 +1,277 @@
+{
+  "schemaVersion": 2,
+  "id": "en-subject-pronouns",
+  "lang": "en",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Subject pronouns: I, you, he, she, it, we, they",
+  "objective": {
+    "en": "Use I, you, he, she, it, we and they as the subject of a sentence, and choose the right pronoun for a person, a thing or a group.",
+    "fr": "Utiliser I, you, he, she, it, we et they comme sujet d’une phrase et choisir le bon pronom pour une personne, une chose ou un groupe.",
+    "de": "I, you, he, she, it, we und they als Subjekt eines Satzes verwenden und das richtige Pronomen für eine Person, eine Sache oder eine Gruppe wählen."
+  },
+  "estimatedMinutes": 15,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:33:19.494Z",
+    "inputHashes": { "outline": "29e1213f22fee3d89f26a7dc20e084fd99f6ea81d1c2a44ede480f2468978884" }
+  },
+  "kind": "grammar",
+  "topic": "pronouns",
+  "scopeBoundaries": {
+    "en": "Covers the subject pronouns I, you, he, she, it, we and they. Excludes the verb be, object and possessive pronouns, and the -s ending of the present simple.",
+    "fr": "Couvre les pronoms sujets I, you, he, she, it, we et they. Exclut le verbe be, les pronoms compléments et possessifs, et le -s du présent simple.",
+    "de": "Behandelt die Subjektpronomen I, you, he, she, it, we und they. Ausgeschlossen sind das Verb be, Objekt- und Possessivpronomen sowie das -s im Present Simple."
+  },
+  "prerequisites": [],
+  "rules": [
+    {
+      "id": "rule-i-you",
+      "summary": {
+        "en": "I is the speaker and is always a capital letter; you is the person you talk to.",
+        "fr": "I désigne la personne qui parle et prend toujours une majuscule ; you désigne la personne à qui l’on parle.",
+        "de": "I ist die sprechende Person und wird immer großgeschrieben; you ist die angesprochene Person."
+      }
+    },
+    {
+      "id": "rule-he-she",
+      "summary": {
+        "en": "Use he for a man or a boy and she for a woman or a girl.",
+        "fr": "On utilise he pour un homme ou un garçon et she pour une femme ou une fille.",
+        "de": "He steht für einen Mann oder Jungen, she für eine Frau oder ein Mädchen."
+      }
+    },
+    {
+      "id": "rule-it",
+      "summary": {
+        "en": "Use it for a thing or an animal.",
+        "fr": "On utilise it pour une chose ou un animal.",
+        "de": "It steht für eine Sache oder ein Tier."
+      }
+    },
+    {
+      "id": "rule-we",
+      "summary": {
+        "en": "Use we for the speaker and other people; you can also mean several people.",
+        "fr": "On utilise we pour la personne qui parle et d’autres personnes ; you peut aussi désigner plusieurs personnes.",
+        "de": "We steht für die sprechende Person und andere; you kann auch mehrere Personen meinen."
+      }
+    },
+    {
+      "id": "rule-they",
+      "summary": {
+        "en": "Use they for more than one person, animal or thing.",
+        "fr": "On utilise they pour plusieurs personnes, animaux ou choses.",
+        "de": "They steht für mehrere Personen, Tiere oder Sachen."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-singular",
+      "title": {
+        "en": "One person or thing: I, you, he, she, it",
+        "fr": "Une personne ou une chose : I, you, he, she, it",
+        "de": "Eine Person oder Sache: I, you, he, she, it"
+      },
+      "ruleIds": ["rule-i-you", "rule-he-she", "rule-it"],
+      "explanationPlan": {
+        "en": "Explain that a subject pronoun replaces a name or a noun and comes before the verb. Present I (always a capital), you, he for a man or boy, she for a woman or girl, and it for a thing or an animal.",
+        "fr": "Expliquer qu’un pronom sujet remplace un nom ou un prénom et se place avant le verbe. Présenter I (toujours une majuscule), you, he pour un homme ou un garçon, she pour une femme ou une fille, et it pour une chose ou un animal.",
+        "de": "Erklären, dass ein Subjektpronomen einen Namen oder ein Nomen ersetzt und vor dem Verb steht. I (immer groß), you, he für Mann oder Junge, she für Frau oder Mädchen und it für Sache oder Tier vorstellen."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "I can swim.",
+          "translation": { "fr": "Je sais nager.", "de": "Ich kann schwimmen." }
+        },
+        {
+          "text": "Tom has a bike. He likes it.",
+          "translation": {
+            "fr": "Tom a un vélo. Il l’aime bien.",
+            "de": "Tom hat ein Fahrrad. Er mag es."
+          }
+        },
+        {
+          "text": "Anna can cook. She can make pizza.",
+          "translation": {
+            "fr": "Anna sait cuisiner. Elle sait faire des pizzas.",
+            "de": "Anna kann kochen. Sie kann Pizza machen."
+          }
+        },
+        {
+          "text": "You can sit here.",
+          "translation": { "fr": "Tu peux t’asseoir ici.", "de": "Du kannst dich hier hinsetzen." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "I is always a capital letter, even in the middle of a sentence.",
+          "fr": "I prend toujours une majuscule, même au milieu d’une phrase.",
+          "de": "I wird immer großgeschrieben, auch mitten im Satz."
+        },
+        {
+          "en": "Use it for things and animals, not he or she.",
+          "fr": "Utilisez it pour les choses et les animaux, pas he ou she.",
+          "de": "Benutze it für Sachen und Tiere, nicht he oder she."
+        },
+        {
+          "en": "Do not drop the subject: say She can swim, not Can swim.",
+          "fr": "N’omettez pas le sujet : dites She can swim, pas Can swim.",
+          "de": "Lass das Subjekt nicht weg: Sag She can swim, nicht Can swim."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-s-persons",
+          "type": "grammar_person_matching",
+          "itemCount": 1,
+          "ruleIds": ["rule-i-you", "rule-he-she"],
+          "estimatedDurationS": 45
+        },
+        {
+          "id": "ex-s-typing",
+          "type": "grammar_pronoun_form_typing",
+          "itemCount": 2,
+          "ruleIds": ["rule-he-she", "rule-it"],
+          "estimatedDurationS": 90
+        },
+        {
+          "id": "ex-s-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-i-you", "rule-he-she", "rule-it"],
+          "estimatedDurationS": 48
+        },
+        {
+          "id": "ex-s-gap",
+          "type": "grammar_gap_typing",
+          "itemCount": 3,
+          "ruleIds": ["rule-i-you", "rule-he-she", "rule-it"],
+          "estimatedDurationS": 45
+        }
+      ]
+    },
+    {
+      "id": "block-plural",
+      "title": {
+        "en": "More than one: we, you, they",
+        "fr": "Plusieurs personnes : we, you, they",
+        "de": "Mehrere: we, you, they"
+      },
+      "ruleIds": ["rule-we", "rule-they"],
+      "explanationPlan": {
+        "en": "Present we (the speaker and others), plural you, and they for more than one person, animal or thing. Stress that you does not change for one or many people, and that they has no gender.",
+        "fr": "Présenter we (celui qui parle et d’autres), you au pluriel, et they pour plusieurs personnes, animaux ou choses. Insister sur le fait que you ne change pas pour une ou plusieurs personnes, et que they n’a pas de genre.",
+        "de": "We (sprechende Person und andere), you im Plural und they für mehrere Personen, Tiere oder Sachen vorstellen. Betonen, dass you für eine oder mehrere Personen gleich bleibt und they kein Genus hat."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "Tom and I can swim. We love the sea.",
+          "translation": {
+            "fr": "Tom et moi savons nager. Nous aimons la mer.",
+            "de": "Tom und ich können schwimmen. Wir lieben das Meer."
+          }
+        },
+        {
+          "text": "Tom and Anna have a dog. They love it.",
+          "translation": {
+            "fr": "Tom et Anna ont un chien. Ils l’adorent.",
+            "de": "Tom und Anna haben einen Hund. Sie lieben ihn."
+          }
+        },
+        {
+          "text": "I have two cats. They can jump high.",
+          "translation": {
+            "fr": "J’ai deux chats. Ils savent sauter haut.",
+            "de": "Ich habe zwei Katzen. Sie können hoch springen."
+          }
+        },
+        {
+          "text": "Tom, Anna, can you help me?",
+          "translation": {
+            "fr": "Tom, Anna, pouvez-vous m’aider ?",
+            "de": "Tom, Anna, könnt ihr mir helfen?"
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "You is the same for one person and for many people.",
+          "fr": "You est identique pour une personne et pour plusieurs personnes.",
+          "de": "You ist für eine Person und für mehrere Personen gleich."
+        },
+        {
+          "en": "They is used for people, animals and things.",
+          "fr": "They s’emploie pour les personnes, les animaux et les choses.",
+          "de": "They wird für Personen, Tiere und Sachen benutzt."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-p-persons",
+          "type": "grammar_person_matching",
+          "itemCount": 1,
+          "ruleIds": ["rule-we", "rule-they"],
+          "estimatedDurationS": 45
+        },
+        {
+          "id": "ex-p-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-we", "rule-they"],
+          "estimatedDurationS": 48
+        },
+        {
+          "id": "ex-p-gap",
+          "type": "grammar_gap_typing",
+          "itemCount": 3,
+          "ruleIds": ["rule-we", "rule-they"],
+          "estimatedDurationS": 45
+        },
+        {
+          "id": "ex-p-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-we", "rule-they"],
+          "estimatedDurationS": 60
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-pronouns",
+        "type": "grammar_pronoun_form_typing",
+        "itemCount": 1,
+        "ruleIds": ["rule-he-she", "rule-it", "rule-they"],
+        "estimatedDurationS": 80,
+        "timeLimitS": 120
+      },
+      {
+        "pageId": "exam-gaps",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-i-you", "rule-we", "rule-he-she", "rule-it"],
+        "estimatedDurationS": 80,
+        "timeLimitS": 120
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["rule-we", "rule-they"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

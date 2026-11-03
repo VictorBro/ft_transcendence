@@ -1,0 +1,718 @@
+{
+  "schemaVersion": 2,
+  "id": "en-idioms-for-personality",
+  "lang": "en",
+  "level": "C1",
+  "locales": ["en", "fr", "de"],
+  "title": "Idioms for personality",
+  "objective": {
+    "en": "Describe people's character with twelve idioms such as down to earth, have a short fuse and wear your heart on your sleeve.",
+    "fr": "Décrire le caractère des gens avec douze expressions idiomatiques anglaises.",
+    "de": "Den Charakter von Menschen mit zwölf englischen Redewendungen beschreiben."
+  },
+  "estimatedMinutes": 19,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:49:01.928Z",
+    "inputHashes": { "outline": "2d810a9a75a08a39621914b24e8822b3a1461a9b7006c2f34b500fa73d39e888" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Twelve common idioms for personality: the seven named in the outline plus five frequent ones (chip on your shoulder, two-faced, thick-skinned, keep yourself to yourself, wouldn't hurt a fly). They are split into attitude and temperament, then feelings and speech.",
+    "fr": "Douze expressions courantes pour décrire le caractère : les sept du plan et cinq autres fréquentes. Elles sont réparties entre attitude et tempérament, puis sentiments et paroles.",
+    "de": "Zwölf gängige Redewendungen für den Charakter: die sieben aus der Gliederung und fünf weitere häufige. Sie sind in Haltung und Temperament sowie Gefühle und Sprechen gegliedert."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve idioms fit the outline and give two groups of six, enough to learn without overload at C1.",
+    "fr": "Douze expressions suivent le plan et forment deux groupes de six, ce qui reste gérable au niveau C1.",
+    "de": "Zwölf Redewendungen entsprechen der Gliederung und ergeben zwei Gruppen zu sechs, was auf C1 gut zu bewältigen ist."
+  },
+  "difficultyBalance": {
+    "en": "Most idioms are core and common in speech; chip on your shoulder and keep yourself to yourself are more demanding.",
+    "fr": "La plupart des expressions sont courantes à l'oral ; chip on your shoulder et keep yourself to yourself sont plus difficiles.",
+    "de": "Die meisten Redewendungen sind gängig und im Alltag üblich; chip on your shoulder und keep yourself to yourself sind anspruchsvoller."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "attitude",
+      "label": {
+        "en": "Attitude and temperament",
+        "fr": "Attitude et tempérament",
+        "de": "Haltung und Temperament"
+      },
+      "targetIds": [
+        "set-in-your-ways",
+        "down-to-earth",
+        "full-of-yourself",
+        "chip-on-shoulder",
+        "two-faced",
+        "thick-skinned"
+      ],
+      "introduction": {
+        "en": "These six idioms describe a person's **general attitude**:\n\n- `set in your ways`\n- `down to earth`\n- `full of yourself`\n- `have a chip on your shoulder`\n- `two-faced`\n- `thick-skinned`",
+        "fr": "Ces six expressions décrivent l'**attitude générale** d'une personne :\n\n- `set in your ways`\n- `down to earth`\n- `full of yourself`\n- `have a chip on your shoulder`\n- `two-faced`\n- `thick-skinned`",
+        "de": "Diese sechs Redewendungen beschreiben die **allgemeine Haltung** eines Menschen:\n\n- `set in your ways`\n- `down to earth`\n- `full of yourself`\n- `have a chip on your shoulder`\n- `two-faced`\n- `thick-skinned`"
+      }
+    },
+    {
+      "id": "heart-and-mouth",
+      "label": {
+        "en": "Feelings and speech",
+        "fr": "Sentiments et paroles",
+        "de": "Gefühle und Sprechen"
+      },
+      "targetIds": [
+        "heart-of-gold",
+        "short-fuse",
+        "big-mouth",
+        "heart-on-sleeve",
+        "keep-to-yourself",
+        "wouldnt-hurt-a-fly"
+      ],
+      "introduction": {
+        "en": "These six idioms show how people **feel and speak**. Change the pronoun to fit the person:\n\n- `have a heart of gold`\n- `have a short fuse`\n- `have a big mouth`\n- `wear your heart on your sleeve`\n- `keep yourself to yourself`\n- `wouldn't hurt a fly`",
+        "fr": "Ces six expressions montrent comment les gens **ressentent et parlent**. Changez le pronom selon la personne :\n\n- `have a heart of gold`\n- `have a short fuse`\n- `have a big mouth`\n- `wear your heart on your sleeve`\n- `keep yourself to yourself`\n- `wouldn't hurt a fly`",
+        "de": "Diese sechs Redewendungen zeigen, wie Menschen **fühlen und sprechen**. Passe das Pronomen an die Person an:\n\n- `have a heart of gold`\n- `have a short fuse`\n- `have a big mouth`\n- `wear your heart on your sleeve`\n- `keep yourself to yourself`\n- `wouldn't hurt a fly`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "set-in-your-ways",
+      "term": "set in your ways",
+      "translations": {
+        "fr": ["campé sur ses habitudes"],
+        "de": ["in seinen Gewohnheiten festgefahren"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "set in your ways",
+      "examForms": ["set in your ways", "set in his ways", "set in her ways", "set in their ways"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌset ɪn jɔːr ˈweɪz/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "My grandfather is set in his ways and refuses to try new food.",
+        "translation": {
+          "fr": "Mon grand-père est campé sur ses habitudes et refuse d'essayer de nouveaux plats.",
+          "de": "Mein Großvater ist in seinen Gewohnheiten festgefahren und probiert nichts Neues."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Set in your ways describes someone who has fixed habits and dislikes change.",
+        "fr": "Set in your ways décrit quelqu'un qui a des habitudes fixes et n'aime pas le changement.",
+        "de": "Set in your ways beschreibt jemanden mit festen Gewohnheiten, der Veränderungen nicht mag."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "My grandfather won't try new food; he's completely ",
+        "after": ".",
+        "accepted": { "answers": ["set in his ways"] },
+        "referenceTargetIds": [
+          "set-in-your-ways",
+          "down-to-earth",
+          "full-of-yourself",
+          "chip-on-shoulder"
+        ],
+        "explanation": {
+          "en": "He refuses change, so set in his ways fits.",
+          "fr": "Il refuse le changement : set in his ways convient.",
+          "de": "Er lehnt Veränderung ab, daher passt set in his ways."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "set-in-your-ways",
+        "down-to-earth",
+        "full-of-yourself",
+        "chip-on-shoulder"
+      ]
+    },
+    {
+      "id": "down-to-earth",
+      "term": "down to earth",
+      "translations": { "fr": ["simple et sans prétention"], "de": ["bodenständig"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "down to earth",
+      "examForms": ["down to earth", "down-to-earth"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌdaʊn tu ˈɜːθ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "For a famous actor, she is remarkably down to earth.",
+        "translation": {
+          "fr": "Pour une actrice célèbre, elle est remarquablement simple.",
+          "de": "Für eine berühmte Schauspielerin ist sie erstaunlich bodenständig."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Down to earth means practical, honest and without airs.",
+        "fr": "Down to earth signifie pratique, sincère et sans prétention.",
+        "de": "Down to earth bedeutet praktisch, ehrlich und ohne Allüren."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "For a famous actor she's remarkably ",
+        "after": ": she puts on no airs at all.",
+        "accepted": { "answers": ["down to earth", "down-to-earth"] },
+        "referenceTargetIds": [
+          "down-to-earth",
+          "full-of-yourself",
+          "chip-on-shoulder",
+          "two-faced"
+        ],
+        "explanation": {
+          "en": "No airs means she is simple and practical: down to earth.",
+          "fr": "Sans prétention : elle est simple et pratique, donc down to earth.",
+          "de": "Ohne Allüren heißt bodenständig, also down to earth."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "down-to-earth",
+        "full-of-yourself",
+        "chip-on-shoulder",
+        "two-faced"
+      ]
+    },
+    {
+      "id": "full-of-yourself",
+      "term": "full of yourself",
+      "translations": { "fr": ["imbu de sa personne"], "de": ["von sich eingenommen"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "full of yourself",
+      "examForms": ["full of yourself", "full of himself", "full of herself", "full of themselves"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌfʊl əv jɔːˈself/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "He never listens because he is so full of himself.",
+        "translation": {
+          "fr": "Il n'écoute jamais parce qu'il est tellement imbu de sa personne.",
+          "de": "Er hört nie zu, weil er so von sich eingenommen ist."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Full of yourself means too proud of yourself and arrogant.",
+        "fr": "Full of yourself signifie trop fier de soi et arrogant.",
+        "de": "Full of yourself bedeutet übermäßig stolz auf sich selbst und arrogant."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He never listens to anyone because he's so ",
+        "after": ".",
+        "accepted": { "answers": ["full of himself"] },
+        "referenceTargetIds": [
+          "full-of-yourself",
+          "chip-on-shoulder",
+          "two-faced",
+          "thick-skinned"
+        ],
+        "explanation": {
+          "en": "Not listening to others shows arrogance: full of himself.",
+          "fr": "Ne pas écouter les autres montre de l'arrogance : full of himself.",
+          "de": "Anderen nicht zuzuhören zeigt Arroganz: full of himself."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "full-of-yourself",
+        "chip-on-shoulder",
+        "two-faced",
+        "thick-skinned"
+      ]
+    },
+    {
+      "id": "chip-on-shoulder",
+      "term": "have a chip on your shoulder",
+      "translations": {
+        "fr": ["en vouloir au monde entier"],
+        "de": ["einen Groll gegen die Welt hegen"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "have a chip on your shoulder",
+      "examForms": [
+        "have a chip on your shoulder",
+        "have a chip on his shoulder",
+        "have a chip on her shoulder",
+        "have a chip on their shoulder"
+      ],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/hæv ə ˌtʃɪp ɒn jɔː ˈʃəʊldə/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Ever since he missed the promotion, he has had a chip on his shoulder.",
+        "translation": {
+          "fr": "Depuis qu'il a raté la promotion, il en veut au monde entier.",
+          "de": "Seit er die Beförderung verpasst hat, hegt er einen Groll gegen alle."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A chip on your shoulder is a lasting resentment, as if you were treated unfairly.",
+        "fr": "A chip on your shoulder est une rancune durable, comme si on avait été traité injustement.",
+        "de": "A chip on your shoulder ist ein anhaltender Groll, als sei man ungerecht behandelt worden."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Ever since he missed the promotion, he seems to ",
+        "after": " about everything.",
+        "accepted": { "answers": ["have a chip on his shoulder"] },
+        "referenceTargetIds": [
+          "chip-on-shoulder",
+          "two-faced",
+          "thick-skinned",
+          "set-in-your-ways"
+        ],
+        "explanation": {
+          "en": "A lasting resentment after being passed over: a chip on his shoulder.",
+          "fr": "Une rancune durable après une promotion manquée : a chip on his shoulder.",
+          "de": "Ein anhaltender Groll nach der verpassten Beförderung: a chip on his shoulder."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "chip-on-shoulder",
+        "two-faced",
+        "thick-skinned",
+        "set-in-your-ways"
+      ]
+    },
+    {
+      "id": "two-faced",
+      "term": "two-faced",
+      "translations": { "fr": ["hypocrite"], "de": ["doppelzüngig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "two-faced",
+      "examForms": ["two-faced", "two faced"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌtuː ˈfeɪst/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "I don't trust her; she is so two-faced.",
+        "translation": {
+          "fr": "Je ne lui fais pas confiance ; elle est tellement hypocrite.",
+          "de": "Ich traue ihr nicht; sie ist so doppelzüngig."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Two-faced means insincere: friendly to your face, critical behind your back.",
+        "fr": "Two-faced signifie hypocrite : aimable en face, critique dans le dos.",
+        "de": "Two-faced bedeutet unaufrichtig: freundlich ins Gesicht, kritisch hinter dem Rücken."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "She smiles at you and criticises you behind your back; she's so ",
+        "after": ".",
+        "accepted": { "answers": ["two-faced", "two faced"] },
+        "referenceTargetIds": ["two-faced", "thick-skinned", "set-in-your-ways", "down-to-earth"],
+        "explanation": {
+          "en": "Friendly to your face but critical behind your back is two-faced.",
+          "fr": "Aimable en face mais critique dans le dos : two-faced.",
+          "de": "Freundlich ins Gesicht, aber kritisch hinter dem Rücken: two-faced."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "two-faced",
+        "thick-skinned",
+        "set-in-your-ways",
+        "down-to-earth"
+      ]
+    },
+    {
+      "id": "thick-skinned",
+      "term": "thick-skinned",
+      "translations": { "fr": ["qui a la peau dure"], "de": ["dickfellig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "thick-skinned",
+      "examForms": ["thick-skinned", "thick skinned"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌθɪk ˈskɪnd/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Criticism never bothers Ravi; he is very thick-skinned.",
+        "translation": {
+          "fr": "Les critiques ne gênent jamais Ravi ; il a la peau dure.",
+          "de": "Kritik stört Ravi nie; er ist sehr dickfellig."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Thick-skinned means not easily hurt by criticism or insults.",
+        "fr": "Thick-skinned signifie qui n'est pas facilement blessé par les critiques ou les insultes.",
+        "de": "Thick-skinned bedeutet, dass Kritik oder Beleidigungen einen nicht leicht verletzen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Criticism doesn't bother Ravi at all; he's very ",
+        "after": ".",
+        "accepted": { "answers": ["thick-skinned", "thick skinned"] },
+        "referenceTargetIds": [
+          "thick-skinned",
+          "set-in-your-ways",
+          "down-to-earth",
+          "full-of-yourself"
+        ],
+        "explanation": {
+          "en": "Not hurt by criticism means thick-skinned.",
+          "fr": "Ne pas être blessé par la critique : thick-skinned.",
+          "de": "Von Kritik nicht verletzt zu werden heißt thick-skinned."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "thick-skinned",
+        "set-in-your-ways",
+        "down-to-earth",
+        "full-of-yourself"
+      ]
+    },
+    {
+      "id": "heart-of-gold",
+      "term": "have a heart of gold",
+      "translations": { "fr": ["avoir un cœur d'or"], "de": ["ein goldenes Herz haben"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "have a heart of gold",
+      "examForms": ["have a heart of gold", "has a heart of gold"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/hæv ə ˌhɑːt əv ˈɡəʊld/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "She looks stern, but she has a heart of gold.",
+        "translation": {
+          "fr": "Elle a l'air sévère, mais elle a un cœur d'or.",
+          "de": "Sie wirkt streng, hat aber ein goldenes Herz."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Have a heart of gold means to be very kind and generous.",
+        "fr": "Have a heart of gold signifie être très gentil et généreux.",
+        "de": "Have a heart of gold bedeutet, sehr freundlich und großzügig zu sein."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "She looks stern, but everyone who knows her says she seems to ",
+        "after": ".",
+        "accepted": { "answers": ["have a heart of gold"] },
+        "referenceTargetIds": ["heart-of-gold", "short-fuse", "big-mouth", "heart-on-sleeve"],
+        "explanation": {
+          "en": "Stern outside but kind inside: a heart of gold.",
+          "fr": "Sévère en apparence mais gentille : a heart of gold.",
+          "de": "Außen streng, innen gütig: a heart of gold."
+        }
+      },
+      "listeningOptionTargetIds": ["heart-of-gold", "short-fuse", "big-mouth", "heart-on-sleeve"]
+    },
+    {
+      "id": "short-fuse",
+      "term": "have a short fuse",
+      "translations": { "fr": ["s'emporter facilement"], "de": ["leicht aufbrausen"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "have a short fuse",
+      "examForms": ["have a short fuse", "has a short fuse"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/hæv ə ˌʃɔːt ˈfjuːz/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Don't argue with Dan; he has a short fuse.",
+        "translation": {
+          "fr": "Ne discute pas avec Dan ; il s'emporte facilement.",
+          "de": "Streite nicht mit Dan; er braust leicht auf."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Have a short fuse means to lose your temper very quickly.",
+        "fr": "Have a short fuse signifie perdre son calme très vite.",
+        "de": "Have a short fuse bedeutet, sehr schnell wütend zu werden."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Be careful with Dan: he tends to ",
+        "after": " and explodes over nothing.",
+        "accepted": { "answers": ["have a short fuse"] },
+        "referenceTargetIds": ["short-fuse", "big-mouth", "heart-on-sleeve", "keep-to-yourself"],
+        "explanation": {
+          "en": "Exploding over nothing describes a short fuse.",
+          "fr": "Exploser pour rien décrit a short fuse.",
+          "de": "Wegen Kleinigkeiten zu explodieren beschreibt a short fuse."
+        }
+      },
+      "listeningOptionTargetIds": ["short-fuse", "big-mouth", "heart-on-sleeve", "keep-to-yourself"]
+    },
+    {
+      "id": "big-mouth",
+      "term": "have a big mouth",
+      "translations": {
+        "fr": ["ne pas savoir tenir sa langue"],
+        "de": ["nichts für sich behalten können"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "have a big mouth",
+      "examForms": ["have a big mouth", "has a big mouth"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/hæv ə ˌbɪɡ ˈmaʊθ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Don't tell Jo your secret; she has a big mouth.",
+        "translation": {
+          "fr": "Ne dis pas ton secret à Jo ; elle ne sait pas tenir sa langue.",
+          "de": "Erzähl Jo dein Geheimnis nicht; sie kann nichts für sich behalten."
+        }
+      },
+      "ambiguityNote": {
+        "en": "It can also mean someone who boasts or talks too loudly.",
+        "fr": "Cela peut aussi désigner quelqu'un qui se vante ou parle trop fort.",
+        "de": "Es kann auch jemanden meinen, der prahlt oder zu laut redet."
+      },
+      "explanation": {
+        "en": "Have a big mouth means to be unable to keep secrets or to talk too much.",
+        "fr": "Have a big mouth signifie ne pas savoir garder un secret ou trop parler.",
+        "de": "Have a big mouth bedeutet, keine Geheimnisse bewahren zu können oder zu viel zu reden."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Don't tell Jo your secret; she's known to ",
+        "after": " and everyone will hear.",
+        "accepted": { "answers": ["have a big mouth"] },
+        "referenceTargetIds": [
+          "big-mouth",
+          "heart-on-sleeve",
+          "keep-to-yourself",
+          "wouldnt-hurt-a-fly"
+        ],
+        "explanation": {
+          "en": "Someone who spreads secrets has a big mouth.",
+          "fr": "Quelqu'un qui répète les secrets a a big mouth.",
+          "de": "Wer Geheimnisse weitererzählt, hat a big mouth."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "big-mouth",
+        "heart-on-sleeve",
+        "keep-to-yourself",
+        "wouldnt-hurt-a-fly"
+      ]
+    },
+    {
+      "id": "heart-on-sleeve",
+      "term": "wear your heart on your sleeve",
+      "translations": {
+        "fr": ["montrer ses émotions ouvertement"],
+        "de": ["seine Gefühle offen zeigen"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "wear your heart on your sleeve",
+      "examForms": [
+        "wear your heart on your sleeve",
+        "wear his heart on his sleeve",
+        "wear her heart on her sleeve",
+        "wear their heart on their sleeve"
+      ],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/weə jɔː ˌhɑːt ɒn jɔː ˈsliːv/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Nina wears her heart on her sleeve, so we always know how she feels.",
+        "translation": {
+          "fr": "Nina montre ses émotions ouvertement, donc on sait toujours ce qu'elle ressent.",
+          "de": "Nina zeigt ihre Gefühle offen, also wissen wir immer, wie es ihr geht."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Wear your heart on your sleeve means to show your feelings openly.",
+        "fr": "Wear your heart on your sleeve signifie montrer ses sentiments ouvertement.",
+        "de": "Wear your heart on your sleeve bedeutet, seine Gefühle offen zu zeigen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Nina can't hide anything; she tends to ",
+        "after": ".",
+        "accepted": {
+          "answers": ["wear her heart on her sleeve"]
+        },
+        "referenceTargetIds": [
+          "heart-on-sleeve",
+          "keep-to-yourself",
+          "wouldnt-hurt-a-fly",
+          "heart-of-gold"
+        ],
+        "explanation": {
+          "en": "Hiding nothing about her feelings is wearing her heart on her sleeve.",
+          "fr": "Ne rien cacher de ses sentiments, c'est wear her heart on her sleeve.",
+          "de": "Gefühle nicht zu verbergen heißt wear her heart on her sleeve."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "heart-on-sleeve",
+        "keep-to-yourself",
+        "wouldnt-hurt-a-fly",
+        "heart-of-gold"
+      ]
+    },
+    {
+      "id": "keep-to-yourself",
+      "term": "keep yourself to yourself",
+      "translations": { "fr": ["rester dans son coin"], "de": ["für sich bleiben"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "keep yourself to yourself",
+      "examForms": [
+        "keep yourself to yourself",
+        "keep himself to himself",
+        "keep herself to herself",
+        "keep themselves to themselves"
+      ],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/kiːp jɔːˌself tə jɔːˈself/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "My neighbour is polite but keeps himself to himself.",
+        "translation": {
+          "fr": "Mon voisin est poli mais reste dans son coin.",
+          "de": "Mein Nachbar ist höflich, bleibt aber für sich."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Keep yourself to yourself means to avoid socialising and not share personal matters.",
+        "fr": "Keep yourself to yourself signifie éviter de socialiser et ne pas partager sa vie privée.",
+        "de": "Keep yourself to yourself bedeutet, Geselligkeit zu meiden und nichts Privates preiszugeben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "My neighbour is friendly but prefers to ",
+        "after": ".",
+        "accepted": {
+          "answers": [
+            "keep himself to himself",
+            "keep herself to herself",
+            "keep themselves to themselves"
+          ]
+        },
+        "referenceTargetIds": [
+          "keep-to-yourself",
+          "wouldnt-hurt-a-fly",
+          "heart-of-gold",
+          "short-fuse"
+        ],
+        "explanation": {
+          "en": "Friendly but private: he keeps himself to himself.",
+          "fr": "Aimable mais réservé : il keeps himself to himself.",
+          "de": "Freundlich, aber zurückhaltend: he keeps himself to himself."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "keep-to-yourself",
+        "wouldnt-hurt-a-fly",
+        "heart-of-gold",
+        "short-fuse"
+      ]
+    },
+    {
+      "id": "wouldnt-hurt-a-fly",
+      "term": "wouldn't hurt a fly",
+      "translations": {
+        "fr": ["ne ferait pas de mal à une mouche"],
+        "de": ["keiner Fliege etwas zuleide tun"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "wouldn't hurt a fly",
+      "examForms": ["wouldn't hurt a fly", "would not hurt a fly"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈwʊdnt ˌhɜːt ə ˈflaɪ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ben looks tough, but he wouldn't hurt a fly.",
+        "translation": {
+          "fr": "Ben a l'air dur, mais il ne ferait pas de mal à une mouche.",
+          "de": "Ben wirkt hart, würde aber keiner Fliege etwas zuleide tun."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Wouldn't hurt a fly describes a very gentle person who is never violent.",
+        "fr": "Wouldn't hurt a fly décrit une personne très douce, jamais violente.",
+        "de": "Wouldn't hurt a fly beschreibt einen sehr sanften Menschen, der nie gewalttätig ist."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Don't be afraid of Ben. He looks tough, but honestly he ",
+        "after": ".",
+        "accepted": { "answers": ["wouldn't hurt a fly", "would not hurt a fly"] },
+        "referenceTargetIds": ["wouldnt-hurt-a-fly", "heart-of-gold", "short-fuse", "big-mouth"],
+        "explanation": {
+          "en": "Looks tough but is gentle: he wouldn't hurt a fly.",
+          "fr": "Il a l'air dur mais il est doux : il wouldn't hurt a fly.",
+          "de": "Wirkt hart, ist aber sanft: he wouldn't hurt a fly."
+        }
+      },
+      "listeningOptionTargetIds": ["wouldnt-hurt-a-fly", "heart-of-gold", "short-fuse", "big-mouth"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

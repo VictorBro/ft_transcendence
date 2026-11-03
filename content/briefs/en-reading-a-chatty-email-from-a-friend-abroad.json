@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 2,
+  "id": "en-reading-a-chatty-email-from-a-friend-abroad",
+  "lang": "en",
+  "level": "B2",
+  "locales": ["en", "fr", "de"],
+  "title": "Reading a chatty email from a friend abroad",
+  "objective": {
+    "en": "Read a chatty email from a friend abroad and follow her news, told in a casual, spoken style full of informal phrases such as I'm shattered and guess what.",
+    "fr": "Lire un e-mail bavard d’une amie à l’étranger et suivre ses nouvelles racontées sur un ton familier, avec des expressions comme I'm shattered ou guess what.",
+    "de": "Eine plaudernde E-Mail einer Freundin im Ausland lesen und ihren Neuigkeiten im lockeren Umgangston folgen, mit Wendungen wie I'm shattered oder guess what."
+  },
+  "estimatedMinutes": 11,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:50:44.433Z",
+    "inputHashes": { "outline": "8b0ed01531b806d78a13b22d1de7043a6fc12d8d777b665814c968e119ec59c8" }
+  },
+  "kind": "reading",
+  "theme": "relations",
+  "genre": "email",
+  "situation": {
+    "en": "Jess, who lives abroad, writes to her old friend Sam on a Sunday evening to catch up after weeks of silence.",
+    "fr": "Jess, qui vit à l’étranger, écrit à son vieil ami Sam un dimanche soir pour donner des nouvelles après des semaines de silence.",
+    "de": "Jess, die im Ausland lebt, schreibt ihrem alten Freund Sam an einem Sonntagabend, um sich nach wochenlangem Schweigen zu melden."
+  },
+  "readerTask": {
+    "en": "Follow the news in the order Jess tells it, understand the informal phrases and her attitude, and see why she is writing.",
+    "fr": "Suivre les nouvelles dans l’ordre où Jess les raconte, comprendre les expressions familières et son attitude, et voir pourquoi elle écrit.",
+    "de": "Den Neuigkeiten in der Reihenfolge folgen, in der Jess sie erzählt, die umgangssprachlichen Wendungen und ihre Haltung verstehen und erkennen, warum sie schreibt."
+  },
+  "keywords": [
+    {
+      "id": "im-shattered",
+      "term": "I'm shattered",
+      "translations": {
+        "fr": ["je suis crevée", "je suis épuisée"],
+        "de": ["ich bin total fertig", "ich bin erledigt"]
+      },
+      "explanation": {
+        "en": "Very, very tired. Informal and spoken; British speakers also say 'I'm knackered'.",
+        "fr": "Très, très fatigué. Familier et oral ; les Britanniques disent aussi 'I'm knackered'.",
+        "de": "Sehr, sehr müde. Umgangssprachlich und gesprochen; Briten sagen auch 'I'm knackered'."
+      }
+    },
+    {
+      "id": "guess-what",
+      "term": "guess what",
+      "translations": { "fr": ["devine quoi"], "de": ["stell dir vor", "rate mal"] },
+      "explanation": {
+        "en": "Said before surprising or interesting news. You do not really expect an answer.",
+        "fr": "Se dit avant une nouvelle surprenante ou intéressante. On n’attend pas vraiment de réponse.",
+        "de": "Man sagt es vor einer überraschenden oder interessanten Neuigkeit. Eine Antwort wird nicht wirklich erwartet."
+      }
+    },
+    {
+      "id": "nightmare",
+      "term": "it's been a nightmare",
+      "translations": { "fr": ["ça a été un cauchemar"], "de": ["es war der reinste Albtraum"] },
+      "explanation": {
+        "en": "Something has been very stressful or unpleasant. It is an exaggeration, not a real bad dream.",
+        "fr": "Quelque chose a été très stressant ou désagréable. C’est une exagération, pas un vrai mauvais rêve.",
+        "de": "Etwas war sehr stressig oder unangenehm. Es ist eine Übertreibung, kein echter Albtraum."
+      }
+    },
+    {
+      "id": "fingers-crossed",
+      "term": "Fingers crossed",
+      "translations": { "fr": ["je croise les doigts"], "de": ["ich drücke die Daumen"] },
+      "explanation": {
+        "en": "A way of saying you hope something will go well. People often cross their fingers as they say it.",
+        "fr": "Façon de dire qu’on espère que tout se passera bien. On croise souvent les doigts en le disant.",
+        "de": "So sagt man, dass man hofft, dass etwas gut ausgeht. Oft kreuzt man dabei die Finger."
+      }
+    },
+    {
+      "id": "drop-a-line",
+      "term": "drop me a line",
+      "translations": { "fr": ["écris-moi un petit mot"], "de": ["schreib mir kurz"] },
+      "explanation": {
+        "en": "Write to me, even briefly. It sounds friendly and informal, and it does not mean a real line.",
+        "fr": "M’écrire, même brièvement. C’est amical et familier, et il n’y a pas de vraie ligne.",
+        "de": "Schreib mir, auch nur kurz. Es klingt freundlich und locker; gemeint ist keine echte Linie."
+      }
+    }
+  ],
+  "documents": {
+    "main": {
+      "targetWords": 320,
+      "contents": {
+        "en": "A long, chatty email from Jess to Sam. She apologises for not writing and says she is shattered; she had to move out when her landlord sold the flat, then found a tiny room at her colleague Mel's; she sent an email meant for her sister to her whole department and her boss joked about it; she asks about Sam's mum and his argument with Dan, and asks him to write back.",
+        "fr": "Un long e-mail bavard de Jess à Sam. Elle s’excuse de ne pas avoir écrit et dit qu’elle est épuisée ; elle a dû déménager parce que son propriétaire a vendu l’appartement, puis a trouvé une minuscule chambre chez sa collègue Mel ; elle a envoyé à tout son service un e-mail destiné à sa sœur et son chef en a plaisanté ; elle demande des nouvelles de la mère de Sam et de sa dispute avec Dan, et lui demande de répondre.",
+        "de": "Eine lange, plaudernde E-Mail von Jess an Sam. Sie entschuldigt sich, dass sie nicht geschrieben hat, und sagt, dass sie fix und fertig ist; sie musste ausziehen, weil ihr Vermieter die Wohnung verkaufte, und fand dann ein winziges Zimmer bei ihrer Kollegin Mel; sie schickte eine E-Mail, die für ihre Schwester gedacht war, an ihre ganze Abteilung, und ihr Chef machte darüber einen Witz; sie fragt nach Sams Mutter und seinem Streit mit Dan und bittet um eine Antwort."
+      }
+    },
+    "exam": {
+      "targetWords": 190,
+      "contents": {
+        "en": "A shorter chatty email from Ravi, newly arrived in Berlin, to his friend Priya. He jokes about losing his keys, a broken heating system and buying twelve bread rolls by mistake, then asks whether his cousin Nisha, who has a job interview in Priya's city, can stay for a night, and wants an answer by Friday.",
+        "fr": "Un e-mail bavard plus court de Ravi, récemment arrivé à Berlin, à son amie Priya. Il plaisante sur ses clés perdues, le chauffage en panne et les douze petits pains achetés par erreur, puis demande si sa cousine Nisha, qui passe un entretien d’embauche dans la ville de Priya, peut dormir chez elle une nuit, et veut une réponse avant vendredi.",
+        "de": "Eine kürzere, plaudernde E-Mail von Ravi, der gerade in Berlin angekommen ist, an seine Freundin Priya. Er scherzt über verlorene Schlüssel, eine kaputte Heizung und zwölf versehentlich gekaufte Brötchen und fragt dann, ob seine Cousine Nisha, die in Priyas Stadt ein Vorstellungsgespräch hat, eine Nacht bei ihr schlafen kann; er möchte bis Freitag eine Antwort."
+      }
+    }
+  },
+  "skim": { "focus": "purpose" },
+  "detailQuestions": [
+    {
+      "id": "q-flat",
+      "type": "reading_choice",
+      "focus": {
+        "en": "Why Jess had to leave her flat",
+        "fr": "Pourquoi Jess a dû quitter son appartement",
+        "de": "Warum Jess ihre Wohnung verlassen musste"
+      }
+    },
+    {
+      "id": "q-room",
+      "type": "reading_true_false",
+      "focus": {
+        "en": "What the room at Mel's is like",
+        "fr": "Comment est la chambre chez Mel",
+        "de": "Wie das Zimmer bei Mel ist"
+      }
+    },
+    {
+      "id": "q-email",
+      "type": "reading_choice",
+      "focus": {
+        "en": "The embarrassing mistake at work",
+        "fr": "L’erreur embarrassante au travail",
+        "de": "Der peinliche Fehler bei der Arbeit"
+      }
+    },
+    {
+      "id": "q-boss",
+      "type": "reading_choice",
+      "focus": {
+        "en": "The meaning of the boss's remark",
+        "fr": "Le sens de la remarque du chef",
+        "de": "Die Bedeutung der Bemerkung des Chefs"
+      }
+    }
+  ],
+  "exam": { "types": ["reading_choice", "reading_true_false"] },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

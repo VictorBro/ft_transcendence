@@ -1,0 +1,258 @@
+{
+  "schemaVersion": 2,
+  "id": "en-past-simple-wh-questions",
+  "lang": "en",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Wh- questions in the past simple",
+  "objective": {
+    "en": "Ask Wh- questions about the past with did, including how long, how much, what time and a final preposition: Where did you go? Who did you go with?",
+    "fr": "Poser des questions avec un mot interrogatif au passé avec did, y compris how long, how much, what time et une préposition finale : Where did you go ? Who did you go with ?",
+    "de": "Wh-Fragen über die Vergangenheit mit did stellen, auch mit how long, how much, what time und einer Präposition am Ende: Where did you go? Who did you go with?"
+  },
+  "estimatedMinutes": 18,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:33:09.470Z",
+    "inputHashes": { "outline": "173af60d961d5f8c5d28e0274f2f6cd9280722cff41253b5f7752616c1c1a372" }
+  },
+  "kind": "grammar",
+  "topic": "syntax_and_sentence_structure",
+  "scopeBoundaries": {
+    "en": "Covers Wh- questions with did + subject + base form, how/what + word questions and final prepositions. Excludes subject questions (Who called?), was/were questions and other tenses.",
+    "fr": "Couvre les questions avec mot interrogatif + did + sujet + forme de base, les questions en how/what + mot et les prépositions finales. Exclut les questions sur le sujet (Who called ?), was/were et les autres temps.",
+    "de": "Behandelt Wh-Fragen mit did + Subjekt + Grundform, Fragen mit how/what + Wort und Präpositionen am Satzende. Ausgeschlossen sind Subjektfragen (Who called?), was/were-Fragen und andere Zeiten."
+  },
+  "prerequisites": [
+    {
+      "en": "Past simple statements with regular and common irregular verbs",
+      "fr": "Les phrases affirmatives au past simple avec des verbes réguliers et irréguliers courants",
+      "de": "Aussagesätze im Past Simple mit regelmäßigen und gängigen unregelmäßigen Verben"
+    },
+    {
+      "en": "Yes/no questions with did",
+      "fr": "Les questions fermées avec did",
+      "de": "Ja/Nein-Fragen mit did"
+    }
+  ],
+  "rules": [
+    {
+      "id": "r-wh-order",
+      "summary": {
+        "en": "Past question order: question word + did + subject + verb.",
+        "fr": "Ordre de la question au passé : mot interrogatif + did + sujet + verbe.",
+        "de": "Wortstellung der Frage in der Vergangenheit: Fragewort + did + Subjekt + Verb."
+      }
+    },
+    {
+      "id": "r-base-form",
+      "summary": {
+        "en": "After did the main verb is in the base form, not the past form.",
+        "fr": "Après did, le verbe principal est à la forme de base, pas au passé.",
+        "de": "Nach did steht das Hauptverb in der Grundform, nicht in der Vergangenheitsform."
+      }
+    },
+    {
+      "id": "r-how-what",
+      "summary": {
+        "en": "Use how long, how much, how many and what time before did to ask for detail.",
+        "fr": "Utiliser how long, how much, how many et what time avant did pour demander des précisions.",
+        "de": "how long, how much, how many und what time stehen vor did, um nach Einzelheiten zu fragen."
+      }
+    },
+    {
+      "id": "r-preposition",
+      "summary": {
+        "en": "Put the preposition at the end of the question: Who did you go with?",
+        "fr": "Placer la préposition à la fin de la question : Who did you go with ?",
+        "de": "Die Präposition steht am Ende der Frage: Who did you go with?"
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-wh-did",
+      "title": {
+        "en": "Question word + did + base form",
+        "fr": "Mot interrogatif + did + forme de base",
+        "de": "Fragewort + did + Grundform"
+      },
+      "ruleIds": ["r-wh-order", "r-base-form"],
+      "explanationPlan": {
+        "en": "Show the order question word + did + subject + base form. Explain that did carries the past, so the verb stays in the base form. Give where, when, why, what, who and how.",
+        "fr": "Montrer l'ordre mot interrogatif + did + sujet + forme de base. Expliquer que did porte le passé, donc le verbe reste à la forme de base. Donner where, when, why, what, who et how.",
+        "de": "Die Reihenfolge Fragewort + did + Subjekt + Grundform zeigen. Erklären, dass did die Vergangenheit trägt und das Verb in der Grundform bleibt. where, when, why, what, who und how nennen."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "Where did you go on holiday?",
+          "translation": {
+            "fr": "Où es-tu allé en vacances ?",
+            "de": "Wo bist du im Urlaub hingefahren?"
+          }
+        },
+        {
+          "text": "What did she buy?",
+          "translation": { "fr": "Qu'est-ce qu'elle a acheté ?", "de": "Was hat sie gekauft?" }
+        },
+        {
+          "text": "When did they arrive?",
+          "translation": { "fr": "Quand sont-ils arrivés ?", "de": "Wann sind sie angekommen?" }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not put the past form after did: Where did you go?, not Where did you went?",
+          "fr": "Ne mettez pas le passé après did : Where did you go ?, pas Where did you went ?",
+          "de": "Setze nach did keine Vergangenheitsform: Where did you go?, nicht Where did you went?"
+        },
+        {
+          "en": "Do not use the statement order: Where did you go?, not Where you went?",
+          "fr": "N'utilisez pas l'ordre de la phrase affirmative : Where did you go ?, pas Where you went ?",
+          "de": "Verwende nicht die Aussagesatz-Reihenfolge: Where did you go?, nicht Where you went?"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "b1-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["r-wh-order", "r-base-form"],
+          "estimatedDurationS": 48
+        },
+        {
+          "id": "b1-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["r-wh-order", "r-base-form"],
+          "estimatedDurationS": 72
+        },
+        {
+          "id": "b1-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["r-wh-order", "r-base-form"],
+          "estimatedDurationS": 75
+        }
+      ]
+    },
+    {
+      "id": "block-detail",
+      "title": {
+        "en": "How long, how much, what time and prepositions",
+        "fr": "How long, how much, what time et prépositions",
+        "de": "How long, how much, what time und Präpositionen"
+      },
+      "ruleIds": ["r-how-what", "r-preposition"],
+      "explanationPlan": {
+        "en": "Teach how long, how much, how many and what time before did. Then show that the preposition stays at the end of the question: Who did you go with? What did you talk about?",
+        "fr": "Enseigner how long, how much, how many et what time avant did. Montrer ensuite que la préposition reste à la fin de la question : Who did you go with ? What did you talk about ?",
+        "de": "how long, how much, how many und what time vor did vermitteln. Dann zeigen, dass die Präposition am Satzende bleibt: Who did you go with? What did you talk about?"
+      },
+      "explanationDurationS": 150,
+      "examples": [
+        {
+          "text": "How long did you stay?",
+          "translation": {
+            "fr": "Combien de temps es-tu resté ?",
+            "de": "Wie lange bist du geblieben?"
+          }
+        },
+        {
+          "text": "What time did you get up?",
+          "translation": {
+            "fr": "À quelle heure t'es-tu levé ?",
+            "de": "Um wie viel Uhr bist du aufgestanden?"
+          }
+        },
+        {
+          "text": "How many photos did you take?",
+          "translation": {
+            "fr": "Combien de photos as-tu prises ?",
+            "de": "Wie viele Fotos hast du gemacht?"
+          }
+        },
+        {
+          "text": "Who did you go with?",
+          "translation": { "fr": "Avec qui es-tu allé ?", "de": "Mit wem bist du hingegangen?" }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Use how much with uncountable nouns and how many with plural nouns: how much money, how many photos.",
+          "fr": "Utilisez how much avec les noms non dénombrables et how many avec les pluriels : how much money, how many photos.",
+          "de": "Verwende how much mit nicht zählbaren Nomen und how many mit Plural: how much money, how many photos."
+        },
+        {
+          "en": "Keep the preposition with its verb and move it to the end: Who did you talk to?",
+          "fr": "Gardez la préposition avec son verbe et placez-la à la fin : Who did you talk to ?",
+          "de": "Behalte die Präposition beim Verb und stelle sie ans Ende: Who did you talk to?"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "b2-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 3,
+          "ruleIds": ["r-how-what", "r-preposition"],
+          "estimatedDurationS": 36
+        },
+        {
+          "id": "b2-order",
+          "type": "grammar_word_order",
+          "itemCount": 4,
+          "ruleIds": ["r-how-what", "r-preposition"],
+          "estimatedDurationS": 100
+        },
+        {
+          "id": "b2-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 4,
+          "ruleIds": ["r-how-what", "r-preposition"],
+          "estimatedDurationS": 100
+        },
+        {
+          "id": "b2-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 3,
+          "ruleIds": ["r-how-what", "r-preposition"],
+          "estimatedDurationS": 54
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-gaps",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["r-wh-order", "r-base-form", "r-how-what"],
+        "estimatedDurationS": 100,
+        "timeLimitS": 160
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 4,
+        "ruleIds": ["r-wh-order", "r-how-what", "r-preposition"],
+        "estimatedDurationS": 120,
+        "timeLimitS": 180
+      },
+      {
+        "pageId": "exam-prep",
+        "type": "grammar_gap_typing",
+        "itemCount": 3,
+        "ruleIds": ["r-how-what", "r-preposition"],
+        "estimatedDurationS": 75,
+        "timeLimitS": 120
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

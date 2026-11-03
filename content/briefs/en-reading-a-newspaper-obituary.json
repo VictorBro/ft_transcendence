@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 2,
+  "id": "en-reading-a-newspaper-obituary",
+  "lang": "en",
+  "level": "C1",
+  "locales": ["en", "fr", "de"],
+  "title": "Reading a newspaper obituary",
+  "objective": {
+    "en": "Read the obituary of a scientist, follow how it moves between work and family, and say what its tone suggests about the writer’s view of her.",
+    "fr": "Lire la nécrologie d’une scientifique, suivre ses allers-retours entre travail et famille, et dire ce que le ton révèle du regard de l’auteur.",
+    "de": "Den Nachruf auf eine Wissenschaftlerin lesen, dem Wechsel zwischen Beruf und Familie folgen und sagen, was der Ton über die Sicht des Autors verrät."
+  },
+  "estimatedMinutes": 12,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:49:28.097Z",
+    "inputHashes": { "outline": "0a78254dff7532cf77087c4c6b98bba3a68917a38ee471e24cf55975c4e97f08" }
+  },
+  "kind": "reading",
+  "theme": "personal_identification",
+  "genre": "article",
+  "situation": {
+    "en": "A science correspondent writes an obituary in a national newspaper for Helen Marsh, a glaciologist who has just died aged 84.",
+    "fr": "Une journaliste scientifique rédige dans un grand quotidien la nécrologie de Helen Marsh, glaciologue morte à 84 ans.",
+    "de": "Eine Wissenschaftsjournalistin schreibt in einer überregionalen Zeitung den Nachruf auf Helen Marsh, eine Glaziologin, die mit 84 Jahren gestorben ist."
+  },
+  "readerTask": {
+    "en": "Follow how the obituary moves between Marsh’s work and her family life, and decide what its tone suggests about how the writer sees her.",
+    "fr": "Suivre comment la nécrologie alterne entre le travail de Marsh et sa vie de famille, et déterminer ce que son ton révèle du regard de l’auteur sur elle.",
+    "de": "Verfolgen, wie der Nachruf zwischen Marshs Arbeit und ihrem Familienleben wechselt, und entscheiden, was sein Ton über die Sicht der Autorin verrät."
+  },
+  "keywords": [
+    {
+      "id": "pioneering",
+      "term": "pioneering",
+      "translations": { "fr": ["pionnier"], "de": ["bahnbrechend"] },
+      "explanation": {
+        "en": "Doing something new before anyone else. Used of work that opens up a whole field.",
+        "fr": "Qui fait quelque chose de nouveau avant tous les autres. Se dit d’un travail qui ouvre un domaine entier.",
+        "de": "Etwas Neues vor allen anderen tun. Sagt man von Arbeit, die ein ganzes Feld erschließt."
+      }
+    },
+    {
+      "id": "tireless",
+      "term": "tireless",
+      "translations": { "fr": ["infatigable"], "de": ["unermüdlich"] },
+      "explanation": {
+        "en": "Working with great energy and never giving up. A warm word of praise for effort.",
+        "fr": "Qui travaille avec une grande énergie sans jamais renoncer. Un mot d’éloge chaleureux pour l’effort.",
+        "de": "Mit großer Energie arbeitend und nie aufgebend. Ein warmes Lob für Einsatz."
+      }
+    },
+    {
+      "id": "unassuming",
+      "term": "unassuming",
+      "translations": { "fr": ["modeste"], "de": ["bescheiden"] },
+      "explanation": {
+        "en": "Not showing off or wanting attention, even when successful.",
+        "fr": "Qui ne se met pas en avant ni ne cherche l’attention, même en réussissant.",
+        "de": "Nicht angeberisch und ohne Wunsch nach Aufmerksamkeit, auch bei Erfolg."
+      }
+    },
+    {
+      "id": "survived-by",
+      "term": "survived by",
+      "translations": { "fr": ["laisse derrière elle"], "de": ["hinterlässt"] },
+      "explanation": {
+        "en": "Fixed obituary phrase listing the relatives who are still alive: She is survived by her daughter.",
+        "fr": "Formule fixe des nécrologies qui énumère les proches encore en vie : She is survived by her daughter.",
+        "de": "Feste Wendung in Nachrufen, die die noch lebenden Angehörigen nennt: She is survived by her daughter."
+      }
+    },
+    {
+      "id": "tribute",
+      "term": "tribute",
+      "translations": { "fr": ["hommage"], "de": ["Würdigung"] },
+      "explanation": {
+        "en": "A statement or gesture that shows respect and admiration, especially after a death.",
+        "fr": "Une déclaration ou un geste qui exprime le respect et l’admiration, surtout après un décès.",
+        "de": "Eine Äußerung oder Geste, die Respekt und Bewunderung zeigt, besonders nach einem Todesfall."
+      }
+    }
+  ],
+  "documents": {
+    "main": {
+      "targetWords": 510,
+      "contents": {
+        "en": "A newspaper obituary of the glaciologist Helen Marsh: her death at 84; her childhood in a mining town and scholarship to Durham; her ice-core discovery in Antarctica in 1974; a colleague’s memory of her refusing the word “brilliant”; her lively family kitchen; giving up a post in California to nurse her husband; her discomfort with honours; survivors and a university tribute. The tone is admiring and affectionate, with gentle humour.",
+        "fr": "Nécrologie de la glaciologue Helen Marsh : sa mort à 84 ans ; son enfance dans une ville minière et sa bourse à Durham ; sa découverte des carottes de glace en Antarctique en 1974 ; le souvenir d’un collègue qui la voit refuser le mot « brillant » ; sa cuisine familiale animée ; son renoncement à un poste en Californie pour soigner son mari ; sa gêne face aux honneurs ; ses proches et un hommage de l’université. Le ton est admiratif et affectueux, avec un humour léger.",
+        "de": "Nachruf auf die Glaziologin Helen Marsh: ihr Tod mit 84; Kindheit in einer Bergbaustadt und Stipendium in Durham; ihre Eisbohrkern-Entdeckung in der Antarktis 1974; die Erinnerung eines Kollegen, wie sie das Wort „brillant“ ablehnte; ihre lebhafte Familienküche; der Verzicht auf eine Stelle in Kalifornien, um ihren Mann zu pflegen; ihr Unbehagen bei Ehrungen; Hinterbliebene und eine Würdigung der Universität. Der Ton ist bewundernd und liebevoll, mit sanftem Humor."
+      }
+    },
+    "exam": {
+      "targetWords": 247,
+      "contents": {
+        "en": "A newspaper obituary of the apple expert Arthur Penhallow: his death at 91; rescuing old apple varieties from felled orchards from the 1950s; a difficult, unwarm character with quarrels, including one with his brother; but the respect of those who knew him, the yearly boxes of fruit and his letters. The tone is admiring but honest about his faults.",
+        "fr": "Nécrologie du spécialiste des pommes Arthur Penhallow : sa mort à 91 ans ; le sauvetage de vieilles variétés dans des vergers abattus dès les années 1950 ; un caractère difficile et peu chaleureux, avec des brouilles dont une avec son frère ; mais le respect de ceux qui l’ont connu, les caisses de fruits chaque année et ses lettres. Le ton est admiratif mais honnête sur ses défauts.",
+        "de": "Nachruf auf den Apfelexperten Arthur Penhallow: sein Tod mit 91; die Rettung alter Apfelsorten aus gefällten Obstgärten ab den 1950ern; ein schwieriger, wenig herzlicher Charakter mit Streitereien, auch mit seinem Bruder; aber der Respekt derer, die ihn kannten, die jährlichen Obstkisten und seine Briefe. Der Ton ist bewundernd, aber ehrlich über seine Schwächen."
+      }
+    }
+  },
+  "skim": { "focus": "purpose" },
+  "detailQuestions": [
+    {
+      "id": "q-discovery",
+      "type": "reading_choice",
+      "focus": {
+        "en": "What Marsh discovered in Antarctica",
+        "fr": "Ce que Marsh a découvert en Antarctique",
+        "de": "Was Marsh in der Antarktis entdeckte"
+      }
+    },
+    {
+      "id": "q-california",
+      "type": "reading_choice",
+      "focus": {
+        "en": "Why she turned down the post in California",
+        "fr": "Pourquoi elle a refusé le poste en Californie",
+        "de": "Warum sie die Stelle in Kalifornien ablehnte"
+      }
+    },
+    {
+      "id": "q-brilliant",
+      "type": "reading_true_false",
+      "focus": {
+        "en": "How she reacted to praise from a prize committee",
+        "fr": "Sa réaction aux éloges d’un comité de prix",
+        "de": "Wie sie auf das Lob eines Preiskomitees reagierte"
+      }
+    },
+    {
+      "id": "q-tone",
+      "type": "reading_choice",
+      "focus": {
+        "en": "What the tone suggests about the writer’s view of Marsh",
+        "fr": "Ce que le ton révèle du regard de l’auteur sur Marsh",
+        "de": "Was der Ton über die Sicht der Autorin auf Marsh verrät"
+      }
+    }
+  ],
+  "exam": { "types": ["reading_choice", "reading_true_false"] },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

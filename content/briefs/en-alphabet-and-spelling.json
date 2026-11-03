@@ -1,0 +1,577 @@
+{
+  "schemaVersion": 2,
+  "id": "en-alphabet-and-spelling",
+  "lang": "en",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "The alphabet and spelling",
+  "objective": {
+    "en": "Use the words for spelling a name or an email address aloud (letter, capital letter, dot, at, hyphen, double) and ask: How do you spell that?",
+    "fr": "Employer les mots pour épeler un nom ou une adresse e-mail à voix haute (letter, capital letter, dot, at, hyphen, double) et demander : How do you spell that ?",
+    "de": "Die Wörter zum Buchstabieren eines Namens oder einer E-Mail-Adresse verwenden (letter, capital letter, dot, at, hyphen, double) und fragen: How do you spell that?"
+  },
+  "estimatedMinutes": 19,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:33:09.500Z",
+    "inputHashes": { "outline": "5d9c7b86bffe265dd58e523c3a9d51c7b3d4596e8f6a53865a0c09a75210a5e7" }
+  },
+  "kind": "vocabulary",
+  "theme": "language",
+  "coverageNotes": {
+    "en": "Twelve words for spelling aloud: the alphabet, capital and small letters, the symbols used in names and email addresses (dot, at, hyphen), double letters, and the question How do you spell that?",
+    "fr": "Douze mots pour épeler à voix haute : l’alphabet, les majuscules et minuscules, les symboles des noms et adresses e-mail (dot, at, hyphen), les lettres doubles et la question How do you spell that ?",
+    "de": "Zwölf Wörter zum Buchstabieren: das Alphabet, Groß- und Kleinbuchstaben, die Zeichen in Namen und E-Mail-Adressen (dot, at, hyphen), Doppelbuchstaben und die Frage How do you spell that?"
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve words are enough for an A1 lesson on spelling: they cover letters, symbols and the key question without overloading beginners.",
+    "fr": "Douze mots suffisent pour une leçon A1 sur l’épellation : lettres, symboles et question clé, sans surcharger les débutants.",
+    "de": "Zwölf Wörter genügen für eine A1-Lektion zum Buchstabieren: Buchstaben, Zeichen und die wichtigste Frage, ohne Anfänger zu überfordern."
+  },
+  "difficultyBalance": {
+    "en": "Most words are short and core; the phrase How do you spell that? and email address are more demanding.",
+    "fr": "La plupart des mots sont courts et de base ; la phrase How do you spell that? et email address sont plus exigeantes.",
+    "de": "Die meisten Wörter sind kurz und grundlegend; der Satz How do you spell that? und email address sind anspruchsvoller."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "letters-symbols",
+      "label": {
+        "en": "Letters and symbols",
+        "fr": "Lettres et symboles",
+        "de": "Buchstaben und Zeichen"
+      },
+      "targetIds": ["letter", "alphabet", "capital-letter", "small-letter", "dot", "hyphen", "at"],
+      "introduction": {
+        "en": "Learn the words for the **alphabet** and its symbols:\n\n- `letter` and `alphabet`\n- `capital letter` and `small letter`\n- `dot`, `at` and `hyphen`",
+        "fr": "Apprenez les mots pour l’**alphabet** et ses symboles :\n\n- `letter` et `alphabet`\n- `capital letter` et `small letter`\n- `dot`, `at` et `hyphen`",
+        "de": "Lerne die Wörter für das **Alphabet** und seine Zeichen:\n\n- `letter` und `alphabet`\n- `capital letter` und `small letter`\n- `dot`, `at` und `hyphen`"
+      }
+    },
+    {
+      "id": "spelling-words",
+      "label": {
+        "en": "Spelling a name or an email",
+        "fr": "Épeler un nom ou un e-mail",
+        "de": "Einen Namen oder eine E-Mail buchstabieren"
+      },
+      "targetIds": ["double", "spell", "how-spell", "name", "email-address"],
+      "introduction": {
+        "en": "To spell a name or an email address aloud, you need these **words and this question**:\n\n- `spell` and `double`\n- `How do you spell that?`\n- `name` and `email address`",
+        "fr": "Pour épeler un nom ou une adresse e-mail à voix haute, il faut ces **mots et cette question** :\n\n- `spell` et `double`\n- `How do you spell that?`\n- `name` et `email address`",
+        "de": "Um einen Namen oder eine E-Mail-Adresse zu buchstabieren, brauchst du diese **Wörter und diese Frage**:\n\n- `spell` und `double`\n- `How do you spell that?`\n- `name` und `email address`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "letter",
+      "term": "letter",
+      "translations": { "fr": ["lettre"], "de": ["Buchstabe"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "letter",
+      "examForms": ["letter"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈletə/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "B is the second letter.",
+        "translation": { "fr": "B est la deuxième lettre.", "de": "B ist der zweite Buchstabe." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A letter is one sign of the alphabet, like A, B or C.",
+        "fr": "Une « letter » est un signe de l’alphabet, comme A, B ou C.",
+        "de": "Eine „letter“ ist ein Zeichen des Alphabets, zum Beispiel A, B oder C."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "A is the first ",
+        "after": " of the alphabet.",
+        "accepted": { "answers": ["letter"] },
+        "referenceTargetIds": ["letter", "dot", "hyphen", "name"],
+        "explanation": {
+          "en": "A is the first letter of the alphabet.",
+          "fr": "A est la première lettre de l’alphabet.",
+          "de": "A ist der erste Buchstabe des Alphabets."
+        }
+      },
+      "listeningOptionTargetIds": ["letter", "alphabet", "name", "spell"]
+    },
+    {
+      "id": "alphabet",
+      "term": "alphabet",
+      "translations": { "fr": ["alphabet"], "de": ["Alphabet"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "alphabet",
+      "examForms": ["alphabet"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈælfəbet/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "The English alphabet has 26 letters.",
+        "translation": {
+          "fr": "L’alphabet anglais a 26 lettres.",
+          "de": "Das englische Alphabet hat 26 Buchstaben."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "The alphabet is the group of all the letters, from A to Z.",
+        "fr": "L’« alphabet » est l’ensemble des lettres, de A à Z.",
+        "de": "Das „alphabet“ ist die Gesamtheit aller Buchstaben, von A bis Z."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "There are 26 letters in the ",
+        "after": ".",
+        "accepted": { "answers": ["alphabet"] },
+        "referenceTargetIds": ["alphabet", "name", "dot", "spell"],
+        "explanation": {
+          "en": "The English alphabet has 26 letters.",
+          "fr": "L’alphabet anglais a 26 lettres.",
+          "de": "Das englische Alphabet hat 26 Buchstaben."
+        }
+      },
+      "listeningOptionTargetIds": ["alphabet", "letter", "at", "hyphen"]
+    },
+    {
+      "id": "capital-letter",
+      "term": "capital letter",
+      "translations": { "fr": ["majuscule"], "de": ["Großbuchstabe"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "capital letter",
+      "examForms": ["capital letter"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌkæpɪtl ˈletə/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Your name starts with a capital letter.",
+        "translation": {
+          "fr": "Votre nom commence par une majuscule.",
+          "de": "Dein Name beginnt mit einem Großbuchstaben."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A capital letter is the big form of a letter, like T. Names start with one.",
+        "fr": "Une « capital letter » est la forme grande d’une lettre, comme T. Les noms commencent par une majuscule.",
+        "de": "Eine „capital letter“ ist die große Form eines Buchstabens, zum Beispiel T. Namen beginnen damit."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "My name starts with a ",
+        "after": ", for example T for Tom.",
+        "accepted": { "answers": ["capital letter"] },
+        "referenceTargetIds": ["capital-letter", "small-letter", "dot", "hyphen"],
+        "explanation": {
+          "en": "A name starts with a capital letter, like the T of Tom.",
+          "fr": "Un nom commence par une majuscule, comme le T de Tom.",
+          "de": "Ein Name beginnt mit einem Großbuchstaben, wie das T in Tom."
+        }
+      },
+      "listeningOptionTargetIds": ["capital-letter", "small-letter", "letter", "dot"]
+    },
+    {
+      "id": "small-letter",
+      "term": "small letter",
+      "translations": { "fr": ["minuscule"], "de": ["Kleinbuchstabe"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "small letter",
+      "examForms": ["small letter"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/smɔːl ˈletə/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "The word “cat” has three small letters.",
+        "translation": {
+          "fr": "Le mot « cat » a trois minuscules.",
+          "de": "Das Wort „cat“ hat drei Kleinbuchstaben."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A small letter is the little form of a letter, like a, b or c.",
+        "fr": "Une « small letter » est la forme petite d’une lettre, comme a, b ou c.",
+        "de": "Eine „small letter“ ist die kleine Form eines Buchstabens, zum Beispiel a, b oder c."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "“a” is a ",
+        "after": ", not a capital letter.",
+        "accepted": { "answers": ["small letter"] },
+        "referenceTargetIds": ["small-letter", "capital-letter", "dot", "hyphen"],
+        "explanation": {
+          "en": "The letter “a” is a small letter, not a capital letter.",
+          "fr": "La lettre « a » est une minuscule, pas une majuscule.",
+          "de": "Der Buchstabe „a“ ist ein Kleinbuchstabe, kein Großbuchstabe."
+        }
+      },
+      "listeningOptionTargetIds": ["small-letter", "capital-letter", "spell", "letter"]
+    },
+    {
+      "id": "dot",
+      "term": "dot",
+      "translations": { "fr": ["point"], "de": ["Punkt"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "dot",
+      "examForms": ["dot"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/dɒt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Anna dot Smith at mail dot com.",
+        "translation": {
+          "fr": "Anna point Smith arobase mail point com.",
+          "de": "Anna Punkt Smith at mail Punkt com."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "In an email address, you say “dot” for the sign “.”.",
+        "fr": "Dans une adresse e-mail, on dit « dot » pour le signe « . ».",
+        "de": "In einer E-Mail-Adresse sagt man „dot“ für das Zeichen „.“."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "The symbol “.” in an email address is a ",
+        "after": ".",
+        "accepted": { "answers": ["dot"] },
+        "referenceTargetIds": ["dot", "hyphen", "at", "letter"],
+        "explanation": {
+          "en": "The sign “.” is called a dot.",
+          "fr": "Le signe « . » s’appelle « dot ».",
+          "de": "Das Zeichen „.“ heißt „dot“."
+        }
+      },
+      "listeningOptionTargetIds": ["dot", "at", "double", "hyphen"]
+    },
+    {
+      "id": "hyphen",
+      "term": "hyphen",
+      "translations": { "fr": ["trait d’union"], "de": ["Bindestrich"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "hyphen",
+      "examForms": ["hyphen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈhaɪfn/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Anne-Marie has a hyphen in her name.",
+        "translation": {
+          "fr": "Anne-Marie a un trait d’union dans son prénom.",
+          "de": "Anne-Marie hat einen Bindestrich im Namen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A hyphen is the short line “-” between two parts of a word or name.",
+        "fr": "Un « hyphen » est le petit trait « - » entre deux parties d’un mot ou d’un nom.",
+        "de": "Ein „hyphen“ ist der kurze Strich „-“ zwischen zwei Teilen eines Wortes oder Namens."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "The symbol “-” in “Anne-Marie” is a ",
+        "after": ".",
+        "accepted": { "answers": ["hyphen"] },
+        "referenceTargetIds": ["hyphen", "dot", "at", "name"],
+        "explanation": {
+          "en": "The short line “-” is called a hyphen.",
+          "fr": "Le petit trait « - » s’appelle « hyphen ».",
+          "de": "Der kurze Strich „-“ heißt „hyphen“."
+        }
+      },
+      "listeningOptionTargetIds": ["hyphen", "dot", "at", "alphabet"]
+    },
+    {
+      "id": "at",
+      "term": "at",
+      "translations": { "fr": ["arobase"], "de": ["At-Zeichen"] },
+      "wordClass": "preposition",
+      "genders": [],
+      "number": null,
+      "teachingForm": "at",
+      "examForms": ["at"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/æt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Tom at mail dot com.",
+        "translation": { "fr": "Tom arobase mail point com.", "de": "Tom at mail Punkt com." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "In an email address, you say “at” for the sign “@”.",
+        "fr": "Dans une adresse e-mail, on dit « at » pour le signe « @ ».",
+        "de": "In einer E-Mail-Adresse sagt man „at“ für das Zeichen „@“."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "In an email address, we say “",
+        "after": "” for “@”.",
+        "accepted": { "answers": ["at"] },
+        "referenceTargetIds": ["at", "dot", "hyphen", "spell"],
+        "explanation": {
+          "en": "We say “at” for the sign “@”.",
+          "fr": "On dit « at » pour le signe « @ ».",
+          "de": "Man sagt „at“ für das Zeichen „@“."
+        }
+      },
+      "listeningOptionTargetIds": ["at", "dot", "hyphen", "double"]
+    },
+    {
+      "id": "double",
+      "term": "double",
+      "translations": { "fr": ["double"], "de": ["doppelt"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "double",
+      "examForms": ["double"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈdʌbl/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "“Hello” has a double l.",
+        "translation": { "fr": "« Hello » a un double l.", "de": "„Hello“ hat ein doppeltes l." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "You say “double” when the same letter comes twice, as in double l.",
+        "fr": "On dit « double » quand la même lettre apparaît deux fois, comme dans double l.",
+        "de": "Man sagt „double“, wenn derselbe Buchstabe zweimal vorkommt, wie bei double l."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "In “hello” there is a ",
+        "after": " l: h-e-l-l-o.",
+        "accepted": { "answers": ["double"] },
+        "referenceTargetIds": ["double", "dot", "name", "alphabet"],
+        "explanation": {
+          "en": "“Hello” has two l’s together: a double l.",
+          "fr": "« Hello » a deux l de suite : un double l.",
+          "de": "„Hello“ hat zwei l hintereinander: ein doppeltes l."
+        }
+      },
+      "listeningOptionTargetIds": ["double", "dot", "name", "spell"]
+    },
+    {
+      "id": "spell",
+      "term": "spell",
+      "translations": { "fr": ["épeler"], "de": ["buchstabieren"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "spell",
+      "examForms": ["spell"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/spel/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Can you spell your name?",
+        "translation": {
+          "fr": "Pouvez-vous épeler votre nom ?",
+          "de": "Kannst du deinen Namen buchstabieren?"
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "To spell a word is to say its letters one by one.",
+        "fr": "« Spell » veut dire dire les lettres d’un mot une par une.",
+        "de": "„Spell“ bedeutet, die Buchstaben eines Wortes einzeln zu sagen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Can you ",
+        "after": " your name, please?",
+        "accepted": { "answers": ["spell"] },
+        "referenceTargetIds": ["spell", "name", "letter", "dot"],
+        "explanation": {
+          "en": "You spell a name by saying its letters one by one.",
+          "fr": "On épelle un nom en disant ses lettres une par une.",
+          "de": "Man buchstabiert einen Namen, indem man seine Buchstaben einzeln sagt."
+        }
+      },
+      "listeningOptionTargetIds": ["spell", "double", "letter", "name"]
+    },
+    {
+      "id": "how-spell",
+      "term": "How do you spell that?",
+      "translations": { "fr": ["Comment ça s’écrit ?"], "de": ["Wie schreibt man das?"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "How do you spell that?",
+      "examForms": [
+        "How do you spell that?",
+        "How do you spell it?",
+        "How do you spell that",
+        "How do you spell it"
+      ],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/haʊ duː juː spel ðæt/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "My name is Siobhan. — How do you spell that?",
+        "translation": {
+          "fr": "Je m’appelle Siobhan. — Comment ça s’écrit ?",
+          "de": "Ich heiße Siobhan. — Wie schreibt man das?"
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Use “How do you spell that?” to ask someone to say the letters of a word.",
+        "fr": "On utilise « How do you spell that? » pour demander les lettres d’un mot.",
+        "de": "Mit „How do you spell that?“ bittest du jemanden, die Buchstaben eines Wortes zu sagen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "“My name is Siobhan.” — “",
+        "after": "” — “S-I-O-B-H-A-N.”",
+        "accepted": {
+          "answers": [
+            "How do you spell that?",
+            "How do you spell it?",
+            "How do you spell that",
+            "How do you spell it"
+          ]
+        },
+        "referenceTargetIds": ["how-spell", "spell", "name", "letter"],
+        "explanation": {
+          "en": "You ask “How do you spell that?” and the answer is the letters.",
+          "fr": "On demande « How do you spell that? » et la réponse donne les lettres.",
+          "de": "Man fragt „How do you spell that?“ und die Antwort sind die Buchstaben."
+        }
+      },
+      "listeningOptionTargetIds": ["how-spell", "spell", "name", "letter"]
+    },
+    {
+      "id": "name",
+      "term": "name",
+      "translations": { "fr": ["nom"], "de": ["Name"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "name",
+      "examForms": ["name"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/neɪm/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "What’s your name?",
+        "translation": { "fr": "Comment vous appelez-vous ?", "de": "Wie heißt du?" }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Your name is the word people use for you, like Anna or Tom.",
+        "fr": "Votre « name » est le mot qu’on utilise pour vous appeler, comme Anna ou Tom.",
+        "de": "Dein „name“ ist das Wort, mit dem man dich anspricht, zum Beispiel Anna oder Tom."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "What’s your ",
+        "after": "? — Anna.",
+        "accepted": { "answers": ["name"] },
+        "referenceTargetIds": ["name", "letter", "dot", "alphabet"],
+        "explanation": {
+          "en": "You ask “What’s your name?” to learn someone’s name.",
+          "fr": "On demande « What’s your name? » pour connaître le nom de quelqu’un.",
+          "de": "Man fragt „What’s your name?“, um den Namen von jemandem zu erfahren."
+        }
+      },
+      "listeningOptionTargetIds": ["name", "letter", "dot", "spell"]
+    },
+    {
+      "id": "email-address",
+      "term": "email address",
+      "translations": { "fr": ["adresse e-mail"], "de": ["E-Mail-Adresse"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "email address",
+      "examForms": ["email address", "e-mail address"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈiːmeɪl əˌdres/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "What’s your email address?",
+        "translation": {
+          "fr": "Quelle est votre adresse e-mail ?",
+          "de": "Wie lautet deine E-Mail-Adresse?"
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "An email address, like tom at mail dot com, is where people send you emails.",
+        "fr": "Une « email address », comme tom at mail dot com, est l’adresse où l’on vous envoie des e-mails.",
+        "de": "Eine „email address“, zum Beispiel tom at mail dot com, ist die Adresse, an die man dir E-Mails schickt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "My ",
+        "after": " is tom at mail dot com.",
+        "accepted": { "answers": ["email address", "e-mail address"] },
+        "referenceTargetIds": ["email-address", "dot", "hyphen", "alphabet"],
+        "explanation": {
+          "en": "“tom at mail dot com” is an email address.",
+          "fr": "« tom at mail dot com » est une adresse e-mail.",
+          "de": "„tom at mail dot com“ ist eine E-Mail-Adresse."
+        }
+      },
+      "listeningOptionTargetIds": ["email-address", "alphabet", "at", "name"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

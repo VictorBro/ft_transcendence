@@ -1,0 +1,584 @@
+{
+  "schemaVersion": 2,
+  "id": "en-idioms-for-moods-and-feelings",
+  "lang": "en",
+  "level": "C1",
+  "locales": ["en", "fr", "de"],
+  "title": "Idioms for moods and feelings",
+  "objective": {
+    "en": "Describe moods vividly with twelve idioms for joy, low spirits, tension and anger.",
+    "fr": "Décrire des humeurs de façon imagée avec douze expressions de joie, de tristesse, de tension et de colère.",
+    "de": "Stimmungen anschaulich beschreiben, mit zwölf Redewendungen für Freude, Niedergeschlagenheit, Anspannung und Wut."
+  },
+  "estimatedMinutes": 20,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:49:04.463Z",
+    "inputHashes": { "outline": "6dc72114589577e29cdf4d85446cdbd23870e99f1db698ac8c42f1195513511f" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Twelve idioms in three groups: great happiness (over the moon, on cloud nine, tickled pink, walking on air), low spirits (down in the dumps, feeling blue, at a low ebb) and tension or anger (on edge, at the end of your tether, a bag of nerves, on tenterhooks, hot under the collar). They go beyond the plain emotion adjectives taught in earlier lessons.",
+    "fr": "Douze expressions en trois groupes : grand bonheur (over the moon, on cloud nine, tickled pink, walking on air), moral bas (down in the dumps, feeling blue, at a low ebb) et tension ou colère (on edge, at the end of your tether, a bag of nerves, on tenterhooks, hot under the collar). Elles dépassent les adjectifs d'émotion simples vus dans les leçons précédentes.",
+    "de": "Zwölf Redewendungen in drei Gruppen: großes Glück (over the moon, on cloud nine, tickled pink, walking on air), gedrückte Stimmung (down in the dumps, feeling blue, at a low ebb) sowie Anspannung und Wut (on edge, at the end of your tether, a bag of nerves, on tenterhooks, hot under the collar). Sie gehen über die einfachen Gefühlsadjektive früherer Lektionen hinaus."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "The outline asks for about twelve idioms; twelve in three groups of 4, 3 and 5 keeps each set easy to compare.",
+    "fr": "Le plan demande environ douze expressions ; douze en trois groupes de 4, 3 et 5 permettent de bien les comparer.",
+    "de": "Die Gliederung nennt etwa zwölf Redewendungen; zwölf in drei Gruppen zu 4, 3 und 5 lassen sich gut vergleichen."
+  },
+  "difficultyBalance": {
+    "en": "Most idioms are common and core; the less frequent ones (low ebb, tenterhooks, hot under the collar) are marked demanding.",
+    "fr": "La plupart des expressions sont courantes ; les moins fréquentes (low ebb, tenterhooks, hot under the collar) sont jugées exigeantes.",
+    "de": "Die meisten Redewendungen sind gebräuchlich; die selteneren (low ebb, tenterhooks, hot under the collar) gelten als anspruchsvoll."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "joy",
+      "label": { "en": "Great happiness", "fr": "Grand bonheur", "de": "Großes Glück" },
+      "targetIds": ["over-the-moon", "cloud-nine", "tickled-pink", "walking-on-air"],
+      "introduction": {
+        "en": "These idioms describe **great happiness**. They are lively and a little informal:\n\n- `over the moon`\n- `on cloud nine`\n- `tickled pink`\n- `walking on air`",
+        "fr": "Ces expressions décrivent un **grand bonheur**. Elles sont imagées et un peu familières :\n\n- `over the moon`\n- `on cloud nine`\n- `tickled pink`\n- `walking on air`",
+        "de": "Diese Redewendungen beschreiben **großes Glück**. Sie sind bildhaft und leicht umgangssprachlich:\n\n- `over the moon`\n- `on cloud nine`\n- `tickled pink`\n- `walking on air`"
+      }
+    },
+    {
+      "id": "low",
+      "label": { "en": "Low spirits", "fr": "Moral bas", "de": "Gedrückte Stimmung" },
+      "targetIds": ["down-in-dumps", "feeling-blue", "low-ebb"],
+      "introduction": {
+        "en": "These idioms describe **low spirits**, from mild sadness to a really bad patch:\n\n- `down in the dumps`\n- `feeling blue`\n- `at a low ebb`",
+        "fr": "Ces expressions décrivent un **moral bas**, de la légère tristesse à une très mauvaise période :\n\n- `down in the dumps`\n- `feeling blue`\n- `at a low ebb`",
+        "de": "Diese Redewendungen beschreiben **gedrückte Stimmung**, von leichter Traurigkeit bis zu einer richtig schlechten Phase:\n\n- `down in the dumps`\n- `feeling blue`\n- `at a low ebb`"
+      }
+    },
+    {
+      "id": "tension",
+      "label": { "en": "Tension and anger", "fr": "Tension et colère", "de": "Anspannung und Wut" },
+      "targetIds": ["on-edge", "end-of-tether", "bag-of-nerves", "tenterhooks", "hot-collar"],
+      "introduction": {
+        "en": "These idioms describe **tension and anger**. Some show worry, others show a short temper:\n\n- `on edge`\n- `at the end of your tether`\n- `a bag of nerves`\n- `on tenterhooks`\n- `hot under the collar`",
+        "fr": "Ces expressions décrivent la **tension et la colère**. Certaines montrent l'inquiétude, d'autres une humeur irritable :\n\n- `on edge`\n- `at the end of your tether`\n- `a bag of nerves`\n- `on tenterhooks`\n- `hot under the collar`",
+        "de": "Diese Redewendungen beschreiben **Anspannung und Wut**. Manche zeigen Sorge, andere Reizbarkeit:\n\n- `on edge`\n- `at the end of your tether`\n- `a bag of nerves`\n- `on tenterhooks`\n- `hot under the collar`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "over-the-moon",
+      "term": "over the moon",
+      "translations": { "fr": ["aux anges"], "de": ["überglücklich"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "over the moon",
+      "examForms": ["over the moon"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌəʊvə ðə ˈmuːn/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "She was over the moon when she got the job.",
+        "translation": {
+          "fr": "Elle était aux anges quand elle a eu le poste.",
+          "de": "Sie war überglücklich, als sie die Stelle bekam."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Over the moon means extremely happy, usually about good news.",
+        "fr": "Over the moon signifie extrêmement heureux, souvent à cause d'une bonne nouvelle.",
+        "de": "Over the moon bedeutet überglücklich, meist wegen guter Nachrichten."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "When she heard she had got the job, she was ",
+        "after": " for days.",
+        "accepted": { "answers": ["over the moon"] },
+        "referenceTargetIds": ["over-the-moon", "down-in-dumps", "on-edge", "hot-collar"],
+        "explanation": {
+          "en": "Only over the moon fits: she is delighted by good news.",
+          "fr": "Seul over the moon convient : elle est ravie par une bonne nouvelle.",
+          "de": "Nur over the moon passt: Sie freut sich über gute Nachrichten."
+        }
+      },
+      "listeningOptionTargetIds": ["over-the-moon", "down-in-dumps", "on-edge", "hot-collar"]
+    },
+    {
+      "id": "cloud-nine",
+      "term": "on cloud nine",
+      "translations": { "fr": ["au septième ciel"], "de": ["im siebten Himmel"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "on cloud nine",
+      "examForms": ["on cloud nine"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɒn klaʊd ˈnaɪn/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "They have been on cloud nine since the wedding.",
+        "translation": {
+          "fr": "Ils sont au septième ciel depuis le mariage.",
+          "de": "Seit der Hochzeit schweben sie im siebten Himmel."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "On cloud nine describes a lasting state of perfect happiness.",
+        "fr": "On cloud nine décrit un état durable de bonheur parfait.",
+        "de": "On cloud nine beschreibt einen anhaltenden Zustand vollkommenen Glücks."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Since the wedding, they have been ",
+        "after": ", and nothing seems to worry them.",
+        "accepted": { "answers": ["on cloud nine"] },
+        "referenceTargetIds": ["cloud-nine", "feeling-blue", "bag-of-nerves", "hot-collar"],
+        "explanation": {
+          "en": "Only on cloud nine fits: they are blissfully happy and worry-free.",
+          "fr": "Seul on cloud nine convient : ils sont d'un bonheur parfait, sans souci.",
+          "de": "Nur on cloud nine passt: Sie sind selig glücklich und sorglos."
+        }
+      },
+      "listeningOptionTargetIds": ["cloud-nine", "feeling-blue", "bag-of-nerves", "hot-collar"]
+    },
+    {
+      "id": "tickled-pink",
+      "term": "tickled pink",
+      "translations": { "fr": ["ravi"], "de": ["hocherfreut"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "tickled pink",
+      "examForms": ["tickled pink"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌtɪkld ˈpɪŋk/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Gran was tickled pink with her flowers.",
+        "translation": {
+          "fr": "Mamie était ravie de ses fleurs.",
+          "de": "Oma hat sich riesig über ihre Blumen gefreut."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Tickled pink means very pleased, often about a small kind surprise.",
+        "fr": "Tickled pink signifie très content, souvent après une petite attention agréable.",
+        "de": "Tickled pink bedeutet sehr erfreut, oft über eine kleine nette Überraschung."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "My grandmother was ",
+        "after": " with the flowers we sent her.",
+        "accepted": { "answers": ["tickled pink"] },
+        "referenceTargetIds": ["tickled-pink", "low-ebb", "end-of-tether", "tenterhooks"],
+        "explanation": {
+          "en": "Only tickled pink fits: she is pleased by a kind gift.",
+          "fr": "Seul tickled pink convient : elle est contente d'un joli cadeau.",
+          "de": "Nur tickled pink passt: Sie freut sich über ein nettes Geschenk."
+        }
+      },
+      "listeningOptionTargetIds": ["tickled-pink", "low-ebb", "end-of-tether", "tenterhooks"]
+    },
+    {
+      "id": "walking-on-air",
+      "term": "walking on air",
+      "translations": { "fr": ["euphorique"], "de": ["wie auf Wolken schweben"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "walking on air",
+      "examForms": ["walking on air"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌwɔːkɪŋ ɒn ˈeə/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "He left the interview walking on air.",
+        "translation": {
+          "fr": "Il est sorti de l'entretien euphorique.",
+          "de": "Er verließ das Vorstellungsgespräch wie auf Wolken."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Walking on air means so happy that you feel light and carefree.",
+        "fr": "Walking on air signifie être si heureux qu'on se sent léger et insouciant.",
+        "de": "Walking on air bedeutet, so glücklich zu sein, dass man sich leicht und unbeschwert fühlt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "After the good exam results he went home ",
+        "after": ", smiling at everyone.",
+        "accepted": { "answers": ["walking on air"] },
+        "referenceTargetIds": ["walking-on-air", "feeling-blue", "on-edge", "hot-collar"],
+        "explanation": {
+          "en": "Only walking on air fits: he is happy and feels light after good results.",
+          "fr": "Seul walking on air convient : il est heureux et léger après de bons résultats.",
+          "de": "Nur walking on air passt: Er ist nach guten Ergebnissen glücklich und fühlt sich leicht."
+        }
+      },
+      "listeningOptionTargetIds": ["walking-on-air", "feeling-blue", "on-edge", "hot-collar"]
+    },
+    {
+      "id": "down-in-dumps",
+      "term": "down in the dumps",
+      "translations": { "fr": ["avoir le cafard"], "de": ["niedergeschlagen"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "down in the dumps",
+      "examForms": ["down in the dumps"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌdaʊn ɪn ðə ˈdʌmps/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "I've been down in the dumps all week.",
+        "translation": {
+          "fr": "J'ai le cafard toute la semaine.",
+          "de": "Ich bin die ganze Woche niedergeschlagen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Down in the dumps means sad and low, often for no clear reason.",
+        "fr": "Down in the dumps signifie triste et abattu, souvent sans raison précise.",
+        "de": "Down in the dumps bedeutet traurig und bedrückt, oft ohne klaren Grund."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "It rained all weekend and I was ",
+        "after": ".",
+        "accepted": { "answers": ["down in the dumps"] },
+        "referenceTargetIds": ["down-in-dumps", "over-the-moon", "tenterhooks", "hot-collar"],
+        "explanation": {
+          "en": "Only down in the dumps fits: grey weather leaves the speaker gloomy.",
+          "fr": "Seul down in the dumps convient : le temps gris rend le locuteur morose.",
+          "de": "Nur down in the dumps passt: Das trübe Wetter macht den Sprecher bedrückt."
+        }
+      },
+      "listeningOptionTargetIds": ["down-in-dumps", "over-the-moon", "tenterhooks", "hot-collar"]
+    },
+    {
+      "id": "feeling-blue",
+      "term": "feeling blue",
+      "translations": { "fr": ["avoir le blues"], "de": ["melancholisch gestimmt"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "feeling blue",
+      "examForms": ["feeling blue"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌfiːlɪŋ ˈbluː/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "She's been feeling blue since January.",
+        "translation": {
+          "fr": "Elle a le blues depuis janvier.",
+          "de": "Sie ist seit Januar melancholisch gestimmt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Feeling blue means feeling sad or melancholy, usually in a quiet way.",
+        "fr": "Feeling blue signifie se sentir triste ou mélancolique, plutôt discrètement.",
+        "de": "Feeling blue bedeutet, sich traurig oder melancholisch zu fühlen, meist eher leise."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He has been ",
+        "after": " ever since his best friend moved abroad.",
+        "accepted": { "answers": ["feeling blue"] },
+        "referenceTargetIds": ["feeling-blue", "cloud-nine", "on-edge", "end-of-tether"],
+        "explanation": {
+          "en": "Only feeling blue fits: he is sad because he misses his friend.",
+          "fr": "Seul feeling blue convient : il est triste parce que son ami lui manque.",
+          "de": "Nur feeling blue passt: Er ist traurig, weil er seinen Freund vermisst."
+        }
+      },
+      "listeningOptionTargetIds": ["feeling-blue", "cloud-nine", "on-edge", "end-of-tether"]
+    },
+    {
+      "id": "low-ebb",
+      "term": "at a low ebb",
+      "translations": { "fr": ["au plus bas moralement"], "de": ["in einem Stimmungstief"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "at a low ebb",
+      "examForms": ["at a low ebb"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/æt ə ləʊ ˈeb/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Morale was at a low ebb after the cuts.",
+        "translation": {
+          "fr": "Le moral était au plus bas après les coupes.",
+          "de": "Nach den Kürzungen war die Stimmung auf einem Tiefpunkt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "At a low ebb means at a very weak, discouraged point; it suits groups and situations well.",
+        "fr": "At a low ebb signifie à un point très faible et découragé ; l'expression convient bien aux groupes et aux situations.",
+        "de": "At a low ebb bedeutet an einem sehr schwachen, entmutigten Punkt; passt gut zu Gruppen und Situationen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "After months of defeats, the team's morale was ",
+        "after": ".",
+        "accepted": { "answers": ["at a low ebb"] },
+        "referenceTargetIds": ["low-ebb", "tickled-pink", "bag-of-nerves", "hot-collar"],
+        "explanation": {
+          "en": "Only at a low ebb fits: repeated defeats leave morale very low.",
+          "fr": "Seul at a low ebb convient : les défaites répétées minent le moral.",
+          "de": "Nur at a low ebb passt: Wiederholte Niederlagen drücken die Moral."
+        }
+      },
+      "listeningOptionTargetIds": ["low-ebb", "tickled-pink", "bag-of-nerves", "hot-collar"]
+    },
+    {
+      "id": "on-edge",
+      "term": "on edge",
+      "translations": { "fr": ["à cran"], "de": ["angespannt"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "on edge",
+      "examForms": ["on edge"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɒn ˈedʒ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "I'm always on edge before a presentation.",
+        "translation": {
+          "fr": "Je suis toujours à cran avant une présentation.",
+          "de": "Ich bin vor einer Präsentation immer angespannt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "On edge means tense and easily upset, often because of worry.",
+        "fr": "On edge signifie tendu et irritable, souvent à cause de l'inquiétude.",
+        "de": "On edge bedeutet angespannt und leicht reizbar, oft aus Sorge."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Everyone in the office was ",
+        "after": " the day before the inspection.",
+        "accepted": { "answers": ["on edge"] },
+        "referenceTargetIds": ["on-edge", "over-the-moon", "feeling-blue", "tickled-pink"],
+        "explanation": {
+          "en": "Only on edge fits: people are tense before an inspection.",
+          "fr": "Seul on edge convient : on est tendu avant une inspection.",
+          "de": "Nur on edge passt: Vor einer Inspektion ist man angespannt."
+        }
+      },
+      "listeningOptionTargetIds": ["on-edge", "over-the-moon", "feeling-blue", "tickled-pink"]
+    },
+    {
+      "id": "end-of-tether",
+      "term": "at the end of your tether",
+      "translations": { "fr": ["à bout de nerfs"], "de": ["mit den Nerven am Ende"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "at the end of your tether",
+      "examForms": [
+        "at the end of your tether",
+        "at the end of my tether",
+        "at the end of her tether",
+        "at the end of his tether"
+      ],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/æt ði ˌend əv jɔː ˈteðə/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "By Friday I was at the end of my tether.",
+        "translation": {
+          "fr": "Vendredi, j'étais à bout de nerfs.",
+          "de": "Am Freitag war ich mit den Nerven am Ende."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "At the end of your tether means you can no longer cope; the possessive changes with the person.",
+        "fr": "At the end of your tether signifie qu'on n'en peut plus ; le possessif change selon la personne.",
+        "de": "At the end of your tether bedeutet, dass man nicht mehr kann; das Possessivpronomen ändert sich mit der Person."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "After three sleepless nights, I was ",
+        "after": ".",
+        "accepted": { "answers": ["at the end of my tether", "at the end of my rope"] },
+        "referenceTargetIds": ["end-of-tether", "walking-on-air", "cloud-nine", "tenterhooks"],
+        "explanation": {
+          "en": "Only at the end of my tether fits: exhaustion has left me unable to cope.",
+          "fr": "Seul at the end of my tether convient : l'épuisement m'empêche de tenir.",
+          "de": "Nur at the end of my tether passt: Die Erschöpfung lässt mich nicht mehr durchhalten."
+        }
+      },
+      "listeningOptionTargetIds": ["end-of-tether", "walking-on-air", "cloud-nine", "tenterhooks"]
+    },
+    {
+      "id": "bag-of-nerves",
+      "term": "bag of nerves",
+      "translations": { "fr": ["une boule de nerfs"], "de": ["ein Nervenbündel"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "a bag of nerves",
+      "examForms": ["a bag of nerves"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ə ˌbæɡ əv ˈnɜːvz/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "He's a bag of nerves before every match.",
+        "translation": {
+          "fr": "Il est une vraie boule de nerfs avant chaque match.",
+          "de": "Vor jedem Spiel ist er ein Nervenbündel."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A bag of nerves is a person who is extremely nervous; it is a noun phrase, so it follows be.",
+        "fr": "A bag of nerves désigne une personne extrêmement nerveuse ; c'est un groupe nominal, il suit donc be.",
+        "de": "A bag of nerves ist eine extrem nervöse Person; es ist eine Nominalphrase und folgt daher auf be."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "On the morning of her driving test, she was a ",
+        "after": ".",
+        "accepted": { "answers": ["bag of nerves"] },
+        "referenceTargetIds": ["bag-of-nerves", "over-the-moon", "down-in-dumps", "hot-collar"],
+        "explanation": {
+          "en": "Only bag of nerves fits after a: she is extremely nervous before the test.",
+          "fr": "Seul bag of nerves convient après a : elle est très nerveuse avant l'examen.",
+          "de": "Nur bag of nerves passt nach a: Sie ist vor der Prüfung extrem nervös."
+        }
+      },
+      "listeningOptionTargetIds": ["bag-of-nerves", "over-the-moon", "down-in-dumps", "hot-collar"]
+    },
+    {
+      "id": "tenterhooks",
+      "term": "on tenterhooks",
+      "translations": { "fr": ["sur des charbons ardents"], "de": ["wie auf glühenden Kohlen"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "on tenterhooks",
+      "examForms": ["on tenterhooks"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɒn ˈtentəhʊks/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "We were on tenterhooks until the call came.",
+        "translation": {
+          "fr": "Nous étions sur des charbons ardents jusqu'à l'appel.",
+          "de": "Wir saßen wie auf glühenden Kohlen, bis der Anruf kam."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "On tenterhooks means anxiously waiting to find out what will happen.",
+        "fr": "On tenterhooks signifie attendre avec anxiété de savoir ce qui va arriver.",
+        "de": "On tenterhooks bedeutet, ängstlich darauf zu warten, was passieren wird."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "The whole family waited ",
+        "after": " for the results of the test.",
+        "accepted": { "answers": ["on tenterhooks"] },
+        "referenceTargetIds": ["tenterhooks", "tickled-pink", "feeling-blue", "low-ebb"],
+        "explanation": {
+          "en": "Only on tenterhooks fits: they wait anxiously for news.",
+          "fr": "Seul on tenterhooks convient : ils attendent des nouvelles avec anxiété.",
+          "de": "Nur on tenterhooks passt: Sie warten ängstlich auf Neuigkeiten."
+        }
+      },
+      "listeningOptionTargetIds": ["tenterhooks", "tickled-pink", "feeling-blue", "low-ebb"]
+    },
+    {
+      "id": "hot-collar",
+      "term": "hot under the collar",
+      "translations": { "fr": ["hors de soi"], "de": ["aufgebracht"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "hot under the collar",
+      "examForms": ["hot under the collar"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌhɒt ʌndə ðə ˈkɒlə/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Don't get hot under the collar over a small mistake.",
+        "translation": {
+          "fr": "Ne t'énerve pas pour une petite erreur.",
+          "de": "Reg dich nicht wegen eines kleinen Fehlers auf."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Hot under the collar means angry or embarrassed, often in a heated moment.",
+        "fr": "Hot under the collar signifie en colère ou gêné, souvent dans un moment tendu.",
+        "de": "Hot under the collar bedeutet wütend oder verlegen, oft in einem hitzigen Moment."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He gets ",
+        "after": " whenever people talk about politics.",
+        "accepted": { "answers": ["hot under the collar"] },
+        "referenceTargetIds": ["hot-collar", "cloud-nine", "low-ebb", "bag-of-nerves"],
+        "explanation": {
+          "en": "Only hot under the collar fits: he becomes angry during political talk.",
+          "fr": "Seul hot under the collar convient : il s'énerve quand on parle de politique.",
+          "de": "Nur hot under the collar passt: Er wird wütend, wenn über Politik gesprochen wird."
+        }
+      },
+      "listeningOptionTargetIds": ["hot-collar", "cloud-nine", "low-ebb", "bag-of-nerves"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

@@ -1,0 +1,407 @@
+{
+  "schemaVersion": 2,
+  "id": "en-reading-a-chatty-email-from-a-friend-abroad",
+  "lang": "en",
+  "level": "B2",
+  "locales": ["en", "fr", "de"],
+  "title": "Reading a chatty email from a friend abroad",
+  "objective": {
+    "en": "Read a chatty email from a friend abroad and follow her news, told in a casual, spoken style full of informal phrases such as I'm shattered and guess what.",
+    "fr": "Lire un e-mail bavard d’une amie à l’étranger et suivre ses nouvelles racontées sur un ton familier, avec des expressions comme I'm shattered ou guess what.",
+    "de": "Eine plaudernde E-Mail einer Freundin im Ausland lesen und ihren Neuigkeiten im lockeren Umgangston folgen, mit Wendungen wie I'm shattered oder guess what."
+  },
+  "estimatedMinutes": 11,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:50:44.433Z",
+    "inputHashes": {
+      "outline": "8b0ed01531b806d78a13b22d1de7043a6fc12d8d777b665814c968e119ec59c8",
+      "brief": "694a9d9e1660423739bdba053a48ba95f00f81d51a7cf237d99b80cc0959e1a7"
+    }
+  },
+  "kind": "reading",
+  "theme": "relations",
+  "genre": "email",
+  "documents": [
+    {
+      "documentId": "main",
+      "title": null,
+      "meta": [
+        "From: Jess Carter",
+        "To: Sam",
+        "Date: Sunday 12 October",
+        "Subject: Guess what? Sorry for the silence!"
+      ],
+      "paragraphs": [
+        "Hi Sam, I know, I know, I've been rubbish at keeping in touch. Honestly, it's been a nightmare of a month and I'm only just coming up for air. I'm writing this on the sofa in my pyjamas, and I'm shattered, so forgive any silly mistakes.",
+        "So, guess what? I had to move out. My landlord decided to sell the flat with only three weeks' notice, which was a total nightmare, and I spent every evening of September viewing grotty places with a gang of other desperate people. One had a shower in the kitchen. I'm not joking.",
+        "Anyway, it all turned out fine in the end. Mel from work heard me moaning at lunch and offered me her spare room, just until Christmas. It's tiny, the walls are paper-thin and she plays the drums at weekends, but it's cheap and ten minutes from the office, so I'm not complaining. Much.",
+        "The new job is going well too, although I won't pretend I haven't had a few wobbles. Last Tuesday I sent the whole department an email meant for my sister. It said, and I quote, 'Can't wait to get out of here and eat a massive pizza.' My boss just raised an eyebrow and said, 'Save me a slice.' I wanted the floor to swallow me up.",
+        "Enough about me! How's your mum? Last time you said she was still waiting for the results of her tests. Fingers crossed it's good news. And did you ever sort things out with Dan after that argument at the wedding? You were both being daft, if you ask me.",
+        "Anyway, I'd better go. Drop me a line when you get a minute, even if it's just a few words. I miss our chats more than I can say, and nothing here beats a proper natter over a cup of tea. Love, Jess xx"
+      ],
+      "highlights": [
+        { "keywordId": "nightmare", "text": "it's been a nightmare" },
+        { "keywordId": "im-shattered", "text": "I'm shattered" },
+        { "keywordId": "guess-what", "text": "guess what" },
+        { "keywordId": "fingers-crossed", "text": "Fingers crossed" },
+        { "keywordId": "drop-a-line", "text": "Drop me a line" }
+      ]
+    },
+    {
+      "documentId": "exam",
+      "title": null,
+      "meta": ["From: Ravi", "To: Priya", "Subject: Long time, no see!"],
+      "paragraphs": [
+        "Hiya Priya! Sorry this is so late. Berlin has been mad since I got here. First, I lost my keys on day two and spent a whole evening sitting on the stairs, waiting for the caretaker. Then the heating broke and I wore my coat indoors for a week.",
+        "But things are looking up. My German is still pretty hopeless, to be honest. Yesterday I meant to ask the baker for two rolls, but I got my numbers muddled and walked out with twelve. Now I'm eating bread for breakfast, lunch and dinner! The team at work are lovely, though, and they've promised to take me to a proper beer garden as soon as the weather warms up.",
+        "Anyway, I'm not telling you all this to moan. I wanted to ask a favour. My cousin Nisha is coming to your city for a job interview on 20 November and doesn't know anybody there. Could she stay with you for a night? She's allergic to cats, so please don't tell me you've got one now! Let me know by Friday if you can. Thanks a million, Ravi."
+      ],
+      "highlights": []
+    }
+  ],
+  "steps": [
+    {
+      "id": "flashcards",
+      "stage": "flashcards",
+      "role": "exercise",
+      "label": { "en": "Flashcards", "fr": "Cartes mémoire", "de": "Karteikarten" },
+      "pages": [
+        {
+          "pageId": "flashcards",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Turn each card to learn the key words of the text.",
+            "fr": "Retournez chaque carte pour découvrir les mots clés du texte.",
+            "de": "Dreh jede Karte um und lerne die Schlüsselwörter des Textes."
+          },
+          "items": [
+            {
+              "type": "reading_flashcards",
+              "itemId": "cards",
+              "keywordIds": [
+                "im-shattered",
+                "guess-what",
+                "nightmare",
+                "fingers-crossed",
+                "drop-a-line"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matching",
+      "stage": "matching",
+      "role": "exercise",
+      "label": { "en": "Matching", "fr": "Association", "de": "Zuordnen" },
+      "pages": [
+        {
+          "pageId": "matching",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each key word with its meaning.",
+            "fr": "Associez chaque mot clé à son sens.",
+            "de": "Ordne jedem Schlüsselwort seine Bedeutung zu."
+          },
+          "items": [
+            {
+              "type": "reading_keyword_matching",
+              "itemId": "matching",
+              "keywordIds": [
+                "im-shattered",
+                "guess-what",
+                "nightmare",
+                "fingers-crossed",
+                "drop-a-line"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skim",
+      "stage": "skim",
+      "role": "exercise",
+      "label": { "en": "Skim", "fr": "Survol", "de": "Überfliegen" },
+      "pages": [
+        {
+          "pageId": "skim",
+          "estimatedDurationS": 175,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Look over the document quickly. When the time is up it is put away; then answer the question.",
+            "fr": "Parcourez rapidement le document. À la fin du temps, il disparaît ; répondez ensuite à la question.",
+            "de": "Überfliege das Dokument. Wenn die Zeit um ist, verschwindet es; beantworte dann die Frage."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "skim-document",
+              "documentId": "main",
+              "view": "skim",
+              "skimSeconds": 155
+            },
+            {
+              "type": "reading_skim_choice",
+              "itemId": "skim-question",
+              "focus": "purpose",
+              "question": "Why is Jess writing to Sam?",
+              "options": [
+                { "optionId": "o1", "text": "To complain about her new boss" },
+                { "optionId": "o2", "text": "To invite him to a party at her new flat" },
+                { "optionId": "o3", "text": "To apologise for her silence and share her news" },
+                { "optionId": "o4", "text": "To ask him for money to pay the rent" }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "She starts with 'I've been rubbish at keeping in touch', then tells him her news and asks for his. It is a catch-up email.",
+                "fr": "Elle commence par 'I've been rubbish at keeping in touch', puis raconte ses nouvelles et demande les siennes. C’est un e-mail pour reprendre contact.",
+                "de": "Sie beginnt mit 'I've been rubbish at keeping in touch', erzählt dann ihre Neuigkeiten und fragt nach seinen. Es ist eine E-Mail zum Auf-den-Stand-Bringen."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "detail",
+      "stage": "detail",
+      "role": "exercise",
+      "label": { "en": "Detail", "fr": "Détails", "de": "Details" },
+      "pages": [
+        {
+          "pageId": "detail",
+          "estimatedDurationS": 120,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the document carefully and answer the questions.",
+            "fr": "Lisez le document attentivement et répondez aux questions.",
+            "de": "Lies das Dokument genau und beantworte die Fragen."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "detail-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-flat",
+              "question": "Why did Jess have to leave her flat?",
+              "options": [
+                { "optionId": "o1", "text": "She had an argument with a flatmate." },
+                { "optionId": "o2", "text": "Her landlord decided to sell the flat." },
+                { "optionId": "o3", "text": "The rent became too expensive." },
+                { "optionId": "o4", "text": "She lost her job." }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "She says her landlord decided to sell the flat with only three weeks' notice.",
+                "fr": "Elle dit que son propriétaire a décidé de vendre l’appartement avec seulement trois semaines de préavis.",
+                "de": "Sie sagt, ihr Vermieter habe beschlossen, die Wohnung zu verkaufen, mit nur drei Wochen Vorlaufzeit."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "q-room",
+              "statement": "Mel's spare room is large and peaceful.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: Jess calls it tiny, with paper-thin walls and drums at weekends. She likes it only because it is cheap and close to work.",
+                "fr": "Faux : Jess la dit minuscule, avec des cloisons très fines et de la batterie le week-end. Elle l’aime seulement parce qu’elle est bon marché et proche du travail.",
+                "de": "Falsch: Jess nennt es winzig, mit papierdünnen Wänden und Schlagzeug am Wochenende. Sie mag es nur, weil es günstig und nah an der Arbeit ist."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-email",
+              "question": "What embarrassing mistake did Jess make at work?",
+              "options": [
+                { "optionId": "o1", "text": "She forgot to send an important report." },
+                { "optionId": "o2", "text": "She sent a private message to her whole department." },
+                { "optionId": "o3", "text": "She was rude to a customer." },
+                { "optionId": "o4", "text": "She arrived late to a meeting." }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "She sent the whole department an email meant for her sister, which is why she wanted the floor to swallow her up.",
+                "fr": "Elle a envoyé à tout son service un e-mail destiné à sa sœur, d’où le fait qu’elle aurait voulu disparaître sous terre.",
+                "de": "Sie schickte ihrer ganzen Abteilung eine E-Mail, die für ihre Schwester gedacht war; deshalb wollte sie im Boden versinken."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-boss",
+              "question": "What is the boss doing when saying 'Save me a slice'?",
+              "options": [
+                { "optionId": "o1", "text": "Giving her an order" },
+                { "optionId": "o2", "text": "Inviting her to lunch" },
+                { "optionId": "o3", "text": "Making a joke about her mistake" },
+                { "optionId": "o4", "text": "Warning her not to do it again" }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "The boss only raises an eyebrow and jokes, so the mistake is made light of. Nobody is angry.",
+                "fr": "Le chef se contente de lever un sourcil et de plaisanter : on dédramatise l’erreur. Personne n’est fâché.",
+                "de": "Der Chef hebt nur eine Augenbraue und scherzt; der Fehler wird heruntergespielt. Niemand ist wütend."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "structure",
+      "stage": "structure",
+      "role": "exercise",
+      "label": { "en": "Structure", "fr": "Structure", "de": "Aufbau" },
+      "pages": [
+        {
+          "pageId": "structure",
+          "estimatedDurationS": 75,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the information in the order the text gives it.",
+            "fr": "Remettez les informations dans l’ordre du texte.",
+            "de": "Bring die Informationen in die Reihenfolge des Textes."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "structure-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_order",
+              "itemId": "order",
+              "pieces": [
+                { "pieceId": "p3", "text": "She finds a room at Mel's" },
+                { "pieceId": "p5", "text": "She asks about Sam's mum and Dan" },
+                { "pieceId": "p1", "text": "Jess apologises for not writing" },
+                { "pieceId": "p4", "text": "She sends the wrong email at work" },
+                { "pieceId": "p2", "text": "Her landlord sells the flat" }
+              ],
+              "acceptedOrders": [["p1", "p2", "p3", "p4", "p5"]],
+              "answerExplanation": {
+                "en": "Jess apologises, explains the flat problem, says how Mel helped, tells the work story, and finally turns to Sam's news.",
+                "fr": "Jess s’excuse, explique le problème d’appartement, raconte l’aide de Mel, puis l’histoire du travail, et se tourne enfin vers les nouvelles de Sam.",
+                "de": "Jess entschuldigt sich, erklärt das Wohnungsproblem, erzählt von Mels Hilfe, dann von der Geschichte bei der Arbeit und wendet sich zuletzt Sams Neuigkeiten zu."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "stage": "exam",
+      "role": "exam",
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam",
+          "estimatedDurationS": 190,
+          "timeLimitS": 285,
+          "instructions": {
+            "en": "Read the new document and answer the questions. No help this time.",
+            "fr": "Lisez le nouveau document et répondez aux questions. Cette fois, sans aide.",
+            "de": "Lies das neue Dokument und beantworte die Fragen. Diesmal ohne Hilfe."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "exam-document",
+              "documentId": "exam",
+              "view": "exam",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-mood",
+              "question": "How does Ravi feel about his difficult start in Berlin?",
+              "options": [
+                { "optionId": "o1", "text": "Furious with the people he has met" },
+                { "optionId": "o2", "text": "Ashamed of his behaviour" },
+                { "optionId": "o3", "text": "Amused: he tells his problems as funny stories" },
+                { "optionId": "o4", "text": "Ready to go back home" }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "He jokes about the coat indoors, the twelve rolls and his bread diet, and says he is not writing to moan.",
+                "fr": "Il plaisante sur son manteau, ses douze petits pains et son régime de pain, et dit qu’il n’écrit pas pour se plaindre.",
+                "de": "Er macht Witze über den Mantel in der Wohnung, die zwölf Brötchen und die Brotdiät und sagt, er schreibe nicht, um zu jammern."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-bakery",
+              "question": "What went wrong at the bakery?",
+              "options": [
+                { "optionId": "o1", "text": "The baker refused to serve him." },
+                { "optionId": "o2", "text": "He lost his money." },
+                { "optionId": "o3", "text": "He ordered the wrong kind of bread." },
+                { "optionId": "o4", "text": "He mixed up his numbers and bought too many rolls." }
+              ],
+              "answerOptionId": "o4",
+              "answerExplanation": {
+                "en": "He meant to ask for two rolls but got his numbers muddled and left with twelve.",
+                "fr": "Il voulait deux petits pains, mais s’est trompé de nombre et en est reparti avec douze.",
+                "de": "Er wollte zwei Brötchen, verwechselte die Zahlen und ging mit zwölf hinaus."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "x-cousin",
+              "statement": "Nisha is visiting Priya's city on holiday.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: she is coming for a job interview on 20 November.",
+                "fr": "Faux : elle vient pour un entretien d’embauche le 20 novembre.",
+                "de": "Falsch: Sie kommt am 20. November zu einem Vorstellungsgespräch."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-favour",
+              "question": "What favour does Ravi ask of Priya?",
+              "options": [
+                { "optionId": "o1", "text": "To lend him some money" },
+                { "optionId": "o2", "text": "To let his cousin sleep at her home for a night" },
+                { "optionId": "o3", "text": "To translate a letter into German" },
+                { "optionId": "o4", "text": "To visit him in Berlin" }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "He asks whether Nisha could stay with her for a night.",
+                "fr": "Il demande si Nisha pourrait dormir chez elle une nuit.",
+                "de": "Er fragt, ob Nisha eine Nacht bei ihr übernachten könnte."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "x-reply",
+              "statement": "Ravi wants an answer from Priya by Friday.",
+              "answer": "true",
+              "answerExplanation": {
+                "en": "True: he writes 'Let me know by Friday if you can.'",
+                "fr": "Vrai : il écrit 'Let me know by Friday if you can.'",
+                "de": "Richtig: Er schreibt 'Let me know by Friday if you can.'"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,725 @@
+{
+  "schemaVersion": 2,
+  "id": "en-subtle-character-traits",
+  "lang": "en",
+  "level": "C1",
+  "locales": ["en", "fr", "de"],
+  "title": "Precise adjectives for character",
+  "objective": {
+    "en": "Describe personality precisely with fifteen advanced adjectives such as conscientious, aloof and headstrong.",
+    "fr": "Décrire précisément la personnalité avec quinze adjectifs avancés comme conscientious, aloof et headstrong.",
+    "de": "Persönlichkeit mit fünfzehn anspruchsvollen Adjektiven wie conscientious, aloof und headstrong genau beschreiben."
+  },
+  "estimatedMinutes": 24,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:49:04.596Z",
+    "inputHashes": { "outline": "8c03820929f8b77eb8c50d4c3e96f4092267a391b641786040e1a1e388967c9c" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Fifteen precise character adjectives in three groups: diligence and determination, social manner, and temperament. Pairs of approval or criticism and personality idioms are left to the neighbouring lessons.",
+    "fr": "Quinze adjectifs précis de caractère en trois groupes : application et détermination, attitude sociale, tempérament. Les paires éloge/critique et les idiomes de personnalité sont traités dans les leçons voisines.",
+    "de": "Fünfzehn präzise Charakteradjektive in drei Gruppen: Sorgfalt und Willenskraft, Auftreten in Gesellschaft, Temperament. Lob-/Kritik-Paare und Persönlichkeitsidiome folgen in den Nachbarlektionen."
+  },
+  "targetCount": 15,
+  "countRationale": {
+    "en": "Fifteen words fit the intent of about fifteen and give three groups of five that are easy to review.",
+    "fr": "Quinze mots correspondent à l’intention d’environ quinze et donnent trois groupes de cinq faciles à réviser.",
+    "de": "Fünfzehn Wörter entsprechen der Vorgabe von etwa fünfzehn und ergeben drei gut wiederholbare Gruppen zu fünf."
+  },
+  "difficultyBalance": {
+    "en": "Mostly demanding C1 words, with a few more familiar ones such as impulsive and pragmatic.",
+    "fr": "Surtout des mots exigeants de niveau C1, avec quelques mots plus familiers comme impulsive et pragmatic.",
+    "de": "Überwiegend anspruchsvolle C1-Wörter, dazu einige vertrautere wie impulsive und pragmatic."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "drive",
+      "label": {
+        "en": "Care and determination",
+        "fr": "Application et détermination",
+        "de": "Sorgfalt und Willenskraft"
+      },
+      "targetIds": ["conscientious", "meticulous", "tenacious", "pragmatic", "headstrong"],
+      "introduction": {
+        "en": "These adjectives describe how people approach work and goals:\n\n- `conscientious`\n- `meticulous`\n- `tenacious`\n- `pragmatic`\n- `headstrong`",
+        "fr": "Ces adjectifs décrivent la façon d’aborder le travail et les objectifs :\n\n- `conscientious`\n- `meticulous`\n- `tenacious`\n- `pragmatic`\n- `headstrong`",
+        "de": "Diese Adjektive beschreiben, wie Menschen Arbeit und Ziele angehen:\n\n- `conscientious`\n- `meticulous`\n- `tenacious`\n- `pragmatic`\n- `headstrong`"
+      }
+    },
+    {
+      "id": "social",
+      "label": {
+        "en": "Social manner",
+        "fr": "Attitude sociale",
+        "de": "Auftreten in Gesellschaft"
+      },
+      "targetIds": ["gregarious", "aloof", "assertive", "diffident", "brash"],
+      "introduction": {
+        "en": "These adjectives describe how people behave with others:\n\n- `gregarious`\n- `aloof`\n- `assertive`\n- `diffident`\n- `brash`",
+        "fr": "Ces adjectifs décrivent le comportement envers les autres :\n\n- `gregarious`\n- `aloof`\n- `assertive`\n- `diffident`\n- `brash`",
+        "de": "Diese Adjektive beschreiben, wie sich Menschen anderen gegenüber verhalten:\n\n- `gregarious`\n- `aloof`\n- `assertive`\n- `diffident`\n- `brash`"
+      }
+    },
+    {
+      "id": "temper",
+      "label": {
+        "en": "Temperament and attitude",
+        "fr": "Tempérament et attitude",
+        "de": "Temperament und Haltung"
+      },
+      "targetIds": ["impulsive", "complacent", "stoic", "introspective", "volatile"],
+      "introduction": {
+        "en": "These adjectives describe inner temperament and attitude:\n\n- `impulsive`\n- `complacent`\n- `stoic`\n- `introspective`\n- `volatile`",
+        "fr": "Ces adjectifs décrivent le tempérament et l’attitude intérieure :\n\n- `impulsive`\n- `complacent`\n- `stoic`\n- `introspective`\n- `volatile`",
+        "de": "Diese Adjektive beschreiben inneres Temperament und Haltung:\n\n- `impulsive`\n- `complacent`\n- `stoic`\n- `introspective`\n- `volatile`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "conscientious",
+      "term": "conscientious",
+      "translations": { "fr": ["consciencieux"], "de": ["gewissenhaft"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "conscientious",
+      "examForms": ["conscientious"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌkɒnʃiˈenʃəs/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "She is a conscientious student who never misses a deadline.",
+        "translation": {
+          "fr": "C’est une étudiante consciencieuse qui ne manque jamais une échéance.",
+          "de": "Sie ist eine gewissenhafte Studentin, die nie eine Frist verpasst."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Conscientious describes someone who does tasks carefully and with a strong sense of duty.",
+        "fr": "Conscientious décrit quelqu’un qui fait son travail avec soin et un fort sens du devoir.",
+        "de": "Conscientious beschreibt jemanden, der Aufgaben sorgfältig und mit starkem Pflichtgefühl erledigt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He is so ",
+        "after": " that he finishes every task properly, even when nobody is checking.",
+        "accepted": { "answers": ["conscientious"] },
+        "referenceTargetIds": ["conscientious", "aloof", "brash", "volatile"],
+        "explanation": {
+          "en": "Only conscientious fits: it means doing tasks properly out of a sense of duty.",
+          "fr": "Seul « conscientious » convient : il signifie bien faire son travail par sens du devoir.",
+          "de": "Nur „conscientious“ passt: Es bedeutet, Aufgaben aus Pflichtgefühl ordentlich zu erledigen."
+        }
+      },
+      "listeningOptionTargetIds": ["conscientious", "complacent", "impulsive", "introspective"]
+    },
+    {
+      "id": "meticulous",
+      "term": "meticulous",
+      "translations": { "fr": ["méticuleux"], "de": ["akribisch"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "meticulous",
+      "examForms": ["meticulous"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/məˈtɪkjʊləs/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "The restorer was meticulous, checking every tiny detail of the painting.",
+        "translation": {
+          "fr": "Le restaurateur était méticuleux et vérifiait le moindre détail du tableau.",
+          "de": "Der Restaurator war akribisch und prüfte jedes kleinste Detail des Gemäldes."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Meticulous means extremely careful about small details.",
+        "fr": "Meticulous signifie extrêmement attentif aux petits détails.",
+        "de": "Meticulous bedeutet äußerst genau in Bezug auf kleine Details."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "The restorer was ",
+        "after": ", checking every tiny detail of the painting.",
+        "accepted": { "answers": ["meticulous"] },
+        "referenceTargetIds": ["meticulous", "brash", "complacent", "gregarious"],
+        "explanation": {
+          "en": "Only meticulous fits: checking every tiny detail shows extreme care.",
+          "fr": "Seul « meticulous » convient : vérifier chaque détail montre un soin extrême.",
+          "de": "Nur „meticulous“ passt: Jedes Detail zu prüfen zeigt äußerste Genauigkeit."
+        }
+      },
+      "listeningOptionTargetIds": ["meticulous", "tenacious", "conscientious", "volatile"]
+    },
+    {
+      "id": "tenacious",
+      "term": "tenacious",
+      "translations": { "fr": ["tenace"], "de": ["hartnäckig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "tenacious",
+      "examForms": ["tenacious"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/təˈneɪʃəs/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Thanks to her tenacious search, she finally found the missing documents.",
+        "translation": {
+          "fr": "Grâce à ses recherches tenaces, elle a fini par retrouver les documents manquants.",
+          "de": "Dank ihrer hartnäckigen Suche fand sie die fehlenden Dokumente schließlich."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Tenacious describes someone who does not give up easily.",
+        "fr": "Tenacious décrit quelqu’un qui n’abandonne pas facilement.",
+        "de": "Tenacious beschreibt jemanden, der nicht so schnell aufgibt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Thanks to her ",
+        "after": " search, she finally found the missing documents.",
+        "accepted": { "answers": ["tenacious"] },
+        "referenceTargetIds": ["tenacious", "aloof", "stoic", "diffident"],
+        "explanation": {
+          "en": "Only tenacious fits: she kept searching until she succeeded.",
+          "fr": "Seul « tenacious » convient : elle a continué à chercher jusqu’à réussir.",
+          "de": "Nur „tenacious“ passt: Sie suchte weiter, bis sie Erfolg hatte."
+        }
+      },
+      "listeningOptionTargetIds": ["tenacious", "meticulous", "brash", "assertive"]
+    },
+    {
+      "id": "pragmatic",
+      "term": "pragmatic",
+      "translations": { "fr": ["pragmatique"], "de": ["pragmatisch"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "pragmatic",
+      "examForms": ["pragmatic"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/præɡˈmætɪk/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Rather than dream, she took a pragmatic approach and made a realistic plan.",
+        "translation": {
+          "fr": "Plutôt que de rêver, elle a adopté une approche pragmatique et fait un plan réaliste.",
+          "de": "Statt zu träumen, wählte sie einen pragmatischen Ansatz und machte einen realistischen Plan."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Pragmatic describes someone who deals with things in a practical, realistic way.",
+        "fr": "Pragmatic décrit quelqu’un qui aborde les choses de façon pratique et réaliste.",
+        "de": "Pragmatic beschreibt jemanden, der Dinge praktisch und realistisch angeht."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Rather than dream, she took a ",
+        "after": " approach and made a realistic plan.",
+        "accepted": { "answers": ["pragmatic"] },
+        "referenceTargetIds": ["pragmatic", "gregarious", "aloof", "brash"],
+        "explanation": {
+          "en": "Only pragmatic fits: it means practical and realistic.",
+          "fr": "Seul « pragmatic » convient : il signifie pratique et réaliste.",
+          "de": "Nur „pragmatic“ passt: Es bedeutet praktisch und realistisch."
+        }
+      },
+      "listeningOptionTargetIds": ["pragmatic", "assertive", "brash", "stoic"]
+    },
+    {
+      "id": "headstrong",
+      "term": "headstrong",
+      "translations": { "fr": ["têtu"], "de": ["eigensinnig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "headstrong",
+      "examForms": ["headstrong"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈhedstrɒŋ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "As a teenager he was headstrong and ignored all advice.",
+        "translation": {
+          "fr": "Adolescent, il était têtu et ignorait tous les conseils.",
+          "de": "Als Teenager war er eigensinnig und ignorierte jeden Rat."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Headstrong describes someone who insists on doing what they want, whatever others say.",
+        "fr": "Headstrong décrit quelqu’un qui veut n’en faire qu’à sa tête, quoi qu’en disent les autres.",
+        "de": "Headstrong beschreibt jemanden, der unbedingt seinen Willen durchsetzt, was auch andere sagen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He was too ",
+        "after": " to listen to anyone’s advice.",
+        "accepted": { "answers": ["headstrong"] },
+        "referenceTargetIds": ["headstrong", "diffident", "gregarious", "introspective"],
+        "explanation": {
+          "en": "Only headstrong fits: he insists on his own way and refuses advice.",
+          "fr": "Seul « headstrong » convient : il n’en fait qu’à sa tête et refuse les conseils.",
+          "de": "Nur „headstrong“ passt: Er setzt seinen Kopf durch und lehnt Rat ab."
+        }
+      },
+      "listeningOptionTargetIds": ["headstrong", "stoic", "brash", "aloof"]
+    },
+    {
+      "id": "gregarious",
+      "term": "gregarious",
+      "translations": { "fr": ["sociable"], "de": ["gesellig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "gregarious",
+      "examForms": ["gregarious"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɡrɪˈɡeəriəs/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "My uncle is gregarious and loves meeting new people.",
+        "translation": {
+          "fr": "Mon oncle est sociable et adore rencontrer de nouvelles personnes.",
+          "de": "Mein Onkel ist gesellig und liebt es, neue Leute kennenzulernen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Gregarious describes someone who enjoys being with other people.",
+        "fr": "Gregarious décrit quelqu’un qui aime être en compagnie des autres.",
+        "de": "Gregarious beschreibt jemanden, der gern mit anderen Menschen zusammen ist."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "She is ",
+        "after": " and happiest at a party full of people.",
+        "accepted": { "answers": ["gregarious"] },
+        "referenceTargetIds": ["gregarious", "aloof", "introspective", "diffident"],
+        "explanation": {
+          "en": "Only gregarious fits: she enjoys the company of many people.",
+          "fr": "Seul « gregarious » convient : elle aime la compagnie de beaucoup de gens.",
+          "de": "Nur „gregarious“ passt: Sie genießt die Gesellschaft vieler Menschen."
+        }
+      },
+      "listeningOptionTargetIds": ["gregarious", "conscientious", "tenacious", "introspective"]
+    },
+    {
+      "id": "aloof",
+      "term": "aloof",
+      "translations": { "fr": ["distant"], "de": ["unnahbar"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "aloof",
+      "examForms": ["aloof"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/əˈluːf/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "He seemed aloof and rarely joined in the conversation.",
+        "translation": {
+          "fr": "Il semblait distant et se mêlait rarement à la conversation.",
+          "de": "Er wirkte unnahbar und beteiligte sich selten am Gespräch."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Aloof describes someone who keeps away from others and seems cool or unfriendly.",
+        "fr": "Aloof décrit quelqu’un qui se tient à l’écart des autres et paraît froid ou peu amical.",
+        "de": "Aloof beschreibt jemanden, der Abstand zu anderen hält und kühl oder unfreundlich wirkt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He stayed ",
+        "after": " at the party and spoke to almost nobody.",
+        "accepted": { "answers": ["aloof"] },
+        "referenceTargetIds": ["aloof", "assertive", "impulsive", "complacent"],
+        "explanation": {
+          "en": "Only aloof fits: he kept his distance from everyone.",
+          "fr": "Seul « aloof » convient : il est resté à distance de tout le monde.",
+          "de": "Nur „aloof“ passt: Er hielt Abstand zu allen."
+        }
+      },
+      "listeningOptionTargetIds": ["aloof", "brash", "stoic", "volatile"]
+    },
+    {
+      "id": "assertive",
+      "term": "assertive",
+      "translations": { "fr": ["affirmé"], "de": ["durchsetzungsstark"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "assertive",
+      "examForms": ["assertive"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/əˈsɜːtɪv/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "A good manager is assertive without being aggressive.",
+        "translation": {
+          "fr": "Un bon manager sait s’affirmer sans être agressif.",
+          "de": "Eine gute Führungskraft ist durchsetzungsstark, ohne aggressiv zu sein."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Assertive describes someone who states their needs and opinions clearly and confidently.",
+        "fr": "Assertive décrit quelqu’un qui exprime ses besoins et ses opinions clairement et avec assurance.",
+        "de": "Assertive beschreibt jemanden, der seine Bedürfnisse und Meinungen klar und selbstbewusst äußert."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "She is ",
+        "after": " and says clearly what she wants without being rude.",
+        "accepted": { "answers": ["assertive"] },
+        "referenceTargetIds": ["assertive", "diffident", "impulsive", "stoic"],
+        "explanation": {
+          "en": "Only assertive fits: it means stating your wishes clearly and confidently.",
+          "fr": "Seul « assertive » convient : il signifie exprimer clairement et avec assurance ce que l’on veut.",
+          "de": "Nur „assertive“ passt: Es bedeutet, seine Wünsche klar und selbstbewusst zu äußern."
+        }
+      },
+      "listeningOptionTargetIds": ["assertive", "impulsive", "introspective", "pragmatic"]
+    },
+    {
+      "id": "diffident",
+      "term": "diffident",
+      "translations": { "fr": ["effacé"], "de": ["schüchtern"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "diffident",
+      "examForms": ["diffident"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈdɪfɪdənt/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "He is diffident about his talent and rarely shows his work.",
+        "translation": {
+          "fr": "Il est effacé quant à son talent et montre rarement son travail.",
+          "de": "Er ist schüchtern, was sein Talent angeht, und zeigt seine Arbeit selten."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Diffident is formal and means lacking self-confidence; it does not mean different.",
+        "fr": "Diffident est soutenu et signifie manquer de confiance en soi ; il ne veut pas dire « différent ».",
+        "de": "Diffident ist formell und bedeutet, wenig Selbstvertrauen zu haben; es heißt nicht „anders“."
+      },
+      "explanation": {
+        "en": "Diffident describes someone who is shy and lacks confidence in themselves.",
+        "fr": "Diffident décrit quelqu’un de timide qui manque de confiance en lui.",
+        "de": "Diffident beschreibt jemanden, der schüchtern ist und wenig Selbstvertrauen hat."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He is too ",
+        "after": " to speak up in meetings, even when he has good ideas.",
+        "accepted": { "answers": ["diffident"] },
+        "referenceTargetIds": ["diffident", "brash", "complacent", "pragmatic"],
+        "explanation": {
+          "en": "Only diffident fits: he lacks the confidence to speak.",
+          "fr": "Seul « diffident » convient : il manque de confiance pour prendre la parole.",
+          "de": "Nur „diffident“ passt: Ihm fehlt das Selbstvertrauen zum Sprechen."
+        }
+      },
+      "listeningOptionTargetIds": ["diffident", "impulsive", "introspective", "complacent"]
+    },
+    {
+      "id": "brash",
+      "term": "brash",
+      "translations": { "fr": ["effronté"], "de": ["dreist"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "brash",
+      "examForms": ["brash"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/bræʃ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "The brash newcomer interrupted the director on his first day.",
+        "translation": {
+          "fr": "Le nouveau, effronté, a interrompu le directeur dès son premier jour.",
+          "de": "Der dreiste Neuling unterbrach den Direktor an seinem ersten Tag."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Brash describes someone who is overconfident and tactless in a loud, pushy way.",
+        "fr": "Brash décrit quelqu’un de trop sûr de lui et sans tact, bruyant et insistant.",
+        "de": "Brash beschreibt jemanden, der übertrieben selbstsicher und taktlos, laut und aufdringlich auftritt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "The ",
+        "after": " newcomer interrupted the manager and criticised her plan on his first day.",
+        "accepted": { "answers": ["brash"] },
+        "referenceTargetIds": ["brash", "conscientious", "introspective", "stoic"],
+        "explanation": {
+          "en": "Only brash fits: he was overconfident and tactless.",
+          "fr": "Seul « brash » convient : il était trop sûr de lui et sans tact.",
+          "de": "Nur „brash“ passt: Er war übertrieben selbstsicher und taktlos."
+        }
+      },
+      "listeningOptionTargetIds": ["brash", "aloof", "stoic", "headstrong"]
+    },
+    {
+      "id": "impulsive",
+      "term": "impulsive",
+      "translations": { "fr": ["impulsif"], "de": ["impulsiv"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "impulsive",
+      "examForms": ["impulsive"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɪmˈpʌlsɪv/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "He is impulsive and often buys things without thinking.",
+        "translation": {
+          "fr": "Il est impulsif et achète souvent des choses sans réfléchir.",
+          "de": "Er ist impulsiv und kauft oft Dinge, ohne nachzudenken."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Impulsive describes someone who acts suddenly without thinking about the consequences.",
+        "fr": "Impulsive décrit quelqu’un qui agit soudainement sans penser aux conséquences.",
+        "de": "Impulsive beschreibt jemanden, der plötzlich handelt, ohne an die Folgen zu denken."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He is ",
+        "after": ": he booked the flight without thinking.",
+        "accepted": { "answers": ["impulsive"] },
+        "referenceTargetIds": ["impulsive", "meticulous", "pragmatic", "aloof"],
+        "explanation": {
+          "en": "Only impulsive fits: he acted suddenly, without thinking.",
+          "fr": "Seul « impulsive » convient : il a agi soudainement, sans réfléchir.",
+          "de": "Nur „impulsive“ passt: Er handelte plötzlich, ohne nachzudenken."
+        }
+      },
+      "listeningOptionTargetIds": ["impulsive", "introspective", "assertive", "diffident"]
+    },
+    {
+      "id": "complacent",
+      "term": "complacent",
+      "translations": { "fr": ["satisfait de soi"], "de": ["selbstgefällig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "complacent",
+      "examForms": ["complacent"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/kəmˈpleɪsənt/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "After three wins, the team grew complacent and stopped training hard.",
+        "translation": {
+          "fr": "Après trois victoires, l’équipe s’est endormie sur ses lauriers et a cessé de s’entraîner dur.",
+          "de": "Nach drei Siegen wurde die Mannschaft selbstgefällig und trainierte nicht mehr hart."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Not “complaisant”: complacent means too pleased with yourself to make an effort.",
+        "fr": "À ne pas confondre avec « complaisant » : complacent signifie trop content de soi pour faire des efforts.",
+        "de": "Nicht „gefällig“: Complacent heißt, zu zufrieden mit sich zu sein, um sich anzustrengen."
+      },
+      "explanation": {
+        "en": "Complacent describes someone who is too satisfied with themselves or the situation to make an effort.",
+        "fr": "Complacent décrit quelqu’un de trop satisfait de lui ou de la situation pour faire des efforts.",
+        "de": "Complacent beschreibt jemanden, der mit sich oder der Lage zu zufrieden ist, um sich anzustrengen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "After three wins, the team grew ",
+        "after": " and stopped training hard.",
+        "accepted": { "answers": ["complacent"] },
+        "referenceTargetIds": ["complacent", "volatile", "tenacious", "diffident"],
+        "explanation": {
+          "en": "Only complacent fits: the team was too pleased with itself to keep working.",
+          "fr": "Seul « complacent » convient : l’équipe était trop contente d’elle pour continuer à travailler.",
+          "de": "Nur „complacent“ passt: Die Mannschaft war zu zufrieden mit sich, um weiterzuarbeiten."
+        }
+      },
+      "listeningOptionTargetIds": ["complacent", "conscientious", "impulsive", "pragmatic"]
+    },
+    {
+      "id": "stoic",
+      "term": "stoic",
+      "translations": { "fr": ["stoïque"], "de": ["stoisch"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "stoic",
+      "examForms": ["stoic"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈstəʊɪk/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "She was stoic about the pain and never complained.",
+        "translation": {
+          "fr": "Elle est restée stoïque face à la douleur et ne s’est jamais plainte.",
+          "de": "Sie ertrug den Schmerz stoisch und beklagte sich nie."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Stoic describes someone who accepts pain or bad luck calmly, without complaining.",
+        "fr": "Stoic décrit quelqu’un qui accepte la douleur ou la malchance calmement, sans se plaindre.",
+        "de": "Stoic beschreibt jemanden, der Schmerz oder Pech ruhig und ohne Klagen hinnimmt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He remained ",
+        "after": " when he heard the bad news and did not complain.",
+        "accepted": { "answers": ["stoic"] },
+        "referenceTargetIds": ["stoic", "volatile", "brash", "gregarious"],
+        "explanation": {
+          "en": "Only stoic fits: he accepted bad news calmly.",
+          "fr": "Seul « stoic » convient : il a accepté la mauvaise nouvelle calmement.",
+          "de": "Nur „stoic“ passt: Er nahm die schlechte Nachricht ruhig hin."
+        }
+      },
+      "listeningOptionTargetIds": ["stoic", "aloof", "brash", "headstrong"]
+    },
+    {
+      "id": "introspective",
+      "term": "introspective",
+      "translations": { "fr": ["introspectif"], "de": ["introspektiv"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "introspective",
+      "examForms": ["introspective"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌɪntrəˈspektɪv/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "He became introspective after the move and wrote in his diary every night.",
+        "translation": {
+          "fr": "Il est devenu introspectif après le déménagement et écrivait dans son journal chaque soir.",
+          "de": "Nach dem Umzug wurde er introspektiv und schrieb jeden Abend in sein Tagebuch."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Introspective describes someone who often examines their own thoughts and feelings.",
+        "fr": "Introspective décrit quelqu’un qui examine souvent ses propres pensées et sentiments.",
+        "de": "Introspective beschreibt jemanden, der oft seine eigenen Gedanken und Gefühle erforscht."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "She is ",
+        "after": " and often spends hours thinking about her own feelings.",
+        "accepted": { "answers": ["introspective"] },
+        "referenceTargetIds": ["introspective", "brash", "assertive", "headstrong"],
+        "explanation": {
+          "en": "Only introspective fits: she examines her own thoughts and feelings.",
+          "fr": "Seul « introspective » convient : elle examine ses propres pensées et sentiments.",
+          "de": "Nur „introspective“ passt: Sie erforscht ihre eigenen Gedanken und Gefühle."
+        }
+      },
+      "listeningOptionTargetIds": ["introspective", "impulsive", "assertive", "diffident"]
+    },
+    {
+      "id": "volatile",
+      "term": "volatile",
+      "translations": { "fr": ["lunatique"], "de": ["launisch"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "volatile",
+      "examForms": ["volatile"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈvɒlətaɪl/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "His temper is volatile, so nobody knows what mood he will be in.",
+        "translation": {
+          "fr": "Son humeur est lunatique, donc personne ne sait de quelle humeur il sera.",
+          "de": "Seine Laune ist launisch, deshalb weiß niemand, in welcher Stimmung er sein wird."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Volatile describes someone whose mood can change quickly and unpredictably.",
+        "fr": "Volatile décrit quelqu’un dont l’humeur peut changer vite et de façon imprévisible.",
+        "de": "Volatile beschreibt jemanden, dessen Stimmung sich schnell und unvorhersehbar ändern kann."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "His temper is ",
+        "after": ": he can be cheerful one minute and furious the next.",
+        "accepted": { "answers": ["volatile"] },
+        "referenceTargetIds": ["volatile", "stoic", "pragmatic", "meticulous"],
+        "explanation": {
+          "en": "Only volatile fits: his mood changes quickly and unpredictably.",
+          "fr": "Seul « volatile » convient : son humeur change vite et de façon imprévisible.",
+          "de": "Nur „volatile“ passt: Seine Stimmung wechselt schnell und unvorhersehbar."
+        }
+      },
+      "listeningOptionTargetIds": ["volatile", "aloof", "stoic", "meticulous"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

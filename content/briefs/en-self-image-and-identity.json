@@ -1,0 +1,611 @@
+{
+  "schemaVersion": 2,
+  "id": "en-self-image-and-identity",
+  "lang": "en",
+  "level": "C1",
+  "locales": ["en", "fr", "de"],
+  "title": "Self-image and identity",
+  "objective": {
+    "en": "Talk about how people see themselves, using precise words such as self-awareness, persona and comfort zone.",
+    "fr": "Parler de la façon dont les gens se voient, avec des mots précis comme self-awareness, persona et comfort zone.",
+    "de": "Darüber sprechen, wie Menschen sich selbst sehen, mit präzisen Wörtern wie self-awareness, persona und comfort zone."
+  },
+  "estimatedMinutes": 19,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:49:03.450Z",
+    "inputHashes": { "outline": "7ef26bc2f9a5533628712a8851ade3eed269104975f46ffe1ec3f2318b682a65" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Twelve words and phrases in two groups: how we see and judge ourselves, and how we express identity and belong to groups.",
+    "fr": "Douze mots et expressions en deux groupes : comment on se voit et se juge, et comment on exprime son identité et son appartenance.",
+    "de": "Zwölf Wörter und Wendungen in zwei Gruppen: wie wir uns sehen und beurteilen und wie wir Identität ausdrücken und dazugehören."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve items fit the outline and give two balanced groups of six.",
+    "fr": "Douze éléments suivent le plan et forment deux groupes équilibrés de six.",
+    "de": "Zwölf Einträge entsprechen der Gliederung und ergeben zwei ausgewogene Gruppen zu sechs."
+  },
+  "difficultyBalance": {
+    "en": "Mostly C1 abstract nouns, with a few phrases and one adjective that are harder to use accurately.",
+    "fr": "Surtout des noms abstraits de niveau C1, avec quelques expressions et un adjectif plus difficiles à employer.",
+    "de": "Überwiegend abstrakte Nomen auf C1-Niveau, dazu einige Wendungen und ein Adjektiv, die schwerer korrekt zu verwenden sind."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "seeing-yourself",
+      "label": {
+        "en": "Seeing and judging yourself",
+        "fr": "Se voir et se juger",
+        "de": "Sich selbst sehen und beurteilen"
+      },
+      "targetIds": [
+        "self-awareness",
+        "self-image",
+        "self-doubt",
+        "self-esteem",
+        "self-conscious",
+        "impostor-syndrome"
+      ],
+      "introduction": {
+        "en": "These words describe how you **see and judge yourself**:\n\n- `self-awareness`\n- `self-image`\n- `self-doubt`\n- `self-esteem`\n- `self-conscious`\n- `impostor syndrome`",
+        "fr": "Ces mots décrivent la façon dont on **se voit et se juge** :\n\n- `self-awareness`\n- `self-image`\n- `self-doubt`\n- `self-esteem`\n- `self-conscious`\n- `impostor syndrome`",
+        "de": "Diese Wörter beschreiben, wie man **sich selbst sieht und beurteilt**:\n\n- `self-awareness`\n- `self-image`\n- `self-doubt`\n- `self-esteem`\n- `self-conscious`\n- `impostor syndrome`"
+      }
+    },
+    {
+      "id": "identity-belonging",
+      "label": {
+        "en": "Identity and belonging",
+        "fr": "Identité et appartenance",
+        "de": "Identität und Zugehörigkeit"
+      },
+      "targetIds": [
+        "persona",
+        "identity-crisis",
+        "belonging",
+        "comfort-zone",
+        "reinvent",
+        "fit-in"
+      ],
+      "introduction": {
+        "en": "These words and phrases are about **who you are** and where you belong:\n\n- `persona`\n- `identity crisis`\n- `sense of belonging`\n- `comfort zone`\n- `reinvent yourself`\n- `fit in`",
+        "fr": "Ces mots et expressions parlent de **qui l’on est** et de l’endroit où l’on a sa place :\n\n- `persona`\n- `identity crisis`\n- `sense of belonging`\n- `comfort zone`\n- `reinvent yourself`\n- `fit in`",
+        "de": "Diese Wörter und Wendungen handeln davon, **wer man ist** und wo man dazugehört:\n\n- `persona`\n- `identity crisis`\n- `sense of belonging`\n- `comfort zone`\n- `reinvent yourself`\n- `fit in`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "self-awareness",
+      "term": "self-awareness",
+      "translations": {
+        "fr": ["conscience de soi"],
+        "de": ["Selbstwahrnehmung", "Selbsterkenntnis"]
+      },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "self-awareness",
+      "examForms": ["self-awareness"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌself əˈweənəs/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Journaling has increased her self-awareness.",
+        "translation": {
+          "fr": "Tenir un journal a accru sa conscience de soi.",
+          "de": "Das Tagebuchschreiben hat ihre Selbstwahrnehmung gestärkt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Self-awareness is knowing your own feelings, motives and effect on others.",
+        "fr": "Self-awareness désigne la connaissance de ses propres émotions, motivations et de son effet sur les autres.",
+        "de": "Self-awareness bedeutet, die eigenen Gefühle, Motive und die Wirkung auf andere zu kennen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Years of therapy gave him the ",
+        "after": " to notice how his moods affected others.",
+        "accepted": { "answers": ["self-awareness"] },
+        "referenceTargetIds": ["self-awareness", "comfort-zone", "persona", "identity-crisis"],
+        "explanation": {
+          "en": "Only self-awareness fits: it is the ability to notice your own moods.",
+          "fr": "Seul self-awareness convient : c’est la capacité de remarquer ses propres humeurs.",
+          "de": "Nur self-awareness passt: Es ist die Fähigkeit, die eigenen Stimmungen zu bemerken."
+        }
+      },
+      "listeningOptionTargetIds": ["self-awareness", "self-image", "self-esteem", "self-doubt"]
+    },
+    {
+      "id": "self-image",
+      "term": "self-image",
+      "translations": { "fr": ["image de soi"], "de": ["Selbstbild"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "self-image",
+      "examForms": ["self-image"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌself ˈɪmɪdʒ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Her self-image changed after she moved abroad.",
+        "translation": {
+          "fr": "Son image de soi a changé après son départ à l’étranger.",
+          "de": "Ihr Selbstbild veränderte sich, nachdem sie ins Ausland gezogen war."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Self-image is the picture you have of yourself, true or not.",
+        "fr": "Self-image est l’image que l’on a de soi, juste ou non.",
+        "de": "Self-image ist das Bild, das man von sich selbst hat, ob zutreffend oder nicht."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Constant comparison on social media can damage a teenager’s ",
+        "after": ", making them see only their flaws.",
+        "accepted": { "answers": ["self-image"] },
+        "referenceTargetIds": ["self-image", "identity-crisis", "comfort-zone", "self-awareness"],
+        "explanation": {
+          "en": "Self-image fits: it is the view a teenager has of himself or herself.",
+          "fr": "Self-image convient : c’est la vision qu’un adolescent a de lui-même.",
+          "de": "Self-image passt: Es ist das Bild, das ein Teenager von sich hat."
+        }
+      },
+      "listeningOptionTargetIds": ["self-image", "self-awareness", "self-esteem", "self-doubt"]
+    },
+    {
+      "id": "self-doubt",
+      "term": "self-doubt",
+      "translations": { "fr": ["doute de soi"], "de": ["Selbstzweifel"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "self-doubt",
+      "examForms": ["self-doubt"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌself ˈdaʊt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "A moment of self-doubt crossed his mind before the speech.",
+        "translation": {
+          "fr": "Un moment de doute de soi lui a traversé l’esprit avant le discours.",
+          "de": "Vor der Rede überkam ihn ein Moment des Selbstzweifels."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Self-doubt is a lack of confidence in your own abilities or decisions.",
+        "fr": "Self-doubt est le manque de confiance en ses propres capacités ou décisions.",
+        "de": "Self-doubt ist mangelndes Vertrauen in die eigenen Fähigkeiten oder Entscheidungen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Even successful authors suffer from moments of ",
+        "after": " when a new book is due.",
+        "accepted": { "answers": ["self-doubt"] },
+        "referenceTargetIds": ["self-doubt", "comfort-zone", "fit-in", "persona"],
+        "explanation": {
+          "en": "Self-doubt fits: it is the worry authors feel about their own ability.",
+          "fr": "Self-doubt convient : c’est l’inquiétude des auteurs quant à leur propre talent.",
+          "de": "Self-doubt passt: Es ist die Sorge von Autoren um ihr eigenes Können."
+        }
+      },
+      "listeningOptionTargetIds": ["self-doubt", "self-awareness", "self-image", "self-conscious"]
+    },
+    {
+      "id": "self-esteem",
+      "term": "self-esteem",
+      "translations": { "fr": ["estime de soi"], "de": ["Selbstwertgefühl"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "self-esteem",
+      "examForms": ["self-esteem"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌself ɪˈstiːm/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Good teachers build children’s self-esteem.",
+        "translation": {
+          "fr": "Les bons enseignants renforcent l’estime de soi des enfants.",
+          "de": "Gute Lehrer stärken das Selbstwertgefühl von Kindern."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Self-esteem is how much you value and respect yourself.",
+        "fr": "Self-esteem désigne la valeur et le respect que l’on s’accorde.",
+        "de": "Self-esteem bedeutet, wie sehr man sich selbst wertschätzt und respektiert."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Praise from her coach slowly raised the girl’s ",
+        "after": ", and she began to speak up.",
+        "accepted": { "answers": ["self-esteem"] },
+        "referenceTargetIds": ["self-esteem", "comfort-zone", "identity-crisis", "persona"],
+        "explanation": {
+          "en": "Self-esteem fits: praise raises the value you place on yourself.",
+          "fr": "Self-esteem convient : les compliments augmentent la valeur qu’on s’accorde.",
+          "de": "Self-esteem passt: Lob erhöht den Wert, den man sich selbst gibt."
+        }
+      },
+      "listeningOptionTargetIds": ["self-esteem", "self-awareness", "self-image", "self-conscious"]
+    },
+    {
+      "id": "self-conscious",
+      "term": "self-conscious",
+      "translations": { "fr": ["gêné par le regard des autres"], "de": ["befangen", "gehemmt"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "self-conscious",
+      "examForms": ["self-conscious"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌself ˈkɒnʃəs/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "She is self-conscious about her handwriting.",
+        "translation": {
+          "fr": "Elle est gênée par son écriture.",
+          "de": "Sie ist wegen ihrer Handschrift befangen."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Self-conscious means uneasy about how others see you, not the same as self-aware.",
+        "fr": "Self-conscious signifie mal à l’aise sous le regard des autres ; ce n’est pas la même chose que self-aware.",
+        "de": "Self-conscious heißt unsicher unter den Blicken anderer; das ist nicht dasselbe wie self-aware."
+      },
+      "explanation": {
+        "en": "Self-conscious means awkward because you worry about what others think of you.",
+        "fr": "Self-conscious signifie mal à l’aise parce qu’on s’inquiète de l’opinion des autres.",
+        "de": "Self-conscious bedeutet verlegen, weil man sich Sorgen macht, was andere denken."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He felt so ",
+        "after": " about his accent that he stopped speaking in meetings.",
+        "accepted": { "answers": ["self-conscious"] },
+        "referenceTargetIds": ["self-conscious", "self-doubt", "persona", "comfort-zone"],
+        "explanation": {
+          "en": "Only the adjective self-conscious fits after \"felt so\".",
+          "fr": "Seul l’adjectif self-conscious convient après « felt so ».",
+          "de": "Nur das Adjektiv self-conscious passt nach „felt so“."
+        }
+      },
+      "listeningOptionTargetIds": ["self-conscious", "self-awareness", "self-doubt", "self-esteem"]
+    },
+    {
+      "id": "impostor-syndrome",
+      "term": "impostor syndrome",
+      "translations": { "fr": ["syndrome de l’imposteur"], "de": ["Hochstapler-Syndrom"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "impostor syndrome",
+      "examForms": ["impostor syndrome", "imposter syndrome"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɪmˈpɒstə ˈsɪndrəʊm/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Many high achievers experience impostor syndrome.",
+        "translation": {
+          "fr": "Beaucoup de personnes très performantes connaissent le syndrome de l’imposteur.",
+          "de": "Viele Leistungsträger erleben das Hochstapler-Syndrom."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Impostor syndrome is the feeling that you do not deserve your success and will be found out.",
+        "fr": "Impostor syndrome est le sentiment de ne pas mériter son succès et d’être démasqué.",
+        "de": "Impostor syndrome ist das Gefühl, den eigenen Erfolg nicht zu verdienen und entlarvt zu werden."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Despite her promotion, she suffered from ",
+        "after": ", convinced she had fooled everyone into thinking she was competent.",
+        "accepted": { "answers": ["impostor syndrome", "imposter syndrome"] },
+        "referenceTargetIds": ["impostor-syndrome", "self-awareness", "belonging", "comfort-zone"],
+        "explanation": {
+          "en": "Impostor syndrome fits: she feels she has fooled everyone.",
+          "fr": "Impostor syndrome convient : elle a l’impression d’avoir trompé tout le monde.",
+          "de": "Impostor syndrome passt: Sie hat das Gefühl, alle getäuscht zu haben."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "impostor-syndrome",
+        "persona",
+        "identity-crisis",
+        "self-conscious"
+      ]
+    },
+    {
+      "id": "persona",
+      "term": "persona",
+      "translations": {
+        "fr": ["personnage public", "persona"],
+        "de": ["Persona", "öffentliches Auftreten"]
+      },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "persona",
+      "examForms": ["persona"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/pəˈsəʊnə/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Online, she presents a polished persona.",
+        "translation": {
+          "fr": "En ligne, elle présente un personnage public très soigné.",
+          "de": "Online präsentiert sie eine makellose Persona."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A persona is the image of yourself that you show to the public, often different from your real self.",
+        "fr": "Une persona est l’image de soi que l’on montre au public, souvent différente du vrai moi.",
+        "de": "Eine Persona ist das Bild, das man der Öffentlichkeit von sich zeigt, oft anders als das wahre Ich."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "On stage he adopts a confident ",
+        "after": " that is very different from his shy real self.",
+        "accepted": { "answers": ["persona"] },
+        "referenceTargetIds": ["persona", "belonging", "self-doubt", "comfort-zone"],
+        "explanation": {
+          "en": "Persona fits: it is the public image he adopts on stage.",
+          "fr": "Persona convient : c’est l’image publique qu’il adopte sur scène.",
+          "de": "Persona passt: Es ist das öffentliche Bild, das er auf der Bühne annimmt."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "persona",
+        "impostor-syndrome",
+        "identity-crisis",
+        "comfort-zone"
+      ]
+    },
+    {
+      "id": "identity-crisis",
+      "term": "identity crisis",
+      "translations": { "fr": ["crise d’identité"], "de": ["Identitätskrise"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "identity crisis",
+      "examForms": ["identity crisis"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/aɪˈdentəti ˈkraɪsɪs/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "He had an identity crisis at forty.",
+        "translation": {
+          "fr": "Il a traversé une crise d’identité à quarante ans.",
+          "de": "Mit vierzig hatte er eine Identitätskrise."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "An identity crisis is a period of confusion about who you are and what you want.",
+        "fr": "Une identity crisis est une période de confusion sur qui l’on est et ce que l’on veut.",
+        "de": "Eine identity crisis ist eine Phase der Verwirrung darüber, wer man ist und was man will."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "After twenty years in the army, he went through an ",
+        "after": " and no longer knew who he was.",
+        "accepted": { "answers": ["identity crisis"] },
+        "referenceTargetIds": ["identity-crisis", "self-image", "belonging", "reinvent"],
+        "explanation": {
+          "en": "Identity crisis fits: he no longer knew who he was.",
+          "fr": "Identity crisis convient : il ne savait plus qui il était.",
+          "de": "Identity crisis passt: Er wusste nicht mehr, wer er war."
+        }
+      },
+      "listeningOptionTargetIds": ["identity-crisis", "impostor-syndrome", "persona", "belonging"]
+    },
+    {
+      "id": "belonging",
+      "term": "sense of belonging",
+      "translations": { "fr": ["sentiment d’appartenance"], "de": ["Zugehörigkeitsgefühl"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "sense of belonging",
+      "examForms": ["sense of belonging"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌsens əv bɪˈlɒŋɪŋ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "A strong sense of belonging helps students stay motivated.",
+        "translation": {
+          "fr": "Un fort sentiment d’appartenance aide les étudiants à rester motivés.",
+          "de": "Ein starkes Zugehörigkeitsgefühl hilft Studierenden, motiviert zu bleiben."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A sense of belonging is the feeling of being accepted as part of a group.",
+        "fr": "Un sense of belonging est le sentiment d’être accepté comme membre d’un groupe.",
+        "de": "Ein sense of belonging ist das Gefühl, als Teil einer Gruppe akzeptiert zu sein."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Joining the choir gave the newcomer a real ",
+        "after": " in the town.",
+        "accepted": { "answers": ["sense of belonging"] },
+        "referenceTargetIds": ["belonging", "comfort-zone", "identity-crisis", "impostor-syndrome"],
+        "explanation": {
+          "en": "Sense of belonging fits: joining a group makes you feel part of it.",
+          "fr": "Sense of belonging convient : rejoindre un groupe donne le sentiment d’en faire partie.",
+          "de": "Sense of belonging passt: Der Beitritt zu einer Gruppe gibt das Gefühl dazuzugehören."
+        }
+      },
+      "listeningOptionTargetIds": ["belonging", "comfort-zone", "fit-in", "identity-crisis"]
+    },
+    {
+      "id": "comfort-zone",
+      "term": "comfort zone",
+      "translations": { "fr": ["zone de confort"], "de": ["Komfortzone"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "comfort zone",
+      "examForms": ["comfort zone"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈkʌmfət zəʊn/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Stepping outside your comfort zone can be rewarding.",
+        "translation": {
+          "fr": "Sortir de sa zone de confort peut être gratifiant.",
+          "de": "Die Komfortzone zu verlassen kann sich lohnen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Your comfort zone is the set of situations where you feel safe and at ease.",
+        "fr": "Votre comfort zone est l’ensemble des situations où vous vous sentez en sécurité et à l’aise.",
+        "de": "Deine comfort zone ist die Menge der Situationen, in denen du dich sicher und wohl fühlst."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Moving abroad forced her out of her ",
+        "after": " and taught her to cope alone.",
+        "accepted": { "answers": ["comfort zone"] },
+        "referenceTargetIds": ["comfort-zone", "persona", "self-conscious", "belonging"],
+        "explanation": {
+          "en": "Comfort zone fits: moving abroad takes you out of familiar, safe situations.",
+          "fr": "Comfort zone convient : partir à l’étranger fait sortir des situations familières.",
+          "de": "Comfort zone passt: Ein Umzug ins Ausland führt aus vertrauten, sicheren Situationen heraus."
+        }
+      },
+      "listeningOptionTargetIds": ["comfort-zone", "belonging", "fit-in", "reinvent"]
+    },
+    {
+      "id": "reinvent",
+      "term": "reinvent yourself",
+      "translations": { "fr": ["se réinventer"], "de": ["sich neu erfinden"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "reinvent yourself",
+      "examForms": ["reinvent yourself"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌriːɪnˈvent jɔːˈself/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "After the divorce, he set out to reinvent himself.",
+        "translation": {
+          "fr": "Après le divorce, il a voulu se réinventer.",
+          "de": "Nach der Scheidung wollte er sich neu erfinden."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "To reinvent yourself is to change your image, career or way of life completely.",
+        "fr": "Reinvent yourself signifie changer complètement d’image, de carrière ou de mode de vie.",
+        "de": "Reinvent yourself heißt, Image, Beruf oder Lebensweise völlig zu verändern."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "A new city gives you the chance to ",
+        "after": " completely.",
+        "accepted": { "answers": ["reinvent yourself"] },
+        "referenceTargetIds": ["reinvent", "persona", "self-esteem", "comfort-zone"],
+        "explanation": {
+          "en": "Reinvent yourself is the only verb phrase here, and it fits after \"the chance to\".",
+          "fr": "Reinvent yourself est la seule expression verbale ici ; elle convient après « the chance to ».",
+          "de": "Reinvent yourself ist die einzige Verbwendung hier und passt nach „the chance to“."
+        }
+      },
+      "listeningOptionTargetIds": ["reinvent", "fit-in", "persona", "comfort-zone"]
+    },
+    {
+      "id": "fit-in",
+      "term": "fit in",
+      "translations": { "fr": ["s’intégrer"], "de": ["dazugehören"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "fit in",
+      "examForms": ["fit in"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌfɪt ˈɪn/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "It took her a year to fit in at the new school.",
+        "translation": {
+          "fr": "Il lui a fallu un an pour s’intégrer dans la nouvelle école.",
+          "de": "Sie brauchte ein Jahr, um in der neuen Schule dazuzugehören."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "To fit in is to be accepted by a group because you seem similar to its members.",
+        "fr": "Fit in signifie être accepté par un groupe parce qu’on lui ressemble.",
+        "de": "Fit in heißt, von einer Gruppe akzeptiert zu werden, weil man ihr ähnelt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Everyone was friendly, but as a foreigner I found it hard to ",
+        "after": " at first.",
+        "accepted": { "answers": ["fit in"] },
+        "referenceTargetIds": ["fit-in", "persona", "self-esteem", "comfort-zone"],
+        "explanation": {
+          "en": "Fit in is the verb phrase that means to be accepted by a group.",
+          "fr": "Fit in est l’expression verbale qui signifie être accepté par un groupe.",
+          "de": "Fit in ist die Verbwendung für „von einer Gruppe akzeptiert werden“."
+        }
+      },
+      "listeningOptionTargetIds": ["fit-in", "reinvent", "belonging", "comfort-zone"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}
