@@ -52,7 +52,16 @@ function CheckIcon({ passed }: { passed: boolean }) {
         stroke="currentColor"
         strokeWidth="2"
       >
-        <path d="M3.5 8.5l3 3 6-7" strokeLinecap="round" strokeLinejoin="round" />
+        {/* A check for passed, a circling arrow for "try again": the two differ in shape, not only in colour. */}
+        {passed ? (
+          <path d="M3.5 8.5l3 3 6-7" strokeLinecap="round" strokeLinejoin="round" />
+        ) : (
+          <path
+            d="M12.5 8a4.5 4.5 0 1 1-1.3-3.2M12.5 2.5v2.8H9.7"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        )}
       </svg>
     </span>
   );
@@ -246,8 +255,11 @@ export async function LevelComplete({
   const { progress, levelAfter } = today;
 
   return (
-    <section className="flex flex-col gap-4 rounded-2xl border border-green-500/40 bg-green-500/5 p-6">
-      <p className="text-lg font-semibold text-slate-100">
+    <section
+      aria-labelledby="level-complete-heading"
+      className="flex flex-col gap-4 rounded-2xl border border-green-500/40 bg-green-500/5 p-6"
+    >
+      <h2 id="level-complete-heading" className="text-lg font-semibold text-slate-100">
         {levelAfter === null
           ? t('levelCompleteTop', { level })
           : t('levelComplete', {
@@ -257,7 +269,7 @@ export async function LevelComplete({
               passed: progress.passed,
               needed: progress.needed,
             })}
-      </p>
+      </h2>
       {levelAfter === null ? null : (
         <div className="flex flex-wrap items-center gap-4">
           <StartLevel lang={lang} level={levelAfter} />

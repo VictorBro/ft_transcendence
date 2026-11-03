@@ -24,14 +24,15 @@ export function ProgressBar({ value, max, label, className, ...props }: Progress
   const percent = progressPercent(value, max);
 
   return (
+    // The props first, so a caller cannot override the role or the aria values.
     <div
+      {...props}
       role="progressbar"
       aria-label={label}
       aria-valuemin={0}
       aria-valuemax={Math.max(max, 0)}
       aria-valuenow={shown}
       className={cn('h-2 w-full overflow-hidden rounded-full bg-slate-800', className)}
-      {...props}
     >
       <div
         className="h-full rounded-full bg-indigo-500 transition-[width]"

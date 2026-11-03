@@ -63,14 +63,16 @@
     "doneScore": "{score} %",
     "failedRow": "{status}, bestes Ergebnis {score} %. Zählt für heute.",
     "moreLessons": "Weitere Lektionen",
-    "seeAll": "Alle {count} {level}-Lektionen ansehen",
+    "seeAll": "{count, plural, one {Die {level}-Lektion ansehen} other {Alle # {level}-Lektionen ansehen}}",
     "levelComplete": "Du hast {level} abgeschlossen: {attempted} von {total} versucht, {passed} bestanden, {needed} nötig.",
     "levelCompleteTop": "Du hast {level} abgeschlossen, das höchste Niveau.",
     "startLevel": "{level} starten",
     "attempted": "Versucht: {attempted} von {total}",
     "passed": "Bestanden: {passed} von {total}, {needed} nötig",
     "comingSoon": "{count} demnächst verfügbar",
-    "bestStreak": "Längste Serie: {count, plural, one {# Tag} other {# Tage}}"
+    "bestStreak": "Längste Serie: {count, plural, one {# Tag} other {# Tage}}",
+    "saveLevel": "Speichern",
+    "levelSaved": "Niveau gespeichert: {level}"
   },
   "LessonStatus": {
     "todo": "Nicht begonnen",

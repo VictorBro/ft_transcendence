@@ -86,6 +86,16 @@ describe('ProgressBar', () => {
     expect(html).toContain('width:100%');
   });
 
+  it('keeps its role and aria values whatever the caller passes', () => {
+    const html = renderToStaticMarkup(
+      <ProgressBar value={1} max={2} label="Daily goal" role="img" aria-valuenow={9} id="bar" />,
+    );
+
+    expect(html).toContain('role="progressbar"');
+    expect(html).toContain('aria-valuenow="1"');
+    expect(html).toContain('id="bar"');
+  });
+
   it('reads an empty max as empty instead of dividing by zero', () => {
     expect(progressPercent(0, 0)).toBe(0);
     expect(progressPercent(-1, 4)).toBe(0);

@@ -78,19 +78,35 @@ test.describe('course home', () => {
   });
 
   /**
-   * No exam needed: the level is a course setting, a select next to the goal
-   * that saves on change, like it. SECOND_COURSE, since every test that uses
-   * it places it anew.
+   * No exam needed: the level is a course setting next to the goal. It saves
+   * with a button, since every arrow key on a closed select fires `change`.
+   * SECOND_COURSE, since every test that uses it places it anew.
    */
   test('the level can be changed from the course page', async ({ onboarded }) => {
     await placeCourse(onboarded, SECOND_COURSE);
     await onboarded.goto(`/en/learn/${SECOND_COURSE.lang}`);
     const level = onboarded.getByRole('combobox', { name: 'Level' });
+    const save = onboarded.getByRole('button', { name: 'Save' });
 
     await expect(level).toHaveValue(SECOND_COURSE.level);
     await expect(onboarded.getByRole('button', { name: 'Change level' })).toHaveCount(0);
+    await expect(save).toHaveCount(0);
+
+    // Browsing with the keyboard writes nothing and keeps the focus.
+    await level.focus();
+    await onboarded.keyboard.press('ArrowDown');
+    await onboarded.keyboard.press('ArrowDown');
+    await expect(level).toHaveValue('B1');
+    await expect(level).toBeFocused();
+    expect(await courseLevel(onboarded, SECOND_COURSE.lang)).toBe(SECOND_COURSE.level);
+
     await level.selectOption('B2');
-    await expect.poll(() => courseLevel(onboarded, SECOND_COURSE.lang)).toBe('B2');
+    await save.click();
+    await expect(
+      onboarded.getByRole('status').filter({ hasText: 'Level saved: B2' }),
+    ).toBeAttached();
+    expect(await courseLevel(onboarded, SECOND_COURSE.lang)).toBe('B2');
+    await expect(save).toHaveCount(0);
 
     // The next visit in a second tab rather than a reload: the save ends in
     // router.refresh(), and leaving the page while its stream and the
@@ -105,8 +121,8 @@ test.describe('course home', () => {
     }
   });
 
-  /** Faked, since no level a learner can pick gets refused. The select falls back. */
-  test('a level change the server refuses says why and keeps the level', async ({ onboarded }) => {
+  /** Faked, since no level a learner can pick gets refused. The pick stays, to retry. */
+  test('a level change the server refuses says why and saves nothing', async ({ onboarded }) => {
     await placeCourse(onboarded, SECOND_COURSE);
     let attempts = 0;
     await onboarded.route(`**/api/courses/${SECOND_COURSE.lang}/level`, (route) => {
@@ -116,11 +132,11 @@ test.describe('course home', () => {
     await onboarded.goto(`/en/learn/${SECOND_COURSE.lang}`);
 
     await onboarded.getByRole('combobox', { name: 'Level' }).selectOption('B1');
+    await onboarded.getByRole('button', { name: 'Save' }).click();
 
     await expect(onboarded.getByText('The server answered HTTP 500')).toBeVisible();
-    await expect(onboarded.getByRole('combobox', { name: 'Level' })).toHaveValue(
-      SECOND_COURSE.level,
-    );
+    await expect(onboarded.getByRole('combobox', { name: 'Level' })).toHaveValue('B1');
+    await expect(onboarded.getByRole('button', { name: 'Save' })).toBeVisible();
     expect(attempts).toBe(1);
     expect(await courseLevel(onboarded, SECOND_COURSE.lang)).toBe(SECOND_COURSE.level);
   });

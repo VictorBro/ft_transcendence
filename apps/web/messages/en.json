@@ -63,14 +63,16 @@
     "doneScore": "{score}%",
     "failedRow": "{status}, best {score}%. Counts for today.",
     "moreLessons": "More lessons",
-    "seeAll": "See all {count} {level} lessons",
+    "seeAll": "{count, plural, one {See the {level} lesson} other {See all # {level} lessons}}",
     "levelComplete": "You finished {level}: {attempted} of {total} attempted, {passed} passed, {needed} needed.",
     "levelCompleteTop": "You finished {level}, the top level.",
     "startLevel": "Start {level}",
     "attempted": "Attempted {attempted} of {total}",
     "passed": "Passed {passed} of {total}, {needed} needed",
     "comingSoon": "{count} coming soon",
-    "bestStreak": "Best streak: {count, plural, one {# day} other {# days}}"
+    "bestStreak": "Best streak: {count, plural, one {# day} other {# days}}",
+    "saveLevel": "Save",
+    "levelSaved": "Level saved: {level}"
   },
   "LessonStatus": {
     "todo": "Not started",

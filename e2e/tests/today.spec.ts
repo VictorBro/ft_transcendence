@@ -67,19 +67,23 @@ test.describe('the daily goal page', () => {
 
   test('a fresh day proposes the target, with one Next up', async ({ onboarded }) => {
     await placeCourse(onboarded, ONBOARDED_COURSE);
+    // The shared account: read what it has done today rather than assume none.
     const today = await readToday(onboarded, ONBOARDED_COURSE.lang);
-    test.skip(today.done.length > 0, 'the shared account finished a lesson today');
+    expect(today.met).toBe(false);
+    const done = today.done.length;
 
     await onboarded.goto(home(ONBOARDED_COURSE.lang));
     const card = onboarded.getByRole('region', { name: 'Today' });
 
-    await expect(onboarded.getByText('Reach your daily goal to start a streak.')).toBeVisible();
+    if (today.streak.current === 0) {
+      await expect(onboarded.getByText('Reach your daily goal to start a streak.')).toBeVisible();
+    }
     await expect(
-      card.getByText(`${ONBOARDED_COURSE.dailyGoal} min goal: 0 of ${today.target} lessons`),
+      card.getByText(`${ONBOARDED_COURSE.dailyGoal} min goal: ${done} of ${today.target} lessons`),
     ).toBeVisible();
     await expect(card.getByRole('progressbar', { name: 'Daily goal' })).toHaveAttribute(
       'aria-valuenow',
-      '0',
+      String(done),
     );
     await expect(card.getByText('Next up', { exact: true })).toBeVisible();
 
@@ -99,9 +103,10 @@ test.describe('the daily goal page', () => {
         name: `See all ${total + comingSoon} ${ONBOARDED_COURSE.level} lessons`,
       }),
     ).toHaveAttribute('href', `/en/learn/${ONBOARDED_COURSE.lang}/lessons`);
-    await expect(onboarded.getByText(`Attempted 0 of ${total}`)).toBeVisible();
+    const { attempted, passed, needed } = today.progress;
+    await expect(onboarded.getByText(`Attempted ${attempted} of ${total}`)).toBeVisible();
     await expect(
-      onboarded.getByText(`Passed 0 of ${total}, ${today.progress.needed} needed`),
+      onboarded.getByText(`Passed ${passed} of ${total}, ${needed} needed`),
     ).toBeVisible();
     if (comingSoon > 0) {
       await expect(onboarded.getByText(`${comingSoon} coming soon`)).toBeVisible();
@@ -116,9 +121,11 @@ test.describe('the daily goal page', () => {
 
     const html = await (await onboarded.request.get(home(ONBOARDED_COURSE.lang))).text();
 
+    // Each lesson by its link, which holds the id: a title would need React's
+    // escaping of &, <, >, " and ' copied here.
     expect(html).toContain('role="progressbar"');
     for (const lesson of shown) {
-      expect(html).toContain(lesson.title.replaceAll("'", '&#x27;'));
+      expect(html).toContain(`/en/learn/${ONBOARDED_COURSE.lang}/lessons/${lesson.id}`);
     }
   });
 
@@ -151,8 +158,10 @@ test.describe('the daily goal page', () => {
 
     // A2 proposes A2 lessons, and the A1 lesson done today stays in done, badged.
     const level = page.getByRole('combobox', { name: 'Level' });
+    const save = page.getByRole('button', { name: 'Save' });
     await level.selectOption('A2');
-    await expect(level).toHaveValue('A2');
+    await save.click();
+    await expect(save).toHaveCount(0);
     const a2 = await readToday(page, lang);
     if (a2.proposed.length > 0) {
       await expect(card.getByRole('link', { name: 'Start' }).first()).toHaveAttribute(
@@ -164,7 +173,8 @@ test.describe('the daily goal page', () => {
 
     // Back at A1, its progress was kept.
     await level.selectOption('A1');
-    await expect(level).toHaveValue('A1');
+    await save.click();
+    await expect(save).toHaveCount(0);
     await expect(page.getByText(/^Attempted 1 of \d+$/)).toBeVisible();
 
     // Every ready lesson attempted: the level is complete. Today offers only
@@ -183,7 +193,8 @@ test.describe('the daily goal page', () => {
     const done = await readToday(page, lang);
     expect(done.progress.complete).toBe(true);
 
-    await page.reload();
+    // goto, not reload: Firefox aborts a reload while a refresh is open (#176).
+    await page.goto(home(lang));
     const { total, passed, needed } = done.progress;
     await expect(
       page.getByText(

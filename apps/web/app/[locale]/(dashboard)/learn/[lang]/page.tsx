@@ -67,7 +67,8 @@ export default async function CoursePage({ params }: { params: Promise<{ lang: s
       <div className="relative -mx-3 -my-3 flex min-w-0 flex-1 flex-col gap-6 px-3 py-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:overflow-y-auto">
         <div className="flex flex-col gap-2">
           <h1 className="text-3xl font-semibold">{languageName(course.lang)}</h1>
-          {empty ? null : <StreakLine streak={today.streak} />}
+          {/* The streak is the course's, so it shows on a level with nothing to play too. */}
+          <StreakLine streak={today.streak} />
         </div>
 
         {empty ? (
