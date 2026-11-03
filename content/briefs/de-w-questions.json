@@ -1,0 +1,230 @@
+{
+  "schemaVersion": 2,
+  "id": "de-w-questions",
+  "lang": "de",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "W-Fragen: wer, was, wo, woher, wie",
+  "objective": {
+    "en": "Form questions with wer, was, wo, woher and wie and put the verb in position 2 in both the question and the answer.",
+    "fr": "Former des questions avec wer, was, wo, woher et wie et placer le verbe en position 2 dans la question et la réponse.",
+    "de": "Fragen mit wer, was, wo, woher und wie bilden und das Verb in Frage und Antwort auf Position 2 stellen."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:25:45.414Z",
+    "inputHashes": { "outline": "372344dcdc29bbd95cdacb1743a622bd44099603a04cdda585c6117fa0f49fa9" }
+  },
+  "kind": "grammar",
+  "topic": "syntax_and_sentence_structure",
+  "scopeBoundaries": {
+    "en": "Covers W-questions with wer, was, wo, woher and wie, and the verb in position 2 in questions and statements with the subject first. Excludes yes/no questions, inversion in statements and other question words.",
+    "fr": "Couvre les questions en W avec wer, was, wo, woher et wie, et le verbe en position 2 dans les questions et les phrases déclaratives avec le sujet en premier. Exclut les questions fermées, l'inversion dans les phrases déclaratives et les autres mots interrogatifs.",
+    "de": "Behandelt W-Fragen mit wer, was, wo, woher und wie sowie das Verb auf Position 2 in Fragen und Aussagen mit dem Subjekt am Satzanfang. Nicht behandelt: Ja-Nein-Fragen, Inversion in Aussagesätzen und weitere Fragewörter."
+  },
+  "prerequisites": [
+    {
+      "en": "The verb sein and regular verbs in the present tense (wohnen, kommen, heißen)",
+      "fr": "Le verbe sein et les verbes réguliers au présent (wohnen, kommen, heißen)",
+      "de": "Das Verb sein und regelmäßige Verben im Präsens (wohnen, kommen, heißen)"
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-wer-was",
+      "summary": {
+        "en": "Wer asks about people, was asks about things and activities.",
+        "fr": "Wer interroge sur les personnes, was sur les choses et les activités.",
+        "de": "Wer fragt nach Personen, was fragt nach Dingen und Tätigkeiten."
+      }
+    },
+    {
+      "id": "rule-wo-woher-wie",
+      "summary": {
+        "en": "Wo asks about a place, woher about origin, wie about manner and name.",
+        "fr": "Wo interroge sur le lieu, woher sur l'origine, wie sur la manière et le nom.",
+        "de": "Wo fragt nach dem Ort, woher nach der Herkunft, wie nach der Art und Weise und dem Namen."
+      }
+    },
+    {
+      "id": "rule-verb-second",
+      "summary": {
+        "en": "In a W-question and in a statement, the verb is in position 2 and agrees with the subject.",
+        "fr": "Dans une question en W et dans une phrase déclarative, le verbe est en position 2 et s'accorde avec le sujet.",
+        "de": "In W-Fragen und in Aussagen steht das Verb auf Position 2 und passt zum Subjekt."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-wer-was",
+      "title": {
+        "en": "wer and was: people and things",
+        "fr": "wer et was : personnes et choses",
+        "de": "wer und was: Personen und Dinge"
+      },
+      "ruleIds": ["rule-wer-was", "rule-verb-second"],
+      "explanationPlan": {
+        "en": "Introduce the W-question and the question words wer (people) and was (things, activities). Show that the verb is in position 2 right after the question word, and in the answer too.",
+        "fr": "Présenter la question en W et les mots interrogatifs wer (personnes) et was (choses, activités). Montrer que le verbe est en position 2 juste après le mot interrogatif, et aussi dans la réponse.",
+        "de": "Die W-Frage und die Fragewörter wer (Personen) und was (Dinge, Tätigkeiten) einführen. Zeigen, dass das Verb direkt nach dem Fragewort auf Position 2 steht, auch in der Antwort."
+      },
+      "explanationDurationS": 100,
+      "examples": [
+        { "text": "Wer ist das?", "translation": { "en": "Who is that?", "fr": "Qui est-ce ?" } },
+        {
+          "text": "Was machst du?",
+          "translation": { "en": "What are you doing?", "fr": "Qu'est-ce que tu fais ?" }
+        },
+        {
+          "text": "Ich lerne Deutsch.",
+          "translation": { "en": "I am learning German.", "fr": "J'apprends l'allemand." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "For people ask with wer, not was.",
+          "fr": "Pour les personnes, on demande avec wer, pas avec was.",
+          "de": "Nach Personen fragst du mit wer, nicht mit was."
+        },
+        {
+          "en": "Do not put the subject before the verb in the question: Was du machst? is wrong, say Was machst du?",
+          "fr": "Ne placez pas le sujet avant le verbe dans la question : Was du machst ? est faux, dites Was machst du ?",
+          "de": "Stelle in der Frage nicht das Subjekt vor das Verb: Was du machst? ist falsch, sag Was machst du?"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-b1-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-wer-was", "rule-verb-second"],
+          "estimatedDurationS": 48
+        },
+        {
+          "id": "ex-b1-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 3,
+          "ruleIds": ["rule-wer-was", "rule-verb-second"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-b1-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-wer-was", "rule-verb-second"],
+          "estimatedDurationS": 75
+        }
+      ]
+    },
+    {
+      "id": "block-wo-woher-wie",
+      "title": {
+        "en": "wo, woher and wie: place, origin, name",
+        "fr": "wo, woher et wie : lieu, origine, nom",
+        "de": "wo, woher und wie: Ort, Herkunft, Name"
+      },
+      "ruleIds": ["rule-wo-woher-wie", "rule-verb-second"],
+      "explanationPlan": {
+        "en": "Teach wo (place), woher (origin) and wie (manner, also the name) with typical question and answer pairs. Show that the verb changes with the person but stays in position 2, and the question word stays in position 1.",
+        "fr": "Enseigner wo (lieu), woher (origine) et wie (manière, aussi le nom) avec des paires question-réponse typiques. Montrer que le verbe change selon la personne mais reste en position 2, et que le mot interrogatif reste en position 1.",
+        "de": "wo (Ort), woher (Herkunft) und wie (Art und Weise, auch der Name) mit typischen Frage-Antwort-Paaren vermitteln. Zeigen, dass sich das Verb mit der Person ändert, aber auf Position 2 bleibt, und das Fragewort auf Position 1 steht."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "Wo wohnst du?",
+          "translation": { "en": "Where do you live?", "fr": "Où habites-tu ?" }
+        },
+        {
+          "text": "Woher kommst du?",
+          "translation": { "en": "Where are you from?", "fr": "D'où viens-tu ?" }
+        },
+        {
+          "text": "Wie heißt du?",
+          "translation": { "en": "What is your name?", "fr": "Comment t'appelles-tu ?" }
+        },
+        {
+          "text": "Anna wohnt in Wien.",
+          "translation": { "en": "Anna lives in Vienna.", "fr": "Anna habite à Vienne." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not mix up wo and woher: Wo kommst du? is wrong, say Woher kommst du?",
+          "fr": "Ne confondez pas wo et woher : Wo kommst du ? est faux, dites Woher kommst du ?",
+          "de": "Verwechsle wo und woher nicht: Wo kommst du? ist falsch, sag Woher kommst du?"
+        },
+        {
+          "en": "For a name ask Wie heißt du?, not Was heißt du?",
+          "fr": "Pour demander le nom, dites Wie heißt du ?, pas Was heißt du ?",
+          "de": "Nach dem Namen fragst du Wie heißt du?, nicht Was heißt du?"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-b2-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-wo-woher-wie", "rule-verb-second"],
+          "estimatedDurationS": 48
+        },
+        {
+          "id": "ex-b2-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-wo-woher-wie", "rule-verb-second"],
+          "estimatedDurationS": 80
+        },
+        {
+          "id": "ex-b2-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-wo-woher-wie", "rule-verb-second"],
+          "estimatedDurationS": 75
+        },
+        {
+          "id": "ex-b2-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 3,
+          "ruleIds": ["rule-wo-woher-wie", "rule-verb-second"],
+          "estimatedDurationS": 75
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-question-words",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-wer-was", "rule-wo-woher-wie"],
+        "estimatedDurationS": 100,
+        "timeLimitS": 160
+      },
+      {
+        "pageId": "exam-verbs",
+        "type": "grammar_gap_typing",
+        "itemCount": 3,
+        "ruleIds": ["rule-verb-second"],
+        "estimatedDurationS": 75,
+        "timeLimitS": 120
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 4,
+        "ruleIds": ["rule-verb-second"],
+        "estimatedDurationS": 100,
+        "timeLimitS": 150
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

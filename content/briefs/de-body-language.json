@@ -1,0 +1,662 @@
+{
+  "schemaVersion": 2,
+  "id": "de-body-language",
+  "lang": "de",
+  "level": "B2",
+  "locales": ["en", "fr", "de"],
+  "title": "Körpersprache",
+  "objective": {
+    "en": "Name and interpret gestures and facial expressions, from the nod to the frown.",
+    "fr": "Nommer et interpréter les gestes et les expressions du visage, du hochement de tête au froncement de sourcils.",
+    "de": "Gestik und Mimik benennen und deuten, vom Nicken bis zum Stirnrunzeln."
+  },
+  "estimatedMinutes": 20,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:30:58.334Z",
+    "inputHashes": { "outline": "1f3987a09e591eb0a722a15afe415946d29b4dc1c534bb2afd18f6578dd15c16" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Twelve words for non-verbal communication: five nouns (gesture, posture, facial expressions, facial look, eye contact) and seven verbs or verb phrases for typical movements of the head, shoulders, arms, forehead and eyebrows.",
+    "fr": "Douze mots pour la communication non verbale : cinq noms (geste, posture, mimique, expression du visage, contact visuel) et sept verbes ou locutions verbales pour les mouvements typiques de la tête, des épaules, des bras, du front et des sourcils.",
+    "de": "Zwölf Wörter für die nonverbale Kommunikation: fünf Nomen (Geste, Körperhaltung, Mimik, Gesichtsausdruck, Blickkontakt) und sieben Verben oder Verbwendungen für typische Bewegungen von Kopf, Schultern, Armen, Stirn und Augenbrauen."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve words fit two groups of six and give a manageable B2 lesson.",
+    "fr": "Douze mots forment deux groupes de six et font une leçon B2 gérable.",
+    "de": "Zwölf Wörter ergeben zwei Gruppen zu sechs und eine gut machbare B2-Lektion."
+  },
+  "difficultyBalance": {
+    "en": "Mostly core vocabulary; the verb phrases with fixed objects and the near-synonyms Mimik and Gesichtsausdruck are demanding.",
+    "fr": "Surtout du vocabulaire de base ; les locutions verbales à complément fixe et les quasi-synonymes Mimik et Gesichtsausdruck sont exigeants.",
+    "de": "Überwiegend Grundwortschatz; die Verbwendungen mit festem Objekt und die Beinahe-Synonyme Mimik und Gesichtsausdruck sind anspruchsvoll."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "gesten",
+      "label": {
+        "en": "Gestures and posture",
+        "fr": "Gestes et posture",
+        "de": "Gesten und Haltung"
+      },
+      "targetIds": [
+        "geste",
+        "koerperhaltung",
+        "nicken",
+        "kopf-schuetteln",
+        "schultern-zucken",
+        "arme-verschraenken"
+      ],
+      "introduction": {
+        "en": "Many messages are sent **without words**. These expressions describe gestures and posture:\n\n- `die Geste`\n- `die Körperhaltung`\n- `nicken`\n- `den Kopf schütteln`\n- `mit den Schultern zucken`\n- `die Arme verschränken`",
+        "fr": "Beaucoup de messages passent **sans mots**. Ces expressions décrivent les gestes et la posture :\n\n- `die Geste`\n- `die Körperhaltung`\n- `nicken`\n- `den Kopf schütteln`\n- `mit den Schultern zucken`\n- `die Arme verschränken`",
+        "de": "Viele Botschaften werden **ohne Worte** gesendet. Diese Ausdrücke beschreiben Gesten und Haltung:\n\n- `die Geste`\n- `die Körperhaltung`\n- `nicken`\n- `den Kopf schütteln`\n- `mit den Schultern zucken`\n- `die Arme verschränken`"
+      }
+    },
+    {
+      "id": "gesicht",
+      "label": { "en": "Face and eyes", "fr": "Visage et regard", "de": "Gesicht und Blick" },
+      "targetIds": [
+        "mimik",
+        "gesichtsausdruck",
+        "blickkontakt",
+        "stirn-runzeln",
+        "augenbrauen-hochziehen",
+        "grinsen"
+      ],
+      "introduction": {
+        "en": "The face shows feelings even when nobody speaks. These words describe it:\n\n- `die Mimik`\n- `der Gesichtsausdruck`\n- `der Blickkontakt`\n- `die Stirn runzeln`\n- `die Augenbrauen hochziehen`\n- `grinsen`",
+        "fr": "Le visage montre les sentiments même quand personne ne parle. Ces mots le décrivent :\n\n- `die Mimik`\n- `der Gesichtsausdruck`\n- `der Blickkontakt`\n- `die Stirn runzeln`\n- `die Augenbrauen hochziehen`\n- `grinsen`",
+        "de": "Das Gesicht zeigt Gefühle, auch wenn niemand spricht. Diese Wörter beschreiben es:\n\n- `die Mimik`\n- `der Gesichtsausdruck`\n- `der Blickkontakt`\n- `die Stirn runzeln`\n- `die Augenbrauen hochziehen`\n- `grinsen`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "geste",
+      "term": "Geste",
+      "translations": { "en": ["gesture"], "fr": ["le geste"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Geste",
+      "examForms": ["die Geste"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈɡɛstə/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Mit einer kleinen Geste bat er um Ruhe.",
+        "translation": {
+          "en": "With a small gesture he asked for quiet.",
+          "fr": "D’un petit geste, il demanda le silence."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Geste is a meaningful movement of the hand or arm, such as waving or pointing.",
+        "fr": "Die Geste est un mouvement significatif de la main ou du bras, comme un salut ou un geste du doigt.",
+        "de": "Die Geste ist eine bedeutungsvolle Bewegung von Hand oder Arm, zum Beispiel ein Winken."
+      },
+      "genderExplanation": {
+        "en": "Geste is feminine, so the article is die.",
+        "fr": "Geste est féminin : on dit die Geste.",
+        "de": "Geste ist feminin, deshalb heißt es die Geste."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Mit einer einladenden ",
+        "after": " der Hand bat sie ihn herein.",
+        "accepted": { "answers": ["Geste"] },
+        "referenceTargetIds": ["geste", "mimik", "blickkontakt", "nicken"],
+        "explanation": {
+          "en": "A movement of the hand is a Geste.",
+          "fr": "Un mouvement de la main est une Geste.",
+          "de": "Eine Bewegung der Hand ist eine Geste."
+        }
+      },
+      "listeningOptionTargetIds": ["geste", "gesichtsausdruck", "grinsen", "mimik"]
+    },
+    {
+      "id": "koerperhaltung",
+      "term": "Körperhaltung",
+      "translations": { "en": ["posture"], "fr": ["la posture"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Körperhaltung",
+      "examForms": ["die Körperhaltung"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈkœʁpɐˌhaltʊŋ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Seine Körperhaltung wirkte sehr selbstsicher.",
+        "translation": {
+          "en": "His posture looked very confident.",
+          "fr": "Sa posture avait l’air très assurée."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Körperhaltung is the way a person stands, sits or holds the body.",
+        "fr": "Die Körperhaltung est la façon dont une personne se tient debout, assise ou garde son corps.",
+        "de": "Die Körperhaltung ist die Art, wie jemand steht, sitzt oder seinen Körper hält."
+      },
+      "genderExplanation": {
+        "en": "Körperhaltung ends in -ung, so it is feminine: die Körperhaltung.",
+        "fr": "Körperhaltung se termine en -ung, donc féminin : die Körperhaltung.",
+        "de": "Körperhaltung endet auf -ung und ist feminin: die Körperhaltung."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Wer mit hängenden Schultern und gesenktem Kopf dasteht, hat eine unsichere ",
+        "after": ".",
+        "accepted": { "answers": ["Körperhaltung"] },
+        "referenceTargetIds": ["koerperhaltung", "blickkontakt", "nicken", "stirn-runzeln"],
+        "explanation": {
+          "en": "Hanging shoulders and a lowered head describe the Körperhaltung.",
+          "fr": "Des épaules tombantes et une tête baissée décrivent la Körperhaltung.",
+          "de": "Hängende Schultern und ein gesenkter Kopf beschreiben die Körperhaltung."
+        }
+      },
+      "listeningOptionTargetIds": ["koerperhaltung", "blickkontakt", "arme-verschraenken", "geste"]
+    },
+    {
+      "id": "nicken",
+      "term": "nicken",
+      "translations": { "en": ["to nod"], "fr": ["hocher la tête"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "nicken",
+      "examForms": ["nicken"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈnɪkn̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Sie nickte und lächelte zufrieden.",
+        "translation": {
+          "en": "She nodded and smiled contentedly.",
+          "fr": "Elle hocha la tête et sourit, satisfaite."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Nicken means moving the head up and down, usually to say yes or to agree.",
+        "fr": "Nicken signifie bouger la tête de haut en bas, en général pour dire oui ou approuver.",
+        "de": "Nicken heißt, den Kopf auf und ab zu bewegen, meist als Zeichen für Ja oder Zustimmung."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Zum Zeichen der Zustimmung kann man mit dem Kopf ",
+        "after": ".",
+        "accepted": { "answers": ["nicken"] },
+        "referenceTargetIds": ["nicken", "grinsen", "schultern-zucken", "kopf-schuetteln"],
+        "explanation": {
+          "en": "Agreement is shown by nodding, not by shaking the head.",
+          "fr": "On montre son accord en hochant la tête, pas en la secouant.",
+          "de": "Zustimmung zeigt man durch Nicken, nicht durch Kopfschütteln."
+        }
+      },
+      "listeningOptionTargetIds": ["nicken", "grinsen", "mimik", "blickkontakt"]
+    },
+    {
+      "id": "kopf-schuetteln",
+      "term": "den Kopf schütteln",
+      "translations": {
+        "en": ["to shake one's head"],
+        "fr": ["secouer la tête", "dire non de la tête"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "den Kopf schütteln",
+      "examForms": ["den Kopf schütteln"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/deːn ˈkɔpf ˈʃʏtl̩n/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Er schüttelte den Kopf und sagte Nein.",
+        "translation": {
+          "en": "He shook his head and said no.",
+          "fr": "Il secoua la tête et dit non."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Den Kopf schütteln means turning the head from side to side, usually to say no or to show disbelief.",
+        "fr": "Den Kopf schütteln signifie tourner la tête de gauche à droite, en général pour dire non ou montrer son incrédulité.",
+        "de": "Den Kopf schütteln heißt, den Kopf hin und her zu bewegen, meist als Zeichen für Nein oder Unglauben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Sie hatte keine Lust mitzukommen und musste nur kurz den Kopf ",
+        "after": ".",
+        "accepted": { "answers": ["schütteln"] },
+        "referenceTargetIds": ["kopf-schuetteln", "nicken", "schultern-zucken", "stirn-runzeln"],
+        "explanation": {
+          "en": "A refusal is shown by shaking the head.",
+          "fr": "On montre un refus en secouant la tête.",
+          "de": "Eine Ablehnung zeigt man durch Kopfschütteln."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "kopf-schuetteln",
+        "schultern-zucken",
+        "stirn-runzeln",
+        "arme-verschraenken"
+      ]
+    },
+    {
+      "id": "schultern-zucken",
+      "term": "mit den Schultern zucken",
+      "translations": {
+        "en": ["to shrug one's shoulders", "to shrug"],
+        "fr": ["hausser les épaules"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "mit den Schultern zucken",
+      "examForms": ["mit den Schultern zucken"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/mɪt deːn ˈʃʊltɐn ˈtsʊkn̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Auf meine Frage zuckte er nur mit den Schultern.",
+        "translation": {
+          "en": "At my question he just shrugged his shoulders.",
+          "fr": "À ma question, il a seulement haussé les épaules."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Mit den Schultern zucken shows that someone does not know or does not care.",
+        "fr": "Mit den Schultern zucken montre que quelqu’un ne sait pas ou que cela lui est égal.",
+        "de": "Mit den Schultern zucken zeigt, dass jemand etwas nicht weiß oder dass es ihm gleichgültig ist."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Auf die Frage, wo die Schlüssel sind, konnte er nur mit den Schultern ",
+        "after": ".",
+        "accepted": { "answers": ["zucken"] },
+        "referenceTargetIds": ["schultern-zucken", "nicken", "grinsen", "arme-verschraenken"],
+        "explanation": {
+          "en": "Someone who does not know the answer shrugs, with the shoulders.",
+          "fr": "Celui qui ne connaît pas la réponse hausse les épaules.",
+          "de": "Wer die Antwort nicht kennt, zuckt mit den Schultern."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "schultern-zucken",
+        "kopf-schuetteln",
+        "stirn-runzeln",
+        "augenbrauen-hochziehen"
+      ]
+    },
+    {
+      "id": "arme-verschraenken",
+      "term": "die Arme verschränken",
+      "translations": { "en": ["to cross one's arms"], "fr": ["croiser les bras"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "die Arme verschränken",
+      "examForms": ["die Arme verschränken"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/diː ˈaʁmə fɛɐ̯ˈʃʁɛŋkn̩/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Er hörte mit verschränkten Armen zu.",
+        "translation": {
+          "en": "He listened with his arms crossed.",
+          "fr": "Il écoutait les bras croisés."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Arme verschränken means crossing the arms in front of the chest, often a sign of distance or defence.",
+        "fr": "Die Arme verschränken signifie croiser les bras devant la poitrine, souvent un signe de distance ou de défense.",
+        "de": "Die Arme verschränken heißt, die Arme vor der Brust zu kreuzen, oft ein Zeichen von Distanz oder Abwehr."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Wer abwehrend wirkt, wird oft die Arme vor der Brust ",
+        "after": ".",
+        "accepted": { "answers": ["verschränken"] },
+        "referenceTargetIds": ["arme-verschraenken", "augenbrauen-hochziehen", "nicken", "grinsen"],
+        "explanation": {
+          "en": "Arms in front of the chest are crossed: verschränken.",
+          "fr": "Les bras devant la poitrine se croisent : verschränken.",
+          "de": "Arme vor der Brust verschränkt man."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "arme-verschraenken",
+        "augenbrauen-hochziehen",
+        "koerperhaltung",
+        "stirn-runzeln"
+      ]
+    },
+    {
+      "id": "mimik",
+      "term": "Mimik",
+      "translations": { "en": ["facial expressions"], "fr": ["la mimique"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Mimik",
+      "examForms": ["die Mimik"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈmiːmɪk/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Ihre Mimik verriet, dass sie sich freute.",
+        "translation": {
+          "en": "Her facial expressions showed that she was happy.",
+          "fr": "Sa mimique trahissait sa joie."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Die Mimik is the whole play of the face over time; der Gesichtsausdruck is the look at one moment.",
+        "fr": "Die Mimik est le jeu du visage dans la durée ; der Gesichtsausdruck est l’expression à un moment donné.",
+        "de": "Die Mimik ist das ganze Spiel des Gesichts; der Gesichtsausdruck ist der Ausdruck in einem Moment."
+      },
+      "explanation": {
+        "en": "Die Mimik is the movement of the face that shows feelings.",
+        "fr": "Die Mimik est le mouvement du visage qui montre les sentiments.",
+        "de": "Die Mimik ist die Bewegung des Gesichts, die Gefühle zeigt."
+      },
+      "genderExplanation": {
+        "en": "Mimik is feminine, so the article is die. It is not used in the plural.",
+        "fr": "Mimik est féminin : on dit die Mimik. Le mot ne s’emploie pas au pluriel.",
+        "de": "Mimik ist feminin: die Mimik. Das Wort wird nicht im Plural verwendet."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Die Schauspielerin beherrscht ihre ",
+        "after": " so gut, dass man jedes Gefühl in ihrem Gesicht ablesen kann.",
+        "accepted": { "answers": ["Mimik"] },
+        "referenceTargetIds": ["mimik", "blickkontakt", "nicken", "grinsen"],
+        "explanation": {
+          "en": "Feelings that can be read in the face are shown through Mimik.",
+          "fr": "Les sentiments qu’on lit sur le visage passent par la Mimik.",
+          "de": "Gefühle, die man im Gesicht ablesen kann, zeigen sich in der Mimik."
+        }
+      },
+      "listeningOptionTargetIds": ["mimik", "geste", "blickkontakt", "nicken"]
+    },
+    {
+      "id": "gesichtsausdruck",
+      "term": "Gesichtsausdruck",
+      "translations": {
+        "en": ["look on one's face", "facial expression"],
+        "fr": ["l'expression du visage"]
+      },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "der Gesichtsausdruck",
+      "examForms": ["der Gesichtsausdruck"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɡəˈzɪçtsˌʔaʊ̯sdʁʊk/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Sein Gesichtsausdruck wurde plötzlich ernst.",
+        "translation": {
+          "en": "The look on his face suddenly became serious.",
+          "fr": "Son expression devint soudain sérieuse."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Der Gesichtsausdruck is the look at one moment; die Mimik is the whole play of the face.",
+        "fr": "Der Gesichtsausdruck est l’expression à un moment donné ; die Mimik est le jeu du visage dans son ensemble.",
+        "de": "Der Gesichtsausdruck ist der Ausdruck in einem Moment; die Mimik ist das ganze Spiel des Gesichts."
+      },
+      "explanation": {
+        "en": "Der Gesichtsausdruck is the look on a face at a given moment, for example friendly or sad.",
+        "fr": "Der Gesichtsausdruck est l’expression d’un visage à un moment donné, par exemple aimable ou triste.",
+        "de": "Der Gesichtsausdruck ist das Aussehen eines Gesichts in einem Moment, zum Beispiel freundlich oder traurig."
+      },
+      "genderExplanation": {
+        "en": "Gesichtsausdruck takes its gender from its last part, der Ausdruck: der Gesichtsausdruck.",
+        "fr": "Gesichtsausdruck prend le genre de son dernier élément, der Ausdruck : der Gesichtsausdruck.",
+        "de": "Gesichtsausdruck richtet sich nach dem letzten Wortteil, der Ausdruck: der Gesichtsausdruck."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Sein trauriger ",
+        "after": " zeigte, dass ihn die Nachricht getroffen hatte.",
+        "accepted": { "answers": ["Gesichtsausdruck"] },
+        "referenceTargetIds": ["gesichtsausdruck", "geste", "koerperhaltung", "grinsen"],
+        "explanation": {
+          "en": "The look on a face at one moment is the Gesichtsausdruck, and the masculine ending matches der.",
+          "fr": "L’expression du visage à un moment donné est le Gesichtsausdruck ; la terminaison masculine correspond à der.",
+          "de": "Der Ausdruck des Gesichts in einem Moment ist der Gesichtsausdruck; die männliche Endung passt zu der."
+        }
+      },
+      "listeningOptionTargetIds": ["gesichtsausdruck", "geste", "mimik", "grinsen"]
+    },
+    {
+      "id": "blickkontakt",
+      "term": "Blickkontakt",
+      "translations": { "en": ["eye contact"], "fr": ["le contact visuel"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "der Blickkontakt",
+      "examForms": ["der Blickkontakt"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈblɪkkɔnˌtakt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Im Gespräch suchte er den Blickkontakt zu allen.",
+        "translation": {
+          "en": "In the conversation he sought eye contact with everyone.",
+          "fr": "Pendant la conversation, il cherchait le contact visuel avec tous."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Der Blickkontakt is the moment when two people look into each other's eyes.",
+        "fr": "Der Blickkontakt est le moment où deux personnes se regardent dans les yeux.",
+        "de": "Der Blickkontakt ist der Moment, in dem zwei Menschen einander in die Augen sehen."
+      },
+      "genderExplanation": {
+        "en": "Blickkontakt takes its gender from der Kontakt, so it is masculine: der Blickkontakt.",
+        "fr": "Blickkontakt prend le genre de der Kontakt, donc masculin : der Blickkontakt.",
+        "de": "Blickkontakt richtet sich nach der Kontakt und ist maskulin: der Blickkontakt."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Beim Vorstellungsgespräch hielt sie freundlich ",
+        "after": ", ohne ihr Gegenüber anzustarren.",
+        "accepted": { "answers": ["Blickkontakt"] },
+        "referenceTargetIds": ["blickkontakt", "geste", "grinsen", "schultern-zucken"],
+        "explanation": {
+          "en": "One keeps Blickkontakt, that is, looks at the other person.",
+          "fr": "On garde le Blickkontakt, c’est-à-dire qu’on regarde l’autre personne.",
+          "de": "Man hält Blickkontakt, das heißt, man sieht den anderen an."
+        }
+      },
+      "listeningOptionTargetIds": ["blickkontakt", "koerperhaltung", "geste", "mimik"]
+    },
+    {
+      "id": "stirn-runzeln",
+      "term": "die Stirn runzeln",
+      "translations": { "en": ["to frown"], "fr": ["froncer les sourcils", "froncer le front"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "die Stirn runzeln",
+      "examForms": ["die Stirn runzeln"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/diː ˈʃtɪʁn ˈʁʊntsl̩n/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Der Lehrer runzelte die Stirn und las den Satz noch einmal.",
+        "translation": {
+          "en": "The teacher frowned and read the sentence once more.",
+          "fr": "Le professeur fronça les sourcils et relut la phrase."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Stirn runzeln means drawing the forehead into folds, a sign of doubt, worry or displeasure.",
+        "fr": "Die Stirn runzeln signifie plisser le front, signe de doute, d’inquiétude ou de mécontentement.",
+        "de": "Die Stirn runzeln heißt, die Stirn in Falten zu ziehen, ein Zeichen für Zweifel, Sorge oder Missfallen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Beim Lesen der schwierigen Aufgabe musste sie die Stirn ",
+        "after": ".",
+        "accepted": { "answers": ["runzeln"] },
+        "referenceTargetIds": [
+          "stirn-runzeln",
+          "arme-verschraenken",
+          "augenbrauen-hochziehen",
+          "nicken"
+        ],
+        "explanation": {
+          "en": "The forehead is wrinkled: die Stirn runzeln.",
+          "fr": "Le front se plisse : die Stirn runzeln.",
+          "de": "Die Stirn wird gerunzelt: die Stirn runzeln."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "stirn-runzeln",
+        "augenbrauen-hochziehen",
+        "schultern-zucken",
+        "kopf-schuetteln"
+      ]
+    },
+    {
+      "id": "augenbrauen-hochziehen",
+      "term": "die Augenbrauen hochziehen",
+      "translations": { "en": ["to raise one's eyebrows"], "fr": ["lever les sourcils"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "die Augenbrauen hochziehen",
+      "examForms": ["die Augenbrauen hochziehen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/diː ˈaʊ̯ɡn̩ˌbʁaʊ̯ən ˈhoːxˌtsiːən/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Er zog überrascht die Augenbrauen hoch.",
+        "translation": {
+          "en": "He raised his eyebrows in surprise.",
+          "fr": "Il leva les sourcils, surpris."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Augenbrauen hochziehen shows surprise or doubt: the eyebrows go up. The verb is separable: Er zieht sie hoch.",
+        "fr": "Die Augenbrauen hochziehen montre la surprise ou le doute : les sourcils montent. Le verbe est séparable : Er zieht sie hoch.",
+        "de": "Die Augenbrauen hochziehen zeigt Überraschung oder Zweifel: Die Brauen gehen nach oben. Das Verb ist trennbar: Er zieht sie hoch."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Um ihr Erstaunen zu zeigen, wollte sie die Augenbrauen ",
+        "after": " und die Augen weit öffnen.",
+        "accepted": { "answers": ["hochziehen"] },
+        "referenceTargetIds": [
+          "augenbrauen-hochziehen",
+          "stirn-runzeln",
+          "schultern-zucken",
+          "arme-verschraenken"
+        ],
+        "explanation": {
+          "en": "Astonishment goes with raised eyebrows and wide eyes.",
+          "fr": "L’étonnement va avec des sourcils levés et des yeux grands ouverts.",
+          "de": "Erstaunen passt zu hochgezogenen Augenbrauen und weit geöffneten Augen."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "augenbrauen-hochziehen",
+        "arme-verschraenken",
+        "stirn-runzeln",
+        "grinsen"
+      ]
+    },
+    {
+      "id": "grinsen",
+      "term": "grinsen",
+      "translations": {
+        "en": ["to grin"],
+        "fr": ["sourire à pleines dents", "faire un large sourire"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "grinsen",
+      "examForms": ["grinsen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈɡʁɪnzn̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Sie grinste, als sie den Witz verstand.",
+        "translation": {
+          "en": "She grinned when she understood the joke.",
+          "fr": "Elle sourit largement quand elle comprit la blague."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Grinsen means smiling broadly, often with mischief or satisfaction.",
+        "fr": "Grinsen signifie sourire largement, souvent avec malice ou satisfaction.",
+        "de": "Grinsen heißt, breit zu lächeln, oft schelmisch oder zufrieden."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Als er den Witz hörte, musste er von einem Ohr zum anderen ",
+        "after": ".",
+        "accepted": { "answers": ["grinsen"] },
+        "referenceTargetIds": ["grinsen", "nicken", "stirn-runzeln", "arme-verschraenken"],
+        "explanation": {
+          "en": "A broad smile from ear to ear is a grin.",
+          "fr": "Un large sourire d’une oreille à l’autre, c’est grinsen.",
+          "de": "Ein breites Lächeln von Ohr zu Ohr ist ein Grinsen."
+        }
+      },
+      "listeningOptionTargetIds": ["grinsen", "nicken", "stirn-runzeln", "geste"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

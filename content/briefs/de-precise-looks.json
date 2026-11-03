@@ -1,0 +1,701 @@
+{
+  "schemaVersion": 2,
+  "id": "de-precise-looks",
+  "lang": "de",
+  "level": "C1",
+  "locales": ["en", "fr", "de"],
+  "title": "Präzise Wörter für das Aussehen",
+  "objective": {
+    "en": "Describe a person's appearance precisely with about fourteen exact German words.",
+    "fr": "Décrire précisément l'apparence d'une personne avec environ quatorze mots allemands justes.",
+    "de": "Das Aussehen einer Person mit etwa vierzehn genauen Wörtern beschreiben."
+  },
+  "estimatedMinutes": 23,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:36:59.168Z",
+    "inputHashes": { "outline": "245edf977a4f25e72c4698f6e72f62e69cbf50c9acd0f65d8e37de6e3a212428" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Fourteen words in two groups: build and overall impression (adjectives), and face and skin (nouns). They go beyond everyday words such as groß or schön.",
+    "fr": "Quatorze mots en deux groupes : la silhouette et l'impression générale (adjectifs), puis le visage et la peau (noms). Ils dépassent les mots courants comme groß ou schön.",
+    "de": "Vierzehn Wörter in zwei Gruppen: Körperbau und Gesamteindruck (Adjektive) sowie Gesicht und Haut (Nomen). Sie gehen über Alltagswörter wie groß oder schön hinaus."
+  },
+  "targetCount": 14,
+  "countRationale": {
+    "en": "Fourteen words fit the intent of about fourteen and allow two groups of seven.",
+    "fr": "Quatorze mots correspondent à l'objectif et permettent deux groupes de sept.",
+    "de": "Vierzehn Wörter entsprechen dem Ziel und erlauben zwei Gruppen zu je sieben."
+  },
+  "difficultyBalance": {
+    "en": "Most adjectives are core C1 vocabulary; the less frequent nouns and wettergegerbt are demanding.",
+    "fr": "La plupart des adjectifs sont du vocabulaire C1 de base ; les noms moins fréquents et wettergegerbt sont plus exigeants.",
+    "de": "Die meisten Adjektive sind C1-Grundwortschatz; seltenere Nomen und wettergegerbt sind anspruchsvoller."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "build",
+      "label": {
+        "en": "Build and overall impression",
+        "fr": "Silhouette et impression générale",
+        "de": "Körperbau und Gesamteindruck"
+      },
+      "targetIds": [
+        "markant",
+        "gepflegt",
+        "ungepflegt",
+        "zierlich",
+        "staemmig",
+        "hager",
+        "wettergegerbt"
+      ],
+      "introduction": {
+        "en": "These adjectives describe how a person looks as a whole:\n\n- `markant`\n- `gepflegt`\n- `ungepflegt`\n- `zierlich`\n- `stämmig`\n- `hager`\n- `wettergegerbt`\n\nThey are more **precise** than groß, klein or schön.",
+        "fr": "Ces adjectifs décrivent l'apparence d'une personne dans son ensemble :\n\n- `markant`\n- `gepflegt`\n- `ungepflegt`\n- `zierlich`\n- `stämmig`\n- `hager`\n- `wettergegerbt`\n\nIls sont plus **précis** que groß, klein ou schön.",
+        "de": "Diese Adjektive beschreiben, wie eine Person insgesamt aussieht:\n\n- `markant`\n- `gepflegt`\n- `ungepflegt`\n- `zierlich`\n- `stämmig`\n- `hager`\n- `wettergegerbt`\n\nSie sind **genauer** als groß, klein oder schön."
+      }
+    },
+    {
+      "id": "face",
+      "label": { "en": "Face and skin", "fr": "Visage et peau", "de": "Gesicht und Haut" },
+      "targetIds": [
+        "teint",
+        "sommersprossen",
+        "falte",
+        "narbe",
+        "gruebchen",
+        "muttermal",
+        "dreitagebart"
+      ],
+      "introduction": {
+        "en": "These nouns name details of the face and skin. Learn each one with its article:\n\n- `der Teint`\n- `die Sommersprossen`\n- `die Falte`\n- `die Narbe`\n- `das Grübchen`\n- `das Muttermal`\n- `der Dreitagebart`\n\nNote that **Sommersprossen** is always plural.",
+        "fr": "Ces noms désignent des détails du visage et de la peau. Apprenez chacun avec son article :\n\n- `der Teint`\n- `die Sommersprossen`\n- `die Falte`\n- `die Narbe`\n- `das Grübchen`\n- `das Muttermal`\n- `der Dreitagebart`\n\nNotez que **Sommersprossen** s'emploie toujours au pluriel.",
+        "de": "Diese Nomen benennen Einzelheiten von Gesicht und Haut. Lerne jedes mit seinem Artikel:\n\n- `der Teint`\n- `die Sommersprossen`\n- `die Falte`\n- `die Narbe`\n- `das Grübchen`\n- `das Muttermal`\n- `der Dreitagebart`\n\nBeachte: **Sommersprossen** steht immer im Plural."
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "markant",
+      "term": "markant",
+      "translations": { "en": ["striking"], "fr": ["aux traits marqués"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "markant",
+      "examForms": ["markant"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/marˈkant/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Er hat ein markantes Gesicht mit hohen Wangenknochen.",
+        "translation": {
+          "en": "He has a striking face with high cheekbones.",
+          "fr": "Il a un visage aux traits marqués, avec des pommettes hautes."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Markant describes features that stand out clearly and are easy to remember.",
+        "fr": "Markant décrit des traits qui ressortent nettement et qu'on retient facilement.",
+        "de": "Markant beschreibt Merkmale, die deutlich hervortreten und sich einprägen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Sein Gesicht ist ",
+        "after": ": hohe Stirn, kantiges Kinn, kräftige Augenbrauen.",
+        "accepted": { "answers": ["markant"] },
+        "referenceTargetIds": ["markant", "falte", "narbe", "teint"],
+        "explanation": {
+          "en": "Only markant fits: it describes strongly defined facial features.",
+          "fr": "Seul « markant » convient : il décrit des traits du visage bien marqués.",
+          "de": "Nur „markant“ passt: Es beschreibt deutlich ausgeprägte Gesichtszüge."
+        }
+      },
+      "listeningOptionTargetIds": ["markant", "gepflegt", "hager", "zierlich"]
+    },
+    {
+      "id": "gepflegt",
+      "term": "gepflegt",
+      "translations": { "en": ["well-groomed"], "fr": ["soigné"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "gepflegt",
+      "examForms": ["gepflegt"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɡəˈpfleːkt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Der Gast war elegant gekleidet und sehr gepflegt.",
+        "translation": {
+          "en": "The guest was elegantly dressed and very well-groomed.",
+          "fr": "L'invité était élégamment vêtu et très soigné."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Gepflegt means clean, tidy and well looked after, in hair, skin and clothes.",
+        "fr": "Gepflegt signifie propre, soigné et bien entretenu : cheveux, peau, vêtements.",
+        "de": "Gepflegt heißt sauber, ordentlich und gut in Schuss, bei Haaren, Haut und Kleidung."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Der Anzug sitzt perfekt, die Haare sind frisch geschnitten, die Nägel sauber: Er wirkt sehr ",
+        "after": ".",
+        "accepted": { "answers": ["gepflegt"] },
+        "referenceTargetIds": ["gepflegt", "ungepflegt", "narbe", "falte"],
+        "explanation": {
+          "en": "Only gepflegt fits: everything described is tidy and cared for.",
+          "fr": "Seul « gepflegt » convient : tout ce qui est décrit est soigné.",
+          "de": "Nur „gepflegt“ passt: Alles, was beschrieben wird, ist ordentlich und sorgfältig."
+        }
+      },
+      "listeningOptionTargetIds": ["gepflegt", "ungepflegt", "markant", "hager"]
+    },
+    {
+      "id": "ungepflegt",
+      "term": "ungepflegt",
+      "translations": { "en": ["unkempt"], "fr": ["négligé"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "ungepflegt",
+      "examForms": ["ungepflegt"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʊnɡəpfleːkt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Der Mann wirkte ungepflegt, mit fettigen Haaren.",
+        "translation": {
+          "en": "The man looked unkempt, with greasy hair.",
+          "fr": "L'homme avait l'air négligé, avec des cheveux gras."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Ungepflegt is the opposite of gepflegt: neglected hair, skin or clothes.",
+        "fr": "Ungepflegt est le contraire de gepflegt : cheveux, peau ou vêtements négligés.",
+        "de": "Ungepflegt ist das Gegenteil von gepflegt: vernachlässigte Haare, Haut oder Kleidung."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Seine Kleidung war fleckig, der Bart struppig und die Haare fettig: Er sah richtig ",
+        "after": " aus.",
+        "accepted": { "answers": ["ungepflegt"] },
+        "referenceTargetIds": ["ungepflegt", "gepflegt", "zierlich", "staemmig"],
+        "explanation": {
+          "en": "Only ungepflegt fits: stained clothes and greasy hair show neglect.",
+          "fr": "Seul « ungepflegt » convient : vêtements tachés et cheveux gras montrent la négligence.",
+          "de": "Nur „ungepflegt“ passt: Fleckige Kleidung und fettige Haare zeigen Vernachlässigung."
+        }
+      },
+      "listeningOptionTargetIds": ["ungepflegt", "gepflegt", "zierlich", "staemmig"]
+    },
+    {
+      "id": "zierlich",
+      "term": "zierlich",
+      "translations": { "en": ["petite"], "fr": ["menu"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "zierlich",
+      "examForms": ["zierlich"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈt͡siːɐ̯lɪç/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Die Tänzerin ist klein und zierlich.",
+        "translation": {
+          "en": "The dancer is small and petite.",
+          "fr": "La danseuse est petite et menue."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Zierlich describes a small, slim and delicate build.",
+        "fr": "Zierlich décrit une silhouette petite, mince et délicate.",
+        "de": "Zierlich beschreibt einen kleinen, schlanken und feingliedrigen Körperbau."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Sie ist klein und sehr schmal gebaut, ein ausgesprochen ",
+        "after": "er Typ.",
+        "accepted": { "answers": ["zierlich"] },
+        "referenceTargetIds": ["zierlich", "staemmig", "narbe", "teint"],
+        "explanation": {
+          "en": "Only zierlich fits: small and narrow build means delicate.",
+          "fr": "Seul « zierlich » convient : petite et étroite de carrure signifie menue.",
+          "de": "Nur „zierlich“ passt: klein und schmal gebaut heißt feingliedrig."
+        }
+      },
+      "listeningOptionTargetIds": ["zierlich", "staemmig", "hager", "markant"]
+    },
+    {
+      "id": "staemmig",
+      "term": "stämmig",
+      "translations": { "en": ["stocky"], "fr": ["trapu"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "stämmig",
+      "examForms": ["stämmig"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʃtɛmɪç/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Er ist kein großer, aber ein stämmiger Mann.",
+        "translation": {
+          "en": "He is not tall, but he is a stocky man.",
+          "fr": "Ce n'est pas un grand homme, mais il est trapu."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Stämmig describes a short, broad and sturdy build.",
+        "fr": "Stämmig décrit une silhouette courte, large et robuste.",
+        "de": "Stämmig beschreibt einen gedrungenen, breiten und kräftigen Körperbau."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Der Ringer ist klein, breit und muskulös gebaut, also eher ",
+        "after": " als schlank.",
+        "accepted": { "answers": ["stämmig"] },
+        "referenceTargetIds": ["staemmig", "zierlich", "hager", "markant"],
+        "explanation": {
+          "en": "Only stämmig fits: short, broad and muscular is a sturdy build.",
+          "fr": "Seul « stämmig » convient : court, large et musclé correspond à une carrure robuste.",
+          "de": "Nur „stämmig“ passt: klein, breit und muskulös ist ein kräftiger Körperbau."
+        }
+      },
+      "listeningOptionTargetIds": ["staemmig", "zierlich", "hager", "ungepflegt"]
+    },
+    {
+      "id": "hager",
+      "term": "hager",
+      "translations": { "en": ["gaunt"], "fr": ["émacié"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "hager",
+      "examForms": ["hager"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈhaːɡɐ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Mit seinem hageren Gesicht sah er älter aus.",
+        "translation": {
+          "en": "With his gaunt face he looked older.",
+          "fr": "Avec son visage émacié, il paraissait plus âgé."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Hager means thin in an unhealthy way, with sharp, bony features.",
+        "fr": "Hager signifie maigre de façon peu saine, avec des traits osseux et anguleux.",
+        "de": "Hager bedeutet auf ungesunde Weise dünn, mit knochigen, scharfen Zügen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Nach der langen Krankheit war sein Gesicht ",
+        "after": " und eingefallen, die Wangenknochen traten hervor.",
+        "accepted": { "answers": ["hager"] },
+        "referenceTargetIds": ["hager", "staemmig", "gepflegt", "sommersprossen"],
+        "explanation": {
+          "en": "Only hager fits: sunken cheeks and visible bones after illness.",
+          "fr": "Seul « hager » convient : joues creuses et os visibles après la maladie.",
+          "de": "Nur „hager“ passt: eingefallene Wangen und sichtbare Knochen nach der Krankheit."
+        }
+      },
+      "listeningOptionTargetIds": ["hager", "markant", "gepflegt", "staemmig"]
+    },
+    {
+      "id": "wettergegerbt",
+      "term": "wettergegerbt",
+      "translations": { "en": ["weather-beaten"], "fr": ["buriné"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "wettergegerbt",
+      "examForms": ["wettergegerbt"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈvɛtɐɡəˌɡɛʁpt/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Der Bauer hat eine wettergegerbte Haut.",
+        "translation": {
+          "en": "The farmer has weather-beaten skin.",
+          "fr": "Le paysan a la peau burinée par les intempéries."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Wettergegerbt describes skin made rough and brown by years outdoors.",
+        "fr": "Wettergegerbt décrit une peau rendue rugueuse et brune par des années au grand air.",
+        "de": "Wettergegerbt beschreibt Haut, die durch Jahre im Freien rau und braun geworden ist."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Das Gesicht des alten Fischers ist ",
+        "after": ": braun, rau und tief gefurcht.",
+        "accepted": { "answers": ["wettergegerbt"] },
+        "referenceTargetIds": ["wettergegerbt", "zierlich", "gruebchen", "muttermal"],
+        "explanation": {
+          "en": "Only wettergegerbt fits: brown, rough skin from a life at sea.",
+          "fr": "Seul « wettergegerbt » convient : peau brune et rugueuse après une vie en mer.",
+          "de": "Nur „wettergegerbt“ passt: braune, raue Haut nach einem Leben auf dem Meer."
+        }
+      },
+      "listeningOptionTargetIds": ["wettergegerbt", "gepflegt", "ungepflegt", "hager"]
+    },
+    {
+      "id": "teint",
+      "term": "Teint",
+      "translations": { "en": ["complexion"], "fr": ["teint"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "der Teint",
+      "examForms": ["der Teint"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/tɛ̃ː/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ihr Teint ist blass und fast durchscheinend.",
+        "translation": {
+          "en": "Her complexion is pale and almost translucent.",
+          "fr": "Son teint est pâle et presque translucide."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Der Teint is the colour and quality of the skin of the face.",
+        "fr": "Der Teint désigne la couleur et l'aspect de la peau du visage.",
+        "de": "Der Teint ist die Farbe und Beschaffenheit der Gesichtshaut."
+      },
+      "genderExplanation": {
+        "en": "Teint is masculine, so its article is der.",
+        "fr": "Teint est masculin : on dit der Teint.",
+        "de": "Teint ist maskulin, daher lautet der Artikel der."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Sie hat einen zarten, hellen ",
+        "after": ", der in der Sonne schnell rot wird.",
+        "accepted": { "answers": ["Teint"] },
+        "referenceTargetIds": ["teint", "narbe", "dreitagebart", "muttermal"],
+        "explanation": {
+          "en": "Only Teint fits: a delicate, light skin quality that reddens in the sun.",
+          "fr": "Seul « Teint » convient : une peau claire et délicate qui rougit au soleil.",
+          "de": "Nur „Teint“ passt: eine zarte, helle Haut, die in der Sonne rot wird."
+        }
+      },
+      "listeningOptionTargetIds": ["teint", "dreitagebart", "narbe", "falte"]
+    },
+    {
+      "id": "sommersprossen",
+      "term": "Sommersprossen",
+      "translations": { "en": ["freckles"], "fr": ["taches de rousseur"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "plural",
+      "teachingForm": "die Sommersprossen",
+      "examForms": ["die Sommersprossen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈzɔmɐˌʃpʁɔsn̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Im Sommer zeigen sich ihre Sommersprossen deutlicher.",
+        "translation": {
+          "en": "In summer her freckles show more clearly.",
+          "fr": "En été, ses taches de rousseur se voient davantage."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Sommersprossen are small brown spots on the skin, often on nose and cheeks.",
+        "fr": "Die Sommersprossen sont de petites taches brunes sur la peau, souvent sur le nez et les joues.",
+        "de": "Die Sommersprossen sind kleine braune Flecken auf der Haut, oft auf Nase und Wangen."
+      },
+      "genderExplanation": {
+        "en": "Sommersprossen is a plural noun (singular: die Sommersprosse, feminine); the plural article is die.",
+        "fr": "Sommersprossen est un nom pluriel (singulier : die Sommersprosse, féminin) ; l'article pluriel est die.",
+        "de": "Sommersprossen ist ein Pluralnomen (Singular: die Sommersprosse, feminin); der Pluralartikel lautet die."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Im Sommer bekommt sie auf Nase und Wangen viele kleine braune ",
+        "after": ".",
+        "accepted": { "answers": ["Sommersprossen"] },
+        "referenceTargetIds": ["sommersprossen", "dreitagebart", "teint", "hager"],
+        "explanation": {
+          "en": "Only Sommersprossen fits: many small brown spots on nose and cheeks in summer.",
+          "fr": "Seul « Sommersprossen » convient : beaucoup de petites taches brunes sur le nez et les joues en été.",
+          "de": "Nur „Sommersprossen“ passt: viele kleine braune Flecken auf Nase und Wangen im Sommer."
+        }
+      },
+      "listeningOptionTargetIds": ["sommersprossen", "muttermal", "falte", "narbe"]
+    },
+    {
+      "id": "falte",
+      "term": "Falte",
+      "translations": { "en": ["wrinkle"], "fr": ["ride"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Falte",
+      "examForms": ["die Falte"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈfaltə/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Auf ihrer Stirn zeichnete sich eine tiefe Falte ab.",
+        "translation": {
+          "en": "A deep wrinkle showed on her forehead.",
+          "fr": "Une ride profonde se dessinait sur son front."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Falte is a line in the skin, for example from age or from laughing.",
+        "fr": "Die Falte est un pli de la peau, par exemple dû à l'âge ou au rire.",
+        "de": "Die Falte ist eine Linie in der Haut, zum Beispiel vom Alter oder vom Lachen."
+      },
+      "genderExplanation": {
+        "en": "Falte is feminine, so its article is die.",
+        "fr": "Falte est féminin : on dit die Falte.",
+        "de": "Falte ist feminin, daher lautet der Artikel die."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Wenn er lacht, bildet sich um seine Augen jedes Mal eine tiefe ",
+        "after": ".",
+        "accepted": { "answers": ["Falte"] },
+        "referenceTargetIds": ["falte", "narbe", "gruebchen", "muttermal"],
+        "explanation": {
+          "en": "Only Falte fits: skin lines form around the eyes when laughing.",
+          "fr": "Seul « Falte » convient : des plis se forment autour des yeux quand on rit.",
+          "de": "Nur „Falte“ passt: Beim Lachen entstehen Linien um die Augen."
+        }
+      },
+      "listeningOptionTargetIds": ["falte", "narbe", "teint", "gruebchen"]
+    },
+    {
+      "id": "narbe",
+      "term": "Narbe",
+      "translations": { "en": ["scar"], "fr": ["cicatrice"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Narbe",
+      "examForms": ["die Narbe"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈnaʁbə/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Über seiner Augenbraue verläuft eine schmale Narbe.",
+        "translation": {
+          "en": "A narrow scar runs over his eyebrow.",
+          "fr": "Une fine cicatrice court au-dessus de son sourcil."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Narbe is the mark left on the skin after a wound has healed.",
+        "fr": "Die Narbe est la marque laissée sur la peau après la guérison d'une blessure.",
+        "de": "Die Narbe ist die Spur, die nach dem Heilen einer Wunde auf der Haut bleibt."
+      },
+      "genderExplanation": {
+        "en": "Narbe is feminine, so its article is die.",
+        "fr": "Narbe est féminin : on dit die Narbe.",
+        "de": "Narbe ist feminin, daher lautet der Artikel die."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Als Kind ist er vom Fahrrad gestürzt; seitdem hat er am Knie eine lange ",
+        "after": ", die man noch sieht.",
+        "accepted": { "answers": ["Narbe"] },
+        "referenceTargetIds": ["narbe", "falte", "muttermal", "sommersprossen"],
+        "explanation": {
+          "en": "Only Narbe fits: the mark left by a wound from a fall.",
+          "fr": "Seul « Narbe » convient : la marque laissée par une blessure après une chute.",
+          "de": "Nur „Narbe“ passt: die Spur einer Wunde nach einem Sturz."
+        }
+      },
+      "listeningOptionTargetIds": ["narbe", "falte", "muttermal", "dreitagebart"]
+    },
+    {
+      "id": "gruebchen",
+      "term": "Grübchen",
+      "translations": { "en": ["dimple"], "fr": ["fossette"] },
+      "wordClass": "noun",
+      "genders": ["neuter"],
+      "number": "singular",
+      "teachingForm": "das Grübchen",
+      "examForms": ["das Grübchen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈɡʁyːpçən/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Wenn sie lacht, bekommt sie ein Grübchen in der Wange.",
+        "translation": {
+          "en": "When she laughs, she gets a dimple in her cheek.",
+          "fr": "Quand elle rit, une fossette se creuse sur sa joue."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Das Grübchen is a small hollow in the cheek or chin, often visible when smiling.",
+        "fr": "Das Grübchen est un petit creux dans la joue ou le menton, souvent visible quand on sourit.",
+        "de": "Das Grübchen ist eine kleine Vertiefung in Wange oder Kinn, oft beim Lächeln sichtbar."
+      },
+      "genderExplanation": {
+        "en": "Words ending in -chen are neuter, so Grübchen takes das.",
+        "fr": "Les mots en -chen sont neutres : on dit das Grübchen.",
+        "de": "Wörter auf -chen sind sächlich, daher lautet der Artikel das."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Beim Lächeln zeigt sich in ihrer linken Wange ein kleines ",
+        "after": ".",
+        "accepted": { "answers": ["Grübchen"] },
+        "referenceTargetIds": ["gruebchen", "narbe", "teint", "hager"],
+        "explanation": {
+          "en": "Only Grübchen fits: a small hollow that appears when smiling.",
+          "fr": "Seul « Grübchen » convient : un petit creux qui apparaît en souriant.",
+          "de": "Nur „Grübchen“ passt: eine kleine Vertiefung, die beim Lächeln erscheint."
+        }
+      },
+      "listeningOptionTargetIds": ["gruebchen", "muttermal", "falte", "teint"]
+    },
+    {
+      "id": "muttermal",
+      "term": "Muttermal",
+      "translations": { "en": ["birthmark"], "fr": ["grain de beauté"] },
+      "wordClass": "noun",
+      "genders": ["neuter"],
+      "number": "singular",
+      "teachingForm": "das Muttermal",
+      "examForms": ["das Muttermal"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈmʊtɐˌmaːl/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Neben ihrem Mund sitzt ein kleines Muttermal.",
+        "translation": {
+          "en": "A small birthmark sits next to her mouth.",
+          "fr": "Un petit grain de beauté se trouve à côté de sa bouche."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Das Muttermal is a darker spot on the skin that is there from birth or early childhood.",
+        "fr": "Das Muttermal est une tache plus foncée sur la peau, présente dès la naissance ou la petite enfance.",
+        "de": "Das Muttermal ist ein dunklerer Fleck auf der Haut, der seit der Geburt oder frühen Kindheit da ist."
+      },
+      "genderExplanation": {
+        "en": "Muttermal is neuter, so its article is das.",
+        "fr": "Muttermal est neutre : on dit das Muttermal.",
+        "de": "Muttermal ist sächlich, daher lautet der Artikel das."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Auf ihrer Schulter hat sie seit der Geburt ein kleines braunes ",
+        "after": ", das sie nie stört.",
+        "accepted": { "answers": ["Muttermal"] },
+        "referenceTargetIds": ["muttermal", "narbe", "falte", "gruebchen"],
+        "explanation": {
+          "en": "Only Muttermal fits: a small brown spot present since birth.",
+          "fr": "Seul « Muttermal » convient : une petite tache brune présente depuis la naissance.",
+          "de": "Nur „Muttermal“ passt: ein kleiner brauner Fleck seit der Geburt."
+        }
+      },
+      "listeningOptionTargetIds": ["muttermal", "gruebchen", "narbe", "sommersprossen"]
+    },
+    {
+      "id": "dreitagebart",
+      "term": "Dreitagebart",
+      "translations": { "en": ["stubble"], "fr": ["barbe de trois jours"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "der Dreitagebart",
+      "examForms": ["der Dreitagebart"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈdʁaɪ̯taːɡəˌbaːɐ̯t/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Mit dem Dreitagebart sieht er etwas verwegen aus.",
+        "translation": {
+          "en": "With the stubble he looks a little rakish.",
+          "fr": "Avec sa barbe de trois jours, il a l'air un peu bohème."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Der Dreitagebart is short beard growth after a few days without shaving.",
+        "fr": "Der Dreitagebart est une barbe courte, après quelques jours sans se raser.",
+        "de": "Der Dreitagebart ist der kurze Bartwuchs nach einigen Tagen ohne Rasur."
+      },
+      "genderExplanation": {
+        "en": "Dreitagebart ends in the masculine noun Bart, so its article is der.",
+        "fr": "Dreitagebart se termine par le nom masculin Bart : on dit der Dreitagebart.",
+        "de": "Dreitagebart endet auf das maskuline Nomen Bart, daher lautet der Artikel der."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Er hat sich seit Samstag nicht rasiert und trägt jetzt einen ",
+        "after": ".",
+        "accepted": { "answers": ["Dreitagebart"] },
+        "referenceTargetIds": ["dreitagebart", "teint", "muttermal", "zierlich"],
+        "explanation": {
+          "en": "Only Dreitagebart fits: it comes from not shaving for a few days.",
+          "fr": "Seul « Dreitagebart » convient : il vient de quelques jours sans rasage.",
+          "de": "Nur „Dreitagebart“ passt: Er entsteht, wenn man sich einige Tage nicht rasiert."
+        }
+      },
+      "listeningOptionTargetIds": ["dreitagebart", "teint", "narbe", "falte"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

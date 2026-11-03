@@ -345,7 +345,7 @@ Measured on real runs; `lessons:author` prints these figures at the end of each 
 
 | Level | Way | Model | Vocabulary | Grammar | Functions | Reading |
 |---|---|---|---|---|---|---|
-| de C1 | TODO | | | | | |
+| de C1 | `lessons:author`, 4 at a time | sonnet | 2 min 14 s | 5 min 18 s | 4 min 44 s | 2 min 27 s |
 
 ---
 
