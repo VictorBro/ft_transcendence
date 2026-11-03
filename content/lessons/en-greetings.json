@@ -1,0 +1,1238 @@
+{
+  "schemaVersion": 2,
+  "id": "en-greetings",
+  "lang": "en",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Saying hello and goodbye",
+  "objective": {
+    "en": "Greet people and say goodbye, formally or informally, at any time of day, and ask and answer How are you?",
+    "fr": "Saluer et prendre congé, de façon formelle ou informelle, à toute heure du jour, et demander et dire comment on va.",
+    "de": "Menschen begrüßen und sich verabschieden, förmlich oder locker, zu jeder Tageszeit, und fragen und sagen, wie es geht."
+  },
+  "estimatedMinutes": 17,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:33:08.324Z",
+    "inputHashes": {
+      "outline": "15a3a25e57f0eea74a6b23312b7dfa55bc3e712826b22c4a2bd496c58a8ec0bc",
+      "brief": "45edc44c612e8c66ed668c6ad55201654439525b409df3f597ad4267b259df9a"
+    }
+  },
+  "kind": "functions",
+  "theme": "relations",
+  "steps": [
+    {
+      "id": "flashcards",
+      "stage": "flashcards",
+      "role": "presentation",
+      "label": { "en": "Flashcards", "fr": "Cartes mémoire", "de": "Karteikarten" },
+      "pages": [
+        {
+          "pageId": "cards-expressions",
+          "estimatedDurationS": 84,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Recall each expression, then turn the card to check it.",
+            "fr": "Rappelez-vous chaque expression, puis retournez la carte pour vérifier.",
+            "de": "Erinnere dich an jeden Ausdruck und dreh dann die Karte um."
+          },
+          "items": [
+            {
+              "type": "function_flashcards",
+              "itemId": "cards-expressions",
+              "side": "expressions",
+              "ids": [
+                "good-morning",
+                "hi",
+                "how-are-you",
+                "fine-thanks",
+                "goodbye",
+                "bye",
+                "see-you-later"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue",
+      "stage": "dialogue",
+      "role": "presentation",
+      "label": { "en": "Dialogue", "fr": "Dialogue", "de": "Dialog" },
+      "pages": [
+        {
+          "pageId": "dialogue",
+          "estimatedDurationS": 128,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read and listen. Turn a line to see its translation and a note.",
+            "fr": "Lisez et écoutez. Retournez une réplique pour voir sa traduction et une remarque.",
+            "de": "Lies und hör zu. Dreh eine Zeile um, um Übersetzung und Hinweis zu sehen."
+          },
+          "items": [
+            {
+              "type": "function_dialogue",
+              "itemId": "dialogue",
+              "lines": [
+                {
+                  "lineId": "line-1",
+                  "roleId": "anna",
+                  "text": "Good morning, Tom!",
+                  "translation": { "fr": "Bonjour, Tom !", "de": "Guten Morgen, Tom!" },
+                  "note": {
+                    "en": "A polite greeting before noon.",
+                    "fr": "Une salutation polie avant midi.",
+                    "de": "Eine höfliche Begrüßung vor dem Mittag."
+                  },
+                  "expressionIds": ["good-morning"]
+                },
+                {
+                  "lineId": "line-2",
+                  "roleId": "tom",
+                  "text": "Good morning, Anna. How are you?",
+                  "translation": {
+                    "fr": "Bonjour, Anna. Comment vas-tu ?",
+                    "de": "Guten Morgen, Anna. Wie geht’s dir?"
+                  },
+                  "note": {
+                    "en": "How are you? asks about the other person.",
+                    "fr": "How are you ? demande des nouvelles de l’autre personne.",
+                    "de": "How are you? fragt nach dem Befinden der anderen Person."
+                  },
+                  "expressionIds": ["how-are-you"]
+                },
+                {
+                  "lineId": "line-3",
+                  "roleId": "anna",
+                  "text": "Fine, thanks. And you?",
+                  "translation": {
+                    "fr": "Ça va bien, merci. Et toi ?",
+                    "de": "Gut, danke. Und dir?"
+                  },
+                  "note": {
+                    "en": "Fine, thanks answers the question. And you? asks back.",
+                    "fr": "Fine, thanks répond à la question. And you ? la renvoie.",
+                    "de": "Fine, thanks beantwortet die Frage. And you? fragt zurück."
+                  },
+                  "expressionIds": ["fine-thanks"]
+                },
+                {
+                  "lineId": "line-4",
+                  "roleId": "tom",
+                  "text": "Very well, thank you. Is Ben here?",
+                  "translation": {
+                    "fr": "Très bien, merci. Ben est-il là ?",
+                    "de": "Sehr gut, danke. Ist Ben da?"
+                  },
+                  "note": {
+                    "en": "Very well, thank you is another way to say you are fine.",
+                    "fr": "Very well, thank you est une autre façon de dire que tout va bien.",
+                    "de": "Very well, thank you ist eine andere Art zu sagen, dass es einem gut geht."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-5",
+                  "roleId": "anna",
+                  "text": "Yes, he is. Hi, Ben!",
+                  "translation": {
+                    "fr": "Oui, il est là. Salut, Ben !",
+                    "de": "Ja, er ist da. Hallo, Ben!"
+                  },
+                  "note": {
+                    "en": "Hi is informal: use it with friends.",
+                    "fr": "Hi est familier : on l’utilise avec des amis.",
+                    "de": "Hi ist locker: Man sagt es zu Freunden."
+                  },
+                  "expressionIds": ["hi"]
+                },
+                {
+                  "lineId": "line-6",
+                  "roleId": "tom",
+                  "text": "Hi, Ben! Anna, I must go now.",
+                  "translation": {
+                    "fr": "Salut, Ben ! Anna, je dois partir maintenant.",
+                    "de": "Hallo, Ben! Anna, ich muss jetzt gehen."
+                  },
+                  "note": {
+                    "en": "I must go now explains why you leave.",
+                    "fr": "I must go now explique pourquoi on part.",
+                    "de": "I must go now erklärt, warum man geht."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-7",
+                  "roleId": "anna",
+                  "text": "OK, Tom. See you later!",
+                  "translation": {
+                    "fr": "D’accord, Tom. À tout à l’heure !",
+                    "de": "Okay, Tom. Bis später!"
+                  },
+                  "note": {
+                    "en": "See you later: you will meet again soon.",
+                    "fr": "See you later : on se reverra bientôt.",
+                    "de": "See you later: Man sieht sich bald wieder."
+                  },
+                  "expressionIds": ["see-you-later"]
+                },
+                {
+                  "lineId": "line-8",
+                  "roleId": "tom",
+                  "text": "Goodbye, Anna. Have a nice day!",
+                  "translation": {
+                    "fr": "Au revoir, Anna. Bonne journée !",
+                    "de": "Auf Wiedersehen, Anna. Einen schönen Tag!"
+                  },
+                  "note": {
+                    "en": "Goodbye is a little more formal than Bye.",
+                    "fr": "Goodbye est un peu plus formel que Bye.",
+                    "de": "Goodbye ist etwas förmlicher als Bye."
+                  },
+                  "expressionIds": ["goodbye"]
+                },
+                {
+                  "lineId": "line-9",
+                  "roleId": "anna",
+                  "text": "Thank you. Bye!",
+                  "translation": { "fr": "Merci. Ciao !", "de": "Danke. Tschüss!" },
+                  "note": {
+                    "en": "Bye is short and informal.",
+                    "fr": "Bye est court et familier.",
+                    "de": "Bye ist kurz und locker."
+                  },
+                  "expressionIds": ["bye"]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matching",
+      "stage": "matching",
+      "role": "exercise",
+      "label": { "en": "Matching", "fr": "Association", "de": "Zuordnen" },
+      "pages": [
+        {
+          "pageId": "match-1",
+          "estimatedDurationS": 48,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each expression with its translation.",
+            "fr": "Associez chaque expression à sa traduction.",
+            "de": "Ordne jedem Ausdruck seine Übersetzung zu."
+          },
+          "items": [
+            {
+              "type": "function_matching",
+              "itemId": "match-1",
+              "side": "expressions",
+              "pairs": [
+                {
+                  "id": "good-morning",
+                  "answerExplanation": {
+                    "en": "A polite greeting for the morning.",
+                    "fr": "Une salutation polie pour le matin.",
+                    "de": "Eine höfliche Begrüßung am Morgen."
+                  }
+                },
+                {
+                  "id": "hi",
+                  "answerExplanation": {
+                    "en": "A short, friendly greeting for friends.",
+                    "fr": "Une salutation courte et amicale pour les amis.",
+                    "de": "Eine kurze, freundliche Begrüßung unter Freunden."
+                  }
+                },
+                {
+                  "id": "how-are-you",
+                  "answerExplanation": {
+                    "en": "Asks how someone feels.",
+                    "fr": "Demande comment va quelqu’un.",
+                    "de": "Fragt, wie es jemandem geht."
+                  }
+                },
+                {
+                  "id": "fine-thanks",
+                  "answerExplanation": {
+                    "en": "The usual answer to How are you?",
+                    "fr": "La réponse habituelle à How are you ?",
+                    "de": "Die übliche Antwort auf How are you?"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "pageId": "match-2",
+          "estimatedDurationS": 36,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each expression with its translation.",
+            "fr": "Associez chaque expression à sa traduction.",
+            "de": "Ordne jedem Ausdruck seine Übersetzung zu."
+          },
+          "items": [
+            {
+              "type": "function_matching",
+              "itemId": "match-2",
+              "side": "expressions",
+              "pairs": [
+                {
+                  "id": "goodbye",
+                  "answerExplanation": {
+                    "en": "A polite way to leave.",
+                    "fr": "Une façon polie de partir.",
+                    "de": "Eine höfliche Art, sich zu verabschieden."
+                  }
+                },
+                {
+                  "id": "bye",
+                  "answerExplanation": {
+                    "en": "A short, informal goodbye for friends.",
+                    "fr": "Un au revoir court et familier pour les amis.",
+                    "de": "Ein kurzer, lockerer Abschied unter Freunden."
+                  }
+                },
+                {
+                  "id": "see-you-later",
+                  "answerExplanation": {
+                    "en": "Said when you will meet again soon.",
+                    "fr": "On le dit quand on va bientôt se revoir.",
+                    "de": "Sagt man, wenn man sich bald wiedersieht."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-gaps",
+      "stage": "dialogue_gaps",
+      "role": "exercise",
+      "label": { "en": "Dialogue gaps", "fr": "Dialogue à trous", "de": "Dialoglücken" },
+      "pages": [
+        {
+          "pageId": "gap-1",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-1",
+              "expressionId": "good-morning",
+              "context": { "roleId": "tom", "text": "Hello, Anna! It’s a sunny morning." },
+              "roleId": "anna",
+              "before": "",
+              "after": "",
+              "choiceExpressionIds": ["good-morning", "goodbye", "see-you-later", "fine-thanks"],
+              "answerExplanation": {
+                "en": "In the morning you can say Good morning!",
+                "fr": "Le matin, on peut dire Good morning !",
+                "de": "Am Morgen sagt man Good morning!"
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-2",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-2",
+              "expressionId": "hi",
+              "context": { "roleId": "tom", "text": "Hey, Anna! Come in." },
+              "roleId": "anna",
+              "before": "",
+              "after": "Thanks, Tom.",
+              "choiceExpressionIds": ["hi", "goodbye", "fine-thanks", "see-you-later"],
+              "answerExplanation": {
+                "en": "A friend greets you, so you answer with Hi!",
+                "fr": "Un ami vous salue, vous répondez par Hi !",
+                "de": "Ein Freund begrüßt dich, du antwortest mit Hi!"
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-3",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-3",
+              "expressionId": "how-are-you",
+              "context": { "roleId": "tom", "text": "Hello, Anna!" },
+              "roleId": "anna",
+              "before": "Hello, Tom.",
+              "after": "",
+              "choiceExpressionIds": ["how-are-you", "goodbye", "bye", "see-you-later"],
+              "answerExplanation": {
+                "en": "After a greeting, ask How are you?",
+                "fr": "Après une salutation, on demande How are you ?",
+                "de": "Nach der Begrüßung fragt man How are you?"
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-4",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-4",
+              "expressionId": "fine-thanks",
+              "context": { "roleId": "tom", "text": "How are you, Anna?" },
+              "roleId": "anna",
+              "before": "",
+              "after": "And you?",
+              "choiceExpressionIds": ["fine-thanks", "good-morning", "hi", "goodbye"],
+              "answerExplanation": {
+                "en": "Fine, thanks. answers the question How are you?",
+                "fr": "Fine, thanks. répond à la question How are you ?",
+                "de": "Fine, thanks. beantwortet die Frage How are you?"
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-5",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-5",
+              "expressionId": "goodbye",
+              "context": { "roleId": "anna", "text": "That’s all for today, Tom." },
+              "roleId": "tom",
+              "before": "",
+              "after": "Have a nice day.",
+              "choiceExpressionIds": ["goodbye", "good-morning", "how-are-you", "fine-thanks"],
+              "answerExplanation": {
+                "en": "Anna is leaving, so Tom says Goodbye!",
+                "fr": "Anna part, donc Tom dit Goodbye !",
+                "de": "Anna geht, deshalb sagt Tom Goodbye!"
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-6",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-6",
+              "expressionId": "bye",
+              "context": { "roleId": "anna", "text": "My bus is here, Tom." },
+              "roleId": "tom",
+              "before": "",
+              "after": "See you tomorrow.",
+              "choiceExpressionIds": ["bye", "hi", "how-are-you", "fine-thanks"],
+              "answerExplanation": {
+                "en": "Between friends, a quick Bye! is enough.",
+                "fr": "Entre amis, un simple Bye ! suffit.",
+                "de": "Unter Freunden reicht ein kurzes Bye!"
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-7",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-7",
+              "expressionId": "see-you-later",
+              "context": { "roleId": "anna", "text": "I have a class now." },
+              "roleId": "tom",
+              "before": "OK.",
+              "after": "",
+              "choiceExpressionIds": [
+                "see-you-later",
+                "good-morning",
+                "how-are-you",
+                "fine-thanks"
+              ],
+              "answerExplanation": {
+                "en": "You will meet again soon, so say See you later!",
+                "fr": "Vous allez vous revoir bientôt, alors on dit See you later !",
+                "de": "Ihr seht euch bald wieder, also sagt man See you later!"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "word-order",
+      "stage": "word_order",
+      "role": "exercise",
+      "label": { "en": "Word order", "fr": "Ordre des mots", "de": "Wortstellung" },
+      "pages": [
+        {
+          "pageId": "order-1",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-1",
+              "expressionId": "good-morning",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Good" },
+                { "tokenId": "t2", "text": "morning," },
+                { "tokenId": "t3", "text": "Anna!" }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3"]],
+              "answerExplanation": {
+                "en": "Good morning comes first, then the name.",
+                "fr": "Good morning vient d’abord, puis le prénom.",
+                "de": "Zuerst Good morning, dann der Name."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-2",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-2",
+              "expressionId": "hi",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Hi," },
+                { "tokenId": "t2", "text": "Tom!" },
+                { "tokenId": "t3", "text": "Come" },
+                { "tokenId": "t4", "text": "in." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4"]],
+              "answerExplanation": {
+                "en": "The greeting comes first, then the invitation.",
+                "fr": "La salutation vient d’abord, puis l’invitation.",
+                "de": "Zuerst die Begrüßung, dann die Einladung."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-3",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-3",
+              "expressionId": "how-are-you",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Hello," },
+                { "tokenId": "t2", "text": "Anna." },
+                { "tokenId": "t3", "text": "How" },
+                { "tokenId": "t4", "text": "are" },
+                { "tokenId": "t5", "text": "you?" }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5"]],
+              "answerExplanation": {
+                "en": "Greet first, then ask How are you?",
+                "fr": "On salue d’abord, puis on demande How are you ?",
+                "de": "Erst grüßen, dann How are you? fragen."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-4",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-4",
+              "expressionId": "fine-thanks",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "I’m" },
+                { "tokenId": "t2", "text": "fine," },
+                { "tokenId": "t3", "text": "thanks." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3"]],
+              "answerExplanation": {
+                "en": "I’m fine, then thanks.",
+                "fr": "I’m fine, puis thanks.",
+                "de": "Zuerst I’m fine, dann thanks."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-5",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-5",
+              "expressionId": "goodbye",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Goodbye," },
+                { "tokenId": "t2", "text": "Mr" },
+                { "tokenId": "t3", "text": "Green." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3"]],
+              "answerExplanation": {
+                "en": "Goodbye comes first, then the person’s name.",
+                "fr": "Goodbye vient d’abord, puis le nom de la personne.",
+                "de": "Zuerst Goodbye, dann der Name der Person."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-6",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-6",
+              "expressionId": "bye",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Bye," },
+                { "tokenId": "t2", "text": "Anna!" },
+                { "tokenId": "t3", "text": "See" },
+                { "tokenId": "t4", "text": "you" },
+                { "tokenId": "t5", "text": "tomorrow." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5"]],
+              "answerExplanation": {
+                "en": "Say Bye first, then when you will meet again.",
+                "fr": "On dit Bye d’abord, puis quand on se reverra.",
+                "de": "Zuerst Bye, dann, wann man sich wiedersieht."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-7",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-7",
+              "expressionId": "see-you-later",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "See" },
+                { "tokenId": "t2", "text": "you" },
+                { "tokenId": "t3", "text": "later," },
+                { "tokenId": "t4", "text": "Tom!" }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4"]],
+              "answerExplanation": {
+                "en": "See you later, then the name.",
+                "fr": "See you later, puis le prénom.",
+                "de": "Zuerst See you later, dann der Name."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "listening",
+      "stage": "listening",
+      "role": "exercise",
+      "label": { "en": "Listening", "fr": "Écoute", "de": "Hören" },
+      "pages": [
+        {
+          "pageId": "listening-1",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-1",
+              "expressionId": "good-morning",
+              "context": { "roleId": "tom", "text": "Hello, Anna! It’s seven o’clock." },
+              "roleId": "anna",
+              "options": [
+                { "optionId": "o1", "text": "Good morning, Tom!" },
+                { "optionId": "o2", "text": "Goodbye, Tom!" },
+                { "optionId": "o3", "text": "Fine, thanks." },
+                { "optionId": "o4", "text": "See you later!" }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "It is morning, so Anna says Good morning.",
+                "fr": "C’est le matin, donc Anna dit Good morning.",
+                "de": "Es ist Morgen, deshalb sagt Anna Good morning."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-2",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-2",
+              "expressionId": "hi",
+              "context": { "roleId": "tom", "text": "Hey, Anna!" },
+              "roleId": "anna",
+              "options": [
+                { "optionId": "o1", "text": "Hi, Tom!" },
+                { "optionId": "o2", "text": "Goodbye, Tom!" },
+                { "optionId": "o3", "text": "Fine, thanks." },
+                { "optionId": "o4", "text": "See you later!" }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "A friend greets you, so you greet back with Hi.",
+                "fr": "Un ami vous salue, vous répondez par Hi.",
+                "de": "Ein Freund begrüßt dich, du grüßt mit Hi zurück."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-3",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-3",
+              "expressionId": "how-are-you",
+              "context": { "roleId": "anna", "text": "Hello, Tom." },
+              "roleId": "tom",
+              "options": [
+                { "optionId": "o1", "text": "Hello, Anna. How are you?" },
+                { "optionId": "o2", "text": "Fine, thanks." },
+                { "optionId": "o3", "text": "Goodbye, Anna." },
+                { "optionId": "o4", "text": "See you later." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "Tom greets Anna and asks how she is.",
+                "fr": "Tom salue Anna et lui demande comment elle va.",
+                "de": "Tom begrüßt Anna und fragt, wie es ihr geht."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-4",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-4",
+              "expressionId": "fine-thanks",
+              "context": { "roleId": "tom", "text": "How are you, Anna?" },
+              "roleId": "anna",
+              "options": [
+                { "optionId": "o1", "text": "Fine, thanks. And you?" },
+                { "optionId": "o2", "text": "Goodbye!" },
+                { "optionId": "o3", "text": "Good morning!" },
+                { "optionId": "o4", "text": "See you later!" }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "She answers the question and asks back.",
+                "fr": "Elle répond à la question et la renvoie.",
+                "de": "Sie beantwortet die Frage und fragt zurück."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-5",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-5",
+              "expressionId": "goodbye",
+              "context": { "roleId": "anna", "text": "That’s all for today." },
+              "roleId": "tom",
+              "options": [
+                { "optionId": "o1", "text": "Goodbye, Anna. Have a nice day." },
+                { "optionId": "o2", "text": "Good morning, Anna." },
+                { "optionId": "o3", "text": "Fine, thanks." },
+                { "optionId": "o4", "text": "How are you?" }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "The work is over, so Tom says goodbye.",
+                "fr": "Le travail est fini, donc Tom dit au revoir.",
+                "de": "Die Arbeit ist zu Ende, deshalb verabschiedet sich Tom."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-6",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-6",
+              "expressionId": "bye",
+              "context": { "roleId": "anna", "text": "My bus is here, Tom." },
+              "roleId": "tom",
+              "options": [
+                { "optionId": "o1", "text": "Bye, Anna!" },
+                { "optionId": "o2", "text": "Good morning, Anna!" },
+                { "optionId": "o3", "text": "Fine, thanks." },
+                { "optionId": "o4", "text": "How are you?" }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "Anna is leaving, so Tom says Bye.",
+                "fr": "Anna part, donc Tom dit Bye.",
+                "de": "Anna geht, deshalb sagt Tom Bye."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-7",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-7",
+              "expressionId": "see-you-later",
+              "context": { "roleId": "anna", "text": "I have a class now." },
+              "roleId": "tom",
+              "options": [
+                { "optionId": "o1", "text": "OK, see you later!" },
+                { "optionId": "o2", "text": "Hi, Anna!" },
+                { "optionId": "o3", "text": "Fine, thanks." },
+                { "optionId": "o4", "text": "Good morning!" }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "They will meet again soon, so Tom says see you later.",
+                "fr": "Ils se reverront bientôt, donc Tom dit see you later.",
+                "de": "Sie sehen sich bald wieder, deshalb sagt Tom see you later."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "stage": "exam",
+      "role": "exam",
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam-replies",
+          "estimatedDurationS": 120,
+          "timeLimitS": 180,
+          "instructions": {
+            "en": "Build the answer. Not every word fits.",
+            "fr": "Construisez la réponse. Tous les mots ne servent pas.",
+            "de": "Bilde die Antwort. Nicht jedes Wort passt."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "reply-1",
+              "expressionId": "good-morning",
+              "context": {
+                "roleId": "tom",
+                "text": "It’s nine o’clock in the morning. Welcome, Anna. Here is the team."
+              },
+              "roleId": "anna",
+              "tokens": [
+                { "tokenId": "t1", "text": "Good" },
+                { "tokenId": "t2", "text": "morning," },
+                { "tokenId": "t3", "text": "everyone!" },
+                { "tokenId": "t4", "text": "evening" }
+              ],
+              "distractorTokenIds": ["t4"],
+              "acceptedOrders": [["t1", "t2", "t3"]],
+              "answerExplanation": {
+                "en": "In the morning we say Good morning, not evening.",
+                "fr": "Le matin, on dit Good morning, pas evening.",
+                "de": "Am Morgen sagt man Good morning, nicht evening."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-2",
+              "expressionId": "how-are-you",
+              "context": { "roleId": "anna", "text": "Hi, Tom!" },
+              "roleId": "tom",
+              "tokens": [
+                { "tokenId": "t1", "text": "Hi," },
+                { "tokenId": "t2", "text": "Anna!" },
+                { "tokenId": "t3", "text": "How" },
+                { "tokenId": "t4", "text": "are" },
+                { "tokenId": "t5", "text": "you" },
+                { "tokenId": "t6", "text": "today?" },
+                { "tokenId": "t7", "text": "is" }
+              ],
+              "distractorTokenIds": ["t7"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]],
+              "answerExplanation": {
+                "en": "With you the verb is are: How are you?",
+                "fr": "Avec you, le verbe est are : How are you ?",
+                "de": "Mit you heißt das Verb are: How are you?"
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-3",
+              "expressionId": "goodbye",
+              "context": { "roleId": "anna", "text": "It’s five o’clock. I must go." },
+              "roleId": "tom",
+              "tokens": [
+                { "tokenId": "t1", "text": "Goodbye," },
+                { "tokenId": "t2", "text": "Anna." },
+                { "tokenId": "t3", "text": "Have" },
+                { "tokenId": "t4", "text": "a" },
+                { "tokenId": "t5", "text": "good" },
+                { "tokenId": "t6", "text": "evening." },
+                { "tokenId": "t7", "text": "Hello" }
+              ],
+              "distractorTokenIds": ["t7"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]],
+              "answerExplanation": {
+                "en": "When someone leaves, say Goodbye, not Hello.",
+                "fr": "Quand quelqu’un part, on dit Goodbye, pas Hello.",
+                "de": "Wenn jemand geht, sagt man Goodbye, nicht Hello."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-4",
+              "expressionId": "see-you-later",
+              "context": { "roleId": "tom", "text": "I’m going to lunch now." },
+              "roleId": "anna",
+              "tokens": [
+                { "tokenId": "t1", "text": "OK," },
+                { "tokenId": "t2", "text": "see" },
+                { "tokenId": "t3", "text": "you" },
+                { "tokenId": "t4", "text": "later," },
+                { "tokenId": "t5", "text": "Tom!" },
+                { "tokenId": "t6", "text": "sees" }
+              ],
+              "distractorTokenIds": ["t6"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5"]],
+              "answerExplanation": {
+                "en": "See you later: the verb stays see with you.",
+                "fr": "See you later : le verbe reste see avec you.",
+                "de": "See you later: Das Verb bleibt see mit you."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "exam-dialogue",
+          "estimatedDurationS": 140,
+          "timeLimitS": 210,
+          "instructions": {
+            "en": "Fill each gap with an expression from this lesson.",
+            "fr": "Complétez chaque trou avec une expression de la leçon.",
+            "de": "Fülle jede Lücke mit einem Ausdruck aus dieser Lektion."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_typing",
+              "itemId": "exam-dialogue",
+              "lines": [
+                {
+                  "lineId": "exam-line-1",
+                  "roleId": "tom",
+                  "before": "Anna! Over here!",
+                  "translation": { "fr": "Anna ! Par ici !", "de": "Anna! Hier drüben!" },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-2",
+                  "roleId": "anna",
+                  "before": "Oh, Tom!",
+                  "translation": { "fr": "Oh, Tom ! Salut !", "de": "Oh, Tom! Hallo!" },
+                  "gap": {
+                    "gapId": "gap-1",
+                    "expressionId": "hi",
+                    "accepted": { "answers": ["Hi", "Hi!"] },
+                    "answerExplanation": {
+                      "en": "A friendly greeting between friends: Hi!",
+                      "fr": "Une salutation amicale entre amis : Hi !",
+                      "de": "Eine freundliche Begrüßung unter Freunden: Hi!"
+                    }
+                  },
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-3",
+                  "roleId": "tom",
+                  "before": "Sit down, Anna. How are you?",
+                  "translation": {
+                    "fr": "Assieds-toi, Anna. Comment vas-tu ?",
+                    "de": "Setz dich, Anna. Wie geht’s dir?"
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-4",
+                  "roleId": "anna",
+                  "before": "",
+                  "translation": {
+                    "fr": "Ça va bien, merci. Et comment va ton frère ?",
+                    "de": "Gut, danke. Und wie geht es deinem Bruder?"
+                  },
+                  "gap": {
+                    "gapId": "gap-2",
+                    "expressionId": "fine-thanks",
+                    "accepted": {
+                      "answers": [
+                        "Fine, thanks.",
+                        "Fine, thanks",
+                        "I’m fine, thanks.",
+                        "I’m fine, thanks"
+                      ]
+                    },
+                    "answerExplanation": {
+                      "en": "She answers How are you? with Fine, thanks.",
+                      "fr": "Elle répond à How are you ? par Fine, thanks.",
+                      "de": "Sie antwortet auf How are you? mit Fine, thanks."
+                    }
+                  },
+                  "after": "And how is your brother?"
+                },
+                {
+                  "lineId": "exam-line-5",
+                  "roleId": "tom",
+                  "before": "He’s fine too. He’s at work today.",
+                  "translation": {
+                    "fr": "Il va bien aussi. Il est au travail aujourd’hui.",
+                    "de": "Ihm geht es auch gut. Er ist heute bei der Arbeit."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-6",
+                  "roleId": "anna",
+                  "before": "Oh, it’s late. My bus is coming.",
+                  "translation": {
+                    "fr": "Oh, il est tard. Mon bus arrive.",
+                    "de": "Oh, es ist spät. Mein Bus kommt."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-7",
+                  "roleId": "tom",
+                  "before": "No problem.",
+                  "translation": {
+                    "fr": "Pas de problème.",
+                    "de": "Kein Problem."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-8",
+                  "roleId": "anna",
+                  "before": "OK, Tom.",
+                  "translation": { "fr": "D’accord, Tom. Salut !", "de": "Okay, Tom. Tschüss!" },
+                  "gap": {
+                    "gapId": "gap-3",
+                    "expressionId": "bye",
+                    "accepted": { "answers": ["Bye", "Bye!", "Goodbye", "Goodbye!"] },
+                    "answerExplanation": {
+                      "en": "A short, informal goodbye: Bye!",
+                      "fr": "Un au revoir court et familier : Bye !",
+                      "de": "Ein kurzer, lockerer Abschied: Bye!"
+                    }
+                  },
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-9",
+                  "roleId": "tom",
+                  "before": "Bye, Anna! Have a nice evening.",
+                  "translation": {
+                    "fr": "Salut, Anna ! Bonne soirée.",
+                    "de": "Tschüss, Anna! Einen schönen Abend."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-10",
+                  "roleId": "anna",
+                  "before": "You too, Tom!",
+                  "translation": { "fr": "Toi aussi, Tom !", "de": "Dir auch, Tom!" },
+                  "gap": null,
+                  "after": ""
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

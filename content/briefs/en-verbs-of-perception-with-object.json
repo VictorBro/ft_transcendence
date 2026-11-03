@@ -1,0 +1,244 @@
+{
+  "schemaVersion": 2,
+  "id": "en-verbs-of-perception-with-object",
+  "lang": "en",
+  "level": "B2",
+  "locales": ["en", "fr", "de"],
+  "title": "Verbs of perception: I saw him leave, I heard her singing",
+  "objective": {
+    "en": "Say what you saw, heard or noticed with a perception verb + object + -ing for an action in progress, or + base form for a whole action: I heard someone shouting. I saw him wink.",
+    "fr": "Dire ce que vous avez vu, entendu ou remarqué avec un verbe de perception + objet + -ing pour une action en cours, ou + forme de base pour une action entière : I saw him wink.",
+    "de": "Sagen, was man gesehen, gehört oder bemerkt hat: Wahrnehmungsverb + Objekt + -ing für eine laufende Handlung oder + Grundform für eine ganze Handlung: I heard someone shouting."
+  },
+  "estimatedMinutes": 19,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:50:47.771Z",
+    "inputHashes": { "outline": "05a4f9abb83fb348f4a6fb05dfcb948412cb19f539d1df83068e2add130d934e" }
+  },
+  "kind": "grammar",
+  "topic": "verb_usage",
+  "scopeBoundaries": {
+    "en": "Covers see, hear, watch, notice and feel + object + -ing or base form. Excludes passive forms (He was seen to leave) and clauses with that.",
+    "fr": "Couvre see, hear, watch, notice et feel + objet + -ing ou forme de base. Exclut le passif (He was seen to leave) et les propositions avec that.",
+    "de": "Behandelt see, hear, watch, notice und feel + Objekt + -ing oder Grundform. Ausgeschlossen sind das Passiv (He was seen to leave) und that-Sätze."
+  },
+  "prerequisites": [
+    {
+      "en": "Present and past simple, object pronouns (me, him, her, us, them) and the -ing form.",
+      "fr": "Présent et prétérit simples, pronoms compléments (me, him, her, us, them) et forme en -ing.",
+      "de": "Present und Past Simple, Objektpronomen (me, him, her, us, them) und die -ing-Form."
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-ing",
+      "summary": {
+        "en": "Perception verb + object + -ing shows an action in progress or part of an action.",
+        "fr": "Verbe de perception + objet + -ing montre une action en cours ou une partie d’action.",
+        "de": "Wahrnehmungsverb + Objekt + -ing zeigt eine laufende Handlung oder einen Teil davon."
+      }
+    },
+    {
+      "id": "rule-base",
+      "summary": {
+        "en": "Perception verb + object + base form (no to) shows a whole, completed action.",
+        "fr": "Verbe de perception + objet + forme de base (sans to) montre une action entière et terminée.",
+        "de": "Wahrnehmungsverb + Objekt + Grundform (ohne to) zeigt eine ganze, abgeschlossene Handlung."
+      }
+    },
+    {
+      "id": "rule-contrast",
+      "summary": {
+        "en": "Choose between the -ing form and the base form according to the meaning: part of an action or the whole of it.",
+        "fr": "Choisir entre la forme en -ing et la forme de base selon le sens : une partie de l’action ou l’action entière.",
+        "de": "Zwischen -ing-Form und Grundform nach der Bedeutung wählen: Teil der Handlung oder ganze Handlung."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-ing",
+      "title": {
+        "en": "Object + -ing: an action in progress",
+        "fr": "Objet + -ing : une action en cours",
+        "de": "Objekt + -ing: eine laufende Handlung"
+      },
+      "ruleIds": ["rule-ing"],
+      "explanationPlan": {
+        "en": "Show see, hear, watch, notice and feel + object + -ing for an action in progress. Stress object pronouns (him, not he).",
+        "fr": "Montrer see, hear, watch, notice et feel + objet + -ing pour une action en cours. Insister sur les pronoms compléments (him, pas he).",
+        "de": "see, hear, watch, notice und feel + Objekt + -ing für eine laufende Handlung zeigen. Objektpronomen betonen (him, nicht he)."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "I heard someone shouting.",
+          "translation": {
+            "fr": "J’ai entendu quelqu’un crier.",
+            "de": "Ich habe jemanden schreien gehört."
+          }
+        },
+        {
+          "text": "I saw her crossing the road.",
+          "translation": {
+            "fr": "Je l’ai vue traverser la rue.",
+            "de": "Ich habe sie die Straße überqueren sehen."
+          }
+        },
+        {
+          "text": "She noticed a man following her.",
+          "translation": {
+            "fr": "Elle a remarqué qu’un homme la suivait.",
+            "de": "Sie bemerkte, dass ein Mann ihr folgte."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Use an object pronoun, not a subject pronoun: I saw him, not I saw he.",
+          "fr": "Utilisez un pronom complément, pas un pronom sujet : I saw him, pas I saw he.",
+          "de": "Benutze ein Objektpronomen, kein Subjektpronomen: I saw him, nicht I saw he."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-ing-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-ing"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-ing-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-ing"],
+          "estimatedDurationS": 100
+        },
+        {
+          "id": "ex-ing-order",
+          "type": "grammar_word_order",
+          "itemCount": 4,
+          "ruleIds": ["rule-ing"],
+          "estimatedDurationS": 120
+        }
+      ]
+    },
+    {
+      "id": "block-base",
+      "title": {
+        "en": "Object + base form: a whole action",
+        "fr": "Objet + forme de base : une action entière",
+        "de": "Objekt + Grundform: eine ganze Handlung"
+      },
+      "ruleIds": ["rule-base", "rule-contrast"],
+      "explanationPlan": {
+        "en": "Teach the base form without to for a whole action, then contrast I heard her sing with I heard her singing.",
+        "fr": "Enseigner la forme de base sans to pour une action entière, puis opposer I heard her sing et I heard her singing.",
+        "de": "Die Grundform ohne to für eine ganze Handlung vermitteln, dann I heard her sing und I heard her singing gegenüberstellen."
+      },
+      "explanationDurationS": 150,
+      "examples": [
+        {
+          "text": "I saw him wink.",
+          "translation": {
+            "fr": "Je l’ai vu faire un clin d’œil.",
+            "de": "Ich habe ihn zwinkern sehen."
+          }
+        },
+        {
+          "text": "We heard her sing the whole song.",
+          "translation": {
+            "fr": "Nous l’avons entendue chanter toute la chanson.",
+            "de": "Wir haben sie das ganze Lied singen hören."
+          }
+        },
+        {
+          "text": "I felt something touch my arm.",
+          "translation": {
+            "fr": "J’ai senti quelque chose toucher mon bras.",
+            "de": "Ich habe gespürt, wie etwas meinen Arm berührte."
+          }
+        },
+        {
+          "text": "I heard her singing in the kitchen.",
+          "translation": {
+            "fr": "Je l’ai entendue chanter dans la cuisine.",
+            "de": "Ich habe sie in der Küche singen hören."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not put to after the object: I saw him leave, not I saw him to leave.",
+          "fr": "Ne mettez pas to après le complément : I saw him leave, pas I saw him to leave.",
+          "de": "Setze nach dem Objekt kein to: I saw him leave, nicht I saw him to leave."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-base-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-base"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-contrast-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-contrast"],
+          "estimatedDurationS": 70
+        },
+        {
+          "id": "ex-base-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-base"],
+          "estimatedDurationS": 100
+        },
+        {
+          "id": "ex-base-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 4,
+          "ruleIds": ["rule-base"],
+          "estimatedDurationS": 120
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-ing",
+        "type": "grammar_gap_typing",
+        "itemCount": 3,
+        "ruleIds": ["rule-ing"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      },
+      {
+        "pageId": "exam-base",
+        "type": "grammar_gap_typing",
+        "itemCount": 3,
+        "ruleIds": ["rule-base", "rule-contrast"],
+        "estimatedDurationS": 75,
+        "timeLimitS": 120
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 4,
+        "ruleIds": ["rule-ing", "rule-base", "rule-contrast"],
+        "estimatedDurationS": 100,
+        "timeLimitS": 150
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

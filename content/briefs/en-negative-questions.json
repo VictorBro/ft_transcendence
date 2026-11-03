@@ -1,0 +1,242 @@
+{
+  "schemaVersion": 2,
+  "id": "en-negative-questions",
+  "lang": "en",
+  "level": "B2",
+  "locales": ["en", "fr", "de"],
+  "title": "Negative questions: Isn't it lovely?",
+  "objective": {
+    "en": "Use negative questions to check what you believe, show surprise or invite agreement, and answer them correctly with yes or no.",
+    "fr": "Utiliser les questions négatives pour vérifier une croyance, montrer sa surprise ou inviter à approuver, et y répondre correctement par yes ou no.",
+    "de": "Verneinte Fragen nutzen, um eine Annahme zu prüfen, Überraschung zu zeigen oder Zustimmung einzuladen, und sie mit yes oder no richtig beantworten."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:50:36.437Z",
+    "inputHashes": { "outline": "15de94cb4b32aa4ea95056385fa88d4b4485d1589781914234a7ef4e4b040eb6" }
+  },
+  "kind": "grammar",
+  "topic": "syntax_and_sentence_structure",
+  "scopeBoundaries": {
+    "en": "Covers negative questions with contracted auxiliaries (Isn't it...? Don't you...? Why didn't you...?), their meanings and short answers. Excludes negative tag questions, indirect questions and formal Is it not...? beyond a mention.",
+    "fr": "Couvre les questions négatives avec auxiliaire contracté (Isn't it...? Don't you...? Why didn't you...?), leurs sens et les réponses courtes. Exclut les tags négatifs, les questions indirectes et la forme soutenue Is it not...? au-delà d'une mention.",
+    "de": "Behandelt verneinte Fragen mit verkürztem Hilfsverb (Isn't it...? Don't you...? Why didn't you...?), ihre Bedeutungen und Kurzantworten. Ausgeschlossen sind verneinte Question Tags, indirekte Fragen und die förmliche Form Is it not...? über eine Erwähnung hinaus."
+  },
+  "prerequisites": [
+    {
+      "en": "Questions with be and short answers",
+      "fr": "Les questions avec be et les réponses courtes",
+      "de": "Fragen mit be und Kurzantworten"
+    },
+    {
+      "en": "Auxiliary verbs do, have and be in simple tenses",
+      "fr": "Les auxiliaires do, have et be aux temps simples",
+      "de": "Die Hilfsverben do, have und be in einfachen Zeiten"
+    }
+  ],
+  "rules": [
+    {
+      "id": "r-form",
+      "summary": {
+        "en": "A negative question puts the auxiliary + n't before the subject: Isn't it lovely? Why didn't you tell me?",
+        "fr": "Une question négative place l'auxiliaire + n't avant le sujet : Isn't it lovely? Why didn't you tell me?",
+        "de": "Eine verneinte Frage stellt das Hilfsverb + n't vor das Subjekt: Isn't it lovely? Why didn't you tell me?"
+      }
+    },
+    {
+      "id": "r-use",
+      "summary": {
+        "en": "Negative questions check a belief, show surprise, invite agreement, or complain and suggest.",
+        "fr": "Les questions négatives vérifient une croyance, montrent la surprise, invitent à approuver, ou servent à se plaindre et à suggérer.",
+        "de": "Verneinte Fragen prüfen eine Annahme, zeigen Überraschung, laden zur Zustimmung ein oder dienen für Beschwerde und Vorschlag."
+      }
+    },
+    {
+      "id": "r-answer",
+      "summary": {
+        "en": "Answer with the facts: yes + positive, no + negative. Don't you like it? Yes, I do. / No, I don't.",
+        "fr": "Répondez avec les faits : yes + positif, no + négatif. Don't you like it? Yes, I do. / No, I don't.",
+        "de": "Antworte mit den Tatsachen: yes + positiv, no + negativ. Don't you like it? Yes, I do. / No, I don't."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-form",
+      "title": {
+        "en": "Forming negative questions",
+        "fr": "Former les questions négatives",
+        "de": "Verneinte Fragen bilden"
+      },
+      "ruleIds": ["r-form"],
+      "explanationPlan": {
+        "en": "Show that the auxiliary joined to n't comes before the subject, with be, have, do and modals. Add a question word in front. Mention the formal Is it not...? and the need for do when there is no other auxiliary.",
+        "fr": "Montrer que l'auxiliaire uni à n't précède le sujet, avec be, have, do et les modaux. Ajouter un mot interrogatif devant. Mentionner la forme soutenue Is it not...? et le besoin de do sans autre auxiliaire.",
+        "de": "Zeigen, dass das mit n't verbundene Hilfsverb vor dem Subjekt steht, bei be, have, do und Modalverben. Ein Fragewort kommt davor. Die förmliche Form Is it not...? und die Notwendigkeit von do ohne anderes Hilfsverb erwähnen."
+      },
+      "explanationDurationS": 90,
+      "examples": [
+        {
+          "text": "Isn't it a lovely day?",
+          "translation": { "fr": "Il fait beau, non ?", "de": "Ist das nicht ein schöner Tag?" }
+        },
+        {
+          "text": "Why didn't you wait for me?",
+          "translation": {
+            "fr": "Pourquoi ne m'as-tu pas attendu ?",
+            "de": "Warum hast du nicht auf mich gewartet?"
+          }
+        },
+        {
+          "text": "Haven't you met my brother?",
+          "translation": {
+            "fr": "Tu n'as pas encore rencontré mon frère ?",
+            "de": "Hast du meinen Bruder noch nicht kennengelernt?"
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not put the subject first: Why you didn't tell me? is wrong.",
+          "fr": "Ne mettez pas le sujet en premier : Why you didn't tell me? est faux.",
+          "de": "Stelle das Subjekt nicht an den Anfang: Why you didn't tell me? ist falsch."
+        },
+        {
+          "en": "After didn't, doesn't or don't the main verb stays in the base form.",
+          "fr": "Après didn't, doesn't ou don't, le verbe principal reste à la forme de base.",
+          "de": "Nach didn't, doesn't oder don't bleibt das Hauptverb in der Grundform."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-form-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["r-form"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-form-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["r-form"],
+          "estimatedDurationS": 80
+        },
+        {
+          "id": "ex-form-order",
+          "type": "grammar_word_order",
+          "itemCount": 4,
+          "ruleIds": ["r-form"],
+          "estimatedDurationS": 100
+        }
+      ]
+    },
+    {
+      "id": "block-use",
+      "title": {
+        "en": "Meaning and short answers",
+        "fr": "Sens et réponses courtes",
+        "de": "Bedeutung und Kurzantworten"
+      },
+      "ruleIds": ["r-use", "r-answer", "r-form"],
+      "explanationPlan": {
+        "en": "Explain the four uses: checking a belief, surprise, inviting agreement, complaint or suggestion. Then teach answering: ignore n't, yes goes with a positive fact, no with a negative one, and add a short answer to avoid doubt.",
+        "fr": "Expliquer les quatre emplois : vérifier une croyance, surprise, inviter à approuver, plainte ou suggestion. Puis enseigner la réponse : ignorer n't, yes va avec un fait positif, no avec un fait négatif, et ajouter une réponse courte pour éviter le doute.",
+        "de": "Die vier Verwendungen erklären: Annahme prüfen, Überraschung, Zustimmung einladen, Beschwerde oder Vorschlag. Dann das Antworten: n't ignorieren, yes passt zu einer positiven Tatsache, no zu einer negativen, und eine Kurzantwort verhindert Zweifel."
+      },
+      "explanationDurationS": 110,
+      "examples": [
+        {
+          "text": "Aren't you cold without a jacket?",
+          "translation": {
+            "fr": "Tu n'as pas froid sans veste ?",
+            "de": "Ist dir ohne Jacke nicht kalt?"
+          }
+        },
+        {
+          "text": "Haven't you started packing yet?",
+          "translation": {
+            "fr": "Tu n'as pas encore commencé à faire tes valises ?",
+            "de": "Hast du noch nicht angefangen zu packen?"
+          }
+        },
+        {
+          "text": "Why don't we try the new café?",
+          "translation": {
+            "fr": "Pourquoi ne pas essayer le nouveau café ?",
+            "de": "Warum probieren wir nicht das neue Café aus?"
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Yes and no follow the fact, not the question: No, I don't means I do not.",
+          "fr": "Yes et no suivent le fait, pas la question : No, I don't signifie que je ne le fais pas.",
+          "de": "Yes und no folgen der Tatsache, nicht der Frage: No, I don't heißt, ich tue es nicht."
+        },
+        {
+          "en": "A negative question is not always a real negative: Why don't we go? is a suggestion.",
+          "fr": "Une question négative n'est pas toujours vraiment négative : Why don't we go? est une suggestion.",
+          "de": "Eine verneinte Frage ist nicht immer wirklich negativ: Why don't we go? ist ein Vorschlag."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-use-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["r-use", "r-answer"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-use-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["r-use", "r-answer"],
+          "estimatedDurationS": 80
+        },
+        {
+          "id": "ex-use-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 4,
+          "ruleIds": ["r-form", "r-answer"],
+          "estimatedDurationS": 100
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-forms",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["r-form", "r-use"],
+        "estimatedDurationS": 100,
+        "timeLimitS": 160
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["r-form", "r-use"],
+        "estimatedDurationS": 90,
+        "timeLimitS": 150
+      },
+      {
+        "pageId": "exam-answers",
+        "type": "grammar_gap_typing",
+        "itemCount": 3,
+        "ruleIds": ["r-answer"],
+        "estimatedDurationS": 75,
+        "timeLimitS": 120
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

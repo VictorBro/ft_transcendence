@@ -1,0 +1,604 @@
+{
+  "schemaVersion": 2,
+  "id": "en-compound-adjectives-for-people",
+  "lang": "en",
+  "level": "B2",
+  "locales": ["en", "fr", "de"],
+  "title": "Compound adjectives for people",
+  "objective": {
+    "en": "Describe people with twelve compound adjectives and see how they are built.",
+    "fr": "Décrire des personnes avec douze adjectifs composés et comprendre leur formation.",
+    "de": "Personen mit zwölf zusammengesetzten Adjektiven beschreiben und ihren Aufbau verstehen."
+  },
+  "estimatedMinutes": 19,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:48:42.257Z",
+    "inputHashes": { "outline": "8d82a3077eb3770b016207a2f5ba68934255ea9ea5806805f9993249b4fd929c" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Twelve compound adjectives for appearance, manner and character, built as adjective, adverb or noun + participle, with a few opposites.",
+    "fr": "Douze adjectifs composés pour l'apparence, l'attitude et le caractère, formés d'un adjectif, d'un adverbe ou d'un nom + participe, avec quelques contraires.",
+    "de": "Zwölf zusammengesetzte Adjektive für Aussehen, Auftreten und Charakter, gebildet aus Adjektiv, Adverb oder Nomen + Partizip, mit einigen Gegensätzen."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve words fit two groups of six and match the outline's target of about twelve.",
+    "fr": "Douze mots forment deux groupes de six et correspondent à l'objectif d'environ douze du plan.",
+    "de": "Zwölf Wörter ergeben zwei Sechsergruppen und entsprechen dem Ziel der Gliederung von etwa zwölf."
+  },
+  "difficultyBalance": {
+    "en": "Most words are core B2 vocabulary; the more subtle ones (big-headed, narrow-minded, absent-minded) are demanding.",
+    "fr": "La plupart des mots sont du vocabulaire B2 de base ; les plus nuancés (big-headed, narrow-minded, absent-minded) sont plus difficiles.",
+    "de": "Die meisten Wörter sind B2-Grundwortschatz; die feineren (big-headed, narrow-minded, absent-minded) sind anspruchsvoller."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "look-manner",
+      "label": {
+        "en": "Looks and manner",
+        "fr": "Apparence et attitude",
+        "de": "Aussehen und Auftreten"
+      },
+      "targetIds": [
+        "good-looking",
+        "well-dressed",
+        "middle-aged",
+        "self-confident",
+        "laid-back",
+        "big-headed"
+      ],
+      "introduction": {
+        "en": "Many compound adjectives are built from **two words joined by a hyphen**, often an adjective, an adverb or a noun + a participle or an -ed form.\n\n- `good-looking`\n- `well-dressed`\n- `middle-aged`\n- `self-confident`\n- `laid-back`\n- `big-headed`\n\nBefore a noun, keep the hyphen: `a well-dressed man`.",
+        "fr": "De nombreux adjectifs composés sont formés de **deux mots reliés par un trait d'union**, souvent un adjectif, un adverbe ou un nom + un participe ou une forme en -ed.\n\n- `good-looking`\n- `well-dressed`\n- `middle-aged`\n- `self-confident`\n- `laid-back`\n- `big-headed`\n\nAvant un nom, gardez le trait d'union : `a well-dressed man`.",
+        "de": "Viele zusammengesetzte Adjektive bestehen aus **zwei Wörtern mit Bindestrich**, oft Adjektiv, Adverb oder Nomen + Partizip oder eine Form auf -ed.\n\n- `good-looking`\n- `well-dressed`\n- `middle-aged`\n- `self-confident`\n- `laid-back`\n- `big-headed`\n\nVor einem Nomen bleibt der Bindestrich: `a well-dressed man`."
+      }
+    },
+    {
+      "id": "mind-temper",
+      "label": {
+        "en": "Mind and temperament",
+        "fr": "Esprit et tempérament",
+        "de": "Geist und Temperament"
+      },
+      "targetIds": [
+        "open-minded",
+        "narrow-minded",
+        "bad-tempered",
+        "kind-hearted",
+        "hard-working",
+        "absent-minded"
+      ],
+      "introduction": {
+        "en": "These compound adjectives describe **character**. They also join two words with a hyphen, here an adjective or an adverb + an -ed or -ing form.\n\n- `open-minded`\n- `narrow-minded`\n- `bad-tempered`\n- `kind-hearted`\n- `hard-working`\n- `absent-minded`\n\nNotice the opposites `open-minded` and `narrow-minded`, and that `hard-working` ends in -ing, while the others end in -ed.",
+        "fr": "Ces adjectifs composés décrivent le **caractère**. Eux aussi relient deux mots par un trait d'union, ici un adjectif ou un adverbe + une forme en -ed ou en -ing.\n\n- `open-minded`\n- `narrow-minded`\n- `bad-tempered`\n- `kind-hearted`\n- `hard-working`\n- `absent-minded`\n\nRemarquez les contraires `open-minded` et `narrow-minded`, et que `hard-working` se termine par -ing, alors que les autres se terminent par -ed.",
+        "de": "Diese zusammengesetzten Adjektive beschreiben den **Charakter**. Auch sie verbinden zwei Wörter mit Bindestrich, hier ein Adjektiv oder Adverb + eine Form auf -ed oder -ing.\n\n- `open-minded`\n- `narrow-minded`\n- `bad-tempered`\n- `kind-hearted`\n- `hard-working`\n- `absent-minded`\n\nAchte auf die Gegensätze `open-minded` und `narrow-minded` und darauf, dass `hard-working` auf -ing endet, die anderen auf -ed."
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "good-looking",
+      "term": "good-looking",
+      "translations": { "fr": ["séduisant", "beau"], "de": ["gutaussehend", "attraktiv"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "good-looking",
+      "examForms": ["good-looking"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌɡʊd ˈlʊkɪŋ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Her new colleague is tall, dark and very good-looking.",
+        "translation": {
+          "fr": "Sa nouvelle collègue est grande, brune et très séduisante.",
+          "de": "Ihre neue Kollegin ist groß, dunkelhaarig und sehr gutaussehend."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Good-looking is good + looking: it describes a person who is attractive.",
+        "fr": "Good-looking associe good et looking : il décrit une personne séduisante.",
+        "de": "Good-looking verbindet good und looking: Es beschreibt eine attraktive Person."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "With his film-star looks and perfect smile, he is easily the most ",
+        "after": " man in the office.",
+        "accepted": { "answers": ["good-looking", "good looking"] },
+        "referenceTargetIds": ["good-looking", "middle-aged", "absent-minded", "kind-hearted"],
+        "explanation": {
+          "en": "Film-star looks point to good-looking.",
+          "fr": "Un physique de star de cinéma indique good-looking.",
+          "de": "Ein Filmstar-Aussehen weist auf good-looking hin."
+        }
+      },
+      "listeningOptionTargetIds": ["good-looking", "big-headed", "kind-hearted", "well-dressed"]
+    },
+    {
+      "id": "well-dressed",
+      "term": "well-dressed",
+      "translations": { "fr": ["bien habillé", "élégant"], "de": ["gut gekleidet", "elegant"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "well-dressed",
+      "examForms": ["well-dressed"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌwel ˈdrest/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "He was always well-dressed, even at weekends.",
+        "translation": {
+          "fr": "Il était toujours bien habillé, même le week-end.",
+          "de": "Er war immer gut gekleidet, sogar am Wochenende."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Well-dressed is the adverb well + the participle dressed: someone who wears smart clothes.",
+        "fr": "Well-dressed associe l'adverbe well et le participe dressed : quelqu'un qui porte des vêtements élégants.",
+        "de": "Well-dressed verbindet das Adverb well mit dem Partizip dressed: jemand, der elegante Kleidung trägt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "She always turns up to meetings in a sharp suit and polished shoes; she is the most ",
+        "after": " person I know.",
+        "accepted": { "answers": ["well-dressed", "well dressed"] },
+        "referenceTargetIds": ["well-dressed", "absent-minded", "bad-tempered", "narrow-minded"],
+        "explanation": {
+          "en": "A sharp suit and polished shoes describe a well-dressed person.",
+          "fr": "Un costume élégant et des chaussures cirées décrivent une personne well-dressed.",
+          "de": "Ein eleganter Anzug und polierte Schuhe beschreiben eine well-dressed Person."
+        }
+      },
+      "listeningOptionTargetIds": ["well-dressed", "good-looking", "middle-aged", "laid-back"]
+    },
+    {
+      "id": "middle-aged",
+      "term": "middle-aged",
+      "translations": {
+        "fr": ["d'âge moyen", "quadragénaire"],
+        "de": ["mittleren Alters", "in den mittleren Jahren"]
+      },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "middle-aged",
+      "examForms": ["middle-aged"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌmɪdl ˈeɪdʒd/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "A middle-aged woman stopped to ask us the way.",
+        "translation": {
+          "fr": "Une femme d'âge moyen s'est arrêtée pour nous demander son chemin.",
+          "de": "Eine Frau mittleren Alters blieb stehen und fragte uns nach dem Weg."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Middle-aged is middle + aged: roughly between 45 and 65 years old.",
+        "fr": "Middle-aged associe middle et aged : entre 45 et 65 ans environ.",
+        "de": "Middle-aged verbindet middle und aged: etwa zwischen 45 und 65 Jahren."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He is ",
+        "after": ", with grey hair at his temples and two teenage children, but he still plays football every week.",
+        "accepted": { "answers": ["middle-aged", "middle aged"] },
+        "referenceTargetIds": ["middle-aged", "big-headed", "kind-hearted", "narrow-minded"],
+        "explanation": {
+          "en": "Grey hair and teenage children suggest middle-aged.",
+          "fr": "Les cheveux gris et les enfants adolescents suggèrent middle-aged.",
+          "de": "Graue Haare und Teenager-Kinder deuten auf middle-aged hin."
+        }
+      },
+      "listeningOptionTargetIds": ["middle-aged", "absent-minded", "open-minded", "well-dressed"]
+    },
+    {
+      "id": "self-confident",
+      "term": "self-confident",
+      "translations": { "fr": ["sûr de soi", "confiant"], "de": ["selbstbewusst", "selbstsicher"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "self-confident",
+      "examForms": ["self-confident"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌself ˈkɒnfɪdənt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "She is a self-confident speaker who never uses notes.",
+        "translation": {
+          "fr": "C'est une oratrice sûre d'elle qui n'utilise jamais de notes.",
+          "de": "Sie ist eine selbstbewusste Rednerin, die nie Notizen benutzt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Self-confident is self + confident: you believe in your own abilities. It is positive, unlike big-headed.",
+        "fr": "Self-confident associe self et confident : on croit en ses propres capacités. C'est positif, contrairement à big-headed.",
+        "de": "Self-confident verbindet self und confident: Man glaubt an die eigenen Fähigkeiten. Es ist positiv, anders als big-headed."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "She walked into the interview feeling completely ",
+        "after": ": she knew she could do the job.",
+        "accepted": { "answers": ["self-confident", "self confident"] },
+        "referenceTargetIds": ["self-confident", "bad-tempered", "absent-minded", "narrow-minded"],
+        "explanation": {
+          "en": "Knowing she could do the job shows she was self-confident.",
+          "fr": "Savoir qu'elle pouvait faire le travail montre qu'elle était self-confident.",
+          "de": "Zu wissen, dass sie die Arbeit kann, zeigt, dass sie self-confident war."
+        }
+      },
+      "listeningOptionTargetIds": ["self-confident", "big-headed", "laid-back", "open-minded"]
+    },
+    {
+      "id": "laid-back",
+      "term": "laid-back",
+      "translations": { "fr": ["décontracté", "détendu"], "de": ["locker", "gelassen"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "laid-back",
+      "examForms": ["laid-back"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌleɪd ˈbæk/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Our teacher is very laid-back about homework.",
+        "translation": {
+          "fr": "Notre professeur est très décontracté à propos des devoirs.",
+          "de": "Unser Lehrer sieht die Hausaufgaben sehr locker."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Laid-back: relaxed and calm, as if leaning back; someone who is not easily worried.",
+        "fr": "Laid-back : détendu et calme, comme si l'on se renversait en arrière ; quelqu'un qui ne s'inquiète pas facilement.",
+        "de": "Laid-back: entspannt und ruhig, als würde man sich zurücklehnen; jemand, der sich nicht leicht Sorgen macht."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Our manager is very ",
+        "after": ": he never gets upset about deadlines and just says, 'It'll be fine.'",
+        "accepted": { "answers": ["laid-back", "laid back"] },
+        "referenceTargetIds": ["laid-back", "bad-tempered", "well-dressed", "middle-aged"],
+        "explanation": {
+          "en": "Never getting upset and saying 'It'll be fine' describes a laid-back person.",
+          "fr": "Ne jamais s'énerver et dire « Ça ira » décrit une personne laid-back.",
+          "de": "Sich nie aufzuregen und „Das wird schon“ zu sagen beschreibt eine laid-back Person."
+        }
+      },
+      "listeningOptionTargetIds": ["laid-back", "bad-tempered", "absent-minded", "self-confident"]
+    },
+    {
+      "id": "big-headed",
+      "term": "big-headed",
+      "translations": { "fr": ["prétentieux", "vaniteux"], "de": ["eingebildet", "überheblich"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "big-headed",
+      "examForms": ["big-headed"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌbɪɡ ˈhedɪd/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "He became big-headed after winning the competition.",
+        "translation": {
+          "fr": "Il est devenu prétentieux après avoir gagné le concours.",
+          "de": "Er wurde eingebildet, nachdem er den Wettbewerb gewonnen hatte."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Informal and negative: it means you think you are better than others, not just confident.",
+        "fr": "Familier et négatif : on se croit supérieur aux autres, ce n'est pas simplement avoir confiance en soi.",
+        "de": "Umgangssprachlich und negativ: Man hält sich für besser als andere, nicht nur für selbstsicher."
+      },
+      "explanation": {
+        "en": "Big-headed is big + headed: a person with an exaggerated opinion of themselves.",
+        "fr": "Big-headed associe big et headed : une personne qui a une opinion exagérée d'elle-même.",
+        "de": "Big-headed verbindet big und headed: eine Person mit übertrieben hoher Meinung von sich selbst."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Don't be so ",
+        "after": "! You're good at chess, but you aren't the best player in the world.",
+        "accepted": { "answers": ["big-headed", "big headed"] },
+        "referenceTargetIds": ["big-headed", "kind-hearted", "middle-aged", "well-dressed"],
+        "explanation": {
+          "en": "Boasting about being good at chess is big-headed.",
+          "fr": "Se vanter d'être bon aux échecs, c'est être big-headed.",
+          "de": "Mit Schachkönnen anzugeben ist big-headed."
+        }
+      },
+      "listeningOptionTargetIds": ["big-headed", "bad-tempered", "self-confident", "good-looking"]
+    },
+    {
+      "id": "open-minded",
+      "term": "open-minded",
+      "translations": {
+        "fr": ["ouvert d'esprit", "tolérant"],
+        "de": ["aufgeschlossen", "tolerant"]
+      },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "open-minded",
+      "examForms": ["open-minded"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌəʊpən ˈmaɪndɪd/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "You need to be open-minded when you live abroad.",
+        "translation": {
+          "fr": "Il faut être ouvert d'esprit quand on vit à l'étranger.",
+          "de": "Man muss aufgeschlossen sein, wenn man im Ausland lebt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Open-minded is open + minded: willing to consider new ideas and different people.",
+        "fr": "Open-minded associe open et minded : prêt à accepter de nouvelles idées et des gens différents.",
+        "de": "Open-minded verbindet open und minded: bereit, neue Ideen und andere Menschen zu akzeptieren."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "My grandmother is surprisingly ",
+        "after": ": she listens to young people's ideas and has never judged anyone for being different.",
+        "accepted": { "answers": ["open-minded", "open minded"] },
+        "referenceTargetIds": ["open-minded", "narrow-minded", "bad-tempered", "absent-minded"],
+        "explanation": {
+          "en": "Listening to new ideas and never judging others is open-minded.",
+          "fr": "Écouter les idées nouvelles et ne jamais juger les autres, c'est être open-minded.",
+          "de": "Neue Ideen anzuhören und andere nie zu verurteilen ist open-minded."
+        }
+      },
+      "listeningOptionTargetIds": ["open-minded", "narrow-minded", "absent-minded", "middle-aged"]
+    },
+    {
+      "id": "narrow-minded",
+      "term": "narrow-minded",
+      "translations": { "fr": ["étroit d'esprit", "borné"], "de": ["engstirnig", "beschränkt"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "narrow-minded",
+      "examForms": ["narrow-minded"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌnærəʊ ˈmaɪndɪd/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "It is narrow-minded to judge people by their accent.",
+        "translation": {
+          "fr": "C'est étroit d'esprit de juger les gens sur leur accent.",
+          "de": "Es ist engstirnig, Menschen nach ihrem Akzent zu beurteilen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Narrow-minded is narrow + minded: the opposite of open-minded, unwilling to accept other views.",
+        "fr": "Narrow-minded associe narrow et minded : le contraire de open-minded, qui refuse les autres points de vue.",
+        "de": "Narrow-minded verbindet narrow und minded: das Gegenteil von open-minded, andere Ansichten werden nicht akzeptiert."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He is so ",
+        "after": " that he refuses to listen to any opinion different from his own.",
+        "accepted": { "answers": ["narrow-minded", "narrow minded"] },
+        "referenceTargetIds": ["narrow-minded", "open-minded", "kind-hearted", "laid-back"],
+        "explanation": {
+          "en": "Refusing to listen to other opinions is narrow-minded.",
+          "fr": "Refuser d'écouter les autres opinions, c'est être narrow-minded.",
+          "de": "Andere Meinungen nicht anzuhören ist narrow-minded."
+        }
+      },
+      "listeningOptionTargetIds": ["narrow-minded", "open-minded", "absent-minded", "hard-working"]
+    },
+    {
+      "id": "bad-tempered",
+      "term": "bad-tempered",
+      "translations": {
+        "fr": ["de mauvais caractère", "irritable"],
+        "de": ["übellaunig", "jähzornig"]
+      },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "bad-tempered",
+      "examForms": ["bad-tempered"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌbæd ˈtempəd/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "The bad-tempered driver shouted at everyone in the queue.",
+        "translation": {
+          "fr": "Le conducteur de mauvais caractère a crié sur tout le monde dans la file.",
+          "de": "Der übellaunige Fahrer schrie alle in der Schlange an."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Bad-tempered is bad + tempered: someone who gets angry or annoyed easily.",
+        "fr": "Bad-tempered associe bad et tempered : quelqu'un qui se fâche ou s'énerve facilement.",
+        "de": "Bad-tempered verbindet bad und tempered: jemand, der leicht wütend oder gereizt wird."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Don't ask him anything before his first coffee; he is dreadfully ",
+        "after": " in the mornings.",
+        "accepted": { "answers": ["bad-tempered", "bad tempered"] },
+        "referenceTargetIds": ["bad-tempered", "hard-working", "self-confident", "middle-aged"],
+        "explanation": {
+          "en": "Being difficult before coffee describes a bad-tempered person.",
+          "fr": "Être difficile avant le café décrit une personne bad-tempered.",
+          "de": "Vor dem Kaffee schwierig zu sein beschreibt eine bad-tempered Person."
+        }
+      },
+      "listeningOptionTargetIds": ["bad-tempered", "big-headed", "laid-back", "hard-working"]
+    },
+    {
+      "id": "kind-hearted",
+      "term": "kind-hearted",
+      "translations": { "fr": ["au grand cœur", "bienveillant"], "de": ["gutherzig", "herzlich"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "kind-hearted",
+      "examForms": ["kind-hearted"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌkaɪnd ˈhɑːtɪd/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "The kind-hearted neighbour brought us soup when we were ill.",
+        "translation": {
+          "fr": "La voisine au grand cœur nous a apporté de la soupe quand nous étions malades.",
+          "de": "Die gutherzige Nachbarin brachte uns Suppe, als wir krank waren."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Kind-hearted is kind + hearted: someone with a generous heart who cares about others.",
+        "fr": "Kind-hearted associe kind et hearted : quelqu'un de généreux qui se soucie des autres.",
+        "de": "Kind-hearted verbindet kind und hearted: jemand mit großem Herzen, dem andere wichtig sind."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "She is very ",
+        "after": " and always gives money to people who need help.",
+        "accepted": { "answers": ["kind-hearted", "kind hearted"] },
+        "referenceTargetIds": ["kind-hearted", "big-headed", "narrow-minded", "well-dressed"],
+        "explanation": {
+          "en": "Helping people in need shows a kind-hearted person.",
+          "fr": "Aider les gens dans le besoin montre une personne kind-hearted.",
+          "de": "Menschen in Not zu helfen zeigt eine kind-hearted Person."
+        }
+      },
+      "listeningOptionTargetIds": ["kind-hearted", "hard-working", "big-headed", "narrow-minded"]
+    },
+    {
+      "id": "hard-working",
+      "term": "hard-working",
+      "translations": { "fr": ["travailleur", "assidu"], "de": ["fleißig", "arbeitsam"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "hard-working",
+      "examForms": ["hard-working"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌhɑːd ˈwɜːkɪŋ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "She is a hard-working student who studies every evening.",
+        "translation": {
+          "fr": "C'est une étudiante travailleuse qui étudie tous les soirs.",
+          "de": "Sie ist eine fleißige Studentin, die jeden Abend lernt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Hard-working is hard + working, with an -ing participle: someone who puts a lot of effort into work.",
+        "fr": "Hard-working associe hard et working, avec un participe en -ing : quelqu'un qui fait beaucoup d'efforts au travail.",
+        "de": "Hard-working verbindet hard und working mit einem -ing-Partizip: jemand, der sich bei der Arbeit sehr anstrengt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He is extremely ",
+        "after": ": he stays late at the office every evening and never misses a deadline.",
+        "accepted": { "answers": ["hard-working", "hard working"] },
+        "referenceTargetIds": ["hard-working", "laid-back", "absent-minded", "bad-tempered"],
+        "explanation": {
+          "en": "Staying late and meeting every deadline is hard-working.",
+          "fr": "Rester tard au bureau et respecter les délais, c'est être hard-working.",
+          "de": "Lange im Büro zu bleiben und jede Frist einzuhalten ist hard-working."
+        }
+      },
+      "listeningOptionTargetIds": ["hard-working", "kind-hearted", "bad-tempered", "good-looking"]
+    },
+    {
+      "id": "absent-minded",
+      "term": "absent-minded",
+      "translations": { "fr": ["distrait", "tête en l'air"], "de": ["zerstreut", "vergesslich"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "absent-minded",
+      "examForms": ["absent-minded"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌæbsənt ˈmaɪndɪd/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "My absent-minded uncle often forgets where he parked his car.",
+        "translation": {
+          "fr": "Mon oncle distrait oublie souvent où il a garé sa voiture.",
+          "de": "Mein zerstreuter Onkel vergisst oft, wo er sein Auto geparkt hat."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Absent-minded is absent + minded: your mind is elsewhere, so you forget things easily.",
+        "fr": "Absent-minded associe absent et minded : l'esprit est ailleurs, donc on oublie facilement.",
+        "de": "Absent-minded verbindet absent und minded: Die Gedanken sind woanders, deshalb vergisst man leicht."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "She is so ",
+        "after": " that she left her keys in the fridge again.",
+        "accepted": { "answers": ["absent-minded", "absent minded"] },
+        "referenceTargetIds": ["absent-minded", "self-confident", "good-looking", "hard-working"],
+        "explanation": {
+          "en": "Leaving keys in the fridge is typical of an absent-minded person.",
+          "fr": "Laisser ses clés dans le frigo est typique d'une personne absent-minded.",
+          "de": "Die Schlüssel im Kühlschrank zu lassen ist typisch für eine absent-minded Person."
+        }
+      },
+      "listeningOptionTargetIds": ["absent-minded", "open-minded", "narrow-minded", "middle-aged"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

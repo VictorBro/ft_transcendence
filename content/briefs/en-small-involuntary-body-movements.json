@@ -1,0 +1,628 @@
+{
+  "schemaVersion": 2,
+  "id": "en-small-involuntary-body-movements",
+  "lang": "en",
+  "level": "C2",
+  "locales": ["en", "fr", "de"],
+  "title": "Small involuntary body movements",
+  "objective": {
+    "en": "Describe small, often involuntary body movements precisely with twelve verbs such as wince, flinch, recoil, shudder, tremble, twitch, squint and fidget.",
+    "fr": "Décrire avec précision de petits mouvements du corps, souvent involontaires, avec douze verbes comme wince, flinch, recoil, shudder, tremble, twitch, squint et fidget.",
+    "de": "Kleine, oft unwillkürliche Körperbewegungen mit zwölf Verben wie wince, flinch, recoil, shudder, tremble, twitch, squint und fidget genau beschreiben."
+  },
+  "estimatedMinutes": 19,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:53:18.481Z",
+    "inputHashes": { "outline": "d274eb2c2ab845243780eb8dfe06bddf63781260344008dd9838e3a268d70c4c" }
+  },
+  "kind": "vocabulary",
+  "theme": "health",
+  "coverageNotes": {
+    "en": "Twelve verbs for small bodily reactions, split into reactions to pain, shock, embarrassment and glare, and into shaking, twitching and restlessness. They are close in meaning, so each is contrasted by cause, size and the part of the body involved.",
+    "fr": "Douze verbes pour de petites réactions corporelles, répartis entre les réactions à la douleur, au choc, à la gêne et à l’éblouissement, et les tremblements, spasmes et agitations. Leurs sens étant proches, chacun est distingué par sa cause, son ampleur et la partie du corps concernée.",
+    "de": "Zwölf Verben für kleine körperliche Reaktionen, aufgeteilt in Reaktionen auf Schmerz, Schreck, Peinlichkeit und Blendung sowie in Zittern, Zucken und Unruhe. Da ihre Bedeutungen nah beieinanderliegen, wird jedes nach Ursache, Stärke und betroffenem Körperteil abgegrenzt."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve verbs match the outline and give enough close pairs (wince/flinch, tremble/quiver/shiver) to train fine distinctions without overload.",
+    "fr": "Douze verbes correspondent au plan et offrent assez de paires proches (wince/flinch, tremble/quiver/shiver) pour travailler les nuances sans surcharge.",
+    "de": "Zwölf Verben entsprechen der Gliederung und bieten genug ähnliche Paare (wince/flinch, tremble/quiver/shiver), um feine Unterschiede ohne Überlastung zu üben."
+  },
+  "difficultyBalance": {
+    "en": "Common verbs such as tremble, shiver and squint are balanced against more demanding ones such as recoil, cringe and quiver.",
+    "fr": "Des verbes courants comme tremble, shiver et squint sont équilibrés par des verbes plus exigeants comme recoil, cringe et quiver.",
+    "de": "Geläufige Verben wie tremble, shiver und squint werden durch anspruchsvollere wie recoil, cringe und quiver ausgeglichen."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "reactions",
+      "label": {
+        "en": "Reactions to pain, shock and glare",
+        "fr": "Réactions à la douleur, au choc et à l’éblouissement",
+        "de": "Reaktionen auf Schmerz, Schreck und Blendung"
+      },
+      "targetIds": ["wince", "flinch", "recoil", "shudder", "cringe", "grimace", "squint"],
+      "introduction": {
+        "en": "These verbs describe quick, often involuntary reactions to **pain, shock, embarrassment or glare**. The differences in meaning can be very small:\n\n- `wince`: the face tightens briefly at a sudden pain or an unpleasant remark\n- `flinch`: the body jerks as a reflex, expecting a blow or a loud noise\n- `recoil`: you draw back, often from disgust or fear\n- `shudder`: a brief shake of the whole body, from horror or revulsion\n- `cringe`: you feel inwardly awkward, or shrink away, from embarrassment\n- `grimace`: you twist your face to show pain or distaste\n- `squint`: you narrow your eyes against light or to see better\n\nA useful test: does the reaction show on the face, or in the whole body?",
+        "fr": "Ces verbes décrivent des réactions rapides, souvent involontaires, à **la douleur, au choc, à la gêne ou à l’éblouissement**. Les différences de sens peuvent être très minces :\n\n- `wince` : le visage se crispe brièvement devant une douleur soudaine ou une remarque désagréable\n- `flinch` : le corps sursaute par réflexe, dans l’attente d’un coup ou d’un bruit fort\n- `recoil` : on se recule, souvent par dégoût ou par peur\n- `shudder` : un bref frisson de tout le corps, d’horreur ou de répulsion\n- `cringe` : on se sent mal à l’aise, ou on se recroqueville, de gêne\n- `grimace` : on tord le visage pour montrer la douleur ou le dégoût\n- `squint` : on plisse les yeux contre la lumière ou pour mieux voir\n\nUn bon test : la réaction se voit-elle sur le visage ou sur tout le corps ?",
+        "de": "Diese Verben beschreiben schnelle, oft unwillkürliche Reaktionen auf **Schmerz, Schreck, Peinlichkeit oder Blendung**. Die Bedeutungsunterschiede können sehr klein sein:\n\n- `wince`: das Gesicht verkrampft sich kurz bei plötzlichem Schmerz oder einer unangenehmen Bemerkung\n- `flinch`: der Körper zuckt reflexartig, in Erwartung eines Schlags oder lauten Geräuschs\n- `recoil`: man weicht zurück, oft aus Ekel oder Angst\n- `shudder`: ein kurzes Schaudern des ganzen Körpers vor Grauen oder Abscheu\n- `cringe`: man fühlt sich innerlich unwohl oder krümmt sich vor Peinlichkeit\n- `grimace`: man verzieht das Gesicht, um Schmerz oder Abneigung zu zeigen\n- `squint`: man kneift die Augen gegen das Licht oder zum besseren Sehen zusammen\n\nEin guter Test: Sieht man die Reaktion im Gesicht oder am ganzen Körper?"
+      }
+    },
+    {
+      "id": "shaking",
+      "label": {
+        "en": "Shaking, twitching and restlessness",
+        "fr": "Tremblements, spasmes et agitation",
+        "de": "Zittern, Zucken und Unruhe"
+      },
+      "targetIds": ["tremble", "shiver", "quiver", "twitch", "fidget"],
+      "introduction": {
+        "en": "These verbs describe **shaking, twitching and restlessness**. They differ in cause and in the size of the movement:\n\n- `tremble`: you shake, from fear, weakness or strong emotion\n- `shiver`: you shake from cold or fever, or from a thrill\n- `quiver`: a faint, rapid vibration, especially of a lip or a voice\n- `twitch`: a small, sudden, involuntary jerk of a muscle\n- `fidget`: you keep moving your hands or feet, from nerves or boredom\n\nOf the five, only `fidget` can usually be stopped at will.",
+        "fr": "Ces verbes décrivent **les tremblements, les spasmes et l’agitation**. Ils diffèrent par leur cause et par l’ampleur du mouvement :\n\n- `tremble` : on tremble de peur, de faiblesse ou d’une forte émotion\n- `shiver` : on frissonne de froid, de fièvre ou d’excitation\n- `quiver` : une vibration légère et rapide, surtout d’une lèvre ou de la voix\n- `twitch` : une petite secousse soudaine et involontaire d’un muscle\n- `fidget` : on remue sans cesse les mains ou les pieds, par nervosité ou ennui\n\nDes cinq, seul `fidget` peut généralement être arrêté à volonté.",
+        "de": "Diese Verben beschreiben **Zittern, Zucken und Unruhe**. Sie unterscheiden sich in der Ursache und in der Stärke der Bewegung:\n\n- `tremble`: man zittert vor Angst, Schwäche oder starker Erregung\n- `shiver`: man zittert vor Kälte oder Fieber oder vor Aufregung\n- `quiver`: ein leichtes, schnelles Beben, besonders der Lippe oder der Stimme\n- `twitch`: ein kleines, plötzliches, unwillkürliches Zucken eines Muskels\n- `fidget`: man bewegt ständig Hände oder Füße, aus Nervosität oder Langeweile\n\nVon den fünf lässt sich nur `fidget` meist willentlich beenden."
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "wince",
+      "term": "wince",
+      "translations": { "fr": ["tressaillir de douleur"], "de": ["vor Schmerz zusammenzucken"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "wince",
+      "examForms": ["wince"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/wɪns/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "He winced as the cold water touched his sore tooth.",
+        "translation": {
+          "fr": "Il a tressailli quand l’eau froide a touché sa dent sensible.",
+          "de": "Er zuckte zusammen, als das kalte Wasser seinen empfindlichen Zahn berührte."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Wince is smaller and quicker than grimace, and it is a reaction, not a deliberate expression.",
+        "fr": "Wince est plus petit et plus rapide que grimace, et c’est une réaction, non une expression voulue.",
+        "de": "Wince ist kleiner und schneller als grimace und eine Reaktion, kein bewusster Ausdruck."
+      },
+      "explanation": {
+        "en": "Wince is a brief tightening of the face at sudden pain or something unpleasant.",
+        "fr": "Wince désigne un bref crispement du visage devant une douleur soudaine ou une chose désagréable.",
+        "de": "Wince bedeutet ein kurzes Verkrampfen des Gesichts bei plötzlichem Schmerz oder Unangenehmem."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "fr": "tressaillir de douleur (un bref crispement du visage)",
+        "de": "vor Schmerz kurz das Gesicht verkrampfen"
+      },
+      "gap": {
+        "before": "She ",
+        "after": " with pain as the nurse pulled out the splinter.",
+        "accepted": { "answers": ["winced"] },
+        "referenceTargetIds": ["wince", "fidget", "squint", "shiver"],
+        "explanation": {
+          "en": "Only winced fits: a quick facial reaction to sudden pain.",
+          "fr": "Seul « winced » convient : une réaction rapide du visage à une douleur soudaine.",
+          "de": "Nur „winced“ passt: eine schnelle Gesichtsreaktion auf plötzlichen Schmerz."
+        }
+      },
+      "listeningOptionTargetIds": ["wince", "twitch", "flinch", "shiver"]
+    },
+    {
+      "id": "flinch",
+      "term": "flinch",
+      "translations": { "fr": ["sursauter"], "de": ["zusammenfahren", "zurückzucken"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "flinch",
+      "examForms": ["flinch"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/flɪntʃ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "The horse flinched when he raised his voice.",
+        "translation": {
+          "fr": "Le cheval a sursauté quand il a haussé la voix.",
+          "de": "Das Pferd zuckte zusammen, als er die Stimme erhob."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Flinch is a reflex jerk of the body away from a blow, a noise or a threat.",
+        "fr": "Flinch désigne un sursaut réflexe du corps devant un coup, un bruit ou une menace.",
+        "de": "Flinch bedeutet ein reflexartiges Zusammenzucken vor einem Schlag, einem Geräusch oder einer Drohung."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "fr": "sursauter par réflexe devant un coup ou une menace",
+        "de": "reflexartig vor einem Schlag oder einer Gefahr zusammenfahren"
+      },
+      "gap": {
+        "before": "She didn’t even ",
+        "after": " when the firework went off right behind her.",
+        "accepted": { "answers": ["flinch"] },
+        "referenceTargetIds": ["flinch", "squint", "fidget", "shiver"],
+        "explanation": {
+          "en": "Flinch fits: a reflex start at a sudden noise.",
+          "fr": "Flinch convient : un sursaut réflexe devant un bruit soudain.",
+          "de": "Flinch passt: ein reflexartiges Zusammenfahren bei plötzlichem Lärm."
+        }
+      },
+      "listeningOptionTargetIds": ["flinch", "wince", "twitch", "cringe"]
+    },
+    {
+      "id": "recoil",
+      "term": "recoil",
+      "translations": { "fr": ["reculer"], "de": ["zurückweichen", "zurückschrecken"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "recoil",
+      "examForms": ["recoil"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/rɪˈkɔɪl/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "She recoiled from the smell of the rotting fruit.",
+        "translation": {
+          "fr": "Elle a reculé devant l’odeur des fruits pourris.",
+          "de": "Sie wich vor dem Geruch des faulenden Obstes zurück."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Recoil means to draw back sharply, usually from disgust, fear or shock; the whole body moves away.",
+        "fr": "Recoil signifie se reculer brusquement, en général par dégoût, peur ou choc ; tout le corps s’éloigne.",
+        "de": "Recoil bedeutet, abrupt zurückzuweichen, meist aus Ekel, Angst oder Schreck; der ganze Körper entfernt sich."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "fr": "reculer brusquement par dégoût ou effroi",
+        "de": "aus Ekel oder Schreck zurückweichen"
+      },
+      "gap": {
+        "before": "She ",
+        "after": " from the smell, pulling her head sharply away.",
+        "accepted": { "answers": ["recoiled"] },
+        "referenceTargetIds": ["recoil", "squint", "fidget", "quiver"],
+        "explanation": {
+          "en": "Only recoiled fits: she draws back from the smell.",
+          "fr": "Seul « recoiled » convient : elle se recule devant l’odeur.",
+          "de": "Nur „recoiled“ passt: Sie weicht vor dem Geruch zurück."
+        }
+      },
+      "listeningOptionTargetIds": ["recoil", "grimace", "cringe", "shudder"]
+    },
+    {
+      "id": "shudder",
+      "term": "shudder",
+      "translations": { "fr": ["frémir d’horreur"], "de": ["erschaudern", "schaudern"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "shudder",
+      "examForms": ["shudder"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʃʌdə/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "He shuddered at the memory of the crash.",
+        "translation": {
+          "fr": "Il a frémi au souvenir de l’accident.",
+          "de": "Er schauderte bei der Erinnerung an den Unfall."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Shudder is caused by horror or disgust; shiver is usually caused by cold.",
+        "fr": "Shudder vient de l’horreur ou du dégoût ; shiver vient en général du froid.",
+        "de": "Shudder entsteht durch Grauen oder Ekel; shiver meist durch Kälte."
+      },
+      "explanation": {
+        "en": "Shudder is a brief shake of the whole body caused by horror, disgust or fear; I shudder to think is a fixed phrase.",
+        "fr": "Shudder désigne un bref frisson de tout le corps causé par l’horreur, le dégoût ou la peur ; I shudder to think est une expression figée.",
+        "de": "Shudder bedeutet ein kurzes Schaudern des ganzen Körpers aus Grauen, Ekel oder Angst; I shudder to think ist eine feste Wendung."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "fr": "frémir d’horreur ou de dégoût (un frisson bref)",
+        "de": "vor Grauen oder Ekel erschauern"
+      },
+      "gap": {
+        "before": "I ",
+        "after": " to think what might have happened if we had missed the turning.",
+        "accepted": { "answers": ["shudder"] },
+        "referenceTargetIds": ["shudder", "squint", "fidget", "twitch"],
+        "explanation": {
+          "en": "Only shudder fits the fixed phrase I shudder to think.",
+          "fr": "Seul « shudder » convient dans l’expression figée I shudder to think.",
+          "de": "Nur „shudder“ passt in die feste Wendung I shudder to think."
+        }
+      },
+      "listeningOptionTargetIds": ["shudder", "shiver", "fidget", "quiver"]
+    },
+    {
+      "id": "cringe",
+      "term": "cringe",
+      "translations": { "fr": ["se crisper de gêne"], "de": ["sich innerlich winden"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "cringe",
+      "examForms": ["cringe"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/krɪndʒ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "I cringed when my father started singing in front of my friends.",
+        "translation": {
+          "fr": "Je me suis crispé de gêne quand mon père s’est mis à chanter devant mes amis.",
+          "de": "Ich wand mich innerlich, als mein Vater vor meinen Freunden zu singen anfing."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Cringe means to shrink or tense up from embarrassment or distaste, often only inwardly.",
+        "fr": "Cringe signifie se recroqueviller ou se crisper de gêne ou de dégoût, souvent seulement intérieurement.",
+        "de": "Cringe bedeutet, sich vor Peinlichkeit oder Abneigung zusammenzukrümmen, oft nur innerlich."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "fr": "se crisper de gêne ou de honte devant une situation embarrassante",
+        "de": "sich vor Peinlichkeit innerlich winden"
+      },
+      "gap": {
+        "before": "I ",
+        "after": " every time I remember the speech I gave at the wedding.",
+        "accepted": { "answers": ["cringe"] },
+        "referenceTargetIds": ["cringe", "tremble", "twitch", "squint"],
+        "explanation": {
+          "en": "Only cringe fits: the reaction is to an embarrassing memory.",
+          "fr": "Seul « cringe » convient : la réaction vient d’un souvenir gênant.",
+          "de": "Nur „cringe“ passt: Die Reaktion gilt einer peinlichen Erinnerung."
+        }
+      },
+      "listeningOptionTargetIds": ["cringe", "flinch", "grimace", "squint"]
+    },
+    {
+      "id": "grimace",
+      "term": "grimace",
+      "translations": { "fr": ["faire la grimace"], "de": ["das Gesicht verziehen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "grimace",
+      "examForms": ["grimace"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈɡrɪməs/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "The child grimaced and pushed the spinach away.",
+        "translation": {
+          "fr": "L’enfant a fait la grimace et a repoussé les épinards.",
+          "de": "Das Kind verzog das Gesicht und schob den Spinat weg."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Grimace means to twist the face to show pain, disgust or effort; it is more visible and lasts longer than a wince.",
+        "fr": "Grimace signifie tordre le visage pour montrer la douleur, le dégoût ou l’effort ; c’est plus visible et plus long qu’un wince.",
+        "de": "Grimace bedeutet, das Gesicht zu verziehen, um Schmerz, Ekel oder Anstrengung zu zeigen; es ist sichtbarer und länger als ein wince."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "fr": "tordre le visage en une grimace (douleur ou dégoût)",
+        "de": "das Gesicht zu einer Grimasse verziehen"
+      },
+      "gap": {
+        "before": "He took a sip of the cold coffee and ",
+        "after": " at the bitter taste.",
+        "accepted": { "answers": ["grimaced"] },
+        "referenceTargetIds": ["grimace", "fidget", "tremble", "quiver"],
+        "explanation": {
+          "en": "Only grimaced fits: his face twists at a bad taste.",
+          "fr": "Seul « grimaced » convient : son visage se tord devant un mauvais goût.",
+          "de": "Nur „grimaced“ passt: Sein Gesicht verzieht sich bei dem schlechten Geschmack."
+        }
+      },
+      "listeningOptionTargetIds": ["grimace", "cringe", "wince", "recoil"]
+    },
+    {
+      "id": "squint",
+      "term": "squint",
+      "translations": { "fr": ["plisser les yeux"], "de": ["die Augen zusammenkneifen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "squint",
+      "examForms": ["squint"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/skwɪnt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "He squinted into the low winter sun.",
+        "translation": {
+          "fr": "Il a plissé les yeux face au soleil bas de l’hiver.",
+          "de": "Er kniff die Augen gegen die tiefe Wintersonne zusammen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Squint means to narrow your eyes, against bright light or to see something small or distant.",
+        "fr": "Squint signifie plisser les yeux, contre une lumière vive ou pour voir quelque chose de petit ou de lointain.",
+        "de": "Squint bedeutet, die Augen zusammenzukneifen, gegen helles Licht oder um etwas Kleines oder Fernes zu erkennen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "fr": "plisser les yeux (à cause de la lumière ou pour mieux voir)",
+        "de": "die Augen zusammenkneifen (gegen Licht oder zum besseren Sehen)"
+      },
+      "gap": {
+        "before": "She had to ",
+        "after": " to read the small print without her glasses.",
+        "accepted": { "answers": ["squint"] },
+        "referenceTargetIds": ["squint", "quiver", "fidget", "twitch"],
+        "explanation": {
+          "en": "Only squint fits: she narrows her eyes to read.",
+          "fr": "Seul « squint » convient : elle plisse les yeux pour lire.",
+          "de": "Nur „squint“ passt: Sie kneift die Augen zum Lesen zusammen."
+        }
+      },
+      "listeningOptionTargetIds": ["squint", "quiver", "twitch", "wince"]
+    },
+    {
+      "id": "tremble",
+      "term": "tremble",
+      "translations": { "fr": ["trembler"], "de": ["zittern"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "tremble",
+      "examForms": ["tremble"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈtrembl/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Her voice trembled as she began to speak.",
+        "translation": {
+          "fr": "Sa voix tremblait quand elle a commencé à parler.",
+          "de": "Ihre Stimme zitterte, als sie zu sprechen begann."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Tremble is a visible shake from fear, weakness or emotion; quiver is fainter and faster.",
+        "fr": "Tremble est un tremblement visible de peur, de faiblesse ou d’émotion ; quiver est plus léger et plus rapide.",
+        "de": "Tremble ist ein sichtbares Zittern aus Angst, Schwäche oder Erregung; quiver ist leichter und schneller."
+      },
+      "explanation": {
+        "en": "Tremble means to shake slightly and uncontrollably, from fear, weakness or strong emotion.",
+        "fr": "Tremble signifie trembler légèrement et sans contrôle, de peur, de faiblesse ou d’une forte émotion.",
+        "de": "Tremble bedeutet, leicht und unkontrolliert zu zittern, aus Angst, Schwäche oder starker Erregung."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "fr": "trembler de peur, de faiblesse ou d’émotion",
+        "de": "vor Angst, Schwäche oder Erregung zittern"
+      },
+      "gap": {
+        "before": "His hands began to ",
+        "after": " as he opened the envelope containing his exam results.",
+        "accepted": { "answers": ["tremble"] },
+        "referenceTargetIds": ["tremble", "wince", "recoil", "cringe"],
+        "explanation": {
+          "en": "Only tremble fits: his hands shake from nerves.",
+          "fr": "Seul « tremble » convient : ses mains tremblent de nervosité.",
+          "de": "Nur „tremble“ passt: Seine Hände zittern vor Nervosität."
+        }
+      },
+      "listeningOptionTargetIds": ["tremble", "shudder", "shiver", "quiver"]
+    },
+    {
+      "id": "shiver",
+      "term": "shiver",
+      "translations": { "fr": ["frissonner"], "de": ["frösteln"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "shiver",
+      "examForms": ["shiver"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʃɪvə/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "We shivered at the bus stop in the freezing rain.",
+        "translation": {
+          "fr": "Nous frissonnions à l’arrêt de bus sous la pluie glaciale.",
+          "de": "Wir fröstelten an der Bushaltestelle im eiskalten Regen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Shiver means to shake in small rapid movements, usually because of cold or fever, or from excitement.",
+        "fr": "Shiver signifie trembler par petites secousses rapides, en général de froid ou de fièvre, ou d’excitation.",
+        "de": "Shiver bedeutet, in kleinen schnellen Bewegungen zu zittern, meist vor Kälte oder Fieber oder aus Aufregung."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "fr": "frissonner de froid ou de fièvre",
+        "de": "vor Kälte oder Fieber frösteln"
+      },
+      "gap": {
+        "before": "Her teeth chattered and she began to ",
+        "after": " uncontrollably in the freezing wind.",
+        "accepted": { "answers": ["shiver"] },
+        "referenceTargetIds": ["shiver", "fidget", "wince", "squint"],
+        "explanation": {
+          "en": "Only shiver fits: the cause is cold.",
+          "fr": "Seul « shiver » convient : la cause est le froid.",
+          "de": "Nur „shiver“ passt: Die Ursache ist die Kälte."
+        }
+      },
+      "listeningOptionTargetIds": ["shiver", "quiver", "fidget", "shudder"]
+    },
+    {
+      "id": "quiver",
+      "term": "quiver",
+      "translations": { "fr": ["frémir"], "de": ["leicht beben", "erzittern"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "quiver",
+      "examForms": ["quiver"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈkwɪvə/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "The leaves quivered in the faint breeze.",
+        "translation": {
+          "fr": "Les feuilles frémissaient dans la brise légère.",
+          "de": "Die Blätter bebten in der leichten Brise."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Quiver means to vibrate with a faint, rapid movement, especially a lip, a voice or a leaf.",
+        "fr": "Quiver signifie vibrer d’un mouvement léger et rapide, en particulier une lèvre, une voix ou une feuille.",
+        "de": "Quiver bedeutet, mit leichter, schneller Bewegung zu vibrieren, besonders eine Lippe, eine Stimme oder ein Blatt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "fr": "frémir légèrement, vibrer doucement (lèvre, voix, feuille)",
+        "de": "leicht beben oder vibrieren (Lippe, Stimme, Blatt)"
+      },
+      "gap": {
+        "before": "His lower lip began to ",
+        "after": ", and he looked as if he might burst into tears.",
+        "accepted": { "answers": ["quiver"] },
+        "referenceTargetIds": ["quiver", "fidget", "squint", "flinch"],
+        "explanation": {
+          "en": "Only quiver fits: a faint, rapid vibration of the lip.",
+          "fr": "Seul « quiver » convient : une vibration légère et rapide de la lèvre.",
+          "de": "Nur „quiver“ passt: ein leichtes, schnelles Beben der Lippe."
+        }
+      },
+      "listeningOptionTargetIds": ["quiver", "shiver", "twitch", "tremble"]
+    },
+    {
+      "id": "twitch",
+      "term": "twitch",
+      "translations": { "fr": ["tressauter"], "de": ["zucken"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "twitch",
+      "examForms": ["twitch"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/twɪtʃ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "His eyelid twitched throughout the interview.",
+        "translation": {
+          "fr": "Sa paupière tressautait pendant tout l’entretien.",
+          "de": "Sein Augenlid zuckte während des ganzen Vorstellungsgesprächs."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Twitch means to make a small, sudden, involuntary movement of a muscle.",
+        "fr": "Twitch signifie faire un petit mouvement soudain et involontaire d’un muscle.",
+        "de": "Twitch bedeutet, einen kleinen, plötzlichen, unwillkürlichen Muskelzucker auszuführen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "fr": "avoir un petit spasme involontaire d’un muscle",
+        "de": "unwillkürlich zucken (ein Muskel)"
+      },
+      "gap": {
+        "before": "A muscle beneath his left eye would ",
+        "after": " whenever he was tired.",
+        "accepted": { "answers": ["twitch"] },
+        "referenceTargetIds": ["twitch", "wince", "shudder", "recoil"],
+        "explanation": {
+          "en": "Only twitch fits: a small involuntary muscle movement.",
+          "fr": "Seul « twitch » convient : un petit mouvement involontaire d’un muscle.",
+          "de": "Nur „twitch“ passt: eine kleine unwillkürliche Muskelbewegung."
+        }
+      },
+      "listeningOptionTargetIds": ["twitch", "wince", "flinch", "squint"]
+    },
+    {
+      "id": "fidget",
+      "term": "fidget",
+      "translations": {
+        "fr": ["remuer nerveusement", "se tortiller"],
+        "de": ["herumzappeln", "zappeln"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "fidget",
+      "examForms": ["fidget"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈfɪdʒɪt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Stop fidgeting with your pen!",
+        "translation": {
+          "fr": "Arrête de tripoter ton stylo !",
+          "de": "Hör auf, mit deinem Stift herumzuspielen!"
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Fidget means to keep moving your hands or feet restlessly, from nerves or boredom.",
+        "fr": "Fidget signifie remuer sans cesse les mains ou les pieds, par nervosité ou ennui.",
+        "de": "Fidget bedeutet, ständig unruhig Hände oder Füße zu bewegen, aus Nervosität oder Langeweile."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "fr": "remuer sans cesse par nervosité ou ennui",
+        "de": "aus Nervosität oder Langeweile unruhig herumzappeln"
+      },
+      "gap": {
+        "before": "The children began to ",
+        "after": " in their seats during the long speech.",
+        "accepted": { "answers": ["fidget"] },
+        "referenceTargetIds": ["fidget", "shudder", "tremble", "recoil"],
+        "explanation": {
+          "en": "Only fidget fits: restless movement from boredom.",
+          "fr": "Seul « fidget » convient : une agitation causée par l’ennui.",
+          "de": "Nur „fidget“ passt: unruhige Bewegung aus Langeweile."
+        }
+      },
+      "listeningOptionTargetIds": ["fidget", "twitch", "shiver", "cringe"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

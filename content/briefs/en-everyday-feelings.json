@@ -1,0 +1,485 @@
+{
+  "schemaVersion": 2,
+  "id": "en-everyday-feelings",
+  "lang": "en",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Everyday feelings",
+  "objective": {
+    "en": "Say how you feel with ten common adjectives, such as happy, tired, hungry and bored.",
+    "fr": "Dire comment on se sent avec dix adjectifs courants : happy, tired, hungry, bored.",
+    "de": "Mit zehn häufigen Adjektiven sagen, wie man sich fühlt: happy, tired, hungry, bored."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:33:24.522Z",
+    "inputHashes": { "outline": "15e2f2c4f91a58b82eccce3efb3683ea6e9ac7e832c556953d7996567d3041c5" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Ten adjectives for feelings: five for body states (tired, sleepy, hungry, thirsty, cold) and five for moods (happy, sad, bored, fine, angry).",
+    "fr": "Dix adjectifs de sentiments : cinq pour l'état du corps (tired, sleepy, hungry, thirsty, cold) et cinq pour l'humeur (happy, sad, bored, fine, angry).",
+    "de": "Zehn Adjektive für Gefühle: fünf für den Körperzustand (tired, sleepy, hungry, thirsty, cold) und fünf für die Stimmung (happy, sad, bored, fine, angry)."
+  },
+  "targetCount": 10,
+  "countRationale": {
+    "en": "Ten words is the right size for an A1 lesson and covers the outline's list.",
+    "fr": "Dix mots, c'est la bonne taille pour une leçon A1 et cela couvre la liste du plan.",
+    "de": "Zehn Wörter sind die passende Menge für eine A1-Lektion und decken die Liste der Gliederung ab."
+  },
+  "difficultyBalance": {
+    "en": "Most words are core. Thirsty and bored are harder to pronounce and spell.",
+    "fr": "La plupart des mots sont de base. Thirsty et bored sont plus difficiles à prononcer et à écrire.",
+    "de": "Die meisten Wörter sind Grundwörter. Thirsty und bored sind schwerer auszusprechen und zu schreiben."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "body",
+      "label": {
+        "en": "How your body feels",
+        "fr": "Les sensations du corps",
+        "de": "Wie sich der Körper fühlt"
+      },
+      "targetIds": ["tired", "sleepy", "hungry", "thirsty", "cold"],
+      "introduction": {
+        "en": "Use these words after **I'm** to say how your body feels:\n\n- `tired`\n- `sleepy`\n- `hungry`\n- `thirsty`\n- `cold`",
+        "fr": "Utilisez ces mots après **I'm** pour dire ce que ressent votre corps :\n\n- `tired`\n- `sleepy`\n- `hungry`\n- `thirsty`\n- `cold`",
+        "de": "Benutze diese Wörter nach **I'm**, um zu sagen, wie sich dein Körper fühlt:\n\n- `tired`\n- `sleepy`\n- `hungry`\n- `thirsty`\n- `cold`"
+      }
+    },
+    {
+      "id": "mood",
+      "label": { "en": "How you feel inside", "fr": "L'humeur", "de": "Die Stimmung" },
+      "targetIds": ["happy", "sad", "bored", "fine", "angry"],
+      "introduction": {
+        "en": "Use these words after **I'm** to say your mood:\n\n- `happy`\n- `sad`\n- `bored`\n- `fine`\n- `angry`\n\nAnswer **How are you?** with `fine`.",
+        "fr": "Utilisez ces mots après **I'm** pour dire votre humeur :\n\n- `happy`\n- `sad`\n- `bored`\n- `fine`\n- `angry`\n\nRépondez à **How are you?** avec `fine`.",
+        "de": "Benutze diese Wörter nach **I'm**, um deine Stimmung zu nennen:\n\n- `happy`\n- `sad`\n- `bored`\n- `fine`\n- `angry`\n\nAntworte auf **How are you?** mit `fine`."
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "tired",
+      "term": "tired",
+      "translations": { "fr": ["fatigué"], "de": ["müde"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "tired",
+      "examForms": ["tired"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈtaɪəd/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "I'm tired after work.",
+        "translation": {
+          "fr": "Je suis fatigué après le travail.",
+          "de": "Ich bin nach der Arbeit müde."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Tired means you need rest: I'm tired.",
+        "fr": "Tired veut dire qu'on a besoin de repos : I'm tired.",
+        "de": "Tired bedeutet, dass man Ruhe braucht: I'm tired."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "I run for two hours. Now I'm very ",
+        "after": ".",
+        "accepted": { "answers": ["tired"] },
+        "referenceTargetIds": ["tired", "sad", "bored", "cold"],
+        "explanation": {
+          "en": "After a long run you are tired.",
+          "fr": "Après une longue course, on est tired.",
+          "de": "Nach einem langen Lauf ist man tired."
+        }
+      },
+      "listeningOptionTargetIds": ["tired", "thirsty", "bored", "sad"]
+    },
+    {
+      "id": "sleepy",
+      "term": "sleepy",
+      "translations": { "fr": ["qui a sommeil"], "de": ["schläfrig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "sleepy",
+      "examForms": ["sleepy"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈsliːpi/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "The baby is sleepy.",
+        "translation": { "fr": "Le bébé a sommeil.", "de": "Das Baby ist schläfrig." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Sleepy means you want to sleep now: I'm sleepy.",
+        "fr": "Sleepy veut dire qu'on a envie de dormir : I'm sleepy.",
+        "de": "Sleepy bedeutet, dass man jetzt schlafen möchte: I'm sleepy."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "It's midnight and I want my bed. I'm ",
+        "after": ".",
+        "accepted": { "answers": ["sleepy"] },
+        "referenceTargetIds": ["sleepy", "happy", "hungry", "angry"],
+        "explanation": {
+          "en": "At midnight, in need of a bed, you are sleepy.",
+          "fr": "À minuit, avec envie de dormir, on est sleepy.",
+          "de": "Um Mitternacht, mit Lust auf das Bett, ist man sleepy."
+        }
+      },
+      "listeningOptionTargetIds": ["sleepy", "happy", "sad", "hungry"]
+    },
+    {
+      "id": "hungry",
+      "term": "hungry",
+      "translations": { "fr": ["qui a faim"], "de": ["hungrig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "hungry",
+      "examForms": ["hungry"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈhʌŋɡri/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "I'm hungry. Let's eat!",
+        "translation": { "fr": "J'ai faim. Mangeons !", "de": "Ich habe Hunger. Lass uns essen!" }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Hungry means you want food: I'm hungry.",
+        "fr": "Hungry veut dire qu'on a envie de manger : I'm hungry.",
+        "de": "Hungry bedeutet, dass man essen möchte: I'm hungry."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "I want a sandwich. I'm ",
+        "after": ".",
+        "accepted": { "answers": ["hungry"] },
+        "referenceTargetIds": ["hungry", "sad", "cold", "bored"],
+        "explanation": {
+          "en": "You want food, so you are hungry.",
+          "fr": "On veut manger, donc on est hungry.",
+          "de": "Man will essen, also ist man hungry."
+        }
+      },
+      "listeningOptionTargetIds": ["hungry", "angry", "happy", "thirsty"]
+    },
+    {
+      "id": "thirsty",
+      "term": "thirsty",
+      "translations": { "fr": ["qui a soif"], "de": ["durstig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "thirsty",
+      "examForms": ["thirsty"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈθɜːsti/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "We are thirsty after the game.",
+        "translation": {
+          "fr": "Nous avons soif après le match.",
+          "de": "Wir haben nach dem Spiel Durst."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Thirsty means you want to drink: I'm thirsty.",
+        "fr": "Thirsty veut dire qu'on a envie de boire : I'm thirsty.",
+        "de": "Thirsty bedeutet, dass man etwas trinken möchte: I'm thirsty."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "I want a glass of water. I'm ",
+        "after": ".",
+        "accepted": { "answers": ["thirsty"] },
+        "referenceTargetIds": ["thirsty", "happy", "angry", "fine"],
+        "explanation": {
+          "en": "You want water, so you are thirsty.",
+          "fr": "On veut de l'eau, donc on est thirsty.",
+          "de": "Man will Wasser, also ist man thirsty."
+        }
+      },
+      "listeningOptionTargetIds": ["thirsty", "tired", "hungry", "bored"]
+    },
+    {
+      "id": "cold",
+      "term": "cold",
+      "translations": { "fr": ["froid"], "de": ["kalt"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "cold",
+      "examForms": ["cold"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/kəʊld/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "I'm cold. Close the window, please.",
+        "translation": {
+          "fr": "J'ai froid. Fermez la fenêtre, s'il vous plaît.",
+          "de": "Mir ist kalt. Schließ bitte das Fenster."
+        }
+      },
+      "ambiguityNote": {
+        "en": "In English you say I'm cold, not I have cold.",
+        "fr": "En anglais on dit I'm cold (j'ai froid), pas I have cold.",
+        "de": "Im Englischen sagt man I'm cold (mir ist kalt), nicht I have cold."
+      },
+      "explanation": {
+        "en": "Cold describes how your body feels: I'm cold.",
+        "fr": "Cold décrit ce que ressent le corps : I'm cold.",
+        "de": "Cold beschreibt, wie sich der Körper anfühlt: I'm cold."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "It's winter and I have no coat. I'm ",
+        "after": ".",
+        "accepted": { "answers": ["cold"] },
+        "referenceTargetIds": ["cold", "happy", "bored", "fine"],
+        "explanation": {
+          "en": "Without a coat in winter you are cold.",
+          "fr": "Sans manteau en hiver, on est cold.",
+          "de": "Ohne Mantel im Winter ist man cold."
+        }
+      },
+      "listeningOptionTargetIds": ["cold", "tired", "sad", "fine"]
+    },
+    {
+      "id": "happy",
+      "term": "happy",
+      "translations": { "fr": ["heureux"], "de": ["glücklich"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "happy",
+      "examForms": ["happy"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈhæpi/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "She is happy today.",
+        "translation": { "fr": "Elle est heureuse aujourd'hui.", "de": "Sie ist heute glücklich." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Happy is a good feeling: I'm happy.",
+        "fr": "Happy est un sentiment positif : I'm happy.",
+        "de": "Happy ist ein gutes Gefühl: I'm happy."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "It's my birthday. I'm ",
+        "after": "!",
+        "accepted": { "answers": ["happy"] },
+        "referenceTargetIds": ["happy", "sad", "cold", "thirsty"],
+        "explanation": {
+          "en": "On your birthday you are happy.",
+          "fr": "Pour son anniversaire, on est happy.",
+          "de": "Am Geburtstag ist man happy."
+        }
+      },
+      "listeningOptionTargetIds": ["happy", "hungry", "angry", "sleepy"]
+    },
+    {
+      "id": "sad",
+      "term": "sad",
+      "translations": { "fr": ["triste"], "de": ["traurig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "sad",
+      "examForms": ["sad"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/sæd/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "He is sad because his friend is away.",
+        "translation": {
+          "fr": "Il est triste parce que son ami est parti.",
+          "de": "Er ist traurig, weil sein Freund weg ist."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Sad is the opposite of happy: I'm sad.",
+        "fr": "Sad est le contraire de happy : I'm sad.",
+        "de": "Sad ist das Gegenteil von happy: I'm sad."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "My dog is ill. I'm very ",
+        "after": ".",
+        "accepted": { "answers": ["sad"] },
+        "referenceTargetIds": ["sad", "happy", "hungry", "fine"],
+        "explanation": {
+          "en": "When your dog is ill, you are sad.",
+          "fr": "Quand son chien est malade, on est sad.",
+          "de": "Wenn der Hund krank ist, ist man sad."
+        }
+      },
+      "listeningOptionTargetIds": ["sad", "happy", "tired", "angry"]
+    },
+    {
+      "id": "bored",
+      "term": "bored",
+      "translations": { "fr": ["qui s'ennuie"], "de": ["gelangweilt"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "bored",
+      "examForms": ["bored"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/bɔːd/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "I'm bored in this lesson.",
+        "translation": {
+          "fr": "Je m'ennuie dans ce cours.",
+          "de": "Ich langweile mich in dieser Stunde."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Bored (I feel bored) is not the same as boring (the thing is boring).",
+        "fr": "Bored (je m'ennuie) n'est pas boring (la chose est ennuyeuse).",
+        "de": "Bored (ich langweile mich) ist nicht boring (die Sache ist langweilig)."
+      },
+      "explanation": {
+        "en": "Bored means you have nothing interesting to do: I'm bored.",
+        "fr": "Bored veut dire qu'on n'a rien d'intéressant à faire : I'm bored.",
+        "de": "Bored bedeutet, dass man nichts Interessantes zu tun hat: I'm bored."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "This film is long and there is nothing to do. I'm ",
+        "after": ".",
+        "accepted": { "answers": ["bored"] },
+        "referenceTargetIds": ["bored", "hungry", "thirsty", "happy"],
+        "explanation": {
+          "en": "A long film with nothing to do makes you bored.",
+          "fr": "Un long film sans rien à faire nous rend bored.",
+          "de": "Ein langer Film ohne Beschäftigung macht einen bored."
+        }
+      },
+      "listeningOptionTargetIds": ["bored", "tired", "sad", "thirsty"]
+    },
+    {
+      "id": "fine",
+      "term": "fine",
+      "translations": { "fr": ["bien"], "de": ["gut"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "fine",
+      "examForms": ["fine"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/faɪn/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "I'm fine, thanks.",
+        "translation": { "fr": "Je vais bien, merci.", "de": "Mir geht es gut, danke." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Fine means OK or well. It is the usual answer to How are you?",
+        "fr": "Fine veut dire « bien ». C'est la réponse habituelle à How are you ?",
+        "de": "Fine bedeutet „gut“. Es ist die übliche Antwort auf How are you?"
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "How are you? I'm ",
+        "after": ", thanks.",
+        "accepted": { "answers": ["fine"] },
+        "referenceTargetIds": ["fine", "thirsty", "cold", "angry"],
+        "explanation": {
+          "en": "Fine is the usual answer to How are you?",
+          "fr": "Fine est la réponse habituelle à How are you ?",
+          "de": "Fine ist die übliche Antwort auf How are you?"
+        }
+      },
+      "listeningOptionTargetIds": ["fine", "cold", "sad", "angry"]
+    },
+    {
+      "id": "angry",
+      "term": "angry",
+      "translations": { "fr": ["en colère"], "de": ["wütend"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "angry",
+      "examForms": ["angry"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈæŋɡri/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "My brother is angry with me.",
+        "translation": {
+          "fr": "Mon frère est en colère contre moi.",
+          "de": "Mein Bruder ist wütend auf mich."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Angry is a strong bad feeling: I'm angry.",
+        "fr": "Angry est un mauvais sentiment fort : I'm angry.",
+        "de": "Angry ist ein starkes negatives Gefühl: I'm angry."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He breaks my phone. I'm very ",
+        "after": ".",
+        "accepted": { "answers": ["angry"] },
+        "referenceTargetIds": ["angry", "fine", "happy", "thirsty"],
+        "explanation": {
+          "en": "A broken phone makes you angry.",
+          "fr": "Un téléphone cassé nous rend angry.",
+          "de": "Ein kaputtes Handy macht einen angry."
+        }
+      },
+      "listeningOptionTargetIds": ["angry", "hungry", "happy", "sad"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

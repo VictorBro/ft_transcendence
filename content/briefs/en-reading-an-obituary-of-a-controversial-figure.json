@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 2,
+  "id": "en-reading-an-obituary-of-a-controversial-figure",
+  "lang": "en",
+  "level": "C2",
+  "locales": ["en", "fr", "de"],
+  "title": "An obituary that weighs praise and blame",
+  "objective": {
+    "en": "Read the obituary of a divisive politician and work out how it balances praise and blame, and what euphemisms such as “did not suffer fools gladly” really imply.",
+    "fr": "Lire la nécrologie d’un politicien clivant et comprendre comment elle équilibre éloge et blâme, et ce que ses euphémismes impliquent vraiment.",
+    "de": "Den Nachruf auf einen polarisierenden Politiker lesen und erkennen, wie er Lob und Tadel abwägt und was seine Euphemismen tatsächlich andeuten."
+  },
+  "estimatedMinutes": 12,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:53:00.345Z",
+    "inputHashes": { "outline": "aea6d20cd91a0f09d3bb4b11870d4599fee7a6812ba015510a1e0f6ec623c2d3" }
+  },
+  "kind": "reading",
+  "theme": "personal_identification",
+  "genre": "article",
+  "situation": {
+    "en": "A national newspaper publishes the obituary of Sir Gerald Maddox, a long-serving and much-disputed politician, a few days after his death.",
+    "fr": "Un grand quotidien publie, quelques jours après sa mort, la nécrologie de Sir Gerald Maddox, un politicien de longue date et très controversé.",
+    "de": "Eine überregionale Zeitung veröffentlicht wenige Tage nach seinem Tod den Nachruf auf Sir Gerald Maddox, einen langjährigen und höchst umstrittenen Politiker."
+  },
+  "readerTask": {
+    "en": "Decide where the obituary praises and where it blames, and read between the lines of its polite euphemisms.",
+    "fr": "Repérer où la nécrologie loue et où elle blâme, et lire entre les lignes de ses euphémismes polis.",
+    "de": "Erkennen, wo der Nachruf lobt und wo er tadelt, und zwischen den Zeilen seiner höflichen Euphemismen lesen."
+  },
+  "keywords": [
+    {
+      "id": "divisive",
+      "term": "divisive",
+      "translations": { "fr": ["clivant", "qui divise"], "de": ["spaltend", "polarisierend"] },
+      "explanation": {
+        "en": "Causing strong disagreement between people. A divisive figure is loved by some and hated by others.",
+        "fr": "Qui provoque un fort désaccord entre les gens. Une figure clivante est adorée par les uns et détestée par les autres.",
+        "de": "Starken Streit zwischen Menschen auslösend. Eine spaltende Figur wird von den einen geliebt und von den anderen gehasst."
+      }
+    },
+    {
+      "id": "detractors",
+      "term": "detractors",
+      "translations": { "fr": ["détracteurs"], "de": ["Kritiker", "Gegner"] },
+      "explanation": {
+        "en": "People who criticise someone or something, often unfairly. The opposite of admirers.",
+        "fr": "Personnes qui critiquent quelqu’un ou quelque chose, souvent injustement. Le contraire des admirateurs.",
+        "de": "Menschen, die jemanden oder etwas kritisieren, oft ungerecht. Das Gegenteil von Bewunderern."
+      }
+    },
+    {
+      "id": "suffer-fools",
+      "term": "did not suffer fools gladly",
+      "translations": {
+        "fr": ["n’avait aucune patience avec les sots"],
+        "de": ["hatte keine Geduld mit Dummköpfen"]
+      },
+      "explanation": {
+        "en": "A polite way of saying someone was impatient, and often rude, with people they thought stupid.",
+        "fr": "Façon polie de dire que quelqu’un était impatient, souvent désagréable, avec ceux qu’il jugeait sots.",
+        "de": "Eine höfliche Art zu sagen, dass jemand mit Menschen, die er für dumm hielt, ungeduldig und oft unhöflich war."
+      }
+    },
+    {
+      "id": "colourful-life",
+      "term": "a colourful private life",
+      "translations": {
+        "fr": ["une vie privée haute en couleur"],
+        "de": ["ein buntes Privatleben"]
+      },
+      "explanation": {
+        "en": "A euphemism: it hints at affairs or scandals without naming them.",
+        "fr": "Un euphémisme : il laisse entendre des liaisons ou des scandales sans les nommer.",
+        "de": "Ein Euphemismus: Er deutet Affären oder Skandale an, ohne sie zu nennen."
+      }
+    },
+    {
+      "id": "unrepentant",
+      "term": "unrepentant",
+      "translations": { "fr": ["impénitent", "sans remords"], "de": ["reuelos", "uneinsichtig"] },
+      "explanation": {
+        "en": "Feeling no regret or shame for something wrong that one has done.",
+        "fr": "Qui ne ressent ni regret ni honte pour un tort commis.",
+        "de": "Ohne Reue oder Scham über ein begangenes Unrecht."
+      }
+    }
+  ],
+  "documents": {
+    "main": {
+      "targetWords": 575,
+      "contents": {
+        "en": "The obituary of Sir Gerald Maddox, a divisive politician: his rise from humble origins to the Treasury, his impatience, his colourful private life, the mine closures, his departure under a cloud, his private generosity, a balanced final verdict and his retirement.",
+        "fr": "La nécrologie de Sir Gerald Maddox, politicien clivant : son ascension depuis des origines modestes jusqu’au Trésor, son impatience, sa vie privée haute en couleur, les fermetures de mines, son départ en disgrâce, sa générosité discrète, un verdict final nuancé et sa retraite.",
+        "de": "Der Nachruf auf Sir Gerald Maddox, einen polarisierenden Politiker: sein Aufstieg aus einfachen Verhältnissen bis ins Schatzamt, seine Ungeduld, sein buntes Privatleben, die Zechenschließungen, sein unrühmlicher Abgang, seine stille Großzügigkeit, ein ausgewogenes Schlussurteil und sein Ruhestand."
+      }
+    },
+    "exam": {
+      "targetWords": 315,
+      "contents": {
+        "en": "The obituary of Dame Ruth Calloway, a trade union leader: her reputation, her sharp tongue, her tough negotiating style, her achievements and failures, and her few close friends.",
+        "fr": "La nécrologie de Dame Ruth Calloway, dirigeante syndicale : sa réputation, sa langue acérée, son style de négociation dur, ses réussites et ses échecs, et ses rares amis proches.",
+        "de": "Der Nachruf auf Dame Ruth Calloway, eine Gewerkschaftsführerin: ihr Ruf, ihre scharfe Zunge, ihr harter Verhandlungsstil, ihre Erfolge und Misserfolge und ihre wenigen engen Freunde."
+      }
+    }
+  },
+  "skim": { "focus": "purpose" },
+  "detailQuestions": [
+    {
+      "id": "q-fools",
+      "type": "reading_choice",
+      "focus": {
+        "en": "What “did not suffer fools gladly” implies about his manner",
+        "fr": "Ce que « n’avait aucune patience avec les sots » dit de son comportement",
+        "de": "Was „did not suffer fools gladly“ über sein Auftreten andeutet"
+      }
+    },
+    {
+      "id": "q-colourful",
+      "type": "reading_choice",
+      "focus": {
+        "en": "What “a colourful private life” implies",
+        "fr": "Ce que « une vie privée haute en couleur » sous-entend",
+        "de": "Was „a colourful private life“ andeutet"
+      }
+    },
+    {
+      "id": "q-verdict",
+      "type": "reading_choice",
+      "focus": {
+        "en": "How the rival’s verdict balances praise and blame",
+        "fr": "Comment le verdict du rival équilibre éloge et blâme",
+        "de": "Wie das Urteil des Rivalen Lob und Tadel abwägt"
+      }
+    },
+    {
+      "id": "q-committee",
+      "type": "reading_true_false",
+      "focus": {
+        "en": "His reaction to the select committee’s criticism",
+        "fr": "Sa réaction aux critiques de la commission",
+        "de": "Seine Reaktion auf die Kritik des Ausschusses"
+      }
+    }
+  ],
+  "exam": { "types": ["reading_choice", "reading_true_false"] },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

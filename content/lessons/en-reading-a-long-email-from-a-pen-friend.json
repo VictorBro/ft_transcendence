@@ -1,0 +1,400 @@
+{
+  "schemaVersion": 2,
+  "id": "en-reading-a-long-email-from-a-pen-friend",
+  "lang": "en",
+  "level": "B1",
+  "locales": ["en", "fr", "de"],
+  "title": "Reading a long email from a pen friend",
+  "objective": {
+    "en": "Read a long email from a US pen pal and follow how the writer feels about each event and what they hope will happen next.",
+    "fr": "Lire un long e-mail d’un correspondant américain et suivre ce que l’auteur ressent pour chaque événement et ce qu’il espère ensuite.",
+    "de": "Eine lange E-Mail eines US-Brieffreunds lesen und verstehen, was der Schreiber zu jedem Ereignis empfindet und was er sich für die Zukunft erhofft."
+  },
+  "estimatedMinutes": 9,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:33:08.856Z",
+    "inputHashes": {
+      "outline": "c279d708690eedba77319af4d02ec1b41ffd8e4f59045a6e84c0a64eadd7e4c8",
+      "brief": "9627a636f08f635d3852e2dc744c39af3d5641750edcfcbb39bff57699e6e037"
+    }
+  },
+  "kind": "reading",
+  "theme": "relations",
+  "genre": "email",
+  "documents": [
+    {
+      "documentId": "main",
+      "title": null,
+      "meta": ["From: Jake Miller", "To: Sam", "Subject: Lots of news from Denver!"],
+      "paragraphs": [
+        "Hi Sam, thanks for your last email! Sorry it took me so long to reply. Things have been really busy here.",
+        "First, the big news: I got the job at the bookshop downtown! I'm so excited, because I start next Monday. My manager seems really friendly, but I'm a bit worried about working on weekends. I'm hoping to still have time for soccer with my friends.",
+        "Second, my sister Emma is moving to New York in August to study music. I'm really proud of her, but I'll miss her a lot. I can't wait to visit her in the fall, although my mom says the flights are expensive.",
+        "Last weekend my team lost the final by one goal. I was so disappointed, but the coach said we played well. Next season, fingers crossed, we'll win the cup!",
+        "Anyway, enough about me. How is your new school? Are you still nervous about the exams? Write back soon and tell me everything! Your friend, Jake"
+      ],
+      "highlights": [
+        { "keywordId": "so-excited", "text": "I'm so excited" },
+        { "keywordId": "bit-worried", "text": "I'm a bit worried" },
+        { "keywordId": "hoping-to", "text": "I'm hoping to" },
+        { "keywordId": "cant-wait", "text": "I can't wait" },
+        { "keywordId": "fingers-crossed", "text": "fingers crossed" }
+      ]
+    },
+    {
+      "documentId": "exam",
+      "title": null,
+      "meta": ["From: Mia Carter", "To: Sam", "Subject: Summer plans"],
+      "paragraphs": [
+        "Hi Sam, great to hear from you! I'm writing from my grandparents' farm, where we are spending two weeks.",
+        "I'm thrilled because I'm learning to ride a horse. It's harder than it looks, and I fell off twice yesterday! I'm a little nervous about tomorrow's lesson, but my cousin says I'll be fine.",
+        "I'm also hoping to visit you in December. Dad is going to check ticket prices next week, and I'd love to see snow in your town! Write back soon. Mia"
+      ],
+      "highlights": []
+    }
+  ],
+  "steps": [
+    {
+      "id": "flashcards",
+      "stage": "flashcards",
+      "role": "exercise",
+      "label": { "en": "Flashcards", "fr": "Cartes mémoire", "de": "Karteikarten" },
+      "pages": [
+        {
+          "pageId": "flashcards",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Turn each card to learn the key words of the text.",
+            "fr": "Retournez chaque carte pour découvrir les mots clés du texte.",
+            "de": "Dreh jede Karte um und lerne die Schlüsselwörter des Textes."
+          },
+          "items": [
+            {
+              "type": "reading_flashcards",
+              "itemId": "cards",
+              "keywordIds": [
+                "so-excited",
+                "bit-worried",
+                "hoping-to",
+                "cant-wait",
+                "fingers-crossed"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matching",
+      "stage": "matching",
+      "role": "exercise",
+      "label": { "en": "Matching", "fr": "Association", "de": "Zuordnen" },
+      "pages": [
+        {
+          "pageId": "matching",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each key word with its meaning.",
+            "fr": "Associez chaque mot clé à son sens.",
+            "de": "Ordne jedem Schlüsselwort seine Bedeutung zu."
+          },
+          "items": [
+            {
+              "type": "reading_keyword_matching",
+              "itemId": "matching",
+              "keywordIds": [
+                "so-excited",
+                "bit-worried",
+                "hoping-to",
+                "cant-wait",
+                "fingers-crossed"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skim",
+      "stage": "skim",
+      "role": "exercise",
+      "label": { "en": "Skim", "fr": "Survol", "de": "Überfliegen" },
+      "pages": [
+        {
+          "pageId": "skim",
+          "estimatedDurationS": 115,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Look over the document quickly. When the time is up it is put away; then answer the question.",
+            "fr": "Parcourez rapidement le document. À la fin du temps, il disparaît ; répondez ensuite à la question.",
+            "de": "Überfliege das Dokument. Wenn die Zeit um ist, verschwindet es; beantworte dann die Frage."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "skim-document",
+              "documentId": "main",
+              "view": "skim",
+              "skimSeconds": 95
+            },
+            {
+              "type": "reading_skim_choice",
+              "itemId": "skim-question",
+              "focus": "purpose",
+              "question": "Why is Jake writing to Sam?",
+              "options": [
+                { "optionId": "o1", "text": "To share his news and ask about Sam's" },
+                { "optionId": "o2", "text": "To complain about his new job" },
+                { "optionId": "o3", "text": "To invite Sam to a soccer match" },
+                { "optionId": "o4", "text": "To say goodbye for the summer" }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "Jake tells three pieces of news and then asks Sam how his new school is.",
+                "fr": "Jake raconte trois nouvelles puis demande à Sam comment va sa nouvelle école.",
+                "de": "Jake erzählt drei Neuigkeiten und fragt dann Sam, wie seine neue Schule ist."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "detail",
+      "stage": "detail",
+      "role": "exercise",
+      "label": { "en": "Detail", "fr": "Détails", "de": "Details" },
+      "pages": [
+        {
+          "pageId": "detail",
+          "estimatedDurationS": 120,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the document carefully and answer the questions.",
+            "fr": "Lisez le document attentivement et répondez aux questions.",
+            "de": "Lies das Dokument genau und beantworte die Fragen."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "detail-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-job",
+              "question": "How does Jake feel about his new job?",
+              "options": [
+                { "optionId": "o1", "text": "Excited, but a bit worried about weekends" },
+                { "optionId": "o2", "text": "Bored and angry" },
+                { "optionId": "o3", "text": "Afraid of his friendly manager" },
+                { "optionId": "o4", "text": "Sad because he hates books" }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "He says I'm so excited and I'm a bit worried about working on weekends.",
+                "fr": "Il dit I'm so excited et I'm a bit worried about working on weekends.",
+                "de": "Er sagt I'm so excited und I'm a bit worried about working on weekends."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-sister",
+              "question": "What does Jake say about Emma's move to New York?",
+              "options": [
+                { "optionId": "o1", "text": "He is proud of her but will miss her" },
+                { "optionId": "o2", "text": "He is angry that she is leaving" },
+                { "optionId": "o3", "text": "He wants to move with her" },
+                { "optionId": "o4", "text": "He is not interested" }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "He writes I'm really proud of her, but I'll miss her a lot.",
+                "fr": "Il écrit I'm really proud of her, but I'll miss her a lot.",
+                "de": "Er schreibt I'm really proud of her, but I'll miss her a lot."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "q-match",
+              "statement": "Jake's team won the final.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: the team lost the final by one goal, and Jake was disappointed.",
+                "fr": "Faux : l’équipe a perdu la finale d’un but et Jake était déçu.",
+                "de": "Falsch: Das Team hat das Finale mit einem Tor Unterschied verloren, und Jake war enttäuscht."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-hope",
+              "question": "What is Jake hoping for next season?",
+              "options": [
+                { "optionId": "o1", "text": "To win the cup" },
+                { "optionId": "o2", "text": "To change teams" },
+                { "optionId": "o3", "text": "To stop playing" },
+                { "optionId": "o4", "text": "To find a new coach" }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "He writes: Next season, fingers crossed, we'll win the cup!",
+                "fr": "Il écrit : Next season, fingers crossed, we'll win the cup!",
+                "de": "Er schreibt: Next season, fingers crossed, we'll win the cup!"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "structure",
+      "stage": "structure",
+      "role": "exercise",
+      "label": { "en": "Structure", "fr": "Structure", "de": "Aufbau" },
+      "pages": [
+        {
+          "pageId": "structure",
+          "estimatedDurationS": 60,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the information in the order the text gives it.",
+            "fr": "Remettez les informations dans l’ordre du texte.",
+            "de": "Bring die Informationen in die Reihenfolge des Textes."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "structure-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_order",
+              "itemId": "order",
+              "pieces": [
+                { "pieceId": "p3", "text": "Jake's team lost the final." },
+                { "pieceId": "p1", "text": "Jake got a new job." },
+                { "pieceId": "p4", "text": "Jake asks about Sam's school." },
+                { "pieceId": "p2", "text": "Emma is moving to New York." }
+              ],
+              "acceptedOrders": [["p1", "p2", "p3", "p4"]],
+              "answerExplanation": {
+                "en": "Jake writes about the job first, then Emma, then the final, and ends with questions for Sam.",
+                "fr": "Jake parle d’abord du travail, puis d’Emma, puis de la finale, et finit par des questions pour Sam.",
+                "de": "Jake schreibt zuerst über den Job, dann über Emma, dann über das Finale und endet mit Fragen an Sam."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "stage": "exam",
+      "role": "exam",
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam",
+          "estimatedDurationS": 150,
+          "timeLimitS": 225,
+          "instructions": {
+            "en": "Read the new document and answer the questions. No help this time.",
+            "fr": "Lisez le nouveau document et répondez aux questions. Cette fois, sans aide.",
+            "de": "Lies das neue Dokument und beantworte die Fragen. Diesmal ohne Hilfe."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "exam-document",
+              "documentId": "exam",
+              "view": "exam",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-where",
+              "question": "Where is Mia writing from?",
+              "options": [
+                { "optionId": "o1", "text": "Her school" },
+                { "optionId": "o2", "text": "Her grandparents' farm" },
+                { "optionId": "o3", "text": "Sam's town" },
+                { "optionId": "o4", "text": "A horse show" }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "She says: I'm writing from my grandparents' farm.",
+                "fr": "Elle dit : I'm writing from my grandparents' farm.",
+                "de": "Sie sagt: I'm writing from my grandparents' farm."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-feel",
+              "question": "How does Mia feel about tomorrow's riding lesson?",
+              "options": [
+                { "optionId": "o1", "text": "Completely bored" },
+                { "optionId": "o2", "text": "Very angry" },
+                { "optionId": "o3", "text": "A little nervous" },
+                { "optionId": "o4", "text": "Totally relaxed" }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "She writes: I'm a little nervous about tomorrow's lesson.",
+                "fr": "Elle écrit : I'm a little nervous about tomorrow's lesson.",
+                "de": "Sie schreibt: I'm a little nervous about tomorrow's lesson."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "x-fall",
+              "statement": "Mia has never fallen off a horse.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: she fell off twice yesterday.",
+                "fr": "Faux : elle est tombée deux fois hier.",
+                "de": "Falsch: Sie ist gestern zweimal heruntergefallen."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-hope",
+              "question": "What is Mia hoping to do in December?",
+              "options": [
+                { "optionId": "o1", "text": "Start a new job" },
+                { "optionId": "o2", "text": "Buy a horse" },
+                { "optionId": "o3", "text": "Move to a farm" },
+                { "optionId": "o4", "text": "Visit Sam" }
+              ],
+              "answerOptionId": "o4",
+              "answerExplanation": {
+                "en": "She writes: I'm also hoping to visit you in December.",
+                "fr": "Elle écrit : I'm also hoping to visit you in December.",
+                "de": "Sie schreibt: I'm also hoping to visit you in December."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "x-tickets",
+              "statement": "Mia's dad has already bought the tickets.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: he is going to check ticket prices next week.",
+                "fr": "Faux : il va regarder le prix des billets la semaine prochaine.",
+                "de": "Falsch: Er wird nächste Woche die Ticketpreise prüfen."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

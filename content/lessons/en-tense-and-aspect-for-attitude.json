@@ -1,0 +1,1300 @@
+{
+  "schemaVersion": 2,
+  "id": "en-tense-and-aspect-for-attitude",
+  "lang": "en",
+  "level": "C2",
+  "locales": ["en", "fr", "de"],
+  "title": "Tense and aspect for politeness and attitude",
+  "objective": {
+    "en": "Use past forms to sound tentative, continuous forms with always to sound irritated, and will have to make confident assumptions about the present.",
+    "fr": "Utiliser le passé pour paraître hésitant, le continu avec always pour montrer l'agacement, et will have pour faire des suppositions sur le présent.",
+    "de": "Vergangenheitsformen für zurückhaltende Bitten, Continuous-Formen mit always für Ärger und will have für Vermutungen über die Gegenwart verwenden."
+  },
+  "estimatedMinutes": 21,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:54:40.952Z",
+    "inputHashes": {
+      "outline": "27023d2a63824841ff50568a98ed3a8b8ec6f3ff768faa4a96f7098dbc0dcfe3",
+      "brief": "10719b70d7e13ab2744ce412320db9717f3db9a1c8b995fa09d7ed8376b157c9"
+    }
+  },
+  "kind": "grammar",
+  "topic": "verb_usage",
+  "steps": [
+    {
+      "id": "block-tentative-explanation",
+      "role": "explanation",
+      "blockId": "block-tentative",
+      "label": {
+        "en": "Sounding tentative with past forms",
+        "fr": "Paraître hésitant avec le passé",
+        "de": "Zurückhaltend klingen mit der Vergangenheit"
+      },
+      "pages": [
+        {
+          "pageId": "block-tentative-explanation",
+          "estimatedDurationS": 100,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the explanation and the examples.",
+            "fr": "Lisez l’explication et les exemples.",
+            "de": "Lies die Erklärung und die Beispiele."
+          },
+          "items": [
+            {
+              "type": "grammar_explanation",
+              "itemId": "block-tentative-explanation",
+              "ruleIds": ["rule-tentative-past"],
+              "heading": {
+                "en": "The past as a polite step back",
+                "fr": "Le passé comme pas en arrière poli",
+                "de": "Die Vergangenheit als höflicher Schritt zurück"
+              },
+              "text": {
+                "en": "To sound **tentative**, English steps back into the past. The past does not mean past time here: it adds distance and makes a request easier to refuse.\n\n- `I hope you can help.` becomes `I was hoping you could help.`\n- `I want to ask something.` becomes `I wanted to ask something.`\n- The past continuous (`was hoping`, `was wondering`) is softer than the past simple.\n\nAdd `could` or `would` in the second part: `I was wondering if you could...`",
+                "fr": "Pour paraître **hésitant** et poli, l'anglais recule dans le passé. Ce passé n'exprime pas le temps : il crée de la distance et rend une demande plus facile à refuser.\n\n- `I hope you can help.` devient `I was hoping you could help.`\n- `I want to ask something.` devient `I wanted to ask something.`\n- Le past continuous (`was hoping`, `was wondering`) est plus doux que le prétérit simple.\n\nAjoutez `could` ou `would` dans la seconde partie : `I was wondering if you could...`",
+                "de": "Um **zurückhaltend** und höflich zu klingen, geht das Englische in die Vergangenheit zurück. Diese Vergangenheit meint keine Zeit: Sie schafft Abstand und macht eine Bitte leichter ablehnbar.\n\n- `I hope you can help.` wird zu `I was hoping you could help.`\n- `I want to ask something.` wird zu `I wanted to ask something.`\n- Das Past Continuous (`was hoping`, `was wondering`) klingt weicher als das Simple Past.\n\nSetze im zweiten Teil `could` oder `would` ein: `I was wondering if you could...`"
+              },
+              "formTable": [
+                {
+                  "subject": "I hope you can help.",
+                  "form": "I was hoping you could help.",
+                  "example": null
+                },
+                {
+                  "subject": "I want to ask something.",
+                  "form": "I wanted to ask something.",
+                  "example": null
+                },
+                {
+                  "subject": "We wonder if you'd come.",
+                  "form": "We were wondering if you'd come.",
+                  "example": null
+                }
+              ],
+              "examples": [
+                {
+                  "text": "I was hoping you could give me a hand.",
+                  "translation": {
+                    "fr": "J'espérais que tu pourrais me donner un coup de main.",
+                    "de": "Ich hatte gehofft, du könntest mir helfen."
+                  }
+                },
+                {
+                  "text": "We were wondering whether you'd like to join us.",
+                  "translation": {
+                    "fr": "Nous nous demandions si vous aimeriez nous rejoindre.",
+                    "de": "Wir haben uns gefragt, ob du Lust hättest, dich uns anzuschließen."
+                  }
+                },
+                {
+                  "text": "I wanted to ask you a favour.",
+                  "translation": {
+                    "fr": "Je voulais vous demander un service.",
+                    "de": "Ich wollte dich um einen Gefallen bitten."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-tent-choice",
+      "role": "exercise",
+      "blockId": "block-tentative",
+      "label": {
+        "en": "Tentative gaps: choose",
+        "fr": "Phrases hésitantes : choisir",
+        "de": "Zurückhaltende Lücken: wählen"
+      },
+      "pages": [
+        {
+          "pageId": "ex-tent-choice-page",
+          "estimatedDurationS": 45,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-tent-choice-1",
+              "before": "I",
+              "after": "hoping you could lend me your notes.",
+              "choices": [
+                { "choiceId": "c-1", "text": "am" },
+                { "choiceId": "c-2", "text": "was" },
+                { "choiceId": "c-3", "text": "had" },
+                { "choiceId": "c-4", "text": "will" }
+              ],
+              "answerChoiceId": "c-2",
+              "hint": {
+                "en": "Sound tentative: use a past form.",
+                "fr": "Soyez hésitant : employez une forme du passé.",
+                "de": "Klinge zurückhaltend: Benutze eine Vergangenheitsform."
+              },
+              "ruleIds": ["rule-tentative-past"],
+              "answerExplanation": {
+                "en": "Was hoping is a tentative way to make a request; am hoping sounds more direct.",
+                "fr": "Was hoping est une façon hésitante de demander ; am hoping est plus direct.",
+                "de": "Was hoping klingt zurückhaltend; am hoping wirkt direkter."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-tent-choice-2",
+              "before": "I",
+              "after": "to ask whether you could cover my shift on Friday.",
+              "choices": [
+                { "choiceId": "c-1", "text": "wanted" },
+                { "choiceId": "c-2", "text": "want" },
+                { "choiceId": "c-3", "text": "will want" },
+                { "choiceId": "c-4", "text": "am wanting" }
+              ],
+              "answerChoiceId": "c-1",
+              "hint": {
+                "en": "Sound tentative: use the past simple.",
+                "fr": "Soyez hésitant : employez le prétérit.",
+                "de": "Klinge zurückhaltend: Benutze das Simple Past."
+              },
+              "ruleIds": ["rule-tentative-past"],
+              "answerExplanation": {
+                "en": "Wanted to ask is softer than want to ask.",
+                "fr": "Wanted to ask est plus doux que want to ask.",
+                "de": "Wanted to ask klingt weicher als want to ask."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-tent-choice-3",
+              "before": "Excuse me, I",
+              "after": "if you could turn the music down a little.",
+              "choices": [
+                { "choiceId": "c-1", "text": "am wondering" },
+                { "choiceId": "c-2", "text": "wonder" },
+                { "choiceId": "c-3", "text": "was wondering" },
+                { "choiceId": "c-4", "text": "have wondered" }
+              ],
+              "answerChoiceId": "c-3",
+              "hint": {
+                "en": "Sound as tentative as possible: use the past continuous.",
+                "fr": "Soyez le plus hésitant possible : employez le past continuous.",
+                "de": "Klinge so zurückhaltend wie möglich: Benutze das Past Continuous."
+              },
+              "ruleIds": ["rule-tentative-past"],
+              "answerExplanation": {
+                "en": "Was wondering is the softest way to ask.",
+                "fr": "Was wondering est la façon la plus douce de demander.",
+                "de": "Was wondering ist die weichste Art zu fragen."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-tent-typing",
+      "role": "exercise",
+      "blockId": "block-tentative",
+      "label": {
+        "en": "Tentative gaps: type",
+        "fr": "Phrases hésitantes : écrire",
+        "de": "Zurückhaltende Lücken: schreiben"
+      },
+      "pages": [
+        {
+          "pageId": "ex-tent-typing-page",
+          "estimatedDurationS": 75,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-tent-typing-1",
+              "before": "I",
+              "after": "wondering whether you'd mind closing the window.",
+              "accepted": { "answers": ["was"] },
+              "hint": {
+                "en": "past tense of be, to sound tentative",
+                "fr": "passé de be, pour paraître hésitant",
+                "de": "Vergangenheit von be, zurückhaltend"
+              },
+              "ruleIds": ["rule-tentative-past"],
+              "answerExplanation": {
+                "en": "Was wondering softens the request.",
+                "fr": "Was wondering adoucit la demande.",
+                "de": "Was wondering macht die Bitte weicher."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-tent-typing-2",
+              "before": "We",
+              "after": "thinking of asking whether the deadline could be moved.",
+              "accepted": { "answers": ["were"] },
+              "hint": {
+                "en": "past continuous, tentative",
+                "fr": "past continuous, hésitant",
+                "de": "Past Continuous, zurückhaltend"
+              },
+              "ruleIds": ["rule-tentative-past"],
+              "answerExplanation": {
+                "en": "With we, the tentative past continuous uses were.",
+                "fr": "Avec we, le past continuous hésitant utilise were.",
+                "de": "Mit we steht im zurückhaltenden Past Continuous were."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-tent-typing-3",
+              "before": "I",
+              "after": "if you could possibly send me the file by noon.",
+              "accepted": { "answers": ["wondered"] },
+              "hint": {
+                "en": "past simple of wonder",
+                "fr": "prétérit de wonder",
+                "de": "Simple Past von wonder"
+              },
+              "ruleIds": ["rule-tentative-past"],
+              "answerExplanation": {
+                "en": "The past simple wondered also sounds polite and indirect.",
+                "fr": "Le prétérit wondered est aussi poli et indirect.",
+                "de": "Das Simple Past wondered klingt ebenfalls höflich und indirekt."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-tent-order",
+      "role": "exercise",
+      "blockId": "block-tentative",
+      "label": {
+        "en": "Tentative word order",
+        "fr": "Ordre des mots hésitants",
+        "de": "Zurückhaltende Wortstellung"
+      },
+      "pages": [
+        {
+          "pageId": "ex-tent-order-page",
+          "estimatedDurationS": 90,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in the right order.",
+            "fr": "Mettez les mots dans le bon ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-tent-order-1",
+              "tokens": [
+                { "tokenId": "a1", "text": "could" },
+                { "tokenId": "a2", "text": "I" },
+                { "tokenId": "a3", "text": "help" },
+                { "tokenId": "a4", "text": "if" },
+                { "tokenId": "a5", "text": "was" },
+                { "tokenId": "a6", "text": "me" },
+                { "tokenId": "a7", "text": "you" },
+                { "tokenId": "a8", "text": "wondering" },
+                { "tokenId": "a9", "text": "." }
+              ],
+              "acceptedOrders": [["a2", "a5", "a8", "a4", "a7", "a1", "a3", "a6", "a9"]],
+              "ruleIds": ["rule-tentative-past"],
+              "answerExplanation": {
+                "en": "I was wondering if you could help me: past continuous, then could.",
+                "fr": "I was wondering if you could help me : past continuous, puis could.",
+                "de": "I was wondering if you could help me: Past Continuous, dann could."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-tent-order-2",
+              "tokens": [
+                { "tokenId": "b1", "text": "join" },
+                { "tokenId": "b2", "text": "hoping" },
+                { "tokenId": "b3", "text": "We" },
+                { "tokenId": "b4", "text": "us" },
+                { "tokenId": "b5", "text": "would" },
+                { "tokenId": "b6", "text": "were" },
+                { "tokenId": "b7", "text": "you" },
+                { "tokenId": "b8", "text": "." }
+              ],
+              "acceptedOrders": [["b3", "b6", "b2", "b7", "b5", "b1", "b4", "b8"]],
+              "ruleIds": ["rule-tentative-past"],
+              "answerExplanation": {
+                "en": "We were hoping you would join us: the past forms keep the invitation polite.",
+                "fr": "We were hoping you would join us : le passé garde l'invitation polie.",
+                "de": "We were hoping you would join us: Die Vergangenheit hält die Einladung höflich."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-tent-order-3",
+              "tokens": [
+                { "tokenId": "c1", "text": "ask" },
+                { "tokenId": "c2", "text": "something" },
+                { "tokenId": "c3", "text": "I" },
+                { "tokenId": "c4", "text": "to" },
+                { "tokenId": "c5", "text": "you" },
+                { "tokenId": "c6", "text": "wanted" },
+                { "tokenId": "c7", "text": "." }
+              ],
+              "acceptedOrders": [["c3", "c6", "c4", "c1", "c5", "c2", "c7"]],
+              "ruleIds": ["rule-tentative-past"],
+              "answerExplanation": {
+                "en": "I wanted to ask you something: wanted is softer than want.",
+                "fr": "I wanted to ask you something : wanted est plus doux que want.",
+                "de": "I wanted to ask you something: wanted ist weicher als want."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "block-irritation-explanation",
+      "role": "explanation",
+      "blockId": "block-irritation",
+      "label": {
+        "en": "Showing irritation with always and the continuous",
+        "fr": "Montrer son agacement avec always et le continu",
+        "de": "Ärger zeigen mit always und Continuous"
+      },
+      "pages": [
+        {
+          "pageId": "block-irritation-explanation",
+          "estimatedDurationS": 90,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the explanation and the examples.",
+            "fr": "Lisez l’explication et les exemples.",
+            "de": "Lies die Erklärung und die Beispiele."
+          },
+          "items": [
+            {
+              "type": "grammar_explanation",
+              "itemId": "block-irritation-explanation",
+              "ruleIds": ["rule-irritation-continuous"],
+              "heading": {
+                "en": "Complaining about habits",
+                "fr": "Se plaindre des habitudes",
+                "de": "Über Gewohnheiten klagen"
+              },
+              "text": {
+                "en": "Use the present continuous with **always**, **constantly** or **forever** to show irritation at a repeated habit. The speaker means: this happens too often.\n\n- `She's constantly losing her keys.`\n- `He's always leaving the lights on.`\n- `You were forever interrupting me.` (a past habit that annoyed you)\n\nThe simple present is neutral: `She loses her keys.` Tone and stress carry the complaint.",
+                "fr": "Employez le présent continu avec **always**, **constantly** ou **forever** pour montrer votre agacement devant une habitude qui se répète. Le sens : cela arrive trop souvent.\n\n- `She's constantly losing her keys.`\n- `He's always leaving the lights on.`\n- `You were forever interrupting me.` (une habitude passée qui agaçait)\n\nLe présent simple est neutre : `She loses her keys.` Le ton et l'accent portent le reproche.",
+                "de": "Benutze das Present Continuous mit **always**, **constantly** oder **forever**, um Ärger über eine wiederholte Gewohnheit zu zeigen. Gemeint ist: Das passiert zu oft.\n\n- `She's constantly losing her keys.`\n- `He's always leaving the lights on.`\n- `You were forever interrupting me.` (eine vergangene Gewohnheit, die störte)\n\nDas Simple Present ist neutral: `She loses her keys.` Ton und Betonung tragen den Vorwurf."
+              },
+              "formTable": [
+                {
+                  "subject": "She loses her keys.",
+                  "form": "She's constantly losing her keys.",
+                  "example": null
+                },
+                {
+                  "subject": "He leaves the lights on.",
+                  "form": "He's always leaving the lights on.",
+                  "example": null
+                }
+              ],
+              "examples": [
+                {
+                  "text": "She's constantly losing her keys.",
+                  "translation": {
+                    "fr": "Elle perd sans arrêt ses clés.",
+                    "de": "Sie verliert ständig ihre Schlüssel."
+                  }
+                },
+                {
+                  "text": "He's always leaving the lights on.",
+                  "translation": {
+                    "fr": "Il laisse toujours les lumières allumées.",
+                    "de": "Er lässt immer das Licht an."
+                  }
+                },
+                {
+                  "text": "You were forever interrupting me.",
+                  "translation": {
+                    "fr": "Tu n'arrêtais pas de m'interrompre.",
+                    "de": "Du hast mich ständig unterbrochen."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-irr-choice",
+      "role": "exercise",
+      "blockId": "block-irritation",
+      "label": {
+        "en": "Irritated gaps: choose",
+        "fr": "Phrases agacées : choisir",
+        "de": "Genervte Lücken: wählen"
+      },
+      "pages": [
+        {
+          "pageId": "ex-irr-choice-page",
+          "estimatedDurationS": 45,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-irr-choice-1",
+              "before": "My brother",
+              "after": "always borrowing my charger without asking!",
+              "choices": [
+                { "choiceId": "c-1", "text": "does" },
+                { "choiceId": "c-2", "text": "is" },
+                { "choiceId": "c-3", "text": "has" },
+                { "choiceId": "c-4", "text": "will" }
+              ],
+              "answerChoiceId": "c-2",
+              "hint": {
+                "en": "Show irritation at a habit happening now.",
+                "fr": "Montrez l'agacement devant une habitude actuelle.",
+                "de": "Zeige Ärger über eine aktuelle Gewohnheit."
+              },
+              "ruleIds": ["rule-irritation-continuous"],
+              "answerExplanation": {
+                "en": "Is + always + -ing shows irritation at a repeated habit.",
+                "fr": "Is + always + -ing montre l'agacement devant une habitude répétée.",
+                "de": "Is + always + -ing zeigt Ärger über eine wiederholte Gewohnheit."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-irr-choice-2",
+              "before": "Our neighbours",
+              "after": "constantly complaining about the noise.",
+              "choices": [
+                { "choiceId": "c-1", "text": "do" },
+                { "choiceId": "c-2", "text": "have" },
+                { "choiceId": "c-3", "text": "are" },
+                { "choiceId": "c-4", "text": "can" }
+              ],
+              "answerChoiceId": "c-3",
+              "hint": {
+                "en": "Show irritation at a habit happening now.",
+                "fr": "Montrez l'agacement devant une habitude actuelle.",
+                "de": "Zeige Ärger über eine aktuelle Gewohnheit."
+              },
+              "ruleIds": ["rule-irritation-continuous"],
+              "answerExplanation": {
+                "en": "Are + constantly + -ing turns the habit into a complaint.",
+                "fr": "Are + constantly + -ing transforme l'habitude en reproche.",
+                "de": "Are + constantly + -ing macht die Gewohnheit zur Beschwerde."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-irr-choice-3",
+              "before": "Honestly, you",
+              "after": "forever leaving your shoes in the hallway!",
+              "choices": [
+                { "choiceId": "c-1", "text": "are" },
+                { "choiceId": "c-2", "text": "get" },
+                { "choiceId": "c-3", "text": "had" },
+                { "choiceId": "c-4", "text": "be" }
+              ],
+              "answerChoiceId": "c-1",
+              "hint": {
+                "en": "Show irritation at a habit happening now.",
+                "fr": "Montrez l'agacement devant une habitude actuelle.",
+                "de": "Zeige Ärger über eine aktuelle Gewohnheit."
+              },
+              "ruleIds": ["rule-irritation-continuous"],
+              "answerExplanation": {
+                "en": "You are forever leaving shows irritation: present continuous with forever.",
+                "fr": "You are forever leaving montre l'agacement : présent continu avec forever.",
+                "de": "You are forever leaving zeigt Ärger: Present Continuous mit forever."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-irr-typing",
+      "role": "exercise",
+      "blockId": "block-irritation",
+      "label": {
+        "en": "Irritated gaps: type",
+        "fr": "Phrases agacées : écrire",
+        "de": "Genervte Lücken: schreiben"
+      },
+      "pages": [
+        {
+          "pageId": "ex-irr-typing-page",
+          "estimatedDurationS": 75,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-irr-typing-1",
+              "before": "She",
+              "after": "always forgetting to lock the door!",
+              "accepted": { "answers": ["is"] },
+              "hint": {
+                "en": "present continuous, to show irritation",
+                "fr": "présent continu, pour montrer l'agacement",
+                "de": "Present Continuous, um Ärger zu zeigen"
+              },
+              "ruleIds": ["rule-irritation-continuous"],
+              "answerExplanation": {
+                "en": "Is + always + -ing shows irritation at a repeated habit.",
+                "fr": "Is + always + -ing montre l'agacement devant une habitude répétée.",
+                "de": "Is + always + -ing zeigt Ärger über eine wiederholte Gewohnheit."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-irr-typing-2",
+              "before": "When we were flatmates, you",
+              "after": "always leaving dirty plates in the sink.",
+              "accepted": { "answers": ["were"] },
+              "hint": {
+                "en": "past continuous, irritation",
+                "fr": "past continuous, agacement",
+                "de": "Past Continuous, Ärger"
+              },
+              "ruleIds": ["rule-irritation-continuous"],
+              "answerExplanation": {
+                "en": "Were + always + -ing shows irritation at a past habit.",
+                "fr": "Were + always + -ing montre l'agacement devant une habitude passée.",
+                "de": "Were + always + -ing zeigt Ärger über eine frühere Gewohnheit."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-irr-typing-3",
+              "before": "They",
+              "after": "constantly changing the plan at the last minute.",
+              "accepted": { "answers": ["are"] },
+              "hint": {
+                "en": "present continuous, irritation",
+                "fr": "présent continu, agacement",
+                "de": "Present Continuous, Ärger"
+              },
+              "ruleIds": ["rule-irritation-continuous"],
+              "answerExplanation": {
+                "en": "Are + constantly + -ing turns the habit into a complaint.",
+                "fr": "Are + constantly + -ing transforme l'habitude en reproche.",
+                "de": "Are + constantly + -ing macht die Gewohnheit zur Beschwerde."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-irr-order",
+      "role": "exercise",
+      "blockId": "block-irritation",
+      "label": {
+        "en": "Irritated word order",
+        "fr": "Ordre des mots agacés",
+        "de": "Genervte Wortstellung"
+      },
+      "pages": [
+        {
+          "pageId": "ex-irr-order-page",
+          "estimatedDurationS": 90,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in the right order.",
+            "fr": "Mettez les mots dans le bon ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-irr-order-1",
+              "tokens": [
+                { "tokenId": "d1", "text": "checking" },
+                { "tokenId": "d2", "text": "He" },
+                { "tokenId": "d3", "text": "phone" },
+                { "tokenId": "d4", "text": "constantly" },
+                { "tokenId": "d5", "text": "is" },
+                { "tokenId": "d6", "text": "his" },
+                { "tokenId": "d7", "text": "." }
+              ],
+              "acceptedOrders": [
+                ["d2", "d5", "d4", "d1", "d6", "d3", "d7"],
+                ["d2", "d5", "d1", "d6", "d3", "d4", "d7"]
+              ],
+              "ruleIds": ["rule-irritation-continuous"],
+              "answerExplanation": {
+                "en": "He is constantly checking his phone: is + adverb + -ing.",
+                "fr": "He is constantly checking his phone : is + adverbe + -ing.",
+                "de": "He is constantly checking his phone: is + Adverb + -ing."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-irr-order-2",
+              "tokens": [
+                { "tokenId": "e1", "text": "interrupting" },
+                { "tokenId": "e2", "text": "always" },
+                { "tokenId": "e3", "text": "me" },
+                { "tokenId": "e4", "text": "You" },
+                { "tokenId": "e5", "text": "are" },
+                { "tokenId": "e6", "text": "." }
+              ],
+              "acceptedOrders": [["e4", "e5", "e2", "e1", "e3", "e6"]],
+              "ruleIds": ["rule-irritation-continuous"],
+              "answerExplanation": {
+                "en": "You are always interrupting me: always goes between are and the -ing form.",
+                "fr": "You are always interrupting me : always se place entre are et la forme en -ing.",
+                "de": "You are always interrupting me: always steht zwischen are und der -ing-Form."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-irr-order-3",
+              "tokens": [
+                { "tokenId": "f1", "text": "shouting" },
+                { "tokenId": "f2", "text": "The" },
+                { "tokenId": "f3", "text": "at" },
+                { "tokenId": "f4", "text": "were" },
+                { "tokenId": "f5", "text": "always" },
+                { "tokenId": "f6", "text": "neighbours" },
+                { "tokenId": "f7", "text": "night" },
+                { "tokenId": "f8", "text": "." }
+              ],
+              "acceptedOrders": [["f2", "f6", "f4", "f5", "f1", "f3", "f7", "f8"]],
+              "ruleIds": ["rule-irritation-continuous"],
+              "answerExplanation": {
+                "en": "The neighbours were always shouting at night: past continuous for a past annoyance.",
+                "fr": "The neighbours were always shouting at night : past continuous pour une gêne passée.",
+                "de": "The neighbours were always shouting at night: Past Continuous für früheren Ärger."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "block-assumption-explanation",
+      "role": "explanation",
+      "blockId": "block-assumption",
+      "label": {
+        "en": "Making assumptions with will have",
+        "fr": "Faire des suppositions avec will have",
+        "de": "Vermutungen äußern mit will have"
+      },
+      "pages": [
+        {
+          "pageId": "block-assumption-explanation",
+          "estimatedDurationS": 100,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the explanation and the examples.",
+            "fr": "Lisez l’explication et les exemples.",
+            "de": "Lies die Erklärung und die Beispiele."
+          },
+          "items": [
+            {
+              "type": "grammar_explanation",
+              "itemId": "block-assumption-explanation",
+              "ruleIds": ["rule-assumption-future-perfect"],
+              "heading": {
+                "en": "Guessing with the future perfect",
+                "fr": "Deviner avec le futur antérieur anglais",
+                "de": "Vermuten mit dem Future Perfect"
+              },
+              "text": {
+                "en": "To make an **assumption** about the present, use `will have` plus a past participle, or `will have been` plus an -ing form for something that has been going on for a while.\n\n- `You'll have been travelling all day.`\n- `She'll have heard the news by now.`\n- `You'll have had a long journey.`\n\nThe speaker is not predicting the future. They are guessing what is probably true now or has probably already happened.",
+                "fr": "Pour faire une **supposition** sur le présent, employez `will have` + participe passé, ou `will have been` + forme en -ing pour une action qui dure depuis un moment.\n\n- `You'll have been travelling all day.`\n- `She'll have heard the news by now.`\n- `You'll have had a long journey.`\n\nLe locuteur ne prédit pas l'avenir. Il devine ce qui est probablement vrai maintenant ou déjà arrivé.",
+                "de": "Für eine **Vermutung** über die Gegenwart nimmst du `will have` plus Partizip Perfekt, oder `will have been` plus -ing-Form für etwas, das schon eine Weile andauert.\n\n- `You'll have been travelling all day.`\n- `She'll have heard the news by now.`\n- `You'll have had a long journey.`\n\nDer Sprecher sagt nicht die Zukunft voraus. Er vermutet, was jetzt wahrscheinlich stimmt oder schon geschehen ist."
+              },
+              "formTable": [
+                {
+                  "subject": "You've been travelling all day.",
+                  "form": "You'll have been travelling all day.",
+                  "example": null
+                },
+                {
+                  "subject": "She has heard the news.",
+                  "form": "She'll have heard the news by now.",
+                  "example": null
+                }
+              ],
+              "examples": [
+                {
+                  "text": "You'll have been travelling all day.",
+                  "translation": {
+                    "fr": "Vous avez dû voyager toute la journée.",
+                    "de": "Du bist sicher den ganzen Tag unterwegs gewesen."
+                  }
+                },
+                {
+                  "text": "She'll have heard the news by now.",
+                  "translation": {
+                    "fr": "Elle aura sûrement appris la nouvelle maintenant.",
+                    "de": "Sie wird die Neuigkeit inzwischen sicher gehört haben."
+                  }
+                },
+                {
+                  "text": "You'll have had a long journey.",
+                  "translation": {
+                    "fr": "Vous avez dû faire un long voyage.",
+                    "de": "Du hattest sicher eine lange Reise."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-ass-choice",
+      "role": "exercise",
+      "blockId": "block-assumption",
+      "label": {
+        "en": "Assumption gaps: choose",
+        "fr": "Phrases de supposition : choisir",
+        "de": "Vermutungslücken: wählen"
+      },
+      "pages": [
+        {
+          "pageId": "ex-ass-choice-page",
+          "estimatedDurationS": 45,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-ass-choice-1",
+              "before": "You've just landed from Sydney, so you",
+              "after": "been travelling for nearly a day.",
+              "choices": [
+                { "choiceId": "c-1", "text": "will" },
+                { "choiceId": "c-2", "text": "would" },
+                { "choiceId": "c-3", "text": "will have" },
+                { "choiceId": "c-4", "text": "are" }
+              ],
+              "answerChoiceId": "c-3",
+              "hint": {
+                "en": "Make an assumption about now.",
+                "fr": "Faites une supposition sur le présent.",
+                "de": "Äußere eine Vermutung über die Gegenwart."
+              },
+              "ruleIds": ["rule-assumption-future-perfect"],
+              "answerExplanation": {
+                "en": "Will have been + -ing guesses about something that has been going on.",
+                "fr": "Will have been + -ing devine une action qui a duré jusqu'à maintenant.",
+                "de": "Will have been + -ing vermutet etwas, das bis jetzt angedauert hat."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-ass-choice-2",
+              "before": "I expect they",
+              "after": "heard the news by now.",
+              "choices": [
+                { "choiceId": "c-1", "text": "will have" },
+                { "choiceId": "c-2", "text": "will" },
+                { "choiceId": "c-3", "text": "are" },
+                { "choiceId": "c-4", "text": "would" }
+              ],
+              "answerChoiceId": "c-1",
+              "hint": {
+                "en": "Make an assumption about what has probably happened.",
+                "fr": "Supposez ce qui s'est probablement passé.",
+                "de": "Vermute, was wahrscheinlich geschehen ist."
+              },
+              "ruleIds": ["rule-assumption-future-perfect"],
+              "answerExplanation": {
+                "en": "Will have + participle guesses what has probably happened already.",
+                "fr": "Will have + participe devine ce qui s'est probablement déjà passé.",
+                "de": "Will have + Partizip vermutet, was wahrscheinlich schon geschehen ist."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-ass-choice-3",
+              "before": "She",
+              "after": "working since six, so don't expect her to be fresh.",
+              "choices": [
+                { "choiceId": "c-1", "text": "will be" },
+                { "choiceId": "c-2", "text": "will have been" },
+                { "choiceId": "c-3", "text": "will have" },
+                { "choiceId": "c-4", "text": "would be" }
+              ],
+              "answerChoiceId": "c-2",
+              "hint": {
+                "en": "Make an assumption about how long she has been working.",
+                "fr": "Supposez depuis combien de temps elle travaille.",
+                "de": "Vermute, wie lange sie schon arbeitet."
+              },
+              "ruleIds": ["rule-assumption-future-perfect"],
+              "answerExplanation": {
+                "en": "Will have been + -ing guesses about an activity lasting until now.",
+                "fr": "Will have been + -ing devine une activité qui dure jusqu'à maintenant.",
+                "de": "Will have been + -ing vermutet eine Tätigkeit bis jetzt."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-ass-typing",
+      "role": "exercise",
+      "blockId": "block-assumption",
+      "label": {
+        "en": "Assumption gaps: type",
+        "fr": "Phrases de supposition : écrire",
+        "de": "Vermutungslücken: schreiben"
+      },
+      "pages": [
+        {
+          "pageId": "ex-ass-typing-page",
+          "estimatedDurationS": 75,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-ass-typing-1",
+              "before": "You",
+              "after": "been driving all night.",
+              "accepted": { "answers": ["will have"] },
+              "hint": {
+                "en": "assumption: will + have",
+                "fr": "supposition : will + have",
+                "de": "Vermutung: will + have"
+              },
+              "ruleIds": ["rule-assumption-future-perfect"],
+              "answerExplanation": {
+                "en": "Will have been + -ing guesses about an activity until now.",
+                "fr": "Will have been + -ing devine une activité jusqu'à maintenant.",
+                "de": "Will have been + -ing vermutet eine Tätigkeit bis jetzt."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-ass-typing-2",
+              "before": "He",
+              "after": "forgotten about the meeting by now.",
+              "accepted": { "answers": ["will have"] },
+              "hint": {
+                "en": "assumption with will",
+                "fr": "supposition avec will",
+                "de": "Vermutung mit will"
+              },
+              "ruleIds": ["rule-assumption-future-perfect"],
+              "answerExplanation": {
+                "en": "Will have + participle guesses what has probably happened.",
+                "fr": "Will have + participe devine ce qui s'est probablement passé.",
+                "de": "Will have + Partizip vermutet, was wahrscheinlich geschehen ist."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-ass-typing-3",
+              "before": "They",
+              "after": "waiting for ages, so let's hurry.",
+              "accepted": { "answers": ["will have been"] },
+              "hint": {
+                "en": "assumption about a continuing action",
+                "fr": "supposition sur une action qui dure",
+                "de": "Vermutung über eine andauernde Handlung"
+              },
+              "ruleIds": ["rule-assumption-future-perfect"],
+              "answerExplanation": {
+                "en": "Will have been + -ing guesses about waiting that has lasted until now.",
+                "fr": "Will have been + -ing devine une attente qui dure jusqu'à maintenant.",
+                "de": "Will have been + -ing vermutet ein Warten bis jetzt."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-ass-order",
+      "role": "exercise",
+      "blockId": "block-assumption",
+      "label": {
+        "en": "Assumption word order",
+        "fr": "Ordre des mots de supposition",
+        "de": "Vermutungen: Wortstellung"
+      },
+      "pages": [
+        {
+          "pageId": "ex-ass-order-page",
+          "estimatedDurationS": 90,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in the right order.",
+            "fr": "Mettez les mots dans le bon ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-ass-order-1",
+              "tokens": [
+                { "tokenId": "g1", "text": "walking" },
+                { "tokenId": "g2", "text": "all" },
+                { "tokenId": "g3", "text": "You" },
+                { "tokenId": "g4", "text": "been" },
+                { "tokenId": "g5", "text": "day" },
+                { "tokenId": "g6", "text": "have" },
+                { "tokenId": "g7", "text": "will" },
+                { "tokenId": "g8", "text": "." }
+              ],
+              "acceptedOrders": [["g3", "g7", "g6", "g4", "g1", "g2", "g5", "g8"]],
+              "ruleIds": ["rule-assumption-future-perfect"],
+              "answerExplanation": {
+                "en": "You will have been walking all day: will have been + -ing.",
+                "fr": "You will have been walking all day : will have been + -ing.",
+                "de": "You will have been walking all day: will have been + -ing."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-ass-order-2",
+              "tokens": [
+                { "tokenId": "h1", "text": "now" },
+                { "tokenId": "h2", "text": "arrived" },
+                { "tokenId": "h3", "text": "They" },
+                { "tokenId": "h4", "text": "by" },
+                { "tokenId": "h5", "text": "have" },
+                { "tokenId": "h6", "text": "will" },
+                { "tokenId": "h7", "text": "." }
+              ],
+              "acceptedOrders": [["h3", "h6", "h5", "h2", "h4", "h1", "h7"]],
+              "ruleIds": ["rule-assumption-future-perfect"],
+              "answerExplanation": {
+                "en": "They will have arrived by now: a guess about what has probably happened.",
+                "fr": "They will have arrived by now : une supposition sur ce qui s'est probablement passé.",
+                "de": "They will have arrived by now: eine Vermutung über das, was wahrscheinlich geschehen ist."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-ass-order-3",
+              "tokens": [
+                { "tokenId": "i1", "text": "already" },
+                { "tokenId": "i2", "text": "heard" },
+                { "tokenId": "i3", "text": "She" },
+                { "tokenId": "i4", "text": "news" },
+                { "tokenId": "i5", "text": "the" },
+                { "tokenId": "i6", "text": "have" },
+                { "tokenId": "i7", "text": "will" },
+                { "tokenId": "i8", "text": "." }
+              ],
+              "acceptedOrders": [
+                ["i3", "i7", "i6", "i2", "i5", "i4", "i1", "i8"],
+                ["i3", "i7", "i6", "i1", "i2", "i5", "i4", "i8"]
+              ],
+              "ruleIds": ["rule-assumption-future-perfect"],
+              "answerExplanation": {
+                "en": "She will have heard the news already: already may follow have or end the sentence.",
+                "fr": "She will have heard the news already : already peut suivre have ou finir la phrase.",
+                "de": "She will have heard the news already: already kann nach have stehen oder am Ende."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "feedback",
+      "role": "feedback",
+      "blockId": null,
+      "label": { "en": "Your feedback", "fr": "Votre retour", "de": "Dein Feedback" },
+      "pages": [
+        {
+          "pageId": "feedback",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Continue to the final exam.",
+            "fr": "Passez à l’examen final.",
+            "de": "Weiter zur Abschlussprüfung."
+          },
+          "items": [{ "type": "production_feedback_placeholder", "itemId": "feedback" }]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "role": "exam",
+      "blockId": null,
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam-tentative",
+          "estimatedDurationS": 100,
+          "timeLimitS": 150,
+          "instructions": {
+            "en": "Type the missing words. Use past forms to make the requests tentative.",
+            "fr": "Écrivez les mots manquants. Employez des formes du passé pour rendre les demandes hésitantes.",
+            "de": "Schreib die fehlenden Wörter. Benutze Vergangenheitsformen, damit die Bitten zurückhaltend klingen."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-tentative-1",
+              "before": "Sorry to ask, but I",
+              "after": "wondering if you could change my appointment.",
+              "accepted": { "answers": ["was"] },
+              "hint": null,
+              "ruleIds": ["rule-tentative-past"],
+              "answerExplanation": {
+                "en": "Was wondering softens the request.",
+                "fr": "Was wondering adoucit la demande.",
+                "de": "Was wondering macht die Bitte weicher."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-tentative-2",
+              "before": "We",
+              "after": "hoping you might consider our proposal again.",
+              "accepted": { "answers": ["were"] },
+              "hint": null,
+              "ruleIds": ["rule-tentative-past"],
+              "answerExplanation": {
+                "en": "With we, the tentative past continuous uses were.",
+                "fr": "Avec we, le past continuous hésitant utilise were.",
+                "de": "Mit we steht im zurückhaltenden Past Continuous were."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-tentative-3",
+              "before": "Hi Anna, I",
+              "after": "to ask whether you could babysit on Saturday. (want)",
+              "accepted": { "answers": ["wanted"] },
+              "hint": null,
+              "ruleIds": ["rule-tentative-past"],
+              "answerExplanation": {
+                "en": "Wanted to ask is softer than want to ask.",
+                "fr": "Wanted to ask est plus doux que want to ask.",
+                "de": "Wanted to ask klingt weicher als want to ask."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-tentative-4",
+              "before": "I",
+              "after": "whether you had a moment to look at my draft. (wonder)",
+              "accepted": { "answers": ["was wondering", "wondered"] },
+              "hint": null,
+              "ruleIds": ["rule-tentative-past"],
+              "answerExplanation": {
+                "en": "Was wondering is the softest form, and wondered is polite and indirect too.",
+                "fr": "Was wondering est la forme la plus douce, et wondered est aussi poli et indirect.",
+                "de": "Was wondering ist die weichste Form, und auch wondered klingt höflich und indirekt."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "exam-irritation",
+          "estimatedDurationS": 100,
+          "timeLimitS": 150,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-irritation-1",
+              "before": "My flatmate",
+              "after": "constantly borrowing my clothes, and it's driving me mad!",
+              "accepted": { "answers": ["is"] },
+              "hint": null,
+              "ruleIds": ["rule-irritation-continuous"],
+              "answerExplanation": {
+                "en": "Is + constantly + -ing turns the habit into a complaint.",
+                "fr": "Is + constantly + -ing transforme l'habitude en reproche.",
+                "de": "Is + constantly + -ing macht die Gewohnheit zur Beschwerde."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-irritation-2",
+              "before": "You",
+              "after": "forever losing your umbrella! That's the third one this month.",
+              "accepted": { "answers": ["are"] },
+              "hint": null,
+              "ruleIds": ["rule-irritation-continuous"],
+              "answerExplanation": {
+                "en": "Are + forever + -ing shows irritation at a repeated habit.",
+                "fr": "Are + forever + -ing montre l'agacement devant une habitude répétée.",
+                "de": "Are + forever + -ing zeigt Ärger über eine wiederholte Gewohnheit."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-irritation-3",
+              "before": "The kids",
+              "after": "always arguing over the remote, and I'm sick of it.",
+              "accepted": { "answers": ["are"] },
+              "hint": null,
+              "ruleIds": ["rule-irritation-continuous"],
+              "answerExplanation": {
+                "en": "Are + always + -ing shows irritation at a repeated habit.",
+                "fr": "Are + always + -ing montre l'agacement devant une habitude répétée.",
+                "de": "Are + always + -ing zeigt Ärger über eine wiederholte Gewohnheit."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-irritation-4",
+              "before": "When I lived there, the landlord",
+              "after": "always turning up unannounced.",
+              "accepted": { "answers": ["was"] },
+              "hint": null,
+              "ruleIds": ["rule-irritation-continuous"],
+              "answerExplanation": {
+                "en": "Was + always + -ing shows irritation at a past habit.",
+                "fr": "Was + always + -ing montre l'agacement devant une habitude passée.",
+                "de": "Was + always + -ing zeigt Ärger über eine frühere Gewohnheit."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "exam-assumption",
+          "estimatedDurationS": 120,
+          "timeLimitS": 200,
+          "instructions": {
+            "en": "Put the words in the right order.",
+            "fr": "Mettez les mots dans le bon ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "grammar_word_order",
+              "itemId": "exam-assumption-1",
+              "tokens": [
+                { "tokenId": "j1", "text": "driving" },
+                { "tokenId": "j2", "text": "dawn" },
+                { "tokenId": "j3", "text": "You" },
+                { "tokenId": "j4", "text": "been" },
+                { "tokenId": "j5", "text": "since" },
+                { "tokenId": "j6", "text": "have" },
+                { "tokenId": "j7", "text": "will" },
+                { "tokenId": "j8", "text": "." }
+              ],
+              "acceptedOrders": [["j3", "j7", "j6", "j4", "j1", "j5", "j2", "j8"]],
+              "ruleIds": ["rule-assumption-future-perfect"],
+              "answerExplanation": {
+                "en": "You will have been driving since dawn: will have been + -ing.",
+                "fr": "You will have been driving since dawn : will have been + -ing.",
+                "de": "You will have been driving since dawn: will have been + -ing."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "exam-assumption-2",
+              "tokens": [
+                { "tokenId": "k1", "text": "work" },
+                { "tokenId": "k2", "text": "now" },
+                { "tokenId": "k3", "text": "He" },
+                { "tokenId": "k4", "text": "finished" },
+                { "tokenId": "k5", "text": "by" },
+                { "tokenId": "k6", "text": "have" },
+                { "tokenId": "k7", "text": "will" },
+                { "tokenId": "k8", "text": "." }
+              ],
+              "acceptedOrders": [["k3", "k7", "k6", "k4", "k1", "k5", "k2", "k8"]],
+              "ruleIds": ["rule-assumption-future-perfect"],
+              "answerExplanation": {
+                "en": "He will have finished work by now: a guess about what is probably done.",
+                "fr": "He will have finished work by now : une supposition sur ce qui est probablement fini.",
+                "de": "He will have finished work by now: eine Vermutung über das, was wohl erledigt ist."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "exam-assumption-3",
+              "tokens": [
+                { "tokenId": "l1", "text": "seen" },
+                { "tokenId": "l2", "text": "invitation" },
+                { "tokenId": "l3", "text": "The" },
+                { "tokenId": "l4", "text": "guests" },
+                { "tokenId": "l5", "text": "the" },
+                { "tokenId": "l6", "text": "have" },
+                { "tokenId": "l7", "text": "will" },
+                { "tokenId": "l8", "text": "." }
+              ],
+              "acceptedOrders": [["l3", "l4", "l7", "l6", "l1", "l5", "l2", "l8"]],
+              "ruleIds": ["rule-assumption-future-perfect"],
+              "answerExplanation": {
+                "en": "The guests will have seen the invitation: will have + past participle.",
+                "fr": "The guests will have seen the invitation : will have + participe passé.",
+                "de": "The guests will have seen the invitation: will have + Partizip Perfekt."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "exam-assumption-4",
+              "tokens": [
+                { "tokenId": "m1", "text": "waiting" },
+                { "tokenId": "m2", "text": "ages" },
+                { "tokenId": "m3", "text": "Our" },
+                { "tokenId": "m4", "text": "for" },
+                { "tokenId": "m5", "text": "been" },
+                { "tokenId": "m6", "text": "visitors" },
+                { "tokenId": "m7", "text": "have" },
+                { "tokenId": "m8", "text": "will" },
+                { "tokenId": "m9", "text": "." }
+              ],
+              "acceptedOrders": [["m3", "m6", "m8", "m7", "m5", "m1", "m4", "m2", "m9"]],
+              "ruleIds": ["rule-assumption-future-perfect"],
+              "answerExplanation": {
+                "en": "Our visitors will have been waiting for ages: will have been + -ing.",
+                "fr": "Our visitors will have been waiting for ages : will have been + -ing.",
+                "de": "Our visitors will have been waiting for ages: will have been + -ing."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

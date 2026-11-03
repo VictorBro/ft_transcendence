@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 2,
+  "id": "en-reading-holiday-posts-and-captions",
+  "lang": "en",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Reading holiday posts and captions",
+  "objective": {
+    "en": "Read a holiday post and photo captions and find where the writer went, what they did each day and what it was like.",
+    "fr": "Lire un post de vacances et des légendes de photos et trouver où l’auteur est allé, ce qu’il a fait chaque jour et comment c’était.",
+    "de": "Einen Urlaubspost und Fotounterschriften lesen und herausfinden, wohin der Autor gereist ist, was er jeden Tag gemacht hat und wie es war."
+  },
+  "estimatedMinutes": 9,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:33:08.795Z",
+    "inputHashes": { "outline": "63a43ade0efde3d9b619f4260e2239047a7999196eac9ca1bb79bc5cd009dd3b" }
+  },
+  "kind": "reading",
+  "theme": "travel",
+  "genre": "other",
+  "situation": {
+    "en": "Mia posts about her week in Lisbon on social media, with a short text for each day and a caption for her last evening.",
+    "fr": "Mia publie sur les réseaux sociaux sa semaine à Lisbonne, avec un court texte pour chaque jour et une légende pour sa dernière soirée.",
+    "de": "Mia postet in den sozialen Medien über ihre Woche in Lissabon, mit einem kurzen Text für jeden Tag und einer Bildunterschrift für den letzten Abend."
+  },
+  "readerTask": {
+    "en": "Find where Mia went, what she did each day and what it was like, and put the trip in order.",
+    "fr": "Trouver où Mia est allée, ce qu’elle a fait chaque jour et comment c’était, et remettre le voyage dans l’ordre.",
+    "de": "Herausfinden, wohin Mia gereist ist, was sie jeden Tag gemacht hat und wie es war, und die Reise in die richtige Reihenfolge bringen."
+  },
+  "keywords": [
+    {
+      "id": "arrived",
+      "term": "arrived",
+      "translations": { "fr": ["est arrivé", "sont arrivés"], "de": ["kam an", "kamen an"] },
+      "explanation": {
+        "en": "The past of arrive. It tells you when someone got to a place: We arrived on Monday.",
+        "fr": "Le passé de arrive. Il dit quand quelqu’un est arrivé quelque part : We arrived on Monday.",
+        "de": "Die Vergangenheit von arrive. Es sagt, wann jemand an einem Ort angekommen ist: We arrived on Monday."
+      }
+    },
+    {
+      "id": "view",
+      "term": "view",
+      "translations": { "fr": ["la vue"], "de": ["die Aussicht", "der Blick"] },
+      "explanation": {
+        "en": "What you can see from a place: the view from our room.",
+        "fr": "Ce qu’on voit depuis un endroit : the view from our room.",
+        "de": "Das, was man von einem Ort aus sieht: the view from our room."
+      }
+    },
+    {
+      "id": "amazing",
+      "term": "amazing",
+      "translations": { "fr": ["génial", "incroyable"], "de": ["toll", "unglaublich"] },
+      "explanation": {
+        "en": "A very positive word for something great: an amazing view.",
+        "fr": "Un mot très positif pour quelque chose de super : an amazing view.",
+        "de": "Ein sehr positives Wort für etwas Großartiges: an amazing view."
+      }
+    },
+    {
+      "id": "crowded",
+      "term": "crowded",
+      "translations": { "fr": ["bondé", "plein de monde"], "de": ["überfüllt", "voll"] },
+      "explanation": {
+        "en": "Full of people. A crowded tram has no free seats.",
+        "fr": "Plein de monde. Un tram crowded n’a plus de places libres.",
+        "de": "Voller Menschen. In einer crowded Straßenbahn gibt es keine freien Plätze."
+      }
+    },
+    {
+      "id": "freezing",
+      "term": "freezing",
+      "translations": { "fr": ["glacial", "très froid"], "de": ["eiskalt", "sehr kalt"] },
+      "explanation": {
+        "en": "Extremely cold: the sea was freezing.",
+        "fr": "Extrêmement froid : the sea was freezing.",
+        "de": "Extrem kalt: the sea was freezing."
+      }
+    }
+  ],
+  "documents": {
+    "main": {
+      "targetWords": 104,
+      "contents": {
+        "en": "A post by Mia with a title and four short parts. Day 1: she arrived in Lisbon and the view from the hotel room is amazing. Day 2: a crowded tram to the castle. Day 3: the freezing sea at Cascais. Last night: a friendly dinner by the river.",
+        "fr": "Un post de Mia avec un titre et quatre courtes parties. Jour 1 : elle arrive à Lisbonne et la vue depuis la chambre d’hôtel est incroyable. Jour 2 : un tram bondé jusqu’au château. Jour 3 : la mer glaciale à Cascais. Dernière soirée : un dîner sympa au bord du fleuve.",
+        "de": "Ein Post von Mia mit Titel und vier kurzen Teilen. Tag 1: Sie kommt in Lissabon an und die Aussicht vom Hotelzimmer ist toll. Tag 2: eine überfüllte Straßenbahn zum Schloss. Tag 3: das eiskalte Meer bei Cascais. Letzter Abend: ein nettes Abendessen am Fluss."
+      }
+    },
+    "exam": {
+      "targetWords": 64,
+      "contents": {
+        "en": "A short post by Ben from Edinburgh: on Saturday he walked up to the castle in cold, windy weather; on Sunday he visited a free museum and took a bus to the sea; tomorrow they go home.",
+        "fr": "Un court post de Ben depuis Édimbourg : samedi il monte au château par temps froid et venteux ; dimanche il visite un musée gratuit et prend un bus pour aller à la mer ; demain ils rentrent.",
+        "de": "Ein kurzer Post von Ben aus Edinburgh: Am Samstag geht er bei kaltem, windigem Wetter zum Schloss hinauf; am Sonntag besucht er ein kostenloses Museum und fährt mit dem Bus ans Meer; morgen fahren sie nach Hause."
+      }
+    }
+  },
+  "skim": { "focus": "purpose" },
+  "detailQuestions": [
+    {
+      "id": "q-where",
+      "type": "reading_choice",
+      "focus": {
+        "en": "Which city Mia visited",
+        "fr": "La ville que Mia a visitée",
+        "de": "Welche Stadt Mia besucht hat"
+      }
+    },
+    {
+      "id": "q-tram",
+      "type": "reading_choice",
+      "focus": {
+        "en": "How they got to the castle",
+        "fr": "Comment ils sont allés au château",
+        "de": "Wie sie zum Schloss gekommen sind"
+      }
+    },
+    {
+      "id": "q-sea",
+      "type": "reading_true_false",
+      "focus": {
+        "en": "What the sea was like",
+        "fr": "Comment était la mer",
+        "de": "Wie das Meer war"
+      }
+    },
+    {
+      "id": "q-dinner",
+      "type": "reading_choice",
+      "focus": {
+        "en": "What the people at dinner were like",
+        "fr": "Comment étaient les gens au dîner",
+        "de": "Wie die Leute beim Abendessen waren"
+      }
+    }
+  ],
+  "exam": { "types": ["reading_choice", "reading_true_false"] },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

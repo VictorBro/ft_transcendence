@@ -1,0 +1,1118 @@
+{
+  "schemaVersion": 2,
+  "id": "en-saying-please-thank-you-and-sorry",
+  "lang": "en",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Saying please, thank you and sorry",
+  "objective": {
+    "en": "Ask politely, thank people and apologise, and give the usual replies: Please, Thank you very much, You’re welcome, Sorry, Excuse me, That’s OK.",
+    "fr": "Demander poliment, remercier et s’excuser, et donner les réponses habituelles : Please, Thank you very much, You’re welcome, Sorry, Excuse me, That’s OK.",
+    "de": "Höflich bitten, sich bedanken und sich entschuldigen und die üblichen Antworten geben: Please, Thank you very much, You’re welcome, Sorry, Excuse me, That’s OK."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:33:09.462Z",
+    "inputHashes": {
+      "outline": "1b7fceae2ba6509bf637dab31fead129516884eb40868a73bb24626c485633ee",
+      "brief": "f3a9b3c34d37944c94d29fcd458a3f04600b6ee4997a2912eb1ec6316ff5d5dc"
+    }
+  },
+  "kind": "functions",
+  "theme": "relations",
+  "steps": [
+    {
+      "id": "flashcards",
+      "stage": "flashcards",
+      "role": "presentation",
+      "label": { "en": "Flashcards", "fr": "Cartes mémoire", "de": "Karteikarten" },
+      "pages": [
+        {
+          "pageId": "cards-expressions",
+          "estimatedDurationS": 72,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Recall each expression, then turn the card to check it.",
+            "fr": "Rappelez-vous chaque expression, puis retournez la carte pour vérifier.",
+            "de": "Erinnere dich an jeden Ausdruck und dreh dann die Karte um."
+          },
+          "items": [
+            {
+              "type": "function_flashcards",
+              "itemId": "cards-expressions",
+              "side": "expressions",
+              "ids": ["please", "thank-you", "youre-welcome", "sorry", "excuse-me", "thats-ok"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue",
+      "stage": "dialogue",
+      "role": "presentation",
+      "label": { "en": "Dialogue", "fr": "Dialogue", "de": "Dialog" },
+      "pages": [
+        {
+          "pageId": "dialogue",
+          "estimatedDurationS": 140,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read and listen. Turn a line to see its translation and a note.",
+            "fr": "Lisez et écoutez. Retournez une réplique pour voir sa traduction et une remarque.",
+            "de": "Lies und hör zu. Dreh eine Zeile um, um Übersetzung und Hinweis zu sehen."
+          },
+          "items": [
+            {
+              "type": "function_dialogue",
+              "itemId": "dialogue",
+              "lines": [
+                {
+                  "lineId": "line-1",
+                  "roleId": "customer",
+                  "text": "Excuse me, can I have a bag, please?",
+                  "translation": {
+                    "fr": "Excusez-moi, je peux avoir un sac, s’il vous plaît ?",
+                    "de": "Entschuldigung, kann ich bitte eine Tüte haben?"
+                  },
+                  "note": {
+                    "en": "Excuse me gets attention; please makes the request polite.",
+                    "fr": "Excuse me attire l’attention ; please rend la demande polie.",
+                    "de": "Excuse me erregt Aufmerksamkeit; please macht die Bitte höflich."
+                  },
+                  "expressionIds": ["excuse-me", "please"]
+                },
+                {
+                  "lineId": "line-2",
+                  "roleId": "assistant",
+                  "text": "Yes, of course. Here you are.",
+                  "translation": {
+                    "fr": "Oui, bien sûr. Voilà.",
+                    "de": "Ja, natürlich. Bitte schön."
+                  },
+                  "note": {
+                    "en": "Here you are is said when you give something.",
+                    "fr": "On dit Here you are quand on donne quelque chose.",
+                    "de": "Here you are sagt man, wenn man etwas gibt."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-3",
+                  "roleId": "customer",
+                  "text": "Thank you very much.",
+                  "translation": { "fr": "Merci beaucoup.", "de": "Vielen Dank." },
+                  "note": {
+                    "en": "A polite way to say thank you.",
+                    "fr": "Une façon polie de dire merci.",
+                    "de": "Eine höfliche Art, danke zu sagen."
+                  },
+                  "expressionIds": ["thank-you"]
+                },
+                {
+                  "lineId": "line-4",
+                  "roleId": "assistant",
+                  "text": "You’re welcome. Anything else?",
+                  "translation": {
+                    "fr": "De rien. Autre chose ?",
+                    "de": "Gern geschehen. Sonst noch etwas?"
+                  },
+                  "note": {
+                    "en": "You’re welcome answers a thank you.",
+                    "fr": "You’re welcome répond à un merci.",
+                    "de": "You’re welcome antwortet auf ein Danke."
+                  },
+                  "expressionIds": ["youre-welcome"]
+                },
+                {
+                  "lineId": "line-5",
+                  "roleId": "customer",
+                  "text": "Yes, a bottle of water, please.",
+                  "translation": {
+                    "fr": "Oui, une bouteille d’eau, s’il vous plaît.",
+                    "de": "Ja, eine Flasche Wasser, bitte."
+                  },
+                  "note": {
+                    "en": "Please can come at the end of the request.",
+                    "fr": "Please peut venir à la fin de la demande.",
+                    "de": "Please kann am Ende der Bitte stehen."
+                  },
+                  "expressionIds": ["please"]
+                },
+                {
+                  "lineId": "line-6",
+                  "roleId": "assistant",
+                  "text": "Sorry, we don’t have water.",
+                  "translation": {
+                    "fr": "Désolé, nous n’avons pas d’eau.",
+                    "de": "Tut mir leid, wir haben kein Wasser."
+                  },
+                  "note": {
+                    "en": "The assistant says sorry because there is a problem.",
+                    "fr": "Le vendeur dit sorry parce qu’il y a un problème.",
+                    "de": "Der Verkäufer sagt sorry, weil es ein Problem gibt."
+                  },
+                  "expressionIds": ["sorry"]
+                },
+                {
+                  "lineId": "line-7",
+                  "roleId": "customer",
+                  "text": "That’s OK. A coffee, please.",
+                  "translation": {
+                    "fr": "Ce n’est pas grave. Un café, s’il vous plaît.",
+                    "de": "Das ist in Ordnung. Einen Kaffee, bitte."
+                  },
+                  "note": {
+                    "en": "That’s OK means it is not a problem.",
+                    "fr": "That’s OK signifie que ce n’est pas un problème.",
+                    "de": "That’s OK bedeutet, dass es kein Problem ist."
+                  },
+                  "expressionIds": ["thats-ok", "please"]
+                },
+                {
+                  "lineId": "line-8",
+                  "roleId": "assistant",
+                  "text": "Here you are. Two pounds.",
+                  "translation": { "fr": "Voilà. Deux livres.", "de": "Bitte schön. Zwei Pfund." },
+                  "note": {
+                    "en": "The assistant gives the coffee and says the price.",
+                    "fr": "Le vendeur donne le café et dit le prix.",
+                    "de": "Der Verkäufer gibt den Kaffee und nennt den Preis."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-9",
+                  "roleId": "customer",
+                  "text": "Thank you. Goodbye!",
+                  "translation": { "fr": "Merci. Au revoir !", "de": "Danke. Auf Wiedersehen!" },
+                  "note": {
+                    "en": "Thank you is shorter than Thank you very much.",
+                    "fr": "Thank you est plus court que Thank you very much.",
+                    "de": "Thank you ist kürzer als Thank you very much."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-10",
+                  "roleId": "assistant",
+                  "text": "Goodbye!",
+                  "translation": { "fr": "Au revoir !", "de": "Auf Wiedersehen!" },
+                  "note": {
+                    "en": "The conversation ends politely.",
+                    "fr": "La conversation se termine poliment.",
+                    "de": "Das Gespräch endet höflich."
+                  },
+                  "expressionIds": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matching",
+      "stage": "matching",
+      "role": "exercise",
+      "label": { "en": "Matching", "fr": "Association", "de": "Zuordnen" },
+      "pages": [
+        {
+          "pageId": "match-expressions-1",
+          "estimatedDurationS": 72,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each expression with its translation.",
+            "fr": "Associez chaque expression à sa traduction.",
+            "de": "Ordne jedem Ausdruck seine Übersetzung zu."
+          },
+          "items": [
+            {
+              "type": "function_matching",
+              "itemId": "match-expressions-1",
+              "side": "expressions",
+              "pairs": [
+                {
+                  "id": "please",
+                  "answerExplanation": {
+                    "en": "Add Please to a request to be polite.",
+                    "fr": "On ajoute Please à une demande pour être poli.",
+                    "de": "Man fügt Please einer Bitte hinzu, um höflich zu sein."
+                  }
+                },
+                {
+                  "id": "thank-you",
+                  "answerExplanation": {
+                    "en": "A strong, polite way to thank someone.",
+                    "fr": "Une façon polie et forte de remercier quelqu’un.",
+                    "de": "Eine höfliche, deutliche Art, sich zu bedanken."
+                  }
+                },
+                {
+                  "id": "youre-welcome",
+                  "answerExplanation": {
+                    "en": "The usual reply when someone thanks you.",
+                    "fr": "La réponse habituelle quand quelqu’un vous remercie.",
+                    "de": "Die übliche Antwort, wenn sich jemand bei Ihnen bedankt."
+                  }
+                },
+                {
+                  "id": "sorry",
+                  "answerExplanation": {
+                    "en": "Say it to apologise.",
+                    "fr": "On le dit pour s’excuser.",
+                    "de": "Man sagt es, um sich zu entschuldigen."
+                  }
+                },
+                {
+                  "id": "excuse-me",
+                  "answerExplanation": {
+                    "en": "Use it to get someone’s attention.",
+                    "fr": "On l’utilise pour attirer l’attention de quelqu’un.",
+                    "de": "Man benutzt es, um die Aufmerksamkeit von jemandem zu bekommen."
+                  }
+                },
+                {
+                  "id": "thats-ok",
+                  "answerExplanation": {
+                    "en": "The usual reply to Sorry.",
+                    "fr": "La réponse habituelle à Sorry.",
+                    "de": "Die übliche Antwort auf Sorry."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-gaps",
+      "stage": "dialogue_gaps",
+      "role": "exercise",
+      "label": { "en": "Dialogue gaps", "fr": "Dialogue à trous", "de": "Dialoglücken" },
+      "pages": [
+        {
+          "pageId": "gap-1",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-1",
+              "expressionId": "please",
+              "context": { "roleId": "customer", "text": "Is this table free?" },
+              "roleId": "assistant",
+              "before": "",
+              "after": "sit down.",
+              "choiceExpressionIds": ["please", "thank-you", "sorry", "youre-welcome"],
+              "answerExplanation": {
+                "en": "Please makes the invitation polite.",
+                "fr": "Please rend l’invitation polie.",
+                "de": "Please macht die Einladung höflich."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-2",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-2",
+              "expressionId": "thank-you",
+              "context": { "roleId": "assistant", "text": "Here is your coffee." },
+              "roleId": "customer",
+              "before": "",
+              "after": "!",
+              "choiceExpressionIds": ["thank-you", "please", "excuse-me", "sorry"],
+              "answerExplanation": {
+                "en": "You thank the person who gives you something.",
+                "fr": "On remercie la personne qui vous donne quelque chose.",
+                "de": "Man bedankt sich bei der Person, die einem etwas gibt."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-3",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-3",
+              "expressionId": "youre-welcome",
+              "context": { "roleId": "customer", "text": "Thank you very much!" },
+              "roleId": "assistant",
+              "before": "",
+              "after": "!",
+              "choiceExpressionIds": ["youre-welcome", "please", "sorry", "excuse-me"],
+              "answerExplanation": {
+                "en": "You’re welcome answers a thank you.",
+                "fr": "You’re welcome répond à un merci.",
+                "de": "You’re welcome antwortet auf ein Danke."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-4",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-4",
+              "expressionId": "sorry",
+              "context": { "roleId": "assistant", "text": "Ouch! That’s my foot." },
+              "roleId": "customer",
+              "before": "",
+              "after": "! I didn’t see you.",
+              "choiceExpressionIds": ["sorry", "please", "youre-welcome", "thank-you"],
+              "answerExplanation": {
+                "en": "You say Sorry when you hurt someone by mistake.",
+                "fr": "On dit Sorry quand on fait mal à quelqu’un par erreur.",
+                "de": "Man sagt Sorry, wenn man jemandem aus Versehen wehgetan hat."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-5",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-5",
+              "expressionId": "excuse-me",
+              "context": { "roleId": "assistant", "text": "Hello. Can I help you?" },
+              "roleId": "customer",
+              "before": "",
+              "after": ", where is the station?",
+              "choiceExpressionIds": ["excuse-me", "thank-you", "youre-welcome", "thats-ok"],
+              "answerExplanation": {
+                "en": "Excuse me starts a polite question to a stranger.",
+                "fr": "Excuse me commence une question polie à un inconnu.",
+                "de": "Excuse me beginnt eine höfliche Frage an einen Fremden."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-6",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-6",
+              "expressionId": "thats-ok",
+              "context": { "roleId": "customer", "text": "Sorry, I’m late." },
+              "roleId": "assistant",
+              "before": "",
+              "after": "! Come in.",
+              "choiceExpressionIds": ["thats-ok", "please", "excuse-me", "thank-you"],
+              "answerExplanation": {
+                "en": "That’s OK accepts an apology.",
+                "fr": "That’s OK accepte des excuses.",
+                "de": "That’s OK nimmt eine Entschuldigung an."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "word-order",
+      "stage": "word_order",
+      "role": "exercise",
+      "label": { "en": "Word order", "fr": "Ordre des mots", "de": "Wortstellung" },
+      "pages": [
+        {
+          "pageId": "order-1",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-1",
+              "expressionId": "please",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "A" },
+                { "tokenId": "t2", "text": "coffee," },
+                { "tokenId": "t3", "text": "please." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3"]],
+              "answerExplanation": {
+                "en": "Say what you want, then add please.",
+                "fr": "On dit ce que l’on veut, puis on ajoute please.",
+                "de": "Man sagt, was man möchte, und fügt dann please hinzu."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-2",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-2",
+              "expressionId": "thank-you",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Thank" },
+                { "tokenId": "t2", "text": "you" },
+                { "tokenId": "t3", "text": "very" },
+                { "tokenId": "t4", "text": "much" },
+                { "tokenId": "t5", "text": "for" },
+                { "tokenId": "t6", "text": "the" },
+                { "tokenId": "t7", "text": "tea." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7"]],
+              "answerExplanation": {
+                "en": "Thank you very much, then for + the thing.",
+                "fr": "Thank you very much, puis for + la chose.",
+                "de": "Thank you very much, dann for + die Sache."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-3",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-3",
+              "expressionId": "youre-welcome",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "You’re" },
+                { "tokenId": "t2", "text": "welcome," },
+                { "tokenId": "t3", "text": "Anna." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3"]],
+              "answerExplanation": {
+                "en": "You’re welcome comes first, then the name.",
+                "fr": "You’re welcome vient d’abord, puis le prénom.",
+                "de": "Zuerst You’re welcome, dann der Name."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-4",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-4",
+              "expressionId": "sorry",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Sorry," },
+                { "tokenId": "t2", "text": "I’m" },
+                { "tokenId": "t3", "text": "late." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3"]],
+              "answerExplanation": {
+                "en": "Say Sorry first, then the problem.",
+                "fr": "On dit Sorry d’abord, puis le problème.",
+                "de": "Zuerst Sorry, dann das Problem."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-5",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-5",
+              "expressionId": "excuse-me",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Excuse" },
+                { "tokenId": "t2", "text": "me," },
+                { "tokenId": "t3", "text": "where" },
+                { "tokenId": "t4", "text": "is" },
+                { "tokenId": "t5", "text": "the" },
+                { "tokenId": "t6", "text": "toilet?" }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]],
+              "answerExplanation": {
+                "en": "Excuse me comes first, then the question.",
+                "fr": "Excuse me vient d’abord, puis la question.",
+                "de": "Zuerst Excuse me, dann die Frage."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-6",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-6",
+              "expressionId": "thats-ok",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "That’s" },
+                { "tokenId": "t2", "text": "OK," },
+                { "tokenId": "t3", "text": "no" },
+                { "tokenId": "t4", "text": "problem." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4"]],
+              "answerExplanation": {
+                "en": "That’s OK first, then no problem.",
+                "fr": "That’s OK d’abord, puis no problem.",
+                "de": "Zuerst That’s OK, dann no problem."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "listening",
+      "stage": "listening",
+      "role": "exercise",
+      "label": { "en": "Listening", "fr": "Écoute", "de": "Hören" },
+      "pages": [
+        {
+          "pageId": "listening-1",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-1",
+              "expressionId": "please",
+              "context": { "roleId": "assistant", "text": "Can I help you?" },
+              "roleId": "customer",
+              "options": [
+                { "optionId": "o1", "text": "A tea, please." },
+                { "optionId": "o2", "text": "You’re welcome." },
+                { "optionId": "o3", "text": "That’s OK." },
+                { "optionId": "o4", "text": "Goodbye." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "The customer orders politely with please.",
+                "fr": "Le client commande poliment avec please.",
+                "de": "Der Kunde bestellt höflich mit please."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-2",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-2",
+              "expressionId": "thank-you",
+              "context": { "roleId": "assistant", "text": "Here is your change." },
+              "roleId": "customer",
+              "options": [
+                { "optionId": "o1", "text": "Thank you very much for the change." },
+                { "optionId": "o2", "text": "Good morning." },
+                { "optionId": "o3", "text": "You’re welcome." },
+                { "optionId": "o4", "text": "Where is the bus?" }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "The customer thanks the shop assistant.",
+                "fr": "Le client remercie le vendeur.",
+                "de": "Der Kunde bedankt sich beim Verkäufer."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-3",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-3",
+              "expressionId": "youre-welcome",
+              "context": { "roleId": "customer", "text": "Thank you very much!" },
+              "roleId": "assistant",
+              "options": [
+                { "optionId": "o1", "text": "You’re welcome." },
+                { "optionId": "o2", "text": "Sorry, I’m late." },
+                { "optionId": "o3", "text": "Excuse me, where is it?" },
+                { "optionId": "o4", "text": "Goodbye." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "You’re welcome answers a thank you.",
+                "fr": "You’re welcome répond à un merci.",
+                "de": "You’re welcome antwortet auf ein Danke."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-4",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-4",
+              "expressionId": "sorry",
+              "context": { "roleId": "assistant", "text": "Ouch! That’s my foot." },
+              "roleId": "customer",
+              "options": [
+                { "optionId": "o1", "text": "Sorry! I didn’t see you." },
+                { "optionId": "o2", "text": "You’re welcome." },
+                { "optionId": "o3", "text": "A tea, please." },
+                { "optionId": "o4", "text": "Good morning." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "The customer apologises for the mistake.",
+                "fr": "Le client s’excuse de l’erreur.",
+                "de": "Der Kunde entschuldigt sich für das Versehen."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-5",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-5",
+              "expressionId": "excuse-me",
+              "context": { "roleId": "assistant", "text": "Yes? How can I help?" },
+              "roleId": "customer",
+              "options": [
+                { "optionId": "o1", "text": "Excuse me, where is the bank?" },
+                { "optionId": "o2", "text": "That’s OK." },
+                { "optionId": "o3", "text": "You’re welcome." },
+                { "optionId": "o4", "text": "I’m late." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "The customer starts a polite question with Excuse me.",
+                "fr": "Le client commence une question polie avec Excuse me.",
+                "de": "Der Kunde beginnt eine höfliche Frage mit Excuse me."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-6",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-6",
+              "expressionId": "thats-ok",
+              "context": { "roleId": "customer", "text": "Sorry, I’m late." },
+              "roleId": "assistant",
+              "options": [
+                { "optionId": "o1", "text": "That’s OK. Come in." },
+                { "optionId": "o2", "text": "You’re welcome." },
+                { "optionId": "o3", "text": "A tea, please." },
+                { "optionId": "o4", "text": "Goodbye." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "The shop assistant accepts the apology with That’s OK.",
+                "fr": "Le vendeur accepte les excuses avec That’s OK.",
+                "de": "Der Verkäufer nimmt die Entschuldigung mit That’s OK an."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "stage": "exam",
+      "role": "exam",
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam-replies-1",
+          "estimatedDurationS": 120,
+          "timeLimitS": 180,
+          "instructions": {
+            "en": "Build the answer. Not every word fits.",
+            "fr": "Construisez la réponse. Tous les mots ne servent pas.",
+            "de": "Bilde die Antwort. Nicht jedes Wort passt."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "reply-1",
+              "expressionId": "please",
+              "context": { "roleId": "assistant", "text": "What would you like?" },
+              "roleId": "customer",
+              "tokens": [
+                { "tokenId": "t1", "text": "Two" },
+                { "tokenId": "t2", "text": "sandwiches," },
+                { "tokenId": "t3", "text": "please." },
+                { "tokenId": "t4", "text": "welcome" }
+              ],
+              "distractorTokenIds": ["t4"],
+              "acceptedOrders": [["t1", "t2", "t3"]],
+              "answerExplanation": {
+                "en": "Say what you want, then please.",
+                "fr": "On dit ce que l’on veut, puis please.",
+                "de": "Man sagt, was man möchte, dann please."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-2",
+              "expressionId": "thank-you",
+              "context": { "roleId": "assistant", "text": "Here is your coffee." },
+              "roleId": "customer",
+              "tokens": [
+                { "tokenId": "t1", "text": "Oh," },
+                { "tokenId": "t2", "text": "thank" },
+                { "tokenId": "t3", "text": "you" },
+                { "tokenId": "t4", "text": "very" },
+                { "tokenId": "t5", "text": "much." },
+                { "tokenId": "t6", "text": "sorry" }
+              ],
+              "distractorTokenIds": ["t6"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5"]],
+              "answerExplanation": {
+                "en": "You thank the person who gives you something.",
+                "fr": "On remercie la personne qui vous donne quelque chose.",
+                "de": "Man bedankt sich bei der Person, die einem etwas gibt."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-3",
+              "expressionId": "sorry",
+              "context": { "roleId": "assistant", "text": "Ouch! My foot!" },
+              "roleId": "customer",
+              "tokens": [
+                { "tokenId": "t1", "text": "Oh," },
+                { "tokenId": "t2", "text": "I’m" },
+                { "tokenId": "t3", "text": "very" },
+                { "tokenId": "t4", "text": "sorry." },
+                { "tokenId": "t5", "text": "excuse" }
+              ],
+              "distractorTokenIds": ["t5"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4"]],
+              "answerExplanation": {
+                "en": "Sorry is for a mistake; very makes it stronger.",
+                "fr": "Sorry sert pour une erreur ; very le renforce.",
+                "de": "Sorry gilt für einen Fehler; very verstärkt es."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-4",
+              "expressionId": "thats-ok",
+              "context": { "roleId": "customer", "text": "Sorry, I’m late again." },
+              "roleId": "assistant",
+              "tokens": [
+                { "tokenId": "t1", "text": "That’s" },
+                { "tokenId": "t2", "text": "OK," },
+                { "tokenId": "t3", "text": "don’t" },
+                { "tokenId": "t4", "text": "worry." },
+                { "tokenId": "t5", "text": "please" }
+              ],
+              "distractorTokenIds": ["t5"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4"]],
+              "answerExplanation": {
+                "en": "That’s OK answers an apology.",
+                "fr": "That’s OK répond à des excuses.",
+                "de": "That’s OK antwortet auf eine Entschuldigung."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "exam-dialogue",
+          "estimatedDurationS": 160,
+          "timeLimitS": 240,
+          "instructions": {
+            "en": "Fill each gap with an expression from this lesson.",
+            "fr": "Complétez chaque trou avec une expression de la leçon.",
+            "de": "Fülle jede Lücke mit einem Ausdruck aus dieser Lektion."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_typing",
+              "itemId": "exam-dialogue",
+              "lines": [
+                {
+                  "lineId": "exam-line-1",
+                  "roleId": "customer",
+                  "before": "",
+                  "translation": {
+                    "fr": "Excusez-moi, vous avez un plan ?",
+                    "de": "Entschuldigung, haben Sie einen Stadtplan?"
+                  },
+                  "gap": {
+                    "gapId": "gap-1",
+                    "expressionId": "excuse-me",
+                    "accepted": { "answers": ["Excuse me"] },
+                    "answerExplanation": {
+                      "en": "Excuse me gets the assistant’s attention.",
+                      "fr": "Excuse me attire l’attention du vendeur.",
+                      "de": "Excuse me erregt die Aufmerksamkeit des Verkäufers."
+                    }
+                  },
+                  "after": ", do you have a map?"
+                },
+                {
+                  "lineId": "exam-line-2",
+                  "roleId": "assistant",
+                  "before": "Yes, here you are.",
+                  "translation": { "fr": "Oui, voilà.", "de": "Ja, bitte schön." },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-3",
+                  "roleId": "customer",
+                  "before": "Oh, a map! Thanks a lot.",
+                  "translation": {
+                    "fr": "Oh, un plan ! Merci beaucoup.",
+                    "de": "Oh, ein Stadtplan! Vielen Dank."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-4",
+                  "roleId": "assistant",
+                  "before": "",
+                  "translation": {
+                    "fr": "De rien. C’est gratuit. Autre chose ?",
+                    "de": "Gern geschehen. Er ist gratis. Sonst noch etwas?"
+                  },
+                  "gap": {
+                    "gapId": "gap-4",
+                    "expressionId": "youre-welcome",
+                    "accepted": { "answers": ["You’re welcome"] },
+                    "answerExplanation": {
+                      "en": "You’re welcome answers thanks.",
+                      "fr": "You’re welcome répond à un merci.",
+                      "de": "You’re welcome antwortet auf einen Dank."
+                    }
+                  },
+                  "after": ". It’s free. Anything else?"
+                },
+                {
+                  "lineId": "exam-line-5",
+                  "roleId": "customer",
+                  "before": "Yes, a bus ticket, please.",
+                  "translation": {
+                    "fr": "Oui, un ticket de bus, s’il vous plaît.",
+                    "de": "Ja, eine Busfahrkarte, bitte."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-6",
+                  "roleId": "assistant",
+                  "before": "Here is your ticket. Two pounds.",
+                  "translation": {
+                    "fr": "Voici votre ticket. Deux livres.",
+                    "de": "Hier ist Ihr Ticket. Zwei Pfund."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-7",
+                  "roleId": "customer",
+                  "before": "",
+                  "translation": {
+                    "fr": "Désolé, je n’ai qu’un billet de cinq livres.",
+                    "de": "Tut mir leid, ich habe nur einen Fünf-Pfund-Schein."
+                  },
+                  "gap": {
+                    "gapId": "gap-7",
+                    "expressionId": "sorry",
+                    "accepted": { "answers": ["Sorry", "I’m sorry"] },
+                    "answerExplanation": {
+                      "en": "The customer says Sorry because of a small problem.",
+                      "fr": "Le client dit Sorry à cause d’un petit problème.",
+                      "de": "Der Kunde sagt Sorry wegen eines kleinen Problems."
+                    }
+                  },
+                  "after": ", I only have a five-pound note."
+                },
+                {
+                  "lineId": "exam-line-8",
+                  "roleId": "assistant",
+                  "before": "",
+                  "translation": {
+                    "fr": "Ce n’est pas grave. J’ai la monnaie.",
+                    "de": "Das ist in Ordnung. Ich habe Wechselgeld."
+                  },
+                  "gap": {
+                    "gapId": "gap-8",
+                    "expressionId": "thats-ok",
+                    "accepted": { "answers": ["That’s OK"] },
+                    "answerExplanation": {
+                      "en": "That’s OK answers an apology.",
+                      "fr": "That’s OK répond à des excuses.",
+                      "de": "That’s OK antwortet auf eine Entschuldigung."
+                    }
+                  },
+                  "after": ". I have change."
+                },
+                {
+                  "lineId": "exam-line-9",
+                  "roleId": "customer",
+                  "before": "Thank you. Goodbye!",
+                  "translation": { "fr": "Merci. Au revoir !", "de": "Danke. Auf Wiedersehen!" },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-10",
+                  "roleId": "assistant",
+                  "before": "Goodbye!",
+                  "translation": { "fr": "Au revoir !", "de": "Auf Wiedersehen!" },
+                  "gap": null,
+                  "after": ""
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
