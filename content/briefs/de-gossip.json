@@ -1,0 +1,625 @@
+{
+  "schemaVersion": 2,
+  "id": "de-gossip",
+  "lang": "de",
+  "level": "C2",
+  "locales": ["en", "fr", "de"],
+  "title": "Klatsch und Tratsch",
+  "objective": {
+    "en": "Talk about gossip and rumours with precise words, from harmless chatter to character assassination.",
+    "fr": "Parler des commérages et des rumeurs avec des mots précis, du bavardage inoffensif à l’atteinte à la réputation.",
+    "de": "Über Gerede und Gerüchte mit präzisen Wörtern sprechen, vom harmlosen Tratsch bis zum Rufmord."
+  },
+  "estimatedMinutes": 20,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:38:01.458Z",
+    "inputHashes": { "outline": "dfe30a332f333b17693ac0f1aeb6b8cc8ae1974aa0d42c88183e9fce428a2149" }
+  },
+  "kind": "vocabulary",
+  "theme": "relations",
+  "coverageNotes": {
+    "en": "Twelve words on gossip and rumours: five nouns from harmless talk to defamation, six verbs for passing talk on (whispering, badmouthing, leaking, spreading) and one set phrase.",
+    "fr": "Douze mots sur les commérages et les rumeurs : cinq noms, du bavardage inoffensif à la diffamation, six verbes pour faire circuler le bruit (chuchoter, médire, ébruiter, colporter) et une expression figée.",
+    "de": "Zwölf Wörter zu Gerede und Gerüchten: fünf Nomen vom harmlosen Klatsch bis zur Verleumdung, sechs Verben für das Weitergeben von Gerede (tuscheln, lästern, durchsickern, kolportieren …) und eine feste Wendung."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve words fit the outline and keep the exercises at a manageable length for C2 learners.",
+    "fr": "Douze mots correspondent au plan et gardent des exercices de longueur raisonnable pour le niveau C2.",
+    "de": "Zwölf Wörter entsprechen der Gliederung und halten die Übungen für C2-Lernende in einem gut machbaren Umfang."
+  },
+  "difficultyBalance": {
+    "en": "Mostly core vocabulary of the register; the rarer words kolportieren, Rufmord and the phrase are marked demanding.",
+    "fr": "Surtout du vocabulaire courant du registre ; les mots plus rares kolportieren, Rufmord et l’expression sont marqués comme exigeants.",
+    "de": "Überwiegend Kernwortschatz des Registers; die selteneren Wörter kolportieren, Rufmord und die Wendung gelten als anspruchsvoll."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "gerede",
+      "label": { "en": "Talk and rumours", "fr": "Propos et rumeurs", "de": "Gerede und Gerüchte" },
+      "targetIds": ["klatsch", "geruecht", "geruechtekueche", "verleumdung", "rufmord"],
+      "introduction": {
+        "en": "These nouns name **gossip** and **rumours**. Learn each noun with its article:\n\n- `der Klatsch`\n- `das Gerücht`\n- `die Gerüchteküche`\n- `die Verleumdung`\n- `der Rufmord`\n\nFrom harmless chatter to a deliberate attack, the talk becomes more and more serious.",
+        "fr": "Ces noms désignent les **commérages** et les **rumeurs**. Apprenez chaque nom avec son article :\n\n- `der Klatsch`\n- `das Gerücht`\n- `die Gerüchteküche`\n- `die Verleumdung`\n- `der Rufmord`\n\nDu bavardage inoffensif à l’attaque délibérée, les propos deviennent de plus en plus graves.",
+        "de": "Diese Nomen benennen **Klatsch** und **Gerüchte**. Lerne jedes Nomen mit Artikel:\n\n- `der Klatsch`\n- `das Gerücht`\n- `die Gerüchteküche`\n- `die Verleumdung`\n- `der Rufmord`\n\nVom harmlosen Geplauder bis zum gezielten Angriff wird das Gerede immer ernster."
+      }
+    },
+    {
+      "id": "verben",
+      "label": {
+        "en": "Passing talk on",
+        "fr": "Faire circuler les propos",
+        "de": "Gerede weitergeben"
+      },
+      "targetIds": [
+        "tratschen",
+        "laestern",
+        "munkeln",
+        "tuscheln",
+        "kolportieren",
+        "durchsickern",
+        "hinter-ruecken"
+      ],
+      "introduction": {
+        "en": "These verbs and this phrase show **how** talk is passed on: quietly, spitefully or almost officially.\n\n- `tratschen`: chatting about others, usually harmlessly\n- `lästern`: talking about others spitefully\n- `munkeln`: passing on vague rumours\n- `tuscheln`: whispering quietly and secretively\n- `kolportieren`: passing on unconfirmed news\n- `durchsickern`: secret information slowly becomes known\n- `hinter jemandes Rücken reden`: talking about someone who is not present",
+        "fr": "Ces verbes et cette expression montrent **comment** les propos circulent : en douce, avec méchanceté ou presque officiellement.\n\n- `tratschen` : bavarder sur les autres, le plus souvent sans méchanceté\n- `lästern` : parler des autres avec méchanceté\n- `munkeln` : faire courir des rumeurs vagues\n- `tuscheln` : chuchoter discrètement\n- `kolportieren` : transmettre une nouvelle non confirmée\n- `durchsickern` : une information secrète finit par être connue\n- `hinter jemandes Rücken reden` : parler de quelqu’un qui n’est pas là",
+        "de": "Diese Verben und diese Wendung zeigen, **wie** Gerede weitergegeben wird: leise, boshaft oder fast amtlich.\n\n- `tratschen`: über andere reden, meist harmlos\n- `lästern`: boshaft über andere reden\n- `munkeln`: Vages als Gerücht weitergeben\n- `tuscheln`: leise und heimlich reden\n- `kolportieren`: eine unbestätigte Nachricht weitergeben\n- `durchsickern`: geheime Informationen werden allmählich bekannt\n- `hinter jemandes Rücken reden`: über jemanden sprechen, der nicht dabei ist"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "klatsch",
+      "term": "Klatsch",
+      "translations": { "en": ["gossip", "idle chatter"], "fr": ["les commérages", "les potins"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "der Klatsch",
+      "examForms": ["der Klatsch"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/klatʃ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Auf der Betriebsfeier drehte sich alles um Klatsch.",
+        "translation": {
+          "en": "At the company party everything revolved around gossip.",
+          "fr": "À la fête de l’entreprise, tout tournait autour des commérages."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Der Klatsch is talk about other people’s private affairs.",
+        "fr": "Der Klatsch désigne les propos sur la vie privée des autres.",
+        "de": "Der Klatsch ist das Gerede über das Privatleben anderer."
+      },
+      "genderExplanation": {
+        "en": "Klatsch is masculine, so its article is der: der Klatsch.",
+        "fr": "Klatsch est masculin, son article est donc der : der Klatsch.",
+        "de": "Klatsch ist maskulin, daher lautet der Artikel der: der Klatsch."
+      },
+      "matchingLabel": null,
+      "examPrompt": { "en": "gossip (noun)", "fr": "les commérages (nom)" },
+      "gap": {
+        "before": "Wer jeden Tag den neuesten ",
+        "after": " weitererzählt, macht sich keine Freunde.",
+        "accepted": { "answers": ["Klatsch"] },
+        "referenceTargetIds": ["klatsch", "geruecht", "verleumdung", "geruechtekueche"],
+        "explanation": {
+          "en": "After den neuesten the noun must be masculine; of these four words only Klatsch is.",
+          "fr": "Après den neuesten, le nom doit être masculin ; parmi ces quatre mots, seul Klatsch l’est.",
+          "de": "Nach „den neuesten“ muss ein maskulines Nomen stehen; von diesen vier Wörtern ist nur „Klatsch“ maskulin."
+        }
+      },
+      "listeningOptionTargetIds": ["klatsch", "tratschen", "tuscheln", "laestern"]
+    },
+    {
+      "id": "geruecht",
+      "term": "Gerücht",
+      "translations": { "en": ["rumour", "rumor"], "fr": ["la rumeur", "le bruit"] },
+      "wordClass": "noun",
+      "genders": ["neuter"],
+      "number": "singular",
+      "teachingForm": "das Gerücht",
+      "examForms": ["das Gerücht"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɡəˈʁʏçt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Das Gerücht, die Firma werde verkauft, hält sich hartnäckig.",
+        "translation": {
+          "en": "The rumour that the company will be sold is persisting.",
+          "fr": "La rumeur selon laquelle l’entreprise serait vendue persiste."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Das Gerücht is a piece of news that spreads without being confirmed.",
+        "fr": "Das Gerücht est une nouvelle qui se répand sans être confirmée.",
+        "de": "Das Gerücht ist eine Nachricht, die sich verbreitet, ohne bestätigt zu sein."
+      },
+      "genderExplanation": {
+        "en": "Gerücht is neuter, so its article is das: das Gerücht.",
+        "fr": "Gerücht est neutre, son article est donc das : das Gerücht.",
+        "de": "Gerücht ist neutral, daher lautet der Artikel das: das Gerücht."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "In der Firma geht das ",
+        "after": " um, der Chef wolle den Betrieb verkaufen.",
+        "accepted": { "answers": ["Gerücht"] },
+        "referenceTargetIds": ["geruecht", "klatsch", "verleumdung", "rufmord"],
+        "explanation": {
+          "en": "The article das shows a neuter noun: das Gerücht geht um means a rumour is going around.",
+          "fr": "L’article das indique un nom neutre : das Gerücht geht um signifie qu’une rumeur circule.",
+          "de": "Der Artikel „das“ verlangt ein neutrales Nomen: „Das Gerücht geht um“ heißt, dass es kursiert."
+        }
+      },
+      "listeningOptionTargetIds": ["geruecht", "geruechtekueche", "verleumdung", "rufmord"]
+    },
+    {
+      "id": "geruechtekueche",
+      "term": "Gerüchteküche",
+      "translations": {
+        "en": ["rumour mill", "grapevine"],
+        "fr": ["la machine à rumeurs", "la rumeur publique"]
+      },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Gerüchteküche",
+      "examForms": ["die Gerüchteküche"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɡəˈʁʏçtəˌkʏçə/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "In der Gerüchteküche wird schon wieder über die Fusion spekuliert.",
+        "translation": {
+          "en": "The rumour mill is speculating about the merger again.",
+          "fr": "La machine à rumeurs spécule de nouveau sur la fusion."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Gerüchteküche is the imagined place where rumours are brewed.",
+        "fr": "Die Gerüchteküche est le lieu imaginaire où se fabriquent les rumeurs.",
+        "de": "Die Gerüchteküche ist der gedachte Ort, an dem Gerüchte entstehen."
+      },
+      "genderExplanation": {
+        "en": "Gerüchteküche is feminine, like Küche: die Gerüchteküche.",
+        "fr": "Gerüchteküche est féminin, comme Küche : die Gerüchteküche.",
+        "de": "Gerüchteküche ist feminin, wie Küche: die Gerüchteküche."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "In der ",
+        "after": " brodelt es: Angeblich soll die Abteilung aufgelöst werden.",
+        "accepted": { "answers": ["Gerüchteküche"] },
+        "referenceTargetIds": ["geruechtekueche", "geruecht", "klatsch", "rufmord"],
+        "explanation": {
+          "en": "Only a kitchen can bubble (brodeln): in der Gerüchteküche brodelt es.",
+          "fr": "Seule une cuisine peut bouillonner (brodeln) : in der Gerüchteküche brodelt es.",
+          "de": "Nur eine Küche kann brodeln: „In der Gerüchteküche brodelt es.“"
+        }
+      },
+      "listeningOptionTargetIds": ["geruechtekueche", "geruecht", "verleumdung", "rufmord"]
+    },
+    {
+      "id": "verleumdung",
+      "term": "Verleumdung",
+      "translations": {
+        "en": ["slander", "defamation", "calumny"],
+        "fr": ["la calomnie", "la diffamation"]
+      },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Verleumdung",
+      "examForms": ["die Verleumdung"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/fɛɐ̯ˈlɔʏmdʊŋ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Sie wehrte sich gegen die Verleumdung durch ihren Ex-Mann.",
+        "translation": {
+          "en": "She defended herself against the slander by her ex-husband.",
+          "fr": "Elle s’est défendue contre la calomnie de son ex-mari."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Verleumdung is a false claim that damages someone’s reputation; it can be a crime.",
+        "fr": "Die Verleumdung est une affirmation fausse qui nuit à la réputation de quelqu’un ; elle peut être un délit.",
+        "de": "Die Verleumdung ist eine falsche Behauptung, die dem Ruf eines Menschen schadet; sie kann strafbar sein."
+      },
+      "genderExplanation": {
+        "en": "Verleumdung is feminine (nouns ending in -ung are feminine): die Verleumdung.",
+        "fr": "Verleumdung est féminin (les noms en -ung sont féminins) : die Verleumdung.",
+        "de": "Verleumdung ist feminin (Nomen auf -ung sind feminin): die Verleumdung."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Weil er sie wider besseres Wissen öffentlich einer Straftat bezichtigte, wurde er wegen ",
+        "after": " verurteilt.",
+        "accepted": { "answers": ["Verleumdung"] },
+        "referenceTargetIds": ["verleumdung", "klatsch", "geruecht", "geruechtekueche"],
+        "explanation": {
+          "en": "A knowingly false public accusation that can be punished in court is Verleumdung.",
+          "fr": "Une accusation publique sciemment fausse, punissable par un tribunal, est une Verleumdung.",
+          "de": "Eine bewusst falsche öffentliche Beschuldigung, für die man verurteilt werden kann, ist eine Verleumdung."
+        }
+      },
+      "listeningOptionTargetIds": ["verleumdung", "geruecht", "kolportieren", "rufmord"]
+    },
+    {
+      "id": "rufmord",
+      "term": "Rufmord",
+      "translations": {
+        "en": ["character assassination", "smear campaign"],
+        "fr": ["l’atteinte à la réputation", "l’assassinat de réputation"]
+      },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "der Rufmord",
+      "examForms": ["der Rufmord"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʁuːfˌmɔʁt/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Der Politiker sprach von Rufmord und kündigte eine Klage an.",
+        "translation": {
+          "en": "The politician spoke of character assassination and announced a lawsuit.",
+          "fr": "Le politicien a parlé d’atteinte à sa réputation et a annoncé une plainte."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Der Rufmord is a deliberate, systematic attack on someone’s good name.",
+        "fr": "Der Rufmord est une attaque délibérée et systématique contre la réputation de quelqu’un.",
+        "de": "Der Rufmord ist ein gezielter, systematischer Angriff auf den guten Namen eines Menschen."
+      },
+      "genderExplanation": {
+        "en": "Rufmord is masculine, like Mord: der Rufmord.",
+        "fr": "Rufmord est masculin, comme Mord : der Rufmord.",
+        "de": "Rufmord ist maskulin, wie Mord: der Rufmord."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Mit der Kampagne wollte man sie beruflich vernichten; das war ein gezielter ",
+        "after": ".",
+        "accepted": { "answers": ["Rufmord"] },
+        "referenceTargetIds": ["rufmord", "verleumdung", "geruecht", "geruechtekueche"],
+        "explanation": {
+          "en": "A planned campaign to destroy someone is Rufmord; ein gezielter needs a masculine noun.",
+          "fr": "Une campagne planifiée pour détruire quelqu’un est un Rufmord ; ein gezielter demande un nom masculin.",
+          "de": "Eine geplante Kampagne, die jemanden vernichten soll, ist Rufmord; „ein gezielter“ verlangt ein maskulines Nomen."
+        }
+      },
+      "listeningOptionTargetIds": ["rufmord", "klatsch", "verleumdung", "munkeln"]
+    },
+    {
+      "id": "tratschen",
+      "term": "tratschen",
+      "translations": { "en": ["to gossip"], "fr": ["cancaner", "bavarder sur les autres"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "tratschen",
+      "examForms": ["tratschen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈtʁatʃn̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Im Treppenhaus wird gern über die neuen Mieter getratscht.",
+        "translation": {
+          "en": "People like to gossip about the new tenants in the stairwell.",
+          "fr": "Dans la cage d’escalier, on aime cancaner sur les nouveaux locataires."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Tratschen means chatting about other people, usually without real malice.",
+        "fr": "Tratschen signifie bavarder sur les autres, le plus souvent sans réelle méchanceté.",
+        "de": "Tratschen heißt, über andere zu reden, meist ohne echte Bosheit."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "to gossip (chat about others, usually harmlessly)",
+        "fr": "cancaner (bavarder sur les autres, sans méchanceté)"
+      },
+      "gap": {
+        "before": "Die Nachbarinnen stehen am Gartenzaun und ",
+        "after": " gemütlich über Gott und die Welt.",
+        "accepted": { "answers": ["tratschen"] },
+        "referenceTargetIds": ["tratschen", "durchsickern", "kolportieren", "munkeln"],
+        "explanation": {
+          "en": "Chatting leisurely about everything is tratschen; the other verbs do not fit this idea.",
+          "fr": "Bavarder tranquillement de tout est tratschen ; les autres verbes ne conviennent pas à cette idée.",
+          "de": "Gemütlich über alles zu reden ist „tratschen“; die anderen Verben passen dazu nicht."
+        }
+      },
+      "listeningOptionTargetIds": ["tratschen", "klatsch", "tuscheln", "laestern"]
+    },
+    {
+      "id": "laestern",
+      "term": "lästern",
+      "translations": { "en": ["to badmouth", "to speak ill of"], "fr": ["médire", "dénigrer"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "lästern",
+      "examForms": ["lästern"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈlɛstɐn/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Auf der Party lästerten alle über den Gastgeber.",
+        "translation": {
+          "en": "At the party everyone was badmouthing the host.",
+          "fr": "À la fête, tout le monde disait du mal de l’hôte."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Lästern means talking about others in a spiteful, disparaging way.",
+        "fr": "Lästern signifie parler des autres de façon méchante et dénigrante.",
+        "de": "Lästern heißt, abfällig und boshaft über andere zu reden."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "to badmouth someone maliciously",
+        "fr": "médire de quelqu’un avec méchanceté"
+      },
+      "gap": {
+        "before": "Sie hat die Angewohnheit, über alles und jeden abfällig und boshaft zu ",
+        "after": ".",
+        "accepted": { "answers": ["lästern"] },
+        "referenceTargetIds": ["laestern", "durchsickern", "geruecht", "klatsch"],
+        "explanation": {
+          "en": "Abfällig und boshaft points to lästern: talking spitefully about others.",
+          "fr": "Abfällig und boshaft renvoie à lästern : parler des autres avec méchanceté.",
+          "de": "„Abfällig und boshaft“ weist auf „lästern“ hin: boshaft über andere reden."
+        }
+      },
+      "listeningOptionTargetIds": ["laestern", "tratschen", "tuscheln", "munkeln"]
+    },
+    {
+      "id": "munkeln",
+      "term": "munkeln",
+      "translations": {
+        "en": ["to spread vague rumours", "to murmur rumours"],
+        "fr": ["faire courir des bruits", "murmurer des rumeurs"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "munkeln",
+      "examForms": ["munkeln"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈmʊŋkl̩n/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Man munkelt, dass die Chefin bald kündigt.",
+        "translation": {
+          "en": "There are whispers that the boss will resign soon.",
+          "fr": "On murmure que la patronne va bientôt démissionner."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Munkeln means passing on vague rumours; es wird gemunkelt means rumour has it.",
+        "fr": "Munkeln signifie faire courir des rumeurs vagues ; es wird gemunkelt veut dire « le bruit court ».",
+        "de": "Munkeln heißt, Vages als Gerücht weiterzugeben; „es wird gemunkelt“ bedeutet, dass das Gerücht kursiert."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Genaues weiß niemand: Es wird nur ",
+        "after": ", dass der Konzern Stellen streicht.",
+        "accepted": { "answers": ["gemunkelt"] },
+        "referenceTargetIds": ["munkeln", "durchsickern", "verleumdung", "geruecht"],
+        "explanation": {
+          "en": "Es wird gemunkelt, dass … means rumour has it that …; durchsickern cannot be used in this passive.",
+          "fr": "Es wird gemunkelt, dass … signifie « le bruit court que … » ; durchsickern ne s’emploie pas à ce passif.",
+          "de": "„Es wird gemunkelt, dass …“ bedeutet, dass ein Gerücht kursiert; „durchsickern“ passt in dieses Passiv nicht."
+        }
+      },
+      "listeningOptionTargetIds": ["munkeln", "tuscheln", "kolportieren", "laestern"]
+    },
+    {
+      "id": "tuscheln",
+      "term": "tuscheln",
+      "translations": { "en": ["to whisper"], "fr": ["chuchoter"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "tuscheln",
+      "examForms": ["tuscheln"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈtʊʃl̩n/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Im Flur tuschelten zwei Kollegen und verstummten, als ich kam.",
+        "translation": {
+          "en": "Two colleagues were whispering in the corridor and fell silent when I came.",
+          "fr": "Deux collègues chuchotaient dans le couloir et se sont tus quand je suis arrivé."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Tuscheln means whispering quietly, often so that others cannot hear.",
+        "fr": "Tuscheln signifie chuchoter à voix basse, souvent pour que les autres n’entendent pas.",
+        "de": "Tuscheln heißt, leise zu reden, oft damit andere nichts hören."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "to whisper (secretively, with someone)",
+        "fr": "chuchoter (en cachette, avec quelqu’un)"
+      },
+      "gap": {
+        "before": "Im Kino begannen die beiden Mädchen hinter mir leise zu ",
+        "after": ", bis jemand „Pst!“ rief.",
+        "accepted": { "answers": ["tuscheln"] },
+        "referenceTargetIds": ["tuscheln", "durchsickern", "kolportieren", "klatsch"],
+        "explanation": {
+          "en": "Leise zu … points to tuscheln: whispering quietly.",
+          "fr": "Leise zu … renvoie à tuscheln : chuchoter à voix basse.",
+          "de": "„Leise zu …“ weist auf „tuscheln“ hin: leise reden."
+        }
+      },
+      "listeningOptionTargetIds": ["tuscheln", "munkeln", "tratschen", "laestern"]
+    },
+    {
+      "id": "kolportieren",
+      "term": "kolportieren",
+      "translations": { "en": ["to spread unconfirmed news", "to peddle"], "fr": ["colporter"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "kolportieren",
+      "examForms": ["kolportieren"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/kɔlpɔʁˈtiːʁən/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Die Boulevardpresse kolportierte das Gerücht ungeprüft.",
+        "translation": {
+          "en": "The tabloid press spread the rumour without checking it.",
+          "fr": "La presse people a colporté la rumeur sans la vérifier."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Kolportieren means passing on news that is often unverified, in a formal register.",
+        "fr": "Kolportieren signifie transmettre une nouvelle souvent non vérifiée, dans un registre soutenu.",
+        "de": "Kolportieren heißt, eine oft ungeprüfte Nachricht weiterzugeben; es gehört zur gehobenen Sprache."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Seriöse Zeitungen sollten eine unbestätigte Nachricht nicht ungeprüft ",
+        "after": ".",
+        "accepted": { "answers": ["kolportieren"] },
+        "referenceTargetIds": ["kolportieren", "munkeln", "tuscheln", "durchsickern"],
+        "explanation": {
+          "en": "Only kolportieren takes a piece of news as its object: eine Nachricht kolportieren.",
+          "fr": "Seul kolportieren se construit avec une nouvelle comme complément : eine Nachricht kolportieren.",
+          "de": "Nur „kolportieren“ verbindet sich mit einer Nachricht als Objekt: eine Nachricht kolportieren."
+        }
+      },
+      "listeningOptionTargetIds": ["kolportieren", "durchsickern", "munkeln", "tuscheln"]
+    },
+    {
+      "id": "durchsickern",
+      "term": "durchsickern",
+      "translations": { "en": ["to leak out"], "fr": ["s’ébruiter", "filtrer"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "durchsickern",
+      "examForms": ["durchsickern"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈdʊʁçˌzɪkɐn/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Erste Details der Verhandlung sind bereits durchgesickert.",
+        "translation": {
+          "en": "The first details of the negotiations have already leaked out.",
+          "fr": "Les premiers détails des négociations ont déjà filtré."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Durchsickern means that secret information slowly becomes public; the perfect uses sein.",
+        "fr": "Durchsickern signifie qu’une information secrète devient peu à peu publique ; le parfait se forme avec sein.",
+        "de": "Durchsickern heißt, dass geheime Informationen allmählich bekannt werden; das Perfekt bildet man mit „sein“."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Obwohl die Sitzung geheim war, ist ihr Inhalt schon am Abend an die Presse ",
+        "after": ".",
+        "accepted": { "answers": ["durchgesickert"] },
+        "referenceTargetIds": ["durchsickern", "kolportieren", "munkeln", "tratschen"],
+        "explanation": {
+          "en": "The perfect with sein, ist durchgesickert, fits secret content that reaches the press.",
+          "fr": "Le parfait avec sein, ist durchgesickert, convient à un contenu secret qui parvient à la presse.",
+          "de": "Das Perfekt mit „sein“, „ist durchgesickert“, passt zu geheimem Inhalt, der zur Presse gelangt."
+        }
+      },
+      "listeningOptionTargetIds": ["durchsickern", "kolportieren", "geruecht", "munkeln"]
+    },
+    {
+      "id": "hinter-ruecken",
+      "term": "hinter jemandes Rücken reden",
+      "translations": {
+        "en": ["to talk behind someone’s back"],
+        "fr": ["parler dans le dos de quelqu’un"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "hinter jemandes Rücken reden",
+      "examForms": ["hinter jemandes Rücken reden"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈhɪntɐ ˈjeːmandəs ˈʁʏkn̩ ˈʁeːdn̩/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Er redet ständig hinter ihrem Rücken über ihre Arbeit.",
+        "translation": {
+          "en": "He constantly talks behind her back about her work.",
+          "fr": "Il parle constamment dans son dos de son travail."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Hinter jemandes Rücken reden means talking about someone in their absence, usually critically.",
+        "fr": "Hinter jemandes Rücken reden signifie parler de quelqu’un en son absence, le plus souvent de façon critique.",
+        "de": "Hinter jemandes Rücken reden heißt, in Abwesenheit über jemanden zu sprechen, meist kritisch."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Ich mag es nicht, wenn man hinter meinem ",
+        "after": " über mich redet.",
+        "accepted": { "answers": ["Rücken"] },
+        "referenceTargetIds": ["hinter-ruecken", "tuscheln", "laestern", "klatsch"],
+        "explanation": {
+          "en": "The phrase is hinter jemandes Rücken reden; the missing noun is Rücken.",
+          "fr": "L’expression est hinter jemandes Rücken reden ; le nom manquant est Rücken.",
+          "de": "Die Wendung lautet „hinter jemandes Rücken reden“; das fehlende Nomen ist „Rücken“."
+        }
+      },
+      "listeningOptionTargetIds": ["hinter-ruecken", "rufmord", "klatsch", "geruecht"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

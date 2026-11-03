@@ -1,0 +1,652 @@
+{
+  "schemaVersion": 2,
+  "id": "de-intelligence-words",
+  "lang": "de",
+  "level": "C2",
+  "locales": ["en", "fr", "de"],
+  "title": "Klugheit und Dummheit",
+  "objective": {
+    "en": "Distinguish words for intelligence, stupidity and gullibility, such as scharfsinnig, gerissen and einfältig.",
+    "fr": "Distinguer des mots pour l’intelligence, la bêtise et la crédulité, comme scharfsinnig, gerissen et einfältig.",
+    "de": "Wörter für Klugheit, Dummheit und Leichtgläubigkeit genau unterscheiden und treffend verwenden."
+  },
+  "estimatedMinutes": 20,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:37:20.245Z",
+    "inputHashes": { "outline": "e4f97d21081e2927cfc0bc42a285802bac14dede621b4d1ff1f5195238846489" }
+  },
+  "kind": "vocabulary",
+  "theme": "education",
+  "coverageNotes": {
+    "en": "Twelve words in two groups: sharp and quick minds (adjectives and nouns), and slow, naive or narrow minds. Nuances of tone such as admiring, mocking or disapproving are the focus.",
+    "fr": "Douze mots en deux groupes : les esprits vifs et perspicaces (adjectifs et noms), puis les esprits lents, naïfs ou étroits. Les nuances de ton, admiratif, moqueur ou désapprobateur, sont au centre.",
+    "de": "Zwölf Wörter in zwei Gruppen: scharfe und schnelle Köpfe (Adjektive und Nomen) sowie langsame, naive oder engstirnige Köpfe. Im Mittelpunkt stehen Nuancen des Tons: anerkennend, spöttisch oder missbilligend."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve words match the outline and allow clear contrasts between near-synonyms without overloading a C2 learner.",
+    "fr": "Douze mots correspondent au plan et permettent des contrastes nets entre quasi-synonymes sans surcharger l’apprenant de niveau C2.",
+    "de": "Zwölf Wörter entsprechen der Gliederung und erlauben klare Kontraste zwischen Beinahe-Synonymen, ohne C2-Lernende zu überfordern."
+  },
+  "difficultyBalance": {
+    "en": "Most words are core vocabulary for C2; the demanding ones are the tonal pairs gerissen, begriffsstutzig and the colloquial nouns.",
+    "fr": "La plupart des mots sont du vocabulaire de base pour le C2 ; les plus exigeants sont gerissen, begriffsstutzig et les noms familiers.",
+    "de": "Die meisten Wörter gehören zum C2-Kernwortschatz; anspruchsvoller sind gerissen, begriffsstutzig und die umgangssprachlichen Nomen."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "klug",
+      "label": { "en": "Sharp minds", "fr": "Esprits vifs", "de": "Scharfe Köpfe" },
+      "targetIds": [
+        "scharfsinnig",
+        "gewitzt",
+        "gerissen",
+        "belesen",
+        "auffassungsgabe",
+        "schlaumeier",
+        "weitblick"
+      ],
+      "introduction": {
+        "en": "These words describe **sharp minds**:\n\n- `scharfsinnig`\n- `gewitzt`\n- `gerissen`\n- `belesen`\n- `die Auffassungsgabe`\n- `der Schlaumeier`\n- `der Weitblick`\n\nWatch the tone: `gewitzt` is admiring, while `gerissen` usually carries a hint of distrust.",
+        "fr": "Ces mots décrivent des **esprits vifs** :\n\n- `scharfsinnig`\n- `gewitzt`\n- `gerissen`\n- `belesen`\n- `die Auffassungsgabe`\n- `der Schlaumeier`\n- `der Weitblick`\n\nAttention au ton : `gewitzt` est admiratif, alors que `gerissen` implique souvent une pointe de méfiance.",
+        "de": "Diese Wörter beschreiben **scharfe Köpfe**:\n\n- `scharfsinnig`\n- `gewitzt`\n- `gerissen`\n- `belesen`\n- `die Auffassungsgabe`\n- `der Schlaumeier`\n- `der Weitblick`\n\nAchte auf den Ton: `gewitzt` klingt anerkennend, `gerissen` dagegen meist leicht misstrauisch."
+      }
+    },
+    {
+      "id": "dumm",
+      "label": {
+        "en": "Slow and naive minds",
+        "fr": "Esprits lents et naïfs",
+        "de": "Langsame und naive Köpfe"
+      },
+      "targetIds": [
+        "begriffsstutzig",
+        "einfaeltig",
+        "leichtglaeubig",
+        "borniert",
+        "einfaltspinsel"
+      ],
+      "introduction": {
+        "en": "These words describe **slow or naive minds**:\n\n- `begriffsstutzig`\n- `einfältig`\n- `leichtgläubig`\n- `borniert`\n- `der Einfaltspinsel`\n\nDo not mix them up: `einfältig` means simple-minded, while `leichtgläubig` means too quick to believe others.",
+        "fr": "Ces mots décrivent des **esprits lents ou naïfs** :\n\n- `begriffsstutzig`\n- `einfältig`\n- `leichtgläubig`\n- `borniert`\n- `der Einfaltspinsel`\n\nNe les confondez pas : `einfältig` signifie simple d’esprit, alors que `leichtgläubig` signifie croire trop vite les autres.",
+        "de": "Diese Wörter beschreiben **langsame oder naive Köpfe**:\n\n- `begriffsstutzig`\n- `einfältig`\n- `leichtgläubig`\n- `borniert`\n- `der Einfaltspinsel`\n\nVerwechsle sie nicht: `einfältig` heißt geistig schlicht, `leichtgläubig` heißt, anderen zu schnell zu glauben."
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "scharfsinnig",
+      "term": "scharfsinnig",
+      "translations": { "en": ["astute", "sharp-witted"], "fr": ["perspicace", "fin d’esprit"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "scharfsinnig",
+      "examForms": ["scharfsinnig"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʃaʁfˌzɪnɪç/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Die Richterin stellte eine scharfsinnige Frage.",
+        "translation": {
+          "en": "The judge asked an astute question.",
+          "fr": "La juge a posé une question perspicace."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Scharfsinnig describes someone who sees connections and weaknesses that others miss.",
+        "fr": "Scharfsinnig décrit une personne qui perçoit des liens et des failles que les autres ne voient pas.",
+        "de": "Scharfsinnig beschreibt jemanden, der Zusammenhänge und Schwächen erkennt, die anderen entgehen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "astute (with a sharp, analytical mind)",
+        "fr": "perspicace (à l’esprit vif et analytique)"
+      },
+      "gap": {
+        "before": "Ihre Analyse war so ",
+        "after": ", dass sie selbst den Gutachter überzeugte.",
+        "accepted": { "answers": ["scharfsinnig"] },
+        "referenceTargetIds": ["scharfsinnig", "einfaeltig", "leichtglaeubig", "borniert"],
+        "explanation": {
+          "en": "Only scharfsinnig fits: an analysis that convinces an expert is astute.",
+          "fr": "Seul « scharfsinnig » convient : une analyse qui convainc un expert est perspicace.",
+          "de": "Nur „scharfsinnig“ passt: Eine Analyse, die einen Gutachter überzeugt, ist scharfsinnig."
+        }
+      },
+      "listeningOptionTargetIds": ["scharfsinnig", "einfaeltig", "gerissen", "begriffsstutzig"]
+    },
+    {
+      "id": "gewitzt",
+      "term": "gewitzt",
+      "translations": { "en": ["quick-witted", "shrewd"], "fr": ["futé", "dégourdi"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "gewitzt",
+      "examForms": ["gewitzt"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɡəˈvɪtst/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Der Junge war gewitzt genug, um den Trick zu durchschauen.",
+        "translation": {
+          "en": "The boy was shrewd enough to see through the trick.",
+          "fr": "Le garçon était assez futé pour déjouer la ruse."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Do not confuse it with gerissen: gewitzt is admiring, gerissen is calculating.",
+        "fr": "Ne le confondez pas avec gerissen : gewitzt est admiratif, gerissen est calculateur.",
+        "de": "Nicht mit gerissen verwechseln: gewitzt klingt anerkennend, gerissen berechnend."
+      },
+      "explanation": {
+        "en": "Gewitzt means quick and practical in thinking, often thanks to experience.",
+        "fr": "Gewitzt signifie vif et pratique dans sa façon de penser, souvent grâce à l’expérience.",
+        "de": "Gewitzt bedeutet schnell und praktisch im Denken, oft dank Erfahrung."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": { "en": "quick-witted and practically clever", "fr": "futé, vif et pratique" },
+      "gap": {
+        "before": "Der kleine Fuchs war so ",
+        "after": ", dass er jeder Falle auswich.",
+        "accepted": { "answers": ["gewitzt"] },
+        "referenceTargetIds": ["gewitzt", "begriffsstutzig", "einfaeltig", "borniert"],
+        "explanation": {
+          "en": "Only gewitzt fits: avoiding every trap shows quick, practical cleverness.",
+          "fr": "Seul « gewitzt » convient : éviter tous les pièges montre une intelligence vive et pratique.",
+          "de": "Nur „gewitzt“ passt: Wer jeder Falle ausweicht, ist schnell und praktisch klug."
+        }
+      },
+      "listeningOptionTargetIds": ["gewitzt", "gerissen", "belesen", "borniert"]
+    },
+    {
+      "id": "gerissen",
+      "term": "gerissen",
+      "translations": { "en": ["cunning", "crafty"], "fr": ["rusé", "retors"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "gerissen",
+      "examForms": ["gerissen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɡəˈʁɪsn̩/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Der Händler ist so gerissen, dass er jedem alles verkauft.",
+        "translation": {
+          "en": "The dealer is so cunning that he can sell anything to anyone.",
+          "fr": "Le marchand est si rusé qu’il vend n’importe quoi à n’importe qui."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Usually disapproving: the cleverness serves one’s own advantage.",
+        "fr": "Souvent désapprobateur : l’intelligence sert son propre avantage.",
+        "de": "Meist missbilligend: Die Klugheit dient dem eigenen Vorteil."
+      },
+      "explanation": {
+        "en": "Gerissen describes someone who uses clever tricks for their own benefit; it is usually disapproving.",
+        "fr": "Gerissen décrit quelqu’un qui utilise des ruses à son propre profit ; le mot est généralement désapprobateur.",
+        "de": "Gerissen beschreibt jemanden, der mit klugen Tricks den eigenen Vorteil sucht; das Wort ist meist missbilligend."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "cunning, crafty (in a calculating, tricky way)",
+        "fr": "rusé, retors (de façon calculatrice)"
+      },
+      "gap": {
+        "before": "Der Gebrauchtwagenhändler war ",
+        "after": ": Er verschwieg den Unfallschaden und gab sich dabei ganz ehrlich.",
+        "accepted": { "answers": ["gerissen"] },
+        "referenceTargetIds": ["gerissen", "belesen", "leichtglaeubig", "begriffsstutzig"],
+        "explanation": {
+          "en": "Only gerissen fits: hiding the damage while appearing honest is cunning.",
+          "fr": "Seul « gerissen » convient : cacher les dégâts tout en paraissant honnête est rusé.",
+          "de": "Nur „gerissen“ passt: Den Schaden zu verschweigen und ehrlich zu wirken, ist raffiniert und berechnend."
+        }
+      },
+      "listeningOptionTargetIds": ["gerissen", "gewitzt", "borniert", "belesen"]
+    },
+    {
+      "id": "belesen",
+      "term": "belesen",
+      "translations": { "en": ["well-read"], "fr": ["qui a beaucoup lu", "cultivé"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "belesen",
+      "examForms": ["belesen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/bəˈleːzn̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Meine Großmutter ist sehr belesen.",
+        "translation": {
+          "en": "My grandmother is very well-read.",
+          "fr": "Ma grand-mère a beaucoup lu."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Belesen means having read a great deal and therefore knowing a lot.",
+        "fr": "Belesen signifie avoir beaucoup lu et donc savoir beaucoup de choses.",
+        "de": "Belesen bedeutet, viel gelesen zu haben und deshalb viel zu wissen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "well-read (having read a great deal)",
+        "fr": "qui a beaucoup lu (et sait beaucoup de choses)"
+      },
+      "gap": {
+        "before": "Sie ist so ",
+        "after": ", dass sie zu jedem Thema ein passendes Buch empfehlen kann.",
+        "accepted": { "answers": ["belesen"] },
+        "referenceTargetIds": ["belesen", "borniert", "einfaeltig", "begriffsstutzig"],
+        "explanation": {
+          "en": "Only belesen fits: recommending a book on any topic requires wide reading.",
+          "fr": "Seul « belesen » convient : recommander un livre sur tout sujet suppose beaucoup de lectures.",
+          "de": "Nur „belesen“ passt: Wer zu jedem Thema ein Buch empfehlen kann, hat viel gelesen."
+        }
+      },
+      "listeningOptionTargetIds": ["belesen", "gewitzt", "gerissen", "schlaumeier"]
+    },
+    {
+      "id": "auffassungsgabe",
+      "term": "Auffassungsgabe",
+      "translations": {
+        "en": ["quickness of understanding", "grasp"],
+        "fr": ["facilité de compréhension", "compréhension rapide"]
+      },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Auffassungsgabe",
+      "examForms": ["die Auffassungsgabe"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈaʊ̯fˌfasʊŋsˌɡaːbə/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Der Lehrer lobte ihre schnelle Auffassungsgabe.",
+        "translation": {
+          "en": "The teacher praised her quick grasp of things.",
+          "fr": "Le professeur a loué sa compréhension rapide."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Auffassungsgabe is the ability to understand new things quickly.",
+        "fr": "Die Auffassungsgabe est la capacité de comprendre vite des choses nouvelles.",
+        "de": "Die Auffassungsgabe ist die Fähigkeit, Neues schnell zu verstehen."
+      },
+      "genderExplanation": {
+        "en": "Auffassungsgabe is feminine, so the article is die.",
+        "fr": "Auffassungsgabe est féminin : on dit die Auffassungsgabe.",
+        "de": "Auffassungsgabe ist feminin, der Artikel lautet also die."
+      },
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "the ability to grasp new things quickly (noun)",
+        "fr": "la capacité de comprendre vite (nom)"
+      },
+      "gap": {
+        "before": "Dank ihrer raschen ",
+        "after": " begriff sie die Regel nach einem einzigen Beispiel.",
+        "accepted": { "answers": ["Auffassungsgabe"] },
+        "referenceTargetIds": ["auffassungsgabe", "schlaumeier", "einfaltspinsel", "weitblick"],
+        "explanation": {
+          "en": "Only Auffassungsgabe fits: understanding a rule from one example shows quick comprehension.",
+          "fr": "Seul « Auffassungsgabe » convient : comprendre une règle avec un seul exemple montre une compréhension rapide.",
+          "de": "Nur „Auffassungsgabe“ passt: Eine Regel nach einem Beispiel zu begreifen, zeigt schnelles Verstehen."
+        }
+      },
+      "listeningOptionTargetIds": ["auffassungsgabe", "weitblick", "schlaumeier", "einfaltspinsel"]
+    },
+    {
+      "id": "schlaumeier",
+      "term": "Schlaumeier",
+      "translations": { "en": ["smart aleck", "know-it-all"], "fr": ["petit malin"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "der Schlaumeier",
+      "examForms": ["der Schlaumeier"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʃlaʊ̯ˌmaɪ̯ɐ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Er spielt gern den Schlaumeier.",
+        "translation": {
+          "en": "He likes to play the smart aleck.",
+          "fr": "Il aime faire le petit malin."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Der Schlaumeier is a colloquial, mocking word for someone who shows off their cleverness.",
+        "fr": "Der Schlaumeier est un mot familier et moqueur pour quelqu’un qui étale son intelligence.",
+        "de": "Der Schlaumeier ist ein umgangssprachliches, spöttisches Wort für jemanden, der mit seiner Klugheit angibt."
+      },
+      "genderExplanation": {
+        "en": "Schlaumeier is masculine, so the article is der.",
+        "fr": "Schlaumeier est masculin : on dit der Schlaumeier.",
+        "de": "Schlaumeier ist maskulin, der Artikel lautet also der."
+      },
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "a smart aleck (colloquial, mocking noun)",
+        "fr": "un petit malin (nom familier et moqueur)"
+      },
+      "gap": {
+        "before": "Ihr Bruder, dieser kleine ",
+        "after": ", wusste natürlich wieder alles besser.",
+        "accepted": { "answers": ["Schlaumeier"] },
+        "referenceTargetIds": ["schlaumeier", "auffassungsgabe", "weitblick", "scharfsinnig"],
+        "explanation": {
+          "en": "Only Schlaumeier fits: it names a person (der) who shows off knowing better.",
+          "fr": "Seul « Schlaumeier » convient : il désigne une personne (der) qui étale son savoir.",
+          "de": "Nur „Schlaumeier“ passt: Das Wort bezeichnet eine Person (der), die alles besser wissen will."
+        }
+      },
+      "listeningOptionTargetIds": ["schlaumeier", "einfaltspinsel", "weitblick", "auffassungsgabe"]
+    },
+    {
+      "id": "weitblick",
+      "term": "Weitblick",
+      "translations": { "en": ["foresight"], "fr": ["clairvoyance", "vision à long terme"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "der Weitblick",
+      "examForms": ["der Weitblick"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈvaɪ̯tˌblɪk/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Die Chefin bewies bei der Planung großen Weitblick.",
+        "translation": {
+          "en": "The boss showed great foresight in the planning.",
+          "fr": "La directrice a fait preuve de beaucoup de clairvoyance dans la planification."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Der Weitblick is the ability to foresee consequences far into the future.",
+        "fr": "Der Weitblick est la capacité de prévoir des conséquences à long terme.",
+        "de": "Der Weitblick ist die Fähigkeit, Folgen weit in der Zukunft vorauszusehen."
+      },
+      "genderExplanation": {
+        "en": "Weitblick is masculine, so the article is der.",
+        "fr": "Weitblick est masculin : on dit der Weitblick.",
+        "de": "Weitblick ist maskulin, der Artikel lautet also der."
+      },
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "foresight, the ability to see far ahead (noun)",
+        "fr": "la clairvoyance, la capacité de voir loin (nom)"
+      },
+      "gap": {
+        "before": "Der Stratege beweist ",
+        "after": ", denn er plant die Folgen seiner Entscheidung für die nächsten zehn Jahre.",
+        "accepted": { "answers": ["Weitblick"] },
+        "referenceTargetIds": ["weitblick", "schlaumeier", "einfaltspinsel", "borniert"],
+        "explanation": {
+          "en": "Only Weitblick fits: planning consequences years ahead is foresight.",
+          "fr": "Seul « Weitblick » convient : planifier des conséquences sur des années relève de la clairvoyance.",
+          "de": "Nur „Weitblick“ passt: Folgen über Jahre vorauszuplanen ist Weitblick."
+        }
+      },
+      "listeningOptionTargetIds": ["weitblick", "auffassungsgabe", "scharfsinnig", "einfaltspinsel"]
+    },
+    {
+      "id": "begriffsstutzig",
+      "term": "begriffsstutzig",
+      "translations": { "en": ["slow on the uptake", "dense"], "fr": ["lent à comprendre"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "begriffsstutzig",
+      "examForms": ["begriffsstutzig"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/bəˈɡʁɪfsˌʃtʊtsɪç/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Er wirkt begriffsstutzig, ist aber nur müde.",
+        "translation": {
+          "en": "He seems slow on the uptake, but he is just tired.",
+          "fr": "Il paraît lent à comprendre, mais il est juste fatigué."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Begriffsstutzig describes someone who needs a long time to understand an explanation.",
+        "fr": "Begriffsstutzig décrit une personne qui met longtemps à comprendre une explication.",
+        "de": "Begriffsstutzig beschreibt jemanden, der lange braucht, um eine Erklärung zu verstehen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "slow on the uptake (needing explanations repeated)",
+        "fr": "lent à comprendre (qui a besoin qu’on répète)"
+      },
+      "gap": {
+        "before": "Er ist ein wenig ",
+        "after": ", sodass man ihm jede Erklärung dreimal geben muss.",
+        "accepted": { "answers": ["begriffsstutzig"] },
+        "referenceTargetIds": ["begriffsstutzig", "belesen", "scharfsinnig", "gerissen"],
+        "explanation": {
+          "en": "Only begriffsstutzig fits: needing every explanation three times means being slow to understand.",
+          "fr": "Seul « begriffsstutzig » convient : avoir besoin de chaque explication trois fois, c’est comprendre lentement.",
+          "de": "Nur „begriffsstutzig“ passt: Wer jede Erklärung dreimal braucht, versteht langsam."
+        }
+      },
+      "listeningOptionTargetIds": ["begriffsstutzig", "scharfsinnig", "einfaeltig", "borniert"]
+    },
+    {
+      "id": "einfaeltig",
+      "term": "einfältig",
+      "translations": { "en": ["simple-minded"], "fr": ["simplet", "simple d’esprit"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "einfältig",
+      "examForms": ["einfältig"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈaɪ̯nˌfɛltɪç/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Das war eine einfältige Idee.",
+        "translation": {
+          "en": "That was a simple-minded idea.",
+          "fr": "C’était une idée simplette."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Einfältig describes a mind that is naive and lacks depth of thought.",
+        "fr": "Einfältig décrit un esprit naïf, sans profondeur de réflexion.",
+        "de": "Einfältig beschreibt einen naiven Geist ohne Tiefe im Denken."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "simple-minded (naive, lacking depth of thought)",
+        "fr": "simplet (naïf, sans profondeur de réflexion)"
+      },
+      "gap": {
+        "before": "Er starrte mit offenem Mund vor sich hin, ganz ",
+        "after": " und ohne einen klaren Gedanken.",
+        "accepted": { "answers": ["einfältig"] },
+        "referenceTargetIds": ["einfaeltig", "scharfsinnig", "belesen", "gewitzt"],
+        "explanation": {
+          "en": "Only einfältig fits: staring blankly without a clear thought is simple-minded.",
+          "fr": "Seul « einfältig » convient : fixer le vide sans pensée claire est simplet.",
+          "de": "Nur „einfältig“ passt: Wer ohne klaren Gedanken vor sich hin starrt, wirkt einfältig."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "einfaeltig",
+        "einfaltspinsel",
+        "begriffsstutzig",
+        "leichtglaeubig"
+      ]
+    },
+    {
+      "id": "leichtglaeubig",
+      "term": "leichtgläubig",
+      "translations": { "en": ["gullible"], "fr": ["crédule"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "leichtgläubig",
+      "examForms": ["leichtgläubig"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈlaɪ̯çtˌɡlɔʏ̯bɪç/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Wer leichtgläubig ist, wird leicht betrogen.",
+        "translation": {
+          "en": "Whoever is gullible is easily cheated.",
+          "fr": "Celui qui est crédule se fait facilement tromper."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Leichtgläubig describes someone who believes others too quickly and without checking.",
+        "fr": "Leichtgläubig décrit quelqu’un qui croit les autres trop vite et sans vérifier.",
+        "de": "Leichtgläubig beschreibt jemanden, der anderen zu schnell und ohne Prüfung glaubt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "gullible (believing others too easily)",
+        "fr": "crédule (qui croit trop facilement les autres)"
+      },
+      "gap": {
+        "before": "Weil er so ",
+        "after": " ist, glaubt er jede erfundene Geschichte.",
+        "accepted": { "answers": ["leichtgläubig"] },
+        "referenceTargetIds": ["leichtglaeubig", "belesen", "scharfsinnig", "borniert"],
+        "explanation": {
+          "en": "Only leichtgläubig fits: believing every invented story means believing too easily.",
+          "fr": "Seul « leichtgläubig » convient : croire toute histoire inventée, c’est croire trop facilement.",
+          "de": "Nur „leichtgläubig“ passt: Wer jede erfundene Geschichte glaubt, glaubt zu leicht."
+        }
+      },
+      "listeningOptionTargetIds": ["leichtglaeubig", "einfaeltig", "belesen", "borniert"]
+    },
+    {
+      "id": "borniert",
+      "term": "borniert",
+      "translations": { "en": ["narrow-minded"], "fr": ["borné"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "borniert",
+      "examForms": ["borniert"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/bɔʁˈniːɐ̯t/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Sein bornierter Standpunkt ärgert alle.",
+        "translation": {
+          "en": "His narrow-minded view annoys everyone.",
+          "fr": "Son point de vue borné agace tout le monde."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Borniert describes someone who stubbornly refuses to consider other views.",
+        "fr": "Borniert décrit quelqu’un qui refuse obstinément de considérer d’autres points de vue.",
+        "de": "Borniert beschreibt jemanden, der sich hartnäckig anderen Sichtweisen verschließt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "narrow-minded (stubbornly closed to other views)",
+        "fr": "borné (fermé obstinément aux autres points de vue)"
+      },
+      "gap": {
+        "before": "Wer sich anderen Meinungen verschließt und nur die eigene gelten lässt, ist ",
+        "after": ".",
+        "accepted": { "answers": ["borniert"] },
+        "referenceTargetIds": ["borniert", "gewitzt", "belesen", "leichtglaeubig"],
+        "explanation": {
+          "en": "Only borniert fits: rejecting all other opinions is narrow-minded.",
+          "fr": "Seul « borniert » convient : rejeter toutes les autres opinions, c’est être borné.",
+          "de": "Nur „borniert“ passt: Wer alle anderen Meinungen ablehnt, ist engstirnig."
+        }
+      },
+      "listeningOptionTargetIds": ["borniert", "gerissen", "einfaeltig", "begriffsstutzig"]
+    },
+    {
+      "id": "einfaltspinsel",
+      "term": "Einfaltspinsel",
+      "translations": { "en": ["simpleton"], "fr": ["nigaud", "niais"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "der Einfaltspinsel",
+      "examForms": ["der Einfaltspinsel"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈaɪ̯nfaltsˌpɪnzl̩/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Du Einfaltspinsel, das war doch ein Scherz!",
+        "translation": {
+          "en": "You simpleton, that was just a joke!",
+          "fr": "Espèce de nigaud, c’était juste une blague !"
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Der Einfaltspinsel is a dated, colloquial and mildly mocking word for a naive person.",
+        "fr": "Der Einfaltspinsel est un mot familier, un peu désuet et légèrement moqueur pour une personne naïve.",
+        "de": "Der Einfaltspinsel ist ein veraltendes, umgangssprachliches und leicht spöttisches Wort für einen naiven Menschen."
+      },
+      "genderExplanation": {
+        "en": "Einfaltspinsel is masculine, so the article is der.",
+        "fr": "Einfaltspinsel est masculin : on dit der Einfaltspinsel.",
+        "de": "Einfaltspinsel ist maskulin, der Artikel lautet also der."
+      },
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "a simpleton (dated, colloquial noun)",
+        "fr": "un nigaud (nom familier, un peu désuet)"
+      },
+      "gap": {
+        "before": "Ich komme mir wie ein ",
+        "after": " vor, weil ich auf den Scherz hereingefallen bin.",
+        "accepted": { "answers": ["Einfaltspinsel"] },
+        "referenceTargetIds": ["einfaltspinsel", "weitblick", "auffassungsgabe", "schlaumeier"],
+        "explanation": {
+          "en": "Only Einfaltspinsel fits: someone who fell for a joke feels like a simpleton.",
+          "fr": "Seul « Einfaltspinsel » convient : qui s’est fait piéger par une blague se sent nigaud.",
+          "de": "Nur „Einfaltspinsel“ passt: Wer auf einen Scherz hereingefallen ist, kommt sich dumm vor."
+        }
+      },
+      "listeningOptionTargetIds": ["einfaltspinsel", "schlaumeier", "einfaeltig", "weitblick"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

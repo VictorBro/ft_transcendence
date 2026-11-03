@@ -1,0 +1,261 @@
+{
+  "schemaVersion": 2,
+  "id": "de-time-prepositions-seit-vor-in",
+  "lang": "de",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Zeitangaben mit seit, vor und in",
+  "objective": {
+    "en": "Use seit with the present for how long something has lasted, vor for when it was, and in for when it will be: seit zwei Jahren, vor einem Monat, in drei Tagen.",
+    "fr": "Utiliser seit avec le présent pour la durée, vor pour dire quand c'était et in pour dire quand ce sera : seit zwei Jahren, vor einem Monat, in drei Tagen.",
+    "de": "Mit seit und Präsens sagen, wie lange etwas schon dauert, mit vor, wann es war, und mit in, wann es sein wird: seit zwei Jahren, vor einem Monat."
+  },
+  "estimatedMinutes": 17,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:25:42.583Z",
+    "inputHashes": { "outline": "50feb1ee8e4f91a06fee86b84a61f369cfab44a7607e4ef5406dc40100ea2ad7" }
+  },
+  "kind": "grammar",
+  "topic": "prepositions_and_case",
+  "scopeBoundaries": {
+    "en": "Covers seit, vor and in with the dative for time spans in days, weeks, months and years. Excludes vor/in with clock times, seit with a date, and other time prepositions.",
+    "fr": "Couvre seit, vor et in avec le datif pour des durées en jours, semaines, mois et ans. Exclut vor/in avec l'heure, seit avec une date et les autres prépositions de temps.",
+    "de": "Behandelt seit, vor und in mit Dativ für Zeitspannen in Tagen, Wochen, Monaten und Jahren. Ausgeschlossen sind Uhrzeiten, seit mit Datum und andere Zeitpräpositionen."
+  },
+  "prerequisites": [
+    {
+      "en": "Time nouns: der Tag, die Woche, der Monat, das Jahr; numbers; the dative article",
+      "fr": "Noms de temps : der Tag, die Woche, der Monat, das Jahr ; les nombres ; l'article au datif",
+      "de": "Zeitnomen: der Tag, die Woche, der Monat, das Jahr; Zahlen; der Artikel im Dativ"
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-seit",
+      "summary": {
+        "en": "seit + dative + present tense: something began in the past and still continues.",
+        "fr": "seit + datif + présent : quelque chose a commencé dans le passé et continue.",
+        "de": "seit + Dativ + Präsens: Etwas hat in der Vergangenheit begonnen und dauert noch an."
+      }
+    },
+    {
+      "id": "rule-vor",
+      "summary": {
+        "en": "vor + dative: a moment in the past (vor einem Monat = a month ago).",
+        "fr": "vor + datif : un moment du passé (vor einem Monat = il y a un mois).",
+        "de": "vor + Dativ: ein Zeitpunkt in der Vergangenheit (vor einem Monat)."
+      }
+    },
+    {
+      "id": "rule-in",
+      "summary": {
+        "en": "in + dative: a moment in the future (in drei Tagen = in three days).",
+        "fr": "in + datif : un moment du futur (in drei Tagen = dans trois jours).",
+        "de": "in + Dativ: ein Zeitpunkt in der Zukunft (in drei Tagen)."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-seit",
+      "title": {
+        "en": "seit: how long already",
+        "fr": "seit : depuis combien de temps",
+        "de": "seit: wie lange schon"
+      },
+      "ruleIds": ["rule-seit"],
+      "explanationPlan": {
+        "en": "Explain seit + dative + present for something that began earlier and still goes on. Show the dative forms einem Jahr, einer Woche, zwei Monaten and the question Seit wann...?",
+        "fr": "Expliquer seit + datif + présent pour ce qui a commencé avant et continue. Montrer les formes einem Jahr, einer Woche, zwei Monaten et la question Seit wann...?",
+        "de": "seit + Dativ + Präsens erklären für etwas, das früher begann und noch andauert. Die Dativformen einem Jahr, einer Woche, zwei Monaten und die Frage Seit wann...? zeigen."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "Ich wohne seit zwei Jahren in Kassel.",
+          "translation": {
+            "en": "I have been living in Kassel for two years.",
+            "fr": "Je vis à Kassel depuis deux ans."
+          }
+        },
+        {
+          "text": "Sie arbeitet seit einem Monat hier.",
+          "translation": {
+            "en": "She has been working here for a month.",
+            "fr": "Elle travaille ici depuis un mois."
+          }
+        },
+        {
+          "text": "Seit wann lernst du Deutsch?",
+          "translation": {
+            "en": "Since when have you been learning German?",
+            "fr": "Depuis quand apprends-tu l'allemand ?"
+          }
+        },
+        {
+          "text": "Wir sind seit einer Woche in Berlin.",
+          "translation": {
+            "en": "We have been in Berlin for a week.",
+            "fr": "Nous sommes à Berlin depuis une semaine."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "With seit the verb is in the present tense, not in the perfect.",
+          "fr": "Avec seit, le verbe est au présent, pas au parfait.",
+          "de": "Mit seit steht das Verb im Präsens, nicht im Perfekt."
+        },
+        {
+          "en": "Do not forget the dative: seit einer Woche, not seit eine Woche.",
+          "fr": "N'oubliez pas le datif : seit einer Woche, pas seit eine Woche.",
+          "de": "Den Dativ nicht vergessen: seit einer Woche, nicht seit eine Woche."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-seit-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-seit"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-seit-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-seit"],
+          "estimatedDurationS": 80
+        },
+        {
+          "id": "ex-seit-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 3,
+          "ruleIds": ["rule-seit"],
+          "estimatedDurationS": 75
+        }
+      ]
+    },
+    {
+      "id": "block-vor-in",
+      "title": {
+        "en": "vor and in: past and future",
+        "fr": "vor et in : passé et futur",
+        "de": "vor und in: Vergangenheit und Zukunft"
+      },
+      "ruleIds": ["rule-vor", "rule-in"],
+      "explanationPlan": {
+        "en": "Explain vor + dative for a moment in the past and in + dative for a moment in the future. Contrast with seit and stress that all three take the dative.",
+        "fr": "Expliquer vor + datif pour un moment du passé et in + datif pour un moment du futur. Comparer avec seit et souligner que les trois prennent le datif.",
+        "de": "vor + Dativ für einen Zeitpunkt in der Vergangenheit und in + Dativ für einen Zeitpunkt in der Zukunft erklären. Mit seit vergleichen und betonen, dass alle drei den Dativ haben."
+      },
+      "explanationDurationS": 150,
+      "examples": [
+        {
+          "text": "Ich war vor einem Monat in Rom.",
+          "translation": {
+            "en": "I was in Rome a month ago.",
+            "fr": "J'étais à Rome il y a un mois."
+          }
+        },
+        {
+          "text": "Der Kurs beginnt in drei Tagen.",
+          "translation": {
+            "en": "The course starts in three days.",
+            "fr": "Le cours commence dans trois jours."
+          }
+        },
+        {
+          "text": "Vor zwei Tagen war das Wetter schön.",
+          "translation": {
+            "en": "Two days ago the weather was nice.",
+            "fr": "Il y a deux jours, il faisait beau."
+          }
+        },
+        {
+          "text": "Meine Schwester kommt in einer Woche.",
+          "translation": {
+            "en": "My sister is coming in a week.",
+            "fr": "Ma sœur vient dans une semaine."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not mix up vor (past) and in (future): vor einer Woche and in einer Woche are opposites.",
+          "fr": "Ne confondez pas vor (passé) et in (futur) : vor einer Woche et in einer Woche sont opposés.",
+          "de": "vor (Vergangenheit) und in (Zukunft) nicht verwechseln: vor einer Woche und in einer Woche sind Gegensätze."
+        },
+        {
+          "en": "Plural nouns after vor and in usually end in -n: vor zwei Tagen, in drei Monaten.",
+          "fr": "Les noms au pluriel après vor et in se terminent le plus souvent par -n : vor zwei Tagen, in drei Monaten.",
+          "de": "Nomen im Plural nach vor und in enden meist auf -n: vor zwei Tagen, in drei Monaten."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-vi-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-vor", "rule-in"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-vi-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-vor", "rule-in"],
+          "estimatedDurationS": 80
+        },
+        {
+          "id": "ex-vi-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-vor", "rule-in"],
+          "estimatedDurationS": 75
+        },
+        {
+          "id": "ex-vi-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 2,
+          "ruleIds": ["rule-vor", "rule-in"],
+          "estimatedDurationS": 50
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-seit",
+        "type": "grammar_gap_typing",
+        "itemCount": 3,
+        "ruleIds": ["rule-seit"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      },
+      {
+        "pageId": "exam-vor-in",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-vor", "rule-in"],
+        "estimatedDurationS": 80,
+        "timeLimitS": 130
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["rule-seit", "rule-vor", "rule-in"],
+        "estimatedDurationS": 75,
+        "timeLimitS": 120
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

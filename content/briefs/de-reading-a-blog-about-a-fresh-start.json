@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 2,
+  "id": "de-reading-a-blog-about-a-fresh-start",
+  "lang": "de",
+  "level": "B1",
+  "locales": ["en", "fr", "de"],
+  "title": "Einen Blog über einen Neuanfang lesen",
+  "objective": {
+    "en": "Read a blog post about a year abroad and tell true statements from false ones: how was it at the start, and how does the writer feel today?",
+    "fr": "Lire un article de blog sur une année à l’étranger et distinguer les affirmations vraies des fausses : comment c’était au début, et comment l’auteure se sent aujourd’hui ?",
+    "de": "Einen Blogbeitrag über ein Auslandsjahr lesen und richtige von falschen Aussagen unterscheiden: Wie war es am Anfang, und wie fühlt sich die Schreiberin heute?"
+  },
+  "estimatedMinutes": 9,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:29:52.012Z",
+    "inputHashes": { "outline": "d5aec8cedf24985da9a4814e6c5332b3d4eec5ac60eddeeb8d64a4ed08b30340" }
+  },
+  "kind": "reading",
+  "theme": "personal_identification",
+  "genre": "forum_post",
+  "situation": {
+    "en": "Lena, a student from Germany, writes a blog post about her year in Göteborg, Sweden, and how things changed for her.",
+    "fr": "Lena, étudiante allemande, écrit un article de blog sur son année à Göteborg, en Suède, et sur l’évolution de sa situation.",
+    "de": "Lena, eine Studentin aus Deutschland, schreibt einen Blogbeitrag über ihr Jahr in Göteborg in Schweden und darüber, wie sich alles verändert hat."
+  },
+  "readerTask": {
+    "en": "Understand how Lena felt at the start and how she feels now, and decide which statements about her blog post are true or false.",
+    "fr": "Comprendre ce que Lena ressentait au début et ce qu’elle ressent maintenant, et décider quelles affirmations sur son article sont vraies ou fausses.",
+    "de": "Verstehen, wie Lena sich am Anfang gefühlt hat und wie sie sich jetzt fühlt, und entscheiden, welche Aussagen zu ihrem Blogbeitrag richtig oder falsch sind."
+  },
+  "keywords": [
+    {
+      "id": "fremd",
+      "term": "fremd",
+      "translations": { "en": ["strange", "unfamiliar"], "fr": ["étrange", "inconnu"] },
+      "explanation": {
+        "en": "Unknown and not familiar. The opposite is vertraut. Am Anfang war alles fremd.",
+        "fr": "Inconnu, pas familier. Le contraire est vertraut. Am Anfang war alles fremd.",
+        "de": "Unbekannt, nicht vertraut. Das Gegenteil ist vertraut. Am Anfang war alles fremd."
+      }
+    },
+    {
+      "id": "vermissen",
+      "term": "vermissen",
+      "translations": { "en": ["to miss"], "fr": ["s’ennuyer de", "regretter l’absence de"] },
+      "explanation": {
+        "en": "To feel sad because a person or place is not near you: Ich vermisse meine Familie.",
+        "fr": "Être triste parce qu’une personne ou un lieu est loin : Ich vermisse meine Familie.",
+        "de": "Traurig sein, weil eine Person oder ein Ort nicht in der Nähe ist: Ich vermisse meine Familie."
+      }
+    },
+    {
+      "id": "sich-einleben",
+      "term": "sich einleben",
+      "translations": { "en": ["to settle in"], "fr": ["s’installer", "s’habituer"] },
+      "explanation": {
+        "en": "To get used to a new place until you feel comfortable there: Ich habe mich gut eingelebt.",
+        "fr": "S’habituer à un nouvel endroit jusqu’à s’y sentir bien : Ich habe mich gut eingelebt.",
+        "de": "Sich an einen neuen Ort gewöhnen, bis man sich dort wohlfühlt: Ich habe mich gut eingelebt."
+      }
+    },
+    {
+      "id": "inzwischen",
+      "term": "inzwischen",
+      "translations": { "en": ["by now", "meanwhile"], "fr": ["entre-temps", "maintenant"] },
+      "explanation": {
+        "en": "It links the past with the present: first it was hard, inzwischen it is better.",
+        "fr": "Il relie le passé et le présent : d’abord c’était dur, inzwischen c’est mieux.",
+        "de": "Es verbindet Vergangenheit und Gegenwart: Erst war es schwer, inzwischen ist es besser."
+      }
+    },
+    {
+      "id": "heimat",
+      "term": "die Heimat",
+      "translations": { "en": ["homeland", "home country"], "fr": ["le pays natal", "la patrie"] },
+      "explanation": {
+        "en": "The place you come from and where you feel you belong.",
+        "fr": "Le lieu d’où l’on vient et où l’on se sent chez soi.",
+        "de": "Der Ort, aus dem man kommt und zu dem man gehört."
+      }
+    }
+  ],
+  "documents": {
+    "main": {
+      "targetWords": 186,
+      "contents": {
+        "en": "Blog post by Lena: at first everything was strange in Göteborg and she missed her family; a fellow student advised her to try something new every week (choir, Swedish course); by now she has settled in and feels at home, though she still misses her homeland and will fly back in summer.",
+        "fr": "Article de Lena : au début tout était étrange à Göteborg et sa famille lui manquait ; une camarade lui a conseillé d’essayer quelque chose de nouveau chaque semaine (chorale, cours de suédois) ; maintenant elle s’est installée et se sent chez elle, même si son pays lui manque encore et qu’elle rentrera en été.",
+        "de": "Blogbeitrag von Lena: Am Anfang war in Göteborg alles fremd, und sie vermisste ihre Familie; eine Kommilitonin riet ihr, jede Woche etwas Neues auszuprobieren (Chor, Schwedischkurs); inzwischen hat sie sich eingelebt und fühlt sich zu Hause, vermisst aber ihre Heimat noch und fliegt im Sommer zurück."
+      }
+    },
+    "exam": {
+      "targetWords": 104,
+      "contents": {
+        "en": "Blog post by Murat: new job in Hamburg, alone at first; he joined a Saturday running group with breakfast in a café; Hamburg is not yet home; in spring he wants a bigger flat.",
+        "fr": "Article de Murat : nouveau travail à Hambourg, seul au début ; il court chaque samedi avec un groupe puis petit-déjeune dans un café ; Hambourg n’est pas encore chez lui ; au printemps il veut un appartement plus grand.",
+        "de": "Blogbeitrag von Murat: neue Arbeit in Hamburg, am Anfang allein; er läuft samstags mit einer Gruppe und frühstückt danach in einem Café; Hamburg ist noch nicht seine Heimat; im Frühling möchte er eine größere Wohnung."
+      }
+    }
+  },
+  "skim": { "focus": "purpose" },
+  "detailQuestions": [
+    {
+      "id": "q-reason",
+      "type": "reading_choice",
+      "focus": {
+        "en": "Why Lena moved to Göteborg",
+        "fr": "Pourquoi Lena est partie à Göteborg",
+        "de": "Warum Lena nach Göteborg gezogen ist"
+      }
+    },
+    {
+      "id": "q-early",
+      "type": "reading_true_false",
+      "focus": {
+        "en": "How Lena felt at the beginning",
+        "fr": "Ce que Lena ressentait au début",
+        "de": "Wie Lena sich am Anfang gefühlt hat"
+      }
+    },
+    {
+      "id": "q-tip",
+      "type": "reading_true_false",
+      "focus": {
+        "en": "The advice Lena received",
+        "fr": "Le conseil que Lena a reçu",
+        "de": "Der Tipp, den Lena bekommen hat"
+      }
+    },
+    {
+      "id": "q-now",
+      "type": "reading_true_false",
+      "focus": {
+        "en": "What Lena understands today",
+        "fr": "Ce que Lena comprend aujourd’hui",
+        "de": "Was Lena heute versteht"
+      }
+    }
+  ],
+  "exam": { "types": ["reading_choice", "reading_true_false"] },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

@@ -1,0 +1,1470 @@
+{
+  "schemaVersion": 2,
+  "id": "de-presenting-yourself-in-an-interview",
+  "lang": "de",
+  "level": "C1",
+  "locales": ["en", "fr", "de"],
+  "title": "Sich in einem ausführlichen Interview darstellen",
+  "objective": {
+    "en": "In a portrait interview, reflect on your career, interpret turning points and explain what drives you.",
+    "fr": "Dans un entretien de portrait, revenir sur son parcours, interpréter les tournants et dire ce qui nous motive.",
+    "de": "Im Porträtinterview den eigenen Werdegang reflektieren, Wendepunkte deuten und erklären, was einen antreibt."
+  },
+  "estimatedMinutes": 20,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:39:35.553Z",
+    "inputHashes": {
+      "outline": "6729375d2cab94dccbc544f007f6dec3fca33c930499a9a4524a10bffa61a5c9",
+      "brief": "564b94d155d9462a211bca2dc357339f662c1789d7ec8384c2e729dd167afb74"
+    }
+  },
+  "kind": "functions",
+  "theme": "personal_identification",
+  "steps": [
+    {
+      "id": "flashcards",
+      "stage": "flashcards",
+      "role": "presentation",
+      "label": { "en": "Flashcards", "fr": "Cartes mémoire", "de": "Karteikarten" },
+      "pages": [
+        {
+          "pageId": "cards-words",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Recall each word, then turn the card to check it.",
+            "fr": "Rappelez-vous chaque mot, puis retournez la carte pour vérifier.",
+            "de": "Erinnere dich an jedes Wort und dreh dann die Karte um."
+          },
+          "items": [
+            {
+              "type": "function_flashcards",
+              "itemId": "cards-words",
+              "side": "words",
+              "ids": ["werdegang", "wendepunkt", "neugier", "rueckschlag", "vorbild"]
+            }
+          ]
+        },
+        {
+          "pageId": "cards-expressions",
+          "estimatedDurationS": 72,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Recall each expression, then turn the card to check it.",
+            "fr": "Rappelez-vous chaque expression, puis retournez la carte pour vérifier.",
+            "de": "Erinnere dich an jeden Ausdruck und dreh dann die Karte um."
+          },
+          "items": [
+            {
+              "type": "function_flashcards",
+              "itemId": "cards-expressions",
+              "side": "expressions",
+              "ids": [
+                "was-mich-antreibt",
+                "rueckblickend",
+                "wendepunkt-war",
+                "nachhaltig-gepraegt",
+                "bewusst-entschieden",
+                "wenn-ich-ehrlich-bin"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue",
+      "stage": "dialogue",
+      "role": "presentation",
+      "label": { "en": "Dialogue", "fr": "Dialogue", "de": "Dialog" },
+      "pages": [
+        {
+          "pageId": "dialogue",
+          "estimatedDurationS": 140,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read and listen. Turn a line to see its translation and a note.",
+            "fr": "Lisez et écoutez. Retournez une réplique pour voir sa traduction et une remarque.",
+            "de": "Lies und hör zu. Dreh eine Zeile um, um Übersetzung und Hinweis zu sehen."
+          },
+          "items": [
+            {
+              "type": "function_dialogue",
+              "itemId": "dialogue",
+              "lines": [
+                {
+                  "lineId": "line-1",
+                  "roleId": "interviewerin",
+                  "text": "Herr Weber, Sie haben ein bewegtes Berufsleben hinter sich. Wie würden Sie Ihren Werdegang beschreiben?",
+                  "translation": {
+                    "en": "Mr Weber, you have had an eventful career. How would you describe your path?",
+                    "fr": "Monsieur Weber, vous avez eu une vie professionnelle mouvementée. Comment décririez-vous votre parcours ?"
+                  },
+                  "note": {
+                    "en": "The interviewer opens with a broad question about the career.",
+                    "fr": "L’intervieweuse ouvre par une question large sur la carrière.",
+                    "de": "Die Interviewerin eröffnet mit einer offenen Frage zur Laufbahn."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-2",
+                  "roleId": "architekt",
+                  "text": "Nicht geradlinig. Was mich antreibt, ist die Neugier, nicht der Ehrgeiz.",
+                  "translation": {
+                    "en": "Not a straight line. What drives me is curiosity, not ambition.",
+                    "fr": "Pas en ligne droite. Ce qui me motive, c’est la curiosité, pas l’ambition."
+                  },
+                  "note": {
+                    "en": "Was mich antreibt, ist + noun names the deeper motivation.",
+                    "fr": "Was mich antreibt, ist + nom désigne la motivation profonde.",
+                    "de": "Was mich antreibt, ist + Nomen nennt die tiefere Motivation."
+                  },
+                  "expressionIds": ["was-mich-antreibt"]
+                },
+                {
+                  "lineId": "line-3",
+                  "roleId": "interviewerin",
+                  "text": "Gab es einen Moment, der Ihr Leben verändert hat?",
+                  "translation": {
+                    "en": "Was there a moment that changed your life?",
+                    "fr": "Y a-t-il eu un moment qui a changé votre vie ?"
+                  },
+                  "note": {
+                    "en": "The question invites him to interpret a turning point.",
+                    "fr": "La question l’invite à interpréter un tournant.",
+                    "de": "Die Frage lädt dazu ein, einen Wendepunkt zu deuten."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-4",
+                  "roleId": "architekt",
+                  "text": "Rückblickend würde ich sagen, dass mein Studium im Ausland alles verändert hat.",
+                  "translation": {
+                    "en": "Looking back, I would say that my studies abroad changed everything.",
+                    "fr": "Avec le recul, je dirais que mes études à l’étranger ont tout changé."
+                  },
+                  "note": {
+                    "en": "A cautious judgement in hindsight; the verb is at the end of the dass-clause.",
+                    "fr": "Un jugement prudent avec le recul ; le verbe est à la fin de la proposition en dass.",
+                    "de": "Ein vorsichtiges Urteil im Rückblick; das Verb steht am Ende des dass-Satzes."
+                  },
+                  "expressionIds": ["rueckblickend"]
+                },
+                {
+                  "lineId": "line-5",
+                  "roleId": "interviewerin",
+                  "text": "Inwiefern hat es Sie verändert?",
+                  "translation": {
+                    "en": "In what way did it change you?",
+                    "fr": "En quoi cela vous a-t-il changé ?"
+                  },
+                  "note": {
+                    "en": "A follow-up question asking for an explanation.",
+                    "fr": "Une question de relance qui demande une explication.",
+                    "de": "Eine Nachfrage, die um eine Erklärung bittet."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-6",
+                  "roleId": "architekt",
+                  "text": "Ein Wendepunkt war für mich die Zeit in Lissabon. Das hat mich nachhaltig geprägt.",
+                  "translation": {
+                    "en": "A turning point for me was my time in Lisbon. That left a lasting mark on me.",
+                    "fr": "Un tournant pour moi a été mon séjour à Lisbonne. Cela m’a durablement marqué."
+                  },
+                  "note": {
+                    "en": "First the event is named as a turning point, then its lasting effect.",
+                    "fr": "D’abord l’événement est nommé comme tournant, puis son effet durable.",
+                    "de": "Zuerst wird das Ereignis als Wendepunkt benannt, dann seine nachhaltige Wirkung."
+                  },
+                  "expressionIds": ["wendepunkt-war", "nachhaltig-gepraegt"]
+                },
+                {
+                  "lineId": "line-7",
+                  "roleId": "interviewerin",
+                  "text": "Sie hätten auch zu Hause bleiben können. Warum der Schritt ins Ungewisse?",
+                  "translation": {
+                    "en": "You could also have stayed at home. Why the step into the unknown?",
+                    "fr": "Vous auriez aussi pu rester chez vous. Pourquoi ce saut dans l’inconnu ?"
+                  },
+                  "note": {
+                    "en": "The interviewer asks for the reasons behind a risky decision.",
+                    "fr": "L’intervieweuse demande les raisons d’une décision risquée.",
+                    "de": "Die Interviewerin fragt nach den Gründen für eine riskante Entscheidung."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-8",
+                  "roleId": "architekt",
+                  "text": "Ich habe mich bewusst dafür entschieden, ein Risiko einzugehen. Wenn ich ehrlich bin, hatte ich allerdings große Zweifel.",
+                  "translation": {
+                    "en": "I deliberately decided to take a risk. If I’m honest, though, I had great doubts.",
+                    "fr": "J’ai décidé en connaissance de cause de prendre un risque. Pour être honnête, j’avais pourtant de grands doutes."
+                  },
+                  "note": {
+                    "en": "A deliberate decision, then an honest admission of doubt.",
+                    "fr": "Une décision délibérée, puis un aveu sincère de doute.",
+                    "de": "Eine bewusste Entscheidung, dann ein ehrliches Eingeständnis von Zweifeln."
+                  },
+                  "expressionIds": ["bewusst-entschieden", "wenn-ich-ehrlich-bin"]
+                },
+                {
+                  "lineId": "line-9",
+                  "roleId": "interviewerin",
+                  "text": "Und heute: Würden Sie wieder so entscheiden?",
+                  "translation": {
+                    "en": "And today: would you decide the same way again?",
+                    "fr": "Et aujourd’hui : décideriez-vous de nouveau de la même façon ?"
+                  },
+                  "note": {
+                    "en": "The final question looks at the decision from today’s perspective.",
+                    "fr": "La dernière question regarde la décision du point de vue d’aujourd’hui.",
+                    "de": "Die letzte Frage betrachtet die Entscheidung aus heutiger Sicht."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-10",
+                  "roleId": "architekt",
+                  "text": "Ja, und jeden Rückschlag würde ich in Kauf nehmen.",
+                  "translation": {
+                    "en": "Yes, and I would accept every setback.",
+                    "fr": "Oui, et j’accepterais chaque revers."
+                  },
+                  "note": {
+                    "en": "in Kauf nehmen means to accept something unpleasant for a goal.",
+                    "fr": "in Kauf nehmen signifie accepter un désagrément pour atteindre un but.",
+                    "de": "in Kauf nehmen bedeutet, etwas Unangenehmes für ein Ziel hinzunehmen."
+                  },
+                  "expressionIds": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matching",
+      "stage": "matching",
+      "role": "exercise",
+      "label": { "en": "Matching", "fr": "Association", "de": "Zuordnen" },
+      "pages": [
+        {
+          "pageId": "match-expressions-1",
+          "estimatedDurationS": 72,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each expression with its translation.",
+            "fr": "Associez chaque expression à sa traduction.",
+            "de": "Ordne jedem Ausdruck seine Übersetzung zu."
+          },
+          "items": [
+            {
+              "type": "function_matching",
+              "itemId": "match-expressions-1",
+              "side": "expressions",
+              "pairs": [
+                {
+                  "id": "was-mich-antreibt",
+                  "answerExplanation": {
+                    "en": "Names your deeper motivation: Was mich antreibt, ist …",
+                    "fr": "Nomme sa motivation profonde : Was mich antreibt, ist …",
+                    "de": "Nennt die tiefere Motivation: Was mich antreibt, ist …"
+                  }
+                },
+                {
+                  "id": "rueckblickend",
+                  "answerExplanation": {
+                    "en": "A cautious judgement about the past.",
+                    "fr": "Un jugement prudent sur le passé.",
+                    "de": "Ein vorsichtiges Urteil über die Vergangenheit."
+                  }
+                },
+                {
+                  "id": "wendepunkt-war",
+                  "answerExplanation": {
+                    "en": "Interprets an event as a turning point.",
+                    "fr": "Interprète un événement comme un tournant.",
+                    "de": "Deutet ein Ereignis als Wendepunkt."
+                  }
+                },
+                {
+                  "id": "nachhaltig-gepraegt",
+                  "answerExplanation": {
+                    "en": "Says that an experience shaped you in the long term.",
+                    "fr": "Dit qu’une expérience nous a marqués durablement.",
+                    "de": "Sagt, dass eine Erfahrung einen langfristig beeinflusst hat."
+                  }
+                },
+                {
+                  "id": "bewusst-entschieden",
+                  "answerExplanation": {
+                    "en": "Stresses that a decision was not a coincidence.",
+                    "fr": "Souligne qu’une décision n’était pas due au hasard.",
+                    "de": "Betont, dass eine Entscheidung kein Zufall war."
+                  }
+                },
+                {
+                  "id": "wenn-ich-ehrlich-bin",
+                  "answerExplanation": {
+                    "en": "Introduces an honest admission.",
+                    "fr": "Introduit un aveu sincère.",
+                    "de": "Leitet ein ehrliches Eingeständnis ein."
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "pageId": "match-words-1",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each word with its translation.",
+            "fr": "Associez chaque mot à sa traduction.",
+            "de": "Ordne jedem Wort seine Übersetzung zu."
+          },
+          "items": [
+            {
+              "type": "function_matching",
+              "itemId": "match-words-1",
+              "side": "words",
+              "pairs": [
+                {
+                  "id": "werdegang",
+                  "answerExplanation": {
+                    "en": "Masculine noun: der Werdegang.",
+                    "fr": "Nom masculin : der Werdegang.",
+                    "de": "Maskulines Nomen: der Werdegang."
+                  }
+                },
+                {
+                  "id": "wendepunkt",
+                  "answerExplanation": {
+                    "en": "Masculine noun: der Wendepunkt.",
+                    "fr": "Nom masculin : der Wendepunkt.",
+                    "de": "Maskulines Nomen: der Wendepunkt."
+                  }
+                },
+                {
+                  "id": "neugier",
+                  "answerExplanation": {
+                    "en": "Feminine noun: die Neugier.",
+                    "fr": "Nom féminin : die Neugier.",
+                    "de": "Feminines Nomen: die Neugier."
+                  }
+                },
+                {
+                  "id": "rueckschlag",
+                  "answerExplanation": {
+                    "en": "Masculine noun: der Rückschlag.",
+                    "fr": "Nom masculin : der Rückschlag.",
+                    "de": "Maskulines Nomen: der Rückschlag."
+                  }
+                },
+                {
+                  "id": "vorbild",
+                  "answerExplanation": {
+                    "en": "Neuter noun: das Vorbild.",
+                    "fr": "Nom neutre : das Vorbild.",
+                    "de": "Neutrales Nomen: das Vorbild."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gender",
+      "stage": "gender",
+      "role": "exercise",
+      "label": { "en": "Gender", "fr": "Genre", "de": "Genus" },
+      "pages": [
+        {
+          "pageId": "gender",
+          "estimatedDurationS": 45,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the gender of each noun.",
+            "fr": "Choisissez le genre de chaque nom.",
+            "de": "Wähle das Genus jedes Nomens."
+          },
+          "items": [
+            {
+              "type": "function_gender_select",
+              "itemId": "gender",
+              "ids": ["werdegang", "wendepunkt", "neugier", "rueckschlag", "vorbild"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-gaps",
+      "stage": "dialogue_gaps",
+      "role": "exercise",
+      "label": { "en": "Dialogue gaps", "fr": "Dialogue à trous", "de": "Dialoglücken" },
+      "pages": [
+        {
+          "pageId": "gap-1",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-1",
+              "expressionId": "was-mich-antreibt",
+              "context": {
+                "roleId": "interviewerin",
+                "text": "Was treibt Sie nach all den Jahren immer noch an?"
+              },
+              "roleId": "architekt",
+              "before": "",
+              "after": "die Neugier.",
+              "choiceExpressionIds": [
+                "was-mich-antreibt",
+                "bewusst-entschieden",
+                "wenn-ich-ehrlich-bin",
+                "nachhaltig-gepraegt"
+              ],
+              "answerExplanation": {
+                "en": "The answer names a motive: Was mich antreibt, ist + noun.",
+                "fr": "La réponse nomme un moteur : Was mich antreibt, ist + nom.",
+                "de": "Die Antwort nennt ein Motiv: Was mich antreibt, ist + Nomen."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-2",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-2",
+              "expressionId": "rueckblickend",
+              "context": {
+                "roleId": "interviewerin",
+                "text": "Würden Sie aus heutiger Sicht etwas anders machen?"
+              },
+              "roleId": "architekt",
+              "before": "",
+              "after": "ich vieles wieder so machen würde.",
+              "choiceExpressionIds": [
+                "rueckblickend",
+                "was-mich-antreibt",
+                "wendepunkt-war",
+                "bewusst-entschieden"
+              ],
+              "answerExplanation": {
+                "en": "Only this expression ends in dass and introduces a clause with the verb at the end.",
+                "fr": "Cette expression finit par dass et introduit une proposition avec le verbe à la fin.",
+                "de": "Dieser Ausdruck endet auf dass und leitet einen Nebensatz mit dem Verb am Ende ein."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-3",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-3",
+              "expressionId": "wendepunkt-war",
+              "context": {
+                "roleId": "interviewerin",
+                "text": "Gab es ein Ereignis, das Ihre Laufbahn grundlegend verändert hat?"
+              },
+              "roleId": "architekt",
+              "before": "",
+              "after": "der Verlust meiner ersten Stelle.",
+              "choiceExpressionIds": [
+                "wendepunkt-war",
+                "rueckblickend",
+                "nachhaltig-gepraegt",
+                "bewusst-entschieden"
+              ],
+              "answerExplanation": {
+                "en": "A noun phrase follows, and the event is interpreted as a turning point.",
+                "fr": "Un groupe nominal suit, et l’événement est interprété comme un tournant.",
+                "de": "Es folgt eine Nominalgruppe, und das Ereignis wird als Wendepunkt gedeutet."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-4",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-4",
+              "expressionId": "nachhaltig-gepraegt",
+              "context": {
+                "roleId": "interviewerin",
+                "text": "Sie haben drei Jahre in Kairo gelebt. Wie wirkt das nach?"
+              },
+              "roleId": "architekt",
+              "before": "Die Zeit dort war intensiv.",
+              "after": ".",
+              "choiceExpressionIds": [
+                "nachhaltig-gepraegt",
+                "was-mich-antreibt",
+                "rueckblickend",
+                "wendepunkt-war"
+              ],
+              "answerExplanation": {
+                "en": "Only this expression is a complete sentence that refers back to the time in Cairo.",
+                "fr": "Seule cette expression forme une phrase complète qui renvoie au séjour au Caire.",
+                "de": "Nur dieser Ausdruck ist ein vollständiger Satz, der sich auf die Zeit in Kairo bezieht."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-5",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-5",
+              "expressionId": "bewusst-entschieden",
+              "context": {
+                "roleId": "interviewerin",
+                "text": "Haben Sie Ihre Kündigung damals dem Zufall überlassen?"
+              },
+              "roleId": "architekt",
+              "before": "Nein.",
+              "after": ".",
+              "choiceExpressionIds": [
+                "bewusst-entschieden",
+                "was-mich-antreibt",
+                "rueckblickend",
+                "wendepunkt-war"
+              ],
+              "answerExplanation": {
+                "en": "He denies a coincidence, so he stresses a deliberate decision.",
+                "fr": "Il nie le hasard, donc il souligne une décision délibérée.",
+                "de": "Er verneint den Zufall, also betont er eine bewusste Entscheidung."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-6",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-6",
+              "expressionId": "wenn-ich-ehrlich-bin",
+              "context": {
+                "roleId": "interviewerin",
+                "text": "Hatten Sie vor dem Umzug denn keine Zweifel?"
+              },
+              "roleId": "architekt",
+              "before": "",
+              "after": ", hatte ich große Angst.",
+              "choiceExpressionIds": [
+                "wenn-ich-ehrlich-bin",
+                "was-mich-antreibt",
+                "wendepunkt-war",
+                "nachhaltig-gepraegt"
+              ],
+              "answerExplanation": {
+                "en": "He admits his fear, and the main clause that follows begins with its verb.",
+                "fr": "Il avoue sa peur, et la principale qui suit commence par le verbe.",
+                "de": "Er gibt seine Angst zu, und der folgende Hauptsatz beginnt mit dem Verb."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "word-order",
+      "stage": "word_order",
+      "role": "exercise",
+      "label": { "en": "Word order", "fr": "Ordre des mots", "de": "Wortstellung" },
+      "pages": [
+        {
+          "pageId": "order-1",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-1",
+              "expressionId": "was-mich-antreibt",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Was" },
+                { "tokenId": "t2", "text": "mich" },
+                { "tokenId": "t3", "text": "antreibt," },
+                { "tokenId": "t4", "text": "ist" },
+                { "tokenId": "t5", "text": "die" },
+                { "tokenId": "t6", "text": "Freude" },
+                { "tokenId": "t7", "text": "am" },
+                { "tokenId": "t8", "text": "Lernen." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8"]],
+              "answerExplanation": {
+                "en": "The relative clause comes first, then ist and the motive.",
+                "fr": "La relative vient d’abord, puis ist et le moteur.",
+                "de": "Zuerst kommt der Relativsatz, dann ist und das Motiv."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-2",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-2",
+              "expressionId": "rueckblickend",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Rückblickend" },
+                { "tokenId": "t2", "text": "würde" },
+                { "tokenId": "t3", "text": "ich" },
+                { "tokenId": "t4", "text": "sagen," },
+                { "tokenId": "t5", "text": "dass" },
+                { "tokenId": "t6", "text": "diese" },
+                { "tokenId": "t7", "text": "Entscheidung" },
+                { "tokenId": "t8", "text": "richtig" },
+                { "tokenId": "t9", "text": "war." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9"]],
+              "answerExplanation": {
+                "en": "In the dass-clause the verb war goes to the end.",
+                "fr": "Dans la proposition en dass, le verbe war va à la fin.",
+                "de": "Im dass-Satz steht das Verb war am Ende."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-3",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-3",
+              "expressionId": "wendepunkt-war",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Ein" },
+                { "tokenId": "t2", "text": "Wendepunkt" },
+                { "tokenId": "t3", "text": "war" },
+                { "tokenId": "t4", "text": "für" },
+                { "tokenId": "t5", "text": "mich" },
+                { "tokenId": "t6", "text": "die" },
+                { "tokenId": "t7", "text": "Trennung" },
+                { "tokenId": "t8", "text": "von" },
+                { "tokenId": "t9", "text": "meinem" },
+                { "tokenId": "t10", "text": "Partner." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9", "t10"]],
+              "answerExplanation": {
+                "en": "The expression comes first, then the event named as the turning point.",
+                "fr": "L’expression vient d’abord, puis l’événement désigné comme tournant.",
+                "de": "Zuerst steht der Ausdruck, dann das Ereignis, das als Wendepunkt benannt wird."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-4",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-4",
+              "expressionId": "nachhaltig-gepraegt",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Das" },
+                { "tokenId": "t2", "text": "hat" },
+                { "tokenId": "t3", "text": "mich" },
+                { "tokenId": "t4", "text": "nachhaltig" },
+                { "tokenId": "t5", "text": "geprägt," },
+                { "tokenId": "t6", "text": "vor" },
+                { "tokenId": "t7", "text": "allem" },
+                { "tokenId": "t8", "text": "beruflich." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8"]],
+              "answerExplanation": {
+                "en": "Perfect tense: hat in second position, the participle geprägt at the end of the clause.",
+                "fr": "Parfait : hat en deuxième position, le participe geprägt à la fin de la proposition.",
+                "de": "Perfekt: hat steht an zweiter Stelle, das Partizip geprägt am Ende des Satzteils."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-5",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-5",
+              "expressionId": "bewusst-entschieden",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Ich" },
+                { "tokenId": "t2", "text": "habe" },
+                { "tokenId": "t3", "text": "mich" },
+                { "tokenId": "t4", "text": "bewusst" },
+                { "tokenId": "t5", "text": "dafür" },
+                { "tokenId": "t6", "text": "entschieden," },
+                { "tokenId": "t7", "text": "früher" },
+                { "tokenId": "t8", "text": "zu" },
+                { "tokenId": "t9", "text": "gehen." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [
+                ["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9"],
+                ["t1", "t2", "t3", "t5", "t4", "t6", "t7", "t8", "t9"]
+              ],
+              "answerExplanation": {
+                "en": "bewusst and dafür can swap places; the zu-infinitive clause follows after a comma.",
+                "fr": "bewusst et dafür peuvent échanger leur place ; la proposition infinitive avec zu suit après une virgule.",
+                "de": "bewusst und dafür können die Plätze tauschen; danach folgt nach einem Komma der Infinitivsatz mit zu."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-6",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-6",
+              "expressionId": "wenn-ich-ehrlich-bin",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Wenn" },
+                { "tokenId": "t2", "text": "ich" },
+                { "tokenId": "t3", "text": "ehrlich" },
+                { "tokenId": "t4", "text": "bin," },
+                { "tokenId": "t5", "text": "hatte" },
+                { "tokenId": "t6", "text": "ich" },
+                { "tokenId": "t7", "text": "damals" },
+                { "tokenId": "t8", "text": "kaum" },
+                { "tokenId": "t9", "text": "Pläne." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [
+                ["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9"],
+                ["t1", "t6", "t3", "t4", "t5", "t2", "t7", "t8", "t9"]
+              ],
+              "answerExplanation": {
+                "en": "After the wenn-clause the main clause begins with its verb: hatte ich …",
+                "fr": "Après la proposition en wenn, la principale commence par le verbe : hatte ich …",
+                "de": "Nach dem wenn-Satz beginnt der Hauptsatz mit dem Verb: hatte ich …"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "listening",
+      "stage": "listening",
+      "role": "exercise",
+      "label": { "en": "Listening", "fr": "Écoute", "de": "Hören" },
+      "pages": [
+        {
+          "pageId": "listening-1",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-1",
+              "expressionId": "was-mich-antreibt",
+              "context": {
+                "roleId": "interviewerin",
+                "text": "Woher nehmen Sie nach vierzig Jahren im Beruf immer noch die Energie?"
+              },
+              "roleId": "architekt",
+              "options": [
+                {
+                  "optionId": "o1",
+                  "text": "Was mich antreibt, ist die Lust, Neues zu verstehen."
+                },
+                { "optionId": "o2", "text": "Mein Büro liegt direkt am Fluss." },
+                { "optionId": "o3", "text": "Das Interview wurde im Frühjahr geführt." },
+                { "optionId": "o4", "text": "Ich komme gern mit dem Fahrrad." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "The question asks for his motivation; only the first reply names one.",
+                "fr": "La question porte sur sa motivation ; seule la première réponse en nomme une.",
+                "de": "Die Frage zielt auf seine Motivation; nur die erste Antwort nennt eine."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-2",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-2",
+              "expressionId": "rueckblickend",
+              "context": {
+                "roleId": "interviewerin",
+                "text": "War es richtig, dass Sie damals das Büro Ihres Vaters verlassen haben?"
+              },
+              "roleId": "architekt",
+              "options": [
+                {
+                  "optionId": "o1",
+                  "text": "Rückblickend würde ich sagen, dass es die richtige Wahl war."
+                },
+                { "optionId": "o2", "text": "Die Zeit vergeht leider viel zu schnell." },
+                { "optionId": "o3", "text": "Im Studium hatte ich einen strengen Professor." },
+                { "optionId": "o4", "text": "Wir haben damals in einer kleinen Wohnung gewohnt." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "He judges the past decision with hindsight and answers the question.",
+                "fr": "Il juge la décision passée avec du recul et répond à la question.",
+                "de": "Er beurteilt die frühere Entscheidung im Rückblick und beantwortet die Frage."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-3",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-3",
+              "expressionId": "wendepunkt-war",
+              "context": {
+                "roleId": "interviewerin",
+                "text": "Welches Ereignis hat Ihr Berufsleben am stärksten verändert?"
+              },
+              "roleId": "architekt",
+              "options": [
+                {
+                  "optionId": "o1",
+                  "text": "Ein Wendepunkt war für mich die Gründung meines eigenen Büros."
+                },
+                { "optionId": "o2", "text": "Mein Büro hat zwölf Mitarbeiter." },
+                { "optionId": "o3", "text": "Es gibt viele Ereignisse in der Zeitung." },
+                { "optionId": "o4", "text": "Ich lese jeden Morgen die Zeitung." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "The question asks for a decisive event; only the first reply names one as a turning point.",
+                "fr": "La question porte sur un événement décisif ; seule la première réponse en nomme un comme tournant.",
+                "de": "Die Frage zielt auf ein entscheidendes Ereignis; nur die erste Antwort nennt eines als Wendepunkt."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-4",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-4",
+              "expressionId": "nachhaltig-gepraegt",
+              "context": {
+                "roleId": "interviewerin",
+                "text": "Sie haben drei Jahre in Kairo gelebt. Hat Sie das verändert?"
+              },
+              "roleId": "architekt",
+              "options": [
+                { "optionId": "o1", "text": "Ja, das hat mich nachhaltig geprägt." },
+                { "optionId": "o2", "text": "Das Interview dauert eine Stunde." },
+                { "optionId": "o3", "text": "Ich habe damals im dritten Stock gewohnt." },
+                { "optionId": "o4", "text": "Heute Abend gibt es Fisch." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "The question is about personal change; only the first reply answers it.",
+                "fr": "La question porte sur un changement personnel ; seule la première réponse y répond.",
+                "de": "Die Frage betrifft eine persönliche Veränderung; nur die erste Antwort beantwortet sie."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-5",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-5",
+              "expressionId": "bewusst-entschieden",
+              "context": {
+                "roleId": "interviewerin",
+                "text": "Wie kam es zu Ihrem Entschluss, ins Ausland zu gehen?"
+              },
+              "roleId": "architekt",
+              "options": [
+                {
+                  "optionId": "o1",
+                  "text": "Ich habe mich bewusst dafür entschieden, es zu versuchen."
+                },
+                { "optionId": "o2", "text": "Meine Eltern haben ein Haus am See." },
+                { "optionId": "o3", "text": "Die Wohnung hatte einen großen Balkon." },
+                { "optionId": "o4", "text": "Zwei Koffer und ein Fahrrad." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "He explains how the decision came about: it was deliberate.",
+                "fr": "Il explique comment la décision est née : elle était délibérée.",
+                "de": "Er erklärt, wie es zur Entscheidung kam: Sie war bewusst."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-6",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-6",
+              "expressionId": "wenn-ich-ehrlich-bin",
+              "context": {
+                "roleId": "interviewerin",
+                "text": "Hatten Sie vor dem Neuanfang denn keine Zweifel?"
+              },
+              "roleId": "architekt",
+              "options": [
+                { "optionId": "o1", "text": "Wenn ich ehrlich bin, hatte ich ständig welche." },
+                { "optionId": "o2", "text": "Ich trinke meinen Tee am liebsten ohne Zucker." },
+                { "optionId": "o3", "text": "Das Studium dauerte fünf Jahre." },
+                { "optionId": "o4", "text": "Im Sommer fahren wir ans Meer." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "He admits that he did have doubts.",
+                "fr": "Il avoue qu’il avait bel et bien des doutes.",
+                "de": "Er gibt zu, dass er sehr wohl Zweifel hatte."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "stage": "exam",
+      "role": "exam",
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam-words",
+          "estimatedDurationS": 75,
+          "timeLimitS": 113,
+          "instructions": {
+            "en": "Translate each word into German, with its article for nouns.",
+            "fr": "Traduisez chaque mot en allemand, avec l’article pour les noms.",
+            "de": "Übersetze jedes Wort ins Deutsche, bei Nomen mit Artikel."
+          },
+          "items": [
+            {
+              "type": "function_translation_exam",
+              "itemId": "word-werdegang",
+              "wordId": "werdegang",
+              "prompt": { "en": "career path", "fr": "parcours" },
+              "accepted": { "answers": ["der Werdegang", "die Laufbahn"] },
+              "answerExplanation": {
+                "en": "Masculine noun: der Werdegang.",
+                "fr": "Nom masculin : der Werdegang.",
+                "de": "Maskulines Nomen: der Werdegang."
+              }
+            },
+            {
+              "type": "function_translation_exam",
+              "itemId": "word-wendepunkt",
+              "wordId": "wendepunkt",
+              "prompt": { "en": "turning point", "fr": "tournant" },
+              "accepted": { "answers": ["der Wendepunkt"] },
+              "answerExplanation": {
+                "en": "Masculine noun: der Wendepunkt.",
+                "fr": "Nom masculin : der Wendepunkt.",
+                "de": "Maskulines Nomen: der Wendepunkt."
+              }
+            },
+            {
+              "type": "function_translation_exam",
+              "itemId": "word-neugier",
+              "wordId": "neugier",
+              "prompt": { "en": "curiosity", "fr": "curiosité" },
+              "accepted": { "answers": ["die Neugier", "die Neugierde"] },
+              "answerExplanation": {
+                "en": "Feminine noun: die Neugier.",
+                "fr": "Nom féminin : die Neugier.",
+                "de": "Feminines Nomen: die Neugier."
+              }
+            },
+            {
+              "type": "function_translation_exam",
+              "itemId": "word-rueckschlag",
+              "wordId": "rueckschlag",
+              "prompt": { "en": "setback", "fr": "revers" },
+              "accepted": { "answers": ["der Rückschlag"] },
+              "answerExplanation": {
+                "en": "Masculine noun: der Rückschlag.",
+                "fr": "Nom masculin : der Rückschlag.",
+                "de": "Maskulines Nomen: der Rückschlag."
+              }
+            },
+            {
+              "type": "function_translation_exam",
+              "itemId": "word-vorbild",
+              "wordId": "vorbild",
+              "prompt": { "en": "role model", "fr": "modèle" },
+              "accepted": { "answers": ["das Vorbild"] },
+              "answerExplanation": {
+                "en": "Neuter noun: das Vorbild.",
+                "fr": "Nom neutre : das Vorbild.",
+                "de": "Neutrales Nomen: das Vorbild."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "exam-replies-1",
+          "estimatedDurationS": 120,
+          "timeLimitS": 180,
+          "instructions": {
+            "en": "Build the answer. Not every word fits.",
+            "fr": "Construisez la réponse. Tous les mots ne servent pas.",
+            "de": "Bilde die Antwort. Nicht jedes Wort passt."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "reply-1",
+              "expressionId": "was-mich-antreibt",
+              "context": {
+                "roleId": "interviewerin",
+                "text": "Herr Weber, was hält Sie nach so vielen Jahren in Bewegung?"
+              },
+              "roleId": "architekt",
+              "tokens": [
+                { "tokenId": "t1", "text": "Was" },
+                { "tokenId": "t2", "text": "mich" },
+                { "tokenId": "t3", "text": "antreibt," },
+                { "tokenId": "t4", "text": "ist" },
+                { "tokenId": "t5", "text": "die" },
+                { "tokenId": "t6", "text": "Lust" },
+                { "tokenId": "t7", "text": "am" },
+                { "tokenId": "t8", "text": "Gestalten." },
+                { "tokenId": "t9", "text": "angetrieben" },
+                { "tokenId": "t10", "text": "sind" }
+              ],
+              "distractorTokenIds": ["t9", "t10"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8"]],
+              "answerExplanation": {
+                "en": "Lust is singular, so the verb is ist; antreibt is the verb of the relative clause.",
+                "fr": "Lust est au singulier, donc le verbe est ist ; antreibt est le verbe de la relative.",
+                "de": "Lust steht im Singular, also ist; antreibt ist das Verb des Relativsatzes."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-2",
+              "expressionId": "rueckblickend",
+              "context": {
+                "roleId": "interviewerin",
+                "text": "Gab es eine Entscheidung, die Sie heute anders treffen würden?"
+              },
+              "roleId": "architekt",
+              "tokens": [
+                { "tokenId": "t1", "text": "Rückblickend" },
+                { "tokenId": "t2", "text": "würde" },
+                { "tokenId": "t3", "text": "ich" },
+                { "tokenId": "t4", "text": "sagen," },
+                { "tokenId": "t5", "text": "dass" },
+                { "tokenId": "t6", "text": "wir" },
+                { "tokenId": "t7", "text": "zu" },
+                { "tokenId": "t8", "text": "lange" },
+                { "tokenId": "t9", "text": "gezögert" },
+                { "tokenId": "t10", "text": "haben." },
+                { "tokenId": "t11", "text": "wurde" }
+              ],
+              "distractorTokenIds": ["t11"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9", "t10"]],
+              "answerExplanation": {
+                "en": "würde ich sagen is the cautious form; in the dass-clause haben goes to the end.",
+                "fr": "würde ich sagen est la forme prudente ; dans la proposition en dass, haben va à la fin.",
+                "de": "würde ich sagen ist die vorsichtige Form; im dass-Satz steht haben am Ende."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-3",
+              "expressionId": "nachhaltig-gepraegt",
+              "context": {
+                "roleId": "interviewerin",
+                "text": "Ihre Kindheit auf dem Land: Spielt sie heute noch eine Rolle?"
+              },
+              "roleId": "architekt",
+              "tokens": [
+                { "tokenId": "t1", "text": "Ja," },
+                { "tokenId": "t2", "text": "das" },
+                { "tokenId": "t3", "text": "hat" },
+                { "tokenId": "t4", "text": "mich" },
+                { "tokenId": "t5", "text": "nachhaltig" },
+                { "tokenId": "t6", "text": "geprägt," },
+                { "tokenId": "t7", "text": "bis" },
+                { "tokenId": "t8", "text": "heute." },
+                { "tokenId": "t9", "text": "ist" },
+                { "tokenId": "t10", "text": "haben" }
+              ],
+              "distractorTokenIds": ["t9", "t10"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8"]],
+              "answerExplanation": {
+                "en": "Perfect tense with hat and the participle geprägt; das is singular.",
+                "fr": "Parfait avec hat et le participe geprägt ; das est au singulier.",
+                "de": "Perfekt mit hat und dem Partizip geprägt; das ist Singular."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-4",
+              "expressionId": "wenn-ich-ehrlich-bin",
+              "context": {
+                "roleId": "interviewerin",
+                "text": "Sie wirken, als hätten Sie Ihren Weg genau geplant."
+              },
+              "roleId": "architekt",
+              "tokens": [
+                { "tokenId": "t1", "text": "Wenn" },
+                { "tokenId": "t2", "text": "ich" },
+                { "tokenId": "t3", "text": "ehrlich" },
+                { "tokenId": "t4", "text": "bin," },
+                { "tokenId": "t5", "text": "war" },
+                { "tokenId": "t6", "text": "nichts" },
+                { "tokenId": "t7", "text": "davon" },
+                { "tokenId": "t8", "text": "geplant." },
+                { "tokenId": "t9", "text": "waren" }
+              ],
+              "distractorTokenIds": ["t9"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8"]],
+              "answerExplanation": {
+                "en": "After the wenn-clause the verb comes first: war nichts davon geplant.",
+                "fr": "Après la proposition en wenn, le verbe vient en premier : war nichts davon geplant.",
+                "de": "Nach dem wenn-Satz steht das Verb vorn: war nichts davon geplant."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "exam-dialogue",
+          "estimatedDurationS": 140,
+          "timeLimitS": 210,
+          "instructions": {
+            "en": "Fill each gap with an expression from this lesson.",
+            "fr": "Complétez chaque trou avec une expression de la leçon.",
+            "de": "Fülle jede Lücke mit einem Ausdruck aus dieser Lektion."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_typing",
+              "itemId": "exam-dialogue",
+              "lines": [
+                {
+                  "lineId": "exam-line-1",
+                  "roleId": "interviewerin",
+                  "before": "Herr Weber, lassen Sie uns über Ihre Anfänge sprechen.",
+                  "translation": {
+                    "en": "Mr Weber, let’s talk about your beginnings.",
+                    "fr": "Monsieur Weber, parlons de vos débuts."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-2",
+                  "roleId": "architekt",
+                  "before": "Gern. Ich bin in einer kleinen Stadt aufgewachsen.",
+                  "translation": {
+                    "en": "Gladly. I grew up in a small town.",
+                    "fr": "Volontiers. J’ai grandi dans une petite ville."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-3",
+                  "roleId": "interviewerin",
+                  "before": "Wann war Ihnen klar, dass Sie Architekt werden wollen?",
+                  "translation": {
+                    "en": "When did you realise that you wanted to become an architect?",
+                    "fr": "Quand avez-vous compris que vous vouliez devenir architecte ?"
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-4",
+                  "roleId": "architekt",
+                  "before": "",
+                  "translation": {
+                    "en": "A turning point for me was a visit to a building site with my uncle.",
+                    "fr": "Un tournant pour moi a été la visite d’un chantier avec mon oncle."
+                  },
+                  "gap": {
+                    "gapId": "gap-1",
+                    "expressionId": "wendepunkt-war",
+                    "accepted": {
+                      "answers": ["Ein Wendepunkt war für mich", "Entscheidend war für mich"]
+                    },
+                    "answerExplanation": {
+                      "en": "He interprets the visit as a turning point: Ein Wendepunkt war für mich + noun phrase.",
+                      "fr": "Il interprète la visite comme un tournant : Ein Wendepunkt war für mich + groupe nominal.",
+                      "de": "Er deutet den Besuch als Wendepunkt: Ein Wendepunkt war für mich + Nominalgruppe."
+                    }
+                  },
+                  "after": "der Besuch einer Baustelle mit meinem Onkel."
+                },
+                {
+                  "lineId": "exam-line-5",
+                  "roleId": "interviewerin",
+                  "before": "Sie sind dann aber nicht sofort in die Branche gegangen?",
+                  "translation": {
+                    "en": "But you did not go straight into the profession?",
+                    "fr": "Mais vous n’êtes pas entré tout de suite dans la profession ?"
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-6",
+                  "roleId": "architekt",
+                  "before": "Nein.",
+                  "translation": {
+                    "en": "No. I deliberately decided to travel first.",
+                    "fr": "Non. J’ai décidé en connaissance de cause de voyager d’abord."
+                  },
+                  "gap": {
+                    "gapId": "gap-2",
+                    "expressionId": "bewusst-entschieden",
+                    "accepted": {
+                      "answers": [
+                        "Ich habe mich bewusst dafür entschieden",
+                        "Ich habe mich ganz bewusst dafür entschieden"
+                      ]
+                    },
+                    "answerExplanation": {
+                      "en": "He stresses that it was no coincidence: Ich habe mich bewusst dafür entschieden.",
+                      "fr": "Il souligne que ce n’était pas un hasard : Ich habe mich bewusst dafür entschieden.",
+                      "de": "Er betont, dass es kein Zufall war: Ich habe mich bewusst dafür entschieden."
+                    }
+                  },
+                  "after": ", erst zu reisen."
+                },
+                {
+                  "lineId": "exam-line-7",
+                  "roleId": "interviewerin",
+                  "before": "Und wie haben Sie diese Zeit erlebt?",
+                  "translation": {
+                    "en": "And how did you experience that time?",
+                    "fr": "Et comment avez-vous vécu cette période ?"
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-8",
+                  "roleId": "architekt",
+                  "before": "",
+                  "translation": {
+                    "en": "If I’m honest, at first I felt more homesickness than a thirst for adventure.",
+                    "fr": "Pour être honnête, j’ai d’abord ressenti plus de mal du pays que de goût de l’aventure."
+                  },
+                  "gap": {
+                    "gapId": "gap-3",
+                    "expressionId": "wenn-ich-ehrlich-bin",
+                    "accepted": {
+                      "answers": [
+                        "Wenn ich ehrlich bin",
+                        "Wenn ich ehrlich bin,",
+                        "Ehrlich gesagt",
+                        "Ehrlich gesagt,",
+                        "Offen gesagt",
+                        "Offen gesagt,"
+                      ]
+                    },
+                    "answerExplanation": {
+                      "en": "He admits something honestly: Wenn ich ehrlich bin, followed by the verb.",
+                      "fr": "Il avoue honnêtement quelque chose : Wenn ich ehrlich bin, suivi du verbe.",
+                      "de": "Er gibt etwas ehrlich zu: Wenn ich ehrlich bin, danach folgt das Verb."
+                    }
+                  },
+                  "after": ", hatte ich anfangs mehr Heimweh als Abenteuerlust."
+                },
+                {
+                  "lineId": "exam-line-9",
+                  "roleId": "interviewerin",
+                  "before": "Gab es Momente, in denen Sie aufgeben wollten?",
+                  "translation": {
+                    "en": "Were there moments when you wanted to give up?",
+                    "fr": "Y a-t-il eu des moments où vous avez voulu abandonner ?"
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-10",
+                  "roleId": "architekt",
+                  "before": "Ja, aber ich habe immer weitergemacht.",
+                  "translation": {
+                    "en": "Yes, but I always kept going.",
+                    "fr": "Oui, mais j’ai toujours continué."
+                  },
+                  "gap": null,
+                  "after": ""
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
