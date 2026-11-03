@@ -242,7 +242,7 @@ describe('GeminiProvider', () => {
       const other = values.filter(
         ({ labels }) => 'model' in labels && labels.model === 'gemini-other',
       );
-      expect(other).toHaveLength(3 * 7);
+      expect(other).toHaveLength(4 * 7);
       expect(other.every(({ value }) => value === 0)).toBe(true);
       await expect(
         seriesValue(llmRequests, {
@@ -262,7 +262,7 @@ describe('GeminiProvider', () => {
       const other = values.filter(
         ({ labels }) => 'model' in labels && labels.model === 'gemini-other',
       );
-      expect(other).toHaveLength(3 * 3);
+      expect(other).toHaveLength(4 * 3);
       expect(other.every(({ value }) => value === 0)).toBe(true);
     });
 
