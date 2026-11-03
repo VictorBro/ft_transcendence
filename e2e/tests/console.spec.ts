@@ -6,11 +6,15 @@ import {
   settle,
   watchConsole,
 } from '../support/console-guard';
+import { liveConnection } from '../support/live';
 import { PAGE_ROUTES, type PageRoute } from '../support/routes';
 import { expect, test } from '../support/session';
 
-/** Visits one route and fails on anything the browser console reported. */
-async function expectSilent(page: Page, route: PageRoute): Promise<void> {
+/**
+ * Visits one route and fails on anything the browser console reported.
+ * `ready`, armed before the visit, holds the assertion until it resolves.
+ */
+async function expectSilent(page: Page, route: PageRoute, ready?: Promise<void>): Promise<void> {
   // Before goto: listeners attached afterwards miss the load-time output.
   const violations = watchConsole(page);
 
@@ -20,6 +24,7 @@ async function expectSilent(page: Page, route: PageRoute): Promise<void> {
   expect(response?.status(), `${route.path} did not return ${expectedStatus}`).toBe(expectedStatus);
 
   await settle(page);
+  await ready;
 
   // The browser reports the main document's own non-2xx status as a
   // console.error. On a route that is supposed to answer 404 that line is
@@ -48,7 +53,9 @@ test.describe('console gate', () => {
 
   for (const route of PAGE_ROUTES.filter((candidate) => candidate.onboarded)) {
     test(`${route.name} (${route.path}) logs nothing when signed in`, async ({ onboarded }) => {
-      await expectSilent(onboarded, route);
+      // A socket is no request, so settle() does not wait for it: a handshake
+      // that failed a moment later would log after the assertion.
+      await expectSilent(onboarded, route, liveConnection(onboarded));
       // A guard redirect also answers 200, so without this the gate would pass
       // on whatever page it bounced to.
       await expect(onboarded).toHaveURL(new RegExp(`${route.path}$`));

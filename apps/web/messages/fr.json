@@ -235,6 +235,9 @@
     "signingOut": "Déconnexion…",
     "signOut": "Se déconnecter"
   },
+  "Connection": {
+    "reconnecting": "Reconnexion…"
+  },
   "LegalArticle": {
     "lastUpdated": "Dernière mise à jour"
   },

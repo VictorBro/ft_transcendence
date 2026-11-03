@@ -235,6 +235,9 @@
     "signingOut": "Wird abgemeldet…",
     "signOut": "Abmelden"
   },
+  "Connection": {
+    "reconnecting": "Verbindung wird wiederhergestellt…"
+  },
   "LegalArticle": {
     "lastUpdated": "Zuletzt aktualisiert"
   },
