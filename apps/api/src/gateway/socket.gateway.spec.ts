@@ -6,7 +6,13 @@ import { seriesValue } from '../../test/metrics.fixtures';
 import { wsConnections } from '../metrics/metrics';
 import type { PrismaService } from '../prisma/prisma.service';
 import type { RedisService } from '../redis/redis.service';
-import { EVENT_LIMIT, SocketGateway, fixedWindow, sameOrigin } from './socket.gateway';
+import {
+  EVENT_LIMIT,
+  SESSION_SOCKET_LIMIT,
+  SocketGateway,
+  fixedWindow,
+  sameOrigin,
+} from './socket.gateway';
 import type { AppSocket, SocketServer, SocketsService } from './sockets.service';
 
 type Screen = (packet: Event, next: (error?: Error) => void) => void;
@@ -15,28 +21,34 @@ type Screen = (packet: Event, next: (error?: Error) => void) => void;
 function fakeSocket(
   session: Record<string, unknown> | undefined,
   headers: Record<string, string> = {},
+  rooms = new Map<string, Set<string>>(),
 ) {
   const join = vi.fn();
+  const leave = vi.fn();
   const emit = vi.fn();
   let screen: Screen = () => undefined;
   const socket = {
     handshake: { headers: { host: 'localhost', ...headers } },
     request: { session, sessionID: 's1' },
+    nsp: { adapter: { rooms } },
     data: {},
     join,
+    leave,
     emit,
     use: vi.fn((fn: Screen) => (screen = fn)),
   };
   return {
     socket: socket as unknown as AppSocket,
     join,
+    leave,
     emit,
     screen: (packet: Event, next: (error?: Error) => void) => screen(packet, next),
   };
 }
 
 function gatewayWith(findUnique = vi.fn().mockResolvedValue({ id: 'u1' })) {
-  const exists = vi.fn();
+  // The session is still in Redis unless a test says otherwise.
+  const exists = vi.fn().mockResolvedValue(1);
   const sockets = { closeSession: vi.fn(), attach: vi.fn() };
   const gateway = new SocketGateway(
     { user: { findUnique } } as unknown as PrismaService,
@@ -118,6 +130,37 @@ describe('SocketGateway authenticate', () => {
 
     expect(next).toHaveBeenCalledWith(new Error('auth.sessionRequired'));
     expect(join).not.toHaveBeenCalled();
+  });
+
+  it('refuses one socket more than a session may hold, before any query', async () => {
+    const { gateway, findUnique } = gatewayWith();
+    const full = new Map([
+      ['session:s1', new Set(Array.from({ length: SESSION_SOCKET_LIMIT }, (_, i) => `id${i}`))],
+    ]);
+    const { socket, join } = fakeSocket({ userId: 'u1' }, {}, full);
+    const next = vi.fn();
+
+    await gateway.authenticate(socket, next);
+
+    expect(next).toHaveBeenCalledWith(new Error('server.rateLimited'));
+    expect(findUnique).not.toHaveBeenCalled();
+    expect(join).not.toHaveBeenCalled();
+  });
+
+  // A logout that ran while this handshake was past the session middleware
+  // closed the session room before the socket joined it.
+  it('leaves its rooms and refuses when the session ended during the handshake', async () => {
+    const { gateway, exists } = gatewayWith();
+    exists.mockResolvedValue(0);
+    const { socket, join, leave } = fakeSocket({ userId: 'u1' });
+    const next = vi.fn();
+
+    await gateway.authenticate(socket, next);
+
+    expect(exists).toHaveBeenCalledWith('sess:s1');
+    expect(exists.mock.invocationCallOrder[0]).toBeGreaterThan(join.mock.invocationCallOrder[0]);
+    expect(leave.mock.calls).toEqual([['user:u1'], ['session:s1']]);
+    expect(next).toHaveBeenCalledWith(new Error('auth.sessionRequired'));
   });
 
   // Like AuthGuard: the session outlives a deleted account.

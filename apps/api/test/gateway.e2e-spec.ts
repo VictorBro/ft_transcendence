@@ -9,7 +9,7 @@ import type { AppError, CourseUpdated } from '@ft/shared';
 
 import { AppModule } from '../src/app.module';
 import { configureApp, SESSION_KEY_PREFIX } from '../src/app.setup';
-import { SocketGateway } from '../src/gateway/socket.gateway';
+import { SESSION_SOCKET_LIMIT, SocketGateway } from '../src/gateway/socket.gateway';
 import { SocketsService } from '../src/gateway/sockets.service';
 import { wsConnections, wsEvents } from '../src/metrics/metrics';
 import { PrismaService } from '../src/prisma/prisma.service';
@@ -146,6 +146,23 @@ describe('gateway (e2e)', () => {
       expect(await refusal(foreign)).toBe('auth.sessionRequired');
 
       await connected(open(cookieA, { origin: `http://127.0.0.1:${port}` }));
+    });
+
+    it('refuses one socket more than a session may hold, until one closes', async () => {
+      const held = await Promise.all(
+        Array.from({ length: SESSION_SOCKET_LIMIT }, () => connected(open(cookieA))),
+      );
+
+      expect(await refusal(open(cookieA))).toBe('server.rateLimited');
+      // Counted per session: another one is not affected.
+      await connected(open(cookieB));
+
+      held[0].close();
+      // The server has seen the close: the session's sockets are below the limit again.
+      await vi.waitFor(async () =>
+        expect(await seriesValue(wsConnections)).toBe(SESSION_SOCKET_LIMIT),
+      );
+      await connected(open(cookieA));
     });
 
     it('counts an open connection, and stops counting it once closed', async () => {

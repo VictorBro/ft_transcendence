@@ -259,7 +259,7 @@ export class AuthController {
       });
     });
     // After the DEL, so a new handshake finds the session gone. One already past
-    // express-session can still join; the gateway's sweep closes it within a minute.
+    // express-session checks the session again once in its rooms (the gateway).
     this.sockets.closeSession(ended);
     // The store entry is gone; this clears the now-dangling browser cookie.
     request.res?.clearCookie('ft.sid', { path: '/' });

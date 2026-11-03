@@ -19,6 +19,8 @@ import { SocketsService, sessionRoom, type AppSocket, type SocketServer } from '
 /** Caddy sends /ws and /ws/* to the api, in dev and in prod. */
 export const SOCKET_PATH = '/ws';
 export const EVENT_LIMIT = 20;
+/** Sockets one session may hold: one per tab, and nobody keeps 20 tabs of the app open. */
+export const SESSION_SOCKET_LIMIT = 20;
 export const EVENT_WINDOW_MS = 10_000;
 const SWEEP_MS = 60_000;
 
@@ -83,6 +85,7 @@ export class SocketGateway
   }
 
   async authenticate(socket: AppSocket, next: (error?: ExtendedError) => void): Promise<void> {
+    const rooms: string[] = [];
     try {
       const { origin, host } = socket.handshake.headers;
       if (!sameOrigin(origin, host)) {
@@ -92,22 +95,50 @@ export class SocketGateway
       // SessionIoAdapter ran express-session on this request.
       const { session, sessionID } = socket.request as Request;
       const userId = session?.userId;
+      if (!userId) {
+        next(new Error('auth.sessionRequired'));
+        return;
+      }
+      // Before the lookup, so a client opening sockets in a loop costs no query,
+      // and the per-socket event limit cannot be multiplied without bound.
+      if (
+        (socket.nsp.adapter.rooms.get(sessionRoom(sessionID))?.size ?? 0) >= SESSION_SOCKET_LIMIT
+      ) {
+        next(new Error('server.rateLimited'));
+        return;
+      }
       // Like AuthGuard: a deleted account is refused although its session lives.
-      const user = userId
-        ? await this.prisma.user.findUnique({ where: { id: userId }, select: { id: true } })
-        : null;
+      const user = await this.prisma.user.findUnique({
+        where: { id: userId },
+        select: { id: true },
+      });
       if (!user) {
         next(new Error('auth.sessionRequired'));
         return;
       }
       socket.data = { userId: user.id, sessionId: sessionID };
       // Before next(): the client's CONNECT ack then means it is in the room.
-      await socket.join([userRoom(user.id), sessionRoom(sessionID)]);
+      rooms.push(userRoom(user.id), sessionRoom(sessionID));
+      await socket.join(rooms);
+      // A logout between the session middleware and the join closed the room
+      // before this socket was in it. Asked after the join, the session is
+      // either still here, or gone and the socket leaves: no window left.
+      if ((await this.redis.client.exists(`${SESSION_KEY_PREFIX}${sessionID}`)) === 0) {
+        this.leave(socket, rooms);
+        next(new Error('auth.sessionRequired'));
+        return;
+      }
       next();
     } catch (error) {
+      this.leave(socket, rooms);
       this.logger.error(`handshake failed: ${String(error)}`);
       next(new Error('server.unexpected'));
     }
+  }
+
+  /** A refused socket never connects, so nothing else takes it out of its rooms. */
+  private leave(socket: AppSocket, rooms: string[]): void {
+    for (const room of rooms) void socket.leave(room);
   }
 
   handleConnection(socket: AppSocket): void {

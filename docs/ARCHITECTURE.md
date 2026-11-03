@@ -203,12 +203,15 @@ sequenceDiagram
   only), on every session id change (signup, login, 2FA verify, 2FA enable and
   disable), and when a session ends any other way, through a sweep every 60 s
   that asks Redis for each open socket's `sess:<sid>` (known keys, never a scan).
+  A handshake checks its session once more after joining its rooms, so a logout
+  that ran while it was under way cannot miss it.
 - **One screen for every inbound event**: 20 events per 10 s per socket, frames
   capped at 16 KiB, a zod parse from `CLIENT_EVENT_SCHEMAS`. A bad event gets
   `app:error { code }`, an `ERROR_CODES` entry, and is dropped, never a crash;
   past the limit, the first one is told `server.rateLimited` and the rest are
-  dropped.
-  No cap on sockets per user: on one instance it is not worth the code.
+  dropped. A session holds at most 20 sockets, checked before the user lookup:
+  one per tab is far below it, and a client opening sockets in a loop costs no
+  query and cannot multiply the per-socket limit.
 - **Sent after the commit.** `course:updated { lang }` means "read this course
   again": the page is rendered on the server, so the tab calls
   `router.refresh()` rather than keeping a second copy of the course.
