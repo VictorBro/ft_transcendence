@@ -1,6 +1,13 @@
 import type { Page } from '@playwright/test';
 
-import { expect, ONBOARDED_COURSE, placeCourse, SECOND_COURSE, test } from '../support/session';
+import {
+  expect,
+  ONBOARDED_COURSE,
+  pickLevel,
+  placeCourse,
+  SECOND_COURSE,
+  test,
+} from '../support/session';
 
 /**
  * The course home as the daily goal page (#86). The numbers come from the API
@@ -159,7 +166,7 @@ test.describe('the daily goal page', () => {
     // A2 proposes A2 lessons, and the A1 lesson done today stays in done, badged.
     const level = page.getByRole('combobox', { name: 'Level' });
     const save = page.getByRole('button', { name: 'Save' });
-    await level.selectOption('A2');
+    await pickLevel(page, 'A2');
     await save.click();
     await expect(save).toHaveCount(0);
     const a2 = await readToday(page, lang);
@@ -172,7 +179,7 @@ test.describe('the daily goal page', () => {
     await expect(card.getByText('A1', { exact: true })).toBeVisible();
 
     // Back at A1, its progress was kept.
-    await level.selectOption('A1');
+    await pickLevel(page, 'A1');
     await save.click();
     await expect(save).toHaveCount(0);
     await expect(page.getByText(/^Attempted 1 of \d+$/)).toBeVisible();

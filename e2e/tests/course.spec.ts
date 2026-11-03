@@ -3,6 +3,7 @@ import {
   enrol,
   expect,
   ONBOARDED_COURSE,
+  pickLevel,
   placeCourse,
   SECOND_COURSE,
   test,
@@ -117,7 +118,7 @@ test.describe('course home', () => {
     await expect(level).toBeFocused();
     expect(await courseLevel(onboarded, SECOND_COURSE.lang)).toBe(SECOND_COURSE.level);
 
-    await level.selectOption('B2');
+    await pickLevel(onboarded, 'B2');
     await save.click();
     await expect(
       onboarded.getByRole('status').filter({ hasText: 'Level saved: B2' }),
@@ -148,7 +149,7 @@ test.describe('course home', () => {
     });
     await onboarded.goto(`/en/learn/${SECOND_COURSE.lang}`);
 
-    await onboarded.getByRole('combobox', { name: 'Level' }).selectOption('B1');
+    await pickLevel(onboarded, 'B1');
     await onboarded.getByRole('button', { name: 'Save' }).click();
 
     await expect(onboarded.getByText('The server answered HTTP 500')).toBeVisible();
