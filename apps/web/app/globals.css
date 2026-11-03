@@ -13,6 +13,9 @@
 
 @source '../components';
 
+/* @ft/ui is source only: its classes are scanned from there. */
+@source '../../../packages/ui/src';
+
 @layer base {
   :root {
     /* The app is pinned to the dark palette by the `dark` class on <html>, so

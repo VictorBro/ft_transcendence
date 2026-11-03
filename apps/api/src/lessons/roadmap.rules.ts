@@ -173,6 +173,7 @@ export function levelProgress(lessons: RuleLesson[], results: RuleResult[]): Tod
     attempted,
     passed,
     needed,
+    comingSoon: lessons.length - total,
     complete: total > 0 && attempted === total && passed >= needed,
   };
 }

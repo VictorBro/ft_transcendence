@@ -1,4 +1,3 @@
-import { expectPinned } from '../support/layout';
 import {
   courseLevel,
   enrol,
@@ -53,7 +52,9 @@ test.describe('course home', () => {
     await onboarded.goto(`/en/learn/${ONBOARDED_COURSE.lang}`);
 
     await expect(onboarded.getByRole('heading', { name: 'French' })).toBeVisible();
-    await expect(onboarded.getByText(ONBOARDED_COURSE.level, { exact: true })).toBeVisible();
+    await expect(onboarded.getByRole('combobox', { name: 'Level' })).toHaveValue(
+      ONBOARDED_COURSE.level,
+    );
     await expect(onboarded.getByRole('link', { name: 'Take the placement test' })).toBeVisible();
 
     await expect(onboarded.getByRole('combobox', { name: 'Daily goal' })).toHaveValue(
@@ -77,66 +78,26 @@ test.describe('course home', () => {
   });
 
   /**
-   * No exam needed. The picker asks what the learner has mastered, as onboarding
-   * does, and opens on what the current level stands for (A0, nothing yet, for
-   * an A1 course), so saving it untouched is not offered. SECOND_COURSE, since
-   * every test that uses it places it anew.
+   * No exam needed: the level is a course setting, a select next to the goal
+   * that saves on change, like it. SECOND_COURSE, since every test that uses
+   * it places it anew.
    */
   test('the level can be changed from the course page', async ({ onboarded }) => {
     await placeCourse(onboarded, SECOND_COURSE);
     await onboarded.goto(`/en/learn/${SECOND_COURSE.lang}`);
+    const level = onboarded.getByRole('combobox', { name: 'Level' });
 
-    await onboarded.getByRole('button', { name: 'Change level' }).click();
-    const levels = onboarded.getByRole('group', { name: 'Your level' });
-    await expect(levels.getByRole('radio', { name: 'A0' })).toBeChecked();
-    const save = onboarded.getByRole('button', { name: 'Save' });
-    await expect(save).toBeDisabled();
-    await expectPinned(onboarded, `/en/learn/${SECOND_COURSE.lang}`);
+    await expect(level).toHaveValue(SECOND_COURSE.level);
+    await expect(onboarded.getByRole('button', { name: 'Change level' })).toHaveCount(0);
+    await level.selectOption('B2');
 
-    // The radio is sr-only, so its own label takes the click.
-    await levels.getByText('B1', { exact: true }).click();
-    await expect(onboarded.getByText('Your lessons will be at B2.')).toBeVisible();
-    await save.click();
-
-    await expect(levels).toBeHidden();
-    await expect(onboarded.getByRole('status')).toContainText('B2');
+    await expect.poll(() => courseLevel(onboarded, SECOND_COURSE.lang)).toBe('B2');
     await onboarded.reload();
-    await expect(onboarded.getByRole('status')).toContainText('B2');
+    await expect(level).toHaveValue('B2');
   });
 
-  /**
-   * Cancel and Escape throw the pick away: nothing is written, the focus goes
-   * back to the toggle, and reopening starts over.
-   */
-  test('cancelling or escaping a level change saves nothing', async ({ onboarded }) => {
-    await placeCourse(onboarded, SECOND_COURSE);
-    await onboarded.goto(`/en/learn/${SECOND_COURSE.lang}`);
-    const toggle = onboarded.getByRole('button', { name: 'Change level' });
-    const levels = onboarded.getByRole('group', { name: 'Your level' });
-
-    await toggle.click();
-    await levels.getByText('B1', { exact: true }).click();
-    await onboarded.getByRole('button', { name: 'Cancel' }).click();
-
-    await expect(levels).toBeHidden();
-    await expect(toggle).toBeFocused();
-    expect(await courseLevel(onboarded, SECOND_COURSE.lang)).toBe(SECOND_COURSE.level);
-    await toggle.click();
-    await expect(levels.getByRole('radio', { name: 'A0' })).toBeChecked();
-
-    await levels.getByText('B1', { exact: true }).click();
-    await onboarded.keyboard.press('Escape');
-    await expect(levels).toBeHidden();
-    await expect(toggle).toBeFocused();
-    expect(await courseLevel(onboarded, SECOND_COURSE.lang)).toBe(SECOND_COURSE.level);
-    await toggle.click();
-    await expect(levels.getByRole('radio', { name: 'A0' })).toBeChecked();
-  });
-
-  /** Faked, since no pick a learner can make gets refused. The pick stays, to retry. */
-  test('a level change the server refuses keeps the picker open and says why', async ({
-    onboarded,
-  }) => {
+  /** Faked, since no level a learner can pick gets refused. The select falls back. */
+  test('a level change the server refuses says why and keeps the level', async ({ onboarded }) => {
     await placeCourse(onboarded, SECOND_COURSE);
     let attempts = 0;
     await onboarded.route(`**/api/courses/${SECOND_COURSE.lang}/level`, (route) => {
@@ -145,15 +106,14 @@ test.describe('course home', () => {
     });
     await onboarded.goto(`/en/learn/${SECOND_COURSE.lang}`);
 
-    await onboarded.getByRole('button', { name: 'Change level' }).click();
-    const levels = onboarded.getByRole('group', { name: 'Your level' });
-    await levels.getByText('B1', { exact: true }).click();
-    await onboarded.getByRole('button', { name: 'Save' }).click();
+    await onboarded.getByRole('combobox', { name: 'Level' }).selectOption('B1');
 
     await expect(onboarded.getByText('The server answered HTTP 500')).toBeVisible();
-    await expect(levels.getByRole('radio', { name: 'B1' })).toBeChecked();
-    await expect(onboarded.getByRole('button', { name: 'Save' })).toBeEnabled();
+    await expect(onboarded.getByRole('combobox', { name: 'Level' })).toHaveValue(
+      SECOND_COURSE.level,
+    );
     expect(attempts).toBe(1);
+    expect(await courseLevel(onboarded, SECOND_COURSE.lang)).toBe(SECOND_COURSE.level);
   });
 
   // The cookie is how /learn knows which course to send the learner back to.

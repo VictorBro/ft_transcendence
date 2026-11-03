@@ -31,24 +31,22 @@ test.describe('dashboard and mode pages', () => {
     await expect(onboarded).toHaveURL(new RegExp(`${home}$`));
   });
 
-  // Mirrors `modes` in components/practice-row.tsx: each link's visible title
-  // on the course home paired with the route it should open. English values,
-  // since this suite is pinned to /en.
-  const practice: [string, string][] = [
+  // The course home has no Practice links any more (#86), but the mode pages
+  // stay until friends (#155) and messages (#158) replace them.
+  const modes: [string, string][] = [
     ['Tutor', '/en/chat'],
     ['Cross-language chat', '/en/friends'],
   ];
 
-  // One test per link, generated from the table above, so a new mode only needs
-  // a row here. `exact: true` keeps a longer title from matching a shorter one.
-  for (const [title, href] of practice) {
-    test(`the ${title} link on the course home navigates to ${href}`, async ({ onboarded }) => {
-      await onboarded.goto(home);
-      await onboarded.getByRole('link', { name: title, exact: true }).click();
+  test('the course home has no Practice section', async ({ onboarded }) => {
+    await onboarded.goto(home);
+    await expect(onboarded.getByRole('heading', { name: 'French' })).toBeVisible();
 
-      await expect(onboarded).toHaveURL(new RegExp(`${href}$`));
-    });
-  }
+    for (const [title] of modes) {
+      await expect(onboarded.getByRole('link', { name: title, exact: true })).toHaveCount(0);
+    }
+    await expect(onboarded.getByText('Practice', { exact: true })).toHaveCount(0);
+  });
 
   // The (mode) layout wraps every mode page with a back link and the same
   // account nav as the rest of the app. One page (/chat) stands in for all of
@@ -83,11 +81,11 @@ test.describe('dashboard and mode pages', () => {
     );
   });
 
-  // Stub pages behind the practice links that have no dedicated feature yet:
-  // every one except Chat, which has a real page. Asserting the title keeps
+  // Stub pages of the modes that have no dedicated feature yet: every one
+  // except Chat, which has a real page. Asserting the title keeps
   // this from silently matching the wrong page if a future page reuses the
   // same ComingSoon copy.
-  const stubs = practice.filter(([, href]) => href !== '/en/chat');
+  const stubs = modes.filter(([, href]) => href !== '/en/chat');
 
   for (const [title, href] of stubs) {
     test(`${href} shows the coming-soon placeholder for ${title}`, async ({ signedIn }) => {

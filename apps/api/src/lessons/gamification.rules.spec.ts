@@ -42,6 +42,7 @@ const levelOf = (
   attempted,
   passed,
   needed,
+  comingSoon: 0,
   complete: total > 0 && attempted === total && passed >= needed,
 });
 

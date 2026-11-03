@@ -452,7 +452,7 @@ describe('TodaySchema', () => {
     proposed: [],
     extra: [],
     streak: { current: 2, best: 2, today: false },
-    progress: { total: 120, attempted: 4, passed: 2, needed: 96, complete: false },
+    progress: { total: 120, attempted: 4, passed: 2, needed: 96, comingSoon: 0, complete: false },
     levelAfter: 'A2',
   };
 
