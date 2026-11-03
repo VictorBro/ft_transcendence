@@ -284,9 +284,9 @@
           "estimatedDurationS": 120,
           "timeLimitS": null,
           "instructions": {
-            "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
-            "de": "Bring die Wörter in die richtige Reihenfolge."
+            "en": "Put the words of the dass clause in the right order.",
+            "fr": "Mettez les mots de la subordonnée en dass dans le bon ordre.",
+            "de": "Bring die Wörter des dass-Satzes in die richtige Reihenfolge."
           },
           "items": [
             {
@@ -296,18 +296,13 @@
                 { "tokenId": "w8", "text": "Brief" },
                 { "tokenId": "w5", "text": "sie" },
                 { "tokenId": "w11", "text": "." },
-                { "tokenId": "w2", "text": "glaube" },
                 { "tokenId": "w9", "text": "gegeben" },
-                { "tokenId": "w1", "text": "Ich" },
                 { "tokenId": "w7", "text": "den" },
                 { "tokenId": "w4", "text": "dass" },
                 { "tokenId": "w10", "text": "hat" },
-                { "tokenId": "w6", "text": "ihm" },
-                { "tokenId": "w3", "text": "," }
+                { "tokenId": "w6", "text": "ihm" }
               ],
-              "acceptedOrders": [
-                ["w1", "w2", "w3", "w4", "w5", "w6", "w7", "w8", "w9", "w10", "w11"]
-              ],
+              "acceptedOrders": [["w4", "w5", "w6", "w7", "w8", "w9", "w10", "w11"]],
               "ruleIds": ["r-pronoun-first"],
               "answerExplanation": {
                 "en": "The pronoun ihm comes before the noun den Brief.",
@@ -321,16 +316,13 @@
               "tokens": [
                 { "tokenId": "w9", "text": "hat" },
                 { "tokenId": "w5", "text": "er" },
-                { "tokenId": "w1", "text": "Ich" },
                 { "tokenId": "w7", "text": "ihr" },
                 { "tokenId": "w10", "text": "." },
-                { "tokenId": "w3", "text": "," },
                 { "tokenId": "w6", "text": "es" },
-                { "tokenId": "w2", "text": "weiß" },
                 { "tokenId": "w8", "text": "gegeben" },
                 { "tokenId": "w4", "text": "dass" }
               ],
-              "acceptedOrders": [["w1", "w2", "w3", "w4", "w5", "w6", "w7", "w8", "w9", "w10"]],
+              "acceptedOrders": [["w4", "w5", "w6", "w7", "w8", "w9", "w10"]],
               "ruleIds": ["r-two-objects"],
               "answerExplanation": {
                 "en": "Two pronouns: accusative es before dative ihr.",
@@ -343,20 +335,15 @@
               "itemId": "a-order-3",
               "tokens": [
                 { "tokenId": "w7", "text": "dem" },
-                { "tokenId": "w1", "text": "Ich" },
                 { "tokenId": "w10", "text": "hat" },
                 { "tokenId": "w5", "text": "sie" },
-                { "tokenId": "w3", "text": "," },
                 { "tokenId": "w9", "text": "gezeigt" },
                 { "tokenId": "w11", "text": "." },
                 { "tokenId": "w6", "text": "es" },
-                { "tokenId": "w2", "text": "meine" },
                 { "tokenId": "w8", "text": "Chef" },
                 { "tokenId": "w4", "text": "dass" }
               ],
-              "acceptedOrders": [
-                ["w1", "w2", "w3", "w4", "w5", "w6", "w7", "w8", "w9", "w10", "w11"]
-              ],
+              "acceptedOrders": [["w4", "w5", "w6", "w7", "w8", "w9", "w10", "w11"]],
               "ruleIds": ["r-pronoun-first", "r-two-objects"],
               "answerExplanation": {
                 "en": "The pronoun es comes before the noun dem Chef.",
@@ -370,19 +357,14 @@
               "tokens": [
                 { "tokenId": "w5", "text": "er" },
                 { "tokenId": "w9", "text": "zurückgegeben" },
-                { "tokenId": "w2", "text": "denke" },
                 { "tokenId": "w11", "text": "." },
                 { "tokenId": "w7", "text": "den" },
                 { "tokenId": "w4", "text": "dass" },
-                { "tokenId": "w1", "text": "Ich" },
                 { "tokenId": "w10", "text": "hat" },
                 { "tokenId": "w6", "text": "ihm" },
-                { "tokenId": "w3", "text": "," },
                 { "tokenId": "w8", "text": "Schlüssel" }
               ],
-              "acceptedOrders": [
-                ["w1", "w2", "w3", "w4", "w5", "w6", "w7", "w8", "w9", "w10", "w11"]
-              ],
+              "acceptedOrders": [["w4", "w5", "w6", "w7", "w8", "w9", "w10", "w11"]],
               "ruleIds": ["r-pronoun-first"],
               "answerExplanation": {
                 "en": "The dative pronoun ihm comes before the noun den Schlüssel.",
@@ -749,9 +731,9 @@
           "estimatedDurationS": 140,
           "timeLimitS": null,
           "instructions": {
-            "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
-            "de": "Bring die Wörter in die richtige Reihenfolge."
+            "en": "Put the words of the dass clause in the right order.",
+            "fr": "Mettez les mots de la subordonnée en dass dans le bon ordre.",
+            "de": "Bring die Wörter des dass-Satzes in die richtige Reihenfolge."
           },
           "items": [
             {
@@ -760,13 +742,10 @@
               "tokens": [
                 { "tokenId": "w12", "text": "Hand" },
                 { "tokenId": "w7", "text": "gestern" },
-                { "tokenId": "w3", "text": "," },
                 { "tokenId": "w15", "text": "." },
-                { "tokenId": "w1", "text": "Man" },
                 { "tokenId": "w9", "text": "Brief" },
                 { "tokenId": "w5", "text": "sie" },
                 { "tokenId": "w13", "text": "gedrückt" },
-                { "tokenId": "w2", "text": "sagt" },
                 { "tokenId": "w10", "text": "in" },
                 { "tokenId": "w6", "text": "ihm" },
                 { "tokenId": "w14", "text": "hat" },
@@ -775,40 +754,8 @@
                 { "tokenId": "w8", "text": "den" }
               ],
               "acceptedOrders": [
-                [
-                  "w1",
-                  "w2",
-                  "w3",
-                  "w4",
-                  "w5",
-                  "w6",
-                  "w7",
-                  "w8",
-                  "w9",
-                  "w10",
-                  "w11",
-                  "w12",
-                  "w13",
-                  "w14",
-                  "w15"
-                ],
-                [
-                  "w1",
-                  "w2",
-                  "w3",
-                  "w4",
-                  "w5",
-                  "w6",
-                  "w8",
-                  "w9",
-                  "w7",
-                  "w10",
-                  "w11",
-                  "w12",
-                  "w13",
-                  "w14",
-                  "w15"
-                ]
+                ["w4", "w5", "w6", "w7", "w8", "w9", "w10", "w11", "w12", "w13", "w14", "w15"],
+                ["w4", "w5", "w6", "w8", "w9", "w7", "w10", "w11", "w12", "w13", "w14", "w15"]
               ],
               "ruleIds": ["r-adverbial", "r-directional"],
               "answerExplanation": {
@@ -824,21 +771,17 @@
                 { "tokenId": "w9", "text": "ins" },
                 { "tokenId": "w4", "text": "dass" },
                 { "tokenId": "w12", "text": "hat" },
-                { "tokenId": "w1", "text": "Er" },
                 { "tokenId": "w7", "text": "Buch" },
                 { "tokenId": "w10", "text": "Regal" },
-                { "tokenId": "w3", "text": "," },
                 { "tokenId": "w13", "text": "." },
                 { "tokenId": "w6", "text": "das" },
-                { "tokenId": "w2", "text": "sagt" },
                 { "tokenId": "w8", "text": "heute" },
                 { "tokenId": "w11", "text": "gestellt" },
                 { "tokenId": "w5", "text": "er" }
               ],
               "acceptedOrders": [
-                ["w1", "w2", "w3", "w4", "w5", "w6", "w7", "w8", "w9", "w10", "w11", "w12", "w13"],
-                ["w1", "w2", "w3", "w4", "w5", "w8", "w6", "w7", "w9", "w10", "w11", "w12", "w13"],
-                ["w1", "w2", "w8", "w3", "w4", "w5", "w6", "w7", "w9", "w10", "w11", "w12", "w13"]
+                ["w4", "w5", "w6", "w7", "w8", "w9", "w10", "w11", "w12", "w13"],
+                ["w4", "w5", "w8", "w6", "w7", "w9", "w10", "w11", "w12", "w13"]
               ],
               "ruleIds": ["r-directional", "r-adverbial"],
               "answerExplanation": {
@@ -853,21 +796,16 @@
               "tokens": [
                 { "tokenId": "w10", "text": "Termin" },
                 { "tokenId": "w6", "text": "ihn" },
-                { "tokenId": "w1", "text": "Ich" },
                 { "tokenId": "w12", "text": "habe" },
                 { "tokenId": "w8", "text": "an" },
-                { "tokenId": "w3", "text": "," },
                 { "tokenId": "w13", "text": "." },
                 { "tokenId": "w5", "text": "ich" },
-                { "tokenId": "w2", "text": "hoffe" },
                 { "tokenId": "w9", "text": "den" },
                 { "tokenId": "w4", "text": "dass" },
                 { "tokenId": "w11", "text": "erinnert" },
                 { "tokenId": "w7", "text": "gestern" }
               ],
-              "acceptedOrders": [
-                ["w1", "w2", "w3", "w4", "w5", "w6", "w7", "w8", "w9", "w10", "w11", "w12", "w13"]
-              ],
+              "acceptedOrders": [["w4", "w5", "w6", "w7", "w8", "w9", "w10", "w11", "w12", "w13"]],
               "ruleIds": ["r-adverbial"],
               "answerExplanation": {
                 "en": "Pronoun ihn first, then the adverbial gestern, then the prepositional complement an den Termin.",
@@ -881,55 +819,20 @@
               "tokens": [
                 { "tokenId": "w13", "text": "legen" },
                 { "tokenId": "w8", "text": "das" },
-                { "tokenId": "w2", "text": "meint" },
                 { "tokenId": "w15", "text": "." },
                 { "tokenId": "w10", "text": "auf" },
                 { "tokenId": "w5", "text": "wir" },
                 { "tokenId": "w14", "text": "sollen" },
-                { "tokenId": "w1", "text": "Sie" },
                 { "tokenId": "w9", "text": "Paket" },
                 { "tokenId": "w12", "text": "Tisch" },
                 { "tokenId": "w6", "text": "ihr" },
-                { "tokenId": "w3", "text": "," },
                 { "tokenId": "w11", "text": "den" },
                 { "tokenId": "w4", "text": "dass" },
                 { "tokenId": "w7", "text": "bald" }
               ],
               "acceptedOrders": [
-                [
-                  "w1",
-                  "w2",
-                  "w3",
-                  "w4",
-                  "w5",
-                  "w6",
-                  "w7",
-                  "w8",
-                  "w9",
-                  "w10",
-                  "w11",
-                  "w12",
-                  "w13",
-                  "w14",
-                  "w15"
-                ],
-                [
-                  "w1",
-                  "w2",
-                  "w3",
-                  "w4",
-                  "w5",
-                  "w6",
-                  "w8",
-                  "w9",
-                  "w7",
-                  "w10",
-                  "w11",
-                  "w12",
-                  "w13",
-                  "w14",
-                  "w15"
-                ]
+                ["w4", "w5", "w6", "w7", "w8", "w9", "w10", "w11", "w12", "w13", "w14", "w15"],
+                ["w4", "w5", "w6", "w8", "w9", "w7", "w10", "w11", "w12", "w13", "w14", "w15"]
               ],
               "ruleIds": ["r-directional"],
               "answerExplanation": {
@@ -1070,9 +973,9 @@
           "estimatedDurationS": 105,
           "timeLimitS": 150,
           "instructions": {
-            "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
-            "de": "Bring die Wörter in die richtige Reihenfolge."
+            "en": "Put the words of the dass clause in the right order.",
+            "fr": "Mettez les mots de la subordonnée en dass dans le bon ordre.",
+            "de": "Bring die Wörter des dass-Satzes in die richtige Reihenfolge."
           },
           "items": [
             {
@@ -1080,20 +983,14 @@
               "itemId": "exam-order-1-1",
               "tokens": [
                 { "tokenId": "w8", "text": "morgen" },
-                { "tokenId": "w3", "text": "," },
                 { "tokenId": "w6", "text": "es" },
                 { "tokenId": "w10", "text": "." },
-                { "tokenId": "w1", "text": "Er" },
                 { "tokenId": "w9", "text": "zeige" },
                 { "tokenId": "w5", "text": "ich" },
-                { "tokenId": "w2", "text": "sagt" },
                 { "tokenId": "w7", "text": "ihr" },
                 { "tokenId": "w4", "text": "dass" }
               ],
-              "acceptedOrders": [
-                ["w1", "w2", "w3", "w4", "w5", "w6", "w7", "w8", "w9", "w10"],
-                ["w1", "w2", "w7", "w3", "w4", "w5", "w6", "w8", "w9", "w10"]
-              ],
+              "acceptedOrders": [["w4", "w5", "w6", "w7", "w8", "w9", "w10"]],
               "ruleIds": ["r-two-objects"],
               "answerExplanation": {
                 "en": "Two pronouns: accusative es before dative ihr.",
@@ -1109,20 +1006,12 @@
                 { "tokenId": "w4", "text": "dass" },
                 { "tokenId": "w11", "text": "." },
                 { "tokenId": "w7", "text": "die" },
-                { "tokenId": "w1", "text": "Man" },
                 { "tokenId": "w10", "text": "hat" },
                 { "tokenId": "w5", "text": "er" },
                 { "tokenId": "w8", "text": "Wahrheit" },
-                { "tokenId": "w2", "text": "erzählt" },
-                { "tokenId": "w6", "text": "ihm" },
-                { "tokenId": "w3", "text": "," }
+                { "tokenId": "w6", "text": "ihm" }
               ],
-              "acceptedOrders": [
-                ["w1", "w2", "w3", "w4", "w5", "w6", "w7", "w8", "w9", "w10", "w11"],
-                ["w1", "w10", "w9", "w3", "w4", "w5", "w6", "w7", "w8", "w2", "w11"],
-                ["w1", "w2", "w6", "w3", "w4", "w5", "w7", "w8", "w9", "w10", "w11"],
-                ["w1", "w10", "w6", "w9", "w3", "w4", "w5", "w7", "w8", "w2", "w11"]
-              ],
+              "acceptedOrders": [["w4", "w5", "w6", "w7", "w8", "w9", "w10", "w11"]],
               "ruleIds": ["r-pronoun-first"],
               "answerExplanation": {
                 "en": "The pronoun ihm comes before the noun die Wahrheit.",
@@ -1136,19 +1025,14 @@
               "tokens": [
                 { "tokenId": "w6", "text": "ihn" },
                 { "tokenId": "w10", "text": "hat" },
-                { "tokenId": "w2", "text": "hören" },
                 { "tokenId": "w8", "text": "Direktor" },
                 { "tokenId": "w11", "text": "." },
                 { "tokenId": "w4", "text": "dass" },
-                { "tokenId": "w1", "text": "Wir" },
                 { "tokenId": "w9", "text": "vorgestellt" },
-                { "tokenId": "w3", "text": "," },
                 { "tokenId": "w7", "text": "dem" },
                 { "tokenId": "w5", "text": "sie" }
               ],
-              "acceptedOrders": [
-                ["w1", "w2", "w3", "w4", "w5", "w6", "w7", "w8", "w9", "w10", "w11"]
-              ],
+              "acceptedOrders": [["w4", "w5", "w6", "w7", "w8", "w9", "w10", "w11"]],
               "ruleIds": ["r-pronoun-first", "r-two-objects"],
               "answerExplanation": {
                 "en": "The pronoun ihn comes before the noun dem Direktor.",
@@ -1217,9 +1101,9 @@
           "estimatedDurationS": 140,
           "timeLimitS": 220,
           "instructions": {
-            "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
-            "de": "Bring die Wörter in die richtige Reihenfolge."
+            "en": "Put the words of the dass clause in the right order.",
+            "fr": "Mettez les mots de la subordonnée en dass dans le bon ordre.",
+            "de": "Bring die Wörter des dass-Satzes in die richtige Reihenfolge."
           },
           "items": [
             {
@@ -1229,54 +1113,18 @@
                 { "tokenId": "w11", "text": "den" },
                 { "tokenId": "w5", "text": "er" },
                 { "tokenId": "w14", "text": "hat" },
-                { "tokenId": "w2", "text": "glaube" },
                 { "tokenId": "w9", "text": "Zettel" },
                 { "tokenId": "w15", "text": "." },
                 { "tokenId": "w7", "text": "heute" },
-                { "tokenId": "w1", "text": "Ich" },
                 { "tokenId": "w12", "text": "Tisch" },
                 { "tokenId": "w4", "text": "dass" },
                 { "tokenId": "w8", "text": "einen" },
                 { "tokenId": "w13", "text": "gelegt" },
-                { "tokenId": "w3", "text": "," },
                 { "tokenId": "w10", "text": "auf" },
                 { "tokenId": "w6", "text": "ihr" }
               ],
               "acceptedOrders": [
-                [
-                  "w1",
-                  "w2",
-                  "w3",
-                  "w4",
-                  "w5",
-                  "w6",
-                  "w7",
-                  "w8",
-                  "w9",
-                  "w10",
-                  "w11",
-                  "w12",
-                  "w13",
-                  "w14",
-                  "w15"
-                ],
-                [
-                  "w1",
-                  "w2",
-                  "w6",
-                  "w3",
-                  "w4",
-                  "w5",
-                  "w7",
-                  "w8",
-                  "w9",
-                  "w10",
-                  "w11",
-                  "w12",
-                  "w13",
-                  "w14",
-                  "w15"
-                ]
+                ["w4", "w5", "w6", "w7", "w8", "w9", "w10", "w11", "w12", "w13", "w14", "w15"]
               ],
               "ruleIds": ["r-adverbial", "r-directional"],
               "answerExplanation": {
@@ -1291,21 +1139,16 @@
               "tokens": [
                 { "tokenId": "w12", "text": "muss" },
                 { "tokenId": "w7", "text": "morgen" },
-                { "tokenId": "w1", "text": "Du" },
                 { "tokenId": "w10", "text": "Besprechung" },
                 { "tokenId": "w4", "text": "dass" },
                 { "tokenId": "w13", "text": "." },
                 { "tokenId": "w6", "text": "ihn" },
                 { "tokenId": "w9", "text": "die" },
-                { "tokenId": "w2", "text": "weißt" },
                 { "tokenId": "w5", "text": "sie" },
                 { "tokenId": "w8", "text": "an" },
-                { "tokenId": "w3", "text": "," },
                 { "tokenId": "w11", "text": "erinnern" }
               ],
-              "acceptedOrders": [
-                ["w1", "w2", "w3", "w4", "w5", "w6", "w7", "w8", "w9", "w10", "w11", "w12", "w13"]
-              ],
+              "acceptedOrders": [["w4", "w5", "w6", "w7", "w8", "w9", "w10", "w11", "w12", "w13"]],
               "ruleIds": ["r-adverbial", "r-directional"],
               "answerExplanation": {
                 "en": "Pronoun ihn first, then the adverbial morgen, then the prepositional complement an die Besprechung.",
@@ -1320,51 +1163,18 @@
                 { "tokenId": "w11", "text": "Garage" },
                 { "tokenId": "w6", "text": "heute" },
                 { "tokenId": "w14", "text": "." },
-                { "tokenId": "w2", "text": "stimmt" },
                 { "tokenId": "w9", "text": "in" },
                 { "tokenId": "w13", "text": "haben" },
-                { "tokenId": "w1", "text": "Es" },
                 { "tokenId": "w7", "text": "den" },
                 { "tokenId": "w4", "text": "dass" },
                 { "tokenId": "w10", "text": "die" },
                 { "tokenId": "w12", "text": "gefahren" },
-                { "tokenId": "w3", "text": "," },
                 { "tokenId": "w8", "text": "Wagen" },
                 { "tokenId": "w5", "text": "wir" }
               ],
               "acceptedOrders": [
-                [
-                  "w1",
-                  "w2",
-                  "w3",
-                  "w4",
-                  "w5",
-                  "w6",
-                  "w7",
-                  "w8",
-                  "w9",
-                  "w10",
-                  "w11",
-                  "w12",
-                  "w13",
-                  "w14"
-                ],
-                [
-                  "w1",
-                  "w2",
-                  "w3",
-                  "w4",
-                  "w5",
-                  "w7",
-                  "w8",
-                  "w6",
-                  "w9",
-                  "w10",
-                  "w11",
-                  "w12",
-                  "w13",
-                  "w14"
-                ]
+                ["w4", "w5", "w6", "w7", "w8", "w9", "w10", "w11", "w12", "w13", "w14"],
+                ["w4", "w5", "w7", "w8", "w6", "w9", "w10", "w11", "w12", "w13", "w14"]
               ],
               "ruleIds": ["r-adverbial", "r-directional"],
               "answerExplanation": {
@@ -1380,35 +1190,17 @@
                 { "tokenId": "w9", "text": "in" },
                 { "tokenId": "w13", "text": "hat" },
                 { "tokenId": "w7", "text": "ihr" },
-                { "tokenId": "w3", "text": "," },
                 { "tokenId": "w12", "text": "gesteckt" },
-                { "tokenId": "w1", "text": "Ich" },
                 { "tokenId": "w14", "text": "." },
                 { "tokenId": "w10", "text": "die" },
                 { "tokenId": "w5", "text": "er" },
-                { "tokenId": "w2", "text": "sehe" },
                 { "tokenId": "w8", "text": "nachher" },
                 { "tokenId": "w4", "text": "dass" },
                 { "tokenId": "w11", "text": "Tasche" },
                 { "tokenId": "w6", "text": "es" }
               ],
               "acceptedOrders": [
-                [
-                  "w1",
-                  "w2",
-                  "w3",
-                  "w4",
-                  "w5",
-                  "w6",
-                  "w7",
-                  "w8",
-                  "w9",
-                  "w10",
-                  "w11",
-                  "w12",
-                  "w13",
-                  "w14"
-                ]
+                ["w4", "w5", "w6", "w7", "w8", "w9", "w10", "w11", "w12", "w13", "w14"]
               ],
               "ruleIds": ["r-adverbial", "r-directional"],
               "answerExplanation": {

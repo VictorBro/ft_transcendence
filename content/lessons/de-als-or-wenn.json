@@ -241,7 +241,7 @@
               "itemId": "ex-als-typing-2",
               "before": "",
               "after": "wir vor zwei Jahren umzogen, weinte meine Schwester.",
-              "accepted": { "answers": ["Als", "als"] },
+              "accepted": { "answers": ["Als"] },
               "hint": {
                 "en": "conjunction: one event in the past",
                 "fr": "conjonction : un événement unique dans le passé",
@@ -668,7 +668,7 @@
               "itemId": "ex-wenn-typing-4",
               "before": "",
               "after": "ich mit sechs Jahren in die Schule kam, bekam ich eine große Schultüte.",
-              "accepted": { "answers": ["Als", "als"] },
+              "accepted": { "answers": ["Als"] },
               "hint": {
                 "en": "once in the past",
                 "fr": "une seule fois dans le passé",
@@ -718,7 +718,7 @@
               "faultyTokenId": "t-1",
               "correction": {
                 "mode": "type",
-                "accepted": { "answers": ["Wenn", "wenn"] },
+                "accepted": { "answers": ["Wenn"] },
                 "choices": []
               },
               "ruleIds": ["r-wenn"],
@@ -776,7 +776,7 @@
               "faultyTokenId": "t-1",
               "correction": {
                 "mode": "type",
-                "accepted": { "answers": ["Als", "als"] },
+                "accepted": { "answers": ["Als"] },
                 "choices": []
               },
               "ruleIds": ["r-als"],
@@ -858,7 +858,7 @@
               "itemId": "exam-gaps-3",
               "before": "",
               "after": "ich gestern aufstand, schien die Sonne.",
-              "accepted": { "answers": ["Als", "als"] },
+              "accepted": { "answers": ["Als"] },
               "hint": null,
               "ruleIds": ["r-als"],
               "answerExplanation": {

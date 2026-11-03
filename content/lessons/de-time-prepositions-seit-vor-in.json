@@ -817,22 +817,22 @@
               "type": "grammar_error_spotter",
               "itemId": "vs-1",
               "tokens": [
-                { "tokenId": "t-1", "text": "Wir" },
-                { "tokenId": "t-2", "text": "waren" },
-                { "tokenId": "t-3", "text": "in" },
-                { "tokenId": "t-4", "text": "drei" },
-                { "tokenId": "t-5", "text": "Tagen" },
-                { "tokenId": "t-6", "text": "in" },
-                { "tokenId": "t-7", "text": "Rom" },
+                { "tokenId": "t-1", "text": "Meine" },
+                { "tokenId": "t-2", "text": "Tochter" },
+                { "tokenId": "t-3", "text": "ist" },
+                { "tokenId": "t-4", "text": "in" },
+                { "tokenId": "t-5", "text": "zwei" },
+                { "tokenId": "t-6", "text": "Jahren" },
+                { "tokenId": "t-7", "text": "geboren" },
                 { "tokenId": "t-8", "text": "." }
               ],
-              "faultyTokenId": "t-3",
+              "faultyTokenId": "t-4",
               "correction": { "mode": "type", "accepted": { "answers": ["vor"] }, "choices": [] },
               "ruleIds": ["rule-vor"],
               "answerExplanation": {
-                "en": "Waren is past, so the time phrase needs vor: vor drei Tagen.",
-                "fr": "Waren est au passé, donc l'indication de temps demande vor : vor drei Tagen.",
-                "de": "Waren ist Vergangenheit, also braucht die Zeitangabe vor: vor drei Tagen."
+                "en": "Ist geboren is past, so the time phrase needs vor: vor zwei Jahren.",
+                "fr": "Ist geboren est au passé, donc l'indication de temps demande vor : vor zwei Jahren.",
+                "de": "Ist geboren ist Vergangenheit, also braucht die Zeitangabe vor: vor zwei Jahren."
               }
             },
             {
@@ -900,7 +900,7 @@
               "itemId": "exam-seit-1",
               "before": "",
               "after": "wann arbeitet Lena schon hier?",
-              "accepted": { "answers": ["Seit", "seit"] },
+              "accepted": { "answers": ["Seit"] },
               "hint": null,
               "ruleIds": ["rule-seit"],
               "answerExplanation": {

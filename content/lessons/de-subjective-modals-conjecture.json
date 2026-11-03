@@ -253,13 +253,13 @@
               "itemId": "g-t1",
               "before": "Es ist zwei Uhr nachts. Sie",
               "after": "jetzt schlafen.",
-              "accepted": { "answers": ["muss"] },
+              "accepted": { "answers": ["muss", "müsste"] },
               "hint": { "en": "almost certain", "fr": "presque sûr", "de": "fast sicher" },
               "ruleIds": ["rule-grade"],
               "answerExplanation": {
-                "en": "Almost certain: muss.",
-                "fr": "Presque sûr : muss.",
-                "de": "Fast sicher: muss."
+                "en": "Almost certain: muss (or müsste).",
+                "fr": "Presque sûr : muss (ou müsste).",
+                "de": "Fast sicher: muss (oder müsste)."
               }
             },
             {
@@ -281,13 +281,13 @@
               "itemId": "g-t3",
               "before": "Die Besprechung hat vor einer Stunde begonnen. Sie",
               "after": "bald zu Ende sein.",
-              "accepted": { "answers": ["dürfte"] },
+              "accepted": { "answers": ["dürfte", "müsste"] },
               "hint": { "en": "probable", "fr": "probable", "de": "wahrscheinlich" },
               "ruleIds": ["rule-grade"],
               "answerExplanation": {
-                "en": "Probable: dürfte.",
-                "fr": "Probable : dürfte.",
-                "de": "Wahrscheinlich: dürfte."
+                "en": "Probable: dürfte (or müsste).",
+                "fr": "Probable : dürfte (ou müsste).",
+                "de": "Wahrscheinlich: dürfte (oder müsste)."
               }
             },
             {
@@ -879,15 +879,15 @@
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-past-2",
-              "before": "Das Fenster steht offen und die Tür ist aufgebrochen. Jemand dürfte in der Nacht eingebrochen",
+              "before": "Das Fenster steht offen und auf dem Boden liegen Glasscherben. Jemand dürfte in der Nacht durchs Fenster eingestiegen",
               "after": ".",
               "accepted": { "answers": ["sein"] },
               "hint": null,
               "ruleIds": ["rule-past"],
               "answerExplanation": {
-                "en": "einbrechen takes sein: eingebrochen sein.",
-                "fr": "einbrechen se construit avec sein : eingebrochen sein.",
-                "de": "einbrechen bildet das Perfekt mit sein: eingebrochen sein."
+                "en": "einsteigen takes sein: eingestiegen sein.",
+                "fr": "einsteigen se construit avec sein : eingestiegen sein.",
+                "de": "einsteigen bildet das Perfekt mit sein: eingestiegen sein."
               }
             },
             {
