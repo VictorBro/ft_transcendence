@@ -1,0 +1,232 @@
+{
+  "schemaVersion": 2,
+  "id": "en-stative-verbs",
+  "lang": "en",
+  "level": "B1",
+  "locales": ["en", "fr", "de"],
+  "title": "Stative verbs: I know, not I'm knowing",
+  "objective": {
+    "en": "Use know, want, like and belong in the simple form, and see how think and have change meaning in the continuous.",
+    "fr": "Employer know, want, like et belong au présent simple, et voir comment think et have changent de sens au continu.",
+    "de": "Know, want, like und belong in der einfachen Form verwenden und sehen, wie think und have in der Verlaufsform ihre Bedeutung ändern."
+  },
+  "estimatedMinutes": 15,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:33:09.502Z",
+    "inputHashes": { "outline": "18a843fb73ef65016537f1bff1c5c1cc031577787e9c64f3148dd56f54371114" }
+  },
+  "kind": "grammar",
+  "topic": "verb_usage",
+  "scopeBoundaries": {
+    "en": "Covers common stative verbs of thinking, feeling, wanting and owning, and the two meanings of think and have. Excludes verbs of the senses such as see and taste, and the future forms.",
+    "fr": "Couvre les verbes d’état courants de la pensée, du sentiment, du désir et de la possession, et les deux sens de think et have. Exclut les verbes des sens comme see et taste, et les formes du futur.",
+    "de": "Behandelt häufige Zustandsverben des Denkens, Fühlens, Wollens und Besitzens sowie die zwei Bedeutungen von think und have. Ausgeschlossen sind Sinnesverben wie see und taste sowie die Zukunftsformen."
+  },
+  "prerequisites": [
+    {
+      "en": "The present simple and the present continuous",
+      "fr": "Le présent simple et le présent continu",
+      "de": "Die einfache Gegenwart und die Verlaufsform der Gegenwart"
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-state-simple",
+      "summary": {
+        "en": "Verbs of thinking, feeling, wanting and owning (know, like, want, need, belong, own) are normally used in the simple form, not the continuous.",
+        "fr": "Les verbes de pensée, de sentiment, de désir et de possession (know, like, want, need, belong, own) s’emploient normalement au présent simple, pas au continu.",
+        "de": "Verben des Denkens, Fühlens, Wollens und Besitzens (know, like, want, need, belong, own) stehen normalerweise in der einfachen Form, nicht in der Verlaufsform."
+      }
+    },
+    {
+      "id": "rule-think-meaning",
+      "summary": {
+        "en": "Think meaning have an opinion is simple (I think it's good); think about meaning the process of thinking can be continuous (I'm thinking about it).",
+        "fr": "Think au sens d’avoir une opinion est au présent simple (I think it's good) ; think about au sens de réfléchir peut être au continu (I'm thinking about it).",
+        "de": "Think im Sinne von eine Meinung haben steht in der einfachen Form (I think it's good); think about im Sinne von nachdenken kann in der Verlaufsform stehen (I'm thinking about it)."
+      }
+    },
+    {
+      "id": "rule-have-meaning",
+      "summary": {
+        "en": "Have meaning own is simple (I have a car); have for an activity such as eating or a meeting can be continuous (We're having lunch).",
+        "fr": "Have au sens de posséder est au présent simple (I have a car) ; have pour une activité comme manger ou une réunion peut être au continu (We're having lunch).",
+        "de": "Have im Sinne von besitzen steht in der einfachen Form (I have a car); have für eine Tätigkeit wie essen oder ein Treffen kann in der Verlaufsform stehen (We're having lunch)."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-simple-only",
+      "title": {
+        "en": "Verbs that stay simple: know, want, like, belong",
+        "fr": "Les verbes qui restent simples : know, want, like, belong",
+        "de": "Verben, die einfach bleiben: know, want, like, belong"
+      },
+      "ruleIds": ["rule-state-simple"],
+      "explanationPlan": {
+        "en": "Explain that some verbs describe a state, not an action: thinking (know, believe, understand), feeling (like, love, hate), wanting (want, need) and owning (own, belong). They take the simple form even when we mean now. Contrast with the continuous for actions in progress.",
+        "fr": "Expliquer que certains verbes décrivent un état et non une action : la pensée (know, believe, understand), le sentiment (like, love, hate), le désir (want, need) et la possession (own, belong). Ils prennent la forme simple même pour dire maintenant. Comparer avec le continu pour les actions en cours.",
+        "de": "Erklären, dass manche Verben einen Zustand und keine Handlung beschreiben: Denken (know, believe, understand), Fühlen (like, love, hate), Wollen (want, need) und Besitzen (own, belong). Sie stehen in der einfachen Form, auch wenn man jetzt meint. Gegenüberstellung mit der Verlaufsform für laufende Handlungen."
+      },
+      "explanationDurationS": 110,
+      "examples": [
+        {
+          "text": "I know the answer.",
+          "translation": { "fr": "Je connais la réponse.", "de": "Ich kenne die Antwort." }
+        },
+        {
+          "text": "She wants a coffee.",
+          "translation": { "fr": "Elle veut un café.", "de": "Sie möchte einen Kaffee." }
+        },
+        {
+          "text": "This bag belongs to Tom.",
+          "translation": { "fr": "Ce sac appartient à Tom.", "de": "Diese Tasche gehört Tom." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not use the continuous with know, want or like, even when you mean now.",
+          "fr": "N’employez pas le continu avec know, want ou like, même pour dire maintenant.",
+          "de": "Benutze mit know, want oder like keine Verlaufsform, auch nicht für jetzt."
+        },
+        {
+          "en": "Belong is never used in the continuous: say It belongs to me, not It is belonging to me.",
+          "fr": "Belong ne s’emploie jamais au continu : dites It belongs to me, pas It is belonging to me.",
+          "de": "Belong steht nie in der Verlaufsform: Sage It belongs to me, nicht It is belonging to me."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-s-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-state-simple"],
+          "estimatedDurationS": 48
+        },
+        {
+          "id": "ex-s-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-state-simple"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-s-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 4,
+          "ruleIds": ["rule-state-simple"],
+          "estimatedDurationS": 100
+        }
+      ]
+    },
+    {
+      "id": "block-changing-meaning",
+      "title": {
+        "en": "Think and have: two meanings",
+        "fr": "Think et have : deux sens",
+        "de": "Think und have: zwei Bedeutungen"
+      },
+      "ruleIds": ["rule-think-meaning", "rule-have-meaning"],
+      "explanationPlan": {
+        "en": "Show that think and have can be stative or active. Think for an opinion is simple; think about is the process of thinking and can be continuous. Have for owning is simple; have for an activity (lunch, a meeting, a shower, a party) can be continuous. Warn against I'm having a car.",
+        "fr": "Montrer que think et have peuvent être des verbes d’état ou d’action. Think pour une opinion est au présent simple ; think about désigne le fait de réfléchir et peut être au continu. Have pour la possession est au présent simple ; have pour une activité (déjeuner, réunion, douche, fête) peut être au continu. Mettre en garde contre I'm having a car.",
+        "de": "Zeigen, dass think und have Zustands- oder Tätigkeitsverben sein können. Think für eine Meinung steht in der einfachen Form; think about meint das Nachdenken und kann in der Verlaufsform stehen. Have für Besitz ist einfach; have für eine Tätigkeit (Mittagessen, Treffen, Dusche, Party) kann in der Verlaufsform stehen. Warnung vor I'm having a car."
+      },
+      "explanationDurationS": 130,
+      "examples": [
+        {
+          "text": "I think this song is great.",
+          "translation": {
+            "fr": "Je trouve cette chanson super.",
+            "de": "Ich finde dieses Lied toll."
+          }
+        },
+        {
+          "text": "I'm thinking about my holiday.",
+          "translation": { "fr": "Je pense à mes vacances.", "de": "Ich denke an meinen Urlaub." }
+        },
+        {
+          "text": "They have two dogs.",
+          "translation": { "fr": "Ils ont deux chiens.", "de": "Sie haben zwei Hunde." }
+        },
+        {
+          "text": "They're having a party tonight.",
+          "translation": {
+            "fr": "Ils font une fête ce soir.",
+            "de": "Sie feiern heute Abend eine Party."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not say I'm thinking he is late when you mean I believe he is late.",
+          "fr": "Ne dites pas I'm thinking he is late pour dire que vous croyez qu’il est en retard.",
+          "de": "Sage nicht I'm thinking he is late, wenn du meinst, dass er deiner Meinung nach zu spät ist."
+        },
+        {
+          "en": "Do not say I'm having a car: owning is a state.",
+          "fr": "Ne dites pas I'm having a car : posséder est un état.",
+          "de": "Sage nicht I'm having a car: Besitzen ist ein Zustand."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-c-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-think-meaning", "rule-have-meaning"],
+          "estimatedDurationS": 48
+        },
+        {
+          "id": "ex-c-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-think-meaning", "rule-have-meaning"],
+          "estimatedDurationS": 75
+        },
+        {
+          "id": "ex-c-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-think-meaning", "rule-have-meaning"],
+          "estimatedDurationS": 60
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-stative",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-state-simple"],
+        "estimatedDurationS": 80,
+        "timeLimitS": 140
+      },
+      {
+        "pageId": "exam-meaning",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["rule-think-meaning", "rule-have-meaning"],
+        "estimatedDurationS": 75,
+        "timeLimitS": 120
+      },
+      {
+        "pageId": "exam-think-have",
+        "type": "grammar_gap_typing",
+        "itemCount": 3,
+        "ruleIds": ["rule-think-meaning", "rule-have-meaning"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

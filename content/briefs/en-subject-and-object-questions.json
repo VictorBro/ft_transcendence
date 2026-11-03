@@ -1,0 +1,246 @@
+{
+  "schemaVersion": 2,
+  "id": "en-subject-and-object-questions",
+  "lang": "en",
+  "level": "B1",
+  "locales": ["en", "fr", "de"],
+  "title": "Subject and object questions: Who called you?",
+  "objective": {
+    "en": "Ask about the subject without do, does or did (Who called you?) and about the object with them (Who did you call?).",
+    "fr": "Poser des questions sur le sujet sans do, does ni did (Who called you?) et sur l'objet avec eux (Who did you call?).",
+    "de": "Fragen zum Subjekt ohne do, does oder did stellen (Who called you?) und zum Objekt mit ihnen (Who did you call?)."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:33:09.472Z",
+    "inputHashes": { "outline": "5b30c7772b96087197f0f0474039f7de1ad2915eaa7123de98e6ee5f63094b6c" }
+  },
+  "kind": "grammar",
+  "topic": "syntax_and_sentence_structure",
+  "scopeBoundaries": {
+    "en": "Covers who, what and which as subject or object in the present and past simple. Excludes prepositions at the end of questions, whom, and indirect questions.",
+    "fr": "Couvre who, what et which comme sujet ou complément au présent simple et au prétérit. Exclut les prépositions en fin de question, whom et les questions indirectes.",
+    "de": "Behandelt who, what und which als Subjekt oder Objekt im Present Simple und Past Simple. Ausgeschlossen sind Präpositionen am Fragenende, whom und indirekte Fragen."
+  },
+  "prerequisites": [
+    {
+      "en": "Basic questions with do, does and did",
+      "fr": "Les questions de base avec do, does et did",
+      "de": "Einfache Fragen mit do, does und did"
+    },
+    {
+      "en": "Present simple and past simple forms, including common irregular verbs",
+      "fr": "Le présent simple et le prétérit, y compris les verbes irréguliers courants",
+      "de": "Present Simple und Past Simple, auch häufige unregelmäßige Verben"
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-subject-no-aux",
+      "summary": {
+        "en": "When the question word is the subject, do not use do, does or did: Who called you?",
+        "fr": "Quand le mot interrogatif est le sujet, on n'utilise pas do, does ni did : Who called you?",
+        "de": "Ist das Fragewort das Subjekt, benutzt man kein do, does oder did: Who called you?"
+      }
+    },
+    {
+      "id": "rule-verb-form",
+      "summary": {
+        "en": "The verb keeps its tense form: -s in the present, the past form in the past.",
+        "fr": "Le verbe garde sa forme de temps : -s au présent, la forme du passé au prétérit.",
+        "de": "Das Verb behält seine Zeitform: -s im Präsens, die Vergangenheitsform im Past Simple."
+      }
+    },
+    {
+      "id": "rule-object-aux",
+      "summary": {
+        "en": "When the question word is the object, use do, does or did + subject + base verb: Who did you call?",
+        "fr": "Quand le mot interrogatif est le complément, on emploie do, does ou did + sujet + verbe à l'infinitif : Who did you call?",
+        "de": "Ist das Fragewort das Objekt, benutzt man do, does oder did + Subjekt + Grundform: Who did you call?"
+      }
+    },
+    {
+      "id": "rule-subject-or-object",
+      "summary": {
+        "en": "Decide whether the question word does the action (subject) or receives it (object): Who called Tom? vs Who did Tom call?",
+        "fr": "Décider si le mot interrogatif fait l'action (sujet) ou la reçoit (complément) : Who called Tom? ou Who did Tom call?",
+        "de": "Entscheiden, ob das Fragewort die Handlung ausführt (Subjekt) oder erfährt (Objekt): Who called Tom? oder Who did Tom call?"
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-subject",
+      "title": {
+        "en": "Subject questions: Who called you?",
+        "fr": "Questions sur le sujet : Who called you?",
+        "de": "Subjektfragen: Who called you?"
+      },
+      "ruleIds": ["rule-subject-no-aux", "rule-verb-form"],
+      "explanationPlan": {
+        "en": "Explain that when who, what or which is the subject, the verb follows directly and there is no do, does or did. The verb keeps -s in the present and its past form in the past. Give contrasting wrong forms.",
+        "fr": "Expliquer que lorsque who, what ou which est le sujet, le verbe suit directement et il n'y a ni do, does ni did. Le verbe garde -s au présent et sa forme du passé au prétérit. Donner des formes fautives en contraste.",
+        "de": "Erklären, dass bei who, what oder which als Subjekt das Verb direkt folgt und kein do, does oder did steht. Das Verb behält -s im Präsens und die Vergangenheitsform im Past Simple. Falsche Formen zum Vergleich zeigen."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "Who called you?",
+          "translation": { "fr": "Qui t'a appelé ?", "de": "Wer hat dich angerufen?" }
+        },
+        {
+          "text": "What happened?",
+          "translation": { "fr": "Que s'est-il passé ?", "de": "Was ist passiert?" }
+        },
+        {
+          "text": "Who lives here?",
+          "translation": { "fr": "Qui habite ici ?", "de": "Wer wohnt hier?" }
+        },
+        {
+          "text": "Which team won?",
+          "translation": {
+            "fr": "Quelle équipe a gagné ?",
+            "de": "Welche Mannschaft hat gewonnen?"
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not add did: say Who called you?, not Who did call you?",
+          "fr": "N'ajoutez pas did : dites Who called you?, pas Who did call you?",
+          "de": "Füge kein did hinzu: Sag Who called you?, nicht Who did call you?"
+        },
+        {
+          "en": "Who and what take a singular verb in the present: Who lives here?",
+          "fr": "Who et what prennent un verbe au singulier au présent : Who lives here?",
+          "de": "Who und what verlangen im Präsens ein Verb im Singular: Who lives here?"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-s-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-subject-no-aux", "rule-verb-form"],
+          "estimatedDurationS": 48
+        },
+        {
+          "id": "ex-s-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-subject-no-aux", "rule-verb-form"],
+          "estimatedDurationS": 72
+        },
+        {
+          "id": "ex-s-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 4,
+          "ruleIds": ["rule-subject-no-aux", "rule-verb-form"],
+          "estimatedDurationS": 100
+        }
+      ]
+    },
+    {
+      "id": "block-object",
+      "title": {
+        "en": "Object questions: Who did you call?",
+        "fr": "Questions sur l'objet : Who did you call?",
+        "de": "Objektfragen: Who did you call?"
+      },
+      "ruleIds": ["rule-object-aux", "rule-subject-or-object"],
+      "explanationPlan": {
+        "en": "Explain that when the question word is the object, the question needs do, does or did, then the subject and the base verb. Compare minimal pairs such as Who called Tom? and Who did Tom call? and give a way to decide.",
+        "fr": "Expliquer que lorsque le mot interrogatif est le complément, la question demande do, does ou did, puis le sujet et le verbe à l'infinitif. Comparer des paires minimales comme Who called Tom? et Who did Tom call? et donner un moyen de décider.",
+        "de": "Erklären, dass bei einem Fragewort als Objekt do, does oder did, dann das Subjekt und die Grundform nötig sind. Minimalpaare wie Who called Tom? und Who did Tom call? vergleichen und eine Entscheidungshilfe geben."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "Who did you call?",
+          "translation": { "fr": "Qui as-tu appelé ?", "de": "Wen hast du angerufen?" }
+        },
+        {
+          "text": "What did she say?",
+          "translation": { "fr": "Qu'a-t-elle dit ?", "de": "Was hat sie gesagt?" }
+        },
+        {
+          "text": "Who did Tom call?",
+          "translation": { "fr": "Qui Tom a-t-il appelé ?", "de": "Wen hat Tom angerufen?" }
+        },
+        {
+          "text": "Who called Tom?",
+          "translation": { "fr": "Qui a appelé Tom ?", "de": "Wer hat Tom angerufen?" }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not forget the auxiliary: say What did she say?, not What she said?",
+          "fr": "N'oubliez pas l'auxiliaire : dites What did she say?, pas What she said?",
+          "de": "Vergiss das Hilfsverb nicht: Sag What did she say?, nicht What she said?"
+        },
+        {
+          "en": "After did the verb is in the base form: Who did you call?, not Who did you called?",
+          "fr": "Après did, le verbe est à l'infinitif : Who did you call?, pas Who did you called?",
+          "de": "Nach did steht die Grundform: Who did you call?, nicht Who did you called?"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-o-order",
+          "type": "grammar_word_order",
+          "itemCount": 4,
+          "ruleIds": ["rule-object-aux", "rule-subject-or-object"],
+          "estimatedDurationS": 100
+        },
+        {
+          "id": "ex-o-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-object-aux", "rule-subject-or-object"],
+          "estimatedDurationS": 48
+        },
+        {
+          "id": "ex-o-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-object-aux", "rule-subject-or-object"],
+          "estimatedDurationS": 72
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-subject",
+        "type": "grammar_gap_typing",
+        "itemCount": 3,
+        "ruleIds": ["rule-subject-no-aux", "rule-verb-form"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      },
+      {
+        "pageId": "exam-object",
+        "type": "grammar_gap_typing",
+        "itemCount": 3,
+        "ruleIds": ["rule-object-aux"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 4,
+        "ruleIds": ["rule-object-aux", "rule-subject-or-object"],
+        "estimatedDurationS": 100,
+        "timeLimitS": 160
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

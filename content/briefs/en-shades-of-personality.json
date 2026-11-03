@@ -1,0 +1,689 @@
+{
+  "schemaVersion": 2,
+  "id": "en-shades-of-personality",
+  "lang": "en",
+  "level": "B2",
+  "locales": ["en", "fr", "de"],
+  "title": "Shades of personality",
+  "objective": {
+    "en": "Describe a person's character more precisely with fourteen adjectives such as stubborn, easy-going, bossy and considerate.",
+    "fr": "Décrire plus précisément le caractère d'une personne avec quatorze adjectifs comme stubborn, easy-going, bossy et considerate.",
+    "de": "Den Charakter einer Person mit vierzehn Adjektiven wie stubborn, easy-going, bossy und considerate genauer beschreiben."
+  },
+  "estimatedMinutes": 22,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:48:38.407Z",
+    "inputHashes": { "outline": "29855cb4285d1e01b9cdb49b7c6396bc6ca27d7dfbe203227815727ddca6ec41" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Fourteen character adjectives at B2 in two groups: behaviour with others, and attitude and temperament. Compound adjectives such as laid-back and open-minded, and emotion words, belong to neighbouring lessons.",
+    "fr": "Quatorze adjectifs de caractère de niveau B2 en deux groupes : le comportement avec les autres, puis l'attitude et le tempérament. Les adjectifs composés comme laid-back et open-minded et les mots d'émotion sont traités dans d'autres leçons.",
+    "de": "Vierzehn Charakteradjektive auf B2-Niveau in zwei Gruppen: Verhalten gegenüber anderen sowie Haltung und Temperament. Zusammengesetzte Adjektive wie laid-back und open-minded sowie Gefühlswörter gehören zu Nachbarlektionen."
+  },
+  "targetCount": 14,
+  "countRationale": {
+    "en": "Fourteen words fit the outline's intent and can be learned in one sitting in two groups of seven.",
+    "fr": "Quatorze mots correspondent à l'intention du plan et s'apprennent en une séance, en deux groupes de sept.",
+    "de": "Vierzehn Wörter entsprechen der Absicht der Gliederung und lassen sich in einer Sitzung in zwei Siebnergruppen lernen."
+  },
+  "difficultyBalance": {
+    "en": "Mostly core adjectives, with a few demanding ones that learners often confuse or find abstract: considerate, reserved, sensitive, witty.",
+    "fr": "Surtout des adjectifs de base, avec quelques mots plus difficiles que les apprenants confondent souvent : considerate, reserved, sensitive, witty.",
+    "de": "Überwiegend Grundadjektive, dazu einige anspruchsvollere, die oft verwechselt werden: considerate, reserved, sensitive, witty."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "with-others",
+      "label": {
+        "en": "Behaviour with others",
+        "fr": "Comportement avec les autres",
+        "de": "Verhalten gegenüber anderen"
+      },
+      "targetIds": [
+        "outgoing",
+        "reserved",
+        "easy-going",
+        "considerate",
+        "selfish",
+        "bossy",
+        "reliable"
+      ],
+      "introduction": {
+        "en": "These adjectives describe **how a person behaves with others**:\n\n- `outgoing`: friendly and fond of meeting people\n- `reserved`: quiet and private\n- `easy-going`: relaxed and rarely upset\n- `considerate`: aware of other people's feelings\n- `selfish`: thinking only of yourself\n- `bossy`: always telling people what to do\n- `reliable`: someone you can depend on",
+        "fr": "Ces adjectifs décrivent **la façon dont une personne se comporte avec les autres** :\n\n- `outgoing` : sociable et aimant rencontrer des gens\n- `reserved` : discret et peu expansif\n- `easy-going` : détendu et rarement contrarié\n- `considerate` : attentif aux sentiments des autres\n- `selfish` : qui ne pense qu'à soi\n- `bossy` : qui dit toujours aux autres quoi faire\n- `reliable` : quelqu'un sur qui on peut compter",
+        "de": "Diese Adjektive beschreiben, **wie sich eine Person gegenüber anderen verhält**:\n\n- `outgoing`: freundlich und gern unter Menschen\n- `reserved`: ruhig und verschlossen\n- `easy-going`: entspannt und selten verärgert\n- `considerate`: achtet auf die Gefühle anderer\n- `selfish`: denkt nur an sich selbst\n- `bossy`: sagt anderen ständig, was sie tun sollen\n- `reliable`: jemand, auf den man sich verlassen kann"
+      }
+    },
+    {
+      "id": "attitude",
+      "label": {
+        "en": "Attitude and temperament",
+        "fr": "Attitude et tempérament",
+        "de": "Haltung und Temperament"
+      },
+      "targetIds": ["stubborn", "arrogant", "modest", "moody", "ambitious", "sensitive", "witty"],
+      "introduction": {
+        "en": "These adjectives describe **a person's attitude and temperament**:\n\n- `stubborn`: refusing to change your mind\n- `arrogant`: thinking you are better than others\n- `modest`: not boasting about your success\n- `moody`: changing mood quickly and often\n- `ambitious`: wanting to succeed and get ahead\n- `sensitive`: easily hurt or upset\n- `witty`: clever and funny in what you say",
+        "fr": "Ces adjectifs décrivent **l'attitude et le tempérament d'une personne** :\n\n- `stubborn` : qui refuse de changer d'avis\n- `arrogant` : qui se croit meilleur que les autres\n- `modest` : qui ne se vante pas de ses réussites\n- `moody` : dont l'humeur change vite et souvent\n- `ambitious` : qui veut réussir et progresser\n- `sensitive` : facilement blessé ou contrarié\n- `witty` : intelligent et drôle dans ses paroles",
+        "de": "Diese Adjektive beschreiben **die Haltung und das Temperament einer Person**:\n\n- `stubborn`: weigert sich, die Meinung zu ändern\n- `arrogant`: hält sich für besser als andere\n- `modest`: prahlt nicht mit seinen Erfolgen\n- `moody`: wechselt schnell und oft die Stimmung\n- `ambitious`: will Erfolg haben und vorankommen\n- `sensitive`: wird leicht verletzt oder verärgert\n- `witty`: klug und lustig in dem, was man sagt"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "outgoing",
+      "term": "outgoing",
+      "translations": {
+        "fr": ["extraverti", "sociable"],
+        "de": ["kontaktfreudig", "aufgeschlossen"]
+      },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "outgoing",
+      "examForms": ["outgoing"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈaʊtɡəʊɪŋ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Maria is outgoing and makes friends easily.",
+        "translation": {
+          "fr": "Maria est extravertie et se fait facilement des amis.",
+          "de": "Maria ist kontaktfreudig und findet leicht Freunde."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Outgoing describes a friendly person who enjoys meeting and talking to people.",
+        "fr": "Outgoing décrit une personne sociable qui aime rencontrer et parler aux gens.",
+        "de": "Outgoing beschreibt eine freundliche Person, die gern Menschen trifft und mit ihnen spricht."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Maria loves parties and talking to new people. She is very ",
+        "after": ".",
+        "accepted": { "answers": ["outgoing"] },
+        "referenceTargetIds": ["outgoing", "reserved", "stubborn", "arrogant"],
+        "explanation": {
+          "en": "Loving parties and meeting new people means she is outgoing.",
+          "fr": "Aimer les fêtes et rencontrer des inconnus, c'est être outgoing.",
+          "de": "Wer Partys und neue Leute liebt, ist outgoing."
+        }
+      },
+      "listeningOptionTargetIds": ["outgoing", "reserved", "stubborn", "arrogant"]
+    },
+    {
+      "id": "reserved",
+      "term": "reserved",
+      "translations": { "fr": ["réservé"], "de": ["zurückhaltend"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "reserved",
+      "examForms": ["reserved"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/rɪˈzɜːvd/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Paul is reserved and rarely talks about himself.",
+        "translation": {
+          "fr": "Paul est réservé et parle rarement de lui.",
+          "de": "Paul ist zurückhaltend und spricht selten über sich."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Reserved here means quiet and private, not booked in advance.",
+        "fr": "Ici, reserved signifie discret et peu expansif, pas « réservé » à l'avance.",
+        "de": "Reserved bedeutet hier zurückhaltend und verschlossen, nicht im Voraus gebucht."
+      },
+      "explanation": {
+        "en": "A reserved person is quiet and keeps their feelings private.",
+        "fr": "Une personne reserved est discrète et garde ses sentiments pour elle.",
+        "de": "Eine reserved Person ist ruhig und behält ihre Gefühle für sich."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Paul rarely talks about himself and keeps his feelings private. He is quite ",
+        "after": ".",
+        "accepted": { "answers": ["reserved"] },
+        "referenceTargetIds": ["reserved", "outgoing", "witty", "moody"],
+        "explanation": {
+          "en": "Keeping feelings private and rarely talking about yourself is being reserved.",
+          "fr": "Garder ses sentiments pour soi et parler peu de soi, c'est être reserved.",
+          "de": "Gefühle für sich zu behalten und selten von sich zu erzählen, heißt reserved sein."
+        }
+      },
+      "listeningOptionTargetIds": ["reserved", "outgoing", "witty", "moody"]
+    },
+    {
+      "id": "easy-going",
+      "term": "easy-going",
+      "translations": {
+        "fr": ["facile à vivre", "décontracté"],
+        "de": ["unkompliziert", "gelassen"]
+      },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "easy-going",
+      "examForms": ["easy-going", "easygoing"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌiːziˈɡəʊɪŋ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Our manager is easy-going and never panics.",
+        "translation": {
+          "fr": "Notre responsable est facile à vivre et ne panique jamais.",
+          "de": "Unser Chef ist unkompliziert und gerät nie in Panik."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "An easy-going person is relaxed and does not get upset easily.",
+        "fr": "Une personne easy-going est détendue et ne se contrarie pas facilement.",
+        "de": "Eine easy-going Person ist entspannt und regt sich nicht leicht auf."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Nothing upsets Tom. He is very ",
+        "after": ", so he is happy with any plan.",
+        "accepted": { "answers": ["easy-going", "easygoing"] },
+        "referenceTargetIds": ["easy-going", "bossy", "moody", "selfish"],
+        "explanation": {
+          "en": "Someone who is happy with any plan and never upset is easy-going.",
+          "fr": "Quelqu'un que rien ne contrarie et qui accepte tous les plans est easy-going.",
+          "de": "Wer mit jedem Plan zufrieden ist und sich nie aufregt, ist easy-going."
+        }
+      },
+      "listeningOptionTargetIds": ["easy-going", "bossy", "moody", "selfish"]
+    },
+    {
+      "id": "considerate",
+      "term": "considerate",
+      "translations": {
+        "fr": ["prévenant", "attentionné"],
+        "de": ["rücksichtsvoll", "aufmerksam"]
+      },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "considerate",
+      "examForms": ["considerate"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/kənˈsɪdərət/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "It was considerate of him to turn the music down.",
+        "translation": {
+          "fr": "C'était prévenant de sa part de baisser la musique.",
+          "de": "Es war rücksichtsvoll von ihm, die Musik leiser zu machen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A considerate person thinks about other people's feelings and needs.",
+        "fr": "Une personne considerate pense aux sentiments et aux besoins des autres.",
+        "de": "Eine considerate Person denkt an die Gefühle und Bedürfnisse anderer."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He always asks if I am comfortable and thinks about other people's needs. He is very ",
+        "after": ".",
+        "accepted": { "answers": ["considerate"] },
+        "referenceTargetIds": ["considerate", "selfish", "bossy", "stubborn"],
+        "explanation": {
+          "en": "Thinking about other people's needs is being considerate.",
+          "fr": "Penser aux besoins des autres, c'est être considerate.",
+          "de": "An die Bedürfnisse anderer zu denken heißt considerate sein."
+        }
+      },
+      "listeningOptionTargetIds": ["considerate", "selfish", "bossy", "stubborn"]
+    },
+    {
+      "id": "selfish",
+      "term": "selfish",
+      "translations": { "fr": ["égoïste"], "de": ["egoistisch"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "selfish",
+      "examForms": ["selfish"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈselfɪʃ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Don't be so selfish; share your sweets.",
+        "translation": {
+          "fr": "Ne sois pas si égoïste ; partage tes bonbons.",
+          "de": "Sei nicht so egoistisch; teil deine Süßigkeiten."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A selfish person thinks only about themselves and not about others.",
+        "fr": "Une personne selfish ne pense qu'à elle et pas aux autres.",
+        "de": "Eine selfish Person denkt nur an sich selbst und nicht an andere."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He ate the last piece of cake without asking anyone. He can be really ",
+        "after": ".",
+        "accepted": { "answers": ["selfish"] },
+        "referenceTargetIds": ["selfish", "considerate", "reliable", "witty"],
+        "explanation": {
+          "en": "Taking the last piece without asking shows he thinks only of himself: selfish.",
+          "fr": "Prendre le dernier morceau sans demander montre qu'il ne pense qu'à lui : selfish.",
+          "de": "Das letzte Stück ohne Fragen zu nehmen zeigt, dass er nur an sich denkt: selfish."
+        }
+      },
+      "listeningOptionTargetIds": ["selfish", "considerate", "reliable", "witty"]
+    },
+    {
+      "id": "bossy",
+      "term": "bossy",
+      "translations": { "fr": ["autoritaire", "dominateur"], "de": ["herrisch", "rechthaberisch"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "bossy",
+      "examForms": ["bossy"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈbɒsi/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "My sister is bossy and always organises everyone.",
+        "translation": {
+          "fr": "Ma sœur est autoritaire et organise toujours tout le monde.",
+          "de": "Meine Schwester ist herrisch und kommandiert immer alle herum."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A bossy person likes giving orders and telling others what to do.",
+        "fr": "Une personne bossy aime donner des ordres et dire aux autres quoi faire.",
+        "de": "Eine bossy Person gibt gern Befehle und sagt anderen, was sie tun sollen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "My older sister is always telling everyone what to do. She is so ",
+        "after": ".",
+        "accepted": { "answers": ["bossy"] },
+        "referenceTargetIds": ["bossy", "easy-going", "reserved", "modest"],
+        "explanation": {
+          "en": "Always telling everyone what to do is being bossy.",
+          "fr": "Dire sans cesse aux autres quoi faire, c'est être bossy.",
+          "de": "Ständig allen zu sagen, was sie tun sollen, heißt bossy sein."
+        }
+      },
+      "listeningOptionTargetIds": ["bossy", "easy-going", "reserved", "modest"]
+    },
+    {
+      "id": "reliable",
+      "term": "reliable",
+      "translations": {
+        "fr": ["fiable", "digne de confiance"],
+        "de": ["zuverlässig", "verlässlich"]
+      },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "reliable",
+      "examForms": ["reliable"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/rɪˈlaɪəbl/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Lena is reliable; she is never late.",
+        "translation": {
+          "fr": "Lena est fiable ; elle n'est jamais en retard.",
+          "de": "Lena ist zuverlässig; sie kommt nie zu spät."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A reliable person does what they promise, so you can depend on them.",
+        "fr": "Une personne reliable fait ce qu'elle promet : on peut compter sur elle.",
+        "de": "Eine reliable Person tut, was sie verspricht; man kann sich auf sie verlassen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "If Lena says she will do something, she does it on time. She is very ",
+        "after": ".",
+        "accepted": { "answers": ["reliable"] },
+        "referenceTargetIds": ["reliable", "moody", "selfish", "arrogant"],
+        "explanation": {
+          "en": "Doing what you promise, on time, makes you reliable.",
+          "fr": "Faire ce qu'on promet, à l'heure, c'est être reliable.",
+          "de": "Zu tun, was man verspricht, und das pünktlich, macht einen reliable."
+        }
+      },
+      "listeningOptionTargetIds": ["reliable", "moody", "selfish", "arrogant"]
+    },
+    {
+      "id": "stubborn",
+      "term": "stubborn",
+      "translations": { "fr": ["têtu", "obstiné"], "de": ["stur", "hartnäckig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "stubborn",
+      "examForms": ["stubborn"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈstʌbən/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "My grandfather is too stubborn to change his mind.",
+        "translation": {
+          "fr": "Mon grand-père est trop têtu pour changer d'avis.",
+          "de": "Mein Großvater ist zu stur, um seine Meinung zu ändern."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A stubborn person refuses to change their mind, even when they are wrong.",
+        "fr": "Une personne stubborn refuse de changer d'avis, même quand elle a tort.",
+        "de": "Eine stubborn Person weigert sich, ihre Meinung zu ändern, auch wenn sie falsch liegt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "My grandfather never changes his mind, even when he is wrong. He is so ",
+        "after": ".",
+        "accepted": { "answers": ["stubborn"] },
+        "referenceTargetIds": ["stubborn", "outgoing", "modest", "considerate"],
+        "explanation": {
+          "en": "Never changing your mind even when you are wrong is being stubborn.",
+          "fr": "Ne jamais changer d'avis même quand on a tort, c'est être stubborn.",
+          "de": "Seine Meinung nie zu ändern, auch wenn man falsch liegt, heißt stubborn sein."
+        }
+      },
+      "listeningOptionTargetIds": ["stubborn", "outgoing", "modest", "considerate"]
+    },
+    {
+      "id": "arrogant",
+      "term": "arrogant",
+      "translations": { "fr": ["arrogant", "prétentieux"], "de": ["arrogant", "überheblich"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "arrogant",
+      "examForms": ["arrogant"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈærəɡənt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "He is arrogant and thinks he knows everything.",
+        "translation": {
+          "fr": "Il est arrogant et pense tout savoir.",
+          "de": "Er ist arrogant und glaubt, alles zu wissen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "An arrogant person thinks they are better or more important than other people.",
+        "fr": "Une personne arrogant se croit meilleure ou plus importante que les autres.",
+        "de": "Eine arrogant Person hält sich für besser oder wichtiger als andere."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He thinks he is better than everyone and never listens to others. He is really ",
+        "after": ".",
+        "accepted": { "answers": ["arrogant"] },
+        "referenceTargetIds": ["arrogant", "modest", "considerate", "reliable"],
+        "explanation": {
+          "en": "Thinking you are better than everyone and not listening is being arrogant.",
+          "fr": "Se croire meilleur que tout le monde et n'écouter personne, c'est être arrogant.",
+          "de": "Sich für besser als alle zu halten und nicht zuzuhören heißt arrogant sein."
+        }
+      },
+      "listeningOptionTargetIds": ["arrogant", "modest", "considerate", "reliable"]
+    },
+    {
+      "id": "modest",
+      "term": "modest",
+      "translations": { "fr": ["modeste"], "de": ["bescheiden"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "modest",
+      "examForms": ["modest"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈmɒdɪst/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "She is modest about her success.",
+        "translation": {
+          "fr": "Elle est modeste à propos de son succès.",
+          "de": "Sie ist bescheiden, was ihren Erfolg angeht."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A modest person does not boast about their achievements.",
+        "fr": "Une personne modest ne se vante pas de ses réussites.",
+        "de": "Eine modest Person prahlt nicht mit ihren Leistungen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "She won the national prize but never talks about it. She is very ",
+        "after": ".",
+        "accepted": { "answers": ["modest"] },
+        "referenceTargetIds": ["modest", "arrogant", "bossy", "moody"],
+        "explanation": {
+          "en": "Winning a prize and never mentioning it is being modest.",
+          "fr": "Gagner un prix sans jamais en parler, c'est être modest.",
+          "de": "Einen Preis zu gewinnen und nie davon zu reden heißt modest sein."
+        }
+      },
+      "listeningOptionTargetIds": ["modest", "arrogant", "bossy", "moody"]
+    },
+    {
+      "id": "moody",
+      "term": "moody",
+      "translations": { "fr": ["lunatique", "d'humeur changeante"], "de": ["launisch", "gereizt"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "moody",
+      "examForms": ["moody"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈmuːdi/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "My brother gets moody when he is tired.",
+        "translation": {
+          "fr": "Mon frère devient lunatique quand il est fatigué.",
+          "de": "Mein Bruder wird launisch, wenn er müde ist."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A moody person's mood changes quickly, often without a clear reason.",
+        "fr": "L'humeur d'une personne moody change vite, souvent sans raison claire.",
+        "de": "Die Stimmung einer moody Person wechselt schnell, oft ohne klaren Grund."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "One minute she is laughing, the next she is angry for no reason. She is so ",
+        "after": ".",
+        "accepted": { "answers": ["moody"] },
+        "referenceTargetIds": ["moody", "reliable", "ambitious", "witty"],
+        "explanation": {
+          "en": "Changing quickly from happy to angry for no reason is being moody.",
+          "fr": "Passer vite de la joie à la colère sans raison, c'est être moody.",
+          "de": "Ohne Grund schnell von fröhlich zu wütend zu wechseln heißt moody sein."
+        }
+      },
+      "listeningOptionTargetIds": ["moody", "reliable", "ambitious", "witty"]
+    },
+    {
+      "id": "ambitious",
+      "term": "ambitious",
+      "translations": { "fr": ["ambitieux"], "de": ["ehrgeizig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "ambitious",
+      "examForms": ["ambitious"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/æmˈbɪʃəs/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "She is ambitious and wants to run the company one day.",
+        "translation": {
+          "fr": "Elle est ambitieuse et veut diriger l'entreprise un jour.",
+          "de": "Sie ist ehrgeizig und will eines Tages die Firma leiten."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "An ambitious person strongly wants to succeed and get ahead.",
+        "fr": "Une personne ambitious veut vraiment réussir et progresser.",
+        "de": "Eine ambitious Person will unbedingt Erfolg haben und vorankommen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "She works late every day because she wants to become the director. She is very ",
+        "after": ".",
+        "accepted": { "answers": ["ambitious"] },
+        "referenceTargetIds": ["ambitious", "easy-going", "modest", "sensitive"],
+        "explanation": {
+          "en": "Working hard to become director shows she is ambitious.",
+          "fr": "Travailler dur pour devenir directrice montre qu'elle est ambitious.",
+          "de": "Hart zu arbeiten, um Direktorin zu werden, zeigt, dass sie ambitious ist."
+        }
+      },
+      "listeningOptionTargetIds": ["ambitious", "easy-going", "modest", "sensitive"]
+    },
+    {
+      "id": "sensitive",
+      "term": "sensitive",
+      "translations": { "fr": ["sensible"], "de": ["sensibel", "empfindlich"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "sensitive",
+      "examForms": ["sensitive"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈsensətɪv/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "He is sensitive and takes criticism personally.",
+        "translation": {
+          "fr": "Il est sensible et prend les critiques personnellement.",
+          "de": "Er ist sensibel und nimmt Kritik persönlich."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Sensitive means easily hurt by what people say; it is not the same as sensible (showing good judgement).",
+        "fr": "Sensitive signifie facilement blessé par ce que disent les gens ; ce n'est pas « sensé » (sensible en anglais).",
+        "de": "Sensitive bedeutet leicht verletzt durch das, was andere sagen; es ist nicht dasselbe wie sensible (vernünftig)."
+      },
+      "explanation": {
+        "en": "A sensitive person is easily hurt or upset by what others say.",
+        "fr": "Une personne sensitive est facilement blessée ou contrariée par ce que disent les autres.",
+        "de": "Eine sensitive Person wird von dem, was andere sagen, leicht verletzt oder verärgert."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Be careful what you say to Anna. She is very ",
+        "after": " and cries easily when people criticise her.",
+        "accepted": { "answers": ["sensitive"] },
+        "referenceTargetIds": ["sensitive", "stubborn", "arrogant", "outgoing"],
+        "explanation": {
+          "en": "Crying easily when criticised means she is sensitive.",
+          "fr": "Pleurer facilement quand on la critique montre qu'elle est sensitive.",
+          "de": "Bei Kritik leicht zu weinen bedeutet, dass sie sensitive ist."
+        }
+      },
+      "listeningOptionTargetIds": ["sensitive", "stubborn", "arrogant", "outgoing"]
+    },
+    {
+      "id": "witty",
+      "term": "witty",
+      "translations": { "fr": ["spirituel", "plein d'esprit"], "de": ["schlagfertig", "witzig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "witty",
+      "examForms": ["witty"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈwɪti/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Sam is witty and always has a clever reply.",
+        "translation": {
+          "fr": "Sam est spirituel et a toujours une réplique intelligente.",
+          "de": "Sam ist schlagfertig und hat immer eine clevere Antwort."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A witty person says clever and funny things quickly.",
+        "fr": "Une personne witty dit des choses intelligentes et drôles avec rapidité.",
+        "de": "Eine witty Person sagt schnell kluge und lustige Dinge."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Sam always makes clever, funny remarks that make everyone laugh. He is very ",
+        "after": ".",
+        "accepted": { "answers": ["witty"] },
+        "referenceTargetIds": ["witty", "reserved", "bossy", "selfish"],
+        "explanation": {
+          "en": "Making clever, funny remarks that make people laugh is being witty.",
+          "fr": "Faire des remarques intelligentes et drôles qui font rire, c'est être witty.",
+          "de": "Kluge, lustige Bemerkungen zu machen, über die alle lachen, heißt witty sein."
+        }
+      },
+      "listeningOptionTargetIds": ["witty", "reserved", "bossy", "selfish"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

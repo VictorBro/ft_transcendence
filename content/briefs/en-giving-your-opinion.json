@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 2,
+  "id": "en-giving-your-opinion",
+  "lang": "en",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Giving your opinion",
+  "objective": {
+    "en": "Ask a friend what they thought of a film, a meal or a place, give your opinion, and agree or disagree.",
+    "fr": "Demander à un ami ce qu’il a pensé d’un film, d’un repas ou d’un lieu, donner son avis, et être d’accord ou non.",
+    "de": "Einen Freund fragen, wie er einen Film, ein Essen oder einen Ort fand, die eigene Meinung sagen und zustimmen oder widersprechen."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "claude-code",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:46:45.150Z",
+    "inputHashes": { "outline": "cdfc269cecf0c3db7faf285789bd859cd1d310be67155497b6a0cdfce673579b" }
+  },
+  "kind": "functions",
+  "theme": "free_time",
+  "situation": {
+    "en": "Two friends, Sam and Lily, talk about a film, a restaurant and a place they have just seen.",
+    "fr": "Deux amis, Sam et Lily, parlent d’un film, d’un restaurant et d’un lieu qu’ils viennent de voir.",
+    "de": "Zwei Freunde, Sam und Lily, sprechen über einen Film, ein Restaurant und einen Ort, die sie gerade gesehen haben."
+  },
+  "coverageNotes": {
+    "en": "Asking for an opinion (What did you think of …?), giving one in the past (I thought it was …, I found it …), agreeing (I agree), showing surprise (Really?) and disagreeing politely (I don't agree). The opinion adjectives (brilliant, boring, lovely) come from the lesson before.",
+    "fr": "Demander un avis (What did you think of …?), donner le sien au passé (I thought it was …, I found it …), être d’accord (I agree), montrer sa surprise (Really?) et ne pas être d’accord poliment (I don't agree). Les adjectifs d’opinion (brilliant, boring, lovely) viennent de la leçon précédente.",
+    "de": "Nach einer Meinung fragen (What did you think of …?), die eigene in der Vergangenheit sagen (I thought it was …, I found it …), zustimmen (I agree), Überraschung zeigen (Really?) und höflich widersprechen (I don't agree). Die Meinungsadjektive (brilliant, boring, lovely) kommen aus der Lektion davor."
+  },
+  "prerequisites": [
+    {
+      "en": "Opinion adjectives: brilliant, amazing, boring, awful, lovely.",
+      "fr": "Les adjectifs d’opinion : brilliant, amazing, boring, awful, lovely.",
+      "de": "Meinungsadjektive: brilliant, amazing, boring, awful, lovely."
+    },
+    {
+      "en": "Was and were in the past simple.",
+      "fr": "Was et were au prétérit.",
+      "de": "Was und were im Past Simple."
+    }
+  ],
+  "roles": [
+    { "id": "sam", "label": "Sam", "translation": { "fr": "Sam", "de": "Sam" } },
+    { "id": "lily", "label": "Lily", "translation": { "fr": "Lily", "de": "Lily" } }
+  ],
+  "expressions": [
+    {
+      "id": "what-did-you-think",
+      "text": "What did you think of",
+      "openEnd": true,
+      "translations": {
+        "fr": ["Qu’as-tu pensé de", "Qu’est-ce que tu as pensé de"],
+        "de": ["Wie fandest du"]
+      },
+      "explanation": {
+        "en": "Asks for someone's opinion of something they saw, ate or visited: What did you think of + the thing, or it.",
+        "fr": "Demande l’avis de quelqu’un sur ce qu’il a vu, mangé ou visité : What did you think of + la chose, ou it.",
+        "de": "Fragt nach der Meinung zu etwas, das jemand gesehen, gegessen oder besucht hat: What did you think of + die Sache oder it."
+      },
+      "example": {
+        "text": "What did you think of the new café?",
+        "translation": {
+          "fr": "Qu’as-tu pensé du nouveau café ?",
+          "de": "Wie fandest du das neue Café?"
+        }
+      }
+    },
+    {
+      "id": "i-thought-it-was",
+      "text": "I thought it was",
+      "openEnd": true,
+      "translations": { "fr": ["J’ai trouvé que c’était"], "de": ["Ich fand, es war"] },
+      "explanation": {
+        "en": "Gives your opinion of something in the past: I thought it was + an adjective.",
+        "fr": "Donne votre avis sur quelque chose de passé : I thought it was + un adjectif.",
+        "de": "Gibt Ihre Meinung zu etwas Vergangenem: I thought it was + ein Adjektiv."
+      },
+      "example": {
+        "text": "I thought it was brilliant.",
+        "translation": {
+          "fr": "J’ai trouvé que c’était génial.",
+          "de": "Ich fand, es war großartig."
+        }
+      }
+    },
+    {
+      "id": "i-found-it",
+      "text": "I found it",
+      "openEnd": true,
+      "translations": { "fr": ["Je l’ai trouvé"], "de": ["Ich fand es"] },
+      "explanation": {
+        "en": "Another way to give your opinion: I found it + an adjective, without was.",
+        "fr": "Une autre façon de donner son avis : I found it + un adjectif, sans was.",
+        "de": "Eine andere Art, die Meinung zu sagen: I found it + ein Adjektiv, ohne was."
+      },
+      "example": {
+        "text": "I found it a bit slow.",
+        "translation": {
+          "fr": "Je l’ai trouvé un peu lent.",
+          "de": "Ich fand es ein bisschen langsam."
+        }
+      }
+    },
+    {
+      "id": "i-agree",
+      "text": "I agree",
+      "openEnd": false,
+      "translations": { "fr": ["Je suis d’accord"], "de": ["Ich stimme zu", "Da hast du recht"] },
+      "explanation": {
+        "en": "Says you have the same opinion. Never say I am agree.",
+        "fr": "Dit que vous avez le même avis. On ne dit jamais I am agree.",
+        "de": "Sagt, dass Sie derselben Meinung sind. Nie I am agree sagen."
+      },
+      "example": {
+        "text": "I agree. The food was lovely.",
+        "translation": {
+          "fr": "Je suis d’accord. La nourriture était délicieuse.",
+          "de": "Ich stimme zu. Das Essen war sehr gut."
+        }
+      }
+    },
+    {
+      "id": "really",
+      "text": "Really?",
+      "openEnd": false,
+      "translations": { "fr": ["Vraiment ?"], "de": ["Wirklich?"] },
+      "explanation": {
+        "en": "Shows surprise at a friend's opinion, often before you give a different one.",
+        "fr": "Montre votre surprise devant l’avis d’un ami, souvent avant d’en donner un autre.",
+        "de": "Zeigt Überraschung über die Meinung eines Freundes, oft bevor Sie eine andere sagen."
+      },
+      "example": {
+        "text": "Really? I loved it!",
+        "translation": { "fr": "Vraiment ? J’ai adoré !", "de": "Wirklich? Ich fand es toll!" }
+      }
+    },
+    {
+      "id": "i-dont-agree",
+      "text": "I don't agree",
+      "openEnd": false,
+      "translations": {
+        "fr": ["Je ne suis pas d’accord"],
+        "de": ["Ich stimme nicht zu", "Das finde ich nicht"]
+      },
+      "explanation": {
+        "en": "Says you have a different opinion. Give your reason after it, to sound friendly.",
+        "fr": "Dit que vous avez un autre avis. Donnez ensuite votre raison, pour rester aimable.",
+        "de": "Sagt, dass Sie anderer Meinung sind. Nennen Sie danach Ihren Grund, damit es freundlich klingt."
+      },
+      "example": {
+        "text": "I don't agree. It was too long.",
+        "translation": {
+          "fr": "Je ne suis pas d’accord. C’était trop long.",
+          "de": "Das finde ich nicht. Er war zu lang."
+        }
+      }
+    }
+  ],
+  "words": [],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

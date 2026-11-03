@@ -1,0 +1,988 @@
+{
+  "schemaVersion": 2,
+  "id": "en-articles-a-and-an",
+  "lang": "en",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "A and an: a book, an apple",
+  "objective": {
+    "en": "Use a before a consonant sound and an before a vowel sound, with one thing or a job: a book, an apple, an hour, a university, she's a nurse.",
+    "fr": "Employer a devant un son consonne et an devant un son voyelle, pour une chose ou un métier : a book, an apple, an hour, a university.",
+    "de": "a vor einem Konsonantenlaut und an vor einem Vokallaut benutzen, für eine Sache oder einen Beruf: a book, an apple, an hour, a university."
+  },
+  "estimatedMinutes": 14,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:33:09.737Z",
+    "inputHashes": {
+      "outline": "daf0800b6e67643694d5b2f73e7f5684dcb3c463f5068804ec71b3538ed987fe",
+      "brief": "d5e0f070c734b636705d5c9ff072bac69777430218b5b64e905a1a2e9191e403"
+    }
+  },
+  "kind": "grammar",
+  "topic": "nouns_and_determiners",
+  "steps": [
+    {
+      "id": "b-basic-explanation",
+      "role": "explanation",
+      "blockId": "b-basic",
+      "label": {
+        "en": "A or an before one thing",
+        "fr": "A ou an devant une chose",
+        "de": "A oder an vor einer Sache"
+      },
+      "pages": [
+        {
+          "pageId": "b-basic-explanation",
+          "estimatedDurationS": 100,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the explanation and the examples.",
+            "fr": "Lisez l’explication et les exemples.",
+            "de": "Lies die Erklärung und die Beispiele."
+          },
+          "items": [
+            {
+              "type": "grammar_explanation",
+              "itemId": "b-basic-explanation",
+              "ruleIds": ["r-a", "r-an"],
+              "heading": { "en": "a or an", "fr": "a ou an", "de": "a oder an" },
+              "text": {
+                "en": "Use `a` or `an` before one thing. Which one you choose depends on the **sound** of the next word.\n\n- `a` goes before a consonant sound: `a book`, `a dog`.\n- `an` goes before a vowel sound: `an apple`, `an egg`.\n\nDo not use them with a plural: say `books`, not `a books`.",
+                "fr": "Utilisez `a` ou `an` devant une seule chose. Le choix dépend du **son** du mot suivant.\n\n- `a` se place devant un son consonne : `a book`, `a dog`.\n- `an` se place devant un son voyelle : `an apple`, `an egg`.\n\nNe les utilisez pas devant un pluriel : dites `books`, et non `a books`.",
+                "de": "Benutze `a` oder `an` vor einer einzelnen Sache. Welches du wählst, hängt vom **Laut** des nächsten Wortes ab.\n\n- `a` steht vor einem Konsonantenlaut: `a book`, `a dog`.\n- `an` steht vor einem Vokallaut: `an apple`, `an egg`.\n\nBenutze sie nicht vor dem Plural: Sag `books`, nicht `a books`."
+              },
+              "formTable": [],
+              "examples": [
+                {
+                  "text": "This is a book.",
+                  "translation": { "fr": "C'est un livre.", "de": "Das ist ein Buch." }
+                },
+                {
+                  "text": "This is an apple.",
+                  "translation": { "fr": "C'est une pomme.", "de": "Das ist ein Apfel." }
+                },
+                {
+                  "text": "He has a pen.",
+                  "translation": { "fr": "Il a un stylo.", "de": "Er hat einen Stift." }
+                },
+                {
+                  "text": "She has an orange.",
+                  "translation": { "fr": "Elle a une orange.", "de": "Sie hat eine Orange." }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-basic-choice",
+      "role": "exercise",
+      "blockId": "b-basic",
+      "label": { "en": "Choose a or an", "fr": "Choisir a ou an", "de": "a oder an wählen" },
+      "pages": [
+        {
+          "pageId": "ex-basic-choice-p1",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-basic-choice-1",
+              "before": "I have",
+              "after": "book.",
+              "choices": [
+                { "choiceId": "c-1", "text": "an" },
+                { "choiceId": "c-2", "text": "a" },
+                { "choiceId": "c-3", "text": "two" },
+                { "choiceId": "c-4", "text": "many" }
+              ],
+              "answerChoiceId": "c-2",
+              "hint": null,
+              "ruleIds": ["r-a"],
+              "answerExplanation": {
+                "en": "Book starts with a consonant sound, so use a.",
+                "fr": "Book commence par un son consonne, donc on emploie a.",
+                "de": "Book beginnt mit einem Konsonantenlaut, also a."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-basic-choice-2",
+              "before": "She has",
+              "after": "apple.",
+              "choices": [
+                { "choiceId": "c-1", "text": "a" },
+                { "choiceId": "c-2", "text": "two" },
+                { "choiceId": "c-3", "text": "an" },
+                { "choiceId": "c-4", "text": "many" }
+              ],
+              "answerChoiceId": "c-3",
+              "hint": null,
+              "ruleIds": ["r-an"],
+              "answerExplanation": {
+                "en": "Apple starts with a vowel sound, so use an.",
+                "fr": "Apple commence par un son voyelle, donc on emploie an.",
+                "de": "Apple beginnt mit einem Vokallaut, also an."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-basic-choice-3",
+              "before": "He is eating",
+              "after": "orange.",
+              "choices": [
+                { "choiceId": "c-1", "text": "two" },
+                { "choiceId": "c-2", "text": "a" },
+                { "choiceId": "c-3", "text": "many" },
+                { "choiceId": "c-4", "text": "an" }
+              ],
+              "answerChoiceId": "c-4",
+              "hint": null,
+              "ruleIds": ["r-an"],
+              "answerExplanation": {
+                "en": "Orange starts with a vowel sound, so use an.",
+                "fr": "Orange commence par un son voyelle, donc on emploie an.",
+                "de": "Orange beginnt mit einem Vokallaut, also an."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-basic-choice-4",
+              "before": "We have",
+              "after": "dog.",
+              "choices": [
+                { "choiceId": "c-1", "text": "a" },
+                { "choiceId": "c-2", "text": "an" },
+                { "choiceId": "c-3", "text": "many" },
+                { "choiceId": "c-4", "text": "two" }
+              ],
+              "answerChoiceId": "c-1",
+              "hint": null,
+              "ruleIds": ["r-a"],
+              "answerExplanation": {
+                "en": "Dog starts with a consonant sound, so use a.",
+                "fr": "Dog commence par un son consonne, donc on emploie a.",
+                "de": "Dog beginnt mit einem Konsonantenlaut, also a."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-basic-choice-5",
+              "before": "It is",
+              "after": "egg.",
+              "choices": [
+                { "choiceId": "c-1", "text": "many" },
+                { "choiceId": "c-2", "text": "an" },
+                { "choiceId": "c-3", "text": "a" },
+                { "choiceId": "c-4", "text": "two" }
+              ],
+              "answerChoiceId": "c-2",
+              "hint": null,
+              "ruleIds": ["r-an"],
+              "answerExplanation": {
+                "en": "Egg starts with a vowel sound, so use an.",
+                "fr": "Egg commence par un son voyelle, donc on emploie an.",
+                "de": "Egg beginnt mit einem Vokallaut, also an."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-basic-typing",
+      "role": "exercise",
+      "blockId": "b-basic",
+      "label": { "en": "Type a or an", "fr": "Écrire a ou an", "de": "a oder an schreiben" },
+      "pages": [
+        {
+          "pageId": "ex-basic-typing-p1",
+          "estimatedDurationS": 60,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type a or an.",
+            "fr": "Écrivez a ou an.",
+            "de": "Schreib a oder an."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-basic-typing-1",
+              "before": "This is",
+              "after": "pen.",
+              "accepted": { "answers": ["a"] },
+              "hint": null,
+              "ruleIds": ["r-a"],
+              "answerExplanation": {
+                "en": "Pen starts with a consonant sound, so use a.",
+                "fr": "Pen commence par un son consonne, donc on emploie a.",
+                "de": "Pen beginnt mit einem Konsonantenlaut, also a."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-basic-typing-2",
+              "before": "I want",
+              "after": "ice cream.",
+              "accepted": { "answers": ["an"] },
+              "hint": null,
+              "ruleIds": ["r-an"],
+              "answerExplanation": {
+                "en": "Ice starts with a vowel sound, so use an.",
+                "fr": "Ice commence par un son voyelle, donc on emploie an.",
+                "de": "Ice beginnt mit einem Vokallaut, also an."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-basic-typing-3",
+              "before": "He has",
+              "after": "umbrella.",
+              "accepted": { "answers": ["an"] },
+              "hint": null,
+              "ruleIds": ["r-an"],
+              "answerExplanation": {
+                "en": "Umbrella starts with a vowel sound, so use an.",
+                "fr": "Umbrella commence par un son voyelle, donc on emploie an.",
+                "de": "Umbrella beginnt mit einem Vokallaut, also an."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-basic-typing-4",
+              "before": "There is",
+              "after": "table in the room.",
+              "accepted": { "answers": ["a"] },
+              "hint": null,
+              "ruleIds": ["r-a"],
+              "answerExplanation": {
+                "en": "Table starts with a consonant sound, so use a.",
+                "fr": "Table commence par un son consonne, donc on emploie a.",
+                "de": "Table beginnt mit einem Konsonantenlaut, also a."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-basic-spot",
+      "role": "exercise",
+      "blockId": "b-basic",
+      "label": { "en": "Find the mistake", "fr": "Trouver l’erreur", "de": "Fehler finden" },
+      "pages": [
+        {
+          "pageId": "ex-basic-spot-p1",
+          "estimatedDurationS": 60,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Find the wrong word and correct it with a or an.",
+            "fr": "Trouvez le mot faux et corrigez-le avec a ou an.",
+            "de": "Finde das falsche Wort und korrigiere es mit a oder an."
+          },
+          "items": [
+            {
+              "type": "grammar_error_spotter",
+              "itemId": "ex-basic-spot-1",
+              "tokens": [
+                { "tokenId": "t-1", "text": "I" },
+                { "tokenId": "t-2", "text": "have" },
+                { "tokenId": "t-3", "text": "an" },
+                { "tokenId": "t-4", "text": "cat" },
+                { "tokenId": "t-5", "text": "." }
+              ],
+              "faultyTokenId": "t-3",
+              "correction": { "mode": "type", "accepted": { "answers": ["a"] }, "choices": [] },
+              "ruleIds": ["r-a"],
+              "answerExplanation": {
+                "en": "Cat starts with a consonant sound, so use a.",
+                "fr": "Cat commence par un son consonne, donc on emploie a.",
+                "de": "Cat beginnt mit einem Konsonantenlaut, also a."
+              }
+            },
+            {
+              "type": "grammar_error_spotter",
+              "itemId": "ex-basic-spot-2",
+              "tokens": [
+                { "tokenId": "t-1", "text": "She" },
+                { "tokenId": "t-2", "text": "eats" },
+                { "tokenId": "t-3", "text": "a" },
+                { "tokenId": "t-4", "text": "apple" },
+                { "tokenId": "t-5", "text": "." }
+              ],
+              "faultyTokenId": "t-3",
+              "correction": {
+                "mode": "select",
+                "accepted": { "answers": ["an"] },
+                "choices": ["an", "a", "two"]
+              },
+              "ruleIds": ["r-an"],
+              "answerExplanation": {
+                "en": "Apple starts with a vowel sound, so use an.",
+                "fr": "Apple commence par un son voyelle, donc on emploie an.",
+                "de": "Apple beginnt mit einem Vokallaut, also an."
+              }
+            },
+            {
+              "type": "grammar_error_spotter",
+              "itemId": "ex-basic-spot-3",
+              "tokens": [
+                { "tokenId": "t-1", "text": "This" },
+                { "tokenId": "t-2", "text": "is" },
+                { "tokenId": "t-3", "text": "an" },
+                { "tokenId": "t-4", "text": "bag" },
+                { "tokenId": "t-5", "text": "." }
+              ],
+              "faultyTokenId": "t-3",
+              "correction": { "mode": "type", "accepted": { "answers": ["a"] }, "choices": [] },
+              "ruleIds": ["r-a"],
+              "answerExplanation": {
+                "en": "Bag starts with a consonant sound, so use a.",
+                "fr": "Bag commence par un son consonne, donc on emploie a.",
+                "de": "Bag beginnt mit einem Konsonantenlaut, also a."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "b-sound-explanation",
+      "role": "explanation",
+      "blockId": "b-sound",
+      "label": {
+        "en": "Sounds and jobs",
+        "fr": "Les sons et les métiers",
+        "de": "Laute und Berufe"
+      },
+      "pages": [
+        {
+          "pageId": "b-sound-explanation",
+          "estimatedDurationS": 120,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the explanation and the examples.",
+            "fr": "Lisez l’explication et les exemples.",
+            "de": "Lies die Erklärung und die Beispiele."
+          },
+          "items": [
+            {
+              "type": "grammar_explanation",
+              "itemId": "b-sound-explanation",
+              "ruleIds": ["r-sound", "r-job"],
+              "heading": {
+                "en": "The sound decides",
+                "fr": "Le son décide",
+                "de": "Der Laut entscheidet"
+              },
+              "text": {
+                "en": "Look at the **sound**, not the letter. Some words start with a letter that sounds different.\n\n- The h is silent, so you hear a vowel sound: `an hour`, `an honest man`.\n- The u sounds like the y in yes, so it is a consonant sound: `a university`, `a uniform`.\n\nWith jobs, use `a` or `an` too: `She's a nurse.` `Tom is an engineer.`",
+                "fr": "Regardez le **son**, pas la lettre. Certains mots commencent par une lettre qui se prononce autrement.\n\n- Le h est muet, donc on entend un son voyelle : `an hour`, `an honest man`.\n- Le u se prononce comme le y de yes, donc c'est un son consonne : `a university`, `a uniform`.\n\nAvec les métiers, on emploie aussi `a` ou `an` : `She's a nurse.` `Tom is an engineer.`",
+                "de": "Achte auf den **Laut**, nicht auf den Buchstaben. Manche Wörter beginnen mit einem Buchstaben, der anders klingt.\n\n- Das h ist stumm, also hörst du einen Vokallaut: `an hour`, `an honest man`.\n- Das u klingt wie das y in yes, also ist es ein Konsonantenlaut: `a university`, `a uniform`.\n\nBei Berufen steht ebenfalls `a` oder `an`: `She's a nurse.` `Tom is an engineer.`"
+              },
+              "formTable": [],
+              "examples": [
+                {
+                  "text": "I wait for an hour.",
+                  "translation": { "fr": "J'attends une heure.", "de": "Ich warte eine Stunde." }
+                },
+                {
+                  "text": "She wears a uniform.",
+                  "translation": {
+                    "fr": "Elle porte un uniforme.",
+                    "de": "Sie trägt eine Uniform."
+                  }
+                },
+                {
+                  "text": "She is a nurse.",
+                  "translation": { "fr": "Elle est infirmière.", "de": "Sie ist Krankenschwester." }
+                },
+                {
+                  "text": "Tom is an engineer.",
+                  "translation": { "fr": "Tom est ingénieur.", "de": "Tom ist Ingenieur." }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-sound-choice",
+      "role": "exercise",
+      "blockId": "b-sound",
+      "label": {
+        "en": "Choose by the sound",
+        "fr": "Choisir selon le son",
+        "de": "Nach dem Laut wählen"
+      },
+      "pages": [
+        {
+          "pageId": "ex-sound-choice-p1",
+          "estimatedDurationS": 40,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-sound-choice-1",
+              "before": "We wait for",
+              "after": "hour.",
+              "choices": [
+                { "choiceId": "c-1", "text": "a" },
+                { "choiceId": "c-2", "text": "two" },
+                { "choiceId": "c-3", "text": "an" },
+                { "choiceId": "c-4", "text": "many" }
+              ],
+              "answerChoiceId": "c-3",
+              "hint": null,
+              "ruleIds": ["r-sound"],
+              "answerExplanation": {
+                "en": "The h in hour is silent, so you hear a vowel sound: an hour.",
+                "fr": "Le h de hour est muet, donc on entend un son voyelle : an hour.",
+                "de": "Das h in hour ist stumm, also hörst du einen Vokallaut: an hour."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-sound-choice-2",
+              "before": "My brother goes to",
+              "after": "university.",
+              "choices": [
+                { "choiceId": "c-1", "text": "a" },
+                { "choiceId": "c-2", "text": "an" },
+                { "choiceId": "c-3", "text": "many" },
+                { "choiceId": "c-4", "text": "two" }
+              ],
+              "answerChoiceId": "c-1",
+              "hint": null,
+              "ruleIds": ["r-sound"],
+              "answerExplanation": {
+                "en": "University starts with a y sound, a consonant sound: a university.",
+                "fr": "University commence par un son y, un son consonne : a university.",
+                "de": "University beginnt mit einem y-Laut, einem Konsonantenlaut: a university."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-sound-choice-3",
+              "before": "She is",
+              "after": "honest woman.",
+              "choices": [
+                { "choiceId": "c-1", "text": "two" },
+                { "choiceId": "c-2", "text": "many" },
+                { "choiceId": "c-3", "text": "a" },
+                { "choiceId": "c-4", "text": "an" }
+              ],
+              "answerChoiceId": "c-4",
+              "hint": null,
+              "ruleIds": ["r-sound"],
+              "answerExplanation": {
+                "en": "The h in honest is silent, so you hear a vowel sound: an honest woman.",
+                "fr": "Le h de honest est muet, donc on entend un son voyelle : an honest woman.",
+                "de": "Das h in honest ist stumm, also hörst du einen Vokallaut: an honest woman."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-sound-choice-4",
+              "before": "He wears",
+              "after": "uniform.",
+              "choices": [
+                { "choiceId": "c-1", "text": "an" },
+                { "choiceId": "c-2", "text": "a" },
+                { "choiceId": "c-3", "text": "two" },
+                { "choiceId": "c-4", "text": "many" }
+              ],
+              "answerChoiceId": "c-2",
+              "hint": null,
+              "ruleIds": ["r-sound"],
+              "answerExplanation": {
+                "en": "Uniform starts with a y sound, a consonant sound: a uniform.",
+                "fr": "Uniform commence par un son y, un son consonne : a uniform.",
+                "de": "Uniform beginnt mit einem y-Laut, einem Konsonantenlaut: a uniform."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-sound-typing",
+      "role": "exercise",
+      "blockId": "b-sound",
+      "label": {
+        "en": "Type by the sound",
+        "fr": "Écrire selon le son",
+        "de": "Nach dem Laut schreiben"
+      },
+      "pages": [
+        {
+          "pageId": "ex-sound-typing-p1",
+          "estimatedDurationS": 60,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type a or an.",
+            "fr": "Écrivez a ou an.",
+            "de": "Schreib a oder an."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-sound-typing-1",
+              "before": "It is",
+              "after": "unusual idea.",
+              "accepted": { "answers": ["an"] },
+              "hint": null,
+              "ruleIds": ["r-sound"],
+              "answerExplanation": {
+                "en": "Unusual starts with a vowel sound (like uh), so use an.",
+                "fr": "Unusual commence par un son voyelle, donc on emploie an.",
+                "de": "Unusual beginnt mit einem Vokallaut, also an."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-sound-typing-2",
+              "before": "This is",
+              "after": "useful book.",
+              "accepted": { "answers": ["a"] },
+              "hint": null,
+              "ruleIds": ["r-sound"],
+              "answerExplanation": {
+                "en": "Useful starts with a y sound, a consonant sound: a useful book.",
+                "fr": "Useful commence par un son y, un son consonne : a useful book.",
+                "de": "Useful beginnt mit einem y-Laut, einem Konsonantenlaut: a useful book."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-sound-typing-3",
+              "before": "He is",
+              "after": "European.",
+              "accepted": { "answers": ["a"] },
+              "hint": null,
+              "ruleIds": ["r-sound"],
+              "answerExplanation": {
+                "en": "European starts with a y sound, a consonant sound: a European.",
+                "fr": "European commence par un son y, un son consonne : a European.",
+                "de": "European beginnt mit einem y-Laut, einem Konsonantenlaut: a European."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-sound-typing-4",
+              "before": "It is",
+              "after": "hour late.",
+              "accepted": { "answers": ["an"] },
+              "hint": null,
+              "ruleIds": ["r-sound"],
+              "answerExplanation": {
+                "en": "The h in hour is silent, so you hear a vowel sound: an hour.",
+                "fr": "Le h de hour est muet, donc on entend un son voyelle : an hour.",
+                "de": "Das h in hour ist stumm, also hörst du einen Vokallaut: an hour."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-job-order",
+      "role": "exercise",
+      "blockId": "b-sound",
+      "label": {
+        "en": "Jobs: word order",
+        "fr": "Métiers : ordre des mots",
+        "de": "Berufe: Wortstellung"
+      },
+      "pages": [
+        {
+          "pageId": "ex-job-order-p1",
+          "estimatedDurationS": 60,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in the right order.",
+            "fr": "Mettez les mots dans le bon ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-job-order-1",
+              "tokens": [
+                { "tokenId": "t-1", "text": "a" },
+                { "tokenId": "t-2", "text": "nurse" },
+                { "tokenId": "t-3", "text": "She" },
+                { "tokenId": "t-4", "text": "." },
+                { "tokenId": "t-5", "text": "is" }
+              ],
+              "acceptedOrders": [["t-3", "t-5", "t-1", "t-2", "t-4"]],
+              "ruleIds": ["r-job"],
+              "answerExplanation": {
+                "en": "A job takes a or an: she is a nurse.",
+                "fr": "Un métier prend a ou an : she is a nurse.",
+                "de": "Ein Beruf hat a oder an: she is a nurse."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-job-order-2",
+              "tokens": [
+                { "tokenId": "t-1", "text": "doctor" },
+                { "tokenId": "t-2", "text": "is" },
+                { "tokenId": "t-3", "text": "My" },
+                { "tokenId": "t-4", "text": "a" },
+                { "tokenId": "t-5", "text": "father" },
+                { "tokenId": "t-6", "text": "." }
+              ],
+              "acceptedOrders": [["t-3", "t-5", "t-2", "t-4", "t-1", "t-6"]],
+              "ruleIds": ["r-job"],
+              "answerExplanation": {
+                "en": "A job takes a or an: my father is a doctor.",
+                "fr": "Un métier prend a ou an : my father is a doctor.",
+                "de": "Ein Beruf hat a oder an: my father is a doctor."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-job-order-3",
+              "tokens": [
+                { "tokenId": "t-1", "text": "engineer" },
+                { "tokenId": "t-2", "text": "He" },
+                { "tokenId": "t-3", "text": "an" },
+                { "tokenId": "t-4", "text": "." },
+                { "tokenId": "t-5", "text": "is" }
+              ],
+              "acceptedOrders": [["t-2", "t-5", "t-3", "t-1", "t-4"]],
+              "ruleIds": ["r-job"],
+              "answerExplanation": {
+                "en": "Engineer starts with a vowel sound, so he is an engineer.",
+                "fr": "Engineer commence par un son voyelle : he is an engineer.",
+                "de": "Engineer beginnt mit einem Vokallaut: he is an engineer."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-job-spot",
+      "role": "exercise",
+      "blockId": "b-sound",
+      "label": {
+        "en": "Jobs: find the mistake",
+        "fr": "Métiers : trouver l’erreur",
+        "de": "Berufe: Fehler finden"
+      },
+      "pages": [
+        {
+          "pageId": "ex-job-spot-p1",
+          "estimatedDurationS": 60,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Find the wrong word and correct it with a or an.",
+            "fr": "Trouvez le mot faux et corrigez-le avec a ou an.",
+            "de": "Finde das falsche Wort und korrigiere es mit a oder an."
+          },
+          "items": [
+            {
+              "type": "grammar_error_spotter",
+              "itemId": "ex-job-spot-1",
+              "tokens": [
+                { "tokenId": "t-1", "text": "He" },
+                { "tokenId": "t-2", "text": "is" },
+                { "tokenId": "t-3", "text": "an" },
+                { "tokenId": "t-4", "text": "teacher" },
+                { "tokenId": "t-5", "text": "." }
+              ],
+              "faultyTokenId": "t-3",
+              "correction": { "mode": "type", "accepted": { "answers": ["a"] }, "choices": [] },
+              "ruleIds": ["r-job"],
+              "answerExplanation": {
+                "en": "Teacher starts with a consonant sound, so use a.",
+                "fr": "Teacher commence par un son consonne, donc on emploie a.",
+                "de": "Teacher beginnt mit einem Konsonantenlaut, also a."
+              }
+            },
+            {
+              "type": "grammar_error_spotter",
+              "itemId": "ex-job-spot-2",
+              "tokens": [
+                { "tokenId": "t-1", "text": "My" },
+                { "tokenId": "t-2", "text": "mother" },
+                { "tokenId": "t-3", "text": "is" },
+                { "tokenId": "t-4", "text": "a" },
+                { "tokenId": "t-5", "text": "engineer" },
+                { "tokenId": "t-6", "text": "." }
+              ],
+              "faultyTokenId": "t-4",
+              "correction": { "mode": "type", "accepted": { "answers": ["an"] }, "choices": [] },
+              "ruleIds": ["r-job"],
+              "answerExplanation": {
+                "en": "Engineer starts with a vowel sound, so use an.",
+                "fr": "Engineer commence par un son voyelle, donc on emploie an.",
+                "de": "Engineer beginnt mit einem Vokallaut, also an."
+              }
+            },
+            {
+              "type": "grammar_error_spotter",
+              "itemId": "ex-job-spot-3",
+              "tokens": [
+                { "tokenId": "t-1", "text": "My" },
+                { "tokenId": "t-2", "text": "sister" },
+                { "tokenId": "t-3", "text": "is" },
+                { "tokenId": "t-4", "text": "an" },
+                { "tokenId": "t-5", "text": "police" },
+                { "tokenId": "t-6", "text": "officer" },
+                { "tokenId": "t-7", "text": "." }
+              ],
+              "faultyTokenId": "t-4",
+              "correction": {
+                "mode": "select",
+                "accepted": { "answers": ["a"] },
+                "choices": ["a", "an", "two"]
+              },
+              "ruleIds": ["r-job"],
+              "answerExplanation": {
+                "en": "Police starts with a consonant sound, so use a.",
+                "fr": "Police commence par un son consonne, donc on emploie a.",
+                "de": "Police beginnt mit einem Konsonantenlaut, also a."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "feedback",
+      "role": "feedback",
+      "blockId": null,
+      "label": { "en": "Your feedback", "fr": "Votre retour", "de": "Dein Feedback" },
+      "pages": [
+        {
+          "pageId": "feedback",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Continue to the final exam.",
+            "fr": "Passez à l’examen final.",
+            "de": "Weiter zur Abschlussprüfung."
+          },
+          "items": [{ "type": "production_feedback_placeholder", "itemId": "feedback" }]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "role": "exam",
+      "blockId": null,
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam-ab",
+          "estimatedDurationS": 80,
+          "timeLimitS": 140,
+          "instructions": {
+            "en": "Type a or an.",
+            "fr": "Écrivez a ou an.",
+            "de": "Schreib a oder an."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-ab-1",
+              "before": "I see",
+              "after": "bird.",
+              "accepted": { "answers": ["a"] },
+              "hint": null,
+              "ruleIds": ["r-a"],
+              "answerExplanation": {
+                "en": "Bird starts with a consonant sound, so use a.",
+                "fr": "Bird commence par un son consonne, donc on emploie a.",
+                "de": "Bird beginnt mit einem Konsonantenlaut, also a."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-ab-2",
+              "before": "She has",
+              "after": "old bag.",
+              "accepted": { "answers": ["an"] },
+              "hint": null,
+              "ruleIds": ["r-an"],
+              "answerExplanation": {
+                "en": "Old starts with a vowel sound, so use an.",
+                "fr": "Old commence par un son voyelle, donc on emploie an.",
+                "de": "Old beginnt mit einem Vokallaut, also an."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-ab-3",
+              "before": "We have",
+              "after": "English lesson.",
+              "accepted": { "answers": ["an"] },
+              "hint": null,
+              "ruleIds": ["r-an"],
+              "answerExplanation": {
+                "en": "English starts with a vowel sound, so use an.",
+                "fr": "English commence par un son voyelle, donc on emploie an.",
+                "de": "English beginnt mit einem Vokallaut, also an."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-ab-4",
+              "before": "It is",
+              "after": "sunny day.",
+              "accepted": { "answers": ["a"] },
+              "hint": null,
+              "ruleIds": ["r-a"],
+              "answerExplanation": {
+                "en": "Sunny starts with a consonant sound, so use a.",
+                "fr": "Sunny commence par un son consonne, donc on emploie a.",
+                "de": "Sunny beginnt mit einem Konsonantenlaut, also a."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "exam-sound",
+          "estimatedDurationS": 60,
+          "timeLimitS": 100,
+          "instructions": {
+            "en": "Type a or an.",
+            "fr": "Écrivez a ou an.",
+            "de": "Schreib a oder an."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-sound-1",
+              "before": "The film is",
+              "after": "hour long.",
+              "accepted": { "answers": ["an"] },
+              "hint": null,
+              "ruleIds": ["r-sound"],
+              "answerExplanation": {
+                "en": "The h in hour is silent, so you hear a vowel sound: an hour.",
+                "fr": "Le h de hour est muet, donc on entend un son voyelle : an hour.",
+                "de": "Das h in hour ist stumm, also hörst du einen Vokallaut: an hour."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-sound-2",
+              "before": "He studies at",
+              "after": "university.",
+              "accepted": { "answers": ["a"] },
+              "hint": null,
+              "ruleIds": ["r-sound"],
+              "answerExplanation": {
+                "en": "University starts with a y sound, a consonant sound: a university.",
+                "fr": "University commence par un son y, un son consonne : a university.",
+                "de": "University beginnt mit einem y-Laut, einem Konsonantenlaut: a university."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-sound-3",
+              "before": "My boss is",
+              "after": "honest man.",
+              "accepted": { "answers": ["an"] },
+              "hint": null,
+              "ruleIds": ["r-sound"],
+              "answerExplanation": {
+                "en": "The h in honest is silent, so you hear a vowel sound: an honest man.",
+                "fr": "Le h de honest est muet, donc on entend un son voyelle : an honest man.",
+                "de": "Das h in honest ist stumm, also hörst du einen Vokallaut: an honest man."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "exam-job",
+          "estimatedDurationS": 60,
+          "timeLimitS": 100,
+          "instructions": {
+            "en": "Put the words in the right order.",
+            "fr": "Mettez les mots dans le bon ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "grammar_word_order",
+              "itemId": "exam-job-1",
+              "tokens": [
+                { "tokenId": "t-1", "text": "chef" },
+                { "tokenId": "t-2", "text": "My" },
+                { "tokenId": "t-3", "text": "is" },
+                { "tokenId": "t-4", "text": "uncle" },
+                { "tokenId": "t-5", "text": "a" },
+                { "tokenId": "t-6", "text": "." }
+              ],
+              "acceptedOrders": [["t-2", "t-4", "t-3", "t-5", "t-1", "t-6"]],
+              "ruleIds": ["r-job"],
+              "answerExplanation": {
+                "en": "A job takes a or an: my uncle is a chef.",
+                "fr": "Un métier prend a ou an : my uncle is a chef.",
+                "de": "Ein Beruf hat a oder an: my uncle is a chef."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "exam-job-2",
+              "tokens": [
+                { "tokenId": "t-1", "text": "a" },
+                { "tokenId": "t-2", "text": "Maria" },
+                { "tokenId": "t-3", "text": "teacher" },
+                { "tokenId": "t-4", "text": "is" },
+                { "tokenId": "t-5", "text": "." }
+              ],
+              "acceptedOrders": [["t-2", "t-4", "t-1", "t-3", "t-5"]],
+              "ruleIds": ["r-job"],
+              "answerExplanation": {
+                "en": "A job takes a or an: Maria is a teacher.",
+                "fr": "Un métier prend a ou an : Maria is a teacher.",
+                "de": "Ein Beruf hat a oder an: Maria is a teacher."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "exam-job-3",
+              "tokens": [
+                { "tokenId": "t-1", "text": "engineer" },
+                { "tokenId": "t-2", "text": "an" },
+                { "tokenId": "t-3", "text": "brother" },
+                { "tokenId": "t-4", "text": "is" },
+                { "tokenId": "t-5", "text": "My" },
+                { "tokenId": "t-6", "text": "." }
+              ],
+              "acceptedOrders": [["t-5", "t-3", "t-4", "t-2", "t-1", "t-6"]],
+              "ruleIds": ["r-job"],
+              "answerExplanation": {
+                "en": "Engineer starts with a vowel sound: my brother is an engineer.",
+                "fr": "Engineer commence par un son voyelle : my brother is an engineer.",
+                "de": "Engineer beginnt mit einem Vokallaut: my brother is an engineer."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
