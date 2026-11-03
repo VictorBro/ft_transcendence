@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 2,
+  "id": "en-reading-advanced-dictionary-entries",
+  "lang": "en",
+  "level": "C1",
+  "locales": ["en", "fr", "de"],
+  "title": "Reading dictionary usage notes on near synonyms",
+  "objective": {
+    "en": "Use register labels, collocations and usage notes in dictionary entries to choose between near synonyms such as error, mistake, slip and oversight, and explain why one fits.",
+    "fr": "Utiliser les niveaux de langue, les collocations et les notes d’usage d’un dictionnaire pour choisir entre quasi-synonymes (error, mistake, slip, oversight) et justifier ce choix.",
+    "de": "Sprachebenen, Kollokationen und Gebrauchshinweise in Wörterbucheinträgen nutzen, um zwischen Beinahe-Synonymen wie error, mistake, slip und oversight zu wählen und die Wahl zu begründen."
+  },
+  "estimatedMinutes": 12,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:49:27.856Z",
+    "inputHashes": { "outline": "412a542738473f27d56e3f2cf4150145f13c56e32c712243d23305df75240c54" }
+  },
+  "kind": "reading",
+  "theme": "language",
+  "genre": "dictionary_entry",
+  "situation": {
+    "en": "A learner looks up four near synonyms for something that went wrong in an advanced learner’s dictionary and compares the entries.",
+    "fr": "Un apprenant cherche dans un dictionnaire avancé quatre quasi-synonymes désignant quelque chose qui a mal tourné et compare les entrées.",
+    "de": "Eine Lernende schlägt in einem Lernerwörterbuch vier Beinahe-Synonyme für etwas Missglücktes nach und vergleicht die Einträge."
+  },
+  "readerTask": {
+    "en": "Use the labels, collocations and usage notes to decide which word fits which situation, and why.",
+    "fr": "Utiliser les étiquettes, les collocations et les notes d’usage pour décider quel mot convient à quelle situation, et pourquoi.",
+    "de": "Mithilfe von Markierungen, Kollokationen und Gebrauchshinweisen entscheiden, welches Wort zu welcher Situation passt und warum."
+  },
+  "keywords": [
+    {
+      "id": "register",
+      "term": "register",
+      "translations": {
+        "fr": ["registre de langue", "registre"],
+        "de": ["Sprachebene", "Register"]
+      },
+      "explanation": {
+        "en": "The level of formality of a word: formal, neutral or informal. Dictionaries show it with a label.",
+        "fr": "Le niveau de formalité d’un mot : soutenu, neutre ou familier. Les dictionnaires l’indiquent par une étiquette.",
+        "de": "Der Grad an Förmlichkeit eines Wortes: formell, neutral oder informell. Wörterbücher zeigen ihn mit einer Markierung."
+      }
+    },
+    {
+      "id": "collocations",
+      "term": "collocations",
+      "translations": { "fr": ["collocations"], "de": ["Kollokationen"] },
+      "explanation": {
+        "en": "Words that are regularly used together, such as make a mistake or a margin of error.",
+        "fr": "Des mots qui s’emploient régulièrement ensemble, comme make a mistake ou a margin of error.",
+        "de": "Wörter, die regelmäßig zusammen vorkommen, etwa make a mistake oder a margin of error."
+      }
+    },
+    {
+      "id": "connotation",
+      "term": "connotation",
+      "translations": { "fr": ["connotation"], "de": ["Konnotation"] },
+      "explanation": {
+        "en": "The feeling a word carries beyond its basic meaning, for example how much blame it suggests.",
+        "fr": "La nuance affective d’un mot au-delà de son sens de base, par exemple la part de blâme qu’il suggère.",
+        "de": "Der Beiklang eines Wortes über seine Grundbedeutung hinaus, zum Beispiel wie viel Schuld es andeutet."
+      }
+    },
+    {
+      "id": "oversight",
+      "term": "oversight",
+      "translations": { "fr": ["oubli", "omission"], "de": ["Versehen"] },
+      "explanation": {
+        "en": "A formal word for a failure to notice or do something. It also has another sense: supervision.",
+        "fr": "Un mot soutenu pour un manquement à remarquer ou à faire quelque chose. Il signifie aussi : supervision.",
+        "de": "Ein formelles Wort für das Übersehen oder Versäumen von etwas. Es bedeutet auch: Aufsicht."
+      }
+    },
+    {
+      "id": "slip",
+      "term": "slip",
+      "translations": {
+        "fr": ["étourderie", "erreur d’inattention"],
+        "de": ["Flüchtigkeitsfehler"]
+      },
+      "explanation": {
+        "en": "An informal word for a small, careless mistake that is easy to correct and easy to forgive.",
+        "fr": "Un mot familier pour une petite erreur d’inattention, facile à corriger et à pardonner.",
+        "de": "Ein informelles Wort für einen kleinen, unachtsamen Fehler, der leicht zu korrigieren und zu verzeihen ist."
+      }
+    }
+  ],
+  "documents": {
+    "main": {
+      "targetWords": 525,
+      "contents": {
+        "en": "A page from an advanced learner’s dictionary with four entries (error, mistake, slip, oversight). Each has a register label, collocations and a usage note, followed by a comparison paragraph with example situations.",
+        "fr": "Une page d’un dictionnaire pour apprenants avancés avec quatre entrées (error, mistake, slip, oversight). Chacune a une étiquette de registre, des collocations et une note d’usage, puis un paragraphe de comparaison avec des situations.",
+        "de": "Eine Seite aus einem Lernerwörterbuch mit vier Einträgen (error, mistake, slip, oversight). Jeder hat eine Registermarkierung, Kollokationen und einen Gebrauchshinweis, danach folgt ein Vergleichsabsatz mit Beispielsituationen."
+      }
+    },
+    "exam": {
+      "targetWords": 252,
+      "contents": {
+        "en": "A new dictionary page with three entries (blunder, gaffe, lapse), each with a register label, collocations and a usage note about when to use it.",
+        "fr": "Une nouvelle page de dictionnaire avec trois entrées (blunder, gaffe, lapse), chacune avec une étiquette de registre, des collocations et une note d’usage.",
+        "de": "Eine neue Wörterbuchseite mit drei Einträgen (blunder, gaffe, lapse), jeweils mit Registermarkierung, Kollokationen und einem Gebrauchshinweis."
+      }
+    }
+  },
+  "skim": { "focus": "genre" },
+  "detailQuestions": [
+    {
+      "id": "q-register",
+      "type": "reading_choice",
+      "focus": {
+        "en": "Which word is labelled informal",
+        "fr": "Quel mot porte l’étiquette familier",
+        "de": "Welches Wort als informell markiert ist"
+      }
+    },
+    {
+      "id": "q-collocation",
+      "type": "reading_choice",
+      "focus": {
+        "en": "A collocation given for error",
+        "fr": "Une collocation donnée pour error",
+        "de": "Eine Kollokation zu error"
+      }
+    },
+    {
+      "id": "q-slip",
+      "type": "reading_true_false",
+      "focus": {
+        "en": "How slip changes the blame",
+        "fr": "Comment slip modifie le blâme",
+        "de": "Wie slip die Schuld abschwächt"
+      }
+    },
+    {
+      "id": "q-oversight",
+      "type": "reading_choice",
+      "focus": {
+        "en": "Why oversight suits an apology",
+        "fr": "Pourquoi oversight convient à des excuses",
+        "de": "Warum oversight zu einer Entschuldigung passt"
+      }
+    }
+  ],
+  "exam": { "types": ["reading_choice", "reading_true_false"] },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

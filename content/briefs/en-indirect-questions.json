@@ -1,0 +1,242 @@
+{
+  "schemaVersion": 2,
+  "id": "en-indirect-questions",
+  "lang": "en",
+  "level": "B1",
+  "locales": ["en", "fr", "de"],
+  "title": "Indirect questions: Do you know where it is?",
+  "objective": {
+    "en": "Ask polite indirect questions with Do you know and Could you tell me, using statement word order, no do/does/did, and if or whether for yes/no questions.",
+    "fr": "Poser des questions indirectes polies avec Do you know et Could you tell me, avec l'ordre d'une phrase affirmative, sans do/does/did, et if ou whether pour les questions fermées.",
+    "de": "Höfliche indirekte Fragen mit Do you know und Could you tell me stellen, mit der Wortstellung des Aussagesatzes, ohne do/does/did und mit if oder whether bei Ja-/Nein-Fragen."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:33:09.745Z",
+    "inputHashes": { "outline": "22b52c008f4c870d968c550af7f7f22a305ccf2d2959905f398e9f1bc81bce1d" }
+  },
+  "kind": "grammar",
+  "topic": "syntax_and_sentence_structure",
+  "scopeBoundaries": {
+    "en": "Covers indirect questions after Do you know and Could you tell me, with question words and with if or whether. Excludes reported speech and indirect questions in other frames such as I wonder.",
+    "fr": "Couvre les questions indirectes après Do you know et Could you tell me, avec un mot interrogatif et avec if ou whether. Exclut le discours indirect et les autres formules comme I wonder.",
+    "de": "Behandelt indirekte Fragen nach Do you know und Could you tell me, mit Fragewort und mit if oder whether. Ausgeschlossen sind indirekte Rede und andere Einleitungen wie I wonder."
+  },
+  "prerequisites": [
+    {
+      "en": "Direct questions with do, does and did, and with be",
+      "fr": "Les questions directes avec do, does et did, et avec be",
+      "de": "Direkte Fragen mit do, does und did sowie mit be"
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-wh-order",
+      "summary": {
+        "en": "After Do you know or Could you tell me plus a question word, use statement order: subject, then verb.",
+        "fr": "Après Do you know ou Could you tell me et un mot interrogatif, on garde l'ordre affirmatif : sujet, puis verbe.",
+        "de": "Nach Do you know oder Could you tell me plus Fragewort gilt die Aussagesatz-Stellung: Subjekt, dann Verb."
+      }
+    },
+    {
+      "id": "rule-no-do",
+      "summary": {
+        "en": "Do not use do, does or did in the indirect part; the verb carries the tense.",
+        "fr": "On n'utilise pas do, does ni did dans la partie indirecte ; le verbe porte le temps.",
+        "de": "Im indirekten Teil stehen kein do, does oder did; das Verb trägt die Zeitform."
+      }
+    },
+    {
+      "id": "rule-if",
+      "summary": {
+        "en": "Yes/no questions become indirect with if or whether, followed by statement order.",
+        "fr": "Les questions fermées deviennent indirectes avec if ou whether, suivis de l'ordre affirmatif.",
+        "de": "Ja-/Nein-Fragen werden mit if oder whether indirekt, gefolgt von der Aussagesatz-Stellung."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-wh",
+      "title": {
+        "en": "Indirect questions with question words",
+        "fr": "Questions indirectes avec un mot interrogatif",
+        "de": "Indirekte Fragen mit Fragewort"
+      },
+      "ruleIds": ["rule-wh-order", "rule-no-do"],
+      "explanationPlan": {
+        "en": "Show how Where is the station? becomes Do you know where the station is? Explain statement order, the absence of do/does/did and the tense staying on the verb.",
+        "fr": "Montrer comment Where is the station? devient Do you know where the station is? Expliquer l'ordre affirmatif, l'absence de do/does/did et le temps porté par le verbe.",
+        "de": "Zeigen, wie Where is the station? zu Do you know where the station is? wird. Aussagesatz-Stellung, Wegfall von do/does/did und die Zeitform am Verb erklären."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "Do you know where the station is?",
+          "translation": {
+            "fr": "Savez-vous où est la gare ?",
+            "de": "Weißt du, wo der Bahnhof ist?"
+          }
+        },
+        {
+          "text": "Could you tell me what time the shop opens?",
+          "translation": {
+            "fr": "Pourriez-vous me dire à quelle heure le magasin ouvre ?",
+            "de": "Könnten Sie mir sagen, um wie viel Uhr das Geschäft öffnet?"
+          }
+        },
+        {
+          "text": "Do you know why she left?",
+          "translation": {
+            "fr": "Savez-vous pourquoi elle est partie ?",
+            "de": "Weißt du, warum sie gegangen ist?"
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not keep the direct order: say where the station is, not where is the station.",
+          "fr": "Ne gardez pas l'ordre direct : where the station is, et non where is the station.",
+          "de": "Behalte nicht die direkte Stellung bei: where the station is, nicht where is the station."
+        },
+        {
+          "en": "Do not add does or did: say what time the shop opens, not what time the shop does open.",
+          "fr": "N'ajoutez pas does ou did : what time the shop opens, et non what time the shop does open.",
+          "de": "Füge kein does oder did hinzu: what time the shop opens, nicht what time the shop does open."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-wh-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-wh-order", "rule-no-do"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-wh-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-wh-order", "rule-no-do"],
+          "estimatedDurationS": 80
+        },
+        {
+          "id": "ex-wh-order",
+          "type": "grammar_word_order",
+          "itemCount": 4,
+          "ruleIds": ["rule-wh-order", "rule-no-do"],
+          "estimatedDurationS": 100
+        }
+      ]
+    },
+    {
+      "id": "block-if",
+      "title": {
+        "en": "Yes/no questions with if and whether",
+        "fr": "Questions fermées avec if et whether",
+        "de": "Ja-/Nein-Fragen mit if und whether"
+      },
+      "ruleIds": ["rule-if", "rule-wh-order"],
+      "explanationPlan": {
+        "en": "Show how Is the museum open? becomes Could you tell me if the museum is open? Present if and whether as equal choices, warn against that, and recall that question words keep the same order.",
+        "fr": "Montrer comment Is the museum open? devient Could you tell me if the museum is open? Présenter if et whether comme équivalents, mettre en garde contre that, et rappeler que l'ordre est le même avec un mot interrogatif.",
+        "de": "Zeigen, wie Is the museum open? zu Could you tell me if the museum is open? wird. If und whether als gleichwertig darstellen, vor that warnen und daran erinnern, dass mit Fragewort dieselbe Stellung gilt."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "Could you tell me if the museum is open?",
+          "translation": {
+            "fr": "Pourriez-vous me dire si le musée est ouvert ?",
+            "de": "Könnten Sie mir sagen, ob das Museum geöffnet ist?"
+          }
+        },
+        {
+          "text": "Do you know whether she likes jazz?",
+          "translation": {
+            "fr": "Savez-vous si elle aime le jazz ?",
+            "de": "Weißt du, ob sie Jazz mag?"
+          }
+        },
+        {
+          "text": "Do you know how far the beach is?",
+          "translation": {
+            "fr": "Savez-vous à quelle distance se trouve la plage ?",
+            "de": "Weißt du, wie weit der Strand entfernt ist?"
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not use that for a yes/no question: Could you tell me if it is open, not that it is open.",
+          "fr": "N'utilisez pas that pour une question fermée : Could you tell me if it is open, et non that it is open.",
+          "de": "Verwende bei Ja-/Nein-Fragen nicht that: Could you tell me if it is open, nicht that it is open."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-if-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 3,
+          "ruleIds": ["rule-if"],
+          "estimatedDurationS": 45
+        },
+        {
+          "id": "ex-if-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 3,
+          "ruleIds": ["rule-if", "rule-wh-order"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-if-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-if", "rule-wh-order"],
+          "estimatedDurationS": 75
+        },
+        {
+          "id": "ex-if-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 2,
+          "ruleIds": ["rule-if", "rule-wh-order"],
+          "estimatedDurationS": 50
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-wh",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-wh-order", "rule-no-do"],
+        "estimatedDurationS": 80,
+        "timeLimitS": 120
+      },
+      {
+        "pageId": "exam-if",
+        "type": "grammar_gap_typing",
+        "itemCount": 3,
+        "ruleIds": ["rule-if"],
+        "estimatedDurationS": 45,
+        "timeLimitS": 70
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 4,
+        "ruleIds": ["rule-wh-order", "rule-no-do", "rule-if"],
+        "estimatedDurationS": 100,
+        "timeLimitS": 150
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

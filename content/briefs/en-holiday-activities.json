@@ -1,0 +1,577 @@
+{
+  "schemaVersion": 2,
+  "id": "en-holiday-activities",
+  "lang": "en",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Holiday activities",
+  "objective": {
+    "en": "Name twelve things people do on holiday, from sunbathing to hiring a bike.",
+    "fr": "Nommer douze activités de vacances, du bain de soleil à la location d’un vélo.",
+    "de": "Zwölf Urlaubsaktivitäten benennen, vom Sonnenbaden bis zum Fahrradmieten."
+  },
+  "estimatedMinutes": 19,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:33:03.716Z",
+    "inputHashes": { "outline": "3990f979b7f9bfda14098dd579677616cd0fdf42c5ffbfce68fc7acecc7ebc26" }
+  },
+  "kind": "vocabulary",
+  "theme": "travel",
+  "coverageNotes": {
+    "en": "Twelve activities for a beach or countryside holiday and for a city break: sunbathing, swimming, sightseeing, souvenirs, tours, bikes and exploring.",
+    "fr": "Douze activités pour des vacances à la plage, à la campagne ou en ville : bronzer, nager, visiter, souvenirs, visites guidées, vélos et exploration.",
+    "de": "Zwölf Aktivitäten für Urlaub am Strand, auf dem Land oder in der Stadt: Sonnenbaden, Schwimmen, Besichtigen, Souvenirs, Touren, Fahrräder und Erkunden."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve items fit the intent and make two groups of six, which suits A2 learners.",
+    "fr": "Douze éléments correspondent à l’objectif et forment deux groupes de six, adaptés au niveau A2.",
+    "de": "Zwölf Einträge passen zum Ziel und bilden zwei Sechsergruppen, passend für A2."
+  },
+  "difficultyBalance": {
+    "en": "Mostly everyday core activities, with a few longer phrases that are harder to remember.",
+    "fr": "Surtout des activités courantes, avec quelques expressions plus longues et plus difficiles à retenir.",
+    "de": "Überwiegend alltägliche Grundaktivitäten, dazu einige längere Wendungen, die schwerer zu merken sind."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "sun-and-nature",
+      "label": {
+        "en": "Sun, sea and nature",
+        "fr": "Soleil, mer et nature",
+        "de": "Sonne, Meer und Natur"
+      },
+      "targetIds": ["sunbathe", "swim-sea", "sandcastle", "relax", "hiking", "photos"],
+      "introduction": {
+        "en": "Learn **six activities** for the beach and the countryside:\n\n- `sunbathe`\n- `swim in the sea`\n- `build a sandcastle`\n- `relax`\n- `go hiking`\n- `take photos`",
+        "fr": "Apprenez **six activités** pour la plage et la campagne :\n\n- `sunbathe`\n- `swim in the sea`\n- `build a sandcastle`\n- `relax`\n- `go hiking`\n- `take photos`",
+        "de": "Lerne **sechs Aktivitäten** für den Strand und das Land:\n\n- `sunbathe`\n- `swim in the sea`\n- `build a sandcastle`\n- `relax`\n- `go hiking`\n- `take photos`"
+      }
+    },
+    {
+      "id": "city-and-tours",
+      "label": {
+        "en": "Cities, tours and exploring",
+        "fr": "Villes, visites et exploration",
+        "de": "Städte, Touren und Erkunden"
+      },
+      "targetIds": ["sightseeing", "souvenirs", "tour", "bike", "explore", "museum"],
+      "introduction": {
+        "en": "Now learn **six activities** for a city break or a trip:\n\n- `go sightseeing`\n- `buy souvenirs`\n- `go on a tour`\n- `hire a bike`\n- `explore`\n- `visit a museum`",
+        "fr": "Apprenez maintenant **six activités** pour un séjour en ville ou un voyage :\n\n- `go sightseeing`\n- `buy souvenirs`\n- `go on a tour`\n- `hire a bike`\n- `explore`\n- `visit a museum`",
+        "de": "Lerne jetzt **sechs Aktivitäten** für einen Städtetrip oder eine Reise:\n\n- `go sightseeing`\n- `buy souvenirs`\n- `go on a tour`\n- `hire a bike`\n- `explore`\n- `visit a museum`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "sunbathe",
+      "term": "sunbathe",
+      "translations": { "fr": ["bronzer", "prendre un bain de soleil"], "de": ["sonnenbaden"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "sunbathe",
+      "examForms": ["sunbathe"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈsʌnbeɪð/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "I sunbathe on the beach every morning.",
+        "translation": {
+          "fr": "Je bronze sur la plage tous les matins.",
+          "de": "Ich sonnenbade jeden Morgen am Strand."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "To sunbathe means to lie in the sun to get a tan.",
+        "fr": "Sunbathe signifie s’allonger au soleil pour bronzer.",
+        "de": "Sunbathe bedeutet, in der Sonne zu liegen, um braun zu werden."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "I lie on a towel in the sun to ",
+        "after": " and get a tan.",
+        "accepted": { "answers": ["sunbathe"] },
+        "referenceTargetIds": ["sunbathe", "swim-sea", "sandcastle", "hiking"],
+        "explanation": {
+          "en": "You lie in the sun to get a tan, so the word is sunbathe.",
+          "fr": "On s’allonge au soleil pour bronzer : le mot est sunbathe.",
+          "de": "Man liegt in der Sonne, um braun zu werden: das Wort ist sunbathe."
+        }
+      },
+      "listeningOptionTargetIds": ["sunbathe", "swim-sea", "sandcastle", "relax"]
+    },
+    {
+      "id": "swim-sea",
+      "term": "swim in the sea",
+      "translations": { "fr": ["nager dans la mer"], "de": ["im Meer schwimmen"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "swim in the sea",
+      "examForms": ["swim in the sea"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/swɪm ɪn ðə siː/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "We swim in the sea before lunch.",
+        "translation": {
+          "fr": "Nous nageons dans la mer avant le déjeuner.",
+          "de": "Wir schwimmen vor dem Mittagessen im Meer."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "You swim in the sea when you go into the salt water.",
+        "fr": "On nage dans la mer quand on entre dans l’eau salée.",
+        "de": "Man schwimmt im Meer, wenn man ins Salzwasser geht."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "The water is warm, so let’s ",
+        "after": " this afternoon.",
+        "accepted": { "answers": ["swim in the sea"] },
+        "referenceTargetIds": ["swim-sea", "sunbathe", "sandcastle", "hiking"],
+        "explanation": {
+          "en": "The warm water suggests swimming, so the phrase is swim in the sea.",
+          "fr": "L’eau chaude invite à nager : l’expression est swim in the sea.",
+          "de": "Das warme Wasser lädt zum Schwimmen ein: die Wendung ist swim in the sea."
+        }
+      },
+      "listeningOptionTargetIds": ["swim-sea", "sunbathe", "sandcastle", "relax"]
+    },
+    {
+      "id": "sandcastle",
+      "term": "build a sandcastle",
+      "translations": { "fr": ["construire un château de sable"], "de": ["eine Sandburg bauen"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "build a sandcastle",
+      "examForms": ["build a sandcastle"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/bɪld ə ˈsændkɑːsəl/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "The children build a sandcastle near the water.",
+        "translation": {
+          "fr": "Les enfants construisent un château de sable près de l’eau.",
+          "de": "Die Kinder bauen eine Sandburg nahe am Wasser."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "You build a sandcastle with sand, a bucket and a spade.",
+        "fr": "On construit un château de sable avec du sable, un seau et une pelle.",
+        "de": "Eine Sandburg baut man mit Sand, Eimer und Schaufel."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "The children want to ",
+        "after": " with a bucket and a spade.",
+        "accepted": { "answers": ["build a sandcastle"] },
+        "referenceTargetIds": ["sandcastle", "swim-sea", "sunbathe", "relax"],
+        "explanation": {
+          "en": "A bucket and a spade are for building a sandcastle.",
+          "fr": "Un seau et une pelle servent à construire un château de sable.",
+          "de": "Eimer und Schaufel braucht man, um eine Sandburg zu bauen."
+        }
+      },
+      "listeningOptionTargetIds": ["sandcastle", "swim-sea", "sunbathe", "hiking"]
+    },
+    {
+      "id": "relax",
+      "term": "relax",
+      "translations": { "fr": ["se détendre"], "de": ["sich entspannen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "relax",
+      "examForms": ["relax"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/rɪˈlæks/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "I relax by the pool with a book.",
+        "translation": {
+          "fr": "Je me détends au bord de la piscine avec un livre.",
+          "de": "Ich entspanne mich mit einem Buch am Pool."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "To relax means to rest and do nothing stressful.",
+        "fr": "Relax signifie se reposer sans rien faire de stressant.",
+        "de": "Relax bedeutet, sich auszuruhen und nichts Anstrengendes zu tun."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "After work I like to ",
+        "after": " on the sofa with a book.",
+        "accepted": { "answers": ["relax"] },
+        "referenceTargetIds": ["relax", "sunbathe", "hiking", "sandcastle"],
+        "explanation": {
+          "en": "Resting on the sofa with a book is to relax.",
+          "fr": "Se reposer sur le canapé avec un livre, c’est relax.",
+          "de": "Sich mit einem Buch auf dem Sofa auszuruhen heißt relax."
+        }
+      },
+      "listeningOptionTargetIds": ["relax", "sunbathe", "hiking", "photos"]
+    },
+    {
+      "id": "hiking",
+      "term": "go hiking",
+      "translations": { "fr": ["faire de la randonnée"], "de": ["wandern gehen"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "go hiking",
+      "examForms": ["go hiking", "hike"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɡəʊ ˈhaɪkɪŋ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "In summer we go hiking in the hills.",
+        "translation": {
+          "fr": "En été, nous faisons de la randonnée dans les collines.",
+          "de": "Im Sommer gehen wir in den Hügeln wandern."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "You go hiking when you take a long walk in the countryside.",
+        "fr": "On fait de la randonnée quand on marche longtemps à la campagne.",
+        "de": "Man geht wandern, wenn man lange in der Natur spaziert."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "We put on strong boots and ",
+        "after": " in the mountains.",
+        "accepted": { "answers": ["go hiking"] },
+        "referenceTargetIds": ["hiking", "relax", "swim-sea", "sandcastle"],
+        "explanation": {
+          "en": "Strong boots and mountains go with hiking.",
+          "fr": "Des chaussures solides et la montagne vont avec la randonnée.",
+          "de": "Feste Schuhe und Berge passen zum Wandern."
+        }
+      },
+      "listeningOptionTargetIds": ["hiking", "relax", "sunbathe", "photos"]
+    },
+    {
+      "id": "photos",
+      "term": "take photos",
+      "translations": { "fr": ["prendre des photos"], "de": ["Fotos machen"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "take photos",
+      "examForms": ["take photos", "take pictures"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/teɪk ˈfəʊtəʊz/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "We take photos of the castle.",
+        "translation": {
+          "fr": "Nous prenons des photos du château.",
+          "de": "Wir machen Fotos von der Burg."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "You take photos with a camera or a phone.",
+        "fr": "On prend des photos avec un appareil photo ou un téléphone.",
+        "de": "Fotos macht man mit einer Kamera oder einem Handy."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "The view is beautiful, so I ",
+        "after": " of the mountains and the lake.",
+        "accepted": { "answers": ["take photos", "take pictures"] },
+        "referenceTargetIds": ["photos", "swim-sea", "sandcastle", "sunbathe"],
+        "explanation": {
+          "en": "You take photos of a beautiful view.",
+          "fr": "On prend des photos d’une belle vue.",
+          "de": "Von einer schönen Aussicht macht man Fotos."
+        }
+      },
+      "listeningOptionTargetIds": ["photos", "hiking", "relax", "sandcastle"]
+    },
+    {
+      "id": "sightseeing",
+      "term": "go sightseeing",
+      "translations": { "fr": ["faire du tourisme"], "de": ["Sehenswürdigkeiten besichtigen"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "go sightseeing",
+      "examForms": ["go sightseeing"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɡəʊ ˈsaɪtsiːɪŋ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "On Saturday we go sightseeing in Rome.",
+        "translation": {
+          "fr": "Samedi, nous faisons du tourisme à Rome.",
+          "de": "Am Samstag besichtigen wir die Sehenswürdigkeiten in Rom."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "You go sightseeing when you visit the famous places of a town.",
+        "fr": "On fait du tourisme quand on visite les lieux célèbres d’une ville.",
+        "de": "Man besichtigt Sehenswürdigkeiten, wenn man die berühmten Orte einer Stadt besucht."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "In Rome we like to ",
+        "after": ": the Colosseum, the Forum and the fountains.",
+        "accepted": { "answers": ["go sightseeing"] },
+        "referenceTargetIds": ["sightseeing", "souvenirs", "bike", "museum"],
+        "explanation": {
+          "en": "Visiting famous places like the Colosseum is sightseeing.",
+          "fr": "Visiter des lieux célèbres comme le Colisée, c’est faire du tourisme.",
+          "de": "Berühmte Orte wie das Kolosseum zu besuchen heißt sightseeing."
+        }
+      },
+      "listeningOptionTargetIds": ["sightseeing", "souvenirs", "tour", "museum"]
+    },
+    {
+      "id": "souvenirs",
+      "term": "buy souvenirs",
+      "translations": { "fr": ["acheter des souvenirs"], "de": ["Souvenirs kaufen"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "buy souvenirs",
+      "examForms": ["buy souvenirs"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/baɪ ˌsuːvəˈnɪəz/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "I buy souvenirs for my friends.",
+        "translation": {
+          "fr": "J’achète des souvenirs pour mes amis.",
+          "de": "Ich kaufe Souvenirs für meine Freunde."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Souvenirs are small things you buy to remember a trip.",
+        "fr": "Les souvenirs sont de petits objets qu’on achète pour se rappeler un voyage.",
+        "de": "Souvenirs sind kleine Dinge, die man kauft, um sich an eine Reise zu erinnern."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "At the gift shop I want to ",
+        "after": " for my family.",
+        "accepted": { "answers": ["buy souvenirs"] },
+        "referenceTargetIds": ["souvenirs", "tour", "bike", "explore"],
+        "explanation": {
+          "en": "A gift shop is where you buy souvenirs.",
+          "fr": "On achète des souvenirs dans une boutique de cadeaux.",
+          "de": "Im Geschenkladen kauft man Souvenirs."
+        }
+      },
+      "listeningOptionTargetIds": ["souvenirs", "sightseeing", "tour", "bike"]
+    },
+    {
+      "id": "tour",
+      "term": "go on a tour",
+      "translations": { "fr": ["faire une visite guidée"], "de": ["eine Tour machen"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "go on a tour",
+      "examForms": ["go on a tour", "take a tour"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɡəʊ ɒn ə tʊə/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "We go on a tour of the old town.",
+        "translation": {
+          "fr": "Nous faisons une visite guidée de la vieille ville.",
+          "de": "Wir machen eine Tour durch die Altstadt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "You go on a tour when a guide shows you around a place.",
+        "fr": "On fait une visite guidée quand un guide vous montre un lieu.",
+        "de": "Man macht eine Tour, wenn ein Guide einem einen Ort zeigt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "A guide shows us the city when we ",
+        "after": " by bus.",
+        "accepted": { "answers": ["go on a tour"] },
+        "referenceTargetIds": ["tour", "souvenirs", "museum", "bike"],
+        "explanation": {
+          "en": "With a guide and a bus, you go on a tour.",
+          "fr": "Avec un guide et un bus, on fait une visite guidée.",
+          "de": "Mit Guide und Bus macht man eine Tour."
+        }
+      },
+      "listeningOptionTargetIds": ["tour", "sightseeing", "souvenirs", "explore"]
+    },
+    {
+      "id": "bike",
+      "term": "hire a bike",
+      "translations": { "fr": ["louer un vélo"], "de": ["ein Fahrrad mieten"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "hire a bike",
+      "examForms": ["hire a bike", "rent a bike"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈhaɪər ə baɪk/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "We hire a bike and cycle along the coast.",
+        "translation": {
+          "fr": "Nous louons un vélo et roulons le long de la côte.",
+          "de": "Wir mieten ein Fahrrad und fahren die Küste entlang."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "You hire a bike when you pay to use it for a short time.",
+        "fr": "On loue un vélo quand on paie pour l’utiliser peu de temps.",
+        "de": "Man mietet ein Fahrrad, wenn man dafür zahlt, es kurz zu benutzen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "We want to cycle around the island, so we ",
+        "after": " for the day.",
+        "accepted": { "answers": ["hire a bike", "rent a bike"] },
+        "referenceTargetIds": ["bike", "souvenirs", "museum", "sunbathe"],
+        "explanation": {
+          "en": "To cycle around the island, you hire a bike.",
+          "fr": "Pour faire le tour de l’île à vélo, on loue un vélo.",
+          "de": "Um mit dem Rad um die Insel zu fahren, mietet man ein Fahrrad."
+        }
+      },
+      "listeningOptionTargetIds": ["bike", "tour", "souvenirs", "museum"]
+    },
+    {
+      "id": "explore",
+      "term": "explore",
+      "translations": { "fr": ["explorer"], "de": ["erkunden"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "explore",
+      "examForms": ["explore"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɪkˈsplɔː/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "We explore the narrow streets on foot.",
+        "translation": {
+          "fr": "Nous explorons les ruelles à pied.",
+          "de": "Wir erkunden die engen Gassen zu Fuß."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "To explore means to walk around a new place to discover it.",
+        "fr": "Explore signifie se promener dans un lieu nouveau pour le découvrir.",
+        "de": "Explore bedeutet, einen neuen Ort zu Fuß zu entdecken."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "We have no map, so we walk around to ",
+        "after": " the old streets.",
+        "accepted": { "answers": ["explore"] },
+        "referenceTargetIds": ["explore", "souvenirs", "museum", "bike"],
+        "explanation": {
+          "en": "Walking around without a map is to explore.",
+          "fr": "Se promener sans carte, c’est explorer.",
+          "de": "Ohne Karte herumzulaufen heißt erkunden."
+        }
+      },
+      "listeningOptionTargetIds": ["explore", "sightseeing", "tour", "bike"]
+    },
+    {
+      "id": "museum",
+      "term": "visit a museum",
+      "translations": { "fr": ["visiter un musée"], "de": ["ein Museum besuchen"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "visit a museum",
+      "examForms": ["visit a museum"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈvɪzɪt ə mjuˈziːəm/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "When it rains, we visit a museum.",
+        "translation": {
+          "fr": "Quand il pleut, nous visitons un musée.",
+          "de": "Wenn es regnet, besuchen wir ein Museum."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "You visit a museum to see old or important objects.",
+        "fr": "On visite un musée pour voir des objets anciens ou importants.",
+        "de": "Man besucht ein Museum, um alte oder wichtige Objekte zu sehen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "It is raining, so let’s ",
+        "after": " and look at the old paintings.",
+        "accepted": { "answers": ["visit a museum"] },
+        "referenceTargetIds": ["museum", "souvenirs", "bike", "sunbathe"],
+        "explanation": {
+          "en": "Old paintings are in a museum, so you visit a museum.",
+          "fr": "Les vieux tableaux sont dans un musée : on visite un musée.",
+          "de": "Alte Gemälde hängen im Museum: man besucht ein Museum."
+        }
+      },
+      "listeningOptionTargetIds": ["museum", "sightseeing", "explore", "souvenirs"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

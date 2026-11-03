@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 2,
+  "id": "en-degree-adverbs-a-bit-really-so",
+  "lang": "en",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "A bit, really, so, extremely",
+  "objective": {
+    "en": "Make an adjective weaker or stronger with a bit, really, so and extremely: It's a bit cold. I'm so tired.",
+    "fr": "Rendre un adjectif plus faible ou plus fort avec a bit, really, so et extremely : It's a bit cold. I'm so tired.",
+    "de": "Ein Adjektiv mit a bit, really, so und extremely abschwächen oder verstärken: It's a bit cold. I'm so tired."
+  },
+  "estimatedMinutes": 13,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:33:09.742Z",
+    "inputHashes": { "outline": "7c4e4423a1c8e6652fcf0e24541fbdcf0ff45a30478f8aeabe4401ca90ae1d48" }
+  },
+  "kind": "grammar",
+  "topic": "adverbs",
+  "scopeBoundaries": {
+    "en": "Covers a bit, really, so and extremely before an adjective. Excludes very, quite, too, enough and comparatives.",
+    "fr": "Couvre a bit, really, so et extremely devant un adjectif. Exclut very, quite, too, enough et les comparatifs.",
+    "de": "Behandelt a bit, really, so und extremely vor einem Adjektiv. Ausgeschlossen sind very, quite, too, enough und Komparative."
+  },
+  "prerequisites": [
+    {
+      "en": "The verb be in the present and past simple",
+      "fr": "Le verbe be au présent et au prétérit",
+      "de": "Das Verb be im Präsens und Präteritum"
+    },
+    {
+      "en": "Common adjectives such as cold, tired, easy, expensive",
+      "fr": "Des adjectifs courants comme cold, tired, easy, expensive",
+      "de": "Häufige Adjektive wie cold, tired, easy, expensive"
+    }
+  ],
+  "rules": [
+    {
+      "id": "r-bit",
+      "summary": {
+        "en": "a bit goes before an adjective and makes it weaker: a bit cold.",
+        "fr": "a bit se place devant un adjectif et l'affaiblit : a bit cold.",
+        "de": "a bit steht vor einem Adjektiv und schwächt es ab: a bit cold."
+      }
+    },
+    {
+      "id": "r-really",
+      "summary": {
+        "en": "really makes an adjective stronger, also before a noun: a really good film.",
+        "fr": "really renforce un adjectif, aussi devant un nom : a really good film.",
+        "de": "really verstärkt ein Adjektiv, auch vor einem Nomen: a really good film."
+      }
+    },
+    {
+      "id": "r-so",
+      "summary": {
+        "en": "so makes an adjective stronger in speech, before an adjective on its own, not in a noun phrase.",
+        "fr": "so renforce un adjectif à l'oral, devant un adjectif seul, pas dans un groupe nominal.",
+        "de": "so verstärkt ein Adjektiv in der gesprochenen Sprache, vor einem Adjektiv allein, nicht in einer Nominalgruppe."
+      }
+    },
+    {
+      "id": "r-extremely",
+      "summary": {
+        "en": "extremely is the strongest; before it use an, not a.",
+        "fr": "extremely est le plus fort ; devant lui on emploie an et non a.",
+        "de": "extremely ist am stärksten; davor steht an, nicht a."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-bit-really",
+      "title": {
+        "en": "Weaker and stronger: a bit and really",
+        "fr": "Plus faible et plus fort : a bit et really",
+        "de": "Schwächer und stärker: a bit und really"
+      },
+      "ruleIds": ["r-bit", "r-really"],
+      "explanationPlan": {
+        "en": "Show that an adverb goes before the adjective. a bit makes it weaker, really makes it stronger, also in a noun phrase like a really good film.",
+        "fr": "Montrer que l'adverbe se place devant l'adjectif. a bit l'affaiblit, really le renforce, aussi dans un groupe nominal comme a really good film.",
+        "de": "Zeigen, dass das Adverb vor dem Adjektiv steht. a bit schwächt ab, really verstärkt, auch in einer Nominalgruppe wie a really good film."
+      },
+      "explanationDurationS": 100,
+      "examples": [
+        {
+          "text": "It's a bit cold.",
+          "translation": { "fr": "Il fait un peu froid.", "de": "Es ist ein bisschen kalt." }
+        },
+        {
+          "text": "The test was really easy.",
+          "translation": {
+            "fr": "Le contrôle était vraiment facile.",
+            "de": "Der Test war wirklich leicht."
+          }
+        },
+        {
+          "text": "My bag is a bit heavy.",
+          "translation": {
+            "fr": "Mon sac est un peu lourd.",
+            "de": "Meine Tasche ist ein bisschen schwer."
+          }
+        },
+        {
+          "text": "He is a really good cook.",
+          "translation": {
+            "fr": "C'est un très bon cuisinier.",
+            "de": "Er ist ein richtig guter Koch."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not use a bit before a noun phrase: not a bit good film.",
+          "fr": "N'employez pas a bit devant un groupe nominal : pas a bit good film.",
+          "de": "Verwende a bit nicht vor einer Nominalgruppe: nicht a bit good film."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-a-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["r-bit", "r-really"],
+          "estimatedDurationS": 40
+        },
+        {
+          "id": "ex-a-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["r-bit", "r-really"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-a-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["r-bit", "r-really"],
+          "estimatedDurationS": 60
+        }
+      ]
+    },
+    {
+      "id": "block-so-extremely",
+      "title": {
+        "en": "Much stronger: so and extremely",
+        "fr": "Beaucoup plus fort : so et extremely",
+        "de": "Viel stärker: so und extremely"
+      },
+      "ruleIds": ["r-so", "r-extremely"],
+      "explanationPlan": {
+        "en": "Teach so (common in speech, with feelings, before an adjective on its own) and extremely (the strongest, with an). Give the scale a bit, really, so, extremely.",
+        "fr": "Enseigner so (courant à l'oral, avec des sentiments, devant un adjectif seul) et extremely (le plus fort, avec an). Donner l'échelle a bit, really, so, extremely.",
+        "de": "so vermitteln (häufig gesprochen, bei Gefühlen, vor einem Adjektiv allein) und extremely (am stärksten, mit an). Die Skala a bit, really, so, extremely zeigen."
+      },
+      "explanationDurationS": 110,
+      "examples": [
+        {
+          "text": "The hotel was extremely expensive.",
+          "translation": {
+            "fr": "L'hôtel était extrêmement cher.",
+            "de": "Das Hotel war extrem teuer."
+          }
+        },
+        {
+          "text": "I'm so tired.",
+          "translation": { "fr": "Je suis tellement fatigué.", "de": "Ich bin so müde." }
+        },
+        {
+          "text": "The film was so long.",
+          "translation": { "fr": "Le film était tellement long.", "de": "Der Film war so lang." }
+        },
+        {
+          "text": "My uncle is extremely kind.",
+          "translation": {
+            "fr": "Mon oncle est extrêmement gentil.",
+            "de": "Mein Onkel ist extrem nett."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not say a so long film: say a really long film.",
+          "fr": "Ne dites pas a so long film : dites a really long film.",
+          "de": "Sag nicht a so long film, sondern a really long film."
+        },
+        {
+          "en": "Say an extremely, not a extremely.",
+          "fr": "Dites an extremely et non a extremely.",
+          "de": "Sag an extremely, nicht a extremely."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-b-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["r-so", "r-extremely"],
+          "estimatedDurationS": 40
+        },
+        {
+          "id": "ex-b-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 3,
+          "ruleIds": ["r-so", "r-extremely"],
+          "estimatedDurationS": 75
+        },
+        {
+          "id": "ex-b-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 3,
+          "ruleIds": ["r-so", "r-extremely"],
+          "estimatedDurationS": 45
+        },
+        {
+          "id": "ex-b-order",
+          "type": "grammar_word_order",
+          "itemCount": 2,
+          "ruleIds": ["r-so", "r-extremely"],
+          "estimatedDurationS": 40
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-typing1",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["r-bit", "r-really"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 120
+      },
+      {
+        "pageId": "exam-typing2",
+        "type": "grammar_gap_typing",
+        "itemCount": 3,
+        "ruleIds": ["r-so", "r-extremely"],
+        "estimatedDurationS": 45,
+        "timeLimitS": 90
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["r-bit", "r-so", "r-extremely"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 120
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

@@ -1,0 +1,566 @@
+{
+  "schemaVersion": 2,
+  "id": "en-moral-qualities-and-failings",
+  "lang": "en",
+  "level": "C2",
+  "locales": ["en", "fr", "de"],
+  "title": "Moral qualities and failings",
+  "objective": {
+    "en": "Talk about moral character precisely, using nouns and adjectives for integrity, decency, vice and hypocrisy.",
+    "fr": "Parler avec précision du caractère moral avec des noms et adjectifs : intégrité, décence, vice, hypocrisie.",
+    "de": "Den moralischen Charakter präzise beschreiben, mit Nomen und Adjektiven wie Integrität, Anstand, Laster und Heuchelei."
+  },
+  "estimatedMinutes": 19,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:52:50.559Z",
+    "inputHashes": { "outline": "3928a91ed7dc89db48a82e65ed579882ec2577c6fbb3fae885260034c7bb1605" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Twelve words in two groups: six for moral strengths and six for moral failings, mixing abstract nouns and character adjectives.",
+    "fr": "Douze mots en deux groupes : six pour les qualités morales et six pour les défauts moraux, mêlant noms abstraits et adjectifs de caractère.",
+    "de": "Zwölf Wörter in zwei Gruppen: sechs für moralische Stärken und sechs für moralische Schwächen, abstrakte Nomen und Charakteradjektive gemischt."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve words give two balanced groups that can be practised in one sitting.",
+    "fr": "Douze mots donnent deux groupes équilibrés, qui se travaillent en une séance.",
+    "de": "Zwölf Wörter ergeben zwei ausgewogene Gruppen, die sich in einer Sitzung üben lassen."
+  },
+  "difficultyBalance": {
+    "en": "Mostly demanding C2 vocabulary, with a few more familiar words such as virtue and vice as anchors.",
+    "fr": "Surtout du vocabulaire exigeant de niveau C2, avec quelques mots plus familiers comme virtue et vice en appui.",
+    "de": "Überwiegend anspruchsvoller C2-Wortschatz, mit einigen vertrauteren Wörtern wie virtue und vice als Stütze."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "strengths",
+      "label": { "en": "Moral strengths", "fr": "Qualités morales", "de": "Moralische Stärken" },
+      "targetIds": ["integrity", "scruples", "decency", "virtue", "upright", "magnanimous"],
+      "introduction": {
+        "en": "These words describe **moral strength** and good character:\n\n- `integrity`\n- `scruples`\n- `decency`\n- `virtue`\n- `upright`\n- `magnanimous`\n\nNote that `scruples` is almost always plural.",
+        "fr": "Ces mots décrivent la **force morale** et un bon caractère :\n\n- `integrity`\n- `scruples`\n- `decency`\n- `virtue`\n- `upright`\n- `magnanimous`\n\nNotez que `scruples` s'emploie presque toujours au pluriel.",
+        "de": "Diese Wörter beschreiben **moralische Stärke** und guten Charakter:\n\n- `integrity`\n- `scruples`\n- `decency`\n- `virtue`\n- `upright`\n- `magnanimous`\n\nBeachte, dass `scruples` fast immer im Plural steht."
+      }
+    },
+    {
+      "id": "failings",
+      "label": { "en": "Moral failings", "fr": "Défauts moraux", "de": "Moralische Schwächen" },
+      "targetIds": ["vice", "hypocrisy", "depravity", "unscrupulous", "duplicitous", "venal"],
+      "introduction": {
+        "en": "These words describe **moral weakness** and bad character:\n\n- `vice`\n- `hypocrisy`\n- `depravity`\n- `unscrupulous`\n- `duplicitous`\n- `venal`\n\nThe last three are adjectives and are strongly critical.",
+        "fr": "Ces mots décrivent la **faiblesse morale** et un mauvais caractère :\n\n- `vice`\n- `hypocrisy`\n- `depravity`\n- `unscrupulous`\n- `duplicitous`\n- `venal`\n\nLes trois derniers sont des adjectifs très critiques.",
+        "de": "Diese Wörter beschreiben **moralische Schwäche** und schlechten Charakter:\n\n- `vice`\n- `hypocrisy`\n- `depravity`\n- `unscrupulous`\n- `duplicitous`\n- `venal`\n\nDie letzten drei sind Adjektive und stark kritisch."
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "integrity",
+      "term": "integrity",
+      "translations": { "fr": ["intégrité"], "de": ["Integrität"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "integrity",
+      "examForms": ["integrity"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɪnˈtɛɡrɪti/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Her integrity was never in question.",
+        "translation": {
+          "fr": "Son intégrité n'a jamais été mise en doute.",
+          "de": "Ihre Integrität wurde nie infrage gestellt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Integrity is the quality of being honest and keeping strong moral principles.",
+        "fr": "Integrity désigne le fait d'être honnête et de respecter ses principes moraux.",
+        "de": "Integrity bedeutet, ehrlich zu sein und an starken moralischen Grundsätzen festzuhalten."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "A judge of absolute ",
+        "after": " would never accept a bribe.",
+        "accepted": { "answers": ["integrity"] },
+        "referenceTargetIds": ["integrity", "hypocrisy", "vice", "venal"],
+        "explanation": {
+          "en": "Only integrity fits: it is the quality that refuses bribes.",
+          "fr": "Seul integrity convient : c'est la qualité qui refuse les pots-de-vin.",
+          "de": "Nur integrity passt: Es ist die Eigenschaft, die Bestechung ablehnt."
+        }
+      },
+      "listeningOptionTargetIds": ["integrity", "scruples", "decency", "virtue"]
+    },
+    {
+      "id": "scruples",
+      "term": "scruples",
+      "translations": { "fr": ["scrupules"], "de": ["Skrupel"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "plural",
+      "teachingForm": "scruples",
+      "examForms": ["scruples"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈskruːpəlz/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "He had no scruples about breaking the rules.",
+        "translation": {
+          "fr": "Il n'avait aucun scrupule à enfreindre les règles.",
+          "de": "Er hatte keinerlei Skrupel, die Regeln zu brechen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Scruples are moral doubts that stop you from doing something wrong.",
+        "fr": "Scruples désigne les doutes moraux qui empêchent de mal agir.",
+        "de": "Scruples sind moralische Bedenken, die einen davon abhalten, Unrecht zu tun."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He had no ",
+        "after": " about lying to his clients to close the deal.",
+        "accepted": { "answers": ["scruples"] },
+        "referenceTargetIds": ["scruples", "upright", "venal", "vice"],
+        "explanation": {
+          "en": "Only scruples fits after no: moral doubts about lying.",
+          "fr": "Seul scruples convient après no : des doutes moraux à l'idée de mentir.",
+          "de": "Nur scruples passt nach no: moralische Bedenken, zu lügen."
+        }
+      },
+      "listeningOptionTargetIds": ["scruples", "integrity", "decency", "virtue"]
+    },
+    {
+      "id": "decency",
+      "term": "decency",
+      "translations": { "fr": ["décence"], "de": ["Anstand"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "decency",
+      "examForms": ["decency"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈdiːsənsi/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "He had the decency to admit his mistake.",
+        "translation": {
+          "fr": "Il a eu la décence de reconnaître son erreur.",
+          "de": "Er hatte den Anstand, seinen Fehler zuzugeben."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Decency is honourable, respectful behaviour that meets accepted standards.",
+        "fr": "Decency désigne un comportement honorable et respectueux, conforme aux normes admises.",
+        "de": "Decency ist ehrenhaftes, respektvolles Verhalten nach allgemein anerkannten Maßstäben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "She had the ",
+        "after": " to apologise in person.",
+        "accepted": { "answers": ["decency"] },
+        "referenceTargetIds": ["decency", "venal", "upright", "unscrupulous"],
+        "explanation": {
+          "en": "Only decency fits after the: it means the good manners to apologise.",
+          "fr": "Seul decency convient après the : la bonne éducation de s'excuser.",
+          "de": "Nur decency passt nach the: der Anstand, sich zu entschuldigen."
+        }
+      },
+      "listeningOptionTargetIds": ["decency", "integrity", "scruples", "virtue"]
+    },
+    {
+      "id": "virtue",
+      "term": "virtue",
+      "translations": { "fr": ["vertu"], "de": ["Tugend"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "virtue",
+      "examForms": ["virtue"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈvɜːtʃuː/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Patience is a virtue.",
+        "translation": { "fr": "La patience est une vertu.", "de": "Geduld ist eine Tugend." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A virtue is a good moral quality in a person, the opposite of a vice.",
+        "fr": "Une virtue est une bonne qualité morale, le contraire d'un vice.",
+        "de": "Eine virtue ist eine gute moralische Eigenschaft, das Gegenteil eines Lasters."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Patience is a ",
+        "after": ", they say, but not one I possess.",
+        "accepted": { "answers": ["virtue"] },
+        "referenceTargetIds": ["virtue", "duplicitous", "depravity", "magnanimous"],
+        "explanation": {
+          "en": "Only virtue fits: a good quality that someone may lack.",
+          "fr": "Seul virtue convient : une bonne qualité qu'on peut ne pas avoir.",
+          "de": "Nur virtue passt: eine gute Eigenschaft, die man vielleicht nicht besitzt."
+        }
+      },
+      "listeningOptionTargetIds": ["virtue", "integrity", "scruples", "decency"]
+    },
+    {
+      "id": "upright",
+      "term": "upright",
+      "translations": { "fr": ["intègre"], "de": ["redlich"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "upright",
+      "examForms": ["upright"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʌpraɪt/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "He was an upright man who never cheated anyone.",
+        "translation": {
+          "fr": "C'était un homme intègre qui n'a jamais trompé personne.",
+          "de": "Er war ein redlicher Mann, der nie jemanden betrogen hat."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Upright describes a person who is strictly honest and morally correct.",
+        "fr": "Upright décrit une personne strictement honnête et moralement irréprochable.",
+        "de": "Upright beschreibt eine Person, die streng ehrlich und moralisch einwandfrei ist."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Everyone respected him as a thoroughly ",
+        "after": " and honest citizen.",
+        "accepted": { "answers": ["upright"] },
+        "referenceTargetIds": ["upright", "vice", "scruples", "hypocrisy"],
+        "explanation": {
+          "en": "Only upright fits: an adjective meaning morally correct, beside honest.",
+          "fr": "Seul upright convient : un adjectif signifiant moralement irréprochable, à côté de honest.",
+          "de": "Nur upright passt: ein Adjektiv für moralisch einwandfrei, neben honest."
+        }
+      },
+      "listeningOptionTargetIds": ["upright", "magnanimous", "integrity", "virtue"]
+    },
+    {
+      "id": "magnanimous",
+      "term": "magnanimous",
+      "translations": { "fr": ["magnanime"], "de": ["großmütig", "großherzig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "magnanimous",
+      "examForms": ["magnanimous"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/mæɡˈnænɪməs/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "The winner was magnanimous in victory.",
+        "translation": {
+          "fr": "Le vainqueur s'est montré magnanime dans la victoire.",
+          "de": "Der Sieger zeigte sich im Triumph großmütig."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Magnanimous means generous and forgiving, especially towards a rival or someone weaker.",
+        "fr": "Magnanimous signifie généreux et clément, surtout envers un rival ou plus faible.",
+        "de": "Magnanimous bedeutet großzügig und nachsichtig, besonders gegenüber einem Rivalen oder Schwächeren."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "The winner was ",
+        "after": " in victory and praised his rival's courage.",
+        "accepted": { "answers": ["magnanimous"] },
+        "referenceTargetIds": ["magnanimous", "venal", "vice", "scruples"],
+        "explanation": {
+          "en": "Only magnanimous fits: generous towards a defeated rival.",
+          "fr": "Seul magnanimous convient : généreux envers un rival vaincu.",
+          "de": "Nur magnanimous passt: großzügig gegenüber einem besiegten Rivalen."
+        }
+      },
+      "listeningOptionTargetIds": ["magnanimous", "upright", "decency", "scruples"]
+    },
+    {
+      "id": "vice",
+      "term": "vice",
+      "translations": { "fr": ["vice"], "de": ["Laster"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "vice",
+      "examForms": ["vice"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/vaɪs/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Gambling was his one vice.",
+        "translation": {
+          "fr": "Le jeu était son seul vice.",
+          "de": "Das Glücksspiel war sein einziges Laster."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A vice is a moral fault or bad habit, the opposite of a virtue.",
+        "fr": "Un vice est un défaut moral ou une mauvaise habitude, le contraire d'une vertu.",
+        "de": "Ein vice ist ein moralischer Fehler oder eine schlechte Gewohnheit, das Gegenteil einer Tugend."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Gambling was his one ",
+        "after": ", the only flaw in an otherwise decent man.",
+        "accepted": { "answers": ["vice"] },
+        "referenceTargetIds": ["vice", "decency", "magnanimous", "venal"],
+        "explanation": {
+          "en": "Only vice fits: a single moral flaw or bad habit.",
+          "fr": "Seul vice convient : un unique défaut moral ou une mauvaise habitude.",
+          "de": "Nur vice passt: ein einzelner moralischer Fehler oder eine schlechte Gewohnheit."
+        }
+      },
+      "listeningOptionTargetIds": ["vice", "hypocrisy", "depravity", "unscrupulous"]
+    },
+    {
+      "id": "hypocrisy",
+      "term": "hypocrisy",
+      "translations": { "fr": ["hypocrisie"], "de": ["Heuchelei"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "hypocrisy",
+      "examForms": ["hypocrisy"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/hɪˈpɒkrəsi/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "The hypocrisy of the speech was obvious.",
+        "translation": {
+          "fr": "L'hypocrisie du discours était évidente.",
+          "de": "Die Heuchelei der Rede war offensichtlich."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Hypocrisy is claiming moral standards that you do not follow yourself.",
+        "fr": "Hypocrisy consiste à prôner des principes moraux qu'on ne respecte pas soi-même.",
+        "de": "Hypocrisy bedeutet, moralische Maßstäbe zu vertreten, die man selbst nicht befolgt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "It is sheer ",
+        "after": " to preach honesty and then cheat on your taxes.",
+        "accepted": { "answers": ["hypocrisy"] },
+        "referenceTargetIds": ["hypocrisy", "decency", "upright", "scruples"],
+        "explanation": {
+          "en": "Only hypocrisy fits: preaching one thing and doing another.",
+          "fr": "Seul hypocrisy convient : prêcher une chose et en faire une autre.",
+          "de": "Nur hypocrisy passt: das eine predigen und das andere tun."
+        }
+      },
+      "listeningOptionTargetIds": ["hypocrisy", "vice", "depravity", "unscrupulous"]
+    },
+    {
+      "id": "depravity",
+      "term": "depravity",
+      "translations": { "fr": ["dépravation"], "de": ["Verworfenheit"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "depravity",
+      "examForms": ["depravity"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/dɪˈprævɪti/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "The film portrays the depravity of the regime.",
+        "translation": {
+          "fr": "Le film dépeint la dépravation du régime.",
+          "de": "Der Film zeigt die Verworfenheit des Regimes."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Depravity is extreme moral corruption, a deeply wicked state.",
+        "fr": "Depravity désigne une corruption morale extrême, un état profondément pervers.",
+        "de": "Depravity ist extreme moralische Verdorbenheit, ein zutiefst böser Zustand."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "The novel shocked readers with its scenes of moral ",
+        "after": ".",
+        "accepted": { "answers": ["depravity"] },
+        "referenceTargetIds": ["depravity", "upright", "venal", "magnanimous"],
+        "explanation": {
+          "en": "Only depravity fits: a noun for extreme moral corruption.",
+          "fr": "Seul depravity convient : un nom pour une corruption morale extrême.",
+          "de": "Nur depravity passt: ein Nomen für extreme moralische Verdorbenheit."
+        }
+      },
+      "listeningOptionTargetIds": ["depravity", "vice", "hypocrisy", "unscrupulous"]
+    },
+    {
+      "id": "unscrupulous",
+      "term": "unscrupulous",
+      "translations": { "fr": ["sans scrupules"], "de": ["skrupellos"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "unscrupulous",
+      "examForms": ["unscrupulous"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ʌnˈskruːpjʊləs/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Unscrupulous dealers sold fake paintings.",
+        "translation": {
+          "fr": "Des marchands sans scrupules vendaient de faux tableaux.",
+          "de": "Skrupellose Händler verkauften gefälschte Gemälde."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Unscrupulous describes someone who will do dishonest or harmful things to get what they want.",
+        "fr": "Unscrupulous décrit quelqu'un qui n'hésite pas à agir de façon malhonnête pour arriver à ses fins.",
+        "de": "Unscrupulous beschreibt jemanden, der unehrlich oder schädlich handelt, um sein Ziel zu erreichen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Some ",
+        "after": " dealers sold fake paintings to elderly buyers.",
+        "accepted": { "answers": ["unscrupulous"] },
+        "referenceTargetIds": ["unscrupulous", "magnanimous", "integrity", "virtue"],
+        "explanation": {
+          "en": "Only unscrupulous fits: dealers who sell fakes have no moral limits.",
+          "fr": "Seul unscrupulous convient : des marchands de faux n'ont aucune limite morale.",
+          "de": "Nur unscrupulous passt: Händler, die Fälschungen verkaufen, kennen keine moralischen Grenzen."
+        }
+      },
+      "listeningOptionTargetIds": ["unscrupulous", "duplicitous", "venal", "hypocrisy"]
+    },
+    {
+      "id": "duplicitous",
+      "term": "duplicitous",
+      "translations": { "fr": ["fourbe"], "de": ["doppelzüngig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "duplicitous",
+      "examForms": ["duplicitous"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/djuːˈplɪsɪtəs/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "She was charming but duplicitous.",
+        "translation": {
+          "fr": "Elle était charmante, mais fourbe.",
+          "de": "Sie war charmant, aber doppelzüngig."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Duplicitous means deceitful: saying one thing and doing or meaning another.",
+        "fr": "Duplicitous signifie fourbe : dire une chose et en faire ou en penser une autre.",
+        "de": "Duplicitous bedeutet hinterhältig: das eine sagen und etwas anderes tun oder meinen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "She smiled to his face but was ",
+        "after": " behind his back, telling his rivals everything.",
+        "accepted": { "answers": ["duplicitous"] },
+        "referenceTargetIds": ["duplicitous", "decency", "vice", "upright"],
+        "explanation": {
+          "en": "Only duplicitous fits: friendly in public, treacherous in secret.",
+          "fr": "Seul duplicitous convient : aimable en public, perfide en secret.",
+          "de": "Nur duplicitous passt: in der Öffentlichkeit freundlich, heimlich verräterisch."
+        }
+      },
+      "listeningOptionTargetIds": ["duplicitous", "venal", "unscrupulous", "hypocrisy"]
+    },
+    {
+      "id": "venal",
+      "term": "venal",
+      "translations": { "fr": ["vénal"], "de": ["käuflich"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "venal",
+      "examForms": ["venal"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈviːnəl/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "The venal official took money for every favour.",
+        "translation": {
+          "fr": "Le fonctionnaire vénal se faisait payer chaque service.",
+          "de": "Der käufliche Beamte nahm für jeden Gefallen Geld."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Venal describes someone who can be bribed or who acts only for money.",
+        "fr": "Venal décrit quelqu'un qui peut être corrompu ou qui n'agit que pour l'argent.",
+        "de": "Venal beschreibt jemanden, der sich bestechen lässt oder nur für Geld handelt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "The ",
+        "after": " official took money from anyone who asked for a favour.",
+        "accepted": { "answers": ["venal"] },
+        "referenceTargetIds": ["venal", "virtue", "decency", "depravity"],
+        "explanation": {
+          "en": "Only venal fits: an official who can be bought.",
+          "fr": "Seul venal convient : un fonctionnaire qui se laisse acheter.",
+          "de": "Nur venal passt: ein Beamter, der sich kaufen lässt."
+        }
+      },
+      "listeningOptionTargetIds": ["venal", "duplicitous", "unscrupulous", "vice"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

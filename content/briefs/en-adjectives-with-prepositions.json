@@ -1,0 +1,668 @@
+{
+  "schemaVersion": 2,
+  "id": "en-adjectives-with-prepositions",
+  "lang": "en",
+  "level": "B1",
+  "locales": ["en", "fr", "de"],
+  "title": "Adjectives and their prepositions",
+  "objective": {
+    "en": "Use fourteen common adjectives with the preposition that follows them, such as afraid of, proud of, famous for and married to.",
+    "fr": "Utiliser quatorze adjectifs courants avec la préposition qui les suit : afraid of, proud of, famous for, married to.",
+    "de": "Vierzehn häufige Adjektive mit der passenden Präposition verwenden, z. B. afraid of, proud of, famous for, married to."
+  },
+  "estimatedMinutes": 22,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:33:09.736Z",
+    "inputHashes": { "outline": "c3fcaf7fc9f03a7eee9003e02f5995843da59d8525b5d8ecec5741b52e09f855" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Fourteen adjective + preposition pairs in two groups: feelings and reactions, and qualities and relationships. Each pair is taught as one unit.",
+    "fr": "Quatorze paires adjectif + préposition en deux groupes : sentiments et réactions, qualités et relations. Chaque paire est apprise comme un bloc.",
+    "de": "Vierzehn Paare aus Adjektiv + Präposition in zwei Gruppen: Gefühle und Reaktionen, Eigenschaften und Beziehungen. Jedes Paar wird als Einheit gelernt."
+  },
+  "targetCount": 14,
+  "countRationale": {
+    "en": "Fourteen pairs match the outline and fit two short groups at B1.",
+    "fr": "Quatorze paires correspondent au plan et forment deux groupes courts au niveau B1.",
+    "de": "Vierzehn Paare entsprechen der Gliederung und ergeben zwei kurze Gruppen auf B1."
+  },
+  "difficultyBalance": {
+    "en": "Most pairs are common; similar to, responsible for and different from are more demanding.",
+    "fr": "La plupart des paires sont courantes ; similar to, responsible for et different from sont plus difficiles.",
+    "de": "Die meisten Paare sind häufig; similar to, responsible for und different from sind anspruchsvoller."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "feelings",
+      "label": {
+        "en": "Feelings and reactions",
+        "fr": "Sentiments et réactions",
+        "de": "Gefühle und Reaktionen"
+      },
+      "targetIds": ["afraid", "proud", "ashamed", "tired", "jealous", "bored", "excited"],
+      "introduction": {
+        "en": "Many adjectives that describe feelings are followed by a fixed **preposition**. Learn each adjective and its preposition together:\n\n- `afraid of`\n- `proud of`\n- `ashamed of`\n- `tired of`\n- `jealous of`\n- `bored with`\n- `excited about`",
+        "fr": "Beaucoup d’adjectifs de sentiment sont suivis d’une **préposition** fixe. Apprenez chaque adjectif avec sa préposition :\n\n- `afraid of`\n- `proud of`\n- `ashamed of`\n- `tired of`\n- `jealous of`\n- `bored with`\n- `excited about`",
+        "de": "Viele Adjektive für Gefühle werden von einer festen **Präposition** gefolgt. Lerne jedes Adjektiv zusammen mit seiner Präposition:\n\n- `afraid of`\n- `proud of`\n- `ashamed of`\n- `tired of`\n- `jealous of`\n- `bored with`\n- `excited about`"
+      }
+    },
+    {
+      "id": "qualities",
+      "label": {
+        "en": "Qualities and relationships",
+        "fr": "Qualités et relations",
+        "de": "Eigenschaften und Beziehungen"
+      },
+      "targetIds": [
+        "famous",
+        "responsible",
+        "similar",
+        "married",
+        "good-at",
+        "interested",
+        "different"
+      ],
+      "introduction": {
+        "en": "Adjectives that describe people, skills and comparisons also take a fixed **preposition**. The preposition is often different from your own language:\n\n- `famous for`\n- `responsible for`\n- `similar to`\n- `married to`\n- `good at`\n- `interested in`\n- `different from`",
+        "fr": "Les adjectifs qui décrivent les personnes, les compétences et les comparaisons prennent aussi une **préposition** fixe. Elle diffère souvent de celle de votre langue :\n\n- `famous for`\n- `responsible for`\n- `similar to`\n- `married to`\n- `good at`\n- `interested in`\n- `different from`",
+        "de": "Adjektive für Personen, Fähigkeiten und Vergleiche haben ebenfalls eine feste **Präposition**. Sie unterscheidet sich oft von deiner Sprache:\n\n- `famous for`\n- `responsible for`\n- `similar to`\n- `married to`\n- `good at`\n- `interested in`\n- `different from`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "afraid",
+      "term": "afraid of",
+      "translations": { "fr": ["avoir peur de"], "de": ["Angst haben vor"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "afraid of",
+      "examForms": ["afraid of"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/əˈfreɪd əv/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "I'm afraid of spiders.",
+        "translation": { "fr": "J’ai peur des araignées.", "de": "Ich habe Angst vor Spinnen." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "We say afraid of something, not afraid from.",
+        "fr": "On dit « afraid of », pas « afraid from ».",
+        "de": "Man sagt „afraid of“, nicht „afraid from“."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Many children are ",
+        "after": " the dark.",
+        "accepted": { "answers": ["afraid of"] },
+        "referenceTargetIds": ["afraid", "married", "famous", "similar"],
+        "explanation": {
+          "en": "Afraid of the dark is the usual expression.",
+          "fr": "« Afraid of the dark » est l’expression habituelle.",
+          "de": "„Afraid of the dark“ ist der übliche Ausdruck."
+        }
+      },
+      "listeningOptionTargetIds": ["afraid", "ashamed", "interested", "famous"]
+    },
+    {
+      "id": "proud",
+      "term": "proud of",
+      "translations": { "fr": ["fier de"], "de": ["stolz auf"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "proud of",
+      "examForms": ["proud of"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/praʊd əv/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "They are proud of their son.",
+        "translation": {
+          "fr": "Ils sont fiers de leur fils.",
+          "de": "Sie sind stolz auf ihren Sohn."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Proud is followed by of, even though German uses auf.",
+        "fr": "Proud est suivi de of, comme « fier de » en français.",
+        "de": "Proud wird mit of verbunden, obwohl man im Deutschen „stolz auf“ sagt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "She is very ",
+        "after": " her daughter, who just won a medal.",
+        "accepted": { "answers": ["proud of"] },
+        "referenceTargetIds": ["proud", "similar", "interested", "responsible"],
+        "explanation": {
+          "en": "Winning a medal is a reason to be proud of someone.",
+          "fr": "Gagner une médaille est une raison d’être « proud of » quelqu’un.",
+          "de": "Eine Medaille zu gewinnen ist ein Grund, auf jemanden „proud of“ zu sein."
+        }
+      },
+      "listeningOptionTargetIds": ["proud", "bored", "good-at", "excited"]
+    },
+    {
+      "id": "ashamed",
+      "term": "ashamed of",
+      "translations": { "fr": ["avoir honte de"], "de": ["sich schämen für"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "ashamed of",
+      "examForms": ["ashamed of"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/əˈʃeɪmd əv/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "She was ashamed of her mistake.",
+        "translation": {
+          "fr": "Elle avait honte de son erreur.",
+          "de": "Sie schämte sich für ihren Fehler."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Ashamed is followed by of and then the reason for the shame.",
+        "fr": "Ashamed est suivi de of, puis de la cause de la honte.",
+        "de": "Ashamed wird mit of verbunden, danach folgt der Grund für die Scham."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He felt ",
+        "after": " lying to his friends.",
+        "accepted": { "answers": ["ashamed of"] },
+        "referenceTargetIds": ["ashamed", "excited", "famous", "good-at"],
+        "explanation": {
+          "en": "Lying is something you feel ashamed of.",
+          "fr": "Mentir est une chose dont on a honte : « ashamed of ».",
+          "de": "Lügen ist etwas, wofür man sich schämt: „ashamed of“."
+        }
+      },
+      "listeningOptionTargetIds": ["ashamed", "afraid", "jealous", "similar"]
+    },
+    {
+      "id": "tired",
+      "term": "tired of",
+      "translations": { "fr": ["en avoir assez de"], "de": ["es leid sein"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "tired of",
+      "examForms": ["tired of"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈtaɪəd əv/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "I'm tired of this weather.",
+        "translation": { "fr": "J’en ai assez de ce temps.", "de": "Ich habe dieses Wetter satt." }
+      },
+      "ambiguityNote": {
+        "en": "Tired of means fed up with something. Tired from means physically tired after something.",
+        "fr": "Tired of signifie en avoir assez de quelque chose. Tired from signifie être fatigué après un effort.",
+        "de": "Tired of bedeutet, etwas satt zu haben. Tired from bedeutet, nach etwas körperlich müde zu sein."
+      },
+      "explanation": {
+        "en": "Tired of means you are fed up with something and want it to stop.",
+        "fr": "Tired of signifie qu’on en a assez de quelque chose et qu’on veut que cela cesse.",
+        "de": "Tired of bedeutet, dass man etwas satt hat und will, dass es aufhört."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "I'm ",
+        "after": " eating the same lunch every day.",
+        "accepted": { "answers": ["tired of"] },
+        "referenceTargetIds": ["tired", "married", "famous", "different"],
+        "explanation": {
+          "en": "Eating the same lunch every day makes you tired of it.",
+          "fr": "Manger le même repas chaque jour nous en fait « tired of ».",
+          "de": "Jeden Tag dasselbe Mittagessen zu essen macht einen „tired of“."
+        }
+      },
+      "listeningOptionTargetIds": ["tired", "bored", "married", "jealous"]
+    },
+    {
+      "id": "jealous",
+      "term": "jealous of",
+      "translations": { "fr": ["jaloux de"], "de": ["neidisch auf"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "jealous of",
+      "examForms": ["jealous of"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈdʒeləs əv/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "He's jealous of his friend's success.",
+        "translation": {
+          "fr": "Il est jaloux du succès de son ami.",
+          "de": "Er ist neidisch auf den Erfolg seines Freundes."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Jealous is followed by of and the person or thing you envy.",
+        "fr": "Jealous est suivi de of et de la personne ou de la chose qu’on envie.",
+        "de": "Jealous wird mit of verbunden, danach folgt die Person oder Sache, die man beneidet."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Tom is ",
+        "after": " his brother's new bike and wants one too.",
+        "accepted": { "answers": ["jealous of"] },
+        "referenceTargetIds": ["jealous", "responsible", "similar", "married"],
+        "explanation": {
+          "en": "Wanting what your brother has means you are jealous of it.",
+          "fr": "Vouloir ce que possède son frère, c’est en être « jealous of ».",
+          "de": "Wenn man will, was der Bruder hat, ist man „jealous of“."
+        }
+      },
+      "listeningOptionTargetIds": ["jealous", "responsible", "ashamed", "tired"]
+    },
+    {
+      "id": "bored",
+      "term": "bored with",
+      "translations": { "fr": ["ennuyé par"], "de": ["gelangweilt von"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "bored with",
+      "examForms": ["bored with", "bored of", "bored by"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/bɔːd wɪð/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "I got bored with the film.",
+        "translation": {
+          "fr": "Je me suis ennuyé pendant le film.",
+          "de": "Der Film hat mich gelangweilt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Bored with (or bored of, bored by) something means it is no longer interesting.",
+        "fr": "Bored with (ou bored of, bored by) signifie que quelque chose n’est plus intéressant.",
+        "de": "Bored with (oder bored of, bored by) bedeutet, dass etwas nicht mehr interessant ist."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "The students were ",
+        "after": " the long lecture.",
+        "accepted": { "answers": ["bored with", "bored of", "bored by"] },
+        "referenceTargetIds": ["bored", "famous", "married", "similar"],
+        "explanation": {
+          "en": "A long lecture often makes students bored with it (bored of and bored by are also correct).",
+          "fr": "Un long cours rend souvent les étudiants « bored with » celui-ci (« bored of » et « bored by » sont aussi corrects).",
+          "de": "Eine lange Vorlesung langweilt Studierende oft: „bored with“ („bored of“ und „bored by“ sind auch richtig)."
+        }
+      },
+      "listeningOptionTargetIds": ["bored", "proud", "tired", "different"]
+    },
+    {
+      "id": "excited",
+      "term": "excited about",
+      "translations": { "fr": ["enthousiaste à l’idée de"], "de": ["aufgeregt wegen"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "excited about",
+      "examForms": ["excited about"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɪkˈsaɪtɪd əˈbaʊt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "She's excited about the party.",
+        "translation": {
+          "fr": "Elle est enthousiaste à l’idée de la fête.",
+          "de": "Sie ist aufgeregt wegen der Party."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Excited is followed by about when you look forward to something.",
+        "fr": "Excited est suivi de about quand on attend quelque chose avec joie.",
+        "de": "Excited wird mit about verbunden, wenn man sich auf etwas freut."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "We are ",
+        "after": " our trip to Rome next week and can't wait.",
+        "accepted": { "answers": ["excited about"] },
+        "referenceTargetIds": ["excited", "responsible", "different", "married"],
+        "explanation": {
+          "en": "A trip next week is something you are excited about.",
+          "fr": "Un voyage la semaine prochaine, c’est quelque chose dont on est « excited about ».",
+          "de": "Eine Reise nächste Woche ist etwas, worüber man „excited about“ ist."
+        }
+      },
+      "listeningOptionTargetIds": ["excited", "interested", "bored", "afraid"]
+    },
+    {
+      "id": "famous",
+      "term": "famous for",
+      "translations": { "fr": ["célèbre pour"], "de": ["berühmt für"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "famous for",
+      "examForms": ["famous for"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈfeɪməs fɔː/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Italy is famous for its food.",
+        "translation": {
+          "fr": "L’Italie est célèbre pour sa cuisine.",
+          "de": "Italien ist berühmt für sein Essen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Famous for is followed by the reason someone or something is well known.",
+        "fr": "Famous for est suivi de la raison pour laquelle quelqu’un ou quelque chose est connu.",
+        "de": "Famous for wird von dem Grund gefolgt, warum jemand oder etwas bekannt ist."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Paris is ",
+        "after": " the Eiffel Tower.",
+        "accepted": { "answers": ["famous for"] },
+        "referenceTargetIds": ["famous", "afraid", "similar", "good-at"],
+        "explanation": {
+          "en": "The Eiffel Tower is the reason Paris is well known.",
+          "fr": "La tour Eiffel est la raison pour laquelle Paris est connue : « famous for ».",
+          "de": "Der Eiffelturm ist der Grund, warum Paris bekannt ist: „famous for“."
+        }
+      },
+      "listeningOptionTargetIds": ["famous", "similar", "ashamed", "afraid"]
+    },
+    {
+      "id": "responsible",
+      "term": "responsible for",
+      "translations": { "fr": ["responsable de"], "de": ["verantwortlich für"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "responsible for",
+      "examForms": ["responsible for"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/rɪˈspɒnsəbl fɔː/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Who is responsible for this?",
+        "translation": {
+          "fr": "Qui est responsable de cela ?",
+          "de": "Wer ist dafür verantwortlich?"
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Responsible for means in charge of something or to blame for it.",
+        "fr": "Responsible for signifie être chargé de quelque chose ou en être la cause.",
+        "de": "Responsible for bedeutet, für etwas zuständig oder daran schuld zu sein."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "As the manager, she is ",
+        "after": " the whole team and its results.",
+        "accepted": { "answers": ["responsible for"] },
+        "referenceTargetIds": ["responsible", "similar", "married", "good-at"],
+        "explanation": {
+          "en": "A manager is in charge of the team, so responsible for fits.",
+          "fr": "Une responsable dirige l’équipe : « responsible for » convient.",
+          "de": "Eine Managerin leitet das Team, daher passt „responsible for“."
+        }
+      },
+      "listeningOptionTargetIds": ["responsible", "interested", "famous", "jealous"]
+    },
+    {
+      "id": "similar",
+      "term": "similar to",
+      "translations": { "fr": ["semblable à"], "de": ["ähnlich wie"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "similar to",
+      "examForms": ["similar to"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈsɪmələ tuː/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Her accent is similar to mine.",
+        "translation": {
+          "fr": "Son accent est semblable au mien.",
+          "de": "Ihr Akzent ist meinem ähnlich."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Similar is followed by to, not with or as.",
+        "fr": "Similar est suivi de to, pas de with ni de as.",
+        "de": "Similar wird mit to verbunden, nicht mit with oder as."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "My phone is ",
+        "after": " yours, but a little bigger.",
+        "accepted": { "answers": ["similar to"] },
+        "referenceTargetIds": ["similar", "jealous", "ashamed", "famous"],
+        "explanation": {
+          "en": "The phones are almost the same, with one small difference.",
+          "fr": "Les téléphones sont presque identiques, avec une petite différence : « similar to ».",
+          "de": "Die Handys sind fast gleich, mit einem kleinen Unterschied: „similar to“."
+        }
+      },
+      "listeningOptionTargetIds": ["similar", "different", "famous", "ashamed"]
+    },
+    {
+      "id": "married",
+      "term": "married to",
+      "translations": { "fr": ["marié à", "marié avec"], "de": ["verheiratet mit"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "married to",
+      "examForms": ["married to"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈmærid tuː/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "He is married to my cousin.",
+        "translation": {
+          "fr": "Il est marié avec ma cousine.",
+          "de": "Er ist mit meiner Cousine verheiratet."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "We say married to someone, not married with someone.",
+        "fr": "On dit « married to » quelqu’un, pas « married with ».",
+        "de": "Man sagt „married to“ jemandem, nicht „married with“."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "My sister is ",
+        "after": " a doctor from Leeds; their wedding was in May.",
+        "accepted": { "answers": ["married to"] },
+        "referenceTargetIds": ["married", "tired", "famous", "ashamed"],
+        "explanation": {
+          "en": "Her husband is a doctor, so she is married to him.",
+          "fr": "Son mari est médecin, elle est donc « married to » lui.",
+          "de": "Ihr Mann ist Arzt, also ist sie „married to“ ihm."
+        }
+      },
+      "listeningOptionTargetIds": ["married", "tired", "bored", "proud"]
+    },
+    {
+      "id": "good-at",
+      "term": "good at",
+      "translations": { "fr": ["doué en"], "de": ["gut in"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "good at",
+      "examForms": ["good at"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɡʊd æt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "She's good at drawing.",
+        "translation": { "fr": "Elle est douée en dessin.", "de": "Sie ist gut im Zeichnen." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Good at is followed by a skill or subject, often with -ing.",
+        "fr": "Good at est suivi d’une compétence ou d’une matière, souvent avec -ing.",
+        "de": "Good at wird von einer Fähigkeit oder einem Fach gefolgt, oft mit -ing."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He is really ",
+        "after": " maths and always gets top marks.",
+        "accepted": { "answers": ["good at"] },
+        "referenceTargetIds": ["good-at", "afraid", "bored", "married"],
+        "explanation": {
+          "en": "Getting top marks shows he has a skill in maths.",
+          "fr": "Avoir les meilleures notes montre qu’il est « good at » les maths.",
+          "de": "Beste Noten zeigen, dass er in Mathe „good at“ ist."
+        }
+      },
+      "listeningOptionTargetIds": ["good-at", "proud", "excited", "afraid"]
+    },
+    {
+      "id": "interested",
+      "term": "interested in",
+      "translations": { "fr": ["intéressé par"], "de": ["interessiert an"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "interested in",
+      "examForms": ["interested in"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈɪntrəstɪd ɪn/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "I'm interested in music.",
+        "translation": {
+          "fr": "Je m’intéresse à la musique.",
+          "de": "Ich interessiere mich für Musik."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Interested is followed by in, not on or for.",
+        "fr": "Interested est suivi de in, pas de on ni de for.",
+        "de": "Interested wird mit in verbunden, nicht mit on oder for."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "I'm very ",
+        "after": " old buildings and ancient history.",
+        "accepted": { "answers": ["interested in"] },
+        "referenceTargetIds": ["interested", "married", "similar", "responsible"],
+        "explanation": {
+          "en": "Interested in is used for topics that attract you.",
+          "fr": "« Interested in » s’emploie pour les sujets qui nous attirent.",
+          "de": "„Interested in“ verwendet man für Themen, die einen anziehen."
+        }
+      },
+      "listeningOptionTargetIds": ["interested", "excited", "responsible", "different"]
+    },
+    {
+      "id": "different",
+      "term": "different from",
+      "translations": { "fr": ["différent de"], "de": ["anders als"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "different from",
+      "examForms": ["different from", "different to", "different than"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈdɪfrənt frɒm/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "This city is different from my town.",
+        "translation": {
+          "fr": "Cette ville est différente de la mienne.",
+          "de": "Diese Stadt ist anders als meine Stadt."
+        }
+      },
+      "ambiguityNote": {
+        "en": "British speakers also say different to, and Americans say different than. Different from is the safest form.",
+        "fr": "Les Britanniques disent aussi different to et les Américains different than. Different from est la forme la plus sûre.",
+        "de": "Briten sagen auch different to, Amerikaner different than. Different from ist die sicherste Form."
+      },
+      "explanation": {
+        "en": "Different from is the standard way to compare two things.",
+        "fr": "Different from est la façon standard de comparer deux choses.",
+        "de": "Different from ist die Standardform, um zwei Dinge zu vergleichen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Life in a big city is very ",
+        "after": " life in a village.",
+        "accepted": { "answers": ["different from", "different to", "different than"] },
+        "referenceTargetIds": ["different", "afraid", "proud", "married"],
+        "explanation": {
+          "en": "The sentence compares two ways of life that are not alike: different from (different to and different than are also correct).",
+          "fr": "La phrase compare deux modes de vie qui ne se ressemblent pas : « different from » (« different to » et « different than » sont aussi corrects).",
+          "de": "Der Satz vergleicht zwei verschiedene Lebensweisen: „different from“ („different to“ und „different than“ sind auch richtig)."
+        }
+      },
+      "listeningOptionTargetIds": ["different", "similar", "bored", "interested"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

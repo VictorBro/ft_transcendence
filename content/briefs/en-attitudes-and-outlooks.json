@@ -1,0 +1,575 @@
+{
+  "schemaVersion": 2,
+  "id": "en-attitudes-and-outlooks",
+  "lang": "en",
+  "level": "B2",
+  "locales": ["en", "fr", "de"],
+  "title": "Attitudes and outlooks",
+  "objective": {
+    "en": "Describe how people see life and face challenges with twelve adjectives such as optimistic, cynical, curious and determined.",
+    "fr": "Décrire la façon dont les gens voient la vie et affrontent les défis avec douze adjectifs.",
+    "de": "Beschreiben, wie Menschen das Leben sehen und Herausforderungen angehen, mit zwölf Adjektiven."
+  },
+  "estimatedMinutes": 19,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:48:32.271Z",
+    "inputHashes": { "outline": "e20f865cba31290bb1861494e0c39ea6f589b210b83000898be8a08fe759722b" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Twelve B2 adjectives in two groups: six for a person's general view of life (optimistic, pessimistic, cynical, sceptical, idealistic, realistic) and six for how people face challenges (curious, determined, motivated, ambitious, resilient, pragmatic). Compound adjectives such as open-minded are left to the next lesson.",
+    "fr": "Douze adjectifs de niveau B2 en deux groupes : six pour la vision générale de la vie (optimistic, pessimistic, cynical, sceptical, idealistic, realistic) et six pour la façon d’affronter les défis (curious, determined, motivated, ambitious, resilient, pragmatic). Les adjectifs composés comme open-minded sont traités dans la leçon suivante.",
+    "de": "Zwölf Adjektive auf B2-Niveau in zwei Gruppen: sechs für die allgemeine Sicht auf das Leben (optimistic, pessimistic, cynical, sceptical, idealistic, realistic) und sechs für den Umgang mit Herausforderungen (curious, determined, motivated, ambitious, resilient, pragmatic). Zusammengesetzte Adjektive wie open-minded folgen in der nächsten Lektion."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve words match the outline and fit two pages of six for matching and the exam.",
+    "fr": "Douze mots correspondent au plan et forment deux pages de six pour l’association et l’examen.",
+    "de": "Zwölf Wörter entsprechen der Gliederung und ergeben zwei Seiten mit je sechs für Zuordnung und Prüfung."
+  },
+  "difficultyBalance": {
+    "en": "Most words are core B2 vocabulary; cynical, sceptical and resilient are more demanding because they are easy to confuse or less common.",
+    "fr": "La plupart des mots sont du vocabulaire B2 de base ; cynical, sceptical et resilient sont plus difficiles car ils se confondent facilement ou sont moins courants.",
+    "de": "Die meisten Wörter gehören zum B2-Grundwortschatz; cynical, sceptical und resilient sind anspruchsvoller, weil sie leicht verwechselt werden oder seltener sind."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "view-of-life",
+      "label": {
+        "en": "How people see life",
+        "fr": "La vision de la vie",
+        "de": "Die Sicht auf das Leben"
+      },
+      "targetIds": ["optimistic", "pessimistic", "cynical", "sceptical", "idealistic", "realistic"],
+      "introduction": {
+        "en": "These six adjectives describe a person's **view of life**:\n\n- `optimistic`: expects good things\n- `pessimistic`: expects bad things\n- `cynical`: distrusts people's motives\n- `sceptical`: doubts until there is proof\n- `idealistic`: believes in perfect goals\n- `realistic`: sees things as they are",
+        "fr": "Ces six adjectifs décrivent la **vision de la vie** d’une personne :\n\n- `optimistic` : s’attend à du bon\n- `pessimistic` : s’attend à du mauvais\n- `cynical` : se méfie des motivations des gens\n- `sceptical` : doute tant qu’il n’y a pas de preuve\n- `idealistic` : croit à des objectifs parfaits\n- `realistic` : voit les choses telles qu’elles sont",
+        "de": "Diese sechs Adjektive beschreiben die **Sicht eines Menschen auf das Leben**:\n\n- `optimistic`: erwartet Gutes\n- `pessimistic`: erwartet Schlechtes\n- `cynical`: misstraut den Motiven anderer\n- `sceptical`: zweifelt, bis es Beweise gibt\n- `idealistic`: glaubt an perfekte Ziele\n- `realistic`: sieht die Dinge, wie sie sind"
+      }
+    },
+    {
+      "id": "facing-challenges",
+      "label": {
+        "en": "How people face challenges",
+        "fr": "Comment affronter les défis",
+        "de": "Wie man Herausforderungen angeht"
+      },
+      "targetIds": ["curious", "determined", "motivated", "ambitious", "resilient", "pragmatic"],
+      "introduction": {
+        "en": "These six adjectives describe how people **face challenges**:\n\n- `curious`: wants to know and learn\n- `determined`: does not give up\n- `motivated`: has a reason to keep going\n- `ambitious`: wants to achieve a lot\n- `resilient`: recovers quickly from problems\n- `pragmatic`: chooses what works in practice",
+        "fr": "Ces six adjectifs décrivent comment les gens **affrontent les défis** :\n\n- `curious` : veut savoir et apprendre\n- `determined` : n’abandonne pas\n- `motivated` : a une raison de continuer\n- `ambitious` : veut beaucoup réussir\n- `resilient` : se remet vite des problèmes\n- `pragmatic` : choisit ce qui marche en pratique",
+        "de": "Diese sechs Adjektive beschreiben, wie Menschen **Herausforderungen angehen**:\n\n- `curious`: will wissen und lernen\n- `determined`: gibt nicht auf\n- `motivated`: hat einen Grund weiterzumachen\n- `ambitious`: will viel erreichen\n- `resilient`: erholt sich schnell von Problemen\n- `pragmatic`: wählt, was in der Praxis funktioniert"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "optimistic",
+      "term": "optimistic",
+      "translations": { "fr": ["optimiste"], "de": ["optimistisch"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "optimistic",
+      "examForms": ["optimistic"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌɒptɪˈmɪstɪk/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "She is optimistic about the future.",
+        "translation": {
+          "fr": "Elle est optimiste quant à l’avenir.",
+          "de": "Sie ist optimistisch, was die Zukunft angeht."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Optimistic describes someone who expects good things to happen.",
+        "fr": "Optimistic décrit une personne qui s’attend à ce que les choses se passent bien.",
+        "de": "Optimistic beschreibt jemanden, der erwartet, dass Gutes passiert."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Despite the bad news, Mia stays ",
+        "after": " and believes things will get better.",
+        "accepted": { "answers": ["optimistic"] },
+        "referenceTargetIds": ["optimistic", "pessimistic", "cynical", "sceptical"],
+        "explanation": {
+          "en": "Only optimistic fits: she believes things will get better.",
+          "fr": "Seul « optimistic » convient : elle croit que les choses iront mieux.",
+          "de": "Nur „optimistic“ passt: Sie glaubt, dass alles besser wird."
+        }
+      },
+      "listeningOptionTargetIds": ["optimistic", "pessimistic", "idealistic", "realistic"]
+    },
+    {
+      "id": "pessimistic",
+      "term": "pessimistic",
+      "translations": { "fr": ["pessimiste"], "de": ["pessimistisch"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "pessimistic",
+      "examForms": ["pessimistic"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌpesɪˈmɪstɪk/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "He is pessimistic about our chances.",
+        "translation": {
+          "fr": "Il est pessimiste quant à nos chances.",
+          "de": "Er ist pessimistisch, was unsere Chancen angeht."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Pessimistic describes someone who expects bad things to happen.",
+        "fr": "Pessimistic décrit une personne qui s’attend à ce que les choses tournent mal.",
+        "de": "Pessimistic beschreibt jemanden, der erwartet, dass Schlechtes passiert."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Tom always expects the worst, so he is very ",
+        "after": " about the exam.",
+        "accepted": { "answers": ["pessimistic"] },
+        "referenceTargetIds": ["pessimistic", "optimistic", "idealistic", "realistic"],
+        "explanation": {
+          "en": "Only pessimistic fits: he always expects the worst.",
+          "fr": "Seul « pessimistic » convient : il s’attend toujours au pire.",
+          "de": "Nur „pessimistic“ passt: Er erwartet immer das Schlimmste."
+        }
+      },
+      "listeningOptionTargetIds": ["optimistic", "pessimistic", "idealistic", "realistic"]
+    },
+    {
+      "id": "cynical",
+      "term": "cynical",
+      "translations": { "fr": ["cynique"], "de": ["zynisch"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "cynical",
+      "examForms": ["cynical"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈsɪnɪkl/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "She is cynical about politicians.",
+        "translation": {
+          "fr": "Elle est cynique envers les politiciens.",
+          "de": "Sie ist zynisch gegenüber Politikern."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Cynical means distrusting people's motives; sceptical means doubting until you see proof.",
+        "fr": "Cynical signifie se méfier des motivations des gens ; sceptical signifie douter tant qu’on n’a pas de preuve.",
+        "de": "Cynical heißt, den Motiven anderer zu misstrauen; sceptical heißt, zu zweifeln, bis man Beweise sieht."
+      },
+      "explanation": {
+        "en": "Cynical describes someone who believes people act only for selfish reasons.",
+        "fr": "Cynical décrit une personne qui croit que les gens n’agissent que par égoïsme.",
+        "de": "Cynical beschreibt jemanden, der glaubt, dass Menschen nur aus Eigennutz handeln."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He is so ",
+        "after": " that he thinks every politician only wants power and money.",
+        "accepted": { "answers": ["cynical"] },
+        "referenceTargetIds": ["cynical", "optimistic", "idealistic", "realistic"],
+        "explanation": {
+          "en": "Only cynical fits: he distrusts the motives of politicians.",
+          "fr": "Seul « cynical » convient : il se méfie des motivations des politiciens.",
+          "de": "Nur „cynical“ passt: Er misstraut den Motiven der Politiker."
+        }
+      },
+      "listeningOptionTargetIds": ["cynical", "sceptical", "pessimistic", "realistic"]
+    },
+    {
+      "id": "sceptical",
+      "term": "sceptical",
+      "translations": { "fr": ["sceptique"], "de": ["skeptisch"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "sceptical",
+      "examForms": ["sceptical", "skeptical"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈskeptɪkl/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "I'm sceptical about the results.",
+        "translation": {
+          "fr": "Je suis sceptique quant aux résultats.",
+          "de": "Ich bin skeptisch, was die Ergebnisse angeht."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Sceptical describes someone who doubts a claim until there is proof. The American spelling is skeptical.",
+        "fr": "Sceptical décrit une personne qui doute d’une affirmation tant qu’il n’y a pas de preuve. L’orthographe américaine est skeptical.",
+        "de": "Sceptical beschreibt jemanden, der eine Behauptung bezweifelt, bis es Beweise gibt. Die amerikanische Schreibweise ist skeptical."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "I'm ",
+        "after": " about the advert's claims; I want to see proof before I believe them.",
+        "accepted": { "answers": ["sceptical", "skeptical"] },
+        "referenceTargetIds": ["sceptical", "optimistic", "idealistic", "pessimistic"],
+        "explanation": {
+          "en": "Only sceptical fits: you want proof before you believe.",
+          "fr": "Seul « sceptical » convient : on veut une preuve avant de croire.",
+          "de": "Nur „sceptical“ passt: Man will einen Beweis, bevor man glaubt."
+        }
+      },
+      "listeningOptionTargetIds": ["sceptical", "cynical", "optimistic", "idealistic"]
+    },
+    {
+      "id": "idealistic",
+      "term": "idealistic",
+      "translations": { "fr": ["idéaliste"], "de": ["idealistisch"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "idealistic",
+      "examForms": ["idealistic"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌaɪdiəˈlɪstɪk/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "He is young and idealistic.",
+        "translation": { "fr": "Il est jeune et idéaliste.", "de": "Er ist jung und idealistisch." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Idealistic describes someone who believes in perfect goals, even if they are hard to reach.",
+        "fr": "Idealistic décrit une personne qui croit à des objectifs parfaits, même s’ils sont difficiles à atteindre.",
+        "de": "Idealistic beschreibt jemanden, der an perfekte Ziele glaubt, auch wenn sie schwer zu erreichen sind."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Young and ",
+        "after": ", she hoped to change the world and end poverty.",
+        "accepted": { "answers": ["idealistic"] },
+        "referenceTargetIds": ["idealistic", "pessimistic", "cynical", "realistic"],
+        "explanation": {
+          "en": "Only idealistic fits: she hopes to change the world.",
+          "fr": "Seul « idealistic » convient : elle espère changer le monde.",
+          "de": "Nur „idealistic“ passt: Sie hofft, die Welt zu verändern."
+        }
+      },
+      "listeningOptionTargetIds": ["optimistic", "pessimistic", "idealistic", "realistic"]
+    },
+    {
+      "id": "realistic",
+      "term": "realistic",
+      "translations": { "fr": ["réaliste"], "de": ["realistisch"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "realistic",
+      "examForms": ["realistic"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌriːəˈlɪstɪk/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "That is a realistic plan.",
+        "translation": { "fr": "C’est un plan réaliste.", "de": "Das ist ein realistischer Plan." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Realistic describes someone or something that sees or accepts things as they really are.",
+        "fr": "Realistic décrit une personne ou une chose qui voit ou accepte les choses telles qu’elles sont vraiment.",
+        "de": "Realistic beschreibt jemanden oder etwas, das die Dinge so sieht oder akzeptiert, wie sie wirklich sind."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Her goals are ",
+        "after": ": she has a clear plan and enough time to reach them.",
+        "accepted": { "answers": ["realistic"] },
+        "referenceTargetIds": ["realistic", "pessimistic", "cynical", "sceptical"],
+        "explanation": {
+          "en": "Only realistic fits: the goals can really be reached.",
+          "fr": "Seul « realistic » convient : les objectifs peuvent vraiment être atteints.",
+          "de": "Nur „realistic“ passt: Die Ziele sind wirklich erreichbar."
+        }
+      },
+      "listeningOptionTargetIds": ["optimistic", "pessimistic", "idealistic", "realistic"]
+    },
+    {
+      "id": "curious",
+      "term": "curious",
+      "translations": { "fr": ["curieux"], "de": ["neugierig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "curious",
+      "examForms": ["curious"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈkjʊəriəs/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ben is curious about other cultures.",
+        "translation": {
+          "fr": "Ben est curieux de connaître d’autres cultures.",
+          "de": "Ben ist neugierig auf andere Kulturen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Curious describes someone who wants to know, learn or discover things.",
+        "fr": "Curious décrit une personne qui veut savoir, apprendre ou découvrir.",
+        "de": "Curious beschreibt jemanden, der etwas wissen, lernen oder entdecken will."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Children are ",
+        "after": " and ask hundreds of questions about everything.",
+        "accepted": { "answers": ["curious"] },
+        "referenceTargetIds": ["curious", "determined", "resilient", "pragmatic"],
+        "explanation": {
+          "en": "Only curious fits: they ask questions because they want to know.",
+          "fr": "Seul « curious » convient : ils posent des questions parce qu’ils veulent savoir.",
+          "de": "Nur „curious“ passt: Sie stellen Fragen, weil sie etwas wissen wollen."
+        }
+      },
+      "listeningOptionTargetIds": ["curious", "ambitious", "resilient", "pragmatic"]
+    },
+    {
+      "id": "determined",
+      "term": "determined",
+      "translations": { "fr": ["déterminé"], "de": ["entschlossen"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "determined",
+      "examForms": ["determined"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/dɪˈtɜːmɪnd/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "She is determined to win.",
+        "translation": {
+          "fr": "Elle est déterminée à gagner.",
+          "de": "Sie ist fest entschlossen zu gewinnen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Determined describes someone who has decided to do something and will not give up.",
+        "fr": "Determined décrit une personne qui a décidé de faire quelque chose et n’abandonnera pas.",
+        "de": "Determined beschreibt jemanden, der sich entschieden hat, etwas zu tun, und nicht aufgibt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Although she failed twice, she was ",
+        "after": " to pass her driving test.",
+        "accepted": { "answers": ["determined"] },
+        "referenceTargetIds": ["determined", "curious", "resilient", "pragmatic"],
+        "explanation": {
+          "en": "Only determined fits: she will not give up after failing.",
+          "fr": "Seul « determined » convient : elle n’abandonne pas après ses échecs.",
+          "de": "Nur „determined“ passt: Sie gibt nach den Misserfolgen nicht auf."
+        }
+      },
+      "listeningOptionTargetIds": ["determined", "motivated", "resilient", "pragmatic"]
+    },
+    {
+      "id": "motivated",
+      "term": "motivated",
+      "translations": { "fr": ["motivé"], "de": ["motiviert"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "motivated",
+      "examForms": ["motivated"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈməʊtɪveɪtɪd/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "He feels motivated at work.",
+        "translation": {
+          "fr": "Il se sent motivé au travail.",
+          "de": "Er fühlt sich bei der Arbeit motiviert."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Motivated describes someone who has a strong reason and energy to do something.",
+        "fr": "Motivated décrit une personne qui a une bonne raison et de l’énergie pour faire quelque chose.",
+        "de": "Motivated beschreibt jemanden, der einen starken Grund und Energie hat, etwas zu tun."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "After the inspiring talk, the students felt very ",
+        "after": " to study harder.",
+        "accepted": { "answers": ["motivated"] },
+        "referenceTargetIds": ["motivated", "curious", "pragmatic", "resilient"],
+        "explanation": {
+          "en": "Only motivated fits: the talk gave them a reason to study.",
+          "fr": "Seul « motivated » convient : la conférence leur a donné une raison d’étudier.",
+          "de": "Nur „motivated“ passt: Der Vortrag gab ihnen einen Grund zu lernen."
+        }
+      },
+      "listeningOptionTargetIds": ["motivated", "determined", "ambitious", "curious"]
+    },
+    {
+      "id": "ambitious",
+      "term": "ambitious",
+      "translations": { "fr": ["ambitieux"], "de": ["ehrgeizig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "ambitious",
+      "examForms": ["ambitious"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/æmˈbɪʃəs/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "She is ambitious and works hard.",
+        "translation": {
+          "fr": "Elle est ambitieuse et travaille dur.",
+          "de": "Sie ist ehrgeizig und arbeitet hart."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Ambitious describes someone who strongly wants success, power or achievement.",
+        "fr": "Ambitious décrit une personne qui désire fortement la réussite, le pouvoir ou l’accomplissement.",
+        "de": "Ambitious beschreibt jemanden, der stark nach Erfolg, Macht oder Leistung strebt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "She is very ",
+        "after": ": she wants to become the company's youngest director.",
+        "accepted": { "answers": ["ambitious"] },
+        "referenceTargetIds": ["ambitious", "curious", "pragmatic", "resilient"],
+        "explanation": {
+          "en": "Only ambitious fits: she wants a high position.",
+          "fr": "Seul « ambitious » convient : elle vise un poste élevé.",
+          "de": "Nur „ambitious“ passt: Sie strebt eine hohe Position an."
+        }
+      },
+      "listeningOptionTargetIds": ["ambitious", "curious", "motivated", "determined"]
+    },
+    {
+      "id": "resilient",
+      "term": "resilient",
+      "translations": { "fr": ["résilient"], "de": ["widerstandsfähig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "resilient",
+      "examForms": ["resilient"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/rɪˈzɪliənt/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Children are often resilient.",
+        "translation": {
+          "fr": "Les enfants sont souvent résilients.",
+          "de": "Kinder sind oft widerstandsfähig."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Resilient describes someone who recovers quickly after problems or bad luck.",
+        "fr": "Resilient décrit une personne qui se remet vite après des problèmes ou de la malchance.",
+        "de": "Resilient beschreibt jemanden, der sich nach Problemen oder Pech schnell erholt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He is very ",
+        "after": ": after every setback, he recovers quickly.",
+        "accepted": { "answers": ["resilient"] },
+        "referenceTargetIds": ["resilient", "curious", "pragmatic", "ambitious"],
+        "explanation": {
+          "en": "Only resilient fits: he recovers quickly from setbacks.",
+          "fr": "Seul « resilient » convient : il se remet vite des échecs.",
+          "de": "Nur „resilient“ passt: Er erholt sich schnell von Rückschlägen."
+        }
+      },
+      "listeningOptionTargetIds": ["resilient", "pragmatic", "determined", "motivated"]
+    },
+    {
+      "id": "pragmatic",
+      "term": "pragmatic",
+      "translations": { "fr": ["pragmatique"], "de": ["pragmatisch"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "pragmatic",
+      "examForms": ["pragmatic"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/præɡˈmætɪk/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "We need a pragmatic solution.",
+        "translation": {
+          "fr": "Il nous faut une solution pragmatique.",
+          "de": "Wir brauchen eine pragmatische Lösung."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Pragmatic describes someone who deals with problems in a practical way, not a theoretical one.",
+        "fr": "Pragmatic décrit une personne qui traite les problèmes de façon pratique, et non théorique.",
+        "de": "Pragmatic beschreibt jemanden, der Probleme praktisch statt theoretisch löst."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Anna is ",
+        "after": ": she chooses whatever works in practice, not what looks perfect.",
+        "accepted": { "answers": ["pragmatic"] },
+        "referenceTargetIds": ["pragmatic", "curious", "ambitious", "resilient"],
+        "explanation": {
+          "en": "Only pragmatic fits: she chooses what works in practice.",
+          "fr": "Seul « pragmatic » convient : elle choisit ce qui marche en pratique.",
+          "de": "Nur „pragmatic“ passt: Sie wählt, was in der Praxis funktioniert."
+        }
+      },
+      "listeningOptionTargetIds": ["pragmatic", "resilient", "curious", "ambitious"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

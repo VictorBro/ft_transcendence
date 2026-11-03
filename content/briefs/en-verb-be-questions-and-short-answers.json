@@ -1,0 +1,230 @@
+{
+  "schemaVersion": 2,
+  "id": "en-verb-be-questions-and-short-answers",
+  "lang": "en",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Questions with be and short answers",
+  "objective": {
+    "en": "Ask yes or no questions with am, is and are, and give short answers such as Yes, I am. and No, she isn't.",
+    "fr": "Poser des questions fermées avec am, is et are, et donner des réponses courtes comme Yes, I am. et No, she isn't.",
+    "de": "Ja-Nein-Fragen mit am, is und are stellen und Kurzantworten wie Yes, I am. und No, she isn't. geben."
+  },
+  "estimatedMinutes": 15,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:33:09.790Z",
+    "inputHashes": { "outline": "f62204a5b678cb1fdd53ebb19adb40164c7f78b26aeae292a4ca4ddea371c320" }
+  },
+  "kind": "grammar",
+  "topic": "syntax_and_sentence_structure",
+  "scopeBoundaries": {
+    "en": "Covers yes or no questions with am, is and are, and short answers with Yes or No. Excludes question words (Where, What), do questions and past forms of be.",
+    "fr": "Couvre les questions fermées avec am, is et are, et les réponses courtes avec Yes ou No. Exclut les mots interrogatifs (Where, What), les questions avec do et le passé de be.",
+    "de": "Behandelt Ja-Nein-Fragen mit am, is und are sowie Kurzantworten mit Yes oder No. Ausgeschlossen sind Fragewörter (Where, What), Fragen mit do und die Vergangenheit von be."
+  },
+  "prerequisites": [
+    {
+      "en": "Positive and negative sentences with be: I am, she is, I'm not, he isn't",
+      "fr": "Phrases affirmatives et négatives avec be : I am, she is, I'm not, he isn't",
+      "de": "Bejahte und verneinte Sätze mit be: I am, she is, I'm not, he isn't"
+    },
+    {
+      "en": "Everyday feeling adjectives: tired, hungry, happy",
+      "fr": "Adjectifs de sentiments courants : tired, hungry, happy",
+      "de": "Gefühlsadjektive des Alltags: tired, hungry, happy"
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-question-form",
+      "summary": {
+        "en": "A yes or no question with be starts with am, is or are, followed by the subject.",
+        "fr": "Une question fermée avec be commence par am, is ou are, suivi du sujet.",
+        "de": "Eine Ja-Nein-Frage mit be beginnt mit am, is oder are, danach folgt das Subjekt."
+      }
+    },
+    {
+      "id": "rule-choose-form",
+      "summary": {
+        "en": "Choose am with I, is with he, she, it and are with you, we, they.",
+        "fr": "Choisir am avec I, is avec he, she, it et are avec you, we, they.",
+        "de": "am steht bei I, is bei he, she, it und are bei you, we, they."
+      }
+    },
+    {
+      "id": "rule-short-answers",
+      "summary": {
+        "en": "Answer with Yes or No, the subject and am, is, are (or isn't, aren't, I'm not). No contraction after Yes.",
+        "fr": "Répondre par Yes ou No, le sujet et am, is, are (ou isn't, aren't, I'm not). Pas de contraction après Yes.",
+        "de": "Mit Yes oder No, dem Subjekt und am, is, are (oder isn't, aren't, I'm not) antworten. Nach Yes keine Kurzform."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-questions",
+      "title": {
+        "en": "Asking questions with am, is, are",
+        "fr": "Poser des questions avec am, is, are",
+        "de": "Fragen stellen mit am, is, are"
+      },
+      "ruleIds": ["rule-question-form", "rule-choose-form"],
+      "explanationPlan": {
+        "en": "Show that a yes or no question with be puts am, is or are before the subject. Link each form to its subjects. Warn against adding do.",
+        "fr": "Montrer que dans une question fermée avec be, am, is ou are précède le sujet. Relier chaque forme à ses sujets. Mettre en garde contre l'ajout de do.",
+        "de": "Zeigen, dass bei einer Ja-Nein-Frage mit be am, is oder are vor dem Subjekt steht. Jede Form mit ihren Subjekten verbinden. Vor dem Zusatz von do warnen."
+      },
+      "explanationDurationS": 100,
+      "examples": [
+        {
+          "text": "Are you tired?",
+          "translation": { "fr": "Tu es fatigué ?", "de": "Bist du müde?" }
+        },
+        {
+          "text": "Is she from Italy?",
+          "translation": { "fr": "Elle vient d'Italie ?", "de": "Kommt sie aus Italien?" }
+        },
+        {
+          "text": "Am I late?",
+          "translation": { "fr": "Suis-je en retard ?", "de": "Bin ich zu spät?" }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not add do: say Are you tired?, not Do you are tired?",
+          "fr": "N'ajoutez pas do : dites Are you tired?, et non Do you are tired?",
+          "de": "Füge kein do hinzu: Sage Are you tired?, nicht Do you are tired?"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-q-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-question-form", "rule-choose-form"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-q-order",
+          "type": "grammar_word_order",
+          "itemCount": 4,
+          "ruleIds": ["rule-question-form"],
+          "estimatedDurationS": 80
+        },
+        {
+          "id": "ex-q-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-question-form", "rule-choose-form"],
+          "estimatedDurationS": 60
+        }
+      ]
+    },
+    {
+      "id": "block-answers",
+      "title": {
+        "en": "Giving short answers",
+        "fr": "Donner des réponses courtes",
+        "de": "Kurzantworten geben"
+      },
+      "ruleIds": ["rule-short-answers"],
+      "explanationPlan": {
+        "en": "Teach the short answer: Yes or No, the subject, and am, is, are, isn't, aren't or I'm not. Show that the pronoun changes and that Yes is never contracted.",
+        "fr": "Enseigner la réponse courte : Yes ou No, le sujet, puis am, is, are, isn't, aren't ou I'm not. Montrer que le pronom change et qu'on ne contracte jamais après Yes.",
+        "de": "Die Kurzantwort vermitteln: Yes oder No, das Subjekt und am, is, are, isn't, aren't oder I'm not. Zeigen, dass sich das Pronomen ändert und nach Yes nie verkürzt wird."
+      },
+      "explanationDurationS": 110,
+      "examples": [
+        {
+          "text": "Are you tired? Yes, I am.",
+          "translation": {
+            "fr": "Tu es fatigué ? Oui, je le suis.",
+            "de": "Bist du müde? Ja, bin ich."
+          }
+        },
+        {
+          "text": "Is she from Italy? No, she isn't.",
+          "translation": {
+            "fr": "Elle vient d'Italie ? Non.",
+            "de": "Kommt sie aus Italien? Nein, ist sie nicht."
+          }
+        },
+        {
+          "text": "Are they at home? Yes, they are.",
+          "translation": { "fr": "Ils sont à la maison ? Oui.", "de": "Sind sie zu Hause? Ja." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "After Yes, do not shorten: say Yes, I am., not Yes, I'm.",
+          "fr": "Après Yes, ne contractez pas : dites Yes, I am., et non Yes, I'm.",
+          "de": "Nach Yes keine Kurzform: Sage Yes, I am., nicht Yes, I'm."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-a-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-short-answers"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-a-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-short-answers"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-a-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 3,
+          "ruleIds": ["rule-short-answers"],
+          "estimatedDurationS": 75
+        },
+        {
+          "id": "ex-a-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-short-answers"],
+          "estimatedDurationS": 60
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["rule-question-form"],
+        "estimatedDurationS": 75,
+        "timeLimitS": 120
+      },
+      {
+        "pageId": "exam-gaps",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-question-form", "rule-choose-form"],
+        "estimatedDurationS": 80,
+        "timeLimitS": 130
+      },
+      {
+        "pageId": "exam-answers",
+        "type": "grammar_gap_typing",
+        "itemCount": 3,
+        "ruleIds": ["rule-short-answers"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

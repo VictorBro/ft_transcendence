@@ -1,0 +1,498 @@
+{
+  "schemaVersion": 2,
+  "id": "en-words-for-telling-a-story-in-order",
+  "lang": "en",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Words for telling a story in order",
+  "objective": {
+    "en": "Put events in order with words like first, then, after that, suddenly and finally when you tell a story or explain how to do something.",
+    "fr": "Mettre des événements dans l'ordre avec des mots comme first, then, after that, suddenly et finally pour raconter une histoire ou expliquer comment faire quelque chose.",
+    "de": "Ereignisse mit Wörtern wie first, then, after that, suddenly und finally in eine Reihenfolge bringen, um eine Geschichte zu erzählen oder etwas zu erklären."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:33:09.457Z",
+    "inputHashes": { "outline": "6a3c0ac57caf799897bdcdc61e7db00b6f32c3d15cdd1ab937525013161b287b" }
+  },
+  "kind": "vocabulary",
+  "theme": "language",
+  "coverageNotes": {
+    "en": "Ten sequencing words and phrases from the outline: first, then, next, after that, later, suddenly, finally, in the end, plus at first and meanwhile, which learners often meet in stories.",
+    "fr": "Dix mots et expressions pour ordonner un récit, tirés du plan : first, then, next, after that, later, suddenly, finally, in the end, plus at first et meanwhile, fréquents dans les récits.",
+    "de": "Zehn Wörter und Wendungen zum Ordnen einer Erzählung aus der Gliederung: first, then, next, after that, later, suddenly, finally, in the end sowie at first und meanwhile, die in Erzählungen oft vorkommen."
+  },
+  "targetCount": 10,
+  "countRationale": {
+    "en": "Ten items fit the outline's 'about ten' and are enough for a short A2 lesson.",
+    "fr": "Dix éléments correspondent au « environ dix » du plan et suffisent pour une courte leçon A2.",
+    "de": "Zehn Einträge entsprechen dem „etwa zehn“ der Gliederung und genügen für eine kurze A2-Lektion."
+  },
+  "difficultyBalance": {
+    "en": "Seven core words used every day, and three more demanding ones: at first, meanwhile and in the end.",
+    "fr": "Sept mots de base très courants et trois plus difficiles : at first, meanwhile et in the end.",
+    "de": "Sieben alltägliche Grundwörter und drei anspruchsvollere: at first, meanwhile und in the end."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "steps",
+      "label": {
+        "en": "Starting and following steps",
+        "fr": "Commencer et enchaîner les étapes",
+        "de": "Anfangen und Schritte aneinanderreihen"
+      },
+      "targetIds": ["first", "at-first", "then", "next", "after-that"],
+      "introduction": {
+        "en": "Use these words to put the steps of a story or a recipe in **order**:\n\n- `first`\n- `at first`\n- `then`\n- `next`\n- `after that`\n\nThey tell the listener what happens before and after.",
+        "fr": "Utilisez ces mots pour mettre les étapes d'une histoire ou d'une recette dans l'**ordre** :\n\n- `first`\n- `at first`\n- `then`\n- `next`\n- `after that`\n\nIls disent à l'auditeur ce qui se passe avant et après.",
+        "de": "Mit diesen Wörtern bringst du die Schritte einer Geschichte oder eines Rezepts in die **Reihenfolge**:\n\n- `first`\n- `at first`\n- `then`\n- `next`\n- `after that`\n\nSie zeigen dem Zuhörer, was davor und danach passiert."
+      }
+    },
+    {
+      "id": "turns",
+      "label": {
+        "en": "Time, surprises and endings",
+        "fr": "Temps, surprises et fins",
+        "de": "Zeit, Überraschungen und Schluss"
+      },
+      "targetIds": ["later", "meanwhile", "suddenly", "finally", "in-the-end"],
+      "introduction": {
+        "en": "Use these words to show **time**, a surprise or the end of a story:\n\n- `later`\n- `meanwhile`\n- `suddenly`\n- `finally`\n- `in the end`\n\nThey make your story easier to follow.",
+        "fr": "Utilisez ces mots pour indiquer le **temps**, une surprise ou la fin d'une histoire :\n\n- `later`\n- `meanwhile`\n- `suddenly`\n- `finally`\n- `in the end`\n\nIls rendent votre récit plus facile à suivre.",
+        "de": "Mit diesen Wörtern zeigst du die **Zeit**, eine Überraschung oder das Ende einer Geschichte:\n\n- `later`\n- `meanwhile`\n- `suddenly`\n- `finally`\n- `in the end`\n\nSie machen deine Geschichte leichter verständlich."
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "first",
+      "term": "first",
+      "translations": { "fr": ["d'abord"], "de": ["zuerst", "als Erstes"] },
+      "wordClass": "adverb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "first",
+      "examForms": ["first"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/fɜːst/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "First, I wash my hands.",
+        "translation": {
+          "fr": "D'abord, je me lave les mains.",
+          "de": "Zuerst wasche ich mir die Hände."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "First introduces the very first step or event.",
+        "fr": "First introduit la toute première étape ou le tout premier événement.",
+        "de": "First leitet den allerersten Schritt oder das erste Ereignis ein."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "To make tea, ",
+        "after": ", boil the water.",
+        "accepted": { "answers": ["first"] },
+        "referenceTargetIds": ["first", "suddenly", "later", "in-the-end"],
+        "explanation": {
+          "en": "First starts the steps of making tea.",
+          "fr": "First commence la suite d'étapes pour faire du thé.",
+          "de": "First eröffnet die Schritte der Teezubereitung."
+        }
+      },
+      "listeningOptionTargetIds": ["first", "at-first", "finally", "then"]
+    },
+    {
+      "id": "at-first",
+      "term": "at first",
+      "translations": { "fr": ["au début"], "de": ["am Anfang"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "at first",
+      "examForms": ["at first"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/æt fɜːst/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "At first, the film was boring.",
+        "translation": {
+          "fr": "Au début, le film était ennuyeux.",
+          "de": "Am Anfang war der Film langweilig."
+        }
+      },
+      "ambiguityNote": {
+        "en": "At first often means that things changed later. First starts a list of steps.",
+        "fr": "At first suggère souvent que les choses ont changé ensuite. First ouvre une liste d'étapes.",
+        "de": "At first deutet oft an, dass sich später etwas geändert hat. First eröffnet eine Liste von Schritten."
+      },
+      "explanation": {
+        "en": "At first describes how things were in the beginning, before a change.",
+        "fr": "At first décrit comment les choses étaient au début, avant un changement.",
+        "de": "At first beschreibt, wie es am Anfang war, vor einer Veränderung."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "I was shy ",
+        "after": ", but now I have many friends.",
+        "accepted": { "answers": ["at first"] },
+        "referenceTargetIds": ["at-first", "suddenly", "next", "in-the-end"],
+        "explanation": {
+          "en": "At first talks about the beginning, before things changed.",
+          "fr": "At first parle du début, avant que les choses changent.",
+          "de": "At first spricht vom Anfang, bevor sich etwas änderte."
+        }
+      },
+      "listeningOptionTargetIds": ["at-first", "first", "after-that", "finally"]
+    },
+    {
+      "id": "then",
+      "term": "then",
+      "translations": { "fr": ["puis"], "de": ["dann"] },
+      "wordClass": "adverb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "then",
+      "examForms": ["then"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ðen/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "I made coffee, then I sat down.",
+        "translation": {
+          "fr": "J'ai fait du café, puis je me suis assis.",
+          "de": "Ich habe Kaffee gemacht, dann habe ich mich hingesetzt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Then links two events: one happens after the other.",
+        "fr": "Then relie deux événements : l'un arrive après l'autre.",
+        "de": "Then verbindet zwei Ereignisse: Das eine passiert nach dem anderen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Mix the eggs and sugar, and ",
+        "after": " add the flour.",
+        "accepted": { "answers": ["then"] },
+        "referenceTargetIds": ["then", "suddenly", "meanwhile", "in-the-end"],
+        "explanation": {
+          "en": "Then shows the next step in a recipe.",
+          "fr": "Then indique l'étape suivante d'une recette.",
+          "de": "Then zeigt den nächsten Schritt im Rezept."
+        }
+      },
+      "listeningOptionTargetIds": ["then", "next", "later", "suddenly"]
+    },
+    {
+      "id": "next",
+      "term": "next",
+      "translations": { "fr": ["ensuite"], "de": ["als Nächstes"] },
+      "wordClass": "adverb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "next",
+      "examForms": ["next"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/nekst/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Next, add the milk.",
+        "translation": {
+          "fr": "Ensuite, ajoutez le lait.",
+          "de": "Als Nächstes gibst du die Milch dazu."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Next gives the following step, right after the one before.",
+        "fr": "Next donne l'étape suivante, juste après la précédente.",
+        "de": "Next nennt den folgenden Schritt direkt nach dem vorherigen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": { "fr": "ensuite, à l'étape suivante", "de": "als Nächstes" },
+      "gap": {
+        "before": "Step one is done. What do we do ",
+        "after": "?",
+        "accepted": { "answers": ["next"] },
+        "referenceTargetIds": ["next", "suddenly", "in-the-end", "at-first"],
+        "explanation": {
+          "en": "Next asks about the following step.",
+          "fr": "Next demande quelle est l'étape suivante.",
+          "de": "Next fragt nach dem folgenden Schritt."
+        }
+      },
+      "listeningOptionTargetIds": ["next", "then", "first", "after-that"]
+    },
+    {
+      "id": "after-that",
+      "term": "after that",
+      "translations": { "fr": ["après cela"], "de": ["danach"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "after that",
+      "examForms": ["after that"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈɑːftə ðæt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "After that, we went home.",
+        "translation": {
+          "fr": "Après cela, nous sommes rentrés.",
+          "de": "Danach sind wir nach Hause gegangen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "After that means after the event you just mentioned.",
+        "fr": "After that signifie après l'événement qu'on vient de mentionner.",
+        "de": "After that bedeutet nach dem Ereignis, das du gerade genannt hast."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "The film finished, and we went home ",
+        "after": ".",
+        "accepted": { "answers": ["after that"] },
+        "referenceTargetIds": ["after-that", "suddenly", "meanwhile", "at-first"],
+        "explanation": {
+          "en": "After that links going home to the end of the film.",
+          "fr": "After that relie le retour à la fin du film.",
+          "de": "After that verbindet das Heimgehen mit dem Ende des Films."
+        }
+      },
+      "listeningOptionTargetIds": ["after-that", "later", "then", "at-first"]
+    },
+    {
+      "id": "later",
+      "term": "later",
+      "translations": { "fr": ["plus tard"], "de": ["später"] },
+      "wordClass": "adverb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "later",
+      "examForms": ["later"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈleɪtə/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "I saw him later.",
+        "translation": { "fr": "Je l'ai vu plus tard.", "de": "Ich habe ihn später gesehen." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Later means at a time after now or after the time you are talking about.",
+        "fr": "Later signifie à un moment après maintenant ou après le moment dont on parle.",
+        "de": "Later bedeutet zu einem Zeitpunkt nach jetzt oder nach der besprochenen Zeit."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "I'm busy now, but I can call you ",
+        "after": ".",
+        "accepted": { "answers": ["later"] },
+        "referenceTargetIds": ["later", "suddenly", "at-first", "in-the-end"],
+        "explanation": {
+          "en": "Later means at a time after now.",
+          "fr": "Later veut dire à un moment après maintenant.",
+          "de": "Later bedeutet zu einem Zeitpunkt nach jetzt."
+        }
+      },
+      "listeningOptionTargetIds": ["later", "then", "after-that", "meanwhile"]
+    },
+    {
+      "id": "meanwhile",
+      "term": "meanwhile",
+      "translations": { "fr": ["pendant ce temps"], "de": ["inzwischen"] },
+      "wordClass": "adverb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "meanwhile",
+      "examForms": ["meanwhile"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈmiːnwaɪl/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Meanwhile, I was reading a book.",
+        "translation": {
+          "fr": "Pendant ce temps, je lisais un livre.",
+          "de": "Inzwischen habe ich ein Buch gelesen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Meanwhile shows that two things happen at the same time.",
+        "fr": "Meanwhile montre que deux choses se passent en même temps.",
+        "de": "Meanwhile zeigt, dass zwei Dinge gleichzeitig passieren."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Mum cooked dinner, and ",
+        "after": " Dad cleaned the kitchen.",
+        "accepted": { "answers": ["meanwhile"] },
+        "referenceTargetIds": ["meanwhile", "first", "suddenly", "in-the-end"],
+        "explanation": {
+          "en": "Meanwhile shows that both jobs happened at the same time.",
+          "fr": "Meanwhile montre que les deux tâches se faisaient en même temps.",
+          "de": "Meanwhile zeigt, dass beide Arbeiten gleichzeitig geschahen."
+        }
+      },
+      "listeningOptionTargetIds": ["meanwhile", "finally", "in-the-end", "later"]
+    },
+    {
+      "id": "suddenly",
+      "term": "suddenly",
+      "translations": { "fr": ["soudain"], "de": ["plötzlich"] },
+      "wordClass": "adverb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "suddenly",
+      "examForms": ["suddenly"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈsʌdənli/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Suddenly, the lights went out.",
+        "translation": {
+          "fr": "Soudain, les lumières se sont éteintes.",
+          "de": "Plötzlich ging das Licht aus."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Suddenly introduces something quick and unexpected.",
+        "fr": "Suddenly introduit quelque chose de rapide et d'inattendu.",
+        "de": "Suddenly leitet etwas Schnelles und Unerwartetes ein."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "We were walking in the park when ",
+        "after": " it began to rain.",
+        "accepted": { "answers": ["suddenly"] },
+        "referenceTargetIds": ["suddenly", "first", "next", "meanwhile"],
+        "explanation": {
+          "en": "Suddenly fits because the rain was quick and unexpected.",
+          "fr": "Suddenly convient car la pluie est rapide et inattendue.",
+          "de": "Suddenly passt, weil der Regen schnell und unerwartet kam."
+        }
+      },
+      "listeningOptionTargetIds": ["suddenly", "finally", "first", "next"]
+    },
+    {
+      "id": "finally",
+      "term": "finally",
+      "translations": { "fr": ["enfin"], "de": ["schließlich"] },
+      "wordClass": "adverb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "finally",
+      "examForms": ["finally"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈfaɪnəli/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Finally, we arrived at the hotel.",
+        "translation": {
+          "fr": "Enfin, nous sommes arrivés à l'hôtel.",
+          "de": "Schließlich sind wir im Hotel angekommen."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Finally often shows the last step, or something you waited a long time for.",
+        "fr": "Finally indique souvent la dernière étape, ou quelque chose qu'on a longtemps attendu.",
+        "de": "Finally zeigt oft den letzten Schritt oder etwas, worauf man lange gewartet hat."
+      },
+      "explanation": {
+        "en": "Finally shows the last step, or something that came after a long wait.",
+        "fr": "Finally indique la dernière étape, ou ce qui arrive après une longue attente.",
+        "de": "Finally zeigt den letzten Schritt oder etwas, das nach langem Warten kam."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "We waited for an hour, and ",
+        "after": " the bus arrived.",
+        "accepted": { "answers": ["finally"] },
+        "referenceTargetIds": ["finally", "at-first", "next", "meanwhile"],
+        "explanation": {
+          "en": "Finally fits because the bus came after a long wait.",
+          "fr": "Finally convient car le bus est arrivé après une longue attente.",
+          "de": "Finally passt, weil der Bus nach langem Warten kam."
+        }
+      },
+      "listeningOptionTargetIds": ["finally", "first", "suddenly", "in-the-end"]
+    },
+    {
+      "id": "in-the-end",
+      "term": "in the end",
+      "translations": { "fr": ["finalement", "à la fin"], "de": ["am Ende"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "in the end",
+      "examForms": ["in the end"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɪn ði ˈend/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "In the end, we took a taxi.",
+        "translation": {
+          "fr": "Finalement, nous avons pris un taxi.",
+          "de": "Am Ende haben wir ein Taxi genommen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "In the end gives the result after a long time or after many changes.",
+        "fr": "In the end donne le résultat après un long moment ou après plusieurs changements.",
+        "de": "In the end nennt das Ergebnis nach langer Zeit oder nach vielen Änderungen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": { "fr": "au bout du compte", "de": "am Ende" },
+      "gap": {
+        "before": "We argued for hours, but ",
+        "after": " we agreed.",
+        "accepted": { "answers": ["in the end"] },
+        "referenceTargetIds": ["in-the-end", "first", "meanwhile", "next"],
+        "explanation": {
+          "en": "In the end gives the final result after a long argument.",
+          "fr": "In the end donne le résultat final après une longue dispute.",
+          "de": "In the end nennt das Endergebnis nach langem Streit."
+        }
+      },
+      "listeningOptionTargetIds": ["in-the-end", "finally", "then", "next"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}
