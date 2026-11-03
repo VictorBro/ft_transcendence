@@ -428,7 +428,7 @@
               "answerExplanation": {
                 "en": "The person who receives the letter needs the dative: ihm, before den Brief.",
                 "fr": "La personne qui reçoit la lettre est au datif : ihm, avant den Brief.",
-                "de": "Die Person, die den Brief bekommt, steht im Dativ: ihm, vor den Brief."
+                "de": "Die Person, die den Brief bekommt, steht im Dativ: ihm, vor dem Nomen den Brief."
               }
             },
             {
@@ -479,7 +479,7 @@
               "answerExplanation": {
                 "en": "Two nouns: the dative comes first, so den Schülern (dative plural) before die Regel.",
                 "fr": "Deux noms : le datif vient d’abord, donc den Schülern (datif pluriel) avant die Regel.",
-                "de": "Zwei Nomen: Der Dativ steht zuerst, also den Schülern (Dativ Plural) vor die Regel."
+                "de": "Zwei Nomen: Der Dativ steht zuerst, also den Schülern (Dativ Plural) vor dem Nomen die Regel."
               }
             }
           ]
@@ -837,13 +837,14 @@
               ],
               "acceptedOrders": [
                 ["w1", "w2", "w3", "w4", "w5", "w6", "w7", "w8", "w9", "w10", "w11", "w12", "w13"],
-                ["w1", "w2", "w3", "w4", "w5", "w8", "w6", "w7", "w9", "w10", "w11", "w12", "w13"]
+                ["w1", "w2", "w3", "w4", "w5", "w8", "w6", "w7", "w9", "w10", "w11", "w12", "w13"],
+                ["w1", "w2", "w8", "w3", "w4", "w5", "w6", "w7", "w9", "w10", "w11", "w12", "w13"]
               ],
               "ruleIds": ["r-directional", "r-adverbial"],
               "answerExplanation": {
                 "en": "The adverbial heute may stand before or after das Buch; the complement of direction ins Regal stays last.",
                 "fr": "L’adverbial heute peut se placer avant ou après das Buch ; le complément de direction ins Regal reste en dernier.",
-                "de": "Die Angabe heute kann vor oder nach das Buch stehen; die Richtungsergänzung ins Regal bleibt zuletzt."
+                "de": "Die Angabe heute kann vor oder nach dem Nomen das Buch stehen; die Richtungsergänzung ins Regal bleibt zuletzt."
               }
             },
             {
@@ -934,7 +935,7 @@
               "answerExplanation": {
                 "en": "Pronoun ihr first; bald before or after das Paket; auf den Tisch stays last, before the verbs.",
                 "fr": "D’abord le pronom ihr ; bald avant ou après das Paket ; auf den Tisch reste en dernier, avant les verbes.",
-                "de": "Zuerst das Pronomen ihr; bald vor oder nach das Paket; auf den Tisch bleibt zuletzt, vor den Verben."
+                "de": "Zuerst das Pronomen ihr; bald vor oder nach dem Nomen das Paket; auf den Tisch bleibt zuletzt, vor den Verben."
               }
             }
           ]
@@ -1089,7 +1090,10 @@
                 { "tokenId": "w7", "text": "ihr" },
                 { "tokenId": "w4", "text": "dass" }
               ],
-              "acceptedOrders": [["w1", "w2", "w3", "w4", "w5", "w6", "w7", "w8", "w9", "w10"]],
+              "acceptedOrders": [
+                ["w1", "w2", "w3", "w4", "w5", "w6", "w7", "w8", "w9", "w10"],
+                ["w1", "w2", "w7", "w3", "w4", "w5", "w6", "w8", "w9", "w10"]
+              ],
               "ruleIds": ["r-two-objects"],
               "answerExplanation": {
                 "en": "Two pronouns: accusative es before dative ihr.",
@@ -1114,7 +1118,10 @@
                 { "tokenId": "w3", "text": "," }
               ],
               "acceptedOrders": [
-                ["w1", "w2", "w3", "w4", "w5", "w6", "w7", "w8", "w9", "w10", "w11"]
+                ["w1", "w2", "w3", "w4", "w5", "w6", "w7", "w8", "w9", "w10", "w11"],
+                ["w1", "w10", "w9", "w3", "w4", "w5", "w6", "w7", "w8", "w2", "w11"],
+                ["w1", "w2", "w6", "w3", "w4", "w5", "w7", "w8", "w9", "w10", "w11"],
+                ["w1", "w10", "w6", "w9", "w3", "w4", "w5", "w7", "w8", "w2", "w11"]
               ],
               "ruleIds": ["r-pronoun-first"],
               "answerExplanation": {
@@ -1256,13 +1263,13 @@
                 [
                   "w1",
                   "w2",
+                  "w6",
                   "w3",
                   "w4",
                   "w5",
-                  "w6",
+                  "w7",
                   "w8",
                   "w9",
-                  "w7",
                   "w10",
                   "w11",
                   "w12",
@@ -1273,9 +1280,9 @@
               ],
               "ruleIds": ["r-adverbial", "r-directional"],
               "answerExplanation": {
-                "en": "Pronoun ihr first, heute before or after einen Zettel, and auf den Tisch last.",
-                "fr": "D’abord le pronom ihr, heute avant ou après einen Zettel, et auf den Tisch en dernier.",
-                "de": "Zuerst das Pronomen ihr, heute vor oder nach einen Zettel, auf den Tisch zuletzt."
+                "en": "Pronoun ihr first, then heute before the indefinite noun einen Zettel, and auf den Tisch last.",
+                "fr": "D’abord le pronom ihr, puis heute avant le nom indéfini einen Zettel, et auf den Tisch en dernier.",
+                "de": "Zuerst das Pronomen ihr, dann heute vor dem unbestimmten Nomen einen Zettel, auf den Tisch zuletzt."
               }
             },
             {
@@ -1363,7 +1370,7 @@
               "answerExplanation": {
                 "en": "The adverbial heute may stand before or after den Wagen; the complement of direction in die Garage stays last.",
                 "fr": "L’adverbial heute peut se placer avant ou après den Wagen ; le complément de direction in die Garage reste en dernier.",
-                "de": "Die Angabe heute kann vor oder nach den Wagen stehen; die Richtungsergänzung in die Garage bleibt zuletzt."
+                "de": "Die Angabe heute kann vor oder nach dem Nomen den Wagen stehen; die Richtungsergänzung in die Garage bleibt zuletzt."
               }
             },
             {

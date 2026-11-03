@@ -494,7 +494,7 @@
         "fr": "nationalité (au sens juridique)"
       },
       "gap": {
-        "before": "Nach acht Jahren kann sie die deutsche ",
+        "before": "Nach fünf Jahren kann sie die deutsche ",
         "after": " beantragen.",
         "accepted": { "answers": ["Staatsangehörigkeit", "Staatsbürgerschaft"] },
         "referenceTargetIds": ["staatsangehoerigkeit", "abschiebung", "flucht", "vielfalt"],

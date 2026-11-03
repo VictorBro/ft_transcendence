@@ -265,7 +265,7 @@
               "hint": {
                 "en": "since; it still continues",
                 "fr": "depuis ; cela continue encore",
-                "de": "seit; es dauert noch an"
+                "de": "es hat früher begonnen und dauert noch an"
               },
               "ruleIds": ["rule-seit"],
               "answerExplanation": {

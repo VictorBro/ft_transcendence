@@ -21,9 +21,9 @@
   "kind": "vocabulary",
   "theme": "personal_identification",
   "coverageNotes": {
-    "en": "Twelve character adjectives in two groups: how a person presents themselves and feels, and how a person treats others. Compound adjectives in -freudig, -bewusst and -bereit and words about attitudes are left to the following lessons.",
-    "fr": "Douze adjectifs de caractère en deux groupes : comment une personne se présente et se sent, et comment elle se comporte avec les autres. Les adjectifs composés en -freudig, -bewusst et -bereit et les mots sur les attitudes sont traités dans les leçons suivantes.",
-    "de": "Zwölf Charakteradjektive in zwei Gruppen: wie sich eine Person zeigt und fühlt und wie sie mit anderen umgeht. Zusammengesetzte Adjektive auf -freudig, -bewusst und -bereit sowie Wörter für Einstellungen folgen in den nächsten Lektionen."
+    "en": "Twelve character adjectives in two groups: how a person presents themselves and feels, and how a person treats others. Further compound adjectives in -freudig, -bewusst and -bereit and words about attitudes are left to the following lessons.",
+    "fr": "Douze adjectifs de caractère en deux groupes : comment une personne se présente et se sent, et comment elle se comporte avec les autres. D’autres adjectifs composés en -freudig, -bewusst et -bereit et les mots sur les attitudes sont traités dans les leçons suivantes.",
+    "de": "Zwölf Charakteradjektive in zwei Gruppen: wie sich eine Person zeigt und fühlt und wie sie mit anderen umgeht. Weitere zusammengesetzte Adjektive auf -freudig, -bewusst und -bereit sowie Wörter für Einstellungen folgen in den nächsten Lektionen."
   },
   "targetCount": 12,
   "countRationale": {
@@ -231,7 +231,7 @@
       "ambiguityNote": {
         "en": "Do not confuse ehrgeizig (ambitious) with geizig (stingy): the first part Ehr- means honour.",
         "fr": "Ne confondez pas ehrgeizig (ambitieux) et geizig (avare) : la première partie Ehr- signifie l'honneur.",
-        "de": "Nicht verwechseln: ehrgeizig (ambitious) und geizig (stingy). Der erste Teil Ehr- bedeutet Ehre."
+        "de": "Nicht verwechseln: ehrgeizig (will viel erreichen) und geizig (gibt ungern Geld aus). Der erste Teil Ehr- kommt von Ehre."
       },
       "explanation": {
         "en": "Ehrgeizig describes someone who strongly wants to succeed and reach high goals.",
@@ -403,7 +403,7 @@
       "ambiguityNote": {
         "en": "Do not confuse geizig (stingy) with ehrgeizig (ambitious): they sound alike but mean different things.",
         "fr": "Ne confondez pas geizig (avare) et ehrgeizig (ambitieux) : ils se ressemblent à l'oreille mais n'ont pas le même sens.",
-        "de": "Nicht verwechseln: geizig (stingy) und ehrgeizig (ambitious) klingen ähnlich, bedeuten aber Verschiedenes."
+        "de": "Nicht verwechseln: geizig (gibt ungern Geld aus) und ehrgeizig (will viel erreichen) klingen ähnlich, bedeuten aber Verschiedenes."
       },
       "explanation": {
         "en": "Geizig describes someone who does not want to spend or give money, even when it would be normal.",

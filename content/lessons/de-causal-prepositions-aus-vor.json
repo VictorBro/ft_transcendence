@@ -1010,7 +1010,7 @@
               "tokens": [
                 { "tokenId": "t-4", "text": "aus" },
                 { "tokenId": "t-6", "text": "." },
-                { "tokenId": "t-2", "text": "gäste" },
+                { "tokenId": "t-2", "text": "Gäste" },
                 { "tokenId": "t-5", "text": "Höflichkeit" },
                 { "tokenId": "t-3", "text": "applaudieren" },
                 { "tokenId": "t-1", "text": "Die" }

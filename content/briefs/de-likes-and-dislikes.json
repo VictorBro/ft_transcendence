@@ -516,7 +516,7 @@
     {
       "id": "schwaermen",
       "term": "schwärmen für",
-      "translations": { "en": ["rave about"], "fr": ["s’enthousiasmer pour"] },
+      "translations": { "en": ["adore"], "fr": ["s’enthousiasmer pour"] },
       "wordClass": "verb",
       "genders": [],
       "number": null,
@@ -529,28 +529,28 @@
       "context": {
         "sentence": "Sie schwärmt für ihren Lieblingssänger.",
         "translation": {
-          "en": "She raves about her favourite singer.",
+          "en": "She adores her favourite singer.",
           "fr": "Elle s’enthousiasme pour son chanteur préféré."
         }
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "Schwärmen für means to talk with great admiration about a person or thing.",
-        "fr": "Schwärmen für signifie parler avec beaucoup d’admiration d’une personne ou d’une chose.",
-        "de": "Schwärmen für heißt, voller Bewunderung von jemandem oder etwas zu sprechen."
+        "en": "Schwärmen für means to be full of enthusiasm and admiration for a person or thing.",
+        "fr": "Schwärmen für signifie être plein d’enthousiasme et d’admiration pour une personne ou une chose.",
+        "de": "Schwärmen für heißt, voller Begeisterung und Bewunderung für jemanden oder etwas zu sein."
       },
       "genderExplanation": null,
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Sie kann stundenlang ",
-        "after": " für ihren Lieblingssänger.",
+        "before": "Viele Mädchen in meiner Klasse ",
+        "after": " für diesen Sänger.",
         "accepted": { "answers": ["schwärmen"] },
         "referenceTargetIds": ["schwaermen", "geschmack", "abneigung", "ausstehen"],
         "explanation": {
-          "en": "After „kann stundenlang“ you need an infinitive verb: schwärmen.",
-          "fr": "Après « kann stundenlang », il faut un verbe à l’infinitif : schwärmen.",
-          "de": "Nach „kann stundenlang“ braucht man ein Verb im Infinitiv: schwärmen."
+          "en": "The sentence needs a verb, and „für diesen Sänger“ goes with schwärmen für: schwärmen.",
+          "fr": "La phrase demande un verbe, et « für diesen Sänger » va avec schwärmen für : schwärmen.",
+          "de": "Der Satz braucht ein Verb, und „für diesen Sänger“ gehört zu schwärmen für: schwärmen."
         }
       },
       "listeningOptionTargetIds": ["schwaermen", "bevorzugen", "verrueckt", "begeistert"]
@@ -577,7 +577,7 @@
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "Ekelhaft describes something that makes you feel sick or very unhappy.",
+        "en": "Ekelhaft describes something that makes you feel sick or is very unpleasant.",
         "fr": "Ekelhaft décrit quelque chose qui donne la nausée ou qui est très désagréable.",
         "de": "Ekelhaft beschreibt etwas, das einem Übelkeit macht oder sehr unangenehm ist."
       },

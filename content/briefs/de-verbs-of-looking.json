@@ -103,7 +103,7 @@
       "gap": {
         "before": "Sie musste vorsichtig durch den Spalt im Zaun ",
         "after": ", um zu sehen, ob jemand kam.",
-        "accepted": { "answers": ["spähen"] },
+        "accepted": { "answers": ["spähen", "linsen"] },
         "referenceTargetIds": ["spaehen", "ueberfliegen", "mustern", "erblicken"],
         "explanation": {
           "en": "Only spähen fits: she looks out cautiously through a gap.",
@@ -238,7 +238,7 @@
       "gap": {
         "before": "Die Katze begann, den fremden Hund misstrauisch zu ",
         "after": ".",
-        "accepted": { "answers": ["beäugen"] },
+        "accepted": { "answers": ["beäugen", "mustern"] },
         "referenceTargetIds": ["beaeugen", "schielen", "gaffen", "blinzeln"],
         "explanation": {
           "en": "Only beäugen takes the dog as object and expresses suspicious looking.",
@@ -418,7 +418,7 @@
       "gap": {
         "before": "Steh nicht so herum und hör endlich auf, so dumm zu ",
         "after": "!",
-        "accepted": { "answers": ["glotzen"] },
+        "accepted": { "answers": ["glotzen", "gaffen"] },
         "referenceTargetIds": ["glotzen", "mustern", "ueberfliegen", "erblicken"],
         "explanation": {
           "en": "Glotzen is the colloquial, rude verb for dull staring.",
@@ -463,7 +463,7 @@
       "gap": {
         "before": "Bei dem Unfall blieben viele Schaulustige stehen und begannen zu ",
         "after": ".",
-        "accepted": { "answers": ["gaffen"] },
+        "accepted": { "answers": ["gaffen", "glotzen"] },
         "referenceTargetIds": ["gaffen", "blinzeln", "schielen", "beaeugen"],
         "explanation": {
           "en": "Gaffen fits bystanders watching an accident; beäugen would need an object.",
@@ -508,7 +508,7 @@
       "gap": {
         "before": "Sie konnte es nicht lassen, heimlich durchs Schlüsselloch zu ",
         "after": ".",
-        "accepted": { "answers": ["linsen"] },
+        "accepted": { "answers": ["linsen", "spähen"] },
         "referenceTargetIds": ["linsen", "ueberfliegen", "betrachten", "erblicken"],
         "explanation": {
           "en": "Linsen fits a secret peek through a keyhole and needs no object.",
@@ -598,7 +598,7 @@
       "gap": {
         "before": "Während der Klausur versuchte er, heimlich auf das Blatt seiner Nachbarin zu ",
         "after": ".",
-        "accepted": { "answers": ["schielen"] },
+        "accepted": { "answers": ["schielen", "linsen"] },
         "referenceTargetIds": ["schielen", "ueberfliegen", "erblicken", "betrachten"],
         "explanation": {
           "en": "Schielen auf means to glance secretly sideways at something.",

@@ -32,7 +32,7 @@
     "de": "Zwölf Verben ergeben zwei Gruppen zu sechs, passend zu den Zuordnungsseiten, und die Nuancen bleiben unterscheidbar."
   },
   "difficultyBalance": {
-    "en": "Most verbs are demanding because they differ only by nuance; the more familiar ones (hinken, waten) anchor each group.",
+    "en": "Most verbs are demanding because they differ only by nuance; the more familiar ones (hinken, waten) anchor the lesson.",
     "fr": "La plupart des verbes sont difficiles, car ils ne se distinguent que par des nuances ; les plus connus (hinken, waten) servent d’appui.",
     "de": "Die meisten Verben sind anspruchsvoll, weil sie sich nur in Nuancen unterscheiden; bekanntere wie hinken und waten dienen als Anker."
   },
@@ -469,7 +469,7 @@
       "ambiguityNote": null,
       "explanation": {
         "en": "Waten means walking through water, mud or similar, with the legs sunk in.",
-        "fr": "Waten signifie marcher dans l’eau, la boue ou similaire, les jambes enfoncées.",
+        "fr": "Waten signifie marcher dans l’eau, la boue, etc., les jambes enfoncées.",
         "de": "Waten bedeutet, durch Wasser, Schlamm o. Ä. zu gehen, mit eingesunkenen Beinen."
       },
       "genderExplanation": null,

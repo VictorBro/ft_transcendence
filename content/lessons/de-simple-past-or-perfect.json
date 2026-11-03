@@ -338,10 +338,7 @@
                 { "tokenId": "t-6", "text": "Film" },
                 { "tokenId": "t-7", "text": "gestern" }
               ],
-              "acceptedOrders": [
-                ["t-2", "t-4", "t-7", "t-3", "t-6", "t-1", "t-5"],
-                ["t-2", "t-4", "t-3", "t-6", "t-7", "t-1", "t-5"]
-              ],
+              "acceptedOrders": [["t-2", "t-4", "t-7", "t-3", "t-6", "t-1", "t-5"]],
               "ruleIds": ["r-spoken"],
               "answerExplanation": {
                 "en": "In conversation the Perfekt is used: habe in second position, the participle gesehen at the end.",

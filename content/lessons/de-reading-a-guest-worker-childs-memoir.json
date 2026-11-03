@@ -30,11 +30,11 @@
       "title": "Zwei Schritte hinter meinen Eltern",
       "meta": ["Aus den Erinnerungen von Hülya Demir", "Köln-Kalk, 1976"],
       "paragraphs": [
-        "Jeden Morgen packte meine Mutter mir zwei Brote ein, mit Schafskäse und Gurke, in Pergamentpapier gewickelt. In der Schule aß ich sie auf der Toilette. Die anderen Kinder hatten Leberwurst und Äpfel, und wenn Frau Behrens fragte, warum ich in der Pause nie im Klassenzimmer bleibe, sagte ich, ich müsse noch Hausaufgaben abschreiben. Nie hat jemand mich gezwungen, mein Brot zu verstecken. Ich habe es einfach getan, so selbstverständlich, wie man den Mantel an die Garderobe hängt.",
+        "Jeden Morgen packte meine Mutter mir zwei Brote ein, mit Schafskäse und Gurke, in Pergamentpapier gewickelt. In der Schule aß ich sie auf der Toilette. Die anderen Kinder hatten Leberwurst und Äpfel, und wenn Frau Behrens fragte, warum ich in der Pause nie im Klassenzimmer bleibe, sagte ich, ich müsse noch Hausaufgaben abschreiben. Nie hat mich jemand gezwungen, mein Brot zu verstecken. Ich habe es einfach getan, so selbstverständlich, wie man den Mantel an die Garderobe hängt.",
         "Am Elternabend trug mein Vater seinen einzigen Anzug, den dunkelblauen von der Hochzeit meines Onkels. Er setzte sich in die letzte Reihe und hielt seine Mütze auf den Knien, als wartete er auf einen Bescheid. Ich saß neben ihm und studierte die Maserung des Tisches. Als Frau Behrens ihn ansprach, langsam und laut, als sei er schwerhörig, nickte er zu jedem Satz. Auf dem Heimweg ging ich zwei Schritte hinter meinen Eltern, damit niemand uns für eine Familie hielt. Mein Vater sagte nichts. Er verlangsamte nur seinen Schritt, bis ich wieder neben ihm war, und legte mir, ohne mich anzusehen, die Hand auf den Kopf.",
         "Zu Hause war es anders. Dort war meine Mutter eine Frau, die den ganzen Block mit ihrem Lachen weckte, die Nachbarinnen aus drei Stockwerken zum Tee einlud und Geschichten aus Kayseri erzählte, bei denen sich alle die Bäuche hielten. Auf dem Amt dagegen sagte sie nur „Ja“ und „Danke“, und ich, acht Jahre alt, übersetzte, was sie gern gesagt hätte. Ich lernte früh, welche Wörter einen Beamten freundlich stimmen und welche nicht. Ich war stolz darauf, das gebe ich zu, auf eine Art, die sich anfühlte wie ein schlecht sitzender Schuh: Ich war die Einzige, die das konnte, und wünschte mir trotzdem, ich müsste es nicht können.",
         "Im Sommer 1976 fuhren wir zum ersten Mal mit dem Auto in die Türkei, zwei Tage und zwei Nächte, den Kofferraum voller Geschenke. An der Grenze zeigte mein Vater seinen Pass mit gerader Haltung, wie jemand, der nichts zu verbergen hat. In Kayseri riefen die Cousinen mich „Almancı“, die Deutsche, und lachten über meinen Akzent, wenn ich Türkisch sprach. Ich lachte mit, weil ich nicht wusste, was ich sonst tun sollte. Abends lag ich auf dem Dach, zwischen den Matratzen, und fragte mich, in welcher Sprache man eigentlich träumt, wenn man in keiner ganz zu Hause ist.",
-        "Wenn ich heute in der Straßenbahn Kinder sehe, die ihr Pausenbrot auf der Toilette essen, erkenne ich sie sofort. Meine Mutter fragte mich einmal, Jahre später, warum ich als Kind nie jemanden zum Spielen mitgebracht habe. Ich sagte, ich hätte keine Zeit gehabt. Sie nickte und stellte mir ein Glas Tee hin, wie sie es immer tat, wenn sie etwas verstand, das sie nicht aussprechen wollte."
+        "Wenn ich heute in der Straßenbahn Kinder sehe, die ihr Pausenbrot in der Tasche verstecken, erkenne ich sie sofort. Meine Mutter fragte mich einmal, Jahre später, warum ich als Kind nie jemanden zum Spielen mitgebracht habe. Ich sagte, ich hätte keine Zeit gehabt. Sie nickte und stellte mir ein Glas Tee hin, wie sie es immer tat, wenn sie etwas verstand, das sie nicht aussprechen wollte."
       ],
       "highlights": [
         { "keywordId": "verstecken", "text": "verstecken" },
@@ -52,7 +52,7 @@
         "Mein Vater arbeitete am Band im Volkswagenwerk, und er wusch sich jeden Abend die Hände so gründlich, als wolle er das Werk aus seiner Haut schrubben. Sonntags aber, auf dem Weg zur Kirmes, zog er sein weißes Hemd an und kämmte sich zweimal. Ich ging neben ihm her, aufrecht, und sah mich um, ob uns jemand beobachtete.",
         "Am Schießstand gewann er für mich einen Plüschbären. Der Budenbesitzer sagte etwas zu seinem Kollegen und lachte, und mein Vater, der jedes Wort verstanden hatte, bedankte sich höflich, als wäre nichts gewesen. Den Bären trug ich den ganzen Abend im Arm. Erst zu Hause stellte ich fest, dass ich ihn nicht mehr mochte.",
         "Herr Krüger von nebenan, der uns jahrelang nur mit einem knappen Nicken grüßte, stand am nächsten Morgen an der Gartenhecke. Er fragte, ob mein Vater sich mal sein Moped ansehen könne, es springe nicht an. Zwanzig Minuten später lagen beide auf dem Pflaster, und die Teile des Motors breiteten sich vor ihnen aus wie ein Puzzle. Als es knatterte, klopfte Herr Krüger meinem Vater auf die Schulter. Mein Vater lächelte, zum ersten Mal seit Tagen.",
-        "Beim Abendessen sagte meine Mutter: „Siehst du, sie sind nicht alle so.“ Mein Vater schwieg, schob den Reis auf seinem Teller hin und her und sagte schließlich, Krüger habe ihn Herr Aksoy genannt. Zum ersten Mal. Ich merkte, dass er diesen Satz schon den ganzen Tag mit sich herumtrug."
+        "Beim Abendessen sagte meine Mutter: „Siehst du, sie sind nicht alle so.“ Mein Vater schwieg, schob den Reis auf seinem Teller hin und her und sagte schließlich, Krüger habe ihn Herrn Aksoy genannt. Zum ersten Mal. Ich merkte, dass er diesen Satz schon den ganzen Tag mit sich herumtrug."
       ],
       "highlights": []
     }
@@ -362,14 +362,14 @@
               "answerOptionId": "o1",
               "answerExplanation": {
                 "en": "He asks whether the father could look at his moped, which will not start.",
-                "fr": "Il demande si le père peut regarder son mobylette, qui ne démarre pas.",
+                "fr": "Il demande si le père peut regarder sa mobylette, qui ne démarre pas.",
                 "de": "Er fragt, ob der Vater sich sein Moped ansehen könne, das nicht anspringt."
               }
             },
             {
               "type": "reading_choice",
               "itemId": "x-anrede",
-              "question": "Warum trägt der Vater den Satz „Herr Aksoy“ den ganzen Tag mit sich herum?",
+              "question": "Warum trägt der Vater den ganzen Tag mit sich herum, dass Krüger ihn „Herr Aksoy“ genannt hat?",
               "options": [
                 { "optionId": "o1", "text": "Er mag seinen Nachnamen nicht." },
                 { "optionId": "o2", "text": "Er hat Krüger nicht richtig verstanden." },

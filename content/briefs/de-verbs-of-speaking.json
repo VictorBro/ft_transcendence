@@ -149,7 +149,7 @@
       "gap": {
         "before": "Der alte Mann ",
         "after": " beim Zeitunglesen leise vor sich hin.",
-        "accepted": { "answers": ["murmelt"] },
+        "accepted": { "answers": ["murmelt", "murmelte"] },
         "referenceTargetIds": ["murmeln", "keifen", "kreischen", "bruellen"],
         "explanation": {
           "en": "Murmeln fits: he speaks quietly, to himself.",
@@ -191,7 +191,7 @@
       "gap": {
         "before": "Auf dem Flur ",
         "after": " man sich geheimnisvoll zu, der Direktor werde bald zurücktreten.",
-        "accepted": { "answers": ["raunt"] },
+        "accepted": { "answers": ["raunt", "flüstert"] },
         "referenceTargetIds": ["raunen", "bruellen", "kreischen", "schwafeln"],
         "explanation": {
           "en": "Raunen fits: a secretive rumour is passed on.",
@@ -233,7 +233,7 @@
       "gap": {
         "before": "Der Verkäufer ",
         "after": " mit honigsüßer Stimme: „Für Sie mache ich einen Sonderpreis.“",
-        "accepted": { "answers": ["säuselte"] },
+        "accepted": { "answers": ["säuselte", "säuselt"] },
         "referenceTargetIds": ["saeuseln", "bruellen", "keifen", "lallen"],
         "explanation": {
           "en": "Säuseln fits: the honeyed voice is ingratiating.",
@@ -320,7 +320,7 @@
       "gap": {
         "before": "Vor lauter Verlegenheit ",
         "after": " er nur ein paar zusammenhanglose Worte.",
-        "accepted": { "answers": ["stammelte"] },
+        "accepted": { "answers": ["stammelte", "stammelt"] },
         "referenceTargetIds": ["stammeln", "saeuseln", "keifen", "zischen"],
         "explanation": {
           "en": "Stammeln fits: embarrassment makes his speech halting and incoherent.",
@@ -375,7 +375,10 @@
     {
       "id": "schwafeln",
       "term": "schwafeln",
-      "translations": { "en": ["waffle", "blather"], "fr": ["radoter", "bavasser"] },
+      "translations": {
+        "en": ["waffle", "blather"],
+        "fr": ["parler pour ne rien dire", "bavasser"]
+      },
       "wordClass": "verb",
       "genders": [],
       "number": null,
@@ -389,7 +392,7 @@
         "sentence": "Er schwafelt in jeder Sitzung über Dinge, von denen er nichts versteht.",
         "translation": {
           "en": "In every meeting he waffles on about things he knows nothing about.",
-          "fr": "À chaque réunion, il radote sur des sujets qu’il ne connaît pas."
+          "fr": "À chaque réunion, il bavasse sur des sujets qu’il ne connaît pas."
         }
       },
       "ambiguityNote": null,
@@ -429,7 +432,7 @@
       "difficulty": "core",
       "context": {
         "sentence": "„Raus hier!“, zischte er.",
-        "translation": { "en": "“Get out!” he hissed.", "fr": "« Dehors ! », siffla-t-il." }
+        "translation": { "en": "“Get out!” he hissed.", "fr": "« Dehors ! » siffla-t-il." }
       },
       "ambiguityNote": null,
       "explanation": {
@@ -443,7 +446,7 @@
       "gap": {
         "before": "„Sei endlich still!“, ",
         "after": " sie ihm zwischen den Zähnen zu.",
-        "accepted": { "answers": ["zischte"] },
+        "accepted": { "answers": ["zischte", "zischt"] },
         "referenceTargetIds": ["zischen", "lallen", "schwafeln", "saeuseln"],
         "explanation": {
           "en": "Zischen fits: a sharp command through clenched teeth.",
@@ -470,7 +473,7 @@
         "sentence": "Die beiden Nachbarinnen keiften sich über den Gartenzaun an.",
         "translation": {
           "en": "The two neighbours were screeching at each other over the garden fence.",
-          "fr": "Les deux voisines se criaillaient dessus par-dessus la clôture du jardin."
+          "fr": "Les deux voisines s’invectivaient d’une voix aigre par-dessus la clôture du jardin."
         }
       },
       "ambiguityNote": {
@@ -572,7 +575,7 @@
       "examPrompt": null,
       "gap": {
         "before": "Der Trainer ",
-        "after": " seine Anweisungen so laut über den Platz, dass man ihn im ganzen Stadion hörte.",
+        "after": " seine Anweisungen so laut über den Platz, dass man ihn im ganzen Stadion hört.",
         "accepted": { "answers": ["brüllt"] },
         "referenceTargetIds": ["bruellen", "fluestern", "raunen", "saeuseln"],
         "explanation": {

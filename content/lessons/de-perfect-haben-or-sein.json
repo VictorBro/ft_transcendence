@@ -490,8 +490,8 @@
               "hint": null,
               "ruleIds": ["r-bleiben"],
               "answerExplanation": {
-                "en": "bleiben always forms the Perfekt with sein here: wir sind geblieben.",
-                "fr": "bleiben forme ici le Perfekt avec sein : wir sind geblieben.",
+                "en": "bleiben always forms the Perfekt with sein: wir sind geblieben.",
+                "fr": "bleiben forme toujours le Perfekt avec sein : wir sind geblieben.",
                 "de": "bleiben bildet das Perfekt mit sein: wir sind geblieben."
               }
             },
@@ -892,10 +892,7 @@
                 { "tokenId": "t-4", "text": "haben" },
                 { "tokenId": "t-5", "text": "Wir" }
               ],
-              "acceptedOrders": [
-                ["t-5", "t-4", "t-3", "t-2", "t-1"],
-                ["t-5", "t-4", "t-2", "t-3", "t-1"]
-              ],
+              "acceptedOrders": [["t-5", "t-4", "t-3", "t-2", "t-1"]],
               "ruleIds": ["r-haben"],
               "answerExplanation": {
                 "en": "Ordering pizza has an accusative object: haben.",

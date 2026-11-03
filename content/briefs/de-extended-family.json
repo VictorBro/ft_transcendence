@@ -433,7 +433,7 @@
       "term": "Verwandten",
       "translations": { "en": ["relatives"], "fr": ["les proches", "les parents"] },
       "wordClass": "noun",
-      "genders": ["feminine"],
+      "genders": ["masculine", "feminine"],
       "number": "plural",
       "teachingForm": "die Verwandten",
       "examForms": ["die Verwandten"],
@@ -455,9 +455,9 @@
         "de": "Die Verwandten sind alle Personen, die zur Familie gehören."
       },
       "genderExplanation": {
-        "en": "Verwandten is plural, and the plural article is always die; here it counts as feminine.",
-        "fr": "Verwandten est au pluriel et l’article pluriel est toujours die ; ici, il compte comme féminin.",
-        "de": "Verwandten steht im Plural, und der Plural-Artikel ist immer die; hier zählt es als feminin."
+        "en": "Verwandten is plural, so its article is die. The singular is der Verwandte (a man) or die Verwandte (a woman).",
+        "fr": "Verwandten est au pluriel : l’article est die. Au singulier, on dit der Verwandte (un homme) ou die Verwandte (une femme).",
+        "de": "Verwandten steht im Plural, daher lautet der Artikel die. Im Singular heißt es der Verwandte (Mann) oder die Verwandte (Frau)."
       },
       "matchingLabel": null,
       "examPrompt": null,

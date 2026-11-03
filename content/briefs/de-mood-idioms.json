@@ -559,7 +559,7 @@
         "fr": "péter les plombs (un seul verbe familier)"
       },
       "gap": {
-        "before": "Wenn du mein Handy noch einmal kaputt machst, rastet er total ",
+        "before": "Wenn du sein Handy noch einmal kaputt machst, rastet er total ",
         "after": ".",
         "accepted": { "answers": ["aus"] },
         "referenceTargetIds": ["ausrasten", "gut-drauf", "geknickt", "beide-ohren"],
@@ -611,7 +611,7 @@
         "explanation": {
           "en": "Taking a bike without asking makes someone angry, so stinksauer fits.",
           "fr": "Prendre un vélo sans demander met en colère, donc stinksauer convient.",
-          "de": "Wer ein Fahrrad ohne zu fragen nimmt, macht andere wütend: Es passt stinksauer."
+          "de": "Wer ein Fahrrad ohne zu fragen nimmt, macht andere wütend, deshalb passt stinksauer."
         }
       },
       "listeningOptionTargetIds": ["stinksauer", "hundertachtzig", "nase-voll", "beide-ohren"]

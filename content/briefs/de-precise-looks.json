@@ -7,7 +7,7 @@
   "title": "Präzise Wörter für das Aussehen",
   "objective": {
     "en": "Describe a person's appearance precisely with about fourteen exact German words.",
-    "fr": "Décrire précisément l'apparence d'une personne avec une quinzaine de mots allemands justes.",
+    "fr": "Décrire précisément l'apparence d'une personne avec environ quatorze mots allemands justes.",
     "de": "Das Aussehen einer Person mit etwa vierzehn genauen Wörtern beschreiben."
   },
   "estimatedMinutes": 23,
@@ -21,9 +21,9 @@
   "kind": "vocabulary",
   "theme": "personal_identification",
   "coverageNotes": {
-    "en": "Fourteen words in two groups: build and overall impression (adjectives), and face and skin (nouns plus one adjective for weathered skin). They go beyond everyday words such as groß or schön.",
+    "en": "Fourteen words in two groups: build and overall impression (adjectives), and face and skin (nouns). They go beyond everyday words such as groß or schön.",
     "fr": "Quatorze mots en deux groupes : la silhouette et l'impression générale (adjectifs), puis le visage et la peau (noms). Ils dépassent les mots courants comme groß ou schön.",
-    "de": "Vierzehn Wörter in zwei Gruppen: Körperbau und Gesamteindruck (Adjektive) sowie Gesicht und Haut (vor allem Nomen). Sie gehen über Alltagswörter wie groß oder schön hinaus."
+    "de": "Vierzehn Wörter in zwei Gruppen: Körperbau und Gesamteindruck (Adjektive) sowie Gesicht und Haut (Nomen). Sie gehen über Alltagswörter wie groß oder schön hinaus."
   },
   "targetCount": 14,
   "countRationale": {
@@ -272,20 +272,20 @@
       "explanation": {
         "en": "Stämmig describes a short, broad and sturdy build.",
         "fr": "Stämmig décrit une silhouette courte, large et robuste.",
-        "de": "Stämmig beschreibt einen kurzen, breiten und kräftigen Körperbau."
+        "de": "Stämmig beschreibt einen gedrungenen, breiten und kräftigen Körperbau."
       },
       "genderExplanation": null,
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Der Ringer ist kurz, breit und muskulös gebaut, also eher ",
+        "before": "Der Ringer ist klein, breit und muskulös gebaut, also eher ",
         "after": " als schlank.",
         "accepted": { "answers": ["stämmig"] },
         "referenceTargetIds": ["staemmig", "zierlich", "hager", "markant"],
         "explanation": {
           "en": "Only stämmig fits: short, broad and muscular is a sturdy build.",
           "fr": "Seul « stämmig » convient : court, large et musclé correspond à une carrure robuste.",
-          "de": "Nur „stämmig“ passt: kurz, breit und muskulös ist ein kräftiger Körperbau."
+          "de": "Nur „stämmig“ passt: klein, breit und muskulös ist ein kräftiger Körperbau."
         }
       },
       "listeningOptionTargetIds": ["staemmig", "zierlich", "hager", "ungepflegt"]

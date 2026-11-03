@@ -143,7 +143,7 @@
         "sentence": "Nach vielen Jahren besuche ich meine Heimat zum ersten Mal wieder.",
         "translation": {
           "en": "After many years I am visiting my homeland again for the first time.",
-          "fr": "Après de nombreuses années, je revisite mon pays natal pour la première fois."
+          "fr": "Après de nombreuses années, je retourne pour la première fois dans mon pays natal."
         }
       },
       "ambiguityNote": {
@@ -199,7 +199,7 @@
       "ambiguityNote": null,
       "explanation": {
         "en": "Die Wurzeln, in the figurative sense, are the origins of a person or a family.",
-        "fr": "Die Wurzeln, au sens figuré, désigne les origines d’une personne ou d’une famille.",
+        "fr": "Die Wurzeln, au sens figuré, désignent les origines d’une personne ou d’une famille.",
         "de": "Die Wurzeln sind im übertragenen Sinn die Ursprünge einer Person oder Familie."
       },
       "genderExplanation": {

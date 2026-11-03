@@ -556,14 +556,11 @@
                 { "tokenId": "t8", "text": "Stelle." }
               ],
               "distractorTokenIds": [],
-              "acceptedOrders": [
-                ["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8"],
-                ["t1", "t2", "t3", "t6", "t7", "t8", "t4", "t5"]
-              ],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8"]],
               "answerExplanation": {
-                "en": "Für mich steht comes first; an erster Stelle can stand before or after the noun.",
-                "fr": "Für mich steht vient d’abord ; an erster Stelle peut être avant ou après le nom.",
-                "de": "Für mich steht kommt zuerst; an erster Stelle kann vor oder nach dem Nomen stehen."
+                "en": "Für mich steht comes first, then the noun, then an erster Stelle.",
+                "fr": "Für mich steht vient d’abord, puis le nom, puis an erster Stelle.",
+                "de": "Für mich steht kommt zuerst, dann das Nomen, dann an erster Stelle."
               }
             }
           ]
@@ -1010,10 +1007,7 @@
                 { "tokenId": "t10", "text": "ersten" }
               ],
               "distractorTokenIds": ["t9", "t10"],
-              "acceptedOrders": [
-                ["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8"],
-                ["t1", "t2", "t3", "t6", "t7", "t8", "t4", "t5"]
-              ],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8"]],
               "answerExplanation": {
                 "en": "Singular Freiheit takes steht, and Stelle is feminine: an erster Stelle.",
                 "fr": "Freiheit au singulier prend steht, et Stelle est féminin : an erster Stelle.",

@@ -48,7 +48,7 @@
     {
       "id": "umgangssprachlich",
       "term": "umgangssprachlich",
-      "translations": { "en": ["colloquial", "informal"], "fr": ["familier", "courant"] },
+      "translations": { "en": ["colloquial", "informal"], "fr": ["familier", "relâché"] },
       "explanation": {
         "en": "Label for words of everyday speech that would be out of place in a formal letter or report.",
         "fr": "Indication pour les mots de la langue parlée quotidienne, déplacés dans une lettre officielle ou un rapport.",

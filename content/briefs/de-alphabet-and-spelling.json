@@ -33,7 +33,7 @@
   },
   "difficultyBalance": {
     "en": "Most words are core; the umlaut letters and the Eszett are demanding.",
-    "fr": "La plupart des mots sont de base ; les lettres à tréma et le Eszett sont plus difficiles.",
+    "fr": "La plupart des mots sont de base ; les lettres à tréma et l’Eszett sont plus difficiles.",
     "de": "Die meisten Wörter sind Grundwortschatz; die Umlaute und das Eszett sind anspruchsvoll."
   },
   "prerequisites": [],
@@ -238,9 +238,9 @@
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "The ä is an a with two dots, said like a long e.",
-        "fr": "Le ä est un a avec deux points, prononcé comme un e long.",
-        "de": "Das ä ist ein a mit zwei Punkten und klingt wie ein langes e."
+        "en": "The ä is an a with two dots, said like the e in “bed”, but long.",
+        "fr": "Le ä est un a avec deux points, prononcé comme un è long.",
+        "de": "Das ä ist ein a mit zwei Punkten und klingt wie ein offenes, langes e."
       },
       "genderExplanation": null,
       "matchingLabel": null,
@@ -359,7 +359,7 @@
       "ambiguityNote": null,
       "explanation": {
         "en": "The Eszett is the special letter ß, said like a sharp s.",
-        "fr": "Le Eszett est la lettre spéciale ß, prononcée comme un s sourd.",
+        "fr": "L’Eszett est la lettre spéciale ß, prononcée comme un s sourd.",
         "de": "Das Eszett ist der Sonderbuchstabe ß und klingt wie ein scharfes s."
       },
       "genderExplanation": {
@@ -497,7 +497,7 @@
       "ambiguityNote": null,
       "explanation": {
         "en": "The At-Zeichen is the sign @ in an e-mail address.",
-        "fr": "Le At-Zeichen est le signe @ dans une adresse e-mail.",
+        "fr": "L’At-Zeichen est le signe @ dans une adresse e-mail.",
         "de": "Das At-Zeichen ist das Zeichen @ in einer E-Mail-Adresse."
       },
       "genderExplanation": {
@@ -514,7 +514,7 @@
         "referenceTargetIds": ["at-zeichen", "name", "klein", "alphabet"],
         "explanation": {
           "en": "The sign @ is the At-Zeichen.",
-          "fr": "Le signe @ est le At-Zeichen.",
+          "fr": "Le signe @ est l’At-Zeichen.",
           "de": "Das Zeichen @ ist das At-Zeichen."
         }
       },

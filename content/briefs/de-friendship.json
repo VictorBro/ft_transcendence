@@ -21,7 +21,7 @@
   "kind": "vocabulary",
   "theme": "relations",
   "coverageNotes": {
-    "en": "Thirteen words on friendship: five nouns (friendship, circle of friends, mate, trust, argument), five verbs and phrases (get along, argue, make up, become friends) and adjectives for a good friend (loyal, honest, helpful, reliable).",
+    "en": "Thirteen words on friendship: five nouns (friendship, circle of friends, mate, trust, argument), four verbs and phrases (get along, argue, make up, become friends) and adjectives for a good friend (loyal, honest, helpful, reliable).",
     "fr": "Treize mots sur l’amitié : cinq noms (amitié, cercle d’amis, copain, confiance, dispute), des verbes et expressions (bien s’entendre, se disputer, se réconcilier, se lier d’amitié) et des adjectifs pour un bon ami (fidèle, honnête, serviable, fiable).",
     "de": "Dreizehn Wörter zur Freundschaft: fünf Nomen (Freundschaft, Freundeskreis, Kumpel, Vertrauen, Streit), Verben und Wendungen (sich gut verstehen, sich streiten, sich vertragen, sich anfreunden) und Adjektive für einen guten Freund (treu, ehrlich, hilfsbereit, zuverlässig)."
   },
@@ -49,7 +49,7 @@
       "introduction": {
         "en": "These five nouns describe friendships. Learn each one with its article:\n\n- `die Freundschaft`\n- `der Freundeskreis`\n- `der Kumpel`\n- `das Vertrauen`\n- `der Streit`\n\n**Kumpel** is colloquial: you use it for a good mate.",
         "fr": "Ces cinq noms décrivent l’amitié. Apprenez chacun avec son article :\n\n- `die Freundschaft`\n- `der Freundeskreis`\n- `der Kumpel`\n- `das Vertrauen`\n- `der Streit`\n\n**Kumpel** est familier : on l’emploie pour un bon copain.",
-        "de": "Diese fünf Nomen beschreiben Freundschaften. Lerne jedes mit seinem Artikel:\n\n- `die Freundschaft`\n- `der Freundeskreis`\n- `der Kumpel`\n- `das Vertrauen`\n- `der Streit`\n\n**Kumpel** ist umgangssprachlich: Du sagst es für einen guten Kumpel."
+        "de": "Diese fünf Nomen beschreiben Freundschaften. Lerne jedes mit seinem Artikel:\n\n- `die Freundschaft`\n- `der Freundeskreis`\n- `der Kumpel`\n- `das Vertrauen`\n- `der Streit`\n\n**Kumpel** ist umgangssprachlich: Du sagst es für einen guten Freund."
       }
     },
     {
@@ -292,7 +292,7 @@
         "de": "Der Streit ist eine heftige Meinungsverschiedenheit zwischen Menschen."
       },
       "genderExplanation": {
-        "en": "Der Streit is masculine, like the verb it comes from, streiten, has no article but the noun takes der.",
+        "en": "Der Streit is masculine: you say der Streit.",
         "fr": "Der Streit est masculin : on dit der Streit.",
         "de": "Der Streit ist maskulin: Es heißt der Streit."
       },

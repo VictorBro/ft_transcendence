@@ -666,7 +666,7 @@
       "ambiguityNote": null,
       "explanation": {
         "en": "Unbehagen is a vague uncomfortable feeling, often without a clear cause.",
-        "fr": "Le Unbehagen est un sentiment vague de malaise, souvent sans cause claire.",
+        "fr": "L’Unbehagen est un sentiment vague de malaise, souvent sans cause claire.",
         "de": "Unbehagen ist ein unbestimmtes, unangenehmes Gefühl, oft ohne klaren Grund."
       },
       "genderExplanation": {
@@ -683,7 +683,7 @@
         "referenceTargetIds": ["unbehagen", "sehnsucht", "wehmut", "schadenfreude"],
         "explanation": {
           "en": "Mit wachsendem needs a neuter noun, and a stranger approaching causes Unbehagen.",
-          "fr": "Mit wachsendem demande un nom neutre, et un inconnu qui approche cause du Unbehagen.",
+          "fr": "Mit wachsendem demande un nom neutre, et un inconnu qui approche cause de l’Unbehagen.",
           "de": "Mit wachsendem verlangt ein neutrales Nomen, und ein näher kommender Fremder löst Unbehagen aus."
         }
       },

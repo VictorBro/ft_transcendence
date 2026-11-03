@@ -183,7 +183,7 @@
                 {
                   "lineId": "line-8",
                   "roleId": "erzaehlerin",
-                  "text": "Ich hatte ihn beim Einkaufen mit der Milch eingeräumt. Lange Rede, kurzer Sinn: Ich kam zu spät zum Konzert.",
+                  "text": "Ich hatte ihn nach dem Einkaufen mit der Milch eingeräumt. Lange Rede, kurzer Sinn: Ich kam zu spät zum Konzert.",
                   "translation": {
                     "en": "I had put it away with the milk after shopping. Long story short: I was late for the concert.",
                     "fr": "Je l’avais rangée avec le lait après les courses. Pour faire court : je suis arrivée en retard au concert."
@@ -213,10 +213,10 @@
                 {
                   "lineId": "line-10",
                   "roleId": "erzaehlerin",
-                  "text": "Ja, in der Pause. Seitdem trage ich den Schlüssel an einem Band um den Hals.",
+                  "text": "Ja, nach dem ersten Lied. Seitdem trage ich den Schlüssel an einem Band um den Hals.",
                   "translation": {
-                    "en": "Yes, during the break. Since then I wear the key on a string around my neck.",
-                    "fr": "Oui, pendant l’entracte. Depuis, je porte la clé à un cordon autour du cou."
+                    "en": "Yes, after the first song. Since then I wear the key on a string around my neck.",
+                    "fr": "Oui, après la première chanson. Depuis, je porte la clé à un cordon autour du cou."
                   },
                   "note": {
                     "en": "A small second punchline ends the anecdote.",
@@ -579,10 +579,7 @@
                 { "tokenId": "t8", "text": "spät." }
               ],
               "distractorTokenIds": [],
-              "acceptedOrders": [
-                ["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8"],
-                ["t1", "t2", "t3", "t4", "t7", "t8", "t6", "t5"]
-              ],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8"]],
               "answerExplanation": {
                 "en": "The summary phrase comes first, then the result.",
                 "fr": "La formule de résumé vient d’abord, puis le résultat.",

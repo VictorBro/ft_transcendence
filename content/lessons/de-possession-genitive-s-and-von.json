@@ -906,7 +906,7 @@
               "itemId": "exam-von-2",
               "before": "Wo ist die Tasche",
               "after": "Lehrerin?",
-              "accepted": { "answers": ["von der"] },
+              "accepted": { "answers": ["von der", "der"] },
               "hint": null,
               "ruleIds": ["rule-von-dative"],
               "answerExplanation": {

@@ -189,7 +189,7 @@
       "genderExplanation": {
         "en": "Demut is feminine: die Demut. Do not confuse it with der Hochmut, which is masculine.",
         "fr": "Demut est féminin : die Demut. Ne le confondez pas avec der Hochmut, qui est masculin.",
-        "de": "Demut ist feminin: die Demut. Verwechsle es nicht mit der Hochmut, das maskulin ist."
+        "de": "Demut ist feminin: die Demut. Verwechsle es nicht mit Hochmut, denn es heißt der Hochmut."
       },
       "matchingLabel": null,
       "examPrompt": null,
@@ -598,12 +598,12 @@
       "explanation": {
         "en": "Der Geiz is miserliness: an unwillingness to spend or share money.",
         "fr": "Der Geiz est l’avarice : le refus de dépenser ou de partager son argent.",
-        "de": "Der Geiz ist die Unwilligkeit, Geld auszugeben oder zu teilen."
+        "de": "Der Geiz ist der Unwille, Geld auszugeben oder zu teilen."
       },
       "genderExplanation": {
         "en": "Geiz is masculine: der Geiz. Do not confuse it with die Habgier.",
         "fr": "Geiz est masculin : der Geiz. Ne le confondez pas avec die Habgier.",
-        "de": "Geiz ist maskulin: der Geiz. Verwechsle es nicht mit die Habgier."
+        "de": "Geiz ist maskulin: der Geiz. Verwechsle es nicht mit Habgier, denn es heißt die Habgier."
       },
       "matchingLabel": null,
       "examPrompt": null,

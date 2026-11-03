@@ -63,7 +63,7 @@
       "introduction": {
         "en": "In Germany many couples marry **twice**: first at the registry office, then with a ceremony and a party.\n\n- `das Standesamt`\n- `die Trauung`\n- `die Hochzeit`\n- `der Ehepartner`\n- `die Ehe`",
         "fr": "En Allemagne, beaucoup de couples se marient **deux fois** : d'abord à la mairie, puis avec une cérémonie et une fête.\n\n- `das Standesamt`\n- `die Trauung`\n- `die Hochzeit`\n- `der Ehepartner`\n- `die Ehe`",
-        "de": "In Deutschland heiraten viele Paare **zweimal**: zuerst auf dem Standesamt, dann mit einer Feier und einer Party.\n\n- `das Standesamt`\n- `die Trauung`\n- `die Hochzeit`\n- `der Ehepartner`\n- `die Ehe`"
+        "de": "In Deutschland heiraten viele Paare **zweimal**: zuerst auf dem Standesamt, dann mit einer Zeremonie und einem Fest.\n\n- `das Standesamt`\n- `die Trauung`\n- `die Hochzeit`\n- `der Ehepartner`\n- `die Ehe`"
       }
     },
     {
@@ -620,7 +620,7 @@
       "gap": {
         "before": "Nach vielen Streitigkeiten wollen sie sich ",
         "after": ".",
-        "accepted": { "answers": ["trennen"] },
+        "accepted": { "answers": ["trennen", "scheiden lassen"] },
         "referenceTargetIds": ["trennen", "verloben", "hochzeit", "ehepartner"],
         "explanation": {
           "en": "After many quarrels the couple wants to separate: sich trennen.",
@@ -708,7 +708,7 @@
       "gap": {
         "before": "Nach zehn Jahren will sie sich ",
         "after": ".",
-        "accepted": { "answers": ["scheiden lassen"] },
+        "accepted": { "answers": ["scheiden lassen", "trennen"] },
         "referenceTargetIds": ["scheiden", "hochzeit", "standesamt", "verlieben"],
         "explanation": {
           "en": "After will sie sich the expression is scheiden lassen.",

@@ -362,7 +362,7 @@
     {
       "id": "mimik",
       "term": "Mimik",
-      "translations": { "en": ["facial expressions", "mimicry"], "fr": ["la mimique"] },
+      "translations": { "en": ["facial expressions"], "fr": ["la mimique"] },
       "wordClass": "noun",
       "genders": ["feminine"],
       "number": "singular",

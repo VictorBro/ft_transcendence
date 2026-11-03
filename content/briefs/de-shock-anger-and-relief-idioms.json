@@ -22,7 +22,7 @@
   "theme": "personal_identification",
   "coverageNotes": {
     "en": "Twelve fixed idioms in three groups: shock and disbelief, anger and annoyance, relief. Each is a vivid body or everyday image whose meaning cannot be guessed word by word.",
-    "fr": "Douze expressions figées en trois groupes : choc et stupeur, colère et agacement, soulagement. Chacune repose sur une image imagée dont le sens ne se devine pas mot à mot.",
+    "fr": "Douze expressions figées en trois groupes : choc et stupeur, colère et agacement, soulagement. Chacune repose sur une image concrète dont le sens ne se devine pas mot à mot.",
     "de": "Zwölf feste Redewendungen in drei Gruppen: Schreck und Fassungslosigkeit, Ärger und Wut, Erleichterung. Jede beruht auf einem bildhaften Ausdruck, dessen Bedeutung sich nicht Wort für Wort erschließen lässt."
   },
   "targetCount": 12,
@@ -580,7 +580,7 @@
         "sentence": "Als die Ärztin Entwarnung gab, fiel mir ein Stein vom Herzen.",
         "translation": {
           "en": "When the doctor gave the all-clear, a huge weight was lifted off my mind.",
-          "fr": "Quand la médecin a donné le feu vert, je me suis senti soulagé d’un grand poids."
+          "fr": "Quand la médecin a levé l’alerte, je me suis senti soulagé d’un grand poids."
         }
       },
       "ambiguityNote": null,

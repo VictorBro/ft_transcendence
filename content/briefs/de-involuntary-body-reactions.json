@@ -219,9 +219,9 @@
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "Erschauern is a brief shiver caused by fear, disgust or deep emotion, not by cold.",
-        "fr": "Erschauern est un bref frisson causé par la peur, le dégoût ou une forte émotion, pas par le froid.",
-        "de": "Erschauern ist ein kurzes Schaudern aus Angst, Ekel oder tiefer Rührung, nicht wegen der Kälte."
+        "en": "Erschauern is a brief shiver caused by fear, disgust or deep emotion, more rarely by cold.",
+        "fr": "Erschauern est un bref frisson causé par la peur, le dégoût ou une forte émotion, plus rarement par le froid.",
+        "de": "Erschauern ist ein kurzes Schaudern aus Angst, Ekel oder tiefer Rührung, seltener vor Kälte."
       },
       "genderExplanation": null,
       "matchingLabel": null,
@@ -275,7 +275,7 @@
       "gap": {
         "before": "Bei der Musik bekam ich eine ",
         "after": ".",
-        "accepted": { "answers": ["Gänsehaut", "gänsehaut"] },
+        "accepted": { "answers": ["Gänsehaut"] },
         "referenceTargetIds": ["gaensehaut", "zusammenzucken", "niesen", "gaehnen"],
         "explanation": {
           "en": "„eine“ needs a feminine noun, and only Gänsehaut fits.",
@@ -321,7 +321,7 @@
       "gap": {
         "before": "Vor der Prüfung hatte er starkes ",
         "after": ".",
-        "accepted": { "answers": ["Herzklopfen", "herzklopfen"] },
+        "accepted": { "answers": ["Herzklopfen"] },
         "referenceTargetIds": ["herzklopfen", "gaensehaut", "schluckauf", "niesen"],
         "explanation": {
           "en": "„starkes“ points to a neuter noun: Herzklopfen.",
@@ -493,7 +493,7 @@
       "gap": {
         "before": "Nach der hastigen Mahlzeit bekam sie den ",
         "after": ".",
-        "accepted": { "answers": ["Schluckauf", "schluckauf"] },
+        "accepted": { "answers": ["Schluckauf"] },
         "referenceTargetIds": ["schluckauf", "gaensehaut", "herzklopfen", "niesen"],
         "explanation": {
           "en": "„den“ points to a masculine noun: Schluckauf.",

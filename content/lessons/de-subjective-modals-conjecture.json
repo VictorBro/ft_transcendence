@@ -344,11 +344,7 @@
                 { "tokenId": "t-6", "text": "Büro" },
                 { "tokenId": "t-7", "text": "jetzt" }
               ],
-              "acceptedOrders": [
-                ["t-2", "t-5", "t-7", "t-3", "t-6", "t-1", "t-4"],
-                ["t-7", "t-5", "t-2", "t-3", "t-6", "t-1", "t-4"],
-                ["t-3", "t-6", "t-5", "t-2", "t-7", "t-1", "t-4"]
-              ],
+              "acceptedOrders": [["t-2", "t-5", "t-7", "t-3", "t-6", "t-1", "t-4"]],
               "ruleIds": ["rule-grade"],
               "answerExplanation": {
                 "en": "The modal is in second position and the infinitive sein is at the end.",
@@ -367,10 +363,7 @@
                 { "tokenId": "t-5", "text": "Paket" },
                 { "tokenId": "t-6", "text": "." }
               ],
-              "acceptedOrders": [
-                ["t-3", "t-5", "t-4", "t-1", "t-2", "t-6"],
-                ["t-1", "t-4", "t-3", "t-5", "t-2", "t-6"]
-              ],
+              "acceptedOrders": [["t-3", "t-5", "t-4", "t-1", "t-2", "t-6"]],
               "ruleIds": ["rule-grade"],
               "answerExplanation": {
                 "en": "The modal stays in second position; the infinitive ankommen goes to the end.",
@@ -389,10 +382,7 @@
                 { "tokenId": "t-5", "text": "ausverkauft" },
                 { "tokenId": "t-6", "text": "Konzert" }
               ],
-              "acceptedOrders": [
-                ["t-4", "t-6", "t-2", "t-5", "t-1", "t-3"],
-                ["t-5", "t-2", "t-4", "t-6", "t-1", "t-3"]
-              ],
+              "acceptedOrders": [["t-4", "t-6", "t-2", "t-5", "t-1", "t-3"]],
               "ruleIds": ["rule-grade"],
               "answerExplanation": {
                 "en": "The modal is in second position; ausverkauft sein closes the sentence.",
@@ -953,11 +943,7 @@
                 { "tokenId": "t-7", "text": "Schwester" },
                 { "tokenId": "t-8", "text": "Zug" }
               ],
-              "acceptedOrders": [
-                ["t-3", "t-7", "t-6", "t-2", "t-4", "t-8", "t-1", "t-5"],
-                ["t-2", "t-6", "t-3", "t-7", "t-4", "t-8", "t-1", "t-5"],
-                ["t-4", "t-8", "t-6", "t-3", "t-7", "t-2", "t-1", "t-5"]
-              ],
+              "acceptedOrders": [["t-3", "t-7", "t-6", "t-2", "t-4", "t-8", "t-1", "t-5"]],
               "ruleIds": ["rule-grade"],
               "answerExplanation": {
                 "en": "The modal is in second position and the infinitive sitzen is at the end.",
@@ -997,10 +983,7 @@
                 { "tokenId": "t-6", "text": "Paket" },
                 { "tokenId": "t-7", "text": "Nachbarn" }
               ],
-              "acceptedOrders": [
-                ["t-4", "t-6", "t-5", "t-2", "t-7", "t-1", "t-3"],
-                ["t-2", "t-7", "t-5", "t-4", "t-6", "t-1", "t-3"]
-              ],
+              "acceptedOrders": [["t-4", "t-6", "t-5", "t-2", "t-7", "t-1", "t-3"]],
               "ruleIds": ["rule-grade"],
               "answerExplanation": {
                 "en": "The modal is in second position and the infinitive liegen is at the end.",

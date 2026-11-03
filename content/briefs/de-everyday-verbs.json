@@ -59,7 +59,7 @@
       "introduction": {
         "en": "These **seven verbs** are about the body and about communication:\n\n- `essen` – to eat\n- `trinken` – to drink\n- `schlafen` – to sleep\n- `sprechen` – to speak, to talk\n- `schreiben` – to write\n- `fragen` – to ask\n- `sagen` – to say",
         "fr": "Ces **sept verbes** concernent le corps et la communication :\n\n- `essen` – manger\n- `trinken` – boire\n- `schlafen` – dormir\n- `sprechen` – parler\n- `schreiben` – écrire\n- `fragen` – demander\n- `sagen` – dire",
-        "de": "Diese **sieben Verben** gehören zum Körper und zur Kommunikation:\n\n- `essen` – Nahrung zu sich nehmen\n- `trinken` – Flüssigkeit zu sich nehmen\n- `schlafen` – nachts im Bett ruhen\n- `sprechen` – mit Worten reden\n- `schreiben` – Wörter auf Papier oder am Computer setzen\n- `fragen` – eine Frage stellen\n- `sagen` – etwas mit Worten mitteilen"
+        "de": "Diese **sieben Verben** gehören zum Körper und zur Kommunikation:\n\n- `essen` – Nahrung zu sich nehmen\n- `trinken` – Flüssigkeit zu sich nehmen\n- `schlafen` – nachts im Bett ruhen\n- `sprechen` – mit Worten reden\n- `schreiben` – Wörter auf Papier bringen oder am Computer tippen\n- `fragen` – eine Frage stellen\n- `sagen` – etwas mit Worten mitteilen"
       }
     }
   ],
@@ -453,7 +453,7 @@
       "explanation": {
         "en": "Schlafen means to sleep, usually at night.",
         "fr": "Schlafen signifie dormir, en général la nuit.",
-        "de": "Schlafen bedeutet, nachts oder müde zu ruhen."
+        "de": "Schlafen bedeutet, zu ruhen, meist nachts, wenn man müde ist."
       },
       "genderExplanation": null,
       "matchingLabel": null,
@@ -535,7 +535,7 @@
       "explanation": {
         "en": "Schreiben means to write words on paper or on a computer.",
         "fr": "Schreiben signifie écrire des mots sur papier ou à l’ordinateur.",
-        "de": "Schreiben bedeutet, Wörter auf Papier oder am Computer zu setzen."
+        "de": "Schreiben bedeutet, Wörter auf Papier zu bringen oder am Computer zu tippen."
       },
       "genderExplanation": null,
       "matchingLabel": null,

@@ -250,14 +250,14 @@
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Weil er sie öffentlich einer Straftat bezichtigte, ohne es beweisen zu können, wurde er wegen ",
+        "before": "Weil er sie wider besseres Wissen öffentlich einer Straftat bezichtigte, wurde er wegen ",
         "after": " verurteilt.",
         "accepted": { "answers": ["Verleumdung"] },
         "referenceTargetIds": ["verleumdung", "klatsch", "geruecht", "geruechtekueche"],
         "explanation": {
-          "en": "A false public accusation that can be punished in court is Verleumdung.",
-          "fr": "Une accusation publique fausse, punissable par un tribunal, est une Verleumdung.",
-          "de": "Eine falsche öffentliche Beschuldigung, die vor Gericht verurteilt wird, ist eine Verleumdung."
+          "en": "A knowingly false public accusation that can be punished in court is Verleumdung.",
+          "fr": "Une accusation publique sciemment fausse, punissable par un tribunal, est une Verleumdung.",
+          "de": "Eine bewusst falsche öffentliche Beschuldigung, für die man verurteilt werden kann, ist eine Verleumdung."
         }
       },
       "listeningOptionTargetIds": ["verleumdung", "geruecht", "kolportieren", "rufmord"]

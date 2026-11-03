@@ -21,7 +21,7 @@
   "kind": "vocabulary",
   "theme": "personal_identification",
   "coverageNotes": {
-    "en": "Twelve C1 words on how people see themselves and how others see them: six nouns of self-perception, then the comfort zone, three verbs and adjectives of self-development and self-assessment.",
+    "en": "Twelve C1 words on how people see themselves and how others see them: six nouns of self-perception, then the comfort zone, three verbs and two adjectives of self-development and self-assessment.",
     "fr": "Douze mots C1 sur la façon dont on se voit et dont les autres nous voient : six noms de la perception de soi, puis la zone de confort, des verbes et des adjectifs du développement personnel.",
     "de": "Zwölf C1-Wörter dazu, wie man sich selbst sieht und wie andere einen sehen: sechs Nomen der Selbstwahrnehmung, dann die Komfortzone sowie Verben und Adjektive der Selbstentwicklung und Selbsteinschätzung."
   },
@@ -190,7 +190,7 @@
       "examForms": ["das Selbstwertgefühl"],
       "articleException": null,
       "genderVariants": [],
-      "pronunciation": "/ˈzɛlpstveːɐ̯təɡəˌfyːl/",
+      "pronunciation": "/ˈzɛlpstveːɐ̯tɡəˌfyːl/",
       "difficulty": "core",
       "context": {
         "sentence": "Lob von Freunden stärkt ihr Selbstwertgefühl.",

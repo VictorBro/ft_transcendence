@@ -582,9 +582,9 @@
         "accepted": { "answers": ["Vermächtnis"] },
         "referenceTargetIds": ["vermaechtnis", "greisenalter", "nachruf", "lebensabend"],
         "explanation": {
-          "en": "Only Vermächtnis fits: a deliberate gift to the city, and Sein needs a neuter noun here.",
-          "fr": "Seul « Vermächtnis » convient : un don délibéré à la ville, et Sein exige ici un nom neutre.",
-          "de": "Nur „Vermächtnis“ passt: eine bewusste Gabe an die Stadt, und „Sein“ verlangt hier ein neutrales Nomen."
+          "en": "Only Vermächtnis fits: it is what he deliberately passed on to the city.",
+          "fr": "Seul « Vermächtnis » convient : c’est ce qu’il a délibérément transmis à la ville.",
+          "de": "Nur „Vermächtnis“ passt: Es ist das, was er der Stadt bewusst hinterlassen hat."
         }
       },
       "listeningOptionTargetIds": ["vermaechtnis", "nachlass", "nachruf", "greisenalter"]
@@ -600,7 +600,7 @@
       "examForms": ["posthum"],
       "articleException": null,
       "genderVariants": [],
-      "pronunciation": "[ˈpoːsthuːm]",
+      "pronunciation": "[pɔstˈhuːm]",
       "difficulty": "demanding",
       "context": {
         "sentence": "Der Maler wurde posthum mit einer Retrospektive geehrt.",

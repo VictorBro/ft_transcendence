@@ -348,9 +348,9 @@
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "Six is sechs; the ch is silent in the sound ks.",
-        "fr": "Six se dit sechs ; on prononce ks.",
-        "de": "Sechs spricht man wie „ks“: sechs."
+        "en": "Six is sechs; the chs is pronounced ks.",
+        "fr": "Six se dit sechs ; le chs se prononce ks.",
+        "de": "In sechs spricht man das chs wie „ks“."
       },
       "genderExplanation": null,
       "matchingLabel": null,
@@ -389,7 +389,7 @@
       "explanation": {
         "en": "Seven is sieben. The s is voiced, like a z.",
         "fr": "Sept se dit sieben. Le s se prononce comme un z.",
-        "de": "Sieben beginnt mit einem weichen s, wie ein z."
+        "de": "Sieben beginnt mit einem weichen, stimmhaften s."
       },
       "genderExplanation": null,
       "matchingLabel": null,
@@ -801,8 +801,8 @@
         "accepted": { "answers": ["Telefonnummer"] },
         "referenceTargetIds": ["telefonnummer", "ziffer", "eins", "vier"],
         "explanation": {
-          "en": "You answer a phone number with digits: Telefonnummer.",
-          "fr": "On répond à un numéro de téléphone avec des chiffres : Telefonnummer.",
+          "en": "The answer is a series of digits, so the question asks for the Telefonnummer.",
+          "fr": "La réponse est une suite de chiffres : on demande la Telefonnummer.",
           "de": "Auf die Frage nach der Telefonnummer antwortet man mit Ziffern."
         }
       },

@@ -405,7 +405,7 @@
               "itemId": "ex-b1-order-1",
               "tokens": [
                 { "tokenId": "t-4", "text": "er" },
-                { "tokenId": "t-8", "text": "hat" },
+                { "tokenId": "t-8", "text": "hat." },
                 { "tokenId": "t-1", "text": "Ich" },
                 { "tokenId": "t-6", "text": "keine" },
                 { "tokenId": "t-3", "text": "dass" },
@@ -1014,7 +1014,7 @@
                 { "tokenId": "t-7", "text": "einmal" },
                 { "tokenId": "t-3", "text": "sauer," },
                 { "tokenId": "t-1", "text": "Ich" },
-                { "tokenId": "t-9", "text": "hat" },
+                { "tokenId": "t-9", "text": "hat." },
                 { "tokenId": "t-5", "text": "er" },
                 { "tokenId": "t-2", "text": "bin" },
                 { "tokenId": "t-8", "text": "angerufen" },
@@ -1130,7 +1130,7 @@
               "tokens": [
                 { "tokenId": "t-6", "text": "keine" },
                 { "tokenId": "t-1", "text": "Er" },
-                { "tokenId": "t-8", "text": "hat" },
+                { "tokenId": "t-8", "text": "hat." },
                 { "tokenId": "t-4", "text": "er" },
                 { "tokenId": "t-2", "text": "erzählt," },
                 { "tokenId": "t-7", "text": "Geschwister" },

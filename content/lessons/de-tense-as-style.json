@@ -255,7 +255,7 @@
               "type": "grammar_gap_typing",
               "itemId": "ex-p-typing-1",
               "before": "Letzten Sommer fahre ich nach Wien, und schon am ersten Abend",
-              "after": "ich meinen Chef im Zug.",
+              "after": "ich meinen Chef in einem Café.",
               "accepted": { "answers": ["treffe"] },
               "hint": {
                 "en": "treffen, present tense",

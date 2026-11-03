@@ -103,7 +103,7 @@
       "examPrompt": { "en": "partner (male)", "fr": "le partenaire (masculin)" },
       "gap": {
         "before": "Mein ",
-        "after": " heißt Tim. Wir wohnen zusammen.",
+        "after": " heißt Tim. Wir wohnen zusammen, aber wir sind nicht verheiratet.",
         "accepted": { "answers": ["Partner"] },
         "referenceTargetIds": ["partner", "hochzeit", "verliebt", "geschieden"],
         "explanation": {
@@ -146,7 +146,7 @@
       "examPrompt": { "en": "partner (female)", "fr": "la partenaire (féminin)" },
       "gap": {
         "before": "Das ist meine ",
-        "after": ". Sie heißt Lena.",
+        "after": ". Sie heißt Lena. Wir sind nicht verheiratet.",
         "accepted": { "answers": ["Partnerin"] },
         "referenceTargetIds": ["partnerin", "heiraten", "ehe", "getrennt"],
         "explanation": {
@@ -400,14 +400,14 @@
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Meine Schwester und ihr ",
+        "before": "Meine Schwester ist verheiratet. Sie und ihr ",
         "after": " haben zwei Kinder.",
         "accepted": { "answers": ["Ehemann"] },
         "referenceTargetIds": ["ehemann", "ehefrau", "getrennt", "hochzeit"],
         "explanation": {
-          "en": "„ihr“ before a masculine noun: „Ehemann“.",
-          "fr": "« ihr » devant un nom masculin : « Ehemann ».",
-          "de": "„ihr“ steht vor einem maskulinen Nomen: „Ehemann“."
+          "en": "She is married, and „ihr“ comes before a masculine noun: „Ehemann“.",
+          "fr": "Elle est mariée, et « ihr » précède un nom masculin : « Ehemann ».",
+          "de": "Sie ist verheiratet, und „ihr“ steht vor einem maskulinen Nomen: „Ehemann“."
         }
       },
       "listeningOptionTargetIds": ["ehemann", "ehefrau", "ehe", "partner"]
@@ -443,14 +443,14 @@
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Herr Weber und seine ",
+        "before": "Herr Weber ist verheiratet. Er und seine ",
         "after": " kommen heute.",
         "accepted": { "answers": ["Ehefrau"] },
         "referenceTargetIds": ["ehefrau", "ehemann", "ehe", "verheiratet"],
         "explanation": {
-          "en": "„seine“ before a feminine noun: „Ehefrau“.",
-          "fr": "« seine » devant un nom féminin : « Ehefrau ».",
-          "de": "„seine“ steht vor einem femininen Nomen: „Ehefrau“."
+          "en": "He is married, and „seine“ comes before a feminine noun: „Ehefrau“.",
+          "fr": "Il est marié, et « seine » précède un nom féminin : « Ehefrau ».",
+          "de": "Er ist verheiratet, und „seine“ steht vor einem femininen Nomen: „Ehefrau“."
         }
       },
       "listeningOptionTargetIds": ["ehefrau", "ehemann", "ehe", "partnerin"]
@@ -566,7 +566,7 @@
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Die Ehe ist zu Ende. Sie sind seit einem Jahr ",
+        "before": "Das Gericht hat die Ehe beendet. Sie sind seit einem Jahr ",
         "after": ".",
         "accepted": { "answers": ["geschieden"] },
         "referenceTargetIds": ["geschieden", "heiraten", "hochzeit", "partnerin"],

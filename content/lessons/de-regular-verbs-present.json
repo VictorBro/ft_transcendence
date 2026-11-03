@@ -1071,10 +1071,7 @@
                 { "tokenId": "t-4", "text": "Köln" },
                 { "tokenId": "t-2", "text": "arbeitet" }
               ],
-              "acceptedOrders": [
-                ["t-1", "t-2", "t-3", "t-4", "t-5"],
-                ["t-3", "t-4", "t-2", "t-1", "t-5"]
-              ],
+              "acceptedOrders": [["t-1", "t-2", "t-3", "t-4", "t-5"]],
               "ruleIds": ["rule-et-endings"],
               "answerExplanation": {
                 "en": "The stem arbeit- ends in t, so Lena (like sie) needs -et: arbeitet. The verb stays in 2nd position.",
@@ -1092,10 +1089,7 @@
                 { "tokenId": "t-4", "text": "Berlin" },
                 { "tokenId": "t-2", "text": "reist" }
               ],
-              "acceptedOrders": [
-                ["t-1", "t-2", "t-3", "t-4", "t-5"],
-                ["t-3", "t-4", "t-2", "t-1", "t-5"]
-              ],
+              "acceptedOrders": [["t-1", "t-2", "t-3", "t-4", "t-5"]],
               "ruleIds": ["rule-s-sounds"],
               "answerExplanation": {
                 "en": "The stem reis- ends in s, so du only needs -t: reist. The verb stays in 2nd position.",
@@ -1113,10 +1107,7 @@
                 { "tokenId": "t-1", "text": "Er" },
                 { "tokenId": "t-3", "text": "in" }
               ],
-              "acceptedOrders": [
-                ["t-1", "t-2", "t-3", "t-4", "t-5"],
-                ["t-3", "t-4", "t-2", "t-1", "t-5"]
-              ],
+              "acceptedOrders": [["t-1", "t-2", "t-3", "t-4", "t-5"]],
               "ruleIds": ["rule-endings"],
               "answerExplanation": {
                 "en": "With er, the ending is -t: wohnt. The verb stays in 2nd position.",

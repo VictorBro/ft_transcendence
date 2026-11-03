@@ -119,12 +119,12 @@
                 {
                   "lineId": "line-4",
                   "roleId": "tim",
-                  "text": "Tschüss! Bis zum Mittag.",
+                  "text": "Tschüss! Bis heute Mittag.",
                   "translation": { "en": "Bye! See you at noon.", "fr": "Salut ! À midi." },
                   "note": {
-                    "en": "Bis zum Mittag means see you at noon.",
-                    "fr": "Bis zum Mittag signifie à midi.",
-                    "de": "Bis zum Mittag heißt: Wir sehen uns zu Mittag."
+                    "en": "Bis heute Mittag means see you at noon.",
+                    "fr": "Bis heute Mittag signifie à midi.",
+                    "de": "Bis heute Mittag heißt: Wir sehen uns zu Mittag."
                   },
                   "expressionIds": []
                 },
@@ -965,7 +965,10 @@
               "type": "function_word_order",
               "itemId": "reply-4",
               "expressionId": "auf-wiedersehen",
-              "context": { "roleId": "tim", "text": "Danke für Ihren Besuch, Frau Berger." },
+              "context": {
+                "roleId": "tim",
+                "text": "Frau Berger hat uns geholfen und geht jetzt."
+              },
               "roleId": "lena",
               "tokens": [
                 { "tokenId": "t1", "text": "Auf" },
@@ -1111,7 +1114,7 @@
                       "de": "Es ist Abend: Guten Abend."
                     }
                   },
-                  "after": ", Tim! Entschuldigung, ich bin spät."
+                  "after": ", Tim! Entschuldigung, ich komme zu spät."
                 },
                 {
                   "lineId": "exam-line-9",

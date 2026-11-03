@@ -38,7 +38,7 @@
       "translations": { "en": ["news"], "fr": ["les nouvelles"] },
       "explanation": {
         "en": "Plural word: new things that happened. Ich habe viele Neuigkeiten! means I have a lot of news.",
-        "fr": "Mot pluriel : les choses nouvelles qui sont arrivées. Ich habe viele Neuigkeiten ! veut dire J’ai beaucoup de nouvelles.",
+        "fr": "Mot pluriel : les choses nouvelles qui sont arrivées. Ich habe viele Neuigkeiten! veut dire J’ai beaucoup de nouvelles.",
         "de": "Pluralwort: neue Dinge, die passiert sind. Ich habe viele Neuigkeiten! heißt: Ich habe viel Neues zu erzählen."
       }
     },
@@ -78,7 +78,7 @@
       "translations": { "en": ["suits", "fits"], "fr": ["convient"] },
       "explanation": {
         "en": "From passen. Welches Wochenende passt für dich? asks which weekend is good for you.",
-        "fr": "De passen. Welches Wochenende passt für dich ? demande quel week-end te convient.",
+        "fr": "De passen. Welches Wochenende passt für dich? demande quel week-end te convient.",
         "de": "Von passen. Welches Wochenende passt für dich? fragt, welches Wochenende für dich gut ist."
       }
     }

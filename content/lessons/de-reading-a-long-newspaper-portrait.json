@@ -360,9 +360,9 @@
               ],
               "answerOptionId": "o4",
               "answerExplanation": {
-                "en": "The table top is three millimetres too narrow. Specht sweeps the workshop himself, so o3 is wrong.",
-                "fr": "Le plateau est trop étroit de trois millimètres. Specht balaie lui-même l’atelier, donc o3 est faux.",
-                "de": "Die Tischplatte ist drei Millimeter zu schmal. Die Werkstatt fegt Specht selbst, o3 ist also falsch."
+                "en": "The table top is three millimetres too narrow. Specht sweeps the workshop himself, so that is not the reason.",
+                "fr": "Le plateau est trop étroit de trois millimètres. Specht balaie lui-même l’atelier, ce n’est donc pas la raison.",
+                "de": "Die Tischplatte ist drei Millimeter zu schmal. Die Werkstatt fegt Specht selbst, das ist also nicht der Grund."
               }
             },
             {
@@ -380,7 +380,7 @@
               ],
               "answerOptionId": "o1",
               "answerExplanation": {
-                "en": "He is late, brings a bought bouquet and then cries in front of everyone, what he would never admit. Under the busy surface he is moved.",
+                "en": "He is late, brings a bought bouquet and then cries in front of everyone, something he would never admit. Under the busy surface he is moved.",
                 "fr": "Il est en retard, apporte un bouquet acheté et pleure devant tout le monde, ce qu’il n’avouerait jamais. Sous l’agitation, il est ému.",
                 "de": "Er kommt zu spät, bringt einen gekauften Strauß und weint vor allen, was er nie zugeben würde. Unter der Hektik ist er gerührt."
               }

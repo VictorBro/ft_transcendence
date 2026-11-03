@@ -32,9 +32,9 @@
     "de": "Zwölf Wörter passen zum Ziel und halten die Lektion auf A2 kurz."
   },
   "difficultyBalance": {
-    "en": "Mostly core words; Alter, Rente and Rentnerin are harder.",
-    "fr": "Surtout des mots de base ; Alter, Rente et Rentnerin sont plus difficiles.",
-    "de": "Meist Grundwörter; Alter, Rente und Rentnerin sind schwieriger."
+    "en": "Mostly core words; Jugend, Alter, Rente and Rentnerin are harder.",
+    "fr": "Surtout des mots de base ; Jugend, Alter, Rente et Rentnerin sont plus difficiles.",
+    "de": "Meist Grundwörter; Jugend, Alter, Rente und Rentnerin sind schwieriger."
   },
   "prerequisites": [],
   "groups": [
@@ -434,9 +434,9 @@
         }
       },
       "ambiguityNote": {
-        "en": "Alter also means age in general (Wie ist dein Alter?). Here it is the last stage of life.",
-        "fr": "Alter signifie aussi l’âge en général (Wie ist dein Alter?). Ici, c’est la dernière étape de la vie.",
-        "de": "Alter bedeutet auch das Lebensalter allgemein (Wie ist dein Alter?). Hier ist es der letzte Lebensabschnitt."
+        "en": "Alter also means age in general (in deinem Alter). Here it is the last stage of life.",
+        "fr": "Alter signifie aussi l’âge en général (in deinem Alter). Ici, c’est la dernière étape de la vie.",
+        "de": "Alter bedeutet auch das Lebensalter allgemein (in deinem Alter). Hier ist es der letzte Lebensabschnitt."
       },
       "explanation": {
         "en": "Das Alter is the last stage of life: old age.",
@@ -525,7 +525,7 @@
       "context": {
         "sentence": "Mein Opa ist Rentner.",
         "translation": {
-          "en": "My grandpa is a retired man.",
+          "en": "My grandpa is retired.",
           "fr": "Mon grand-père est retraité."
         }
       },
@@ -571,7 +571,7 @@
       "context": {
         "sentence": "Meine Oma ist Rentnerin.",
         "translation": {
-          "en": "My grandma is a retired woman.",
+          "en": "My grandma is retired.",
           "fr": "Ma grand-mère est retraitée."
         }
       },

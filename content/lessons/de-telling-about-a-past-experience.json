@@ -125,7 +125,7 @@
                   "text": "Ich fühlte mich ganz unsicher, denn ich suchte schon lange eine Stelle.",
                   "translation": {
                     "en": "I felt completely unsure, because I had been looking for a job for a long time.",
-                    "fr": "Je me sentais très incertaine, car je cherchais un emploi depuis longtemps."
+                    "fr": "Je ne me sentais pas du tout sûre de moi, car je cherchais un emploi depuis longtemps."
                   },
                   "note": {
                     "en": "Ich fühlte mich + adjective names the feeling.",
@@ -1227,7 +1227,7 @@
                   "gap": {
                     "gapId": "gap-10",
                     "expressionId": "zum-glueck",
-                    "accepted": { "answers": ["Zum Glück", "zum Glück", "Plötzlich", "plötzlich"] },
+                    "accepted": { "answers": ["Zum Glück", "zum Glück"] },
                     "answerExplanation": {
                       "en": "A good turn of events: Zum Glück.",
                       "fr": "Une tournure heureuse : Zum Glück.",
@@ -1259,12 +1259,7 @@
                     "gapId": "gap-12",
                     "expressionId": "am-ende-war-ich",
                     "accepted": {
-                      "answers": [
-                        "am Ende war ich",
-                        "Am Ende war ich",
-                        "damals war ich",
-                        "Damals war ich"
-                      ]
+                      "answers": ["am Ende war ich", "Am Ende war ich"]
                     },
                     "answerExplanation": {
                       "en": "The end of the story and the final feeling: am Ende war ich.",

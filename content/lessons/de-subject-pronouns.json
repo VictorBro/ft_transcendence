@@ -60,8 +60,8 @@
               },
               "formTable": [
                 { "subject": "ich", "form": "wohne", "example": "Ich wohne in Berlin." },
-                { "subject": "du", "form": "wohnst", "example": "Du kommst aus Wien." },
-                { "subject": "er / sie / es", "form": "wohnt", "example": "Er heißt Paul." }
+                { "subject": "du", "form": "wohnst", "example": "Du wohnst in Wien." },
+                { "subject": "er / sie / es", "form": "wohnt", "example": "Er wohnt in Bonn." }
               ],
               "examples": [
                 {
@@ -405,8 +405,8 @@
               },
               "formTable": [
                 { "subject": "wir", "form": "wohnen", "example": "Wir wohnen in Hamburg." },
-                { "subject": "ihr", "form": "wohnt", "example": "Ihr kommt aus Wien." },
-                { "subject": "sie", "form": "wohnen", "example": "Sie heißen Müller." }
+                { "subject": "ihr", "form": "wohnt", "example": "Ihr wohnt in Wien." },
+                { "subject": "sie", "form": "wohnen", "example": "Sie wohnen in Köln." }
               ],
               "examples": [
                 {

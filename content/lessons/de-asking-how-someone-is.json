@@ -129,7 +129,7 @@
                   "translation": { "en": "Goodbye!", "fr": "Au revoir !" },
                   "note": {
                     "en": "The polite goodbye ends the first scene.",
-                    "fr": "Le au revoir poli termine la première scène.",
+                    "fr": "L’au revoir poli termine la première scène.",
                     "de": "Der höfliche Abschied beendet die erste Szene."
                   },
                   "expressionIds": []
@@ -690,9 +690,9 @@
               ],
               "answerOptionId": "o2",
               "answerExplanation": {
-                "en": "She greets back and asks politely, with Sie.",
-                "fr": "Elle salue en retour et demande poliment, avec Sie.",
-                "de": "Sie grüßt zurück und fragt höflich mit Sie."
+                "en": "He greets back and asks politely, with Sie.",
+                "fr": "Il salue en retour et demande poliment, avec Sie.",
+                "de": "Er grüßt zurück und fragt höflich mit Sie."
               }
             }
           ]
