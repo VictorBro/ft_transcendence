@@ -89,9 +89,15 @@ test.describe('course home', () => {
 
     await expect(level).toHaveValue(SECOND_COURSE.level);
     await expect(onboarded.getByRole('button', { name: 'Change level' })).toHaveCount(0);
+    // The save ends in router.refresh(). Reloading while that fetch is open
+    // makes Firefox abort the reload (NS_BINDING_ABORTED), so wait for it.
+    const refreshed = onboarded.waitForResponse(
+      (response) => response.request().headers()['rsc'] === '1',
+    );
     await level.selectOption('B2');
+    await refreshed;
 
-    await expect.poll(() => courseLevel(onboarded, SECOND_COURSE.lang)).toBe('B2');
+    expect(await courseLevel(onboarded, SECOND_COURSE.lang)).toBe('B2');
     await onboarded.reload();
     await expect(level).toHaveValue('B2');
   });
