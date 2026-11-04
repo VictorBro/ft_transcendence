@@ -1,11 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
-import type { Prisma } from '../generated/prisma/client';
+import type { Prisma, UserLevel } from '../generated/prisma/client';
 import {
   DailyGoalSchema,
-  FinishResult,
-  FinishResultSchema,
   Language,
+  lessons as shared,
   LessonCard,
   LessonCardSchema,
   LessonId,
@@ -142,6 +141,48 @@ function cardsById(
   results: Map<LessonId, RuleResult>,
 ): Map<LessonId, LessonCard> {
   return new Map(lessons.map((lesson) => [lesson.id, toCard(lesson, results.get(lesson.id))]));
+}
+
+/**
+ * Records a finished lesson, inside the caller's transaction: the course is
+ * already locked and the lesson already checked. The last page of an attempt
+ * calls it with the attempt's score; LessonsService.finish (the demo) too.
+ *   1. the result: the best score stays, the day and time move to this finish
+ *   2. the goal: meetGoal meets the day if this finish reached it
+ * `best` is for the results page: the score kept after the merge.
+ */
+export async function applyFinish(
+  tx: Prisma.TransactionClient,
+  course: UserLevel,
+  lesson: Pick<LessonRow, 'id' | 'level'>,
+  score: number,
+  timeZone: string,
+  now: Date,
+) {
+  const day = await currentDay(tx, course, timeZone, now);
+  const key = { userLevelId: course.id, lessonId: lesson.id };
+  const old = await tx.lessonResult.findUnique({
+    where: { userLevelId_lessonId: key },
+    select: RESULT_SELECT,
+  });
+
+  const result = merge(old ? toRuleResult(old) : undefined, lesson, score, day, now);
+  const data = { score: result.score, day: new Date(day), finishedAt: now };
+  await tx.lessonResult.upsert({
+    where: { userLevelId_lessonId: key },
+    create: { ...key, ...data },
+    update: data,
+  });
+
+  const goal = await meetGoal(tx, course, day);
+  return shared.player.ResultsFinishSchema.parse({
+    // A lesson finished twice in a day counts once: the first time.
+    countedToday: old === null || dayOf(old.day) !== day,
+    doneCount: goal.doneCount,
+    target: target(DailyGoalSchema.parse(course.dailyGoal)),
+    goalJustMet: goal.justMet,
+    best: result.score,
+  });
 }
 
 /*
@@ -308,48 +349,23 @@ export class LessonsService {
   }
 
   /**
-   * PUT /courses/:lang/lessons/:id/result: records a finished lesson. One
-   * transaction under the course lock, so two finishes at once count the
-   * day's goal once:
-   *   1. the course, locked: 404 without one, 409 before placement
-   *   2. the lesson: 404 if it is missing, from another language or not ready
-   *   3. the result: the best score stays, the day and time move to this finish
-   *   4. the goal: meetGoal meets the day if this finish reached it
+   * Finishes a lesson with a given score, for the demo replay of #85 only
+   * (the seed, dev only): no route calls it. One transaction under the course
+   * lock, then applyFinish.
    */
-  finish(
-    user: SessionUser,
-    lang: Language,
-    id: LessonId,
-    score: number,
-    now: Date,
-  ): Promise<FinishResult> {
+  finish(user: SessionUser, lang: Language, id: LessonId, score: number, now: Date) {
     return this.prisma.$transaction(async (tx) => {
       const course = checkCourse(await lockCourse(tx, user.id, lang), { placed: true });
       const lesson = await findLesson(tx, lang, id, { readyOnly: true });
-
-      const day = await currentDay(tx, course, user.timeZone, now);
-      const key = { userLevelId: course.id, lessonId: lesson.id };
-      const old = await tx.lessonResult.findUnique({
-        where: { userLevelId_lessonId: key },
-        select: RESULT_SELECT,
-      });
-
-      const result = merge(old ? toRuleResult(old) : undefined, lesson, score, day, now);
-      const data = { score: result.score, day: new Date(day), finishedAt: now };
-      await tx.lessonResult.upsert({
-        where: { userLevelId_lessonId: key },
-        create: { ...key, ...data },
-        update: data,
-      });
-
-      const goal = await meetGoal(tx, course, day);
-      return FinishResultSchema.parse({
-        // A lesson finished twice in a day counts once: the first time.
-        countedToday: old === null || dayOf(old.day) !== day,
-        doneCount: goal.doneCount,
-        target: target(DailyGoalSchema.parse(course.dailyGoal)),
-        goalJustMet: goal.justMet,
-      });
+      const { best: _best, ...finish } = await applyFinish(
+        tx,
+        course,
+        lesson,
+        score,
+        user.timeZone,
+        now,
+      );
+      return finish;
     });
   }
 }
