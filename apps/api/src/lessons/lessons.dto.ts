@@ -5,6 +5,7 @@ import {
   LessonCardSchema,
   LessonPageSchema,
   LessonQuerySchema,
+  lessons,
   TodaySchema,
 } from '@ft/shared';
 
@@ -22,6 +23,7 @@ export class TodayDto extends createZodDto(TodaySchema) {}
 export class LessonPageDto extends createZodDto(LessonPageSchema) {}
 export class LessonCardDto extends createZodDto(LessonCardSchema) {}
 export class FinishResultDto extends createZodDto(FinishResultSchema) {}
+export class AttemptReadDto extends createZodDto(lessons.player.AttemptReadSchema) {}
 
 // What comes in: the search params (?q=…&sort=…&page=…). Nest checks them
 // against the schema before the controller gets them, so page=0 becomes 1
