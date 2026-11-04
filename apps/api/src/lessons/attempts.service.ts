@@ -2,6 +2,7 @@ import { BadRequestException, ConflictException, Injectable } from '@nestjs/comm
 import { lessons as shared, type Language, type Locale, type SessionUser } from '@ft/shared';
 
 import type { LessonAttempt, Prisma } from '../generated/prisma/client';
+import { lessonAttempts } from '../metrics/metrics';
 import { PrismaService } from '../prisma/prisma.service';
 import { newSecret, refOf } from './attempt-ref';
 import { checkCourse, findLesson } from './course-lookup';
@@ -100,8 +101,8 @@ export class AttemptsService {
    * `created` tells the controller 201 from 200. The locale fixes the mother
    * tongue for the whole attempt.
    */
-  start(userId: string, lang: Language, id: string, locale: Locale, now: Date) {
-    return this.prisma.$transaction(async (tx) => {
+  async start(userId: string, lang: Language, id: string, locale: Locale, now: Date) {
+    const started = await this.prisma.$transaction(async (tx) => {
       const course = checkCourse(await lockCourse(tx, userId, lang), { placed: true });
       const { lesson, source } = await findSource(tx, lang, id);
       const key = { userLevelId: course.id, lessonId: lesson.id };
@@ -129,6 +130,11 @@ export class AttemptsService {
       });
       return { created: true, attempt: this.parse(plan, row, now) };
     });
+    // After the commit: a start that rolled back started nothing.
+    if (started.created) {
+      lessonAttempts.inc({ lang, event: 'started' });
+    }
+    return started;
   }
 
   /**
@@ -144,7 +150,7 @@ export class AttemptsService {
    * course lock makes two parallel last submits one finish: the second sees
    * the attempt finished, and is stale.
    */
-  submit(
+  async submit(
     user: SessionUser,
     lang: Language,
     id: string,
@@ -152,7 +158,7 @@ export class AttemptsService {
     body: SubmitPage,
     now: Date,
   ) {
-    return this.prisma.$transaction(async (tx) => {
+    const { closed, page } = await this.prisma.$transaction(async (tx) => {
       const course = checkCourse(await lockCourse(tx, user.id, lang), { placed: true });
       const { lesson, source } = await findSource(tx, lang, id);
       const row = await tx.lessonAttempt.findUnique({
@@ -195,11 +201,17 @@ export class AttemptsService {
           ...(results ? { results: results as unknown as Prisma.InputJsonObject } : {}),
         },
       });
-      return shared.player.PageResultSchema.parse({
+      const page = shared.player.PageResultSchema.parse({
         feedback: result.feedback,
         attempt: viewOf(plan, updated, now),
       });
+      return { closed: result.closed, page };
     });
+    // After the commit, as in start.
+    if (closed) {
+      lessonAttempts.inc({ lang, event: 'completed' });
+    }
+    return page;
   }
 
   /** The attempt view, through its strict schema: nothing else leaves. */

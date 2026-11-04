@@ -111,6 +111,16 @@ export const placementExams = new Counter({
   registers: [registry],
 });
 
+export const LESSON_ATTEMPT_EVENTS = ['started', 'completed'] as const;
+
+// started: a new attempt, a retake included; completed: its last page locked.
+export const lessonAttempts = new Counter({
+  name: 'ft_lesson_attempts_total',
+  help: 'Lesson attempts by event (started, completed)',
+  labelNames: ['lang', 'event'] as const,
+  registers: [registry],
+});
+
 export const appInfo = new Gauge({
   name: 'ft_app_info',
   help: 'The running API version (always 1)',
@@ -122,6 +132,7 @@ export const appInfo = new Gauge({
 // so every label set an alert or a panel reads exists at 0 from the start.
 for (const lang of LEARNABLE_LANGUAGES) {
   for (const event of EXAM_EVENTS) placementExams.inc({ lang, event }, 0);
+  for (const event of LESSON_ATTEMPT_EVENTS) lessonAttempts.inc({ lang, event }, 0);
   for (const level of LEVELS) {
     placementPoolExhausted.inc({ lang, level }, 0);
     for (const category of QUESTION_CATEGORIES) {
