@@ -58,8 +58,6 @@ export const ERROR_CODES = [
   /** An unknown ref, or an answer of the wrong kind for its unit. */
   'attempt.invalidAnswer',
   'lesson.notFound',
-  /** Not a whole number from 0 to 100. */
-  'lesson.invalidScore',
   'placement.inProgress',
   'placement.invalidChoice',
   'placement.invalidSession',

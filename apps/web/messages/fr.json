@@ -209,8 +209,7 @@
       "invalidAnswer": "Cette réponse est illisible. Recharge la page et réessaie."
     },
     "lesson": {
-      "notFound": "Cette leçon n'existe pas",
-      "invalidScore": "Le score doit être un nombre entier de 0 à 100"
+      "notFound": "Cette leçon n'existe pas"
     },
     "placement": {
       "inProgress": "Un test de positionnement est déjà en cours. Termine-le d'abord.",

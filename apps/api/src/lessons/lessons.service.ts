@@ -357,15 +357,7 @@ export class LessonsService {
     return this.prisma.$transaction(async (tx) => {
       const course = checkCourse(await lockCourse(tx, user.id, lang), { placed: true });
       const lesson = await findLesson(tx, lang, id, { readyOnly: true });
-      const { best: _best, ...finish } = await applyFinish(
-        tx,
-        course,
-        lesson,
-        score,
-        user.timeZone,
-        now,
-      );
-      return finish;
+      return applyFinish(tx, course, lesson, score, user.timeZone, now);
     });
   }
 }

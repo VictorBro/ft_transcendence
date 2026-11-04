@@ -384,14 +384,13 @@ parameter. A lesson is written in one language, the course's, like a question in
 response is the same for every interface language. The web app translates the page around the
 lesson, never the lesson.
 
-**Finishing a lesson is one route.** `PUT /api/courses/:lang/lessons/:id/result` with
-`{ score }` records the score on the course's result for that lesson, keeping the best one, and
-counts the lesson toward today's goal. It stays reachable only behind `LESSON_STUB` until the
-lesson page ships: the flag is on in development and CI and never set on the public server, and
-the stub lesson page posts a typed score to it. The lesson page then finishes through the same
-service, with the score from its exercises. The route and the flag come with
-[#82](https://github.com/VictorBro/ft_transcendence/issues/82), the stub page with
-[#96](https://github.com/VictorBro/ft_transcendence/issues/96).
+**No route takes a score.** The server runs every lesson attempt under
+`/api/courses/:lang/lessons/:id/attempt`: it sends only the page the learner is on, checks every
+answer, owns the exam timer, and when the last page locks it records the score from the answers it
+stored, keeping the best one, and counts the lesson toward today's goal. The finish and its goal
+rules come with [#82](https://github.com/VictorBro/ft_transcendence/issues/82), the attempt with
+[#145](https://github.com/VictorBro/ft_transcendence/issues/145); docs/LESSONS.md, "Scoring", has
+the details.
 
 The REST half is also what the **Public API** module documents, if you take it. That is a
 reason to keep the domain reachable over HTTP even where a socket would do.

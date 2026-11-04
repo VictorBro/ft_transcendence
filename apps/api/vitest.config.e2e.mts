@@ -21,13 +21,10 @@ export default defineConfig({
     setupFiles: ['reflect-metadata'],
     // app.setup requires it at import time, and CI runs this without a shell.
     // The provider is pinned so no shell carrying a real key makes a test spend.
-    // LESSON_STUB opens the finish route, so finish.e2e-spec.ts runs however
-    // vitest is started; its "unset" test deletes it itself.
     env: {
       AVATAR_STORAGE_DIR: '/tmp/ft-avatars-e2e',
       LLM_PROVIDER: 'fixture',
       LLM_API_KEY: '',
-      LESSON_STUB: 'true',
     },
     // A cold container boots the whole Nest graph before the first assertion.
     testTimeout: 30_000,
