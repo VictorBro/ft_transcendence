@@ -204,6 +204,10 @@
       "invalidGoal": "Choose a daily goal of 10, 30 or 60 minutes",
       "invalidLevel": "That level does not exist"
     },
+    "attempt": {
+      "stale": "This page is out of date. Here is where you are now.",
+      "invalidAnswer": "This answer could not be read. Reload the page and try again."
+    },
     "lesson": {
       "notFound": "That lesson does not exist",
       "invalidScore": "The score must be a whole number from 0 to 100"

@@ -53,6 +53,10 @@ export const ERROR_CODES = [
   'course.invalidGoal',
   /** Not one of LEVELS. */
   'course.invalidLevel',
+  /** Another page than the cursor's, a replay, an old attemptId or a finished attempt. */
+  'attempt.stale',
+  /** An unknown ref, or an answer of the wrong kind for its unit. */
+  'attempt.invalidAnswer',
   'lesson.notFound',
   /** Not a whole number from 0 to 100. */
   'lesson.invalidScore',

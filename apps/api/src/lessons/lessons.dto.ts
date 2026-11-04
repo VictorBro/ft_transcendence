@@ -25,6 +25,7 @@ export class LessonCardDto extends createZodDto(LessonCardSchema) {}
 export class FinishResultDto extends createZodDto(FinishResultSchema) {}
 export class AttemptReadDto extends createZodDto(lessons.player.AttemptReadSchema) {}
 export class AttemptViewDto extends createZodDto(lessons.player.AttemptViewSchema) {}
+export class PageResultDto extends createZodDto(lessons.player.PageResultSchema) {}
 
 // What comes in: the search params (?q=…&sort=…&page=…). Nest checks them
 // against the schema before the controller gets them, so page=0 becomes 1
@@ -33,6 +34,9 @@ export class LessonQueryDto extends createZodDto(LessonQuerySchema) {}
 
 // The body of a start: { locale }, which fixes the attempt's mother tongue.
 export class StartAttemptDto extends createZodDto(lessons.player.StartAttemptSchema) {}
+
+// The body of a page: { attemptId, answers }, the answers by unit ref.
+export class SubmitPageDto extends createZodDto(lessons.player.SubmitPageSchema) {}
 
 // The body of a finish: { score }, a whole number from 0 to 100, or a 400
 // lesson.invalidScore.

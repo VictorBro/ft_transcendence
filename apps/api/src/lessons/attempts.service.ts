@@ -1,15 +1,17 @@
-import { Injectable } from '@nestjs/common';
-import { lessons as shared, type Language, type Locale } from '@ft/shared';
+import { BadRequestException, ConflictException, Injectable } from '@nestjs/common';
+import { lessons as shared, type Language, type Locale, type SessionUser } from '@ft/shared';
 
 import type { LessonAttempt, Prisma } from '../generated/prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
 import { newSecret, refOf } from './attempt-ref';
 import { checkCourse, findLesson } from './course-lookup';
 import { lockCourse } from './goal';
+import { applyFinish } from './lessons.service';
 
 type LessonPlan = shared.player.LessonPlan;
 type AttemptState = shared.player.AttemptState;
 type Results = shared.player.Results;
+type SubmitPage = shared.player.SubmitPage;
 
 /*
  * The server runs every lesson attempt (#145). The plan is rebuilt from the
@@ -126,6 +128,77 @@ export class AttemptsService {
         },
       });
       return { created: true, attempt: this.parse(plan, row, now) };
+    });
+  }
+
+  /**
+   * POST attempt/pages/:index { attemptId, answers }: one transaction, the
+   * course locked first, then the attempt row. The core (submit) takes only
+   * the cursor page, once, scores and locks every unit of it, and moves the
+   * cursor on.
+   *   - no attempt, another attemptId, another index, a replay, a finished
+   *     attempt → 409 attempt.stale
+   *   - an unknown ref or a wrong answer kind → 400 attempt.invalidAnswer
+   * The last page closes the attempt: the results are written once, and
+   * applyFinish records the server's score, in the same transaction. The
+   * course lock makes two parallel last submits one finish: the second sees
+   * the attempt finished, and is stale.
+   */
+  submit(
+    user: SessionUser,
+    lang: Language,
+    id: string,
+    index: number,
+    body: SubmitPage,
+    now: Date,
+  ) {
+    return this.prisma.$transaction(async (tx) => {
+      const course = checkCourse(await lockCourse(tx, user.id, lang), { placed: true });
+      const { lesson, source } = await findSource(tx, lang, id);
+      const row = await tx.lessonAttempt.findUnique({
+        where: { userLevelId_lessonId: { userLevelId: course.id, lessonId: lesson.id } },
+      });
+      if (!row || row.id !== body.attemptId) {
+        throw new ConflictException('attempt.stale');
+      }
+
+      const plan = shared.player.buildPlan(source, row.motherTongue);
+      const ref = refOf(row.secret);
+      const result = shared.player.submit(
+        plan,
+        stateOf(row),
+        index,
+        body.answers,
+        now.getTime(),
+        ref,
+      );
+      if (!result.ok) {
+        throw result.error === 'stale'
+          ? new ConflictException('attempt.stale')
+          : new BadRequestException('attempt.invalidAnswer');
+      }
+
+      let results: Results | null = null;
+      if (result.closed) {
+        const sheet = shared.player.results(plan, result.state);
+        // From the exact total: sheet.score is already cut to one decimal.
+        const { total } = shared.player.lessonResults(plan, result.state.answers);
+        const score = shared.player.storedScore(total);
+        const finish = await applyFinish(tx, course, lesson, score, user.timeZone, now);
+        results = { ...sheet, finish };
+      }
+
+      const updated = await tx.lessonAttempt.update({
+        where: { id: row.id },
+        data: {
+          ...dataOf(result.state),
+          ...(results ? { results: results as unknown as Prisma.InputJsonObject } : {}),
+        },
+      });
+      return shared.player.PageResultSchema.parse({
+        feedback: result.feedback,
+        attempt: viewOf(plan, updated, now),
+      });
     });
   }
 

@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpStatus, Param, Post, Res } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, HttpStatus, Param, Post, Res } from '@nestjs/common';
 import {
   ApiBadRequestResponse,
   ApiConflictResponse,
@@ -15,7 +15,13 @@ import { LEARNABLE_LANGUAGES } from '@ft/shared';
 import type { Language, SessionUser } from '@ft/shared';
 
 import { AttemptsService } from './attempts.service';
-import { AttemptReadDto, AttemptViewDto, StartAttemptDto } from './lessons.dto';
+import {
+  AttemptReadDto,
+  AttemptViewDto,
+  PageResultDto,
+  StartAttemptDto,
+  SubmitPageDto,
+} from './lessons.dto';
 import { CurrentUser } from '../auth/auth.decorators';
 import { LangParam } from '../validation.pipe';
 
@@ -80,5 +86,33 @@ export class AttemptsController {
       response.status(HttpStatus.OK);
     }
     return attempt;
+  }
+
+  /**
+   * POST …/attempt/pages/:index { attemptId, answers }: only the cursor page,
+   * once. `index` is read as a plain number: anything that is not the
+   * cursor, "abc" included, is the same 409 attempt.stale.
+   */
+  @Post('pages/:index')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Submit the page at the cursor: its feedback, then the attempt' })
+  @ApiParam({ name: 'index', type: Number })
+  @ApiOkResponse({ type: PageResultDto })
+  @ApiBadRequestResponse({ description: 'An unknown ref, or an answer of the wrong kind' })
+  @ApiUnauthorizedResponse({ description: 'No valid session' })
+  @ApiNotFoundResponse({
+    description: 'No course in that language, or no such lesson in it, or it is not ready',
+  })
+  @ApiConflictResponse({
+    description: 'Not the page at the cursor, a replay, an old attempt, or a finished one',
+  })
+  submit(
+    @CurrentUser() user: SessionUser,
+    @Param('lang', LangParam) lang: Language,
+    @Param('id') id: string,
+    @Param('index') index: string,
+    @Body() body: SubmitPageDto,
+  ) {
+    return this.attempts.submit(user, lang, id, Number(index), body, new Date());
   }
 }
