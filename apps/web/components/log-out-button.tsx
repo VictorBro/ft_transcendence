@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 
 import { logOut } from '@/lib/auth-client';
 import { useRouter } from '@/i18n/navigation';
+import { closeSocket } from './tab-socket';
 
 export function LogOutButton() {
   const router = useRouter();
@@ -15,6 +16,7 @@ export function LogOutButton() {
     setPending(true);
     try {
       await logOut();
+      closeSocket();
       // Home rather than the current page, which may well have needed the
       // session that just ended.
       router.replace('/');

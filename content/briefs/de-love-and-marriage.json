@@ -1,0 +1,723 @@
+{
+  "schemaVersion": 2,
+  "id": "de-love-and-marriage",
+  "lang": "de",
+  "level": "B1",
+  "locales": ["en", "fr", "de"],
+  "title": "Liebe und Ehe",
+  "objective": {
+    "en": "Talk about love, engagement, wedding, marriage and divorce with about fourteen words.",
+    "fr": "Parler de l'amour, des fiançailles, du mariage et du divorce avec environ quatorze mots.",
+    "de": "Über Liebe, Verlobung, Hochzeit, Ehe und Scheidung mit etwa vierzehn Wörtern sprechen."
+  },
+  "estimatedMinutes": 24,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:30:19.094Z",
+    "inputHashes": { "outline": "48a8e8621d8a4f827e2ef6d9f249072c42a67161a8ef2e8232dc2dbe2c98d339" }
+  },
+  "kind": "vocabulary",
+  "theme": "relations",
+  "coverageNotes": {
+    "en": "Fourteen words from the first relationship to the end of a marriage: falling in love, engagement, wedding, marriage, separation and divorce. Reflexive verbs are taught with sich.",
+    "fr": "Quatorze mots, de la première relation à la fin d'un mariage : tomber amoureux, fiançailles, mariage, séparation et divorce. Les verbes pronominaux sont appris avec sich.",
+    "de": "Vierzehn Wörter von der ersten Beziehung bis zum Ende einer Ehe: Verlieben, Verlobung, Hochzeit, Ehe, Trennung und Scheidung. Reflexive Verben werden mit sich gelernt."
+  },
+  "targetCount": 14,
+  "countRationale": {
+    "en": "Fourteen words in three groups follow the stages of a relationship and fit one B1 lesson.",
+    "fr": "Quatorze mots en trois groupes suivent les étapes d'une relation et tiennent dans une leçon B1.",
+    "de": "Vierzehn Wörter in drei Gruppen folgen den Stationen einer Beziehung und passen in eine B1-Lektion."
+  },
+  "difficultyBalance": {
+    "en": "Most nouns are core vocabulary; the reflexive verbs and the pairs Ehe/Hochzeit and Trennung/Scheidung are more demanding.",
+    "fr": "La plupart des noms sont du vocabulaire de base ; les verbes pronominaux et les paires Ehe/Hochzeit et Trennung/Scheidung sont plus difficiles.",
+    "de": "Die meisten Nomen sind Grundwortschatz; die reflexiven Verben und die Paare Ehe/Hochzeit und Trennung/Scheidung sind anspruchsvoller."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "verlobung",
+      "label": {
+        "en": "Falling in love and engagement",
+        "fr": "Tomber amoureux et fiançailles",
+        "de": "Verlieben und Verlobung"
+      },
+      "targetIds": ["beziehung", "verlieben", "antrag", "verloben", "verlobung"],
+      "introduction": {
+        "en": "These words describe the way **from falling in love to the engagement**:\n\n- `die Beziehung`\n- `sich verlieben`\n- `der Heiratsantrag`\n- `sich verloben`\n- `die Verlobung`",
+        "fr": "Ces mots décrivent le chemin **de l'amour aux fiançailles** :\n\n- `die Beziehung`\n- `sich verlieben`\n- `der Heiratsantrag`\n- `sich verloben`\n- `die Verlobung`",
+        "de": "Diese Wörter beschreiben den Weg **vom Verlieben bis zur Verlobung**:\n\n- `die Beziehung`\n- `sich verlieben`\n- `der Heiratsantrag`\n- `sich verloben`\n- `die Verlobung`"
+      }
+    },
+    {
+      "id": "hochzeit",
+      "label": {
+        "en": "Wedding and marriage",
+        "fr": "Mariage et vie conjugale",
+        "de": "Hochzeit und Ehe"
+      },
+      "targetIds": ["standesamt", "trauung", "hochzeit", "ehepartner", "ehe"],
+      "introduction": {
+        "en": "In Germany many couples marry **twice**: first at the registry office, then with a ceremony and a party.\n\n- `das Standesamt`\n- `die Trauung`\n- `die Hochzeit`\n- `der Ehepartner`\n- `die Ehe`",
+        "fr": "En Allemagne, beaucoup de couples se marient **deux fois** : d'abord à la mairie, puis avec une cérémonie et une fête.\n\n- `das Standesamt`\n- `die Trauung`\n- `die Hochzeit`\n- `der Ehepartner`\n- `die Ehe`",
+        "de": "In Deutschland heiraten viele Paare **zweimal**: zuerst auf dem Standesamt, dann mit einer Zeremonie und einem Fest.\n\n- `das Standesamt`\n- `die Trauung`\n- `die Hochzeit`\n- `der Ehepartner`\n- `die Ehe`"
+      }
+    },
+    {
+      "id": "scheidung",
+      "label": {
+        "en": "Separation and divorce",
+        "fr": "Séparation et divorce",
+        "de": "Trennung und Scheidung"
+      },
+      "targetIds": ["trennung", "trennen", "scheidung", "scheiden"],
+      "introduction": {
+        "en": "Not every relationship lasts. First comes the **separation**, later possibly the divorce:\n\n- `die Trennung`\n- `sich trennen`\n- `die Scheidung`\n- `sich scheiden lassen`",
+        "fr": "Toutes les relations ne durent pas. D'abord vient la **séparation**, plus tard peut-être le divorce :\n\n- `die Trennung`\n- `sich trennen`\n- `die Scheidung`\n- `sich scheiden lassen`",
+        "de": "Nicht jede Beziehung hält. Zuerst kommt die **Trennung**, später vielleicht die Scheidung:\n\n- `die Trennung`\n- `sich trennen`\n- `die Scheidung`\n- `sich scheiden lassen`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "beziehung",
+      "term": "Beziehung",
+      "translations": { "en": ["relationship"], "fr": ["relation", "relation de couple"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Beziehung",
+      "examForms": ["die Beziehung"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/bəˈtsiːʊŋ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Sie haben eine glückliche Beziehung.",
+        "translation": {
+          "en": "They have a happy relationship.",
+          "fr": "Ils ont une relation heureuse."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Beziehung is a relationship between two people.",
+        "fr": "Die Beziehung désigne la relation entre deux personnes.",
+        "de": "Die Beziehung ist die Verbindung zwischen zwei Menschen."
+      },
+      "genderExplanation": {
+        "en": "Beziehung is feminine: die Beziehung.",
+        "fr": "Beziehung est féminin : die Beziehung.",
+        "de": "Beziehung ist feminin: die Beziehung."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Meine ",
+        "after": " zu Tom ist seit drei Jahren glücklich.",
+        "accepted": { "answers": ["Beziehung"] },
+        "referenceTargetIds": ["beziehung", "standesamt", "trauung", "scheidung"],
+        "explanation": {
+          "en": "Only Beziehung fits: a relationship can be happy for years.",
+          "fr": "Seul « Beziehung » convient : une relation peut être heureuse pendant des années.",
+          "de": "Nur „Beziehung“ passt: Eine Beziehung kann jahrelang glücklich sein."
+        }
+      },
+      "listeningOptionTargetIds": ["beziehung", "verlobung", "trauung", "trennung"]
+    },
+    {
+      "id": "verlieben",
+      "term": "sich verlieben",
+      "translations": { "en": ["to fall in love"], "fr": ["tomber amoureux", "tomber amoureuse"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "sich verlieben",
+      "examForms": ["sich verlieben"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/zɪç fɛɐ̯ˈliːbn̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Er hat sich sofort in sie verliebt.",
+        "translation": {
+          "en": "He fell in love with her immediately.",
+          "fr": "Il est tombé amoureux d'elle tout de suite."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Sich verlieben means to start loving someone: sich in jemanden verlieben.",
+        "fr": "Sich verlieben veut dire tomber amoureux : sich in jemanden verlieben.",
+        "de": "Sich verlieben heißt, anzufangen jemanden zu lieben: sich in jemanden verlieben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Im Urlaub hat sich Lena in Tom ",
+        "after": ".",
+        "accepted": { "answers": ["verliebt"] },
+        "referenceTargetIds": ["verlieben", "verloben", "standesamt", "scheidung"],
+        "explanation": {
+          "en": "Sich in jemanden verlieben: the perfect form is hat sich verliebt.",
+          "fr": "Sich in jemanden verlieben : le parfait est « hat sich verliebt ».",
+          "de": "Sich in jemanden verlieben: Das Perfekt ist „hat sich verliebt“."
+        }
+      },
+      "listeningOptionTargetIds": ["verlieben", "verloben", "verlobung", "trennen"]
+    },
+    {
+      "id": "antrag",
+      "term": "Heiratsantrag",
+      "translations": { "en": ["marriage proposal", "proposal"], "fr": ["demande en mariage"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "der Heiratsantrag",
+      "examForms": ["der Heiratsantrag"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈhaɪʁaːtsˌʔantʁaːk/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Sie hat seinen Heiratsantrag angenommen.",
+        "translation": {
+          "en": "She accepted his marriage proposal.",
+          "fr": "Elle a accepté sa demande en mariage."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Der Heiratsantrag is the question Willst du mich heiraten?",
+        "fr": "Der Heiratsantrag est la question « Veux-tu m'épouser ? ».",
+        "de": "Der Heiratsantrag ist die Frage: Willst du mich heiraten?"
+      },
+      "genderExplanation": {
+        "en": "Heiratsantrag is masculine: der Heiratsantrag.",
+        "fr": "Heiratsantrag est masculin : der Heiratsantrag.",
+        "de": "Heiratsantrag ist maskulin: der Heiratsantrag."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Er hat ihr beim Abendessen einen ",
+        "after": " gemacht.",
+        "accepted": { "answers": ["Heiratsantrag", "Antrag"] },
+        "referenceTargetIds": ["antrag", "trauung", "ehepartner", "trennung"],
+        "explanation": {
+          "en": "Einen Heiratsantrag machen means to propose; the others do not fit.",
+          "fr": "Einen Heiratsantrag machen veut dire faire sa demande ; les autres mots ne conviennent pas.",
+          "de": "Einen Heiratsantrag machen heißt, jemanden zu fragen; die anderen Wörter passen nicht."
+        }
+      },
+      "listeningOptionTargetIds": ["antrag", "trauung", "trennung", "ehepartner"]
+    },
+    {
+      "id": "verloben",
+      "term": "sich verloben",
+      "translations": { "en": ["to get engaged"], "fr": ["se fiancer"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "sich verloben",
+      "examForms": ["sich verloben"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/zɪç fɛɐ̯ˈloːbn̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Sie haben sich an Weihnachten verlobt.",
+        "translation": {
+          "en": "They got engaged at Christmas.",
+          "fr": "Ils se sont fiancés à Noël."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Sich verloben means to promise to marry each other.",
+        "fr": "Sich verloben veut dire se promettre de se marier.",
+        "de": "Sich verloben heißt, sich das Eheversprechen zu geben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Anna und Jonas wollen sich nächstes Jahr ",
+        "after": ".",
+        "accepted": { "answers": ["verloben"] },
+        "referenceTargetIds": ["verloben", "hochzeit", "ehe", "standesamt"],
+        "explanation": {
+          "en": "After wollen sich a verb is needed: sich verloben.",
+          "fr": "Après « wollen sich », il faut un verbe : sich verloben.",
+          "de": "Nach „wollen sich“ braucht man ein Verb: sich verloben."
+        }
+      },
+      "listeningOptionTargetIds": ["verloben", "verlieben", "verlobung", "trennen"]
+    },
+    {
+      "id": "verlobung",
+      "term": "Verlobung",
+      "translations": { "en": ["engagement"], "fr": ["fiançailles"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Verlobung",
+      "examForms": ["die Verlobung"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/fɛɐ̯ˈloːbʊŋ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Wir feiern morgen unsere Verlobung.",
+        "translation": {
+          "en": "Tomorrow we are celebrating our engagement.",
+          "fr": "Demain, nous fêtons nos fiançailles."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Verlobung is the promise to marry, before the wedding.",
+        "fr": "Die Verlobung est la promesse de mariage, avant la noce.",
+        "de": "Die Verlobung ist das Eheversprechen vor der Hochzeit."
+      },
+      "genderExplanation": {
+        "en": "Verlobung is feminine: die Verlobung.",
+        "fr": "Verlobung est féminin : die Verlobung.",
+        "de": "Verlobung ist feminin: die Verlobung."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Zur ",
+        "after": " schenkt er ihr einen Ring.",
+        "accepted": { "answers": ["Verlobung"] },
+        "referenceTargetIds": ["verlobung", "beziehung", "trennung", "ehepartner"],
+        "explanation": {
+          "en": "Only Verlobung fits: an engagement ring is given at the engagement.",
+          "fr": "Seul « Verlobung » convient : la bague de fiançailles est offerte aux fiançailles.",
+          "de": "Nur „Verlobung“ passt: Den Verlobungsring schenkt man zur Verlobung."
+        }
+      },
+      "listeningOptionTargetIds": ["verlobung", "verloben", "trennung", "trauung"]
+    },
+    {
+      "id": "standesamt",
+      "term": "Standesamt",
+      "translations": {
+        "en": ["registry office", "register office"],
+        "fr": ["mairie", "état civil"]
+      },
+      "wordClass": "noun",
+      "genders": ["neuter"],
+      "number": "singular",
+      "teachingForm": "das Standesamt",
+      "examForms": ["das Standesamt"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʃtandəsˌʔamt/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Das Standesamt öffnet um acht Uhr.",
+        "translation": {
+          "en": "The registry office opens at eight o'clock.",
+          "fr": "La mairie ouvre à huit heures."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Das Standesamt is the office where a marriage is legally registered.",
+        "fr": "Das Standesamt est le bureau où le mariage est enregistré légalement.",
+        "de": "Das Standesamt ist die Behörde, bei der man offiziell heiratet."
+      },
+      "genderExplanation": {
+        "en": "Standesamt is neuter: das Standesamt.",
+        "fr": "Standesamt est neutre : das Standesamt.",
+        "de": "Standesamt ist neutral: das Standesamt."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Zuerst heiraten sie im ",
+        "after": ", dann feiern sie in der Kirche.",
+        "accepted": { "answers": ["Standesamt"] },
+        "referenceTargetIds": ["standesamt", "ehe", "scheidung", "trennen"],
+        "explanation": {
+          "en": "Im Standesamt heiraten: the official wedding takes place at the registry office.",
+          "fr": "Im Standesamt heiraten : le mariage officiel a lieu à la mairie.",
+          "de": "Im Standesamt heiraten: Die offizielle Eheschließung findet dort statt."
+        }
+      },
+      "listeningOptionTargetIds": ["standesamt", "ehepartner", "hochzeit", "trauung"]
+    },
+    {
+      "id": "trauung",
+      "term": "Trauung",
+      "translations": { "en": ["wedding ceremony"], "fr": ["cérémonie de mariage"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Trauung",
+      "examForms": ["die Trauung"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈtʁaʊ̯ʊŋ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Die Trauung findet in einer kleinen Kirche statt.",
+        "translation": {
+          "en": "The wedding ceremony takes place in a small church.",
+          "fr": "La cérémonie de mariage a lieu dans une petite église."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Trauung is the ceremony in which the couple marries.",
+        "fr": "Die Trauung est la cérémonie pendant laquelle le couple se marie.",
+        "de": "Die Trauung ist die Zeremonie, bei der das Paar heiratet."
+      },
+      "genderExplanation": {
+        "en": "Trauung is feminine: die Trauung.",
+        "fr": "Trauung est féminin : die Trauung.",
+        "de": "Trauung ist feminin: die Trauung."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Die kirchliche ",
+        "after": " beginnt um 14 Uhr.",
+        "accepted": { "answers": ["Trauung"] },
+        "referenceTargetIds": ["trauung", "trennung", "ehepartner", "scheidung"],
+        "explanation": {
+          "en": "Only Trauung fits: a church ceremony is a Trauung.",
+          "fr": "Seul « Trauung » convient : une cérémonie à l'église est une Trauung.",
+          "de": "Nur „Trauung“ passt: Eine kirchliche Zeremonie ist eine Trauung."
+        }
+      },
+      "listeningOptionTargetIds": ["trauung", "trennung", "hochzeit", "standesamt"]
+    },
+    {
+      "id": "hochzeit",
+      "term": "Hochzeit",
+      "translations": { "en": ["wedding"], "fr": ["mariage", "noces"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Hochzeit",
+      "examForms": ["die Hochzeit"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈhɔxtsaɪ̯t/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Die Hochzeit dauert bis in die Nacht.",
+        "translation": {
+          "en": "The wedding lasts until late at night.",
+          "fr": "Le mariage dure jusque tard dans la nuit."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Die Hochzeit is the wedding day and party; die Ehe is the married life afterwards.",
+        "fr": "Die Hochzeit est le jour et la fête du mariage ; die Ehe est la vie conjugale ensuite.",
+        "de": "Die Hochzeit ist der Tag und das Fest; die Ehe ist das gemeinsame Leben danach."
+      },
+      "explanation": {
+        "en": "Die Hochzeit is the wedding day with the celebration.",
+        "fr": "Die Hochzeit est le jour du mariage avec la fête.",
+        "de": "Die Hochzeit ist der Tag der Eheschließung mit der Feier."
+      },
+      "genderExplanation": {
+        "en": "Hochzeit is feminine: die Hochzeit.",
+        "fr": "Hochzeit est féminin : die Hochzeit.",
+        "de": "Hochzeit ist feminin: die Hochzeit."
+      },
+      "matchingLabel": null,
+      "examPrompt": { "en": "wedding (the celebration)", "fr": "mariage (la fête)" },
+      "gap": {
+        "before": "Auf der ",
+        "after": " meiner Schwester haben alle getanzt.",
+        "accepted": { "answers": ["Hochzeit"] },
+        "referenceTargetIds": ["hochzeit", "verloben", "scheidung", "beziehung"],
+        "explanation": {
+          "en": "Only Hochzeit fits: people dance at a wedding party.",
+          "fr": "Seul « Hochzeit » convient : on danse à la fête de mariage.",
+          "de": "Nur „Hochzeit“ passt: Auf einer Hochzeit wird getanzt."
+        }
+      },
+      "listeningOptionTargetIds": ["hochzeit", "ehe", "trauung", "ehepartner"]
+    },
+    {
+      "id": "ehepartner",
+      "term": "Ehepartner",
+      "translations": { "en": ["spouse"], "fr": ["conjoint"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "der Ehepartner",
+      "examForms": ["der Ehepartner"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈeːəˌpaʁtnɐ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Mein Ehepartner arbeitet im Krankenhaus.",
+        "translation": {
+          "en": "My spouse works in a hospital.",
+          "fr": "Mon conjoint travaille à l'hôpital."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Der Ehepartner is the husband or wife; for a woman you can say die Ehepartnerin.",
+        "fr": "Der Ehepartner est le mari ou la femme ; pour une femme on peut dire die Ehepartnerin.",
+        "de": "Der Ehepartner ist der Ehemann oder die Ehefrau; für eine Frau sagt man auch die Ehepartnerin."
+      },
+      "genderExplanation": {
+        "en": "Ehepartner is masculine: der Ehepartner.",
+        "fr": "Ehepartner est masculin : der Ehepartner.",
+        "de": "Ehepartner ist maskulin: der Ehepartner."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Zur Feier darf jeder Gast seinen ",
+        "after": " mitbringen.",
+        "accepted": { "answers": ["Ehepartner"] },
+        "referenceTargetIds": ["ehepartner", "standesamt", "trennen", "verlobung"],
+        "explanation": {
+          "en": "Only Ehepartner fits: guests bring a person, and seinen is masculine.",
+          "fr": "Seul « Ehepartner » convient : les invités amènent une personne, et « seinen » est masculin.",
+          "de": "Nur „Ehepartner“ passt: Gäste bringen eine Person mit, und „seinen“ ist maskulin."
+        }
+      },
+      "listeningOptionTargetIds": ["ehepartner", "ehe", "hochzeit", "standesamt"]
+    },
+    {
+      "id": "ehe",
+      "term": "Ehe",
+      "translations": { "en": ["marriage"], "fr": ["mariage"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Ehe",
+      "examForms": ["die Ehe"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈeːə/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Nach zwanzig Jahren ist ihre Ehe noch glücklich.",
+        "translation": {
+          "en": "After twenty years their marriage is still happy.",
+          "fr": "Après vingt ans, leur mariage est encore heureux."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Die Ehe is the married life; the wedding itself is die Hochzeit.",
+        "fr": "Die Ehe est la vie conjugale ; la noce elle-même est die Hochzeit.",
+        "de": "Die Ehe ist das gemeinsame Leben als Ehepaar; das Fest ist die Hochzeit."
+      },
+      "explanation": {
+        "en": "Die Ehe is the legal and lasting union of two people.",
+        "fr": "Die Ehe est l'union légale et durable de deux personnes.",
+        "de": "Die Ehe ist die rechtliche und dauerhafte Verbindung zweier Menschen."
+      },
+      "genderExplanation": {
+        "en": "Ehe is feminine: die Ehe.",
+        "fr": "Ehe est féminin : die Ehe.",
+        "de": "Ehe ist feminin: die Ehe."
+      },
+      "matchingLabel": null,
+      "examPrompt": { "en": "marriage (the state of being married)", "fr": "mariage (l'union)" },
+      "gap": {
+        "before": "Ihre ",
+        "after": " war lang und glücklich.",
+        "accepted": { "answers": ["Ehe"] },
+        "referenceTargetIds": ["ehe", "verlieben", "antrag", "trennen"],
+        "explanation": {
+          "en": "Only Ehe fits: a marriage can be long and happy.",
+          "fr": "Seul « Ehe » convient : un mariage peut être long et heureux.",
+          "de": "Nur „Ehe“ passt: Eine Ehe kann lang und glücklich sein."
+        }
+      },
+      "listeningOptionTargetIds": ["ehe", "ehepartner", "scheidung", "hochzeit"]
+    },
+    {
+      "id": "trennung",
+      "term": "Trennung",
+      "translations": { "en": ["separation"], "fr": ["séparation"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Trennung",
+      "examForms": ["die Trennung"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈtʁɛnʊŋ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Die Trennung war für beide schwer.",
+        "translation": {
+          "en": "The separation was hard for both of them.",
+          "fr": "La séparation a été difficile pour les deux."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Trennung is the end of living together as a couple; it is not yet legally a divorce.",
+        "fr": "Die Trennung est la fin de la vie de couple ; ce n'est pas encore juridiquement un divorce.",
+        "de": "Die Trennung ist das Ende des Zusammenlebens als Paar; juristisch ist es noch keine Scheidung."
+      },
+      "genderExplanation": {
+        "en": "Trennung is feminine: die Trennung.",
+        "fr": "Trennung est féminin : die Trennung.",
+        "de": "Trennung ist feminin: die Trennung."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Nach der ",
+        "after": " zieht er in eine eigene Wohnung.",
+        "accepted": { "answers": ["Trennung"] },
+        "referenceTargetIds": ["trennung", "standesamt", "verlobung", "trauung"],
+        "explanation": {
+          "en": "Only Trennung fits: after a separation one moves out.",
+          "fr": "Seul « Trennung » convient : après une séparation, on déménage.",
+          "de": "Nur „Trennung“ passt: Nach einer Trennung zieht man aus."
+        }
+      },
+      "listeningOptionTargetIds": ["trennung", "trennen", "trauung", "scheidung"]
+    },
+    {
+      "id": "trennen",
+      "term": "sich trennen",
+      "translations": { "en": ["to separate", "to split up"], "fr": ["se séparer"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "sich trennen",
+      "examForms": ["sich trennen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/zɪç ˈtʁɛnən/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Sie haben sich im Sommer getrennt.",
+        "translation": { "en": "They split up in the summer.", "fr": "Ils se sont séparés en été." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Sich trennen means to end a relationship.",
+        "fr": "Sich trennen veut dire mettre fin à une relation.",
+        "de": "Sich trennen heißt, eine Beziehung zu beenden."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Nach vielen Streitigkeiten wollen sie sich ",
+        "after": ".",
+        "accepted": { "answers": ["trennen", "scheiden lassen"] },
+        "referenceTargetIds": ["trennen", "verloben", "hochzeit", "ehepartner"],
+        "explanation": {
+          "en": "After many quarrels the couple wants to separate: sich trennen.",
+          "fr": "Après de nombreuses disputes, le couple veut se séparer : sich trennen.",
+          "de": "Nach vielen Streitigkeiten will das Paar auseinandergehen: sich trennen."
+        }
+      },
+      "listeningOptionTargetIds": ["trennen", "trennung", "verloben", "scheiden"]
+    },
+    {
+      "id": "scheidung",
+      "term": "Scheidung",
+      "translations": { "en": ["divorce"], "fr": ["divorce"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Scheidung",
+      "examForms": ["die Scheidung"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʃaɪ̯dʊŋ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Die Scheidung dauerte fast ein Jahr.",
+        "translation": {
+          "en": "The divorce took almost a year.",
+          "fr": "Le divorce a duré presque un an."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Scheidung is the legal end of a marriage.",
+        "fr": "Die Scheidung est la fin légale d'un mariage.",
+        "de": "Die Scheidung ist das rechtliche Ende einer Ehe."
+      },
+      "genderExplanation": {
+        "en": "Scheidung is feminine: die Scheidung.",
+        "fr": "Scheidung est féminin : die Scheidung.",
+        "de": "Scheidung ist feminin: die Scheidung."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Das Gericht entscheidet über die ",
+        "after": ".",
+        "accepted": { "answers": ["Scheidung"] },
+        "referenceTargetIds": ["scheidung", "hochzeit", "trauung", "verlobung"],
+        "explanation": {
+          "en": "Only Scheidung fits: a court decides about a divorce.",
+          "fr": "Seul « Scheidung » convient : un tribunal décide d'un divorce.",
+          "de": "Nur „Scheidung“ passt: Über eine Scheidung entscheidet ein Gericht."
+        }
+      },
+      "listeningOptionTargetIds": ["scheidung", "scheiden", "trennung", "ehe"]
+    },
+    {
+      "id": "scheiden",
+      "term": "sich scheiden lassen",
+      "translations": { "en": ["to get divorced"], "fr": ["divorcer"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "sich scheiden lassen",
+      "examForms": ["sich scheiden lassen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/zɪç ˈʃaɪ̯dn̩ ˈlasn̩/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Meine Eltern haben sich vor zehn Jahren scheiden lassen.",
+        "translation": {
+          "en": "My parents got divorced ten years ago.",
+          "fr": "Mes parents ont divorcé il y a dix ans."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Sich scheiden lassen means to end a marriage legally; the verb lassen stays in the infinitive.",
+        "fr": "Sich scheiden lassen veut dire mettre fin légalement à un mariage ; le verbe lassen reste à l'infinitif.",
+        "de": "Sich scheiden lassen heißt, eine Ehe rechtlich zu beenden; lassen steht im Infinitiv."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Nach zehn Jahren will sie sich ",
+        "after": ".",
+        "accepted": { "answers": ["scheiden lassen", "trennen"] },
+        "referenceTargetIds": ["scheiden", "hochzeit", "standesamt", "verlieben"],
+        "explanation": {
+          "en": "After will sie sich the expression is scheiden lassen.",
+          "fr": "Après « will sie sich », l'expression est « scheiden lassen ».",
+          "de": "Nach „will sie sich“ folgt der Ausdruck „scheiden lassen“."
+        }
+      },
+      "listeningOptionTargetIds": ["scheiden", "scheidung", "trennen", "verloben"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

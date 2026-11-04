@@ -1,0 +1,229 @@
+{
+  "schemaVersion": 2,
+  "id": "de-regular-verbs-present",
+  "lang": "de",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Regelmäßige Verben im Präsens",
+  "objective": {
+    "en": "Conjugate regular verbs in the present tense: -e, -st, -t, -en, with -est and -et after t and d, and only -t after s, ß and z.",
+    "fr": "Conjuguer les verbes réguliers au présent : -e, -st, -t, -en, avec -est et -et après t et d, et seulement -t après s, ß et z.",
+    "de": "Regelmäßige Verben im Präsens konjugieren: ich wohne, du arbeitest, du heißt, er arbeitet, mit den Endungen -e, -st, -t, -en, -est und -et."
+  },
+  "estimatedMinutes": 14,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:26:20.648Z",
+    "inputHashes": { "outline": "8cceb639c384c32b03e07b4c9d2ad50f68d80764e7cf46653d96458e3c595c72" }
+  },
+  "kind": "grammar",
+  "topic": "verbs_morphology",
+  "scopeBoundaries": {
+    "en": "Covers regular present-tense endings, the extra e after stems in t and d, and du after s, ß and z. Excludes irregular verbs, vowel changes (fahren, sprechen) and separable verbs.",
+    "fr": "Couvre les terminaisons régulières du présent, le e supplémentaire après les radicaux en t et d, et du après s, ß et z. Exclut les verbes irréguliers, les changements de voyelle (fahren, sprechen) et les verbes séparables.",
+    "de": "Behandelt die regelmäßigen Präsensendungen, das zusätzliche e nach Stämmen auf t und d und du nach s, ß und z. Ausgeschlossen sind unregelmäßige Verben, Vokalwechsel (fahren, sprechen) und trennbare Verben."
+  },
+  "prerequisites": [
+    {
+      "en": "Subject pronouns: ich, du, er, sie, es, wir, ihr, sie, Sie",
+      "fr": "Les pronoms sujets : ich, du, er, sie, es, wir, ihr, sie, Sie",
+      "de": "Personalpronomen: ich, du, er, sie, es, wir, ihr, sie, Sie"
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-endings",
+      "summary": {
+        "en": "Regular verbs: stem + -e, -st, -t, -en, -t, -en (wohne, wohnst, wohnt, wohnen, wohnt, wohnen).",
+        "fr": "Verbes réguliers : radical + -e, -st, -t, -en, -t, -en (wohne, wohnst, wohnt, wohnen, wohnt, wohnen).",
+        "de": "Regelmäßige Verben: Stamm + -e, -st, -t, -en, -t, -en (wohne, wohnst, wohnt, wohnen, wohnt, wohnen)."
+      }
+    },
+    {
+      "id": "rule-et-endings",
+      "summary": {
+        "en": "After a stem ending in t or d, du, er/sie/es and ihr take -est, -et, -et: du arbeitest, er arbeitet.",
+        "fr": "Après un radical en t ou d, du, er/sie/es et ihr prennent -est, -et, -et : du arbeitest, er arbeitet.",
+        "de": "Nach einem Stamm auf t oder d bekommen du, er/sie/es und ihr -est, -et, -et: du arbeitest, er arbeitet."
+      }
+    },
+    {
+      "id": "rule-s-sounds",
+      "summary": {
+        "en": "After s, ß or z, du takes only -t: du heißt, du tanzt, du reist.",
+        "fr": "Après s, ß ou z, du prend seulement -t : du heißt, du tanzt, du reist.",
+        "de": "Nach s, ß oder z bekommt du nur -t: du heißt, du tanzt, du reist."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-endings",
+      "title": {
+        "en": "The regular endings: -e, -st, -t, -en",
+        "fr": "Les terminaisons régulières : -e, -st, -t, -en",
+        "de": "Die regelmäßigen Endungen: -e, -st, -t, -en"
+      },
+      "ruleIds": ["rule-endings"],
+      "explanationPlan": {
+        "en": "Show stem and ending with wohnen and lernen. Give all six forms and note that wir and sie/Sie keep the infinitive form, while er/sie/es and ihr both end in -t.",
+        "fr": "Montrer radical et terminaison avec wohnen et lernen. Donner les six formes et noter que wir et sie/Sie gardent la forme de l'infinitif, tandis que er/sie/es et ihr se terminent par -t.",
+        "de": "Stamm und Endung an wohnen und lernen zeigen. Alle sechs Formen geben und festhalten, dass wir und sie/Sie die Infinitivform behalten, während er/sie/es und ihr auf -t enden."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "Ich wohne in Wien.",
+          "translation": { "en": "I live in Vienna.", "fr": "J'habite à Vienne." }
+        },
+        {
+          "text": "Du lernst Spanisch.",
+          "translation": { "en": "You are learning Spanish.", "fr": "Tu apprends l'espagnol." }
+        },
+        {
+          "text": "Wir lernen zusammen.",
+          "translation": { "en": "We are learning together.", "fr": "Nous apprenons ensemble." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "After du the ending is -st: du wohnst, not du wohnt.",
+          "fr": "Après du, la terminaison est -st : du wohnst, et non du wohnt.",
+          "de": "Nach du steht die Endung -st: du wohnst, nicht du wohnt."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-end-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-endings"],
+          "estimatedDurationS": 48
+        },
+        {
+          "id": "ex-end-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-endings"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-end-persons",
+          "type": "grammar_person_matching",
+          "itemCount": 1,
+          "ruleIds": ["rule-endings"],
+          "estimatedDurationS": 60
+        }
+      ]
+    },
+    {
+      "id": "block-et-s",
+      "title": {
+        "en": "Special stems: t, d and s, ß, z",
+        "fr": "Radicaux particuliers : t, d et s, ß, z",
+        "de": "Besondere Stämme: t, d und s, ß, z"
+      },
+      "ruleIds": ["rule-et-endings", "rule-s-sounds"],
+      "explanationPlan": {
+        "en": "Explain the extra e after stems in t and d (arbeiten, finden, warten) for du, er/sie/es and ihr. Then explain that du takes only -t after s, ß and z (heißen, tanzen, reisen).",
+        "fr": "Expliquer le e supplémentaire après les radicaux en t et d (arbeiten, finden, warten) pour du, er/sie/es et ihr. Expliquer ensuite que du prend seulement -t après s, ß et z (heißen, tanzen, reisen).",
+        "de": "Das zusätzliche e nach Stämmen auf t und d (arbeiten, finden, warten) bei du, er/sie/es und ihr erklären. Dann erklären, dass du nach s, ß und z nur -t bekommt (heißen, tanzen, reisen)."
+      },
+      "explanationDurationS": 150,
+      "examples": [
+        {
+          "text": "Du arbeitest in Wien.",
+          "translation": { "en": "You work in Vienna.", "fr": "Tu travailles à Vienne." }
+        },
+        {
+          "text": "Du heißt Max.",
+          "translation": { "en": "Your name is Max.", "fr": "Tu t'appelles Max." }
+        },
+        {
+          "text": "Er reist nach Polen.",
+          "translation": { "en": "He travels to Poland.", "fr": "Il voyage en Pologne." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not write du arbeitst: after t the form is du arbeitest.",
+          "fr": "N'écrivez pas du arbeitst : après t, la forme est du arbeitest.",
+          "de": "Schreibe nicht du arbeitst: Nach t heißt es du arbeitest."
+        },
+        {
+          "en": "After s, ß and z do not add an e: du heißt, not du heißest.",
+          "fr": "Après s, ß et z, n'ajoutez pas de e : du heißt, et non du heißest.",
+          "de": "Nach s, ß und z kein e einfügen: du heißt, nicht du heißest."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-et-typing",
+          "type": "grammar_pronoun_form_typing",
+          "itemCount": 2,
+          "ruleIds": ["rule-et-endings", "rule-s-sounds"],
+          "estimatedDurationS": 90
+        },
+        {
+          "id": "ex-et-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-et-endings", "rule-s-sounds"],
+          "estimatedDurationS": 48
+        },
+        {
+          "id": "ex-et-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 3,
+          "ruleIds": ["rule-et-endings", "rule-s-sounds"],
+          "estimatedDurationS": 75
+        }
+      ]
+    }
+  ],
+  "newVerbs": [
+    { "infinitive": "wohnen", "translations": { "en": "to live", "fr": "habiter" } },
+    { "infinitive": "lernen", "translations": { "en": "to learn", "fr": "apprendre" } },
+    { "infinitive": "arbeiten", "translations": { "en": "to work", "fr": "travailler" } },
+    { "infinitive": "kommen", "translations": { "en": "to come", "fr": "venir" } },
+    { "infinitive": "kochen", "translations": { "en": "to cook", "fr": "cuisiner" } },
+    { "infinitive": "spielen", "translations": { "en": "to play", "fr": "jouer" } },
+    { "infinitive": "finden", "translations": { "en": "to find", "fr": "trouver" } },
+    { "infinitive": "warten", "translations": { "en": "to wait", "fr": "attendre" } },
+    { "infinitive": "tanzen", "translations": { "en": "to dance", "fr": "danser" } },
+    { "infinitive": "reisen", "translations": { "en": "to travel", "fr": "voyager" } },
+    { "infinitive": "heißen", "translations": { "en": "to be called", "fr": "s'appeler" } }
+  ],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-forms",
+        "type": "grammar_pronoun_form_typing",
+        "itemCount": 1,
+        "ruleIds": ["rule-endings", "rule-et-endings", "rule-s-sounds"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 120
+      },
+      {
+        "pageId": "exam-gaps",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-endings", "rule-et-endings", "rule-s-sounds"],
+        "estimatedDurationS": 48,
+        "timeLimitS": 90
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["rule-endings", "rule-et-endings", "rule-s-sounds"],
+        "estimatedDurationS": 45,
+        "timeLimitS": 90
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

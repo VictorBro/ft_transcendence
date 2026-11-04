@@ -1,0 +1,594 @@
+{
+  "schemaVersion": 2,
+  "id": "de-compound-adjectives-for-people",
+  "lang": "de",
+  "level": "B2",
+  "locales": ["en", "fr", "de"],
+  "title": "Zusammengesetzte Adjektive für Menschen",
+  "objective": {
+    "en": "Describe people with compound adjectives ending in -freudig, -bewusst, -lieb and -bereit.",
+    "fr": "Décrire des personnes avec des adjectifs composés en -freudig, -bewusst, -lieb et -bereit.",
+    "de": "Menschen mit zusammengesetzten Adjektiven auf -freudig, -bewusst, -lieb und -bereit beschreiben."
+  },
+  "estimatedMinutes": 20,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:30:03.248Z",
+    "inputHashes": { "outline": "2299e0b0a9f49b1dc82bd8a93a1e68a95fd5ebe131ab8c1e9aa9ed321cfcb2a6" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Twelve compound adjectives in three groups, built on the endings -freudig, -bewusst, -lieb and -bereit. They go beyond basic character words and come before attitudes and values.",
+    "fr": "Douze adjectifs composés en trois groupes, formés avec les terminaisons -freudig, -bewusst, -lieb et -bereit. Ils vont au-delà des traits de caractère de base et précèdent les attitudes et les valeurs.",
+    "de": "Zwölf zusammengesetzte Adjektive in drei Gruppen mit den Endungen -freudig, -bewusst, -lieb und -bereit. Sie gehen über einfache Charakterwörter hinaus und stehen vor Einstellungen und Werten."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve words give three groups of three to five items that share an ending, so learners can see the pattern.",
+    "fr": "Douze mots forment trois groupes de trois à cinq éléments qui partagent une terminaison, ce qui rend le modèle visible.",
+    "de": "Zwölf Wörter ergeben drei Gruppen mit drei bis fünf Wörtern und gleicher Endung, sodass das Muster sichtbar wird."
+  },
+  "difficultyBalance": {
+    "en": "Most words are core B2 vocabulary; the longer compounds such as experimentierfreudig and verantwortungsbewusst are demanding.",
+    "fr": "La plupart des mots sont du vocabulaire B2 courant ; les composés plus longs comme experimentierfreudig et verantwortungsbewusst sont plus exigeants.",
+    "de": "Die meisten Wörter gehören zum zentralen B2-Wortschatz; die längeren Komposita wie experimentierfreudig und verantwortungsbewusst sind anspruchsvoll."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "freudig",
+      "label": {
+        "en": "Enjoying something: -freudig",
+        "fr": "Aimer faire quelque chose : -freudig",
+        "de": "Gern etwas tun: -freudig"
+      },
+      "targetIds": ["kontakt", "risiko", "experiment"],
+      "introduction": {
+        "en": "The ending **-freudig** describes people who gladly do something:\n\n- `kontaktfreudig`\n- `risikofreudig`\n- `experimentierfreudig`",
+        "fr": "La terminaison **-freudig** décrit des personnes qui font volontiers quelque chose :\n\n- `kontaktfreudig`\n- `risikofreudig`\n- `experimentierfreudig`",
+        "de": "Die Endung **-freudig** beschreibt Menschen, die etwas gern tun:\n\n- `kontaktfreudig`\n- `risikofreudig`\n- `experimentierfreudig`"
+      }
+    },
+    {
+      "id": "bewusst",
+      "label": {
+        "en": "Being aware: -bewusst",
+        "fr": "Être conscient : -bewusst",
+        "de": "Sich bewusst sein: -bewusst"
+      },
+      "targetIds": ["pflicht", "umwelt", "verantwortung", "gesundheit"],
+      "introduction": {
+        "en": "The ending **-bewusst** shows that someone is aware of something and acts accordingly:\n\n- `pflichtbewusst`\n- `umweltbewusst`\n- `verantwortungsbewusst`\n- `gesundheitsbewusst`",
+        "fr": "La terminaison **-bewusst** montre qu’une personne est consciente de quelque chose et agit en conséquence :\n\n- `pflichtbewusst`\n- `umweltbewusst`\n- `verantwortungsbewusst`\n- `gesundheitsbewusst`",
+        "de": "Die Endung **-bewusst** zeigt, dass jemand sich einer Sache bewusst ist und danach handelt:\n\n- `pflichtbewusst`\n- `umweltbewusst`\n- `verantwortungsbewusst`\n- `gesundheitsbewusst`"
+      }
+    },
+    {
+      "id": "lieb-bereit",
+      "label": {
+        "en": "Fond of or ready for: -lieb and -bereit",
+        "fr": "Aimer ou être prêt à : -lieb et -bereit",
+        "de": "Gern haben und bereit sein: -lieb und -bereit"
+      },
+      "targetIds": ["kinder", "tier", "kompromiss", "gespraech", "einsatz"],
+      "introduction": {
+        "en": "The ending **-lieb** means that someone likes children or animals, and **-bereit** means that someone is ready to do something:\n\n- `kinderlieb`\n- `tierlieb`\n- `kompromissbereit`\n- `gesprächsbereit`\n- `einsatzbereit`",
+        "fr": "La terminaison **-lieb** signifie qu’on aime les enfants ou les animaux, et **-bereit** qu’on est prêt à faire quelque chose :\n\n- `kinderlieb`\n- `tierlieb`\n- `kompromissbereit`\n- `gesprächsbereit`\n- `einsatzbereit`",
+        "de": "Die Endung **-lieb** bedeutet, dass jemand Kinder oder Tiere mag, und **-bereit** bedeutet, dass jemand zu etwas bereit ist:\n\n- `kinderlieb`\n- `tierlieb`\n- `kompromissbereit`\n- `gesprächsbereit`\n- `einsatzbereit`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "kontakt",
+      "term": "kontaktfreudig",
+      "translations": { "en": ["outgoing", "sociable"], "fr": ["sociable"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "kontaktfreudig",
+      "examForms": ["kontaktfreudig"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/kɔnˈtaktˌfʁɔɪ̯dɪç/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Als kontaktfreudiger Mensch lernt Mia schnell neue Leute kennen.",
+        "translation": {
+          "en": "As an outgoing person, Mia quickly gets to know new people.",
+          "fr": "Étant sociable, Mia fait vite la connaissance de nouvelles personnes."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Kontaktfreudig means someone gladly makes contact with other people.",
+        "fr": "Kontaktfreudig décrit quelqu’un qui aime volontiers entrer en contact avec les autres.",
+        "de": "Kontaktfreudig beschreibt jemanden, der gern Kontakt zu anderen Menschen knüpft."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Auf Partys ist Lena sehr ",
+        "after": ", sie spricht mit jedem.",
+        "accepted": { "answers": ["kontaktfreudig"] },
+        "referenceTargetIds": ["kontakt", "pflicht", "kinder", "einsatz"],
+        "explanation": {
+          "en": "Someone who talks to everyone at parties is kontaktfreudig.",
+          "fr": "Une personne qui parle à tout le monde aux fêtes est kontaktfreudig.",
+          "de": "Wer auf Partys mit jedem spricht, ist kontaktfreudig."
+        }
+      },
+      "listeningOptionTargetIds": ["kontakt", "risiko", "experiment", "pflicht"]
+    },
+    {
+      "id": "risiko",
+      "term": "risikofreudig",
+      "translations": { "en": ["willing to take risks"], "fr": ["qui aime prendre des risques"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "risikofreudig",
+      "examForms": ["risikofreudig"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʁiːzikoˌfʁɔɪ̯dɪç/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Risikofreudige Anleger setzen auf unsichere Aktien.",
+        "translation": {
+          "en": "Investors who like taking risks bet on uncertain shares.",
+          "fr": "Les investisseurs qui aiment prendre des risques misent sur des actions incertaines."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Risikofreudig describes someone who gladly takes risks.",
+        "fr": "Risikofreudig décrit quelqu’un qui prend volontiers des risques.",
+        "de": "Risikofreudig beschreibt jemanden, der gern Risiken eingeht."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Wer sein ganzes Geld in Aktien steckt, muss ",
+        "after": " sein.",
+        "accepted": { "answers": ["risikofreudig"] },
+        "referenceTargetIds": ["risiko", "tier", "pflicht", "gespraech"],
+        "explanation": {
+          "en": "Putting all your money into shares means taking a risk, so risikofreudig fits.",
+          "fr": "Mettre tout son argent en actions, c’est prendre un risque : risikofreudig convient.",
+          "de": "Wer sein ganzes Geld in Aktien steckt, geht ein Risiko ein: risikofreudig passt."
+        }
+      },
+      "listeningOptionTargetIds": ["risiko", "kontakt", "experiment", "kinder"]
+    },
+    {
+      "id": "experiment",
+      "term": "experimentierfreudig",
+      "translations": { "en": ["keen to experiment"], "fr": ["qui aime expérimenter"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "experimentierfreudig",
+      "examForms": ["experimentierfreudig"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɛkspeʁimɛnˈtiːɐ̯ˌfʁɔɪ̯dɪç/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Unser Koch ist experimentierfreudig und erfindet ständig neue Gerichte.",
+        "translation": {
+          "en": "Our cook is keen to experiment and constantly invents new dishes.",
+          "fr": "Notre cuisinier aime expérimenter et invente sans cesse de nouveaux plats."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Experimentierfreudig describes someone who likes to try out new things.",
+        "fr": "Experimentierfreudig décrit quelqu’un qui aime essayer de nouvelles choses.",
+        "de": "Experimentierfreudig beschreibt jemanden, der gern Neues ausprobiert."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Unser Koch ist sehr ",
+        "after": ": Jede Woche probiert er neue, ungewöhnliche Rezepte aus.",
+        "accepted": { "answers": ["experimentierfreudig"] },
+        "referenceTargetIds": ["experiment", "kinder", "umwelt", "kompromiss"],
+        "explanation": {
+          "en": "Trying out unusual recipes every week shows that he likes to experiment.",
+          "fr": "Essayer chaque semaine des recettes inhabituelles montre qu’il aime expérimenter.",
+          "de": "Wer jede Woche ungewöhnliche Rezepte ausprobiert, ist experimentierfreudig."
+        }
+      },
+      "listeningOptionTargetIds": ["experiment", "risiko", "kontakt", "einsatz"]
+    },
+    {
+      "id": "pflicht",
+      "term": "pflichtbewusst",
+      "translations": { "en": ["conscientious"], "fr": ["consciencieux"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "pflichtbewusst",
+      "examForms": ["pflichtbewusst"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈpflɪçtbəˌvʊst/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Paul ist pflichtbewusst und erledigt jede Aufgabe pünktlich.",
+        "translation": {
+          "en": "Paul is conscientious and finishes every task on time.",
+          "fr": "Paul est consciencieux et accomplit chaque tâche à temps."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Pflichtbewusst describes someone who is aware of their duties and fulfils them.",
+        "fr": "Pflichtbewusst décrit quelqu’un qui a conscience de ses devoirs et les remplit.",
+        "de": "Pflichtbewusst beschreibt jemanden, der seine Pflichten kennt und sie erfüllt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Paul erledigt jede Aufgabe, auch die lästigen. Er ist sehr ",
+        "after": ".",
+        "accepted": { "answers": ["pflichtbewusst"] },
+        "referenceTargetIds": ["pflicht", "kontakt", "risiko", "tier"],
+        "explanation": {
+          "en": "Doing even unpleasant tasks shows a strong sense of duty: pflichtbewusst.",
+          "fr": "Accomplir même les tâches désagréables montre un fort sens du devoir : pflichtbewusst.",
+          "de": "Wer auch lästige Aufgaben erledigt, hat ein starkes Pflichtgefühl: pflichtbewusst."
+        }
+      },
+      "listeningOptionTargetIds": ["pflicht", "umwelt", "verantwortung", "gesundheit"]
+    },
+    {
+      "id": "umwelt",
+      "term": "umweltbewusst",
+      "translations": {
+        "en": ["environmentally conscious"],
+        "fr": ["soucieux de l’environnement"]
+      },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "umweltbewusst",
+      "examForms": ["umweltbewusst"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʊmvɛltbəˌvʊst/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Umweltbewusste Menschen vermeiden unnötigen Müll.",
+        "translation": {
+          "en": "Environmentally conscious people avoid unnecessary waste.",
+          "fr": "Les personnes soucieuses de l’environnement évitent les déchets inutiles."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Umweltbewusst describes someone who cares about nature and acts accordingly.",
+        "fr": "Umweltbewusst décrit quelqu’un qui se soucie de la nature et agit en conséquence.",
+        "de": "Umweltbewusst beschreibt jemanden, dem die Natur wichtig ist und der danach handelt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Sie trennt den Müll und spart Energie. Sie ist sehr ",
+        "after": ".",
+        "accepted": { "answers": ["umweltbewusst"] },
+        "referenceTargetIds": ["umwelt", "gespraech", "kinder", "einsatz"],
+        "explanation": {
+          "en": "Sorting waste and saving energy protects the environment: umweltbewusst.",
+          "fr": "Trier les déchets et économiser l’énergie protège l’environnement : umweltbewusst.",
+          "de": "Müll trennen und Energie sparen schützt die Umwelt: umweltbewusst."
+        }
+      },
+      "listeningOptionTargetIds": ["umwelt", "pflicht", "verantwortung", "gesundheit"]
+    },
+    {
+      "id": "verantwortung",
+      "term": "verantwortungsbewusst",
+      "translations": { "en": ["responsible"], "fr": ["responsable"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "verantwortungsbewusst",
+      "examForms": ["verantwortungsbewusst"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/fɛɐ̯ˈʔantvɔʁtʊŋsbəˌvʊst/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Eine verantwortungsbewusste Chefin denkt an die Folgen ihrer Entscheidungen.",
+        "translation": {
+          "en": "A responsible boss thinks about the consequences of her decisions.",
+          "fr": "Une cheffe responsable pense aux conséquences de ses décisions."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Verantwortungsbewusst describes someone who is aware of their responsibility and acts carefully.",
+        "fr": "Verantwortungsbewusst décrit quelqu’un qui a conscience de sa responsabilité et agit avec soin.",
+        "de": "Verantwortungsbewusst beschreibt jemanden, der sich seiner Verantwortung bewusst ist und sorgfältig handelt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Als Teamleiter denkt Jonas an die Folgen seiner Entscheidungen für alle. Er ist sehr ",
+        "after": ".",
+        "accepted": { "answers": ["verantwortungsbewusst"] },
+        "referenceTargetIds": ["verantwortung", "experiment", "tier", "gespraech"],
+        "explanation": {
+          "en": "Thinking about the consequences for everyone shows a sense of responsibility.",
+          "fr": "Penser aux conséquences pour tous montre le sens des responsabilités.",
+          "de": "Wer an die Folgen für alle denkt, handelt verantwortungsbewusst."
+        }
+      },
+      "listeningOptionTargetIds": ["verantwortung", "pflicht", "umwelt", "gesundheit"]
+    },
+    {
+      "id": "gesundheit",
+      "term": "gesundheitsbewusst",
+      "translations": { "en": ["health-conscious"], "fr": ["soucieux de sa santé"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "gesundheitsbewusst",
+      "examForms": ["gesundheitsbewusst"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɡəˈzʊnthaɪ̯tsbəˌvʊst/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Er lebt gesundheitsbewusst und treibt dreimal pro Woche Sport.",
+        "translation": {
+          "en": "He lives in a health-conscious way and exercises three times a week.",
+          "fr": "Il vit en étant soucieux de sa santé et fait du sport trois fois par semaine."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Gesundheitsbewusst describes someone who pays attention to a healthy lifestyle.",
+        "fr": "Gesundheitsbewusst décrit quelqu’un qui fait attention à un mode de vie sain.",
+        "de": "Gesundheitsbewusst beschreibt jemanden, der auf einen gesunden Lebensstil achtet."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Er isst viel Gemüse, schläft genug und raucht nicht. Er ist sehr ",
+        "after": ".",
+        "accepted": { "answers": ["gesundheitsbewusst"] },
+        "referenceTargetIds": ["gesundheit", "kontakt", "kompromiss", "kinder"],
+        "explanation": {
+          "en": "Eating vegetables, sleeping enough and not smoking shows care for one’s health.",
+          "fr": "Manger des légumes, bien dormir et ne pas fumer montre qu’on prend soin de sa santé.",
+          "de": "Gemüse essen, genug schlafen und nicht rauchen zeigt Sorge um die Gesundheit."
+        }
+      },
+      "listeningOptionTargetIds": ["gesundheit", "pflicht", "umwelt", "verantwortung"]
+    },
+    {
+      "id": "kinder",
+      "term": "kinderlieb",
+      "translations": { "en": ["fond of children"], "fr": ["qui aime les enfants"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "kinderlieb",
+      "examForms": ["kinderlieb"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈkɪndɐˌliːp/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Onkel Tom ist kinderlieb und spielt gern mit seinen Nichten.",
+        "translation": {
+          "en": "Uncle Tom is fond of children and likes playing with his nieces.",
+          "fr": "Oncle Tom aime les enfants et joue volontiers avec ses nièces."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Kinderlieb describes someone who likes being with children.",
+        "fr": "Kinderlieb décrit quelqu’un qui aime être avec des enfants.",
+        "de": "Kinderlieb beschreibt jemanden, der gern mit Kindern zusammen ist."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Onkel Tom spielt stundenlang mit seinen Nichten. Er ist sehr ",
+        "after": ".",
+        "accepted": { "answers": ["kinderlieb"] },
+        "referenceTargetIds": ["kinder", "risiko", "pflicht", "umwelt"],
+        "explanation": {
+          "en": "Playing for hours with his nieces shows that he is fond of children.",
+          "fr": "Jouer des heures avec ses nièces montre qu’il aime les enfants.",
+          "de": "Wer stundenlang mit seinen Nichten spielt, ist kinderlieb."
+        }
+      },
+      "listeningOptionTargetIds": ["kinder", "tier", "kontakt", "kompromiss"]
+    },
+    {
+      "id": "tier",
+      "term": "tierlieb",
+      "translations": { "en": ["fond of animals"], "fr": ["qui aime les animaux"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "tierlieb",
+      "examForms": ["tierlieb"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈtiːɐ̯ˌliːp/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Meine Nachbarin ist sehr tierlieb und hat drei Katzen.",
+        "translation": {
+          "en": "My neighbour is very fond of animals and has three cats.",
+          "fr": "Ma voisine aime beaucoup les animaux et a trois chats."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Tierlieb describes someone who likes animals and treats them well.",
+        "fr": "Tierlieb décrit quelqu’un qui aime les animaux et les traite bien.",
+        "de": "Tierlieb beschreibt jemanden, der Tiere mag und gut zu ihnen ist."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Meine Nachbarin hat drei Katzen und füttert auch die Vögel im Garten. Sie ist sehr ",
+        "after": ".",
+        "accepted": { "answers": ["tierlieb"] },
+        "referenceTargetIds": ["tier", "kinder", "einsatz", "experiment"],
+        "explanation": {
+          "en": "Caring for cats and birds shows that she is fond of animals.",
+          "fr": "S’occuper des chats et des oiseaux montre qu’elle aime les animaux.",
+          "de": "Wer sich um Katzen und Vögel kümmert, ist tierlieb."
+        }
+      },
+      "listeningOptionTargetIds": ["tier", "kinder", "risiko", "einsatz"]
+    },
+    {
+      "id": "kompromiss",
+      "term": "kompromissbereit",
+      "translations": { "en": ["willing to compromise"], "fr": ["prêt au compromis"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "kompromissbereit",
+      "examForms": ["kompromissbereit"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/kɔmpʁoˈmɪsbəˌʁaɪ̯t/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Beide Seiten waren kompromissbereit und einigten sich schnell.",
+        "translation": {
+          "en": "Both sides were willing to compromise and quickly reached an agreement.",
+          "fr": "Les deux parties étaient prêtes au compromis et se sont vite mises d’accord."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Kompromissbereit describes someone who is ready to give way a little to find a solution.",
+        "fr": "Kompromissbereit décrit quelqu’un qui est prêt à céder un peu pour trouver une solution.",
+        "de": "Kompromissbereit beschreibt jemanden, der bereit ist, ein Stück nachzugeben, um eine Lösung zu finden."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Beide Seiten wollen ein Stück nachgeben und sich in der Mitte treffen. Sie sind ",
+        "after": ".",
+        "accepted": { "answers": ["kompromissbereit"] },
+        "referenceTargetIds": ["kompromiss", "pflicht", "tier", "experiment"],
+        "explanation": {
+          "en": "Giving way a little and meeting in the middle means being willing to compromise.",
+          "fr": "Céder un peu et se retrouver à mi-chemin, c’est être prêt au compromis.",
+          "de": "Wer ein Stück nachgibt und sich in der Mitte trifft, ist kompromissbereit."
+        }
+      },
+      "listeningOptionTargetIds": ["kompromiss", "gespraech", "einsatz", "kontakt"]
+    },
+    {
+      "id": "gespraech",
+      "term": "gesprächsbereit",
+      "translations": { "en": ["open to talks"], "fr": ["ouvert au dialogue"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "gesprächsbereit",
+      "examForms": ["gesprächsbereit"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɡəˈʃpʁɛːçsbəˌʁaɪ̯t/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Nach dem Streit zeigte sich der Chef sofort gesprächsbereit.",
+        "translation": {
+          "en": "After the argument the boss immediately showed himself open to talks.",
+          "fr": "Après la dispute, le chef s’est montré tout de suite ouvert au dialogue."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Gesprächsbereit describes someone who is ready to talk things through.",
+        "fr": "Gesprächsbereit décrit quelqu’un qui est prêt à discuter.",
+        "de": "Gesprächsbereit beschreibt jemanden, der bereit ist, miteinander zu reden."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Nach dem Streit hat der Chef gesagt: „Ich bin jederzeit ",
+        "after": ", wir können in Ruhe reden.“",
+        "accepted": { "answers": ["gesprächsbereit"] },
+        "referenceTargetIds": ["gespraech", "kinder", "umwelt", "risiko"],
+        "explanation": {
+          "en": "Offering to talk calmly means being open to talks.",
+          "fr": "Proposer de discuter calmement, c’est être ouvert au dialogue.",
+          "de": "Wer anbietet, in Ruhe zu reden, ist gesprächsbereit."
+        }
+      },
+      "listeningOptionTargetIds": ["gespraech", "kompromiss", "einsatz", "pflicht"]
+    },
+    {
+      "id": "einsatz",
+      "term": "einsatzbereit",
+      "translations": { "en": ["ready for action"], "fr": ["prêt à intervenir"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "einsatzbereit",
+      "examForms": ["einsatzbereit"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈaɪ̯nzatsbəˌʁaɪ̯t/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Die Feuerwehr ist Tag und Nacht einsatzbereit.",
+        "translation": {
+          "en": "The fire brigade is ready for action day and night.",
+          "fr": "Les pompiers sont prêts à intervenir jour et nuit."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Einsatzbereit describes someone or something that is ready to go into action at once.",
+        "fr": "Einsatzbereit décrit une personne ou une chose prête à intervenir tout de suite.",
+        "de": "Einsatzbereit beschreibt jemanden oder etwas, das sofort eingesetzt werden kann."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Die Feuerwehr ist Tag und Nacht ",
+        "after": " und rückt sofort aus, wenn es brennt.",
+        "accepted": { "answers": ["einsatzbereit"] },
+        "referenceTargetIds": ["einsatz", "gesundheit", "kontakt", "tier"],
+        "explanation": {
+          "en": "Rushing out at once when there is a fire means being ready for action.",
+          "fr": "Partir tout de suite quand il y a un incendie, c’est être prêt à intervenir.",
+          "de": "Wer bei einem Brand sofort ausrückt, ist einsatzbereit."
+        }
+      },
+      "listeningOptionTargetIds": ["einsatz", "gespraech", "kompromiss", "pflicht"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

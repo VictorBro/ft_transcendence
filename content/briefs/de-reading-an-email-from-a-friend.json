@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 2,
+  "id": "de-reading-an-email-from-a-friend",
+  "lang": "de",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Eine E-Mail von einer Freundin lesen",
+  "objective": {
+    "en": "Read a personal email about a move and a new job, follow the news and recognise what the friend asks for (Kannst du mich im Mai besuchen?).",
+    "fr": "Lire un e-mail personnel sur un déménagement et un nouveau travail, suivre les nouvelles et reconnaître ce que l’amie demande (Kannst du mich im Mai besuchen?).",
+    "de": "Eine persönliche E-Mail über einen Umzug und eine neue Arbeit lesen, den Neuigkeiten folgen und erkennen, worum die Freundin bittet."
+  },
+  "estimatedMinutes": 8,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:23:22.487Z",
+    "inputHashes": { "outline": "c9c46caa944d1466f219535830a5134529da3d5d3c7d64407e1040e37d456009" }
+  },
+  "kind": "reading",
+  "theme": "relations",
+  "genre": "email",
+  "situation": {
+    "en": "Jana writes an email to her friend Mia. She has moved to Leipzig and started a new job, and she would like Mia to visit.",
+    "fr": "Jana écrit un e-mail à son amie Mia. Elle a déménagé à Leipzig et a commencé un nouveau travail, et elle voudrait que Mia vienne la voir.",
+    "de": "Jana schreibt ihrer Freundin Mia eine E-Mail. Sie ist nach Leipzig umgezogen und hat eine neue Arbeit, und sie möchte, dass Mia sie besucht."
+  },
+  "readerTask": {
+    "en": "Follow Jana’s news (move, new job) and find what she asks Mia to do and by when she should answer.",
+    "fr": "Suivre les nouvelles de Jana (déménagement, nouveau travail) et trouver ce qu’elle demande à Mia et pour quand elle doit répondre.",
+    "de": "Janas Neuigkeiten (Umzug, neue Arbeit) verstehen und herausfinden, worum sie Mia bittet und bis wann Mia antworten soll."
+  },
+  "keywords": [
+    {
+      "id": "neuigkeiten",
+      "term": "die Neuigkeiten",
+      "translations": { "en": ["news"], "fr": ["les nouvelles"] },
+      "explanation": {
+        "en": "Plural word: new things that happened. Ich habe viele Neuigkeiten! means I have a lot of news.",
+        "fr": "Mot pluriel : les choses nouvelles qui sont arrivées. Ich habe viele Neuigkeiten! veut dire J’ai beaucoup de nouvelles.",
+        "de": "Pluralwort: neue Dinge, die passiert sind. Ich habe viele Neuigkeiten! heißt: Ich habe viel Neues zu erzählen."
+      }
+    },
+    {
+      "id": "umgezogen",
+      "term": "umgezogen",
+      "translations": { "en": ["moved (house)"], "fr": ["déménagé"] },
+      "explanation": {
+        "en": "Past participle of umziehen. It is used with sein: Ich bin umgezogen.",
+        "fr": "Participe passé de umziehen. Il se forme avec sein : Ich bin umgezogen.",
+        "de": "Partizip II von umziehen. Es wird mit sein gebildet: Ich bin umgezogen."
+      }
+    },
+    {
+      "id": "buchhandlung",
+      "term": "die Buchhandlung",
+      "translations": { "en": ["bookshop"], "fr": ["la librairie"] },
+      "explanation": {
+        "en": "A shop where you buy books. Someone can work in a Buchhandlung.",
+        "fr": "Un magasin où l’on achète des livres. On peut travailler in einer Buchhandlung.",
+        "de": "Ein Geschäft, in dem man Bücher kauft. Man kann in einer Buchhandlung arbeiten."
+      }
+    },
+    {
+      "id": "besuchen",
+      "term": "besuchen",
+      "translations": { "en": ["to visit"], "fr": ["rendre visite"] },
+      "explanation": {
+        "en": "To go and see someone at their home: Kannst du mich besuchen? means Can you come and see me?",
+        "fr": "Aller voir quelqu’un chez lui : Kannst du mich besuchen? veut dire Peux-tu venir me voir ?",
+        "de": "Jemanden zu Hause treffen: Kannst du mich besuchen? ist eine freundliche Bitte um einen Besuch."
+      }
+    },
+    {
+      "id": "passt",
+      "term": "passt",
+      "translations": { "en": ["suits", "fits"], "fr": ["convient"] },
+      "explanation": {
+        "en": "From passen. Welches Wochenende passt für dich? asks which weekend is good for you.",
+        "fr": "De passen. Welches Wochenende passt für dich? demande quel week-end te convient.",
+        "de": "Von passen. Welches Wochenende passt für dich? fragt, welches Wochenende für dich gut ist."
+      }
+    }
+  ],
+  "documents": {
+    "main": {
+      "targetWords": 92,
+      "contents": {
+        "en": "Email from Jana to Mia: she has news; two weeks ago she moved to Leipzig (small, nice flat); since Monday she works in a bookshop, nice colleagues but long hours, tired at weekends; she misses Mia, asks her to visit in May and to answer by Friday.",
+        "fr": "E-mail de Jana à Mia : elle a des nouvelles ; il y a deux semaines elle a déménagé à Leipzig (petit appartement agréable) ; depuis lundi elle travaille dans une librairie, collègues sympas mais longues journées, fatiguée le week-end ; Mia lui manque, elle lui demande de venir en mai et de répondre avant vendredi.",
+        "de": "E-Mail von Jana an Mia: Sie hat Neuigkeiten; vor zwei Wochen ist sie nach Leipzig umgezogen (kleine, schöne Wohnung); seit Montag arbeitet sie in einer Buchhandlung, nette Kollegen, aber lange Arbeitstage, am Wochenende müde; sie vermisst Mia, bittet sie um einen Besuch im Mai und um eine Antwort bis Freitag."
+      }
+    },
+    "exam": {
+      "targetWords": 55,
+      "contents": {
+        "en": "Email from Ben to Lisa: birthday party on Saturday 14 June in the garden at 18:00; Lisa is asked to bring a salad; Ben has already bought drinks and sausages; answer by Wednesday.",
+        "fr": "E-mail de Ben à Lisa : fête d’anniversaire samedi 14 juin dans le jardin à 18 h ; on demande à Lisa d’apporter une salade ; Ben a déjà acheté les boissons et les saucisses ; réponse avant mercredi.",
+        "de": "E-Mail von Ben an Lisa: Geburtstagsfeier am Samstag, 14. Juni, im Garten um 18 Uhr; Lisa soll einen Salat mitbringen; Ben hat schon Getränke und Würstchen gekauft; Antwort bis Mittwoch."
+      }
+    }
+  },
+  "skim": { "focus": "purpose" },
+  "detailQuestions": [
+    {
+      "id": "q-umzug",
+      "type": "reading_choice",
+      "focus": {
+        "en": "When Jana moved",
+        "fr": "Quand Jana a déménagé",
+        "de": "Wann Jana umgezogen ist"
+      }
+    },
+    {
+      "id": "q-arbeit",
+      "type": "reading_choice",
+      "focus": {
+        "en": "Where Jana works now",
+        "fr": "Où Jana travaille maintenant",
+        "de": "Wo Jana jetzt arbeitet"
+      }
+    },
+    {
+      "id": "q-bitte",
+      "type": "reading_choice",
+      "focus": {
+        "en": "What Jana asks Mia",
+        "fr": "Ce que Jana demande à Mia",
+        "de": "Worum Jana Mia bittet"
+      }
+    },
+    {
+      "id": "q-wohnung",
+      "type": "reading_true_false",
+      "focus": {
+        "en": "The size of the flat",
+        "fr": "La taille de l’appartement",
+        "de": "Die Größe der Wohnung"
+      }
+    }
+  ],
+  "exam": { "types": ["reading_choice", "reading_true_false"] },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

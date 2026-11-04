@@ -1,0 +1,667 @@
+{
+  "schemaVersion": 2,
+  "id": "de-friendship",
+  "lang": "de",
+  "level": "B1",
+  "locales": ["en", "fr", "de"],
+  "title": "Freundschaft und Vertrauen",
+  "objective": {
+    "en": "Talk about friendships: express trust, arguments and making up with thirteen words.",
+    "fr": "Parler des amitiés : exprimer la confiance, les disputes et la réconciliation avec treize mots.",
+    "de": "Über Freundschaften sprechen: Vertrauen, Streit und Versöhnung mit dreizehn Wörtern ausdrücken."
+  },
+  "estimatedMinutes": 22,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "opus",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-03T21:07:36.366Z",
+    "inputHashes": { "outline": "cab181a862378e433ce94820879f1ae8138b3ea6fabdcdedd89e19ee5c369985" }
+  },
+  "kind": "vocabulary",
+  "theme": "relations",
+  "coverageNotes": {
+    "en": "Thirteen words on friendship: five nouns (friendship, circle of friends, mate, trust, argument), verbs and phrases (get along, argue, make up, become friends, rely on, let down, miss) and the adjective treu. The character adjectives ehrlich, hilfsbereit and zuverlässig belong to de-personality-traits and are not taught again here.",
+    "fr": "Treize mots sur l’amitié : cinq noms (amitié, cercle d’amis, copain, confiance, dispute), des verbes et expressions (bien s’entendre, se disputer, se réconcilier, se lier d’amitié, compter sur, laisser tomber, manquer) et l’adjectif treu. Les adjectifs de caractère ehrlich, hilfsbereit et zuverlässig relèvent de de-personality-traits et ne sont pas repris ici.",
+    "de": "Dreizehn Wörter zur Freundschaft: fünf Nomen (Freundschaft, Freundeskreis, Kumpel, Vertrauen, Streit), Verben und Wendungen (sich gut verstehen, sich streiten, sich vertragen, sich anfreunden, sich verlassen auf, jemanden im Stich lassen, vermissen) und das Adjektiv treu. Die Charakteradjektive ehrlich, hilfsbereit und zuverlässig gehören zu de-personality-traits und werden hier nicht wiederholt."
+  },
+  "targetCount": 13,
+  "countRationale": {
+    "en": "Thirteen words fit the outline’s intent of about thirteen and keep the lesson at around twenty minutes.",
+    "fr": "Treize mots correspondent à l’intention du plan (environ treize) et gardent la leçon à une vingtaine de minutes.",
+    "de": "Dreizehn Wörter entsprechen der Vorgabe von etwa dreizehn und halten die Lektion bei rund zwanzig Minuten."
+  },
+  "difficultyBalance": {
+    "en": "Most words are core B1 vocabulary; the reflexive verbs, the fixed phrase im Stich lassen and the colloquial Kumpel are more demanding.",
+    "fr": "La plupart des mots sont du vocabulaire B1 de base ; les verbes pronominaux, l’expression figée im Stich lassen et le familier Kumpel sont plus exigeants.",
+    "de": "Die meisten Wörter gehören zum B1-Grundwortschatz; die reflexiven Verben, die feste Wendung im Stich lassen und das umgangssprachliche Kumpel sind anspruchsvoller."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "substantive",
+      "label": {
+        "en": "Nouns for friendship",
+        "fr": "Noms de l’amitié",
+        "de": "Nomen zur Freundschaft"
+      },
+      "targetIds": ["freundschaft", "freundeskreis", "kumpel", "vertrauen", "streit"],
+      "introduction": {
+        "en": "These five nouns describe friendships. Learn each one with its article:\n\n- `die Freundschaft`\n- `der Freundeskreis`\n- `der Kumpel`\n- `das Vertrauen`\n- `der Streit`\n\n**Kumpel** is colloquial: you use it for a good mate.",
+        "fr": "Ces cinq noms décrivent l’amitié. Apprenez chacun avec son article :\n\n- `die Freundschaft`\n- `der Freundeskreis`\n- `der Kumpel`\n- `das Vertrauen`\n- `der Streit`\n\n**Kumpel** est familier : on l’emploie pour un bon copain.",
+        "de": "Diese fünf Nomen beschreiben Freundschaften. Lerne jedes mit seinem Artikel:\n\n- `die Freundschaft`\n- `der Freundeskreis`\n- `der Kumpel`\n- `das Vertrauen`\n- `der Streit`\n\n**Kumpel** ist umgangssprachlich: Du sagst es für einen guten Freund."
+      }
+    },
+    {
+      "id": "verben-adjektive",
+      "label": {
+        "en": "Verbs and adjectives",
+        "fr": "Verbes et adjectifs",
+        "de": "Verben und Adjektive"
+      },
+      "targetIds": [
+        "treu",
+        "verstehen",
+        "streiten",
+        "vertragen",
+        "vermissen",
+        "stich",
+        "anfreunden",
+        "verlassen"
+      ],
+      "introduction": {
+        "en": "Now the words for what a good friend does and what happens between friends:\n\n- `treu`\n- `sich gut verstehen`\n- `sich streiten`\n- `sich vertragen`\n- `vermissen`\n- `jemanden im Stich lassen`\n- `sich anfreunden`\n- `sich verlassen auf`\n\nWith **sich** verbs the pronoun changes with the subject: `ich streite mich`, `wir streiten uns`.",
+        "fr": "Voici maintenant les mots pour ce que fait un bon ami et ce qui se passe entre amis :\n\n- `treu`\n- `sich gut verstehen`\n- `sich streiten`\n- `sich vertragen`\n- `vermissen`\n- `jemanden im Stich lassen`\n- `sich anfreunden`\n- `sich verlassen auf`\n\nAvec les verbes en **sich**, le pronom change avec le sujet : `ich streite mich`, `wir streiten uns`.",
+        "de": "Jetzt die Wörter dafür, was ein guter Freund tut und was zwischen Freunden passiert:\n\n- `treu`\n- `sich gut verstehen`\n- `sich streiten`\n- `sich vertragen`\n- `vermissen`\n- `jemanden im Stich lassen`\n- `sich anfreunden`\n- `sich verlassen auf`\n\nBei Verben mit **sich** ändert sich das Pronomen mit dem Subjekt: `ich streite mich`, `wir streiten uns`."
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "freundschaft",
+      "term": "Freundschaft",
+      "translations": { "en": ["friendship"], "fr": ["l’amitié"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Freundschaft",
+      "examForms": ["die Freundschaft"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈfʁɔʏntʃaft/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Unsere Freundschaft ist mir sehr wichtig.",
+        "translation": {
+          "en": "Our friendship is very important to me.",
+          "fr": "Notre amitié est très importante pour moi."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Freundschaft is the close bond between friends.",
+        "fr": "Die Freundschaft, c’est le lien étroit entre des amis.",
+        "de": "Die Freundschaft ist die enge Verbindung zwischen Freunden."
+      },
+      "genderExplanation": {
+        "en": "Nouns ending in -schaft are feminine: die Freundschaft.",
+        "fr": "Les noms en -schaft sont féminins : die Freundschaft.",
+        "de": "Nomen auf -schaft sind feminin: die Freundschaft."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Unsere ",
+        "after": " hält schon seit der Schulzeit.",
+        "accepted": { "answers": ["Freundschaft"] },
+        "referenceTargetIds": ["freundschaft", "streit", "treu", "vermissen"],
+        "explanation": {
+          "en": "Only Freundschaft fits: it is feminine and can last for years.",
+          "fr": "Seul « Freundschaft » convient : il est féminin et peut durer des années.",
+          "de": "Nur „Freundschaft“ passt: Es ist feminin und kann jahrelang halten."
+        }
+      },
+      "listeningOptionTargetIds": ["freundschaft", "freundeskreis", "kumpel", "treu"]
+    },
+    {
+      "id": "freundeskreis",
+      "term": "Freundeskreis",
+      "translations": { "en": ["circle of friends"], "fr": ["le cercle d’amis"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "der Freundeskreis",
+      "examForms": ["der Freundeskreis"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈfʁɔʏndəsˌkʁaɪ̯s/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "In meinem Freundeskreis spielen alle Gitarre.",
+        "translation": {
+          "en": "Everyone in my circle of friends plays the guitar.",
+          "fr": "Dans mon cercle d’amis, tout le monde joue de la guitare."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Der Freundeskreis is the group of all your friends.",
+        "fr": "Der Freundeskreis, c’est l’ensemble de vos amis.",
+        "de": "Der Freundeskreis ist die Gruppe aller deiner Freunde."
+      },
+      "genderExplanation": {
+        "en": "Der Freundeskreis is masculine, like its last part, der Kreis.",
+        "fr": "Der Freundeskreis est masculin, comme son dernier élément, der Kreis.",
+        "de": "Der Freundeskreis ist maskulin, wie sein letzter Teil, der Kreis."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Mein ",
+        "after": " ist groß: Zu meinem Geburtstag kommen dreißig Leute.",
+        "accepted": { "answers": ["Freundeskreis"] },
+        "referenceTargetIds": ["freundeskreis", "vertrauen", "stich", "streiten"],
+        "explanation": {
+          "en": "Only Freundeskreis fits: it is a group of people.",
+          "fr": "Seul « Freundeskreis » convient : c’est un groupe de personnes.",
+          "de": "Nur „Freundeskreis“ passt: Das ist eine Gruppe von Menschen."
+        }
+      },
+      "listeningOptionTargetIds": ["freundeskreis", "freundschaft", "vertrauen", "streit"]
+    },
+    {
+      "id": "kumpel",
+      "term": "Kumpel",
+      "translations": { "en": ["mate", "buddy"], "fr": ["le copain", "le pote"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "der Kumpel",
+      "examForms": ["der Kumpel"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈkʊmpl̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Mein Kumpel hilft mir beim Umzug.",
+        "translation": {
+          "en": "My mate is helping me move.",
+          "fr": "Mon copain m’aide à déménager."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Kumpel is colloquial. In formal speech, use Freund.",
+        "fr": "Kumpel est familier. Dans un registre soutenu, employez Freund.",
+        "de": "Kumpel ist umgangssprachlich. In formeller Sprache sagst du Freund."
+      },
+      "explanation": {
+        "en": "Der Kumpel is a colloquial word for a good mate.",
+        "fr": "Der Kumpel est un mot familier pour un bon copain.",
+        "de": "Der Kumpel ist ein umgangssprachliches Wort für einen guten Freund."
+      },
+      "genderExplanation": {
+        "en": "Der Kumpel is masculine, even though it can also refer to a woman in casual speech.",
+        "fr": "Der Kumpel est masculin, même si le mot peut aussi désigner une femme dans la langue courante.",
+        "de": "Der Kumpel ist maskulin, auch wenn das Wort umgangssprachlich manchmal für eine Frau gebraucht wird."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Mit meinem ",
+        "after": " Tom gehe ich jeden Freitag Fußball spielen.",
+        "accepted": { "answers": ["Kumpel"] },
+        "referenceTargetIds": ["kumpel", "freundschaft", "verlassen", "vertragen"],
+        "explanation": {
+          "en": "Only Kumpel fits: it names a person, followed by his name.",
+          "fr": "Seul « Kumpel » convient : c’est une personne, suivie de son prénom.",
+          "de": "Nur „Kumpel“ passt: Es nennt eine Person, danach folgt ihr Name."
+        }
+      },
+      "listeningOptionTargetIds": ["kumpel", "freundeskreis", "streit", "treu"]
+    },
+    {
+      "id": "vertrauen",
+      "term": "Vertrauen",
+      "translations": { "en": ["trust"], "fr": ["la confiance"] },
+      "wordClass": "noun",
+      "genders": ["neuter"],
+      "number": "singular",
+      "teachingForm": "das Vertrauen",
+      "examForms": ["das Vertrauen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/fɛɐ̯ˈtʁaʊ̯ən/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Zwischen uns gibt es viel Vertrauen.",
+        "translation": {
+          "en": "There is a lot of trust between us.",
+          "fr": "Il y a beaucoup de confiance entre nous."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Das Vertrauen is the feeling that you can rely on someone.",
+        "fr": "Das Vertrauen, c’est le sentiment de pouvoir compter sur quelqu’un.",
+        "de": "Das Vertrauen ist das Gefühl, sich auf jemanden verlassen zu können."
+      },
+      "genderExplanation": {
+        "en": "Nouns made from a verb infinitive (vertrauen) are neuter: das Vertrauen.",
+        "fr": "Les noms formés sur l’infinitif d’un verbe (vertrauen) sont neutres : das Vertrauen.",
+        "de": "Nomen, die aus einem Infinitiv (vertrauen) entstehen, sind neutral: das Vertrauen."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Ich habe volles ",
+        "after": " zu dir und erzähle dir alles.",
+        "accepted": { "answers": ["Vertrauen"] },
+        "referenceTargetIds": ["vertrauen", "streit", "freundschaft", "vermissen"],
+        "explanation": {
+          "en": "Only Vertrauen fits: volles needs a neuter noun, and you tell everything to someone you trust.",
+          "fr": "Seul « Vertrauen » convient : volles demande un nom neutre, et on dit tout à quelqu’un en qui on a confiance.",
+          "de": "Nur „Vertrauen“ passt: „volles“ braucht ein neutrales Nomen, und dem, dem man vertraut, erzählt man alles."
+        }
+      },
+      "listeningOptionTargetIds": ["vertrauen", "vertragen", "verstehen", "freundschaft"]
+    },
+    {
+      "id": "streit",
+      "term": "Streit",
+      "translations": { "en": ["argument", "quarrel"], "fr": ["la dispute", "la querelle"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "der Streit",
+      "examForms": ["der Streit"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ʃtʁaɪ̯t/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Der Streit war schnell vorbei.",
+        "translation": {
+          "en": "The argument was over quickly.",
+          "fr": "La dispute a vite été terminée."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Der Streit is an angry disagreement between people.",
+        "fr": "Der Streit, c’est un désaccord violent entre des personnes.",
+        "de": "Der Streit ist eine heftige Meinungsverschiedenheit zwischen Menschen."
+      },
+      "genderExplanation": {
+        "en": "Der Streit is masculine: you say der Streit.",
+        "fr": "Der Streit est masculin : on dit der Streit.",
+        "de": "Der Streit ist maskulin: Es heißt der Streit."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Gestern hatten Lisa und ich einen ",
+        "after": " wegen des Urlaubs.",
+        "accepted": { "answers": ["Streit"] },
+        "referenceTargetIds": ["streit", "freundschaft", "vertrauen", "treu"],
+        "explanation": {
+          "en": "Only Streit fits: einen needs a masculine noun and the people disagree about the holiday.",
+          "fr": "Seul « Streit » convient : einen demande un nom masculin et les deux personnes ne sont pas d’accord au sujet des vacances.",
+          "de": "Nur „Streit“ passt: „einen“ braucht ein maskulines Nomen, und es geht um Uneinigkeit über den Urlaub."
+        }
+      },
+      "listeningOptionTargetIds": ["streit", "streiten", "treu", "freundschaft"]
+    },
+    {
+      "id": "treu",
+      "term": "treu",
+      "translations": { "en": ["loyal"], "fr": ["fidèle"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "treu",
+      "examForms": ["treu"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/tʁɔʏ̯/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Sie ist ihren Freunden immer treu.",
+        "translation": {
+          "en": "She is always loyal to her friends.",
+          "fr": "Elle est toujours fidèle à ses amis."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Treu describes someone who stays on your side, even in bad times.",
+        "fr": "Treu décrit quelqu’un qui reste de votre côté, même dans les mauvais moments.",
+        "de": "Treu beschreibt jemanden, der auch in schlechten Zeiten zu dir hält."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Ein guter Freund bleibt dir auch in schlechten Zeiten ",
+        "after": ".",
+        "accepted": { "answers": ["treu"] },
+        "referenceTargetIds": ["treu", "kumpel", "vertragen", "vertrauen"],
+        "explanation": {
+          "en": "Only treu fits: it is the adjective that describes how a friend stays.",
+          "fr": "Seul « treu » convient : c’est l’adjectif qui décrit comment un ami reste.",
+          "de": "Nur „treu“ passt: Es ist das Adjektiv, das beschreibt, wie ein Freund bleibt."
+        }
+      },
+      "listeningOptionTargetIds": ["treu", "streit", "streiten", "vertrauen"]
+    },
+    {
+      "id": "verstehen",
+      "term": "sich gut verstehen",
+      "translations": { "en": ["to get along well"], "fr": ["bien s’entendre"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "sich gut verstehen",
+      "examForms": ["sich gut verstehen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/zɪç ɡuːt fɛɐ̯ˈʃteːən/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Wir verstehen uns richtig gut.",
+        "translation": {
+          "en": "We get along really well.",
+          "fr": "Nous nous entendons vraiment bien."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Sich gut verstehen means that two people like each other and have no problems.",
+        "fr": "Sich gut verstehen signifie que deux personnes s’apprécient et n’ont pas de problèmes.",
+        "de": "Sich gut verstehen heißt, dass zwei Menschen sich mögen und keine Probleme haben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Meine Schwester und ich ",
+        "after": " uns gut, denn wir haben dieselben Hobbys.",
+        "accepted": { "answers": ["verstehen"] },
+        "referenceTargetIds": ["verstehen", "streiten", "treu", "kumpel"],
+        "explanation": {
+          "en": "Only verstehen fits: uns gut verstehen is the phrase, and the same hobbies are the reason.",
+          "fr": "Seul « verstehen » convient : « uns gut verstehen » est l’expression, et les mêmes loisirs en sont la raison.",
+          "de": "Nur „verstehen“ passt: „uns gut verstehen“ ist die Wendung, und die gleichen Hobbys sind der Grund."
+        }
+      },
+      "listeningOptionTargetIds": ["verstehen", "vertragen", "vertrauen", "streiten"]
+    },
+    {
+      "id": "streiten",
+      "term": "sich streiten",
+      "translations": { "en": ["to argue"], "fr": ["se disputer"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "sich streiten",
+      "examForms": ["sich streiten"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/zɪç ˈʃtʁaɪ̯tn̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Warum streitet ihr euch ständig?",
+        "translation": {
+          "en": "Why do you keep arguing?",
+          "fr": "Pourquoi vous disputez-vous sans arrêt ?"
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Sich streiten means to have an angry argument with someone.",
+        "fr": "Sich streiten signifie avoir une dispute violente avec quelqu’un.",
+        "de": "Sich streiten heißt, mit jemandem einen heftigen Streit zu haben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Die Kinder ",
+        "after": " sich jeden Tag um das Spielzeug.",
+        "accepted": { "answers": ["streiten"] },
+        "referenceTargetIds": ["streiten", "verstehen", "anfreunden", "stich"],
+        "explanation": {
+          "en": "Only streiten fits: children fight over a toy.",
+          "fr": "Seul « streiten » convient : des enfants se disputent à cause d’un jouet.",
+          "de": "Nur „streiten“ passt: Kinder streiten sich um ein Spielzeug."
+        }
+      },
+      "listeningOptionTargetIds": ["streiten", "streit", "verstehen", "vertragen"]
+    },
+    {
+      "id": "vertragen",
+      "term": "sich vertragen",
+      "translations": {
+        "en": ["to make up", "to get along"],
+        "fr": ["se réconcilier", "s’entendre"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "sich vertragen",
+      "examForms": ["sich vertragen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/zɪç fɛɐ̯ˈtʁaːɡn̩/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Gestern haben wir uns wieder vertragen.",
+        "translation": {
+          "en": "Yesterday we made up again.",
+          "fr": "Hier, nous nous sommes réconciliés."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Sich vertragen can mean to get along or, with wieder, to make up after an argument.",
+        "fr": "Sich vertragen peut signifier s’entendre ou, avec wieder, se réconcilier après une dispute.",
+        "de": "Sich vertragen kann „gut auskommen“ bedeuten oder, mit „wieder“, sich nach einem Streit versöhnen."
+      },
+      "explanation": {
+        "en": "Sich vertragen means to end an argument and be friends again.",
+        "fr": "Sich vertragen signifie mettre fin à une dispute et redevenir amis.",
+        "de": "Sich vertragen heißt, einen Streit zu beenden und wieder Freunde zu sein."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Nach dem Streit haben sie sich schnell wieder ",
+        "after": ".",
+        "accepted": { "answers": ["vertragen"] },
+        "referenceTargetIds": ["vertragen", "streiten", "vermissen", "kumpel"],
+        "explanation": {
+          "en": "Only vertragen fits: the past participle is the same as the infinitive, and it means they made up after the argument.",
+          "fr": "Seul « vertragen » convient : le participe passé est identique à l’infinitif, et cela signifie qu’ils se sont réconciliés après la dispute.",
+          "de": "Nur „vertragen“ passt: Das Partizip II ist gleich dem Infinitiv, und es bedeutet, dass sie sich nach dem Streit versöhnt haben."
+        }
+      },
+      "listeningOptionTargetIds": ["vertragen", "vertrauen", "verstehen", "streiten"]
+    },
+    {
+      "id": "vermissen",
+      "term": "vermissen",
+      "translations": { "en": ["to miss"], "fr": ["manquer (à quelqu’un)"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "vermissen",
+      "examForms": ["vermissen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/fɛɐ̯ˈmɪsn̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ich vermisse meine Freunde aus der Schulzeit.",
+        "translation": {
+          "en": "I miss my friends from school.",
+          "fr": "Mes amis de l’école me manquent."
+        }
+      },
+      "ambiguityNote": {
+        "en": "The person who misses is the subject: Ich vermisse dich means I miss you.",
+        "fr": "Celui à qui l’autre manque est le sujet : Ich vermisse dich veut dire « tu me manques ».",
+        "de": "Wer jemanden vermisst, ist das Subjekt: Ich vermisse dich."
+      },
+      "explanation": {
+        "en": "Vermissen means to feel sad because someone is not with you.",
+        "fr": "Vermissen signifie être triste parce que quelqu’un n’est pas là.",
+        "de": "Vermissen heißt, traurig zu sein, weil jemand nicht da ist."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Seit Anna nach Berlin gezogen ist, habe ich sie sehr ",
+        "after": ".",
+        "accepted": { "answers": ["vermisst"] },
+        "referenceTargetIds": ["vermissen", "vertragen", "anfreunden", "streiten"],
+        "explanation": {
+          "en": "Only vermisst fits: Anna has moved away and you are sad she is not there.",
+          "fr": "Seul « vermisst » convient : Anna est partie et elle vous manque.",
+          "de": "Nur „vermisst“ passt: Anna ist weggezogen, und man ist traurig, dass sie nicht da ist."
+        }
+      },
+      "listeningOptionTargetIds": ["vermissen", "verlassen", "vertrauen", "vertragen"]
+    },
+    {
+      "id": "stich",
+      "term": "jemanden im Stich lassen",
+      "translations": { "en": ["to let someone down"], "fr": ["laisser tomber quelqu’un"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "jemanden im Stich lassen",
+      "examForms": ["jemanden im Stich lassen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈjeːmandn̩ ɪm ʃtɪç ˈlasn̩/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Als ich Hilfe brauchte, hat er mich im Stich gelassen.",
+        "translation": {
+          "en": "When I needed help, he let me down.",
+          "fr": "Quand j’avais besoin d’aide, il m’a laissé tomber."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Jemanden im Stich lassen means not to help someone when they need you. Stich is a noun and has a capital letter.",
+        "fr": "Jemanden im Stich lassen signifie ne pas aider quelqu’un quand il a besoin de vous. Stich est un nom et prend une majuscule.",
+        "de": "Jemanden im Stich lassen heißt, jemandem nicht zu helfen, wenn er einen braucht. Stich ist ein Nomen und wird großgeschrieben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Ein echter Freund lässt dich nicht im ",
+        "after": ", wenn du Probleme hast.",
+        "accepted": { "answers": ["Stich"] },
+        "referenceTargetIds": ["stich", "treu", "anfreunden", "verstehen"],
+        "explanation": {
+          "en": "Only Stich fits: jemanden im Stich lassen is a fixed phrase.",
+          "fr": "Seul « Stich » convient : « jemanden im Stich lassen » est une expression figée.",
+          "de": "Nur „Stich“ passt: „jemanden im Stich lassen“ ist eine feste Wendung."
+        }
+      },
+      "listeningOptionTargetIds": ["stich", "streit", "streiten", "treu"]
+    },
+    {
+      "id": "anfreunden",
+      "term": "sich anfreunden",
+      "translations": { "en": ["to become friends"], "fr": ["se lier d’amitié"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "sich anfreunden",
+      "examForms": ["sich anfreunden"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/zɪç ˈanˌfʁɔʏndn̩/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Ich habe mich mit meiner Kollegin angefreundet.",
+        "translation": {
+          "en": "I became friends with my colleague.",
+          "fr": "Je me suis lié d’amitié avec ma collègue."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Sich anfreunden means to become friends with someone you have just met.",
+        "fr": "Sich anfreunden signifie devenir ami avec quelqu’un qu’on vient de rencontrer.",
+        "de": "Sich anfreunden heißt, mit jemandem, den man gerade kennengelernt hat, Freundschaft zu schließen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Im Sprachkurs konnte sich Mia schnell mit Jana ",
+        "after": ".",
+        "accepted": { "answers": ["anfreunden"] },
+        "referenceTargetIds": ["anfreunden", "treu", "stich", "freundschaft"],
+        "explanation": {
+          "en": "Only anfreunden fits: after konnte you need an infinitive verb, and two classmates become friends.",
+          "fr": "Seul « anfreunden » convient : après konnte il faut un verbe à l’infinitif, et deux camarades de cours deviennent amies.",
+          "de": "Nur „anfreunden“ passt: Nach „konnte“ steht ein Infinitiv, und zwei Kursteilnehmerinnen werden Freundinnen."
+        }
+      },
+      "listeningOptionTargetIds": ["anfreunden", "freundschaft", "freundeskreis", "treu"]
+    },
+    {
+      "id": "verlassen",
+      "term": "sich verlassen auf",
+      "translations": { "en": ["to rely on", "to count on"], "fr": ["compter sur"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "sich verlassen auf",
+      "examForms": ["sich verlassen auf"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/zɪç fɛɐ̯ˈlasn̩ aʊ̯f/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Auf meine beste Freundin kann ich mich immer verlassen.",
+        "translation": {
+          "en": "I can always rely on my best friend.",
+          "fr": "Je peux toujours compter sur ma meilleure amie."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Without auf, verlassen means to leave: Er hat seine Frau verlassen.",
+        "fr": "Sans auf, verlassen veut dire quitter : Er hat seine Frau verlassen.",
+        "de": "Ohne „auf“ heißt verlassen „weggehen“: Er hat seine Frau verlassen."
+      },
+      "explanation": {
+        "en": "Sich auf jemanden verlassen means to be sure that someone will help you and keep their word.",
+        "fr": "Sich auf jemanden verlassen signifie être sûr que quelqu’un vous aidera et tiendra parole.",
+        "de": "Sich auf jemanden verlassen heißt, sicher zu sein, dass jemand hilft und sein Wort hält."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Du kannst dich immer auf mich ",
+        "after": ": Ich helfe dir beim Umzug.",
+        "accepted": { "answers": ["verlassen"] },
+        "referenceTargetIds": ["verlassen", "vertragen", "verstehen", "treu"],
+        "explanation": {
+          "en": "Only verlassen fits: sich auf jemanden verlassen is the phrase, with dich and auf mich.",
+          "fr": "Seul « verlassen » convient : l’expression est « sich auf jemanden verlassen », avec dich et auf mich.",
+          "de": "Nur „verlassen“ passt: Die Wendung ist „sich auf jemanden verlassen“, mit „dich“ und „auf mich“."
+        }
+      },
+      "listeningOptionTargetIds": ["verlassen", "vertragen", "vertrauen", "verstehen"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

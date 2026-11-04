@@ -1,0 +1,297 @@
+{
+  "schemaVersion": 2,
+  "id": "de-past-perfect",
+  "lang": "de",
+  "level": "B1",
+  "locales": ["en", "fr", "de"],
+  "title": "Das Plusquamperfekt",
+  "objective": {
+    "en": "Form the past perfect with hatte or war and the past participle to say what happened before another past event.",
+    "fr": "Former le plus-que-parfait avec hatte ou war et le participe passé pour dire ce qui s’est passé avant un autre événement passé.",
+    "de": "Das Plusquamperfekt mit hatte oder war und Partizip II bilden und damit sagen, was vor einem anderen Ereignis in der Vergangenheit geschah."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:33:46.630Z",
+    "inputHashes": { "outline": "e170c1d770d61295575e99a59b17a3bff36aaa4f86b47521659559543c161ef8" }
+  },
+  "kind": "grammar",
+  "topic": "verbs_morphology",
+  "scopeBoundaries": {
+    "en": "Covers the past perfect with hatte and war, the choice of auxiliary and its use for the earlier of two past events. Excludes nachdem/bevor clauses, als/wenn and the choice between simple past and Perfekt.",
+    "fr": "Couvre le plus-que-parfait avec hatte et war, le choix de l’auxiliaire et son emploi pour l’événement le plus ancien. Exclut les subordonnées avec nachdem/bevor, als/wenn et le choix entre prétérit et Perfekt.",
+    "de": "Behandelt das Plusquamperfekt mit hatte und war, die Wahl des Hilfsverbs und den Gebrauch für das frühere von zwei vergangenen Ereignissen. Nicht behandelt: nachdem/bevor-Sätze, als/wenn und die Wahl zwischen Präteritum und Perfekt."
+  },
+  "prerequisites": [
+    {
+      "en": "The Perfekt with haben and sein and the formation of the Partizip II",
+      "fr": "Le Perfekt avec haben et sein et la formation du Partizip II",
+      "de": "Das Perfekt mit haben und sein und die Bildung des Partizips II"
+    },
+    {
+      "en": "Simple past of haben and sein (hatte, war)",
+      "fr": "Le prétérit de haben et sein (hatte, war)",
+      "de": "Das Präteritum von haben und sein (hatte, war)"
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-form",
+      "summary": {
+        "en": "The past perfect is formed with hatte or war (simple past of haben or sein) plus the past participle at the end.",
+        "fr": "Le plus-que-parfait se forme avec hatte ou war (prétérit de haben ou sein) et le participe passé à la fin.",
+        "de": "Das Plusquamperfekt wird mit hatte oder war (Präteritum von haben oder sein) und dem Partizip II am Ende gebildet."
+      }
+    },
+    {
+      "id": "rule-aux",
+      "summary": {
+        "en": "As in the Perfekt, most verbs take hatte; verbs of changing place or state, sein, bleiben and werden take war.",
+        "fr": "Comme au Perfekt, la plupart des verbes prennent hatte ; les verbes de changement de lieu ou d’état, sein, bleiben et werden prennent war.",
+        "de": "Wie im Perfekt steht bei den meisten Verben hatte; bei Verben der Ortsveränderung oder Zustandsänderung sowie sein, bleiben und werden steht war."
+      }
+    },
+    {
+      "id": "rule-use",
+      "summary": {
+        "en": "The past perfect names the earlier of two past events; in a subordinate clause the auxiliary comes last.",
+        "fr": "Le plus-que-parfait exprime l’événement le plus ancien de deux événements passés ; dans une subordonnée, l’auxiliaire est en dernière position.",
+        "de": "Das Plusquamperfekt nennt das frühere von zwei vergangenen Ereignissen; im Nebensatz steht das Hilfsverb ganz am Ende."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-form",
+      "title": {
+        "en": "Forming it: hatte + past participle",
+        "fr": "La formation : hatte + participe passé",
+        "de": "Die Bildung: hatte + Partizip II"
+      },
+      "ruleIds": ["rule-form"],
+      "explanationPlan": {
+        "en": "Introduce the past perfect as hatte or war plus the past participle at the end. Show the simple past forms of haben for every person and recall how the participle is formed.",
+        "fr": "Présenter le plus-que-parfait comme hatte ou war plus le participe passé à la fin. Montrer les formes de haben au prétérit pour chaque personne et rappeler la formation du participe.",
+        "de": "Das Plusquamperfekt als hatte oder war plus Partizip II am Ende einführen. Die Präteritumformen von haben für alle Personen zeigen und die Bildung des Partizips wiederholen."
+      },
+      "explanationDurationS": 90,
+      "examples": [
+        {
+          "text": "Als wir ankamen, war der Zug schon abgefahren.",
+          "translation": {
+            "en": "When we arrived, the train had already left.",
+            "fr": "Quand nous sommes arrivés, le train était déjà parti."
+          }
+        },
+        {
+          "text": "Ich hatte schon gegessen, als er anrief.",
+          "translation": {
+            "en": "I had already eaten when he called.",
+            "fr": "J’avais déjà mangé quand il a appelé."
+          }
+        },
+        {
+          "text": "Sie hatte ihre Tasche vergessen.",
+          "translation": { "en": "She had forgotten her bag.", "fr": "Elle avait oublié son sac." }
+        },
+        {
+          "text": "Wir hatten lange gewartet.",
+          "translation": {
+            "en": "We had waited for a long time.",
+            "fr": "Nous avions attendu longtemps."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not mix up hatte + past participle (past perfect) with habe + past participle (Perfekt).",
+          "fr": "Ne confondez pas hatte + participe passé (plus-que-parfait) et habe + participe passé (Perfekt).",
+          "de": "Verwechsle nicht hatte + Partizip II (Plusquamperfekt) mit habe + Partizip II (Perfekt)."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-form-persons",
+          "type": "grammar_person_matching",
+          "itemCount": 1,
+          "ruleIds": ["rule-form"],
+          "estimatedDurationS": 72
+        },
+        {
+          "id": "ex-form-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-form"],
+          "estimatedDurationS": 48
+        },
+        {
+          "id": "ex-form-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-form"],
+          "estimatedDurationS": 60
+        }
+      ]
+    },
+    {
+      "id": "block-aux",
+      "title": { "en": "hatte or war?", "fr": "hatte ou war ?", "de": "hatte oder war?" },
+      "ruleIds": ["rule-aux"],
+      "explanationPlan": {
+        "en": "Explain that the auxiliary is chosen as in the Perfekt: hatte for most verbs, war for verbs of changing place or state and for sein, bleiben, werden. Show the forms of war for every person.",
+        "fr": "Expliquer que l’auxiliaire se choisit comme au Perfekt : hatte pour la plupart des verbes, war pour les verbes de changement de lieu ou d’état et pour sein, bleiben, werden. Montrer les formes de war pour chaque personne.",
+        "de": "Erklären, dass das Hilfsverb wie im Perfekt gewählt wird: hatte bei den meisten Verben, war bei Verben der Orts- oder Zustandsänderung und bei sein, bleiben, werden. Die Formen von war für alle Personen zeigen."
+      },
+      "explanationDurationS": 90,
+      "examples": [
+        {
+          "text": "Der Zug war schon abgefahren.",
+          "translation": { "en": "The train had already left.", "fr": "Le train était déjà parti." }
+        },
+        {
+          "text": "Er hatte den ganzen Tag nichts gegessen.",
+          "translation": {
+            "en": "He had eaten nothing all day.",
+            "fr": "Il n’avait rien mangé de toute la journée."
+          }
+        },
+        {
+          "text": "Ich war schon einmal in Paris gewesen.",
+          "translation": {
+            "en": "I had already been to Paris once.",
+            "fr": "J’avais déjà été à Paris une fois."
+          }
+        },
+        {
+          "text": "Wir waren früh aufgestanden.",
+          "translation": { "en": "We had got up early.", "fr": "Nous nous étions levés tôt." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "As in the Perfekt, gehen, fahren and einschlafen take war, so Er hatte gegangen is wrong.",
+          "fr": "Comme au Perfekt, gehen, fahren et einschlafen prennent war ; Er hatte gegangen est donc faux.",
+          "de": "Wie im Perfekt stehen gehen, fahren und einschlafen mit war; Er hatte gegangen ist also falsch."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-aux-persons",
+          "type": "grammar_person_matching",
+          "itemCount": 1,
+          "ruleIds": ["rule-aux"],
+          "estimatedDurationS": 72
+        },
+        {
+          "id": "ex-aux-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-aux"],
+          "estimatedDurationS": 48
+        },
+        {
+          "id": "ex-aux-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 3,
+          "ruleIds": ["rule-aux"],
+          "estimatedDurationS": 60
+        }
+      ]
+    },
+    {
+      "id": "block-use",
+      "title": {
+        "en": "Using it in a sentence",
+        "fr": "L’emploi dans la phrase",
+        "de": "Der Gebrauch im Satz"
+      },
+      "ruleIds": ["rule-use"],
+      "explanationPlan": {
+        "en": "Show that the past perfect marks the earlier of two past events, with the later one in the simple past or Perfekt. Mention helpers such as schon, bereits, vorher, noch nie. Explain word order: auxiliary second in a main clause, last in a subordinate clause.",
+        "fr": "Montrer que le plus-que-parfait marque le plus ancien de deux événements passés, le plus récent étant au prétérit ou au Perfekt. Mentionner schon, bereits, vorher, noch nie. Expliquer l’ordre des mots : auxiliaire en deuxième position dans la principale, en dernier dans la subordonnée.",
+        "de": "Zeigen, dass das Plusquamperfekt das frühere von zwei vergangenen Ereignissen markiert, das spätere steht im Präteritum oder Perfekt. Schon, bereits, vorher, noch nie nennen. Wortstellung erklären: Hilfsverb an zweiter Stelle im Hauptsatz, am Ende im Nebensatz."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "Als ich ins Büro kam, hatte die Besprechung schon begonnen.",
+          "translation": {
+            "en": "When I got to the office, the meeting had already started.",
+            "fr": "Quand je suis arrivé au bureau, la réunion avait déjà commencé."
+          }
+        },
+        {
+          "text": "Ich wusste nicht, dass er schon gegangen war.",
+          "translation": {
+            "en": "I didn’t know that he had already left.",
+            "fr": "Je ne savais pas qu’il était déjà parti."
+          }
+        },
+        {
+          "text": "Sie hatte vorher nie Sushi gegessen.",
+          "translation": {
+            "en": "She had never eaten sushi before.",
+            "fr": "Elle n’avait jamais mangé de sushi auparavant."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "In a subordinate clause the auxiliary stands at the very end: dass er gegangen war, not dass er war gegangen.",
+          "fr": "Dans une subordonnée, l’auxiliaire est tout à la fin : dass er gegangen war, et non dass er war gegangen.",
+          "de": "Im Nebensatz steht das Hilfsverb ganz am Ende: dass er gegangen war, nicht dass er war gegangen."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-use-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-use"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-use-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-use"],
+          "estimatedDurationS": 56
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-aux",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-aux", "rule-form"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 120
+      },
+      {
+        "pageId": "exam-participle",
+        "type": "grammar_gap_typing",
+        "itemCount": 3,
+        "ruleIds": ["rule-form"],
+        "estimatedDurationS": 45,
+        "timeLimitS": 90
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["rule-use"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 120
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

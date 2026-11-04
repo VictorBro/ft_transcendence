@@ -235,9 +235,6 @@ shell: ## Shell into a running service: make shell SERVICE=web
 # Not exported to the shell on purpose: compose prefers the shell over .env, so
 # an exported empty value would win over the real one.
 GENERATED_SECRETS := GRAFANA_ADMIN_PASSWORD GRAFANA_SECRET_KEY
-# Optional and empty by default, but check-env-example.sh wants every key in
-# .env, and a teammate's existing .env predates it.
-OPTIONAL_KEYS := DISCORD_WEBHOOK_URL DEMO_PASSWORD
 # The services behind the monitoring profile in compose.override.yml.
 MONITORING_SERVICES := prometheus alertmanager grafana node-exporter postgres-exporter \
                        redis-exporter blackbox-exporter
@@ -256,10 +253,12 @@ env-file: ## Create .env if missing, generate the Grafana secrets, add new keys
 	  fi; \
 	  printf 'env-file: generated %s in .env\n' "$$key"; \
 	done
-	@for key in $(OPTIONAL_KEYS); do \
+	@# check-env-example.sh wants every template key in .env, and an existing .env
+	@# predates the newer ones: append each missing line as the template has it.
+	@for key in $$(sed -nE 's/^([A-Za-z_][A-Za-z0-9_]*)=.*/\1/p' .env.example); do \
 	  grep -q "^$$key=" .env && continue; \
-	  printf '%s=\n' "$$key" >> .env; \
-	  printf 'env-file: added an empty %s to .env\n' "$$key"; \
+	  grep -m1 "^$$key=" .env.example >> .env; \
+	  printf 'env-file: added %s to .env from .env.example\n' "$$key"; \
 	done
 
 # Through `dev`, not a second `up`: that is what creates the masked dirs before
@@ -296,11 +295,21 @@ playwright:
 	@# .env: compose strips dotenv quotes and make would not. A shell value still
 	@# wins, as it does for compose. Through the environment, never argv, which
 	@# `ps` shows every local user.
+	@# Then the restart run (e2e/tests/restart.spec.ts): it restarts the API of
+	@# the production stack once, on Chromium only, since two restarts in 15
+	@# minutes fire ApiRestarting. When `up` has just recreated a rebuilt api
+	@# container, as `test-e2e` and `all` can, this one is the second, and
+	@# ApiRestarting firing once is expected. Only after a green suite, as in CI:
+	@# it would overwrite the failed suite's report and traces.
 	@set +e; \
 	GRAFANA_ADMIN_PASSWORD="$${GRAFANA_ADMIN_PASSWORD:-$$($(COMPOSE_DEV) exec -T grafana printenv GF_SECURITY_ADMIN_PASSWORD 2>/dev/null)}"; \
 	export GRAFANA_ADMIN_PASSWORD; \
 	E2E_BASE_URL=$(E2E_BASE_URL) pnpm --filter @ft/e2e run test:e2e < /dev/null; \
 	status=$$?; \
+	if [ "$$status" -eq 0 ]; then \
+	  E2E_BASE_URL=$(E2E_BASE_URL) pnpm --filter @ft/e2e run test:e2e:restart < /dev/null; \
+	  status=$$?; \
+	fi; \
 	$(COMPOSE_DEV) exec -T db psql -U ft -d ft_transcendence \
 	  -c "delete from \"User\" where email like '$(E2E_EMAIL_PREFIX)%@example.com';" >/dev/null; \
 	exit $$status

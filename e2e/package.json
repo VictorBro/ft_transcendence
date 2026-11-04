@@ -10,6 +10,7 @@
     "typecheck": "tsc --noEmit",
     "browsers": "playwright install --with-deps chromium firefox webkit",
     "test:e2e": "playwright test",
+    "test:e2e:restart": "E2E_RESTART=1 playwright test --project=chromium",
     "report": "playwright show-report"
   },
   "devDependencies": {

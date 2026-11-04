@@ -1,0 +1,379 @@
+{
+  "schemaVersion": 2,
+  "id": "de-reading-a-blog-about-a-fresh-start",
+  "lang": "de",
+  "level": "B1",
+  "locales": ["en", "fr", "de"],
+  "title": "Einen Blog über einen Neuanfang lesen",
+  "objective": {
+    "en": "Read a blog post about a year abroad and tell true statements from false ones: how was it at the start, and how does the writer feel today?",
+    "fr": "Lire un article de blog sur une année à l’étranger et distinguer les affirmations vraies des fausses : comment c’était au début, et comment l’auteure se sent aujourd’hui ?",
+    "de": "Einen Blogbeitrag über ein Auslandsjahr lesen und richtige von falschen Aussagen unterscheiden: Wie war es am Anfang, und wie fühlt sich die Schreiberin heute?"
+  },
+  "estimatedMinutes": 9,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:29:52.012Z",
+    "inputHashes": {
+      "outline": "d5aec8cedf24985da9a4814e6c5332b3d4eec5ac60eddeeb8d64a4ed08b30340",
+      "brief": "21f87919b981207980cfca4ecac491551c9be3a3a89908e630ca472e97812b22"
+    }
+  },
+  "kind": "reading",
+  "theme": "personal_identification",
+  "genre": "forum_post",
+  "documents": [
+    {
+      "documentId": "main",
+      "title": "Mein Auslandsjahr in Schweden",
+      "meta": ["Lena", "12. März"],
+      "paragraphs": [
+        "Vor sechs Monaten bin ich nach Göteborg gezogen, um dort ein Jahr zu studieren. Am Anfang war alles fremd: die Sprache, die Straßen, sogar das Essen. Ich kannte niemanden und fühlte mich oft allein.",
+        "Besonders in den ersten Wochen habe ich meine Familie und meine Freunde in Deutschland sehr vermisst. Abends habe ich oft lange mit meiner Mutter telefoniert. Einmal wollte ich sogar nach Hause fahren.",
+        "Dann hat mir eine Kommilitonin, Sofia, einen Tipp gegeben: Ich sollte jede Woche etwas Neues ausprobieren. Also habe ich mich für einen Chor angemeldet und habe angefangen, Schwedisch zu lernen. Das war nicht leicht, aber es hat sich gelohnt.",
+        "Inzwischen habe ich mich gut eingelebt. Ich habe nette Freunde gefunden, ich kenne die Stadt und ich verstehe fast alles, was die Leute sagen. Wenn ich heute nach der Uni durch die Straßen gehe, fühle ich mich hier zu Hause.",
+        "Meine Heimat vermisse ich natürlich noch, aber ich weiß jetzt: Ein Neuanfang braucht Zeit. Im Sommer fliege ich zurück nach Deutschland. Ich werde traurig sein, denn Göteborg ist für mich ein zweites Zuhause geworden."
+      ],
+      "highlights": [
+        { "keywordId": "fremd", "text": "fremd" },
+        { "keywordId": "vermissen", "text": "vermisst" },
+        { "keywordId": "sich-einleben", "text": "eingelebt" },
+        { "keywordId": "inzwischen", "text": "Inzwischen" },
+        { "keywordId": "heimat", "text": "Heimat" }
+      ]
+    },
+    {
+      "documentId": "exam",
+      "title": "Neu in Hamburg",
+      "meta": ["Murat", "3. November"],
+      "paragraphs": [
+        "Vor drei Monaten habe ich in Hamburg eine neue Arbeit angefangen. Zuerst war die Stadt für mich sehr groß und laut, und ich kannte keinen Menschen. Die Kollegen waren zwar nett, aber nach der Arbeit saß ich allein in meiner Wohnung.",
+        "Dann habe ich mit dem Laufen angefangen. Jeden Samstag treffe ich jetzt eine Gruppe am Hafen. Wir laufen zusammen und frühstücken danach in einem Café. Das ist für mich der schönste Tag der Woche.",
+        "Hamburg ist noch nicht meine Heimat, aber ich freue mich schon auf jede Woche. Im Frühling möchte ich in eine größere Wohnung ziehen."
+      ],
+      "highlights": []
+    }
+  ],
+  "steps": [
+    {
+      "id": "flashcards",
+      "stage": "flashcards",
+      "role": "exercise",
+      "label": { "en": "Flashcards", "fr": "Cartes mémoire", "de": "Karteikarten" },
+      "pages": [
+        {
+          "pageId": "flashcards",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Turn each card to learn the key words of the text.",
+            "fr": "Retournez chaque carte pour découvrir les mots clés du texte.",
+            "de": "Dreh jede Karte um und lerne die Schlüsselwörter des Textes."
+          },
+          "items": [
+            {
+              "type": "reading_flashcards",
+              "itemId": "cards",
+              "keywordIds": ["fremd", "vermissen", "sich-einleben", "inzwischen", "heimat"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matching",
+      "stage": "matching",
+      "role": "exercise",
+      "label": { "en": "Matching", "fr": "Association", "de": "Zuordnen" },
+      "pages": [
+        {
+          "pageId": "matching",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each key word with its meaning.",
+            "fr": "Associez chaque mot clé à son sens.",
+            "de": "Ordne jedem Schlüsselwort seine Bedeutung zu."
+          },
+          "items": [
+            {
+              "type": "reading_keyword_matching",
+              "itemId": "matching",
+              "keywordIds": ["fremd", "vermissen", "sich-einleben", "inzwischen", "heimat"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skim",
+      "stage": "skim",
+      "role": "exercise",
+      "label": { "en": "Skim", "fr": "Survol", "de": "Überfliegen" },
+      "pages": [
+        {
+          "pageId": "skim",
+          "estimatedDurationS": 125,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Look over the document quickly. When the time is up it is put away; then answer the question.",
+            "fr": "Parcourez rapidement le document. À la fin du temps, il disparaît ; répondez ensuite à la question.",
+            "de": "Überfliege das Dokument. Wenn die Zeit um ist, verschwindet es; beantworte dann die Frage."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "skim-document",
+              "documentId": "main",
+              "view": "skim",
+              "skimSeconds": 105
+            },
+            {
+              "type": "reading_skim_choice",
+              "itemId": "skim-question",
+              "focus": "purpose",
+              "question": "Warum schreibt Lena diesen Blogbeitrag?",
+              "options": [
+                { "optionId": "o1", "text": "Sie sucht eine Wohnung in Göteborg." },
+                { "optionId": "o2", "text": "Sie erzählt, wie sie sich im Ausland eingelebt hat." },
+                { "optionId": "o3", "text": "Sie will ihr Studienfach wechseln." },
+                { "optionId": "o4", "text": "Sie lädt ihre Freunde zu einer Party ein." }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "Lena tells her story: strange at the start, settled in by now. She is not looking for a flat or inviting anyone.",
+                "fr": "Lena raconte son histoire : tout était étrange au début, maintenant elle s’est installée. Elle ne cherche pas d’appartement et n’invite personne.",
+                "de": "Lena erzählt ihre Geschichte: Am Anfang war alles fremd, inzwischen hat sie sich eingelebt. Sie sucht keine Wohnung und lädt niemanden ein."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "detail",
+      "stage": "detail",
+      "role": "exercise",
+      "label": { "en": "Detail", "fr": "Détails", "de": "Details" },
+      "pages": [
+        {
+          "pageId": "detail",
+          "estimatedDurationS": 120,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the document carefully and answer the questions.",
+            "fr": "Lisez le document attentivement et répondez aux questions.",
+            "de": "Lies das Dokument genau und beantworte die Fragen."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "detail-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-reason",
+              "question": "Warum ist Lena nach Göteborg gezogen?",
+              "options": [
+                { "optionId": "o1", "text": "Um dort zu arbeiten." },
+                { "optionId": "o2", "text": "Um dort ein Jahr zu studieren." },
+                { "optionId": "o3", "text": "Um ihre Familie zu besuchen." },
+                { "optionId": "o4", "text": "Um Schwedisch zu unterrichten." }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "The first sentence says she moved there to study for a year.",
+                "fr": "La première phrase dit qu’elle y a déménagé pour étudier pendant un an.",
+                "de": "Der erste Satz sagt: Sie ist dorthin gezogen, um ein Jahr zu studieren."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "q-early",
+              "statement": "Am Anfang hat Lena sich in Göteborg sofort wohlgefühlt.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: at first everything was strange and she often felt alone.",
+                "fr": "Faux : au début tout était étrange et elle se sentait souvent seule.",
+                "de": "Falsch: Am Anfang war alles fremd, und sie fühlte sich oft allein."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "q-tip",
+              "statement": "Eine Kommilitonin hat Lena geraten, jede Woche etwas Neues auszuprobieren.",
+              "answer": "true",
+              "answerExplanation": {
+                "en": "True: Sofia advised her to try something new every week.",
+                "fr": "Vrai : Sofia lui a conseillé d’essayer quelque chose de nouveau chaque semaine.",
+                "de": "Richtig: Sofia hat ihr den Tipp gegeben, jede Woche etwas Neues auszuprobieren."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "q-now",
+              "statement": "Lena versteht inzwischen fast alles, was die Leute sagen.",
+              "answer": "true",
+              "answerExplanation": {
+                "en": "True: she writes that she understands almost everything people say.",
+                "fr": "Vrai : elle écrit qu’elle comprend presque tout ce que les gens disent.",
+                "de": "Richtig: Sie schreibt, dass sie fast alles versteht, was die Leute sagen."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "structure",
+      "stage": "structure",
+      "role": "exercise",
+      "label": { "en": "Structure", "fr": "Structure", "de": "Aufbau" },
+      "pages": [
+        {
+          "pageId": "structure",
+          "estimatedDurationS": 60,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the information in the order the text gives it.",
+            "fr": "Remettez les informations dans l’ordre du texte.",
+            "de": "Bring die Informationen in die Reihenfolge des Textes."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "structure-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_order",
+              "itemId": "order",
+              "pieces": [
+                { "pieceId": "p3", "text": "Sie meldet sich im Chor an und lernt Schwedisch." },
+                {
+                  "pieceId": "p1",
+                  "text": "Am Anfang ist alles fremd, und Lena fühlt sich allein."
+                },
+                { "pieceId": "p4", "text": "Sie hat sich gut eingelebt und fühlt sich zu Hause." },
+                { "pieceId": "p2", "text": "Sie vermisst ihre Familie und ihre Freunde." }
+              ],
+              "acceptedOrders": [["p1", "p2", "p3", "p4"]],
+              "answerExplanation": {
+                "en": "The text follows her story: strange at first, then missing home, then the choir and Swedish, and finally feeling at home.",
+                "fr": "Le texte suit son histoire : étrange au début, puis le mal du pays, puis la chorale et le suédois, enfin le sentiment d’être chez elle.",
+                "de": "Der Text folgt ihrer Geschichte: erst fremd, dann Heimweh, dann Chor und Schwedisch, am Ende das Gefühl, zu Hause zu sein."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "stage": "exam",
+      "role": "exam",
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam",
+          "estimatedDurationS": 157,
+          "timeLimitS": 240,
+          "instructions": {
+            "en": "Read the new document and answer the questions. No help this time.",
+            "fr": "Lisez le nouveau document et répondez aux questions. Cette fois, sans aide.",
+            "de": "Lies das neue Dokument und beantworte die Fragen. Diesmal ohne Hilfe."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "exam-document",
+              "documentId": "exam",
+              "view": "exam",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-why",
+              "question": "Warum war Murat am Anfang oft allein?",
+              "options": [
+                { "optionId": "o1", "text": "Seine Kollegen waren unfreundlich." },
+                { "optionId": "o2", "text": "Er hatte keine Wohnung." },
+                { "optionId": "o3", "text": "Er kannte in der Stadt niemanden." },
+                { "optionId": "o4", "text": "Er musste jeden Abend arbeiten." }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "He knew no one in the city. The colleagues were nice, but he sat alone after work.",
+                "fr": "Il ne connaissait personne en ville. Les collègues étaient gentils, mais il restait seul après le travail.",
+                "de": "Er kannte keinen Menschen in der Stadt. Die Kollegen waren nett, aber nach der Arbeit saß er allein da."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "x-run",
+              "statement": "Murat läuft jeden Samstag mit einer Gruppe.",
+              "answer": "true",
+              "answerExplanation": {
+                "en": "True: every Saturday he meets a group at the harbour and they run together.",
+                "fr": "Vrai : chaque samedi il retrouve un groupe au port et ils courent ensemble.",
+                "de": "Richtig: Jeden Samstag trifft er eine Gruppe am Hafen, und sie laufen zusammen."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-after",
+              "question": "Was machen die Läufer nach dem Laufen?",
+              "options": [
+                { "optionId": "o1", "text": "Sie gehen ins Kino." },
+                { "optionId": "o2", "text": "Sie frühstücken in einem Café." },
+                { "optionId": "o3", "text": "Sie arbeiten zusammen." },
+                { "optionId": "o4", "text": "Sie kochen bei Murat." }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "After running they have breakfast in a café.",
+                "fr": "Après la course, ils petit-déjeunent dans un café.",
+                "de": "Nach dem Laufen frühstücken sie in einem Café."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "x-home",
+              "statement": "Murat fühlt sich in Hamburg schon ganz zu Hause.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: he writes that Hamburg is not yet his home.",
+                "fr": "Faux : il écrit que Hambourg n’est pas encore son chez-lui.",
+                "de": "Falsch: Er schreibt, dass Hamburg noch nicht seine Heimat ist."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-plan",
+              "question": "Was möchte Murat im Frühling tun?",
+              "options": [
+                { "optionId": "o1", "text": "Eine neue Arbeit suchen." },
+                { "optionId": "o2", "text": "Nach Hause zurückkehren." },
+                { "optionId": "o3", "text": "Eine Laufgruppe gründen." },
+                { "optionId": "o4", "text": "In eine größere Wohnung ziehen." }
+              ],
+              "answerOptionId": "o4",
+              "answerExplanation": {
+                "en": "In spring he wants to move into a bigger flat.",
+                "fr": "Au printemps, il veut emménager dans un appartement plus grand.",
+                "de": "Im Frühling möchte er in eine größere Wohnung ziehen."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,507 @@
+{
+  "schemaVersion": 2,
+  "id": "de-character-idioms",
+  "lang": "de",
+  "level": "C1",
+  "locales": ["en", "fr", "de"],
+  "title": "Charakter in Redewendungen",
+  "objective": {
+    "en": "Describe people's character with about ten idioms such as ein Herz aus Gold haben or kein Blatt vor den Mund nehmen.",
+    "fr": "Décrire le caractère de quelqu'un avec une dizaine d'expressions idiomatiques comme ein Herz aus Gold haben.",
+    "de": "Mit etwa zehn Redewendungen sagen, wie jemand ist, zum Beispiel ein Herz aus Gold haben oder ein Dickkopf sein."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:36:22.459Z",
+    "inputHashes": { "outline": "06448705e54793e4a353608046d0130c21d8aad3f9119258a43a0b1d57f7b20c" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Ten fixed idioms that characterise people: warmth, openness and wit, calm and toughness, stubbornness, temper and fearfulness.",
+    "fr": "Dix expressions figées qui caractérisent les personnes : chaleur, franchise et repartie, calme et résistance, entêtement, colère et peur.",
+    "de": "Zehn feste Redewendungen zur Charakterisierung von Menschen: Herzlichkeit, Offenheit und Schlagfertigkeit, Ruhe und Robustheit, Sturheit, Jähzorn und Ängstlichkeit."
+  },
+  "targetCount": 10,
+  "countRationale": {
+    "en": "Ten idioms are enough to learn well at C1 and cover the main character types.",
+    "fr": "Dix expressions suffisent pour bien les apprendre au niveau C1 et couvrent les principaux types de caractère.",
+    "de": "Zehn Redewendungen lassen sich auf C1 gut lernen und decken die wichtigsten Charaktertypen ab."
+  },
+  "difficultyBalance": {
+    "en": "Most idioms are widely known; two are more demanding because their image is less transparent.",
+    "fr": "La plupart des expressions sont courantes ; deux sont plus difficiles, car leur image est moins transparente.",
+    "de": "Die meisten Wendungen sind verbreitet; zwei sind anspruchsvoller, weil ihr Bild weniger durchsichtig ist."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "auftreten",
+      "label": {
+        "en": "Open, warm, down-to-earth",
+        "fr": "Ouvert, chaleureux, ancré",
+        "de": "Herzlich, offen, bodenständig"
+      },
+      "targetIds": ["herz", "mund", "blatt", "frohnatur", "beine"],
+      "introduction": {
+        "en": "These five idioms describe how a person **comes across** to others:\n\n- `ein Herz aus Gold haben`\n- `nicht auf den Mund gefallen sein`\n- `kein Blatt vor den Mund nehmen`\n- `eine Frohnatur sein`\n- `mit beiden Beinen im Leben stehen`",
+        "fr": "Ces cinq expressions décrivent l'**impression** qu'une personne donne aux autres :\n\n- `ein Herz aus Gold haben`\n- `nicht auf den Mund gefallen sein`\n- `kein Blatt vor den Mund nehmen`\n- `eine Frohnatur sein`\n- `mit beiden Beinen im Leben stehen`",
+        "de": "Diese fünf Wendungen beschreiben, wie ein Mensch **auf andere wirkt**:\n\n- `ein Herz aus Gold haben`\n- `nicht auf den Mund gefallen sein`\n- `kein Blatt vor den Mund nehmen`\n- `eine Frohnatur sein`\n- `mit beiden Beinen im Leben stehen`"
+      }
+    },
+    {
+      "id": "temperament",
+      "label": {
+        "en": "Temperament and nerves",
+        "fr": "Tempérament et nerfs",
+        "de": "Temperament und Nerven"
+      },
+      "targetIds": ["ruhe", "fell", "dickkopf", "hitzkopf", "angsthase"],
+      "introduction": {
+        "en": "These five idioms say how someone **reacts** under pressure, criticism or conflict:\n\n- `die Ruhe weghaben`\n- `ein dickes Fell haben`\n- `ein Dickkopf sein`\n- `ein Hitzkopf sein`\n- `ein Angsthase sein`",
+        "fr": "Ces cinq expressions disent comment quelqu'un **réagit** sous la pression, la critique ou le conflit :\n\n- `die Ruhe weghaben`\n- `ein dickes Fell haben`\n- `ein Dickkopf sein`\n- `ein Hitzkopf sein`\n- `ein Angsthase sein`",
+        "de": "Diese fünf Wendungen sagen, wie jemand bei Druck, Kritik oder Streit **reagiert**:\n\n- `die Ruhe weghaben`\n- `ein dickes Fell haben`\n- `ein Dickkopf sein`\n- `ein Hitzkopf sein`\n- `ein Angsthase sein`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "herz",
+      "term": "ein Herz aus Gold haben",
+      "translations": { "en": ["to have a heart of gold"], "fr": ["avoir un cœur d'or"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "ein Herz aus Gold haben",
+      "examForms": ["ein Herz aus Gold haben"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/aɪn hɛʁts aʊs ɡɔlt ˈhaːbn̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Sie wirkt streng, aber sie hat ein Herz aus Gold.",
+        "translation": {
+          "en": "She seems strict, but she has a heart of gold.",
+          "fr": "Elle paraît sévère, mais elle a un cœur d'or."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Someone with a heart of gold is extremely kind and generous, even if they do not look it.",
+        "fr": "Une personne au cœur d'or est extrêmement gentille et généreuse, même si elle n'en a pas l'air.",
+        "de": "Wer ein Herz aus Gold hat, ist außerordentlich gütig und großzügig, auch wenn man es ihm nicht ansieht."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Sie hilft jedem, der in Not ist: Sie hat ein Herz aus ",
+        "after": ".",
+        "accepted": { "answers": ["Gold"] },
+        "referenceTargetIds": ["herz", "fell", "angsthase", "beine"],
+        "explanation": {
+          "en": "The idiom is ein Herz aus Gold haben.",
+          "fr": "L'expression est « ein Herz aus Gold haben ».",
+          "de": "Die Wendung heißt „ein Herz aus Gold haben“."
+        }
+      },
+      "listeningOptionTargetIds": ["herz", "ruhe", "fell", "beine"]
+    },
+    {
+      "id": "mund",
+      "term": "nicht auf den Mund gefallen sein",
+      "translations": {
+        "en": ["to never be lost for words"],
+        "fr": ["avoir la langue bien pendue"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "nicht auf den Mund gefallen sein",
+      "examForms": ["nicht auf den Mund gefallen sein"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/nɪçt aʊf deːn mʊnt ɡəˈfalən zaɪn/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Unsere Chefin ist nicht auf den Mund gefallen.",
+        "translation": {
+          "en": "Our boss is never lost for words.",
+          "fr": "Notre cheffe a la langue bien pendue."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Do not confuse it with kein Blatt vor den Mund nehmen: this one is about wit, that one about frankness.",
+        "fr": "Ne pas confondre avec kein Blatt vor den Mund nehmen : ici il s'agit de repartie, là de franchise.",
+        "de": "Nicht verwechseln mit kein Blatt vor den Mund nehmen: Hier geht es um Schlagfertigkeit, dort um Offenheit."
+      },
+      "explanation": {
+        "en": "Someone who is not lost for words answers quickly and cleverly in any situation.",
+        "fr": "Qui a la langue bien pendue répond vite et avec esprit en toute situation.",
+        "de": "Wer nicht auf den Mund gefallen ist, antwortet in jeder Lage schnell und geschickt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Sie antwortet immer schlagfertig, denn sie ist nicht auf den Mund ",
+        "after": ".",
+        "accepted": { "answers": ["gefallen"] },
+        "referenceTargetIds": ["mund", "herz", "ruhe", "dickkopf"],
+        "explanation": {
+          "en": "The idiom is nicht auf den Mund gefallen sein.",
+          "fr": "L'expression est « nicht auf den Mund gefallen sein ».",
+          "de": "Die Wendung heißt „nicht auf den Mund gefallen sein“."
+        }
+      },
+      "listeningOptionTargetIds": ["mund", "blatt", "herz", "ruhe"]
+    },
+    {
+      "id": "blatt",
+      "term": "kein Blatt vor den Mund nehmen",
+      "translations": { "en": ["to not mince words"], "fr": ["ne pas mâcher ses mots"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "kein Blatt vor den Mund nehmen",
+      "examForms": ["kein Blatt vor den Mund nehmen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/kaɪn blat foːɐ̯ deːn mʊnt ˈneːmən/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Er nimmt bei Kritik nie ein Blatt vor den Mund.",
+        "translation": {
+          "en": "When it comes to criticism, he never minces his words.",
+          "fr": "Quand il critique, il ne mâche jamais ses mots."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Someone who takes no leaf before their mouth says openly and bluntly what they think.",
+        "fr": "Qui ne met pas de feuille devant sa bouche dit ouvertement et sans détour ce qu'il pense.",
+        "de": "Wer kein Blatt vor den Mund nimmt, sagt offen und direkt, was er denkt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Er sagt offen seine Meinung und nimmt kein ",
+        "after": " vor den Mund.",
+        "accepted": { "answers": ["Blatt"] },
+        "referenceTargetIds": ["blatt", "frohnatur", "fell", "ruhe"],
+        "explanation": {
+          "en": "The idiom is kein Blatt vor den Mund nehmen.",
+          "fr": "L'expression est « kein Blatt vor den Mund nehmen ».",
+          "de": "Die Wendung heißt „kein Blatt vor den Mund nehmen“."
+        }
+      },
+      "listeningOptionTargetIds": ["blatt", "mund", "fell", "dickkopf"]
+    },
+    {
+      "id": "frohnatur",
+      "term": "eine Frohnatur sein",
+      "translations": { "en": ["to be a cheerful soul"], "fr": ["avoir un tempérament jovial"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "eine Frohnatur sein",
+      "examForms": ["eine Frohnatur sein"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈaɪnə ˈfʁoːnaˌtuːɐ̯ zaɪn/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Mein Onkel ist eine Frohnatur und bringt alle zum Lachen.",
+        "translation": {
+          "en": "My uncle is a cheerful soul and makes everyone laugh.",
+          "fr": "Mon oncle a un tempérament jovial et fait rire tout le monde."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A Frohnatur is a naturally cheerful, optimistic person who lifts the mood of others.",
+        "fr": "Une Frohnatur est une personne naturellement joyeuse et optimiste qui met les autres de bonne humeur.",
+        "de": "Eine Frohnatur ist ein von Natur aus fröhlicher, optimistischer Mensch, der andere ansteckt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Sie lacht von morgens bis abends und steckt alle an: Sie ist eine ",
+        "after": ".",
+        "accepted": { "answers": ["Frohnatur"] },
+        "referenceTargetIds": ["frohnatur", "dickkopf", "ruhe", "fell"],
+        "explanation": {
+          "en": "The idiom is eine Frohnatur sein.",
+          "fr": "L'expression est « eine Frohnatur sein ».",
+          "de": "Die Wendung heißt „eine Frohnatur sein“."
+        }
+      },
+      "listeningOptionTargetIds": ["frohnatur", "angsthase", "hitzkopf", "dickkopf"]
+    },
+    {
+      "id": "beine",
+      "term": "mit beiden Beinen im Leben stehen",
+      "translations": {
+        "en": ["to have both feet on the ground"],
+        "fr": ["avoir les pieds sur terre"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "mit beiden Beinen im Leben stehen",
+      "examForms": ["mit beiden Beinen im Leben stehen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/mɪt ˈbaɪdn̩ ˈbaɪnən ɪm ˈleːbn̩ ˈʃteːən/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Obwohl sie berühmt ist, steht sie mit beiden Beinen im Leben.",
+        "translation": {
+          "en": "Although she is famous, she has both feet on the ground.",
+          "fr": "Bien qu'elle soit célèbre, elle a les pieds sur terre."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Someone who stands with both legs in life is realistic, reliable and well able to cope with everyday demands.",
+        "fr": "Qui se tient sur ses deux jambes dans la vie est réaliste, fiable et capable de gérer le quotidien.",
+        "de": "Wer mit beiden Beinen im Leben steht, ist realistisch, verlässlich und meistert den Alltag."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Sie hat realistische Ziele und steht mit beiden ",
+        "after": " im Leben.",
+        "accepted": { "answers": ["Beinen"] },
+        "referenceTargetIds": ["beine", "mund", "angsthase", "herz"],
+        "explanation": {
+          "en": "The idiom is mit beiden Beinen im Leben stehen.",
+          "fr": "L'expression est « mit beiden Beinen im Leben stehen ».",
+          "de": "Die Wendung heißt „mit beiden Beinen im Leben stehen“."
+        }
+      },
+      "listeningOptionTargetIds": ["beine", "ruhe", "herz", "fell"]
+    },
+    {
+      "id": "ruhe",
+      "term": "die Ruhe weghaben",
+      "translations": { "en": ["to be unflappable"], "fr": ["être d'un calme olympien"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "die Ruhe weghaben",
+      "examForms": ["die Ruhe weghaben"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/diː ˈʁuːə ˈvɛkˌhaːbn̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Mein Vater hat die Ruhe weg, selbst wenn alles schiefgeht.",
+        "translation": {
+          "en": "My father is unflappable, even when everything goes wrong.",
+          "fr": "Mon père reste d'un calme olympien, même quand tout va de travers."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Someone who has the calm away stays relaxed and composed, even when others get nervous.",
+        "fr": "Qui a le calme en lui reste détendu et maître de soi, même quand les autres s'énervent.",
+        "de": "Wer die Ruhe weghat, bleibt gelassen und besonnen, auch wenn andere nervös werden."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Selbst im größten Chaos bleibt er gelassen: Er hat die Ruhe ",
+        "after": ".",
+        "accepted": { "answers": ["weg"] },
+        "referenceTargetIds": ["ruhe", "hitzkopf", "mund", "beine"],
+        "explanation": {
+          "en": "The idiom is die Ruhe weghaben; in a main clause weg stands at the end.",
+          "fr": "L'expression est « die Ruhe weghaben » ; dans une principale, weg se place à la fin.",
+          "de": "Die Wendung heißt „die Ruhe weghaben“; im Hauptsatz steht weg am Ende."
+        }
+      },
+      "listeningOptionTargetIds": ["ruhe", "herz", "beine", "fell"]
+    },
+    {
+      "id": "fell",
+      "term": "ein dickes Fell haben",
+      "translations": { "en": ["to be thick-skinned"], "fr": ["avoir la peau dure"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "ein dickes Fell haben",
+      "examForms": ["ein dickes Fell haben"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/aɪn ˈdɪkəs fɛl ˈhaːbn̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Als Politikerin braucht man ein dickes Fell.",
+        "translation": {
+          "en": "As a politician you need a thick skin.",
+          "fr": "Quand on est politicienne, il faut avoir la peau dure."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A thick coat protects: someone with a thick coat is not easily hurt by criticism or insults.",
+        "fr": "Une fourrure épaisse protège : qui en a une ne se laisse pas facilement blesser par les critiques ou les insultes.",
+        "de": "Ein dickes Fell schützt: Wer eines hat, lässt sich von Kritik oder Beleidigungen nicht so leicht verletzen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Kritik prallt an ihm ab, denn er hat ein dickes ",
+        "after": ".",
+        "accepted": { "answers": ["Fell"] },
+        "referenceTargetIds": ["fell", "ruhe", "frohnatur", "mund"],
+        "explanation": {
+          "en": "The idiom is ein dickes Fell haben.",
+          "fr": "L'expression est « ein dickes Fell haben ».",
+          "de": "Die Wendung heißt „ein dickes Fell haben“."
+        }
+      },
+      "listeningOptionTargetIds": ["fell", "herz", "ruhe", "blatt"]
+    },
+    {
+      "id": "dickkopf",
+      "term": "ein Dickkopf sein",
+      "translations": { "en": ["to be pig-headed"], "fr": ["être une tête de mule"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "ein Dickkopf sein",
+      "examForms": ["ein Dickkopf sein"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/aɪn ˈdɪkkɔpf zaɪn/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Mein Bruder ist ein Dickkopf und gibt nie nach.",
+        "translation": {
+          "en": "My brother is pig-headed and never gives in.",
+          "fr": "Mon frère est une tête de mule et ne cède jamais."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A Dickkopf insists on their own opinion and does not let anyone talk them out of it.",
+        "fr": "Un Dickkopf s'accroche à son opinion et ne se laisse pas dissuader.",
+        "de": "Ein Dickkopf beharrt auf seiner Meinung und lässt sich nichts ausreden."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Er lässt sich nichts sagen und setzt immer seinen Willen durch: Er ist ein echter ",
+        "after": ".",
+        "accepted": { "answers": ["Dickkopf"] },
+        "referenceTargetIds": ["dickkopf", "herz", "angsthase", "beine"],
+        "explanation": {
+          "en": "The idiom is ein Dickkopf sein.",
+          "fr": "L'expression est « ein Dickkopf sein ».",
+          "de": "Die Wendung heißt „ein Dickkopf sein“."
+        }
+      },
+      "listeningOptionTargetIds": ["dickkopf", "hitzkopf", "angsthase", "frohnatur"]
+    },
+    {
+      "id": "hitzkopf",
+      "term": "ein Hitzkopf sein",
+      "translations": { "en": ["to be a hothead"], "fr": ["être soupe au lait"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "ein Hitzkopf sein",
+      "examForms": ["ein Hitzkopf sein"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/aɪn ˈhɪtskɔpf zaɪn/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Er ist ein Hitzkopf und streitet sich ständig.",
+        "translation": {
+          "en": "He is a hothead and is constantly arguing.",
+          "fr": "Il est soupe au lait et se dispute sans cesse."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Not the same as Dickkopf: a Hitzkopf flares up quickly, a Dickkopf does not give in.",
+        "fr": "Différent de Dickkopf : un Hitzkopf s'emporte vite, un Dickkopf ne cède pas.",
+        "de": "Nicht dasselbe wie Dickkopf: Ein Hitzkopf braust schnell auf, ein Dickkopf gibt nicht nach."
+      },
+      "explanation": {
+        "en": "A Hitzkopf is quick-tempered and acts or speaks rashly when angry.",
+        "fr": "Un Hitzkopf est colérique et agit ou parle sans réfléchir quand il est en colère.",
+        "de": "Ein Hitzkopf ist jähzornig und handelt oder spricht im Zorn unüberlegt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Bei der kleinsten Kleinigkeit brüllt er los: Er ist ein ",
+        "after": ".",
+        "accepted": { "answers": ["Hitzkopf"] },
+        "referenceTargetIds": ["hitzkopf", "herz", "beine", "frohnatur"],
+        "explanation": {
+          "en": "The idiom is ein Hitzkopf sein.",
+          "fr": "L'expression est « ein Hitzkopf sein ».",
+          "de": "Die Wendung heißt „ein Hitzkopf sein“."
+        }
+      },
+      "listeningOptionTargetIds": ["hitzkopf", "dickkopf", "angsthase", "frohnatur"]
+    },
+    {
+      "id": "angsthase",
+      "term": "ein Angsthase sein",
+      "translations": { "en": ["to be a scaredy-cat"], "fr": ["être une poule mouillée"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "ein Angsthase sein",
+      "examForms": ["ein Angsthase sein"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/aɪn ˈaŋstˌhaːzə zaɪn/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Vor dem Zahnarzt ist sie ein richtiger Angsthase.",
+        "translation": {
+          "en": "She is a real scaredy-cat when it comes to the dentist.",
+          "fr": "Chez le dentiste, c'est une vraie poule mouillée."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A hare is timid and runs away; an Angsthase is a person who is afraid of everything. The word is colloquial and often teasing.",
+        "fr": "Le lièvre est craintif et s'enfuit ; un Angsthase est une personne qui a peur de tout. Le mot est familier et souvent moqueur.",
+        "de": "Ein Hase ist furchtsam und rennt weg; ein Angsthase ist ein Mensch, der vor allem Angst hat. Das Wort ist umgangssprachlich und oft neckend."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Vor jedem Hund läuft er davon: Er ist ein ",
+        "after": ".",
+        "accepted": { "answers": ["Angsthase"] },
+        "referenceTargetIds": ["angsthase", "blatt", "ruhe", "frohnatur"],
+        "explanation": {
+          "en": "The idiom is ein Angsthase sein.",
+          "fr": "L'expression est « ein Angsthase sein ».",
+          "de": "Die Wendung heißt „ein Angsthase sein“."
+        }
+      },
+      "listeningOptionTargetIds": ["angsthase", "hitzkopf", "dickkopf", "frohnatur"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

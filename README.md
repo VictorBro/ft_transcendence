@@ -83,8 +83,10 @@ reload. `make help` lists every target.
 ### Browser support
 
 The app is tested on desktop Chromium, Firefox and WebKit (the engine behind
-Safari): every Playwright suite runs on all three, in CI and in `make`. Run one
-engine with `pnpm --filter @ft/e2e run test:e2e --project=firefox`.
+Safari): every Playwright suite runs on all three, in CI and in `make`, except
+the API restart run (`e2e/tests/restart.spec.ts`), which restarts the API once
+and so runs on Chromium only. Run one engine with
+`pnpm --filter @ft/e2e run test:e2e --project=firefox`.
 
 Known limits, once the lessons land (#146 to #151):
 
