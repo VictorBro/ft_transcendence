@@ -1,10 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { lessons as shared, type Language } from '@ft/shared';
+import { lessons as shared, type Language, type Locale } from '@ft/shared';
 
 import type { LessonAttempt, Prisma } from '../generated/prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
-import { refOf } from './attempt-ref';
+import { newSecret, refOf } from './attempt-ref';
 import { checkCourse, findLesson } from './course-lookup';
+import { lockCourse } from './goal';
 
 type LessonPlan = shared.player.LessonPlan;
 type AttemptState = shared.player.AttemptState;
@@ -42,6 +43,16 @@ function stateOf(row: LessonAttempt): AttemptState {
   };
 }
 
+/** The other way: what the row stores of a state, times as dates. */
+function dataOf(state: AttemptState) {
+  return {
+    page: state.page,
+    deadline: state.deadline === null ? null : new Date(state.deadline),
+    answers: state.answers as unknown as Prisma.InputJsonObject,
+    completedAt: state.completedAt === null ? null : new Date(state.completedAt),
+  };
+}
+
 /** The attempt as the learner sees it. */
 function viewOf(plan: LessonPlan, row: LessonAttempt, now: Date) {
   const results = row.results as unknown as Results | null;
@@ -76,5 +87,50 @@ export class AttemptsService {
       outline: shared.player.lessonOutline(plan),
       attempt: row ? viewOf(plan, row, now) : null,
     });
+  }
+
+  /**
+   * POST attempt { locale }: one transaction, the course locked first, then
+   * the attempt row.
+   *   - an attempt in progress → it, unchanged (no restart before the results)
+   *   - a finished one         → deleted, and a new one with a new secret (retake)
+   *   - none                   → a new one
+   * `created` tells the controller 201 from 200. The locale fixes the mother
+   * tongue for the whole attempt.
+   */
+  start(userId: string, lang: Language, id: string, locale: Locale, now: Date) {
+    return this.prisma.$transaction(async (tx) => {
+      const course = checkCourse(await lockCourse(tx, userId, lang), { placed: true });
+      const { lesson, source } = await findSource(tx, lang, id);
+      const key = { userLevelId: course.id, lessonId: lesson.id };
+
+      const old = await tx.lessonAttempt.findUnique({ where: { userLevelId_lessonId: key } });
+      if (old && old.completedAt === null) {
+        const plan = shared.player.buildPlan(source, old.motherTongue);
+        return { created: false, attempt: this.parse(plan, old, now) };
+      }
+      if (old) {
+        await tx.lessonAttempt.delete({ where: { id: old.id } });
+      }
+
+      const motherTongue = shared.player.motherTongue(locale, lang);
+      const plan = shared.player.buildPlan(source, motherTongue);
+      const row = await tx.lessonAttempt.create({
+        data: {
+          ...key,
+          motherTongue,
+          secret: newSecret(),
+          startedAt: now,
+          // Sets the deadline when the first page is an exam page.
+          ...dataOf(shared.player.start(plan, now.getTime())),
+        },
+      });
+      return { created: true, attempt: this.parse(plan, row, now) };
+    });
+  }
+
+  /** The attempt view, through its strict schema: nothing else leaves. */
+  private parse(plan: LessonPlan, row: LessonAttempt, now: Date) {
+    return shared.player.AttemptViewSchema.parse(viewOf(plan, row, now));
   }
 }
