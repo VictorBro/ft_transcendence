@@ -1,4 +1,5 @@
 import { ConflictException } from '@nestjs/common';
+import { USER_SEARCH_LIMIT } from '@ft/shared';
 import { unlink } from 'fs/promises';
 import { join } from 'path';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
@@ -110,6 +111,22 @@ describe('UsersService avatars', () => {
     vi.mocked(unlink).mockRejectedValue(Object.assign(new Error('nope'), { code: 'EACCES' }));
 
     await expect(service.clearAvatar('user-1')).resolves.toMatchObject({ avatarUrl: null });
+  });
+});
+
+describe('UsersService search', () => {
+  // Prisma hands `contains` to ILIKE unescaped, and `_` is allowed in a name.
+  it('escapes the wildcards and never finds you', async () => {
+    const findMany = vi.fn().mockResolvedValue([]);
+    const service = new UsersService({ user: { findMany } } as unknown as PrismaService);
+
+    await expect(service.search('me', 'a_b')).resolves.toEqual({ users: [] });
+    expect(findMany).toHaveBeenCalledWith(
+      expect.objectContaining({
+        where: { id: { not: 'me' }, displayName: { contains: 'a\\_b', mode: 'insensitive' } },
+        take: USER_SEARCH_LIMIT,
+      }),
+    );
   });
 });
 

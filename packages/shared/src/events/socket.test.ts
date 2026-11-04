@@ -1,3 +1,5 @@
+import { randomUUID } from 'node:crypto';
+
 import { describe, expect, it } from 'vitest';
 
 import {
@@ -5,6 +7,7 @@ import {
   CLIENT_EVENTS,
   CLIENT_EVENT_SCHEMAS,
   CourseUpdatedSchema,
+  FriendEventSchema,
   PresenceUpdateSchema,
   SERVER_EVENTS,
   clientEventSchema,
@@ -60,6 +63,13 @@ describe('server payloads', () => {
   it('names a course, and only a course language', () => {
     expect(CourseUpdatedSchema.parse({ lang: 'fr' })).toEqual({ lang: 'fr' });
     expect(CourseUpdatedSchema.safeParse({ lang: 'xx' }).success).toBe(false);
+  });
+
+  it('names the other user of a friend event', () => {
+    const other = randomUUID();
+
+    expect(FriendEventSchema.parse({ userId: other })).toEqual({ userId: other });
+    expect(FriendEventSchema.safeParse({ userId: 'nope' }).success).toBe(false);
   });
 
   it('validates a presence update', () => {

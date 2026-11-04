@@ -27,6 +27,7 @@ import {
   TimeZoneSchema,
   UpdateProfileSchema,
   UserSchema,
+  UserSearchQuerySchema,
   isErrorCode,
   isLocale,
 } from './index';
@@ -131,7 +132,13 @@ describe('UserSchema', () => {
     const publicUser = PublicUserSchema.parse(validUser);
 
     expect(publicUser).not.toHaveProperty('email');
-    expect(Object.keys(publicUser).sort()).toEqual(['avatarUrl', 'displayName', 'id', 'locale']);
+    expect(Object.keys(publicUser).sort()).toEqual(['avatarUrl', 'displayName', 'id']);
+  });
+});
+
+describe('UserSearchQuerySchema', () => {
+  it('trims the query before checking it', () => {
+    expect(UserSearchQuerySchema.parse({ q: '  Ali  ' }).q).toBe('Ali');
   });
 });
 
@@ -415,6 +422,8 @@ describe('validation messages', () => {
     ['SetLevelSchema', SetLevelSchema, { level: 'Z9' }],
     ['StartPlacementSchema', StartPlacementSchema, {}],
     ['SubmitAnswerSchema', SubmitAnswerSchema, { questionId: 'nope', choice: 5 }],
+    ['UserSearchQuerySchema', UserSearchQuerySchema, { q: 'a%' }],
+    ['UserSearchQuerySchema (missing q)', UserSearchQuerySchema, {}],
   ] as const;
 
   it.each(rejected)('%s reports codes, not prose', (_name, schema, input) => {

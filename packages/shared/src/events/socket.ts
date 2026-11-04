@@ -16,6 +16,9 @@ export const CLIENT_EVENTS = {} as const;
 
 export const SERVER_EVENTS = {
   COURSE_UPDATED: 'course:updated',
+  FRIEND_REQUEST: 'friend:request',
+  FRIEND_ACCEPTED: 'friend:accepted',
+  FRIEND_REMOVED: 'friend:removed',
   PRESENCE_UPDATE: 'presence:update',
   APP_ERROR: 'app:error',
 } as const;
@@ -34,6 +37,15 @@ export const CourseUpdatedSchema = z.object({
   lang: LanguageSchema,
 });
 export type CourseUpdated = z.infer<typeof CourseUpdatedSchema>;
+
+/**
+ * "Read your friends again", sent to both users of a pair. Names the other one,
+ * as seen from the room it goes to, and none of their fields: /friends is
+ * rendered from GET /api/friends. `removed` means the row between the two is
+ * gone: a request declined or cancelled, or a friend removed.
+ */
+export const FriendEventSchema = z.object({ userId: z.uuid() });
+export type FriendEvent = z.infer<typeof FriendEventSchema>;
 
 export const PresenceStatusSchema = z.enum(['online', 'away', 'offline']);
 export type PresenceStatus = z.infer<typeof PresenceStatusSchema>;
@@ -68,6 +80,9 @@ export function clientEventSchema(event: string): z.ZodType | undefined {
 
 export interface ServerToClientEvents {
   [SERVER_EVENTS.COURSE_UPDATED]: (payload: CourseUpdated) => void;
+  [SERVER_EVENTS.FRIEND_REQUEST]: (payload: FriendEvent) => void;
+  [SERVER_EVENTS.FRIEND_ACCEPTED]: (payload: FriendEvent) => void;
+  [SERVER_EVENTS.FRIEND_REMOVED]: (payload: FriendEvent) => void;
   [SERVER_EVENTS.PRESENCE_UPDATE]: (payload: PresenceUpdate) => void;
   [SERVER_EVENTS.APP_ERROR]: (payload: AppError) => void;
 }

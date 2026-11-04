@@ -27,8 +27,7 @@
     "logoAlt": "ft_transcendence-Logo"
   },
   "Modes": {
-    "chatTitle": "Tutor",
-    "friendsTitle": "Sprachübergreifender Chat"
+    "chatTitle": "Tutor"
   },
   "Languages": {
     "en": "Englisch",
@@ -96,9 +95,6 @@
     "lessonsAtTop": "Deine Lektionen erhalten und verfeinern dieses Niveau.",
     "save": "Speichern",
     "cancel": "Abbrechen"
-  },
-  "ComingSoon": {
-    "stillInDevelopment": "Dieser Modus ist noch in Entwicklung. Schau bald wieder vorbei."
   },
   "ModeLayout": {
     "backToCourse": "Zurück zum Kurs"
@@ -218,6 +214,16 @@
       "expired": "Dieser Einstufungstest ist abgelaufen. Starte einen neuen.",
       "poolExhausted": "Für diesen Test sind nicht genügend Fragen übrig. Versuche es später erneut."
     },
+    "user": {
+      "notFound": "Dieses Konto gibt es nicht"
+    },
+    "friend": {
+      "self": "Du kannst dich nicht selbst als Freund hinzufügen",
+      "alreadyRequested": "Du hast dieser Person bereits eine Anfrage gesendet",
+      "alreadyFriends": "Ihr seid bereits befreundet",
+      "requestNotFound": "Diese Anfrage ist nicht mehr offen",
+      "notFound": "Diese Person ist nicht in deinen Freunden"
+    },
     "request": {
       "invalid": "Die Anfrage konnte nicht gelesen werden",
       "tooLarge": "Die Anfrage ist zu groß"
@@ -259,6 +265,26 @@
     "removing": "Wird entfernt…",
     "avatarTooLarge": "Die Datei ist zu groß. Maximale Größe: {size} MiB.",
     "saveChanges": "Änderungen speichern"
+  },
+  "FriendsPage": {
+    "title": "Freunde",
+    "searchLabel": "Nach Anzeigename suchen",
+    "search": "Suchen",
+    "results": "Suchergebnisse",
+    "noResults": "Kein Anzeigename enthält {query}.",
+    "received": "Erhaltene Anfragen",
+    "sent": "Gesendete Anfragen",
+    "yourFriends": "Deine Freunde",
+    "noFriends": "Noch keine Freunde. Suche jemanden über den Anzeigenamen.",
+    "add": "Als Freund hinzufügen",
+    "accept": "Annehmen",
+    "decline": "Ablehnen",
+    "cancelRequest": "Anfrage zurückziehen",
+    "requestSent": "Anfrage gesendet",
+    "isFriend": "Bereits befreundet",
+    "remove": "Entfernen",
+    "removeConfirm": "{name} aus deinen Freunden entfernen?",
+    "cancel": "Abbrechen"
   },
   "TwoFactorPage": {
     "heading": "Zwei-Faktor-Authentifizierung",

@@ -5,7 +5,7 @@ export const privacyPolicy: LegalDocument = {
   title: 'Privacy Policy',
   description:
     'What ft_transcendence collects while you learn a language with it, why we collect it, how long we keep it, and how to get it back or deleted.',
-  lastUpdated: '2026-08-01',
+  lastUpdated: '2026-11-04',
   intro:
     'ft_transcendence is an AI-driven language learning platform. Teaching a language well means observing how you use it, so this service processes more about your learning behaviour than a typical website does. This policy explains exactly what that means in practice, written to be read rather than skimmed.',
   sections: [
@@ -50,7 +50,7 @@ export const privacyPolicy: LegalDocument = {
       id: 'retention',
       heading: '5. How long we keep data',
       paragraphs: [
-        'Account data is kept until you delete the account. Learning progress and assessment results are kept for the life of the account, because removing them would reset the levelling that makes the platform useful.',
+        'Account data is kept until you delete the account. Learning progress and assessment results are kept for the life of the account, because removing them would reset the levelling that makes the platform useful. A friendship or friend request is kept until either of you removes, declines or cancels it, or deletes the account.',
         'AI conversation transcripts are kept for twelve months, then deleted automatically. Chat messages sent to other learners are kept for twelve months. Server logs containing IP addresses are kept for thirty days, then rotated out.',
         'Deleting your account removes account data, learning data, and transcripts within thirty days. Messages you sent to another learner remain visible to that learner, detached from your profile, because they are part of a conversation you do not solely own. Backups are purged on their own rolling cycle, which completes within ninety days.',
       ],
@@ -59,7 +59,7 @@ export const privacyPolicy: LegalDocument = {
       id: 'sharing',
       heading: '6. Who else sees your data',
       paragraphs: [
-        'Other learners see your display name, avatar, presence status, and anything you send them. Nothing else on your profile is exposed by default.',
+        'Other learners see your display name, avatar, presence status, and anything you send them. Any signed-in learner can find you by your display name and send you a friend request. Your friends list is shown only to you. Nothing else on your profile is exposed by default.',
         'Outside the platform, data reaches only the infrastructure and model providers required to run it. We do not share data with advertisers, data brokers, or analytics networks. If we are ever compelled to disclose data by a lawful order, we will notify you unless prohibited from doing so.',
       ],
     },

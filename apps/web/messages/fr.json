@@ -27,8 +27,7 @@
     "logoAlt": "Logo ft_transcendence"
   },
   "Modes": {
-    "chatTitle": "Tuteur",
-    "friendsTitle": "Discussion multilingue"
+    "chatTitle": "Tuteur"
   },
   "Languages": {
     "en": "anglais",
@@ -96,9 +95,6 @@
     "lessonsAtTop": "Tes leçons entretiendront et affineront ce niveau.",
     "save": "Enregistrer",
     "cancel": "Annuler"
-  },
-  "ComingSoon": {
-    "stillInDevelopment": "Ce mode est encore en développement. Reviens bientôt."
   },
   "ModeLayout": {
     "backToCourse": "Retour au cours"
@@ -218,6 +214,16 @@
       "expired": "Ce test de positionnement a expiré. Lances-en un nouveau.",
       "poolExhausted": "Il ne reste pas assez de questions pour ce test. Réessaie plus tard."
     },
+    "user": {
+      "notFound": "Ce compte n'existe pas"
+    },
+    "friend": {
+      "self": "Tu ne peux pas t'ajouter toi-même en ami",
+      "alreadyRequested": "Tu as déjà envoyé une demande à cette personne",
+      "alreadyFriends": "Vous êtes déjà amis",
+      "requestNotFound": "Cette demande n'est plus en attente",
+      "notFound": "Cette personne n'est pas dans tes amis"
+    },
     "request": {
       "invalid": "La requête est illisible",
       "tooLarge": "La requête est trop volumineuse"
@@ -259,6 +265,26 @@
     "removing": "Suppression…",
     "avatarTooLarge": "Le fichier est trop volumineux. Taille maximale : {size} Mio.",
     "saveChanges": "Enregistrer les modifications"
+  },
+  "FriendsPage": {
+    "title": "Amis",
+    "searchLabel": "Rechercher par nom d'affichage",
+    "search": "Rechercher",
+    "results": "Résultats de la recherche",
+    "noResults": "Aucun nom d'affichage ne contient {query}.",
+    "received": "Demandes reçues",
+    "sent": "Demandes envoyées",
+    "yourFriends": "Tes amis",
+    "noFriends": "Pas encore d'amis. Recherche quelqu'un par son nom d'affichage.",
+    "add": "Ajouter en ami",
+    "accept": "Accepter",
+    "decline": "Refuser",
+    "cancelRequest": "Annuler la demande",
+    "requestSent": "Demande envoyée",
+    "isFriend": "Déjà amis",
+    "remove": "Retirer",
+    "removeConfirm": "Retirer {name} de tes amis ?",
+    "cancel": "Annuler"
   },
   "TwoFactorPage": {
     "heading": "Authentification à deux facteurs",
