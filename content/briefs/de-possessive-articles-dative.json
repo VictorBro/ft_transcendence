@@ -1,0 +1,256 @@
+{
+  "schemaVersion": 2,
+  "id": "de-possessive-articles-dative",
+  "lang": "de",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Possessivartikel im Dativ",
+  "objective": {
+    "en": "Use possessive articles in the dative with -em, -er and -en: mit meinem Bruder, bei unserer Oma, mit euren Kindern.",
+    "fr": "Utiliser les articles possessifs au datif avec -em, -er et -en : mit meinem Bruder, bei unserer Oma, mit euren Kindern.",
+    "de": "Possessivartikel im Dativ mit -em, -er und -en verwenden: mit meinem Bruder, bei unserer Oma, mit euren Kindern."
+  },
+  "estimatedMinutes": 17,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:26:00.160Z",
+    "inputHashes": { "outline": "8348670aae8efa875b2f18c4738826ec3d6d5eb59908efa21107153ac9b61943" }
+  },
+  "kind": "grammar",
+  "topic": "nouns_and_determiners",
+  "scopeBoundaries": {
+    "en": "Covers possessive articles in the dative singular and plural, the -n on plural nouns and eur- instead of euer-. Excludes the accusative, the genitive and possessive articles in the nominative.",
+    "fr": "Couvre les articles possessifs au datif singulier et pluriel, le -n du nom au pluriel et eur- à la place de euer-. Exclut l'accusatif, le génitif et les articles possessifs au nominatif.",
+    "de": "Behandelt Possessivartikel im Dativ Singular und Plural, das -n am Nomen im Plural und eur- statt euer-. Nicht behandelt werden Akkusativ, Genitiv und Possessivartikel im Nominativ."
+  },
+  "prerequisites": [
+    {
+      "en": "Possessive articles in the nominative: mein, dein, sein, ihr, unser, euer",
+      "fr": "Les articles possessifs au nominatif : mein, dein, sein, ihr, unser, euer",
+      "de": "Possessivartikel im Nominativ: mein, dein, sein, ihr, unser, euer"
+    },
+    {
+      "en": "The dative after mit, bei, zu and von",
+      "fr": "Le datif après mit, bei, zu et von",
+      "de": "Der Dativ nach mit, bei, zu und von"
+    },
+    {
+      "en": "Gender of nouns: der, das, die",
+      "fr": "Le genre des noms : der, das, die",
+      "de": "Genus der Nomen: der, das, die"
+    }
+  ],
+  "rules": [
+    {
+      "id": "r-sg",
+      "summary": {
+        "en": "Dative singular: -em for masculine and neuter nouns, -er for feminine nouns: mit meinem Bruder, bei unserer Oma.",
+        "fr": "Datif singulier : -em pour le masculin et le neutre, -er pour le féminin : mit meinem Bruder, bei unserer Oma.",
+        "de": "Dativ Singular: -em bei maskulinen und neutralen Nomen, -er bei femininen Nomen: mit meinem Bruder, bei unserer Oma."
+      }
+    },
+    {
+      "id": "r-pl",
+      "summary": {
+        "en": "Dative plural: the possessive ends in -en and the noun gets -n, unless its plural already ends in -n or -s.",
+        "fr": "Datif pluriel : l'article possessif se termine par -en et le nom prend -n, sauf si son pluriel se termine déjà par -n ou -s.",
+        "de": "Dativ Plural: Der Possessivartikel endet auf -en und das Nomen bekommt -n, außer wenn der Plural schon auf -n oder -s endet."
+      }
+    },
+    {
+      "id": "r-euer",
+      "summary": {
+        "en": "With euer the second e drops out before an ending: eurem, eurer, euren.",
+        "fr": "Avec euer, le deuxième e disparaît devant une terminaison : eurem, eurer, euren.",
+        "de": "Bei euer fällt das zweite e vor einer Endung weg: eurem, eurer, euren."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-singular",
+      "title": {
+        "en": "Dative singular: -em and -er",
+        "fr": "Datif singulier : -em et -er",
+        "de": "Dativ Singular: -em und -er"
+      },
+      "ruleIds": ["r-sg"],
+      "explanationPlan": {
+        "en": "After mit, bei, zu and von the dative is used. The possessive article agrees with the noun: -em for masculine and neuter, -er for feminine. Examples with several possessive articles.",
+        "fr": "Après mit, bei, zu et von, on utilise le datif. L'article possessif s'accorde avec le nom : -em au masculin et au neutre, -er au féminin. Exemples avec plusieurs articles possessifs.",
+        "de": "Nach mit, bei, zu und von steht der Dativ. Der Possessivartikel richtet sich nach dem Nomen: -em bei maskulin und neutral, -er bei feminin. Beispiele mit mehreren Possessivartikeln."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "Ich fahre mit meinem Bruder in die Stadt.",
+          "translation": {
+            "en": "I'm going to town with my brother.",
+            "fr": "Je vais en ville avec mon frère."
+          }
+        },
+        {
+          "text": "Sie wohnt bei ihrer Tante.",
+          "translation": { "en": "She lives with her aunt.", "fr": "Elle habite chez sa tante." }
+        },
+        {
+          "text": "Wir gehen mit unserem Kind in den Park.",
+          "translation": {
+            "en": "We are going to the park with our child.",
+            "fr": "Nous allons au parc avec notre enfant."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "The ending depends on the noun, not on the owner: she lives with her uncle is bei ihrem Onkel, because Onkel is masculine.",
+          "fr": "La terminaison dépend du nom, pas du possesseur : elle habite chez son oncle se dit bei ihrem Onkel, car Onkel est masculin.",
+          "de": "Die Endung hängt vom Nomen ab, nicht vom Besitzer: Sie wohnt bei ihrem Onkel, weil Onkel maskulin ist."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-sg-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 5,
+          "ruleIds": ["r-sg"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-sg-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 5,
+          "ruleIds": ["r-sg"],
+          "estimatedDurationS": 75
+        },
+        {
+          "id": "ex-sg-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 3,
+          "ruleIds": ["r-sg"],
+          "estimatedDurationS": 75
+        }
+      ]
+    },
+    {
+      "id": "block-plural",
+      "title": {
+        "en": "Dative plural and euer",
+        "fr": "Datif pluriel et euer",
+        "de": "Dativ Plural und euer"
+      },
+      "ruleIds": ["r-pl", "r-euer"],
+      "explanationPlan": {
+        "en": "In the dative plural every possessive article ends in -en and the noun gets -n (except plurals in -n or -s). Then euer: eurem, eurer, euren.",
+        "fr": "Au datif pluriel, tous les articles possessifs se terminent par -en et le nom prend -n (sauf les pluriels en -n ou -s). Puis euer : eurem, eurer, euren.",
+        "de": "Im Dativ Plural enden alle Possessivartikel auf -en und das Nomen bekommt -n (außer Plurale auf -n oder -s). Dann euer: eurem, eurer, euren."
+      },
+      "explanationDurationS": 150,
+      "examples": [
+        {
+          "text": "Er spielt mit seinen Freunden Fußball.",
+          "translation": {
+            "en": "He plays football with his friends.",
+            "fr": "Il joue au football avec ses amis."
+          }
+        },
+        {
+          "text": "Wir wohnen bei unseren Eltern.",
+          "translation": {
+            "en": "We live with our parents.",
+            "fr": "Nous habitons chez nos parents."
+          }
+        },
+        {
+          "text": "Fahrt ihr mit eurem Bruder?",
+          "translation": {
+            "en": "Are you going with your brother?",
+            "fr": "Vous partez avec votre frère ?"
+          }
+        },
+        {
+          "text": "Ich spreche mit meinen Nachbarn.",
+          "translation": {
+            "en": "I'm talking to my neighbours.",
+            "fr": "Je parle avec mes voisins."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not forget the -n on the noun: Freunden, Kindern, Nachbarn.",
+          "fr": "N'oubliez pas le -n du nom : Freunden, Kindern, Nachbarn.",
+          "de": "Vergiss das -n am Nomen nicht: Freunden, Kindern, Nachbarn."
+        },
+        {
+          "en": "The forms of euer are eurem, eurer and euren, not euerem, euerer or eueren.",
+          "fr": "Les formes de euer sont eurem, eurer et euren, et non euerem, euerer ou eueren.",
+          "de": "Die Formen von euer sind eurem, eurer und euren, nicht euerem, euerer oder eueren."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-pl-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 5,
+          "ruleIds": ["r-pl", "r-euer"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-pl-noun",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["r-pl"],
+          "estimatedDurationS": 72
+        },
+        {
+          "id": "ex-pl-euer",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["r-euer"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-pl-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["r-pl", "r-euer"],
+          "estimatedDurationS": 75
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-singular",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["r-sg"],
+        "estimatedDurationS": 90,
+        "timeLimitS": 150
+      },
+      {
+        "pageId": "exam-plural",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["r-pl", "r-euer"],
+        "estimatedDurationS": 100,
+        "timeLimitS": 160
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["r-sg", "r-pl", "r-euer"],
+        "estimatedDurationS": 75,
+        "timeLimitS": 130
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

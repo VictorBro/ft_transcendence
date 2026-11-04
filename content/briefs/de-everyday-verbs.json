@@ -1,0 +1,636 @@
+{
+  "schemaVersion": 2,
+  "id": "de-everyday-verbs",
+  "lang": "de",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Verben für jeden Tag",
+  "objective": {
+    "en": "Understand and use common verbs for everyday activities such as machen, kaufen, gehen and essen.",
+    "fr": "Comprendre et utiliser des verbes courants pour les activités quotidiennes : machen, kaufen, gehen, essen.",
+    "de": "Häufige Verben für alltägliche Tätigkeiten verstehen und benutzen, zum Beispiel machen, kaufen, gehen und essen."
+  },
+  "estimatedMinutes": 22,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:23:43.612Z",
+    "inputHashes": { "outline": "cb2e2be06184d338933ee30e1514c813f4a87b3bf12d123647f78649d3800022" }
+  },
+  "kind": "vocabulary",
+  "theme": "daily_life",
+  "coverageNotes": {
+    "en": "Fourteen frequent verbs for everyday actions, taught as infinitives: the 13 verbs of the outline plus lesen. They are split into actions and movement, and eating, sleeping and communicating.",
+    "fr": "Quatorze verbes fréquents pour les actions du quotidien, enseignés à l’infinitif : les 13 verbes du plan plus lesen. Ils sont répartis entre actions et déplacements, puis manger, dormir et communiquer.",
+    "de": "Vierzehn häufige Verben für alltägliche Handlungen, als Infinitiv gelernt: die 13 Verben der Gliederung plus lesen. Sie sind aufgeteilt in Tun und Bewegen sowie Essen, Schlafen und Kommunizieren."
+  },
+  "targetCount": 14,
+  "countRationale": {
+    "en": "Fourteen verbs make two groups of seven, a good size for an A1 learner.",
+    "fr": "Quatorze verbes forment deux groupes de sept, une taille adaptée à un débutant A1.",
+    "de": "Vierzehn Verben ergeben zwei Gruppen mit je sieben, eine gute Größe für A1."
+  },
+  "difficultyBalance": {
+    "en": "Most verbs are core; fahren, brauchen and sprechen are harder because of their meaning or their irregular forms.",
+    "fr": "La plupart des verbes sont de base ; fahren, brauchen et sprechen sont plus difficiles à cause de leur sens ou de leurs formes irrégulières.",
+    "de": "Die meisten Verben sind Grundwortschatz; fahren, brauchen und sprechen sind wegen Bedeutung oder unregelmäßiger Formen schwieriger."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "tun",
+      "label": { "en": "Doing and moving", "fr": "Faire et se déplacer", "de": "Tun und Bewegen" },
+      "targetIds": ["machen", "kaufen", "brauchen", "gehen", "fahren", "spielen", "lesen"],
+      "introduction": {
+        "en": "These **seven verbs** describe everyday actions. Learn the infinitive first:\n\n- `machen` – to do, to make\n- `kaufen` – to buy\n- `brauchen` – to need\n- `gehen` – to go on foot\n- `fahren` – to drive, to travel\n- `spielen` – to play\n- `lesen` – to read",
+        "fr": "Ces **sept verbes** décrivent des actions du quotidien. Apprenez d’abord l’infinitif :\n\n- `machen` – faire\n- `kaufen` – acheter\n- `brauchen` – avoir besoin de\n- `gehen` – aller à pied\n- `fahren` – conduire, aller en véhicule\n- `spielen` – jouer\n- `lesen` – lire",
+        "de": "Diese **sieben Verben** beschreiben alltägliche Tätigkeiten. Lerne zuerst den Infinitiv:\n\n- `machen` – etwas tun oder herstellen\n- `kaufen` – etwas für Geld bekommen\n- `brauchen` – etwas nötig haben\n- `gehen` – zu Fuß unterwegs sein\n- `fahren` – mit Auto, Bus oder Zug unterwegs sein\n- `spielen` – ein Spiel oder Musik machen\n- `lesen` – einen Text anschauen und verstehen"
+      }
+    },
+    {
+      "id": "essen",
+      "label": {
+        "en": "Eating, sleeping, communicating",
+        "fr": "Manger, dormir, communiquer",
+        "de": "Essen, Schlafen, Kommunizieren"
+      },
+      "targetIds": ["essen", "trinken", "schlafen", "sprechen", "schreiben", "fragen", "sagen"],
+      "introduction": {
+        "en": "These **seven verbs** are about the body and about communication:\n\n- `essen` – to eat\n- `trinken` – to drink\n- `schlafen` – to sleep\n- `sprechen` – to speak, to talk\n- `schreiben` – to write\n- `fragen` – to ask\n- `sagen` – to say",
+        "fr": "Ces **sept verbes** concernent le corps et la communication :\n\n- `essen` – manger\n- `trinken` – boire\n- `schlafen` – dormir\n- `sprechen` – parler\n- `schreiben` – écrire\n- `fragen` – demander\n- `sagen` – dire",
+        "de": "Diese **sieben Verben** gehören zum Körper und zur Kommunikation:\n\n- `essen` – Nahrung zu sich nehmen\n- `trinken` – Flüssigkeit zu sich nehmen\n- `schlafen` – nachts im Bett ruhen\n- `sprechen` – mit Worten reden\n- `schreiben` – Wörter auf Papier bringen oder am Computer tippen\n- `fragen` – eine Frage stellen\n- `sagen` – etwas mit Worten mitteilen"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "machen",
+      "term": "machen",
+      "translations": { "en": ["to do", "to make"], "fr": ["faire"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "machen",
+      "examForms": ["machen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈmaxən/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ich mache Hausaufgaben.",
+        "translation": { "en": "I do my homework.", "fr": "Je fais mes devoirs." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Machen means to do or to make: Ich mache Hausaufgaben.",
+        "fr": "Machen signifie faire : Ich mache Hausaufgaben.",
+        "de": "Machen bedeutet etwas tun oder herstellen: Ich mache Hausaufgaben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Wir ",
+        "after": " jetzt die Hausaufgaben.",
+        "accepted": { "answers": ["machen"] },
+        "referenceTargetIds": ["machen", "trinken", "schlafen", "fahren"],
+        "explanation": {
+          "en": "Only machen fits: you do homework.",
+          "fr": "Seul « machen » convient : on fait ses devoirs.",
+          "de": "Nur „machen“ passt: Man macht Hausaufgaben."
+        }
+      },
+      "listeningOptionTargetIds": ["machen", "sagen", "kaufen", "brauchen"]
+    },
+    {
+      "id": "kaufen",
+      "term": "kaufen",
+      "translations": { "en": ["to buy"], "fr": ["acheter"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "kaufen",
+      "examForms": ["kaufen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈkaʊfən/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Wir kaufen Brot.",
+        "translation": { "en": "We buy bread.", "fr": "Nous achetons du pain." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Kaufen means to buy: you pay money for something.",
+        "fr": "Kaufen signifie acheter : on paie quelque chose avec de l’argent.",
+        "de": "Kaufen bedeutet, etwas gegen Geld zu bekommen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Im Supermarkt ",
+        "after": " wir Brot und Milch.",
+        "accepted": { "answers": ["kaufen"] },
+        "referenceTargetIds": ["kaufen", "schlafen", "fahren", "spielen"],
+        "explanation": {
+          "en": "Only kaufen fits: in the supermarket you buy bread and milk.",
+          "fr": "Seul « kaufen » convient : au supermarché, on achète du pain et du lait.",
+          "de": "Nur „kaufen“ passt: Im Supermarkt kauft man Brot und Milch."
+        }
+      },
+      "listeningOptionTargetIds": ["kaufen", "brauchen", "machen", "fragen"]
+    },
+    {
+      "id": "brauchen",
+      "term": "brauchen",
+      "translations": { "en": ["to need"], "fr": ["avoir besoin de"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "brauchen",
+      "examForms": ["brauchen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈbʁaʊxən/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Ich brauche einen Stift.",
+        "translation": { "en": "I need a pen.", "fr": "J’ai besoin d’un stylo." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Brauchen means to need: Ich brauche einen Stift.",
+        "fr": "Brauchen signifie avoir besoin de : Ich brauche einen Stift.",
+        "de": "Brauchen bedeutet, etwas nötig zu haben: Ich brauche einen Stift."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Wir ",
+        "after": " ein neues Heft für die Schule.",
+        "accepted": { "answers": ["brauchen"] },
+        "referenceTargetIds": ["brauchen", "schlafen", "spielen", "fahren"],
+        "explanation": {
+          "en": "Only brauchen fits: we need a new notebook.",
+          "fr": "Seul « brauchen » convient : nous avons besoin d’un nouveau cahier.",
+          "de": "Nur „brauchen“ passt: Wir brauchen ein neues Heft."
+        }
+      },
+      "listeningOptionTargetIds": ["brauchen", "kaufen", "machen", "schlafen"]
+    },
+    {
+      "id": "gehen",
+      "term": "gehen",
+      "translations": { "en": ["to go", "to walk"], "fr": ["aller", "marcher"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "gehen",
+      "examForms": ["gehen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈɡeːən/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ich gehe zu Fuß nach Hause.",
+        "translation": { "en": "I walk home.", "fr": "Je rentre à pied." }
+      },
+      "ambiguityNote": {
+        "en": "Gehen is for going on foot; with a bus, car or train use fahren.",
+        "fr": "Gehen s’emploie pour aller à pied ; en bus, en voiture ou en train, on dit fahren.",
+        "de": "Gehen sagt man für zu Fuß; mit Bus, Auto oder Zug sagt man fahren."
+      },
+      "explanation": {
+        "en": "Gehen means to go or to walk on foot.",
+        "fr": "Gehen signifie aller ou marcher à pied.",
+        "de": "Gehen bedeutet, sich zu Fuß zu bewegen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Am Abend ",
+        "after": " wir zu Fuß nach Hause.",
+        "accepted": { "answers": ["gehen"] },
+        "referenceTargetIds": ["gehen", "schlafen", "trinken", "schreiben"],
+        "explanation": {
+          "en": "Only gehen fits: zu Fuß means on foot.",
+          "fr": "Seul « gehen » convient : zu Fuß signifie à pied.",
+          "de": "Nur „gehen“ passt: zu Fuß heißt ohne Fahrzeug."
+        }
+      },
+      "listeningOptionTargetIds": ["gehen", "sagen", "lesen", "essen"]
+    },
+    {
+      "id": "fahren",
+      "term": "fahren",
+      "translations": {
+        "en": ["to drive", "to travel"],
+        "fr": ["conduire", "aller (en véhicule)"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "fahren",
+      "examForms": ["fahren"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈfaːʁən/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Wir fahren mit dem Bus.",
+        "translation": { "en": "We take the bus.", "fr": "Nous prenons le bus." }
+      },
+      "ambiguityNote": {
+        "en": "Fahren is for travelling by vehicle; on foot use gehen.",
+        "fr": "Fahren s’emploie pour un déplacement en véhicule ; à pied, on dit gehen.",
+        "de": "Fahren sagt man für Fahrzeuge; zu Fuß sagt man gehen."
+      },
+      "explanation": {
+        "en": "Fahren means to travel by vehicle or to drive.",
+        "fr": "Fahren signifie se déplacer en véhicule ou conduire.",
+        "de": "Fahren bedeutet, mit einem Fahrzeug unterwegs zu sein."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Wir ",
+        "after": " mit dem Bus zur Schule.",
+        "accepted": { "answers": ["fahren"] },
+        "referenceTargetIds": ["fahren", "essen", "sagen", "schlafen"],
+        "explanation": {
+          "en": "Only fahren fits: you travel by bus.",
+          "fr": "Seul « fahren » convient : on se déplace en bus.",
+          "de": "Nur „fahren“ passt: Man fährt mit dem Bus."
+        }
+      },
+      "listeningOptionTargetIds": ["fahren", "fragen", "sagen", "machen"]
+    },
+    {
+      "id": "spielen",
+      "term": "spielen",
+      "translations": { "en": ["to play"], "fr": ["jouer"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "spielen",
+      "examForms": ["spielen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʃpiːlən/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Die Kinder spielen Fußball.",
+        "translation": {
+          "en": "The children play football.",
+          "fr": "Les enfants jouent au football."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Spielen means to play, for example a game or football.",
+        "fr": "Spielen signifie jouer, par exemple à un jeu ou au football.",
+        "de": "Spielen bedeutet, ein Spiel oder Sport zu machen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Die Kinder ",
+        "after": " im Garten Fußball.",
+        "accepted": { "answers": ["spielen"] },
+        "referenceTargetIds": ["spielen", "trinken", "schlafen", "fragen"],
+        "explanation": {
+          "en": "Only spielen fits: children play football.",
+          "fr": "Seul « spielen » convient : les enfants jouent au football.",
+          "de": "Nur „spielen“ passt: Kinder spielen Fußball."
+        }
+      },
+      "listeningOptionTargetIds": ["spielen", "sprechen", "schlafen", "schreiben"]
+    },
+    {
+      "id": "lesen",
+      "term": "lesen",
+      "translations": { "en": ["to read"], "fr": ["lire"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "lesen",
+      "examForms": ["lesen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈleːzən/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ich lese ein Buch.",
+        "translation": { "en": "I am reading a book.", "fr": "Je lis un livre." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Lesen means to read a text.",
+        "fr": "Lesen signifie lire un texte.",
+        "de": "Lesen bedeutet, einen Text anzusehen und zu verstehen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Wir ",
+        "after": " abends ein Buch im Bett.",
+        "accepted": { "answers": ["lesen"] },
+        "referenceTargetIds": ["lesen", "trinken", "fahren", "sagen"],
+        "explanation": {
+          "en": "Only lesen fits: you read a book in bed.",
+          "fr": "Seul « lesen » convient : on lit un livre au lit.",
+          "de": "Nur „lesen“ passt: Man liest ein Buch im Bett."
+        }
+      },
+      "listeningOptionTargetIds": ["lesen", "essen", "gehen", "sagen"]
+    },
+    {
+      "id": "essen",
+      "term": "essen",
+      "translations": { "en": ["to eat"], "fr": ["manger"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "essen",
+      "examForms": ["essen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈɛsən/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Wir essen Brot und Käse.",
+        "translation": {
+          "en": "We eat bread and cheese.",
+          "fr": "Nous mangeons du pain et du fromage."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Essen means to eat food.",
+        "fr": "Essen signifie manger de la nourriture.",
+        "de": "Essen bedeutet, feste Nahrung zu sich zu nehmen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Zum Frühstück ",
+        "after": " wir Brot und Käse.",
+        "accepted": { "answers": ["essen"] },
+        "referenceTargetIds": ["essen", "schlafen", "fahren", "fragen"],
+        "explanation": {
+          "en": "Only essen fits: you eat bread and cheese.",
+          "fr": "Seul « essen » convient : on mange du pain et du fromage.",
+          "de": "Nur „essen“ passt: Brot und Käse isst man."
+        }
+      },
+      "listeningOptionTargetIds": ["essen", "lesen", "gehen", "trinken"]
+    },
+    {
+      "id": "trinken",
+      "term": "trinken",
+      "translations": { "en": ["to drink"], "fr": ["boire"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "trinken",
+      "examForms": ["trinken"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈtʁɪŋkən/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ich trinke Tee.",
+        "translation": { "en": "I drink tea.", "fr": "Je bois du thé." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Trinken means to drink a liquid.",
+        "fr": "Trinken signifie boire un liquide.",
+        "de": "Trinken bedeutet, Flüssigkeit zu sich zu nehmen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Am Morgen ",
+        "after": " wir Kaffee und Tee.",
+        "accepted": { "answers": ["trinken"] },
+        "referenceTargetIds": ["trinken", "gehen", "spielen", "schreiben"],
+        "explanation": {
+          "en": "Only trinken fits: coffee and tea are drunk.",
+          "fr": "Seul « trinken » convient : le café et le thé se boivent.",
+          "de": "Nur „trinken“ passt: Kaffee und Tee trinkt man."
+        }
+      },
+      "listeningOptionTargetIds": ["trinken", "sprechen", "schreiben", "essen"]
+    },
+    {
+      "id": "schlafen",
+      "term": "schlafen",
+      "translations": { "en": ["to sleep"], "fr": ["dormir"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "schlafen",
+      "examForms": ["schlafen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʃlaːfən/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Das Baby schläft.",
+        "translation": { "en": "The baby is sleeping.", "fr": "Le bébé dort." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Schlafen means to sleep, usually at night.",
+        "fr": "Schlafen signifie dormir, en général la nuit.",
+        "de": "Schlafen bedeutet, zu ruhen, meist nachts, wenn man müde ist."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Es ist Nacht. Die Kinder ",
+        "after": " tief und fest.",
+        "accepted": { "answers": ["schlafen"] },
+        "referenceTargetIds": ["schlafen", "kaufen", "lesen", "sagen"],
+        "explanation": {
+          "en": "Only schlafen fits: at night the children sleep deeply.",
+          "fr": "Seul « schlafen » convient : la nuit, les enfants dorment profondément.",
+          "de": "Nur „schlafen“ passt: Nachts schlafen die Kinder tief und fest."
+        }
+      },
+      "listeningOptionTargetIds": ["schlafen", "spielen", "schreiben", "sprechen"]
+    },
+    {
+      "id": "sprechen",
+      "term": "sprechen",
+      "translations": { "en": ["to speak", "to talk"], "fr": ["parler"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "sprechen",
+      "examForms": ["sprechen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʃpʁɛçən/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Ich spreche ein bisschen Deutsch.",
+        "translation": { "en": "I speak a little German.", "fr": "Je parle un peu allemand." }
+      },
+      "ambiguityNote": {
+        "en": "Sprechen is for speaking a language or talking; sagen needs something that is said.",
+        "fr": "Sprechen s’emploie pour parler une langue ; sagen demande une chose dite.",
+        "de": "Sprechen sagt man für Sprachen und Gespräche; bei sagen steht, was gesagt wird."
+      },
+      "explanation": {
+        "en": "Sprechen means to speak or to talk, for example a language.",
+        "fr": "Sprechen signifie parler, par exemple une langue.",
+        "de": "Sprechen bedeutet, mit Worten zu reden, zum Beispiel eine Sprache."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Wir ",
+        "after": " ein bisschen Deutsch.",
+        "accepted": { "answers": ["sprechen"] },
+        "referenceTargetIds": ["sprechen", "essen", "fahren", "spielen"],
+        "explanation": {
+          "en": "Only sprechen fits: you speak a little German.",
+          "fr": "Seul « sprechen » convient : on parle un peu allemand.",
+          "de": "Nur „sprechen“ passt: Man spricht ein bisschen Deutsch."
+        }
+      },
+      "listeningOptionTargetIds": ["sprechen", "spielen", "schreiben", "schlafen"]
+    },
+    {
+      "id": "schreiben",
+      "term": "schreiben",
+      "translations": { "en": ["to write"], "fr": ["écrire"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "schreiben",
+      "examForms": ["schreiben"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʃʁaɪbən/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ich schreibe eine E-Mail.",
+        "translation": { "en": "I am writing an email.", "fr": "J’écris un e-mail." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Schreiben means to write words on paper or on a computer.",
+        "fr": "Schreiben signifie écrire des mots sur papier ou à l’ordinateur.",
+        "de": "Schreiben bedeutet, Wörter auf Papier zu bringen oder am Computer zu tippen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Wir ",
+        "after": " eine E-Mail an Anna.",
+        "accepted": { "answers": ["schreiben"] },
+        "referenceTargetIds": ["schreiben", "trinken", "schlafen", "gehen"],
+        "explanation": {
+          "en": "Only schreiben fits: you write an email.",
+          "fr": "Seul « schreiben » convient : on écrit un e-mail.",
+          "de": "Nur „schreiben“ passt: Eine E-Mail schreibt man."
+        }
+      },
+      "listeningOptionTargetIds": ["schreiben", "schlafen", "sprechen", "spielen"]
+    },
+    {
+      "id": "fragen",
+      "term": "fragen",
+      "translations": { "en": ["to ask"], "fr": ["demander"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "fragen",
+      "examForms": ["fragen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈfʁaːɡən/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ich frage den Mann.",
+        "translation": { "en": "I ask the man.", "fr": "Je demande à l’homme." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Fragen means to ask a question.",
+        "fr": "Fragen signifie poser une question.",
+        "de": "Fragen bedeutet, eine Frage zu stellen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Wir ",
+        "after": " den Mann: „Wo ist der Bahnhof?“",
+        "accepted": { "answers": ["fragen"] },
+        "referenceTargetIds": ["fragen", "essen", "kaufen", "schlafen"],
+        "explanation": {
+          "en": "Only fragen fits: you ask a person a question.",
+          "fr": "Seul « fragen » convient : on pose une question à quelqu’un.",
+          "de": "Nur „fragen“ passt: Man fragt eine Person etwas."
+        }
+      },
+      "listeningOptionTargetIds": ["fragen", "sagen", "fahren", "machen"]
+    },
+    {
+      "id": "sagen",
+      "term": "sagen",
+      "translations": { "en": ["to say"], "fr": ["dire"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "sagen",
+      "examForms": ["sagen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈzaːɡən/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ich sage Hallo.",
+        "translation": { "en": "I say hello.", "fr": "Je dis bonjour." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Sagen means to say something with words.",
+        "fr": "Sagen signifie dire quelque chose avec des mots.",
+        "de": "Sagen bedeutet, etwas mit Worten mitzuteilen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Am Morgen ",
+        "after": " wir „Guten Morgen“.",
+        "accepted": { "answers": ["sagen"] },
+        "referenceTargetIds": ["sagen", "fahren", "schlafen", "essen"],
+        "explanation": {
+          "en": "Only sagen fits: you say Guten Morgen.",
+          "fr": "Seul « sagen » convient : on dit « Guten Morgen ».",
+          "de": "Nur „sagen“ passt: Man sagt „Guten Morgen“."
+        }
+      },
+      "listeningOptionTargetIds": ["sagen", "fragen", "fahren", "machen"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

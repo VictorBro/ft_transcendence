@@ -1,0 +1,217 @@
+{
+  "schemaVersion": 2,
+  "id": "de-perfect-haben-or-sein",
+  "lang": "de",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Perfekt: haben oder sein?",
+  "objective": {
+    "en": "Choose sein for a change of place or state and for sein and bleiben in the Perfekt, and haben otherwise: Ich bin nach Rom gefahren. Wer hat das Auto gefahren?",
+    "fr": "Choisir sein pour un changement de lieu ou d'état et pour sein et bleiben au Perfekt, et haben dans les autres cas : Ich bin nach Rom gefahren. Wer hat das Auto gefahren ?",
+    "de": "Im Perfekt sein bei Orts- und Zustandswechsel und bei sein und bleiben wählen, sonst haben: Ich bin nach Rom gefahren. Wer hat das Auto gefahren?"
+  },
+  "estimatedMinutes": 15,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:25:03.998Z",
+    "inputHashes": { "outline": "cf82694de82623842a7f972f4b20ebcd3f1e296d37a14b9b11afdf86173856ab" }
+  },
+  "kind": "grammar",
+  "topic": "verb_usage",
+  "scopeBoundaries": {
+    "en": "Covers the choice of haben or sein as auxiliary in the Perfekt, for verbs whose participles are already known. Excludes forming participles, Präteritum and Plusquamperfekt.",
+    "fr": "Couvre le choix de haben ou sein comme auxiliaire au Perfekt, pour des verbes dont le participe est déjà connu. Exclut la formation des participes, le Präteritum et le Plusquamperfekt.",
+    "de": "Behandelt die Wahl von haben oder sein als Hilfsverb im Perfekt bei Verben, deren Partizip schon bekannt ist. Ausgeschlossen sind Partizipbildung, Präteritum und Plusquamperfekt."
+  },
+  "prerequisites": [
+    {
+      "en": "Forming the Partizip II of regular, separable and irregular verbs",
+      "fr": "Former le Partizip II des verbes réguliers, séparables et irréguliers",
+      "de": "Das Partizip II regelmäßiger, trennbarer und unregelmäßiger Verben bilden"
+    },
+    {
+      "en": "Present tense of haben and sein",
+      "fr": "Le présent de haben et sein",
+      "de": "Präsens von haben und sein"
+    }
+  ],
+  "rules": [
+    {
+      "id": "r-ort",
+      "summary": {
+        "en": "Verbs of movement from one place to another take sein: Ich bin nach Rom gefahren.",
+        "fr": "Les verbes de déplacement d'un lieu à un autre prennent sein : Ich bin nach Rom gefahren.",
+        "de": "Verben der Fortbewegung von einem Ort zu einem anderen bilden das Perfekt mit sein: Ich bin nach Rom gefahren."
+      }
+    },
+    {
+      "id": "r-zustand",
+      "summary": {
+        "en": "Verbs of change of state take sein: Er ist eingeschlafen.",
+        "fr": "Les verbes de changement d'état prennent sein : Er ist eingeschlafen.",
+        "de": "Verben des Zustandswechsels bilden das Perfekt mit sein: Er ist eingeschlafen."
+      }
+    },
+    {
+      "id": "r-bleiben",
+      "summary": {
+        "en": "The verbs sein and bleiben take sein: Wir sind zu Hause geblieben.",
+        "fr": "Les verbes sein et bleiben prennent sein : Wir sind zu Hause geblieben.",
+        "de": "Die Verben sein und bleiben bilden das Perfekt mit sein: Wir sind zu Hause geblieben."
+      }
+    },
+    {
+      "id": "r-haben",
+      "summary": {
+        "en": "Otherwise the auxiliary is haben, especially with an accusative object: Wer hat das Auto gefahren?",
+        "fr": "Dans les autres cas, l'auxiliaire est haben, surtout avec un complément à l'accusatif : Wer hat das Auto gefahren ?",
+        "de": "Sonst ist das Hilfsverb haben, besonders bei einem Akkusativobjekt: Wer hat das Auto gefahren?"
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "b-wechsel",
+      "title": {
+        "en": "sein for a change of place or state",
+        "fr": "sein pour un changement de lieu ou d'état",
+        "de": "sein bei Orts- und Zustandswechsel"
+      },
+      "ruleIds": ["r-ort", "r-zustand"],
+      "explanationPlan": {
+        "en": "Show that the Perfekt needs haben or sein. Teach sein for a change of place (fahren, fliegen, gehen, kommen) and a change of state (einschlafen, aufwachen). Contrast eingeschlafen with geschlafen.",
+        "fr": "Montrer que le Perfekt demande haben ou sein. Enseigner sein pour un changement de lieu (fahren, fliegen, gehen, kommen) et d'état (einschlafen, aufwachen). Opposer eingeschlafen à geschlafen.",
+        "de": "Zeigen, dass das Perfekt haben oder sein braucht. sein bei Ortswechsel (fahren, fliegen, gehen, kommen) und Zustandswechsel (einschlafen, aufwachen) vermitteln. eingeschlafen und geschlafen gegenüberstellen."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "Ich bin nach Rom gefahren.",
+          "translation": { "en": "I went to Rome.", "fr": "Je suis allé à Rome." }
+        },
+        {
+          "text": "Er ist eingeschlafen.",
+          "translation": { "en": "He fell asleep.", "fr": "Il s'est endormi." }
+        },
+        {
+          "text": "Er hat acht Stunden geschlafen.",
+          "translation": { "en": "He slept for eight hours.", "fr": "Il a dormi huit heures." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not use haben just because your own language uses have: look for the change of place or state.",
+          "fr": "N'utilisez pas haben par habitude : cherchez le changement de lieu ou d'état.",
+          "de": "Nimm nicht automatisch haben: Achte auf den Wechsel des Ortes oder des Zustands."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-w-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["r-ort", "r-zustand"],
+          "estimatedDurationS": 50
+        },
+        {
+          "id": "ex-w-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["r-ort", "r-zustand"],
+          "estimatedDurationS": 70
+        },
+        {
+          "id": "ex-w-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 4,
+          "ruleIds": ["r-ort", "r-zustand"],
+          "estimatedDurationS": 90
+        }
+      ]
+    },
+    {
+      "id": "b-bleiben-haben",
+      "title": {
+        "en": "sein, bleiben and haben",
+        "fr": "sein, bleiben et haben",
+        "de": "sein, bleiben und haben"
+      },
+      "ruleIds": ["r-bleiben", "r-haben"],
+      "explanationPlan": {
+        "en": "Teach sein with the verbs sein and bleiben, and haben in all other cases, especially with an accusative object. Contrast fahren with a place and fahren with an object.",
+        "fr": "Enseigner sein avec les verbes sein et bleiben, et haben dans les autres cas, surtout avec un complément à l'accusatif. Opposer fahren avec un lieu et fahren avec un objet.",
+        "de": "sein bei den Verben sein und bleiben, sonst haben, besonders bei einem Akkusativobjekt. fahren mit Ortsangabe und fahren mit Objekt gegenüberstellen."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "Wir sind zu Hause geblieben.",
+          "translation": { "en": "We stayed at home.", "fr": "Nous sommes restés à la maison." }
+        },
+        {
+          "text": "Ich habe einen Kuchen gegessen.",
+          "translation": { "en": "I ate a cake.", "fr": "J'ai mangé un gâteau." }
+        },
+        {
+          "text": "Wer hat das Auto gefahren?",
+          "translation": { "en": "Who drove the car?", "fr": "Qui a conduit la voiture ?" }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "The same verb can take sein or haben: fahren with a place takes sein, fahren with an accusative object takes haben.",
+          "fr": "Le même verbe peut prendre sein ou haben : fahren avec un lieu prend sein, avec un objet à l'accusatif il prend haben.",
+          "de": "Dasselbe Verb kann sein oder haben haben: fahren mit Ortsangabe bildet das Perfekt mit sein, fahren mit Akkusativobjekt mit haben."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-b-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["r-bleiben", "r-haben"],
+          "estimatedDurationS": 50
+        },
+        {
+          "id": "ex-b-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["r-bleiben", "r-haben"],
+          "estimatedDurationS": 70
+        },
+        {
+          "id": "ex-b-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["r-bleiben", "r-haben"],
+          "estimatedDurationS": 75
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-gaps",
+        "type": "grammar_gap_typing",
+        "itemCount": 6,
+        "ruleIds": ["r-ort", "r-zustand", "r-bleiben", "r-haben"],
+        "estimatedDurationS": 120,
+        "timeLimitS": 200
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 4,
+        "ruleIds": ["r-ort", "r-zustand", "r-bleiben", "r-haben"],
+        "estimatedDurationS": 80,
+        "timeLimitS": 140
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

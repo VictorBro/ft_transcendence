@@ -1,0 +1,677 @@
+{
+  "schemaVersion": 2,
+  "id": "de-personality-traits",
+  "lang": "de",
+  "level": "B1",
+  "locales": ["en", "fr", "de"],
+  "title": "Charaktereigenschaften",
+  "objective": {
+    "en": "Describe a person more precisely with about fourteen words for character and personality.",
+    "fr": "Décrire une personne plus précisément avec quatorze mots sur le caractère et la personnalité.",
+    "de": "Einen Menschen mit vierzehn Wörtern genauer beschreiben: Charakter und Eigenschaften."
+  },
+  "estimatedMinutes": 23,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:30:33.270Z",
+    "inputHashes": { "outline": "2a13ed24cbf0c61797c4aa183ef9bdee9ab0f01492b76b21b513afd5b6807c37" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Two nouns (der Charakter, die Eigenschaft) and twelve adjectives that describe how a person is and behaves, from reliable and honest to shy and generous.",
+    "fr": "Deux noms (der Charakter, die Eigenschaft) et douze adjectifs qui décrivent comment une personne est et se comporte, de fiable et honnête à timide et généreux.",
+    "de": "Zwei Nomen (der Charakter, die Eigenschaft) und zwölf Adjektive, die beschreiben, wie ein Mensch ist und sich verhält, von zuverlässig und ehrlich bis schüchtern und großzügig."
+  },
+  "targetCount": 14,
+  "countRationale": {
+    "en": "Fourteen words fit a B1 lesson: enough to describe people in detail, few enough to learn well.",
+    "fr": "Quatorze mots conviennent à une leçon B1 : assez pour décrire des personnes en détail, assez peu pour bien les retenir.",
+    "de": "Vierzehn Wörter passen zu einer B1-Lektion: genug, um Menschen genau zu beschreiben, wenig genug, um sie gut zu lernen."
+  },
+  "difficultyBalance": {
+    "en": "Most words are core vocabulary; longer compounds and easily confused words are marked demanding.",
+    "fr": "La plupart des mots sont du vocabulaire de base ; les mots composés longs et ceux qu’on confond facilement sont marqués comme exigeants.",
+    "de": "Die meisten Wörter gehören zum Grundwortschatz; lange Zusammensetzungen und leicht verwechselbare Wörter gelten als anspruchsvoll."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "grundlagen",
+      "label": {
+        "en": "Character and reliability",
+        "fr": "Caractère et fiabilité",
+        "de": "Charakter und Verlässlichkeit"
+      },
+      "targetIds": [
+        "charakter",
+        "eigenschaft",
+        "zuverlaessig",
+        "ehrlich",
+        "geduldig",
+        "vernuenftig",
+        "selbststaendig"
+      ],
+      "introduction": {
+        "en": "Here are **two nouns** and **five adjectives** to describe what a person is like:\n\n- `der Charakter`\n- `die Eigenschaft`\n- `zuverlässig`\n- `ehrlich`\n- `geduldig`\n- `vernünftig`\n- `selbstständig`",
+        "fr": "Voici **deux noms** et **cinq adjectifs** pour décrire comment est une personne :\n\n- `der Charakter`\n- `die Eigenschaft`\n- `zuverlässig`\n- `ehrlich`\n- `geduldig`\n- `vernünftig`\n- `selbstständig`",
+        "de": "Hier sind **zwei Nomen** und **fünf Adjektive**, um zu beschreiben, wie ein Mensch ist:\n\n- `der Charakter`\n- `die Eigenschaft`\n- `zuverlässig`\n- `ehrlich`\n- `geduldig`\n- `vernünftig`\n- `selbstständig`"
+      }
+    },
+    {
+      "id": "umgang",
+      "label": {
+        "en": "Behaviour towards others",
+        "fr": "Comportement envers les autres",
+        "de": "Verhalten gegenüber anderen"
+      },
+      "targetIds": [
+        "neugierig",
+        "ordentlich",
+        "hoeflich",
+        "schuechtern",
+        "ehrgeizig",
+        "hilfsbereit",
+        "grosszuegig"
+      ],
+      "introduction": {
+        "en": "These **seven adjectives** describe how someone behaves with other people:\n\n- `neugierig`\n- `ordentlich`\n- `höflich`\n- `schüchtern`\n- `ehrgeizig`\n- `hilfsbereit`\n- `großzügig`",
+        "fr": "Ces **sept adjectifs** décrivent comment quelqu’un se comporte avec les autres :\n\n- `neugierig`\n- `ordentlich`\n- `höflich`\n- `schüchtern`\n- `ehrgeizig`\n- `hilfsbereit`\n- `großzügig`",
+        "de": "Diese **sieben Adjektive** beschreiben, wie sich jemand gegenüber anderen Menschen verhält:\n\n- `neugierig`\n- `ordentlich`\n- `höflich`\n- `schüchtern`\n- `ehrgeizig`\n- `hilfsbereit`\n- `großzügig`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "charakter",
+      "term": "Charakter",
+      "translations": { "en": ["character"], "fr": ["caractère"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "der Charakter",
+      "examForms": ["der Charakter"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/kaˈʁaktɐ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Anna hat einen guten Charakter.",
+        "translation": { "en": "Anna has a good character.", "fr": "Anna a bon caractère." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Der Charakter is a person’s nature: how they usually think and act.",
+        "fr": "Der Charakter, c’est la nature d’une personne : sa façon habituelle de penser et d’agir.",
+        "de": "Der Charakter ist das Wesen eines Menschen: wie er meistens denkt und handelt."
+      },
+      "genderExplanation": {
+        "en": "Charakter is masculine: der Charakter.",
+        "fr": "Charakter est masculin : der Charakter.",
+        "de": "Charakter ist maskulin: der Charakter."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Anna hat einen guten ",
+        "after": ".",
+        "accepted": { "answers": ["Charakter"] },
+        "referenceTargetIds": ["charakter", "ehrlich", "geduldig", "schuechtern"],
+        "explanation": {
+          "en": "After “einen guten” a masculine noun is needed: Charakter.",
+          "fr": "Après « einen guten », il faut un nom masculin : Charakter.",
+          "de": "Nach „einen guten“ braucht man ein maskulines Nomen: Charakter."
+        }
+      },
+      "listeningOptionTargetIds": ["charakter", "schuechtern", "eigenschaft", "ordentlich"]
+    },
+    {
+      "id": "eigenschaft",
+      "term": "Eigenschaft",
+      "translations": { "en": ["trait", "quality"], "fr": ["caractéristique", "qualité"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Eigenschaft",
+      "examForms": ["die Eigenschaft"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈaɪ̯ɡn̩ʃaft/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Humor ist eine wichtige Eigenschaft.",
+        "translation": {
+          "en": "Humour is an important trait.",
+          "fr": "L’humour est une qualité importante."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Eigenschaft is a feature that describes a person or a thing.",
+        "fr": "Die Eigenschaft est un trait qui décrit une personne ou une chose.",
+        "de": "Die Eigenschaft ist ein Merkmal, das einen Menschen oder eine Sache beschreibt."
+      },
+      "genderExplanation": {
+        "en": "Eigenschaft is feminine: die Eigenschaft.",
+        "fr": "Eigenschaft est féminin : die Eigenschaft.",
+        "de": "Eigenschaft ist feminin: die Eigenschaft."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Humor ist eine wichtige ",
+        "after": ".",
+        "accepted": { "answers": ["Eigenschaft"] },
+        "referenceTargetIds": ["eigenschaft", "hoeflich", "neugierig", "ordentlich"],
+        "explanation": {
+          "en": "After “eine wichtige” a feminine noun is needed: Eigenschaft.",
+          "fr": "Après « eine wichtige », il faut un nom féminin : Eigenschaft.",
+          "de": "Nach „eine wichtige“ braucht man ein feminines Nomen: Eigenschaft."
+        }
+      },
+      "listeningOptionTargetIds": ["eigenschaft", "charakter", "ehrlich", "hoeflich"]
+    },
+    {
+      "id": "zuverlaessig",
+      "term": "zuverlässig",
+      "translations": { "en": ["reliable", "dependable"], "fr": ["fiable", "digne de confiance"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "zuverlässig",
+      "examForms": ["zuverlässig"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈt͡suːfɛɐ̯ˌlɛsɪç/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Mein Kollege ist sehr zuverlässig.",
+        "translation": {
+          "en": "My colleague is very reliable.",
+          "fr": "Mon collègue est très fiable."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Zuverlässig describes someone you can rely on.",
+        "fr": "Zuverlässig décrit quelqu’un sur qui on peut compter.",
+        "de": "Zuverlässig beschreibt jemanden, auf den man sich verlassen kann."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Mein Kollege ist sehr ",
+        "after": ": Er hält immer, was er verspricht.",
+        "accepted": { "answers": ["zuverlässig", "verlässlich"] },
+        "referenceTargetIds": ["zuverlaessig", "schuechtern", "neugierig", "charakter"],
+        "explanation": {
+          "en": "Someone who always keeps their promises is zuverlässig.",
+          "fr": "Quelqu’un qui tient toujours ses promesses est zuverlässig.",
+          "de": "Wer immer hält, was er verspricht, ist zuverlässig."
+        }
+      },
+      "listeningOptionTargetIds": ["zuverlaessig", "vernuenftig", "grosszuegig", "ehrgeizig"]
+    },
+    {
+      "id": "ehrlich",
+      "term": "ehrlich",
+      "translations": { "en": ["honest"], "fr": ["honnête"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "ehrlich",
+      "examForms": ["ehrlich"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈeːɐ̯lɪç/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Er ist immer ehrlich zu mir.",
+        "translation": {
+          "en": "He is always honest with me.",
+          "fr": "Il est toujours honnête avec moi."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Ehrlich means telling the truth and not lying.",
+        "fr": "Ehrlich signifie dire la vérité et ne pas mentir.",
+        "de": "Ehrlich heißt: die Wahrheit sagen und nicht lügen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Er lügt nie, denn er ist sehr ",
+        "after": ".",
+        "accepted": { "answers": ["ehrlich"] },
+        "referenceTargetIds": ["ehrlich", "ordentlich", "schuechtern", "hilfsbereit"],
+        "explanation": {
+          "en": "Someone who never lies is ehrlich.",
+          "fr": "Quelqu’un qui ne ment jamais est ehrlich.",
+          "de": "Wer nie lügt, ist ehrlich."
+        }
+      },
+      "listeningOptionTargetIds": ["ehrlich", "ehrgeizig", "hoeflich", "ordentlich"]
+    },
+    {
+      "id": "geduldig",
+      "term": "geduldig",
+      "translations": { "en": ["patient"], "fr": ["patient"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "geduldig",
+      "examForms": ["geduldig"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɡəˈdʊldɪç/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Eine gute Lehrerin ist geduldig.",
+        "translation": {
+          "en": "A good teacher is patient.",
+          "fr": "Une bonne enseignante est patiente."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Geduldig describes someone who can wait or repeat things without getting angry.",
+        "fr": "Geduldig décrit quelqu’un qui sait attendre ou répéter sans se fâcher.",
+        "de": "Geduldig beschreibt jemanden, der warten oder etwas wiederholen kann, ohne sich zu ärgern."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Die Lehrerin erklärt alles noch einmal, ohne böse zu werden. Sie ist sehr ",
+        "after": ".",
+        "accepted": { "answers": ["geduldig"] },
+        "referenceTargetIds": ["geduldig", "neugierig", "ordentlich", "charakter"],
+        "explanation": {
+          "en": "Explaining again without getting angry shows that she is geduldig.",
+          "fr": "Expliquer encore sans se fâcher montre qu’elle est geduldig.",
+          "de": "Wer etwas noch einmal erklärt, ohne böse zu werden, ist geduldig."
+        }
+      },
+      "listeningOptionTargetIds": ["geduldig", "neugierig", "selbststaendig", "ehrgeizig"]
+    },
+    {
+      "id": "vernuenftig",
+      "term": "vernünftig",
+      "translations": { "en": ["sensible", "reasonable"], "fr": ["raisonnable", "sensé"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "vernünftig",
+      "examForms": ["vernünftig"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/fɛɐ̯ˈnʏnftɪç/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Sei vernünftig und geh früh schlafen!",
+        "translation": {
+          "en": "Be sensible and go to bed early!",
+          "fr": "Sois raisonnable et va te coucher tôt !"
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Vernünftig describes someone who thinks carefully and makes good decisions.",
+        "fr": "Vernünftig décrit quelqu’un qui réfléchit bien et prend de bonnes décisions.",
+        "de": "Vernünftig beschreibt jemanden, der gut nachdenkt und kluge Entscheidungen trifft."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Bei Glatteis fährt er langsam und vorsichtig. Das ist sehr ",
+        "after": ".",
+        "accepted": { "answers": ["vernünftig"] },
+        "referenceTargetIds": ["vernuenftig", "neugierig", "schuechtern", "charakter"],
+        "explanation": {
+          "en": "Driving slowly on ice is a sensible decision: vernünftig.",
+          "fr": "Rouler lentement sur le verglas est une décision raisonnable : vernünftig.",
+          "de": "Bei Glatteis langsam zu fahren, ist eine kluge Entscheidung: vernünftig."
+        }
+      },
+      "listeningOptionTargetIds": ["vernuenftig", "zuverlaessig", "neugierig", "ehrgeizig"]
+    },
+    {
+      "id": "selbststaendig",
+      "term": "selbstständig",
+      "translations": { "en": ["independent", "self-reliant"], "fr": ["autonome", "indépendant"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "selbstständig",
+      "examForms": ["selbstständig", "selbständig"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈzɛlpstˌʃtɛndɪç/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Meine Tochter ist schon sehr selbstständig.",
+        "translation": {
+          "en": "My daughter is already very independent.",
+          "fr": "Ma fille est déjà très autonome."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Selbstständig describes someone who does things alone, without help.",
+        "fr": "Selbstständig décrit quelqu’un qui fait les choses seul, sans aide.",
+        "de": "Selbstständig beschreibt jemanden, der Dinge allein und ohne Hilfe macht."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Mit achtzehn zieht sie aus und macht alles allein, ohne Hilfe der Eltern. Sie ist sehr ",
+        "after": ".",
+        "accepted": { "answers": ["selbstständig", "selbständig"] },
+        "referenceTargetIds": ["selbststaendig", "ehrlich", "geduldig", "hoeflich"],
+        "explanation": {
+          "en": "Doing everything alone, without her parents’ help, is selbstständig.",
+          "fr": "Tout faire seule, sans l’aide de ses parents, c’est être selbstständig.",
+          "de": "Alles allein ohne Hilfe der Eltern zu machen, heißt selbstständig sein."
+        }
+      },
+      "listeningOptionTargetIds": ["selbststaendig", "geduldig", "hilfsbereit", "ordentlich"]
+    },
+    {
+      "id": "neugierig",
+      "term": "neugierig",
+      "translations": { "en": ["curious"], "fr": ["curieux"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "neugierig",
+      "examForms": ["neugierig"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈnɔɪ̯ˌɡiːʁɪç/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Mein Sohn ist sehr neugierig.",
+        "translation": { "en": "My son is very curious.", "fr": "Mon fils est très curieux." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Neugierig describes someone who wants to know a lot and asks many questions.",
+        "fr": "Neugierig décrit quelqu’un qui veut tout savoir et pose beaucoup de questions.",
+        "de": "Neugierig beschreibt jemanden, der viel wissen will und viel fragt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Das Kind will alles wissen und stellt den ganzen Tag Fragen. Es ist sehr ",
+        "after": ".",
+        "accepted": { "answers": ["neugierig"] },
+        "referenceTargetIds": ["neugierig", "ehrlich", "selbststaendig", "eigenschaft"],
+        "explanation": {
+          "en": "A child who wants to know everything and asks questions is neugierig.",
+          "fr": "Un enfant qui veut tout savoir et pose des questions est neugierig.",
+          "de": "Ein Kind, das alles wissen will und Fragen stellt, ist neugierig."
+        }
+      },
+      "listeningOptionTargetIds": ["neugierig", "geduldig", "grosszuegig", "vernuenftig"]
+    },
+    {
+      "id": "ordentlich",
+      "term": "ordentlich",
+      "translations": { "en": ["tidy"], "fr": ["ordonné"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "ordentlich",
+      "examForms": ["ordentlich"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈɔʁdn̩tlɪç/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Sie ist sehr ordentlich.",
+        "translation": { "en": "She is very tidy.", "fr": "Elle est très ordonnée." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Ordentlich describes someone who keeps things in order and clean.",
+        "fr": "Ordentlich décrit quelqu’un qui range et garde tout en ordre.",
+        "de": "Ordentlich beschreibt jemanden, der Ordnung hält und alles aufräumt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "In ihrem Zimmer liegt nichts auf dem Boden, alles hat seinen Platz. Sie ist sehr ",
+        "after": ".",
+        "accepted": { "answers": ["ordentlich"] },
+        "referenceTargetIds": ["ordentlich", "hoeflich", "ehrgeizig", "hilfsbereit"],
+        "explanation": {
+          "en": "A room where everything has its place belongs to someone ordentlich.",
+          "fr": "Une chambre où tout est à sa place est celle de quelqu’un d’ordentlich.",
+          "de": "Ein Zimmer, in dem alles seinen Platz hat, gehört einem ordentlichen Menschen."
+        }
+      },
+      "listeningOptionTargetIds": ["ordentlich", "ehrlich", "hoeflich", "schuechtern"]
+    },
+    {
+      "id": "hoeflich",
+      "term": "höflich",
+      "translations": { "en": ["polite"], "fr": ["poli"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "höflich",
+      "examForms": ["höflich"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈhøːflɪç/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Der Verkäufer ist immer höflich.",
+        "translation": {
+          "en": "The salesman is always polite.",
+          "fr": "Le vendeur est toujours poli."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Höflich describes someone with good manners towards others.",
+        "fr": "Höflich décrit quelqu’un qui a de bonnes manières envers les autres.",
+        "de": "Höflich beschreibt jemanden, der zu anderen gute Umgangsformen hat."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Er sagt immer bitte und danke und grüßt alle Gäste. Er ist sehr ",
+        "after": ".",
+        "accepted": { "answers": ["höflich"] },
+        "referenceTargetIds": ["hoeflich", "ordentlich", "neugierig", "grosszuegig"],
+        "explanation": {
+          "en": "Saying please and thank you and greeting everyone is höflich.",
+          "fr": "Dire s’il vous plaît et merci et saluer tout le monde, c’est être höflich.",
+          "de": "Immer bitte und danke zu sagen und alle zu grüßen, ist höflich."
+        }
+      },
+      "listeningOptionTargetIds": ["hoeflich", "ehrlich", "ordentlich", "schuechtern"]
+    },
+    {
+      "id": "schuechtern",
+      "term": "schüchtern",
+      "translations": { "en": ["shy"], "fr": ["timide"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "schüchtern",
+      "examForms": ["schüchtern"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʃʏçtɐn/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Das Mädchen ist noch ein bisschen schüchtern.",
+        "translation": {
+          "en": "The girl is still a little shy.",
+          "fr": "La fille est encore un peu timide."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Schüchtern describes someone who feels uneasy with strangers and speaks little.",
+        "fr": "Schüchtern décrit quelqu’un qui est mal à l’aise avec des inconnus et parle peu.",
+        "de": "Schüchtern beschreibt jemanden, der sich bei Fremden unsicher fühlt und wenig spricht."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Auf Partys spricht sie kaum mit fremden Leuten und wird schnell rot. Sie ist sehr ",
+        "after": ".",
+        "accepted": { "answers": ["schüchtern"] },
+        "referenceTargetIds": ["schuechtern", "ehrgeizig", "grosszuegig", "ordentlich"],
+        "explanation": {
+          "en": "Hardly speaking to strangers and blushing quickly is typical of someone schüchtern.",
+          "fr": "Parler à peine aux inconnus et rougir vite est typique de quelqu’un de schüchtern.",
+          "de": "Kaum mit Fremden zu sprechen und schnell rot zu werden, ist typisch für einen schüchternen Menschen."
+        }
+      },
+      "listeningOptionTargetIds": ["schuechtern", "charakter", "ordentlich", "hoeflich"]
+    },
+    {
+      "id": "ehrgeizig",
+      "term": "ehrgeizig",
+      "translations": { "en": ["ambitious"], "fr": ["ambitieux"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "ehrgeizig",
+      "examForms": ["ehrgeizig"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈeːɐ̯ˌɡaɪ̯t͡sɪç/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Er ist jung und sehr ehrgeizig.",
+        "translation": {
+          "en": "He is young and very ambitious.",
+          "fr": "Il est jeune et très ambitieux."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Do not confuse ehrgeizig (ambitious) with ehrlich (honest): the two words look and sound alike.",
+        "fr": "Ne confondez pas ehrgeizig (ambitieux) et ehrlich (honnête) : les deux mots se ressemblent.",
+        "de": "Verwechsle ehrgeizig nicht mit ehrlich: Die beiden Wörter sehen ähnlich aus und klingen ähnlich."
+      },
+      "explanation": {
+        "en": "Ehrgeizig describes someone who wants to reach big goals and works hard for them.",
+        "fr": "Ehrgeizig décrit quelqu’un qui veut atteindre de grands objectifs et travaille dur pour cela.",
+        "de": "Ehrgeizig beschreibt jemanden, der große Ziele erreichen will und dafür hart arbeitet."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Er will unbedingt Chef werden und arbeitet jeden Abend für sein Ziel. Er ist sehr ",
+        "after": ".",
+        "accepted": { "answers": ["ehrgeizig"] },
+        "referenceTargetIds": ["ehrgeizig", "schuechtern", "grosszuegig", "neugierig"],
+        "explanation": {
+          "en": "Wanting to become boss and working every evening for it is ehrgeizig.",
+          "fr": "Vouloir devenir chef et travailler tous les soirs pour y arriver, c’est être ehrgeizig.",
+          "de": "Unbedingt Chef werden zu wollen und jeden Abend dafür zu arbeiten, ist ehrgeizig."
+        }
+      },
+      "listeningOptionTargetIds": ["ehrgeizig", "ehrlich", "neugierig", "grosszuegig"]
+    },
+    {
+      "id": "hilfsbereit",
+      "term": "hilfsbereit",
+      "translations": { "en": ["helpful"], "fr": ["serviable"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "hilfsbereit",
+      "examForms": ["hilfsbereit"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈhɪlfsbəˌʁaɪ̯t/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Unsere Nachbarn sind sehr hilfsbereit.",
+        "translation": {
+          "en": "Our neighbours are very helpful.",
+          "fr": "Nos voisins sont très serviables."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Hilfsbereit describes someone who is always ready to help others.",
+        "fr": "Hilfsbereit décrit quelqu’un qui est toujours prêt à aider les autres.",
+        "de": "Hilfsbereit beschreibt jemanden, der immer bereit ist, anderen zu helfen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Wenn ich umziehe, hilft mir mein Nachbar sofort beim Tragen. Er ist sehr ",
+        "after": ".",
+        "accepted": { "answers": ["hilfsbereit"] },
+        "referenceTargetIds": ["hilfsbereit", "schuechtern", "ordentlich", "ehrlich"],
+        "explanation": {
+          "en": "A neighbour who helps carry things straight away is hilfsbereit.",
+          "fr": "Un voisin qui aide tout de suite à porter est hilfsbereit.",
+          "de": "Ein Nachbar, der sofort beim Tragen hilft, ist hilfsbereit."
+        }
+      },
+      "listeningOptionTargetIds": ["hilfsbereit", "selbststaendig", "zuverlaessig", "vernuenftig"]
+    },
+    {
+      "id": "grosszuegig",
+      "term": "großzügig",
+      "translations": { "en": ["generous"], "fr": ["généreux"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "großzügig",
+      "examForms": ["großzügig"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈɡʁoːsˌt͡syːɡɪç/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Meine Tante ist sehr großzügig.",
+        "translation": { "en": "My aunt is very generous.", "fr": "Ma tante est très généreuse." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Großzügig describes someone who gladly gives or shares a lot.",
+        "fr": "Großzügig décrit quelqu’un qui donne ou partage volontiers beaucoup.",
+        "de": "Großzügig beschreibt jemanden, der gern und viel gibt oder teilt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Sie lädt alle Freunde ein und bezahlt das ganze Essen. Sie ist sehr ",
+        "after": ".",
+        "accepted": { "answers": ["großzügig", "grosszügig"] },
+        "referenceTargetIds": ["grosszuegig", "schuechtern", "vernuenftig", "neugierig"],
+        "explanation": {
+          "en": "Inviting everyone and paying for the whole meal is großzügig.",
+          "fr": "Inviter tout le monde et payer tout le repas, c’est être großzügig.",
+          "de": "Alle einzuladen und das ganze Essen zu bezahlen, ist großzügig."
+        }
+      },
+      "listeningOptionTargetIds": ["grosszuegig", "ehrgeizig", "zuverlaessig", "geduldig"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

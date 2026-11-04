@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 2,
+  "id": "de-greetings",
+  "lang": "de",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Begrüßen und verabschieden",
+  "objective": {
+    "en": "Greet people and say goodbye in the right way for the person and the time of day.",
+    "fr": "Saluer et prendre congé de la bonne façon selon la personne et le moment de la journée.",
+    "de": "Je nach Person und Tageszeit passend grüßen und sich verabschieden."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:26:17.435Z",
+    "inputHashes": { "outline": "174827f90457f662b6674fa1821fb113aceeca5ef87db9f4bf1686d2295c7ed3" }
+  },
+  "kind": "functions",
+  "theme": "personal_identification",
+  "situation": {
+    "en": "Two neighbours, Lena and Tim, greet each other and say goodbye during the day.",
+    "fr": "Deux voisins, Lena et Tim, se saluent et se disent au revoir au cours de la journée.",
+    "de": "Zwei Nachbarn, Lena und Tim, begrüßen sich und verabschieden sich im Lauf des Tages."
+  },
+  "coverageNotes": {
+    "en": "Greetings for the morning, the daytime and the evening (Guten Morgen, Guten Tag, Guten Abend), the informal Hallo, and two goodbyes: formal Auf Wiedersehen and informal Tschüss.",
+    "fr": "Salutations du matin, de la journée et du soir (Guten Morgen, Guten Tag, Guten Abend), le Hallo informel, et deux façons de prendre congé : Auf Wiedersehen (formel) et Tschüss (informel).",
+    "de": "Grüße für Morgen, Tag und Abend (Guten Morgen, Guten Tag, Guten Abend), das informelle Hallo und zwei Abschiedsformeln: Auf Wiedersehen (förmlich) und Tschüss (informell)."
+  },
+  "prerequisites": [],
+  "roles": [
+    { "id": "lena", "label": "Lena", "translation": { "en": "Lena", "fr": "Lena" } },
+    { "id": "tim", "label": "Tim", "translation": { "en": "Tim", "fr": "Tim" } }
+  ],
+  "expressions": [
+    {
+      "id": "guten-morgen",
+      "text": "Guten Morgen",
+      "openEnd": false,
+      "translations": { "en": ["Good morning"], "fr": ["Bonjour (le matin)"] },
+      "explanation": {
+        "en": "Greeting in the morning, until about 10 or 11 o’clock. It works with du and with Sie.",
+        "fr": "Salutation du matin, jusqu’à 10 ou 11 heures environ. Elle convient avec du et avec Sie.",
+        "de": "Gruß am Morgen, bis etwa 10 oder 11 Uhr. Er passt zu du und zu Sie."
+      },
+      "example": {
+        "text": "Guten Morgen, Herr Braun!",
+        "translation": { "en": "Good morning, Mr Braun!", "fr": "Bonjour, Monsieur Braun !" }
+      }
+    },
+    {
+      "id": "guten-tag",
+      "text": "Guten Tag",
+      "openEnd": false,
+      "translations": { "en": ["Good day"], "fr": ["Bonjour (dans la journée)"] },
+      "explanation": {
+        "en": "Standard greeting during the day. It is polite and fits strangers (Sie).",
+        "fr": "Salutation courante pendant la journée. Elle est polie et convient aux inconnus (Sie).",
+        "de": "Üblicher Gruß tagsüber. Er ist höflich und passt zu Fremden (Sie)."
+      },
+      "example": {
+        "text": "Guten Tag, Herr Keller!",
+        "translation": { "en": "Hello, Mr Keller!", "fr": "Bonjour, Monsieur Keller !" }
+      }
+    },
+    {
+      "id": "guten-abend",
+      "text": "Guten Abend",
+      "openEnd": false,
+      "translations": { "en": ["Good evening"], "fr": ["Bonsoir"] },
+      "explanation": {
+        "en": "Greeting from about six in the evening. It works with du and with Sie.",
+        "fr": "Salutation à partir de 18 heures environ. Elle convient avec du et avec Sie.",
+        "de": "Gruß ab etwa 18 Uhr. Er passt zu du und zu Sie."
+      },
+      "example": {
+        "text": "Guten Abend, Frau Lenz!",
+        "translation": { "en": "Good evening, Mrs Lenz!", "fr": "Bonsoir, Madame Lenz !" }
+      }
+    },
+    {
+      "id": "hallo",
+      "text": "Hallo",
+      "openEnd": false,
+      "translations": { "en": ["Hi"], "fr": ["Salut (en arrivant)"] },
+      "explanation": {
+        "en": "Informal greeting at any time of day, for friends, family and people your age (du).",
+        "fr": "Salutation informelle à toute heure, pour les amis, la famille et les gens de votre âge (du).",
+        "de": "Informeller Gruß zu jeder Tageszeit, für Freunde, Familie und Gleichaltrige (du)."
+      },
+      "example": {
+        "text": "Hallo, Max!",
+        "translation": { "en": "Hi, Max!", "fr": "Salut, Max !" }
+      }
+    },
+    {
+      "id": "auf-wiedersehen",
+      "text": "Auf Wiedersehen",
+      "openEnd": false,
+      "translations": { "en": ["Goodbye"], "fr": ["Au revoir"] },
+      "explanation": {
+        "en": "Polite goodbye for strangers and formal situations (Sie).",
+        "fr": "Au revoir poli pour les inconnus et les situations formelles (Sie).",
+        "de": "Höfliche Verabschiedung bei Fremden und in förmlichen Situationen (Sie)."
+      },
+      "example": {
+        "text": "Auf Wiedersehen, Herr Braun!",
+        "translation": { "en": "Goodbye, Mr Braun!", "fr": "Au revoir, Monsieur Braun !" }
+      }
+    },
+    {
+      "id": "tschuess",
+      "text": "Tschüss",
+      "openEnd": false,
+      "translations": { "en": ["Bye"], "fr": ["Salut (en partant)"] },
+      "explanation": {
+        "en": "Informal goodbye for friends, family and people you call du.",
+        "fr": "Au revoir informel pour les amis, la famille et les personnes que l’on tutoie (du).",
+        "de": "Informelle Verabschiedung bei Freunden, Familie und Personen, die man duzt."
+      },
+      "example": {
+        "text": "Tschüss, Anna!",
+        "translation": { "en": "Bye, Anna!", "fr": "Salut, Anna !" }
+      }
+    }
+  ],
+  "words": [],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

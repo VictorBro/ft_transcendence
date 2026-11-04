@@ -182,6 +182,7 @@ How the NestJS API behaves, per route. Variable: `route` (multi-select).
 | Latency | p95 by route; latency heatmap; the 10 slowest routes over the last hour |
 | Auth | sign-ins by result (200 signed in, 202 second factor needed, 401 wrong credentials, 429 throttled); sign-ups in 24 h; 2FA failures; rate-limited requests by route |
 | Runtime | event loop lag p99; RSS and heap; CPU; GC time by kind; restarts in the last hour |
+| WebSocket | open connections; events by direction, event and outcome |
 
 ### Learning (`ft-learning`)
 
@@ -210,7 +211,7 @@ The host, the stores, Caddy, and the monitoring stack itself.
 | Host | CPU by mode (including `steal`, which matters on a shared core); load against cores; memory and swap used; disk free on `/`; disk busy |
 | Postgres | connections against `max_connections`; connections by state; transactions and rollbacks per second; cache hit ratio; database size; deadlocks in 24 h |
 | Redis | memory; commands per second; clients; keys; hit ratio; AOF last write |
-| Caddy | requests by status; time to first byte p95; requests in flight |
+| Caddy | requests by status; time to first byte p95; requests in flight (an open WebSocket counts for its whole life) |
 | Monitoring | every target, up or down; scrape duration by job; active series; TSDB size on disk; memory per process; notifications sent and failed |
 
 "Memory per process" covers only the processes Prometheus scrapes: the API, Caddy, Prometheus,
@@ -373,6 +374,8 @@ Labels are always bounded: never a user id, an email, a session id, a lesson id 
 | `ft_placement_exams_total` | counter | `lang`, `event` (`started`, `completed`, `quit`) | `PlacementService` |
 | `ft_users` | gauge, read at scrape | none | `MetricsCollector`, cached 60 s |
 | `ft_active_users` | gauge, read at scrape | none | signed-in users seen by `AuthGuard` in the last 5 minutes |
+| `ft_ws_connections` | gauge | none | `SocketGateway`, accepted sockets only |
+| `ft_ws_events_total` | counter | `direction` (`in`, `out`); `event` (a known name, else `unknown`); `outcome` (`ok`, `invalid`, `rate_limited`) | `SocketGateway` (in, and the `app:error` it answers) and `SocketsService.toUser` (out) |
 | `ft_app_info` | gauge, always 1 | `version` (`APP_VERSION`) | `main.ts` |
 | Node defaults | various | none | `collectDefaultMetrics`: event loop lag, heap, GC, `process_*` |
 
@@ -387,6 +390,8 @@ language and event; `ft_placement_draws_total`, `ft_question_restocks_total` and
 `ft_placement_pool_exhausted_total` for every language and level;
 `ft_question_restock_failures_total` for every category and reason; `ft_llm_requests_total` and
 `ft_llm_tokens_total` for every purpose, outcome and token type of the configured Gemini model;
+`ft_ws_events_total` for every server event going out and every client event (and `unknown`)
+coming in, by outcome;
 and `http_request_duration_seconds` for the results the Auth row reads (`POST` sign-up 201,
 sign-in 200, 202, 401 and 429, 2FA 401). Every other route and status is born with its first
 request, so a panel misses that one request after each API start. So is the LLM duration
@@ -403,7 +408,7 @@ down".
 |---|---|
 | Prometheus itself | `up`, scrape durations, active series, TSDB size, rule evaluation failures, Alertmanagers found |
 | Alertmanager | alerts held, notifications sent and failed per integration |
-| Caddy | request duration, time to first byte and in-flight requests by status code. No path label. Every query filters on `handler="subroute"`, the one count per request on the app's site (VERSIONS.md trap 8) |
+| Caddy | request duration, time to first byte and in-flight requests by status code. No path label. Every query filters on `handler="subroute"`, the one count per request on the app's site (VERSIONS.md trap 8). An open WebSocket is one request in flight for its whole life, and its lifetime lands in the duration histogram when it closes |
 | node-exporter | CPU by mode, load, memory and swap, root filesystem size and free space, disk I/O time |
 | postgres-exporter | `pg_up`, backends, `max_connections`, connections by state, commits and rollbacks, cache hits and reads, deadlocks, database size |
 | redis-exporter | `redis_up`, memory, clients, commands, keys, keyspace hits and misses, AOF last write status, stored sessions (`redis_keys_count{key="sess:*"}`) |

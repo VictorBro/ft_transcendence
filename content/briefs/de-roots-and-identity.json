@@ -1,0 +1,630 @@
+{
+  "schemaVersion": 2,
+  "id": "de-roots-and-identity",
+  "lang": "de",
+  "level": "B2",
+  "locales": ["en", "fr", "de"],
+  "title": "Herkunft und Identität",
+  "objective": {
+    "en": "Talk about your origin, roots and identity with twelve key words.",
+    "fr": "Parler de ses origines, de ses racines et de son identité avec douze mots clés.",
+    "de": "Über die eigene Herkunft, die Wurzeln und die Identität mit zwölf Schlüsselwörtern sprechen."
+  },
+  "estimatedMinutes": 20,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:31:12.424Z",
+    "inputHashes": { "outline": "2a1a9b0e1a6c25bc20a884e4397f890e7e33904d1cb561f408d6abdb07886984" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Seven nouns for origin and belonging (Herkunft, Heimat, Wurzeln, Identität, Zugehörigkeit, Muttersprache, Brauch), plus verbs, an adjective and fixed phrases for describing where you grew up and how you feel about it.",
+    "fr": "Sept noms pour l’origine et l’appartenance (Herkunft, Heimat, Wurzeln, Identität, Zugehörigkeit, Muttersprache, Brauch), ainsi que des verbes, un adjectif et des expressions figées pour décrire où l’on a grandi et ce que l’on ressent.",
+    "de": "Sieben Nomen zu Herkunft und Zugehörigkeit (Herkunft, Heimat, Wurzeln, Identität, Zugehörigkeit, Muttersprache, Brauch) sowie Verben, ein Adjektiv und feste Wendungen, um zu beschreiben, wo man aufgewachsen ist und wie man sich fühlt."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve words cover the intent of the outline entry and fit two groups of manageable size at B2.",
+    "fr": "Douze mots couvrent l’intention du plan et forment deux groupes de taille raisonnable pour le niveau B2.",
+    "de": "Zwölf Wörter decken die Absicht der Gliederung ab und bilden auf B2-Niveau zwei überschaubare Gruppen."
+  },
+  "difficultyBalance": {
+    "en": "Most words are core vocabulary for talking about oneself; Zugehörigkeit, geprägt sein von and sich heimisch fühlen are more demanding.",
+    "fr": "La plupart des mots relèvent du vocabulaire de base pour parler de soi ; Zugehörigkeit, geprägt sein von et sich heimisch fühlen sont plus exigeants.",
+    "de": "Die meisten Wörter gehören zum Grundwortschatz, um über sich zu sprechen; Zugehörigkeit, geprägt sein von und sich heimisch fühlen sind anspruchsvoller."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "nomen",
+      "label": {
+        "en": "Nouns: origin and belonging",
+        "fr": "Noms : origine et appartenance",
+        "de": "Nomen: Herkunft und Zugehörigkeit"
+      },
+      "targetIds": [
+        "herkunft",
+        "heimat",
+        "wurzeln",
+        "identitaet",
+        "zugehoerigkeit",
+        "muttersprache",
+        "brauch"
+      ],
+      "introduction": {
+        "en": "These **seven nouns** describe where you come from and who you are:\n\n- `die Herkunft`\n- `die Heimat`\n- `die Wurzeln`\n- `die Identität`\n- `die Zugehörigkeit`\n- `die Muttersprache`\n- `der Brauch`\n\nNote: `die Wurzeln` is normally used in the plural.",
+        "fr": "Ces **sept noms** décrivent d’où l’on vient et qui l’on est :\n\n- `die Herkunft`\n- `die Heimat`\n- `die Wurzeln`\n- `die Identität`\n- `die Zugehörigkeit`\n- `die Muttersprache`\n- `der Brauch`\n\nRemarque : `die Wurzeln` s’emploie normalement au pluriel.",
+        "de": "Diese **sieben Nomen** beschreiben, woher man kommt und wer man ist:\n\n- `die Herkunft`\n- `die Heimat`\n- `die Wurzeln`\n- `die Identität`\n- `die Zugehörigkeit`\n- `die Muttersprache`\n- `der Brauch`\n\nHinweis: `die Wurzeln` steht normalerweise im Plural."
+      }
+    },
+    {
+      "id": "verben",
+      "label": {
+        "en": "Verbs and expressions",
+        "fr": "Verbes et expressions",
+        "de": "Verben und Wendungen"
+      },
+      "targetIds": ["aufwachsen", "stammen", "zweisprachig", "gepraegt", "heimisch"],
+      "introduction": {
+        "en": "These **verbs and expressions** help you talk about your path:\n\n- `aufwachsen`\n- `stammen aus`\n- `zweisprachig`\n- `geprägt sein von`\n- `sich heimisch fühlen`\n\nExample: `Ich bin zweisprachig aufgewachsen.`",
+        "fr": "Ces **verbes et expressions** aident à parler de son parcours :\n\n- `aufwachsen`\n- `stammen aus`\n- `zweisprachig`\n- `geprägt sein von`\n- `sich heimisch fühlen`\n\nExemple : `Ich bin zweisprachig aufgewachsen.`",
+        "de": "Diese **Verben und Wendungen** helfen dir, über deinen Weg zu sprechen:\n\n- `aufwachsen`\n- `stammen aus`\n- `zweisprachig`\n- `geprägt sein von`\n- `sich heimisch fühlen`\n\nBeispiel: `Ich bin zweisprachig aufgewachsen.`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "herkunft",
+      "term": "Herkunft",
+      "translations": { "en": ["origin", "background"], "fr": ["l’origine", "les origines"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Herkunft",
+      "examForms": ["die Herkunft"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/diː ˈheːɐ̯kʊnft/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Meine Herkunft spielt in meinem Alltag eine große Rolle.",
+        "translation": {
+          "en": "My origin plays a big role in my everyday life.",
+          "fr": "Mes origines jouent un grand rôle dans ma vie quotidienne."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Herkunft is where you or your family come from; Heimat is the place you feel attached to.",
+        "fr": "La Herkunft est l’endroit d’où l’on vient, soi ou sa famille ; la Heimat est le lieu auquel on se sent attaché.",
+        "de": "Die Herkunft ist der Ort, von dem man oder die Familie stammt; die Heimat ist der Ort, mit dem man sich verbunden fühlt."
+      },
+      "explanation": {
+        "en": "Die Herkunft means where a person or family comes from: a country, a region or a social background.",
+        "fr": "Die Herkunft désigne l’endroit d’où une personne ou une famille vient : un pays, une région ou un milieu social.",
+        "de": "Die Herkunft bezeichnet, woher eine Person oder Familie stammt: ein Land, eine Region oder ein soziales Umfeld."
+      },
+      "genderExplanation": {
+        "en": "Herkunft is feminine, so its article is die.",
+        "fr": "Herkunft est féminin, son article est donc die.",
+        "de": "Herkunft ist feminin, deshalb heißt der Artikel die."
+      },
+      "matchingLabel": null,
+      "examPrompt": { "en": "a person’s origin or background", "fr": "l’origine d’une personne" },
+      "gap": {
+        "before": "Man sollte niemanden nach seiner ",
+        "after": " beurteilen.",
+        "accepted": { "answers": ["Herkunft"] },
+        "referenceTargetIds": ["herkunft", "brauch", "aufwachsen", "zweisprachig"],
+        "explanation": {
+          "en": "You should not judge anyone by their origin, so Herkunft fits.",
+          "fr": "On ne devrait juger personne selon ses origines : Herkunft convient.",
+          "de": "Man sollte niemanden nach der Herkunft beurteilen, deshalb passt Herkunft."
+        }
+      },
+      "listeningOptionTargetIds": ["herkunft", "heimat", "zugehoerigkeit", "identitaet"]
+    },
+    {
+      "id": "heimat",
+      "term": "Heimat",
+      "translations": { "en": ["homeland", "home region"], "fr": ["le pays natal", "la patrie"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Heimat",
+      "examForms": ["die Heimat"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/diː ˈhaɪ̯maːt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Nach vielen Jahren besuche ich meine Heimat zum ersten Mal wieder.",
+        "translation": {
+          "en": "After many years I am visiting my homeland again for the first time.",
+          "fr": "Après de nombreuses années, je retourne pour la première fois dans mon pays natal."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Heimat is more than a place: it also expresses feelings of familiarity and attachment.",
+        "fr": "La Heimat est plus qu’un lieu : elle exprime aussi un sentiment de familiarité et d’attachement.",
+        "de": "Heimat ist mehr als ein Ort: Das Wort drückt auch Vertrautheit und Verbundenheit aus."
+      },
+      "explanation": {
+        "en": "Die Heimat is the place where you grew up or feel deeply at home.",
+        "fr": "Die Heimat est le lieu où l’on a grandi ou où l’on se sent profondément chez soi.",
+        "de": "Die Heimat ist der Ort, an dem man aufgewachsen ist oder sich tief verbunden fühlt."
+      },
+      "genderExplanation": {
+        "en": "Heimat is feminine, so its article is die.",
+        "fr": "Heimat est féminin, son article est donc die.",
+        "de": "Heimat ist feminin, deshalb heißt der Artikel die."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Nach zehn Jahren im Ausland kehrte sie in ihre ",
+        "after": " zurück.",
+        "accepted": { "answers": ["Heimat"] },
+        "referenceTargetIds": ["heimat", "stammen", "zweisprachig", "brauch"],
+        "explanation": {
+          "en": "She returns to the place she belongs to: Heimat.",
+          "fr": "Elle retourne dans le lieu auquel elle appartient : Heimat.",
+          "de": "Sie kehrt an den Ort zurück, zu dem sie gehört: in die Heimat."
+        }
+      },
+      "listeningOptionTargetIds": ["heimat", "herkunft", "heimisch", "brauch"]
+    },
+    {
+      "id": "wurzeln",
+      "term": "Wurzeln",
+      "translations": { "en": ["roots"], "fr": ["les racines"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "plural",
+      "teachingForm": "die Wurzeln",
+      "examForms": ["die Wurzeln"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/diː ˈvʊʁtsl̩n/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ihre Wurzeln liegen in Griechenland, aber sie lebt in Köln.",
+        "translation": {
+          "en": "Her roots are in Greece, but she lives in Cologne.",
+          "fr": "Ses racines sont en Grèce, mais elle vit à Cologne."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Wurzeln, in the figurative sense, are the origins of a person or a family.",
+        "fr": "Die Wurzeln, au sens figuré, désignent les origines d’une personne ou d’une famille.",
+        "de": "Die Wurzeln sind im übertragenen Sinn die Ursprünge einer Person oder Familie."
+      },
+      "genderExplanation": {
+        "en": "Wurzeln is a plural, so its article is die. The singular, die Wurzel, is feminine.",
+        "fr": "Wurzeln est un pluriel, son article est donc die. Le singulier, die Wurzel, est féminin.",
+        "de": "Wurzeln ist ein Plural, deshalb heißt der Artikel die. Der Singular, die Wurzel, ist feminin."
+      },
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "roots (plural, in the sense of a person’s background)",
+        "fr": "les racines (pluriel, au sens figuré)"
+      },
+      "gap": {
+        "before": "Obwohl er seit Jahren in Wien lebt, hat er seine ",
+        "after": " in der Türkei nie vergessen.",
+        "accepted": { "answers": ["Wurzeln"] },
+        "referenceTargetIds": ["wurzeln", "aufwachsen", "zweisprachig", "heimisch"],
+        "explanation": {
+          "en": "The plural noun Wurzeln fits after seine.",
+          "fr": "Le nom pluriel Wurzeln convient après seine.",
+          "de": "Das Plural-Nomen Wurzeln passt nach seine."
+        }
+      },
+      "listeningOptionTargetIds": ["wurzeln", "herkunft", "brauch", "muttersprache"]
+    },
+    {
+      "id": "identitaet",
+      "term": "Identität",
+      "translations": { "en": ["identity"], "fr": ["l’identité"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Identität",
+      "examForms": ["die Identität"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/diː idɛntiˈtɛːt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Die Sprache ist ein wichtiger Teil meiner Identität.",
+        "translation": {
+          "en": "Language is an important part of my identity.",
+          "fr": "La langue est une partie importante de mon identité."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Identität is what makes a person who they are: their self-image, culture and values.",
+        "fr": "Die Identität est ce qui fait qu’une personne est ce qu’elle est : son image de soi, sa culture et ses valeurs.",
+        "de": "Die Identität ist das, was eine Person ausmacht: ihr Selbstbild, ihre Kultur und ihre Werte."
+      },
+      "genderExplanation": {
+        "en": "Identität is feminine, like most nouns ending in -ität, so its article is die.",
+        "fr": "Identität est féminin, comme la plupart des noms en -ität, son article est donc die.",
+        "de": "Identität ist feminin, wie die meisten Nomen auf -ität, deshalb heißt der Artikel die."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Für viele Jugendliche ist die Suche nach der eigenen ",
+        "after": " eine wichtige Phase.",
+        "accepted": { "answers": ["Identität"] },
+        "referenceTargetIds": ["identitaet", "brauch", "stammen", "gepraegt"],
+        "explanation": {
+          "en": "Young people search for their own identity, so Identität fits.",
+          "fr": "Les jeunes cherchent leur propre identité : Identität convient.",
+          "de": "Jugendliche suchen nach der eigenen Identität, deshalb passt Identität."
+        }
+      },
+      "listeningOptionTargetIds": ["identitaet", "zugehoerigkeit", "herkunft", "heimat"]
+    },
+    {
+      "id": "zugehoerigkeit",
+      "term": "Zugehörigkeit",
+      "translations": { "en": ["belonging", "sense of belonging"], "fr": ["l’appartenance"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Zugehörigkeit",
+      "examForms": ["die Zugehörigkeit"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/diː ˈtsuːɡəˌhøːʁɪçkaɪ̯t/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Ein Verein kann ein Gefühl von Zugehörigkeit geben.",
+        "translation": {
+          "en": "A club can give a sense of belonging.",
+          "fr": "Un club peut donner un sentiment d’appartenance."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Zugehörigkeit is the fact or the feeling of belonging to a group, a place or a culture.",
+        "fr": "Die Zugehörigkeit est le fait ou le sentiment d’appartenir à un groupe, à un lieu ou à une culture.",
+        "de": "Die Zugehörigkeit ist die Tatsache oder das Gefühl, zu einer Gruppe, einem Ort oder einer Kultur zu gehören."
+      },
+      "genderExplanation": {
+        "en": "Zugehörigkeit is feminine, like all nouns ending in -keit, so its article is die.",
+        "fr": "Zugehörigkeit est féminin, comme tous les noms en -keit, son article est donc die.",
+        "de": "Zugehörigkeit ist feminin, wie alle Nomen auf -keit, deshalb heißt der Artikel die."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "In der neuen Stadt hatte sie lange kein Gefühl der ",
+        "after": ".",
+        "accepted": { "answers": ["Zugehörigkeit"] },
+        "referenceTargetIds": ["zugehoerigkeit", "stammen", "zweisprachig", "brauch"],
+        "explanation": {
+          "en": "A feeling of belonging is Zugehörigkeit.",
+          "fr": "Un sentiment d’appartenance se dit Zugehörigkeit.",
+          "de": "Ein Gefühl des Dazugehörens heißt Zugehörigkeit."
+        }
+      },
+      "listeningOptionTargetIds": ["zugehoerigkeit", "identitaet", "gepraegt", "zweisprachig"]
+    },
+    {
+      "id": "muttersprache",
+      "term": "Muttersprache",
+      "translations": {
+        "en": ["mother tongue", "native language"],
+        "fr": ["la langue maternelle"]
+      },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Muttersprache",
+      "examForms": ["die Muttersprache", "die Erstsprache"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/diː ˈmʊtɐˌʃpʁaːxə/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Meine Muttersprache ist Italienisch, aber ich arbeite auf Deutsch.",
+        "translation": {
+          "en": "My mother tongue is Italian, but I work in German.",
+          "fr": "Ma langue maternelle est l’italien, mais je travaille en allemand."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Muttersprache is the first language a person learns as a child.",
+        "fr": "Die Muttersprache est la première langue qu’une personne apprend dans son enfance.",
+        "de": "Die Muttersprache ist die erste Sprache, die ein Mensch als Kind lernt."
+      },
+      "genderExplanation": {
+        "en": "Muttersprache is feminine, so its article is die.",
+        "fr": "Muttersprache est féminin, son article est donc die.",
+        "de": "Muttersprache ist feminin, deshalb heißt der Artikel die."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Meine ",
+        "after": " ist Türkisch, aber im Alltag spreche ich meistens Deutsch.",
+        "accepted": { "answers": ["Muttersprache"] },
+        "referenceTargetIds": ["muttersprache", "brauch", "heimisch", "stammen"],
+        "explanation": {
+          "en": "The first language a person learned is the Muttersprache.",
+          "fr": "La première langue apprise est la Muttersprache.",
+          "de": "Die erste gelernte Sprache ist die Muttersprache."
+        }
+      },
+      "listeningOptionTargetIds": ["muttersprache", "zweisprachig", "heimat", "wurzeln"]
+    },
+    {
+      "id": "brauch",
+      "term": "Brauch",
+      "translations": { "en": ["custom"], "fr": ["la coutume"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "der Brauch",
+      "examForms": ["der Brauch"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/deːɐ̯ bʁaʊ̯x/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "In unserem Dorf gibt es einen schönen Brauch zum Erntedank.",
+        "translation": {
+          "en": "In our village there is a lovely custom for the harvest festival.",
+          "fr": "Dans notre village, il y a une belle coutume pour la fête des moissons."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Der Brauch is a traditional habit that a community keeps over generations. The plural is die Bräuche.",
+        "fr": "Der Brauch est une habitude traditionnelle qu’une communauté conserve de génération en génération. Le pluriel est die Bräuche.",
+        "de": "Der Brauch ist eine überlieferte Gewohnheit, die eine Gemeinschaft über Generationen pflegt. Der Plural ist die Bräuche."
+      },
+      "genderExplanation": {
+        "en": "Brauch is masculine, so its article is der.",
+        "fr": "Brauch est masculin, son article est donc der.",
+        "de": "Brauch ist maskulin, deshalb heißt der Artikel der."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "An Weihnachten pflegt unsere Familie einen alten ",
+        "after": ", den schon meine Urgroßeltern kannten.",
+        "accepted": { "answers": ["Brauch"] },
+        "referenceTargetIds": ["brauch", "gepraegt", "aufwachsen", "identitaet"],
+        "explanation": {
+          "en": "After einen alten, the masculine noun Brauch fits.",
+          "fr": "Après einen alten, le nom masculin Brauch convient.",
+          "de": "Nach einen alten passt das maskuline Nomen Brauch."
+        }
+      },
+      "listeningOptionTargetIds": ["brauch", "aufwachsen", "stammen", "wurzeln"]
+    },
+    {
+      "id": "aufwachsen",
+      "term": "aufwachsen",
+      "translations": { "en": ["to grow up"], "fr": ["grandir"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "aufwachsen",
+      "examForms": ["aufwachsen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈaʊ̯fˌvaksn̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ich bin in einer kleinen Stadt am Meer aufgewachsen.",
+        "translation": {
+          "en": "I grew up in a small town by the sea.",
+          "fr": "J’ai grandi dans une petite ville au bord de la mer."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Aufwachsen is a separable verb (er wächst auf) and forms the perfect with sein: er ist aufgewachsen.",
+        "fr": "Aufwachsen est un verbe séparable (er wächst auf) et forme le parfait avec sein : er ist aufgewachsen.",
+        "de": "Aufwachsen ist ein trennbares Verb (er wächst auf) und bildet das Perfekt mit sein: er ist aufgewachsen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Ich bin auf einem Bauernhof in Tirol ",
+        "after": ".",
+        "accepted": { "answers": ["aufgewachsen"] },
+        "referenceTargetIds": ["aufwachsen", "brauch", "wurzeln", "identitaet"],
+        "explanation": {
+          "en": "The perfect of aufwachsen is ich bin aufgewachsen.",
+          "fr": "Le parfait de aufwachsen est ich bin aufgewachsen.",
+          "de": "Das Perfekt von aufwachsen lautet ich bin aufgewachsen."
+        }
+      },
+      "listeningOptionTargetIds": ["aufwachsen", "stammen", "brauch", "gepraegt"]
+    },
+    {
+      "id": "stammen",
+      "term": "stammen aus",
+      "translations": {
+        "en": ["to originate from", "to come from"],
+        "fr": ["être originaire de", "venir de"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "stammen aus",
+      "examForms": ["stammen aus"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʃtamən aʊ̯s/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Meine Großeltern stammen aus Anatolien.",
+        "translation": {
+          "en": "My grandparents come from Anatolia.",
+          "fr": "Mes grands-parents sont originaires d’Anatolie."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Stammen aus + dative says where a person or family originally comes from: sie stammt aus Sizilien.",
+        "fr": "Stammen aus + datif indique d’où une personne ou une famille est originaire : sie stammt aus Sizilien.",
+        "de": "Stammen aus + Dativ gibt an, woher eine Person oder Familie ursprünglich kommt: Sie stammt aus Sizilien."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Meine Großmutter ",
+        "after": " aus einem kleinen Dorf in Sizilien.",
+        "accepted": { "answers": ["stammt", "stammte"] },
+        "referenceTargetIds": ["stammen", "zweisprachig", "brauch", "heimat"],
+        "explanation": {
+          "en": "The verb stammen with aus gives her origin: sie stammt aus.",
+          "fr": "Le verbe stammen avec aus indique son origine : sie stammt aus.",
+          "de": "Das Verb stammen mit aus gibt ihre Herkunft an: sie stammt aus."
+        }
+      },
+      "listeningOptionTargetIds": ["stammen", "aufwachsen", "heimat", "brauch"]
+    },
+    {
+      "id": "zweisprachig",
+      "term": "zweisprachig",
+      "translations": { "en": ["bilingual"], "fr": ["bilingue"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "zweisprachig",
+      "examForms": ["zweisprachig"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈtsvaɪ̯ˌʃpʁaːxɪç/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Sie ist zweisprachig und wechselt mühelos zwischen Deutsch und Spanisch.",
+        "translation": {
+          "en": "She is bilingual and switches effortlessly between German and Spanish.",
+          "fr": "Elle est bilingue et passe sans effort de l’allemand à l’espagnol."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Zweisprachig describes people or places that use two languages: zweisprachig aufwachsen.",
+        "fr": "Zweisprachig décrit des personnes ou des lieux qui utilisent deux langues : zweisprachig aufwachsen.",
+        "de": "Zweisprachig beschreibt Menschen oder Orte, die zwei Sprachen verwenden: zweisprachig aufwachsen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Unsere Kinder wachsen ",
+        "after": " auf: Zu Hause sprechen wir Polnisch, in der Schule Deutsch.",
+        "accepted": { "answers": ["zweisprachig"] },
+        "referenceTargetIds": ["zweisprachig", "brauch", "heimat", "stammen"],
+        "explanation": {
+          "en": "Two languages at home and at school: the children grow up zweisprachig.",
+          "fr": "Deux langues à la maison et à l’école : les enfants grandissent zweisprachig.",
+          "de": "Zwei Sprachen zu Hause und in der Schule: Die Kinder wachsen zweisprachig auf."
+        }
+      },
+      "listeningOptionTargetIds": ["zweisprachig", "muttersprache", "zugehoerigkeit", "heimisch"]
+    },
+    {
+      "id": "gepraegt",
+      "term": "geprägt sein von",
+      "translations": { "en": ["to be shaped by"], "fr": ["être marqué par", "être façonné par"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "geprägt sein von",
+      "examForms": ["geprägt sein von", "geprägt von"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɡəˈpʁɛːkt zaɪ̯n fɔn/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Ihre Kindheit war stark von zwei Kulturen geprägt.",
+        "translation": {
+          "en": "Her childhood was strongly shaped by two cultures.",
+          "fr": "Son enfance a été fortement marquée par deux cultures."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Geprägt sein von + dative means that something has strongly influenced a person: sie ist von ihrer Heimat geprägt.",
+        "fr": "Geprägt sein von + datif signifie que quelque chose a fortement influencé une personne : sie ist von ihrer Heimat geprägt.",
+        "de": "Geprägt sein von + Dativ bedeutet, dass etwas eine Person stark beeinflusst hat: Sie ist von ihrer Heimat geprägt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Ich bin von zwei Kulturen ",
+        "after": ".",
+        "accepted": { "answers": ["geprägt"] },
+        "referenceTargetIds": ["gepraegt", "zugehoerigkeit", "muttersprache", "brauch"],
+        "explanation": {
+          "en": "Two cultures have influenced me: ich bin geprägt.",
+          "fr": "Deux cultures m’ont influencé : ich bin geprägt.",
+          "de": "Zwei Kulturen haben mich beeinflusst: ich bin geprägt."
+        }
+      },
+      "listeningOptionTargetIds": ["gepraegt", "brauch", "aufwachsen", "identitaet"]
+    },
+    {
+      "id": "heimisch",
+      "term": "sich heimisch fühlen",
+      "translations": { "en": ["to feel at home"], "fr": ["se sentir chez soi"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "sich heimisch fühlen",
+      "examForms": ["sich heimisch fühlen", "sich zu Hause fühlen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/zɪç ˈhaɪ̯mɪʃ ˈfyːlən/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Meine Eltern haben sich in Deutschland nie ganz heimisch gefühlt.",
+        "translation": {
+          "en": "My parents never felt completely at home in Germany.",
+          "fr": "Mes parents ne se sont jamais sentis tout à fait chez eux en Allemagne."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Sich heimisch fühlen means to feel familiar and comfortable in a place: ich fühle mich hier heimisch.",
+        "fr": "Sich heimisch fühlen signifie se sentir familier et à l’aise dans un lieu : ich fühle mich hier heimisch.",
+        "de": "Sich heimisch fühlen bedeutet, sich an einem Ort vertraut und wohl zu fühlen: Ich fühle mich hier heimisch."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Nach einem Jahr in Berlin fühle ich mich endlich ",
+        "after": ".",
+        "accepted": { "answers": ["heimisch"] },
+        "referenceTargetIds": ["heimisch", "wurzeln", "stammen", "brauch"],
+        "explanation": {
+          "en": "After a year the speaker feels at home: ich fühle mich heimisch.",
+          "fr": "Après un an, la personne se sent chez elle : ich fühle mich heimisch.",
+          "de": "Nach einem Jahr fühlt sich die Person zu Hause: Ich fühle mich heimisch."
+        }
+      },
+      "listeningOptionTargetIds": ["heimisch", "heimat", "herkunft", "zweisprachig"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

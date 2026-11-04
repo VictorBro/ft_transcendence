@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 2,
+  "id": "de-telling-about-a-past-experience",
+  "lang": "de",
+  "level": "B1",
+  "locales": ["en", "fr", "de"],
+  "title": "Von einem Erlebnis erzählen",
+  "objective": {
+    "en": "Tell a personal experience vividly and say how you felt: Damals war ich nervös. Plötzlich klingelte das Telefon.",
+    "fr": "Raconter une expérience personnelle de façon vivante et dire ce qu’on a ressenti : Damals war ich nervös. Plötzlich klingelte das Telefon.",
+    "de": "Ein Erlebnis lebendig erzählen und sagen, wie man sich dabei gefühlt hat: Damals war ich nervös. Plötzlich klingelte das Telefon."
+  },
+  "estimatedMinutes": 17,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:32:41.635Z",
+    "inputHashes": { "outline": "383fa98ef25cd587723224a2b68806896167eb9ed96cfef3a1a6e9bd261be244" }
+  },
+  "kind": "functions",
+  "theme": "personal_identification",
+  "situation": {
+    "en": "A friend asks about a past experience, and she tells it step by step, with her feelings.",
+    "fr": "Un ami l’interroge sur une expérience passée, et elle la raconte étape par étape, avec ses sentiments.",
+    "de": "Ein Freund fragt nach einem Erlebnis, und sie erzählt es Schritt für Schritt, mit ihren Gefühlen."
+  },
+  "coverageNotes": {
+    "en": "Six expressions cover a story: setting the scene and the feeling (Damals war ich, Ich fühlte mich), a sudden event (Plötzlich), a lucky turn (Zum Glück), the ending (Am Ende war ich), and the listener's question that keeps the story going (Was ist dann passiert?).",
+    "fr": "Six expressions couvrent un récit : poser la scène et le sentiment (Damals war ich, Ich fühlte mich), un événement soudain (Plötzlich), un heureux hasard (Zum Glück), la fin (Am Ende war ich) et la question de l’auditeur qui fait avancer le récit (Was ist dann passiert?).",
+    "de": "Sechs Ausdrücke decken eine Erzählung ab: die Szene und das Gefühl (Damals war ich, Ich fühlte mich), ein plötzliches Ereignis (Plötzlich), eine glückliche Wendung (Zum Glück), das Ende (Am Ende war ich) und die Frage des Zuhörers, die die Geschichte weiterbringt (Was ist dann passiert?)."
+  },
+  "prerequisites": [],
+  "roles": [
+    {
+      "id": "erzaehlerin",
+      "label": "die Erzählerin",
+      "translation": { "en": "the narrator", "fr": "la narratrice" }
+    },
+    {
+      "id": "zuhoerer",
+      "label": "der Zuhörer",
+      "translation": { "en": "the listener", "fr": "l’auditeur" }
+    }
+  ],
+  "expressions": [
+    {
+      "id": "damals-war-ich",
+      "text": "Damals war ich",
+      "openEnd": true,
+      "translations": { "en": ["Back then I was"], "fr": ["À l’époque, j’étais"] },
+      "explanation": {
+        "en": "Sets a past scene and says how you felt: Damals war ich + adjective.",
+        "fr": "Pose une scène passée et dit ce qu’on ressentait : Damals war ich + adjectif.",
+        "de": "Beschreibt eine Szene in der Vergangenheit und wie man sich fühlte: Damals war ich + Adjektiv."
+      },
+      "example": {
+        "text": "Damals war ich ziemlich nervös.",
+        "translation": {
+          "en": "Back then I was quite nervous.",
+          "fr": "À l’époque, j’étais assez nerveuse."
+        }
+      }
+    },
+    {
+      "id": "ploetzlich",
+      "text": "Plötzlich",
+      "openEnd": true,
+      "translations": { "en": ["Suddenly"], "fr": ["Soudain"] },
+      "explanation": {
+        "en": "Introduces a sudden event: Plötzlich + verb in the simple past.",
+        "fr": "Introduit un événement soudain : Plötzlich + verbe au prétérit.",
+        "de": "Leitet ein plötzliches Ereignis ein: Plötzlich + Verb im Präteritum."
+      },
+      "example": {
+        "text": "Plötzlich klingelte das Telefon.",
+        "translation": { "en": "Suddenly the phone rang.", "fr": "Soudain, le téléphone a sonné." }
+      }
+    },
+    {
+      "id": "zum-glueck",
+      "text": "Zum Glück",
+      "openEnd": true,
+      "translations": { "en": ["Luckily"], "fr": ["Heureusement"] },
+      "explanation": {
+        "en": "Says that something turned out well: Zum Glück + verb.",
+        "fr": "Dit que quelque chose s’est bien passé : Zum Glück + verbe.",
+        "de": "Sagt, dass etwas gut ausging: Zum Glück + Verb."
+      },
+      "example": {
+        "text": "Zum Glück war ich nicht allein.",
+        "translation": {
+          "en": "Luckily, I was not alone.",
+          "fr": "Heureusement, je n’étais pas seule."
+        }
+      }
+    },
+    {
+      "id": "am-ende-war-ich",
+      "text": "Am Ende war ich",
+      "openEnd": true,
+      "translations": { "en": ["In the end I was"], "fr": ["À la fin, j’étais"] },
+      "explanation": {
+        "en": "Closes the story and gives the final feeling: Am Ende war ich + adjective.",
+        "fr": "Termine le récit et donne le sentiment final : Am Ende war ich + adjectif.",
+        "de": "Schließt die Geschichte ab und nennt das Gefühl am Schluss: Am Ende war ich + Adjektiv."
+      },
+      "example": {
+        "text": "Am Ende war ich richtig stolz.",
+        "translation": {
+          "en": "In the end I was really proud.",
+          "fr": "À la fin, j’étais vraiment fière."
+        }
+      }
+    },
+    {
+      "id": "ich-fuehlte-mich",
+      "text": "Ich fühlte mich",
+      "openEnd": true,
+      "translations": { "en": ["I felt"], "fr": ["Je me sentais"] },
+      "explanation": {
+        "en": "Names a feeling in the past: Ich fühlte mich + adjective.",
+        "fr": "Nomme un sentiment passé : Ich fühlte mich + adjectif.",
+        "de": "Nennt ein Gefühl in der Vergangenheit: Ich fühlte mich + Adjektiv."
+      },
+      "example": {
+        "text": "Ich fühlte mich total unsicher.",
+        "translation": {
+          "en": "I felt totally unsure.",
+          "fr": "Je ne me sentais pas du tout sûre de moi."
+        }
+      }
+    },
+    {
+      "id": "was-dann-passiert",
+      "text": "Was ist dann passiert?",
+      "openEnd": false,
+      "translations": { "en": ["What happened then?"], "fr": ["Que s’est-il passé ensuite ?"] },
+      "explanation": {
+        "en": "The listener's question to keep the story going.",
+        "fr": "La question de l’auditeur pour faire avancer le récit.",
+        "de": "Die Frage des Zuhörers, damit die Geschichte weitergeht."
+      },
+      "example": {
+        "text": "Und was ist dann passiert?",
+        "translation": { "en": "And what happened then?", "fr": "Et que s’est-il passé ensuite ?" }
+      }
+    }
+  ],
+  "words": [],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

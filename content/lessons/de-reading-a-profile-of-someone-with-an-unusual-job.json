@@ -1,0 +1,394 @@
+{
+  "schemaVersion": 2,
+  "id": "de-reading-a-profile-of-someone-with-an-unusual-job",
+  "lang": "de",
+  "level": "B2",
+  "locales": ["en", "fr", "de"],
+  "title": "Das Porträt einer Glockengießerin",
+  "objective": {
+    "en": "Read the portrait of a bell founder and recognise the facts, her attitude to her work and the author’s point of view.",
+    "fr": "Lire le portrait d’une fondeuse de cloches et reconnaître les faits, son attitude face au travail et le point de vue de l’autrice.",
+    "de": "Das Porträt einer Glockengießerin lesen und Fakten, ihre Haltung zur Arbeit und den Blickwinkel der Autorin erkennen."
+  },
+  "estimatedMinutes": 11,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:30:33.551Z",
+    "inputHashes": {
+      "outline": "dc90b8eb5c97d9b936295511e7ba933464f93dc93c6e21635c866d887a482563",
+      "brief": "a8d28fc93c514b35aafd1dc7df9def9f5a8f3dd97ec28d7c23efc84d36f43290"
+    }
+  },
+  "kind": "reading",
+  "theme": "personal_identification",
+  "genre": "profile",
+  "documents": [
+    {
+      "documentId": "main",
+      "title": null,
+      "meta": ["Porträt", "Von Jana Keller"],
+      "paragraphs": [
+        "Wenn Katrin Maurer morgens um sechs die Werkstatt betritt, riecht es nach Lehm, Wachs und heißem Metall. Die 41-Jährige ist Glockengießerin, eine der wenigen in Süddeutschland. Ihr Beruf ist ein altes Handwerk, das fast niemand mehr kennt.",
+        "Dabei wollte sie als junge Frau eigentlich Architektin werden. Doch ein Praktikum in der Gießerei ihres Onkels veränderte alles. „Ich stand vor dem Ofen und wusste sofort: Das ist meine Berufung“, erzählt sie. Heute führt sie den Betrieb in vierter Generation.",
+        "Eine Glocke zu gießen ist anspruchsvoll. Zuerst formt Maurer aus Lehm und Ziegeln eine Form, die genau zum gewünschten Ton passt. Dann schmilzt sie Bronze bei etwa 1.100 Grad und lässt sie in die Form fließen. Erst nach Tagen, manchmal nach Wochen, kühlt das Metall so weit ab, dass man die Glocke ausgraben kann. Ob sie gelungen ist, zeigt sich erst beim ersten Schlag. Ein Fehler lässt sich nicht mehr korrigieren.",
+        "Geduld ist deshalb ihre wichtigste Eigenschaft. „Wer hetzt, verliert“, sagt Maurer und lacht. Zugleich ist sie streng mit sich selbst: Mehr als zwei Glocken im Monat schafft ihr kleines Team nicht, und sie will auch nicht mehr. Gewinn ist ihr weniger wichtig als Qualität. Eine Glocke, meint sie, soll hundert Jahre klingen und nicht nach zehn Jahren ersetzt werden.",
+        "Sorgen macht ihr der Nachwuchs. Junge Leute wollen heute lieber im Büro arbeiten, und die Ausbildung dauert drei Jahre. Seit zwei Jahren sucht Maurer vergeblich eine Auszubildende. Man könnte meinen, sie sei verbittert. Doch das Gegenteil ist der Fall: Als im Herbst eine Schulklasse die Werkstatt besuchte, ließ sie alle Kinder den Lehm anfassen. „Einer von ihnen kommt vielleicht wieder“, sagt sie.",
+        "Ich gebe zu: Als ich die Werkstatt verließ, war ich gerührt. Vielleicht romantisiere ich ein Handwerk, das für Maurer vor allem harte Arbeit ist. Aber wer einmal erlebt hat, wie eine frisch gegossene Glocke zum ersten Mal klingt, versteht, warum sie keinen anderen Beruf will."
+      ],
+      "highlights": [
+        { "keywordId": "handwerk", "text": "Handwerk" },
+        { "keywordId": "berufung", "text": "Berufung" },
+        { "keywordId": "anspruchsvoll", "text": "anspruchsvoll" },
+        { "keywordId": "geduld", "text": "Geduld" },
+        { "keywordId": "nachwuchs", "text": "Nachwuchs" }
+      ]
+    },
+    {
+      "documentId": "exam",
+      "title": null,
+      "meta": ["Porträt", "Von Mira Seidel"],
+      "paragraphs": [
+        "Wer einen Schornsteinfeger trifft, soll Glück haben. Für Jonas Brandt ist der Beruf aber vor allem Verantwortung. Der 34-Jährige ist Schornsteinfeger in Hamburg und kontrolliert jede Woche Dutzende Heizungen und Kamine. Dabei klettert er auch über steile Dächer, bei Wind und Regen.",
+        "Seine Kunden vertrauen ihm, weil ein Fehler gefährlich sein kann. Giftiges Gas oder ein Brand im Haus sind ernste Risiken. „Die meisten sehen nur den schwarzen Anzug“, sagt Brandt. „Dass ich vor allem für Sicherheit sorge, merken sie erst, wenn etwas passiert.“",
+        "Brandt wollte ursprünglich Elektriker werden. Er entschied sich anders, weil er Abwechslung mochte: heute ein Hochhaus, morgen ein Bauernhof. Besonders schätzt er das Gespräch mit älteren Kunden, die ihm oft Kaffee anbieten und von früher erzählen. Seine Haltung ist pragmatisch: Der Beruf sei kein Abenteuer, aber ein ehrlicher, sicherer Job mit Zukunft, weil es immer Heizungen geben werde.",
+        "Die Autorin bleibt skeptisch gegenüber dem Mythos vom Glücksbringer. Sie findet es bemerkenswert, dass Brandt so nüchtern über seine Arbeit spricht, obwohl seine Arbeit täglich Menschen schützt."
+      ],
+      "highlights": []
+    }
+  ],
+  "steps": [
+    {
+      "id": "flashcards",
+      "stage": "flashcards",
+      "role": "exercise",
+      "label": { "en": "Flashcards", "fr": "Cartes mémoire", "de": "Karteikarten" },
+      "pages": [
+        {
+          "pageId": "flashcards",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Turn each card to learn the key words of the text.",
+            "fr": "Retournez chaque carte pour découvrir les mots clés du texte.",
+            "de": "Dreh jede Karte um und lerne die Schlüsselwörter des Textes."
+          },
+          "items": [
+            {
+              "type": "reading_flashcards",
+              "itemId": "cards",
+              "keywordIds": ["handwerk", "berufung", "anspruchsvoll", "geduld", "nachwuchs"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matching",
+      "stage": "matching",
+      "role": "exercise",
+      "label": { "en": "Matching", "fr": "Association", "de": "Zuordnen" },
+      "pages": [
+        {
+          "pageId": "matching",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each key word with its meaning.",
+            "fr": "Associez chaque mot clé à son sens.",
+            "de": "Ordne jedem Schlüsselwort seine Bedeutung zu."
+          },
+          "items": [
+            {
+              "type": "reading_keyword_matching",
+              "itemId": "matching",
+              "keywordIds": ["handwerk", "berufung", "anspruchsvoll", "geduld", "nachwuchs"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skim",
+      "stage": "skim",
+      "role": "exercise",
+      "label": { "en": "Skim", "fr": "Survol", "de": "Überfliegen" },
+      "pages": [
+        {
+          "pageId": "skim",
+          "estimatedDurationS": 170,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Look over the document quickly. When the time is up it is put away; then answer the question.",
+            "fr": "Parcourez rapidement le document. À la fin du temps, il disparaît ; répondez ensuite à la question.",
+            "de": "Überfliege das Dokument. Wenn die Zeit um ist, verschwindet es; beantworte dann die Frage."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "skim-document",
+              "documentId": "main",
+              "view": "skim",
+              "skimSeconds": 150
+            },
+            {
+              "type": "reading_skim_choice",
+              "itemId": "skim-question",
+              "focus": "purpose",
+              "question": "Was ist der Zweck dieses Textes?",
+              "options": [
+                { "optionId": "o1", "text": "Er erklärt, wie man eine Gießerei gründet." },
+                { "optionId": "o2", "text": "Er stellt eine Frau und ihren seltenen Beruf vor." },
+                { "optionId": "o3", "text": "Er wirbt für den Kauf einer Glocke." },
+                { "optionId": "o4", "text": "Er kritisiert die Ausbildung im Handwerk." }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "The text portrays Katrin Maurer and her rare job. It gives no instructions, contains no advertisement and no criticism of training.",
+                "fr": "Le texte dresse le portrait de Katrin Maurer et de son métier rare. Il ne donne pas de mode d’emploi, ne fait pas de publicité et ne critique pas la formation.",
+                "de": "Der Text porträtiert Katrin Maurer und ihren seltenen Beruf. Er gibt keine Anleitung, macht keine Werbung und kritisiert nicht die Ausbildung."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "detail",
+      "stage": "detail",
+      "role": "exercise",
+      "label": { "en": "Detail", "fr": "Détails", "de": "Details" },
+      "pages": [
+        {
+          "pageId": "detail",
+          "estimatedDurationS": 120,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the document carefully and answer the questions.",
+            "fr": "Lisez le document attentivement et répondez aux questions.",
+            "de": "Lies das Dokument genau und beantworte die Fragen."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "detail-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-start",
+              "question": "Wie kam Katrin Maurer zu ihrem Beruf?",
+              "options": [
+                { "optionId": "o1", "text": "Durch ein Studium der Architektur" },
+                { "optionId": "o2", "text": "Durch eine Anzeige in der Zeitung" },
+                { "optionId": "o3", "text": "Durch ein Praktikum in der Gießerei ihres Onkels" },
+                { "optionId": "o4", "text": "Durch den Wunsch ihres Vaters" }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "She wanted to become an architect, but an internship in her uncle’s foundry changed everything.",
+                "fr": "Elle voulait devenir architecte, mais un stage dans la fonderie de son oncle a tout changé.",
+                "de": "Sie wollte Architektin werden, doch ein Praktikum in der Gießerei ihres Onkels veränderte alles."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-haltung",
+              "question": "Welche Haltung zeigt Maurer zu ihrer Arbeit?",
+              "options": [
+                { "optionId": "o1", "text": "Sie will möglichst viele Glocken schnell verkaufen." },
+                { "optionId": "o2", "text": "Sie will den Betrieb bald verkaufen." },
+                { "optionId": "o3", "text": "Geld ist ihr das Wichtigste." },
+                { "optionId": "o4", "text": "Qualität ist ihr wichtiger als Gewinn." }
+              ],
+              "answerOptionId": "o4",
+              "answerExplanation": {
+                "en": "The text says: Gewinn ist ihr weniger wichtig als Qualität. Her team makes no more than two bells a month, and she does not want more.",
+                "fr": "Le texte dit : Gewinn ist ihr weniger wichtig als Qualität. Son équipe ne fait pas plus de deux cloches par mois et elle n’en veut pas plus.",
+                "de": "Im Text steht: Gewinn ist ihr weniger wichtig als Qualität. Ihr Team schafft nicht mehr als zwei Glocken im Monat, und sie will auch nicht mehr."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "q-azubi",
+              "statement": "Maurer hat schon eine neue Auszubildende gefunden.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: she has been looking for a trainee for two years without success (vergeblich).",
+                "fr": "Faux : elle cherche une apprentie depuis deux ans sans succès (vergeblich).",
+                "de": "Falsch: Sie sucht seit zwei Jahren vergeblich eine Auszubildende."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-autorin",
+              "question": "Wie beschreibt die Autorin am Ende ihre eigene Haltung?",
+              "options": [
+                { "optionId": "o1", "text": "Sie ist enttäuscht von der harten Arbeit." },
+                { "optionId": "o2", "text": "Sie hält den Beruf für unmodern und überflüssig." },
+                {
+                  "optionId": "o3",
+                  "text": "Sie ist gerührt, fragt sich aber, ob sie das Handwerk romantisiert."
+                },
+                { "optionId": "o4", "text": "Sie ist gelangweilt von der Werkstatt." }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "The author admits she was moved (gerührt) but says she may romanticise a craft that is mostly hard work for Maurer.",
+                "fr": "L’autrice avoue avoir été touchée (gerührt), mais dit qu’elle romantise peut-être un métier qui est surtout un dur labeur pour Maurer.",
+                "de": "Die Autorin gibt zu, gerührt gewesen zu sein, und räumt ein, dass sie vielleicht ein Handwerk romantisiert, das für Maurer vor allem harte Arbeit ist."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "structure",
+      "stage": "structure",
+      "role": "exercise",
+      "label": { "en": "Structure", "fr": "Structure", "de": "Aufbau" },
+      "pages": [
+        {
+          "pageId": "structure",
+          "estimatedDurationS": 75,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the information in the order the text gives it.",
+            "fr": "Remettez les informations dans l’ordre du texte.",
+            "de": "Bring die Informationen in die Reihenfolge des Textes."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "structure-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_order",
+              "itemId": "order",
+              "pieces": [
+                { "pieceId": "p4", "text": "Das Metall kühlt tagelang ab." },
+                { "pieceId": "p1", "text": "Maurer wollte eigentlich Architektin werden." },
+                { "pieceId": "p5", "text": "Maurer sucht vergeblich eine Auszubildende." },
+                { "pieceId": "p3", "text": "Sie formt eine Lehmform und gießt die Bronze." },
+                { "pieceId": "p2", "text": "Ein Praktikum bei ihrem Onkel ändert ihre Pläne." }
+              ],
+              "acceptedOrders": [["p1", "p2", "p3", "p4", "p5"]],
+              "answerExplanation": {
+                "en": "The text first tells her earlier plan and the internship, then the casting process (mould, bronze, cooling), and only then her worry about young recruits.",
+                "fr": "Le texte raconte d’abord son projet initial et le stage, puis la coulée (moule, bronze, refroidissement) et seulement ensuite son souci pour la relève.",
+                "de": "Der Text nennt zuerst ihren früheren Plan und das Praktikum, dann den Guss (Form, Bronze, Abkühlen) und erst danach ihre Sorge um den Nachwuchs."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "stage": "exam",
+      "role": "exam",
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam",
+          "estimatedDurationS": 180,
+          "timeLimitS": 270,
+          "instructions": {
+            "en": "Read the new document and answer the questions. No help this time.",
+            "fr": "Lisez le nouveau document et répondez aux questions. Cette fois, sans aide.",
+            "de": "Lies das neue Dokument und beantworte die Fragen. Diesmal ohne Hilfe."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "exam-document",
+              "documentId": "exam",
+              "view": "exam",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-grund",
+              "question": "Warum wurde Jonas Brandt Schornsteinfeger?",
+              "options": [
+                { "optionId": "o1", "text": "Weil er die Firma seiner Familie übernahm" },
+                { "optionId": "o2", "text": "Weil er viel Geld verdienen wollte" },
+                { "optionId": "o3", "text": "Weil er Abwechslung mochte" },
+                { "optionId": "o4", "text": "Weil er Hamburg verlassen wollte" }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "He first wanted to be an electrician but chose differently because he liked variety.",
+                "fr": "Il voulait d’abord devenir électricien, mais a choisi autrement parce qu’il aimait la variété.",
+                "de": "Er wollte zuerst Elektriker werden, entschied sich aber anders, weil er Abwechslung mochte."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "x-abenteuer",
+              "statement": "Brandt hält seinen Beruf für ein großes Abenteuer.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: he says the job is no adventure but an honest, safe job with a future.",
+                "fr": "Faux : il dit que le métier n’est pas une aventure, mais un travail honnête et sûr, avec un avenir.",
+                "de": "Falsch: Er sagt, der Beruf sei kein Abenteuer, sondern ein ehrlicher, sicherer Job mit Zukunft."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-schaetzt",
+              "question": "Was schätzt Brandt an seiner Arbeit besonders?",
+              "options": [
+                { "optionId": "o1", "text": "Das Gespräch mit älteren Kunden" },
+                { "optionId": "o2", "text": "Das frühe Aufstehen" },
+                { "optionId": "o3", "text": "Den Kontakt mit Behörden" },
+                { "optionId": "o4", "text": "Die Arbeit im Büro" }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "Besonders schätzt er das Gespräch mit älteren Kunden. The other things are not mentioned as something he values.",
+                "fr": "Besonders schätzt er das Gespräch mit älteren Kunden. Les autres choses ne sont pas citées comme quelque chose qu’il apprécie.",
+                "de": "Besonders schätzt er das Gespräch mit älteren Kunden. Die anderen Dinge nennt der Text nicht als etwas, das er schätzt."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-autorin",
+              "question": "Wie steht die Autorin zum Mythos vom Glücksbringer?",
+              "options": [
+                { "optionId": "o1", "text": "Sie ist begeistert davon." },
+                { "optionId": "o2", "text": "Sie bleibt skeptisch." },
+                { "optionId": "o3", "text": "Sie glaubt fest daran." },
+                { "optionId": "o4", "text": "Sie hat noch nie davon gehört." }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "The text says: Die Autorin bleibt skeptisch gegenüber dem Mythos vom Glücksbringer.",
+                "fr": "Le texte dit : Die Autorin bleibt skeptisch gegenüber dem Mythos vom Glücksbringer.",
+                "de": "Im Text steht: Die Autorin bleibt skeptisch gegenüber dem Mythos vom Glücksbringer."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "x-kunden",
+              "statement": "Brandt meint, dass Kunden den Wert seiner Arbeit oft erst nach einem Problem erkennen.",
+              "answer": "true",
+              "answerExplanation": {
+                "en": "True: he says most people only see the black suit and notice the safety work when something happens.",
+                "fr": "Vrai : il dit que la plupart ne voient que le costume noir et ne remarquent le travail de sécurité que lorsqu’il arrive quelque chose.",
+                "de": "Richtig: Er sagt, die meisten sehen nur den schwarzen Anzug und merken die Sicherheitsarbeit erst, wenn etwas passiert."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

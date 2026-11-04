@@ -1,0 +1,234 @@
+{
+  "schemaVersion": 2,
+  "id": "de-causal-prepositions-aus-vor",
+  "lang": "de",
+  "level": "B2",
+  "locales": ["en", "fr", "de"],
+  "title": "Aus Angst, vor Freude: Gründe mit Präposition",
+  "objective": {
+    "en": "Give reasons without an article: aus for deliberate acts, vor for involuntary reactions (aus Neugier fragen, vor Kälte zittern).",
+    "fr": "Donner des raisons sans article : aus pour les actes volontaires, vor pour les réactions involontaires (aus Neugier fragen, vor Kälte zittern).",
+    "de": "Gründe ohne Artikel angeben: aus für bewusstes Handeln, vor für unwillkürliche Reaktionen."
+  },
+  "estimatedMinutes": 17,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:33:00.138Z",
+    "inputHashes": { "outline": "7b43538e12d5887e67bba135782ab791646c08171155bd7f97ca0f0859cfa2c5" }
+  },
+  "kind": "grammar",
+  "topic": "prepositions_and_case",
+  "scopeBoundaries": {
+    "en": "Covers aus and vor + feeling or state nouns without an article. Excludes wegen, durch, infolge and causal clauses with weil or da.",
+    "fr": "Couvre aus et vor + noms de sentiment ou d’état sans article. Exclut wegen, durch, infolge et les subordonnées avec weil ou da.",
+    "de": "Behandelt aus und vor + Nomen für Gefühle und Zustände ohne Artikel. Ausgeschlossen sind wegen, durch, infolge und Kausalsätze mit weil oder da."
+  },
+  "prerequisites": [
+    {
+      "en": "Basic knowledge of the dative case",
+      "fr": "Notions de base du datif",
+      "de": "Grundkenntnisse des Dativs"
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-aus",
+      "summary": {
+        "en": "aus + noun without article gives the motive for a deliberate act: aus Neugier fragen, aus Liebe heiraten.",
+        "fr": "aus + nom sans article donne le motif d’un acte volontaire : aus Neugier fragen, aus Liebe heiraten.",
+        "de": "aus + Nomen ohne Artikel nennt das Motiv für bewusstes Handeln: aus Neugier fragen, aus Liebe heiraten."
+      }
+    },
+    {
+      "id": "rule-vor",
+      "summary": {
+        "en": "vor + noun without article gives the cause of an involuntary reaction: vor Kälte zittern, vor Freude weinen.",
+        "fr": "vor + nom sans article donne la cause d’une réaction involontaire : vor Kälte zittern, vor Freude weinen.",
+        "de": "vor + Nomen ohne Artikel nennt die Ursache einer unwillkürlichen Reaktion: vor Kälte zittern, vor Freude weinen."
+      }
+    },
+    {
+      "id": "rule-contrast",
+      "summary": {
+        "en": "Choose by control: aus when the person decides, vor when the body or emotion takes over. One noun can take both: aus Angst lügen, vor Angst zittern.",
+        "fr": "Choisir selon le contrôle : aus quand la personne décide, vor quand le corps ou l’émotion prend le dessus. Un même nom peut prendre les deux : aus Angst lügen, vor Angst zittern.",
+        "de": "Nach Kontrolle wählen: aus, wenn die Person entscheidet, vor, wenn Körper oder Gefühl übernehmen. Ein Nomen kann beide haben: aus Angst lügen, vor Angst zittern."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-aus",
+      "title": {
+        "en": "aus: reasons for deliberate acts",
+        "fr": "aus : motifs d’un acte volontaire",
+        "de": "aus: Gründe für bewusstes Handeln"
+      },
+      "ruleIds": ["rule-aus"],
+      "explanationPlan": {
+        "en": "Explain that aus + a feeling or motive without an article names the reason for something the person does on purpose. Mention the dative, which is invisible here. Give typical verbs and examples.",
+        "fr": "Expliquer que aus + un sentiment ou un motif sans article indique la raison de ce que la personne fait volontairement. Mentionner le datif, invisible ici. Donner des verbes typiques et des exemples.",
+        "de": "Erklären, dass aus + Gefühl oder Motiv ohne Artikel den Grund für etwas nennt, das die Person bewusst tut. Den hier unsichtbaren Dativ erwähnen. Typische Verben und Beispiele geben."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "Sie hat ihn aus Neugier gefragt.",
+          "translation": {
+            "en": "She asked him out of curiosity.",
+            "fr": "Elle lui a demandé par curiosité."
+          }
+        },
+        {
+          "text": "Die beiden heiraten aus Liebe.",
+          "translation": {
+            "en": "The two are marrying for love.",
+            "fr": "Les deux se marient par amour."
+          }
+        },
+        {
+          "text": "Er nahm das Geschenk aus Höflichkeit an.",
+          "translation": {
+            "en": "He accepted the gift out of politeness.",
+            "fr": "Il a accepté le cadeau par politesse."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "In these phrases the noun has no article: aus Neugier.",
+          "fr": "Dans ces expressions, le nom n’a pas d’article : aus Neugier.",
+          "de": "In diesen Wendungen steht das Nomen ohne Artikel: aus Neugier."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-aus-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-aus"],
+          "estimatedDurationS": 50
+        },
+        {
+          "id": "ex-aus-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-aus"],
+          "estimatedDurationS": 70
+        },
+        {
+          "id": "ex-aus-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-aus"],
+          "estimatedDurationS": 75
+        }
+      ]
+    },
+    {
+      "id": "block-vor",
+      "title": {
+        "en": "vor: involuntary reactions, and aus or vor",
+        "fr": "vor : réactions involontaires, et aus ou vor",
+        "de": "vor: unwillkürliche Reaktionen, und aus oder vor"
+      },
+      "ruleIds": ["rule-vor", "rule-contrast"],
+      "explanationPlan": {
+        "en": "Explain that vor + a feeling or state without an article names the cause of a reaction the person cannot control. Contrast with aus using the same noun (aus Angst, vor Angst) and give a two-step test.",
+        "fr": "Expliquer que vor + un sentiment ou un état sans article indique la cause d’une réaction incontrôlable. Opposer à aus avec le même nom (aus Angst, vor Angst) et donner un test en deux étapes.",
+        "de": "Erklären, dass vor + Gefühl oder Zustand ohne Artikel die Ursache einer Reaktion nennt, die die Person nicht steuern kann. Mit aus am selben Nomen kontrastieren (aus Angst, vor Angst) und einen Zwei-Schritt-Test geben."
+      },
+      "explanationDurationS": 150,
+      "examples": [
+        {
+          "text": "Das Baby zittert vor Kälte.",
+          "translation": {
+            "en": "The baby is shivering with cold.",
+            "fr": "Le bébé tremble de froid."
+          }
+        },
+        {
+          "text": "Sie weint vor Freude.",
+          "translation": { "en": "She is crying with joy.", "fr": "Elle pleure de joie." }
+        },
+        {
+          "text": "Sie lügt aus Angst, und er zittert vor Angst.",
+          "translation": {
+            "en": "She lies out of fear, and he trembles with fear.",
+            "fr": "Elle ment par peur, et lui tremble de peur."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "The verb shows who is in control: lügen and helfen are decisions, zittern and weinen are reactions.",
+          "fr": "Le verbe montre qui contrôle : lügen et helfen sont des décisions, zittern et weinen des réactions.",
+          "de": "Das Verb zeigt, wer die Kontrolle hat: lügen und helfen sind Entscheidungen, zittern und weinen Reaktionen."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-vor-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-vor"],
+          "estimatedDurationS": 50
+        },
+        {
+          "id": "ex-vor-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-vor"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-contrast-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-contrast"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-contrast-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 3,
+          "ruleIds": ["rule-contrast"],
+          "estimatedDurationS": 75
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-reasons",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-aus", "rule-vor"],
+        "estimatedDurationS": 90,
+        "timeLimitS": 160
+      },
+      {
+        "pageId": "exam-contrast",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-contrast"],
+        "estimatedDurationS": 90,
+        "timeLimitS": 160
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["rule-aus", "rule-vor"],
+        "estimatedDurationS": 75,
+        "timeLimitS": 130
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

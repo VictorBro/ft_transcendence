@@ -3,11 +3,16 @@ import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { currentUser } from '@/lib/session';
 import { Avatar } from './avatar';
+import { ConnectionStatus } from './connection-status';
 import { LogOutButton } from './log-out-button';
 
 /**
  * Server component, so the first paint already knows who is signed in. Doing
  * this in the browser would flash the signed-out nav on every page load.
+ *
+ * It sits in every shell's header and never on an error page or the 404, so it
+ * also opens the tab's live connection, which is why only the signed-in branch
+ * renders ConnectionStatus.
  */
 export async function SessionNav() {
   const user = await currentUser();
@@ -27,21 +32,24 @@ export async function SessionNav() {
   }
 
   return (
-    <nav aria-label={t('accountNav')} className="flex min-w-0 items-center gap-4 text-sm">
-      <Link
-        href="/profile"
-        className="flex min-w-0 items-center gap-4 underline underline-offset-4"
-      >
-        <Avatar src={user.avatarUrl} name={user.displayName} size={24} />
-        {/* The name where there is room for it. A display name may be 32
+    <>
+      <ConnectionStatus />
+      <nav aria-label={t('accountNav')} className="flex min-w-0 items-center gap-4 text-sm">
+        <Link
+          href="/profile"
+          className="flex min-w-0 items-center gap-4 underline underline-offset-4"
+        >
+          <Avatar src={user.avatarUrl} name={user.displayName} size={24} />
+          {/* The name where there is room for it. A display name may be 32
             characters with nothing to break on, which on a phone leaves the
             rest of the row nothing, and truncating it to three letters tells
             the reader less than naming the destination does. The avatar alone
             would not read as a link. */}
-        <span className="truncate max-sm:hidden">{user.displayName}</span>
-        <span className="sm:hidden">{t('profile')}</span>
-      </Link>
-      <LogOutButton />
-    </nav>
+          <span className="truncate max-sm:hidden">{user.displayName}</span>
+          <span className="sm:hidden">{t('profile')}</span>
+        </Link>
+        <LogOutButton />
+      </nav>
+    </>
   );
 }
