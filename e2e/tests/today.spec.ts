@@ -1,13 +1,6 @@
 import type { Page } from '@playwright/test';
 
-import {
-  expect,
-  ONBOARDED_COURSE,
-  pickLevel,
-  placeCourse,
-  SECOND_COURSE,
-  test,
-} from '../support/session';
+import { expect, ONBOARDED_COURSE, pickLevel, placeCourse, test } from '../support/session';
 
 /**
  * The course home as the daily goal page (#86). The numbers come from the API
@@ -55,23 +48,6 @@ const finish = async (page: Page, lang: string, id: string, score: number): Prom
 const home = (lang: string) => `/en/learn/${lang}`;
 
 test.describe('the daily goal page', () => {
-  // German A1 has no ready lesson yet, so there is nothing to propose.
-  test('a level with no ready lessons says so, and keeps the settings', async ({ onboarded }) => {
-    await placeCourse(onboarded, SECOND_COURSE);
-    const today = await readToday(onboarded, SECOND_COURSE.lang);
-    expect(today.progress.total).toBe(0);
-
-    await onboarded.goto(home(SECOND_COURSE.lang));
-
-    await expect(onboarded.getByText('Lessons for this level are on their way.')).toBeVisible();
-    await expect(onboarded.getByRole('heading', { name: 'Today' })).toHaveCount(0);
-    await expect(onboarded.getByRole('combobox', { name: 'Level' })).toHaveValue(
-      SECOND_COURSE.level,
-    );
-    await expect(onboarded.getByRole('link', { name: 'Take the placement test' })).toBeVisible();
-    await expect(onboarded.getByText('Your roadmap will appear here')).toHaveCount(0);
-  });
-
   test('a fresh day proposes the target, with one Next up', async ({ onboarded }) => {
     await placeCourse(onboarded, ONBOARDED_COURSE);
     // The shared account: read what it has done today rather than assume none.

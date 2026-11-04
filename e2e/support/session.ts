@@ -112,8 +112,7 @@ export const ONBOARDED_COURSE = { lang: 'fr', level: 'A1', dailyGoal: 30 } as co
 
 /**
  * The one course tests may add to the onboarded account, shared so no spec
- * drifts. German A1 has no ready lesson yet (#91), so it is the level with
- * nothing to play.
+ * drifts.
  */
 export const SECOND_COURSE = { lang: 'de', level: 'A1', dailyGoal: 10 } as const;
 
