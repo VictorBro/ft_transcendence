@@ -65,20 +65,20 @@ function rightAnswer(page: PlanPage, unit: PlanUnit, ref: RefOf): Answer {
 }
 
 /**
- * Starts a lesson and submits every page but the last, as the browser
- * would: every unit right, or every unit blank. Returns the request of the
- * last page, unsent, so a test can time it. The test rebuilds the plan and
- * the refs from the rows, which the browser never can.
+ * Starts a lesson (a 201) and gives what a test needs to play it: the plan
+ * and the refs, rebuilt from the rows as the server does, which the browser
+ * never can. `answers` gives a page's answers, every unit right unless
+ * `how` says blank; `send` submits them, unsent until awaited.
  */
-export async function playToLast(
+export async function openAttempt(
   agent: TestAgent,
   prisma: PrismaService,
   lang: Language,
   id: string,
-  how: 'right' | 'blank' = 'right',
 ) {
   const url = `/api/courses/${lang}/lessons/${id}/attempt`;
-  const { attemptId } = (await agent.post(url).send({ locale: 'en' }).expect(201)).body;
+  const started = await agent.post(url).send({ locale: 'en' }).expect(201);
+  const attemptId: string = started.body.attemptId;
   const row = await prisma.lessonAttempt.findUniqueOrThrow({
     where: { id: attemptId },
     include: { lesson: { select: { brief: true, content: true } } },
@@ -87,23 +87,39 @@ export async function playToLast(
   const plan = lessons.player.buildPlan(source, row.motherTongue);
   const ref = refOf(row.secret);
 
-  const answers = (page: PlanPage) =>
-    how === 'blank'
-      ? {}
-      : Object.fromEntries(
-          page.units.map((unit) => [
-            ref(lessons.player.paths.unit(unit)),
-            rightAnswer(page, unit, ref),
-          ]),
-        );
-  const submit = (index: number) =>
-    agent.post(`${url}/pages/${index}`).send({ attemptId, answers: answers(plan.pages[index]) });
+  const answers = (index: number, how: (unit: PlanUnit) => 'right' | 'blank' = () => 'right') => {
+    const page = plan.pages[index];
+    return Object.fromEntries(
+      page.units
+        .filter((unit) => how(unit) === 'right')
+        .map((unit) => [ref(lessons.player.paths.unit(unit)), rightAnswer(page, unit, ref)]),
+    );
+  };
+  const send = (index: number, body: Record<string, Answer> = answers(index)) =>
+    agent.post(`${url}/pages/${index}`).send({ attemptId, answers: body });
 
+  return { url, attemptId, started: started.body, plan, ref, answers, send };
+}
+
+/**
+ * Starts a lesson and submits every page but the last, as the browser
+ * would: every unit right, or every unit blank. Returns the request of the
+ * last page, unsent, so a test can time it.
+ */
+export async function playToLast(
+  agent: TestAgent,
+  prisma: PrismaService,
+  lang: Language,
+  id: string,
+  how: 'right' | 'blank' = 'right',
+) {
+  const { plan, answers, send } = await openAttempt(agent, prisma, lang, id);
+  const page = (index: number) => answers(index, () => how);
   const last = plan.pages.length - 1;
   for (let index = 0; index < last; index++) {
-    await submit(index).expect(200);
+    await send(index, page(index)).expect(200);
   }
-  return () => submit(last);
+  return () => send(last, page(last));
 }
 
 /** Plays a whole lesson to its results (every unit right, or blank), and returns them. */
