@@ -35,10 +35,12 @@ model User {
   totpSecret    String?
   totpEnabledAt DateTime?
 
-  recoveryCodes     RecoveryCode[]
-  userLevels        UserLevel[]
-  userSeenQuestions UserSeenQuestion[]
-  activeLang        Language?
+  recoveryCodes        RecoveryCode[]
+  userLevels           UserLevel[]
+  userSeenQuestions    UserSeenQuestion[]
+  friendshipsRequested Friendship[]       @relation("FriendshipRequester")
+  friendshipsAddressed Friendship[]       @relation("FriendshipAddressee")
+  activeLang           Language?
 }
 
 // Single-use fallback when the authenticator is lost. Stored as a SHA-256 digest
@@ -151,6 +153,25 @@ model LessonResult {
   @@index([userLevelId, day])
 }
 
+// One row per pair of users, whoever asked first: a request while pending, a
+// friendship once accepted. Declining, cancelling and removing delete it.
+model Friendship {
+  // Both ids, smaller first (src/friends/pair.ts): A to B and B to A share one
+  // key, so two requests that cross cannot make two rows.
+  pairKey     String           @id
+  requesterId String           @db.Uuid
+  requester   User             @relation("FriendshipRequester", fields: [requesterId], references: [id], onDelete: Cascade)
+  addresseeId String           @db.Uuid
+  addressee   User             @relation("FriendshipAddressee", fields: [addresseeId], references: [id], onDelete: Cascade)
+  status      FriendshipStatus @default(pending)
+  createdAt   DateTime         @default(now())
+  // Accepting is the only update, so this is when a request became a friendship.
+  updatedAt   DateTime         @updatedAt
+
+  @@index([requesterId])
+  @@index([addresseeId])
+}
+
 enum QuestionCategory {
   vocabulary
   grammar
@@ -185,6 +206,12 @@ enum Language {
   en
   fr
   de
+}
+
+// Values match FriendshipStatusSchema in @ft/shared.
+enum FriendshipStatus {
+  pending
+  accepted
 }
 
 enum Topic {

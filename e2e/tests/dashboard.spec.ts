@@ -34,10 +34,7 @@ test.describe('dashboard and mode pages', () => {
   // Mirrors `modes` in components/practice-row.tsx: each link's visible title
   // on the course home paired with the route it should open. English values,
   // since this suite is pinned to /en.
-  const practice: [string, string][] = [
-    ['Tutor', '/en/chat'],
-    ['Cross-language chat', '/en/friends'],
-  ];
+  const practice: [string, string][] = [['Tutor', '/en/chat']];
 
   // One test per link, generated from the table above, so a new mode only needs
   // a row here. `exact: true` keeps a longer title from matching a shorter one.
@@ -82,20 +79,6 @@ test.describe('dashboard and mode pages', () => {
       account.displayName,
     );
   });
-
-  // Stub pages behind the practice links that have no dedicated feature yet:
-  // every one except Chat, which has a real page. Asserting the title keeps
-  // this from silently matching the wrong page if a future page reuses the
-  // same ComingSoon copy.
-  const stubs = practice.filter(([, href]) => href !== '/en/chat');
-
-  for (const [title, href] of stubs) {
-    test(`${href} shows the coming-soon placeholder for ${title}`, async ({ signedIn }) => {
-      await signedIn.goto(href);
-      await expect(signedIn.getByText(title, { exact: true })).toBeVisible();
-      await expect(signedIn.getByText('This mode is still in development.')).toBeVisible();
-    });
-  }
 
   // Their console gate is in console.spec.ts, driven by `onboarded` in routes.ts.
 });
