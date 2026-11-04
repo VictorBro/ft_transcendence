@@ -1,5 +1,11 @@
 import { BadRequestException, ConflictException, Injectable } from '@nestjs/common';
-import { lessons as shared, type Language, type Locale, type SessionUser } from '@ft/shared';
+import {
+  lessons as shared,
+  SERVER_EVENTS,
+  type Language,
+  type Locale,
+  type SessionUser,
+} from '@ft/shared';
 
 import type { LessonAttempt, Prisma } from '../generated/prisma/client';
 import { lessonAttempts } from '../metrics/metrics';
@@ -8,6 +14,7 @@ import { newSecret, refOf } from './attempt-ref';
 import { checkCourse, findLesson } from './course-lookup';
 import { lockCourse } from './goal';
 import { applyFinish } from './lessons.service';
+import { SocketsService } from '../gateway/sockets.service';
 
 type LessonPlan = shared.player.LessonPlan;
 type AttemptState = shared.player.AttemptState;
@@ -64,7 +71,10 @@ function viewOf(plan: LessonPlan, row: LessonAttempt, now: Date) {
 
 @Injectable()
 export class AttemptsService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly sockets: SocketsService,
+  ) {}
 
   /**
    * GET attempt: the outline, and the attempt (null before the first start).
@@ -210,6 +220,7 @@ export class AttemptsService {
     // After the commit, as in start.
     if (closed) {
       lessonAttempts.inc({ lang, event: 'completed' });
+      this.sockets.toUser(user.id, SERVER_EVENTS.COURSE_UPDATED, { lang });
     }
     return page;
   }
