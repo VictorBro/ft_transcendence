@@ -219,25 +219,27 @@ export async function answerPage(
 export async function sendPage(page: Page): Promise<void> {
   const before = await pageIndex(page);
   const role = await page.locator('[data-page-index]').getAttribute('data-page-role');
+  const moved = page.locator(`[data-page-index]:not([data-page-index="${before}"])`);
+  const results = page.getByRole('heading', { name: 'Your results' });
+  // A refused post leaves the page where it is, with the reason above the button.
+  const refused = page.locator(`[data-page-index="${before}"]`).getByRole('alert');
+
   await mainButton(page).click();
   if (role === 'practice') {
     // Checked: the feedback and Continue, or the green flash that goes on by itself.
-    const moved = page.locator(`[data-page-index]:not([data-page-index="${before}"])`);
     const checked = page.locator(`[data-page-index="${before}"][data-state="checked"]`);
-    await expect(moved.or(checked)).toBeVisible();
+    await settle(moved.or(checked).or(refused), refused, before);
     if (await checked.isVisible()) await mainButton(page).click();
   }
-  await expect(async () => {
-    const now = await pageIndexOrNull(page);
-    expect(now === null || now !== before).toBe(true);
-  }).toPass();
+  await settle(moved.or(results).or(refused), refused, before);
 }
 
-async function pageIndexOrNull(page: Page): Promise<number | null> {
-  const player = page.locator('[data-page-index]');
-  if ((await player.count()) === 0) return null;
-  const value = await player.getAttribute('data-page-index');
-  return value === null ? null : Number(value);
+/** Waits for one of `any`, and fails with the player's words when it refused the page. */
+async function settle(any: Locator, refused: Locator, index: number): Promise<void> {
+  await expect(any.first()).toBeVisible({ timeout: 30_000 });
+  if (await refused.isVisible()) {
+    throw new Error(`The player refused page ${index}: ${await refused.innerText()}`);
+  }
 }
 
 /**
