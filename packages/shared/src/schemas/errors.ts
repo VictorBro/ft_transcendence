@@ -68,6 +68,14 @@ export const ERROR_CODES = [
   'placement.expired',
   /** No unseen question left for that language, level and category: a content gap. */
   'placement.poolExhausted',
+  /** No user with that id, e.g. a request to an account deleted meanwhile. */
+  'user.notFound',
+  'friend.self',
+  'friend.alreadyRequested',
+  'friend.alreadyFriends',
+  /** No pending request between the two: never sent, or already answered or cancelled. */
+  'friend.requestNotFound',
+  'friend.notFound',
   /** A body no schema rule names: not JSON, not an object, a field of the wrong type. */
   'request.invalid',
   /** A body over the parser's size limit. */

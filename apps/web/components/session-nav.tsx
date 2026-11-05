@@ -31,6 +31,8 @@ export async function SessionNav() {
     );
   }
 
+  const friends = await getTranslations('FriendsPage');
+
   return (
     <>
       <ConnectionStatus />
@@ -47,6 +49,9 @@ export async function SessionNav() {
             would not read as a link. */}
           <span className="truncate max-sm:hidden">{user.displayName}</span>
           <span className="sm:hidden">{t('profile')}</span>
+        </Link>
+        <Link href="/friends" className="shrink-0 underline underline-offset-4">
+          {friends('title')}
         </Link>
         <LogOutButton />
       </nav>

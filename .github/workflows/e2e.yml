@@ -11,8 +11,10 @@ name: e2e
 #                 render real content, measured against a character floor.
 #
 # Every spec runs on Chromium, Firefox and WebKit (the additional browsers
-# minor), against one stack: bringing it up dominates the job, so three jobs
-# would triple the build for a suite that takes a fraction of it.
+# minor), one job and one stack per browser. The suite waits on POST
+# /auth/signup, limited to 10 a minute per address, and each stack keeps its own
+# count (e2e/support/signup-budget.ts): on one stack the three browsers queued
+# for the same budget. The gate at the end carries the check the ruleset requires.
 # See ci.yml: once per PR, once when the squash merge lands on main.
 on:
   push:
@@ -27,10 +29,15 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  playwright:
-    name: playwright (production stack)
+  suite:
+    name: playwright (${{ matrix.browser }})
     runs-on: ubuntu-24.04
-    timeout-minutes: 30
+    timeout-minutes: 20
+    strategy:
+      # A WebKit failure should not hide whether Chromium and Firefox pass.
+      fail-fast: false
+      matrix:
+        browser: [chromium, firefox, webkit]
 
     env:
       COMPOSE: docker compose -f compose.yml -f compose.prod.yml
@@ -50,8 +57,8 @@ jobs:
 
       # Before the stack comes up: this step is cache-friendly and slow, and
       # there is no reason to have containers idling while it runs.
-      - name: Install the browser builds Playwright pins
-        run: pnpm --filter @ft/e2e exec playwright install --with-deps chromium firefox webkit
+      - name: Install the browser build Playwright pins
+        run: pnpm --filter @ft/e2e exec playwright install --with-deps ${{ matrix.browser }}
 
       # No .env file. Every value in compose.yml is ${VAR:-default} except
       # SESSION_SECRET and the Grafana keys, supplied above, so the stack comes
@@ -89,13 +96,15 @@ jobs:
         run: ./scripts/check-monitoring.sh
 
       - name: Run the suite
-        run: pnpm --filter @ft/e2e run test:e2e
+        run: pnpm --filter @ft/e2e run test:e2e --project=${{ matrix.browser }}
 
       # Alone and after the suite: it restarts the API, which every test beside
-      # it and SSR would lose. Once, on Chromium: two restarts in 15 minutes
-      # fire ApiRestarting. The spec calls plain `docker compose`, so the job's
-      # file list goes in through COMPOSE_FILE.
+      # it and SSR would lose. In Chromium's job only: test:e2e:restart pins
+      # Chromium, and the retry loop is the same code on every engine. The spec
+      # calls plain `docker compose`, so the job's file list goes in through
+      # COMPOSE_FILE.
       - name: Restart the API under an open page
+        if: matrix.browser == 'chromium'
         run: pnpm --filter @ft/e2e run test:e2e:restart
         env:
           COMPOSE_FILE: compose.yml:compose.prod.yml
@@ -110,7 +119,8 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@v7.0.1
         with:
-          name: playwright-report
+          # One per browser: a run refuses two artifacts of the same name.
+          name: playwright-report-${{ matrix.browser }}
           path: |
             e2e/playwright-report
             e2e/test-results
@@ -120,3 +130,20 @@ jobs:
       - name: Tear the stack down
         if: always()
         run: $COMPOSE down -v --remove-orphans
+
+  # The check the ruleset requires, whatever the browser list. always(): a job
+  # skipped by its `if` counts as passed, so the gate has to run, and fail,
+  # when a browser did not pass.
+  playwright:
+    name: playwright (production stack)
+    needs: suite
+    if: always()
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Every browser passed
+        env:
+          RESULT: ${{ needs.suite.result }}
+        run: |
+          echo "browser jobs: $RESULT"
+          test "$RESULT" = success

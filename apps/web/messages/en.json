@@ -27,8 +27,7 @@
     "logoAlt": "ft_transcendence logo"
   },
   "Modes": {
-    "chatTitle": "Tutor",
-    "friendsTitle": "Cross-language chat"
+    "chatTitle": "Tutor"
   },
   "Languages": {
     "en": "English",
@@ -96,9 +95,6 @@
     "lessonsAtTop": "Your lessons will maintain and refine it.",
     "save": "Save",
     "cancel": "Cancel"
-  },
-  "ComingSoon": {
-    "stillInDevelopment": "This mode is still in development. Check back soon."
   },
   "ModeLayout": {
     "backToCourse": "Back to course"
@@ -221,6 +217,16 @@
       "expired": "That placement test has expired. Start a new one.",
       "poolExhausted": "There are not enough questions left for that test. Try again later."
     },
+    "user": {
+      "notFound": "That account does not exist"
+    },
+    "friend": {
+      "self": "You cannot add yourself as a friend",
+      "alreadyRequested": "You have already sent this person a request",
+      "alreadyFriends": "You are already friends",
+      "requestNotFound": "That request is no longer open",
+      "notFound": "That person is not in your friends"
+    },
     "request": {
       "invalid": "The request could not be read",
       "tooLarge": "The request is too large"
@@ -262,6 +268,26 @@
     "removing": "Removing...",
     "avatarTooLarge": "File is too large. Maximum size is {size} MiB.",
     "saveChanges": "Save changes"
+  },
+  "FriendsPage": {
+    "title": "Friends",
+    "searchLabel": "Search by display name",
+    "search": "Search",
+    "results": "Search results",
+    "noResults": "No display name contains {query}.",
+    "received": "Requests received",
+    "sent": "Requests sent",
+    "yourFriends": "Your friends",
+    "noFriends": "No friends yet. Search for someone by their display name.",
+    "add": "Add friend",
+    "accept": "Accept",
+    "decline": "Decline",
+    "cancelRequest": "Cancel request",
+    "requestSent": "Request sent",
+    "isFriend": "Already friends",
+    "remove": "Remove",
+    "removeConfirm": "Remove {name} from your friends?",
+    "cancel": "Cancel"
   },
   "TwoFactorPage": {
     "heading": "Two factor authentication",

@@ -5,7 +5,7 @@ export const privacyPolicy: LegalDocument = {
   title: 'Datenschutzerklärung',
   description:
     'Was ft_transcendence sammelt, während Sie damit eine Sprache lernen, warum wir es sammeln, wie lange wir es aufbewahren, und wie Sie es zurückerhalten oder löschen lassen können.',
-  lastUpdated: '2026-08-01',
+  lastUpdated: '2026-11-04',
   intro:
     'ft_transcendence ist eine KI-gestützte Plattform zum Sprachenlernen. Eine Sprache gut zu unterrichten bedeutet, zu beobachten, wie Sie sie verwenden, daher verarbeitet dieser Dienst mehr über Ihr Lernverhalten als eine typische Website. Diese Richtlinie erklärt genau, was das in der Praxis bedeutet, geschrieben, um gelesen und nicht nur überflogen zu werden.',
   sections: [
@@ -50,7 +50,7 @@ export const privacyPolicy: LegalDocument = {
       id: 'retention',
       heading: '5. Wie lange wir Daten aufbewahren',
       paragraphs: [
-        'Kontodaten werden aufbewahrt, bis das Konto gelöscht wird. Lernfortschritt und Bewertungsergebnisse werden für die Lebensdauer des Kontos aufbewahrt, da ihre Entfernung die Einstufung zurücksetzen würde, die die Plattform nützlich macht.',
+        'Kontodaten werden aufbewahrt, bis das Konto gelöscht wird. Lernfortschritt und Bewertungsergebnisse werden für die Lebensdauer des Kontos aufbewahrt, da ihre Entfernung die Einstufung zurücksetzen würde, die die Plattform nützlich macht. Eine Freundschaft oder Freundschaftsanfrage bleibt gespeichert, bis einer von Ihnen beiden sie entfernt, ablehnt oder zurückzieht oder sein Konto löscht.',
         'Mitschriften von KI-Konversationen werden zwölf Monate aufbewahrt und dann automatisch gelöscht. An andere Lernende gesendete Chat-Nachrichten werden zwölf Monate aufbewahrt. Server-Logs mit IP-Adressen werden dreißig Tage aufbewahrt und dann rotiert.',
         'Das Löschen Ihres Kontos entfernt Kontodaten, Lerndaten und Mitschriften innerhalb von dreißig Tagen. Nachrichten, die Sie an einen anderen Lernenden gesendet haben, bleiben für diesen sichtbar, getrennt von Ihrem Profil, da sie Teil einer Konversation sind, die Ihnen nicht allein gehört. Backups werden nach ihrem eigenen rollierenden Zyklus gelöscht, der innerhalb von neunzig Tagen abgeschlossen ist.',
       ],
@@ -59,7 +59,7 @@ export const privacyPolicy: LegalDocument = {
       id: 'sharing',
       heading: '6. Wer sonst Ihre Daten sieht',
       paragraphs: [
-        'Andere Lernende sehen Ihren Anzeigenamen, Avatar, Anwesenheitsstatus, und alles, was Sie ihnen senden. Nichts sonst in Ihrem Profil wird standardmäßig offengelegt.',
+        'Andere Lernende sehen Ihren Anzeigenamen, Avatar, Anwesenheitsstatus, und alles, was Sie ihnen senden. Jeder angemeldete Lernende kann Sie über Ihren Anzeigenamen finden und Ihnen eine Freundschaftsanfrage senden. Ihre Freundesliste sehen nur Sie. Nichts sonst in Ihrem Profil wird standardmäßig offengelegt.',
         'Außerhalb der Plattform erreichen Daten nur die Infrastruktur und Modellanbieter, die für den Betrieb erforderlich sind. Wir teilen keine Daten mit Werbetreibenden, Datenhändlern, oder Analysenetzwerken. Sollten wir jemals durch eine rechtmäßige Anordnung zur Offenlegung von Daten gezwungen werden, werden wir Sie benachrichtigen, sofern uns dies nicht untersagt ist.',
       ],
     },
