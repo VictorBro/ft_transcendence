@@ -94,6 +94,21 @@ function rowsOf(page: Page, prompt: PlanUnit['prompt']): Locator {
   return exact ? rows.filter({ has: page.getByText(exact, { exact: true }) }) : rows;
 }
 
+/**
+ * The first of `rows` no earlier unit of the page took, marked as taken:
+ * two units can show the same prompt, or the same text around a gap.
+ */
+async function unusedRow(rows: Locator, used: Set<string>): Promise<Locator> {
+  for (let n = 0; n < (await rows.count()); n += 1) {
+    const id = (await rows.nth(n).getAttribute('data-unit')) ?? '';
+    if (!used.has(id)) {
+      used.add(id);
+      return rows.nth(n);
+    }
+  }
+  return rows.first();
+}
+
 /** A word-order or spot row: the one whose word buttons are exactly `tokens`, in any order. */
 async function tokenRow(page: Page, tokens: string[], used: Set<string>): Promise<Locator> {
   const rows = page.locator('[data-unit]');
@@ -133,7 +148,7 @@ export async function answerPage(
     const good = right(unit);
     switch (unit.kind) {
       case 'text': {
-        const row = rowsOf(page, unit.prompt).first();
+        const row = await unusedRow(rowsOf(page, unit.prompt), used);
         await row.getByRole('textbox').fill(good ? rightText(unit) : WRONG_TEXT);
         break;
       }
@@ -148,23 +163,14 @@ export async function answerPage(
           const option = pickFrom.find((id) => !given.has(id)) ?? pickFrom[0]!;
           given.add(option);
           // Two boxes can show the same form: the first one not given yet.
-          const rows = rowsOf(page, unit.prompt);
-          let row = rows.first();
-          for (let n = 0; n < (await rows.count()); n += 1) {
-            const id = (await rows.nth(n).getAttribute('data-unit')) ?? '';
-            if (!used.has(id)) {
-              used.add(id);
-              row = rows.nth(n);
-              break;
-            }
-          }
+          const row = await unusedRow(rowsOf(page, unit.prompt), used);
           await page
             .locator('[data-option]')
             .getByText(textOf(unit.options, option), { exact: true })
             .click();
           await row.getByRole('button').click();
         } else {
-          const row = rowsOf(page, unit.prompt).first();
+          const row = await unusedRow(rowsOf(page, unit.prompt), used);
           await row
             .getByRole('radio', { name: textOf(unit.options, pickFrom[0]!), exact: true })
             .click();
