@@ -2,7 +2,14 @@ import type { Page } from '@playwright/test';
 
 import { formatViolations, watchConsole } from '../support/console-guard';
 import { expectFitsTheScreen } from '../support/layout';
-import { lessonPlan, mainButton, pageIndex, playLesson } from '../support/lesson-play';
+import {
+  answerPage,
+  lessonPlan,
+  mainButton,
+  pageIndex,
+  playLesson,
+  sendPage,
+} from '../support/lesson-play';
 import { liveConnection } from '../support/live';
 import { expect, placeCourse, test } from '../support/session';
 
@@ -16,7 +23,22 @@ import { expect, placeCourse, test } from '../support/session';
 
 const LANG = 'fr';
 const LESSON = 'fr-subject-pronouns';
-const page = (suffix = '') => `/en/learn/${LANG}/lessons/${LESSON}${suffix}`;
+const page = (suffix = '', lesson = LESSON) => `/en/learn/${LANG}/lessons/${lesson}${suffix}`;
+
+/** The other French A1 grammar lessons: each plays to its results in the browser too. */
+const OTHER_GRAMMAR = [
+  'fr-er-verbs-present',
+  'fr-here-there-now-tomorrow',
+  'fr-indefinite-articles-and-noun-gender',
+  'fr-verb-etre-present',
+];
+
+/** Opens a lesson page and starts the lesson. */
+async function start(p: Page, lesson = LESSON): Promise<void> {
+  await p.goto(page('', lesson));
+  await p.getByRole('button', { name: 'Start the lesson' }).click();
+  await p.waitForURL(/\/play$/);
+}
 const plan = lessonPlan(LESSON, 'en');
 const firstOf = (role: string) => plan.pages.findIndex((p) => p.role === role);
 const FIRST_PRACTICE = firstOf('practice');
@@ -106,6 +128,17 @@ test.describe('a grammar lesson', () => {
         .length,
     );
     await context.close();
+
+    // Retake: it asks first and starts again at the first page. Until the
+    // new attempt ends, the results send back to the lesson page.
+    await learner.goto(page('/results'));
+    await learner.getByRole('button', { name: 'Retake the lesson' }).click();
+    await learner.getByRole('button', { name: 'Retake', exact: true }).click();
+    await learner.waitForURL(/\/play$/);
+    await expect(learner.locator('[data-page-index="0"]')).toBeVisible();
+    await learner.goto(page('/results'));
+    await expect(learner).toHaveURL(new RegExp(`${page()}$`));
+    await expect(learner.getByRole('link', { name: 'Resume the lesson' })).toBeVisible();
   });
 
   test('keeps its place through reloads, Back and Forward', async ({ freshLearner }) => {
@@ -157,4 +190,97 @@ test.describe('a grammar lesson', () => {
 
     expect(violations, formatViolations(violations)).toEqual([]);
   });
+
+  test('a second tab on an old page catches up with the attempt', async ({ freshLearner }) => {
+    const learner = freshLearner;
+    await placeCourse(learner, { lang: LANG, level: 'A1', dailyGoal: 10 });
+    await start(learner);
+    await playLesson(learner, plan, { stop: (index) => index === FIRST_PRACTICE });
+
+    const other = await learner.context().newPage();
+    await other.goto(page('/play'));
+    await expect(other.locator(`[data-page-index="${FIRST_PRACTICE}"]`)).toBeVisible();
+
+    // The first tab checks the page; the second still shows it, and its
+    // Check gets a 409: it reads the attempt again and shows the real page.
+    await answerPage(learner, plan.pages[FIRST_PRACTICE]!, () => true);
+    await sendPage(learner);
+    const now = await pageIndex(learner);
+    await mainButton(other).click();
+    await expect(other.locator(`[data-page-index="${now}"]`)).toBeVisible();
+    await expect(other.getByRole('alert')).toBeVisible();
+    await other.close();
+  });
+
+  test('posts the drafts when the countdown reaches zero', async ({ freshLearner }) => {
+    const learner = freshLearner;
+    await placeCourse(learner, { lang: LANG, level: 'A1', dailyGoal: 10 });
+    // The tab's clock only: the server's deadline is still far, so the post counts.
+    await learner.clock.install();
+    await start(learner);
+    await playLesson(learner, plan, { share: 0, stop: (index) => index === FIRST_EXAM });
+
+    const exam = plan.pages[FIRST_EXAM]!;
+    await answerPage(learner, exam, () => true);
+    await learner.clock.fastForward(exam.timeLimitS! * 1000);
+    await expect(learner.locator(`[data-page-index="${FIRST_EXAM + 1}"]`)).toBeVisible();
+
+    // Every other exam page blank: the exam's points are that page's.
+    await playLesson(learner, plan, { share: 0 });
+    await expect(learner.getByRole('heading', { name: 'Your results' })).toBeVisible();
+    await expect(
+      learner.locator('dt', { hasText: /^Exam$/ }).locator('xpath=following-sibling::dd'),
+    ).toHaveText(new RegExp(`^${exam.units.length} / \\d+$`));
+  });
+
+  test('says when the time ran out while the learner was away', async ({ freshLearner }) => {
+    // The server's clock decides, so this waits out a real exam page.
+    const lesson = 'fr-here-there-now-tomorrow';
+    const other = lessonPlan(lesson, 'en');
+    const firstExam = other.pages.findIndex((p) => p.role === 'exam');
+    const limitS = other.pages[firstExam]!.timeLimitS!;
+    test.setTimeout(240_000 + limitS * 1000);
+
+    const learner = freshLearner;
+    await placeCourse(learner, { lang: LANG, level: 'A1', dailyGoal: 10 });
+    await start(learner, lesson);
+    await playLesson(learner, other, { share: 0, stop: (index) => index === firstExam });
+    await expect(learner.getByRole('timer', { name: 'Time left' })).toBeVisible();
+
+    await learner.goBack();
+    await expect(learner.getByRole('link', { name: 'Resume the exam' })).toBeVisible();
+    // The page's time, the server's two seconds of grace, and some slack.
+    await learner.waitForTimeout((limitS + 4) * 1000);
+    await learner.getByRole('link', { name: 'Resume the exam' }).click();
+
+    await expect(
+      learner.getByText('Time ran out while you were away. This page counts as unanswered.'),
+    ).toBeVisible();
+    await expect(learner.locator('[data-unit] :is(input, button, select)').first()).toBeDisabled();
+    await expect(learner.getByTestId('time-left')).toHaveText('0:00');
+    await mainButton(learner).click();
+    await expect(learner.locator(`[data-page-index="${firstExam + 1}"]`)).toBeVisible();
+  });
+});
+
+test.describe('every French A1 grammar lesson', () => {
+  // The renderers are the same in every engine: lesson.spec's first test
+  // covers those, and here each lesson's items and matchers.
+  test.skip(({ browserName }) => browserName !== 'chromium', 'Chromium covers the content');
+  test.describe.configure({ timeout: 240_000 });
+
+  for (const lesson of OTHER_GRAMMAR) {
+    test(`${lesson} plays to its results`, async ({ freshLearner }) => {
+      const learner = freshLearner;
+      const lessonPlanned = lessonPlan(lesson, 'en');
+      const violations = watchConsole(learner);
+      await placeCourse(learner, { lang: LANG, level: 'A1', dailyGoal: 10 });
+      await start(learner, lesson);
+      await playLesson(learner, lessonPlanned);
+
+      await expect(learner.getByRole('heading', { name: 'Your results' })).toBeVisible();
+      await expect(learner.getByText('Score: 100 / 100')).toBeVisible();
+      expect(violations, formatViolations(violations)).toEqual([]);
+    });
+  }
 });
