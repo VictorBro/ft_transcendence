@@ -249,6 +249,9 @@ importers:
       '@ft/eslint-config':
         specifier: workspace:*
         version: link:../packages/eslint-config
+      '@ft/shared':
+        specifier: workspace:*
+        version: link:../packages/shared
       '@ft/tsconfig':
         specifier: workspace:*
         version: link:../packages/tsconfig
