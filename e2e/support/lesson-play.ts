@@ -323,6 +323,9 @@ function answerOf(unit: PlanUnit, view: UnitView, good: boolean): Answer | undef
   return undefined;
 }
 
+/** How often postPatiently waits out a 429 before it gives up. */
+const MAX_RATE_LIMIT_WAITS = 3;
+
 /**
  * A POST that waits out the rate limit: the API allows 100 requests a
  * minute per learner, and a level of lessons is several hundred pages.
@@ -333,9 +336,13 @@ async function postPatiently(
   url: string,
   data: unknown,
 ): Promise<APIResponse> {
-  for (;;) {
+  // A window or two of the limit; more means the limit is not what it should be.
+  for (let waits = 0; ; waits += 1) {
     const response = await request.post(url, { data });
     if (response.status() !== 429) return response;
+    if (waits === MAX_RATE_LIMIT_WAITS) {
+      throw new Error(`${url}: still 429 after ${waits} waits for the rate limit`);
+    }
     const seconds = Number(response.headers()['retry-after'] ?? '5');
     await new Promise((resolve) =>
       setTimeout(resolve, (Number.isFinite(seconds) ? seconds : 5) * 1000),
