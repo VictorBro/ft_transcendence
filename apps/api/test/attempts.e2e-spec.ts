@@ -150,6 +150,41 @@ describe('lesson attempts (e2e)', () => {
       expect(first.body.current.index).toBe(0);
     });
 
+    it('makes one attempt of two parallel starts, a first one and a retake', async () => {
+      const url = `/api/courses/fr/lessons/${ONE}/attempt`;
+      const started = async () =>
+        (await seriesValue(lessonAttempts, { lang: 'fr', event: 'started' })) ?? 0;
+
+      // Both wait on the course lock: the second sees the first one's row.
+      const bothStarts = async (
+        agent: Awaited<ReturnType<typeof learner>>['agent'],
+        email: string,
+      ) => {
+        const { id } = await course(email);
+        const before = await started();
+        const both = await Promise.all([
+          agent.post(url).send({ locale: 'en' }),
+          agent.post(url).send({ locale: 'en' }),
+        ]);
+        expect(both.map((response) => response.status).sort()).toEqual([200, 201]);
+        expect(both[0].body.attemptId).toBe(both[1].body.attemptId);
+        expect(
+          await prisma.lessonAttempt.findMany({ where: { userLevelId: id }, select: { id: true } }),
+        ).toEqual([{ id: both[0].body.attemptId }]);
+        expect(await started()).toBe(before + 1);
+        return both[0].body.attemptId as string;
+      };
+
+      const fresh = await learner('double');
+      await bothStarts(fresh.agent, fresh.email);
+
+      const again = await learner('reboth');
+      await playLesson(again.agent, prisma, 'fr', ONE);
+      const { id } = await course(again.email);
+      const done = await prisma.lessonAttempt.findFirstOrThrow({ where: { userLevelId: id } });
+      expect(await bothStarts(again.agent, again.email)).not.toBe(done.id);
+    });
+
     it('answers 404 lesson.notFound for an unknown, an unready or another language’s lesson', async () => {
       const { agent } = await learner('missing');
       await agent.post('/api/courses').send({ lang: 'de', dailyGoal: 10 }).expect(201);
