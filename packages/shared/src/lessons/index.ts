@@ -19,6 +19,7 @@ export {
   briefSchema,
   contentSchema,
   hasContentFile,
+  isSupportedKind,
   type Brief,
   type LessonContent,
 } from './schemas/artifacts';

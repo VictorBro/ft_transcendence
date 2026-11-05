@@ -3,6 +3,7 @@ import {
   FinishLessonSchema,
   FinishResultSchema,
   LessonCardSchema,
+  LessonDiscussionSchema,
   LessonPageSchema,
   LessonQuerySchema,
   TodaySchema,
@@ -31,3 +32,7 @@ export class LessonQueryDto extends createZodDto(LessonQuerySchema) {}
 // The body of a finish: { score }, a whole number from 0 to 100, or a 400
 // lesson.invalidScore.
 export class FinishLessonDto extends createZodDto(FinishLessonSchema) {}
+
+// The body of a discussion message: { attemptId, message, history }, or a 400
+// request.invalid.
+export class LessonDiscussionDto extends createZodDto(LessonDiscussionSchema) {}
