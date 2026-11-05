@@ -200,9 +200,12 @@
       "invalidGoal": "Objectif quotidien possible : 10, 30 ou 60 minutes",
       "invalidLevel": "Ce niveau n'existe pas"
     },
+    "attempt": {
+      "stale": "Cette page n'est plus à jour. Voici où tu en es.",
+      "invalidAnswer": "Cette réponse est illisible. Recharge la page et réessaie."
+    },
     "lesson": {
-      "notFound": "Cette leçon n'existe pas",
-      "invalidScore": "Le score doit être un nombre entier de 0 à 100"
+      "notFound": "Cette leçon n'existe pas"
     },
     "placement": {
       "inProgress": "Un test de positionnement est déjà en cours. Termine-le d'abord.",

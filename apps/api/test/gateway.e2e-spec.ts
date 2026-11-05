@@ -14,6 +14,7 @@ import { SocketsService } from '../src/gateway/sockets.service';
 import { wsConnections, wsEvents } from '../src/metrics/metrics';
 import { PrismaService } from '../src/prisma/prisma.service';
 import { RedisService } from '../src/redis/redis.service';
+import { playToLast, shortLesson } from './attempts.fixtures';
 import { seriesValue } from './metrics.fixtures';
 import {
   type ClientSocket,
@@ -45,6 +46,9 @@ describe('gateway (e2e)', () => {
   let agentB: TestAgent;
   let cookieA = '';
   let cookieB = '';
+
+  /** A ready lesson of its own, at the level placeFrench gives, for the close of an attempt. */
+  const LESSON = 'fr-test-ws-close';
 
   /**
    * Signup and login are throttled per address, and this suite signs in more
@@ -109,6 +113,11 @@ describe('gateway (e2e)', () => {
     port = (app.getHttpServer().address() as AddressInfo).port;
     prisma = app.get(PrismaService);
 
+    // What an interrupted run may have left: its results first, Restrict blocks the lesson.
+    await prisma.lessonResult.deleteMany({ where: { lessonId: LESSON } });
+    await prisma.lesson.deleteMany({ where: { id: LESSON } });
+    await prisma.lesson.createMany({ data: [shortLesson(LESSON, 1, 'B1')] });
+
     const a = await signUp(emailA, `wsa${stamp}`);
     const b = await signUp(emailB, `wsb${stamp}`);
     ({ agent: agentA, cookie: cookieA, id: userA } = a);
@@ -124,7 +133,9 @@ describe('gateway (e2e)', () => {
   });
 
   afterAll(async () => {
+    // The users first: their courses, attempts and results cascade, then nothing blocks the lesson.
     await prisma.user.deleteMany({ where: { email: { in: [emailA, emailB, email2fa] } } });
+    await prisma.lesson.deleteMany({ where: { id: LESSON } });
     await app.close();
   });
 
@@ -268,6 +279,25 @@ describe('gateway (e2e)', () => {
       await arrived;
 
       expect(seen).toEqual([{ lang: 'fr' }]);
+    });
+
+    it('the close of an attempt emits once; the start, the pages and the replay do not', async () => {
+      const tab = await connected(open(cookieA));
+      const seen = collect<CourseUpdated>(tab, 'course:updated');
+
+      const last = await playToLast(agentA, prisma, 'fr', LESSON);
+      expect(seen).toEqual([]);
+      const closed = nextEvent<CourseUpdated>(tab, 'course:updated');
+      await last().expect(200);
+      expect(await closed).toEqual({ lang: 'fr' });
+
+      await last().expect(409);
+      // A barrier: the goal's own event comes after anything the replay would have sent.
+      const own = nextEvent<CourseUpdated>(tab, 'course:updated');
+      await agentA.patch('/api/courses/fr').send({ dailyGoal: 30 }).expect(200);
+      await own;
+
+      expect(seen).toEqual([{ lang: 'fr' }, { lang: 'fr' }]);
     });
   });
 

@@ -72,7 +72,8 @@ model UserLevel {
   bestStreak  Int       @default(0)
   lastGoalDay DateTime? @db.Date
 
-  lessonResults LessonResult[]
+  lessonResults  LessonResult[]
+  lessonAttempts LessonAttempt[]
 
   @@unique([userId, lang])
 }
@@ -133,7 +134,8 @@ model Lesson {
   ready     Boolean    @default(false)
   updatedAt DateTime   @updatedAt
 
-  results LessonResult[]
+  results        LessonResult[]
+  lessonAttempts LessonAttempt[]
 
   @@index([lang, level, position])
 }
@@ -151,6 +153,25 @@ model LessonResult {
 
   @@id([userLevelId, lessonId])
   @@index([userLevelId, day])
+}
+
+/// One learner's current or last attempt at one lesson.
+model LessonAttempt {
+  id           String    @id @default(uuid()) @db.Uuid
+  userLevelId  String    @db.Uuid
+  userLevel    UserLevel @relation(fields: [userLevelId], references: [id], onDelete: Cascade)
+  lessonId     String
+  lesson       Lesson    @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+  motherTongue Locale // fixed at the start
+  secret       Bytes // 32 random bytes, the key of every ref; never sent
+  startedAt    DateTime  @default(now())
+  page         Int       @default(0) // the cursor
+  deadline     DateTime? // deadline of the exam page at the cursor
+  answers      Json      @default("{}") // unit id -> { response, outcome, points, timedOut, gender? }
+  completedAt  DateTime?
+  results      Json? // written once, when the attempt closes
+
+  @@unique([userLevelId, lessonId])
 }
 
 // One row per pair of users, whoever asked first: a request while pending, a

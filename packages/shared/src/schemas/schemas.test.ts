@@ -7,7 +7,6 @@ import {
   DEFAULT_LOCALE,
   DisableTwoFactorSchema,
   EnableTwoFactorSchema,
-  FinishLessonSchema,
   HealthResponseSchema,
   LanguageSchema,
   LocaleSchema,
@@ -399,7 +398,6 @@ describe('validation messages', () => {
     ['SecondFactorSchema', SecondFactorSchema, { code: 'neither' }],
     ['EnableTwoFactorSchema', EnableTwoFactorSchema, { code: '12' }],
     ['DisableTwoFactorSchema', DisableTwoFactorSchema, { password: '' }],
-    ['FinishLessonSchema', FinishLessonSchema, { score: 70.5 }],
     ['LanguageSchema', LanguageSchema, 'klingon'],
     // A missing or mistyped field: Zod's "expected string" unless the base type has a code.
     ['CreateUserSchema (missing fields)', CreateUserSchema, {}],

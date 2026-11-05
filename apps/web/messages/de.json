@@ -200,9 +200,12 @@
       "invalidGoal": "Wähle ein Tagesziel von 10, 30 oder 60 Minuten",
       "invalidLevel": "Dieses Niveau gibt es nicht"
     },
+    "attempt": {
+      "stale": "Diese Seite ist veraltet. Hier bist du gerade.",
+      "invalidAnswer": "Diese Antwort konnte nicht gelesen werden. Lade die Seite neu und versuche es erneut."
+    },
     "lesson": {
-      "notFound": "Diese Lektion gibt es nicht",
-      "invalidScore": "Die Punktzahl muss eine ganze Zahl von 0 bis 100 sein"
+      "notFound": "Diese Lektion gibt es nicht"
     },
     "placement": {
       "inProgress": "Ein Einstufungstest läuft bereits. Beende ihn zuerst.",

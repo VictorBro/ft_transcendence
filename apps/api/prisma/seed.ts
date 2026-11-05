@@ -229,12 +229,35 @@ export async function seedLessons(contentDir: string, prisma: PrismaClient): Pro
     return !isDeepStrictEqual(currentFields, rowFields);
   });
 
-  await prisma.$transaction(
-    writes.map(({ content, ...fields }) => {
+  // An unfinished attempt was planned from the old brief and content: its
+  // cursor, answers and refs would point into another lesson. It goes in the
+  // same write. Finished attempts stay, and so do the results.
+  const edited = writes
+    .filter((row) => {
+      const current = existingById.get(row.id);
+      return (
+        current !== undefined &&
+        !isDeepStrictEqual(
+          { brief: current.brief, content: current.content },
+          { brief: row.brief, content: row.content },
+        )
+      );
+    })
+    .map((row) => row.id);
+
+  await prisma.$transaction([
+    ...writes.map(({ content, ...fields }) => {
       const row = { ...fields, content: content ?? Prisma.DbNull };
       return prisma.lesson.upsert({ where: { id: row.id }, create: row, update: row });
     }),
-  );
+    ...(edited.length > 0
+      ? [
+          prisma.lessonAttempt.deleteMany({
+            where: { lessonId: { in: edited }, completedAt: null },
+          }),
+        ]
+      : []),
+  ]);
   return writes.length;
 }
 

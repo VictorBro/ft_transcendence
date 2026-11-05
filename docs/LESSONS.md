@@ -1,6 +1,7 @@
 # Lessons: authoring guide
 
-What a lesson is, how many each level has, and how they are planned, written and checked. See
+What a lesson is, how many each level has, how they are planned, written and checked, and how an
+attempt is scored (section 10). See
 [PRODUCT_ARCHITECTURE.md](PRODUCT_ARCHITECTURE.md) for how the daily goal and the all lessons page
 use them, and [#137](https://github.com/VictorBro/ft_transcendence/issues/137) for why the lesson
 model is the one of the lesson prototype.
@@ -399,3 +400,87 @@ inventory, word list, course or test.** You may look at Profile Deutsch, the Goe
 the English Vocabulary Profile or the Inventaire linguistique to judge what belongs at a level,
 but the entries, sentences and texts must be ours. The same rule holds for the question bank
 ([ITEM_BANK.md](ITEM_BANK.md) §1).
+
+---
+
+## 10. Scoring
+
+**The server runs every attempt, and no route takes a score.** It sends only the page the learner
+is on, checks every answer, owns the exam timer, and records the result from the answers it stored
+([#145](https://github.com/VictorBro/ft_transcendence/issues/145)). The rules of the attempt are
+the pure functions of `lessons.player` in `@ft/shared` (#144); `AttemptsService` in
+`apps/api/src/lessons/` stores their state and runs them.
+
+| Route, under `/api/courses/:lang/lessons/:id` | Body | Answer |
+|---|---|---|
+| `GET attempt` | none | `{ outline, attempt }`, read only; `attempt` is null before the first start |
+| `POST attempt` | `{ locale }` | 201 a new attempt, or 200 the one in progress |
+| `POST attempt/pages/:index` | `{ attemptId, answers }` | 200 `{ feedback, attempt }` |
+
+### The attempt
+
+One `LessonAttempt` row per course and lesson: the mother tongue, fixed at the start; a secret of
+32 random bytes, never sent; the cursor (the page the learner is on); the deadline of the exam page
+at the cursor; the locked answers; and, once the last page locks, the results. The plan, the lesson
+as pages of answer units, is never stored: every request rebuilds it from the lesson row with
+`buildPlan`.
+
+### The keys stay on the server until the lock
+
+The browser gets the page at the cursor and nothing else: no accepted answer, right option, right
+order, faulty word or explanation. Units, options and tokens are named by refs, not ids: a ref is
+HMAC-SHA256 of the item's path with the attempt's secret, in base64url, cut to 16 characters. The
+same attempt always gives the same refs, so nothing is stored to read them back; another attempt
+gives others, so a ref from a friend's attempt is a 400. Shuffled lists are sorted by ref, so a new
+attempt gets a new order.
+
+A practice page shows its correction once its answers are locked, for that page only. An exam page
+shows none. Everything comes in the results, once the last page locks. Every answer leaves through
+its strict shared schema, so a key cannot leave by mistake.
+
+### Forward only
+
+Only the page at the cursor is taken, once, and the cursor only moves forward. Another index, the
+same page again, an old `attemptId` or a finished attempt is 409 `attempt.stale`: the page then
+reads the attempt again to show where the learner is. An unknown ref or an answer of the wrong kind
+is 400 `attempt.invalidAnswer`, and nothing is locked. A blank unit scores 0.
+
+Every write is one transaction that locks the course first, then the attempt row. Two submits of
+the same last page give one finish: the second finds the attempt finished.
+
+### The exam timer
+
+An exam page's deadline is set when the server sends it: now plus the page's limit. Answers that
+arrive by the deadline plus 2 seconds of network grace (placement's `NETWORK_GRACE_S`) are graded.
+Later, the page is not even read: every unit locks blank and Out of time. `GET attempt` never
+starts a timer and never locks a page; after a deadline it shows 0 ms left.
+
+### The finish and the retake
+
+When the last page locks, the results are written once, and the score is recorded in the same
+transaction: a whole number from the exact total, keeping the best one. The best score never goes
+down; a retake may raise it, even on the same day. The daily goal counts a lesson once a day.
+
+There is no restart before the results: with an attempt in progress, `POST attempt` returns it.
+After the results, `POST attempt` is a retake: the old attempt goes, and a new one comes with a new
+secret, so new refs and a new order.
+
+A seed that changes a lesson's brief or content deletes the unfinished attempts on it: their pages
+and answers belong to the old lesson. Finished attempts and the results stay.
+
+`ft_lesson_attempts_total{lang, event}` counts the attempts `started` (a retake too) and
+`completed` ([MONITORING.md](MONITORING.md)).
+
+### What no web app can stop
+
+The server makes a score come from answers that were really sent, page by page and in time. It
+cannot make them the learner's own work:
+
+- **Notes.** A learner can write down what the lesson showed, its presentation pages and its
+  practice corrections, and read them during the exam, which tests the same points.
+- **Outside help.** A dictionary, a translator, another person or an AI can answer for the learner.
+  The exam timer only makes that slower.
+- **The keys in this public repository.** Every brief and lesson file, accepted answers included,
+  is committed under `content/`. Anyone who reads the repository can know every answer.
+
+So a lesson score is a signal for the learner and for the daily plan, not a certificate.
