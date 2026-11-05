@@ -94,14 +94,35 @@ export function newerAttempt(
 
 /*
  * What the learner typed or picked on the page at the cursor, kept by
- * attempt id and unit ref, so a reload keeps it. Storage can be off or
- * full: every access is inside try/catch, and the page works without.
+ * lesson, attempt id and unit ref, so a reload keeps it. Only the current
+ * attempt of a lesson keeps its key: loading one sweeps the others (left
+ * behind, retaken, or finished elsewhere). Storage can be off or full:
+ * every access is inside try/catch, and the page works without.
  */
-const draftKey = (attemptId: string) => `ft.lesson.drafts.${attemptId}`;
+const DRAFTS = 'ft.lesson.drafts.';
+const lessonPrefix = (lang: Language, id: string) => `${DRAFTS}${lang}.${id}.`;
 
-export function loadDrafts(attemptId: string): Record<string, Answer> {
+/** Where the drafts of one attempt of a lesson live. */
+export interface DraftSlot {
+  lang: Language;
+  id: string;
+  attemptId: string;
+}
+const draftKey = ({ lang, id, attemptId }: DraftSlot) => `${lessonPrefix(lang, id)}${attemptId}`;
+
+export function loadDrafts(slot: DraftSlot): Record<string, Answer> {
   try {
-    const raw = window.localStorage.getItem(draftKey(attemptId));
+    const storage = window.localStorage;
+    const own = draftKey(slot);
+    const prefix = lessonPrefix(slot.lang, slot.id);
+    const stale: string[] = [];
+    for (let n = 0; n < storage.length; n += 1) {
+      const key = storage.key(n);
+      if (key !== null && key.startsWith(prefix) && key !== own) stale.push(key);
+    }
+    for (const key of stale) storage.removeItem(key);
+
+    const raw = storage.getItem(own);
     if (raw === null) return {};
     const parsed = JSON.parse(raw) as Record<string, unknown>;
     const out: Record<string, Answer> = {};
@@ -115,18 +136,18 @@ export function loadDrafts(attemptId: string): Record<string, Answer> {
   }
 }
 
-export function saveDrafts(attemptId: string, drafts: Record<string, Answer>) {
+export function saveDrafts(slot: DraftSlot, drafts: Record<string, Answer>) {
   try {
     if (Object.keys(drafts).length === 0) {
-      window.localStorage.removeItem(draftKey(attemptId));
+      window.localStorage.removeItem(draftKey(slot));
     } else {
-      window.localStorage.setItem(draftKey(attemptId), JSON.stringify(drafts));
+      window.localStorage.setItem(draftKey(slot), JSON.stringify(drafts));
     }
   } catch {
     // Storage off or full: the drafts live in memory only.
   }
 }
 
-export function clearDrafts(attemptId: string) {
-  saveDrafts(attemptId, {});
+export function clearDrafts(slot: DraftSlot) {
+  saveDrafts(slot, {});
 }

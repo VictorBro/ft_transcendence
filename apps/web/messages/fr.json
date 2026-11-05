@@ -371,7 +371,6 @@
     "position": "Leçon {position}",
     "minutes": "{minutes} min",
     "best": "Meilleur score : {score} %",
-    "details": "À propos de cette leçon",
     "outline": "Plan",
     "newVerbs": "Nouveaux verbes",
     "verb": "Verbe",
@@ -407,7 +406,6 @@
     "timeLeft": "Temps restant",
     "timeRanOut": "Le temps s’est écoulé pendant ton absence. Cette page compte comme sans réponse.",
     "practice": "Entraînement",
-    "score": "Score",
     "tally": "{earned} / {possible}",
     "resultsHeading": "Tes résultats",
     "resultsScore": "Score : {score} / 100",
@@ -420,7 +418,6 @@
     "pick": "Choisis une réponse",
     "wordBank": "Mots à placer",
     "yourSentence": "Ta phrase",
-    "clear": "Effacer",
     "spotHint": "Sélectionne le mot faux, puis corrige-le.",
     "correction": "Correction",
     "boardHint": "Sélectionne un élément à gauche, puis son partenaire à droite.",
@@ -430,7 +427,12 @@
     "hint": "Indice : {hint}",
     "examples": "Exemples",
     "discussionSoon": "La discussion arrive bientôt ici. Continue vers l’examen.",
-    "unavailable": "Cet exercice ne peut pas encore être affiché."
+    "unavailable": "Cet exercice ne peut pas encore être affiché.",
+    "comingSoon": "Bientôt disponible",
+    "comingSoonInfo": "Ce type de leçon ne peut pas encore être joué ici.",
+    "boardOptions": "Choix",
+    "boardSlots": "À associer",
+    "checkedTally": "{right} sur {total} correctes"
   },
   "LessonKinds": {
     "grammar": "Grammaire",

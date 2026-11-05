@@ -1,6 +1,6 @@
 'use client';
 
-import { forwardRef, type ReactNode } from 'react';
+import type { ReactNode, Ref } from 'react';
 
 import { SECONDARY_BUTTON } from '@/components/form';
 
@@ -9,10 +9,21 @@ import { SECONDARY_BUTTON } from '@/components/form';
  * modal <dialog> brings the focus trap and Escape for free, and it opens
  * on the safe choice, its first button.
  */
-export const ConfirmDialog = forwardRef<
-  HTMLDialogElement,
-  { label: string; children: ReactNode; no: string; yes: string; onYes: () => void }
->(function ConfirmDialog({ label, children, no, yes, onYes }, ref) {
+export function ConfirmDialog({
+  ref,
+  label,
+  children,
+  no,
+  yes,
+  onYes,
+}: {
+  ref: Ref<HTMLDialogElement>;
+  label: string;
+  children: ReactNode;
+  no: string;
+  yes: string;
+  onYes: () => void;
+}) {
   return (
     <dialog
       ref={ref}
@@ -34,4 +45,4 @@ export const ConfirmDialog = forwardRef<
       </form>
     </dialog>
   );
-});
+}

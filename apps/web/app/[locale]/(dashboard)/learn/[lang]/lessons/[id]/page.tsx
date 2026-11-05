@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { getLocale, getTranslations } from 'next-intl/server';
 
-import { START_FIELDS } from '@/components/lesson/kinds';
+import { playable, START_FIELDS } from '@/components/lesson/kinds';
 import { Link } from '@/i18n/navigation';
 import { lessonPaths, lessonStage, lessonTitle, loadLesson } from '@/lib/lesson';
 import { pick } from '@/lib/localized';
@@ -75,6 +75,7 @@ export default async function LessonPage({ params }: { params: Params }) {
           lang={course}
           id={card.id}
           stage={lessonStage(read.attempt)}
+          playable={playable(outline.kind)}
           playPath={paths.play}
           resultsPath={paths.results}
         />

@@ -143,31 +143,43 @@ describe('the tab memory', () => {
 });
 
 describe('the drafts', () => {
+  const slot = { lang: 'fr', id: 'fr-a', attemptId: ATTEMPT } as const;
+  const other = { ...slot, attemptId: OTHER };
+
   beforeEach(() => {
     vi.stubGlobal('window', { localStorage: storage() });
   });
 
   it('keeps the drafts of an attempt by unit ref, and clears them', () => {
-    saveDrafts(ATTEMPT, { [REF]: { text: 'tu' }, [REF2]: { option: REF } });
-    expect(loadDrafts(ATTEMPT)).toEqual({ [REF]: { text: 'tu' }, [REF2]: { option: REF } });
-    expect(loadDrafts(OTHER)).toEqual({});
-    clearDrafts(ATTEMPT);
-    expect(loadDrafts(ATTEMPT)).toEqual({});
+    saveDrafts(slot, { [REF]: { text: 'tu' }, [REF2]: { option: REF } });
+    expect(loadDrafts(slot)).toEqual({ [REF]: { text: 'tu' }, [REF2]: { option: REF } });
+    clearDrafts(slot);
+    expect(loadDrafts(slot)).toEqual({});
+    expect(window.localStorage.length).toBe(0);
+  });
+
+  it("sweeps the lesson's other attempts, and leaves other lessons alone", () => {
+    saveDrafts(other, { [REF]: { text: 'old' } });
+    saveDrafts({ ...slot, id: 'fr-b' }, { [REF]: { text: 'b' } });
+    saveDrafts(slot, { [REF]: { text: 'tu' } });
+    expect(loadDrafts(slot)).toEqual({ [REF]: { text: 'tu' } });
+    expect(loadDrafts(other)).toEqual({});
+    expect(loadDrafts({ ...slot, id: 'fr-b' })).toEqual({ [REF]: { text: 'b' } });
   });
 
   it('drops what is not a draft: a bad ref, a bad answer, broken JSON', () => {
     window.localStorage.setItem(
-      `ft.lesson.drafts.${ATTEMPT}`,
+      `ft.lesson.drafts.fr.fr-a.${ATTEMPT}`,
       JSON.stringify({ [REF]: { text: 'ok' }, short: { text: 'x' }, [REF2]: { nope: 1 } }),
     );
-    expect(loadDrafts(ATTEMPT)).toEqual({ [REF]: { text: 'ok' } });
-    window.localStorage.setItem(`ft.lesson.drafts.${OTHER}`, '{');
-    expect(loadDrafts(OTHER)).toEqual({});
+    expect(loadDrafts(slot)).toEqual({ [REF]: { text: 'ok' } });
+    window.localStorage.setItem(`ft.lesson.drafts.fr.fr-a.${OTHER}`, '{');
+    expect(loadDrafts(other)).toEqual({});
   });
 
   it('works without storage', () => {
     vi.stubGlobal('window', { localStorage: storage(true) });
-    expect(() => saveDrafts(ATTEMPT, { [REF]: { text: 'tu' } })).not.toThrow();
-    expect(loadDrafts(ATTEMPT)).toEqual({});
+    expect(() => saveDrafts(slot, { [REF]: { text: 'tu' } })).not.toThrow();
+    expect(loadDrafts(slot)).toEqual({});
   });
 });

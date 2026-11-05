@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 
+import { playable } from '@/components/lesson/kinds';
 import { lessonPaths, lessonStage, lessonTitle, loadLesson } from '@/lib/lesson';
 import { LessonPlayer } from './player';
 
@@ -25,7 +26,13 @@ export default async function PlayPage({ params }: { params: Params }) {
   const paths = lessonPaths(course, card.id);
 
   const stage = lessonStage(read.attempt);
-  if (read.attempt === null || stage === 'new' || stage === 'finished') {
+  // A kind the browser cannot play yet: the lesson page says so.
+  if (
+    read.attempt === null ||
+    stage === 'new' ||
+    stage === 'finished' ||
+    !playable(read.outline.kind)
+  ) {
     redirect(paths.page);
   }
 
