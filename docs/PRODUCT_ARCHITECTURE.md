@@ -376,7 +376,7 @@ reconnection story and a second cancellation path, for no gain. One gateway, one
 
 | | Transport | Examples |
 |---|---|---|
-| **Everything CRUD** | REST, Nest controllers, documented in Swagger | `POST /api/courses`, `GET /api/courses/:lang/today`, `GET /api/courses/:lang/lessons`, `PUT /api/courses/:lang/lessons/:id/result` |
+| **Everything CRUD** | REST, Nest controllers, documented in Swagger | `POST /api/courses`, `GET /api/courses/:lang/today`, `GET /api/courses/:lang/lessons`, `POST /api/courses/:lang/lessons/:id/attempt` |
 | **Everything live** | socket.io on `/ws` | `course:updated`, `friend:request`, `friend:accepted`, `friend:removed`, `presence:update`; message events to come |
 
 **The course stays in the path, and the API is language-neutral.** No route takes a `locale`
