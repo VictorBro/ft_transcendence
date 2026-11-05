@@ -3,6 +3,7 @@ import type { Page } from '@playwright/test';
 import { formatViolations, watchConsole } from '../support/console-guard';
 import { expectFitsTheScreen } from '../support/layout';
 import { lessonPlan, mainButton, pageIndex, playLesson } from '../support/lesson-play';
+import { liveConnection } from '../support/live';
 import { expect, placeCourse, test } from '../support/session';
 
 /**
@@ -75,9 +76,15 @@ test.describe('a grammar lesson', () => {
     await expect(learner.getByRole('button', { name: 'Retake the lesson' })).toBeVisible();
 
     // The results reload, and the course page shows the lesson done today.
+    // Each load waits for its socket before the next one: leaving a page
+    // while its socket still connects logs a warning the guard counts.
+    let live = liveConnection(learner);
     await learner.goto(page('/results'));
+    await live;
+    live = liveConnection(learner);
     await learner.reload();
     await expect(learner.getByRole('heading', { name: 'Your results' })).toBeVisible();
+    await live;
     await learner.goto(`/en/learn/${LANG}`);
     await expect(learner.getByText(plan.title).first()).toBeVisible();
 
