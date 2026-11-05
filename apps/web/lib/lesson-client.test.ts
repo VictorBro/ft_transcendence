@@ -10,7 +10,7 @@ import {
   saveDrafts,
   startAttempt,
   submitPage,
-  takeChanged,
+  isStale,
 } from './lesson-client';
 
 type AttemptView = lessons.player.AttemptView;
@@ -114,11 +114,19 @@ describe('the attempt routes', () => {
 });
 
 describe('the tab memory', () => {
-  it('tells the lesson page once that the attempt moved', () => {
+  it('tells a lesson page from the cache that the attempt moved, and a fresh one that it did not', () => {
+    // Nothing seen in this tab: the page is as fresh as it gets.
+    expect(isStale('fr', 'fr-a', null)).toBe(false);
     rememberAttempt('fr', 'fr-a', attempt(1));
-    expect(takeChanged('fr', 'fr-a')).toBe(true);
-    expect(takeChanged('fr', 'fr-a')).toBe(false);
-    expect(takeChanged('fr', 'fr-b')).toBe(false);
+    // Rendered before Start, or before the player moved on.
+    expect(isStale('fr', 'fr-a', null)).toBe(true);
+    expect(isStale('fr', 'fr-a', { attemptId: ATTEMPT, index: 0 })).toBe(true);
+    // Rendered after: the same page, or further (another tab).
+    expect(isStale('fr', 'fr-a', { attemptId: ATTEMPT, index: 1 })).toBe(false);
+    expect(isStale('fr', 'fr-a', { attemptId: ATTEMPT, index: null })).toBe(false);
+    // Another attempt than the tab's last: a retake since.
+    expect(isStale('fr', 'fr-a', { attemptId: OTHER, index: null })).toBe(true);
+    expect(isStale('fr', 'fr-b', null)).toBe(false);
   });
 
   it('keeps the further cursor of the same attempt, with when it arrived', () => {

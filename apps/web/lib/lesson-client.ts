@@ -56,18 +56,35 @@ interface Seen {
   at: number;
 }
 const seen = new Map<string, Seen>();
-const changed = new Set<string>();
 
 const key = (lang: Language, id: string) => `${lang}/${id}`;
 
 export function rememberAttempt(lang: Language, id: string, view: AttemptView, at = Date.now()) {
   seen.set(key(lang, id), { view, at });
-  changed.add(key(lang, id));
 }
 
-/** True once per change: the lesson page reads itself again. */
-export function takeChanged(lang: Language, id: string): boolean {
-  return changed.delete(key(lang, id));
+/** Where a page found the attempt when the server rendered it: its id and page, null once finished. */
+export interface Cursor {
+  attemptId: string;
+  index: number | null;
+}
+
+export const cursorOf = (attempt: AttemptView | null): Cursor | null =>
+  attempt === null ? null : { attemptId: attempt.attemptId, index: attempt.current?.index ?? null };
+
+/**
+ * Whether a lesson page shows an attempt older than the one this tab saw
+ * last: Back and Forward bring a page from the router's cache, as first
+ * rendered. A page the server rendered after the player moved shows the
+ * same cursor or a further one, and needs no second read.
+ */
+export function isStale(lang: Language, id: string, rendered: Cursor | null): boolean {
+  const last = seen.get(key(lang, id));
+  if (!last) return false;
+  const mine = cursorOf(last.view)!;
+  if (rendered === null || rendered.attemptId !== mine.attemptId) return true;
+  const position = (index: number | null) => index ?? Infinity;
+  return position(rendered.index) < position(mine.index);
 }
 
 /**
