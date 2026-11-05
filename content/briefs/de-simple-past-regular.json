@@ -1,0 +1,245 @@
+{
+  "schemaVersion": 2,
+  "id": "de-simple-past-regular",
+  "lang": "de",
+  "level": "B1",
+  "locales": ["en", "fr", "de"],
+  "title": "Präteritum: regelmäßige Verben",
+  "objective": {
+    "en": "Form the Präteritum of regular verbs with -te and the personal endings: ich machte, du machtest, sie arbeitete.",
+    "fr": "Former le Präteritum des verbes réguliers avec -te et les terminaisons personnelles : ich machte, du machtest, sie arbeitete.",
+    "de": "Das Präteritum regelmäßiger Verben mit -te und den Personalendungen bilden: ich machte, du machtest, sie arbeitete."
+  },
+  "estimatedMinutes": 18,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:32:51.239Z",
+    "inputHashes": { "outline": "9bfa063ea60a691a6c8d925c42fae886f52450135a00aa734da68e7d08ebb1c5" }
+  },
+  "kind": "grammar",
+  "topic": "verbs_morphology",
+  "scopeBoundaries": {
+    "en": "Covers the Präteritum of regular verbs: -te, -ete after stems in -t and -d, and no personal ending for ich and er/sie/es. Excludes irregular and mixed verbs, sein, haben, modal verbs and the choice between Präteritum and Perfekt.",
+    "fr": "Couvre le Präteritum des verbes réguliers : -te, -ete après un radical en -t ou -d, et pas de terminaison personnelle pour ich et er/sie/es. Exclut les verbes irréguliers et mixtes, sein, haben, les verbes modaux et le choix entre Präteritum et Perfekt.",
+    "de": "Behandelt das Präteritum regelmäßiger Verben: -te, -ete nach Stämmen auf -t und -d und keine Personalendung bei ich und er/sie/es. Ausgeschlossen sind unregelmäßige und gemischte Verben, sein, haben, Modalverben und die Wahl zwischen Präteritum und Perfekt."
+  },
+  "prerequisites": [
+    {
+      "en": "Regular verbs in the present tense",
+      "fr": "Les verbes réguliers au présent",
+      "de": "Regelmäßige Verben im Präsens"
+    },
+    {
+      "en": "Personal pronouns in the nominative",
+      "fr": "Les pronoms personnels au nominatif",
+      "de": "Personalpronomen im Nominativ"
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-te-endings",
+      "summary": {
+        "en": "Stem + -te + personal ending: du machtest, wir machten, ihr machtet, sie machten.",
+        "fr": "Radical + -te + terminaison personnelle : du machtest, wir machten, ihr machtet, sie machten.",
+        "de": "Stamm + -te + Personalendung: du machtest, wir machten, ihr machtet, sie machten."
+      }
+    },
+    {
+      "id": "rule-ete-ending",
+      "summary": {
+        "en": "If the stem ends in -t or -d, the ending is -ete: ich arbeitete, du badetest.",
+        "fr": "Si le radical se termine par -t ou -d, la terminaison est -ete : ich arbeitete, du badetest.",
+        "de": "Endet der Stamm auf -t oder -d, lautet die Endung -ete: ich arbeitete, du badetest."
+      }
+    },
+    {
+      "id": "rule-no-ending",
+      "summary": {
+        "en": "Ich and er/sie/es have no personal ending: ich machte, er machte.",
+        "fr": "Ich et er/sie/es n’ont pas de terminaison personnelle : ich machte, er machte.",
+        "de": "Ich und er/sie/es haben keine Personalendung: ich machte, er machte."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-te",
+      "title": {
+        "en": "Regular verbs with -te",
+        "fr": "Les verbes réguliers avec -te",
+        "de": "Regelmäßige Verben mit -te"
+      },
+      "ruleIds": ["rule-te-endings", "rule-no-ending"],
+      "explanationPlan": {
+        "en": "Show how the Präteritum is built from stem + -te + personal ending, with machen as the model. Stress that ich and er/sie/es have no personal ending.",
+        "fr": "Montrer comment le Präteritum se forme : radical + -te + terminaison personnelle, avec machen comme modèle. Insister sur l’absence de terminaison pour ich et er/sie/es.",
+        "de": "Zeigen, wie das Präteritum aus Stamm + -te + Personalendung entsteht, mit machen als Muster. Betonen, dass ich und er/sie/es keine Personalendung haben."
+      },
+      "explanationDurationS": 100,
+      "examples": [
+        {
+          "text": "Ich machte einen Kuchen.",
+          "translation": { "en": "I made a cake.", "fr": "J’ai fait un gâteau." }
+        },
+        {
+          "text": "Du machtest einen Fehler.",
+          "translation": { "en": "You made a mistake.", "fr": "Tu as fait une erreur." }
+        },
+        {
+          "text": "Wir machten eine Pause.",
+          "translation": { "en": "We took a break.", "fr": "Nous avons fait une pause." }
+        },
+        {
+          "text": "Sie machten Urlaub.",
+          "translation": { "en": "They went on vacation.", "fr": "Ils ont pris des vacances." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not add a personal ending to ich or er/sie/es: ich kaufte, not ich kauftete.",
+          "fr": "N’ajoutez pas de terminaison personnelle à ich ou er/sie/es : ich kaufte, et non ich kauftete.",
+          "de": "Hänge an ich und er/sie/es keine Personalendung an: ich kaufte, nicht ich kauftete."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-te-persons",
+          "type": "grammar_person_matching",
+          "itemCount": 1,
+          "ruleIds": ["rule-te-endings", "rule-no-ending"],
+          "estimatedDurationS": 90
+        },
+        {
+          "id": "ex-te-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-te-endings", "rule-no-ending"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-te-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-te-endings", "rule-no-ending"],
+          "estimatedDurationS": 80
+        },
+        {
+          "id": "ex-te-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 3,
+          "ruleIds": ["rule-te-endings", "rule-no-ending"],
+          "estimatedDurationS": 75
+        }
+      ]
+    },
+    {
+      "id": "block-ete",
+      "title": {
+        "en": "Stems in -t and -d: -ete",
+        "fr": "Radicaux en -t et -d : -ete",
+        "de": "Stämme auf -t und -d: -ete"
+      },
+      "ruleIds": ["rule-ete-ending", "rule-no-ending"],
+      "explanationPlan": {
+        "en": "Explain the extra -e- after stems in -t and -d (arbeiten, baden, warten, reden, antworten). Remind learners that ich and er/sie/es still have no personal ending.",
+        "fr": "Expliquer le -e- supplémentaire après un radical en -t ou -d (arbeiten, baden, warten, reden, antworten). Rappeler que ich et er/sie/es n’ont toujours pas de terminaison personnelle.",
+        "de": "Das zusätzliche -e- nach Stämmen auf -t und -d erklären (arbeiten, baden, warten, reden, antworten). Daran erinnern, dass ich und er/sie/es weiterhin keine Personalendung haben."
+      },
+      "explanationDurationS": 110,
+      "examples": [
+        {
+          "text": "Ich arbeitete im Garten.",
+          "translation": { "en": "I worked in the garden.", "fr": "J’ai travaillé dans le jardin." }
+        },
+        {
+          "text": "Er badete im See.",
+          "translation": {
+            "en": "He went for a swim in the lake.",
+            "fr": "Il s’est baigné dans le lac."
+          }
+        },
+        {
+          "text": "Wir warteten auf den Bus.",
+          "translation": { "en": "We waited for the bus.", "fr": "Nous avons attendu le bus." }
+        },
+        {
+          "text": "Sie redete mit ihrer Freundin.",
+          "translation": {
+            "en": "She talked with her friend.",
+            "fr": "Elle a parlé avec son amie."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not forget the -e- after stems in -t and -d: ich arbeitete, not ich arbeitte.",
+          "fr": "N’oubliez pas le -e- après un radical en -t ou -d : ich arbeitete, et non ich arbeitte.",
+          "de": "Vergiss das -e- nach Stämmen auf -t und -d nicht: ich arbeitete, nicht ich arbeitte."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-ete-typing",
+          "type": "grammar_pronoun_form_typing",
+          "itemCount": 2,
+          "ruleIds": ["rule-ete-ending", "rule-no-ending"],
+          "estimatedDurationS": 100
+        },
+        {
+          "id": "ex-ete-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-ete-ending", "rule-no-ending"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-ete-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-ete-ending", "rule-no-ending"],
+          "estimatedDurationS": 75
+        },
+        {
+          "id": "ex-ete-gap",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-ete-ending", "rule-no-ending"],
+          "estimatedDurationS": 80
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-forms",
+        "type": "grammar_pronoun_form_typing",
+        "itemCount": 2,
+        "ruleIds": ["rule-te-endings", "rule-ete-ending", "rule-no-ending"],
+        "estimatedDurationS": 90,
+        "timeLimitS": 150
+      },
+      {
+        "pageId": "exam-gaps",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-te-endings", "rule-ete-ending", "rule-no-ending"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["rule-te-endings", "rule-ete-ending", "rule-no-ending"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

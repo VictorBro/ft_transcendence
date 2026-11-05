@@ -1,0 +1,390 @@
+{
+  "schemaVersion": 2,
+  "id": "de-reading-an-email-from-a-friend",
+  "lang": "de",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Eine E-Mail von einer Freundin lesen",
+  "objective": {
+    "en": "Read a personal email about a move and a new job, follow the news and recognise what the friend asks for (Kannst du mich im Mai besuchen?).",
+    "fr": "Lire un e-mail personnel sur un déménagement et un nouveau travail, suivre les nouvelles et reconnaître ce que l’amie demande (Kannst du mich im Mai besuchen?).",
+    "de": "Eine persönliche E-Mail über einen Umzug und eine neue Arbeit lesen, den Neuigkeiten folgen und erkennen, worum die Freundin bittet."
+  },
+  "estimatedMinutes": 8,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:23:22.487Z",
+    "inputHashes": {
+      "outline": "c9c46caa944d1466f219535830a5134529da3d5d3c7d64407e1040e37d456009",
+      "brief": "554eafab6fe0a4d09b31c980d9364e8cdfda607da5e5fbae71a83c02da772d3f"
+    }
+  },
+  "kind": "reading",
+  "theme": "relations",
+  "genre": "email",
+  "documents": [
+    {
+      "documentId": "main",
+      "title": "Neuigkeiten aus Leipzig",
+      "meta": ["Von: Jana", "An: Mia"],
+      "paragraphs": [
+        "Liebe Mia, wie geht es dir? Ich habe viele Neuigkeiten! Vor zwei Wochen bin ich nach Leipzig umgezogen. Die Wohnung ist klein, aber sehr schön.",
+        "Seit Montag habe ich auch eine neue Arbeit. Ich arbeite jetzt in einer Buchhandlung. Die Kollegen sind nett, aber ich muss oft lange arbeiten. Am Wochenende bin ich deshalb sehr müde.",
+        "Du fehlst mir! Kannst du mich im Mai besuchen? Das Zimmer für Gäste ist schon fertig. Schreib mir bitte bis Freitag, welches Wochenende für dich passt. Viele Grüße, Jana"
+      ],
+      "highlights": [
+        { "keywordId": "neuigkeiten", "text": "Neuigkeiten" },
+        { "keywordId": "umgezogen", "text": "umgezogen" },
+        { "keywordId": "buchhandlung", "text": "Buchhandlung" },
+        { "keywordId": "besuchen", "text": "besuchen" },
+        { "keywordId": "passt", "text": "passt" }
+      ]
+    },
+    {
+      "documentId": "exam",
+      "title": "Einladung zu meinem Geburtstag",
+      "meta": ["Von: Ben", "An: Lisa"],
+      "paragraphs": [
+        "Liebe Lisa, am Samstag, den 14. Juni, habe ich Geburtstag! Ich feiere mit Freunden im Garten. Die Party beginnt um 18 Uhr.",
+        "Kannst du bitte einen Salat mitbringen? Getränke und Würstchen habe ich schon gekauft. Sag mir bitte bis Mittwoch Bescheid, ob du kommst. Bis bald, Ben"
+      ],
+      "highlights": []
+    }
+  ],
+  "steps": [
+    {
+      "id": "flashcards",
+      "stage": "flashcards",
+      "role": "exercise",
+      "label": { "en": "Flashcards", "fr": "Cartes mémoire", "de": "Karteikarten" },
+      "pages": [
+        {
+          "pageId": "flashcards",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Turn each card to learn the key words of the text.",
+            "fr": "Retournez chaque carte pour découvrir les mots clés du texte.",
+            "de": "Dreh jede Karte um und lerne die Schlüsselwörter des Textes."
+          },
+          "items": [
+            {
+              "type": "reading_flashcards",
+              "itemId": "cards",
+              "keywordIds": ["neuigkeiten", "umgezogen", "buchhandlung", "besuchen", "passt"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matching",
+      "stage": "matching",
+      "role": "exercise",
+      "label": { "en": "Matching", "fr": "Association", "de": "Zuordnen" },
+      "pages": [
+        {
+          "pageId": "matching",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each key word with its meaning.",
+            "fr": "Associez chaque mot clé à son sens.",
+            "de": "Ordne jedem Schlüsselwort seine Bedeutung zu."
+          },
+          "items": [
+            {
+              "type": "reading_keyword_matching",
+              "itemId": "matching",
+              "keywordIds": ["neuigkeiten", "umgezogen", "buchhandlung", "besuchen", "passt"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skim",
+      "stage": "skim",
+      "role": "exercise",
+      "label": { "en": "Skim", "fr": "Survol", "de": "Überfliegen" },
+      "pages": [
+        {
+          "pageId": "skim",
+          "estimatedDurationS": 85,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Look over the document quickly. When the time is up it is put away; then answer the question.",
+            "fr": "Parcourez rapidement le document. À la fin du temps, il disparaît ; répondez ensuite à la question.",
+            "de": "Überfliege das Dokument. Wenn die Zeit um ist, verschwindet es; beantworte dann die Frage."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "skim-document",
+              "documentId": "main",
+              "view": "skim",
+              "skimSeconds": 65
+            },
+            {
+              "type": "reading_skim_choice",
+              "itemId": "skim-question",
+              "focus": "purpose",
+              "question": "Warum schreibt Jana an Mia?",
+              "options": [
+                { "optionId": "o1", "text": "Sie möchte eine Wohnung mieten." },
+                { "optionId": "o2", "text": "Sie erzählt von ihrem Leben und lädt Mia ein." },
+                { "optionId": "o3", "text": "Sie sagt eine Einladung ab." },
+                { "optionId": "o4", "text": "Sie sucht eine neue Arbeit." }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "Jana tells her news (move, new job) and asks Mia to visit in May. She does not look for a flat or a job.",
+                "fr": "Jana raconte ses nouvelles (déménagement, nouveau travail) et demande à Mia de venir en mai. Elle ne cherche ni appartement ni travail.",
+                "de": "Jana erzählt ihre Neuigkeiten (Umzug, neue Arbeit) und bittet Mia um einen Besuch im Mai. Sie sucht weder eine Wohnung noch eine Arbeit."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "detail",
+      "stage": "detail",
+      "role": "exercise",
+      "label": { "en": "Detail", "fr": "Détails", "de": "Details" },
+      "pages": [
+        {
+          "pageId": "detail",
+          "estimatedDurationS": 120,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the document carefully and answer the questions.",
+            "fr": "Lisez le document attentivement et répondez aux questions.",
+            "de": "Lies das Dokument genau und beantworte die Fragen."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "detail-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-umzug",
+              "question": "Wann ist Jana nach Leipzig umgezogen?",
+              "options": [
+                { "optionId": "o1", "text": "Vor zwei Wochen" },
+                { "optionId": "o2", "text": "Vor zwei Monaten" },
+                { "optionId": "o3", "text": "Seit Montag" },
+                { "optionId": "o4", "text": "Im Mai" }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "Vor zwei Wochen bin ich nach Leipzig umgezogen: two weeks ago. Seit Montag is about the new job.",
+                "fr": "Vor zwei Wochen bin ich nach Leipzig umgezogen : il y a deux semaines. Seit Montag concerne le nouveau travail.",
+                "de": "Vor zwei Wochen bin ich nach Leipzig umgezogen. Seit Montag geht es um die neue Arbeit."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-arbeit",
+              "question": "Wo arbeitet Jana jetzt?",
+              "options": [
+                { "optionId": "o1", "text": "In einem Café" },
+                { "optionId": "o2", "text": "In einer Schule" },
+                { "optionId": "o3", "text": "In einer Buchhandlung" },
+                { "optionId": "o4", "text": "In einem Büro" }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "Ich arbeite jetzt in einer Buchhandlung: she works in a bookshop.",
+                "fr": "Ich arbeite jetzt in einer Buchhandlung : elle travaille dans une librairie.",
+                "de": "Ich arbeite jetzt in einer Buchhandlung."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-bitte",
+              "question": "Worum bittet Jana?",
+              "options": [
+                { "optionId": "o1", "text": "Mia soll ihr beim Umzug helfen." },
+                { "optionId": "o2", "text": "Mia soll ihr ein Buch schicken." },
+                { "optionId": "o3", "text": "Mia soll sie im Mai besuchen." },
+                { "optionId": "o4", "text": "Mia soll im Mai in Leipzig arbeiten." }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "Kannst du mich im Mai besuchen? is the request. The move has already happened.",
+                "fr": "Kannst du mich im Mai besuchen? est la demande. Le déménagement a déjà eu lieu.",
+                "de": "Kannst du mich im Mai besuchen? ist die Bitte. Der Umzug ist schon passiert."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "q-wohnung",
+              "statement": "Jana hat eine große Wohnung.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: Die Wohnung ist klein, aber sehr schön.",
+                "fr": "Faux : Die Wohnung ist klein, aber sehr schön (petite, mais très belle).",
+                "de": "Falsch: Die Wohnung ist klein, aber sehr schön."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "structure",
+      "stage": "structure",
+      "role": "exercise",
+      "label": { "en": "Structure", "fr": "Structure", "de": "Aufbau" },
+      "pages": [
+        {
+          "pageId": "structure",
+          "estimatedDurationS": 45,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the information in the order the text gives it.",
+            "fr": "Remettez les informations dans l’ordre du texte.",
+            "de": "Bring die Informationen in die Reihenfolge des Textes."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "structure-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_order",
+              "itemId": "order",
+              "pieces": [
+                { "pieceId": "p2", "text": "Jana hat eine neue Arbeit." },
+                { "pieceId": "p3", "text": "Jana bittet Mia um einen Besuch." },
+                { "pieceId": "p1", "text": "Jana ist nach Leipzig umgezogen." }
+              ],
+              "acceptedOrders": [["p1", "p2", "p3"]],
+              "answerExplanation": {
+                "en": "First the move (first paragraph), then the new job (second paragraph), at the end the request to visit (third paragraph).",
+                "fr": "D’abord le déménagement (premier paragraphe), puis le nouveau travail (deuxième), à la fin la demande de visite (troisième).",
+                "de": "Zuerst der Umzug (erster Absatz), dann die neue Arbeit (zweiter Absatz), am Ende die Bitte um einen Besuch (dritter Absatz)."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "stage": "exam",
+      "role": "exam",
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam",
+          "estimatedDurationS": 137,
+          "timeLimitS": 210,
+          "instructions": {
+            "en": "Read the new document and answer the questions. No help this time.",
+            "fr": "Lisez le nouveau document et répondez aux questions. Cette fois, sans aide.",
+            "de": "Lies das neue Dokument und beantworte die Fragen. Diesmal ohne Hilfe."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "exam-document",
+              "documentId": "exam",
+              "view": "exam",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-datum",
+              "question": "An welchem Tag hat Ben Geburtstag?",
+              "options": [
+                { "optionId": "o1", "text": "Am Mittwoch" },
+                { "optionId": "o2", "text": "Am Sonntag" },
+                { "optionId": "o3", "text": "Am Freitag" },
+                { "optionId": "o4", "text": "Am Samstag" }
+              ],
+              "answerOptionId": "o4",
+              "answerExplanation": {
+                "en": "Am Samstag, den 14. Juni, habe ich Geburtstag. Mittwoch is the day to answer by.",
+                "fr": "Am Samstag, den 14. Juni, habe ich Geburtstag. Mittwoch est le jour limite pour répondre.",
+                "de": "Am Samstag, den 14. Juni, habe ich Geburtstag. Mittwoch ist der Tag für die Antwort."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-ort",
+              "question": "Wo feiert Ben?",
+              "options": [
+                { "optionId": "o1", "text": "Im Garten" },
+                { "optionId": "o2", "text": "In einem Restaurant" },
+                { "optionId": "o3", "text": "In einem Café" },
+                { "optionId": "o4", "text": "Im Kino" }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "Ich feiere mit Freunden im Garten.",
+                "fr": "Ich feiere mit Freunden im Garten : il fait la fête dans le jardin.",
+                "de": "Ich feiere mit Freunden im Garten."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-zeit",
+              "question": "Um wie viel Uhr beginnt die Party?",
+              "options": [
+                { "optionId": "o1", "text": "Um 14 Uhr" },
+                { "optionId": "o2", "text": "Um 20 Uhr" },
+                { "optionId": "o3", "text": "Um 18 Uhr" },
+                { "optionId": "o4", "text": "Um 12 Uhr" }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "Die Party beginnt um 18 Uhr. The 14 belongs to the date, 14. Juni.",
+                "fr": "Die Party beginnt um 18 Uhr. Le 14 fait partie de la date, 14. Juni.",
+                "de": "Die Party beginnt um 18 Uhr. Die 14 gehört zum Datum, 14. Juni."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-bitte",
+              "question": "Worum bittet Ben Lisa?",
+              "options": [
+                { "optionId": "o1", "text": "Sie soll Getränke kaufen." },
+                { "optionId": "o2", "text": "Sie soll einen Salat mitbringen." },
+                { "optionId": "o3", "text": "Sie soll Würstchen kaufen." },
+                { "optionId": "o4", "text": "Sie soll den Garten putzen." }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "Kannst du bitte einen Salat mitbringen? Ben has already bought drinks and sausages.",
+                "fr": "Kannst du bitte einen Salat mitbringen? Ben a déjà acheté les boissons et les saucisses.",
+                "de": "Kannst du bitte einen Salat mitbringen? Getränke und Würstchen hat Ben schon gekauft."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "x-getraenke",
+              "statement": "Ben hat noch keine Getränke gekauft.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: Getränke und Würstchen habe ich schon gekauft.",
+                "fr": "Faux : Getränke und Würstchen habe ich schon gekauft (déjà achetés).",
+                "de": "Falsch: Getränke und Würstchen habe ich schon gekauft."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

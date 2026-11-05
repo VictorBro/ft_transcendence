@@ -1,0 +1,721 @@
+{
+  "schemaVersion": 2,
+  "id": "de-emotions-and-moods",
+  "lang": "de",
+  "level": "B1",
+  "locales": ["en", "fr", "de"],
+  "title": "Gefühle und Stimmungen",
+  "objective": {
+    "en": "Talk about feelings and moods: name the mood, excitement, hope, relief and boredom.",
+    "fr": "Parler de sentiments et d’humeurs : nommer l’ambiance, l’excitation, l’espoir, le soulagement et l’ennui.",
+    "de": "Über Gefühle und Launen sprechen: Stimmung, Laune, Aufregung, Hoffnung, Erleichterung und Langeweile benennen."
+  },
+  "estimatedMinutes": 23,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:30:37.278Z",
+    "inputHashes": { "outline": "10593467ceaaeda49605112d79f50fa8f96deebb990c0325777246d3fcbcb584" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Fourteen words for feelings and moods at B1: nine nouns, two reflexive verbs and three adjectives. Basic feeling words from earlier lessons are not repeated.",
+    "fr": "Quatorze mots pour les sentiments et les humeurs au niveau B1 : neuf noms, deux verbes pronominaux et trois adjectifs. Les mots de base déjà vus ne sont pas repris.",
+    "de": "Vierzehn Wörter für Gefühle und Stimmungen auf B1: neun Nomen, zwei reflexive Verben und drei Adjektive. Grundwörter aus früheren Lektionen werden nicht wiederholt."
+  },
+  "targetCount": 14,
+  "countRationale": {
+    "en": "Fourteen words match the outline and fit a lesson of about twenty minutes.",
+    "fr": "Quatorze mots correspondent au plan et tiennent dans une leçon d’environ vingt minutes.",
+    "de": "Vierzehn Wörter entsprechen der Gliederung und passen in eine Lektion von etwa zwanzig Minuten."
+  },
+  "difficultyBalance": {
+    "en": "Most words are core vocabulary; Stimmung and Laune, Aufregung and aufgeregt, and the reflexive verbs need extra care.",
+    "fr": "La plupart des mots sont du vocabulaire de base ; Stimmung et Laune, Aufregung et aufgeregt ainsi que les verbes pronominaux demandent plus d’attention.",
+    "de": "Die meisten Wörter sind Grundwortschatz; Stimmung und Laune, Aufregung und aufgeregt sowie die reflexiven Verben brauchen mehr Aufmerksamkeit."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "nomen",
+      "label": {
+        "en": "Feelings and moods (nouns)",
+        "fr": "Sentiments et humeurs (noms)",
+        "de": "Gefühle und Stimmungen (Nomen)"
+      },
+      "targetIds": [
+        "stimmung",
+        "laune",
+        "aufregung",
+        "hoffnung",
+        "erleichterung",
+        "langeweile",
+        "enttaeuschung",
+        "eifersucht",
+        "stolz"
+      ],
+      "introduction": {
+        "en": "These **nouns** name feelings and moods. Learn each one with its article:\n\n- `die Stimmung`\n- `die Laune`\n- `die Aufregung`\n- `die Hoffnung`\n- `die Erleichterung`\n- `die Langeweile`\n- `die Enttäuschung`\n- `die Eifersucht`\n- `der Stolz`\n\nThe mood of a place or group is the **Stimmung**, the mood of a person is the **Laune**: `gute Laune`, `schlechte Laune`.",
+        "fr": "Ces **noms** désignent des sentiments et des humeurs. Apprenez chacun avec son article :\n\n- `die Stimmung`\n- `die Laune`\n- `die Aufregung`\n- `die Hoffnung`\n- `die Erleichterung`\n- `die Langeweile`\n- `die Enttäuschung`\n- `die Eifersucht`\n- `der Stolz`\n\nL’ambiance d’un lieu ou d’un groupe est la **Stimmung**, l’humeur d’une personne est la **Laune** : `gute Laune`, `schlechte Laune`.",
+        "de": "Diese **Nomen** benennen Gefühle und Stimmungen. Lerne jedes mit seinem Artikel:\n\n- `die Stimmung`\n- `die Laune`\n- `die Aufregung`\n- `die Hoffnung`\n- `die Erleichterung`\n- `die Langeweile`\n- `die Enttäuschung`\n- `die Eifersucht`\n- `der Stolz`\n\nDie Atmosphäre an einem Ort oder in einer Gruppe ist die **Stimmung**, die Stimmung eines Menschen ist die **Laune**: `gute Laune`, `schlechte Laune`."
+      }
+    },
+    {
+      "id": "verben-adjektive",
+      "label": {
+        "en": "Verbs and adjectives",
+        "fr": "Verbes et adjectifs",
+        "de": "Verben und Adjektive"
+      },
+      "targetIds": ["schaemen", "aergern", "aufgeregt", "enttaeuscht", "gelassen"],
+      "introduction": {
+        "en": "Two **reflexive verbs** and three **adjectives** describe how someone feels:\n\n- `sich schämen`\n- `sich ärgern`\n- `aufgeregt`\n- `enttäuscht`\n- `gelassen`\n\nReflexive verbs always need a pronoun: `ich schäme mich`, `ich ärgere mich`.",
+        "fr": "Deux **verbes pronominaux** et trois **adjectifs** décrivent ce que ressent quelqu’un :\n\n- `sich schämen`\n- `sich ärgern`\n- `aufgeregt`\n- `enttäuscht`\n- `gelassen`\n\nLes verbes pronominaux ont toujours besoin d’un pronom : `ich schäme mich`, `ich ärgere mich`.",
+        "de": "Zwei **reflexive Verben** und drei **Adjektive** beschreiben, wie sich jemand fühlt:\n\n- `sich schämen`\n- `sich ärgern`\n- `aufgeregt`\n- `enttäuscht`\n- `gelassen`\n\nReflexive Verben brauchen immer ein Pronomen: `ich schäme mich`, `ich ärgere mich`."
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "stimmung",
+      "term": "Stimmung",
+      "translations": { "en": ["atmosphere", "mood"], "fr": ["ambiance", "atmosphère"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Stimmung",
+      "examForms": ["die Stimmung"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʃtɪmʊŋ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Die Stimmung im Büro ist heute gut.",
+        "translation": {
+          "en": "The mood in the office is good today.",
+          "fr": "L’ambiance au bureau est bonne aujourd’hui."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Stimmung is the mood of a place or group; the mood of a person is usually Laune.",
+        "fr": "Stimmung désigne l’ambiance d’un lieu ou d’un groupe ; l’humeur d’une personne se dit plutôt Laune.",
+        "de": "Stimmung ist die Atmosphäre eines Ortes oder einer Gruppe; die Stimmung eines Menschen ist meistens die Laune."
+      },
+      "explanation": {
+        "en": "Die Stimmung is the general atmosphere of a place or group; the word is feminine.",
+        "fr": "Die Stimmung désigne l’ambiance générale d’un lieu ou d’un groupe ; le mot est féminin.",
+        "de": "Die Stimmung ist die allgemeine Atmosphäre an einem Ort oder in einer Gruppe; das Wort ist feminin."
+      },
+      "genderExplanation": {
+        "en": "Stimmung ends in -ung and is feminine: die Stimmung.",
+        "fr": "Stimmung se termine par -ung et est féminin : die Stimmung.",
+        "de": "Stimmung endet auf -ung und ist feminin: die Stimmung."
+      },
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "atmosphere, general mood (of a place or group)",
+        "fr": "ambiance, atmosphère générale (d’un lieu ou d’un groupe)"
+      },
+      "gap": {
+        "before": "Auf der Party herrschte eine tolle ",
+        "after": ".",
+        "accepted": { "answers": ["Stimmung"] },
+        "referenceTargetIds": ["stimmung", "hoffnung", "langeweile", "eifersucht"],
+        "explanation": {
+          "en": "Only Stimmung fits: a party has a great atmosphere.",
+          "fr": "Seul « Stimmung » convient : une fête a une super ambiance.",
+          "de": "Nur „Stimmung“ passt: Auf einer Party herrscht eine tolle Atmosphäre."
+        }
+      },
+      "listeningOptionTargetIds": ["stimmung", "aufregung", "erleichterung", "enttaeuschung"]
+    },
+    {
+      "id": "laune",
+      "term": "Laune",
+      "translations": { "en": ["mood", "temper"], "fr": ["humeur"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Laune",
+      "examForms": ["die Laune"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈlaʊ̯nə/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Nach dem Kaffee hatte er wieder gute Laune.",
+        "translation": {
+          "en": "After the coffee he was in a good mood again.",
+          "fr": "Après le café, il était de nouveau de bonne humeur."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Laune is a person’s mood at a given moment; it is often used with gut or schlecht.",
+        "fr": "Laune est l’humeur d’une personne à un moment donné ; on la trouve souvent avec gut ou schlecht.",
+        "de": "Die Laune ist die Stimmung eines Menschen in einem Moment; man sagt oft gute oder schlechte Laune."
+      },
+      "explanation": {
+        "en": "Die Laune is a person’s mood at a given moment: gute Laune, schlechte Laune.",
+        "fr": "Die Laune est l’humeur d’une personne à un moment donné : gute Laune, schlechte Laune.",
+        "de": "Die Laune ist die Stimmung eines Menschen in einem Moment: gute Laune, schlechte Laune."
+      },
+      "genderExplanation": {
+        "en": "Laune is feminine: die Laune.",
+        "fr": "Laune est féminin : die Laune.",
+        "de": "Laune ist feminin: die Laune."
+      },
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "someone’s mood (as in: to be in a good mood)",
+        "fr": "l’humeur de quelqu’un (par ex. être de bonne humeur)"
+      },
+      "gap": {
+        "before": "Mein Chef hat heute schlechte ",
+        "after": ".",
+        "accepted": { "answers": ["Laune"] },
+        "referenceTargetIds": ["laune", "hoffnung", "erleichterung", "eifersucht"],
+        "explanation": {
+          "en": "Only Laune fits: schlechte Laune haben means to be in a bad mood.",
+          "fr": "Seul « Laune » convient : schlechte Laune haben signifie être de mauvaise humeur.",
+          "de": "Nur „Laune“ passt: Schlechte Laune haben bedeutet, schlecht gelaunt zu sein."
+        }
+      },
+      "listeningOptionTargetIds": ["laune", "langeweile", "stimmung", "hoffnung"]
+    },
+    {
+      "id": "aufregung",
+      "term": "Aufregung",
+      "translations": { "en": ["excitement", "agitation"], "fr": ["excitation", "agitation"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Aufregung",
+      "examForms": ["die Aufregung"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈaʊ̯fˌʁeːɡʊŋ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Die Aufregung vor der Reise war groß.",
+        "translation": {
+          "en": "The excitement before the trip was great.",
+          "fr": "L’excitation avant le voyage était grande."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Aufregung is the nervous excitement before something important.",
+        "fr": "Die Aufregung est l’excitation nerveuse avant un événement important.",
+        "de": "Die Aufregung ist die nervöse Spannung vor etwas Wichtigem."
+      },
+      "genderExplanation": {
+        "en": "Aufregung ends in -ung and is feminine: die Aufregung.",
+        "fr": "Aufregung se termine par -ung et est féminin : die Aufregung.",
+        "de": "Aufregung endet auf -ung und ist feminin: die Aufregung."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Vor dem Auftritt hatte sie so viel ",
+        "after": ", dass ihre Hände zitterten.",
+        "accepted": { "answers": ["Aufregung"] },
+        "referenceTargetIds": ["aufregung", "langeweile", "erleichterung", "laune"],
+        "explanation": {
+          "en": "Only Aufregung fits: trembling hands show nervous excitement before a performance.",
+          "fr": "Seul « Aufregung » convient : des mains qui tremblent montrent l’excitation avant un spectacle.",
+          "de": "Nur „Aufregung“ passt: Zitternde Hände zeigen die Aufregung vor einem Auftritt."
+        }
+      },
+      "listeningOptionTargetIds": ["aufregung", "stimmung", "erleichterung", "enttaeuschung"]
+    },
+    {
+      "id": "hoffnung",
+      "term": "Hoffnung",
+      "translations": { "en": ["hope"], "fr": ["espoir"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Hoffnung",
+      "examForms": ["die Hoffnung"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈhɔfnʊŋ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Wir haben die Hoffnung auf besseres Wetter nicht verloren.",
+        "translation": {
+          "en": "We haven’t lost hope for better weather.",
+          "fr": "Nous n’avons pas perdu l’espoir d’un meilleur temps."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Hoffnung is the wish that something good will happen.",
+        "fr": "Die Hoffnung est le souhait que quelque chose de bien arrive.",
+        "de": "Die Hoffnung ist der Wunsch, dass etwas Gutes passiert."
+      },
+      "genderExplanation": {
+        "en": "Hoffnung ends in -ung and is feminine: die Hoffnung.",
+        "fr": "Hoffnung se termine par -ung et est féminin : die Hoffnung.",
+        "de": "Hoffnung endet auf -ung und ist feminin: die Hoffnung."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Trotz der schlechten Nachrichten gibt sie die ",
+        "after": " nicht auf.",
+        "accepted": { "answers": ["Hoffnung"] },
+        "referenceTargetIds": ["hoffnung", "enttaeuschung", "eifersucht", "langeweile"],
+        "explanation": {
+          "en": "Only Hoffnung fits: die Hoffnung aufgeben means to give up hope.",
+          "fr": "Seul « Hoffnung » convient : die Hoffnung aufgeben signifie perdre espoir.",
+          "de": "Nur „Hoffnung“ passt: Die Hoffnung aufgeben bedeutet, nicht mehr zu hoffen."
+        }
+      },
+      "listeningOptionTargetIds": ["hoffnung", "stolz", "langeweile", "laune"]
+    },
+    {
+      "id": "erleichterung",
+      "term": "Erleichterung",
+      "translations": { "en": ["relief"], "fr": ["soulagement"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Erleichterung",
+      "examForms": ["die Erleichterung"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɛɐ̯ˈlaɪ̯çtəʁʊŋ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Zu meiner Erleichterung war der Test leicht.",
+        "translation": {
+          "en": "To my relief, the test was easy.",
+          "fr": "À mon grand soulagement, le test était facile."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Erleichterung is the good feeling when a worry is gone.",
+        "fr": "Die Erleichterung est le bon sentiment quand un souci disparaît.",
+        "de": "Die Erleichterung ist das gute Gefühl, wenn eine Sorge weg ist."
+      },
+      "genderExplanation": {
+        "en": "Erleichterung ends in -ung and is feminine: die Erleichterung.",
+        "fr": "Erleichterung se termine par -ung et est féminin : die Erleichterung.",
+        "de": "Erleichterung endet auf -ung und ist feminin: die Erleichterung."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Als die Prüfung endlich vorbei war, atmete er auf und spürte große ",
+        "after": ".",
+        "accepted": { "answers": ["Erleichterung"] },
+        "referenceTargetIds": ["erleichterung", "eifersucht", "langeweile", "laune"],
+        "explanation": {
+          "en": "Only Erleichterung fits: he breathes out because the worry is over.",
+          "fr": "Seul « Erleichterung » convient : il respire parce que le souci est passé.",
+          "de": "Nur „Erleichterung“ passt: Er atmet auf, weil die Sorge vorbei ist."
+        }
+      },
+      "listeningOptionTargetIds": ["erleichterung", "stimmung", "aufregung", "enttaeuschung"]
+    },
+    {
+      "id": "langeweile",
+      "term": "Langeweile",
+      "translations": { "en": ["boredom"], "fr": ["ennui"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Langeweile",
+      "examForms": ["die Langeweile"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈlaŋəˌvaɪ̯lə/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Aus Langeweile habe ich das Zimmer aufgeräumt.",
+        "translation": {
+          "en": "Out of boredom I tidied the room.",
+          "fr": "Par ennui, j’ai rangé la chambre."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Langeweile is the feeling of having nothing interesting to do.",
+        "fr": "Die Langeweile est le sentiment de n’avoir rien d’intéressant à faire.",
+        "de": "Die Langeweile ist das Gefühl, nichts Interessantes zu tun zu haben."
+      },
+      "genderExplanation": {
+        "en": "Langeweile is feminine: die Langeweile.",
+        "fr": "Langeweile est féminin : die Langeweile.",
+        "de": "Langeweile ist feminin: die Langeweile."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Ich hatte nichts zu tun und starb fast vor ",
+        "after": ".",
+        "accepted": { "answers": ["Langeweile"] },
+        "referenceTargetIds": ["langeweile", "hoffnung", "eifersucht", "stimmung"],
+        "explanation": {
+          "en": "Only Langeweile fits: having nothing to do causes boredom.",
+          "fr": "Seul « Langeweile » convient : n’avoir rien à faire provoque l’ennui.",
+          "de": "Nur „Langeweile“ passt: Wer nichts zu tun hat, langweilt sich."
+        }
+      },
+      "listeningOptionTargetIds": ["langeweile", "laune", "eifersucht", "hoffnung"]
+    },
+    {
+      "id": "enttaeuschung",
+      "term": "Enttäuschung",
+      "translations": { "en": ["disappointment"], "fr": ["déception"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Enttäuschung",
+      "examForms": ["die Enttäuschung"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɛntˈtɔɪ̯ʃʊŋ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Seine Absage war eine große Enttäuschung.",
+        "translation": {
+          "en": "His refusal was a big disappointment.",
+          "fr": "Son refus a été une grosse déception."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Enttäuschung is the sad feeling when something is worse than hoped.",
+        "fr": "Die Enttäuschung est le sentiment triste quand quelque chose est pire que prévu.",
+        "de": "Die Enttäuschung ist das traurige Gefühl, wenn etwas schlechter ist als erhofft."
+      },
+      "genderExplanation": {
+        "en": "Enttäuschung ends in -ung and is feminine: die Enttäuschung.",
+        "fr": "Enttäuschung se termine par -ung et est féminin : die Enttäuschung.",
+        "de": "Enttäuschung endet auf -ung und ist feminin: die Enttäuschung."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Das schlechte Ergebnis war eine große ",
+        "after": " für das ganze Team.",
+        "accepted": { "answers": ["Enttäuschung"] },
+        "referenceTargetIds": ["enttaeuschung", "langeweile", "stimmung", "eifersucht"],
+        "explanation": {
+          "en": "Only Enttäuschung fits: a bad result disappoints the team.",
+          "fr": "Seul « Enttäuschung » convient : un mauvais résultat déçoit l’équipe.",
+          "de": "Nur „Enttäuschung“ passt: Ein schlechtes Ergebnis enttäuscht das Team."
+        }
+      },
+      "listeningOptionTargetIds": ["enttaeuschung", "aufgeregt", "stimmung", "aufregung"]
+    },
+    {
+      "id": "eifersucht",
+      "term": "Eifersucht",
+      "translations": { "en": ["jealousy"], "fr": ["jalousie"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Eifersucht",
+      "examForms": ["die Eifersucht"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈaɪ̯fɐˌzʊxt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Eifersucht kann eine Freundschaft zerstören.",
+        "translation": {
+          "en": "Jealousy can destroy a friendship.",
+          "fr": "La jalousie peut détruire une amitié."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Eifersucht is the fear of losing someone to another person.",
+        "fr": "Die Eifersucht est la peur de perdre quelqu’un au profit d’une autre personne.",
+        "de": "Die Eifersucht ist die Angst, jemanden an eine andere Person zu verlieren."
+      },
+      "genderExplanation": {
+        "en": "Eifersucht is feminine: die Eifersucht.",
+        "fr": "Eifersucht est féminin : die Eifersucht.",
+        "de": "Eifersucht ist feminin: die Eifersucht."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Seine ",
+        "after": " war groß, als sie mit einem anderen Mann tanzte.",
+        "accepted": { "answers": ["Eifersucht"] },
+        "referenceTargetIds": ["eifersucht", "langeweile", "erleichterung", "laune"],
+        "explanation": {
+          "en": "Only Eifersucht fits: he sees her dance with another man.",
+          "fr": "Seul « Eifersucht » convient : il la voit danser avec un autre homme.",
+          "de": "Nur „Eifersucht“ passt: Er sieht sie mit einem anderen Mann tanzen."
+        }
+      },
+      "listeningOptionTargetIds": ["eifersucht", "langeweile", "erleichterung", "stolz"]
+    },
+    {
+      "id": "stolz",
+      "term": "Stolz",
+      "translations": { "en": ["pride"], "fr": ["fierté"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "der Stolz",
+      "examForms": ["der Stolz"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ʃtɔlts/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Sie zeigte ihr Diplom voller Stolz.",
+        "translation": {
+          "en": "She showed her diploma full of pride.",
+          "fr": "Elle a montré son diplôme pleine de fierté."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Der Stolz is the good feeling about your own success or that of someone close to you.",
+        "fr": "Der Stolz est le bon sentiment devant sa propre réussite ou celle d’un proche.",
+        "de": "Der Stolz ist das gute Gefühl über den eigenen Erfolg oder den eines nahen Menschen."
+      },
+      "genderExplanation": {
+        "en": "Stolz is masculine: der Stolz.",
+        "fr": "Stolz est masculin : der Stolz.",
+        "de": "Stolz ist maskulin: der Stolz."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Der Vater sieht seinen Sohn mit großem ",
+        "after": " an.",
+        "accepted": { "answers": ["Stolz"] },
+        "referenceTargetIds": ["stolz", "langeweile", "hoffnung", "eifersucht"],
+        "explanation": {
+          "en": "Only Stolz fits: großem is masculine, and a father looks at his son with pride.",
+          "fr": "Seul « Stolz » convient : großem est masculin, et un père regarde son fils avec fierté.",
+          "de": "Nur „Stolz“ passt: „großem“ ist maskulin, und ein Vater sieht seinen Sohn voller Stolz an."
+        }
+      },
+      "listeningOptionTargetIds": ["stolz", "hoffnung", "laune", "eifersucht"]
+    },
+    {
+      "id": "schaemen",
+      "term": "sich schämen",
+      "translations": { "en": ["to be ashamed"], "fr": ["avoir honte"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "sich schämen",
+      "examForms": ["sich schämen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/zɪç ˈʃɛːmən/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Ich schäme mich für mein schlechtes Benehmen.",
+        "translation": {
+          "en": "I am ashamed of my bad behaviour.",
+          "fr": "J’ai honte de mon mauvais comportement."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Sich schämen is a reflexive verb: you feel ashamed, often with für.",
+        "fr": "Sich schämen est un verbe pronominal : on a honte, souvent avec für.",
+        "de": "Sich schämen ist ein reflexives Verb: Man fühlt Scham, oft mit „für“."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Du musst dich für deinen Fehler nicht ",
+        "after": ".",
+        "accepted": { "answers": ["schämen"] },
+        "referenceTargetIds": ["schaemen", "hoffnung", "aufgeregt", "laune"],
+        "explanation": {
+          "en": "Only schämen fits: sich für einen Fehler schämen means to be ashamed of a mistake.",
+          "fr": "Seul « schämen » convient : sich für einen Fehler schämen signifie avoir honte d’une erreur.",
+          "de": "Nur „schämen“ passt: Sich für einen Fehler schämen heißt, sich wegen eines Fehlers zu genieren."
+        }
+      },
+      "listeningOptionTargetIds": ["schaemen", "aergern", "gelassen", "aufgeregt"]
+    },
+    {
+      "id": "aergern",
+      "term": "sich ärgern",
+      "translations": { "en": ["to get annoyed", "to be angry"], "fr": ["s’énerver", "se fâcher"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "sich ärgern",
+      "examForms": ["sich ärgern"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/zɪç ˈɛʁɡɐn/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Er ärgert sich oft über den Verkehr.",
+        "translation": {
+          "en": "He often gets annoyed about the traffic.",
+          "fr": "Il s’énerve souvent à cause de la circulation."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Sich ärgern is a reflexive verb: you feel annoyed, usually with über.",
+        "fr": "Sich ärgern est un verbe pronominal : on est agacé, généralement avec über.",
+        "de": "Sich ärgern ist ein reflexives Verb: Man ist verärgert, meistens mit „über“."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Du musst dich nicht über jede Kleinigkeit ",
+        "after": ".",
+        "accepted": { "answers": ["ärgern"] },
+        "referenceTargetIds": ["aergern", "schaemen", "stolz", "stimmung"],
+        "explanation": {
+          "en": "Only ärgern fits: sich über etwas ärgern means to get annoyed about something.",
+          "fr": "Seul « ärgern » convient : sich über etwas ärgern signifie s’énerver à propos de quelque chose.",
+          "de": "Nur „ärgern“ passt: Sich über etwas ärgern bedeutet, wegen etwas wütend zu sein."
+        }
+      },
+      "listeningOptionTargetIds": ["aergern", "schaemen", "gelassen", "aufgeregt"]
+    },
+    {
+      "id": "aufgeregt",
+      "term": "aufgeregt",
+      "translations": { "en": ["excited", "nervous"], "fr": ["excité", "nerveux"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "aufgeregt",
+      "examForms": ["aufgeregt"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈaʊ̯fɡəˌʁeːkt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Die Kinder sind vor dem Ausflug ganz aufgeregt.",
+        "translation": {
+          "en": "The children are very excited before the trip.",
+          "fr": "Les enfants sont très excités avant la sortie."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Aufgeregt describes someone who is nervous or excited before something.",
+        "fr": "Aufgeregt décrit une personne nerveuse ou excitée avant quelque chose.",
+        "de": "Aufgeregt beschreibt jemanden, der vor etwas nervös oder voller Vorfreude ist."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Vor dem ersten Date war sie so ",
+        "after": ", dass sie kaum essen konnte.",
+        "accepted": { "answers": ["aufgeregt"] },
+        "referenceTargetIds": ["aufgeregt", "gelassen", "langeweile", "schaemen"],
+        "explanation": {
+          "en": "Only aufgeregt fits: nervous excitement stops her from eating; a calm person would eat.",
+          "fr": "Seul « aufgeregt » convient : l’excitation l’empêche de manger ; une personne calme mangerait.",
+          "de": "Nur „aufgeregt“ passt: Nervosität verhindert das Essen; ein gelassener Mensch würde essen."
+        }
+      },
+      "listeningOptionTargetIds": ["aufgeregt", "enttaeuscht", "gelassen", "aufregung"]
+    },
+    {
+      "id": "enttaeuscht",
+      "term": "enttäuscht",
+      "translations": { "en": ["disappointed"], "fr": ["déçu"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "enttäuscht",
+      "examForms": ["enttäuscht"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɛntˈtɔɪ̯ʃt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ich bin vom Ergebnis ein bisschen enttäuscht.",
+        "translation": {
+          "en": "I am a little disappointed with the result.",
+          "fr": "Je suis un peu déçu du résultat."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Enttäuscht describes someone whose hopes were not met.",
+        "fr": "Enttäuscht décrit une personne dont les attentes n’ont pas été comblées.",
+        "de": "Enttäuscht beschreibt jemanden, dessen Erwartungen nicht erfüllt wurden."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Er hat die Beförderung nicht bekommen und ist deshalb sehr ",
+        "after": ".",
+        "accepted": { "answers": ["enttäuscht"] },
+        "referenceTargetIds": ["enttaeuscht", "aufgeregt", "eifersucht", "schaemen"],
+        "explanation": {
+          "en": "Only enttäuscht fits: not getting a promotion he hoped for is disappointing.",
+          "fr": "Seul « enttäuscht » convient : ne pas obtenir la promotion espérée est décevant.",
+          "de": "Nur „enttäuscht“ passt: Eine erhoffte Beförderung nicht zu bekommen, ist enttäuschend."
+        }
+      },
+      "listeningOptionTargetIds": ["enttaeuscht", "aufgeregt", "enttaeuschung", "gelassen"]
+    },
+    {
+      "id": "gelassen",
+      "term": "gelassen",
+      "translations": { "en": ["calm", "relaxed"], "fr": ["serein", "calme"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "gelassen",
+      "examForms": ["gelassen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɡəˈlasn̩/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Trotz des Stresses bleibt unsere Lehrerin gelassen.",
+        "translation": {
+          "en": "Despite the stress our teacher stays calm.",
+          "fr": "Malgré le stress, notre professeure reste sereine."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Gelassen describes someone who stays calm and relaxed, even under pressure.",
+        "fr": "Gelassen décrit une personne qui reste calme et sereine, même sous pression.",
+        "de": "Gelassen beschreibt jemanden, der auch unter Druck ruhig und entspannt bleibt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Obwohl der Zug Verspätung hatte, blieb sie ganz ",
+        "after": ".",
+        "accepted": { "answers": ["gelassen"] },
+        "referenceTargetIds": ["gelassen", "aufgeregt", "enttaeuscht", "erleichterung"],
+        "explanation": {
+          "en": "Only gelassen fits: obwohl signals that she did not react badly to the delay.",
+          "fr": "Seul « gelassen » convient : obwohl indique qu’elle n’a pas mal réagi au retard.",
+          "de": "Nur „gelassen“ passt: „Obwohl“ zeigt, dass sie auf die Verspätung nicht schlecht reagierte."
+        }
+      },
+      "listeningOptionTargetIds": ["gelassen", "aufgeregt", "enttaeuscht", "schaemen"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

@@ -5,7 +5,7 @@ export const privacyPolicy: LegalDocument = {
   title: 'Politique de confidentialité',
   description:
     'Ce que ft_transcendence collecte pendant que vous apprenez une langue avec la plateforme, pourquoi nous le collectons, combien de temps nous le conservons, et comment le récupérer ou le faire supprimer.',
-  lastUpdated: '2026-08-01',
+  lastUpdated: '2026-11-04',
   intro:
     "ft_transcendence est une plateforme d'apprentissage des langues pilotée par IA. Bien enseigner une langue implique d'observer comment vous l'utilisez, ce service traite donc davantage d'informations sur votre comportement d'apprentissage qu'un site web classique. Cette politique explique précisément ce que cela signifie en pratique, écrite pour être lue plutôt que survolée.",
   sections: [
@@ -50,7 +50,7 @@ export const privacyPolicy: LegalDocument = {
       id: 'retention',
       heading: '5. Durée de conservation des données',
       paragraphs: [
-        "Les données de compte sont conservées jusqu'à la suppression du compte. La progression d'apprentissage et les résultats d'évaluation sont conservés pendant toute la durée de vie du compte, car les supprimer réinitialiserait l'évaluation de niveau qui rend la plateforme utile.",
+        "Les données de compte sont conservées jusqu'à la suppression du compte. La progression d'apprentissage et les résultats d'évaluation sont conservés pendant toute la durée de vie du compte, car les supprimer réinitialiserait l'évaluation de niveau qui rend la plateforme utile. Une amitié ou une demande d'ami est conservée jusqu'à ce que l'un de vous deux la retire, la refuse ou l'annule, ou supprime son compte.",
         "Les transcriptions des conversations IA sont conservées douze mois, puis supprimées automatiquement. Les messages de chat envoyés à d'autres apprenants sont conservés douze mois. Les journaux serveur contenant des adresses IP sont conservés trente jours, puis purgés.",
         "Supprimer votre compte retire les données de compte, les données d'apprentissage et les transcriptions sous trente jours. Les messages que vous avez envoyés à un autre apprenant restent visibles par cet apprenant, détachés de votre profil, car ils font partie d'une conversation que vous ne possédez pas seul. Les sauvegardes sont purgées selon leur propre cycle glissant, qui se termine sous quatre-vingt-dix jours.",
       ],
@@ -59,7 +59,7 @@ export const privacyPolicy: LegalDocument = {
       id: 'sharing',
       heading: "6. Qui d'autre voit vos données",
       paragraphs: [
-        "Les autres apprenants voient votre nom d'affichage, votre avatar, votre statut de présence, et tout ce que vous leur envoyez. Rien d'autre sur votre profil n'est exposé par défaut.",
+        "Les autres apprenants voient votre nom d'affichage, votre avatar, votre statut de présence, et tout ce que vous leur envoyez. Tout apprenant connecté peut vous trouver par votre nom d'affichage et vous envoyer une demande d'ami. Votre liste d'amis n'est visible que par vous. Rien d'autre sur votre profil n'est exposé par défaut.",
         "En dehors de la plateforme, les données n'atteignent que l'infrastructure et les fournisseurs de modèles nécessaires à son fonctionnement. Nous ne partageons pas de données avec des annonceurs, des courtiers en données, ou des réseaux d'analyse. Si nous sommes un jour contraints de divulguer des données par une décision de justice, nous vous en informerons sauf interdiction de le faire.",
       ],
     },

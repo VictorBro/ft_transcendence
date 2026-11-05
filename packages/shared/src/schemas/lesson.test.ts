@@ -3,7 +3,6 @@ import { describe, expect, it } from 'vitest';
 import { LEVELS } from './item';
 import { LEARNABLE_LANGUAGES } from './language';
 import {
-  FinishLessonSchema,
   FinishResultSchema,
   foldText,
   KIND_COUNTS,
@@ -423,22 +422,6 @@ describe('LessonQuerySchema', () => {
 
   it('cuts q to 100 characters instead of rejecting it', () => {
     expect(LessonQuerySchema.parse({ q: 'a'.repeat(150) }).q).toHaveLength(100);
-  });
-});
-
-describe('FinishLessonSchema', () => {
-  it('accepts whole scores from 0 to 100', () => {
-    for (const score of [0, 70, 100]) {
-      expect(FinishLessonSchema.safeParse({ score }).success, `${score}`).toBe(true);
-    }
-  });
-
-  it('rejects anything else with lesson.invalidScore', () => {
-    for (const input of [{ score: 101 }, { score: -1 }, { score: 70.5 }, { score: '70' }, {}]) {
-      const result = FinishLessonSchema.safeParse(input);
-      expect(result.success, JSON.stringify(input)).toBe(false);
-      expect(result.error?.issues.map((i) => i.message)).toEqual(['lesson.invalidScore']);
-    }
   });
 });
 

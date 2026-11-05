@@ -83,7 +83,9 @@ fi
 # usable on a fresh clone before the first install.
 before=$failures
 if [ -d node_modules/.pnpm ]; then
-  installed="$(find node_modules/.pnpm -maxdepth 1 -name 'typescript@*' -printf '%f\n' 2>/dev/null | sed -E 's/^typescript@([^_]+).*/\1/' | sort -u || true)"
+  # basename, not -printf: BSD find (macOS) has no -printf, and the error
+  # hidden by 2>/dev/null read as "no typescript package".
+  installed="$(find node_modules/.pnpm -maxdepth 1 -name 'typescript@*' -exec basename {} \; 2>/dev/null | sed -E 's/^typescript@([^_]+).*/\1/' | sort -u || true)"
   if [ -z "$installed" ]; then
     fail "node_modules/.pnpm has no typescript package"
   else

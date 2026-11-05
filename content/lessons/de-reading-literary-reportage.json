@@ -1,0 +1,412 @@
+{
+  "schemaVersion": 2,
+  "id": "de-reading-literary-reportage",
+  "lang": "de",
+  "level": "C2",
+  "locales": ["en", "fr", "de"],
+  "title": "Eine literarische Reportage lesen",
+  "objective": {
+    "en": "Read a long reportage about a travelling shepherd in the Rhön and recognise the techniques it borrows from literature: scenes, reconstructed dialogue and withheld information.",
+    "fr": "Lire un long reportage sur un berger itinérant de la Rhön et reconnaître les procédés qu’il emprunte à la littérature : scènes, dialogues reconstitués et informations retenues.",
+    "de": "Eine lange Reportage über einen Wanderschäfer in der Rhön lesen und erkennen, welche literarischen Mittel sie nutzt: Szenen, rekonstruierte Dialoge, zurückgehaltene Informationen."
+  },
+  "estimatedMinutes": 12,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:37:32.778Z",
+    "inputHashes": {
+      "outline": "6c1c62f79430740fea94ebccf3c9b1c973bfbbad706cfda692813f8ee0c7fafd",
+      "brief": "ef78609d03204bca31459818bd446f453d4e5850edc57a4f17062dc955eed431"
+    }
+  },
+  "kind": "reading",
+  "theme": "personal_identification",
+  "genre": "article",
+  "documents": [
+    {
+      "documentId": "main",
+      "title": "Der Mann mit den dreihundert Schafen",
+      "meta": ["Reportage aus der Rhön", "Von Mara Lenz"],
+      "paragraphs": [
+        "Um halb fünf ist es noch dunkel über der Rhön. Der Nebel liegt in den Senken, und irgendwo scheppert eine Glocke. Erst als ich näher komme, erkenne ich im Pferch die grauen Rücken der Tiere, dicht an dicht, und daneben eine Gestalt, die sich nicht rührt. Es ist Konrad Weigand. Er steht da, als hätte ihn jemand über Nacht hingestellt.",
+        "Weigand ist vierundsechzig und gilt im Dorf als wortkarg. „Der redet mit den Schafen mehr als mit uns“, sagt die Wirtin des Gasthofs, in dem ich übernachtet habe, und lacht, ohne es böse zu meinen. Ich frage ihn, ob ich ihn begleiten darf. Er mustert mich, die Stiefel, den Notizblock, und sagt nach einer Weile: „Wenn Sie nicht dazwischenreden.“ Mehr kommt an diesem Morgen nicht.",
+        "Dann setzt sich die Herde in Bewegung, langsam, wie eine graue Welle, die sich einen Weg sucht. Weigand geht hinterher, bedächtig, den Stock im Nacken, die Hände über dem Holz verschränkt. Zwei Hunde laufen an den Flanken entlang und schließen jede Lücke, noch ehe sie entsteht. Die alte Trift führt über Basaltkuppen und durch feuchte Wiesen, vorbei an Zäunen, die es früher nicht gab. Seit vierzig Jahren geht er diesen Weg, im Frühjahr hinauf, im Herbst wieder hinunter.",
+        "Was in all den Jahren geschah, erfahre ich nicht von ihm. Ich erfahre es in Gesprächen mit dem Bürgermeister, einer Tierärztin und einem früheren Knecht, und ich gebe es hier so wieder, wie es mir erzählt wurde. Als verbürgt gilt nur, dass Weigand 1998 beinahe aufgegeben hätte. Der Rest ist Erinnerung, und Erinnerung glättet. Den Satz, den die Tierärztin damals gesagt haben soll, habe ich deshalb in Anführungszeichen gesetzt, obwohl niemand ihn mitgeschrieben hat.",
+        "Es war im Februar, so berichtet sie, und Schnee lag auf den Kuppen. Siebzig Tiere waren in der Nacht verendet, eine Krankheit, die niemand erkannt hatte. Weigand stand im leeren Stall, das Licht der Lampe zitterte. „Das war's dann wohl“, soll er gesagt haben. „Nein“, antwortete die Tierärztin. „Das war nur der Anfang von etwas anderem. Sie wissen es bloß noch nicht.“ Was sie damit meinte, sagt sie bis heute nicht. Sie lächelt nur, wenn man fragt.",
+        "Gegen Mittag rasten wir an einem Bach. Weigand schneidet Brot und Speck in dicke Scheiben und reicht mir die Hälfte, ohne ein Wort. Die Hunde liegen im Gras, die Herde ruht, und ich nutze die Stille für die Frage, die mich seit dem Morgen beschäftigt: Warum ist er damals geblieben? Er kaut, schaut über die Hänge und sagt: „Ich hatte noch etwas zu erledigen.“ Dabei bleibt es. Ich schreibe es auf und weiß, dass ich es nicht verstehe.",
+        "Am späten Nachmittag erreichen wir die Hochweide. Weigand öffnet das Gatter, und die Tiere strömen hinaus, als hätten sie den Ort nie verlassen. Erst jetzt, im weichen Licht, sieht man, wie sehr die Landschaft von dieser Arbeit geprägt ist: Die offenen Hänge, die Wacholderheiden, die Stille, all das gäbe es ohne Schafe nicht. Naturschützer sprechen von Kulturlandschaft. Weigand sagt dazu nichts. Er klopft einem Tier auf die Flanke, fast zärtlich, und wendet sich ab.",
+        "Erst am Abend, beim Abschied, erzählt mir der frühere Knecht, was die Tierärztin damals gemeint haben könnte. Im Frühjahr nach dem Unglück wurden auf der Weide siebzig Lämmer geboren, mehr als je zuvor. Weigand hat sie alle gezählt, sagt er, mit dem Finger in der Luft, einmal, zweimal, dreimal. Ob das stimmt, kann ich nicht prüfen. Ich lasse es so stehen, wie ich es gehört habe, und gehe im Dunkeln zurück ins Dorf, wo hinter einem Fenster noch Licht brennt."
+      ],
+      "highlights": [
+        { "keywordId": "pferch", "text": "Pferch" },
+        { "keywordId": "wortkarg", "text": "wortkarg" },
+        { "keywordId": "bedaechtig", "text": "bedächtig" },
+        { "keywordId": "trift", "text": "Trift" },
+        { "keywordId": "verbuergt", "text": "verbürgt" }
+      ]
+    },
+    {
+      "documentId": "exam",
+      "title": "Der letzte Fährmann von Kaltenhof",
+      "meta": ["Reportage von Jonas Brandt"],
+      "paragraphs": [
+        "Wenn die Fähre ablegt, zählt Hinrich Tamm die Passagiere, obwohl er das nicht müsste. Heute sind es neun: zwei Radfahrer, eine Frau mit einem Korb voller Quitten, ein Schulkind und fünf Männer in Arbeitskleidung, die schweigen, als säßen sie in der Kirche. Das Wasser der Elbe ist braun und träge. Tamm steht am Steuer und liest den Fluss, wie andere eine Zeitung lesen.",
+        "„Früher waren es dreihundert am Tag“, sagt er, ohne sich umzudrehen. „Dann kam die Brücke.“ Er sagt das ohne Bitterkeit, als erwähne er das Wetter. Die Brücke, vierzehn Kilometer flussaufwärts, hat den Landkreis zwanzig Millionen Euro gekostet. Die Fähre kostet ihn im Jahr zwölftausend Euro mehr, als sie einbringt. Warum er sie trotzdem fährt, beantwortet er mit einem Achselzucken, das alles und nichts bedeuten kann.",
+        "Die Frau mit den Quitten steigt am anderen Ufer aus und bleibt noch einen Moment stehen. „Er hat meinen Mann damals herübergebracht, in der Nacht, als das Kind kam“, erzählt sie mir später auf dem Steg. „Der Krankenwagen konnte nicht fahren, die Straße stand unter Wasser. Hinrich hat nicht gefragt, er hat einfach den Motor angeworfen.“ Ob es sich genau so zugetragen hat, weiß sie selbst nicht mehr sicher. Die Geschichte wird im Dorf seit Jahren erzählt, und jeder fügt ein Detail hinzu.",
+        "Auf der Rückfahrt sitze ich neben dem Schulkind. Es heißt Lena, ist zehn und fährt jeden Morgen allein. „Herr Tamm kann nicht schwimmen“, flüstert sie. „Das darf aber keiner wissen.“ Ich schaue zum Steuerstand hinüber. Tamm hat es gehört, vermute ich, denn seine Mundwinkel zucken, doch er schweigt und hält den Kurs. Mehr als ein Geheimnis ist es vielleicht auch nicht, nur eines von denen, die ein Ort braucht, um zusammenzuhalten.",
+        "Als die Fähre wieder anlegt, ist es fast dunkel. Tamm vertäut die Fähre mit einem Knoten, den ich nicht kenne, und zählt die Aussteigenden noch einmal. Er nickt, als hätte er genau diese Zahl erwartet."
+      ],
+      "highlights": []
+    }
+  ],
+  "steps": [
+    {
+      "id": "flashcards",
+      "stage": "flashcards",
+      "role": "exercise",
+      "label": { "en": "Flashcards", "fr": "Cartes mémoire", "de": "Karteikarten" },
+      "pages": [
+        {
+          "pageId": "flashcards",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Turn each card to learn the key words of the text.",
+            "fr": "Retournez chaque carte pour découvrir les mots clés du texte.",
+            "de": "Dreh jede Karte um und lerne die Schlüsselwörter des Textes."
+          },
+          "items": [
+            {
+              "type": "reading_flashcards",
+              "itemId": "cards",
+              "keywordIds": ["wortkarg", "pferch", "bedaechtig", "verbuergt", "trift"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matching",
+      "stage": "matching",
+      "role": "exercise",
+      "label": { "en": "Matching", "fr": "Association", "de": "Zuordnen" },
+      "pages": [
+        {
+          "pageId": "matching",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each key word with its meaning.",
+            "fr": "Associez chaque mot clé à son sens.",
+            "de": "Ordne jedem Schlüsselwort seine Bedeutung zu."
+          },
+          "items": [
+            {
+              "type": "reading_keyword_matching",
+              "itemId": "matching",
+              "keywordIds": ["wortkarg", "pferch", "bedaechtig", "verbuergt", "trift"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skim",
+      "stage": "skim",
+      "role": "exercise",
+      "label": { "en": "Skim", "fr": "Survol", "de": "Überfliegen" },
+      "pages": [
+        {
+          "pageId": "skim",
+          "estimatedDurationS": 235,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Look over the document quickly. When the time is up it is put away; then answer the question.",
+            "fr": "Parcourez rapidement le document. À la fin du temps, il disparaît ; répondez ensuite à la question.",
+            "de": "Überfliege das Dokument. Wenn die Zeit um ist, verschwindet es; beantworte dann die Frage."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "skim-document",
+              "documentId": "main",
+              "view": "skim",
+              "skimSeconds": 215
+            },
+            {
+              "type": "reading_skim_choice",
+              "itemId": "skim-question",
+              "focus": "genre",
+              "question": "Um welche Art von Text handelt es sich?",
+              "options": [
+                { "optionId": "o1", "text": "Eine Gebrauchsanweisung für Wanderer" },
+                { "optionId": "o2", "text": "Eine literarische Reportage über einen Schäfer" },
+                { "optionId": "o3", "text": "Ein Gerichtsprotokoll über einen Seuchenfall" },
+                { "optionId": "o4", "text": "Eine Werbeanzeige für eine Ferienregion" }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "The text reports on a real person, but tells it in scenes with dialogue and suspense, like a story: a literary reportage.",
+                "fr": "Le texte rend compte d’une personne réelle, mais le raconte en scènes, avec dialogues et suspense, comme un récit : un reportage littéraire.",
+                "de": "Der Text berichtet über eine reale Person, erzählt aber in Szenen mit Dialog und Spannung wie eine Erzählung: eine literarische Reportage."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "detail",
+      "stage": "detail",
+      "role": "exercise",
+      "label": { "en": "Detail", "fr": "Détails", "de": "Details" },
+      "pages": [
+        {
+          "pageId": "detail",
+          "estimatedDurationS": 120,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the document carefully and answer the questions.",
+            "fr": "Lisez le document attentivement et répondez aux questions.",
+            "de": "Lies das Dokument genau und beantworte die Fragen."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "detail-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-wirtin",
+              "question": "Wie beschreibt die Wirtin Konrad Weigand?",
+              "options": [
+                {
+                  "optionId": "o1",
+                  "text": "Er spreche mit den Schafen mehr als mit den Dorfbewohnern."
+                },
+                { "optionId": "o2", "text": "Er streite im Gasthof ständig mit den Gästen." },
+                { "optionId": "o3", "text": "Er könne nicht gut mit Tieren umgehen." },
+                { "optionId": "o4", "text": "Er erzähle im Dorf gern lange Geschichten." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "The innkeeper says he talks to the sheep more than to the villagers, a jokingly meant hint that he is wortkarg.",
+                "fr": "L’aubergiste dit qu’il parle plus aux moutons qu’aux villageois, une remarque amicale qui souligne qu’il est wortkarg.",
+                "de": "Die Wirtin sagt, er rede mit den Schafen mehr als mit den Dorfbewohnern, ein freundlich gemeinter Hinweis darauf, dass er wortkarg ist."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "q-beleg",
+              "statement": "Der Satz der Tierärztin über den „Anfang von etwas anderem“ ist durch eine Mitschrift belegt.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: the reporter says that nobody wrote the sentence down; she puts it in quotation marks only as reported speech.",
+                "fr": "Faux : la reporter précise que personne n’a noté la phrase ; elle la met entre guillemets seulement comme parole rapportée.",
+                "de": "Falsch: Die Reporterin schreibt, niemand habe den Satz mitgeschrieben; sie setzt ihn nur als berichtete Rede in Anführungszeichen."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-antwort",
+              "question": "Was antwortet Weigand auf die Frage, warum er damals geblieben ist?",
+              "options": [
+                { "optionId": "o1", "text": "Er habe keine andere Arbeit gefunden." },
+                { "optionId": "o2", "text": "Er habe noch etwas zu erledigen gehabt." },
+                { "optionId": "o3", "text": "Die Tierärztin habe ihn dazu überredet." },
+                { "optionId": "o4", "text": "Er habe die Hunde nicht allein lassen wollen." }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "His only answer is „Ich hatte noch etwas zu erledigen.“ The reporter withholds any further explanation, which creates suspense.",
+                "fr": "Sa seule réponse est « Ich hatte noch etwas zu erledigen. » La reporter ne donne aucune explication de plus, ce qui crée du suspense.",
+                "de": "Seine einzige Antwort ist „Ich hatte noch etwas zu erledigen.“ Die Reporterin liefert keine weitere Erklärung, das erzeugt Spannung."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-knecht",
+              "question": "Was erzählt der frühere Knecht am Abend?",
+              "options": [
+                { "optionId": "o1", "text": "Weigand habe damals die ganze Herde verkauft." },
+                { "optionId": "o2", "text": "Die Tierärztin sei kurz danach weggezogen." },
+                {
+                  "optionId": "o3",
+                  "text": "Im Frühjahr nach dem Unglück seien siebzig Lämmer geboren worden."
+                },
+                { "optionId": "o4", "text": "Die Hunde seien in jenem Winter davongelaufen." }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "He offers a possible key to the vet’s sentence: seventy lambs were born, as many as the animals lost. The reporter cannot check it.",
+                "fr": "Il propose une clé possible pour la phrase de la vétérinaire : soixante-dix agneaux sont nés. La reporter ne peut pas le vérifier.",
+                "de": "Er bietet einen möglichen Schlüssel zum Satz der Tierärztin: Siebzig Lämmer wurden geboren. Die Reporterin kann es nicht prüfen."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "structure",
+      "stage": "structure",
+      "role": "exercise",
+      "label": { "en": "Structure", "fr": "Structure", "de": "Aufbau" },
+      "pages": [
+        {
+          "pageId": "structure",
+          "estimatedDurationS": 75,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the information in the order the text gives it.",
+            "fr": "Remettez les informations dans l’ordre du texte.",
+            "de": "Bring die Informationen in die Reihenfolge des Textes."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "structure-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_order",
+              "itemId": "order",
+              "pieces": [
+                {
+                  "pieceId": "p4",
+                  "text": "Auf der Hochweide wendet sich Weigand ohne Kommentar ab."
+                },
+                {
+                  "pieceId": "p2",
+                  "text": "Ein Rückblick auf den verlorenen Winter wird mit Vorbehalt erzählt."
+                },
+                { "pieceId": "p5", "text": "Der Knecht nennt am Abend eine mögliche Erklärung." },
+                { "pieceId": "p1", "text": "Die Erzählerin begegnet Weigand im Nebel am Pferch." },
+                {
+                  "pieceId": "p3",
+                  "text": "Bei der Rast antwortet Weigand nur knapp auf eine Frage."
+                }
+              ],
+              "acceptedOrders": [["p1", "p2", "p3", "p4", "p5"]],
+              "answerExplanation": {
+                "en": "The text moves from the scene at the pen to the flashback, then the lunch break, the pasture, and finally the evening conversation with the farmhand.",
+                "fr": "Le texte va de la scène près du parc au retour en arrière, puis à la pause de midi, à l’alpage et enfin à la conversation du soir avec le valet.",
+                "de": "Der Text geht von der Szene am Pferch zum Rückblick, dann zur Mittagsrast, zur Hochweide und schließlich zum Abendgespräch mit dem Knecht."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "stage": "exam",
+      "role": "exam",
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam",
+          "estimatedDurationS": 215,
+          "timeLimitS": 325,
+          "instructions": {
+            "en": "Read the new document and answer the questions. No help this time.",
+            "fr": "Lisez le nouveau document et répondez aux questions. Cette fois, sans aide.",
+            "de": "Lies das neue Dokument und beantworte die Fragen. Diesmal ohne Hilfe."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "exam-document",
+              "documentId": "exam",
+              "view": "exam",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-bruecke",
+              "question": "Wie reagiert Tamm darauf, dass die Brücke ihm die Fahrgäste genommen hat?",
+              "options": [
+                { "optionId": "o1", "text": "Er spricht ohne Bitterkeit darüber." },
+                { "optionId": "o2", "text": "Er beschwert sich laut beim Landkreis." },
+                { "optionId": "o3", "text": "Er will die Fähre verkaufen." },
+                { "optionId": "o4", "text": "Er weigert sich, das Thema zu erwähnen." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "He mentions the bridge as casually as the weather.",
+                "fr": "Il mentionne le pont aussi simplement que la météo.",
+                "de": "Er erwähnt die Brücke so beiläufig wie das Wetter."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "x-kosten",
+              "statement": "Die Fähre bringt Tamm im Jahr mehr ein, als sie ihn kostet.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: the ferry costs him twelve thousand euros a year more than it earns.",
+                "fr": "Faux : le bac lui coûte douze mille euros de plus par an qu’il ne rapporte.",
+                "de": "Falsch: Die Fähre kostet ihn im Jahr zwölftausend Euro mehr, als sie einbringt."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-quitten",
+              "question": "Warum ist die Frau mit den Quitten bei ihrer Geschichte nicht ganz sicher?",
+              "options": [
+                { "optionId": "o1", "text": "Sie hat Tamm nie persönlich getroffen." },
+                { "optionId": "o2", "text": "Der Reporter hat sie falsch zitiert." },
+                {
+                  "optionId": "o3",
+                  "text": "Die Geschichte wird im Dorf immer weiter ausgeschmückt."
+                },
+                { "optionId": "o4", "text": "Sie war in jener Nacht nicht zu Hause." }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "Everyone in the village adds a detail, so she herself no longer knows exactly how it happened.",
+                "fr": "Chacun dans le village ajoute un détail, si bien qu’elle ne sait plus exactement comment cela s’est passé.",
+                "de": "Im Dorf fügt jeder ein Detail hinzu, deshalb weiß sie selbst nicht mehr genau, wie es war."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-lena",
+              "question": "Wie reagiert Tamm auf Lenas geflüsterten Satz?",
+              "options": [
+                { "optionId": "o1", "text": "Er lacht laut und bestätigt es." },
+                { "optionId": "o2", "text": "Er bricht die Fahrt sofort ab." },
+                { "optionId": "o3", "text": "Er bestreitet es empört." },
+                { "optionId": "o4", "text": "Er lässt nur die Mundwinkel zucken und schweigt." }
+              ],
+              "answerOptionId": "o4",
+              "answerExplanation": {
+                "en": "The reporter infers from his twitching mouth that he heard it; he neither confirms nor denies.",
+                "fr": "Le reporter déduit de ses lèvres qui tressaillent qu’il a entendu ; il ne confirme ni ne dément.",
+                "de": "Der Reporter schließt aus den zuckenden Mundwinkeln, dass er es gehört hat; er bestätigt es weder, noch bestreitet er es."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "x-warum",
+              "statement": "Der Erzähler erfährt nicht, warum Tamm die Fähre weiterhin fährt.",
+              "answer": "true",
+              "answerExplanation": {
+                "en": "True: he answers only with a shrug that can mean everything or nothing, so the reason stays open.",
+                "fr": "Vrai : il ne répond que par un haussement d’épaules qui peut tout ou rien signifier ; la raison reste ouverte.",
+                "de": "Richtig: Er antwortet nur mit einem Achselzucken, das alles und nichts bedeuten kann; der Grund bleibt offen."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

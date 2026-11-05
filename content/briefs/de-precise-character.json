@@ -1,0 +1,722 @@
+{
+  "schemaVersion": 2,
+  "id": "de-precise-character",
+  "lang": "de",
+  "level": "C1",
+  "locales": ["en", "fr", "de"],
+  "title": "Präzise Charakteradjektive",
+  "objective": {
+    "en": "Characterise people precisely with fifteen fitting adjectives such as besonnen, nachtragend or gewissenhaft.",
+    "fr": "Caractériser précisément des personnes avec quinze adjectifs justes comme besonnen, nachtragend ou gewissenhaft.",
+    "de": "Menschen mit fünfzehn treffenden Adjektiven wie besonnen, nachtragend oder gewissenhaft genau charakterisieren."
+  },
+  "estimatedMinutes": 24,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:37:24.117Z",
+    "inputHashes": { "outline": "c2ee1dce011441de31d29711cf8f16f30cecbe19a9eb09c999b5457fb5170d27" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Fifteen precise character adjectives in three groups: temperament, treatment of others, and distance and care. They go beyond the basic traits taught earlier and avoid the evaluative pairs of the next lesson.",
+    "fr": "Quinze adjectifs précis de caractère en trois groupes : tempérament, façon de traiter les autres, distance et soin. Ils dépassent les traits de base déjà vus et évitent les paires évaluatives de la leçon suivante.",
+    "de": "Fünfzehn präzise Charakteradjektive in drei Gruppen: Temperament, Umgang mit anderen sowie Distanz und Sorgfalt. Sie gehen über die bereits gelernten Grundeigenschaften hinaus und vermeiden die wertenden Wortpaare der folgenden Lektion."
+  },
+  "targetCount": 15,
+  "countRationale": {
+    "en": "Fifteen words, five per group, fit the intent and keep each page small enough for C1 learners to memorise.",
+    "fr": "Quinze mots, cinq par groupe, correspondent à l’objectif et gardent des pages assez courtes pour être mémorisées au niveau C1.",
+    "de": "Fünfzehn Wörter, fünf pro Gruppe, entsprechen dem Ziel und halten jede Seite für C1-Lernende gut überschaubar."
+  },
+  "difficultyBalance": {
+    "en": "Most words are demanding at C1; a few such as impulsiv, launisch and gutmütig are easier anchors.",
+    "fr": "La plupart des mots sont exigeants au niveau C1 ; quelques-uns comme impulsiv, launisch et gutmütig servent de points d’appui plus faciles.",
+    "de": "Die meisten Wörter sind auf C1 anspruchsvoll; einige wie impulsiv, launisch und gutmütig sind leichtere Ankerwörter."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "temperament",
+      "label": { "en": "Temperament", "fr": "Tempérament", "de": "Temperament" },
+      "targetIds": ["besonnen", "impulsiv", "aufbrausend", "launisch", "eigensinnig"],
+      "introduction": {
+        "en": "These adjectives describe **temperament**: how someone reacts under pressure.\n\n- `besonnen`: calm and thoughtful before acting\n- `impulsiv`: acting on a sudden urge\n- `aufbrausend`: flaring up in anger quickly\n- `launisch`: with changing moods\n- `eigensinnig`: insisting on one's own will",
+        "fr": "Ces adjectifs décrivent le **tempérament** : la façon de réagir sous pression.\n\n- `besonnen` : calme et réfléchi avant d’agir\n- `impulsiv` : qui agit sur un coup de tête\n- `aufbrausend` : qui s’emporte vite\n- `launisch` : d’humeur changeante\n- `eigensinnig` : qui n’en fait qu’à sa tête",
+        "de": "Diese Adjektive beschreiben das **Temperament**: wie jemand unter Druck reagiert.\n\n- `besonnen`: ruhig und überlegt, bevor man handelt\n- `impulsiv`: aus einem plötzlichen Antrieb heraus handelnd\n- `aufbrausend`: schnell zornig werdend\n- `launisch`: mit wechselnden Stimmungen\n- `eigensinnig`: auf dem eigenen Willen beharrend"
+      }
+    },
+    {
+      "id": "umgang",
+      "label": {
+        "en": "Treating others",
+        "fr": "Façon de traiter les autres",
+        "de": "Umgang mit anderen"
+      },
+      "targetIds": ["nachtragend", "herablassend", "gutmuetig", "nachsichtig", "einfuehlsam"],
+      "introduction": {
+        "en": "These adjectives show how someone **treats other people**:\n\n- `nachtragend`: not forgetting old offences\n- `herablassend`: treating others as inferior\n- `gutmütig`: kind and quick to forgive\n- `nachsichtig`: tolerant of others' mistakes\n- `einfühlsam`: sensing what others feel",
+        "fr": "Ces adjectifs montrent comment quelqu’un **traite les autres** :\n\n- `nachtragend` : n’oublie pas les vieilles offenses\n- `herablassend` : traite les autres en inférieurs\n- `gutmütig` : bon et prompt à pardonner\n- `nachsichtig` : tolérant envers les erreurs d’autrui\n- `einfühlsam` : perçoit ce que ressentent les autres",
+        "de": "Diese Adjektive zeigen, wie jemand **mit anderen umgeht**:\n\n- `nachtragend`: vergisst alte Kränkungen nicht\n- `herablassend`: behandelt andere als unterlegen\n- `gutmütig`: freundlich und schnell bereit zu verzeihen\n- `nachsichtig`: duldsam gegenüber den Fehlern anderer\n- `einfühlsam`: spürt, was andere empfinden"
+      }
+    },
+    {
+      "id": "distanz",
+      "label": {
+        "en": "Distance and care",
+        "fr": "Distance et soin",
+        "de": "Distanz und Sorgfalt"
+      },
+      "targetIds": ["verschlossen", "unnahbar", "gewissenhaft", "pedantisch", "schlagfertig"],
+      "introduction": {
+        "en": "These adjectives describe **distance and care**: how open, precise or quick someone is.\n\n- `verschlossen`: not sharing thoughts and feelings\n- `unnahbar`: so distant that nobody dares to approach\n- `gewissenhaft`: doing everything carefully and reliably\n- `pedantisch`: exaggeratedly precise about details\n- `schlagfertig`: replying quickly and wittily",
+        "fr": "Ces adjectifs décrivent **la distance et le soin** : l’ouverture, la précision ou la vivacité de quelqu’un.\n\n- `verschlossen` : ne partage pas ses pensées ni ses sentiments\n- `unnahbar` : si distant que personne n’ose l’aborder\n- `gewissenhaft` : fait tout avec soin et fiabilité\n- `pedantisch` : exagérément pointilleux sur les détails\n- `schlagfertig` : répond vite et avec esprit",
+        "de": "Diese Adjektive beschreiben **Distanz und Sorgfalt**: wie offen, genau oder schnell jemand ist.\n\n- `verschlossen`: teilt Gedanken und Gefühle nicht mit\n- `unnahbar`: so distanziert, dass sich niemand heranwagt\n- `gewissenhaft`: erledigt alles sorgfältig und zuverlässig\n- `pedantisch`: übertrieben genau bei Kleinigkeiten\n- `schlagfertig`: antwortet schnell und witzig"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "besonnen",
+      "term": "besonnen",
+      "translations": { "en": ["level-headed", "thoughtful"], "fr": ["réfléchi", "pondéré"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "besonnen",
+      "examForms": ["besonnen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/bəˈzɔnən/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "In der Krise blieb der Chef besonnen.",
+        "translation": {
+          "en": "In the crisis, the boss stayed level-headed.",
+          "fr": "Pendant la crise, le chef est resté réfléchi."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Besonnen describes someone who stays calm and thinks before acting.",
+        "fr": "Besonnen décrit quelqu’un qui reste calme et réfléchit avant d’agir.",
+        "de": "Besonnen beschreibt jemanden, der ruhig bleibt und vor dem Handeln nachdenkt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Sie trifft keine Entscheidung vorschnell, sondern wägt alles in Ruhe ab; deshalb gilt sie als ",
+        "after": ".",
+        "accepted": { "answers": ["besonnen"] },
+        "referenceTargetIds": ["besonnen", "impulsiv", "aufbrausend", "launisch"],
+        "explanation": {
+          "en": "Besonnen fits: she weighs things up calmly instead of deciding in a rush.",
+          "fr": "Besonnen convient : elle réfléchit calmement au lieu de décider vite.",
+          "de": "Besonnen passt: Sie wägt in Ruhe ab, statt überstürzt zu entscheiden."
+        }
+      },
+      "listeningOptionTargetIds": ["besonnen", "impulsiv", "aufbrausend", "eigensinnig"]
+    },
+    {
+      "id": "impulsiv",
+      "term": "impulsiv",
+      "translations": { "en": ["impulsive"], "fr": ["impulsif"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "impulsiv",
+      "examForms": ["impulsiv"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɪmpʊlˈziːf/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Lena ist impulsiv und kauft oft spontan ein.",
+        "translation": {
+          "en": "Lena is impulsive and often shops on a whim.",
+          "fr": "Lena est impulsive et fait souvent des achats sur un coup de tête."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Impulsiv describes someone who acts quickly on a sudden urge, without thinking.",
+        "fr": "Impulsiv décrit quelqu’un qui agit vite sur un élan, sans réfléchir.",
+        "de": "Impulsiv beschreibt jemanden, der spontan einem Impuls folgt, ohne nachzudenken."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Sobald er ein Angebot sieht, greift er sofort zu, ohne lange zu überlegen: Er ist sehr ",
+        "after": ".",
+        "accepted": { "answers": ["impulsiv"] },
+        "referenceTargetIds": ["impulsiv", "besonnen", "gewissenhaft", "gutmuetig"],
+        "explanation": {
+          "en": "Impulsiv fits: he grabs offers at once without thinking.",
+          "fr": "Impulsiv convient : il saisit les offres tout de suite sans réfléchir.",
+          "de": "Impulsiv passt: Er greift sofort zu, ohne nachzudenken."
+        }
+      },
+      "listeningOptionTargetIds": ["impulsiv", "besonnen", "launisch", "aufbrausend"]
+    },
+    {
+      "id": "aufbrausend",
+      "term": "aufbrausend",
+      "translations": { "en": ["quick-tempered", "hot-tempered"], "fr": ["colérique", "emporté"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "aufbrausend",
+      "examForms": ["aufbrausend"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈaʊ̯fˌbʁaʊ̯zn̩t/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Mein Onkel ist aufbrausend, aber nach fünf Minuten ist alles vergessen.",
+        "translation": {
+          "en": "My uncle is quick-tempered, but after five minutes it's all forgotten.",
+          "fr": "Mon oncle est colérique, mais au bout de cinq minutes tout est oublié."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Aufbrausend describes someone who flares up in anger quickly and loudly.",
+        "fr": "Aufbrausend décrit quelqu’un qui s’emporte vite et bruyamment.",
+        "de": "Aufbrausend beschreibt jemanden, der schnell und laut wütend wird."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Bei der kleinsten Kritik wird mein Chef sofort laut und wütend: Er ist sehr ",
+        "after": ".",
+        "accepted": { "answers": ["aufbrausend"] },
+        "referenceTargetIds": ["aufbrausend", "gutmuetig", "nachsichtig", "verschlossen"],
+        "explanation": {
+          "en": "Aufbrausend fits: he gets loud and angry at the slightest criticism.",
+          "fr": "Aufbrausend convient : il devient bruyant et furieux à la moindre critique.",
+          "de": "Aufbrausend passt: Bei kleinster Kritik wird er laut und wütend."
+        }
+      },
+      "listeningOptionTargetIds": ["aufbrausend", "impulsiv", "launisch", "eigensinnig"]
+    },
+    {
+      "id": "launisch",
+      "term": "launisch",
+      "translations": { "en": ["moody"], "fr": ["lunatique", "d’humeur changeante"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "launisch",
+      "examForms": ["launisch"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈlaʊ̯nɪʃ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Seit dem Umzug ist sie oft launisch.",
+        "translation": {
+          "en": "Since the move she has often been moody.",
+          "fr": "Depuis le déménagement, elle est souvent lunatique."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Launisch describes someone whose mood changes often and without a clear reason.",
+        "fr": "Launisch décrit quelqu’un dont l’humeur change souvent, sans raison claire.",
+        "de": "Launisch beschreibt jemanden, dessen Stimmung oft ohne klaren Grund wechselt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Heute lacht sie den ganzen Tag, morgen spricht sie kein Wort mit uns; ihre Kollegen finden sie ziemlich ",
+        "after": ".",
+        "accepted": { "answers": ["launisch"] },
+        "referenceTargetIds": ["launisch", "besonnen", "gewissenhaft", "pedantisch"],
+        "explanation": {
+          "en": "Launisch fits: her mood swings from one day to the next.",
+          "fr": "Launisch convient : son humeur change d’un jour à l’autre.",
+          "de": "Launisch passt: Ihre Stimmung schwankt von Tag zu Tag."
+        }
+      },
+      "listeningOptionTargetIds": ["launisch", "aufbrausend", "besonnen", "eigensinnig"]
+    },
+    {
+      "id": "eigensinnig",
+      "term": "eigensinnig",
+      "translations": { "en": ["headstrong"], "fr": ["obstiné", "têtu"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "eigensinnig",
+      "examForms": ["eigensinnig"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈaɪ̯ɡn̩ˌzɪnɪç/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Das Kind ist eigensinnig und will nur seinen roten Pullover tragen.",
+        "translation": {
+          "en": "The child is headstrong and only wants to wear the red sweater.",
+          "fr": "L’enfant est obstiné et ne veut porter que son pull rouge."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Eigensinnig describes someone who insists on their own will and ignores advice.",
+        "fr": "Eigensinnig décrit quelqu’un qui s’obstine dans sa volonté et ignore les conseils.",
+        "de": "Eigensinnig beschreibt jemanden, der auf seinem eigenen Willen beharrt und Ratschläge ignoriert."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": { "en": "headstrong (from der Eigensinn)", "fr": "obstiné (de der Eigensinn)" },
+      "gap": {
+        "before": "Obwohl alle ihm rieten, den Plan zu ändern, bestand er auf seinem Willen; er ist wirklich ",
+        "after": ".",
+        "accepted": { "answers": ["eigensinnig"] },
+        "referenceTargetIds": ["eigensinnig", "einfuehlsam", "nachsichtig", "schlagfertig"],
+        "explanation": {
+          "en": "Eigensinnig fits: he insists on his own will despite everyone's advice.",
+          "fr": "Eigensinnig convient : il s’obstine malgré les conseils de tous.",
+          "de": "Eigensinnig passt: Er beharrt trotz aller Ratschläge auf seinem Willen."
+        }
+      },
+      "listeningOptionTargetIds": ["eigensinnig", "besonnen", "launisch", "aufbrausend"]
+    },
+    {
+      "id": "nachtragend",
+      "term": "nachtragend",
+      "translations": { "en": ["holding grudges", "resentful"], "fr": ["rancunier"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "nachtragend",
+      "examForms": ["nachtragend"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈnaːxˌtʁaːɡn̩t/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Er ist nachtragend und erwähnt den Streit jedes Jahr wieder.",
+        "translation": {
+          "en": "He holds grudges and brings up the quarrel again every year.",
+          "fr": "Il est rancunier et reparle de la dispute chaque année."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Nachtragend describes someone who does not forget old offences and keeps bringing them up.",
+        "fr": "Nachtragend décrit quelqu’un qui n’oublie pas les vieilles offenses et les ressort sans cesse.",
+        "de": "Nachtragend beschreibt jemanden, der alte Kränkungen nicht vergisst und sie immer wieder erwähnt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Seit zehn Jahren wirft er ihr den Streit von damals vor; er ist sehr ",
+        "after": ".",
+        "accepted": { "answers": ["nachtragend"] },
+        "referenceTargetIds": ["nachtragend", "nachsichtig", "gutmuetig", "unnahbar"],
+        "explanation": {
+          "en": "Nachtragend fits: he still reproaches her for a quarrel from ten years ago.",
+          "fr": "Nachtragend convient : il lui reproche encore une dispute d’il y a dix ans.",
+          "de": "Nachtragend passt: Er wirft ihr einen zehn Jahre alten Streit noch immer vor."
+        }
+      },
+      "listeningOptionTargetIds": ["nachtragend", "nachsichtig", "herablassend", "gutmuetig"]
+    },
+    {
+      "id": "herablassend",
+      "term": "herablassend",
+      "translations": { "en": ["condescending"], "fr": ["condescendant"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "herablassend",
+      "examForms": ["herablassend"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/hɛˈʁapˌlasn̩t/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Der Kellner war herablassend und sprach sehr langsam mit uns.",
+        "translation": {
+          "en": "The waiter was condescending and spoke to us very slowly.",
+          "fr": "Le serveur était condescendant et nous parlait très lentement."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Herablassend describes someone who treats others as if they were inferior.",
+        "fr": "Herablassend décrit quelqu’un qui traite les autres comme s’ils lui étaient inférieurs.",
+        "de": "Herablassend beschreibt jemanden, der andere behandelt, als wären sie ihm unterlegen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Sie behandelt die Praktikanten sehr ",
+        "after": ", als wären sie weniger wert als sie.",
+        "accepted": { "answers": ["herablassend"] },
+        "referenceTargetIds": ["herablassend", "einfuehlsam", "gutmuetig", "schlagfertig"],
+        "explanation": {
+          "en": "Herablassend fits: she treats the interns as less worthy than herself.",
+          "fr": "Herablassend convient : elle traite les stagiaires comme s’ils valaient moins qu’elle.",
+          "de": "Herablassend passt: Sie behandelt die Praktikanten, als wären sie weniger wert."
+        }
+      },
+      "listeningOptionTargetIds": ["herablassend", "nachtragend", "einfuehlsam", "nachsichtig"]
+    },
+    {
+      "id": "gutmuetig",
+      "term": "gutmütig",
+      "translations": { "en": ["good-natured"], "fr": ["débonnaire", "bon enfant"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "gutmütig",
+      "examForms": ["gutmütig"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈɡuːtˌmyːtɪç/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Unser Nachbar ist gutmütig und leiht jedem sein Werkzeug.",
+        "translation": {
+          "en": "Our neighbour is good-natured and lends his tools to everyone.",
+          "fr": "Notre voisin est débonnaire et prête ses outils à tout le monde."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Gutmütig describes someone with a kind nature who rarely holds anything against others.",
+        "fr": "Gutmütig décrit quelqu’un de bon naturel, qui en veut rarement aux autres.",
+        "de": "Gutmütig beschreibt jemanden mit freundlichem Wesen, der anderen selten etwas übel nimmt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "good-natured (a compound with der Mut)",
+        "fr": "débonnaire (composé avec der Mut)"
+      },
+      "gap": {
+        "before": "Er hilft jedem und nimmt nichts übel; alle mögen ihn, weil er so ",
+        "after": " ist.",
+        "accepted": { "answers": ["gutmütig"] },
+        "referenceTargetIds": ["gutmuetig", "aufbrausend", "herablassend", "eigensinnig"],
+        "explanation": {
+          "en": "Gutmütig fits: he helps everyone and holds nothing against anyone.",
+          "fr": "Gutmütig convient : il aide tout le monde et ne garde rancune à personne.",
+          "de": "Gutmütig passt: Er hilft allen und nimmt niemandem etwas übel."
+        }
+      },
+      "listeningOptionTargetIds": ["gutmuetig", "nachsichtig", "einfuehlsam", "nachtragend"]
+    },
+    {
+      "id": "nachsichtig",
+      "term": "nachsichtig",
+      "translations": { "en": ["lenient"], "fr": ["indulgent"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "nachsichtig",
+      "examForms": ["nachsichtig"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈnaːxˌzɪçtɪç/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Die Trainerin war nachsichtig mit den Anfängern.",
+        "translation": {
+          "en": "The coach was lenient with the beginners.",
+          "fr": "L’entraîneuse était indulgente avec les débutants."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Nachsichtig describes someone who tolerates mistakes and does not judge harshly.",
+        "fr": "Nachsichtig décrit quelqu’un qui tolère les erreurs et ne juge pas sévèrement.",
+        "de": "Nachsichtig beschreibt jemanden, der Fehler duldet und nicht streng urteilt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": { "en": "lenient (from die Nachsicht)", "fr": "indulgent (de die Nachsicht)" },
+      "gap": {
+        "before": "Als der Schüler zum zweiten Mal zu spät kam, war die Lehrerin ",
+        "after": " und drückte ein Auge zu.",
+        "accepted": { "answers": ["nachsichtig"] },
+        "referenceTargetIds": ["nachsichtig", "pedantisch", "aufbrausend", "unnahbar"],
+        "explanation": {
+          "en": "Nachsichtig fits: she turned a blind eye to the second lateness.",
+          "fr": "Nachsichtig convient : elle a fermé les yeux sur le deuxième retard.",
+          "de": "Nachsichtig passt: Sie drückte beim zweiten Zuspätkommen ein Auge zu."
+        }
+      },
+      "listeningOptionTargetIds": ["nachsichtig", "nachtragend", "gutmuetig", "herablassend"]
+    },
+    {
+      "id": "einfuehlsam",
+      "term": "einfühlsam",
+      "translations": { "en": ["empathetic"], "fr": ["empathique"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "einfühlsam",
+      "examForms": ["einfühlsam"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈaɪ̯nfyːlˌzaːm/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Der Arzt war sehr einfühlsam und nahm sich viel Zeit.",
+        "translation": {
+          "en": "The doctor was very empathetic and took a lot of time.",
+          "fr": "Le médecin était très empathique et a pris beaucoup de temps."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Einfühlsam describes someone who senses what others feel and responds with care.",
+        "fr": "Einfühlsam décrit quelqu’un qui perçoit ce que ressentent les autres et réagit avec délicatesse.",
+        "de": "Einfühlsam beschreibt jemanden, der spürt, was andere empfinden, und behutsam darauf eingeht."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "empathetic (from sich einfühlen)",
+        "fr": "empathique (de sich einfühlen)"
+      },
+      "gap": {
+        "before": "Sie hörte ihm zu und spürte genau, wie er sich fühlte; als Therapeutin ist sie sehr ",
+        "after": ".",
+        "accepted": { "answers": ["einfühlsam"] },
+        "referenceTargetIds": ["einfuehlsam", "herablassend", "eigensinnig", "pedantisch"],
+        "explanation": {
+          "en": "Einfühlsam fits: she senses exactly how he feels.",
+          "fr": "Einfühlsam convient : elle perçoit exactement ce qu’il ressent.",
+          "de": "Einfühlsam passt: Sie spürt genau, wie er sich fühlt."
+        }
+      },
+      "listeningOptionTargetIds": ["einfuehlsam", "nachsichtig", "gutmuetig", "herablassend"]
+    },
+    {
+      "id": "verschlossen",
+      "term": "verschlossen",
+      "translations": { "en": ["closed-off", "reserved"], "fr": ["renfermé"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "verschlossen",
+      "examForms": ["verschlossen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/fɛɐ̯ˈʃlɔsn̩/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Mein Vater ist verschlossen, über seine Kindheit spricht er kaum.",
+        "translation": {
+          "en": "My father is closed-off; he hardly talks about his childhood.",
+          "fr": "Mon père est renfermé, il parle à peine de son enfance."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Verschlossen describes someone who keeps thoughts and feelings to themselves.",
+        "fr": "Verschlossen décrit quelqu’un qui garde ses pensées et ses sentiments pour lui.",
+        "de": "Verschlossen beschreibt jemanden, der Gedanken und Gefühle für sich behält."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "closed-off (past participle of verschließen)",
+        "fr": "renfermé (participe passé de verschließen)"
+      },
+      "gap": {
+        "before": "Über seine Gefühle spricht er nie; auch nach Jahren bleibt er ",
+        "after": " und erzählt nichts von sich.",
+        "accepted": { "answers": ["verschlossen"] },
+        "referenceTargetIds": ["verschlossen", "schlagfertig", "impulsiv", "gutmuetig"],
+        "explanation": {
+          "en": "Verschlossen fits: he never talks about his feelings or himself.",
+          "fr": "Verschlossen convient : il ne parle jamais de ses sentiments ni de lui.",
+          "de": "Verschlossen passt: Er spricht nie über seine Gefühle und erzählt nichts von sich."
+        }
+      },
+      "listeningOptionTargetIds": ["verschlossen", "unnahbar", "gewissenhaft", "schlagfertig"]
+    },
+    {
+      "id": "unnahbar",
+      "term": "unnahbar",
+      "translations": { "en": ["unapproachable"], "fr": ["inapprochable", "distant"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "unnahbar",
+      "examForms": ["unnahbar"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ʊnˈnaːbaːɐ̯/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Die Sängerin wirkt auf der Bühne unnahbar.",
+        "translation": {
+          "en": "The singer seems unapproachable on stage.",
+          "fr": "La chanteuse semble inapprochable sur scène."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Unnahbar describes someone who seems so distant that nobody dares to approach them.",
+        "fr": "Unnahbar décrit quelqu’un qui paraît si distant que personne n’ose l’aborder.",
+        "de": "Unnahbar beschreibt jemanden, der so distanziert wirkt, dass sich niemand heranwagt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Die neue Chefin wirkt kühl und distanziert; niemand traut sich, sie anzusprechen, so ",
+        "after": " erscheint sie.",
+        "accepted": { "answers": ["unnahbar"] },
+        "referenceTargetIds": ["unnahbar", "schlagfertig", "einfuehlsam", "impulsiv"],
+        "explanation": {
+          "en": "Unnahbar fits: nobody dares to speak to her because she seems so distant.",
+          "fr": "Unnahbar convient : personne n’ose lui parler tant elle semble distante.",
+          "de": "Unnahbar passt: Niemand traut sich, sie anzusprechen, so distanziert wirkt sie."
+        }
+      },
+      "listeningOptionTargetIds": ["unnahbar", "verschlossen", "pedantisch", "schlagfertig"]
+    },
+    {
+      "id": "gewissenhaft",
+      "term": "gewissenhaft",
+      "translations": { "en": ["conscientious"], "fr": ["consciencieux"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "gewissenhaft",
+      "examForms": ["gewissenhaft"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɡəˈvɪsn̩haft/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Sie erledigt ihre Aufgaben immer gewissenhaft.",
+        "translation": {
+          "en": "She always does her tasks conscientiously.",
+          "fr": "Elle accomplit toujours ses tâches consciencieusement."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Gewissenhaft describes someone who does their work carefully and reliably, with a sense of duty.",
+        "fr": "Gewissenhaft décrit quelqu’un qui travaille avec soin et fiabilité, avec le sens du devoir.",
+        "de": "Gewissenhaft beschreibt jemanden, der seine Arbeit sorgfältig und zuverlässig mit Pflichtgefühl erledigt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Er prüft jede Rechnung dreimal und macht fast nie einen Fehler; als Buchhalter arbeitet er äußerst ",
+        "after": ".",
+        "accepted": { "answers": ["gewissenhaft"] },
+        "referenceTargetIds": ["gewissenhaft", "launisch", "impulsiv", "aufbrausend"],
+        "explanation": {
+          "en": "Gewissenhaft fits: he checks every invoice three times, carefully and reliably.",
+          "fr": "Gewissenhaft convient : il vérifie chaque facture trois fois, avec soin et fiabilité.",
+          "de": "Gewissenhaft passt: Er prüft jede Rechnung dreimal, sorgfältig und zuverlässig."
+        }
+      },
+      "listeningOptionTargetIds": ["gewissenhaft", "pedantisch", "verschlossen", "unnahbar"]
+    },
+    {
+      "id": "pedantisch",
+      "term": "pedantisch",
+      "translations": { "en": ["pedantic"], "fr": ["pointilleux", "pédant"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "pedantisch",
+      "examForms": ["pedantisch"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/peˈdantɪʃ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Er ist so pedantisch, dass er die Bücher nach Farbe und Größe ordnet.",
+        "translation": {
+          "en": "He is so pedantic that he sorts his books by colour and size.",
+          "fr": "Il est si pointilleux qu’il range ses livres par couleur et par taille."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Pedantisch describes someone who is exaggeratedly exact about small details.",
+        "fr": "Pedantisch décrit quelqu’un d’exagérément exact sur les petits détails.",
+        "de": "Pedantisch beschreibt jemanden, der bei Kleinigkeiten übertrieben genau ist."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Sie korrigiert sogar jedes überflüssige Komma in privaten Nachrichten; ihre Freunde finden sie ",
+        "after": ", fast schon zwanghaft genau.",
+        "accepted": { "answers": ["pedantisch"] },
+        "referenceTargetIds": ["pedantisch", "nachtragend", "gutmuetig", "herablassend"],
+        "explanation": {
+          "en": "Pedantisch fits: she corrects every needless comma, almost compulsively.",
+          "fr": "Pedantisch convient : elle corrige la moindre virgule superflue, presque de façon compulsive.",
+          "de": "Pedantisch passt: Sie korrigiert jedes überflüssige Komma, fast zwanghaft."
+        }
+      },
+      "listeningOptionTargetIds": ["pedantisch", "gewissenhaft", "unnahbar", "schlagfertig"]
+    },
+    {
+      "id": "schlagfertig",
+      "term": "schlagfertig",
+      "translations": { "en": ["quick-witted"], "fr": ["plein de répartie"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "schlagfertig",
+      "examForms": ["schlagfertig"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʃlaːkˌfɛʁtɪç/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Der Moderator ist schlagfertig und lässt sich nie aus der Ruhe bringen.",
+        "translation": {
+          "en": "The host is quick-witted and is never thrown off balance.",
+          "fr": "Le présentateur a de la répartie et ne se laisse jamais troubler."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Schlagfertig describes someone who finds a quick and witty reply at once.",
+        "fr": "Schlagfertig décrit quelqu’un qui trouve tout de suite une réplique rapide et spirituelle.",
+        "de": "Schlagfertig beschreibt jemanden, der sofort eine schnelle und witzige Antwort findet."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Auf jede freche Bemerkung hat sie sofort eine witzige Antwort parat; sie ist wirklich ",
+        "after": ".",
+        "accepted": { "answers": ["schlagfertig"] },
+        "referenceTargetIds": ["schlagfertig", "besonnen", "verschlossen", "nachsichtig"],
+        "explanation": {
+          "en": "Schlagfertig fits: she always has a witty reply ready at once.",
+          "fr": "Schlagfertig convient : elle a toujours une réplique spirituelle toute prête.",
+          "de": "Schlagfertig passt: Sie hat sofort eine witzige Antwort parat."
+        }
+      },
+      "listeningOptionTargetIds": ["schlagfertig", "verschlossen", "pedantisch", "gewissenhaft"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

@@ -1,0 +1,227 @@
+{
+  "schemaVersion": 2,
+  "id": "de-als-or-wenn",
+  "lang": "de",
+  "level": "B1",
+  "locales": ["en", "fr", "de"],
+  "title": "Als oder wenn?",
+  "objective": {
+    "en": "Choose als for a single past event and wenn for repetition, present and future, and put the verb at the end of the clause.",
+    "fr": "Choisir als pour un événement passé unique et wenn pour la répétition, le présent et le futur, avec le verbe en fin de proposition.",
+    "de": "Mit als einmalige Ereignisse in der Vergangenheit und mit wenn Wiederholung, Gegenwart und Zukunft ausdrücken; das Verb steht am Satzende."
+  },
+  "estimatedMinutes": 18,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:33:02.385Z",
+    "inputHashes": { "outline": "cbbecbc67c5c009d04fb0a433ad17a6d5268486c37385d7bf34d4fe8a3521eaf" }
+  },
+  "kind": "grammar",
+  "topic": "subordinate_clauses",
+  "scopeBoundaries": {
+    "en": "Covers als and wenn as temporal conjunctions with the verb at the end of the clause. Excludes conditional wenn (if), sobald, nachdem/bevor and comparisons with als.",
+    "fr": "Couvre als et wenn comme conjonctions de temps, avec le verbe en fin de proposition. Exclut le wenn conditionnel (si), sobald, nachdem/bevor et les comparaisons avec als.",
+    "de": "Behandelt als und wenn als temporale Konjunktionen mit dem Verb am Satzende. Ausgeschlossen sind konditionales wenn, sobald, nachdem/bevor und Vergleiche mit als."
+  },
+  "prerequisites": [
+    {
+      "en": "Simple past of sein and common irregular verbs (war, kam, ging, schrieb)",
+      "fr": "Prétérit de sein et de verbes irréguliers courants (war, kam, ging, schrieb)",
+      "de": "Präteritum von sein und häufigen unregelmäßigen Verben (war, kam, ging, schrieb)"
+    }
+  ],
+  "rules": [
+    {
+      "id": "r-als",
+      "summary": {
+        "en": "Use als for a single event or period in the past.",
+        "fr": "Utiliser als pour un événement ou une période uniques dans le passé.",
+        "de": "Als steht für ein einmaliges Ereignis oder einen einmaligen Zeitraum in der Vergangenheit."
+      }
+    },
+    {
+      "id": "r-wenn",
+      "summary": {
+        "en": "Use wenn for repeated events in the past and for the present and the future.",
+        "fr": "Utiliser wenn pour les événements répétés dans le passé et pour le présent et le futur.",
+        "de": "Wenn steht für Wiederholung in der Vergangenheit sowie für Gegenwart und Zukunft."
+      }
+    },
+    {
+      "id": "r-end",
+      "summary": {
+        "en": "In a clause with als or wenn the conjugated verb stands at the end; if the clause comes first, the main-clause verb follows right after the comma.",
+        "fr": "Dans une proposition avec als ou wenn, le verbe conjugué est à la fin ; si elle vient en premier, le verbe de la principale suit directement la virgule.",
+        "de": "Im Satz mit als oder wenn steht das konjugierte Verb am Ende; steht er zuerst, folgt das Verb des Hauptsatzes direkt nach dem Komma."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "b-als",
+      "title": {
+        "en": "Als: one event in the past",
+        "fr": "Als : un événement unique dans le passé",
+        "de": "Als: ein einmaliges Ereignis in der Vergangenheit"
+      },
+      "ruleIds": ["r-als", "r-end"],
+      "explanationPlan": {
+        "en": "Explain als for a single event or period in the past, with examples. Show the verb at the end of the als clause and the word order when the als clause comes first or second.",
+        "fr": "Expliquer als pour un événement ou une période uniques dans le passé, avec des exemples. Montrer le verbe en fin de proposition et l'ordre des mots selon que la proposition avec als vient en premier ou en second.",
+        "de": "Als für ein einmaliges Ereignis oder einen Zeitraum in der Vergangenheit erklären, mit Beispielen. Das Verb am Ende des als-Satzes und die Wortstellung zeigen, wenn der als-Satz an erster oder zweiter Stelle steht."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "Als ich zehn war, zogen wir um.",
+          "translation": {
+            "en": "When I was ten, we moved.",
+            "fr": "Quand j'avais dix ans, nous avons déménagé."
+          }
+        },
+        {
+          "text": "Als ich Kind war, wohnten wir in Köln.",
+          "translation": {
+            "en": "When I was a child, we lived in Cologne.",
+            "fr": "Quand j'étais enfant, nous habitions à Cologne."
+          }
+        },
+        {
+          "text": "Als wir ankamen, regnete es.",
+          "translation": {
+            "en": "When we arrived, it was raining.",
+            "fr": "Quand nous sommes arrivés, il pleuvait."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not use wenn for a single event in the past: not 'Wenn ich zehn war', but 'Als ich zehn war'.",
+          "fr": "N'utilisez pas wenn pour un événement unique dans le passé : pas « Wenn ich zehn war », mais « Als ich zehn war ».",
+          "de": "Verwende wenn nicht für ein einmaliges Ereignis in der Vergangenheit: nicht 'Wenn ich zehn war', sondern 'Als ich zehn war'."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-als-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["r-als"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-als-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["r-als", "r-end"],
+          "estimatedDurationS": 80
+        },
+        {
+          "id": "ex-als-order",
+          "type": "grammar_word_order",
+          "itemCount": 4,
+          "ruleIds": ["r-end", "r-als"],
+          "estimatedDurationS": 120
+        }
+      ]
+    },
+    {
+      "id": "b-wenn",
+      "title": {
+        "en": "Wenn: repetition, present, future",
+        "fr": "Wenn : répétition, présent, futur",
+        "de": "Wenn: Wiederholung, Gegenwart, Zukunft"
+      },
+      "ruleIds": ["r-wenn", "r-als"],
+      "explanationPlan": {
+        "en": "Explain wenn for repeated events in the past (immer wenn, jedes Mal wenn) and for the present and future. Contrast with als using the same sentence once and repeated. Keep the verb at the end.",
+        "fr": "Expliquer wenn pour les événements répétés dans le passé (immer wenn, jedes Mal wenn) et pour le présent et le futur. Comparer avec als à l'aide de la même phrase, une fois puis répétée. Garder le verbe en fin de proposition.",
+        "de": "Wenn für wiederholte Ereignisse in der Vergangenheit (immer wenn, jedes Mal wenn) sowie für Gegenwart und Zukunft erklären. Mit als vergleichen, am selben Satz einmalig und wiederholt. Das Verb bleibt am Ende."
+      },
+      "explanationDurationS": 150,
+      "examples": [
+        {
+          "text": "Immer wenn er kam, brachte er Blumen mit.",
+          "translation": {
+            "en": "Whenever he came, he brought flowers.",
+            "fr": "Chaque fois qu'il venait, il apportait des fleurs."
+          }
+        },
+        {
+          "text": "Wenn ich müde bin, trinke ich Kaffee.",
+          "translation": {
+            "en": "When I am tired, I drink coffee.",
+            "fr": "Quand je suis fatigué, je bois du café."
+          }
+        },
+        {
+          "text": "Wenn ich morgen Zeit habe, rufe ich dich an.",
+          "translation": {
+            "en": "When I have time tomorrow, I will call you.",
+            "fr": "Quand j'aurai du temps demain, je t'appellerai."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "For repetition in the past use wenn, usually with immer or jedes Mal: not 'Immer als er kam'.",
+          "fr": "Pour la répétition dans le passé, utilisez wenn, en général avec immer ou jedes Mal : pas « Immer als er kam ».",
+          "de": "Für Wiederholung in der Vergangenheit steht wenn, meist mit immer oder jedes Mal: nicht 'Immer als er kam'."
+        },
+        {
+          "en": "Wann asks for a time (Wann kommst du?); it does not replace wenn or als here.",
+          "fr": "Wann demande un moment (Wann kommst du ?) ; il ne remplace pas wenn ou als ici.",
+          "de": "Wann fragt nach einer Zeit (Wann kommst du?); es ersetzt hier weder wenn noch als."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-wenn-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["r-wenn", "r-als"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-wenn-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["r-wenn", "r-als"],
+          "estimatedDurationS": 80
+        },
+        {
+          "id": "ex-wenn-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 3,
+          "ruleIds": ["r-wenn", "r-als"],
+          "estimatedDurationS": 90
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-gaps",
+        "type": "grammar_gap_typing",
+        "itemCount": 6,
+        "ruleIds": ["r-als", "r-wenn"],
+        "estimatedDurationS": 150,
+        "timeLimitS": 240
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 4,
+        "ruleIds": ["r-end", "r-als", "r-wenn"],
+        "estimatedDurationS": 120,
+        "timeLimitS": 240
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

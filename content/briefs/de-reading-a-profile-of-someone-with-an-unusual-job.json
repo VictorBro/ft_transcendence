@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 2,
+  "id": "de-reading-a-profile-of-someone-with-an-unusual-job",
+  "lang": "de",
+  "level": "B2",
+  "locales": ["en", "fr", "de"],
+  "title": "Das Porträt einer Glockengießerin",
+  "objective": {
+    "en": "Read the portrait of a bell founder and recognise the facts, her attitude to her work and the author’s point of view.",
+    "fr": "Lire le portrait d’une fondeuse de cloches et reconnaître les faits, son attitude face au travail et le point de vue de l’autrice.",
+    "de": "Das Porträt einer Glockengießerin lesen und Fakten, ihre Haltung zur Arbeit und den Blickwinkel der Autorin erkennen."
+  },
+  "estimatedMinutes": 11,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:30:33.551Z",
+    "inputHashes": { "outline": "dc90b8eb5c97d9b936295511e7ba933464f93dc93c6e21635c866d887a482563" }
+  },
+  "kind": "reading",
+  "theme": "personal_identification",
+  "genre": "profile",
+  "situation": {
+    "en": "A magazine for traditional crafts publishes a portrait of Katrin Maurer, a bell founder, written by a journalist who visited her workshop.",
+    "fr": "Un magazine sur les métiers traditionnels publie le portrait de Katrin Maurer, fondeuse de cloches, écrit par une journaliste qui a visité son atelier.",
+    "de": "Ein Magazin für traditionelle Handwerke veröffentlicht das Porträt von Katrin Maurer, einer Glockengießerin, geschrieben von einer Journalistin, die ihre Werkstatt besucht hat."
+  },
+  "readerTask": {
+    "en": "Find the facts about the job, recognise Maurer’s attitude to her work and notice how the author sees her.",
+    "fr": "Trouver les faits sur le métier, reconnaître l’attitude de Maurer face à son travail et remarquer comment l’autrice la voit.",
+    "de": "Fakten über den Beruf finden, Maurers Haltung zur Arbeit erkennen und bemerken, wie die Autorin sie sieht."
+  },
+  "keywords": [
+    {
+      "id": "handwerk",
+      "term": "das Handwerk",
+      "translations": { "en": ["craft", "trade"], "fr": ["l’artisanat", "le métier artisanal"] },
+      "explanation": {
+        "en": "Work done by hand with traditional skills, such as a baker, a carpenter or a bell founder.",
+        "fr": "Un travail fait à la main avec des savoir-faire traditionnels, comme un boulanger, un menuisier ou une fondeuse de cloches.",
+        "de": "Arbeit mit den Händen und traditionellem Können, z. B. Bäcker, Tischler oder Glockengießerin."
+      }
+    },
+    {
+      "id": "berufung",
+      "term": "die Berufung",
+      "translations": { "en": ["calling", "vocation"], "fr": ["la vocation"] },
+      "explanation": {
+        "en": "A job that feels like your life’s purpose, not just a way to earn money.",
+        "fr": "Un métier qui donne le sentiment d’avoir un but dans la vie, pas seulement un moyen de gagner de l’argent.",
+        "de": "Ein Beruf, der sich wie die Aufgabe des Lebens anfühlt, nicht nur wie Gelderwerb."
+      }
+    },
+    {
+      "id": "anspruchsvoll",
+      "term": "anspruchsvoll",
+      "translations": { "en": ["demanding"], "fr": ["exigeant"] },
+      "explanation": {
+        "en": "Difficult and requiring a lot of skill, care or effort.",
+        "fr": "Difficile et demandant beaucoup de compétence, de soin ou d’efforts.",
+        "de": "Schwierig und mit hohen Anforderungen an Können, Sorgfalt oder Einsatz."
+      }
+    },
+    {
+      "id": "geduld",
+      "term": "die Geduld",
+      "translations": { "en": ["patience"], "fr": ["la patience"] },
+      "explanation": {
+        "en": "The ability to wait calmly without hurrying.",
+        "fr": "La capacité d’attendre calmement sans se presser.",
+        "de": "Die Fähigkeit, ruhig zu warten und nichts zu überstürzen."
+      }
+    },
+    {
+      "id": "nachwuchs",
+      "term": "der Nachwuchs",
+      "translations": {
+        "en": ["young recruits", "new generation of workers"],
+        "fr": ["la relève"]
+      },
+      "explanation": {
+        "en": "The young people who will take over a profession later.",
+        "fr": "Les jeunes qui reprendront plus tard une profession.",
+        "de": "Die jungen Leute, die einen Beruf später übernehmen sollen."
+      }
+    }
+  ],
+  "documents": {
+    "main": {
+      "targetWords": 320,
+      "contents": {
+        "en": "A magazine portrait of Katrin Maurer, bell founder in the fourth generation: her morning in the workshop, how she found her calling, the demanding casting process, her patience and her priority of quality over profit, her worry about young recruits, and the author’s own moved but self-critical view.",
+        "fr": "Un portrait de magazine de Katrin Maurer, fondeuse de cloches de quatrième génération : son matin à l’atelier, comment elle a trouvé sa vocation, le processus de coulée exigeant, sa patience et sa priorité donnée à la qualité plutôt qu’au profit, son souci pour la relève et le regard ému mais autocritique de l’autrice.",
+        "de": "Ein Magazinporträt von Katrin Maurer, Glockengießerin in vierter Generation: ihr Morgen in der Werkstatt, wie sie ihre Berufung fand, der anspruchsvolle Guss, ihre Geduld und ihr Vorrang der Qualität vor dem Gewinn, ihre Sorge um den Nachwuchs und der gerührte, aber selbstkritische Blick der Autorin."
+      }
+    },
+    "exam": {
+      "targetWords": 170,
+      "contents": {
+        "en": "A short portrait of Jonas Brandt, a chimney sweep in Hamburg: the luck myth versus responsibility, safety work that customers only notice when something happens, why he chose the job, his pragmatic attitude, and the author’s sceptical view.",
+        "fr": "Un court portrait de Jonas Brandt, ramoneur à Hambourg : le mythe du porte-bonheur face à la responsabilité, un travail de sécurité que les clients ne remarquent que lorsqu’il arrive quelque chose, pourquoi il a choisi ce métier, son attitude pragmatique et le regard sceptique de l’autrice.",
+        "de": "Ein kurzes Porträt von Jonas Brandt, Schornsteinfeger in Hamburg: Glücksmythos und Verantwortung, Sicherheitsarbeit, die Kunden erst bemerken, wenn etwas passiert, warum er den Beruf wählte, seine pragmatische Haltung und der skeptische Blick der Autorin."
+      }
+    }
+  },
+  "skim": { "focus": "purpose" },
+  "detailQuestions": [
+    {
+      "id": "q-start",
+      "type": "reading_choice",
+      "focus": {
+        "en": "How Maurer came to her job",
+        "fr": "Comment Maurer est arrivée à son métier",
+        "de": "Wie Maurer zu ihrem Beruf kam"
+      }
+    },
+    {
+      "id": "q-haltung",
+      "type": "reading_choice",
+      "focus": {
+        "en": "Maurer’s attitude to quality and profit",
+        "fr": "L’attitude de Maurer face à la qualité et au profit",
+        "de": "Maurers Haltung zu Qualität und Gewinn"
+      }
+    },
+    {
+      "id": "q-azubi",
+      "type": "reading_true_false",
+      "focus": {
+        "en": "Whether she has found a trainee",
+        "fr": "Si elle a trouvé une apprentie",
+        "de": "Ob sie eine Auszubildende gefunden hat"
+      }
+    },
+    {
+      "id": "q-autorin",
+      "type": "reading_choice",
+      "focus": {
+        "en": "The author’s own attitude at the end",
+        "fr": "L’attitude de l’autrice à la fin du texte",
+        "de": "Die Haltung der Autorin am Ende"
+      }
+    }
+  ],
+  "exam": { "types": ["reading_choice", "reading_true_false"] },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

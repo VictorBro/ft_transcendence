@@ -2,20 +2,22 @@ import { INestApplication } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import request from 'supertest';
 import type TestAgent from 'supertest/lib/agent';
-import { afterAll, beforeAll, describe, expect, it, onTestFinished, vi } from 'vitest';
+import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest';
 
 import type { Language, Level } from '@ft/shared';
 
 import { AppModule } from '../src/app.module';
-import type { Prisma } from '../src/generated/prisma/client';
 import { configureApp } from '../src/app.setup';
 import { localDay } from '../src/lessons/roadmap.rules';
 import { PrismaService } from '../src/prisma/prisma.service';
+import { playLesson, playToLast, shortLesson } from './attempts.fixtures';
 
 /**
- * Finishing a lesson, end to end: the stub guard, the score check, the
- * transaction under the course lock against a real Postgres, and the goal
- * change that can meet the day too.
+ * Finishing a lesson, end to end, played through the attempt routes (#145):
+ * the last page records the server's score under the course lock against a
+ * real Postgres, and the goal change can meet the day too. No route takes
+ * a score any more, so every score here is 100 (every unit right) or 0
+ * (every unit blank).
  *
  * One learner per story, so a streak written by one never shows up in
  * another. The clock is frozen at noon UTC, as in lessons.e2e-spec.ts.
@@ -32,31 +34,15 @@ describe('finish a lesson (e2e)', () => {
 
   // Letters only in the ids: LESSON_ID_PATTERN refuses digits. High
   // positions, so they come after the real lessons of their level.
-  const lesson = (
-    id: string,
-    position: number,
-    level: Level = 'A1',
-    lang: Language = 'fr',
-  ): Prisma.LessonCreateManyInput => ({
-    id: `${lang}-test-fin-${id}`,
-    lang,
-    level,
-    position,
-    kind: 'grammar',
-    topic: 'pronouns',
-    theme: null,
-    title: 'Une leçon du testeur',
-    summary: 'Une leçon de test.',
-    brief: { objective: 'test', points: [], examples: [], pitfalls: [], vocabulary: [] },
-    ready: true,
-  });
+  const lesson = (id: string, position: number, level: Level = 'A1', lang: Language = 'fr') =>
+    shortLesson(`${lang}-test-fin-${id}`, position, level, lang);
   const FIXTURES = [
     ...['one', 'two', 'three', 'four', 'five', 'six'].map((id, index) => lesson(id, 9101 + index)),
     lesson('atwo', 9101, 'A2'),
     lesson('atwo-next', 9102, 'A2'),
     lesson('bone', 9101, 'B1'),
     lesson('alpha', 9101, 'A1', 'de'),
-    // Has no files, so it cannot be finished.
+    // Has no files, so it cannot be played.
     { ...lesson('draft', 9200), ready: false },
   ];
   const FIXTURE_IDS = FIXTURES.map((fixture) => fixture.id);
@@ -79,8 +65,16 @@ describe('finish a lesson (e2e)', () => {
     return { agent, email };
   };
 
-  const finish = (agent: TestAgent, id: string, score = 80, lang = 'fr') =>
-    agent.put(`/api/courses/${lang}/lessons/${id}/result`).send({ score });
+  /** Plays a lesson to its results and gives back their finish block. */
+  const finish = async (
+    agent: TestAgent,
+    id: string,
+    how: 'right' | 'blank' = 'right',
+    lang: Language = 'fr',
+  ) => (await playLesson(agent, prisma, lang, id, how)).finish;
+
+  const start = (agent: TestAgent, id: string, lang: Language = 'fr') =>
+    agent.post(`/api/courses/${lang}/lessons/${id}/attempt`).send({ locale: 'en' });
 
   const course = (email: string, lang: Language = 'fr') =>
     prisma.userLevel.findFirstOrThrow({ where: { user: { email }, lang } });
@@ -128,20 +122,21 @@ describe('finish a lesson (e2e)', () => {
     prisma = app.get(PrismaService);
 
     // What an interrupted run may have left: its results first, Restrict blocks the lessons.
+    // Its attempts go with the lessons (Cascade).
     await prisma.lessonResult.deleteMany({ where: { lessonId: { in: FIXTURE_IDS } } });
     await prisma.lesson.deleteMany({ where: { id: { in: FIXTURE_IDS } } });
     await prisma.lesson.createMany({ data: FIXTURES });
   });
 
   afterAll(async () => {
-    // The users first: their courses and results cascade, then nothing blocks the lessons.
+    // The users first: their courses, attempts and results cascade, then nothing blocks the lessons.
     await prisma.user.deleteMany({ where: { email: { in: emails } } });
     await prisma.lesson.deleteMany({ where: { id: { in: FIXTURE_IDS } } });
     await app.close();
     vi.useRealTimers();
   });
 
-  describe('who may finish', () => {
+  describe('who may play', () => {
     let agent: TestAgent;
 
     beforeAll(async () => {
@@ -150,19 +145,19 @@ describe('finish a lesson (e2e)', () => {
 
     it('refuses an anonymous caller', async () => {
       await request(server())
-        .put('/api/courses/fr/lessons/fr-test-fin-one/result')
-        .send({ score: 80 })
+        .post('/api/courses/fr/lessons/fr-test-fin-one/attempt')
+        .send({ locale: 'en' })
         .expect(401);
     });
 
     it('answers 404 course.notFound without a course in that language', async () => {
-      const response = await finish(agent, 'de-test-fin-alpha', 80, 'de').expect(404);
+      const response = await start(agent, 'de-test-fin-alpha', 'de').expect(404);
 
       expect(response.body.message).toBe('course.notFound');
     });
 
     it('answers 409 course.notPlaced before placement', async () => {
-      const response = await finish(agent, 'fr-test-fin-one').expect(409);
+      const response = await start(agent, 'fr-test-fin-one').expect(409);
 
       expect(response.body.message).toBe('course.notPlaced');
     });
@@ -173,40 +168,30 @@ describe('finish a lesson (e2e)', () => {
       });
 
       it('answers 404 lesson.notFound for a lesson of another language', async () => {
-        const response = await finish(agent, 'de-test-fin-alpha').expect(404);
+        const response = await start(agent, 'de-test-fin-alpha').expect(404);
 
         expect(response.body.message).toBe('lesson.notFound');
       });
 
       it('answers 404 lesson.notFound for a lesson that is not ready, and saves nothing', async () => {
-        const response = await finish(agent, 'fr-test-fin-draft').expect(404);
+        const response = await start(agent, 'fr-test-fin-draft').expect(404);
 
         expect(response.body.message).toBe('lesson.notFound');
-        const saved = await prisma.lessonResult.count({ where: { lessonId: 'fr-test-fin-draft' } });
-        expect(saved).toBe(0);
+        const where = { lessonId: 'fr-test-fin-draft' };
+        expect(await prisma.lessonAttempt.count({ where })).toBe(0);
+        expect(await prisma.lessonResult.count({ where })).toBe(0);
       });
 
-      it.each([101, -1, 70.5])('answers 400 lesson.invalidScore for %s', async (score) => {
-        const response = await finish(agent, 'fr-test-fin-one', score).expect(400);
-
-        expect(response.body.message).toEqual(['lesson.invalidScore']);
-      });
-
-      it('answers 404 lesson.notFound while LESSON_STUB is unset', async () => {
-        const stub = process.env.LESSON_STUB;
-        delete process.env.LESSON_STUB;
-        onTestFinished(() => {
-          process.env.LESSON_STUB = stub;
-        });
-
-        const response = await finish(agent, 'fr-test-fin-one').expect(404);
-
-        expect(response.body.message).toBe('lesson.notFound');
+      it('has no route that takes a score', async () => {
+        await agent
+          .put('/api/courses/fr/lessons/fr-test-fin-one/result')
+          .send({ score: 100 })
+          .expect(404);
       });
     });
   });
 
-  // The example of the issue: goal 30 (3 lessons), then a worse redo.
+  // The example of #82: goal 30 (3 lessons), then a better retake and a worse one.
   describe('a day at goal 30', () => {
     let agent: TestAgent;
     let email: string;
@@ -216,55 +201,56 @@ describe('finish a lesson (e2e)', () => {
     });
 
     it('counts a first finish for today', async () => {
-      const response = await finish(agent, 'fr-test-fin-one', 62).expect(200);
-
-      expect(response.body).toEqual({
+      expect(await finish(agent, 'fr-test-fin-one', 'blank')).toEqual({
         countedToday: true,
         doneCount: 1,
         target: 3,
         goalJustMet: false,
+        best: 0,
       });
     });
 
-    it('keeps one row and the best score for a lesson finished twice, counted once', async () => {
-      const response = await finish(agent, 'fr-test-fin-one', 80).expect(200);
+    it('raises the best score with a retake on the same day, one row, counted once', async () => {
+      const result = await finish(agent, 'fr-test-fin-one');
       const rows = await prisma.lessonResult.findMany({
         where: { userLevelId: (await course(email)).id },
       });
 
-      expect(response.body).toMatchObject({ countedToday: false, doneCount: 1 });
+      expect(result).toMatchObject({ countedToday: false, doneCount: 1, best: 100 });
       expect(rows).toHaveLength(1);
-      expect(rows[0].score).toBe(80);
+      expect(rows[0].score).toBe(100);
     });
 
     it('meets the goal on the third lesson, and starts the streak', async () => {
-      await finish(agent, 'fr-test-fin-two').expect(200);
-      const response = await finish(agent, 'fr-test-fin-three').expect(200);
+      await finish(agent, 'fr-test-fin-two');
+      const result = await finish(agent, 'fr-test-fin-three');
       const row = await course(email);
 
-      expect(response.body).toEqual({
+      expect(result).toEqual({
         countedToday: true,
         doneCount: 3,
         target: 3,
         goalJustMet: true,
+        best: 100,
       });
       expect(row).toMatchObject({ streak: 1, bestStreak: 1, lastGoalDay: new Date(today) });
     });
 
     it('never lowers the score, and never meets the day twice', async () => {
-      const response = await finish(agent, 'fr-test-fin-three', 10).expect(200);
+      const result = await finish(agent, 'fr-test-fin-three', 'blank');
       const row = await course(email);
-      const result = await prisma.lessonResult.findFirstOrThrow({
+      const saved = await prisma.lessonResult.findFirstOrThrow({
         where: { userLevelId: row.id, lessonId: 'fr-test-fin-three' },
       });
 
-      expect(response.body).toEqual({
+      expect(result).toEqual({
         countedToday: false,
         doneCount: 3,
         target: 3,
         goalJustMet: false,
+        best: 100,
       });
-      expect(result.score).toBe(80);
+      expect(saved.score).toBe(100);
       expect(row.streak).toBe(1);
     });
 
@@ -273,16 +259,17 @@ describe('finish a lesson (e2e)', () => {
       await agent.post('/api/courses').send({ lang: 'de', dailyGoal: 10 }).expect(201);
       await agent.patch('/api/courses/de/level').send({ level: 'A1' }).expect(200);
 
-      const response = await finish(agent, 'de-test-fin-alpha', 80, 'de').expect(200);
+      const result = await finish(agent, 'de-test-fin-alpha', 'right', 'de');
 
-      expect(response.body).toMatchObject({ doneCount: 1, target: 1, goalJustMet: true });
+      expect(result).toMatchObject({ doneCount: 1, target: 1, goalJustMet: true });
       expect(await course(email, 'de')).toMatchObject({ streak: 1, lastGoalDay: new Date(today) });
       expect(await course(email, 'fr')).toMatchObject({ streak: 1, lastGoalDay: new Date(today) });
     });
   });
 
   /**
-   * Goal 60 is 6 lessons: the 5th and 6th sent at once must meet the day once.
+   * Goal 60 is 6 lessons: the last pages of the 5th and 6th sent at once
+   * must meet the day once.
    *
    * Two requests sent together still reach Postgres a few milliseconds apart,
    * so on their own they would rarely overlap. The test holds the course row
@@ -293,33 +280,32 @@ describe('finish a lesson (e2e)', () => {
   it('meets the day once when two finishes arrive at the same time', async () => {
     const { agent, email } = await learner('race', 60, 'A1');
     for (const id of ['one', 'two', 'three', 'four']) {
-      await finish(agent, `fr-test-fin-${id}`).expect(200);
+      await finish(agent, `fr-test-fin-${id}`);
     }
+    const lastOfFive = await playToLast(agent, prisma, 'fr', 'fr-test-fin-five');
+    const lastOfSix = await playToLast(agent, prisma, 'fr', 'fr-test-fin-six');
     const { id } = await course(email);
 
-    let sent!: Promise<Awaited<ReturnType<typeof finish>>[]>;
+    let sent!: Promise<Awaited<ReturnType<typeof lastOfFive>>[]>;
     await prisma.$transaction(async (tx) => {
       await tx.$queryRaw`SELECT id FROM "UserLevel" WHERE id = ${id}::uuid FOR UPDATE`;
       const [{ pid }] = await tx.$queryRaw<{ pid: number }[]>`SELECT pg_backend_pid() AS pid`;
       // Promise.all calls then() on each request, which is what sends it.
-      sent = Promise.all([
-        finish(agent, 'fr-test-fin-five').expect(200),
-        finish(agent, 'fr-test-fin-six').expect(200),
-      ]);
+      sent = Promise.all([lastOfFive().expect(200), lastOfSix().expect(200)]);
       await waitForBlocked(pid, 2);
       // The transaction commits when this callback returns: that frees the row.
     });
-    const both = await sent;
+    const both = (await sent).map((response) => response.body.attempt.results.finish);
 
-    expect(both.map((response) => response.body.goalJustMet).sort()).toEqual([false, true]);
-    expect(both.map((response) => response.body.doneCount).sort()).toEqual([5, 6]);
+    expect(both.map((result) => result.goalJustMet).sort()).toEqual([false, true]);
+    expect(both.map((result) => result.doneCount).sort()).toEqual([5, 6]);
     expect(await course(email)).toMatchObject({ streak: 1, lastGoalDay: new Date(today) });
   });
 
   it('meets the day when the goal drops under what is done, and keeps it when it rises', async () => {
     const { agent, email } = await learner('goal', 60, 'A1');
     for (const id of ['one', 'two', 'three']) {
-      await finish(agent, `fr-test-fin-${id}`).expect(200);
+      await finish(agent, `fr-test-fin-${id}`);
     }
     expect(await course(email)).toMatchObject({ streak: 0, lastGoalDay: null });
 
@@ -334,22 +320,27 @@ describe('finish a lesson (e2e)', () => {
     const { agent } = await learner('switch', 30, 'A2');
     const [first, next] = await levelIds('A2');
 
-    await finish(agent, first).expect(200);
+    await finish(agent, first);
     await agent.patch('/api/courses/fr/level').send({ level: 'B1' }).expect(200);
-    await finish(agent, 'fr-test-fin-bone').expect(200);
+    await finish(agent, 'fr-test-fin-bone');
     await agent.patch('/api/courses/fr/level').send({ level: 'A2' }).expect(200);
 
     const lesson = await agent.get(`/api/courses/fr/lessons/${first}`).expect(200);
     const plan = await agent.get('/api/courses/fr/today').expect(200);
 
-    expect(lesson.body).toMatchObject({ status: 'done', score: 80 });
+    expect(lesson.body).toMatchObject({ status: 'done', score: 100 });
     // A target of 3 with 2 done today: one proposed, the A2 lesson after `first`.
     expect(plan.body.proposed.map((card: { id: string }) => card.id)).toEqual([next]);
   });
 
-  it('documents the route in Swagger', async () => {
+  it('documents the attempt routes in Swagger, and no result route', async () => {
     const response = await request(server()).get('/api/docs-json').expect(200);
+    const paths = response.body.paths;
 
-    expect(response.body.paths['/api/courses/{lang}/lessons/{id}/result']).toHaveProperty('put');
+    expect(Object.keys(paths['/api/courses/{lang}/lessons/{id}/attempt'])).toEqual(
+      expect.arrayContaining(['get', 'post']),
+    );
+    expect(paths['/api/courses/{lang}/lessons/{id}/attempt/pages/{index}']).toHaveProperty('post');
+    expect(paths['/api/courses/{lang}/lessons/{id}/result']).toBeUndefined();
   });
 });

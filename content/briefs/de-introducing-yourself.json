@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 2,
+  "id": "de-introducing-yourself",
+  "lang": "de",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Sich vorstellen",
+  "objective": {
+    "en": "Introduce yourself with your name, origin and home, and ask the other person the same questions.",
+    "fr": "Se présenter avec son nom, son origine et son lieu d’habitation, et poser les mêmes questions à l’autre personne.",
+    "de": "Sich mit Namen, Herkunft und Wohnort vorstellen und das Gegenüber dasselbe fragen."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:25:26.266Z",
+    "inputHashes": { "outline": "58475ae506a4898f744a43c656a43bd2e6fde8c3c817746312ba0d9ef1576bf0" }
+  },
+  "kind": "functions",
+  "theme": "personal_identification",
+  "situation": {
+    "en": "Lena and Tom meet for the first time and introduce themselves.",
+    "fr": "Lena et Tom se rencontrent pour la première fois et se présentent.",
+    "de": "Lena und Tom lernen sich kennen und stellen sich vor."
+  },
+  "coverageNotes": {
+    "en": "Saying your name (Ich heiße), your origin (Ich komme aus) and your home (Ich wohne in), and asking the same with du: Wie heißt du? Woher kommst du? Wo wohnst du?",
+    "fr": "Dire son nom (Ich heiße), son origine (Ich komme aus) et son lieu d’habitation (Ich wohne in), et poser les mêmes questions avec du : Wie heißt du ? Woher kommst du ? Wo wohnst du ?",
+    "de": "Den eigenen Namen (Ich heiße), die Herkunft (Ich komme aus) und den Wohnort (Ich wohne in) nennen und mit du dasselbe fragen: Wie heißt du? Woher kommst du? Wo wohnst du?"
+  },
+  "prerequisites": [],
+  "roles": [
+    { "id": "lena", "label": "Lena", "translation": { "en": "Lena", "fr": "Lena" } },
+    { "id": "tom", "label": "Tom", "translation": { "en": "Tom", "fr": "Tom" } }
+  ],
+  "expressions": [
+    {
+      "id": "ich-heisse",
+      "text": "Ich heiße",
+      "openEnd": true,
+      "translations": { "en": ["My name is"], "fr": ["Je m’appelle"] },
+      "explanation": {
+        "en": "Use it to say your name: Ich heiße + name. The verb ends in -e after ich.",
+        "fr": "Pour dire votre nom : Ich heiße + prénom. Le verbe finit en -e après ich.",
+        "de": "Damit sagst du deinen Namen: Ich heiße + Name. Nach ich endet das Verb auf -e."
+      },
+      "example": {
+        "text": "Ich heiße Lena.",
+        "translation": { "en": "My name is Lena.", "fr": "Je m’appelle Lena." }
+      }
+    },
+    {
+      "id": "wie-heisst-du",
+      "text": "Wie heißt du?",
+      "openEnd": false,
+      "translations": { "en": ["What is your name?"], "fr": ["Comment tu t’appelles ?"] },
+      "explanation": {
+        "en": "Asks a friend or a person your age for their name (du, informal).",
+        "fr": "Pour demander son nom à un ami ou à une personne de votre âge (du, informel).",
+        "de": "Damit fragst du Freunde oder Gleichaltrige nach dem Namen (du, informell)."
+      },
+      "example": {
+        "text": "Hallo! Wie heißt du?",
+        "translation": {
+          "en": "Hello! What is your name?",
+          "fr": "Salut ! Comment tu t’appelles ?"
+        }
+      }
+    },
+    {
+      "id": "ich-komme-aus",
+      "text": "Ich komme aus",
+      "openEnd": true,
+      "translations": { "en": ["I come from"], "fr": ["Je viens de"] },
+      "explanation": {
+        "en": "Use it for your country or town of origin: Ich komme aus + place.",
+        "fr": "Pour dire votre pays ou votre ville d’origine : Ich komme aus + lieu.",
+        "de": "Damit nennst du dein Herkunftsland oder deine Herkunftsstadt: Ich komme aus + Ort."
+      },
+      "example": {
+        "text": "Ich komme aus Polen.",
+        "translation": { "en": "I come from Poland.", "fr": "Je viens de Pologne." }
+      }
+    },
+    {
+      "id": "woher-kommst-du",
+      "text": "Woher kommst du?",
+      "openEnd": false,
+      "translations": { "en": ["Where are you from?"], "fr": ["Tu viens d’où ?"] },
+      "explanation": {
+        "en": "Asks where someone comes from (du, informal).",
+        "fr": "Pour demander d’où vient quelqu’un (du, informel).",
+        "de": "Damit fragst du, woher jemand kommt (du, informell)."
+      },
+      "example": {
+        "text": "Und woher kommst du?",
+        "translation": { "en": "And where are you from?", "fr": "Et toi, tu viens d’où ?" }
+      }
+    },
+    {
+      "id": "ich-wohne-in",
+      "text": "Ich wohne in",
+      "openEnd": true,
+      "translations": { "en": ["I live in"], "fr": ["J’habite à"] },
+      "explanation": {
+        "en": "Use it to say where you live: Ich wohne in + town or country.",
+        "fr": "Pour dire où vous habitez : Ich wohne in + ville ou pays.",
+        "de": "Damit sagst du, wo du wohnst: Ich wohne in + Stadt oder Land."
+      },
+      "example": {
+        "text": "Ich wohne in Berlin.",
+        "translation": { "en": "I live in Berlin.", "fr": "J’habite à Berlin." }
+      }
+    },
+    {
+      "id": "wo-wohnst-du",
+      "text": "Wo wohnst du?",
+      "openEnd": false,
+      "translations": { "en": ["Where do you live?"], "fr": ["Où habites-tu ?"] },
+      "explanation": {
+        "en": "Asks where someone lives (du, informal).",
+        "fr": "Pour demander où habite quelqu’un (du, informel).",
+        "de": "Damit fragst du, wo jemand wohnt (du, informell)."
+      },
+      "example": {
+        "text": "Und wo wohnst du?",
+        "translation": { "en": "And where do you live?", "fr": "Et toi, où habites-tu ?" }
+      }
+    }
+  ],
+  "words": [],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

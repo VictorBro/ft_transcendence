@@ -6,16 +6,19 @@ import {
   Controller,
   Delete,
   ExceptionFilter,
+  Get,
   HttpStatus,
   Patch,
   PayloadTooLargeException,
   Post,
+  Query,
   UploadedFile,
   UseFilters,
   UseInterceptors,
 } from '@nestjs/common';
 import type { Response } from 'express';
 import {
+  ApiBadRequestResponse,
   ApiBody,
   ApiConflictResponse,
   ApiConsumes,
@@ -31,10 +34,11 @@ import { diskStorage } from 'multer';
 import { randomUUID } from 'crypto';
 import { open, unlink } from 'fs/promises';
 import { MAX_AVATAR_BYTES } from '@ft/shared';
-import type { SessionUser } from '@ft/shared';
+import type { SessionUser, UserSearchResult } from '@ft/shared';
 
 import { CurrentUser } from '../auth/auth.decorators';
 import { SessionUserDto, UpdateProfileDto } from '../auth/auth.dto';
+import { UserSearchQueryDto, UserSearchResultDto } from './users.dto';
 import { UsersService } from './users.service';
 import { AVATAR_STORAGE_DIR } from '../app.setup';
 
@@ -89,6 +93,18 @@ class AvatarTooLargeFilter implements ExceptionFilter {
 @Controller('users')
 export class UsersController {
   constructor(private readonly users: UsersService) {}
+
+  @Get()
+  @ApiOperation({ summary: 'Find other users by display name' })
+  @ApiOkResponse({ type: UserSearchResultDto })
+  @ApiBadRequestResponse({ description: 'q is not a possible display name (displayName.*)' })
+  @ApiUnauthorizedResponse({ description: 'No valid session' })
+  search(
+    @Query() query: UserSearchQueryDto,
+    @CurrentUser() user: SessionUser,
+  ): Promise<UserSearchResult> {
+    return this.users.search(user.id, query.q);
+  }
 
   // No :id variant: editing someone else's profile is the advanced permissions
   // module, and an id in the path invites forgetting to check it.

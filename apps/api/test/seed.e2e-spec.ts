@@ -551,6 +551,33 @@ describe('seedLessons (e2e)', () => {
     expect(await seedLessons(dir, prisma)).toBe(0);
   });
 
+  it('deletes the unfinished attempts on a lesson whose brief changes, and keeps the rest', async () => {
+    const lessons = await writeLessons();
+    await seedLessons(dir, prisma);
+    const [edited, editedDone, untouched] = lessons.map((lesson) => lesson.id);
+    const userLevelId = await courseWithResult(editedDone);
+    const attempt = (lessonId: string, completedAt: Date | null) =>
+      prisma.lessonAttempt.create({
+        data: { userLevelId, lessonId, motherTongue: 'en', secret: Buffer.alloc(32), completedAt },
+      });
+    const open = await attempt(edited, null);
+    const done = await attempt(editedDone, new Date('2026-10-12T07:10:00Z'));
+    const other = await attempt(untouched, null);
+
+    await writeLessons((files) => {
+      for (const lesson of files.slice(0, 2)) {
+        lesson.brief.title = `${lesson.brief.title} bis`;
+        if (lesson.content) lesson.content.title = lesson.brief.title;
+      }
+    });
+    expect(await seedLessons(dir, prisma)).toBe(2);
+
+    const left = await prisma.lessonAttempt.findMany({ where: { userLevelId } });
+    expect(left.map((row) => row.id).sort()).toEqual([done.id, other.id].sort());
+    expect(left.map((row) => row.id)).not.toContain(open.id);
+    expect(await prisma.lessonResult.count({ where: { userLevelId } })).toBe(1);
+  });
+
   it('makes a lesson not ready when its files are removed, and ready again when they are back', async () => {
     const lessons = await writeLessons();
     await seedLessons(dir, prisma);

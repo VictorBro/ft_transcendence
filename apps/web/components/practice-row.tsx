@@ -6,12 +6,9 @@ import { Link } from '@/i18n/navigation';
 async function modes() {
   const t = await getTranslations('Modes');
 
-  // The two the product has: the tutor (PRODUCT_ARCHITECTURE 1.4) and
-  // cross-language chat (1.5). The four that were here named nothing in any plan.
-  return [
-    { id: 'chat', title: t('chatTitle'), href: '/chat' },
-    { id: 'friends', title: t('friendsTitle'), href: '/friends' },
-  ];
+  // The tutor (PRODUCT_ARCHITECTURE 1.4). Friends is an account page now, in
+  // the account menu. The four that were here named nothing in any plan.
+  return [{ id: 'chat', title: t('chatTitle'), href: '/chat' }];
 }
 
 /** Placeholders for now, so they sit under the roadmap rather than standing in for it. */

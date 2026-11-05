@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 2,
+  "id": "de-reading-a-biography-that-weighs-its-sources",
+  "lang": "de",
+  "level": "C2",
+  "locales": ["en", "fr", "de"],
+  "title": "Eine Biografie mit widersprüchlichen Quellen lesen",
+  "objective": {
+    "en": "Read a biography chapter that compares conflicting accounts of a painter and follow how the biographer judges the credibility of each source.",
+    "fr": "Lire un chapitre de biographie qui compare des témoignages contradictoires sur une peintre et comprendre comment la biographe juge la crédibilité de chaque source.",
+    "de": "Ein Biografiekapitel mit widersprüchlichen Zeugnissen über eine Malerin lesen und verstehen, wie die Biografin die Glaubwürdigkeit jeder Quelle beurteilt."
+  },
+  "estimatedMinutes": 12,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:38:10.694Z",
+    "inputHashes": { "outline": "008d13ebbbd29eab614a807f1415506454ff2e3f6b45330992b6f5ad03bb650d" }
+  },
+  "kind": "reading",
+  "theme": "personal_identification",
+  "genre": "other",
+  "situation": {
+    "en": "In a chapter of her biography of the painter Clara Hellwig, the biographer Annemarie Vogt compares three conflicting accounts of why Hellwig stopped exhibiting in 1937, and a document from the archive.",
+    "fr": "Dans un chapitre de sa biographie de la peintre Clara Hellwig, la biographe Annemarie Vogt compare trois récits contradictoires sur la raison pour laquelle Hellwig a cessé d’exposer en 1937, ainsi qu’un document d’archives.",
+    "de": "In einem Kapitel ihrer Biografie der Malerin Clara Hellwig vergleicht die Biografin Annemarie Vogt drei widersprüchliche Berichte darüber, warum Hellwig 1937 aufhörte auszustellen, und ein Archivdokument."
+  },
+  "readerTask": {
+    "en": "Work out what each witness says, why each one is more or less reliable, and what the archive document changes.",
+    "fr": "Comprendre ce que dit chaque témoin, pourquoi chacun est plus ou moins fiable et ce que change le document d’archives.",
+    "de": "Herausfinden, was jeder Zeuge sagt, warum er mehr oder weniger verlässlich ist und was das Archivdokument ändert."
+  },
+  "keywords": [
+    {
+      "id": "zeugnis",
+      "term": "das Zeugnis",
+      "translations": { "en": ["testimony", "piece of evidence"], "fr": ["témoignage"] },
+      "explanation": {
+        "en": "Here: an account or document that bears witness to something, not a school report. Plural: die Zeugnisse.",
+        "fr": "Ici : un récit ou un document qui témoigne de quelque chose, et non un bulletin scolaire. Pluriel : die Zeugnisse.",
+        "de": "Hier: ein Bericht oder Dokument, das etwas bezeugt, nicht das Schulzeugnis. Plural: die Zeugnisse."
+      }
+    },
+    {
+      "id": "beschoenigen",
+      "term": "beschönigen",
+      "translations": { "en": ["to gloss over", "to sugarcoat"], "fr": ["enjoliver", "embellir"] },
+      "explanation": {
+        "en": "To present something unpleasant as better than it was, without necessarily lying.",
+        "fr": "Présenter quelque chose de désagréable comme meilleur que la réalité, sans forcément mentir.",
+        "de": "Etwas Unangenehmes besser darstellen, als es war, ohne unbedingt zu lügen."
+      }
+    },
+    {
+      "id": "im-nachhinein",
+      "term": "im Nachhinein",
+      "translations": {
+        "en": ["in hindsight", "after the fact"],
+        "fr": ["après coup", "rétrospectivement"]
+      },
+      "explanation": {
+        "en": "Looking back at something that is over; memories formed this way often become tidier than the events.",
+        "fr": "En regardant en arrière ; les souvenirs ainsi formés sont souvent plus ordonnés que les faits.",
+        "de": "Mit dem Blick zurück auf etwas Vergangenes; so entstandene Erinnerungen sind oft geordneter als die Ereignisse."
+      }
+    },
+    {
+      "id": "fragwuerdig",
+      "term": "fragwürdig",
+      "translations": { "en": ["questionable", "dubious"], "fr": ["douteux", "discutable"] },
+      "explanation": {
+        "en": "Not to be trusted without checking; there are good reasons to doubt it.",
+        "fr": "À ne pas croire sans vérifier ; il y a de bonnes raisons d’en douter.",
+        "de": "Nicht ohne Prüfung zu glauben; es gibt gute Gründe zum Zweifel."
+      }
+    },
+    {
+      "id": "erhaerten",
+      "term": "erhärten",
+      "translations": {
+        "en": ["to corroborate", "to substantiate"],
+        "fr": ["corroborer", "étayer"]
+      },
+      "explanation": {
+        "en": "To make a claim firmer by adding evidence that supports it.",
+        "fr": "Rendre une affirmation plus solide en ajoutant des preuves qui la soutiennent.",
+        "de": "Eine Behauptung durch zusätzliche Belege fester machen."
+      }
+    }
+  ],
+  "documents": {
+    "main": {
+      "targetWords": 600,
+      "contents": {
+        "en": "A chapter that weighs three witnesses to why Clara Hellwig stopped exhibiting in 1937: her sister (illness, written in 1968, protecting the family), the gallery owner Brenner (contemporary letters, but a commercial interest) and a former student (vivid but chronologically wrong). An archive letter refusing her membership of the art chamber corroborates a political cause. Three questions guide the weighing: closeness, timing, interest.",
+        "fr": "Un chapitre qui pèse trois témoins sur la raison pour laquelle Clara Hellwig a cessé d’exposer en 1937 : sa sœur (maladie, écrit en 1968, protège la famille), le galeriste Brenner (lettres de l’époque, mais intérêt commercial) et une ancienne élève (vivante mais chronologie fausse). Une lettre d’archives refusant son adhésion à la chambre des arts étaye une cause politique. Trois questions guident l’examen : proximité, moment, intérêt.",
+        "de": "Ein Kapitel, das drei Zeugen dafür wägt, warum Clara Hellwig 1937 aufhörte auszustellen: die Schwester (Krankheit, 1968 geschrieben, schützt die Familie), den Galeristen Brenner (zeitgenössische Briefe, aber Geschäftsinteresse) und eine frühere Schülerin (anschaulich, aber falsche Chronologie). Ein Archivschreiben, das die Mitgliedschaft in der Reichskammer verweigert, erhärtet eine politische Ursache. Drei Fragen leiten das Wägen: Nähe, Zeitpunkt, Interesse."
+      }
+    },
+    "exam": {
+      "targetWords": 305,
+      "contents": {
+        "en": "A chapter about the amateur astronomer Marie Lorenz and a disputed comet discovery in 1881: her own letter (written after she read the rival announcement, so biased), the observatory director’s report (prejudice, self-interest), and an assistant’s logbook (written afterwards, but weather confirmed by a map). The comet discovery is probable, not proven.",
+        "fr": "Un chapitre sur l’astronome amatrice Marie Lorenz et une découverte de comète contestée en 1881 : sa propre lettre (écrite après avoir lu l’annonce rivale, donc partiale), le rapport du directeur de l’observatoire (préjugé, intérêt personnel) et le cahier d’un assistant (écrit après coup, mais météo confirmée par une carte). La découverte est probable, non prouvée.",
+        "de": "Ein Kapitel über die Amateurastronomin Marie Lorenz und eine umstrittene Kometenentdeckung 1881: ihr eigener Brief (nach der Lektüre der konkurrierenden Meldung geschrieben, also befangen), der Bericht des Sternwartendirektors (Vorurteil, Eigeninteresse) und das Beobachtungsbuch eines Assistenten (nachträglich geschrieben, aber das Wetter durch eine Karte bestätigt). Die Entdeckung ist wahrscheinlich, nicht bewiesen."
+      }
+    }
+  },
+  "skim": { "focus": "purpose" },
+  "detailQuestions": [
+    {
+      "id": "q-sister",
+      "type": "reading_choice",
+      "focus": {
+        "en": "Why the sister’s account must be used with caution",
+        "fr": "Pourquoi le récit de la sœur doit être utilisé avec prudence",
+        "de": "Warum der Bericht der Schwester mit Vorsicht zu benutzen ist"
+      }
+    },
+    {
+      "id": "q-brenner",
+      "type": "reading_choice",
+      "focus": {
+        "en": "The advantage of the gallery owner’s letters",
+        "fr": "L’avantage des lettres du galeriste",
+        "de": "Der Vorzug der Briefe des Galeristen"
+      }
+    },
+    {
+      "id": "q-raabe",
+      "type": "reading_true_false",
+      "focus": {
+        "en": "How reliable the student’s story is in its details",
+        "fr": "La fiabilité du récit de l’élève dans les détails",
+        "de": "Wie verlässlich die Erzählung der Schülerin im Einzelnen ist"
+      }
+    },
+    {
+      "id": "q-archive",
+      "type": "reading_choice",
+      "focus": {
+        "en": "Why the archive letter is hard to doubt",
+        "fr": "Pourquoi la lettre d’archives est difficile à mettre en doute",
+        "de": "Warum das Archivschreiben schwer anzuzweifeln ist"
+      }
+    }
+  ],
+  "exam": { "types": ["reading_choice", "reading_true_false"] },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

@@ -1,6 +1,5 @@
-import { Body, Controller, Get, Param, Put, Query, UseGuards } from '@nestjs/common';
+import { Controller, Get, Param, Query } from '@nestjs/common';
 import {
-  ApiBadRequestResponse,
   ApiConflictResponse,
   ApiNotFoundResponse,
   ApiOkResponse,
@@ -13,15 +12,7 @@ import { LEARNABLE_LANGUAGES } from '@ft/shared';
 import type { Language, SessionUser } from '@ft/shared';
 
 import { LessonsService } from './lessons.service';
-import {
-  FinishLessonDto,
-  FinishResultDto,
-  LessonCardDto,
-  LessonPageDto,
-  LessonQueryDto,
-  TodayDto,
-} from './lessons.dto';
-import { LessonStubGuard } from './lesson-stub.guard';
+import { LessonCardDto, LessonPageDto, LessonQueryDto, TodayDto } from './lessons.dto';
 import { CurrentUser } from '../auth/auth.decorators';
 import { LangParam } from '../validation.pipe';
 
@@ -37,8 +28,8 @@ import { LangParam } from '../validation.pipe';
  *   @CurrentUser()       → the logged in user, with its id and timeZone
  *   @Param('lang', …)    → the :lang of the URL, checked by LangParam
  *   @Query()             → what comes after the ? in the URL
- *   @Body()              → the JSON the request sends
- *   @UseGuards(…)        → a check that runs before the method, here the stub flag
+ *
+ * The attempt routes (#145) are in AttemptsController, under the same prefix.
  *
  * `new Date()` is made here, once per request, and not in the service: the
  * service gets the time as a parameter, so a test can give it any date.
@@ -101,29 +92,5 @@ export class LessonsController {
     @Param('id') id: string,
   ) {
     return this.lessons.lesson(user.id, lang, id);
-  }
-
-  /**
-   * PUT /courses/:lang/lessons/:id/result { score }: PUT, because a lesson has
-   * one result and this sets it, never lower. Behind LessonStubGuard until the
-   * lesson page of the next milestone calls it.
-   */
-  @Put('lessons/:id/result')
-  @UseGuards(LessonStubGuard)
-  @ApiOperation({ summary: 'Finish a lesson: keep the best score, count it for the daily goal' })
-  @ApiOkResponse({ type: FinishResultDto })
-  @ApiBadRequestResponse({ description: 'The score is not a whole number from 0 to 100' })
-  @ApiUnauthorizedResponse({ description: 'No valid session' })
-  @ApiNotFoundResponse({
-    description: 'No course in that language, or no such lesson in it, or it is not ready',
-  })
-  @ApiConflictResponse({ description: 'The course has no level yet (no placement)' })
-  finish(
-    @CurrentUser() user: SessionUser,
-    @Param('lang', LangParam) lang: Language,
-    @Param('id') id: string,
-    @Body() body: FinishLessonDto,
-  ) {
-    return this.lessons.finish(user, lang, id, body.score, new Date());
   }
 }

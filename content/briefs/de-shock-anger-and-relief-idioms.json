@@ -1,0 +1,717 @@
+{
+  "schemaVersion": 2,
+  "id": "de-shock-anger-and-relief-idioms",
+  "lang": "de",
+  "level": "C1",
+  "locales": ["en", "fr", "de"],
+  "title": "Schreck, Ärger und Erleichterung in Redewendungen",
+  "objective": {
+    "en": "Understand twelve idioms for shock, anger and relief and use them in fitting situations.",
+    "fr": "Comprendre douze expressions idiomatiques pour le choc, la colère et le soulagement et les employer à bon escient.",
+    "de": "Zwölf Redewendungen für Schreck, Ärger und Erleichterung verstehen und in passenden Situationen einsetzen."
+  },
+  "estimatedMinutes": 20,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:37:15.989Z",
+    "inputHashes": { "outline": "903adc80501ea8ddb0485385dd50b60f649fe0d0e568192974fb2305c0f04971" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Twelve fixed idioms in three groups: shock and disbelief, anger and annoyance, relief. Each is a vivid body or everyday image whose meaning cannot be guessed word by word.",
+    "fr": "Douze expressions figées en trois groupes : choc et stupeur, colère et agacement, soulagement. Chacune repose sur une image concrète dont le sens ne se devine pas mot à mot.",
+    "de": "Zwölf feste Redewendungen in drei Gruppen: Schreck und Fassungslosigkeit, Ärger und Wut, Erleichterung. Jede beruht auf einem bildhaften Ausdruck, dessen Bedeutung sich nicht Wort für Wort erschließen lässt."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve idioms are enough for one session at C1 and give each emotion several shades.",
+    "fr": "Douze expressions suffisent pour une séance au niveau C1 et donnent plusieurs nuances à chaque émotion.",
+    "de": "Zwölf Wendungen genügen für eine Einheit auf C1 und geben jeder Emotion mehrere Abstufungen."
+  },
+  "difficultyBalance": {
+    "en": "Well-known images (aus allen Wolken fallen, Stein vom Herzen) next to rarer ones (Laus über die Leber, Kuh vom Eis).",
+    "fr": "Des images connues (aus allen Wolken fallen, Stein vom Herzen) à côté d’images plus rares (Laus über die Leber, Kuh vom Eis).",
+    "de": "Bekannte Bilder (aus allen Wolken fallen, Stein vom Herzen) neben selteneren (Laus über die Leber, Kuh vom Eis)."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "shock",
+      "label": {
+        "en": "Shock and disbelief",
+        "fr": "Choc et stupeur",
+        "de": "Schreck und Fassungslosigkeit"
+      },
+      "targetIds": ["aus-allen-wolken", "wie-vom-donner", "stockt-der-atem", "gefriert-das-blut"],
+      "introduction": {
+        "en": "When something unexpected or terrible happens, German reaches for **body and weather images**. These four expressions convey shock:\n\n- `aus allen Wolken fallen`: to be completely taken aback\n- `wie vom Donner gerührt sein`: to be stunned into silence\n- `jemandem stockt der Atem`: to hold one’s breath in fright\n- `jemandem gefriert das Blut in den Adern`: to be seized by horror",
+        "fr": "Quand quelque chose d’inattendu ou de terrible arrive, l’allemand recourt à des **images du corps et du temps**. Ces quatre expressions traduisent le choc :\n\n- `aus allen Wolken fallen` : tomber des nues\n- `wie vom Donner gerührt sein` : rester muet de stupeur\n- `jemandem stockt der Atem` : avoir le souffle coupé de peur\n- `jemandem gefriert das Blut in den Adern` : être saisi d’horreur",
+        "de": "Wenn etwas Unerwartetes oder Schreckliches geschieht, greift das Deutsche zu **Körper- und Wetterbildern**. Diese vier Wendungen drücken Schreck aus:\n\n- `aus allen Wolken fallen`: völlig überrascht sein\n- `wie vom Donner gerührt sein`: vor Staunen starr sein\n- `jemandem stockt der Atem`: vor Schreck kurz nicht atmen können\n- `jemandem gefriert das Blut in den Adern`: von Entsetzen gepackt werden"
+      }
+    },
+    {
+      "id": "anger",
+      "label": { "en": "Anger and annoyance", "fr": "Colère et agacement", "de": "Ärger und Wut" },
+      "targetIds": [
+        "sich-schwarzaergern",
+        "laus-ueber-die-leber",
+        "an-die-decke",
+        "gegen-den-strich",
+        "dampf-ablassen"
+      ],
+      "introduction": {
+        "en": "Anger has many degrees in German idioms, from a grumpy mood to an outburst. These five expressions cover them:\n\n- `sich schwarzärgern`: to be seething with annoyance\n- `jemandem ist eine Laus über die Leber gelaufen`: someone is in a bad mood for no clear reason\n- `an die Decke gehen`: to explode with rage\n- `etwas geht jemandem gegen den Strich`: something irritates someone deeply\n- `Dampf ablassen`: to get anger out of one’s system",
+        "fr": "Dans les expressions allemandes, la colère a de nombreux degrés, de la mauvaise humeur à l’explosion. Ces cinq expressions les couvrent :\n\n- `sich schwarzärgern` : rager de tout son être\n- `jemandem ist eine Laus über die Leber gelaufen` : quelqu’un est de mauvaise humeur sans raison claire\n- `an die Decke gehen` : exploser de colère\n- `etwas geht jemandem gegen den Strich` : quelque chose agace profondément quelqu’un\n- `Dampf ablassen` : évacuer sa colère",
+        "de": "Ärger hat in deutschen Redewendungen viele Stufen, von schlechter Laune bis zum Ausbruch. Diese fünf Wendungen decken sie ab:\n\n- `sich schwarzärgern`: sich sehr heftig ärgern\n- `jemandem ist eine Laus über die Leber gelaufen`: jemand hat ohne erkennbaren Grund schlechte Laune\n- `an die Decke gehen`: vor Wut explodieren\n- `etwas geht jemandem gegen den Strich`: etwas stört jemanden zutiefst\n- `Dampf ablassen`: den aufgestauten Ärger loswerden"
+      }
+    },
+    {
+      "id": "relief",
+      "label": { "en": "Relief", "fr": "Soulagement", "de": "Erleichterung" },
+      "targetIds": ["stein-vom-herzen", "kuh-vom-eis", "blaues-auge"],
+      "introduction": {
+        "en": "Relief often follows shock or worry. These three expressions say that the danger is over:\n\n- `jemandem fällt ein Stein vom Herzen`: a heavy worry disappears\n- `die Kuh ist vom Eis`: the problem is solved\n- `mit einem blauen Auge davonkommen`: to escape with little damage",
+        "fr": "Le soulagement suit souvent le choc ou l’inquiétude. Ces trois expressions disent que le danger est écarté :\n\n- `jemandem fällt ein Stein vom Herzen` : un lourd souci disparaît\n- `die Kuh ist vom Eis` : le problème est réglé\n- `mit einem blauen Auge davonkommen` : s’en tirer avec peu de dégâts",
+        "de": "Auf Schreck oder Sorge folgt oft Erleichterung. Diese drei Wendungen sagen, dass die Gefahr vorbei ist:\n\n- `jemandem fällt ein Stein vom Herzen`: eine schwere Sorge verschwindet\n- `die Kuh ist vom Eis`: das Problem ist gelöst\n- `mit einem blauen Auge davonkommen`: mit geringem Schaden davonkommen"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "aus-allen-wolken",
+      "term": "aus allen Wolken fallen",
+      "translations": { "en": ["to be completely taken aback"], "fr": ["tomber des nues"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "aus allen Wolken fallen",
+      "examForms": ["aus allen Wolken fallen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/aʊs ˈalən ˈvɔlkn̩ ˈfalən/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Als ich von der Kündigung hörte, bin ich aus allen Wolken gefallen.",
+        "translation": {
+          "en": "When I heard about the dismissal, I was completely taken aback.",
+          "fr": "En apprenant le licenciement, je suis tombé des nues."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Aus allen Wolken fallen means to be utterly surprised, usually by bad news.",
+        "fr": "« Aus allen Wolken fallen » signifie être totalement surpris, le plus souvent par une mauvaise nouvelle.",
+        "de": "Aus allen Wolken fallen bedeutet, völlig überrascht zu sein, meist durch eine schlechte Nachricht."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Als er hörte, dass die Firma schließt, fiel er aus allen ",
+        "after": ".",
+        "accepted": { "answers": ["Wolken"] },
+        "referenceTargetIds": [
+          "aus-allen-wolken",
+          "wie-vom-donner",
+          "stockt-der-atem",
+          "gefriert-das-blut"
+        ],
+        "explanation": {
+          "en": "The idiom is aus allen Wolken fallen.",
+          "fr": "L’expression est « aus allen Wolken fallen ».",
+          "de": "Die Wendung heißt aus allen Wolken fallen."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "aus-allen-wolken",
+        "wie-vom-donner",
+        "stockt-der-atem",
+        "gefriert-das-blut"
+      ]
+    },
+    {
+      "id": "wie-vom-donner",
+      "term": "wie vom Donner gerührt sein",
+      "translations": { "en": ["to be stunned into silence"], "fr": ["rester muet de stupeur"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "wie vom Donner gerührt sein",
+      "examForms": ["wie vom Donner gerührt sein"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/viː fɔm ˈdɔnɐ ɡəˈʁyːɐ̯t zaɪ̯n/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Er stand wie vom Donner gerührt da, als sie ihm das Ergebnis zeigte.",
+        "translation": {
+          "en": "He stood there stunned when she showed him the result.",
+          "fr": "Il restait là, muet de stupeur, quand elle lui montra le résultat."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Wie vom Donner gerührt sein means standing frozen with shock, as if struck by thunder.",
+        "fr": "« Wie vom Donner gerührt sein » signifie rester figé de choc, comme frappé par le tonnerre.",
+        "de": "Wie vom Donner gerührt sein bedeutet, vor Schreck wie erstarrt zu sein, als hätte einen der Donner getroffen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Nach der Nachricht stand sie da wie vom ",
+        "after": " gerührt.",
+        "accepted": { "answers": ["Donner"] },
+        "referenceTargetIds": [
+          "aus-allen-wolken",
+          "wie-vom-donner",
+          "stockt-der-atem",
+          "gefriert-das-blut"
+        ],
+        "explanation": {
+          "en": "The idiom is wie vom Donner gerührt sein.",
+          "fr": "L’expression est « wie vom Donner gerührt sein ».",
+          "de": "Die Wendung heißt wie vom Donner gerührt sein."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "aus-allen-wolken",
+        "wie-vom-donner",
+        "stockt-der-atem",
+        "gefriert-das-blut"
+      ]
+    },
+    {
+      "id": "stockt-der-atem",
+      "term": "jemandem stockt der Atem",
+      "translations": {
+        "en": ["to hold one’s breath in fright"],
+        "fr": ["avoir le souffle coupé de peur"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "jemandem stockt der Atem",
+      "examForms": ["jemandem stockt der Atem"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈjeːmandəm ʃtɔkt deːɐ̯ ˈaːtəm/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Als das Kind auf die Straße rannte, stockte mir der Atem.",
+        "translation": {
+          "en": "When the child ran into the street, I held my breath in fright.",
+          "fr": "Quand l’enfant a couru sur la route, j’ai eu le souffle coupé."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Jemandem stockt der Atem means that fright makes someone briefly stop breathing.",
+        "fr": "« Jemandem stockt der Atem » signifie que la peur coupe brièvement le souffle à quelqu’un.",
+        "de": "Jemandem stockt der Atem bedeutet, dass man vor Schreck kurz nicht mehr atmet."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Beim Anblick des Unfalls stockte uns der ",
+        "after": ".",
+        "accepted": { "answers": ["Atem"] },
+        "referenceTargetIds": [
+          "aus-allen-wolken",
+          "wie-vom-donner",
+          "stockt-der-atem",
+          "gefriert-das-blut"
+        ],
+        "explanation": {
+          "en": "The idiom is jemandem stockt der Atem.",
+          "fr": "L’expression est « jemandem stockt der Atem ».",
+          "de": "Die Wendung heißt jemandem stockt der Atem."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "aus-allen-wolken",
+        "wie-vom-donner",
+        "stockt-der-atem",
+        "gefriert-das-blut"
+      ]
+    },
+    {
+      "id": "gefriert-das-blut",
+      "term": "jemandem gefriert das Blut in den Adern",
+      "translations": { "en": ["one’s blood runs cold"], "fr": ["avoir le sang qui se glace"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "jemandem gefriert das Blut in den Adern",
+      "examForms": ["jemandem gefriert das Blut in den Adern"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈjeːmandəm ɡəˈfʁiːɐ̯t das bluːt ɪn deːn ˈaːdɐn/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Bei dem Schrei im dunklen Treppenhaus gefror ihm das Blut in den Adern.",
+        "translation": {
+          "en": "At the scream in the dark stairwell, his blood ran cold.",
+          "fr": "Au cri poussé dans la cage d’escalier sombre, son sang s’est glacé."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Jemandem gefriert das Blut in den Adern expresses horror: the blood seems to freeze.",
+        "fr": "« Jemandem gefriert das Blut in den Adern » exprime l’horreur : le sang semble geler.",
+        "de": "Jemandem gefriert das Blut in den Adern drückt Entsetzen aus: Das Blut scheint zu gefrieren."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Bei den Schreien aus dem Keller gefror ihr das ",
+        "after": " in den Adern.",
+        "accepted": { "answers": ["Blut"] },
+        "referenceTargetIds": [
+          "aus-allen-wolken",
+          "wie-vom-donner",
+          "stockt-der-atem",
+          "gefriert-das-blut"
+        ],
+        "explanation": {
+          "en": "The idiom is jemandem gefriert das Blut in den Adern.",
+          "fr": "L’expression est « jemandem gefriert das Blut in den Adern ».",
+          "de": "Die Wendung heißt jemandem gefriert das Blut in den Adern."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "aus-allen-wolken",
+        "wie-vom-donner",
+        "stockt-der-atem",
+        "gefriert-das-blut"
+      ]
+    },
+    {
+      "id": "sich-schwarzaergern",
+      "term": "sich schwarzärgern",
+      "translations": {
+        "en": ["to be seething with annoyance"],
+        "fr": ["se mettre dans une colère noire"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "sich schwarzärgern",
+      "examForms": ["sich schwarzärgern", "sich schwarz ärgern"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/zɪç ˈʃvaʁt͡sˌʔɛʁɡɐn/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Ich habe mich über die verpasste Chance schwarzgeärgert.",
+        "translation": {
+          "en": "I was seething over the missed opportunity.",
+          "fr": "Je me suis mis dans une colère noire à cause de l’occasion manquée."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Sich schwarzärgern means to be extremely annoyed, figuratively until one turns black.",
+        "fr": "« Sich schwarzärgern » signifie s’énerver à l’extrême, au sens figuré jusqu’à en devenir noir.",
+        "de": "Sich schwarzärgern bedeutet, sich äußerst heftig zu ärgern, bildlich: bis man schwarz wird."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Ich habe mich über meinen Fehler ",
+        "after": " – den ganzen Abend lang.",
+        "accepted": { "answers": ["schwarzgeärgert", "schwarz geärgert"] },
+        "referenceTargetIds": [
+          "sich-schwarzaergern",
+          "laus-ueber-die-leber",
+          "an-die-decke",
+          "gegen-den-strich"
+        ],
+        "explanation": {
+          "en": "The idiom is sich schwarzärgern; the Perfekt is schwarzgeärgert.",
+          "fr": "L’expression est « sich schwarzärgern » ; le parfait est « schwarzgeärgert ».",
+          "de": "Die Wendung heißt sich schwarzärgern; das Perfekt lautet schwarzgeärgert."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "sich-schwarzaergern",
+        "laus-ueber-die-leber",
+        "an-die-decke",
+        "gegen-den-strich"
+      ]
+    },
+    {
+      "id": "laus-ueber-die-leber",
+      "term": "jemandem ist eine Laus über die Leber gelaufen",
+      "translations": {
+        "en": ["to be in a grumpy mood for no apparent reason"],
+        "fr": ["être de mauvaise humeur sans raison apparente"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "jemandem ist eine Laus über die Leber gelaufen",
+      "examForms": ["jemandem ist eine Laus über die Leber gelaufen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈjeːmandəm ɪst ˈaɪ̯nə laʊ̯s ˈyːbɐ diː ˈleːbɐ ɡəˈlaʊ̯fn̩/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Der Chef schaut so finster – dem ist wohl eine Laus über die Leber gelaufen.",
+        "translation": {
+          "en": "The boss looks so grim – he must be in a bad mood for some reason.",
+          "fr": "Le chef a l’air si sombre – il doit être de mauvaise humeur pour une raison quelconque."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "If a louse has run over someone’s liver, the person is grumpy, often without a clear reason.",
+        "fr": "Si un pou a couru sur le foie de quelqu’un, la personne est de mauvaise humeur, souvent sans raison claire.",
+        "de": "Ist jemandem eine Laus über die Leber gelaufen, hat er schlechte Laune, oft ohne erkennbaren Grund."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Was hat er denn heute? Ihm ist wohl eine ",
+        "after": " über die Leber gelaufen.",
+        "accepted": { "answers": ["Laus"] },
+        "referenceTargetIds": [
+          "sich-schwarzaergern",
+          "laus-ueber-die-leber",
+          "an-die-decke",
+          "gegen-den-strich"
+        ],
+        "explanation": {
+          "en": "The idiom is jemandem ist eine Laus über die Leber gelaufen.",
+          "fr": "L’expression est « jemandem ist eine Laus über die Leber gelaufen ».",
+          "de": "Die Wendung heißt jemandem ist eine Laus über die Leber gelaufen."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "sich-schwarzaergern",
+        "laus-ueber-die-leber",
+        "an-die-decke",
+        "gegen-den-strich"
+      ]
+    },
+    {
+      "id": "an-die-decke",
+      "term": "an die Decke gehen",
+      "translations": { "en": ["to hit the roof"], "fr": ["sortir de ses gonds"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "an die Decke gehen",
+      "examForms": ["an die Decke gehen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/an diː ˈdɛkə ˈɡeːən/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Wenn man seine Pünktlichkeit bezweifelt, geht er sofort an die Decke.",
+        "translation": {
+          "en": "If you doubt his punctuality, he hits the roof at once.",
+          "fr": "Si l’on doute de sa ponctualité, il sort aussitôt de ses gonds."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "An die Decke gehen means to explode with sudden rage.",
+        "fr": "« An die Decke gehen » signifie exploser soudain de colère.",
+        "de": "An die Decke gehen bedeutet, plötzlich vor Wut zu explodieren."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Wenn man ihn kritisiert, geht er sofort an die ",
+        "after": ".",
+        "accepted": { "answers": ["Decke"] },
+        "referenceTargetIds": [
+          "sich-schwarzaergern",
+          "laus-ueber-die-leber",
+          "an-die-decke",
+          "gegen-den-strich"
+        ],
+        "explanation": {
+          "en": "The idiom is an die Decke gehen.",
+          "fr": "L’expression est « an die Decke gehen ».",
+          "de": "Die Wendung heißt an die Decke gehen."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "sich-schwarzaergern",
+        "laus-ueber-die-leber",
+        "an-die-decke",
+        "gegen-den-strich"
+      ]
+    },
+    {
+      "id": "gegen-den-strich",
+      "term": "etwas geht jemandem gegen den Strich",
+      "translations": {
+        "en": ["to rub someone up the wrong way"],
+        "fr": ["agacer profondément quelqu’un"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "etwas geht jemandem gegen den Strich",
+      "examForms": ["etwas geht jemandem gegen den Strich"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈɛtvas ɡeːt ˈjeːmandəm ˈɡeːɡn̩ deːn ʃtʁɪç/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Seine ständigen Belehrungen gehen mir gegen den Strich.",
+        "translation": {
+          "en": "His constant lecturing rubs me up the wrong way.",
+          "fr": "Ses leçons de morale incessantes m’agacent profondément."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Something that goes against the grain irritates a person because it clashes with their wishes or views.",
+        "fr": "Ce qui va à contre-poil irrite une personne parce que cela heurte ses souhaits ou ses opinions.",
+        "de": "Was jemandem gegen den Strich geht, ärgert ihn, weil es seinen Wünschen oder Ansichten widerspricht."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Dieser ständige Lärm geht mir total gegen den ",
+        "after": ".",
+        "accepted": { "answers": ["Strich"] },
+        "referenceTargetIds": [
+          "sich-schwarzaergern",
+          "laus-ueber-die-leber",
+          "an-die-decke",
+          "gegen-den-strich"
+        ],
+        "explanation": {
+          "en": "The idiom is etwas geht jemandem gegen den Strich.",
+          "fr": "L’expression est « etwas geht jemandem gegen den Strich ».",
+          "de": "Die Wendung heißt etwas geht jemandem gegen den Strich."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "sich-schwarzaergern",
+        "laus-ueber-die-leber",
+        "an-die-decke",
+        "gegen-den-strich"
+      ]
+    },
+    {
+      "id": "dampf-ablassen",
+      "term": "Dampf ablassen",
+      "translations": { "en": ["to let off steam"], "fr": ["se défouler"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "Dampf ablassen",
+      "examForms": ["Dampf ablassen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/dampf ˈapˌlasn̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Nach dem langen Streit musste sie beim Laufen erst einmal Dampf ablassen.",
+        "translation": {
+          "en": "After the long quarrel she first had to let off steam while running.",
+          "fr": "Après la longue dispute, elle a d’abord dû se défouler en courant."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Dampf ablassen means to get pent-up anger or tension out of one’s system.",
+        "fr": "« Dampf ablassen » signifie évacuer une colère ou une tension accumulée.",
+        "de": "Dampf ablassen bedeutet, aufgestauten Ärger oder Spannung loszuwerden."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Nach dem Streit musste sie beim Joggen erst einmal ",
+        "after": " ablassen.",
+        "accepted": { "answers": ["Dampf"] },
+        "referenceTargetIds": [
+          "dampf-ablassen",
+          "an-die-decke",
+          "gegen-den-strich",
+          "laus-ueber-die-leber"
+        ],
+        "explanation": {
+          "en": "The idiom is Dampf ablassen.",
+          "fr": "L’expression est « Dampf ablassen ».",
+          "de": "Die Wendung heißt Dampf ablassen."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "dampf-ablassen",
+        "an-die-decke",
+        "gegen-den-strich",
+        "laus-ueber-die-leber"
+      ]
+    },
+    {
+      "id": "stein-vom-herzen",
+      "term": "jemandem fällt ein Stein vom Herzen",
+      "translations": {
+        "en": ["to feel a huge weight lifted off one’s mind"],
+        "fr": ["se sentir soulagé d’un grand poids"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "jemandem fällt ein Stein vom Herzen",
+      "examForms": ["jemandem fällt ein Stein vom Herzen", "mir fällt ein Stein vom Herzen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈjeːmandəm fɛlt aɪ̯n ʃtaɪ̯n fɔm ˈhɛʁt͡sn̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Als die Ärztin Entwarnung gab, fiel mir ein Stein vom Herzen.",
+        "translation": {
+          "en": "When the doctor gave the all-clear, a huge weight was lifted off my mind.",
+          "fr": "Quand la médecin a levé l’alerte, je me suis senti soulagé d’un grand poids."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A stone falling from one’s heart means that a heavy worry suddenly disappears.",
+        "fr": "Une pierre qui tombe du cœur signifie qu’un lourd souci disparaît soudain.",
+        "de": "Wenn jemandem ein Stein vom Herzen fällt, verschwindet plötzlich eine schwere Sorge."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Als der Test negativ war, fiel mir ein ",
+        "after": " vom Herzen.",
+        "accepted": { "answers": ["Stein"] },
+        "referenceTargetIds": [
+          "stein-vom-herzen",
+          "kuh-vom-eis",
+          "blaues-auge",
+          "aus-allen-wolken"
+        ],
+        "explanation": {
+          "en": "The idiom is jemandem fällt ein Stein vom Herzen.",
+          "fr": "L’expression est « jemandem fällt ein Stein vom Herzen ».",
+          "de": "Die Wendung heißt jemandem fällt ein Stein vom Herzen."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "stein-vom-herzen",
+        "kuh-vom-eis",
+        "blaues-auge",
+        "aus-allen-wolken"
+      ]
+    },
+    {
+      "id": "kuh-vom-eis",
+      "term": "die Kuh ist vom Eis",
+      "translations": {
+        "en": ["the problem is finally solved"],
+        "fr": ["le problème est enfin réglé"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "die Kuh ist vom Eis",
+      "examForms": ["die Kuh ist vom Eis"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/diː kuː ɪst fɔm aɪ̯s/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Der Vertrag ist unterschrieben – die Kuh ist endlich vom Eis.",
+        "translation": {
+          "en": "The contract is signed – the problem is finally solved.",
+          "fr": "Le contrat est signé – le problème est enfin réglé."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Kuh ist vom Eis means that a tricky problem is solved and the danger is over.",
+        "fr": "« Die Kuh ist vom Eis » signifie qu’un problème délicat est résolu et que le danger est écarté.",
+        "de": "Die Kuh ist vom Eis bedeutet, dass ein heikles Problem gelöst und die Gefahr vorbei ist."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Der Vertrag ist unterschrieben – die Kuh ist endlich vom ",
+        "after": ".",
+        "accepted": { "answers": ["Eis"] },
+        "referenceTargetIds": ["stein-vom-herzen", "kuh-vom-eis", "blaues-auge", "dampf-ablassen"],
+        "explanation": {
+          "en": "The idiom is die Kuh ist vom Eis.",
+          "fr": "L’expression est « die Kuh ist vom Eis ».",
+          "de": "Die Wendung heißt die Kuh ist vom Eis."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "stein-vom-herzen",
+        "kuh-vom-eis",
+        "blaues-auge",
+        "dampf-ablassen"
+      ]
+    },
+    {
+      "id": "blaues-auge",
+      "term": "mit einem blauen Auge davonkommen",
+      "translations": { "en": ["to get off lightly"], "fr": ["s’en tirer à bon compte"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "mit einem blauen Auge davonkommen",
+      "examForms": ["mit einem blauen Auge davonkommen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/mɪt ˈaɪ̯nəm ˈblaʊ̯ən ˈaʊ̯ɡə daˈfɔnˌkɔmən/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Beim Unfall kam er mit einem blauen Auge davon: nur ein gebrochener Finger.",
+        "translation": {
+          "en": "In the accident he got off lightly: only a broken finger.",
+          "fr": "Lors de l’accident, il s’en est tiré à bon compte : seulement un doigt cassé."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Mit einem blauen Auge davonkommen means to escape a bad situation with only minor damage.",
+        "fr": "« Mit einem blauen Auge davonkommen » signifie sortir d’une mauvaise situation avec peu de dégâts.",
+        "de": "Mit einem blauen Auge davonkommen bedeutet, eine schlimme Lage mit nur geringem Schaden zu überstehen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Bei dem Unfall kam er mit einem blauen ",
+        "after": " davon.",
+        "accepted": { "answers": ["Auge"] },
+        "referenceTargetIds": ["stein-vom-herzen", "kuh-vom-eis", "blaues-auge", "stockt-der-atem"],
+        "explanation": {
+          "en": "The idiom is mit einem blauen Auge davonkommen.",
+          "fr": "L’expression est « mit einem blauen Auge davonkommen ».",
+          "de": "Die Wendung heißt mit einem blauen Auge davonkommen."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "stein-vom-herzen",
+        "kuh-vom-eis",
+        "blaues-auge",
+        "stockt-der-atem"
+      ]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

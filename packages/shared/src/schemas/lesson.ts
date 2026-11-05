@@ -381,15 +381,6 @@ export const LessonPageSchema = z.object({
 });
 export type LessonPage = z.infer<typeof LessonPageSchema>;
 
-export const FinishLessonSchema = z.object({
-  score: z
-    .number({ error: 'lesson.invalidScore' })
-    .int('lesson.invalidScore')
-    .min(0, 'lesson.invalidScore')
-    .max(100, 'lesson.invalidScore'),
-});
-export type FinishLessonInput = z.infer<typeof FinishLessonSchema>;
-
 export const FinishResultSchema = z.object({
   /** The lesson had no result on the course day before this finish. */
   countedToday: z.boolean(),

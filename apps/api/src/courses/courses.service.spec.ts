@@ -3,6 +3,7 @@ import { describe, expect, it, vi } from 'vitest';
 
 import type { SessionUser } from '@ft/shared';
 
+import type { SocketsService } from '../gateway/sockets.service';
 import type { PrismaService } from '../prisma/prisma.service';
 import { CoursesService } from './courses.service';
 
@@ -16,8 +17,11 @@ const GERMAN = { lang: 'de', level: null, dailyGoal: 10 } as const;
 /** Prisma surfaces its failures as objects carrying a `code`, never as Error subclasses. */
 const prismaError = (code: string) => Object.assign(new Error(code), { code });
 
-function serviceWith(prisma: Record<string, unknown>) {
-  return new CoursesService(prisma as unknown as PrismaService);
+function serviceWith(prisma: Record<string, unknown>, sockets = { toUser: vi.fn() }) {
+  return new CoursesService(
+    prisma as unknown as PrismaService,
+    sockets as unknown as SocketsService,
+  );
 }
 
 describe('CoursesService listCoursesUser', () => {
@@ -143,8 +147,17 @@ describe('CoursesService setGoal', () => {
         count: vi.fn().mockResolvedValue(doneCount),
       },
     };
-    const prisma = { $transaction: vi.fn((run: (client: typeof tx) => unknown) => run(tx)) };
-    return { service: serviceWith(prisma), tx };
+    // What happened, in order: the commit is when the callback's promise settles.
+    const log: string[] = [];
+    const prisma = {
+      $transaction: vi.fn(async (run: (client: typeof tx) => unknown) => {
+        const result = await run(tx);
+        log.push('commit');
+        return result;
+      }),
+    };
+    const sockets = { toUser: vi.fn(() => log.push('emit')) };
+    return { service: serviceWith(prisma, sockets), tx, sockets, log };
   }
 
   it('locks the course, then writes the goal alone on it', async () => {
@@ -217,6 +230,27 @@ describe('CoursesService setGoal', () => {
 
     await expect(service.setGoal(USER, 'fr', { dailyGoal: 30 }, NOW)).rejects.toThrow('P1001');
   });
+
+  // Sent earlier, the user's other tab could read the old row again.
+  it("tells the user's sockets once the transaction has committed", async () => {
+    const { service, sockets, log } = goalService(LOCKED);
+
+    await service.setGoal(USER, 'fr', { dailyGoal: 30 }, NOW);
+
+    expect(sockets.toUser).toHaveBeenCalledWith('user-1', 'course:updated', { lang: 'fr' });
+    expect(log).toEqual(['commit', 'emit']);
+  });
+
+  it('tells nobody when the transaction fails', async () => {
+    const missing = goalService(null);
+    const down = goalService(LOCKED);
+    down.tx.$queryRaw.mockRejectedValue(prismaError('P1001'));
+
+    await expect(missing.service.setGoal(USER, 'de', { dailyGoal: 30 }, NOW)).rejects.toThrow();
+    await expect(down.service.setGoal(USER, 'fr', { dailyGoal: 30 }, NOW)).rejects.toThrow();
+    expect(missing.sockets.toUser).not.toHaveBeenCalled();
+    expect(down.sockets.toUser).not.toHaveBeenCalled();
+  });
 });
 
 describe('CoursesService setLevel', () => {
@@ -227,7 +261,8 @@ describe('CoursesService setLevel', () => {
       user: { update: vi.fn() },
       $transaction: vi.fn().mockResolvedValue([course, { id: 'user-1' }]),
     };
-    return { service: serviceWith(prisma), prisma };
+    const sockets = { toUser: vi.fn() };
+    return { service: serviceWith(prisma, sockets), prisma, sockets };
   }
 
   it('writes the level alone, leaving the goal out of the update entirely', async () => {
@@ -281,6 +316,35 @@ describe('CoursesService setLevel', () => {
 
     await expect(attempt).rejects.toBeInstanceOf(NotFoundException);
     await expect(attempt).rejects.toMatchObject({ message: 'course.notFound' });
+  });
+
+  it("tells the user's sockets once the level is written, not before", async () => {
+    const { service, prisma, sockets } = writingService(FRENCH);
+    let commit: (tuple: unknown) => void = () => undefined;
+    prisma.$transaction.mockReturnValue(new Promise((resolve) => (commit = resolve)));
+
+    const done = service.setLevel('user-1', 'fr', { level: 'B1' });
+    await Promise.resolve();
+    expect(sockets.toUser).not.toHaveBeenCalled();
+
+    commit([FRENCH, { id: 'user-1' }]);
+    await done;
+    expect(sockets.toUser).toHaveBeenCalledWith('user-1', 'course:updated', { lang: 'fr' });
+  });
+
+  it('tells nobody about a course that does not exist', async () => {
+    const sockets = { toUser: vi.fn() };
+    const service = serviceWith(
+      {
+        userLevel: { update: vi.fn() },
+        user: { update: vi.fn() },
+        $transaction: vi.fn().mockRejectedValue(prismaError('P2025')),
+      },
+      sockets,
+    );
+
+    await expect(service.setLevel('user-1', 'de', { level: 'A2' })).rejects.toThrow();
+    expect(sockets.toUser).not.toHaveBeenCalled();
   });
 
   it('lets an unrelated database failure through instead of reporting a missing course', async () => {

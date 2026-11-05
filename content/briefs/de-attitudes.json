@@ -1,0 +1,608 @@
+{
+  "schemaVersion": 2,
+  "id": "de-attitudes",
+  "lang": "de",
+  "level": "B2",
+  "locales": ["en", "fr", "de"],
+  "title": "Einstellungen und Überzeugungen",
+  "objective": {
+    "en": "Describe attitudes to life and to other people with about twelve words.",
+    "fr": "Décrire les attitudes face à la vie et aux autres avec une douzaine de mots.",
+    "de": "Haltungen zum Leben und zu anderen Menschen mit etwa zwölf Wörtern beschreiben."
+  },
+  "estimatedMinutes": 20,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:30:25.149Z",
+    "inputHashes": { "outline": "d1ef3fbf1099a0ac2e206227cf2d97cd68f41ea400e22098aedd68b932bb8eb0" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Four nouns and eight adjectives for attitudes, beliefs and openness towards others, at B2 level.",
+    "fr": "Quatre noms et huit adjectifs pour les attitudes, les convictions et l’ouverture aux autres, niveau B2.",
+    "de": "Vier Nomen und acht Adjektive für Einstellungen, Überzeugungen und Offenheit gegenüber anderen auf B2-Niveau."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve words fit the outline and keep the exercises manageable.",
+    "fr": "Douze mots correspondent au plan et gardent les exercices abordables.",
+    "de": "Zwölf Wörter entsprechen der Gliederung und halten die Übungen überschaubar."
+  },
+  "difficultyBalance": {
+    "en": "Most words are core vocabulary; a few similar ones (skeptisch, kritisch, voreingenommen) are demanding.",
+    "fr": "La plupart des mots sont de base ; quelques mots proches (skeptisch, kritisch, voreingenommen) sont plus exigeants.",
+    "de": "Die meisten Wörter sind Grundwortschatz; einige ähnliche (skeptisch, kritisch, voreingenommen) sind anspruchsvoller."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "nomen",
+      "label": {
+        "en": "Nouns for attitudes",
+        "fr": "Noms pour les attitudes",
+        "de": "Nomen für Haltungen"
+      },
+      "targetIds": ["einstellung", "ueberzeugung", "toleranz", "vorurteil"],
+      "introduction": {
+        "en": "Learn **four nouns** for what people think and believe:\n\n- `die Einstellung`\n- `die Überzeugung`\n- `die Toleranz`\n- `das Vorurteil`",
+        "fr": "Apprenez **quatre noms** pour ce que les gens pensent et croient :\n\n- `die Einstellung`\n- `die Überzeugung`\n- `die Toleranz`\n- `das Vorurteil`",
+        "de": "Lerne **vier Nomen** dafür, was Menschen denken und glauben:\n\n- `die Einstellung`\n- `die Überzeugung`\n- `die Toleranz`\n- `das Vorurteil`"
+      }
+    },
+    {
+      "id": "adjektive",
+      "label": {
+        "en": "Adjectives for attitudes",
+        "fr": "Adjectifs pour les attitudes",
+        "de": "Adjektive für Haltungen"
+      },
+      "targetIds": [
+        "aufgeschlossen",
+        "engstirnig",
+        "skeptisch",
+        "optimistisch",
+        "pessimistisch",
+        "tolerant",
+        "voreingenommen",
+        "kritisch"
+      ],
+      "introduction": {
+        "en": "These **eight adjectives** describe how people see life and other people:\n\n- `aufgeschlossen`\n- `engstirnig`\n- `skeptisch`\n- `optimistisch`\n- `pessimistisch`\n- `tolerant`\n- `voreingenommen`\n- `kritisch`",
+        "fr": "Ces **huit adjectifs** décrivent la façon dont les gens voient la vie et les autres :\n\n- `aufgeschlossen`\n- `engstirnig`\n- `skeptisch`\n- `optimistisch`\n- `pessimistisch`\n- `tolerant`\n- `voreingenommen`\n- `kritisch`",
+        "de": "Diese **acht Adjektive** beschreiben, wie Menschen das Leben und andere Menschen sehen:\n\n- `aufgeschlossen`\n- `engstirnig`\n- `skeptisch`\n- `optimistisch`\n- `pessimistisch`\n- `tolerant`\n- `voreingenommen`\n- `kritisch`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "einstellung",
+      "term": "Einstellung",
+      "translations": { "en": ["attitude", "mindset"], "fr": ["l’attitude", "la mentalité"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Einstellung",
+      "examForms": ["die Einstellung"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈaɪnʃtɛlʊŋ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Seine Einstellung zur Arbeit hat sich geändert.",
+        "translation": {
+          "en": "His attitude to work has changed.",
+          "fr": "Son attitude face au travail a changé."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Einstellung is a person's basic attitude, for example to life or work.",
+        "fr": "Die Einstellung désigne l’attitude de base d’une personne, par exemple face à la vie ou au travail.",
+        "de": "Die Einstellung ist die grundsätzliche Haltung eines Menschen, zum Beispiel zum Leben oder zur Arbeit."
+      },
+      "genderExplanation": {
+        "en": "Nouns ending in -ung are feminine, so the article is die.",
+        "fr": "Les noms en -ung sont féminins : l’article est die.",
+        "de": "Nomen auf -ung sind feminin, daher lautet der Artikel die."
+      },
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "attitude (noun: how you see life)",
+        "fr": "l’attitude (nom : façon de voir la vie)"
+      },
+      "gap": {
+        "before": "Seine ",
+        "after": " zum Leben ist sehr positiv.",
+        "accepted": { "answers": ["Einstellung"] },
+        "referenceTargetIds": ["einstellung", "ueberzeugung", "toleranz", "vorurteil"],
+        "explanation": {
+          "en": "One speaks of an Einstellung zum Leben (attitude to life).",
+          "fr": "On dit une Einstellung zum Leben (attitude face à la vie).",
+          "de": "Man sagt „eine Einstellung zum Leben“."
+        }
+      },
+      "listeningOptionTargetIds": ["einstellung", "ueberzeugung", "toleranz", "vorurteil"]
+    },
+    {
+      "id": "ueberzeugung",
+      "term": "Überzeugung",
+      "translations": { "en": ["conviction", "belief"], "fr": ["la conviction", "la croyance"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Überzeugung",
+      "examForms": ["die Überzeugung"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌyːbɐˈtsɔɪɡʊŋ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Aus tiefer Überzeugung engagiert sie sich für den Umweltschutz.",
+        "translation": {
+          "en": "She is involved in environmental protection out of deep conviction.",
+          "fr": "Elle s’engage pour la protection de l’environnement par profonde conviction."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Überzeugung is something you firmly believe is true or right.",
+        "fr": "Die Überzeugung est ce dont on est fermement persuadé.",
+        "de": "Die Überzeugung ist etwas, wovon man fest glaubt, dass es wahr oder richtig ist."
+      },
+      "genderExplanation": {
+        "en": "Nouns ending in -ung are feminine, so the article is die.",
+        "fr": "Les noms en -ung sont féminins : l’article est die.",
+        "de": "Nomen auf -ung sind feminin, daher lautet der Artikel die."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Es ist meine feste ",
+        "after": ", dass jeder Mensch gleich viel wert ist.",
+        "accepted": { "answers": ["Überzeugung"] },
+        "referenceTargetIds": ["einstellung", "ueberzeugung", "toleranz", "vorurteil"],
+        "explanation": {
+          "en": "“Meine feste Überzeugung, dass …” is the usual phrase for a firm belief.",
+          "fr": "« Meine feste Überzeugung, dass … » est l’expression usuelle pour une ferme conviction.",
+          "de": "„Meine feste Überzeugung, dass …“ ist die übliche Wendung für eine feste Meinung."
+        }
+      },
+      "listeningOptionTargetIds": ["einstellung", "ueberzeugung", "toleranz", "vorurteil"]
+    },
+    {
+      "id": "toleranz",
+      "term": "Toleranz",
+      "translations": { "en": ["tolerance"], "fr": ["la tolérance"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Toleranz",
+      "examForms": ["die Toleranz"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/toleˈʁants/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Toleranz ist die Basis jeder Demokratie.",
+        "translation": {
+          "en": "Tolerance is the basis of every democracy.",
+          "fr": "La tolérance est la base de toute démocratie."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Toleranz means accepting other opinions and ways of life.",
+        "fr": "Die Toleranz signifie accepter d’autres opinions et modes de vie.",
+        "de": "Die Toleranz bedeutet, andere Meinungen und Lebensweisen zu akzeptieren."
+      },
+      "genderExplanation": {
+        "en": "Nouns ending in -anz are feminine, so the article is die.",
+        "fr": "Les noms en -anz sont féminins : l’article est die.",
+        "de": "Nomen auf -anz sind feminin, daher lautet der Artikel die."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "In einer vielfältigen Gesellschaft braucht man Respekt und ",
+        "after": ".",
+        "accepted": { "answers": ["Toleranz"] },
+        "referenceTargetIds": ["einstellung", "ueberzeugung", "toleranz", "vorurteil"],
+        "explanation": {
+          "en": "Respect and tolerance belong together; the other nouns do not fit here.",
+          "fr": "Respect et tolérance vont ensemble ; les autres noms ne conviennent pas ici.",
+          "de": "Respekt und Toleranz gehören zusammen; die anderen Nomen passen hier nicht."
+        }
+      },
+      "listeningOptionTargetIds": ["einstellung", "ueberzeugung", "toleranz", "vorurteil"]
+    },
+    {
+      "id": "vorurteil",
+      "term": "Vorurteil",
+      "translations": { "en": ["prejudice"], "fr": ["le préjugé"] },
+      "wordClass": "noun",
+      "genders": ["neuter"],
+      "number": "singular",
+      "teachingForm": "das Vorurteil",
+      "examForms": ["das Vorurteil"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈfoːɐ̯ʔʊʁtaɪl/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Viele Vorurteile verschwinden, wenn man sich kennenlernt.",
+        "translation": {
+          "en": "Many prejudices disappear when people get to know each other.",
+          "fr": "Beaucoup de préjugés disparaissent quand on fait connaissance."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Das Vorurteil is an opinion about someone formed before knowing them.",
+        "fr": "Das Vorurteil est une opinion sur quelqu’un formée avant de le connaître.",
+        "de": "Das Vorurteil ist eine Meinung über jemanden, bevor man ihn kennt."
+      },
+      "genderExplanation": {
+        "en": "Vorurteil is neuter like das Urteil, so the article is das.",
+        "fr": "Vorurteil est neutre comme das Urteil : l’article est das.",
+        "de": "Vorurteil ist neutral wie das Urteil, daher lautet der Artikel das."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Ein ",
+        "after": " ist ein Urteil über andere, ohne sie wirklich zu kennen.",
+        "accepted": { "answers": ["Vorurteil"] },
+        "referenceTargetIds": ["einstellung", "ueberzeugung", "toleranz", "vorurteil"],
+        "explanation": {
+          "en": "After “ein” only a neuter noun fits, and Vorurteil is the one that matches the definition.",
+          "fr": "Après « ein », seul un nom neutre convient, et Vorurteil correspond à la définition.",
+          "de": "Nach „ein“ passt nur ein neutrales Nomen, und Vorurteil passt zur Erklärung."
+        }
+      },
+      "listeningOptionTargetIds": ["einstellung", "ueberzeugung", "toleranz", "vorurteil"]
+    },
+    {
+      "id": "aufgeschlossen",
+      "term": "aufgeschlossen",
+      "translations": { "en": ["open-minded"], "fr": ["ouvert d’esprit"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "aufgeschlossen",
+      "examForms": ["aufgeschlossen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈaʊfɡəʃlɔsn̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Mein Chef ist neuen Methoden gegenüber sehr aufgeschlossen.",
+        "translation": {
+          "en": "My boss is very open-minded towards new methods.",
+          "fr": "Mon chef est très ouvert aux nouvelles méthodes."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Aufgeschlossen describes a person who is open to new ideas and people.",
+        "fr": "Aufgeschlossen décrit une personne ouverte aux idées nouvelles et aux gens.",
+        "de": "Aufgeschlossen beschreibt einen Menschen, der für Neues und für andere offen ist."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "open-minded (receptive to new ideas)",
+        "fr": "ouvert d’esprit (réceptif aux idées nouvelles)"
+      },
+      "gap": {
+        "before": "Sie ist neuen Ideen gegenüber immer ",
+        "after": " und probiert gern Neues aus.",
+        "accepted": { "answers": ["aufgeschlossen"] },
+        "referenceTargetIds": ["aufgeschlossen", "engstirnig", "skeptisch", "pessimistisch"],
+        "explanation": {
+          "en": "Someone who gladly tries new things is open-minded.",
+          "fr": "Qui essaie volontiers des choses nouvelles est ouvert d’esprit.",
+          "de": "Wer gern Neues ausprobiert, ist aufgeschlossen."
+        }
+      },
+      "listeningOptionTargetIds": ["aufgeschlossen", "voreingenommen", "engstirnig", "tolerant"]
+    },
+    {
+      "id": "engstirnig",
+      "term": "engstirnig",
+      "translations": { "en": ["narrow-minded"], "fr": ["étroit d’esprit"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "engstirnig",
+      "examForms": ["engstirnig"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈɛŋʃtɪʁnɪç/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Es ist engstirnig, nur die eigene Meinung gelten zu lassen.",
+        "translation": {
+          "en": "It is narrow-minded to accept only one's own opinion.",
+          "fr": "C’est faire preuve d’étroitesse d’esprit que de n’accepter que sa propre opinion."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Engstirnig describes someone who does not accept other views.",
+        "fr": "Engstirnig décrit quelqu’un qui n’accepte pas d’autres points de vue.",
+        "de": "Engstirnig beschreibt jemanden, der andere Ansichten nicht gelten lässt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Er lässt nie eine andere Meinung gelten, er ist so ",
+        "after": ".",
+        "accepted": { "answers": ["engstirnig"] },
+        "referenceTargetIds": ["engstirnig", "aufgeschlossen", "tolerant", "optimistisch"],
+        "explanation": {
+          "en": "Never accepting another opinion is narrow-minded.",
+          "fr": "Ne jamais accepter une autre opinion, c’est être étroit d’esprit.",
+          "de": "Nie eine andere Meinung zu akzeptieren, ist engstirnig."
+        }
+      },
+      "listeningOptionTargetIds": ["engstirnig", "aufgeschlossen", "voreingenommen", "tolerant"]
+    },
+    {
+      "id": "skeptisch",
+      "term": "skeptisch",
+      "translations": { "en": ["sceptical", "skeptical"], "fr": ["sceptique"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "skeptisch",
+      "examForms": ["skeptisch"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈskɛptɪʃ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Ich bin skeptisch, ob das Projekt rechtzeitig fertig wird.",
+        "translation": {
+          "en": "I am sceptical whether the project will be finished on time.",
+          "fr": "Je suis sceptique quant à l’achèvement du projet à temps."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Skeptisch means doubting and not believing something immediately.",
+        "fr": "Skeptisch signifie douter et ne pas croire quelque chose tout de suite.",
+        "de": "Skeptisch bedeutet, zu zweifeln und etwas nicht sofort zu glauben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Ich glaube nicht alles sofort und bin Werbeversprechen gegenüber immer ",
+        "after": ".",
+        "accepted": { "answers": ["skeptisch"] },
+        "referenceTargetIds": ["skeptisch", "optimistisch", "tolerant", "engstirnig"],
+        "explanation": {
+          "en": "Not believing everything at once means being sceptical.",
+          "fr": "Ne pas tout croire tout de suite, c’est être sceptique.",
+          "de": "Nicht alles sofort zu glauben, bedeutet skeptisch zu sein."
+        }
+      },
+      "listeningOptionTargetIds": ["optimistisch", "pessimistisch", "skeptisch", "kritisch"]
+    },
+    {
+      "id": "optimistisch",
+      "term": "optimistisch",
+      "translations": { "en": ["optimistic"], "fr": ["optimiste"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "optimistisch",
+      "examForms": ["optimistisch"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɔptiˈmɪstɪʃ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Trotz der Krise bleibt sie optimistisch.",
+        "translation": {
+          "en": "Despite the crisis she remains optimistic.",
+          "fr": "Malgré la crise, elle reste optimiste."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Optimistisch describes someone who expects things to turn out well.",
+        "fr": "Optimistisch décrit quelqu’un qui s’attend à ce que tout se passe bien.",
+        "de": "Optimistisch beschreibt jemanden, der erwartet, dass alles gut wird."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Sie sieht die Zukunft positiv und ist ",
+        "after": ", dass alles gut ausgeht.",
+        "accepted": { "answers": ["optimistisch"] },
+        "referenceTargetIds": ["optimistisch", "pessimistisch", "skeptisch", "engstirnig"],
+        "explanation": {
+          "en": "Seeing the future positively fits “optimistic”.",
+          "fr": "Voir l’avenir de façon positive correspond à « optimiste ».",
+          "de": "Wer die Zukunft positiv sieht, ist optimistisch."
+        }
+      },
+      "listeningOptionTargetIds": ["optimistisch", "pessimistisch", "skeptisch", "kritisch"]
+    },
+    {
+      "id": "pessimistisch",
+      "term": "pessimistisch",
+      "translations": { "en": ["pessimistic"], "fr": ["pessimiste"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "pessimistisch",
+      "examForms": ["pessimistisch"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/pɛsiˈmɪstɪʃ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Die Prognosen für das nächste Jahr sind eher pessimistisch.",
+        "translation": {
+          "en": "The forecasts for next year are rather pessimistic.",
+          "fr": "Les prévisions pour l’année prochaine sont plutôt pessimistes."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Pessimistisch describes someone who expects the worst.",
+        "fr": "Pessimistisch décrit quelqu’un qui s’attend au pire.",
+        "de": "Pessimistisch beschreibt jemanden, der mit dem Schlimmsten rechnet."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Er rechnet immer mit dem Schlimmsten und ist deshalb sehr ",
+        "after": ".",
+        "accepted": { "answers": ["pessimistisch"] },
+        "referenceTargetIds": ["pessimistisch", "optimistisch", "aufgeschlossen", "tolerant"],
+        "explanation": {
+          "en": "Always expecting the worst is pessimistic.",
+          "fr": "S’attendre toujours au pire, c’est être pessimiste.",
+          "de": "Immer mit dem Schlimmsten zu rechnen, ist pessimistisch."
+        }
+      },
+      "listeningOptionTargetIds": ["optimistisch", "pessimistisch", "skeptisch", "kritisch"]
+    },
+    {
+      "id": "tolerant",
+      "term": "tolerant",
+      "translations": { "en": ["tolerant"], "fr": ["tolérant"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "tolerant",
+      "examForms": ["tolerant"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/toleˈʁant/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Eltern sollten gegenüber anderen Lebensstilen tolerant sein.",
+        "translation": {
+          "en": "Parents should be tolerant of other lifestyles.",
+          "fr": "Les parents devraient être tolérants envers d’autres modes de vie."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Tolerant describes someone who accepts other opinions and ways of life.",
+        "fr": "Tolerant décrit quelqu’un qui accepte d’autres opinions et modes de vie.",
+        "de": "Tolerant beschreibt jemanden, der andere Meinungen und Lebensweisen akzeptiert."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Sie akzeptiert andere Lebensweisen und ist gegenüber Fremden sehr ",
+        "after": ".",
+        "accepted": { "answers": ["tolerant"] },
+        "referenceTargetIds": ["tolerant", "engstirnig", "pessimistisch", "voreingenommen"],
+        "explanation": {
+          "en": "Accepting other ways of life is tolerant.",
+          "fr": "Accepter d’autres modes de vie, c’est être tolérant.",
+          "de": "Andere Lebensweisen zu akzeptieren, ist tolerant."
+        }
+      },
+      "listeningOptionTargetIds": ["tolerant", "toleranz", "aufgeschlossen", "engstirnig"]
+    },
+    {
+      "id": "voreingenommen",
+      "term": "voreingenommen",
+      "translations": { "en": ["biased", "prejudiced"], "fr": ["partial", "prévenu"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "voreingenommen",
+      "examForms": ["voreingenommen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈfoːɐ̯ʔaɪnɡənɔmən/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Der Gutachter wirkte voreingenommen.",
+        "translation": { "en": "The expert seemed biased.", "fr": "L’expert semblait partial." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Voreingenommen describes someone who has already made up their mind and cannot judge fairly.",
+        "fr": "Voreingenommen décrit quelqu’un qui a déjà son opinion et ne peut pas juger équitablement.",
+        "de": "Voreingenommen beschreibt jemanden, der sich schon eine Meinung gebildet hat und nicht fair urteilen kann."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": { "en": "biased (already decided)", "fr": "partial (avec un avis déjà fait)" },
+      "gap": {
+        "before": "Der Richter durfte nicht ",
+        "after": " sein, denn er musste den Fall neutral beurteilen.",
+        "accepted": { "answers": ["voreingenommen"] },
+        "referenceTargetIds": ["voreingenommen", "optimistisch", "pessimistisch", "tolerant"],
+        "explanation": {
+          "en": "A judge must judge neutrally, so he must not be biased.",
+          "fr": "Un juge doit juger de façon neutre, il ne doit donc pas être partial.",
+          "de": "Ein Richter muss neutral urteilen, also darf er nicht voreingenommen sein."
+        }
+      },
+      "listeningOptionTargetIds": ["voreingenommen", "vorurteil", "aufgeschlossen", "engstirnig"]
+    },
+    {
+      "id": "kritisch",
+      "term": "kritisch",
+      "translations": { "en": ["critical"], "fr": ["critique"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "kritisch",
+      "examForms": ["kritisch"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈkʁiːtɪʃ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Man sollte Nachrichten im Internet kritisch lesen.",
+        "translation": {
+          "en": "One should read news on the internet critically.",
+          "fr": "Il faut lire les informations sur Internet d’un œil critique."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Kritisch means examining something carefully instead of accepting it unquestioningly.",
+        "fr": "Kritisch signifie examiner quelque chose avec soin au lieu de l’accepter sans réfléchir.",
+        "de": "Kritisch bedeutet, etwas genau zu prüfen, statt es einfach hinzunehmen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "critical (examining carefully)",
+        "fr": "critique (qui examine avec soin)"
+      },
+      "gap": {
+        "before": "Gute Journalisten sehen Quellen ",
+        "after": " und prüfen jede Behauptung.",
+        "accepted": { "answers": ["kritisch"] },
+        "referenceTargetIds": ["kritisch", "optimistisch", "tolerant", "engstirnig"],
+        "explanation": {
+          "en": "Checking every claim means looking at sources critically.",
+          "fr": "Vérifier chaque affirmation, c’est considérer les sources d’un œil critique.",
+          "de": "Jede Behauptung zu prüfen heißt, Quellen kritisch zu sehen."
+        }
+      },
+      "listeningOptionTargetIds": ["optimistisch", "pessimistisch", "skeptisch", "kritisch"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

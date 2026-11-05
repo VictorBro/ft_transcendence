@@ -1,0 +1,669 @@
+{
+  "schemaVersion": 2,
+  "id": "de-self-image",
+  "lang": "de",
+  "level": "C1",
+  "locales": ["en", "fr", "de"],
+  "title": "Selbstbild und Selbstwert",
+  "objective": {
+    "en": "Talk in a nuanced way about self-image, self-esteem and how others see you.",
+    "fr": "Parler de façon nuancée de l’image de soi, de l’estime de soi et du regard des autres.",
+    "de": "Über Selbstbild, Selbstwertgefühl und die Wirkung auf andere differenziert sprechen."
+  },
+  "estimatedMinutes": 20,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:36:49.938Z",
+    "inputHashes": { "outline": "1ec7c61d8afd2065e28f354e01dc3eb9cd9862702edb95ac574a90a917327c08" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Twelve C1 words on how people see themselves and how others see them: six nouns of self-perception, then the comfort zone, three verbs and two adjectives of self-development and self-assessment.",
+    "fr": "Douze mots C1 sur la façon dont on se voit et dont les autres nous voient : six noms de la perception de soi, puis la zone de confort, des verbes et des adjectifs du développement personnel.",
+    "de": "Zwölf C1-Wörter dazu, wie man sich selbst sieht und wie andere einen sehen: sechs Nomen der Selbstwahrnehmung, dann die Komfortzone sowie Verben und Adjektive der Selbstentwicklung und Selbsteinschätzung."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve words match the outline and fit two coherent groups of six.",
+    "fr": "Douze mots correspondent au plan et forment deux groupes cohérents de six.",
+    "de": "Zwölf Wörter entsprechen der Gliederung und bilden zwei stimmige Gruppen zu je sechs."
+  },
+  "difficultyBalance": {
+    "en": "Mostly core abstract nouns; the plural Selbstzweifel and the reflexive verbs are the demanding items.",
+    "fr": "Surtout des noms abstraits de base ; le pluriel Selbstzweifel et les verbes pronominaux sont plus exigeants.",
+    "de": "Überwiegend zentrale abstrakte Nomen; der Plural Selbstzweifel und die reflexiven Verben sind anspruchsvoller."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "bild",
+      "label": {
+        "en": "Self-image and how others see us",
+        "fr": "Image de soi et regard des autres",
+        "de": "Selbstbild und Fremdbild"
+      },
+      "targetIds": [
+        "selbstbild",
+        "fremdbild",
+        "selbstwertgefuehl",
+        "selbstzweifel",
+        "selbstwahrnehmung",
+        "selbstreflexion"
+      ],
+      "introduction": {
+        "en": "How do we see ourselves, and how do others see us? These six nouns describe the inner view and its gaps:\n\n- `das Selbstbild`\n- `das Fremdbild`\n- `das Selbstwertgefühl`\n- `die Selbstzweifel`\n- `die Selbstwahrnehmung`\n- `die Selbstreflexion`",
+        "fr": "Comment nous voyons-nous, et comment les autres nous voient-ils ? Ces six noms décrivent le regard intérieur et ses écarts :\n\n- `das Selbstbild`\n- `das Fremdbild`\n- `das Selbstwertgefühl`\n- `die Selbstzweifel`\n- `die Selbstwahrnehmung`\n- `die Selbstreflexion`",
+        "de": "Wie sehen wir uns selbst, und wie sehen uns andere? Diese sechs Nomen beschreiben den Blick nach innen und seine Abweichungen:\n\n- `das Selbstbild`\n- `das Fremdbild`\n- `das Selbstwertgefühl`\n- `die Selbstzweifel`\n- `die Selbstwahrnehmung`\n- `die Selbstreflexion`"
+      }
+    },
+    {
+      "id": "entwicklung",
+      "label": {
+        "en": "Developing and judging yourself",
+        "fr": "Se développer et s’évaluer",
+        "de": "Sich entwickeln und einschätzen"
+      },
+      "targetIds": [
+        "komfortzone",
+        "verwirklichen",
+        "hinterfragen",
+        "authentisch",
+        "selbstkritisch",
+        "ueberschaetzen"
+      ],
+      "introduction": {
+        "en": "Personal growth means leaving habits behind and judging yourself honestly. These words help you talk about it:\n\n- `die Komfortzone`\n- `sich verwirklichen`\n- `hinterfragen`\n- `authentisch`\n- `selbstkritisch`\n- `sich überschätzen`",
+        "fr": "Évoluer, c’est quitter ses habitudes et se juger honnêtement. Ces mots aident à en parler :\n\n- `die Komfortzone`\n- `sich verwirklichen`\n- `hinterfragen`\n- `authentisch`\n- `selbstkritisch`\n- `sich überschätzen`",
+        "de": "Persönliches Wachstum heißt, Gewohnheiten zu verlassen und sich ehrlich einzuschätzen. Diese Wörter helfen dir, darüber zu sprechen:\n\n- `die Komfortzone`\n- `sich verwirklichen`\n- `hinterfragen`\n- `authentisch`\n- `selbstkritisch`\n- `sich überschätzen`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "selbstbild",
+      "term": "Selbstbild",
+      "translations": { "en": ["self-image"], "fr": ["image de soi"] },
+      "wordClass": "noun",
+      "genders": ["neuter"],
+      "number": "singular",
+      "teachingForm": "das Selbstbild",
+      "examForms": ["das Selbstbild"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈzɛlpstbɪlt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ihr Selbstbild hat sich nach der Reise verändert.",
+        "translation": {
+          "en": "Her self-image changed after the trip.",
+          "fr": "Son image de soi a changé après le voyage."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Das Selbstbild is the picture a person has of themselves.",
+        "fr": "Das Selbstbild est l’image qu’une personne a d’elle-même.",
+        "de": "Das Selbstbild ist die Vorstellung, die ein Mensch von sich selbst hat."
+      },
+      "genderExplanation": {
+        "en": "Selbstbild is neuter, like Bild: das Selbstbild.",
+        "fr": "Selbstbild est neutre, comme Bild : das Selbstbild.",
+        "de": "Selbstbild ist sächlich wie das Bild: das Selbstbild."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Sein ",
+        "after": " als großzügiger Mensch stimmt nicht mit dem überein, was andere an ihm erleben.",
+        "accepted": { "answers": ["Selbstbild"] },
+        "referenceTargetIds": ["selbstbild", "komfortzone", "hinterfragen", "selbstkritisch"],
+        "explanation": {
+          "en": "Only Selbstbild names the picture he has of himself.",
+          "fr": "Seul « Selbstbild » désigne l’image qu’il a de lui-même.",
+          "de": "Nur „Selbstbild“ bezeichnet das Bild, das er von sich hat."
+        }
+      },
+      "listeningOptionTargetIds": ["selbstbild", "fremdbild", "selbstwahrnehmung", "selbstzweifel"]
+    },
+    {
+      "id": "fremdbild",
+      "term": "Fremdbild",
+      "translations": { "en": ["how others see you"], "fr": ["regard des autres"] },
+      "wordClass": "noun",
+      "genders": ["neuter"],
+      "number": "singular",
+      "teachingForm": "das Fremdbild",
+      "examForms": ["das Fremdbild"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈfʁɛmtbɪlt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Sein Fremdbild ist besser, als er denkt.",
+        "translation": {
+          "en": "The way others see him is better than he thinks.",
+          "fr": "L’image que les autres ont de lui est meilleure qu’il ne le pense."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Das Fremdbild is the picture other people have of someone.",
+        "fr": "Das Fremdbild est l’image que les autres ont de quelqu’un.",
+        "de": "Das Fremdbild ist die Vorstellung, die andere Menschen von jemandem haben."
+      },
+      "genderExplanation": {
+        "en": "Fremdbild is neuter, like Bild: das Fremdbild.",
+        "fr": "Fremdbild est neutre, comme Bild : das Fremdbild.",
+        "de": "Fremdbild ist sächlich wie das Bild: das Fremdbild."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Das ",
+        "after": ", also das Bild, das andere von uns haben, weicht oft von unserer eigenen Sicht ab.",
+        "accepted": { "answers": ["Fremdbild"] },
+        "referenceTargetIds": ["fremdbild", "selbstzweifel", "authentisch", "verwirklichen"],
+        "explanation": {
+          "en": "Fremdbild is the view of others, as the sentence itself explains.",
+          "fr": "Fremdbild est le regard des autres, comme l’explique la phrase.",
+          "de": "Das Fremdbild ist die Sicht der anderen, wie der Satz selbst erklärt."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "fremdbild",
+        "selbstbild",
+        "selbstwertgefuehl",
+        "selbstreflexion"
+      ]
+    },
+    {
+      "id": "selbstwertgefuehl",
+      "term": "Selbstwertgefühl",
+      "translations": { "en": ["self-esteem"], "fr": ["estime de soi"] },
+      "wordClass": "noun",
+      "genders": ["neuter"],
+      "number": "singular",
+      "teachingForm": "das Selbstwertgefühl",
+      "examForms": ["das Selbstwertgefühl"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈzɛlpstveːɐ̯tɡəˌfyːl/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Lob von Freunden stärkt ihr Selbstwertgefühl.",
+        "translation": {
+          "en": "Praise from friends strengthens her self-esteem.",
+          "fr": "Les compliments de ses amis renforcent son estime de soi."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Das Selbstwertgefühl is how much value you feel you have as a person.",
+        "fr": "Das Selbstwertgefühl est la valeur que l’on s’attribue en tant que personne.",
+        "de": "Das Selbstwertgefühl ist das Gefühl, als Mensch etwas wert zu sein."
+      },
+      "genderExplanation": {
+        "en": "Selbstwertgefühl is neuter, like Gefühl: das Selbstwertgefühl.",
+        "fr": "Selbstwertgefühl est neutre, comme Gefühl : das Selbstwertgefühl.",
+        "de": "Selbstwertgefühl ist sächlich wie das Gefühl: das Selbstwertgefühl."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Nach der Kündigung litt sein ",
+        "after": " stark; er hielt sich für wertlos.",
+        "accepted": { "answers": ["Selbstwertgefühl"] },
+        "referenceTargetIds": ["selbstwertgefuehl", "komfortzone", "verwirklichen", "authentisch"],
+        "explanation": {
+          "en": "Feeling worthless describes a damaged Selbstwertgefühl.",
+          "fr": "Se sentir sans valeur décrit un Selbstwertgefühl atteint.",
+          "de": "Sich wertlos zu fühlen beschreibt ein beschädigtes Selbstwertgefühl."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "selbstwertgefuehl",
+        "selbstwahrnehmung",
+        "selbstbild",
+        "selbstzweifel"
+      ]
+    },
+    {
+      "id": "selbstzweifel",
+      "term": "Selbstzweifel",
+      "translations": { "en": ["self-doubts"], "fr": ["doutes sur soi"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "plural",
+      "teachingForm": "die Selbstzweifel",
+      "examForms": ["die Selbstzweifel"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈzɛlpsttsvaɪ̯fl̩/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Er kämpft seit Jahren mit Selbstzweifeln.",
+        "translation": {
+          "en": "He has struggled with self-doubt for years.",
+          "fr": "Il lutte depuis des années contre ses doutes sur lui-même."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Selbstzweifel are doubts about your own abilities or worth; the word is mostly used in the plural.",
+        "fr": "Die Selbstzweifel sont les doutes sur ses propres capacités ou sa valeur ; le mot s’emploie surtout au pluriel.",
+        "de": "Die Selbstzweifel sind Zweifel an den eigenen Fähigkeiten oder am eigenen Wert; das Wort steht meist im Plural."
+      },
+      "genderExplanation": {
+        "en": "Selbstzweifel is used mainly in the plural: die Selbstzweifel. The singular is masculine: der Selbstzweifel.",
+        "fr": "Selbstzweifel s’emploie surtout au pluriel : die Selbstzweifel. Le singulier est masculin : der Selbstzweifel.",
+        "de": "Selbstzweifel steht meist im Plural: die Selbstzweifel. Der Singular ist maskulin: der Selbstzweifel."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Trotz ihres Erfolgs plagen sie immer noch ",
+        "after": ", und sie fragt sich oft, ob sie gut genug ist.",
+        "accepted": { "answers": ["Selbstzweifel"] },
+        "referenceTargetIds": ["selbstzweifel", "selbstreflexion", "komfortzone", "authentisch"],
+        "explanation": {
+          "en": "Asking whether you are good enough expresses Selbstzweifel.",
+          "fr": "Se demander si l’on est assez bon exprime des Selbstzweifel.",
+          "de": "Sich zu fragen, ob man gut genug ist, drückt Selbstzweifel aus."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "selbstzweifel",
+        "selbstwertgefuehl",
+        "selbstreflexion",
+        "selbstkritisch"
+      ]
+    },
+    {
+      "id": "selbstwahrnehmung",
+      "term": "Selbstwahrnehmung",
+      "translations": { "en": ["self-perception"], "fr": ["perception de soi"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Selbstwahrnehmung",
+      "examForms": ["die Selbstwahrnehmung"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈzɛlpstvaːɐ̯ˌneːmʊŋ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ihre Selbstwahrnehmung stimmt kaum mit der Realität überein.",
+        "translation": {
+          "en": "Her self-perception hardly matches reality.",
+          "fr": "Sa perception d’elle-même ne correspond guère à la réalité."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Selbstwahrnehmung is how you notice and judge your own behaviour and effect.",
+        "fr": "Die Selbstwahrnehmung est la façon dont on perçoit et juge son propre comportement et son effet.",
+        "de": "Die Selbstwahrnehmung ist die Art, wie man das eigene Verhalten und die eigene Wirkung bemerkt und beurteilt."
+      },
+      "genderExplanation": {
+        "en": "Nouns ending in -ung are feminine: die Selbstwahrnehmung.",
+        "fr": "Les noms en -ung sont féminins : die Selbstwahrnehmung.",
+        "de": "Nomen auf -ung sind feminin: die Selbstwahrnehmung."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Seine ",
+        "after": " ist verzerrt: Er hält sich für unbeliebt, obwohl alle ihn mögen.",
+        "accepted": { "answers": ["Selbstwahrnehmung"] },
+        "referenceTargetIds": [
+          "selbstwahrnehmung",
+          "komfortzone",
+          "hinterfragen",
+          "selbstkritisch"
+        ],
+        "explanation": {
+          "en": "A distorted view of yourself is a distorted Selbstwahrnehmung.",
+          "fr": "Une vision déformée de soi est une Selbstwahrnehmung déformée.",
+          "de": "Ein verzerrter Blick auf sich selbst ist eine verzerrte Selbstwahrnehmung."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "selbstwahrnehmung",
+        "selbstbild",
+        "selbstreflexion",
+        "fremdbild"
+      ]
+    },
+    {
+      "id": "selbstreflexion",
+      "term": "Selbstreflexion",
+      "translations": { "en": ["self-reflection"], "fr": ["introspection"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Selbstreflexion",
+      "examForms": ["die Selbstreflexion"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈzɛlpstʁeflɛksi̯oːn/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Zur Selbstreflexion nimmt sie sich jeden Abend zehn Minuten Zeit.",
+        "translation": {
+          "en": "She takes ten minutes every evening for self-reflection.",
+          "fr": "Chaque soir, elle prend dix minutes pour réfléchir sur elle-même."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Selbstreflexion is thinking carefully about your own actions and motives.",
+        "fr": "Die Selbstreflexion consiste à réfléchir attentivement à ses actes et à ses motivations.",
+        "de": "Die Selbstreflexion ist das gründliche Nachdenken über das eigene Handeln und die eigenen Motive."
+      },
+      "genderExplanation": {
+        "en": "Nouns ending in -ion are feminine: die Selbstreflexion.",
+        "fr": "Les noms en -ion sont féminins : die Selbstreflexion.",
+        "de": "Nomen auf -ion sind feminin: die Selbstreflexion."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Durch ehrliche ",
+        "after": " erkannte er, warum er immer wieder in dieselben Konflikte geriet.",
+        "accepted": { "answers": ["Selbstreflexion"] },
+        "referenceTargetIds": ["selbstreflexion", "komfortzone", "ueberschaetzen", "verwirklichen"],
+        "explanation": {
+          "en": "Understanding your own patterns comes from Selbstreflexion.",
+          "fr": "Comprendre ses propres schémas vient de la Selbstreflexion.",
+          "de": "Die eigenen Muster zu verstehen, gelingt durch Selbstreflexion."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "selbstreflexion",
+        "selbstwahrnehmung",
+        "selbstkritisch",
+        "hinterfragen"
+      ]
+    },
+    {
+      "id": "komfortzone",
+      "term": "Komfortzone",
+      "translations": { "en": ["comfort zone"], "fr": ["zone de confort"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Komfortzone",
+      "examForms": ["die Komfortzone"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈkɔmfɔɐ̯tˌtsoːnə/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Der Umzug zwang ihn aus seiner Komfortzone.",
+        "translation": {
+          "en": "The move forced him out of his comfort zone.",
+          "fr": "Le déménagement l’a forcé à sortir de sa zone de confort."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Komfortzone is the familiar area of life where you feel safe and avoid challenges.",
+        "fr": "Die Komfortzone est le domaine familier où l’on se sent en sécurité et où l’on évite les défis.",
+        "de": "Die Komfortzone ist der vertraute Bereich, in dem man sich sicher fühlt und Herausforderungen meidet."
+      },
+      "genderExplanation": {
+        "en": "Komfortzone is feminine, like Zone: die Komfortzone.",
+        "fr": "Komfortzone est féminin, comme Zone : die Komfortzone.",
+        "de": "Komfortzone ist feminin wie die Zone: die Komfortzone."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Wer wachsen will, muss manchmal seine ",
+        "after": " verlassen.",
+        "accepted": { "answers": ["Komfortzone"] },
+        "referenceTargetIds": ["komfortzone", "selbstkritisch", "authentisch", "hinterfragen"],
+        "explanation": {
+          "en": "You leave your Komfortzone to grow.",
+          "fr": "On quitte sa Komfortzone pour grandir.",
+          "de": "Man verlässt seine Komfortzone, um zu wachsen."
+        }
+      },
+      "listeningOptionTargetIds": ["komfortzone", "authentisch", "verwirklichen", "hinterfragen"]
+    },
+    {
+      "id": "verwirklichen",
+      "term": "sich verwirklichen",
+      "translations": { "en": ["to fulfil oneself"], "fr": ["se réaliser"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "sich verwirklichen",
+      "examForms": ["sich verwirklichen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/zɪç fɛɐ̯ˈvɪʁklɪçn̩/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Er möchte sich in der Kunst verwirklichen.",
+        "translation": {
+          "en": "He wants to fulfil himself through art.",
+          "fr": "Il veut se réaliser à travers l’art."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Sich verwirklichen means to live out your own talents and wishes.",
+        "fr": "Sich verwirklichen signifie vivre pleinement ses talents et ses envies.",
+        "de": "Sich verwirklichen heißt, die eigenen Talente und Wünsche zu leben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Sie wollte sich in ihrem Beruf ",
+        "after": " und nicht nur Anweisungen ausführen.",
+        "accepted": { "answers": ["verwirklichen"] },
+        "referenceTargetIds": ["verwirklichen", "ueberschaetzen", "authentisch", "selbstkritisch"],
+        "explanation": {
+          "en": "Living out your talents at work is sich verwirklichen.",
+          "fr": "Vivre ses talents au travail, c’est sich verwirklichen.",
+          "de": "Die eigenen Talente im Beruf zu leben heißt sich verwirklichen."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "verwirklichen",
+        "hinterfragen",
+        "ueberschaetzen",
+        "selbstkritisch"
+      ]
+    },
+    {
+      "id": "hinterfragen",
+      "term": "hinterfragen",
+      "translations": { "en": ["to question"], "fr": ["remettre en question"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "hinterfragen",
+      "examForms": ["hinterfragen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/hɪntɐˈfʁaːɡn̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Man sollte eigene Vorurteile regelmäßig hinterfragen.",
+        "translation": {
+          "en": "One should regularly question one’s own prejudices.",
+          "fr": "On devrait régulièrement remettre en question ses propres préjugés."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Hinterfragen means to examine critically whether something is right or justified.",
+        "fr": "Hinterfragen signifie examiner de façon critique si quelque chose est juste ou justifié.",
+        "de": "Hinterfragen heißt, kritisch zu prüfen, ob etwas richtig oder berechtigt ist."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Sie hat gelernt, ihre eigenen Annahmen kritisch zu ",
+        "after": ".",
+        "accepted": { "answers": ["hinterfragen"] },
+        "referenceTargetIds": ["hinterfragen", "fremdbild", "komfortzone", "authentisch"],
+        "explanation": {
+          "en": "Only the verb hinterfragen fits after “kritisch zu”.",
+          "fr": "Seul le verbe hinterfragen convient après « kritisch zu ».",
+          "de": "Nach „kritisch zu“ passt nur das Verb hinterfragen."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "hinterfragen",
+        "verwirklichen",
+        "ueberschaetzen",
+        "selbstkritisch"
+      ]
+    },
+    {
+      "id": "authentisch",
+      "term": "authentisch",
+      "translations": { "en": ["authentic"], "fr": ["authentique"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "authentisch",
+      "examForms": ["authentisch"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/aʊ̯ˈtɛntɪʃ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ihre Rede wirkte ehrlich und authentisch.",
+        "translation": {
+          "en": "Her speech seemed honest and authentic.",
+          "fr": "Son discours paraissait sincère et authentique."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Authentisch describes someone who acts true to themselves and does not pretend.",
+        "fr": "Authentisch décrit quelqu’un qui agit en accord avec lui-même sans faire semblant.",
+        "de": "Authentisch beschreibt jemanden, der sich treu bleibt und sich nicht verstellt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Er wirkt sehr ",
+        "after": ", weil er sich nicht verstellt und immer er selbst bleibt.",
+        "accepted": { "answers": ["authentisch"] },
+        "referenceTargetIds": ["authentisch", "verwirklichen", "fremdbild", "selbstzweifel"],
+        "explanation": {
+          "en": "Not pretending and staying yourself is being authentisch.",
+          "fr": "Ne pas faire semblant et rester soi-même, c’est être authentisch.",
+          "de": "Sich nicht zu verstellen und man selbst zu bleiben, ist authentisch."
+        }
+      },
+      "listeningOptionTargetIds": ["authentisch", "selbstkritisch", "komfortzone", "fremdbild"]
+    },
+    {
+      "id": "selbstkritisch",
+      "term": "selbstkritisch",
+      "translations": { "en": ["self-critical"], "fr": ["autocritique"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "selbstkritisch",
+      "examForms": ["selbstkritisch"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈzɛlpstˌkʁiːtɪʃ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Er äußerte sich selbstkritisch über seine Fehler.",
+        "translation": {
+          "en": "He spoke self-critically about his mistakes.",
+          "fr": "Il a parlé de ses erreurs de façon autocritique."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Selbstkritisch describes someone who judges their own behaviour critically and honestly.",
+        "fr": "Selbstkritisch décrit quelqu’un qui juge son propre comportement de façon critique et honnête.",
+        "de": "Selbstkritisch beschreibt jemanden, der das eigene Verhalten kritisch und ehrlich beurteilt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Sie ist sehr ",
+        "after": " und fragt sich nach jedem Fehler, was sie besser machen kann.",
+        "accepted": { "answers": ["selbstkritisch"] },
+        "referenceTargetIds": ["selbstkritisch", "selbstzweifel", "hinterfragen", "komfortzone"],
+        "explanation": {
+          "en": "Asking yourself what you could do better is selbstkritisch.",
+          "fr": "Se demander ce que l’on pourrait mieux faire, c’est être selbstkritisch.",
+          "de": "Sich zu fragen, was man besser machen kann, ist selbstkritisch."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "selbstkritisch",
+        "authentisch",
+        "selbstzweifel",
+        "selbstreflexion"
+      ]
+    },
+    {
+      "id": "ueberschaetzen",
+      "term": "sich überschätzen",
+      "translations": { "en": ["to overestimate oneself"], "fr": ["se surestimer"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "sich überschätzen",
+      "examForms": ["sich überschätzen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/zɪç yːbɐˈʃɛtsn̩/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Er überschätzt sich oft und sagt zu viele Termine zu.",
+        "translation": {
+          "en": "He often overestimates himself and agrees to too many appointments.",
+          "fr": "Il se surestime souvent et accepte trop de rendez-vous."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Sich überschätzen means to think your abilities are greater than they really are.",
+        "fr": "Sich überschätzen signifie croire ses capacités supérieures à ce qu’elles sont.",
+        "de": "Sich überschätzen heißt, die eigenen Fähigkeiten für größer zu halten, als sie sind."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Wer sich ständig ",
+        "after": ", übernimmt Aufgaben, denen er nicht gewachsen ist.",
+        "accepted": { "answers": ["überschätzt"] },
+        "referenceTargetIds": ["ueberschaetzen", "verwirklichen", "hinterfragen", "selbstkritisch"],
+        "explanation": {
+          "en": "Taking on tasks you cannot handle shows you overestimate yourself (überschätzt).",
+          "fr": "Accepter des tâches trop lourdes montre que l’on se surestime (überschätzt).",
+          "de": "Aufgaben zu übernehmen, denen man nicht gewachsen ist, zeigt: Man überschätzt sich."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "ueberschaetzen",
+        "verwirklichen",
+        "hinterfragen",
+        "selbstwertgefuehl"
+      ]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

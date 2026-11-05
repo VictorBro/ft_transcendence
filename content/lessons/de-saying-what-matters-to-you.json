@@ -1,0 +1,1274 @@
+{
+  "schemaVersion": 2,
+  "id": "de-saying-what-matters-to-you",
+  "lang": "de",
+  "level": "B2",
+  "locales": ["en", "fr", "de"],
+  "title": "Sagen, was einem wichtig ist",
+  "objective": {
+    "en": "Talk about values and priorities and weigh them: say what comes first, what you value most and what plays only a minor role.",
+    "fr": "Parler de valeurs et de priorités et les hiérarchiser : dire ce qui passe avant tout, ce à quoi on tient et ce qui compte peu.",
+    "de": "Über Werte und Prioritäten sprechen und sie gewichten: sagen, was an erster Stelle steht, worauf man Wert legt und was nur eine Nebenrolle spielt."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:33:20.601Z",
+    "inputHashes": {
+      "outline": "eb741e5a5a925208e7e9de89bb8e9640ae3fa49032014afefe467c65a36860b7",
+      "brief": "4d2fbffa6f3516b922a1641d9e45e6aa44188f985065b2b34500d5a2878e5fdd"
+    }
+  },
+  "kind": "functions",
+  "theme": "personal_identification",
+  "steps": [
+    {
+      "id": "flashcards",
+      "stage": "flashcards",
+      "role": "presentation",
+      "label": { "en": "Flashcards", "fr": "Cartes mémoire", "de": "Karteikarten" },
+      "pages": [
+        {
+          "pageId": "cards-expressions",
+          "estimatedDurationS": 72,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Recall each expression, then turn the card to check it.",
+            "fr": "Rappelez-vous chaque expression, puis retournez la carte pour vérifier.",
+            "de": "Erinnere dich an jeden Ausdruck und dreh dann die Karte um."
+          },
+          "items": [
+            {
+              "type": "function_flashcards",
+              "itemId": "cards-expressions",
+              "side": "expressions",
+              "ids": [
+                "fuer-mich-steht",
+                "darauf-wert",
+                "mir-ist-wichtig",
+                "wichtiger-als",
+                "untergeordnete-rolle",
+                "am-herzen"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue",
+      "stage": "dialogue",
+      "role": "presentation",
+      "label": { "en": "Dialogue", "fr": "Dialogue", "de": "Dialog" },
+      "pages": [
+        {
+          "pageId": "dialogue",
+          "estimatedDurationS": 140,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read and listen. Turn a line to see its translation and a note.",
+            "fr": "Lisez et écoutez. Retournez une réplique pour voir sa traduction et une remarque.",
+            "de": "Lies und hör zu. Dreh eine Zeile um, um Übersetzung und Hinweis zu sehen."
+          },
+          "items": [
+            {
+              "type": "function_dialogue",
+              "itemId": "dialogue",
+              "lines": [
+                {
+                  "lineId": "line-1",
+                  "roleId": "jonas",
+                  "text": "Mira, du hast das Jobangebot aus Hamburg bekommen, oder? Nimmst du es an?",
+                  "translation": {
+                    "en": "Mira, you got the job offer from Hamburg, right? Are you going to accept it?",
+                    "fr": "Mira, tu as reçu l’offre d’emploi de Hambourg, non ? Tu l’acceptes ?"
+                  },
+                  "note": {
+                    "en": "Jonas opens the topic with a direct question.",
+                    "fr": "Jonas ouvre le sujet par une question directe.",
+                    "de": "Jonas eröffnet das Thema mit einer direkten Frage."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-2",
+                  "roleId": "mira",
+                  "text": "Ich bin noch unsicher. Das Gehalt ist gut, aber mir ist wichtig, dass ich abends Zeit für meine Familie habe.",
+                  "translation": {
+                    "en": "I’m still unsure. The salary is good, but it’s important to me that I have time for my family in the evening.",
+                    "fr": "Je suis encore hésitante. Le salaire est bon, mais il est important pour moi d’avoir du temps pour ma famille le soir."
+                  },
+                  "note": {
+                    "en": "Mir ist wichtig, dass … introduces a priority; the verb goes to the end of the clause.",
+                    "fr": "Mir ist wichtig, dass … introduit une priorité ; le verbe va à la fin de la proposition.",
+                    "de": "Mir ist wichtig, dass … leitet eine Priorität ein; das Verb steht am Ende des Nebensatzes."
+                  },
+                  "expressionIds": ["mir-ist-wichtig"]
+                },
+                {
+                  "lineId": "line-3",
+                  "roleId": "jonas",
+                  "text": "Und wie sieht es mit dem Geld aus? Das ist doch auch nicht ganz unwichtig.",
+                  "translation": {
+                    "en": "And what about the money? That’s not entirely unimportant either.",
+                    "fr": "Et l’argent ? Ce n’est quand même pas tout à fait sans importance."
+                  },
+                  "note": {
+                    "en": "Jonas objects politely: nicht ganz unwichtig softens the point.",
+                    "fr": "Jonas objecte poliment : nicht ganz unwichtig adoucit le propos.",
+                    "de": "Jonas widerspricht höflich: nicht ganz unwichtig mildert die Aussage."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-4",
+                  "roleId": "mira",
+                  "text": "Geld spielt eher eine untergeordnete Rolle. Für mich steht die Zeit mit meiner Familie an erster Stelle.",
+                  "translation": {
+                    "en": "Money plays a rather minor role. For me, time with my family comes first.",
+                    "fr": "L’argent joue plutôt un rôle secondaire. Pour moi, le temps passé avec ma famille passe avant tout."
+                  },
+                  "note": {
+                    "en": "Two moves: playing money down, then naming what comes first.",
+                    "fr": "Deux gestes : minimiser l’argent, puis nommer ce qui passe avant tout.",
+                    "de": "Zwei Schritte: Geld herunterspielen, dann nennen, was an erster Stelle steht."
+                  },
+                  "expressionIds": ["untergeordnete-rolle", "fuer-mich-steht"]
+                },
+                {
+                  "lineId": "line-5",
+                  "roleId": "jonas",
+                  "text": "Bei mir ist das anders: Ein sicherer Arbeitsplatz ist mir wichtiger als ein hohes Gehalt.",
+                  "translation": {
+                    "en": "For me it’s different: a secure job is more important to me than a high salary.",
+                    "fr": "Pour moi, c’est différent : un emploi sûr est plus important pour moi qu’un salaire élevé."
+                  },
+                  "note": {
+                    "en": "Ist mir wichtiger als compares two priorities directly.",
+                    "fr": "Ist mir wichtiger als compare directement deux priorités.",
+                    "de": "Ist mir wichtiger als vergleicht zwei Prioritäten direkt."
+                  },
+                  "expressionIds": ["wichtiger-als"]
+                },
+                {
+                  "lineId": "line-6",
+                  "roleId": "mira",
+                  "text": "Das kann ich gut verstehen. Und was liegt dir sonst noch am Herzen?",
+                  "translation": {
+                    "en": "I can understand that well. And what else is close to your heart?",
+                    "fr": "Je peux bien le comprendre. Et qu’est-ce qui te tient encore à cœur ?"
+                  },
+                  "note": {
+                    "en": "Mira asks about further values with am Herzen liegen.",
+                    "fr": "Mira demande d’autres valeurs avec am Herzen liegen.",
+                    "de": "Mira fragt mit am Herzen liegen nach weiteren Werten."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-7",
+                  "roleId": "jonas",
+                  "text": "Meine Freunde und mein Garten. Die Natur liegt mir sehr am Herzen.",
+                  "translation": {
+                    "en": "My friends and my garden. Nature is very close to my heart.",
+                    "fr": "Mes amis et mon jardin. La nature me tient beaucoup à cœur."
+                  },
+                  "note": {
+                    "en": "Liegt mir sehr am Herzen: something you care about deeply; the subject comes first.",
+                    "fr": "Liegt mir sehr am Herzen : quelque chose qui vous tient vraiment à cœur ; le sujet vient d’abord.",
+                    "de": "Liegt mir sehr am Herzen: etwas, das einem wirklich wichtig ist; das Subjekt steht vorn."
+                  },
+                  "expressionIds": ["am-herzen"]
+                },
+                {
+                  "lineId": "line-8",
+                  "roleId": "mira",
+                  "text": "Siehst du, deshalb wäre Hamburg für mich so schwierig: lange Arbeitstage, wenig Freizeit.",
+                  "translation": {
+                    "en": "You see, that’s why Hamburg would be so difficult for me: long working days, little free time.",
+                    "fr": "Tu vois, c’est pour ça que Hambourg serait si difficile pour moi : de longues journées de travail, peu de temps libre."
+                  },
+                  "note": {
+                    "en": "Mira justifies her doubt with her priorities.",
+                    "fr": "Mira justifie son doute par ses priorités.",
+                    "de": "Mira begründet ihren Zweifel mit ihren Prioritäten."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-9",
+                  "roleId": "jonas",
+                  "text": "Hast du schon mit deinem Chef gesprochen? Vielleicht kannst du weniger Stunden arbeiten.",
+                  "translation": {
+                    "en": "Have you already talked to your boss? Maybe you can work fewer hours.",
+                    "fr": "Tu as déjà parlé avec ton chef ? Tu pourrais peut-être travailler moins d’heures."
+                  },
+                  "note": {
+                    "en": "Jonas suggests a practical solution.",
+                    "fr": "Jonas propose une solution pratique.",
+                    "de": "Jonas schlägt eine praktische Lösung vor."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-10",
+                  "roleId": "mira",
+                  "text": "Gute Idee. Darauf lege ich großen Wert: Ich möchte keine Überstunden machen.",
+                  "translation": {
+                    "en": "Good idea. I attach great importance to that: I don’t want to work overtime.",
+                    "fr": "Bonne idée. J’y accorde beaucoup d’importance : je ne veux pas faire d’heures supplémentaires."
+                  },
+                  "note": {
+                    "en": "Darauf refers back to the idea of fewer hours; Wert legen auf + accusative.",
+                    "fr": "Darauf renvoie à l’idée de moins d’heures ; Wert legen auf + accusatif.",
+                    "de": "Darauf bezieht sich auf die Idee von weniger Stunden; Wert legen auf + Akkusativ."
+                  },
+                  "expressionIds": ["darauf-wert"]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matching",
+      "stage": "matching",
+      "role": "exercise",
+      "label": { "en": "Matching", "fr": "Association", "de": "Zuordnen" },
+      "pages": [
+        {
+          "pageId": "match-expressions-1",
+          "estimatedDurationS": 72,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each expression with its translation.",
+            "fr": "Associez chaque expression à sa traduction.",
+            "de": "Ordne jedem Ausdruck seine Übersetzung zu."
+          },
+          "items": [
+            {
+              "type": "function_matching",
+              "itemId": "match-expressions-1",
+              "side": "expressions",
+              "pairs": [
+                {
+                  "id": "fuer-mich-steht",
+                  "answerExplanation": {
+                    "en": "Names your top priority: Für mich steht + noun + an erster Stelle.",
+                    "fr": "Nomme votre priorité absolue : Für mich steht + nom + an erster Stelle.",
+                    "de": "Nennt die wichtigste Priorität: Für mich steht + Nomen + an erster Stelle."
+                  }
+                },
+                {
+                  "id": "darauf-wert",
+                  "answerExplanation": {
+                    "en": "Stresses what you consider especially important (Wert legen auf + accusative).",
+                    "fr": "Souligne ce qui compte particulièrement (Wert legen auf + accusatif).",
+                    "de": "Betont, was einem besonders wichtig ist (Wert legen auf + Akkusativ)."
+                  }
+                },
+                {
+                  "id": "mir-ist-wichtig",
+                  "answerExplanation": {
+                    "en": "Introduces a priority with a dass-clause; the verb goes to the end.",
+                    "fr": "Introduit une priorité avec une subordonnée en dass ; le verbe va à la fin.",
+                    "de": "Leitet eine Priorität mit einem dass-Satz ein; das Verb steht am Ende."
+                  }
+                },
+                {
+                  "id": "wichtiger-als",
+                  "answerExplanation": {
+                    "en": "Weighs two things against each other: A ist mir wichtiger als B.",
+                    "fr": "Pèse deux choses l’une par rapport à l’autre : A ist mir wichtiger als B.",
+                    "de": "Gewichtet zwei Dinge gegeneinander: A ist mir wichtiger als B."
+                  }
+                },
+                {
+                  "id": "untergeordnete-rolle",
+                  "answerExplanation": {
+                    "en": "Says that something matters little; the subject comes first.",
+                    "fr": "Dit que quelque chose compte peu ; le sujet vient d’abord.",
+                    "de": "Sagt, dass etwas wenig zählt; das Subjekt steht vorn."
+                  }
+                },
+                {
+                  "id": "am-herzen",
+                  "answerExplanation": {
+                    "en": "Says that something is deeply important to you.",
+                    "fr": "Dit que quelque chose vous tient vraiment à cœur.",
+                    "de": "Sagt, dass einem etwas sehr wichtig ist."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-gaps",
+      "stage": "dialogue_gaps",
+      "role": "exercise",
+      "label": { "en": "Dialogue gaps", "fr": "Dialogue à trous", "de": "Dialoglücken" },
+      "pages": [
+        {
+          "pageId": "gap-1",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-1",
+              "expressionId": "mir-ist-wichtig",
+              "context": {
+                "roleId": "jonas",
+                "text": "Du arbeitest nur noch vier Tage pro Woche. Warum eigentlich?"
+              },
+              "roleId": "mira",
+              "before": "",
+              "after": "ich genug Zeit für meine Freunde habe.",
+              "choiceExpressionIds": [
+                "darauf-wert",
+                "mir-ist-wichtig",
+                "am-herzen",
+                "untergeordnete-rolle"
+              ],
+              "answerExplanation": {
+                "en": "A dass-clause follows: Mir ist wichtig, dass ich … habe.",
+                "fr": "Une subordonnée en dass suit : Mir ist wichtig, dass ich … habe.",
+                "de": "Es folgt ein dass-Satz: Mir ist wichtig, dass ich … habe."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-2",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-2",
+              "expressionId": "darauf-wert",
+              "context": {
+                "roleId": "jonas",
+                "text": "Die Wohnung ist günstig, aber die Straße ist sehr laut. Ist das ein Problem?"
+              },
+              "roleId": "mira",
+              "before": "Ja, ich brauche abends meine Ruhe.",
+              "after": "",
+              "choiceExpressionIds": [
+                "fuer-mich-steht",
+                "wichtiger-als",
+                "darauf-wert",
+                "mir-ist-wichtig"
+              ],
+              "answerExplanation": {
+                "en": "Darauf looks back at the need for quiet and stresses it.",
+                "fr": "Darauf reprend le besoin de calme et le souligne.",
+                "de": "Darauf nimmt das Bedürfnis nach Ruhe auf und betont es."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-3",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-3",
+              "expressionId": "untergeordnete-rolle",
+              "context": {
+                "roleId": "jonas",
+                "text": "Ist das Gehalt bei deiner Berufswahl ein wichtiges Argument?"
+              },
+              "roleId": "mira",
+              "before": "Nein, das Gehalt",
+              "after": ".",
+              "choiceExpressionIds": [
+                "untergeordnete-rolle",
+                "mir-ist-wichtig",
+                "darauf-wert",
+                "wichtiger-als"
+              ],
+              "answerExplanation": {
+                "en": "She says no: the salary matters little, so spielt eher eine untergeordnete Rolle.",
+                "fr": "Elle dit non : le salaire compte peu, donc spielt eher eine untergeordnete Rolle.",
+                "de": "Sie verneint: Das Gehalt zählt wenig, also spielt eher eine untergeordnete Rolle."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-4",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-4",
+              "expressionId": "wichtiger-als",
+              "context": {
+                "roleId": "jonas",
+                "text": "Würdest du für mehr Geld in eine andere Stadt ziehen?"
+              },
+              "roleId": "mira",
+              "before": "Nein, meine Freiheit",
+              "after": "ein höheres Gehalt.",
+              "choiceExpressionIds": [
+                "wichtiger-als",
+                "untergeordnete-rolle",
+                "am-herzen",
+                "fuer-mich-steht"
+              ],
+              "answerExplanation": {
+                "en": "Two things are compared: freedom against a higher salary.",
+                "fr": "Deux choses sont comparées : la liberté et un salaire plus élevé.",
+                "de": "Zwei Dinge werden verglichen: Freiheit und ein höheres Gehalt."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-5",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-5",
+              "expressionId": "fuer-mich-steht",
+              "context": { "roleId": "jonas", "text": "Was kommt bei dir im Leben zuerst?" },
+              "roleId": "mira",
+              "before": "",
+              "after": "die Gesundheit an erster Stelle.",
+              "choiceExpressionIds": [
+                "mir-ist-wichtig",
+                "fuer-mich-steht",
+                "wichtiger-als",
+                "untergeordnete-rolle"
+              ],
+              "answerExplanation": {
+                "en": "The sentence needs the verb steht: Für mich steht … an erster Stelle.",
+                "fr": "La phrase a besoin du verbe steht : Für mich steht … an erster Stelle.",
+                "de": "Der Satz braucht das Verb steht: Für mich steht … an erster Stelle."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-6",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-6",
+              "expressionId": "am-herzen",
+              "context": {
+                "roleId": "jonas",
+                "text": "Du hilfst jeden Samstag im Tierheim. Warum eigentlich?"
+              },
+              "roleId": "mira",
+              "before": "Der Tierschutz",
+              "after": "",
+              "choiceExpressionIds": [
+                "am-herzen",
+                "mir-ist-wichtig",
+                "wichtiger-als",
+                "darauf-wert"
+              ],
+              "answerExplanation": {
+                "en": "The subject Der Tierschutz comes first: it liegt mir sehr am Herzen.",
+                "fr": "Le sujet Der Tierschutz vient d’abord : il liegt mir sehr am Herzen.",
+                "de": "Das Subjekt Der Tierschutz steht vorn: Er liegt mir sehr am Herzen."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "word-order",
+      "stage": "word_order",
+      "role": "exercise",
+      "label": { "en": "Word order", "fr": "Ordre des mots", "de": "Wortstellung" },
+      "pages": [
+        {
+          "pageId": "order-1",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-1",
+              "expressionId": "fuer-mich-steht",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Für" },
+                { "tokenId": "t2", "text": "mich" },
+                { "tokenId": "t3", "text": "steht" },
+                { "tokenId": "t4", "text": "die" },
+                { "tokenId": "t5", "text": "Familie" },
+                { "tokenId": "t6", "text": "an" },
+                { "tokenId": "t7", "text": "erster" },
+                { "tokenId": "t8", "text": "Stelle." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8"]],
+              "answerExplanation": {
+                "en": "Für mich steht comes first, then the noun, then an erster Stelle.",
+                "fr": "Für mich steht vient d’abord, puis le nom, puis an erster Stelle.",
+                "de": "Für mich steht kommt zuerst, dann das Nomen, dann an erster Stelle."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-2",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-2",
+              "expressionId": "darauf-wert",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Darauf" },
+                { "tokenId": "t2", "text": "lege" },
+                { "tokenId": "t3", "text": "ich" },
+                { "tokenId": "t4", "text": "großen" },
+                { "tokenId": "t5", "text": "Wert," },
+                { "tokenId": "t6", "text": "auch" },
+                { "tokenId": "t7", "text": "im" },
+                { "tokenId": "t8", "text": "Urlaub." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8"]],
+              "answerExplanation": {
+                "en": "With darauf in first position, the verb lege comes second and the subject ich follows.",
+                "fr": "Avec darauf en première position, le verbe lege est en deuxième place, puis le sujet ich.",
+                "de": "Mit darauf an erster Stelle steht das Verb lege auf Position zwei, danach das Subjekt ich."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-3",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-3",
+              "expressionId": "mir-ist-wichtig",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Mir" },
+                { "tokenId": "t2", "text": "ist" },
+                { "tokenId": "t3", "text": "wichtig," },
+                { "tokenId": "t4", "text": "dass" },
+                { "tokenId": "t5", "text": "du" },
+                { "tokenId": "t6", "text": "ehrlich" },
+                { "tokenId": "t7", "text": "bist." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7"]],
+              "answerExplanation": {
+                "en": "In the dass-clause the verb bist goes to the end.",
+                "fr": "Dans la subordonnée en dass, le verbe bist va à la fin.",
+                "de": "Im dass-Satz steht das Verb bist am Ende."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-4",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-4",
+              "expressionId": "wichtiger-als",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Ein" },
+                { "tokenId": "t2", "text": "ruhiger" },
+                { "tokenId": "t3", "text": "Alltag" },
+                { "tokenId": "t4", "text": "ist" },
+                { "tokenId": "t5", "text": "mir" },
+                { "tokenId": "t6", "text": "wichtiger" },
+                { "tokenId": "t7", "text": "als" },
+                { "tokenId": "t8", "text": "eine" },
+                { "tokenId": "t9", "text": "Karriere." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9"]],
+              "answerExplanation": {
+                "en": "The thing preferred comes first, then ist mir wichtiger als, then the thing compared.",
+                "fr": "La chose préférée vient d’abord, puis ist mir wichtiger als, puis la chose comparée.",
+                "de": "Zuerst steht das Bevorzugte, dann ist mir wichtiger als, dann das Verglichene."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-5",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-5",
+              "expressionId": "untergeordnete-rolle",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Der" },
+                { "tokenId": "t2", "text": "Status" },
+                { "tokenId": "t3", "text": "spielt" },
+                { "tokenId": "t4", "text": "eher" },
+                { "tokenId": "t5", "text": "eine" },
+                { "tokenId": "t6", "text": "untergeordnete" },
+                { "tokenId": "t7", "text": "Rolle." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [
+                ["t1", "t2", "t3", "t4", "t5", "t6", "t7"],
+                ["t1", "t2", "t3", "t5", "t4", "t6", "t7"]
+              ],
+              "answerExplanation": {
+                "en": "Eher can stand before or after eine; both orders are correct.",
+                "fr": "Eher peut se placer avant ou après eine ; les deux ordres sont corrects.",
+                "de": "Eher kann vor oder nach eine stehen; beide Reihenfolgen sind richtig."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-6",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-6",
+              "expressionId": "am-herzen",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Der" },
+                { "tokenId": "t2", "text": "Umweltschutz" },
+                { "tokenId": "t3", "text": "liegt" },
+                { "tokenId": "t4", "text": "mir" },
+                { "tokenId": "t5", "text": "sehr" },
+                { "tokenId": "t6", "text": "am" },
+                { "tokenId": "t7", "text": "Herzen." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7"]],
+              "answerExplanation": {
+                "en": "The subject comes first, then liegt mir sehr am Herzen.",
+                "fr": "Le sujet vient d’abord, puis liegt mir sehr am Herzen.",
+                "de": "Zuerst das Subjekt, dann liegt mir sehr am Herzen."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "listening",
+      "stage": "listening",
+      "role": "exercise",
+      "label": { "en": "Listening", "fr": "Écoute", "de": "Hören" },
+      "pages": [
+        {
+          "pageId": "listening-1",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-1",
+              "expressionId": "fuer-mich-steht",
+              "context": {
+                "roleId": "jonas",
+                "text": "Wenn du dich entscheiden müsstest: Was kommt bei dir zuerst?"
+              },
+              "roleId": "mira",
+              "options": [
+                {
+                  "optionId": "o1",
+                  "text": "Für mich steht die Freiheit an erster Stelle, dann kommt der Beruf."
+                },
+                { "optionId": "o2", "text": "Wir treffen uns morgen um zehn am Bahnhof." },
+                { "optionId": "o3", "text": "Ich habe leider meinen Schlüssel verloren." },
+                { "optionId": "o4", "text": "Der Film beginnt erst um halb neun." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "Only the first reply names a priority with Für mich steht … an erster Stelle.",
+                "fr": "Seule la première réponse nomme une priorité avec Für mich steht … an erster Stelle.",
+                "de": "Nur die erste Antwort nennt eine Priorität mit Für mich steht … an erster Stelle."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-2",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-2",
+              "expressionId": "darauf-wert",
+              "context": {
+                "roleId": "jonas",
+                "text": "Die Wohnung ist günstig, aber sehr laut. Ist das ein Problem?"
+              },
+              "roleId": "mira",
+              "options": [
+                { "optionId": "o1", "text": "Wir haben uns gestern im Park getroffen." },
+                {
+                  "optionId": "o2",
+                  "text": "Ja, darauf lege ich großen Wert: Ich brauche abends Ruhe."
+                },
+                { "optionId": "o3", "text": "Ich habe heute leider keine Zeit." },
+                { "optionId": "o4", "text": "Das Büro liegt direkt am Hauptbahnhof." }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "Mira stresses that quiet matters to her: Darauf lege ich großen Wert.",
+                "fr": "Mira souligne que le calme compte pour elle : Darauf lege ich großen Wert.",
+                "de": "Mira betont, dass ihr Ruhe wichtig ist: Darauf lege ich großen Wert."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-3",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-3",
+              "expressionId": "mir-ist-wichtig",
+              "context": {
+                "roleId": "jonas",
+                "text": "Wie stellst du dir deinen idealen Chef vor?"
+              },
+              "roleId": "mira",
+              "options": [
+                { "optionId": "o1", "text": "Der Bus fährt um acht Uhr ab." },
+                { "optionId": "o2", "text": "Er ist gestern nach Berlin gefahren." },
+                { "optionId": "o3", "text": "Ich nehme einen Kaffee, bitte." },
+                { "optionId": "o4", "text": "Mir ist wichtig, dass er mir Verantwortung gibt." }
+              ],
+              "answerOptionId": "o4",
+              "answerExplanation": {
+                "en": "Mira describes what she wants with Mir ist wichtig, dass …",
+                "fr": "Mira décrit ce qu’elle veut avec Mir ist wichtig, dass …",
+                "de": "Mira beschreibt, was sie möchte, mit Mir ist wichtig, dass …"
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-4",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-4",
+              "expressionId": "wichtiger-als",
+              "context": {
+                "roleId": "jonas",
+                "text": "Was ist dir wichtiger: ein hohes Gehalt oder viel Freizeit?"
+              },
+              "roleId": "mira",
+              "options": [
+                { "optionId": "o1", "text": "Das Büro liegt direkt am Hauptbahnhof." },
+                { "optionId": "o2", "text": "Wir sind letztes Jahr nach Wien gezogen." },
+                {
+                  "optionId": "o3",
+                  "text": "Viel Freizeit ist mir wichtiger als ein hohes Gehalt."
+                },
+                { "optionId": "o4", "text": "Ich habe gestern Nacht schlecht geschlafen." }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "The question asks for a comparison, so ist mir wichtiger als fits.",
+                "fr": "La question demande une comparaison, donc ist mir wichtiger als convient.",
+                "de": "Die Frage verlangt einen Vergleich, deshalb passt ist mir wichtiger als."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-5",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-5",
+              "expressionId": "untergeordnete-rolle",
+              "context": {
+                "roleId": "jonas",
+                "text": "Hast du bei deiner Berufswahl vor allem auf das Gehalt geachtet?"
+              },
+              "roleId": "mira",
+              "options": [
+                { "optionId": "o1", "text": "Der Zug hat leider Verspätung." },
+                {
+                  "optionId": "o2",
+                  "text": "Nein, das Gehalt spielt eher eine untergeordnete Rolle für mich."
+                },
+                { "optionId": "o3", "text": "Ich war letzte Woche beim Zahnarzt." },
+                { "optionId": "o4", "text": "Die Suppe schmeckt heute besonders gut." }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "She answers the question and plays the salary down.",
+                "fr": "Elle répond à la question et minimise le salaire.",
+                "de": "Sie beantwortet die Frage und spielt das Gehalt herunter."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-6",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-6",
+              "expressionId": "am-herzen",
+              "context": {
+                "roleId": "jonas",
+                "text": "Du engagierst dich so viel im Verein. Was treibt dich an?"
+              },
+              "roleId": "mira",
+              "options": [
+                { "optionId": "o1", "text": "Morgen fahren wir mit dem Zug nach Köln." },
+                { "optionId": "o2", "text": "Ich brauche noch ein neues Fahrrad." },
+                { "optionId": "o3", "text": "Der Kaffee ist leider schon kalt." },
+                { "optionId": "o4", "text": "Die Nachbarschaft liegt mir sehr am Herzen." }
+              ],
+              "answerOptionId": "o4",
+              "answerExplanation": {
+                "en": "She names what she cares about deeply: liegt mir sehr am Herzen.",
+                "fr": "Elle nomme ce qui lui tient à cœur : liegt mir sehr am Herzen.",
+                "de": "Sie nennt, was ihr sehr wichtig ist: liegt mir sehr am Herzen."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "stage": "exam",
+      "role": "exam",
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam-replies-1",
+          "estimatedDurationS": 120,
+          "timeLimitS": 180,
+          "instructions": {
+            "en": "Build the answer. Not every word fits.",
+            "fr": "Construisez la réponse. Tous les mots ne servent pas.",
+            "de": "Bilde die Antwort. Nicht jedes Wort passt."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "reply-1",
+              "expressionId": "fuer-mich-steht",
+              "context": { "roleId": "jonas", "text": "Was ist dir im Alltag am wichtigsten?" },
+              "roleId": "mira",
+              "tokens": [
+                { "tokenId": "t1", "text": "Für" },
+                { "tokenId": "t2", "text": "mich" },
+                { "tokenId": "t3", "text": "steht" },
+                { "tokenId": "t4", "text": "die" },
+                { "tokenId": "t5", "text": "Freiheit" },
+                { "tokenId": "t6", "text": "an" },
+                { "tokenId": "t7", "text": "erster" },
+                { "tokenId": "t8", "text": "Stelle." },
+                { "tokenId": "t9", "text": "stehen" },
+                { "tokenId": "t10", "text": "ersten" }
+              ],
+              "distractorTokenIds": ["t9", "t10"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8"]],
+              "answerExplanation": {
+                "en": "Singular Freiheit takes steht, and Stelle is feminine: an erster Stelle.",
+                "fr": "Freiheit au singulier prend steht, et Stelle est féminin : an erster Stelle.",
+                "de": "Singular Freiheit verlangt steht, und Stelle ist feminin: an erster Stelle."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-2",
+              "expressionId": "mir-ist-wichtig",
+              "context": { "roleId": "mira", "text": "Wie sollte ein guter Kollege sein?" },
+              "roleId": "jonas",
+              "tokens": [
+                { "tokenId": "t1", "text": "Mir" },
+                { "tokenId": "t2", "text": "ist" },
+                { "tokenId": "t3", "text": "wichtig," },
+                { "tokenId": "t4", "text": "dass" },
+                { "tokenId": "t5", "text": "er" },
+                { "tokenId": "t6", "text": "mir" },
+                { "tokenId": "t7", "text": "zuhört." },
+                { "tokenId": "t8", "text": "zuhören." },
+                { "tokenId": "t9", "text": "wichtige," }
+              ],
+              "distractorTokenIds": ["t8", "t9"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7"]],
+              "answerExplanation": {
+                "en": "After wichtig stands a comma and a dass-clause; the conjugated verb zuhört goes to the end.",
+                "fr": "Après wichtig viennent une virgule et une subordonnée en dass ; le verbe conjugué zuhört va à la fin.",
+                "de": "Nach wichtig folgen ein Komma und ein dass-Satz; das konjugierte Verb zuhört steht am Ende."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-3",
+              "expressionId": "wichtiger-als",
+              "context": {
+                "roleId": "mira",
+                "text": "Würdest du für mehr Geld auch am Wochenende arbeiten?"
+              },
+              "roleId": "jonas",
+              "tokens": [
+                { "tokenId": "t1", "text": "Nein," },
+                { "tokenId": "t2", "text": "mein" },
+                { "tokenId": "t3", "text": "Wochenende" },
+                { "tokenId": "t4", "text": "ist" },
+                { "tokenId": "t5", "text": "mir" },
+                { "tokenId": "t6", "text": "wichtiger" },
+                { "tokenId": "t7", "text": "als" },
+                { "tokenId": "t8", "text": "mehr" },
+                { "tokenId": "t9", "text": "Geld." },
+                { "tokenId": "t10", "text": "wichtig" },
+                { "tokenId": "t11", "text": "mich" }
+              ],
+              "distractorTokenIds": ["t10", "t11"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9"]],
+              "answerExplanation": {
+                "en": "A comparison needs the comparative wichtiger + als, and wichtig takes the dative mir.",
+                "fr": "Une comparaison demande le comparatif wichtiger + als, et wichtig prend le datif mir.",
+                "de": "Ein Vergleich braucht den Komparativ wichtiger + als, und wichtig verlangt den Dativ mir."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-4",
+              "expressionId": "am-herzen",
+              "context": {
+                "roleId": "mira",
+                "text": "Warum fährst du jedes Jahr zum Arbeitseinsatz im Wald?"
+              },
+              "roleId": "jonas",
+              "tokens": [
+                { "tokenId": "t1", "text": "Der" },
+                { "tokenId": "t2", "text": "Wald" },
+                { "tokenId": "t3", "text": "liegt" },
+                { "tokenId": "t4", "text": "mir" },
+                { "tokenId": "t5", "text": "sehr" },
+                { "tokenId": "t6", "text": "am" },
+                { "tokenId": "t7", "text": "Herzen." },
+                { "tokenId": "t8", "text": "liegen" },
+                { "tokenId": "t9", "text": "im" }
+              ],
+              "distractorTokenIds": ["t8", "t9"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7"]],
+              "answerExplanation": {
+                "en": "The subject Wald is singular, so liegt; the fixed phrase is am Herzen liegen.",
+                "fr": "Le sujet Wald est au singulier, donc liegt ; l’expression figée est am Herzen liegen.",
+                "de": "Das Subjekt Wald steht im Singular, also liegt; die feste Wendung heißt am Herzen liegen."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "exam-dialogue",
+          "estimatedDurationS": 160,
+          "timeLimitS": 240,
+          "instructions": {
+            "en": "Fill each gap with an expression from this lesson.",
+            "fr": "Complétez chaque trou avec une expression de la leçon.",
+            "de": "Fülle jede Lücke mit einem Ausdruck aus dieser Lektion."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_typing",
+              "itemId": "exam-dialogue",
+              "lines": [
+                {
+                  "lineId": "exam-line-1",
+                  "roleId": "jonas",
+                  "before": "Wir müssen uns für eine Wohnung entscheiden. Was ist dir bei der Suche am wichtigsten?",
+                  "translation": {
+                    "en": "We have to decide on a flat. What matters most to you in the search?",
+                    "fr": "Nous devons choisir un appartement. Qu’est-ce qui compte le plus pour toi dans cette recherche ?"
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-2",
+                  "roleId": "mira",
+                  "before": "Ein kurzer Weg zur Arbeit!",
+                  "translation": {
+                    "en": "A short way to work! I attach great importance to that.",
+                    "fr": "Un trajet court jusqu’au travail ! J’y accorde beaucoup d’importance."
+                  },
+                  "gap": {
+                    "gapId": "gap-1",
+                    "expressionId": "darauf-wert",
+                    "accepted": { "answers": ["Darauf lege ich großen Wert"] },
+                    "answerExplanation": {
+                      "en": "She stresses what she values: Darauf lege ich großen Wert.",
+                      "fr": "Elle souligne ce à quoi elle tient : Darauf lege ich großen Wert.",
+                      "de": "Sie betont, was ihr wichtig ist: Darauf lege ich großen Wert."
+                    }
+                  },
+                  "after": "."
+                },
+                {
+                  "lineId": "exam-line-3",
+                  "roleId": "jonas",
+                  "before": "Gut, das verstehe ich. Und wie viel darf die Wohnung kosten?",
+                  "translation": {
+                    "en": "Fine, I understand that. And how much may the flat cost?",
+                    "fr": "D’accord, je comprends. Et combien l’appartement peut-il coûter ?"
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-4",
+                  "roleId": "mira",
+                  "before": "Der Preis",
+                  "translation": {
+                    "en": "The price plays a rather minor role.",
+                    "fr": "Le prix joue plutôt un rôle secondaire."
+                  },
+                  "gap": {
+                    "gapId": "gap-2",
+                    "expressionId": "untergeordnete-rolle",
+                    "accepted": {
+                      "answers": [
+                        "spielt eher eine untergeordnete Rolle",
+                        "spielt eine eher untergeordnete Rolle"
+                      ]
+                    },
+                    "answerExplanation": {
+                      "en": "She plays the price down: spielt eher eine untergeordnete Rolle.",
+                      "fr": "Elle minimise le prix : spielt eher eine untergeordnete Rolle.",
+                      "de": "Sie spielt den Preis herunter: spielt eher eine untergeordnete Rolle."
+                    }
+                  },
+                  "after": "."
+                },
+                {
+                  "lineId": "exam-line-5",
+                  "roleId": "jonas",
+                  "before": "Bei mir ist es anders. Ich muss sparen, weil ich nebenbei noch studiere.",
+                  "translation": {
+                    "en": "For me it’s different. I have to save because I’m still studying on the side.",
+                    "fr": "Pour moi, c’est différent. Je dois économiser parce que j’étudie encore en parallèle."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-6",
+                  "roleId": "mira",
+                  "before": "Das verstehe ich. Mein Schlaf",
+                  "translation": {
+                    "en": "I understand that. My sleep is more important to me than a low price.",
+                    "fr": "Je comprends. Mon sommeil est plus important pour moi qu’un prix bas."
+                  },
+                  "gap": {
+                    "gapId": "gap-3",
+                    "expressionId": "wichtiger-als",
+                    "accepted": { "answers": ["ist mir wichtiger als"] },
+                    "answerExplanation": {
+                      "en": "She compares sleep with a low price: ist mir wichtiger als.",
+                      "fr": "Elle compare le sommeil à un prix bas : ist mir wichtiger als.",
+                      "de": "Sie vergleicht Schlaf mit einem niedrigen Preis: ist mir wichtiger als."
+                    }
+                  },
+                  "after": "ein niedriger Preis."
+                },
+                {
+                  "lineId": "exam-line-7",
+                  "roleId": "jonas",
+                  "before": "Also gut. Dann suchen wir etwas Ruhiges und Zentrales.",
+                  "translation": {
+                    "en": "All right then. So we look for something quiet and central.",
+                    "fr": "Très bien. Alors cherchons quelque chose de calme et de central."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-8",
+                  "roleId": "mira",
+                  "before": "Ehrlich gesagt:",
+                  "translation": {
+                    "en": "Honestly: for me, closeness to my friends comes first.",
+                    "fr": "Honnêtement : pour moi, la proximité de mes amis passe avant tout."
+                  },
+                  "gap": {
+                    "gapId": "gap-4",
+                    "expressionId": "fuer-mich-steht",
+                    "accepted": { "answers": ["Für mich steht", "Bei mir steht"] },
+                    "answerExplanation": {
+                      "en": "She names her top priority: Für mich steht … an erster Stelle.",
+                      "fr": "Elle nomme sa priorité absolue : Für mich steht … an erster Stelle.",
+                      "de": "Sie nennt ihre wichtigste Priorität: Für mich steht … an erster Stelle."
+                    }
+                  },
+                  "after": "die Nähe zu meinen Freunden an erster Stelle."
+                },
+                {
+                  "lineId": "exam-line-9",
+                  "roleId": "jonas",
+                  "before": "Dann lass uns gleich die Wohnung am Park anschauen.",
+                  "translation": {
+                    "en": "Then let’s go and look at the flat by the park right away.",
+                    "fr": "Alors allons voir tout de suite l’appartement près du parc."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-10",
+                  "roleId": "mira",
+                  "before": "Gern. Ich rufe die Vermieterin an.",
+                  "translation": {
+                    "en": "Gladly. I’ll call the landlady.",
+                    "fr": "Avec plaisir. J’appelle la propriétaire."
+                  },
+                  "gap": null,
+                  "after": ""
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

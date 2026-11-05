@@ -1,0 +1,218 @@
+{
+  "schemaVersion": 2,
+  "id": "de-simple-past-or-perfect",
+  "lang": "de",
+  "level": "B1",
+  "locales": ["en", "fr", "de"],
+  "title": "Präteritum oder Perfekt?",
+  "objective": {
+    "en": "Choose between Präteritum and Perfekt: Präteritum in written stories and reports, Perfekt in conversation, and Präteritum for sein, haben and modal verbs in speech, too.",
+    "fr": "Choisir entre Präteritum et Perfekt : Präteritum pour les récits et comptes rendus écrits, Perfekt à l’oral, mais Präteritum pour sein, haben et les verbes de modalité aussi à l’oral.",
+    "de": "Zwischen Präteritum und Perfekt wählen: Präteritum in Erzählungen und Berichten, Perfekt im Gespräch, bei sein, haben und Modalverben auch mündlich das Präteritum."
+  },
+  "estimatedMinutes": 19,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:32:25.359Z",
+    "inputHashes": { "outline": "eb314ea934783885ee97c90004d7dbab2173d16be798ace4b6e1c747e5bf3010" }
+  },
+  "kind": "grammar",
+  "topic": "verb_usage",
+  "scopeBoundaries": {
+    "en": "Covers the choice between Präteritum and Perfekt by medium (written or spoken) and the spoken Präteritum of sein, haben and modal verbs. Excludes Plusquamperfekt, als/wenn and regional variation.",
+    "fr": "Couvre le choix entre Präteritum et Perfekt selon le support (écrit ou oral) et le Präteritum oral de sein, haben et des verbes de modalité. Exclut le Plusquamperfekt, als/wenn et les variations régionales.",
+    "de": "Behandelt die Wahl zwischen Präteritum und Perfekt je nach Medium (schriftlich oder mündlich) und das mündliche Präteritum von sein, haben und Modalverben. Ausgeschlossen sind Plusquamperfekt, als/wenn und regionale Unterschiede."
+  },
+  "prerequisites": [
+    {
+      "en": "Perfekt with haben and sein; Präteritum of regular and irregular verbs",
+      "fr": "Le Perfekt avec haben et sein ; le Präteritum des verbes réguliers et irréguliers",
+      "de": "Perfekt mit haben und sein; Präteritum regelmäßiger und unregelmäßiger Verben"
+    }
+  ],
+  "rules": [
+    {
+      "id": "r-written",
+      "summary": {
+        "en": "In written stories and reports (news, novels, fairy tales) German mostly uses the Präteritum.",
+        "fr": "Dans les récits et comptes rendus écrits (presse, romans, contes), l’allemand emploie surtout le Präteritum.",
+        "de": "In geschriebenen Erzählungen und Berichten (Zeitung, Roman, Märchen) steht meist das Präteritum."
+      }
+    },
+    {
+      "id": "r-spoken",
+      "summary": {
+        "en": "In conversation, German mostly uses the Perfekt to talk about the past.",
+        "fr": "À l’oral, l’allemand emploie surtout le Perfekt pour parler du passé.",
+        "de": "Im Gespräch steht für die Vergangenheit meist das Perfekt."
+      }
+    },
+    {
+      "id": "r-sein-modal",
+      "summary": {
+        "en": "sein, haben and modal verbs are usually in the Präteritum in speech, too: war, hatte, konnte.",
+        "fr": "sein, haben et les verbes de modalité sont en général aussi au Präteritum à l’oral : war, hatte, konnte.",
+        "de": "sein, haben und Modalverben stehen meist auch mündlich im Präteritum: war, hatte, konnte."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "b1",
+      "title": {
+        "en": "Writing and speaking",
+        "fr": "À l’écrit et à l’oral",
+        "de": "Schreiben und Sprechen"
+      },
+      "ruleIds": ["r-written", "r-spoken"],
+      "explanationPlan": {
+        "en": "Contrast written texts (reports, novels, fairy tales: Präteritum) with conversation, chats and voice messages (Perfekt). Same meaning, different style. Show one event in both tenses.",
+        "fr": "Opposer les textes écrits (comptes rendus, romans, contes : Präteritum) à la conversation, aux chats et aux messages vocaux (Perfekt). Même sens, style différent. Montrer un même événement aux deux temps.",
+        "de": "Geschriebene Texte (Bericht, Roman, Märchen: Präteritum) und Gespräch, Chat und Sprachnachricht (Perfekt) gegenüberstellen. Gleiche Bedeutung, anderer Stil. Ein Ereignis in beiden Zeiten zeigen."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "Der Zug kam um acht Uhr an.",
+          "translation": {
+            "en": "The train arrived at eight o’clock.",
+            "fr": "Le train est arrivé à huit heures."
+          }
+        },
+        {
+          "text": "Gestern habe ich Anna getroffen.",
+          "translation": { "en": "Yesterday I met Anna.", "fr": "Hier, j’ai rencontré Anna." }
+        },
+        {
+          "text": "Der Minister besuchte gestern eine Schule.",
+          "translation": {
+            "en": "The minister visited a school yesterday.",
+            "fr": "Le ministre a visité une école hier."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "In a novel or a report the Perfekt usually sounds too casual, and in a chat the Präteritum of most verbs usually sounds like a book.",
+          "fr": "Dans un roman ou un compte rendu, le Perfekt paraît en général trop familier, et dans un chat le Präteritum de la plupart des verbes paraît en général livresque.",
+          "de": "In einem Roman oder Bericht klingt das Perfekt meist zu umgangssprachlich, und in einem Chat klingt das Präteritum der meisten Verben meist wie ein Buch."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-b1-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["r-written", "r-spoken"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-b1-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["r-written", "r-spoken"],
+          "estimatedDurationS": 100
+        },
+        {
+          "id": "ex-b1-order",
+          "type": "grammar_word_order",
+          "itemCount": 4,
+          "ruleIds": ["r-written", "r-spoken"],
+          "estimatedDurationS": 120
+        }
+      ]
+    },
+    {
+      "id": "b2",
+      "title": {
+        "en": "sein, haben and modal verbs",
+        "fr": "sein, haben et les verbes de modalité",
+        "de": "sein, haben und Modalverben"
+      },
+      "ruleIds": ["r-sein-modal"],
+      "explanationPlan": {
+        "en": "Show that sein, haben and the modal verbs usually stay in the Präteritum even in conversation (war, hatte, konnte, musste, wollte), while other verbs take the Perfekt. Mention that these verbs are in the Präteritum in writing, too.",
+        "fr": "Montrer que sein, haben et les verbes de modalité restent en général au Präteritum même à l’oral (war, hatte, konnte, musste, wollte), tandis que les autres verbes prennent le Perfekt. Préciser que ces verbes sont aussi au Präteritum à l’écrit.",
+        "de": "Zeigen, dass sein, haben und Modalverben meist auch im Gespräch im Präteritum stehen (war, hatte, konnte, musste, wollte), andere Verben aber im Perfekt. Erwähnen, dass diese Verben auch schriftlich im Präteritum stehen."
+      },
+      "explanationDurationS": 150,
+      "examples": [
+        {
+          "text": "Ich war gestern krank.",
+          "translation": { "en": "I was ill yesterday.", "fr": "Hier, j’étais malade." }
+        },
+        {
+          "text": "Wir hatten keine Zeit.",
+          "translation": { "en": "We had no time.", "fr": "Nous n’avions pas le temps." }
+        },
+        {
+          "text": "Er konnte nicht kommen.",
+          "translation": { "en": "He couldn’t come.", "fr": "Il ne pouvait pas venir." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not use the short Präteritum for every verb in speech: Ich kaufte gestern Brot usually sounds like a story, so say Ich habe gestern Brot gekauft.",
+          "fr": "N’employez pas le Präteritum pour tous les verbes à l’oral : Ich kaufte gestern Brot paraît en général tiré d’un récit, dites plutôt Ich habe gestern Brot gekauft.",
+          "de": "Nimm mündlich nicht für jedes Verb das Präteritum: Ich kaufte gestern Brot klingt meist wie eine Geschichte, sag besser Ich habe gestern Brot gekauft."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-b2-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["r-sein-modal"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-b2-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["r-sein-modal"],
+          "estimatedDurationS": 100
+        },
+        {
+          "id": "ex-b2-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 4,
+          "ruleIds": ["r-sein-modal"],
+          "estimatedDurationS": 120
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-gaps-a",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["r-written", "r-spoken"],
+        "estimatedDurationS": 100,
+        "timeLimitS": 150
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["r-written", "r-spoken", "r-sein-modal"],
+        "estimatedDurationS": 75,
+        "timeLimitS": 115
+      },
+      {
+        "pageId": "exam-gaps-b",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["r-sein-modal", "r-spoken"],
+        "estimatedDurationS": 100,
+        "timeLimitS": 150
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

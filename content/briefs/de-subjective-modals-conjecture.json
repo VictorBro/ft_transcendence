@@ -1,0 +1,225 @@
+{
+  "schemaVersion": 2,
+  "id": "de-subjective-modals-conjecture",
+  "lang": "de",
+  "level": "C1",
+  "locales": ["en", "fr", "de"],
+  "title": "Das dürfte stimmen: Vermutungen mit Modalverben",
+  "objective": {
+    "en": "Grade guesses by certainty with muss, müsste, dürfte, kann and könnte, in the present and about the past.",
+    "fr": "Nuancer ses suppositions selon la certitude avec muss, müsste, dürfte, kann et könnte, au présent et sur le passé.",
+    "de": "Vermutungen mit muss, müsste, dürfte, kann und könnte nach dem Grad der Sicherheit abstufen, auch über Vergangenes."
+  },
+  "estimatedMinutes": 20,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:40:08.835Z",
+    "inputHashes": { "outline": "875b58121e84b24b32a1ec1ef36ee324644a5d922d8b7e7b9d69d5d908347e94" }
+  },
+  "kind": "grammar",
+  "topic": "verb_usage",
+  "scopeBoundaries": {
+    "en": "Covers the subjective use of muss, dürfte, müsste, kann and könnte, with the present infinitive and the perfect infinitive, and their negation. Excludes hearsay with sollen and wollen and the objective meanings of the modals.",
+    "fr": "Couvre l'emploi subjectif de muss, dürfte, müsste, kann et könnte, avec l'infinitif présent et l'infinitif passé, ainsi que leur négation. Exclut l'ouï-dire avec sollen et wollen et les sens objectifs des modaux.",
+    "de": "Behandelt den subjektiven Gebrauch von muss, dürfte, müsste, kann und könnte mit Infinitiv Präsens und Infinitiv Perfekt sowie ihre Verneinung. Ausgeschlossen sind das Hörensagen mit sollen und wollen und die objektiven Bedeutungen der Modalverben."
+  },
+  "prerequisites": [
+    {
+      "en": "Modal verbs in the present: muss, kann, darf, soll",
+      "fr": "Les verbes modaux au présent : muss, kann, darf, soll",
+      "de": "Modalverben im Präsens: muss, kann, darf, soll"
+    },
+    {
+      "en": "The Perfekt with haben and sein",
+      "fr": "Le Perfekt avec haben et sein",
+      "de": "Das Perfekt mit haben und sein"
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-grade",
+      "summary": {
+        "en": "muss = almost certain, dürfte = probable, müsste = what one expects, kann/könnte = possible.",
+        "fr": "muss = presque sûr, dürfte = probable, müsste = ce à quoi on s'attend, kann/könnte = possible.",
+        "de": "muss = fast sicher, dürfte = wahrscheinlich, müsste = Erwartung, kann/könnte = möglich."
+      }
+    },
+    {
+      "id": "rule-past",
+      "summary": {
+        "en": "A guess about the past: modal in the present + perfect infinitive (gewesen sein, vergessen haben).",
+        "fr": "Une supposition sur le passé : modal au présent + infinitif passé (gewesen sein, vergessen haben).",
+        "de": "Vermutung über die Vergangenheit: Modalverb im Präsens + Infinitiv Perfekt (gewesen sein, vergessen haben)."
+      }
+    },
+    {
+      "id": "rule-negation",
+      "summary": {
+        "en": "kann nicht = surely not, dürfte nicht = probably not, muss nicht = not necessarily.",
+        "fr": "kann nicht = sûrement pas, dürfte nicht = probablement pas, muss nicht = pas forcément.",
+        "de": "kann nicht = sicher nicht, dürfte nicht = wahrscheinlich nicht, muss nicht = nicht unbedingt."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-grades",
+      "title": {
+        "en": "Degrees of certainty: muss, dürfte, könnte",
+        "fr": "Les degrés de certitude : muss, dürfte, könnte",
+        "de": "Grade der Sicherheit: muss, dürfte, könnte"
+      },
+      "ruleIds": ["rule-grade"],
+      "explanationPlan": {
+        "en": "Present the scale of certainty: muss (almost certain), dürfte (probable), müsste (expectation), kann/könnte (possible). Show that dürfte and müsste are Konjunktiv II forms without past meaning, and that darf and soll do not express a guess.",
+        "fr": "Présenter l'échelle de certitude : muss (presque sûr), dürfte (probable), müsste (attente), kann/könnte (possible). Montrer que dürfte et müsste sont des formes du Konjunktiv II sans sens passé et que darf et soll n'expriment pas une supposition.",
+        "de": "Die Sicherheitsskala vorstellen: muss (fast sicher), dürfte (wahrscheinlich), müsste (Erwartung), kann/könnte (möglich). Zeigen, dass dürfte und müsste Formen des Konjunktivs II ohne Vergangenheitsbedeutung sind und dass darf und soll keine Vermutung ausdrücken."
+      },
+      "explanationDurationS": 150,
+      "examples": [
+        {
+          "text": "Er muss zu Hause sein.",
+          "translation": { "en": "He must be at home.", "fr": "Il doit être chez lui." }
+        },
+        {
+          "text": "Das dürfte stimmen.",
+          "translation": { "en": "That is probably true.", "fr": "C'est probablement vrai." }
+        },
+        {
+          "text": "Er könnte im Büro sein.",
+          "translation": { "en": "He could be at the office.", "fr": "Il pourrait être au bureau." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "darf and soll have other meanings (permission, hearsay) and do not express your own guess.",
+          "fr": "darf et soll ont d'autres sens (permission, ouï-dire) et n'expriment pas votre propre supposition.",
+          "de": "darf und soll haben andere Bedeutungen (Erlaubnis, Hörensagen) und drücken keine eigene Vermutung aus."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-g-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 5,
+          "ruleIds": ["rule-grade"],
+          "estimatedDurationS": 100
+        },
+        {
+          "id": "ex-g-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-grade"],
+          "estimatedDurationS": 100
+        },
+        {
+          "id": "ex-g-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-grade"],
+          "estimatedDurationS": 90
+        }
+      ]
+    },
+    {
+      "id": "block-past",
+      "title": {
+        "en": "Guessing about the past, and negation",
+        "fr": "Supposer sur le passé, et la négation",
+        "de": "Vermutungen über Vergangenes und Verneinung"
+      },
+      "ruleIds": ["rule-past", "rule-negation"],
+      "explanationPlan": {
+        "en": "Teach the perfect infinitive after the modal (gewesen sein, vergessen haben) with the same auxiliary as in the Perfekt. Then the negation: kann nicht (surely not), dürfte nicht (probably not), and muss nicht, which is not the opposite of muss.",
+        "fr": "Enseigner l'infinitif passé après le modal (gewesen sein, vergessen haben) avec le même auxiliaire qu'au Perfekt. Puis la négation : kann nicht (sûrement pas), dürfte nicht (probablement pas) et muss nicht, qui n'est pas le contraire de muss.",
+        "de": "Den Infinitiv Perfekt nach dem Modalverb vermitteln (gewesen sein, vergessen haben) mit demselben Hilfsverb wie im Perfekt. Dann die Verneinung: kann nicht (sicher nicht), dürfte nicht (wahrscheinlich nicht) und muss nicht, das nicht das Gegenteil von muss ist."
+      },
+      "explanationDurationS": 170,
+      "examples": [
+        {
+          "text": "Er muss krank gewesen sein.",
+          "translation": { "en": "He must have been ill.", "fr": "Il a dû être malade." }
+        },
+        {
+          "text": "Sie dürfte den Termin vergessen haben.",
+          "translation": {
+            "en": "She has probably forgotten the appointment.",
+            "fr": "Elle a probablement oublié le rendez-vous."
+          }
+        },
+        {
+          "text": "Das kann nicht stimmen.",
+          "translation": { "en": "That can't be true.", "fr": "Ça ne peut pas être vrai." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "For a guess about the past, the modal stays in the present; only the main verb changes to the perfect infinitive.",
+          "fr": "Pour une supposition sur le passé, le modal reste au présent ; seul le verbe principal passe à l'infinitif passé.",
+          "de": "Bei einer Vermutung über die Vergangenheit bleibt das Modalverb im Präsens; nur das Vollverb steht im Infinitiv Perfekt."
+        },
+        {
+          "en": "muss nicht does not mean the opposite of muss: it means not necessarily.",
+          "fr": "muss nicht ne veut pas dire le contraire de muss : cela signifie pas forcément.",
+          "de": "muss nicht bedeutet nicht das Gegenteil von muss, sondern nicht unbedingt."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-p-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-past", "rule-negation"],
+          "estimatedDurationS": 80
+        },
+        {
+          "id": "ex-p-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-past", "rule-negation"],
+          "estimatedDurationS": 100
+        },
+        {
+          "id": "ex-p-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 3,
+          "ruleIds": ["rule-past"],
+          "estimatedDurationS": 90
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-grade",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-grade"],
+        "estimatedDurationS": 100,
+        "timeLimitS": 150
+      },
+      {
+        "pageId": "exam-past",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-past", "rule-negation"],
+        "estimatedDurationS": 100,
+        "timeLimitS": 150
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["rule-grade", "rule-past"],
+        "estimatedDurationS": 75,
+        "timeLimitS": 120
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

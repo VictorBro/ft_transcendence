@@ -1,0 +1,625 @@
+{
+  "schemaVersion": 2,
+  "id": "de-virtues-and-vices",
+  "lang": "de",
+  "level": "C2",
+  "locales": ["en", "fr", "de"],
+  "title": "Tugenden und Laster",
+  "objective": {
+    "en": "Name twelve virtues and vices with their article.",
+    "fr": "Nommer douze vertus et vices avec leur article.",
+    "de": "Etwa zwölf Tugenden und Laster mit Artikel benennen."
+  },
+  "estimatedMinutes": 21,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:37:15.622Z",
+    "inputHashes": { "outline": "b8a07f78a6fb8822d0ed85fb8bb5369eef86a121a5ebe6ecf119643785d87a62" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Five virtues and seven vices, including the general terms Tugend and Laster, all abstract nouns at C2 level.",
+    "fr": "Cinq vertus et sept vices, dont les termes généraux Tugend et Laster, tous des noms abstraits de niveau C2.",
+    "de": "Fünf Tugenden und sieben Laster, darunter die Oberbegriffe Tugend und Laster, alles abstrakte Nomen auf C2-Niveau."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve nouns fit two groups and keep the lesson to about twenty minutes.",
+    "fr": "Douze noms se répartissent en deux groupes et limitent la leçon à environ vingt minutes.",
+    "de": "Zwölf Nomen lassen sich in zwei Gruppen ordnen und halten die Lektion bei etwa zwanzig Minuten."
+  },
+  "difficultyBalance": {
+    "en": "Mostly feminine -keit and -ung nouns, plus der Hochmut, der Geiz and das Laster as gender traps.",
+    "fr": "Surtout des noms féminins en -keit et -ung, plus der Hochmut, der Geiz et das Laster comme pièges de genre.",
+    "de": "Überwiegend feminine Nomen auf -keit und -ung, dazu der Hochmut, der Geiz und das Laster als Genusfallen."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "tugenden",
+      "label": { "en": "Virtues", "fr": "Vertus", "de": "Tugenden" },
+      "targetIds": ["tugend", "redlichkeit", "demut", "maessigung", "grossmut"],
+      "introduction": {
+        "en": "These nouns name **virtues**, the admirable qualities of character:\n\n- `die Tugend`\n- `die Redlichkeit`\n- `die Demut`\n- `die Mäßigung`\n- `die Großmut`",
+        "fr": "Ces noms désignent des **vertus**, des qualités de caractère admirables :\n\n- `die Tugend`\n- `die Redlichkeit`\n- `die Demut`\n- `die Mäßigung`\n- `die Großmut`",
+        "de": "Diese Nomen benennen **Tugenden**, bewundernswerte Charakterzüge:\n\n- `die Tugend`\n- `die Redlichkeit`\n- `die Demut`\n- `die Mäßigung`\n- `die Großmut`"
+      }
+    },
+    {
+      "id": "laster",
+      "label": { "en": "Vices", "fr": "Vices", "de": "Laster" },
+      "targetIds": [
+        "laster",
+        "hochmut",
+        "habgier",
+        "eitelkeit",
+        "traegheit",
+        "zuegellosigkeit",
+        "geiz"
+      ],
+      "introduction": {
+        "en": "These nouns name **vices**, the faults of character. Watch the genders:\n\n- `das Laster`\n- `der Hochmut`\n- `die Habgier`\n- `die Eitelkeit`\n- `die Trägheit`\n- `die Zügellosigkeit`\n- `der Geiz`",
+        "fr": "Ces noms désignent des **vices**, des défauts de caractère. Attention aux genres :\n\n- `das Laster`\n- `der Hochmut`\n- `die Habgier`\n- `die Eitelkeit`\n- `die Trägheit`\n- `die Zügellosigkeit`\n- `der Geiz`",
+        "de": "Diese Nomen benennen **Laster**, Charakterfehler. Achte auf das Genus:\n\n- `das Laster`\n- `der Hochmut`\n- `die Habgier`\n- `die Eitelkeit`\n- `die Trägheit`\n- `die Zügellosigkeit`\n- `der Geiz`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "tugend",
+      "term": "Tugend",
+      "translations": { "en": ["virtue"], "fr": ["vertu"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Tugend",
+      "examForms": ["die Tugend"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈtuːɡn̩t/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Sie hielt Pünktlichkeit für eine Tugend.",
+        "translation": {
+          "en": "She considered punctuality a virtue.",
+          "fr": "Elle considérait la ponctualité comme une vertu."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Tugend means virtue: a good quality of character that is considered exemplary.",
+        "fr": "Die Tugend signifie la vertu : une bonne qualité de caractère jugée exemplaire.",
+        "de": "Die Tugend ist eine gute Charaktereigenschaft, die als vorbildlich gilt."
+      },
+      "genderExplanation": {
+        "en": "Tugend is feminine: die Tugend.",
+        "fr": "Tugend est féminin : die Tugend.",
+        "de": "Tugend ist feminin: die Tugend."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Geduld gilt in vielen Kulturen als eine ",
+        "after": ", die man früh lernen sollte.",
+        "accepted": { "answers": ["Tugend"] },
+        "referenceTargetIds": ["tugend", "laster", "geiz", "habgier"],
+        "explanation": {
+          "en": "Only Tugend fits: patience is a good quality, and the article eine is feminine.",
+          "fr": "Seul « Tugend » convient : la patience est une qualité, et l’article eine est féminin.",
+          "de": "Nur „Tugend“ passt: Geduld ist eine gute Eigenschaft, und eine ist feminin."
+        }
+      },
+      "listeningOptionTargetIds": ["tugend", "laster", "geiz", "habgier"]
+    },
+    {
+      "id": "redlichkeit",
+      "term": "Redlichkeit",
+      "translations": { "en": ["integrity", "honesty"], "fr": ["probité", "honnêteté"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Redlichkeit",
+      "examForms": ["die Redlichkeit"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʁeːtlɪçkaɪt/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Seine Redlichkeit machte ihn zum Vertrauten der ganzen Gemeinde.",
+        "translation": {
+          "en": "His integrity made him the confidant of the whole community.",
+          "fr": "Sa probité faisait de lui le confident de toute la commune."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Redlichkeit is upright honesty: keeping one’s word and never cheating anyone.",
+        "fr": "Die Redlichkeit est la droiture : tenir parole et ne tromper personne.",
+        "de": "Die Redlichkeit ist aufrechte Ehrlichkeit: Man hält sein Wort und betrügt niemanden."
+      },
+      "genderExplanation": {
+        "en": "Nouns ending in -keit are feminine: die Redlichkeit.",
+        "fr": "Les noms en -keit sont féminins : die Redlichkeit.",
+        "de": "Nomen auf -keit sind feminin: die Redlichkeit."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Der Kaufmann war für seine ",
+        "after": " bekannt: Er hielt sich stets an sein Wort und betrog nie einen Kunden.",
+        "accepted": { "answers": ["Redlichkeit"] },
+        "referenceTargetIds": ["redlichkeit", "traegheit", "zuegellosigkeit", "maessigung"],
+        "explanation": {
+          "en": "Only Redlichkeit fits: keeping one’s word and never cheating describes integrity.",
+          "fr": "Seul « Redlichkeit » convient : tenir parole et ne jamais tromper décrit la probité.",
+          "de": "Nur „Redlichkeit“ passt: Wort halten und nie betrügen beschreibt Redlichkeit."
+        }
+      },
+      "listeningOptionTargetIds": ["redlichkeit", "traegheit", "zuegellosigkeit", "maessigung"]
+    },
+    {
+      "id": "demut",
+      "term": "Demut",
+      "translations": { "en": ["humility"], "fr": ["humilité"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Demut",
+      "examForms": ["die Demut"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈdeːmuːt/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Sie nahm den Preis mit großer Demut entgegen.",
+        "translation": {
+          "en": "She accepted the prize with great humility.",
+          "fr": "Elle a reçu le prix avec une grande humilité."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Demut is humility: recognising one’s own limits and not placing oneself above others.",
+        "fr": "Die Demut est l’humilité : reconnaître ses limites et ne pas se placer au-dessus des autres.",
+        "de": "Die Demut ist die Haltung, die eigenen Grenzen zu erkennen und sich nicht über andere zu stellen."
+      },
+      "genderExplanation": {
+        "en": "Demut is feminine: die Demut. Do not confuse it with der Hochmut, which is masculine.",
+        "fr": "Demut est féminin : die Demut. Ne le confondez pas avec der Hochmut, qui est masculin.",
+        "de": "Demut ist feminin: die Demut. Verwechsle es nicht mit Hochmut, denn es heißt der Hochmut."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Wer die eigene Unvollkommenheit anerkennt und sich nicht über andere stellt, zeigt ",
+        "after": ".",
+        "accepted": { "answers": ["Demut"] },
+        "referenceTargetIds": ["demut", "hochmut", "grossmut", "eitelkeit"],
+        "explanation": {
+          "en": "Only Demut fits: not placing oneself above others is the essence of humility.",
+          "fr": "Seul « Demut » convient : ne pas se placer au-dessus des autres, c’est l’essence de l’humilité.",
+          "de": "Nur „Demut“ passt: sich nicht über andere zu stellen ist das Wesen der Demut."
+        }
+      },
+      "listeningOptionTargetIds": ["demut", "hochmut", "grossmut", "eitelkeit"]
+    },
+    {
+      "id": "maessigung",
+      "term": "Mäßigung",
+      "translations": { "en": ["moderation"], "fr": ["modération"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Mäßigung",
+      "examForms": ["die Mäßigung"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈmɛːsɪɡʊŋ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Der Arzt riet ihm zur Mäßigung beim Alkohol.",
+        "translation": {
+          "en": "The doctor advised him to be moderate with alcohol.",
+          "fr": "Le médecin lui a conseillé la modération en matière d’alcool."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Mäßigung is moderation: holding back and not going to extremes.",
+        "fr": "Die Mäßigung est la modération : se retenir et ne pas tomber dans les excès.",
+        "de": "Die Mäßigung bedeutet, sich zurückzuhalten und nichts zu übertreiben."
+      },
+      "genderExplanation": {
+        "en": "Nouns ending in -ung are feminine: die Mäßigung.",
+        "fr": "Les noms en -ung sont féminins : die Mäßigung.",
+        "de": "Nomen auf -ung sind feminin: die Mäßigung."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Beim Essen und Trinken übte er ",
+        "after": " und ließ sich auch vom üppigsten Büfett nicht verführen.",
+        "accepted": { "answers": ["Mäßigung"] },
+        "referenceTargetIds": ["redlichkeit", "traegheit", "zuegellosigkeit", "maessigung"],
+        "explanation": {
+          "en": "Only Mäßigung fits: resisting a lavish buffet is moderation.",
+          "fr": "Seul « Mäßigung » convient : résister à un buffet copieux, c’est de la modération.",
+          "de": "Nur „Mäßigung“ passt: einem üppigen Büfett zu widerstehen ist Mäßigung."
+        }
+      },
+      "listeningOptionTargetIds": ["redlichkeit", "traegheit", "zuegellosigkeit", "maessigung"]
+    },
+    {
+      "id": "grossmut",
+      "term": "Großmut",
+      "translations": { "en": ["magnanimity"], "fr": ["magnanimité"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Großmut",
+      "examForms": ["die Großmut"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈɡʁoːsmuːt/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Die Fürstin zeigte Großmut und begnadigte die Rebellen.",
+        "translation": {
+          "en": "The princess showed magnanimity and pardoned the rebels.",
+          "fr": "La princesse fit preuve de magnanimité et gracia les rebelles."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Großmut is magnanimity: generosity towards others, especially towards the weaker.",
+        "fr": "Die Großmut est la magnanimité : la générosité envers autrui, surtout envers plus faible que soi.",
+        "de": "Die Großmut ist Edelmut: Man verzeiht oder gibt großzügig, besonders dem Schwächeren."
+      },
+      "genderExplanation": {
+        "en": "Großmut is feminine: die Großmut. Unlike der Hochmut, it takes die.",
+        "fr": "Großmut est féminin : die Großmut. Contrairement à der Hochmut, il prend die.",
+        "de": "Großmut ist feminin: die Großmut. Anders als der Hochmut hat es den Artikel die."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Der Sieger bewies ",
+        "after": ", indem er dem Besiegten großzügig verzieh und die verhängte Strafe erließ.",
+        "accepted": { "answers": ["Großmut"] },
+        "referenceTargetIds": ["demut", "hochmut", "grossmut", "eitelkeit"],
+        "explanation": {
+          "en": "Only Großmut fits: generously pardoning a defeated opponent is magnanimity.",
+          "fr": "Seul « Großmut » convient : pardonner généreusement à un adversaire vaincu, c’est de la magnanimité.",
+          "de": "Nur „Großmut“ passt: dem besiegten Gegner großzügig zu verzeihen ist Großmut."
+        }
+      },
+      "listeningOptionTargetIds": ["demut", "hochmut", "grossmut", "eitelkeit"]
+    },
+    {
+      "id": "laster",
+      "term": "Laster",
+      "translations": { "en": ["vice"], "fr": ["vice"] },
+      "wordClass": "noun",
+      "genders": ["neuter"],
+      "number": "singular",
+      "teachingForm": "das Laster",
+      "examForms": ["das Laster"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈlastɐ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Neugier nannte er sein größtes Laster.",
+        "translation": {
+          "en": "He called curiosity his greatest vice.",
+          "fr": "Il appelait la curiosité son plus grand vice."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Das Laster is a vice: a bad habit or fault of character.",
+        "fr": "Das Laster est le vice : une mauvaise habitude ou un défaut de caractère.",
+        "de": "Das Laster ist eine schlechte Gewohnheit oder ein Charakterfehler."
+      },
+      "genderExplanation": {
+        "en": "Laster is neuter: das Laster.",
+        "fr": "Laster est neutre : das Laster.",
+        "de": "Laster ist neutral: das Laster."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Das Rauchen war sein einziges ",
+        "after": ", sonst lebte er enthaltsam.",
+        "accepted": { "answers": ["Laster"] },
+        "referenceTargetIds": ["tugend", "laster", "geiz", "habgier"],
+        "explanation": {
+          "en": "Only Laster fits: einziges is neuter, and smoking is a bad habit.",
+          "fr": "Seul « Laster » convient : einziges est neutre, et fumer est une mauvaise habitude.",
+          "de": "Nur „Laster“ passt: einziges ist neutral, und Rauchen ist eine schlechte Gewohnheit."
+        }
+      },
+      "listeningOptionTargetIds": ["tugend", "laster", "geiz", "habgier"]
+    },
+    {
+      "id": "hochmut",
+      "term": "Hochmut",
+      "translations": { "en": ["haughtiness", "arrogance"], "fr": ["hauteur", "orgueil"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "der Hochmut",
+      "examForms": ["der Hochmut"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈhoːxmuːt/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Sein Hochmut machte ihn bei den Kollegen unbeliebt.",
+        "translation": {
+          "en": "His haughtiness made him unpopular with his colleagues.",
+          "fr": "Sa hauteur le rendait impopulaire auprès de ses collègues."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Der Hochmut is haughtiness: looking down on others and thinking oneself better.",
+        "fr": "Der Hochmut est la hauteur : regarder les autres de haut et se croire meilleur.",
+        "de": "Der Hochmut ist Überheblichkeit: Man blickt auf andere herab und hält sich für besser."
+      },
+      "genderExplanation": {
+        "en": "Hochmut is masculine: der Hochmut. Demut and Großmut, by contrast, are feminine.",
+        "fr": "Hochmut est masculin : der Hochmut. Demut et Großmut, au contraire, sont féminins.",
+        "de": "Hochmut ist maskulin: der Hochmut. Demut und Großmut dagegen sind feminin."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Der Spruch „",
+        "after": " kommt vor dem Fall“ erinnert daran, dass Überheblichkeit sich rächt.",
+        "accepted": { "answers": ["Hochmut"] },
+        "referenceTargetIds": ["demut", "hochmut", "grossmut", "eitelkeit"],
+        "explanation": {
+          "en": "Only Hochmut fits: the proverb is “Hochmut kommt vor dem Fall” (pride comes before a fall).",
+          "fr": "Seul « Hochmut » convient : le proverbe est « Hochmut kommt vor dem Fall » (l’orgueil précède la chute).",
+          "de": "Nur „Hochmut“ passt: Das Sprichwort lautet „Hochmut kommt vor dem Fall“."
+        }
+      },
+      "listeningOptionTargetIds": ["demut", "hochmut", "grossmut", "eitelkeit"]
+    },
+    {
+      "id": "habgier",
+      "term": "Habgier",
+      "translations": { "en": ["greed"], "fr": ["cupidité"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Habgier",
+      "examForms": ["die Habgier"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈhaːpɡiːɐ̯/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Die Habgier der Erben zerstörte die Familie.",
+        "translation": {
+          "en": "The heirs’ greed destroyed the family.",
+          "fr": "La cupidité des héritiers a détruit la famille."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Habgier is greed: an insatiable desire to own more and more.",
+        "fr": "Die Habgier est la cupidité : un désir insatiable de posséder toujours plus.",
+        "de": "Die Habgier ist die unersättliche Gier, immer mehr zu besitzen."
+      },
+      "genderExplanation": {
+        "en": "Habgier is feminine, like die Gier: die Habgier.",
+        "fr": "Habgier est féminin, comme die Gier : die Habgier.",
+        "de": "Habgier ist feminin, wie die Gier: die Habgier."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Aus ",
+        "after": " veruntreute der Verwalter das Vermögen seiner Auftraggeber, obwohl er längst genug besaß.",
+        "accepted": { "answers": ["Habgier"] },
+        "referenceTargetIds": ["tugend", "laster", "geiz", "habgier"],
+        "explanation": {
+          "en": "Only Habgier fits: embezzling money despite having enough is driven by greed.",
+          "fr": "Seul « Habgier » convient : détourner de l’argent alors qu’on en a assez relève de la cupidité.",
+          "de": "Nur „Habgier“ passt: Veruntreuung trotz genügend Besitz entspringt der Habgier."
+        }
+      },
+      "listeningOptionTargetIds": ["laster", "geiz", "habgier", "maessigung"]
+    },
+    {
+      "id": "eitelkeit",
+      "term": "Eitelkeit",
+      "translations": { "en": ["vanity"], "fr": ["vanité"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Eitelkeit",
+      "examForms": ["die Eitelkeit"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈaɪtl̩kaɪt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Seine Eitelkeit verbot ihm, eine Brille zu tragen.",
+        "translation": {
+          "en": "His vanity forbade him from wearing glasses.",
+          "fr": "Sa vanité lui interdisait de porter des lunettes."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Eitelkeit is vanity: an excessive wish to be admired for one’s appearance.",
+        "fr": "Die Eitelkeit est la vanité : un désir excessif d’être admiré pour son apparence.",
+        "de": "Die Eitelkeit ist das übertriebene Bedürfnis, für sein Aussehen bewundert zu werden."
+      },
+      "genderExplanation": {
+        "en": "Nouns ending in -keit are feminine: die Eitelkeit.",
+        "fr": "Les noms en -keit sont féminins : die Eitelkeit.",
+        "de": "Nomen auf -keit sind feminin: die Eitelkeit."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Stundenlang stand er vor dem Spiegel, aus reiner ",
+        "after": ", denn er wollte unbedingt bewundert werden.",
+        "accepted": { "answers": ["Eitelkeit"] },
+        "referenceTargetIds": ["demut", "hochmut", "grossmut", "eitelkeit"],
+        "explanation": {
+          "en": "Only Eitelkeit fits: wanting to be admired in front of the mirror is vanity.",
+          "fr": "Seul « Eitelkeit » convient : vouloir être admiré devant le miroir, c’est de la vanité.",
+          "de": "Nur „Eitelkeit“ passt: vor dem Spiegel bewundert werden zu wollen ist Eitelkeit."
+        }
+      },
+      "listeningOptionTargetIds": ["demut", "hochmut", "grossmut", "eitelkeit"]
+    },
+    {
+      "id": "traegheit",
+      "term": "Trägheit",
+      "translations": { "en": ["sloth"], "fr": ["paresse"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Trägheit",
+      "examForms": ["die Trägheit"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈtʁɛːkhaɪt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Seine Trägheit kostete ihn die Beförderung.",
+        "translation": {
+          "en": "His sloth cost him the promotion.",
+          "fr": "Sa paresse lui a coûté la promotion."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Trägheit is sloth: the unwillingness to act or make an effort.",
+        "fr": "Die Trägheit est la paresse : le refus d’agir ou de faire un effort.",
+        "de": "Die Trägheit ist die Unlust, etwas zu tun oder sich anzustrengen."
+      },
+      "genderExplanation": {
+        "en": "Nouns ending in -heit are feminine: die Trägheit.",
+        "fr": "Les noms en -heit sont féminins : die Trägheit.",
+        "de": "Nomen auf -heit sind feminin: die Trägheit."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Aus reiner ",
+        "after": " blieb er den ganzen Sonntag auf dem Sofa liegen und schob jede Pflicht auf.",
+        "accepted": { "answers": ["Trägheit"] },
+        "referenceTargetIds": ["redlichkeit", "traegheit", "zuegellosigkeit", "maessigung"],
+        "explanation": {
+          "en": "Only Trägheit fits: lying on the sofa and putting off every duty is sloth.",
+          "fr": "Seul « Trägheit » convient : rester sur le canapé et remettre tout devoir, c’est de la paresse.",
+          "de": "Nur „Trägheit“ passt: auf dem Sofa liegen und Pflichten aufschieben ist Trägheit."
+        }
+      },
+      "listeningOptionTargetIds": ["redlichkeit", "traegheit", "zuegellosigkeit", "maessigung"]
+    },
+    {
+      "id": "zuegellosigkeit",
+      "term": "Zügellosigkeit",
+      "translations": { "en": ["licentiousness"], "fr": ["débauche"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Zügellosigkeit",
+      "examForms": ["die Zügellosigkeit"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈtsyːɡl̩loːzɪçkaɪt/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Der Roman schildert die Zügellosigkeit des Hofes.",
+        "translation": {
+          "en": "The novel depicts the licentiousness of the court.",
+          "fr": "Le roman décrit la débauche de la cour."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Zügellosigkeit is licentiousness: a complete lack of restraint, especially in pleasures.",
+        "fr": "Die Zügellosigkeit est la débauche : une absence totale de retenue, surtout dans les plaisirs.",
+        "de": "Die Zügellosigkeit ist völlige Maßlosigkeit, besonders im Genuss."
+      },
+      "genderExplanation": {
+        "en": "Nouns ending in -keit are feminine: die Zügellosigkeit.",
+        "fr": "Les noms en -keit sont féminins : die Zügellosigkeit.",
+        "de": "Nomen auf -keit sind feminin: die Zügellosigkeit."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Die ",
+        "after": " der Feiernden kannte keine Grenzen: Es wurde getrunken und randaliert bis zum Morgen.",
+        "accepted": { "answers": ["Zügellosigkeit"] },
+        "referenceTargetIds": ["redlichkeit", "traegheit", "zuegellosigkeit", "maessigung"],
+        "explanation": {
+          "en": "Only Zügellosigkeit fits: drinking and rioting without limits shows a lack of restraint.",
+          "fr": "Seul « Zügellosigkeit » convient : boire et faire du tapage sans limites montre l’absence de retenue.",
+          "de": "Nur „Zügellosigkeit“ passt: grenzenloses Trinken und Randalieren zeigt fehlende Zügel."
+        }
+      },
+      "listeningOptionTargetIds": ["redlichkeit", "traegheit", "zuegellosigkeit", "maessigung"]
+    },
+    {
+      "id": "geiz",
+      "term": "Geiz",
+      "translations": { "en": ["miserliness"], "fr": ["avarice"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "der Geiz",
+      "examForms": ["der Geiz"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɡaɪts/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Sein Geiz war in der ganzen Straße bekannt.",
+        "translation": {
+          "en": "His miserliness was known throughout the street.",
+          "fr": "Son avarice était connue dans toute la rue."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Der Geiz is miserliness: an unwillingness to spend or share money.",
+        "fr": "Der Geiz est l’avarice : le refus de dépenser ou de partager son argent.",
+        "de": "Der Geiz ist der Unwille, Geld auszugeben oder zu teilen."
+      },
+      "genderExplanation": {
+        "en": "Geiz is masculine: der Geiz. Do not confuse it with die Habgier.",
+        "fr": "Geiz est masculin : der Geiz. Ne le confondez pas avec die Habgier.",
+        "de": "Geiz ist maskulin: der Geiz. Verwechsle es nicht mit Habgier, denn es heißt die Habgier."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Obwohl er reich war, trieb ihn der ",
+        "after": " dazu, jeden Cent zweimal umzudrehen.",
+        "accepted": { "answers": ["Geiz"] },
+        "referenceTargetIds": ["tugend", "laster", "geiz", "habgier"],
+        "explanation": {
+          "en": "Only Geiz fits: the article der is masculine, and counting every cent is miserliness.",
+          "fr": "Seul « Geiz » convient : l’article der est masculin, et compter chaque centime, c’est de l’avarice.",
+          "de": "Nur „Geiz“ passt: der ist maskulin, und jeden Cent umzudrehen ist Geiz."
+        }
+      },
+      "listeningOptionTargetIds": ["laster", "geiz", "habgier", "maessigung"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

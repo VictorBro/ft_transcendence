@@ -1,0 +1,731 @@
+{
+  "schemaVersion": 2,
+  "id": "de-alphabet-and-spelling",
+  "lang": "de",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Das Alphabet",
+  "objective": {
+    "en": "Say the letters of the alphabet, including ä, ö, ü and ß, and name signs in names and addresses.",
+    "fr": "Prononcer les lettres de l’alphabet, aussi ä, ö, ü et ß, et nommer les signes dans les noms et les adresses.",
+    "de": "Die Buchstaben des Alphabets, auch ä, ö, ü und ß, aussprechen und Zeichen in Namen und Adressen nennen."
+  },
+  "estimatedMinutes": 25,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:23:53.398Z",
+    "inputHashes": { "outline": "2a3759b90681ddc09b4188f1673150723e4f6756da0007bb8f9ea650f315a409" }
+  },
+  "kind": "vocabulary",
+  "theme": "language",
+  "coverageNotes": {
+    "en": "Words for letters, special German characters, signs used in names and addresses, big and small letters, and spelling aloud.",
+    "fr": "Mots pour les lettres, les caractères spéciaux de l’allemand, les signes des noms et des adresses, majuscules et minuscules, et l’épellation.",
+    "de": "Wörter für Buchstaben, die deutschen Sonderzeichen, Zeichen in Namen und Adressen, große und kleine Buchstaben und das Buchstabieren."
+  },
+  "targetCount": 15,
+  "countRationale": {
+    "en": "Fifteen words cover the intent without overloading an A1 learner.",
+    "fr": "Quinze mots couvrent l’objectif sans surcharger un apprenant de niveau A1.",
+    "de": "Fünfzehn Wörter decken das Ziel ab, ohne Lernende auf A1 zu überfordern."
+  },
+  "difficultyBalance": {
+    "en": "Most words are core; the umlaut letters and the Eszett are demanding.",
+    "fr": "La plupart des mots sont de base ; les lettres à tréma et l’Eszett sont plus difficiles.",
+    "de": "Die meisten Wörter sind Grundwortschatz; die Umlaute und das Eszett sind anspruchsvoll."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "letters",
+      "label": {
+        "en": "Letters and special characters",
+        "fr": "Lettres et caractères spéciaux",
+        "de": "Buchstaben und Sonderzeichen"
+      },
+      "targetIds": [
+        "buchstabe",
+        "alphabet",
+        "umlaut",
+        "a-umlaut",
+        "o-umlaut",
+        "u-umlaut",
+        "eszett"
+      ],
+      "introduction": {
+        "en": "Learn the **letters** of the German alphabet and its special characters:\n\n- `der Buchstabe`, `das Alphabet`\n- `der Umlaut`: `ä`, `ö`, `ü`\n- `das Eszett`: `ß`",
+        "fr": "Apprenez les **lettres** de l’alphabet allemand et ses caractères spéciaux :\n\n- `der Buchstabe`, `das Alphabet`\n- `der Umlaut` : `ä`, `ö`, `ü`\n- `das Eszett` : `ß`",
+        "de": "Lerne die **Buchstaben** des deutschen Alphabets und seine Sonderzeichen:\n\n- `der Buchstabe`, `das Alphabet`\n- `der Umlaut`: `ä`, `ö`, `ü`\n- `das Eszett`: `ß`"
+      }
+    },
+    {
+      "id": "signs",
+      "label": {
+        "en": "Signs in names and addresses",
+        "fr": "Signes dans les noms et les adresses",
+        "de": "Zeichen in Namen und Adressen"
+      },
+      "targetIds": ["punkt", "bindestrich", "at-zeichen", "adresse", "name"],
+      "introduction": {
+        "en": "You need these **signs** when you give a name or an address:\n\n- `der Punkt`\n- `der Bindestrich`\n- `das At-Zeichen`\n- `die Adresse`, `der Name`",
+        "fr": "Vous avez besoin de ces **signes** pour donner un nom ou une adresse :\n\n- `der Punkt`\n- `der Bindestrich`\n- `das At-Zeichen`\n- `die Adresse`, `der Name`",
+        "de": "Diese **Zeichen** brauchst du, wenn du einen Namen oder eine Adresse nennst:\n\n- `der Punkt`\n- `der Bindestrich`\n- `das At-Zeichen`\n- `die Adresse`, `der Name`"
+      }
+    },
+    {
+      "id": "spelling",
+      "label": {
+        "en": "Big, small and spelling",
+        "fr": "Majuscule, minuscule et épellation",
+        "de": "Groß, klein und buchstabieren"
+      },
+      "targetIds": ["gross", "klein", "buchstabieren"],
+      "introduction": {
+        "en": "Say whether a letter is **big** or small, and spell a word aloud:\n\n- `groß`, `klein`\n- `buchstabieren`",
+        "fr": "Dites si une lettre est **grande** ou petite, et épelez un mot à voix haute :\n\n- `groß`, `klein`\n- `buchstabieren`",
+        "de": "Sag, ob ein Buchstabe **groß** oder klein ist, und buchstabiere ein Wort laut:\n\n- `groß`, `klein`\n- `buchstabieren`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "buchstabe",
+      "term": "Buchstabe",
+      "translations": { "en": ["letter"], "fr": ["lettre"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "der Buchstabe",
+      "examForms": ["der Buchstabe"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈbuːxʃtaːbə/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Das A ist der erste Buchstabe.",
+        "translation": { "en": "A is the first letter.", "fr": "A est la première lettre." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A letter is one sign of the alphabet: der Buchstabe.",
+        "fr": "Une lettre est un signe de l’alphabet : der Buchstabe.",
+        "de": "Ein Buchstabe ist ein Zeichen des Alphabets: der Buchstabe."
+      },
+      "genderExplanation": {
+        "en": "Buchstabe is masculine, so its article is der.",
+        "fr": "Buchstabe est masculin : on dit der Buchstabe.",
+        "de": "Buchstabe ist maskulin, daher lautet der Artikel der."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "„A“ ist ein ",
+        "after": " im Alphabet.",
+        "accepted": { "answers": ["Buchstabe"] },
+        "referenceTargetIds": ["buchstabe", "punkt", "name", "adresse"],
+        "explanation": {
+          "en": "A is a letter, so only Buchstabe fits.",
+          "fr": "A est une lettre : seul « Buchstabe » convient.",
+          "de": "A ist ein Buchstabe, nur „Buchstabe“ passt."
+        }
+      },
+      "listeningOptionTargetIds": ["buchstabe", "buchstabieren", "bindestrich", "alphabet"]
+    },
+    {
+      "id": "alphabet",
+      "term": "Alphabet",
+      "translations": { "en": ["alphabet"], "fr": ["alphabet"] },
+      "wordClass": "noun",
+      "genders": ["neuter"],
+      "number": "singular",
+      "teachingForm": "das Alphabet",
+      "examForms": ["das Alphabet"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/alfaˈbeːt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Das ist das Alphabet.",
+        "translation": { "en": "This is the alphabet.", "fr": "Voici l’alphabet." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "The alphabet is the series of all letters, from A to Z.",
+        "fr": "L’alphabet est la série de toutes les lettres, de A à Z.",
+        "de": "Das Alphabet ist die Reihe aller Buchstaben, von A bis Z."
+      },
+      "genderExplanation": {
+        "en": "Alphabet is neuter, so its article is das.",
+        "fr": "Alphabet est neutre : on dit das Alphabet.",
+        "de": "Alphabet ist neutral, daher lautet der Artikel das."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Von A bis Z, das ist das ",
+        "after": ".",
+        "accepted": { "answers": ["Alphabet"] },
+        "referenceTargetIds": ["alphabet", "punkt", "adresse", "gross"],
+        "explanation": {
+          "en": "From A to Z is the alphabet; no other word fits.",
+          "fr": "De A à Z, c’est l’alphabet : aucun autre mot ne convient.",
+          "de": "Von A bis Z ist das Alphabet, kein anderes Wort passt."
+        }
+      },
+      "listeningOptionTargetIds": ["alphabet", "adresse", "buchstabe", "umlaut"]
+    },
+    {
+      "id": "umlaut",
+      "term": "Umlaut",
+      "translations": { "en": ["umlaut"], "fr": ["tréma"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "der Umlaut",
+      "examForms": ["der Umlaut"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʊmlaʊt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Das ä ist ein Umlaut.",
+        "translation": { "en": "The ä is an umlaut.", "fr": "Le ä est une lettre à tréma." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "An umlaut is ä, ö or ü: a vowel with two dots.",
+        "fr": "Un Umlaut est ä, ö ou ü : une voyelle avec deux points.",
+        "de": "Ein Umlaut ist ä, ö oder ü: ein Vokal mit zwei Punkten."
+      },
+      "genderExplanation": {
+        "en": "Umlaut is masculine, so its article is der.",
+        "fr": "Umlaut est masculin : on dit der Umlaut.",
+        "de": "Umlaut ist maskulin, daher lautet der Artikel der."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Das „ä“ ist ein ",
+        "after": ".",
+        "accepted": { "answers": ["Umlaut"] },
+        "referenceTargetIds": ["umlaut", "punkt", "name", "klein"],
+        "explanation": {
+          "en": "The ä is an umlaut; no other word fits.",
+          "fr": "Le ä est un Umlaut : aucun autre mot ne convient.",
+          "de": "Das ä ist ein Umlaut, kein anderes Wort passt."
+        }
+      },
+      "listeningOptionTargetIds": ["umlaut", "alphabet", "name", "punkt"]
+    },
+    {
+      "id": "a-umlaut",
+      "term": "ä",
+      "translations": { "en": ["a-umlaut"], "fr": ["a tréma"] },
+      "wordClass": "letter",
+      "genders": [],
+      "number": null,
+      "teachingForm": "ä",
+      "examForms": ["ä"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɛː/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Das Wort „Bär“ hat ein ä.",
+        "translation": { "en": "The word “Bär” has an ä.", "fr": "Le mot « Bär » contient un ä." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "The ä is an a with two dots, said like the e in “bed”, but long.",
+        "fr": "Le ä est un a avec deux points, prononcé comme un è long.",
+        "de": "Das ä ist ein a mit zwei Punkten und klingt wie ein offenes, langes e."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Im Wort „Bär“ ist der zweite Buchstabe ein ",
+        "after": ".",
+        "accepted": { "answers": ["ä"] },
+        "referenceTargetIds": ["a-umlaut", "punkt", "name", "klein"],
+        "explanation": {
+          "en": "The second letter of “Bär” is ä.",
+          "fr": "La deuxième lettre de « Bär » est ä.",
+          "de": "Der zweite Buchstabe von „Bär“ ist ä."
+        }
+      },
+      "listeningOptionTargetIds": ["a-umlaut", "o-umlaut", "u-umlaut", "eszett"]
+    },
+    {
+      "id": "o-umlaut",
+      "term": "ö",
+      "translations": { "en": ["o-umlaut"], "fr": ["o tréma"] },
+      "wordClass": "letter",
+      "genders": [],
+      "number": null,
+      "teachingForm": "ö",
+      "examForms": ["ö"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/øː/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Das Wort „schön“ hat ein ö.",
+        "translation": {
+          "en": "The word “schön” has an ö.",
+          "fr": "Le mot « schön » contient un ö."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "The ö is an o with two dots, with rounded lips.",
+        "fr": "Le ö est un o avec deux points, prononcé les lèvres arrondies.",
+        "de": "Das ö ist ein o mit zwei Punkten und wird mit runden Lippen gesprochen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Im Wort „schön“ ist der vierte Buchstabe ein ",
+        "after": ".",
+        "accepted": { "answers": ["ö"] },
+        "referenceTargetIds": ["o-umlaut", "punkt", "adresse", "gross"],
+        "explanation": {
+          "en": "The fourth letter of “schön” is ö.",
+          "fr": "La quatrième lettre de « schön » est ö.",
+          "de": "Der vierte Buchstabe von „schön“ ist ö."
+        }
+      },
+      "listeningOptionTargetIds": ["o-umlaut", "u-umlaut", "a-umlaut", "eszett"]
+    },
+    {
+      "id": "u-umlaut",
+      "term": "ü",
+      "translations": { "en": ["u-umlaut"], "fr": ["u tréma"] },
+      "wordClass": "letter",
+      "genders": [],
+      "number": null,
+      "teachingForm": "ü",
+      "examForms": ["ü"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/yː/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Das Wort „Tür“ hat ein ü.",
+        "translation": { "en": "The word “Tür” has a ü.", "fr": "Le mot « Tür » contient un ü." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "The ü is a u with two dots, with rounded lips.",
+        "fr": "Le ü est un u avec deux points, prononcé les lèvres arrondies.",
+        "de": "Das ü ist ein u mit zwei Punkten und wird mit runden Lippen gesprochen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Im Wort „Tür“ ist der zweite Buchstabe ein ",
+        "after": ".",
+        "accepted": { "answers": ["ü"] },
+        "referenceTargetIds": ["u-umlaut", "name", "bindestrich", "klein"],
+        "explanation": {
+          "en": "The second letter of “Tür” is ü.",
+          "fr": "La deuxième lettre de « Tür » est ü.",
+          "de": "Der zweite Buchstabe von „Tür“ ist ü."
+        }
+      },
+      "listeningOptionTargetIds": ["u-umlaut", "a-umlaut", "o-umlaut", "umlaut"]
+    },
+    {
+      "id": "eszett",
+      "term": "Eszett",
+      "translations": { "en": ["eszett", "sharp s"], "fr": ["eszett", "s dur"] },
+      "wordClass": "noun",
+      "genders": ["neuter"],
+      "number": "singular",
+      "teachingForm": "das Eszett",
+      "examForms": ["das Eszett"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɛsˈtsɛt/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "„Straße“ hat ein Eszett.",
+        "translation": { "en": "“Straße” has an Eszett.", "fr": "« Straße » contient un Eszett." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "The Eszett is the special letter ß, said like a sharp s.",
+        "fr": "L’Eszett est la lettre spéciale ß, prononcée comme un s sourd.",
+        "de": "Das Eszett ist der Sonderbuchstabe ß und klingt wie ein scharfes s."
+      },
+      "genderExplanation": {
+        "en": "Eszett is neuter, so its article is das.",
+        "fr": "Eszett est neutre : on dit das Eszett.",
+        "de": "Eszett ist neutral, daher lautet der Artikel das."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Das Zeichen „ß“ heißt ",
+        "after": ".",
+        "accepted": { "answers": ["Eszett"] },
+        "referenceTargetIds": ["eszett", "punkt", "name", "adresse"],
+        "explanation": {
+          "en": "The sign ß is called Eszett.",
+          "fr": "Le signe ß s’appelle Eszett.",
+          "de": "Das Zeichen ß heißt Eszett."
+        }
+      },
+      "listeningOptionTargetIds": ["eszett", "a-umlaut", "punkt", "klein"]
+    },
+    {
+      "id": "punkt",
+      "term": "Punkt",
+      "translations": { "en": ["full stop", "dot"], "fr": ["point"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "der Punkt",
+      "examForms": ["der Punkt"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/pʊŋkt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Am Ende steht ein Punkt.",
+        "translation": {
+          "en": "A full stop comes at the end.",
+          "fr": "Un point se trouve à la fin."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "The Punkt is the dot: at the end of a sentence and in e-mail addresses.",
+        "fr": "Le Punkt est le point : à la fin d’une phrase et dans les adresses e-mail.",
+        "de": "Der Punkt steht am Satzende und in E-Mail-Adressen."
+      },
+      "genderExplanation": {
+        "en": "Punkt is masculine, so its article is der.",
+        "fr": "Punkt est masculin : on dit der Punkt.",
+        "de": "Punkt ist maskulin, daher lautet der Artikel der."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Ein Satz endet mit einem ",
+        "after": ".",
+        "accepted": { "answers": ["Punkt"] },
+        "referenceTargetIds": ["punkt", "adresse", "gross", "name"],
+        "explanation": {
+          "en": "A sentence ends with a Punkt.",
+          "fr": "Une phrase se termine par un Punkt.",
+          "de": "Ein Satz endet mit einem Punkt."
+        }
+      },
+      "listeningOptionTargetIds": ["punkt", "bindestrich", "name", "klein"]
+    },
+    {
+      "id": "bindestrich",
+      "term": "Bindestrich",
+      "translations": { "en": ["hyphen"], "fr": ["trait d’union"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "der Bindestrich",
+      "examForms": ["der Bindestrich"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈbɪndəʃtʁɪç/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "„Anna-Lena“ hat einen Bindestrich.",
+        "translation": {
+          "en": "“Anna-Lena” has a hyphen.",
+          "fr": "« Anna-Lena » a un trait d’union."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "The Bindestrich is the short line (-) between two parts of a name.",
+        "fr": "Le Bindestrich est le petit trait (-) entre deux parties d’un nom.",
+        "de": "Der Bindestrich ist der kurze Strich (-) zwischen zwei Teilen eines Namens."
+      },
+      "genderExplanation": {
+        "en": "Bindestrich is masculine, so its article is der.",
+        "fr": "Bindestrich est masculin : on dit der Bindestrich.",
+        "de": "Bindestrich ist maskulin, daher lautet der Artikel der."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Zwischen „Anna“ und „Lena“ steht in „Anna-Lena“ ein ",
+        "after": ".",
+        "accepted": { "answers": ["Bindestrich"] },
+        "referenceTargetIds": ["bindestrich", "adresse", "gross", "alphabet"],
+        "explanation": {
+          "en": "The short line in “Anna-Lena” is a Bindestrich.",
+          "fr": "Le petit trait dans « Anna-Lena » est un Bindestrich.",
+          "de": "Der kurze Strich in „Anna-Lena“ ist ein Bindestrich."
+        }
+      },
+      "listeningOptionTargetIds": ["bindestrich", "buchstabe", "punkt", "at-zeichen"]
+    },
+    {
+      "id": "at-zeichen",
+      "term": "At-Zeichen",
+      "translations": { "en": ["at sign"], "fr": ["arobase"] },
+      "wordClass": "noun",
+      "genders": ["neuter"],
+      "number": "singular",
+      "teachingForm": "das At-Zeichen",
+      "examForms": ["das At-Zeichen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈɛt ˌtsaɪçn̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Das At-Zeichen steht in der E-Mail-Adresse.",
+        "translation": {
+          "en": "The at sign is in the e-mail address.",
+          "fr": "L’arobase est dans l’adresse e-mail."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "The At-Zeichen is the sign @ in an e-mail address.",
+        "fr": "L’At-Zeichen est le signe @ dans une adresse e-mail.",
+        "de": "Das At-Zeichen ist das Zeichen @ in einer E-Mail-Adresse."
+      },
+      "genderExplanation": {
+        "en": "At-Zeichen is neuter, so its article is das.",
+        "fr": "At-Zeichen est neutre : on dit das At-Zeichen.",
+        "de": "At-Zeichen ist neutral, daher lautet der Artikel das."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "In „max@mail.de“ steht zwischen „max“ und „mail“ das ",
+        "after": ".",
+        "accepted": { "answers": ["At-Zeichen"] },
+        "referenceTargetIds": ["at-zeichen", "name", "klein", "alphabet"],
+        "explanation": {
+          "en": "The sign @ is the At-Zeichen.",
+          "fr": "Le signe @ est l’At-Zeichen.",
+          "de": "Das Zeichen @ ist das At-Zeichen."
+        }
+      },
+      "listeningOptionTargetIds": ["at-zeichen", "adresse", "alphabet", "eszett"]
+    },
+    {
+      "id": "adresse",
+      "term": "Adresse",
+      "translations": { "en": ["address"], "fr": ["adresse"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Adresse",
+      "examForms": ["die Adresse"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/aˈdʁɛsə/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Das ist meine Adresse.",
+        "translation": { "en": "This is my address.", "fr": "Voici mon adresse." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "The address tells where someone lives or how to reach them: die Adresse.",
+        "fr": "L’adresse dit où quelqu’un habite ou comment le joindre : die Adresse.",
+        "de": "Die Adresse sagt, wo jemand wohnt oder wie man ihn erreicht."
+      },
+      "genderExplanation": {
+        "en": "Adresse is feminine, so its article is die.",
+        "fr": "Adresse est féminin : on dit die Adresse.",
+        "de": "Adresse ist feminin, daher lautet der Artikel die."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Meine ",
+        "after": " ist Hauptstraße 5.",
+        "accepted": { "answers": ["Adresse"] },
+        "referenceTargetIds": ["adresse", "punkt", "klein", "alphabet"],
+        "explanation": {
+          "en": "Hauptstraße 5 is an address.",
+          "fr": "Hauptstraße 5 est une adresse.",
+          "de": "Hauptstraße 5 ist eine Adresse."
+        }
+      },
+      "listeningOptionTargetIds": ["adresse", "name", "alphabet", "at-zeichen"]
+    },
+    {
+      "id": "name",
+      "term": "Name",
+      "translations": { "en": ["name"], "fr": ["nom"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "der Name",
+      "examForms": ["der Name"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈnaːmə/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Mein Name ist Lena.",
+        "translation": { "en": "My name is Lena.", "fr": "Mon nom est Lena." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "The name is what a person is called: der Name.",
+        "fr": "Le nom est ce qui désigne une personne : der Name.",
+        "de": "Der Name ist das Wort, mit dem man eine Person nennt."
+      },
+      "genderExplanation": {
+        "en": "Name is masculine, so its article is der.",
+        "fr": "Name est masculin : on dit der Name.",
+        "de": "Name ist maskulin, daher lautet der Artikel der."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Mein ",
+        "after": " ist Lena.",
+        "accepted": { "answers": ["Name"] },
+        "referenceTargetIds": ["name", "punkt", "gross", "umlaut"],
+        "explanation": {
+          "en": "Lena is a name, so only Name fits.",
+          "fr": "Lena est un nom : seul « Name » convient.",
+          "de": "Lena ist ein Name, nur „Name“ passt."
+        }
+      },
+      "listeningOptionTargetIds": ["name", "adresse", "klein", "punkt"]
+    },
+    {
+      "id": "gross",
+      "term": "groß",
+      "translations": { "en": ["big", "uppercase"], "fr": ["grand", "majuscule"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "groß",
+      "examForms": ["groß"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɡʁoːs/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Das A ist groß.",
+        "translation": { "en": "The A is uppercase.", "fr": "Le A est une majuscule." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Groß means big; a big letter is an uppercase letter.",
+        "fr": "Groß signifie grand ; une grande lettre est une majuscule.",
+        "de": "Groß bedeutet nicht klein; ein großer Buchstabe ist ein Großbuchstabe."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Das „A“ ist ",
+        "after": ", das „a“ ist klein.",
+        "accepted": { "answers": ["groß"] },
+        "referenceTargetIds": ["gross", "punkt", "name", "alphabet"],
+        "explanation": {
+          "en": "The opposite of klein is groß.",
+          "fr": "Le contraire de klein est groß.",
+          "de": "Das Gegenteil von klein ist groß."
+        }
+      },
+      "listeningOptionTargetIds": ["gross", "klein", "punkt", "eszett"]
+    },
+    {
+      "id": "klein",
+      "term": "klein",
+      "translations": { "en": ["small", "lowercase"], "fr": ["petit", "minuscule"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "klein",
+      "examForms": ["klein"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/klaɪn/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Das a ist klein.",
+        "translation": { "en": "The a is lowercase.", "fr": "Le a est une minuscule." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Klein means small; a small letter is a lowercase letter.",
+        "fr": "Klein signifie petit ; une petite lettre est une minuscule.",
+        "de": "Klein ist das Gegenteil von groß; ein kleiner Buchstabe ist ein Kleinbuchstabe."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Das „A“ ist groß, das „a“ ist ",
+        "after": ".",
+        "accepted": { "answers": ["klein"] },
+        "referenceTargetIds": ["klein", "punkt", "name", "alphabet"],
+        "explanation": {
+          "en": "The opposite of groß is klein.",
+          "fr": "Le contraire de groß est klein.",
+          "de": "Das Gegenteil von groß ist klein."
+        }
+      },
+      "listeningOptionTargetIds": ["klein", "gross", "bindestrich", "name"]
+    },
+    {
+      "id": "buchstabieren",
+      "term": "buchstabieren",
+      "translations": { "en": ["to spell"], "fr": ["épeler"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "buchstabieren",
+      "examForms": ["buchstabieren"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/buːxʃtaˈbiːʁən/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Können Sie das bitte buchstabieren?",
+        "translation": {
+          "en": "Can you spell that, please?",
+          "fr": "Pouvez-vous épeler cela, s’il vous plaît ?"
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Buchstabieren means to say a word letter by letter.",
+        "fr": "Buchstabieren signifie dire un mot lettre par lettre.",
+        "de": "Buchstabieren heißt, ein Wort Buchstabe für Buchstabe zu sagen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Kannst du deinen Namen ",
+        "after": "?",
+        "accepted": { "answers": ["buchstabieren"] },
+        "referenceTargetIds": ["buchstabieren", "punkt", "gross", "klein"],
+        "explanation": {
+          "en": "Saying a name letter by letter is buchstabieren.",
+          "fr": "Dire un nom lettre par lettre, c’est buchstabieren.",
+          "de": "Einen Namen Buchstabe für Buchstabe sagen heißt buchstabieren."
+        }
+      },
+      "listeningOptionTargetIds": ["buchstabieren", "buchstabe", "bindestrich", "adresse"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

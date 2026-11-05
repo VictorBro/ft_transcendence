@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 2,
+  "id": "de-simple-past-irregular",
+  "lang": "de",
+  "level": "B1",
+  "locales": ["en", "fr", "de"],
+  "title": "Präteritum: unregelmäßige und gemischte Verben",
+  "objective": {
+    "en": "Form the simple past of irregular verbs (fuhr, ging) and mixed verbs (brachte, dachte, wusste) with the correct personal endings.",
+    "fr": "Former le prétérit des verbes irréguliers (fuhr, ging) et mixtes (brachte, dachte, wusste) avec les bonnes terminaisons.",
+    "de": "Das Präteritum unregelmäßiger Verben (fuhr, ging) und gemischter Verben (brachte, dachte, wusste) mit den richtigen Personalendungen bilden."
+  },
+  "estimatedMinutes": 17,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:34:02.535Z",
+    "inputHashes": { "outline": "1ab0066e72f259c1b433ef9e146326e36aafb5871232d32b7bde51ef947f7f25" }
+  },
+  "kind": "grammar",
+  "topic": "verbs_morphology",
+  "scopeBoundaries": {
+    "en": "Covers the simple past of irregular verbs without -te and of mixed verbs with -te. Excludes regular verbs, the choice between simple past and perfect, and als/wenn.",
+    "fr": "Couvre le prétérit des verbes irréguliers sans -te et des verbes mixtes avec -te. Exclut les verbes réguliers, le choix entre prétérit et parfait, et als/wenn.",
+    "de": "Behandelt das Präteritum unregelmäßiger Verben ohne -te und gemischter Verben mit -te. Ausgeschlossen sind regelmäßige Verben, die Wahl zwischen Präteritum und Perfekt sowie als/wenn."
+  },
+  "prerequisites": [
+    {
+      "en": "Simple past of regular verbs (machte, arbeitete)",
+      "fr": "Prétérit des verbes réguliers (machte, arbeitete)",
+      "de": "Präteritum regelmäßiger Verben (machte, arbeitete)"
+    },
+    {
+      "en": "Irregular past participles (gefahren, gegangen)",
+      "fr": "Participes passés irréguliers (gefahren, gegangen)",
+      "de": "Unregelmäßige Partizipien (gefahren, gegangen)"
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-strong",
+      "summary": {
+        "en": "Irregular verbs change the stem vowel in the simple past and take no -te: fahren – fuhr, gehen – ging, schreiben – schrieb, liegen – lag.",
+        "fr": "Les verbes irréguliers changent la voyelle du radical au prétérit, sans -te : fahren – fuhr, gehen – ging, schreiben – schrieb, liegen – lag.",
+        "de": "Unregelmäßige Verben wechseln im Präteritum den Stammvokal und haben kein -te: fahren – fuhr, gehen – ging, schreiben – schrieb, liegen – lag."
+      }
+    },
+    {
+      "id": "rule-mixed",
+      "summary": {
+        "en": "Mixed verbs change the stem and also take -te: bringen – brachte, denken – dachte, wissen – wusste, kennen – kannte.",
+        "fr": "Les verbes mixtes changent le radical et prennent aussi -te : bringen – brachte, denken – dachte, wissen – wusste, kennen – kannte.",
+        "de": "Gemischte Verben ändern den Stamm und haben zusätzlich -te: bringen – brachte, denken – dachte, wissen – wusste, kennen – kannte."
+      }
+    },
+    {
+      "id": "rule-endings",
+      "summary": {
+        "en": "Personal endings: ich and er/sie/es have none, du takes -st, wir -en, ihr -t, sie/Sie -en.",
+        "fr": "Terminaisons : ich et er/sie/es n’en ont pas, du prend -st, wir -en, ihr -t, sie/Sie -en.",
+        "de": "Personalendungen: ich und er/sie/es haben keine, du -st, wir -en, ihr -t, sie/Sie -en."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-strong",
+      "title": {
+        "en": "Irregular verbs: fuhr, ging, schrieb, lag",
+        "fr": "Verbes irréguliers : fuhr, ging, schrieb, lag",
+        "de": "Unregelmäßige Verben: fuhr, ging, schrieb, lag"
+      },
+      "ruleIds": ["rule-strong", "rule-endings"],
+      "explanationPlan": {
+        "en": "Explain that irregular verbs change the stem vowel and take no -te. Show the full conjugation of fahren and further verbs (kommen, sehen, bleiben). Stress that ich and er/sie/es have no ending.",
+        "fr": "Expliquer que les verbes irréguliers changent la voyelle du radical et n’ont pas de -te. Montrer la conjugaison complète de fahren et d’autres verbes (kommen, sehen, bleiben). Insister sur l’absence de terminaison pour ich et er/sie/es.",
+        "de": "Erklären, dass unregelmäßige Verben den Stammvokal wechseln und kein -te haben. Die vollständige Konjugation von fahren und weitere Verben (kommen, sehen, bleiben) zeigen. Betonen, dass ich und er/sie/es keine Endung haben."
+      },
+      "explanationDurationS": 130,
+      "examples": [
+        {
+          "text": "Ich fuhr mit dem Zug nach Hamburg.",
+          "translation": {
+            "en": "I went to Hamburg by train.",
+            "fr": "Je suis allé à Hambourg en train."
+          }
+        },
+        {
+          "text": "Er schrieb jeden Tag eine E-Mail.",
+          "translation": {
+            "en": "He wrote an email every day.",
+            "fr": "Il écrivait un e-mail tous les jours."
+          }
+        },
+        {
+          "text": "Das Buch lag auf dem Tisch.",
+          "translation": {
+            "en": "The book was lying on the table.",
+            "fr": "Le livre était sur la table."
+          }
+        },
+        {
+          "text": "Wir gingen zusammen nach Hause.",
+          "translation": { "en": "We went home together.", "fr": "Nous sommes rentrés ensemble." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not add -te to irregular verbs: ich fuhr, not ich fahrte.",
+          "fr": "N’ajoutez pas -te aux verbes irréguliers : ich fuhr, et non ich fahrte.",
+          "de": "Hänge kein -te an unregelmäßige Verben: ich fuhr, nicht ich fahrte."
+        },
+        {
+          "en": "ich and er/sie/es have the same form without an ending: ich fuhr, er fuhr.",
+          "fr": "ich et er/sie/es ont la même forme, sans terminaison : ich fuhr, er fuhr.",
+          "de": "ich und er/sie/es haben dieselbe Form ohne Endung: ich fuhr, er fuhr."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-s-person",
+          "type": "grammar_person_matching",
+          "itemCount": 1,
+          "ruleIds": ["rule-strong", "rule-endings"],
+          "estimatedDurationS": 90
+        },
+        {
+          "id": "ex-s-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 5,
+          "ruleIds": ["rule-strong", "rule-endings"],
+          "estimatedDurationS": 75
+        },
+        {
+          "id": "ex-s-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 5,
+          "ruleIds": ["rule-strong", "rule-endings"],
+          "estimatedDurationS": 100
+        }
+      ]
+    },
+    {
+      "id": "block-mixed",
+      "title": {
+        "en": "Mixed verbs: brachte, dachte, wusste",
+        "fr": "Verbes mixtes : brachte, dachte, wusste",
+        "de": "Gemischte Verben: brachte, dachte, wusste"
+      },
+      "ruleIds": ["rule-mixed", "rule-endings"],
+      "explanationPlan": {
+        "en": "Explain that mixed verbs change the stem and take -te. Show the full conjugation of denken and the verbs bringen, wissen, kennen. Contrast with irregular verbs such as ging.",
+        "fr": "Expliquer que les verbes mixtes changent le radical et prennent -te. Montrer la conjugaison complète de denken et les verbes bringen, wissen, kennen. Contraster avec les verbes irréguliers comme ging.",
+        "de": "Erklären, dass gemischte Verben den Stamm ändern und -te haben. Die vollständige Konjugation von denken und die Verben bringen, wissen, kennen zeigen. Mit unregelmäßigen Verben wie ging vergleichen."
+      },
+      "explanationDurationS": 130,
+      "examples": [
+        {
+          "text": "Sie brachte uns einen Kaffee.",
+          "translation": { "en": "She brought us a coffee.", "fr": "Elle nous a apporté un café." }
+        },
+        {
+          "text": "Ich dachte an meine Reise.",
+          "translation": { "en": "I thought about my trip.", "fr": "Je pensais à mon voyage." }
+        },
+        {
+          "text": "Er wusste die Antwort nicht.",
+          "translation": {
+            "en": "He did not know the answer.",
+            "fr": "Il ne connaissait pas la réponse."
+          }
+        },
+        {
+          "text": "Wir kannten den Weg.",
+          "translation": { "en": "We knew the way.", "fr": "Nous connaissions le chemin." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Mixed verbs change the stem: ich brachte, not ich bringte.",
+          "fr": "Les verbes mixtes changent le radical : ich brachte, et non ich bringte.",
+          "de": "Gemischte Verben ändern den Stamm: ich brachte, nicht ich bringte."
+        },
+        {
+          "en": "Do not leave out -te: ich dachte, not ich dach.",
+          "fr": "N’oubliez pas -te : ich dachte, et non ich dach.",
+          "de": "Lass das -te nicht weg: ich dachte, nicht ich dach."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-m-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-mixed", "rule-endings"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-m-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-mixed", "rule-endings"],
+          "estimatedDurationS": 80
+        },
+        {
+          "id": "ex-m-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 4,
+          "ruleIds": ["rule-mixed", "rule-endings"],
+          "estimatedDurationS": 80
+        }
+      ]
+    }
+  ],
+  "newVerbs": [
+    { "infinitive": "bringen", "translations": { "en": "to bring", "fr": "apporter" } },
+    { "infinitive": "denken", "translations": { "en": "to think", "fr": "penser" } },
+    { "infinitive": "wissen", "translations": { "en": "to know (a fact)", "fr": "savoir" } },
+    {
+      "infinitive": "kennen",
+      "translations": { "en": "to know (a person or place)", "fr": "connaître" }
+    },
+    {
+      "infinitive": "liegen",
+      "translations": { "en": "to lie, to be located", "fr": "être couché, se trouver" }
+    },
+    { "infinitive": "bleiben", "translations": { "en": "to stay", "fr": "rester" } }
+  ],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-strong",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-strong", "rule-endings"],
+        "estimatedDurationS": 100,
+        "timeLimitS": 160
+      },
+      {
+        "pageId": "exam-mixed",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-mixed", "rule-endings"],
+        "estimatedDurationS": 100,
+        "timeLimitS": 160
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["rule-strong", "rule-mixed", "rule-endings"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

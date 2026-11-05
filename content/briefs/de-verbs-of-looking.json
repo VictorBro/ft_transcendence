@@ -1,0 +1,613 @@
+{
+  "schemaVersion": 2,
+  "id": "de-verbs-of-looking",
+  "lang": "de",
+  "level": "C2",
+  "locales": ["en", "fr", "de"],
+  "title": "Verben des Sehens",
+  "objective": {
+    "en": "Distinguish about twelve verbs for different ways of looking and use them precisely.",
+    "fr": "Distinguer une douzaine de verbes pour différentes façons de regarder et les employer avec précision.",
+    "de": "Etwa zwölf Verben für Arten des Schauens unterscheiden und treffend einsetzen."
+  },
+  "estimatedMinutes": 19,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:36:48.877Z",
+    "inputHashes": { "outline": "4cbc94ec1ad68ef5fc632652e0ff8a8e1ba313a4b467f5f79651a0b530613bab" }
+  },
+  "kind": "vocabulary",
+  "theme": "language",
+  "coverageNotes": {
+    "en": "Twelve verbs of looking, from neutral and attentive (betrachten, mustern) to colloquial or pejorative (glotzen, gaffen), plus the physical acts blinzeln and schielen.",
+    "fr": "Douze verbes du regard, du neutre et attentif (betrachten, mustern) au familier ou péjoratif (glotzen, gaffen), plus les gestes physiques blinzeln et schielen.",
+    "de": "Zwölf Verben des Schauens, vom neutralen und aufmerksamen (betrachten, mustern) bis zum umgangssprachlichen oder abwertenden (glotzen, gaffen), dazu die körperlichen Vorgänge blinzeln und schielen."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve verbs match the outline and split into two groups of six, which suits the matching and exam pages.",
+    "fr": "Douze verbes correspondent au plan et se répartissent en deux groupes de six, ce qui convient aux pages d’association et d’examen.",
+    "de": "Zwölf Verben entsprechen der Gliederung und lassen sich in zwei Sechsergruppen teilen, passend für Zuordnungs- und Prüfungsseiten."
+  },
+  "difficultyBalance": {
+    "en": "Mostly demanding verbs whose nuances (register, attitude, intensity) are the learning goal.",
+    "fr": "Surtout des verbes exigeants dont les nuances (registre, attitude, intensité) sont l’objectif d’apprentissage.",
+    "de": "Überwiegend anspruchsvolle Verben, deren Nuancen (Stilebene, Haltung, Intensität) das Lernziel sind."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "aufmerksam",
+      "label": {
+        "en": "Attentive looking",
+        "fr": "Regarder avec attention",
+        "de": "Aufmerksam schauen"
+      },
+      "targetIds": ["spaehen", "mustern", "betrachten", "beaeugen", "ueberfliegen", "erblicken"],
+      "introduction": {
+        "en": "These verbs describe **attentive** looking, from a quick glance to a careful examination:\n\n- `spähen`: to look out cautiously for something\n- `mustern`: to look someone critically up and down\n- `betrachten`: to look at something calmly and with interest\n- `beäugen`: to look at something with suspicion or curiosity\n- `überfliegen`: to read a text only superficially\n- `erblicken`: to suddenly catch sight of something\n\nNote the difference: people are sized up with `mustern`, a painting rather with `betrachten`.",
+        "fr": "Ces verbes décrivent un regard **attentif**, du coup d’œil rapide à l’examen minutieux :\n\n- `spähen` : guetter avec prudence\n- `mustern` : regarder quelqu’un d’un œil critique de haut en bas\n- `betrachten` : regarder quelque chose calmement et avec intérêt\n- `beäugen` : regarder avec méfiance ou curiosité\n- `überfliegen` : ne lire un texte que superficiellement\n- `erblicken` : apercevoir soudain quelque chose\n\nAttention à la différence : on toise des personnes avec `mustern`, on contemple plutôt un tableau avec `betrachten`.",
+        "de": "Diese Verben beschreiben **aufmerksames** Schauen, vom flüchtigen Blick bis zur prüfenden Betrachtung:\n\n- `spähen`: vorsichtig nach etwas Ausschau halten\n- `mustern`: jemanden kritisch von oben bis unten ansehen\n- `betrachten`: etwas in Ruhe und mit Interesse ansehen\n- `beäugen`: etwas misstrauisch oder neugierig ansehen\n- `überfliegen`: einen Text nur flüchtig lesen\n- `erblicken`: etwas plötzlich wahrnehmen\n\nAchte auf den Unterschied: Menschen sieht man mit `mustern` an, ein Bild eher mit `betrachten`."
+      }
+    },
+    {
+      "id": "auffaellig",
+      "label": {
+        "en": "Conspicuous and involuntary looking",
+        "fr": "Regards appuyés et involontaires",
+        "de": "Auffällig und unwillkürlich schauen"
+      },
+      "targetIds": ["starren", "glotzen", "gaffen", "linsen", "blinzeln", "schielen"],
+      "introduction": {
+        "en": "These verbs describe **conspicuous** or involuntary looking, often with a negative tone:\n\n- `starren`: to fix one’s gaze motionless on something\n- `glotzen`: to look stupidly or intrusively (colloquial)\n- `gaffen`: to watch curiously and tactlessly (pejorative)\n- `linsen`: to take a secret peek (colloquial)\n- `blinzeln`: to open and close the eyes quickly\n- `schielen`: to look sideways or secretly at something\n\nCaution: `glotzen` and `gaffen` are impolite, while `starren` is more neutral.",
+        "fr": "Ces verbes décrivent un regard **appuyé** ou involontaire, souvent avec une nuance négative :\n\n- `starren` : fixer le regard sans bouger sur quelque chose\n- `glotzen` : regarder bêtement ou de façon indiscrète (familier)\n- `gaffen` : regarder avec curiosité et sans tact (péjoratif)\n- `linsen` : jeter un coup d’œil en cachette (familier)\n- `blinzeln` : ouvrir et fermer rapidement les yeux\n- `schielen` : regarder de côté ou en cachette\n\nAttention : `glotzen` et `gaffen` ne sont pas polis, `starren` est plus neutre.",
+        "de": "Diese Verben beschreiben **auffälliges** oder unwillkürliches Schauen, oft mit einem negativen Beiklang:\n\n- `starren`: den Blick unbeweglich auf etwas richten\n- `glotzen`: dumm oder aufdringlich schauen (umgangssprachlich)\n- `gaffen`: neugierig und ohne Taktgefühl zusehen (abwertend)\n- `linsen`: heimlich einen Blick riskieren (umgangssprachlich)\n- `blinzeln`: die Augen schnell öffnen und schließen\n- `schielen`: schräg oder heimlich nach etwas sehen\n\nAchtung: `glotzen` und `gaffen` sind unhöflich, `starren` ist neutraler."
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "spaehen",
+      "term": "spähen",
+      "translations": {
+        "en": ["to peer out, to scout", "to look out"],
+        "fr": ["guetter", "épier"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "spähen",
+      "examForms": ["spähen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʃpɛːən/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Der Posten späht durch das Fernglas über die Grenze.",
+        "translation": {
+          "en": "The guard peers across the border through the binoculars.",
+          "fr": "La sentinelle guette de l’autre côté de la frontière avec des jumelles."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Spähen means to look out cautiously and searchingly for something or someone.",
+        "fr": "Spähen signifie chercher du regard, avec prudence, quelque chose ou quelqu’un.",
+        "de": "Spähen heißt, vorsichtig und suchend nach etwas oder jemandem Ausschau zu halten."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Sie musste vorsichtig durch den Spalt im Zaun ",
+        "after": ", um zu sehen, ob jemand kam.",
+        "accepted": { "answers": ["spähen", "linsen"] },
+        "referenceTargetIds": ["spaehen", "ueberfliegen", "mustern", "erblicken"],
+        "explanation": {
+          "en": "Only spähen fits: she looks out cautiously through a gap.",
+          "fr": "Seul « spähen » convient : elle guette avec prudence par une fente.",
+          "de": "Nur „spähen“ passt: Sie hält vorsichtig durch einen Spalt Ausschau."
+        }
+      },
+      "listeningOptionTargetIds": ["spaehen", "schielen", "starren", "erblicken"]
+    },
+    {
+      "id": "mustern",
+      "term": "mustern",
+      "translations": {
+        "en": ["to look someone up and down", "to size up"],
+        "fr": ["toiser", "dévisager"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "mustern",
+      "examForms": ["mustern"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈmʊstɐn/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Die Chefin musterte den Bewerber von Kopf bis Fuß.",
+        "translation": {
+          "en": "The boss looked the applicant up and down.",
+          "fr": "La patronne toisa le candidat de la tête aux pieds."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Mustern means to examine a person or thing critically and thoroughly with one’s eyes.",
+        "fr": "Mustern signifie examiner du regard une personne ou une chose, de façon critique et minutieuse.",
+        "de": "Mustern heißt, eine Person oder Sache kritisch und gründlich mit den Augen zu prüfen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Der Türsteher begann, jeden Gast von Kopf bis Fuß zu ",
+        "after": ".",
+        "accepted": { "answers": ["mustern"] },
+        "referenceTargetIds": ["mustern", "glotzen", "linsen", "blinzeln"],
+        "explanation": {
+          "en": "Mustern takes a direct object (jeden Gast) and means a critical look; the others are intransitive.",
+          "fr": "Mustern se construit avec un complément direct (jeden Gast) et exprime un regard critique ; les autres sont intransitifs.",
+          "de": "Mustern steht mit Akkusativobjekt (jeden Gast) und meint einen prüfenden Blick; die anderen Verben sind intransitiv."
+        }
+      },
+      "listeningOptionTargetIds": ["mustern", "betrachten", "beaeugen", "starren"]
+    },
+    {
+      "id": "betrachten",
+      "term": "betrachten",
+      "translations": {
+        "en": ["to contemplate, to regard", "to look at closely"],
+        "fr": ["contempler", "observer"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "betrachten",
+      "examForms": ["betrachten"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/bəˈtʁaxtn̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Er betrachtete lange das Bild an der Wand.",
+        "translation": {
+          "en": "He looked at the picture on the wall for a long time.",
+          "fr": "Il contempla longuement le tableau accroché au mur."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Betrachten means to look at something calmly, attentively and with interest.",
+        "fr": "Betrachten signifie regarder quelque chose calmement, attentivement et avec intérêt.",
+        "de": "Betrachten heißt, etwas in Ruhe, aufmerksam und mit Interesse anzusehen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Stundenlang konnte sie das Gemälde still ",
+        "after": ", ohne sich zu langweilen.",
+        "accepted": { "answers": ["betrachten"] },
+        "referenceTargetIds": ["betrachten", "blinzeln", "glotzen", "spaehen"],
+        "explanation": {
+          "en": "Betrachten fits a calm, interested look at a painting.",
+          "fr": "Betrachten convient à un regard calme et intéressé sur un tableau.",
+          "de": "Betrachten passt zu einem ruhigen, interessierten Blick auf ein Gemälde."
+        }
+      },
+      "listeningOptionTargetIds": ["betrachten", "beaeugen", "erblicken", "mustern"]
+    },
+    {
+      "id": "beaeugen",
+      "term": "beäugen",
+      "translations": {
+        "en": ["to eye warily", "to eye"],
+        "fr": ["lorgner", "regarder avec méfiance"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "beäugen",
+      "examForms": ["beäugen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/bəˈʔɔɪɡn̩/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Die Nachbarn beäugten den neuen Mieter misstrauisch.",
+        "translation": {
+          "en": "The neighbours eyed the new tenant suspiciously.",
+          "fr": "Les voisins lorgnaient le nouveau locataire avec méfiance."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Beäugen means to look at someone or something with suspicion or curiosity.",
+        "fr": "Beäugen signifie regarder quelqu’un ou quelque chose avec méfiance ou curiosité.",
+        "de": "Beäugen heißt, jemanden oder etwas misstrauisch oder neugierig anzusehen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Die Katze begann, den fremden Hund misstrauisch zu ",
+        "after": ".",
+        "accepted": { "answers": ["beäugen", "mustern"] },
+        "referenceTargetIds": ["beaeugen", "schielen", "gaffen", "blinzeln"],
+        "explanation": {
+          "en": "Only beäugen takes the dog as object and expresses suspicious looking.",
+          "fr": "Seul « beäugen » se construit avec le chien comme complément et exprime un regard méfiant.",
+          "de": "Nur „beäugen“ steht mit dem Hund als Objekt und drückt einen misstrauischen Blick aus."
+        }
+      },
+      "listeningOptionTargetIds": ["beaeugen", "betrachten", "blinzeln", "erblicken"]
+    },
+    {
+      "id": "ueberfliegen",
+      "term": "überfliegen",
+      "translations": {
+        "en": ["to skim", "to read superficially"],
+        "fr": ["parcourir du regard", "lire en diagonale"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "überfliegen",
+      "examForms": ["überfliegen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/yːbɐˈfliːɡn̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ich habe den Artikel nur kurz überflogen.",
+        "translation": {
+          "en": "I only skimmed the article briefly.",
+          "fr": "Je n’ai fait que parcourir rapidement l’article."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Überfliegen means to look through a text quickly without reading it closely.",
+        "fr": "Überfliegen signifie parcourir un texte rapidement sans le lire en détail.",
+        "de": "Überfliegen heißt, einen Text schnell durchzusehen, ohne ihn genau zu lesen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Ich hatte keine Zeit zu lesen und konnte den Bericht nur noch ",
+        "after": ".",
+        "accepted": { "answers": ["überfliegen"] },
+        "referenceTargetIds": ["ueberfliegen", "blinzeln", "gaffen", "schielen"],
+        "explanation": {
+          "en": "Überfliegen is the verb for reading a report only superficially.",
+          "fr": "Überfliegen est le verbe pour ne lire un rapport que superficiellement.",
+          "de": "Überfliegen ist das Verb dafür, einen Bericht nur flüchtig zu lesen."
+        }
+      },
+      "listeningOptionTargetIds": ["ueberfliegen", "erblicken", "beaeugen", "betrachten"]
+    },
+    {
+      "id": "erblicken",
+      "term": "erblicken",
+      "translations": {
+        "en": ["to catch sight of", "to spot"],
+        "fr": ["apercevoir", "distinguer"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "erblicken",
+      "examForms": ["erblicken"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɛɐ̯ˈblɪkn̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Am Horizont erblickte sie endlich das Schiff.",
+        "translation": {
+          "en": "On the horizon she finally caught sight of the ship.",
+          "fr": "À l’horizon, elle aperçut enfin le navire."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Erblicken means to perceive something or someone suddenly; it names the moment of seeing, not a lasting look.",
+        "fr": "Erblicken signifie percevoir soudain quelque chose ou quelqu’un ; le verbe désigne l’instant où l’on voit, non un regard prolongé.",
+        "de": "Erblicken heißt, etwas oder jemanden plötzlich wahrzunehmen; das Verb nennt den Moment des Sehens, nicht einen langen Blick."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Plötzlich meinte er, in der Menge seine alte Lehrerin zu ",
+        "after": ".",
+        "accepted": { "answers": ["erblicken"] },
+        "referenceTargetIds": ["erblicken", "starren", "linsen", "blinzeln"],
+        "explanation": {
+          "en": "Erblicken takes a direct object and describes suddenly noticing someone.",
+          "fr": "Erblicken se construit avec un complément direct et décrit le fait de remarquer soudain quelqu’un.",
+          "de": "Erblicken steht mit Akkusativobjekt und beschreibt das plötzliche Bemerken einer Person."
+        }
+      },
+      "listeningOptionTargetIds": ["erblicken", "spaehen", "mustern", "betrachten"]
+    },
+    {
+      "id": "starren",
+      "term": "starren",
+      "translations": {
+        "en": ["to stare", "to gaze fixedly"],
+        "fr": ["fixer du regard", "regarder fixement"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "starren",
+      "examForms": ["starren"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʃtaʁən/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Er starrte minutenlang auf den leeren Bildschirm.",
+        "translation": {
+          "en": "He stared at the empty screen for minutes.",
+          "fr": "Il fixa l’écran vide pendant des minutes."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Starren means to hold the gaze motionless on one point, often from shock or concentration.",
+        "fr": "Starren signifie garder le regard immobile sur un point, souvent par choc ou concentration.",
+        "de": "Starren heißt, den Blick unbeweglich auf einen Punkt zu richten, oft aus Schreck oder Konzentration."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Er konnte nur noch sprachlos ins Leere ",
+        "after": ".",
+        "accepted": { "answers": ["starren"] },
+        "referenceTargetIds": ["starren", "mustern", "ueberfliegen", "erblicken"],
+        "explanation": {
+          "en": "Starren fits: a fixed, motionless look into nothing.",
+          "fr": "Starren convient : un regard fixe et immobile dans le vide.",
+          "de": "Starren passt: ein fester, unbeweglicher Blick ins Leere."
+        }
+      },
+      "listeningOptionTargetIds": ["starren", "spaehen", "glotzen", "schielen"]
+    },
+    {
+      "id": "glotzen",
+      "term": "glotzen",
+      "translations": {
+        "en": ["to gawk (colloquial)", "to goggle"],
+        "fr": ["regarder bêtement (fam.)", "écarquiller les yeux (fam.)"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "glotzen",
+      "examForms": ["glotzen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈɡlɔtsn̩/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Glotz nicht so, hilf mir lieber!",
+        "translation": {
+          "en": "Don’t just gawk, help me instead!",
+          "fr": "Ne reste pas là à regarder bêtement, aide-moi plutôt !"
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Glotzen is colloquial and means to look stupidly or rudely; avoid it in polite speech.",
+        "fr": "Glotzen est familier et signifie regarder bêtement ou de façon impolie ; à éviter dans un langage poli.",
+        "de": "Glotzen ist umgangssprachlich und meint dummes oder unhöfliches Schauen; in höflicher Rede meidet man es."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Steh nicht so herum und hör endlich auf, so dumm zu ",
+        "after": "!",
+        "accepted": { "answers": ["glotzen", "gaffen"] },
+        "referenceTargetIds": ["glotzen", "mustern", "ueberfliegen", "erblicken"],
+        "explanation": {
+          "en": "Glotzen is the colloquial, rude verb for dull staring.",
+          "fr": "Glotzen est le verbe familier et impoli pour un regard stupide.",
+          "de": "Glotzen ist das umgangssprachliche, unhöfliche Verb für dummes Starren."
+        }
+      },
+      "listeningOptionTargetIds": ["glotzen", "gaffen", "blinzeln", "linsen"]
+    },
+    {
+      "id": "gaffen",
+      "term": "gaffen",
+      "translations": {
+        "en": ["to gape, to rubberneck (pejorative)", "to gawp"],
+        "fr": ["badauder (péj.)", "regarder en curieux (péj.)"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "gaffen",
+      "examForms": ["gaffen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈɡafn̩/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Statt zu helfen, standen sie da und gafften.",
+        "translation": {
+          "en": "Instead of helping, they stood there gawping.",
+          "fr": "Au lieu d’aider, ils restaient là à badauder."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Gaffen is pejorative: it describes curious, tactless watching, for example at an accident.",
+        "fr": "Gaffen est péjoratif : il décrit un regard curieux et sans tact, par exemple devant un accident.",
+        "de": "Gaffen ist abwertend: Es beschreibt neugieriges, taktloses Zusehen, etwa bei einem Unfall."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Bei dem Unfall blieben viele Schaulustige stehen und begannen zu ",
+        "after": ".",
+        "accepted": { "answers": ["gaffen", "glotzen"] },
+        "referenceTargetIds": ["gaffen", "blinzeln", "schielen", "beaeugen"],
+        "explanation": {
+          "en": "Gaffen fits bystanders watching an accident; beäugen would need an object.",
+          "fr": "Gaffen convient à des badauds devant un accident ; beäugen exigerait un complément.",
+          "de": "Gaffen passt zu Schaulustigen bei einem Unfall; beäugen bräuchte ein Objekt."
+        }
+      },
+      "listeningOptionTargetIds": ["gaffen", "glotzen", "starren", "spaehen"]
+    },
+    {
+      "id": "linsen",
+      "term": "linsen",
+      "translations": {
+        "en": ["to peek (colloquial)", "to take a sneaky look"],
+        "fr": ["zieuter (fam.)", "jeter un coup d’œil en douce"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "linsen",
+      "examForms": ["linsen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈlɪnzn̩/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Er linste heimlich in ihr Heft.",
+        "translation": {
+          "en": "He secretly peeked into her notebook.",
+          "fr": "Il jeta en douce un coup d’œil dans son cahier."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Linsen is colloquial and means to take a quick, secret look at something.",
+        "fr": "Linsen est familier et signifie jeter en cachette un coup d’œil rapide à quelque chose.",
+        "de": "Linsen ist umgangssprachlich und heißt, heimlich einen kurzen Blick auf etwas zu werfen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Sie konnte es nicht lassen, heimlich durchs Schlüsselloch zu ",
+        "after": ".",
+        "accepted": { "answers": ["linsen", "spähen"] },
+        "referenceTargetIds": ["linsen", "ueberfliegen", "betrachten", "erblicken"],
+        "explanation": {
+          "en": "Linsen fits a secret peek through a keyhole and needs no object.",
+          "fr": "Linsen convient à un regard furtif par le trou de la serrure et n’exige pas de complément.",
+          "de": "Linsen passt zu einem heimlichen Blick durchs Schlüsselloch und braucht kein Objekt."
+        }
+      },
+      "listeningOptionTargetIds": ["linsen", "blinzeln", "glotzen", "schielen"]
+    },
+    {
+      "id": "blinzeln",
+      "term": "blinzeln",
+      "translations": {
+        "en": ["to blink", "to squint"],
+        "fr": ["cligner des yeux", "plisser les yeux"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "blinzeln",
+      "examForms": ["blinzeln"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈblɪntsl̩n/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Die Sonne blendete ihn, er musste blinzeln.",
+        "translation": {
+          "en": "The sun dazzled him; he had to blink.",
+          "fr": "Le soleil l’éblouissait, il dut cligner des yeux."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Blinzeln means to open and close the eyes quickly, for example in bright light.",
+        "fr": "Blinzeln signifie ouvrir et fermer rapidement les yeux, par exemple dans une lumière vive.",
+        "de": "Blinzeln heißt, die Augen schnell zu öffnen und zu schließen, etwa bei grellem Licht."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Nach dem Aufwachen musste ich im grellen Licht erst einmal ",
+        "after": ".",
+        "accepted": { "answers": ["blinzeln"] },
+        "referenceTargetIds": ["blinzeln", "gaffen", "beaeugen", "erblicken"],
+        "explanation": {
+          "en": "Blinzeln is the reflex of blinking in bright light.",
+          "fr": "Blinzeln désigne le réflexe de cligner des yeux dans une lumière vive.",
+          "de": "Blinzeln ist der Reflex, bei grellem Licht die Augen zu schließen und zu öffnen."
+        }
+      },
+      "listeningOptionTargetIds": ["blinzeln", "linsen", "glotzen", "schielen"]
+    },
+    {
+      "id": "schielen",
+      "term": "schielen",
+      "translations": {
+        "en": ["to squint, to be cross-eyed", "to glance sideways"],
+        "fr": ["loucher", "regarder du coin de l’œil"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "schielen",
+      "examForms": ["schielen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʃiːlən/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Er schielte nach dem letzten Stück Kuchen.",
+        "translation": {
+          "en": "He cast a sideways glance at the last piece of cake.",
+          "fr": "Il lorgnait du coin de l’œil le dernier morceau de gâteau."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Schielen means to have misaligned eyes, or figuratively to glance sideways at something, often with desire (schielen auf).",
+        "fr": "Schielen signifie loucher, ou au sens figuré regarder de côté quelque chose, souvent avec envie (schielen auf).",
+        "de": "Schielen heißt, die Augen nicht parallel zu richten, oder übertragen, schräg und oft begehrlich auf etwas zu sehen (schielen auf)."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Während der Klausur versuchte er, heimlich auf das Blatt seiner Nachbarin zu ",
+        "after": ".",
+        "accepted": { "answers": ["schielen", "linsen"] },
+        "referenceTargetIds": ["schielen", "ueberfliegen", "erblicken", "betrachten"],
+        "explanation": {
+          "en": "Schielen auf means to glance secretly sideways at something.",
+          "fr": "Schielen auf signifie jeter un regard en coin et en cachette sur quelque chose.",
+          "de": "Schielen auf heißt, heimlich von der Seite auf etwas zu blicken."
+        }
+      },
+      "listeningOptionTargetIds": ["schielen", "spaehen", "starren", "blinzeln"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

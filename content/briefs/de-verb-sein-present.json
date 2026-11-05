@@ -1,0 +1,230 @@
+{
+  "schemaVersion": 2,
+  "id": "de-verb-sein-present",
+  "lang": "de",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Das Verb sein im Präsens",
+  "objective": {
+    "en": "Conjugate the irregular verb sein in the present tense with all pronouns to give your name, origin, job and how you feel.",
+    "fr": "Conjuguer le verbe irrégulier sein au présent avec tous les pronoms pour dire son nom, son origine, son métier et comment on va.",
+    "de": "Das unregelmäßige Verb sein im Präsens mit allen Pronomen konjugieren, um Name, Herkunft, Beruf und Befinden anzugeben."
+  },
+  "estimatedMinutes": 15,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:24:42.400Z",
+    "inputHashes": { "outline": "8dc29e96db071d76ac54cf5f0e2b0b109ad884c2375477f247cefc399984d8e4" }
+  },
+  "kind": "grammar",
+  "topic": "verbs_morphology",
+  "scopeBoundaries": {
+    "en": "Covers the present forms of sein for ich, du, er/sie/es, wir, ihr, sie and Sie. Excludes the past tense, haben, and adjective endings.",
+    "fr": "Couvre les formes du présent de sein pour ich, du, er/sie/es, wir, ihr, sie et Sie. Exclut le passé, haben et les terminaisons des adjectifs.",
+    "de": "Behandelt die Präsensformen von sein für ich, du, er/sie/es, wir, ihr, sie und Sie. Ausgeschlossen sind Vergangenheit, haben und Adjektivendungen."
+  },
+  "prerequisites": [
+    {
+      "en": "The subject pronouns: ich, du, er, sie, es, wir, ihr, sie, Sie",
+      "fr": "Les pronoms sujets : ich, du, er, sie, es, wir, ihr, sie, Sie",
+      "de": "Die Personalpronomen: ich, du, er, sie, es, wir, ihr, sie, Sie"
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-singular-forms",
+      "summary": {
+        "en": "Singular forms of sein: ich bin, du bist, er/sie/es ist.",
+        "fr": "Formes du singulier de sein : ich bin, du bist, er/sie/es ist.",
+        "de": "Singularformen von sein: ich bin, du bist, er/sie/es ist."
+      }
+    },
+    {
+      "id": "rule-plural-forms",
+      "summary": {
+        "en": "Plural forms of sein: wir sind, ihr seid, sie sind.",
+        "fr": "Formes du pluriel de sein : wir sind, ihr seid, sie sind.",
+        "de": "Pluralformen von sein: wir sind, ihr seid, sie sind."
+      }
+    },
+    {
+      "id": "rule-formal-sie",
+      "summary": {
+        "en": "The polite Sie takes the form sind, for one person or several.",
+        "fr": "Le Sie de politesse prend la forme sind, pour une ou plusieurs personnes.",
+        "de": "Das höfliche Sie steht mit der Form sind, für eine oder mehrere Personen."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-singular",
+      "title": {
+        "en": "Singular forms: ich, du, er/sie/es",
+        "fr": "Les formes du singulier : ich, du, er/sie/es",
+        "de": "Die Singularformen: ich, du, er/sie/es"
+      },
+      "ruleIds": ["rule-singular-forms"],
+      "explanationPlan": {
+        "en": "Present the irregular singular forms bin, bist, ist. Show their use for name, job and feelings, and the difference between du bist and er ist.",
+        "fr": "Présenter les formes irrégulières du singulier bin, bist, ist. Montrer leur emploi pour le nom, le métier et l'état, et la différence entre du bist et er ist.",
+        "de": "Die unregelmäßigen Singularformen bin, bist, ist vorstellen. Verwendung für Name, Beruf und Befinden zeigen und den Unterschied zwischen du bist und er ist erklären."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        { "text": "Ich bin Lena.", "translation": { "en": "I am Lena.", "fr": "Je suis Lena." } },
+        {
+          "text": "Du bist müde.",
+          "translation": { "en": "You are tired.", "fr": "Tu es fatigué." }
+        },
+        {
+          "text": "Er ist Lehrer.",
+          "translation": { "en": "He is a teacher.", "fr": "Il est professeur." }
+        },
+        {
+          "text": "Sie ist aus Polen.",
+          "translation": { "en": "She is from Poland.", "fr": "Elle est originaire de Pologne." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not mix up du bist and er ist: bist ends in -st, ist in -t.",
+          "fr": "Ne confondez pas du bist et er ist : bist finit par -st, ist par -t.",
+          "de": "Verwechsle du bist und er ist nicht: bist endet auf -st, ist auf -t."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-sg-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 3,
+          "ruleIds": ["rule-singular-forms"],
+          "estimatedDurationS": 30
+        },
+        {
+          "id": "ex-sg-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 3,
+          "ruleIds": ["rule-singular-forms"],
+          "estimatedDurationS": 45
+        },
+        {
+          "id": "ex-sg-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 3,
+          "ruleIds": ["rule-singular-forms"],
+          "estimatedDurationS": 75
+        }
+      ]
+    },
+    {
+      "id": "block-plural",
+      "title": {
+        "en": "Plural forms and the polite Sie",
+        "fr": "Les formes du pluriel et le Sie de politesse",
+        "de": "Die Pluralformen und das höfliche Sie"
+      },
+      "ruleIds": ["rule-plural-forms", "rule-formal-sie"],
+      "explanationPlan": {
+        "en": "Teach wir sind, ihr seid, sie sind. Explain that the polite Sie is capitalised and uses sind, and that ihr is the plural of du.",
+        "fr": "Enseigner wir sind, ihr seid, sie sind. Expliquer que le Sie de politesse prend une majuscule et sind, et que ihr est le pluriel de du.",
+        "de": "Wir sind, ihr seid, sie sind vermitteln. Erklären, dass das höfliche Sie großgeschrieben wird und sind verlangt und dass ihr der Plural von du ist."
+      },
+      "explanationDurationS": 150,
+      "examples": [
+        {
+          "text": "Wir sind in Berlin.",
+          "translation": { "en": "We are in Berlin.", "fr": "Nous sommes à Berlin." }
+        },
+        {
+          "text": "Ihr seid Freunde.",
+          "translation": { "en": "You are friends.", "fr": "Vous êtes amis." }
+        },
+        {
+          "text": "Die Kinder sind zu Hause.",
+          "translation": {
+            "en": "The children are at home.",
+            "fr": "Les enfants sont à la maison."
+          }
+        },
+        {
+          "text": "Frau Meier, Sie sind sehr nett.",
+          "translation": {
+            "en": "Ms Meier, you are very kind.",
+            "fr": "Madame Meier, vous êtes très gentille."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Write the polite Sie with a capital letter; sie ist (one woman) and sie sind (several people) differ by the verb.",
+          "fr": "Écrivez le Sie de politesse avec une majuscule ; sie ist (une femme) et sie sind (plusieurs personnes) se distinguent par le verbe.",
+          "de": "Schreibe das höfliche Sie groß; sie ist (eine Frau) und sie sind (mehrere Personen) unterscheiden sich im Verb."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-pl-persons",
+          "type": "grammar_person_matching",
+          "itemCount": 1,
+          "ruleIds": ["rule-singular-forms", "rule-plural-forms"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-pl-typing",
+          "type": "grammar_pronoun_form_typing",
+          "itemCount": 2,
+          "ruleIds": ["rule-plural-forms", "rule-formal-sie"],
+          "estimatedDurationS": 90
+        },
+        {
+          "id": "ex-pl-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-plural-forms", "rule-formal-sie"],
+          "estimatedDurationS": 40
+        },
+        {
+          "id": "ex-pl-gap",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-plural-forms", "rule-formal-sie"],
+          "estimatedDurationS": 60
+        }
+      ]
+    }
+  ],
+  "newVerbs": [{ "infinitive": "sein", "translations": { "en": "to be", "fr": "être" } }],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-forms",
+        "type": "grammar_pronoun_form_typing",
+        "itemCount": 2,
+        "ruleIds": ["rule-singular-forms", "rule-plural-forms"],
+        "estimatedDurationS": 90,
+        "timeLimitS": 150
+      },
+      {
+        "pageId": "exam-gaps",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-singular-forms", "rule-plural-forms", "rule-formal-sie"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["rule-singular-forms", "rule-plural-forms", "rule-formal-sie"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

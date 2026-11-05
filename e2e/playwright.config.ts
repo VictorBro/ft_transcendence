@@ -17,10 +17,17 @@ import { defineConfig, devices } from '@playwright/test';
 
 const baseURL = process.env.E2E_BASE_URL ?? 'https://localhost';
 
+// The restart spec takes the API from every test beside it and from SSR, so it
+// runs alone, after the suite: E2E_RESTART=1 (see the e2e workflow and make
+// playwright).
+const restartRun = Boolean(process.env.E2E_RESTART);
+
 export default defineConfig({
   testDir: './tests',
   outputDir: './test-results',
   fullyParallel: true,
+  grep: restartRun ? /@restart/ : undefined,
+  grepInvert: restartRun ? undefined : /@restart/,
 
   // A .only left in a spec silently narrows the suite to one test and the gate
   // still reports green.
@@ -30,7 +37,7 @@ export default defineConfig({
   // that passes second time is a flaky app, not a flaky test, and hiding it
   // defeats the gate.
   retries: 0,
-  workers: process.env.CI ? 2 : 4,
+  workers: restartRun ? 1 : process.env.CI ? 2 : 4,
 
   reporter: process.env.CI
     ? [['github'], ['html', { open: 'never', outputFolder: 'playwright-report' }]]

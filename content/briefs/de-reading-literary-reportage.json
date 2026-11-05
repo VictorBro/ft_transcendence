@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 2,
+  "id": "de-reading-literary-reportage",
+  "lang": "de",
+  "level": "C2",
+  "locales": ["en", "fr", "de"],
+  "title": "Eine literarische Reportage lesen",
+  "objective": {
+    "en": "Read a long reportage about a travelling shepherd in the Rhön and recognise the techniques it borrows from literature: scenes, reconstructed dialogue and withheld information.",
+    "fr": "Lire un long reportage sur un berger itinérant de la Rhön et reconnaître les procédés qu’il emprunte à la littérature : scènes, dialogues reconstitués et informations retenues.",
+    "de": "Eine lange Reportage über einen Wanderschäfer in der Rhön lesen und erkennen, welche literarischen Mittel sie nutzt: Szenen, rekonstruierte Dialoge, zurückgehaltene Informationen."
+  },
+  "estimatedMinutes": 12,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:37:32.778Z",
+    "inputHashes": { "outline": "6c1c62f79430740fea94ebccf3c9b1c973bfbbad706cfda692813f8ee0c7fafd" }
+  },
+  "kind": "reading",
+  "theme": "personal_identification",
+  "genre": "article",
+  "situation": {
+    "en": "A reporter accompanies the shepherd Konrad Weigand for one day and writes a reportage that reads like a short story.",
+    "fr": "Une reporter accompagne le berger Konrad Weigand pendant une journée et écrit un reportage qui se lit comme une nouvelle.",
+    "de": "Eine Reporterin begleitet den Schäfer Konrad Weigand einen Tag lang und schreibt eine Reportage, die sich wie eine Erzählung liest."
+  },
+  "readerTask": {
+    "en": "Recognise the literary techniques of the reportage and distinguish what is verified from what is only remembered or left open.",
+    "fr": "Reconnaître les procédés littéraires du reportage et distinguer ce qui est attesté de ce qui n’est que souvenir ou reste ouvert.",
+    "de": "Die literarischen Mittel der Reportage erkennen und unterscheiden, was verbürgt ist und was nur erinnert wird oder offen bleibt."
+  },
+  "keywords": [
+    {
+      "id": "wortkarg",
+      "term": "wortkarg",
+      "translations": {
+        "en": ["taciturn", "sparing with words"],
+        "fr": ["taciturne", "peu bavard"]
+      },
+      "explanation": {
+        "en": "Someone who says very little. The opposite is gesprächig.",
+        "fr": "Qui parle très peu. Le contraire est gesprächig.",
+        "de": "Jemand, der sehr wenig sagt. Das Gegenteil ist gesprächig."
+      }
+    },
+    {
+      "id": "pferch",
+      "term": "der Pferch",
+      "translations": {
+        "en": ["sheep pen", "fenced enclosure"],
+        "fr": ["parc à moutons", "enclos"]
+      },
+      "explanation": {
+        "en": "A fenced area where the sheep spend the night.",
+        "fr": "Un espace clôturé où les moutons passent la nuit.",
+        "de": "Eine eingezäunte Fläche, in der die Schafe über Nacht stehen."
+      }
+    },
+    {
+      "id": "bedaechtig",
+      "term": "bedächtig",
+      "translations": { "en": ["deliberate", "unhurried"], "fr": ["posé", "sans hâte"] },
+      "explanation": {
+        "en": "Calm and unhurried, weighing every step.",
+        "fr": "Calme et sans hâte, en pesant chaque geste.",
+        "de": "Ruhig und ohne Eile, jeden Schritt abwägend."
+      }
+    },
+    {
+      "id": "verbuergt",
+      "term": "verbürgt",
+      "translations": { "en": ["verified", "vouched for"], "fr": ["attesté", "garanti"] },
+      "explanation": {
+        "en": "Confirmed by reliable witnesses or documents. The reporter uses it to separate fact from memory.",
+        "fr": "Confirmé par des témoins ou des documents fiables. La reporter l’emploie pour séparer le fait du souvenir.",
+        "de": "Durch zuverlässige Zeugen oder Dokumente bestätigt. Die Reporterin trennt damit Tatsache und Erinnerung."
+      }
+    },
+    {
+      "id": "trift",
+      "term": "die Trift",
+      "translations": {
+        "en": ["drove route", "grazing track"],
+        "fr": ["chemin de transhumance", "piste de pâturage"]
+      },
+      "explanation": {
+        "en": "A traditional route along which herds are driven to their pasture.",
+        "fr": "Un chemin traditionnel par lequel on mène les troupeaux au pâturage.",
+        "de": "Ein traditioneller Weg, auf dem Herden zur Weide getrieben werden."
+      }
+    }
+  ],
+  "documents": {
+    "main": {
+      "targetWords": 600,
+      "contents": {
+        "en": "A reportage in eight scenes: dawn at the pen, the taciturn shepherd, the walk along the old drove route, a flashback to the lost winter told with reservations and a reconstructed dialogue with the vet, a silent lunch break, the pasture, and an evening ending that offers a possible explanation without proof.",
+        "fr": "Un reportage en huit scènes : l’aube près du parc, le berger taciturne, la marche sur l’ancien chemin, un retour en arrière sur l’hiver perdu raconté avec réserves et un dialogue reconstitué avec la vétérinaire, une pause silencieuse, l’alpage et une fin du soir qui propose une explication sans preuve.",
+        "de": "Eine Reportage in acht Szenen: Morgengrauen am Pferch, der wortkarge Schäfer, der Gang über die alte Trift, ein mit Vorbehalt erzählter Rückblick auf den verlorenen Winter samt rekonstruiertem Dialog mit der Tierärztin, eine schweigsame Rast, die Hochweide und ein Abendschluss mit möglicher Erklärung ohne Beleg."
+      }
+    },
+    "exam": {
+      "targetWords": 320,
+      "contents": {
+        "en": "A short reportage about a ferryman on the Elbe: counting passengers, the bridge that took his customers, a village story that grows with each telling, and a child’s whispered secret that he neither confirms nor denies.",
+        "fr": "Un court reportage sur un passeur de l’Elbe : le décompte des passagers, le pont qui lui a pris ses clients, une histoire de village qui s’enrichit à chaque récit et un secret chuchoté par une enfant qu’il ne confirme ni ne dément.",
+        "de": "Eine kurze Reportage über einen Fährmann an der Elbe: das Zählen der Passagiere, die Brücke, die ihm die Kundschaft nahm, eine Dorfgeschichte, die mit jedem Erzählen wächst, und das Geheimnis, das ein Kind flüstert und das er weder bestätigt noch bestreitet."
+      }
+    }
+  },
+  "skim": { "focus": "genre" },
+  "detailQuestions": [
+    {
+      "id": "q-wirtin",
+      "type": "reading_choice",
+      "focus": {
+        "en": "How the innkeeper describes Weigand",
+        "fr": "Comment l’aubergiste décrit Weigand",
+        "de": "Wie die Wirtin Weigand beschreibt"
+      }
+    },
+    {
+      "id": "q-beleg",
+      "type": "reading_true_false",
+      "focus": {
+        "en": "Whether the vet’s sentence is documented",
+        "fr": "Si la phrase de la vétérinaire est documentée",
+        "de": "Ob der Satz der Tierärztin belegt ist"
+      }
+    },
+    {
+      "id": "q-antwort",
+      "type": "reading_choice",
+      "focus": {
+        "en": "Weigand’s answer about why he stayed",
+        "fr": "La réponse de Weigand sur les raisons de son maintien",
+        "de": "Weigands Antwort auf die Frage nach dem Bleiben"
+      }
+    },
+    {
+      "id": "q-knecht",
+      "type": "reading_choice",
+      "focus": {
+        "en": "What the former farmhand tells in the evening",
+        "fr": "Ce que raconte l’ancien valet le soir",
+        "de": "Was der frühere Knecht am Abend erzählt"
+      }
+    }
+  ],
+  "exam": { "types": ["reading_choice", "reading_true_false"] },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

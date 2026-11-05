@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 2,
+  "id": "de-saying-what-matters-to-you",
+  "lang": "de",
+  "level": "B2",
+  "locales": ["en", "fr", "de"],
+  "title": "Sagen, was einem wichtig ist",
+  "objective": {
+    "en": "Talk about values and priorities and weigh them: say what comes first, what you value most and what plays only a minor role.",
+    "fr": "Parler de valeurs et de priorités et les hiérarchiser : dire ce qui passe avant tout, ce à quoi on tient et ce qui compte peu.",
+    "de": "Über Werte und Prioritäten sprechen und sie gewichten: sagen, was an erster Stelle steht, worauf man Wert legt und was nur eine Nebenrolle spielt."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:33:20.601Z",
+    "inputHashes": { "outline": "eb741e5a5a925208e7e9de89bb8e9640ae3fa49032014afefe467c65a36860b7" }
+  },
+  "kind": "functions",
+  "theme": "personal_identification",
+  "situation": {
+    "en": "Two friends talk about a job offer and what really matters to them in life.",
+    "fr": "Deux amis parlent d’une offre d’emploi et de ce qui compte vraiment pour eux dans la vie.",
+    "de": "Zwei Freunde sprechen über ein Jobangebot und darüber, was ihnen im Leben wirklich wichtig ist."
+  },
+  "coverageNotes": {
+    "en": "Six expressions cover naming a top priority (Für mich steht …), stressing a value (Darauf lege ich großen Wert), introducing a priority with a dass-clause (Mir ist wichtig, dass), weighing two things (ist mir wichtiger als), playing something down (spielt eher eine untergeordnete Rolle) and saying what is close to your heart (liegt mir sehr am Herzen).",
+    "fr": "Six expressions couvrent : nommer une priorité absolue (Für mich steht …), souligner une valeur (Darauf lege ich großen Wert), introduire une priorité avec une subordonnée en dass (Mir ist wichtig, dass), peser deux choses (ist mir wichtiger als), minimiser quelque chose (spielt eher eine untergeordnete Rolle) et dire ce qui tient à cœur (liegt mir sehr am Herzen).",
+    "de": "Sechs Ausdrücke decken ab: eine oberste Priorität nennen (Für mich steht …), einen Wert betonen (Darauf lege ich großen Wert), eine Priorität mit einem dass-Satz einleiten (Mir ist wichtig, dass), zwei Dinge gewichten (ist mir wichtiger als), etwas herunterspielen (spielt eher eine untergeordnete Rolle) und sagen, was einem am Herzen liegt (liegt mir sehr am Herzen)."
+  },
+  "prerequisites": [],
+  "roles": [
+    { "id": "mira", "label": "Mira", "translation": { "en": "Mira", "fr": "Mira" } },
+    { "id": "jonas", "label": "Jonas", "translation": { "en": "Jonas", "fr": "Jonas" } }
+  ],
+  "expressions": [
+    {
+      "id": "fuer-mich-steht",
+      "text": "Für mich steht",
+      "openEnd": true,
+      "translations": { "en": ["For me, … comes first"], "fr": ["Pour moi, … passe avant tout"] },
+      "explanation": {
+        "en": "Names your top priority: Für mich steht + noun + an erster Stelle. Colloquial alternative: Bei mir steht …",
+        "fr": "Nomme votre priorité absolue : Für mich steht + nom + an erster Stelle. Variante familière : Bei mir steht …",
+        "de": "Nennt die wichtigste Priorität: Für mich steht + Nomen + an erster Stelle. Umgangssprachlich auch: Bei mir steht …"
+      },
+      "example": {
+        "text": "Für mich steht die Familie an erster Stelle.",
+        "translation": {
+          "en": "For me, family comes first.",
+          "fr": "Pour moi, la famille passe avant tout."
+        }
+      }
+    },
+    {
+      "id": "darauf-wert",
+      "text": "Darauf lege ich großen Wert.",
+      "openEnd": false,
+      "translations": {
+        "en": ["I attach great importance to that."],
+        "fr": ["J’y accorde beaucoup d’importance."]
+      },
+      "explanation": {
+        "en": "Stresses what you consider especially important; darauf refers back to something just mentioned (Wert legen auf + accusative).",
+        "fr": "Souligne ce qui compte particulièrement ; darauf renvoie à ce qui vient d’être dit (Wert legen auf + accusatif).",
+        "de": "Betont, was einem besonders wichtig ist; darauf bezieht sich auf das eben Gesagte (Wert legen auf + Akkusativ)."
+      },
+      "example": {
+        "text": "Darauf lege ich großen Wert, wenn ich eine Wohnung suche.",
+        "translation": {
+          "en": "I attach great importance to that when I look for a flat.",
+          "fr": "J’y accorde beaucoup d’importance quand je cherche un appartement."
+        }
+      }
+    },
+    {
+      "id": "mir-ist-wichtig",
+      "text": "Mir ist wichtig, dass",
+      "openEnd": true,
+      "translations": {
+        "en": ["It’s important to me that"],
+        "fr": ["Pour moi, il est important que"]
+      },
+      "explanation": {
+        "en": "Introduces a priority as a clause: Mir ist wichtig, dass + subordinate clause with the verb at the end.",
+        "fr": "Introduit une priorité sous forme de proposition : Mir ist wichtig, dass + subordonnée avec le verbe en fin de proposition.",
+        "de": "Leitet eine Priorität als Nebensatz ein: Mir ist wichtig, dass + Nebensatz mit dem Verb am Ende."
+      },
+      "example": {
+        "text": "Mir ist wichtig, dass ich genug Zeit für Freunde habe.",
+        "translation": {
+          "en": "It’s important to me that I have enough time for friends.",
+          "fr": "Pour moi, il est important d’avoir assez de temps pour mes amis."
+        }
+      }
+    },
+    {
+      "id": "wichtiger-als",
+      "text": "ist mir wichtiger als",
+      "openEnd": true,
+      "translations": {
+        "en": ["is more important to me than"],
+        "fr": ["est plus important pour moi que"]
+      },
+      "explanation": {
+        "en": "Weighs two things against each other: A ist mir wichtiger als B.",
+        "fr": "Pèse deux choses l’une par rapport à l’autre : A ist mir wichtiger als B.",
+        "de": "Gewichtet zwei Dinge gegeneinander: A ist mir wichtiger als B."
+      },
+      "example": {
+        "text": "Ein sicherer Arbeitsplatz ist mir wichtiger als ein hohes Gehalt.",
+        "translation": {
+          "en": "A secure job is more important to me than a high salary.",
+          "fr": "Un emploi sûr est plus important pour moi qu’un salaire élevé."
+        }
+      }
+    },
+    {
+      "id": "untergeordnete-rolle",
+      "text": "spielt eher eine untergeordnete Rolle",
+      "openEnd": false,
+      "translations": {
+        "en": ["plays a rather minor role"],
+        "fr": ["joue plutôt un rôle secondaire"]
+      },
+      "explanation": {
+        "en": "Says that something matters little. The subject comes first (Geld spielt …); the order eine eher untergeordnete Rolle is also possible.",
+        "fr": "Dit que quelque chose compte peu. Le sujet vient d’abord (Geld spielt …) ; l’ordre eine eher untergeordnete Rolle est aussi possible.",
+        "de": "Sagt, dass etwas wenig zählt. Das Subjekt steht vorn (Geld spielt …); auch die Reihenfolge eine eher untergeordnete Rolle ist möglich."
+      },
+      "example": {
+        "text": "Geld spielt eher eine untergeordnete Rolle.",
+        "translation": {
+          "en": "Money plays a rather minor role.",
+          "fr": "L’argent joue plutôt un rôle secondaire."
+        }
+      }
+    },
+    {
+      "id": "am-herzen",
+      "text": "liegt mir sehr am Herzen",
+      "openEnd": false,
+      "translations": { "en": ["is very close to my heart"], "fr": ["me tient beaucoup à cœur"] },
+      "explanation": {
+        "en": "Says that something is deeply important to you; with a plural subject: liegen mir sehr am Herzen.",
+        "fr": "Dit que quelque chose vous tient vraiment à cœur ; avec un sujet au pluriel : liegen mir sehr am Herzen.",
+        "de": "Sagt, dass einem etwas sehr wichtig ist; bei Plural-Subjekt: liegen mir sehr am Herzen."
+      },
+      "example": {
+        "text": "Die Gesundheit meiner Eltern liegt mir sehr am Herzen.",
+        "translation": {
+          "en": "My parents’ health is very close to my heart.",
+          "fr": "La santé de mes parents me tient beaucoup à cœur."
+        }
+      }
+    }
+  ],
+  "words": [],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

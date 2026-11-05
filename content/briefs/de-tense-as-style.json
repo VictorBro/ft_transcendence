@@ -1,0 +1,253 @@
+{
+  "schemaVersion": 2,
+  "id": "de-tense-as-style",
+  "lang": "de",
+  "level": "C2",
+  "locales": ["en", "fr", "de"],
+  "title": "Gestern sitze ich im Zug: Tempus als Stilmittel",
+  "objective": {
+    "en": "Use the scenic present and the future tense as a command deliberately, to narrate vividly or to give an instruction emphasis.",
+    "fr": "Employer à dessein le présent de narration et le futur à valeur d’ordre pour raconter avec vivacité ou donner de l’insistance à une consigne.",
+    "de": "Szenisches Präsens und Futur als Befehl gezielt einsetzen, um lebendig zu erzählen oder Anweisungen mit Nachdruck zu geben."
+  },
+  "estimatedMinutes": 18,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:40:35.482Z",
+    "inputHashes": { "outline": "71b3dc36f8e6bcf974bd68f9482461ac715643ebdc7d96d0154477e69ecbaed1" }
+  },
+  "kind": "grammar",
+  "topic": "verb_usage",
+  "scopeBoundaries": {
+    "en": "Covers the scenic present and the Futur I as a command. Excludes the future of supposition, the subjunctive and a full review of the past tenses.",
+    "fr": "Couvre le présent de narration et le Futur I comme ordre. Exclut le futur de supposition, le subjonctif et une révision complète des temps du passé.",
+    "de": "Behandelt das szenische Präsens und das Futur I als Befehl. Nicht behandelt werden das Futur der Vermutung, der Konjunktiv und eine vollständige Wiederholung der Vergangenheitstempora."
+  },
+  "prerequisites": [
+    {
+      "en": "Form the Präsens, Perfekt and Präteritum confidently.",
+      "fr": "Former avec assurance le Präsens, le Perfekt et le Präteritum.",
+      "de": "Präsens, Perfekt und Präteritum sicher bilden."
+    },
+    {
+      "en": "Form the Futur I with werden and an infinitive.",
+      "fr": "Former le Futur I avec werden et l’infinitif.",
+      "de": "Das Futur I mit werden und Infinitiv bilden."
+    }
+  ],
+  "rules": [
+    {
+      "id": "r-szen-praesens",
+      "summary": {
+        "en": "The scenic present tells a past scene in the present tense; signal words such as da, plötzlich and auf einmal carry the action.",
+        "fr": "Le présent de narration raconte une scène passée au présent ; des mots-signaux comme da, plötzlich et auf einmal portent l’action.",
+        "de": "Das szenische Präsens erzählt eine vergangene Szene im Präsens; Signalwörter wie da, plötzlich und auf einmal tragen die Handlung."
+      }
+    },
+    {
+      "id": "r-szen-rahmen",
+      "summary": {
+        "en": "Whoever narrates in the present usually stays there; what happened before the narrated moment goes in the Perfekt.",
+        "fr": "Celui qui raconte au présent y reste en général ; ce qui précède le moment raconté se met au Perfekt.",
+        "de": "Wer im Präsens erzählt, bleibt meist dabei; was vor dem erzählten Moment liegt, steht im Perfekt."
+      }
+    },
+    {
+      "id": "r-futur-befehl",
+      "summary": {
+        "en": "The Futur I (werden plus infinitive at the end) can express a command, usually in the second person and often with jetzt or sofort.",
+        "fr": "Le Futur I (werden et infinitif en fin de phrase) peut exprimer un ordre, le plus souvent à la deuxième personne et souvent avec jetzt ou sofort.",
+        "de": "Das Futur I (werden und Infinitiv am Ende) kann einen Befehl ausdrücken, meist in der zweiten Person und oft mit jetzt oder sofort."
+      }
+    },
+    {
+      "id": "r-futur-wirkung",
+      "summary": {
+        "en": "A command in the future tense sounds strict or authoritarian; the imperative with bitte is friendlier.",
+        "fr": "Un ordre au futur sonne sévère ou autoritaire ; l’impératif avec bitte est plus aimable.",
+        "de": "Ein Befehl im Futur klingt streng oder autoritär; der Imperativ mit bitte ist freundlicher."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-praesens",
+      "title": {
+        "en": "The scenic present",
+        "fr": "Le présent de narration",
+        "de": "Das szenische Präsens"
+      },
+      "ruleIds": ["r-szen-praesens", "r-szen-rahmen"],
+      "explanationPlan": {
+        "en": "Explain that past scenes can be told in the present for immediacy, with a past time expression as the opening and signal words (da, plötzlich, auf einmal). Show that earlier events go in the Perfekt and that the narration stays consistent.",
+        "fr": "Expliquer que des scènes passées peuvent être racontées au présent pour créer de l’immédiateté, avec une indication de temps passée en ouverture et des mots-signaux (da, plötzlich, auf einmal). Montrer que les faits antérieurs se mettent au Perfekt et que le récit reste cohérent.",
+        "de": "Erklären, dass vergangene Szenen für mehr Unmittelbarkeit im Präsens erzählt werden können, mit einer vergangenen Zeitangabe als Einstieg und Signalwörtern (da, plötzlich, auf einmal). Zeigen, dass Vorzeitiges im Perfekt steht und die Erzählung einheitlich bleibt."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "Gestern sitze ich im Zug, da klingelt plötzlich mein Handy.",
+          "translation": {
+            "en": "Yesterday I'm sitting on the train when suddenly my phone rings.",
+            "fr": "Hier, je suis dans le train, et soudain mon téléphone sonne."
+          }
+        },
+        {
+          "text": "Letzte Woche stehe ich an der Kasse, auf einmal fällt der Strom aus.",
+          "translation": {
+            "en": "Last week I'm standing at the checkout when suddenly the power goes out.",
+            "fr": "La semaine dernière, je suis à la caisse, et tout à coup le courant est coupé."
+          }
+        },
+        {
+          "text": "Ich sitze im Zug und merke, dass ich mein Ticket vergessen habe.",
+          "translation": {
+            "en": "I'm sitting on the train and realise I've forgotten my ticket.",
+            "fr": "Je suis dans le train et je me rends compte que j’ai oublié mon billet."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not slip back into the Präteritum without a reason once the scene is told in the present.",
+          "fr": "Ne pas retomber sans raison dans le Präteritum une fois la scène racontée au présent.",
+          "de": "Nicht ohne Grund ins Präteritum zurückfallen, wenn die Szene im Präsens erzählt wird."
+        },
+        {
+          "en": "Earlier events are not told in the present but in the Perfekt.",
+          "fr": "Les faits antérieurs ne se racontent pas au présent mais au Perfekt.",
+          "de": "Vorzeitiges wird nicht im Präsens, sondern im Perfekt erzählt."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-p-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["r-szen-praesens", "r-szen-rahmen"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-p-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["r-szen-praesens", "r-szen-rahmen"],
+          "estimatedDurationS": 80
+        },
+        {
+          "id": "ex-p-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 4,
+          "ruleIds": ["r-szen-praesens", "r-szen-rahmen"],
+          "estimatedDurationS": 100
+        }
+      ]
+    },
+    {
+      "id": "block-futur",
+      "title": {
+        "en": "The future tense as a command",
+        "fr": "Le futur comme ordre",
+        "de": "Das Futur als Befehl"
+      },
+      "ruleIds": ["r-futur-befehl", "r-futur-wirkung"],
+      "explanationPlan": {
+        "en": "Explain that werden plus infinitive can give an order instead of a prediction, mostly in the second person with jetzt or sofort and with stress on werden. Describe the strict effect and contrast it with the friendlier imperative with bitte.",
+        "fr": "Expliquer que werden et l’infinitif peuvent donner un ordre plutôt qu’une prévision, surtout à la deuxième personne avec jetzt ou sofort et avec accent sur werden. Décrire l’effet sévère et l’opposer à l’impératif avec bitte, plus aimable.",
+        "de": "Erklären, dass werden und Infinitiv statt einer Vorhersage einen Befehl ausdrücken können, meist in der zweiten Person mit jetzt oder sofort und mit Betonung auf werden. Die strenge Wirkung beschreiben und dem freundlicheren Imperativ mit bitte gegenüberstellen."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "Du wirst jetzt schlafen gehen!",
+          "translation": {
+            "en": "You will go to sleep now!",
+            "fr": "Tu vas aller dormir, maintenant !"
+          }
+        },
+        {
+          "text": "Ihr werdet sofort euer Zimmer aufräumen!",
+          "translation": {
+            "en": "You will tidy your room right now!",
+            "fr": "Vous allez ranger votre chambre tout de suite !"
+          }
+        },
+        {
+          "text": "Sie werden mir jetzt genau zuhören.",
+          "translation": {
+            "en": "You will listen to me closely now.",
+            "fr": "Vous allez m’écouter attentivement maintenant."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not mistake the command for a prediction: the stress and words like jetzt or sofort show the order.",
+          "fr": "Ne pas confondre l’ordre avec une prévision : l’accent et des mots comme jetzt ou sofort montrent l’ordre.",
+          "de": "Den Befehl nicht mit einer Vorhersage verwechseln: Betonung und Wörter wie jetzt oder sofort zeigen den Befehl."
+        },
+        {
+          "en": "With strangers the command in the future tense sounds harsh; the imperative with bitte is friendlier.",
+          "fr": "Avec des inconnus, l’ordre au futur sonne durement ; l’impératif avec bitte est plus aimable.",
+          "de": "Bei Fremden klingt der Befehl im Futur schroff; der Imperativ mit bitte ist freundlicher."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-f-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["r-futur-befehl", "r-futur-wirkung"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-f-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["r-futur-befehl", "r-futur-wirkung"],
+          "estimatedDurationS": 80
+        },
+        {
+          "id": "ex-f-order",
+          "type": "grammar_word_order",
+          "itemCount": 4,
+          "ruleIds": ["r-futur-befehl", "r-futur-wirkung"],
+          "estimatedDurationS": 120
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-erzaehlen",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["r-szen-praesens", "r-szen-rahmen"],
+        "estimatedDurationS": 100,
+        "timeLimitS": 160
+      },
+      {
+        "pageId": "exam-futur",
+        "type": "grammar_gap_typing",
+        "itemCount": 3,
+        "ruleIds": ["r-futur-befehl", "r-futur-wirkung"],
+        "estimatedDurationS": 75,
+        "timeLimitS": 120
+      },
+      {
+        "pageId": "exam-satz",
+        "type": "grammar_word_order",
+        "itemCount": 4,
+        "ruleIds": ["r-szen-praesens", "r-futur-befehl"],
+        "estimatedDurationS": 120,
+        "timeLimitS": 200
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 2,
+  "id": "de-reading-register-labels-in-a-dictionary",
+  "lang": "de",
+  "level": "C1",
+  "locales": ["en", "fr", "de"],
+  "title": "Stilangaben im Wörterbuch lesen",
+  "objective": {
+    "en": "Read entries of a monolingual dictionary and use style labels such as gehoben, umgangssprachlich or abwertend to choose between synonyms like schreiten, gehen and latschen.",
+    "fr": "Lire des articles d’un dictionnaire monolingue et choisir entre des synonymes comme schreiten, gehen et latschen grâce aux indications de registre.",
+    "de": "Einträge eines einsprachigen Wörterbuchs lesen und mithilfe der Stilangaben zwischen Synonymen wie schreiten, gehen und latschen wählen."
+  },
+  "estimatedMinutes": 11,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:37:15.488Z",
+    "inputHashes": { "outline": "d59d70e43bcbb252e4b8e3ab7fa8eb42e9f8477815d106973afc780f339d1dad" }
+  },
+  "kind": "reading",
+  "theme": "language",
+  "genre": "dictionary_entry",
+  "situation": {
+    "en": "An excerpt from a German monolingual dictionary: first an explanation of the style labels, then entries for verbs of walking and eating, with notes on usage.",
+    "fr": "Un extrait d’un dictionnaire monolingue allemand : d’abord l’explication des indications de registre, puis des articles sur les verbes marcher et manger, avec des remarques sur l’usage.",
+    "de": "Ein Auszug aus einem einsprachigen deutschen Wörterbuch: zuerst die Erklärung der Stilangaben, dann Einträge zu Verben des Gehens und Essens mit Hinweisen zum Gebrauch."
+  },
+  "readerTask": {
+    "en": "Understand what each style label says, compare the synonym entries and decide which word fits which situation and attitude.",
+    "fr": "Comprendre ce que dit chaque indication de registre, comparer les synonymes et décider quel mot convient à quelle situation et à quelle attitude.",
+    "de": "Verstehen, was jede Stilangabe aussagt, die Synonymeinträge vergleichen und entscheiden, welches Wort zu welcher Situation und Haltung passt."
+  },
+  "keywords": [
+    {
+      "id": "gehoben",
+      "term": "gehoben",
+      "translations": {
+        "en": ["elevated (literary)", "formal-literary"],
+        "fr": ["soutenu", "littéraire"]
+      },
+      "explanation": {
+        "en": "Label for words typical of writing, literature and solemn speech; in casual talk they can sound affected.",
+        "fr": "Indication pour les mots typiques de l’écrit, de la littérature et des discours solennels ; dans une conversation détendue, ils peuvent paraître affectés.",
+        "de": "Angabe für Wörter der Schriftsprache, der Literatur und der feierlichen Rede; im lockeren Gespräch wirken sie leicht geziert."
+      }
+    },
+    {
+      "id": "umgangssprachlich",
+      "term": "umgangssprachlich",
+      "translations": { "en": ["colloquial", "informal"], "fr": ["familier", "relâché"] },
+      "explanation": {
+        "en": "Label for words of everyday speech that would be out of place in a formal letter or report.",
+        "fr": "Indication pour les mots de la langue parlée quotidienne, déplacés dans une lettre officielle ou un rapport.",
+        "de": "Angabe für Wörter der gesprochenen Alltagssprache, die in einem förmlichen Brief oder Gutachten unpassend wären."
+      }
+    },
+    {
+      "id": "abwertend",
+      "term": "abwertend",
+      "translations": { "en": ["pejorative", "derogatory"], "fr": ["péjoratif", "dépréciatif"] },
+      "explanation": {
+        "en": "Label showing that the speaker expresses a negative attitude with the word, independent of its style.",
+        "fr": "Indication montrant que le locuteur exprime une attitude négative par ce mot, indépendamment de son registre.",
+        "de": "Angabe, die zeigt, dass man mit dem Wort eine negative Haltung ausdrückt, unabhängig vom Stil."
+      }
+    },
+    {
+      "id": "veraltet",
+      "term": "veraltet",
+      "translations": { "en": ["obsolete", "outdated"], "fr": ["désuet", "vieilli"] },
+      "explanation": {
+        "en": "Label for words that hardly anyone uses any more.",
+        "fr": "Indication pour les mots que presque plus personne n’utilise.",
+        "de": "Angabe für Wörter, die kaum noch jemand benutzt."
+      }
+    },
+    {
+      "id": "scherzhaft",
+      "term": "scherzhaft",
+      "translations": { "en": ["jocular", "humorous"], "fr": ["plaisant", "humoristique"] },
+      "explanation": {
+        "en": "Label for deliberately exaggerated or playful use, not meant seriously.",
+        "fr": "Indication pour un emploi volontairement exagéré ou plaisant, pas à prendre au sérieux.",
+        "de": "Angabe für einen absichtlich übertriebenen oder spielerischen Gebrauch, der nicht ernst gemeint ist."
+      }
+    }
+  ],
+  "documents": {
+    "main": {
+      "targetWords": 420,
+      "contents": {
+        "en": "Explanation of the style labels (gehoben, umgangssprachlich, abwertend, veraltet, scherzhaft); entries gehen, schreiten, latschen, lustwandeln; a usage warning that elevated words can also be wrong; entries essen, speisen, futtern, fressen; three questions for choosing between synonyms; a note that labels change over time.",
+        "fr": "Explication des indications de registre (gehoben, umgangssprachlich, abwertend, veraltet, scherzhaft) ; articles gehen, schreiten, latschen, lustwandeln ; une mise en garde : les mots soutenus peuvent aussi être déplacés ; articles essen, speisen, futtern, fressen ; trois questions pour choisir entre synonymes ; une remarque sur l’évolution des indications.",
+        "de": "Erklärung der Stilangaben (gehoben, umgangssprachlich, abwertend, veraltet, scherzhaft); Einträge gehen, schreiten, latschen, lustwandeln; Warnung, dass auch gehobene Wörter unpassend sein können; Einträge essen, speisen, futtern, fressen; drei Fragen zur Wahl zwischen Synonymen; Hinweis auf den Wandel der Angaben."
+      }
+    },
+    "exam": {
+      "targetWords": 220,
+      "contents": {
+        "en": "Entries reden, kundtun, plaudern, quatschen, schwafeln; a note on style in a council speech versus among friends; entries Mund, Maul, Mundwerk, Schnauze.",
+        "fr": "Articles reden, kundtun, plaudern, quatschen, schwafeln ; une remarque sur le style dans un discours devant le conseil municipal et entre amis ; articles Mund, Maul, Mundwerk, Schnauze.",
+        "de": "Einträge reden, kundtun, plaudern, quatschen, schwafeln; ein Hinweis zum Stil in einer Ansprache vor dem Stadtrat und unter Freunden; Einträge Mund, Maul, Mundwerk, Schnauze."
+      }
+    }
+  },
+  "skim": { "focus": "purpose" },
+  "detailQuestions": [
+    {
+      "id": "q-neutral",
+      "type": "reading_choice",
+      "focus": {
+        "en": "What a missing style label means",
+        "fr": "Ce que signifie l’absence d’indication",
+        "de": "Was eine fehlende Stilangabe bedeutet"
+      }
+    },
+    {
+      "id": "q-latschen",
+      "type": "reading_choice",
+      "focus": {
+        "en": "What latschen adds compared with gehen",
+        "fr": "Ce que latschen ajoute par rapport à gehen",
+        "de": "Was latschen im Vergleich zu gehen zusätzlich ausdrückt"
+      }
+    },
+    {
+      "id": "q-futtern",
+      "type": "reading_true_false",
+      "focus": {
+        "en": "The label of futtern",
+        "fr": "L’indication de futtern",
+        "de": "Die Angabe bei futtern"
+      }
+    },
+    {
+      "id": "q-gehoben",
+      "type": "reading_true_false",
+      "focus": {
+        "en": "Whether elevated words always fit",
+        "fr": "Si les mots soutenus conviennent toujours",
+        "de": "Ob gehobene Wörter immer passen"
+      }
+    }
+  ],
+  "exam": { "types": ["reading_choice", "reading_true_false"] },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

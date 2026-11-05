@@ -1,0 +1,275 @@
+{
+  "schemaVersion": 2,
+  "id": "de-middle-field-complements-adverbials",
+  "lang": "de",
+  "level": "B2",
+  "locales": ["en", "fr", "de"],
+  "title": "Ergänzungen und Angaben im Mittelfeld",
+  "objective": {
+    "en": "Order a full middle field: pronouns first, adverbials usually before the accusative noun, complements of direction and prepositional complements last.",
+    "fr": "Ordonner un Mittelfeld complet : pronoms d’abord, adverbiaux le plus souvent avant le nom à l’accusatif, compléments de direction et prépositionnels en dernier.",
+    "de": "Ein volles Mittelfeld ordnen: Pronomen zuerst, Angaben meist vor dem Akkusativnomen, Richtungs- und Präpositionalergänzungen zuletzt."
+  },
+  "estimatedMinutes": 20,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:34:30.518Z",
+    "inputHashes": { "outline": "904a17439d036356b6ec433176e9f8365405f825c01ba2873bb2f08787c9148a" }
+  },
+  "kind": "grammar",
+  "topic": "syntax_and_sentence_structure",
+  "scopeBoundaries": {
+    "en": "Covers the order of objects, adverbials and complements of direction in the middle field of main and subordinate clauses. Excludes the prefield, the final field, and special emphasis through marked word order.",
+    "fr": "Couvre l’ordre des compléments, des adverbiaux et des compléments de direction dans le Mittelfeld des principales et des subordonnées. Exclut le Vorfeld, le Nachfeld et l’ordre marqué pour la mise en relief.",
+    "de": "Behandelt die Reihenfolge von Objekten, Angaben und Richtungsergänzungen im Mittelfeld von Haupt- und Nebensätzen. Ausgeschlossen sind das Vorfeld, das Nachfeld und betonte Abweichungen von der neutralen Wortstellung."
+  },
+  "prerequisites": [
+    {
+      "en": "Nominative, accusative and dative, including the personal pronouns",
+      "fr": "Nominatif, accusatif et datif, y compris les pronoms personnels",
+      "de": "Nominativ, Akkusativ und Dativ, auch bei den Personalpronomen"
+    },
+    {
+      "en": "Verb bracket in the perfect tense and subordinate clauses with dass",
+      "fr": "Cadre verbal au parfait et subordonnées avec dass",
+      "de": "Satzklammer im Perfekt und Nebensätze mit dass"
+    }
+  ],
+  "rules": [
+    {
+      "id": "r-pronoun-first",
+      "summary": {
+        "en": "Pronouns stand at the beginning of the middle field, before nouns.",
+        "fr": "Les pronoms se placent au début du Mittelfeld, avant les noms.",
+        "de": "Pronomen stehen am Anfang des Mittelfelds, vor Nomen."
+      }
+    },
+    {
+      "id": "r-two-objects",
+      "summary": {
+        "en": "Two nouns: usually dative before accusative. Two pronouns: accusative before dative.",
+        "fr": "Deux noms : le plus souvent datif avant accusatif. Deux pronoms : accusatif avant datif.",
+        "de": "Zwei Nomen: meist Dativ vor Akkusativ. Zwei Pronomen: Akkusativ vor Dativ."
+      }
+    },
+    {
+      "id": "r-adverbial",
+      "summary": {
+        "en": "Adverbials follow the pronouns and usually stand before the accusative noun.",
+        "fr": "Les adverbiaux suivent les pronoms et se placent le plus souvent avant le nom à l’accusatif.",
+        "de": "Angaben folgen auf die Pronomen und stehen meist vor dem Akkusativnomen."
+      }
+    },
+    {
+      "id": "r-directional",
+      "summary": {
+        "en": "Complements of direction and prepositional complements stand last in the middle field, before the participle.",
+        "fr": "Les compléments de direction et prépositionnels se placent en dernier dans le Mittelfeld, avant le participe.",
+        "de": "Richtungs- und Präpositionalergänzungen stehen zuletzt im Mittelfeld, vor dem Partizip."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-pronouns",
+      "title": {
+        "en": "Pronouns and objects first",
+        "fr": "Pronoms et compléments d’abord",
+        "de": "Pronomen und Objekte zuerst"
+      },
+      "ruleIds": ["r-pronoun-first", "r-two-objects"],
+      "explanationPlan": {
+        "en": "Define the middle field. Show that pronouns come first, then the order of two nouns (dative, accusative), noun and pronoun, and two pronouns (accusative, dative).",
+        "fr": "Définir le Mittelfeld. Montrer que les pronoms viennent d’abord, puis l’ordre de deux noms (datif, accusatif), d’un nom et d’un pronom, et de deux pronoms (accusatif, datif).",
+        "de": "Das Mittelfeld definieren. Zeigen, dass Pronomen zuerst stehen, dann die Reihenfolge bei zwei Nomen (Dativ, Akkusativ), bei Nomen und Pronomen und bei zwei Pronomen (Akkusativ, Dativ)."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "Sie hat ihm den Brief gegeben.",
+          "translation": { "en": "She gave him the letter.", "fr": "Elle lui a donné la lettre." }
+        },
+        {
+          "text": "Sie hat dem Nachbarn den Brief gegeben.",
+          "translation": {
+            "en": "She gave the neighbour the letter.",
+            "fr": "Elle a donné la lettre au voisin."
+          }
+        },
+        {
+          "text": "Sie hat es dem Nachbarn gegeben.",
+          "translation": {
+            "en": "She gave it to the neighbour.",
+            "fr": "Elle l’a donné au voisin."
+          }
+        },
+        {
+          "text": "Sie hat es ihm gegeben.",
+          "translation": { "en": "She gave it to him.", "fr": "Elle le lui a donné." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not put a noun before a pronoun: the pronoun comes first, so es stands before the noun.",
+          "fr": "Ne placez pas un nom avant un pronom : le pronom vient d’abord, donc es se place avant le nom.",
+          "de": "Setze kein Nomen vor ein Pronomen: Das Pronomen steht zuerst, also es vor dem Nomen."
+        },
+        {
+          "en": "With two pronouns the accusative comes first (es ihm), unlike with two nouns, where the dative usually comes first.",
+          "fr": "Avec deux pronoms, l’accusatif vient d’abord (es ihm), contrairement à deux noms, où le datif vient le plus souvent d’abord.",
+          "de": "Bei zwei Pronomen steht der Akkusativ zuerst (es ihm), anders als bei zwei Nomen, wo meist der Dativ zuerst steht."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "a-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["r-pronoun-first", "r-two-objects"],
+          "estimatedDurationS": 48
+        },
+        {
+          "id": "a-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 3,
+          "ruleIds": ["r-pronoun-first", "r-two-objects"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "a-order",
+          "type": "grammar_word_order",
+          "itemCount": 4,
+          "ruleIds": ["r-pronoun-first", "r-two-objects"],
+          "estimatedDurationS": 120
+        },
+        {
+          "id": "a-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 3,
+          "ruleIds": ["r-pronoun-first", "r-two-objects"],
+          "estimatedDurationS": 75
+        }
+      ]
+    },
+    {
+      "id": "block-adverbials",
+      "title": {
+        "en": "Adverbials and complements of direction",
+        "fr": "Adverbiaux et compléments de direction",
+        "de": "Angaben und Richtungsergänzungen"
+      },
+      "ruleIds": ["r-adverbial", "r-directional"],
+      "explanationPlan": {
+        "en": "Show the full order: pronouns, adverbials, accusative noun, then the complement of direction or prepositional complement just before the participle.",
+        "fr": "Montrer l’ordre complet : pronoms, adverbiaux, nom à l’accusatif, puis le complément de direction ou prépositionnel juste avant le participe.",
+        "de": "Die ganze Reihenfolge zeigen: Pronomen, Angaben, Akkusativnomen, dann die Richtungs- oder Präpositionalergänzung direkt vor dem Partizip."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "Er hat ihm gestern das Fahrrad geschenkt.",
+          "translation": {
+            "en": "He gave him the bike yesterday.",
+            "fr": "Il lui a offert le vélo hier."
+          }
+        },
+        {
+          "text": "Sie hat ihm gestern den Brief in die Hand gedrückt.",
+          "translation": {
+            "en": "Yesterday she pressed the letter into his hand.",
+            "fr": "Hier, elle lui a mis la lettre dans la main."
+          }
+        },
+        {
+          "text": "Wir haben heute den Wagen gewaschen.",
+          "translation": {
+            "en": "We washed the car today.",
+            "fr": "Nous avons lavé la voiture aujourd’hui."
+          }
+        },
+        {
+          "text": "Ich habe ihn gestern an den Termin erinnert.",
+          "translation": {
+            "en": "I reminded him of the appointment yesterday.",
+            "fr": "Je lui ai rappelé le rendez-vous hier."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not move the complement of direction forward: it stays right before the participle.",
+          "fr": "Ne déplacez pas le complément de direction vers l’avant : il reste juste avant le participe.",
+          "de": "Ziehe die Richtungsergänzung nicht nach vorn: Sie bleibt direkt vor dem Partizip."
+        },
+        {
+          "en": "An adverbial may also follow the accusative noun, but a pronoun normally keeps its place before the adverbial.",
+          "fr": "Un adverbial peut aussi suivre le nom à l’accusatif, mais un pronom garde normalement sa place avant l’adverbial.",
+          "de": "Eine Angabe kann auch hinter dem Akkusativnomen stehen, aber ein Pronomen behält normalerweise seinen Platz vor der Angabe."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "b-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["r-adverbial", "r-directional"],
+          "estimatedDurationS": 48
+        },
+        {
+          "id": "b-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 3,
+          "ruleIds": ["r-adverbial", "r-directional"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "b-order",
+          "type": "grammar_word_order",
+          "itemCount": 4,
+          "ruleIds": ["r-adverbial", "r-directional"],
+          "estimatedDurationS": 140
+        },
+        {
+          "id": "b-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 3,
+          "ruleIds": ["r-adverbial", "r-directional"],
+          "estimatedDurationS": 75
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-order-1",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["r-pronoun-first", "r-two-objects"],
+        "estimatedDurationS": 105,
+        "timeLimitS": 150
+      },
+      {
+        "pageId": "exam-gaps",
+        "type": "grammar_gap_typing",
+        "itemCount": 3,
+        "ruleIds": ["r-pronoun-first", "r-two-objects"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      },
+      {
+        "pageId": "exam-order-2",
+        "type": "grammar_word_order",
+        "itemCount": 4,
+        "ruleIds": ["r-adverbial", "r-directional"],
+        "estimatedDurationS": 140,
+        "timeLimitS": 220
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

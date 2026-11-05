@@ -45,6 +45,10 @@ REQUIRED_SERIES=(
   'ft_question_restocks_total'
   'ft_question_restock_failures_total'
   'ft_question_restock_inserted_total'
+  # The gauge exists from start, and every label set of the counter is born at
+  # 0 (metrics.ts).
+  'ft_ws_connections'
+  'ft_ws_events_total'
   # Caddy 2.11 counts each request once, under the route's first handler.
   'caddy_http_request_duration_seconds_count{handler="subroute"}'
   'pg_settings_max_connections'

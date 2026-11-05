@@ -8,6 +8,8 @@ import {
   DRAW_SOURCES,
   EXAM_EVENTS,
   httpRequestDuration,
+  LESSON_ATTEMPT_EVENTS,
+  lessonAttempts,
   placementDraws,
   placementExams,
   placementPoolExhausted,
@@ -43,10 +45,11 @@ describe('metrics', () => {
     });
 
     // Otherwise the first exam after a restart never shows on the Learning dashboard.
-    it('exist at 0 from the start for every exam event, draw source and restock status', async () => {
+    it('exist at 0 from the start for every exam and attempt event, draw source and restock status', async () => {
       const cells = LEARNABLE_LANGUAGES.length * LEVELS.length * QUESTION_CATEGORIES.length;
       const expected = [
         [placementExams, LEARNABLE_LANGUAGES.length * EXAM_EVENTS.length],
+        [lessonAttempts, LEARNABLE_LANGUAGES.length * LESSON_ATTEMPT_EVENTS.length],
         [placementDraws, cells * DRAW_SOURCES.length],
         [questionRestocks, cells * RESTOCK_STATUSES.length],
         [questionRestockInserted, cells],

@@ -69,14 +69,28 @@ export const UserSchema = z.object({
 });
 export type User = z.infer<typeof UserSchema>;
 
-/** What other users are allowed to see. Email stays server side. */
+/** What other users are allowed to see: what /privacy says they see. Email stays server side. */
 export const PublicUserSchema = UserSchema.pick({
   id: true,
   displayName: true,
   avatarUrl: true,
-  locale: true,
 });
 export type PublicUser = z.infer<typeof PublicUserSchema>;
+
+/** Enough to find someone by part of a name, too few to page through everyone at once. */
+export const USER_SEARCH_LIMIT = 20;
+
+/**
+ * Checked like a display name: the shortest name is the shortest query, so a
+ * full name always finds its person, and the codes are the name's own.
+ */
+export const UserSearchQuerySchema = z.object({
+  q: z.string('displayName.tooShort').trim().pipe(DisplayNameSchema),
+});
+export type UserSearchQuery = z.infer<typeof UserSearchQuerySchema>;
+
+export const UserSearchResultSchema = z.object({ users: z.array(PublicUserSchema) });
+export type UserSearchResult = z.infer<typeof UserSearchResultSchema>;
 
 export const CreateUserSchema = z.object({
   email: z.email('email.invalid'),

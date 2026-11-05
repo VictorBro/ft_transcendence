@@ -1,0 +1,235 @@
+{
+  "schemaVersion": 2,
+  "id": "de-possession-genitive-s-and-von",
+  "lang": "de",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Besitz: Annas Auto, das Auto von Anna",
+  "objective": {
+    "en": "Say who something belongs to: with -s after names (Annas Auto), with an apostrophe after -s, -x, -z (Max' Fahrrad) and with von plus dative (das Haus von meinen Eltern).",
+    "fr": "Dire à qui appartient quelque chose : avec -s après un prénom (Annas Auto), avec une apostrophe après -s, -x, -z (Max' Fahrrad) et avec von et le datif (das Haus von meinen Eltern).",
+    "de": "Besitz angeben: mit -s bei Namen (Annas Auto), mit Apostroph nach -s, -x, -z (Max' Fahrrad) und mit von und Dativ (das Haus von meinen Eltern)."
+  },
+  "estimatedMinutes": 15,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:25:37.096Z",
+    "inputHashes": { "outline": "e1d7290f5fe688d571176e54741dc6438dcdcf29c1e0c3206e5861270ee51671" }
+  },
+  "kind": "grammar",
+  "topic": "nouns_and_determiners",
+  "scopeBoundaries": {
+    "en": "Covers possession with the name + s, the apostrophe after -s, -x, -z and von + dative. Excludes the genitive with articles (des Mannes) and genitive prepositions.",
+    "fr": "Couvre la possession avec prénom + s, l'apostrophe après -s, -x, -z et von + datif. Exclut le génitif avec article (des Mannes) et les prépositions à génitif.",
+    "de": "Behandelt Besitz mit Name + s, den Apostroph nach -s, -x, -z und von + Dativ. Ausgeschlossen sind der Genitiv mit Artikel (des Mannes) und Präpositionen mit Genitiv."
+  },
+  "prerequisites": [
+    {
+      "en": "Definite articles in the nominative and the dative",
+      "fr": "Les articles définis au nominatif et au datif",
+      "de": "Bestimmte Artikel im Nominativ und Dativ"
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-name-s",
+      "summary": {
+        "en": "A name gets -s and stands before the noun, without article or apostrophe: Annas Auto.",
+        "fr": "Un prénom prend -s et se place devant le nom, sans article ni apostrophe : Annas Auto.",
+        "de": "Ein Name bekommt -s und steht vor dem Nomen, ohne Artikel und Apostroph: Annas Auto."
+      }
+    },
+    {
+      "id": "rule-apostrophe",
+      "summary": {
+        "en": "A name ending in -s, -x or -z gets only an apostrophe: Max' Fahrrad.",
+        "fr": "Un prénom en -s, -x ou -z prend seulement une apostrophe : Max' Fahrrad.",
+        "de": "Ein Name auf -s, -x oder -z bekommt nur einen Apostroph: Max' Fahrrad."
+      }
+    },
+    {
+      "id": "rule-von-dative",
+      "summary": {
+        "en": "Another way is von + dative after the thing: das Auto von Anna, das Haus von meinen Eltern.",
+        "fr": "Autre possibilité : von + datif après la chose : das Auto von Anna, das Haus von meinen Eltern.",
+        "de": "Eine andere Möglichkeit ist von + Dativ nach der Sache: das Auto von Anna, das Haus von meinen Eltern."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-names",
+      "title": {
+        "en": "Names with -s or an apostrophe",
+        "fr": "Les prénoms avec -s ou une apostrophe",
+        "de": "Namen mit -s oder Apostroph"
+      },
+      "ruleIds": ["rule-name-s", "rule-apostrophe"],
+      "explanationPlan": {
+        "en": "Explain that a name gets -s and stands before the noun without article or apostrophe (Annas Auto). Then show names ending in -s, -x or -z, which get only an apostrophe (Max' Fahrrad).",
+        "fr": "Expliquer qu'un prénom prend -s et se place devant le nom, sans article ni apostrophe (Annas Auto). Montrer ensuite les prénoms en -s, -x ou -z, qui prennent seulement une apostrophe (Max' Fahrrad).",
+        "de": "Erklären, dass ein Name -s bekommt und ohne Artikel und Apostroph vor dem Nomen steht (Annas Auto). Dann Namen auf -s, -x oder -z zeigen, die nur einen Apostroph bekommen (Max' Fahrrad)."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "Das ist Annas Auto.",
+          "translation": { "en": "That is Anna's car.", "fr": "C'est la voiture d'Anna." }
+        },
+        {
+          "text": "Max' Fahrrad ist kaputt.",
+          "translation": { "en": "Max's bike is broken.", "fr": "Le vélo de Max est cassé." }
+        },
+        {
+          "text": "Wo ist Toms Handy?",
+          "translation": { "en": "Where is Tom's phone?", "fr": "Où est le téléphone de Tom ?" }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not write an apostrophe before the s: Annas Auto, not Anna's Auto.",
+          "fr": "N'écrivez pas d'apostrophe avant le s : Annas Auto, pas Anna's Auto.",
+          "de": "Schreib keinen Apostroph vor das s: Annas Auto, nicht Anna's Auto."
+        },
+        {
+          "en": "Do not add an article before the name: Annas Auto, not das Annas Auto.",
+          "fr": "N'ajoutez pas d'article devant le prénom : Annas Auto, pas das Annas Auto.",
+          "de": "Setz keinen Artikel vor den Namen: Annas Auto, nicht das Annas Auto."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-s-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-name-s", "rule-apostrophe"],
+          "estimatedDurationS": 48
+        },
+        {
+          "id": "ex-s-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-name-s", "rule-apostrophe"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-s-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-name-s", "rule-apostrophe"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-s-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 3,
+          "ruleIds": ["rule-name-s", "rule-apostrophe"],
+          "estimatedDurationS": 75
+        }
+      ]
+    },
+    {
+      "id": "block-von",
+      "title": {
+        "en": "Possession with von and the dative",
+        "fr": "La possession avec von et le datif",
+        "de": "Besitz mit von und Dativ"
+      },
+      "ruleIds": ["rule-von-dative"],
+      "explanationPlan": {
+        "en": "Show von + dative: the thing comes first, then von and the owner (das Auto von Anna, das Haus von meinen Eltern). Recall the dative articles and vom. Say that the -s form is for names, and von is used for nouns like die Eltern.",
+        "fr": "Montrer von + datif : la chose d'abord, puis von et le possesseur (das Auto von Anna, das Haus von meinen Eltern). Rappeler les articles au datif et vom. Dire que la forme en -s est pour les prénoms et que von sert pour des noms comme die Eltern.",
+        "de": "von + Dativ zeigen: erst die Sache, dann von und der Besitzer (das Auto von Anna, das Haus von meinen Eltern). Dativartikel und vom wiederholen. Sagen, dass die s-Form für Namen gilt und von bei Nomen wie die Eltern steht."
+      },
+      "explanationDurationS": 130,
+      "examples": [
+        {
+          "text": "Das ist das Auto von Anna.",
+          "translation": { "en": "That is Anna's car.", "fr": "C'est la voiture d'Anna." }
+        },
+        {
+          "text": "Das Haus von meinen Eltern ist groß.",
+          "translation": {
+            "en": "My parents' house is big.",
+            "fr": "La maison de mes parents est grande."
+          }
+        },
+        {
+          "text": "Das Fahrrad vom Lehrer ist neu.",
+          "translation": {
+            "en": "The teacher's bike is new.",
+            "fr": "Le vélo du professeur est neuf."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "After von the article is in the dative: von der Lehrerin, not von die Lehrerin.",
+          "fr": "Après von, l'article est au datif : von der Lehrerin, pas von die Lehrerin.",
+          "de": "Nach von steht der Artikel im Dativ: von der Lehrerin, nicht von die Lehrerin."
+        },
+        {
+          "en": "Von and dem become vom: das Fahrrad vom Lehrer.",
+          "fr": "Von et dem deviennent vom : das Fahrrad vom Lehrer.",
+          "de": "Von und dem werden zu vom: das Fahrrad vom Lehrer."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-von-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-von-dative"],
+          "estimatedDurationS": 48
+        },
+        {
+          "id": "ex-von-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-von-dative"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-von-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-von-dative"],
+          "estimatedDurationS": 60
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-names",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-name-s", "rule-apostrophe"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      },
+      {
+        "pageId": "exam-von",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-von-dative"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["rule-name-s", "rule-apostrophe", "rule-von-dative"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

@@ -1,0 +1,657 @@
+{
+  "schemaVersion": 2,
+  "id": "de-migration-and-integration",
+  "lang": "de",
+  "level": "B2",
+  "locales": ["en", "fr", "de"],
+  "title": "Migration und Integration",
+  "objective": {
+    "en": "Talk about immigration and living together using key words such as Flucht, Asyl and Vielfalt.",
+    "fr": "Parler d’immigration et de vie commune avec des mots clés comme Flucht, Asyl et Vielfalt.",
+    "de": "Über Einwanderung und Zusammenleben sprechen und dabei Wörter wie Flucht, Asyl und Vielfalt verwenden."
+  },
+  "estimatedMinutes": 21,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-3",
+    "generatedAt": "2026-11-02T12:30:51.547Z",
+    "inputHashes": { "outline": "a5f97ddcdd0e7db72135cccf38e58112af43771d25a4cafee5f68ed44c82df95" }
+  },
+  "kind": "vocabulary",
+  "theme": "relations",
+  "coverageNotes": {
+    "en": "Twelve words on migration, legal status and life together in society, at B2 level. They follow the outline: immigration, immigrant, flight, refugee, asylum, deportation and diversity, plus integration, citizenship, residence permit, living together and emigrating.",
+    "fr": "Douze mots sur la migration, le statut juridique et la vie en société, au niveau B2. Ils suivent le plan : immigration, immigré, fuite, réfugié, asile, expulsion et diversité, plus intégration, nationalité, titre de séjour, vie commune et émigrer.",
+    "de": "Zwölf Wörter zu Migration, rechtlichem Status und Zusammenleben in der Gesellschaft auf B2-Niveau. Sie folgen der Gliederung: Einwanderung, Einwanderer, Flucht, Geflüchtete, Asyl, Abschiebung und Vielfalt, dazu Integration, Staatsangehörigkeit, Aufenthaltserlaubnis, Zusammenleben und auswandern."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve words fit the topic without overloading a B2 lesson and cover people, processes and society.",
+    "fr": "Douze mots couvrent le thème sans surcharger une leçon B2 : personnes, démarches et société.",
+    "de": "Zwölf Wörter decken das Thema ab, ohne eine B2-Lektion zu überladen: Personen, Verfahren und Gesellschaft."
+  },
+  "difficultyBalance": {
+    "en": "Most words are core vocabulary for news and debates; the legal terms and long compounds are demanding.",
+    "fr": "La plupart des mots sont du vocabulaire de base pour l’actualité et les débats ; les termes juridiques et les mots composés longs sont plus exigeants.",
+    "de": "Die meisten Wörter gehören zum Grundwortschatz für Nachrichten und Debatten; die Rechtsbegriffe und langen Komposita sind anspruchsvoll."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "ankommen",
+      "label": {
+        "en": "Arriving and fleeing",
+        "fr": "Arriver et fuir",
+        "de": "Ankommen und Fliehen"
+      },
+      "targetIds": ["einwanderung", "einwanderer", "auswandern", "flucht", "gefluechtete", "asyl"],
+      "introduction": {
+        "en": "These words describe people who **leave** a country or **arrive** in a new one:\n\n- `die Einwanderung`\n- `der Einwanderer`\n- `auswandern`\n- `die Flucht`\n- `der Geflüchtete`\n- `das Asyl`\n\nFor women, the forms are `die Einwanderin` and `die Geflüchtete`.",
+        "fr": "Ces mots décrivent des personnes qui **quittent** un pays ou **arrivent** dans un nouveau pays :\n\n- `die Einwanderung`\n- `der Einwanderer`\n- `auswandern`\n- `die Flucht`\n- `der Geflüchtete`\n- `das Asyl`\n\nPour les femmes, les formes sont `die Einwanderin` et `die Geflüchtete`.",
+        "de": "Diese Wörter beschreiben Menschen, die ein Land **verlassen** oder in einem neuen Land **ankommen**:\n\n- `die Einwanderung`\n- `der Einwanderer`\n- `auswandern`\n- `die Flucht`\n- `der Geflüchtete`\n- `das Asyl`\n\nFür Frauen lauten die Formen `die Einwanderin` und `die Geflüchtete`."
+      }
+    },
+    {
+      "id": "gesellschaft",
+      "label": {
+        "en": "Status and society",
+        "fr": "Statut et société",
+        "de": "Status und Gesellschaft"
+      },
+      "targetIds": [
+        "abschiebung",
+        "aufenthaltserlaubnis",
+        "staatsangehoerigkeit",
+        "integration",
+        "vielfalt",
+        "zusammenleben"
+      ],
+      "introduction": {
+        "en": "These words name legal steps and life together in a **diverse** society:\n\n- `die Abschiebung`\n- `die Aufenthaltserlaubnis`\n- `die Staatsangehörigkeit`\n- `die Integration`\n- `die Vielfalt`\n- `das Zusammenleben`\n\nYou meet them often in news reports and political debates.",
+        "fr": "Ces mots désignent des démarches juridiques et la vie commune dans une société **diverse** :\n\n- `die Abschiebung`\n- `die Aufenthaltserlaubnis`\n- `die Staatsangehörigkeit`\n- `die Integration`\n- `die Vielfalt`\n- `das Zusammenleben`\n\nOn les rencontre souvent dans les reportages et les débats politiques.",
+        "de": "Diese Wörter benennen rechtliche Schritte und das Leben in einer **vielfältigen** Gesellschaft:\n\n- `die Abschiebung`\n- `die Aufenthaltserlaubnis`\n- `die Staatsangehörigkeit`\n- `die Integration`\n- `die Vielfalt`\n- `das Zusammenleben`\n\nSie begegnen dir oft in Nachrichten und politischen Debatten."
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "einwanderung",
+      "term": "Einwanderung",
+      "translations": { "en": ["immigration"], "fr": ["immigration"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Einwanderung",
+      "examForms": ["die Einwanderung"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈaɪ̯nˌvandəʁʊŋ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Die Einwanderung nach Deutschland hat viele Gründe.",
+        "translation": {
+          "en": "Immigration to Germany has many causes.",
+          "fr": "L’immigration vers l’Allemagne a de nombreuses causes."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Einwanderung is immigration: people move to a country in order to live there.",
+        "fr": "Die Einwanderung, c’est l’immigration : des personnes s’installent dans un pays pour y vivre.",
+        "de": "Die Einwanderung bezeichnet das Kommen von Menschen in ein Land, um dort zu leben."
+      },
+      "genderExplanation": {
+        "en": "Nouns ending in -ung are feminine: die Einwanderung.",
+        "fr": "Les noms en -ung sont féminins : die Einwanderung.",
+        "de": "Nomen auf -ung sind feminin: die Einwanderung."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Die ",
+        "after": " von Fachkräften nach Deutschland wird politisch gefördert.",
+        "accepted": { "answers": ["Einwanderung"] },
+        "referenceTargetIds": ["einwanderung", "vielfalt", "asyl", "zusammenleben"],
+        "explanation": {
+          "en": "Only Einwanderung fits: skilled workers move to Germany.",
+          "fr": "Seul « Einwanderung » convient : des travailleurs qualifiés s’installent en Allemagne.",
+          "de": "Nur „Einwanderung“ passt: Fachkräfte ziehen nach Deutschland."
+        }
+      },
+      "listeningOptionTargetIds": ["einwanderung", "einwanderer", "auswandern", "integration"]
+    },
+    {
+      "id": "einwanderer",
+      "term": "Einwanderer",
+      "translations": { "en": ["immigrant"], "fr": ["immigré"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "der Einwanderer",
+      "examForms": ["der Einwanderer"],
+      "articleException": null,
+      "genderVariants": ["die Einwanderin"],
+      "pronunciation": "/ˈaɪ̯nˌvandəʁɐ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Sein Vater kam als Einwanderer aus der Türkei.",
+        "translation": {
+          "en": "His father came from Turkey as an immigrant.",
+          "fr": "Son père est venu de Turquie en tant qu’immigré."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Der Einwanderer is a man who has moved to a country to live there; a woman is die Einwanderin.",
+        "fr": "Der Einwanderer est un homme qui s’est installé dans un pays ; une femme se dit die Einwanderin.",
+        "de": "Der Einwanderer ist ein Mann, der in ein Land gezogen ist, um dort zu leben; eine Frau ist die Einwanderin."
+      },
+      "genderExplanation": {
+        "en": "Words for male people ending in -er are usually masculine: der Einwanderer. The feminine ends in -in.",
+        "fr": "Les noms de personnes de sexe masculin en -er sont en général masculins : der Einwanderer. Le féminin se termine par -in.",
+        "de": "Personenbezeichnungen auf -er sind meist maskulin: der Einwanderer. Die weibliche Form endet auf -in."
+      },
+      "matchingLabel": null,
+      "examPrompt": { "en": "immigrant (man)", "fr": "immigré (homme)" },
+      "gap": {
+        "before": "Mein Großvater kam 1965 nach Deutschland und war ein ",
+        "after": " aus Italien.",
+        "accepted": { "answers": ["Einwanderer"] },
+        "referenceTargetIds": ["einwanderer", "abschiebung", "vielfalt", "asyl"],
+        "explanation": {
+          "en": "Only Einwanderer fits: it names a person who moved to Germany.",
+          "fr": "Seul « Einwanderer » convient : il désigne une personne venue s’installer en Allemagne.",
+          "de": "Nur „Einwanderer“ passt: Es bezeichnet eine Person, die nach Deutschland gezogen ist."
+        }
+      },
+      "listeningOptionTargetIds": ["einwanderer", "einwanderung", "auswandern", "abschiebung"]
+    },
+    {
+      "id": "auswandern",
+      "term": "auswandern",
+      "translations": { "en": ["emigrate"], "fr": ["émigrer"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "auswandern",
+      "examForms": ["auswandern"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈaʊ̯sˌvandɐn/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Viele Menschen wollen aus wirtschaftlichen Gründen auswandern.",
+        "translation": {
+          "en": "Many people want to emigrate for economic reasons.",
+          "fr": "Beaucoup de gens veulent émigrer pour des raisons économiques."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Auswandern means to leave your own country in order to live somewhere else.",
+        "fr": "Auswandern signifie quitter son pays pour vivre ailleurs.",
+        "de": "Auswandern bedeutet, das eigene Land zu verlassen, um anderswo zu leben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Sie möchte ihr Heimatland für immer verlassen und nach Kanada ",
+        "after": ".",
+        "accepted": { "answers": ["auswandern"] },
+        "referenceTargetIds": ["auswandern", "flucht", "asyl", "abschiebung"],
+        "explanation": {
+          "en": "Only auswandern fits: it is the verb for leaving your country for good.",
+          "fr": "Seul « auswandern » convient : c’est le verbe pour quitter définitivement son pays.",
+          "de": "Nur „auswandern“ passt: Es ist das Verb für das endgültige Verlassen des Landes."
+        }
+      },
+      "listeningOptionTargetIds": ["auswandern", "einwanderer", "einwanderung", "abschiebung"]
+    },
+    {
+      "id": "flucht",
+      "term": "Flucht",
+      "translations": { "en": ["flight", "escape"], "fr": ["fuite"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Flucht",
+      "examForms": ["die Flucht"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/flʊxt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Die Flucht dauerte mehrere Wochen.",
+        "translation": {
+          "en": "The flight lasted several weeks.",
+          "fr": "La fuite a duré plusieurs semaines."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Flucht is leaving your country in danger, for example because of war or persecution.",
+        "fr": "Die Flucht, c’est le fait de quitter son pays en danger, par exemple à cause de la guerre ou de persécutions.",
+        "de": "Die Flucht ist das Verlassen des Landes in Gefahr, zum Beispiel wegen Krieg oder Verfolgung."
+      },
+      "genderExplanation": {
+        "en": "Flucht is feminine: die Flucht.",
+        "fr": "Flucht est féminin : die Flucht.",
+        "de": "Flucht ist feminin: die Flucht."
+      },
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "flight (fleeing from danger)",
+        "fr": "fuite (hors de son pays, par danger)"
+      },
+      "gap": {
+        "before": "Wegen des Krieges begann für die Familie eine lange ",
+        "after": " über das Mittelmeer.",
+        "accepted": { "answers": ["Flucht"] },
+        "referenceTargetIds": ["flucht", "integration", "aufenthaltserlaubnis", "vielfalt"],
+        "explanation": {
+          "en": "Only Flucht fits: the family leaves the country because of war.",
+          "fr": "Seul « Flucht » convient : la famille quitte le pays à cause de la guerre.",
+          "de": "Nur „Flucht“ passt: Die Familie verlässt wegen des Krieges das Land."
+        }
+      },
+      "listeningOptionTargetIds": ["flucht", "vielfalt", "abschiebung", "asyl"]
+    },
+    {
+      "id": "gefluechtete",
+      "term": "Geflüchtete",
+      "translations": { "en": ["refugee"], "fr": ["réfugié"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "der Geflüchtete",
+      "examForms": ["der Geflüchtete"],
+      "articleException": null,
+      "genderVariants": ["die Geflüchtete"],
+      "pronunciation": "/ɡəˈflʏçtətə/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Der Geflüchtete lernt jeden Tag Deutsch.",
+        "translation": {
+          "en": "The refugee learns German every day.",
+          "fr": "Le réfugié apprend l’allemand tous les jours."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Der Geflüchtete is a man who has fled his country; a woman is die Geflüchtete.",
+        "fr": "Der Geflüchtete est un homme qui a fui son pays ; une femme se dit die Geflüchtete.",
+        "de": "Der Geflüchtete ist ein Mann, der aus seinem Land geflohen ist; eine Frau ist die Geflüchtete."
+      },
+      "genderExplanation": {
+        "en": "Der Geflüchtete is masculine; it is formed like an adjective, and the feminine is die Geflüchtete.",
+        "fr": "Der Geflüchtete est masculin ; il se forme comme un adjectif et le féminin est die Geflüchtete.",
+        "de": "Der Geflüchtete ist maskulin; das Wort wird wie ein Adjektiv gebildet, die weibliche Form ist die Geflüchtete."
+      },
+      "matchingLabel": null,
+      "examPrompt": { "en": "refugee (man)", "fr": "réfugié (homme)" },
+      "gap": {
+        "before": "Der ",
+        "after": " wartet seit Monaten auf die Entscheidung über seinen Asylantrag.",
+        "accepted": { "answers": ["Geflüchtete"] },
+        "referenceTargetIds": ["gefluechtete", "einwanderung", "vielfalt", "zusammenleben"],
+        "explanation": {
+          "en": "Only Geflüchtete fits: after “Der” a person is needed who waits for a decision on his asylum application.",
+          "fr": "Seul « Geflüchtete » convient : après « Der » il faut une personne qui attend la décision sur sa demande d’asile.",
+          "de": "Nur „Geflüchtete“ passt: Nach „Der“ braucht man eine Person, die auf die Entscheidung über ihren Asylantrag wartet."
+        }
+      },
+      "listeningOptionTargetIds": ["gefluechtete", "flucht", "einwanderer", "aufenthaltserlaubnis"]
+    },
+    {
+      "id": "asyl",
+      "term": "Asyl",
+      "translations": { "en": ["asylum"], "fr": ["asile"] },
+      "wordClass": "noun",
+      "genders": ["neuter"],
+      "number": "singular",
+      "teachingForm": "das Asyl",
+      "examForms": ["das Asyl"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/aˈzyːl/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Das Asyl schützt Menschen, die in ihrer Heimat verfolgt werden.",
+        "translation": {
+          "en": "Asylum protects people who are persecuted in their home country.",
+          "fr": "L’asile protège les personnes persécutées dans leur pays d’origine."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Das Asyl is the protection a state gives to people who are persecuted in their home country.",
+        "fr": "Das Asyl est la protection qu’un État accorde aux personnes persécutées dans leur pays d’origine.",
+        "de": "Das Asyl ist der Schutz, den ein Staat Menschen gewährt, die in ihrer Heimat verfolgt werden."
+      },
+      "genderExplanation": {
+        "en": "Asyl is neuter: das Asyl.",
+        "fr": "Asyl est neutre : das Asyl.",
+        "de": "Asyl ist neutral: das Asyl."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Wer in seinem Heimatland verfolgt wird, kann in Deutschland um politisches ",
+        "after": " bitten.",
+        "accepted": { "answers": ["Asyl"] },
+        "referenceTargetIds": ["asyl", "integration", "staatsangehoerigkeit", "vielfalt"],
+        "explanation": {
+          "en": "Only Asyl fits: “politisches” needs a neuter noun, and persecuted people ask for asylum.",
+          "fr": "Seul « Asyl » convient : « politisches » demande un nom neutre, et les personnes persécutées demandent l’asile.",
+          "de": "Nur „Asyl“ passt: „politisches“ verlangt ein neutrales Nomen, und Verfolgte bitten um Asyl."
+        }
+      },
+      "listeningOptionTargetIds": ["asyl", "abschiebung", "flucht", "vielfalt"]
+    },
+    {
+      "id": "abschiebung",
+      "term": "Abschiebung",
+      "translations": { "en": ["deportation"], "fr": ["expulsion", "renvoi forcé"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Abschiebung",
+      "examForms": ["die Abschiebung"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈapˌʃiːbʊŋ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Die Abschiebung wurde in letzter Minute gestoppt.",
+        "translation": {
+          "en": "The deportation was stopped at the last minute.",
+          "fr": "L’expulsion a été arrêtée à la dernière minute."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Abschiebung is the forced return of a person to another country by the authorities.",
+        "fr": "Die Abschiebung est le renvoi forcé d’une personne vers un autre pays par les autorités.",
+        "de": "Die Abschiebung ist die zwangsweise Rückführung einer Person in ein anderes Land durch die Behörden."
+      },
+      "genderExplanation": {
+        "en": "Nouns ending in -ung are feminine: die Abschiebung.",
+        "fr": "Les noms en -ung sont féminins : die Abschiebung.",
+        "de": "Nomen auf -ung sind feminin: die Abschiebung."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Weil ihr Asylantrag abgelehnt wurde, droht der Familie die ",
+        "after": ".",
+        "accepted": { "answers": ["Abschiebung"] },
+        "referenceTargetIds": ["abschiebung", "vielfalt", "integration", "zusammenleben"],
+        "explanation": {
+          "en": "Only Abschiebung fits: after a rejected asylum application the family may be sent back.",
+          "fr": "Seul « Abschiebung » convient : après un refus de la demande d’asile, la famille risque d’être renvoyée.",
+          "de": "Nur „Abschiebung“ passt: Nach der Ablehnung des Asylantrags droht der Familie die Rückführung."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "abschiebung",
+        "aufenthaltserlaubnis",
+        "einwanderung",
+        "integration"
+      ]
+    },
+    {
+      "id": "aufenthaltserlaubnis",
+      "term": "Aufenthaltserlaubnis",
+      "translations": { "en": ["residence permit"], "fr": ["titre de séjour", "permis de séjour"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Aufenthaltserlaubnis",
+      "examForms": ["die Aufenthaltserlaubnis"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈaʊ̯fʔɛntˌhaltsʔɛɐ̯ˌlaʊ̯pnɪs/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Ohne Aufenthaltserlaubnis darf man in Deutschland nicht dauerhaft leben.",
+        "translation": {
+          "en": "Without a residence permit you may not live in Germany permanently.",
+          "fr": "Sans titre de séjour, on ne peut pas vivre durablement en Allemagne."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Aufenthaltserlaubnis is the official document that allows a foreigner to stay in a country.",
+        "fr": "Die Aufenthaltserlaubnis est le document officiel qui permet à un étranger de séjourner dans un pays.",
+        "de": "Die Aufenthaltserlaubnis ist das offizielle Dokument, das einem Ausländer den Aufenthalt in einem Land erlaubt."
+      },
+      "genderExplanation": {
+        "en": "Aufenthaltserlaubnis is feminine, like Erlaubnis: die Aufenthaltserlaubnis.",
+        "fr": "Aufenthaltserlaubnis est féminin, comme Erlaubnis : die Aufenthaltserlaubnis.",
+        "de": "Aufenthaltserlaubnis ist feminin, wie Erlaubnis: die Aufenthaltserlaubnis."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Mit einer befristeten ",
+        "after": " darf man zwei Jahre in Deutschland leben und arbeiten.",
+        "accepted": { "answers": ["Aufenthaltserlaubnis"] },
+        "referenceTargetIds": [
+          "aufenthaltserlaubnis",
+          "staatsangehoerigkeit",
+          "asyl",
+          "einwanderer"
+        ],
+        "explanation": {
+          "en": "Only Aufenthaltserlaubnis fits: a time-limited document that allows you to live and work in Germany.",
+          "fr": "Seul « Aufenthaltserlaubnis » convient : un document limité dans le temps qui permet de vivre et de travailler en Allemagne.",
+          "de": "Nur „Aufenthaltserlaubnis“ passt: ein befristetes Dokument, das das Leben und Arbeiten in Deutschland erlaubt."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "aufenthaltserlaubnis",
+        "staatsangehoerigkeit",
+        "abschiebung",
+        "auswandern"
+      ]
+    },
+    {
+      "id": "staatsangehoerigkeit",
+      "term": "Staatsangehörigkeit",
+      "translations": { "en": ["nationality", "citizenship"], "fr": ["nationalité"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Staatsangehörigkeit",
+      "examForms": ["die Staatsangehörigkeit", "die Staatsbürgerschaft"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʃtaːtsʔanɡəˌhøːʁɪçkaɪ̯t/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Er hat seit zwei Jahren die deutsche Staatsangehörigkeit.",
+        "translation": {
+          "en": "He has had German citizenship for two years.",
+          "fr": "Il a la nationalité allemande depuis deux ans."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Staatsangehörigkeit is the legal bond between a person and a state; die Staatsbürgerschaft means the same.",
+        "fr": "Die Staatsangehörigkeit est le lien juridique entre une personne et un État ; die Staatsbürgerschaft a le même sens.",
+        "de": "Die Staatsangehörigkeit ist die rechtliche Zugehörigkeit einer Person zu einem Staat; die Staatsbürgerschaft bedeutet dasselbe."
+      },
+      "genderExplanation": {
+        "en": "Nouns ending in -keit are feminine: die Staatsangehörigkeit.",
+        "fr": "Les noms en -keit sont féminins : die Staatsangehörigkeit.",
+        "de": "Nomen auf -keit sind feminin: die Staatsangehörigkeit."
+      },
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "citizenship (legal membership of a state)",
+        "fr": "nationalité (au sens juridique)"
+      },
+      "gap": {
+        "before": "Nach fünf Jahren kann sie die deutsche ",
+        "after": " beantragen.",
+        "accepted": { "answers": ["Staatsangehörigkeit", "Staatsbürgerschaft"] },
+        "referenceTargetIds": ["staatsangehoerigkeit", "abschiebung", "flucht", "vielfalt"],
+        "explanation": {
+          "en": "Only Staatsangehörigkeit fits: after years of residence one can apply for citizenship.",
+          "fr": "Seul « Staatsangehörigkeit » convient : après des années de séjour, on peut demander la nationalité.",
+          "de": "Nur „Staatsangehörigkeit“ passt: Nach Jahren des Aufenthalts kann man sie beantragen."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "staatsangehoerigkeit",
+        "aufenthaltserlaubnis",
+        "vielfalt",
+        "asyl"
+      ]
+    },
+    {
+      "id": "integration",
+      "term": "Integration",
+      "translations": { "en": ["integration"], "fr": ["intégration"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Integration",
+      "examForms": ["die Integration"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɪntəɡʁaˈtsi̯oːn/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Gute Sprachkenntnisse fördern die Integration.",
+        "translation": {
+          "en": "Good language skills promote integration.",
+          "fr": "De bonnes connaissances linguistiques favorisent l’intégration."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Integration is the process by which newcomers become a full part of society.",
+        "fr": "Die Integration est le processus par lequel les nouveaux arrivants font pleinement partie de la société.",
+        "de": "Die Integration ist der Prozess, in dem Neuankömmlinge vollständig Teil der Gesellschaft werden."
+      },
+      "genderExplanation": {
+        "en": "Nouns ending in -tion are feminine: die Integration.",
+        "fr": "Les noms en -tion sont féminins : die Integration.",
+        "de": "Nomen auf -tion sind feminin: die Integration."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Ein Sprachkurs erleichtert die ",
+        "after": " in den Arbeitsmarkt und in die Gesellschaft.",
+        "accepted": { "answers": ["Integration"] },
+        "referenceTargetIds": ["integration", "flucht", "abschiebung", "asyl"],
+        "explanation": {
+          "en": "Only Integration fits: a language course helps newcomers become part of work and society.",
+          "fr": "Seul « Integration » convient : un cours de langue aide les nouveaux arrivants à s’insérer dans le travail et la société.",
+          "de": "Nur „Integration“ passt: Ein Sprachkurs hilft Neuankömmlingen, Teil von Arbeit und Gesellschaft zu werden."
+        }
+      },
+      "listeningOptionTargetIds": ["integration", "einwanderung", "abschiebung", "zusammenleben"]
+    },
+    {
+      "id": "vielfalt",
+      "term": "Vielfalt",
+      "translations": { "en": ["diversity"], "fr": ["diversité"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Vielfalt",
+      "examForms": ["die Vielfalt"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈfiːlfalt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Die Vielfalt der Kulturen bereichert unsere Stadt.",
+        "translation": {
+          "en": "The diversity of cultures enriches our city.",
+          "fr": "La diversité des cultures enrichit notre ville."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Vielfalt means that many different cultures, languages or ways of life exist side by side.",
+        "fr": "Die Vielfalt signifie que de nombreuses cultures, langues ou façons de vivre différentes coexistent.",
+        "de": "Die Vielfalt bedeutet, dass viele verschiedene Kulturen, Sprachen oder Lebensweisen nebeneinander bestehen."
+      },
+      "genderExplanation": {
+        "en": "Vielfalt is feminine: die Vielfalt.",
+        "fr": "Vielfalt est féminin : die Vielfalt.",
+        "de": "Vielfalt ist feminin: die Vielfalt."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "In unserer Stadt leben Menschen aus über hundert Ländern – diese ",
+        "after": " macht sie lebendig.",
+        "accepted": { "answers": ["Vielfalt"] },
+        "referenceTargetIds": ["vielfalt", "flucht", "asyl", "abschiebung"],
+        "explanation": {
+          "en": "Only Vielfalt fits: people from over a hundred countries make the city diverse and lively.",
+          "fr": "Seul « Vielfalt » convient : des gens de plus de cent pays rendent la ville diverse et vivante.",
+          "de": "Nur „Vielfalt“ passt: Menschen aus über hundert Ländern machen die Stadt vielfältig und lebendig."
+        }
+      },
+      "listeningOptionTargetIds": ["vielfalt", "flucht", "asyl", "integration"]
+    },
+    {
+      "id": "zusammenleben",
+      "term": "Zusammenleben",
+      "translations": {
+        "en": ["living together", "coexistence"],
+        "fr": ["vie commune", "cohabitation"]
+      },
+      "wordClass": "noun",
+      "genders": ["neuter"],
+      "number": "singular",
+      "teachingForm": "das Zusammenleben",
+      "examForms": ["das Zusammenleben"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/tsuˈzamənˌleːbn̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Das Zusammenleben im Viertel funktioniert gut.",
+        "translation": {
+          "en": "Living together in the neighbourhood works well.",
+          "fr": "La vie commune dans le quartier se passe bien."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Das Zusammenleben is the way people of different origins live side by side in a community.",
+        "fr": "Das Zusammenleben désigne la façon dont des personnes d’origines différentes vivent ensemble dans une communauté.",
+        "de": "Das Zusammenleben bezeichnet, wie Menschen unterschiedlicher Herkunft in einer Gemeinschaft miteinander leben."
+      },
+      "genderExplanation": {
+        "en": "Nouns made from an infinitive are neuter: das Zusammenleben.",
+        "fr": "Les noms formés à partir d’un infinitif sont neutres : das Zusammenleben.",
+        "de": "Nomen, die aus einem Infinitiv entstehen, sind neutral: das Zusammenleben."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Das friedliche ",
+        "after": " von Menschen unterschiedlicher Herkunft braucht gegenseitigen Respekt.",
+        "accepted": { "answers": ["Zusammenleben"] },
+        "referenceTargetIds": ["zusammenleben", "einwanderer", "asyl", "abschiebung"],
+        "explanation": {
+          "en": "Only Zusammenleben fits: “Das friedliche” needs a neuter noun for people living side by side.",
+          "fr": "Seul « Zusammenleben » convient : « Das friedliche » demande un nom neutre pour des personnes qui vivent ensemble.",
+          "de": "Nur „Zusammenleben“ passt: „Das friedliche“ verlangt ein neutrales Nomen für das Miteinander von Menschen."
+        }
+      },
+      "listeningOptionTargetIds": ["zusammenleben", "auswandern", "integration", "einwanderung"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}
