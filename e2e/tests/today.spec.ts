@@ -37,12 +37,29 @@ const readToday = async (page: Page, lang: string): Promise<Today> => {
   return response.json();
 };
 
-/** Finishes a lesson through the stub route, as the lesson page of #146 will. */
-const finish = async (page: Page, lang: string, id: string, score: number): Promise<void> => {
-  const response = await page.request.put(`/api/courses/${lang}/lessons/${id}/result`, {
-    data: { score },
-  });
-  expect(response.status()).toBe(200);
+interface Attempt {
+  attemptId: string;
+  current: { index: number } | null;
+}
+
+/**
+ * Plays a lesson through its attempt (#145), every page left blank: the
+ * server grades the answers and takes no score, and the browser cannot know
+ * the right ones, so a lesson finished here is attempted at 0% and not
+ * passed. A passed lesson waits for the lesson page (#146).
+ */
+const finishBlank = async (page: Page, lang: string, id: string): Promise<void> => {
+  const url = `/api/courses/${lang}/lessons/${id}/attempt`;
+  const started = await page.request.post(url, { data: { locale: 'en' } });
+  expect(started.status()).toBe(201);
+  let attempt = (await started.json()) as Attempt;
+  while (attempt.current !== null) {
+    const response = await page.request.post(`${url}/pages/${attempt.current.index}`, {
+      data: { attemptId: attempt.attemptId, answers: {} },
+    });
+    expect(response.status()).toBe(200);
+    attempt = ((await response.json()) as { attempt: Attempt }).attempt;
+  }
 };
 
 const home = (lang: string) => `/en/learn/${lang}`;
@@ -114,10 +131,13 @@ test.describe('the daily goal page', () => {
 
   /**
    * One learner through a whole day, since every account costs a signup: a
-   * lesson not passed, then the goal met, raised, the level changed and back,
-   * and the level finished. Goal 10 is one lesson a day.
+   * lesson not passed, then the goal met, raised, and the level changed and
+   * back. Goal 10 is one lesson a day. The level complete card needs passed
+   * lessons, so its test waits for the lesson page (#146).
    */
-  test('a day of lessons, up to the level complete card', async ({ freshLearner: page }) => {
+  test('a day of lessons: goal met, raised, and the level changed', async ({
+    freshLearner: page,
+  }) => {
     const lang = ONBOARDED_COURSE.lang;
     await placeCourse(page, { lang, level: 'A1', dailyGoal: 10 });
     const first = await readToday(page, lang);
@@ -125,11 +145,11 @@ test.describe('the daily goal page', () => {
     expect(lesson).toBeDefined();
 
     // Not passed, but it counts for today: the goal of one lesson is met.
-    await finish(page, lang, lesson!.id, 40);
+    await finishBlank(page, lang, lesson!.id);
     await page.goto(home(lang));
     const card = page.getByRole('region', { name: 'Today' });
     await expect(card.getByText('Daily goal reached')).toBeVisible();
-    await expect(card.getByText('Not passed yet, best 40%. Counts for today.')).toBeVisible();
+    await expect(card.getByText('Not passed yet, best 0%. Counts for today.')).toBeVisible();
     await expect(card.getByRole('link', { name: 'Start' })).toHaveCount(0);
     await expect(page.getByText('1 day streak, today included.')).toBeVisible();
 
@@ -158,35 +178,7 @@ test.describe('the daily goal page', () => {
     await pickLevel(page, 'A1');
     await save.click();
     await expect(save).toHaveCount(0);
+    await expect(level).toHaveValue('A1');
     await expect(page.getByText(/^Attempted 1 of \d+$/)).toBeVisible();
-
-    // Every ready lesson attempted: the level is complete. Today offers only
-    // ready lessons, never one done today, a few at a time, so finishing what
-    // it offers until it offers nothing takes a handful of requests, not one
-    // per row of the level. The lesson not passed above stays at 40%.
-    for (let round = 0; round < 20; round += 1) {
-      const { proposed, extra } = await readToday(page, lang);
-      if (proposed.length === 0 && extra.length === 0) {
-        break;
-      }
-      for (const card of [...proposed, ...extra]) {
-        await finish(page, lang, card.id, 90);
-      }
-    }
-    const done = await readToday(page, lang);
-    expect(done.progress.complete).toBe(true);
-
-    // goto, not reload: Firefox aborts a reload while a refresh is open (#176).
-    await page.goto(home(lang));
-    const { total, passed, needed } = done.progress;
-    await expect(
-      page.getByText(
-        `You finished A1: ${total} of ${total} attempted, ${passed} passed, ${needed} needed.`,
-      ),
-    ).toBeVisible();
-    await page.getByRole('button', { name: 'Start A2' }).click();
-
-    await expect(level).toHaveValue('A2');
-    await expect(page.getByRole('button', { name: 'Start A2' })).toHaveCount(0);
   });
 });
