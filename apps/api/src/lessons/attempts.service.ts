@@ -31,9 +31,22 @@ type SubmitPage = shared.player.SubmitPage;
  * A ready lesson of this language, with what buildPlan reads: 404
  * lesson.notFound otherwise, as findLesson. The brief and content stay
  * on the server.
+ *
+ * With `share`, inside a transaction, the lesson row is held FOR SHARE until
+ * the commit. The seed upserts an edited lesson and deletes its unfinished
+ * attempts in one transaction, so it waits for every attempt in flight, and
+ * an attempt that comes after it reads the new content and finds no old row.
  */
-async function findSource(db: Prisma.TransactionClient, lang: Language, id: string) {
+async function findSource(
+  db: Prisma.TransactionClient,
+  lang: Language,
+  id: string,
+  { share = false } = {},
+) {
   const lesson = await findLesson(db, lang, id, { readyOnly: true });
+  if (share) {
+    await db.$queryRaw`SELECT 1 FROM "Lesson" WHERE id = ${lesson.id} FOR SHARE`;
+  }
   const { brief, content } = await db.lesson.findUniqueOrThrow({
     where: { id: lesson.id },
     select: { brief: true, content: true },
@@ -114,7 +127,7 @@ export class AttemptsService {
   async start(userId: string, lang: Language, id: string, locale: Locale, now: Date) {
     const started = await this.prisma.$transaction(async (tx) => {
       const course = checkCourse(await lockCourse(tx, userId, lang), { placed: true });
-      const { lesson, source } = await findSource(tx, lang, id);
+      const { lesson, source } = await findSource(tx, lang, id, { share: true });
       const key = { userLevelId: course.id, lessonId: lesson.id };
 
       const old = await tx.lessonAttempt.findUnique({ where: { userLevelId_lessonId: key } });
@@ -170,7 +183,7 @@ export class AttemptsService {
   ) {
     const { closed, page } = await this.prisma.$transaction(async (tx) => {
       const course = checkCourse(await lockCourse(tx, user.id, lang), { placed: true });
-      const { lesson, source } = await findSource(tx, lang, id);
+      const { lesson, source } = await findSource(tx, lang, id, { share: true });
       const row = await tx.lessonAttempt.findUnique({
         where: { userLevelId_lessonId: { userLevelId: course.id, lessonId: lesson.id } },
       });
@@ -204,13 +217,26 @@ export class AttemptsService {
         results = { ...sheet, finish };
       }
 
-      const updated = await tx.lessonAttempt.update({
-        where: { id: row.id },
-        data: {
-          ...dataOf(result.state),
-          ...(results ? { results: results as unknown as Prisma.InputJsonObject } : {}),
-        },
-      });
+      // The FOR SHARE in findSource keeps the seed out, so the row is still
+      // there. Should it go anyway, the learner gets a stale attempt, not a 500.
+      const updated = await tx.lessonAttempt
+        .update({
+          where: { id: row.id },
+          data: {
+            ...dataOf(result.state),
+            ...(results ? { results: results as unknown as Prisma.InputJsonObject } : {}),
+          },
+        })
+        .catch((error: unknown) => {
+          if (
+            typeof error === 'object' &&
+            error !== null &&
+            'code' in error &&
+            error.code === 'P2025'
+          )
+            throw new ConflictException('attempt.stale');
+          throw error;
+        });
       const page = shared.player.PageResultSchema.parse({
         feedback: result.feedback,
         attempt: viewOf(plan, updated, now),
