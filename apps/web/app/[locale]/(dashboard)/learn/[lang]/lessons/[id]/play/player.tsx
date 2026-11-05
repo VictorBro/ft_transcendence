@@ -83,6 +83,15 @@ export function LessonPlayer({
   const top = useRef<HTMLDivElement>(null);
   // The page index a post is running or done for: a timer at zero and a click cannot both send it.
   const sent = useRef<number | null>(null);
+  // The green flash's timer: cleared when the player goes, so it never moves a page no one sees.
+  const flashTimer = useRef<number | null>(null);
+
+  useEffect(
+    () => () => {
+      if (flashTimer.current !== null) window.clearTimeout(flashTimer.current);
+    },
+    [],
+  );
 
   const page = view.current;
 
@@ -181,7 +190,8 @@ export function LessonPlayer({
     const skip = page.items.every((item) => lessons.player.typeSkipsFeedbackWhenRight(item.type));
     if (allRight && skip) {
       setFlash(true);
-      window.setTimeout(() => {
+      flashTimer.current = window.setTimeout(() => {
+        flashTimer.current = null;
         setDrafts(rest);
         show(attempt);
       }, FLASH_MS);

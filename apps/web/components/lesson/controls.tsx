@@ -1,6 +1,6 @@
 'use client';
 
-import { useId } from 'react';
+import { useId, type KeyboardEvent } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import type { Language } from '@ft/shared';
 
@@ -42,6 +42,34 @@ export function outcomeTone(outcome: Outcome | undefined): string {
       return 'border-slate-700 bg-slate-900';
   }
 }
+
+/**
+ * The arrow keys of a radio group: they move to the next or previous
+ * option and pick it, as native radios do. With roving tabindex (see
+ * rovingTab), Tab enters the group once and leaves it.
+ */
+export function radioArrows(event: KeyboardEvent<HTMLElement>) {
+  const step =
+    event.key === 'ArrowRight' || event.key === 'ArrowDown'
+      ? 1
+      : event.key === 'ArrowLeft' || event.key === 'ArrowUp'
+        ? -1
+        : 0;
+  if (step === 0) return;
+  const radios = [
+    ...event.currentTarget.querySelectorAll<HTMLButtonElement>('[role="radio"]:not(:disabled)'),
+  ];
+  const at = radios.findIndex((r) => r === document.activeElement);
+  if (at < 0 || radios.length < 2) return;
+  event.preventDefault();
+  const next = radios[(at + step + radios.length) % radios.length]!;
+  next.focus();
+  if (next.getAttribute('aria-checked') !== 'true') next.click();
+}
+
+/** The tab stop of a radio group: the picked option, else the first. */
+export const rovingTab = (chosen: boolean, index: number, anyChosen: boolean) =>
+  chosen || (!anyChosen && index === 0) ? 0 : -1;
 
 const textOf = (value: Answer | undefined) => (value && 'text' in value ? value.text : '');
 
@@ -162,8 +190,13 @@ export function ChoiceControl({
       ) : (
         <PromptLine unit={unit} lang={lang} />
       )}
-      <div role="radiogroup" aria-label={t('pick')} className="flex flex-wrap gap-2">
-        {unit.options.map((option) => {
+      <div
+        role="radiogroup"
+        aria-label={t('pick')}
+        onKeyDown={radioArrows}
+        className="flex flex-wrap gap-2"
+      >
+        {unit.options.map((option, index) => {
           const chosen = picked === option.ref;
           // Once checked: the right options in green, a wrong pick in red.
           const tone = feedback
@@ -181,6 +214,7 @@ export function ChoiceControl({
               type="button"
               role="radio"
               aria-checked={chosen}
+              tabIndex={rovingTab(chosen, index, picked !== undefined)}
               disabled={locked}
               lang={option.lang === 'learning' ? lang : undefined}
               onClick={() => onChange(chosen ? undefined : { option: option.ref })}
@@ -288,9 +322,10 @@ export function SpotControl({
         lang={lang}
         role="radiogroup"
         aria-label={t('spotHint')}
+        onKeyDown={radioArrows}
         className="flex flex-wrap gap-2 text-lg"
       >
-        {unit.tokens.map((token) => {
+        {unit.tokens.map((token, index) => {
           const chosen = current?.token === token.ref;
           const faulty = feedback?.faulty === token.ref;
           const tone = feedback
@@ -308,6 +343,7 @@ export function SpotControl({
               type="button"
               role="radio"
               aria-checked={chosen}
+              tabIndex={rovingTab(chosen, index, current !== undefined)}
               disabled={locked}
               onClick={() =>
                 onChange(chosen ? undefined : { token: token.ref, text: current?.text ?? '' })

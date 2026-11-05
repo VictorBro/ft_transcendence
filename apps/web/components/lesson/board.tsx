@@ -66,6 +66,7 @@ export function MatchingBoard({
 
   function drop(event: DragEvent, unit: Ref) {
     event.preventDefault();
+    if (locked) return;
     const option = event.dataTransfer.getData('text/plain');
     if (options.some((o) => o.ref === option)) pair(unit, option);
   }
@@ -73,24 +74,55 @@ export function MatchingBoard({
   const optionButton = (option: (typeof options)[number]) => {
     const used = holder(option.ref);
     const armed = armedOption === option.ref;
+    const className = `min-h-11 rounded-md border px-3 py-2 text-left transition-colors ${
+      locked ? 'cursor-default' : 'cursor-pointer'
+    } ${
+      armed
+        ? 'border-indigo-400 bg-indigo-500/25 text-slate-100'
+        : used
+          ? 'border-slate-800 bg-slate-900 text-slate-500'
+          : 'border-slate-700 bg-slate-900 text-slate-100 hover:bg-slate-800'
+    }`;
+    const shared = {
+      'aria-pressed': armed,
+      lang: option.lang === 'learning' ? lang : undefined,
+      'data-option': true,
+      className,
+    };
+
+    if (layout === 'drag') {
+      // Firefox never starts a drag from a <button>: a draggable element
+      // with the button role, which the keyboard works as one.
+      return (
+        <div
+          key={option.ref}
+          role="button"
+          tabIndex={locked ? -1 : 0}
+          aria-disabled={locked}
+          draggable={!locked}
+          onDragStart={(e) => e.dataTransfer.setData('text/plain', option.ref)}
+          onClick={() => {
+            if (!locked) clickOption(option.ref);
+          }}
+          onKeyDown={(e) => {
+            if (locked || (e.key !== 'Enter' && e.key !== ' ')) return;
+            e.preventDefault();
+            clickOption(option.ref);
+          }}
+          {...shared}
+        >
+          {option.text}
+        </div>
+      );
+    }
+
     return (
       <button
         key={option.ref}
         type="button"
         disabled={locked}
-        aria-pressed={armed}
-        draggable={layout === 'drag' && !locked}
-        onDragStart={(e) => e.dataTransfer.setData('text/plain', option.ref)}
         onClick={() => clickOption(option.ref)}
-        lang={option.lang === 'learning' ? lang : undefined}
-        data-option
-        className={`min-h-11 rounded-md border px-3 py-2 text-left transition-colors disabled:cursor-default ${
-          armed
-            ? 'border-indigo-400 bg-indigo-500/25 text-slate-100'
-            : used
-              ? 'border-slate-800 bg-slate-900 text-slate-500'
-              : 'border-slate-700 bg-slate-900 text-slate-100 hover:bg-slate-800'
-        }`}
+        {...shared}
       >
         {option.text}
       </button>
