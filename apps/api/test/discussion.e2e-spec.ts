@@ -263,6 +263,46 @@ describe('lesson discussion (e2e)', () => {
       streamText.mockRestore();
     });
 
+    describe('the practice mistakes in the system prompt', () => {
+      const systemOf = async (learner: TestAgent, sent: object) => {
+        const streamText = vi.spyOn(llm, 'streamText');
+        await learner.post(path()).send(sent).expect(200);
+        const [{ system }] = streamText.mock.calls[0];
+        streamText.mockRestore();
+        return system;
+      };
+
+      it('says there is none when every practice answer was right', async () => {
+        expect(await systemOf(agent, body())).toContain(
+          'The learner made no mistake in the practice.',
+        );
+      });
+
+      it('lists the wrong ones, at most 20, with the right answer', async () => {
+        const learner = await other('blank');
+        const attempt = await openAttempt(learner, prisma, 'fr', LESSON.id);
+        const stop = attempt.plan.pages.findIndex((page) => page.role === 'discussion');
+        for (let index = 0; index < stop; index++) {
+          await attempt
+            .send(
+              index,
+              attempt.answers(index, () => 'blank'),
+            )
+            .expect(200);
+        }
+        const mistakes = attempt.plan.pages
+          .filter((page) => page.role === 'practice')
+          .flatMap((page) => page.units)
+          .slice(0, 20)
+          .map((unit) => ({ prompt: unit.prompt, yours: null, answer: unit.answer }));
+
+        const system = await systemOf(learner, { ...body(), attemptId: attempt.attemptId });
+
+        expect(mistakes.length).toBeGreaterThan(0);
+        expect(system).toContain(JSON.stringify(mistakes));
+      });
+    });
+
     it('ends with an error event after the pieces already sent when the answer breaks midway', async () => {
       const response = await agent.post(path()).send(body(FIXTURE_FAILURES.midstream)).expect(200);
 

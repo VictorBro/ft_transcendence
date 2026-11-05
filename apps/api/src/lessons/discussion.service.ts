@@ -6,7 +6,7 @@ import { LLM_PROVIDER, type LlmProvider } from '../llm/llm.provider';
 import { PrismaService } from '../prisma/prisma.service';
 import { findAttempt } from './attempts.service';
 import { checkCourse } from './course-lookup';
-import { discussionPrompt } from './discussion-prompt';
+import { discussionPrompt, practiceMistakes } from './discussion-prompt';
 
 /** The longest tutor answer we pay for, in tokens. */
 const MAX_OUTPUT_TOKENS = 1000;
@@ -41,6 +41,7 @@ export class DiscussionService {
    * - 409 attempt.stale: no running attempt `attemptId` at this lesson, or its
    *   cursor is not on the discussion page. The discussion page comes before
    *   the exam, so once the exam starts the tutor is gone.
+   * The prompt holds the attempt's wrong practice answers, for "Explain my mistakes".
    */
   async open(user: SessionUser, lang: Language, id: string, attemptId: string): Promise<string> {
     // The course first: without one, the answer is course.notFound, not lesson.notFound.
@@ -65,7 +66,8 @@ export class DiscussionService {
     // failure here is a bug, and the 500 it gives is right.
     if (!lessons.isSupportedKind(lesson.kind)) throw new Error(`No schema for ${lesson.kind}`);
     const parsed = lessons.briefSchema(lesson.kind, lang).parse(source.brief);
-    return discussionPrompt(parsed, user.locale);
+    const answers = row.answers as unknown as Record<string, lessons.player.LockedAnswer>;
+    return discussionPrompt(parsed, user.locale, practiceMistakes(plan, answers));
   }
 
   /**

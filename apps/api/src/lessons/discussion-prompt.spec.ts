@@ -2,9 +2,15 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
-import { type Locale, SUPPORTED_LOCALES, type lessons } from '@ft/shared';
+import { lessons, type Locale, SUPPORTED_LOCALES } from '@ft/shared';
 
-import { discussionPrompt, teachingFacts } from './discussion-prompt';
+import {
+  discussionPrompt,
+  MAX_MISTAKES,
+  type Mistake,
+  practiceMistakes,
+  teachingFacts,
+} from './discussion-prompt';
 
 // vitest runs with the package as cwd.
 const SAMPLES = join(process.cwd(), '../../packages/shared/test/fixtures/samples');
@@ -39,6 +45,13 @@ function readingLessons(): ReadingLesson[] {
     .filter(({ brief }) => brief.kind === 'reading');
 }
 
+/** A mistake as practiceMistakes gives it. */
+const MISTAKE: Mistake = {
+  prompt: { native: 'I am not hungry.' },
+  yours: 'Je pas faim.',
+  answer: "Je n'ai pas faim.",
+};
+
 describe('discussionPrompt', () => {
   const reading = readingLessons();
 
@@ -51,7 +64,7 @@ describe('discussionPrompt', () => {
     const exam = content.documents.find((document) => document.documentId === 'exam');
 
     it.each(SUPPORTED_LOCALES)('holds neither the exam document nor the genre, in %s', (locale) => {
-      const prompt = discussionPrompt(brief, locale);
+      const prompt = discussionPrompt(brief, locale, []);
 
       expect(exam?.paragraphs.length).toBeGreaterThan(0);
       for (const paragraph of exam?.paragraphs ?? []) expect(prompt).not.toContain(paragraph);
@@ -64,19 +77,33 @@ describe('discussionPrompt', () => {
   });
 
   it('names the course language, the level and the language to answer in', () => {
-    const prompt = discussionPrompt(sample('fr-negation-ne-pas'), 'de');
+    const prompt = discussionPrompt(sample('fr-negation-ne-pas'), 'de', []);
 
     expect(prompt).toContain('tutor of one French lesson, level A1');
     expect(prompt).toContain('Answer in German');
     expect(prompt).toContain('Write French examples in French');
   });
 
-  it('ends with the teaching facts as JSON', () => {
+  it('ends with the teaching facts as JSON, on the last line', () => {
     const brief = sample('fr-ordering-at-a-cafe');
-    const prompt = discussionPrompt(brief, 'en');
+    const prompt = discussionPrompt(brief, 'en', [MISTAKE]);
 
-    const json = prompt.slice(prompt.indexOf('{'));
-    expect(JSON.parse(json)).toEqual(teachingFacts(brief, 'en'));
+    expect(JSON.parse(prompt.split('\n').at(-1)!)).toEqual(teachingFacts(brief, 'en'));
+  });
+
+  it('lists the mistakes as JSON, before the lesson material', () => {
+    const prompt = discussionPrompt(sample('fr-ordering-at-a-cafe'), 'en', [MISTAKE]);
+    const lines = prompt.split('\n');
+
+    expect(lines).toContain(JSON.stringify([MISTAKE]));
+    expect(prompt).not.toContain('no mistake');
+  });
+
+  // Without it, a learner who asks to explain their mistakes gets some made up.
+  it('says so when there is no mistake', () => {
+    const prompt = discussionPrompt(sample('fr-ordering-at-a-cafe'), 'en', []);
+
+    expect(prompt).toContain('The learner made no mistake in the practice.');
   });
 });
 
@@ -154,5 +181,79 @@ describe('teachingFacts', () => {
 
     expect(facts).toContain(brief.objective.de);
     expect(facts).not.toContain(brief.objective.en);
+  });
+});
+
+describe('practiceMistakes', () => {
+  // PR #142's grammar sample: practice pages with typed answers, then an exam.
+  const id = 'fr-negation-ne-pas';
+  const source = {
+    brief: sample(id),
+    content: read(SAMPLES, 'lessons', id),
+  } as unknown as lessons.player.LessonSource;
+  const plan = lessons.player.buildPlan(source, lessons.player.motherTongue('en', 'fr'));
+  const units = (role: lessons.player.PageRole) =>
+    plan.pages.filter((page) => page.role === role).flatMap((page) => page.units);
+  const practice = units('practice');
+
+  const locked = (
+    outcome: lessons.player.LockedAnswer['outcome'],
+    response: lessons.player.LockedAnswer['response'] = null,
+  ): lessons.player.LockedAnswer => ({ response, outcome, points: 0, timedOut: false });
+  /** Every given unit locked with `outcome`, the others not locked. */
+  const all = (list: lessons.player.PlanUnit[], outcome: lessons.player.LockedAnswer['outcome']) =>
+    Object.fromEntries(list.map((unit) => [unit.id, locked(outcome)]));
+  const mistakeOf = (unit: lessons.player.PlanUnit): Mistake => ({
+    prompt: unit.prompt,
+    yours: null,
+    answer: unit.answer,
+  });
+
+  it('finds practice and exam units to check', () => {
+    expect(practice.length).toBeGreaterThan(1);
+    expect(units('exam').length).toBeGreaterThan(0);
+  });
+
+  it('keeps the wrong practice answers in the lesson order', () => {
+    expect(practiceMistakes(plan, all(practice, 'incorrect'))).toEqual(
+      practice.slice(0, MAX_MISTAKES).map(mistakeOf),
+    );
+  });
+
+  it('never keeps an exam answer', () => {
+    expect(practiceMistakes(plan, all(units('exam'), 'incorrect'))).toEqual([]);
+  });
+
+  it('leaves out a right answer and a unit not locked yet', () => {
+    const [right, wrong] = practice;
+    const answers = { [right.id]: locked('fully_correct'), [wrong.id]: locked('incorrect') };
+
+    expect(practiceMistakes(plan, answers)).toEqual([mistakeOf(wrong)]);
+  });
+
+  it('counts an accent slip and a blank as mistakes', () => {
+    const [slip, blank] = practice;
+    const answers = { [slip.id]: locked('orthography_only'), [blank.id]: locked('unanswered') };
+
+    expect(practiceMistakes(plan, answers)).toEqual([mistakeOf(slip), mistakeOf(blank)]);
+  });
+
+  it("gives the learner's answer as text", () => {
+    const typed = practice.find((unit) => unit.kind === 'text')!;
+    const answers = { [typed.id]: locked('incorrect', { text: ' Je pas mange. ' }) };
+
+    expect(typed).toBeDefined();
+    expect(practiceMistakes(plan, answers)).toEqual([
+      { ...mistakeOf(typed), yours: 'Je pas mange.' },
+    ]);
+  });
+
+  it(`keeps at most ${MAX_MISTAKES}`, () => {
+    // The practice pages again and again, until there are more wrong units than that.
+    const pages = Array.from({ length: MAX_MISTAKES }, () => plan.pages).flat();
+
+    expect(practiceMistakes({ ...plan, pages }, all(practice, 'incorrect'))).toHaveLength(
+      MAX_MISTAKES,
+    );
   });
 });
