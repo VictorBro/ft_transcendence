@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { CourseSchema, DAILY_GOALS, type DailyGoal, type Language } from '@ft/shared';
 
@@ -11,12 +11,14 @@ import { FormError } from '@/components/form';
 /**
  * Saves on change: three values and no other field, so a button adds a click.
  * The pick shows at once and the select stays enabled while it saves, so the
- * focus stays on it. A refused save falls back to the stored goal.
+ * focus stays on it. A refused save falls back to the stored goal, unless a
+ * newer pick came after it: that one is what the learner sees.
  */
 export function GoalPicker({ lang, dailyGoal }: { lang: Language; dailyGoal: DailyGoal }) {
   const t = useTranslations('Course');
   const { error, save } = useCourseSave();
   const [value, setValue] = useState(dailyGoal);
+  const latest = useRef(0);
 
   useEffect(() => setValue(dailyGoal), [dailyGoal]);
 
@@ -24,9 +26,11 @@ export function GoalPicker({ lang, dailyGoal }: { lang: Language; dailyGoal: Dai
     const next = Number(event.target.value) as DailyGoal;
 
     setValue(next);
-    if (
-      !(await save(() => clientPatch(CourseSchema, `/api/courses/${lang}`, { dailyGoal: next })))
-    ) {
+    const pick = ++latest.current;
+    const saved = await save(() =>
+      clientPatch(CourseSchema, `/api/courses/${lang}`, { dailyGoal: next }),
+    );
+    if (!saved && pick === latest.current) {
       setValue(dailyGoal);
     }
   }
