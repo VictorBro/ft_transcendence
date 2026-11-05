@@ -9,7 +9,7 @@ import { ConfirmDialog } from '@/components/lesson/confirm-dialog';
 import { Link, useRouter } from '@/i18n/navigation';
 import { useErrorMessage } from '@/lib/error-message';
 import type { LessonStage } from '@/lib/lesson';
-import { rememberAttempt, startAttempt, takeChanged } from '@/lib/lesson-client';
+import { isStale, rememberAttempt, startAttempt, type Cursor } from '@/lib/lesson-client';
 
 /** Starts (or retakes) the lesson, then opens the player. */
 function useStartLesson(lang: Language, id: string, playPath: string) {
@@ -38,13 +38,26 @@ function useStartLesson(lang: Language, id: string, playPath: string) {
 /**
  * Back from the player shows a page from the router's cache, as it was
  * first rendered: when the player moved the attempt since, the page reads
- * itself again. Renders nothing.
+ * itself again. A page the server just rendered is left alone. Renders
+ * nothing.
  */
-export function FreshOnReturn({ lang, id }: { lang: Language; id: string }) {
+export function FreshOnReturn({
+  lang,
+  id,
+  cursor,
+}: {
+  lang: Language;
+  id: string;
+  /** The attempt as the server rendered this page. */
+  cursor: Cursor | null;
+}) {
   const router = useRouter();
+  const attemptId = cursor?.attemptId;
+  const index = cursor?.index;
   useEffect(() => {
-    if (takeChanged(lang, id)) router.refresh();
-  }, [lang, id, router]);
+    const rendered = attemptId === undefined ? null : { attemptId, index: index ?? null };
+    if (isStale(lang, id, rendered)) router.refresh();
+  }, [lang, id, attemptId, index, router]);
   return null;
 }
 

@@ -7,6 +7,7 @@ import { PRIMARY_BUTTON } from '@/components/form';
 import { playable } from '@/components/lesson/kinds';
 import { Link } from '@/i18n/navigation';
 import { lessonPaths, lessonTitle, loadLesson } from '@/lib/lesson';
+import { cursorOf } from '@/lib/lesson-client';
 import { pick } from '@/lib/localized';
 import { FreshOnReturn, RetakeLesson } from '../lesson-actions';
 
@@ -50,7 +51,7 @@ export default async function ResultsPage({ params }: { params: Params }) {
 
   return (
     <div className="relative -mx-3 -my-3 flex min-w-0 flex-col px-3 py-3 [scrollbar-width:none] lg:h-full lg:overflow-y-auto [&::-webkit-scrollbar]:hidden">
-      <FreshOnReturn lang={course} id={card.id} />
+      <FreshOnReturn lang={course} id={card.id} cursor={cursorOf(read.attempt)} />
       <article className="mx-auto flex w-full max-w-3xl flex-col gap-6 pb-6 wrap-break-word">
         <Link
           href={`/learn/${course}`}

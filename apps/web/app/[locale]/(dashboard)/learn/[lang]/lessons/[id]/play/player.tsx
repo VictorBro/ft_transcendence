@@ -86,6 +86,8 @@ export function LessonPlayer({
   const [error, setError] = useState<string | null>(null);
   // The exam page whose countdown reached zero here: it stays locked, even if its post fails.
   const [timedOut, setTimedOut] = useState<number | null>(null);
+  // The drafts came from storage: from then on, they go back to it.
+  const [loaded, setLoaded] = useState(false);
   const top = useRef<HTMLDivElement>(null);
   const heading = useRef<HTMLHeadingElement>(null);
   // Set when the player moves to another page, so the new page's heading takes the focus.
@@ -117,25 +119,32 @@ export function LessonPlayer({
       return;
     }
     setView(newer.view);
-    setReceivedAt(newer.at);
     setDrafts(loadDrafts({ lang, id, attemptId: newer.view.attemptId }));
+    setLoaded(true);
     rememberAttempt(lang, id, newer.view, newer.at);
 
-    // An exam page fresh from the server render: its time left was counted
-    // before the HTML, the script and the hydration, which can take longer
-    // than the server's grace. Read it again from here, timed from the request.
     const current = newer.view.current;
-    if (newer.view !== initial || current.role !== 'exam') return;
+    if (current.role !== 'exam') {
+      setReceivedAt(newer.at);
+      return;
+    }
+    // An exam page: the time left it came with is stale. From the server
+    // render it was counted before the HTML, the script and the hydration,
+    // which can take longer than the server's grace; from this tab's memory
+    // (Back, then Resume or Forward) it is as old as the visit. Read it
+    // again, timed from the request, before the countdown shows.
     let live = true;
     const asked = Date.now();
     void readAttempt(lang, id).then((result) => {
+      if (!live) return;
       const fresh = result.ok ? result.data.attempt : null;
       if (
-        !live ||
         sent.current !== null ||
-        fresh?.attemptId !== initial.attemptId ||
+        fresh?.attemptId !== newer.view.attemptId ||
         fresh.current?.index !== current.index
       ) {
+        // Moved on meanwhile, or no answer: the view in hand, as it came.
+        setReceivedAt((at) => at ?? newer.at);
         return;
       }
       setView(fresh);
@@ -149,9 +158,9 @@ export function LessonPlayer({
 
   // The drafts follow the learner into storage, once loaded and until the attempt is over.
   useEffect(() => {
-    if (receivedAt === null || finished.current) return;
+    if (!loaded || finished.current) return;
     saveDrafts({ lang, id, attemptId: view.attemptId }, drafts);
-  }, [lang, id, view.attemptId, drafts, receivedAt]);
+  }, [lang, id, view.attemptId, drafts, loaded]);
 
   // A new page: its heading takes the focus, so a screen reader reads where the learner is.
   useEffect(() => {
