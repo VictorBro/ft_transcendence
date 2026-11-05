@@ -217,7 +217,10 @@ export function ChoiceControl({
               tabIndex={rovingTab(chosen, index, picked !== undefined)}
               disabled={locked}
               lang={option.lang === 'learning' ? lang : undefined}
-              onClick={() => onChange(chosen ? undefined : { option: option.ref })}
+              // As a native radio: picking selects, and never clears.
+              onClick={() => {
+                if (!chosen) onChange({ option: option.ref });
+              }}
               className={`min-h-11 rounded-md border px-4 py-2 text-left transition-colors disabled:cursor-default ${tone}`}
             >
               {option.text}
@@ -345,9 +348,10 @@ export function SpotControl({
               aria-checked={chosen}
               tabIndex={rovingTab(chosen, index, current !== undefined)}
               disabled={locked}
-              onClick={() =>
-                onChange(chosen ? undefined : { token: token.ref, text: current?.text ?? '' })
-              }
+              // Another word starts its own correction; the picked one stays picked.
+              onClick={() => {
+                if (!chosen) onChange({ token: token.ref, text: '' });
+              }}
               className={`min-h-10 rounded-md border px-2 py-1 transition-colors disabled:cursor-default ${tone}`}
             >
               {token.text}

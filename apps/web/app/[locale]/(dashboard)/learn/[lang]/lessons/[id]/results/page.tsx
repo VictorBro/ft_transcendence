@@ -4,6 +4,7 @@ import { getLocale, getTranslations } from 'next-intl/server';
 import type { Language, lessons } from '@ft/shared';
 
 import { PRIMARY_BUTTON } from '@/components/form';
+import { playable } from '@/components/lesson/kinds';
 import { Link } from '@/i18n/navigation';
 import { lessonPaths, lessonTitle, loadLesson } from '@/lib/lesson';
 import { pick } from '@/lib/localized';
@@ -106,7 +107,9 @@ export default async function ResultsPage({ params }: { params: Params }) {
           <Link href={`/learn/${course}`} className={PRIMARY_BUTTON}>
             {t('backToCourse')}
           </Link>
-          <RetakeLesson lang={course} id={card.id} playPath={paths.play} />
+          {playable(read.outline.kind) ? (
+            <RetakeLesson lang={course} id={card.id} playPath={paths.play} />
+          ) : null}
         </div>
 
         <nav aria-label={t('parts')} className="flex flex-col gap-2">

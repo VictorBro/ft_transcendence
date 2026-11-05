@@ -1,5 +1,5 @@
 import type { ComponentType } from 'react';
-import type { Language, lessons } from '@ft/shared';
+import type { Language, LessonKind, lessons } from '@ft/shared';
 
 export type ItemView = lessons.player.ItemView;
 export type ItemViewType = lessons.player.ItemViewType;
@@ -42,6 +42,8 @@ export type ItemRenderers = { [T in ItemViewType]?: ComponentType<ItemProps<T>> 
 export type StartField = ComponentType<{ outline: LessonOutline; lang: Language }>;
 
 export interface KindParts {
+  /** The lesson kind these parts play: a lesson of a kind with no parts cannot start. */
+  kind: LessonKind;
   renderers: ItemRenderers;
   startFields: StartField[];
 }

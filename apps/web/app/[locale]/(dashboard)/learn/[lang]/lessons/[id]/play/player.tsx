@@ -44,6 +44,8 @@ const unitRefs = (page: PageView): Ref[] =>
 interface Checked {
   feedback: Map<Ref, UnitFeedback>;
   next: AttemptView;
+  /** When the check was sent: the time base of the next page. */
+  at: number;
 }
 
 /**
@@ -73,14 +75,23 @@ export function LessonPlayer({
   const errorMessage = useErrorMessage();
 
   const [view, setView] = useState(initial);
-  // When the view arrived, in this tab's clock: the exam's time left counts from it.
+  // When the view was asked for, in this tab's clock: the exam's time left
+  // counts from it. The request start, not its arrival, so the tab's
+  // deadline is never later than the server's.
   const [receivedAt, setReceivedAt] = useState<number | null>(null);
   const [drafts, setDrafts] = useState<Record<Ref, Answer>>({});
   const [checked, setChecked] = useState<Checked | null>(null);
   const [flash, setFlash] = useState(false);
   const [pending, setPending] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  // The exam page whose countdown reached zero here: it stays locked, even if its post fails.
+  const [timedOut, setTimedOut] = useState<number | null>(null);
   const top = useRef<HTMLDivElement>(null);
+  const heading = useRef<HTMLHeadingElement>(null);
+  // Set when the player moves to another page, so the new page's heading takes the focus.
+  const moved = useRef(false);
+  // Set once the attempt is over: the drafts are cleared and must not come back.
+  const finished = useRef(false);
   // The page index a post is running or done for: a timer at zero and a click cannot both send it.
   const sent = useRef<number | null>(null);
   // The green flash's timer: cleared when the player goes, so it never moves a page no one sees.
@@ -94,6 +105,7 @@ export function LessonPlayer({
   );
 
   const page = view.current;
+  const slot = { lang, id, attemptId: view.attemptId };
 
   // After hydration: the newer of the rendered attempt and the one this tab
   // saw last (Forward shows the page as first rendered), and the drafts.
@@ -106,27 +118,67 @@ export function LessonPlayer({
     }
     setView(newer.view);
     setReceivedAt(newer.at);
-    setDrafts(loadDrafts(newer.view.attemptId));
+    setDrafts(loadDrafts({ lang, id, attemptId: newer.view.attemptId }));
     rememberAttempt(lang, id, newer.view, newer.at);
+
+    // An exam page fresh from the server render: its time left was counted
+    // before the HTML, the script and the hydration, which can take longer
+    // than the server's grace. Read it again from here, timed from the request.
+    const current = newer.view.current;
+    if (newer.view !== initial || current.role !== 'exam') return;
+    let live = true;
+    const asked = Date.now();
+    void readAttempt(lang, id).then((result) => {
+      const fresh = result.ok ? result.data.attempt : null;
+      if (
+        !live ||
+        sent.current !== null ||
+        fresh?.attemptId !== initial.attemptId ||
+        fresh.current?.index !== current.index
+      ) {
+        return;
+      }
+      setView(fresh);
+      setReceivedAt(asked);
+      rememberAttempt(lang, id, fresh, asked);
+    });
+    return () => {
+      live = false;
+    };
   }, [lang, id, initial, router, resultsPath]);
 
+  // The drafts follow the learner into storage, once loaded and until the attempt is over.
+  useEffect(() => {
+    if (receivedAt === null || finished.current) return;
+    saveDrafts({ lang, id, attemptId: view.attemptId }, drafts);
+  }, [lang, id, view.attemptId, drafts, receivedAt]);
+
+  // A new page: its heading takes the focus, so a screen reader reads where the learner is.
+  useEffect(() => {
+    if (!moved.current) return;
+    moved.current = false;
+    heading.current?.focus({ preventScroll: true });
+  }, [page?.index]);
+
   const show = useCallback(
-    (next: AttemptView) => {
+    (next: AttemptView, askedAt: number) => {
       setChecked(null);
       setFlash(false);
       setError(null);
       if (next.current === null) {
-        clearDrafts(next.attemptId);
+        finished.current = true;
+        clearDrafts({ lang, id, attemptId: next.attemptId });
         // Replaced, so Back from the results goes to the lesson page.
         router.replace(resultsPath);
         return;
       }
       sent.current = null;
+      moved.current = true;
       setView(next);
-      setReceivedAt(Date.now());
+      setReceivedAt(askedAt);
       top.current?.scrollIntoView({ block: 'start' });
     },
-    [router, resultsPath],
+    [lang, id, router, resultsPath],
   );
 
   function answer(ref: Ref, value: Answer | undefined) {
@@ -134,24 +186,25 @@ export function LessonPlayer({
       const next = { ...current };
       if (value === undefined) delete next[ref];
       else next[ref] = value;
-      saveDrafts(view.attemptId, next);
       return next;
     });
   }
 
-  /** A 409: another tab or an old page. Reads the attempt again and renders it. */
+  /** A 409, or a failed post after the countdown: reads the attempt again and renders it. */
   async function reread(code: string, status: number) {
+    const asked = Date.now();
     const result = await readAttempt(lang, id);
     if (!result.ok || result.data.attempt === null) {
       setError(errorMessage(result.ok ? code : result.code, result.ok ? status : result.status));
       return;
     }
-    rememberAttempt(lang, id, result.data.attempt);
-    show(result.data.attempt);
+    rememberAttempt(lang, id, result.data.attempt, asked);
+    show(result.data.attempt, asked);
     setError(errorMessage(code, status));
   }
 
-  async function post() {
+  /** Posts the page at the cursor; `afterZero` when its countdown ran out here. */
+  async function post(afterZero = false) {
     if (!page || sent.current === page.index) return;
     sent.current = page.index;
     const refs = new Set(unitRefs(page));
@@ -161,30 +214,34 @@ export function LessonPlayer({
 
     setPending(true);
     setError(null);
+    const asked = Date.now();
     const result = await submitPage(lang, id, page.index, view.attemptId, answers);
     setPending(false);
 
     if (!result.ok) {
       sent.current = null;
-      if (result.status === 409) return reread(result.code, result.status);
+      // After the countdown, the server may have closed the page already: its word counts.
+      if (result.status === 409 || afterZero || timedOut === page.index) {
+        return reread(result.code, result.status);
+      }
       setError(errorMessage(result.code, result.status));
       return;
     }
 
     const { feedback, attempt } = result.data;
-    rememberAttempt(lang, id, attempt);
+    rememberAttempt(lang, id, attempt, asked);
     // The page is locked on the server: its drafts are done with.
     const rest = Object.fromEntries(Object.entries(drafts).filter(([ref]) => !refs.has(ref)));
-    saveDrafts(view.attemptId, rest);
+    saveDrafts(slot, rest);
 
     if (feedback === null || page.role !== 'practice') {
       setDrafts(rest);
-      show(attempt);
+      show(attempt, asked);
       return;
     }
 
     const byRef = new Map(feedback.map((f) => [f.ref, f]));
-    setChecked({ feedback: byRef, next: attempt });
+    setChecked({ feedback: byRef, next: attempt, at: asked });
     // Right at once on a page whose items all allow it: a green flash, then on.
     const allRight = feedback.every((f) => f.outcome === 'fully_correct');
     const skip = page.items.every((item) => lessons.player.typeSkipsFeedbackWhenRight(item.type));
@@ -193,9 +250,15 @@ export function LessonPlayer({
       flashTimer.current = window.setTimeout(() => {
         flashTimer.current = null;
         setDrafts(rest);
-        show(attempt);
+        show(attempt, asked);
       }, FLASH_MS);
     }
+  }
+
+  /** The countdown at zero: the page locks here, then its drafts go. */
+  function zero() {
+    if (page) setTimedOut(page.index);
+    void post(true);
   }
 
   function next() {
@@ -204,7 +267,7 @@ export function LessonPlayer({
       const refs = page ? new Set(unitRefs(page)) : new Set<string>();
       return Object.fromEntries(Object.entries(current).filter(([ref]) => !refs.has(ref)));
     });
-    show(checked.next);
+    show(checked.next, checked.at);
   }
 
   if (page === null) {
@@ -214,10 +277,11 @@ export function LessonPlayer({
 
   const exam = page.role === 'exam';
   const examPages = outline.pages.filter((p) => p.role === 'exam');
-  const lastExam = exam && page.index === outline.pages.length - 1;
+  // No exam page after this one: Finish the exam.
+  const lastExam = exam && !outline.pages.slice(page.index + 1).some((p) => p.role === 'exam');
   // Ran out while the learner was away: the page shows, locked, until Next.
   const ranOut = exam && view.remainingMs === 0;
-  const locked = pending || checked !== null || ranOut;
+  const locked = pending || checked !== null || ranOut || timedOut === page.index;
 
   const props = {
     lang,
@@ -231,13 +295,13 @@ export function LessonPlayer({
     if (checked) return { label: t('continue'), onClick: next };
     switch (page.role) {
       case 'practice':
-        return { label: t('check'), onClick: post };
+        return { label: t('check'), onClick: () => void post() };
       case 'examIntro':
-        return { label: t('startExam'), onClick: post };
+        return { label: t('startExam'), onClick: () => void post() };
       case 'exam':
-        return { label: lastExam ? t('finishExam') : t('next'), onClick: post };
+        return { label: lastExam ? t('finishExam') : t('next'), onClick: () => void post() };
       default:
-        return { label: t('continue'), onClick: post };
+        return { label: t('continue'), onClick: () => void post() };
     }
   })();
 
@@ -265,11 +329,13 @@ export function LessonPlayer({
             key={`${view.attemptId}:${page.index}`}
             deadline={receivedAt + view.remainingMs}
             ranOut={ranOut}
-            onZero={post}
+            onZero={zero}
           />
         ) : null}
 
-        <h1 className="text-xl font-semibold">{pick(page.instructions, locale)}</h1>
+        <h1 ref={heading} tabIndex={-1} className="text-xl font-semibold outline-none">
+          {pick(page.instructions, locale)}
+        </h1>
 
         {ranOut ? (
           <p
@@ -327,7 +393,15 @@ export function LessonPlayer({
         />
       ) : null}
       <p role="status" className="sr-only">
-        {flash ? t('allRight') : ''}
+        {flash
+          ? t('allRight')
+          : checked
+            ? t('checkedTally', {
+                right: [...checked.feedback.values()].filter((f) => f.outcome === 'fully_correct')
+                  .length,
+                total: checked.feedback.size,
+              })
+            : ''}
       </p>
     </div>
   );
@@ -413,14 +487,15 @@ function PlayerHeader({
             yes={t('leaveYes')}
             onYes={() => {
               dialog.current?.close();
-              router.push(pagePath);
+              // Replaced: Back from the lesson page must not reopen the exam.
+              router.replace(pagePath);
             }}
           >
             {t('leaveConfirm')}
           </ConfirmDialog>
         </>
       ) : (
-        <Link href={pagePath} aria-label={t('leave')} className={closeClass}>
+        <Link href={pagePath} replace aria-label={t('leave')} className={closeClass}>
           {close}
         </Link>
       )}

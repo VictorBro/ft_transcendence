@@ -57,17 +57,36 @@ export function LessonActions({
   lang,
   id,
   stage,
+  playable,
   playPath,
   resultsPath,
 }: {
   lang: Language;
   id: string;
   stage: LessonStage;
+  /** False for a kind the browser cannot play yet: no Start, no Resume, no Retake. */
+  playable: boolean;
   playPath: string;
   resultsPath: string;
 }) {
   const t = useTranslations('Lesson');
   const { start, pending, error } = useStartLesson(lang, id, playPath);
+
+  if (!playable) {
+    return (
+      <div className="flex flex-col items-start gap-3">
+        <button type="button" disabled className={PRIMARY_BUTTON}>
+          {t('comingSoon')}
+        </button>
+        <p className="text-sm text-slate-400">{t('comingSoonInfo')}</p>
+        {stage === 'finished' ? (
+          <Link href={resultsPath} className={SECONDARY_BUTTON}>
+            {t('seeResults')}
+          </Link>
+        ) : null}
+      </div>
+    );
+  }
 
   if (stage === 'new') {
     return (

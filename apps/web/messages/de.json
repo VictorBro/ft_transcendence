@@ -371,7 +371,6 @@
     "position": "Lektion {position}",
     "minutes": "{minutes} Min.",
     "best": "Bestes Ergebnis: {score} %",
-    "details": "Über diese Lektion",
     "outline": "Ablauf",
     "newVerbs": "Neue Verben",
     "verb": "Verb",
@@ -407,7 +406,6 @@
     "timeLeft": "Verbleibende Zeit",
     "timeRanOut": "Die Zeit ist abgelaufen, während du weg warst. Diese Seite zählt als unbeantwortet.",
     "practice": "Übungen",
-    "score": "Punkte",
     "tally": "{earned} / {possible}",
     "resultsHeading": "Deine Ergebnisse",
     "resultsScore": "Punkte: {score} / 100",
@@ -420,7 +418,6 @@
     "pick": "Wähle eine Antwort",
     "wordBank": "Wörter zum Einsetzen",
     "yourSentence": "Dein Satz",
-    "clear": "Löschen",
     "spotHint": "Wähle das falsche Wort und korrigiere es.",
     "correction": "Korrektur",
     "boardHint": "Wähle links ein Element und dann rechts seinen Partner.",
@@ -430,7 +427,12 @@
     "hint": "Tipp: {hint}",
     "examples": "Beispiele",
     "discussionSoon": "Das Gespräch kommt bald hierher. Mach weiter mit der Prüfung.",
-    "unavailable": "Diese Übung kann noch nicht angezeigt werden."
+    "unavailable": "Diese Übung kann noch nicht angezeigt werden.",
+    "comingSoon": "Bald verfügbar",
+    "comingSoonInfo": "Diese Art von Lektion lässt sich hier noch nicht spielen.",
+    "boardOptions": "Auswahl",
+    "boardSlots": "Zuzuordnen",
+    "checkedTally": "{right} von {total} richtig"
   },
   "LessonKinds": {
     "grammar": "Grammatik",

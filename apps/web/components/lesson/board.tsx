@@ -173,7 +173,9 @@ export function MatchingBoard({
         <div role="group" aria-label={t('forms')} className="flex flex-wrap gap-2">
           {options.map(optionButton)}
         </div>
-        <ul className="flex flex-col gap-2">{units.map(unitRow)}</ul>
+        <ul aria-label={t('boardSlots')} className="flex flex-col gap-2">
+          {units.map(unitRow)}
+        </ul>
       </div>
     );
   }
@@ -182,10 +184,12 @@ export function MatchingBoard({
     <div className="flex flex-col gap-4">
       <p className="text-sm text-slate-400">{t('boardHint')}</p>
       <div className="grid gap-4 sm:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
-        <div role="group" className="flex flex-col gap-2">
+        <div role="group" aria-label={t('boardOptions')} className="flex flex-col gap-2">
           {options.map(optionButton)}
         </div>
-        <ul className="flex flex-col gap-2">{units.map(unitRow)}</ul>
+        <ul aria-label={t('boardSlots')} className="flex flex-col gap-2">
+          {units.map(unitRow)}
+        </ul>
       </div>
     </div>
   );
