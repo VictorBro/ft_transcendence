@@ -1,11 +1,13 @@
 import { ConflictException, Injectable, Logger } from '@nestjs/common';
-import type { SessionUser, UpdateProfileInput } from '@ft/shared';
+import { USER_SEARCH_LIMIT } from '@ft/shared';
+import type { SessionUser, UpdateProfileInput, UserSearchResult } from '@ft/shared';
 import { unlink } from 'fs/promises';
 import { basename, join } from 'path';
 
 import { AuthService } from '../auth/auth.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { AVATAR_ROUTE, AVATAR_STORAGE_DIR } from '../app.setup';
+import { PUBLIC_USER_SELECT } from './public-user';
 
 /** Relative on purpose: see setAvatar. */
 export const AVATAR_URL_PREFIX = `${AVATAR_ROUTE}/`;
@@ -15,6 +17,24 @@ export class UsersService {
   private readonly logger = new Logger(UsersService.name);
 
   constructor(private readonly prisma: PrismaService) {}
+
+  /**
+   * Display names containing `q`, in any case, never your own. Prisma passes
+   * `contains` to ILIKE as is, so `_`, which a name may hold, is escaped to mean
+   * itself (and `%` and `\` too, should the query ever allow them).
+   */
+  async search(me: string, q: string): Promise<UserSearchResult> {
+    const users = await this.prisma.user.findMany({
+      where: {
+        id: { not: me },
+        displayName: { contains: q.replace(/[\\%_]/g, '\\$&'), mode: 'insensitive' },
+      },
+      select: PUBLIC_USER_SELECT,
+      orderBy: { displayName: 'asc' },
+      take: USER_SEARCH_LIMIT,
+    });
+    return { users };
+  }
 
   async updateProfile(userId: string, input: UpdateProfileInput): Promise<SessionUser> {
     try {

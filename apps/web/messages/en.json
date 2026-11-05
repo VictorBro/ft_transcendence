@@ -26,10 +26,6 @@
     "continueLearning": "Continue learning",
     "logoAlt": "ft_transcendence logo"
   },
-  "Modes": {
-    "chatTitle": "Tutor",
-    "friendsTitle": "Cross-language chat"
-  },
   "Languages": {
     "en": "English",
     "fr": "French",
@@ -124,9 +120,6 @@
     "lessonsAtTop": "Your lessons will maintain and refine it.",
     "save": "Save",
     "cancel": "Cancel"
-  },
-  "ComingSoon": {
-    "stillInDevelopment": "This mode is still in development. Check back soon."
   },
   "ModeLayout": {
     "backToCourse": "Back to course"
@@ -232,9 +225,12 @@
       "invalidGoal": "Choose a daily goal of 10, 30 or 60 minutes",
       "invalidLevel": "That level does not exist"
     },
+    "attempt": {
+      "stale": "This page is out of date. Here is where you are now.",
+      "invalidAnswer": "This answer could not be read. Reload the page and try again."
+    },
     "lesson": {
-      "notFound": "That lesson does not exist",
-      "invalidScore": "The score must be a whole number from 0 to 100"
+      "notFound": "That lesson does not exist"
     },
     "placement": {
       "inProgress": "A placement test is already running. Finish it first.",
@@ -245,6 +241,16 @@
       "questionMismatch": "This question is no longer active. Refresh the placement test and try again.",
       "expired": "That placement test has expired. Start a new one.",
       "poolExhausted": "There are not enough questions left for that test. Try again later."
+    },
+    "user": {
+      "notFound": "That account does not exist"
+    },
+    "friend": {
+      "self": "You cannot add yourself as a friend",
+      "alreadyRequested": "You have already sent this person a request",
+      "alreadyFriends": "You are already friends",
+      "requestNotFound": "That request is no longer open",
+      "notFound": "That person is not in your friends"
     },
     "request": {
       "invalid": "The request could not be read",
@@ -287,6 +293,26 @@
     "removing": "Removing...",
     "avatarTooLarge": "File is too large. Maximum size is {size} MiB.",
     "saveChanges": "Save changes"
+  },
+  "FriendsPage": {
+    "title": "Friends",
+    "searchLabel": "Search by display name",
+    "search": "Search",
+    "results": "Search results",
+    "noResults": "No display name contains {query}.",
+    "received": "Requests received",
+    "sent": "Requests sent",
+    "yourFriends": "Your friends",
+    "noFriends": "No friends yet. Search for someone by their display name.",
+    "add": "Add friend",
+    "accept": "Accept",
+    "decline": "Decline",
+    "cancelRequest": "Cancel request",
+    "requestSent": "Request sent",
+    "isFriend": "Already friends",
+    "remove": "Remove",
+    "removeConfirm": "Remove {name} from your friends?",
+    "cancel": "Cancel"
   },
   "TwoFactorPage": {
     "heading": "Two factor authentication",

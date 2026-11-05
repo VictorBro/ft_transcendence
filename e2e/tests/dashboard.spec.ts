@@ -31,12 +31,9 @@ test.describe('dashboard and mode pages', () => {
     await expect(onboarded).toHaveURL(new RegExp(`${home}$`));
   });
 
-  // The course home has no Practice links any more (#86), but the mode pages
-  // stay until friends (#155) and messages (#158) replace them.
-  const modes: [string, string][] = [
-    ['Tutor', '/en/chat'],
-    ['Cross-language chat', '/en/friends'],
-  ];
+  // The course home has no Practice links any more (#86). The tutor page stays
+  // at /chat, and Friends lives in the account menu since #155.
+  const modes: [string, string][] = [['Tutor', '/en/chat']];
 
   test('the course home has no Practice section', async ({ onboarded }) => {
     await onboarded.goto(home);
@@ -80,20 +77,6 @@ test.describe('dashboard and mode pages', () => {
       account.displayName,
     );
   });
-
-  // Stub pages of the modes that have no dedicated feature yet: every one
-  // except Chat, which has a real page. Asserting the title keeps
-  // this from silently matching the wrong page if a future page reuses the
-  // same ComingSoon copy.
-  const stubs = modes.filter(([, href]) => href !== '/en/chat');
-
-  for (const [title, href] of stubs) {
-    test(`${href} shows the coming-soon placeholder for ${title}`, async ({ signedIn }) => {
-      await signedIn.goto(href);
-      await expect(signedIn.getByText(title, { exact: true })).toBeVisible();
-      await expect(signedIn.getByText('This mode is still in development.')).toBeVisible();
-    });
-  }
 
   // Their console gate is in console.spec.ts, driven by `onboarded` in routes.ts.
 });

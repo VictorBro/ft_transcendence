@@ -310,14 +310,14 @@ The team tracks each module's current status and points on the wiki:
 |---|---|---|---|
 | Framework for frontend and backend | Major | 2 | done (Next.js + NestJS) |
 | ORM | Minor | 1 | done (Prisma 7) |
-| Standard user management | Major | 2 | partly done, profile, avatar, friends, online status |
+| Standard user management | Major | 2 | partly done: profile, avatar, friends (#155); online status to come (#157) |
 | Complete 2FA | Minor | 1 | done |
 | i18n, ≥3 languages | Minor | 1 | locales declared, `next-intl` not wired |
 | Additional browsers (≥2) | Minor | 1 | Playwright projects + documentation |
 | Complete LLM interface | Major | 2 | interface exists, no provider |
 | Real-time via WebSockets | Major | 2 | gateway on `/ws`, live course updates (#154) |
 | Complete RAG system | Major | 2 | pgvector installed, no corpus |
-| User interaction: chat, profiles, friends | Major | 2 | not started |
+| User interaction: chat, profiles, friends | Major | 2 | friends done (#155); profiles (#156) and chat (#158) to come |
 | | | **16** | |
 
 > **Open, for the team: the tutor inside a lesson.** Lessons now ship with their exercises, answer
@@ -376,22 +376,21 @@ reconnection story and a second cancellation path, for no gain. One gateway, one
 
 | | Transport | Examples |
 |---|---|---|
-| **Everything CRUD** | REST, Nest controllers, documented in Swagger | `POST /api/courses`, `GET /api/courses/:lang/today`, `GET /api/courses/:lang/lessons`, `PUT /api/courses/:lang/lessons/:id/result` |
-| **Everything live** | socket.io on `/ws` | `course:updated`, `presence:update`; friend and message events to come |
+| **Everything CRUD** | REST, Nest controllers, documented in Swagger | `POST /api/courses`, `GET /api/courses/:lang/today`, `GET /api/courses/:lang/lessons`, `POST /api/courses/:lang/lessons/:id/attempt` |
+| **Everything live** | socket.io on `/ws` | `course:updated`, `friend:request`, `friend:accepted`, `friend:removed`, `presence:update`; message events to come |
 
 **The course stays in the path, and the API is language-neutral.** No route takes a `locale`
 parameter. A lesson is written in one language, the course's, like a question in the bank, so the
 response is the same for every interface language. The web app translates the page around the
 lesson, never the lesson.
 
-**Finishing a lesson is one route.** `PUT /api/courses/:lang/lessons/:id/result` with
-`{ score }` records the score on the course's result for that lesson, keeping the best one, and
-counts the lesson toward today's goal. It stays reachable only behind `LESSON_STUB` until the
-lesson page ships: the flag is on in development and CI and never set on the public server, and
-the stub lesson page posts a typed score to it. The lesson page then finishes through the same
-service, with the score from its exercises. The route and the flag come with
-[#82](https://github.com/VictorBro/ft_transcendence/issues/82), the stub page with
-[#96](https://github.com/VictorBro/ft_transcendence/issues/96).
+**No route takes a score.** The server runs every lesson attempt under
+`/api/courses/:lang/lessons/:id/attempt`: it sends only the page the learner is on, checks every
+answer, owns the exam timer, and when the last page locks it records the score from the answers it
+stored, keeping the best one, and counts the lesson toward today's goal. The finish and its goal
+rules come with [#82](https://github.com/VictorBro/ft_transcendence/issues/82), the attempt with
+[#145](https://github.com/VictorBro/ft_transcendence/issues/145); docs/LESSONS.md, "Scoring", has
+the details.
 
 The REST half is also what the **Public API** module documents, if you take it. That is a
 reason to keep the domain reachable over HTTP even where a socket would do.
@@ -703,19 +702,20 @@ That last row is the one that gets missed. Write it when the gateway is written,
 
 ## 7. Data model
 
-**Thirteen tables beside `User` and `RecoveryCode`, five of which are already migrated**
-(`UserLevel`, `QuestionBank`, `UserSeenQuestion`, `Lesson`, `LessonResult`). The course roadmap
-adds `Lesson` and `LessonResult` (both migrated) and `UserAchievement`; the lesson page adds
-`Exercise` and `Mistake`; social, content and operations add `Friendship`, `Message`, `Document`,
-`DocumentChunk` and `LlmCall`. Every one is load-bearing for a module we claim. The rule applied
-throughout: a table earns its place by being read at runtime, and a 1:1 relationship is a column,
-not a table.
+**Thirteen tables beside `User` and `RecoveryCode`, six of which are already migrated**
+(`UserLevel`, `QuestionBank`, `UserSeenQuestion`, `Lesson`, `LessonResult`, `Friendship`). The
+course roadmap adds `Lesson` and `LessonResult` (both migrated) and `UserAchievement`; the lesson
+page adds `Exercise` and `Mistake`; social, content and operations add `Friendship` (migrated),
+`Message`, `Document`, `DocumentChunk` and `LlmCall`. Every one is load-bearing for a module we
+claim. The rule applied throughout: a table earns its place by being read at runtime, and a 1:1
+relationship is a column, not a table.
 
-Everything is UUID-keyed, with three exceptions. `LessonResult` and `UserAchievement` are keyed by
-their pair (`(userLevelId, lessonId)` and `(userLevelId, code)`), because the pair is what makes
-a row unique. `Lesson` is keyed by its authored id (`de-separable-verbs`), because it is seeded
-from content and results attach to it. Anything worth dating has `createdAt`, and every
-user-owned row cascades on user delete, so deleting an account leaves nothing orphaned.
+Everything is UUID-keyed, with four exceptions. `LessonResult`, `UserAchievement` and
+`Friendship` are keyed by their pair (`(userLevelId, lessonId)`, `(userLevelId, code)`, and the
+two user ids, smaller first), because the pair is what makes a row unique. `Lesson` is keyed by
+its authored id (`de-separable-verbs`), because it is seeded from content and results attach to
+it. Anything worth dating has `createdAt`, and every user-owned row cascades on user delete, so
+deleting an account leaves nothing orphaned.
 
 ### 7.1 Languages
 
@@ -815,7 +815,7 @@ erDiagram
 
 | Table | Holds | Notes |
 |---|---|---|
-| `Friendship` | requesterId, addresseeId, status, respondedAt | `pending / accepted / blocked`. Unique on the ordered pair; enforce a canonical order so A to B and B to A cannot both exist |
+| `Friendship` | pairKey, requesterId, addresseeId, status, createdAt, updatedAt | `pending / accepted`; declining, cancelling and removing delete the row. Keyed by the pair, smaller id first, so A to B and B to A cannot both exist |
 | `Message` | senderId, recipientId, body, bodyLanguage, correctedBody?, translated?, sentAt, readAt | The cross-language chat of §1.5. `body` is what the sender typed; `translated` is it in the recipient's language, and both it and `correctedBody` are nullable so the message sends before the AI answers. One translation per message, because the conversation has two people in it. A `Conversation` plus a participants join table would buy group chat we are not claiming |
 | `Document` | language, cefr?, title, kind, sourceUrl, licence, attribution, checksum | Source material for RAG. **`licence` and `attribution` are not optional**: a mixed corpus needs per-document provenance, and CC BY-SA text has to be credited wherever it surfaces. `checksum` makes re-ingest idempotent |
 | `DocumentChunk` | documentId, level, topic?, theme?, ordinal, content, embedding `vector(N)` | HNSW index on `embedding`. `level` with `topic` or `theme` lets a lesson retrieve only its own cell's reference: one grammar note per (level, topic), shared by all of that cell's lessons |

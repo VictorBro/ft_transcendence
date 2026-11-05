@@ -7,7 +7,6 @@ import {
   DEFAULT_LOCALE,
   DisableTwoFactorSchema,
   EnableTwoFactorSchema,
-  FinishLessonSchema,
   HealthResponseSchema,
   LanguageSchema,
   LocaleSchema,
@@ -27,6 +26,7 @@ import {
   TimeZoneSchema,
   UpdateProfileSchema,
   UserSchema,
+  UserSearchQuerySchema,
   isErrorCode,
   isLocale,
 } from './index';
@@ -131,7 +131,13 @@ describe('UserSchema', () => {
     const publicUser = PublicUserSchema.parse(validUser);
 
     expect(publicUser).not.toHaveProperty('email');
-    expect(Object.keys(publicUser).sort()).toEqual(['avatarUrl', 'displayName', 'id', 'locale']);
+    expect(Object.keys(publicUser).sort()).toEqual(['avatarUrl', 'displayName', 'id']);
+  });
+});
+
+describe('UserSearchQuerySchema', () => {
+  it('trims the query before checking it', () => {
+    expect(UserSearchQuerySchema.parse({ q: '  Ali  ' }).q).toBe('Ali');
   });
 });
 
@@ -392,7 +398,6 @@ describe('validation messages', () => {
     ['SecondFactorSchema', SecondFactorSchema, { code: 'neither' }],
     ['EnableTwoFactorSchema', EnableTwoFactorSchema, { code: '12' }],
     ['DisableTwoFactorSchema', DisableTwoFactorSchema, { password: '' }],
-    ['FinishLessonSchema', FinishLessonSchema, { score: 70.5 }],
     ['LanguageSchema', LanguageSchema, 'klingon'],
     // A missing or mistyped field: Zod's "expected string" unless the base type has a code.
     ['CreateUserSchema (missing fields)', CreateUserSchema, {}],
@@ -415,6 +420,8 @@ describe('validation messages', () => {
     ['SetLevelSchema', SetLevelSchema, { level: 'Z9' }],
     ['StartPlacementSchema', StartPlacementSchema, {}],
     ['SubmitAnswerSchema', SubmitAnswerSchema, { questionId: 'nope', choice: 5 }],
+    ['UserSearchQuerySchema', UserSearchQuerySchema, { q: 'a%' }],
+    ['UserSearchQuerySchema (missing q)', UserSearchQuerySchema, {}],
   ] as const;
 
   it.each(rejected)('%s reports codes, not prose', (_name, schema, input) => {

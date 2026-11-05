@@ -372,6 +372,7 @@ Labels are always bounded: never a user id, an email, a session id, a lesson id 
 | `ft_placement_draws_total` | counter | `lang`, `level`, `category`, `source` (`written`, `generated`, `seen_fallback`) | `PlacementQuestionService` |
 | `ft_placement_pool_exhausted_total` | counter | `lang`, `level` | the same, when no question is left |
 | `ft_placement_exams_total` | counter | `lang`, `event` (`started`, `completed`, `quit`) | `PlacementService` |
+| `ft_lesson_attempts_total` | counter | `lang`, `event` (`started`, `completed`) | `AttemptsService`: a new attempt (a retake too), its last page locked |
 | `ft_users` | gauge, read at scrape | none | `MetricsCollector`, cached 60 s |
 | `ft_active_users` | gauge, read at scrape | none | signed-in users seen by `AuthGuard` in the last 5 minutes |
 | `ft_ws_connections` | gauge | none | `SocketGateway`, accepted sockets only |
@@ -384,8 +385,8 @@ dependency registers leaks into the scrape. Sessions are counted by redis-export
 API, so the API never scans Redis.
 
 `increase()` cannot see a counter's first increment when the series is born at 1. So every label
-set an alert or a panel reads exists at 0 from the start: `ft_placement_exams_total` for every
-language and event; `ft_placement_draws_total`, `ft_question_restocks_total` and
+set an alert or a panel reads exists at 0 from the start: `ft_placement_exams_total` and
+`ft_lesson_attempts_total` for every language and event; `ft_placement_draws_total`, `ft_question_restocks_total` and
 `ft_question_restock_inserted_total` for every cell of the bank, by source or status;
 `ft_placement_pool_exhausted_total` for every language and level;
 `ft_question_restock_failures_total` for every category and reason; `ft_llm_requests_total` and

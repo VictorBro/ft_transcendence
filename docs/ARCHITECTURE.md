@@ -215,6 +215,11 @@ sequenceDiagram
 - **Sent after the commit.** `course:updated { lang }` means "read this course
   again": the page is rendered on the server, so the tab calls
   `router.refresh()` rather than keeping a second copy of the course.
+  `RefreshOn` takes the list of events that refresh a page.
+- **Friend events** (`friend:request`, `friend:accepted`, `friend:removed`)
+  go to both users of the pair, so the actor's other tabs follow too. They carry
+  `{ userId }`, the other user, and /friends refreshes on any of them. Decline
+  and cancel send `friend:removed`: the row between the two is gone.
 - **One connection per tab**, held in module scope (`components/tab-socket.ts`)
   and opened by `SessionNav` for a signed-in user, so a route group remount or a
   locale switch never drops it and an anonymous page never opens one. WebSocket
@@ -370,8 +375,9 @@ flowchart TB
         c4["monitoring config<br/>promtool · amtool · caddy validate"]
     end
 
-    subgraph e2e["e2e.yml"]
-        e1["build prod images<br/>compose up"] --> em["monitoring check<br/>every target up"] --> e2["Playwright"] --> e3["console gate<br/>legal pages"] --> e4["API restart run<br/>Chromium, alone"]
+    subgraph e2e["e2e.yml, one job per browser"]
+        e1["build prod images<br/>compose up"] --> em["monitoring check<br/>every target up"] --> e2["Playwright<br/>one engine"] --> e3["console gate<br/>legal pages"] --> e4["API restart run<br/>Chromium job only"]
+        e4 --> eg["gate<br/>playwright (production stack)"]
     end
 
     subgraph hygiene["hygiene.yml"]
@@ -382,6 +388,9 @@ flowchart TB
         i1["multi-arch build<br/>amd64 + arm64 → GHCR"]
     end
 ```
+
+Each engine gets its own e2e job and stack, because the signup limit is per
+stack, and the gate job carries the required check.
 
 Two of those checks are **subject rejection criteria**, which is why they run
 against production images rather than a dev server:

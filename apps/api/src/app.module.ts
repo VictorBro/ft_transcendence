@@ -11,6 +11,7 @@ import { PrismaModule } from './prisma/prisma.module';
 import { RedisModule } from './redis/redis.module';
 import { IdentityThrottlerGuard } from './throttler/identity-throttler.guard';
 import { UsersModule } from './users/users.module';
+import { FriendsModule } from './friends/friends.module';
 import { CoursesModule } from './courses/courses.module';
 import { PlacementModule } from './placement/placement.module';
 import { LessonsModule } from './lessons/lessons.module';
@@ -29,6 +30,7 @@ import { LessonsModule } from './lessons/lessons.module';
     RedisModule,
     AuthModule,
     UsersModule,
+    FriendsModule,
     HealthModule,
     CoursesModule,
     PlacementModule,
