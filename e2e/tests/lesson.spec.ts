@@ -1,6 +1,6 @@
 import type { Page } from '@playwright/test';
 
-import { formatViolations, watchConsole } from '../support/console-guard';
+import { formatViolations, settle, watchConsole } from '../support/console-guard';
 import { expectFitsTheScreen } from '../support/layout';
 import {
   answerPage,
@@ -98,15 +98,19 @@ test.describe('a grammar lesson', () => {
     await expect(learner.getByRole('button', { name: 'Retake the lesson' })).toBeVisible();
 
     // The results reload, and the course page shows the lesson done today.
-    // Each load waits for its socket before the next one: leaving a page
-    // while its socket still connects logs a warning the guard counts.
+    // Each load waits for its socket and its link prefetches before the
+    // next one: leaving a page while its socket still connects logs a
+    // warning, and WebKit reports a cancelled prefetch as a page error.
+    await settle(learner);
     let live = liveConnection(learner);
     await learner.goto(page('/results'));
     await live;
+    await settle(learner);
     live = liveConnection(learner);
     await learner.reload();
     await expect(learner.getByRole('heading', { name: 'Your results' })).toBeVisible();
     await live;
+    await settle(learner);
     await learner.goto(`/en/learn/${LANG}`);
     await expect(learner.getByText(plan.title).first()).toBeVisible();
 
@@ -208,7 +212,8 @@ test.describe('a grammar lesson', () => {
     const now = await pageIndex(learner);
     await mainButton(other).click();
     await expect(other.locator(`[data-page-index="${now}"]`)).toBeVisible();
-    await expect(other.getByRole('alert')).toBeVisible();
+    // The player's own alert: Next.js has one too, for route changes.
+    await expect(other.locator('[data-page-index]').getByRole('alert')).toBeVisible();
     await other.close();
   });
 
