@@ -26,9 +26,6 @@
     "continueLearning": "Weiterlernen",
     "logoAlt": "ft_transcendence-Logo"
   },
-  "Modes": {
-    "chatTitle": "Tutor"
-  },
   "Languages": {
     "en": "Englisch",
     "fr": "Französisch",
@@ -43,13 +40,41 @@
     "title": "{lang, select, en {Englischkurs} fr {Französischkurs} de {Deutschkurs} other {Kurs}}",
     "heading": "{language}",
     "level": "Niveau",
-    "changeLevel": "Niveau ändern",
     "dailyGoal": "Tagesziel",
     "minutesPerDay": "{minutes} Min.",
     "takePlacement": "Einstufungstest machen",
-    "roadmapSoon": "Hier erscheint dein Lernpfad",
-    "practice": "Üben",
-    "thisCourse": "Dieser Kurs"
+    "thisCourse": "Dieser Kurs",
+    "streakKeep": "{count, plural, one {# Tag in Folge} other {# Tage in Folge}}. Erreiche dein Tagesziel, um die Serie zu halten.",
+    "streakToday": "{count, plural, one {# Tag in Folge} other {# Tage in Folge}}, heute mitgezählt.",
+    "streakStart": "Erreiche dein Tagesziel, um eine Serie zu starten.",
+    "noReadyLessons": "Die Lektionen für dieses Niveau sind unterwegs.",
+    "today": "Heute",
+    "goalProgress": "Ziel {minutes} Min.: {done} von {target, plural, one {# Lektion} other {# Lektionen}}",
+    "goalReached": "Tagesziel erreicht",
+    "goalBar": "Tagesziel",
+    "nextUp": "Als Nächstes",
+    "lessonMinutes": "{minutes} Min.",
+    "start": "Starten",
+    "open": "Öffnen",
+    "doneScore": "{score} %",
+    "failedRow": "{status}, bestes Ergebnis {score} %. Zählt für heute.",
+    "moreLessons": "Weitere Lektionen",
+    "seeAll": "{count, plural, one {Die {level}-Lektion ansehen} other {Alle # {level}-Lektionen ansehen}}",
+    "levelComplete": "Du hast {level} abgeschlossen: {attempted} von {total} versucht, {passed} bestanden, {needed} nötig.",
+    "levelCompleteTop": "Du hast {level} abgeschlossen, das höchste Niveau.",
+    "startLevel": "{level} starten",
+    "attempted": "Versucht: {attempted} von {total}",
+    "passed": "Bestanden: {passed} von {total}, {needed} nötig",
+    "comingSoon": "{count} demnächst verfügbar",
+    "bestStreak": "Längste Serie: {count, plural, one {# Tag} other {# Tage}}",
+    "saveLevel": "Speichern",
+    "levelSaved": "Niveau gespeichert: {level}"
+  },
+  "LessonStatus": {
+    "todo": "Nicht begonnen",
+    "failed": "Noch nicht bestanden",
+    "done": "Bestanden",
+    "soon": "Demnächst verfügbar"
   },
   "Onboarding": {
     "title": "Loslegen",

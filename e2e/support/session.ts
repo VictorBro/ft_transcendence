@@ -112,8 +112,7 @@ export const ONBOARDED_COURSE = { lang: 'fr', level: 'A1', dailyGoal: 30 } as co
 
 /**
  * The one course tests may add to the onboarded account, shared so no spec
- * drifts. German A1 has no ready lesson yet (#91), so it is the level with
- * nothing to play.
+ * drifts.
  */
 export const SECOND_COURSE = { lang: 'de', level: 'A1', dailyGoal: 10 } as const;
 
@@ -227,5 +226,22 @@ export const test = base.extend<
     await context.close();
   },
 });
+
+/**
+ * Picks a level in the course page's Level select, up to its Save button. A
+ * pick made before React has hydrated the select is lost, which WebKit hits on
+ * a fresh load, and picking the same value again fires no change. So it picks
+ * another level first and retries until the button shows.
+ */
+export const pickLevel = async (page: Page, level: string): Promise<void> => {
+  const select = page.getByRole('combobox', { name: 'Level' });
+  const save = page.getByRole('button', { name: 'Save' });
+
+  await expect(async () => {
+    await select.selectOption(level === 'A1' ? 'A2' : 'A1');
+    await select.selectOption(level);
+    await expect(save).toBeVisible({ timeout: 1_000 });
+  }).toPass({ timeout: 10_000 });
+};
 
 export { expect, logInSlot, signUpSlot };

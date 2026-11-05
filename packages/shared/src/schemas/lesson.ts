@@ -303,11 +303,14 @@ export const TodaySchema = z.object({
     /** Whether today already counts. */
     today: z.boolean(),
   }),
+  /** total, attempted, passed and needed count the level's ready lessons only. */
   progress: z.object({
     total: countSchema,
     attempted: countSchema,
     passed: countSchema,
     needed: countSchema,
+    /** The level's lessons that are not ready yet. */
+    comingSoon: countSchema,
     complete: z.boolean(),
   }),
   /** Null after C2. */

@@ -4,11 +4,12 @@ import { getTranslations } from 'next-intl/server';
 import { LanguageSchema, SERVER_EVENTS } from '@ft/shared';
 
 import { Link } from '@/i18n/navigation';
-import { ChangeLevel } from '@/components/change-level';
-import { PracticeRow } from '@/components/practice-row';
 import { RefreshOn } from '@/components/refresh-on';
 import { findCourse, requireCourses } from '@/lib/courses';
+import { loadToday } from '@/lib/lessons';
+import { DirectLevelPicker } from './direct-level-picker';
 import { GoalPicker } from './goal-picker';
+import { LevelComplete, MoreLessons, StreakLine, TodayCard } from './today';
 
 /** Reads the session and the courses on every request. */
 export const dynamic = 'force-dynamic';
@@ -52,25 +53,53 @@ export default async function CoursePage({ params }: { params: Promise<{ lang: s
     redirect(`/onboarding?lang=${parsed.data}`);
   }
 
+  // Once, after the guard: a course that cannot open never asks for its day.
+  const today = await loadToday(course.lang);
+  if (today === 'signed-out') {
+    redirect('/login');
+  }
+
+  const { progress } = today;
+  // No ready lesson in the level: nothing to propose, so no goal to reach.
+  const empty = progress.total === 0;
+
   return (
     <div className="flex h-full min-h-0 flex-col gap-6 lg:flex-row">
       {/* Any course's change, not only this one's: the switcher lists them all. */}
       <RefreshOn events={[SERVER_EVENTS.COURSE_UPDATED]} />
       <div className="relative -mx-3 -my-3 flex min-w-0 flex-1 flex-col gap-6 px-3 py-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:overflow-y-auto">
-        <h1 className="text-3xl font-semibold">{languageName(course.lang)}</h1>
-
-        {/* The roadmap is the point of this page, so it holds the main column
-            even while the Topic catalogue is unseeded. */}
-        <div className="flex min-h-60 flex-1 items-center justify-center rounded-2xl border border-dashed border-slate-800 text-slate-500">
-          {t('roadmapSoon')}
+        <div className="flex flex-col gap-2">
+          <h1 className="text-3xl font-semibold">{languageName(course.lang)}</h1>
+          {/* The streak is the course's, so it shows on a level with nothing to play too. */}
+          <StreakLine streak={today.streak} />
         </div>
 
-        <section className="flex shrink-0 flex-col gap-3 border-t border-slate-800 pt-5">
-          <h2 className="text-xs font-semibold tracking-widest text-slate-500 uppercase">
-            {t('practice')}
-          </h2>
-          <PracticeRow />
-        </section>
+        {empty ? (
+          <p className="rounded-2xl border border-dashed border-slate-800 p-6 text-slate-400">
+            {t('noReadyLessons')}
+          </p>
+        ) : (
+          <>
+            {progress.complete ? (
+              <LevelComplete today={today} lang={course.lang} level={course.level} />
+            ) : null}
+            <TodayCard
+              today={today}
+              lang={course.lang}
+              level={course.level}
+              dailyGoal={course.dailyGoal}
+            />
+            <MoreLessons lessons={today.extra} lang={course.lang} />
+            {/* Every row of the level, ready or not: the list shows them all. */}
+            <Link
+              href={`/learn/${course.lang}/lessons`}
+              prefetch={false}
+              className="inline-flex min-h-11 items-center self-start text-sm text-slate-300 underline underline-offset-4 transition-colors hover:text-slate-100"
+            >
+              {t('seeAll', { count: progress.total + progress.comingSoon, level: course.level })}
+            </Link>
+          </>
+        )}
       </div>
 
       <aside className="w-full shrink-0 lg:w-95">
@@ -79,19 +108,28 @@ export default async function CoursePage({ params }: { params: Promise<{ lang: s
             {t('thisCourse')}
           </h2>
 
-          <div className="flex flex-col">
-            {/* role="status", so a level saved below is announced. */}
-            <p
-              role="status"
-              className="flex items-baseline justify-between gap-4 text-sm text-slate-400"
-            >
-              <span>{t('level')}</span>
-              <span className="text-lg font-semibold text-slate-100">{course.level}</span>
-            </p>
-            <ChangeLevel lang={course.lang} level={course.level} label={t('changeLevel')} />
-          </div>
-
+          {/* Both are course settings, so the level changes here, next to the goal. */}
+          <DirectLevelPicker lang={course.lang} level={course.level} />
           <GoalPicker lang={course.lang} dailyGoal={course.dailyGoal} />
+
+          <ul className="flex flex-col gap-1 text-sm text-slate-400">
+            {empty ? null : (
+              <>
+                <li>{t('attempted', { attempted: progress.attempted, total: progress.total })}</li>
+                <li>
+                  {t('passed', {
+                    passed: progress.passed,
+                    total: progress.total,
+                    needed: progress.needed,
+                  })}
+                </li>
+              </>
+            )}
+            {progress.comingSoon > 0 ? (
+              <li>{t('comingSoon', { count: progress.comingSoon })}</li>
+            ) : null}
+            <li>{t('bestStreak', { count: today.streak.best })}</li>
+          </ul>
 
           <Link
             href={`/learn/${course.lang}/placement`}

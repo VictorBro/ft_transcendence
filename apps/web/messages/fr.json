@@ -26,9 +26,6 @@
     "continueLearning": "Continuer à apprendre",
     "logoAlt": "Logo ft_transcendence"
   },
-  "Modes": {
-    "chatTitle": "Tuteur"
-  },
   "Languages": {
     "en": "anglais",
     "fr": "français",
@@ -43,13 +40,41 @@
     "title": "{lang, select, en {Cours d'anglais} fr {Cours de français} de {Cours d'allemand} other {Cours}}",
     "heading": "{language}",
     "level": "Niveau",
-    "changeLevel": "Modifier le niveau",
     "dailyGoal": "Objectif quotidien",
     "minutesPerDay": "{minutes} min",
     "takePlacement": "Passer le test de positionnement",
-    "roadmapSoon": "Ton parcours apparaîtra ici",
-    "practice": "Exercices",
-    "thisCourse": "Ce cours"
+    "thisCourse": "Ce cours",
+    "streakKeep": "{count, plural, one {Série de # jour} other {Série de # jours}}. Atteins ton objectif quotidien pour la garder.",
+    "streakToday": "{count, plural, one {Série de # jour} other {Série de # jours}}, aujourd'hui compris.",
+    "streakStart": "Atteins ton objectif quotidien pour commencer une série.",
+    "noReadyLessons": "Les leçons de ce niveau arrivent bientôt.",
+    "today": "Aujourd'hui",
+    "goalProgress": "Objectif de {minutes} min : {done} sur {target, plural, one {# leçon} other {# leçons}}",
+    "goalReached": "Objectif quotidien atteint",
+    "goalBar": "Objectif quotidien",
+    "nextUp": "À suivre",
+    "lessonMinutes": "{minutes} min",
+    "start": "Commencer",
+    "open": "Ouvrir",
+    "doneScore": "{score} %",
+    "failedRow": "{status}, meilleur score {score} %. Compte pour aujourd'hui.",
+    "moreLessons": "Plus de leçons",
+    "seeAll": "{count, plural, one {Voir la leçon {level}} other {Voir les # leçons {level}}}",
+    "levelComplete": "Tu as terminé le niveau {level} : {attempted} sur {total} tentées, {passed} réussies, {needed} nécessaires.",
+    "levelCompleteTop": "Tu as terminé le niveau {level}, le plus haut.",
+    "startLevel": "Commencer le niveau {level}",
+    "attempted": "Tentées : {attempted} sur {total}",
+    "passed": "Réussies : {passed} sur {total}, {needed} nécessaires",
+    "comingSoon": "{count, plural, one {# bientôt disponible} other {# bientôt disponibles}}",
+    "bestStreak": "Meilleure série : {count, plural, one {# jour} other {# jours}}",
+    "saveLevel": "Enregistrer",
+    "levelSaved": "Niveau enregistré : {level}"
+  },
+  "LessonStatus": {
+    "todo": "Pas commencée",
+    "failed": "Pas encore réussie",
+    "done": "Réussie",
+    "soon": "Bientôt disponible"
   },
   "Onboarding": {
     "title": "Commencer",

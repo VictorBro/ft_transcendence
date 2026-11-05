@@ -18,6 +18,8 @@ const nextConfig: NextConfig = {
     root: workspaceRoot,
   },
   allowedDevOrigins: ['ft-transcendence.test', 'localhost'],
+  // @ft/ui ships TypeScript source, not a build, so Next compiles it.
+  transpilePackages: ['@ft/ui'],
   reactStrictMode: true,
   poweredByHeader: false,
 };

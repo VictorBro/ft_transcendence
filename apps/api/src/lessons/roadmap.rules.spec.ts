@@ -333,6 +333,7 @@ describe('levelProgress', () => {
       attempted: 1,
       passed: 1,
       needed: 2,
+      comingSoon: 0,
       complete: false,
     });
   });
@@ -348,6 +349,7 @@ describe('levelProgress', () => {
       attempted: 230,
       passed: 190,
       needed: 200,
+      comingSoon: 0,
       complete: false,
     });
   });
@@ -375,6 +377,7 @@ describe('levelProgress', () => {
       attempted: 240,
       passed: 200,
       needed: 200,
+      comingSoon: 0,
       complete: false,
     });
   });
@@ -391,6 +394,7 @@ describe('levelProgress', () => {
       attempted: 12,
       passed: 10,
       needed: 10,
+      comingSoon: 108,
       complete: true,
     });
   });
@@ -404,6 +408,7 @@ describe('levelProgress', () => {
       attempted: 0,
       passed: 0,
       needed: 0,
+      comingSoon: 2,
       complete: false,
     });
   });
@@ -414,6 +419,7 @@ describe('levelProgress', () => {
       attempted: 0,
       passed: 0,
       needed: 0,
+      comingSoon: 0,
       complete: false,
     });
   });

@@ -447,6 +447,58 @@ test.describe('placement exam', () => {
   });
 
   /**
+   * Cancel and Escape throw the pick away: nothing is written, the focus goes
+   * back to the toggle, and reopening starts over. Moved here from the course
+   * page, which sets the level with a plain select since #86.
+   */
+  test('cancelling or escaping another level saves nothing', async ({ onboarded }) => {
+    const { targetLevel } = await finishRun(onboarded);
+    await onboarded.goto(PLACEMENT);
+    const toggle = onboarded.getByRole('button', { name: 'Choose another level' });
+    const levels = onboarded.getByRole('group', { name: 'Your level' });
+    const pick = targetLevel === 'C1' ? 'A1' : 'B2';
+
+    await toggle.click();
+    await levels.getByText(pick, { exact: true }).click();
+    await onboarded.getByRole('button', { name: 'Cancel' }).click();
+    await expect(levels).toBeHidden();
+    await expect(toggle).toBeFocused();
+    expect(await courseLevel(onboarded, ONBOARDED_COURSE.lang)).toBe(targetLevel);
+
+    await toggle.click();
+    await levels.getByText(pick, { exact: true }).click();
+    await onboarded.keyboard.press('Escape');
+    await expect(levels).toBeHidden();
+    await expect(toggle).toBeFocused();
+    expect(await courseLevel(onboarded, ONBOARDED_COURSE.lang)).toBe(targetLevel);
+  });
+
+  /** Faked, since no pick a learner can make gets refused. The pick stays, to retry. */
+  test('another level the server refuses keeps the picker open and says why', async ({
+    onboarded,
+  }) => {
+    const { targetLevel } = await finishRun(onboarded);
+    const pick = targetLevel === 'C1' ? 'A1' : 'B2';
+    let attempts = 0;
+    await onboarded.route(`**/api/courses/${ONBOARDED_COURSE.lang}/level`, (route) => {
+      attempts += 1;
+      return route.fulfill({ status: 500, json: {} });
+    });
+    await onboarded.goto(PLACEMENT);
+
+    await onboarded.getByRole('button', { name: 'Choose another level' }).click();
+    const levels = onboarded.getByRole('group', { name: 'Your level' });
+    await levels.getByText(pick, { exact: true }).click();
+    await onboarded.getByRole('button', { name: 'Save' }).click();
+
+    await expect(onboarded.getByText('The server answered HTTP 500')).toBeVisible();
+    await expect(levels.getByRole('radio', { name: pick })).toBeChecked();
+    await expect(onboarded.getByRole('button', { name: 'Save' })).toBeEnabled();
+    expect(attempts).toBe(1);
+    await onboarded.unroute(`**/api/courses/${ONBOARDED_COURSE.lang}/level`);
+  });
+
+  /**
    * Walking away from an open run times out every question, which measures
    * nothing. The course keeps its level, so the result says so in place of a
    * level to change, and the link leads back to the course as it was.

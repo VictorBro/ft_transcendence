@@ -326,16 +326,21 @@ describe('lessons (e2e)', () => {
         expect(offered).not.toContain(DRAFT.id);
       });
 
-      it('counts the progress on the level from its results, over its ready lessons', async () => {
+      it('counts the progress on the level from its results, over its ready lessons, and the rest as coming soon', async () => {
         const response = await agent.get('/api/courses/fr/today').expect(200);
         const total = await prisma.lesson.count({
           where: { lang: 'fr', level: 'A1', ready: true },
         });
+        const comingSoon = await prisma.lesson.count({
+          where: { lang: 'fr', level: 'A1', ready: false },
+        });
 
+        expect(comingSoon).toBeGreaterThan(0);
         expect(response.body.progress).toMatchObject({
           total,
           attempted: 2,
           passed: 1,
+          comingSoon,
           complete: false,
         });
         expect(response.body.levelAfter).toBe('A2');

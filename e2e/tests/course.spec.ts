@@ -1,9 +1,9 @@
-import { expectPinned } from '../support/layout';
 import {
   courseLevel,
   enrol,
   expect,
   ONBOARDED_COURSE,
+  pickLevel,
   placeCourse,
   SECOND_COURSE,
   test,
@@ -53,7 +53,9 @@ test.describe('course home', () => {
     await onboarded.goto(`/en/learn/${ONBOARDED_COURSE.lang}`);
 
     await expect(onboarded.getByRole('heading', { name: 'French' })).toBeVisible();
-    await expect(onboarded.getByText(ONBOARDED_COURSE.level, { exact: true })).toBeVisible();
+    await expect(onboarded.getByRole('combobox', { name: 'Level' })).toHaveValue(
+      ONBOARDED_COURSE.level,
+    );
     await expect(onboarded.getByRole('link', { name: 'Take the placement test' })).toBeVisible();
 
     await expect(onboarded.getByRole('combobox', { name: 'Daily goal' })).toHaveValue(
@@ -64,79 +66,81 @@ test.describe('course home', () => {
     );
   });
 
-  // Surviving a reload is what separates a PATCH from a select that just moved.
+  /**
+   * Surviving a new visit is what separates a PATCH from a select that just
+   * moved: the select shows the pick at once, before the save. The visit is in
+   * a second tab, since a reload during the save's router.refresh() is aborted
+   * by Firefox (NS_BINDING_ABORTED, #176).
+   */
   test('changing the daily goal persists', async ({ onboarded }) => {
     await placeCourse(onboarded, SECOND_COURSE);
     await onboarded.goto(`/en/learn/${SECOND_COURSE.lang}`);
 
     await onboarded.getByRole('combobox', { name: 'Daily goal' }).selectOption('60');
     await expect(onboarded.getByRole('combobox', { name: 'Daily goal' })).toHaveValue('60');
+    await expect
+      .poll(async () => {
+        const { courses } = await (await onboarded.request.get('/api/courses')).json();
+        return courses.find((course: { lang: string }) => course.lang === SECOND_COURSE.lang)
+          .dailyGoal;
+      })
+      .toBe(60);
 
-    await onboarded.reload();
-    await expect(onboarded.getByRole('combobox', { name: 'Daily goal' })).toHaveValue('60');
+    const next = await onboarded.context().newPage();
+    try {
+      await next.goto(`/en/learn/${SECOND_COURSE.lang}`);
+      await expect(next.getByRole('combobox', { name: 'Daily goal' })).toHaveValue('60');
+    } finally {
+      await next.close();
+    }
   });
 
   /**
-   * No exam needed. The picker asks what the learner has mastered, as onboarding
-   * does, and opens on what the current level stands for (A0, nothing yet, for
-   * an A1 course), so saving it untouched is not offered. SECOND_COURSE, since
-   * every test that uses it places it anew.
+   * No exam needed: the level is a course setting next to the goal. It saves
+   * with a button, since every arrow key on a closed select fires `change`.
+   * SECOND_COURSE, since every test that uses it places it anew.
    */
   test('the level can be changed from the course page', async ({ onboarded }) => {
     await placeCourse(onboarded, SECOND_COURSE);
     await onboarded.goto(`/en/learn/${SECOND_COURSE.lang}`);
-
-    await onboarded.getByRole('button', { name: 'Change level' }).click();
-    const levels = onboarded.getByRole('group', { name: 'Your level' });
-    await expect(levels.getByRole('radio', { name: 'A0' })).toBeChecked();
+    const level = onboarded.getByRole('combobox', { name: 'Level' });
     const save = onboarded.getByRole('button', { name: 'Save' });
-    await expect(save).toBeDisabled();
-    await expectPinned(onboarded, `/en/learn/${SECOND_COURSE.lang}`);
 
-    // The radio is sr-only, so its own label takes the click.
-    await levels.getByText('B1', { exact: true }).click();
-    await expect(onboarded.getByText('Your lessons will be at B2.')).toBeVisible();
+    await expect(level).toHaveValue(SECOND_COURSE.level);
+    await expect(onboarded.getByRole('button', { name: 'Change level' })).toHaveCount(0);
+    await expect(save).toHaveCount(0);
+
+    // Browsing with the keyboard writes nothing and keeps the focus.
+    await level.focus();
+    await onboarded.keyboard.press('ArrowDown');
+    await onboarded.keyboard.press('ArrowDown');
+    await expect(level).toHaveValue('B1');
+    await expect(level).toBeFocused();
+    expect(await courseLevel(onboarded, SECOND_COURSE.lang)).toBe(SECOND_COURSE.level);
+
+    await pickLevel(onboarded, 'B2');
     await save.click();
+    await expect(
+      onboarded.getByRole('status').filter({ hasText: 'Level saved: B2' }),
+    ).toBeAttached();
+    expect(await courseLevel(onboarded, SECOND_COURSE.lang)).toBe('B2');
+    await expect(save).toHaveCount(0);
 
-    await expect(levels).toBeHidden();
-    await expect(onboarded.getByRole('status')).toContainText('B2');
-    await onboarded.reload();
-    await expect(onboarded.getByRole('status')).toContainText('B2');
+    // The next visit in a second tab rather than a reload: the save ends in
+    // router.refresh(), and leaving the page while its stream and the
+    // prefetches it restarts are still open makes Firefox abort the
+    // navigation (NS_BINDING_ABORTED), as in #176.
+    const next = await onboarded.context().newPage();
+    try {
+      await next.goto(`/en/learn/${SECOND_COURSE.lang}`);
+      await expect(next.getByRole('combobox', { name: 'Level' })).toHaveValue('B2');
+    } finally {
+      await next.close();
+    }
   });
 
-  /**
-   * Cancel and Escape throw the pick away: nothing is written, the focus goes
-   * back to the toggle, and reopening starts over.
-   */
-  test('cancelling or escaping a level change saves nothing', async ({ onboarded }) => {
-    await placeCourse(onboarded, SECOND_COURSE);
-    await onboarded.goto(`/en/learn/${SECOND_COURSE.lang}`);
-    const toggle = onboarded.getByRole('button', { name: 'Change level' });
-    const levels = onboarded.getByRole('group', { name: 'Your level' });
-
-    await toggle.click();
-    await levels.getByText('B1', { exact: true }).click();
-    await onboarded.getByRole('button', { name: 'Cancel' }).click();
-
-    await expect(levels).toBeHidden();
-    await expect(toggle).toBeFocused();
-    expect(await courseLevel(onboarded, SECOND_COURSE.lang)).toBe(SECOND_COURSE.level);
-    await toggle.click();
-    await expect(levels.getByRole('radio', { name: 'A0' })).toBeChecked();
-
-    await levels.getByText('B1', { exact: true }).click();
-    await onboarded.keyboard.press('Escape');
-    await expect(levels).toBeHidden();
-    await expect(toggle).toBeFocused();
-    expect(await courseLevel(onboarded, SECOND_COURSE.lang)).toBe(SECOND_COURSE.level);
-    await toggle.click();
-    await expect(levels.getByRole('radio', { name: 'A0' })).toBeChecked();
-  });
-
-  /** Faked, since no pick a learner can make gets refused. The pick stays, to retry. */
-  test('a level change the server refuses keeps the picker open and says why', async ({
-    onboarded,
-  }) => {
+  /** Faked, since no level a learner can pick gets refused. The pick stays, to retry. */
+  test('a level change the server refuses says why and saves nothing', async ({ onboarded }) => {
     await placeCourse(onboarded, SECOND_COURSE);
     let attempts = 0;
     await onboarded.route(`**/api/courses/${SECOND_COURSE.lang}/level`, (route) => {
@@ -145,15 +149,14 @@ test.describe('course home', () => {
     });
     await onboarded.goto(`/en/learn/${SECOND_COURSE.lang}`);
 
-    await onboarded.getByRole('button', { name: 'Change level' }).click();
-    const levels = onboarded.getByRole('group', { name: 'Your level' });
-    await levels.getByText('B1', { exact: true }).click();
+    await pickLevel(onboarded, 'B1');
     await onboarded.getByRole('button', { name: 'Save' }).click();
 
     await expect(onboarded.getByText('The server answered HTTP 500')).toBeVisible();
-    await expect(levels.getByRole('radio', { name: 'B1' })).toBeChecked();
-    await expect(onboarded.getByRole('button', { name: 'Save' })).toBeEnabled();
+    await expect(onboarded.getByRole('combobox', { name: 'Level' })).toHaveValue('B1');
+    await expect(onboarded.getByRole('button', { name: 'Save' })).toBeVisible();
     expect(attempts).toBe(1);
+    expect(await courseLevel(onboarded, SECOND_COURSE.lang)).toBe(SECOND_COURSE.level);
   });
 
   // The cookie is how /learn knows which course to send the learner back to.
