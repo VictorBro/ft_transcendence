@@ -53,7 +53,10 @@ export class DiscussionController {
   @ApiBadRequestResponse({ description: 'The body does not match LessonDiscussionSchema' })
   @ApiUnauthorizedResponse({ description: 'No valid session' })
   @ApiNotFoundResponse({ description: 'No course in that language, or no such ready lesson' })
-  @ApiConflictResponse({ description: 'The course has no level yet (no placement)' })
+  @ApiConflictResponse({
+    description:
+      'The course has no level yet (no placement), or the attempt is not on its discussion page',
+  })
   async discuss(
     @CurrentUser() user: SessionUser,
     @Param('lang', LangParam) lang: Language,
@@ -62,7 +65,7 @@ export class DiscussionController {
     @Res() response: Response,
   ): Promise<void> {
     // 1. Every check that can still answer with a status: 404, 409.
-    const system = await this.discussion.open(user, lang, id);
+    const system = await this.discussion.open(user, lang, id, body.attemptId);
 
     // 2. The 200 leaves here. From now on, a failure is an event.
     const stream = openEventStream(response);

@@ -15,13 +15,13 @@ import { configureApp } from '../src/app.setup';
 import { FIXTURE_ANSWER, FIXTURE_FAILURES } from '../src/llm/fixture.provider';
 import { LLM_PROVIDER, type LlmProvider } from '../src/llm/llm.provider';
 import { PrismaService } from '../src/prisma/prisma.service';
+import { openAttempt, playLesson } from './attempts.fixtures';
 
 /**
  * The lesson discussion, end to end, on the fixture provider: the checks that
- * answer with a status before the stream opens, then the stream itself, its
- * three failures, and the learner leaving midway.
- *
- * Not here until #145 lands: the 409 attempt.stale off the discussion page.
+ * answer with a status before the stream opens (the attempt's among them),
+ * then the stream itself, its three failures, and the learner leaving midway.
+ * The stream runs on a real attempt whose cursor is on the discussion page.
  */
 describe('lesson discussion (e2e)', () => {
   let app: INestApplication;
@@ -29,21 +29,26 @@ describe('lesson discussion (e2e)', () => {
   let llm: LlmProvider;
   let agent: TestAgent;
   let unplaced: TestAgent;
+  /** agent's attempt at LESSON, its cursor on the discussion page. */
+  let attemptId: string;
 
   const stamp = Date.now();
   const emails = [`discussion-${stamp}@example.com`, `discussion-unplaced-${stamp}@example.com`];
 
-  // PR #142's reading sample as the brief of a ready test lesson, and a draft
-  // next to it. Letters only in the ids, high positions, as lessons.e2e-spec does.
-  const brief = JSON.parse(
-    readFileSync(
-      join(
-        process.cwd(),
-        '../../packages/shared/test/fixtures/samples/briefs/fr-reading-a-text-message.json',
+  // PR #142's reading sample as a ready test lesson, brief and content, and a
+  // draft next to it. Letters only in the ids, high positions, as lessons.e2e-spec does.
+  const sample = (dir: string) =>
+    JSON.parse(
+      readFileSync(
+        join(
+          process.cwd(),
+          `../../packages/shared/test/fixtures/samples/${dir}/fr-reading-a-text-message.json`,
+        ),
+        'utf8',
       ),
-      'utf8',
-    ),
-  ) as object;
+    ) as object;
+  const brief = sample('briefs');
+  const content = sample('lessons');
   const LESSON = {
     id: 'fr-test-discussion',
     lang: 'fr',
@@ -58,11 +63,7 @@ describe('lesson discussion (e2e)', () => {
   const DRAFT = { ...LESSON, id: 'fr-test-discussion-draft', position: 9102 };
   const IDS = [LESSON.id, DRAFT.id];
   const path = (id: string = LESSON.id) => `/api/courses/fr/lessons/${id}/discussion`;
-  const body = (message = 'Pourquoi « on se voit » ?') => ({
-    attemptId: randomUUID(),
-    message,
-    history: [],
-  });
+  const body = (message = 'Pourquoi « on se voit » ?') => ({ attemptId, message, history: [] });
 
   /** The events of an SSE body, in order, as { event, data }. Comments are left out. */
   const events = (text: string) =>
@@ -81,9 +82,41 @@ describe('lesson discussion (e2e)', () => {
     const fresh = request.agent(app.getHttpServer());
     await fresh
       .post('/api/auth/signup')
-      .send({ email, displayName: `disc${stamp}${email.length}`, password: 'Correct-Horse-9' })
+      .send({
+        email,
+        displayName: `disc${stamp}${emails.indexOf(email)}`,
+        password: 'Correct-Horse-9',
+      })
       .expect(201);
     return fresh;
+  };
+
+  /** A learner placed in French A1. */
+  const placedLearner = async (email: string) => {
+    const fresh = await signUp(email);
+    await fresh.post('/api/courses').send({ lang: 'fr', dailyGoal: 30 }).expect(201);
+    await fresh.patch('/api/courses/fr/level').send({ level: 'A1' }).expect(200);
+    return fresh;
+  };
+
+  /**
+   * Starts LESSON and plays it, every unit right, until the cursor is on
+   * `role` (the first page of it): the discussion page, or the exam.
+   */
+  const playTo = async (learner: TestAgent, role: 'discussion' | 'exam') => {
+    const attempt = await openAttempt(learner, prisma, 'fr', LESSON.id);
+    const stop = attempt.plan.pages.findIndex((page) => page.role === role);
+    for (let index = 0; index < stop; index++) {
+      await attempt.send(index).expect(200);
+    }
+    return attempt;
+  };
+
+  /** Another learner, placed, for a case that must not touch agent's attempt. */
+  const other = async (name: string) => {
+    const email = `discussion-${name}-${stamp}@example.com`;
+    emails.push(email);
+    return placedLearner(email);
   };
 
   beforeAll(async () => {
@@ -97,14 +130,13 @@ describe('lesson discussion (e2e)', () => {
     await prisma.lesson.deleteMany({ where: { id: { in: IDS } } });
     await prisma.lesson.createMany({
       data: [
-        { ...LESSON, brief, ready: true },
-        { ...DRAFT, brief, ready: false },
+        { ...LESSON, brief, content, ready: true },
+        { ...DRAFT, brief, content, ready: false },
       ],
     });
 
-    agent = await signUp(emails[0]);
-    await agent.post('/api/courses').send({ lang: 'fr', dailyGoal: 30 }).expect(201);
-    await agent.patch('/api/courses/fr/level').send({ level: 'A1' }).expect(200);
+    agent = await placedLearner(emails[0]);
+    attemptId = (await playTo(agent, 'discussion')).attemptId;
     unplaced = await signUp(emails[1]);
     await unplaced.post('/api/courses').send({ lang: 'fr', dailyGoal: 30 }).expect(201);
   });
@@ -156,6 +188,45 @@ describe('lesson discussion (e2e)', () => {
       const response = await unplaced.post(path()).send(body()).expect(409);
 
       expect(response.body.message).toBe('course.notPlaced');
+    });
+
+    describe('409 attempt.stale off the discussion page', () => {
+      const stale = async (learner: TestAgent, sent: object) => {
+        const response = await learner.post(path()).send(sent).expect(409);
+        expect(response.body.message).toBe('attempt.stale');
+      };
+
+      it('before the lesson is started', async () => {
+        await stale(await other('unstarted'), body());
+      });
+
+      it('for another attemptId than the running one', async () => {
+        await stale(agent, { ...body(), attemptId: randomUUID() });
+      });
+
+      it('while the cursor is on an earlier page', async () => {
+        const learner = await other('early');
+        const attempt = await openAttempt(learner, prisma, 'fr', LESSON.id);
+
+        await stale(learner, { ...body(), attemptId: attempt.attemptId });
+      });
+
+      it('once the exam has started', async () => {
+        const learner = await other('exam');
+        const attempt = await playTo(learner, 'exam');
+
+        await stale(learner, { ...body(), attemptId: attempt.attemptId });
+      });
+
+      it('once the attempt is finished', async () => {
+        const learner = await other('finished');
+        await playLesson(learner, prisma, 'fr', LESSON.id);
+        const row = await prisma.lessonAttempt.findFirstOrThrow({
+          where: { lessonId: LESSON.id, userLevel: { user: { email: emails.at(-1) } } },
+        });
+
+        await stale(learner, { ...body(), attemptId: row.id });
+      });
     });
   });
 
