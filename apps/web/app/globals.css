@@ -16,6 +16,43 @@
 /* @ft/ui is source only: its classes are scanned from there. */
 @source '../../../packages/ui/src';
 
+/* The lesson player: a checked pair slides into place, and a page answered
+   right at once flashes green before the next one. */
+@theme {
+  --animate-lesson-slide: lesson-slide 400ms ease-out;
+  --animate-lesson-flash: lesson-flash 700ms ease-out forwards;
+
+  @keyframes lesson-slide {
+    from {
+      transform: translateX(-1.5rem);
+      opacity: 0.4;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes lesson-flash {
+    0% {
+      opacity: 0;
+    }
+    30% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-lesson-slide,
+  .animate-lesson-flash {
+    animation-duration: 1ms;
+  }
+}
+
 @layer base {
   :root {
     /* The app is pinned to the dark palette by the `dark` class on <html>, so
