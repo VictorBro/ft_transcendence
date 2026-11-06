@@ -1,5 +1,6 @@
 import { createZodDto } from 'nestjs-zod';
 import {
+  AchievementListSchema,
   LessonCardSchema,
   LessonPageSchema,
   LessonQuerySchema,
@@ -23,6 +24,7 @@ export class LessonCardDto extends createZodDto(LessonCardSchema) {}
 export class AttemptReadDto extends createZodDto(lessons.player.AttemptReadSchema) {}
 export class AttemptViewDto extends createZodDto(lessons.player.AttemptViewSchema) {}
 export class PageResultDto extends createZodDto(lessons.player.PageResultSchema) {}
+export class AchievementListDto extends createZodDto(AchievementListSchema) {}
 
 // What comes in: the search params (?q=…&sort=…&page=…). Nest checks them
 // against the schema before the controller gets them, so page=0 becomes 1

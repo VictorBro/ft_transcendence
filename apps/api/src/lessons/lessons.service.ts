@@ -2,6 +2,9 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import type { Prisma, UserLevel } from '../generated/prisma/client';
 import {
+  type AchievementCode,
+  AchievementListSchema,
+  ACHIEVEMENTS,
   DailyGoalSchema,
   Language,
   lessons as shared,
@@ -11,6 +14,7 @@ import {
   LessonPageSchema,
   LessonQuery,
   LESSONS_PAGE_SIZE,
+  LEVELS,
   SessionUser,
   TodaySchema,
 } from '@ft/shared';
@@ -29,6 +33,8 @@ import {
 } from './roadmap.rules';
 import { checkCourse, findLesson, LESSON_SELECT, LessonRow } from './course-lookup';
 import { currentDay, dayOf, latestDay, lockCourse, meetGoal } from './goal';
+import { award } from './gamification';
+import { type AchievementStats, challengeFor, progress, rankOf } from './gamification.rules';
 import { searchLessons } from './lesson-search';
 
 /*
@@ -50,6 +56,7 @@ import { searchLessons } from './lesson-search';
  *   level       → A1, A2…, or null before placement (the 409)
  *   dailyGoal   → 10, 30 or 60 minutes a day
  *   streak, bestStreak, lastGoalDay → for the streak of days
+ *   xp, lastChallengeDay, challengesDone → for the rank, the challenge and achievements (#95)
  */
 const COURSE_SELECT = {
   id: true,
@@ -58,6 +65,9 @@ const COURSE_SELECT = {
   streak: true,
   bestStreak: true,
   lastGoalDay: true,
+  xp: true,
+  lastChallengeDay: true,
+  challengesDone: true,
 } as const;
 
 /**
@@ -149,12 +159,14 @@ function cardsById(
  * calls it with the attempt's score; LessonsService.finish (the demo) too.
  *   1. the result: the best score stays, the day and time move to this finish
  *   2. the goal: meetGoal meets the day if this finish reached it
+ *   3. the rewards: award adds the XP, the challenge and the achievements (#95),
+ *      from what meetGoal returned, never from the row lockCourse loaded
  * `best` is for the results page: the score kept after the merge.
  */
 export async function applyFinish(
   tx: Prisma.TransactionClient,
   course: UserLevel,
-  lesson: Pick<LessonRow, 'id' | 'level'>,
+  lesson: Pick<LessonRow, 'id' | 'level' | 'kind'>,
   score: number,
   timeZone: string,
   now: Date,
@@ -175,13 +187,23 @@ export async function applyFinish(
   });
 
   const goal = await meetGoal(tx, course, day);
+  // A lesson finished twice in a day counts once: the first time.
+  const countedToday = old === null || dayOf(old.day) !== day;
+  const rewards = await award(tx, course, day, {
+    type: 'finish',
+    goal,
+    lesson,
+    score,
+    oldBest: old?.score ?? null,
+    countedToday,
+  });
   return shared.player.ResultsFinishSchema.parse({
-    // A lesson finished twice in a day counts once: the first time.
-    countedToday: old === null || dayOf(old.day) !== day,
+    countedToday,
     doneCount: goal.doneCount,
     target: target(DailyGoalSchema.parse(course.dailyGoal)),
     goalJustMet: goal.justMet,
     best: result.score,
+    ...rewards,
   });
 }
 
@@ -331,6 +353,13 @@ export class LessonsService {
       lastGoalDay: course.lastGoalDay === null ? null : dayOf(course.lastGoalDay),
     };
 
+    // The codes earned on the course day, in catalogue order like the achievements page.
+    const earnedRows = await this.prisma.userAchievement.findMany({
+      where: { userLevelId: course.id, day: new Date(day) },
+      select: { code: true },
+    });
+    const earnedCodes = new Set(earnedRows.map((row) => row.code));
+
     return TodaySchema.parse({
       day,
       target: target(goal),
@@ -345,6 +374,86 @@ export class LessonsService {
       },
       progress: levelProgress(ruleLessons, results),
       levelAfter: levelAfter(level),
+      xp: { total: course.xp, ...rankOf(course.xp) },
+      challenge: {
+        // The ready kinds of the level, as award reads them (gamification.ts).
+        code: challengeFor(
+          course.id,
+          day,
+          ruleLessons.filter((lesson) => lesson.ready).map((lesson) => lesson.kind),
+        ),
+        done: course.lastChallengeDay !== null && dayOf(course.lastChallengeDay) === day,
+      },
+      earnedToday: ACHIEVEMENTS.map((achievement) => achievement.code).filter((code) =>
+        earnedCodes.has(code),
+      ),
+    });
+  }
+
+  /**
+   * GET /courses/:lang/achievements: all sixteen, in catalogue order, with the
+   * bar of each and the day it was earned on (null until then). Codes only:
+   * the page translates them.
+   *
+   * The language's lessons are read once, then cut per level for levelProgress.
+   * The bar is the current state; an earned achievement keeps its day even if a
+   * level later gains a lesson and its bar drops.
+   */
+  async achievements(userId: string, lang: Language) {
+    const course = checkCourse(await this.findCourse(userId, lang), { placed: true });
+
+    const [lessons, rows, stored] = await Promise.all([
+      this.prisma.lesson.findMany({
+        where: { lang },
+        select: { id: true, level: true, position: true, ready: true },
+      }),
+      this.prisma.lessonResult.findMany({
+        where: { userLevelId: course.id },
+        select: RESULT_SELECT,
+      }),
+      this.prisma.userAchievement.findMany({
+        where: { userLevelId: course.id },
+        select: { code: true, day: true },
+      }),
+    ]);
+    const results = rows.map(toRuleResult);
+    const days = new Map(stored.map((row) => [row.code, dayOf(row.day)]));
+
+    const stats: AchievementStats = {
+      finished: results.length,
+      passed: results.filter((result) => statusOf(result) === 'done').length,
+      bestStreak: course.bestStreak,
+      challengesDone: course.challengesDone,
+      levels: Object.fromEntries(
+        LEVELS.map((level) => [
+          level,
+          levelProgress(
+            lessons.filter((lesson) => lesson.level === level),
+            results,
+          ),
+        ]),
+      ),
+    };
+
+    return AchievementListSchema.parse({
+      items: ACHIEVEMENTS.map((achievement) => {
+        const code: AchievementCode = achievement.code;
+        const level = 'level' in achievement ? stats.levels[achievement.level] : undefined;
+        return {
+          code,
+          day: days.get(code) ?? null,
+          ...progress(code, stats),
+          level:
+            level === undefined
+              ? null
+              : {
+                  total: level.total,
+                  attempted: level.attempted,
+                  passed: level.passed,
+                  needed: level.needed,
+                },
+        };
+      }),
     });
   }
 

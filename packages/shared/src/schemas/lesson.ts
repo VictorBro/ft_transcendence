@@ -1,5 +1,6 @@
 import { z } from 'zod';
 
+import { AchievementCodeSchema, ChallengeSchema, XpSchema } from './gamification';
 import { type Level, LevelSchema, TOPICS, TopicSchema } from './item';
 import { type Language, LanguageSchema, LEARNABLE_LANGUAGES } from './language';
 
@@ -315,6 +316,12 @@ export const TodaySchema = z.object({
   }),
   /** Null after C2. */
   levelAfter: LevelSchema.nullable(),
+  /** The course XP and its rank (#95). */
+  xp: XpSchema,
+  /** The course day's challenge, done once lastChallengeDay is that day. */
+  challenge: ChallengeSchema,
+  /** The achievements earned on the course day, in the catalogue order. */
+  earnedToday: z.array(AchievementCodeSchema),
 });
 export type Today = z.infer<typeof TodaySchema>;
 
@@ -392,5 +399,13 @@ export const FinishResultSchema = z.object({
   target: z.number().int().positive(),
   /** Only when this call wrote the streak. */
   goalJustMet: z.boolean(),
+  // The three rewards (#95) default to nothing: an attempt closed before #95
+  // stores its results without them, and its results page must still read.
+  /** The XP this finish added (#95): the lesson, the goal and the challenge. */
+  xpGained: countSchema.default(0),
+  /** Only when this finish did the day's challenge. */
+  challengeJustDone: z.boolean().default(false),
+  /** The codes this finish earned, never one earned before. */
+  newAchievements: z.array(AchievementCodeSchema).default([]),
 });
 export type FinishResult = z.infer<typeof FinishResultSchema>;
