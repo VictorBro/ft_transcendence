@@ -511,4 +511,14 @@ describe('FinishResultSchema', () => {
   it('rejects negative XP: the total never goes down', () => {
     expect(FinishResultSchema.safeParse({ ...result, xpGained: -10 }).success).toBe(false);
   });
+
+  it('reads a finish stored before #95 as one that earned nothing', () => {
+    const { xpGained: _x, challengeJustDone: _c, newAchievements: _n, ...before95 } = result;
+    expect(FinishResultSchema.parse(before95)).toEqual({
+      ...before95,
+      xpGained: 0,
+      challengeJustDone: false,
+      newAchievements: [],
+    });
+  });
 });

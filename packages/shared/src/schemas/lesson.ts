@@ -399,11 +399,13 @@ export const FinishResultSchema = z.object({
   target: z.number().int().positive(),
   /** Only when this call wrote the streak. */
   goalJustMet: z.boolean(),
+  // The three rewards (#95) default to nothing: an attempt closed before #95
+  // stores its results without them, and its results page must still read.
   /** The XP this finish added (#95): the lesson, the goal and the challenge. */
-  xpGained: countSchema,
+  xpGained: countSchema.default(0),
   /** Only when this finish did the day's challenge. */
-  challengeJustDone: z.boolean(),
+  challengeJustDone: z.boolean().default(false),
   /** The codes this finish earned, never one earned before. */
-  newAchievements: z.array(AchievementCodeSchema),
+  newAchievements: z.array(AchievementCodeSchema).default([]),
 });
 export type FinishResult = z.infer<typeof FinishResultSchema>;
