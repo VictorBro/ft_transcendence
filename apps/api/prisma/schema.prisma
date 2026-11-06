@@ -17,7 +17,7 @@ generator client {
 }
 
 // Mirrors UserSchema in packages/shared/src/schemas/user.ts. passwordHash, the
-// totp columns and lastSeenAt have no counterpart there, and must stay that way.
+// totp columns and lastActiveDay have no counterpart there, and must stay that way.
 model User {
   id           String   @id @default(uuid()) @db.Uuid
   email        String   @unique
@@ -30,10 +30,9 @@ model User {
   updatedAt    DateTime @updatedAt
   timeZone     String   @default("UTC")
 
-  // Set when a tab opens its socket (the gateway handshake): the last time
-  // the user opened the app. Orders the recently active; never sent. No index,
-  // so the handshake's update stays cheap.
-  lastSeenAt DateTime?
+  // The UTC day a tab last opened its socket, written by the gateway once a
+  // day. Keeps the user in Recently active for a week; never sent.
+  lastActiveDay DateTime? @db.Date
 
   // Set when enrolment starts; totpEnabledAt stays null until a first code is
   // verified, so an abandoned enrolment never blocks a login.

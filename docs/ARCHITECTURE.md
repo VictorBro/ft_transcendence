@@ -191,10 +191,11 @@ sequenceDiagram
   refuses a page of another origin, a session with no `userId` and a deleted
   account, all with `auth.sessionRequired`. The Origin check matters because
   `ft.sid` is `SameSite=Lax`, and same-site is not same-origin: a page on a
-  sibling subdomain would send it too. The account check is an `updateMany`
-  that also stamps `User.lastSeenAt`, the last time a tab opened its socket,
-  which orders Recently active on /friends. A deleted account is a count of 0,
-  refused like before.
+  sibling subdomain would send it too. The account check also reads
+  `User.lastActiveDay`, and writes today's UTC date when it is not today: the
+  first tab of the day writes, the others only read. Recently active on
+  /friends lists who was active in the last 7 days, by name: polling it shows
+  someone coming back after a week away, and nothing finer.
 - **Refused quietly.** A refusal is a CONNECT_ERROR over a WebSocket that opened
   fine, which the browser does not log; an HTTP 401 on the upgrade would be a
   console error.

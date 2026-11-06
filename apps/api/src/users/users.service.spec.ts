@@ -1,5 +1,5 @@
 import { ConflictException } from '@nestjs/common';
-import { USER_SEARCH_LIMIT } from '@ft/shared';
+import { RECENTLY_ACTIVE_LIMIT, USER_SEARCH_LIMIT } from '@ft/shared';
 import { unlink } from 'fs/promises';
 import { join } from 'path';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
@@ -125,6 +125,26 @@ describe('UsersService search', () => {
       expect.objectContaining({
         where: { id: { not: 'me' }, displayName: { contains: 'a\\_b', mode: 'insensitive' } },
         take: USER_SEARCH_LIMIT,
+      }),
+    );
+  });
+});
+
+describe('UsersService recentlyActive', () => {
+  it('keeps the last 7 UTC days, by name', async () => {
+    const findMany = vi.fn().mockResolvedValue([]);
+    const service = new UsersService({ user: { findMany } } as unknown as PrismaService);
+
+    await service.recentlyActive('me', new Date('2026-11-06T23:30:00Z'));
+
+    expect(findMany).toHaveBeenCalledWith(
+      expect.objectContaining({
+        where: expect.objectContaining({
+          id: { not: 'me' },
+          lastActiveDay: { gte: new Date('2026-10-31') },
+        }),
+        orderBy: { displayName: 'asc' },
+        take: RECENTLY_ACTIVE_LIMIT,
       }),
     );
   });

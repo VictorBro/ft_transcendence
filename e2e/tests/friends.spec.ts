@@ -1,12 +1,22 @@
 import type { Locator, Page } from '@playwright/test';
 
-import { formatViolations, settle, watchConsole } from '../support/console-guard';
+import {
+  type ConsoleViolation,
+  formatViolations,
+  isRemovedAvatar,
+  settle,
+  watchConsole,
+} from '../support/console-guard';
 import { expectFitsTheScreen } from '../support/layout';
 import { liveConnection } from '../support/live';
 import { expect, test } from '../support/session';
 
 const region = (page: Page, name: string) => page.getByRole('region', { name });
 const row = (scope: Locator, name: string) => scope.getByRole('listitem').filter({ hasText: name });
+
+/** Neither account here has an avatar: see isRemovedAvatar. */
+const ours = (violations: ConsoleViolation[][]) =>
+  violations.flat().filter((violation) => !isRemovedAvatar(violation));
 
 /**
  * Two people, two contexts: the worker's own accounts, so no signup. Ends by
@@ -56,7 +66,7 @@ test('a request shows up live, is accepted, and both lists follow', async ({
   await expect(region(friend, 'Your friends')).not.toContainText(onboardedAccount.displayName);
 
   await Promise.all([settle(asker), settle(friend)]);
-  expect(violations.flat(), `the pages logged:\n${formatViolations(violations.flat())}\n`).toEqual(
+  expect(ours(violations), `the pages logged:\n${formatViolations(ours(violations))}\n`).toEqual(
     [],
   );
 });
@@ -73,33 +83,28 @@ test('an unknown or malformed profile is a 404', async ({ onboarded }) => {
 });
 
 /**
- * The same pair as above, ending with no friendship again. Recently active is
- * shared by every worker on the stack, so only the learner is asserted there:
- * it opened its socket just before the visitor's page rendered, which keeps it
- * in the top 20 (on CI two workers share a stack; locally, twenty other
- * connects in that second are not a realistic worry). The list also shows other
- * workers' avatars, so one that avatar.spec.ts removes at that moment can fail
- * this run with a 404: rare, and known.
+ * The same pair as above, ending with no friendship again. Found by search, not
+ * in Recently active: that list is shared by every worker on the stack, and the
+ * API tests cover who is in it.
  */
-test('a stranger found among the recently active is added from their profile, then visited as a friend', async ({
+test('a stranger found by search is added from their profile, then visited as a friend', async ({
   onboarded: learner,
   signedIn: visitor,
   account,
   onboardedAccount,
 }) => {
   const violations = [watchConsole(learner), watchConsole(visitor)];
-  // One after the other: the learner's handshake stamps it before the visitor's list renders.
-  const learnerLive = liveConnection(learner);
-  await learner.goto('/en/friends');
-  await learnerLive;
-  const visitorLive = liveConnection(visitor);
-  await visitor.goto('/en/friends');
-  await visitorLive;
+  const live = [liveConnection(learner), liveConnection(visitor)];
+  await Promise.all([learner.goto('/en/friends'), visitor.goto('/en/friends')]);
+  await Promise.all(live);
 
-  const recent = row(region(visitor, 'Recently active'), onboardedAccount.displayName);
-  await expect(recent).toContainText('French');
-  // Scoped to the row: the name could also be a search result or a nav link.
-  await recent.getByRole('link', { name: onboardedAccount.displayName }).click();
+  await visitor
+    .getByRole('searchbox', { name: 'Search by display name' })
+    .fill(onboardedAccount.displayName);
+  await visitor.getByRole('button', { name: 'Search', exact: true }).click();
+  await row(visitor.getByRole('list', { name: 'Search results' }), onboardedAccount.displayName)
+    .getByRole('link', { name: onboardedAccount.displayName })
+    .click();
 
   await expect(visitor).toHaveURL(/\/en\/users\/[0-9a-f-]{36}$/);
   await expect(visitor.getByRole('heading', { level: 1 })).toHaveText(onboardedAccount.displayName);
@@ -136,7 +141,7 @@ test('a stranger found among the recently active is added from their profile, th
   await expect(visitor.getByRole('button', { name: 'Add friend' })).toBeVisible();
 
   await Promise.all([settle(learner), settle(visitor)]);
-  expect(violations.flat(), `the pages logged:\n${formatViolations(violations.flat())}\n`).toEqual(
+  expect(ours(violations), `the pages logged:\n${formatViolations(ours(violations))}\n`).toEqual(
     [],
   );
 });

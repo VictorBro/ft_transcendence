@@ -13,8 +13,9 @@ import { basename, join } from 'path';
 import { AuthService } from '../auth/auth.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { AVATAR_ROUTE, AVATAR_STORAGE_DIR } from '../app.setup';
-import { currentDay, dayOf } from '../lessons/goal';
+import { currentDay, storedStreak } from '../lessons/goal';
 import { currentStreak } from '../lessons/roadmap.rules';
+import { activeSince } from './active-day';
 import { PUBLIC_USER_SELECT } from './public-user';
 
 /** Relative on purpose: see setAvatar. */
@@ -65,28 +66,24 @@ export class UsersService {
     const courses = await Promise.all(
       user.userLevels.map(async (course) => {
         const day = await currentDay(this.prisma, course, user.timeZone, now);
-        const stored = {
-          streak: course.streak,
-          bestStreak: course.bestStreak,
-          lastGoalDay: course.lastGoalDay === null ? null : dayOf(course.lastGoalDay),
-        };
-        return { lang: course.lang, level: course.level, streak: currentStreak(stored, day) };
+        const streak = currentStreak(storedStreak(course), day);
+        return { lang: course.lang, level: course.level, streak };
       }),
     );
     return { id: user.id, displayName: user.displayName, avatarUrl: user.avatarUrl, courses };
   }
 
   /**
-   * People to add: whoever opened the app last, newest first. Never you, and
+   * People to add: whoever opened the app in the last week. Never you, and
    * never someone you already have a request or friendship with, so the only
-   * thing to do with a row is Add friend.
+   * thing to do with a row is Add friend. By name, not by day: an order by
+   * activity would show anyone polling it each learner's first visit of the day.
    */
-  async recentlyActive(me: string): Promise<RecentlyActive> {
+  async recentlyActive(me: string, now: Date): Promise<RecentlyActive> {
     const users = await this.prisma.user.findMany({
       where: {
         id: { not: me },
-        // Null sorts first in a descending order, and never seen is not recent.
-        lastSeenAt: { not: null },
+        lastActiveDay: { gte: activeSince(now) },
         friendshipsRequested: { none: { addresseeId: me } },
         friendshipsAddressed: { none: { requesterId: me } },
       },
@@ -94,8 +91,7 @@ export class UsersService {
         ...PUBLIC_USER_SELECT,
         userLevels: { select: { lang: true }, orderBy: { createdAt: 'asc' } },
       },
-      // Demo learners share one stamp: the name keeps a tie in a stable order.
-      orderBy: [{ lastSeenAt: 'desc' }, { displayName: 'asc' }],
+      orderBy: { displayName: 'asc' },
       take: RECENTLY_ACTIVE_LIMIT,
     });
     return {

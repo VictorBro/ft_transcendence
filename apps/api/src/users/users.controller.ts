@@ -116,11 +116,11 @@ export class UsersController {
 
   // Before :id, which would take "recently-active" for a malformed id.
   @Get('recently-active')
-  @ApiOperation({ summary: 'The users who opened the app last, to add as friends' })
+  @ApiOperation({ summary: 'Users who opened the app in the last 7 days, to add as friends' })
   @ApiOkResponse({ type: RecentlyActiveDto })
   @ApiUnauthorizedResponse({ description: 'No valid session' })
   recentlyActive(@CurrentUser() user: SessionUser): Promise<RecentlyActive> {
-    return this.users.recentlyActive(user.id);
+    return this.users.recentlyActive(user.id, new Date());
   }
 
   @Get(':id')

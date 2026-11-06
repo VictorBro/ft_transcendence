@@ -110,7 +110,7 @@ export type PublicProfile = z.infer<typeof PublicProfileSchema>;
 /** A list to glance at, not to page through. */
 export const RECENTLY_ACTIVE_LIMIT = 20;
 
-/** Someone to add. No time: the order alone says who was there last. */
+/** Someone to add. No day either: the list is by name. */
 export const RecentlyActiveUserSchema = PublicUserSchema.extend({
   languages: z.array(LanguageSchema),
 });

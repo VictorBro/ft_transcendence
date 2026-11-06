@@ -11,6 +11,7 @@ import { AppModule } from '../src/app.module';
 import { configureApp } from '../src/app.setup';
 import { wsConnections } from '../src/metrics/metrics';
 import { PrismaService } from '../src/prisma/prisma.service';
+import { ACTIVE_DAYS, activeDay } from '../src/users/active-day';
 import { seriesValue } from './metrics.fixtures';
 import { type ClientSocket, connect, connected, nextEvent, sessionCookie } from './socket.fixtures';
 
@@ -29,8 +30,11 @@ describe('friends (e2e)', () => {
   const stamp = Date.now();
   const password = 'Correct-Horse-9';
   const emailOf = (label: string) => `friends-${label}-${stamp}@example.com`;
-  /** The limit rows, written straight to the database: no signup to wait on. */
-  const crowd = `frcrowd${stamp}`;
+  /**
+   * The limit rows, written straight to the database: no signup to wait on.
+   * Recently active is by name, and a leading 0 sorts before any other name.
+   */
+  const crowd = `0frcrowd${stamp}`;
 
   // A's name holds a `_`, B's the same with an `x` there: a search for A that
   // finds B treated `_` as a wildcard. C is the stranger to the A and B flow.
@@ -41,7 +45,8 @@ describe('friends (e2e)', () => {
   let e: Account;
   let f: Account;
   let g: Account;
-  // The recently active: their own people, so no other test's rows get in the way.
+  // The recently active: their own people, named to sort first, so no other
+  // test's rows get in the way.
   let h: Account;
   let i: Account;
   let j: Account;
@@ -94,6 +99,9 @@ describe('friends (e2e)', () => {
     port = (app.getHttpServer().address() as AddressInfo).port;
     prisma = app.get(PrismaService);
 
+    // What an interrupted run may have left: its names sort first in Recently active.
+    await prisma.user.deleteMany({ where: { displayName: { startsWith: '0fr' } } });
+
     a = await signUp('a', `fr_a${stamp}`);
     b = await signUp('b', `frxa${stamp}`);
     c = await signUp('c', `Frc${stamp}`);
@@ -101,9 +109,9 @@ describe('friends (e2e)', () => {
     e = await signUp('e', `fre${stamp}`);
     f = await signUp('f', `frf${stamp}`);
     g = await signUp('g', `frg${stamp}`);
-    h = await signUp('h', `frh${stamp}`);
-    i = await signUp('i', `fri${stamp}`);
-    j = await signUp('j', `frj${stamp}`);
+    h = await signUp('h', `0frh${stamp}`);
+    i = await signUp('i', `0fri${stamp}`);
+    j = await signUp('j', `0frj${stamp}`);
   });
 
   // Until the server has seen every close, so each test starts with no socket open.
@@ -199,7 +207,7 @@ describe('friends (e2e)', () => {
   });
 
   describe('recently active', () => {
-    it('lists whoever opened a tab last first, never you', async () => {
+    it('lists whoever opened a tab this week, by name, never you', async () => {
       await prisma.userLevel.createMany({
         data: [
           { userId: i.id, lang: 'fr', dailyGoal: 10, createdAt: new Date('2026-01-01') },
@@ -212,7 +220,7 @@ describe('friends (e2e)', () => {
       const res = await j.agent.get('/api/users/recently-active').expect(200);
 
       const ids = res.body.users.map((user: { id: string }) => user.id);
-      expect(ids.filter((id: string) => id === h.id || id === i.id)).toEqual([i.id, h.id]);
+      expect(ids.filter((id: string) => id === h.id || id === i.id)).toEqual([h.id, i.id]);
       const row = res.body.users[ids.indexOf(i.id)];
       expect(row).toEqual({
         id: i.id,
@@ -220,7 +228,7 @@ describe('friends (e2e)', () => {
         avatarUrl: null,
         languages: ['fr', 'de'],
       });
-      // What /privacy says others see, and nothing more: no time either.
+      // What /privacy says others see, and nothing more: no day either.
       expect(Object.keys(row).sort()).toEqual(['avatarUrl', 'displayName', 'id', 'languages']);
       expect(await recentIds(h)).not.toContain(h.id);
     });
@@ -241,31 +249,40 @@ describe('friends (e2e)', () => {
       expect(await recentIds(j)).toContain(h.id);
     });
 
-    // Last here: its rows are stamped in the future, ahead of every tab above.
-    it(`stops at ${RECENTLY_ACTIVE_LIMIT}, newest first, and skips the never seen`, async () => {
-      const now = Date.now();
+    // Last here: its rows sort before every name above.
+    it(`stops at ${RECENTLY_ACTIVE_LIMIT}, by name, and leaves out a week ago and never`, async () => {
+      const today = activeDay(new Date());
+      // The first day out. Midnight passing during the test only moves the window further.
+      const weekAgo = new Date(today);
+      weekAgo.setUTCDate(weekAgo.getUTCDate() - ACTIVE_DAYS);
       const names = Array.from(
         { length: RECENTLY_ACTIVE_LIMIT + 1 },
         (_, n) => `${crowd}-r${String(n).padStart(2, '0')}`,
       );
+      // Both sort before the -r rows, so a list that kept them would show them first.
+      const old = `${crowd}-old`;
       const never = `${crowd}-never`;
+      const row = (displayName: string, lastActiveDay: Date | null) => ({
+        email: `${displayName}@example.com`,
+        displayName,
+        passwordHash: 'unused',
+        lastActiveDay,
+      });
+      // The first by name came days ago: by day it would drop past the limit.
+      const daysAgo = new Date(today);
+      daysAgo.setUTCDate(daysAgo.getUTCDate() - 3);
       await prisma.user.createMany({
         data: [
-          ...names.map((displayName, n) => ({
-            email: `${displayName}@example.com`,
-            displayName,
-            passwordHash: 'unused',
-            lastSeenAt: new Date(now + n * 1000),
-          })),
-          { email: `${never}@example.com`, displayName: never, passwordHash: 'unused' },
+          ...names.map((name, n) => row(name, n === 0 ? daysAgo : today)),
+          row(old, weekAgo),
+          row(never, null),
         ],
       });
 
       const res = await h.agent.get('/api/users/recently-active').expect(200);
 
       const shown = res.body.users.map((user: { displayName: string }) => user.displayName);
-      expect(shown).toEqual([...names].reverse().slice(0, RECENTLY_ACTIVE_LIMIT));
-      expect(shown).not.toContain(never);
+      expect(shown).toEqual(names.slice(0, RECENTLY_ACTIVE_LIMIT));
     });
   });
 

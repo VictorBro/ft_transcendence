@@ -1,6 +1,6 @@
 import { type CourseDay, DailyGoalSchema, type Language } from '@ft/shared';
 import type { Prisma, UserLevel } from '../generated/prisma/client';
-import { courseDay, isMet, metOn } from './roadmap.rules';
+import { type CourseStreak, courseDay, isMet, metOn } from './roadmap.rules';
 
 /*
  * The writes on a course's day: the lock, and the goal it protects.
@@ -26,6 +26,17 @@ export type GoalOutcome = {
  */
 export function dayOf(date: Date): CourseDay {
   return date.toISOString().slice(0, 10);
+}
+
+/** The streak columns of a course, its last goal day as a CourseDay. */
+export function storedStreak(
+  course: Pick<UserLevel, 'streak' | 'bestStreak' | 'lastGoalDay'>,
+): CourseStreak {
+  return {
+    streak: course.streak,
+    bestStreak: course.bestStreak,
+    lastGoalDay: course.lastGoalDay === null ? null : dayOf(course.lastGoalDay),
+  };
 }
 
 /**
@@ -98,11 +109,7 @@ export async function meetGoal(
   const doneCount = await tx.lessonResult.count({
     where: { userLevelId: course.id, day: new Date(day) },
   });
-  let streak = {
-    streak: course.streak,
-    bestStreak: course.bestStreak,
-    lastGoalDay: course.lastGoalDay === null ? null : dayOf(course.lastGoalDay),
-  };
+  let streak = storedStreak(course);
 
   // metOn moves lastGoalDay only onto a new day: never for a day already met,
   // nor for a day before it, so lastGoalDay can never go back.

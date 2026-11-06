@@ -24,7 +24,7 @@ export const privacyPolicy: LegalDocument = {
         'Account data: the email address and display name you provide at signup, a password stored only as an Argon2 hash, and, if you enable it, two-factor authentication settings. We never store a password in a form we can read.',
         'Learning data: the target language and proficiency level you select, answers submitted to exercises and assessments, the level our assessment engine infers from those answers, streaks, scores, and progress markers used by the gamification features.',
         'Conversation data: the prompts you send to the AI tutor and the responses it returns. In a language learning context these transcripts are the product, because correction and levelling both depend on your previous attempts, including the mistakes.',
-        'Interaction data: friend relationships, presence status, the time you last opened the app while signed in (only the latest is kept), messages sent in chat or during a live session, and results of two-player practice rounds. Anything you send to another learner is visible to that learner.',
+        'Interaction data: friend relationships, presence status, the day you last opened the app while signed in (the day only, not the time, and only the latest), messages sent in chat or during a live session, and results of two-player practice rounds. Anything you send to another learner is visible to that learner.',
         'Technical data: IP address, browser user agent, timestamps, and error traces captured by server logs. These are collected to operate the service and to detect abuse, not to build a profile of you.',
       ],
     },
@@ -59,7 +59,7 @@ export const privacyPolicy: LegalDocument = {
       id: 'sharing',
       heading: '6. Who else sees your data',
       paragraphs: [
-        'Other learners see your display name, avatar, presence status, and anything you send them. Any signed-in learner can open your profile, which shows the languages you learn, your level in each and your current streak. They can also find you by your display name or among the recently active learners, and send you a friend request. The recently active list is ordered by when each learner last opened the app, so someone watching it can tell roughly when you did. Your friends list is shown only to you. Your email address, time zone, interface language and two-factor settings are never shown to other learners.',
+        'Other learners see your display name, avatar, presence status, and anything you send them. Any signed-in learner can open your profile, which shows the languages you learn, your level in each and your current streak. They can also find you by your display name or among the recently active learners, and send you a friend request. You are among the recently active from the day you open the app while signed in until a week after that day. The list is sorted by display name and shows no date, but someone watching it can tell when you come back after more than a week away. Your friends list is shown only to you. Your email address, time zone, interface language and two-factor settings are never shown to other learners.',
         'Outside the platform, data reaches only the infrastructure and model providers required to run it. We do not share data with advertisers, data brokers, or analytics networks. If we are ever compelled to disclose data by a lawful order, we will notify you unless prohibited from doing so.',
       ],
     },

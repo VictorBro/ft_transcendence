@@ -14,6 +14,7 @@ import { SESSION_KEY_PREFIX } from '../app.setup';
 import { wsConnections, wsEvents } from '../metrics/metrics';
 import { PrismaService } from '../prisma/prisma.service';
 import { RedisService } from '../redis/redis.service';
+import { activeDay } from '../users/active-day';
 import { SocketsService, sessionRoom, type AppSocket, type SocketServer } from './sockets.service';
 
 /** Caddy sends /ws and /ws/* to the api, in dev and in prod. */
@@ -108,15 +109,18 @@ export class SocketGateway
         return;
       }
       // Like AuthGuard: a deleted account is refused although its session lives.
-      // The same query stamps lastSeenAt for the recently active. updateMany, so
-      // a missing row is a count of 0 and not an error the catch would misread.
-      const { count } = await this.prisma.user.updateMany({
+      const user = await this.prisma.user.findUnique({
         where: { id: userId },
-        data: { lastSeenAt: new Date() },
+        select: { lastActiveDay: true },
       });
-      if (count === 0) {
+      if (user === null) {
         next(new Error('auth.sessionRequired'));
         return;
+      }
+      // The day only, so the first tab of the day writes and the others just read.
+      const today = activeDay(new Date());
+      if (user.lastActiveDay?.getTime() !== today.getTime()) {
+        await this.prisma.user.update({ where: { id: userId }, data: { lastActiveDay: today } });
       }
       socket.data = { userId, sessionId: sessionID };
       // Before next(): the client's CONNECT ack then means it is in the room.

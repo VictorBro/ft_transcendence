@@ -6,6 +6,7 @@ import { SocketsService } from '../gateway/sockets.service';
 import { LessonsService } from '../lessons/lessons.service';
 import type { RuleLesson } from '../lessons/roadmap.rules';
 import { PrismaService } from '../prisma/prisma.service';
+import { activeDay } from '../users/active-day';
 import {
   DEMO_EMAIL_FILTER,
   DEMO_PROFILES,
@@ -29,7 +30,7 @@ import { planCourse } from './demo.planner';
 
 /**
  * What the replay calls. `prisma` too: the time zone (a profile field, not
- * progress) and lastSeenAt are written straight on the user, which keeps
+ * progress) and lastActiveDay are written straight on the user, which keeps
  * UsersService and its AVATAR_STORAGE_DIR check out of the seed, and eva's
  * plan reads her level.
  */
@@ -116,7 +117,7 @@ export async function replayLearner(
   await services.prisma.user.update({
     where: { id: created.id },
     // A seeded learner never opens a socket: stamped, it shows in Recently active.
-    data: { timeZone: profile.timeZone, lastSeenAt: runNow },
+    data: { timeZone: profile.timeZone, lastActiveDay: activeDay(runNow) },
   });
   // Read again: the SessionUser from signUp still says UTC, and finish takes
   // the day from the user it is given.

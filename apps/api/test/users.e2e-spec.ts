@@ -10,7 +10,7 @@ import { MAX_AVATAR_BYTES } from '@ft/shared';
 
 import { AppModule } from '../src/app.module';
 import { AVATAR_STORAGE_DIR, configureApp } from '../src/app.setup';
-import { localDay, previousDay } from '../src/lessons/roadmap.rules';
+import { localDay } from '../src/lessons/roadmap.rules';
 import { PrismaService } from '../src/prisma/prisma.service';
 
 /**
@@ -193,7 +193,9 @@ describe('users (e2e)', () => {
   describe('profile', () => {
     it('shows the public fields and nothing else', async () => {
       const timeZone = 'Asia/Tokyo';
-      const yesterday = previousDay(localDay(new Date(), timeZone));
+      // Today, not yesterday: if midnight passes in Tokyo during the test, it
+      // becomes yesterday and the streak still holds.
+      const today = localDay(new Date(), timeZone);
       const owner = await prisma.user.create({
         data: {
           email: ownerEmail,
@@ -202,7 +204,7 @@ describe('users (e2e)', () => {
           timeZone,
           totpSecret: 'unused',
           totpEnabledAt: new Date(),
-          lastSeenAt: new Date(),
+          lastActiveDay: new Date(),
           userLevels: {
             create: [
               // createdAt set: one statement would otherwise give both the same.
@@ -212,7 +214,7 @@ describe('users (e2e)', () => {
                 dailyGoal: 10,
                 streak: 4,
                 bestStreak: 9,
-                lastGoalDay: new Date(yesterday),
+                lastGoalDay: new Date(today),
                 createdAt: new Date('2026-01-01'),
               },
               // A streak met long ago is gone, whatever the column still says.

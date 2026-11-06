@@ -16,7 +16,6 @@ import {
 } from '@ft/shared';
 import {
   courseDay,
-  CourseStreak,
   currentStreak,
   isMet,
   levelAfter,
@@ -28,7 +27,7 @@ import {
   target,
 } from './roadmap.rules';
 import { checkCourse, findLesson, LESSON_SELECT, LessonRow } from './course-lookup';
-import { currentDay, dayOf, latestDay, lockCourse, meetGoal } from './goal';
+import { currentDay, dayOf, latestDay, lockCourse, meetGoal, storedStreak } from './goal';
 import { searchLessons } from './lesson-search';
 
 /*
@@ -325,11 +324,7 @@ export class LessonsService {
     const toCards = (ids: LessonId[]) => ids.map((id) => cards.get(id)!);
     const { done, proposed, extra } = plan(ruleLessons, results, day, goal);
 
-    const streak: CourseStreak = {
-      streak: course.streak,
-      bestStreak: course.bestStreak,
-      lastGoalDay: course.lastGoalDay === null ? null : dayOf(course.lastGoalDay),
-    };
+    const streak = storedStreak(course);
 
     return TodaySchema.parse({
       day,

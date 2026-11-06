@@ -33,7 +33,7 @@ export async function searchUsers(q: string): Promise<PublicUser[]> {
   return settle(await apiGet(UserSearchResultSchema, '/api/users', { q }), 'search results').users;
 }
 
-/** People to add, newest first: the API leaves out everyone you have a row with. */
+/** People to add, by name: the API leaves out everyone you have a row with. */
 export async function recentlyActive(): Promise<RecentlyActiveUser[]> {
   return settle(await apiGet(RecentlyActiveSchema, '/api/users/recently-active'), 'recently active')
     .users;
