@@ -22,8 +22,8 @@ import { CourseDaySchema, LESSON_KINDS } from './lesson';
  * copied out of lesson.ts — the lesson kinds and the course day's format — can
  * be held to their originals.
  *
- * KIND_COUNTS giving every kind at least one lesson per level — what makes
- * each kind challenge reachable — is already asserted in lesson.test.ts.
+ * Which kind challenges a level can get depends on its ready lessons, so
+ * challengeFor filters them (gamification.rules.ts in apps/api, #95).
  */
 
 describe('CHALLENGES', () => {
@@ -35,8 +35,8 @@ describe('CHALLENGES', () => {
     expect(CHALLENGES.slice(LESSON_KINDS.length)).toEqual(['score90', 'beyondGoal']);
   });
 
-  // challengeFor picks with `% CHALLENGES.length`, and the issue's distribution
-  // test counts six buckets.
+  // challengeFor picks among these six, and the issue's distribution test
+  // counts six buckets at a level that has every kind.
   it('has six codes, each used once', () => {
     expect(CHALLENGES).toHaveLength(6);
     expect(new Set(CHALLENGES).size).toBe(6);
@@ -61,9 +61,9 @@ describe('ACHIEVEMENTS', () => {
   it('keeps the declared order', () => {
     expect(ACHIEVEMENTS.map((achievement) => achievement.code)).toEqual([
       'firstLesson',
+      'passed10',
       'passed25',
-      'passed100',
-      'passed500',
+      'passed50',
       'streak3',
       'streak7',
       'streak30',
@@ -99,7 +99,7 @@ describe('the XP prices', () => {
 describe('the schemas', () => {
   it('spells the earned day the way CourseDaySchema does', () => {
     for (const day of ['2026-10-17', '17/10/2026', '2026-10-17T00:00:00Z', '2026-02-30', '']) {
-      const achievement = { code: 'passed25', day, current: 0, target: 25, level: null };
+      const achievement = { code: 'passed10', day, current: 0, target: 10, level: null };
       expect(AchievementSchema.safeParse(achievement).success, day).toBe(
         CourseDaySchema.safeParse(day).success,
       );
@@ -136,10 +136,10 @@ describe('the schemas', () => {
   it('accepts an unearned achievement, whose day and level are null', () => {
     expect(
       AchievementSchema.safeParse({
-        code: 'passed25',
+        code: 'passed10',
         day: null,
         current: 3,
-        target: 25,
+        target: 10,
         level: null,
       }).success,
     ).toBe(true);
@@ -172,10 +172,10 @@ describe('the schemas', () => {
   it('rejects a level on a code that has no level to label', () => {
     expect(
       AchievementSchema.safeParse({
-        code: 'passed25',
+        code: 'passed10',
         day: null,
         current: 0,
-        target: 25,
+        target: 10,
         level: { total: 1, attempted: 0, passed: 0, needed: 1 },
       }).success,
     ).toBe(false);
@@ -196,10 +196,10 @@ describe('the schemas', () => {
   it('rejects a bar past its end, which progress caps', () => {
     expect(
       AchievementSchema.safeParse({
-        code: 'passed25',
+        code: 'passed10',
         day: null,
-        current: 26,
-        target: 25,
+        current: 11,
+        target: 10,
         level: null,
       }).success,
     ).toBe(false);
@@ -208,10 +208,10 @@ describe('the schemas', () => {
   it('rejects a day that is not YYYY-MM-DD', () => {
     expect(
       AchievementSchema.safeParse({
-        code: 'passed25',
+        code: 'passed10',
         day: '17/10/2026',
         current: 0,
-        target: 25,
+        target: 10,
         level: null,
       }).success,
     ).toBe(false);
