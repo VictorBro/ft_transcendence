@@ -99,7 +99,7 @@ export class SocketGateway
         next(new Error('auth.sessionRequired'));
         return;
       }
-      // Before the lookup, so a client opening sockets in a loop costs no query,
+      // Before the write, so a client opening sockets in a loop costs no query,
       // and the per-socket event limit cannot be multiplied without bound.
       if (
         (socket.nsp.adapter.rooms.get(sessionRoom(sessionID))?.size ?? 0) >= SESSION_SOCKET_LIMIT
@@ -108,17 +108,19 @@ export class SocketGateway
         return;
       }
       // Like AuthGuard: a deleted account is refused although its session lives.
-      const user = await this.prisma.user.findUnique({
+      // The same query stamps lastSeenAt for the recently active. updateMany, so
+      // a missing row is a count of 0 and not an error the catch would misread.
+      const { count } = await this.prisma.user.updateMany({
         where: { id: userId },
-        select: { id: true },
+        data: { lastSeenAt: new Date() },
       });
-      if (!user) {
+      if (count === 0) {
         next(new Error('auth.sessionRequired'));
         return;
       }
-      socket.data = { userId: user.id, sessionId: sessionID };
+      socket.data = { userId, sessionId: sessionID };
       // Before next(): the client's CONNECT ack then means it is in the room.
-      rooms.push(userRoom(user.id), sessionRoom(sessionID));
+      rooms.push(userRoom(userId), sessionRoom(sessionID));
       await socket.join(rooms);
       // A logout between the session middleware and the join closed the room
       // before this socket was in it. Asked after the join, the session is

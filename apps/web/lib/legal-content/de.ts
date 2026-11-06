@@ -5,7 +5,7 @@ export const privacyPolicy: LegalDocument = {
   title: 'Datenschutzerklärung',
   description:
     'Was ft_transcendence sammelt, während Sie damit eine Sprache lernen, warum wir es sammeln, wie lange wir es aufbewahren, und wie Sie es zurückerhalten oder löschen lassen können.',
-  lastUpdated: '2026-11-04',
+  lastUpdated: '2026-11-06',
   intro:
     'ft_transcendence ist eine KI-gestützte Plattform zum Sprachenlernen. Eine Sprache gut zu unterrichten bedeutet, zu beobachten, wie Sie sie verwenden, daher verarbeitet dieser Dienst mehr über Ihr Lernverhalten als eine typische Website. Diese Richtlinie erklärt genau, was das in der Praxis bedeutet, geschrieben, um gelesen und nicht nur überflogen zu werden.',
   sections: [
@@ -24,7 +24,7 @@ export const privacyPolicy: LegalDocument = {
         'Kontodaten: die bei der Anmeldung angegebene E-Mail-Adresse und der Anzeigename, ein Passwort, das nur als Argon2-Hash gespeichert wird, und, falls aktiviert, Ihre Einstellungen zur Zwei-Faktor-Authentifizierung. Wir speichern ein Passwort niemals in einer lesbaren Form.',
         'Lerndaten: die gewählte Zielsprache und Kompetenzstufe, die zu Übungen und Bewertungen eingereichten Antworten, das von unserer Bewertungs-Engine daraus abgeleitete Niveau, Serien, Punktzahlen und Fortschrittsmarkierungen, die von den Gamification-Funktionen verwendet werden.',
         'Konversationsdaten: die Eingaben, die Sie an den KI-Tutor senden, und die Antworten, die er zurückgibt. In einem Sprachlernkontext sind diese Mitschriften das eigentliche Produkt, da sowohl Korrektur als auch Einstufung von Ihren vorherigen Versuchen abhängen, einschließlich der Fehler.',
-        'Interaktionsdaten: Freundschaftsbeziehungen, Anwesenheitsstatus, im Chat oder während einer Live-Sitzung gesendete Nachrichten, und Ergebnisse von Zwei-Spieler-Übungsrunden. Alles, was Sie an einen anderen Lernenden senden, ist für diesen sichtbar.',
+        'Interaktionsdaten: Freundschaftsbeziehungen, Anwesenheitsstatus, der Zeitpunkt, zu dem Sie die App zuletzt angemeldet geöffnet haben (nur der letzte wird gespeichert), im Chat oder während einer Live-Sitzung gesendete Nachrichten, und Ergebnisse von Zwei-Spieler-Übungsrunden. Alles, was Sie an einen anderen Lernenden senden, ist für diesen sichtbar.',
         'Technische Daten: IP-Adresse, Browser-User-Agent, Zeitstempel, und von Server-Logs erfasste Fehlerspuren. Diese werden erhoben, um den Dienst zu betreiben und Missbrauch zu erkennen, nicht um ein Profil von Ihnen zu erstellen.',
       ],
     },
@@ -59,7 +59,7 @@ export const privacyPolicy: LegalDocument = {
       id: 'sharing',
       heading: '6. Wer sonst Ihre Daten sieht',
       paragraphs: [
-        'Andere Lernende sehen Ihren Anzeigenamen, Avatar, Anwesenheitsstatus, und alles, was Sie ihnen senden. Jeder angemeldete Lernende kann Sie über Ihren Anzeigenamen finden und Ihnen eine Freundschaftsanfrage senden. Ihre Freundesliste sehen nur Sie. Nichts sonst in Ihrem Profil wird standardmäßig offengelegt.',
+        'Andere Lernende sehen Ihren Anzeigenamen, Avatar, Anwesenheitsstatus, und alles, was Sie ihnen senden. Jeder angemeldete Lernende kann Ihr Profil öffnen, das die Sprachen zeigt, die Sie lernen, Ihr Niveau in jeder davon und Ihre aktuelle Serie. Er kann Sie außerdem über Ihren Anzeigenamen oder unter den kürzlich aktiven Lernenden finden und Ihnen eine Freundschaftsanfrage senden. Die Liste der kürzlich aktiven Lernenden ist danach sortiert, wann jemand die App zuletzt geöffnet hat; wer sie beobachtet, kann ungefähr erkennen, wann Sie das getan haben. Ihre Freundesliste sehen nur Sie. Ihre E-Mail-Adresse, Ihre Zeitzone, Ihre Oberflächensprache und Ihre Einstellungen zur Zwei-Faktor-Authentifizierung werden anderen Lernenden nie angezeigt.',
         'Außerhalb der Plattform erreichen Daten nur die Infrastruktur und Modellanbieter, die für den Betrieb erforderlich sind. Wir teilen keine Daten mit Werbetreibenden, Datenhändlern, oder Analysenetzwerken. Sollten wir jemals durch eine rechtmäßige Anordnung zur Offenlegung von Daten gezwungen werden, werden wir Sie benachrichtigen, sofern uns dies nicht untersagt ist.',
       ],
     },

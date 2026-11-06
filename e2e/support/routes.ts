@@ -57,6 +57,7 @@ export const PAGE_ROUTES: PageRoute[] = [
   { path: '/en/onboarding', name: 'onboarding', onboarded: true },
   { path: '/en/chat', name: 'chat', onboarded: true },
   { path: '/en/friends', name: 'friends', onboarded: true },
+  // /users/[id] has no fixed id: friends.spec.ts watches its console and measures it at 360.
   { path: '/en/profile', name: 'profile', onboarded: true },
   { path: '/en/profile/edit', name: 'edit profile', onboarded: true },
   { path: '/en/settings/2fa', name: 'two-factor settings', onboarded: true },

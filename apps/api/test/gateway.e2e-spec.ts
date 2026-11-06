@@ -185,6 +185,17 @@ describe('gateway (e2e)', () => {
       socket.close();
       await vi.waitFor(async () => expect(await seriesValue(wsConnections)).toBe(before));
     });
+
+    it('stamps lastSeenAt, the recently active order', async () => {
+      const before = new Date();
+      await connected(open(cookieA));
+
+      const { lastSeenAt } = await prisma.user.findUniqueOrThrow({
+        where: { id: userA },
+        select: { lastSeenAt: true },
+      });
+      expect(lastSeenAt?.getTime()).toBeGreaterThanOrEqual(before.getTime());
+    });
   });
 
   describe('the session ending', () => {

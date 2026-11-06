@@ -8,6 +8,7 @@ import {
   ExceptionFilter,
   Get,
   HttpStatus,
+  Param,
   Patch,
   PayloadTooLargeException,
   Post,
@@ -23,6 +24,7 @@ import {
   ApiConflictResponse,
   ApiConsumes,
   ApiCreatedResponse,
+  ApiNotFoundResponse,
   ApiOkResponse,
   ApiOperation,
   ApiPayloadTooLargeResponse,
@@ -34,13 +36,19 @@ import { diskStorage } from 'multer';
 import { randomUUID } from 'crypto';
 import { open, unlink } from 'fs/promises';
 import { MAX_AVATAR_BYTES } from '@ft/shared';
-import type { SessionUser, UserSearchResult } from '@ft/shared';
+import type { PublicProfile, RecentlyActive, SessionUser, UserSearchResult } from '@ft/shared';
 
 import { CurrentUser } from '../auth/auth.decorators';
 import { SessionUserDto, UpdateProfileDto } from '../auth/auth.dto';
-import { UserSearchQueryDto, UserSearchResultDto } from './users.dto';
+import {
+  PublicProfileDto,
+  RecentlyActiveDto,
+  UserSearchQueryDto,
+  UserSearchResultDto,
+} from './users.dto';
 import { UsersService } from './users.service';
 import { AVATAR_STORAGE_DIR } from '../app.setup';
+import { UserIdParam } from '../validation.pipe';
 
 // One entry per accepted type: the extension is taken from here rather than from
 // the client's filename, and `matchesHead` is the bytes the format really starts
@@ -106,7 +114,26 @@ export class UsersController {
     return this.users.search(user.id, query.q);
   }
 
-  // No :id variant: editing someone else's profile is the advanced permissions
+  // Before :id, which would take "recently-active" for a malformed id.
+  @Get('recently-active')
+  @ApiOperation({ summary: 'The users who opened the app last, to add as friends' })
+  @ApiOkResponse({ type: RecentlyActiveDto })
+  @ApiUnauthorizedResponse({ description: 'No valid session' })
+  recentlyActive(@CurrentUser() user: SessionUser): Promise<RecentlyActive> {
+    return this.users.recentlyActive(user.id);
+  }
+
+  @Get(':id')
+  @ApiOperation({ summary: "A user's public profile" })
+  @ApiOkResponse({ type: PublicProfileDto })
+  @ApiBadRequestResponse({ description: 'Not a user id' })
+  @ApiNotFoundResponse({ description: 'user.notFound' })
+  @ApiUnauthorizedResponse({ description: 'No valid session' })
+  profile(@Param('id', UserIdParam) id: string): Promise<PublicProfile> {
+    return this.users.profile(id, new Date());
+  }
+
+  // No PATCH :id: editing someone else's profile is the advanced permissions
   // module, and an id in the path invites forgetting to check it.
   @Patch('me')
   @ApiOperation({ summary: 'Update your own profile' })

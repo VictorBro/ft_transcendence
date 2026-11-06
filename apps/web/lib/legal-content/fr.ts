@@ -5,7 +5,7 @@ export const privacyPolicy: LegalDocument = {
   title: 'Politique de confidentialité',
   description:
     'Ce que ft_transcendence collecte pendant que vous apprenez une langue avec la plateforme, pourquoi nous le collectons, combien de temps nous le conservons, et comment le récupérer ou le faire supprimer.',
-  lastUpdated: '2026-11-04',
+  lastUpdated: '2026-11-06',
   intro:
     "ft_transcendence est une plateforme d'apprentissage des langues pilotée par IA. Bien enseigner une langue implique d'observer comment vous l'utilisez, ce service traite donc davantage d'informations sur votre comportement d'apprentissage qu'un site web classique. Cette politique explique précisément ce que cela signifie en pratique, écrite pour être lue plutôt que survolée.",
   sections: [
@@ -22,9 +22,9 @@ export const privacyPolicy: LegalDocument = {
       heading: '2. Données que nous collectons',
       paragraphs: [
         "Données de compte : l'adresse e-mail et le nom d'affichage que vous fournissez à l'inscription, un mot de passe stocké uniquement sous forme de hash Argon2, et, si vous l'activez, vos paramètres d'authentification à deux facteurs. Nous ne stockons jamais un mot de passe sous une forme lisible.",
-        "Données d'apprentissage : la langue cible et le niveau de compétence que vous choisissez, les réponses soumises aux exercices et évaluations, le niveau que notre moteur d'évaluation en déduit, les séries de réussites, les scores, et les indicateurs de progression utilisés par les fonctionnalités de gamification.",
+        "Données d'apprentissage : la langue cible et le niveau de compétence que vous choisissez, les réponses soumises aux exercices et évaluations, le niveau que notre moteur d'évaluation en déduit, les séries de jours, les scores, et les indicateurs de progression utilisés par les fonctionnalités de gamification.",
         "Données de conversation : les invites que vous envoyez au tuteur IA et les réponses qu'il retourne. Dans un contexte d'apprentissage des langues, ces échanges sont le produit lui-même, car la correction et l'évaluation du niveau dépendent toutes deux de vos tentatives précédentes, erreurs comprises.",
-        "Données d'interaction : relations d'amitié, statut de présence, messages envoyés en chat ou pendant une session en direct, et résultats des manches de pratique à deux joueurs. Tout ce que vous envoyez à un autre apprenant lui est visible.",
+        "Données d'interaction : relations d'amitié, statut de présence, le moment où vous avez ouvert l'application pour la dernière fois en étant connecté (seul le plus récent est conservé), messages envoyés en chat ou pendant une session en direct, et résultats des manches de pratique à deux joueurs. Tout ce que vous envoyez à un autre apprenant lui est visible.",
         "Données techniques : adresse IP, user agent du navigateur, horodatages, et traces d'erreurs capturées par les journaux serveur. Elles sont collectées pour faire fonctionner le service et détecter les abus, pas pour construire un profil vous concernant.",
       ],
     },
@@ -59,7 +59,7 @@ export const privacyPolicy: LegalDocument = {
       id: 'sharing',
       heading: "6. Qui d'autre voit vos données",
       paragraphs: [
-        "Les autres apprenants voient votre nom d'affichage, votre avatar, votre statut de présence, et tout ce que vous leur envoyez. Tout apprenant connecté peut vous trouver par votre nom d'affichage et vous envoyer une demande d'ami. Votre liste d'amis n'est visible que par vous. Rien d'autre sur votre profil n'est exposé par défaut.",
+        "Les autres apprenants voient votre nom d'affichage, votre avatar, votre statut de présence, et tout ce que vous leur envoyez. Tout apprenant connecté peut ouvrir votre profil, qui montre les langues que vous apprenez, votre niveau dans chacune et votre série de jours en cours. Il peut aussi vous trouver par votre nom d'affichage ou parmi les apprenants actifs récemment, et vous envoyer une demande d'ami. La liste des apprenants actifs récemment est triée selon le moment où chacun a ouvert l'application pour la dernière fois : en la surveillant, on peut deviner à peu près quand vous l'avez fait. Votre liste d'amis n'est visible que par vous. Votre adresse e-mail, votre fuseau horaire, votre langue d'interface et vos paramètres d'authentification à deux facteurs ne sont jamais montrés aux autres apprenants.",
         "En dehors de la plateforme, les données n'atteignent que l'infrastructure et les fournisseurs de modèles nécessaires à son fonctionnement. Nous ne partageons pas de données avec des annonceurs, des courtiers en données, ou des réseaux d'analyse. Si nous sommes un jour contraints de divulguer des données par une décision de justice, nous vous en informerons sauf interdiction de le faire.",
       ],
     },

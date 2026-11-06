@@ -46,16 +46,16 @@ function fakeSocket(
   };
 }
 
-function gatewayWith(findUnique = vi.fn().mockResolvedValue({ id: 'u1' })) {
+function gatewayWith(updateMany = vi.fn().mockResolvedValue({ count: 1 })) {
   // The session is still in Redis unless a test says otherwise.
   const exists = vi.fn().mockResolvedValue(1);
   const sockets = { closeSession: vi.fn(), attach: vi.fn() };
   const gateway = new SocketGateway(
-    { user: { findUnique } } as unknown as PrismaService,
+    { user: { updateMany } } as unknown as PrismaService,
     { client: { exists } } as unknown as RedisService,
     sockets as unknown as SocketsService,
   );
-  return { gateway, findUnique, exists, sockets };
+  return { gateway, updateMany, exists, sockets };
 }
 
 describe('sameOrigin', () => {
@@ -105,15 +105,28 @@ describe('SocketGateway authenticate', () => {
     expect(join.mock.invocationCallOrder[0]).toBeLessThan(next.mock.invocationCallOrder[0]);
   });
 
+  it('stamps lastSeenAt in the query that checks the user still exists', async () => {
+    const { gateway, updateMany } = gatewayWith();
+    const next = vi.fn();
+
+    await gateway.authenticate(fakeSocket({ userId: 'u1' }).socket, next);
+
+    expect(updateMany).toHaveBeenCalledWith({
+      where: { id: 'u1' },
+      data: { lastSeenAt: expect.any(Date) },
+    });
+    expect(next).toHaveBeenCalledWith();
+  });
+
   it('refuses a page of another origin, even with a valid session', async () => {
-    const { gateway, findUnique } = gatewayWith();
+    const { gateway, updateMany } = gatewayWith();
     const { socket, join } = fakeSocket({ userId: 'u1' }, { origin: 'https://evil.example' });
     const next = vi.fn();
 
     await gateway.authenticate(socket, next);
 
     expect(next).toHaveBeenCalledWith(new Error('auth.sessionRequired'));
-    expect(findUnique).not.toHaveBeenCalled();
+    expect(updateMany).not.toHaveBeenCalled();
     expect(join).not.toHaveBeenCalled();
   });
 
@@ -133,7 +146,7 @@ describe('SocketGateway authenticate', () => {
   });
 
   it('refuses one socket more than a session may hold, before any query', async () => {
-    const { gateway, findUnique } = gatewayWith();
+    const { gateway, updateMany } = gatewayWith();
     const full = new Map([
       ['session:s1', new Set(Array.from({ length: SESSION_SOCKET_LIMIT }, (_, i) => `id${i}`))],
     ]);
@@ -143,7 +156,7 @@ describe('SocketGateway authenticate', () => {
     await gateway.authenticate(socket, next);
 
     expect(next).toHaveBeenCalledWith(new Error('server.rateLimited'));
-    expect(findUnique).not.toHaveBeenCalled();
+    expect(updateMany).not.toHaveBeenCalled();
     expect(join).not.toHaveBeenCalled();
   });
 
@@ -165,7 +178,7 @@ describe('SocketGateway authenticate', () => {
 
   // Like AuthGuard: the session outlives a deleted account.
   it('refuses a session whose user no longer exists', async () => {
-    const { gateway } = gatewayWith(vi.fn().mockResolvedValue(null));
+    const { gateway } = gatewayWith(vi.fn().mockResolvedValue({ count: 0 }));
     const next = vi.fn();
 
     await gateway.authenticate(fakeSocket({ userId: 'gone' }).socket, next);

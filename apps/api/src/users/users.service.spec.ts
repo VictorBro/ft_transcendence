@@ -153,3 +153,35 @@ describe('UsersService updateProfile', () => {
     expect(unlink).not.toHaveBeenCalled();
   });
 });
+
+describe('UsersService profile', () => {
+  // The route test runs at the real hour, when UTC and the owner often share a day.
+  it("counts the streak on the owner's day, not UTC's", async () => {
+    const course = {
+      id: 'course-1',
+      lang: 'fr',
+      level: 'B1',
+      streak: 4,
+      bestStreak: 9,
+      lastGoalDay: new Date('2026-11-04'),
+    };
+    const prisma = {
+      user: {
+        findUnique: vi.fn().mockResolvedValue({
+          id: 'user-1',
+          displayName: 'Ada',
+          avatarUrl: null,
+          timeZone: 'America/Los_Angeles',
+          userLevels: [course],
+        }),
+      },
+      lessonResult: { findFirst: vi.fn().mockResolvedValue(null) },
+    };
+    const service = new UsersService(prisma as unknown as PrismaService);
+
+    // Still Nov 5 in Los Angeles, so Nov 4 is yesterday there; in UTC it is two days back.
+    const profile = await service.profile('user-1', new Date('2026-11-06T06:00:00Z'));
+
+    expect(profile.courses).toEqual([{ lang: 'fr', level: 'B1', streak: 4 }]);
+  });
+});

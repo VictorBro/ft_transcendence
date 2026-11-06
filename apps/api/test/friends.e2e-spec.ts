@@ -5,7 +5,7 @@ import type { AddressInfo } from 'node:net';
 import request from 'supertest';
 import type TestAgent from 'supertest/lib/agent';
 import { afterAll, afterEach, beforeAll, describe, expect, it, vi } from 'vitest';
-import { USER_SEARCH_LIMIT, type FriendEvent } from '@ft/shared';
+import { RECENTLY_ACTIVE_LIMIT, USER_SEARCH_LIMIT, type FriendEvent } from '@ft/shared';
 
 import { AppModule } from '../src/app.module';
 import { configureApp } from '../src/app.setup';
@@ -29,7 +29,7 @@ describe('friends (e2e)', () => {
   const stamp = Date.now();
   const password = 'Correct-Horse-9';
   const emailOf = (label: string) => `friends-${label}-${stamp}@example.com`;
-  /** The search-limit rows, written straight to the database: no signup to wait on. */
+  /** The limit rows, written straight to the database: no signup to wait on. */
   const crowd = `frcrowd${stamp}`;
 
   // A's name holds a `_`, B's the same with an `x` there: a search for A that
@@ -41,6 +41,10 @@ describe('friends (e2e)', () => {
   let e: Account;
   let f: Account;
   let g: Account;
+  // The recently active: their own people, so no other test's rows get in the way.
+  let h: Account;
+  let i: Account;
+  let j: Account;
 
   /** Each agent its own TEST-NET-1 address, so signups never meet their limit. */
   let addresses = 0;
@@ -74,6 +78,10 @@ describe('friends (e2e)', () => {
 
   const friendsOf = async (account: Account) =>
     (await account.agent.get('/api/friends').expect(200)).body;
+  const recentIds = async (account: Account) =>
+    (await account.agent.get('/api/users/recently-active').expect(200)).body.users.map(
+      (user: { id: string }) => user.id,
+    );
   const rowsNaming = (id: string) =>
     prisma.friendship.findMany({ where: { OR: [{ requesterId: id }, { addresseeId: id }] } });
 
@@ -93,6 +101,9 @@ describe('friends (e2e)', () => {
     e = await signUp('e', `fre${stamp}`);
     f = await signUp('f', `frf${stamp}`);
     g = await signUp('g', `frg${stamp}`);
+    h = await signUp('h', `frh${stamp}`);
+    i = await signUp('i', `fri${stamp}`);
+    j = await signUp('j', `frj${stamp}`);
   });
 
   // Until the server has seen every close, so each test starts with no socket open.
@@ -106,7 +117,7 @@ describe('friends (e2e)', () => {
     await prisma.user.deleteMany({
       where: {
         OR: [
-          { email: { in: ['a', 'b', 'c', 'd', 'e', 'f', 'g'].map(emailOf) } },
+          { email: { in: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'].map(emailOf) } },
           { displayName: { startsWith: crowd } },
         ],
       },
@@ -120,6 +131,8 @@ describe('friends (e2e)', () => {
 
     const responses = await Promise.all([
       server.get('/api/users').query({ q: 'abc' }),
+      server.get('/api/users/recently-active'),
+      server.get(`/api/users/${someone}`),
       server.get('/api/friends'),
       server.post(`/api/friends/requests/${someone}`),
       server.post(`/api/friends/requests/${someone}/accept`),
@@ -182,6 +195,77 @@ describe('friends (e2e)', () => {
         .expect(400);
 
       expect(res.body.message).toEqual([code]);
+    });
+  });
+
+  describe('recently active', () => {
+    it('lists whoever opened a tab last first, never you', async () => {
+      await prisma.userLevel.createMany({
+        data: [
+          { userId: i.id, lang: 'fr', dailyGoal: 10, createdAt: new Date('2026-01-01') },
+          { userId: i.id, lang: 'de', dailyGoal: 10, createdAt: new Date('2026-01-02') },
+        ],
+      });
+      await tab(h);
+      await tab(i);
+
+      const res = await j.agent.get('/api/users/recently-active').expect(200);
+
+      const ids = res.body.users.map((user: { id: string }) => user.id);
+      expect(ids.filter((id: string) => id === h.id || id === i.id)).toEqual([i.id, h.id]);
+      const row = res.body.users[ids.indexOf(i.id)];
+      expect(row).toEqual({
+        id: i.id,
+        displayName: i.name,
+        avatarUrl: null,
+        languages: ['fr', 'de'],
+      });
+      // What /privacy says others see, and nothing more: no time either.
+      expect(Object.keys(row).sort()).toEqual(['avatarUrl', 'displayName', 'id', 'languages']);
+      expect(await recentIds(h)).not.toContain(h.id);
+    });
+
+    it('leaves out anyone you have a request or friendship with, either way', async () => {
+      await tab(j);
+
+      await h.agent.post(`/api/friends/requests/${j.id}`).expect(201);
+      expect(await recentIds(h)).not.toContain(j.id);
+      expect(await recentIds(j)).not.toContain(h.id);
+
+      await j.agent.post(`/api/friends/requests/${h.id}/accept`).expect(204);
+      expect(await recentIds(h)).not.toContain(j.id);
+      expect(await recentIds(j)).not.toContain(h.id);
+
+      await j.agent.delete(`/api/friends/${h.id}`).expect(204);
+      expect(await recentIds(h)).toContain(j.id);
+      expect(await recentIds(j)).toContain(h.id);
+    });
+
+    // Last here: its rows are stamped in the future, ahead of every tab above.
+    it(`stops at ${RECENTLY_ACTIVE_LIMIT}, newest first, and skips the never seen`, async () => {
+      const now = Date.now();
+      const names = Array.from(
+        { length: RECENTLY_ACTIVE_LIMIT + 1 },
+        (_, n) => `${crowd}-r${String(n).padStart(2, '0')}`,
+      );
+      const never = `${crowd}-never`;
+      await prisma.user.createMany({
+        data: [
+          ...names.map((displayName, n) => ({
+            email: `${displayName}@example.com`,
+            displayName,
+            passwordHash: 'unused',
+            lastSeenAt: new Date(now + n * 1000),
+          })),
+          { email: `${never}@example.com`, displayName: never, passwordHash: 'unused' },
+        ],
+      });
+
+      const res = await h.agent.get('/api/users/recently-active').expect(200);
+
+      const shown = res.body.users.map((user: { displayName: string }) => user.displayName);
+      expect(shown).toEqual([...names].reverse().slice(0, RECENTLY_ACTIVE_LIMIT));
+      expect(shown).not.toContain(never);
     });
   });
 

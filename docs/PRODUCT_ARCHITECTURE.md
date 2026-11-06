@@ -310,14 +310,14 @@ The team tracks each module's current status and points on the wiki:
 |---|---|---|---|
 | Framework for frontend and backend | Major | 2 | done (Next.js + NestJS) |
 | ORM | Minor | 1 | done (Prisma 7) |
-| Standard user management | Major | 2 | partly done: profile, avatar, friends (#155); online status to come (#157) |
+| Standard user management | Major | 2 | partly done: profile, avatar, friends (#155), public profiles (#156); online status to come (#157) |
 | Complete 2FA | Minor | 1 | done |
 | i18n, ≥3 languages | Minor | 1 | locales declared, `next-intl` not wired |
 | Additional browsers (≥2) | Minor | 1 | Playwright projects + documentation |
 | Complete LLM interface | Major | 2 | interface exists, no provider |
 | Real-time via WebSockets | Major | 2 | gateway on `/ws`, live course updates (#154) |
 | Complete RAG system | Major | 2 | pgvector installed, no corpus |
-| User interaction: chat, profiles, friends | Major | 2 | friends done (#155); profiles (#156) and chat (#158) to come |
+| User interaction: chat, profiles, friends | Major | 2 | friends (#155) and profiles (#156) done; chat (#158) to come |
 | | | **16** | |
 
 > **Open, for the team: the tutor inside a lesson.** Lessons now ship with their exercises, answer

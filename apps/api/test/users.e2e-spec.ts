@@ -1,5 +1,6 @@
 import { INestApplication } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
+import { randomUUID } from 'node:crypto';
 import { readdir, rm } from 'fs/promises';
 import { join } from 'path';
 import request from 'supertest';
@@ -9,6 +10,7 @@ import { MAX_AVATAR_BYTES } from '@ft/shared';
 
 import { AppModule } from '../src/app.module';
 import { AVATAR_STORAGE_DIR, configureApp } from '../src/app.setup';
+import { localDay, previousDay } from '../src/lessons/roadmap.rules';
 import { PrismaService } from '../src/prisma/prisma.service';
 
 /**
@@ -24,9 +26,12 @@ describe('users (e2e)', () => {
   let app: INestApplication;
   let prisma: PrismaService;
   let agent: TestAgent;
+  let myId = '';
 
   const email = `avatar-${Date.now()}@example.com`;
   const displayName = `avatar${Date.now()}`;
+  /** The profile owner, written straight to the database: no signup to wait on. */
+  const ownerEmail = `profile-${Date.now()}@example.com`;
   const written: string[] = [];
 
   beforeAll(async () => {
@@ -37,15 +42,17 @@ describe('users (e2e)', () => {
     prisma = app.get(PrismaService);
 
     agent = request.agent(app.getHttpServer());
-    await agent
+    const res = await agent
       .post('/api/auth/signup')
       .send({ email, displayName, password: 'Correct-Horse-9' })
       .expect(201);
+    myId = res.body.id;
   });
 
   afterAll(async () => {
     await Promise.all(written.map((f) => rm(join(AVATAR_STORAGE_DIR, f), { force: true })));
-    await prisma.user.deleteMany({ where: { email } });
+    // Courses cascade.
+    await prisma.user.deleteMany({ where: { email: { in: [email, ownerEmail] } } });
     await app.close();
   });
 
@@ -180,6 +187,77 @@ describe('users (e2e)', () => {
 
       // CodeValidationPipe puts the Zod issues' codes in `message`, where readCode looks.
       expect(response.body.message).toEqual(['profile.invalidTimeZone']);
+    });
+  });
+
+  describe('profile', () => {
+    it('shows the public fields and nothing else', async () => {
+      const timeZone = 'Asia/Tokyo';
+      const yesterday = previousDay(localDay(new Date(), timeZone));
+      const owner = await prisma.user.create({
+        data: {
+          email: ownerEmail,
+          displayName: `profile${Date.now()}`,
+          passwordHash: 'unused',
+          timeZone,
+          totpSecret: 'unused',
+          totpEnabledAt: new Date(),
+          lastSeenAt: new Date(),
+          userLevels: {
+            create: [
+              // createdAt set: one statement would otherwise give both the same.
+              {
+                lang: 'fr',
+                level: 'B1',
+                dailyGoal: 10,
+                streak: 4,
+                bestStreak: 9,
+                lastGoalDay: new Date(yesterday),
+                createdAt: new Date('2026-01-01'),
+              },
+              // A streak met long ago is gone, whatever the column still says.
+              {
+                lang: 'de',
+                level: null,
+                dailyGoal: 30,
+                streak: 9,
+                bestStreak: 9,
+                lastGoalDay: new Date('2026-01-01'),
+                createdAt: new Date('2026-01-02'),
+              },
+            ],
+          },
+        },
+      });
+
+      const res = await agent.get(`/api/users/${owner.id}`).expect(200);
+
+      expect(res.body).toEqual({
+        id: owner.id,
+        displayName: owner.displayName,
+        avatarUrl: null,
+        courses: [
+          { lang: 'fr', level: 'B1', streak: 4 },
+          { lang: 'de', level: null, streak: 0 },
+        ],
+      });
+      // What /privacy says others see, and nothing more: no email, 2FA, time zone.
+      expect(Object.keys(res.body).sort()).toEqual(['avatarUrl', 'courses', 'displayName', 'id']);
+      expect(Object.keys(res.body.courses[0]).sort()).toEqual(['lang', 'level', 'streak']);
+    });
+
+    it('shows you your own, as others see it', async () => {
+      const res = await agent.get(`/api/users/${myId}`).expect(200);
+
+      expect(res.body).toMatchObject({ id: myId, displayName, courses: [] });
+    });
+
+    it('answers 404 for an unknown id and 400 for a malformed one', async () => {
+      const unknown = await agent.get(`/api/users/${randomUUID()}`).expect(404);
+      expect(unknown.body.message).toBe('user.notFound');
+
+      const malformed = await agent.get('/api/users/not-a-uuid').expect(400);
+      expect(malformed.body.message).toEqual(['request.invalid']);
     });
   });
 });

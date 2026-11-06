@@ -1,5 +1,7 @@
 import { z } from 'zod';
 
+import { CourseSchema } from './course';
+import { LanguageSchema } from './language';
 import { LocaleSchema } from './locale';
 
 export const UserRoleSchema = z.enum(['USER', 'ADMIN']);
@@ -91,6 +93,31 @@ export type UserSearchQuery = z.infer<typeof UserSearchQuerySchema>;
 
 export const UserSearchResultSchema = z.object({ users: z.array(PublicUserSchema) });
 export type UserSearchResult = z.infer<typeof UserSearchResultSchema>;
+
+/** One course as other users see it. #95 adds xp and achievements here. */
+export const PublicCourseSchema = CourseSchema.pick({ lang: true, level: true }).extend({
+  /** As the owner's course page shows it: 0 once a day passes without the goal. */
+  streak: z.number().int().min(0),
+});
+export type PublicCourse = z.infer<typeof PublicCourseSchema>;
+
+/** GET /api/users/:id. Where you stand with them comes from GET /api/friends. */
+export const PublicProfileSchema = PublicUserSchema.extend({
+  courses: z.array(PublicCourseSchema),
+});
+export type PublicProfile = z.infer<typeof PublicProfileSchema>;
+
+/** A list to glance at, not to page through. */
+export const RECENTLY_ACTIVE_LIMIT = 20;
+
+/** Someone to add. No time: the order alone says who was there last. */
+export const RecentlyActiveUserSchema = PublicUserSchema.extend({
+  languages: z.array(LanguageSchema),
+});
+export type RecentlyActiveUser = z.infer<typeof RecentlyActiveUserSchema>;
+
+export const RecentlyActiveSchema = z.object({ users: z.array(RecentlyActiveUserSchema) });
+export type RecentlyActive = z.infer<typeof RecentlyActiveSchema>;
 
 export const CreateUserSchema = z.object({
   email: z.email('email.invalid'),
