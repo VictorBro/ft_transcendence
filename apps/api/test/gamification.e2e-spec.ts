@@ -58,15 +58,23 @@ describe('XP, challenge and achievements (e2e)', () => {
     functions: 'relations',
   };
 
-  /** Ten French A1 lessons of each kind but reading, after the real ones of the level. */
-  const FIXTURES: Prisma.LessonCreateManyInput[] = KINDS.flatMap((kind, k) =>
-    LETTERS.map((letter, index) => ({
-      ...shortLesson(`fr-test-gam-${kind}-${letter}`, 9301 + k * LETTERS.length + index),
-      kind,
-      topic: kind === 'grammar' ? ('pronouns' as const) : null,
-      theme: kind === 'grammar' ? null : THEMES[kind],
-    })),
-  );
+  /**
+   * Ten French A1 lessons of each kind but reading, after the real ones of
+   * the level, and one A1 lesson that is not ready: it must never count
+   * towards levelA1, nor make a reading challenge (it is reading).
+   */
+  const DRAFT = 'fr-test-gam-draft';
+  const FIXTURES: Prisma.LessonCreateManyInput[] = [
+    ...KINDS.flatMap((kind, k) =>
+      LETTERS.map((letter, index) => ({
+        ...shortLesson(`fr-test-gam-${kind}-${letter}`, 9301 + k * LETTERS.length + index),
+        kind,
+        topic: kind === 'grammar' ? ('pronouns' as const) : null,
+        theme: kind === 'grammar' ? null : THEMES[kind],
+      })),
+    ),
+    { ...shortLesson(DRAFT, 9399), kind: 'reading', theme: 'daily_life', ready: false },
+  ];
   const FIXTURE_IDS = FIXTURES.map((fixture) => fixture.id);
 
   /**
@@ -372,19 +380,21 @@ describe('XP, challenge and achievements (e2e)', () => {
   });
 
   /**
-   * Every French A1 lesson the database holds, seeded or fixture, gets a
-   * result written straight to the table, but two. The finish of the first
+   * Every ready French A1 lesson the database holds, seeded or fixture, gets
+   * a result written straight to the table, but two. The finish of the first
    * leaves one lesson without a result, so no levelA1 yet; the finish of the
-   * second completes the level.
+   * second completes the level. The lessons that are not ready, DRAFT among
+   * them, get no result: "A1 complete" means every ready A1 lesson.
    */
   it('returns levelA1 from the finish that completes French A1, and not before', async () => {
     const { agent, courseId, challenge } = await learner('level', 10);
     const pick = lessonsFor(challenge);
     const [before, last] = [pick.miss(), pick.miss()];
     const level = await prisma.lesson.findMany({
-      where: { lang: 'fr', level: 'A1', id: { notIn: [before, last] } },
+      where: { lang: 'fr', level: 'A1', ready: true, id: { notIn: [before, last] } },
       select: { id: true },
     });
+    expect(await prisma.lesson.count({ where: { id: DRAFT, ready: false } })).toBe(1);
     await prisma.lessonResult.createMany({
       data: level.map((lesson) => ({
         userLevelId: courseId,
@@ -450,9 +460,42 @@ describe('XP, challenge and achievements (e2e)', () => {
       current: 1,
       target: 10,
     });
+    // The bar counts the ready lessons only: DRAFT is not in `total`.
+    const ready = await prisma.lesson.count({ where: { lang: 'fr', level: 'A1', ready: true } });
     expect(items.find((item) => item.code === 'levelA1')).toMatchObject({
       day: null,
-      level: { attempted: 1, passed: 1 },
+      level: { total: ready, attempted: 1, passed: 1 },
+    });
+  });
+
+  /**
+   * An attempt that closed before #95 stored its results without the three
+   * rewards. Its results page must still read, as one that earned nothing.
+   */
+  it('still reads the results of an attempt closed before #95', async () => {
+    const { agent, courseId, challenge } = await learner('before', 10);
+    const id = lessonsFor(challenge).miss();
+    await finish(agent, id, 'right');
+    const row = await prisma.lessonAttempt.findFirstOrThrow({ where: { userLevelId: courseId } });
+    const results = row.results as { finish: Record<string, unknown> };
+    const {
+      xpGained: _x,
+      challengeJustDone: _c,
+      newAchievements: _n,
+      ...before95
+    } = results.finish;
+    await prisma.lessonAttempt.update({
+      where: { id: row.id },
+      data: { results: { ...results, finish: before95 } as Prisma.InputJsonObject },
+    });
+
+    const response = await agent.get(`/api/courses/fr/lessons/${id}/attempt`).expect(200);
+
+    expect(response.body.attempt.results.finish).toEqual({
+      ...before95,
+      xpGained: 0,
+      challengeJustDone: false,
+      newAchievements: [],
     });
   });
 
