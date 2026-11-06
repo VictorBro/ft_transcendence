@@ -55,19 +55,38 @@ export type Award = {
 };
 
 /**
+ * The kinds of the ready lessons at the course's level: what challengeFor
+ * may pick from, the same as GET today reads.
+ */
+export async function readyKinds(
+  db: Prisma.TransactionClient,
+  course: Pick<UserLevel, 'lang' | 'level'>,
+): Promise<LessonKind[]> {
+  if (course.level === null) return [];
+  const rows = await db.lesson.findMany({
+    where: { lang: course.lang, level: course.level, ready: true },
+    select: { kind: true },
+    distinct: ['kind'],
+  });
+  return rows.map((row) => row.kind);
+}
+
+/**
  * Whether this finish does the day's challenge for the first time. The
  * course row was read after the lock and only award writes lastChallengeDay,
  * so a second finish at the same moment reads the first one's day here.
  */
-function challengeJustDone(
+async function challengeJustDone(
+  tx: Prisma.TransactionClient,
   course: UserLevel,
   day: CourseDay,
   event: Extract<AwardEvent, { type: 'finish' }>,
-): boolean {
+): Promise<boolean> {
   if (course.lastChallengeDay !== null && dayOf(course.lastChallengeDay) === day) {
     return false;
   }
-  return challengeMet(challengeFor(course.id, day), {
+  const code = challengeFor(course.id, day, await readyKinds(tx, course));
+  return challengeMet(code, {
     kind: event.lesson.kind,
     score: event.score,
     doneCount: event.goal.doneCount,
@@ -141,7 +160,7 @@ export async function award(
     return { xpGained: 0, challengeJustDone: false, newAchievements: [] };
   }
 
-  const challenge = event.type === 'finish' && challengeJustDone(course, day, event);
+  const challenge = event.type === 'finish' && (await challengeJustDone(tx, course, day, event));
   const xpGained =
     (event.type === 'finish' ? xpForFinish(event.countedToday, event.oldBest, event.score) : 0) +
     (event.goal.justMet ? GOAL_XP : 0) +

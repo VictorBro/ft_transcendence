@@ -27,10 +27,9 @@ import {
  * What a finish is worth: the day's first finish of that lesson, plus the
  * points it gains.
  *
- * The score is the client's (#82), so XP and achievements are only as honest
- * as the learner: a finish at 0 still earns LESSON_XP. Harmless while they
- * only measure the learner against themself; a leaderboard would first need
- * the score computed on the server.
+ * The score is the server's: the attempt computes it from the answers it
+ * stored (#145), so no client can claim one. A finish at 0 still earns
+ * LESSON_XP, as finishing is what the day counts.
  */
 export function xpForFinish(countedToday: boolean, oldBest: number | null, score: number): number {
   return (countedToday ? LESSON_XP : 0) + Math.max(0, score - (oldBest ?? 0));
@@ -92,12 +91,31 @@ function fmix32(hash: number): number {
 }
 
 /**
- * The course's challenge for a day. Derived, not stored: the same course and
- * day give the same code on any machine, for ever, with no row and no job at
- * midnight.
+ * The challenges a level can do: score90 and beyondGoal always, a lesson kind
+ * only when the level has a ready lesson of it. French A1 has no ready
+ * reading lesson, so no reading challenge there. In CHALLENGES order.
  */
-export function challengeFor(userLevelId: string, day: CourseDay): ChallengeCode {
-  return CHALLENGES[fmix32(fnv1a(`${userLevelId}:${day}`)) % CHALLENGES.length];
+export function possibleChallenges(readyKinds: Iterable<LessonKind>): ChallengeCode[] {
+  const kinds = new Set<string>(readyKinds);
+  return CHALLENGES.filter(
+    (code) => code === 'score90' || code === 'beyondGoal' || kinds.has(code),
+  );
+}
+
+/**
+ * The course's challenge for a day, among those its level can do.
+ * `readyKinds` are the kinds of the ready lessons at the course's level.
+ * Derived, not stored: the same course, day and lessons give the same code
+ * on any machine, with no row and no job at midnight. A level that gains a
+ * kind can change the day's code, which only moves an undone challenge.
+ */
+export function challengeFor(
+  userLevelId: string,
+  day: CourseDay,
+  readyKinds: Iterable<LessonKind>,
+): ChallengeCode {
+  const possible = possibleChallenges(readyKinds);
+  return possible[fmix32(fnv1a(`${userLevelId}:${day}`)) % possible.length];
 }
 
 /**

@@ -376,7 +376,12 @@ export class LessonsService {
       levelAfter: levelAfter(level),
       xp: { total: course.xp, ...rankOf(course.xp) },
       challenge: {
-        code: challengeFor(course.id, day),
+        // The ready kinds of the level, as award reads them (gamification.ts).
+        code: challengeFor(
+          course.id,
+          day,
+          ruleLessons.filter((lesson) => lesson.ready).map((lesson) => lesson.kind),
+        ),
         done: course.lastChallengeDay !== null && dayOf(course.lastChallengeDay) === day,
       },
       earnedToday: ACHIEVEMENTS.map((achievement) => achievement.code).filter((code) =>
