@@ -3,6 +3,7 @@ import type { lessons } from '@ft/shared';
 
 import {
   clearDrafts,
+  forgetAttempt,
   loadDrafts,
   newerAttempt,
   readAttempt,
@@ -127,6 +128,13 @@ describe('the tab memory', () => {
     // Another attempt than the tab's last: a retake since.
     expect(isStale('fr', 'fr-a', { attemptId: OTHER, index: null })).toBe(true);
     expect(isStale('fr', 'fr-b', null)).toBe(false);
+  });
+
+  it('forgets a lesson whose newer attempt came from elsewhere', () => {
+    rememberAttempt('fr', 'fr-d', attempt(1));
+    expect(isStale('fr', 'fr-d', { attemptId: OTHER, index: 0 })).toBe(true);
+    forgetAttempt('fr', 'fr-d');
+    expect(isStale('fr', 'fr-d', { attemptId: OTHER, index: 0 })).toBe(false);
   });
 
   it('keeps the further cursor of the same attempt, with when it arrived', () => {

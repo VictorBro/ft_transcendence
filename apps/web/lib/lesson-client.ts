@@ -1,6 +1,7 @@
 import { lessons, type Language, type Locale } from '@ft/shared';
 
 import { clientGet, clientPost, type ApiResult } from './api-client';
+import { cursorOf, type Cursor } from './lesson-cursor';
 
 type AttemptView = lessons.player.AttemptView;
 type AttemptRead = lessons.player.AttemptRead;
@@ -63,14 +64,10 @@ export function rememberAttempt(lang: Language, id: string, view: AttemptView, a
   seen.set(key(lang, id), { view, at });
 }
 
-/** Where a page found the attempt when the server rendered it: its id and page, null once finished. */
-export interface Cursor {
-  attemptId: string;
-  index: number | null;
+/** Drops what the tab saw of a lesson: the server has a newer attempt (a retake elsewhere). */
+export function forgetAttempt(lang: Language, id: string) {
+  seen.delete(key(lang, id));
 }
-
-export const cursorOf = (attempt: AttemptView | null): Cursor | null =>
-  attempt === null ? null : { attemptId: attempt.attemptId, index: attempt.current?.index ?? null };
 
 /**
  * Whether a lesson page shows an attempt older than the one this tab saw

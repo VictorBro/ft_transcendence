@@ -7,7 +7,7 @@ import { PRIMARY_BUTTON } from '@/components/form';
 import { playable } from '@/components/lesson/kinds';
 import { Link } from '@/i18n/navigation';
 import { lessonPaths, lessonTitle, loadLesson } from '@/lib/lesson';
-import { cursorOf } from '@/lib/lesson-client';
+import { cursorOf } from '@/lib/lesson-cursor';
 import { pick } from '@/lib/localized';
 import { FreshOnReturn, RetakeLesson } from '../lesson-actions';
 

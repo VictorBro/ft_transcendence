@@ -1,6 +1,6 @@
 'use client';
 
-import { useId, type KeyboardEvent } from 'react';
+import { useId, useRef, type KeyboardEvent } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import type { Language } from '@ft/shared';
 
@@ -317,6 +317,9 @@ export function SpotControl({
   const t = useTranslations('Lesson');
   const current = value && 'token' in value ? value : undefined;
   const correctionId = useId();
+  // What was typed for each word: the arrow keys pick every word on the
+  // way, and coming back to a corrected word brings its correction back.
+  const typed = useRef<Record<string, string>>({});
 
   return (
     <div className="flex flex-col gap-3">
@@ -348,9 +351,11 @@ export function SpotControl({
               aria-checked={chosen}
               tabIndex={rovingTab(chosen, index, current !== undefined)}
               disabled={locked}
-              // Another word starts its own correction; the picked one stays picked.
+              // Another word gets its own correction; the picked one stays picked.
               onClick={() => {
-                if (!chosen) onChange({ token: token.ref, text: '' });
+                if (chosen) return;
+                if (current) typed.current[current.token] = current.text;
+                onChange({ token: token.ref, text: typed.current[token.ref] ?? '' });
               }}
               className={`min-h-10 rounded-md border px-2 py-1 transition-colors disabled:cursor-default ${tone}`}
             >

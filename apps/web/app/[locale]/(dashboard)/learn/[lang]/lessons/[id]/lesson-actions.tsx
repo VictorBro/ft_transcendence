@@ -9,7 +9,8 @@ import { ConfirmDialog } from '@/components/lesson/confirm-dialog';
 import { Link, useRouter } from '@/i18n/navigation';
 import { useErrorMessage } from '@/lib/error-message';
 import type { LessonStage } from '@/lib/lesson';
-import { isStale, rememberAttempt, startAttempt, type Cursor } from '@/lib/lesson-client';
+import { forgetAttempt, isStale, rememberAttempt, startAttempt } from '@/lib/lesson-client';
+import type { Cursor } from '@/lib/lesson-cursor';
 
 /** Starts (or retakes) the lesson, then opens the player. */
 function useStartLesson(lang: Language, id: string, playPath: string) {
@@ -38,8 +39,11 @@ function useStartLesson(lang: Language, id: string, playPath: string) {
 /**
  * Back from the player shows a page from the router's cache, as it was
  * first rendered: when the player moved the attempt since, the page reads
- * itself again. A page the server just rendered is left alone. Renders
- * nothing.
+ * itself again. A page the server just rendered is left alone. If the
+ * page the server sends back still differs from the tab's memory, the
+ * server is the newer one (a retake on another device): the tab forgets
+ * its attempt, so the next visit does not read the page twice again.
+ * Renders nothing.
  */
 export function FreshOnReturn({
   lang,
@@ -48,16 +52,22 @@ export function FreshOnReturn({
 }: {
   lang: Language;
   id: string;
-  /** The attempt as the server rendered this page. */
+  /** The attempt as the server rendered this page. A refresh sends a new object. */
   cursor: Cursor | null;
 }) {
   const router = useRouter();
-  const attemptId = cursor?.attemptId;
-  const index = cursor?.index;
+  const refreshed = useRef(false);
   useEffect(() => {
-    const rendered = attemptId === undefined ? null : { attemptId, index: index ?? null };
-    if (isStale(lang, id, rendered)) router.refresh();
-  }, [lang, id, attemptId, index, router]);
+    if (!isStale(lang, id, cursor)) {
+      refreshed.current = false;
+    } else if (refreshed.current) {
+      forgetAttempt(lang, id);
+      refreshed.current = false;
+    } else {
+      refreshed.current = true;
+      router.refresh();
+    }
+  }, [lang, id, cursor, router]);
   return null;
 }
 

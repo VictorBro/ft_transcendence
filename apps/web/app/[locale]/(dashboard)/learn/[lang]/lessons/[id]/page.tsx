@@ -4,7 +4,7 @@ import { getLocale, getTranslations } from 'next-intl/server';
 import { playable, START_FIELDS } from '@/components/lesson/kinds';
 import { Link } from '@/i18n/navigation';
 import { lessonPaths, lessonStage, lessonTitle, loadLesson } from '@/lib/lesson';
-import { cursorOf } from '@/lib/lesson-client';
+import { cursorOf } from '@/lib/lesson-cursor';
 import { pick } from '@/lib/localized';
 import { FreshOnReturn, LessonActions } from './lesson-actions';
 
