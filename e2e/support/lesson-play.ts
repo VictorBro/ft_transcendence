@@ -1,4 +1,4 @@
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 
 import {
@@ -32,6 +32,21 @@ type Answer = lessons.player.Answer;
 const CONTENT = path.resolve(__dirname, '..', '..', 'content');
 
 const readJson = (file: string): unknown => JSON.parse(readFileSync(file, 'utf8'));
+
+/**
+ * The ids of the lessons in content/ of one language, level and kind
+ * that have their lesson file, sorted: a new one is played without
+ * anyone adding it to a list.
+ */
+export function contentLessons(lang: string, level: string, kind: string): string[] {
+  return readdirSync(path.join(CONTENT, 'briefs'))
+    .filter((file) => file.endsWith('.json'))
+    .map((file) => readJson(path.join(CONTENT, 'briefs', file)) as Record<string, unknown>)
+    .filter((brief) => brief.lang === lang && brief.level === level && brief.kind === kind)
+    .map((brief) => String(brief.id))
+    .filter((id) => existsSync(path.join(CONTENT, 'lessons', `${id}.json`)))
+    .sort();
+}
 
 /** The plan of a lesson as the API builds it for an attempt in `locale`. */
 export function lessonPlan(id: string, locale: Locale = 'en'): LessonPlan {

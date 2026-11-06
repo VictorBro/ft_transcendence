@@ -4,6 +4,7 @@ import { formatViolations, settle, watchConsole } from '../support/console-guard
 import { expectFitsTheScreen } from '../support/layout';
 import {
   answerPage,
+  contentLessons,
   lessonPlan,
   mainButton,
   pageIndex,
@@ -25,13 +26,8 @@ const LANG = 'fr';
 const LESSON = 'fr-subject-pronouns';
 const page = (suffix = '', lesson = LESSON) => `/en/learn/${LANG}/lessons/${lesson}${suffix}`;
 
-/** The other French A1 grammar lessons: each plays to its results in the browser too. */
-const OTHER_GRAMMAR = [
-  'fr-er-verbs-present',
-  'fr-here-there-now-tomorrow',
-  'fr-indefinite-articles-and-noun-gender',
-  'fr-verb-etre-present',
-];
+/** The other French A1 grammar lessons in content/: each plays to its results in the browser too. */
+const OTHER_GRAMMAR = contentLessons(LANG, 'A1', 'grammar').filter((id) => id !== LESSON);
 
 /** Opens a lesson page and starts the lesson. */
 async function start(p: Page, lesson = LESSON): Promise<void> {
@@ -238,8 +234,14 @@ test.describe('a grammar lesson', () => {
     ).toHaveText(new RegExp(`^${exam.units.length} / \\d+$`));
   });
 
-  test('says when the time ran out while the learner was away', async ({ freshLearner }) => {
-    // The server's clock decides, so this waits out a real exam page.
+  test('says when the time ran out while the learner was away', async ({
+    freshLearner,
+    browserName,
+  }) => {
+    // The server's clock decides, so this waits out a real exam page. What
+    // it checks is the server's and the player's, not the engine's: one
+    // engine is enough for the wait.
+    test.skip(browserName !== 'chromium', 'Chromium covers the wait');
     const lesson = 'fr-here-there-now-tomorrow';
     const other = lessonPlan(lesson, 'en');
     const firstExam = other.pages.findIndex((p) => p.role === 'exam');
