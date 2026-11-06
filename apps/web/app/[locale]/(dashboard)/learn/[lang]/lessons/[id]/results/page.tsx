@@ -5,6 +5,7 @@ import type { Language, lessons } from '@ft/shared';
 
 import { PRIMARY_BUTTON } from '@/components/form';
 import { playable } from '@/components/lesson/kinds';
+import { ResultsReview } from '@/components/lesson/results-review';
 import { Link } from '@/i18n/navigation';
 import { lessonPaths, lessonTitle, loadLesson } from '@/lib/lesson';
 import { cursorOf } from '@/lib/lesson-cursor';
@@ -25,16 +26,13 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   return { title: title === null ? t('resultsHeading') : `${t('resultsHeading')}: ${title}` };
 }
 
-const HEADING = 'text-xs font-semibold tracking-widest text-slate-500 uppercase';
-
 /** One decimal at most, the way the half points add up: 7.5, 12. */
 const points = (n: number) => (Number.isInteger(n) ? `${n}` : n.toFixed(1));
 
 /**
- * The results (#146) of the last finished attempt, every part on one
- * page: the finish block, the score, practice and exam, the parts menu
- * (in-page anchors), and every answer. A server component: it renders
- * without JavaScript. Not finished: the lesson page.
+ * The existing results page (#146): the server renders the saved scores
+ * and answers; the sidebar selects the part being reviewed. Anchor targets
+ * also expose parts without JavaScript. Not finished: the lesson page.
  */
 export default async function ResultsPage({ params }: { params: Params }) {
   const { lang, id } = await params;
@@ -49,98 +47,63 @@ export default async function ResultsPage({ params }: { params: Params }) {
   const locale = await getLocale();
   const { finish } = results;
 
+  const languages = await getTranslations('Languages');
   return (
-    <div className="relative -mx-3 -my-3 flex min-w-0 flex-col px-3 py-3 [scrollbar-width:none] lg:h-full lg:overflow-y-auto [&::-webkit-scrollbar]:hidden">
+    <div className="lesson-view">
       <FreshOnReturn lang={course} id={card.id} cursor={cursorOf(read.attempt)} />
-      <article className="mx-auto flex w-full max-w-3xl flex-col gap-6 pb-6 wrap-break-word">
-        <Link
-          href={`/learn/${course}`}
-          className="inline-flex min-h-11 items-center self-start text-sm text-slate-400 underline underline-offset-4 transition-colors hover:text-slate-100"
-        >
-          {t('backToCourse')}
-        </Link>
-
-        {/* The finish block: the daily goal now; #95 adds XP, the challenge and achievements (#97 styles them). */}
-        <section
-          data-slot="finish"
-          className="flex flex-col gap-1 rounded-2xl border border-slate-800 bg-slate-900 p-6"
-        >
-          {finish.goalJustMet ? (
-            <p className="text-lg font-semibold text-green-300">{t('goalReached')}</p>
-          ) : null}
-          <p className="text-slate-300">
-            {t('goalProgress', { done: finish.doneCount, target: finish.target })}
-          </p>
-          <p className="text-slate-400">{t('best', { score: finish.best })}</p>
-        </section>
-
-        <header className="flex flex-col gap-2">
-          <p lang={course} className="text-slate-400">
-            {card.title}
-          </p>
-          <h1 className="text-3xl font-semibold">{t('resultsHeading')}</h1>
-          <p className="text-2xl font-semibold text-slate-100">
-            {t('resultsScore', { score: points(results.score) })}
-          </p>
-          <dl className="flex flex-wrap gap-x-6 gap-y-1 text-slate-300">
-            <div className="flex gap-2">
-              <dt className="text-slate-400">{t('practice')}</dt>
-              <dd className="tabular-nums">
-                {t('tally', {
-                  earned: points(results.practice.earned),
-                  possible: results.practice.possible,
-                })}
-              </dd>
-            </div>
-            <div className="flex gap-2">
-              <dt className="text-slate-400">{t('exam')}</dt>
-              <dd className="tabular-nums">
-                {t('tally', {
-                  earned: points(results.exam.earned),
-                  possible: results.exam.possible,
-                })}
-              </dd>
-            </div>
-          </dl>
-        </header>
-
-        <div className="flex flex-wrap gap-3">
-          <Link href={`/learn/${course}`} className={PRIMARY_BUTTON}>
-            {t('backToCourse')}
-          </Link>
-          {playable(read.outline.kind) ? (
-            <RetakeLesson lang={course} id={card.id} playPath={paths.play} />
-          ) : null}
-        </div>
-
-        <nav aria-label={t('parts')} className="flex flex-col gap-2">
-          <h2 className={HEADING}>{t('parts')}</h2>
-          <ol className="flex flex-wrap gap-2">
-            {results.steps.map((step, n) => (
-              <li key={n}>
-                <a
-                  href={`#part-${n + 1}`}
-                  className="inline-flex min-h-11 items-center gap-2 rounded-full border border-slate-700 px-3 text-sm text-slate-300 transition-colors hover:bg-slate-800"
-                >
-                  {pick(step.title, locale)}
-                  <span className="tabular-nums text-slate-500">
-                    {points(step.earned)}/{step.possible}
-                  </span>
-                </a>
-              </li>
-            ))}
-          </ol>
-        </nav>
-
+      <ResultsReview
+        results={results}
+        title={card.title}
+        caption={`${languages(course)} / ${card.level}`}
+        summary={
+          <section data-slot="finish" className="lesson-finish-summary">
+            {finish.goalJustMet ? (
+              <p className="font-semibold text-green-300">{t('goalReached')}</p>
+            ) : null}
+            <p>{t('goalProgress', { done: finish.doneCount, target: finish.target })}</p>
+            <p className="text-slate-400">{t('best', { score: finish.best })}</p>
+            <dl className="mt-2 flex flex-wrap gap-x-6 gap-y-1 text-slate-300">
+              <div className="flex gap-2">
+                <dt>{t('practice')}</dt>
+                <dd>
+                  {t('tally', {
+                    earned: points(results.practice.earned),
+                    possible: results.practice.possible,
+                  })}
+                </dd>
+              </div>
+              <div className="flex gap-2">
+                <dt>{t('exam')}</dt>
+                <dd>
+                  {t('tally', {
+                    earned: points(results.exam.earned),
+                    possible: results.exam.possible,
+                  })}
+                </dd>
+              </div>
+            </dl>
+          </section>
+        }
+        actions={
+          <>
+            {playable(read.outline.kind) ? (
+              <RetakeLesson lang={course} id={card.id} playPath={paths.play} />
+            ) : null}
+            <Link href={`/learn/${course}`} className={PRIMARY_BUTTON}>
+              {t('backToCourse')}
+            </Link>
+          </>
+        }
+      >
         {results.steps.map((step, n) => (
-          <section key={n} id={`part-${n + 1}`} className="flex scroll-mt-4 flex-col gap-3">
+          <section key={n} className="flex flex-col gap-4">
             <h2 className="flex items-baseline justify-between gap-3 text-lg font-semibold">
               {pick(step.title, locale)}
-              <span className="text-sm font-normal tabular-nums text-slate-400">
+              <span className="text-base font-normal tabular-nums text-slate-400">
                 {t('tally', { earned: points(step.earned), possible: step.possible })}
               </span>
             </h2>
-            <ol className="flex flex-col gap-3">
+            <ol className="lesson-result-rows">
               {results.rows
                 .filter((row) => row.step === n)
                 .map((row, m) => (
@@ -149,7 +112,7 @@ export default async function ResultsPage({ params }: { params: Params }) {
             </ol>
           </section>
         ))}
-      </article>
+      </ResultsReview>
     </div>
   );
 }
@@ -173,9 +136,34 @@ async function ResultRow({ row, lang, locale }: { row: Row; lang: Language; loca
   return (
     <li
       data-outcome={row.outcome}
-      className={`flex flex-col gap-2 rounded-xl border bg-slate-900/60 p-4 ${TONE[row.outcome]}`}
+      className={`lesson-result-row flex flex-col gap-2 ${TONE[row.outcome]}`}
     >
       <div className="flex items-start justify-between gap-3">
+        <span
+          aria-hidden="true"
+          className={`pt-0.5 font-bold ${row.outcome === 'fully_correct' ? 'text-green-400' : row.outcome === 'orthography_only' ? 'text-amber-300' : 'text-red-400'}`}
+        >
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 18 18"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path
+              d={
+                row.outcome === 'fully_correct'
+                  ? 'M3 9l4 4L15 5'
+                  : row.outcome === 'orthography_only'
+                    ? 'M3 7c4-4 8 4 12 0M3 11c4-4 8 4 12 0'
+                    : 'M4 4l10 10M14 4L4 14'
+              }
+            />
+          </svg>
+        </span>
         <p className="flex flex-col">
           {gap ? (
             <span lang={lang} className="text-slate-100">

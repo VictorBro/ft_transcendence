@@ -10,10 +10,8 @@ export const NewVerbs: StartField = function NewVerbs({ outline, lang }) {
   const verbs = outline.newVerbs ?? [];
   if (verbs.length === 0) return null;
   return (
-    <section className="flex flex-col gap-2">
-      <h3 className="text-xs font-semibold tracking-widest text-slate-500 uppercase">
-        {t('newVerbs')}
-      </h3>
+    <section className="lesson-new-verbs flex flex-col gap-2">
+      <h3 className="text-lg font-semibold text-slate-200">{t('newVerbs')}</h3>
       <table className="w-full border-collapse text-left text-sm">
         <thead>
           <tr className="border-b border-slate-800 text-slate-400">

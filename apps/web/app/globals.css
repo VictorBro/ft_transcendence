@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import './lesson.css';
 
 /* Tailwind 4 resolves `dark:` through prefers-color-scheme unless told
    otherwise. The layouts put `dark` on <html> to pin the app to one palette,

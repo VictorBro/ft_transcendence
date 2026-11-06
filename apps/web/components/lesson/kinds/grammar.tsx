@@ -23,7 +23,20 @@ function Explanation({ item, lang }: ItemProps<'grammar_explanation'>) {
       <RichText source={pick(item.text, locale)} lang={lang} />
       {item.formTable.length > 0 ? (
         <div className="overflow-x-auto">
-          <table className="w-full min-w-max border-collapse text-left">
+          <table className="w-full table-fixed border-collapse text-left">
+            <thead>
+              <tr className="border-b border-slate-700 text-base text-slate-400">
+                <th scope="col" className="w-1/4 py-3 pr-4 font-semibold">
+                  {t('subject')}
+                </th>
+                <th scope="col" className="w-1/5 py-3 pr-4 font-semibold">
+                  {t('form')}
+                </th>
+                <th scope="col" className="py-3 font-semibold">
+                  {t('example')}
+                </th>
+              </tr>
+            </thead>
             <tbody>
               {item.formTable.map((row, n) => (
                 <tr key={n} className="border-b border-slate-800 last:border-0">
@@ -42,16 +55,14 @@ function Explanation({ item, lang }: ItemProps<'grammar_explanation'>) {
       ) : null}
       {item.examples.length > 0 ? (
         <div className="flex flex-col gap-2">
-          <h3 className="text-xs font-semibold tracking-widest text-slate-500 uppercase">
-            {t('examples')}
-          </h3>
-          <ul className="flex flex-col gap-2">
+          <h3 className="text-lg font-semibold text-slate-200">{t('examples')}</h3>
+          <ul className="flex list-disc flex-col gap-2 pl-5">
             {item.examples.map((example, n) => (
-              <li key={n} className="flex flex-col">
-                <span lang={lang} className="text-slate-100">
+              <li key={n}>
+                <span lang={lang} className="font-semibold text-slate-100">
                   {example.text}
                 </span>
-                <span className="text-sm text-slate-400">{example.translation}</span>
+                <span className="text-slate-400"> – {example.translation}</span>
               </li>
             ))}
           </ul>

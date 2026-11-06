@@ -50,11 +50,7 @@ export function Hint({ hint }: { hint: Localized | null }) {
   return <p className="text-sm text-slate-400">{t('hint', { hint: pick(hint, locale) })}</p>;
 }
 
-/** A card around one item of a page. */
+/** An item group inside the player's shared task card. */
 export function ItemCard({ children }: { children: ReactNode }) {
-  return (
-    <section className="flex flex-col gap-4 rounded-2xl border border-slate-800 bg-slate-900/60 p-4 sm:p-6">
-      {children}
-    </section>
-  );
+  return <section className="lesson-item flex flex-col gap-5">{children}</section>;
 }

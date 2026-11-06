@@ -7,6 +7,8 @@ import { lessons, type Language } from '@ft/shared';
 import { FormError, PRIMARY_BUTTON } from '@/components/form';
 import { ConfirmDialog } from '@/components/lesson/confirm-dialog';
 import { ITEM_RENDERERS } from '@/components/lesson/kinds';
+import { LessonNavigation } from '@/components/lesson/navigation';
+import { START_FIELDS } from '@/components/lesson/kinds';
 import type {
   Answer,
   ItemProps,
@@ -75,6 +77,9 @@ export function LessonPlayer({
   const errorMessage = useErrorMessage();
 
   const [view, setView] = useState(initial);
+  // Updated synchronously when the cursor moves: an older hydration read must
+  // not rewind the player after a submit has finished and released `sent`.
+  const activeView = useRef(initial);
   // When the view was asked for, in this tab's clock: the exam's time left
   // counts from it. The request start, not its arrival, so the tab's
   // deadline is never later than the server's.
@@ -114,6 +119,7 @@ export function LessonPlayer({
   useEffect(() => {
     const now = Date.now();
     const newer = newerAttempt(lang, id, initial, now);
+    activeView.current = newer.view;
     if (newer.view.current === null) {
       router.replace(resultsPath);
       return;
@@ -136,7 +142,12 @@ export function LessonPlayer({
     let live = true;
     const asked = Date.now();
     void readAttempt(lang, id).then((result) => {
-      if (!live) return;
+      if (
+        !live ||
+        activeView.current.attemptId !== newer.view.attemptId ||
+        activeView.current.current?.index !== current.index
+      )
+        return;
       const fresh = result.ok ? result.data.attempt : null;
       if (
         sent.current !== null ||
@@ -147,6 +158,7 @@ export function LessonPlayer({
         setReceivedAt((at) => at ?? newer.at);
         return;
       }
+      activeView.current = fresh;
       setView(fresh);
       setReceivedAt(asked);
       rememberAttempt(lang, id, fresh, asked);
@@ -171,6 +183,7 @@ export function LessonPlayer({
 
   const show = useCallback(
     (next: AttemptView, askedAt: number) => {
+      activeView.current = next;
       setChecked(null);
       setFlash(false);
       setError(null);
@@ -321,77 +334,98 @@ export function LessonPlayer({
       data-page-role={page.role}
       // open, checked (the feedback shows, Continue next) or flash (on its own to the next page).
       data-state={flash ? 'flash' : checked ? 'checked' : 'open'}
-      className="relative -mx-3 -my-3 flex min-w-0 flex-col px-3 py-3 [scrollbar-width:none] lg:h-full lg:overflow-y-auto [&::-webkit-scrollbar]:hidden"
+      className="lesson-view"
     >
-      <div className="mx-auto flex w-full max-w-3xl flex-col gap-6 pb-6 wrap-break-word">
-        <PlayerHeader
-          outline={outline}
-          index={page.index}
-          // Checked: the header counts the page's points already.
-          practice={checked?.next.practice ?? view.practice}
-          exam={exam}
-          pagePath={pagePath}
-        />
-
-        {exam && receivedAt !== null && view.remainingMs !== null ? (
-          <ExamTimer
-            key={`${view.attemptId}:${page.index}`}
-            deadline={receivedAt + view.remainingMs}
-            ranOut={ranOut}
-            onZero={zero}
+      <div className="lesson-layout">
+        <LessonNavigation key={page.index} outline={outline} index={page.index} />
+        <div className="lesson-main">
+          <PlayerHeader
+            outline={outline}
+            index={page.index}
+            // Checked: the header counts the page's points already.
+            practice={checked?.next.practice ?? view.practice}
+            exam={exam}
+            pagePath={pagePath}
+            showScore={page.items.some((item) => 'units' in item && item.units.length > 0)}
           />
-        ) : null}
 
-        <h1 ref={heading} tabIndex={-1} className="text-xl font-semibold outline-none">
-          {pick(page.instructions, locale)}
-        </h1>
+          <section className="lesson-task" aria-labelledby="lesson-task-heading">
+            <div className="lesson-task-top">
+              <div>
+                <p className="lesson-task-label">{pick(outline.pages[page.index]!.step, locale)}</p>
+                <h1
+                  id="lesson-task-heading"
+                  ref={heading}
+                  tabIndex={-1}
+                  className="lesson-task-heading outline-none"
+                >
+                  {pick(page.instructions, locale)}
+                </h1>
+              </div>
+              {exam && receivedAt !== null && view.remainingMs !== null ? (
+                <ExamTimer
+                  key={`${view.attemptId}:${page.index}`}
+                  deadline={receivedAt + view.remainingMs}
+                  ranOut={ranOut}
+                  onZero={zero}
+                  limitS={outline.pages[page.index]!.limitS ?? 1}
+                />
+              ) : null}
+            </div>
+            {page.index === 0
+              ? START_FIELDS.map((Field, n) => <Field key={n} outline={outline} lang={lang} />)
+              : null}
 
-        {ranOut ? (
-          <p
-            role="status"
-            className="rounded-md border border-amber-400/50 bg-amber-400/10 p-3 text-amber-200"
-          >
-            {t('timeRanOut')}
-          </p>
-        ) : null}
+            {ranOut ? (
+              <p
+                role="status"
+                className="rounded-md border border-amber-400/50 bg-amber-400/10 p-3 text-amber-200"
+              >
+                {t('timeRanOut')}
+              </p>
+            ) : null}
 
-        {page.role === 'examIntro' ? (
-          <ItemCard>
-            <h2 className="text-lg font-semibold">{t('exam')}</h2>
-            <p className="text-slate-300">
-              {t('examInfo', {
-                pages: examPages.length,
-                questions: examPages.reduce((sum, p) => sum + p.questions, 0),
-              })}
-            </p>
-          </ItemCard>
-        ) : null}
+            {page.role === 'examIntro' ? (
+              <ItemCard>
+                <h2 className="text-lg font-semibold">{t('exam')}</h2>
+                <p className="text-slate-300">
+                  {t('examInfo', {
+                    pages: examPages.length,
+                    questions: examPages.reduce((sum, p) => sum + p.questions, 0),
+                  })}
+                </p>
+              </ItemCard>
+            ) : null}
 
-        {page.role === 'discussion' ? (
-          // #151 fills this slot.
-          <section
-            data-slot="discussion"
-            className="rounded-2xl border border-dashed border-slate-800 p-6 text-slate-400"
-          >
-            {t('discussionSoon')}
+            {page.role === 'discussion' ? (
+              // #151 fills this slot.
+              <section
+                data-slot="discussion"
+                className="rounded-2xl border border-dashed border-slate-800 p-6 text-slate-400"
+              >
+                {t('discussionSoon')}
+              </section>
+            ) : null}
+
+            {page.items.map((item, n) => (
+              <Item key={n} item={item} {...props} />
+            ))}
+
+            <div className="lesson-task-footer flex flex-col gap-3">
+              <FormError message={error} />
+              {checked && !flash ? (
+                <CheckedSummary feedback={[...checked.feedback.values()]} />
+              ) : null}
+              <button
+                type="button"
+                onClick={button.onClick}
+                disabled={pending || flash}
+                className={`${PRIMARY_BUTTON} self-end`}
+              >
+                {button.label}
+              </button>
+            </div>
           </section>
-        ) : null}
-
-        {page.items.map((item, n) => (
-          <Item key={n} item={item} {...props} />
-        ))}
-
-        <div className="flex flex-col gap-3">
-          <FormError message={error} />
-          {checked && !flash ? <CheckedSummary feedback={[...checked.feedback.values()]} /> : null}
-          <button
-            type="button"
-            onClick={button.onClick}
-            disabled={pending || flash}
-            className={`${PRIMARY_BUTTON} self-end`}
-          >
-            {button.label}
-          </button>
         </div>
       </div>
 
@@ -448,12 +482,14 @@ function PlayerHeader({
   practice,
   exam,
   pagePath,
+  showScore,
 }: {
   outline: LessonOutline;
   index: number;
   practice: AttemptView['practice'];
   exam: boolean;
   pagePath: string;
+  showScore: boolean;
 }) {
   const t = useTranslations('Lesson');
   const router = useRouter();
@@ -478,60 +514,73 @@ function PlayerHeader({
     'inline-flex size-11 shrink-0 items-center justify-center rounded-md text-slate-400 transition-colors hover:bg-slate-800 hover:text-slate-100';
 
   return (
-    <div className="sticky top-0 z-10 flex items-center gap-4 bg-slate-950/90 py-2 backdrop-blur">
-      {exam ? (
-        <>
-          <button
-            type="button"
-            aria-label={t('leave')}
-            onClick={() => dialog.current?.showModal()}
-            className={closeClass}
-          >
-            {close}
-          </button>
-          <ConfirmDialog
-            ref={dialog}
-            label={t('leave')}
-            no={t('leaveNo')}
-            yes={t('leaveYes')}
-            onYes={() => {
-              dialog.current?.close();
-              // Replaced: Back from the lesson page must not reopen the exam.
-              router.replace(pagePath);
-            }}
-          >
-            {t('leaveConfirm')}
-          </ConfirmDialog>
-        </>
-      ) : (
-        <Link href={pagePath} replace aria-label={t('leave')} className={closeClass}>
-          {close}
-        </Link>
-      )}
-      <div
-        role="progressbar"
-        aria-label={t('progress')}
-        aria-valuemin={0}
-        aria-valuemax={100}
-        aria-valuenow={percent}
-        className="h-2 flex-1 rounded-full bg-slate-800"
-      >
-        <div
-          className="h-full rounded-full bg-indigo-500 transition-all"
-          style={{ width: `${percent}%` }}
-        />
-      </div>
-      <p className="flex shrink-0 flex-wrap items-baseline justify-end gap-x-2 text-sm">
-        {exam ? (
-          <span className="rounded-full border border-amber-400/60 px-2 py-0.5 text-xs font-medium text-amber-200">
-            {t('exam')}
-          </span>
-        ) : null}
-        <span className="text-slate-400">{t('practice')}</span>
-        <span data-testid="header-score" className="font-semibold tabular-nums text-slate-100">
-          {t('tally', { earned: practice.earned, possible: practice.possible })}
-        </span>
+    <div className="lesson-player-header">
+      <p lang={outline.lessonId.split('-')[0]} className="lesson-session-title">
+        {outline.title}
       </p>
+      <div className="lesson-session-meters">
+        {exam ? (
+          <>
+            <button
+              type="button"
+              aria-label={t('leave')}
+              onClick={() => dialog.current?.showModal()}
+              className={closeClass}
+            >
+              {close}
+            </button>
+            <ConfirmDialog
+              ref={dialog}
+              label={t('leave')}
+              no={t('leaveNo')}
+              yes={t('leaveYes')}
+              onYes={() => {
+                dialog.current?.close();
+                // Replaced: Back from the lesson page must not reopen the exam.
+                router.replace(pagePath);
+              }}
+            >
+              {t('leaveConfirm')}
+            </ConfirmDialog>
+          </>
+        ) : (
+          <Link href={pagePath} replace aria-label={t('leave')} className={closeClass}>
+            {close}
+          </Link>
+        )}
+        <div
+          role="progressbar"
+          aria-label={t('progress')}
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-valuenow={percent}
+          className="h-2 flex-1 rounded-full bg-slate-800"
+        >
+          <div
+            className="h-full rounded-full bg-indigo-500 transition-all"
+            style={{ width: `${percent}%` }}
+          />
+        </div>
+        <span className="lesson-progress-percent text-slate-400">{percent}%</span>
+        {showScore ? (
+          <p className="flex shrink-0 flex-wrap items-baseline justify-end gap-x-2 text-sm">
+            {exam ? (
+              <span className="rounded-full border border-amber-400/60 px-2 py-0.5 text-xs font-medium text-amber-200">
+                {t('exam')}
+              </span>
+            ) : null}
+            <span data-testid="header-score" className="font-semibold tabular-nums text-slate-100">
+              {t('tally', {
+                earned:
+                  practice.possible === 0
+                    ? 0
+                    : Math.round((350 * practice.earned) / practice.possible) / 10,
+                possible: 100,
+              })}
+            </span>
+          </p>
+        ) : null}
+      </div>
     </div>
   );
 }

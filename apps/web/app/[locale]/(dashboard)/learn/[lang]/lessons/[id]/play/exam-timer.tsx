@@ -22,10 +22,12 @@ export function ExamTimer({
   deadline,
   ranOut,
   onZero,
+  limitS,
 }: {
   deadline: number;
   ranOut: boolean;
   onZero: () => void;
+  limitS: number;
 }) {
   const t = useTranslations('Lesson');
   const left = () => Math.max(0, Math.ceil((deadline - Date.now()) / 1000));
@@ -50,7 +52,7 @@ export function ExamTimer({
     <div
       role="timer"
       aria-label={t('timeLeft')}
-      className={`flex items-center justify-between gap-3 rounded-2xl border px-4 py-3 ${
+      className={`lesson-countdown grid gap-1 rounded-xl border px-4 py-3 ${
         urgent ? 'border-red-500/60 bg-red-500/10' : 'border-slate-800 bg-slate-900'
       }`}
     >
@@ -60,6 +62,12 @@ export function ExamTimer({
         className={`text-2xl font-semibold tabular-nums ${urgent ? 'text-red-300' : 'text-slate-100'}`}
       >
         {clock(seconds)}
+      </span>
+      <span aria-hidden="true" className="h-1.5 overflow-hidden rounded-full bg-slate-800">
+        <span
+          className={`block h-full rounded-full ${urgent ? 'bg-red-400' : 'bg-cyan-300'}`}
+          style={{ width: `${Math.min(100, (seconds / limitS) * 100)}%` }}
+        />
       </span>
     </div>
   );

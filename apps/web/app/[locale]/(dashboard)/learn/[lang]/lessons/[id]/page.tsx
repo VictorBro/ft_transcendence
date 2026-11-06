@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import type { CSSProperties } from 'react';
+import { SECTION_COLORS } from '@/lib/lesson-navigation';
 import { getLocale, getTranslations } from 'next-intl/server';
 
 import { playable, START_FIELDS } from '@/components/lesson/kinds';
@@ -19,105 +21,124 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   return title === null ? {} : { title };
 }
 
-const CHIP = 'rounded-full border border-slate-700 px-3 py-1 text-xs font-medium text-slate-300';
-const HEADING = 'text-xs font-semibold tracking-widest text-slate-500 uppercase';
-
-/**
- * The lesson page (#146): what the lesson is, how it goes, and the one
- * button to start, resume, or see the results. A server component with
- * no client state besides that button, so it renders without JavaScript.
- */
+/** The lesson start follows the same section colours and point numbers as the player. */
 export default async function LessonPage({ params }: { params: Params }) {
   const { lang, id } = await params;
   const { lang: course, card, read } = await loadLesson(lang, id);
   const t = await getTranslations('Lesson');
   const kinds = await getTranslations('LessonKinds');
-  const topics = await getTranslations('Topics');
-  const themes = await getTranslations('Themes');
+  const languages = await getTranslations('Languages');
   const status = await getTranslations('LessonStatus');
   const locale = await getLocale();
   const { outline } = read;
   const paths = lessonPaths(course, card.id);
+  const examPages = outline.pages.filter((page) => page.role === 'exam');
 
   return (
-    <div className="relative -mx-3 -my-3 flex min-w-0 flex-col px-3 py-3 [scrollbar-width:none] lg:h-full lg:overflow-y-auto [&::-webkit-scrollbar]:hidden">
+    <div className="lesson-view">
       <FreshOnReturn lang={course} id={card.id} cursor={cursorOf(read.attempt)} />
-      <article className="mx-auto flex w-full max-w-3xl flex-col gap-6 pb-6 wrap-break-word">
-        <Link
-          href={`/learn/${course}`}
-          className="inline-flex min-h-11 items-center self-start text-sm text-slate-400 underline underline-offset-4 transition-colors hover:text-slate-100"
-        >
+      <div className="lesson-start">
+        <Link href={`/learn/${course}`} className="lesson-back-link">
           {t('backToCourse')}
         </Link>
-
-        <header className="flex flex-col gap-3">
-          <h1 lang={course} className="text-3xl font-semibold hyphens-auto">
-            {card.title}
-          </h1>
-          <p lang={course} className="text-slate-300">
-            {card.summary}
-          </p>
-          <ul className="flex flex-wrap gap-2">
-            <li className={CHIP}>{card.level}</li>
-            <li className={CHIP}>{kinds(card.kind)}</li>
-            {card.topic ? <li className={CHIP}>{topics(card.topic)}</li> : null}
-            {card.theme ? <li className={CHIP}>{themes(card.theme)}</li> : null}
-            <li className={CHIP}>{t('position', { position: card.position })}</li>
-            <li className={CHIP}>{status(card.status)}</li>
-          </ul>
-          {card.score === null ? null : (
-            <p className="text-lg font-semibold text-slate-100">
-              {t('best', { score: card.score })}
+        <article className="lesson-start-card">
+          <header className="flex flex-col gap-3">
+            <div className="flex flex-wrap items-center justify-between gap-3 text-base text-slate-400">
+              <p>
+                {languages(course)} / {card.level}
+              </p>
+              <span className="rounded-full border border-slate-700 px-3 py-1 text-sm">
+                {kinds(card.kind)}
+              </span>
+            </div>
+            <h1 lang={course} className="text-3xl font-semibold hyphens-auto">
+              {card.title}
+            </h1>
+            <p className="text-lg text-slate-200">{pick(outline.objective, locale)}</p>
+            <p className="mt-4 text-slate-400">{t('aboutMinutes', { minutes: outline.minutes })}</p>
+            <p className="text-sm text-slate-400">
+              {status(card.status)}
+              {card.score === null ? null : <> · {t('best', { score: card.score })}</>}
             </p>
-          )}
-        </header>
+          </header>
 
-        <LessonActions
-          lang={course}
-          id={card.id}
-          stage={lessonStage(read.attempt)}
-          playable={playable(outline.kind)}
-          playPath={paths.play}
-          resultsPath={paths.results}
-        />
-
-        <section className="flex flex-col gap-4 rounded-2xl border border-slate-800 bg-slate-900 p-6">
-          <div className="flex items-baseline justify-between gap-3">
-            <h2 className={HEADING}>{t('outline')}</h2>
-            <span className="text-sm text-slate-400">
-              {t('minutes', { minutes: outline.minutes })}
-            </span>
-          </div>
-          <p className="text-slate-200">{pick(outline.objective, locale)}</p>
-          <ol className="flex flex-col gap-4">
-            {outline.sections.map((section, n) => (
-              <li key={n} className="flex flex-col gap-2">
-                <div className="flex items-baseline justify-between gap-3">
-                  <h3 className="font-medium text-slate-100">{pick(section.title, locale)}</h3>
-                  <span className="shrink-0 text-sm text-slate-500">
-                    {t('minutes', { minutes: section.minutes })}
-                  </span>
-                </div>
-                {section.points.length > 0 ? (
-                  <ol className="flex flex-col gap-1 text-sm text-slate-400">
-                    {section.points.map((point) => (
-                      <li key={point.number} className="flex gap-2">
-                        <span className="w-5 shrink-0 text-right tabular-nums text-slate-500">
-                          {point.number}
-                        </span>
-                        <span>{pick(point.title, locale)}</span>
-                      </li>
-                    ))}
-                  </ol>
-                ) : null}
-              </li>
-            ))}
-          </ol>
           {START_FIELDS.map((Field, n) => (
             <Field key={n} outline={outline} lang={course} />
           ))}
-        </section>
-      </article>
+
+          <section className="lesson-start-outline">
+            <h2 className="mb-3 text-lg font-semibold">{t('lessonOutline')}</h2>
+            <ol className="flex flex-col gap-2">
+              {outline.sections.map((section, n) => (
+                <li
+                  key={n}
+                  className="lesson-outline-section"
+                  style={
+                    {
+                      '--point-color':
+                        section.points.length === 0
+                          ? '#86efac'
+                          : SECTION_COLORS[n % SECTION_COLORS.length],
+                    } as CSSProperties
+                  }
+                >
+                  <span className="lesson-section-letter" aria-hidden="true">
+                    {String.fromCharCode(65 + n)}
+                  </span>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex flex-wrap items-start justify-between gap-2">
+                      <h3>{pick(section.title, locale)}</h3>
+                      <span className="lesson-time-chip">
+                        <svg
+                          aria-hidden="true"
+                          width="15"
+                          height="15"
+                          viewBox="0 0 16 16"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1.4"
+                        >
+                          <circle cx="8" cy="9" r="5" />
+                          <path d="M6 1h4M8 1v3M8 6v3l2 1M12 4l1-1" strokeLinecap="round" />
+                        </svg>{' '}
+                        {t('minutes', { minutes: section.minutes })}
+                      </span>
+                    </div>
+                    {section.points.length > 0 ? (
+                      <ol className="mt-2 flex flex-col gap-1">
+                        {section.points.map((point) => (
+                          <li key={point.number} className="flex items-start gap-2">
+                            <span className="lesson-outline-number">{point.number}</span>
+                            <span>{pick(point.title, locale)}</span>
+                          </li>
+                        ))}
+                      </ol>
+                    ) : (
+                      <p className="mt-1 text-sm text-slate-400">
+                        {t('examOverview', {
+                          pages: examPages.length,
+                          questions: examPages.reduce((sum, page) => sum + page.questions, 0),
+                        })}
+                      </p>
+                    )}
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </section>
+
+          <div className="lesson-start-actions">
+            <LessonActions
+              lang={course}
+              id={card.id}
+              stage={lessonStage(read.attempt)}
+              playable={playable(outline.kind)}
+              playPath={paths.play}
+              resultsPath={paths.results}
+            />
+          </div>
+        </article>
+      </div>
     </div>
   );
 }

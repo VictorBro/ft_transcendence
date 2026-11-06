@@ -43,11 +43,7 @@ function Inlines({ inlines, lang }: { inlines: lessons.RichTextInline[]; lang: L
         {inline.text}
       </strong>
     ) : inline.kind === 'learning' ? (
-      <span
-        key={n}
-        lang={lang}
-        className="rounded bg-indigo-500/15 px-1 font-medium text-indigo-200"
-      >
+      <span key={n} lang={lang} className="font-semibold text-indigo-200">
         {inline.text}
       </span>
     ) : (
