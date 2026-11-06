@@ -58,6 +58,16 @@ export const ERROR_CODES = [
   /** An unknown ref, or an answer of the wrong kind for its unit. */
   'attempt.invalidAnswer',
   'lesson.notFound',
+  /** The lesson discussion's LLM failed: no answer, a 4xx or 5xx, a timeout, a cut connection. */
+  'llm.unavailable',
+  /** The LLM refused the call: the shared key is over its quota (an HTTP 429 from the provider). */
+  'llm.rateLimited',
+  /** The LLM refused this prompt (safety filters). */
+  'llm.blocked',
+  /** The answer stopped before its end, or was empty. */
+  'llm.incomplete',
+  /** LLM_PROVIDER=disabled: this server runs no LLM. */
+  'llm.disabled',
   'placement.inProgress',
   'placement.invalidChoice',
   'placement.invalidSession',

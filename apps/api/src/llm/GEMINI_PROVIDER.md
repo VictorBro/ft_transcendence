@@ -94,7 +94,7 @@ const OUTCOMES: ("ok" | Exclude<LlmFailure, "disabled">)[] = [
 const TOKEN_TYPES = ["prompt", "output", "total"] as const;
 ```
 
-- `OUTCOMES` : toutes les issues possibles d'un appel, telles que les métriques les comptent : `ok`, ou la raison d'une `LlmError`. `Exclude<LlmFailure, 'disabled'>` est le type `LlmFailure` **sans** `'disabled'` : seul le provider de test (la fixture) utilise cette raison, Gemini jamais.
+- `OUTCOMES` : toutes les issues possibles d'un appel, telles que les métriques les comptent : `ok`, ou la raison d'une `LlmError`. `Exclude<LlmFailure, 'disabled'>` est le type `LlmFailure` **sans** `'disabled'` : seuls la fixture et `DisabledProvider` (`LLM_PROVIDER=disabled`) utilisent cette raison, Gemini jamais.
 - `TOKEN_TYPES` : les trois nombres de tokens que Google renvoie, sous les noms qu'utilisent les métriques. `as const` fige le tableau : TypeScript connaît les trois textes exacts, pas seulement « des `string` ».
 
 Les deux listes servent au constructeur (section 5).

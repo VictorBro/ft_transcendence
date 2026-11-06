@@ -12,10 +12,10 @@ import {
 } from '@nestjs/swagger';
 import type { Response } from 'express';
 import { LEARNABLE_LANGUAGES } from '@ft/shared';
-import type { Language, SessionUser } from '@ft/shared';
+import type { ErrorCode, Language, SessionUser } from '@ft/shared';
 
 import { CurrentUser } from '../auth/auth.decorators';
-import { LlmError } from '../llm/llm.provider';
+import { LlmError, type LlmFailure } from '../llm/llm.provider';
 import { LangParam } from '../validation.pipe';
 import { DiscussionService } from './discussion.service';
 import { openEventStream } from './event-stream';
@@ -34,9 +34,28 @@ import { LessonDiscussionDto } from './lessons.dto';
  * The events, in order:
  *   event: delta   data: {"text":"…"}    one per piece of the answer
  *   event: done    data: {}              the answer is complete
- *   event: error   data: {"code":"…"}    instead of done, after any pieces already sent
+ *   event: error   data: {"code":"…"}    instead of done, after any pieces already sent:
+ *                                         an llm.* code (ERROR_CODE below), or unknown
  * and a ": heartbeat" comment every 15 s (event-stream.ts).
  */
+
+/**
+ * The code an error event carries, by why the LLM failed. The reason is what
+ * the logs and the metrics keep; the code is what the learner can act on, so
+ * failures the learner meets the same way share one: a timeout, a dropped
+ * connection and a 503 all say "try again in a moment". Anything that is not
+ * an LlmError is a bug, and gets "unknown".
+ */
+const ERROR_CODE: Record<LlmFailure, ErrorCode> = {
+  unreachable: 'llm.unavailable',
+  http_error: 'llm.unavailable',
+  // A reply that fails its schema: only structured calls have one, never a discussion.
+  invalid: 'llm.unavailable',
+  rate_limited: 'llm.rateLimited',
+  blocked: 'llm.blocked',
+  incomplete: 'llm.incomplete',
+  disabled: 'llm.disabled',
+};
 @ApiTags('lessons')
 @ApiParam({ name: 'lang', enum: [...LEARNABLE_LANGUAGES] })
 @Controller('courses/:lang')
@@ -49,7 +68,9 @@ export class DiscussionController {
   @Post('lessons/:id/discussion')
   @ApiOperation({ summary: "Ask the lesson's tutor; the answer streams as Server-Sent Events" })
   @ApiProduces('text/event-stream')
-  @ApiOkResponse({ description: 'delta { text } events, then done, or error { code }' })
+  @ApiOkResponse({
+    description: 'delta { text } events, then done, or error { code }: an llm.* code, or unknown',
+  })
   @ApiBadRequestResponse({ description: 'The body does not match LessonDiscussionSchema' })
   @ApiUnauthorizedResponse({ description: 'No valid session' })
   @ApiNotFoundResponse({ description: 'No course in that language, or no such ready lesson' })
@@ -80,8 +101,8 @@ export class DiscussionController {
         // An LlmError is an LLM failure, already counted in the metrics; anything else is a bug.
         if (error instanceof LlmError) this.logger.warn(`lesson-discussion: ${error.message}`);
         else this.logger.error(error);
-        // One code for every failure for now; the error codes of #150 refine it.
-        stream.send('error', { code: 'unknown' });
+        const code: ErrorCode = error instanceof LlmError ? ERROR_CODE[error.reason] : 'unknown';
+        stream.send('error', { code });
       }
     } finally {
       stream.end();

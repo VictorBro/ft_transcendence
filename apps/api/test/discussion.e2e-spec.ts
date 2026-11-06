@@ -12,15 +12,16 @@ import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest';
 
 import { AppModule } from '../src/app.module';
 import { configureApp } from '../src/app.setup';
+import { DisabledProvider } from '../src/llm/disabled.provider';
 import { FIXTURE_ANSWER, FIXTURE_FAILURES } from '../src/llm/fixture.provider';
-import { LLM_PROVIDER, type LlmProvider } from '../src/llm/llm.provider';
+import { LLM_PROVIDER, LlmError, type LlmProvider } from '../src/llm/llm.provider';
 import { PrismaService } from '../src/prisma/prisma.service';
 import { openAttempt, playLesson } from './attempts.fixtures';
 
 /**
  * The lesson discussion, end to end, on the fixture provider: the checks that
  * answer with a status before the stream opens (the attempt's among them),
- * then the stream itself, its three failures, and the learner leaving midway.
+ * then the stream itself, the error code of each failure, and the learner leaving midway.
  * The stream runs on a real attempt whose cursor is on the discussion page.
  */
 describe('lesson discussion (e2e)', () => {
@@ -308,18 +309,59 @@ describe('lesson discussion (e2e)', () => {
 
       expect(events(response.text)).toEqual([
         ...FIXTURE_ANSWER.slice(0, 2).map((text) => ({ event: 'delta', data: { text } })),
-        { event: 'error', data: { code: 'unknown' } },
+        { event: 'error', data: { code: 'llm.unavailable' } },
       ]);
     });
 
-    it.each([FIXTURE_FAILURES.blocked, FIXTURE_FAILURES.timeout])(
-      'sends only an error event when the LLM fails before any text (%s)',
-      async (failure) => {
+    it.each([
+      [FIXTURE_FAILURES.blocked, 'llm.blocked'],
+      [FIXTURE_FAILURES.timeout, 'llm.unavailable'],
+    ])(
+      'sends only an error event when the LLM fails before any text (%s → %s)',
+      async (failure, code) => {
         const response = await agent.post(path()).send(body(failure)).expect(200);
 
-        expect(events(response.text)).toEqual([{ event: 'error', data: { code: 'unknown' } }]);
+        expect(events(response.text)).toEqual([{ event: 'error', data: { code } }]);
       },
     );
+
+    // The failures the fixture has no word for: the provider throws them, as Gemini would.
+    describe('the error code of each other failure', () => {
+      const failing = (error: Error) =>
+        // eslint-disable-next-line require-yield
+        async function* () {
+          throw error;
+        };
+      const codeOf = async (stream: () => AsyncIterable<string>) => {
+        const streamText = vi.spyOn(llm, 'streamText').mockImplementation(stream);
+        const response = await agent.post(path()).send(body()).expect(200);
+        streamText.mockRestore();
+        return events(response.text);
+      };
+
+      it.each([
+        ['a 429 from the provider', 'rate_limited', 'llm.rateLimited'],
+        ['another 4xx or a 5xx', 'http_error', 'llm.unavailable'],
+        ['an empty or cut answer', 'incomplete', 'llm.incomplete'],
+      ] as const)('%s (%s) → %s', async (_, reason, code) => {
+        expect(await codeOf(failing(new LlmError('upstream', false, reason)))).toEqual([
+          { event: 'error', data: { code } },
+        ]);
+      });
+
+      it('LLM_PROVIDER=disabled → llm.disabled', async () => {
+        const disabled = new DisabledProvider();
+        expect(await codeOf(() => disabled.streamText())).toEqual([
+          { event: 'error', data: { code: 'llm.disabled' } },
+        ]);
+      });
+
+      it('a bug, not an LlmError → unknown', async () => {
+        expect(await codeOf(failing(new TypeError('oops')))).toEqual([
+          { event: 'error', data: { code: 'unknown' } },
+        ]);
+      });
+    });
 
     // Through a raw socket: supertest waits for the whole body, a learner closing the tab does not.
     it('cancels the LLM call when the learner leaves midway', async () => {

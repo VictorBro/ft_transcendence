@@ -83,7 +83,7 @@ services:
       SESSION_SECRET: ${SESSION_SECRET:?set an explicit SESSION_SECRET, at least 32 characters}
       # No fallback: fixture generates no questions, so a learner who has seen a
       # level gets only repeats. It must be an explicit choice, never inherited.
-      LLM_PROVIDER: ${LLM_PROVIDER:?set LLM_PROVIDER to fixture or gemini}
+      LLM_PROVIDER: ${LLM_PROVIDER:?set LLM_PROVIDER to fixture, gemini or disabled}
       LLM_API_KEY: ${LLM_API_KEY:-}
       LLM_MODEL: ${LLM_MODEL:-}
       AVATAR_STORAGE_DIR: /data/avatars

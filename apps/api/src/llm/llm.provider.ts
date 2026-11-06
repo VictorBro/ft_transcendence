@@ -107,7 +107,7 @@ export interface LlmProvider {
  * - rate_limited: HTTP 429. http_error: any other status outside 2xx.
  * - blocked: the prompt was refused. incomplete: the reply was cut short.
  * - invalid: the reply is not JSON, or fails the schema.
- * - disabled: no real LLM behind the provider (the fixture).
+ * - disabled: no real LLM behind the provider (the fixture's questions, LLM_PROVIDER=disabled).
  */
 export type LlmFailure =
   'unreachable' | 'rate_limited' | 'http_error' | 'blocked' | 'incomplete' | 'invalid' | 'disabled';
