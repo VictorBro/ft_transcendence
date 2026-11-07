@@ -83,7 +83,7 @@ export default async function FriendsPage({
 
       <ListSection id="friends-list" title={t('yourFriends')} empty={t('noFriends')}>
         {lists.friends.map((user) => (
-          <UserRow key={user.id} user={user}>
+          <UserRow key={user.id} user={user} online={user.online}>
             <RemoveFriendButton userId={user.id} name={user.displayName} />
           </UserRow>
         ))}

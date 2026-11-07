@@ -315,7 +315,9 @@
     "isFriend": "Déjà amis",
     "remove": "Retirer",
     "removeConfirm": "Retirer {name} de tes amis ?",
-    "cancel": "Annuler"
+    "cancel": "Annuler",
+    "online": "En ligne",
+    "offline": "Hors ligne"
   },
   "UserPage": {
     "courses": "Cours",
