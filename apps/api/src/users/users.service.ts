@@ -1,12 +1,21 @@
-import { ConflictException, Injectable, Logger } from '@nestjs/common';
-import { USER_SEARCH_LIMIT } from '@ft/shared';
-import type { SessionUser, UpdateProfileInput, UserSearchResult } from '@ft/shared';
+import { ConflictException, Injectable, Logger, NotFoundException } from '@nestjs/common';
+import { RECENTLY_ACTIVE_LIMIT, USER_SEARCH_LIMIT } from '@ft/shared';
+import type {
+  PublicProfile,
+  RecentlyActive,
+  SessionUser,
+  UpdateProfileInput,
+  UserSearchResult,
+} from '@ft/shared';
 import { unlink } from 'fs/promises';
 import { basename, join } from 'path';
 
 import { AuthService } from '../auth/auth.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { AVATAR_ROUTE, AVATAR_STORAGE_DIR } from '../app.setup';
+import { currentDay, storedStreak } from '../lessons/goal';
+import { currentStreak } from '../lessons/roadmap.rules';
+import { activeSince } from './active-day';
 import { PUBLIC_USER_SELECT } from './public-user';
 
 /** Relative on purpose: see setAvatar. */
@@ -34,6 +43,63 @@ export class UsersService {
       take: USER_SEARCH_LIMIT,
     });
     return { users };
+  }
+
+  /**
+   * What any signed-in user may see of `id`. The time zone is read only to
+   * find the owner's day for the streak, so each field is copied by name.
+   */
+  async profile(id: string, now: Date): Promise<PublicProfile> {
+    const user = await this.prisma.user.findUnique({
+      where: { id },
+      select: {
+        ...PUBLIC_USER_SELECT,
+        timeZone: true,
+        userLevels: { orderBy: { createdAt: 'asc' } },
+      },
+    });
+    if (user === null) {
+      throw new NotFoundException('user.notFound');
+    }
+
+    // The course page's day and rule, so both show the same streak.
+    const courses = await Promise.all(
+      user.userLevels.map(async (course) => {
+        const day = await currentDay(this.prisma, course, user.timeZone, now);
+        const streak = currentStreak(storedStreak(course), day);
+        return { lang: course.lang, level: course.level, streak };
+      }),
+    );
+    return { id: user.id, displayName: user.displayName, avatarUrl: user.avatarUrl, courses };
+  }
+
+  /**
+   * People to add: whoever opened the app in the last week. Never you, and
+   * never someone you already have a request or friendship with, so the only
+   * thing to do with a row is Add friend. By name, not by day: an order by
+   * activity would show anyone polling it each learner's first visit of the day.
+   */
+  async recentlyActive(me: string, now: Date): Promise<RecentlyActive> {
+    const users = await this.prisma.user.findMany({
+      where: {
+        id: { not: me },
+        lastActiveDay: { gte: activeSince(now) },
+        friendshipsRequested: { none: { addresseeId: me } },
+        friendshipsAddressed: { none: { requesterId: me } },
+      },
+      select: {
+        ...PUBLIC_USER_SELECT,
+        userLevels: { select: { lang: true }, orderBy: { createdAt: 'asc' } },
+      },
+      orderBy: { displayName: 'asc' },
+      take: RECENTLY_ACTIVE_LIMIT,
+    });
+    return {
+      users: users.map(({ userLevels, ...user }) => ({
+        ...user,
+        languages: userLevels.map((course) => course.lang),
+      })),
+    };
   }
 
   async updateProfile(userId: string, input: UpdateProfileInput): Promise<SessionUser> {

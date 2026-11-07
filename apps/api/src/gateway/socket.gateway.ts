@@ -14,6 +14,7 @@ import { SESSION_KEY_PREFIX } from '../app.setup';
 import { wsConnections, wsEvents } from '../metrics/metrics';
 import { PrismaService } from '../prisma/prisma.service';
 import { RedisService } from '../redis/redis.service';
+import { activeDay } from '../users/active-day';
 import { SocketsService, sessionRoom, type AppSocket, type SocketServer } from './sockets.service';
 
 /** Caddy sends /ws and /ws/* to the api, in dev and in prod. */
@@ -99,7 +100,7 @@ export class SocketGateway
         next(new Error('auth.sessionRequired'));
         return;
       }
-      // Before the lookup, so a client opening sockets in a loop costs no query,
+      // Before the write, so a client opening sockets in a loop costs no query,
       // and the per-socket event limit cannot be multiplied without bound.
       if (
         (socket.nsp.adapter.rooms.get(sessionRoom(sessionID))?.size ?? 0) >= SESSION_SOCKET_LIMIT
@@ -110,15 +111,20 @@ export class SocketGateway
       // Like AuthGuard: a deleted account is refused although its session lives.
       const user = await this.prisma.user.findUnique({
         where: { id: userId },
-        select: { id: true },
+        select: { lastActiveDay: true },
       });
-      if (!user) {
+      if (user === null) {
         next(new Error('auth.sessionRequired'));
         return;
       }
-      socket.data = { userId: user.id, sessionId: sessionID };
+      // The day only, so the first tab of the day writes and the others just read.
+      const today = activeDay(new Date());
+      if (user.lastActiveDay?.getTime() !== today.getTime()) {
+        await this.prisma.user.update({ where: { id: userId }, data: { lastActiveDay: today } });
+      }
+      socket.data = { userId, sessionId: sessionID };
       // Before next(): the client's CONNECT ack then means it is in the room.
-      rooms.push(userRoom(user.id), sessionRoom(sessionID));
+      rooms.push(userRoom(userId), sessionRoom(sessionID));
       await socket.join(rooms);
       // A logout between the session middleware and the join closed the room
       // before this socket was in it. Asked after the join, the session is

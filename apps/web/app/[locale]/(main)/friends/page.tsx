@@ -1,12 +1,19 @@
 import type { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
-import { SERVER_EVENTS, UserSearchQuerySchema } from '@ft/shared';
+import { UserSearchQuerySchema } from '@ft/shared';
 
 import { FriendButton, RemoveFriendButton, RequestButtons } from '@/components/friend-buttons';
 import { RefreshOn } from '@/components/refresh-on';
 import { UserRow } from '@/components/user-row';
-import { relationTo, requireFriends, searchUsers, type Relation } from '@/lib/friends';
+import {
+  FRIEND_EVENTS,
+  recentlyActive,
+  relationTo,
+  requireFriends,
+  searchUsers,
+  type Relation,
+} from '@/lib/friends';
 import { FriendSearch } from './friend-search';
 
 // One key feeds this title, the heading and the link in the account menu.
@@ -19,13 +26,6 @@ export async function generateMetadata(): Promise<Metadata> {
 // Renders one specific person's friends, so it must never be prerendered or cached.
 export const dynamic = 'force-dynamic';
 
-// Any change between two people re-renders both pages: the lists and the search buttons.
-const FRIEND_EVENTS = [
-  SERVER_EVENTS.FRIEND_REQUEST,
-  SERVER_EVENTS.FRIEND_ACCEPTED,
-  SERVER_EVENTS.FRIEND_REMOVED,
-] as const;
-
 export default async function FriendsPage({
   searchParams,
 }: {
@@ -35,9 +35,10 @@ export default async function FriendsPage({
   // typed. Empty means no search, since a valid query has 3 characters at least.
   const search = UserSearchQuerySchema.safeParse({ q: (await searchParams).q });
   const query = search.success ? search.data.q : '';
-  const [lists, found] = await Promise.all([
+  const [lists, found, recent] = await Promise.all([
     requireFriends(),
     query === '' ? null : searchUsers(query),
+    recentlyActive(),
   ]);
   const t = await getTranslations('FriendsPage');
 
@@ -84,6 +85,14 @@ export default async function FriendsPage({
         {lists.friends.map((user) => (
           <UserRow key={user.id} user={user}>
             <RemoveFriendButton userId={user.id} name={user.displayName} />
+          </UserRow>
+        ))}
+      </ListSection>
+
+      <ListSection id="friends-recent" title={t('recentlyActive')} empty={t('noRecentlyActive')}>
+        {recent.map((user) => (
+          <UserRow key={user.id} user={user} languages={user.languages}>
+            <FriendButton action="add" userId={user.id} />
           </UserRow>
         ))}
       </ListSection>
