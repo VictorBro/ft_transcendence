@@ -12,6 +12,7 @@ import { SERVER_EVENTS, clientEventSchema, userRoom, type ErrorCode } from '@ft/
 
 import { SESSION_KEY_PREFIX } from '../app.setup';
 import { wsConnections, wsEvents } from '../metrics/metrics';
+import { PresenceService } from '../presence/presence.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { RedisService } from '../redis/redis.service';
 import { activeDay } from '../users/active-day';
@@ -71,6 +72,7 @@ export class SocketGateway
     private readonly prisma: PrismaService,
     private readonly redis: RedisService,
     private readonly sockets: SocketsService,
+    private readonly presence: PresenceService,
   ) {}
 
   afterInit(server: SocketServer): void {

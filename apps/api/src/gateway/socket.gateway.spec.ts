@@ -4,6 +4,7 @@ import type { Event } from 'socket.io';
 
 import { seriesValue } from '../../test/metrics.fixtures';
 import { wsConnections } from '../metrics/metrics';
+import type { PresenceService } from '../presence/presence.service';
 import type { PrismaService } from '../prisma/prisma.service';
 import type { RedisService } from '../redis/redis.service';
 import {
@@ -54,12 +55,14 @@ function gatewayWith(
   const exists = vi.fn().mockResolvedValue(1);
   const update = vi.fn().mockResolvedValue({});
   const sockets = { closeSession: vi.fn(), attach: vi.fn() };
+  const presence = {};
   const gateway = new SocketGateway(
     { user: { findUnique, update } } as unknown as PrismaService,
     { client: { exists } } as unknown as RedisService,
     sockets as unknown as SocketsService,
+    presence as unknown as PresenceService,
   );
-  return { gateway, findUnique, update, exists, sockets };
+  return { gateway, findUnique, update, exists, sockets, presence };
 }
 
 describe('sameOrigin', () => {
