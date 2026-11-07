@@ -9,6 +9,7 @@ import {
   type ChallengeCode,
   CHALLENGE_XP,
   GOAL_XP,
+  LESSON_KINDS,
   LESSON_XP,
   type LessonKind,
   type Theme,
@@ -36,9 +37,10 @@ import { openAttempt, shortLesson } from './attempts.fixtures';
  * when it meets the day, CHALLENGE_XP 30 when it does the challenge.
  *
  * Every fixture plays PR #142's short lesson (attempts.fixtures.ts) under a
- * fr-test-gam- id, as grammar, vocabulary or functions. None is reading:
- * French A1 has no ready reading lesson, so its learners never get the
- * reading challenge. The clock is frozen at noon UTC.
+ * fr-test-gam- id, ten of each kind, so French A1 can do all six challenges
+ * whatever the real catalogue holds, seeded or not, and `meet` always finds
+ * a lesson. Which challenges a level without a kind can do is a rule,
+ * covered in gamification.rules.spec.ts. The clock is frozen at noon UTC.
  */
 describe('XP, challenge and achievements (e2e)', () => {
   let app: INestApplication;
@@ -52,16 +54,16 @@ describe('XP, challenge and achievements (e2e)', () => {
 
   /** Letters only in the ids: LESSON_ID_PATTERN refuses digits. */
   const LETTERS = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
-  const KINDS = ['grammar', 'vocabulary', 'functions'] as const satisfies readonly LessonKind[];
-  const THEMES: Record<Exclude<(typeof KINDS)[number], 'grammar'>, Theme> = {
+  const KINDS = LESSON_KINDS;
+  const THEMES: Record<Exclude<LessonKind, 'grammar'>, Theme> = {
     vocabulary: 'food_and_drink',
     functions: 'relations',
+    reading: 'daily_life',
   };
 
   /**
-   * Ten French A1 lessons of each kind but reading, after the real ones of
-   * the level, and one A1 lesson that is not ready: it must never count
-   * towards levelA1, nor make a reading challenge (it is reading).
+   * Ten French A1 lessons of each kind, after the real ones of the level,
+   * and one A1 lesson that is not ready: it must never count towards levelA1.
    */
   const DRAFT = 'fr-test-gam-draft';
   const FIXTURES: Prisma.LessonCreateManyInput[] = [
@@ -228,20 +230,21 @@ describe('XP, challenge and achievements (e2e)', () => {
 
   it('scores each way of answering as the stories below count on', async () => {
     const { agent } = await learner('scores', 60);
-    const pick = lessonsFor('reading'); // no fixture is reading: any kind
+    const pick = lessonsFor('beyondGoal'); // no kind asks for it: any lesson
 
     for (const how of ['right', 'oneExamWrong', 'practiceOnly', 'blank'] as const) {
       expect((await finish(agent, pick.miss(), how)).best, how).toBe(SCORE[how]);
     }
   });
 
-  it('never gives a French A1 course the reading challenge: the level has no ready reading lesson', async () => {
-    expect(await readyKinds(prisma, { lang: 'fr', level: 'A1' })).not.toContain('reading');
-    const { agent, challenge } = await learner('noreading', 10);
+  it('shows in today the challenge award reads, from the ready kinds of the level', async () => {
+    expect((await readyKinds(prisma, { lang: 'fr', level: 'A1' })).sort()).toEqual(
+      [...LESSON_KINDS].sort(),
+    );
+    const { agent, challenge } = await learner('challenge', 10);
 
     const response = await agent.get('/api/courses/fr/today').expect(200);
 
-    expect(challenge).not.toBe('reading');
     expect(response.body.challenge).toEqual({ code: challenge, done: false });
   });
 
