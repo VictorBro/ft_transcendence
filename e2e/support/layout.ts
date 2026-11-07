@@ -24,6 +24,18 @@ export async function expectFitsTheScreen(page: Page, route: string): Promise<vo
   const screen = page.viewportSize()?.width;
   expect(screen, 'this gate needs a viewport; the context was created without one').toBeDefined();
 
+  // Streaming documents and WebKit's viewport update can finish on different
+  // frames. Require the real metadata, then wait for it to affect the layout.
+  await expect(page.locator('meta[name="viewport"]')).toHaveAttribute(
+    'content',
+    /width\s*=\s*device-width/,
+  );
+  await expect
+    .poll(() => page.evaluate(() => document.documentElement.clientWidth), {
+      message: `${route}: the layout viewport did not settle to ${screen}px`,
+    })
+    .toBe(screen);
+
   const { layoutViewport, documentWidth, panes } = await page.evaluate(() => {
     const root = document.documentElement;
 
