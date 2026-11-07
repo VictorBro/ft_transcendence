@@ -8,9 +8,17 @@ import {
 } from '@nestjs/websockets';
 import type { Request } from 'express';
 import type { Event, ExtendedError } from 'socket.io';
-import { SERVER_EVENTS, clientEventSchema, userRoom, type ErrorCode } from '@ft/shared';
+import {
+  SERVER_EVENTS,
+  clientEventSchema,
+  userRoom,
+  type ErrorCode,
+  type PresenceStatus,
+  type PresenceUpdate,
+} from '@ft/shared';
 
 import { SESSION_KEY_PREFIX } from '../app.setup';
+import { friendIds } from '../friends/friend-ids';
 import { wsConnections, wsEvents } from '../metrics/metrics';
 import { PresenceService } from '../presence/presence.service';
 import { PrismaService } from '../prisma/prisma.service';
@@ -51,6 +59,11 @@ export function sameOrigin(origin: string | undefined, host: string | undefined)
   } catch {
     return false; // "null" and other junk
   }
+}
+
+/** The payload of presence:update, stamped now. */
+function presenceUpdate(userId: string, status: PresenceStatus): PresenceUpdate {
+  return { userId, status, at: new Date().toISOString() };
 }
 
 @WebSocketGateway({
@@ -153,10 +166,57 @@ export class SocketGateway
     wsConnections.inc();
     const seen = fixedWindow(EVENT_WINDOW_MS);
     socket.use((packet, next) => this.screen(socket, packet, next, seen()));
+    void this.arrived(socket);
   }
 
-  handleDisconnect(): void {
+  handleDisconnect(socket: AppSocket): void {
     wsConnections.dec();
+    void this.left(socket.data.userId);
+  }
+
+  /**
+   * Tells the friends when this is the user's first socket, and tells this
+   * socket where each friend stands: the page may have been rendered a moment
+   * before one of them came or went.
+   */
+  private async arrived(socket: AppSocket): Promise<void> {
+    const { userId } = socket.data;
+    try {
+      // Both start before any await, so the INCR is sent before a DECR from
+      // a socket that closes at once.
+      const [first, friends] = await Promise.all([
+        this.presence.connected(userId),
+        friendIds(this.prisma, userId),
+      ]);
+      if (first) this.tellFriends(friends, userId, 'online');
+      const online = await this.presence.isOnline(friends);
+      for (const friend of friends) {
+        const status = online.has(friend) ? 'online' : 'offline';
+        socket.emit(SERVER_EVENTS.PRESENCE_UPDATE, presenceUpdate(friend, status));
+        wsEvents.inc({ direction: 'out', event: SERVER_EVENTS.PRESENCE_UPDATE, outcome: 'ok' });
+      }
+    } catch (error) {
+      this.logger.error(`presence on connect failed: ${String(error)}`);
+    }
+  }
+
+  /** After the grace period, tells the friends if no tab came back. */
+  private async left(userId: string): Promise<void> {
+    try {
+      if (!(await this.presence.disconnected(userId))) return;
+      // Asked now, not on connect: a friendship may have begun or ended since.
+      this.tellFriends(await friendIds(this.prisma, userId), userId, 'offline');
+    } catch (error) {
+      this.logger.error(`presence on disconnect failed: ${String(error)}`);
+    }
+  }
+
+  /** To each friend's room: all their tabs, and no one else. */
+  private tellFriends(friends: string[], userId: string, status: PresenceStatus): void {
+    const update = presenceUpdate(userId, status);
+    for (const friend of friends) {
+      this.sockets.toUser(friend, SERVER_EVENTS.PRESENCE_UPDATE, update);
+    }
   }
 
   /**

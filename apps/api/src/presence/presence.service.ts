@@ -1,4 +1,4 @@
-import { Injectable, Logger, type OnApplicationBootstrap } from '@nestjs/common';
+import { Injectable, type OnApplicationBootstrap } from '@nestjs/common';
 
 import { RedisService } from '../redis/redis.service';
 
@@ -13,8 +13,6 @@ const presenceKey = (userId: string): string => `presence:${userId}`;
  */
 @Injectable()
 export class PresenceService implements OnApplicationBootstrap {
-  private readonly logger = new Logger(PresenceService.name);
-
   constructor(private readonly redis: RedisService) {}
 
   /**
@@ -40,7 +38,8 @@ export class PresenceService implements OnApplicationBootstrap {
 
     if (count < 0) await this.redis.client.set(presenceKey(userId), '0');
 
-    await new Promise((resolve) => setTimeout(resolve, PRESENCE_GRACE_MS));
+    // unref: a pending wait must not hold the process open on shutdown.
+    await new Promise((resolve) => setTimeout(resolve, PRESENCE_GRACE_MS).unref());
     const now = await this.redis.client.get(presenceKey(userId));
     return Number(now) <= 0;
   }

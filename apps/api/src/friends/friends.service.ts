@@ -14,9 +14,9 @@ import type {
 } from '@ft/shared';
 
 import { SocketsService } from '../gateway/sockets.service';
+import { PresenceService } from '../presence/presence.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { PUBLIC_USER_SELECT } from '../users/public-user';
-import { PresenceService } from '../presence/presence.service';
 import { pairKey } from './pair';
 
 type FriendEventName =
