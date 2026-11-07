@@ -210,10 +210,11 @@ header:has(+ main .lesson-view) > div {
   padding: 12px 24px;
   font-size: 16px;
 }
-.lesson-task [role='radiogroup'] {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr));
-  gap: 12px;
+.lesson-choice-options [role='radio'] {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
 }
 .lesson-task [role='radio'] {
   min-height: 52px;
@@ -440,11 +441,11 @@ header:has(+ main .lesson-view) > div {
   }
   .lesson-point-strip {
     position: relative;
-    display: flex;
-    flex-wrap: nowrap;
+    display: grid;
+    grid-template-columns: repeat(var(--strip-count), minmax(0, 1fr));
     align-items: center;
-    justify-content: space-between;
-    gap: 4px;
+    justify-items: center;
+    gap: 2px;
     padding: 8px 4px;
     overflow-x: auto;
     scrollbar-width: none;
@@ -452,16 +453,23 @@ header:has(+ main .lesson-view) > div {
   .lesson-point-strip::before {
     content: '';
     position: absolute;
-    inset: 50% 12px auto;
+    inset: 50% calc(4px + (100% - 8px) / var(--strip-count) / 2) auto;
     height: 3px;
     background: linear-gradient(to right, #635bff var(--strip-fill), #1e293b var(--strip-fill));
   }
   .lesson-point-strip .lesson-marker {
-    width: 26px;
-    height: 26px;
+    width: min(26px, 100%);
+    height: auto;
+    aspect-ratio: 1;
     background: #020617;
     font-size: 12px;
     cursor: pointer;
+  }
+  .lesson-point-strip > li {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    min-width: 0;
   }
   .lesson-point-strip .is-done .lesson-marker,
   .lesson-point-strip .is-current .lesson-marker {
@@ -531,5 +539,127 @@ header:has(+ main .lesson-view) > div {
   }
   .lesson-countdown {
     min-width: 140px;
+  }
+}
+
+.lesson-matching {
+  container-type: inline-size;
+}
+.lesson-matching-frame {
+  position: relative;
+}
+.lesson-matching-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(var(--matching-rows), auto);
+  gap: 12px;
+}
+.lesson-matching-column {
+  display: grid;
+  grid-row: 1 / -1;
+  grid-template-rows: subgrid;
+  gap: inherit;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.lesson-match-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  height: 100%;
+  min-height: 80px;
+  padding: 14px 16px;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  background: #020617;
+  color: #f1f5f9;
+  text-align: left;
+  cursor: pointer;
+}
+.lesson-matching-column > .lesson-match-button {
+  height: auto;
+}
+/* A full person board separates its three singular and three plural rows. */
+.lesson-matching-column:has(> :nth-child(6)) > :nth-child(4) {
+  margin-top: 16px;
+}
+.lesson-match-button:hover,
+.lesson-match-button:focus-visible {
+  border-color: #818cf8;
+}
+.lesson-match-button.is-paired {
+  border-color: #635bff;
+  box-shadow: inset 0 0 0 1px #635bff;
+}
+.lesson-match-button[aria-pressed='true'] {
+  border-color: #635bff;
+  background: #1e1b4b;
+}
+.lesson-match-button:disabled {
+  cursor: default;
+}
+.lesson-match-button[data-outcome='fully_correct'] {
+  border-color: #22c55e;
+  background: rgb(34 197 94 / 10%);
+  box-shadow: inset 0 0 0 1px #22c55e;
+}
+.lesson-match-button[data-outcome='incorrect'],
+.lesson-match-button[data-outcome='unanswered'] {
+  border-color: #ef4444;
+  background: rgb(239 68 68 / 10%);
+  box-shadow: inset 0 0 0 1px #ef4444;
+}
+.lesson-pair-badge {
+  display: inline-grid;
+  flex-shrink: 0;
+  place-items: center;
+  min-width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #635bff;
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+}
+.lesson-match-curves {
+  display: none;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+}
+.lesson-match-curves path {
+  fill: none;
+  stroke: #635bff;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+.lesson-match-curves .is-preview {
+  stroke-dasharray: 6 6;
+  opacity: 0.8;
+}
+.lesson-match-curves .is-correct {
+  stroke: #22c55e;
+}
+.lesson-match-curves .is-incorrect {
+  stroke: #ef4444;
+  stroke-dasharray: 7 6;
+}
+@container (min-width: 560px) {
+  .lesson-matching-columns {
+    column-gap: 22%;
+  }
+  .lesson-match-curves {
+    display: block;
+  }
+  .lesson-pair-badge {
+    display: none;
   }
 }

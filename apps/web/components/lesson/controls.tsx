@@ -85,6 +85,13 @@ export function TextControl({
   const t = useTranslations('Lesson');
   const { before, after, learning, native } = unit.prompt;
   const gap = before !== undefined || after !== undefined;
+  const correction =
+    feedback && feedback.outcome !== 'fully_correct' ? (
+      <strong lang={lang} className="font-semibold text-green-400" data-inline-answer>
+        <span className="sr-only">{t('correct')}: </span>
+        {feedback.form ?? feedback.answer}
+      </strong>
+    ) : null;
   const input = (
     <input
       type="text"
@@ -111,6 +118,7 @@ export function TextControl({
       >
         {before ? <span>{before}</span> : null}
         {input}
+        {correction}
         {after ? <span>{after}</span> : null}
       </p>
     );
@@ -119,6 +127,7 @@ export function TextControl({
     <div className="flex flex-col gap-2">
       <PromptLine unit={unit} lang={lang} />
       {input}
+      {correction}
     </div>
   );
 }
@@ -194,7 +203,7 @@ export function ChoiceControl({
         role="radiogroup"
         aria-label={t('pick')}
         onKeyDown={radioArrows}
-        className="flex flex-wrap gap-2"
+        className="lesson-choice-options flex flex-col gap-3"
       >
         {unit.options.map((option, index) => {
           const chosen = picked === option.ref;
@@ -223,6 +232,10 @@ export function ChoiceControl({
               }}
               className={`min-h-11 rounded-md border px-4 py-2 text-left transition-colors disabled:cursor-default ${tone}`}
             >
+              <span
+                aria-hidden="true"
+                className={`h-4 w-4 shrink-0 rounded-full border ${chosen ? 'border-indigo-300 bg-indigo-400 ring-2 ring-indigo-400/25 ring-offset-2 ring-offset-slate-900' : 'border-slate-500 bg-slate-800'}`}
+              />
               {option.text}
             </button>
           );

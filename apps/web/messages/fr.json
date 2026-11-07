@@ -429,7 +429,7 @@
     "yourSentence": "Ta phrase",
     "spotHint": "Sélectionne le mot faux, puis corrige-le.",
     "correction": "Correction",
-    "boardHint": "Sélectionne un élément à gauche, puis son partenaire à droite.",
+    "boardHint": "Choisis un mot d’un côté, puis son partenaire de l’autre. Tu peux modifier les paires avant de vérifier.",
     "dragHint": "Fais glisser chaque forme vers son pronom, ou sélectionne une forme puis un pronom.",
     "forms": "Formes",
     "remove": "Retirer {text}",
@@ -457,7 +457,10 @@
     "aboutMinutes": "Environ {minutes} minutes",
     "subject": "Sujet",
     "form": "Forme",
-    "example": "Exemple"
+    "example": "Exemple",
+    "pairedWith": "{text}, associé à {partner}",
+    "pairSelected": "Sélection : {text}.",
+    "pairingStatus": "{count} paires sur {total} associées."
   },
   "LessonKinds": {
     "grammar": "Grammaire",

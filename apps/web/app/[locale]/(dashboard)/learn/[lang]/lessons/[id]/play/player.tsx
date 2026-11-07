@@ -413,9 +413,6 @@ export function LessonPlayer({
 
             <div className="lesson-task-footer flex flex-col gap-3">
               <FormError message={error} />
-              {checked && !flash ? (
-                <CheckedSummary feedback={[...checked.feedback.values()]} />
-              ) : null}
               <button
                 type="button"
                 onClick={button.onClick}
@@ -462,13 +459,6 @@ function Item({ item, ...props }: Omit<ItemProps, 'item'> & { item: ItemView }) 
     );
   }
   return <Renderer item={item} {...props} />;
-}
-
-/** A checked page with every answer right says so once, under the items. */
-function CheckedSummary({ feedback }: { feedback: UnitFeedback[] }) {
-  const t = useTranslations('Lesson');
-  const right = feedback.length > 0 && feedback.every((f) => f.outcome === 'fully_correct');
-  return right ? <p className="font-semibold text-green-300">{t('allRight')}</p> : null;
 }
 
 /**

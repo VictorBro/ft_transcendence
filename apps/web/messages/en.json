@@ -429,7 +429,7 @@
     "yourSentence": "Your sentence",
     "spotHint": "Select the wrong word, then correct it.",
     "correction": "Correction",
-    "boardHint": "Select an item on the left, then its partner on the right.",
+    "boardHint": "Select a word on one side, then its partner on the other. Pairs stay editable until Check.",
     "dragHint": "Drag each form to its pronoun, or select a form and then a pronoun.",
     "forms": "Forms",
     "remove": "Remove {text}",
@@ -457,7 +457,10 @@
     "aboutMinutes": "About {minutes} minutes",
     "subject": "Subject",
     "form": "Form",
-    "example": "Example"
+    "example": "Example",
+    "pairedWith": "{text}, paired with {partner}",
+    "pairSelected": "Selected: {text}.",
+    "pairingStatus": "{count} of {total} pairs assigned."
   },
   "LessonKinds": {
     "grammar": "Grammar",

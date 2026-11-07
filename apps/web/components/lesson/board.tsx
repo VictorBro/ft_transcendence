@@ -4,6 +4,7 @@ import { useState, type DragEvent } from 'react';
 import { useTranslations } from 'next-intl';
 
 import { FeedbackNote, outcomeTone } from './controls';
+import { MatchingPairs } from './matching-pairs';
 import type { AnswerProps, Ref, UnitView } from './types';
 
 type ChoiceUnit = Extract<UnitView, { kind: 'choice' }>;
@@ -20,14 +21,20 @@ type ChoiceUnit = Extract<UnitView, { kind: 'choice' }>;
  * everything the mouse does.
  */
 export function MatchingBoard({
-  units,
   layout,
+  ...props
+}: AnswerProps & { units: ChoiceUnit[]; layout: 'pairs' | 'drag' }) {
+  return layout === 'pairs' ? <MatchingPairs {...props} /> : <DragBoard {...props} />;
+}
+
+function DragBoard({
+  units,
   lang,
   answers,
   onAnswer,
   feedback,
   locked,
-}: AnswerProps & { units: ChoiceUnit[]; layout: 'pairs' | 'drag' }) {
+}: AnswerProps & { units: ChoiceUnit[] }) {
   const t = useTranslations('Lesson');
   // The options are the same on every unit: the first one's list is the board's.
   const options = units[0]?.options ?? [];
@@ -90,42 +97,28 @@ export function MatchingBoard({
       className,
     };
 
-    if (layout === 'drag') {
-      // Firefox never starts a drag from a <button>: a draggable element
-      // with the button role, which the keyboard works as one.
-      return (
-        <div
-          key={option.ref}
-          role="button"
-          tabIndex={locked ? -1 : 0}
-          aria-disabled={locked}
-          draggable={!locked}
-          onDragStart={(e) => e.dataTransfer.setData('text/plain', option.ref)}
-          onClick={() => {
-            if (!locked) clickOption(option.ref);
-          }}
-          onKeyDown={(e) => {
-            if (locked || (e.key !== 'Enter' && e.key !== ' ')) return;
-            e.preventDefault();
-            clickOption(option.ref);
-          }}
-          {...shared}
-        >
-          {option.text}
-        </div>
-      );
-    }
-
+    // Firefox never starts a drag from a <button>: a draggable element
+    // with the button role, which the keyboard works as one.
     return (
-      <button
+      <div
         key={option.ref}
-        type="button"
-        disabled={locked}
-        onClick={() => clickOption(option.ref)}
+        role="button"
+        tabIndex={locked ? -1 : 0}
+        aria-disabled={locked}
+        draggable={!locked}
+        onDragStart={(e) => e.dataTransfer.setData('text/plain', option.ref)}
+        onClick={() => {
+          if (!locked) clickOption(option.ref);
+        }}
+        onKeyDown={(e) => {
+          if (locked || (e.key !== 'Enter' && e.key !== ' ')) return;
+          e.preventDefault();
+          clickOption(option.ref);
+        }}
         {...shared}
       >
         {option.text}
-      </button>
+      </div>
     );
   };
 
@@ -166,31 +159,15 @@ export function MatchingBoard({
     );
   };
 
-  if (layout === 'drag') {
-    return (
-      <div className="flex flex-col gap-4">
-        <p className="text-sm text-slate-400">{t('dragHint')}</p>
-        <div role="group" aria-label={t('forms')} className="flex flex-wrap gap-2">
-          {options.map(optionButton)}
-        </div>
-        <ul aria-label={t('boardSlots')} className="flex flex-col gap-2">
-          {units.map(unitRow)}
-        </ul>
-      </div>
-    );
-  }
-
   return (
     <div className="flex flex-col gap-4">
-      <p className="text-sm text-slate-400">{t('boardHint')}</p>
-      <div className="grid gap-4 sm:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
-        <div role="group" aria-label={t('boardOptions')} className="flex flex-col gap-2">
-          {options.map(optionButton)}
-        </div>
-        <ul aria-label={t('boardSlots')} className="flex flex-col gap-2">
-          {units.map(unitRow)}
-        </ul>
+      <p className="text-sm text-slate-400">{t('dragHint')}</p>
+      <div role="group" aria-label={t('forms')} className="flex flex-wrap gap-2">
+        {options.map(optionButton)}
       </div>
+      <ul aria-label={t('boardSlots')} className="flex flex-col gap-2">
+        {units.map(unitRow)}
+      </ul>
     </div>
   );
 }

@@ -429,7 +429,7 @@
     "yourSentence": "Dein Satz",
     "spotHint": "Wähle das falsche Wort und korrigiere es.",
     "correction": "Korrektur",
-    "boardHint": "Wähle links ein Element und dann rechts seinen Partner.",
+    "boardHint": "Wähle ein Wort auf einer Seite und dann seinen Partner auf der anderen. Bis zum Überprüfen kannst du die Paare ändern.",
     "dragHint": "Zieh jede Form zu ihrem Pronomen, oder wähle eine Form und dann ein Pronomen.",
     "forms": "Formen",
     "remove": "{text} entfernen",
@@ -457,7 +457,10 @@
     "aboutMinutes": "Etwa {minutes} Minuten",
     "subject": "Subjekt",
     "form": "Form",
-    "example": "Beispiel"
+    "example": "Beispiel",
+    "pairedWith": "{text}, verbunden mit {partner}",
+    "pairSelected": "Ausgewählt: {text}.",
+    "pairingStatus": "{count} von {total} Paaren verbunden."
   },
   "LessonKinds": {
     "grammar": "Grammatik",

@@ -1,4 +1,5 @@
-import { finishThroughApi } from '../support/lesson-play';
+import { expectFitsTheScreen } from '../support/layout';
+import { answerPage, lessonPlan, playLesson, finishThroughApi } from '../support/lesson-play';
 import { expect, placeCourse, test } from '../support/session';
 
 const API = '/api/courses/fr/lessons/fr-subject-pronouns/attempt';
@@ -118,4 +119,123 @@ test('results fragments select one part across navigation and without JavaScript
   } finally {
     await noScriptContext.close();
   }
+});
+
+test('matching curves stay editable and have compact phone pair markers', async ({
+  freshLearner,
+}) => {
+  test.setTimeout(120_000);
+  const learner = freshLearner;
+  await learner.setViewportSize({ width: 1440, height: 1000 });
+  await placeCourse(learner, { lang: 'fr', level: 'A1', dailyGoal: 10 });
+  const matchingLesson = 'fr-verb-etre-present';
+  await learner.goto(`/en/learn/fr/lessons/${matchingLesson}`);
+  await learner.getByRole('button', { name: 'Start the lesson' }).click();
+  await learner.waitForURL(/\/play$/);
+  const plan = lessonPlan(matchingLesson);
+  const matching = plan.pages.findIndex((page) =>
+    page.items.some((item) => item.type === 'grammar_person_matching'),
+  );
+  await playLesson(learner, plan, { stop: (index) => index === matching });
+  const board = learner.locator('.lesson-matching');
+  const left = board.locator('[data-option]');
+  const right = board.locator('[data-unit] button');
+  await left.first().click();
+  const frame = await board.locator('.lesson-matching-frame').boundingBox();
+  expect(frame).not.toBeNull();
+  await learner.mouse.move(frame!.x + frame!.width / 2, frame!.y + 100);
+  await expect(board.locator('path.is-preview')).toBeVisible();
+  await right.first().click();
+  await expect(board.locator('path[data-pair]')).toHaveCount(1);
+  await expect(board.locator('path.is-preview')).toHaveCount(0);
+  // Replace the partner of a filled box, then move that option to another box.
+  await left.nth(1).click();
+  await right.first().click();
+  await expect(left.first()).not.toHaveClass(/is-paired/);
+  await left.nth(1).click();
+  await right.nth(1).click();
+  await expect(right.first()).not.toHaveClass(/is-paired/);
+  await expect(board.locator('path[data-pair]')).toHaveCount(1);
+  // Either side may be selected first, using only the keyboard.
+  await right.first().focus();
+  await learner.keyboard.press('Enter');
+  await left.first().focus();
+  await learner.keyboard.press('Enter');
+  await expect(board.locator('path[data-pair]')).toHaveCount(2);
+  // Cross the two pairs so both curves span different rows.
+  await left.first().click();
+  await right.nth(1).click();
+  await left.nth(1).click();
+  await right.first().click();
+  await expect(board.locator('path[data-pair]')).toHaveCount(2);
+  await expect(board.locator('path[data-pair]').first()).toBeVisible();
+  await expect(board.getByRole('status')).toContainText(
+    `2 of ${plan.pages[matching]!.units.length} pairs assigned`,
+  );
+  await learner.screenshot({
+    path: test.info().outputPath('matching-desktop.png'),
+    fullPage: true,
+  });
+  await learner.setViewportSize({ width: 360, height: 800 });
+  await expect(board.locator('.lesson-match-curves')).toBeHidden();
+  await expect(board.locator('.lesson-pair-badge:visible')).toHaveCount(4);
+  const firstLeft = await left.first().boundingBox();
+  const firstRight = await right.first().boundingBox();
+  expect(firstRight!.x).toBeGreaterThan(firstLeft!.x + firstLeft!.width);
+  expect(Math.abs(firstLeft!.y - firstRight!.y)).toBeLessThan(2);
+  await expectFitsTheScreen(learner, 'matching board');
+  await learner.screenshot({ path: test.info().outputPath('matching-phone.png'), fullPage: true });
+});
+
+test('practice choices stack and corrections stay beside typed answers', async ({
+  freshLearner,
+}) => {
+  test.setTimeout(120_000);
+  const learner = freshLearner;
+  await learner.setViewportSize({ width: 1440, height: 1000 });
+  await placeCourse(learner, { lang: 'fr', level: 'A1', dailyGoal: 10 });
+  await learner.goto(LESSON);
+  await learner.getByRole('button', { name: 'Start the lesson' }).click();
+  await learner.waitForURL(/\/play$/);
+  const plan = lessonPlan('fr-subject-pronouns');
+  const choice = plan.pages.findIndex(
+    (page) =>
+      page.role === 'practice' && page.items.some((item) => item.type === 'grammar_gap_choice'),
+  );
+  const typed = plan.pages.findIndex(
+    (page) =>
+      page.role === 'practice' && page.items.some((item) => item.type === 'grammar_gap_typing'),
+  );
+  await playLesson(learner, plan, { stop: (index) => index === choice });
+  const radios = learner.getByRole('radio');
+  const first = await radios.nth(0).boundingBox();
+  const second = await radios.nth(1).boundingBox();
+  expect(Math.abs(first!.x - second!.x)).toBeLessThan(2);
+  expect(second!.y).toBeGreaterThanOrEqual(first!.y + first!.height);
+  await answerPage(learner, plan.pages[choice]!, () => false);
+  await learner.getByRole('button', { name: 'Check', exact: true }).click();
+  await expect(learner.locator('[data-state="checked"]')).toBeVisible();
+  await expect(learner.locator('[role="radio"].text-green-200')).toHaveCount(1);
+  await expect(learner.locator('.lesson-item')).not.toContainText('Answer:');
+  await expect(
+    learner.locator('.lesson-item p').filter({ hasText: /^(Correct|Incorrect)$/ }),
+  ).toHaveCount(0);
+  await learner.screenshot({ path: test.info().outputPath('choice-feedback.png'), fullPage: true });
+  await learner.getByRole('button', { name: 'Continue', exact: true }).click();
+  await playLesson(learner, plan, { stop: (index) => index === typed });
+  await learner.getByRole('textbox').first().fill('zzz');
+  await learner.getByRole('button', { name: 'Check', exact: true }).click();
+  const correction = learner.locator('[data-inline-answer]').first();
+  await expect(correction).toHaveText(`Correct: ${plan.pages[typed]!.units[0]!.answer}`);
+  await learner.screenshot({ path: test.info().outputPath('typed-feedback.png'), fullPage: true });
+  const inputBox = await learner.getByRole('textbox').first().boundingBox();
+  const correctionBox = await correction.boundingBox();
+  expect(correctionBox!.x).toBeGreaterThan(inputBox!.x + inputBox!.width);
+  expect(
+    Math.abs(correctionBox!.y + correctionBox!.height / 2 - inputBox!.y - inputBox!.height / 2),
+  ).toBeLessThan(4);
+  await expect(learner.locator('.lesson-item')).not.toContainText('Answer:');
+  await expect(
+    learner.locator('.lesson-item p').filter({ hasText: /^(Correct|Incorrect)$/ }),
+  ).toHaveCount(0);
 });

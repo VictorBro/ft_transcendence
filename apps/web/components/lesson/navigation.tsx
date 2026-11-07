@@ -129,6 +129,7 @@ export function LessonNavigation({ outline, index }: { outline: LessonOutline; i
           className="lesson-point-strip"
           style={
             {
+              '--strip-count': rows.length,
               '--strip-fill': `${rows.length > 1 ? (rows.filter((row) => row.done).length / (rows.length - 1)) * 100 : 0}%`,
             } as CSSProperties
           }

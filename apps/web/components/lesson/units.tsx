@@ -4,7 +4,7 @@ import type { ReactNode } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 
 import { pick } from '@/lib/localized';
-import { FeedbackNote, UnitControl } from './controls';
+import { FeedbackNote, UnitControl, type Outcome } from './controls';
 import type { AnswerProps, Localized, UnitView } from './types';
 
 /**
@@ -34,11 +34,30 @@ export function Units({
               locked={locked}
               lang={lang}
             />
-            {note ? <FeedbackNote feedback={note} lang={lang} /> : null}
+            {note ? (
+              unit.kind === 'choice' || unit.kind === 'text' ? (
+                <span className="sr-only" role="status" data-outcome={note.outcome}>
+                  <OutcomeLabel outcome={note.outcome} />
+                </span>
+              ) : (
+                <FeedbackNote feedback={note} lang={lang} />
+              )
+            ) : null}
           </div>
         );
       })}
     </div>
+  );
+}
+
+function OutcomeLabel({ outcome }: { outcome: Outcome }) {
+  const t = useTranslations('Lesson');
+  return t(
+    outcome === 'fully_correct'
+      ? 'correct'
+      : outcome === 'orthography_only'
+        ? 'halfPoint'
+        : 'incorrect',
   );
 }
 
