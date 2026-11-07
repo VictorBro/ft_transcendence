@@ -76,7 +76,6 @@ function dataOf(state: AttemptState) {
   };
 }
 
-/** The attempt as the learner sees it. */
 /**
  * What an attempt closed before #95 earned: nothing. Its stored finish has
  * none of the three rewards, so they are filled in here, on the way out of
@@ -85,6 +84,7 @@ function dataOf(state: AttemptState) {
  */
 const EARNED_NOTHING = { xpGained: 0, challengeJustDone: false, newAchievements: [] };
 
+/** The attempt as the learner sees it. */
 function viewOf(plan: LessonPlan, row: LessonAttempt, now: Date) {
   const stored = row.results as unknown as Results | null;
   const results = stored && { ...stored, finish: { ...EARNED_NOTHING, ...stored.finish } };
