@@ -339,6 +339,7 @@ header:has(+ main .lesson-view) > div {
   padding: 12px 15px;
   border: 1px solid #334155;
   border-radius: 12px;
+  background-color: #1e1b4b;
   color: #cbd5e1;
   font-size: 15px;
   line-height: 1.45;
@@ -363,11 +364,11 @@ header:has(+ main .lesson-view) > div {
 }
 .lesson-result-choice.is-incorrect,
 .lesson-results-banner.is-incorrect {
-  background-color: #7f1d1d;
+  background-color: #312e81;
 }
 .lesson-result-choice.is-partial,
 .lesson-results-banner.is-partial {
-  background-image: repeating-linear-gradient(135deg, transparent 0 15px, #7f1d1d 15px 30px);
+  background-image: repeating-linear-gradient(135deg, transparent 0 15px, #312e81 15px 30px);
 }
 .lesson-results-banner {
   display: flex;
@@ -376,7 +377,7 @@ header:has(+ main .lesson-view) > div {
   border: 1px solid #334155;
   border-radius: 14px;
   padding: 32px;
-  background-color: #0f172a;
+  background-color: #1e1b4b;
 }
 .lesson-finish-summary {
   border-bottom: 1px solid #1e293b;
