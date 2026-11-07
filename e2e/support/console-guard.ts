@@ -174,6 +174,24 @@ export function isExpectedDocumentFailure(
 }
 
 /**
+ * /friends lists other learners, and avatar.spec.ts removes its avatar while
+ * another worker's /friends may be loading it. The image then answers 404,
+ * logged as a console.error at the image URL: the other account's, not the
+ * page's. Matched narrowly, and only for a page whose own accounts have no
+ * avatar, so none of theirs is hidden. Remove it if avatar.spec.ts stops
+ * sharing a stack with pages that list other learners.
+ */
+export function isRemovedAvatar(violation: ConsoleViolation): boolean {
+  return (
+    violation.kind === 'console.error' &&
+    violation.text.startsWith(
+      'Failed to load resource: the server responded with a status of 404 ',
+    ) &&
+    (violation.where?.includes('/api/uploads/avatars/') ?? false)
+  );
+}
+
+/**
  * Waits for the page to stop talking. Console messages arrive asynchronously,
  * so asserting straight after `goto` reads an empty array and passes a page
  * that throws half a second later.

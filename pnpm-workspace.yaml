@@ -28,7 +28,7 @@ allowBuilds:
   prisma: true
   # Native binary behind unplugin-swc, which vitest needs for decorator metadata.
   '@swc/core': true
-  # Next.js image optimisation.
+  # Installed by next for its image optimiser, which next.config turns off.
   sharp: true
   # Telemetry only. Nothing depends on it functionally, so deny it.
   '@scarf/scarf': false
