@@ -315,7 +315,9 @@
     "isFriend": "Already friends",
     "remove": "Remove",
     "removeConfirm": "Remove {name} from your friends?",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "online": "Online",
+    "offline": "Offline"
   },
   "UserPage": {
     "courses": "Courses",

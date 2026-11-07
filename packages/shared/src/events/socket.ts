@@ -47,7 +47,11 @@ export type CourseUpdated = z.infer<typeof CourseUpdatedSchema>;
 export const FriendEventSchema = z.object({ userId: z.uuid() });
 export type FriendEvent = z.infer<typeof FriendEventSchema>;
 
-export const PresenceStatusSchema = z.enum(['online', 'away', 'offline']);
+/**
+ * Online while at least one tab holds a socket, offline once the last one has
+ * been closed for the grace period. No `away`: nothing in the app could tell it apart.
+ */
+export const PresenceStatusSchema = z.enum(['online', 'offline']);
 export type PresenceStatus = z.infer<typeof PresenceStatusSchema>;
 
 export const PresenceUpdateSchema = z.object({

@@ -145,3 +145,48 @@ test('a stranger found by search is added from their profile, then visited as a 
     [],
   );
 });
+
+/** The API's PRESENCE_GRACE_MS: how long a closed tab may take to come back. */
+const PRESENCE_GRACE_MS = 10_000;
+
+const idOf = async (page: Page): Promise<string> =>
+  ((await (await page.request.get('/api/auth/me')).json()) as { id: string }).id;
+
+/**
+ * The issue's done-when: two people, two contexts. Closing the friend's only
+ * tab turns their dot grey on the other side once the grace period is over,
+ * and opening it again turns it green, with no reload on the watching side.
+ */
+test("a friend's dot goes grey when they leave and green when they come back", async ({
+  onboarded: watcher,
+  signedIn: friend,
+  account,
+}) => {
+  // The grace period alone is a third of the default 30 s.
+  test.setTimeout(60_000);
+  const [watcherId, friendId] = await Promise.all([idOf(watcher), idOf(friend)]);
+  // Friends through the API: the buttons are the first test's to cover.
+  expect((await watcher.request.post(`/api/friends/requests/${friendId}`)).ok()).toBe(true);
+  expect((await friend.request.post(`/api/friends/requests/${watcherId}/accept`)).ok()).toBe(true);
+
+  try {
+    const live = [liveConnection(watcher), liveConnection(friend)];
+    await Promise.all([watcher.goto('/en/friends'), friend.goto('/en/friends')]);
+    await Promise.all(live);
+
+    // The dot is the row's only image: the avatar is hidden from screen readers.
+    const dot = row(region(watcher, 'Your friends'), account.displayName).getByRole('img');
+    await expect(dot).toHaveAccessibleName('Online');
+
+    // The friend's only tab, and with it their only socket.
+    const context = friend.context();
+    await friend.close();
+    await expect(dot).toHaveAccessibleName('Offline', { timeout: PRESENCE_GRACE_MS + 10_000 });
+
+    await (await context.newPage()).goto('/en/friends');
+    await expect(dot).toHaveAccessibleName('Online');
+  } finally {
+    // The worker's next test expects the pair not to be friends.
+    await watcher.request.delete(`/api/friends/${friendId}`);
+  }
+});
