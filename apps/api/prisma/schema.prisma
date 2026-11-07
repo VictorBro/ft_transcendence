@@ -16,8 +16,8 @@ generator client {
   moduleFormat = "cjs"
 }
 
-// Mirrors UserSchema in packages/shared/src/schemas/user.ts. passwordHash is the
-// one column with no counterpart there, and must stay that way.
+// Mirrors UserSchema in packages/shared/src/schemas/user.ts. passwordHash, the
+// totp columns and lastActiveDay have no counterpart there, and must stay that way.
 model User {
   id           String   @id @default(uuid()) @db.Uuid
   email        String   @unique
@@ -29,6 +29,10 @@ model User {
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
   timeZone     String   @default("UTC")
+
+  // The UTC day a tab last opened its socket, written by the gateway once a
+  // day. Keeps the user in Recently active for a week; never sent.
+  lastActiveDay DateTime? @db.Date
 
   // Set when enrolment starts; totpEnabledAt stays null until a first code is
   // verified, so an abandoned enrolment never blocks a login.

@@ -191,7 +191,11 @@ sequenceDiagram
   refuses a page of another origin, a session with no `userId` and a deleted
   account, all with `auth.sessionRequired`. The Origin check matters because
   `ft.sid` is `SameSite=Lax`, and same-site is not same-origin: a page on a
-  sibling subdomain would send it too.
+  sibling subdomain would send it too. The account check also reads
+  `User.lastActiveDay`, and writes today's UTC date when it is not today: the
+  first tab of the day writes, the others only read. Recently active on
+  /friends lists who was active in the last 7 days, by name: polling it shows
+  someone coming back after a week away, and nothing finer.
 - **Refused quietly.** A refusal is a CONNECT_ERROR over a WebSocket that opened
   fine, which the browser does not log; an HTTP 401 on the upgrade would be a
   console error.
@@ -209,7 +213,7 @@ sequenceDiagram
   capped at 16 KiB, a zod parse from `CLIENT_EVENT_SCHEMAS`. A bad event gets
   `app:error { code }`, an `ERROR_CODES` entry, and is dropped, never a crash;
   past the limit, the first one is told `server.rateLimited` and the rest are
-  dropped. A session holds at most 20 sockets, checked before the user lookup:
+  dropped. A session holds at most 20 sockets, checked before the user write:
   one per tab is far below it, and a client opening sockets in a loop costs no
   query and cannot multiply the per-socket limit.
 - **Sent after the commit.** `course:updated { lang }` means "read this course
@@ -218,8 +222,9 @@ sequenceDiagram
   `RefreshOn` takes the list of events that refresh a page.
 - **Friend events** (`friend:request`, `friend:accepted`, `friend:removed`)
   go to both users of the pair, so the actor's other tabs follow too. They carry
-  `{ userId }`, the other user, and /friends refreshes on any of them. Decline
-  and cancel send `friend:removed`: the row between the two is gone.
+  `{ userId }`, the other user, and /friends and /users/[id] refresh on any of
+  them. Decline and cancel send `friend:removed`: the row between the two is
+  gone.
 - **One connection per tab**, held in module scope (`components/tab-socket.ts`)
   and opened by `SessionNav` for a signed-in user, so a route group remount or a
   locale switch never drops it and an anonymous page never opens one. WebSocket

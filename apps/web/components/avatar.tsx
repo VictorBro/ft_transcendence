@@ -14,9 +14,6 @@ export function Avatar({ src, name, size }: { src: string | null; name: string; 
         alt=""
         width={size}
         height={size}
-        // The file is served by the api, which Next's optimiser cannot reach:
-        // it would fetch the path from the web container instead.
-        unoptimized
         className="rounded-full object-cover"
         style={{ width: size, height: size }}
       />
