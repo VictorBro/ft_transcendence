@@ -512,13 +512,13 @@ describe('FinishResultSchema', () => {
     expect(FinishResultSchema.safeParse({ ...result, xpGained: -10 }).success).toBe(false);
   });
 
-  it('reads a finish stored before #95 as one that earned nothing', () => {
-    const { xpGained: _x, challengeJustDone: _c, newAchievements: _n, ...before95 } = result;
-    expect(FinishResultSchema.parse(before95)).toEqual({
-      ...before95,
-      xpGained: 0,
-      challengeJustDone: false,
-      newAchievements: [],
-    });
+  // Strict on purpose: a finish that forgets its rewards fails here rather
+  // than reading as one that earned nothing. Stored results from before #95
+  // get theirs on the way out of the row (viewOf, attempts.service.ts).
+  it('requires each of the three rewards', () => {
+    for (const field of ['xpGained', 'challengeJustDone', 'newAchievements'] as const) {
+      const { [field]: _dropped, ...without } = result;
+      expect(FinishResultSchema.safeParse(without).success, field).toBe(false);
+    }
   });
 });
