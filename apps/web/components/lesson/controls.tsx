@@ -232,10 +232,6 @@ export function ChoiceControl({
               }}
               className={`min-h-11 rounded-md border px-4 py-2 text-left transition-colors disabled:cursor-default ${tone}`}
             >
-              <span
-                aria-hidden="true"
-                className={`h-4 w-4 shrink-0 rounded-full border ${chosen ? 'border-indigo-300 bg-indigo-400 ring-2 ring-indigo-400/25 ring-offset-2 ring-offset-slate-900' : 'border-slate-500 bg-slate-800'}`}
-              />
               {option.text}
             </button>
           );
