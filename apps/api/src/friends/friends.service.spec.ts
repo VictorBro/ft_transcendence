@@ -2,6 +2,7 @@ import { BadRequestException, NotFoundException } from '@nestjs/common';
 import { describe, expect, it, vi } from 'vitest';
 
 import type { SocketsService } from '../gateway/sockets.service';
+import type { PresenceService } from '../presence/presence.service';
 import type { PrismaService } from '../prisma/prisma.service';
 import { FriendsService } from './friends.service';
 import { pairKey } from './pair';
@@ -18,10 +19,16 @@ const OTHER = 'c0000000-0000-4000-8000-000000000000';
 const prismaError = (code: string) => Object.assign(new Error(code), { code });
 const person = (id: string) => ({ id, displayName: `user-${id[0]}`, avatarUrl: null });
 
-function serviceWith(friendship: Record<string, unknown>, sockets = { toUser: vi.fn() }) {
+function serviceWith(
+  friendship: Record<string, unknown>,
+  sockets = { toUser: vi.fn() },
+  // Nobody online unless a test says otherwise.
+  presence = { isOnline: vi.fn().mockResolvedValue(new Set<string>()) },
+) {
   const service = new FriendsService(
     { friendship } as unknown as PrismaService,
     sockets as unknown as SocketsService,
+    presence as unknown as PresenceService,
   );
   return { service, toUser: sockets.toUser };
 }
@@ -127,13 +134,14 @@ describe('FriendsService writes that find nothing', () => {
 });
 
 describe('FriendsService list', () => {
+  const row = (status: string, requesterId: string, addresseeId: string) => ({
+    status,
+    requesterId,
+    requester: person(requesterId),
+    addressee: person(addresseeId),
+  });
+
   it('sorts each row into friends, received or sent, from your side', async () => {
-    const row = (status: string, requesterId: string, addresseeId: string) => ({
-      status,
-      requesterId,
-      requester: person(requesterId),
-      addressee: person(addresseeId),
-    });
     const { service } = serviceWith({
       findMany: vi
         .fn()
@@ -145,9 +153,35 @@ describe('FriendsService list', () => {
     });
 
     await expect(service.list(ME)).resolves.toEqual({
-      friends: [person(THEM)],
+      friends: [{ ...person(THEM), online: false }],
       received: [person(OTHER)],
       sent: [person(THEM)],
     });
+  });
+
+  // One question for every friend, and none about a request: it does not let anyone watch.
+  it('marks the friends who are online, asking once about friends only', async () => {
+    const isOnline = vi.fn().mockResolvedValue(new Set([THEM]));
+    const { service } = serviceWith(
+      {
+        findMany: vi
+          .fn()
+          .mockResolvedValue([
+            row('accepted', THEM, ME),
+            row('accepted', ME, OTHER),
+            row('pending', ME, ME),
+          ]),
+      },
+      undefined,
+      { isOnline },
+    );
+
+    const { friends } = await service.list(ME);
+
+    expect(friends).toEqual([
+      { ...person(THEM), online: true },
+      { ...person(OTHER), online: false },
+    ]);
+    expect(isOnline).toHaveBeenCalledExactlyOnceWith([THEM, OTHER]);
   });
 });
