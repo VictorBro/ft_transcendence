@@ -1,5 +1,5 @@
 import { Logger } from '@nestjs/common';
-import { afterEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import type { Event } from 'socket.io';
 
 import { seriesValue } from '../../test/metrics.fixtures';
@@ -46,16 +46,20 @@ function fakeSocket(
   };
 }
 
-function gatewayWith(findUnique = vi.fn().mockResolvedValue({ id: 'u1' })) {
+/** A user last active on another day unless a test says otherwise. */
+function gatewayWith(
+  findUnique = vi.fn().mockResolvedValue({ lastActiveDay: new Date('2026-01-01') }),
+) {
   // The session is still in Redis unless a test says otherwise.
   const exists = vi.fn().mockResolvedValue(1);
+  const update = vi.fn().mockResolvedValue({});
   const sockets = { closeSession: vi.fn(), attach: vi.fn() };
   const gateway = new SocketGateway(
-    { user: { findUnique } } as unknown as PrismaService,
+    { user: { findUnique, update } } as unknown as PrismaService,
     { client: { exists } } as unknown as RedisService,
     sockets as unknown as SocketsService,
   );
-  return { gateway, findUnique, exists, sockets };
+  return { gateway, findUnique, update, exists, sockets };
 }
 
 describe('sameOrigin', () => {
@@ -103,6 +107,42 @@ describe('SocketGateway authenticate', () => {
     expect(next).toHaveBeenCalledWith();
     // In the room before the CONNECT ack, so an event right after connecting arrives.
     expect(join.mock.invocationCallOrder[0]).toBeLessThan(next.mock.invocationCallOrder[0]);
+  });
+
+  describe('the day stamp', () => {
+    // A fixed clock, so no test can straddle midnight UTC.
+    const NOW = new Date('2026-11-06T12:00:00Z');
+    const TODAY = new Date('2026-11-06');
+    beforeEach(() => {
+      vi.useFakeTimers({ toFake: ['Date'] });
+      vi.setSystemTime(NOW);
+    });
+    afterEach(() => {
+      vi.useRealTimers();
+    });
+
+    it.each([
+      ['an older day', new Date('2026-01-01')],
+      ['never active', null],
+    ])("writes today's UTC day over %s", async (_, lastActiveDay) => {
+      const { gateway, update } = gatewayWith(vi.fn().mockResolvedValue({ lastActiveDay }));
+      const next = vi.fn();
+
+      await gateway.authenticate(fakeSocket({ userId: 'u1' }).socket, next);
+
+      expect(update).toHaveBeenCalledWith({ where: { id: 'u1' }, data: { lastActiveDay: TODAY } });
+      expect(next).toHaveBeenCalledWith();
+    });
+
+    it('only reads on a later tab the same day', async () => {
+      const { gateway, update } = gatewayWith(vi.fn().mockResolvedValue({ lastActiveDay: TODAY }));
+      const next = vi.fn();
+
+      await gateway.authenticate(fakeSocket({ userId: 'u1' }).socket, next);
+
+      expect(update).not.toHaveBeenCalled();
+      expect(next).toHaveBeenCalledWith();
+    });
   });
 
   it('refuses a page of another origin, even with a valid session', async () => {
@@ -165,12 +205,13 @@ describe('SocketGateway authenticate', () => {
 
   // Like AuthGuard: the session outlives a deleted account.
   it('refuses a session whose user no longer exists', async () => {
-    const { gateway } = gatewayWith(vi.fn().mockResolvedValue(null));
+    const { gateway, update } = gatewayWith(vi.fn().mockResolvedValue(null));
     const next = vi.fn();
 
     await gateway.authenticate(fakeSocket({ userId: 'gone' }).socket, next);
 
     expect(next).toHaveBeenCalledWith(new Error('auth.sessionRequired'));
+    expect(update).not.toHaveBeenCalled();
   });
 
   it('refuses with server.unexpected when the database fails', async () => {

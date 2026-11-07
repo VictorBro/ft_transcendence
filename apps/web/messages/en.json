@@ -304,15 +304,24 @@
     "sent": "Requests sent",
     "yourFriends": "Your friends",
     "noFriends": "No friends yet. Search for someone by their display name.",
+    "recentlyActive": "Recently active",
+    "noRecentlyActive": "Nobody else yet.",
     "add": "Add friend",
     "accept": "Accept",
     "decline": "Decline",
     "cancelRequest": "Cancel request",
     "requestSent": "Request sent",
+    "requestReceived": "Request received",
     "isFriend": "Already friends",
     "remove": "Remove",
     "removeConfirm": "Remove {name} from your friends?",
     "cancel": "Cancel"
+  },
+  "UserPage": {
+    "courses": "Courses",
+    "noCourses": "No courses yet.",
+    "noLevel": "No level yet",
+    "streak": "{count, plural, one {# day streak} other {# day streak}}"
   },
   "TwoFactorPage": {
     "heading": "Two factor authentication",

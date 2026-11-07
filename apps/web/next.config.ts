@@ -22,6 +22,10 @@ const nextConfig: NextConfig = {
   transpilePackages: ['@ft/ui'],
   reactStrictMode: true,
   poweredByHeader: false,
+  // No runtime image optimiser: the logo ships pre-sized, avatars come from the
+  // api (which the optimiser cannot reach) and the 2FA QR code is a data URL.
+  // A resize stuck in the web container hung every page showing the logo.
+  images: { unoptimized: true },
 };
 
 export default withNextIntl(nextConfig);

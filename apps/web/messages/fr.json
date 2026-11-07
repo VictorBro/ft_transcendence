@@ -304,15 +304,24 @@
     "sent": "Demandes envoyées",
     "yourFriends": "Tes amis",
     "noFriends": "Pas encore d'amis. Recherche quelqu'un par son nom d'affichage.",
+    "recentlyActive": "Actifs récemment",
+    "noRecentlyActive": "Personne d'autre pour l'instant.",
     "add": "Ajouter en ami",
     "accept": "Accepter",
     "decline": "Refuser",
     "cancelRequest": "Annuler la demande",
     "requestSent": "Demande envoyée",
+    "requestReceived": "Demande reçue",
     "isFriend": "Déjà amis",
     "remove": "Retirer",
     "removeConfirm": "Retirer {name} de tes amis ?",
     "cancel": "Annuler"
+  },
+  "UserPage": {
+    "courses": "Cours",
+    "noCourses": "Pas encore de cours.",
+    "noLevel": "Pas encore de niveau",
+    "streak": "{count, plural, one {Série de # jour} other {Série de # jours}}"
   },
   "TwoFactorPage": {
     "heading": "Authentification à deux facteurs",
