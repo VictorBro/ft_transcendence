@@ -8,7 +8,6 @@ import { FormError, PRIMARY_BUTTON } from '@/components/form';
 import { ConfirmDialog } from '@/components/lesson/confirm-dialog';
 import { ITEM_RENDERERS } from '@/components/lesson/kinds';
 import { LessonNavigation } from '@/components/lesson/navigation';
-import { START_FIELDS } from '@/components/lesson/kinds';
 import type {
   Answer,
   ItemProps,
@@ -18,7 +17,7 @@ import type {
   UnitFeedback,
 } from '@/components/lesson/types';
 import { ItemCard } from '@/components/lesson/units';
-import { Link, useRouter } from '@/i18n/navigation';
+import { useRouter } from '@/i18n/navigation';
 import { useErrorMessage } from '@/lib/error-message';
 import {
   loadDrafts,
@@ -29,6 +28,7 @@ import {
   submitPage,
   clearDrafts,
 } from '@/lib/lesson-client';
+import { recordPlayerOrigin, playerHasLessonOrigin } from '@/lib/lesson-history';
 import { pick } from '@/lib/localized';
 import { ExamTimer } from './exam-timer';
 
@@ -385,9 +385,6 @@ export function LessonPlayer({
                 />
               ) : null}
             </div>
-            {page.index === 0
-              ? START_FIELDS.map((Field, n) => <Field key={n} outline={outline} lang={lang} />)
-              : null}
 
             {ranOut ? (
               <p
@@ -497,6 +494,13 @@ function PlayerHeader({
   const t = useTranslations('Lesson');
   const router = useRouter();
   const dialog = useRef<HTMLDialogElement>(null);
+  useEffect(() => recordPlayerOrigin(pagePath), [pagePath]);
+  function leave() {
+    if (playerHasLessonOrigin(pagePath)) router.back();
+    else router.replace(pagePath);
+  }
+  const hasExam = outline.pages.some((page) => page.role === 'exam' && page.questions > 0);
+  const practiceWeight = hasExam ? lessons.player.POLICY.practiceWeight : 100;
   const total = outline.pages.reduce((sum, p) => sum + p.seconds, 0);
   const done = outline.pages.slice(0, index).reduce((sum, p) => sum + p.seconds, 0);
   const percent = total === 0 ? 0 : Math.round((done / total) * 100);
@@ -539,17 +543,16 @@ function PlayerHeader({
               yes={t('leaveYes')}
               onYes={() => {
                 dialog.current?.close();
-                // Replaced: Back from the lesson page must not reopen the exam.
-                router.replace(pagePath);
+                leave();
               }}
             >
               {t('leaveConfirm')}
             </ConfirmDialog>
           </>
         ) : (
-          <Link href={pagePath} replace aria-label={t('leave')} className={closeClass}>
+          <button type="button" onClick={leave} aria-label={t('leave')} className={closeClass}>
             {close}
-          </Link>
+          </button>
         )}
         <div
           role="progressbar"
@@ -577,7 +580,7 @@ function PlayerHeader({
                 earned:
                   practice.possible === 0
                     ? 0
-                    : Math.round((350 * practice.earned) / practice.possible) / 10,
+                    : Math.round((10 * practiceWeight * practice.earned) / practice.possible) / 10,
                 possible: 100,
               })}
             </span>

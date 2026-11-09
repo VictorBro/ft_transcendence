@@ -10,6 +10,7 @@ import { Link, useRouter } from '@/i18n/navigation';
 import { useErrorMessage } from '@/lib/error-message';
 import type { LessonStage } from '@/lib/lesson';
 import { forgetAttempt, isStale, rememberAttempt, startAttempt } from '@/lib/lesson-client';
+import { preparePlayerNavigation } from '@/lib/lesson-history';
 import type { Cursor } from '@/lib/lesson-cursor';
 
 /** Starts (or retakes) the lesson, then opens the player. */
@@ -27,6 +28,7 @@ function useStartLesson(lang: Language, id: string, playPath: string) {
     if (result.ok) {
       rememberAttempt(lang, id, result.data);
       // Pushed, so Back from the player comes to the page before it.
+      preparePlayerNavigation(playPath);
       router.push(playPath);
       return;
     }
@@ -126,7 +128,11 @@ export function LessonActions({
     return (
       <div className="flex flex-col items-start gap-3">
         {stage === 'exam' ? <p className="text-sm text-amber-300">{t('examOpen')}</p> : null}
-        <Link href={playPath} className={PRIMARY_BUTTON}>
+        <Link
+          href={playPath}
+          onNavigate={() => preparePlayerNavigation(playPath)}
+          className={PRIMARY_BUTTON}
+        >
           {stage === 'exam' ? t('resumeExam') : t('resume')}
         </Link>
       </div>

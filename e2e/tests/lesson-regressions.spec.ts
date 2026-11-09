@@ -185,6 +185,11 @@ test('matching curves stay editable and have compact phone pair markers', async 
   expect(Math.abs(firstLeft!.y - firstRight!.y)).toBeLessThan(2);
   await expectFitsTheScreen(learner, 'matching board');
   await learner.screenshot({ path: test.info().outputPath('matching-phone.png'), fullPage: true });
+  await answerPage(learner, plan.pages[matching]!, () => false);
+  await learner.getByRole('button', { name: 'Check', exact: true }).click();
+  const corrections = learner.locator('[data-correct-partner]');
+  await expect(corrections.first()).toBeVisible();
+  await expect(corrections.first()).not.toBeEmpty();
 });
 
 test('practice choices stack and corrections stay beside typed answers', async ({

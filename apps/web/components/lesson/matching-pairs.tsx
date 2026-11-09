@@ -59,11 +59,8 @@ export function MatchingPairs({
       const read = (buttons: Map<Ref, HTMLButtonElement>, side: 'left' | 'right') =>
         Object.fromEntries(
           [...buttons].map(([ref, button]) => {
-            // The right button slides after checking; its cell is the stable
-            // endpoint, so the curve still meets it when the animation ends.
-            const rect = (
-              side === 'right' ? button.parentElement! : button
-            ).getBoundingClientRect();
+            // Measure the button, not the row: corrections can make a row taller.
+            const rect = button.getBoundingClientRect();
             return [
               ref,
               {
@@ -197,10 +194,15 @@ export function MatchingPairs({
                       </span>
                     ) : null}
                   </button>
-                  {note ? (
-                    <span className="sr-only" data-outcome={note.outcome}>
+                  {note && note.outcome !== 'fully_correct' ? (
+                    <p
+                      className="mt-2 text-sm font-semibold text-green-400"
+                      lang={lang}
+                      data-correct-partner
+                    >
+                      <span aria-hidden="true">→ </span>
                       {note.answer}
-                    </span>
+                    </p>
                   ) : null}
                 </li>
               );
