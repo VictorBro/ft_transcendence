@@ -11,7 +11,7 @@ import { resultScoreTone } from '@/lib/result-score-tone';
 type Results = lessons.player.Results;
 const points = (value: number) => (Number.isInteger(value) ? `${value}` : value.toFixed(1));
 const tone = (earned: number, possible: number) =>
-  earned === possible ? 'is-correct' : earned === 0 ? 'is-incorrect' : 'is-partial';
+  resultScoreTone(possible ? (100 * earned) / possible : 0);
 
 const subscribeToHash = (onChange: () => void) => {
   window.addEventListener('hashchange', onChange);

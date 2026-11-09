@@ -366,31 +366,6 @@ header:has(+ main .lesson-view) > div {
 .lesson-result-choice:hover {
   border-color: #818cf8;
 }
-.lesson-result-choice.is-correct {
-  background: #14532d;
-  border-color: #22c55e;
-  color: #f0fdf4;
-}
-.lesson-result-choice.is-correct > span:last-child {
-  color: #bbf7d0;
-}
-.lesson-result-choice.is-incorrect {
-  background: #7f1d1d;
-  border-color: #f87171;
-  color: #fef2f2;
-}
-.lesson-result-choice.is-incorrect > span:last-child {
-  color: #fecaca;
-}
-.lesson-result-choice.is-partial {
-  background-color: #4c1d95;
-  background-image: repeating-linear-gradient(135deg, #4c1d95 0 15px, #7f1d1d 15px 30px);
-  border-color: #c084fc;
-  color: #faf5ff;
-}
-.lesson-result-choice.is-partial > span:last-child {
-  color: #f3e8ff;
-}
 .lesson-results-banner {
   display: flex;
   flex-direction: column;
@@ -400,17 +375,44 @@ header:has(+ main .lesson-view) > div {
   padding: 32px;
   background-color: #1e1b4b;
 }
+.lesson-result-choice.score-excellent,
 .lesson-results-banner.score-excellent {
   background: #14532d;
 }
+.lesson-result-choice.score-passed,
 .lesson-results-banner.score-passed {
   background: repeating-linear-gradient(135deg, #1e1b4b 0 15px, #312e81 15px 30px);
 }
+.lesson-result-choice.score-partial,
 .lesson-results-banner.score-partial {
   background: repeating-linear-gradient(135deg, #4c1d95 0 15px, #7f1d1d 15px 30px);
 }
+.lesson-result-choice.score-low,
 .lesson-results-banner.score-low {
   background: #7f1d1d;
+}
+.lesson-result-choice.score-excellent {
+  border-color: #22c55e;
+  color: #f0fdf4;
+}
+.lesson-result-choice.score-excellent > span:last-child {
+  color: #bbf7d0;
+}
+.lesson-result-choice.score-low {
+  border-color: #f87171;
+  color: #fef2f2;
+}
+.lesson-result-choice.score-low > span:last-child {
+  color: #fecaca;
+}
+.lesson-result-choice.score-passed,
+.lesson-result-choice.score-partial {
+  border-color: #a78bfa;
+  color: #faf5ff;
+}
+.lesson-result-choice.score-passed > span:last-child,
+.lesson-result-choice.score-partial > span:last-child {
+  color: #f3e8ff;
 }
 .lesson-finish-summary {
   border-bottom: 1px solid #1e293b;
