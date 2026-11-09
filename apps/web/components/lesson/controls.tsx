@@ -5,7 +5,6 @@ import { useLocale, useTranslations } from 'next-intl';
 import type { Language } from '@ft/shared';
 
 import { pick } from '@/lib/localized';
-import { orthographyHint } from '@/lib/lesson-feedback';
 import type { Answer, Ref, UnitFeedback, UnitView } from './types';
 
 /*
@@ -124,7 +123,6 @@ export function TextControl({
       </strong>
     ) : null;
   const expected = feedback?.accepted ?? feedback?.form ?? feedback?.answer;
-  const reason = feedback && expected ? orthographyHint(textOf(value), expected) : null;
   const note = feedback ? (
     <p
       role="status"
@@ -142,29 +140,57 @@ export function TextControl({
         {feedback.outcome === 'fully_correct'
           ? t('correct')
           : feedback.outcome === 'orthography_only'
-            ? t(reason ?? 'almostSpelling', { answer: expected ?? '' })
+            ? t('almost')
             : t('notQuiteExpected', { answer: expected ?? '' })}
       </span>
     </p>
   ) : null;
+  const marked = feedback?.outcome === 'orthography_only' && feedback.marks?.length;
   const input = (
-    <input
-      type="text"
-      maxLength={300}
-      lang={lang}
-      value={textOf(value)}
-      disabled={locked}
-      aria-label={
-        gap ? `${before ?? ''} … ${after ?? ''}`.trim() : (learning ?? native ?? t('yourAnswer'))
-      }
-      autoComplete="off"
-      autoCapitalize="off"
-      spellCheck={false}
-      onChange={(e) => onChange(e.target.value === '' ? undefined : { text: e.target.value })}
-      className={`min-h-11 min-w-0 rounded-md border px-3 py-2 text-slate-100 outline-none focus-visible:ring-2 focus-visible:ring-slate-100 disabled:opacity-90 ${outcomeTone(
-        feedback?.outcome,
-      )} ${gap ? 'w-40 max-w-full' : 'w-full'}`}
-    />
+    <span className={`relative inline-flex min-w-0 max-w-full ${gap ? 'w-40' : 'w-full'}`}>
+      <input
+        type="text"
+        maxLength={300}
+        lang={lang}
+        value={textOf(value)}
+        disabled={locked}
+        aria-label={
+          gap ? `${before ?? ''} … ${after ?? ''}`.trim() : (learning ?? native ?? t('yourAnswer'))
+        }
+        autoComplete="off"
+        autoCapitalize="off"
+        spellCheck={false}
+        onChange={(e) => onChange(e.target.value === '' ? undefined : { text: e.target.value })}
+        className={`min-h-11 min-w-0 rounded-md border px-3 py-2 ${marked ? 'text-transparent' : 'text-slate-100'} outline-none focus-visible:ring-2 focus-visible:ring-slate-100 disabled:opacity-90 ${outcomeTone(
+          feedback?.outcome,
+        )} w-full`}
+      />
+      {marked ? (
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 flex items-center overflow-hidden whitespace-pre px-3 py-2 text-slate-100"
+          data-answer-marks
+        >
+          {feedback
+            .marks!.flatMap((mark) =>
+              [...mark.text].map((letter) => ({ letter, wrong: mark.wrong })),
+            )
+            .map(({ letter, wrong }, index) => (
+              <span
+                key={index}
+                className={
+                  wrong
+                    ? "relative shrink-0 bg-amber-400/10 after:absolute after:inset-x-px after:-bottom-1 after:border-b-2 after:border-amber-400 after:content-['']"
+                    : 'shrink-0'
+                }
+                data-mark-wrong={wrong || undefined}
+              >
+                {letter}
+              </span>
+            ))}
+        </span>
+      ) : null}
+    </span>
   );
   if (gap) {
     return (

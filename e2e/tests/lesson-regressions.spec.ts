@@ -268,7 +268,10 @@ test('yellow typed feedback waits for Continue while green advances automaticall
   await learner.getByRole('button', { name: 'Check', exact: true }).click();
   const note = learner.locator('p[role="status"][data-outcome="orthography_only"]');
   await expect(note).toBeVisible();
-  await expect(note).toContainText(expected);
+  await expect(note).toContainText('Almost');
+  await expect(learner.locator('[data-answer-marks] [data-mark-wrong]').first()).toBeVisible();
+  await expect(note.locator('[data-feedback-icon="orthography_only"]')).toBeVisible();
+  await expect(note).not.toContainText('Use lowercase');
   await learner.clock.runFor(2_000);
   await expect(learner.locator('[data-page-index]')).toHaveAttribute(
     'data-page-index',
