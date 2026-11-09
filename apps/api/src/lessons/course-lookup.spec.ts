@@ -45,6 +45,7 @@ describe('findLesson', () => {
     theme: null,
     title: 'Le, la, les',
     summary: 'Les articles définis.',
+    ready: true,
   };
 
   it('gives back the lesson, searched in this language only', async () => {

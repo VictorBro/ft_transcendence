@@ -5,7 +5,8 @@ import {
   LessonCard,
   LessonQuery,
   LESSONS_PAGE_SIZE,
-  LessonStatus,
+  LessonRowStatus,
+  rowStatus,
 } from '@ft/shared';
 
 /**
@@ -70,12 +71,15 @@ export function searchLessons(
  *   - Otherwise the lesson passes if it has ANY of the values in the list.
  *     status = [done, failed] → a done lesson passes, a failed one too,
  *     a todo one does not.
+ *
+ * The status is the row's (rowStatus): a lesson not ready is soon, never
+ * todo, so Not started only lists lessons that can be played.
  */
 function matchesFilters(card: LessonCard, query: LessonQuery): boolean {
   // The 2 rules above, written once. <T> lets it work for statuses and kinds alike.
   const anyOf = <T>(values: T[], value: T) => values.length === 0 || values.includes(value);
   return (
-    anyOf(query.status, card.status) &&
+    anyOf(query.status, rowStatus(card)) &&
     anyOf(query.kind, card.kind) &&
     // Topic and theme follow the same 2 rules, but a lesson can have none:
     // grammar lessons have a topic and no theme, the others a theme and no
@@ -148,8 +152,14 @@ function matchesText(card: LessonCard, words: string[], lang: Language): boolean
  * And b - a, or -1 * (a - b), gives the biggest first.
  */
 
-/** The order of the statuses when grouping: failed first, then todo, then done. */
-const STATUS_ORDER: Record<LessonStatus, number> = { failed: 0, todo: 1, done: 2 };
+/** The order of the statuses when grouping: failed, todo, done, then soon. */
+const STATUS_ORDER: Record<LessonRowStatus, number> = { failed: 0, todo: 1, done: 2, soon: 3 };
+
+/** Lessons not ready go after every ready one: false is 0, true is 1. */
+const soonLast: Compare = (a, b) => Number(!a.ready) - Number(!b.ready);
+
+/** The day a row is grouped under: none for a lesson not ready, whatever its result. */
+const groupDay = (card: LessonCard) => (card.ready ? card.day : null);
 
 /**
  * Compares two values that can be null, and always puts null at the end.
@@ -190,15 +200,15 @@ function ascending(a: number | string, b: number | string): number {
  * The order of the groups never changes, even when the user picks
  * big to small (`dir`).
  *   none   → no groups: always a tie, so only the sort decides
- *   status → failed, then todo, then done
- *   day    → the newest day first, never started last
+ *   status → failed, then todo, then done, then soon (rowStatus)
+ *   day    → the newest day first, then never started, then not ready
  *   kind   → the order of LESSON_KINDS
  */
 const GROUPS: Record<LessonQuery['group'], Compare> = {
   none: () => 0,
-  status: (a, b) => STATUS_ORDER[a.status] - STATUS_ORDER[b.status],
+  status: (a, b) => STATUS_ORDER[rowStatus(a)] - STATUS_ORDER[rowStatus(b)],
   // y before x, to flip it: the newest day first.
-  day: (a, b) => nullsLast(a.day, b.day, (x, y) => ascending(y, x)),
+  day: (a, b) => soonLast(a, b) || nullsLast(groupDay(a), groupDay(b), (x, y) => ascending(y, x)),
   kind: (a, b) => LESSON_KINDS.indexOf(a.kind) - LESSON_KINDS.indexOf(b.kind),
 };
 

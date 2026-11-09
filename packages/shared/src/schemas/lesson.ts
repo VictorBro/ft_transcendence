@@ -266,6 +266,8 @@ export const LessonCardSchema = z
     theme: ThemeSchema.nullable(),
     title: LessonTitleSchema,
     summary: LessonSummarySchema,
+    /** Its files exist and validate (set by the seed). A lesson not ready cannot be played. */
+    ready: z.boolean(),
     status: LessonStatusSchema,
     /** The best score. Null, like day and finishedAt, for a lesson never started. */
     score: ScoreSchema.nullable(),
@@ -286,6 +288,18 @@ export const LessonCardSchema = z
     path: ['status'],
   });
 export type LessonCard = z.infer<typeof LessonCardSchema>;
+
+/**
+ * A row of the all lessons page: its status, or soon while the lesson is not
+ * ready, whatever result it may have. The status filter and the status groups
+ * read this, so a lesson not ready is never Not started.
+ */
+export const LESSON_ROW_STATUSES = [...LESSON_STATUSES, 'soon'] as const;
+export type LessonRowStatus = (typeof LESSON_ROW_STATUSES)[number];
+
+export function rowStatus(card: Pick<LessonCard, 'ready' | 'status'>): LessonRowStatus {
+  return card.ready ? card.status : 'soon';
+}
 
 const countSchema = z.number().int().min(0);
 
@@ -359,7 +373,7 @@ export const LessonQuerySchema = z.object({
     // Cut by code point, so an emoji is never split, and trim again after the cut.
     .transform((q) => [...q.trim()].slice(0, LESSON_QUERY_MAX).join('').trim())
     .catch(''),
-  status: commaList(LESSON_STATUSES),
+  status: commaList(LESSON_ROW_STATUSES),
   kind: commaList(LESSON_KINDS),
   topic: commaList(TOPICS),
   theme: commaList(THEMES),

@@ -228,11 +228,11 @@ export class LessonsService {
     // The results are NOT filtered by level: after a level change at noon,
     // the lessons of the old level finished this morning must stay in today's done.
     // Every lesson of the level, ready or not: the list shows them all.
-    const [rows, results] = await Promise.all([
+    const [lessons, results] = await Promise.all([
       this.prisma.lesson.findMany({
         where: { lang, level },
         orderBy: { position: 'asc' },
-        select: { ...LESSON_SELECT, ready: true },
+        select: LESSON_SELECT,
       }),
       this.prisma.lessonResult.findMany({
         where: { userLevelId: course.id },
@@ -248,11 +248,7 @@ export class LessonsService {
       latestDay([...results.map((result) => result.day), course.lastGoalDay]),
     );
 
-    // `ready` is for the rules only (plan and levelProgress skip a lesson that
-    // is not): the strict card schema has no such field, so the cards get
-    // the rows without it.
-    const lessons = rows.map(({ ready: _ready, ...lesson }) => lesson);
-    return { course, level, lessons, ruleLessons: rows, results, day };
+    return { course, level, lessons, results, day };
   }
 
   /**
@@ -310,7 +306,6 @@ export class LessonsService {
       course,
       level,
       lessons,
-      ruleLessons,
       results: rows,
       day,
     } = await this.load(userId, lang, timeZone, now);
@@ -322,7 +317,7 @@ export class LessonsService {
     // Then the lessons of the current level, done or not.
     const cards = cardsById([...rows.map((row) => row.lesson), ...lessons], resultsById(results));
     const toCards = (ids: LessonId[]) => ids.map((id) => cards.get(id)!);
-    const { done, proposed, extra } = plan(ruleLessons, results, day, goal);
+    const { done, proposed, extra } = plan(lessons, results, day, goal);
 
     const streak = storedStreak(course);
 
@@ -338,7 +333,7 @@ export class LessonsService {
         best: course.bestStreak,
         today: streak.lastGoalDay === day,
       },
-      progress: levelProgress(ruleLessons, results),
+      progress: levelProgress(lessons, results),
       levelAfter: levelAfter(level),
     });
   }

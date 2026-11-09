@@ -19,6 +19,7 @@ const card = (position: number, overrides: Partial<LessonCard> = {}): LessonCard
   theme: null,
   title: `Lesson ${position}`,
   summary: 'A summary.',
+  ready: true,
   status: 'todo',
   score: null,
   day: null,
@@ -42,6 +43,10 @@ const scored = (
 
 const theme = (position: number, overrides: Partial<LessonCard> = {}): LessonCard =>
   card(position, { kind: 'vocabulary', topic: null, theme: 'daily_life', ...overrides });
+
+/** A lesson whose files are not there yet: Coming soon. */
+const soon = (position: number, overrides: Partial<LessonCard> = {}): LessonCard =>
+  card(position, { ready: false, ...overrides });
 
 const query = (overrides: Partial<LessonQuery> = {}): LessonQuery => ({
   q: '',
@@ -182,6 +187,19 @@ describe('searchLessons, filters', () => {
     expect(positions(cards, { kind: ['reading'], theme: ['daily_life'] })).toEqual([]);
   });
 
+  it('keeps only the lessons not ready for soon, and only ready ones for todo', () => {
+    const rows = [card(1), soon(2), scored(3, 90, '2026-10-10'), soon(4)];
+    expect(positions(rows, { status: ['soon'] })).toEqual([2, 4]);
+    expect(positions(rows, { status: ['todo'] })).toEqual([1]);
+    expect(positions(rows, { status: ['todo', 'soon'] })).toEqual([1, 2, 4]);
+  });
+
+  it('reads a lesson no longer ready as soon, even with a result', () => {
+    const rows = [scored(1, 90, '2026-10-10', { ready: false })];
+    expect(positions(rows, { status: ['soon'] })).toEqual([1]);
+    expect(positions(rows, { status: ['done'] })).toEqual([]);
+  });
+
   it('combines filters with the text', () => {
     const named = [card(1, { title: 'Café' }), scored(2, 90, '2026-10-10', { title: 'Café' })];
     expect(positions(named, { q: 'cafe', status: ['done'] })).toEqual([2]);
@@ -251,14 +269,26 @@ describe('searchLessons, sort', () => {
 });
 
 describe('searchLessons, group', () => {
-  it('groups by status: failed, then todo, then done', () => {
-    const cards = [scored(1, 90, '2026-10-10'), card(2), scored(3, 40, '2026-10-11'), card(4)];
-    expect(positions(cards, { group: 'status' })).toEqual([3, 2, 4, 1]);
+  it('groups by status: failed, then todo, then done, then soon', () => {
+    const cards = [
+      soon(1),
+      scored(2, 90, '2026-10-10'),
+      card(3),
+      scored(4, 40, '2026-10-11'),
+      card(5),
+    ];
+    expect(positions(cards, { group: 'status' })).toEqual([4, 3, 5, 2, 1]);
   });
 
-  it('groups by day, newest first and never started last', () => {
-    const cards = [card(1), scored(2, 90, '2026-10-10'), scored(3, 40, '2026-10-12')];
-    expect(positions(cards, { group: 'day' })).toEqual([3, 2, 1]);
+  it('groups by day, newest first, then never started, then not ready', () => {
+    const cards = [
+      soon(1),
+      card(2),
+      scored(3, 90, '2026-10-10'),
+      scored(4, 40, '2026-10-12'),
+      scored(5, 80, '2026-10-13', { ready: false }),
+    ];
+    expect(positions(cards, { group: 'day' })).toEqual([4, 3, 2, 1, 5]);
   });
 
   it('groups by kind in the order of LESSON_KINDS', () => {
