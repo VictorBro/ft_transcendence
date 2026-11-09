@@ -46,6 +46,7 @@ export function ResultsReview({
   const hash = useSyncExternalStore(subscribeToHash, currentHash, serverHash);
   const selected = resultPart(hash, results.steps.length, firstExam);
   const step = results.steps[selected];
+  const firstPractice = results.steps.findIndex((item) => item.role === 'practice' && item.scored);
   const exams = results.steps.flatMap((item, index) => (item.role === 'exam' ? [index] : []));
   const choice = (index: number, nested = false) => {
     const item = results.steps[index]!;
@@ -54,7 +55,7 @@ export function ResultsReview({
         key={index}
         href={`#part-${index + 1}`}
         aria-current={selected === index ? 'true' : undefined}
-        className={`lesson-result-choice ${nested ? 'is-nested' : ''} ${tone(item.earned, item.possible)}`}
+        className={`lesson-result-choice ${nested ? 'is-nested' : ''} ${index === firstPractice ? 'is-practice-start' : ''} ${tone(item.earned, item.possible)}`}
       >
         <span>{pick(item.title, locale)}</span>
         <span className="shrink-0 tabular-nums">
