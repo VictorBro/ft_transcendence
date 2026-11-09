@@ -391,12 +391,6 @@ header:has(+ main .lesson-view) > div {
 .lesson-result-choice.is-partial > span:last-child {
   color: #f3e8ff;
 }
-.lesson-results-banner.is-incorrect {
-  background-color: #312e81;
-}
-.lesson-results-banner.is-partial {
-  background-image: repeating-linear-gradient(135deg, transparent 0 15px, #312e81 15px 30px);
-}
 .lesson-results-banner {
   display: flex;
   flex-direction: column;
@@ -405,6 +399,18 @@ header:has(+ main .lesson-view) > div {
   border-radius: 14px;
   padding: 32px;
   background-color: #1e1b4b;
+}
+.lesson-results-banner.score-excellent {
+  background: #14532d;
+}
+.lesson-results-banner.score-passed {
+  background: repeating-linear-gradient(135deg, #1e1b4b 0 15px, #312e81 15px 30px);
+}
+.lesson-results-banner.score-partial {
+  background: repeating-linear-gradient(135deg, #4c1d95 0 15px, #7f1d1d 15px 30px);
+}
+.lesson-results-banner.score-low {
+  background: #7f1d1d;
 }
 .lesson-finish-summary {
   border-bottom: 1px solid #1e293b;

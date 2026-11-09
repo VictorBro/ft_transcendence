@@ -6,6 +6,7 @@ import type { lessons } from '@ft/shared';
 
 import { pick } from '@/lib/localized';
 import { resultPart } from '@/lib/result-part';
+import { resultScoreTone } from '@/lib/result-score-tone';
 
 type Results = lessons.player.Results;
 const points = (value: number) => (Number.isInteger(value) ? `${value}` : value.toFixed(1));
@@ -89,7 +90,9 @@ export function ResultsReview({
       </aside>
       <article className="lesson-main flex flex-col gap-6">
         <h1 className="text-2xl font-semibold">{t('resultsHeading')}</h1>
-        <header className={`lesson-results-banner ${tone(step?.earned ?? 0, step?.possible ?? 0)}`}>
+        <header
+          className={`lesson-results-banner ${resultScoreTone(step?.possible ? (100 * step.earned) / step.possible : 0)}`}
+        >
           <p className="text-base text-slate-300">{caption}</p>
           <h2 className="text-3xl font-semibold">
             {step?.role === 'exam'
