@@ -183,6 +183,19 @@ export function LessonPlayer({
 
   const show = useCallback(
     (next: AttemptView, askedAt: number) => {
+      const changedAttempt = next.attemptId !== activeView.current.attemptId;
+      if (changedAttempt) {
+        // A retake in another tab owns different drafts and countdown state.
+        // Update drafts together with the view so the save effect cannot write
+        // the previous attempt's answers under the new attempt's key.
+        setDrafts(loadDrafts({ lang, id, attemptId: next.attemptId }));
+        setTimedOut(null);
+        finished.current = false;
+      }
+      if (flashTimer.current !== null) {
+        window.clearTimeout(flashTimer.current);
+        flashTimer.current = null;
+      }
       activeView.current = next;
       setChecked(null);
       setFlash(false);

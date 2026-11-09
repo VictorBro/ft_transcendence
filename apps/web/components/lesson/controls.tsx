@@ -117,6 +117,7 @@ export function TextControl({
   const input = (
     <input
       type="text"
+      maxLength={300}
       lang={lang}
       value={textOf(value)}
       disabled={locked}
@@ -424,6 +425,7 @@ export function SpotControl({
             <input
               id={correctionId}
               type="text"
+              maxLength={300}
               lang={lang}
               disabled={locked}
               value={current.text}

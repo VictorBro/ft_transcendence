@@ -284,3 +284,50 @@ test('yellow typed feedback waits for Continue while green advances automaticall
     `${green.index}`,
   );
 });
+
+test('a retake discovered through 409 restores its own drafts', async ({
+  freshLearner: learner,
+}) => {
+  test.setTimeout(120_000);
+  await placeCourse(learner, { lang: 'fr', level: 'A1', dailyGoal: 10 });
+  await learner.goto(LESSON);
+  await learner.getByRole('button', { name: 'Start the lesson' }).click();
+  await learner.waitForURL(/\/play$/);
+  const plan = lessonPlan('fr-subject-pronouns');
+  const typed = plan.pages.findIndex(
+    (page) =>
+      page.role === 'practice' && page.items.some((item) => item.type === 'grammar_gap_typing'),
+  );
+  await playLesson(learner, plan, { stop: (index) => index === typed });
+  const input = learner.getByRole('textbox').first();
+  await expect(input).toHaveAttribute('maxlength', '300');
+  await input.fill('old attempt draft');
+  const snapshot = await (await learner.request.get(API)).json();
+  const newId = '22222222-2222-4222-8222-222222222222';
+  const ref = await input.locator('xpath=ancestor::*[@data-unit]').getAttribute('data-unit');
+  expect(ref).not.toBeNull();
+  const key = `ft.lesson.drafts.fr.fr-subject-pronouns.${newId}`;
+  await learner.evaluate(
+    ({ key, ref }) => {
+      localStorage.setItem(key, JSON.stringify({ [ref]: { text: 'new attempt draft' } }));
+    },
+    { key, ref: ref! },
+  );
+  await learner.route(`**${API}/pages/*`, (route) =>
+    route.fulfill({
+      status: 409,
+      json: { code: 'CONFLICT' },
+    }),
+  );
+  await learner.route(`**${API}`, (route) =>
+    route.fulfill({
+      json: { ...snapshot, attempt: { ...snapshot.attempt, attemptId: newId } },
+    }),
+  );
+  await learner.getByRole('button', { name: 'Check', exact: true }).click();
+  await expect(input).toHaveValue('new attempt draft');
+  await expect(input).toBeEnabled();
+  await expect
+    .poll(() => learner.evaluate((key) => localStorage.getItem(key), key))
+    .toBe(JSON.stringify({ [ref!]: { text: 'new attempt draft' } }));
+});
