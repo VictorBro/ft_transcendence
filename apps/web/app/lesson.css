@@ -354,7 +354,7 @@ header:has(+ main .lesson-view) > div {
   font-size: 14px;
 }
 .lesson-result-choice.is-practice-start {
-  margin-top: 8px;
+  margin-top: 16px;
 }
 .lesson-result-choice[aria-current='true'] {
   outline: 2px solid #f1f5f9;
