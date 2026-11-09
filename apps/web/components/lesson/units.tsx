@@ -35,7 +35,7 @@ export function Units({
               lang={lang}
             />
             {note ? (
-              unit.kind === 'choice' || unit.kind === 'text' ? (
+              unit.kind === 'text' ? null : unit.kind === 'choice' ? (
                 <span className="sr-only" role="status" data-outcome={note.outcome}>
                   <OutcomeLabel outcome={note.outcome} />
                 </span>

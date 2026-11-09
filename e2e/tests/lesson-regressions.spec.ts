@@ -239,3 +239,48 @@ test('practice choices stack and corrections stay beside typed answers', async (
     learner.locator('.lesson-item p').filter({ hasText: /^(Correct|Incorrect)$/ }),
   ).toHaveCount(0);
 });
+
+test('yellow typed feedback waits for Continue while green advances automatically', async ({
+  freshLearner: learner,
+}) => {
+  test.setTimeout(120_000);
+  await placeCourse(learner, { lang: 'fr', level: 'A1', dailyGoal: 10 });
+  await learner.goto(LESSON);
+  await learner.getByRole('button', { name: 'Start the lesson' }).click();
+  await learner.waitForURL(/\/play$/);
+  const plan = lessonPlan('fr-subject-pronouns');
+  const typedPages = plan.pages.filter(
+    (page) =>
+      page.role === 'practice' && page.items.every((item) => item.type === 'grammar_gap_typing'),
+  );
+  expect(typedPages.length).toBeGreaterThanOrEqual(2);
+  const yellow = typedPages[0]!;
+  const green = typedPages[1]!;
+  await playLesson(learner, plan, { stop: (index) => index === yellow.index });
+  await answerPage(learner, yellow, () => true);
+  const input = learner.getByRole('textbox').first();
+  const expected = await input.inputValue();
+  const changed =
+    expected === expected.toUpperCase() ? expected.toLowerCase() : expected.toUpperCase();
+  expect(changed).not.toBe(expected);
+  await input.fill(changed);
+  await learner.clock.install();
+  await learner.getByRole('button', { name: 'Check', exact: true }).click();
+  const note = learner.locator('p[role="status"][data-outcome="orthography_only"]');
+  await expect(note).toBeVisible();
+  await expect(note).toContainText(expected);
+  await learner.clock.runFor(2_000);
+  await expect(learner.locator('[data-page-index]')).toHaveAttribute(
+    'data-page-index',
+    `${yellow.index}`,
+  );
+  await learner.getByRole('button', { name: 'Continue', exact: true }).click();
+  await learner.clock.resume();
+  await playLesson(learner, plan, { stop: (index) => index === green.index });
+  await answerPage(learner, green, () => true);
+  await learner.getByRole('button', { name: 'Check', exact: true }).click();
+  await expect(learner.locator('[data-page-index]')).not.toHaveAttribute(
+    'data-page-index',
+    `${green.index}`,
+  );
+});

@@ -5,6 +5,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import type { Language } from '@ft/shared';
 
 import { pick } from '@/lib/localized';
+import { orthographyHint } from '@/lib/lesson-feedback';
 import type { Answer, Ref, UnitFeedback, UnitView } from './types';
 
 /*
@@ -92,6 +93,27 @@ export function TextControl({
         {feedback.form ?? feedback.answer}
       </strong>
     ) : null;
+  const expected = feedback?.accepted ?? feedback?.form ?? feedback?.answer;
+  const reason = feedback && expected ? orthographyHint(textOf(value), expected) : null;
+  const note = feedback ? (
+    <p
+      role="status"
+      data-outcome={feedback.outcome}
+      className={`text-sm font-medium ${
+        feedback.outcome === 'fully_correct'
+          ? 'text-green-400'
+          : feedback.outcome === 'orthography_only'
+            ? 'text-amber-300'
+            : 'text-red-400'
+      }`}
+    >
+      {feedback.outcome === 'fully_correct'
+        ? t('correct')
+        : feedback.outcome === 'orthography_only'
+          ? t(reason ?? 'almostSpelling', { answer: expected ?? '' })
+          : t('notQuiteExpected', { answer: expected ?? '' })}
+    </p>
+  ) : null;
   const input = (
     <input
       type="text"
@@ -112,15 +134,18 @@ export function TextControl({
   );
   if (gap) {
     return (
-      <p
-        lang={lang}
-        className="flex flex-wrap items-center gap-x-2 gap-y-2 text-lg leading-relaxed"
-      >
-        {before ? <span>{before}</span> : null}
-        {input}
-        {correction}
-        {after ? <span>{after}</span> : null}
-      </p>
+      <div className="flex flex-col gap-3">
+        <p
+          lang={lang}
+          className="flex flex-wrap items-center gap-x-2 gap-y-2 text-lg leading-relaxed"
+        >
+          {before ? <span>{before}</span> : null}
+          {input}
+          {correction}
+          {after ? <span>{after}</span> : null}
+        </p>
+        {note}
+      </div>
     );
   }
   return (
@@ -128,6 +153,7 @@ export function TextControl({
       <PromptLine unit={unit} lang={lang} />
       {input}
       {correction}
+      {note}
     </div>
   );
 }
