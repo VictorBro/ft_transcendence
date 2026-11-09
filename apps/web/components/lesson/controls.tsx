@@ -74,6 +74,36 @@ export const rovingTab = (chosen: boolean, index: number, anyChosen: boolean) =>
 
 const textOf = (value: Answer | undefined) => (value && 'text' in value ? value.text : '');
 
+/** The outlined status symbols from the exercise mockup; the text names the outcome. */
+function FeedbackIcon({ outcome }: { outcome: Outcome }) {
+  return (
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="mt-0.5 h-4 w-4 shrink-0"
+      data-feedback-icon={outcome}
+    >
+      <circle cx={12} cy={12} r={9} />
+      {outcome === 'orthography_only' ? (
+        <>
+          <path d="M12 11v6" />
+          <path d="M12 7h.01" />
+        </>
+      ) : outcome === 'fully_correct' ? (
+        <path d="m8 12 3 3 5-6" />
+      ) : (
+        <path d="m9 9 6 6m0-6-6 6" />
+      )}
+    </svg>
+  );
+}
+
 /** A text box, inside its gap when the prompt has text around it. */
 export function TextControl({
   unit,
@@ -99,7 +129,7 @@ export function TextControl({
     <p
       role="status"
       data-outcome={feedback.outcome}
-      className={`text-sm font-medium ${
+      className={`flex items-start gap-3 text-sm font-medium ${
         feedback.outcome === 'fully_correct'
           ? 'text-green-400'
           : feedback.outcome === 'orthography_only'
@@ -107,11 +137,14 @@ export function TextControl({
             : 'text-red-400'
       }`}
     >
-      {feedback.outcome === 'fully_correct'
-        ? t('correct')
-        : feedback.outcome === 'orthography_only'
-          ? t(reason ?? 'almostSpelling', { answer: expected ?? '' })
-          : t('notQuiteExpected', { answer: expected ?? '' })}
+      <FeedbackIcon outcome={feedback.outcome} />
+      <span>
+        {feedback.outcome === 'fully_correct'
+          ? t('correct')
+          : feedback.outcome === 'orthography_only'
+            ? t(reason ?? 'almostSpelling', { answer: expected ?? '' })
+            : t('notQuiteExpected', { answer: expected ?? '' })}
+      </span>
     </p>
   ) : null;
   const input = (
