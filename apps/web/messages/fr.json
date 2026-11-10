@@ -210,6 +210,7 @@
     "llm": {
       "unavailable": "Le tuteur ne peut pas répondre pour le moment. Réessaie dans un instant.",
       "rateLimited": "Le tuteur est très sollicité. Réessaie dans une minute.",
+      "tooManyMessages": "Tu as envoyé beaucoup de messages au tuteur. Réessaie plus tard.",
       "blocked": "Le tuteur ne peut pas répondre à ce message. Formule-le autrement.",
       "incomplete": "La réponse s'est arrêtée avant la fin. Repose ta question.",
       "disabled": "Le tuteur est désactivé sur ce serveur."

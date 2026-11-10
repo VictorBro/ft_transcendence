@@ -86,6 +86,9 @@ services:
       LLM_PROVIDER: ${LLM_PROVIDER:?set LLM_PROVIDER to fixture, gemini or disabled}
       LLM_API_KEY: ${LLM_API_KEY:-}
       LLM_MODEL: ${LLM_MODEL:-}
+      LLM_DISCUSSION_USER_PER_MINUTE: ${LLM_DISCUSSION_USER_PER_MINUTE:-}
+      LLM_DISCUSSION_USER_PER_DAY: ${LLM_DISCUSSION_USER_PER_DAY:-}
+      LLM_DISCUSSION_GLOBAL_PER_MINUTE: ${LLM_DISCUSSION_GLOBAL_PER_MINUTE:-}
       AVATAR_STORAGE_DIR: /data/avatars
     volumes:
       - avatars-data:/data/avatars

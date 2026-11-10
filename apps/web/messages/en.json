@@ -210,6 +210,7 @@
     "llm": {
       "unavailable": "The tutor cannot answer right now. Try again in a moment.",
       "rateLimited": "The tutor is busy. Try again in a minute.",
+      "tooManyMessages": "You have sent the tutor a lot of messages. Try again later.",
       "blocked": "The tutor cannot answer this message. Try asking it another way.",
       "incomplete": "The answer stopped before the end. Ask again.",
       "disabled": "The tutor is turned off on this server."

@@ -101,6 +101,9 @@ services:
       LLM_PROVIDER: ${LLM_PROVIDER:-fixture}
       LLM_API_KEY: ${LLM_API_KEY:-}
       LLM_MODEL: ${LLM_MODEL:-}
+      LLM_DISCUSSION_USER_PER_MINUTE: ${LLM_DISCUSSION_USER_PER_MINUTE:-}
+      LLM_DISCUSSION_USER_PER_DAY: ${LLM_DISCUSSION_USER_PER_DAY:-}
+      LLM_DISCUSSION_GLOBAL_PER_MINUTE: ${LLM_DISCUSSION_GLOBAL_PER_MINUTE:-}
       # Matches the mount below. Not from .env: the target is fixed, so another
       # value would only send uploads off the volume.
       AVATAR_STORAGE_DIR: /data/avatars

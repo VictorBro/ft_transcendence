@@ -1,4 +1,13 @@
-import { Body, Controller, Logger, Param, Post, Res } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  HttpException,
+  HttpStatus,
+  Logger,
+  Param,
+  Post,
+  Res,
+} from '@nestjs/common';
 import {
   ApiBadRequestResponse,
   ApiConflictResponse,
@@ -8,6 +17,7 @@ import {
   ApiParam,
   ApiProduces,
   ApiTags,
+  ApiTooManyRequestsResponse,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 import type { Response } from 'express';
@@ -78,6 +88,10 @@ export class DiscussionController {
     description:
       'The course has no level yet (no placement), or the attempt is not on its discussion page',
   })
+  @ApiTooManyRequestsResponse({
+    description:
+      "llm.tooManyMessages: over the learner's limit per minute or per day; llm.rateLimited: over the global one. retryAfter in the body and Retry-After give the seconds to wait",
+  })
   async discuss(
     @CurrentUser() user: SessionUser,
     @Param('lang', LangParam) lang: Language,
@@ -85,8 +99,21 @@ export class DiscussionController {
     @Body() body: LessonDiscussionDto,
     @Res() response: Response,
   ): Promise<void> {
-    // 1. Every check that can still answer with a status: 404, 409.
+    // 1. Every check that can still answer with a status: 404, 409, then 429.
     const system = await this.discussion.open(user, lang, id, body.attemptId);
+    // 429. The header for any HTTP client, retryAfter for the browser's code.
+    const refusal = await this.discussion.countMessage(user);
+    if (refusal) {
+      response.setHeader('Retry-After', String(refusal.retryAfter));
+      throw new HttpException(
+        {
+          statusCode: HttpStatus.TOO_MANY_REQUESTS,
+          message: refusal.code,
+          retryAfter: refusal.retryAfter,
+        },
+        HttpStatus.TOO_MANY_REQUESTS,
+      );
+    }
 
     // 2. The 200 leaves here. From now on, a failure is an event.
     const stream = openEventStream(response);

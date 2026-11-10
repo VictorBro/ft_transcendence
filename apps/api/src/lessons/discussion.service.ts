@@ -4,8 +4,10 @@ import type { Language, LessonDiscussionInput, SessionUser } from '@ft/shared';
 
 import { LLM_PROVIDER, type LlmProvider } from '../llm/llm.provider';
 import { PrismaService } from '../prisma/prisma.service';
+import { RedisService } from '../redis/redis.service';
 import { findAttempt } from './attempts.service';
 import { checkCourse } from './course-lookup';
+import { countMessage, readDiscussionLimits, type Refusal } from './discussion-limits';
 import { discussionPrompt, practiceMistakes } from './discussion-prompt';
 
 /** The longest tutor answer we pay for, in tokens. */
@@ -26,8 +28,12 @@ const MAX_OUTPUT_TOKENS = 1000;
  */
 @Injectable()
 export class DiscussionService {
+  /** Read once, at the start, so a bad value stops it. The e2e changes them. */
+  readonly limits = readDiscussionLimits(process.env);
+
   constructor(
     private readonly prisma: PrismaService,
+    private readonly redis: RedisService,
     // The LLM by its token: LlmProvider is an interface, erased once compiled.
     @Inject(LLM_PROVIDER) private readonly llm: LlmProvider,
   ) {}
@@ -68,6 +74,15 @@ export class DiscussionService {
     const parsed = lessons.briefSchema(lesson.kind, lang).parse(source.brief);
     const answers = row.answers as unknown as Record<string, lessons.player.LockedAnswer>;
     return discussionPrompt(parsed, user.locale, practiceMistakes(plan, answers));
+  }
+
+  /**
+   * Counts this message against the learner's limits and the global one: a
+   * refusal, or null when it may go. Called after open(), so a request refused
+   * with a 404 or a 409 uses up nothing.
+   */
+  countMessage(user: SessionUser): Promise<Refusal | null> {
+    return countMessage(this.redis.client, user.id, this.limits);
   }
 
   /**

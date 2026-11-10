@@ -8,10 +8,12 @@ import { INestApplication } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import request from 'supertest';
 import type TestAgent from 'supertest/lib/agent';
-import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest';
+import { afterAll, afterEach, beforeAll, describe, expect, it, vi } from 'vitest';
 
 import { AppModule } from '../src/app.module';
 import { configureApp } from '../src/app.setup';
+import type { DiscussionLimits } from '../src/lessons/discussion-limits';
+import { DiscussionService } from '../src/lessons/discussion.service';
 import { DisabledProvider } from '../src/llm/disabled.provider';
 import { FIXTURE_ANSWER, FIXTURE_FAILURES } from '../src/llm/fixture.provider';
 import { LLM_PROVIDER, LlmError, type LlmProvider } from '../src/llm/llm.provider';
@@ -32,6 +34,9 @@ describe('lesson discussion (e2e)', () => {
   let unplaced: TestAgent;
   /** agent's attempt at LESSON, its cursor on the discussion page. */
   let attemptId: string;
+  /** The service's own limits object: a test lowers one, afterEach puts them back. */
+  let limits: DiscussionLimits;
+  const ROOMY: DiscussionLimits = { userPerMinute: 1000, userPerDay: 1000, globalPerMinute: 1000 };
 
   const stamp = Date.now();
   const emails = [`discussion-${stamp}@example.com`, `discussion-unplaced-${stamp}@example.com`];
@@ -127,6 +132,9 @@ describe('lesson discussion (e2e)', () => {
     await app.init();
     prisma = app.get(PrismaService);
     llm = app.get(LLM_PROVIDER);
+    // The default limits would refuse agent, who sends more than 6 messages.
+    limits = app.get(DiscussionService).limits;
+    Object.assign(limits, ROOMY);
 
     await prisma.lesson.deleteMany({ where: { id: { in: IDS } } });
     await prisma.lesson.createMany({
@@ -400,6 +408,60 @@ describe('lesson discussion (e2e)', () => {
       await vi.waitFor(() => expect(signal.aborted).toBe(true));
       server.close();
       streamText.mockRestore();
+    });
+  });
+
+  describe('the limits', () => {
+    afterEach(() => {
+      Object.assign(limits, ROOMY);
+    });
+
+    /**
+     * A new learner on the discussion page, and a function sending a message
+     * from them. Few of them: signup allows 5 per address per minute.
+     */
+    const fresh = async (name: string) => {
+      const learner = await other(name);
+      const attempt = await playTo(learner, 'discussion');
+      const send = (sent = { attemptId: attempt.attemptId, message: 'Pourquoi ?', history: [] }) =>
+        learner.post(path()).send(sent);
+      return send;
+    };
+
+    /** The 429's code, after checking retryAfter is in (min, max] and matches Retry-After. */
+    const refused = async (sending: request.Test, min: number, max: number) => {
+      const response = await sending.expect(429);
+      const { retryAfter } = response.body as { retryAfter: number };
+      expect(retryAfter).toBeGreaterThan(min);
+      expect(retryAfter).toBeLessThanOrEqual(max);
+      expect(response.headers['retry-after']).toBe(String(retryAfter));
+      return response.body.message as string;
+    };
+
+    it('refuses the learner over their limit per minute, not counting a 409', async () => {
+      limits.userPerMinute = 2;
+      const send = await fresh('minute');
+      // Refused before the limits: it uses up none of the two.
+      await send({ attemptId: randomUUID(), message: 'Pourquoi ?', history: [] }).expect(409);
+      await send().expect(200);
+      await send().expect(200);
+
+      expect(await refused(send(), 0, 60)).toBe('llm.tooManyMessages');
+    });
+
+    it('refuses the learner over their limit per day', async () => {
+      limits.userPerDay = 2;
+      const send = await fresh('day');
+      await send().expect(200);
+      await send().expect(200);
+
+      expect(await refused(send(), 60, 24 * 60 * 60)).toBe('llm.tooManyMessages');
+    });
+
+    it('refuses everyone over the global limit per minute', async () => {
+      limits.globalPerMinute = 0;
+
+      expect(await refused(agent.post(path()).send(body()), 0, 60)).toBe('llm.rateLimited');
     });
   });
 });

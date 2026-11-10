@@ -49,6 +49,13 @@ export const llmRequests = new Counter({
   registers: [registry],
 });
 
+export const discussionLimited = new Counter({
+  name: 'ft_llm_discussion_limited_total',
+  help: 'Lesson discussion messages refused by a rate limit, by limit (user_minute, user_day, global_minute)',
+  labelNames: ['limit'] as const,
+  registers: [registry],
+});
+
 export const llmRequestDuration = new Histogram({
   name: 'ft_llm_request_duration_seconds',
   help: 'LLM call duration, failures included',
