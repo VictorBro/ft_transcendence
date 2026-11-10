@@ -468,36 +468,5 @@
     "vocabulary": "Vocabulaire",
     "functions": "Expressions du quotidien",
     "reading": "Lecture"
-  },
-  "Topics": {
-    "nouns_and_determiners": "Noms et déterminants",
-    "pronouns": "Pronoms",
-    "verbs_morphology": "Formes verbales",
-    "verb_usage": "Emploi des verbes",
-    "syntax_and_sentence_structure": "Structure de la phrase",
-    "subordinate_clauses": "Subordonnées",
-    "prepositions_and_case": "Prépositions et cas",
-    "adjectives": "Adjectifs",
-    "adverbs": "Adverbes",
-    "agreement": "Accords",
-    "negation": "Négation",
-    "comparison_and_quantity": "Comparaison et quantité",
-    "information_structure_and_pragmatics": "Mise en relief et style"
-  },
-  "Themes": {
-    "personal_identification": "Se présenter",
-    "house_and_home": "Logement",
-    "daily_life": "Vie quotidienne",
-    "free_time": "Loisirs",
-    "travel": "Voyages",
-    "relations": "Relations",
-    "health": "Santé",
-    "education": "Éducation",
-    "shopping": "Achats",
-    "food_and_drink": "Nourriture et boissons",
-    "services": "Services",
-    "places": "Lieux",
-    "language": "Langue",
-    "weather": "Météo"
   }
 }
