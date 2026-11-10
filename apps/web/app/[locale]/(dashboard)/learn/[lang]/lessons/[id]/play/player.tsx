@@ -312,6 +312,17 @@ export function LessonPlayer({
 
   const exam = page.role === 'exam';
   const examPages = outline.pages.filter((p) => p.role === 'exam');
+  const examCards =
+    exam &&
+    page.items.length > 1 &&
+    page.items.reduce(
+      (n, item) =>
+        n +
+        ('units' in item
+          ? (item.units as { kind: string }[]).filter((u) => u.kind === 'text').length
+          : 0),
+      0,
+    ) > 1;
   // No exam page after this one: Finish the exam.
   const lastExam = exam && !outline.pages.slice(page.index + 1).some((p) => p.role === 'exam');
   // Ran out while the learner was away: the page shows, locked, until Next.
@@ -433,9 +444,19 @@ export function LessonPlayer({
               </section>
             ) : null}
 
-            {page.items.map((item, n) => (
-              <Item key={n} item={item} {...props} />
-            ))}
+            {page.items.map((item, n) =>
+              examCards ? (
+                // Exam pages with several typed answers: one numbered card per task, as in the mockup.
+                <div key={n} className="lesson-exam-card">
+                  <span className="lesson-exam-card-number" aria-hidden="true">
+                    {n + 1}.
+                  </span>
+                  <Item item={item} {...props} />
+                </div>
+              ) : (
+                <Item key={n} item={item} {...props} />
+              ),
+            )}
 
             <div className="lesson-task-footer flex flex-col gap-3">
               <FormError message={error} />

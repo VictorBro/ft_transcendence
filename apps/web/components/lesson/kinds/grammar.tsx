@@ -89,9 +89,12 @@ function PronounFormMatch({ item, ...props }: ItemProps<'grammar_pronoun_form_ma
 }
 
 function PronounFormTyping({ item, ...props }: ItemProps<'grammar_pronoun_form_typing'>) {
+  // One row per pronoun, the pronoun beside its field, as in the mockup.
   return (
     <ItemCard>
-      <Units units={item.units} {...props} />
+      <div className="lesson-form-rows">
+        <Units units={item.units} {...props} />
+      </div>
     </ItemCard>
   );
 }

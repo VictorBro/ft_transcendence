@@ -202,6 +202,28 @@ header:has(+ main .lesson-view) > div {
   border-top: 1px solid #334155;
   padding-top: 24px;
 }
+.lesson-exam-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 14px 18px;
+  border: 1px solid #334155;
+  border-left: 3px solid #67e8f9;
+  border-radius: 10px;
+  background: #020617;
+}
+.lesson-exam-card-number {
+  flex: 0 0 auto;
+  min-width: 24px;
+  padding-top: 8px;
+  color: #67e8f9;
+  font-size: 18px;
+  font-weight: 700;
+}
+.lesson-exam-card > .lesson-item {
+  flex: 1 1 auto;
+  min-width: 0;
+}
 .lesson-task-footer {
   margin-top: 8px;
 }
@@ -451,6 +473,25 @@ header:has(+ main .lesson-view) > div {
 .lesson-results:has(.lesson-result-panel:target) .lesson-result-panel:not(:target) {
   display: none;
 }
+/* Pronoun-form typing: the pronoun beside its field, the correction and
+   the note under the field (the prototype's form rows). */
+.lesson-form-rows [data-text-row] {
+  display: grid;
+  grid-template-columns: minmax(5rem, 9rem) minmax(0, 16rem);
+  align-items: center;
+  gap: 0.25rem 1rem;
+}
+.lesson-form-rows [data-text-row] > :not(:first-child) {
+  grid-column: 2;
+}
+.lesson-form-rows [data-text-row] > :first-child {
+  grid-row: 1;
+}
+@media (max-width: 600px) {
+  .lesson-form-rows [data-text-row] {
+    grid-template-columns: minmax(4rem, 6rem) minmax(0, 1fr);
+  }
+}
 @media (max-width: 960px) {
   .lesson-layout {
     grid-template-columns: minmax(0, 1fr);
@@ -463,17 +504,28 @@ header:has(+ main .lesson-view) > div {
   .lesson-sidebar {
     display: none;
   }
+  /* As the prototype on a phone: the title, the point strip under it, then
+     the percent and the score, then the task. */
   .lesson-player-header {
+    display: contents;
+  }
+  .lesson-session-title {
     grid-row: 1;
-    margin-bottom: 0;
+    margin-bottom: -12px;
   }
   .lesson-mobile-navigation {
     display: block;
     position: relative;
     grid-row: 2;
+    margin-bottom: -12px;
+  }
+  .lesson-session-meters {
+    grid-row: 3;
+    border-bottom: 1px solid #1e293b;
+    padding-bottom: 12px;
   }
   .lesson-task {
-    grid-row: 3;
+    grid-row: 4;
   }
   .lesson-point-strip {
     position: relative;
@@ -533,7 +585,12 @@ header:has(+ main .lesson-view) > div {
     display: none;
   }
   .lesson-session-meters {
-    justify-content: space-between;
+    justify-content: flex-start;
+  }
+  /* The ✕ goes to the end of the row, after the percent and the score. */
+  .lesson-session-meters > button {
+    order: 1;
+    margin-left: auto;
   }
   .lesson-results-sidebar {
     display: block;

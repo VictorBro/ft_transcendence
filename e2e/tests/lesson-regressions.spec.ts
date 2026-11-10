@@ -225,7 +225,11 @@ test('practice choices stack and corrections stay beside typed answers', async (
   await learner.getByRole('button', { name: 'Check', exact: true }).click();
   await expect(learner.locator('[data-state="checked"]')).toBeVisible();
   await expect(learner.locator('[role="radio"].text-green-200')).toHaveCount(1);
-  await expect(learner.locator('.lesson-item')).not.toContainText('Answer:');
+  // No visible feedback word or answer under a choice; a screen reader hears both.
+  await expect(learner.locator('.lesson-item [data-outcome]:not(.sr-only)')).toHaveCount(0);
+  await expect(learner.locator('.lesson-item .sr-only[role="status"]').first()).toContainText(
+    'Answer:',
+  );
   await expect(
     learner.locator('.lesson-item p').filter({ hasText: /^(Correct|Incorrect)$/ }),
   ).toHaveCount(0);

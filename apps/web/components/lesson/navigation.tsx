@@ -38,41 +38,43 @@ export function LessonNavigation({ outline, index }: { outline: LessonOutline; i
   const firstExam = outline.pages.findIndex(
     (page) => !['presentation', 'practice'].includes(page.role),
   );
-  const rows = inExam
-    ? examPages.map((page, n) => ({
-        key: n,
-        number: `${n + 1}`,
-        title: pick(page.step, locale),
-        color: '#86efac',
-        current: index === page.index,
-        done: index > page.index,
-        detail: t('examPageDetail', { questions: page.questions, seconds: page.limitS ?? 0 }),
-        flag: false,
-      }))
-    : [
-        ...points.map((point) => ({
-          key: point.number,
-          number: `${point.number}`,
-          title: pick(point.title, locale),
-          color: point.color,
-          current: point.pages.includes(index),
-          done: point.pages.length > 0 && index > point.pages[point.pages.length - 1]!,
-          detail: '',
-          flag: false,
-        })),
-        {
-          key: -1,
-          number: '',
-          title: t('finalExam'),
-          color: '#86efac',
-          current: firstExam >= 0 && index >= firstExam,
-          done: false,
-          detail: t('questionCount', { count: questions }),
-          flag: true,
-        },
-      ];
-  const state = (row: (typeof rows)[number]) =>
-    row.current ? t('youAreHere') : row.done ? t(inExam ? 'answered' : 'done') : t('notYetOpen');
+  const examRows = examPages.map((page, n) => ({
+    key: n,
+    number: `${n + 1}`,
+    title: pick(page.step, locale),
+    color: '#86efac',
+    current: index === page.index,
+    done: index > page.index,
+    detail: t('examPageDetail', { questions: page.questions, seconds: page.limitS ?? 0 }),
+    flag: false,
+  }));
+  // The lesson's points and the exam flag: the sidebar outside the exam,
+  // and the phone strip all the way, as in the prototype.
+  const lessonRows = [
+    ...points.map((point) => ({
+      key: point.number,
+      number: `${point.number}`,
+      title: pick(point.title, locale),
+      color: point.color,
+      current: point.pages.includes(index),
+      done: point.pages.length > 0 && index > point.pages[point.pages.length - 1]!,
+      detail: '',
+      flag: false,
+    })),
+    {
+      key: -1,
+      number: '',
+      title: t('finalExam'),
+      color: '#86efac',
+      current: firstExam >= 0 && index >= firstExam,
+      done: false,
+      detail: t('questionCount', { count: questions }),
+      flag: true,
+    },
+  ];
+  const rows = inExam ? examRows : lessonRows;
+  const state = (row: (typeof rows)[number], examRow = inExam) =>
+    row.current ? t('youAreHere') : row.done ? t(examRow ? 'answered' : 'done') : t('notYetOpen');
 
   useEffect(() => {
     const close = (event: PointerEvent) => {
@@ -129,12 +131,12 @@ export function LessonNavigation({ outline, index }: { outline: LessonOutline; i
           className="lesson-point-strip"
           style={
             {
-              '--strip-count': rows.length,
-              '--strip-fill': `${rows.length > 1 ? (rows.filter((row) => row.done).length / (rows.length - 1)) * 100 : 0}%`,
+              '--strip-count': lessonRows.length,
+              '--strip-fill': `${lessonRows.length > 1 ? (lessonRows.filter((row) => row.done).length / (lessonRows.length - 1)) * 100 : 0}%`,
             } as CSSProperties
           }
         >
-          {rows.map((row) => (
+          {lessonRows.map((row) => (
             <li
               key={row.key}
               className={`${row.current ? 'is-current' : ''} ${row.done ? 'is-done' : ''}`}
@@ -143,7 +145,7 @@ export function LessonNavigation({ outline, index }: { outline: LessonOutline; i
               <button
                 type="button"
                 className="lesson-marker"
-                aria-label={`${row.number ? `${row.number}. ` : ''}${row.title}: ${state(row)}`}
+                aria-label={`${row.number ? `${row.number}. ` : ''}${row.title}: ${state(row, false)}`}
                 aria-current={row.current ? 'step' : undefined}
                 aria-expanded={tip === row.key}
                 aria-describedby={tip === row.key ? tipId : undefined}
@@ -156,8 +158,11 @@ export function LessonNavigation({ outline, index }: { outline: LessonOutline; i
         </ol>
         {tip !== null ? (
           <p id={tipId} role="tooltip" className="lesson-point-tooltip">
-            {rows.find((row) => row.key === tip)?.title} ·{' '}
-            {state(rows.find((row) => row.key === tip)!)}
+            {lessonRows.find((row) => row.key === tip)?.title} ·{' '}
+            {state(
+              lessonRows.find((row) => row.key === tip)!,
+              false,
+            )}
           </p>
         ) : null}
       </div>

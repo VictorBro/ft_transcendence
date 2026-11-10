@@ -149,7 +149,7 @@ export function TextControl({
   ) : null;
   const marked = feedback?.outcome === 'orthography_only' && feedback.marks?.length;
   const input = (
-    <span className={`relative inline-flex min-w-0 max-w-full ${gap ? 'w-40' : 'w-full'}`}>
+    <span className={`relative inline-flex min-w-0 max-w-full ${gap ? 'w-28 sm:w-40' : 'w-full'}`}>
       <input
         type="text"
         maxLength={300}
@@ -211,7 +211,7 @@ export function TextControl({
     );
   }
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-2" data-text-row>
       <PromptLine unit={unit} lang={lang} />
       {input}
       {correction}
