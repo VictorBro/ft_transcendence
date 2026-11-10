@@ -176,6 +176,9 @@ for (const category of QUESTION_CATEGORIES) {
   for (const reason of RESTOCK_FAILURE_REASONS)
     questionRestockFailures.inc({ category, reason }, 0);
 }
+for (const limit of ['user_minute', 'user_day', 'global_minute']) {
+  discussionLimited.inc({ limit }, 0);
+}
 for (const event of Object.values(SERVER_EVENTS)) {
   wsEvents.inc({ direction: 'out', event, outcome: 'ok' }, 0);
 }
