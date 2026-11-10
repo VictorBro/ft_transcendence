@@ -108,7 +108,13 @@ test.describe('a grammar lesson', () => {
     await live;
     await settle(learner);
     await learner.goto(`/en/learn/${LANG}`);
-    await expect(learner.getByText(plan.title).first()).toBeVisible();
+    // Done today, with its score: a row of its own, with no Start or Open.
+    const done = learner
+      .getByRole('region', { name: 'Today' })
+      .getByRole('listitem')
+      .filter({ hasText: plan.title });
+    await expect(done).toHaveText(/Passed, \d+%|Not passed yet, best \d+%\. Counts for today\./);
+    await expect(done.getByRole('link')).toHaveCount(0);
 
     expect(violations, formatViolations(violations)).toEqual([]);
 

@@ -620,6 +620,17 @@ header:has(+ main .lesson-view) > div {
 .lesson-matching-column > .lesson-match-button {
   height: auto;
 }
+/* A row with its correction under the box: the box takes the row's height
+   less the correction, so the correction stays inside its own row. */
+.lesson-matching-column > li {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.lesson-matching-column > li > .lesson-match-button {
+  flex: 1 1 auto;
+  height: auto;
+}
 /* A full person board separates its three singular and three plural rows. */
 .lesson-matching-column:has(> :nth-child(6)) > :nth-child(4) {
   margin-top: 16px;

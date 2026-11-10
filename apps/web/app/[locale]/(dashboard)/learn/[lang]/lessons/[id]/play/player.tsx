@@ -425,7 +425,13 @@ export function LessonPlayer({
               <FormError message={error} />
               <button
                 type="button"
-                onClick={button.onClick}
+                // The second click of a double-click would land on the next
+                // page's Check (or Next) and send it blank: only single
+                // clicks count. A key press has detail 0.
+                onClick={(event) => {
+                  if (event.detail > 1) return;
+                  button.onClick();
+                }}
                 disabled={pending || flash}
                 className={`${PRIMARY_BUTTON} self-end`}
               >

@@ -23,7 +23,6 @@ WORKDIR /app
 # importers against the projects it can see and fails on any mismatch.
 FROM base AS deps
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc ./
-COPY patches/ patches/
 COPY apps/api/package.json apps/api/
 COPY apps/web/package.json apps/web/
 COPY packages/eslint-config/package.json packages/eslint-config/

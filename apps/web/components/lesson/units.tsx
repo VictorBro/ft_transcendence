@@ -20,6 +20,7 @@ export function Units({
   feedback,
   locked,
 }: AnswerProps & { units: UnitView[] }) {
+  const t = useTranslations('Lesson');
   return (
     <div className="flex flex-col gap-5">
       {units.map((unit) => {
@@ -36,8 +37,18 @@ export function Units({
             />
             {note ? (
               unit.kind === 'text' ? null : unit.kind === 'choice' ? (
+                // The colours show the right option; a screen reader hears it.
                 <span className="sr-only" role="status" data-outcome={note.outcome}>
                   <OutcomeLabel outcome={note.outcome} />
+                  {note.outcome === 'fully_correct' ? null : (
+                    <>
+                      {'. '}
+                      {t.rich('answerWas', {
+                        answer: note.form ?? note.answer,
+                        a: (chunks) => <span lang={lang}>{chunks}</span>,
+                      })}
+                    </>
+                  )}
                 </span>
               ) : (
                 <FeedbackNote feedback={note} lang={lang} />

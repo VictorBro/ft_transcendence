@@ -90,33 +90,38 @@ export function ResultsReview({
       </aside>
       <article className="lesson-main flex flex-col gap-6">
         <h1 className="text-2xl font-semibold">{t('resultsHeading')}</h1>
-        <header
-          className={`lesson-results-banner ${resultScoreTone(step?.possible ? (100 * step.earned) / step.possible : 0)}`}
-        >
-          <p className="text-base text-slate-300">{caption}</p>
-          <h2 className="text-3xl font-semibold">
-            {step?.role === 'exam'
-              ? t('finalExam')
-              : step
-                ? pick(step.title, locale)
-                : t('resultsHeading')}
-          </h2>
-          <p className="text-5xl font-bold tabular-nums">
-            {points(step?.earned ?? 0)} / {step?.possible ?? 0}
-          </p>
-          <p className="text-lg font-semibold">{title}</p>
-        </header>
         {summary}
-        {children.map((panel, index) => (
-          <div
-            key={index}
-            id={`part-${index + 1}`}
-            data-selected={selected === index}
-            className="lesson-result-panel"
-          >
-            {panel}
-          </div>
-        ))}
+        {children.map((panel, index) => {
+          const part = results.steps[index];
+          return (
+            <div
+              key={index}
+              id={`part-${index + 1}`}
+              data-selected={selected === index}
+              className="lesson-result-panel"
+            >
+              {/* One banner per part, so it names the part on show with or
+                  without JavaScript (a menu link shows its part by :target). */}
+              <header
+                className={`lesson-results-banner mb-6 ${resultScoreTone(part?.possible ? (100 * part.earned) / part.possible : 0)}`}
+              >
+                <p className="text-base text-slate-300">{caption}</p>
+                <h2 className="text-3xl font-semibold">
+                  {part?.role === 'exam' && exams.length === 1
+                    ? t('finalExam')
+                    : part
+                      ? pick(part.title, locale)
+                      : t('resultsHeading')}
+                </h2>
+                <p className="text-5xl font-bold tabular-nums">
+                  {points(part?.earned ?? 0)} / {part?.possible ?? 0}
+                </p>
+                <p className="text-lg font-semibold">{title}</p>
+              </header>
+              {panel}
+            </div>
+          );
+        })}
         <div className="flex flex-wrap justify-end gap-3">{actions}</div>
       </article>
     </div>

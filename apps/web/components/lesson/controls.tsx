@@ -115,14 +115,16 @@ export function TextControl({
   const t = useTranslations('Lesson');
   const { before, after, learning, native } = unit.prompt;
   const gap = before !== undefined || after !== undefined;
+  // The accepted answer nearest to what was typed ("von dem", not "vom"),
+  // the one the letters are marked against, as in the results.
+  const expected = feedback?.accepted ?? feedback?.form ?? feedback?.answer;
   const correction =
     feedback && feedback.outcome !== 'fully_correct' ? (
       <strong lang={lang} className="font-semibold text-green-400" data-inline-answer>
         <span className="sr-only">{t('correct')}: </span>
-        {feedback.form ?? feedback.answer}
+        {expected}
       </strong>
     ) : null;
-  const expected = feedback?.accepted ?? feedback?.form ?? feedback?.answer;
   const note = feedback ? (
     <p
       role="status"

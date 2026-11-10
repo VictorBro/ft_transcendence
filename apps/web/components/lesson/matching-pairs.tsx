@@ -77,9 +77,13 @@ export function MatchingPairs({
     for (const button of [...left.current.values(), ...right.current.values()])
       observer.observe(button);
     const initial = requestAnimationFrame(measure);
+    // After Check the right column slides in: a rect read during the slide
+    // is off by its transform, so measure again once it has landed.
+    root.addEventListener('animationend', measure);
     return () => {
       cancelAnimationFrame(initial);
       observer.disconnect();
+      root.removeEventListener('animationend', measure);
     };
   }, [units, feedback]);
 

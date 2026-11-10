@@ -39,7 +39,6 @@ RUN mkdir -p /data/avatars && chown node:node /data/avatars
 # build fails with "lockfile is not up to date".
 FROM base AS deps
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc ./
-COPY patches/ patches/
 COPY apps/api/package.json apps/api/
 COPY apps/web/package.json apps/web/
 COPY packages/eslint-config/package.json packages/eslint-config/
