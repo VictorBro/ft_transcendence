@@ -147,6 +147,25 @@ test.describe('the all lessons page', () => {
     await expect(onboarded.getByRole('link', { name: 'Remove “nombres”' })).toBeVisible();
   });
 
+  test('a search typed before the page hydrates still applies', async ({ onboarded }) => {
+    // Next's scripts are held, so the box is typed in while the page is plain
+    // HTML: on a fast browser the race this covers would otherwise rarely happen.
+    // Scripts only: the stylesheet shares the folder, and holding it holds the paint.
+    let release!: () => void;
+    const held = new Promise<void>((resolve) => (release = resolve));
+    await onboarded.route(/\/_next\/static\/.*\.js$/, async (route) => {
+      await held;
+      await route.continue();
+    });
+
+    await onboarded.goto(list(), { waitUntil: 'domcontentloaded' });
+    await onboarded.getByRole('searchbox', { name: 'Search' }).fill('nombres');
+    release();
+
+    await expect(onboarded).toHaveURL(/\/lessons\?q=nombres$/);
+    await expect(onboarded.getByRole('searchbox', { name: 'Search' })).toHaveValue('nombres');
+  });
+
   test('on a phone, the filters open as a sheet and close again', async ({ onboarded }) => {
     await onboarded.setViewportSize({ width: 390, height: 844 });
     await onboarded.goto(list());
