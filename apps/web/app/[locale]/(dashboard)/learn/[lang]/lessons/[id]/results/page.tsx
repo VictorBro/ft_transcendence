@@ -95,14 +95,8 @@ export default async function ResultsPage({ params }: { params: Params }) {
           </>
         }
       >
-        {results.steps.map((step, n) => (
+        {results.steps.map((_step, n) => (
           <section key={n} className="flex flex-col gap-4">
-            <h2 className="flex items-baseline justify-between gap-3 text-lg font-semibold">
-              {pick(step.title, locale)}
-              <span className="text-base font-normal tabular-nums text-slate-400">
-                {t('tally', { earned: points(step.earned), possible: step.possible })}
-              </span>
-            </h2>
             <ol className="lesson-result-rows">
               {results.rows
                 .filter((row) => row.step === n)

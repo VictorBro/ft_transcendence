@@ -491,6 +491,17 @@ header:has(+ main .lesson-view) > div {
   .lesson-form-rows [data-text-row] {
     grid-template-columns: minmax(4rem, 6rem) minmax(0, 1fr);
   }
+  /* In an exam card the field would be too narrow beside the pronoun:
+     the pronoun goes above it. */
+  .lesson-exam-card .lesson-form-rows [data-text-row] {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .lesson-exam-card .lesson-form-rows [data-text-row] > :not(:first-child) {
+    grid-column: 1;
+  }
+  .lesson-exam-card .lesson-form-rows [data-text-row] > :first-child {
+    grid-row: auto;
+  }
 }
 @media (max-width: 960px) {
   .lesson-layout {

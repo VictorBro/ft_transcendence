@@ -114,7 +114,8 @@ test('results fragments select one part across navigation and without JavaScript
     await noScript.locator(`nav a[href="#part-${second}"]`).click();
     await expect(noScript.locator('.lesson-result-panel:visible')).toHaveCount(1);
     await expect(noScript.locator(`#part-${second}`)).toBeVisible();
-    // The banner on show names that part, not the exam.
+    // The banner on show names that part, not the exam, and only once.
+    await expect(noScript.locator('.lesson-result-panel:visible h2')).toHaveCount(1);
     await expect(noScript.locator('.lesson-result-panel:visible h2').first()).toHaveText(
       steps[second - 1]!.title.en,
     );

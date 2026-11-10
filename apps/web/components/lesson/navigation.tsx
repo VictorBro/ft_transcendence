@@ -41,7 +41,7 @@ export function LessonNavigation({ outline, index }: { outline: LessonOutline; i
   const examRows = examPages.map((page, n) => ({
     key: n,
     number: `${n + 1}`,
-    title: pick(page.step, locale),
+    title: t('examPageTitle', { n: n + 1 }),
     color: '#86efac',
     current: index === page.index,
     done: index > page.index,

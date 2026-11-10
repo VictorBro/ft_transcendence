@@ -453,6 +453,7 @@
     "finalExam": "Examen final",
     "questionCount": "{count, plural, one {# question} other {# questions}}",
     "examOverview": "{pages, plural, one {# page} other {# pages}} · {questions, plural, one {# question} other {# questions}}",
+    "examPageTitle": "Page {n}",
     "examPageDetail": "{questions, plural, one {# question} other {# questions}} · {seconds} s",
     "examNavigationNote": "Chaque page a son propre compte à rebours. Les résultats sont affichés après tout l’examen.",
     "aboutMinutes": "Environ {minutes} minutes",

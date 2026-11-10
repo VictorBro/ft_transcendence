@@ -423,7 +423,7 @@ export function LessonPlayer({
                       className="flex flex-wrap items-center justify-between gap-2 rounded-lg border border-slate-800 px-4 py-3"
                     >
                       <span className="font-medium text-slate-100">
-                        {n + 1}. {pick(p.step, locale)}
+                        {t('examPageTitle', { n: n + 1 })}
                       </span>
                       <span className="text-sm text-slate-400 tabular-nums">
                         {t('examPageDetail', { questions: p.questions, seconds: p.limitS ?? 0 })}
