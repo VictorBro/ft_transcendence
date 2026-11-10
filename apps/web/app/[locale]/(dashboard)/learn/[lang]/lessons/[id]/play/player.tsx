@@ -404,6 +404,22 @@ export function LessonPlayer({
                     questions: examPages.reduce((sum, p) => sum + p.questions, 0),
                   })}
                 </p>
+                {/* Each exam page with its questions and countdown, as in the mockup. */}
+                <ol className="flex flex-col gap-2" aria-label={t('exam')}>
+                  {examPages.map((p, n) => (
+                    <li
+                      key={n}
+                      className="flex flex-wrap items-center justify-between gap-2 rounded-lg border border-slate-800 px-4 py-3"
+                    >
+                      <span className="font-medium text-slate-100">
+                        {n + 1}. {pick(p.step, locale)}
+                      </span>
+                      <span className="text-sm text-slate-400 tabular-nums">
+                        {t('examPageDetail', { questions: p.questions, seconds: p.limitS ?? 0 })}
+                      </span>
+                    </li>
+                  ))}
+                </ol>
               </ItemCard>
             ) : null}
 
