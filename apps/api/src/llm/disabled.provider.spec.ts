@@ -1,5 +1,4 @@
 import { describe, expect, it } from 'vitest';
-import { z } from 'zod';
 
 import { DisabledProvider } from './disabled.provider';
 import { LlmError } from './llm.provider';
@@ -10,12 +9,8 @@ describe('DisabledProvider', () => {
   const provider = new DisabledProvider();
 
   it('writes no questions', async () => {
-    const call = provider.generateStructured({
-      purpose: 'question-batch:grammar',
-      system: '',
-      user: '',
-      schema: z.object({}),
-    });
+    // No argument, as streamText() below: the class's own method takes none.
+    const call = provider.generateStructured();
 
     await expect(call).rejects.toBeInstanceOf(LlmError);
     await expect(call).rejects.toEqual(failure);
