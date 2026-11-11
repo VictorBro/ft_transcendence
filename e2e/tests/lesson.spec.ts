@@ -10,6 +10,7 @@ import {
   pageIndex,
   playLesson,
   sendPage,
+  unrollDialogue,
 } from '../support/lesson-play';
 import { liveConnection } from '../support/live';
 import { expect, placeCourse, test } from '../support/session';
@@ -30,6 +31,8 @@ const page = (suffix = '', lesson = LESSON) => `/en/learn/${LANG}/lessons/${less
 const OTHER_GRAMMAR = contentLessons(LANG, 'A1', 'grammar').filter((id) => id !== LESSON);
 /** The French A1 vocabulary lessons (#147), built from their briefs. */
 const VOCABULARY = contentLessons(LANG, 'A1', 'vocabulary');
+/** The French A1 functions lessons (#149). */
+const FUNCTIONS = contentLessons(LANG, 'A1', 'functions');
 
 /** Opens a lesson page and starts the lesson. */
 async function start(p: Page, lesson = LESSON): Promise<void> {
@@ -345,6 +348,66 @@ test.describe('every French A1 vocabulary lesson', () => {
   test.describe.configure({ timeout: 240_000 });
 
   for (const lesson of VOCABULARY) {
+    test(`${lesson} plays to its results`, async ({ freshLearner }) => {
+      const learner = freshLearner;
+      const violations = watchConsole(learner);
+      await placeCourse(learner, { lang: LANG, level: 'A1', dailyGoal: 10 });
+      await start(learner, lesson);
+      await playLesson(learner, lessonPlan(lesson, 'en'));
+
+      await expect(learner.getByRole('heading', { name: 'Your results' })).toBeVisible();
+      await expect(learner.getByText('Score: 100 / 100')).toBeVisible();
+      expect(violations, formatViolations(violations)).toEqual([]);
+    });
+  }
+});
+
+test.describe('a functions lesson', () => {
+  test.describe.configure({ timeout: 240_000 });
+
+  // No voice: the dialogue plays without speakers, and Show the text answers the listening reply (#149).
+  test('plays to the results in a browser with no voice, through Show the text', async ({
+    freshLearner,
+  }) => {
+    const learner = freshLearner;
+    const lesson = FUNCTIONS[0]!;
+    const planned = lessonPlan(lesson, 'en');
+    const violations = watchConsole(learner);
+    await placeCourse(learner, { lang: LANG, level: 'A1', dailyGoal: 10 });
+    await start(learner, lesson);
+
+    // The model dialogue: Next line until its last line, then Continue.
+    const dialogue = planned.pages.findIndex((p) =>
+      p.items.some((item) => item.type === 'function_dialogue'),
+    );
+    await playLesson(learner, planned, { stop: (index) => index === dialogue });
+    const lines = learner.locator('.lesson-dialogue > li');
+    await expect(learner.getByText(/^Line 1 of \d+$/)).toBeVisible();
+    await expect(lines).toHaveCount(1);
+    await expect(learner.locator('[data-listen]')).toHaveCount(0);
+    await unrollDialogue(learner);
+    await expect(mainButton(learner)).toHaveText('Continue');
+    expect(await lines.count()).toBeGreaterThan(1);
+
+    // The listening reply: Reply 1 to Reply 4 until Show the text writes them out.
+    const listening = planned.pages.findIndex((p) =>
+      p.items.some((item) => item.type === 'function_listening_choice'),
+    );
+    await playLesson(learner, planned, { stop: (index) => index === listening });
+    await expect(learner.getByRole('radio', { name: 'Reply 1' })).toBeVisible();
+    await playLesson(learner, planned);
+
+    await expect(learner.getByRole('heading', { name: 'Your results' })).toBeVisible();
+    await expect(learner.getByText('Score: 100 / 100')).toBeVisible();
+    expect(violations, formatViolations(violations)).toEqual([]);
+  });
+});
+
+test.describe('every French A1 functions lesson', () => {
+  test.skip(({ browserName }) => browserName !== 'chromium', 'Chromium covers the content');
+  test.describe.configure({ timeout: 240_000 });
+
+  for (const lesson of FUNCTIONS) {
     test(`${lesson} plays to its results`, async ({ freshLearner }) => {
       const learner = freshLearner;
       const violations = watchConsole(learner);

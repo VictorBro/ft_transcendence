@@ -472,7 +472,12 @@
     "withoutArticle": "without article",
     "typeTheArticle": "Type the article before the word.",
     "whichGender": "Which gender?",
-    "wordCount": "{count, plural, one {# word} other {# words}}"
+    "wordCount": "{count, plural, one {# word} other {# words}}",
+    "listen": "Listen",
+    "nextLine": "Next line",
+    "lineOf": "Line {n} of {total}",
+    "turnLine": "Turn the line: {text}",
+    "replyN": "Reply {n}"
   },
   "Genders": {
     "masculine": "Masculine",

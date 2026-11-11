@@ -472,7 +472,12 @@
     "withoutArticle": "sans article",
     "typeTheArticle": "Écris l'article avant le mot.",
     "whichGender": "Quel genre ?",
-    "wordCount": "{count, plural, one {# mot} other {# mots}}"
+    "wordCount": "{count, plural, one {# mot} other {# mots}}",
+    "listen": "Écouter",
+    "nextLine": "Réplique suivante",
+    "lineOf": "Réplique {n} sur {total}",
+    "turnLine": "Retourner la réplique : {text}",
+    "replyN": "Réponse {n}"
   },
   "Genders": {
     "masculine": "Masculin",

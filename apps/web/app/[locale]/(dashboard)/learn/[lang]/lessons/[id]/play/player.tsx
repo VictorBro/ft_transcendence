@@ -229,7 +229,13 @@ export function LessonPlayer({
   const hold = useCallback((key: string, value: Hold | null) => {
     setHolds((current) => {
       const before = current[key];
-      if (before?.kind === value?.kind && before?.message === value?.message) return current;
+      if (
+        before?.kind === value?.kind &&
+        before?.message === value?.message &&
+        before?.label === value?.label &&
+        before?.onStep === value?.onStep
+      )
+        return current;
       const next = { ...current };
       if (value === null) delete next[key];
       else next[key] = value;
@@ -363,15 +369,19 @@ export function LessonPlayer({
     nudged,
     shared,
     share,
+    outline,
   };
   // Holds only stand before the page is sent: Continue after a Check is never held.
   const pageHolds = checked ? [] : Object.values(holds);
   const blocked = pageHolds.some((h) => h.kind === 'block');
   const nudging = pageHolds.some((h) => h.kind === 'nudge');
-  const holdMessage = pageHolds.find((h) => h.message && (h.kind === 'block' || nudged))?.message;
+  // A step lends the button to an item (Next line) before anything else.
+  const step = pageHolds.find((h) => h.kind === 'step' && h.onStep);
+  const holdMessage = pageHolds.find((h) => h.message && (h.kind !== 'nudge' || nudged))?.message;
 
   const button = (() => {
     if (checked) return { label: t('continue'), onClick: next };
+    if (step?.onStep) return { label: step.label ?? t('continue'), onClick: step.onStep };
     switch (page.role) {
       case 'practice':
         return { label: t('check'), onClick: () => void post() };
@@ -510,13 +520,13 @@ export function LessonPlayer({
                   onClick={(event) => {
                     if (event.detail > 1) return;
                     // A nudge lets the first press show its notes; the next one sends.
-                    if (nudging && !nudged) {
+                    if (nudging && !nudged && !step) {
                       setNudged(true);
                       return;
                     }
                     button.onClick();
                   }}
-                  disabled={pending || flash || blocked}
+                  disabled={pending || flash || (blocked && !step)}
                   className={PRIMARY_BUTTON}
                 >
                   {button.label}

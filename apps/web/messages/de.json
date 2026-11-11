@@ -472,7 +472,12 @@
     "withoutArticle": "ohne Artikel",
     "typeTheArticle": "Schreib den Artikel vor das Wort.",
     "whichGender": "Welches Genus?",
-    "wordCount": "{count, plural, one {# Wort} other {# Wörter}}"
+    "wordCount": "{count, plural, one {# Wort} other {# Wörter}}",
+    "listen": "Anhören",
+    "nextLine": "Nächste Zeile",
+    "lineOf": "Zeile {n} von {total}",
+    "turnLine": "Zeile umdrehen: {text}",
+    "replyN": "Antwort {n}"
   },
   "Genders": {
     "masculine": "Maskulin",

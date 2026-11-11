@@ -57,7 +57,7 @@ function GenderSelect({ item, ...props }: ItemProps<'vocabulary_gender_select'>)
 }
 
 /** One gender pill label per gender of the course language. */
-function useGenderLabel() {
+export function useGenderLabel() {
   const genders = useTranslations('Genders');
   return (gender: string) => (genders.has(gender) ? genders(gender) : gender);
 }
@@ -205,7 +205,7 @@ function ExamWord({
   );
 }
 
-function TranslationExam({ item, ...props }: ItemProps<'vocabulary_translation_exam'>) {
+export function TranslationExam({ item, ...props }: ItemProps<'vocabulary_translation_exam'>) {
   return (
     <ItemCard>
       {item.units.map((unit) =>

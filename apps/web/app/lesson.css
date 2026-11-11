@@ -1031,3 +1031,78 @@ header:has(+ main .lesson-view) > div {
     font-size: 12px;
   }
 }
+
+/* Functions (#149). */
+.lesson-flashcard-explanation {
+  margin-top: -14px;
+  color: #94a3b8;
+  font-size: 17px;
+}
+.lesson-situation {
+  margin-top: -8px;
+}
+/* A role over its line: LE SERVEUR. */
+.lesson-role {
+  color: #94a3b8;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+/* The dialogue: one role on the left, the other on the right. */
+.lesson-dialogue {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.lesson-dialogue-line {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: min(100%, 80%);
+  border: 1px solid #334155;
+  border-radius: 12px;
+  background: #020617;
+  padding: 22px 64px 22px 20px;
+}
+.lesson-dialogue-line.is-other {
+  align-self: flex-end;
+  background: #0f172a;
+}
+/* A turnable line: the whole card turns, its speaker only speaks. */
+.lesson-dialogue-line:has(> .lesson-flashcard-turn) > :not(.lesson-flashcard-turn) {
+  position: relative;
+  pointer-events: none;
+}
+.lesson-dialogue-line > :not(.lesson-flashcard-turn) .lesson-listen {
+  pointer-events: auto;
+}
+.lesson-dialogue-line .lesson-flashcard-turn[aria-pressed='true'] svg {
+  border-color: #635bff;
+}
+/* The listening reply: a speaker beside each reply. */
+.lesson-reply {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.lesson-reply-listen {
+  position: absolute;
+  left: 12px;
+  z-index: 1;
+}
+.lesson-reply > [role='radio'] {
+  padding-left: 16px;
+}
+.lesson-reply:has(.lesson-listen) > [role='radio'] {
+  padding-left: 60px;
+}
+@media (max-width: 600px) {
+  /* Phones: every line full width, as in the prototype. */
+  .lesson-dialogue-line,
+  .lesson-dialogue-line.is-other {
+    width: 100%;
+    align-self: stretch;
+    padding: 18px 56px 18px 16px;
+  }
+}

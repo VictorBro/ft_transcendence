@@ -1,6 +1,8 @@
 import type { LessonKind } from '@ft/shared';
 
 import type { ItemRenderers, KindParts, StartFact, StartField } from '../types';
+import { functionsRenderers } from './functions';
+import { Situation } from './functions-start';
 import { grammarRenderers } from './grammar';
 import { NewVerbs } from './grammar-start';
 import { vocabularyRenderers } from './vocabulary';
@@ -18,6 +20,7 @@ const KINDS: KindParts[] = [
     startFields: [],
     startFacts: [wordCount],
   },
+  { kind: 'functions', renderers: functionsRenderers, startFields: [Situation] },
 ];
 
 export const ITEM_RENDERERS: ItemRenderers = Object.assign({}, ...KINDS.map((k) => k.renderers));

@@ -29,21 +29,31 @@ export interface AnswerProps {
    * Holds the page's main button back, under a key of the item's own;
    * null lets it go. A `block` disables it (every flashcard turned first);
    * a `nudge` lets the first press through only to show `nudged`, and the
-   * second one sends (the article note of the translation exam).
+   * second one sends (the article note of the translation exam); a `step`
+   * takes the button over (see Hold).
    */
   hold: (key: string, hold: Hold | null) => void;
   /** The first press found a nudge: the items show their notes. */
   nudged: boolean;
-  /** What the items of one page share (the skim of a reading page), cleared with the page. */
+  /** What the items of one page share, cleared with the page. */
   shared: Readonly<Record<string, unknown>>;
   share: (key: string, value: unknown) => void;
+  /** The lesson's outline: the roles of a functions dialogue. */
+  outline: LessonOutline;
 }
 
-/** What holds the main button of a page back; see AnswerProps.hold. */
+/**
+ * What holds the main button of a page back; see AnswerProps.hold. A
+ * `step` lends the button to the item for one more step of its own (Next
+ * line of a dialogue): it shows `label`, and a press calls `onStep`
+ * instead of sending the page. Pass a stable `onStep`.
+ */
 export interface Hold {
-  kind: 'block' | 'nudge';
+  kind: 'block' | 'nudge' | 'step';
   /** Shown beside the button while it holds; none for a hold the item explains itself. */
   message?: string;
+  label?: string;
+  onStep?: () => void;
 }
 
 export interface ItemProps<T extends ItemViewType = ItemViewType> extends AnswerProps {

@@ -14,12 +14,14 @@ export interface Flashcard {
   front: string;
   /** The back: the word in the course language, its teaching form. */
   text: string;
+  /** A line under the word on the back: when to use an expression, or a noun's genders. */
+  explanation?: string;
   /** An example sentence on the back, and its translation. */
   example?: { text: string; translation: string };
 }
 
 /**
- * B3, the flashcards (#147): recall each word from its translation, then
+ * B3, the flashcards (#147, #149): recall each word or expression from its translation, then
  * turn the card to check it. Every card is turned at least once before
  * Continue: the page holds its button until then. A turned card can be
  * turned back; it stays counted.
@@ -97,6 +99,9 @@ export function Flashcards({
                     </span>
                     <ListenButton text={card.text} lang={lang} />
                   </p>
+                  {card.explanation ? (
+                    <p className="lesson-flashcard-explanation">{card.explanation}</p>
+                  ) : null}
                   {card.example ? (
                     <p className="lesson-flashcard-example">
                       <ListenButton text={card.example.text} lang={lang} size="sm" />

@@ -17,8 +17,8 @@ import { lessons, type Locale } from '@ft/shared';
  * prompt on screen is matched to its plan unit by text. No database read,
  * no test route.
  *
- * Grammar (#146) and vocabulary (#147) play in the browser; #148 and #149
- * teach it their kinds. The API player below already answers every kind,
+ * Grammar (#146), vocabulary (#147) and functions (#149) play in the
+ * browser; #148 teaches it reading. The API player below already answers every kind,
  * since it reads the page views as JSON.
  */
 
@@ -86,6 +86,7 @@ const BOARDS = new Set([
   'grammar_person_matching',
   'grammar_pronoun_form_match',
   'vocabulary_matching',
+  'function_matching',
 ]);
 
 /** A typed answer that is right: the teaching answer. */
@@ -126,6 +127,15 @@ function rowsOf(page: Page, prompt: PlanUnit['prompt']): Locator {
 }
 
 /**
+ * The row of a unit: by its prompt, else the first one not taken (a
+ * functions line shows its text without the "Marc: " of the prompt).
+ */
+async function rowFor(page: Page, prompt: PlanUnit['prompt'], used: Set<string>): Promise<Locator> {
+  const rows = rowsOf(page, prompt);
+  return unusedRow((await rows.count()) > 0 ? rows : page.locator('[data-unit]'), used);
+}
+
+/**
  * The first of `rows` no earlier unit of the page took, marked as taken:
  * two units can show the same prompt, or the same text around a gap.
  */
@@ -162,6 +172,21 @@ async function tokenRow(page: Page, tokens: string[], used: Set<string>): Promis
   throw new Error(`No row with the words ${tokens.join(' ')}`);
 }
 
+/** Presses Next line until the dialogue on screen shows its last line. */
+export async function unrollDialogue(page: Page): Promise<void> {
+  const button = page.locator('.lesson-task-footer').getByRole('button');
+  const status = page.locator('[data-hold-message]');
+  if ((await page.locator('.lesson-dialogue').count()) === 0) return;
+  // Before hydration the button still says Continue: wait for the line count beside it.
+  await status.waitFor({ timeout: 5_000 }).catch(() => undefined);
+  for (let n = 0; n < 50 && (await button.innerText()) === 'Next line'; n += 1) {
+    const before = await status.innerText();
+    await button.click();
+    // One line more: the count beside the button moves on, or goes with the last line.
+    await expect(status.filter({ hasText: before })).toHaveCount(0);
+  }
+}
+
 /**
  * Answers every unit of the page on screen, right or wrong as `right`
  * says, through the controls a learner uses.
@@ -179,12 +204,20 @@ export async function answerPage(
   for (const turn of await page.getByRole('button', { name: /^Turn the card: / }).all()) {
     await turn.click();
   }
+  // A dialogue (#149) unrolls with Next line, the main button until its last line.
+  await unrollDialogue(page);
+  // The listening reply: Show the text writes out the line and the replies.
+  for (const show of await page
+    .getByRole('button', { name: 'Show the text', pressed: false })
+    .all()) {
+    await show.click();
+  }
 
   for (const unit of planPage.units) {
     const good = right(unit);
     switch (unit.kind) {
       case 'text': {
-        const row = await unusedRow(rowsOf(page, unit.prompt), used);
+        const row = await rowFor(page, unit.prompt, used);
         await row.getByRole('textbox').fill(good ? rightText(unit) : WRONG_TEXT);
         // A "des ..." answer asks for its gender (a plurale tantum).
         if (good && unit.noun?.pluraleTantum && /^des\s/iu.test(rightText(unit))) {
@@ -204,7 +237,7 @@ export async function answerPage(
           const option = pickFrom.find((id) => !given.has(id)) ?? pickFrom[0]!;
           given.add(option);
           // Two boxes can show the same form: the first one not given yet.
-          const row = await unusedRow(rowsOf(page, unit.prompt), used);
+          const row = await rowFor(page, unit.prompt, used);
           await page
             .locator('[data-option]')
             .getByText(textOf(unit.options, option), { exact: true })
@@ -212,7 +245,7 @@ export async function answerPage(
           // The box is the row's last button: a Listen button can come before it.
           await row.getByRole('button').last().click();
         } else {
-          const row = await unusedRow(rowsOf(page, unit.prompt), used);
+          const row = await rowFor(page, unit.prompt, used);
           await row
             .getByRole('radio', { name: shown(unit.options, pickFrom[0]!), exact: true })
             .click();
