@@ -9,12 +9,13 @@
     "format:check": "prettier --check . --ignore-path ../.prettierignore",
     "typecheck": "tsc --noEmit",
     "browsers": "playwright install --with-deps chromium firefox webkit",
-    "test:e2e": "playwright test",
-    "test:e2e:restart": "E2E_RESTART=1 playwright test --project=chromium",
+    "test:e2e": "pnpm --filter @ft/shared run build && playwright test",
+    "test:e2e:restart": "pnpm --filter @ft/shared run build && E2E_RESTART=1 playwright test --project=chromium",
     "report": "playwright show-report"
   },
   "devDependencies": {
     "@ft/eslint-config": "workspace:*",
+    "@ft/shared": "workspace:*",
     "@ft/tsconfig": "workspace:*",
     "@playwright/test": "1.62.1",
     "@types/node": "^24.13.3",

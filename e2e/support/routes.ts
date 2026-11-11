@@ -56,6 +56,12 @@ export const PAGE_ROUTES: PageRoute[] = [
     name: 'placement exam',
     onboarded: true,
   },
+  // Not started on the fixture account: the lesson page with its Start button.
+  {
+    path: `/en/learn/${ONBOARDED_COURSE.lang}/lessons/fr-subject-pronouns`,
+    name: 'lesson page',
+    onboarded: true,
+  },
   { path: '/en/onboarding', name: 'onboarding', onboarded: true },
   { path: '/en/chat', name: 'chat', onboarded: true },
   { path: '/en/friends', name: 'friends', onboarded: true, othersAvatars: true },
