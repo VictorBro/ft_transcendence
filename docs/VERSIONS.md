@@ -28,7 +28,7 @@ Pin exactly (no caret unless noted) and re-verify before the first commit.
 | next-intl | 4.13.4 | |
 | NestJS | 11.1.28 | core, common, websockets, platform-socket.io, testing. |
 | `@nestjs/swagger` | 11.4.6 | |
-| `@nestjs/throttler` | 6.5.0 | |
+| `@nestjs/throttler` | 6.7.1 | 6.7 keeps an expiry per storage key, so a block reset clears only its own bucket (`throttler-storage.spec.ts`). |
 | `@nestjs/config` | 4.0.4 | |
 | socket.io / client | 4.8.3 | |
 | Zod | 4.4.3 | |

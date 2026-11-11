@@ -6,7 +6,13 @@ import {
   type Page,
 } from '@playwright/test';
 
-import { logInSlot, signUpSlot, type SlotOptions, WORKER_SIGNUP_TIMEOUT_MS } from './signup-budget';
+import {
+  logInSlot,
+  signUpSlot,
+  signUpRequest,
+  type SlotOptions,
+  WORKER_SIGNUP_TIMEOUT_MS,
+} from './signup-budget';
 
 /**
  * Signing in, for the specs that need an account but are not testing signup.
@@ -55,10 +61,13 @@ export const signUp = async (
   fields: Identity = identity(),
   slot?: SlotOptions,
 ): Promise<void> => {
-  await signUpSlot(slot);
-  const created = await page.request.post('/api/auth/signup', {
-    data: { ...fields, password: PASSWORD },
-  });
+  const created = await signUpRequest(
+    () =>
+      page.request.post('/api/auth/signup', {
+        data: { ...fields, password: PASSWORD },
+      }),
+    slot,
+  );
   expect(created.status()).toBe(201);
 };
 
