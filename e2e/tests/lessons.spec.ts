@@ -139,6 +139,25 @@ test.describe('the all lessons page', () => {
     await expect(onboarded.getByRole('checkbox', { name: 'Grammar' })).not.toBeChecked();
   });
 
+  test('a chip back to a view the form sent earlier still unticks its box', async ({
+    onboarded,
+  }) => {
+    await onboarded.goto(list());
+    await onboarded.getByRole('checkbox', { name: 'Grammar' }).check();
+    await expect(onboarded).toHaveURL(/\/lessons\?kind=grammar$/);
+    await onboarded.getByRole('checkbox', { name: 'Vocabulary' }).check();
+    await expect(onboarded).toHaveURL(/\/lessons\?kind=grammar%2Cvocabulary$/);
+
+    // Back to ?kind=grammar, which the form itself sent a moment ago.
+    await onboarded.getByRole('link', { name: 'Remove Vocabulary' }).click();
+
+    await expect(onboarded).toHaveURL(/\/lessons\?kind=grammar$/);
+    await expect(onboarded.getByRole('checkbox', { name: 'Vocabulary' })).not.toBeChecked();
+    // The next change sends the form as it is: the removed filter stays off.
+    await onboarded.getByRole('checkbox', { name: 'Reading' }).check();
+    await expect(onboarded).toHaveURL(/\/lessons\?kind=grammar%2Creading$/);
+  });
+
   test('a search applies once the typing stops', async ({ onboarded }) => {
     await onboarded.goto(list());
     await onboarded.getByRole('searchbox', { name: 'Search' }).fill('nombres');

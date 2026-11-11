@@ -30,8 +30,10 @@ export function LiveForm({
   const [pending, startTransition] = useTransition();
   const form = useRef<HTMLFormElement>(null);
   const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
-  // The queries this form sent: its own navigations leave the fields as typed,
-  // even when an older one lands while the learner is still typing.
+  // The queries this form sent that have not landed yet: its own navigations
+  // leave the fields as typed, even when an older one lands while the learner
+  // is still typing. Only until they land: a chip back to an earlier query is
+  // not the form's own.
   const sent = useRef(new Set<string>());
   // The query the fields were last put on. The page renders them from it, so
   // the first run has nothing to reset: resetting would wipe what was typed
@@ -44,7 +46,9 @@ export function LiveForm({
     const now = searchParams.toString();
     if (now === shown.current) return;
     shown.current = now;
-    if (!sent.current.has(now)) {
+    if (sent.current.has(now)) {
+      sent.current.delete(now);
+    } else {
       sent.current.clear();
       form.current?.reset();
     }
@@ -84,7 +88,9 @@ export function LiveForm({
         group: data.get('group'),
       });
       const href = lessonsHref(lang, query);
-      sent.current.add(href.split('?')[1] ?? '');
+      const sending = href.split('?')[1] ?? '';
+      // The query already shown never lands again, so it would stay in sent.
+      if (sending !== shown.current) sent.current.add(sending);
       // The hash keeps the phone's filter sheet open (#filters) while the list updates.
       startTransition(() => router.replace(`${href}${window.location.hash}`, { scroll: false }));
     }, delay);
