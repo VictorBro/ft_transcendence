@@ -63,11 +63,13 @@ describe('PresenceService', () => {
   });
 
   describe('disconnected', () => {
-    it('answers at once while another tab is open', async () => {
-      const { service, client } = fakeRedis({ 'presence:bob': '2' });
+    it('says no one left while another tab is open', async () => {
+      const { service } = fakeRedis({ 'presence:bob': '2' });
 
-      expect(await service.disconnected('bob')).toBe(false);
-      expect(client.get).not.toHaveBeenCalled();
+      const left = service.disconnected('bob');
+      await vi.advanceTimersByTimeAsync(PRESENCE_GRACE_MS);
+
+      expect(await left).toBe(false);
     });
 
     it('says the user left once the grace period has passed, not before', async () => {
@@ -81,16 +83,49 @@ describe('PresenceService', () => {
       expect(await left.value).toBe(true);
     });
 
+    // During the wait, the REST routes and the snapshot on connect must agree
+    // with the friends who already see the user online.
+    it('keeps the user counted, so online, until the grace period ends', async () => {
+      const { service } = fakeRedis({ 'presence:bob': '1' });
+
+      const left = service.disconnected('bob');
+      await vi.advanceTimersByTimeAsync(PRESENCE_GRACE_MS - 1);
+      expect(await service.isOnline(['bob'])).toEqual(new Set(['bob']));
+
+      await vi.advanceTimersByTimeAsync(1);
+      await left;
+      expect(await service.isOnline(['bob'])).toEqual(new Set());
+    });
+
     // A reload closes the socket and opens another: friends must not see a flicker.
-    it('says nothing left when a tab came back within the grace period', async () => {
+    it('says nothing left, and no second online, when a tab came back within the grace period', async () => {
       const { service } = fakeRedis({ 'presence:bob': '1' });
 
       const left = service.disconnected('bob');
       await vi.advanceTimersByTimeAsync(500);
-      await service.connected('bob');
+      expect(await service.connected('bob')).toBe(false);
       await vi.advanceTimersByTimeAsync(PRESENCE_GRACE_MS);
 
       expect(await left).toBe(false);
+    });
+
+    // An older close must not answer for a newer one.
+    it('goes offline a full grace period after the last close, not the first', async () => {
+      const { service } = fakeRedis({ 'presence:bob': '1' });
+
+      const first = watch(service.disconnected('bob'));
+      await vi.advanceTimersByTimeAsync(500);
+      await service.connected('bob');
+      await vi.advanceTimersByTimeAsync(9_000);
+      const last = watch(service.disconnected('bob'));
+
+      // 10 s after the first close, 0.5 s after the last: nothing yet.
+      await vi.advanceTimersByTimeAsync(500);
+      expect(await first.value).toBe(false);
+      expect(last.settled()).toBe(false);
+
+      await vi.advanceTimersByTimeAsync(PRESENCE_GRACE_MS - 500);
+      expect(await last.value).toBe(true);
     });
 
     // A socket closing after a restart reset the counts would take them below zero.
@@ -98,11 +133,9 @@ describe('PresenceService', () => {
       const { service, store } = fakeRedis();
 
       const left = service.disconnected('bob');
-      // Lets the decr and the set answer; the grace period has not started counting.
-      await vi.advanceTimersByTimeAsync(0);
-      expect(store.get('presence:bob')).toBe('0');
       await vi.advanceTimersByTimeAsync(PRESENCE_GRACE_MS);
-      await left;
+      expect(await left).toBe(true);
+      expect(store.get('presence:bob')).toBe('0');
 
       expect(await service.connected('bob')).toBe(true);
     });

@@ -38,8 +38,7 @@ export function UserRow({
         <Avatar src={user.avatarUrl} name={user.displayName} size={40} />
         {online === undefined ? null : (
           <span className="absolute -right-0.5 -bottom-0.5 flex">
-            {/* Keyed on the rendered value, so a refresh starts a fresh dot from it. */}
-            <PresenceDot key={String(online)} userId={user.id} online={online} />
+            <PresenceDot userId={user.id} online={online} />
           </span>
         )}
       </div>

@@ -2,8 +2,14 @@
 
 import { useEffect, useRef, useSyncExternalStore } from 'react';
 import { io, type Socket } from 'socket.io-client';
-import type { ClientToServerEvents, ServerEventName, ServerToClientEvents } from '@ft/shared';
+import {
+  SERVER_EVENTS,
+  type ClientToServerEvents,
+  type ServerEventName,
+  type ServerToClientEvents,
+} from '@ft/shared';
 
+import { createPresenceMap } from '@/lib/presence';
 import {
   afterConnectError,
   afterDisconnect,
@@ -32,6 +38,9 @@ let attempt = 0;
 // Bumped by every new owner of the socket, so a probe still out knows it lost.
 let dial = 0;
 const watchers = new Set<() => void>();
+// Fed from the socket's own listeners, set up with it below, so no update is
+// missed while no dot is on screen.
+const presence = createPresenceMap();
 
 function setStatus(next: SocketStatus): void {
   status = next;
@@ -99,6 +108,8 @@ function socket(): TabSocket {
     created.on('connect_error', (error) =>
       follow(afterConnectError(created.active, error.message)),
     );
+    created.on(SERVER_EVENTS.PRESENCE_UPDATE, (update) => presence.apply(update));
+    created.on(SERVER_EVENTS.FRIEND_REMOVED, ({ userId }) => presence.forget(userId));
     tab = created;
   }
   return tab;
@@ -128,7 +139,23 @@ export function connectSocket(): void {
 export function closeSocket(): void {
   cancelRetry();
   tab?.disconnect();
+  presence.clear();
   setStatus('closed');
+}
+
+/**
+ * Whether this friend is online, as far as the tab has heard: the snapshot on
+ * connect, then every presence:update. Falls back to `rendered`, the value the
+ * server rendered, for a friend the tab has heard nothing about yet. The server
+ * render and hydration use `rendered` too, so they always agree.
+ */
+export function useFriendOnline(userId: string, rendered: boolean): boolean {
+  const heard = useSyncExternalStore(
+    presence.subscribe,
+    () => presence.get(userId),
+    () => undefined,
+  );
+  return heard ?? rendered;
 }
 
 function subscribe(watch: () => void): () => void {

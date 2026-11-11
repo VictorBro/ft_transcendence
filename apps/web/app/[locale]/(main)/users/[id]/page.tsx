@@ -77,7 +77,7 @@ export default async function UserPage({ params }: { params: Promise<{ id: strin
               {profile.displayName}
             </h1>
             {friend === undefined ? null : (
-              <PresenceDot key={String(friend.online)} userId={friend.id} online={friend.online} />
+              <PresenceDot userId={friend.id} online={friend.online} />
             )}
           </div>
           <Avatar src={profile.avatarUrl} name={profile.displayName} size={128} />

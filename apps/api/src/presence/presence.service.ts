@@ -31,17 +31,21 @@ export class PresenceService implements OnApplicationBootstrap {
     return count === 1;
   }
 
-  /** A socket closed. Resolves after the grace period, true when the user has no socket left. */
+  /**
+   * A socket closed. Resolves after the grace period, true when the user has
+   * no socket left.
+   *
+   * The socket comes off the count only once the wait is over. Meanwhile
+   * isOnline still says online, a reload's new socket counts 2 (no second
+   * online), and since the last DECR to land is the last close's, offline goes
+   * out exactly PRESENCE_GRACE_MS after it, never earlier and never twice.
+   */
   async disconnected(userId: string): Promise<boolean> {
-    const count = await this.redis.client.decr(presenceKey(userId));
-    if (count > 0) return false;
-
-    if (count < 0) await this.redis.client.set(presenceKey(userId), '0');
-
     // unref: a pending wait must not hold the process open on shutdown.
     await new Promise((resolve) => setTimeout(resolve, PRESENCE_GRACE_MS).unref());
-    const now = await this.redis.client.get(presenceKey(userId));
-    return Number(now) <= 0;
+    const count = await this.redis.client.decr(presenceKey(userId));
+    if (count < 0) await this.redis.client.set(presenceKey(userId), '0');
+    return count <= 0;
   }
 
   /** The ids among `ids` that hold a socket, for the REST routes. */

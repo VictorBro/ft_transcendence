@@ -182,8 +182,8 @@ export class SocketGateway
   private async arrived(socket: AppSocket): Promise<void> {
     const { userId } = socket.data;
     try {
-      // Both start before any await, so the INCR is sent before a DECR from
-      // a socket that closes at once.
+      // Both start before any await. A socket that closes at once is fine
+      // either way: its DECR only lands after the grace period.
       const [first, friends] = await Promise.all([
         this.presence.connected(userId),
         friendIds(this.prisma, userId),
