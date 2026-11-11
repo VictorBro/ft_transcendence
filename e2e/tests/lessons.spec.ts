@@ -192,6 +192,19 @@ test.describe('the all lessons page', () => {
     await expect(onboarded).toHaveURL(/\/lessons\?page=2$/);
   });
 
+  test('a fold stays open when its last box is unticked', async ({ onboarded }) => {
+    await onboarded.goto(list());
+    await onboarded.locator('summary', { hasText: 'Topics' }).click();
+    const box = onboarded.getByRole('group', { name: 'Topics' }).getByRole('checkbox').first();
+
+    await box.check();
+    await expect(onboarded).toHaveURL(/\/lessons\?topic=/);
+    await box.uncheck();
+    await expect(onboarded).toHaveURL(/\/lessons$/);
+
+    await expect(box).toBeVisible();
+  });
+
   test('a select keeps the focus when it changes the list', async ({ onboarded }) => {
     await onboarded.goto(list());
     const sort = onboarded.getByRole('combobox', { name: 'Sort' });

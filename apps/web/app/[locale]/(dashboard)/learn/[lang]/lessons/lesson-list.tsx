@@ -21,6 +21,8 @@ import { PRIMARY_BUTTON, SECONDARY_BUTTON } from '@/components/form';
 import { groupRows, lessonsHref, previousDay } from '@/lib/lesson-list';
 import { lessonPath } from '@/lib/lessons';
 
+import { FoldDetails } from './fold-details';
+
 // The course home's look (today.tsx) and the form fields' (components/form.tsx).
 const HEADING = 'text-xs font-semibold tracking-widest text-slate-500 uppercase';
 const CARD = 'rounded-2xl border border-slate-800 bg-slate-900';
@@ -104,7 +106,7 @@ function Fold({
   options: { value: string; label: string }[];
 }) {
   return (
-    <details open={checked.length > 0} className="group/fold border-t border-slate-800 pt-4">
+    <FoldDetails checked={checked.length > 0} className="group/fold border-t border-slate-800 pt-4">
       <summary
         className={`${HEADING} flex min-h-8 cursor-pointer list-none items-center justify-between [&::-webkit-details-marker]:hidden`}
       >
@@ -125,7 +127,7 @@ function Fold({
         <legend className="sr-only">{title}</legend>
         <Choices name={name} checked={checked} options={options} />
       </fieldset>
-    </details>
+    </FoldDetails>
   );
 }
 
