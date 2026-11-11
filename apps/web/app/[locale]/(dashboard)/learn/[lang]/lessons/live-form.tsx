@@ -50,6 +50,9 @@ export function LiveForm({
       sent.current.delete(now);
     } else {
       sent.current.clear();
+      // A search still waiting would read the reset form, which has no page,
+      // and send the learner away from the view the link opened.
+      clearTimeout(timer.current);
       // React leaves a select's default where it was mounted, so reset would
       // put it back there: move the default to the URL's value first.
       const query = LessonQuerySchema.parse(Object.fromEntries(searchParams));

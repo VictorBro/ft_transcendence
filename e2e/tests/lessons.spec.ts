@@ -174,6 +174,24 @@ test.describe('the all lessons page', () => {
     ).not.toBeChecked();
   });
 
+  test('a link taken while a search waits keeps the view it opened', async ({ onboarded }) => {
+    await onboarded.clock.install();
+    await onboarded.goto(list());
+    const pager = onboarded.getByRole('navigation', { name: 'Pages' });
+    await expect(pager).toBeVisible();
+    // Time stops, so the search typed now waits until the link has landed.
+    await onboarded.clock.pauseAt((await onboarded.evaluate(() => Date.now())) + 1_000);
+    await onboarded.getByRole('searchbox', { name: 'Search' }).fill('nombres');
+    await pager.getByRole('link', { name: 'Next' }).click();
+    await expect(onboarded).toHaveURL(/\/lessons\?page=2$/);
+
+    // The waiting search would have sent the reset form, which has no page.
+    await onboarded.clock.runFor(1_000);
+    await onboarded.waitForLoadState('networkidle');
+
+    await expect(onboarded).toHaveURL(/\/lessons\?page=2$/);
+  });
+
   test('a select keeps the focus when it changes the list', async ({ onboarded }) => {
     await onboarded.goto(list());
     const sort = onboarded.getByRole('combobox', { name: 'Sort' });
