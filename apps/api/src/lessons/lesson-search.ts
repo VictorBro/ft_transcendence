@@ -158,8 +158,13 @@ const STATUS_ORDER: Record<LessonRowStatus, number> = { failed: 0, todo: 1, done
 /** Lessons not ready go after every ready one: false is 0, true is 1. */
 const soonLast: Compare = (a, b) => Number(!a.ready) - Number(!b.ready);
 
-/** The day a row is grouped under: none for a lesson not ready, whatever its result. */
+/**
+ * What a row shows and sorts on: nothing for a lesson not ready, whatever its
+ * result, since its row hides the score and the day.
+ */
 const groupDay = (card: LessonCard) => (card.ready ? card.day : null);
+const shownScore = (card: LessonCard) => (card.ready ? card.score : null);
+const shownFinishedAt = (card: LessonCard) => (card.ready ? card.finishedAt : null);
 
 /**
  * Compares two values that can be null, and always puts null at the end.
@@ -231,8 +236,9 @@ function compareFor(query: LessonQuery): Compare {
   const sign = query.dir === 'asc' ? 1 : -1;
   const sorts: Record<LessonQuery['sort'], Compare> = {
     position: (a, b) => sign * (a.position - b.position),
-    score: (a, b) => nullsLast(a.score, b.score, (x, y) => sign * (x - y)),
-    finishedAt: (a, b) => nullsLast(a.finishedAt, b.finishedAt, (x, y) => sign * ascending(x, y)),
+    score: (a, b) => nullsLast(shownScore(a), shownScore(b), (x, y) => sign * (x - y)),
+    finishedAt: (a, b) =>
+      nullsLast(shownFinishedAt(a), shownFinishedAt(b), (x, y) => sign * ascending(x, y)),
   };
   const group = GROUPS[query.group];
   const sort = sorts[query.sort];
