@@ -1021,6 +1021,19 @@ header:has(+ main .lesson-view) > div {
   .lesson-match-listen {
     right: 8px;
   }
+  /* No correction under a box on a phone, as in the prototype: the red pair
+     says it was wrong, and a screen reader still hears the right partner. */
+  .lesson-match-correction {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
   /* As in the prototype on a phone: the pair number sits on the box's corner. */
   .lesson-matching-frame:has(.has-listen) .lesson-pair-badge {
     position: absolute;

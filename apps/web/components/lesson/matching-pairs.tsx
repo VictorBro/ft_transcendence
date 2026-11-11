@@ -211,7 +211,7 @@ export function MatchingPairs({
                   </button>
                   {note && note.outcome !== 'fully_correct' ? (
                     <p
-                      className="mt-2 text-sm font-semibold text-green-400"
+                      className="lesson-match-correction mt-2 text-sm font-semibold text-green-400"
                       lang={lang}
                       data-correct-partner
                     >

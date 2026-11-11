@@ -192,9 +192,18 @@ test('matching curves stay editable and have compact phone pair markers', async 
   await learner.screenshot({ path: test.info().outputPath('matching-phone.png'), fullPage: true });
   await answerPage(learner, plan.pages[matching]!, () => false);
   await learner.getByRole('button', { name: 'Check', exact: true }).click();
+  // On a phone no correction shows under a box; a screen reader still hears it.
   const corrections = learner.locator('[data-correct-partner]');
-  await expect(corrections.first()).toBeVisible();
   await expect(corrections.first()).not.toBeEmpty();
+  expect((await corrections.first().boundingBox())!.width).toBeLessThanOrEqual(1);
+  await learner.screenshot({
+    path: test.info().outputPath('matching-phone-checked.png'),
+    fullPage: true,
+  });
+  // On a wide screen it shows under the box.
+  await learner.setViewportSize({ width: 1440, height: 1000 });
+  await expect(corrections.first()).toBeVisible();
+  expect((await corrections.first().boundingBox())!.width).toBeGreaterThan(1);
 });
 
 test('practice choices stack and corrections stay beside typed answers', async ({
