@@ -27,7 +27,12 @@ export {
   type SubmitResult,
 } from './attempt';
 export { PLAYER_COPY } from './copy';
-export { requiredReveals, skipsFeedbackWhenRight, type ExamPart } from './kinds';
+export {
+  requiredReveals,
+  skipsFeedbackWhenRight,
+  typeSkipsFeedbackWhenRight,
+  type ExamPart,
+} from './kinds';
 export { motherTongue } from './motherTongue';
 export { answerText, unitFeedback, type LockedAnswer } from './feedback';
 export { lessonOutline } from './outline';

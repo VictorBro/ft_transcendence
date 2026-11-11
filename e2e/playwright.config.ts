@@ -37,7 +37,10 @@ export default defineConfig({
   // that passes second time is a flaky app, not a flaky test, and hiding it
   // defeats the gate.
   retries: 0,
-  workers: restartRun ? 1 : process.env.CI ? 2 : 4,
+  // Each worker launches a browser beside the compose stack. Four Firefox
+  // workers can saturate a local runner and time out even closing a context.
+  // Use the same concurrency locally as in CI; --workers can override it.
+  workers: restartRun ? 1 : 2,
 
   reporter: process.env.CI
     ? [['github'], ['html', { open: 'never', outputFolder: 'playwright-report' }]]
