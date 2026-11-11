@@ -276,6 +276,10 @@ export function ChoiceControl({
   lang,
 }: ControlProps<'choice'>) {
   const t = useTranslations('Lesson');
+  const genders = useTranslations('Genders');
+  // An option the interface words (a gender) shows in the interface language.
+  const label = (option: Unit<'choice'>['options'][number]) =>
+    option.lang === 'ui' && genders.has(option.text) ? genders(option.text) : option.text;
   const picked = value && 'option' in value ? value.option : undefined;
   const right = new Set(feedback?.correct ?? []);
   const gap = unit.prompt.before !== undefined || unit.prompt.after !== undefined;
@@ -320,7 +324,7 @@ export function ChoiceControl({
               }}
               className={`min-h-11 rounded-md border px-4 py-2 text-left transition-colors disabled:cursor-default ${tone}`}
             >
-              {option.text}
+              {label(option)}
             </button>
           );
         })}

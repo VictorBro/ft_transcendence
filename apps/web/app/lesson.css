@@ -779,3 +779,255 @@ header:has(+ main .lesson-view) > div {
     display: none;
   }
 }
+
+/* The items of a page, one under the other (a reading page puts its
+   document beside them, below). */
+.lesson-items {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Listen buttons (#147): the round speaker of the mockups. */
+.lesson-listen {
+  position: relative;
+  z-index: 1;
+  display: inline-grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid #334155;
+  border-radius: 50%;
+  background: #020617;
+  color: #f1f5f9;
+}
+.lesson-listen.is-small {
+  width: 32px;
+  height: 32px;
+}
+.lesson-listen svg {
+  width: 20px;
+  height: 20px;
+}
+.lesson-listen.is-small svg {
+  width: 15px;
+  height: 15px;
+}
+.lesson-listen:hover,
+.lesson-listen:focus-visible {
+  border-color: #818cf8;
+}
+.lesson-matching-column > li.has-listen {
+  position: relative;
+}
+.lesson-match-listen {
+  position: absolute;
+  top: 0;
+  right: 14px;
+  z-index: 2;
+  display: flex;
+  height: 80px;
+  align-items: center;
+}
+.lesson-matching-column > li.has-listen > .lesson-match-button {
+  padding-right: 60px;
+}
+
+/* B3, the flashcards: two columns of cards, each turned with its corner
+   button (or anywhere on the card). */
+.lesson-flashcards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.lesson-flashcard {
+  position: relative;
+  display: flex;
+  min-height: 196px;
+  align-items: center;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  background: #020617;
+  padding: 24px 56px 24px 26px;
+}
+.lesson-flashcard[data-face='back'] {
+  align-items: flex-start;
+  border-color: #635bff;
+}
+.lesson-flashcard-turn {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  cursor: pointer;
+}
+.lesson-flashcard-turn svg {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  border: 1px solid #334155;
+  border-radius: 50%;
+  background: #0f172a;
+}
+.lesson-flashcard[data-face='back'] .lesson-flashcard-turn svg {
+  border-color: #635bff;
+}
+.lesson-flashcard-turn:focus-visible {
+  outline: 2px solid #f1f5f9;
+  outline-offset: 2px;
+}
+.lesson-flashcard-face {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  min-width: 0;
+  pointer-events: none;
+}
+.lesson-flashcard-face .lesson-listen {
+  pointer-events: auto;
+}
+.lesson-flashcard-word {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+.lesson-flashcard[data-face='back'] .lesson-flashcard-word {
+  color: #c7d2fe;
+}
+.lesson-flashcard-example {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 17px;
+}
+
+/* B4, the gender page, and the pills it shares with the exam's "des". */
+.lesson-gender-row {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid #1e293b;
+  border-radius: 8px;
+  background: #020617;
+}
+.lesson-gender-row.is-right {
+  border-color: #15803d;
+}
+.lesson-gender-row.is-wrong {
+  border-color: #b91c1c;
+}
+.lesson-task .lesson-pill {
+  min-height: 44px;
+  padding: 6px 14px;
+  border: 1px solid #334155;
+  border-radius: 999px;
+  background: #020617;
+  color: #f1f5f9;
+  font-size: 18px;
+}
+.lesson-pill:not(:disabled):hover {
+  border-color: #818cf8;
+}
+.lesson-pill.is-chosen {
+  border: 2px solid #635bff;
+  background: #1e1b4b;
+}
+.lesson-pill.is-correct {
+  border: 2px solid #22c55e;
+  background: #1e1b4b;
+  color: #4ade80;
+}
+.lesson-pill.is-incorrect {
+  border: 2px solid #ef4444;
+  background: #1e1b4b;
+  color: #f87171;
+}
+
+/* The typed gaps' four words, centred above the sentence. */
+.lesson-reference-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: min(100%, 432px);
+  margin: 0 auto 24px;
+  padding: 0;
+  list-style: none;
+}
+.lesson-reference-card {
+  display: flex;
+  min-height: 64px;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: 4px 10px;
+  padding: 16px;
+  border: 1px solid #1e293b;
+  border-radius: 6px;
+  background: #131c2f;
+  text-align: center;
+}
+.lesson-reference-card.is-right {
+  border: 2px solid #22c55e;
+}
+
+/* The translation exam: the word and its badge, then the field. */
+.lesson-exam-word {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  align-items: center;
+  gap: 10px 24px;
+}
+.lesson-article-badge {
+  padding: 0 9px;
+  border: 1px solid #334155;
+  border-radius: 999px;
+  color: #94a3b8;
+  font-size: 13px;
+  line-height: 22px;
+}
+.lesson-article-badge.is-missing {
+  border-color: #ef4444;
+  background: rgb(239 68 68 / 15%);
+  color: #fecaca;
+}
+@media (max-width: 600px) {
+  .lesson-exam-word {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .lesson-flashcard {
+    min-height: 150px;
+  }
+  .lesson-flashcard-word {
+    font-size: 22px;
+  }
+}
+/* Words in the boxes wrap between words, never inside one ("un cray on"). */
+.lesson-match-button > span:first-child {
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+@container (max-width: 559px) {
+  .lesson-matching-column > li.has-listen > .lesson-match-button {
+    padding-right: 48px;
+  }
+  .lesson-match-listen {
+    right: 8px;
+  }
+  /* As in the prototype on a phone: the pair number sits on the box's corner. */
+  .lesson-matching-frame:has(.has-listen) .lesson-pair-badge {
+    position: absolute;
+    top: -9px;
+    left: -9px;
+    min-width: 22px;
+    height: 22px;
+    font-size: 12px;
+  }
+}

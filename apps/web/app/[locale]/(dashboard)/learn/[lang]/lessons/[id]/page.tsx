@@ -3,7 +3,7 @@ import type { CSSProperties } from 'react';
 import { SECTION_COLORS } from '@/lib/lesson-navigation';
 import { getLocale, getTranslations } from 'next-intl/server';
 
-import { playable, START_FIELDS } from '@/components/lesson/kinds';
+import { playable, START_FACTS, START_FIELDS } from '@/components/lesson/kinds';
 import { Link } from '@/i18n/navigation';
 import { lessonPaths, lessonStage, lessonTitle, loadLesson } from '@/lib/lesson';
 import { cursorOf } from '@/lib/lesson-cursor';
@@ -55,7 +55,15 @@ export default async function LessonPage({ params }: { params: Params }) {
               {card.title}
             </h1>
             <p className="text-lg text-slate-200">{pick(outline.objective, locale)}</p>
-            <p className="mt-4 text-slate-400">{t('aboutMinutes', { minutes: outline.minutes })}</p>
+            <p className="mt-4 text-slate-400">
+              {[
+                t('aboutMinutes', { minutes: outline.minutes }),
+                // Each kind's facts: "About 14 minutes · 8 words".
+                ...START_FACTS.map((fact) => fact(outline, (key, values) => t(key, values))),
+              ]
+                .filter(Boolean)
+                .join(' · ')}
+            </p>
             <p className="text-sm text-slate-400">
               {status(card.status)}
               {card.score === null ? null : <> · {t('best', { score: card.score })}</>}

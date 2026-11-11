@@ -25,6 +25,25 @@ export interface AnswerProps {
   feedback: ReadonlyMap<Ref, UnitFeedback> | null;
   /** No change any more: a request is running, the page was checked, or its time ran out. */
   locked: boolean;
+  /**
+   * Holds the page's main button back, under a key of the item's own;
+   * null lets it go. A `block` disables it (every flashcard turned first);
+   * a `nudge` lets the first press through only to show `nudged`, and the
+   * second one sends (the article note of the translation exam).
+   */
+  hold: (key: string, hold: Hold | null) => void;
+  /** The first press found a nudge: the items show their notes. */
+  nudged: boolean;
+  /** What the items of one page share (the skim of a reading page), cleared with the page. */
+  shared: Readonly<Record<string, unknown>>;
+  share: (key: string, value: unknown) => void;
+}
+
+/** What holds the main button of a page back; see AnswerProps.hold. */
+export interface Hold {
+  kind: 'block' | 'nudge';
+  /** Shown beside the button while it holds; none for a hold the item explains itself. */
+  message?: string;
 }
 
 export interface ItemProps<T extends ItemViewType = ItemViewType> extends AnswerProps {
@@ -41,9 +60,20 @@ export type ItemRenderers = { [T in ItemViewType]?: ComponentType<ItemProps<T>> 
 /** A block of the lesson page that shows one of the outline's kind fields, or nothing. */
 export type StartField = ComponentType<{ outline: LessonOutline; lang: Language }>;
 
+/**
+ * A short fact of the lesson page, from the outline, in the Lesson
+ * messages; null when the lesson has none.
+ */
+export type StartFact = (
+  outline: LessonOutline,
+  t: (key: string, values?: Record<string, string | number>) => string,
+) => string | null;
+
 export interface KindParts {
   /** The lesson kind these parts play: a lesson of a kind with no parts cannot start. */
   kind: LessonKind;
   renderers: ItemRenderers;
   startFields: StartField[];
+  /** Short facts after the minutes on the lesson page ("About 14 minutes · 8 words"). */
+  startFacts?: StartFact[];
 }

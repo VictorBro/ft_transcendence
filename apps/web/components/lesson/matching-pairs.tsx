@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { useTranslations } from 'next-intl';
 
 import { outcomeTone } from './controls';
+import { ListenButton } from './speech';
 import type { AnswerProps, Ref, UnitView } from './types';
 
 type ChoiceUnit = Extract<UnitView, { kind: 'choice' }>;
@@ -23,7 +24,8 @@ export function MatchingPairs({
   onAnswer,
   feedback,
   locked,
-}: AnswerProps & { units: ChoiceUnit[] }) {
+  speak = false,
+}: AnswerProps & { units: ChoiceUnit[]; speak?: boolean }) {
   const t = useTranslations('Lesson');
   const options = units[0]?.options ?? [];
   const frame = useRef<HTMLDivElement>(null);
@@ -172,7 +174,16 @@ export function MatchingPairs({
               const option = given(unit);
               const note = feedback?.get(unit.ref);
               return (
-                <li key={unit.ref} data-unit={unit.ref}>
+                <li
+                  key={unit.ref}
+                  data-unit={unit.ref}
+                  className={speak ? 'has-listen' : undefined}
+                >
+                  {speak && prompt(unit) ? (
+                    <span className="lesson-match-listen">
+                      <ListenButton text={prompt(unit)} lang={lang} size="sm" />
+                    </span>
+                  ) : null}
                   <button
                     ref={(button) => {
                       if (button) right.current.set(unit.ref, button);

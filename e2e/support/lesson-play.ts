@@ -17,9 +17,9 @@ import { lessons, type Locale } from '@ft/shared';
  * prompt on screen is matched to its plan unit by text. No database read,
  * no test route.
  *
- * Grammar first: #147 to #149 teach the browser player their kinds. The
- * API player below already answers every kind, since it reads the page
- * views as JSON.
+ * Grammar (#146) and vocabulary (#147) play in the browser; #148 and #149
+ * teach it their kinds. The API player below already answers every kind,
+ * since it reads the page views as JSON.
  */
 
 type LessonPlan = lessons.player.LessonPlan;
@@ -35,8 +35,8 @@ const readJson = (file: string): unknown => JSON.parse(readFileSync(file, 'utf8'
 
 /**
  * The ids of the lessons in content/ of one language, level and kind
- * that have their lesson file, sorted: a new one is played without
- * anyone adding it to a list.
+ * that have their lesson file (a vocabulary lesson is built from its
+ * brief), sorted: a new one is played without anyone adding it to a list.
  */
 export function contentLessons(lang: string, level: string, kind: string): string[] {
   return readdirSync(path.join(CONTENT, 'briefs'))
@@ -44,7 +44,9 @@ export function contentLessons(lang: string, level: string, kind: string): strin
     .map((file) => readJson(path.join(CONTENT, 'briefs', file)) as Record<string, unknown>)
     .filter((brief) => brief.lang === lang && brief.level === level && brief.kind === kind)
     .map((brief) => String(brief.id))
-    .filter((id) => existsSync(path.join(CONTENT, 'lessons', `${id}.json`)))
+    .filter(
+      (id) => kind === 'vocabulary' || existsSync(path.join(CONTENT, 'lessons', `${id}.json`)),
+    )
     .sort();
 }
 
@@ -71,6 +73,20 @@ export function rightShare(share: number): (n: number) => boolean {
 /** The text of an option or token of a plan unit. */
 const textOf = (list: { id: string; text: string }[], id: string) =>
   list.find((x) => x.id === id)?.text ?? '';
+
+/** The English label of an option the interface words: a gender ("masculine" is Masculine). */
+const shown = (list: { id: string; text: string; lang?: string }[], id: string) => {
+  const option = list.find((x) => x.id === id);
+  const text = option?.text ?? '';
+  return option?.lang === 'ui' ? text.charAt(0).toUpperCase() + text.slice(1) : text;
+};
+
+/** The item types whose choices sit on the B2 board. */
+const BOARDS = new Set([
+  'grammar_person_matching',
+  'grammar_pronoun_form_match',
+  'vocabulary_matching',
+]);
 
 /** A typed answer that is right: the teaching answer. */
 const rightText = (unit: Extract<PlanUnit, { kind: 'text' }>) => unit.answer;
@@ -159,18 +175,28 @@ export async function answerPage(
   // A board's options are used once each: the persons given so far.
   const given = new Set<string>();
 
+  // Flashcards (B3): every card turned once before Continue.
+  for (const turn of await page.getByRole('button', { name: /^Turn the card: / }).all()) {
+    await turn.click();
+  }
+
   for (const unit of planPage.units) {
     const good = right(unit);
     switch (unit.kind) {
       case 'text': {
         const row = await unusedRow(rowsOf(page, unit.prompt), used);
         await row.getByRole('textbox').fill(good ? rightText(unit) : WRONG_TEXT);
+        // A "des ..." answer asks for its gender (a plurale tantum).
+        if (good && unit.noun?.pluraleTantum && /^des\s/iu.test(rightText(unit))) {
+          const gender = unit.noun.genders[0]!;
+          await row
+            .getByRole('radio', { name: gender.charAt(0).toUpperCase() + gender.slice(1) })
+            .click();
+        }
         break;
       }
       case 'choice': {
-        const board =
-          unit.itemType === 'grammar_person_matching' ||
-          unit.itemType === 'grammar_pronoun_form_match';
+        const board = BOARDS.has(unit.itemType);
         const pickFrom = good
           ? unit.correct
           : unit.options.map((o) => o.id).filter((id) => !unit.correct.includes(id));
@@ -183,11 +209,12 @@ export async function answerPage(
             .locator('[data-option]')
             .getByText(textOf(unit.options, option), { exact: true })
             .click();
-          await row.getByRole('button').click();
+          // The box is the row's last button: a Listen button can come before it.
+          await row.getByRole('button').last().click();
         } else {
           const row = await unusedRow(rowsOf(page, unit.prompt), used);
           await row
-            .getByRole('radio', { name: textOf(unit.options, pickFrom[0]!), exact: true })
+            .getByRole('radio', { name: shown(unit.options, pickFrom[0]!), exact: true })
             .click();
         }
         break;
@@ -244,8 +271,19 @@ export async function sendPage(page: Page): Promise<void> {
   const results = page.getByRole('heading', { name: 'Your results' });
   // A refused post leaves the page where it is, with the reason above the button.
   const refused = page.locator(`[data-page-index="${before}"]`).getByRole('alert');
+  // The translation exam's first Next only shows its article notes; the second one sends.
+  const nudge = page
+    .locator(`[data-page-index="${before}"]`)
+    .getByText('Type the article before the word.');
+
+  // Already showing (a test pressed Next once): this press sends.
+  const nudged = await nudge.first().isVisible();
 
   await mainButton(page).click();
+  if (role === 'exam' && !nudged) {
+    await settle(moved.or(results).or(refused).or(nudge.first()), refused, before);
+    if (await nudge.first().isVisible()) await mainButton(page).click();
+  }
   if (role === 'practice') {
     // Checked: the feedback and Continue, or the green flash that goes on by itself.
     const checked = page.locator(`[data-page-index="${before}"][data-state="checked"]`);

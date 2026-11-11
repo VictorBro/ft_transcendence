@@ -10,6 +10,7 @@ import { ITEM_RENDERERS } from '@/components/lesson/kinds';
 import { LessonNavigation } from '@/components/lesson/navigation';
 import type {
   Answer,
+  Hold,
   ItemProps,
   ItemView,
   LessonOutline,
@@ -93,6 +94,12 @@ export function LessonPlayer({
   const [timedOut, setTimedOut] = useState<number | null>(null);
   // The drafts came from storage: from then on, they go back to it.
   const [loaded, setLoaded] = useState(false);
+  // What the page's items hold the main button back with, by their keys.
+  const [holds, setHolds] = useState<Record<string, Hold>>({});
+  // The first press met a nudge: the items show their notes, the next press sends.
+  const [nudged, setNudged] = useState(false);
+  // What the items of the page share; a new page starts empty.
+  const [shared, setShared] = useState<Record<string, unknown>>({});
   const top = useRef<HTMLDivElement>(null);
   const heading = useRef<HTMLHeadingElement>(null);
   // Set when the player moves to another page, so the new page's heading takes the focus.
@@ -200,6 +207,9 @@ export function LessonPlayer({
       setChecked(null);
       setFlash(false);
       setError(null);
+      setHolds({});
+      setNudged(false);
+      setShared({});
       if (next.current === null) {
         finished.current = true;
         clearDrafts({ lang, id, attemptId: next.attemptId });
@@ -215,6 +225,20 @@ export function LessonPlayer({
     },
     [lang, id, router, resultsPath],
   );
+
+  const hold = useCallback((key: string, value: Hold | null) => {
+    setHolds((current) => {
+      const before = current[key];
+      if (before?.kind === value?.kind && before?.message === value?.message) return current;
+      const next = { ...current };
+      if (value === null) delete next[key];
+      else next[key] = value;
+      return next;
+    });
+  }, []);
+  const share = useCallback((key: string, value: unknown) => {
+    setShared((current) => (current[key] === value ? current : { ...current, [key]: value }));
+  }, []);
 
   function answer(ref: Ref, value: Answer | undefined) {
     setDrafts((current) => {
@@ -335,7 +359,16 @@ export function LessonPlayer({
     onAnswer: answer,
     feedback: checked?.feedback ?? null,
     locked,
+    hold,
+    nudged,
+    shared,
+    share,
   };
+  // Holds only stand before the page is sent: Continue after a Check is never held.
+  const pageHolds = checked ? [] : Object.values(holds);
+  const blocked = pageHolds.some((h) => h.kind === 'block');
+  const nudging = pageHolds.some((h) => h.kind === 'nudge');
+  const holdMessage = pageHolds.find((h) => h.message && (h.kind === 'block' || nudged))?.message;
 
   const button = (() => {
     if (checked) return { label: t('continue'), onClick: next };
@@ -444,36 +477,51 @@ export function LessonPlayer({
               </section>
             ) : null}
 
-            {page.items.map((item, n) =>
-              examCards ? (
-                // Exam pages with several typed answers: one numbered card per task, as in the mockup.
-                <div key={n} className="lesson-exam-card">
-                  <span className="lesson-exam-card-number" aria-hidden="true">
-                    {n + 1}.
-                  </span>
-                  <Item item={item} {...props} />
-                </div>
-              ) : (
-                <Item key={n} item={item} {...props} />
-              ),
-            )}
+            {/* Keyed by page, so the items of a new page start afresh. */}
+            <div key={page.index} className="lesson-items">
+              {page.items.map((item, n) =>
+                examCards ? (
+                  // Exam pages with several typed answers: one numbered card per task, as in the mockup.
+                  <div key={n} className="lesson-exam-card">
+                    <span className="lesson-exam-card-number" aria-hidden="true">
+                      {n + 1}.
+                    </span>
+                    <Item item={item} {...props} />
+                  </div>
+                ) : (
+                  <Item key={n} item={item} {...props} />
+                ),
+              )}
+            </div>
 
             <div className="lesson-task-footer flex flex-col gap-3">
               <FormError message={error} />
-              <button
-                type="button"
-                // The second click of a double-click would land on the next
-                // page's Check (or Next) and send it blank: only single
-                // clicks count. A key press has detail 0.
-                onClick={(event) => {
-                  if (event.detail > 1) return;
-                  button.onClick();
-                }}
-                disabled={pending || flash}
-                className={`${PRIMARY_BUTTON} self-end`}
-              >
-                {button.label}
-              </button>
+              <div className="flex flex-wrap items-center justify-end gap-x-6 gap-y-3">
+                {holdMessage ? (
+                  <p className="text-slate-400" data-hold-message>
+                    {holdMessage}
+                  </p>
+                ) : null}
+                <button
+                  type="button"
+                  // The second click of a double-click would land on the next
+                  // page's Check (or Next) and send it blank: only single
+                  // clicks count. A key press has detail 0.
+                  onClick={(event) => {
+                    if (event.detail > 1) return;
+                    // A nudge lets the first press show its notes; the next one sends.
+                    if (nudging && !nudged) {
+                      setNudged(true);
+                      return;
+                    }
+                    button.onClick();
+                  }}
+                  disabled={pending || flash || blocked}
+                  className={PRIMARY_BUTTON}
+                >
+                  {button.label}
+                </button>
+              </div>
             </div>
           </section>
         </div>
