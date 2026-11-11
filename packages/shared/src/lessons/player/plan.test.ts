@@ -3,7 +3,12 @@ import { describe, expect, it } from 'vitest';
 import { articleHint, startsWithArticle } from './articleHint';
 import { PLAYER_COPY } from './copy';
 import { BY_KIND, FIXTURE_LESSONS, fixtureLesson } from './fixtures.testing';
-import { kindModule, requiredReveals, skipsFeedbackWhenRight } from './kinds';
+import {
+  kindModule,
+  requiredReveals,
+  skipsFeedbackWhenRight,
+  typeSkipsFeedbackWhenRight,
+} from './kinds';
 import { motherTongue } from './motherTongue';
 import { buildPlan, isScored, wordOrder, type LessonPlan, type PlanPage } from './plan';
 import { scoreUnit } from './score';
@@ -287,6 +292,13 @@ describe('the kind traits', () => {
     // Never on an exam or a presentation page.
     expect(skipsFeedbackWhenRight(at(BY_KIND.vocabulary, 'exam-all-1'))).toBe(false);
     expect(skipsFeedbackWhenRight(at(BY_KIND.vocabulary, 'cards-all'))).toBe(false);
+  });
+
+  it('tells the browser by item type alone, false for a type no kind has', () => {
+    expect(typeSkipsFeedbackWhenRight('grammar_person_matching')).toBe(true);
+    expect(typeSkipsFeedbackWhenRight('grammar_pronoun_form_match')).toBe(false);
+    expect(typeSkipsFeedbackWhenRight('grammar_explanation')).toBe(false);
+    expect(typeSkipsFeedbackWhenRight('no_such_type')).toBe(false);
   });
 
   it('asks to turn every flashcard and show every dialogue line after the first', () => {
