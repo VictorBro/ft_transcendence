@@ -123,6 +123,12 @@ export function LiveForm({
       }}
       onSubmit={(event) => {
         event.preventDefault();
+        // Show the lessons, in the phone's sheet: every change is applied
+        // already, so it only closes the sheet, as a link to # would.
+        if ((event.nativeEvent as SubmitEvent).submitter?.hasAttribute('data-close-sheet')) {
+          window.location.hash = '';
+          return;
+        }
         apply(0);
       }}
     >

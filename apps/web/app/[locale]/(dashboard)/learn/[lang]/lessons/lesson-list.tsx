@@ -194,10 +194,12 @@ export async function LessonFilters({ query }: { query: LessonQuery }) {
           options={options(THEMES, (x) => themes(x))}
         />
 
+        {/* A submit, so the sheet applies its boxes without JavaScript; with it, LiveForm only closes the sheet.
+            "?": a GET form keeps the page's #filters, which would leave the sheet open. */}
         <div className="flex flex-col lg:hidden">
-          <a href="#" className={PRIMARY_BUTTON}>
+          <button type="submit" formAction="?" data-close-sheet className={PRIMARY_BUTTON}>
             {t('showResults')}
-          </a>
+          </button>
         </div>
       </div>
     </aside>

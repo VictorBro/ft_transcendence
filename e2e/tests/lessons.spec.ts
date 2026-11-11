@@ -278,8 +278,27 @@ test.describe('the all lessons page', () => {
     await expect(grammar).toBeHidden();
     await onboarded.getByRole('link', { name: 'Filters' }).click();
     await expect(grammar).toBeVisible();
-    await onboarded.getByRole('link', { name: 'Show the lessons' }).click();
+    await onboarded.getByRole('button', { name: 'Show the lessons' }).click();
     await expect(grammar).toBeHidden();
+  });
+
+  test('without JavaScript, the phone sheet applies its boxes', async ({ browser, onboarded }) => {
+    const context = await browser.newContext({
+      storageState: await onboarded.context().storageState(),
+      javaScriptEnabled: false,
+      viewport: { width: 390, height: 844 },
+    });
+    const page = await context.newPage();
+    const grammar = page.getByRole('checkbox', { name: 'Grammar' });
+
+    await page.goto(list());
+    await page.getByRole('link', { name: 'Filters' }).click();
+    await grammar.check();
+    await page.getByRole('button', { name: 'Show the lessons' }).click();
+
+    await expect(page).toHaveURL(/kind=grammar/);
+    await expect(grammar).toBeHidden();
+    await context.close();
   });
 
   test('without JavaScript, the form still filters and the pager still pages', async ({
