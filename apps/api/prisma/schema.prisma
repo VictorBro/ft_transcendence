@@ -76,8 +76,14 @@ model UserLevel {
   bestStreak  Int       @default(0)
   lastGoalDay DateTime? @db.Date
 
+  xp                Int       @default(0)
+  lastChallengeDay  DateTime? @db.Date
+  lastChallengeCode String?
+  challengesDone    Int       @default(0)
+
   lessonResults  LessonResult[]
   lessonAttempts LessonAttempt[]
+  achievements   UserAchievement[]
 
   @@unique([userId, lang])
 }
@@ -195,6 +201,20 @@ model Friendship {
 
   @@index([requesterId])
   @@index([addresseeId])
+}
+
+// One achievement a course earned (#95). The code is an AchievementCode of
+// @ft/shared: it never changes once shipped, so a row never goes stale. The
+// primary key is what stores a code once, whatever two finishes do at once.
+model UserAchievement {
+  userLevelId String    @db.Uuid
+  userLevel   UserLevel @relation(fields: [userLevelId], references: [id], onDelete: Cascade)
+  code        String
+  // The course day it was earned on.
+  day         DateTime  @db.Date
+  earnedAt    DateTime  @default(now())
+
+  @@id([userLevelId, code])
 }
 
 enum QuestionCategory {

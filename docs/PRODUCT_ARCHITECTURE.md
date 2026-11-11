@@ -702,9 +702,10 @@ That last row is the one that gets missed. Write it when the gateway is written,
 
 ## 7. Data model
 
-**Thirteen tables beside `User` and `RecoveryCode`, six of which are already migrated**
-(`UserLevel`, `QuestionBank`, `UserSeenQuestion`, `Lesson`, `LessonResult`, `Friendship`). The
-course roadmap adds `Lesson` and `LessonResult` (both migrated) and `UserAchievement`; the lesson
+**Thirteen tables beside `User` and `RecoveryCode`, seven of which are already migrated**
+(`UserLevel`, `QuestionBank`, `UserSeenQuestion`, `Lesson`, `LessonResult`, `UserAchievement`,
+`Friendship`). The course roadmap adds `Lesson`, `LessonResult` and `UserAchievement` (all
+migrated); the lesson
 page adds `Exercise` and `Mistake`; social, content and operations add `Friendship` (migrated),
 `Message`, `Document`, `DocumentChunk` and `LlmCall`. Every one is load-bearing for a module we
 claim. The rule applied throughout: a table earns its place by being read at runtime, and a 1:1
@@ -770,7 +771,7 @@ erDiagram
 
 | Table | Holds | Notes |
 |---|---|---|
-| `UserLevel` | userId, lang, level?, dailyGoal, streak, bestStreak, lastGoalDay?, xp, lastChallengeDay?, challengesDone | Unique `(userId, lang)`, so a user may learn two languages. Onboarding writes it with `level` null; placement fills it in, or a learner who skips sets it directly. The goal sizes today's plan and defines the streak, it never locks content. `streak`, `bestStreak` and `lastGoalDay` are the whole streak (§1.3); `xp`, `lastChallengeDay` and `challengesDone` are the gamification counters. All of them are per course, and finishing and goal changes take a row lock on this row (§9) |
+| `UserLevel` | userId, lang, level?, dailyGoal, streak, bestStreak, lastGoalDay?, xp, lastChallengeDay?, lastChallengeCode?, challengesDone | Unique `(userId, lang)`, so a user may learn two languages. Onboarding writes it with `level` null; placement fills it in, or a learner who skips sets it directly. The goal sizes today's plan and defines the streak, it never locks content. `streak`, `bestStreak` and `lastGoalDay` are the whole streak (§1.3); `xp`, `lastChallengeDay`, `lastChallengeCode` and `challengesDone` are the gamification counters, and `lastChallengeCode` keeps the code a challenge was done under, so a level change that day does not move it. All of them are per course, and finishing and goal changes take a row lock on this row (§9) |
 | `QuestionBank` | id, sourceId?, lang, level, topic, category, readText?, question, options, answer, timeLimitS | The reusable pool, seeded from `content/items/*.json` and grown at runtime when a learner runs low in a cell. `sourceId` is the authored id the seed matches on, and its absence marks a question the LLM wrote. Full spec in [ITEM_BANK.md](ITEM_BANK.md) |
 | `UserSeenQuestion` | userId, questionId | Unique `(userId, questionId)`. **The exposure record**, and the whole reason placement never repeats a question: the draw is a `NOT EXISTS` over these rows. It is per user and not per run, so a retake cannot serve an old question either |
 | `Lesson` | id, lang, level, position, kind, topic?, theme?, title, summary, brief, content? | **The seeded catalogue, never written at runtime.** One row is one outline entry: `db:seed` writes every entry of `content/outlines/` (title = working title, summary = intent, empty brief), then fills the rows whose lesson files exist (`content/briefs/<id>.json`, `content/lessons/<id>.json`): title from the file, summary = the objective in the course language, brief and content = the files ([#135](https://github.com/VictorBro/ft_transcendence/issues/135), which also adds the `content` column). `id` is the authored key: the language and a few English words, no level, so a lesson can move level and keep its results. It is permanent once on `main`. `kind` is grammar, vocabulary, functions or reading; `topic` (the `Topic` enum) is set exactly on grammar lessons, `theme` exactly on the others. Title and summary are in the course language; the lesson body also carries help text in en, fr and de. The lesson cards never send the brief or the content. Index on `(lang, level, position)`. Full guide in [LESSONS.md](LESSONS.md) |
@@ -843,7 +844,7 @@ buffer modules need none either.
 | Complete RAG | 2 | `Document`, `DocumentChunk` |
 | User interaction: chat, profiles, friends | 2 | `Message`, `Friendship`, `User` |
 | **Activity analytics dashboard** | 1 | none new: `LessonResult` + `Mistake` |
-| **Gamification** | 1 | `UserAchievement`, plus `xp`, `lastChallengeDay` and `challengesDone` on `UserLevel` |
+| **Gamification** | 1 | `UserAchievement`, plus `xp`, `lastChallengeDay`, `lastChallengeCode` and `challengesDone` on `UserLevel` |
 | **Advanced search** | 1 | none new: `Lesson` + `LessonResult` |
 | Notification system | 1 | +1 (`Notification`) |
 | Public API | 2 | +1 (`ApiKey`, hashed like a password) |

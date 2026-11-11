@@ -9,6 +9,7 @@ import { CourseSchema, DailyGoal, Language, Level, SERVER_EVENTS, SessionUser } 
 import { SocketsService } from '../gateway/sockets.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { checkCourse } from '../lessons/course-lookup';
+import { award } from '../lessons/gamification';
 import { currentDay, lockCourse, meetGoal } from '../lessons/goal';
 
 const COURSE_SELECT = { lang: true, dailyGoal: true, level: true } as const;
@@ -59,6 +60,8 @@ export class CoursesService {
    * Under the course lock, like a finish (lessons/goal.ts): a lower goal can
    * meet today with the lessons already done, and a finish at the same moment
    * must not meet it a second time. A higher goal never unmeets a day.
+   * A lower goal that meets the day gains GOAL_XP and the streak achievements
+   * (#95), in the same transaction.
    */
   async setGoal(user: SessionUser, lang: Language, dto: SetGoalDto, now: Date) {
     const course = await this.prisma.$transaction(async (tx) => {
@@ -69,7 +72,9 @@ export class CoursesService {
       });
       await tx.user.update({ where: { id: user.id }, data: { activeLang: lang } });
 
-      await meetGoal(tx, course, await currentDay(tx, course, user.timeZone, now));
+      const day = await currentDay(tx, course, user.timeZone, now);
+      const goal = await meetGoal(tx, course, day);
+      await award(tx, course, day, { type: 'goal', goal });
       return CourseSchema.parse(course);
     });
     // After the commit: sent from inside the transaction, the other tab could
