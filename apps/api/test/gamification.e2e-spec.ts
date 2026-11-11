@@ -6,6 +6,7 @@ import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest';
 
 import {
   ACHIEVEMENTS,
+  CHALLENGES,
   type ChallengeCode,
   CHALLENGE_XP,
   GOAL_XP,
@@ -66,6 +67,7 @@ describe('XP, challenge and achievements (e2e)', () => {
    * and one A1 lesson that is not ready: it must never count towards levelA1.
    */
   const DRAFT = 'fr-test-gam-draft';
+  const UNREADY = 'fr-test-gam-unready';
   const FIXTURES: Prisma.LessonCreateManyInput[] = [
     ...KINDS.flatMap((kind, k) =>
       LETTERS.map((letter, index) => ({
@@ -76,6 +78,13 @@ describe('XP, challenge and achievements (e2e)', () => {
       })),
     ),
     { ...shortLesson(DRAFT, 9399), kind: 'reading', theme: 'daily_life', ready: false },
+    // The only reading lesson French B1 has while its real ones are set aside.
+    {
+      ...shortLesson(UNREADY, 9398, 'B1'),
+      kind: 'reading',
+      theme: 'daily_life',
+      ready: false,
+    },
   ];
   const FIXTURE_IDS = FIXTURES.map((fixture) => fixture.id);
 
@@ -249,6 +258,46 @@ describe('XP, challenge and achievements (e2e)', () => {
   });
 
   /**
+   * A kind with only a lesson that is not ready: French B1 reading, its real
+   * lessons set aside for the test. On a day where the challenge over every
+   * kind of the level would be reading, today must pick among the ready ones.
+   * Dropping `ready: true` in readyKinds or the filter in today turns it red.
+   */
+  it('never sets a challenge on a kind whose lessons at the level are not ready', async () => {
+    const { agent, courseId } = await learner('unready', 10);
+    await agent.patch('/api/courses/fr/level').send({ level: 'B1' }).expect(200);
+
+    const real = await prisma.lesson.findMany({
+      where: { lang: 'fr', level: 'B1', kind: 'reading', ready: true },
+      select: { id: true },
+    });
+    const realIds = real.map((lesson) => lesson.id);
+    await prisma.lesson.updateMany({ where: { id: { in: realIds } }, data: { ready: false } });
+    try {
+      const ready = await readyKinds(prisma, { lang: 'fr', level: 'B1' });
+      expect(ready).not.toContain('reading');
+
+      // A day where reading would be picked if the unready lesson counted.
+      let day = today;
+      while (challengeFor(courseId, day, [...ready, 'reading']) !== 'reading') {
+        day = previousDay(day);
+      }
+      vi.setSystemTime(new Date(`${day}T12:00:00.000Z`));
+
+      const response = await agent.get('/api/courses/fr/today').expect(200);
+
+      expect(response.body.challenge).toEqual({
+        code: challengeFor(courseId, day, ready),
+        done: false,
+      });
+      expect(response.body.challenge.code).not.toBe('reading');
+    } finally {
+      vi.setSystemTime(NOON);
+      await prisma.lesson.updateMany({ where: { id: { in: realIds } }, data: { ready: true } });
+    }
+  });
+
+  /**
    * Goal 10 (one lesson), so the first finish meets the day and the next two
    * are both beyond it: whatever the challenge, both of them do it. Both
    * last pages are sent while the course row is held, then let go at once.
@@ -417,8 +466,21 @@ describe('XP, challenge and achievements (e2e)', () => {
   });
 
   it('shows the exact XP and rank, the challenge done, and what was earned today', async () => {
-    const { agent, challenge } = await learner('today', 30);
+    const { agent, courseId, challenge } = await learner('today', 30);
     const pick = lessonsFor(challenge);
+    // Yesterday's challenge and achievement: neither is today's.
+    const yesterday = new Date(previousDay(today));
+    await prisma.userLevel.update({
+      where: { id: courseId },
+      data: { lastChallengeDay: yesterday, lastChallengeCode: challenge },
+    });
+    await prisma.userAchievement.create({
+      data: { userLevelId: courseId, code: 'streak7', day: yesterday },
+    });
+    const before = await agent.get('/api/courses/fr/today').expect(200);
+    expect(before.body.challenge).toEqual({ code: challenge, done: false });
+    expect(before.body.earnedToday).toEqual([]);
+
     // Goal 30 is 3 lessons. One that misses, then the one that does it; for
     // beyondGoal, three that miss first, so the fourth is beyond the goal.
     const misses = challenge === 'beyondGoal' ? 3 : 1;
@@ -439,6 +501,33 @@ describe('XP, challenge and achievements (e2e)', () => {
     expect(response.body.challenge).toEqual({ code: challenge, done: true });
     expect(response.body.earnedToday).toEqual(['firstLesson']);
     expect(response.body.xp).toEqual({ total, ...rankOf(total) });
+    expect(response.body.earnedToday).not.toContain('streak7');
+  });
+
+  /**
+   * A done challenge keeps the code it was done under: a level change later
+   * that day derives another one from other kinds, and today must not follow
+   * it. The stored code is then swapped for another, so the test does not
+   * depend on A2 deriving a different code by chance.
+   */
+  it('keeps a done challenge under the code it was done under, after a level change', async () => {
+    const { agent, courseId, challenge } = await learner('kept', 30);
+    const pick = lessonsFor(challenge);
+    const misses = challenge === 'beyondGoal' ? 3 : 1;
+    for (let index = 0; index < misses; index += 1) {
+      await finish(agent, pick.miss(), pick.missHow);
+    }
+    expect((await finish(agent, pick.meet(), 'right')).challengeJustDone).toBe(true);
+    expect((await course(courseId)).lastChallengeCode).toBe(challenge);
+
+    await agent.patch('/api/courses/fr/level').send({ level: 'A2' }).expect(200);
+    const after = await agent.get('/api/courses/fr/today').expect(200);
+    expect(after.body.challenge).toEqual({ code: challenge, done: true });
+
+    const other = CHALLENGES.find((code) => code !== challenge)!;
+    await prisma.userLevel.update({ where: { id: courseId }, data: { lastChallengeCode: other } });
+    const swapped = await agent.get('/api/courses/fr/today').expect(200);
+    expect(swapped.body.challenge).toEqual({ code: other, done: true });
   });
 
   it('lists the sixteen achievements, the earned ones with their day', async () => {
