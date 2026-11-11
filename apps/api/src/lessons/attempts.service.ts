@@ -76,9 +76,18 @@ function dataOf(state: AttemptState) {
   };
 }
 
+/**
+ * What an attempt closed before #95 earned: nothing. Its stored finish has
+ * none of the three rewards, so they are filled in here, on the way out of
+ * the row only. FinishResultSchema stays strict, so a new finish that
+ * forgets one still fails its parse.
+ */
+const EARNED_NOTHING = { xpGained: 0, challengeJustDone: false, newAchievements: [] };
+
 /** The attempt as the learner sees it. */
 function viewOf(plan: LessonPlan, row: LessonAttempt, now: Date) {
-  const results = row.results as unknown as Results | null;
+  const stored = row.results as unknown as Results | null;
+  const results = stored && { ...stored, finish: { ...EARNED_NOTHING, ...stored.finish } };
   return shared.player.view(plan, stateOf(row), row.id, refOf(row.secret), now.getTime(), results);
 }
 

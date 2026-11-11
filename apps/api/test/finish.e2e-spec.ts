@@ -20,7 +20,9 @@ import { playLesson, playToLast, shortLesson } from './attempts.fixtures';
  * (every unit blank).
  *
  * One learner per story, so a streak written by one never shows up in
- * another. The clock is frozen at noon UTC, as in lessons.e2e-spec.ts.
+ * another. The XP of a finish is checked in gamification.e2e-spec.ts, where
+ * every spec knows the day's challenge: here it depends on the course id.
+ * The clock is frozen at noon UTC, as in lessons.e2e-spec.ts.
  */
 describe('finish a lesson (e2e)', () => {
   let app: INestApplication;
@@ -201,7 +203,7 @@ describe('finish a lesson (e2e)', () => {
     });
 
     it('counts a first finish for today', async () => {
-      expect(await finish(agent, 'fr-test-fin-one', 'blank')).toEqual({
+      expect(await finish(agent, 'fr-test-fin-one', 'blank')).toMatchObject({
         countedToday: true,
         doneCount: 1,
         target: 3,
@@ -226,7 +228,7 @@ describe('finish a lesson (e2e)', () => {
       const result = await finish(agent, 'fr-test-fin-three');
       const row = await course(email);
 
-      expect(result).toEqual({
+      expect(result).toMatchObject({
         countedToday: true,
         doneCount: 3,
         target: 3,
@@ -243,7 +245,7 @@ describe('finish a lesson (e2e)', () => {
         where: { userLevelId: row.id, lessonId: 'fr-test-fin-three' },
       });
 
-      expect(result).toEqual({
+      expect(result).toMatchObject({
         countedToday: false,
         doneCount: 3,
         target: 3,
