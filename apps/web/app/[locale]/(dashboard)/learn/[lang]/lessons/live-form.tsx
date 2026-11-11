@@ -12,9 +12,9 @@ const SEARCH_DELAY_MS = 250;
 
 /**
  * The all lessons GET form, applied as it changes. Without JavaScript it is
- * the plain form and its Apply button. With it, every change replaces the URL
+ * the plain form and its Apply button. With it, every change pushes the URL
  * in a transition, so the rows fade while the server renders the next view,
- * and the history keeps one entry per visit, not one per box.
+ * and Back undoes one change, as it does after the plain form's Apply.
  */
 export function LiveForm({
   lang,
@@ -100,7 +100,7 @@ export function LiveForm({
       // The query already shown never lands again, so it would stay in sent.
       if (sending !== shown.current) sent.current.add(sending);
       // The hash keeps the phone's filter sheet open (#filters) while the list updates.
-      startTransition(() => router.replace(`${href}${window.location.hash}`, { scroll: false }));
+      startTransition(() => router.push(`${href}${window.location.hash}`, { scroll: false }));
     }, delay);
   };
 

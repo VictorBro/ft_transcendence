@@ -158,6 +158,22 @@ test.describe('the all lessons page', () => {
     await expect(onboarded).toHaveURL(/\/lessons\?kind=grammar%2Creading$/);
   });
 
+  test('Back undoes one change, not all of them', async ({ onboarded }) => {
+    await onboarded.goto(list());
+    await onboarded.getByRole('checkbox', { name: 'Grammar' }).check();
+    await expect(onboarded).toHaveURL(/\/lessons\?kind=grammar$/);
+    await onboarded.getByRole('checkbox', { name: 'Passed', exact: true }).check();
+    await expect(onboarded).toHaveURL(/\/lessons\?status=done&kind=grammar$/);
+
+    await onboarded.goBack();
+
+    await expect(onboarded).toHaveURL(/\/lessons\?kind=grammar$/);
+    await expect(onboarded.getByRole('checkbox', { name: 'Grammar' })).toBeChecked();
+    await expect(
+      onboarded.getByRole('checkbox', { name: 'Passed', exact: true }),
+    ).not.toBeChecked();
+  });
+
   test('a select keeps the focus when it changes the list', async ({ onboarded }) => {
     await onboarded.goto(list());
     const sort = onboarded.getByRole('combobox', { name: 'Sort' });
