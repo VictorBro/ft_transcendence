@@ -62,6 +62,10 @@ export function LiveForm({
         for (const option of select.options) option.defaultSelected = option.value === query[name];
       }
       form.current?.reset();
+      // From lg the page scrolls in a pane, which a query-only navigation
+      // leaves where it was: Next at the bottom would open page 2 at its end.
+      // Not after the form's own changes: the box under the pointer would move.
+      form.current?.closest('[data-scroll-pane]')?.scrollTo({ top: 0 });
     }
   }, [searchParams]);
 

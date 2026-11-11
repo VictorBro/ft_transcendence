@@ -68,7 +68,10 @@ export default async function LessonsPage({
 
   return (
     // The dashboard shell is pinned to the viewport from lg: this pane owns the scroll, as on the course home.
-    <div className="relative -mx-3 -my-3 min-h-0 flex-1 px-3 py-3 scrollbar-none [&::-webkit-scrollbar]:hidden lg:overflow-y-auto">
+    <div
+      data-scroll-pane
+      className="relative -mx-3 -my-3 min-h-0 flex-1 px-3 py-3 scrollbar-none [&::-webkit-scrollbar]:hidden lg:overflow-y-auto"
+    >
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-6">
         <div className="flex flex-wrap items-baseline justify-between gap-3">
           <h1 className="text-3xl font-semibold">{t('heading', { level: course.level })}</h1>

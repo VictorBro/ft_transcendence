@@ -205,6 +205,23 @@ test.describe('the all lessons page', () => {
     await expect(box).toBeVisible();
   });
 
+  test('Next at the bottom of a page opens the next one at its top', async ({ onboarded }) => {
+    await onboarded.setViewportSize({ width: 1280, height: 800 });
+    await onboarded.goto(list());
+    // From lg the pane scrolls, not the window.
+    await onboarded
+      .locator('[data-scroll-pane]')
+      .evaluate((pane) => pane.scrollTo({ top: pane.scrollHeight }));
+
+    await onboarded
+      .getByRole('navigation', { name: 'Pages' })
+      .getByRole('link', { name: 'Next' })
+      .click();
+
+    await expect(onboarded).toHaveURL(/\/lessons\?page=2$/);
+    await expect(rows(onboarded).first()).toBeInViewport();
+  });
+
   test('a select keeps the focus when it changes the list', async ({ onboarded }) => {
     await onboarded.goto(list());
     const sort = onboarded.getByRole('combobox', { name: 'Sort' });
