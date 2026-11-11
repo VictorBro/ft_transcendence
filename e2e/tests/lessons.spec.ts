@@ -1,6 +1,14 @@
 import type { Page } from '@playwright/test';
 
-import { expect, ONBOARDED_COURSE, placeCourse, SECOND_COURSE, test } from '../support/session';
+import {
+  enrol,
+  expect,
+  finishBlank,
+  ONBOARDED_COURSE,
+  placeCourse,
+  SECOND_COURSE,
+  test,
+} from '../support/session';
 
 /**
  * The all lessons page (#87). What each view should show is read from
@@ -39,20 +47,27 @@ const rowIds = (page: Page) =>
   rows(page).evaluateAll((items) => items.map((item) => item.getAttribute('data-lesson')));
 
 test.describe('the all lessons page', () => {
-  test('a direct load renders exactly the view in its URL', async ({ onboarded }) => {
-    const params = '?status=failed&kind=grammar&sort=score&dir=desc&page=2';
-    const expected = await readPage(onboarded, params);
+  test('a direct load renders exactly the view in its URL', async ({ freshLearner: page }) => {
+    // Three grammar lessons failed one after the other, so the view has rows
+    // and its sort and direction have an order to get right.
+    await placeCourse(page, ONBOARDED_COURSE);
+    const failed = (await readPage(page, '?kind=grammar')).items
+      .filter((card) => card.ready)
+      .slice(0, 3);
+    expect(failed, 'three ready grammar lessons').toHaveLength(3);
+    for (const card of failed) await finishBlank(page, LANG, card.id);
+    const params = '?status=failed&kind=grammar&sort=finishedAt&dir=desc';
+    const expected = await readPage(page, params);
+    expect(expected.items.map((card) => card.id)).toEqual(failed.map((card) => card.id).reverse());
 
-    await onboarded.goto(list(params));
+    await page.goto(list(params));
 
-    await expect(onboarded.getByRole('checkbox', { name: 'Not passed yet' })).toBeChecked();
-    await expect(onboarded.getByRole('checkbox', { name: 'Grammar' })).toBeChecked();
-    await expect(
-      onboarded.getByRole('checkbox', { name: 'Passed', exact: true }),
-    ).not.toBeChecked();
-    await expect(onboarded.getByRole('combobox', { name: 'Sort' })).toHaveValue('score');
-    await expect(onboarded.getByRole('combobox', { name: 'Direction' })).toHaveValue('desc');
-    expect(await rowIds(onboarded)).toEqual(expected.items.map((card) => card.id));
+    await expect(page.getByRole('checkbox', { name: 'Not passed yet' })).toBeChecked();
+    await expect(page.getByRole('checkbox', { name: 'Grammar' })).toBeChecked();
+    await expect(page.getByRole('checkbox', { name: 'Passed', exact: true })).not.toBeChecked();
+    await expect(page.getByRole('combobox', { name: 'Sort' })).toHaveValue('finishedAt');
+    await expect(page.getByRole('combobox', { name: 'Direction' })).toHaveValue('desc');
+    expect(await rowIds(page)).toEqual(expected.items.map((card) => card.id));
   });
 
   test('status=soon lists only Coming soon rows, and none is a link', async ({ onboarded }) => {
@@ -87,13 +102,17 @@ test.describe('the all lessons page', () => {
     await expect(
       pager.getByText(`${pageSize + 1} to ${Math.min(2 * pageSize, levelTotal)} of ${levelTotal}`),
     ).toBeVisible();
-    // A ready row opens its lesson page, without prefetching it.
-    const ready = (await readPage(onboarded, '?page=2')).items.find((card) => card.ready);
-    if (ready !== undefined) {
-      await expect(
-        onboarded.locator(`[data-lesson="${ready.id}"]`).getByRole('link'),
-      ).toHaveAttribute('href', `/en/learn/${LANG}/lessons/${ready.id}`);
-    }
+  });
+
+  test('a ready row links to its lesson page', async ({ onboarded }) => {
+    const ready = (await readPage(onboarded)).items.find((card) => card.ready);
+    expect(ready, 'a ready lesson on page 1').toBeDefined();
+
+    await onboarded.goto(list());
+
+    await expect(
+      onboarded.locator(`[data-lesson="${ready!.id}"]`).getByRole('link'),
+    ).toHaveAttribute('href', `/en/learn/${LANG}/lessons/${ready!.id}`);
   });
 
   test('a hand-edited URL renders the default view', async ({ onboarded }) => {
@@ -351,14 +370,59 @@ test.describe('the all lessons page', () => {
     }
   });
 
-  test('maedchen finds Mädchen on German, in every interface language', async ({ onboarded }) => {
+  test('a German word typed with ae, oe or ue finds its ä, ö or ü, in every interface language', async ({
+    onboarded,
+  }) => {
+    const lang = SECOND_COURSE.lang;
     await placeCourse(onboarded, SECOND_COURSE);
-    const expected = await readPage(onboarded, '?q=Mädchen', SECOND_COURSE.lang);
-    expect(expected.items.length, 'a German lesson that says Mädchen').toBeGreaterThan(0);
+    // The first word of the level with an umlaut, wherever it is, as maedchen for Mädchen.
+    let found: { card: Card; word: string } | undefined;
+    for (let n = 1; found === undefined; n += 1) {
+      const { items, total, pageSize } = await readPage(onboarded, `?page=${n}`, lang);
+      for (const card of items) {
+        const word = `${card.title} ${card.summary}`.match(/\p{L}*[äöü]\p{L}*/iu)?.[0];
+        if (word !== undefined && found === undefined) found = { card, word };
+      }
+      if (n * pageSize >= total) break;
+    }
+    expect(found, 'a German word with ä, ö or ü').toBeDefined();
+    const typed = found!.word
+      .toLowerCase()
+      .replace(/ä/g, 'ae')
+      .replace(/ö/g, 'oe')
+      .replace(/ü/g, 'ue');
+    const params = `?q=${encodeURIComponent(typed)}`;
+    const expected = await readPage(onboarded, params, lang);
 
     for (const locale of ['en', 'fr', 'de']) {
-      await onboarded.goto(list('?q=maedchen', locale, SECOND_COURSE.lang));
+      await onboarded.goto(list(params, locale, lang));
+      await expect(onboarded.locator(`[data-lesson="${found!.card.id}"]`)).toBeVisible();
       expect(await rowIds(onboarded)).toEqual(expected.items.map((card) => card.id));
     }
+  });
+
+  test.describe('who can open it', () => {
+    test('a signed out visitor is sent to the login page', async ({ page }) => {
+      await page.goto(list());
+      await expect(page).toHaveURL(/\/login$/);
+    });
+
+    test('a language the learner does not study opens onboarding with it picked', async ({
+      onboarded,
+    }) => {
+      await onboarded.goto(list('', 'en', 'en'));
+      await expect(onboarded).toHaveURL(/\/en\/onboarding\?lang=en$/);
+    });
+
+    test('a course with no level opens its own level step', async ({ freshLearner }) => {
+      await enrol(freshLearner, 'de', 30);
+      await freshLearner.goto(list('', 'en', 'de'));
+      await expect(freshLearner).toHaveURL(/\/en\/onboarding\?lang=de$/);
+    });
+
+    test('an unlearnable language is a 404, not onboarding', async ({ onboarded }) => {
+      const response = await onboarded.goto(list('', 'en', 'zz'));
+      expect(response?.status()).toBe(404);
+    });
   });
 });
