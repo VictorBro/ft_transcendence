@@ -216,12 +216,16 @@ export function results(plan: LessonPlan, state: AttemptState): ResultsSheet {
           timedOut: false,
         };
         const gender = answerGender(locked.response);
+        const interfaceAnswer =
+          unit.kind === 'choice' &&
+          unit.options.some((o) => o.lang === 'ui' && unit.correct.includes(o.id));
         return {
           step,
           prompt: { ...unit.prompt },
           yours: answerText(unit, locked.response),
           ...(gender ? { gender } : {}),
           answer: unit.answer,
+          ...(interfaceAnswer ? { interfaceAnswer } : {}),
           ...closest(unit, locked),
           outcome: locked.outcome,
           points: locked.points,

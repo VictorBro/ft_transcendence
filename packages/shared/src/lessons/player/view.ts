@@ -178,6 +178,8 @@ export const ItemViewSchema = z.discriminatedUnion('type', [
         /** The teaching form: un livre. */
         text: z.string(),
         translations: z.array(z.string()),
+        /** The front of the card: the word's exam prompt with its article ("a book"), else its translations. */
+        front: z.string(),
         pronunciation: z.string(),
         example: Example,
       }),
@@ -237,6 +239,8 @@ export const ItemViewSchema = z.discriminatedUnion('type', [
         role: z.string(),
         roleTranslation: z.string(),
         text: z.string(),
+        /** The lesson's expressions in the line, as they appear in the text, to mark. */
+        highlights: z.array(z.string()),
         translation: z.string(),
         note: Localized,
       }),
@@ -397,6 +401,8 @@ export const ResultsSchema = z.strictObject({
       yours: z.string().nullable(),
       gender: GenderSchema.optional(),
       answer: z.string(),
+      /** The answer and yours are interface words (a gender row): shown in the interface language. */
+      interfaceAnswer: z.boolean().optional(),
       accepted: z.string().optional(),
       outcome: AnswerOutcomeSchema,
       points: z.number().nonnegative(),
