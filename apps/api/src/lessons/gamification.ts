@@ -1,6 +1,7 @@
 import {
   type AchievementCode,
   CHALLENGE_XP,
+  type ChallengeCode,
   type CourseDay,
   DailyGoalSchema,
   GOAL_XP,
@@ -81,17 +82,18 @@ async function challengeJustDone(
   course: UserLevel,
   day: CourseDay,
   event: Extract<AwardEvent, { type: 'finish' }>,
-): Promise<boolean> {
+): Promise<ChallengeCode | null> {
   if (course.lastChallengeDay !== null && dayOf(course.lastChallengeDay) === day) {
-    return false;
+    return null;
   }
   const code = challengeFor(course.id, day, await readyKinds(tx, course));
-  return challengeMet(code, {
+  const met = challengeMet(code, {
     kind: event.lesson.kind,
     score: event.score,
     doneCount: event.goal.doneCount,
     target: target(DailyGoalSchema.parse(course.dailyGoal)),
   });
+  return met ? code : null;
 }
 
 /**
@@ -142,12 +144,13 @@ async function statsAfter(
  * transaction:
  *   - XP: the lesson (xpForFinish), GOAL_XP when the day was just met, and
  *     CHALLENGE_XP when a finish does the day's challenge for the first time
- *   - the challenge: lastChallengeDay and challengesDone, once a day
+ *   - the challenge: lastChallengeDay, lastChallengeCode and challengesDone,
+ *     once a day
  *   - the achievements that earned() now reaches and nothing stored yet
  *
- * `course` is the row the caller locked. Only xp, lastChallengeDay and
- * challengesDone are written, and xp as an increment: the streak columns
- * belong to meetGoal, which may just have changed them.
+ * `course` is the row the caller locked. Only xp, lastChallengeDay,
+ * challengesDone and lastChallengeCode are written, and xp as an increment:
+ * the streak columns belong to meetGoal, which may just have changed them.
  */
 export async function award(
   tx: Prisma.TransactionClient,
@@ -160,7 +163,9 @@ export async function award(
     return { xpGained: 0, challengeJustDone: false, newAchievements: [] };
   }
 
-  const challenge = event.type === 'finish' && (await challengeJustDone(tx, course, day, event));
+  const challengeCode =
+    event.type === 'finish' ? await challengeJustDone(tx, course, day, event) : null;
+  const challenge = challengeCode !== null;
   const xpGained =
     (event.type === 'finish' ? xpForFinish(event.countedToday, event.oldBest, event.score) : 0) +
     (event.goal.justMet ? GOAL_XP : 0) +
@@ -172,7 +177,11 @@ export async function award(
       where: { id: course.id },
       data: {
         xp: { increment: xpGained },
-        ...(challenge && { lastChallengeDay: new Date(day), challengesDone: { increment: 1 } }),
+        ...(challenge && {
+          lastChallengeDay: new Date(day),
+          challengesDone: { increment: 1 },
+          lastChallengeCode: challengeCode,
+        }),
       },
     });
   }

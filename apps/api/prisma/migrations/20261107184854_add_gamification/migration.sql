@@ -1,6 +1,7 @@
 -- AlterTable
 ALTER TABLE "UserLevel" ADD COLUMN     "challengesDone" INTEGER NOT NULL DEFAULT 0,
 ADD COLUMN     "lastChallengeDay" DATE,
+ADD COLUMN     "lastChallengeCode" TEXT,
 ADD COLUMN     "xp" INTEGER NOT NULL DEFAULT 0;
 
 -- CreateTable

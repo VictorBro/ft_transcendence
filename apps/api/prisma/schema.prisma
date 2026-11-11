@@ -76,9 +76,10 @@ model UserLevel {
   bestStreak  Int       @default(0)
   lastGoalDay DateTime? @db.Date
 
-  xp               Int       @default(0)
-  lastChallengeDay DateTime? @db.Date
-  challengesDone   Int       @default(0)
+  xp                Int       @default(0)
+  lastChallengeDay  DateTime? @db.Date
+  lastChallengeCode String?
+  challengesDone    Int       @default(0)
 
   lessonResults  LessonResult[]
   lessonAttempts LessonAttempt[]

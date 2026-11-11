@@ -106,8 +106,9 @@ export function possibleChallenges(readyKinds: Iterable<LessonKind>): ChallengeC
  * The course's challenge for a day, among those its level can do.
  * `readyKinds` are the kinds of the ready lessons at the course's level.
  * Derived, not stored: the same course, day and lessons give the same code
- * on any machine, with no row and no job at midnight. A level that gains a
- * kind can change the day's code, which only moves an undone challenge.
+ * on any machine, with no row and no job at midnight. A level change or a
+ * newly ready kind can change the day's code; a done challenge keeps the code
+ * it was done under (lastChallengeCode).
  */
 export function challengeFor(
   userLevelId: string,

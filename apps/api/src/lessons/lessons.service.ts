@@ -4,6 +4,8 @@ import type { Prisma, UserLevel } from '../generated/prisma/client';
 import {
   type AchievementCode,
   AchievementListSchema,
+  ChallengeCodeSchema,
+  CourseDay,
   ACHIEVEMENTS,
   DailyGoalSchema,
   Language,
@@ -11,6 +13,7 @@ import {
   LessonCard,
   LessonCardSchema,
   LessonId,
+  LessonKind,
   LessonPageSchema,
   LessonQuery,
   LESSONS_PAGE_SIZE,
@@ -55,7 +58,7 @@ import { searchLessons } from './lesson-search';
  *   level       → A1, A2…, or null before placement (the 409)
  *   dailyGoal   → 10, 30 or 60 minutes a day
  *   streak, bestStreak, lastGoalDay → for the streak of days
- *   xp, lastChallengeDay, challengesDone → for the rank, the challenge and achievements (#95)
+ *   xp, lastChallengeDay, lastChallengeCode, challengesDone → for the rank, the challenge and achievements (#95)
  */
 const COURSE_SELECT = {
   id: true,
@@ -66,6 +69,7 @@ const COURSE_SELECT = {
   lastGoalDay: true,
   xp: true,
   lastChallengeDay: true,
+  lastChallengeCode: true,
   challengesDone: true,
 } as const;
 
@@ -370,15 +374,7 @@ export class LessonsService {
       progress: levelProgress(ruleLessons, results),
       levelAfter: levelAfter(level),
       xp: { total: course.xp, ...rankOf(course.xp) },
-      challenge: {
-        // The ready kinds of the level, as award reads them (gamification.ts).
-        code: challengeFor(
-          course.id,
-          day,
-          ruleLessons.filter((lesson) => lesson.ready).map((lesson) => lesson.kind),
-        ),
-        done: course.lastChallengeDay !== null && dayOf(course.lastChallengeDay) === day,
-      },
+      challenge: challengeOfToday(course, day, ruleLessons),
       earnedToday: ACHIEVEMENTS.map((achievement) => achievement.code).filter((code) =>
         earnedCodes.has(code),
       ),
@@ -464,4 +460,22 @@ export class LessonsService {
       return applyFinish(tx, course, lesson, score, user.timeZone, now);
     });
   }
+}
+
+/**
+ * Today's challenge. Done today, it is the code stored when it was done, so
+ * a level change or a newly ready kind later that day does not move it.
+ * Undone, it is derived from the ready kinds of the level, as award reads them.
+ */
+function challengeOfToday(
+  course: { id: string; lastChallengeDay: Date | null; lastChallengeCode: string | null },
+  day: CourseDay,
+  lessons: { ready: boolean; kind: LessonKind }[],
+) {
+  const done = course.lastChallengeDay !== null && dayOf(course.lastChallengeDay) === day;
+  if (done && course.lastChallengeCode !== null) {
+    return { code: ChallengeCodeSchema.parse(course.lastChallengeCode), done };
+  }
+  const readyKinds = lessons.filter((lesson) => lesson.ready).map((lesson) => lesson.kind);
+  return { code: challengeFor(course.id, day, readyKinds), done };
 }
