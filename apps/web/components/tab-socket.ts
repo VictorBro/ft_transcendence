@@ -102,6 +102,10 @@ function socket(): TabSocket {
     });
     created.on('connect', () => {
       attempt = 0;
+      // Every connect brings a full snapshot of the friends, and what the tab
+      // heard before may be stale: a friend:removed missed while away would
+      // otherwise keep an old entry above a fresh render.
+      presence.clear();
       setStatus('connected');
     });
     created.on('disconnect', (reason) => follow(afterDisconnect(reason)));
@@ -110,6 +114,10 @@ function socket(): TabSocket {
     );
     created.on(SERVER_EVENTS.PRESENCE_UPDATE, (update) => presence.apply(update));
     created.on(SERVER_EVENTS.FRIEND_REMOVED, ({ userId }) => presence.forget(userId));
+    // A new friend: no presence:update comes for someone already online, so
+    // the dot must start from the render RefreshOn makes on this event, which
+    // carries their `online`. Forgotten, so no older entry can stand above it.
+    created.on(SERVER_EVENTS.FRIEND_ACCEPTED, ({ userId }) => presence.forget(userId));
     tab = created;
   }
   return tab;

@@ -2,7 +2,11 @@ import { Injectable, type OnApplicationBootstrap } from '@nestjs/common';
 
 import { RedisService } from '../redis/redis.service';
 
-/** Long enough for a reload to open its new socket before friends see you leave. */
+/**
+ * Long enough for a reload to open its new socket before friends see you leave.
+ * Copied by hand in e2e/tests/friends.spec.ts, which cannot import the API:
+ * change both together.
+ */
 export const PRESENCE_GRACE_MS = 10_000;
 
 const presenceKey = (userId: string): string => `presence:${userId}`;

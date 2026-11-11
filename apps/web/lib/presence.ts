@@ -11,9 +11,15 @@ export interface PresenceMap {
   get(userId: string): boolean | undefined;
   /** A presence:update, from the snapshot on connect or a friend coming or going. */
   apply(update: PresenceUpdate): void;
-  /** friend:removed: no longer a friend, so nothing to show. */
+  /**
+   * friend:removed, no longer a friend; friend:accepted, a new friend the
+   * refreshed render knows better than any older entry.
+   */
   forget(userId: string): void;
-  /** Sign-out: the next user of this tab must not inherit the last one's friends. */
+  /**
+   * Sign-out: the next user of this tab must not inherit the last one's
+   * friends. Connect: its snapshot replaces whatever the tab heard before.
+   */
   clear(): void;
   subscribe(watch: () => void): () => void;
 }

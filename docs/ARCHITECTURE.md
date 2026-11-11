@@ -245,8 +245,12 @@ sequenceDiagram
     moment before one of them came or went. `GET /api/friends` gives each
     friend `online`, from `isOnline(ids)` (one `MGET`).
   - **In the tab**: `tab-socket.ts` keeps a presence map for as long as the
-    socket. It is fed by the snapshot and every `presence:update`, and a friend
-    is dropped on `friend:removed`. `PresenceDot` reads it and uses the rendered
+    socket. It is fed by the snapshot and every `presence:update`. A friend is
+    dropped on `friend:removed`, and on `friend:accepted` too, so a new friend
+    starts from the refreshed render: no update comes for someone already
+    online. Each connect clears the map, since its snapshot replaces it, and
+    an entry left by an event missed while away cannot outlive a fresh render.
+    `PresenceDot` reads it and uses the rendered
     `online` only for a friend the tab has heard nothing about. A page Next
     restores from its client cache on Back still shows what happened while it
     was away.

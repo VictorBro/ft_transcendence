@@ -146,7 +146,11 @@ test('a stranger found by search is added from their profile, then visited as a 
   );
 });
 
-/** The API's PRESENCE_GRACE_MS: how long a closed tab may take to come back. */
+/**
+ * The API's PRESENCE_GRACE_MS (apps/api/src/presence/presence.service.ts),
+ * copied since e2e cannot import the API: how long a closed tab may take to
+ * come back. Change both together.
+ */
 const PRESENCE_GRACE_MS = 10_000;
 
 const idOf = async (page: Page): Promise<string> =>
