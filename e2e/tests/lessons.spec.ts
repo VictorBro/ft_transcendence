@@ -158,6 +158,27 @@ test.describe('the all lessons page', () => {
     await expect(onboarded).toHaveURL(/\/lessons\?kind=grammar%2Creading$/);
   });
 
+  test('a select keeps the focus when it changes the list', async ({ onboarded }) => {
+    await onboarded.goto(list());
+    const sort = onboarded.getByRole('combobox', { name: 'Sort' });
+    await sort.focus();
+    await sort.selectOption('score');
+
+    await expect(onboarded).toHaveURL(/\/lessons\?sort=score$/);
+    await expect(sort).toBeFocused();
+  });
+
+  test('Clear filters puts the selects back on the default view', async ({ onboarded }) => {
+    // Loaded on sort=score, so the select was mounted with score as its default.
+    await onboarded.goto(list('?kind=grammar&sort=score&group=kind'));
+
+    await onboarded.getByRole('link', { name: 'Clear filters' }).click();
+
+    await expect(onboarded).toHaveURL(/\/lessons$/);
+    await expect(onboarded.getByRole('combobox', { name: 'Sort' })).toHaveValue('position');
+    await expect(onboarded.getByRole('combobox', { name: 'Group' })).toHaveValue('none');
+  });
+
   test('a search applies once the typing stops', async ({ onboarded }) => {
     await onboarded.goto(list());
     await onboarded.getByRole('searchbox', { name: 'Search' }).fill('nombres');

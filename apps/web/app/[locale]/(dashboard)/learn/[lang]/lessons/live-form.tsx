@@ -50,6 +50,14 @@ export function LiveForm({
       sent.current.delete(now);
     } else {
       sent.current.clear();
+      // React leaves a select's default where it was mounted, so reset would
+      // put it back there: move the default to the URL's value first.
+      const query = LessonQuerySchema.parse(Object.fromEntries(searchParams));
+      for (const name of ['sort', 'dir', 'group'] as const) {
+        const select = form.current?.elements.namedItem(name);
+        if (!(select instanceof HTMLSelectElement)) continue;
+        for (const option of select.options) option.defaultSelected = option.value === query[name];
+      }
       form.current?.reset();
     }
   }, [searchParams]);

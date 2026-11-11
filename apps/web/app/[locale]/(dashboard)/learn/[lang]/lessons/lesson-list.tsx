@@ -216,8 +216,8 @@ function Select({
   return (
     <label className="flex items-center gap-2 text-sm text-slate-400">
       {label}
-      {/* Keyed: React leaves a select's default alone after mount, and LiveForm's reset reads it. */}
-      <select key={value} name={name} defaultValue={value} className={FIELD}>
+      {/* Not keyed on its value: a new node would drop the focus. LiveForm moves its default. */}
+      <select name={name} defaultValue={value} className={FIELD}>
         {options.map((option) => (
           <option key={option.value} value={option.value}>
             {option.label}
