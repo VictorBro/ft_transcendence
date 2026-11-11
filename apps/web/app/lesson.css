@@ -700,7 +700,7 @@ header:has(+ main .lesson-view) > div {
   height: auto;
 }
 /* A full person board separates its three singular and three plural rows. */
-.lesson-matching-column:has(> :nth-child(6)) > :nth-child(4) {
+.lesson-matching-columns.is-persons > .lesson-matching-column:has(> :nth-child(6)) > :nth-child(4) {
   margin-top: 16px;
 }
 .lesson-match-button:hover,
@@ -1118,4 +1118,10 @@ header:has(+ main .lesson-view) > div {
     align-self: stretch;
     padding: 18px 56px 18px 16px;
   }
+}
+
+/* The lesson's expressions inside a model dialogue line (#149). */
+.lesson-expression-mark {
+  font-weight: 700;
+  color: rgb(199 210 254);
 }

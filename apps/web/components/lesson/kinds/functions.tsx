@@ -53,6 +53,27 @@ function Opener({ role, text, lang }: { role?: string; text: string; lang: Langu
   );
 }
 
+/** A dialogue line with the lesson's expressions in it marked, as on the screen. */
+function Marked({ text, highlights }: { text: string; highlights: string[] }) {
+  const out: ReactNode[] = [];
+  let rest = text;
+  let at = 0;
+  for (const mark of highlights) {
+    const n = rest.indexOf(mark);
+    if (n < 0) continue;
+    if (n > 0) out.push(rest.slice(0, n));
+    out.push(
+      <strong key={at + n} className="lesson-expression-mark">
+        {mark}
+      </strong>,
+    );
+    rest = rest.slice(n + mark.length);
+    at += n + mark.length;
+  }
+  if (rest) out.push(rest);
+  return <>{out}</>;
+}
+
 /** Brings a line that Next line adds into view; not the first ones, which come with the page. */
 function useNewestLine(shown: number) {
   const list = useRef<HTMLOListElement>(null);
@@ -156,7 +177,7 @@ function Dialogue({ item, lang, hold, outline }: ItemProps<'function_dialogue'>)
               <p className="flex items-center gap-3">
                 <ListenButton text={line.text} lang={lang} size="sm" />
                 <span lang={lang} className="text-lg text-slate-100">
-                  {line.text}
+                  <Marked text={line.text} highlights={line.highlights} />
                 </span>
               </p>
               {back ? (
@@ -362,18 +383,8 @@ function FunctionTranslationExam(props: ItemProps<'function_translation_exam'>) 
   return <TranslationExam {...(props as unknown as ItemProps<'vocabulary_translation_exam'>)} />;
 }
 
-/** Where the lines shown of an exam dialogue are kept, by its first gap: a ref is the attempt's own. */
-const linesKey = (ref: string) => `ft:lesson-dialogue-lines:${ref}`;
-
-function readLines(ref: string | undefined): number | null {
-  if (!ref) return null;
-  try {
-    const n = Number(window.localStorage.getItem(linesKey(ref)));
-    return Number.isInteger(n) && n > 0 ? n : null;
-  } catch {
-    return null;
-  }
-}
+/** Where the lines shown of an exam dialogue are kept, beside the drafts: by its first gap. */
+const linesKey = (ref: string) => `lines:${ref}`;
 
 /**
  * The exam dialogue: it unrolls line by line with Next line, and the last
@@ -388,6 +399,7 @@ function DialogueGapTyping({
   onAnswer,
   locked,
   hold,
+  keep,
 }: ItemProps<'function_dialogue_gap_typing'>) {
   const t = useTranslations('Lesson');
   const total = item.lines.length;
@@ -396,20 +408,16 @@ function DialogueGapTyping({
   const nextLine = useCallback(() => setShown((n) => n + 1), []);
   const list = useNewestLine(shown);
 
-  // After hydration: localStorage is the browser's.
-  useEffect(() => {
-    const kept = readLines(firstGap);
-    if (kept) setShown((n) => Math.max(n, Math.min(kept, total)));
-  }, [firstGap, total]);
-
+  // After hydration: the storage is the browser's.
   useEffect(() => {
     if (!firstGap) return;
-    try {
-      window.localStorage.setItem(linesKey(firstGap), String(shown));
-    } catch {
-      // No storage: a reload starts from the first line again.
-    }
-  }, [firstGap, shown]);
+    const kept = Number(keep.load(linesKey(firstGap)));
+    if (Number.isInteger(kept) && kept > 0) setShown((n) => Math.max(n, Math.min(kept, total)));
+  }, [firstGap, total, keep]);
+
+  useEffect(() => {
+    if (firstGap) keep.save(linesKey(firstGap), String(shown));
+  }, [firstGap, shown, keep]);
 
   useEffect(() => {
     hold(

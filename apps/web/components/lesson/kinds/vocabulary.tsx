@@ -11,7 +11,8 @@ import { GenderPage } from '../gender-page';
 import { RichText } from '../rich-text';
 import { ListenButton } from '../speech';
 import type { Answer, AnswerProps, ItemProps, ItemRenderers, UnitView } from '../types';
-import { ItemCard, Units } from '../units';
+import { TextControl } from '../controls';
+import { ItemCard } from '../units';
 
 /**
  * The vocabulary kind's renderers (#147): the introduction, B3 flashcards,
@@ -36,7 +37,7 @@ function VocabularyFlashcards({ item, lang, hold }: ItemProps<'vocabulary_flashc
       hold={hold}
       cards={item.cards.map((card) => ({
         ref: card.ref,
-        front: card.translations.join(', '),
+        front: card.front,
         text: card.text,
         example: card.example,
       }))}
@@ -96,7 +97,20 @@ function TypedGap({ item, lang, feedback, ...props }: ItemProps<'vocabulary_type
           );
         })}
       </ul>
-      <Units units={item.units} lang={lang} feedback={feedback} {...props} />
+      {unit && unit.kind === 'text' ? (
+        // The green card shows the right word: no second correction beside the field.
+        <div data-unit={unit.ref} className="flex flex-col gap-2">
+          <TextControl
+            unit={unit}
+            value={props.answers[unit.ref]}
+            onChange={(answer) => props.onAnswer(unit.ref, answer)}
+            feedback={note}
+            locked={props.locked}
+            lang={lang}
+            inlineAnswer={false}
+          />
+        </div>
+      ) : null}
       {sentence ? (
         // The sentence with its right word, to hear it once checked.
         <p className="flex items-center gap-3 text-slate-400">
@@ -125,10 +139,10 @@ function ExamWord({
   locked,
   hold,
   nudged,
-}: Omit<AnswerProps, 'feedback' | 'shared' | 'share'> & { unit: TextUnit }) {
+}: Omit<AnswerProps, 'feedback' | 'keep'> & { unit: TextUnit }) {
   const t = useTranslations('Lesson');
-  const genders: Gender[] =
-    lang === 'de' ? ['masculine', 'feminine', 'neuter'] : ['masculine', 'feminine'];
+  // Only French writes a plural noun with "des": a German "des ..." is a genitive.
+  const genders: Gender[] = ['masculine', 'feminine'];
   const genderLabel = useGenderLabel();
   const id = useId();
   const value = answers[unit.ref];
@@ -138,7 +152,7 @@ function ExamWord({
   const wantsArticle = unit.article !== null && unit.article !== undefined;
   const missing =
     wantsArticle && text.trim() !== '' && !lessons.player.startsWithArticle(text, lang);
-  const plural = lessons.player.isPluralAnswer(text);
+  const plural = lang === 'fr' && lessons.player.isPluralAnswer(text);
 
   useEffect(() => {
     hold(`article:${unit.ref}`, missing ? { kind: 'nudge' } : null);
@@ -156,7 +170,8 @@ function ExamWord({
       <p className="flex flex-wrap items-center gap-x-3 gap-y-1">
         <span className="text-slate-100">{unit.prompt.native ?? unit.prompt.learning}</span>
         {unit.article !== undefined ? (
-          <span className={`lesson-article-badge ${missing && nudged ? 'is-missing' : ''}`}>
+          // Red as soon as the article is missing, as on the screen; the note waits for Next.
+          <span className={`lesson-article-badge ${missing ? 'is-missing' : ''}`}>
             {t(wantsArticle ? 'withArticle' : 'withoutArticle')}
           </span>
         ) : null}

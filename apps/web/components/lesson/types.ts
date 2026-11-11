@@ -35,9 +35,11 @@ export interface AnswerProps {
   hold: (key: string, hold: Hold | null) => void;
   /** The first press found a nudge: the items show their notes. */
   nudged: boolean;
-  /** What the items of one page share, cleared with the page. */
-  shared: Readonly<Record<string, unknown>>;
-  share: (key: string, value: unknown) => void;
+  /**
+   * What an item keeps for a reload in this browser, under a key of its
+   * own: stored with the attempt's drafts and cleared with them.
+   */
+  keep: { load: (key: string) => string | null; save: (key: string, value: string) => void };
   /** The lesson's outline: the roles of a functions dialogue. */
   outline: LessonOutline;
 }

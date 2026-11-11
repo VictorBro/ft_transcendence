@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { lessons, type Language } from '@ft/shared';
 
@@ -28,6 +28,8 @@ import {
   saveDrafts,
   submitPage,
   clearDrafts,
+  loadKept,
+  saveKept,
 } from '@/lib/lesson-client';
 import { recordPlayerOrigin, playerHasLessonOrigin } from '@/lib/lesson-history';
 import { pick } from '@/lib/localized';
@@ -98,8 +100,6 @@ export function LessonPlayer({
   const [holds, setHolds] = useState<Record<string, Hold>>({});
   // The first press met a nudge: the items show their notes, the next press sends.
   const [nudged, setNudged] = useState(false);
-  // What the items of the page share; a new page starts empty.
-  const [shared, setShared] = useState<Record<string, unknown>>({});
   const top = useRef<HTMLDivElement>(null);
   const heading = useRef<HTMLHeadingElement>(null);
   // Set when the player moves to another page, so the new page's heading takes the focus.
@@ -209,7 +209,6 @@ export function LessonPlayer({
       setError(null);
       setHolds({});
       setNudged(false);
-      setShared({});
       if (next.current === null) {
         finished.current = true;
         clearDrafts({ lang, id, attemptId: next.attemptId });
@@ -242,9 +241,15 @@ export function LessonPlayer({
       return next;
     });
   }, []);
-  const share = useCallback((key: string, value: unknown) => {
-    setShared((current) => (current[key] === value ? current : { ...current, [key]: value }));
-  }, []);
+  // The items' notes for a reload, kept with this attempt's drafts.
+  const keep = useMemo(
+    () => ({
+      load: (key: string) => loadKept({ lang, id, attemptId: view.attemptId }, key),
+      save: (key: string, value: string) =>
+        saveKept({ lang, id, attemptId: view.attemptId }, key, value),
+    }),
+    [lang, id, view.attemptId],
+  );
 
   function answer(ref: Ref, value: Answer | undefined) {
     setDrafts((current) => {
@@ -367,8 +372,7 @@ export function LessonPlayer({
     locked,
     hold,
     nudged,
-    shared,
-    share,
+    keep,
     outline,
   };
   // Holds only stand before the page is sent: Continue after a Check is never held.

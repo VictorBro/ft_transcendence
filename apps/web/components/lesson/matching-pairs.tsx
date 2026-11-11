@@ -25,7 +25,8 @@ export function MatchingPairs({
   feedback,
   locked,
   speak = false,
-}: AnswerProps & { units: ChoiceUnit[]; speak?: boolean }) {
+  persons = false,
+}: AnswerProps & { units: ChoiceUnit[]; speak?: boolean; persons?: boolean }) {
   const t = useTranslations('Lesson');
   const options = units[0]?.options ?? [];
   const frame = useRef<HTMLDivElement>(null);
@@ -131,7 +132,7 @@ export function MatchingPairs({
         }}
       >
         <div
-          className="lesson-matching-columns"
+          className={`lesson-matching-columns ${persons ? 'is-persons' : ''}`}
           style={{ '--matching-rows': Math.max(options.length, units.length, 1) } as CSSProperties}
         >
           <div role="group" aria-label={t('boardOptions')} className="lesson-matching-column">

@@ -23,14 +23,21 @@ type ChoiceUnit = Extract<UnitView, { kind: 'choice' }>;
 export function MatchingBoard({
   layout,
   speak = false,
+  persons = false,
   ...props
 }: AnswerProps & {
   units: ChoiceUnit[];
   layout: 'pairs' | 'drag';
   /** A Listen button beside each box in the course language (the vocabulary matching). */
   speak?: boolean;
+  /** The six persons of a verb: a gap between the singular and the plural rows. */
+  persons?: boolean;
 }) {
-  return layout === 'pairs' ? <MatchingPairs speak={speak} {...props} /> : <DragBoard {...props} />;
+  return layout === 'pairs' ? (
+    <MatchingPairs speak={speak} persons={persons} {...props} />
+  ) : (
+    <DragBoard {...props} />
+  );
 }
 
 function DragBoard({

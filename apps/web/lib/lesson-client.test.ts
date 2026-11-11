@@ -12,6 +12,8 @@ import {
   startAttempt,
   submitPage,
   isStale,
+  loadKept,
+  saveKept,
 } from './lesson-client';
 
 type AttemptView = lessons.player.AttemptView;
@@ -197,5 +199,17 @@ describe('the drafts', () => {
     vi.stubGlobal('window', { localStorage: storage(true) });
     expect(() => saveDrafts(slot, { [REF]: { text: 'tu' } })).not.toThrow();
     expect(loadDrafts(slot)).toEqual({});
+  });
+
+  it("keeps an item's notes with the attempt's drafts, sweeps and clears them with them", () => {
+    saveKept(slot, `lines:${REF}`, '3');
+    saveKept(other, `lines:${REF}`, '5');
+    saveDrafts(slot, { [REF]: { text: 'tu' } });
+    loadDrafts(slot);
+    expect(loadKept(slot, `lines:${REF}`)).toBe('3');
+    expect(loadKept(other, `lines:${REF}`)).toBeNull();
+    clearDrafts(slot);
+    expect(loadKept(slot, `lines:${REF}`)).toBeNull();
+    expect(window.localStorage.length).toBe(0);
   });
 });

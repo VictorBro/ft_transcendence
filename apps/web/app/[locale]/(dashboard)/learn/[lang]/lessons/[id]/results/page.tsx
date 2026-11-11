@@ -5,6 +5,7 @@ import type { Language, lessons } from '@ft/shared';
 
 import { PRIMARY_BUTTON } from '@/components/form';
 import { playable } from '@/components/lesson/kinds';
+import { gluedAfter } from '@/lib/lesson-gap';
 import { ResultsReview } from '@/components/lesson/results-review';
 import { Link } from '@/i18n/navigation';
 import { lessonPaths, lessonTitle, loadLesson } from '@/lib/lesson';
@@ -171,17 +172,22 @@ const TONE: Record<Row['outcome'], string> = {
   unanswered: 'border-red-500/50',
 };
 
-/** The answers the interface words: a gender row ("masculine"), as on the gender results screen. */
-const GENDERS = new Set(['masculine', 'feminine', 'neuter']);
-
 /** One answer: the prompt, yours, the correct one, the points and why. */
 async function ResultRow({ row, lang, locale }: { row: Row; lang: Language; locale: string }) {
   const t = await getTranslations('Lesson');
   const placement = await getTranslations('Placement');
   const genders = await getTranslations('Genders');
   const { prompt } = row;
-  if (GENDERS.has(row.answer) && (row.yours === null || GENDERS.has(row.yours))) {
-    return <GenderRow row={row} lang={lang} locale={locale} label={(g) => genders(g)} />;
+  // A gender row ("masculine"), as on the gender results screen.
+  if (row.interfaceAnswer) {
+    return (
+      <GenderRow
+        row={row}
+        lang={lang}
+        locale={locale}
+        label={(g) => (genders.has(g) ? genders(g) : g)}
+      />
+    );
   }
   const gap = prompt.before !== undefined || prompt.after !== undefined;
   // The marks cover a typed answer; a spotted word's answer ("est → es") shows plain.
@@ -221,7 +227,8 @@ async function ResultRow({ row, lang, locale }: { row: Row; lang: Language; loca
         <p className="flex flex-col">
           {gap ? (
             <span lang={lang} className="text-slate-100">
-              {prompt.before} ___ {prompt.after}
+              {prompt.before} ___{gluedAfter(prompt.after, lang) ? '' : ' '}
+              {prompt.after}
             </span>
           ) : null}
           {prompt.learning !== undefined ? (
