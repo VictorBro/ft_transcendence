@@ -1,9 +1,9 @@
 import type { Page } from '@playwright/test';
 
+import { finishThroughApi } from '../support/lesson-play';
 import {
   enrol,
   expect,
-  finishBlank,
   ONBOARDED_COURSE,
   placeCourse,
   SECOND_COURSE,
@@ -71,7 +71,7 @@ test.describe('the all lessons page', () => {
       .filter((card) => card.ready)
       .slice(0, 3);
     expect(failed, 'three ready grammar lessons').toHaveLength(3);
-    for (const card of failed) await finishBlank(page, LANG, card.id);
+    for (const card of failed) await finishThroughApi(page.request, LANG, card.id, { share: 0 });
     const params = '?status=failed&kind=grammar&sort=finishedAt&dir=desc';
     const expected = await readPage(page, params);
     expect(expected.items.map((card) => card.id)).toEqual(failed.map((card) => card.id).reverse());

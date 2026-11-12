@@ -1,14 +1,7 @@
 import type { Page } from '@playwright/test';
 
 import { finishThroughApi } from '../support/lesson-play';
-import {
-  expect,
-  finishBlank,
-  ONBOARDED_COURSE,
-  pickLevel,
-  placeCourse,
-  test,
-} from '../support/session';
+import { expect, ONBOARDED_COURSE, pickLevel, placeCourse, test } from '../support/session';
 
 /**
  * The course home as the daily goal page (#86). The numbers come from the API
@@ -128,7 +121,7 @@ test.describe('the daily goal page', () => {
     expect(lesson).toBeDefined();
 
     // Not passed, but it counts for today: the goal of one lesson is met.
-    await finishBlank(page, lang, lesson!.id);
+    await finishThroughApi(page.request, lang, lesson!.id, { share: 0 });
     await page.goto(home(lang));
     const card = page.getByRole('region', { name: 'Today' });
     await expect(card.getByText('Daily goal reached')).toBeVisible();
