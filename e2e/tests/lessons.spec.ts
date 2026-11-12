@@ -278,10 +278,20 @@ test.describe('the all lessons page', () => {
     await pager.getByRole('link', { name: 'Next' }).click();
     await expect(onboarded).toHaveURL(/\/lessons\?page=2$/);
 
-    // The waiting search would have sent the reset form, which has no page.
+    // The waiting search would have sent the reset form, which has no page:
+    // a navigation, so a request for the view that does not come.
+    const stray = onboarded
+      .waitForRequest(
+        (request) => request.headers()['rsc'] === '1' && !request.headers()['next-router-prefetch'],
+        { timeout: 2_000 },
+      )
+      .then(
+        (request) => request.url(),
+        () => null,
+      );
     await onboarded.clock.runFor(1_000);
-    await onboarded.waitForLoadState('networkidle');
 
+    expect(await stray).toBeNull();
     await expect(onboarded).toHaveURL(/\/lessons\?page=2$/);
   });
 
