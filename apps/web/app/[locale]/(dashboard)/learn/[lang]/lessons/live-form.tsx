@@ -125,6 +125,7 @@ export function LiveForm({
   const apply = (delay: number) => {
     clearTimeout(timer.current);
     timer.current = setTimeout(() => {
+      timer.current = undefined;
       if (form.current === null) return;
       const data = new FormData(form.current);
       // Repeated checkbox keys come as arrays, which the schema reads like comma lists.
@@ -174,6 +175,10 @@ export function LiveForm({
         // already, so it only closes the sheet, as a link to # would.
         if ((event.nativeEvent as SubmitEvent).submitter?.hasAttribute('data-close-sheet')) {
           moveHash('');
+          // A change still on its way, or a search still waiting, carries the
+          // open sheet's hash, which would come back as it lands: send the
+          // form again without it, and Next drops the older one.
+          if (pending || timer.current !== undefined) apply(0);
           return;
         }
         apply(0);

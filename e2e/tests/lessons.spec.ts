@@ -418,6 +418,24 @@ test.describe('the all lessons page', () => {
     await expect(onboarded.locator('#filters')).toBeHidden();
   });
 
+  test('on a phone, Show the lessons while a change is on its way closes the sheet', async ({
+    onboarded,
+  }) => {
+    await onboarded.setViewportSize({ width: 390, height: 844 });
+    await onboarded.goto(list());
+    await onboarded.getByRole('link', { name: 'Filters' }).click();
+    await slowNavigations(onboarded, 800);
+    await onboarded.getByRole('checkbox', { name: 'Grammar' }).check();
+
+    await onboarded.getByRole('button', { name: 'Show the lessons' }).click();
+
+    // The change was sent from the open sheet: landing, it must not reopen it.
+    await expect(onboarded).toHaveURL(/\/lessons\?kind=grammar$/);
+    await expect(onboarded.getByRole('link', { name: 'Remove Grammar' })).toBeVisible();
+    await onboarded.reload();
+    await expect(onboarded.locator('#filters')).toBeHidden();
+  });
+
   test('without JavaScript, the phone sheet applies its boxes', async ({ browser, onboarded }) => {
     const context = await browser.newContext({
       storageState: await onboarded.context().storageState(),
