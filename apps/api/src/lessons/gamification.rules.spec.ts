@@ -13,6 +13,7 @@ import {
   challengeFor,
   challengeMet,
   earned,
+  possibleChallenges,
   progress,
   rankOf,
   xpForFinish,
@@ -106,20 +107,22 @@ describe('challengeFor', () => {
     );
 
   it('gives the same code for the same course and day', () => {
-    expect(challengeFor('fixed-course-id', '2026-01-01')).toBe(
-      challengeFor('fixed-course-id', '2026-01-01'),
+    expect(challengeFor('fixed-course-id', '2026-01-01', LESSON_KINDS)).toBe(
+      challengeFor('fixed-course-id', '2026-01-01', LESSON_KINDS),
     );
   });
 
   it('gives different courses their own code on the same day', () => {
     const codes = new Set(
-      ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'].map((id) => challengeFor(id, '2026-01-01')),
+      ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'].map((id) =>
+        challengeFor(id, '2026-01-01', LESSON_KINDS),
+      ),
     );
     expect(codes.size).toBeGreaterThan(1);
   });
 
   it('spreads the six codes over 600 days, and does not follow the day', () => {
-    const codes = days(600).map((day) => challengeFor('fixed-course-id', day));
+    const codes = days(600).map((day) => challengeFor('fixed-course-id', day, LESSON_KINDS));
 
     for (const code of CHALLENGES) {
       const count = codes.filter((picked) => picked === code).length;
@@ -139,13 +142,38 @@ describe('challengeFor', () => {
     expect(share).toBeLessThan(0.6);
   });
 
+  it('never picks reading at a level with no ready reading lesson, over 600 days', () => {
+    const a1 = ['grammar', 'vocabulary', 'functions'] as const;
+    const codes = new Set(days(600).map((day) => challengeFor('fixed-course-id', day, a1)));
+
+    expect([...codes].sort()).toEqual(
+      ['beyondGoal', 'functions', 'grammar', 'score90', 'vocabulary'].sort(),
+    );
+  });
+
+  it('keeps score90 and beyondGoal for a level with no ready lesson at all', () => {
+    expect(possibleChallenges([])).toEqual(['score90', 'beyondGoal']);
+    const codes = new Set(days(100).map((day) => challengeFor('fixed-course-id', day, [])));
+    expect([...codes].sort()).toEqual(['beyondGoal', 'score90']);
+  });
+
+  it('offers every challenge once a level has every kind, in CHALLENGES order', () => {
+    expect(possibleChallenges(['reading', 'grammar', 'reading'])).toEqual([
+      'grammar',
+      'reading',
+      'score90',
+      'beyondGoal',
+    ]);
+    expect(possibleChallenges(LESSON_KINDS)).toEqual([...CHALLENGES]);
+  });
+
   // Not a property but two exact outputs. Nothing stores the code, so a
   // different hash only changes which challenge today's card shows, but it
   // changes it for every learner at once. Red here means that is deliberate.
   // Two days, because a single one can agree with another hash by chance.
   it('pins the hash, so changing it cannot be an accident', () => {
-    expect(challengeFor('fixed-course-id', '2026-01-01')).toBe('score90');
-    expect(challengeFor('fixed-course-id', '2026-01-05')).toBe('grammar');
+    expect(challengeFor('fixed-course-id', '2026-01-01', LESSON_KINDS)).toBe('score90');
+    expect(challengeFor('fixed-course-id', '2026-01-05', LESSON_KINDS)).toBe('grammar');
   });
 });
 
@@ -241,13 +269,13 @@ describe('earned', () => {
 
 describe('progress', () => {
   it('counts a stat against its target', () => {
-    expect(progress('passed25', { ...NO_STATS, passed: 3 })).toEqual({ current: 3, target: 25 });
+    expect(progress('passed10', { ...NO_STATS, passed: 3 })).toEqual({ current: 3, target: 10 });
   });
 
   it('caps current at target, so a bar never overfills', () => {
-    expect(progress('passed25', { ...NO_STATS, passed: 999 })).toEqual({
-      current: 25,
-      target: 25,
+    expect(progress('passed10', { ...NO_STATS, passed: 999 })).toEqual({
+      current: 10,
+      target: 10,
     });
   });
 
