@@ -263,6 +263,22 @@ describe('results', () => {
     expect(row).toMatchObject({ yours: word, outcome: 'incorrect', points: 0 });
   });
 
+  it('marks the gender rows, whose answers are interface words', () => {
+    const plan = buildPlan(fixtureLesson(BY_KIND.vocabulary), 'en');
+    const sheet = results(
+      plan,
+      play(plan, () => 'right'),
+    );
+    const genders = plan.pages
+      .flatMap((p) => p.units)
+      .filter((u) => u.itemType === 'vocabulary_gender_select');
+    expect(genders.length).toBeGreaterThan(0);
+    const marked = sheet.rows.filter((r) => r.interfaceAnswer);
+    expect(marked).toHaveLength(genders.length);
+    expect(marked.every((r) => ['masculine', 'feminine'].includes(r.answer))).toBe(true);
+    expect(ResultsSchema.safeParse({ ...sheet, finish }).success).toBe(true);
+  });
+
   it('names the parts of a split exam', () => {
     const plan = buildPlan(fixtureLesson(BY_KIND.functions), 'en');
     const sheet = results(

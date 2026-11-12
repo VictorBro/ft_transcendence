@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 import { BY_KIND, FIXTURE_LESSONS, fixtureLesson, refOf } from './fixtures.testing';
 import { lessonOutline } from './outline';
 import { buildPlan, type LessonPlan } from './plan';
-import { pageView, paths } from './redact';
+import { expressionsIn, pageView, paths } from './redact';
 import { LessonOutlineSchema, PageViewSchema, type PageView } from './view';
 
 /**
@@ -227,5 +227,22 @@ describe('pageView', () => {
   it('throws for a page that does not exist', () => {
     const plan = buildPlan(fixtureLesson(BY_KIND.vocabulary), 'en');
     expect(() => pageView(plan, plan.pages.length, refOf('s'))).toThrow(/no page/);
+  });
+});
+
+describe('expressionsIn', () => {
+  it('finds the expressions of a dialogue line as the line writes them, in order', () => {
+    const expressions = [{ text: 'Je voudrais' }, { text: 'Vous désirez ?' }, { text: 'bonjour' }];
+    expect(expressionsIn('Bonjour, madame. Vous désirez ?', expressions)).toEqual([
+      'Bonjour',
+      'Vous désirez',
+    ]);
+    expect(expressionsIn('Un café, très bien.', expressions)).toEqual([]);
+  });
+
+  it('never marks two overlapping expressions', () => {
+    expect(expressionsIn('Ça va bien.', [{ text: 'Ça va' }, { text: 'va bien' }])).toEqual([
+      'Ça va',
+    ]);
   });
 });

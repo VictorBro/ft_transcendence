@@ -25,6 +25,37 @@ export interface AnswerProps {
   feedback: ReadonlyMap<Ref, UnitFeedback> | null;
   /** No change any more: a request is running, the page was checked, or its time ran out. */
   locked: boolean;
+  /**
+   * Holds the page's main button back, under a key of the item's own;
+   * null lets it go. A `block` disables it (every flashcard turned first);
+   * a `nudge` lets the first press through only to show `nudged`, and the
+   * second one sends (the article note of the translation exam); a `step`
+   * takes the button over (see Hold).
+   */
+  hold: (key: string, hold: Hold | null) => void;
+  /** The first press found a nudge: the items show their notes. */
+  nudged: boolean;
+  /**
+   * What an item keeps for a reload in this browser, under a key of its
+   * own: stored with the attempt's drafts and cleared with them.
+   */
+  keep: { load: (key: string) => string | null; save: (key: string, value: string) => void };
+  /** The lesson's outline: the roles of a functions dialogue. */
+  outline: LessonOutline;
+}
+
+/**
+ * What holds the main button of a page back; see AnswerProps.hold. A
+ * `step` lends the button to the item for one more step of its own (Next
+ * line of a dialogue): it shows `label`, and a press calls `onStep`
+ * instead of sending the page. Pass a stable `onStep`.
+ */
+export interface Hold {
+  kind: 'block' | 'nudge' | 'step';
+  /** Shown beside the button while it holds; none for a hold the item explains itself. */
+  message?: string;
+  label?: string;
+  onStep?: () => void;
 }
 
 export interface ItemProps<T extends ItemViewType = ItemViewType> extends AnswerProps {
@@ -41,9 +72,20 @@ export type ItemRenderers = { [T in ItemViewType]?: ComponentType<ItemProps<T>> 
 /** A block of the lesson page that shows one of the outline's kind fields, or nothing. */
 export type StartField = ComponentType<{ outline: LessonOutline; lang: Language }>;
 
+/**
+ * A short fact of the lesson page, from the outline, in the Lesson
+ * messages; null when the lesson has none.
+ */
+export type StartFact = (
+  outline: LessonOutline,
+  t: (key: string, values?: Record<string, string | number>) => string,
+) => string | null;
+
 export interface KindParts {
   /** The lesson kind these parts play: a lesson of a kind with no parts cannot start. */
   kind: LessonKind;
   renderers: ItemRenderers;
   startFields: StartField[];
+  /** Short facts after the minutes on the lesson page ("About 14 minutes · 8 words"). */
+  startFacts?: StartFact[];
 }

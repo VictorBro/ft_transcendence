@@ -464,7 +464,27 @@
     "example": "Example",
     "pairedWith": "{text}, paired with {partner}",
     "pairSelected": "Selected: {text}.",
-    "pairingStatus": "{count} of {total} pairs assigned."
+    "pairingStatus": "{count} of {total} pairs assigned.",
+    "listenTo": "Listen: {text}",
+    "cardsTurned": "{count} of {total} cards turned",
+    "flipEveryCard": "Flip every card to continue.",
+    "turnCard": "Turn the card: {text}",
+    "gendersCorrect": "{count} of {total} genders correct.",
+    "withArticle": "with article",
+    "withoutArticle": "without article",
+    "typeTheArticle": "Type the article before the word.",
+    "whichGender": "Which gender?",
+    "wordCount": "{count, plural, one {# word} other {# words}}",
+    "listen": "Listen",
+    "nextLine": "Next line",
+    "lineOf": "Line {n} of {total}",
+    "turnLine": "Turn the line: {text}",
+    "replyN": "Reply {n}"
+  },
+  "Genders": {
+    "masculine": "Masculine",
+    "feminine": "Feminine",
+    "neuter": "Neuter"
   },
   "LessonKinds": {
     "grammar": "Grammar",

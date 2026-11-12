@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { useTranslations } from 'next-intl';
 
 import { outcomeTone } from './controls';
+import { ListenButton } from './speech';
 import type { AnswerProps, Ref, UnitView } from './types';
 
 type ChoiceUnit = Extract<UnitView, { kind: 'choice' }>;
@@ -23,7 +24,9 @@ export function MatchingPairs({
   onAnswer,
   feedback,
   locked,
-}: AnswerProps & { units: ChoiceUnit[] }) {
+  speak = false,
+  persons = false,
+}: AnswerProps & { units: ChoiceUnit[]; speak?: boolean; persons?: boolean }) {
   const t = useTranslations('Lesson');
   const options = units[0]?.options ?? [];
   const frame = useRef<HTMLDivElement>(null);
@@ -129,7 +132,7 @@ export function MatchingPairs({
         }}
       >
         <div
-          className="lesson-matching-columns"
+          className={`lesson-matching-columns ${persons ? 'is-persons' : ''}`}
           style={{ '--matching-rows': Math.max(options.length, units.length, 1) } as CSSProperties}
         >
           <div role="group" aria-label={t('boardOptions')} className="lesson-matching-column">
@@ -172,7 +175,16 @@ export function MatchingPairs({
               const option = given(unit);
               const note = feedback?.get(unit.ref);
               return (
-                <li key={unit.ref} data-unit={unit.ref}>
+                <li
+                  key={unit.ref}
+                  data-unit={unit.ref}
+                  className={speak ? 'has-listen' : undefined}
+                >
+                  {speak && prompt(unit) ? (
+                    <span className="lesson-match-listen">
+                      <ListenButton text={prompt(unit)} lang={lang} size="sm" />
+                    </span>
+                  ) : null}
                   <button
                     ref={(button) => {
                       if (button) right.current.set(unit.ref, button);
@@ -200,7 +212,7 @@ export function MatchingPairs({
                   </button>
                   {note && note.outcome !== 'fully_correct' ? (
                     <p
-                      className="mt-2 text-sm font-semibold text-green-400"
+                      className="lesson-match-correction mt-2 text-sm font-semibold text-green-400"
                       lang={lang}
                       data-correct-partner
                     >

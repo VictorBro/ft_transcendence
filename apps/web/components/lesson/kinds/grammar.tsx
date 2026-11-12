@@ -75,7 +75,7 @@ function Explanation({ item, lang }: ItemProps<'grammar_explanation'>) {
 function PersonMatching({ item, ...props }: ItemProps<'grammar_person_matching'>) {
   return (
     <ItemCard>
-      <MatchingBoard units={item.units} layout="pairs" {...props} />
+      <MatchingBoard units={item.units} layout="pairs" persons {...props} />
     </ItemCard>
   );
 }
