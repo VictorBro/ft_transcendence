@@ -253,9 +253,14 @@ describe('searchLessons, sort', () => {
   });
 
   it('sorts a lesson no longer ready as never started, as its row shows it', () => {
-    const rows = [scored(1, 90, '2026-10-12', { ready: false }), scored(2, 40, '2026-10-10')];
+    // Ties with the never-started 3, so position puts it before 3, not after.
+    const rows = [
+      scored(1, 90, '2026-10-12', { ready: false }),
+      card(3),
+      scored(2, 40, '2026-10-10'),
+    ];
     for (const sort of ['score', 'finishedAt'] as const) {
-      expect(positions(rows, { sort, dir: 'desc' })).toEqual([2, 1]);
+      expect(positions(rows, { sort, dir: 'desc' })).toEqual([2, 1, 3]);
     }
   });
 
