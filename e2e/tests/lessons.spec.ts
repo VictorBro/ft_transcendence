@@ -46,6 +46,22 @@ const rows = (page: Page) => page.locator('[data-lesson]');
 const rowIds = (page: Page) =>
   rows(page).evaluateAll((items) => items.map((item) => item.getAttribute('data-lesson')));
 
+/**
+ * Holds the server's answer to each navigation of the page, prefetches aside,
+ * so a test can act while a change is still on its way.
+ */
+const slowNavigations = (page: Page, ms: number) =>
+  page.route(
+    (url) => url.pathname.endsWith('/lessons'),
+    async (route) => {
+      const headers = route.request().headers();
+      if (headers['rsc'] === '1' && !headers['next-router-prefetch']) {
+        await new Promise((resolve) => setTimeout(resolve, ms));
+      }
+      await route.continue();
+    },
+  );
+
 test.describe('the all lessons page', () => {
   test('a direct load renders exactly the view in its URL', async ({ freshLearner: page }) => {
     // Three grammar lessons failed one after the other, so the view has rows
@@ -175,6 +191,64 @@ test.describe('the all lessons page', () => {
     // The next change sends the form as it is: the removed filter stays off.
     await onboarded.getByRole('checkbox', { name: 'Reading' }).check();
     await expect(onboarded).toHaveURL(/\/lessons\?kind=grammar%2Creading$/);
+  });
+
+  test('a chip back to a view the form sent but never showed still unticks its box', async ({
+    onboarded,
+  }) => {
+    await onboarded.goto(list());
+    await slowNavigations(onboarded, 400);
+    // Vocabulary goes out before Grammar lands: Next drops the Grammar push.
+    await onboarded.getByRole('checkbox', { name: 'Grammar' }).check();
+    await onboarded.waitForTimeout(100);
+    await onboarded.getByRole('checkbox', { name: 'Vocabulary' }).check();
+    await expect(onboarded).toHaveURL(/\/lessons\?kind=grammar%2Cvocabulary$/);
+
+    await onboarded.getByRole('link', { name: 'Remove Vocabulary' }).click();
+
+    await expect(onboarded).toHaveURL(/\/lessons\?kind=grammar$/);
+    await expect(onboarded.getByRole('checkbox', { name: 'Vocabulary' })).not.toBeChecked();
+    await onboarded.getByRole('checkbox', { name: 'Reading' }).check();
+    await expect(onboarded).toHaveURL(/\/lessons\?kind=grammar%2Creading$/);
+  });
+
+  test('Back while a change is on its way puts the boxes back on the view', async ({
+    onboarded,
+  }) => {
+    // On a phone, Back is how the sheet is often closed.
+    await onboarded.setViewportSize({ width: 390, height: 844 });
+    await onboarded.goto(list());
+    await onboarded.getByRole('link', { name: 'Filters' }).click();
+    await slowNavigations(onboarded, 1_500);
+    const grammar = onboarded.getByRole('checkbox', { name: 'Grammar' });
+    await grammar.check();
+
+    // Back drops the Grammar push, onto the same unfiltered view.
+    await onboarded.goBack();
+
+    await expect(onboarded).toHaveURL(/\/lessons$/);
+    await onboarded.getByRole('link', { name: 'Filters' }).click();
+    await expect(grammar).not.toBeChecked();
+    await onboarded.getByRole('checkbox', { name: 'Reading' }).check();
+    await expect(onboarded).toHaveURL(/\/lessons\?kind=reading#filters$/);
+  });
+
+  test('Back onto the view shown keeps what the form applied to it', async ({ onboarded }) => {
+    await onboarded.setViewportSize({ width: 390, height: 844 });
+    await onboarded.goto(list());
+    await onboarded.getByRole('link', { name: 'Filters' }).click();
+    await onboarded.getByRole('checkbox', { name: 'Grammar' }).check();
+    await expect(onboarded).toHaveURL(/\/lessons\?kind=grammar#filters$/);
+    await onboarded.getByRole('combobox', { name: 'Sort' }).selectOption('score');
+    await expect(onboarded).toHaveURL(/\/lessons\?kind=grammar&sort=score#filters$/);
+    await onboarded.getByRole('link', { name: 'Close' }).click();
+
+    // Back puts the fields on the view shown: the one the form itself applied.
+    await onboarded.goBack();
+
+    await expect(onboarded.locator('#filters')).toBeVisible();
+    await expect(onboarded.getByRole('checkbox', { name: 'Grammar' })).toBeChecked();
+    await expect(onboarded.getByRole('combobox', { name: 'Sort' })).toHaveValue('score');
   });
 
   test('Back undoes one change, not all of them', async ({ onboarded }) => {

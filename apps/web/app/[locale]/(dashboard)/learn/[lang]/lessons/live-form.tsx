@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useTransition, type ReactNode } from 'react';
+import { useCallback, useEffect, useRef, useTransition, type ReactNode } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { LessonQuerySchema, type Language } from '@ft/shared';
 
@@ -45,15 +45,35 @@ export function LiveForm({
   const [pending, startTransition] = useTransition();
   const form = useRef<HTMLFormElement>(null);
   const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
-  // The queries this form sent that have not landed yet: its own navigations
-  // leave the fields as typed, even when an older one lands while the learner
-  // is still typing. Only until they land: a chip back to an earlier query is
-  // not the form's own.
-  const sent = useRef(new Set<string>());
+  // The queries this form sent that can still land, oldest first: its own
+  // navigations leave the fields as typed, even when an older one lands while
+  // the learner is still typing. A newer one makes Next drop the one on its
+  // way, unless it is already landing, so one landing means no older one ever
+  // will: they go with it. A chip back to one of those is not the form's own.
+  const sent = useRef<string[]>([]);
   // The query the fields were last put on. The page renders them from it, so
   // the first run has nothing to reset: resetting would wipe what was typed
   // before the page hydrated.
   const shown = useRef(searchParams.toString());
+
+  // Puts the fields back on the view shown, from the defaults the server
+  // rendered, and forgets what the form sent: none of it will land now.
+  const putBack = useCallback(() => {
+    sent.current = [];
+    // A search still waiting would read the reset form, which has no page,
+    // and send the learner away from the view a link opened.
+    clearTimeout(timer.current);
+    timer.current = undefined;
+    // React leaves a select's default where it was mounted, so reset would
+    // put it back there: move the default to the shown value first.
+    const query = LessonQuerySchema.parse(Object.fromEntries(new URLSearchParams(shown.current)));
+    for (const name of ['sort', 'dir', 'group'] as const) {
+      const select = form.current?.elements.namedItem(name);
+      if (!(select instanceof HTMLSelectElement)) continue;
+      for (const option of select.options) option.defaultSelected = option.value === query[name];
+    }
+    form.current?.reset();
+  }, []);
 
   // Any other navigation (Back, a filter chip, Clear filters) brings new
   // defaults from the server: reset puts the fields on them.
@@ -61,28 +81,29 @@ export function LiveForm({
     const now = searchParams.toString();
     if (now === shown.current) return;
     shown.current = now;
-    if (sent.current.has(now)) {
-      sent.current.delete(now);
-    } else {
-      sent.current.clear();
-      // A search still waiting would read the reset form, which has no page,
-      // and send the learner away from the view the link opened.
-      clearTimeout(timer.current);
-      // React leaves a select's default where it was mounted, so reset would
-      // put it back there: move the default to the URL's value first.
-      const query = LessonQuerySchema.parse(Object.fromEntries(searchParams));
-      for (const name of ['sort', 'dir', 'group'] as const) {
-        const select = form.current?.elements.namedItem(name);
-        if (!(select instanceof HTMLSelectElement)) continue;
-        for (const option of select.options) option.defaultSelected = option.value === query[name];
-      }
-      form.current?.reset();
-      // From lg the page scrolls in a pane, which a query-only navigation
-      // leaves where it was: Next at the bottom would open page 2 at its end.
-      // Not after the form's own changes: the box under the pointer would move.
-      form.current?.closest('[data-scroll-pane]')?.scrollTo({ top: 0 });
+    const own = sent.current.indexOf(now);
+    if (own !== -1) {
+      sent.current = sent.current.slice(own + 1);
+      return;
     }
-  }, [searchParams]);
+    putBack();
+    // From lg the page scrolls in a pane, which a query-only navigation
+    // leaves where it was: Next at the bottom would open page 2 at its end.
+    // Not after the form's own changes: the box under the pointer would move.
+    form.current?.closest('[data-scroll-pane]')?.scrollTo({ top: 0 });
+  }, [searchParams, putBack]);
+
+  // Back and Forward drop a change still on its way too, and can land on the
+  // view already shown, which brings no new query for the effect above.
+  useEffect(() => {
+    const onPopState = (event: PopStateEvent) => {
+      // A hash the browser moves alone comes with no state, and Next ignores
+      // it: the view stays, and so does what the form sent.
+      if (event.state !== null) putBack();
+    };
+    window.addEventListener('popstate', onPopState);
+    return () => window.removeEventListener('popstate', onPopState);
+  }, [putBack]);
 
   // A change made before hydration had no handler to apply it: apply it now.
   useEffect(() => {
@@ -119,8 +140,12 @@ export function LiveForm({
       });
       const href = lessonsHref(lang, query);
       const sending = href.split('?')[1] ?? '';
-      // The query already shown never lands again, so it would stay in sent.
-      if (sending !== shown.current) sent.current.add(sending);
+      // The query already shown never lands again, so it is not kept; it still
+      // drops the ones on their way, and one of those landing is not the form's.
+      sent.current =
+        sending === shown.current
+          ? []
+          : [...sent.current.filter((query) => query !== sending), sending];
       // The hash keeps the phone's filter sheet open (#filters) while the list updates.
       startTransition(() => router.push(`${href}${window.location.hash}`, { scroll: false }));
     }, delay);
