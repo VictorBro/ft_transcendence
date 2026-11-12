@@ -6,6 +6,7 @@ import { UserIdSchema, type PublicUser } from '@ft/shared';
 import { Link } from '@/i18n/navigation';
 import { Avatar } from '@/components/avatar';
 import { FriendButton, RemoveFriendButton, RequestButtons } from '@/components/friend-buttons';
+import { PresenceDot } from '@/components/presence-dot';
 import { RefreshOn } from '@/components/refresh-on';
 import {
   FRIEND_EVENTS,
@@ -62,14 +63,23 @@ export default async function UserPage({ params }: { params: Promise<{ id: strin
   const languageName = await getTranslations('Languages');
   // The API's id, lower case, since the URL may hold the same id in upper case.
   const relation = profile.id === me.id ? 'self' : relationTo(lists, profile.id);
+  // Your friends list already says who is online. Anyone not in it, you
+  // included, gets no dot: only a friend may see when you are online.
+  const friend = lists.friends.find((user) => user.id === profile.id);
 
   return (
     <div className="mx-auto flex w-full max-w-md flex-col gap-10">
       <section className="flex flex-col gap-4">
         <div className="flex items-start justify-between gap-4">
-          <h1 className="min-w-0 text-2xl font-semibold tracking-tight wrap-break-word">
-            {profile.displayName}
-          </h1>
+          {/* The dot sits beside the heading, not in it, so the heading stays the name alone. */}
+          <div className="flex min-w-0 items-center gap-3">
+            <h1 className="min-w-0 text-2xl font-semibold tracking-tight wrap-break-word">
+              {profile.displayName}
+            </h1>
+            {friend === undefined ? null : (
+              <PresenceDot userId={friend.id} online={friend.online} />
+            )}
+          </div>
           <Avatar src={profile.avatarUrl} name={profile.displayName} size={128} />
         </div>
         <div className="flex flex-wrap items-center gap-3">

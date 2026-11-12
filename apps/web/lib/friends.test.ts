@@ -5,7 +5,7 @@ import { relationTo } from './friends';
 const person = (id: string) => ({ id, displayName: `user_${id}`, avatarUrl: null });
 
 const lists = {
-  friends: [person('f')],
+  friends: [{ ...person('f'), online: false }],
   received: [person('r')],
   sent: [person('s')],
 };

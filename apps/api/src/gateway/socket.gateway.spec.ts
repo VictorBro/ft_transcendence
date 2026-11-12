@@ -4,6 +4,7 @@ import type { Event } from 'socket.io';
 
 import { seriesValue } from '../../test/metrics.fixtures';
 import { wsConnections } from '../metrics/metrics';
+import type { PresenceService } from '../presence/presence.service';
 import type { PrismaService } from '../prisma/prisma.service';
 import type { RedisService } from '../redis/redis.service';
 import {
@@ -53,14 +54,25 @@ function gatewayWith(
   // The session is still in Redis unless a test says otherwise.
   const exists = vi.fn().mockResolvedValue(1);
   const update = vi.fn().mockResolvedValue({});
-  const sockets = { closeSession: vi.fn(), attach: vi.fn() };
+  // No friends, and no socket ever the first or the last, unless a test says otherwise.
+  const findMany = vi.fn().mockResolvedValue([]);
+  const sockets = { closeSession: vi.fn(), attach: vi.fn(), toUser: vi.fn() };
+  const presence = {
+    connected: vi.fn().mockResolvedValue(false),
+    disconnected: vi.fn().mockResolvedValue(false),
+    isOnline: vi.fn().mockResolvedValue(new Set<string>()),
+  };
   const gateway = new SocketGateway(
-    { user: { findUnique, update } } as unknown as PrismaService,
+    { user: { findUnique, update }, friendship: { findMany } } as unknown as PrismaService,
     { client: { exists } } as unknown as RedisService,
     sockets as unknown as SocketsService,
+    presence as unknown as PresenceService,
   );
-  return { gateway, findUnique, update, exists, sockets };
+  return { gateway, findUnique, update, findMany, exists, sockets, presence };
 }
+
+/** Lets the presence work that connecting and disconnecting start run to its end. */
+const settle = () => new Promise((resolve) => setImmediate(resolve));
 
 describe('sameOrigin', () => {
   it('lets a client with no Origin through: it is not a browser', () => {
@@ -242,7 +254,7 @@ describe('SocketGateway screen', () => {
     expect(emit).toHaveBeenCalledWith('app:error', { code: 'request.invalid' });
     // next(err) would be re-emitted as `error`, which crashes the process.
     expect(next).not.toHaveBeenCalled();
-    gateway.handleDisconnect();
+    gateway.handleDisconnect(socket);
   });
 
   it('drops a flood and says so once a window', () => {
@@ -255,17 +267,116 @@ describe('SocketGateway screen', () => {
     const codes = emit.mock.calls.map(([, payload]) => (payload as { code: string }).code);
     expect(codes.filter((code) => code === 'request.invalid')).toHaveLength(EVENT_LIMIT);
     expect(codes.filter((code) => code === 'server.rateLimited')).toHaveLength(1);
-    gateway.handleDisconnect();
+    gateway.handleDisconnect(socket);
   });
 
   it('counts the open connections', async () => {
     const { gateway } = gatewayWith();
+    const { socket } = fakeSocket({ userId: 'u1' });
     const before = (await seriesValue(wsConnections)) ?? 0;
 
-    gateway.handleConnection(fakeSocket({ userId: 'u1' }).socket);
+    gateway.handleConnection(socket);
     expect(await seriesValue(wsConnections)).toBe(before + 1);
-    gateway.handleDisconnect();
+    gateway.handleDisconnect(socket);
     expect(await seriesValue(wsConnections)).toBe(before);
+  });
+});
+
+describe('SocketGateway presence', () => {
+  /** A connected socket of u1, who is friends with f1 (who asked) and f2 (who was asked). */
+  function connectedSocket() {
+    const setup = gatewayWith();
+    setup.findMany.mockResolvedValue([
+      { requesterId: 'f1', addresseeId: 'u1' },
+      { requesterId: 'u1', addresseeId: 'f2' },
+    ]);
+    const { socket, emit } = fakeSocket({ userId: 'u1' });
+    socket.data = { userId: 'u1', sessionId: 's1' };
+    return { ...setup, socket, emit };
+  }
+
+  const update = (userId: string, status: string) => ({ userId, status, at: expect.any(String) });
+
+  it("tells the friends' rooms when the first socket opens", async () => {
+    const { gateway, socket, presence, sockets } = connectedSocket();
+    presence.connected.mockResolvedValue(true);
+
+    gateway.handleConnection(socket);
+    await settle();
+
+    expect(presence.connected).toHaveBeenCalledWith('u1');
+    expect(sockets.toUser.mock.calls).toEqual([
+      ['f1', 'presence:update', update('u1', 'online')],
+      ['f2', 'presence:update', update('u1', 'online')],
+    ]);
+  });
+
+  it('tells nobody when another tab is already open', async () => {
+    const { gateway, socket, sockets } = connectedSocket();
+
+    gateway.handleConnection(socket);
+    await settle();
+
+    expect(sockets.toUser).not.toHaveBeenCalled();
+  });
+
+  // The page was rendered a moment before: a friend may have come or gone since.
+  it('tells the new socket, and only it, where each friend stands', async () => {
+    const { gateway, socket, emit, presence, sockets } = connectedSocket();
+    presence.isOnline.mockResolvedValue(new Set(['f2']));
+
+    gateway.handleConnection(socket);
+    await settle();
+
+    expect(presence.isOnline).toHaveBeenCalledWith(['f1', 'f2']);
+    expect(emit.mock.calls).toEqual([
+      ['presence:update', update('f1', 'offline')],
+      ['presence:update', update('f2', 'online')],
+    ]);
+    expect(sockets.toUser).not.toHaveBeenCalled();
+  });
+
+  it('tells the friends once the last socket has stayed closed', async () => {
+    const { gateway, socket, presence, sockets, findMany } = connectedSocket();
+    presence.disconnected.mockResolvedValue(true);
+
+    gateway.handleDisconnect(socket);
+    await settle();
+
+    expect(presence.disconnected).toHaveBeenCalledWith('u1');
+    // Asked when leaving, not on connect: a friendship may have changed since.
+    expect(findMany).toHaveBeenCalledOnce();
+    expect(sockets.toUser.mock.calls).toEqual([
+      ['f1', 'presence:update', update('u1', 'offline')],
+      ['f2', 'presence:update', update('u1', 'offline')],
+    ]);
+  });
+
+  // A reload: a tab came back within the grace period.
+  it('tells nobody, and looks up no friend, when a tab came back', async () => {
+    const { gateway, socket, sockets, findMany } = connectedSocket();
+
+    gateway.handleDisconnect(socket);
+    await settle();
+
+    expect(findMany).not.toHaveBeenCalled();
+    expect(sockets.toUser).not.toHaveBeenCalled();
+  });
+
+  // Unhandled, a rejection in work nobody awaits would take the process down.
+  it('logs a Redis failure on either side and carries on', async () => {
+    const error = vi.spyOn(Logger.prototype, 'error').mockImplementation(() => undefined);
+    const { gateway, socket, presence } = connectedSocket();
+    presence.connected.mockRejectedValue(new Error('ECONNREFUSED'));
+    presence.disconnected.mockRejectedValue(new Error('ECONNREFUSED'));
+
+    gateway.handleConnection(socket);
+    gateway.handleDisconnect(socket);
+    await settle();
+
+    expect(error).toHaveBeenCalledWith('presence on connect failed: Error: ECONNREFUSED');
+    expect(error).toHaveBeenCalledWith('presence on disconnect failed: Error: ECONNREFUSED');
+    error.mockRestore();
   });
 });
 

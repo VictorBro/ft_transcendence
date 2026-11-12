@@ -5,9 +5,16 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { SERVER_EVENTS } from '@ft/shared';
-import type { ErrorCode, FriendRequestResult, Friends, FriendshipStatus } from '@ft/shared';
+import type {
+  ErrorCode,
+  FriendRequestResult,
+  Friends,
+  FriendshipStatus,
+  PublicUser,
+} from '@ft/shared';
 
 import { SocketsService } from '../gateway/sockets.service';
+import { PresenceService } from '../presence/presence.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { PUBLIC_USER_SELECT } from '../users/public-user';
 import { pairKey } from './pair';
@@ -31,6 +38,7 @@ export class FriendsService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly sockets: SocketsService,
+    private readonly presence: PresenceService,
   ) {}
 
   async list(me: string): Promise<Friends> {
@@ -45,12 +53,15 @@ export class FriendsService {
       orderBy: { updatedAt: 'desc' },
     });
     const lists: Friends = { friends: [], received: [], sent: [] };
+    const friends: PublicUser[] = [];
     for (const row of rows) {
       const mine = row.requesterId === me;
       const other = mine ? row.addressee : row.requester;
-      if (row.status === 'accepted') lists.friends.push(other);
+      if (row.status === 'accepted') friends.push(other);
       else (mine ? lists.sent : lists.received).push(other);
     }
+    const online = await this.presence.isOnline(friends.map((friend) => friend.id));
+    lists.friends = friends.map((friend) => ({ ...friend, online: online.has(friend.id) }));
     return lists;
   }
 
