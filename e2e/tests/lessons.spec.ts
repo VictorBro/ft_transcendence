@@ -301,6 +301,49 @@ test.describe('the all lessons page', () => {
     await expect(grammar).toBeHidden();
   });
 
+  test('on a phone, Back onto the open sheet shows its view', async ({ onboarded }) => {
+    await onboarded.setViewportSize({ width: 390, height: 844 });
+    await onboarded.goto(list());
+    const sheet = onboarded.locator('#filters');
+    const grammar = onboarded.getByRole('checkbox', { name: 'Grammar' });
+    await onboarded.getByRole('link', { name: 'Filters' }).click();
+    await grammar.check();
+    await expect(onboarded).toHaveURL(/\/lessons\?kind=grammar#filters$/);
+    await onboarded.getByRole('checkbox', { name: 'Passed', exact: true }).check();
+    await expect(onboarded).toHaveURL(/\/lessons\?status=done&kind=grammar#filters$/);
+
+    await onboarded.goBack();
+    await onboarded.goBack();
+
+    // The entry the Filters link made: the sheet open over the unfiltered list.
+    await expect(onboarded).toHaveURL(/\/lessons#filters$/);
+    await expect(sheet).toBeVisible();
+    await expect(grammar).not.toBeChecked();
+    await expect(onboarded.getByRole('link', { name: 'Remove Grammar' })).toBeHidden();
+    await onboarded.goBack();
+    await expect(sheet).toBeHidden();
+    await onboarded.goForward();
+    await expect(sheet).toBeVisible();
+  });
+
+  test('on a phone, Back onto the closed sheet shows its view', async ({ onboarded }) => {
+    await onboarded.setViewportSize({ width: 390, height: 844 });
+    await onboarded.goto(list());
+    await onboarded.getByRole('link', { name: 'Filters' }).click();
+    await onboarded.getByRole('checkbox', { name: 'Grammar' }).check();
+    await expect(onboarded).toHaveURL(/\/lessons\?kind=grammar#filters$/);
+    await onboarded.getByRole('button', { name: 'Show the lessons' }).click();
+    await onboarded.getByRole('link', { name: 'Remove Grammar' }).click();
+    await expect(onboarded).toHaveURL(/\/lessons$/);
+
+    await onboarded.goBack();
+
+    // The entry Show the lessons made: the sheet closed over the Grammar list.
+    await expect(onboarded).toHaveURL(/\/lessons\?kind=grammar#?$/);
+    await expect(onboarded.getByRole('link', { name: 'Remove Grammar' })).toBeVisible();
+    await expect(onboarded.locator('#filters')).toBeHidden();
+  });
+
   test('without JavaScript, the phone sheet applies its boxes', async ({ browser, onboarded }) => {
     const context = await browser.newContext({
       storageState: await onboarded.context().storageState(),

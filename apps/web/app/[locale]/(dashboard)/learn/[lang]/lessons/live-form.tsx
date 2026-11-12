@@ -11,6 +11,21 @@ import { lessonsHref } from '@/lib/lesson-list';
 const SEARCH_DELAY_MS = 250;
 
 /**
+ * Opens or closes the phone's filter sheet (#filters) with an entry Back can
+ * come back to. A hash the browser moves alone makes an entry with no state,
+ * and Next does nothing on a Back onto one: the URL would change under a view
+ * that stays. The hash leaves the query alone, so the entry left holds the
+ * right view: its state goes to the new entry. Next lets its own state through
+ * replaceState untouched. The hash itself must move: :target, which opens the
+ * sheet, ignores pushState.
+ */
+const moveHash = (hash: string) => {
+  const state: unknown = window.history.state;
+  window.location.hash = hash;
+  window.history.replaceState(state, '', window.location.href);
+};
+
+/**
  * The all lessons GET form, applied as it changes. Without JavaScript it is
  * the plain form and its Apply button. With it, every change pushes the URL
  * in a transition, so the rows fade while the server renders the next view,
@@ -121,12 +136,19 @@ export function LiveForm({
         const search = event.target instanceof HTMLInputElement && event.target.type === 'search';
         apply(search ? SEARCH_DELAY_MS : 0);
       }}
+      onClick={(event) => {
+        // Filters and Close: links to the sheet's hash.
+        const link = (event.target as Element).closest('a[href^="#"]');
+        if (link === null) return;
+        event.preventDefault();
+        moveHash(link.getAttribute('href')!.slice(1));
+      }}
       onSubmit={(event) => {
         event.preventDefault();
         // Show the lessons, in the phone's sheet: every change is applied
         // already, so it only closes the sheet, as a link to # would.
         if ((event.nativeEvent as SubmitEvent).submitter?.hasAttribute('data-close-sheet')) {
-          window.location.hash = '';
+          moveHash('');
           return;
         }
         apply(0);
