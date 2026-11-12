@@ -5,7 +5,7 @@ export const privacyPolicy: LegalDocument = {
   title: 'Datenschutzerklärung',
   description:
     'Was ft_transcendence sammelt, während Sie damit eine Sprache lernen, warum wir es sammeln, wie lange wir es aufbewahren, und wie Sie es zurückerhalten oder löschen lassen können.',
-  lastUpdated: '2026-11-06',
+  lastUpdated: '2026-11-07',
   intro:
     'ft_transcendence ist eine KI-gestützte Plattform zum Sprachenlernen. Eine Sprache gut zu unterrichten bedeutet, zu beobachten, wie Sie sie verwenden, daher verarbeitet dieser Dienst mehr über Ihr Lernverhalten als eine typische Website. Diese Richtlinie erklärt genau, was das in der Praxis bedeutet, geschrieben, um gelesen und nicht nur überflogen zu werden.',
   sections: [
@@ -24,7 +24,7 @@ export const privacyPolicy: LegalDocument = {
         'Kontodaten: die bei der Anmeldung angegebene E-Mail-Adresse und der Anzeigename, ein Passwort, das nur als Argon2-Hash gespeichert wird, und, falls aktiviert, Ihre Einstellungen zur Zwei-Faktor-Authentifizierung. Wir speichern ein Passwort niemals in einer lesbaren Form.',
         'Lerndaten: die gewählte Zielsprache und Kompetenzstufe, die zu Übungen und Bewertungen eingereichten Antworten, das von unserer Bewertungs-Engine daraus abgeleitete Niveau, Serien, Punktzahlen und Fortschrittsmarkierungen, die von den Gamification-Funktionen verwendet werden.',
         'Konversationsdaten: die Eingaben, die Sie an den KI-Tutor senden, und die Antworten, die er zurückgibt. In einem Sprachlernkontext sind diese Mitschriften das eigentliche Produkt, da sowohl Korrektur als auch Einstufung von Ihren vorherigen Versuchen abhängen, einschließlich der Fehler.',
-        'Interaktionsdaten: Freundschaftsbeziehungen, Anwesenheitsstatus, der Tag, an dem Sie die App zuletzt im angemeldeten Zustand geöffnet haben (nur der Tag, nicht die Uhrzeit, und nur der letzte), im Chat oder während einer Live-Sitzung gesendete Nachrichten, und Ergebnisse von Zwei-Spieler-Übungsrunden. Alles, was Sie an einen anderen Lernenden senden, ist für diesen sichtbar.',
+        'Interaktionsdaten: Freundschaftsbeziehungen, ob Sie gerade online sind (die Zahl der App-Tabs, die Sie geöffnet haben, ohne Verlauf), der Tag, an dem Sie die App zuletzt im angemeldeten Zustand geöffnet haben (nur der Tag, nicht die Uhrzeit, und nur der letzte), im Chat oder während einer Live-Sitzung gesendete Nachrichten, und Ergebnisse von Zwei-Spieler-Übungsrunden. Alles, was Sie an einen anderen Lernenden senden, ist für diesen sichtbar.',
         'Technische Daten: IP-Adresse, Browser-User-Agent, Zeitstempel, und von Server-Logs erfasste Fehlerspuren. Diese werden erhoben, um den Dienst zu betreiben und Missbrauch zu erkennen, nicht um ein Profil von Ihnen zu erstellen.',
       ],
     },
@@ -59,7 +59,7 @@ export const privacyPolicy: LegalDocument = {
       id: 'sharing',
       heading: '6. Wer sonst Ihre Daten sieht',
       paragraphs: [
-        'Andere Lernende sehen Ihren Anzeigenamen, Avatar, Anwesenheitsstatus, und alles, was Sie ihnen senden. Jeder angemeldete Lernende kann Ihr Profil öffnen, das die Sprachen zeigt, die Sie lernen, Ihr Niveau in jeder davon und Ihre aktuelle Serie. Er kann Sie außerdem über Ihren Anzeigenamen oder unter den kürzlich aktiven Lernenden finden und Ihnen eine Freundschaftsanfrage senden. Sie erscheinen unter den kürzlich aktiven Lernenden ab dem Tag, an dem Sie die App im angemeldeten Zustand öffnen, bis eine Woche nach diesem Tag. Die Liste ist nach Anzeigenamen sortiert und zeigt kein Datum, aber wer sie beobachtet, kann erkennen, wann Sie nach mehr als einer Woche Abwesenheit zurückkehren. Ihre Freundesliste sehen nur Sie. Ihre E-Mail-Adresse, Ihre Zeitzone, Ihre Oberflächensprache und Ihre Einstellungen zur Zwei-Faktor-Authentifizierung werden anderen Lernenden nie angezeigt.',
+        'Andere Lernende sehen Ihren Anzeigenamen, Avatar, und alles, was Sie ihnen senden. Nur Ihre Freunde sehen, ob Sie gerade online sind, als Punkt neben Ihrem Namen: Wer Ihnen nur eine Anfrage gesendet hat, sieht es nicht, und niemand sieht, wann Sie zuletzt online waren. Jeder angemeldete Lernende kann Ihr Profil öffnen, das die Sprachen zeigt, die Sie lernen, Ihr Niveau in jeder davon und Ihre aktuelle Serie. Er kann Sie außerdem über Ihren Anzeigenamen oder unter den kürzlich aktiven Lernenden finden und Ihnen eine Freundschaftsanfrage senden. Sie erscheinen unter den kürzlich aktiven Lernenden ab dem Tag, an dem Sie die App im angemeldeten Zustand öffnen, bis eine Woche nach diesem Tag. Die Liste ist nach Anzeigenamen sortiert und zeigt kein Datum, aber wer sie beobachtet, kann erkennen, wann Sie nach mehr als einer Woche Abwesenheit zurückkehren. Ihre Freundesliste sehen nur Sie. Ihre E-Mail-Adresse, Ihre Zeitzone, Ihre Oberflächensprache und Ihre Einstellungen zur Zwei-Faktor-Authentifizierung werden anderen Lernenden nie angezeigt.',
         'Außerhalb der Plattform erreichen Daten nur die Infrastruktur und Modellanbieter, die für den Betrieb erforderlich sind. Wir teilen keine Daten mit Werbetreibenden, Datenhändlern, oder Analysenetzwerken. Sollten wir jemals durch eine rechtmäßige Anordnung zur Offenlegung von Daten gezwungen werden, werden wir Sie benachrichtigen, sofern uns dies nicht untersagt ist.',
       ],
     },

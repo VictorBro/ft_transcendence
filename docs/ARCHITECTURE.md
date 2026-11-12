@@ -201,8 +201,9 @@ sequenceDiagram
   console error.
 - **Rooms, never a broadcast.** Each socket joins `user:<id>` and
   `session:<sid>` before its CONNECT reply. `SocketsService.toUser()` is the
-  only way to reach a user; the gateway itself only answers the socket that sent
-  a bad event.
+  only way to reach a user. The gateway itself writes to one socket only twice:
+  to the socket that sent a bad event, and to a socket that just connected, with
+  the presence of each friend (below).
 - **Sockets close with their session**: on logout (that session's sockets
   only), on every session id change (signup, login, 2FA verify, 2FA enable and
   disable), and when a session ends any other way, through a sweep every 60 s
@@ -225,6 +226,41 @@ sequenceDiagram
   `{ userId }`, the other user, and /friends and /users/[id] refresh on any of
   them. Decline and cancel send `friend:removed`: the row between the two is
   gone.
+- **Presence** (`presence:update { userId, status, at }`, `online` or
+  `offline`), in `PresenceService` (`apps/api/src/presence/`):
+  - **A counter per user** in Redis, `presence:<id>`: `INCR` when a socket
+    opens, `DECR` when it closes. Online on the first socket.
+  - **A 10 s grace period** (`PRESENCE_GRACE_MS`): a closed socket comes off
+    the count only after it. A reload's new socket makes the count 2, not 1,
+    so friends hear nothing. Offline goes out 10 s after the *last* close,
+    and `isOnline` keeps saying online until then, so the REST routes agree
+    with the friends already watching. The wait is unref'd: it never holds
+    the process open on a stop.
+  - **Friends only**: the updates go to the `user:<id>` room of each accepted
+    friend (`friendIds()`, `status: 'accepted'`). Someone who has only sent a
+    request hears nothing, as /privacy promises. The friends are looked up
+    again at offline time, since a friendship may have begun or ended since.
+  - **A snapshot on connect**: the new socket, and only it, gets one
+    `presence:update` per friend, because the page may have been rendered a
+    moment before one of them came or went. `GET /api/friends` gives each
+    friend `online`, from `isOnline(ids)` (one `MGET`).
+  - **In the tab**: `tab-socket.ts` keeps a presence map for as long as the
+    socket. It is fed by the snapshot and every `presence:update`. A friend is
+    dropped on `friend:removed`, and on `friend:accepted` too, so a new friend
+    starts from the refreshed render: no update comes for someone already
+    online. Each connect clears the map, since its snapshot replaces it, and
+    an entry left by an event missed while away cannot outlive a fresh render.
+    `PresenceDot` reads it and uses the rendered
+    `online` only for a friend the tab has heard nothing about. A page Next
+    restores from its client cache on Back still shows what happened while it
+    was away.
+  - **A boot reset**: no socket survives a restart, but Redis keeps the counts
+    a crash never took back, so `onApplicationBootstrap` deletes every
+    `presence:*` key (`SCAN`, never `KEYS`). A count that still goes below
+    zero is put back to zero.
+  - **One API instance assumed**: the counts hold across instances, but the
+    boot reset would wipe the other instances' counts, and the rooms do not
+    span instances yet (#158).
 - **One connection per tab**, held in module scope (`components/tab-socket.ts`)
   and opened by `SessionNav` for a signed-in user, so a route group remount or a
   locale switch never drops it and an anonymous page never opens one. WebSocket
