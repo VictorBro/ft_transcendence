@@ -369,7 +369,7 @@ export class LessonsService {
       progress: levelProgress(lessons, results),
       levelAfter: levelAfter(level),
       xp: { total: course.xp, ...rankOf(course.xp) },
-      challenge: challengeOfToday(course, day, ruleLessons),
+      challenge: challengeOfToday(course, day, lessons),
       earnedToday: ACHIEVEMENTS.map((achievement) => achievement.code).filter((code) =>
         earnedCodes.has(code),
       ),
