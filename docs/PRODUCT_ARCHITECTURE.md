@@ -310,7 +310,7 @@ The team tracks each module's current status and points on the wiki:
 |---|---|---|---|
 | Framework for frontend and backend | Major | 2 | done (Next.js + NestJS) |
 | ORM | Minor | 1 | done (Prisma 7) |
-| Standard user management | Major | 2 | partly done: profile, avatar, friends (#155), public profiles (#156); online status to come (#157) |
+| Standard user management | Major | 2 | done: profile, avatar, friends (#155), public profiles (#156), online status (#157) |
 | Complete 2FA | Minor | 1 | done |
 | i18n, ≥3 languages | Minor | 1 | locales declared, `next-intl` not wired |
 | Additional browsers (≥2) | Minor | 1 | Playwright projects + documentation |
@@ -434,7 +434,7 @@ redo rather than data; if it does not, it is a plain constant or a per-request v
 | **Throttler counters** | Per-minute counters with a TTL | not yet: `@nestjs/throttler` runs without a storage adapter, so counters sit in process memory. Correct for one replica; the only cost is that a restart clears everyone's limit. Moving them is optional, not pending work |
 | **LLM response cache** | An explanation is keyed on the lesson id, an exercise set on the lesson id and a seed, so a redo can get a different set. The same B1 *passé composé* explanation is generated once and served to everyone. Whether the key also carries the interface language is for the lesson page milestone to decide. The single biggest cost lever in the project | to build |
 | **Per-user token budget** | An atomic counter with a daily TTL, checked by a guard before any LLM call | to build |
-| **Presence** | `SETEX user:{id}:online` refreshed by socket heartbeat. Expiry *is* the disconnect detection, including for a client that vanished without a `disconnect` | to build |
+| **Presence** | A socket count per user, `presence:<id>`: `INCR` on connect, `DECR` 10 s after a disconnect, so a reload never shows as leaving. No TTL and no heartbeat: socket.io's own ping already turns a client that vanished into a `disconnect`. Every count is deleted at boot, since a crash never took its sockets back (one API instance assumed). See ARCHITECTURE.md §4 | done (#157) |
 | **Placement run state** | The search bounds, the level being probed, the tally per category, the mistakes so far, the current question's deadline and the report. **Keyed by the session, never by the user, and always with a TTL.** Keyed by the user it would outlive the login that started it and a learner would come back to a half-finished exam; keyed by the session it goes when they go, which is what was asked for. It lives exactly as long as the exam, so a table would be a row deleted minutes after it was written, and the TTL doubles as the abandoned-exam cleanup | to build |
 
 ---
@@ -702,9 +702,10 @@ That last row is the one that gets missed. Write it when the gateway is written,
 
 ## 7. Data model
 
-**Thirteen tables beside `User` and `RecoveryCode`, six of which are already migrated**
-(`UserLevel`, `QuestionBank`, `UserSeenQuestion`, `Lesson`, `LessonResult`, `Friendship`). The
-course roadmap adds `Lesson` and `LessonResult` (both migrated) and `UserAchievement`; the lesson
+**Thirteen tables beside `User` and `RecoveryCode`, seven of which are already migrated**
+(`UserLevel`, `QuestionBank`, `UserSeenQuestion`, `Lesson`, `LessonResult`, `UserAchievement`,
+`Friendship`). The course roadmap adds `Lesson`, `LessonResult` and `UserAchievement` (all
+migrated); the lesson
 page adds `Exercise` and `Mistake`; social, content and operations add `Friendship` (migrated),
 `Message`, `Document`, `DocumentChunk` and `LlmCall`. Every one is load-bearing for a module we
 claim. The rule applied throughout: a table earns its place by being read at runtime, and a 1:1
@@ -770,7 +771,7 @@ erDiagram
 
 | Table | Holds | Notes |
 |---|---|---|
-| `UserLevel` | userId, lang, level?, dailyGoal, streak, bestStreak, lastGoalDay?, xp, lastChallengeDay?, challengesDone | Unique `(userId, lang)`, so a user may learn two languages. Onboarding writes it with `level` null; placement fills it in, or a learner who skips sets it directly. The goal sizes today's plan and defines the streak, it never locks content. `streak`, `bestStreak` and `lastGoalDay` are the whole streak (§1.3); `xp`, `lastChallengeDay` and `challengesDone` are the gamification counters. All of them are per course, and finishing and goal changes take a row lock on this row (§9) |
+| `UserLevel` | userId, lang, level?, dailyGoal, streak, bestStreak, lastGoalDay?, xp, lastChallengeDay?, lastChallengeCode?, challengesDone | Unique `(userId, lang)`, so a user may learn two languages. Onboarding writes it with `level` null; placement fills it in, or a learner who skips sets it directly. The goal sizes today's plan and defines the streak, it never locks content. `streak`, `bestStreak` and `lastGoalDay` are the whole streak (§1.3); `xp`, `lastChallengeDay`, `lastChallengeCode` and `challengesDone` are the gamification counters, and `lastChallengeCode` keeps the code a challenge was done under, so a level change that day does not move it. All of them are per course, and finishing and goal changes take a row lock on this row (§9) |
 | `QuestionBank` | id, sourceId?, lang, level, topic, category, readText?, question, options, answer, timeLimitS | The reusable pool, seeded from `content/items/*.json` and grown at runtime when a learner runs low in a cell. `sourceId` is the authored id the seed matches on, and its absence marks a question the LLM wrote. Full spec in [ITEM_BANK.md](ITEM_BANK.md) |
 | `UserSeenQuestion` | userId, questionId | Unique `(userId, questionId)`. **The exposure record**, and the whole reason placement never repeats a question: the draw is a `NOT EXISTS` over these rows. It is per user and not per run, so a retake cannot serve an old question either |
 | `Lesson` | id, lang, level, position, kind, topic?, theme?, title, summary, brief, content? | **The seeded catalogue, never written at runtime.** One row is one outline entry: `db:seed` writes every entry of `content/outlines/` (title = working title, summary = intent, empty brief), then fills the rows whose lesson files exist (`content/briefs/<id>.json`, `content/lessons/<id>.json`): title from the file, summary = the objective in the course language, brief and content = the files ([#135](https://github.com/VictorBro/ft_transcendence/issues/135), which also adds the `content` column). `id` is the authored key: the language and a few English words, no level, so a lesson can move level and keep its results. It is permanent once on `main`. `kind` is grammar, vocabulary, functions or reading; `topic` (the `Topic` enum) is set exactly on grammar lessons, `theme` exactly on the others. Title and summary are in the course language; the lesson body also carries help text in en, fr and de. The lesson cards never send the brief or the content. Index on `(lang, level, position)`. Full guide in [LESSONS.md](LESSONS.md) |
@@ -821,7 +822,7 @@ erDiagram
 | `DocumentChunk` | documentId, level, topic?, theme?, ordinal, content, embedding `vector(N)` | HNSW index on `embedding`. `level` with `topic` or `theme` lets a lesson retrieve only its own cell's reference: one grammar note per (level, topic), shared by all of that cell's lessons |
 | `LlmCall` | userId?, purpose, model, tokensIn, tokensOut, latencyMs, cacheHit, createdAt | Cost instrumentation, and the evidence at evaluation that spend is controlled. Cost in euros is derived from tokens and the price in config, not stored, because the price changes |
 
-Presence is **not** a table. It is a Redis key with a TTL (§4).
+Presence is **not** a table. It is a socket count per user in Redis, `presence:<id>` (§4).
 
 `DailyStat` is **not built** either. Nothing tracks minutes: the daily goal counts `LessonResult`
 rows by `day`, and the streak is three columns on `UserLevel` (§1.3).
@@ -843,7 +844,7 @@ buffer modules need none either.
 | Complete RAG | 2 | `Document`, `DocumentChunk` |
 | User interaction: chat, profiles, friends | 2 | `Message`, `Friendship`, `User` |
 | **Activity analytics dashboard** | 1 | none new: `LessonResult` + `Mistake` |
-| **Gamification** | 1 | `UserAchievement`, plus `xp`, `lastChallengeDay` and `challengesDone` on `UserLevel` |
+| **Gamification** | 1 | `UserAchievement`, plus `xp`, `lastChallengeDay`, `lastChallengeCode` and `challengesDone` on `UserLevel` |
 | **Advanced search** | 1 | none new: `Lesson` + `LessonResult` |
 | Notification system | 1 | +1 (`Notification`) |
 | Public API | 2 | +1 (`ApiKey`, hashed like a password) |

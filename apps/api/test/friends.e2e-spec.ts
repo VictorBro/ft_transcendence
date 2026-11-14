@@ -45,6 +45,11 @@ describe('friends (e2e)', () => {
   let e: Account;
   let f: Account;
   let g: Account;
+  // Presence: K has only sent L a request, M is L's friend. Their own people,
+  // so no other test's sockets or rows are counted.
+  let k: Account;
+  let l: Account;
+  let m: Account;
   // The recently active: their own people, named to sort first, so no other
   // test's rows get in the way.
   let h: Account;
@@ -112,6 +117,9 @@ describe('friends (e2e)', () => {
     h = await signUp('h', `0frh${stamp}`);
     i = await signUp('i', `0fri${stamp}`);
     j = await signUp('j', `0frj${stamp}`);
+    k = await signUp('k', `frk${stamp}`);
+    l = await signUp('l', `frl${stamp}`);
+    m = await signUp('m', `frm${stamp}`);
   });
 
   // Until the server has seen every close, so each test starts with no socket open.
@@ -125,7 +133,11 @@ describe('friends (e2e)', () => {
     await prisma.user.deleteMany({
       where: {
         OR: [
-          { email: { in: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'].map(emailOf) } },
+          {
+            email: {
+              in: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm'].map(emailOf),
+            },
+          },
           { displayName: { startsWith: crowd } },
         ],
       },
@@ -352,6 +364,32 @@ describe('friends (e2e)', () => {
     await c.agent.post(`/api/friends/requests/${d.id}`).expect(201);
     await ownEvent;
     expect(cHeard).toEqual([['friend:request', { userId: d.id }]]);
+  });
+
+  // /privacy promises it: only `status: 'accepted'` in friendIds keeps it so.
+  it('a friend hears you come online, and someone who only sent you a request does not', async () => {
+    await m.agent.post(`/api/friends/requests/${l.id}`).expect(201);
+    await l.agent.post(`/api/friends/requests/${m.id}/accept`).expect(204);
+    await k.agent.post(`/api/friends/requests/${l.id}`).expect(201);
+    const [kTab, mTab] = await Promise.all([tab(k), tab(m)]);
+    const kHeard = heard(kTab);
+    const mHeard = heard(mTab);
+
+    // M, the friend, hears L's first socket: so an online did go out. Waited
+    // for among all M hears, since M's own snapshot on connect names L too.
+    await tab(l);
+    await vi.waitFor(() =>
+      expect(mHeard).toContainEqual([
+        'presence:update',
+        expect.objectContaining({ userId: l.id, status: 'online' }),
+      ]),
+    );
+
+    // K's own event comes after anything sent to K before it: it is the first.
+    const ownEvent = nextEvent(kTab, 'friend:request');
+    await k.agent.post(`/api/friends/requests/${m.id}`).expect(201);
+    await ownEvent;
+    expect(kHeard).toEqual([['friend:request', { userId: m.id }]]);
   });
 
   it('a declined request is gone, and can be sent again', async () => {

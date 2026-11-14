@@ -15,7 +15,16 @@ import { AttemptViewSchema, PageResultSchema, ResultsSchema, type Answer } from 
 
 const ID = '6f1c2b8e-3d4a-4e5f-9a6b-7c8d9e0f1a2b';
 const ref = refOf('secret');
-const finish = { countedToday: true, doneCount: 1, target: 3, goalJustMet: false, best: 50 };
+const finish = {
+  countedToday: true,
+  doneCount: 1,
+  target: 3,
+  goalJustMet: false,
+  best: 50,
+  xpGained: 60,
+  challengeJustDone: false,
+  newAchievements: [],
+};
 
 /** Submits the cursor page; throws when refused. */
 function next(

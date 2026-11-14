@@ -1,0 +1,63 @@
+import { Injectable, type OnApplicationBootstrap } from '@nestjs/common';
+
+import { RedisService } from '../redis/redis.service';
+
+/**
+ * Long enough for a reload to open its new socket before friends see you leave.
+ * Copied by hand in e2e/tests/friends.spec.ts, which cannot import the API:
+ * change both together.
+ */
+export const PRESENCE_GRACE_MS = 10_000;
+
+const presenceKey = (userId: string): string => `presence:${userId}`;
+
+/**
+ * How many sockets each user holds, in Redis so it holds across API instances.
+ * Answers questions only: telling the friends is the gateway's job.
+ */
+@Injectable()
+export class PresenceService implements OnApplicationBootstrap {
+  constructor(private readonly redis: RedisService) {}
+
+  /**
+   * No socket survives a restart, but Redis keeps the counts a crash never
+   * took back: start every count at zero. Assumes one API instance.
+   */
+  async onApplicationBootstrap(): Promise<void> {
+    for await (const keys of this.redis.client.scanIterator({ MATCH: 'presence:*' })) {
+      if (keys.length > 0) await this.redis.client.del(keys);
+    }
+  }
+
+  /** A socket opened. True when it is the user's only one: they just came online. */
+  async connected(userId: string): Promise<boolean> {
+    const count = await this.redis.client.incr(presenceKey(userId));
+    return count === 1;
+  }
+
+  /**
+   * A socket closed. Resolves after the grace period, true when the user has
+   * no socket left.
+   *
+   * The socket comes off the count only once the wait is over. Meanwhile
+   * isOnline still says online, a reload's new socket counts 2 (no second
+   * online), and since the last DECR to land is the last close's, offline goes
+   * out exactly PRESENCE_GRACE_MS after it, never earlier and never twice.
+   */
+  async disconnected(userId: string): Promise<boolean> {
+    // unref: a pending wait must not hold the process open on shutdown.
+    await new Promise((resolve) => setTimeout(resolve, PRESENCE_GRACE_MS).unref());
+    const count = await this.redis.client.decr(presenceKey(userId));
+    if (count < 0) await this.redis.client.set(presenceKey(userId), '0');
+    return count <= 0;
+  }
+
+  /** The ids among `ids` that hold a socket, for the REST routes. */
+  async isOnline(ids: string[]): Promise<Set<string>> {
+    if (ids.length === 0) return new Set();
+
+    const counts = await this.redis.client.mGet(ids.map(presenceKey));
+
+    return new Set(ids.filter((id, i) => Number(counts[i]) > 0));
+  }
+}
