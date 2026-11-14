@@ -237,6 +237,7 @@ describe('lessons (e2e)', () => {
         theme: null,
         title: 'Le cœur du testeur',
         summary: 'Une leçon de test.',
+        ready: true,
         status: 'todo',
         score: null,
         day: null,
@@ -526,6 +527,18 @@ describe('lessons (e2e)', () => {
           .expect(200);
 
         expect(ids(response.body.items)).toEqual(['fr-test-alpha', 'fr-test-beta']);
+      });
+
+      it('lists a lesson not ready as soon, never as todo', async () => {
+        const list = (status: string) =>
+          agent.get(`/api/courses/fr/lessons?q=brouillon redacteur${status}`).expect(200);
+        const all = await list('');
+        const soon = await list('&status=soon');
+        const todo = await list('&status=todo');
+
+        expect(card(all.body.items, DRAFT.id)).toMatchObject({ ready: false, status: 'todo' });
+        expect(ids(soon.body.items)).toEqual([DRAFT.id]);
+        expect(ids(todo.body.items)).toEqual([]);
       });
 
       it('needs every filter to match', async () => {

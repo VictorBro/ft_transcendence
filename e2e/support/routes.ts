@@ -48,6 +48,7 @@ export const PAGE_ROUTES: PageRoute[] = [
   { path: '/grafana/login', name: 'grafana login' },
   { path: '/this-route-does-not-exist', name: 'not found', expectedStatus: 404 },
   { path: `/en/learn/${ONBOARDED_COURSE.lang}`, name: 'course home', onboarded: true },
+  { path: `/en/learn/${ONBOARDED_COURSE.lang}/lessons`, name: 'all lessons', onboarded: true },
   // The start control, since the fixture account has no run open. The countdown
   // on a live question is a local timer and issues no requests, so neither state
   // keeps the page from reaching networkidle.
