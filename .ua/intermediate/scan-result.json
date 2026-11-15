@@ -1,0 +1,5333 @@
+{
+ "name": "ft-transcendence",
+ "description": "Plateforme d’apprentissage des langues pilotée par l’IA (projet 42 ft_transcendence) : test de placement CECRL adaptatif, leçons quotidiennes de quatre types, gamification, amis et présence en temps réel.",
+ "languages": [
+  "css",
+  "javascript",
+  "markdown",
+  "prisma",
+  "shell",
+  "sql",
+  "typescript",
+  "yaml"
+ ],
+ "frameworks": [
+  "Next.js",
+  "React",
+  "NestJS",
+  "Prisma",
+  "PostgreSQL",
+  "Redis",
+  "Socket.IO",
+  "Tailwind CSS",
+  "next-intl",
+  "Zod",
+  "Vitest",
+  "Playwright",
+  "Turborepo",
+  "Docker",
+  "Caddy",
+  "Prometheus",
+  "Grafana"
+ ],
+ "files": [
+  {
+   "path": ".claude/skills/author-lessons/SKILL.md",
+   "language": "markdown",
+   "sizeLines": 59,
+   "fileCategory": "docs"
+  },
+  {
+   "path": ".claude/skills/outline-language/SKILL.md",
+   "language": "markdown",
+   "sizeLines": 89,
+   "fileCategory": "docs"
+  },
+  {
+   "path": ".claude/skills/outline-language/merge-plan.mjs",
+   "language": "javascript",
+   "sizeLines": 37,
+   "fileCategory": "code"
+  },
+  {
+   "path": ".claude/workflows/outline-language.js",
+   "language": "javascript",
+   "sizeLines": 240,
+   "fileCategory": "code"
+  },
+  {
+   "path": ".env.example",
+   "language": "config",
+   "sizeLines": 142,
+   "fileCategory": "config"
+  },
+  {
+   "path": ".gitattributes",
+   "language": "unknown",
+   "sizeLines": 15,
+   "fileCategory": "code"
+  },
+  {
+   "path": ".github/CODEOWNERS",
+   "language": "unknown",
+   "sizeLines": 64,
+   "fileCategory": "code"
+  },
+  {
+   "path": ".github/actions/setup/action.yml",
+   "language": "yaml",
+   "sizeLines": 31,
+   "fileCategory": "config"
+  },
+  {
+   "path": ".github/commitlint.config.mjs",
+   "language": "javascript",
+   "sizeLines": 64,
+   "fileCategory": "code"
+  },
+  {
+   "path": ".github/pull_request_template.md",
+   "language": "markdown",
+   "sizeLines": 36,
+   "fileCategory": "docs"
+  },
+  {
+   "path": ".github/workflows/ci.yml",
+   "language": "yaml",
+   "sizeLines": 197,
+   "fileCategory": "infra"
+  },
+  {
+   "path": ".github/workflows/e2e.yml",
+   "language": "yaml",
+   "sizeLines": 149,
+   "fileCategory": "infra"
+  },
+  {
+   "path": ".github/workflows/hygiene.yml",
+   "language": "yaml",
+   "sizeLines": 203,
+   "fileCategory": "infra"
+  },
+  {
+   "path": ".github/workflows/images.yml",
+   "language": "yaml",
+   "sizeLines": 281,
+   "fileCategory": "infra"
+  },
+  {
+   "path": ".husky/commit-msg",
+   "language": "unknown",
+   "sizeLines": 6,
+   "fileCategory": "code"
+  },
+  {
+   "path": ".husky/pre-commit",
+   "language": "unknown",
+   "sizeLines": 12,
+   "fileCategory": "code"
+  },
+  {
+   "path": ".husky/pre-push",
+   "language": "unknown",
+   "sizeLines": 10,
+   "fileCategory": "code"
+  },
+  {
+   "path": ".npmrc",
+   "language": "unknown",
+   "sizeLines": 3,
+   "fileCategory": "code"
+  },
+  {
+   "path": ".nvmrc",
+   "language": "unknown",
+   "sizeLines": 1,
+   "fileCategory": "code"
+  },
+  {
+   "path": ".prettierignore",
+   "language": "unknown",
+   "sizeLines": 32,
+   "fileCategory": "code"
+  },
+  {
+   "path": ".ua/config.json",
+   "language": "json",
+   "sizeLines": 1,
+   "fileCategory": "config"
+  },
+  {
+   "path": "CONTRIBUTING.md",
+   "language": "markdown",
+   "sizeLines": 229,
+   "fileCategory": "docs"
+  },
+  {
+   "path": "Makefile",
+   "language": "makefile",
+   "sizeLines": 473,
+   "fileCategory": "infra"
+  },
+  {
+   "path": "README.md",
+   "language": "markdown",
+   "sizeLines": 175,
+   "fileCategory": "docs"
+  },
+  {
+   "path": "apps/api/.dockerignore",
+   "language": "unknown",
+   "sizeLines": 38,
+   "fileCategory": "infra"
+  },
+  {
+   "path": "apps/api/Dockerfile",
+   "language": "dockerfile",
+   "sizeLines": 142,
+   "fileCategory": "infra"
+  },
+  {
+   "path": "apps/api/Dockerfile.dockerignore",
+   "language": "dockerfile",
+   "sizeLines": 38,
+   "fileCategory": "infra"
+  },
+  {
+   "path": "apps/api/eslint.config.mjs",
+   "language": "javascript",
+   "sizeLines": 11,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/nest-cli.dev.json",
+   "language": "json",
+   "sizeLines": 9,
+   "fileCategory": "config"
+  },
+  {
+   "path": "apps/api/nest-cli.json",
+   "language": "json",
+   "sizeLines": 9,
+   "fileCategory": "config"
+  },
+  {
+   "path": "apps/api/package.json",
+   "language": "json",
+   "sizeLines": 76,
+   "fileCategory": "config"
+  },
+  {
+   "path": "apps/api/prisma.config.ts",
+   "language": "typescript",
+   "sizeLines": 21,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/prisma/migrations/20260807022236_init_user/migration.sql",
+   "language": "sql",
+   "sizeLines": 26,
+   "fileCategory": "data"
+  },
+  {
+   "path": "apps/api/prisma/migrations/20260809004816_two_factor/migration.sql",
+   "language": "sql",
+   "sizeLines": 23,
+   "fileCategory": "data"
+  },
+  {
+   "path": "apps/api/prisma/migrations/20260913181513_add_user_levels_and_question_bank/migration.sql",
+   "language": "sql",
+   "sizeLines": 72,
+   "fileCategory": "data"
+  },
+  {
+   "path": "apps/api/prisma/migrations/20260913184446_question_bank_source_id_unique/migration.sql",
+   "language": "sql",
+   "sizeLines": 8,
+   "fileCategory": "data"
+  },
+  {
+   "path": "apps/api/prisma/migrations/20260917234934_add_active_lang/migration.sql",
+   "language": "sql",
+   "sizeLines": 2,
+   "fileCategory": "data"
+  },
+  {
+   "path": "apps/api/prisma/migrations/20261003124401_add_user_time_zone/migration.sql",
+   "language": "sql",
+   "sizeLines": 2,
+   "fileCategory": "data"
+  },
+  {
+   "path": "apps/api/prisma/migrations/20261007134739_add_lessons/migration.sql",
+   "language": "sql",
+   "sizeLines": 50,
+   "fileCategory": "data"
+  },
+  {
+   "path": "apps/api/prisma/migrations/20261024122424_add_lesson_content/migration.sql",
+   "language": "sql",
+   "sizeLines": 2,
+   "fileCategory": "data"
+  },
+  {
+   "path": "apps/api/prisma/migrations/20261028175100_add_lesson_ready/migration.sql",
+   "language": "sql",
+   "sizeLines": 2,
+   "fileCategory": "data"
+  },
+  {
+   "path": "apps/api/prisma/migrations/20261103225542_add_lesson_attempt/migration.sql",
+   "language": "sql",
+   "sizeLines": 25,
+   "fileCategory": "data"
+  },
+  {
+   "path": "apps/api/prisma/migrations/20261104003255_add_friendships/migration.sql",
+   "language": "sql",
+   "sizeLines": 26,
+   "fileCategory": "data"
+  },
+  {
+   "path": "apps/api/prisma/migrations/20261106181514_add_user_last_active_day/migration.sql",
+   "language": "sql",
+   "sizeLines": 2,
+   "fileCategory": "data"
+  },
+  {
+   "path": "apps/api/prisma/migrations/20261107184854_add_gamification/migration.sql",
+   "language": "sql",
+   "sizeLines": 18,
+   "fileCategory": "data"
+  },
+  {
+   "path": "apps/api/prisma/migrations/migration_lock.toml",
+   "language": "toml",
+   "sizeLines": 3,
+   "fileCategory": "config"
+  },
+  {
+   "path": "apps/api/prisma/schema.prisma",
+   "language": "prisma",
+   "sizeLines": 301,
+   "fileCategory": "data"
+  },
+  {
+   "path": "apps/api/prisma/seed.ts",
+   "language": "typescript",
+   "sizeLines": 320,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/scripts/check-outlines.ts",
+   "language": "typescript",
+   "sizeLines": 147,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/scripts/lessons/author.ts",
+   "language": "typescript",
+   "sizeLines": 267,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/scripts/lessons/check-draft.ts",
+   "language": "typescript",
+   "sizeLines": 53,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/scripts/lessons/check.ts",
+   "language": "typescript",
+   "sizeLines": 115,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/scripts/lessons/complete.ts",
+   "language": "typescript",
+   "sizeLines": 92,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/scripts/lessons/edits.ts",
+   "language": "typescript",
+   "sizeLines": 109,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/scripts/lessons/files.ts",
+   "language": "typescript",
+   "sizeLines": 114,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/scripts/lessons/json.ts",
+   "language": "typescript",
+   "sizeLines": 32,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/scripts/lessons/prompt.ts",
+   "language": "typescript",
+   "sizeLines": 185,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/scripts/lessons/providers/chat.ts",
+   "language": "typescript",
+   "sizeLines": 97,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/scripts/lessons/providers/claude.ts",
+   "language": "typescript",
+   "sizeLines": 148,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/scripts/lessons/reply.ts",
+   "language": "typescript",
+   "sizeLines": 58,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/scripts/lessons/report.ts",
+   "language": "typescript",
+   "sizeLines": 134,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/scripts/lessons/times.ts",
+   "language": "typescript",
+   "sizeLines": 138,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/scripts/try-generation.ts",
+   "language": "typescript",
+   "sizeLines": 64,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/app.module.ts",
+   "language": "typescript",
+   "sizeLines": 43,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/app.setup.ts",
+   "language": "typescript",
+   "sizeLines": 124,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/auth/auth.controller.spec.ts",
+   "language": "typescript",
+   "sizeLines": 172,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/auth/auth.controller.ts",
+   "language": "typescript",
+   "sizeLines": 287,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/auth/auth.decorators.ts",
+   "language": "typescript",
+   "sizeLines": 13,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/auth/auth.dto.ts",
+   "language": "typescript",
+   "sizeLines": 32,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/auth/auth.guard.spec.ts",
+   "language": "typescript",
+   "sizeLines": 74,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/auth/auth.guard.ts",
+   "language": "typescript",
+   "sizeLines": 48,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/auth/auth.module.ts",
+   "language": "typescript",
+   "sizeLines": 16,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/auth/auth.service.spec.ts",
+   "language": "typescript",
+   "sizeLines": 162,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/auth/auth.service.ts",
+   "language": "typescript",
+   "sizeLines": 113,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/auth/session.d.ts",
+   "language": "typescript",
+   "sizeLines": 15,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/auth/two-factor.service.spec.ts",
+   "language": "typescript",
+   "sizeLines": 143,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/auth/two-factor.service.ts",
+   "language": "typescript",
+   "sizeLines": 194,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/courses/courses.controller.ts",
+   "language": "typescript",
+   "sizeLines": 73,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/courses/courses.dto.ts",
+   "language": "typescript",
+   "sizeLines": 14,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/courses/courses.module.ts",
+   "language": "typescript",
+   "sizeLines": 13,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/courses/courses.service.spec.ts",
+   "language": "typescript",
+   "sizeLines": 393,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/courses/courses.service.ts",
+   "language": "typescript",
+   "sizeLines": 112,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/demo/demo.clock.ts",
+   "language": "typescript",
+   "sizeLines": 101,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/demo/demo.data.ts",
+   "language": "typescript",
+   "sizeLines": 226,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/demo/demo.planner.spec.ts",
+   "language": "typescript",
+   "sizeLines": 272,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/demo/demo.planner.ts",
+   "language": "typescript",
+   "sizeLines": 151,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/demo/demo.ts",
+   "language": "typescript",
+   "sizeLines": 169,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/error-code.filter.ts",
+   "language": "typescript",
+   "sizeLines": 101,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/friends/friend-ids.ts",
+   "language": "typescript",
+   "sizeLines": 14,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/friends/friends.controller.ts",
+   "language": "typescript",
+   "sizeLines": 93,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/friends/friends.dto.ts",
+   "language": "typescript",
+   "sizeLines": 6,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/friends/friends.module.ts",
+   "language": "typescript",
+   "sizeLines": 16,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/friends/friends.service.spec.ts",
+   "language": "typescript",
+   "sizeLines": 187,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/friends/friends.service.ts",
+   "language": "typescript",
+   "sizeLines": 153,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/friends/pair.ts",
+   "language": "typescript",
+   "sizeLines": 4,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/gateway/gateway.module.ts",
+   "language": "typescript",
+   "sizeLines": 16,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/gateway/session-io.adapter.ts",
+   "language": "typescript",
+   "sizeLines": 24,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/gateway/socket.gateway.spec.ts",
+   "language": "typescript",
+   "sizeLines": 421,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/gateway/socket.gateway.ts",
+   "language": "typescript",
+   "sizeLines": 275,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/gateway/sockets.service.spec.ts",
+   "language": "typescript",
+   "sizeLines": 51,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/gateway/sockets.service.ts",
+   "language": "typescript",
+   "sizeLines": 57,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/health/dto/health-response.dto.ts",
+   "language": "typescript",
+   "sizeLines": 40,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/health/health.controller.spec.ts",
+   "language": "typescript",
+   "sizeLines": 34,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/health/health.controller.ts",
+   "language": "typescript",
+   "sizeLines": 28,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/health/health.module.ts",
+   "language": "typescript",
+   "sizeLines": 10,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/health/health.service.spec.ts",
+   "language": "typescript",
+   "sizeLines": 108,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/health/health.service.ts",
+   "language": "typescript",
+   "sizeLines": 66,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/items/item-files.spec.ts",
+   "language": "typescript",
+   "sizeLines": 97,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/lessons/attempt-ref.spec.ts",
+   "language": "typescript",
+   "sizeLines": 21,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/lessons/attempt-ref.ts",
+   "language": "typescript",
+   "sizeLines": 18,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/lessons/attempts.controller.ts",
+   "language": "typescript",
+   "sizeLines": 118,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/lessons/attempts.service.ts",
+   "language": "typescript",
+   "sizeLines": 267,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/lessons/course-lookup.spec.ts",
+   "language": "typescript",
+   "sizeLines": 76,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/lessons/course-lookup.ts",
+   "language": "typescript",
+   "sizeLines": 106,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/lessons/gamification.rules.spec.ts",
+   "language": "typescript",
+   "sizeLines": 305,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/lessons/gamification.rules.ts",
+   "language": "typescript",
+   "sizeLines": 212,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/lessons/gamification.ts",
+   "language": "typescript",
+   "sizeLines": 207,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/lessons/goal.spec.ts",
+   "language": "typescript",
+   "sizeLines": 114,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/lessons/goal.ts",
+   "language": "typescript",
+   "sizeLines": 129,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/lessons/lesson-complete.spec.ts",
+   "language": "typescript",
+   "sizeLines": 122,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/lessons/lesson-edits.spec.ts",
+   "language": "typescript",
+   "sizeLines": 154,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/lessons/lesson-files.spec.ts",
+   "language": "typescript",
+   "sizeLines": 129,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/lessons/lesson-search.spec.ts",
+   "language": "typescript",
+   "sizeLines": 313,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/lessons/lesson-search.ts",
+   "language": "typescript",
+   "sizeLines": 230,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/lessons/lessons.controller.ts",
+   "language": "typescript",
+   "sizeLines": 116,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/lessons/lessons.dto.ts",
+   "language": "typescript",
+   "sizeLines": 38,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/lessons/lessons.module.ts",
+   "language": "typescript",
+   "sizeLines": 15,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/lessons/lessons.service.ts",
+   "language": "typescript",
+   "sizeLines": 481,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/lessons/outline-files.spec.ts",
+   "language": "typescript",
+   "sizeLines": 139,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/lessons/roadmap.rules.spec.ts",
+   "language": "typescript",
+   "sizeLines": 661,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/lessons/roadmap.rules.ts",
+   "language": "typescript",
+   "sizeLines": 254,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/llm/GEMINI_PROVIDER.md",
+   "language": "markdown",
+   "sizeLines": 654,
+   "fileCategory": "docs"
+  },
+  {
+   "path": "apps/api/src/llm/fixture.provider.spec.ts",
+   "language": "typescript",
+   "sizeLines": 19,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/llm/fixture.provider.ts",
+   "language": "typescript",
+   "sizeLines": 28,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/llm/gemini.provider.spec.ts",
+   "language": "typescript",
+   "sizeLines": 322,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/llm/gemini.provider.ts",
+   "language": "typescript",
+   "sizeLines": 285,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/llm/llm.factory.spec.ts",
+   "language": "typescript",
+   "sizeLines": 58,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/llm/llm.factory.ts",
+   "language": "typescript",
+   "sizeLines": 64,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/llm/llm.module.spec.ts",
+   "language": "typescript",
+   "sizeLines": 52,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/llm/llm.module.ts",
+   "language": "typescript",
+   "sizeLines": 35,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/llm/llm.provider.ts",
+   "language": "typescript",
+   "sizeLines": 91,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/main.ts",
+   "language": "typescript",
+   "sizeLines": 32,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/metrics/http-metrics.middleware.spec.ts",
+   "language": "typescript",
+   "sizeLines": 118,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/metrics/http-metrics.middleware.ts",
+   "language": "typescript",
+   "sizeLines": 35,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/metrics/metrics-server.spec.ts",
+   "language": "typescript",
+   "sizeLines": 62,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/metrics/metrics-server.ts",
+   "language": "typescript",
+   "sizeLines": 29,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/metrics/metrics.collector.spec.ts",
+   "language": "typescript",
+   "sizeLines": 169,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/metrics/metrics.collector.ts",
+   "language": "typescript",
+   "sizeLines": 142,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/metrics/metrics.module.ts",
+   "language": "typescript",
+   "sizeLines": 10,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/metrics/metrics.spec.ts",
+   "language": "typescript",
+   "sizeLines": 106,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/metrics/metrics.ts",
+   "language": "typescript",
+   "sizeLines": 216,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/placement/placement-progress.service.spec.ts",
+   "language": "typescript",
+   "sizeLines": 166,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/placement/placement-progress.service.ts",
+   "language": "typescript",
+   "sizeLines": 163,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/placement/placement-question.service.spec.ts",
+   "language": "typescript",
+   "sizeLines": 368,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/placement/placement-question.service.ts",
+   "language": "typescript",
+   "sizeLines": 238,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/placement/placement-session.service.spec.ts",
+   "language": "typescript",
+   "sizeLines": 186,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/placement/placement-session.service.ts",
+   "language": "typescript",
+   "sizeLines": 194,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/placement/placement.controller.ts",
+   "language": "typescript",
+   "sizeLines": 122,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/placement/placement.dto.ts",
+   "language": "typescript",
+   "sizeLines": 12,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/placement/placement.module.ts",
+   "language": "typescript",
+   "sizeLines": 27,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/placement/placement.schema.ts",
+   "language": "typescript",
+   "sizeLines": 33,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/placement/placement.service.spec.ts",
+   "language": "typescript",
+   "sizeLines": 424,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/placement/placement.service.ts",
+   "language": "typescript",
+   "sizeLines": 241,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/presence/presence.module.ts",
+   "language": "typescript",
+   "sizeLines": 6,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/presence/presence.service.spec.ts",
+   "language": "typescript",
+   "sizeLines": 175,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/presence/presence.service.ts",
+   "language": "typescript",
+   "sizeLines": 63,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/prisma/prisma.module.ts",
+   "language": "typescript",
+   "sizeLines": 15,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/prisma/prisma.service.spec.ts",
+   "language": "typescript",
+   "sizeLines": 71,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/prisma/prisma.service.ts",
+   "language": "typescript",
+   "sizeLines": 66,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/question-generation/QUESTION_GENERATION.md",
+   "language": "markdown",
+   "sizeLines": 828,
+   "fileCategory": "docs"
+  },
+  {
+   "path": "apps/api/src/question-generation/prompts/question-batch.prompt.spec.ts",
+   "language": "typescript",
+   "sizeLines": 92,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/question-generation/prompts/question-batch.prompt.ts",
+   "language": "typescript",
+   "sizeLines": 213,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/question-generation/question-batch.spec.ts",
+   "language": "typescript",
+   "sizeLines": 88,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/question-generation/question-batch.ts",
+   "language": "typescript",
+   "sizeLines": 84,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/question-generation/question-generation.module.ts",
+   "language": "typescript",
+   "sizeLines": 18,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/question-generation/question-stock.service.spec.ts",
+   "language": "typescript",
+   "sizeLines": 323,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/question-generation/question-stock.service.ts",
+   "language": "typescript",
+   "sizeLines": 187,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/redis/redis.module.ts",
+   "language": "typescript",
+   "sizeLines": 10,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/redis/redis.service.spec.ts",
+   "language": "typescript",
+   "sizeLines": 67,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/redis/redis.service.ts",
+   "language": "typescript",
+   "sizeLines": 48,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/throttler/identity-throttler.guard.spec.ts",
+   "language": "typescript",
+   "sizeLines": 214,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/throttler/identity-throttler.guard.ts",
+   "language": "typescript",
+   "sizeLines": 78,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/throttler/throttle-by-ip.decorator.ts",
+   "language": "typescript",
+   "sizeLines": 23,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/throttler/throttler-storage.spec.ts",
+   "language": "typescript",
+   "sizeLines": 38,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/users/active-day.spec.ts",
+   "language": "typescript",
+   "sizeLines": 20,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/users/active-day.ts",
+   "language": "typescript",
+   "sizeLines": 17,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/users/public-user.ts",
+   "language": "typescript",
+   "sizeLines": 8,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/users/users.controller.ts",
+   "language": "typescript",
+   "sizeLines": 199,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/users/users.dto.ts",
+   "language": "typescript",
+   "sizeLines": 14,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/users/users.module.ts",
+   "language": "typescript",
+   "sizeLines": 11,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/users/users.service.spec.ts",
+   "language": "typescript",
+   "sizeLines": 207,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/users/users.service.ts",
+   "language": "typescript",
+   "sizeLines": 164,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/src/validation.pipe.ts",
+   "language": "typescript",
+   "sizeLines": 64,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/test/app.e2e-spec.ts",
+   "language": "typescript",
+   "sizeLines": 49,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/test/attempts.e2e-spec.ts",
+   "language": "typescript",
+   "sizeLines": 467,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/test/attempts.fixtures.ts",
+   "language": "typescript",
+   "sizeLines": 135,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/test/auth.e2e-spec.ts",
+   "language": "typescript",
+   "sizeLines": 114,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/test/courses.e2e-spec.ts",
+   "language": "typescript",
+   "sizeLines": 164,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/test/demo.e2e-spec.ts",
+   "language": "typescript",
+   "sizeLines": 161,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/test/error-codes.e2e-spec.ts",
+   "language": "typescript",
+   "sizeLines": 207,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/test/finish.e2e-spec.ts",
+   "language": "typescript",
+   "sizeLines": 348,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/test/friends.e2e-spec.ts",
+   "language": "typescript",
+   "sizeLines": 471,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/test/gamification.e2e-spec.ts",
+   "language": "typescript",
+   "sizeLines": 640,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/test/gateway.e2e-spec.ts",
+   "language": "typescript",
+   "sizeLines": 377,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/test/lessons.e2e-spec.ts",
+   "language": "typescript",
+   "sizeLines": 774,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/test/metrics.e2e-spec.ts",
+   "language": "typescript",
+   "sizeLines": 72,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/test/metrics.fixtures.ts",
+   "language": "typescript",
+   "sizeLines": 21,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/test/placement.e2e-spec.ts",
+   "language": "typescript",
+   "sizeLines": 267,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/test/placement.fixtures.ts",
+   "language": "typescript",
+   "sizeLines": 178,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/test/seed.e2e-spec.ts",
+   "language": "typescript",
+   "sizeLines": 761,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/test/socket.fixtures.ts",
+   "language": "typescript",
+   "sizeLines": 64,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/test/two-factor.e2e-spec.ts",
+   "language": "typescript",
+   "sizeLines": 140,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/test/users.e2e-spec.ts",
+   "language": "typescript",
+   "sizeLines": 265,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/tsconfig.build.json",
+   "language": "json",
+   "sizeLines": 13,
+   "fileCategory": "config"
+  },
+  {
+   "path": "apps/api/tsconfig.json",
+   "language": "json",
+   "sizeLines": 20,
+   "fileCategory": "config"
+  },
+  {
+   "path": "apps/api/vitest.config.e2e.mts",
+   "language": "mts",
+   "sizeLines": 36,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/api/vitest.config.mts",
+   "language": "mts",
+   "sizeLines": 52,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/.dockerignore",
+   "language": "unknown",
+   "sizeLines": 30,
+   "fileCategory": "infra"
+  },
+  {
+   "path": "apps/web/Dockerfile",
+   "language": "dockerfile",
+   "sizeLines": 106,
+   "fileCategory": "infra"
+  },
+  {
+   "path": "apps/web/Dockerfile.dockerignore",
+   "language": "dockerfile",
+   "sizeLines": 34,
+   "fileCategory": "infra"
+  },
+  {
+   "path": "apps/web/app/[locale]/(dashboard)/dashboard/page.tsx",
+   "language": "typescript",
+   "sizeLines": 6,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/[locale]/(dashboard)/layout.tsx",
+   "language": "typescript",
+   "sizeLines": 28,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/[locale]/(dashboard)/learn/[lang]/direct-level-picker.tsx",
+   "language": "typescript",
+   "sizeLines": 75,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/[locale]/(dashboard)/learn/[lang]/goal-picker.tsx",
+   "language": "typescript",
+   "sizeLines": 57,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/lesson-actions.tsx",
+   "language": "typescript",
+   "sizeLines": 191,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/page.tsx",
+   "language": "typescript",
+   "sizeLines": 144,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/play/exam-timer.tsx",
+   "language": "typescript",
+   "sizeLines": 74,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/play/page.tsx",
+   "language": "typescript",
+   "sizeLines": 49,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/play/player.tsx",
+   "language": "typescript",
+   "sizeLines": 635,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/results/page.tsx",
+   "language": "typescript",
+   "sizeLines": 214,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/[locale]/(dashboard)/learn/[lang]/page.tsx",
+   "language": "typescript",
+   "sizeLines": 144,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/[locale]/(dashboard)/learn/[lang]/placement/page.tsx",
+   "language": "typescript",
+   "sizeLines": 71,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/[locale]/(dashboard)/learn/[lang]/placement/placement-exam.tsx",
+   "language": "typescript",
+   "sizeLines": 137,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/[locale]/(dashboard)/learn/[lang]/placement/question-screen.tsx",
+   "language": "typescript",
+   "sizeLines": 203,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/[locale]/(dashboard)/learn/[lang]/placement/result-screen.tsx",
+   "language": "typescript",
+   "sizeLines": 201,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/[locale]/(dashboard)/learn/[lang]/placement/start-screen.tsx",
+   "language": "typescript",
+   "sizeLines": 56,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/[locale]/(dashboard)/learn/[lang]/start-level.tsx",
+   "language": "typescript",
+   "sizeLines": 28,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/[locale]/(dashboard)/learn/[lang]/today.tsx",
+   "language": "typescript",
+   "sizeLines": 286,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/[locale]/(dashboard)/learn/page.tsx",
+   "language": "typescript",
+   "sizeLines": 16,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/[locale]/(main)/friends/friend-search.tsx",
+   "language": "typescript",
+   "sizeLines": 50,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/[locale]/(main)/friends/page.tsx",
+   "language": "typescript",
+   "sizeLines": 143,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/[locale]/(main)/layout.tsx",
+   "language": "typescript",
+   "sizeLines": 17,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/[locale]/(main)/login/login-form.tsx",
+   "language": "typescript",
+   "sizeLines": 120,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/[locale]/(main)/login/page.tsx",
+   "language": "typescript",
+   "sizeLines": 24,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/[locale]/(main)/onboarding/choose-course.tsx",
+   "language": "typescript",
+   "sizeLines": 146,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/[locale]/(main)/onboarding/choose-level.tsx",
+   "language": "typescript",
+   "sizeLines": 140,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/[locale]/(main)/onboarding/page.tsx",
+   "language": "typescript",
+   "sizeLines": 48,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/[locale]/(main)/onboarding/rocket.tsx",
+   "language": "typescript",
+   "sizeLines": 50,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/[locale]/(main)/page.tsx",
+   "language": "typescript",
+   "sizeLines": 46,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/[locale]/(main)/privacy/page.tsx",
+   "language": "typescript",
+   "sizeLines": 23,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/[locale]/(main)/profile/edit/page.tsx",
+   "language": "typescript",
+   "sizeLines": 34,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/[locale]/(main)/profile/edit/profile-form.tsx",
+   "language": "typescript",
+   "sizeLines": 141,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/[locale]/(main)/profile/page.tsx",
+   "language": "typescript",
+   "sizeLines": 46,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/[locale]/(main)/settings/2fa/page.tsx",
+   "language": "typescript",
+   "sizeLines": 30,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/[locale]/(main)/settings/2fa/two-factor-panel.tsx",
+   "language": "typescript",
+   "sizeLines": 169,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/[locale]/(main)/signup/page.tsx",
+   "language": "typescript",
+   "sizeLines": 21,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/[locale]/(main)/signup/signup-form.tsx",
+   "language": "typescript",
+   "sizeLines": 90,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/[locale]/(main)/terms/page.tsx",
+   "language": "typescript",
+   "sizeLines": 23,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/[locale]/(main)/users/[id]/page.tsx",
+   "language": "typescript",
+   "sizeLines": 166,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/[locale]/(mode)/chat/page.tsx",
+   "language": "typescript",
+   "sizeLines": 68,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/[locale]/(mode)/layout.tsx",
+   "language": "typescript",
+   "sizeLines": 35,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/[locale]/[...rest]/page.tsx",
+   "language": "typescript",
+   "sizeLines": 14,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/[locale]/error.tsx",
+   "language": "typescript",
+   "sizeLines": 46,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/[locale]/layout.tsx",
+   "language": "typescript",
+   "sizeLines": 89,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/[locale]/not-found.tsx",
+   "language": "typescript",
+   "sizeLines": 33,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/global-error.tsx",
+   "language": "typescript",
+   "sizeLines": 40,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/globals.css",
+   "language": "css",
+   "sizeLines": 135,
+   "fileCategory": "markup"
+  },
+  {
+   "path": "apps/web/app/healthz/api/route.ts",
+   "language": "typescript",
+   "sizeLines": 18,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/healthz/route.ts",
+   "language": "typescript",
+   "sizeLines": 9,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/healthz/upstream/route.ts",
+   "language": "typescript",
+   "sizeLines": 28,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/app/lesson.css",
+   "language": "css",
+   "sizeLines": 781,
+   "fileCategory": "markup"
+  },
+  {
+   "path": "apps/web/components/avatar.tsx",
+   "language": "typescript",
+   "sizeLines": 32,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/components/change-level.tsx",
+   "language": "typescript",
+   "sizeLines": 132,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/components/connection-status.tsx",
+   "language": "typescript",
+   "sizeLines": 49,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/components/course-switcher.tsx",
+   "language": "typescript",
+   "sizeLines": 57,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/components/dashboard-nav.tsx",
+   "language": "typescript",
+   "sizeLines": 21,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/components/flag.tsx",
+   "language": "typescript",
+   "sizeLines": 47,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/components/form.tsx",
+   "language": "typescript",
+   "sizeLines": 84,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/components/friend-buttons.tsx",
+   "language": "typescript",
+   "sizeLines": 161,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/components/header-nav.tsx",
+   "language": "typescript",
+   "sizeLines": 16,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/components/language-switcher.tsx",
+   "language": "typescript",
+   "sizeLines": 39,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/components/legal-article.tsx",
+   "language": "typescript",
+   "sizeLines": 33,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/components/legal-footer.tsx",
+   "language": "typescript",
+   "sizeLines": 29,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/components/lesson/board.tsx",
+   "language": "typescript",
+   "sizeLines": 173,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/components/lesson/confirm-dialog.tsx",
+   "language": "typescript",
+   "sizeLines": 48,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/components/lesson/controls.tsx",
+   "language": "typescript",
+   "sizeLines": 575,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/components/lesson/kinds/grammar-start.tsx",
+   "language": "typescript",
+   "sizeLines": 39,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/components/lesson/kinds/grammar.tsx",
+   "language": "typescript",
+   "sizeLines": 145,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/components/lesson/kinds/index.ts",
+   "language": "typescript",
+   "sizeLines": 25,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/components/lesson/matching-pairs.tsx",
+   "language": "typescript",
+   "sizeLines": 251,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/components/lesson/navigation.tsx",
+   "language": "typescript",
+   "sizeLines": 171,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/components/lesson/results-review.tsx",
+   "language": "typescript",
+   "sizeLines": 129,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/components/lesson/rich-text.tsx",
+   "language": "typescript",
+   "sizeLines": 53,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/components/lesson/types.ts",
+   "language": "typescript",
+   "sizeLines": 49,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/components/lesson/units.tsx",
+   "language": "typescript",
+   "sizeLines": 86,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/components/level-picker.tsx",
+   "language": "typescript",
+   "sizeLines": 120,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/components/log-out-button.tsx",
+   "language": "typescript",
+   "sizeLines": 39,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/components/presence-dot.tsx",
+   "language": "typescript",
+   "sizeLines": 32,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/components/refresh-on.tsx",
+   "language": "typescript",
+   "sizeLines": 38,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/components/session-nav.tsx",
+   "language": "typescript",
+   "sizeLines": 60,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/components/shell.tsx",
+   "language": "typescript",
+   "sizeLines": 88,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/components/tab-socket.ts",
+   "language": "typescript",
+   "sizeLines": 200,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/components/time-zone-sync.tsx",
+   "language": "typescript",
+   "sizeLines": 47,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/components/user-row.tsx",
+   "language": "typescript",
+   "sizeLines": 63,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/eslint.config.mjs",
+   "language": "javascript",
+   "sizeLines": 3,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/i18n/navigation.ts",
+   "language": "typescript",
+   "sizeLines": 6,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/i18n/request.ts",
+   "language": "typescript",
+   "sizeLines": 19,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/i18n/routing.ts",
+   "language": "typescript",
+   "sizeLines": 14,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/api-client.test.ts",
+   "language": "typescript",
+   "sizeLines": 246,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/api-client.ts",
+   "language": "typescript",
+   "sizeLines": 192,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/api.test.ts",
+   "language": "typescript",
+   "sizeLines": 437,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/api.ts",
+   "language": "typescript",
+   "sizeLines": 264,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/auth-client.test.ts",
+   "language": "typescript",
+   "sizeLines": 249,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/auth-client.ts",
+   "language": "typescript",
+   "sizeLines": 73,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/avatar.test.ts",
+   "language": "typescript",
+   "sizeLines": 35,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/avatar.ts",
+   "language": "typescript",
+   "sizeLines": 21,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/course-path.ts",
+   "language": "typescript",
+   "sizeLines": 18,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/courses-client.test.ts",
+   "language": "typescript",
+   "sizeLines": 81,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/courses-client.ts",
+   "language": "typescript",
+   "sizeLines": 13,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/courses.test.ts",
+   "language": "typescript",
+   "sizeLines": 98,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/courses.ts",
+   "language": "typescript",
+   "sizeLines": 65,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/error-message.ts",
+   "language": "typescript",
+   "sizeLines": 25,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/friends-client.test.ts",
+   "language": "typescript",
+   "sizeLines": 121,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/friends-client.ts",
+   "language": "typescript",
+   "sizeLines": 24,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/friends.test.ts",
+   "language": "typescript",
+   "sizeLines": 22,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/friends.ts",
+   "language": "typescript",
+   "sizeLines": 74,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/legal-content/de.ts",
+   "language": "typescript",
+   "sizeLines": 217,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/legal-content/en.ts",
+   "language": "typescript",
+   "sizeLines": 217,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/legal-content/fr.ts",
+   "language": "typescript",
+   "sizeLines": 217,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/legal-content/index.ts",
+   "language": "typescript",
+   "sizeLines": 33,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/legal.test.ts",
+   "language": "typescript",
+   "sizeLines": 109,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/legal.ts",
+   "language": "typescript",
+   "sizeLines": 48,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/lesson-client.test.ts",
+   "language": "typescript",
+   "sizeLines": 201,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/lesson-client.ts",
+   "language": "typescript",
+   "sizeLines": 167,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/lesson-cursor.ts",
+   "language": "typescript",
+   "sizeLines": 16,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/lesson-history.test.ts",
+   "language": "typescript",
+   "sizeLines": 46,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/lesson-history.ts",
+   "language": "typescript",
+   "sizeLines": 21,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/lesson-navigation.test.ts",
+   "language": "typescript",
+   "sizeLines": 51,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/lesson-navigation.ts",
+   "language": "typescript",
+   "sizeLines": 28,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/lesson.test.ts",
+   "language": "typescript",
+   "sizeLines": 116,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/lesson.ts",
+   "language": "typescript",
+   "sizeLines": 96,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/lessons.ts",
+   "language": "typescript",
+   "sizeLines": 22,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/level.test.ts",
+   "language": "typescript",
+   "sizeLines": 37,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/level.ts",
+   "language": "typescript",
+   "sizeLines": 34,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/localized.test.ts",
+   "language": "typescript",
+   "sizeLines": 21,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/localized.ts",
+   "language": "typescript",
+   "sizeLines": 13,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/messages.test.ts",
+   "language": "typescript",
+   "sizeLines": 50,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/onboarding.test.ts",
+   "language": "typescript",
+   "sizeLines": 65,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/onboarding.ts",
+   "language": "typescript",
+   "sizeLines": 33,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/placement-client.test.ts",
+   "language": "typescript",
+   "sizeLines": 203,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/placement-client.ts",
+   "language": "typescript",
+   "sizeLines": 20,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/placement-schema.test.ts",
+   "language": "typescript",
+   "sizeLines": 83,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/placement-schema.ts",
+   "language": "typescript",
+   "sizeLines": 11,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/presence.test.ts",
+   "language": "typescript",
+   "sizeLines": 79,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/presence.ts",
+   "language": "typescript",
+   "sizeLines": 57,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/reconnect.test.ts",
+   "language": "typescript",
+   "sizeLines": 91,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/reconnect.ts",
+   "language": "typescript",
+   "sizeLines": 48,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/result-part.test.ts",
+   "language": "typescript",
+   "sizeLines": 23,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/result-part.ts",
+   "language": "typescript",
+   "sizeLines": 7,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/result-score-tone.test.ts",
+   "language": "typescript",
+   "sizeLines": 15,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/result-score-tone.ts",
+   "language": "typescript",
+   "sizeLines": 7,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/serial-queue.test.ts",
+   "language": "typescript",
+   "sizeLines": 37,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/serial-queue.ts",
+   "language": "typescript",
+   "sizeLines": 14,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/session.test.ts",
+   "language": "typescript",
+   "sizeLines": 118,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/session.ts",
+   "language": "typescript",
+   "sizeLines": 53,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/lib/use-course-save.ts",
+   "language": "typescript",
+   "sizeLines": 54,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/messages/de.json",
+   "language": "json",
+   "sizeLines": 475,
+   "fileCategory": "config"
+  },
+  {
+   "path": "apps/web/messages/en.json",
+   "language": "json",
+   "sizeLines": 475,
+   "fileCategory": "config"
+  },
+  {
+   "path": "apps/web/messages/fr.json",
+   "language": "json",
+   "sizeLines": 475,
+   "fileCategory": "config"
+  },
+  {
+   "path": "apps/web/next.config.ts",
+   "language": "typescript",
+   "sizeLines": 31,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/package.json",
+   "language": "json",
+   "sizeLines": 41,
+   "fileCategory": "config"
+  },
+  {
+   "path": "apps/web/postcss.config.mjs",
+   "language": "javascript",
+   "sizeLines": 8,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/proxy.ts",
+   "language": "typescript",
+   "sizeLines": 37,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/public/logo.webp",
+   "language": "webp",
+   "sizeLines": 357,
+   "fileCategory": "code"
+  },
+  {
+   "path": "apps/web/public/robots.txt",
+   "language": "txt",
+   "sizeLines": 4,
+   "fileCategory": "docs"
+  },
+  {
+   "path": "apps/web/tsconfig.json",
+   "language": "json",
+   "sizeLines": 16,
+   "fileCategory": "config"
+  },
+  {
+   "path": "apps/web/vitest.config.mts",
+   "language": "mts",
+   "sizeLines": 31,
+   "fileCategory": "code"
+  },
+  {
+   "path": "compose.deploy.proxy.yml",
+   "language": "yaml",
+   "sizeLines": 34,
+   "fileCategory": "config"
+  },
+  {
+   "path": "compose.deploy.yml",
+   "language": "yaml",
+   "sizeLines": 284,
+   "fileCategory": "config"
+  },
+  {
+   "path": "compose.override.yml",
+   "language": "yaml",
+   "sizeLines": 216,
+   "fileCategory": "config"
+  },
+  {
+   "path": "compose.prod.yml",
+   "language": "yaml",
+   "sizeLines": 72,
+   "fileCategory": "config"
+  },
+  {
+   "path": "compose.yml",
+   "language": "yaml",
+   "sizeLines": 287,
+   "fileCategory": "infra"
+  },
+  {
+   "path": "docs/ARCHITECTURE.md",
+   "language": "markdown",
+   "sizeLines": 474,
+   "fileCategory": "docs"
+  },
+  {
+   "path": "docs/BACKLOG.md",
+   "language": "markdown",
+   "sizeLines": 26,
+   "fileCategory": "docs"
+  },
+  {
+   "path": "docs/DEPLOYMENT.md",
+   "language": "markdown",
+   "sizeLines": 435,
+   "fileCategory": "docs"
+  },
+  {
+   "path": "docs/DEVELOPMENT.md",
+   "language": "markdown",
+   "sizeLines": 50,
+   "fileCategory": "docs"
+  },
+  {
+   "path": "docs/ITEM_BANK.md",
+   "language": "markdown",
+   "sizeLines": 254,
+   "fileCategory": "docs"
+  },
+  {
+   "path": "docs/LESSONS.md",
+   "language": "markdown",
+   "sizeLines": 486,
+   "fileCategory": "docs"
+  },
+  {
+   "path": "docs/MONITORING.md",
+   "language": "markdown",
+   "sizeLines": 616,
+   "fileCategory": "docs"
+  },
+  {
+   "path": "docs/PRODUCT_ARCHITECTURE.md",
+   "language": "markdown",
+   "sizeLines": 918,
+   "fileCategory": "docs"
+  },
+  {
+   "path": "docs/SUBJECT_SUMMARY.md",
+   "language": "markdown",
+   "sizeLines": 223,
+   "fileCategory": "docs"
+  },
+  {
+   "path": "docs/TECHNICAL_PLAN.md",
+   "language": "markdown",
+   "sizeLines": 265,
+   "fileCategory": "docs"
+  },
+  {
+   "path": "docs/VERSIONS.md",
+   "language": "markdown",
+   "sizeLines": 236,
+   "fileCategory": "docs"
+  },
+  {
+   "path": "e2e/eslint.config.mjs",
+   "language": "javascript",
+   "sizeLines": 4,
+   "fileCategory": "code"
+  },
+  {
+   "path": "e2e/package.json",
+   "language": "json",
+   "sizeLines": 27,
+   "fileCategory": "config"
+  },
+  {
+   "path": "e2e/playwright.config.ts",
+   "language": "typescript",
+   "sizeLines": 82,
+   "fileCategory": "code"
+  },
+  {
+   "path": "e2e/support/console-guard.ts",
+   "language": "typescript",
+   "sizeLines": 250,
+   "fileCategory": "code"
+  },
+  {
+   "path": "e2e/support/layout.ts",
+   "language": "typescript",
+   "sizeLines": 108,
+   "fileCategory": "code"
+  },
+  {
+   "path": "e2e/support/lesson-play.ts",
+   "language": "typescript",
+   "sizeLines": 406,
+   "fileCategory": "code"
+  },
+  {
+   "path": "e2e/support/live.ts",
+   "language": "typescript",
+   "sizeLines": 33,
+   "fileCategory": "code"
+  },
+  {
+   "path": "e2e/support/routes.ts",
+   "language": "typescript",
+   "sizeLines": 127,
+   "fileCategory": "code"
+  },
+  {
+   "path": "e2e/support/session.ts",
+   "language": "typescript",
+   "sizeLines": 256,
+   "fileCategory": "code"
+  },
+  {
+   "path": "e2e/support/signup-budget.ts",
+   "language": "typescript",
+   "sizeLines": 205,
+   "fileCategory": "code"
+  },
+  {
+   "path": "e2e/tests/auth.spec.ts",
+   "language": "typescript",
+   "sizeLines": 234,
+   "fileCategory": "code"
+  },
+  {
+   "path": "e2e/tests/avatar.spec.ts",
+   "language": "typescript",
+   "sizeLines": 99,
+   "fileCategory": "code"
+  },
+  {
+   "path": "e2e/tests/console.spec.ts",
+   "language": "typescript",
+   "sizeLines": 105,
+   "fileCategory": "code"
+  },
+  {
+   "path": "e2e/tests/course.spec.ts",
+   "language": "typescript",
+   "sizeLines": 218,
+   "fileCategory": "code"
+  },
+  {
+   "path": "e2e/tests/dashboard.spec.ts",
+   "language": "typescript",
+   "sizeLines": 82,
+   "fileCategory": "code"
+  },
+  {
+   "path": "e2e/tests/friends.spec.ts",
+   "language": "typescript",
+   "sizeLines": 196,
+   "fileCategory": "code"
+  },
+  {
+   "path": "e2e/tests/i18n.spec.ts",
+   "language": "typescript",
+   "sizeLines": 161,
+   "fileCategory": "code"
+  },
+  {
+   "path": "e2e/tests/landing.spec.ts",
+   "language": "typescript",
+   "sizeLines": 76,
+   "fileCategory": "code"
+  },
+  {
+   "path": "e2e/tests/layout-gate.spec.ts",
+   "language": "typescript",
+   "sizeLines": 47,
+   "fileCategory": "code"
+  },
+  {
+   "path": "e2e/tests/layout.spec.ts",
+   "language": "typescript",
+   "sizeLines": 106,
+   "fileCategory": "code"
+  },
+  {
+   "path": "e2e/tests/legal.spec.ts",
+   "language": "typescript",
+   "sizeLines": 102,
+   "fileCategory": "code"
+  },
+  {
+   "path": "e2e/tests/lesson-regressions.spec.ts",
+   "language": "typescript",
+   "sizeLines": 350,
+   "fileCategory": "code"
+  },
+  {
+   "path": "e2e/tests/lesson.spec.ts",
+   "language": "typescript",
+   "sizeLines": 299,
+   "fileCategory": "code"
+  },
+  {
+   "path": "e2e/tests/live.spec.ts",
+   "language": "typescript",
+   "sizeLines": 67,
+   "fileCategory": "code"
+  },
+  {
+   "path": "e2e/tests/monitoring.spec.ts",
+   "language": "typescript",
+   "sizeLines": 121,
+   "fileCategory": "code"
+  },
+  {
+   "path": "e2e/tests/onboarding.spec.ts",
+   "language": "typescript",
+   "sizeLines": 214,
+   "fileCategory": "code"
+  },
+  {
+   "path": "e2e/tests/placement.spec.ts",
+   "language": "typescript",
+   "sizeLines": 672,
+   "fileCategory": "code"
+  },
+  {
+   "path": "e2e/tests/restart.spec.ts",
+   "language": "typescript",
+   "sizeLines": 62,
+   "fileCategory": "code"
+  },
+  {
+   "path": "e2e/tests/signup-budget.spec.ts",
+   "language": "typescript",
+   "sizeLines": 93,
+   "fileCategory": "code"
+  },
+  {
+   "path": "e2e/tests/smoke.spec.ts",
+   "language": "typescript",
+   "sizeLines": 89,
+   "fileCategory": "code"
+  },
+  {
+   "path": "e2e/tests/time-zone.spec.ts",
+   "language": "typescript",
+   "sizeLines": 129,
+   "fileCategory": "code"
+  },
+  {
+   "path": "e2e/tests/today.spec.ts",
+   "language": "typescript",
+   "sizeLines": 232,
+   "fileCategory": "code"
+  },
+  {
+   "path": "e2e/tsconfig.json",
+   "language": "json",
+   "sizeLines": 17,
+   "fileCategory": "config"
+  },
+  {
+   "path": "infra/caddy/Caddyfile",
+   "language": "unknown",
+   "sizeLines": 110,
+   "fileCategory": "code"
+  },
+  {
+   "path": "infra/caddy/Caddyfile.prod",
+   "language": "prod",
+   "sizeLines": 106,
+   "fileCategory": "code"
+  },
+  {
+   "path": "infra/deploy/.env.example",
+   "language": "config",
+   "sizeLines": 61,
+   "fileCategory": "config"
+  },
+  {
+   "path": "infra/deploy/deploy.sh",
+   "language": "shell",
+   "sizeLines": 65,
+   "fileCategory": "script"
+  },
+  {
+   "path": "infra/deploy/ft-deploy.service",
+   "language": "service",
+   "sizeLines": 13,
+   "fileCategory": "code"
+  },
+  {
+   "path": "infra/deploy/ft-deploy.timer",
+   "language": "timer",
+   "sizeLines": 14,
+   "fileCategory": "code"
+  },
+  {
+   "path": "infra/monitoring/alertmanager/Dockerfile",
+   "language": "dockerfile",
+   "sizeLines": 10,
+   "fileCategory": "infra"
+  },
+  {
+   "path": "infra/monitoring/alertmanager/alertmanager.yml",
+   "language": "yaml",
+   "sizeLines": 40,
+   "fileCategory": "config"
+  },
+  {
+   "path": "infra/monitoring/alertmanager/entrypoint.sh",
+   "language": "shell",
+   "sizeLines": 27,
+   "fileCategory": "script"
+  },
+  {
+   "path": "infra/monitoring/alertmanager/silent.yml",
+   "language": "yaml",
+   "sizeLines": 7,
+   "fileCategory": "config"
+  },
+  {
+   "path": "infra/monitoring/alertmanager/templates/discord.tmpl",
+   "language": "tmpl",
+   "sizeLines": 13,
+   "fileCategory": "code"
+  },
+  {
+   "path": "infra/monitoring/grafana/Dockerfile",
+   "language": "dockerfile",
+   "sizeLines": 10,
+   "fileCategory": "infra"
+  },
+  {
+   "path": "infra/monitoring/grafana/dashboards/api.json",
+   "language": "json",
+   "sizeLines": 1255,
+   "fileCategory": "config"
+  },
+  {
+   "path": "infra/monitoring/grafana/dashboards/infrastructure.json",
+   "language": "json",
+   "sizeLines": 1885,
+   "fileCategory": "config"
+  },
+  {
+   "path": "infra/monitoring/grafana/dashboards/learning.json",
+   "language": "json",
+   "sizeLines": 1160,
+   "fileCategory": "config"
+  },
+  {
+   "path": "infra/monitoring/grafana/dashboards/overview.json",
+   "language": "json",
+   "sizeLines": 1416,
+   "fileCategory": "config"
+  },
+  {
+   "path": "infra/monitoring/grafana/entrypoint.sh",
+   "language": "shell",
+   "sizeLines": 18,
+   "fileCategory": "script"
+  },
+  {
+   "path": "infra/monitoring/grafana/grafana.ini",
+   "language": "config",
+   "sizeLines": 83,
+   "fileCategory": "config"
+  },
+  {
+   "path": "infra/monitoring/grafana/provisioning/dashboards/dashboards.yml",
+   "language": "yaml",
+   "sizeLines": 14,
+   "fileCategory": "config"
+  },
+  {
+   "path": "infra/monitoring/grafana/provisioning/datasources/datasources.yml",
+   "language": "yaml",
+   "sizeLines": 31,
+   "fileCategory": "config"
+  },
+  {
+   "path": "infra/monitoring/prometheus/Dockerfile",
+   "language": "dockerfile",
+   "sizeLines": 10,
+   "fileCategory": "infra"
+  },
+  {
+   "path": "infra/monitoring/prometheus/prometheus.yml",
+   "language": "yaml",
+   "sizeLines": 77,
+   "fileCategory": "config"
+  },
+  {
+   "path": "infra/monitoring/prometheus/rules/alerts.yml",
+   "language": "yaml",
+   "sizeLines": 291,
+   "fileCategory": "config"
+  },
+  {
+   "path": "infra/monitoring/prometheus/tests/alerts.test.yml",
+   "language": "yaml",
+   "sizeLines": 239,
+   "fileCategory": "config"
+  },
+  {
+   "path": "package.json",
+   "language": "json",
+   "sizeLines": 38,
+   "fileCategory": "config"
+  },
+  {
+   "path": "packages/eslint-config/base.js",
+   "language": "javascript",
+   "sizeLines": 55,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/eslint-config/eslint.config.js",
+   "language": "javascript",
+   "sizeLines": 3,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/eslint-config/nest.js",
+   "language": "javascript",
+   "sizeLines": 24,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/eslint-config/next.js",
+   "language": "javascript",
+   "sizeLines": 35,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/eslint-config/package.json",
+   "language": "json",
+   "sizeLines": 34,
+   "fileCategory": "config"
+  },
+  {
+   "path": "packages/shared/eslint.config.mjs",
+   "language": "javascript",
+   "sizeLines": 5,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/package.json",
+   "language": "json",
+   "sizeLines": 40,
+   "fileCategory": "config"
+  },
+  {
+   "path": "packages/shared/src/events/index.ts",
+   "language": "typescript",
+   "sizeLines": 1,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/events/socket.test.ts",
+   "language": "typescript",
+   "sizeLines": 102,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/events/socket.ts",
+   "language": "typescript",
+   "sizeLines": 110,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/index.ts",
+   "language": "typescript",
+   "sizeLines": 15,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/domain/articles.ts",
+   "language": "typescript",
+   "sizeLines": 69,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/domain/functionsLesson.ts",
+   "language": "typescript",
+   "sizeLines": 103,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/domain/lessonCopy.ts",
+   "language": "typescript",
+   "sizeLines": 317,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/domain/readingLesson.ts",
+   "language": "typescript",
+   "sizeLines": 185,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/domain/richText.test.ts",
+   "language": "typescript",
+   "sizeLines": 52,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/domain/richText.ts",
+   "language": "typescript",
+   "sizeLines": 183,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/domain/vocabularyAnswers.ts",
+   "language": "typescript",
+   "sizeLines": 34,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/domain/vocabularyLesson.ts",
+   "language": "typescript",
+   "sizeLines": 308,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/index.ts",
+   "language": "typescript",
+   "sizeLines": 42,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/player/articleHint.ts",
+   "language": "typescript",
+   "sizeLines": 25,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/player/attempt.test.ts",
+   "language": "typescript",
+   "sizeLines": 304,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/player/attempt.ts",
+   "language": "typescript",
+   "sizeLines": 242,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/player/copy.ts",
+   "language": "typescript",
+   "sizeLines": 45,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/player/feedback.ts",
+   "language": "typescript",
+   "sizeLines": 104,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/player/fixtures.testing.ts",
+   "language": "typescript",
+   "sizeLines": 113,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/player/index.ts",
+   "language": "typescript",
+   "sizeLines": 69,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/player/kinds/contentFile.ts",
+   "language": "typescript",
+   "sizeLines": 11,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/player/kinds/functions.ts",
+   "language": "typescript",
+   "sizeLines": 210,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/player/kinds/grammar.ts",
+   "language": "typescript",
+   "sizeLines": 185,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/player/kinds/index.ts",
+   "language": "typescript",
+   "sizeLines": 65,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/player/kinds/kind.ts",
+   "language": "typescript",
+   "sizeLines": 91,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/player/kinds/reading.ts",
+   "language": "typescript",
+   "sizeLines": 41,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/player/kinds/vocabulary.ts",
+   "language": "typescript",
+   "sizeLines": 183,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/player/motherTongue.ts",
+   "language": "typescript",
+   "sizeLines": 17,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/player/outline.test.ts",
+   "language": "typescript",
+   "sizeLines": 80,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/player/outline.ts",
+   "language": "typescript",
+   "sizeLines": 90,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/player/plan.test.ts",
+   "language": "typescript",
+   "sizeLines": 342,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/player/plan.ts",
+   "language": "typescript",
+   "sizeLines": 316,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/player/readingPlan.ts",
+   "language": "typescript",
+   "sizeLines": 122,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/player/redact.test.ts",
+   "language": "typescript",
+   "sizeLines": 231,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/player/redact.ts",
+   "language": "typescript",
+   "sizeLines": 382,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/player/score.test.ts",
+   "language": "typescript",
+   "sizeLines": 343,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/player/score.ts",
+   "language": "typescript",
+   "sizeLines": 345,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/player/view.test.ts",
+   "language": "typescript",
+   "sizeLines": 108,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/player/view.ts",
+   "language": "typescript",
+   "sizeLines": 442,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/schemas/artifactCommon.ts",
+   "language": "typescript",
+   "sizeLines": 221,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/schemas/artifacts.ts",
+   "language": "typescript",
+   "sizeLines": 103,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/schemas/functions.ts",
+   "language": "typescript",
+   "sizeLines": 403,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/schemas/grammar.ts",
+   "language": "typescript",
+   "sizeLines": 449,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/schemas/reading.ts",
+   "language": "typescript",
+   "sizeLines": 376,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/schemas/vocabulary.ts",
+   "language": "typescript",
+   "sizeLines": 368,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/validateLesson.test.ts",
+   "language": "typescript",
+   "sizeLines": 185,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/validateLesson.ts",
+   "language": "typescript",
+   "sizeLines": 112,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/validation/artifacts.test.ts",
+   "language": "typescript",
+   "sizeLines": 859,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/validation/artifacts.ts",
+   "language": "typescript",
+   "sizeLines": 203,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/validation/common.ts",
+   "language": "typescript",
+   "sizeLines": 95,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/validation/functions.test.ts",
+   "language": "typescript",
+   "sizeLines": 215,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/validation/functions.ts",
+   "language": "typescript",
+   "sizeLines": 722,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/validation/grammar.ts",
+   "language": "typescript",
+   "sizeLines": 559,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/validation/grammarLength.ts",
+   "language": "typescript",
+   "sizeLines": 117,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/validation/issues.ts",
+   "language": "typescript",
+   "sizeLines": 54,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/validation/reading.test.ts",
+   "language": "typescript",
+   "sizeLines": 249,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/validation/reading.ts",
+   "language": "typescript",
+   "sizeLines": 438,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/lessons/validation/vocabulary.ts",
+   "language": "typescript",
+   "sizeLines": 264,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/schemas/course.ts",
+   "language": "typescript",
+   "sizeLines": 43,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/schemas/errors.ts",
+   "language": "typescript",
+   "sizeLines": 98,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/schemas/friend.test.ts",
+   "language": "typescript",
+   "sizeLines": 30,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/schemas/friend.ts",
+   "language": "typescript",
+   "sizeLines": 27,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/schemas/gamification.test.ts",
+   "language": "typescript",
+   "sizeLines": 247,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/schemas/gamification.ts",
+   "language": "typescript",
+   "sizeLines": 163,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/schemas/health.ts",
+   "language": "typescript",
+   "sizeLines": 29,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/schemas/index.ts",
+   "language": "typescript",
+   "sizeLines": 12,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/schemas/item.test.ts",
+   "language": "typescript",
+   "sizeLines": 266,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/schemas/item.ts",
+   "language": "typescript",
+   "sizeLines": 200,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/schemas/language.ts",
+   "language": "typescript",
+   "sizeLines": 16,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/schemas/lesson.test.ts",
+   "language": "typescript",
+   "sizeLines": 524,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/schemas/lesson.ts",
+   "language": "typescript",
+   "sizeLines": 409,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/schemas/locale.ts",
+   "language": "typescript",
+   "sizeLines": 18,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/schemas/placement.ts",
+   "language": "typescript",
+   "sizeLines": 77,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/schemas/schemas.test.ts",
+   "language": "typescript",
+   "sizeLines": 435,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/schemas/two-factor.ts",
+   "language": "typescript",
+   "sizeLines": 74,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/src/schemas/user.ts",
+   "language": "typescript",
+   "sizeLines": 178,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/shared/tsconfig.build.json",
+   "language": "json",
+   "sizeLines": 10,
+   "fileCategory": "config"
+  },
+  {
+   "path": "packages/shared/tsconfig.json",
+   "language": "json",
+   "sizeLines": 19,
+   "fileCategory": "config"
+  },
+  {
+   "path": "packages/shared/vitest.config.mts",
+   "language": "mts",
+   "sizeLines": 18,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/tsconfig/base.json",
+   "language": "json",
+   "sizeLines": 21,
+   "fileCategory": "config"
+  },
+  {
+   "path": "packages/tsconfig/library.json",
+   "language": "json",
+   "sizeLines": 15,
+   "fileCategory": "config"
+  },
+  {
+   "path": "packages/tsconfig/nest.json",
+   "language": "json",
+   "sizeLines": 19,
+   "fileCategory": "config"
+  },
+  {
+   "path": "packages/tsconfig/nextjs.json",
+   "language": "json",
+   "sizeLines": 16,
+   "fileCategory": "config"
+  },
+  {
+   "path": "packages/tsconfig/package.json",
+   "language": "json",
+   "sizeLines": 13,
+   "fileCategory": "config"
+  },
+  {
+   "path": "packages/ui/eslint.config.mjs",
+   "language": "javascript",
+   "sizeLines": 15,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/ui/package.json",
+   "language": "json",
+   "sizeLines": 42,
+   "fileCategory": "config"
+  },
+  {
+   "path": "packages/ui/src/components/Button.tsx",
+   "language": "typescript",
+   "sizeLines": 48,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/ui/src/components/Card.tsx",
+   "language": "typescript",
+   "sizeLines": 29,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/ui/src/components/ProgressBar.tsx",
+   "language": "typescript",
+   "sizeLines": 43,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/ui/src/components/components.test.tsx",
+   "language": "typescript",
+   "sizeLines": 104,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/ui/src/index.ts",
+   "language": "typescript",
+   "sizeLines": 8,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/ui/src/lib/cn.ts",
+   "language": "typescript",
+   "sizeLines": 10,
+   "fileCategory": "code"
+  },
+  {
+   "path": "packages/ui/tsconfig.json",
+   "language": "json",
+   "sizeLines": 19,
+   "fileCategory": "config"
+  },
+  {
+   "path": "packages/ui/vitest.config.mts",
+   "language": "mts",
+   "sizeLines": 21,
+   "fileCategory": "code"
+  },
+  {
+   "path": "pnpm-workspace.yaml",
+   "language": "yaml",
+   "sizeLines": 52,
+   "fileCategory": "config"
+  },
+  {
+   "path": "scripts/assert-ts-version.sh",
+   "language": "shell",
+   "sizeLines": 116,
+   "fileCategory": "script"
+  },
+  {
+   "path": "scripts/check-app-boundaries.sh",
+   "language": "shell",
+   "sizeLines": 70,
+   "fileCategory": "script"
+  },
+  {
+   "path": "scripts/check-dev-env.sh",
+   "language": "shell",
+   "sizeLines": 176,
+   "fileCategory": "script"
+  },
+  {
+   "path": "scripts/check-env-example.sh",
+   "language": "shell",
+   "sizeLines": 237,
+   "fileCategory": "script"
+  },
+  {
+   "path": "scripts/check-monitoring-config.sh",
+   "language": "shell",
+   "sizeLines": 333,
+   "fileCategory": "script"
+  },
+  {
+   "path": "scripts/check-monitoring.sh",
+   "language": "shell",
+   "sizeLines": 163,
+   "fileCategory": "script"
+  },
+  {
+   "path": "scripts/check-prisma-drift.sh",
+   "language": "shell",
+   "sizeLines": 88,
+   "fileCategory": "script"
+  },
+  {
+   "path": "scripts/check-prisma-format.sh",
+   "language": "shell",
+   "sizeLines": 39,
+   "fileCategory": "script"
+  },
+  {
+   "path": "scripts/pr-title.sh",
+   "language": "shell",
+   "sizeLines": 65,
+   "fileCategory": "script"
+  },
+  {
+   "path": "turbo.json",
+   "language": "json",
+   "sizeLines": 47,
+   "fileCategory": "config"
+  }
+ ],
+ "totalFiles": 563,
+ "filteredByIgnore": 445,
+ "estimatedComplexity": "very-large",
+ "importMap": {
+  ".claude/skills/author-lessons/SKILL.md": [],
+  ".claude/skills/outline-language/SKILL.md": [],
+  ".claude/skills/outline-language/merge-plan.mjs": [],
+  ".claude/workflows/outline-language.js": [],
+  ".env.example": [],
+  ".gitattributes": [],
+  ".github/CODEOWNERS": [],
+  ".github/actions/setup/action.yml": [],
+  ".github/commitlint.config.mjs": [],
+  ".github/pull_request_template.md": [],
+  ".github/workflows/ci.yml": [],
+  ".github/workflows/e2e.yml": [],
+  ".github/workflows/hygiene.yml": [],
+  ".github/workflows/images.yml": [],
+  ".husky/commit-msg": [],
+  ".husky/pre-commit": [],
+  ".husky/pre-push": [],
+  ".npmrc": [],
+  ".nvmrc": [],
+  ".prettierignore": [],
+  ".ua/config.json": [],
+  "CONTRIBUTING.md": [],
+  "Makefile": [],
+  "README.md": [],
+  "apps/api/.dockerignore": [],
+  "apps/api/Dockerfile": [],
+  "apps/api/Dockerfile.dockerignore": [],
+  "apps/api/eslint.config.mjs": [],
+  "apps/api/nest-cli.dev.json": [],
+  "apps/api/nest-cli.json": [],
+  "apps/api/package.json": [],
+  "apps/api/prisma.config.ts": [],
+  "apps/api/prisma/migrations/20260807022236_init_user/migration.sql": [],
+  "apps/api/prisma/migrations/20260809004816_two_factor/migration.sql": [],
+  "apps/api/prisma/migrations/20260913181513_add_user_levels_and_question_bank/migration.sql": [],
+  "apps/api/prisma/migrations/20260913184446_question_bank_source_id_unique/migration.sql": [],
+  "apps/api/prisma/migrations/20260917234934_add_active_lang/migration.sql": [],
+  "apps/api/prisma/migrations/20261003124401_add_user_time_zone/migration.sql": [],
+  "apps/api/prisma/migrations/20261007134739_add_lessons/migration.sql": [],
+  "apps/api/prisma/migrations/20261024122424_add_lesson_content/migration.sql": [],
+  "apps/api/prisma/migrations/20261028175100_add_lesson_ready/migration.sql": [],
+  "apps/api/prisma/migrations/20261103225542_add_lesson_attempt/migration.sql": [],
+  "apps/api/prisma/migrations/20261104003255_add_friendships/migration.sql": [],
+  "apps/api/prisma/migrations/20261106181514_add_user_last_active_day/migration.sql": [],
+  "apps/api/prisma/migrations/20261107184854_add_gamification/migration.sql": [],
+  "apps/api/prisma/migrations/migration_lock.toml": [],
+  "apps/api/prisma/schema.prisma": [],
+  "apps/api/prisma/seed.ts": [
+   "apps/api/src/prisma/prisma.service.ts"
+  ],
+  "apps/api/scripts/check-outlines.ts": [],
+  "apps/api/scripts/lessons/author.ts": [
+   "apps/api/scripts/lessons/check-draft.ts",
+   "apps/api/scripts/lessons/complete.ts",
+   "apps/api/scripts/lessons/files.ts",
+   "apps/api/scripts/lessons/prompt.ts",
+   "apps/api/scripts/lessons/providers/chat.ts",
+   "apps/api/scripts/lessons/providers/claude.ts",
+   "apps/api/scripts/lessons/reply.ts",
+   "apps/api/scripts/lessons/report.ts"
+  ],
+  "apps/api/scripts/lessons/check-draft.ts": [
+   "apps/api/scripts/lessons/complete.ts"
+  ],
+  "apps/api/scripts/lessons/check.ts": [
+   "apps/api/scripts/lessons/check-draft.ts",
+   "apps/api/scripts/lessons/complete.ts",
+   "apps/api/scripts/lessons/files.ts",
+   "apps/api/scripts/lessons/json.ts",
+   "apps/api/scripts/lessons/prompt.ts"
+  ],
+  "apps/api/scripts/lessons/complete.ts": [
+   "apps/api/scripts/lessons/json.ts",
+   "apps/api/scripts/lessons/times.ts"
+  ],
+  "apps/api/scripts/lessons/edits.ts": [
+   "apps/api/scripts/lessons/json.ts"
+  ],
+  "apps/api/scripts/lessons/files.ts": [],
+  "apps/api/scripts/lessons/json.ts": [],
+  "apps/api/scripts/lessons/prompt.ts": [],
+  "apps/api/scripts/lessons/providers/chat.ts": [],
+  "apps/api/scripts/lessons/providers/claude.ts": [
+   "apps/api/scripts/lessons/files.ts",
+   "apps/api/scripts/lessons/json.ts",
+   "apps/api/scripts/lessons/prompt.ts",
+   "apps/api/scripts/lessons/providers/chat.ts"
+  ],
+  "apps/api/scripts/lessons/reply.ts": [
+   "apps/api/scripts/lessons/edits.ts",
+   "apps/api/scripts/lessons/json.ts"
+  ],
+  "apps/api/scripts/lessons/report.ts": [
+   "apps/api/scripts/lessons/files.ts",
+   "apps/api/scripts/lessons/providers/chat.ts"
+  ],
+  "apps/api/scripts/lessons/times.ts": [
+   "apps/api/scripts/lessons/json.ts"
+  ],
+  "apps/api/scripts/try-generation.ts": [
+   "apps/api/src/llm/llm.factory.ts",
+   "apps/api/src/prisma/prisma.service.ts",
+   "apps/api/src/question-generation/question-stock.service.ts"
+  ],
+  "apps/api/src/app.module.ts": [
+   "apps/api/src/auth/auth.module.ts",
+   "apps/api/src/courses/courses.module.ts",
+   "apps/api/src/friends/friends.module.ts",
+   "apps/api/src/gateway/gateway.module.ts",
+   "apps/api/src/health/health.module.ts",
+   "apps/api/src/lessons/lessons.module.ts",
+   "apps/api/src/metrics/metrics.module.ts",
+   "apps/api/src/placement/placement.module.ts",
+   "apps/api/src/prisma/prisma.module.ts",
+   "apps/api/src/redis/redis.module.ts",
+   "apps/api/src/throttler/identity-throttler.guard.ts",
+   "apps/api/src/users/users.module.ts"
+  ],
+  "apps/api/src/app.setup.ts": [
+   "apps/api/src/error-code.filter.ts",
+   "apps/api/src/gateway/session-io.adapter.ts",
+   "apps/api/src/metrics/http-metrics.middleware.ts",
+   "apps/api/src/redis/redis.service.ts",
+   "apps/api/src/validation.pipe.ts"
+  ],
+  "apps/api/src/auth/auth.controller.spec.ts": [
+   "apps/api/src/auth/auth.controller.ts",
+   "apps/api/src/auth/auth.service.ts",
+   "apps/api/src/auth/two-factor.service.ts",
+   "apps/api/src/gateway/sockets.service.ts"
+  ],
+  "apps/api/src/auth/auth.controller.ts": [
+   "apps/api/src/auth/auth.decorators.ts",
+   "apps/api/src/auth/auth.dto.ts",
+   "apps/api/src/auth/auth.service.ts",
+   "apps/api/src/auth/two-factor.service.ts",
+   "apps/api/src/gateway/sockets.service.ts",
+   "apps/api/src/throttler/throttle-by-ip.decorator.ts"
+  ],
+  "apps/api/src/auth/auth.decorators.ts": [],
+  "apps/api/src/auth/auth.dto.ts": [],
+  "apps/api/src/auth/auth.guard.spec.ts": [
+   "apps/api/src/auth/auth.guard.ts",
+   "apps/api/src/auth/auth.service.ts",
+   "apps/api/src/metrics/metrics.ts"
+  ],
+  "apps/api/src/auth/auth.guard.ts": [
+   "apps/api/src/auth/auth.decorators.ts",
+   "apps/api/src/auth/auth.service.ts",
+   "apps/api/src/metrics/metrics.ts"
+  ],
+  "apps/api/src/auth/auth.module.ts": [
+   "apps/api/src/auth/auth.controller.ts",
+   "apps/api/src/auth/auth.guard.ts",
+   "apps/api/src/auth/auth.service.ts",
+   "apps/api/src/auth/two-factor.service.ts",
+   "apps/api/src/gateway/gateway.module.ts"
+  ],
+  "apps/api/src/auth/auth.service.spec.ts": [
+   "apps/api/src/auth/auth.service.ts",
+   "apps/api/src/prisma/prisma.service.ts"
+  ],
+  "apps/api/src/auth/auth.service.ts": [
+   "apps/api/src/prisma/prisma.service.ts"
+  ],
+  "apps/api/src/auth/session.d.ts": [],
+  "apps/api/src/auth/two-factor.service.spec.ts": [
+   "apps/api/src/auth/two-factor.service.ts",
+   "apps/api/src/prisma/prisma.service.ts"
+  ],
+  "apps/api/src/auth/two-factor.service.ts": [
+   "apps/api/src/prisma/prisma.service.ts"
+  ],
+  "apps/api/src/courses/courses.controller.ts": [
+   "apps/api/src/auth/auth.decorators.ts",
+   "apps/api/src/courses/courses.dto.ts",
+   "apps/api/src/courses/courses.service.ts",
+   "apps/api/src/validation.pipe.ts"
+  ],
+  "apps/api/src/courses/courses.dto.ts": [],
+  "apps/api/src/courses/courses.module.ts": [
+   "apps/api/src/courses/courses.controller.ts",
+   "apps/api/src/courses/courses.service.ts",
+   "apps/api/src/gateway/gateway.module.ts"
+  ],
+  "apps/api/src/courses/courses.service.spec.ts": [
+   "apps/api/src/courses/courses.service.ts",
+   "apps/api/src/gateway/sockets.service.ts",
+   "apps/api/src/prisma/prisma.service.ts"
+  ],
+  "apps/api/src/courses/courses.service.ts": [
+   "apps/api/src/courses/courses.dto.ts",
+   "apps/api/src/gateway/sockets.service.ts",
+   "apps/api/src/lessons/course-lookup.ts",
+   "apps/api/src/lessons/gamification.ts",
+   "apps/api/src/lessons/goal.ts",
+   "apps/api/src/prisma/prisma.service.ts"
+  ],
+  "apps/api/src/demo/demo.clock.ts": [
+   "apps/api/src/lessons/roadmap.rules.ts"
+  ],
+  "apps/api/src/demo/demo.data.ts": [],
+  "apps/api/src/demo/demo.planner.spec.ts": [
+   "apps/api/src/demo/demo.clock.ts",
+   "apps/api/src/demo/demo.data.ts",
+   "apps/api/src/demo/demo.planner.ts",
+   "apps/api/src/lessons/roadmap.rules.ts"
+  ],
+  "apps/api/src/demo/demo.planner.ts": [
+   "apps/api/src/demo/demo.clock.ts",
+   "apps/api/src/demo/demo.data.ts",
+   "apps/api/src/lessons/roadmap.rules.ts"
+  ],
+  "apps/api/src/demo/demo.ts": [
+   "apps/api/src/auth/auth.service.ts",
+   "apps/api/src/courses/courses.service.ts",
+   "apps/api/src/demo/demo.data.ts",
+   "apps/api/src/demo/demo.planner.ts",
+   "apps/api/src/gateway/sockets.service.ts",
+   "apps/api/src/lessons/lessons.service.ts",
+   "apps/api/src/lessons/roadmap.rules.ts",
+   "apps/api/src/prisma/prisma.service.ts",
+   "apps/api/src/users/active-day.ts"
+  ],
+  "apps/api/src/error-code.filter.ts": [],
+  "apps/api/src/friends/friend-ids.ts": [
+   "apps/api/src/prisma/prisma.service.ts"
+  ],
+  "apps/api/src/friends/friends.controller.ts": [
+   "apps/api/src/auth/auth.decorators.ts",
+   "apps/api/src/friends/friends.dto.ts",
+   "apps/api/src/friends/friends.service.ts",
+   "apps/api/src/validation.pipe.ts"
+  ],
+  "apps/api/src/friends/friends.dto.ts": [],
+  "apps/api/src/friends/friends.module.ts": [
+   "apps/api/src/friends/friends.controller.ts",
+   "apps/api/src/friends/friends.service.ts",
+   "apps/api/src/gateway/gateway.module.ts",
+   "apps/api/src/presence/presence.module.ts"
+  ],
+  "apps/api/src/friends/friends.service.spec.ts": [
+   "apps/api/src/friends/friends.service.ts",
+   "apps/api/src/friends/pair.ts",
+   "apps/api/src/gateway/sockets.service.ts",
+   "apps/api/src/presence/presence.service.ts",
+   "apps/api/src/prisma/prisma.service.ts"
+  ],
+  "apps/api/src/friends/friends.service.ts": [
+   "apps/api/src/friends/pair.ts",
+   "apps/api/src/gateway/sockets.service.ts",
+   "apps/api/src/presence/presence.service.ts",
+   "apps/api/src/prisma/prisma.service.ts",
+   "apps/api/src/users/public-user.ts"
+  ],
+  "apps/api/src/friends/pair.ts": [],
+  "apps/api/src/gateway/gateway.module.ts": [
+   "apps/api/src/gateway/socket.gateway.ts",
+   "apps/api/src/gateway/sockets.service.ts",
+   "apps/api/src/presence/presence.module.ts"
+  ],
+  "apps/api/src/gateway/session-io.adapter.ts": [],
+  "apps/api/src/gateway/socket.gateway.spec.ts": [
+   "apps/api/src/gateway/socket.gateway.ts",
+   "apps/api/src/gateway/sockets.service.ts",
+   "apps/api/src/metrics/metrics.ts",
+   "apps/api/src/presence/presence.service.ts",
+   "apps/api/src/prisma/prisma.service.ts",
+   "apps/api/src/redis/redis.service.ts",
+   "apps/api/test/metrics.fixtures.ts"
+  ],
+  "apps/api/src/gateway/socket.gateway.ts": [
+   "apps/api/src/app.setup.ts",
+   "apps/api/src/friends/friend-ids.ts",
+   "apps/api/src/gateway/sockets.service.ts",
+   "apps/api/src/metrics/metrics.ts",
+   "apps/api/src/presence/presence.service.ts",
+   "apps/api/src/prisma/prisma.service.ts",
+   "apps/api/src/redis/redis.service.ts",
+   "apps/api/src/users/active-day.ts"
+  ],
+  "apps/api/src/gateway/sockets.service.spec.ts": [
+   "apps/api/src/gateway/sockets.service.ts",
+   "apps/api/src/metrics/metrics.ts",
+   "apps/api/test/metrics.fixtures.ts"
+  ],
+  "apps/api/src/gateway/sockets.service.ts": [
+   "apps/api/src/metrics/metrics.ts"
+  ],
+  "apps/api/src/health/dto/health-response.dto.ts": [],
+  "apps/api/src/health/health.controller.spec.ts": [
+   "apps/api/src/health/health.controller.ts",
+   "apps/api/src/health/health.service.ts",
+   "apps/api/src/prisma/prisma.service.ts",
+   "apps/api/src/redis/redis.service.ts"
+  ],
+  "apps/api/src/health/health.controller.ts": [
+   "apps/api/src/auth/auth.decorators.ts",
+   "apps/api/src/health/dto/health-response.dto.ts",
+   "apps/api/src/health/health.service.ts"
+  ],
+  "apps/api/src/health/health.module.ts": [
+   "apps/api/src/health/health.controller.ts",
+   "apps/api/src/health/health.service.ts"
+  ],
+  "apps/api/src/health/health.service.spec.ts": [
+   "apps/api/src/health/health.service.ts",
+   "apps/api/src/prisma/prisma.service.ts",
+   "apps/api/src/redis/redis.service.ts"
+  ],
+  "apps/api/src/health/health.service.ts": [
+   "apps/api/src/health/dto/health-response.dto.ts",
+   "apps/api/src/prisma/prisma.service.ts",
+   "apps/api/src/redis/redis.service.ts"
+  ],
+  "apps/api/src/items/item-files.spec.ts": [],
+  "apps/api/src/lessons/attempt-ref.spec.ts": [
+   "apps/api/src/lessons/attempt-ref.ts"
+  ],
+  "apps/api/src/lessons/attempt-ref.ts": [],
+  "apps/api/src/lessons/attempts.controller.ts": [
+   "apps/api/src/auth/auth.decorators.ts",
+   "apps/api/src/lessons/attempts.service.ts",
+   "apps/api/src/lessons/lessons.dto.ts",
+   "apps/api/src/validation.pipe.ts"
+  ],
+  "apps/api/src/lessons/attempts.service.ts": [
+   "apps/api/src/gateway/sockets.service.ts",
+   "apps/api/src/lessons/attempt-ref.ts",
+   "apps/api/src/lessons/course-lookup.ts",
+   "apps/api/src/lessons/goal.ts",
+   "apps/api/src/lessons/lessons.service.ts",
+   "apps/api/src/metrics/metrics.ts",
+   "apps/api/src/prisma/prisma.service.ts"
+  ],
+  "apps/api/src/lessons/course-lookup.spec.ts": [
+   "apps/api/src/lessons/course-lookup.ts"
+  ],
+  "apps/api/src/lessons/course-lookup.ts": [],
+  "apps/api/src/lessons/gamification.rules.spec.ts": [
+   "apps/api/src/lessons/gamification.rules.ts"
+  ],
+  "apps/api/src/lessons/gamification.rules.ts": [],
+  "apps/api/src/lessons/gamification.ts": [
+   "apps/api/src/lessons/gamification.rules.ts",
+   "apps/api/src/lessons/goal.ts",
+   "apps/api/src/lessons/roadmap.rules.ts"
+  ],
+  "apps/api/src/lessons/goal.spec.ts": [
+   "apps/api/src/lessons/goal.ts"
+  ],
+  "apps/api/src/lessons/goal.ts": [
+   "apps/api/src/lessons/roadmap.rules.ts"
+  ],
+  "apps/api/src/lessons/lesson-complete.spec.ts": [
+   "apps/api/scripts/lessons/complete.ts",
+   "apps/api/scripts/lessons/json.ts",
+   "apps/api/scripts/lessons/times.ts"
+  ],
+  "apps/api/src/lessons/lesson-edits.spec.ts": [
+   "apps/api/scripts/lessons/edits.ts",
+   "apps/api/scripts/lessons/providers/chat.ts",
+   "apps/api/scripts/lessons/reply.ts"
+  ],
+  "apps/api/src/lessons/lesson-files.spec.ts": [],
+  "apps/api/src/lessons/lesson-search.spec.ts": [
+   "apps/api/src/lessons/lesson-search.ts"
+  ],
+  "apps/api/src/lessons/lesson-search.ts": [],
+  "apps/api/src/lessons/lessons.controller.ts": [
+   "apps/api/src/auth/auth.decorators.ts",
+   "apps/api/src/lessons/lessons.dto.ts",
+   "apps/api/src/lessons/lessons.service.ts",
+   "apps/api/src/validation.pipe.ts"
+  ],
+  "apps/api/src/lessons/lessons.dto.ts": [],
+  "apps/api/src/lessons/lessons.module.ts": [
+   "apps/api/src/gateway/gateway.module.ts",
+   "apps/api/src/lessons/attempts.controller.ts",
+   "apps/api/src/lessons/attempts.service.ts",
+   "apps/api/src/lessons/lessons.controller.ts",
+   "apps/api/src/lessons/lessons.service.ts"
+  ],
+  "apps/api/src/lessons/lessons.service.ts": [
+   "apps/api/src/lessons/course-lookup.ts",
+   "apps/api/src/lessons/gamification.rules.ts",
+   "apps/api/src/lessons/gamification.ts",
+   "apps/api/src/lessons/goal.ts",
+   "apps/api/src/lessons/lesson-search.ts",
+   "apps/api/src/lessons/roadmap.rules.ts",
+   "apps/api/src/prisma/prisma.service.ts"
+  ],
+  "apps/api/src/lessons/outline-files.spec.ts": [],
+  "apps/api/src/lessons/roadmap.rules.spec.ts": [
+   "apps/api/src/lessons/roadmap.rules.ts"
+  ],
+  "apps/api/src/lessons/roadmap.rules.ts": [],
+  "apps/api/src/llm/GEMINI_PROVIDER.md": [],
+  "apps/api/src/llm/fixture.provider.spec.ts": [
+   "apps/api/src/llm/fixture.provider.ts",
+   "apps/api/src/llm/llm.provider.ts"
+  ],
+  "apps/api/src/llm/fixture.provider.ts": [
+   "apps/api/src/llm/llm.provider.ts"
+  ],
+  "apps/api/src/llm/gemini.provider.spec.ts": [
+   "apps/api/src/llm/gemini.provider.ts",
+   "apps/api/src/llm/llm.provider.ts",
+   "apps/api/src/metrics/metrics.ts",
+   "apps/api/test/metrics.fixtures.ts"
+  ],
+  "apps/api/src/llm/gemini.provider.ts": [
+   "apps/api/src/llm/llm.provider.ts",
+   "apps/api/src/metrics/metrics.ts"
+  ],
+  "apps/api/src/llm/llm.factory.spec.ts": [
+   "apps/api/src/llm/fixture.provider.ts",
+   "apps/api/src/llm/gemini.provider.ts",
+   "apps/api/src/llm/llm.factory.ts",
+   "apps/api/src/metrics/metrics.ts"
+  ],
+  "apps/api/src/llm/llm.factory.ts": [
+   "apps/api/src/llm/fixture.provider.ts",
+   "apps/api/src/llm/gemini.provider.ts",
+   "apps/api/src/llm/llm.provider.ts",
+   "apps/api/src/metrics/metrics.ts"
+  ],
+  "apps/api/src/llm/llm.module.spec.ts": [
+   "apps/api/src/llm/fixture.provider.ts",
+   "apps/api/src/llm/gemini.provider.ts",
+   "apps/api/src/llm/llm.module.ts",
+   "apps/api/src/llm/llm.provider.ts"
+  ],
+  "apps/api/src/llm/llm.module.ts": [
+   "apps/api/src/llm/llm.factory.ts",
+   "apps/api/src/llm/llm.provider.ts"
+  ],
+  "apps/api/src/llm/llm.provider.ts": [],
+  "apps/api/src/main.ts": [
+   "apps/api/src/app.module.ts",
+   "apps/api/src/app.setup.ts",
+   "apps/api/src/metrics/metrics-server.ts",
+   "apps/api/src/metrics/metrics.ts"
+  ],
+  "apps/api/src/metrics/http-metrics.middleware.spec.ts": [
+   "apps/api/src/metrics/http-metrics.middleware.ts",
+   "apps/api/src/metrics/metrics.ts",
+   "apps/api/test/metrics.fixtures.ts"
+  ],
+  "apps/api/src/metrics/http-metrics.middleware.ts": [
+   "apps/api/src/metrics/metrics.ts"
+  ],
+  "apps/api/src/metrics/metrics-server.spec.ts": [
+   "apps/api/src/metrics/metrics-server.ts",
+   "apps/api/src/metrics/metrics.ts"
+  ],
+  "apps/api/src/metrics/metrics-server.ts": [
+   "apps/api/src/metrics/metrics.ts"
+  ],
+  "apps/api/src/metrics/metrics.collector.spec.ts": [
+   "apps/api/src/metrics/metrics.collector.ts",
+   "apps/api/src/metrics/metrics.ts",
+   "apps/api/src/prisma/prisma.service.ts",
+   "apps/api/test/metrics.fixtures.ts"
+  ],
+  "apps/api/src/metrics/metrics.collector.ts": [
+   "apps/api/src/metrics/metrics.ts",
+   "apps/api/src/prisma/prisma.service.ts"
+  ],
+  "apps/api/src/metrics/metrics.module.ts": [
+   "apps/api/src/metrics/metrics.collector.ts"
+  ],
+  "apps/api/src/metrics/metrics.spec.ts": [
+   "apps/api/src/metrics/metrics.ts",
+   "apps/api/test/metrics.fixtures.ts"
+  ],
+  "apps/api/src/metrics/metrics.ts": [],
+  "apps/api/src/placement/placement-progress.service.spec.ts": [
+   "apps/api/src/placement/placement-progress.service.ts",
+   "apps/api/src/placement/placement.schema.ts",
+   "apps/api/src/prisma/prisma.service.ts",
+   "apps/api/test/placement.fixtures.ts"
+  ],
+  "apps/api/src/placement/placement-progress.service.ts": [
+   "apps/api/src/placement/placement-question.service.ts",
+   "apps/api/src/placement/placement.schema.ts",
+   "apps/api/src/prisma/prisma.service.ts"
+  ],
+  "apps/api/src/placement/placement-question.service.spec.ts": [
+   "apps/api/src/llm/llm.provider.ts",
+   "apps/api/src/metrics/metrics.ts",
+   "apps/api/src/placement/placement-question.service.ts",
+   "apps/api/src/placement/placement.schema.ts",
+   "apps/api/src/prisma/prisma.service.ts",
+   "apps/api/src/question-generation/question-stock.service.ts",
+   "apps/api/test/metrics.fixtures.ts",
+   "apps/api/test/placement.fixtures.ts"
+  ],
+  "apps/api/src/placement/placement-question.service.ts": [
+   "apps/api/src/metrics/metrics.ts",
+   "apps/api/src/placement/placement.schema.ts",
+   "apps/api/src/prisma/prisma.service.ts",
+   "apps/api/src/question-generation/question-stock.service.ts"
+  ],
+  "apps/api/src/placement/placement-session.service.spec.ts": [
+   "apps/api/src/placement/placement-session.service.ts",
+   "apps/api/src/redis/redis.service.ts",
+   "apps/api/test/placement.fixtures.ts"
+  ],
+  "apps/api/src/placement/placement-session.service.ts": [
+   "apps/api/src/placement/placement.schema.ts",
+   "apps/api/src/redis/redis.service.ts"
+  ],
+  "apps/api/src/placement/placement.controller.ts": [
+   "apps/api/src/auth/auth.decorators.ts",
+   "apps/api/src/placement/placement.dto.ts",
+   "apps/api/src/placement/placement.service.ts"
+  ],
+  "apps/api/src/placement/placement.dto.ts": [],
+  "apps/api/src/placement/placement.module.ts": [
+   "apps/api/src/courses/courses.module.ts",
+   "apps/api/src/placement/placement-progress.service.ts",
+   "apps/api/src/placement/placement-question.service.ts",
+   "apps/api/src/placement/placement-session.service.ts",
+   "apps/api/src/placement/placement.controller.ts",
+   "apps/api/src/placement/placement.service.ts",
+   "apps/api/src/question-generation/question-generation.module.ts"
+  ],
+  "apps/api/src/placement/placement.schema.ts": [],
+  "apps/api/src/placement/placement.service.spec.ts": [
+   "apps/api/src/courses/courses.service.ts",
+   "apps/api/src/metrics/metrics.ts",
+   "apps/api/src/placement/placement-progress.service.ts",
+   "apps/api/src/placement/placement-question.service.ts",
+   "apps/api/src/placement/placement-session.service.ts",
+   "apps/api/src/placement/placement.service.ts",
+   "apps/api/src/prisma/prisma.service.ts",
+   "apps/api/src/question-generation/question-stock.service.ts",
+   "apps/api/src/redis/redis.service.ts",
+   "apps/api/test/metrics.fixtures.ts",
+   "apps/api/test/placement.fixtures.ts"
+  ],
+  "apps/api/src/placement/placement.service.ts": [
+   "apps/api/src/courses/courses.service.ts",
+   "apps/api/src/metrics/metrics.ts",
+   "apps/api/src/placement/placement-progress.service.ts",
+   "apps/api/src/placement/placement-question.service.ts",
+   "apps/api/src/placement/placement-session.service.ts",
+   "apps/api/src/placement/placement.dto.ts",
+   "apps/api/src/placement/placement.schema.ts"
+  ],
+  "apps/api/src/presence/presence.module.ts": [
+   "apps/api/src/presence/presence.service.ts"
+  ],
+  "apps/api/src/presence/presence.service.spec.ts": [
+   "apps/api/src/presence/presence.service.ts",
+   "apps/api/src/redis/redis.service.ts"
+  ],
+  "apps/api/src/presence/presence.service.ts": [
+   "apps/api/src/redis/redis.service.ts"
+  ],
+  "apps/api/src/prisma/prisma.module.ts": [
+   "apps/api/src/prisma/prisma.service.ts"
+  ],
+  "apps/api/src/prisma/prisma.service.spec.ts": [
+   "apps/api/src/prisma/prisma.service.ts"
+  ],
+  "apps/api/src/prisma/prisma.service.ts": [],
+  "apps/api/src/question-generation/QUESTION_GENERATION.md": [],
+  "apps/api/src/question-generation/prompts/question-batch.prompt.spec.ts": [
+   "apps/api/src/question-generation/prompts/question-batch.prompt.ts"
+  ],
+  "apps/api/src/question-generation/prompts/question-batch.prompt.ts": [
+   "apps/api/src/question-generation/question-batch.ts"
+  ],
+  "apps/api/src/question-generation/question-batch.spec.ts": [
+   "apps/api/src/question-generation/question-batch.ts"
+  ],
+  "apps/api/src/question-generation/question-batch.ts": [],
+  "apps/api/src/question-generation/question-generation.module.ts": [
+   "apps/api/src/llm/llm.module.ts",
+   "apps/api/src/question-generation/question-stock.service.ts"
+  ],
+  "apps/api/src/question-generation/question-stock.service.spec.ts": [
+   "apps/api/src/llm/fixture.provider.ts",
+   "apps/api/src/llm/llm.provider.ts",
+   "apps/api/src/metrics/metrics.ts",
+   "apps/api/src/prisma/prisma.service.ts",
+   "apps/api/src/question-generation/prompts/question-batch.prompt.ts",
+   "apps/api/src/question-generation/question-batch.ts",
+   "apps/api/src/question-generation/question-stock.service.ts",
+   "apps/api/test/metrics.fixtures.ts"
+  ],
+  "apps/api/src/question-generation/question-stock.service.ts": [
+   "apps/api/src/llm/llm.provider.ts",
+   "apps/api/src/metrics/metrics.ts",
+   "apps/api/src/prisma/prisma.service.ts",
+   "apps/api/src/question-generation/prompts/question-batch.prompt.ts",
+   "apps/api/src/question-generation/question-batch.ts"
+  ],
+  "apps/api/src/redis/redis.module.ts": [
+   "apps/api/src/redis/redis.service.ts"
+  ],
+  "apps/api/src/redis/redis.service.spec.ts": [
+   "apps/api/src/redis/redis.service.ts"
+  ],
+  "apps/api/src/redis/redis.service.ts": [],
+  "apps/api/src/throttler/identity-throttler.guard.spec.ts": [
+   "apps/api/src/throttler/identity-throttler.guard.ts",
+   "apps/api/src/throttler/throttle-by-ip.decorator.ts"
+  ],
+  "apps/api/src/throttler/identity-throttler.guard.ts": [
+   "apps/api/src/throttler/throttle-by-ip.decorator.ts"
+  ],
+  "apps/api/src/throttler/throttle-by-ip.decorator.ts": [],
+  "apps/api/src/throttler/throttler-storage.spec.ts": [],
+  "apps/api/src/users/active-day.spec.ts": [
+   "apps/api/src/users/active-day.ts"
+  ],
+  "apps/api/src/users/active-day.ts": [],
+  "apps/api/src/users/public-user.ts": [],
+  "apps/api/src/users/users.controller.ts": [
+   "apps/api/src/app.setup.ts",
+   "apps/api/src/auth/auth.decorators.ts",
+   "apps/api/src/auth/auth.dto.ts",
+   "apps/api/src/users/users.dto.ts",
+   "apps/api/src/users/users.service.ts",
+   "apps/api/src/validation.pipe.ts"
+  ],
+  "apps/api/src/users/users.dto.ts": [],
+  "apps/api/src/users/users.module.ts": [
+   "apps/api/src/users/users.controller.ts",
+   "apps/api/src/users/users.service.ts"
+  ],
+  "apps/api/src/users/users.service.spec.ts": [
+   "apps/api/src/app.setup.ts",
+   "apps/api/src/prisma/prisma.service.ts",
+   "apps/api/src/users/users.service.ts"
+  ],
+  "apps/api/src/users/users.service.ts": [
+   "apps/api/src/app.setup.ts",
+   "apps/api/src/auth/auth.service.ts",
+   "apps/api/src/lessons/goal.ts",
+   "apps/api/src/lessons/roadmap.rules.ts",
+   "apps/api/src/prisma/prisma.service.ts",
+   "apps/api/src/users/active-day.ts",
+   "apps/api/src/users/public-user.ts"
+  ],
+  "apps/api/src/validation.pipe.ts": [],
+  "apps/api/test/app.e2e-spec.ts": [
+   "apps/api/src/app.module.ts",
+   "apps/api/src/app.setup.ts"
+  ],
+  "apps/api/test/attempts.e2e-spec.ts": [
+   "apps/api/prisma/seed.ts",
+   "apps/api/src/app.module.ts",
+   "apps/api/src/app.setup.ts",
+   "apps/api/src/lessons/roadmap.rules.ts",
+   "apps/api/src/metrics/metrics.ts",
+   "apps/api/src/prisma/prisma.service.ts",
+   "apps/api/test/attempts.fixtures.ts",
+   "apps/api/test/metrics.fixtures.ts"
+  ],
+  "apps/api/test/attempts.fixtures.ts": [
+   "apps/api/src/lessons/attempt-ref.ts",
+   "apps/api/src/prisma/prisma.service.ts"
+  ],
+  "apps/api/test/auth.e2e-spec.ts": [
+   "apps/api/src/app.module.ts",
+   "apps/api/src/app.setup.ts",
+   "apps/api/src/prisma/prisma.service.ts"
+  ],
+  "apps/api/test/courses.e2e-spec.ts": [
+   "apps/api/src/app.module.ts",
+   "apps/api/src/app.setup.ts",
+   "apps/api/src/prisma/prisma.service.ts"
+  ],
+  "apps/api/test/demo.e2e-spec.ts": [
+   "apps/api/src/auth/auth.service.ts",
+   "apps/api/src/courses/courses.service.ts",
+   "apps/api/src/demo/demo.clock.ts",
+   "apps/api/src/demo/demo.data.ts",
+   "apps/api/src/demo/demo.ts",
+   "apps/api/src/gateway/sockets.service.ts",
+   "apps/api/src/lessons/goal.ts",
+   "apps/api/src/lessons/lessons.service.ts",
+   "apps/api/src/prisma/prisma.service.ts"
+  ],
+  "apps/api/test/error-codes.e2e-spec.ts": [
+   "apps/api/src/app.module.ts",
+   "apps/api/src/app.setup.ts",
+   "apps/api/src/prisma/prisma.service.ts"
+  ],
+  "apps/api/test/finish.e2e-spec.ts": [
+   "apps/api/src/app.module.ts",
+   "apps/api/src/app.setup.ts",
+   "apps/api/src/lessons/roadmap.rules.ts",
+   "apps/api/src/prisma/prisma.service.ts",
+   "apps/api/test/attempts.fixtures.ts"
+  ],
+  "apps/api/test/friends.e2e-spec.ts": [
+   "apps/api/src/app.module.ts",
+   "apps/api/src/app.setup.ts",
+   "apps/api/src/metrics/metrics.ts",
+   "apps/api/src/prisma/prisma.service.ts",
+   "apps/api/src/users/active-day.ts",
+   "apps/api/test/metrics.fixtures.ts",
+   "apps/api/test/socket.fixtures.ts"
+  ],
+  "apps/api/test/gamification.e2e-spec.ts": [
+   "apps/api/src/app.module.ts",
+   "apps/api/src/app.setup.ts",
+   "apps/api/src/lessons/gamification.rules.ts",
+   "apps/api/src/lessons/gamification.ts",
+   "apps/api/src/lessons/roadmap.rules.ts",
+   "apps/api/src/prisma/prisma.service.ts",
+   "apps/api/test/attempts.fixtures.ts"
+  ],
+  "apps/api/test/gateway.e2e-spec.ts": [
+   "apps/api/src/app.module.ts",
+   "apps/api/src/app.setup.ts",
+   "apps/api/src/gateway/socket.gateway.ts",
+   "apps/api/src/gateway/sockets.service.ts",
+   "apps/api/src/metrics/metrics.ts",
+   "apps/api/src/prisma/prisma.service.ts",
+   "apps/api/src/redis/redis.service.ts",
+   "apps/api/src/users/active-day.ts",
+   "apps/api/test/attempts.fixtures.ts",
+   "apps/api/test/metrics.fixtures.ts",
+   "apps/api/test/socket.fixtures.ts"
+  ],
+  "apps/api/test/lessons.e2e-spec.ts": [
+   "apps/api/src/app.module.ts",
+   "apps/api/src/app.setup.ts",
+   "apps/api/src/lessons/roadmap.rules.ts",
+   "apps/api/src/prisma/prisma.service.ts"
+  ],
+  "apps/api/test/metrics.e2e-spec.ts": [
+   "apps/api/src/app.module.ts",
+   "apps/api/src/app.setup.ts",
+   "apps/api/src/metrics/metrics.ts",
+   "apps/api/test/metrics.fixtures.ts"
+  ],
+  "apps/api/test/metrics.fixtures.ts": [],
+  "apps/api/test/placement.e2e-spec.ts": [
+   "apps/api/src/app.module.ts",
+   "apps/api/src/app.setup.ts",
+   "apps/api/src/placement/placement-session.service.ts",
+   "apps/api/src/prisma/prisma.service.ts",
+   "apps/api/src/redis/redis.service.ts",
+   "apps/api/test/placement.fixtures.ts"
+  ],
+  "apps/api/test/placement.fixtures.ts": [
+   "apps/api/src/placement/placement.schema.ts"
+  ],
+  "apps/api/test/seed.e2e-spec.ts": [
+   "apps/api/prisma/seed.ts",
+   "apps/api/src/prisma/prisma.service.ts"
+  ],
+  "apps/api/test/socket.fixtures.ts": [],
+  "apps/api/test/two-factor.e2e-spec.ts": [
+   "apps/api/src/app.module.ts",
+   "apps/api/src/app.setup.ts",
+   "apps/api/src/prisma/prisma.service.ts"
+  ],
+  "apps/api/test/users.e2e-spec.ts": [
+   "apps/api/src/app.module.ts",
+   "apps/api/src/app.setup.ts",
+   "apps/api/src/lessons/roadmap.rules.ts",
+   "apps/api/src/prisma/prisma.service.ts"
+  ],
+  "apps/api/tsconfig.build.json": [],
+  "apps/api/tsconfig.json": [],
+  "apps/api/vitest.config.e2e.mts": [],
+  "apps/api/vitest.config.mts": [],
+  "apps/web/.dockerignore": [],
+  "apps/web/Dockerfile": [],
+  "apps/web/Dockerfile.dockerignore": [],
+  "apps/web/app/[locale]/(dashboard)/dashboard/page.tsx": [],
+  "apps/web/app/[locale]/(dashboard)/layout.tsx": [
+   "apps/web/components/dashboard-nav.tsx",
+   "apps/web/components/legal-footer.tsx",
+   "apps/web/components/shell.tsx",
+   "apps/web/components/time-zone-sync.tsx",
+   "apps/web/lib/session.ts"
+  ],
+  "apps/web/app/[locale]/(dashboard)/learn/[lang]/direct-level-picker.tsx": [
+   "apps/web/components/form.tsx",
+   "apps/web/lib/courses-client.ts",
+   "apps/web/lib/use-course-save.ts"
+  ],
+  "apps/web/app/[locale]/(dashboard)/learn/[lang]/goal-picker.tsx": [
+   "apps/web/components/form.tsx",
+   "apps/web/lib/api-client.ts",
+   "apps/web/lib/use-course-save.ts"
+  ],
+  "apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/lesson-actions.tsx": [
+   "apps/web/components/form.tsx",
+   "apps/web/components/lesson/confirm-dialog.tsx",
+   "apps/web/i18n/navigation.ts",
+   "apps/web/lib/error-message.ts",
+   "apps/web/lib/lesson-client.ts",
+   "apps/web/lib/lesson-cursor.ts",
+   "apps/web/lib/lesson-history.ts",
+   "apps/web/lib/lesson.ts"
+  ],
+  "apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/page.tsx": [
+   "apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/lesson-actions.tsx",
+   "apps/web/components/lesson/kinds/index.ts",
+   "apps/web/i18n/navigation.ts",
+   "apps/web/lib/lesson-cursor.ts",
+   "apps/web/lib/lesson-navigation.ts",
+   "apps/web/lib/lesson.ts",
+   "apps/web/lib/localized.ts"
+  ],
+  "apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/play/exam-timer.tsx": [],
+  "apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/play/page.tsx": [
+   "apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/play/player.tsx",
+   "apps/web/components/lesson/kinds/index.ts",
+   "apps/web/lib/lesson.ts"
+  ],
+  "apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/play/player.tsx": [
+   "apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/play/exam-timer.tsx",
+   "apps/web/components/form.tsx",
+   "apps/web/components/lesson/confirm-dialog.tsx",
+   "apps/web/components/lesson/kinds/index.ts",
+   "apps/web/components/lesson/navigation.tsx",
+   "apps/web/components/lesson/types.ts",
+   "apps/web/components/lesson/units.tsx",
+   "apps/web/i18n/navigation.ts",
+   "apps/web/lib/error-message.ts",
+   "apps/web/lib/lesson-client.ts",
+   "apps/web/lib/lesson-history.ts",
+   "apps/web/lib/localized.ts"
+  ],
+  "apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/results/page.tsx": [
+   "apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/lesson-actions.tsx",
+   "apps/web/components/form.tsx",
+   "apps/web/components/lesson/kinds/index.ts",
+   "apps/web/components/lesson/results-review.tsx",
+   "apps/web/i18n/navigation.ts",
+   "apps/web/lib/lesson-cursor.ts",
+   "apps/web/lib/lesson.ts",
+   "apps/web/lib/localized.ts"
+  ],
+  "apps/web/app/[locale]/(dashboard)/learn/[lang]/page.tsx": [
+   "apps/web/app/[locale]/(dashboard)/learn/[lang]/direct-level-picker.tsx",
+   "apps/web/app/[locale]/(dashboard)/learn/[lang]/goal-picker.tsx",
+   "apps/web/app/[locale]/(dashboard)/learn/[lang]/today.tsx",
+   "apps/web/components/refresh-on.tsx",
+   "apps/web/i18n/navigation.ts",
+   "apps/web/lib/courses.ts",
+   "apps/web/lib/lessons.ts"
+  ],
+  "apps/web/app/[locale]/(dashboard)/learn/[lang]/placement/page.tsx": [
+   "apps/web/app/[locale]/(dashboard)/learn/[lang]/placement/placement-exam.tsx",
+   "apps/web/lib/api.ts",
+   "apps/web/lib/courses.ts",
+   "apps/web/lib/placement-schema.ts"
+  ],
+  "apps/web/app/[locale]/(dashboard)/learn/[lang]/placement/placement-exam.tsx": [
+   "apps/web/app/[locale]/(dashboard)/learn/[lang]/placement/question-screen.tsx",
+   "apps/web/app/[locale]/(dashboard)/learn/[lang]/placement/result-screen.tsx",
+   "apps/web/app/[locale]/(dashboard)/learn/[lang]/placement/start-screen.tsx",
+   "apps/web/i18n/navigation.ts",
+   "apps/web/lib/api-client.ts",
+   "apps/web/lib/error-message.ts",
+   "apps/web/lib/placement-client.ts",
+   "apps/web/lib/placement-schema.ts"
+  ],
+  "apps/web/app/[locale]/(dashboard)/learn/[lang]/placement/question-screen.tsx": [
+   "apps/web/components/form.tsx"
+  ],
+  "apps/web/app/[locale]/(dashboard)/learn/[lang]/placement/result-screen.tsx": [
+   "apps/web/components/change-level.tsx",
+   "apps/web/components/form.tsx",
+   "apps/web/components/level-picker.tsx",
+   "apps/web/i18n/navigation.ts",
+   "apps/web/lib/level.ts"
+  ],
+  "apps/web/app/[locale]/(dashboard)/learn/[lang]/placement/start-screen.tsx": [
+   "apps/web/components/form.tsx",
+   "apps/web/i18n/navigation.ts"
+  ],
+  "apps/web/app/[locale]/(dashboard)/learn/[lang]/start-level.tsx": [
+   "apps/web/components/form.tsx",
+   "apps/web/lib/courses-client.ts",
+   "apps/web/lib/use-course-save.ts"
+  ],
+  "apps/web/app/[locale]/(dashboard)/learn/[lang]/today.tsx": [
+   "apps/web/app/[locale]/(dashboard)/learn/[lang]/start-level.tsx",
+   "apps/web/components/form.tsx",
+   "apps/web/i18n/navigation.ts",
+   "apps/web/lib/lessons.ts"
+  ],
+  "apps/web/app/[locale]/(dashboard)/learn/page.tsx": [
+   "apps/web/lib/course-path.ts",
+   "apps/web/lib/courses.ts"
+  ],
+  "apps/web/app/[locale]/(main)/friends/friend-search.tsx": [
+   "apps/web/components/form.tsx",
+   "apps/web/i18n/navigation.ts",
+   "apps/web/lib/error-message.ts"
+  ],
+  "apps/web/app/[locale]/(main)/friends/page.tsx": [
+   "apps/web/app/[locale]/(main)/friends/friend-search.tsx",
+   "apps/web/components/friend-buttons.tsx",
+   "apps/web/components/refresh-on.tsx",
+   "apps/web/components/user-row.tsx",
+   "apps/web/lib/friends.ts"
+  ],
+  "apps/web/app/[locale]/(main)/layout.tsx": [
+   "apps/web/components/header-nav.tsx",
+   "apps/web/components/legal-footer.tsx",
+   "apps/web/components/shell.tsx"
+  ],
+  "apps/web/app/[locale]/(main)/login/login-form.tsx": [
+   "apps/web/components/form.tsx",
+   "apps/web/i18n/navigation.ts",
+   "apps/web/lib/auth-client.ts",
+   "apps/web/lib/error-message.ts"
+  ],
+  "apps/web/app/[locale]/(main)/login/page.tsx": [
+   "apps/web/app/[locale]/(main)/login/login-form.tsx"
+  ],
+  "apps/web/app/[locale]/(main)/onboarding/choose-course.tsx": [
+   "apps/web/components/flag.tsx",
+   "apps/web/components/form.tsx",
+   "apps/web/i18n/navigation.ts",
+   "apps/web/lib/courses-client.ts",
+   "apps/web/lib/error-message.ts"
+  ],
+  "apps/web/app/[locale]/(main)/onboarding/choose-level.tsx": [
+   "apps/web/app/[locale]/(main)/onboarding/rocket.tsx",
+   "apps/web/components/flag.tsx",
+   "apps/web/components/form.tsx",
+   "apps/web/components/level-picker.tsx",
+   "apps/web/i18n/navigation.ts",
+   "apps/web/lib/courses-client.ts",
+   "apps/web/lib/error-message.ts",
+   "apps/web/lib/level.ts"
+  ],
+  "apps/web/app/[locale]/(main)/onboarding/page.tsx": [
+   "apps/web/app/[locale]/(main)/onboarding/choose-course.tsx",
+   "apps/web/app/[locale]/(main)/onboarding/choose-level.tsx",
+   "apps/web/lib/courses.ts",
+   "apps/web/lib/onboarding.ts"
+  ],
+  "apps/web/app/[locale]/(main)/onboarding/rocket.tsx": [],
+  "apps/web/app/[locale]/(main)/page.tsx": [
+   "apps/web/i18n/navigation.ts",
+   "apps/web/lib/session.ts"
+  ],
+  "apps/web/app/[locale]/(main)/privacy/page.tsx": [
+   "apps/web/components/legal-article.tsx",
+   "apps/web/lib/legal-content/index.ts"
+  ],
+  "apps/web/app/[locale]/(main)/profile/edit/page.tsx": [
+   "apps/web/app/[locale]/(main)/profile/edit/profile-form.tsx",
+   "apps/web/i18n/navigation.ts",
+   "apps/web/lib/session.ts"
+  ],
+  "apps/web/app/[locale]/(main)/profile/edit/profile-form.tsx": [
+   "apps/web/components/avatar.tsx",
+   "apps/web/components/form.tsx",
+   "apps/web/i18n/navigation.ts",
+   "apps/web/lib/auth-client.ts",
+   "apps/web/lib/error-message.ts"
+  ],
+  "apps/web/app/[locale]/(main)/profile/page.tsx": [
+   "apps/web/components/avatar.tsx",
+   "apps/web/i18n/navigation.ts",
+   "apps/web/lib/session.ts"
+  ],
+  "apps/web/app/[locale]/(main)/settings/2fa/page.tsx": [
+   "apps/web/app/[locale]/(main)/settings/2fa/two-factor-panel.tsx",
+   "apps/web/lib/session.ts"
+  ],
+  "apps/web/app/[locale]/(main)/settings/2fa/two-factor-panel.tsx": [
+   "apps/web/components/form.tsx",
+   "apps/web/lib/api-client.ts",
+   "apps/web/lib/auth-client.ts",
+   "apps/web/lib/error-message.ts"
+  ],
+  "apps/web/app/[locale]/(main)/signup/page.tsx": [
+   "apps/web/app/[locale]/(main)/signup/signup-form.tsx"
+  ],
+  "apps/web/app/[locale]/(main)/signup/signup-form.tsx": [
+   "apps/web/components/form.tsx",
+   "apps/web/i18n/navigation.ts",
+   "apps/web/lib/auth-client.ts",
+   "apps/web/lib/error-message.ts"
+  ],
+  "apps/web/app/[locale]/(main)/terms/page.tsx": [
+   "apps/web/components/legal-article.tsx",
+   "apps/web/lib/legal-content/index.ts"
+  ],
+  "apps/web/app/[locale]/(main)/users/[id]/page.tsx": [
+   "apps/web/components/avatar.tsx",
+   "apps/web/components/friend-buttons.tsx",
+   "apps/web/components/presence-dot.tsx",
+   "apps/web/components/refresh-on.tsx",
+   "apps/web/i18n/navigation.ts",
+   "apps/web/lib/friends.ts",
+   "apps/web/lib/session.ts"
+  ],
+  "apps/web/app/[locale]/(mode)/chat/page.tsx": [
+   "apps/web/lib/session.ts"
+  ],
+  "apps/web/app/[locale]/(mode)/layout.tsx": [
+   "apps/web/components/header-nav.tsx",
+   "apps/web/components/legal-footer.tsx",
+   "apps/web/components/shell.tsx",
+   "apps/web/i18n/navigation.ts"
+  ],
+  "apps/web/app/[locale]/[...rest]/page.tsx": [],
+  "apps/web/app/[locale]/error.tsx": [
+   "apps/web/components/legal-footer.tsx",
+   "apps/web/components/shell.tsx",
+   "apps/web/i18n/navigation.ts"
+  ],
+  "apps/web/app/[locale]/layout.tsx": [
+   "apps/web/app/globals.css",
+   "apps/web/i18n/routing.ts"
+  ],
+  "apps/web/app/[locale]/not-found.tsx": [
+   "apps/web/components/legal-footer.tsx",
+   "apps/web/components/shell.tsx",
+   "apps/web/i18n/navigation.ts"
+  ],
+  "apps/web/app/global-error.tsx": [
+   "apps/web/app/globals.css"
+  ],
+  "apps/web/app/globals.css": [],
+  "apps/web/app/healthz/api/route.ts": [
+   "apps/web/lib/api.ts"
+  ],
+  "apps/web/app/healthz/route.ts": [],
+  "apps/web/app/healthz/upstream/route.ts": [
+   "apps/web/lib/api.ts"
+  ],
+  "apps/web/app/lesson.css": [],
+  "apps/web/components/avatar.tsx": [
+   "apps/web/lib/avatar.ts"
+  ],
+  "apps/web/components/change-level.tsx": [
+   "apps/web/components/form.tsx",
+   "apps/web/components/level-picker.tsx",
+   "apps/web/i18n/navigation.ts",
+   "apps/web/lib/courses-client.ts",
+   "apps/web/lib/error-message.ts",
+   "apps/web/lib/level.ts"
+  ],
+  "apps/web/components/connection-status.tsx": [
+   "apps/web/components/tab-socket.ts",
+   "apps/web/i18n/navigation.ts"
+  ],
+  "apps/web/components/course-switcher.tsx": [
+   "apps/web/i18n/navigation.ts",
+   "apps/web/lib/course-path.ts"
+  ],
+  "apps/web/components/dashboard-nav.tsx": [
+   "apps/web/components/course-switcher.tsx",
+   "apps/web/components/language-switcher.tsx",
+   "apps/web/components/session-nav.tsx",
+   "apps/web/lib/courses.ts"
+  ],
+  "apps/web/components/flag.tsx": [],
+  "apps/web/components/form.tsx": [],
+  "apps/web/components/friend-buttons.tsx": [
+   "apps/web/components/form.tsx",
+   "apps/web/i18n/navigation.ts",
+   "apps/web/lib/api-client.ts",
+   "apps/web/lib/error-message.ts",
+   "apps/web/lib/friends-client.ts"
+  ],
+  "apps/web/components/header-nav.tsx": [
+   "apps/web/components/language-switcher.tsx",
+   "apps/web/components/session-nav.tsx"
+  ],
+  "apps/web/components/language-switcher.tsx": [
+   "apps/web/i18n/navigation.ts"
+  ],
+  "apps/web/components/legal-article.tsx": [
+   "apps/web/lib/legal.ts"
+  ],
+  "apps/web/components/legal-footer.tsx": [
+   "apps/web/i18n/navigation.ts"
+  ],
+  "apps/web/components/lesson/board.tsx": [
+   "apps/web/components/lesson/controls.tsx",
+   "apps/web/components/lesson/matching-pairs.tsx",
+   "apps/web/components/lesson/types.ts"
+  ],
+  "apps/web/components/lesson/confirm-dialog.tsx": [
+   "apps/web/components/form.tsx"
+  ],
+  "apps/web/components/lesson/controls.tsx": [
+   "apps/web/components/lesson/types.ts",
+   "apps/web/lib/localized.ts"
+  ],
+  "apps/web/components/lesson/kinds/grammar-start.tsx": [
+   "apps/web/components/lesson/types.ts",
+   "apps/web/lib/localized.ts"
+  ],
+  "apps/web/components/lesson/kinds/grammar.tsx": [
+   "apps/web/components/lesson/board.tsx",
+   "apps/web/components/lesson/rich-text.tsx",
+   "apps/web/components/lesson/types.ts",
+   "apps/web/components/lesson/units.tsx",
+   "apps/web/lib/localized.ts"
+  ],
+  "apps/web/components/lesson/kinds/index.ts": [
+   "apps/web/components/lesson/kinds/grammar-start.tsx",
+   "apps/web/components/lesson/kinds/grammar.tsx",
+   "apps/web/components/lesson/types.ts"
+  ],
+  "apps/web/components/lesson/matching-pairs.tsx": [
+   "apps/web/components/lesson/controls.tsx",
+   "apps/web/components/lesson/types.ts"
+  ],
+  "apps/web/components/lesson/navigation.tsx": [
+   "apps/web/components/lesson/types.ts",
+   "apps/web/lib/lesson-navigation.ts",
+   "apps/web/lib/localized.ts"
+  ],
+  "apps/web/components/lesson/results-review.tsx": [
+   "apps/web/lib/localized.ts",
+   "apps/web/lib/result-part.ts",
+   "apps/web/lib/result-score-tone.ts"
+  ],
+  "apps/web/components/lesson/rich-text.tsx": [],
+  "apps/web/components/lesson/types.ts": [],
+  "apps/web/components/lesson/units.tsx": [
+   "apps/web/components/lesson/controls.tsx",
+   "apps/web/components/lesson/types.ts",
+   "apps/web/lib/localized.ts"
+  ],
+  "apps/web/components/level-picker.tsx": [
+   "apps/web/lib/level.ts"
+  ],
+  "apps/web/components/log-out-button.tsx": [
+   "apps/web/components/tab-socket.ts",
+   "apps/web/i18n/navigation.ts",
+   "apps/web/lib/auth-client.ts"
+  ],
+  "apps/web/components/presence-dot.tsx": [
+   "apps/web/components/tab-socket.ts"
+  ],
+  "apps/web/components/refresh-on.tsx": [
+   "apps/web/components/tab-socket.ts",
+   "apps/web/i18n/navigation.ts"
+  ],
+  "apps/web/components/session-nav.tsx": [
+   "apps/web/components/avatar.tsx",
+   "apps/web/components/connection-status.tsx",
+   "apps/web/components/log-out-button.tsx",
+   "apps/web/i18n/navigation.ts",
+   "apps/web/lib/session.ts"
+  ],
+  "apps/web/components/shell.tsx": [
+   "apps/web/i18n/navigation.ts"
+  ],
+  "apps/web/components/tab-socket.ts": [
+   "apps/web/lib/presence.ts",
+   "apps/web/lib/reconnect.ts"
+  ],
+  "apps/web/components/time-zone-sync.tsx": [
+   "apps/web/i18n/navigation.ts",
+   "apps/web/lib/auth-client.ts"
+  ],
+  "apps/web/components/user-row.tsx": [
+   "apps/web/components/avatar.tsx",
+   "apps/web/components/presence-dot.tsx",
+   "apps/web/i18n/navigation.ts"
+  ],
+  "apps/web/eslint.config.mjs": [],
+  "apps/web/i18n/navigation.ts": [
+   "apps/web/i18n/routing.ts"
+  ],
+  "apps/web/i18n/request.ts": [
+   "apps/web/i18n/routing.ts"
+  ],
+  "apps/web/i18n/routing.ts": [],
+  "apps/web/lib/api-client.test.ts": [
+   "apps/web/lib/api-client.ts"
+  ],
+  "apps/web/lib/api-client.ts": [],
+  "apps/web/lib/api.test.ts": [
+   "apps/web/lib/api.ts"
+  ],
+  "apps/web/lib/api.ts": [],
+  "apps/web/lib/auth-client.test.ts": [
+   "apps/web/lib/auth-client.ts"
+  ],
+  "apps/web/lib/auth-client.ts": [
+   "apps/web/lib/api-client.ts"
+  ],
+  "apps/web/lib/avatar.test.ts": [
+   "apps/web/lib/avatar.ts"
+  ],
+  "apps/web/lib/avatar.ts": [],
+  "apps/web/lib/course-path.ts": [],
+  "apps/web/lib/courses-client.test.ts": [
+   "apps/web/lib/courses-client.ts"
+  ],
+  "apps/web/lib/courses-client.ts": [
+   "apps/web/lib/api-client.ts"
+  ],
+  "apps/web/lib/courses.test.ts": [
+   "apps/web/lib/course-path.ts",
+   "apps/web/lib/courses.ts"
+  ],
+  "apps/web/lib/courses.ts": [
+   "apps/web/lib/api.ts"
+  ],
+  "apps/web/lib/error-message.ts": [],
+  "apps/web/lib/friends-client.test.ts": [
+   "apps/web/lib/friends-client.ts"
+  ],
+  "apps/web/lib/friends-client.ts": [
+   "apps/web/lib/api-client.ts"
+  ],
+  "apps/web/lib/friends.test.ts": [
+   "apps/web/lib/friends.ts"
+  ],
+  "apps/web/lib/friends.ts": [
+   "apps/web/lib/api.ts"
+  ],
+  "apps/web/lib/legal-content/de.ts": [
+   "apps/web/lib/legal.ts"
+  ],
+  "apps/web/lib/legal-content/en.ts": [
+   "apps/web/lib/legal.ts"
+  ],
+  "apps/web/lib/legal-content/fr.ts": [
+   "apps/web/lib/legal.ts"
+  ],
+  "apps/web/lib/legal-content/index.ts": [
+   "apps/web/lib/legal-content/de.ts",
+   "apps/web/lib/legal-content/en.ts",
+   "apps/web/lib/legal-content/fr.ts",
+   "apps/web/lib/legal.ts"
+  ],
+  "apps/web/lib/legal.test.ts": [
+   "apps/web/lib/legal-content/index.ts",
+   "apps/web/lib/legal.ts"
+  ],
+  "apps/web/lib/legal.ts": [],
+  "apps/web/lib/lesson-client.test.ts": [
+   "apps/web/lib/lesson-client.ts"
+  ],
+  "apps/web/lib/lesson-client.ts": [
+   "apps/web/lib/api-client.ts",
+   "apps/web/lib/lesson-cursor.ts"
+  ],
+  "apps/web/lib/lesson-cursor.ts": [],
+  "apps/web/lib/lesson-history.test.ts": [
+   "apps/web/lib/lesson-history.ts"
+  ],
+  "apps/web/lib/lesson-history.ts": [],
+  "apps/web/lib/lesson-navigation.test.ts": [
+   "apps/web/components/lesson/types.ts",
+   "apps/web/lib/lesson-navigation.ts"
+  ],
+  "apps/web/lib/lesson-navigation.ts": [
+   "apps/web/components/lesson/types.ts"
+  ],
+  "apps/web/lib/lesson.test.ts": [],
+  "apps/web/lib/lesson.ts": [
+   "apps/web/lib/api.ts",
+   "apps/web/lib/courses.ts",
+   "apps/web/lib/lessons.ts"
+  ],
+  "apps/web/lib/lessons.ts": [
+   "apps/web/lib/api.ts"
+  ],
+  "apps/web/lib/level.test.ts": [
+   "apps/web/lib/level.ts"
+  ],
+  "apps/web/lib/level.ts": [],
+  "apps/web/lib/localized.test.ts": [
+   "apps/web/lib/localized.ts"
+  ],
+  "apps/web/lib/localized.ts": [],
+  "apps/web/lib/messages.test.ts": [
+   "apps/web/messages/de.json",
+   "apps/web/messages/en.json",
+   "apps/web/messages/fr.json"
+  ],
+  "apps/web/lib/onboarding.test.ts": [
+   "apps/web/lib/onboarding.ts"
+  ],
+  "apps/web/lib/onboarding.ts": [],
+  "apps/web/lib/placement-client.test.ts": [
+   "apps/web/lib/placement-client.ts"
+  ],
+  "apps/web/lib/placement-client.ts": [
+   "apps/web/lib/api-client.ts",
+   "apps/web/lib/placement-schema.ts"
+  ],
+  "apps/web/lib/placement-schema.test.ts": [
+   "apps/web/lib/placement-schema.ts"
+  ],
+  "apps/web/lib/placement-schema.ts": [],
+  "apps/web/lib/presence.test.ts": [
+   "apps/web/lib/presence.ts"
+  ],
+  "apps/web/lib/presence.ts": [],
+  "apps/web/lib/reconnect.test.ts": [
+   "apps/web/lib/reconnect.ts"
+  ],
+  "apps/web/lib/reconnect.ts": [],
+  "apps/web/lib/result-part.test.ts": [
+   "apps/web/lib/result-part.ts"
+  ],
+  "apps/web/lib/result-part.ts": [],
+  "apps/web/lib/result-score-tone.test.ts": [
+   "apps/web/lib/result-score-tone.ts"
+  ],
+  "apps/web/lib/result-score-tone.ts": [],
+  "apps/web/lib/serial-queue.test.ts": [
+   "apps/web/lib/serial-queue.ts"
+  ],
+  "apps/web/lib/serial-queue.ts": [],
+  "apps/web/lib/session.test.ts": [],
+  "apps/web/lib/session.ts": [
+   "apps/web/lib/api.ts"
+  ],
+  "apps/web/lib/use-course-save.ts": [
+   "apps/web/i18n/navigation.ts",
+   "apps/web/lib/api-client.ts",
+   "apps/web/lib/error-message.ts",
+   "apps/web/lib/serial-queue.ts"
+  ],
+  "apps/web/messages/de.json": [],
+  "apps/web/messages/en.json": [],
+  "apps/web/messages/fr.json": [],
+  "apps/web/next.config.ts": [],
+  "apps/web/package.json": [],
+  "apps/web/postcss.config.mjs": [],
+  "apps/web/proxy.ts": [
+   "apps/web/i18n/routing.ts",
+   "apps/web/lib/course-path.ts"
+  ],
+  "apps/web/public/logo.webp": [],
+  "apps/web/public/robots.txt": [],
+  "apps/web/tsconfig.json": [],
+  "apps/web/vitest.config.mts": [],
+  "compose.deploy.proxy.yml": [],
+  "compose.deploy.yml": [],
+  "compose.override.yml": [],
+  "compose.prod.yml": [],
+  "compose.yml": [],
+  "docs/ARCHITECTURE.md": [],
+  "docs/BACKLOG.md": [],
+  "docs/DEPLOYMENT.md": [],
+  "docs/DEVELOPMENT.md": [],
+  "docs/ITEM_BANK.md": [],
+  "docs/LESSONS.md": [],
+  "docs/MONITORING.md": [],
+  "docs/PRODUCT_ARCHITECTURE.md": [],
+  "docs/SUBJECT_SUMMARY.md": [],
+  "docs/TECHNICAL_PLAN.md": [],
+  "docs/VERSIONS.md": [],
+  "e2e/eslint.config.mjs": [],
+  "e2e/package.json": [],
+  "e2e/playwright.config.ts": [],
+  "e2e/support/console-guard.ts": [],
+  "e2e/support/layout.ts": [],
+  "e2e/support/lesson-play.ts": [],
+  "e2e/support/live.ts": [],
+  "e2e/support/routes.ts": [
+   "e2e/support/session.ts"
+  ],
+  "e2e/support/session.ts": [
+   "e2e/support/signup-budget.ts"
+  ],
+  "e2e/support/signup-budget.ts": [],
+  "e2e/tests/auth.spec.ts": [
+   "e2e/support/session.ts"
+  ],
+  "e2e/tests/avatar.spec.ts": [
+   "e2e/support/session.ts"
+  ],
+  "e2e/tests/console.spec.ts": [
+   "e2e/support/console-guard.ts",
+   "e2e/support/live.ts",
+   "e2e/support/routes.ts",
+   "e2e/support/session.ts"
+  ],
+  "e2e/tests/course.spec.ts": [
+   "e2e/support/session.ts"
+  ],
+  "e2e/tests/dashboard.spec.ts": [
+   "e2e/support/session.ts"
+  ],
+  "e2e/tests/friends.spec.ts": [
+   "e2e/support/console-guard.ts",
+   "e2e/support/layout.ts",
+   "e2e/support/live.ts",
+   "e2e/support/session.ts"
+  ],
+  "e2e/tests/i18n.spec.ts": [],
+  "e2e/tests/landing.spec.ts": [
+   "e2e/support/session.ts"
+  ],
+  "e2e/tests/layout-gate.spec.ts": [
+   "e2e/support/layout.ts"
+  ],
+  "e2e/tests/layout.spec.ts": [
+   "e2e/support/layout.ts",
+   "e2e/support/routes.ts",
+   "e2e/support/session.ts"
+  ],
+  "e2e/tests/legal.spec.ts": [
+   "e2e/support/routes.ts",
+   "e2e/support/session.ts"
+  ],
+  "e2e/tests/lesson-regressions.spec.ts": [
+   "e2e/support/layout.ts",
+   "e2e/support/lesson-play.ts",
+   "e2e/support/session.ts"
+  ],
+  "e2e/tests/lesson.spec.ts": [
+   "e2e/support/console-guard.ts",
+   "e2e/support/layout.ts",
+   "e2e/support/lesson-play.ts",
+   "e2e/support/live.ts",
+   "e2e/support/session.ts"
+  ],
+  "e2e/tests/live.spec.ts": [
+   "e2e/support/console-guard.ts",
+   "e2e/support/live.ts",
+   "e2e/support/session.ts"
+  ],
+  "e2e/tests/monitoring.spec.ts": [],
+  "e2e/tests/onboarding.spec.ts": [
+   "e2e/support/session.ts"
+  ],
+  "e2e/tests/placement.spec.ts": [
+   "e2e/support/layout.ts",
+   "e2e/support/session.ts"
+  ],
+  "e2e/tests/restart.spec.ts": [
+   "e2e/support/console-guard.ts",
+   "e2e/support/live.ts",
+   "e2e/support/session.ts"
+  ],
+  "e2e/tests/signup-budget.spec.ts": [
+   "e2e/support/signup-budget.ts"
+  ],
+  "e2e/tests/smoke.spec.ts": [
+   "e2e/support/routes.ts"
+  ],
+  "e2e/tests/time-zone.spec.ts": [
+   "e2e/support/console-guard.ts",
+   "e2e/support/session.ts"
+  ],
+  "e2e/tests/today.spec.ts": [
+   "e2e/support/lesson-play.ts",
+   "e2e/support/session.ts"
+  ],
+  "e2e/tsconfig.json": [],
+  "infra/caddy/Caddyfile": [],
+  "infra/caddy/Caddyfile.prod": [],
+  "infra/deploy/.env.example": [],
+  "infra/deploy/deploy.sh": [],
+  "infra/deploy/ft-deploy.service": [],
+  "infra/deploy/ft-deploy.timer": [],
+  "infra/monitoring/alertmanager/Dockerfile": [],
+  "infra/monitoring/alertmanager/alertmanager.yml": [],
+  "infra/monitoring/alertmanager/entrypoint.sh": [],
+  "infra/monitoring/alertmanager/silent.yml": [],
+  "infra/monitoring/alertmanager/templates/discord.tmpl": [],
+  "infra/monitoring/grafana/Dockerfile": [],
+  "infra/monitoring/grafana/dashboards/api.json": [],
+  "infra/monitoring/grafana/dashboards/infrastructure.json": [],
+  "infra/monitoring/grafana/dashboards/learning.json": [],
+  "infra/monitoring/grafana/dashboards/overview.json": [],
+  "infra/monitoring/grafana/entrypoint.sh": [],
+  "infra/monitoring/grafana/grafana.ini": [],
+  "infra/monitoring/grafana/provisioning/dashboards/dashboards.yml": [],
+  "infra/monitoring/grafana/provisioning/datasources/datasources.yml": [],
+  "infra/monitoring/prometheus/Dockerfile": [],
+  "infra/monitoring/prometheus/prometheus.yml": [],
+  "infra/monitoring/prometheus/rules/alerts.yml": [],
+  "infra/monitoring/prometheus/tests/alerts.test.yml": [],
+  "package.json": [],
+  "packages/eslint-config/base.js": [],
+  "packages/eslint-config/eslint.config.js": [
+   "packages/eslint-config/base.js"
+  ],
+  "packages/eslint-config/nest.js": [
+   "packages/eslint-config/base.js"
+  ],
+  "packages/eslint-config/next.js": [
+   "packages/eslint-config/base.js"
+  ],
+  "packages/eslint-config/package.json": [],
+  "packages/shared/eslint.config.mjs": [],
+  "packages/shared/package.json": [],
+  "packages/shared/src/events/index.ts": [],
+  "packages/shared/src/events/socket.test.ts": [
+   "packages/shared/src/events/index.ts"
+  ],
+  "packages/shared/src/events/socket.ts": [
+   "packages/shared/src/schemas/errors.ts",
+   "packages/shared/src/schemas/language.ts"
+  ],
+  "packages/shared/src/index.ts": [],
+  "packages/shared/src/lessons/domain/articles.ts": [
+   "packages/shared/src/lessons/schemas/vocabulary.ts",
+   "packages/shared/src/schemas/language.ts"
+  ],
+  "packages/shared/src/lessons/domain/functionsLesson.ts": [
+   "packages/shared/src/lessons/schemas/functions.ts",
+   "packages/shared/src/schemas/locale.ts"
+  ],
+  "packages/shared/src/lessons/domain/lessonCopy.ts": [
+   "packages/shared/src/lessons/domain/articles.ts",
+   "packages/shared/src/lessons/schemas/artifactCommon.ts",
+   "packages/shared/src/schemas/language.ts"
+  ],
+  "packages/shared/src/lessons/domain/readingLesson.ts": [
+   "packages/shared/src/lessons/schemas/reading.ts",
+   "packages/shared/src/schemas/item.ts"
+  ],
+  "packages/shared/src/lessons/domain/richText.test.ts": [
+   "packages/shared/src/lessons/domain/richText.ts"
+  ],
+  "packages/shared/src/lessons/domain/richText.ts": [],
+  "packages/shared/src/lessons/domain/vocabularyAnswers.ts": [
+   "packages/shared/src/lessons/schemas/artifactCommon.ts",
+   "packages/shared/src/lessons/schemas/vocabulary.ts",
+   "packages/shared/src/schemas/locale.ts"
+  ],
+  "packages/shared/src/lessons/domain/vocabularyLesson.ts": [
+   "packages/shared/src/lessons/domain/lessonCopy.ts",
+   "packages/shared/src/lessons/domain/vocabularyAnswers.ts",
+   "packages/shared/src/lessons/schemas/artifactCommon.ts",
+   "packages/shared/src/lessons/schemas/vocabulary.ts"
+  ],
+  "packages/shared/src/lessons/index.ts": [],
+  "packages/shared/src/lessons/player/articleHint.ts": [
+   "packages/shared/src/lessons/player/score.ts"
+  ],
+  "packages/shared/src/lessons/player/attempt.test.ts": [
+   "packages/shared/src/lessons/player/attempt.ts",
+   "packages/shared/src/lessons/player/fixtures.testing.ts",
+   "packages/shared/src/lessons/player/plan.ts",
+   "packages/shared/src/lessons/player/redact.ts",
+   "packages/shared/src/lessons/player/view.ts"
+  ],
+  "packages/shared/src/lessons/player/attempt.ts": [
+   "packages/shared/src/lessons/player/copy.ts",
+   "packages/shared/src/lessons/player/feedback.ts",
+   "packages/shared/src/lessons/player/plan.ts",
+   "packages/shared/src/lessons/player/redact.ts",
+   "packages/shared/src/lessons/player/score.ts",
+   "packages/shared/src/lessons/player/view.ts"
+  ],
+  "packages/shared/src/lessons/player/copy.ts": [
+   "packages/shared/src/lessons/domain/lessonCopy.ts",
+   "packages/shared/src/lessons/schemas/artifactCommon.ts"
+  ],
+  "packages/shared/src/lessons/player/feedback.ts": [
+   "packages/shared/src/lessons/player/plan.ts",
+   "packages/shared/src/lessons/player/redact.ts",
+   "packages/shared/src/lessons/player/score.ts",
+   "packages/shared/src/lessons/player/view.ts",
+   "packages/shared/src/lessons/schemas/vocabulary.ts"
+  ],
+  "packages/shared/src/lessons/player/fixtures.testing.ts": [
+   "packages/shared/src/lessons/player/plan.ts",
+   "packages/shared/src/lessons/player/redact.ts",
+   "packages/shared/src/lessons/player/score.ts",
+   "packages/shared/src/lessons/player/view.ts",
+   "packages/shared/src/lessons/schemas/artifacts.ts"
+  ],
+  "packages/shared/src/lessons/player/index.ts": [],
+  "packages/shared/src/lessons/player/kinds/contentFile.ts": [
+   "packages/shared/src/lessons/schemas/artifacts.ts"
+  ],
+  "packages/shared/src/lessons/player/kinds/functions.ts": [
+   "packages/shared/src/lessons/domain/functionsLesson.ts",
+   "packages/shared/src/lessons/player/kinds/contentFile.ts",
+   "packages/shared/src/lessons/player/kinds/kind.ts",
+   "packages/shared/src/lessons/player/plan.ts",
+   "packages/shared/src/lessons/schemas/functions.ts"
+  ],
+  "packages/shared/src/lessons/player/kinds/grammar.ts": [
+   "packages/shared/src/lessons/player/copy.ts",
+   "packages/shared/src/lessons/player/kinds/contentFile.ts",
+   "packages/shared/src/lessons/player/kinds/kind.ts",
+   "packages/shared/src/lessons/player/plan.ts",
+   "packages/shared/src/lessons/schemas/grammar.ts"
+  ],
+  "packages/shared/src/lessons/player/kinds/index.ts": [
+   "packages/shared/src/lessons/player/kinds/functions.ts",
+   "packages/shared/src/lessons/player/kinds/grammar.ts",
+   "packages/shared/src/lessons/player/kinds/kind.ts",
+   "packages/shared/src/lessons/player/kinds/reading.ts",
+   "packages/shared/src/lessons/player/kinds/vocabulary.ts",
+   "packages/shared/src/lessons/player/plan.ts",
+   "packages/shared/src/lessons/schemas/artifacts.ts"
+  ],
+  "packages/shared/src/lessons/player/kinds/kind.ts": [
+   "packages/shared/src/lessons/player/plan.ts",
+   "packages/shared/src/lessons/schemas/artifactCommon.ts",
+   "packages/shared/src/lessons/schemas/artifacts.ts",
+   "packages/shared/src/schemas/locale.ts"
+  ],
+  "packages/shared/src/lessons/player/kinds/reading.ts": [
+   "packages/shared/src/lessons/player/copy.ts",
+   "packages/shared/src/lessons/player/kinds/contentFile.ts",
+   "packages/shared/src/lessons/player/kinds/kind.ts",
+   "packages/shared/src/lessons/player/readingPlan.ts",
+   "packages/shared/src/lessons/schemas/reading.ts"
+  ],
+  "packages/shared/src/lessons/player/kinds/vocabulary.ts": [
+   "packages/shared/src/lessons/domain/vocabularyLesson.ts",
+   "packages/shared/src/lessons/player/copy.ts",
+   "packages/shared/src/lessons/player/kinds/kind.ts",
+   "packages/shared/src/lessons/player/plan.ts",
+   "packages/shared/src/lessons/schemas/vocabulary.ts"
+  ],
+  "packages/shared/src/lessons/player/motherTongue.ts": [
+   "packages/shared/src/schemas/language.ts",
+   "packages/shared/src/schemas/locale.ts"
+  ],
+  "packages/shared/src/lessons/player/outline.test.ts": [
+   "packages/shared/src/lessons/player/fixtures.testing.ts",
+   "packages/shared/src/lessons/player/outline.ts",
+   "packages/shared/src/lessons/player/plan.ts",
+   "packages/shared/src/lessons/player/view.ts"
+  ],
+  "packages/shared/src/lessons/player/outline.ts": [
+   "packages/shared/src/lessons/player/kinds/index.ts",
+   "packages/shared/src/lessons/player/plan.ts",
+   "packages/shared/src/lessons/player/view.ts",
+   "packages/shared/src/lessons/schemas/artifactCommon.ts"
+  ],
+  "packages/shared/src/lessons/player/plan.test.ts": [
+   "packages/shared/src/lessons/player/articleHint.ts",
+   "packages/shared/src/lessons/player/copy.ts",
+   "packages/shared/src/lessons/player/fixtures.testing.ts",
+   "packages/shared/src/lessons/player/kinds/index.ts",
+   "packages/shared/src/lessons/player/motherTongue.ts",
+   "packages/shared/src/lessons/player/plan.ts",
+   "packages/shared/src/lessons/player/score.ts"
+  ],
+  "packages/shared/src/lessons/player/plan.ts": [
+   "packages/shared/src/lessons/player/copy.ts",
+   "packages/shared/src/lessons/player/kinds/index.ts",
+   "packages/shared/src/lessons/schemas/artifactCommon.ts",
+   "packages/shared/src/lessons/schemas/artifacts.ts",
+   "packages/shared/src/lessons/schemas/functions.ts",
+   "packages/shared/src/lessons/schemas/grammar.ts",
+   "packages/shared/src/lessons/schemas/reading.ts",
+   "packages/shared/src/lessons/schemas/vocabulary.ts",
+   "packages/shared/src/schemas/language.ts",
+   "packages/shared/src/schemas/locale.ts"
+  ],
+  "packages/shared/src/lessons/player/readingPlan.ts": [
+   "packages/shared/src/lessons/player/kinds/kind.ts",
+   "packages/shared/src/lessons/player/plan.ts",
+   "packages/shared/src/lessons/schemas/reading.ts",
+   "packages/shared/src/schemas/locale.ts"
+  ],
+  "packages/shared/src/lessons/player/redact.test.ts": [
+   "packages/shared/src/lessons/player/fixtures.testing.ts",
+   "packages/shared/src/lessons/player/outline.ts",
+   "packages/shared/src/lessons/player/plan.ts",
+   "packages/shared/src/lessons/player/redact.ts",
+   "packages/shared/src/lessons/player/view.ts"
+  ],
+  "packages/shared/src/lessons/player/redact.ts": [
+   "packages/shared/src/lessons/domain/functionsLesson.ts",
+   "packages/shared/src/lessons/player/articleHint.ts",
+   "packages/shared/src/lessons/player/kinds/kind.ts",
+   "packages/shared/src/lessons/player/plan.ts",
+   "packages/shared/src/lessons/player/view.ts",
+   "packages/shared/src/lessons/schemas/functions.ts",
+   "packages/shared/src/lessons/schemas/reading.ts",
+   "packages/shared/src/lessons/schemas/vocabulary.ts"
+  ],
+  "packages/shared/src/lessons/player/score.test.ts": [
+   "packages/shared/src/lessons/player/fixtures.testing.ts",
+   "packages/shared/src/lessons/player/plan.ts",
+   "packages/shared/src/lessons/player/score.ts"
+  ],
+  "packages/shared/src/lessons/player/score.ts": [
+   "packages/shared/src/lessons/player/kinds/index.ts",
+   "packages/shared/src/lessons/player/plan.ts",
+   "packages/shared/src/lessons/schemas/artifactCommon.ts",
+   "packages/shared/src/lessons/schemas/vocabulary.ts"
+  ],
+  "packages/shared/src/lessons/player/view.test.ts": [
+   "packages/shared/src/lessons/player/view.ts"
+  ],
+  "packages/shared/src/lessons/player/view.ts": [
+   "packages/shared/src/lessons/player/score.ts",
+   "packages/shared/src/lessons/schemas/reading.ts",
+   "packages/shared/src/lessons/schemas/vocabulary.ts",
+   "packages/shared/src/schemas/lesson.ts",
+   "packages/shared/src/schemas/locale.ts"
+  ],
+  "packages/shared/src/lessons/schemas/artifactCommon.ts": [
+   "packages/shared/src/schemas/item.ts",
+   "packages/shared/src/schemas/language.ts",
+   "packages/shared/src/schemas/lesson.ts",
+   "packages/shared/src/schemas/locale.ts"
+  ],
+  "packages/shared/src/lessons/schemas/artifacts.ts": [
+   "packages/shared/src/lessons/schemas/functions.ts",
+   "packages/shared/src/lessons/schemas/grammar.ts",
+   "packages/shared/src/lessons/schemas/reading.ts",
+   "packages/shared/src/lessons/schemas/vocabulary.ts",
+   "packages/shared/src/schemas/lesson.ts"
+  ],
+  "packages/shared/src/lessons/schemas/functions.ts": [
+   "packages/shared/src/lessons/schemas/artifactCommon.ts",
+   "packages/shared/src/lessons/schemas/vocabulary.ts",
+   "packages/shared/src/schemas/lesson.ts"
+  ],
+  "packages/shared/src/lessons/schemas/grammar.ts": [
+   "packages/shared/src/lessons/schemas/artifactCommon.ts",
+   "packages/shared/src/schemas/item.ts",
+   "packages/shared/src/schemas/language.ts"
+  ],
+  "packages/shared/src/lessons/schemas/reading.ts": [
+   "packages/shared/src/lessons/schemas/artifactCommon.ts",
+   "packages/shared/src/schemas/item.ts",
+   "packages/shared/src/schemas/lesson.ts"
+  ],
+  "packages/shared/src/lessons/schemas/vocabulary.ts": [
+   "packages/shared/src/lessons/schemas/artifactCommon.ts",
+   "packages/shared/src/schemas/lesson.ts"
+  ],
+  "packages/shared/src/lessons/validateLesson.test.ts": [
+   "packages/shared/src/lessons/validateLesson.ts",
+   "packages/shared/src/lessons/validation/artifacts.ts",
+   "packages/shared/src/schemas/lesson.ts"
+  ],
+  "packages/shared/src/lessons/validateLesson.ts": [
+   "packages/shared/src/lessons/schemas/artifacts.ts",
+   "packages/shared/src/lessons/validation/artifacts.ts",
+   "packages/shared/src/schemas/lesson.ts"
+  ],
+  "packages/shared/src/lessons/validation/artifacts.test.ts": [
+   "packages/shared/src/lessons/domain/lessonCopy.ts",
+   "packages/shared/src/lessons/domain/vocabularyLesson.ts",
+   "packages/shared/src/lessons/schemas/artifacts.ts",
+   "packages/shared/src/lessons/validation/artifacts.ts",
+   "packages/shared/src/schemas/lesson.ts"
+  ],
+  "packages/shared/src/lessons/validation/artifacts.ts": [
+   "packages/shared/src/lessons/schemas/artifacts.ts",
+   "packages/shared/src/lessons/validation/common.ts",
+   "packages/shared/src/lessons/validation/functions.ts",
+   "packages/shared/src/lessons/validation/grammar.ts",
+   "packages/shared/src/lessons/validation/issues.ts",
+   "packages/shared/src/lessons/validation/reading.ts",
+   "packages/shared/src/lessons/validation/vocabulary.ts",
+   "packages/shared/src/schemas/item.ts",
+   "packages/shared/src/schemas/language.ts",
+   "packages/shared/src/schemas/lesson.ts"
+  ],
+  "packages/shared/src/lessons/validation/common.ts": [
+   "packages/shared/src/lessons/domain/richText.ts",
+   "packages/shared/src/lessons/validation/issues.ts"
+  ],
+  "packages/shared/src/lessons/validation/functions.test.ts": [
+   "packages/shared/src/lessons/domain/functionsLesson.ts",
+   "packages/shared/src/lessons/schemas/artifacts.ts",
+   "packages/shared/src/lessons/schemas/functions.ts",
+   "packages/shared/src/lessons/validation/artifacts.ts",
+   "packages/shared/src/schemas/lesson.ts"
+  ],
+  "packages/shared/src/lessons/validation/functions.ts": [
+   "packages/shared/src/lessons/domain/articles.ts",
+   "packages/shared/src/lessons/domain/functionsLesson.ts",
+   "packages/shared/src/lessons/domain/vocabularyLesson.ts",
+   "packages/shared/src/lessons/schemas/artifactCommon.ts",
+   "packages/shared/src/lessons/schemas/functions.ts",
+   "packages/shared/src/lessons/validation/artifacts.ts",
+   "packages/shared/src/lessons/validation/common.ts",
+   "packages/shared/src/lessons/validation/issues.ts"
+  ],
+  "packages/shared/src/lessons/validation/grammar.ts": [
+   "packages/shared/src/lessons/schemas/grammar.ts",
+   "packages/shared/src/lessons/validation/common.ts",
+   "packages/shared/src/lessons/validation/issues.ts",
+   "packages/shared/src/schemas/language.ts"
+  ],
+  "packages/shared/src/lessons/validation/grammarLength.ts": [
+   "packages/shared/src/lessons/schemas/grammar.ts",
+   "packages/shared/src/lessons/validation/issues.ts"
+  ],
+  "packages/shared/src/lessons/validation/issues.ts": [],
+  "packages/shared/src/lessons/validation/reading.test.ts": [
+   "packages/shared/src/lessons/domain/readingLesson.ts",
+   "packages/shared/src/lessons/schemas/artifacts.ts",
+   "packages/shared/src/lessons/schemas/reading.ts",
+   "packages/shared/src/lessons/validation/artifacts.ts",
+   "packages/shared/src/schemas/lesson.ts"
+  ],
+  "packages/shared/src/lessons/validation/reading.ts": [
+   "packages/shared/src/lessons/domain/readingLesson.ts",
+   "packages/shared/src/lessons/schemas/artifactCommon.ts",
+   "packages/shared/src/lessons/schemas/reading.ts",
+   "packages/shared/src/lessons/validation/common.ts",
+   "packages/shared/src/lessons/validation/issues.ts",
+   "packages/shared/src/schemas/item.ts"
+  ],
+  "packages/shared/src/lessons/validation/vocabulary.ts": [
+   "packages/shared/src/lessons/domain/articles.ts",
+   "packages/shared/src/lessons/domain/vocabularyLesson.ts",
+   "packages/shared/src/lessons/schemas/artifactCommon.ts",
+   "packages/shared/src/lessons/schemas/vocabulary.ts",
+   "packages/shared/src/lessons/validation/artifacts.ts",
+   "packages/shared/src/lessons/validation/common.ts",
+   "packages/shared/src/lessons/validation/issues.ts",
+   "packages/shared/src/schemas/language.ts"
+  ],
+  "packages/shared/src/schemas/course.ts": [
+   "packages/shared/src/schemas/item.ts",
+   "packages/shared/src/schemas/language.ts"
+  ],
+  "packages/shared/src/schemas/errors.ts": [],
+  "packages/shared/src/schemas/friend.test.ts": [
+   "packages/shared/src/schemas/index.ts"
+  ],
+  "packages/shared/src/schemas/friend.ts": [
+   "packages/shared/src/schemas/user.ts"
+  ],
+  "packages/shared/src/schemas/gamification.test.ts": [
+   "packages/shared/src/schemas/gamification.ts",
+   "packages/shared/src/schemas/item.ts",
+   "packages/shared/src/schemas/lesson.ts"
+  ],
+  "packages/shared/src/schemas/gamification.ts": [
+   "packages/shared/src/schemas/item.ts"
+  ],
+  "packages/shared/src/schemas/health.ts": [],
+  "packages/shared/src/schemas/index.ts": [],
+  "packages/shared/src/schemas/item.test.ts": [
+   "packages/shared/src/schemas/item.ts"
+  ],
+  "packages/shared/src/schemas/item.ts": [
+   "packages/shared/src/schemas/language.ts"
+  ],
+  "packages/shared/src/schemas/language.ts": [],
+  "packages/shared/src/schemas/lesson.test.ts": [
+   "packages/shared/src/schemas/item.ts",
+   "packages/shared/src/schemas/language.ts",
+   "packages/shared/src/schemas/lesson.ts"
+  ],
+  "packages/shared/src/schemas/lesson.ts": [
+   "packages/shared/src/schemas/gamification.ts",
+   "packages/shared/src/schemas/item.ts",
+   "packages/shared/src/schemas/language.ts"
+  ],
+  "packages/shared/src/schemas/locale.ts": [],
+  "packages/shared/src/schemas/placement.ts": [
+   "packages/shared/src/schemas/item.ts",
+   "packages/shared/src/schemas/language.ts"
+  ],
+  "packages/shared/src/schemas/schemas.test.ts": [
+   "packages/shared/src/schemas/index.ts"
+  ],
+  "packages/shared/src/schemas/two-factor.ts": [],
+  "packages/shared/src/schemas/user.ts": [
+   "packages/shared/src/schemas/course.ts",
+   "packages/shared/src/schemas/language.ts",
+   "packages/shared/src/schemas/locale.ts"
+  ],
+  "packages/shared/tsconfig.build.json": [],
+  "packages/shared/tsconfig.json": [],
+  "packages/shared/vitest.config.mts": [],
+  "packages/tsconfig/base.json": [],
+  "packages/tsconfig/library.json": [],
+  "packages/tsconfig/nest.json": [],
+  "packages/tsconfig/nextjs.json": [],
+  "packages/tsconfig/package.json": [],
+  "packages/ui/eslint.config.mjs": [],
+  "packages/ui/package.json": [],
+  "packages/ui/src/components/Button.tsx": [
+   "packages/ui/src/lib/cn.ts"
+  ],
+  "packages/ui/src/components/Card.tsx": [
+   "packages/ui/src/lib/cn.ts"
+  ],
+  "packages/ui/src/components/ProgressBar.tsx": [
+   "packages/ui/src/lib/cn.ts"
+  ],
+  "packages/ui/src/components/components.test.tsx": [
+   "packages/ui/src/index.ts"
+  ],
+  "packages/ui/src/index.ts": [],
+  "packages/ui/src/lib/cn.ts": [],
+  "packages/ui/tsconfig.json": [],
+  "packages/ui/vitest.config.mts": [],
+  "pnpm-workspace.yaml": [],
+  "scripts/assert-ts-version.sh": [],
+  "scripts/check-app-boundaries.sh": [],
+  "scripts/check-dev-env.sh": [],
+  "scripts/check-env-example.sh": [],
+  "scripts/check-monitoring-config.sh": [],
+  "scripts/check-monitoring.sh": [],
+  "scripts/check-prisma-drift.sh": [],
+  "scripts/check-prisma-format.sh": [],
+  "scripts/pr-title.sh": [],
+  "turbo.json": []
+ }
+}

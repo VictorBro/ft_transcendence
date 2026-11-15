@@ -30,3 +30,6 @@ pnpm-workspace.yaml
 # format:check still green. The extension honours this file, so this entry is
 # what actually stops it.
 .github/CODEOWNERS
+
+# Understand Anything knowledge graph: generated JSON, rewritten by the plugin.
+.ua
