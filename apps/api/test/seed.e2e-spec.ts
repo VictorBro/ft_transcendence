@@ -135,7 +135,7 @@ describe('seedQuestionBank (e2e)', () => {
 
     await expect(attempt).rejects.toThrow(/en-grammar\.json/);
     await expect(attempt).rejects.toThrow(/options/);
-    await expect(attempt).rejects.toThrow(/expected array to have >=4 items/);
+    await expect(attempt).rejects.toThrow(/expected array to have exactly 4 items/);
   });
 
   it('fails before writing when two files share a sourceId', async () => {

@@ -13,7 +13,7 @@ git checkout -b feat/placement-ladder         # one topic per branch
 
 # ...work...
 
-make                                          # the gate. green here means green CI
+make                                          # the gate: every CI check, e2e on Chromium
 git add -A
 git commit -m "feat(api): add the placement ladder"
 git push -u origin feat/placement-ladder      # prints a link to open the PR
@@ -60,21 +60,24 @@ If a hook stops you, it is telling you something CI would have caught in five mi
 
 ```bash
 make doctor   # checks this machine can build, test and push
-make          # every check, then the running app, then the browser suite
+make          # every check, then the running app, then the browser suite on Chromium
 ```
 
 `make` is the one command. It runs everything CI runs, natively, then starts the
-production stack and drives Playwright against it. Green here means green CI.
+production stack and drives Playwright against it on Chromium. CI also runs
+Firefox and WebKit; `make playwright-all` does the same here, worth it before a
+PR that touches the UI.
 
 Day to day:
 
-| Command       | What it does                                                                              |
-| ------------- | ----------------------------------------------------------------------------------------- |
-| `make dev`    | Development stack: bind-mounted source, hot reload, migrations applied, TLS cert exported |
-| `make`        | Every check, then build, then run, then browser tests. Before every PR                    |
-| `make format` | Rewrites everything with Prettier. The answer to "make complains about formatting"        |
-| `make down`   | Stops the stack, keeps the data                                                           |
-| `make help`   | Every target                                                                              |
+| Command               | What it does                                                                              |
+| --------------------- | ----------------------------------------------------------------------------------------- |
+| `make dev`            | Development stack: bind-mounted source, hot reload, migrations applied, TLS cert exported |
+| `make`                | Every check, then build, then run, then browser tests on Chromium. Before every PR        |
+| `make playwright-all` | The browser tests on Chromium, Firefox and WebKit, as CI runs them (stack up)             |
+| `make format`         | Rewrites everything with Prettier. The answer to "make complains about formatting"        |
+| `make down`           | Stops the stack, keeps the data                                                           |
+| `make help`           | Every target                                                                              |
 
 ### Changing a table
 

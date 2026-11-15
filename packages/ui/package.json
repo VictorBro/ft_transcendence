@@ -23,20 +23,21 @@
     "test:cov": "vitest run --coverage"
   },
   "peerDependencies": {
-    "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
   },
   "devDependencies": {
     "@ft/eslint-config": "workspace:*",
     "@ft/tsconfig": "workspace:*",
-    "@types/react": "^19.2.7",
-    "@types/react-dom": "^19.2.3",
-    "@vitest/coverage-v8": "4.1.10",
-    "eslint": "10.8.0",
-    "prettier": "3.9.6",
-    "react": "19.2.8",
-    "react-dom": "19.2.8",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitest/coverage-v8": "5.1.0",
+    "eslint": "10.14.0",
+    "prettier": "3.10.1",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
     "typescript": "6.0.3",
-    "vitest": "4.1.10"
+    "vite": "8.3.8",
+    "vitest": "5.1.0"
   }
 }

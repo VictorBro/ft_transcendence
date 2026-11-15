@@ -26,6 +26,9 @@ const nextConfig: NextConfig = {
   // api (which the optimiser cannot reach) and the 2FA QR code is a data URL.
   // A resize stuck in the web container hung every page showing the logo.
   images: { unoptimized: true },
+  // Since 16.3, `next dev` writes a managed block into AGENTS.md whenever it
+  // detects a coding agent in the shell, which leaves a diff nobody asked for.
+  agentRules: false,
 };
 
 export default withNextIntl(nextConfig);

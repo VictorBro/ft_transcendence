@@ -11,10 +11,13 @@ name: e2e
 #                 render real content, measured against a character floor.
 #
 # Every spec runs on Chromium, Firefox and WebKit (the additional browsers
-# minor), one job and one stack per browser. The suite waits on POST
-# /auth/signup, limited to 10 a minute per address, and each stack keeps its own
-# count (e2e/support/signup-budget.ts): on one stack the three browsers queued
-# for the same budget. The gate at the end carries the check the ruleset requires.
+# minor), each browser as two jobs with a stack each: lesson.spec.ts alone is
+# about half of the suite's time, so it is one part and every other spec the
+# other (E2E_PART, see e2e/playwright.config.ts). Playwright's own --shard cuts
+# by test count in file order, which put nearly every slow test in one half.
+# The suite waits on POST /auth/signup, limited to 20 a minute per address, and
+# each stack keeps its own count (e2e/support/signup-budget.ts). The gate at the
+# end carries the check the ruleset requires.
 # See ci.yml: once per PR, once when the squash merge lands on main.
 on:
   push:
@@ -30,7 +33,7 @@ concurrency:
 
 jobs:
   suite:
-    name: playwright (${{ matrix.browser }})
+    name: playwright (${{ matrix.browser }}, ${{ matrix.part }})
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     strategy:
@@ -38,6 +41,7 @@ jobs:
       fail-fast: false
       matrix:
         browser: [chromium, firefox, webkit]
+        part: [lesson, rest]
 
     env:
       COMPOSE: docker compose -f compose.yml -f compose.prod.yml
@@ -49,16 +53,38 @@ jobs:
       # into .env locally; CI has no .env. The suite logs in with the password.
       GRAFANA_ADMIN_PASSWORD: ci-only-grafana-admin-password
       GRAFANA_SECRET_KEY: ci-only-grafana-secret-key
+      E2E_PART: ${{ matrix.part }}
+      # The checks of the stack itself run in one job, not six: the stack is
+      # the same in every job, only the browser and the specs differ.
+      STACK_CHECKS: ${{ matrix.browser == 'chromium' && matrix.part == 'rest' }}
 
     steps:
       - uses: actions/checkout@v7.0.1
 
       - uses: ./.github/actions/setup
 
-      # Before the stack comes up: this step is cache-friendly and slow, and
-      # there is no reason to have containers idling while it runs.
+      # Before the stack comes up: this step is slow, and there is no reason to
+      # have containers idling while it runs. The browser build is cached per
+      # Playwright version; its system packages are not, so a hit still
+      # installs those.
+      - name: Read the Playwright version
+        id: playwright
+        run: echo "version=$(node -p "require('./e2e/package.json').devDependencies['@playwright/test']")" >> "$GITHUB_OUTPUT"
+
+      - name: Restore the browser build
+        id: browsers
+        uses: actions/cache@v6.1.0
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ steps.playwright.outputs.version }}-${{ matrix.browser }}
+
       - name: Install the browser build Playwright pins
+        if: steps.browsers.outputs.cache-hit != 'true'
         run: pnpm --filter @ft/e2e exec playwright install --with-deps ${{ matrix.browser }}
+
+      - name: Install the browser's system packages
+        if: steps.browsers.outputs.cache-hit == 'true'
+        run: pnpm --filter @ft/e2e exec playwright install-deps ${{ matrix.browser }}
 
       # No .env file. Every value in compose.yml is ${VAR:-default} except
       # SESSION_SECRET and the Grafana keys, supplied above, so the stack comes
@@ -89,22 +115,25 @@ jobs:
       - name: Apply migrations
         run: make db-ready
 
-      # --wait proves the containers run. This proves Prometheus scrapes every
-      # target, evaluates every rule and has found Alertmanager. After the
-      # migrations, so the API's bank gauge has seeded rows to count.
-      - name: Check the monitoring stack
-        run: ./scripts/check-monitoring.sh
-
       - name: Run the suite
         run: pnpm --filter @ft/e2e run test:e2e --project=${{ matrix.browser }}
 
+      # --wait proves the containers run. This proves Prometheus scrapes every
+      # target, evaluates every rule and has found Alertmanager. After the
+      # suite: by then every target has been scraped, so it passes at once
+      # instead of waiting out a first scrape. Before the restart below, which
+      # takes the API target down again.
+      - name: Check the monitoring stack
+        if: env.STACK_CHECKS == 'true'
+        run: ./scripts/check-monitoring.sh
+
       # Alone and after the suite: it restarts the API, which every test beside
-      # it and SSR would lose. In Chromium's job only: test:e2e:restart pins
-      # Chromium, and the retry loop is the same code on every engine. The spec
-      # calls plain `docker compose`, so the job's file list goes in through
+      # it and SSR would lose. In one job only: test:e2e:restart pins Chromium,
+      # and the retry loop is the same code on every engine. The spec calls
+      # plain `docker compose`, so the job's file list goes in through
       # COMPOSE_FILE.
       - name: Restart the API under an open page
-        if: matrix.browser == 'chromium'
+        if: env.STACK_CHECKS == 'true'
         run: pnpm --filter @ft/e2e run test:e2e:restart
         env:
           COMPOSE_FILE: compose.yml:compose.prod.yml
@@ -117,10 +146,10 @@ jobs:
 
       - name: Upload the Playwright report
         if: failure()
-        uses: actions/upload-artifact@v7.0.1
+        uses: actions/upload-artifact@v7.0.2
         with:
-          # One per browser: a run refuses two artifacts of the same name.
-          name: playwright-report-${{ matrix.browser }}
+          # One per job: a run refuses two artifacts of the same name.
+          name: playwright-report-${{ matrix.browser }}-${{ matrix.part }}
           path: |
             e2e/playwright-report
             e2e/test-results
@@ -131,9 +160,9 @@ jobs:
         if: always()
         run: $COMPOSE down -v --remove-orphans
 
-  # The check the ruleset requires, whatever the browser list. always(): a job
-  # skipped by its `if` counts as passed, so the gate has to run, and fail,
-  # when a browser did not pass.
+  # The check the ruleset requires, whatever the browsers and parts. always(): a
+  # job skipped by its `if` counts as passed, so the gate has to run, and fail,
+  # when a job did not pass.
   playwright:
     name: playwright (production stack)
     needs: suite
@@ -141,9 +170,9 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 5
     steps:
-      - name: Every browser passed
+      - name: Every job passed
         env:
           RESULT: ${{ needs.suite.result }}
         run: |
-          echo "browser jobs: $RESULT"
+          echo "suite jobs: $RESULT"
           test "$RESULT" = success

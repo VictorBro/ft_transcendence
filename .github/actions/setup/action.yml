@@ -16,9 +16,9 @@ runs:
     # No `version:` input. pnpm/action-setup reads packageManager from the root
     # package.json, and passing a second source of truth here is how the two
     # drift apart.
-    - uses: pnpm/action-setup@v6.0.9
+    - uses: pnpm/action-setup@v6.1.1
 
-    - uses: actions/setup-node@v7.0.0
+    - uses: actions/setup-node@v7.1.0
       with:
         node-version-file: .nvmrc
         cache: pnpm

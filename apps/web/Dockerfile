@@ -7,13 +7,13 @@
 # Multi-arch: this file installs and builds inside each target-arch stage. Never
 # add a `COPY --from` of node_modules across stages built for another arch.
 
-FROM node:24.18-bookworm-slim AS base
+FROM node:24.22.3-trixie-slim AS base
 ENV PNPM_HOME=/pnpm \
     PATH=/pnpm:$PATH \
-    COREPACK_ENABLE_DOWNLOAD_PROMPT=0 \
     HUSKY=0 \
     NEXT_TELEMETRY_DISABLED=1
-RUN corepack enable && corepack prepare pnpm@11.18.0 --activate
+# pnpm from npm, at the packageManager version: see apps/api/Dockerfile.
+RUN npm install -g pnpm@11.28.11
 WORKDIR /app
 
 
@@ -22,7 +22,7 @@ WORKDIR /app
 # All workspace manifests are required: --frozen-lockfile compares the lockfile
 # importers against the projects it can see and fails on any mismatch.
 FROM base AS deps
-COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc ./
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY apps/api/package.json apps/api/
 COPY apps/web/package.json apps/web/
 COPY packages/eslint-config/package.json packages/eslint-config/
@@ -63,14 +63,17 @@ COPY . .
 # The trailing "..." selects @ft/web AND its workspace dependencies, in
 # topological order: @ft/shared resolves to dist/, so it has to emit before
 # Next can resolve the import. Packages with no build script are skipped.
-RUN pnpm --filter "@ft/web..." run build
+# The cache mount keeps Next's build cache between local builds: an unchanged
+# page is not compiled again. It stays out of the image layer.
+RUN --mount=type=cache,id=next-build-cache,target=/app/apps/web/.next/cache \
+    pnpm --filter "@ft/web..." run build
 
 
 # --- prod -------------------------------------------------------------------
 # Plain node image rather than `FROM base`: the standalone server is self
 # contained, so corepack and pnpm have no business in the runtime image. Matches
 # apps/api/Dockerfile. The ENV values base would have supplied are re-declared.
-FROM node:24.18-bookworm-slim AS prod
+FROM node:24.22.3-trixie-slim AS prod
 ENV NODE_ENV=production \
     PORT=3000 \
     HOSTNAME=0.0.0.0 \

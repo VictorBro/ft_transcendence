@@ -7,15 +7,18 @@
 # root .dockerignore, which is why that file exists next to this one.
 
 # --------------------------------------------------------------------------- base
-FROM node:24.18-bookworm-slim AS base
+FROM node:24.22.3-trixie-slim AS base
 ENV PNPM_HOME=/pnpm \
     PATH=/pnpm:$PATH \
-    COREPACK_ENABLE_DOWNLOAD_PROMPT=0 \
     HUSKY=0
-# node:*-bookworm-slim ships no libssl. Without it Prisma cannot detect the
-# OpenSSL version, silently falls back to openssl-1.1.x (bookworm is 3.x) and
-# then fails to load its engine at runtime. ca-certificates is needed for the
-# engine download during postinstall.
+# Prisma's CLI asks npm for a newer version on every run and prints a box when
+# there is one. Its `latest` tag is an 8.0 release candidate, so the box only
+# ever advertises an RC (#61). This also turns off its telemetry.
+ENV CHECKPOINT_DISABLE=1
+# node:*-slim ships neither the openssl CLI nor a CA bundle. Without openssl
+# Prisma cannot detect the OpenSSL version, silently falls back to openssl-1.1.x
+# (trixie is 3.x) and then fails to load its engine at runtime. ca-certificates
+# is needed for the engine download during postinstall.
 #
 # procps is load-bearing for the dev stage: `nest start --watch` restarts the
 # app by tree-killing its child processes, and @nestjs/cli enumerates that tree
@@ -25,7 +28,11 @@ ENV PNPM_HOME=/pnpm \
 RUN apt-get update \
     && apt-get install -y --no-install-recommends openssl ca-certificates procps \
     && rm -rf /var/lib/apt/lists/*
-RUN corepack enable && corepack prepare pnpm@11.18.0 --activate
+# pnpm from npm: corepack, which used to activate it, is no longer shipped from
+# Node 25. The version must equal packageManager in the root package.json:
+# pnpm 11 switches to that version when they differ, downloading it on every
+# run instead of failing.
+RUN npm install -g pnpm@11.28.11
 WORKDIR /app
 
 # Whichever stack mounts the avatars volume first seeds its ownership, so the
@@ -38,7 +45,7 @@ RUN mkdir -p /data/avatars && chown node:node /data/avatars
 # about, so a NEW WORKSPACE PACKAGE MUST BE ADDED TO THE COPY LIST BELOW or the
 # build fails with "lockfile is not up to date".
 FROM base AS deps
-COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc ./
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY apps/api/package.json apps/api/
 COPY apps/web/package.json apps/web/
 COPY packages/eslint-config/package.json packages/eslint-config/
@@ -87,6 +94,11 @@ RUN pnpm --filter "@ft/api..." run build
 # from --target build. Pruning inside `build` would strip the Prisma CLI out of
 # the very image that needs it.
 FROM build AS prune
+# Known gap: `--prod --filter` prunes only the filtered projects. The root
+# devDependencies (turbo, typescript, prisma, @swc/core) stay in the shared
+# store and so in the runtime image. `pnpm deploy` would build a self-contained
+# prod tree; it no longer needs injectWorkspacePackages since pnpm 11.26.
+#
 # CI=true makes pnpm non-interactive. Switching an existing node_modules to
 # --prod means purging it first, and without this pnpm aborts with
 # ERR_PNPM_ABORTED_REMOVE_MODULES_DIR_NO_TTY rather than prompting.
@@ -97,7 +109,7 @@ RUN --mount=type=cache,id=pnpm-store,target=/pnpm/store,sharing=locked \
 # --------------------------------------------------------------------------- prod
 # Plain node image rather than `FROM base`: corepack and the pnpm binary have no
 # business in a runtime image.
-FROM node:24.18-bookworm-slim AS prod
+FROM node:24.22.3-trixie-slim AS prod
 ENV NODE_ENV=production \
     PORT=3001
 RUN apt-get update \

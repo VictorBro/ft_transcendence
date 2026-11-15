@@ -3,9 +3,10 @@
 # `make` (= make all) is the ONE command everyone runs, constantly, and before
 # every commit: every check CI runs natively (format, lint, typecheck, unit
 # tests with coverage thresholds, builds, Supertest e2e), then the production
-# stack (build, up, migrate, seed, certs), then Playwright against it, console
-# gate included. Green here means green CI, and it leaves the app running.
-# It works the same inside the devcontainer and on a host shell.
+# stack (build, up, migrate, seed, certs), then Playwright against it on
+# Chromium, console gate included. CI also runs Firefox and WebKit, and so does
+# `make playwright-all`: run it before a PR that touches the UI. It leaves the
+# app running, and works the same inside the devcontainer and on a host shell.
 #
 # `make run` is the launch-only slice of that, no checks: what an evaluator
 # needs to see the app. `make dev` is the hot-reload development stack.
@@ -57,6 +58,11 @@ E2E_EMAIL_PREFIX ?= browser-
 # a site address for exactly this. /.dockerenv exists only inside a container.
 E2E_BASE_URL ?= $(if $(wildcard /.dockerenv),https://caddy,https://localhost)
 
+# The engines `make playwright` runs. Chromium alone by default: three engines on
+# one stack were most of a `make all`, and CI runs all three anyway, each in its
+# own jobs. `make playwright-all` runs the three here.
+BROWSERS ?= chromium
+
 # Hosts the natively run tests reach the stores on. Inside the devcontainer they
 # are on the compose network and resolve by service name; from a host shell only
 # through the loopback ports compose.override.yml publishes.
@@ -93,7 +99,7 @@ else
 DB_ENV := -e DATABASE_URL='$(DEFAULT_DATABASE_URL)'
 endif
 
-.PHONY: all run dev up build down logs ps shell test test-e2e playwright lint format typecheck report \
+.PHONY: all run dev up build down logs ps shell test test-e2e playwright playwright-all lint format typecheck report \
         migrate migrate-new seed db-ready studio redis-ui reset-db ci stores-up clean certs tooling-image doctor help \
 				check-devcontainer env-file monitoring-up monitoring-check
 
@@ -140,8 +146,8 @@ all:
 	@$(MAKE) --no-print-directory run
 	@$(MAKE) --no-print-directory monitoring-check
 	@$(MAKE) --no-print-directory playwright
-	@printf '\n  ALL GREEN: checks, build, e2e (console gate included) all passed.\n'
-	@printf '  What you commit now will pass CI.\n'
+	@printf '\n  ALL GREEN: checks, build, e2e on Chromium (console gate included) all passed.\n'
+	@printf '  CI also runs Firefox and WebKit: `make playwright-all` does too.\n'
 	@printf '  The PRODUCTION stack is now running at https://localhost\n'
 	@printf '  `make dev` gets hot reload back, `make down` stops everything.\n'
 	@printf '  `make report` opens the Playwright report.\n\n'
@@ -284,7 +290,8 @@ test-e2e: ## Playwright against the production stack (starts it if needed)
 # The suite alone, for a caller that has just brought the stack up: `all` gets
 # it from `run`, and a second `up` is one more build and health wait.
 playwright:
-	pnpm --filter @ft/e2e exec playwright install chromium firefox webkit
+	@# Chromium whatever BROWSERS says: the restart run below pins it.
+	pnpm --filter @ft/e2e exec playwright install $(sort chromium $(BROWSERS))
 	@# The accounts the browser suite signs up are real rows. Removing them keeps
 	@# repeated runs from filling the database an evaluator is going to look at.
 	@# The prefix is set by identity() in e2e/support/session.ts. RecoveryCode cascades.
@@ -295,6 +302,9 @@ playwright:
 	@# .env: compose strips dotenv quotes and make would not. A shell value still
 	@# wins, as it does for compose. Through the environment, never argv, which
 	@# `ps` shows every local user.
+	@# The signup and login limits come from the api container the same way, so
+	@# the suite queues to what the api really runs with
+	@# (e2e/support/signup-budget.ts). Empty means the default on both sides.
 	@# Then the restart run (e2e/tests/restart.spec.ts): it restarts the API of
 	@# the production stack once, on Chromium only, since two restarts in 15
 	@# minutes fire ApiRestarting. When `up` has just recreated a rebuilt api
@@ -304,7 +314,10 @@ playwright:
 	@set +e; \
 	GRAFANA_ADMIN_PASSWORD="$${GRAFANA_ADMIN_PASSWORD:-$$($(COMPOSE_DEV) exec -T grafana printenv GF_SECURITY_ADMIN_PASSWORD 2>/dev/null)}"; \
 	export GRAFANA_ADMIN_PASSWORD; \
-	E2E_BASE_URL=$(E2E_BASE_URL) pnpm --filter @ft/e2e run test:e2e < /dev/null; \
+	SIGNUP_LIMIT_PER_MINUTE="$$($(COMPOSE_DEV) exec -T api printenv SIGNUP_LIMIT_PER_MINUTE 2>/dev/null)"; \
+	LOGIN_LIMIT_PER_MINUTE="$$($(COMPOSE_DEV) exec -T api printenv LOGIN_LIMIT_PER_MINUTE 2>/dev/null)"; \
+	export SIGNUP_LIMIT_PER_MINUTE LOGIN_LIMIT_PER_MINUTE; \
+	E2E_BASE_URL=$(E2E_BASE_URL) pnpm --filter @ft/e2e run test:e2e $(addprefix --project=,$(BROWSERS)) < /dev/null; \
 	status=$$?; \
 	if [ "$$status" -eq 0 ]; then \
 	  E2E_BASE_URL=$(E2E_BASE_URL) pnpm --filter @ft/e2e run test:e2e:restart < /dev/null; \
@@ -313,6 +326,9 @@ playwright:
 	$(COMPOSE_DEV) exec -T db psql -U ft -d ft_transcendence \
 	  -c "delete from \"User\" where email like '$(E2E_EMAIL_PREFIX)%@example.com';" >/dev/null; \
 	exit $$status
+
+playwright-all: ## Playwright on Chromium, Firefox and WebKit, as CI runs it (stack must be up)
+	@$(MAKE) --no-print-directory playwright BROWSERS="chromium firefox webkit"
 
 lint: ## ESLint across the workspace
 	pnpm run lint
