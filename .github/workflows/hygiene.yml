@@ -148,7 +148,7 @@ jobs:
     # needs the same extensions the real one has: pgvector, not plain postgres.
     services:
       shadow-db:
-        image: pgvector/pgvector:0.8.6-pg18-trixie
+        image: pgvector/pgvector:0.8.7-pg18-trixie
         env:
           POSTGRES_USER: shadow
           POSTGRES_PASSWORD: shadow
@@ -170,7 +170,10 @@ jobs:
         env:
           # prisma.config.ts reads DATABASE_URL and defaults it to an empty
           # string, which some subcommands reject before they look at the flags.
-          DATABASE_URL: postgresql://shadow:shadow@127.0.0.1:5432/shadow
+          # Not the shadow's URL: since 7.10 Migrate refuses (P3025) a shadow
+          # database that is the main one. The server's own `postgres` database
+          # stands in, and nothing is written to it.
+          DATABASE_URL: postgresql://shadow:shadow@127.0.0.1:5432/postgres
           SHADOW_DATABASE_URL: postgresql://shadow:shadow@127.0.0.1:5432/shadow
         run: |
           set +e

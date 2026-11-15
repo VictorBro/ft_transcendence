@@ -450,7 +450,7 @@ Gemini reçoit ce schéma et **contraint sa génération** pour le respecter : l
 
 Gemini ne voit jamais ces règles via le schéma. C'est le **prompt** qui les lui demande en texte, et c'est `parseReply` (le `safeParse`) qui les **vérifie** au retour. C'est pour ça que les deux existent : le schéma JSON guide la forme, la validation Zod vérifie tout.
 
-(Vérifié avec Zod 4.4.3, la version du projet : `.length(5)` devient bien `minItems/maxItems: 5`, et les `.refine` disparaissent.)
+(Vérifié avec Zod 4.6.7, la version du projet : `.length(5)` devient bien `minItems/maxItems: 5`, et les `.refine` disparaissent.)
 
 ---
 

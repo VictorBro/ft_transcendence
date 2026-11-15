@@ -25,6 +25,11 @@ export default defineConfig({
       AVATAR_STORAGE_DIR: '/tmp/ft-avatars-e2e',
       LLM_PROVIDER: 'fixture',
       LLM_API_KEY: '',
+      // The rate limits at their defaults, whatever the shell exports: the
+      // throttle tests pin those numbers.
+      RATE_LIMIT_PER_MINUTE: '',
+      SIGNUP_LIMIT_PER_MINUTE: '',
+      LOGIN_LIMIT_PER_MINUTE: '',
     },
     // A cold container boots the whole Nest graph before the first assertion.
     testTimeout: 30_000,

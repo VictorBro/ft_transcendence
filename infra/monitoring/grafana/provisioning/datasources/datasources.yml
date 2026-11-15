@@ -13,7 +13,7 @@ datasources:
     jsonData:
       httpMethod: POST
       prometheusType: Prometheus
-      prometheusVersion: 3.13.4
+      prometheusVersion: 3.13.5
       # Matches scrape_interval, so $__rate_interval never spans a single sample.
       timeInterval: 30s
       # Lists Prometheus' rules, with their state, under Grafana's Alerting.

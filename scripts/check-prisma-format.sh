@@ -4,7 +4,7 @@
 # check. Prisma ships the formatter; this only asks whether the file is already
 # in the shape `prisma format` would put it in.
 #
-# `prisma format` has no --check in 7.9.1, and running it in place would rewrite
+# `prisma format` has no --check in 7.10.1, and running it in place would rewrite
 # a file the caller did not ask to change. So it formats a copy and diffs, which
 # leaves the working tree alone whether the check passes or fails.
 #
