@@ -1,0 +1,1242 @@
+{
+ "version": "1.0.0",
+ "project": {
+  "name": "ft-transcendence",
+  "languages": [
+   "css",
+   "javascript",
+   "markdown",
+   "prisma",
+   "shell",
+   "sql",
+   "typescript",
+   "yaml"
+  ],
+  "frameworks": [
+   "Next.js",
+   "React",
+   "NestJS",
+   "Prisma",
+   "PostgreSQL",
+   "Redis",
+   "Socket.IO",
+   "Tailwind CSS",
+   "next-intl",
+   "Zod",
+   "Vitest",
+   "Playwright",
+   "Turborepo",
+   "Docker",
+   "Caddy",
+   "Prometheus",
+   "Grafana"
+  ],
+  "description": "AI-driven foreign-language learning platform (42 ft_transcendence project): adaptive CEFR placement, daily lessons, gamification, friends and real-time presence.",
+  "analyzedAt": "2026-11-15T04:17:21.627805+00:00",
+  "gitCommitHash": "477b3d413d3e6bebfceacd1b2ba0a184be52967c"
+ },
+ "nodes": [
+  {
+   "id": "domain:identity",
+   "type": "domain",
+   "name": "Identity and security",
+   "summary": "Accounts, Redis sessions, argon2id passwords and TOTP 2FA. Everything is private by default.",
+   "tags": [
+    "identity",
+    "business",
+    "transcendence"
+   ],
+   "complexity": "moderate",
+   "domainMeta": {
+    "entities": [
+     "User",
+     "RecoveryCode",
+     "Session"
+    ],
+    "businessRules": [
+     "Password ≥ 12 chars with lowercase, uppercase, digit",
+     "Session regenerated on every privilege change",
+     "Same error for unknown email or wrong password"
+    ],
+    "crossDomainInteractions": [
+     "The session identifies the learner of each course",
+     "Sockets are authenticated by the session"
+    ]
+   }
+  },
+  {
+   "id": "flow:signup",
+   "type": "flow",
+   "name": "Sign-up",
+   "summary": "Sign-up: triggered by POST /api/auth/signup.",
+   "tags": [
+    "identity",
+    "flow",
+    "journey"
+   ],
+   "complexity": "moderate",
+   "domainMeta": {
+    "entryPoint": "POST /api/auth/signup",
+    "entryType": "http"
+   }
+  },
+  {
+   "id": "step:signup:valider",
+   "type": "step",
+   "name": "Validate the form",
+   "summary": "Validate the form.",
+   "tags": [
+    "identity",
+    "step",
+    "signup"
+   ],
+   "complexity": "simple",
+   "filePath": "apps/web/app/[locale]/(main)/signup/signup-form.tsx",
+   "lineRange": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "step:signup:hacher",
+   "type": "step",
+   "name": "Hash with argon2id and create the account",
+   "summary": "Hash with argon2id and create the account.",
+   "tags": [
+    "identity",
+    "step",
+    "signup"
+   ],
+   "complexity": "simple",
+   "filePath": "apps/api/src/auth/auth.service.ts",
+   "lineRange": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "step:signup:session",
+   "type": "step",
+   "name": "Open a regenerated session",
+   "summary": "Open a regenerated session.",
+   "tags": [
+    "identity",
+    "step",
+    "signup"
+   ],
+   "complexity": "simple",
+   "filePath": "apps/api/src/auth/auth.controller.ts",
+   "lineRange": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "flow:login-2fa",
+   "type": "flow",
+   "name": "Login with 2FA",
+   "summary": "Login with 2FA: triggered by POST /api/auth/login.",
+   "tags": [
+    "identity",
+    "flow",
+    "journey"
+   ],
+   "complexity": "moderate",
+   "domainMeta": {
+    "entryPoint": "POST /api/auth/login",
+    "entryType": "http"
+   }
+  },
+  {
+   "id": "step:login-2fa:verifier",
+   "type": "step",
+   "name": "Check the credentials",
+   "summary": "Check the credentials.",
+   "tags": [
+    "identity",
+    "step",
+    "login-2fa"
+   ],
+   "complexity": "simple",
+   "filePath": "apps/api/src/auth/auth.service.ts",
+   "lineRange": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "step:login-2fa:pending",
+   "type": "step",
+   "name": "Pending session (202)",
+   "summary": "Pending session (202).",
+   "tags": [
+    "identity",
+    "step",
+    "login-2fa"
+   ],
+   "complexity": "simple",
+   "filePath": "apps/api/src/auth/auth.controller.ts",
+   "lineRange": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "step:login-2fa:totp",
+   "type": "step",
+   "name": "Check the TOTP or recovery code",
+   "summary": "Check the TOTP or recovery code.",
+   "tags": [
+    "identity",
+    "step",
+    "login-2fa"
+   ],
+   "complexity": "simple",
+   "filePath": "apps/api/src/auth/two-factor.service.ts",
+   "lineRange": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "step:login-2fa:ouvrir",
+   "type": "step",
+   "name": "Open the full session",
+   "summary": "Open the full session.",
+   "tags": [
+    "identity",
+    "step",
+    "login-2fa"
+   ],
+   "complexity": "simple",
+   "filePath": "apps/api/src/auth/auth.controller.ts",
+   "lineRange": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "domain:courses",
+   "type": "domain",
+   "name": "Courses and placement",
+   "summary": "A course = a user learning a language. Placement finds the CEFR level by binary search.",
+   "tags": [
+    "courses",
+    "business",
+    "transcendence"
+   ],
+   "complexity": "moderate",
+   "domainMeta": {
+    "entities": [
+     "UserLevel",
+     "QuestionBank",
+     "UserSeenQuestion",
+     "ExamSession"
+    ],
+    "businessRules": [
+     "One course per language",
+     "Start at B1, 2 questions per category, 1 mistake tolerated",
+     "The correct answer never leaves the server"
+    ],
+    "crossDomainInteractions": [
+     "The session identifies the learner of each course",
+     "The course level picks the daily lessons",
+     "The question bank feeds placement"
+    ]
+   }
+  },
+  {
+   "id": "flow:start-course",
+   "type": "flow",
+   "name": "Start a course",
+   "summary": "Start a course: triggered by POST /api/courses.",
+   "tags": [
+    "courses",
+    "flow",
+    "journey"
+   ],
+   "complexity": "moderate",
+   "domainMeta": {
+    "entryPoint": "POST /api/courses",
+    "entryType": "http"
+   }
+  },
+  {
+   "id": "step:start-course:choisir",
+   "type": "step",
+   "name": "Choose language and goal",
+   "summary": "Choose language and goal.",
+   "tags": [
+    "courses",
+    "step",
+    "start-course"
+   ],
+   "complexity": "simple",
+   "filePath": "apps/web/app/[locale]/(main)/onboarding/choose-course.tsx",
+   "lineRange": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "step:start-course:creer",
+   "type": "step",
+   "name": "Create the UserLevel",
+   "summary": "Create the UserLevel.",
+   "tags": [
+    "courses",
+    "step",
+    "start-course"
+   ],
+   "complexity": "simple",
+   "filePath": "apps/api/src/courses/courses.service.ts",
+   "lineRange": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "flow:placement",
+   "type": "flow",
+   "name": "Placement test",
+   "summary": "Placement test: triggered by POST /api/placement.",
+   "tags": [
+    "courses",
+    "flow",
+    "journey"
+   ],
+   "complexity": "moderate",
+   "domainMeta": {
+    "entryPoint": "POST /api/placement",
+    "entryType": "http"
+   }
+  },
+  {
+   "id": "step:placement:session",
+   "type": "step",
+   "name": "Create the locked Redis session",
+   "summary": "Create the locked Redis session.",
+   "tags": [
+    "courses",
+    "step",
+    "placement"
+   ],
+   "complexity": "simple",
+   "filePath": "apps/api/src/placement/placement-session.service.ts",
+   "lineRange": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "step:placement:tirer",
+   "type": "step",
+   "name": "Draw an unseen question",
+   "summary": "Draw an unseen question.",
+   "tags": [
+    "courses",
+    "step",
+    "placement"
+   ],
+   "complexity": "simple",
+   "filePath": "apps/api/src/placement/placement-question.service.ts",
+   "lineRange": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "step:placement:ajuster",
+   "type": "step",
+   "name": "Move up or down a level",
+   "summary": "Move up or down a level.",
+   "tags": [
+    "courses",
+    "step",
+    "placement"
+   ],
+   "complexity": "simple",
+   "filePath": "apps/api/src/placement/placement-progress.service.ts",
+   "lineRange": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "step:placement:appliquer",
+   "type": "step",
+   "name": "Apply the level to the course",
+   "summary": "Apply the level to the course.",
+   "tags": [
+    "courses",
+    "step",
+    "placement"
+   ],
+   "complexity": "simple",
+   "filePath": "apps/api/src/placement/placement.service.ts",
+   "lineRange": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "domain:learning",
+   "type": "domain",
+   "name": "Daily learning",
+   "summary": "Daily plan, lessons played server-side, score, goal and streak.",
+   "tags": [
+    "learning",
+    "business",
+    "transcendence"
+   ],
+   "complexity": "moderate",
+   "domainMeta": {
+    "entities": [
+     "Lesson",
+     "LessonAttempt",
+     "LessonResult"
+    ],
+    "businessRules": [
+     "Target = goal / 10 min",
+     "Passed at 70, level complete at 80% passed",
+     "Score = 35% practice + 65% exam",
+     "No route accepts a score"
+    ],
+    "crossDomainInteractions": [
+     "The course level picks the daily lessons",
+     "Finishing a lesson triggers XP and achievements",
+     "The seed provides the ready lessons",
+     "course:updated refreshes the other tabs over the same socket"
+    ]
+   }
+  },
+  {
+   "id": "flow:today",
+   "type": "flow",
+   "name": "Daily plan",
+   "summary": "Daily plan: triggered by GET /api/courses/:lang/today.",
+   "tags": [
+    "learning",
+    "flow",
+    "journey"
+   ],
+   "complexity": "moderate",
+   "domainMeta": {
+    "entryPoint": "GET /api/courses/:lang/today",
+    "entryType": "http"
+   }
+  },
+  {
+   "id": "step:today:charger",
+   "type": "step",
+   "name": "Load lessons and results",
+   "summary": "Load lessons and results.",
+   "tags": [
+    "learning",
+    "step",
+    "today"
+   ],
+   "complexity": "simple",
+   "filePath": "apps/api/src/lessons/lessons.service.ts",
+   "lineRange": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "step:today:planifier",
+   "type": "step",
+   "name": "Compute done / proposed / extra",
+   "summary": "Compute done / proposed / extra.",
+   "tags": [
+    "learning",
+    "step",
+    "today"
+   ],
+   "complexity": "simple",
+   "filePath": "apps/api/src/lessons/roadmap.rules.ts",
+   "lineRange": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "flow:play-lesson",
+   "type": "flow",
+   "name": "Play a lesson",
+   "summary": "Play a lesson: triggered by POST /api/courses/:lang/lessons/:id/attempt.",
+   "tags": [
+    "learning",
+    "flow",
+    "journey"
+   ],
+   "complexity": "moderate",
+   "domainMeta": {
+    "entryPoint": "POST /api/courses/:lang/lessons/:id/attempt",
+    "entryType": "http"
+   }
+  },
+  {
+   "id": "step:play-lesson:demarrer",
+   "type": "step",
+   "name": "Create the attempt and its secret",
+   "summary": "Create the attempt and its secret.",
+   "tags": [
+    "learning",
+    "step",
+    "play-lesson"
+   ],
+   "complexity": "simple",
+   "filePath": "apps/api/src/lessons/attempts.service.ts",
+   "lineRange": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "step:play-lesson:masquer",
+   "type": "step",
+   "name": "Send the cursor page without keys",
+   "summary": "Send the cursor page without keys.",
+   "tags": [
+    "learning",
+    "step",
+    "play-lesson"
+   ],
+   "complexity": "simple",
+   "filePath": "packages/shared/src/lessons/player/redact.ts",
+   "lineRange": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "step:play-lesson:noter",
+   "type": "step",
+   "name": "Score and lock the page",
+   "summary": "Score and lock the page.",
+   "tags": [
+    "learning",
+    "step",
+    "play-lesson"
+   ],
+   "complexity": "simple",
+   "filePath": "packages/shared/src/lessons/player/attempt.ts",
+   "lineRange": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "step:play-lesson:finir",
+   "type": "step",
+   "name": "Record best score, goal, streak",
+   "summary": "Record best score, goal, streak.",
+   "tags": [
+    "learning",
+    "step",
+    "play-lesson"
+   ],
+   "complexity": "simple",
+   "filePath": "apps/api/src/lessons/lessons.service.ts",
+   "lineRange": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "domain:gamification",
+   "type": "domain",
+   "name": "Gamification",
+   "summary": "XP, ranks, deterministic daily challenge and 16 achievements, computed in the lesson-finish transaction.",
+   "tags": [
+    "gamification",
+    "business",
+    "transcendence"
+   ],
+   "complexity": "moderate",
+   "domainMeta": {
+    "entities": [
+     "UserAchievement",
+     "Xp",
+     "Challenge"
+    ],
+    "businessRules": [
+     "10 XP per lesson + improvement, 20 for the goal, 30 for the challenge",
+     "Rank n → n+1 costs 100 × n XP"
+    ],
+    "crossDomainInteractions": [
+     "Finishing a lesson triggers XP and achievements"
+    ]
+   }
+  },
+  {
+   "id": "flow:award",
+   "type": "flow",
+   "name": "Grant rewards",
+   "summary": "Grant rewards: triggered by lesson finish or goal.",
+   "tags": [
+    "gamification",
+    "flow",
+    "journey"
+   ],
+   "complexity": "moderate",
+   "domainMeta": {
+    "entryPoint": "lesson finish or goal",
+    "entryType": "manual"
+   }
+  },
+  {
+   "id": "step:award:xp",
+   "type": "step",
+   "name": "Add XP",
+   "summary": "Add XP.",
+   "tags": [
+    "gamification",
+    "step",
+    "award"
+   ],
+   "complexity": "simple",
+   "filePath": "apps/api/src/lessons/gamification.ts",
+   "lineRange": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "step:award:succes",
+   "type": "step",
+   "name": "Record new achievements",
+   "summary": "Record new achievements.",
+   "tags": [
+    "gamification",
+    "step",
+    "award"
+   ],
+   "complexity": "simple",
+   "filePath": "apps/api/src/lessons/gamification.rules.ts",
+   "lineRange": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "domain:social",
+   "type": "domain",
+   "name": "Social and presence",
+   "summary": "Public profiles, symmetric friendships and real-time online status.",
+   "tags": [
+    "social",
+    "business",
+    "transcendence"
+   ],
+   "complexity": "moderate",
+   "domainMeta": {
+    "entities": [
+     "Friendship",
+     "Presence"
+    ],
+    "businessRules": [
+     "One row per pair (pairKey)",
+     "Presence visible to accepted friends only",
+     "10 s grace before offline"
+    ],
+    "crossDomainInteractions": [
+     "Sockets are authenticated by the session",
+     "course:updated refreshes the other tabs over the same socket"
+    ]
+   }
+  },
+  {
+   "id": "flow:friend-request",
+   "type": "flow",
+   "name": "Friend request",
+   "summary": "Friend request: triggered by POST /api/friends/requests/:userId.",
+   "tags": [
+    "social",
+    "flow",
+    "journey"
+   ],
+   "complexity": "moderate",
+   "domainMeta": {
+    "entryPoint": "POST /api/friends/requests/:userId",
+    "entryType": "http"
+   }
+  },
+  {
+   "id": "step:friend-request:cle",
+   "type": "step",
+   "name": "Compute the pair key",
+   "summary": "Compute the pair key.",
+   "tags": [
+    "social",
+    "step",
+    "friend-request"
+   ],
+   "complexity": "simple",
+   "filePath": "apps/api/src/friends/pair.ts",
+   "lineRange": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "step:friend-request:creer",
+   "type": "step",
+   "name": "Create or accept the request",
+   "summary": "Create or accept the request.",
+   "tags": [
+    "social",
+    "step",
+    "friend-request"
+   ],
+   "complexity": "simple",
+   "filePath": "apps/api/src/friends/friends.service.ts",
+   "lineRange": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "step:friend-request:notifier",
+   "type": "step",
+   "name": "Notify both users",
+   "summary": "Notify both users.",
+   "tags": [
+    "social",
+    "step",
+    "friend-request"
+   ],
+   "complexity": "simple",
+   "filePath": "apps/api/src/gateway/sockets.service.ts",
+   "lineRange": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "flow:presence",
+   "type": "flow",
+   "name": "Online presence",
+   "summary": "Online presence: triggered by WebSocket connection /ws.",
+   "tags": [
+    "social",
+    "flow",
+    "journey"
+   ],
+   "complexity": "moderate",
+   "domainMeta": {
+    "entryPoint": "WebSocket connection /ws",
+    "entryType": "manual"
+   }
+  },
+  {
+   "id": "step:presence:auth",
+   "type": "step",
+   "name": "Authenticate the handshake",
+   "summary": "Authenticate the handshake.",
+   "tags": [
+    "social",
+    "step",
+    "presence"
+   ],
+   "complexity": "simple",
+   "filePath": "apps/api/src/gateway/socket.gateway.ts",
+   "lineRange": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "step:presence:compter",
+   "type": "step",
+   "name": "Count sockets in Redis",
+   "summary": "Count sockets in Redis.",
+   "tags": [
+    "social",
+    "step",
+    "presence"
+   ],
+   "complexity": "simple",
+   "filePath": "apps/api/src/presence/presence.service.ts",
+   "lineRange": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "domain:content",
+   "type": "domain",
+   "name": "Content and AI",
+   "summary": "Syllabus and lessons written offline and validated; LLM to restock the question bank.",
+   "tags": [
+    "content",
+    "business",
+    "transcendence"
+   ],
+   "complexity": "moderate",
+   "domainMeta": {
+    "entities": [
+     "Outline",
+     "Brief",
+     "QuestionBank"
+    ],
+    "businessRules": [
+     "Only valid lessons are ready",
+     "Restock at ≤ 3 unseen questions, 10 min cooldown"
+    ],
+    "crossDomainInteractions": [
+     "The question bank feeds placement",
+     "The seed provides the ready lessons"
+    ]
+   }
+  },
+  {
+   "id": "flow:seed",
+   "type": "flow",
+   "name": "Load the content",
+   "summary": "Load the content: triggered by make seed.",
+   "tags": [
+    "content",
+    "flow",
+    "journey"
+   ],
+   "complexity": "moderate",
+   "domainMeta": {
+    "entryPoint": "make seed",
+    "entryType": "manual"
+   }
+  },
+  {
+   "id": "step:seed:lire",
+   "type": "step",
+   "name": "Read syllabus, briefs, exercises",
+   "summary": "Read syllabus, briefs, exercises.",
+   "tags": [
+    "content",
+    "step",
+    "seed"
+   ],
+   "complexity": "simple",
+   "filePath": "apps/api/prisma/seed.ts",
+   "lineRange": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "step:seed:valider",
+   "type": "step",
+   "name": "Validate each lesson",
+   "summary": "Validate each lesson.",
+   "tags": [
+    "content",
+    "step",
+    "seed"
+   ],
+   "complexity": "simple",
+   "filePath": "packages/shared/src/lessons/validateLesson.ts",
+   "lineRange": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "flow:restock",
+   "type": "flow",
+   "name": "Restock the bank",
+   "summary": "Restock the bank: triggered by placement draw.",
+   "tags": [
+    "content",
+    "flow",
+    "journey"
+   ],
+   "complexity": "moderate",
+   "domainMeta": {
+    "entryPoint": "placement draw",
+    "entryType": "manual"
+   }
+  },
+  {
+   "id": "step:restock:generer",
+   "type": "step",
+   "name": "Generate a batch with the LLM",
+   "summary": "Generate a batch with the LLM.",
+   "tags": [
+    "content",
+    "step",
+    "restock"
+   ],
+   "complexity": "simple",
+   "filePath": "apps/api/src/question-generation/question-stock.service.ts",
+   "lineRange": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "step:restock:fournisseur",
+   "type": "step",
+   "name": "Pick Gemini or fixture",
+   "summary": "Pick Gemini or fixture.",
+   "tags": [
+    "content",
+    "step",
+    "restock"
+   ],
+   "complexity": "simple",
+   "filePath": "apps/api/src/llm/llm.factory.ts",
+   "lineRange": [
+    0,
+    0
+   ]
+  }
+ ],
+ "edges": [
+  {
+   "source": "domain:identity",
+   "target": "flow:signup",
+   "type": "contains_flow",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "flow:signup",
+   "target": "step:signup:valider",
+   "type": "flow_step",
+   "direction": "forward",
+   "weight": 0.3
+  },
+  {
+   "source": "flow:signup",
+   "target": "step:signup:hacher",
+   "type": "flow_step",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "flow:signup",
+   "target": "step:signup:session",
+   "type": "flow_step",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "domain:identity",
+   "target": "flow:login-2fa",
+   "type": "contains_flow",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "flow:login-2fa",
+   "target": "step:login-2fa:verifier",
+   "type": "flow_step",
+   "direction": "forward",
+   "weight": 0.2
+  },
+  {
+   "source": "flow:login-2fa",
+   "target": "step:login-2fa:pending",
+   "type": "flow_step",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "flow:login-2fa",
+   "target": "step:login-2fa:totp",
+   "type": "flow_step",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "flow:login-2fa",
+   "target": "step:login-2fa:ouvrir",
+   "type": "flow_step",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "domain:courses",
+   "target": "flow:start-course",
+   "type": "contains_flow",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "flow:start-course",
+   "target": "step:start-course:choisir",
+   "type": "flow_step",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "flow:start-course",
+   "target": "step:start-course:creer",
+   "type": "flow_step",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "domain:courses",
+   "target": "flow:placement",
+   "type": "contains_flow",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "flow:placement",
+   "target": "step:placement:session",
+   "type": "flow_step",
+   "direction": "forward",
+   "weight": 0.2
+  },
+  {
+   "source": "flow:placement",
+   "target": "step:placement:tirer",
+   "type": "flow_step",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "flow:placement",
+   "target": "step:placement:ajuster",
+   "type": "flow_step",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "flow:placement",
+   "target": "step:placement:appliquer",
+   "type": "flow_step",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "domain:learning",
+   "target": "flow:today",
+   "type": "contains_flow",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "flow:today",
+   "target": "step:today:charger",
+   "type": "flow_step",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "flow:today",
+   "target": "step:today:planifier",
+   "type": "flow_step",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "domain:learning",
+   "target": "flow:play-lesson",
+   "type": "contains_flow",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "flow:play-lesson",
+   "target": "step:play-lesson:demarrer",
+   "type": "flow_step",
+   "direction": "forward",
+   "weight": 0.2
+  },
+  {
+   "source": "flow:play-lesson",
+   "target": "step:play-lesson:masquer",
+   "type": "flow_step",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "flow:play-lesson",
+   "target": "step:play-lesson:noter",
+   "type": "flow_step",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "flow:play-lesson",
+   "target": "step:play-lesson:finir",
+   "type": "flow_step",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "domain:gamification",
+   "target": "flow:award",
+   "type": "contains_flow",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "flow:award",
+   "target": "step:award:xp",
+   "type": "flow_step",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "flow:award",
+   "target": "step:award:succes",
+   "type": "flow_step",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "domain:social",
+   "target": "flow:friend-request",
+   "type": "contains_flow",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "flow:friend-request",
+   "target": "step:friend-request:cle",
+   "type": "flow_step",
+   "direction": "forward",
+   "weight": 0.3
+  },
+  {
+   "source": "flow:friend-request",
+   "target": "step:friend-request:creer",
+   "type": "flow_step",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "flow:friend-request",
+   "target": "step:friend-request:notifier",
+   "type": "flow_step",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "domain:social",
+   "target": "flow:presence",
+   "type": "contains_flow",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "flow:presence",
+   "target": "step:presence:auth",
+   "type": "flow_step",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "flow:presence",
+   "target": "step:presence:compter",
+   "type": "flow_step",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "domain:content",
+   "target": "flow:seed",
+   "type": "contains_flow",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "flow:seed",
+   "target": "step:seed:lire",
+   "type": "flow_step",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "flow:seed",
+   "target": "step:seed:valider",
+   "type": "flow_step",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "domain:content",
+   "target": "flow:restock",
+   "type": "contains_flow",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "flow:restock",
+   "target": "step:restock:generer",
+   "type": "flow_step",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "flow:restock",
+   "target": "step:restock:fournisseur",
+   "type": "flow_step",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "domain:identity",
+   "target": "domain:courses",
+   "type": "cross_domain",
+   "direction": "forward",
+   "description": "The session identifies the learner of each course",
+   "weight": 0.6
+  },
+  {
+   "source": "domain:courses",
+   "target": "domain:learning",
+   "type": "cross_domain",
+   "direction": "forward",
+   "description": "The course level picks the daily lessons",
+   "weight": 0.6
+  },
+  {
+   "source": "domain:learning",
+   "target": "domain:gamification",
+   "type": "cross_domain",
+   "direction": "forward",
+   "description": "Finishing a lesson triggers XP and achievements",
+   "weight": 0.6
+  },
+  {
+   "source": "domain:social",
+   "target": "domain:identity",
+   "type": "cross_domain",
+   "direction": "forward",
+   "description": "Sockets are authenticated by the session",
+   "weight": 0.6
+  },
+  {
+   "source": "domain:content",
+   "target": "domain:courses",
+   "type": "cross_domain",
+   "direction": "forward",
+   "description": "The question bank feeds placement",
+   "weight": 0.6
+  },
+  {
+   "source": "domain:content",
+   "target": "domain:learning",
+   "type": "cross_domain",
+   "direction": "forward",
+   "description": "The seed provides the ready lessons",
+   "weight": 0.6
+  },
+  {
+   "source": "domain:learning",
+   "target": "domain:social",
+   "type": "cross_domain",
+   "direction": "forward",
+   "description": "course:updated refreshes the other tabs over the same socket",
+   "weight": 0.6
+  }
+ ],
+ "layers": [],
+ "tour": []
+}

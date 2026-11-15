@@ -1,3 +1,5 @@
+> An English version of this course is in [../transcendence-course-en/](../transcendence-course-en/).
+
 # Cours : maîtriser NOTRE ft_transcendence
 
 Ce dossier est ton support de révision. Il explique **notre** projet, celui qui est
@@ -66,7 +68,7 @@ creuse, et ceux où notre projet a des choix originaux à défendre :
    `user:<id>`, événements après commit, présence comptée dans Redis.
 6. **L'état réel du projet** : ce qui est fini, ce qui est partiel (chat, RAG, 3 types de
    leçon sur 4 non jouables dans l'UI). Un jury apprécie qu'on le sache. Voir
-   [01 §« État réel »](01-PROJECT-INTRODUCTION.md#état-réel-du-projet-ce-qui-est-fini-et-ce-qui-ne-lest-pas).
+   [01 §« État réel »](01-PROJECT-INTRODUCTION.md#état-réel-du-projet--ce-qui-est-fini-et-ce-qui-ne-lest-pas).
 
 ## Les statuts de fiabilité
 
