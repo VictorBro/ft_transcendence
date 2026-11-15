@@ -4,6 +4,7 @@
   "private": true,
   "description": "NestJS backend: business logic and data access for ft_transcendence",
   "license": "UNLICENSED",
+  "files": ["dist"],
   "scripts": {
     "dev": "nest start --watch --config nest-cli.dev.json",
     "build": "nest build",

@@ -11,10 +11,13 @@ describe('readLimit', () => {
 
   it('takes a positive integer', () => {
     expect(readLimit({ SIGNUP_LIMIT_PER_MINUTE: '50' }, 'SIGNUP_LIMIT_PER_MINUTE', 20)).toBe(50);
+    expect(readLimit({ SIGNUP_LIMIT_PER_MINUTE: ' 50 ' }, 'SIGNUP_LIMIT_PER_MINUTE', 20)).toBe(50);
   });
 
   it('refuses anything else, naming the variable', () => {
-    for (const raw of ['0', '-3', '2.5', 'twenty', '20req']) {
+    const notPlainDigits = ['+5', '0x10', '0b11', '1e3', '1e21', '5 5', 'Infinity'];
+    const notSafe = ['9007199254740993'];
+    for (const raw of ['0', '-3', '2.5', 'twenty', '20req', ...notPlainDigits, ...notSafe]) {
       expect(() => readLimit({ LOGIN_LIMIT_PER_MINUTE: raw }, 'LOGIN_LIMIT_PER_MINUTE', 5)).toThrow(
         `LOGIN_LIMIT_PER_MINUTE must be a positive integer, not "${raw}"`,
       );

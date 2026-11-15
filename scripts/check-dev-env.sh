@@ -62,7 +62,9 @@ else
 fi
 
 want_pnpm="$(sed -n 's/.*"packageManager": *"pnpm@\([^"]*\)".*/\1/p' package.json)"
-have_pnpm="$(pnpm --version 2>/dev/null)"
+# Asked outside the repo: inside it, pnpm 11 switches to the packageManager
+# version before it answers, so the two would always match.
+have_pnpm="$(cd / && pnpm --version 2>/dev/null)"
 if [ -z "$have_pnpm" ]; then
   fail 'pnpm is not installed'
   hint "npm install -g pnpm@$want_pnpm (sudo if npm needs it; in the devcontainer, rebuild it)"

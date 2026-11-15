@@ -39,10 +39,19 @@ export interface Budget {
   log: string;
 }
 
-/** A per-minute limit of the API, as .env sets it, or its default. */
+/**
+ * A per-minute limit of the API, as .env sets it, or its default. The same
+ * check as readLimit in the api: a value the API would refuse fails the run
+ * here too, rather than queueing to NaN or Infinity.
+ */
 const perMinute = (name: string, fallback: number): number => {
   const raw = process.env[name]?.trim();
-  return raw ? Number(raw) : fallback;
+  if (raw === undefined || raw === '') return fallback;
+  const value = Number(raw);
+  if (!/^\d+$/.test(raw) || !Number.isSafeInteger(value) || value < 1) {
+    throw new Error(`${name} must be a positive integer, not "${raw}"`);
+  }
+  return value;
 };
 
 const SIGNUPS: Budget = {

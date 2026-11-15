@@ -186,7 +186,7 @@ DEV_MASKED_DIRS := node_modules \
                    packages/eslint-config/node_modules packages/shared/node_modules \
                    packages/tsconfig/node_modules packages/ui/node_modules \
                    e2e/node_modules \
-                   apps/api/dist apps/web/.next
+                   apps/api/dist apps/api/src/generated apps/web/.next
 
 dev: ## Start the development stack: bind-mounted source, hot reload
 	@# rmdir drops the empty root-owned leftovers; it refuses non-empty dirs, so
@@ -475,7 +475,7 @@ clean: ## Remove containers, volumes and local build output
 	rm -rf \
 	  apps/*/dist apps/*/.next apps/*/coverage apps/*/.turbo \
 	  packages/*/dist packages/*/coverage packages/*/.turbo \
-	  apps/api/generated \
+	  apps/api/src/generated \
 	  e2e/playwright-report e2e/test-results \
 	  .turbo $(CERTS_DIR)
 

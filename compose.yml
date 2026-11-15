@@ -114,7 +114,8 @@ services:
       - ft
 
   db:
-    # Not the plain `postgres` image: it ships without pgvector.
+    # Not the plain `postgres` image: it ships without pgvector. Never below
+    # 0.8.2 (CVE-2026-3172, docs/VERSIONS.md).
     image: pgvector/pgvector:0.8.7-pg18-trixie
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-ft}

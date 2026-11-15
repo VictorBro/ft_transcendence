@@ -237,7 +237,7 @@ truth, so the two documents cannot disagree.
 1. **Foundation**: pnpm workspace, Turborepo, tsconfig/eslint/prettier packages, Makefile.
 2. **Containers**: Dockerfiles, three compose files, Caddy TLS, pgvector image, Redis.
 3. **Devcontainer**: workspace service + image, VS Code extensions pinned.
-4. **CI**: all four workflows green on hello-world before any feature work; then enable the
+4. **CI**: every workflow green on hello-world before any feature work; then enable the
    `main` ruleset (§5 PR policy) so the rules exist before the first real PR.
 5. **Vertical slice**: auth (argon2, httpOnly cookie, guard) → one Prisma model + migration →
    one streaming AI endpoint on `fixture` → one socket.io room (join/leave/reconnect) → Next

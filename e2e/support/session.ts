@@ -18,8 +18,8 @@ import {
  * Signing in, for the specs that need an account but are not testing signup.
  *
  * One account per worker, not per test and not per file: each signup writes a
- * row and runs argon2, and POST /auth/signup is limited to 20 a minute per
- * address. Every browser in the run shares that address, so the whole run
+ * row and runs argon2, and POST /auth/signup is limited per address, 20 a
+ * minute by default. Every browser in the run shares that address, so the whole run
  * shares one budget, and a run needs more accounts than that. signUpSlot()
  * queues each signup until the budget has room, so every signup the suite does
  * not need is time the run spends waiting rather than a 429.
@@ -186,7 +186,7 @@ const pageFor = async (
  * everything behind it render. Tests add at most SECOND_COURSE, always placed:
  * specs rely on it having no unplaced course and no English one. It also has
  * the longest display name allowed, so layout.spec.ts can gate phone widths on
- * it rather than pay one more signup per worker against the 20 a minute.
+ * it rather than pay one more signup per worker against the signup limit.
  */
 export const test = base.extend<
   { signedIn: Page; onboarded: Page; freshLearner: Page },

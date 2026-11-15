@@ -20,6 +20,7 @@ look again, and the lessons a bump should not have to learn twice. Last full rev
 | Vitest | `vitest`, `@vitest/coverage-v8` and `vite` (a required peer) in the four packages that test. |
 | Playwright | Compare the devcontainer's apt list with `playwright-core`'s `nativeDeps` for debian13. |
 | Upstream images | `compose.yml` and `compose.deploy.yml`: `scripts/check-monitoring-config.sh` fails when caddy, db, redis or an exporter differs. Nothing checks the other copies: pgvector in `ci.yml`, `hygiene.yml` and `docs/TECHNICAL_PLAN.md`, redis in `ci.yml`. |
+| Prometheus | `infra/monitoring/prometheus/Dockerfile` and `prometheusVersion` in `infra/monitoring/grafana/provisioning/datasources/datasources.yml`, which Grafana's query builder reads. Nothing checks that they match. |
 | GitHub Actions | Tags from each action's releases API, not from blog posts. `aquasecurity/trivy-action` is pinned by commit (76 of its 77 tags were force-pushed to malicious commits in March 2026), with the scanner's `version` set. |
 
 After any bump: `pnpm audit`, `make all`, then `make playwright-all`.
@@ -49,7 +50,10 @@ After any bump: `pnpm audit`, `make all`, then `make playwright-all`.
 
 Known and accepted: `pnpm audit` reports advisories in development tools only, `brace-expansion`,
 `js-yaml` 4 and `deepmerge` under `@nestjs/cli`'s type-check plugin and `minimatch` under ESLint.
-None reaches a prod image. They are in the tooling image (the api `build` stage), which only
+`pnpm audit --prod` still lists `minimatch`, because `packages/eslint-config` declares ESLint's
+plugins as its own dependencies. None reaches a prod image: the api image holds only the api's
+production dependencies (`pnpm deploy`, in its `prune` stage), and the web image only what Next's
+standalone output traces. They are in the tooling image (the api `build` stage), which only
 migrates and seeds, and which Trivy does not scan.
 
 ## Lessons kept
@@ -64,8 +68,8 @@ migrates and seeds, and which Trivy does not scan.
 - **Prisma in slim images.** The CLI needs `openssl` and `ca-certificates` (the `base` stage);
   the runtime does not. The Rust-free client cannot reach Postgres without `@prisma/adapter-pg`,
   a runtime dependency.
-- **pgvector.** The plain `postgres` image has no pgvector, hence `pgvector/pgvector`.
-  `CREATE EXTENSION IF NOT EXISTS vector` belongs in the first migration that needs it: the CI
+- **pgvector.** The plain `postgres` image has no pgvector, hence `pgvector/pgvector`. Never
+  below 0.8.2: CVE-2026-3172, a buffer overflow in parallel HNSW index builds. `CREATE EXTENSION IF NOT EXISTS vector` belongs in the first migration that needs it: the CI
   shadow database replays migrations and nothing else.
 - **Image sources.** The Prometheus-family images come from ghcr.io, without Docker Hub's
   anonymous limit of 100 pulls per 6 hours that a school NAT shares. Grafana is

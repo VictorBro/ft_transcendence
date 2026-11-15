@@ -113,6 +113,7 @@ jobs:
       # The prod image carries no Prisma CLI or schema, so this runs from a
       # throwaway container built off the api build stage, exactly as `make` does.
       - name: Apply migrations
+        id: migrate
         run: make db-ready
 
       - name: Run the suite
@@ -122,9 +123,11 @@ jobs:
       # target, evaluates every rule and has found Alertmanager. After the
       # suite: by then every target has been scraped, so it passes at once
       # instead of waiting out a first scrape. Before the restart below, which
-      # takes the API target down again.
+      # takes the API target down again. Also after a failed suite, so a flaky
+      # test cannot hide a monitoring regression. A stack that never came up or
+      # never migrated skips it: the check counts seeded rows.
       - name: Check the monitoring stack
-        if: env.STACK_CHECKS == 'true'
+        if: ${{ !cancelled() && env.STACK_CHECKS == 'true' && steps.migrate.outcome == 'success' }}
         run: ./scripts/check-monitoring.sh
 
       # Alone and after the suite: it restarts the API, which every test beside

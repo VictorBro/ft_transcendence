@@ -76,10 +76,8 @@ CMD ["sh", "-c", "pnpm --filter @ft/api run lint && pnpm --filter @ft/api run ty
 
 # --------------------------------------------------------------------------- build
 # prisma generate runs here, inside the target architecture, never copied in
-# from a stage built for a different one. Its output (apps/api/generated) is not
-# carried into prod yet: nothing imports the client, and tsconfig.build.json
-# leaves `generated` out, so there is no compiled JS to ship. Both change
-# together the day a PrismaService lands.
+# from a stage built for a different one. Its output, src/generated, compiles
+# into dist with the rest of the source.
 FROM deps AS build
 COPY . .
 RUN pnpm --filter @ft/api exec prisma generate
@@ -89,22 +87,17 @@ RUN pnpm --filter @ft/api exec prisma generate
 RUN pnpm --filter "@ft/api..." run build
 
 # --------------------------------------------------------------------------- prune
-# Dropping devDependencies is its own stage on purpose. `prisma` is a
-# devDependency, and the Makefile builds its migrate/seed/studio tooling image
-# from --target build. Pruning inside `build` would strip the Prisma CLI out of
-# the very image that needs it.
+# Its own stage on purpose: the Makefile and images.yml build the migrate and
+# seed tooling image from --target build, and the runtime tree in /out has no
+# business there.
 FROM build AS prune
-# Known gap: `--prod --filter` prunes only the filtered projects. The root
-# devDependencies (turbo, typescript, prisma, @swc/core) stay in the shared
-# store and so in the runtime image. `pnpm deploy` would build a self-contained
-# prod tree; it no longer needs injectWorkspacePackages since pnpm 11.26.
-#
-# CI=true makes pnpm non-interactive. Switching an existing node_modules to
-# --prod means purging it first, and without this pnpm aborts with
-# ERR_PNPM_ABORTED_REMOVE_MODULES_DIR_NO_TTY rather than prompting.
-ENV CI=true
+# `pnpm deploy` copies what `files` in apps/api/package.json lists (dist) into
+# /out, and installs only the api's production dependencies there, @ft/shared
+# included. `pnpm install --prod --filter` would leave the dev tools (eslint,
+# typescript, the Prisma CLI) in the shared virtual store, and so in the
+# runtime image.
 RUN --mount=type=cache,id=pnpm-store,target=/pnpm/store,sharing=locked \
-    pnpm install --frozen-lockfile --prod --filter @ft/api...
+    pnpm --filter @ft/api deploy --prod /out
 
 # --------------------------------------------------------------------------- prod
 # Plain node image rather than `FROM base`: corepack and the pnpm binary have no
@@ -125,21 +118,9 @@ RUN rm -rf /usr/local/lib/node_modules/npm /usr/local/lib/node_modules/corepack 
     /usr/local/bin/npm /usr/local/bin/npx /usr/local/bin/corepack \
     /usr/local/bin/yarn /usr/local/bin/yarnpkg
 WORKDIR /app
-# The per-project node_modules is a tree of relative symlinks into the root
-# virtual store, so both paths have to come across for resolution to work.
-COPY --from=prune --chown=node:node /app/node_modules ./node_modules
-COPY --from=prune --chown=node:node /app/apps/api/node_modules ./apps/api/node_modules
-COPY --from=prune --chown=node:node /app/apps/api/package.json ./apps/api/package.json
-COPY --from=prune --chown=node:node /app/apps/api/dist ./apps/api/dist
-# apps/api/node_modules/@ft/shared is a relative symlink into packages/shared,
-# so the target has to exist here or every import of @ft/shared fails at
-# startup with MODULE_NOT_FOUND. Its own node_modules is part of that: it holds
-# the symlink to zod, which the compiled schemas require at runtime. The source
-# is not needed, only the manifest, the emitted dist and those links.
-COPY --from=prune --chown=node:node /app/packages/shared/package.json ./packages/shared/package.json
-COPY --from=prune --chown=node:node /app/packages/shared/dist ./packages/shared/dist
-COPY --from=prune --chown=node:node /app/packages/shared/node_modules ./packages/shared/node_modules
-WORKDIR /app/apps/api
+COPY --from=prune --chown=node:node /out/package.json ./package.json
+COPY --from=prune --chown=node:node /out/node_modules ./node_modules
+COPY --from=prune --chown=node:node /out/dist ./dist
 
 # The avatars volume mounts here. Docker creates a missing mountpoint root-owned,
 # which the node user below cannot write to.

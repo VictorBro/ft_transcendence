@@ -874,7 +874,7 @@ load-bearing.
 | `@nestjs/swagger` | API docs; the Public API module needs them | keep |
 | `@nestjs/throttler` | Four jobs, see §6 | keep |
 | Playwright + console gate | The zero-console-errors **rejection criterion** | keep |
-| CI: ci / e2e / hygiene / images | gitleaks, commitlint, `.env` hygiene, Prisma drift | keep |
+| CI: ci / e2e / hygiene / images / devcontainer | gitleaks, commitlint, `.env` hygiene, Prisma drift | keep |
 | `LLM_PROVIDER` fixture/gemini | Free CI, deterministic tests, swappable vendor | keep, now points at Gemini |
 
 ## 9. Two things that will quietly cost you points
