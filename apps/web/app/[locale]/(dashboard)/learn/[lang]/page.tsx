@@ -4,6 +4,7 @@ import { getTranslations } from 'next-intl/server';
 import { LanguageSchema, SERVER_EVENTS } from '@ft/shared';
 
 import { Link } from '@/i18n/navigation';
+import { ChallengeCard, NewToday, RankLine } from '@/components/gamification';
 import { RefreshOn } from '@/components/refresh-on';
 import { findCourse, requireCourses } from '@/lib/courses';
 import { loadToday } from '@/lib/lessons';
@@ -72,7 +73,15 @@ export default async function CoursePage({ params }: { params: Promise<{ lang: s
           <h1 className="text-3xl font-semibold">{languageName(course.lang)}</h1>
           {/* The streak is the course's, so it shows on a level with nothing to play too. */}
           <StreakLine streak={today.streak} />
+          {/* The course's XP, so it shows on a level with nothing to play too. */}
+          <RankLine xp={today.xp} lang={course.lang} />
         </div>
+        {/*
+          The day's challenge next to the rank, above the lessons, so it shows
+          without scrolling. With nothing ready to play, none can be done.
+        */}
+        {empty ? null : <ChallengeCard challenge={today.challenge} lang={course.lang} />}
+        <NewToday codes={today.earnedToday} lang={course.lang} />
 
         {empty ? (
           <p className="rounded-2xl border border-dashed border-slate-800 p-6 text-slate-400">
