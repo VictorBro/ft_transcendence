@@ -1,6 +1,6 @@
 import { randomUUID } from 'node:crypto';
 import { readFileSync } from 'node:fs';
-import { request as httpRequest } from 'node:http';
+import { createServer, request as httpRequest } from 'node:http';
 import type { AddressInfo } from 'node:net';
 import { join } from 'node:path';
 
@@ -374,7 +374,9 @@ describe('lesson discussion (e2e)', () => {
     // Through a raw socket: supertest waits for the whole body, a learner closing the tab does not.
     it('cancels the LLM call when the learner leaves midway', async () => {
       const streamText = vi.spyOn(llm, 'streamText');
-      const server = app.getHttpServer().listen(0);
+      // A server of its own around the same app: the one the other tests share
+      // stays as supertest left it, since supertest 7.3 tracks whether it listens.
+      const server = createServer(app.getHttpAdapter().getInstance()).listen(0);
       const { port } = server.address() as AddressInfo;
       // A session of its own for the raw request: log in again and keep the cookie.
       const login = await request(server)
@@ -406,7 +408,8 @@ describe('lesson discussion (e2e)', () => {
 
       const { signal } = streamText.mock.calls[0][0];
       await vi.waitFor(() => expect(signal.aborted).toBe(true));
-      server.close();
+      server.closeAllConnections();
+      await new Promise((resolve) => server.close(resolve));
       streamText.mockRestore();
     });
   });
