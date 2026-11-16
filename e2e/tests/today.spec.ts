@@ -1,5 +1,6 @@
 import type { Page } from '@playwright/test';
 
+import { finishThroughApi } from '../support/lesson-play';
 import { expect, ONBOARDED_COURSE, pickLevel, placeCourse, test } from '../support/session';
 
 /**
@@ -35,31 +36,6 @@ const readToday = async (page: Page, lang: string): Promise<Today> => {
   const response = await page.request.get(`/api/courses/${lang}/today`);
   expect(response.status()).toBe(200);
   return response.json();
-};
-
-interface Attempt {
-  attemptId: string;
-  current: { index: number } | null;
-}
-
-/**
- * Plays a lesson through its attempt (#145), every page left blank: the
- * server grades the answers and takes no score, and the browser cannot know
- * the right ones, so a lesson finished here is attempted at 0% and not
- * passed. A passed lesson waits for the lesson page (#146).
- */
-const finishBlank = async (page: Page, lang: string, id: string): Promise<void> => {
-  const url = `/api/courses/${lang}/lessons/${id}/attempt`;
-  const started = await page.request.post(url, { data: { locale: 'en' } });
-  expect(started.status()).toBe(201);
-  let attempt = (await started.json()) as Attempt;
-  while (attempt.current !== null) {
-    const response = await page.request.post(`${url}/pages/${attempt.current.index}`, {
-      data: { attemptId: attempt.attemptId, answers: {} },
-    });
-    expect(response.status()).toBe(200);
-    attempt = ((await response.json()) as { attempt: Attempt }).attempt;
-  }
 };
 
 const home = (lang: string) => `/en/learn/${lang}`;
@@ -145,7 +121,7 @@ test.describe('the daily goal page', () => {
     expect(lesson).toBeDefined();
 
     // Not passed, but it counts for today: the goal of one lesson is met.
-    await finishBlank(page, lang, lesson!.id);
+    await finishThroughApi(page.request, lang, lesson!.id, { share: 0 });
     await page.goto(home(lang));
     const card = page.getByRole('region', { name: 'Today' });
     await expect(card.getByText('Daily goal reached')).toBeVisible();
