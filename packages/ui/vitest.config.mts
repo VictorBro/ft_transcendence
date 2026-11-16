@@ -1,6 +1,6 @@
 import { defineConfig } from 'vitest/config';
 
-// JSX transform settings are deliberately absent: Vitest 4 runs on rolldown-vite,
+// JSX transform settings are deliberately absent: Vitest runs on rolldown-vite,
 // whose oxc transformer reads jsx from tsconfig.json and ignores an `esbuild`
 // block (it warns when both are set).
 export default defineConfig({

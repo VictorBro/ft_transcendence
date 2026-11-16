@@ -10,6 +10,7 @@ import { MetricsModule } from './metrics/metrics.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { RedisModule } from './redis/redis.module';
 import { IdentityThrottlerGuard } from './throttler/identity-throttler.guard';
+import { RATE_LIMITS } from './throttler/rate-limits';
 import { UsersModule } from './users/users.module';
 import { FriendsModule } from './friends/friends.module';
 import { CoursesModule } from './courses/courses.module';
@@ -19,11 +20,12 @@ import { LessonsModule } from './lessons/lessons.module';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
-    // One ceiling for everyone. What IdentityThrottlerGuard changes is not the
-    // number but who it is counted against: each account on its own key, each
-    // anonymous visitor on their own address.
+    // One ceiling for everyone, 100 a minute by default (RATE_LIMIT_PER_MINUTE).
+    // What IdentityThrottlerGuard changes is not the number but who it is
+    // counted against: each account on its own key, each anonymous visitor on
+    // their own address.
     ThrottlerModule.forRoot({
-      throttlers: [{ ttl: 60_000, limit: 100 }],
+      throttlers: [{ ttl: 60_000, limit: RATE_LIMITS.perAccount }],
       errorMessage: 'server.rateLimited',
     }),
     PrismaModule,

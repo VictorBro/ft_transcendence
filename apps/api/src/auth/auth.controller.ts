@@ -31,6 +31,7 @@ import type {
 import type { Request, Response } from 'express';
 
 import { SocketsService } from '../gateway/sockets.service';
+import { RATE_LIMITS } from '../throttler/rate-limits';
 import { ThrottleByIp } from '../throttler/throttle-by-ip.decorator';
 import { CurrentUser, Public } from './auth.decorators';
 import {
@@ -101,12 +102,12 @@ export class AuthController {
 
   @Public()
   @Post('signup')
-  // Ten per minute per IP. Signup writes a row and runs argon2, so it is both
-  // the most expensive unauthenticated endpoint and the one worth flooding.
-  // The browser suite needs more accounts than this in a run and queues its
-  // signups to fit (e2e/support/signup-budget.ts): it is the test traffic that
-  // bends to this number, never the other way round.
-  @ThrottleByIp(10)
+  // Per IP, 20 a minute by default (SIGNUP_LIMIT_PER_MINUTE). Signup writes a
+  // row and runs argon2, so it is both the most expensive unauthenticated
+  // endpoint and the one worth flooding. The browser suite queues its signups
+  // to fit (e2e/support/signup-budget.ts): at 10 that queue cost a Chromium run
+  // about two minutes, and 20 removes nearly all of it.
+  @ThrottleByIp(RATE_LIMITS.signup)
   @ApiOperation({ summary: 'Create an account and sign in', security: [] })
   @ApiCreatedResponse({ type: SessionUserDto })
   @ApiConflictResponse({ description: 'Email or display name already taken' })
@@ -120,7 +121,7 @@ export class AuthController {
   @Post('login')
   @HttpCode(HttpStatus.OK)
   // Tighter than signup: this is the endpoint a password guesser hammers.
-  @ThrottleByIp(5)
+  @ThrottleByIp(RATE_LIMITS.login)
   @ApiOperation({ summary: 'Sign in with email and password', security: [] })
   @ApiOkResponse({ type: SessionUserDto })
   @ApiResponse({
@@ -156,7 +157,7 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   // As tight as login: this is the second half of the same guessing attempt,
   // and six digits is a far smaller space than a password.
-  @ThrottleByIp(5)
+  @ThrottleByIp(RATE_LIMITS.login)
   @ApiOperation({ summary: 'Complete a login with a second factor', security: [] })
   @ApiOkResponse({ type: SessionUserDto })
   @ApiUnauthorizedResponse({ description: 'No pending login, or the code is wrong' })
@@ -203,7 +204,7 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   // Behind a session, but still a secret check: a stolen cookie must not turn
   // into a code-guessing oracle, and six digits is a small space.
-  @ThrottleByIp(5)
+  @ThrottleByIp(RATE_LIMITS.login)
   @ApiOperation({ summary: 'Confirm enrolment and return the recovery codes' })
   @ApiOkResponse({ type: RecoveryCodesDto })
   @ApiUnauthorizedResponse({ description: 'No valid session, or that code is not valid' })
@@ -221,7 +222,7 @@ export class AuthController {
   @HttpCode(HttpStatus.NO_CONTENT)
   // The password check below is what makes this worth guessing against, so it
   // is counted per address like login rather than per account.
-  @ThrottleByIp(5)
+  @ThrottleByIp(RATE_LIMITS.login)
   @ApiOperation({ summary: 'Turn off two factor authentication' })
   @ApiNoContentResponse({ description: 'Two factor authentication is off' })
   @ApiUnauthorizedResponse({ description: 'No valid session, or the password is incorrect' })

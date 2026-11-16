@@ -2,7 +2,7 @@
 
 How the containers fit together, in production and in development.
 Companions: [TECHNICAL_PLAN.md](TECHNICAL_PLAN.md) (decisions and rationale),
-[VERSIONS.md](VERSIONS.md) (pins), [SUBJECT_SUMMARY.md](SUBJECT_SUMMARY.md) (requirements).
+[VERSIONS.md](VERSIONS.md) (what moves together, what is held back), [SUBJECT_SUMMARY.md](SUBJECT_SUMMARY.md) (requirements).
 
 Every diagram below is generated from the compose files as they actually are. If
 you change a port or a route, change the diagram in the same commit.
@@ -405,19 +405,20 @@ database browser, and it already knows the schema.
 
 ## 7. What CI runs
 
-Four workflows. `ci` and `e2e` are the ones that gate a merge on behaviour.
+Five workflows. `ci` and `e2e` are the ones that gate a merge on behaviour;
+`devcontainer` runs only when the devcontainer image changes.
 
 ```mermaid
 flowchart TB
-    pr["Pull request"] --> ci & e2e & hygiene & images
+    pr["Pull request"] --> ci & e2e & hygiene & images & devcontainer
 
     subgraph ci["ci.yml"]
         c1["format · lint · typecheck<br/>TS version assert"] --> c2["unit tests + coverage"] --> c3["Supertest against<br/>real Postgres + Redis"]
         c4["monitoring config<br/>promtool · amtool · caddy validate"]
     end
 
-    subgraph e2e["e2e.yml, one job per browser"]
-        e1["build prod images<br/>compose up"] --> em["monitoring check<br/>every target up"] --> e2["Playwright<br/>one engine"] --> e3["console gate<br/>legal pages"] --> e4["API restart run<br/>Chromium job only"]
+    subgraph e2e["e2e.yml, two jobs per browser (lesson, rest)"]
+        e1["build prod images<br/>compose up"] --> e2["Playwright<br/>one engine, one part"] --> e3["console gate<br/>legal pages"] --> em["monitoring check<br/>every target up"] --> e4["API restart run"]
         e4 --> eg["gate<br/>playwright (production stack)"]
     end
 
@@ -428,10 +429,16 @@ flowchart TB
     subgraph images["images.yml"]
         i1["multi-arch build<br/>amd64 + arm64 → GHCR"]
     end
+
+    subgraph devcontainer["devcontainer.yml, devcontainer paths only"]
+        d1["build the image<br/>Node and pnpm match the pins"]
+    end
 ```
 
-Each engine gets its own e2e job and stack, because the signup limit is per
-stack, and the gate job carries the required check.
+Each engine gets two e2e jobs, each with its own stack: `lesson.spec.ts` alone
+is about half of the suite's time, so it is one part and every other spec the
+other. The monitoring check and the API restart run once, in the Chromium
+`rest` job, after its suite. The gate job carries the required check.
 
 Two of those checks are **subject rejection criteria**, which is why they run
 against production images rather than a dev server:
