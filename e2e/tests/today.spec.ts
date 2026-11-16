@@ -1,5 +1,6 @@
 import type { Page } from '@playwright/test';
 
+import { finishThroughApi } from '../support/lesson-play';
 import { expect, ONBOARDED_COURSE, pickLevel, placeCourse, test } from '../support/session';
 
 /**
