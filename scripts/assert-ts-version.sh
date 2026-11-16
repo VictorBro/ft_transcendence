@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 #
-# Guards docs/VERSIONS.md trap 1.
+# Guards the TypeScript hold in docs/VERSIONS.md.
 #
-# TypeScript 7 is npm `latest` and breaks this stack twice over: the native
-# compiler has no decorator support, so NestJS cannot compile, and
-# typescript-eslint peers on `typescript <6.1.0`, so linting dies too. A single
-# `pnpm up --latest` reintroduces it silently, which is why this runs in CI.
+# TypeScript 7 is npm `latest` and ships no compiler API until 7.1, which
+# typescript-eslint (peer `typescript <6.1.0`), @nestjs/cli and Next's type
+# check all load. A single `pnpm up --latest` reintroduces it silently, which
+# is why this runs in CI.
 #
 # Four independent surfaces are checked, because any one of them can drift on
 # its own: the manifests, the pnpm override, the lockfile, and what is actually
@@ -106,7 +106,7 @@ if [ "$failures" -ne 0 ]; then
   cat >&2 <<EOF
 ${failures} check(s) failed.
 
-typescript must be exactly ${EXPECTED} everywhere. See docs/VERSIONS.md trap 1.
+typescript must be exactly ${EXPECTED} everywhere. See docs/VERSIONS.md (held back: TypeScript).
 Fix by pinning the exact version in the offending manifest and re-running
 'pnpm install --lockfile-only', not by relaxing this script.
 EOF

@@ -7,6 +7,7 @@ import { isErrorCode } from '@ft/shared';
 
 import { AppModule } from '../src/app.module';
 import { configureApp } from '../src/app.setup';
+import { RATE_LIMITS } from '../src/throttler/rate-limits';
 import { PrismaService } from '../src/prisma/prisma.service';
 
 /**
@@ -181,10 +182,11 @@ describe('error codes (e2e)', () => {
   });
 
   /**
-   * Pins the number, not just the mechanism. Nothing else fails when the
-   * decorator changes, which is how #31 once raised it to 30 unnoticed (#34).
+   * Pins the default, not just the mechanism. Nothing else fails when it
+   * changes, which is how #31 once raised it to 30 unnoticed (#34).
    */
-  it('sends server.rateLimited on the eleventh signup in a minute from one address', async () => {
+  it('sends server.rateLimited on the twenty-first signup in a minute from one address', async () => {
+    expect(RATE_LIMITS.signup, 'the default: run with SIGNUP_LIMIT_PER_MINUTE unset').toBe(20);
     const address = fromNewAddress();
     const signUp = (n: number) =>
       request(server())
@@ -196,10 +198,10 @@ describe('error codes (e2e)', () => {
           password: 'Correct-Horse-9',
         });
 
-    for (let attempt = 1; attempt <= 10; attempt++) {
+    for (let attempt = 1; attempt <= 20; attempt++) {
       await signUp(attempt).expect(201);
     }
-    const response = await signUp(11).expect(429);
+    const response = await signUp(21).expect(429);
 
     expect(response.body.message).toBe('server.rateLimited');
     expectOnlyCodes(response.body);

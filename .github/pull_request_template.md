@@ -17,11 +17,11 @@ make all
 
 # Checklist
 
-- [ ] `make all` is green locally. It runs every check CI runs, then the production stack, then Playwright against it, so green here means green there.
+- [ ] `make all` is green locally. It runs every check CI runs, then the production stack, then Playwright on Chromium; `make playwright-all` adds Firefox and WebKit, as CI does.
 - [ ] Commits follow Conventional Commits (`feat(api): ...`), so commitlint passes.
 - [ ] New or changed behaviour has a test; coverage stays at or above 60% lines and functions.
 - [ ] No secret, key or token in the diff. New configuration is documented in `.env.example` and read through `compose.yml`.
-- [ ] Versions added or changed are pinned exactly and recorded in `docs/VERSIONS.md`.
+- [ ] Versions added or changed are pinned exactly, and `docs/VERSIONS.md` says why when one is held back or has to move with another.
 - [ ] Schema changes ship with their generated migration.
 - [ ] Copilot's review is read and every comment is answered or fixed.
 

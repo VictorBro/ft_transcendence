@@ -1,6 +1,6 @@
 {
   "$schema": "https://turborepo.com/schema.json",
-  "globalDependencies": [".npmrc", ".nvmrc", ".prettierrc", ".prettierignore"],
+  "globalDependencies": [".nvmrc", ".prettierrc", ".prettierignore"],
   "globalEnv": ["CI", "NODE_ENV"],
   "tasks": {
     // The Prisma client is emitted TypeScript that apps/api imports, so it is a

@@ -1,0 +1,50 @@
+name: devcontainer
+
+# Builds the devcontainer image when something it is made of changes. Nothing
+# else in CI builds it, so a broken image was only found by the next teammate
+# who rebuilt. Not a required check: it runs only on the paths below.
+on:
+  pull_request:
+    paths:
+      - .devcontainer/**
+      - .nvmrc
+      - package.json
+      - .github/workflows/devcontainer.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: devcontainer-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: devcontainer image
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7.0.1
+
+      - uses: docker/setup-buildx-action@v4.4.1
+
+      - name: Build the image
+        uses: docker/build-push-action@v7.4.0
+        with:
+          context: .
+          file: .devcontainer/Dockerfile
+          load: true
+          tags: ft/devcontainer:ci
+          cache-from: type=gha,scope=devcontainer
+          cache-to: type=gha,mode=max,scope=devcontainer
+
+      # make doctor checks the same two pins inside a running devcontainer.
+      - name: Node and pnpm match the repo's pins
+        run: |
+          node_want="v$(cat .nvmrc)"
+          pnpm_want="$(node -p "require('./package.json').packageManager.split('@')[1]")"
+          node_have="$(docker run --rm ft/devcontainer:ci node -v)"
+          pnpm_have="$(docker run --rm ft/devcontainer:ci pnpm -v)"
+          echo "node $node_have (want $node_want), pnpm $pnpm_have (want $pnpm_want)"
+          test "$node_have" = "$node_want"
+          test "$pnpm_have" = "$pnpm_want"

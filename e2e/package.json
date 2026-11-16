@@ -17,11 +17,11 @@
     "@ft/eslint-config": "workspace:*",
     "@ft/shared": "workspace:*",
     "@ft/tsconfig": "workspace:*",
-    "@playwright/test": "1.62.1",
-    "@types/node": "^24.13.3",
-    "eslint": "10.8.0",
-    "otpauth": "9.5.1",
-    "prettier": "3.9.6",
+    "@playwright/test": "1.65.0",
+    "@types/node": "24.19.2",
+    "eslint": "10.14.0",
+    "otpauth": "9.6.0",
+    "prettier": "3.10.1",
     "typescript": "6.0.3"
   }
 }

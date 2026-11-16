@@ -4,11 +4,13 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
 /**
- * Keeps the suite inside the signup and login rate limits instead of the limits
- * being raised to fit the suite.
+ * Keeps the suite inside the signup and login rate limits, whatever .env sets
+ * them to, rather than racing into 429s.
  *
  * POST /auth/signup and POST /auth/login are limited per client address
- * (@ThrottleByIp on AuthController; SIGNUPS and LOGINS below must stay in step).
+ * (@ThrottleByIp on AuthController). SIGNUPS and LOGINS below read the same
+ * variables with the same defaults as apps/api/src/throttler/rate-limits.ts:
+ * make passes the .env values, and CI runs the defaults on both sides.
  * Every browser in the run reaches Caddy from the same address, so all workers
  * share each budget, and a run needs more accounts than the signup one holds.
  * Rather than let the workers race into a 429, each request first books a send
@@ -37,13 +39,34 @@ export interface Budget {
   log: string;
 }
 
-const SIGNUPS: Budget = { perWindow: 10, log: join(tmpdir(), 'ft-e2e-signups.json') };
+/**
+ * A per-minute limit of the API, as .env sets it, or its default. The same
+ * check as readLimit in the api: a value the API would refuse fails the run
+ * here too, rather than queueing to NaN or Infinity.
+ */
+const perMinute = (name: string, fallback: number): number => {
+  const raw = process.env[name]?.trim();
+  if (raw === undefined || raw === '') return fallback;
+  const value = Number(raw);
+  if (!/^\d+$/.test(raw) || !Number.isSafeInteger(value) || value < 1) {
+    throw new Error(`${name} must be a positive integer, not "${raw}"`);
+  }
+  return value;
+};
+
+const SIGNUPS: Budget = {
+  perWindow: perMinute('SIGNUP_LIMIT_PER_MINUTE', 20),
+  log: join(tmpdir(), 'ft-e2e-signups.json'),
+};
 
 /**
- * Only auth.spec.ts signs in through the form, three times per browser, so
- * three browsers run nine against a limit of five.
+ * Only auth.spec.ts signs in through the form, three times per browser: nine
+ * on one stack under `make playwright-all`, against a default limit of five.
  */
-const LOGINS: Budget = { perWindow: 5, log: join(tmpdir(), 'ft-e2e-logins.json') };
+const LOGINS: Budget = {
+  perWindow: perMinute('LOGIN_LIMIT_PER_MINUTE', 5),
+  log: join(tmpdir(), 'ft-e2e-logins.json'),
+};
 
 /** A lock held longer than this belongs to a worker that died holding it. */
 const STALE_LOCK_MS = 5_000;

@@ -8,7 +8,7 @@
 # BuildKit reads .devcontainer/Dockerfile.dockerignore in preference to a
 # context-root .dockerignore, which is why that file sits next to this one.
 
-FROM node:24.18-bookworm-slim
+FROM node:24.22.3-trixie-slim
 
 # ARG, not ENV: noninteractive is a build-time concern and must not leak into
 # the shell the developer ends up in.
@@ -17,22 +17,20 @@ ARG DEBIAN_FRONTEND=noninteractive
 ENV LANG=C.UTF-8 \
     SHELL=/bin/zsh \
     PNPM_HOME=/pnpm \
-    PATH=/pnpm:$PATH \
-    COREPACK_ENABLE_DOWNLOAD_PROMPT=0
+    PATH=/pnpm:$PATH
 
-# Corepack defaults to $HOME/.cache/node/corepack. That path is a candidate for
-# a named volume (see the /home/node/.cache note further down), and a volume
-# mounted there would hide the pnpm tarball baked in below, sending the first
-# command of every session back to the network. Park it outside $HOME.
-ENV COREPACK_HOME=/usr/local/share/corepack
+# Prisma's CLI asks npm for a newer version on every run and prints a box when
+# there is one. Its `latest` tag is an 8.0 release candidate, so the box only
+# ever advertises an RC (#61). This also turns off its telemetry.
+ENV CHECKPOINT_DISABLE=1
 
 # Mirrors what the workspace service sets, so a bare `docker run` on this image
 # behaves like `docker compose run`.
 ENV HISTFILE=/commandhistory/.history \
     CLAUDE_CONFIG_DIR=/home/node/.claude
 
-# openssl: node:*-bookworm-slim ships no libssl, and Prisma then misdetects the
-#   version and fails to load its engine (docs/VERSIONS.md trap 1c).
+# openssl: node:*-slim ships no openssl CLI, and Prisma then misdetects the
+#   OpenSSL version and fails to load its engine (see apps/api/Dockerfile).
 # openssh-client: git pulls it only as a Recommends, and this image installs
 #   with --no-install-recommends. Without it every ssh:// remote fails.
 # procps / less / jq / make: ps for debugging, less for the git pager, jq for
@@ -74,7 +72,7 @@ RUN install -m 0755 -d /etc/apt/keyrings \
         -o /etc/apt/keyrings/githubcli-archive-keyring.gpg \
     && chmod a+r /etc/apt/keyrings/docker.asc /etc/apt/keyrings/githubcli-archive-keyring.gpg \
     && ARCH="$(dpkg --print-architecture)" \
-    && echo "deb [arch=${ARCH} signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian bookworm stable" \
+    && echo "deb [arch=${ARCH} signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian trixie stable" \
         > /etc/apt/sources.list.d/docker.list \
     && echo "deb [arch=${ARCH} signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" \
         > /etc/apt/sources.list.d/github-cli.list \
@@ -92,10 +90,10 @@ RUN docker completion zsh > /usr/share/zsh/vendor-completions/_docker \
     && gh completion -s zsh > /usr/share/zsh/vendor-completions/_gh
 
 # Shared-library dependencies of the three browsers the suite runs on
-# (Chromium, Firefox, WebKit), so the e2e step of `make all` runs inside this
-# container without `playwright install --with-deps` (which needs root and
-# would put the package set outside this file). The list is Playwright's own
-# for debian12, from playwright-core's nativeDeps: when the Playwright pin
+# (Chromium, Firefox, WebKit), so `make` and `make playwright-all` run inside
+# this container without `playwright install --with-deps` (which needs root
+# and would put the package set outside this file). The list is Playwright's own
+# for debian13, from playwright-core's nativeDeps: when the Playwright pin
 # moves, compare it again. The browser BINARIES are not baked in: playwright
 # downloads the exact builds its version pins into ~/.cache/ms-playwright,
 # which compose.override.yml backs with a named volume, so they survive
@@ -107,16 +105,16 @@ RUN apt-get update \
         gstreamer1.0-plugins-bad \
         gstreamer1.0-plugins-base \
         gstreamer1.0-plugins-good \
-        libasound2 \
-        libatk-bridge2.0-0 \
-        libatk1.0-0 \
+        libasound2t64 \
+        libatk-bridge2.0-0t64 \
+        libatk1.0-0t64 \
         libatomic1 \
-        libatspi2.0-0 \
-        libavcodec59 \
-        libavif15 \
+        libatspi2.0-0t64 \
+        libavcodec61 \
+        libavif16 \
         libcairo-gobject2 \
         libcairo2 \
-        libcups2 \
+        libcups2t64 \
         libdbus-1-3 \
         libdbus-glib-1-2 \
         libdrm2 \
@@ -124,24 +122,24 @@ RUN apt-get update \
         libenchant-2-2 \
         libepoxy0 \
         libevdev2 \
-        libevent-2.1-7 \
+        libevent-2.1-7t64 \
         libfontconfig1 \
         libfreetype6 \
         libgbm1 \
         libgdk-pixbuf-2.0-0 \
         libgles2 \
-        libglib2.0-0 \
+        libglib2.0-0t64 \
         libglx0 \
         libgstreamer-gl1.0-0 \
         libgstreamer-plugins-base1.0-0 \
         libgstreamer1.0-0 \
-        libgtk-3-0 \
+        libgtk-3-0t64 \
         libgtk-4-1 \
         libgudev-1.0-0 \
         libharfbuzz-icu0 \
         libharfbuzz0b \
         libhyphen0 \
-        libicu72 \
+        libicu76 \
         libjpeg62-turbo \
         liblcms2-2 \
         libmanette-0.2-0 \
@@ -153,7 +151,7 @@ RUN apt-get update \
         libopus0 \
         libpango-1.0-0 \
         libpangocairo-1.0-0 \
-        libpng16-16 \
+        libpng16-16t64 \
         libproxy1v5 \
         libsecret-1-0 \
         libsoup-3.0-0 \
@@ -185,14 +183,11 @@ RUN apt-get update \
 # command (compose.override.yml). See the script header for the why.
 COPY --chmod=0755 .devcontainer/docker-init.sh /usr/local/share/docker-init.sh
 
-# Corepack ships with Node 24 and is gone in 25+ (docs/VERSIONS.md trap 3).
-# The version must match `packageManager` in the root package.json or pnpm
-# refuses to run. COREPACK_HOME is handed to node: corepack rewrites its
-# lastKnownGood file on activation, and root will not be the one running it.
-RUN corepack enable \
-    && corepack prepare pnpm@11.18.0 --activate \
-    && chown -R node:node "$COREPACK_HOME" \
-    && chmod -R a+rX "$COREPACK_HOME"
+# pnpm from npm: corepack, which used to activate it, is no longer shipped from
+# Node 25. The version must equal packageManager in the root package.json:
+# pnpm 11 switches to that version when they differ, downloading it on every
+# run instead of failing.
+RUN npm install -g pnpm@11.28.11
 
 # The image already has a `node` user at uid/gid 1000, the usual first-user uid
 # on Linux, so bind-mounted files stay writable with no uid remapping.
@@ -208,12 +203,12 @@ RUN echo 'node ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/node \
 # REQUIRED. Docker creates a missing mount target as root:root, and a named
 # volume seeds itself from whatever sits at that path in the image. If these
 # directories do not already exist owned by node, the volumes (claude-state,
-# shell-history, vscode-extensions, gh-config, ssh-config, node-cache) come up
+# shell-history, vscode-extensions, gh-config, ssh-config, node-cache-trixie) come up
 # root-owned and every write fails with EACCES.
 RUN mkdir -p \
         /home/node/.claude \
         /home/node/.gemini \
-        /home/node/.cache/pnpm/store \
+        /home/node/.cache \
         /home/node/.config/gh \
         /home/node/.ssh \
         /home/node/.vscode-server/extensions \
@@ -221,7 +216,6 @@ RUN mkdir -p \
         /pnpm \
         /workspace \
     && touch /commandhistory/.history \
-    && printf 'store-dir=/home/node/.cache/pnpm/store\n' > /home/node/.npmrc \
     && chown -R node:node /home/node /commandhistory /pnpm /workspace \
     # ssh ignores its config and refuses agent identities if this is group or
     # world readable. The volume inherits the mode from this directory.
