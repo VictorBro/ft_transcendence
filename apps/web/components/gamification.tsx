@@ -167,12 +167,17 @@ export async function FinishXp({
   const t = await getTranslations('Gamification');
   const goal = finish.goalJustMet ? GOAL_XP : 0;
   const challenge = finish.challengeJustDone ? CHALLENGE_XP : 0;
+  // A finish closed before #95 kept goalJustMet but earned nothing (EARNED_NOTHING
+  // in the API's viewOf): no breakdown, so no amount that was never awarded.
+  const legacy = finish.xpGained < goal + challenge;
   const titles = await Promise.all(finish.newAchievements.map((code) => achievementTitle(code)));
-  const rows = [
-    { label: t('xpLessonLabel'), xp: finish.xpGained - goal - challenge },
-    ...(goal > 0 ? [{ label: t('xpGoalLabel'), xp: goal }] : []),
-    ...(challenge > 0 ? [{ label: t('xpChallengeLabel'), xp: challenge }] : []),
-  ];
+  const rows = legacy
+    ? []
+    : [
+        { label: t('xpLessonLabel'), xp: finish.xpGained - goal - challenge },
+        ...(goal > 0 ? [{ label: t('xpGoalLabel'), xp: goal }] : []),
+        ...(challenge > 0 ? [{ label: t('xpChallengeLabel'), xp: challenge }] : []),
+      ];
 
   return (
     <section
@@ -195,6 +200,7 @@ export async function FinishXp({
             </div>
           ))}
         </dl>
+        {legacy && finish.goalJustMet ? <p className="text-slate-300">{t('xpGoalLabel')}</p> : null}
       </div>
 
       {titles.length > 0 ? (

@@ -20,6 +20,7 @@ const CHALLENGE_XP = 30;
 const KINDS = ['grammar', 'vocabulary', 'functions', 'reading'];
 
 interface Today {
+  day: string;
   xp: { total: number; rank: number; rankStart: number; nextRankAt: number };
   challenge: { code: string; done: boolean };
   earnedToday: string[];
@@ -166,6 +167,8 @@ test.describe('rank, challenge and achievements', () => {
     expect(meet, `a lesson that does ${code}`).toBeDefined();
     const before = (await readToday(page)).xp.total;
     const done = await finishThroughApi(page.request, LANG, meet!);
+    // Past midnight the course day, and its challenge, change: this lesson counts for the next day.
+    test.skip((await readToday(page)).day !== fresh.day, 'the course day changed during the test');
     expect(done.results!.finish.challengeJustDone).toBe(true);
 
     await page.goto(results(meet!));
