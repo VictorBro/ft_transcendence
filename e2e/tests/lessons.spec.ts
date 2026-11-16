@@ -440,10 +440,59 @@ test.describe('the all lessons page', () => {
     await onboarded.getByRole('button', { name: 'Show the lessons' }).click();
 
     // The change was sent from the open sheet: landing, it must not reopen it.
-    await expect(onboarded).toHaveURL(/\/lessons\?kind=grammar$/);
+    // "#?": on a loaded runner it can land before the click, and nothing is sent again.
+    await expect(onboarded).toHaveURL(/\/lessons\?kind=grammar#?$/);
     await expect(onboarded.getByRole('link', { name: 'Remove Grammar' })).toBeVisible();
     await onboarded.reload();
     await expect(onboarded.locator('#filters')).toBeHidden();
+  });
+
+  test('on a phone, Close while a change is on its way leaves the sheet closed, and Filters opens it', async ({
+    onboarded,
+  }) => {
+    await onboarded.setViewportSize({ width: 390, height: 844 });
+    await onboarded.goto(list());
+    const sheet = onboarded.locator('#filters');
+    await onboarded.getByRole('link', { name: 'Filters' }).click();
+    await slowNavigations(onboarded, 800);
+    await onboarded.getByRole('checkbox', { name: 'Grammar' }).check();
+
+    await sheet.getByRole('link', { name: 'Close' }).click();
+
+    // Landing with the open sheet's hash, the URL would say open over a closed
+    // sheet, and Filters would set a fragment it already has.
+    await expect(onboarded).toHaveURL(/\/lessons\?kind=grammar#?$/);
+    await expect(onboarded.getByRole('link', { name: 'Remove Grammar' })).toBeVisible();
+    await expect(sheet).toBeHidden();
+    await onboarded.getByRole('link', { name: /^Filters/ }).click();
+    await expect(sheet).toBeVisible();
+  });
+
+  test('on a phone, Filters while a search is on its way can still be closed', async ({
+    onboarded,
+  }) => {
+    await onboarded.setViewportSize({ width: 390, height: 844 });
+    await onboarded.goto(list());
+    const sheet = onboarded.locator('#filters');
+    await slowNavigations(onboarded, 800);
+    const sent = onboarded.waitForRequest(
+      (request) =>
+        request.url().includes('q=nombres') &&
+        request.headers()['rsc'] === '1' &&
+        !request.headers()['next-router-prefetch'],
+    );
+    await onboarded.getByRole('searchbox', { name: 'Search' }).fill('nombres');
+    await sent;
+
+    await onboarded.getByRole('link', { name: /^Filters/ }).click();
+
+    // Landing without the hash, the URL would say closed under the open sheet,
+    // and Close would set a fragment it already has.
+    await expect(onboarded).toHaveURL(/\/lessons\?q=nombres#filters$/);
+    await expect(onboarded.getByRole('link', { name: 'Remove “nombres”' })).toBeAttached();
+    await expect(sheet).toBeVisible();
+    await sheet.getByRole('link', { name: 'Close' }).click();
+    await expect(sheet).toBeHidden();
   });
 
   test('without JavaScript, the phone sheet applies its boxes', async ({ browser, onboarded }) => {

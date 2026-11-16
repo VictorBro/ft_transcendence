@@ -17,11 +17,13 @@ const SEARCH_DELAY_MS = 250;
  * that stays. The hash leaves the query alone, so the entry left holds the
  * right view: its state goes to the new entry. Next lets its own state through
  * replaceState untouched. The hash itself must move: :target, which opens the
- * sheet, ignores pushState.
+ * sheet, ignores pushState. Through href, as a link would: the hash setter does
+ * nothing when the URL already has the fragment, which a change landing late
+ * can leave under a sheet in the other state.
  */
 const moveHash = (hash: string) => {
   const state: unknown = window.history.state;
-  window.location.hash = hash;
+  window.location.href = `#${hash}`;
   window.history.replaceState(state, '', window.location.href);
 };
 
@@ -152,6 +154,15 @@ export function LiveForm({
     }, delay);
   };
 
+  // Filters, Close and Show the lessons. A change still on its way, or a
+  // search still waiting, carries the hash it was sent with, which would undo
+  // this as it lands: send the form again with the new one, and Next drops
+  // the older push.
+  const moveSheet = (hash: string) => {
+    moveHash(hash);
+    if (pending || timer.current !== undefined) apply(0);
+  };
+
   return (
     <form
       ref={form}
@@ -167,18 +178,14 @@ export function LiveForm({
         const link = (event.target as Element).closest('a[href^="#"]');
         if (link === null) return;
         event.preventDefault();
-        moveHash(link.getAttribute('href')!.slice(1));
+        moveSheet(link.getAttribute('href')!.slice(1));
       }}
       onSubmit={(event) => {
         event.preventDefault();
         // Show the lessons, in the phone's sheet: every change is applied
-        // already, so it only closes the sheet, as a link to # would.
+        // already, so it only closes the sheet, as Close does.
         if ((event.nativeEvent as SubmitEvent).submitter?.hasAttribute('data-close-sheet')) {
-          moveHash('');
-          // A change still on its way, or a search still waiting, carries the
-          // open sheet's hash, which would come back as it lands: send the
-          // form again without it, and Next drops the older one.
-          if (pending || timer.current !== undefined) apply(0);
+          moveSheet('');
           return;
         }
         apply(0);
