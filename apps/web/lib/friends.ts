@@ -1,8 +1,27 @@
 /** Server half of the friends API, like courses.ts. */
 import { redirect } from 'next/navigation';
-import { FriendsSchema, UserSearchResultSchema, type Friends, type PublicUser } from '@ft/shared';
+import { cache } from 'react';
+import {
+  FriendsSchema,
+  PublicProfileSchema,
+  RecentlyActiveSchema,
+  SERVER_EVENTS,
+  UserSearchResultSchema,
+  type Friends,
+  type PublicProfile,
+  type PublicUser,
+  type RecentlyActiveUser,
+} from '@ft/shared';
 
-import { apiGet, type BaseResult } from './api';
+import { apiFind, apiGet, type BaseResult, type FindResult } from './api';
+
+// Any change between two people re-renders both their pages: the lists, the
+// buttons and Recently active.
+export const FRIEND_EVENTS = [
+  SERVER_EVENTS.FRIEND_REQUEST,
+  SERVER_EVENTS.FRIEND_ACCEPTED,
+  SERVER_EVENTS.FRIEND_REMOVED,
+] as const;
 
 /** requireUser for the friends page: this read answers the session question too. */
 export async function requireFriends(): Promise<Friends> {
@@ -13,6 +32,19 @@ export async function requireFriends(): Promise<Friends> {
 export async function searchUsers(q: string): Promise<PublicUser[]> {
   return settle(await apiGet(UserSearchResultSchema, '/api/users', { q }), 'search results').users;
 }
+
+/** People to add, by name: the API leaves out everyone you have a row with. */
+export async function recentlyActive(): Promise<RecentlyActiveUser[]> {
+  return settle(await apiGet(RecentlyActiveSchema, '/api/users/recently-active'), 'recently active')
+    .users;
+}
+
+/** Memoised per request: the title and the page both ask. Only called with a valid id. */
+export const loadProfile = cache(async function loadProfile(
+  id: string,
+): Promise<FindResult<PublicProfile>> {
+  return apiFind(PublicProfileSchema, `/api/users/${id}`);
+});
 
 function settle<T>(result: BaseResult<T>, what: string): T {
   if (result.status === 'signed-out') {
@@ -28,7 +60,10 @@ function settle<T>(result: BaseResult<T>, what: string): T {
 
 export type Relation = 'none' | 'sent' | 'received' | 'friend';
 
-/** Where you stand with someone, read off your own lists: picks a search row's action. */
+/**
+ * Where you stand with someone, read off your own lists: picks a search row's
+ * or a profile's action.
+ */
 export function relationTo(lists: Friends, userId: string): Relation {
   const has = (users: PublicUser[]) => users.some((user) => user.id === userId);
 

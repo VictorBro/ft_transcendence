@@ -31,6 +31,19 @@ export function itemTraits(item: Item): ItemTraits {
 }
 
 /**
+ * Whether an item type skips the feedback once every answer is right
+ * (ItemTraits.skipFeedbackWhenRight), by its type alone: the browser
+ * only has the page view, never the item. False for a type no kind has.
+ */
+export function typeSkipsFeedbackWhenRight(type: string): boolean {
+  for (const module of Object.values(KINDS)) {
+    const traits = (module.traits as Record<string, ItemTraits | undefined>)[type];
+    if (traits) return traits.skipFeedbackWhenRight;
+  }
+  return false;
+}
+
+/**
  * true when a practice page goes straight on once every answer is right:
  * every item on it skips the feedback (see ItemTraits).
  */

@@ -6,9 +6,17 @@ import { PublicUserSchema } from './user';
 export const FriendshipStatusSchema = z.enum(['pending', 'accepted']);
 export type FriendshipStatus = z.infer<typeof FriendshipStatusSchema>;
 
+/**
+ * A friend, and whether they are online as the page is rendered; presence:update
+ * keeps it current afterwards. Accepted friends only: a pending request does not
+ * let anyone watch when you come and go.
+ */
+export const FriendSchema = PublicUserSchema.extend({ online: z.boolean() });
+export type Friend = z.infer<typeof FriendSchema>;
+
 /** Your side of every row you are in, each list newest first. */
 export const FriendsSchema = z.object({
-  friends: z.array(PublicUserSchema),
+  friends: z.array(FriendSchema),
   received: z.array(PublicUserSchema),
   sent: z.array(PublicUserSchema),
 });

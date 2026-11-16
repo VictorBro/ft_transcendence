@@ -114,7 +114,7 @@ test.describe('onboarding', () => {
     await setLevel(freshLearner, 'B1');
 
     await expect(freshLearner.getByText('This course')).toBeVisible();
-    await expect(freshLearner.getByText('B2', { exact: true })).toBeVisible();
+    await expect(freshLearner.getByRole('combobox', { name: 'Level' })).toHaveValue('B2');
   });
 
   /** Landing on the picker with nothing chosen must not offer to start. */
@@ -134,7 +134,7 @@ test.describe('onboarding', () => {
     await atLevelStep(freshLearner);
     await setLevel(freshLearner, 'A0');
 
-    await expect(freshLearner.getByText('A1', { exact: true })).toBeVisible();
+    await expect(freshLearner.getByRole('combobox', { name: 'Level' })).toHaveValue('A1');
   });
 
   /** What a course page sends for a language the learner does not study yet. */

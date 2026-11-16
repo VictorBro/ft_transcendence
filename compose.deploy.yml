@@ -19,7 +19,7 @@ name: ft_transcendence
 
 services:
   caddy:
-    image: caddy:2.11.4-alpine
+    image: caddy:2.11.9-alpine
     depends_on:
       web:
         condition: service_healthy
@@ -89,6 +89,10 @@ services:
       LLM_DISCUSSION_USER_PER_MINUTE: ${LLM_DISCUSSION_USER_PER_MINUTE:-}
       LLM_DISCUSSION_USER_PER_DAY: ${LLM_DISCUSSION_USER_PER_DAY:-}
       LLM_DISCUSSION_GLOBAL_PER_MINUTE: ${LLM_DISCUSSION_GLOBAL_PER_MINUTE:-}
+      # Empty keeps the default in apps/api/src/throttler/rate-limits.ts.
+      RATE_LIMIT_PER_MINUTE: ${RATE_LIMIT_PER_MINUTE:-}
+      SIGNUP_LIMIT_PER_MINUTE: ${SIGNUP_LIMIT_PER_MINUTE:-}
+      LOGIN_LIMIT_PER_MINUTE: ${LOGIN_LIMIT_PER_MINUTE:-}
       AVATAR_STORAGE_DIR: /data/avatars
     volumes:
       - avatars-data:/data/avatars
@@ -102,7 +106,7 @@ services:
   #
   # The build stage of apps/api/Dockerfile, published by images.yml: `prod`
   # deliberately carries no Prisma CLI and no migrations. A stock node image is
-  # not a shortcut, see docs/VERSIONS.md trap 1c.
+  # not a shortcut: the Prisma CLI needs openssl (see apps/api/Dockerfile).
   #
   # Seeds after migrating: the question bank and the lessons ship as files in
   # content/, which the tooling image carries. Both upsert on the authored ids,
@@ -126,7 +130,7 @@ services:
     restart: "no"
 
   db:
-    image: pgvector/pgvector:0.8.6-pg18-trixie
+    image: pgvector/pgvector:0.8.7-pg18-trixie
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-ft}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set a real database password}
@@ -146,7 +150,7 @@ services:
     restart: unless-stopped
 
   redis:
-    image: redis:8.10.1-alpine
+    image: redis:8.10.3-alpine
     command: ["redis-server", "--appendonly", "yes"]
     volumes:
       - redis-data:/data
@@ -256,7 +260,7 @@ services:
     restart: unless-stopped
 
   redis-exporter:
-    image: ghcr.io/oliver006/redis_exporter:v1.93.0
+    image: ghcr.io/oliver006/redis_exporter:v1.97.0
     environment:
       REDIS_ADDR: redis://redis:6379
       REDIS_EXPORTER_COUNT_KEYS: db0=sess:*
@@ -266,7 +270,7 @@ services:
     restart: unless-stopped
 
   blackbox-exporter:
-    image: ghcr.io/prometheus/blackbox-exporter:v0.29.0
+    image: ghcr.io/prometheus/blackbox-exporter:v0.29.1
     networks:
       - ft
     mem_limit: 32m

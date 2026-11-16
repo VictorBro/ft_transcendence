@@ -6,14 +6,20 @@ import {
   type Page,
 } from '@playwright/test';
 
-import { logInSlot, signUpSlot, type SlotOptions, WORKER_SIGNUP_TIMEOUT_MS } from './signup-budget';
+import {
+  logInSlot,
+  signUpSlot,
+  signUpRequest,
+  type SlotOptions,
+  WORKER_SIGNUP_TIMEOUT_MS,
+} from './signup-budget';
 
 /**
  * Signing in, for the specs that need an account but are not testing signup.
  *
  * One account per worker, not per test and not per file: each signup writes a
- * row and runs argon2, and POST /auth/signup is limited to 10 a minute per
- * address. Every browser in the run shares that address, so the whole run
+ * row and runs argon2, and POST /auth/signup is limited per address, 20 a
+ * minute by default. Every browser in the run shares that address, so the whole run
  * shares one budget, and a run needs more accounts than that. signUpSlot()
  * queues each signup until the budget has room, so every signup the suite does
  * not need is time the run spends waiting rather than a 429.
@@ -55,10 +61,13 @@ export const signUp = async (
   fields: Identity = identity(),
   slot?: SlotOptions,
 ): Promise<void> => {
-  await signUpSlot(slot);
-  const created = await page.request.post('/api/auth/signup', {
-    data: { ...fields, password: PASSWORD },
-  });
+  const created = await signUpRequest(
+    () =>
+      page.request.post('/api/auth/signup', {
+        data: { ...fields, password: PASSWORD },
+      }),
+    slot,
+  );
   expect(created.status()).toBe(201);
 };
 
@@ -112,8 +121,7 @@ export const ONBOARDED_COURSE = { lang: 'fr', level: 'A1', dailyGoal: 30 } as co
 
 /**
  * The one course tests may add to the onboarded account, shared so no spec
- * drifts. German A1 has no ready lesson yet (#91), so it is the level with
- * nothing to play.
+ * drifts.
  */
 export const SECOND_COURSE = { lang: 'de', level: 'A1', dailyGoal: 10 } as const;
 
@@ -178,7 +186,7 @@ const pageFor = async (
  * everything behind it render. Tests add at most SECOND_COURSE, always placed:
  * specs rely on it having no unplaced course and no English one. It also has
  * the longest display name allowed, so layout.spec.ts can gate phone widths on
- * it rather than pay one more signup per worker against the 10 a minute.
+ * it rather than pay one more signup per worker against the signup limit.
  */
 export const test = base.extend<
   { signedIn: Page; onboarded: Page; freshLearner: Page },
@@ -227,5 +235,22 @@ export const test = base.extend<
     await context.close();
   },
 });
+
+/**
+ * Picks a level in the course page's Level select, up to its Save button. A
+ * pick made before React has hydrated the select is lost, which WebKit hits on
+ * a fresh load, and picking the same value again fires no change. So it picks
+ * another level first and retries until the button shows.
+ */
+export const pickLevel = async (page: Page, level: string): Promise<void> => {
+  const select = page.getByRole('combobox', { name: 'Level' });
+  const save = page.getByRole('button', { name: 'Save' });
+
+  await expect(async () => {
+    await select.selectOption(level === 'A1' ? 'A2' : 'A1');
+    await select.selectOption(level);
+    await expect(save).toBeVisible({ timeout: 1_000 });
+  }).toPass({ timeout: 10_000 });
+};
 
 export { expect, logInSlot, signUpSlot };

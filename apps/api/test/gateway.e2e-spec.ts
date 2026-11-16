@@ -14,6 +14,7 @@ import { SocketsService } from '../src/gateway/sockets.service';
 import { wsConnections, wsEvents } from '../src/metrics/metrics';
 import { PrismaService } from '../src/prisma/prisma.service';
 import { RedisService } from '../src/redis/redis.service';
+import { activeDay } from '../src/users/active-day';
 import { playToLast, shortLesson } from './attempts.fixtures';
 import { seriesValue } from './metrics.fixtures';
 import {
@@ -184,6 +185,33 @@ describe('gateway (e2e)', () => {
 
       socket.close();
       await vi.waitFor(async () => expect(await seriesValue(wsConnections)).toBe(before));
+    });
+
+    it('stamps the UTC day for Recently active, once a day', async () => {
+      // An older day, not null: the stamp has to replace a real one.
+      await prisma.user.update({
+        where: { id: userA },
+        data: { lastActiveDay: new Date('2026-01-01') },
+      });
+      const stamped = () =>
+        prisma.user.findUniqueOrThrow({
+          where: { id: userA },
+          select: { lastActiveDay: true, updatedAt: true },
+        });
+
+      const before = activeDay(new Date());
+      await connected(open(cookieA));
+      const first = await stamped();
+      // Midnight UTC may pass during the handshake: then either day is right.
+      expect([before, activeDay(new Date())]).toContainEqual(first.lastActiveDay);
+
+      // A second tab the same day only reads: the row is not written again.
+      await connected(open(cookieA));
+      const second = await stamped();
+      // Unless midnight UTC passed in between: then writing the new day is right.
+      if (activeDay(new Date()).getTime() === first.lastActiveDay?.getTime()) {
+        expect(second).toEqual(first);
+      }
     });
   });
 

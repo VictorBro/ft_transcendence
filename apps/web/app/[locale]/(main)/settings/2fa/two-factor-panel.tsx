@@ -115,7 +115,6 @@ export function TwoFactorPanel() {
           alt={t('qrAlt')}
           width={200}
           height={200}
-          unoptimized
           className="rounded-md border border-slate-800"
         />
         <p className="text-sm text-slate-300">

@@ -7,7 +7,7 @@ import {
   watchConsole,
 } from '../support/console-guard';
 import { liveConnection } from '../support/live';
-import { expect, placeCourse, SECOND_COURSE, test } from '../support/session';
+import { expect, pickLevel, placeCourse, SECOND_COURSE, test } from '../support/session';
 
 const course = `/en/learn/${SECOND_COURSE.lang}`;
 
@@ -50,18 +50,14 @@ test.describe('live course updates', () => {
     await placeCourse(onboarded, SECOND_COURSE);
     const { other, violations } = await openOtherTab(onboarded);
     try {
-      await expect(other.getByRole('status')).toContainText(SECOND_COURSE.level);
+      const otherLevel = other.getByRole('combobox', { name: 'Level' });
+      await expect(otherLevel).toHaveValue(SECOND_COURSE.level);
 
       await onboarded.goto(course);
-      await onboarded.getByRole('button', { name: 'Change level' }).click();
-      // The radio is sr-only, so its own label takes the click. B1 mastered: lessons at B2.
-      await onboarded
-        .getByRole('group', { name: 'Your level' })
-        .getByText('B1', { exact: true })
-        .click();
+      await pickLevel(onboarded, 'B2');
       await onboarded.getByRole('button', { name: 'Save' }).click();
 
-      await expect(other.getByRole('status')).toContainText('B2');
+      await expect(otherLevel).toHaveValue('B2');
       await settle(other);
       expect(violations, `the other tab logged:\n${formatViolations(violations)}\n`).toEqual([]);
     } finally {

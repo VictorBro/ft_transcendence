@@ -41,6 +41,9 @@ RUNTIME_INJECTED=(
   # Set by e2e/package.json's test:e2e:restart, never by .env: it selects the
   # one serial run that restarts the API.
   E2E_RESTART
+  # Set by .github/workflows/e2e.yml's matrix, never by .env: it picks which
+  # part of the suite a job runs.
+  E2E_PART
   # Fixed by compose.yml to match the avatars volume mount.
   AVATAR_STORAGE_DIR
   # Set by the prisma drift job in .github/workflows/hygiene.yml, which brings up

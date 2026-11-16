@@ -31,15 +31,13 @@ export default async function HomePage() {
             {user ? t('continueLearning') : t('startNow')}
           </Link>
         </div>
+        {/* 896 px: twice the widest slot (28rem), for sharp edges on a retina screen. */}
         <Image
-          src="/logo.png"
+          src="/logo.webp"
           alt={t('logoAlt')}
-          width={600}
-          height={600}
+          width={896}
+          height={896}
           className="h-auto w-64 shrink-0 lg:w-md"
-          // Without this next/image assumes full viewport width and picks the
-          // largest srcset candidate for a 256px slot.
-          sizes="(min-width: 1024px) 28rem, 16rem"
           priority
         />
       </section>

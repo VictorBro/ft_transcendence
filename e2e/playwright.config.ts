@@ -22,9 +22,21 @@ const baseURL = process.env.E2E_BASE_URL ?? 'https://localhost';
 // playwright).
 const restartRun = Boolean(process.env.E2E_RESTART);
 
+// CI runs each browser as two jobs, one per part (see the e2e workflow):
+// lesson.spec.ts alone takes about half of the suite's time, so it is one part
+// and every other spec the other. A new spec lands in `rest` without anyone
+// listing it. Unset, everything runs.
+const part = process.env.E2E_PART;
+if (part !== undefined && part !== 'lesson' && part !== 'rest') {
+  throw new Error(`E2E_PART must be lesson or rest, not ${part}`);
+}
+const LESSON_SPEC = '**/lesson.spec.ts';
+
 export default defineConfig({
   testDir: './tests',
   outputDir: './test-results',
+  ...(part === 'lesson' ? { testMatch: LESSON_SPEC } : {}),
+  ...(part === 'rest' ? { testIgnore: LESSON_SPEC } : {}),
   fullyParallel: true,
   grep: restartRun ? /@restart/ : undefined,
   grepInvert: restartRun ? undefined : /@restart/,
@@ -37,7 +49,10 @@ export default defineConfig({
   // that passes second time is a flaky app, not a flaky test, and hiding it
   // defeats the gate.
   retries: 0,
-  workers: restartRun ? 1 : process.env.CI ? 2 : 4,
+  // Each worker launches a browser beside the compose stack. Four Firefox
+  // workers can saturate a local runner and time out even closing a context.
+  // Use the same concurrency locally as in CI; --workers can override it.
+  workers: restartRun ? 1 : 2,
 
   reporter: process.env.CI
     ? [['github'], ['html', { open: 'never', outputFolder: 'playwright-report' }]]

@@ -14,6 +14,12 @@
  */
 export { validateLesson, type LessonValidation } from './validateLesson';
 export { hasGender } from './domain/articles';
+// The lesson player renders the grammar explanations with it.
+export {
+  parseRichText,
+  type Block as RichTextBlock,
+  type Inline as RichTextInline,
+} from './domain/richText';
 export type { Issue, OutlineContext } from './validation/artifacts';
 export {
   briefSchema,

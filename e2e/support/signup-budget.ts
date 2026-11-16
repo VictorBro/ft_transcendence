@@ -1,14 +1,16 @@
 import { test } from '@playwright/test';
-import { mkdir, readFile, rm, stat, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, rename, rm, stat, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
 /**
- * Keeps the suite inside the signup and login rate limits instead of the limits
- * being raised to fit the suite.
+ * Keeps the suite inside the signup and login rate limits, whatever .env sets
+ * them to, rather than racing into 429s.
  *
  * POST /auth/signup and POST /auth/login are limited per client address
- * (@ThrottleByIp on AuthController; SIGNUPS and LOGINS below must stay in step).
+ * (@ThrottleByIp on AuthController). SIGNUPS and LOGINS below read the same
+ * variables with the same defaults as apps/api/src/throttler/rate-limits.ts:
+ * make passes the .env values, and CI runs the defaults on both sides.
  * Every browser in the run reaches Caddy from the same address, so all workers
  * share each budget, and a run needs more accounts than the signup one holds.
  * Rather than let the workers race into a 429, each request first books a send
@@ -19,6 +21,8 @@ import { join } from 'node:path';
  * whether or not Playwright restarted, so a second `make playwright` straight
  * after a first has to see what the first one spent. They live in the OS temp
  * directory rather than test-results/, which Playwright empties on every start.
+ * Server 429s publish a shared cooldown as well: traffic outside this queue can
+ * consume the same IP budget, and its Retry-After applies to every worker.
  */
 
 /**
@@ -27,20 +31,42 @@ import { join } from 'node:path';
  * can be a few seconds later. Five seconds costs a run about ten.
  */
 const WINDOW_MS = 65_000;
+const MAX_SETUP_ATTEMPTS = 3;
 
 /** One rate-limited route: its per-address limit and the log its bookings share. */
-interface Budget {
+export interface Budget {
   perWindow: number;
   log: string;
 }
 
-const SIGNUPS: Budget = { perWindow: 10, log: join(tmpdir(), 'ft-e2e-signups.json') };
+/**
+ * A per-minute limit of the API, as .env sets it, or its default. The same
+ * check as readLimit in the api: a value the API would refuse fails the run
+ * here too, rather than queueing to NaN or Infinity.
+ */
+const perMinute = (name: string, fallback: number): number => {
+  const raw = process.env[name]?.trim();
+  if (raw === undefined || raw === '') return fallback;
+  const value = Number(raw);
+  if (!/^\d+$/.test(raw) || !Number.isSafeInteger(value) || value < 1) {
+    throw new Error(`${name} must be a positive integer, not "${raw}"`);
+  }
+  return value;
+};
+
+const SIGNUPS: Budget = {
+  perWindow: perMinute('SIGNUP_LIMIT_PER_MINUTE', 20),
+  log: join(tmpdir(), 'ft-e2e-signups.json'),
+};
 
 /**
- * Only auth.spec.ts signs in through the form, three times per browser, so
- * three browsers run nine against a limit of five.
+ * Only auth.spec.ts signs in through the form, three times per browser: nine
+ * on one stack under `make playwright-all`, against a default limit of five.
  */
-const LOGINS: Budget = { perWindow: 5, log: join(tmpdir(), 'ft-e2e-logins.json') };
+const LOGINS: Budget = {
+  perWindow: perMinute('LOGIN_LIMIT_PER_MINUTE', 5),
+  log: join(tmpdir(), 'ft-e2e-logins.json'),
+};
 
 /** A lock held longer than this belongs to a worker that died holding it. */
 const STALE_LOCK_MS = 5_000;
@@ -84,6 +110,31 @@ const readLog = async (log: string): Promise<number[]> => {
   }
 };
 
+const blockedUntil = async (log: string): Promise<number> => {
+  const value = Number(await readFile(`${log}.cooldown`, 'utf8').catch(() => '0'));
+  return Number.isFinite(value) ? value : 0;
+};
+
+/** Publish a server-imposed block to every worker, including workers already waiting. */
+export const deferBudget = (budget: Budget, retryAfter: string | undefined): Promise<number> =>
+  withLock(`${budget.log}.lock`, async () => {
+    const now = Date.now();
+    const seconds = retryAfter === undefined || retryAfter.trim() === '' ? NaN : Number(retryAfter);
+    const date = Number.isFinite(seconds) ? NaN : Date.parse(retryAfter ?? '');
+    const delay =
+      Number.isFinite(seconds) && seconds >= 0
+        ? seconds * 1000
+        : Number.isFinite(date)
+          ? Math.max(0, date - now)
+          : WINDOW_MS;
+    const until = Math.max(await blockedUntil(budget.log), now + delay + 1000);
+    // Readers never see a partially written deadline.
+    const temporary = `${budget.log}.cooldown.tmp`;
+    await writeFile(temporary, `${until}`);
+    await rename(temporary, `${budget.log}.cooldown`);
+    return until;
+  });
+
 /**
  * Books the earliest send time that keeps every WINDOW_MS at or under the
  * limit. Booked times only ever grow, so the booking `perWindow` back is the
@@ -97,6 +148,7 @@ const book = ({ perWindow, log }: Budget): Promise<number> =>
     const blocking = booked.at(-perWindow);
     const slot = Math.max(
       now,
+      await blockedUntil(log),
       booked.at(-1) ?? now,
       blocking === undefined ? now : blocking + WINDOW_MS,
     );
@@ -115,21 +167,47 @@ export interface SlotOptions {
 }
 
 /** Waits for a booked slot, adding the wait to the running test's timeout unless told not to. */
-const waitForSlot = async (budget: Budget, { extendTestTimeout = true }: SlotOptions) => {
-  const wait = (await book(budget)) - Date.now();
-  if (wait <= 0) {
-    return;
-  }
-
-  if (extendTestTimeout) {
-    const info = test.info();
-    // 0 means no timeout, which nothing needs extending.
-    if (info.timeout > 0) {
-      info.setTimeout(info.timeout + wait);
+export const waitForBudget = async (budget: Budget, { extendTestTimeout = true }: SlotOptions) => {
+  for (;;) {
+    const wait = (await book(budget)) - Date.now();
+    if (wait > 0) {
+      if (extendTestTimeout) {
+        const info = test.info();
+        // 0 means no timeout, which nothing needs extending.
+        if (info.timeout > 0) info.setTimeout(info.timeout + wait);
+      }
+      await sleep(wait);
     }
+    // A different request may have received a 429 after this slot was booked.
+    if ((await blockedUntil(budget.log)) <= Date.now()) return;
   }
-  await sleep(wait);
 };
+
+interface BudgetResponse {
+  status(): number;
+  headers(): Record<string, string>;
+}
+
+/** Only setup 429s are retried; application failures and UI assertions remain failures. */
+export async function requestWithBudget<T extends BudgetResponse>(
+  budget: Budget,
+  send: () => Promise<T>,
+  options: SlotOptions = {},
+): Promise<T> {
+  for (let attempt = 1; ; attempt += 1) {
+    await waitForBudget(budget, options);
+    const response = await send();
+    if (response.status() !== 429) return response;
+    await deferBudget(budget, response.headers()['retry-after']);
+    if (attempt === MAX_SETUP_ATTEMPTS) return response;
+  }
+}
+
+/** Use for API setup and ad hoc probes, which share the suite's client address. */
+export const signUpRequest = <T extends BudgetResponse>(
+  send: () => Promise<T>,
+  options: SlotOptions = {},
+) => requestWithBudget(SIGNUPS, send, options);
 
 /**
  * Resolves when one more signup may be sent. Call it right before whatever
@@ -141,10 +219,10 @@ const waitForSlot = async (budget: Budget, { extendTestTimeout = true }: SlotOpt
  * which covers the longest wait.
  */
 export const signUpSlot = (options: SlotOptions = {}): Promise<void> =>
-  waitForSlot(SIGNUPS, options);
+  waitForBudget(SIGNUPS, options);
 
 /** The same for POST /auth/login: call it right before clicking "Sign in". */
-export const logInSlot = (): Promise<void> => waitForSlot(LOGINS, {});
+export const logInSlot = (): Promise<void> => waitForBudget(LOGINS, {});
 
 /** Long enough for a worker fixture to queue for a slot and then sign up. */
-export const WORKER_SIGNUP_TIMEOUT_MS = WINDOW_MS + 30_000;
+export const WORKER_SIGNUP_TIMEOUT_MS = MAX_SETUP_ATTEMPTS * WINDOW_MS + 30_000;

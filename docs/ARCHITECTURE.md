@@ -2,7 +2,7 @@
 
 How the containers fit together, in production and in development.
 Companions: [TECHNICAL_PLAN.md](TECHNICAL_PLAN.md) (decisions and rationale),
-[VERSIONS.md](VERSIONS.md) (pins), [SUBJECT_SUMMARY.md](SUBJECT_SUMMARY.md) (requirements).
+[VERSIONS.md](VERSIONS.md) (what moves together, what is held back), [SUBJECT_SUMMARY.md](SUBJECT_SUMMARY.md) (requirements).
 
 Every diagram below is generated from the compose files as they actually are. If
 you change a port or a route, change the diagram in the same commit.
@@ -191,14 +191,19 @@ sequenceDiagram
   refuses a page of another origin, a session with no `userId` and a deleted
   account, all with `auth.sessionRequired`. The Origin check matters because
   `ft.sid` is `SameSite=Lax`, and same-site is not same-origin: a page on a
-  sibling subdomain would send it too.
+  sibling subdomain would send it too. The account check also reads
+  `User.lastActiveDay`, and writes today's UTC date when it is not today: the
+  first tab of the day writes, the others only read. Recently active on
+  /friends lists who was active in the last 7 days, by name: polling it shows
+  someone coming back after a week away, and nothing finer.
 - **Refused quietly.** A refusal is a CONNECT_ERROR over a WebSocket that opened
   fine, which the browser does not log; an HTTP 401 on the upgrade would be a
   console error.
 - **Rooms, never a broadcast.** Each socket joins `user:<id>` and
   `session:<sid>` before its CONNECT reply. `SocketsService.toUser()` is the
-  only way to reach a user; the gateway itself only answers the socket that sent
-  a bad event.
+  only way to reach a user. The gateway itself writes to one socket only twice:
+  to the socket that sent a bad event, and to a socket that just connected, with
+  the presence of each friend (below).
 - **Sockets close with their session**: on logout (that session's sockets
   only), on every session id change (signup, login, 2FA verify, 2FA enable and
   disable), and when a session ends any other way, through a sweep every 60 s
@@ -209,7 +214,7 @@ sequenceDiagram
   capped at 16 KiB, a zod parse from `CLIENT_EVENT_SCHEMAS`. A bad event gets
   `app:error { code }`, an `ERROR_CODES` entry, and is dropped, never a crash;
   past the limit, the first one is told `server.rateLimited` and the rest are
-  dropped. A session holds at most 20 sockets, checked before the user lookup:
+  dropped. A session holds at most 20 sockets, checked before the user write:
   one per tab is far below it, and a client opening sockets in a loop costs no
   query and cannot multiply the per-socket limit.
 - **Sent after the commit.** `course:updated { lang }` means "read this course
@@ -218,8 +223,44 @@ sequenceDiagram
   `RefreshOn` takes the list of events that refresh a page.
 - **Friend events** (`friend:request`, `friend:accepted`, `friend:removed`)
   go to both users of the pair, so the actor's other tabs follow too. They carry
-  `{ userId }`, the other user, and /friends refreshes on any of them. Decline
-  and cancel send `friend:removed`: the row between the two is gone.
+  `{ userId }`, the other user, and /friends and /users/[id] refresh on any of
+  them. Decline and cancel send `friend:removed`: the row between the two is
+  gone.
+- **Presence** (`presence:update { userId, status, at }`, `online` or
+  `offline`), in `PresenceService` (`apps/api/src/presence/`):
+  - **A counter per user** in Redis, `presence:<id>`: `INCR` when a socket
+    opens, `DECR` when it closes. Online on the first socket.
+  - **A 10 s grace period** (`PRESENCE_GRACE_MS`): a closed socket comes off
+    the count only after it. A reload's new socket makes the count 2, not 1,
+    so friends hear nothing. Offline goes out 10 s after the *last* close,
+    and `isOnline` keeps saying online until then, so the REST routes agree
+    with the friends already watching. The wait is unref'd: it never holds
+    the process open on a stop.
+  - **Friends only**: the updates go to the `user:<id>` room of each accepted
+    friend (`friendIds()`, `status: 'accepted'`). Someone who has only sent a
+    request hears nothing, as /privacy promises. The friends are looked up
+    again at offline time, since a friendship may have begun or ended since.
+  - **A snapshot on connect**: the new socket, and only it, gets one
+    `presence:update` per friend, because the page may have been rendered a
+    moment before one of them came or went. `GET /api/friends` gives each
+    friend `online`, from `isOnline(ids)` (one `MGET`).
+  - **In the tab**: `tab-socket.ts` keeps a presence map for as long as the
+    socket. It is fed by the snapshot and every `presence:update`. A friend is
+    dropped on `friend:removed`, and on `friend:accepted` too, so a new friend
+    starts from the refreshed render: no update comes for someone already
+    online. Each connect clears the map, since its snapshot replaces it, and
+    an entry left by an event missed while away cannot outlive a fresh render.
+    `PresenceDot` reads it and uses the rendered
+    `online` only for a friend the tab has heard nothing about. A page Next
+    restores from its client cache on Back still shows what happened while it
+    was away.
+  - **A boot reset**: no socket survives a restart, but Redis keeps the counts
+    a crash never took back, so `onApplicationBootstrap` deletes every
+    `presence:*` key (`SCAN`, never `KEYS`). A count that still goes below
+    zero is put back to zero.
+  - **One API instance assumed**: the counts hold across instances, but the
+    boot reset would wipe the other instances' counts, and the rooms do not
+    span instances yet (#158).
 - **One connection per tab**, held in module scope (`components/tab-socket.ts`)
   and opened by `SessionNav` for a signed-in user, so a route group remount or a
   locale switch never drops it and an anonymous page never opens one. WebSocket
@@ -364,19 +405,20 @@ database browser, and it already knows the schema.
 
 ## 7. What CI runs
 
-Four workflows. `ci` and `e2e` are the ones that gate a merge on behaviour.
+Five workflows. `ci` and `e2e` are the ones that gate a merge on behaviour;
+`devcontainer` runs only when the devcontainer image changes.
 
 ```mermaid
 flowchart TB
-    pr["Pull request"] --> ci & e2e & hygiene & images
+    pr["Pull request"] --> ci & e2e & hygiene & images & devcontainer
 
     subgraph ci["ci.yml"]
         c1["format · lint · typecheck<br/>TS version assert"] --> c2["unit tests + coverage"] --> c3["Supertest against<br/>real Postgres + Redis"]
         c4["monitoring config<br/>promtool · amtool · caddy validate"]
     end
 
-    subgraph e2e["e2e.yml, one job per browser"]
-        e1["build prod images<br/>compose up"] --> em["monitoring check<br/>every target up"] --> e2["Playwright<br/>one engine"] --> e3["console gate<br/>legal pages"] --> e4["API restart run<br/>Chromium job only"]
+    subgraph e2e["e2e.yml, two jobs per browser (lesson, rest)"]
+        e1["build prod images<br/>compose up"] --> e2["Playwright<br/>one engine, one part"] --> e3["console gate<br/>legal pages"] --> em["monitoring check<br/>every target up"] --> e4["API restart run"]
         e4 --> eg["gate<br/>playwright (production stack)"]
     end
 
@@ -387,10 +429,16 @@ flowchart TB
     subgraph images["images.yml"]
         i1["multi-arch build<br/>amd64 + arm64 → GHCR"]
     end
+
+    subgraph devcontainer["devcontainer.yml, devcontainer paths only"]
+        d1["build the image<br/>Node and pnpm match the pins"]
+    end
 ```
 
-Each engine gets its own e2e job and stack, because the signup limit is per
-stack, and the gate job carries the required check.
+Each engine gets two e2e jobs, each with its own stack: `lesson.spec.ts` alone
+is about half of the suite's time, so it is one part and every other spec the
+other. The monitoring check and the API restart run once, in the Chromium
+`rest` job, after its suite. The gate job carries the required check.
 
 Two of those checks are **subject rejection criteria**, which is why they run
 against production images rather than a dev server:

@@ -12,7 +12,13 @@ import { LEARNABLE_LANGUAGES } from '@ft/shared';
 import type { Language, SessionUser } from '@ft/shared';
 
 import { LessonsService } from './lessons.service';
-import { LessonCardDto, LessonPageDto, LessonQueryDto, TodayDto } from './lessons.dto';
+import {
+  AchievementListDto,
+  LessonCardDto,
+  LessonPageDto,
+  LessonQueryDto,
+  TodayDto,
+} from './lessons.dto';
 import { CurrentUser } from '../auth/auth.decorators';
 import { LangParam } from '../validation.pipe';
 
@@ -92,5 +98,19 @@ export class LessonsController {
     @Param('id') id: string,
   ) {
     return this.lessons.lesson(user.id, lang, id);
+  }
+
+  /**
+   * GET /courses/:lang/achievements: the sixteen achievements with their bars.
+   * Same course checks as today: 404 without a course, 409 before placement.
+   */
+  @Get('achievements')
+  @ApiOperation({ summary: 'All sixteen achievements: progress, and the day each was earned' })
+  @ApiOkResponse({ type: AchievementListDto })
+  @ApiUnauthorizedResponse({ description: 'No valid session' })
+  @ApiNotFoundResponse({ description: 'No course in that language' })
+  @ApiConflictResponse({ description: 'The course has no level yet (no placement)' })
+  achievements(@CurrentUser() user: SessionUser, @Param('lang', LangParam) lang: Language) {
+    return this.lessons.achievements(user.id, lang);
   }
 }

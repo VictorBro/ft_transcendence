@@ -3,6 +3,7 @@ import type { Page } from '@playwright/test';
 import {
   formatViolations,
   isExpectedDocumentFailure,
+  isRemovedAvatar,
   settle,
   watchConsole,
 } from '../support/console-guard';
@@ -31,7 +32,9 @@ async function expectSilent(page: Page, route: PageRoute, ready?: Promise<void>)
   // the status assertion above working, not the app breaking, so it is the
   // one message the gate tolerates. See isExpectedDocumentFailure.
   const unexpected = violations.filter(
-    (violation) => !isExpectedDocumentFailure(violation, page.url(), expectedStatus),
+    (violation) =>
+      !isExpectedDocumentFailure(violation, page.url(), expectedStatus) &&
+      !(route.othersAvatars && isRemovedAvatar(violation)),
   );
 
   expect(

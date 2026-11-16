@@ -1,4 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
+import { createServer } from 'node:http';
+import type { AddressInfo } from 'node:net';
 import { z } from 'zod';
 
 vi.mock('next/headers', () => ({
@@ -173,6 +175,27 @@ describe('fetchSession', () => {
     await expect(fetchSession({ fetchImpl })).resolves.toMatchObject({
       status: 'unavailable',
     });
+  });
+
+  it('keeps a successful session when the API takes longer than two seconds', async () => {
+    const server = createServer((_request, response) => {
+      setTimeout(() => {
+        response.writeHead(200, { 'content-type': 'application/json' });
+        response.end(JSON.stringify(user));
+      }, 2_500);
+    });
+    await new Promise<void>((resolve) => server.listen(0, '127.0.0.1', resolve));
+    const { port } = server.address() as AddressInfo;
+
+    try {
+      await expect(fetchSession({ baseUrl: `http://127.0.0.1:${port}` })).resolves.toEqual({
+        status: 'ok',
+        data: user,
+      });
+    } finally {
+      server.closeAllConnections();
+      await new Promise<void>((resolve) => server.close(() => resolve()));
+    }
   });
 
   it('reads a timeout as unavailable and applies the configured timeout', async () => {

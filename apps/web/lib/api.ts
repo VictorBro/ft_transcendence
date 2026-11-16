@@ -11,7 +11,10 @@ import type { z } from 'zod';
 export const DEFAULT_API_INTERNAL_URL = 'http://api:3001';
 export const SESSION_PATH = '/api/auth/me';
 export const HEALTH_PATH = '/api/health';
-export const DEFAULT_TIMEOUT_MS = 2000;
+// Page renders need room for a busy API; a two-second cutoff turns brief load
+// spikes into an error page even when the request would complete successfully.
+export const DEFAULT_TIMEOUT_MS = 10_000;
+const HEALTH_TIMEOUT_MS = 2_000;
 
 export interface ApiRequestOptions {
   baseUrl?: string | undefined;
@@ -246,7 +249,7 @@ export type PingResult = { status: 'ok' } | { status: 'unreachable'; reason: str
  * alarm, and /api/health already covers the API's own view of itself.
  */
 export async function pingApi(options: ApiRequestOptions = {}): Promise<PingResult> {
-  const { baseUrl, timeoutMs = DEFAULT_TIMEOUT_MS, fetchImpl = fetch } = options;
+  const { baseUrl, timeoutMs = HEALTH_TIMEOUT_MS, fetchImpl = fetch } = options;
 
   try {
     await fetchImpl(buildApiUrl(baseUrl, HEALTH_PATH), {

@@ -31,21 +31,19 @@ test.describe('dashboard and mode pages', () => {
     await expect(onboarded).toHaveURL(new RegExp(`${home}$`));
   });
 
-  // Mirrors `modes` in components/practice-row.tsx: each link's visible title
-  // on the course home paired with the route it should open. English values,
-  // since this suite is pinned to /en.
-  const practice: [string, string][] = [['Tutor', '/en/chat']];
+  // The course home has no Practice links any more (#86). The tutor page stays
+  // at /chat, and Friends lives in the account menu since #155.
+  const modes: [string, string][] = [['Tutor', '/en/chat']];
 
-  // One test per link, generated from the table above, so a new mode only needs
-  // a row here. `exact: true` keeps a longer title from matching a shorter one.
-  for (const [title, href] of practice) {
-    test(`the ${title} link on the course home navigates to ${href}`, async ({ onboarded }) => {
-      await onboarded.goto(home);
-      await onboarded.getByRole('link', { name: title, exact: true }).click();
+  test('the course home has no Practice section', async ({ onboarded }) => {
+    await onboarded.goto(home);
+    await expect(onboarded.getByRole('heading', { name: 'French' })).toBeVisible();
 
-      await expect(onboarded).toHaveURL(new RegExp(`${href}$`));
-    });
-  }
+    for (const [title] of modes) {
+      await expect(onboarded.getByRole('link', { name: title, exact: true })).toHaveCount(0);
+    }
+    await expect(onboarded.getByText('Practice', { exact: true })).toHaveCount(0);
+  });
 
   // The (mode) layout wraps every mode page with a back link and the same
   // account nav as the rest of the app. One page (/chat) stands in for all of

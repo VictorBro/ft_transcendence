@@ -15,7 +15,7 @@ services:
   # The only service with published ports. Terminates TLS and routes by path,
   # so web and api share one origin: no CORS, and cookies are first-party.
   caddy:
-    image: caddy:2.11.4-alpine
+    image: caddy:2.11.9-alpine
     # Long form even though the condition is the default: compose.prod.yml
     # tightens it to service_healthy, and mixing the short and long forms
     # across overlays is a merge the spec does not define.
@@ -104,6 +104,10 @@ services:
       LLM_DISCUSSION_USER_PER_MINUTE: ${LLM_DISCUSSION_USER_PER_MINUTE:-}
       LLM_DISCUSSION_USER_PER_DAY: ${LLM_DISCUSSION_USER_PER_DAY:-}
       LLM_DISCUSSION_GLOBAL_PER_MINUTE: ${LLM_DISCUSSION_GLOBAL_PER_MINUTE:-}
+      # Empty keeps the default in apps/api/src/throttler/rate-limits.ts.
+      RATE_LIMIT_PER_MINUTE: ${RATE_LIMIT_PER_MINUTE:-}
+      SIGNUP_LIMIT_PER_MINUTE: ${SIGNUP_LIMIT_PER_MINUTE:-}
+      LOGIN_LIMIT_PER_MINUTE: ${LOGIN_LIMIT_PER_MINUTE:-}
       # Matches the mount below. Not from .env: the target is fixed, so another
       # value would only send uploads off the volume.
       AVATAR_STORAGE_DIR: /data/avatars
@@ -113,9 +117,9 @@ services:
       - ft
 
   db:
-    # Not the plain `postgres` image: it ships without pgvector. See
-    # docs/VERSIONS.md for the CVE that sets the 0.8.6 floor.
-    image: pgvector/pgvector:0.8.6-pg18-trixie
+    # Not the plain `postgres` image: it ships without pgvector. Never below
+    # 0.8.2 (CVE-2026-3172, docs/VERSIONS.md).
+    image: pgvector/pgvector:0.8.7-pg18-trixie
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-ft}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-ft_local_dev}
@@ -139,7 +143,7 @@ services:
       - ft
 
   redis:
-    image: redis:8.10.1-alpine
+    image: redis:8.10.3-alpine
     # AOF on: sessions should survive a restart. RDB snapshots
     # alone lose up to a minute of writes.
     command: ["redis-server", "--appendonly", "yes"]
@@ -257,7 +261,7 @@ services:
     mem_limit: 48m
 
   redis-exporter:
-    image: ghcr.io/oliver006/redis_exporter:v1.93.0
+    image: ghcr.io/oliver006/redis_exporter:v1.97.0
     environment:
       REDIS_ADDR: redis://redis:6379
       # Stored sessions, counted by SCAN on each scrape. The prefix is
@@ -270,7 +274,7 @@ services:
   blackbox-exporter:
     # The image's default config has the http_2xx module, which is all the
     # probes in prometheus.yml use.
-    image: ghcr.io/prometheus/blackbox-exporter:v0.29.0
+    image: ghcr.io/prometheus/blackbox-exporter:v0.29.1
     networks:
       - ft
     mem_limit: 32m

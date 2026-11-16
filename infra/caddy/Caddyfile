@@ -54,7 +54,13 @@ localhost, 127.0.0.1, caddy, {$CADDY_EXTRA_HOSTNAME:ft-transcendence.test} {
 	# handle_path would strip it and every route would answer 404.
 	@api path /api /api/*
 	handle @api {
-		reverse_proxy api:3001
+		reverse_proxy api:3001 {
+			# Retire idle connections before Node's 5s keep-alive timeout.
+			# Reusing a socket Node is closing can turn a POST into a 502.
+			transport http {
+				keepalive 4s
+			}
+		}
 	}
 
 	# socket.io. Caddy 2 detects the Upgrade handshake inside reverse_proxy;
@@ -63,7 +69,11 @@ localhost, 127.0.0.1, caddy, {$CADDY_EXTRA_HOSTNAME:ft-transcendence.test} {
 	# /socket.io, otherwise the request falls through to web below.
 	@ws path /ws /ws/*
 	handle @ws {
-		reverse_proxy api:3001
+		reverse_proxy api:3001 {
+			transport http {
+				keepalive 4s
+			}
+		}
 	}
 
 	# Grafana's own metrics are off (grafana.ini) and unauthenticated when on.

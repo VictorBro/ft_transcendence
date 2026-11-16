@@ -24,8 +24,8 @@ export const CHALLENGE_XP = 30;
 export const RANK_STEP = 100;
 
 /**
- * The six challenges, in index order: challengeFor picks one with `% 6`, so
- * this is a tuple and never an object.
+ * The six challenges, in index order: challengeFor picks by index among the
+ * ones the course's level can do, so this is a tuple and never an object.
  *
  * The first four are the lesson kinds, copied rather than imported (see the
  * note above). A test holds them to LESSON_KINDS.
@@ -56,9 +56,9 @@ export type ChallengeCode = z.infer<typeof ChallengeCodeSchema>;
  */
 export const ACHIEVEMENTS = [
   { code: 'firstLesson', stat: 'finished', target: 1 },
+  { code: 'passed10', stat: 'passed', target: 10 },
   { code: 'passed25', stat: 'passed', target: 25 },
-  { code: 'passed100', stat: 'passed', target: 100 },
-  { code: 'passed500', stat: 'passed', target: 500 },
+  { code: 'passed50', stat: 'passed', target: 50 },
   { code: 'streak3', stat: 'bestStreak', target: 3 },
   { code: 'streak7', stat: 'bestStreak', target: 7 },
   { code: 'streak30', stat: 'bestStreak', target: 30 },
@@ -155,3 +155,9 @@ export const AchievementSchema = z
     path: ['level'],
   });
 export type Achievement = z.infer<typeof AchievementSchema>;
+
+/** GET /courses/:lang/achievements: all sixteen, in ACHIEVEMENTS order. */
+export const AchievementListSchema = z.object({
+  items: z.array(AchievementSchema).length(ACHIEVEMENTS.length),
+});
+export type AchievementList = z.infer<typeof AchievementListSchema>;

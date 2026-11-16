@@ -53,6 +53,10 @@
 	handle @api {
 		reverse_proxy api:3001 {
 			import visitor
+			# Keep idle sockets for less than Node's 5s keep-alive timeout.
+			transport http {
+				keepalive 4s
+			}
 		}
 	}
 
@@ -61,6 +65,9 @@
 	handle @ws {
 		reverse_proxy api:3001 {
 			import visitor
+			transport http {
+				keepalive 4s
+			}
 		}
 	}
 

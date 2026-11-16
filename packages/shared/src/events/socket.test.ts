@@ -79,6 +79,13 @@ describe('server payloads', () => {
     ).toBe('online');
   });
 
+  it('knows two presence states, and no away', () => {
+    const at = '2026-08-01T10:00:00.000Z';
+
+    expect(PresenceUpdateSchema.parse({ userId, status: 'offline', at }).status).toBe('offline');
+    expect(PresenceUpdateSchema.safeParse({ userId, status: 'away', at }).success).toBe(false);
+  });
+
   it('carries an error code, never a sentence', () => {
     expect(AppErrorSchema.parse({ code: 'request.invalid' }).code).toBe('request.invalid');
     expect(AppErrorSchema.safeParse({ code: 'RATE_LIMITED' }).success).toBe(false);
