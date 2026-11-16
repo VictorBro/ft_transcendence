@@ -77,6 +77,13 @@ Grafana, with the monitoring dashboards and alerts, is at
 <https://localhost/grafana>: user `admin`, and the password `make` generated is in
 `.env` (`grep GRAFANA_ADMIN_PASSWORD .env`).
 
+The lesson tutor and the question generator use Gemini. With the default
+`LLM_PROVIDER=fixture` they call nothing: the tutor gives one canned answer and
+no question is generated. To use Gemini, create a key at
+<https://aistudio.google.com/apikey>, set `LLM_PROVIDER=gemini` and
+`LLM_API_KEY=<your key>` in `.env`, then run `make` again. The key goes in
+`.env` only, which git ignores. The tutor's rate limits are in `.env.example`.
+
 For day-to-day development use `make dev`, which starts the same stack with hot
 reload. `make help` lists every target.
 
