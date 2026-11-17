@@ -8,6 +8,7 @@ import { HEARTBEAT_MS, openEventStream } from './event-stream';
 function fakeResponse() {
   const response = Object.assign(new EventEmitter(), {
     writableFinished: false,
+    destroyed: false,
     writeHead: vi.fn(),
     flushHeaders: vi.fn(),
     write: vi.fn(),
@@ -69,6 +70,15 @@ describe('openEventStream', () => {
 
     expect(stream.signal.aborted).toBe(true);
     expect(response.write).not.toHaveBeenCalled();
+  });
+
+  it('starts with its signal aborted when the browser left before the stream opened', () => {
+    const response = fakeResponse();
+    response.destroyed = true;
+
+    const stream = openEventStream(response as unknown as Response);
+
+    expect(stream.signal.aborted).toBe(true);
   });
 
   // "close" also fires after a normal end: that one must not look like the learner leaving.

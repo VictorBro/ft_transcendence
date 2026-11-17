@@ -39,6 +39,9 @@ export function openEventStream(response: Response): EventStream {
     clearInterval(heartbeat);
     if (!response.writableFinished) abort.abort();
   });
+  // The browser may have left during the checks before this call: its "close"
+  // has fired already and will not fire again, so the listener above never runs.
+  if (response.destroyed) abort.abort();
 
   response.writeHead(200, {
     'content-type': 'text/event-stream; charset=utf-8',
