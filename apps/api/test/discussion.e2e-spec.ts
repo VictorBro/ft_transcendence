@@ -18,6 +18,7 @@ import { DisabledProvider } from '../src/llm/disabled.provider';
 import { FIXTURE_ANSWER, FIXTURE_FAILURES } from '../src/llm/fixture.provider';
 import { LLM_PROVIDER, LlmError, type LlmProvider } from '../src/llm/llm.provider';
 import { PrismaService } from '../src/prisma/prisma.service';
+import { RedisService } from '../src/redis/redis.service';
 import { openAttempt, playLesson } from './attempts.fixtures';
 
 /**
@@ -447,9 +448,15 @@ describe('lesson discussion (e2e)', () => {
       // Refused before the limits: it uses up none of the two.
       await send({ attemptId: randomUUID(), message: 'Pourquoi ?', history: [] }).expect(409);
       await send().expect(200);
+      // As if the window were 50 seconds old: the next message must not start it
+      // over, and the refusal must give the 10 seconds left, not a full minute.
+      const { id } = await prisma.user.findUniqueOrThrow({
+        where: { email: `discussion-minute-${stamp}@example.com` },
+      });
+      await app.get(RedisService).client.expire(`discussion:user:${id}:minute`, 10);
       await send().expect(200);
 
-      expect(await refused(send(), 0, 60)).toBe('llm.tooManyMessages');
+      expect(await refused(send(), 0, 10)).toBe('llm.tooManyMessages');
     });
 
     it('refuses the learner over their limit per day', async () => {
