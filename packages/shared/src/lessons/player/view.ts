@@ -403,6 +403,8 @@ export const ResultsSchema = z.strictObject({
       answer: z.string(),
       /** The answer and yours are interface words (a gender row): shown in the interface language. */
       interfaceAnswer: z.boolean().optional(),
+      /** Every right gender: of a gender row, or of a plurale tantum answered with "des". */
+      rightGenders: z.array(GenderSchema).optional(),
       accepted: z.string().optional(),
       outcome: AnswerOutcomeSchema,
       points: z.number().nonnegative(),

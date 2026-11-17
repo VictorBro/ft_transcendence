@@ -1,5 +1,9 @@
+import { readdirSync, readFileSync } from 'node:fs';
+import path from 'node:path';
+
 import { describe, expect, it } from 'vitest';
 
+import { STRIPPED_ARTICLES } from '../domain/articles';
 import { articleHint, startsWithArticle } from './articleHint';
 import { PLAYER_COPY } from './copy';
 import { BY_KIND, FIXTURE_LESSONS, fixtureLesson } from './fixtures.testing';
@@ -10,8 +14,18 @@ import {
   typeSkipsFeedbackWhenRight,
 } from './kinds';
 import { motherTongue } from './motherTongue';
-import { buildPlan, isScored, wordOrder, type LessonPlan, type PlanPage } from './plan';
+import {
+  buildPlan,
+  isScored,
+  wordOrder,
+  type LessonPlan,
+  type LessonSource,
+  type PlanPage,
+} from './plan';
 import { scoreUnit } from './score';
+
+/** The repository's briefs: every German and English vocabulary exam is checked on them. */
+const BRIEFS = path.join(__dirname, '../../../../../content/briefs');
 
 const plan = (id: (typeof FIXTURE_LESSONS)[number], tongue: 'en' | 'de' = 'en') =>
   buildPlan(fixtureLesson(id), tongue);
@@ -336,7 +350,35 @@ describe('articleHint', () => {
     expect(articleHint('lundi', 'fr')).toBe(null);
     expect(startsWithArticle("l'Espagne", 'fr')).toBe(true);
     expect(startsWithArticle('lundi', 'fr')).toBe(false);
-    // No article rule for another course language yet.
-    expect(startsWithArticle('der Tisch', 'de')).toBe(false);
+  });
+
+  it('knows the German and English articles too', () => {
+    expect(articleHint('der Buchstabe', 'de')).toBe('definite');
+    expect(articleHint('die Eltern', 'de')).toBe('definite');
+    expect(articleHint('eine Tante', 'de')).toBe('indefinite');
+    expect(articleHint('Buchstabe', 'de')).toBe(null);
+    expect(articleHint('Dieter', 'de')).toBe(null);
+    expect(articleHint('the United Kingdom', 'en')).toBe('definite');
+    expect(articleHint('an apple', 'en')).toBe('indefinite');
+    expect(articleHint('apple', 'en')).toBe(null);
+  });
+
+  it('labels every exam answer of the German and English briefs that needs an article', () => {
+    for (const lang of ['de', 'en'] as const) {
+      const ids = readdirSync(BRIEFS)
+        .map((file) => JSON.parse(readFileSync(path.join(BRIEFS, file), 'utf8')))
+        .filter((brief) => brief.lang === lang && brief.kind === 'vocabulary');
+      expect(ids.length).toBeGreaterThan(0);
+      for (const brief of ids) {
+        const plan = buildPlan({ brief, content: null } as LessonSource, motherTongue('en', lang));
+        for (const unit of plan.pages.flatMap((p) => p.units)) {
+          if (unit.itemType !== 'vocabulary_translation_exam' || unit.kind !== 'text') continue;
+          const needs = STRIPPED_ARTICLES[lang].some((a) =>
+            unit.answer.toLowerCase().startsWith(`${a} `),
+          );
+          if (needs) expect(articleHint(unit.answer, lang), unit.answer).not.toBe(null);
+        }
+      }
+    }
   });
 });

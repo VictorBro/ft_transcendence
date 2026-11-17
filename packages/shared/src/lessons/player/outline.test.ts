@@ -58,6 +58,17 @@ describe('lessonOutline', () => {
     expect(o.situation?.en).toMatch(/café/);
   });
 
+  it('orders the roles as they first speak in the model dialogue', () => {
+    const lesson = fixtureLesson(BY_KIND.functions);
+    const brief = lesson.brief as { roles: { id: string; label: string }[] };
+    // The brief lists the client first: the waiter still opens the dialogue, so he comes first.
+    const swapped = { ...lesson, brief: { ...brief, roles: [...brief.roles].reverse() } };
+    expect(lessonOutline(buildPlan(swapped as typeof lesson, 'en')).roles).toEqual([
+      'le serveur',
+      'la cliente',
+    ]);
+  });
+
   it('gives reading the key words and the document, and neither the genre nor the situation', () => {
     const o = outline(BY_KIND.reading);
     expect(o.sections.map((s) => s.title.en)).toEqual(['Key words', 'The document', 'Final exam']);

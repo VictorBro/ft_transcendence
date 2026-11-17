@@ -275,6 +275,7 @@ describe('results', () => {
     expect(genders.length).toBeGreaterThan(0);
     const marked = sheet.rows.filter((r) => r.interfaceAnswer);
     expect(marked).toHaveLength(genders.length);
+    expect(marked.every((r) => r.rightGenders?.includes(r.answer as 'masculine'))).toBe(true);
     expect(marked.every((r) => ['masculine', 'feminine'].includes(r.answer))).toBe(true);
     expect(ResultsSchema.safeParse({ ...sheet, finish }).success).toBe(true);
   });

@@ -1,3 +1,4 @@
+import type { Gender } from '../schemas/vocabulary';
 import { PLAYER_COPY } from './copy';
 import { answerGender, answerText, closest, unitFeedback, type LockedAnswer } from './feedback';
 import type { LessonPlan, PlanPage, PlanUnit } from './plan';
@@ -219,6 +220,12 @@ export function results(plan: LessonPlan, state: AttemptState): ResultsSheet {
         const interfaceAnswer =
           unit.kind === 'choice' &&
           unit.options.some((o) => o.lang === 'ui' && unit.correct.includes(o.id));
+        // Every right gender: of a gender row (Deutsche is both), or of a plurale tantum ("des cernes").
+        const rightGenders = interfaceAnswer
+          ? unit.options.filter((o) => unit.correct.includes(o.id)).map((o) => o.text as Gender)
+          : unit.kind === 'text' && unit.noun?.pluraleTantum
+            ? [...unit.noun.genders]
+            : undefined;
         return {
           step,
           prompt: { ...unit.prompt },
@@ -226,6 +233,7 @@ export function results(plan: LessonPlan, state: AttemptState): ResultsSheet {
           ...(gender ? { gender } : {}),
           answer: unit.answer,
           ...(interfaceAnswer ? { interfaceAnswer } : {}),
+          ...(rightGenders ? { rightGenders } : {}),
           ...closest(unit, locked),
           outcome: locked.outcome,
           points: locked.points,
