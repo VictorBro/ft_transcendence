@@ -133,7 +133,7 @@ describe('lesson discussion (e2e)', () => {
     await app.init();
     prisma = app.get(PrismaService);
     llm = app.get(LLM_PROVIDER);
-    // The default limits would refuse agent, who sends more than 6 messages.
+    // The default limits would refuse agent, who sends more than 2 messages a minute.
     limits = app.get(DiscussionService).limits;
     Object.assign(limits, ROOMY);
 

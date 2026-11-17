@@ -14,7 +14,7 @@ export interface DiscussionLimits {
   globalPerMinute: number;
 }
 
-const DEFAULTS: DiscussionLimits = { userPerMinute: 6, userPerDay: 60, globalPerMinute: 5 };
+const DEFAULTS: DiscussionLimits = { userPerMinute: 2, userPerDay: 60, globalPerMinute: 5 };
 
 const ENV_NAMES: Record<keyof DiscussionLimits, string> = {
   userPerMinute: 'LLM_DISCUSSION_USER_PER_MINUTE',
