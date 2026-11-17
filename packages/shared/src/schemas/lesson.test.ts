@@ -17,6 +17,7 @@ import {
   LessonSummarySchema,
   LessonTitleSchema,
   outlineFileName,
+  rowStatus,
   TodaySchema,
   type LessonCard,
   type LessonStatus,
@@ -56,6 +57,7 @@ const card: LessonCard = {
   theme: null,
   title: 'Le, la, les',
   summary: 'Choisir le bon article défini selon le genre et le nombre.',
+  ready: true,
   status: 'failed',
   score: 55,
   day: '2026-10-12',
@@ -345,6 +347,18 @@ describe('LessonCardSchema', () => {
     expect(LessonCardSchema.safeParse({ ...card, title: 'a'.repeat(81) }).success).toBe(false);
     expect(LessonCardSchema.safeParse({ ...card, summary: 'a'.repeat(201) }).success).toBe(false);
   });
+
+  it('needs ready', () => {
+    const { ready: _ready, ...withoutReady } = card;
+    expect(LessonCardSchema.safeParse(withoutReady).success).toBe(false);
+  });
+});
+
+describe('rowStatus', () => {
+  it('is the status of a ready lesson, and soon for one not ready, result or not', () => {
+    expect(rowStatus(card)).toBe('failed');
+    expect(rowStatus({ ...card, ready: false })).toBe('soon');
+  });
 });
 
 describe('LessonQuerySchema', () => {
@@ -391,7 +405,7 @@ describe('LessonQuerySchema', () => {
     expect(
       LessonQuerySchema.parse({
         q: '  articles ',
-        status: 'failed,todo,failed',
+        status: 'failed,todo,failed,soon',
         topic: 'pronouns',
         theme: 'travel,weather',
         sort: 'score',
@@ -401,7 +415,7 @@ describe('LessonQuerySchema', () => {
       }),
     ).toEqual({
       q: 'articles',
-      status: ['failed', 'todo'],
+      status: ['failed', 'todo', 'soon'],
       kind: [],
       topic: ['pronouns'],
       theme: ['travel', 'weather'],
