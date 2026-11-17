@@ -28,6 +28,9 @@ const OUTCOMES: ('ok' | Exclude<LlmFailure, 'disabled'>)[] = [
   'incomplete',
   'invalid',
 ];
+// The finish reasons that mean Gemini's filters stopped the answer itself: asking
+// the same thing again meets the same filter, so they are "blocked", not "incomplete".
+const FILTERED = new Set(['SAFETY', 'PROHIBITED_CONTENT', 'BLOCKLIST', 'SPII', 'RECITATION']);
 // The token counts Gemini reports, as the metrics name them.
 const TOKEN_TYPES = ['prompt', 'output', 'total'] as const;
 // Every purpose a call can have: one per question category, and the lesson discussion.
@@ -244,11 +247,13 @@ export class GeminiProvider implements LlmProvider {
           wrote = true;
           yield text;
         }
-        // Only the last event has a finishReason. Anything but "STOP" (MAX_TOKENS, SAFETY...)
-        // means the answer was cut, after the pieces already sent.
+        // Only the last event has a finishReason. Anything but "STOP" means the answer
+        // was cut, after the pieces already sent: by a filter (SAFETY...), or for
+        // another reason (MAX_TOKENS...).
         const reason = candidate?.finishReason;
         if (reason && reason !== 'STOP') {
-          throw new LlmError(`Gemini stopped early: ${reason}`, false, 'incomplete');
+          const failure = FILTERED.has(reason) ? 'blocked' : 'incomplete';
+          throw new LlmError(`Gemini stopped early: ${reason}`, false, failure);
         }
         if (reason === 'STOP') finished = true;
       }

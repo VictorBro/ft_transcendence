@@ -64,7 +64,7 @@ export const ERROR_CODES = [
   'llm.rateLimited',
   /** Over the learner's own limit, per minute or per day (discussion-limits.ts). */
   'llm.tooManyMessages',
-  /** The LLM refused this prompt (safety filters). */
+  /** The LLM's safety filters refused this prompt, or stopped its answer. */
   'llm.blocked',
   /** The answer stopped before its end, or was empty. */
   'llm.incomplete',

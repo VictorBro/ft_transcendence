@@ -105,7 +105,8 @@ export interface LlmProvider {
  * - unreachable: no HTTP answer at all (network, DNS, timeout), or the connection
  *   dropped while the answer was still coming.
  * - rate_limited: HTTP 429. http_error: any other status outside 2xx.
- * - blocked: the prompt was refused. incomplete: the reply was cut short.
+ * - blocked: the safety filters refused the prompt, or stopped the reply.
+ *   incomplete: the reply was cut short for any other reason.
  * - invalid: the reply is not JSON, or fails the schema.
  * - disabled: no real LLM behind the provider (the fixture's questions, LLM_PROVIDER=disabled).
  */

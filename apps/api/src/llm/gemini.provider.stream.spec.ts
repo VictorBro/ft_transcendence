@@ -181,6 +181,23 @@ describe('GeminiProvider.streamText', () => {
     });
   });
 
+  // The filter stopped the answer, not the prompt: asking again the same way meets it again.
+  it.each(['SAFETY', 'PROHIBITED_CONTENT', 'BLOCKLIST', 'SPII', 'RECITATION'])(
+    'fails as blocked, after the pieces already sent, when a filter stops the answer (%s)',
+    async (reason) => {
+      fetchMock.mockResolvedValueOnce(sse([piece('Le passé '), piece('composé', reason)]));
+
+      const { pieces, error } = await read(provider.streamText(request()));
+
+      expect(pieces).toEqual(['Le passé ', 'composé']);
+      expect(error).toMatchObject({
+        message: `Gemini stopped early: ${reason}`,
+        reason: 'blocked',
+        retryable: false,
+      });
+    },
+  );
+
   it('fails when the body ends without a finish reason', async () => {
     fetchMock.mockResolvedValueOnce(sse([piece('Le passé ')]));
 
