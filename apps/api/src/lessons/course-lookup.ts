@@ -26,6 +26,7 @@ export const LESSON_SELECT = {
   theme: true,
   title: true,
   summary: true,
+  ready: true,
 } as const;
 
 /**
