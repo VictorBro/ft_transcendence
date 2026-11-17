@@ -333,6 +333,22 @@ test.describe('a vocabulary lesson', () => {
     await expect(learner.locator('[data-card][data-face="back"]')).toHaveCount(1);
     await expect(learner.locator('[data-listen]')).toHaveCount(0);
 
+    // A wrong typed gap: after Check its reference card turns green, named by the feedback.
+    const gapPage = planned.pages.findIndex((p) =>
+      p.items.some((item) => item.type === 'vocabulary_typed_gap'),
+    );
+    await playLesson(learner, planned, { stop: (index) => index === gapPage });
+    const gaps = planned.pages[gapPage]!.items.filter(
+      (item) => item.type === 'vocabulary_typed_gap',
+    );
+    for (const field of await learner.locator('[data-unit] input').all()) await field.fill('zzz');
+    await mainButton(learner).click();
+    await expect(
+      learner.locator(`[data-page-index="${gapPage}"][data-state="checked"]`),
+    ).toBeVisible();
+    await expect(learner.locator('.lesson-reference-card.is-right')).toHaveCount(gaps.length);
+    await mainButton(learner).click();
+
     // Wrong answers on the exam: the first Next shows the article notes.
     const exam = planned.pages.findIndex((p) => p.role === 'exam');
     await playLesson(learner, planned, { share: 0.75, stop: (index) => index === exam });

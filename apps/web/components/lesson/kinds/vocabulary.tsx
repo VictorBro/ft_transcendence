@@ -67,19 +67,9 @@ export function useGenderLabel() {
 function TypedGap({ item, lang, feedback, ...props }: ItemProps<'vocabulary_typed_gap'>) {
   const genderLabel = useGenderLabel();
   const note = item.units[0] ? feedback?.get(item.units[0].ref) : undefined;
-  const norm = lessons.player.normalizeAnswer;
   const unit = item.units[0];
-  // The card of the right word: the same word, or else the longest card the answer
-  // starts with ("espagnole" is the card "espagnol"). The page view names no right
-  // card before Check, so the answer stays out of it.
-  const answer = note ? norm(note.answer) : null;
-  const rightCard =
-    answer === null
-      ? undefined
-      : (item.references.find((c) => norm(c.text) === answer) ??
-        item.references
-          .filter((c) => answer.startsWith(norm(c.text)))
-          .sort((a, b) => b.text.length - a.text.length)[0]);
+  // The feedback names the right card after Check; the page view never does, so the answer stays out of it.
+  const rightCard = note?.card;
   // The prompt's parts carry their own spaces: "Madrid est la capitale de l’" + "Espagne" + ".".
   const sentence =
     note && unit ? `${unit.prompt.before ?? ''}${note.answer}${unit.prompt.after ?? ''}` : null;
@@ -87,7 +77,7 @@ function TypedGap({ item, lang, feedback, ...props }: ItemProps<'vocabulary_type
     <ItemCard>
       <ul className="lesson-reference-cards">
         {item.references.map((reference) => {
-          const right = reference.ref === rightCard?.ref;
+          const right = reference.ref === rightCard;
           return (
             <li key={reference.ref} className={`lesson-reference-card ${right ? 'is-right' : ''}`}>
               <span lang={lang} className={right ? 'text-green-400' : 'text-slate-100'}>

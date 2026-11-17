@@ -90,6 +90,26 @@ describe('submit', () => {
     expect(view(plan, result.state, ID, ref, 0).practice).toEqual({ earned: 3, possible: 12 });
   });
 
+  it('names the right reference card of a typed gap in its feedback only', () => {
+    let state = start(plan, 0);
+    while (!plan.pages[state.page].items.some((i) => i.type === 'vocabulary_typed_gap'))
+      state = next(plan, state, 0).state;
+    const page = plan.pages[state.page];
+    const result = next(plan, state, 0);
+    const gaps = page.items.filter((i) => i.type === 'vocabulary_typed_gap');
+    expect(gaps.length).toBeGreaterThan(0);
+    for (const gap of gaps) {
+      if (gap.type !== 'vocabulary_typed_gap') continue;
+      const unit = page.units.find((u) => u.itemId === gap.itemId)!;
+      const note = result.feedback?.find((f) => f.ref === ref(paths.unit(unit)));
+      expect(note?.card).toBe(ref(paths.card(page, gap.itemId, gap.targetId)));
+    }
+    // Other items get no card.
+    const others = page.units.filter((u) => !gaps.some((g) => g.itemId === u.itemId));
+    for (const u of others)
+      expect(result.feedback?.find((f) => f.ref === ref(paths.unit(u)))?.card).toBeUndefined();
+  });
+
   it('refuses another index, a replay and a finished attempt; a locked unit never changes', () => {
     const state = start(plan, 0);
     expect(submit(plan, state, 1, {}, 0, ref)).toEqual({ ok: false, error: 'stale' });

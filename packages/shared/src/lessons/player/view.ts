@@ -364,6 +364,8 @@ export const UnitFeedbackSchema = z.strictObject({
   /** A gender row: the word's teaching form and translation. */
   form: z.string().optional(),
   translation: z.string().optional(),
+  /** A typed gap: its reference card. */
+  card: RefSchema.optional(),
 });
 export type UnitFeedback = z.infer<typeof UnitFeedbackSchema>;
 
