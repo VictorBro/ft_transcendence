@@ -325,6 +325,12 @@ test.describe('a vocabulary lesson', () => {
     await playLesson(learner, planned, { stop: (index) => index === cards });
     await expect(learner.getByText('Flip every card to continue.')).toBeVisible();
     await expect(mainButton(learner)).toBeDisabled();
+    // A turned card would have its Listen buttons with a voice: none here.
+    await learner
+      .getByRole('button', { name: /^Turn the card: / })
+      .first()
+      .click();
+    await expect(learner.locator('[data-card][data-face="back"]')).toHaveCount(1);
     await expect(learner.locator('[data-listen]')).toHaveCount(0);
 
     // Wrong answers on the exam: the first Next shows the article notes.
@@ -340,6 +346,44 @@ test.describe('a vocabulary lesson', () => {
     await expect(learner.getByRole('heading', { name: 'Your results' })).toBeVisible();
     await expect(learner.getByText(/^Score: \d+(\.\d)? \/ 100$/)).toBeVisible();
     expect(violations, formatViolations(violations)).toEqual([]);
+  });
+});
+
+test.describe('a vocabulary lesson with a voice', () => {
+  test.skip(({ browserName }) => browserName !== 'chromium', 'The voice is a stub');
+
+  // The browser's voices come late, with voiceschanged: the Listen buttons follow them.
+  test('shows the Listen buttons once a French voice is there', async ({ freshLearner }) => {
+    const learner = freshLearner;
+    await learner.addInitScript(() => {
+      const voices: SpeechSynthesisVoice[] = [];
+      const synth = new EventTarget() as SpeechSynthesis;
+      Object.assign(synth, { getVoices: () => voices, speak: () => {}, cancel: () => {} });
+      Object.defineProperty(window, 'speechSynthesis', { value: synth, configurable: true });
+      setTimeout(() => {
+        voices.push({
+          lang: 'fr-FR',
+          name: 'Test French',
+          voiceURI: 'test-fr',
+          localService: true,
+          default: true,
+        });
+        synth.dispatchEvent(new Event('voiceschanged'));
+      }, 300);
+    });
+    const lesson = VOCABULARY[0]!;
+    const planned = lessonPlan(lesson, 'en');
+    await placeCourse(learner, { lang: LANG, level: 'A1', dailyGoal: 10 });
+    await start(learner, lesson);
+    const cards = planned.pages.findIndex((p) =>
+      p.items.some((item) => item.type === 'vocabulary_flashcards'),
+    );
+    await playLesson(learner, planned, { stop: (index) => index === cards });
+    await learner
+      .getByRole('button', { name: /^Turn the card: / })
+      .first()
+      .click();
+    await expect(learner.locator('[data-listen]').first()).toBeVisible();
   });
 });
 
@@ -407,7 +451,8 @@ test.describe('every French A1 functions lesson', () => {
   test.skip(({ browserName }) => browserName !== 'chromium', 'Chromium covers the content');
   test.describe.configure({ timeout: 240_000 });
 
-  for (const lesson of FUNCTIONS) {
+  // The first one plays to 100 in "a functions lesson" already.
+  for (const lesson of FUNCTIONS.slice(1)) {
     test(`${lesson} plays to its results`, async ({ freshLearner }) => {
       const learner = freshLearner;
       const violations = watchConsole(learner);

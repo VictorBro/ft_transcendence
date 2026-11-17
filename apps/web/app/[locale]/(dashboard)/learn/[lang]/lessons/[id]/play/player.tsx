@@ -17,6 +17,7 @@ import type {
   Ref,
   UnitFeedback,
 } from '@/components/lesson/types';
+import { stopSpeech } from '@/components/lesson/speech';
 import { ItemCard } from '@/components/lesson/units';
 import { useRouter } from '@/i18n/navigation';
 import { useErrorMessage } from '@/lib/error-message';
@@ -241,6 +242,10 @@ export function LessonPlayer({
       return next;
     });
   }, []);
+  // What a page read aloud stops with it: on Continue, and on the way to the results.
+  const pageIndex = view.current?.index;
+  useEffect(() => () => stopSpeech(), [pageIndex]);
+
   // The items' notes for a reload, kept with this attempt's drafts.
   const keep = useMemo(
     () => ({
@@ -511,11 +516,14 @@ export function LessonPlayer({
             <div className="lesson-task-footer flex flex-col gap-3">
               <FormError message={error} />
               <div className="flex flex-wrap items-center justify-end gap-x-6 gap-y-3">
-                {holdMessage ? (
-                  <p className="text-slate-400" data-hold-message>
-                    {holdMessage}
-                  </p>
-                ) : null}
+                {/* Read out as it changes: "Line 3 of 8", "Flip every card to continue." */}
+                <p
+                  className="text-slate-400 empty:hidden"
+                  role="status"
+                  data-hold-message={holdMessage ? '' : undefined}
+                >
+                  {holdMessage ?? ''}
+                </p>
                 <button
                   type="button"
                   // The second click of a double-click would land on the next
@@ -531,7 +539,7 @@ export function LessonPlayer({
                     button.onClick();
                   }}
                   disabled={pending || flash || (blocked && !step)}
-                  className={PRIMARY_BUTTON}
+                  className={`${PRIMARY_BUTTON} lesson-main-button`}
                 >
                   {button.label}
                 </button>

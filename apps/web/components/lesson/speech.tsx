@@ -27,6 +27,11 @@ function voiceFor(lang: Language): SpeechSynthesisVoice | null {
   return voices.find((v) => v.lang.toLowerCase().split(/[-_]/)[0] === lang) ?? null;
 }
 
+/** Stops what is being read aloud, if anything. */
+export function stopSpeech() {
+  synth()?.cancel();
+}
+
 /** Speaks a text of the course language; null while there is no voice for it. */
 export function useSpeech(lang: Language): ((text: string) => void) | null {
   // A string snapshot: getVoices may hand out new objects on every call.

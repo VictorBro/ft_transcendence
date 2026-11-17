@@ -227,7 +227,7 @@ header:has(+ main .lesson-view) > div {
 .lesson-task-footer {
   margin-top: 8px;
 }
-.lesson-task-footer > button {
+.lesson-main-button {
   min-height: 52px;
   padding: 12px 24px;
   font-size: 16px;

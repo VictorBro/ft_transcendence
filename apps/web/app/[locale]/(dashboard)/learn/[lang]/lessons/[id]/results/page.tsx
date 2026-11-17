@@ -127,6 +127,11 @@ async function GenderRow({
   const t = await getTranslations('Lesson');
   const placement = await getTranslations('Placement');
   const right = row.outcome === 'fully_correct';
+  // A right row shows the learner's pick (Deutsche is masculine or feminine);
+  // a wrong one every right gender.
+  const shown = right
+    ? label(row.yours ?? row.answer)
+    : (row.rightGenders ?? [row.answer]).map(label).join(' / ');
   return (
     <li
       data-outcome={row.outcome}
@@ -152,8 +157,8 @@ async function GenderRow({
           )}
           {right ? null : <span aria-hidden="true">→</span>}
           <strong className="font-semibold text-green-400">
-            {right ? null : <span className="sr-only">{placement('correctAnswer')}: </span>}
-            {label(row.answer)}
+            <span className="sr-only">{placement(right ? 'yourAnswer' : 'correctAnswer')}: </span>
+            {shown}
           </strong>
         </p>
         <span className="shrink-0 text-sm font-semibold text-slate-300 tabular-nums">
@@ -190,6 +195,9 @@ async function ResultRow({ row, lang, locale }: { row: Row; lang: Language; loca
     );
   }
   const gap = prompt.before !== undefined || prompt.after !== undefined;
+  const genderOf = (g: string) => (genders.has(g) ? genders(g) : g);
+  // A plurale tantum answered with "des" counts with its gender: both are shown, "des cernes (Masculine)".
+  const plural = row.rightGenders !== undefined && /^des\s/iu.test(row.yours ?? '');
   // The marks cover a typed answer; a spotted word's answer ("est → es") shows plain.
   const marks = row.marks && row.marks.map((m) => m.text).join('') === row.yours ? row.marks : null;
 
@@ -264,12 +272,21 @@ async function ResultRow({ row, lang, locale }: { row: Row; lang: Language; loca
                     </span>
                   ))
                 : row.yours}
+              {plural ? (
+                <span lang={locale} className="text-slate-300">
+                  {' '}
+                  ({row.gender ? genderOf(row.gender) : t('blank')})
+                </span>
+              ) : null}
             </span>
           )}
         </dd>
         <dt className="text-slate-400">{placement('correctAnswer')}</dt>
         <dd lang={lang} className="text-green-300">
           {row.accepted ?? row.answer}
+          {plural ? (
+            <span lang={locale}> ({row.rightGenders!.map(genderOf).join(' / ')})</span>
+          ) : null}
         </dd>
       </dl>
       {row.outcome === 'orthography_only' ? (

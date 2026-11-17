@@ -11,7 +11,7 @@ import { GenderPage } from '../gender-page';
 import { RichText } from '../rich-text';
 import { ListenButton } from '../speech';
 import type { Answer, AnswerProps, ItemProps, ItemRenderers, UnitView } from '../types';
-import { TextControl } from '../controls';
+import { radioArrows, rovingTab, TextControl } from '../controls';
 import { ItemCard } from '../units';
 
 /**
@@ -67,22 +67,27 @@ export function useGenderLabel() {
 function TypedGap({ item, lang, feedback, ...props }: ItemProps<'vocabulary_typed_gap'>) {
   const genderLabel = useGenderLabel();
   const note = item.units[0] ? feedback?.get(item.units[0].ref) : undefined;
-  const same = (a: string, b: string) =>
-    lessons.player.normalizeAnswer(a) === lessons.player.normalizeAnswer(b);
+  const norm = lessons.player.normalizeAnswer;
   const unit = item.units[0];
-  // No space before a full stop or a comma: "Je lis un livre."
+  // The card of the right word: the same word, or else the longest card the answer
+  // starts with ("espagnole" is the card "espagnol"). The page view names no right
+  // card before Check, so the answer stays out of it.
+  const answer = note ? norm(note.answer) : null;
+  const rightCard =
+    answer === null
+      ? undefined
+      : (item.references.find((c) => norm(c.text) === answer) ??
+        item.references
+          .filter((c) => answer.startsWith(norm(c.text)))
+          .sort((a, b) => b.text.length - a.text.length)[0]);
+  // The prompt's parts carry their own spaces: "Madrid est la capitale de l’" + "Espagne" + ".".
   const sentence =
-    note && unit
-      ? [unit.prompt.before, note.answer, unit.prompt.after]
-          .filter(Boolean)
-          .join(' ')
-          .replace(/ ([.,])/g, '$1')
-      : null;
+    note && unit ? `${unit.prompt.before ?? ''}${note.answer}${unit.prompt.after ?? ''}` : null;
   return (
     <ItemCard>
       <ul className="lesson-reference-cards">
         {item.references.map((reference) => {
-          const right = note !== undefined && same(reference.text, note.answer);
+          const right = reference.ref === rightCard?.ref;
           return (
             <li key={reference.ref} className={`lesson-reference-card ${right ? 'is-right' : ''}`}>
               <span lang={lang} className={right ? 'text-green-400' : 'text-slate-100'}>
@@ -155,9 +160,10 @@ function ExamWord({
   const plural = lang === 'fr' && lessons.player.isPluralAnswer(text);
 
   useEffect(() => {
-    hold(`article:${unit.ref}`, missing ? { kind: 'nudge' } : null);
+    // Not on a page whose time ran out: nothing can be typed any more.
+    hold(`article:${unit.ref}`, missing && !locked ? { kind: 'nudge' } : null);
     return () => hold(`article:${unit.ref}`, null);
-  }, [hold, unit.ref, missing]);
+  }, [hold, unit.ref, missing, locked]);
 
   const set = (next: Partial<TypedAnswer>) => {
     const merged: TypedAnswer = { text, ...(gender ? { gender } : {}), ...next };
@@ -199,13 +205,19 @@ function ExamWord({
           </p>
         ) : null}
         {plural ? (
-          <div role="radiogroup" aria-label={t('whichGender')} className="flex flex-wrap gap-2">
-            {genders.map((option) => (
+          <div
+            role="radiogroup"
+            aria-label={t('whichGender')}
+            onKeyDown={radioArrows}
+            className="flex flex-wrap gap-2"
+          >
+            {genders.map((option, index) => (
               <button
                 key={option}
                 type="button"
                 role="radio"
                 aria-checked={gender === option}
+                tabIndex={rovingTab(gender === option, index, gender !== undefined)}
                 disabled={locked}
                 onClick={() => set({ gender: option })}
                 className={`lesson-pill ${gender === option ? 'is-chosen' : ''}`}

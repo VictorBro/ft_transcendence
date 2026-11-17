@@ -190,6 +190,12 @@ function Dialogue({ item, lang, hold, outline }: ItemProps<'function_dialogue'>)
           );
         })}
       </ol>
+      {/* Next line keeps the focus on the button: the new line is read out. */}
+      <p className="sr-only" aria-live="polite" lang={lang}>
+        {shown > 1 && item.lines[shown - 1]
+          ? `${item.lines[shown - 1]!.role}: ${item.lines[shown - 1]!.text}`
+          : ''}
+      </p>
     </section>
   );
 }
@@ -400,6 +406,7 @@ function DialogueGapTyping({
   locked,
   hold,
   keep,
+  outline,
 }: ItemProps<'function_dialogue_gap_typing'>) {
   const t = useTranslations('Lesson');
   const total = item.lines.length;
@@ -434,7 +441,9 @@ function DialogueGapTyping({
     return () => hold('dialogue', null);
   }, [hold, shown, total, nextLine, t, locked]);
 
-  const first = item.lines[0]?.role;
+  // The model dialogue's first speaker stays on the left here too (the outline orders the roles).
+  const first = outline.roles?.[0] ?? item.lines[0]?.role;
+  const latest = shown > 1 ? item.lines[shown - 1] : undefined;
   return (
     <section className="lesson-item">
       <ol ref={list} className="lesson-dialogue">
@@ -467,6 +476,12 @@ function DialogueGapTyping({
           );
         })}
       </ol>
+      {/* Next line keeps the focus on the button: the new line, and its gap, are read out. */}
+      <p className="sr-only" aria-live="polite" lang={lang}>
+        {latest
+          ? `${latest.role}: ${[latest.before, latest.gap ? '…' : '', latest.after].filter(Boolean).join(' ')}`
+          : ''}
+      </p>
     </section>
   );
 }

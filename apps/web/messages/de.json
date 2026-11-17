@@ -466,10 +466,10 @@
     "pairSelected": "Ausgewählt: {text}.",
     "pairingStatus": "{count} von {total} Paaren verbunden.",
     "listenTo": "Anhören: {text}",
-    "cardsTurned": "{count} von {total} Karten umgedreht",
+    "cardsTurned": "{count} von {total, plural, one {# Karte} other {# Karten}} umgedreht",
     "flipEveryCard": "Dreh jede Karte um, um weiterzumachen.",
     "turnCard": "Karte umdrehen: {text}",
-    "gendersCorrect": "{count} von {total} Genera richtig.",
+    "gendersCorrect": "{count} von {total, plural, one {# Genus} other {# Genera}} richtig.",
     "withArticle": "mit Artikel",
     "withoutArticle": "ohne Artikel",
     "typeTheArticle": "Schreib den Artikel vor das Wort.",
@@ -482,8 +482,8 @@
     "replyN": "Antwort {n}"
   },
   "Genders": {
-    "masculine": "Maskulin",
-    "feminine": "Feminin",
+    "masculine": "Maskulinum",
+    "feminine": "Femininum",
     "neuter": "Neutrum"
   },
   "LessonKinds": {
