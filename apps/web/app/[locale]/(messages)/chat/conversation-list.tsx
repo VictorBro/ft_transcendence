@@ -11,7 +11,7 @@ import { UnreadBadge } from '@/components/unread-badge';
 
 /**
  * Every conversation, the latest message first. A new message moves its row
- * up here rather than through RefreshOn: a render costs four or five API calls
+ * up here rather than through RefreshOn: a render costs three or four API calls
  * per tab, and messages come far more often than friend events. Only one from
  * someone not listed yet refreshes the page, since a row needs their name and
  * avatar.

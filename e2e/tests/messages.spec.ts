@@ -10,7 +10,7 @@ import {
 } from '../support/console-guard';
 import { expectFitsTheScreen, expectPinned } from '../support/layout';
 import { liveConnection } from '../support/live';
-import { expect, placeCourse, SECOND_COURSE, test } from '../support/session';
+import { expect, ONBOARDED_COURSE, placeCourse, SECOND_COURSE, test } from '../support/session';
 
 const PHONE = { width: 360, height: 800 };
 
@@ -186,7 +186,9 @@ test('a long thread scrolls in its own pane on a desktop, and the screens fit a 
 
 /**
  * The widest header there is: German, the longest name, both courses in the
- * switcher (as layout.spec.ts measures it), and the count on Messages.
+ * switcher (as layout.spec.ts measures it), and the count on Messages. The
+ * switcher is on the course pages only, so it is measured there, then Messages
+ * is reached through its link.
  */
 test('in German, the header fits a phone with a count, which the conversation clears', async ({
   onboarded: reader,
@@ -198,7 +200,10 @@ test('in German, the header fits a phone with a count, which the conversation cl
   await reader.setViewportSize(PHONE);
   const violations = [watchConsole(reader), watchConsole(writer)];
   const live = [liveConnection(reader), liveConnection(writer)];
-  await Promise.all([reader.goto('/de/chat'), writer.goto(`/de/chat?with=${ids.onboarded}`)]);
+  await Promise.all([
+    reader.goto(`/de/learn/${ONBOARDED_COURSE.lang}`),
+    writer.goto(`/de/chat?with=${ids.onboarded}`),
+  ]);
   await Promise.all(live);
 
   const text = unique('hallo');
@@ -207,9 +212,12 @@ test('in German, the header fits a phone with a count, which the conversation cl
   await expect(messagesLink(reader, 'Nachrichten', 'Konto')).toHaveAccessibleName(
     'Nachrichten 1 ungelesene Nachricht',
   );
+  await expectFitsTheScreen(reader, `/de/learn/${ONBOARDED_COURSE.lang}`);
+
+  await messagesLink(reader, 'Nachrichten', 'Konto').click();
+  await expect(reader).toHaveURL(/\/de\/chat$/);
   await expectFitsTheScreen(reader, '/de/chat');
 
-  // The row is there by now, moved up or new.
   await reader
     .getByRole('navigation', { name: 'Unterhaltungen' })
     .getByRole('link', { name: account.displayName })
