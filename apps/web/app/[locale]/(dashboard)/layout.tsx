@@ -6,8 +6,9 @@ import { Shell, Wordmark } from '@/components/shell';
 import { TimeZoneSync } from '@/components/time-zone-sync';
 import { currentUser } from '@/lib/session';
 
-/** The course shell: pinned to the viewport from `lg`, where the pane below owns
- *  the scroll. Below it the panes stack and the page scrolls instead. */
+/** The app shell, for the course and Messages: pinned to the viewport from `lg`,
+ *  where the panes below own the scroll. Below it the panes stack and the page
+ *  scrolls instead. */
 export default async function DashboardLayout({ children }: { children: ReactNode }) {
   // Only reads the session: the pages decide what a signed-out visitor gets.
   const user = await currentUser();

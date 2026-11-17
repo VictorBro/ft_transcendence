@@ -5,7 +5,7 @@ import { loadCourses } from '@/lib/courses';
 
 /**
  * HeaderNav plus the course switcher. Separate because HeaderNav also serves
- * (main) and (mode), where this would fetch courses for anonymous visitors.
+ * (main), where this would fetch courses for anonymous visitors.
  */
 export async function DashboardNav() {
   const result = await loadCourses();

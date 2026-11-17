@@ -121,18 +121,19 @@
     "save": "Speichern",
     "cancel": "Abbrechen"
   },
-  "ModeLayout": {
-    "backToCourse": "Zurück zum Kurs"
-  },
-  "ChatPage": {
-    "title": "Chat",
-    "heading": "Mit deinem Tutor chatten",
-    "tutor": "Tutor",
-    "messageLabel": "Nachricht",
-    "messagePlaceholder": "Deine Nachricht …",
-    "sendMessage": "Nachricht senden",
-    "feedbackHeading": "Erhalte Rückmeldung zu deinen Nachrichten",
-    "feedbackIntro": "Die KI analysiert deine Nachrichten und gibt dir persönliche Rückmeldung."
+  "MessagesPage": {
+    "title": "Nachrichten",
+    "conversations": "Unterhaltungen",
+    "noConversations": "Noch keine Unterhaltungen. Schreib einem deiner <friends>Freunde</friends>.",
+    "choose": "Wähle eine Unterhaltung.",
+    "allMessages": "Alle Nachrichten",
+    "noMessages": "Noch keine Nachrichten.",
+    "loadEarlier": "Frühere Nachrichten laden",
+    "you": "Du",
+    "messageLabel": "Nachricht schreiben",
+    "send": "Senden",
+    "onlyFriends": "Nur Freunde können einander schreiben. Du kannst diese Unterhaltung weiterhin lesen.",
+    "unread": "{count, plural, one {# ungelesene Nachricht} other {# ungelesene Nachrichten}}"
   },
   "ErrorPage": {
     "heading": "Etwas ist schiefgelaufen",
@@ -252,6 +253,11 @@
       "requestNotFound": "Diese Anfrage ist nicht mehr offen",
       "notFound": "Diese Person ist nicht in deinen Freunden"
     },
+    "message": {
+      "notFriends": "Nur Freunde können einander schreiben",
+      "empty": "Schreib zuerst eine Nachricht",
+      "tooLong": "Eine Nachricht ist auf 1000 Zeichen begrenzt"
+    },
     "request": {
       "invalid": "Die Anfrage konnte nicht gelesen werden",
       "tooLarge": "Die Anfrage ist zu groß"
@@ -317,7 +323,8 @@
     "removeConfirm": "{name} aus deinen Freunden entfernen?",
     "cancel": "Abbrechen",
     "online": "Online",
-    "offline": "Offline"
+    "offline": "Offline",
+    "message": "Schreiben"
   },
   "UserPage": {
     "courses": "Kurse",

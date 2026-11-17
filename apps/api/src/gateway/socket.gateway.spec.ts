@@ -3,7 +3,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import type { Event } from 'socket.io';
 
 import { seriesValue } from '../../test/metrics.fixtures';
-import { wsConnections } from '../metrics/metrics';
+import { wsConnections, wsEvents } from '../metrics/metrics';
 import type { PresenceService } from '../presence/presence.service';
 import type { PrismaService } from '../prisma/prisma.service';
 import type { RedisService } from '../redis/redis.service';
@@ -17,6 +17,8 @@ import {
 import type { AppSocket, SocketServer, SocketsService } from './sockets.service';
 
 type Screen = (packet: Event, next: (error?: Error) => void) => void;
+
+const USER = 'a0000000-0000-4000-8000-000000000000';
 
 /** A handshake as the session middleware left it. */
 function fakeSocket(
@@ -54,8 +56,9 @@ function gatewayWith(
   // The session is still in Redis unless a test says otherwise.
   const exists = vi.fn().mockResolvedValue(1);
   const update = vi.fn().mockResolvedValue({});
-  // No friends, and no socket ever the first or the last, unless a test says otherwise.
+  // No friends, nothing unread, and no socket ever the first or the last, unless a test says otherwise.
   const findMany = vi.fn().mockResolvedValue([]);
+  const groupBy = vi.fn().mockResolvedValue([]);
   const sockets = { closeSession: vi.fn(), attach: vi.fn(), toUser: vi.fn() };
   const presence = {
     connected: vi.fn().mockResolvedValue(false),
@@ -63,16 +66,34 @@ function gatewayWith(
     isOnline: vi.fn().mockResolvedValue(new Set<string>()),
   };
   const gateway = new SocketGateway(
-    { user: { findUnique, update }, friendship: { findMany } } as unknown as PrismaService,
+    {
+      user: { findUnique, update },
+      friendship: { findMany },
+      message: { groupBy },
+    } as unknown as PrismaService,
     { client: { exists } } as unknown as RedisService,
     sockets as unknown as SocketsService,
     presence as unknown as PresenceService,
   );
-  return { gateway, findUnique, update, findMany, exists, sockets, presence };
+  return { gateway, findUnique, update, findMany, groupBy, exists, sockets, presence };
 }
 
-/** Lets the presence work that connecting and disconnecting start run to its end. */
+/** A connected socket of u1, who is friends with f1 (who asked) and f2 (who was asked). */
+function connectedSocket() {
+  const setup = gatewayWith();
+  setup.findMany.mockResolvedValue([
+    { requesterId: 'f1', addresseeId: 'u1' },
+    { requesterId: 'u1', addresseeId: 'f2' },
+  ]);
+  const { socket, emit } = fakeSocket({ userId: 'u1' });
+  socket.data = { userId: 'u1', sessionId: 's1' };
+  return { ...setup, socket, emit };
+}
+
+/** Lets the work that connecting and disconnecting start run to its end. */
 const settle = () => new Promise((resolve) => setImmediate(resolve));
+
+const unread = (counts: Record<string, number>) => ({ counts, at: expect.any(String) });
 
 describe('sameOrigin', () => {
   it('lets a client with no Origin through: it is not a browser', () => {
@@ -270,6 +291,136 @@ describe('SocketGateway screen', () => {
     gateway.handleDisconnect(socket);
   });
 
+  // A read goes out for each message received: it must not use up the sends.
+  it('keeps a window per event, unknown names sharing one, each told once', () => {
+    const { gateway } = gatewayWith();
+    const { socket, emit, screen } = fakeSocket({ userId: 'u1' });
+    gateway.handleConnection(socket);
+    const next = vi.fn();
+    const ack = vi.fn();
+
+    for (let i = 0; i < EVENT_LIMIT + 5; i += 1) {
+      screen(['dm:read', { userId: USER }], next);
+      screen([`nope${i}`, {}], next);
+    }
+    screen(['dm:send', { userId: USER, text: 'salut' }, ack], next);
+
+    const codes = emit.mock.calls.map(([, payload]) => (payload as { code: string }).code);
+    expect(codes.filter((code) => code === 'request.invalid')).toHaveLength(EVENT_LIMIT);
+    expect(codes.filter((code) => code === 'server.rateLimited')).toHaveLength(2);
+    // Every read of the window, then the send.
+    expect(next).toHaveBeenCalledTimes(EVENT_LIMIT + 1);
+    expect(ack).not.toHaveBeenCalled();
+    gateway.handleDisconnect(socket);
+  });
+
+  it('passes the parsed payload on, the ack still last', () => {
+    const { gateway } = gatewayWith();
+    const { socket, screen } = fakeSocket({ userId: 'u1' });
+    gateway.handleConnection(socket);
+    const next = vi.fn();
+    const ack = vi.fn();
+    const packet: Event = ['dm:send', { userId: USER.toUpperCase(), text: ' salut ' }, ack];
+
+    screen(packet, next);
+
+    expect(packet).toEqual(['dm:send', { userId: USER, text: 'salut' }, ack]);
+    expect(next).toHaveBeenCalledWith();
+    expect(ack).not.toHaveBeenCalled();
+    gateway.handleDisconnect(socket);
+  });
+
+  // Nest would hand the handler [payload, extra] in place of the payload.
+  it('refuses anything but one payload, with or without an ack', () => {
+    const { gateway } = gatewayWith();
+    const { socket, emit, screen } = fakeSocket({ userId: 'u1' });
+    gateway.handleConnection(socket);
+    const next = vi.fn();
+    const ack = vi.fn();
+
+    screen(['dm:read', { userId: USER }, 'extra'], next);
+    screen(['dm:read'], next);
+    screen(['dm:read', { userId: USER }, 'extra', ack], next);
+
+    expect(emit.mock.calls).toEqual([
+      ['app:error', { code: 'request.invalid' }],
+      ['app:error', { code: 'request.invalid' }],
+    ]);
+    expect(ack).toHaveBeenCalledExactlyOnceWith({ ok: false, code: 'request.invalid' });
+    expect(next).not.toHaveBeenCalled();
+    gateway.handleDisconnect(socket);
+  });
+
+  describe('an event sent with an ack', () => {
+    it('gets its ack answered, and no app:error, when unknown or invalid', () => {
+      const { gateway } = gatewayWith();
+      const { socket, emit, screen } = fakeSocket({ userId: 'u1' });
+      gateway.handleConnection(socket);
+      const next = vi.fn();
+      const acks = [vi.fn(), vi.fn(), vi.fn()];
+
+      screen(['nope', {}, acks[0]], next);
+      screen(['dm:send', { userId: 'nope', text: 'salut' }, acks[1]], next);
+      screen(['dm:send', { userId: USER, text: ' ' }, acks[2]], next);
+
+      expect(acks.map((ack) => ack.mock.calls)).toEqual([
+        [[{ ok: false, code: 'request.invalid' }]],
+        [[{ ok: false, code: 'request.invalid' }]],
+        // The rule's own code, as CodeValidationPipe answers a body.
+        [[{ ok: false, code: 'message.empty' }]],
+      ]);
+      expect(emit).not.toHaveBeenCalled();
+      expect(next).not.toHaveBeenCalled();
+      gateway.handleDisconnect(socket);
+    });
+
+    // The caller is waiting on it: only events without one are told once a window.
+    it('gets its ack answered every time it is over the limit', () => {
+      const { gateway } = gatewayWith();
+      const { socket, emit, screen } = fakeSocket({ userId: 'u1' });
+      gateway.handleConnection(socket);
+      const next = vi.fn();
+      const acks = [vi.fn(), vi.fn()];
+
+      for (let i = 0; i < EVENT_LIMIT; i += 1) {
+        screen(['dm:send', { userId: USER, text: 'salut' }, vi.fn()], next);
+      }
+      for (const ack of acks) screen(['dm:send', { userId: USER, text: 'salut' }, ack], next);
+
+      expect(acks.map((ack) => ack.mock.calls)).toEqual([
+        [[{ ok: false, code: 'server.rateLimited' }]],
+        [[{ ok: false, code: 'server.rateLimited' }]],
+      ]);
+      expect(emit).not.toHaveBeenCalled();
+      expect(next).toHaveBeenCalledTimes(EVENT_LIMIT);
+      gateway.handleDisconnect(socket);
+    });
+
+    it('gets its ack answered server.unexpected when screening throws', () => {
+      const error = vi.spyOn(Logger.prototype, 'error').mockImplementation(() => undefined);
+      const { gateway } = gatewayWith();
+      const { socket, emit, screen } = fakeSocket({ userId: 'u1' });
+      gateway.handleConnection(socket);
+      const ack = vi.fn();
+      const hostile = new Proxy(
+        {},
+        {
+          get: () => {
+            throw new Error('boom');
+          },
+        },
+      );
+
+      screen(['dm:read', hostile, ack], vi.fn());
+
+      expect(ack).toHaveBeenCalledExactlyOnceWith({ ok: false, code: 'server.unexpected' });
+      expect(emit).not.toHaveBeenCalled();
+      expect(error).toHaveBeenCalledWith('event dm:read failed: Error: boom');
+      error.mockRestore();
+      gateway.handleDisconnect(socket);
+    });
+  });
+
   it('counts the open connections', async () => {
     const { gateway } = gatewayWith();
     const { socket } = fakeSocket({ userId: 'u1' });
@@ -283,18 +434,6 @@ describe('SocketGateway screen', () => {
 });
 
 describe('SocketGateway presence', () => {
-  /** A connected socket of u1, who is friends with f1 (who asked) and f2 (who was asked). */
-  function connectedSocket() {
-    const setup = gatewayWith();
-    setup.findMany.mockResolvedValue([
-      { requesterId: 'f1', addresseeId: 'u1' },
-      { requesterId: 'u1', addresseeId: 'f2' },
-    ]);
-    const { socket, emit } = fakeSocket({ userId: 'u1' });
-    socket.data = { userId: 'u1', sessionId: 's1' };
-    return { ...setup, socket, emit };
-  }
-
   const update = (userId: string, status: string) => ({ userId, status, at: expect.any(String) });
 
   it("tells the friends' rooms when the first socket opens", async () => {
@@ -332,6 +471,7 @@ describe('SocketGateway presence', () => {
     expect(emit.mock.calls).toEqual([
       ['presence:update', update('f1', 'offline')],
       ['presence:update', update('f2', 'online')],
+      ['dm:unread', unread({})],
     ]);
     expect(sockets.toUser).not.toHaveBeenCalled();
   });
@@ -366,7 +506,7 @@ describe('SocketGateway presence', () => {
   // Unhandled, a rejection in work nobody awaits would take the process down.
   it('logs a Redis failure on either side and carries on', async () => {
     const error = vi.spyOn(Logger.prototype, 'error').mockImplementation(() => undefined);
-    const { gateway, socket, presence } = connectedSocket();
+    const { gateway, socket, emit, presence } = connectedSocket();
     presence.connected.mockRejectedValue(new Error('ECONNREFUSED'));
     presence.disconnected.mockRejectedValue(new Error('ECONNREFUSED'));
 
@@ -376,6 +516,63 @@ describe('SocketGateway presence', () => {
 
     expect(error).toHaveBeenCalledWith('presence on connect failed: Error: ECONNREFUSED');
     expect(error).toHaveBeenCalledWith('presence on disconnect failed: Error: ECONNREFUSED');
+    // The count settles on its own.
+    expect(emit.mock.calls).toEqual([['dm:unread', unread({})]]);
+    error.mockRestore();
+  });
+});
+
+describe('SocketGateway unread on connect', () => {
+  const out = { direction: 'out', event: 'dm:unread', outcome: 'ok' };
+
+  // The page was rendered a moment before: a message may have arrived since.
+  it('tells the new socket, and only it, what is unread, after where each friend stands', async () => {
+    const { gateway, socket, emit, groupBy, sockets } = connectedSocket();
+    groupBy.mockResolvedValue([{ senderId: 'f1', _count: { _all: 3 } }]);
+    const before = (await seriesValue(wsEvents, out)) ?? 0;
+
+    gateway.handleConnection(socket);
+    await settle();
+
+    expect(emit.mock.calls.map(([event]) => event)).toEqual([
+      'presence:update',
+      'presence:update',
+      'dm:unread',
+    ]);
+    expect(emit).toHaveBeenLastCalledWith('dm:unread', unread({ f1: 3 }));
+    expect(sockets.toUser).not.toHaveBeenCalled();
+    expect(await seriesValue(wsEvents, out)).toBe(before + 1);
+  });
+
+  // The tab must know it has heard, or it would wait for a first count.
+  it('sends it with nothing unread too', async () => {
+    const { gateway } = gatewayWith();
+    const { socket, emit } = fakeSocket({ userId: 'u1' });
+    socket.data = { userId: 'u1', sessionId: 's1' };
+
+    gateway.handleConnection(socket);
+    await settle();
+
+    expect(emit.mock.calls).toEqual([['dm:unread', unread({})]]);
+  });
+
+  // The friends still hear this user came online, and the socket where each stands.
+  it('logs a failed count and carries on', async () => {
+    const error = vi.spyOn(Logger.prototype, 'error').mockImplementation(() => undefined);
+    const { gateway, socket, emit, groupBy, presence, sockets } = connectedSocket();
+    groupBy.mockRejectedValue(new Error('P1001'));
+    presence.connected.mockResolvedValue(true);
+
+    gateway.handleConnection(socket);
+    await settle();
+
+    const online = { userId: 'u1', status: 'online', at: expect.any(String) };
+    expect(sockets.toUser.mock.calls).toEqual([
+      ['f1', 'presence:update', online],
+      ['f2', 'presence:update', online],
+    ]);
+    expect(emit.mock.calls.map(([event]) => event)).toEqual(['presence:update', 'presence:update']);
+    expect(error).toHaveBeenCalledWith('unread on connect failed: Error: P1001');
     error.mockRestore();
   });
 });

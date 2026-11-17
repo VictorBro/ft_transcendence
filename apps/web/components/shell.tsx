@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 
 /**
- * The frame every page renders in. The three route groups differ in four ways
+ * The frame every page renders in. The route groups differ in four ways
  * and no more: what sits left of the account nav, what the footer is, whether
  * the shell is pinned to the viewport, and the page itself. All four are props,
  * so the header markup, the gutter and the max width live here once.
@@ -22,7 +22,7 @@ import { Link } from '@/i18n/navigation';
 const CONTAINER = 'mx-auto w-full max-w-6xl px-4 sm:px-6';
 
 export interface ShellProps {
-  /** Left of the account nav: the wordmark, or a close button on a mode page. */
+  /** Left of the account nav: the wordmark, leading home or into the app. */
   brand: ReactNode;
   /** Right of it. Omitted where there is no session to report. */
   nav?: ReactNode;

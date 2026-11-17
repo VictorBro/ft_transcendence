@@ -5,7 +5,7 @@ export const privacyPolicy: LegalDocument = {
   title: 'Privacy Policy',
   description:
     'What ft_transcendence collects while you learn a language with it, why we collect it, how long we keep it, and how to get it back or deleted.',
-  lastUpdated: '2026-11-07',
+  lastUpdated: '2026-11-16',
   intro:
     'ft_transcendence is an AI-driven language learning platform. Teaching a language well means observing how you use it, so this service processes more about your learning behaviour than a typical website does. This policy explains exactly what that means in practice, written to be read rather than skimmed.',
   sections: [
@@ -24,7 +24,7 @@ export const privacyPolicy: LegalDocument = {
         'Account data: the email address and display name you provide at signup, a password stored only as an Argon2 hash, and, if you enable it, two-factor authentication settings. We never store a password in a form we can read.',
         'Learning data: the target language and proficiency level you select, answers submitted to exercises and assessments, the level our assessment engine infers from those answers, streaks, scores, and progress markers used by the gamification features.',
         'Conversation data: the prompts you send to the AI tutor and the responses it returns. In a language learning context these transcripts are the product, because correction and levelling both depend on your previous attempts, including the mistakes.',
-        'Interaction data: friend relationships, whether you are online right now (the number of app tabs you have open, with no history), the day you last opened the app while signed in (the day only, not the time, and only the latest), messages sent in chat or during a live session, and results of two-player practice rounds. Anything you send to another learner is visible to that learner.',
+        'Interaction data: friend relationships, whether you are online right now (the number of app tabs you have open, with no history), the day you last opened the app while signed in (the day only, not the time, and only the latest), and the messages you send to your friends, each stored with when it was read (which the sender is never shown). Anything you send to another learner is visible to that learner.',
         'Technical data: IP address, browser user agent, timestamps, and error traces captured by server logs. These are collected to operate the service and to detect abuse, not to build a profile of you.',
       ],
     },
@@ -50,16 +50,16 @@ export const privacyPolicy: LegalDocument = {
       id: 'retention',
       heading: '5. How long we keep data',
       paragraphs: [
-        'Account data is kept until you delete the account. Learning progress and assessment results are kept for the life of the account, because removing them would reset the levelling that makes the platform useful. A friendship or friend request is kept until either of you removes, declines or cancels it, or deletes the account.',
-        'AI conversation transcripts are kept for twelve months, then deleted automatically. Chat messages sent to other learners are kept for twelve months. Server logs containing IP addresses are kept for thirty days, then rotated out.',
-        'Deleting your account removes account data, learning data, and transcripts within thirty days. Messages you sent to another learner remain visible to that learner, detached from your profile, because they are part of a conversation you do not solely own. Backups are purged on their own rolling cycle, which completes within ninety days.',
+        'Account data is kept until you delete the account. Learning progress and assessment results are kept for the life of the account, because removing them would reset the levelling that makes the platform useful. A friendship or friend request is kept until either of you removes, declines or cancels it, or deletes the account. Messages are kept while both accounts in the conversation exist: removing a friend keeps the conversation readable by both of you, and deleting either account deletes it.',
+        'AI conversation transcripts are kept for twelve months, then deleted automatically. Server logs containing IP addresses are kept for thirty days, then rotated out.',
+        'Deleting your account removes account data, learning data, transcripts and your conversations with other learners within thirty days. Backups are purged on their own rolling cycle, which completes within ninety days.',
       ],
     },
     {
       id: 'sharing',
       heading: '6. Who else sees your data',
       paragraphs: [
-        'Other learners see your display name, avatar, and anything you send them. Only your friends see whether you are online right now, as a dot by your name: a learner who has only sent you a request does not, and no one sees when you were last online. Any signed-in learner can open your profile, which shows the languages you learn, your level in each and your current streak. They can also find you by your display name or among the recently active learners, and send you a friend request. You are among the recently active from the day you open the app while signed in until a week after that day. The list is sorted by display name and shows no date, but someone watching it can tell when you come back after more than a week away. Your friends list is shown only to you. Your email address, time zone, interface language and two-factor settings are never shown to other learners.',
+        'Other learners see your display name, avatar, and anything you send them. Only friends can message each other, and a conversation is visible to no one but the two people in it. Only your friends see whether you are online right now, as a dot by your name: a learner who has only sent you a request does not, and no one sees when you were last online. Any signed-in learner can open your profile, which shows the languages you learn, your level in each and your current streak. They can also find you by your display name or among the recently active learners, and send you a friend request. You are among the recently active from the day you open the app while signed in until a week after that day. The list is sorted by display name and shows no date, but someone watching it can tell when you come back after more than a week away. Your friends list is shown only to you. Your email address, time zone, interface language and two-factor settings are never shown to other learners.',
         'Outside the platform, data reaches only the infrastructure and model providers required to run it. We do not share data with advertisers, data brokers, or analytics networks. If we are ever compelled to disclose data by a lawful order, we will notify you unless prohibited from doing so.',
       ],
     },
@@ -118,7 +118,7 @@ export const termsOfService: LegalDocument = {
   title: 'Terms of Service',
   description:
     'The rules for using ft_transcendence: who may sign up, what counts as acceptable use, what AI-generated lessons are and are not, and how accounts end.',
-  lastUpdated: '2026-08-01',
+  lastUpdated: '2026-11-16',
   intro:
     'These terms are the agreement between you and the ft_transcendence maintainers. They are short because the service is small, and specific because an AI tutor and live sessions between strangers both create situations that generic terms do not cover.',
   sections: [
@@ -159,7 +159,7 @@ export const termsOfService: LegalDocument = {
       id: 'user-content',
       heading: '5. Your content',
       paragraphs: [
-        'You keep ownership of everything you write: exercise answers, chat messages, profile text. You grant us a non-exclusive licence to store, process, and display that content strictly to operate the service for you and for the learners you send it to. The licence ends when the content is deleted.',
+        'You keep ownership of everything you write: exercise answers, messages to your friends, profile text. You grant us a non-exclusive licence to store, process, and display that content strictly to operate the service for you and for the learners you send it to. The licence ends when the content is deleted.',
         'We do not train models on your content and we do not add it to the shared learning corpus. Do not post content you do not have the right to share, and do not paste secrets, credentials, or personal data belonging to other people into the tutor.',
       ],
     },

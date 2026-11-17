@@ -376,7 +376,7 @@ Labels are always bounded: never a user id, an email, a session id, a lesson id 
 | `ft_users` | gauge, read at scrape | none | `MetricsCollector`, cached 60 s |
 | `ft_active_users` | gauge, read at scrape | none | signed-in users seen by `AuthGuard` in the last 5 minutes |
 | `ft_ws_connections` | gauge | none | `SocketGateway`, accepted sockets only |
-| `ft_ws_events_total` | counter | `direction` (`in`, `out`); `event` (a known name, else `unknown`); `outcome` (`ok`, `invalid`, `rate_limited`) | `SocketGateway` (in, and the `app:error` it answers) and `SocketsService.toUser` (out) |
+| `ft_ws_events_total` | counter | `direction` (`in`, `out`); `event` (a known name, else `unknown`); `outcome` (`ok`, `invalid`, `rate_limited`) | `SocketGateway` (in, the `app:error` it answers, and the `presence:update` and `dm:unread` snapshots a new socket gets) and `SocketsService.toUser` (out) |
 | `ft_app_info` | gauge, always 1 | `version` (`APP_VERSION`) | `main.ts` |
 | Node defaults | various | none | `collectDefaultMetrics`: event loop lag, heap, GC, `process_*` |
 
