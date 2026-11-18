@@ -58,6 +58,18 @@ export const ERROR_CODES = [
   /** An unknown ref, or an answer of the wrong kind for its unit. */
   'attempt.invalidAnswer',
   'lesson.notFound',
+  /** The lesson discussion's LLM failed: no answer, a 4xx or 5xx, a timeout, a cut connection. */
+  'llm.unavailable',
+  /** The shared LLM key is over its quota: a 429 from the provider, or the API's global limit. */
+  'llm.rateLimited',
+  /** Over the learner's own limit, per minute or per day (discussion-limits.ts). */
+  'llm.tooManyMessages',
+  /** The LLM's safety filters refused this prompt, or stopped its answer. */
+  'llm.blocked',
+  /** The answer stopped before its end, or was empty. */
+  'llm.incomplete',
+  /** LLM_PROVIDER=disabled: this server runs no LLM. */
+  'llm.disabled',
   'placement.inProgress',
   'placement.invalidChoice',
   'placement.invalidSession',

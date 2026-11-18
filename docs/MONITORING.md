@@ -4,7 +4,7 @@ The Major module "Monitoring system with Prometheus and Grafana": Prometheus col
 from the app, the stores and the host, Grafana shows them on four dashboards behind its own
 login, and alert rules post to Discord through Alertmanager.
 Companions: [ARCHITECTURE.md](ARCHITECTURE.md) (where it sits in the stack),
-[DEPLOYMENT.md](DEPLOYMENT.md) (the server), [VERSIONS.md](VERSIONS.md) (pins, traps 4 to 8).
+[DEPLOYMENT.md](DEPLOYMENT.md) (the server), [VERSIONS.md](VERSIONS.md) (image sources and the Prometheus LTS line).
 
 | The subject asks for | Here |
 |---|---|
@@ -193,7 +193,7 @@ What learners do, and whether the question bank keeps up. Variable: `lang` (mult
 | People | accounts; signed in over the last 5 minutes; stored sessions |
 | Placement | exams per hour by event (started, completed, quit); completion rate over 24 h; questions served by source; levels whose pool ran out in the last hour |
 | Question bank | questions by level and source; the 10 thinnest cells, empty ones included; restocks by outcome; restock failures by reason; questions generated in 24 h |
-| LLM | provider and model; calls by outcome; latency p95; tokens per hour |
+| LLM | provider and model; calls by outcome; latency p95; tokens per hour; lesson discussion: its calls by outcome and its messages refused by a limit |
 
 "Questions served by source" shows `written`, `generated` and `seen_fallback`. The last one is a
 learner who has seen every question at that level and gets an old one again.
@@ -302,7 +302,7 @@ The webhook is a credential: anyone holding the URL can post to the channel. So:
 
 - It lives only in `.env`, as `DISCORD_WEBHOOK_URL`. Both templates keep it empty, and nothing in
   the repo holds a real one.
-- Alertmanager never expands environment variables in its config (VERSIONS.md trap 6), so the
+- Alertmanager never expands environment variables in its config (upstream issue #504), so the
   image's entrypoint writes the variable to a file on a tmpfs, mode 0600, unsets it, and the
   config reads the file with `webhook_url_file`. It never lands on a volume.
 - Empty means `silent.yml`, and the container log says
@@ -361,8 +361,9 @@ Labels are always bounded: never a user id, an email, a session id, a lesson id 
 | `http_request_duration_seconds` | histogram, 5 ms to 10 s | `method` (the 7 usual ones, else `OTHER`); `route` (the Express template with its prefix, such as `/api/courses/:lang/lessons/:id`, else `static` below 400 or `unmatched`); `status_code` (`499` when the client left) | `httpMetrics` middleware, first in `configureApp` |
 | `http_requests_in_flight` | gauge | none | the same middleware |
 | `ft_llm_requests_total` | counter | `provider`, `model`, `purpose`, `outcome` (`ok`, `unreachable`, `rate_limited`, `http_error`, `blocked`, `incomplete`, `invalid`) | `GeminiProvider.generateStructured` |
-| `ft_llm_request_duration_seconds` | histogram, 0.5 s to 60 s | `provider`, `model`, `purpose` | the same |
+| `ft_llm_request_duration_seconds` | histogram, 0.5 s to 90 s | `provider`, `model`, `purpose` | the same |
 | `ft_llm_tokens_total` | counter | `provider`, `model`, `purpose`, `type` (`prompt`, `output`, `total`) | the same, from the usage Gemini reports |
+| `ft_llm_discussion_limited_total` | counter | `limit` (`user_minute`, `user_day`, `global_minute`) | `countMessage` (discussion-limits.ts), a lesson discussion message refused before any LLM call |
 | `ft_llm_provider_info` | gauge, always 1 | `provider`, `model` (`none` for the fixture) | `createLlmProvider` |
 | `ft_question_restocks_total` | counter | `lang`, `level`, `category`, `status` (`busy`, `cooling`, `filled`, `empty`, `failed`) | `QuestionStockService` |
 | `ft_question_restock_failures_total` | counter | `category`, `reason` (`llm`, `llm_disabled`, `other`) | the same, when a fill throws |
@@ -389,7 +390,8 @@ set an alert or a panel reads exists at 0 from the start: `ft_placement_exams_to
 `ft_lesson_attempts_total` for every language and event; `ft_placement_draws_total`, `ft_question_restocks_total` and
 `ft_question_restock_inserted_total` for every cell of the bank, by source or status;
 `ft_placement_pool_exhausted_total` for every language and level;
-`ft_question_restock_failures_total` for every category and reason; `ft_llm_requests_total` and
+`ft_question_restock_failures_total` for every category and reason; `ft_llm_discussion_limited_total`
+for every limit; `ft_llm_requests_total` and
 `ft_llm_tokens_total` for every purpose, outcome and token type of the configured Gemini model;
 `ft_ws_events_total` for every server event going out and every client event (and `unknown`)
 coming in, by outcome;
@@ -409,7 +411,7 @@ down".
 |---|---|
 | Prometheus itself | `up`, scrape durations, active series, TSDB size, rule evaluation failures, Alertmanagers found |
 | Alertmanager | alerts held, notifications sent and failed per integration |
-| Caddy | request duration, time to first byte and in-flight requests by status code. No path label. Every query filters on `handler="subroute"`, the one count per request on the app's site (VERSIONS.md trap 8). An open WebSocket is one request in flight for its whole life, and its lifetime lands in the duration histogram when it closes |
+| Caddy | request duration, time to first byte and in-flight requests by status code. No path label. Every query filters on `handler="subroute"`, the one count per request on the app's site: Caddy 2.11 counts a request once per route, under its first handler, and `scripts/check-monitoring.sh` fails if that series disappears after an upgrade. An open WebSocket is one request in flight for its whole life, and its lifetime lands in the duration histogram when it closes |
 | node-exporter | CPU by mode, load, memory and swap, root filesystem size and free space, disk I/O time |
 | postgres-exporter | `pg_up`, backends, `max_connections`, connections by state, commits and rollbacks, cache hits and reads, deadlocks, database size |
 | redis-exporter | `redis_up`, memory, clients, commands, keys, keyspace hits and misses, AOF last write status, stored sessions (`redis_keys_count{key="sess:*"}`) |
@@ -445,7 +447,7 @@ run the same ones.
 
 | Setting | Value | Why |
 |---|---|---|
-| Admin password | from `.env`; the entrypoint refuses empty or `admin` | Grafana would otherwise fall back to `admin`/`admin` (VERSIONS.md trap 4) |
+| Admin password | from `.env`; the entrypoint refuses empty or `admin` | Grafana skips an empty `GF_` variable and would otherwise keep `admin`/`admin` |
 | `allow_sign_up`, `allow_org_create` | false | the admin is the only account |
 | `[auth.anonymous] enabled` | false | no view without a login |
 | Brute-force protection | 5 failures in 5 minutes lock that client IP for 5 minutes, never the user name | a lock on `admin` would let anyone keep the only account out; Caddy overwrites `X-Real-IP`, so the IP cannot be faked with a header |

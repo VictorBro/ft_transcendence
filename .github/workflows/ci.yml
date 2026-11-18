@@ -27,10 +27,10 @@ env:
   TURBO_TELEMETRY_DISABLED: "1"
 
 jobs:
-  # docs/VERSIONS.md trap 1. npm `latest` for typescript is 7.x, which has no
-  # decorator support (NestJS will not compile) and violates the
-  # typescript-eslint peer range (<6.1.0). One `pnpm up --latest` reintroduces
-  # it silently, so this is a first-class gate rather than a comment in a doc.
+  # docs/VERSIONS.md, held back: TypeScript. npm `latest` for typescript is 7.x,
+  # which ships no compiler API until 7.1: typescript-eslint (peer <6.1.0),
+  # @nestjs/cli and Next's type check all need it. One `pnpm up --latest`
+  # reintroduces it silently, so this is a gate rather than a comment in a doc.
   ts-version:
     name: typescript is pinned at 6.0.3
     runs-on: ubuntu-24.04
@@ -101,7 +101,7 @@ jobs:
     # which costs a few seconds of container start.
     services:
       postgres:
-        image: pgvector/pgvector:0.8.6-pg18-trixie
+        image: pgvector/pgvector:0.8.7-pg18-trixie
         env:
           POSTGRES_USER: ft
           POSTGRES_PASSWORD: ft_local_dev
@@ -116,7 +116,7 @@ jobs:
 
       # Sessions live here, so the auth suite needs it as much as the database.
       redis:
-        image: redis:8-alpine
+        image: redis:8.10.3-alpine
         ports:
           - 6379:6379
         options: >-
@@ -139,10 +139,10 @@ jobs:
     steps:
       - uses: actions/checkout@v7.0.1
 
-      - uses: docker/setup-buildx-action@v4.2.0
+      - uses: docker/setup-buildx-action@v4.4.1
 
       - name: Build the ci stage
-        uses: docker/build-push-action@v7.3.0
+        uses: docker/build-push-action@v7.4.0
         with:
           context: .
           file: apps/${{ matrix.app }}/Dockerfile
@@ -169,7 +169,7 @@ jobs:
 
       - name: Upload coverage
         if: always()
-        uses: actions/upload-artifact@v7.0.1
+        uses: actions/upload-artifact@v7.0.2
         with:
           name: coverage-${{ matrix.app }}
           path: coverage

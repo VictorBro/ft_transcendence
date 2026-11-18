@@ -77,15 +77,23 @@ Grafana, with the monitoring dashboards and alerts, is at
 <https://localhost/grafana>: user `admin`, and the password `make` generated is in
 `.env` (`grep GRAFANA_ADMIN_PASSWORD .env`).
 
+The lesson tutor and the question generator use Gemini. With the default
+`LLM_PROVIDER=fixture` they call nothing: the tutor gives one canned answer and
+no question is generated. To use Gemini, create a key at
+<https://aistudio.google.com/apikey>, set `LLM_PROVIDER=gemini` and
+`LLM_API_KEY=<your key>` in `.env`, then run `make` again. The key goes in
+`.env` only, which git ignores. The tutor's rate limits are in `.env.example`.
+
 For day-to-day development use `make dev`, which starts the same stack with hot
 reload. `make help` lists every target.
 
 ### Browser support
 
 The app is tested on desktop Chromium, Firefox and WebKit (the engine behind
-Safari): every Playwright suite runs on all three, in CI (a job and a stack per
-engine) and in `make`, except the API restart run (`e2e/tests/restart.spec.ts`),
-which restarts the API once and so runs on Chromium only. Run one engine with
+Safari): every Playwright suite runs on all three in CI (two jobs and two stacks
+per engine) and with `make playwright-all`, except the API restart run
+(`e2e/tests/restart.spec.ts`), which restarts the API once and so runs on
+Chromium only. `make` runs Chromium alone to stay quick. Run one engine with
 `pnpm --filter @ft/e2e run test:e2e --project=firefox`.
 
 Known limits, once the lessons land (#146 to #151):

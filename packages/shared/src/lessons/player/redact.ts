@@ -56,6 +56,25 @@ export const paths = {
     `${page.pageId}/${itemId}#c:${id}`,
 };
 
+/**
+ * The expressions of a functions lesson found in a dialogue line, as the
+ * line writes them, in their order: "Bonjour, madame. Vous désirez ?"
+ * gives ["Vous désirez"]. The case and the closing punctuation of an
+ * expression do not count, and two marks never overlap.
+ */
+export function expressionsIn(text: string, expressions: { text: string }[]): string[] {
+  const lower = text.toLowerCase();
+  const spans: [number, number][] = [];
+  for (const e of expressions) {
+    const needle = e.text.replace(/[\s.!?…]+$/u, '').toLowerCase();
+    const at = needle ? lower.indexOf(needle) : -1;
+    if (at >= 0 && !spans.some(([s, end]) => at < end && at + needle.length > s)) {
+      spans.push([at, at + needle.length]);
+    }
+  }
+  return spans.sort((a, b) => a[0] - b[0]).map(([s, end]) => text.slice(s, end));
+}
+
 /** Sorts a list by its elements' refs: the shuffle of one attempt. */
 const byRef = <T extends { ref: Ref }>(list: T[]) =>
   [...list].sort((a, b) => (a.ref < b.ref ? -1 : a.ref > b.ref ? 1 : 0));
@@ -125,6 +144,7 @@ function itemView(plan: LessonPlan, page: PlanPage, item: Item, ref: RefOf): Ite
             ref: card(id),
             text: t.teachingForm,
             translations: t.translations[tongue] ?? [],
+            front: t.examPrompt?.[tongue] ?? (t.translations[tongue] ?? []).join(', '),
             pronunciation: t.pronunciation,
             example: {
               text: t.context.sentence,
@@ -213,7 +233,8 @@ function itemView(plan: LessonPlan, page: PlanPage, item: Item, ref: RefOf): Ite
         }),
       };
     }
-    case 'function_dialogue':
+    case 'function_dialogue': {
+      const { expressions } = plan.brief as FunctionsBrief;
       return {
         type: item.type,
         lines: item.lines.map((l) => {
@@ -223,11 +244,13 @@ function itemView(plan: LessonPlan, page: PlanPage, item: Item, ref: RefOf): Ite
             role: r.label,
             roleTranslation: inMotherTongue(r.translation, tongue),
             text: l.text,
+            highlights: expressionsIn(l.text, expressions),
             translation: inMotherTongue(l.translation, tongue),
             note: l.note,
           };
         }),
       };
+    }
     case 'function_gender_select':
       return { type: item.type, units: units('choice', 'keep') };
     case 'function_matching':

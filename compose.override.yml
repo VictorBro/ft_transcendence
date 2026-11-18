@@ -166,9 +166,13 @@ services:
       # identity github.com gets, which matters when the agent holds keys for
       # more than one account. ssh requires mode 0700 on this directory.
       - ssh-config:/home/node/.ssh
-      # Playwright browser downloads (~/.cache/ms-playwright). Keeps `make all`
-      # from re-downloading the three browsers (~500 MB) after every rebuild.
-      - node-cache:/home/node/.cache
+      # Playwright browser downloads (~/.cache/ms-playwright). Keeps `make` and
+      # `make playwright-all` from re-downloading the browsers after every
+      # rebuild. Named for the image's Debian release: Playwright keeps one
+      # build per browser revision whatever the distro, so a WebKit downloaded
+      # on bookworm would stay and fail to start on trixie. A new release, a
+      # new name.
+      - node-cache-trixie:/home/node/.cache
       # docker-outside-of-docker: the CLI in this image drives the host daemon.
       # Mounted at docker-HOST.sock, not docker.sock: the host socket is owned
       # by root and a group that does not exist in this image, so docker-init.sh
@@ -213,4 +217,4 @@ volumes:
   vscode-extensions:
   gh-config:
   ssh-config:
-  node-cache:
+  node-cache-trixie:

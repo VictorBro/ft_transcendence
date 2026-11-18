@@ -178,6 +178,8 @@ export const ItemViewSchema = z.discriminatedUnion('type', [
         /** The teaching form: un livre. */
         text: z.string(),
         translations: z.array(z.string()),
+        /** The front of the card: the word's exam prompt with its article ("a book"), else its translations. */
+        front: z.string(),
         pronunciation: z.string(),
         example: Example,
       }),
@@ -237,6 +239,8 @@ export const ItemViewSchema = z.discriminatedUnion('type', [
         role: z.string(),
         roleTranslation: z.string(),
         text: z.string(),
+        /** The lesson's expressions in the line, as they appear in the text, to mark. */
+        highlights: z.array(z.string()),
         translation: z.string(),
         note: Localized,
       }),
@@ -360,6 +364,8 @@ export const UnitFeedbackSchema = z.strictObject({
   /** A gender row: the word's teaching form and translation. */
   form: z.string().optional(),
   translation: z.string().optional(),
+  /** A typed gap: its reference card. */
+  card: RefSchema.optional(),
 });
 export type UnitFeedback = z.infer<typeof UnitFeedbackSchema>;
 
@@ -397,6 +403,10 @@ export const ResultsSchema = z.strictObject({
       yours: z.string().nullable(),
       gender: GenderSchema.optional(),
       answer: z.string(),
+      /** The answer and yours are interface words (a gender row): shown in the interface language. */
+      interfaceAnswer: z.boolean().optional(),
+      /** Every right gender: of a gender row, or of a plurale tantum answered with "des". */
+      rightGenders: z.array(GenderSchema).optional(),
       accepted: z.string().optional(),
       outcome: AnswerOutcomeSchema,
       points: z.number().nonnegative(),

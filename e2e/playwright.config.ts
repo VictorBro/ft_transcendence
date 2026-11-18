@@ -22,9 +22,21 @@ const baseURL = process.env.E2E_BASE_URL ?? 'https://localhost';
 // playwright).
 const restartRun = Boolean(process.env.E2E_RESTART);
 
+// CI runs each browser as two jobs, one per part (see the e2e workflow):
+// lesson.spec.ts alone takes about half of the suite's time, so it is one part
+// and every other spec the other. A new spec lands in `rest` without anyone
+// listing it. Unset, everything runs.
+const part = process.env.E2E_PART;
+if (part !== undefined && part !== 'lesson' && part !== 'rest') {
+  throw new Error(`E2E_PART must be lesson or rest, not ${part}`);
+}
+const LESSON_SPEC = '**/lesson.spec.ts';
+
 export default defineConfig({
   testDir: './tests',
   outputDir: './test-results',
+  ...(part === 'lesson' ? { testMatch: LESSON_SPEC } : {}),
+  ...(part === 'rest' ? { testIgnore: LESSON_SPEC } : {}),
   fullyParallel: true,
   grep: restartRun ? /@restart/ : undefined,
   grepInvert: restartRun ? undefined : /@restart/,

@@ -267,6 +267,8 @@ export const LessonCardSchema = z
     theme: ThemeSchema.nullable(),
     title: LessonTitleSchema,
     summary: LessonSummarySchema,
+    /** Its files exist and validate (set by the seed). A lesson not ready cannot be played. */
+    ready: z.boolean(),
     status: LessonStatusSchema,
     /** The best score. Null, like day and finishedAt, for a lesson never started. */
     score: ScoreSchema.nullable(),
@@ -287,6 +289,18 @@ export const LessonCardSchema = z
     path: ['status'],
   });
 export type LessonCard = z.infer<typeof LessonCardSchema>;
+
+/**
+ * A row of the all lessons page: its status, or soon while the lesson is not
+ * ready, whatever result it may have. The status filter and the status groups
+ * read this, so a lesson not ready is never Not started.
+ */
+export const LESSON_ROW_STATUSES = [...LESSON_STATUSES, 'soon'] as const;
+export type LessonRowStatus = (typeof LESSON_ROW_STATUSES)[number];
+
+export function rowStatus(card: Pick<LessonCard, 'ready' | 'status'>): LessonRowStatus {
+  return card.ready ? card.status : 'soon';
+}
 
 const countSchema = z.number().int().min(0);
 
@@ -366,7 +380,7 @@ export const LessonQuerySchema = z.object({
     // Cut by code point, so an emoji is never split, and trim again after the cut.
     .transform((q) => [...q.trim()].slice(0, LESSON_QUERY_MAX).join('').trim())
     .catch(''),
-  status: commaList(LESSON_STATUSES),
+  status: commaList(LESSON_ROW_STATUSES),
   kind: commaList(LESSON_KINDS),
   topic: commaList(TOPICS),
   theme: commaList(THEMES),
@@ -407,3 +421,50 @@ export const FinishResultSchema = z.object({
   newAchievements: z.array(AchievementCodeSchema),
 });
 export type FinishResult = z.infer<typeof FinishResultSchema>;
+
+/**
+ * The limits of a lesson discussion (#150):
+ * - message: the learner's new message, in characters;
+ * - historyTurns: how many earlier turns the browser sends back, the oldest dropped first;
+ * - turnText: one earlier turn of the tutor's, in characters. A tutor's answer is capped
+ *   at 1,000 tokens, a few thousand characters, so this holds one with room to spare.
+ *   An earlier turn of the learner's was a message once, so it keeps `message`.
+ */
+export const DISCUSSION_LIMITS = { message: 500, historyTurns: 10, turnText: 6000 } as const;
+
+/** One earlier turn of the discussion: the learner's ("user") or the tutor's ("assistant"). */
+export const DiscussionTurnSchema = z
+  .object({
+    role: z.enum(['user', 'assistant'], 'request.invalid'),
+    text: z
+      .string('request.invalid')
+      .min(1, 'request.invalid')
+      .max(DISCUSSION_LIMITS.turnText, 'request.invalid'),
+  })
+  // Without this, 10 "user" turns of 6,000 characters would cost the key some 15k
+  // tokens a message: only a hand-made request sends one, but it would pass.
+  .refine((turn) => turn.role === 'assistant' || turn.text.length <= DISCUSSION_LIMITS.message, {
+    message: 'request.invalid',
+    path: ['text'],
+  });
+
+/**
+ * The body of POST /courses/:lang/lessons/:id/discussion.
+ *
+ * The server keeps nothing between two messages, so the browser sends the
+ * earlier turns back each time. No field holds the learner's mistakes: for
+ * "Explain my mistakes" the server reads them from the attempt itself.
+ *
+ * Every failure is request.invalid: the window (#151) checks the same
+ * limits before sending, so only a hand-made request gets here.
+ */
+export const LessonDiscussionSchema = z.object({
+  attemptId: z.uuid('request.invalid'),
+  message: z
+    .string('request.invalid')
+    .trim()
+    .min(1, 'request.invalid')
+    .max(DISCUSSION_LIMITS.message, 'request.invalid'),
+  history: z.array(DiscussionTurnSchema).max(DISCUSSION_LIMITS.historyTurns, 'request.invalid'),
+});
+export type LessonDiscussionInput = z.infer<typeof LessonDiscussionSchema>;

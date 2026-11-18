@@ -73,13 +73,13 @@ import { LlmError, LlmFailure, LlmProvider, StructuredRequest } from "./llm.prov
 
 ```ts
 const API = "https://generativelanguage.googleapis.com/v1beta/models";
-const TIMEOUT_MS = 60_000;
+const TIMEOUT_MS = 90_000;
 ```
 
 - `API` : l'adresse de base. À chaque appel, on ajoute `/<modèle>:generateContent`, ce qui donne par exemple :
   `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent`
   `generateContent` est le nom de l'opération de Google : « génère une réponse ».
-- `TIMEOUT_MS` : on attend au maximum 60 secondes. `60_000` vaut exactement `60000` ; le `_` n'a aucun effet, il sépare seulement les milliers pour la lecture (comme `1'000'000` en C++14).
+- `TIMEOUT_MS` : on attend au maximum 90 secondes. `90_000` vaut exactement `90000` ; le `_` n'a aucun effet, il sépare seulement les milliers pour la lecture (comme `1'000'000` en C++14).
 
 ```ts
 const OUTCOMES: ("ok" | Exclude<LlmFailure, "disabled">)[] = [
@@ -94,7 +94,7 @@ const OUTCOMES: ("ok" | Exclude<LlmFailure, "disabled">)[] = [
 const TOKEN_TYPES = ["prompt", "output", "total"] as const;
 ```
 
-- `OUTCOMES` : toutes les issues possibles d'un appel, telles que les métriques les comptent : `ok`, ou la raison d'une `LlmError`. `Exclude<LlmFailure, 'disabled'>` est le type `LlmFailure` **sans** `'disabled'` : seul le provider de test (la fixture) utilise cette raison, Gemini jamais.
+- `OUTCOMES` : toutes les issues possibles d'un appel, telles que les métriques les comptent : `ok`, ou la raison d'une `LlmError`. `Exclude<LlmFailure, 'disabled'>` est le type `LlmFailure` **sans** `'disabled'` : seuls la fixture et `DisabledProvider` (`LLM_PROVIDER=disabled`) utilisent cette raison, Gemini jamais.
 - `TOKEN_TYPES` : les trois nombres de tokens que Google renvoie, sous les noms qu'utilisent les métriques. `as const` fige le tableau : TypeScript connaît les trois textes exacts, pas seulement « des `string` ».
 
 Les deux listes servent au constructeur (section 5).
@@ -284,7 +284,7 @@ const response = await fetch(`${API}/${model}:generateContent`, {
 | `'content-type': 'application/json'`  | On prévient le serveur que le corps est du JSON.                                              |
 | `'x-goog-api-key': apiKey`            | La clé API. Elle est dans un **header**, pas dans l'URL.                                      |
 | `body`                                | Le corps : `requestBody(request)` construit l'objet, `JSON.stringify` le transforme en texte. |
-| `signal: AbortSignal.timeout(60_000)` | Annule automatiquement la requête au bout de 60 s.                                            |
+| `signal: AbortSignal.timeout(90_000)` | Annule automatiquement la requête au bout de 90 s.                                            |
 
 **Pourquoi la clé dans un header et pas dans l'URL ?** Avant (#69), l'URL contenait `?key=...`. Une URL finit souvent dans des logs (proxy, serveur, messages d'erreur). Un header beaucoup moins. C'est plus sûr.
 
@@ -450,7 +450,7 @@ Gemini reçoit ce schéma et **contraint sa génération** pour le respecter : l
 
 Gemini ne voit jamais ces règles via le schéma. C'est le **prompt** qui les lui demande en texte, et c'est `parseReply` (le `safeParse`) qui les **vérifie** au retour. C'est pour ça que les deux existent : le schéma JSON guide la forme, la validation Zod vérifie tout.
 
-(Vérifié avec Zod 4.4.3, la version du projet : `.length(5)` devient bien `minItems/maxItems: 5`, et les `.refine` disparaissent.)
+(Vérifié avec Zod 4.6.7, la version du projet : `.length(5)` devient bien `minItems/maxItems: 5`, et les `.refine` disparaissent.)
 
 ---
 

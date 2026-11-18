@@ -1,7 +1,7 @@
 # Technical Plan
 
 Status: **proposed**, pending team review.
-Companions: [SUBJECT_SUMMARY.md](SUBJECT_SUMMARY.md) (requirements), [VERSIONS.md](VERSIONS.md) (pins + version traps).
+Companions: [SUBJECT_SUMMARY.md](SUBJECT_SUMMARY.md) (requirements), [VERSIONS.md](VERSIONS.md) (what moves together, what is held back).
 
 Product: **AI-driven foreign language learning platform**. AI-generated learning content,
 AI-assessed proficiency levelling, single-player practice, live two-player sessions over WebSockets.
@@ -41,7 +41,7 @@ ft_transcendence/
 │   ├── devcontainer.json          # → ../compose.yml + ../compose.override.yml, service: workspace
 │   └── Dockerfile                 # workspace tooling image: node, pnpm, gh, docker CLI
 ├── .github/
-│   ├── workflows/                 # ci.yml · e2e.yml · images.yml · hygiene.yml (§5)
+│   ├── workflows/                 # ci.yml · e2e.yml · images.yml · hygiene.yml · devcontainer.yml (§5)
 │   ├── CODEOWNERS
 │   └── pull_request_template.md
 ├── apps/
@@ -86,7 +86,7 @@ Both apps use identical stage names:
 
 | Stage | Contents | Used by |
 |---|---|---|
-| `base` | `node:24.18-bookworm-slim`, corepack, pnpm | |
+| `base` | `node:24.22.3-trixie-slim`, pnpm from npm | |
 | `deps` | `pnpm install --frozen-lockfile`, BuildKit cache mounts | |
 | `dev` | full deps, source bind-mounted, `pnpm dev` | compose.override |
 | `ci` | deps + source, runs tests, emits coverage | e2e/test jobs in CI (§5) |
@@ -111,7 +111,7 @@ Rules:
 ```
 
 Only caddy publishes a port; everything else is internal, which the subject explicitly permits.
-Database image: `pgvector/pgvector:0.8.6-pg18-trixie` (plain `postgres` has no pgvector).
+Database image: `pgvector/pgvector:0.8.7-pg18-trixie` (plain `postgres` has no pgvector).
 
 ### Devcontainer
 
@@ -153,7 +153,7 @@ make clean
 
 ---
 
-## 5. CI (four workflows)
+## 5. CI (five workflows)
 
 **Decision, hybrid:** fast checks run natively on runners; anything that executes code runs in
 the `ci` Docker stage for environment parity. This keeps the ci stage from the original design
@@ -161,10 +161,11 @@ where it matters and keeps feedback fast where it doesn't.
 
 | Workflow | Trigger | Jobs |
 |---|---|---|
-| `ci.yml` | PR, push | Native: format check, lint, typecheck, TS-version assert (trap 1). Docker `ci` stage: unit tests + coverage, Supertest e2e (compose db). Then build. |
-| `e2e.yml` | PR, push | Prod-target compose up, then Playwright: user flows, **console gate**, **legal pages** (`/privacy`, `/terms` return 200 with real content). |
+| `ci.yml` | PR, push | Native: format check, lint, typecheck, TS-version assert (VERSIONS.md, held back: TypeScript). Docker `ci` stage: unit tests + coverage, Supertest e2e (compose db). Then build. |
+| `e2e.yml` | PR, push | Two jobs per browser (`lesson`, `rest`), each with a prod-target compose up, then Playwright: user flows, **console gate**, **legal pages** (`/privacy`, `/terms` return 200 with real content). |
 | `hygiene.yml` | PR, push | gitleaks, commitlint, `.env.example` drift, fail if `.env` staged, `prisma migrate diff`. |
 | `images.yml` | push to any branch; `v*` tags | Multi-arch build on every commit; tags per table below. |
+| `devcontainer.yml` | PR touching `.devcontainer/`, `.nvmrc`, `package.json` | Builds the devcontainer image; Node and pnpm must match the pins. |
 
 ### Multi-arch (`images.yml`)
 
@@ -236,7 +237,7 @@ truth, so the two documents cannot disagree.
 1. **Foundation**: pnpm workspace, Turborepo, tsconfig/eslint/prettier packages, Makefile.
 2. **Containers**: Dockerfiles, three compose files, Caddy TLS, pgvector image, Redis.
 3. **Devcontainer**: workspace service + image, VS Code extensions pinned.
-4. **CI**: all four workflows green on hello-world before any feature work; then enable the
+4. **CI**: every workflow green on hello-world before any feature work; then enable the
    `main` ruleset (§5 PR policy) so the rules exist before the first real PR.
 5. **Vertical slice**: auth (argon2, httpOnly cookie, guard) → one Prisma model + migration →
    one streaming AI endpoint on `fixture` → one socket.io room (join/leave/reconnect) → Next
@@ -255,9 +256,9 @@ The team clones the slice pattern per feature instead of inventing five differen
 
 | Risk | Mitigation |
 |---|---|
-| `pnpm up --latest` pulls TS 7 | Exact pin + CI version assert (VERSIONS.md trap 1) |
+| `pnpm up --latest` pulls TS 7 | Exact pin + CI version assert (VERSIONS.md, held back: TypeScript) |
 | Schema and migrations drift apart | CI `migrate diff` on every PR |
-| Node 26 LTS lands mid-project | Stay on 24; deliberate upgrade later (trap 3) |
+| Node 26 LTS lands mid-project | Stay on 24 until a stable Next fixes its Node 26 regression (VERSIONS.md, held back: Node) |
 | Hydration warnings trip console gate | Gate live from day one; surfaces at the causing commit |
 | Slow HMR on bind mounts | Watch during step 5. Fallback: `apps/web` to Vite. **Costs the SSR minor point (16 → 15)**; budget still clears 14. |
 | LLM spend | Cache, per-user budget and a global ceiling, see PRODUCT_ARCHITECTURE.md §5 |

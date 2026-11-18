@@ -3,13 +3,21 @@ import { QUESTION_CATEGORIES } from '@ft/shared';
 import { z } from 'zod';
 
 import { llmRequestDuration, llmRequests, llmTokens } from '../metrics/metrics';
-import { LlmError, LlmFailure, LlmProvider, StructuredRequest } from './llm.provider';
+import {
+  LlmError,
+  LlmFailure,
+  LlmProvider,
+  LlmPurpose,
+  StreamRequest,
+  StructuredRequest,
+} from './llm.provider';
 
 // The base address of the Gemini API. The model name and ":generateContent" are added per call.
 const API = 'https://generativelanguage.googleapis.com/v1beta/models';
-// How long we wait for Gemini before giving up: 60 seconds. "60_000" is just 60000,
-// the "_" only makes the number easier to read.
-const TIMEOUT_MS = 60_000;
+// How long we wait for Gemini before giving up: 90 seconds. "90_000" is just 90000,
+// the "_" only makes the number easier to read. A free key waited 73 to 83 s for
+// its first word on 2026-11-18, where 2 to 40 s was usual before.
+const TIMEOUT_MS = 90_000;
 // How a call can end, as the metrics count it: "ok", or the reason of its LlmError.
 // Exclude<...> takes 'disabled' out of the reasons: only the fixture uses it.
 const OUTCOMES: ('ok' | Exclude<LlmFailure, 'disabled'>)[] = [
@@ -21,8 +29,17 @@ const OUTCOMES: ('ok' | Exclude<LlmFailure, 'disabled'>)[] = [
   'incomplete',
   'invalid',
 ];
+// The finish reasons that mean Gemini's filters stopped the answer itself: asking
+// the same thing again meets the same filter, so they are "blocked", not "incomplete".
+const FILTERED = new Set(['SAFETY', 'PROHIBITED_CONTENT', 'BLOCKLIST', 'SPII', 'RECITATION']);
 // The token counts Gemini reports, as the metrics name them.
 const TOKEN_TYPES = ['prompt', 'output', 'total'] as const;
+// Every purpose a call can have: one per question category, and the lesson discussion.
+// "as const" keeps each text's exact value, so TypeScript accepts it as an LlmPurpose.
+const PURPOSES: LlmPurpose[] = [
+  ...QUESTION_CATEGORIES.map((category) => `question-batch:${category}` as const),
+  'lesson-discussion',
+];
 
 /**
  * The parts of Gemini's JSON answer that we read. Gemini sends more fields; we ignore them.
@@ -36,6 +53,8 @@ const TOKEN_TYPES = ['prompt', 'output', 'total'] as const;
  *   - content.parts: the text of the answer, possibly cut into several pieces.
  *     "thought" is true on a piece that is the model's reasoning, not the answer.
  * - usageMetadata: how many tokens the call used (for the logs, and the bill).
+ *   thoughtsTokenCount, the thinking, is billed as output too; Gemini leaves it out
+ *   when the model did not think.
  */
 interface GeminiReply {
   promptFeedback?: { blockReason?: string };
@@ -46,6 +65,7 @@ interface GeminiReply {
   usageMetadata?: {
     promptTokenCount?: number;
     candidatesTokenCount?: number;
+    thoughtsTokenCount?: number;
     totalTokenCount?: number;
   };
 }
@@ -69,8 +89,7 @@ export class GeminiProvider implements LlmProvider {
     // Every purpose, outcome and token type starts at 0. A counter that appears at 1
     // hides its first call from Prometheus' rate(), so the first failures would not
     // count, nor the first call's tokens.
-    for (const category of QUESTION_CATEGORIES) {
-      const purpose = `question-batch:${category}`;
+    for (const purpose of PURPOSES) {
       for (const outcome of OUTCOMES) {
         llmRequests.inc({ provider: 'gemini', model: options.model, purpose, outcome }, 0);
       }
@@ -145,15 +164,128 @@ export class GeminiProvider implements LlmProvider {
     // "as GeminiReply" tells TypeScript to treat it as GeminiReply. It checks nothing,
     // which is why every field of GeminiReply is optional.
     const reply = parseJson(body, 'response') as GeminiReply;
-    const usage = reply.usageMetadata;
+    // Counted before the reply is checked: one that fails the check was still billed.
+    this.record(request.purpose, reply.usageMetadata, started);
+    return parseReply(request.schema, replyText(reply));
+  }
+
+  /**
+   * Sends the conversation to Gemini and gives back its answer piece by piece.
+   * Like generateStructured, this part only measures the call; stream() does the work.
+   *
+   * "async *" makes an async generator: what stream() yields, this one yields too
+   * ("yield*" passes on every piece), so the caller reads the answer through it.
+   * The call counts as "ok" only once the whole answer has gone through.
+   *
+   * Two endings count no outcome, only the time: the learner leaving (an AbortError,
+   * not an LlmError), and a caller that stops reading early. Neither is Gemini's
+   * success or failure.
+   */
+  async *streamText(request: StreamRequest): AsyncIterable<string> {
+    const labels = { provider: 'gemini', model: this.options.model, purpose: request.purpose };
+    const stop = llmRequestDuration.startTimer(labels);
+    try {
+      yield* this.stream(request);
+      llmRequests.inc({ ...labels, outcome: 'ok' });
+    } catch (error) {
+      if (error instanceof LlmError) llmRequests.inc({ ...labels, outcome: error.reason });
+      throw error;
+    } finally {
+      stop();
+    }
+  }
+
+  /**
+   * The streamed call itself. Steps:
+   * 1. Send the HTTP request to streamGenerateContent with alt=sse: Google then keeps
+   *    the response open and writes the answer in Server-Sent Events, a few words each.
+   * 2. A status that is not 2xx: read the body and throw, as send() does.
+   * 3. Read the events one by one (sseData). Each is a small GeminiReply: hand its text
+   *    on at once, and check it the way replyText checks a whole reply.
+   * 4. At the end, the answer must have finished with "STOP" and held some text.
+   */
+  private async *stream(request: StreamRequest): AsyncIterable<string> {
+    const { apiKey, model } = this.options;
+    const started = Date.now();
+    // Two reasons to cancel, whichever comes first: the learner left (request.signal),
+    // or the whole answer took longer than TIMEOUT_MS.
+    const signal = AbortSignal.any([request.signal, AbortSignal.timeout(TIMEOUT_MS)]);
+    // What a failed read becomes. If the learner left, the error stays as it is: it is
+    // not Gemini's failure. Anything else (network, timeout, a cut connection) is unreachable.
+    const lost = (error: Error): never => {
+      if (request.signal.aborted) throw error;
+      return unreachable(error);
+    };
+
+    const response = await fetch(`${API}/${model}:streamGenerateContent?alt=sse`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', 'x-goog-api-key': apiKey },
+      body: JSON.stringify(streamBody(request)),
+      signal,
+    }).catch(lost);
+    // An error status comes with a normal body (no events): read it whole for the message.
+    if (!response.ok || !response.body) {
+      const body = await response.text().catch(lost);
+      throw new LlmError(
+        `Gemini ${response.status}: ${body}`,
+        isRetryable(response.status),
+        response.status === 429 ? 'rate_limited' : 'http_error',
+      );
+    }
+
+    let finished = false;
+    let wrote = false;
+    // Gemini repeats the token counts on its events; the last one has the final numbers.
+    let usage: GeminiReply['usageMetadata'];
+    try {
+      for await (const data of sseData(response.body, lost)) {
+        const reply = parseJson(data, 'response') as GeminiReply;
+        usage = reply.usageMetadata ?? usage;
+        // Refused before any text: the first event says so, and no answer follows.
+        const blocked = reply.promptFeedback?.blockReason;
+        if (blocked) throw new LlmError(`Gemini blocked the prompt: ${blocked}`, false, 'blocked');
+
+        const candidate = reply.candidates?.[0];
+        const text = answerText(candidate);
+        if (text) {
+          wrote = true;
+          yield text;
+        }
+        // Only the last event has a finishReason. Anything but "STOP" means the answer
+        // was cut, after the pieces already sent: by a filter (SAFETY...), or for
+        // another reason (MAX_TOKENS...).
+        const reason = candidate?.finishReason;
+        if (reason && reason !== 'STOP') {
+          const failure = FILTERED.has(reason) ? 'blocked' : 'incomplete';
+          throw new LlmError(`Gemini stopped early: ${reason}`, false, failure);
+        }
+        if (reason === 'STOP') finished = true;
+      }
+    } finally {
+      // Whatever the ending, even the learner leaving: the tokens used so far were billed.
+      this.record(request.purpose, usage, started);
+    }
+    // The events stopped without a "STOP": Google closed the response before the end.
+    if (!finished)
+      throw new LlmError('Gemini stopped early: no finish reason', false, 'incomplete');
+    if (!wrote) throw new LlmError('Gemini sent an empty answer', false, 'incomplete');
+  }
+
+  /**
+   * Logs the token usage and the time of one call, and adds the tokens to the metrics.
+   * Shared by both calls, so they log and count the same way.
+   */
+  private record(purpose: LlmPurpose, usage: GeminiReply['usageMetadata'], started: number): void {
+    const { model } = this.options;
     // "usage?.x" gives undefined if usage is missing, instead of crashing.
-    // "?? '?'" prints "?" when the number is missing.
+    // "?? '?'" prints "?" when the number is missing. No thoughts count is 0, not unknown.
+    const thinking = usage ? (usage.thoughtsTokenCount ?? 0) : '?';
     this.logger.log(
-      `${request.purpose} on ${model}: ${usage?.promptTokenCount ?? '?'} in, ` +
-        `${usage?.candidatesTokenCount ?? '?'} out, ${usage?.totalTokenCount ?? '?'} total tokens, ` +
+      `${purpose} on ${model}: ${usage?.promptTokenCount ?? '?'} in, ` +
+        `${usage?.candidatesTokenCount ?? '?'} out, ${thinking} thinking, ` +
+        `${usage?.totalTokenCount ?? '?'} total tokens, ` +
         `${Date.now() - started} ms`,
     );
-    // Counted before the reply is checked: one that fails the check was still billed.
     // A number Gemini left out is skipped, not counted as 0.
     const tokens = {
       prompt: usage?.promptTokenCount,
@@ -162,10 +294,9 @@ export class GeminiProvider implements LlmProvider {
     };
     for (const [type, count] of Object.entries(tokens)) {
       if (count !== undefined) {
-        llmTokens.inc({ provider: 'gemini', model, purpose: request.purpose, type }, count);
+        llmTokens.inc({ provider: 'gemini', model, purpose, type }, count);
       }
     }
-    return parseReply(request.schema, replyText(reply));
   }
 }
 
@@ -196,6 +327,28 @@ function requestBody({ system, user, schema }: StructuredRequest<z.ZodType>) {
       responseMimeType: 'application/json',
       responseJsonSchema: z.toJSONSchema(schema),
     },
+  };
+}
+
+/**
+ * Builds the JSON body of a streamed call, from our request.
+ * - contents: the whole conversation, oldest first. Gemini names the model's turns
+ *   "model", where we say "assistant".
+ * - generationConfig.maxOutputTokens: the longest answer we pay for.
+ * - generationConfig.thinkingConfig.thinkingBudget 0: no thinking before the answer.
+ *   The thinking counts against maxOutputTokens: 250 to 660 tokens of it were
+ *   measured before answers of 66 to 120, and a longer answer could be cut short.
+ *   A short tutor answer needs none, and it is billed as output too.
+ * No JSON schema: the answer is free text for the learner to read.
+ */
+function streamBody({ system, messages, maxOutputTokens }: StreamRequest) {
+  return {
+    systemInstruction: { parts: [{ text: system }] },
+    contents: messages.map(({ role, text }) => ({
+      role: role === 'assistant' ? 'model' : 'user',
+      parts: [{ text }],
+    })),
+    generationConfig: { maxOutputTokens, thinkingConfig: { thinkingBudget: 0 } },
   };
 }
 
@@ -242,11 +395,18 @@ function replyText(reply: GeminiReply): string {
     const reason = candidate ? (candidate.finishReason ?? 'no finish reason') : 'no candidate';
     throw new LlmError(`Gemini stopped early: ${reason}`, false, 'incomplete');
   }
-  // Here TypeScript knows candidate is defined: if it were undefined, we would have thrown.
-  // The answer can come in several parts: drop the reasoning parts ("thought"),
-  // keep the text of the others, and glue them together.
-  // A part without text gives undefined, and join() writes undefined as "".
-  return (candidate.content?.parts ?? [])
+  return answerText(candidate);
+}
+
+/**
+ * The text the model wrote in one candidate, without its reasoning.
+ * The answer can come in several parts: drop the reasoning parts ("thought"),
+ * keep the text of the others, and glue them together.
+ * A part without text gives undefined, and join() writes undefined as "".
+ * No candidate gives "": a streamed event may carry only the token counts.
+ */
+function answerText(candidate: NonNullable<GeminiReply['candidates']>[number] | undefined): string {
+  return (candidate?.content?.parts ?? [])
     .filter((part) => !part.thought)
     .map((part) => part.text)
     .join('');
@@ -269,7 +429,7 @@ function parseReply<S extends z.ZodType>(schema: S, text: string): z.output<S> {
 /**
  * JSON.parse that throws an LlmError instead of a plain SyntaxError.
  * "what" says which text failed, for the error message:
- * - 'response': Gemini's whole HTTP body.
+ * - 'response': Gemini's whole HTTP body, or one event of a streamed one.
  * - 'reply': the answer text the model wrote.
  * Retryable in both cases. A 200 that is not JSON is usually an error page from a
  * proxy on the way, so it is as worth retrying as a bad reply from the model.
@@ -282,4 +442,62 @@ function parseJson(text: string, what: 'response' | 'reply'): unknown {
   } catch {
     throw new LlmError(`Gemini ${what} is not JSON: ${text.slice(0, 200)}`, true, 'invalid');
   }
+}
+
+/**
+ * Reads a Server-Sent Events body and yields the data of each event, as text.
+ *
+ * The body arrives in network packets, and a packet is not an event: one packet can
+ * hold an event and a half, the other half coming in the next one. So the text is
+ * kept in "buffer", and only complete events leave it. An event ends with an empty
+ * line ("\n\n"); what follows the last one waits for the next packet.
+ *
+ * - TextDecoderStream turns the bytes into text. It keeps a character cut between
+ *   two packets ("é" is two bytes in UTF-8) until its second byte comes.
+ * - "\r\n" becomes "\n": SSE allows both line endings, and only "\n" is searched for.
+ *   It runs on the whole buffer, so a "\r" at the end of one packet and its "\n" at
+ *   the start of the next are joined first.
+ * - lost turns a failed read (the connection dropped, the timeout) into the right error.
+ * - "finally" cancels the body when the reader stops early, on a failure or when the
+ *   caller leaves: the connection to Google closes instead of staying open for nothing.
+ *
+ * Text after the last empty line, when the body ends, is dropped: the SSE standard
+ * says an event without its empty line is not finished.
+ */
+async function* sseData(
+  body: ReadableStream<Uint8Array>,
+  lost: (error: Error) => never,
+): AsyncIterable<string> {
+  const reader = body.pipeThrough(new TextDecoderStream()).getReader();
+  let buffer = '';
+  try {
+    for (;;) {
+      const { done, value } = await reader.read().catch(lost);
+      if (done) return;
+      buffer = (buffer + value).replace(/\r\n/g, '\n');
+      let end = buffer.indexOf('\n\n');
+      while (end !== -1) {
+        const data = eventData(buffer.slice(0, end));
+        buffer = buffer.slice(end + 2);
+        if (data !== undefined) yield data;
+        end = buffer.indexOf('\n\n');
+      }
+    }
+  } finally {
+    // cancel() rejects on a body that already failed; there is nothing left to close then.
+    await reader.cancel().catch(() => undefined);
+  }
+}
+
+/**
+ * The data of one event: its "data:" lines, without "data:" and its one optional
+ * space, joined by "\n" as the standard says. Undefined for an event with no data,
+ * such as a comment line (": ...") that only keeps the connection alive.
+ */
+function eventData(event: string): string | undefined {
+  const lines = event
+    .split('\n')
+    .filter((line) => line.startsWith('data:'))
+    .map((line) => line.slice(5).replace(/^ /, ''));
+  return lines.length > 0 ? lines.join('\n') : undefined;
 }
