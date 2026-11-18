@@ -169,6 +169,10 @@ describe('lesson discussion (e2e)', () => {
       ['a message over 500 characters', body('a'.repeat(501))],
       ['11 earlier turns', { ...body(), history: Array(11).fill({ role: 'user', text: 'Hi' }) }],
       ['a turn with an unknown role', { ...body(), history: [{ role: 'system', text: 'Hi' }] }],
+      [
+        'an earlier learner turn over 500 characters',
+        { ...body(), history: [{ role: 'user', text: 'a'.repeat(501) }] },
+      ],
     ])('answers 400 request.invalid to %s', async (_, sent) => {
       const response = await agent.post(path()).send(sent).expect(400);
 

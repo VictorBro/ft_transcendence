@@ -3,6 +3,8 @@ import { describe, expect, it } from 'vitest';
 import { LEVELS } from './item';
 import { LEARNABLE_LANGUAGES } from './language';
 import {
+  DISCUSSION_LIMITS,
+  DiscussionTurnSchema,
   FinishResultSchema,
   foldText,
   KIND_COUNTS,
@@ -520,5 +522,29 @@ describe('FinishResultSchema', () => {
       const { [field]: _dropped, ...without } = result;
       expect(FinishResultSchema.safeParse(without).success, field).toBe(false);
     }
+  });
+});
+
+describe('DiscussionTurnSchema', () => {
+  const turn = (role: string, length: number) => ({ role, text: 'a'.repeat(length) });
+
+  // An earlier turn of the learner's was a message once: no longer than one now.
+  it('keeps a learner turn to the length of a message', () => {
+    expect(DiscussionTurnSchema.safeParse(turn('user', DISCUSSION_LIMITS.message)).success).toBe(
+      true,
+    );
+    const over = DiscussionTurnSchema.safeParse(turn('user', DISCUSSION_LIMITS.message + 1));
+    expect(over.error?.issues).toEqual([
+      expect.objectContaining({ path: ['text'], message: 'request.invalid' }),
+    ]);
+  });
+
+  it('lets a tutor turn be as long as an answer', () => {
+    expect(
+      DiscussionTurnSchema.safeParse(turn('assistant', DISCUSSION_LIMITS.turnText)).success,
+    ).toBe(true);
+    expect(
+      DiscussionTurnSchema.safeParse(turn('assistant', DISCUSSION_LIMITS.turnText + 1)).success,
+    ).toBe(false);
   });
 });
