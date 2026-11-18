@@ -125,4 +125,40 @@ test.describe('the discussion page', () => {
 
     expect(violations, formatViolations(violations)).toEqual([]);
   });
+
+  test("tells the tutor busy for everyone from the learner's own limit of the day", async ({
+    freshLearner,
+  }) => {
+    const learner = freshLearner;
+    const violations = watchConsole(learner);
+    const tutor = await openDiscussion(learner);
+    const wait = tutor.getByRole('status');
+    // Answered here, so the API counts nothing: the two refusals it can give.
+    const refuse = async (message: string, retryAfter: number) => {
+      await learner.unrouteAll({ behavior: 'ignoreErrors' });
+      await learner.route('**/discussion', (route) =>
+        route.fulfill({
+          status: 429,
+          contentType: 'application/json',
+          body: JSON.stringify({ statusCode: 429, message, retryAfter }),
+        }),
+      );
+    };
+
+    // Everyone's limit: the tutor is busy, which is not the learner's doing.
+    await refuse('llm.rateLimited', 2);
+    await tutor.getByRole('button', { name: 'Explain my mistakes' }).click();
+    await expect(wait).toHaveText(/^The tutor is busy\. Try again in \d s\.$/);
+    // The countdown ends, and the learner may ask again.
+    await expect(wait).toBeHidden({ timeout: 5_000 });
+
+    // The learner's limit of the day: hours away, so no seconds.
+    await refuse('llm.tooManyMessages', 50_000);
+    await tutor.getByRole('button', { name: 'Explain my mistakes' }).click();
+    await expect(wait).toHaveText('You have asked the tutor a lot today. Come back tomorrow.');
+    await expect(tutor.getByRole('textbox', { name: 'Your question' })).toBeDisabled();
+
+    const unexpected = violations.filter((v) => !isExpectedRefusal(v, '/discussion', 429));
+    expect(unexpected, formatViolations(unexpected)).toEqual([]);
+  });
 });

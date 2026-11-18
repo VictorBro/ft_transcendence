@@ -57,6 +57,8 @@ export function Discussion({
   // After a 429: when the learner may ask again, and the clock that counts down to it.
   const [waitUntil, setWaitUntil] = useState<number | null>(null);
   const [now, setNow] = useState(0);
+  // Whose limit it was: the learner's own (llm.tooManyMessages) or everyone's (llm.rateLimited).
+  const [waitCode, setWaitCode] = useState('');
   // The running send: Stop aborts it, and so does the page going away.
   const running = useRef<AbortController | null>(null);
 
@@ -138,6 +140,7 @@ export function Discussion({
       if (fromBox) restore(parsed.data.message);
       const time = Date.now();
       setNow(time);
+      setWaitCode(result.code);
       setWaitUntil(time + (result.retryAfter ?? 60) * 1000);
       return;
     }
@@ -149,6 +152,14 @@ export function Discussion({
   }
 
   const seconds = waitUntil === null ? 0 : Math.max(1, Math.ceil((waitUntil - now) / 1000));
+  // The tutor busy for everyone, or this learner's own limit: the minute's
+  // with its countdown, the day's (more than a minute left) without one.
+  const waitText =
+    waitCode === 'llm.rateLimited'
+      ? t('tutorBusy', { seconds })
+      : seconds > 60
+        ? t('comeBackTomorrow')
+        : t('tooManyQuestions', { seconds });
   const prompts = [t('explainMistakes'), t('promptSummary'), t('promptExample')];
   const shown: DiscussionTurn[] = asking
     ? [...turns, { role: 'user', text: asking.message }, { role: 'assistant', text: asking.answer }]
@@ -222,7 +233,7 @@ export function Discussion({
 
       {waiting ? (
         <p role="status" className="text-sm text-amber-200">
-          {t('tooManyQuestions', { seconds })}
+          {waitText}
         </p>
       ) : null}
 

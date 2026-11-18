@@ -457,6 +457,8 @@
     "you": "Du",
     "tutor": "Tutor",
     "tooManyQuestions": "Zu viele Fragen. Versuche es in {seconds} s erneut.",
+    "tutorBusy": "Der Tutor ist gerade ausgelastet. Versuche es in {seconds} s erneut.",
+    "comeBackTomorrow": "Du hast dem Tutor heute viele Fragen gestellt. Komm morgen wieder.",
     "continueToExam": "Weiter zur Prüfung",
     "tutorOffDuringExam": "Während der Prüfung ist der Tutor nicht verfügbar.",
     "unavailable": "Diese Übung kann noch nicht angezeigt werden.",
