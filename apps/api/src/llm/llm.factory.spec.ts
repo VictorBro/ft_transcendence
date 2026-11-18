@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import { llmProviderInfo } from '../metrics/metrics';
+import { DisabledProvider } from './disabled.provider';
 import { FixtureProvider } from './fixture.provider';
 import { GeminiProvider } from './gemini.provider';
 import { createLlmProvider } from './llm.factory';
@@ -11,6 +12,10 @@ describe('createLlmProvider', () => {
     expect(createLlmProvider({ LLM_PROVIDER: 'fixture', LLM_API_KEY: 'k' })).toBeInstanceOf(
       FixtureProvider,
     );
+  });
+
+  it('builds the disabled provider for "disabled"', () => {
+    expect(createLlmProvider({ LLM_PROVIDER: 'disabled' })).toBeInstanceOf(DisabledProvider);
   });
 
   it('builds Gemini with the key and the model', () => {
@@ -34,6 +39,7 @@ describe('createLlmProvider', () => {
 
   it.each([
     [{}, { provider: 'fixture', model: 'none' }],
+    [{ LLM_PROVIDER: 'disabled' }, { provider: 'disabled', model: 'none' }],
     [
       { LLM_PROVIDER: 'gemini', LLM_API_KEY: 'k' },
       { provider: 'gemini', model: 'gemini-3.6-flash' },
@@ -52,7 +58,7 @@ describe('createLlmProvider', () => {
 
   it.each(['real', 'gemni', ''])('refuses LLM_PROVIDER=%j', (name) => {
     expect(() => createLlmProvider({ LLM_PROVIDER: name })).toThrow(
-      `LLM_PROVIDER must be "fixture" or "gemini", got "${name}"`,
+      `LLM_PROVIDER must be "fixture", "gemini" or "disabled", got "${name}"`,
     );
   });
 });

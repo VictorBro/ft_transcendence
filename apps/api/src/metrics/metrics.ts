@@ -49,12 +49,19 @@ export const llmRequests = new Counter({
   registers: [registry],
 });
 
+export const discussionLimited = new Counter({
+  name: 'ft_llm_discussion_limited_total',
+  help: 'Lesson discussion messages refused by a rate limit, by limit (user_minute, user_day, global_minute)',
+  labelNames: ['limit'] as const,
+  registers: [registry],
+});
+
 export const llmRequestDuration = new Histogram({
   name: 'ft_llm_request_duration_seconds',
   help: 'LLM call duration, failures included',
   labelNames: ['provider', 'model', 'purpose'] as const,
-  // Up to the 60 s timeout of gemini.provider.ts.
-  buckets: [0.5, 1, 2, 5, 10, 20, 30, 45, 60],
+  // Up to the 90 s timeout of gemini.provider.ts.
+  buckets: [0.5, 1, 2, 5, 10, 20, 30, 45, 60, 90],
   registers: [registry],
 });
 
@@ -168,6 +175,9 @@ for (const lang of LEARNABLE_LANGUAGES) {
 for (const category of QUESTION_CATEGORIES) {
   for (const reason of RESTOCK_FAILURE_REASONS)
     questionRestockFailures.inc({ category, reason }, 0);
+}
+for (const limit of ['user_minute', 'user_day', 'global_minute']) {
+  discussionLimited.inc({ limit }, 0);
 }
 for (const event of Object.values(SERVER_EVENTS)) {
   wsEvents.inc({ direction: 'out', event, outcome: 'ok' }, 0);

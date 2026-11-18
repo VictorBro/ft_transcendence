@@ -232,6 +232,14 @@
     "lesson": {
       "notFound": "Diese Lektion gibt es nicht"
     },
+    "llm": {
+      "unavailable": "Der Tutor kann gerade nicht antworten. Versuche es gleich noch einmal.",
+      "rateLimited": "Der Tutor ist gerade ausgelastet. Versuche es in einer Minute erneut.",
+      "tooManyMessages": "Du hast dem Tutor viele Nachrichten geschickt. Versuche es später erneut.",
+      "blocked": "Der Tutor kann auf diese Nachricht nicht antworten. Formuliere sie anders.",
+      "incomplete": "Die Antwort brach vor dem Ende ab. Stell deine Frage noch einmal.",
+      "disabled": "Der Tutor ist auf diesem Server deaktiviert."
+    },
     "placement": {
       "inProgress": "Ein Einstufungstest läuft bereits. Beende ihn zuerst.",
       "invalidChoice": "Ungültige Antwortauswahl für diese Frage.",

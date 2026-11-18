@@ -193,7 +193,7 @@ What learners do, and whether the question bank keeps up. Variable: `lang` (mult
 | People | accounts; signed in over the last 5 minutes; stored sessions |
 | Placement | exams per hour by event (started, completed, quit); completion rate over 24 h; questions served by source; levels whose pool ran out in the last hour |
 | Question bank | questions by level and source; the 10 thinnest cells, empty ones included; restocks by outcome; restock failures by reason; questions generated in 24 h |
-| LLM | provider and model; calls by outcome; latency p95; tokens per hour |
+| LLM | provider and model; calls by outcome; latency p95; tokens per hour; lesson discussion: its calls by outcome and its messages refused by a limit |
 
 "Questions served by source" shows `written`, `generated` and `seen_fallback`. The last one is a
 learner who has seen every question at that level and gets an old one again.
@@ -361,8 +361,9 @@ Labels are always bounded: never a user id, an email, a session id, a lesson id 
 | `http_request_duration_seconds` | histogram, 5 ms to 10 s | `method` (the 7 usual ones, else `OTHER`); `route` (the Express template with its prefix, such as `/api/courses/:lang/lessons/:id`, else `static` below 400 or `unmatched`); `status_code` (`499` when the client left) | `httpMetrics` middleware, first in `configureApp` |
 | `http_requests_in_flight` | gauge | none | the same middleware |
 | `ft_llm_requests_total` | counter | `provider`, `model`, `purpose`, `outcome` (`ok`, `unreachable`, `rate_limited`, `http_error`, `blocked`, `incomplete`, `invalid`) | `GeminiProvider.generateStructured` |
-| `ft_llm_request_duration_seconds` | histogram, 0.5 s to 60 s | `provider`, `model`, `purpose` | the same |
+| `ft_llm_request_duration_seconds` | histogram, 0.5 s to 90 s | `provider`, `model`, `purpose` | the same |
 | `ft_llm_tokens_total` | counter | `provider`, `model`, `purpose`, `type` (`prompt`, `output`, `total`) | the same, from the usage Gemini reports |
+| `ft_llm_discussion_limited_total` | counter | `limit` (`user_minute`, `user_day`, `global_minute`) | `countMessage` (discussion-limits.ts), a lesson discussion message refused before any LLM call |
 | `ft_llm_provider_info` | gauge, always 1 | `provider`, `model` (`none` for the fixture) | `createLlmProvider` |
 | `ft_question_restocks_total` | counter | `lang`, `level`, `category`, `status` (`busy`, `cooling`, `filled`, `empty`, `failed`) | `QuestionStockService` |
 | `ft_question_restock_failures_total` | counter | `category`, `reason` (`llm`, `llm_disabled`, `other`) | the same, when a fill throws |
@@ -389,7 +390,8 @@ set an alert or a panel reads exists at 0 from the start: `ft_placement_exams_to
 `ft_lesson_attempts_total` for every language and event; `ft_placement_draws_total`, `ft_question_restocks_total` and
 `ft_question_restock_inserted_total` for every cell of the bank, by source or status;
 `ft_placement_pool_exhausted_total` for every language and level;
-`ft_question_restock_failures_total` for every category and reason; `ft_llm_requests_total` and
+`ft_question_restock_failures_total` for every category and reason; `ft_llm_discussion_limited_total`
+for every limit; `ft_llm_requests_total` and
 `ft_llm_tokens_total` for every purpose, outcome and token type of the configured Gemini model;
 `ft_ws_events_total` for every server event going out and every client event (and `unknown`)
 coming in, by outcome;

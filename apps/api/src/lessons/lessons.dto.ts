@@ -2,6 +2,7 @@ import { createZodDto } from 'nestjs-zod';
 import {
   AchievementListSchema,
   LessonCardSchema,
+  LessonDiscussionSchema,
   LessonPageSchema,
   LessonQuerySchema,
   lessons,
@@ -36,3 +37,7 @@ export class StartAttemptDto extends createZodDto(lessons.player.StartAttemptSch
 
 // The body of a page: { attemptId, answers }, the answers by unit ref.
 export class SubmitPageDto extends createZodDto(lessons.player.SubmitPageSchema) {}
+
+// The body of a discussion message: { attemptId, message, history }, or a 400
+// request.invalid.
+export class LessonDiscussionDto extends createZodDto(LessonDiscussionSchema) {}

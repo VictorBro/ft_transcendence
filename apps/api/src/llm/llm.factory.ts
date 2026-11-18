@@ -1,4 +1,5 @@
 import { llmProviderInfo } from '../metrics/metrics';
+import { DisabledProvider } from './disabled.provider';
 import { FixtureProvider } from './fixture.provider';
 import { GeminiProvider } from './gemini.provider';
 import { LlmProvider } from './llm.provider';
@@ -46,9 +47,12 @@ export function createLlmProvider({
       showProvider('gemini', model);
       return new GeminiProvider({ apiKey: LLM_API_KEY, model });
     }
+    case 'disabled':
+      showProvider('disabled', 'none');
+      return new DisabledProvider();
     default:
       throw new Error(
-        `LLM_PROVIDER must be "fixture" or "gemini", got "${LLM_PROVIDER}". See .env.example.`,
+        `LLM_PROVIDER must be "fixture", "gemini" or "disabled", got "${LLM_PROVIDER}". See .env.example.`,
       );
   }
 }
