@@ -10,7 +10,14 @@ import {
 } from '../support/console-guard';
 import { expectFitsTheScreen, expectPinned } from '../support/layout';
 import { liveConnection } from '../support/live';
-import { expect, ONBOARDED_COURSE, placeCourse, SECOND_COURSE, test } from '../support/session';
+import {
+  expect,
+  idOf,
+  ONBOARDED_COURSE,
+  placeCourse,
+  SECOND_COURSE,
+  test,
+} from '../support/session';
 
 const PHONE = { width: 360, height: 800 };
 
@@ -118,6 +125,35 @@ test('a message arrives live, is counted, is read by opening the thread, and sta
 });
 
 /**
+ * Where Message on /friends leads before the first message. A learner with no
+ * conversation at all, so nothing but the open thread can put a row in the list.
+ */
+test('a friend written to for the first time is listed, as the open conversation', async ({
+  freshLearner,
+  signedIn,
+  account,
+}) => {
+  const violations = [watchConsole(freshLearner)];
+  const [freshId, friendId] = await Promise.all([idOf(freshLearner), idOf(signedIn)]);
+  expect((await freshLearner.request.post(`/api/friends/requests/${friendId}`)).ok()).toBe(true);
+  expect((await signedIn.request.post(`/api/friends/requests/${freshId}/accept`)).ok()).toBe(true);
+
+  try {
+    await freshLearner.goto(`/en/chat?with=${friendId}`);
+    await expect(thread(freshLearner, account.displayName)).toBeAttached();
+    const rows = freshLearner.getByRole('navigation', { name: 'Conversations' }).getByRole('link');
+    await expect(rows).toHaveCount(1);
+    await expect(rows).toHaveAccessibleName(new RegExp(account.displayName));
+    await expect(rows).toHaveAttribute('aria-current', 'page');
+    await expect(freshLearner.getByText('No conversations yet')).toHaveCount(0);
+    await expectSilent([freshLearner], violations);
+  } finally {
+    // `account` is the worker's: its next test expects no friend but its pair.
+    await freshLearner.request.delete(`/api/friends/${friendId}`);
+  }
+});
+
+/**
  * The reader's side, whose partner has the longest name allowed. One word as
  * long as a message may be, with nowhere to break, then enough lines that the
  * thread holds more than its pane.
@@ -133,7 +169,14 @@ test('a long thread scrolls in its own pane on a desktop, and the screens fit a 
   await writer.goto(`/en/chat?with=${ids.signedIn}`);
   await live;
 
+  // One letter too many is refused before sending, and the error goes as the text changes.
   const word = crypto.randomUUID().replace(/-/g, '').padEnd(MESSAGE_MAX_LENGTH, 'x');
+  const composer = writer.locator('form').filter({ has: box(writer) });
+  await box(writer).fill(`${word}x`);
+  await box(writer).press('Enter');
+  await expect(composer.getByRole('alert')).toHaveText('A message is limited to 1,000 characters');
+  await box(writer).press('Backspace');
+  await expect(composer.getByRole('alert')).toHaveCount(0);
   await send(writer, word);
   const newest = unique('newest');
   for (const label of [unique('tall'), unique('taller'), newest]) {

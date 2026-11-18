@@ -49,6 +49,14 @@ export function createUnreadStore(): UnreadStore {
   };
 }
 
+/** The most a badge shows in digits. */
+const BADGE_MAX = 99;
+
+/** A badge's digits: 99+ past 99, so a large count cannot widen the header. */
+export function badgeText(count: number): string {
+  return count > BADGE_MAX ? `${BADGE_MAX}+` : String(count);
+}
+
 /** Every conversation's, for the account menu. */
 export function unreadTotal(counts: UnreadCounts): number {
   return Object.values(counts).reduce((total, count) => total + count, 0);

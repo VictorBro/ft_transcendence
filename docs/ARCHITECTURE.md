@@ -222,8 +222,8 @@ sequenceDiagram
   only the first of the window is told. A session holds at most 20 sockets,
   checked before the user write: one per tab is far below it, and a client
   opening sockets in a loop costs no query. More sockets still mean more
-  events; what bounds the messages written is the per-account `dm:send` budget
-  (below).
+  events; what bounds the work they cause is the per-account budgets of
+  `dm:send` and `dm:read` (below).
 - **A catch-all filter for the handlers.** Global guards, pipes and filters
   never reach a gateway in Nest 11, which is why the screen validates and
   limits. What a handler throws goes to `SocketExceptionFilter`, declared with
@@ -303,11 +303,17 @@ sequenceDiagram
   - **`dm:read { userId }`** sets `readAt` on what that user sent you. No ack:
     the answer is the snapshot, to every tab of the reader. The open thread
     sends it while the tab is visible and connected and the conversation has
-    unread messages, and each snapshot re-arms it. `readAt` never leaves the
-    server.
+    unread messages, and each snapshot re-arms it. An account may read 100 a
+    minute across all its sockets, what an HTTP route allows
+    (`RATE_LIMIT_PER_MINUTE`), since each read costs two queries and a snapshot
+    to every tab; past that it gets `app:error` with `server.rateLimited`, and
+    the counts stay until the next snapshot. `readAt` never leaves the server.
+    The index on `(pairKey, readAt)` keeps the counts and a read at the cost
+    of what is unread, not of the whole history.
   - **In the tab**: `tab-socket.ts` keeps the last snapshot for as long as the
     socket, like the presence map, and drops it on sign-out. The account menu's
-    Messages badge shows its total, and nothing before the first snapshot.
+    Messages badge shows its total, 99+ past 99, and nothing before the first
+    snapshot.
     `sendMessage()` refuses at once with `network.unreachable` when not
     connected: socket.io would buffer the event and deliver it long after the
     thread said it failed. A lost ack (10 s, or the socket closing) says the

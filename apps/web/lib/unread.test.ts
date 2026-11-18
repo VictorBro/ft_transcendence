@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
 
-import { createUnreadStore, unreadTotal } from './unread';
+import { badgeText, createUnreadStore, unreadTotal } from './unread';
 
 const BOB = '00000000-0000-4000-8000-000000000001';
 const ZOE = '00000000-0000-4000-8000-000000000002';
@@ -73,6 +73,12 @@ describe('createUnreadStore', () => {
     store.apply(snapshot({ [BOB]: 1 }, '2026-11-16T10:00:00.000Z'));
 
     expect(watch).not.toHaveBeenCalled();
+  });
+});
+
+describe('badgeText', () => {
+  it('shows the count up to 99, then 99+', () => {
+    expect([1, 99, 100, 1234].map(badgeText)).toEqual(['1', '99', '99+', '99+']);
   });
 });
 

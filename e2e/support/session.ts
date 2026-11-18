@@ -141,7 +141,8 @@ export interface Account {
 const longestDisplayName = (): string =>
   `browser${crypto.randomUUID().replace(/-/g, '').slice(0, 25)}`;
 
-const idOf = async (page: Page): Promise<string> =>
+/** The id of the account signed in on this page. */
+export const idOf = async (page: Page): Promise<string> =>
   ((await (await page.request.get('/api/auth/me')).json()) as { id: string }).id;
 
 /** Signs up in a throwaway context, runs `setUp` as that user, keeps the cookies. */

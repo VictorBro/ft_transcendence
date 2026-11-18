@@ -63,7 +63,7 @@ export default async function MessagesPage({
           <ConversationList
             conversations={conversations}
             friendsOnline={friendsOnline}
-            openId={other?.id ?? null}
+            open={other ?? null}
           />
         </div>
 

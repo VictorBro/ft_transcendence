@@ -694,7 +694,7 @@ and only the first is obvious:
 | **Auth endpoints** | Credential stuffing and TOTP brute force. Tighter limits than the global default |
 | **LLM endpoints** | Money. This is the difference between a bug costing €2 and €200 |
 | **Public API** | The module *requires* rate limiting as an explicit acceptance criterion |
-| **Socket events** | `dm:send`, `dm:read`. **The HTTP guard does not cover these**, a socket connection is one HTTP upgrade, so a client can emit thousands of events through a single allowed request. The gateway's own screen limits each socket to 20 of each event per 10 s, and `dm:send` also has a budget of 30 a minute per account (ARCHITECTURE.md §4) |
+| **Socket events** | `dm:send`, `dm:read`. **The HTTP guard does not cover these**, a socket connection is one HTTP upgrade, so a client can emit thousands of events through a single allowed request. The gateway's own screen limits each socket to 20 of each event per 10 s, and each has a budget per account: 30 `dm:send` and 100 `dm:read` a minute (ARCHITECTURE.md §4) |
 
 That last row is the one that gets missed. Write it when the gateway is written, not after.
 

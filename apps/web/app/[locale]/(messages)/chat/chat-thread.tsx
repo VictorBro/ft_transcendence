@@ -313,7 +313,11 @@ function Composer({ userId }: { userId: string }) {
           rows={2}
           value={text}
           readOnly={sending}
-          onChange={(event) => setText(event.target.value)}
+          onChange={(event) => {
+            setText(event.target.value);
+            // It was about the text before this change.
+            setError(null);
+          }}
           onKeyDown={onKeyDown}
           placeholder={t('messageLabel')}
           aria-describedby={errorId}

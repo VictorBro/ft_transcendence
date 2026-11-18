@@ -238,6 +238,9 @@ model Message {
 
   // The history's keyset, newest first.
   @@index([pairKey, createdAt, id])
+  // What a pair has unread, for the counts and a read: they cost what is
+  // unread rather than the whole history.
+  @@index([pairKey, readAt])
 }
 
 // One achievement a course earned (#95). The code is an AchievementCode of

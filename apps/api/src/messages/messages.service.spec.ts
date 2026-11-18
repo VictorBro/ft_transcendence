@@ -7,12 +7,12 @@ import { pairKey } from '../friends/pair';
 import type { AppSocket, SocketsService } from '../gateway/sockets.service';
 import type { PrismaService } from '../prisma/prisma.service';
 import { MessagesGateway } from './messages.gateway';
-import { MessagesService, SEND_LIMIT_PER_MINUTE } from './messages.service';
+import { MessagesService, READ_LIMIT_PER_MINUTE, SEND_LIMIT_PER_MINUTE } from './messages.service';
 
 /**
  * What Supertest cannot see: one transaction for the two writes, one instant
- * for both, a send that answers whatever the unread count does, and the send
- * budget across sockets.
+ * for both, a send that answers whatever the unread count does, and the
+ * budgets across sockets.
  */
 
 // THEM sorts first: the conversation's userA.
@@ -29,6 +29,10 @@ const row = (id: string, createdAt: Date, senderId = ME) => ({
   createdAt,
 });
 const unread = (counts: Record<string, number>) => ({ counts, at: expect.any(String) });
+// Two tabs of ME: each socket has its own screen, and an account may hold many.
+const [one, two] = ['s1', 's2'].map(
+  (sessionId) => ({ data: { userId: ME, sessionId } }) as unknown as AppSocket,
+);
 
 /** ME and THEM are friends, nothing is unread, and every write succeeds, unless a test says otherwise. */
 function serviceWith() {
@@ -150,13 +154,9 @@ describe('MessagesService send', () => {
     error.mockRestore();
   });
 
-  // Each socket has its own screen, and an account may hold many.
   it('refuses a send past the budget of a minute from any socket of the account, and writes nothing', async () => {
     const { service, prisma, toUser } = serviceWith();
     const gateway = new MessagesGateway(service);
-    const [one, two] = ['s1', 's2'].map(
-      (sessionId) => ({ data: { userId: ME, sessionId } }) as unknown as AppSocket,
-    );
     for (let n = 0; n < SEND_LIMIT_PER_MINUTE; n += 1) {
       await gateway.send(n % 2 === 0 ? one : two, { userId: THEM, text: 'salut' });
     }
@@ -196,6 +196,23 @@ describe('MessagesService read', () => {
     await service.read(ME, THEM);
 
     expect(toUser.mock.calls).toEqual([[ME, 'dm:unread', unread({ [OTHER]: 2 })]]);
+  });
+
+  it('refuses a read past the budget of a minute from any socket of the account, and queries nothing', async () => {
+    const { service, prisma, toUser } = serviceWith();
+    const gateway = new MessagesGateway(service);
+    for (let n = 0; n < READ_LIMIT_PER_MINUTE; n += 1) {
+      await gateway.read(n % 2 === 0 ? one : two, { userId: THEM });
+    }
+    vi.clearAllMocks();
+
+    await expect(gateway.read(two, { userId: THEM })).rejects.toEqual(
+      new HttpException('server.rateLimited', 429),
+    );
+
+    expect(prisma.message.updateMany).not.toHaveBeenCalled();
+    expect(prisma.message.groupBy).not.toHaveBeenCalled();
+    expect(toUser).not.toHaveBeenCalled();
   });
 });
 

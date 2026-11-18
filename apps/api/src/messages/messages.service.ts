@@ -15,12 +15,16 @@ import { pairKey } from '../friends/pair';
 import type { Prisma } from '../generated/prisma/client';
 import { SocketsService } from '../gateway/sockets.service';
 import { PrismaService } from '../prisma/prisma.service';
+import { RATE_LIMITS } from '../throttler/rate-limits';
 import { PUBLIC_USER_SELECT } from '../users/public-user';
 import { unreadCounts } from './unread';
 
 // Per account: a write that pushes to another person, like friend requests at
 // 10 a minute. 30 is far above anyone typing.
 export const SEND_LIMIT_PER_MINUTE = 30;
+// Per account, as an HTTP route is: a read costs two queries and a snapshot to
+// every tab, and the thread asks about once per message it is shown.
+export const READ_LIMIT_PER_MINUTE = RATE_LIMITS.perAccount;
 
 const MESSAGE_SELECT = { id: true, senderId: true, text: true, createdAt: true } as const;
 
@@ -40,7 +44,7 @@ export class MessagesService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly sockets: SocketsService,
-    // The HTTP throttler's: gateways never get its guard, so sends count here.
+    // The HTTP throttler's: gateways never get its guard, so the budgets count here.
     @InjectThrottlerStorage() private readonly throttler: ThrottlerStorage,
   ) {}
 
@@ -48,16 +52,7 @@ export class MessagesService {
     // When it arrived, and one instant for the message and the list's order.
     const now = new Date();
     // Before the friendship check: a refused send costs a query too.
-    const { isBlocked } = await this.throttler.increment(
-      `dm:send:${me}`,
-      60_000,
-      SEND_LIMIT_PER_MINUTE,
-      60_000,
-      'default',
-    );
-    if (isBlocked) {
-      throw new HttpException('server.rateLimited', HttpStatus.TOO_MANY_REQUESTS);
-    }
+    await this.spend('dm:send', me, SEND_LIMIT_PER_MINUTE);
     if (!(await areFriends(this.prisma, me, them))) {
       throw new ForbiddenException('message.notFriends');
     }
@@ -85,6 +80,7 @@ export class MessagesService {
 
   /** Answered with a snapshot whether or not anything changed, so every read converges. */
   async read(me: string, them: string): Promise<void> {
+    await this.spend('dm:read', me, READ_LIMIT_PER_MINUTE);
     await this.prisma.message.updateMany({
       where: { pairKey: pairKey(me, them), senderId: them, readAt: null },
       data: { readAt: new Date() },
@@ -153,6 +149,20 @@ export class MessagesService {
       messages,
       nextCursor: rows.length > MESSAGE_PAGE_SIZE ? messages[0].id : null,
     };
+  }
+
+  /** One `event` from the account, refused past its budget of a minute, from all its sockets together. */
+  private async spend(event: string, me: string, limit: number): Promise<void> {
+    const { isBlocked } = await this.throttler.increment(
+      `${event}:${me}`,
+      60_000,
+      limit,
+      60_000,
+      'default',
+    );
+    if (isBlocked) {
+      throw new HttpException('server.rateLimited', HttpStatus.TOO_MANY_REQUESTS);
+    }
   }
 
   /** The whole picture, to every tab of `userId`. A failure is logged, never thrown. */

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { SERVER_EVENTS, type Conversation } from '@ft/shared';
+import { SERVER_EVENTS, type Conversation, type PublicUser } from '@ft/shared';
 
 import { Link, useRouter } from '@/i18n/navigation';
 import { AvatarWithDot } from '@/components/presence-dot';
@@ -14,17 +14,19 @@ import { UnreadBadge } from '@/components/unread-badge';
  * up here rather than through RefreshOn: a render costs three or four API calls
  * per tab, and messages come far more often than friend events. Only one from
  * someone not listed yet refreshes the page, since a row needs their name and
- * avatar.
+ * avatar. A friend opened before the first message is listed too, on top,
+ * so the list never says there is nobody beside their thread.
  */
 export function ConversationList({
   conversations,
   friendsOnline,
-  openId,
+  open,
 }: {
   conversations: Conversation[];
   /** Whether each friend was online at render. Anyone else is no friend and gets no dot. */
   friendsOnline: Partial<Record<string, boolean>>;
-  openId: string | null;
+  /** Whose thread is open beside the list, if any. */
+  open: PublicUser | null;
 }) {
   const t = useTranslations('MessagesPage');
   const router = useRouter();
@@ -42,8 +44,12 @@ export function ConversationList({
   const latest = ({ user, lastMessageAt }: Conversation) =>
     Math.max(Date.parse(lastMessageAt), Date.parse(heard[user.id] ?? lastMessageAt));
   const ordered = [...conversations].sort((a, b) => latest(b) - latest(a));
+  const rows = ordered.map(({ user, unread }) => ({ user, unread }));
+  if (open !== null && !conversations.some(({ user }) => user.id === open.id)) {
+    rows.unshift({ user: open, unread: 0 });
+  }
 
-  if (ordered.length === 0) {
+  if (rows.length === 0) {
     return (
       <p className="text-sm text-slate-400">
         {t.rich('noConversations', {
@@ -60,12 +66,13 @@ export function ConversationList({
   return (
     <nav aria-label={t('conversations')}>
       <ul className="flex flex-col gap-1">
-        {ordered.map((conversation) => (
+        {rows.map(({ user, unread }) => (
           <ConversationRow
-            key={conversation.user.id}
-            conversation={conversation}
-            online={friendsOnline[conversation.user.id]}
-            open={conversation.user.id === openId}
+            key={user.id}
+            user={user}
+            unread={unread}
+            online={friendsOnline[user.id]}
+            open={user.id === open?.id}
           />
         ))}
       </ul>
@@ -74,11 +81,14 @@ export function ConversationList({
 }
 
 function ConversationRow({
-  conversation: { user, unread },
+  user,
+  unread,
   online,
   open,
 }: {
-  conversation: Conversation;
+  user: PublicUser;
+  /** The server's count at render. */
+  unread: number;
   online: boolean | undefined;
   open: boolean;
 }) {
