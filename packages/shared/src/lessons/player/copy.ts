@@ -13,11 +13,7 @@ export const PLAYER_COPY = {
   /** The unscored page before the exam info page, in every kind: [step label, instruction]. */
   discussion: [
     L('Discussion', 'Discussion', 'Gespräch'),
-    L(
-      'Talk about what you have just learned before the exam.',
-      'Parlez de ce que vous venez d’apprendre avant l’examen.',
-      'Sprich vor der Prüfung über das, was du gerade gelernt hast.',
-    ),
+    L('Ask the tutor.', 'Demande au tuteur.', 'Frag den Tutor.'),
   ],
   /** The label of the exam step in every lesson, whatever its file says: Final exam. */
   exam: COPY.exam[0],

@@ -105,7 +105,7 @@ export async function pageIndex(page: Page): Promise<number> {
 /** The player's main button: Check, Continue, Start the exam, Next or Finish the exam. */
 export function mainButton(page: Page): Locator {
   return page.getByRole('button', {
-    name: /^(Check|Continue|Start the exam|Next|Finish the exam)$/,
+    name: /^(Check|Continue|Continue to the exam|Start the exam|Next|Finish the exam)$/,
   });
 }
 

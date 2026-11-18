@@ -119,7 +119,7 @@ describe('buildPlan', () => {
       const discussion = p.pages[first - 2];
       expect(isScored(discussion)).toBe(false);
       expect(discussion.items).toEqual([]);
-      expect(discussion.instructions.en).toMatch(/Talk about/);
+      expect(discussion.instructions.en).toBe('Ask the tutor.');
       // Indexes follow the order.
       expect(p.pages.map((x) => x.index)).toEqual(p.pages.map((_, n) => n));
     }
