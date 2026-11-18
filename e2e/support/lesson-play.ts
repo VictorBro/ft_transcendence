@@ -442,25 +442,29 @@ async function postPatiently(
 }
 
 /**
- * Plays a whole lesson through its attempt routes, any kind: starts (or
- * retakes) it, then answers `share` of the units right on every page.
- * Returns the finished attempt.
+ * Plays a lesson through its attempt routes, any kind, up to its last page:
+ * starts (or retakes) it, then answers `share` of the units right on every
+ * page before the last. Returns the call that sends the last page and gives
+ * the finished attempt, so a test can send two of them at the same time.
  */
-export async function finishThroughApi(
+export async function playToLastPage(
   request: APIRequestContext,
   lang: string,
   id: string,
   { share = 1, locale = 'en' as Locale } = {},
-): Promise<AttemptView> {
+): Promise<() => Promise<AttemptView>> {
   const url = `/api/courses/${lang}/lessons/${id}/attempt`;
   const plan = lessonPlan(id, locale);
+  const last = plan.pages.length - 1;
   const isRight = rightShare(share);
   const started = await postPatiently(request, url, { locale });
   expect([200, 201]).toContain(started.status());
   let attempt = (await started.json()) as AttemptView;
   let n = 0;
-  while (attempt.current !== null) {
-    const view = attempt.current;
+
+  /** Answers and sends the page at the cursor. */
+  const sendCurrent = async (): Promise<AttemptView> => {
+    const view = attempt.current!;
     const planPage = plan.pages[view.index]!;
     const taken = new Set<string>();
     const answers: Record<string, Answer> = {};
@@ -477,6 +481,29 @@ export async function finishThroughApi(
     });
     expect(response.status()).toBe(200);
     attempt = ((await response.json()) as { attempt: AttemptView }).attempt;
-  }
-  return attempt;
+    return attempt;
+  };
+
+  while (attempt.current !== null && attempt.current.index < last) await sendCurrent();
+  expect(attempt.current?.index, `${id}: the cursor on its last page`).toBe(last);
+  return async () => {
+    const finished = await sendCurrent();
+    expect(finished.current, `${id}: finished by its last page`).toBeNull();
+    return finished;
+  };
+}
+
+/**
+ * Plays a whole lesson through its attempt routes, any kind: starts (or
+ * retakes) it, then answers `share` of the units right on every page.
+ * Returns the finished attempt.
+ */
+export async function finishThroughApi(
+  request: APIRequestContext,
+  lang: string,
+  id: string,
+  options: { share?: number; locale?: Locale } = {},
+): Promise<AttemptView> {
+  const sendLast = await playToLastPage(request, lang, id, options);
+  return sendLast();
 }
