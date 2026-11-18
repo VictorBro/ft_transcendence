@@ -206,6 +206,12 @@ export async function skimDocument(page: Page, how: Skim = 'finish'): Promise<vo
   // Hydrated: the countdown runs, and the button takes a press.
   const finished = page.getByRole('button', { name: "I've finished reading" });
   await expect(finished).toBeEnabled();
+  // While the document is open, the question stays hidden (lesson.css) and
+  // Check stays held (the document's block): neither shows in a static render.
+  const question = page.getByRole('heading', { name: 'Answer from memory' });
+  const check = page.locator('.lesson-task-footer').getByRole('button', { name: 'Check' });
+  await expect(question).toBeHidden();
+  await expect(check).toBeDisabled();
   if (how === 'finish') {
     await finished.click();
   } else {
@@ -213,7 +219,8 @@ export async function skimDocument(page: Page, how: Skim = 'finish'): Promise<vo
     await page.clock.fastForward((m! * 60 + s! + 1) * 1000);
   }
   await expect(reading).toHaveCount(0);
-  await expect(page.getByRole('heading', { name: 'Answer from memory' })).toBeVisible();
+  await expect(question).toBeVisible();
+  await expect(check).toBeEnabled();
 }
 
 /**
