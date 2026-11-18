@@ -208,6 +208,35 @@ describe('pageView', () => {
     const [item] = pageView(plan, exam, refOf('s')).items;
     if (item.type !== 'vocabulary_translation_exam') throw new Error(item.type);
     expect(item.units[0].article).toBe('indefinite');
+    expect(item.units[0].eitherGender).toBeUndefined();
+  });
+
+  it('says when either gender answers a translation exam word', () => {
+    const plan = buildPlan(fixtureLesson(BY_KIND.vocabulary), 'en');
+    const exam = plan.pages.findIndex((p) => p.role === 'exam');
+    const asked = plan.pages[exam].items[0];
+    if (asked.type !== 'vocabulary_translation_exam' || plan.brief.kind !== 'vocabulary')
+      throw new Error('not a vocabulary exam');
+    // That word as an adjective taught as its pair: japonais, japonaise.
+    const pair = {
+      ...plan,
+      brief: {
+        ...plan.brief,
+        targets: plan.brief.targets.map((t) =>
+          t.id === asked.targetId
+            ? {
+                ...t,
+                wordClass: 'adjective' as const,
+                examForms: ['japonais', 'japonaise'],
+                teachingForm: 'japonais, japonaise',
+              }
+            : t,
+        ),
+      },
+    };
+    const [item] = pageView(pair, exam, refOf('s')).items;
+    if (item.type !== 'vocabulary_translation_exam') throw new Error(item.type);
+    expect(item.units[0].eitherGender).toBe(true);
   });
 
   it('throws for an item that names a part its brief does not have', () => {

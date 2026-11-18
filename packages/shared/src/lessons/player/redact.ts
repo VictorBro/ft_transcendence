@@ -140,10 +140,12 @@ function itemView(plan: LessonPlan, page: PlanPage, item: Item, ref: RefOf): Ite
     case 'vocabulary_typed_gap':
       return {
         type: item.type,
+        // A noun without its article (the gap has it); another word in all
+        // its forms: "espagnol, espagnole", since the gap may want either.
         references: byRef(
           item.referenceTargetIds.map((id) => ({
             ref: card(id),
-            text: target(id).term,
+            text: target(id).wordClass === 'noun' ? target(id).term : target(id).teachingForm,
             genders: [...target(id).genders],
           })),
         ),
@@ -315,6 +317,27 @@ const TRANSLATION_EXAMS = new Set<string>([
   'function_translation_exam',
 ]);
 
+/**
+ * A vocabulary exam word that either gender answers: an adjective taught
+ * as its pair ("espagnol, espagnole", both exam forms), or a noun whose
+ * other gender the question accepts (genderVariants, see
+ * vocabularyExamAnswers). Says nothing of which form the key starts with.
+ */
+function eitherGender(plan: LessonPlan, page: PlanPage, unit: PlanUnit): boolean {
+  if (unit.kind !== 'text' || unit.itemType !== 'vocabulary_translation_exam') return false;
+  const item = page.items.find((it) => it.itemId === unit.itemId);
+  if (item?.type !== 'vocabulary_translation_exam') return false;
+  const t = (plan.brief as VocabularyBrief).targets.find((x) => x.id === item.targetId);
+  if (!t) return false;
+  const pair =
+    t.wordClass === 'adjective' &&
+    t.examForms.length > 1 &&
+    t.teachingForm === t.examForms.join(', ');
+  const variants =
+    t.genderVariants.length > 0 && t.genderVariants.every((v) => unit.accepted.answers.includes(v));
+  return pair || variants;
+}
+
 /** One unit without its key; `options` says whether its options and tokens are shuffled. */
 function unitView(
   plan: LessonPlan,
@@ -333,6 +356,7 @@ function unitView(
         ...(TRANSLATION_EXAMS.has(unit.itemType)
           ? { article: articleHint(unit.answer, plan.lang) }
           : {}),
+        ...(eitherGender(plan, page, unit) ? { eitherGender: true as const } : {}),
       };
     case 'choice':
       return {

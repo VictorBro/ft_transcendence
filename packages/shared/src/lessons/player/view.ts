@@ -119,6 +119,11 @@ const TextUnit = z.strictObject({
   prompt: PromptSchema,
   /** Translation exam: the answer starts with an indefinite or a definite article, or with none. */
   article: z.enum(['indefinite', 'definite']).nullable().optional(),
+  /**
+   * Vocabulary exam: either gender is right (japonais or japonaise, un
+   * serveur or une serveuse), since the question does not say which.
+   */
+  eitherGender: z.literal(true).optional(),
 });
 const ChoiceUnit = z.strictObject({
   ref: RefSchema,

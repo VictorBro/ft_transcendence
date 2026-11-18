@@ -26,11 +26,8 @@ const L = (en: string, fr: string, de: string): LocalizedText => ({ en, fr, de }
 export const COPY = {
   introduction: [
     L('Introduction', 'Introduction', 'Einführung'),
-    L(
-      'Read the introduction and listen to the new words.',
-      'Lisez l’introduction et écoutez les nouveaux mots.',
-      'Lies die Einführung und hör dir die neuen Wörter an.',
-    ),
+    // No Listen button on the introduction (#147): reading only.
+    L('Read the introduction.', 'Lisez l’introduction.', 'Lies die Einführung.'),
   ],
   flashcards: [
     L('Flashcards', 'Cartes mémoire', 'Karteikarten'),
