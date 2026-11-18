@@ -112,6 +112,8 @@ test.describe('the discussion page', () => {
     await expect(tutor.locator('[data-turn="assistant"]')).toContainText(
       'This is the fixture tutor. It gives the same answer to every question.',
     );
+    // Marked as cut short, not shown as a finished answer.
+    await expect(tutor.locator('[data-turn="assistant"][data-interrupted]')).toHaveCount(1);
 
     // Try again sends the same message: the fixture fails it the same way.
     await discussionSlot();

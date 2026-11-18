@@ -153,6 +153,8 @@ export function Discussion({
   const shown: DiscussionTurn[] = asking
     ? [...turns, { role: 'user', text: asking.message }, { role: 'assistant', text: asking.answer }]
     : turns;
+  // The index of an answer cut short by an error, or -1.
+  const cut = asking?.error ? shown.length - 1 : -1;
 
   return (
     <section
@@ -184,14 +186,20 @@ export function Discussion({
               <li
                 key={n}
                 data-turn={turn.role}
+                // The failed answer, last of the list: dimmed and trailing off,
+                // so it reads as cut short, not finished, above its error.
+                data-interrupted={n === cut || undefined}
                 className={
                   turn.role === 'user'
                     ? 'self-end rounded-2xl bg-slate-800 px-4 py-2 whitespace-pre-wrap text-slate-100'
-                    : 'whitespace-pre-wrap text-slate-200'
+                    : n === cut
+                      ? 'whitespace-pre-wrap text-slate-400'
+                      : 'whitespace-pre-wrap text-slate-200'
                 }
               >
                 <span className="sr-only">{turn.role === 'user' ? t('you') : t('tutor')}: </span>
                 {turn.text}
+                {n === cut ? <span aria-hidden="true">…</span> : null}
               </li>
             ),
           )}
