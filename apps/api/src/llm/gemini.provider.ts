@@ -14,9 +14,10 @@ import {
 
 // The base address of the Gemini API. The model name and ":generateContent" are added per call.
 const API = 'https://generativelanguage.googleapis.com/v1beta/models';
-// How long we wait for Gemini before giving up: 60 seconds. "60_000" is just 60000,
-// the "_" only makes the number easier to read.
-const TIMEOUT_MS = 60_000;
+// How long we wait for Gemini before giving up: 90 seconds. "90_000" is just 90000,
+// the "_" only makes the number easier to read. A free key waited 73 to 83 s for
+// its first word on 2026-11-18, where 2 to 40 s was usual before.
+const TIMEOUT_MS = 90_000;
 // How a call can end, as the metrics count it: "ok", or the reason of its LlmError.
 // Exclude<...> takes 'disabled' out of the reasons: only the fixture uses it.
 const OUTCOMES: ('ok' | Exclude<LlmFailure, 'disabled'>)[] = [

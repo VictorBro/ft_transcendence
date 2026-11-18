@@ -73,13 +73,13 @@ import { LlmError, LlmFailure, LlmProvider, StructuredRequest } from "./llm.prov
 
 ```ts
 const API = "https://generativelanguage.googleapis.com/v1beta/models";
-const TIMEOUT_MS = 60_000;
+const TIMEOUT_MS = 90_000;
 ```
 
 - `API` : l'adresse de base. À chaque appel, on ajoute `/<modèle>:generateContent`, ce qui donne par exemple :
   `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent`
   `generateContent` est le nom de l'opération de Google : « génère une réponse ».
-- `TIMEOUT_MS` : on attend au maximum 60 secondes. `60_000` vaut exactement `60000` ; le `_` n'a aucun effet, il sépare seulement les milliers pour la lecture (comme `1'000'000` en C++14).
+- `TIMEOUT_MS` : on attend au maximum 90 secondes. `90_000` vaut exactement `90000` ; le `_` n'a aucun effet, il sépare seulement les milliers pour la lecture (comme `1'000'000` en C++14).
 
 ```ts
 const OUTCOMES: ("ok" | Exclude<LlmFailure, "disabled">)[] = [
@@ -284,7 +284,7 @@ const response = await fetch(`${API}/${model}:generateContent`, {
 | `'content-type': 'application/json'`  | On prévient le serveur que le corps est du JSON.                                              |
 | `'x-goog-api-key': apiKey`            | La clé API. Elle est dans un **header**, pas dans l'URL.                                      |
 | `body`                                | Le corps : `requestBody(request)` construit l'objet, `JSON.stringify` le transforme en texte. |
-| `signal: AbortSignal.timeout(60_000)` | Annule automatiquement la requête au bout de 60 s.                                            |
+| `signal: AbortSignal.timeout(90_000)` | Annule automatiquement la requête au bout de 90 s.                                            |
 
 **Pourquoi la clé dans un header et pas dans l'URL ?** Avant (#69), l'URL contenait `?key=...`. Une URL finit souvent dans des logs (proxy, serveur, messages d'erreur). Un header beaucoup moins. C'est plus sûr.
 

@@ -78,13 +78,13 @@ describe('GeminiProvider', () => {
     });
   });
 
-  it('aborts the request after 60 seconds', async () => {
+  it('aborts the request after 90 seconds', async () => {
     const timeout = vi.spyOn(AbortSignal, 'timeout');
     fetchMock.mockResolvedValueOnce(reply([{ text: '{"answer":"ist"}' }]));
 
     await provider.generateStructured(request);
 
-    expect(timeout).toHaveBeenCalledExactlyOnceWith(60_000);
+    expect(timeout).toHaveBeenCalledExactlyOnceWith(90_000);
     expect(fetchMock.mock.calls[0][1]?.signal).toBe(timeout.mock.results[0].value);
   });
 

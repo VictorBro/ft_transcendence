@@ -361,7 +361,7 @@ Labels are always bounded: never a user id, an email, a session id, a lesson id 
 | `http_request_duration_seconds` | histogram, 5 ms to 10 s | `method` (the 7 usual ones, else `OTHER`); `route` (the Express template with its prefix, such as `/api/courses/:lang/lessons/:id`, else `static` below 400 or `unmatched`); `status_code` (`499` when the client left) | `httpMetrics` middleware, first in `configureApp` |
 | `http_requests_in_flight` | gauge | none | the same middleware |
 | `ft_llm_requests_total` | counter | `provider`, `model`, `purpose`, `outcome` (`ok`, `unreachable`, `rate_limited`, `http_error`, `blocked`, `incomplete`, `invalid`) | `GeminiProvider.generateStructured` |
-| `ft_llm_request_duration_seconds` | histogram, 0.5 s to 60 s | `provider`, `model`, `purpose` | the same |
+| `ft_llm_request_duration_seconds` | histogram, 0.5 s to 90 s | `provider`, `model`, `purpose` | the same |
 | `ft_llm_tokens_total` | counter | `provider`, `model`, `purpose`, `type` (`prompt`, `output`, `total`) | the same, from the usage Gemini reports |
 | `ft_llm_discussion_limited_total` | counter | `limit` (`user_minute`, `user_day`, `global_minute`) | `countMessage` (discussion-limits.ts), a lesson discussion message refused before any LLM call |
 | `ft_llm_provider_info` | gauge, always 1 | `provider`, `model` (`none` for the fixture) | `createLlmProvider` |

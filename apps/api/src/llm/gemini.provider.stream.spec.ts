@@ -105,13 +105,13 @@ describe('GeminiProvider.streamText', () => {
     });
   });
 
-  it('gives up on the whole answer after 60 seconds', async () => {
+  it('gives up on the whole answer after 90 seconds', async () => {
     const timeout = vi.spyOn(AbortSignal, 'timeout');
     fetchMock.mockResolvedValueOnce(sse([last('Bonjour')]));
 
     await read(provider.streamText(request()));
 
-    expect(timeout).toHaveBeenCalledExactlyOnceWith(60_000);
+    expect(timeout).toHaveBeenCalledExactlyOnceWith(90_000);
   });
 
   it('yields the text of each event as it comes, without the thoughts', async () => {

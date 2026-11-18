@@ -60,8 +60,8 @@ export const llmRequestDuration = new Histogram({
   name: 'ft_llm_request_duration_seconds',
   help: 'LLM call duration, failures included',
   labelNames: ['provider', 'model', 'purpose'] as const,
-  // Up to the 60 s timeout of gemini.provider.ts.
-  buckets: [0.5, 1, 2, 5, 10, 20, 30, 45, 60],
+  // Up to the 90 s timeout of gemini.provider.ts.
+  buckets: [0.5, 1, 2, 5, 10, 20, 30, 45, 60, 90],
   registers: [registry],
 });
 
