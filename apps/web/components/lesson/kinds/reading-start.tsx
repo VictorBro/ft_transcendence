@@ -3,9 +3,9 @@ import { useTranslations } from 'next-intl';
 import type { StartField } from '../types';
 
 /**
- * The reading field of the lesson page: "5 key words", under the
- * situation, as on the screen. Never the genre: the skim question can ask
- * it.
+ * The reading field of the lesson page: "5 key words", under the minutes.
+ * Neither the situation nor the genre: either one would answer the skim
+ * question.
  */
 export const KeyWords: StartField = function KeyWords({ outline }) {
   const t = useTranslations('Lesson');

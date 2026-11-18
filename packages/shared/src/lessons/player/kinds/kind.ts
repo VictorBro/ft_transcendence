@@ -36,7 +36,7 @@ export interface StartFacts {
   words?: number;
   /** Grammar: the verbs the lesson introduces. */
   newVerbs?: { infinitive: string; translation: NativeText }[];
-  /** Functions and reading: the situation. */
+  /** Functions: the situation. Never reading's: it would answer the skim question. */
   situation?: LocalizedText;
   /** Functions: the two roles. */
   roles?: string[];

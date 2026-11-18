@@ -381,14 +381,15 @@ test.describe('the roadmap and lesson loop', () => {
     await page.clock.install();
     await placeCourse(page, { lang: LANG, level: READING_LEVEL, dailyGoal: 10 });
 
-    // The lesson page: the situation and the key word count, never the genre.
+    // The lesson page: the key word count, and not the situation, which
+    // answers the skim question ("… to tell her readers about her three days
+    // in Marseille" before "Why does Camille write this post?").
     await visit(page, lessonPath(id!));
-    const brief = plan.brief as { situation: { en: string }; keywords: unknown[]; genre: string };
-    await expect(page.getByText(brief.situation.en, { exact: true })).toBeVisible();
+    const brief = plan.brief as { situation: { en: string }; keywords: unknown[] };
     await expect(
       page.getByText(`${brief.keywords.length} key words`, { exact: true }),
     ).toBeVisible();
-    await expect(page.locator('main')).not.toContainText(brief.genre);
+    await expect(page.locator('main')).not.toContainText(brief.situation.en);
     await page.getByRole('button', { name: 'Start the lesson' }).click();
     await page.waitForURL(/\/play$/);
 

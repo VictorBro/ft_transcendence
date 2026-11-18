@@ -128,7 +128,7 @@ describe('the reading lesson (#148) on PR #142 sample', () => {
     expect(right.results.score).toBe(100);
   });
 
-  it('shows the situation and the key word count on the lesson page, never the genre', () => {
+  it('shows the key word count on the lesson page, and neither the situation nor the genre', () => {
     const page = renderToStaticMarkup(
       <NextIntlClientProvider locale="en" messages={en} timeZone="UTC">
         {START_FIELDS.map((Field, n) => (
@@ -136,11 +136,12 @@ describe('the reading lesson (#148) on PR #142 sample', () => {
         ))}
       </NextIntlClientProvider>,
     );
-    expect(text(page)).toContain(
-      'Léa sends her friend Tom a text message on Thursday evening to plan Saturday.',
-    );
-    expect(text(page)).toContain('5 key words');
-    expect(page).not.toContain('text_message');
+    expect(text(page)).toBe('5 key words');
+    // The situation answers the skim question ("to plan Saturday" before "Why does Léa write?").
+    const situation = (source.brief as { situation: Record<string, string> }).situation;
+    for (const line of Object.values(situation)) {
+      expect(JSON.stringify(outline)).not.toContain(line);
+    }
     expect(JSON.stringify(outline)).not.toContain('text_message');
   });
 

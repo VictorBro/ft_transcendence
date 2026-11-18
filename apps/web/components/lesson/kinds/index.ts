@@ -12,9 +12,8 @@ import { wordCount } from './vocabulary-start';
 
 /**
  * Every kind's parts, merged: #147 to #149 add their own here, next to
- * grammar's, and change nothing else in the host. The fields render in
- * this order, each only when its lesson has it: the situation (functions
- * and reading) comes before reading's key words, as on the screen.
+ * grammar's, and change nothing else in the host. Each field renders only
+ * when its lesson has it.
  */
 const KINDS: KindParts[] = [
   { kind: 'grammar', renderers: grammarRenderers, startFields: [NewVerbs] },
