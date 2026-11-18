@@ -8,7 +8,7 @@ import {
   type Locator,
   type Page,
 } from '@playwright/test';
-import { lessons, type Locale } from '@ft/shared';
+import { lessons, type LessonKind, type Locale } from '@ft/shared';
 
 /**
  * Plays lessons the way a learner does (#146). The browser never gets the
@@ -17,9 +17,9 @@ import { lessons, type Locale } from '@ft/shared';
  * prompt on screen is matched to its plan unit by text. No database read,
  * no test route.
  *
- * Grammar first: #147 to #149 teach the browser player their kinds. The
- * API player below already answers every kind, since it reads the page
- * views as JSON.
+ * Grammar (#146) and vocabulary (#147) so far: #148 and #149 teach the
+ * browser player their kinds. The API player below already answers every
+ * kind, since it reads the page views as JSON.
  */
 
 type LessonPlan = lessons.player.LessonPlan;
@@ -35,8 +35,9 @@ const readJson = (file: string): unknown => JSON.parse(readFileSync(file, 'utf8'
 
 /**
  * The ids of the lessons in content/ of one language, level and kind
- * that have their lesson file, sorted: a new one is played without
- * anyone adding it to a list.
+ * that can be played, sorted: a new one is played without anyone adding
+ * it to a list. A vocabulary lesson is its brief; the other kinds need
+ * their lesson file.
  */
 export function contentLessons(lang: string, level: string, kind: string): string[] {
   return readdirSync(path.join(CONTENT, 'briefs'))
@@ -44,7 +45,11 @@ export function contentLessons(lang: string, level: string, kind: string): strin
     .map((file) => readJson(path.join(CONTENT, 'briefs', file)) as Record<string, unknown>)
     .filter((brief) => brief.lang === lang && brief.level === level && brief.kind === kind)
     .map((brief) => String(brief.id))
-    .filter((id) => existsSync(path.join(CONTENT, 'lessons', `${id}.json`)))
+    .filter(
+      (id) =>
+        !lessons.hasContentFile(kind as LessonKind) ||
+        existsSync(path.join(CONTENT, 'lessons', `${id}.json`)),
+    )
     .sort();
 }
 
@@ -72,10 +77,30 @@ export function rightShare(share: number): (n: number) => boolean {
 const textOf = (list: { id: string; text: string }[], id: string) =>
   list.find((x) => x.id === id)?.text ?? '';
 
+type TextUnit = Extract<PlanUnit, { kind: 'text' }>;
+
 /** A typed answer that is right: the teaching answer. */
-const rightText = (unit: Extract<PlanUnit, { kind: 'text' }>) => unit.answer;
+const rightText = (unit: TextUnit) => unit.answer;
 /** One no lesson accepts. */
 const WRONG_TEXT = 'zzz';
+/**
+ * A wrong answer that keeps the answer's article ("un zzz"), so a
+ * vocabulary exam row never holds Next with its article note.
+ */
+const wrongText = (unit: TextUnit, lang: string) =>
+  lessons.player.startsWithArticle(unit.answer, lang)
+    ? `${unit.answer.split(/\s+/)[0]} ${WRONG_TEXT}`
+    : WRONG_TEXT;
+
+/** The interface's English names of the genders, which the gender options are. */
+const GENDER_LABELS: Record<string, string> = {
+  masculine: 'Masculine',
+  feminine: 'Feminine',
+  neuter: 'Neuter',
+};
+/** An option as the page names it: a gender by its label, the rest as written. */
+const optionLabel = (option: { text: string; lang: string }) =>
+  option.lang === 'ui' ? (GENDER_LABELS[option.text] ?? option.text) : option.text;
 
 /* ------------------------------------------------------- in the browser */
 
@@ -158,19 +183,32 @@ export async function answerPage(
   const used = new Set<string>();
   // A board's options are used once each: the persons given so far.
   const given = new Set<string>();
+  // The course language, from /<locale>/learn/<lang>/lessons/<id>/play.
+  const lang = new URL(page.url()).pathname.split('/')[3] ?? '';
+
+  // Flashcards: every card turned, or Continue stays disabled.
+  const unturned = page.locator('[data-card] button[aria-pressed="false"]');
+  while ((await unturned.count()) > 0) await unturned.first().click();
 
   for (const unit of planPage.units) {
     const good = right(unit);
     switch (unit.kind) {
       case 'text': {
         const row = await unusedRow(rowsOf(page, unit.prompt), used);
-        await row.getByRole('textbox').fill(good ? rightText(unit) : WRONG_TEXT);
+        const text = good ? rightText(unit) : wrongText(unit, lang);
+        await row.getByRole('textbox').fill(text);
+        // A plural answer ("des ...") asks for its gender: the noun's.
+        const gender = unit.noun?.genders[0];
+        if (lessons.player.isPluralAnswer(text) && gender) {
+          await row.getByRole('radio', { name: GENDER_LABELS[gender], exact: true }).click();
+        }
         break;
       }
       case 'choice': {
         const board =
           unit.itemType === 'grammar_person_matching' ||
-          unit.itemType === 'grammar_pronoun_form_match';
+          unit.itemType === 'grammar_pronoun_form_match' ||
+          unit.itemType === 'vocabulary_matching';
         const pickFrom = good
           ? unit.correct
           : unit.options.map((o) => o.id).filter((id) => !unit.correct.includes(id));
@@ -183,12 +221,12 @@ export async function answerPage(
             .locator('[data-option]')
             .getByText(textOf(unit.options, option), { exact: true })
             .click();
-          await row.getByRole('button').click();
+          // The box, not its Listen button when the browser has a voice.
+          await row.getByRole('button').first().click();
         } else {
           const row = await unusedRow(rowsOf(page, unit.prompt), used);
-          await row
-            .getByRole('radio', { name: textOf(unit.options, pickFrom[0]!), exact: true })
-            .click();
+          const option = unit.options.find((o) => o.id === pickFrom[0])!;
+          await row.getByRole('radio', { name: optionLabel(option), exact: true }).click();
         }
         break;
       }
