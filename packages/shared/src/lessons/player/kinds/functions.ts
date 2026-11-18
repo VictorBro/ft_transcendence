@@ -199,7 +199,16 @@ export const functions: KindModule<FunctionsBrief, FunctionsContent, FunctionsIt
   // Two sections before the exam: what is presented, then the exercises; named by their steps.
   section: (page) => ({ key: page.role }),
   pointTitle: (page) => page.stepLabel,
-  start: (brief) => ({ situation: brief.situation, roles: brief.roles.map((r) => r.label) }),
+  // The roles in the order they speak in the model dialogue: its first speaker stays on the left,
+  // in the model dialogue and in the exam dialogue alike.
+  start: (brief, plan) => {
+    const dialogue = plan.pages
+      .flatMap((p) => p.items)
+      .find((item) => item.type === 'function_dialogue');
+    const first = dialogue?.type === 'function_dialogue' ? dialogue.lines[0]?.roleId : undefined;
+    const roles = [...brief.roles].sort((a, b) => Number(b.id === first) - Number(a.id === first));
+    return { situation: brief.situation, roles: roles.map((r) => r.label) };
+  },
   examPart: (page): ExamPart | undefined => {
     const types = new Set(page.units.map((u) => u.itemType));
     if (types.size !== 1) return undefined;
