@@ -32,12 +32,13 @@ export type ExamPart = 'translation' | 'replies' | 'dialogue';
 
 /** The start-page facts of a lesson, besides its title and objective. */
 export interface StartFacts {
-  /** Vocabulary: the number of words. */
+  /** Vocabulary: the number of words. Reading: the number of key words. */
   words?: number;
   /** Grammar: the verbs the lesson introduces. */
   newVerbs?: { infinitive: string; translation: NativeText }[];
-  /** Functions: the situation and the two roles. */
+  /** Functions and reading: the situation. */
   situation?: LocalizedText;
+  /** Functions: the two roles. */
   roles?: string[];
 }
 

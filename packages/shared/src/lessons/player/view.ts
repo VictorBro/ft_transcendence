@@ -79,11 +79,11 @@ export const LessonOutlineSchema = z.strictObject({
       points: z.array(z.strictObject({ number: z.number().int().positive(), title: Localized })),
     }),
   ),
-  /** Vocabulary: the number of words. */
+  /** Vocabulary: the number of words. Reading: the number of key words. */
   words: z.number().int().positive().optional(),
   /** Grammar: the verbs the lesson introduces. */
   newVerbs: z.array(z.strictObject({ infinitive: z.string(), translation: Native })).optional(),
-  /** Functions only: a reading lesson's situation would answer its skim question. */
+  /** Functions and reading: the situation (never a reading lesson's genre). */
   situation: Localized.optional(),
   /** Functions: the two roles of the dialogue. */
   roles: z.array(z.string()).optional(),
