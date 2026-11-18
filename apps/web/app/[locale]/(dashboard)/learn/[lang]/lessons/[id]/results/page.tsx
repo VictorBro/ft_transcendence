@@ -111,6 +111,21 @@ export default async function ResultsPage({ params }: { params: Params }) {
   );
 }
 
+const GENDERS = ['masculine', 'feminine', 'neuter'] as const;
+type Gender = (typeof GENDERS)[number];
+const isGender = (text: string | null): text is Gender => GENDERS.includes(text as Gender);
+
+/**
+ * A row of a gender page (#147): its answer is a gender, and its prompt the
+ * bare word. A translation's prompt is in the mother tongue, and a gap's has
+ * text around it, so neither is taken for one.
+ */
+const isGenderRow = (row: Row) =>
+  isGender(row.answer) &&
+  row.prompt.native === undefined &&
+  row.prompt.before === undefined &&
+  row.prompt.after === undefined;
+
 const TONE: Record<Row['outcome'], string> = {
   fully_correct: 'border-green-500/50',
   orthography_only: 'border-amber-400/60',
@@ -181,30 +196,52 @@ async function ResultRow({ row, lang, locale }: { row: Row; lang: Language; loca
           {t('points', { points: points(row.points) })}
         </span>
       </div>
-      <dl className="grid grid-cols-[auto_minmax(0,1fr)] gap-x-3 gap-y-1 text-sm">
-        <dt className="text-slate-400">{placement('yourAnswer')}</dt>
-        <dd>
-          {row.yours === null ? (
-            <span className="text-slate-500">
-              {row.timedOut ? placement('noAnswer') : t('blank')}
-            </span>
-          ) : (
-            <span lang={lang}>
-              {marks
-                ? marks.map((mark, n) => (
-                    <span key={n} className={mark.wrong ? 'text-red-300 underline' : undefined}>
-                      {mark.text}
-                    </span>
-                  ))
-                : row.yours}
-            </span>
-          )}
-        </dd>
-        <dt className="text-slate-400">{placement('correctAnswer')}</dt>
-        <dd lang={lang} className="text-green-300">
-          {row.accepted ?? row.answer}
-        </dd>
-      </dl>
+      {isGenderRow(row) ? (
+        // As on the screen: the word, a wrong gender struck through, then the right one.
+        <p className="flex flex-wrap items-baseline gap-x-2 text-sm" data-gender-row>
+          {row.yours !== null && row.yours !== row.answer ? (
+            <>
+              <span className="sr-only">{placement('yourAnswer')}: </span>
+              <del className="text-red-300">
+                {isGender(row.yours) ? t(`genders.${row.yours}`) : row.yours}
+              </del>
+              <span aria-hidden="true">→</span>
+            </>
+          ) : null}
+          <span className="sr-only">{placement('correctAnswer')}: </span>
+          <strong className="font-semibold text-green-300">
+            {isGender(row.answer) ? t(`genders.${row.answer}`) : row.answer}
+          </strong>
+        </p>
+      ) : (
+        <dl className="grid grid-cols-[auto_minmax(0,1fr)] gap-x-3 gap-y-1 text-sm">
+          <dt className="text-slate-400">{placement('yourAnswer')}</dt>
+          <dd>
+            {row.yours === null ? (
+              <span className="text-slate-500">
+                {row.timedOut ? placement('noAnswer') : t('blank')}
+              </span>
+            ) : (
+              <span lang={lang}>
+                {marks
+                  ? marks.map((mark, n) => (
+                      <span key={n} className={mark.wrong ? 'text-red-300 underline' : undefined}>
+                        {mark.text}
+                      </span>
+                    ))
+                  : row.yours}
+                {row.gender ? (
+                  <span className="text-slate-400"> ({t(`genders.${row.gender}`)})</span>
+                ) : null}
+              </span>
+            )}
+          </dd>
+          <dt className="text-slate-400">{placement('correctAnswer')}</dt>
+          <dd lang={lang} className="text-green-300">
+            {row.accepted ?? row.answer}
+          </dd>
+        </dl>
+      )}
       {row.outcome === 'orthography_only' ? (
         <p className="text-sm text-amber-300">{t('halfPoint')}</p>
       ) : null}

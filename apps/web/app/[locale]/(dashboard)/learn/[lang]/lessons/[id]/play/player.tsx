@@ -10,6 +10,7 @@ import { ITEM_RENDERERS } from '@/components/lesson/kinds';
 import { LessonNavigation } from '@/components/lesson/navigation';
 import type {
   Answer,
+  Gate,
   ItemProps,
   ItemView,
   LessonOutline,
@@ -93,6 +94,10 @@ export function LessonPlayer({
   const [timedOut, setTimedOut] = useState<number | null>(null);
   // The drafts came from storage: from then on, they go back to it.
   const [loaded, setLoaded] = useState(false);
+  // The holds the items put on the main button (see Gate), by their key.
+  const [gates, setGates] = useState<Record<string, Gate>>({});
+  // A warn hold was shown once on this page: the next press goes on.
+  const [warned, setWarned] = useState(false);
   const top = useRef<HTMLDivElement>(null);
   const heading = useRef<HTMLHeadingElement>(null);
   // Set when the player moves to another page, so the new page's heading takes the focus.
@@ -200,6 +205,7 @@ export function LessonPlayer({
       setChecked(null);
       setFlash(false);
       setError(null);
+      setWarned(false);
       if (next.current === null) {
         finished.current = true;
         clearDrafts({ lang, id, attemptId: next.attemptId });
@@ -215,6 +221,21 @@ export function LessonPlayer({
     },
     [lang, id, router, resultsPath],
   );
+
+  // Stable, so an item's useGate effect runs only when its own hold changes.
+  const gate = useCallback((key: string, value: Gate | null) => {
+    setGates((current) => {
+      const now = current[key];
+      if (value === null) {
+        if (now === undefined) return current;
+        const rest = { ...current };
+        delete rest[key];
+        return rest;
+      }
+      if (now?.message === value.message && now.mode === value.mode) return current;
+      return { ...current, [key]: value };
+    });
+  }, []);
 
   function answer(ref: Ref, value: Answer | undefined) {
     setDrafts((current) => {
@@ -335,7 +356,16 @@ export function LessonPlayer({
     onAnswer: answer,
     feedback: checked?.feedback ?? null,
     locked,
+    onGate: gate,
   };
+
+  // The holds only stop the page's own button: Continue after a check goes on.
+  const held = checked ? [] : Object.values(gates);
+  const blocked = held.filter((g) => g.mode === 'block');
+  const warnings = held.filter((g) => g.mode === 'warn');
+  const blockNotes = [...new Set(blocked.map((g) => g.message))];
+  // A warning reads as one: amber, once the first press showed it.
+  const warnNotes = warned ? [...new Set(warnings.map((g) => g.message))] : [];
 
   const button = (() => {
     if (checked) return { label: t('continue'), onClick: next };
@@ -460,20 +490,37 @@ export function LessonPlayer({
 
             <div className="lesson-task-footer flex flex-col gap-3">
               <FormError message={error} />
-              <button
-                type="button"
-                // The second click of a double-click would land on the next
-                // page's Check (or Next) and send it blank: only single
-                // clicks count. A key press has detail 0.
-                onClick={(event) => {
-                  if (event.detail > 1) return;
-                  button.onClick();
-                }}
-                disabled={pending || flash}
-                className={`${PRIMARY_BUTTON} self-end`}
-              >
-                {button.label}
-              </button>
+              <div className="flex flex-wrap items-center justify-end gap-x-4 gap-y-2">
+                {blockNotes.length > 0 ? (
+                  <p role="status" data-hold="block" className="text-right text-slate-300">
+                    {blockNotes.join(' ')}
+                  </p>
+                ) : null}
+                {warnNotes.length > 0 ? (
+                  <p role="status" data-hold="warn" className="text-right text-amber-300">
+                    {warnNotes.join(' ')}
+                  </p>
+                ) : null}
+                <button
+                  type="button"
+                  // The second click of a double-click would land on the next
+                  // page's Check (or Next) and send it blank: only single
+                  // clicks count. A key press has detail 0.
+                  onClick={(event) => {
+                    if (event.detail > 1) return;
+                    // A warn hold: the first press shows it, the next one goes on.
+                    if (warnings.length > 0 && !warned) {
+                      setWarned(true);
+                      return;
+                    }
+                    button.onClick();
+                  }}
+                  disabled={pending || flash || blocked.length > 0}
+                  className={PRIMARY_BUTTON}
+                >
+                  {button.label}
+                </button>
+              </div>
             </div>
           </section>
         </div>

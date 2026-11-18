@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { useTranslations } from 'next-intl';
 
 import { outcomeTone } from './controls';
+import { Listen } from './listen';
 import type { AnswerProps, Ref, UnitView } from './types';
 
 type ChoiceUnit = Extract<UnitView, { kind: 'choice' }>;
@@ -23,7 +24,8 @@ export function MatchingPairs({
   onAnswer,
   feedback,
   locked,
-}: AnswerProps & { units: ChoiceUnit[] }) {
+  listen = false,
+}: AnswerProps & { units: ChoiceUnit[]; listen?: boolean }) {
   const t = useTranslations('Lesson');
   const options = units[0]?.options ?? [];
   const frame = useRef<HTMLDivElement>(null);
@@ -171,33 +173,49 @@ export function MatchingPairs({
             {displayedUnits.map((unit) => {
               const option = given(unit);
               const note = feedback?.get(unit.ref);
+              const box = (
+                <button
+                  ref={(button) => {
+                    if (button) right.current.set(unit.ref, button);
+                    else right.current.delete(unit.ref);
+                  }}
+                  type="button"
+                  disabled={locked}
+                  data-outcome={note?.outcome}
+                  lang={lang}
+                  aria-pressed={selected?.side === 'right' && selected.ref === unit.ref}
+                  aria-label={
+                    option
+                      ? t('pairedWith', { text: prompt(unit), partner: optionText(option) ?? '' })
+                      : prompt(unit)
+                  }
+                  className={`lesson-match-button ${option ? 'is-paired' : ''} ${note ? `${outcomeTone(note.outcome)} animate-lesson-slide` : ''}`}
+                  onClick={() => choose('right', unit.ref)}
+                >
+                  <span>{prompt(unit)}</span>
+                  {option ? (
+                    <span className="lesson-pair-badge" aria-hidden="true">
+                      {options.findIndex((entry) => entry.ref === option) + 1}
+                    </span>
+                  ) : null}
+                </button>
+              );
               return (
                 <li key={unit.ref} data-unit={unit.ref}>
-                  <button
-                    ref={(button) => {
-                      if (button) right.current.set(unit.ref, button);
-                      else right.current.delete(unit.ref);
-                    }}
-                    type="button"
-                    disabled={locked}
-                    data-outcome={note?.outcome}
-                    lang={lang}
-                    aria-pressed={selected?.side === 'right' && selected.ref === unit.ref}
-                    aria-label={
-                      option
-                        ? t('pairedWith', { text: prompt(unit), partner: optionText(option) ?? '' })
-                        : prompt(unit)
-                    }
-                    className={`lesson-match-button ${option ? 'is-paired' : ''} ${note ? `${outcomeTone(note.outcome)} animate-lesson-slide` : ''}`}
-                    onClick={() => choose('right', unit.ref)}
-                  >
-                    <span>{prompt(unit)}</span>
-                    {option ? (
-                      <span className="lesson-pair-badge" aria-hidden="true">
-                        {options.findIndex((entry) => entry.ref === option) + 1}
-                      </span>
-                    ) : null}
-                  </button>
+                  {listen ? (
+                    // The box and its Listen button side by side: a button cannot hold another.
+                    <div className="lesson-match-box">
+                      {box}
+                      <Listen
+                        text={prompt(unit)}
+                        lang={lang}
+                        small
+                        className="absolute top-1/2 right-3 -translate-y-1/2"
+                      />
+                    </div>
+                  ) : (
+                    box
+                  )}
                   {note && note.outcome !== 'fully_correct' ? (
                     <p
                       className="mt-2 text-sm font-semibold text-green-400"

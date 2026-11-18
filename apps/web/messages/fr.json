@@ -464,7 +464,25 @@
     "example": "Exemple",
     "pairedWith": "{text}, associé à {partner}",
     "pairSelected": "Sélection : {text}.",
-    "pairingStatus": "{count} paires sur {total} associées."
+    "pairingStatus": "{count} paires sur {total} associées.",
+    "listen": "Écouter : {text}",
+    "cardsTurned": "{turned} cartes retournées sur {total}",
+    "flipEvery": "Retourne toutes les cartes pour continuer.",
+    "turnCard": "Retourner la carte : {text}",
+    "gendersCorrect": "{right} genres corrects sur {total}.",
+    "genderOf": "Genre de {term}",
+    "genders": {
+      "masculine": "Masculin",
+      "feminine": "Féminin",
+      "neuter": "Neutre"
+    },
+    "wordChoices": "Mots au choix",
+    "withArticle": "avec article",
+    "withoutArticle": "sans article",
+    "typeArticle": "Écris l’article avant le mot.",
+    "pluralGender": "Genre de {text}",
+    "wordCount": "{count, plural, one {# mot} other {# mots}}",
+    "eitherGender": "masculin ou féminin"
   },
   "LessonKinds": {
     "grammar": "Grammaire",

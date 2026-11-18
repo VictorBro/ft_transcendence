@@ -699,6 +699,15 @@ header:has(+ main .lesson-view) > div {
   flex: 1 1 auto;
   height: auto;
 }
+/* A vocabulary box with its Listen button on the right (#147). */
+.lesson-matching-column > li > .lesson-match-box {
+  position: relative;
+  display: flex;
+  flex: 1 1 auto;
+}
+.lesson-match-box > .lesson-match-button {
+  padding-right: 56px;
+}
 /* A full person board separates its three singular and three plural rows. */
 .lesson-matching-column:has(> :nth-child(6)) > :nth-child(4) {
   margin-top: 16px;

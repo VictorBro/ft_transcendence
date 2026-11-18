@@ -22,9 +22,19 @@ type ChoiceUnit = Extract<UnitView, { kind: 'choice' }>;
  */
 export function MatchingBoard({
   layout,
+  listen = false,
   ...props
-}: AnswerProps & { units: ChoiceUnit[]; layout: 'pairs' | 'drag' }) {
-  return layout === 'pairs' ? <MatchingPairs {...props} /> : <DragBoard {...props} />;
+}: AnswerProps & {
+  units: ChoiceUnit[];
+  layout: 'pairs' | 'drag';
+  /** pairs: a Listen button on each course-language box (vocabulary, #147). */
+  listen?: boolean;
+}) {
+  return layout === 'pairs' ? (
+    <MatchingPairs listen={listen} {...props} />
+  ) : (
+    <DragBoard {...props} />
+  );
 }
 
 function DragBoard({

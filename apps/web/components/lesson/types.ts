@@ -10,6 +10,21 @@ export type Ref = lessons.player.Ref;
 export type LessonOutline = lessons.player.LessonOutline;
 export type Localized = lessons.player.LocalizedTextView;
 
+/** A gender, as an answer and a gender row carry it. */
+export type Gender = NonNullable<Extract<Answer, { text: string; token?: never }>['gender']>;
+
+/**
+ * A hold an item puts on the player's main button (#147), shown beside it:
+ * - `block`: the button stays disabled ("Flip every card to continue.");
+ * - `warn`: the first press only shows the message, the second goes on
+ *   ("Type the article before the word.").
+ * The countdown at zero ignores both.
+ */
+export interface Gate {
+  message: string;
+  mode: 'block' | 'warn';
+}
+
 /**
  * What the player hands every unit and item: the drafts, the feedback
  * once checked, and whether the answers can still change.
@@ -25,6 +40,11 @@ export interface AnswerProps {
   feedback: ReadonlyMap<Ref, UnitFeedback> | null;
   /** No change any more: a request is running, the page was checked, or its time ran out. */
   locked: boolean;
+  /**
+   * Sets or clears a hold on the main button, by a key the item picks (a
+   * ref). Stable across renders; useGate (gate.ts) sets and clears it.
+   */
+  onGate: (key: string, gate: Gate | null) => void;
 }
 
 export interface ItemProps<T extends ItemViewType = ItemViewType> extends AnswerProps {
