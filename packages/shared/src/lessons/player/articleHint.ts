@@ -3,11 +3,16 @@ import { normalizeAnswer } from './score';
 /**
  * The article hint of a translation exam: the question says whether the
  * answer starts with an article, so "livre" for "un livre" is not a
- * surprise in the results. French only for now; another course language
- * gets no hint.
+ * surprise in the results. Every course language has its rules: a German
+ * exam answer is "der Buchstabe", and a few English ones start with "the".
  */
 const ARTICLES: Record<string, { indefinite: RegExp; definite: RegExp }> = {
   fr: { indefinite: /^(un|une|des)\s/iu, definite: /^(le|la|les)\s|^l'/iu },
+  de: {
+    indefinite: /^(ein|eine|einen|einem|einer|eines)\s/iu,
+    definite: /^(der|die|das|den|dem|des)\s/iu,
+  },
+  en: { indefinite: /^(a|an)\s/iu, definite: /^the\s/iu },
 };
 
 /** true when `text` starts with an article of `lang`. */

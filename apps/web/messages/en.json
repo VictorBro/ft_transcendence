@@ -233,6 +233,14 @@
     "lesson": {
       "notFound": "That lesson does not exist"
     },
+    "llm": {
+      "unavailable": "The tutor cannot answer right now. Try again in a moment.",
+      "rateLimited": "The tutor is busy. Try again in a minute.",
+      "tooManyMessages": "You have sent the tutor a lot of messages. Try again later.",
+      "blocked": "The tutor cannot answer this message. Try asking it another way.",
+      "incomplete": "The answer stopped before the end. Ask again.",
+      "disabled": "The tutor is turned off on this server."
+    },
     "placement": {
       "inProgress": "A placement test is already running. Finish it first.",
       "invalidChoice": "Invalid answer choice for this question.",
@@ -471,7 +479,27 @@
     "example": "Example",
     "pairedWith": "{text}, paired with {partner}",
     "pairSelected": "Selected: {text}.",
-    "pairingStatus": "{count} of {total} pairs assigned."
+    "pairingStatus": "{count} of {total} pairs assigned.",
+    "listenTo": "Listen: {text}",
+    "cardsTurned": "{count} of {total, plural, one {# card} other {# cards}} turned",
+    "flipEveryCard": "Flip every card to continue.",
+    "turnCard": "Turn the card: {text}",
+    "gendersCorrect": "{count} of {total, plural, one {# gender} other {# genders}} correct.",
+    "withArticle": "with article",
+    "withoutArticle": "without article",
+    "typeTheArticle": "Type the article before the word.",
+    "whichGender": "Which gender?",
+    "wordCount": "{count, plural, one {# word} other {# words}}",
+    "listen": "Listen",
+    "nextLine": "Next line",
+    "lineOf": "Line {n} of {total}",
+    "turnLine": "Turn the line: {text}",
+    "replyN": "Reply {n}"
+  },
+  "Genders": {
+    "masculine": "Masculine",
+    "feminine": "Feminine",
+    "neuter": "Neuter"
   },
   "LessonKinds": {
     "grammar": "Grammar",

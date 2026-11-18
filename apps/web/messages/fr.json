@@ -233,6 +233,14 @@
     "lesson": {
       "notFound": "Cette leçon n'existe pas"
     },
+    "llm": {
+      "unavailable": "Le tuteur ne peut pas répondre pour le moment. Réessaie dans un instant.",
+      "rateLimited": "Le tuteur est très sollicité. Réessaie dans une minute.",
+      "tooManyMessages": "Tu as envoyé beaucoup de messages au tuteur. Réessaie plus tard.",
+      "blocked": "Le tuteur ne peut pas répondre à ce message. Formule-le autrement.",
+      "incomplete": "La réponse s'est arrêtée avant la fin. Repose ta question.",
+      "disabled": "Le tuteur est désactivé sur ce serveur."
+    },
     "placement": {
       "inProgress": "Un test de positionnement est déjà en cours. Termine-le d'abord.",
       "invalidChoice": "Choix de réponse invalide pour cette question.",
@@ -471,7 +479,27 @@
     "example": "Exemple",
     "pairedWith": "{text}, associé à {partner}",
     "pairSelected": "Sélection : {text}.",
-    "pairingStatus": "{count} paires sur {total} associées."
+    "pairingStatus": "{count} paires sur {total} associées.",
+    "listenTo": "Écouter : {text}",
+    "cardsTurned": "{count, plural, one {# carte retournée} other {# cartes retournées}} sur {total}",
+    "flipEveryCard": "Retourne toutes les cartes pour continuer.",
+    "turnCard": "Retourner la carte : {text}",
+    "gendersCorrect": "{count, plural, one {# genre correct} other {# genres corrects}} sur {total}.",
+    "withArticle": "avec article",
+    "withoutArticle": "sans article",
+    "typeTheArticle": "Écris l'article avant le mot.",
+    "whichGender": "Quel genre ?",
+    "wordCount": "{count, plural, one {# mot} other {# mots}}",
+    "listen": "Écouter",
+    "nextLine": "Réplique suivante",
+    "lineOf": "Réplique {n} sur {total}",
+    "turnLine": "Retourner la réplique : {text}",
+    "replyN": "Réponse {n}"
+  },
+  "Genders": {
+    "masculine": "Masculin",
+    "feminine": "Féminin",
+    "neuter": "Neutre"
   },
   "LessonKinds": {
     "grammar": "Grammaire",

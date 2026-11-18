@@ -132,7 +132,10 @@ export function loadDrafts(slot: DraftSlot): Record<string, Answer> {
     const stale: string[] = [];
     for (let n = 0; n < storage.length; n += 1) {
       const key = storage.key(n);
-      if (key !== null && key.startsWith(prefix) && key !== own) stale.push(key);
+      // The attempt's own notes (keptKey) stay with it.
+      if (key !== null && key.startsWith(prefix) && key !== own && !key.startsWith(`${own}:`)) {
+        stale.push(key);
+      }
     }
     for (const key of stale) storage.removeItem(key);
 
@@ -164,4 +167,37 @@ export function saveDrafts(slot: DraftSlot, drafts: Record<string, Answer>) {
 
 export function clearDrafts(slot: DraftSlot) {
   saveDrafts(slot, {});
+  try {
+    const storage = window.localStorage;
+    const notes: string[] = [];
+    for (let n = 0; n < storage.length; n += 1) {
+      const key = storage.key(n);
+      if (key !== null && key.startsWith(`${draftKey(slot)}:`)) notes.push(key);
+    }
+    for (const key of notes) storage.removeItem(key);
+  } catch {
+    // Storage off: nothing was kept.
+  }
+}
+
+/*
+ * A note of an item that a reload should keep, beside the drafts of its
+ * attempt and cleared with them (the lines shown of an exam dialogue).
+ */
+const keptKey = (slot: DraftSlot, key: string) => `${draftKey(slot)}:${key}`;
+
+export function loadKept(slot: DraftSlot, key: string): string | null {
+  try {
+    return window.localStorage.getItem(keptKey(slot, key));
+  } catch {
+    return null;
+  }
+}
+
+export function saveKept(slot: DraftSlot, key: string, value: string) {
+  try {
+    window.localStorage.setItem(keptKey(slot, key), value);
+  } catch {
+    // No storage: a reload starts afresh.
+  }
 }

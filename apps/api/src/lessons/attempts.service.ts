@@ -56,6 +56,30 @@ async function findSource(
   return { lesson, source };
 }
 
+/**
+ * The learner's running attempt at a ready lesson, with its plan, read
+ * without a lock: 404 lesson.notFound as findSource, then 409 attempt.stale
+ * when there is none, when it is not `attemptId`, or when it is finished.
+ * For the routes that only read an attempt: the discussion (#150).
+ */
+export async function findAttempt(
+  db: Prisma.TransactionClient,
+  courseId: string,
+  lang: Language,
+  id: string,
+  attemptId: string,
+) {
+  const { lesson, source } = await findSource(db, lang, id);
+  const row = await db.lessonAttempt.findUnique({
+    where: { userLevelId_lessonId: { userLevelId: courseId, lessonId: lesson.id } },
+  });
+  if (!row || row.id !== attemptId || row.completedAt !== null) {
+    throw new ConflictException('attempt.stale');
+  }
+  const plan = shared.player.buildPlan(source, row.motherTongue);
+  return { lesson, source, row, plan };
+}
+
 /** The row as the attempt core reads it: times in milliseconds. */
 function stateOf(row: LessonAttempt): AttemptState {
   return {

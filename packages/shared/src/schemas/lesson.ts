@@ -421,3 +421,50 @@ export const FinishResultSchema = z.object({
   newAchievements: z.array(AchievementCodeSchema),
 });
 export type FinishResult = z.infer<typeof FinishResultSchema>;
+
+/**
+ * The limits of a lesson discussion (#150):
+ * - message: the learner's new message, in characters;
+ * - historyTurns: how many earlier turns the browser sends back, the oldest dropped first;
+ * - turnText: one earlier turn of the tutor's, in characters. A tutor's answer is capped
+ *   at 1,000 tokens, a few thousand characters, so this holds one with room to spare.
+ *   An earlier turn of the learner's was a message once, so it keeps `message`.
+ */
+export const DISCUSSION_LIMITS = { message: 500, historyTurns: 10, turnText: 6000 } as const;
+
+/** One earlier turn of the discussion: the learner's ("user") or the tutor's ("assistant"). */
+export const DiscussionTurnSchema = z
+  .object({
+    role: z.enum(['user', 'assistant'], 'request.invalid'),
+    text: z
+      .string('request.invalid')
+      .min(1, 'request.invalid')
+      .max(DISCUSSION_LIMITS.turnText, 'request.invalid'),
+  })
+  // Without this, 10 "user" turns of 6,000 characters would cost the key some 15k
+  // tokens a message: only a hand-made request sends one, but it would pass.
+  .refine((turn) => turn.role === 'assistant' || turn.text.length <= DISCUSSION_LIMITS.message, {
+    message: 'request.invalid',
+    path: ['text'],
+  });
+
+/**
+ * The body of POST /courses/:lang/lessons/:id/discussion.
+ *
+ * The server keeps nothing between two messages, so the browser sends the
+ * earlier turns back each time. No field holds the learner's mistakes: for
+ * "Explain my mistakes" the server reads them from the attempt itself.
+ *
+ * Every failure is request.invalid: the window (#151) checks the same
+ * limits before sending, so only a hand-made request gets here.
+ */
+export const LessonDiscussionSchema = z.object({
+  attemptId: z.uuid('request.invalid'),
+  message: z
+    .string('request.invalid')
+    .trim()
+    .min(1, 'request.invalid')
+    .max(DISCUSSION_LIMITS.message, 'request.invalid'),
+  history: z.array(DiscussionTurnSchema).max(DISCUSSION_LIMITS.historyTurns, 'request.invalid'),
+});
+export type LessonDiscussionInput = z.infer<typeof LessonDiscussionSchema>;

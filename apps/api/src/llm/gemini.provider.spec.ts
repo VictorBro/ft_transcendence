@@ -21,7 +21,12 @@ const json = (body: object, status = 200) => new Response(JSON.stringify(body), 
 function reply(parts: { text?: string; thought?: boolean }[], finishReason = 'STOP') {
   return json({
     candidates: [{ finishReason, content: { parts } }],
-    usageMetadata: { promptTokenCount: 1200, candidatesTokenCount: 300, totalTokenCount: 1650 },
+    usageMetadata: {
+      promptTokenCount: 1200,
+      candidatesTokenCount: 300,
+      thoughtsTokenCount: 150,
+      totalTokenCount: 1650,
+    },
   });
 }
 
@@ -73,13 +78,13 @@ describe('GeminiProvider', () => {
     });
   });
 
-  it('aborts the request after 60 seconds', async () => {
+  it('aborts the request after 90 seconds', async () => {
     const timeout = vi.spyOn(AbortSignal, 'timeout');
     fetchMock.mockResolvedValueOnce(reply([{ text: '{"answer":"ist"}' }]));
 
     await provider.generateStructured(request);
 
-    expect(timeout).toHaveBeenCalledExactlyOnceWith(60_000);
+    expect(timeout).toHaveBeenCalledExactlyOnceWith(90_000);
     expect(fetchMock.mock.calls[0][1]?.signal).toBe(timeout.mock.results[0].value);
   });
 
@@ -102,7 +107,7 @@ describe('GeminiProvider', () => {
     await provider.generateStructured(request);
 
     expect(log).toHaveBeenCalledExactlyOnceWith(
-      'question-batch:grammar on gemini-test: 1200 in, 300 out, 1650 total tokens, 2500 ms',
+      'question-batch:grammar on gemini-test: 1200 in, 300 out, 150 thinking, 1650 total tokens, 2500 ms',
     );
   });
 
@@ -116,7 +121,7 @@ describe('GeminiProvider', () => {
 
     await expect(provider.generateStructured(request)).resolves.toEqual({ answer: 'ist' });
     expect(log).toHaveBeenCalledExactlyOnceWith(
-      'question-batch:grammar on gemini-test: ? in, ? out, ? total tokens, 2500 ms',
+      'question-batch:grammar on gemini-test: ? in, ? out, ? thinking, ? total tokens, 2500 ms',
     );
   });
 
@@ -242,7 +247,7 @@ describe('GeminiProvider', () => {
       const other = values.filter(
         ({ labels }) => 'model' in labels && labels.model === 'gemini-other',
       );
-      expect(other).toHaveLength(3 * 7);
+      expect(other).toHaveLength(4 * 7);
       expect(other.every(({ value }) => value === 0)).toBe(true);
       await expect(
         seriesValue(llmRequests, {
@@ -262,7 +267,7 @@ describe('GeminiProvider', () => {
       const other = values.filter(
         ({ labels }) => 'model' in labels && labels.model === 'gemini-other',
       );
-      expect(other).toHaveLength(3 * 3);
+      expect(other).toHaveLength(4 * 3);
       expect(other.every(({ value }) => value === 0)).toBe(true);
     });
 

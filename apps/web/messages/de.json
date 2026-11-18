@@ -233,6 +233,14 @@
     "lesson": {
       "notFound": "Diese Lektion gibt es nicht"
     },
+    "llm": {
+      "unavailable": "Der Tutor kann gerade nicht antworten. Versuche es gleich noch einmal.",
+      "rateLimited": "Der Tutor ist gerade ausgelastet. Versuche es in einer Minute erneut.",
+      "tooManyMessages": "Du hast dem Tutor viele Nachrichten geschickt. Versuche es später erneut.",
+      "blocked": "Der Tutor kann auf diese Nachricht nicht antworten. Formuliere sie anders.",
+      "incomplete": "Die Antwort brach vor dem Ende ab. Stell deine Frage noch einmal.",
+      "disabled": "Der Tutor ist auf diesem Server deaktiviert."
+    },
     "placement": {
       "inProgress": "Ein Einstufungstest läuft bereits. Beende ihn zuerst.",
       "invalidChoice": "Ungültige Antwortauswahl für diese Frage.",
@@ -471,7 +479,27 @@
     "example": "Beispiel",
     "pairedWith": "{text}, verbunden mit {partner}",
     "pairSelected": "Ausgewählt: {text}.",
-    "pairingStatus": "{count} von {total} Paaren verbunden."
+    "pairingStatus": "{count} von {total} Paaren verbunden.",
+    "listenTo": "Anhören: {text}",
+    "cardsTurned": "{count} von {total, plural, one {# Karte} other {# Karten}} umgedreht",
+    "flipEveryCard": "Dreh jede Karte um, um weiterzumachen.",
+    "turnCard": "Karte umdrehen: {text}",
+    "gendersCorrect": "{count} von {total, plural, one {# Genus} other {# Genera}} richtig.",
+    "withArticle": "mit Artikel",
+    "withoutArticle": "ohne Artikel",
+    "typeTheArticle": "Schreib den Artikel vor das Wort.",
+    "whichGender": "Welches Genus?",
+    "wordCount": "{count, plural, one {# Wort} other {# Wörter}}",
+    "listen": "Anhören",
+    "nextLine": "Nächste Zeile",
+    "lineOf": "Zeile {n} von {total}",
+    "turnLine": "Zeile umdrehen: {text}",
+    "replyN": "Antwort {n}"
+  },
+  "Genders": {
+    "masculine": "Maskulinum",
+    "feminine": "Femininum",
+    "neuter": "Neutrum"
   },
   "LessonKinds": {
     "grammar": "Grammatik",

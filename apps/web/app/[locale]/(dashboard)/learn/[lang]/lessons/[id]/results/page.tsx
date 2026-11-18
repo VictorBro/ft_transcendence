@@ -5,6 +5,7 @@ import type { Language, lessons } from '@ft/shared';
 
 import { PRIMARY_BUTTON } from '@/components/form';
 import { playable } from '@/components/lesson/kinds';
+import { gluedAfter } from '@/lib/lesson-gap';
 import { ResultsReview } from '@/components/lesson/results-review';
 import { Link } from '@/i18n/navigation';
 import { lessonPaths, lessonTitle, loadLesson } from '@/lib/lesson';
@@ -111,6 +112,64 @@ export default async function ResultsPage({ params }: { params: Params }) {
   );
 }
 
+/** A gender row: "cahier: ~~Feminine~~ → Masculine", then why when it was wrong. */
+async function GenderRow({
+  row,
+  lang,
+  locale,
+  label,
+}: {
+  row: Row;
+  lang: Language;
+  locale: string;
+  label: (gender: string) => string;
+}) {
+  const t = await getTranslations('Lesson');
+  const placement = await getTranslations('Placement');
+  const right = row.outcome === 'fully_correct';
+  // A right row shows the learner's pick (Deutsche is masculine or feminine);
+  // a wrong one every right gender.
+  const shown = right
+    ? label(row.yours ?? row.answer)
+    : (row.rightGenders ?? [row.answer]).map(label).join(' / ');
+  return (
+    <li
+      data-outcome={row.outcome}
+      className={`lesson-result-row lesson-gender-result flex flex-col gap-1 ${TONE[row.outcome]}`}
+    >
+      <div className="flex items-start gap-3">
+        <span aria-hidden="true" className={right ? 'text-green-400' : 'text-red-400'}>
+          {right ? '✓' : '✕'}
+        </span>
+        <p className="flex flex-1 flex-wrap items-baseline gap-x-3">
+          <span lang={lang} className="text-slate-200">
+            {row.prompt.learning}:
+          </span>
+          {right ? null : row.yours === null ? (
+            <span className="text-slate-500">
+              {row.timedOut ? placement('noAnswer') : t('blank')}
+            </span>
+          ) : (
+            <span className="text-red-400 line-through">
+              <span className="sr-only">{placement('yourAnswer')}: </span>
+              {label(row.yours)}
+            </span>
+          )}
+          {right ? null : <span aria-hidden="true">→</span>}
+          <strong className="font-semibold text-green-400">
+            <span className="sr-only">{placement(right ? 'yourAnswer' : 'correctAnswer')}: </span>
+            {shown}
+          </strong>
+        </p>
+        <span className="shrink-0 text-sm font-semibold text-slate-300 tabular-nums">
+          {t('points', { points: points(row.points) })}
+        </span>
+      </div>
+      {right ? null : <p className="pl-7 text-slate-400">{pick(row.explanation, locale)}</p>}
+    </li>
+  );
+}
+
 const TONE: Record<Row['outcome'], string> = {
   fully_correct: 'border-green-500/50',
   orthography_only: 'border-amber-400/60',
@@ -122,8 +181,23 @@ const TONE: Record<Row['outcome'], string> = {
 async function ResultRow({ row, lang, locale }: { row: Row; lang: Language; locale: string }) {
   const t = await getTranslations('Lesson');
   const placement = await getTranslations('Placement');
+  const genders = await getTranslations('Genders');
   const { prompt } = row;
+  // A gender row ("masculine"), as on the gender results screen.
+  if (row.interfaceAnswer) {
+    return (
+      <GenderRow
+        row={row}
+        lang={lang}
+        locale={locale}
+        label={(g) => (genders.has(g) ? genders(g) : g)}
+      />
+    );
+  }
   const gap = prompt.before !== undefined || prompt.after !== undefined;
+  const genderOf = (g: string) => (genders.has(g) ? genders(g) : g);
+  // A plurale tantum answered with "des" counts with its gender: both are shown, "des cernes (Masculine)".
+  const plural = row.rightGenders !== undefined && /^des\s/iu.test(row.yours ?? '');
   // The marks cover a typed answer; a spotted word's answer ("est → es") shows plain.
   const marks = row.marks && row.marks.map((m) => m.text).join('') === row.yours ? row.marks : null;
 
@@ -161,7 +235,8 @@ async function ResultRow({ row, lang, locale }: { row: Row; lang: Language; loca
         <p className="flex flex-col">
           {gap ? (
             <span lang={lang} className="text-slate-100">
-              {prompt.before} ___ {prompt.after}
+              {prompt.before} ___{gluedAfter(prompt.after, lang) ? '' : ' '}
+              {prompt.after}
             </span>
           ) : null}
           {prompt.learning !== undefined ? (
@@ -197,12 +272,21 @@ async function ResultRow({ row, lang, locale }: { row: Row; lang: Language; loca
                     </span>
                   ))
                 : row.yours}
+              {plural ? (
+                <span lang={locale} className="text-slate-300">
+                  {' '}
+                  ({row.gender ? genderOf(row.gender) : t('blank')})
+                </span>
+              ) : null}
             </span>
           )}
         </dd>
         <dt className="text-slate-400">{placement('correctAnswer')}</dt>
         <dd lang={lang} className="text-green-300">
           {row.accepted ?? row.answer}
+          {plural ? (
+            <span lang={locale}> ({row.rightGenders!.map(genderOf).join(' / ')})</span>
+          ) : null}
         </dd>
       </dl>
       {row.outcome === 'orthography_only' ? (

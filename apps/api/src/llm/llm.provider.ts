@@ -12,7 +12,7 @@ export const LLM_PROVIDER = Symbol('LLM_PROVIDER');
  * "question-batch:grammar". TypeScript builds every allowed value from
  * QuestionCategory, so a typo like "question-batch:gramar" does not compile.
  */
-export type LlmPurpose = `question-batch:${QuestionCategory}`;
+export type LlmPurpose = `question-batch:${QuestionCategory}` | 'lesson-discussion';
 
 /**
  * What we send to the LLM.
@@ -31,6 +31,33 @@ export interface StructuredRequest<S extends z.ZodType> {
   user: string;
   /** Describes the JSON we expect back, and checks the reply against it. */
   schema: S;
+}
+
+/**
+ * One turn of a conversation. "user" is the learner, "assistant" the model.
+ * The names are ours, not Gemini's: each provider translates them
+ * (Gemini calls the model "model").
+ */
+export interface LlmMessage {
+  role: 'user' | 'assistant';
+  text: string;
+}
+
+/** What we send to the LLM when we want its answer as it is written. */
+export interface StreamRequest {
+  purpose: LlmPurpose;
+  /** The rules and the role of the model, for example "You are a French tutor". */
+  system: string;
+  /** The conversation so far, oldest first. The last one is the learner's new message. */
+  messages: LlmMessage[];
+  /** The longest answer we pay for, in tokens. The model stops there, mid-sentence if it must. */
+  maxOutputTokens: number;
+  /**
+   * Cancels the call. The route aborts it when the learner closes the page, so the
+   * provider stops reading the answer and Google stops writing it.
+   * It is required: a stream nobody can stop keeps spending tokens for no one.
+   */
+  signal: AbortSignal;
 }
 
 /**
@@ -53,16 +80,35 @@ export interface LlmProvider {
    * Resolves with the reply parsed by `schema`, or rejects with an LlmError.
    */
   generateStructured<S extends z.ZodType>(request: StructuredRequest<S>): Promise<z.output<S>>;
+
+  /**
+   * Sends the conversation to the LLM and gives back its answer piece by piece,
+   * as the model writes it, instead of waiting for the whole text.
+   *
+   * AsyncIterable<string> is something you read with "for await (const text of ...)":
+   * each turn of the loop waits for the next piece of text. The loop ends when the
+   * answer is complete.
+   *
+   * A failure is thrown as an LlmError, from the loop. It can come before the first
+   * piece (a blocked prompt) or after some (the connection dropped midway), so the
+   * caller may already have sent part of the answer when it happens.
+   *
+   * When request.signal is aborted, the loop ends with the signal's own error (an
+   * AbortError), not an LlmError: the caller asked for it, the LLM did not fail.
+   */
+  streamText(request: StreamRequest): AsyncIterable<string>;
 }
 
 /**
  * Why a call failed, as a fixed list of words: the metrics count failures by
  * it (src/metrics/metrics.ts), so it must never be free text like the message.
- * - unreachable: no HTTP answer at all (network, DNS, timeout).
+ * - unreachable: no HTTP answer at all (network, DNS, timeout), or the connection
+ *   dropped while the answer was still coming.
  * - rate_limited: HTTP 429. http_error: any other status outside 2xx.
- * - blocked: the prompt was refused. incomplete: the reply was cut short.
+ * - blocked: the safety filters refused the prompt, or stopped the reply.
+ *   incomplete: the reply was cut short for any other reason.
  * - invalid: the reply is not JSON, or fails the schema.
- * - disabled: no real LLM behind the provider (the fixture).
+ * - disabled: no real LLM behind the provider (the fixture's questions, LLM_PROVIDER=disabled).
  */
 export type LlmFailure =
   'unreachable' | 'rate_limited' | 'http_error' | 'blocked' | 'incomplete' | 'invalid' | 'disabled';
