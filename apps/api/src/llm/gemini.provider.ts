@@ -52,6 +52,8 @@ const PURPOSES: LlmPurpose[] = [
  *   - content.parts: the text of the answer, possibly cut into several pieces.
  *     "thought" is true on a piece that is the model's reasoning, not the answer.
  * - usageMetadata: how many tokens the call used (for the logs, and the bill).
+ *   thoughtsTokenCount, the thinking, is billed as output too; Gemini leaves it out
+ *   when the model did not think.
  */
 interface GeminiReply {
   promptFeedback?: { blockReason?: string };
@@ -62,6 +64,7 @@ interface GeminiReply {
   usageMetadata?: {
     promptTokenCount?: number;
     candidatesTokenCount?: number;
+    thoughtsTokenCount?: number;
     totalTokenCount?: number;
   };
 }
@@ -274,10 +277,12 @@ export class GeminiProvider implements LlmProvider {
   private record(purpose: LlmPurpose, usage: GeminiReply['usageMetadata'], started: number): void {
     const { model } = this.options;
     // "usage?.x" gives undefined if usage is missing, instead of crashing.
-    // "?? '?'" prints "?" when the number is missing.
+    // "?? '?'" prints "?" when the number is missing. No thoughts count is 0, not unknown.
+    const thinking = usage ? (usage.thoughtsTokenCount ?? 0) : '?';
     this.logger.log(
       `${purpose} on ${model}: ${usage?.promptTokenCount ?? '?'} in, ` +
-        `${usage?.candidatesTokenCount ?? '?'} out, ${usage?.totalTokenCount ?? '?'} total tokens, ` +
+        `${usage?.candidatesTokenCount ?? '?'} out, ${thinking} thinking, ` +
+        `${usage?.totalTokenCount ?? '?'} total tokens, ` +
         `${Date.now() - started} ms`,
     );
     // A number Gemini left out is skipped, not counted as 0.
@@ -329,6 +334,10 @@ function requestBody({ system, user, schema }: StructuredRequest<z.ZodType>) {
  * - contents: the whole conversation, oldest first. Gemini names the model's turns
  *   "model", where we say "assistant".
  * - generationConfig.maxOutputTokens: the longest answer we pay for.
+ * - generationConfig.thinkingConfig.thinkingBudget 0: no thinking before the answer.
+ *   The thinking counts against maxOutputTokens: 250 to 660 tokens of it were
+ *   measured before answers of 66 to 120, and a longer answer could be cut short.
+ *   A short tutor answer needs none, and it is billed as output too.
  * No JSON schema: the answer is free text for the learner to read.
  */
 function streamBody({ system, messages, maxOutputTokens }: StreamRequest) {
@@ -338,7 +347,7 @@ function streamBody({ system, messages, maxOutputTokens }: StreamRequest) {
       role: role === 'assistant' ? 'model' : 'user',
       parts: [{ text }],
     })),
-    generationConfig: { maxOutputTokens },
+    generationConfig: { maxOutputTokens, thinkingConfig: { thinkingBudget: 0 } },
   };
 }
 

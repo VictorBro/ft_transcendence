@@ -101,7 +101,7 @@ describe('GeminiProvider.streamText', () => {
         { role: 'model', parts: [{ text: 'Because "livre" is masculine.' }] },
         { role: 'user', parts: [{ text: 'And "la"?' }] },
       ],
-      generationConfig: { maxOutputTokens: 1000 },
+      generationConfig: { maxOutputTokens: 1000, thinkingConfig: { thinkingBudget: 0 } },
     });
   });
 

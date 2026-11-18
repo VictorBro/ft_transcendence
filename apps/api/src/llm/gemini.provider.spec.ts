@@ -21,7 +21,12 @@ const json = (body: object, status = 200) => new Response(JSON.stringify(body), 
 function reply(parts: { text?: string; thought?: boolean }[], finishReason = 'STOP') {
   return json({
     candidates: [{ finishReason, content: { parts } }],
-    usageMetadata: { promptTokenCount: 1200, candidatesTokenCount: 300, totalTokenCount: 1650 },
+    usageMetadata: {
+      promptTokenCount: 1200,
+      candidatesTokenCount: 300,
+      thoughtsTokenCount: 150,
+      totalTokenCount: 1650,
+    },
   });
 }
 
@@ -102,7 +107,7 @@ describe('GeminiProvider', () => {
     await provider.generateStructured(request);
 
     expect(log).toHaveBeenCalledExactlyOnceWith(
-      'question-batch:grammar on gemini-test: 1200 in, 300 out, 1650 total tokens, 2500 ms',
+      'question-batch:grammar on gemini-test: 1200 in, 300 out, 150 thinking, 1650 total tokens, 2500 ms',
     );
   });
 
@@ -116,7 +121,7 @@ describe('GeminiProvider', () => {
 
     await expect(provider.generateStructured(request)).resolves.toEqual({ answer: 'ist' });
     expect(log).toHaveBeenCalledExactlyOnceWith(
-      'question-batch:grammar on gemini-test: ? in, ? out, ? total tokens, 2500 ms',
+      'question-batch:grammar on gemini-test: ? in, ? out, ? thinking, ? total tokens, 2500 ms',
     );
   });
 
