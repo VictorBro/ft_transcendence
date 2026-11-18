@@ -20,9 +20,10 @@ import { expect, ONBOARDED_COURSE, placeCourse, test } from '../support/session'
 /**
  * The roadmap and lesson loop on real lessons (#96): a lesson played
  * through its pages, the daily goal met, the streak, and the lesson found
- * again in the list. Every case is on French A1, the onboarded course, and
- * plays with lesson-play.ts: through the pages, or through the API where
- * the case says so. The console guard watches each whole case.
+ * again in the list. Every case is on French A1, the onboarded course,
+ * except reading's, on French A2 (#148), and plays with lesson-play.ts:
+ * through the pages, or through the API where the case says so. The
+ * console guard watches each whole case.
  *
  * Each case that plays signs up its own learner: it moves the day's goal
  * and the streak, which the shared onboarded account must keep for the
@@ -37,6 +38,8 @@ const list = (params = '') => `${course}/lessons${params}`;
 
 /** The playable kinds of French A1: grammar (#146), vocabulary (#147), functions (#149). */
 const KINDS = ['grammar', 'vocabulary', 'functions'] as const;
+/** Reading (#148) plays on French A2: A1 has no reading lesson ready. */
+const READING_LEVEL = 'A2';
 
 /**
  * The playable French A1 lessons, fewest pages first: a page is a request
@@ -346,7 +349,6 @@ test.describe('the roadmap and lesson loop', () => {
     );
   });
 
-  // #148 adds reading here, on French A2: French A1 has no reading lesson ready.
   for (const kind of KINDS) {
     test(`a ${kind} lesson plays to its results, then its row is Passed`, async ({
       freshLearner: page,
@@ -366,4 +368,37 @@ test.describe('the roadmap and lesson loop', () => {
       expectSilent(violations);
     });
   }
+
+  // Reading (#148) on French A2: French A1 has no reading lesson ready.
+  test('a reading lesson plays to its results, its skim timing out, then its row is Passed', async ({
+    freshLearner: page,
+  }) => {
+    const [id] = contentLessons(LANG, READING_LEVEL, 'reading');
+    expect(id, `a French ${READING_LEVEL} reading lesson`).toBeDefined();
+    const plan = lessonPlan(id!);
+    const violations = watchConsole(page);
+    // The skim countdown is the browser's: the clock jumps to its end instead of waiting it out.
+    await page.clock.install();
+    await placeCourse(page, { lang: LANG, level: READING_LEVEL, dailyGoal: 10 });
+
+    // The lesson page: the situation and the key word count, never the genre.
+    await visit(page, lessonPath(id!));
+    const brief = plan.brief as { situation: { en: string }; keywords: unknown[]; genre: string };
+    await expect(page.getByText(brief.situation.en, { exact: true })).toBeVisible();
+    await expect(
+      page.getByText(`${brief.keywords.length} key words`, { exact: true }),
+    ).toBeVisible();
+    await expect(page.locator('main')).not.toContainText(brief.genre);
+    await page.getByRole('button', { name: 'Start the lesson' }).click();
+    await page.waitForURL(/\/play$/);
+
+    await playLesson(page, plan, { skim: 'timeout' });
+    await expect(page.getByRole('heading', { name: 'Your results' })).toBeVisible();
+    await settle(page);
+    await expect(page.getByText('Score: 100 / 100')).toBeVisible();
+
+    await visit(page, list(`?page=${await listPageOf(page, id!)}`));
+    await expect(row(page, id!)).toContainText('Passed');
+    expectSilent(violations);
+  });
 });

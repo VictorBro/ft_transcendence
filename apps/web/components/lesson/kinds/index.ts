@@ -5,12 +5,16 @@ import { functionsRenderers } from './functions';
 import { Situation } from './functions-start';
 import { grammarRenderers } from './grammar';
 import { NewVerbs } from './grammar-start';
+import { readingRenderers } from './reading';
+import { KeyWords } from './reading-start';
 import { vocabularyRenderers } from './vocabulary';
 import { wordCount } from './vocabulary-start';
 
 /**
  * Every kind's parts, merged: #147 to #149 add their own here, next to
- * grammar's, and change nothing else in the host.
+ * grammar's, and change nothing else in the host. The fields render in
+ * this order, each only when its lesson has it: the situation (functions
+ * and reading) comes before reading's key words, as on the screen.
  */
 const KINDS: KindParts[] = [
   { kind: 'grammar', renderers: grammarRenderers, startFields: [NewVerbs] },
@@ -21,6 +25,7 @@ const KINDS: KindParts[] = [
     startFacts: [wordCount],
   },
   { kind: 'functions', renderers: functionsRenderers, startFields: [Situation] },
+  { kind: 'reading', renderers: readingRenderers, startFields: [KeyWords] },
 ];
 
 export const ITEM_RENDERERS: ItemRenderers = Object.assign({}, ...KINDS.map((k) => k.renderers));

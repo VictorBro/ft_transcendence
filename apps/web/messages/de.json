@@ -494,7 +494,15 @@
     "nextLine": "Nächste Zeile",
     "lineOf": "Zeile {n} von {total}",
     "turnLine": "Zeile umdrehen: {text}",
-    "replyN": "Antwort {n}"
+    "replyN": "Antwort {n}",
+    "keyWordCount": "{count, plural, one {# Schlüsselwort} other {# Schlüsselwörter}}",
+    "readingDocument": "Dokument",
+    "timeToSkim": "Zeit zum Überfliegen",
+    "finishedReading": "Fertig gelesen",
+    "answerFromMemory": "Antworte aus dem Gedächtnis",
+    "questionOpens": "Die Frage öffnet sich, wenn die Zeit um ist oder wenn du fertig gelesen hast.",
+    "yourOrder": "Deine Reihenfolge",
+    "piecesToPlace": "Teile zum Einordnen"
   },
   "Genders": {
     "masculine": "Maskulinum",

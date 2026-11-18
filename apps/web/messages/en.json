@@ -494,7 +494,15 @@
     "nextLine": "Next line",
     "lineOf": "Line {n} of {total}",
     "turnLine": "Turn the line: {text}",
-    "replyN": "Reply {n}"
+    "replyN": "Reply {n}",
+    "keyWordCount": "{count, plural, one {# key word} other {# key words}}",
+    "readingDocument": "Document",
+    "timeToSkim": "Time to skim",
+    "finishedReading": "I've finished reading",
+    "answerFromMemory": "Answer from memory",
+    "questionOpens": "The question opens when the time is up or when you have finished reading.",
+    "yourOrder": "Your order",
+    "piecesToPlace": "Pieces to place"
   },
   "Genders": {
     "masculine": "Masculine",

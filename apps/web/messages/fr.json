@@ -494,7 +494,15 @@
     "nextLine": "Réplique suivante",
     "lineOf": "Réplique {n} sur {total}",
     "turnLine": "Retourner la réplique : {text}",
-    "replyN": "Réponse {n}"
+    "replyN": "Réponse {n}",
+    "keyWordCount": "{count, plural, one {# mot-clé} other {# mots-clés}}",
+    "readingDocument": "Document",
+    "timeToSkim": "Temps de survol",
+    "finishedReading": "J'ai fini de lire",
+    "answerFromMemory": "Réponds de mémoire",
+    "questionOpens": "La question s'ouvre quand le temps est écoulé ou quand tu as fini de lire.",
+    "yourOrder": "Ton ordre",
+    "piecesToPlace": "Éléments à placer"
   },
   "Genders": {
     "masculine": "Masculin",
