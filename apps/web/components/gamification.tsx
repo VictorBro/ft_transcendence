@@ -1,7 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import {
   CHALLENGE_XP,
-  GOAL_XP,
   LESSON_KINDS,
   type AchievementCode,
   type Challenge,
@@ -13,6 +12,7 @@ import { ProgressBar } from '@ft/ui';
 
 import { Link } from '@/i18n/navigation';
 import { achievementParams, achievementsPath } from '@/lib/achievements';
+import { xpBreakdown, type XpSource } from '@/lib/xp-breakdown';
 
 /*
  * The gamification on the course page and the lesson results (#97). Server
@@ -21,6 +21,13 @@ import { achievementParams, achievementsPath } from '@/lib/achievements';
  */
 
 const HEADING = 'text-xs font-semibold tracking-widest text-slate-500 uppercase';
+
+/** The label of each row of the XP card, by its source. */
+const XP_LABEL = {
+  lesson: 'xpLessonLabel',
+  goal: 'xpGoalLabel',
+  challenge: 'xpChallengeLabel',
+} as const satisfies Record<XpSource, string>;
 const TEXT_LINK =
   'inline-flex min-h-11 items-center self-start text-sm text-slate-300 underline underline-offset-4 transition-colors hover:text-slate-100';
 
@@ -165,19 +172,9 @@ export async function FinishXp({
   lang: Language;
 }) {
   const t = await getTranslations('Gamification');
-  const goal = finish.goalJustMet ? GOAL_XP : 0;
-  const challenge = finish.challengeJustDone ? CHALLENGE_XP : 0;
-  // A finish closed before #95 kept goalJustMet but earned nothing (EARNED_NOTHING
-  // in the API's viewOf): no breakdown, so no amount that was never awarded.
-  const legacy = finish.xpGained < goal + challenge;
   const titles = await Promise.all(finish.newAchievements.map((code) => achievementTitle(code)));
-  const rows = legacy
-    ? []
-    : [
-        { label: t('xpLessonLabel'), xp: finish.xpGained - goal - challenge },
-        ...(goal > 0 ? [{ label: t('xpGoalLabel'), xp: goal }] : []),
-        ...(challenge > 0 ? [{ label: t('xpChallengeLabel'), xp: challenge }] : []),
-      ];
+  // The amounts come from xpBreakdown (tested there); the card only names them.
+  const { rows, legacyGoal } = xpBreakdown(finish);
 
   return (
     <section
@@ -192,15 +189,16 @@ export async function FinishXp({
         {/* A two-column list: the label, then its XP aligned on the right. */}
         <dl className="grid min-w-48 flex-1 grid-cols-[1fr_auto] gap-x-6 gap-y-1 text-slate-300 sm:max-w-72">
           {rows.map((row) => (
-            <div key={row.label} className="contents">
-              <dt>{row.label}</dt>
+            <div key={row.source} className="contents">
+              <dt>{t(XP_LABEL[row.source])}</dt>
               <dd className="text-right font-semibold text-slate-100 tabular-nums">
                 {t('xpAmount', { xp: row.xp })}
               </dd>
             </div>
           ))}
         </dl>
-        {legacy && finish.goalJustMet ? <p className="text-slate-300">{t('xpGoalLabel')}</p> : null}
+        {/* A finish from before #95: its goal, without an amount never awarded. */}
+        {legacyGoal ? <p className="text-slate-300">{t('xpGoalLabel')}</p> : null}
       </div>
 
       {titles.length > 0 ? (
