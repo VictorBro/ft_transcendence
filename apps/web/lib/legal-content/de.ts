@@ -5,7 +5,7 @@ export const privacyPolicy: LegalDocument = {
   title: 'Datenschutzerklärung',
   description:
     'Was ft_transcendence sammelt, während Sie damit eine Sprache lernen, warum wir es sammeln, wie lange wir es aufbewahren, und wie Sie es zurückerhalten oder löschen lassen können.',
-  lastUpdated: '2026-11-07',
+  lastUpdated: '2026-11-18',
   intro:
     'ft_transcendence ist eine KI-gestützte Plattform zum Sprachenlernen. Eine Sprache gut zu unterrichten bedeutet, zu beobachten, wie Sie sie verwenden, daher verarbeitet dieser Dienst mehr über Ihr Lernverhalten als eine typische Website. Diese Richtlinie erklärt genau, was das in der Praxis bedeutet, geschrieben, um gelesen und nicht nur überflogen zu werden.',
   sections: [
@@ -23,7 +23,7 @@ export const privacyPolicy: LegalDocument = {
       paragraphs: [
         'Kontodaten: die bei der Anmeldung angegebene E-Mail-Adresse und der Anzeigename, ein Passwort, das nur als Argon2-Hash gespeichert wird, und, falls aktiviert, Ihre Einstellungen zur Zwei-Faktor-Authentifizierung. Wir speichern ein Passwort niemals in einer lesbaren Form.',
         'Lerndaten: die gewählte Zielsprache und Kompetenzstufe, die zu Übungen und Bewertungen eingereichten Antworten, das von unserer Bewertungs-Engine daraus abgeleitete Niveau, Serien, Punktzahlen und Fortschrittsmarkierungen, die von den Gamification-Funktionen verwendet werden.',
-        'Konversationsdaten: die Eingaben, die Sie an den KI-Tutor senden, und die Antworten, die er zurückgibt. In einem Sprachlernkontext sind diese Mitschriften das eigentliche Produkt, da sowohl Korrektur als auch Einstufung von Ihren vorherigen Versuchen abhängen, einschließlich der Fehler.',
+        'Konversationsdaten: die Nachrichten, die Sie im Lektionsgespräch an den KI-Tutor senden, und seine Antworten. Sie laufen über unsere Server zum Modell und zurück und werden nicht gespeichert (siehe Abschnitt 4).',
         'Interaktionsdaten: Freundschaftsbeziehungen, ob Sie gerade online sind (die Zahl der App-Tabs, die Sie geöffnet haben, ohne Verlauf), der Tag, an dem Sie die App zuletzt im angemeldeten Zustand geöffnet haben (nur der Tag, nicht die Uhrzeit, und nur der letzte), im Chat oder während einer Live-Sitzung gesendete Nachrichten, und Ergebnisse von Zwei-Spieler-Übungsrunden. Alles, was Sie an einen anderen Lernenden senden, ist für diesen sichtbar.',
         'Technische Daten: IP-Adresse, Browser-User-Agent, Zeitstempel, und von Server-Logs erfasste Fehlerspuren. Diese werden erhoben, um den Dienst zu betreiben und Missbrauch zu erkennen, nicht um ein Profil von Ihnen zu erstellen.',
       ],
@@ -32,7 +32,7 @@ export const privacyPolicy: LegalDocument = {
       id: 'why-we-process',
       heading: '3. Warum wir sie verarbeiten',
       paragraphs: [
-        'Wir verarbeiten Kontodaten, um Sie zu authentifizieren und Sitzungen der richtigen Person zuzuordnen. Wir verarbeiten Lern- und Konversationsdaten, um Übungen mit dem richtigen Schwierigkeitsgrad zu generieren, Bewertungen zu benoten, und Ihnen Ihren eigenen Verlauf zu zeigen. Beides ist notwendig, um den von Ihnen gewünschten Dienst zu erbringen.',
+        'Wir verarbeiten Kontodaten, um Sie zu authentifizieren und Sitzungen der richtigen Person zuzuordnen. Wir verarbeiten Lerndaten, um Übungen mit dem richtigen Schwierigkeitsgrad zu generieren, Bewertungen zu benoten, und Ihnen Ihren eigenen Verlauf zu zeigen, und Konversationsdaten nur, um Ihnen zu antworten. Beides ist notwendig, um den von Ihnen gewünschten Dienst zu erbringen.',
         'Wir verarbeiten technische Daten auf Grundlage des berechtigten Interesses, die Plattform verfügbar und frei von Missbrauch zu halten, einschließlich Ratenbegrenzung und Blockierung von automatisiertem Traffic. Wir verwenden keine dieser Daten für Werbung, und wir verkaufen sie nicht.',
       ],
     },
@@ -43,6 +43,7 @@ export const privacyPolicy: LegalDocument = {
         'Das Erstellen einer Lektion oder das Bewerten einer Antwort sendet den relevanten Ausschnitt Ihres Lernverlaufs an ein großes Sprachmodell. Dieser Ausschnitt ist das für die Aufgabe nötige Minimum: die aktuelle Übung, Ihre Antwort, Ihr Niveau, und kürzliche Fehler zum selben Thema. Kontokennungen sind nicht in der Eingabe enthalten.',
         'Retrieval Augmented Generation durchsucht einen kuratierten Korpus von Lernmaterial, nicht andere Benutzerkonten. Ihre Konversationen werden niemals als Kontext für einen anderen Lernenden abgerufen, und sie werden niemals dem gemeinsamen Korpus hinzugefügt.',
         'Wenn ein Drittanbieter-Modell verwendet wird, verlassen die Eingaben unsere Infrastruktur und werden gemäß den Bedingungen dieses Anbieters verarbeitet. Wir wählen Anbieter aus, die vertraglich ausschließen, Kunden-Eingaben für das Training von Modellen zu verwenden. Der jeweils verwendete Anbieter wird in der Projektdokumentation genannt, und ein Anbieterwechsel wird als Änderung dieser Richtlinie behandelt.',
+        'Vor jeder Prüfung läuft der Tutor des Lektionsgesprächs mit Google Gemini. Jede Nachricht, die Sie ihm senden, geht zusammen mit dem Text der Lektion, Ihren falschen Antworten in deren Übungen und den vorherigen Nachrichten desselben Gesprächs an Google, jedoch ohne Kennungen Ihres Kontos. Dieses Projekt nutzt die kostenlose Stufe der Gemini-API, auf der Google diese Nachrichten und die Antworten zur Verbesserung seiner Modelle verwenden darf und Menschen bei Google sie lesen können: Schreiben Sie dem Tutor nichts Persönliches. Bei uns wird das Gespräch nicht gespeichert: Ihr Browser behält es, bis Sie die Seite verlassen, und unsere Server speichern weder Ihre Nachrichten noch die Antworten.',
         'Die automatisierte Einstufung beeinflusst, welche Übungen Ihnen angezeigt werden. Sie hat keine rechtliche oder ähnlich bedeutsame Wirkung, und Sie können über die untenstehende Kontaktadresse eine menschliche Überprüfung jedes Bewertungsergebnisses beantragen.',
       ],
     },
@@ -51,8 +52,8 @@ export const privacyPolicy: LegalDocument = {
       heading: '5. Wie lange wir Daten aufbewahren',
       paragraphs: [
         'Kontodaten werden aufbewahrt, bis das Konto gelöscht wird. Lernfortschritt und Bewertungsergebnisse werden für die Lebensdauer des Kontos aufbewahrt, da ihre Entfernung die Einstufung zurücksetzen würde, die die Plattform nützlich macht. Eine Freundschaft oder Freundschaftsanfrage bleibt gespeichert, bis einer von Ihnen beiden sie entfernt, ablehnt oder zurückzieht oder sein Konto löscht.',
-        'Mitschriften von KI-Konversationen werden zwölf Monate aufbewahrt und dann automatisch gelöscht. An andere Lernende gesendete Chat-Nachrichten werden zwölf Monate aufbewahrt. Server-Logs mit IP-Adressen werden dreißig Tage aufbewahrt und dann rotiert.',
-        'Das Löschen Ihres Kontos entfernt Kontodaten, Lerndaten und Mitschriften innerhalb von dreißig Tagen. Nachrichten, die Sie an einen anderen Lernenden gesendet haben, bleiben für diesen sichtbar, getrennt von Ihrem Profil, da sie Teil einer Konversation sind, die Ihnen nicht allein gehört. Backups werden nach ihrem eigenen rollierenden Zyklus gelöscht, der innerhalb von neunzig Tagen abgeschlossen ist.',
+        'Gespräche mit dem KI-Tutor werden nicht aufbewahrt. An andere Lernende gesendete Chat-Nachrichten werden zwölf Monate aufbewahrt. Server-Logs mit IP-Adressen werden dreißig Tage aufbewahrt und dann rotiert.',
+        'Das Löschen Ihres Kontos entfernt Kontodaten und Lerndaten innerhalb von dreißig Tagen. Nachrichten, die Sie an einen anderen Lernenden gesendet haben, bleiben für diesen sichtbar, getrennt von Ihrem Profil, da sie Teil einer Konversation sind, die Ihnen nicht allein gehört. Backups werden nach ihrem eigenen rollierenden Zyklus gelöscht, der innerhalb von neunzig Tagen abgeschlossen ist.',
       ],
     },
     {
@@ -75,7 +76,7 @@ export const privacyPolicy: LegalDocument = {
       id: 'your-rights',
       heading: '8. Ihre Rechte',
       paragraphs: [
-        'Sie können Auskunft über die von uns über Sie gespeicherten Daten verlangen, die Berichtigung ungenauer Angaben, die Löschung Ihres Kontos und seiner Inhalte, einen maschinenlesbaren Export Ihres Lernverlaufs und Ihrer Mitschriften, die Einschränkung der Verarbeitung während eines laufenden Streitfalls, und Widerspruch gegen eine auf berechtigtem Interesse beruhende Verarbeitung.',
+        'Sie können Auskunft über die von uns über Sie gespeicherten Daten verlangen, die Berichtigung ungenauer Angaben, die Löschung Ihres Kontos und seiner Inhalte, einen maschinenlesbaren Export Ihres Lernverlaufs, die Einschränkung der Verarbeitung während eines laufenden Streitfalls, und Widerspruch gegen eine auf berechtigtem Interesse beruhende Verarbeitung.',
         'Die Kontoeinstellungen decken die häufigen Fälle direkt ab: Profil bearbeiten, Daten exportieren, und Konto löschen, ohne jemanden zu kontaktieren. Für alles, was die Oberfläche nicht abdeckt, schreiben Sie an die untenstehende Kontaktadresse. Wir antworten innerhalb von dreißig Tagen.',
         'Wenn Sie im Europäischen Wirtschaftsraum oder im Vereinigten Königreich ansässig sind, haben Sie außerdem das Recht, sich bei Ihrer nationalen Aufsichtsbehörde zu beschweren. Die Ausübung dieser Rechte kostet Sie niemals den Zugang zum Dienst.',
       ],
@@ -118,7 +119,7 @@ export const termsOfService: LegalDocument = {
   title: 'Nutzungsbedingungen',
   description:
     'Die Regeln für die Nutzung von ft_transcendence: wer sich anmelden darf, was als akzeptable Nutzung gilt, was von KI generierte Lektionen sind und nicht sind, und wie Konten enden.',
-  lastUpdated: '2026-08-01',
+  lastUpdated: '2026-11-18',
   intro:
     'Diese Bedingungen sind die Vereinbarung zwischen Ihnen und den Betreibern von ft_transcendence. Sie sind kurz, weil der Dienst klein ist, und spezifisch, weil sowohl ein KI-Tutor als auch Live-Sitzungen zwischen Fremden Situationen schaffen, die generische Bedingungen nicht abdecken.',
   sections: [
@@ -151,6 +152,7 @@ export const termsOfService: LegalDocument = {
       heading: '4. Von KI generierte Inhalte',
       paragraphs: [
         'Lektionen, Korrekturen, Übersetzungen, und Bewertungsergebnisse werden von einem großen Sprachmodell erzeugt. Sprachmodelle liegen regelmäßig mit großer Überzeugung falsch. Betrachten Sie alles, was der Tutor produziert, als Übungsmaterial eines fehlbaren Partners, nicht als maßgebliche Anleitung.',
+        'Vor jeder Prüfung können Sie dem Tutor Fragen zur Lektion stellen. Ihre Fragen und der Text der Lektion werden an Google Gemini gesendet, wie in der Datenschutzerklärung beschrieben, und ft_transcendence speichert das Gespräch nicht. Während der Prüfung ist der Tutor nicht verfügbar.',
         'Bewertungsergebnisse schätzen Ihr Kompetenzniveau zu dem einzigen Zweck, Ihre nächste Übung auszuwählen. Sie sind keine Zertifizierung, sie entsprechen nur lose formalen Rahmenwerken wie dem GER, und sie haben kein akademisches oder berufliches Gewicht. Präsentieren Sie sie nicht als Qualifikation.',
         'Verlassen Sie sich niemals auf den Tutor für medizinische, rechtliche, finanzielle, oder sicherheitskritische Übersetzungen. Wenn eine Fehlübersetzung jemandem schaden könnte, ziehen Sie einen qualifizierten menschlichen Übersetzer hinzu.',
       ],

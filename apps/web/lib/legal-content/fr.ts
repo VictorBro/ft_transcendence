@@ -5,7 +5,7 @@ export const privacyPolicy: LegalDocument = {
   title: 'Politique de confidentialité',
   description:
     'Ce que ft_transcendence collecte pendant que vous apprenez une langue avec la plateforme, pourquoi nous le collectons, combien de temps nous le conservons, et comment le récupérer ou le faire supprimer.',
-  lastUpdated: '2026-11-07',
+  lastUpdated: '2026-11-18',
   intro:
     "ft_transcendence est une plateforme d'apprentissage des langues pilotée par IA. Bien enseigner une langue implique d'observer comment vous l'utilisez, ce service traite donc davantage d'informations sur votre comportement d'apprentissage qu'un site web classique. Cette politique explique précisément ce que cela signifie en pratique, écrite pour être lue plutôt que survolée.",
   sections: [
@@ -23,7 +23,7 @@ export const privacyPolicy: LegalDocument = {
       paragraphs: [
         "Données de compte : l'adresse e-mail et le nom d'affichage que vous fournissez à l'inscription, un mot de passe stocké uniquement sous forme de hash Argon2, et, si vous l'activez, vos paramètres d'authentification à deux facteurs. Nous ne stockons jamais un mot de passe sous une forme lisible.",
         "Données d'apprentissage : la langue cible et le niveau de compétence que vous choisissez, les réponses soumises aux exercices et évaluations, le niveau que notre moteur d'évaluation en déduit, les séries de jours, les scores, et les indicateurs de progression utilisés par les fonctionnalités de gamification.",
-        "Données de conversation : les invites que vous envoyez au tuteur IA et les réponses qu'il retourne. Dans un contexte d'apprentissage des langues, ces échanges sont le produit lui-même, car la correction et l'évaluation du niveau dépendent toutes deux de vos tentatives précédentes, erreurs comprises.",
+        "Données de conversation : les messages que vous envoyez au tuteur IA dans la discussion d'une leçon, et ses réponses. Ils passent par nos serveurs vers le modèle et retour, et ne sont pas conservés (voir la section 4).",
         "Données d'interaction : relations d'amitié, si vous êtes en ligne en ce moment (le nombre d'onglets de l'application que vous avez ouverts, sans historique), le jour où vous avez ouvert l'application pour la dernière fois en étant connecté (le jour seulement, pas l'heure, et seul le plus récent), messages envoyés en chat ou pendant une session en direct, et résultats des manches de pratique à deux joueurs. Tout ce que vous envoyez à un autre apprenant lui est visible.",
         "Données techniques : adresse IP, user agent du navigateur, horodatages, et traces d'erreurs capturées par les journaux serveur. Elles sont collectées pour faire fonctionner le service et détecter les abus, pas pour construire un profil vous concernant.",
       ],
@@ -32,7 +32,7 @@ export const privacyPolicy: LegalDocument = {
       id: 'why-we-process',
       heading: '3. Pourquoi nous les traitons',
       paragraphs: [
-        "Nous traitons les données de compte pour vous authentifier et rattacher les sessions à la bonne personne. Nous traitons les données d'apprentissage et de conversation pour générer des exercices au bon niveau de difficulté, noter les évaluations, et vous montrer votre propre historique. Les deux sont nécessaires pour fournir le service que vous avez demandé.",
+        "Nous traitons les données de compte pour vous authentifier et rattacher les sessions à la bonne personne. Nous traitons les données d'apprentissage pour générer des exercices au bon niveau de difficulté, noter les évaluations, et vous montrer votre propre historique, et les données de conversation uniquement pour vous répondre. Les deux sont nécessaires pour fournir le service que vous avez demandé.",
         "Nous traitons les données techniques sur la base de l'intérêt légitime à maintenir la plateforme disponible et exempte d'abus, y compris la limitation de débit et le blocage du trafic automatisé. Nous n'utilisons aucune de ces données à des fins publicitaires, et nous ne les vendons pas.",
       ],
     },
@@ -43,6 +43,7 @@ export const privacyPolicy: LegalDocument = {
         "Générer une leçon ou noter une réponse envoie le fragment pertinent de votre historique d'apprentissage à un grand modèle de langage. Ce fragment est le minimum nécessaire à la tâche : l'exercice en cours, votre réponse, votre niveau, et les erreurs récentes sur le même sujet. Les identifiants de compte ne sont pas inclus dans l'invite.",
         'La génération augmentée par récupération interroge un corpus de matériel pédagogique sélectionné, pas les autres comptes utilisateurs. Vos conversations ne sont jamais récupérées comme contexte pour un autre apprenant, et elles ne sont jamais ajoutées au corpus partagé.',
         "Lorsqu'un fournisseur de modèle tiers est utilisé, les invites quittent notre infrastructure et sont traitées selon les conditions de ce fournisseur. Nous sélectionnons des fournisseurs qui excluent contractuellement les invites des utilisateurs de l'entraînement de leurs modèles. Le fournisseur utilisé à un instant donné est nommé dans la documentation du projet, et un changement de fournisseur est traité comme une modification de cette politique.",
+        "Avant chaque examen, le tuteur de la discussion d'une leçon fonctionne avec Google Gemini. Chaque message que vous lui envoyez part chez Google avec le texte de la leçon, vos réponses fausses dans ses exercices et les messages précédents de la même discussion, mais aucun identifiant de votre compte. Ce projet utilise le niveau gratuit de l'API Gemini, sur lequel Google peut utiliser ces messages et les réponses pour améliorer ses modèles, et des personnes chez Google peuvent les lire : n'écrivez rien de personnel au tuteur. De notre côté, la discussion n'est pas conservée : votre navigateur la garde jusqu'à ce que vous quittiez la page, et nos serveurs ne gardent ni vos messages ni les réponses.",
         "L'évaluation automatisée du niveau influence les exercices qui vous sont présentés. Elle n'a aucun effet juridique ni effet similaire significatif, et vous pouvez demander une révision humaine de tout résultat d'évaluation via l'adresse de contact ci-dessous.",
       ],
     },
@@ -51,8 +52,8 @@ export const privacyPolicy: LegalDocument = {
       heading: '5. Durée de conservation des données',
       paragraphs: [
         "Les données de compte sont conservées jusqu'à la suppression du compte. La progression d'apprentissage et les résultats d'évaluation sont conservés pendant toute la durée de vie du compte, car les supprimer réinitialiserait l'évaluation de niveau qui rend la plateforme utile. Une amitié ou une demande d'ami est conservée jusqu'à ce que l'un de vous deux la retire, la refuse ou l'annule, ou supprime son compte.",
-        "Les transcriptions des conversations IA sont conservées douze mois, puis supprimées automatiquement. Les messages de chat envoyés à d'autres apprenants sont conservés douze mois. Les journaux serveur contenant des adresses IP sont conservés trente jours, puis purgés.",
-        "Supprimer votre compte retire les données de compte, les données d'apprentissage et les transcriptions sous trente jours. Les messages que vous avez envoyés à un autre apprenant restent visibles par cet apprenant, détachés de votre profil, car ils font partie d'une conversation que vous ne possédez pas seul. Les sauvegardes sont purgées selon leur propre cycle glissant, qui se termine sous quatre-vingt-dix jours.",
+        "Les conversations avec le tuteur IA ne sont pas conservées. Les messages de chat envoyés à d'autres apprenants sont conservés douze mois. Les journaux serveur contenant des adresses IP sont conservés trente jours, puis purgés.",
+        "Supprimer votre compte retire les données de compte et les données d'apprentissage sous trente jours. Les messages que vous avez envoyés à un autre apprenant restent visibles par cet apprenant, détachés de votre profil, car ils font partie d'une conversation que vous ne possédez pas seul. Les sauvegardes sont purgées selon leur propre cycle glissant, qui se termine sous quatre-vingt-dix jours.",
       ],
     },
     {
@@ -75,7 +76,7 @@ export const privacyPolicy: LegalDocument = {
       id: 'your-rights',
       heading: '8. Vos droits',
       paragraphs: [
-        "Vous pouvez demander l'accès aux données que nous détenons à votre sujet, la correction de toute inexactitude, la suppression de votre compte et de son contenu, un export lisible par machine de votre historique d'apprentissage et de vos transcriptions, la limitation du traitement pendant qu'un litige est en cours, et vous opposer à un traitement fondé sur l'intérêt légitime.",
+        "Vous pouvez demander l'accès aux données que nous détenons à votre sujet, la correction de toute inexactitude, la suppression de votre compte et de son contenu, un export lisible par machine de votre historique d'apprentissage, la limitation du traitement pendant qu'un litige est en cours, et vous opposer à un traitement fondé sur l'intérêt légitime.",
         "Les paramètres du compte couvrent directement les cas courants : modifier votre profil, exporter vos données, et supprimer votre compte sans contacter personne. Pour tout ce que l'interface ne couvre pas, écrivez à l'adresse de contact ci-dessous. Nous répondons sous trente jours.",
         "Si vous résidez dans l'Espace économique européen ou au Royaume-Uni, vous avez également le droit de déposer une plainte auprès de votre autorité de contrôle nationale. Exercer l'un de ces droits ne vous coûte jamais l'accès au service.",
       ],
@@ -118,7 +119,7 @@ export const termsOfService: LegalDocument = {
   title: "Conditions d'utilisation",
   description:
     "Les règles d'utilisation de ft_transcendence : qui peut s'inscrire, ce qui constitue un usage acceptable, ce que sont (et ne sont pas) les leçons générées par IA, et comment les comptes prennent fin.",
-  lastUpdated: '2026-08-01',
+  lastUpdated: '2026-11-18',
   intro:
     "Ces conditions constituent l'accord entre vous et les mainteneurs de ft_transcendence. Elles sont courtes parce que le service est petit, et précises parce qu'un tuteur IA et des sessions en direct entre inconnus créent tous deux des situations que des conditions génériques ne couvrent pas.",
   sections: [
@@ -151,6 +152,7 @@ export const termsOfService: LegalDocument = {
       heading: '4. Contenu généré par IA',
       paragraphs: [
         "Les leçons, corrections, traductions, et résultats d'évaluation sont produits par un grand modèle de langage. Les modèles de langage se trompent avec assurance de façon régulière. Considérez tout ce que produit le tuteur comme du matériel d'entraînement venant d'un partenaire faillible, pas comme un enseignement faisant autorité.",
+        "Avant chaque examen, vous pouvez interroger le tuteur sur la leçon. Vos questions et le texte de la leçon sont envoyés à Google Gemini, comme l'explique la Politique de confidentialité, et ft_transcendence ne conserve pas la discussion. Le tuteur n'est pas disponible pendant l'examen.",
         "Les résultats d'évaluation estiment votre niveau de compétence dans le seul but de choisir votre prochain exercice. Ce ne sont pas des certifications, ils ne correspondent que de façon approximative à des cadres formels comme le CECR, et ils n'ont aucune valeur académique ou professionnelle. Ne les présentez pas comme une qualification.",
         "Ne vous fiez jamais au tuteur pour des traductions médicales, juridiques, financières, ou critiques pour la sécurité. Si une erreur de traduction pouvait blesser quelqu'un, faites appel à un traducteur humain qualifié.",
       ],

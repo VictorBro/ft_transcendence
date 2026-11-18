@@ -5,7 +5,7 @@ export const privacyPolicy: LegalDocument = {
   title: 'Privacy Policy',
   description:
     'What ft_transcendence collects while you learn a language with it, why we collect it, how long we keep it, and how to get it back or deleted.',
-  lastUpdated: '2026-11-07',
+  lastUpdated: '2026-11-18',
   intro:
     'ft_transcendence is an AI-driven language learning platform. Teaching a language well means observing how you use it, so this service processes more about your learning behaviour than a typical website does. This policy explains exactly what that means in practice, written to be read rather than skimmed.',
   sections: [
@@ -23,7 +23,7 @@ export const privacyPolicy: LegalDocument = {
       paragraphs: [
         'Account data: the email address and display name you provide at signup, a password stored only as an Argon2 hash, and, if you enable it, two-factor authentication settings. We never store a password in a form we can read.',
         'Learning data: the target language and proficiency level you select, answers submitted to exercises and assessments, the level our assessment engine infers from those answers, streaks, scores, and progress markers used by the gamification features.',
-        'Conversation data: the prompts you send to the AI tutor and the responses it returns. In a language learning context these transcripts are the product, because correction and levelling both depend on your previous attempts, including the mistakes.',
+        'Conversation data: the messages you send to the AI tutor in a lesson discussion, and its answers. They pass through our servers on their way to the model and back, and are not stored (see section 4).',
         'Interaction data: friend relationships, whether you are online right now (the number of app tabs you have open, with no history), the day you last opened the app while signed in (the day only, not the time, and only the latest), messages sent in chat or during a live session, and results of two-player practice rounds. Anything you send to another learner is visible to that learner.',
         'Technical data: IP address, browser user agent, timestamps, and error traces captured by server logs. These are collected to operate the service and to detect abuse, not to build a profile of you.',
       ],
@@ -32,7 +32,7 @@ export const privacyPolicy: LegalDocument = {
       id: 'why-we-process',
       heading: '3. Why we process it',
       paragraphs: [
-        'We process account data to authenticate you and to keep sessions attached to the right person. We process learning and conversation data to generate exercises at the right difficulty, to score assessments, and to show you your own history. Both are necessary to deliver the service you asked for.',
+        'We process account data to authenticate you and to keep sessions attached to the right person. We process learning data to generate exercises at the right difficulty, to score assessments, and to show you your own history, and conversation data only to answer you. Both are necessary to deliver the service you asked for.',
         'We process technical data on the basis of legitimate interest in keeping the platform available and free of abuse, including rate limiting and blocking automated traffic. We do not use any of this data for advertising, and we do not sell it.',
       ],
     },
@@ -43,6 +43,7 @@ export const privacyPolicy: LegalDocument = {
         'Generating a lesson or grading an answer sends the relevant fragment of your learning history to a large language model. That fragment is the minimum needed for the task: the current exercise, your answer, your level, and recent errors on the same topic. Account identifiers are not included in the prompt.',
         'Retrieval augmented generation searches a curated corpus of learning material, not other user accounts. Your conversations are never retrieved as context for another learner, and they are never added to the shared corpus.',
         'Where a third-party model provider is used, prompts leave our infrastructure and are processed under that provider terms. We select providers that contractually exclude customer prompts from model training. The provider in use at any time is named in the project documentation, and switching providers is treated as a change to this policy.',
+        'Before each exam, the tutor of a lesson discussion runs on Google Gemini. Each message you send it goes to Google with the text of the lesson, your wrong answers in its exercises, and the earlier messages of the same discussion, but none of your account identifiers. This project uses the free tier of the Gemini API, on which Google may use these messages and the answers to improve its models, and people at Google may read them: do not write anything personal to the tutor. On our side, the discussion is not stored: your browser keeps it until you leave the page, and our servers keep neither your messages nor the answers.',
         'Automated levelling influences which exercises you see. It has no legal or similarly significant effect, and you can request a human review of any assessment result through the contact address below.',
       ],
     },
@@ -51,8 +52,8 @@ export const privacyPolicy: LegalDocument = {
       heading: '5. How long we keep data',
       paragraphs: [
         'Account data is kept until you delete the account. Learning progress and assessment results are kept for the life of the account, because removing them would reset the levelling that makes the platform useful. A friendship or friend request is kept until either of you removes, declines or cancels it, or deletes the account.',
-        'AI conversation transcripts are kept for twelve months, then deleted automatically. Chat messages sent to other learners are kept for twelve months. Server logs containing IP addresses are kept for thirty days, then rotated out.',
-        'Deleting your account removes account data, learning data, and transcripts within thirty days. Messages you sent to another learner remain visible to that learner, detached from your profile, because they are part of a conversation you do not solely own. Backups are purged on their own rolling cycle, which completes within ninety days.',
+        'Conversations with the AI tutor are not kept. Chat messages sent to other learners are kept for twelve months. Server logs containing IP addresses are kept for thirty days, then rotated out.',
+        'Deleting your account removes account data and learning data within thirty days. Messages you sent to another learner remain visible to that learner, detached from your profile, because they are part of a conversation you do not solely own. Backups are purged on their own rolling cycle, which completes within ninety days.',
       ],
     },
     {
@@ -75,7 +76,7 @@ export const privacyPolicy: LegalDocument = {
       id: 'your-rights',
       heading: '8. Your rights',
       paragraphs: [
-        'You can request access to the data we hold about you, correction of anything inaccurate, deletion of your account and its contents, a machine-readable export of your learning history and transcripts, restriction of processing while a dispute is open, and objection to processing based on legitimate interest.',
+        'You can request access to the data we hold about you, correction of anything inaccurate, deletion of your account and its contents, a machine-readable export of your learning history, restriction of processing while a dispute is open, and objection to processing based on legitimate interest.',
         'Account settings cover the common cases directly: edit your profile, export your data, and delete your account without contacting anyone. For anything the interface does not cover, write to the contact address below. We answer within thirty days.',
         'If you are in the European Economic Area or the United Kingdom, you also have the right to lodge a complaint with your national supervisory authority. Exercising any of these rights never costs you access to the service.',
       ],
@@ -118,7 +119,7 @@ export const termsOfService: LegalDocument = {
   title: 'Terms of Service',
   description:
     'The rules for using ft_transcendence: who may sign up, what counts as acceptable use, what AI-generated lessons are and are not, and how accounts end.',
-  lastUpdated: '2026-08-01',
+  lastUpdated: '2026-11-18',
   intro:
     'These terms are the agreement between you and the ft_transcendence maintainers. They are short because the service is small, and specific because an AI tutor and live sessions between strangers both create situations that generic terms do not cover.',
   sections: [
@@ -151,6 +152,7 @@ export const termsOfService: LegalDocument = {
       heading: '4. AI-generated content',
       paragraphs: [
         'Lessons, corrections, translations, and assessment results are produced by a large language model. Language models are confidently wrong on a regular basis. Treat everything the tutor produces as practice material from a fallible partner, not as authoritative instruction.',
+        'Before each exam, you can ask the tutor about the lesson. Your questions and the text of the lesson are sent to Google Gemini, as the Privacy Policy explains, and ft_transcendence does not store the discussion. The tutor is not available during the exam.',
         'Assessment results estimate your proficiency for the purpose of choosing your next exercise. They are not a certification, they map only loosely onto formal frameworks such as CEFR, and they carry no academic or professional weight. Do not present them as a qualification.',
         'Never rely on the tutor for medical, legal, financial, or safety-critical translation. If a mistranslation could hurt someone, use a qualified human translator.',
       ],
