@@ -234,7 +234,12 @@ export async function answerPage(
           ? unit.correct
           : unit.options.map((o) => o.id).filter((id) => !unit.correct.includes(id));
         if (board) {
-          const option = pickFrom.find((id) => !given.has(id)) ?? pickFrom[0]!;
+          // Every box gets a partner (Check waits for a full board): with no wrong
+          // option left, the one still free, even if it is right.
+          const option =
+            pickFrom.find((id) => !given.has(id)) ??
+            unit.options.map((o) => o.id).find((id) => !given.has(id)) ??
+            pickFrom[0]!;
           given.add(option);
           // Two boxes can show the same form: the first one not given yet.
           const row = await rowFor(page, unit.prompt, used);

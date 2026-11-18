@@ -17,6 +17,7 @@ import type {
   Ref,
   UnitFeedback,
 } from '@/components/lesson/types';
+import { MATCH_SLIDE_MS } from '@/components/lesson/matching-pairs';
 import { stopSpeech } from '@/components/lesson/speech';
 import { ItemCard } from '@/components/lesson/units';
 import { useRouter } from '@/i18n/navigation';
@@ -41,6 +42,12 @@ type PageView = NonNullable<AttemptView['current']>;
 
 /** How long the green flash of a page right at once lasts, before the next page. */
 const FLASH_MS = 700;
+/** The items whose boxes slide level with their partners after Check: the flash waits for them. */
+const SLIDING_ITEMS = new Set([
+  'vocabulary_matching',
+  'function_matching',
+  'grammar_person_matching',
+]);
 
 /** The units of a page, by item: what its answers are keyed by. */
 const unitRefs = (page: PageView): Ref[] =>
@@ -91,6 +98,8 @@ export function LessonPlayer({
   const [drafts, setDrafts] = useState<Record<Ref, Answer>>({});
   const [checked, setChecked] = useState<Checked | null>(null);
   const [flash, setFlash] = useState(false);
+  // How long the flash waits for the matching boxes to arrive, in ms.
+  const [flashDelay, setFlashDelay] = useState(0);
   const [pending, setPending] = useState(false);
   const [error, setError] = useState<string | null>(null);
   // The exam page whose countdown reached zero here: it stays locked, even if its post fails.
@@ -321,12 +330,15 @@ export function LessonPlayer({
     const allRight = feedback.every((f) => f.outcome === 'fully_correct');
     const skip = page.items.every((item) => lessons.player.typeSkipsFeedbackWhenRight(item.type));
     if (allRight && skip) {
+      // A matching board first slides its boxes into place, as in the prototype.
+      const delay = page.items.some((item) => SLIDING_ITEMS.has(item.type)) ? MATCH_SLIDE_MS : 0;
+      setFlashDelay(delay);
       setFlash(true);
       flashTimer.current = window.setTimeout(() => {
         flashTimer.current = null;
         setDrafts(rest);
         show(attempt, asked);
-      }, FLASH_MS);
+      }, delay + FLASH_MS);
     }
   }
 
@@ -553,6 +565,11 @@ export function LessonPlayer({
         <div
           aria-hidden
           className="pointer-events-none fixed inset-0 z-20 animate-lesson-flash bg-green-500/25"
+          style={
+            flashDelay
+              ? { animationDelay: `${flashDelay}ms`, animationFillMode: 'both' }
+              : undefined
+          }
         />
       ) : null}
       <p role="status" className="sr-only">

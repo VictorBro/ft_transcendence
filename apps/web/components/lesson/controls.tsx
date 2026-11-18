@@ -130,29 +130,28 @@ export function TextControl({
         {expected}
       </strong>
     ) : null;
+  // Only a half point shows a note, the hint on accents and capitals: a right or
+  // wrong answer says it with its colour and the green answer beside the field.
+  // A screen reader hears the outcome either way.
   const note = feedback ? (
-    <p
-      role="status"
-      data-outcome={feedback.outcome}
-      className={`flex items-start gap-3 text-sm font-medium ${
-        feedback.outcome === 'fully_correct'
-          ? 'text-green-400'
-          : feedback.outcome === 'orthography_only'
-            ? 'text-amber-300'
-            : 'text-red-400'
-      }`}
-    >
-      <FeedbackIcon outcome={feedback.outcome} />
-      <span>
+    feedback.outcome === 'orthography_only' ? (
+      <p
+        role="status"
+        data-outcome={feedback.outcome}
+        className="flex items-start gap-3 text-sm font-medium text-amber-300"
+      >
+        <FeedbackIcon outcome={feedback.outcome} />
+        <span>{t('halfPoint')}</span>
+      </p>
+    ) : (
+      <p role="status" data-outcome={feedback.outcome} className="sr-only">
         {feedback.outcome === 'fully_correct'
           ? t('correct')
-          : feedback.outcome === 'orthography_only'
-            ? t('almost')
-            : inlineAnswer
-              ? t('notQuiteExpected', { answer: expected ?? '' })
-              : t('incorrect')}
-      </span>
-    </p>
+          : inlineAnswer
+            ? t('notQuiteExpected', { answer: expected ?? '' })
+            : t('incorrect')}
+      </p>
+    )
   ) : null;
   const marked = feedback?.outcome === 'orthography_only' && feedback.marks?.length;
   const input = (

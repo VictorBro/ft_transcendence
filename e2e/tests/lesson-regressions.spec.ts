@@ -1,3 +1,5 @@
+import type { Locator, Page } from '@playwright/test';
+
 import { expectFitsTheScreen } from '../support/layout';
 import { answerPage, lessonPlan, playLesson, finishThroughApi } from '../support/lesson-play';
 import { expect, placeCourse, test } from '../support/session';
@@ -126,6 +128,32 @@ test('results fragments select one part across navigation and without JavaScript
   }
 });
 
+/**
+ * After Check, once the slide is over, every right-hand box sits level with
+ * a left-hand one, and a wrong box with its right partner.
+ */
+async function expectLevel(learner: Page, board: Locator) {
+  await expect(async () => {
+    const lefts = await board.locator('[data-option]').evaluateAll((els) =>
+      els.map((el) => ({
+        text: (el as HTMLElement).innerText.split('\n')[0]!.trim(),
+        top: el.getBoundingClientRect().top,
+      })),
+    );
+    const rights = await board.locator('[data-unit]').evaluateAll((els) =>
+      els.map((el) => ({
+        top: el.querySelector('button')!.getBoundingClientRect().top,
+        partner: el.querySelector('[data-correct-partner]')?.textContent?.trim(),
+      })),
+    );
+    for (const { top, partner } of rights) {
+      const level = lefts.filter((l) => Math.abs(l.top - top) < 2);
+      expect(level).toHaveLength(1);
+      if (partner) expect(level[0]!.text).toBe(partner);
+    }
+  }).toPass({ timeout: 5_000 });
+}
+
 test('matching curves stay editable and have compact phone pair markers', async ({
   freshLearner,
 }) => {
@@ -192,18 +220,24 @@ test('matching curves stay editable and have compact phone pair markers', async 
   await learner.screenshot({ path: test.info().outputPath('matching-phone.png'), fullPage: true });
   await answerPage(learner, plan.pages[matching]!, () => false);
   await learner.getByRole('button', { name: 'Check', exact: true }).click();
-  // On a phone no correction shows under a box; a screen reader still hears it.
+  // No correction under a box: each box slides level with its right partner,
+  // and a screen reader hears the right partner.
   const corrections = learner.locator('[data-correct-partner]');
   await expect(corrections.first()).not.toBeEmpty();
   expect((await corrections.first().boundingBox())!.width).toBeLessThanOrEqual(1);
+  await expectLevel(learner, board);
   await learner.screenshot({
     path: test.info().outputPath('matching-phone-checked.png'),
     fullPage: true,
   });
-  // On a wide screen it shows under the box.
   await learner.setViewportSize({ width: 1440, height: 1000 });
-  await expect(corrections.first()).toBeVisible();
-  expect((await corrections.first().boundingBox())!.width).toBeGreaterThan(1);
+  await expectLevel(learner, board);
+  // Only the wrong pairs keep a curve.
+  await expect(board.locator('path[data-pair].is-correct')).toHaveCount(0);
+  await learner.screenshot({
+    path: test.info().outputPath('matching-desktop-checked.png'),
+    fullPage: true,
+  });
 });
 
 test('practice choices stack and corrections stay beside typed answers', async ({
@@ -261,6 +295,10 @@ test('practice choices stack and corrections stay beside typed answers', async (
   await expect(
     learner.locator('.lesson-item p').filter({ hasText: /^(Correct|Incorrect)$/ }),
   ).toHaveCount(0);
+  // A wrong typed answer shows no note under the sentence; a screen reader still hears it.
+  const status = learner.locator('.lesson-item p[role="status"][data-outcome="incorrect"]').first();
+  await expect(status).toHaveClass(/sr-only/);
+  await expect(status).toContainText('Not quite');
 });
 
 test('yellow typed feedback waits for Continue while green advances automatically', async ({

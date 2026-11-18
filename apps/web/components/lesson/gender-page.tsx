@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 
 import { radioArrows, rovingTab } from './controls';
@@ -28,8 +29,16 @@ export function GenderPage({
   onAnswer,
   feedback,
   locked,
+  hold,
 }: AnswerProps & { units: ChoiceUnit[] }) {
   const t = useTranslations('Lesson');
+  // Check waits until every noun has its gender.
+  const full = units.every((unit) => answers[unit.ref] !== undefined);
+  const holdKey = `genders:${units[0]?.ref ?? ''}`;
+  useEffect(() => {
+    hold(holdKey, !locked && !feedback && !full ? { kind: 'block' } : null);
+    return () => hold(holdKey, null);
+  }, [hold, holdKey, locked, feedback, full]);
   const label = useOptionLabel();
   const right = feedback
     ? units.filter((u) => feedback.get(u.ref)?.outcome === 'fully_correct').length

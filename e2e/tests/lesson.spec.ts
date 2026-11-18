@@ -217,6 +217,8 @@ test.describe('a grammar lesson', () => {
     await answerPage(learner, plan.pages[FIRST_PRACTICE]!, () => true);
     await sendPage(learner);
     const now = await pageIndex(learner);
+    // Check waits for a full board: the second tab answers the page too.
+    await answerPage(other, plan.pages[FIRST_PRACTICE]!, () => true);
     await mainButton(other).click();
     await expect(other.locator(`[data-page-index="${now}"]`)).toBeVisible();
     // The player's own alert: Next.js has one too, for route changes.
