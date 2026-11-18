@@ -4,6 +4,7 @@ import { useId, useRef, type KeyboardEvent } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import type { Language } from '@ft/shared';
 
+import { gluedAfter } from '@/lib/lesson-gap';
 import { pick } from '@/lib/localized';
 import type { Answer, Ref, UnitFeedback, UnitView } from './types';
 
@@ -111,7 +112,11 @@ export function TextControl({
   feedback,
   locked,
   lang,
-}: ControlProps<'text'>) {
+  inlineAnswer = true,
+}: ControlProps<'text'> & {
+  /** The right answer after the field and in the note; off where the page shows it itself. */
+  inlineAnswer?: boolean;
+}) {
   const t = useTranslations('Lesson');
   const { before, after, learning, native } = unit.prompt;
   const gap = before !== undefined || after !== undefined;
@@ -119,33 +124,34 @@ export function TextControl({
   // the one the letters are marked against, as in the results.
   const expected = feedback?.accepted ?? feedback?.form ?? feedback?.answer;
   const correction =
-    feedback && feedback.outcome !== 'fully_correct' ? (
+    inlineAnswer && feedback && feedback.outcome !== 'fully_correct' ? (
       <strong lang={lang} className="font-semibold text-green-400" data-inline-answer>
         <span className="sr-only">{t('correct')}: </span>
         {expected}
       </strong>
     ) : null;
+  // Only a half point shows a note, the hint on accents and capitals: a right or
+  // wrong answer says it with its colour and the green answer beside the field.
+  // A screen reader hears the outcome either way.
   const note = feedback ? (
-    <p
-      role="status"
-      data-outcome={feedback.outcome}
-      className={`flex items-start gap-3 text-sm font-medium ${
-        feedback.outcome === 'fully_correct'
-          ? 'text-green-400'
-          : feedback.outcome === 'orthography_only'
-            ? 'text-amber-300'
-            : 'text-red-400'
-      }`}
-    >
-      <FeedbackIcon outcome={feedback.outcome} />
-      <span>
+    feedback.outcome === 'orthography_only' ? (
+      <p
+        role="status"
+        data-outcome={feedback.outcome}
+        className="flex items-start gap-3 text-sm font-medium text-amber-300"
+      >
+        <FeedbackIcon outcome={feedback.outcome} />
+        <span>{t('halfPoint')}</span>
+      </p>
+    ) : (
+      <p role="status" data-outcome={feedback.outcome} className="sr-only">
         {feedback.outcome === 'fully_correct'
           ? t('correct')
-          : feedback.outcome === 'orthography_only'
-            ? t('almost')
-            : t('notQuiteExpected', { answer: expected ?? '' })}
-      </span>
-    </p>
+          : inlineAnswer
+            ? t('notQuiteExpected', { answer: expected ?? '' })
+            : t('incorrect')}
+      </p>
+    )
   ) : null;
   const marked = feedback?.outcome === 'orthography_only' && feedback.marks?.length;
   const input = (
@@ -204,7 +210,10 @@ export function TextControl({
           {before ? <span>{before}</span> : null}
           {input}
           {correction}
-          {after ? <span>{after}</span> : null}
+          {/* The flex gap would put a space before a full stop: "un livre." */}
+          {after ? (
+            <span className={gluedAfter(after, lang) ? '-ml-2' : undefined}>{after}</span>
+          ) : null}
         </p>
         {note}
       </div>
@@ -241,10 +250,13 @@ export function GapSentence({
   unit,
   value,
   lang,
+  outcome,
 }: {
   unit: UnitView;
   value: Answer | undefined;
   lang: Language;
+  /** Once checked: the pick in the gap turns green or red, as its option. */
+  outcome?: Outcome;
 }) {
   const { before, after } = unit.prompt;
   const picked =
@@ -256,12 +268,23 @@ export function GapSentence({
       {before ? <>{before} </> : null}
       <span
         className={`inline-block min-w-16 border-b-2 px-1 text-center ${
-          picked ? 'border-indigo-400 text-indigo-200' : 'border-slate-500 text-slate-500'
+          outcome === 'fully_correct'
+            ? 'border-green-500 text-green-300'
+            : outcome
+              ? 'border-red-500 text-red-300'
+              : picked
+                ? 'border-indigo-400 text-indigo-200'
+                : 'border-slate-500 text-slate-500'
         }`}
       >
         {picked ?? ' '}
       </span>
-      {after ? <> {after}</> : null}
+      {after ? (
+        <>
+          {gluedAfter(after, lang) ? '' : ' '}
+          {after}
+        </>
+      ) : null}
     </p>
   );
 }
@@ -276,6 +299,10 @@ export function ChoiceControl({
   lang,
 }: ControlProps<'choice'>) {
   const t = useTranslations('Lesson');
+  const genders = useTranslations('Genders');
+  // An option the interface words (a gender) shows in the interface language.
+  const label = (option: Unit<'choice'>['options'][number]) =>
+    option.lang === 'ui' && genders.has(option.text) ? genders(option.text) : option.text;
   const picked = value && 'option' in value ? value.option : undefined;
   const right = new Set(feedback?.correct ?? []);
   const gap = unit.prompt.before !== undefined || unit.prompt.after !== undefined;
@@ -283,7 +310,7 @@ export function ChoiceControl({
   return (
     <div className="flex flex-col gap-3">
       {gap ? (
-        <GapSentence unit={unit} value={value} lang={lang} />
+        <GapSentence unit={unit} value={value} lang={lang} outcome={feedback?.outcome} />
       ) : (
         <PromptLine unit={unit} lang={lang} />
       )}
@@ -320,7 +347,7 @@ export function ChoiceControl({
               }}
               className={`min-h-11 rounded-md border px-4 py-2 text-left transition-colors disabled:cursor-default ${tone}`}
             >
-              {option.text}
+              {label(option)}
             </button>
           );
         })}

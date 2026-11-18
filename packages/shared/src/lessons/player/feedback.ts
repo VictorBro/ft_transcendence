@@ -87,6 +87,12 @@ export function unitFeedback(
 ): UnitFeedback {
   const option = (id: string) => ref(paths.option(page, unit.itemId, id));
   const token = (id: string) => ref(paths.token(page, unit.itemId, id));
+  // A typed gap names its reference card only now, after Check: in the page view it would give the answer away.
+  const item = page.items.find((i) => i.itemId === unit.itemId);
+  const card =
+    item?.type === 'vocabulary_typed_gap'
+      ? ref(paths.card(page, item.itemId, item.targetId))
+      : undefined;
   return {
     ref: ref(paths.unit(unit)),
     outcome: locked.outcome,
@@ -100,5 +106,6 @@ export function unitFeedback(
     ...(unit.kind === 'spot' ? { faulty: token(unit.faultyTokenId) } : {}),
     ...(unit.form ? { form: unit.form } : {}),
     ...(unit.translation ? { translation: unit.translation } : {}),
+    ...(card ? { card } : {}),
   };
 }
