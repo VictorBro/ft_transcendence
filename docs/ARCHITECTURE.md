@@ -488,7 +488,7 @@ flowchart TB
     end
 
     subgraph e2e["e2e.yml, two jobs per browser (lesson, rest)"]
-        e1["build prod images<br/>compose up"] --> e2["Playwright<br/>one engine, one part"] --> e3["console gate<br/>legal pages"] --> em["monitoring check<br/>every target up"] --> e4["API restart run"]
+        e1["build prod images<br/>compose up"] --> e2["Playwright in its own image<br/>one engine, one part"] --> e3["console gate<br/>legal pages"] --> em["monitoring check<br/>every target up"] --> e4["API restart run"]
         e4 --> eg["gate<br/>playwright (production stack)"]
     end
 
