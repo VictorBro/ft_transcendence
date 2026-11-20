@@ -26,14 +26,12 @@ export function ResultsReview({
   title,
   caption,
   summary,
-  actions,
   children,
 }: {
   results: Results;
   title: string;
   caption: string;
   summary: ReactNode;
-  actions: ReactNode;
   children: ReactNode[];
 }) {
   const t = useTranslations('Lesson');
@@ -122,7 +120,6 @@ export function ResultsReview({
             </div>
           );
         })}
-        <div className="flex flex-wrap justify-end gap-3">{actions}</div>
       </article>
     </div>
   );
