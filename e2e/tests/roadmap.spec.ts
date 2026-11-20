@@ -431,12 +431,18 @@ test.describe('the roadmap and lesson loop', () => {
       return m! * 60 + s!;
     };
 
-    // Mid-countdown: a reload gives no time back.
+    // Mid-countdown: a reload gives no time back. The time read first is at
+    // most the whole countdown; once it has gone down, a countdown that
+    // started again on the reload would show more than that.
     await expect(finished).toBeVisible();
+    const first = await left();
+    await expect.poll(left).toBeLessThan(first);
     const before = await left();
     await visit(page, page.url());
     await expect(finished).toBeVisible();
-    expect(await left()).toBeLessThanOrEqual(before);
+    const after = await left();
+    expect(after).toBeLessThanOrEqual(before);
+    expect(after).toBeLessThan(first);
     expect(await pageIndex(page)).toBe(skim);
 
     // I've finished reading: the document goes, the question opens with the focus.
