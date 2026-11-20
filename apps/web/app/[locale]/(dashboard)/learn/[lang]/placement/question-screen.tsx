@@ -122,11 +122,7 @@ function Countdown({
   const urgent = left <= 5;
 
   return (
-    <div
-      role="timer"
-      aria-label={t('timeLeft')}
-      className="relative flex size-14 shrink-0 items-center justify-center"
-    >
+    <div className="relative flex size-14 shrink-0 items-center justify-center">
       <svg viewBox="0 0 48 48" className="size-14 -rotate-90" aria-hidden>
         <circle cx="24" cy="24" r="20" fill="none" strokeWidth="4" className="stroke-slate-800" />
         <circle
@@ -144,7 +140,10 @@ function Countdown({
           }`}
         />
       </svg>
+      {/* The number is the timer, named with what it counts: "Seconds left: 12". */}
       <span
+        role="timer"
+        aria-label={`${t('timeLeft')}: ${left}`}
         className={`absolute text-sm font-semibold tabular-nums ${
           urgent ? 'text-red-400' : 'text-slate-100'
         }`}

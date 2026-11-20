@@ -4,16 +4,16 @@ export const privacyPolicy: LegalDocument = {
   slug: 'privacy',
   title: 'Politique de confidentialité',
   description:
-    'Ce que ft_transcendence collecte pendant que vous apprenez une langue avec la plateforme, pourquoi nous le collectons, combien de temps nous le conservons, et comment le récupérer ou le faire supprimer.',
-  lastUpdated: '2026-11-18',
+    'Ce que ft_transcendence collecte pendant que vous apprenez une langue avec la plateforme, pourquoi nous le collectons, ce qui part chez Google Gemini, combien de temps nous le conservons, et comment le récupérer ou le faire supprimer.',
+  lastUpdated: '2026-11-20',
   intro:
-    "ft_transcendence est une plateforme d'apprentissage des langues pilotée par IA. Bien enseigner une langue implique d'observer comment vous l'utilisez, ce service traite donc davantage d'informations sur votre comportement d'apprentissage qu'un site web classique. Cette politique explique précisément ce que cela signifie en pratique, écrite pour être lue plutôt que survolée.",
+    "ft_transcendence est une plateforme d'apprentissage des langues dotée d'un tuteur IA. Enseigner une langue implique de conserver vos réponses, votre niveau et votre progression, et le tuteur en envoie une partie à Google. Cette politique explique précisément ce que cela signifie en pratique, écrite pour être lue plutôt que survolée.",
   sections: [
     {
       id: 'scope',
       heading: "1. Champ d'application",
       paragraphs: [
-        "Cette politique couvre l'application web ft_transcendence, son API, et le service de session en temps réel qui alimente la pratique en direct entre deux apprenants. Elle s'applique à toute personne créant un compte, ainsi qu'aux visiteurs qui ne font que lire des pages publiques comme celle-ci.",
+        "Cette politique couvre l'application web ft_transcendence, son API, et la connexion en temps réel qui transporte les messages entre amis et montre qui est en ligne. Elle s'applique à toute personne créant un compte, ainsi qu'aux visiteurs qui ne font que lire des pages publiques comme celle-ci.",
         "ft_transcendence est un projet académique réalisé par des étudiants. Ce n'est pas un produit commercial, il n'est adossé à aucune société, et ne doit pas être considéré comme un système d'enregistrement pour quoi que ce soit que vous ne pourriez pas vous permettre de perdre. Nous nous engageons malgré tout à respecter les pratiques décrites ici.",
       ],
     },
@@ -21,55 +21,55 @@ export const privacyPolicy: LegalDocument = {
       id: 'data-we-collect',
       heading: '2. Données que nous collectons',
       paragraphs: [
-        "Données de compte : l'adresse e-mail et le nom d'affichage que vous fournissez à l'inscription, un mot de passe stocké uniquement sous forme de hash Argon2, et, si vous l'activez, vos paramètres d'authentification à deux facteurs. Nous ne stockons jamais un mot de passe sous une forme lisible.",
-        "Données d'apprentissage : la langue cible et le niveau de compétence que vous choisissez, les réponses soumises aux exercices et évaluations, le niveau que notre moteur d'évaluation en déduit, les séries de jours, les scores, et les indicateurs de progression utilisés par les fonctionnalités de gamification.",
-        "Données de conversation : les messages que vous envoyez au tuteur IA dans la discussion d'une leçon, et ses réponses. Ils passent par nos serveurs vers le modèle et retour, et ne sont pas conservés (voir la section 4).",
+        "Données de compte : l'adresse e-mail et le nom d'affichage que vous fournissez à l'inscription, un mot de passe stocké uniquement sous forme de hash Argon2, la photo de profil que vous téléversez si vous en choisissez une, votre langue d'interface, le fuseau horaire que signale votre navigateur (pour savoir où commence votre journée pour les séries et les objectifs quotidiens), et, si vous l'activez, vos paramètres d'authentification à deux facteurs. Nous ne stockons jamais un mot de passe sous une forme lisible.",
+        "Données d'apprentissage : les langues que vous apprenez, le niveau que le test de placement fixe à partir de vos réponses ou celui que vous choisissez à la place, les questions de placement déjà vues pour qu'elles ne reviennent pas, votre objectif quotidien, les réponses que vous soumettez dans les leçons et les examens avec leurs scores, et les séries de jours, points d'expérience, défis et succès des fonctionnalités de gamification.",
+        "Données du tuteur : ce que vous écrivez au tuteur de la discussion d'une leçon et ce qu'il répond. Elles ne sont pas conservées sur nos serveurs : la section 4 dit où elles vont et la section 5 combien de temps elles vivent.",
         "Données d'interaction : relations d'amitié, si vous êtes en ligne en ce moment (le nombre d'onglets de l'application que vous avez ouverts, sans historique), le jour où vous avez ouvert l'application pour la dernière fois en étant connecté (le jour seulement, pas l'heure, et seul le plus récent), et les messages que vous envoyez à vos amis, chacun conservé avec le moment où il a été lu (que l'expéditeur ne voit jamais). Tout ce que vous envoyez à un autre apprenant lui est visible.",
-        "Données techniques : adresse IP, user agent du navigateur, horodatages, et traces d'erreurs capturées par les journaux serveur. Elles sont collectées pour faire fonctionner le service et détecter les abus, pas pour construire un profil vous concernant.",
+        "Données techniques : le reverse proxy journalise chaque requête avec son adresse IP, le user agent du navigateur, l'adresse demandée et l'heure, et l'API journalise les traces d'erreurs. La limitation de débit compte les requêtes par compte ou par adresse IP, en mémoire seulement. La supervision conserve des chiffres agrégés, comme le nombre de requêtes ou de comptes, qui n'identifient personne. Tout cela sert à faire fonctionner le service et à détecter les abus, pas à construire un profil vous concernant.",
       ],
     },
     {
       id: 'why-we-process',
       heading: '3. Pourquoi nous les traitons',
       paragraphs: [
-        "Nous traitons les données de compte pour vous authentifier et rattacher les sessions à la bonne personne. Nous traitons les données d'apprentissage pour générer des exercices au bon niveau de difficulté, noter les évaluations, et vous montrer votre propre historique, et les données de conversation uniquement pour vous répondre. Les deux sont nécessaires pour fournir le service que vous avez demandé.",
-        "Nous traitons les données techniques sur la base de l'intérêt légitime à maintenir la plateforme disponible et exempte d'abus, y compris la limitation de débit et le blocage du trafic automatisé. Nous n'utilisons aucune de ces données à des fins publicitaires, et nous ne les vendons pas.",
+        "Nous traitons les données de compte pour vous authentifier et rattacher les sessions à la bonne personne. Nous traitons les données d'apprentissage pour vous placer au bon niveau, choisir et noter vos leçons et vos examens, et vous montrer votre propre progression, et les données du tuteur pour répondre à vos questions sur une leçon. Tout cela est nécessaire pour fournir le service que vous avez demandé.",
+        "Nous traitons les données techniques sur la base de l'intérêt légitime à maintenir la plateforme disponible et exempte d'abus, ce qui comprend la limitation de débit. Nous n'utilisons aucune de ces données à des fins publicitaires, et nous ne les vendons pas.",
       ],
     },
     {
       id: 'ai-processing',
       heading: '4. Comment les fonctionnalités IA utilisent vos données',
       paragraphs: [
-        "Générer une leçon ou noter une réponse envoie le fragment pertinent de votre historique d'apprentissage à un grand modèle de langage. Ce fragment est le minimum nécessaire à la tâche : l'exercice en cours, votre réponse, votre niveau, et les erreurs récentes sur le même sujet. Les identifiants de compte ne sont pas inclus dans l'invite.",
-        'La génération augmentée par récupération interroge un corpus de matériel pédagogique sélectionné, pas les autres comptes utilisateurs. Vos conversations ne sont jamais récupérées comme contexte pour un autre apprenant, et elles ne sont jamais ajoutées au corpus partagé.',
-        "Lorsqu'un fournisseur de modèle tiers est utilisé, les invites quittent notre infrastructure et sont traitées selon les conditions de ce fournisseur. Nous sélectionnons des fournisseurs qui excluent contractuellement les invites des utilisateurs de l'entraînement de leurs modèles. Le fournisseur utilisé à un instant donné est nommé dans la documentation du projet, et un changement de fournisseur est traité comme une modification de cette politique.",
-        "Avant chaque examen, le tuteur de la discussion d'une leçon fonctionne avec Google Gemini. Chaque message que vous lui envoyez part chez Google avec le texte de la leçon, vos réponses fausses dans ses exercices et les messages précédents de la même discussion, mais aucun identifiant de votre compte. Ce projet utilise le niveau gratuit de l'API Gemini, sur lequel Google peut utiliser ces messages et les réponses pour améliorer ses modèles, et des personnes chez Google peuvent les lire : n'écrivez rien de personnel au tuteur. De notre côté, la discussion n'est pas conservée : votre navigateur la garde jusqu'à ce que vous quittiez la page, et nos serveurs ne gardent ni vos messages ni les réponses.",
-        "L'évaluation automatisée du niveau influence les exercices qui vous sont présentés. Elle n'a aucun effet juridique ni effet similaire significatif, et vous pouvez demander une révision humaine de tout résultat d'évaluation via l'adresse de contact ci-dessous.",
+        "Avant chaque examen, le tuteur de la discussion d'une leçon fonctionne avec Google Gemini. Chaque message que vous lui envoyez part chez Google avec le texte de la leçon, la langue et le niveau de la leçon, votre langue d'interface, vos réponses fausses dans ses exercices d'entraînement (l'exercice, ce que vous avez répondu et la bonne réponse) et les messages précédents de la même discussion, mais aucun identifiant de votre compte : ni adresse e-mail, ni nom d'affichage, ni numéro de compte.",
+        "Ce projet utilise le niveau gratuit de l'API Gemini, et aucun fournisseur qui exclut l'entraînement. Sur le niveau gratuit, Google peut utiliser ces messages et les réponses pour améliorer ses produits, dont ses modèles, et des personnes chez Google peuvent les lire. N'écrivez rien de personnel au tuteur. Passer à un niveau payant ou à un autre fournisseur est une modification de cette politique, faite ici avant de prendre effet.",
+        "Gemini écrit aussi une partie des questions du test de placement. Ces requêtes ne portent qu'une langue, un niveau et un type de question, jamais rien qui vous concerne. Tout le reste fonctionne selon nos propres règles, sans modèle de langage : la notation de vos réponses, la fixation de votre niveau et le choix de vos leçons. Les leçons elles-mêmes ont été écrites à l'avance et vérifiées avant publication.",
+        "Le placement fixe le niveau auquel les leçons vous sont proposées. Il n'a aucun effet juridique ni effet similaire significatif : vous pouvez fixer votre niveau vous-même à tout moment sur la page du cours, repasser le test, et demander une révision humaine de tout résultat via l'adresse de contact ci-dessous.",
       ],
     },
     {
       id: 'retention',
       heading: '5. Durée de conservation des données',
       paragraphs: [
-        "Les données de compte sont conservées jusqu'à la suppression du compte. La progression d'apprentissage et les résultats d'évaluation sont conservés pendant toute la durée de vie du compte, car les supprimer réinitialiserait l'évaluation de niveau qui rend la plateforme utile. Une amitié ou une demande d'ami est conservée jusqu'à ce que l'un de vous deux la retire, la refuse ou l'annule, ou supprime son compte. Les messages sont conservés tant que les deux comptes de la conversation existent : retirer un ami laisse la conversation lisible par vous deux, et la suppression de l'un des deux comptes la supprime.",
-        'Les conversations avec le tuteur IA ne sont pas conservées. Les journaux serveur contenant des adresses IP sont conservés trente jours, puis purgés.',
-        "Supprimer votre compte retire les données de compte, les données d'apprentissage et vos conversations avec d'autres apprenants sous trente jours. Les sauvegardes sont purgées selon leur propre cycle glissant, qui se termine sous quatre-vingt-dix jours.",
+        "Les données de compte sont conservées jusqu'à la suppression du compte. La progression d'apprentissage et les résultats sont conservés pendant toute la durée de vie du compte, car les supprimer réinitialiserait le niveau et la progression qui rendent la plateforme utile. Une amitié ou une demande d'ami est conservée jusqu'à ce que l'un de vous deux la retire, la refuse ou l'annule, ou que le compte soit supprimé. Les messages sont conservés tant que les deux comptes de la conversation existent : retirer un ami laisse la conversation lisible par vous deux, et la suppression de l'un des deux comptes la supprime. Une photo de profil remplacée ou retirée est supprimée aussitôt.",
+        "Les discussions avec le tuteur ne sont jamais conservées sur nos serveurs : votre navigateur garde la discussion jusqu'à ce que vous quittiez la page, et les serveurs ne gardent ni vos messages ni les réponses, seulement le nombre de messages envoyés dans la dernière minute et la dernière journée, pour les limites. Ce que Google conserve est fixé par ses conditions de l'API Gemini. Une session de connexion prend fin après sept jours sans utilisation. Ce que vous avez saisi sur une page de leçon sans l'avoir encore soumis reste dans votre navigateur jusqu'à ce que la leçon soit terminée ou recommencée.",
+        "Les journaux serveur qui contiennent des adresses IP sont limités en taille et purgés au fil de l'eau, les plus anciens d'abord, et ne sont jamais archivés. Les chiffres agrégés de supervision sont conservés quinze jours. Quand un compte est supprimé, ses données de compte, ses données d'apprentissage et ses conversations avec d'autres apprenants sont supprimées avec lui. Il n'y a pas de sauvegardes.",
       ],
     },
     {
       id: 'sharing',
       heading: "6. Qui d'autre voit vos données",
       paragraphs: [
-        "Les autres apprenants voient votre nom d'affichage, votre avatar, et tout ce que vous leur envoyez. Seuls les amis peuvent s'écrire, et une conversation n'est visible que par les deux personnes qui y participent. Seuls vos amis voient si vous êtes en ligne en ce moment, par une pastille à côté de votre nom : un apprenant qui vous a seulement envoyé une demande ne le voit pas, et personne ne voit quand vous étiez en ligne pour la dernière fois. Tout apprenant connecté peut ouvrir votre profil, qui montre les langues que vous apprenez, votre niveau dans chacune et votre série de jours en cours. Il peut aussi vous trouver par votre nom d'affichage ou parmi les apprenants actifs récemment, et vous envoyer une demande d'ami. Vous figurez parmi les apprenants actifs récemment à partir du jour où vous ouvrez l'application en étant connecté, et jusqu'à une semaine après ce jour. La liste est triée par nom d'affichage et ne montre aucune date, mais quelqu'un qui la surveille peut voir quand vous revenez après plus d'une semaine d'absence. Votre liste d'amis n'est visible que par vous. Votre adresse e-mail, votre fuseau horaire, votre langue d'interface et vos paramètres d'authentification à deux facteurs ne sont jamais montrés aux autres apprenants.",
-        "En dehors de la plateforme, les données n'atteignent que l'infrastructure et les fournisseurs de modèles nécessaires à son fonctionnement. Nous ne partageons pas de données avec des annonceurs, des courtiers en données, ou des réseaux d'analyse. Si nous sommes un jour contraints de divulguer des données par une décision de justice, nous vous en informerons sauf interdiction de le faire.",
+        "Les autres apprenants voient votre nom d'affichage, votre photo de profil, et tout ce que vous leur envoyez. Seuls les amis peuvent s'écrire, et une conversation n'est visible que par les deux personnes qui y participent. Seuls vos amis voient si vous êtes en ligne en ce moment, par une pastille à côté de votre nom : un apprenant qui vous a seulement envoyé une demande ne le voit pas, et personne ne voit quand vous étiez en ligne pour la dernière fois. Tout apprenant connecté peut ouvrir votre profil, qui montre les langues que vous apprenez, votre niveau dans chacune et votre série de jours en cours. Il peut aussi vous trouver par votre nom d'affichage ou parmi les apprenants actifs récemment, et vous envoyer une demande d'ami. Vous figurez parmi les apprenants actifs récemment à partir du jour où vous ouvrez l'application en étant connecté, et jusqu'à une semaine après ce jour. La liste est triée par nom d'affichage et ne montre aucune date, mais quelqu'un qui la surveille peut voir quand vous revenez après plus d'une semaine d'absence. Votre liste d'amis n'est visible que par vous. Votre adresse e-mail, votre fuseau horaire, votre langue d'interface et vos paramètres d'authentification à deux facteurs ne sont jamais montrés aux autres apprenants. Votre photo de profil est servie depuis une adresse que personne ne peut deviner, mais toute personne qui a cette adresse peut charger la photo.",
+        "En dehors de la plateforme, les données n'atteignent que le serveur qui l'héberge et Google, pour le tuteur décrit à la section 4. Nous ne partageons pas de données avec des annonceurs, des courtiers en données, ou des réseaux d'analyse. Si nous sommes un jour contraints de divulguer des données par une décision de justice, nous vous en informerons sauf interdiction de le faire.",
       ],
     },
     {
       id: 'cookies',
-      heading: '7. Cookies',
+      heading: '7. Cookies et stockage du navigateur',
       paragraphs: [
-        "Nous posons trois cookies strictement nécessaires. Un cookie de session vous maintient connecté : il est httpOnly, sécurisé et ne porte aucun identifiant de suivi, si bien que les scripts côté client ne peuvent pas le lire. Un cookie de langue (NEXT_LOCALE) retient laquelle des trois langues vous afficher ; il ne contient qu'un code de langue, également visible dans la barre d'adresse. Un cookie de cours (ft.lang) retient le dernier cours ouvert, afin de vous y ramener ; il ne contient qu'un code de langue et est httpOnly. Nous n'utilisons pas le stockage local.",
-        "Il n'y a pas de cookies publicitaires ou d'analyse, c'est pourquoi la plateforme n'affiche aucune bannière de consentement aux cookies : les cookies strictement nécessaires n'en requièrent pas.",
+        "Nous posons trois cookies strictement nécessaires. Un cookie de session (ft.sid) vous maintient connecté : il est httpOnly, sécurisé, same-site, et ne porte qu'un numéro de session aléatoire, si bien que les scripts côté client ne peuvent pas le lire et qu'il ne suit rien. Un cookie de langue (NEXT_LOCALE) retient laquelle des trois langues vous afficher ; il ne contient qu'un code de langue, également visible dans la barre d'adresse. Un cookie de cours (ft.lang) retient le dernier cours ouvert, afin de vous y ramener ; il ne contient qu'un code de langue et est httpOnly.",
+        "Le stockage local du navigateur garde ce que vous avez saisi ou choisi sur la page de leçon où vous êtes, pour qu'un rechargement ne le perde pas, ainsi que les répliques déjà affichées d'un dialogue d'examen. Il reste sur votre appareil, n'est envoyé nulle part avant que vous soumettiez la réponse, et est effacé quand la leçon est terminée ou recommencée.",
+        "Il n'y a pas de cookies publicitaires ou d'analyse, c'est pourquoi la plateforme n'affiche aucune bannière de consentement aux cookies : les cookies et le stockage strictement nécessaires n'en requièrent pas.",
       ],
     },
     {
@@ -77,7 +77,7 @@ export const privacyPolicy: LegalDocument = {
       heading: '8. Vos droits',
       paragraphs: [
         "Vous pouvez demander l'accès aux données que nous détenons à votre sujet, la correction de toute inexactitude, la suppression de votre compte et de son contenu, un export lisible par machine de votre historique d'apprentissage, la limitation du traitement pendant qu'un litige est en cours, et vous opposer à un traitement fondé sur l'intérêt légitime.",
-        "Les paramètres du compte couvrent directement les cas courants : modifier votre profil, exporter vos données, et supprimer votre compte sans contacter personne. Pour tout ce que l'interface ne couvre pas, écrivez à l'adresse de contact ci-dessous. Nous répondons sous trente jours.",
+        "Votre page de profil vous permet de changer votre nom d'affichage et votre photo de profil, et la page du cours vous permet de changer votre niveau. La suppression du compte et l'export des données n'ont pas encore de bouton : écrivez à l'adresse de contact ci-dessous et nous le faisons pour vous. Nous répondons sous trente jours.",
         "Si vous résidez dans l'Espace économique européen ou au Royaume-Uni, vous avez également le droit de déposer une plainte auprès de votre autorité de contrôle nationale. Exercer l'un de ces droits ne vous coûte jamais l'accès au service.",
       ],
     },
@@ -100,7 +100,7 @@ export const privacyPolicy: LegalDocument = {
       id: 'changes',
       heading: '11. Modifications de cette politique',
       paragraphs: [
-        "Lorsque cette politique change de manière substantielle, par exemple lorsqu'une nouvelle catégorie de données est collectée ou qu'un nouveau fournisseur de modèle est introduit, nous mettons à jour la date en haut de cette page et informons les titulaires de compte par e-mail avant que le changement ne prenne effet.",
+        "Lorsque cette politique change de manière substantielle, par exemple lorsqu'une nouvelle catégorie de données est collectée ou que le fournisseur de modèle ou son niveau change, nous modifions cette page avant que le changement ne prenne effet et mettons à jour la date en haut. La plateforme n'envoie aucun e-mail : c'est sur cette page que les changements sont annoncés. Un changement qui demande votre consentement n'est pas appliqué à vos données avant que vous l'ayez donné.",
       ],
     },
     {
@@ -118,10 +118,10 @@ export const termsOfService: LegalDocument = {
   slug: 'terms',
   title: "Conditions d'utilisation",
   description:
-    "Les règles d'utilisation de ft_transcendence : qui peut s'inscrire, ce qui constitue un usage acceptable, ce que sont (et ne sont pas) les leçons générées par IA, et comment les comptes prennent fin.",
-  lastUpdated: '2026-11-18',
+    "Les règles d'utilisation de ft_transcendence : qui peut s'inscrire, ce qui constitue un usage acceptable, ce qu'est (et n'est pas) le tuteur IA, et comment les comptes prennent fin.",
+  lastUpdated: '2026-11-20',
   intro:
-    "Ces conditions constituent l'accord entre vous et les mainteneurs de ft_transcendence. Elles sont courtes parce que le service est petit, et précises parce qu'un tuteur IA et des sessions en direct entre inconnus créent tous deux des situations que des conditions génériques ne couvrent pas.",
+    "Ces conditions constituent l'accord entre vous et les mainteneurs de ft_transcendence. Elles sont courtes parce que le service est petit, et précises parce qu'un tuteur IA et des messages entre apprenants créent tous deux des situations que des conditions génériques ne couvrent pas.",
   sections: [
     {
       id: 'acceptance',
@@ -143,17 +143,17 @@ export const termsOfService: LegalDocument = {
       heading: '3. Usage acceptable',
       paragraphs: [
         "Utilisez ft_transcendence pour apprendre une langue et pour aider d'autres personnes à en apprendre une. C'est tout le périmètre visé.",
-        "Vous ne pouvez pas harceler, menacer, ou maltraiter d'autres apprenants ; publier du contenu sexuel impliquant des mineurs ou tout autre contenu illégal ; utiliser le tuteur IA pour générer des discours de haine, des logiciels malveillants, ou du contenu conçu pour tromper les gens ; scraper la plateforme ou automatiser des comptes ; tenter de contourner les limites de débit, les budgets de tokens, ou l'authentification ; sonder l'infrastructure à la recherche de failles en dehors d'un signalement de sécurité de bonne foi ; ou revendre l'accès au service.",
-        'Les limites de débit et les budgets de tokens par utilisateur protègent une ressource partagée et réellement limitée. Les contourner prend de la capacité aux autres apprenants et est traité comme un abus plutôt que comme une curiosité technique.',
+        "Vous ne pouvez pas harceler, menacer, ou maltraiter d'autres apprenants ; publier du contenu sexuel impliquant des mineurs ou tout autre contenu illégal ; utiliser le tuteur IA pour générer des discours de haine, des logiciels malveillants, ou du contenu conçu pour tromper les gens ; scraper la plateforme ou automatiser des comptes ; tenter de contourner les limites de débit, les limites de messages du tuteur, ou l'authentification ; sonder l'infrastructure à la recherche de failles en dehors d'un signalement de sécurité de bonne foi ; ou revendre l'accès au service.",
+        'Les limites de débit et les limites de messages du tuteur protègent une ressource partagée et réellement limitée : le tuteur de tous les apprenants fonctionne avec une seule clé Gemini au quota réduit. Les contourner prend de la capacité aux autres apprenants et est traité comme un abus plutôt que comme une curiosité technique.',
       ],
     },
     {
       id: 'ai-content',
       heading: '4. Contenu généré par IA',
       paragraphs: [
-        "Les leçons, corrections, traductions, et résultats d'évaluation sont produits par un grand modèle de langage. Les modèles de langage se trompent avec assurance de façon régulière. Considérez tout ce que produit le tuteur comme du matériel d'entraînement venant d'un partenaire faillible, pas comme un enseignement faisant autorité.",
+        "Le tuteur de la discussion d'une leçon répond avec un grand modèle de langage, Google Gemini, et le même modèle a écrit une partie des questions du test de placement. Les leçons ont été rédigées avec l'aide d'un modèle de langage et vérifiées avant publication ; les scores et les niveaux viennent de règles fixes, pas d'un modèle. Les modèles de langage se trompent avec assurance de façon régulière. Considérez tout ce que produit le tuteur comme du matériel d'entraînement venant d'un partenaire faillible, pas comme un enseignement faisant autorité.",
         "Avant chaque examen, vous pouvez interroger le tuteur sur la leçon. Vos questions et le texte de la leçon sont envoyés à Google Gemini, comme l'explique la Politique de confidentialité, et ft_transcendence ne conserve pas la discussion. Le tuteur n'est pas disponible pendant l'examen.",
-        "Les résultats d'évaluation estiment votre niveau de compétence dans le seul but de choisir votre prochain exercice. Ce ne sont pas des certifications, ils ne correspondent que de façon approximative à des cadres formels comme le CECR, et ils n'ont aucune valeur académique ou professionnelle. Ne les présentez pas comme une qualification.",
+        "Les résultats du placement et des examens estiment votre niveau de compétence dans le seul but de choisir vos prochaines leçons. Ce ne sont pas des certifications, ils ne correspondent que de façon approximative à des cadres formels comme le CECR, et ils n'ont aucune valeur académique ou professionnelle. Ne les présentez pas comme une qualification.",
         "Ne vous fiez jamais au tuteur pour des traductions médicales, juridiques, financières, ou critiques pour la sécurité. Si une erreur de traduction pouvait blesser quelqu'un, faites appel à un traducteur humain qualifié.",
       ],
     },
@@ -161,31 +161,31 @@ export const termsOfService: LegalDocument = {
       id: 'user-content',
       heading: '5. Votre contenu',
       paragraphs: [
-        "Vous conservez la propriété de tout ce que vous écrivez : réponses aux exercices, messages à vos amis, texte de profil. Vous nous accordez une licence non exclusive pour stocker, traiter, et afficher ce contenu strictement dans le but de vous fournir le service, ainsi qu'aux apprenants à qui vous l'envoyez. La licence prend fin lorsque le contenu est supprimé.",
-        "Nous n'entraînons pas de modèles sur votre contenu et nous ne l'ajoutons pas au corpus d'apprentissage partagé. Ne publiez pas de contenu que vous n'avez pas le droit de partager, et ne collez pas de secrets, d'identifiants, ou de données personnelles appartenant à d'autres personnes dans le tuteur.",
+        "Vous conservez la propriété de tout ce que vous écrivez ou téléversez : réponses aux exercices, messages à vos amis et au tuteur, nom d'affichage et photo de profil. Vous nous accordez une licence non exclusive pour stocker, traiter, et afficher ce contenu strictement dans le but de vous fournir le service, ainsi qu'aux apprenants à qui vous l'envoyez. La licence prend fin lorsque le contenu est supprimé.",
+        "Nous n'entraînons nous-mêmes aucun modèle sur votre contenu. Ce que vous écrivez au tuteur part chez Google sur le niveau gratuit de l'API Gemini, où Google peut l'utiliser pour améliorer ses modèles et des personnes chez Google peuvent le lire, comme l'explique la politique de confidentialité. Ne publiez pas de contenu que vous n'avez pas le droit de partager, et ne collez dans le tuteur ni secrets, ni identifiants, ni données personnelles, les vôtres ou celles d'autres personnes.",
       ],
     },
     {
-      id: 'live-sessions',
-      heading: '6. Sessions en direct et conduite de la communauté',
+      id: 'community',
+      heading: '6. Amis et messages',
       paragraphs: [
-        "La pratique en direct vous associe à un autre apprenant en temps réel. Parlez-lui comme vous voudriez qu'on vous parle pendant que vous faites des erreurs dans une langue que vous ne maîtrisez pas encore, car c'est exactement ce qu'il ou elle est en train de faire.",
-        "Quitter une session à répétition, retarder délibérément une manche chronométrée, ou utiliser une aide automatisée pour gagner un duel gâche la session pour l'autre joueur et peut vous coûter l'accès aux fonctionnalités multijoueurs. Signalez les comportements qui dépassent les limites plutôt que de riposter.",
+        "Tout apprenant connecté peut vous trouver et vous envoyer une demande d'ami, et les amis peuvent s'écrire. Parlez-leur comme vous voudriez qu'on vous parle pendant que vous faites des erreurs dans une langue que vous ne maîtrisez pas encore, car c'est exactement ce qu'ils sont en train de faire.",
+        "Les demandes non désirées, le spam, et les messages qui harcèlent, menacent ou trompent gâchent la plateforme pour les autres et peuvent vous coûter votre compte. Retirez un ami qui dépasse les limites, et signalez le comportement à l'adresse de contact ci-dessous plutôt que de riposter.",
       ],
     },
     {
       id: 'availability',
       heading: '7. Disponibilité et modifications',
       paragraphs: [
-        'Le service est fourni tel quel, sans garantie de disponibilité. Il fonctionne sur une infrastructure gérée par des étudiants et peut être arrêté pour maintenance, redéployé, réinitialisé, ou interrompu. Exportez tout ce que vous souhaitez conserver.',
-        "Les fonctionnalités peuvent changer ou être supprimées. Lorsqu'un changement supprime quelque chose dont vous dépendez, nous l'indiquerons sur cette page et, lorsque des comptes sont concernés, par e-mail.",
+        'Le service est fourni tel quel, sans garantie de disponibilité. Il fonctionne sur une infrastructure gérée par des étudiants, sans sauvegardes, et peut être arrêté pour maintenance, redéployé, réinitialisé, ou interrompu. Gardez une copie de tout ce que vous ne pouvez pas vous permettre de perdre, ou demandez un export au titre de la politique de confidentialité.',
+        "Les fonctionnalités peuvent changer ou être supprimées. Lorsqu'un changement supprime quelque chose dont vous dépendez, nous l'indiquerons sur cette page avant qu'il n'ait lieu ; la plateforme n'envoie aucun e-mail.",
       ],
     },
     {
       id: 'termination',
       heading: '8. Suspension et résiliation',
       paragraphs: [
-        'Vous pouvez supprimer votre compte à tout moment depuis les paramètres du compte ; la suppression suit le calendrier de conservation défini dans la politique de confidentialité.',
+        "Vous pouvez faire supprimer votre compte à tout moment en écrivant à l'adresse de contact confidentialité ; la suppression suit les règles de conservation de la politique de confidentialité.",
         "Nous pouvons suspendre ou résilier un compte qui enfreint ces conditions. Pour tout ce qui n'est pas un abus grave, nous vous avertirons d'abord et vous donnerons une chance de vous expliquer. Pour les abus graves, y compris le harcèlement, le contenu illégal, ou les attaques contre l'infrastructure, la suppression est immédiate et définitive.",
         'Si votre compte est résilié, vous pouvez toujours demander un export de vos données au titre de la politique de confidentialité, sauf si cela exposait un autre apprenant.',
       ],

@@ -47,6 +47,7 @@ export {
   type PlanUnit,
 } from './plan';
 export { pageView, paths, type RefOf } from './redact';
+export { ORDER_SEPARATOR } from './readingPlan';
 export {
   ANSWER_OUTCOMES,
   POLICY,

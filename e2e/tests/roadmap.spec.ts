@@ -11,6 +11,7 @@ import {
   contentLessons,
   finishThroughApi,
   lessonPlan,
+  pageIndex,
   playLesson,
   playToLastPage,
 } from '../support/lesson-play';
@@ -20,9 +21,10 @@ import { expect, ONBOARDED_COURSE, placeCourse, test } from '../support/session'
 /**
  * The roadmap and lesson loop on real lessons (#96): a lesson played
  * through its pages, the daily goal met, the streak, and the lesson found
- * again in the list. Every case is on French A1, the onboarded course, and
- * plays with lesson-play.ts: through the pages, or through the API where
- * the case says so. The console guard watches each whole case.
+ * again in the list. Every case is on French A1, the onboarded course,
+ * except reading's, on French A2 (#148), and plays with lesson-play.ts:
+ * through the pages, or through the API where the case says so. The
+ * console guard watches each whole case.
  *
  * Each case that plays signs up its own learner: it moves the day's goal
  * and the streak, which the shared onboarded account must keep for the
@@ -37,6 +39,8 @@ const list = (params = '') => `${course}/lessons${params}`;
 
 /** The playable kinds of French A1: grammar (#146), vocabulary (#147), functions (#149). */
 const KINDS = ['grammar', 'vocabulary', 'functions'] as const;
+/** Reading (#148) plays on French A2: A1 has no reading lesson ready. */
+const READING_LEVEL = 'A2';
 
 /**
  * The playable French A1 lessons, fewest pages first: a page is a request
@@ -346,7 +350,6 @@ test.describe('the roadmap and lesson loop', () => {
     );
   });
 
-  // #148 adds reading here, on French A2: French A1 has no reading lesson ready.
   for (const kind of KINDS) {
     test(`a ${kind} lesson plays to its results, then its row is Passed`, async ({
       freshLearner: page,
@@ -366,4 +369,139 @@ test.describe('the roadmap and lesson loop', () => {
       expectSilent(violations);
     });
   }
+
+  // Reading (#148) on French A2: French A1 has no reading lesson ready.
+  test('a reading lesson plays to its results, its skim timing out, then its row is Passed', async ({
+    freshLearner: page,
+  }) => {
+    const [id] = contentLessons(LANG, READING_LEVEL, 'reading');
+    expect(id, `a French ${READING_LEVEL} reading lesson`).toBeDefined();
+    const plan = lessonPlan(id!);
+    const violations = watchConsole(page);
+    // The skim countdown is the browser's: the clock jumps to its end instead of waiting it out.
+    await page.clock.install();
+    await placeCourse(page, { lang: LANG, level: READING_LEVEL, dailyGoal: 10 });
+
+    // The lesson page: the key word count, and not the situation, which
+    // answers the skim question ("… to tell her readers about her three days
+    // in Marseille" before "Why does Camille write this post?").
+    await visit(page, lessonPath(id!));
+    const brief = plan.brief as { situation: { en: string }; keywords: unknown[] };
+    await expect(
+      page.getByText(`${brief.keywords.length} key words`, { exact: true }),
+    ).toBeVisible();
+    await expect(page.locator('main')).not.toContainText(brief.situation.en);
+    await page.getByRole('button', { name: 'Start the lesson' }).click();
+    await page.waitForURL(/\/play$/);
+
+    await playLesson(page, plan, { skim: 'timeout' });
+    await expect(page.getByRole('heading', { name: 'Your results' })).toBeVisible();
+    await settle(page);
+    await expect(page.getByText('Score: 100 / 100')).toBeVisible();
+
+    await visit(page, list(`?page=${await listPageOf(page, id!)}`));
+    await expect(row(page, id!)).toContainText('Passed');
+    expectSilent(violations);
+  });
+
+  // The skim page across reloads (#148): the countdown never grows, I've
+  // finished reading moves the focus to the question, and once the
+  // document is put away a reload never shows it again, not even before
+  // hydration. Real time: the countdown is long enough to read it twice.
+  test('a skim page keeps its time and keeps its document away through reloads', async ({
+    freshLearner: page,
+  }) => {
+    const [id] = contentLessons(LANG, READING_LEVEL, 'reading');
+    expect(id, `a French ${READING_LEVEL} reading lesson`).toBeDefined();
+    const plan = lessonPlan(id!);
+    const skim = plan.pages.findIndex((p) =>
+      p.items.some((item) => item.type === 'reading_skim_choice'),
+    );
+    expect(skim, 'a skim page').toBeGreaterThanOrEqual(0);
+    const violations = watchConsole(page);
+    await placeCourse(page, { lang: LANG, level: READING_LEVEL, dailyGoal: 10 });
+    await start(page, id!);
+    await playLesson(page, plan, { stop: (index) => index === skim });
+
+    const finished = page.getByRole('button', { name: "I've finished reading" });
+    const question = page.getByRole('heading', { name: 'Answer from memory' });
+    const reading = page.locator('[data-skim="reading"]');
+    const left = async () => {
+      const [m, s] = (await page.getByTestId('skim-time-left').innerText()).split(':').map(Number);
+      return m! * 60 + s!;
+    };
+
+    // Mid-countdown: a reload gives no time back. The time read first is at
+    // most the whole countdown; once it has gone down, a countdown that
+    // started again on the reload would show more than that.
+    await expect(finished).toBeVisible();
+    const first = await left();
+    await expect.poll(left).toBeLessThan(first);
+    const before = await left();
+    await visit(page, page.url());
+    await expect(finished).toBeVisible();
+    const after = await left();
+    expect(after).toBeLessThanOrEqual(before);
+    expect(after).toBeLessThan(first);
+    expect(await pageIndex(page)).toBe(skim);
+
+    // I've finished reading: the document goes, the question opens with the focus.
+    await finished.click();
+    await expect(reading).toHaveCount(0);
+    await expect(question).toBeFocused();
+
+    // A reload keeps the document away, and the server's HTML never draws it.
+    const html = await (await page.request.get(page.url())).text();
+    expect(html).toContain('data-skim="reading"');
+    expect(html).not.toContain('class="reading-document"');
+    await visit(page, page.url());
+    await expect(question).toBeVisible();
+    await expect(reading).toHaveCount(0);
+    await expect(page.locator('.reading-document')).toHaveCount(0);
+    await expect(
+      page.locator('.lesson-task-footer').getByRole('button', { name: 'Check' }),
+    ).toBeEnabled();
+    expectSilent(violations);
+  });
+
+  // The document beside the questions from 634 px of the task card (#148).
+  // At 834 px, an iPad, .lesson-main is display: contents and has no box to
+  // query: the card is the container, so the document stays beside them, as
+  // on the screens. A phone stacks it above.
+  test('a reading document sits beside its questions on a tablet and above them on a phone', async ({
+    freshLearner: page,
+  }) => {
+    const [id] = contentLessons(LANG, READING_LEVEL, 'reading');
+    expect(id, `a French ${READING_LEVEL} reading lesson`).toBeDefined();
+    const plan = lessonPlan(id!);
+    const open = plan.pages.findIndex((p) =>
+      p.items.some((item) => item.type === 'reading_document' && item.view === 'open'),
+    );
+    expect(open, 'a page with the document open').toBeGreaterThanOrEqual(0);
+    const violations = watchConsole(page);
+    await placeCourse(page, { lang: LANG, level: READING_LEVEL, dailyGoal: 10 });
+    await start(page, id!);
+    await playLesson(page, plan, { stop: (index) => index === open });
+
+    const documentBox = () => page.locator('.reading-doc-slot.is-side').boundingBox();
+    const questionBox = () =>
+      page.locator('.lesson-items > :not(.reading-doc-slot)').first().boundingBox();
+
+    await page.setViewportSize({ width: 834, height: 1112 });
+    await expect
+      .poll(async () => {
+        const [doc, question] = [await documentBox(), await questionBox()];
+        return doc !== null && question !== null && doc.x + doc.width <= question.x;
+      }, 'the document left of the questions at 834 px')
+      .toBe(true);
+
+    await page.setViewportSize({ width: 390, height: 844 });
+    await expect
+      .poll(async () => {
+        const [doc, question] = [await documentBox(), await questionBox()];
+        return doc !== null && question !== null && doc.y + doc.height <= question.y;
+      }, 'the document above the questions at 390 px')
+      .toBe(true);
+    expectSilent(violations);
+  });
 });

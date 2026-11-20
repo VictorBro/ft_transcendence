@@ -3,12 +3,7 @@
 import { useEffect, useEffectEvent, useState } from 'react';
 import { useTranslations } from 'next-intl';
 
-/** m:ss */
-function clock(seconds: number): string {
-  const m = Math.floor(seconds / 60);
-  const s = seconds % 60;
-  return `${m}:${s.toString().padStart(2, '0')}`;
-}
+import { Countdown } from '@/components/lesson/countdown';
 
 /**
  * The "Time left" box of an exam page. It counts down to a deadline in
@@ -47,28 +42,5 @@ export function ExamTimer({
     return () => clearInterval(interval);
   }, [deadline, ranOut]);
 
-  const urgent = seconds <= 10;
-  return (
-    <div
-      role="timer"
-      aria-label={t('timeLeft')}
-      className={`lesson-countdown grid gap-1 rounded-xl border px-4 py-3 ${
-        urgent ? 'border-red-500/60 bg-red-500/10' : 'border-slate-800 bg-slate-900'
-      }`}
-    >
-      <span className="text-sm text-slate-400">{t('timeLeft')}</span>
-      <span
-        data-testid="time-left"
-        className={`text-2xl font-semibold tabular-nums ${urgent ? 'text-red-300' : 'text-slate-100'}`}
-      >
-        {clock(seconds)}
-      </span>
-      <span aria-hidden="true" className="h-1.5 overflow-hidden rounded-full bg-slate-800">
-        <span
-          className={`block h-full rounded-full ${urgent ? 'bg-red-400' : 'bg-cyan-300'}`}
-          style={{ width: `${Math.min(100, (seconds / limitS) * 100)}%` }}
-        />
-      </span>
-    </div>
-  );
+  return <Countdown label={t('timeLeft')} seconds={seconds} total={limitS} testId="time-left" />;
 }
