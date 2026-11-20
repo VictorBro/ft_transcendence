@@ -51,6 +51,15 @@ export function connected(socket: ClientSocket): Promise<ClientSocket> {
   });
 }
 
+/**
+ * Resolves once the socket is in and has its connect snapshot. dm:unread comes
+ * last, so whatever the socket hears from then on is news.
+ */
+export async function ready(socket: ClientSocket): Promise<ClientSocket> {
+  await Promise.all([connected(socket), nextEvent(socket, 'dm:unread')]);
+  return socket;
+}
+
 /** Resolves with the reason the gateway refused the socket. */
 export async function refusal(socket: ClientSocket): Promise<string> {
   return (await nextEvent<Error>(socket, 'connect_error')).message;

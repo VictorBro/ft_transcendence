@@ -2,23 +2,28 @@ import { Logger, type OnModuleDestroy } from '@nestjs/common';
 import {
   WebSocketGateway,
   WebSocketServer,
+  type GatewayMetadata,
   type OnGatewayConnection,
   type OnGatewayDisconnect,
   type OnGatewayInit,
 } from '@nestjs/websockets';
 import type { Request } from 'express';
 import type { Event, ExtendedError } from 'socket.io';
+import type { ZodError } from 'zod';
 import {
   SERVER_EVENTS,
   clientEventSchema,
+  isErrorCode,
   userRoom,
   type ErrorCode,
   type PresenceStatus,
   type PresenceUpdate,
+  type SocketAck,
 } from '@ft/shared';
 
 import { SESSION_KEY_PREFIX } from '../app.setup';
 import { friendIds } from '../friends/friend-ids';
+import { unreadCounts } from '../messages/unread';
 import { wsConnections, wsEvents } from '../metrics/metrics';
 import { PresenceService } from '../presence/presence.service';
 import { PrismaService } from '../prisma/prisma.service';
@@ -66,14 +71,39 @@ function presenceUpdate(userId: string, status: PresenceStatus): PresenceUpdate 
   return { userId, status, at: new Date().toISOString() };
 }
 
-@WebSocketGateway({
+/** The first rule's code, as CodeValidationPipe answers a body; Zod's own sentences are not codes. */
+function issueCode(error: ZodError | undefined): ErrorCode {
+  const message = error?.issues[0]?.message;
+  return message !== undefined && isErrorCode(message) ? message : 'request.invalid';
+}
+
+/** socket.io's callback, the last argument of an event the client sent with one. */
+export type Ack = (answer: SocketAck<never>) => void;
+
+/**
+ * Says no to an event. Its ack when it came with one, since the caller is
+ * waiting on it; otherwise app:error to that socket only, never a broadcast.
+ */
+export function refuse(socket: AppSocket, ack: Ack | undefined, code: ErrorCode): void {
+  if (ack) {
+    ack({ ok: false, code });
+    return;
+  }
+  socket.emit(SERVER_EVENTS.APP_ERROR, { code });
+  wsEvents.inc({ direction: 'out', event: SERVER_EVENTS.APP_ERROR, outcome: 'ok' });
+}
+
+/** Every gateway's: they share one server, and Nest warns when their options differ. */
+export const GATEWAY_OPTIONS = {
   path: SOCKET_PATH,
   serveClient: false,
   // One transport: the handshake is a single upgrade and nothing long-polls.
   transports: ['websocket'],
   // Events are small; socket.io's 1 MB default would let 20 events be 20 MB of zod input.
   maxHttpBufferSize: 16_384,
-})
+} satisfies GatewayMetadata;
+
+@WebSocketGateway(GATEWAY_OPTIONS)
 export class SocketGateway
   implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect, OnModuleDestroy
 {
@@ -164,8 +194,8 @@ export class SocketGateway
 
   handleConnection(socket: AppSocket): void {
     wsConnections.inc();
-    const seen = fixedWindow(EVENT_WINDOW_MS);
-    socket.use((packet, next) => this.screen(socket, packet, next, seen()));
+    const windows = new Map<string, () => number>();
+    socket.use((packet, next) => this.screen(socket, packet, next, windows));
     void this.arrived(socket);
   }
 
@@ -176,11 +206,17 @@ export class SocketGateway
 
   /**
    * Tells the friends when this is the user's first socket, and tells this
-   * socket where each friend stands: the page may have been rendered a moment
-   * before one of them came or went.
+   * socket where each friend stands and what is unread: the page may have been
+   * rendered a moment before a friend came or went, or a message arrived.
    */
   private async arrived(socket: AppSocket): Promise<void> {
     const { userId } = socket.data;
+    // Started with the rest, settled on its own: a failed count must not keep
+    // the friends from hearing this user came online.
+    const unread = unreadCounts(this.prisma, userId).catch((error: unknown) => {
+      this.logger.error(`unread on connect failed: ${String(error)}`);
+      return undefined;
+    });
     try {
       // Both start before any await. A socket that closes at once is fine
       // either way: its DECR only lands after the grace period.
@@ -197,6 +233,13 @@ export class SocketGateway
       }
     } catch (error) {
       this.logger.error(`presence on connect failed: ${String(error)}`);
+    }
+    // Last, so a socket that has it has heard the rest of the snapshot. Sent
+    // when empty too: the tab can tell "nothing unread" from "not heard yet".
+    const counts = await unread;
+    if (counts) {
+      socket.emit(SERVER_EVENTS.DM_UNREAD, counts);
+      wsEvents.inc({ direction: 'out', event: SERVER_EVENTS.DM_UNREAD, outcome: 'ok' });
     }
   }
 
@@ -223,20 +266,36 @@ export class SocketGateway
    * Every client event passes here before any handler. Never next(err): socket.io
    * re-emits it as an `error` event, which crashes the process when nobody listens.
    */
-  private screen(socket: AppSocket, packet: Event, next: () => void, seen: number): void {
-    const [name, payload] = packet;
+  private screen(
+    socket: AppSocket,
+    packet: Event,
+    next: () => void,
+    windows: Map<string, () => number>,
+  ): void {
+    const [name, ...args] = packet;
+    const ack: Ack | undefined = typeof args.at(-1) === 'function' ? args.pop() : undefined;
     const schema = clientEventSchema(name);
     const event = schema ? name : 'unknown';
+    // A window per event, so reads never spend the budget for sends. Unknown
+    // events share one: a new name is not a new budget.
+    let counter = windows.get(event);
+    if (counter === undefined) {
+      counter = fixedWindow(EVENT_WINDOW_MS);
+      windows.set(event, counter);
+    }
+    const seen = counter();
     try {
       if (seen > EVENT_LIMIT) {
-        // Told once a window, so a flood is not answered with one.
-        if (seen === EVENT_LIMIT + 1) this.reply(socket, 'server.rateLimited');
+        // Told once a window, so a flood is not answered with one. An ack is
+        // answered every time: its caller is waiting on it.
+        if (ack || seen === EVENT_LIMIT + 1) refuse(socket, ack, 'server.rateLimited');
         wsEvents.inc({ direction: 'in', event, outcome: 'rate_limited' });
         return;
       }
-      const parsed = schema?.safeParse(payload);
+      // One payload: Nest hands a handler any extra arguments as an array in its place.
+      const parsed = args.length === 1 ? schema?.safeParse(args[0]) : undefined;
       if (!parsed?.success) {
-        this.reply(socket, 'request.invalid');
+        refuse(socket, ack, issueCode(parsed?.error));
         wsEvents.inc({ direction: 'in', event, outcome: 'invalid' });
         return;
       }
@@ -245,14 +304,8 @@ export class SocketGateway
       next();
     } catch (error) {
       this.logger.error(`event ${event} failed: ${String(error)}`);
-      this.reply(socket, 'server.unexpected');
+      refuse(socket, ack, 'server.unexpected');
     }
-  }
-
-  /** To the offending socket only: an answer, not a broadcast. */
-  private reply(socket: AppSocket, code: ErrorCode): void {
-    socket.emit(SERVER_EVENTS.APP_ERROR, { code });
-    wsEvents.inc({ direction: 'out', event: SERVER_EVENTS.APP_ERROR, outcome: 'ok' });
   }
 
   /**

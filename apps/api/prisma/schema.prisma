@@ -44,6 +44,9 @@ model User {
   userSeenQuestions    UserSeenQuestion[]
   friendshipsRequested Friendship[]       @relation("FriendshipRequester")
   friendshipsAddressed Friendship[]       @relation("FriendshipAddressee")
+  conversationsAsA     Conversation[]     @relation("ConversationUserA")
+  conversationsAsB     Conversation[]     @relation("ConversationUserB")
+  messagesSent         Message[]
   activeLang           Language?
 }
 
@@ -201,6 +204,43 @@ model Friendship {
 
   @@index([requesterId])
   @@index([addresseeId])
+}
+
+// One row per pair who have exchanged a message, keyed like Friendship. It
+// outlives the friendship: the history stays readable by both.
+model Conversation {
+  // Both ids, smaller first (src/friends/pair.ts), so a pair cannot get two.
+  pairKey       String    @id
+  // The smaller id.
+  userAId       String    @db.Uuid
+  userA         User      @relation("ConversationUserA", fields: [userAId], references: [id], onDelete: Cascade)
+  userBId       String    @db.Uuid
+  userB         User      @relation("ConversationUserB", fields: [userBId], references: [id], onDelete: Cascade)
+  createdAt     DateTime  @default(now())
+  // Orders the list: set with each message.
+  lastMessageAt DateTime  @default(now())
+  messages      Message[]
+
+  @@index([userAId])
+  @@index([userBId])
+}
+
+model Message {
+  id           String       @id @default(uuid()) @db.Uuid
+  pairKey      String
+  conversation Conversation @relation(fields: [pairKey], references: [pairKey], onDelete: Cascade)
+  senderId     String       @db.Uuid
+  sender       User         @relation(fields: [senderId], references: [id], onDelete: Cascade)
+  text         String       @db.VarChar(1000)
+  createdAt    DateTime     @default(now())
+  // Null until the other user reads it. Never sent.
+  readAt       DateTime?
+
+  // The history's keyset, newest first.
+  @@index([pairKey, createdAt, id])
+  // What a pair has unread, for the counts and a read: they cost what is
+  // unread rather than the whole history.
+  @@index([pairKey, readAt])
 }
 
 // One achievement a course earned (#95). The code is an AchievementCode of

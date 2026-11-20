@@ -7,6 +7,7 @@ export * from './item';
 export * from './language';
 export * from './lesson';
 export * from './locale';
+export * from './message';
 export * from './placement';
 export * from './two-factor';
 export * from './user';

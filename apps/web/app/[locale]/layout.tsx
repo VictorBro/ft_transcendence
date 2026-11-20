@@ -15,7 +15,7 @@ import '../globals.css';
  * behind the [locale] segment can read it as a plain param. One placed above
  * would need next/root-params, which returns nothing from there.
  *
- * Holds what all three shells share: the document, the metadata, the
+ * Holds what every shell shares: the document, the metadata, the
  * stylesheet. Each route group keeps its own layout for its header and footer.
  *
  * The whole catalogue goes to the browser through the provider, which is why

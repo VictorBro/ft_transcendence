@@ -315,9 +315,9 @@ The team tracks each module's current status and points on the wiki:
 | i18n, ≥3 languages | Minor | 1 | locales declared, `next-intl` not wired |
 | Additional browsers (≥2) | Minor | 1 | Playwright projects + documentation |
 | Complete LLM interface | Major | 2 | interface exists, no provider |
-| Real-time via WebSockets | Major | 2 | gateway on `/ws`, live course updates (#154) |
+| Real-time via WebSockets | Major | 2 | gateway on `/ws`: live course updates (#154), friend events (#155), online status (#157), direct messages (#158) |
 | Complete RAG system | Major | 2 | pgvector installed, no corpus |
-| User interaction: chat, profiles, friends | Major | 2 | friends (#155) and profiles (#156) done; chat (#158) to come |
+| User interaction: chat, profiles, friends | Major | 2 | done: friends (#155), profiles (#156), direct messages between friends (#158) |
 | | | **16** | |
 
 > **Open, for the team: the tutor inside a lesson.** Lessons now ship with their exercises, answer
@@ -377,7 +377,7 @@ reconnection story and a second cancellation path, for no gain. One gateway, one
 | | Transport | Examples |
 |---|---|---|
 | **Everything CRUD** | REST, Nest controllers, documented in Swagger | `POST /api/courses`, `GET /api/courses/:lang/today`, `GET /api/courses/:lang/lessons`, `POST /api/courses/:lang/lessons/:id/attempt` |
-| **Everything live** | socket.io on `/ws` | `course:updated`, `friend:request`, `friend:accepted`, `friend:removed`, `presence:update`; message events to come |
+| **Everything live** | socket.io on `/ws` | `course:updated`, `friend:request`, `friend:accepted`, `friend:removed`, `presence:update`, `dm:message`, `dm:unread` from the server; `dm:send` (with an ack) and `dm:read` from the browser |
 
 **The course stays in the path, and the API is language-neutral.** No route takes a `locale`
 parameter. A lesson is written in one language, the course's, like a question in the bank, so the
@@ -412,7 +412,7 @@ Use it. Four rules:
 3. **Parse every inbound payload with the shared Zod schema.** `CLIENT_EVENT_SCHEMAS` exists for
    this. Anything arriving on a gateway is untrusted, including from our own client.
 4. **Rate-limit per socket.** `@nestjs/throttler`'s guard is HTTP-only; socket events bypass it
-   entirely. See §7.
+   entirely. See §6.
 
 ---
 
@@ -694,7 +694,7 @@ and only the first is obvious:
 | **Auth endpoints** | Credential stuffing and TOTP brute force. Tighter limits than the global default |
 | **LLM endpoints** | Money. This is the difference between a bug costing €2 and €200 |
 | **Public API** | The module *requires* rate limiting as an explicit acceptance criterion |
-| **Socket events** | `chat:send`, `tutor:answer`. **The HTTP guard does not cover these**, a socket connection is one HTTP upgrade, so a client can emit thousands of events through a single allowed request. Needs its own per-socket, per-event limiter |
+| **Socket events** | `dm:send`, `dm:read`. **The HTTP guard does not cover these**, a socket connection is one HTTP upgrade, so a client can emit thousands of events through a single allowed request. The gateway's own screen limits each socket to 20 of each event per 10 s, and each has a budget per account: 30 `dm:send` and 100 `dm:read` a minute (ARCHITECTURE.md §4) |
 
 That last row is the one that gets missed. Write it when the gateway is written, not after.
 
@@ -702,20 +702,20 @@ That last row is the one that gets missed. Write it when the gateway is written,
 
 ## 7. Data model
 
-**Thirteen tables beside `User` and `RecoveryCode`, seven of which are already migrated**
-(`UserLevel`, `QuestionBank`, `UserSeenQuestion`, `Lesson`, `LessonResult`, `UserAchievement`,
-`Friendship`). The course roadmap adds `Lesson`, `LessonResult` and `UserAchievement` (all
-migrated); the lesson
-page adds `Exercise` and `Mistake`; social, content and operations add `Friendship` (migrated),
-`Message`, `Document`, `DocumentChunk` and `LlmCall`. Every one is load-bearing for a module we
-claim. The rule applied throughout: a table earns its place by being read at runtime, and a 1:1
-relationship is a column, not a table.
+**Fifteen tables beside `User` and `RecoveryCode`, ten of which are already migrated**
+(`UserLevel`, `QuestionBank`, `UserSeenQuestion`, `Lesson`, `LessonResult`, `LessonAttempt`,
+`UserAchievement`, `Friendship`, `Conversation`, `Message`). The course roadmap adds `Lesson`,
+`LessonResult`, `LessonAttempt` and `UserAchievement` (all migrated); the lesson page adds
+`Exercise` and `Mistake`; social, content and operations add `Friendship`, `Conversation` and
+`Message` (migrated), `Document`, `DocumentChunk` and `LlmCall`. Every one is load-bearing for a
+module we claim. The rule applied throughout: a table earns its place by being read at runtime, and
+a 1:1 relationship is a column, not a table.
 
-Everything is UUID-keyed, with four exceptions. `LessonResult`, `UserAchievement` and
-`Friendship` are keyed by their pair (`(userLevelId, lessonId)`, `(userLevelId, code)`, and the
-two user ids, smaller first), because the pair is what makes a row unique. `Lesson` is keyed by
-its authored id (`de-separable-verbs`), because it is seeded from content and results attach to
-it. Anything worth dating has `createdAt`, and every user-owned row cascades on user delete, so
+Everything is UUID-keyed, with five exceptions. `LessonResult`, `UserAchievement`, `Friendship`
+and `Conversation` are keyed by their pair (`(userLevelId, lessonId)`, `(userLevelId, code)`, and
+for the last two the two user ids, smaller first), because the pair is what makes a row unique.
+`Lesson` is keyed by its authored id (`de-separable-verbs`), because it is seeded from content and
+results attach to it. Anything worth dating has `createdAt`, and every user-owned row cascades on user delete, so
 deleting an account leaves nothing orphaned.
 
 ### 7.1 Languages
@@ -763,6 +763,8 @@ erDiagram
     QuestionBank ||--o{ UserSeenQuestion : "asked as"
     UserLevel    ||--o{ LessonResult     : "results of"
     Lesson       ||--o{ LessonResult     : "finished as"
+    UserLevel    ||--o{ LessonAttempt    : "attempts"
+    Lesson       ||--o{ LessonAttempt    : "attempted as"
     UserLevel    ||--o{ UserAchievement  : "earned"
     LessonResult ||--o{ Exercise         : "drills"
     Exercise     ||--o{ Mistake          : "names"
@@ -776,6 +778,7 @@ erDiagram
 | `UserSeenQuestion` | userId, questionId | Unique `(userId, questionId)`. **The exposure record**, and the whole reason placement never repeats a question: the draw is a `NOT EXISTS` over these rows. It is per user and not per run, so a retake cannot serve an old question either |
 | `Lesson` | id, lang, level, position, kind, topic?, theme?, title, summary, brief, content? | **The seeded catalogue, never written at runtime.** One row is one outline entry: `db:seed` writes every entry of `content/outlines/` (title = working title, summary = intent, empty brief), then fills the rows whose lesson files exist (`content/briefs/<id>.json`, `content/lessons/<id>.json`): title from the file, summary = the objective in the course language, brief and content = the files ([#135](https://github.com/VictorBro/ft_transcendence/issues/135), which also adds the `content` column). `id` is the authored key: the language and a few English words, no level, so a lesson can move level and keep its results. It is permanent once on `main`. `kind` is grammar, vocabulary, functions or reading; `topic` (the `Topic` enum) is set exactly on grammar lessons, `theme` exactly on the others. Title and summary are in the course language; the lesson body also carries help text in en, fr and de. The lesson cards never send the brief or the content. Index on `(lang, level, position)`. Full guide in [LESSONS.md](LESSONS.md) |
 | `LessonResult` | userLevelId, lessonId, score, day, finishedAt | Primary key `(userLevelId, lessonId)`: **one row per course and lesson, with no history.** Every finish upserts it: `score` keeps the best, `day` is the learner's day of the latest finish, `finishedAt` its moment. No row means not started, a best of 70 or more means done, anything else failed. Today's count is the rows whose `day` is today |
+| `LessonAttempt` | id, userLevelId, lessonId, motherTongue, secret, startedAt, page, deadline?, answers, completedAt?, results? | Unique `(userLevelId, lessonId)`: **the current or last attempt at a lesson**, run and scored by the server (#145). `secret` keys the refs that name units, options and tokens, and is never sent; `page` is the cursor and `deadline` that of the exam page at it; `answers` holds the locked answers, and `results` is written once, when the last page locks. The plan is never stored: every request rebuilds it from the lesson row. Full guide in [LESSONS.md](LESSONS.md) |
 | `UserAchievement` | userLevelId, code, day, earnedAt | Primary key `(userLevelId, code)`, so an achievement is earned once and never lost. `day` is the course day it was earned. The 16 codes are strings fixed in code |
 | `Exercise` | userLevelId, lessonId, ordinal, type, prompt, options, expectedAnswer, learnerAnswer, correct, correctedText, feedback, answeredAt | The question, the answer and the correction in one row, because there is exactly one of each. Three tables here would be normalising a 1:1:1. Attaches to the course's `LessonResult` for that lesson, and a redo replaces the previous rows. The lesson page milestone decides the rest of its shape |
 | `Mistake` | exerciseId?, messageId?, type, span, explanation | The one place a child table is right: one answer produces *many* mistakes and they must be countable by type in SQL. Exactly one of the two parents is set, a drill answer or a chat message, so the analytics cover how the learner writes and not only how they drill |
@@ -808,6 +811,8 @@ enum MistakeType {
 ```mermaid
 erDiagram
     User     ||--o{ Friendship    : "requests"
+    User     ||--o{ Conversation  : "is in"
+    Conversation ||--o{ Message   : "holds"
     User     ||--o{ Message       : "sends"
     Message  ||--o{ Mistake       : "corrected into"
     User     ||--o{ LlmCall       : "triggers"
@@ -817,7 +822,8 @@ erDiagram
 | Table | Holds | Notes |
 |---|---|---|
 | `Friendship` | pairKey, requesterId, addresseeId, status, createdAt, updatedAt | `pending / accepted`; declining, cancelling and removing delete the row. Keyed by the pair, smaller id first, so A to B and B to A cannot both exist |
-| `Message` | senderId, recipientId, body, bodyLanguage, correctedBody?, translated?, sentAt, readAt | The cross-language chat of §1.5. `body` is what the sender typed; `translated` is it in the recipient's language, and both it and `correctedBody` are nullable so the message sends before the AI answers. One translation per message, because the conversation has two people in it. A `Conversation` plus a participants join table would buy group chat we are not claiming |
+| `Conversation` | pairKey, userAId, userBId, createdAt, lastMessageAt | One per pair who have exchanged a message, keyed like `Friendship`, so a pair cannot get two. `lastMessageAt` orders the list. It outlives the friendship: the history stays readable by both. Two users and no participants table, because group chat is not claimed |
+| `Message` | id, pairKey, senderId, text, createdAt, readAt? | A direct message between friends (#158), 1 to 1,000 characters. `readAt` stays null until the other user reads it, and is never sent. The history pages on `(pairKey, createdAt, id)`. The cross-language chat of §1.5 is not built: it would add `bodyLanguage`, `correctedBody?` and `translated?`, the last two nullable so the message sends before the AI answers, and one translation per message, because the conversation has two people in it |
 | `Document` | language, cefr?, title, kind, sourceUrl, licence, attribution, checksum | Source material for RAG. **`licence` and `attribution` are not optional**: a mixed corpus needs per-document provenance, and CC BY-SA text has to be credited wherever it surfaces. `checksum` makes re-ingest idempotent |
 | `DocumentChunk` | documentId, level, topic?, theme?, ordinal, content, embedding `vector(N)` | HNSW index on `embedding`. `level` with `topic` or `theme` lets a lesson retrieve only its own cell's reference: one grammar note per (level, topic), shared by all of that cell's lessons |
 | `LlmCall` | userId?, purpose, model, tokensIn, tokensOut, latencyMs, cacheHit, createdAt | Cost instrumentation, and the evidence at evaluation that spend is controlled. Cost in euros is derived from tokens and the price in config, not stored, because the price changes |
@@ -829,7 +835,7 @@ rows by `day`, and the streak is three columns on `UserLevel` (§1.3).
 
 ### 7.4 What each module needs
 
-The point of the cut: the 16-point core needs **no table beyond the thirteen**, and most of the
+The point of the cut: the 16-point core needs **no table beyond the fifteen**, and most of the
 buffer modules need none either.
 
 | Module | Pts | Tables it needs |
@@ -840,9 +846,9 @@ buffer modules need none either.
 | Complete 2FA | 1 | `User`, `RecoveryCode` |
 | i18n, additional browsers, SSR | 3 | none |
 | Complete LLM interface | 2 | `Lesson`, `LessonResult`, `Exercise`, `LlmCall` |
-| Real-time via WebSockets | 2 | `Message` (+ Redis presence) |
+| Real-time via WebSockets | 2 | `Conversation`, `Message` (+ Redis presence) |
 | Complete RAG | 2 | `Document`, `DocumentChunk` |
-| User interaction: chat, profiles, friends | 2 | `Message`, `Friendship`, `User` |
+| User interaction: chat, profiles, friends | 2 | `Conversation`, `Message`, `Friendship`, `User` |
 | **Activity analytics dashboard** | 1 | none new: `LessonResult` + `Mistake` |
 | **Gamification** | 1 | `UserAchievement`, plus `xp`, `lastChallengeDay`, `lastChallengeCode` and `challengesDone` on `UserLevel` |
 | **Advanced search** | 1 | none new: `Lesson` + `LessonResult` |

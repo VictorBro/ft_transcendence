@@ -201,22 +201,37 @@ sequenceDiagram
   console error.
 - **Rooms, never a broadcast.** Each socket joins `user:<id>` and
   `session:<sid>` before its CONNECT reply. `SocketsService.toUser()` is the
-  only way to reach a user. The gateway itself writes to one socket only twice:
-  to the socket that sent a bad event, and to a socket that just connected, with
-  the presence of each friend (below).
+  only way to reach a user. Acks aside, the gateway writes to one socket only
+  twice: to the socket that sent a bad event, and to a socket that just
+  connected, with the presence of each friend and the unread counts (below).
 - **Sockets close with their session**: on logout (that session's sockets
   only), on every session id change (signup, login, 2FA verify, 2FA enable and
   disable), and when a session ends any other way, through a sweep every 60 s
   that asks Redis for each open socket's `sess:<sid>` (known keys, never a scan).
   A handshake checks its session once more after joining its rooms, so a logout
   that ran while it was under way cannot miss it.
-- **One screen for every inbound event**: 20 events per 10 s per socket, frames
-  capped at 16 KiB, a zod parse from `CLIENT_EVENT_SCHEMAS`. A bad event gets
-  `app:error { code }`, an `ERROR_CODES` entry, and is dropped, never a crash;
-  past the limit, the first one is told `server.rateLimited` and the rest are
-  dropped. A session holds at most 20 sockets, checked before the user write:
-  one per tab is far below it, and a client opening sockets in a loop costs no
-  query and cannot multiply the per-socket limit.
+- **One screen for every inbound event**: 20 of each event name per 10 s per
+  socket, frames capped at 16 KiB, one payload besides the ack, a zod parse from
+  `CLIENT_EVENT_SCHEMAS`. Each name counts in its own window, and unknown names
+  share one, so a burst of `dm:read` cannot use up the budget for `dm:send`. A
+  refused event is dropped, never a crash, and its code is an `ERROR_CODES`
+  entry: `server.rateLimited` past the limit, else the failed rule's own
+  (`message.empty`, `message.tooLong`), else `request.invalid`. Sent with an
+  ack, it gets `{ ok: false, code }` there, every time, since its caller is
+  waiting on it. Without one it gets `app:error { code }`, and past the limit
+  only the first of the window is told. A session holds at most 20 sockets,
+  checked before the user write: one per tab is far below it, and a client
+  opening sockets in a loop costs no query. More sockets still mean more
+  events; what bounds the work they cause is the per-account budgets of
+  `dm:send` and `dm:read` (below).
+- **A catch-all filter for the handlers.** Global guards, pipes and filters
+  never reach a gateway in Nest 11, which is why the screen validates and
+  limits. What a handler throws goes to `SocketExceptionFilter`, declared with
+  `@UseFilters` on each gateway that handles events: a service's coded
+  `HttpException` keeps its code (`message.notFriends`), anything else is
+  logged and answered `server.unexpected`, through the ack when there is one,
+  else `app:error`. The gateways share one server, so they share one options
+  object, `GATEWAY_OPTIONS`.
 - **Sent after the commit.** `course:updated { lang }` means "read this course
   again": the page is rendered on the server, so the tab calls
   `router.refresh()` rather than keeping a second copy of the course.
@@ -258,9 +273,64 @@ sequenceDiagram
     a crash never took back, so `onApplicationBootstrap` deletes every
     `presence:*` key (`SCAN`, never `KEYS`). A count that still goes below
     zero is put back to zero.
-  - **One API instance assumed**: the counts hold across instances, but the
-    boot reset would wipe the other instances' counts, and the rooms do not
-    span instances yet (#158).
+  - **One API instance assumed** (below): the counts hold across instances,
+    but the boot reset would wipe the other instances' counts.
+- **Direct messages** between friends (`dm:send`, `dm:message`, `dm:unread`,
+  `dm:read`), in `MessagesService` (`apps/api/src/messages/`). In every payload
+  `userId` is the other person of the conversation, as in a friend event:
+  - **Sent over the socket, read over REST.** `dm:send { userId, text }` comes
+    with an ack. Only accepted friends may send (`areFriends()`), so a pending
+    request, or yourself, gets `message.notFriends`. An account may send 30 a
+    minute across all its sockets, counted in the HTTP throttler's storage;
+    past that the ack answers `server.rateLimited`. The conversation upsert
+    and the message insert are one transaction; then
+    `dm:message { userId, message }` goes to both rooms, the sending tab's
+    included, and the ack answers `{ ok: true, data: message }`. The thread
+    dedupes by id. `GET /api/conversations` lists the conversations, latest
+    first, with their unread counts, and
+    `GET /api/conversations/:userId/messages?cursor=` pages the history, 50 at
+    a time on `(createdAt, id)`. Reading needs no friendship: the history stays
+    readable by both after unfriending.
+  - **Unread counts are snapshots.** `dm:unread { counts, at }` holds every
+    conversation's count, keyed by the other user, never a change to apply. It
+    goes to the recipient after each message, without holding up the ack (a
+    failure is logged); to the reader after each `dm:read`, changed or not, so
+    a read always converges; and to each new socket after the presence
+    snapshot, empty included, so the tab can tell "nothing unread" from "not
+    heard yet". `at` is taken before the count, so of two snapshots that cross
+    (a read and a new message at once) the later stamp counted every write the
+    other saw: the tab keeps the latest `at`, whatever order they land in.
+  - **`dm:read { userId }`** sets `readAt` on what that user sent you. No ack:
+    the answer is the snapshot, to every tab of the reader. The open thread
+    sends it while the tab is visible and connected and the conversation has
+    unread messages, and each snapshot re-arms it. An account may read 100 a
+    minute across all its sockets, what an HTTP route allows
+    (`RATE_LIMIT_PER_MINUTE`), since each read costs two queries and a snapshot
+    to every tab; past that it gets `app:error` with `server.rateLimited`, and
+    the counts stay until the next snapshot. `readAt` never leaves the server.
+    The index on `(pairKey, readAt)` keeps the counts and a read at the cost
+    of what is unread, not of the whole history.
+  - **In the tab**: `tab-socket.ts` keeps the last snapshot for as long as the
+    socket, like the presence map, and drops it on sign-out. The account menu's
+    Messages badge shows its total, 99+ past 99, and nothing before the first
+    snapshot.
+    `sendMessage()` refuses at once with `network.unreachable` when not
+    connected: socket.io would buffer the event and deliver it long after the
+    thread said it failed. A lost ack (10 s, or the socket closing) says the
+    same, though the message may have been stored: sending it again can then
+    show it twice, accepted, as nothing tells two sends of the same text apart.
+  - **Catching up after a reconnect**: events sent while away are lost, so the
+    open thread fetches the newest page on every connect, the first included,
+    and merges it by id. When that page does not meet what the thread holds,
+    more than a page came meanwhile, and the thread starts again from it. The
+    connect snapshot puts the counts right.
+- **One API instance.** Rooms live in the memory of the process holding the
+  socket, so `toUser()` reaches only that process's sockets: with two `api`
+  replicas, a message sent through one would miss a friend connected to the
+  other. Several replicas would need `@socket.io/redis-adapter`, which carries
+  room emits through Redis (`InterServerEvents` waits for it), and a presence
+  boot reset that leaves the other instances' counts alone. The api runs one
+  replica by design ([PRODUCT_ARCHITECTURE.md](PRODUCT_ARCHITECTURE.md) §4).
 - **One connection per tab**, held in module scope (`components/tab-socket.ts`)
   and opened by `SessionNav` for a signed-in user, so a route group remount or a
   locale switch never drops it and an anonymous page never opens one. WebSocket
@@ -418,7 +488,7 @@ flowchart TB
     end
 
     subgraph e2e["e2e.yml, two jobs per browser (lesson, rest)"]
-        e1["build prod images<br/>compose up"] --> e2["Playwright<br/>one engine, one part"] --> e3["console gate<br/>legal pages"] --> em["monitoring check<br/>every target up"] --> e4["API restart run"]
+        e1["build prod images<br/>compose up"] --> e2["Playwright in its own image<br/>one engine, one part"] --> e3["console gate<br/>legal pages"] --> em["monitoring check<br/>every target up"] --> e4["API restart run"]
         e4 --> eg["gate<br/>playwright (production stack)"]
     end
 

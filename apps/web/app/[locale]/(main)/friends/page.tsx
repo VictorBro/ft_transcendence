@@ -4,6 +4,7 @@ import { getTranslations } from 'next-intl/server';
 import { UserSearchQuerySchema } from '@ft/shared';
 
 import { FriendButton, RemoveFriendButton, RequestButtons } from '@/components/friend-buttons';
+import { MessageLink } from '@/components/message-link';
 import { RefreshOn } from '@/components/refresh-on';
 import { UserRow } from '@/components/user-row';
 import {
@@ -84,6 +85,7 @@ export default async function FriendsPage({
       <ListSection id="friends-list" title={t('yourFriends')} empty={t('noFriends')}>
         {lists.friends.map((user) => (
           <UserRow key={user.id} user={user} online={user.online}>
+            <MessageLink userId={user.id} />
             <RemoveFriendButton userId={user.id} name={user.displayName} />
           </UserRow>
         ))}
