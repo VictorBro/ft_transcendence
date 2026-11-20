@@ -48,6 +48,7 @@ const SLIDING_ITEMS = new Set([
   'vocabulary_matching',
   'function_matching',
   'grammar_person_matching',
+  'reading_keyword_matching',
 ]);
 
 /** The units of a page, by item: what its answers are keyed by. */

@@ -17,9 +17,9 @@ import { lessons, type Locale } from '@ft/shared';
  * prompt on screen is matched to its plan unit by text. No database read,
  * no test route.
  *
- * Grammar (#146), vocabulary (#147) and functions (#149) play in the
- * browser; #148 teaches it reading. The API player below already answers every kind,
- * since it reads the page views as JSON.
+ * Grammar (#146), vocabulary (#147), functions (#149) and reading (#148)
+ * play in the browser. The API player below answers every kind, since it
+ * reads the page views as JSON.
  */
 
 type LessonPlan = lessons.player.LessonPlan;
@@ -87,7 +87,16 @@ const BOARDS = new Set([
   'grammar_pronoun_form_match',
   'vocabulary_matching',
   'function_matching',
+  'reading_keyword_matching',
 ]);
+
+/**
+ * How a skim page (#148) puts its document away: I've finished reading,
+ * or the countdown at zero. `timeout` needs the page's clock installed
+ * (page.clock.install) before the player loads: it jumps to the end of
+ * the countdown instead of waiting it out.
+ */
+export type Skim = 'finish' | 'timeout';
 
 /** A typed answer that is right: the teaching answer. */
 const rightText = (unit: Extract<PlanUnit, { kind: 'text' }>) => unit.answer;
@@ -188,6 +197,35 @@ export async function unrollDialogue(page: Page): Promise<void> {
 }
 
 /**
+ * Puts the document of a skim page away (#148), if the page on screen is
+ * one: the question opens, and Check with it.
+ */
+export async function skimDocument(page: Page, how: Skim = 'finish'): Promise<void> {
+  const reading = page.locator('[data-skim="reading"]');
+  if ((await reading.count()) === 0) return;
+  // Hydrated: the countdown runs, and the button takes a press.
+  const finished = page.getByRole('button', { name: "I've finished reading" });
+  await expect(finished).toBeEnabled();
+  // While the document is open, the question stays hidden (lesson.css) and
+  // Check stays held (the document's block): neither shows in a static render.
+  const question = page.getByRole('heading', { name: 'Answer from memory' });
+  const check = page.locator('.lesson-task-footer').getByRole('button', { name: 'Check' });
+  await expect(question).toBeHidden();
+  await expect(check).toBeDisabled();
+  if (how === 'finish') {
+    await finished.click();
+  } else {
+    const [m, s] = (await page.getByTestId('skim-time-left').innerText()).split(':').map(Number);
+    await page.clock.fastForward((m! * 60 + s! + 1) * 1000);
+  }
+  await expect(reading).toHaveCount(0);
+  await expect(question).toBeVisible();
+  // Either way the focus moves to the question, which says it has opened.
+  await expect(question).toBeFocused();
+  await expect(check).toBeEnabled();
+}
+
+/**
  * Answers every unit of the page on screen, right or wrong as `right`
  * says, through the controls a learner uses.
  */
@@ -195,6 +233,7 @@ export async function answerPage(
   page: Page,
   planPage: PlanPage,
   right: (unit: PlanUnit) => boolean,
+  { skim = 'finish' }: { skim?: Skim } = {},
 ): Promise<void> {
   const used = new Set<string>();
   // A board's options are used once each: the persons given so far.
@@ -212,6 +251,8 @@ export async function answerPage(
     .all()) {
     await show.click();
   }
+  // A skim page (#148): the question opens once the document is put away.
+  await skimDocument(page, skim);
 
   for (const unit of planPage.units) {
     const good = right(unit);
@@ -347,7 +388,11 @@ async function settle(any: Locator, refused: Locator, index: number): Promise<vo
 export async function playLesson(
   page: Page,
   plan: LessonPlan,
-  { share = 1, stop }: { share?: number; stop?: (index: number) => boolean } = {},
+  {
+    share = 1,
+    stop,
+    skim,
+  }: { share?: number; stop?: (index: number) => boolean; skim?: Skim } = {},
 ): Promise<void> {
   const isRight = rightShare(share);
   const order = new Map(plan.pages.flatMap((p) => p.units).map((u, n) => [u.id, n]));
@@ -355,7 +400,9 @@ export async function playLesson(
     if (/\/results$/.test(new URL(page.url()).pathname)) return;
     const index = await pageIndex(page);
     if (stop?.(index)) return;
-    await answerPage(page, plan.pages[index]!, (unit) => isRight(order.get(unit.id) ?? 0));
+    await answerPage(page, plan.pages[index]!, (unit) => isRight(order.get(unit.id) ?? 0), {
+      skim,
+    });
     await sendPage(page);
     // The last page replaces the player with the results.
     if (index === plan.pages.length - 1) {
