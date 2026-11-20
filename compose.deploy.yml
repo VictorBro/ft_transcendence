@@ -17,8 +17,19 @@
 
 name: ft_transcendence
 
+# Every service logs through Docker's json-file driver, which keeps a log
+# forever unless told otherwise. Caddy's access log holds each visitor's IP
+# address, and the Privacy Policy (section 5) says those logs are capped and
+# rotated out, oldest first: three files of 10 MB per container, at most.
+x-logging: &logging
+  driver: json-file
+  options:
+    max-size: 10m
+    max-file: "3"
+
 services:
   caddy:
+    logging: *logging
     image: caddy:2.11.9-alpine
     depends_on:
       web:
@@ -52,6 +63,7 @@ services:
       retries: 3
 
   web:
+    logging: *logging
     image: ghcr.io/victorbro/ft_transcendence/web:${IMAGE_TAG:-latest}
     depends_on:
       api:
@@ -66,6 +78,7 @@ services:
     restart: unless-stopped
 
   api:
+    logging: *logging
     image: ghcr.io/victorbro/ft_transcendence/api:${IMAGE_TAG:-latest}
     depends_on:
       db:
@@ -112,6 +125,7 @@ services:
   # content/, which the tooling image carries. Both upsert on the authored ids,
   # so running the seed on every deploy is safe.
   migrate:
+    logging: *logging
     image: ghcr.io/victorbro/ft_transcendence/tooling:${IMAGE_TAG:-latest}
     profiles: [migrate]
     command:
@@ -130,6 +144,7 @@ services:
     restart: "no"
 
   db:
+    logging: *logging
     image: pgvector/pgvector:0.8.7-pg18-trixie
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-ft}
@@ -150,6 +165,7 @@ services:
     restart: unless-stopped
 
   redis:
+    logging: *logging
     image: redis:8.10.3-alpine
     command: ["redis-server", "--appendonly", "yes"]
     volumes:
@@ -171,6 +187,7 @@ services:
   # exporter pins are copied from compose.yml by hand, like caddy's:
   # scripts/check-monitoring-config.sh fails when the two drift.
   prometheus:
+    logging: *logging
     image: ghcr.io/victorbro/ft_transcendence/prometheus:${IMAGE_TAG:-latest}
     volumes:
       - prometheus-data:/prometheus
@@ -191,6 +208,7 @@ services:
       retries: 3
 
   alertmanager:
+    logging: *logging
     image: ghcr.io/victorbro/ft_transcendence/alertmanager:${IMAGE_TAG:-latest}
     environment:
       # Optional on purpose: an interpolation error here would stop the whole
@@ -214,6 +232,7 @@ services:
       retries: 3
 
   grafana:
+    logging: *logging
     image: ghcr.io/victorbro/ft_transcendence/grafana:${IMAGE_TAG:-latest}
     environment:
       GF_SERVER_ROOT_URL: https://${SITE_DOMAIN:?set the public hostname, e.g. ft.example.com}/grafana/
@@ -237,6 +256,7 @@ services:
       retries: 3
 
   node-exporter:
+    logging: *logging
     image: ghcr.io/prometheus/node-exporter:v1.12.1
     command:
       - --path.rootfs=/rootfs
@@ -249,6 +269,7 @@ services:
     restart: unless-stopped
 
   postgres-exporter:
+    logging: *logging
     image: ghcr.io/prometheus-community/postgres-exporter:v0.20.1
     environment:
       DATA_SOURCE_URI: db:5432/${POSTGRES_DB:-ft_transcendence}?sslmode=disable
@@ -260,6 +281,7 @@ services:
     restart: unless-stopped
 
   redis-exporter:
+    logging: *logging
     image: ghcr.io/oliver006/redis_exporter:v1.97.0
     environment:
       REDIS_ADDR: redis://redis:6379
@@ -270,6 +292,7 @@ services:
     restart: unless-stopped
 
   blackbox-exporter:
+    logging: *logging
     image: ghcr.io/prometheus/blackbox-exporter:v0.29.1
     networks:
       - ft
