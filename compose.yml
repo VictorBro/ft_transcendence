@@ -11,10 +11,22 @@
 
 name: ft_transcendence
 
+# Every service logs through Docker's json-file driver, which keeps a log
+# forever unless told otherwise. Caddy's access log holds each visitor's IP
+# address, and the Privacy Policy (section 5) says those logs are capped and
+# rotated out, oldest first: three files of 10 MB per container, at most.
+# compose.deploy.yml carries its own copy: anchors do not cross files.
+x-logging: &logging
+  driver: json-file
+  options:
+    max-size: 10m
+    max-file: "3"
+
 services:
   # The only service with published ports. Terminates TLS and routes by path,
   # so web and api share one origin: no CORS, and cookies are first-party.
   caddy:
+    logging: *logging
     image: caddy:2.11.9-alpine
     # Long form even though the condition is the default: compose.prod.yml
     # tightens it to service_healthy, and mixing the short and long forms
@@ -61,6 +73,7 @@ services:
       retries: 3
 
   web:
+    logging: *logging
     build:
       context: .
       dockerfile: apps/web/Dockerfile
@@ -80,6 +93,7 @@ services:
       - ft
 
   api:
+    logging: *logging
     build:
       context: .
       dockerfile: apps/api/Dockerfile
@@ -117,6 +131,7 @@ services:
       - ft
 
   db:
+    logging: *logging
     # Not the plain `postgres` image: it ships without pgvector. Never below
     # 0.8.2 (CVE-2026-3172, docs/VERSIONS.md).
     image: pgvector/pgvector:0.8.7-pg18-trixie
@@ -143,6 +158,7 @@ services:
       - ft
 
   redis:
+    logging: *logging
     image: redis:8.10.3-alpine
     # AOF on: sessions should survive a restart. RDB snapshots
     # alone lose up to a minute of writes.
@@ -167,6 +183,7 @@ services:
   # server, which has no checkout to bind-mount it from.
 
   prometheus:
+    logging: *logging
     build:
       context: infra/monitoring/prometheus
     volumes:
@@ -183,6 +200,7 @@ services:
       retries: 3
 
   alertmanager:
+    logging: *logging
     build:
       context: infra/monitoring/alertmanager
     environment:
@@ -206,6 +224,7 @@ services:
       retries: 3
 
   grafana:
+    logging: *logging
     build:
       context: infra/monitoring/grafana
     environment:
@@ -231,6 +250,7 @@ services:
       retries: 3
 
   node-exporter:
+    logging: *logging
     image: ghcr.io/prometheus/node-exporter:v1.12.1
     command:
       - --path.rootfs=/rootfs
@@ -249,6 +269,7 @@ services:
     mem_limit: 48m
 
   postgres-exporter:
+    logging: *logging
     image: ghcr.io/prometheus-community/postgres-exporter:v0.20.1
     environment:
       # The app's role, a superuser, as the API already uses. A pg_monitor role
@@ -261,6 +282,7 @@ services:
     mem_limit: 48m
 
   redis-exporter:
+    logging: *logging
     image: ghcr.io/oliver006/redis_exporter:v1.97.0
     environment:
       REDIS_ADDR: redis://redis:6379
@@ -272,6 +294,7 @@ services:
     mem_limit: 32m
 
   blackbox-exporter:
+    logging: *logging
     # The image's default config has the http_2xx module, which is all the
     # probes in prometheus.yml use.
     image: ghcr.io/prometheus/blackbox-exporter:v0.29.1

@@ -4,16 +4,16 @@ export const privacyPolicy: LegalDocument = {
   slug: 'privacy',
   title: 'Privacy Policy',
   description:
-    'What ft_transcendence collects while you learn a language with it, why we collect it, how long we keep it, and how to get it back or deleted.',
-  lastUpdated: '2026-11-18',
+    'What ft_transcendence collects while you learn a language with it, why we collect it, what reaches Google Gemini, how long we keep it, and how to get it back or deleted.',
+  lastUpdated: '2026-11-20',
   intro:
-    'ft_transcendence is an AI-driven language learning platform. Teaching a language well means observing how you use it, so this service processes more about your learning behaviour than a typical website does. This policy explains exactly what that means in practice, written to be read rather than skimmed.',
+    'ft_transcendence is a language learning platform with an AI tutor. Teaching a language means keeping your answers, your level and your progress, and the tutor sends some of that to Google. This policy explains exactly what that means in practice, written to be read rather than skimmed.',
   sections: [
     {
       id: 'scope',
       heading: '1. Scope',
       paragraphs: [
-        'This policy covers the ft_transcendence web application, its API, and the real-time session service that powers live practice between two learners. It applies to everyone who creates an account, and to visitors who only read public pages such as this one.',
+        'This policy covers the ft_transcendence web application, its API, and the real-time connection that carries messages between friends and shows who is online. It applies to everyone who creates an account, and to visitors who only read public pages such as this one.',
         'ft_transcendence is an academic project built by students. It is not a commercial product, it is not backed by a company, and it should not be treated as a system of record for anything you cannot afford to lose. We still hold ourselves to the practices described here.',
       ],
     },
@@ -21,55 +21,55 @@ export const privacyPolicy: LegalDocument = {
       id: 'data-we-collect',
       heading: '2. Data we collect',
       paragraphs: [
-        'Account data: the email address and display name you provide at signup, a password stored only as an Argon2 hash, and, if you enable it, two-factor authentication settings. We never store a password in a form we can read.',
-        'Learning data: the target language and proficiency level you select, answers submitted to exercises and assessments, the level our assessment engine infers from those answers, streaks, scores, and progress markers used by the gamification features.',
-        'Conversation data: the messages you send to the AI tutor in a lesson discussion, and its answers. They pass through our servers on their way to the model and back, and are not stored (see section 4).',
+        'Account data: the email address and display name you provide at signup, a password stored only as an Argon2 hash, the profile picture you upload if you choose one, your interface language, the time zone your browser reports (used to tell where your day starts for streaks and daily goals), and, if you enable it, two-factor authentication settings. We never store a password in a form we can read.',
+        'Learning data: the languages you learn, the level the placement test sets from your answers or the level you choose instead, the placement questions you have already seen so they are not asked again, your daily goal, the answers you submit in lessons and exams with their scores, and the streaks, experience points, challenges and achievements of the gamification features.',
+        'Tutor data: what you write to the tutor of a lesson discussion and what it answers. It is not stored on our servers: section 4 says where it goes and section 5 how long it lives.',
         'Interaction data: friend relationships, whether you are online right now (the number of app tabs you have open, with no history), the day you last opened the app while signed in (the day only, not the time, and only the latest), and the messages you send to your friends, each stored with when it was read (which the sender is never shown). Anything you send to another learner is visible to that learner.',
-        'Technical data: IP address, browser user agent, timestamps, and error traces captured by server logs. These are collected to operate the service and to detect abuse, not to build a profile of you.',
+        'Technical data: the reverse proxy logs each request with its IP address, browser user agent, address and time, and the API logs error traces. Rate limiting counts requests per account or per IP address in memory only. Monitoring keeps aggregate figures, such as request rates and how many accounts exist, that identify no one. All of it serves to operate the service and to detect abuse, not to build a profile of you.',
       ],
     },
     {
       id: 'why-we-process',
       heading: '3. Why we process it',
       paragraphs: [
-        'We process account data to authenticate you and to keep sessions attached to the right person. We process learning data to generate exercises at the right difficulty, to score assessments, and to show you your own history, and conversation data only to answer you. Both are necessary to deliver the service you asked for.',
-        'We process technical data on the basis of legitimate interest in keeping the platform available and free of abuse, including rate limiting and blocking automated traffic. We do not use any of this data for advertising, and we do not sell it.',
+        'We process account data to authenticate you and to keep sessions attached to the right person. We process learning data to place you at the right level, to choose and score your lessons and exams, and to show you your own progress, and tutor data to answer your questions about a lesson. All of it is necessary to deliver the service you asked for.',
+        'We process technical data on the basis of legitimate interest in keeping the platform available and free of abuse, which includes rate limiting. We do not use any of this data for advertising, and we do not sell it.',
       ],
     },
     {
       id: 'ai-processing',
       heading: '4. How the AI features use your data',
       paragraphs: [
-        'Generating a lesson or grading an answer sends the relevant fragment of your learning history to a large language model. That fragment is the minimum needed for the task: the current exercise, your answer, your level, and recent errors on the same topic. Account identifiers are not included in the prompt.',
-        'Retrieval augmented generation searches a curated corpus of learning material, not other user accounts. Your conversations are never retrieved as context for another learner, and they are never added to the shared corpus.',
-        'Where a third-party model provider is used, prompts leave our infrastructure and are processed under that provider terms. We select providers that contractually exclude customer prompts from model training. The provider in use at any time is named in the project documentation, and switching providers is treated as a change to this policy.',
-        'Before each exam, the tutor of a lesson discussion runs on Google Gemini. Each message you send it goes to Google with the text of the lesson, your wrong answers in its exercises, and the earlier messages of the same discussion, but none of your account identifiers. This project uses the free tier of the Gemini API, on which Google may use these messages and the answers to improve its models, and people at Google may read them: do not write anything personal to the tutor. On our side, the discussion is not stored: your browser keeps it until you leave the page, and our servers keep neither your messages nor the answers.',
-        'Automated levelling influences which exercises you see. It has no legal or similarly significant effect, and you can request a human review of any assessment result through the contact address below.',
+        'Before each exam, the tutor of a lesson discussion runs on Google Gemini. Each message you send it goes to Google with the text of the lesson, the language and level of the lesson, your interface language, your wrong answers in its practice exercises (the exercise, what you answered and the right answer), and the earlier messages of the same discussion, but none of your account identifiers: no email address, display name or account number.',
+        'This project uses the free tier of the Gemini API, and no provider that excludes training. On the free tier, Google may use these messages and the answers to improve its products, including its models, and people at Google may read them. Do not write anything personal to the tutor. Moving to a paid tier or to another provider is a change to this policy, made here before it takes effect.',
+        'Gemini also writes some of the placement test questions. Those requests carry only a language, a level and a kind of question, never anything about you. Everything else runs on our own rules, with no language model involved: scoring your answers, setting your level, and choosing your lessons. The lessons themselves were written ahead of time and checked before publication.',
+        'Placement sets the level at which lessons are offered to you. It has no legal or similarly significant effect: you can set your level yourself on the course page at any time, take the test again, and request a human review of any result through the contact address below.',
       ],
     },
     {
       id: 'retention',
       heading: '5. How long we keep data',
       paragraphs: [
-        'Account data is kept until you delete the account. Learning progress and assessment results are kept for the life of the account, because removing them would reset the levelling that makes the platform useful. A friendship or friend request is kept until either of you removes, declines or cancels it, or deletes the account. Messages are kept while both accounts in the conversation exist: removing a friend keeps the conversation readable by both of you, and deleting either account deletes it.',
-        'Conversations with the AI tutor are not kept. Server logs containing IP addresses are kept for thirty days, then rotated out.',
-        'Deleting your account removes account data, learning data and your conversations with other learners within thirty days. Backups are purged on their own rolling cycle, which completes within ninety days.',
+        'Account data is kept until the account is deleted. Learning progress and results are kept for the life of the account, because removing them would reset the level and progress that make the platform useful. A friendship or friend request is kept until either of you removes, declines or cancels it, or the account is deleted. Messages are kept while both accounts in the conversation exist: removing a friend keeps the conversation readable by both of you, and deleting either account deletes it. A replaced or removed profile picture is deleted at once.',
+        'Tutor discussions are never stored on our servers: your browser keeps the discussion until you leave the page, and the servers keep neither your messages nor the answers, only a count of the messages you sent in the last minute and the last day, for the limits. What Google keeps is set by its Gemini API terms. A sign-in session ends after seven days without use. What you typed in a lesson page but have not submitted yet stays in your browser until the lesson is finished or started again.',
+        'Server logs that contain IP addresses are capped in size and rotated out, oldest first, and are never archived. Aggregate monitoring figures are kept for fifteen days. When an account is deleted, its account data, learning data and conversations with other learners are deleted with it. There are no backups.',
       ],
     },
     {
       id: 'sharing',
       heading: '6. Who else sees your data',
       paragraphs: [
-        'Other learners see your display name, avatar, and anything you send them. Only friends can message each other, and a conversation is visible to no one but the two people in it. Only your friends see whether you are online right now, as a dot by your name: a learner who has only sent you a request does not, and no one sees when you were last online. Any signed-in learner can open your profile, which shows the languages you learn, your level in each and your current streak. They can also find you by your display name or among the recently active learners, and send you a friend request. You are among the recently active from the day you open the app while signed in until a week after that day. The list is sorted by display name and shows no date, but someone watching it can tell when you come back after more than a week away. Your friends list is shown only to you. Your email address, time zone, interface language and two-factor settings are never shown to other learners.',
-        'Outside the platform, data reaches only the infrastructure and model providers required to run it. We do not share data with advertisers, data brokers, or analytics networks. If we are ever compelled to disclose data by a lawful order, we will notify you unless prohibited from doing so.',
+        'Other learners see your display name, profile picture, and anything you send them. Only friends can message each other, and a conversation is visible to no one but the two people in it. Only your friends see whether you are online right now, as a dot by your name: a learner who has only sent you a request does not, and no one sees when you were last online. Any signed-in learner can open your profile, which shows the languages you learn, your level in each and your current streak. They can also find you by your display name or among the recently active learners, and send you a friend request. You are among the recently active from the day you open the app while signed in until a week after that day. The list is sorted by display name and shows no date, but someone watching it can tell when you come back after more than a week away. Your friends list is shown only to you. Your email address, time zone, interface language and two-factor settings are never shown to other learners. Your profile picture is served from an address no one can guess, but anyone who has that address can load the picture.',
+        'Outside the platform, data reaches only the server that hosts it and Google, for the tutor described in section 4. We do not share data with advertisers, data brokers, or analytics networks. If we are ever compelled to disclose data by a lawful order, we will notify you unless prohibited from doing so.',
       ],
     },
     {
       id: 'cookies',
-      heading: '7. Cookies',
+      heading: '7. Cookies and browser storage',
       paragraphs: [
-        'We set three strictly necessary cookies. A session cookie keeps you signed in: it is httpOnly, secure and carries no tracking identifier, so client-side scripts cannot read it. A language cookie (NEXT_LOCALE) remembers which of the three languages to show you; it holds only a language code, which is also visible in the address bar. A course cookie (ft.lang) remembers which course you last opened, so we can take you back to it; it holds only a language code and is httpOnly. We do not use local storage.',
-        'There are no advertising or analytics cookies, which is why the platform shows no cookie consent banner: strictly necessary cookies do not require one.',
+        'We set three strictly necessary cookies. A session cookie (ft.sid) keeps you signed in: it is httpOnly, secure, same-site, and carries only a random session number, so client-side scripts cannot read it and it tracks nothing. A language cookie (NEXT_LOCALE) remembers which of the three languages to show you; it holds only a language code, which is also visible in the address bar. A course cookie (ft.lang) remembers which course you last opened, so we can take you back to it; it holds only a language code and is httpOnly.',
+        "The browser's local storage keeps what you typed or picked on the lesson page you are on, so a reload does not lose it, and the lines of an exam dialogue already shown. It stays on your device, is never sent anywhere until you submit the answer, and is cleared when the lesson is finished or started again.",
+        'There are no advertising or analytics cookies, which is why the platform shows no cookie consent banner: strictly necessary cookies and storage do not require one.',
       ],
     },
     {
@@ -77,7 +77,7 @@ export const privacyPolicy: LegalDocument = {
       heading: '8. Your rights',
       paragraphs: [
         'You can request access to the data we hold about you, correction of anything inaccurate, deletion of your account and its contents, a machine-readable export of your learning history, restriction of processing while a dispute is open, and objection to processing based on legitimate interest.',
-        'Account settings cover the common cases directly: edit your profile, export your data, and delete your account without contacting anyone. For anything the interface does not cover, write to the contact address below. We answer within thirty days.',
+        'Your profile page lets you change your display name and profile picture, and the course page lets you change your level. Account deletion and data export have no button yet: write to the contact address below and we do it for you. We answer within thirty days.',
         'If you are in the European Economic Area or the United Kingdom, you also have the right to lodge a complaint with your national supervisory authority. Exercising any of these rights never costs you access to the service.',
       ],
     },
@@ -100,7 +100,7 @@ export const privacyPolicy: LegalDocument = {
       id: 'changes',
       heading: '11. Changes to this policy',
       paragraphs: [
-        'When this policy changes materially, for example when a new category of data is collected or a new model provider is introduced, we update the date at the top of this page and notify account holders by email before the change takes effect.',
+        'When this policy changes materially, for example when a new category of data is collected or the model provider or its tier changes, we change this page before the change takes effect and update the date at the top. The platform sends no email, so this page is where changes are announced. A change that needs your consent is not applied to your data until you give it.',
       ],
     },
     {
@@ -118,10 +118,10 @@ export const termsOfService: LegalDocument = {
   slug: 'terms',
   title: 'Terms of Service',
   description:
-    'The rules for using ft_transcendence: who may sign up, what counts as acceptable use, what AI-generated lessons are and are not, and how accounts end.',
-  lastUpdated: '2026-11-18',
+    'The rules for using ft_transcendence: who may sign up, what counts as acceptable use, what the AI tutor is and is not, and how accounts end.',
+  lastUpdated: '2026-11-20',
   intro:
-    'These terms are the agreement between you and the ft_transcendence maintainers. They are short because the service is small, and specific because an AI tutor and live sessions between strangers both create situations that generic terms do not cover.',
+    'These terms are the agreement between you and the ft_transcendence maintainers. They are short because the service is small, and specific because an AI tutor and messages between learners both create situations that generic terms do not cover.',
   sections: [
     {
       id: 'acceptance',
@@ -143,17 +143,17 @@ export const termsOfService: LegalDocument = {
       heading: '3. Acceptable use',
       paragraphs: [
         'Use ft_transcendence to learn a language and to help others learn one. That is the whole intended scope.',
-        'You may not harass, threaten, or abuse other learners; post sexual content involving minors or any other unlawful material; use the AI tutor to generate hate speech, malware, or content designed to deceive people; scrape the platform or automate accounts; attempt to bypass rate limits, token budgets, or authentication; probe the infrastructure for weaknesses outside a good-faith security report; or resell access to the service.',
-        'Rate limits and per-user token budgets protect a shared and genuinely limited resource. Circumventing them takes capacity from other learners and is treated as abuse rather than as a technical curiosity.',
+        'You may not harass, threaten, or abuse other learners; post sexual content involving minors or any other unlawful material; use the AI tutor to generate hate speech, malware, or content designed to deceive people; scrape the platform or automate accounts; attempt to bypass rate limits, the tutor message limits, or authentication; probe the infrastructure for weaknesses outside a good-faith security report; or resell access to the service.',
+        "Rate limits and the tutor message limits protect a shared and genuinely limited resource: every learner's tutor runs on one Gemini key with a small quota. Circumventing them takes capacity from other learners and is treated as abuse rather than as a technical curiosity.",
       ],
     },
     {
       id: 'ai-content',
       heading: '4. AI-generated content',
       paragraphs: [
-        'Lessons, corrections, translations, and assessment results are produced by a large language model. Language models are confidently wrong on a regular basis. Treat everything the tutor produces as practice material from a fallible partner, not as authoritative instruction.',
+        'The tutor of a lesson discussion answers with a large language model, Google Gemini, and the same model wrote some of the placement test questions. The lessons were drafted with the help of a language model and checked before publication; scores and levels come from fixed rules, not from a model. Language models are confidently wrong on a regular basis. Treat everything the tutor produces as practice material from a fallible partner, not as authoritative instruction.',
         'Before each exam, you can ask the tutor about the lesson. Your questions and the text of the lesson are sent to Google Gemini, as the Privacy Policy explains, and ft_transcendence does not store the discussion. The tutor is not available during the exam.',
-        'Assessment results estimate your proficiency for the purpose of choosing your next exercise. They are not a certification, they map only loosely onto formal frameworks such as CEFR, and they carry no academic or professional weight. Do not present them as a qualification.',
+        'Placement and exam results estimate your proficiency for the purpose of choosing your next lessons. They are not a certification, they map only loosely onto formal frameworks such as CEFR, and they carry no academic or professional weight. Do not present them as a qualification.',
         'Never rely on the tutor for medical, legal, financial, or safety-critical translation. If a mistranslation could hurt someone, use a qualified human translator.',
       ],
     },
@@ -161,31 +161,31 @@ export const termsOfService: LegalDocument = {
       id: 'user-content',
       heading: '5. Your content',
       paragraphs: [
-        'You keep ownership of everything you write: exercise answers, messages to your friends, profile text. You grant us a non-exclusive licence to store, process, and display that content strictly to operate the service for you and for the learners you send it to. The licence ends when the content is deleted.',
-        'We do not train models on your content and we do not add it to the shared learning corpus. Do not post content you do not have the right to share, and do not paste secrets, credentials, or personal data belonging to other people into the tutor.',
+        'You keep ownership of everything you write or upload: exercise answers, messages to your friends and to the tutor, your display name and profile picture. You grant us a non-exclusive licence to store, process, and display that content strictly to operate the service for you and for the learners you send it to. The licence ends when the content is deleted.',
+        "We do not train models on your content ourselves. What you write to the tutor goes to Google on the free tier of the Gemini API, where Google may use it to improve its models and people at Google may read it, as the Privacy Policy explains. Do not post content you do not have the right to share, and do not paste secrets, credentials, or personal data, yours or anyone else's, into the tutor.",
       ],
     },
     {
-      id: 'live-sessions',
-      heading: '6. Live sessions and community conduct',
+      id: 'community',
+      heading: '6. Friends and messages',
       paragraphs: [
-        'Live practice pairs you with another learner in real time. Speak to them the way you would want to be spoken to while making mistakes in a language you do not yet control, because that is exactly what they are doing.',
-        'Leaving a session repeatedly, deliberately stalling a timed round, or using an automated helper to win a duel spoils the session for the other player and may cost you access to multiplayer features. Report behaviour that crosses a line rather than retaliating.',
+        'Any signed-in learner can find you and send you a friend request, and friends can message each other. Speak to them the way you would want to be spoken to while making mistakes in a language you do not yet control, because that is exactly what they are doing.',
+        'Unwanted requests, spam, and messages that harass, threaten or deceive spoil the platform for others and may cost you your account. Remove a friend who crosses a line, and report the behaviour to the contact address below rather than retaliating.',
       ],
     },
     {
       id: 'availability',
       heading: '7. Availability and changes',
       paragraphs: [
-        'The service is provided as it is, with no uptime guarantee. It runs on student-managed infrastructure and may be taken down for maintenance, redeployed, reset, or discontinued. Export anything you want to keep.',
-        'Features may change or be removed. When a change removes something you depend on, we will say so on this page and, where accounts are affected, by email.',
+        'The service is provided as it is, with no uptime guarantee. It runs on student-managed infrastructure, has no backups, and may be taken down for maintenance, redeployed, reset, or discontinued. Keep a copy of anything you cannot afford to lose, or ask for an export under the Privacy Policy.',
+        'Features may change or be removed. When a change removes something you depend on, we will say so on this page before it happens; the platform sends no email.',
       ],
     },
     {
       id: 'termination',
       heading: '8. Suspension and termination',
       paragraphs: [
-        'You can delete your account at any time from account settings; deletion follows the retention schedule in the Privacy Policy.',
+        'You can have your account deleted at any time by writing to the privacy contact address; deletion follows the retention rules in the Privacy Policy.',
         'We may suspend or terminate an account that breaks these terms. For anything other than serious abuse we will warn you first and give you a chance to explain. For serious abuse, including harassment, unlawful content, or attacks on the infrastructure, removal is immediate and permanent.',
         'If your account is terminated you may still request an export of your data under the Privacy Policy, unless doing so would expose another learner.',
       ],

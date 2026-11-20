@@ -19,7 +19,7 @@ functions and reading), each with exercises, an exam and a score.
 - About 4,000 lessons, written with Claude Code from a reviewed syllabus and
   checked by validators
 - A streak, XP, a daily challenge and achievements
-- Live practice and chat with other learners
+- Friends, direct messages and who is online
 - Progress tracking and analytics
 
 ---
@@ -83,6 +83,10 @@ no question is generated. To use Gemini, create a key at
 <https://aistudio.google.com/apikey>, set `LLM_PROVIDER=gemini` and
 `LLM_API_KEY=<your key>` in `.env`, then run `make` again. The key goes in
 `.env` only, which git ignores. The tutor's rate limits are in `.env.example`.
+The project runs on a free key, on which Google may use what learners write to
+the tutor to train its models: the Privacy Policy (`/privacy`, section 4) says
+so, and moving to a paid key or another vendor means changing it first
+(docs/PRODUCT_ARCHITECTURE.md section 5).
 
 For day-to-day development use `make dev`, which starts the same stack with hot
 reload. `make help` lists every target.
