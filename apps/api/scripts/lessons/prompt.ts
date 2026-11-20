@@ -23,7 +23,7 @@ import type {
 } from '@ft/shared';
 
 /** Raise it when the prompt changes: every file records the version it was written with. */
-export const PROMPT_VERSION = 'author-3';
+export const PROMPT_VERSION = 'author-4';
 
 const SHARED = join(__dirname, '../../../../packages/shared');
 const LESSONS = join(SHARED, 'src/lessons');
@@ -127,6 +127,7 @@ ${example}
 - The example above is a model of the format and the quality expected, not content to copy: write a new lesson for the outline entry you are given, in its course language and level.
 - Title: at most 80 characters, one line, in the course language. objective[course language]: at most 200 characters, one line.
 - Write natural, correct language. Teach exactly what the outline entry's intent says, at its CEFR level.
+- The French help around the exercises (instructions, explanations, hints, notes) addresses the learner with tu, as the interface does: "Choisis le mot", "ton nom", never "Choisissez" or "votre nom". Vous stays only where the lesson teaches it.
 
 # What the checks cannot see
 
