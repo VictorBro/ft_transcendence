@@ -220,6 +220,8 @@ export async function skimDocument(page: Page, how: Skim = 'finish'): Promise<vo
   }
   await expect(reading).toHaveCount(0);
   await expect(question).toBeVisible();
+  // Either way the focus moves to the question, which says it has opened.
+  await expect(question).toBeFocused();
   await expect(check).toBeEnabled();
 }
 

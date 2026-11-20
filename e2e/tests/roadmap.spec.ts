@@ -11,6 +11,7 @@ import {
   contentLessons,
   finishThroughApi,
   lessonPlan,
+  pageIndex,
   playLesson,
   playToLastPage,
 } from '../support/lesson-play';
@@ -400,6 +401,60 @@ test.describe('the roadmap and lesson loop', () => {
 
     await visit(page, list(`?page=${await listPageOf(page, id!)}`));
     await expect(row(page, id!)).toContainText('Passed');
+    expectSilent(violations);
+  });
+
+  // The skim page across reloads (#148): the countdown never grows, I've
+  // finished reading moves the focus to the question, and once the
+  // document is put away a reload never shows it again, not even before
+  // hydration. Real time: the countdown is long enough to read it twice.
+  test('a skim page keeps its time and keeps its document away through reloads', async ({
+    freshLearner: page,
+  }) => {
+    const [id] = contentLessons(LANG, READING_LEVEL, 'reading');
+    expect(id, `a French ${READING_LEVEL} reading lesson`).toBeDefined();
+    const plan = lessonPlan(id!);
+    const skim = plan.pages.findIndex((p) =>
+      p.items.some((item) => item.type === 'reading_skim_choice'),
+    );
+    expect(skim, 'a skim page').toBeGreaterThanOrEqual(0);
+    const violations = watchConsole(page);
+    await placeCourse(page, { lang: LANG, level: READING_LEVEL, dailyGoal: 10 });
+    await start(page, id!);
+    await playLesson(page, plan, { stop: (index) => index === skim });
+
+    const finished = page.getByRole('button', { name: "I've finished reading" });
+    const question = page.getByRole('heading', { name: 'Answer from memory' });
+    const reading = page.locator('[data-skim="reading"]');
+    const left = async () => {
+      const [m, s] = (await page.getByTestId('skim-time-left').innerText()).split(':').map(Number);
+      return m! * 60 + s!;
+    };
+
+    // Mid-countdown: a reload gives no time back.
+    await expect(finished).toBeVisible();
+    const before = await left();
+    await visit(page, page.url());
+    await expect(finished).toBeVisible();
+    expect(await left()).toBeLessThanOrEqual(before);
+    expect(await pageIndex(page)).toBe(skim);
+
+    // I've finished reading: the document goes, the question opens with the focus.
+    await finished.click();
+    await expect(reading).toHaveCount(0);
+    await expect(question).toBeFocused();
+
+    // A reload keeps the document away, and the server's HTML never draws it.
+    const html = await (await page.request.get(page.url())).text();
+    expect(html).toContain('data-skim="reading"');
+    expect(html).not.toContain('class="reading-document"');
+    await visit(page, page.url());
+    await expect(question).toBeVisible();
+    await expect(reading).toHaveCount(0);
+    await expect(page.locator('.reading-document')).toHaveCount(0);
+    await expect(
+      page.locator('.lesson-task-footer').getByRole('button', { name: 'Check' }),
+    ).toBeEnabled();
     expectSilent(violations);
   });
 });
