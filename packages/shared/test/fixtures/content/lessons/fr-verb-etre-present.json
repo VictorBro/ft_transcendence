@@ -40,7 +40,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the forms and listen to the examples.",
-            "fr": "Lisez les formes et écoutez les exemples.",
+            "fr": "Lis les formes et écoute les exemples.",
             "de": "Lies die Formen und hör dir die Beispiele an."
           },
           "items": [
@@ -50,7 +50,7 @@
               "ruleIds": ["r-singular"],
               "heading": {
                 "en": "Use the form that matches the subject",
-                "fr": "Choisissez la forme qui correspond au sujet",
+                "fr": "Choisis la forme qui correspond au sujet",
                 "de": "Wähle die Form, die zum Subjekt passt"
               },
               "text": {
@@ -105,7 +105,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Drag a form into each row.",
-            "fr": "Placez une forme dans chaque ligne.",
+            "fr": "Place une forme dans chaque ligne.",
             "de": "Zieh eine Form in jede Zeile."
           },
           "items": [
@@ -180,7 +180,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the missing form.",
-            "fr": "Choisissez la forme manquante.",
+            "fr": "Choisis la forme manquante.",
             "de": "Wähle die fehlende Form."
           },
           "items": [
@@ -224,7 +224,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the missing form.",
-            "fr": "Choisissez la forme manquante.",
+            "fr": "Choisis la forme manquante.",
             "de": "Wähle die fehlende Form."
           },
           "items": [
@@ -280,7 +280,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Connect each pronoun with its partner.",
-            "fr": "Reliez chaque pronom à son partenaire.",
+            "fr": "Relie chaque pronom à son partenaire.",
             "de": "Verbinde jedes Pronomen mit seinem Partner."
           },
           "items": [
@@ -345,7 +345,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the plural forms.",
-            "fr": "Lisez les formes du pluriel.",
+            "fr": "Lis les formes du pluriel.",
             "de": "Lies die Pluralformen."
           },
           "items": [
@@ -402,7 +402,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the form of être for each subject.",
-            "fr": "Tapez la forme de être pour chaque sujet.",
+            "fr": "Tape la forme de être pour chaque sujet.",
             "de": "Tippe die Form von être für jedes Subjekt."
           },
           "items": [
@@ -469,7 +469,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing form.",
-            "fr": "Tapez la forme manquante.",
+            "fr": "Tape la forme manquante.",
             "de": "Tippe die fehlende Form."
           },
           "items": [
@@ -501,7 +501,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing form.",
-            "fr": "Tapez la forme manquante.",
+            "fr": "Tape la forme manquante.",
             "de": "Tippe die fehlende Form."
           },
           "items": [
@@ -541,7 +541,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Select the wrong word and type its correction.",
-            "fr": "Sélectionnez le mot faux et tapez sa correction.",
+            "fr": "Sélectionne le mot faux et tape sa correction.",
             "de": "Wähle das falsche Wort und tippe die Korrektur."
           },
           "items": [
@@ -597,7 +597,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read, then continue to the exam.",
-            "fr": "Lisez, puis passez à l’examen.",
+            "fr": "Lis, puis passe à l’examen.",
             "de": "Lies und gehe dann zum Test."
           },
           "items": [
@@ -625,7 +625,7 @@
           "timeLimitS": 90,
           "instructions": {
             "en": "Type the missing forms.",
-            "fr": "Tapez les formes manquantes.",
+            "fr": "Tape les formes manquantes.",
             "de": "Tippe die fehlenden Formen."
           },
           "items": [
@@ -669,7 +669,7 @@
           "timeLimitS": 60,
           "instructions": {
             "en": "Type the forms of être.",
-            "fr": "Tapez les formes de être.",
+            "fr": "Tape les formes de être.",
             "de": "Tippe die Formen von être."
           },
           "items": [

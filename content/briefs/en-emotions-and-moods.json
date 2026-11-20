@@ -7,7 +7,7 @@
   "title": "Emotions and moods",
   "objective": {
     "en": "Say exactly how you feel using twelve words for emotions and moods.",
-    "fr": "Dire précisément ce que vous ressentez avec douze mots pour les émotions et les humeurs.",
+    "fr": "Dire précisément ce que tu ressens avec douze mots pour les émotions et les humeurs.",
     "de": "Mit zwölf Wörtern genau sagen, wie du dich fühlst."
   },
   "estimatedMinutes": 20,
@@ -44,7 +44,7 @@
       "targetIds": ["delighted", "relieved", "proud", "good-mood"],
       "introduction": {
         "en": "These words show **good feelings**. Use them after `be` or `feel`:\n\n- `delighted`\n- `relieved`\n- `proud`\n- `in a good mood`",
-        "fr": "Ces mots expriment des **sentiments positifs**. Utilisez-les après `be` ou `feel` :\n\n- `delighted`\n- `relieved`\n- `proud`\n- `in a good mood`",
+        "fr": "Ces mots expriment des **sentiments positifs**. Utilise-les après `be` ou `feel` :\n\n- `delighted`\n- `relieved`\n- `proud`\n- `in a good mood`",
         "de": "Diese Wörter drücken **gute Gefühle** aus. Verwende sie nach `be` oder `feel`:\n\n- `delighted`\n- `relieved`\n- `proud`\n- `in a good mood`"
       }
     },
@@ -58,7 +58,7 @@
       "targetIds": ["upset", "annoyed", "disappointed", "fed-up", "jealous", "bad-mood"],
       "introduction": {
         "en": "These words show **bad feelings**. Notice the prepositions: `fed up with`, `jealous of`, `disappointed with`:\n\n- `upset`\n- `annoyed`\n- `disappointed`\n- `fed up`\n- `jealous`\n- `in a bad mood`",
-        "fr": "Ces mots expriment des **sentiments négatifs**. Remarquez les prépositions : `fed up with`, `jealous of`, `disappointed with` :\n\n- `upset`\n- `annoyed`\n- `disappointed`\n- `fed up`\n- `jealous`\n- `in a bad mood`",
+        "fr": "Ces mots expriment des **sentiments négatifs**. Remarque les prépositions : `fed up with`, `jealous of`, `disappointed with` :\n\n- `upset`\n- `annoyed`\n- `disappointed`\n- `fed up`\n- `jealous`\n- `in a bad mood`",
         "de": "Diese Wörter drücken **schlechte Gefühle** aus. Beachte die Präpositionen: `fed up with`, `jealous of`, `disappointed with`:\n\n- `upset`\n- `annoyed`\n- `disappointed`\n- `fed up`\n- `jealous`\n- `in a bad mood`"
       }
     },
@@ -563,7 +563,7 @@
       "ambiguityNote": null,
       "explanation": {
         "en": "Proud means very pleased about something you or someone close to you did. It is followed by of.",
-        "fr": "Proud veut dire très content de ce que vous ou un proche avez fait. On dit proud of.",
+        "fr": "Proud veut dire très content de ce que tu as fait ou de ce qu'un proche a fait. On dit proud of.",
         "de": "Proud bedeutet sehr zufrieden mit etwas, das man selbst oder jemand Nahestehendes getan hat. Danach folgt of."
       },
       "genderExplanation": null,

@@ -44,7 +44,7 @@
       "targetIds": ["zero", "one", "two", "three", "four", "five", "six"],
       "introduction": {
         "en": "Start with the first numbers, **zero to six**:\n\n- `zero` (0)\n- `one` (1)\n- `two` (2)\n- `three` (3)\n- `four` (4)\n- `five` (5)\n- `six` (6)",
-        "fr": "Commencez par les premiers nombres, **de zéro à six** :\n\n- `zero` (0)\n- `one` (1)\n- `two` (2)\n- `three` (3)\n- `four` (4)\n- `five` (5)\n- `six` (6)",
+        "fr": "Commence par les premiers nombres, **de zéro à six** :\n\n- `zero` (0)\n- `one` (1)\n- `two` (2)\n- `three` (3)\n- `four` (4)\n- `five` (5)\n- `six` (6)",
         "de": "Beginne mit den ersten Zahlen, **von null bis sechs**:\n\n- `zero` (0)\n- `one` (1)\n- `two` (2)\n- `three` (3)\n- `four` (4)\n- `five` (5)\n- `six` (6)"
       }
     },
@@ -58,7 +58,7 @@
       "targetIds": ["seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen"],
       "introduction": {
         "en": "Now learn **seven to thirteen**. Eleven and twelve are special words:\n\n- `seven` (7)\n- `eight` (8)\n- `nine` (9)\n- `ten` (10)\n- `eleven` (11)\n- `twelve` (12)\n- `thirteen` (13)",
-        "fr": "Apprenez maintenant **de sept à treize**. Eleven et twelve sont des mots particuliers :\n\n- `seven` (7)\n- `eight` (8)\n- `nine` (9)\n- `ten` (10)\n- `eleven` (11)\n- `twelve` (12)\n- `thirteen` (13)",
+        "fr": "Apprends maintenant **de sept à treize**. Eleven et twelve sont des mots particuliers :\n\n- `seven` (7)\n- `eight` (8)\n- `nine` (9)\n- `ten` (10)\n- `eleven` (11)\n- `twelve` (12)\n- `thirteen` (13)",
         "de": "Lerne jetzt **von sieben bis dreizehn**. Eleven und twelve sind besondere Wörter:\n\n- `seven` (7)\n- `eight` (8)\n- `nine` (9)\n- `ten` (10)\n- `eleven` (11)\n- `twelve` (12)\n- `thirteen` (13)"
       }
     },

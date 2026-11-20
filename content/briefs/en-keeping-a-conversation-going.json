@@ -64,7 +64,7 @@
       "translations": { "fr": ["Comment connais-tu"], "de": ["Woher kennst du"] },
       "explanation": {
         "en": "Asks how someone knows a mutual friend; add a name (How do you know Ana?).",
-        "fr": "Pour demander comment quelqu’un connaît une connaissance commune ; ajoutez un nom (How do you know Ana ?).",
+        "fr": "Pour demander comment quelqu’un connaît une connaissance commune ; ajoute un nom (How do you know Ana ?).",
         "de": "Fragt, woher jemand einen gemeinsamen Bekannten kennt; ergänze einen Namen (How do you know Ana?)."
       },
       "example": {
@@ -97,7 +97,7 @@
       "translations": { "fr": ["Parle-moi davantage de"], "de": ["Erzähl mir mehr über"] },
       "explanation": {
         "en": "Shows interest and invites the other person to say more; add about + a topic.",
-        "fr": "Montre de l’intérêt et invite l’autre à en dire plus ; ajoutez about + un sujet.",
+        "fr": "Montre de l’intérêt et invite l’autre à en dire plus ; ajoute about + un sujet.",
         "de": "Zeigt Interesse und lädt zum Weiterreden ein; ergänze about + ein Thema."
       },
       "example": {
@@ -118,7 +118,7 @@
       },
       "explanation": {
         "en": "A polite way to start closing the conversation when you need to leave.",
-        "fr": "Une façon polie de commencer à conclure la conversation quand vous devez partir.",
+        "fr": "Une façon polie de commencer à conclure la conversation quand tu dois partir.",
         "de": "Eine höfliche Art, das Gespräch zu beenden, wenn du gehen musst."
       },
       "example": {

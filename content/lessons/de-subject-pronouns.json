@@ -40,7 +40,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -102,7 +102,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -206,7 +206,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -242,7 +242,7 @@
               "ruleIds": ["r-singular"],
               "answerExplanation": {
                 "en": "You talk to Anna, so du, with the ending -st: du wohnst.",
-                "fr": "Vous parlez à Anna, donc du, avec la terminaison -st : du wohnst.",
+                "fr": "Tu parles à Anna, donc du, avec la terminaison -st : du wohnst.",
                 "de": "Du sprichst mit Anna, also du, mit der Endung -st: du wohnst."
               }
             },
@@ -294,7 +294,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it.",
-            "fr": "Trouvez le mot faux et corrigez-le.",
+            "fr": "Trouve le mot faux et corrige-le.",
             "de": "Finde das falsche Wort und korrigiere es."
           },
           "items": [
@@ -361,7 +361,7 @@
               "ruleIds": ["r-singular"],
               "answerExplanation": {
                 "en": "You talk to Lena: du, not ich. The ending -st goes with du.",
-                "fr": "Vous parlez à Lena : du, pas ich. La terminaison -st va avec du.",
+                "fr": "Tu parles à Lena : du, pas ich. La terminaison -st va avec du.",
                 "de": "Du sprichst mit Lena: du, nicht ich. Die Endung -st gehört zu du."
               }
             }
@@ -385,7 +385,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -400,7 +400,7 @@
               },
               "text": {
                 "en": "For several people there are three pronouns: `wir` (we), `ihr` (you, to several friends) and `sie` (they).\n\n- The verb follows the pronoun: `wir wohnen`, `ihr wohnt`, `sie wohnen`.\n- `sie` means she or they, and the verb shows which: `sie wohnt` is one woman, `sie wohnen` are several people.\n\nUse `ihr` for a group of people that you would each call `du`.",
-                "fr": "Pour plusieurs personnes, il y a trois pronoms : `wir` (nous), `ihr` (vous, à plusieurs amis) et `sie` (ils, elles).\n\n- Le verbe suit le pronom : `wir wohnen`, `ihr wohnt`, `sie wohnen`.\n- `sie` signifie elle ou ils/elles, et le verbe indique lequel : `sie wohnt` est une seule femme, `sie wohnen` sont plusieurs personnes.\n\nUtilisez `ihr` pour un groupe de personnes que vous appelleriez chacune `du`.",
+                "fr": "Pour plusieurs personnes, il y a trois pronoms : `wir` (nous), `ihr` (vous, à plusieurs amis) et `sie` (ils, elles).\n\n- Le verbe suit le pronom : `wir wohnen`, `ihr wohnt`, `sie wohnen`.\n- `sie` signifie elle ou ils/elles, et le verbe indique lequel : `sie wohnt` est une seule femme, `sie wohnen` sont plusieurs personnes.\n\nUtilise `ihr` pour un groupe de personnes que tu appellerais chacune `du`.",
                 "de": "Für mehrere Personen gibt es drei Pronomen: `wir`, `ihr` (zu mehreren Freunden) und `sie` (andere Personen).\n\n- Das Verb folgt dem Pronomen: `wir wohnen`, `ihr wohnt`, `sie wohnen`.\n- Das Verb zeigt, was `sie` bedeutet: `sie wohnt` ist eine Frau, `sie wohnen` sind mehrere Personen.\n\nVerwende `ihr` für eine Gruppe von Personen, die du einzeln mit `du` ansprichst."
               },
               "formTable": [
@@ -446,7 +446,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Connect each pronoun with its partner.",
-            "fr": "Reliez chaque pronom à son partenaire.",
+            "fr": "Relie chaque pronom à son partenaire.",
             "de": "Verbinde jedes Pronomen mit seinem Partner."
           },
           "items": [
@@ -496,7 +496,7 @@
                   "answer": "wir",
                   "answerExplanation": {
                     "en": "You and others: wir.",
-                    "fr": "Vous et d'autres personnes : wir.",
+                    "fr": "Toi et d'autres personnes : wir.",
                     "de": "Du und andere: wir."
                   }
                 },
@@ -544,7 +544,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -584,7 +584,7 @@
               "ruleIds": ["r-plural"],
               "answerExplanation": {
                 "en": "You talk to two friends, so ihr, with the ending -t: ihr wohnt.",
-                "fr": "Vous parlez à deux amis, donc ihr, avec la terminaison -t : ihr wohnt.",
+                "fr": "Tu parles à deux amis, donc ihr, avec la terminaison -t : ihr wohnt.",
                 "de": "Du sprichst mit zwei Freunden, also ihr, mit der Endung -t: ihr wohnt."
               }
             },
@@ -628,7 +628,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -682,7 +682,7 @@
               "ruleIds": ["r-plural"],
               "answerExplanation": {
                 "en": "You talk to two friends: ihr kommt.",
-                "fr": "Vous parlez à deux amis : ihr kommt.",
+                "fr": "Tu parles à deux amis : ihr kommt.",
                 "de": "Du sprichst mit zwei Freunden: ihr kommt."
               }
             }
@@ -702,7 +702,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -713,7 +713,7 @@
               "heading": { "en": "du or Sie?", "fr": "du ou Sie ?", "de": "du oder Sie?" },
               "text": {
                 "en": "With friends, family and children you say `du`. With strangers, in shops and often at work you say `Sie`.\n\n- `Sie` always has a capital letter and takes the same verb form as `sie` (they): `Sie wohnen`.\n- `Sie` is used for one person or for several, while `du` is for one person only.\n\nIf you are unsure, `Sie` is the safer choice; the other person can offer you `du`.",
-                "fr": "Avec les amis, la famille et les enfants, on dit `du`. Avec des inconnus, dans les magasins et souvent au travail, on dit `Sie`.\n\n- `Sie` prend toujours une majuscule et se conjugue comme `sie` (ils, elles) : `Sie wohnen`.\n- `Sie` s'emploie pour une ou plusieurs personnes, alors que `du` ne s'emploie que pour une seule.\n\nEn cas de doute, `Sie` est le choix le plus sûr ; l'autre personne peut vous proposer `du`.",
+                "fr": "Avec les amis, la famille et les enfants, on dit `du`. Avec des inconnus, dans les magasins et souvent au travail, on dit `Sie`.\n\n- `Sie` prend toujours une majuscule et se conjugue comme `sie` (ils, elles) : `Sie wohnen`.\n- `Sie` s'emploie pour une ou plusieurs personnes, alors que `du` ne s'emploie que pour une seule.\n\nEn cas de doute, `Sie` est le choix le plus sûr ; l'autre personne peut te proposer `du`.",
                 "de": "Mit Freunden, Familie und Kindern sagst du `du`. Mit Fremden, im Geschäft und oft bei der Arbeit sagst du `Sie`.\n\n- `Sie` wird immer großgeschrieben und hat dieselbe Verbform wie `sie` (mehrere Personen): `Sie wohnen`.\n- `Sie` gilt für eine oder für mehrere Personen, `du` nur für eine Person.\n\nWenn du unsicher bist, ist `Sie` die sicherere Wahl; die andere Person kann dir das `du` anbieten."
               },
               "formTable": [
@@ -768,7 +768,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -788,7 +788,7 @@
               "ruleIds": ["r-formal"],
               "answerExplanation": {
                 "en": "You address Herr Schmidt formally: Sie wohnen.",
-                "fr": "Vous vous adressez à Herr Schmidt avec politesse : Sie wohnen.",
+                "fr": "Tu t'adresses à Herr Schmidt avec politesse : Sie wohnen.",
                 "de": "Du sprichst Herrn Schmidt höflich an: Sie wohnen."
               }
             },
@@ -808,7 +808,7 @@
               "ruleIds": ["r-formal"],
               "answerExplanation": {
                 "en": "You talk to Tim, one person: du kommst.",
-                "fr": "Vous parlez à Tim, une seule personne : du kommst.",
+                "fr": "Tu parles à Tim, une seule personne : du kommst.",
                 "de": "Du sprichst mit Tim, einer Person: du kommst."
               }
             },
@@ -848,7 +848,7 @@
               "ruleIds": ["r-formal"],
               "answerExplanation": {
                 "en": "Two people you address formally: Sie wohnen.",
-                "fr": "Deux personnes à qui vous vous adressez avec politesse : Sie wohnen.",
+                "fr": "Deux personnes à qui tu t'adresses avec politesse : Sie wohnen.",
                 "de": "Zwei Personen, die du höflich ansprichst: Sie wohnen."
               }
             }
@@ -868,7 +868,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -944,7 +944,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -956,7 +956,7 @@
               "accepted": { "answers": ["Sie"] },
               "hint": {
                 "en": "formal: you do not know her well",
-                "fr": "politesse : vous ne la connaissez pas bien",
+                "fr": "politesse : tu ne la connais pas bien",
                 "de": "höflich: Du kennst sie nicht gut"
               },
               "ruleIds": ["r-formal"],
@@ -992,7 +992,7 @@
               "accepted": { "answers": ["Sie"] },
               "hint": {
                 "en": "formal: two people you do not know well",
-                "fr": "politesse : deux personnes que vous connaissez peu",
+                "fr": "politesse : deux personnes que tu connais peu",
                 "de": "höflich: zwei Personen, die du nicht gut kennst"
               },
               "ruleIds": ["r-formal"],
@@ -1010,7 +1010,7 @@
       "id": "feedback",
       "role": "feedback",
       "blockId": null,
-      "label": { "en": "Your feedback", "fr": "Votre retour", "de": "Dein Feedback" },
+      "label": { "en": "Your feedback", "fr": "Ton retour", "de": "Dein Feedback" },
       "pages": [
         {
           "pageId": "feedback",
@@ -1018,7 +1018,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Continue to the final exam.",
-            "fr": "Passez à l’examen final.",
+            "fr": "Passe à l’examen final.",
             "de": "Weiter zur Abschlussprüfung."
           },
           "items": [{ "type": "production_feedback_placeholder", "itemId": "feedback" }]
@@ -1037,7 +1037,7 @@
           "timeLimitS": 150,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -1093,7 +1093,7 @@
               "ruleIds": ["r-plural"],
               "answerExplanation": {
                 "en": "You talk to two friends: ihr wohnt.",
-                "fr": "Vous parlez à deux amis : ihr wohnt.",
+                "fr": "Tu parles à deux amis : ihr wohnt.",
                 "de": "Du sprichst mit zwei Freunden: ihr wohnt."
               }
             },
@@ -1107,7 +1107,7 @@
               "ruleIds": ["r-singular"],
               "answerExplanation": {
                 "en": "You talk to one friend: du wohnst.",
-                "fr": "Vous parlez à une amie : du wohnst.",
+                "fr": "Tu parles à une amie : du wohnst.",
                 "de": "Du sprichst mit einer Freundin: du wohnst."
               }
             }
@@ -1119,7 +1119,7 @@
           "timeLimitS": 90,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -1147,7 +1147,7 @@
               "ruleIds": ["r-formal"],
               "answerExplanation": {
                 "en": "You talk to one friend: du kommst.",
-                "fr": "Vous parlez à une amie : du kommst.",
+                "fr": "Tu parles à une amie : du kommst.",
                 "de": "Du sprichst mit einer Freundin: du kommst."
               }
             },
@@ -1173,7 +1173,7 @@
           "timeLimitS": 100,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [

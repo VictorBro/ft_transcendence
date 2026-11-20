@@ -71,7 +71,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Turn each card to learn the key words of the text.",
-            "fr": "Retournez chaque carte pour découvrir les mots clés du texte.",
+            "fr": "Retourne chaque carte pour découvrir les mots clés du texte.",
             "de": "Dreh jede Karte um und lerne die Schlüsselwörter des Textes."
           },
           "items": [
@@ -96,7 +96,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Match each key word with its meaning.",
-            "fr": "Associez chaque mot clé à son sens.",
+            "fr": "Associe chaque mot clé à son sens.",
             "de": "Ordne jedem Schlüsselwort seine Bedeutung zu."
           },
           "items": [
@@ -121,7 +121,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Look over the document quickly. When the time is up it is put away; then answer the question.",
-            "fr": "Parcourez rapidement le document. À la fin du temps, il disparaît ; répondez ensuite à la question.",
+            "fr": "Parcours rapidement le document. À la fin du temps, il disparaît ; réponds ensuite à la question.",
             "de": "Überfliege das Dokument. Wenn die Zeit um ist, verschwindet es; beantworte dann die Frage."
           },
           "items": [
@@ -172,7 +172,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the document carefully and answer the questions.",
-            "fr": "Lisez le document attentivement et répondez aux questions.",
+            "fr": "Lis le document attentivement et réponds aux questions.",
             "de": "Lies das Dokument genau und beantworte die Fragen."
           },
           "items": [
@@ -276,7 +276,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the information in the order the text gives it.",
-            "fr": "Remettez les informations dans l’ordre du texte.",
+            "fr": "Remets les informations dans l’ordre du texte.",
             "de": "Bring die Informationen in die Reihenfolge des Textes."
           },
           "items": [
@@ -330,7 +330,7 @@
           "timeLimitS": 300,
           "instructions": {
             "en": "Read the new document and answer the questions. No help this time.",
-            "fr": "Lisez le nouveau document et répondez aux questions. Cette fois, sans aide.",
+            "fr": "Lis le nouveau document et réponds aux questions. Cette fois, sans aide.",
             "de": "Lies das neue Dokument und beantworte die Fragen. Diesmal ohne Hilfe."
           },
           "items": [

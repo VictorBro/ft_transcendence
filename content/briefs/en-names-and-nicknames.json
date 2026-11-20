@@ -7,7 +7,7 @@
   "title": "Names and nicknames",
   "objective": {
     "en": "Talk about names and what people call you: middle name, full name, nickname, maiden name and naming someone after a person.",
-    "fr": "Parler des noms et de la façon dont on vous appelle : deuxième prénom, nom complet, surnom, nom de jeune fille, donner le nom de quelqu'un.",
+    "fr": "Parler des noms et de la façon dont on t'appelle : deuxième prénom, nom complet, surnom, nom de jeune fille, donner le nom de quelqu'un.",
     "de": "Über Namen sprechen und darüber, wie man genannt wird: zweiter Vorname, vollständiger Name, Spitzname, Mädchenname, jemanden nach jemandem benennen."
   },
   "estimatedMinutes": 19,
@@ -48,7 +48,7 @@
       "targetIds": ["given-name", "middle-name", "surname", "full-name", "initials", "maiden-name"],
       "introduction": {
         "en": "Learn **six words** for the parts of a name:\n\n- `given name`\n- `middle name`\n- `surname`\n- `full name`\n- `initials`\n- `maiden name`\n\nYour `full name` is your `given name`, your `middle name` and your `surname` together.",
-        "fr": "Apprenez **six mots** pour les parties d'un nom :\n\n- `given name`\n- `middle name`\n- `surname`\n- `full name`\n- `initials`\n- `maiden name`\n\nVotre `full name` réunit votre `given name`, votre `middle name` et votre `surname`.",
+        "fr": "Apprends **six mots** pour les parties d'un nom :\n\n- `given name`\n- `middle name`\n- `surname`\n- `full name`\n- `initials`\n- `maiden name`\n\nTon `full name` réunit ton `given name`, ton `middle name` et ton `surname`.",
         "de": "Lerne **sechs Wörter** für die Teile eines Namens:\n\n- `given name`\n- `middle name`\n- `surname`\n- `full name`\n- `initials`\n- `maiden name`\n\nDein `full name` besteht aus `given name`, `middle name` und `surname` zusammen."
       }
     },
@@ -62,7 +62,7 @@
       "targetIds": ["nickname", "married-name", "stage-name", "go-by", "short-for", "name-after"],
       "introduction": {
         "en": "Now learn **six more** words and phrases about the names people use:\n\n- `nickname`\n- `married name`\n- `stage name`\n- `go by`\n- `be short for`\n- `name someone after`\n\nThe last three are verb phrases: `She goes by Liz.` `Liz is short for Elizabeth.`",
-        "fr": "Apprenez maintenant **six autres** mots et expressions sur les noms que l'on utilise :\n\n- `nickname`\n- `married name`\n- `stage name`\n- `go by`\n- `be short for`\n- `name someone after`\n\nLes trois derniers sont des expressions verbales : `She goes by Liz.` `Liz is short for Elizabeth.`",
+        "fr": "Apprends maintenant **six autres** mots et expressions sur les noms que l'on utilise :\n\n- `nickname`\n- `married name`\n- `stage name`\n- `go by`\n- `be short for`\n- `name someone after`\n\nLes trois derniers sont des expressions verbales : `She goes by Liz.` `Liz is short for Elizabeth.`",
         "de": "Lerne jetzt **sechs weitere** Wörter und Wendungen für die Namen, die man benutzt:\n\n- `nickname`\n- `married name`\n- `stage name`\n- `go by`\n- `be short for`\n- `name someone after`\n\nDie letzten drei sind Verbwendungen: `She goes by Liz.` `Liz is short for Elizabeth.`"
       }
     }
@@ -91,7 +91,7 @@
       "ambiguityNote": null,
       "explanation": {
         "en": "Your given name is the name your parents chose for you; it is also called your first name.",
-        "fr": "Le given name est le nom que vos parents ont choisi pour vous ; on dit aussi first name.",
+        "fr": "Le given name est le nom que tes parents ont choisi pour toi ; on dit aussi first name.",
         "de": "Der given name ist der Name, den deine Eltern für dich gewählt haben; man sagt auch first name."
       },
       "genderExplanation": null,
@@ -217,7 +217,7 @@
       "ambiguityNote": null,
       "explanation": {
         "en": "Your full name includes all your names, not just the first one.",
-        "fr": "Le full name comprend tous vos noms, pas seulement le premier.",
+        "fr": "Le full name comprend tous tes noms, pas seulement le premier.",
         "de": "Der full name umfasst alle deine Namen, nicht nur den ersten."
       },
       "genderExplanation": null,
@@ -259,7 +259,7 @@
       "ambiguityNote": null,
       "explanation": {
         "en": "Initials are the first letters of your names, such as J.K.B.",
-        "fr": "Les initials sont les premières lettres de vos noms, par exemple J.K.B.",
+        "fr": "Les initials sont les premières lettres de tes noms, par exemple J.K.B.",
         "de": "Initials sind die Anfangsbuchstaben deiner Namen, zum Beispiel J.K.B."
       },
       "genderExplanation": null,
@@ -469,7 +469,7 @@
       "ambiguityNote": null,
       "explanation": {
         "en": "Go by + a name means that this is the name you ask people to use for you.",
-        "fr": "Go by + un nom signifie que c'est le nom que vous demandez aux gens d'utiliser.",
+        "fr": "Go by + un nom signifie que c'est le nom que tu demandes aux gens d'utiliser.",
         "de": "Go by + Name bedeutet, dass das der Name ist, mit dem man dich ansprechen soll."
       },
       "genderExplanation": null,

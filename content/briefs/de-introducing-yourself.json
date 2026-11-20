@@ -43,7 +43,7 @@
       "translations": { "en": ["My name is"], "fr": ["Je m’appelle"] },
       "explanation": {
         "en": "Use it to say your name: Ich heiße + name. The verb ends in -e after ich.",
-        "fr": "Pour dire votre nom : Ich heiße + prénom. Le verbe finit en -e après ich.",
+        "fr": "Pour dire ton nom : Ich heiße + prénom. Le verbe finit en -e après ich.",
         "de": "Damit sagst du deinen Namen: Ich heiße + Name. Nach ich endet das Verb auf -e."
       },
       "example": {
@@ -58,7 +58,7 @@
       "translations": { "en": ["What is your name?"], "fr": ["Comment tu t’appelles ?"] },
       "explanation": {
         "en": "Asks a friend or a person your age for their name (du, informal).",
-        "fr": "Pour demander son nom à un ami ou à une personne de votre âge (du, informel).",
+        "fr": "Pour demander son nom à un ami ou à une personne de ton âge (du, informel).",
         "de": "Damit fragst du Freunde oder Gleichaltrige nach dem Namen (du, informell)."
       },
       "example": {
@@ -76,7 +76,7 @@
       "translations": { "en": ["I come from"], "fr": ["Je viens de"] },
       "explanation": {
         "en": "Use it for your country or town of origin: Ich komme aus + place.",
-        "fr": "Pour dire votre pays ou votre ville d’origine : Ich komme aus + lieu.",
+        "fr": "Pour dire ton pays ou ta ville d’origine : Ich komme aus + lieu.",
         "de": "Damit nennst du dein Herkunftsland oder deine Herkunftsstadt: Ich komme aus + Ort."
       },
       "example": {
@@ -106,7 +106,7 @@
       "translations": { "en": ["I live in"], "fr": ["J’habite à"] },
       "explanation": {
         "en": "Use it to say where you live: Ich wohne in + town or country.",
-        "fr": "Pour dire où vous habitez : Ich wohne in + ville ou pays.",
+        "fr": "Pour dire où tu habites : Ich wohne in + ville ou pays.",
         "de": "Damit sagst du, wo du wohnst: Ich wohne in + Stadt oder Land."
       },
       "example": {

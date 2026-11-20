@@ -48,7 +48,7 @@
       "targetIds": ["tired", "sleepy", "hungry", "thirsty", "cold"],
       "introduction": {
         "en": "Use these words after **I'm** to say how your body feels:\n\n- `tired`\n- `sleepy`\n- `hungry`\n- `thirsty`\n- `cold`",
-        "fr": "Utilisez ces mots après **I'm** pour dire ce que ressent votre corps :\n\n- `tired`\n- `sleepy`\n- `hungry`\n- `thirsty`\n- `cold`",
+        "fr": "Utilise ces mots après **I'm** pour dire ce que ressent ton corps :\n\n- `tired`\n- `sleepy`\n- `hungry`\n- `thirsty`\n- `cold`",
         "de": "Benutze diese Wörter nach **I'm**, um zu sagen, wie sich dein Körper fühlt:\n\n- `tired`\n- `sleepy`\n- `hungry`\n- `thirsty`\n- `cold`"
       }
     },
@@ -58,7 +58,7 @@
       "targetIds": ["happy", "sad", "bored", "fine", "angry"],
       "introduction": {
         "en": "Use these words after **I'm** to say your mood:\n\n- `happy`\n- `sad`\n- `bored`\n- `fine`\n- `angry`\n\nAnswer **How are you?** with `fine`.",
-        "fr": "Utilisez ces mots après **I'm** pour dire votre humeur :\n\n- `happy`\n- `sad`\n- `bored`\n- `fine`\n- `angry`\n\nRépondez à **How are you?** avec `fine`.",
+        "fr": "Utilise ces mots après **I'm** pour dire ton humeur :\n\n- `happy`\n- `sad`\n- `bored`\n- `fine`\n- `angry`\n\nRéponds à **How are you?** avec `fine`.",
         "de": "Benutze diese Wörter nach **I'm**, um deine Stimmung zu nennen:\n\n- `happy`\n- `sad`\n- `bored`\n- `fine`\n- `angry`\n\nAntworte auf **How are you?** mit `fine`."
       }
     }

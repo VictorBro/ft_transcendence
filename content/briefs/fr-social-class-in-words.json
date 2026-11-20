@@ -48,7 +48,7 @@
       "targetIds": ["dejeuner", "diner", "souper", "maman", "mere"],
       "introduction": {
         "en": "The names of meals mark **region, generation and milieu**, and so does the way adults name their mother:\n\n- `un déjeuner` (midday, in standard French)\n- `un dîner` (evening, in standard French)\n- `un souper` (regional or dated)\n- `maman`\n- `une mère`\n\nTo hear the difference, compare `ma mère` with `ma maman`.",
-        "fr": "Les noms des repas marquent la **région, la génération et le milieu**, tout comme la manière dont un adulte nomme sa mère :\n\n- `un déjeuner` (midi, en français standard)\n- `un dîner` (le soir, en français standard)\n- `un souper` (régional ou vieilli)\n- `maman`\n- `une mère`\n\nPour entendre la différence, comparez `ma mère` et `ma maman`.",
+        "fr": "Les noms des repas marquent la **région, la génération et le milieu**, tout comme la manière dont un adulte nomme sa mère :\n\n- `un déjeuner` (midi, en français standard)\n- `un dîner` (le soir, en français standard)\n- `un souper` (régional ou vieilli)\n- `maman`\n- `une mère`\n\nPour entendre la différence, compare `ma mère` et `ma maman`.",
         "de": "Die Namen der Mahlzeiten verraten **Region, Generation und Milieu**, ebenso wie die Art, wie Erwachsene ihre Mutter nennen:\n\n- `un déjeuner` (mittags, im Standardfranzösisch)\n- `un dîner` (abends, im Standardfranzösisch)\n- `un souper` (regional oder veraltet)\n- `maman`\n- `une mère`\n\nHör den Unterschied: vergleiche `ma mère` mit `ma maman`."
       }
     },
@@ -62,7 +62,7 @@
       "targetIds": ["canape", "sofa", "toilettes", "bagnole", "bouffer"],
       "introduction": {
         "en": "Furniture, bathrooms, cars and eating each have a **neutral** word and a word that sounds **more refined or more common**:\n\n- `un canapé` and `un sofa`\n- `des toilettes`\n- `une bagnole` (informal; neutral: `une voiture`)\n- `bouffer` (informal; neutral: `manger`)\n\nChoosing one rather than the other places you socially.",
-        "fr": "Le mobilier, les sanitaires, la voiture et la façon de manger ont chacun un mot **neutre** et un mot qui sonne **plus recherché ou plus populaire** :\n\n- `un canapé` et `un sofa`\n- `des toilettes`\n- `une bagnole` (familier ; neutre : `une voiture`)\n- `bouffer` (familier ; neutre : `manger`)\n\nChoisir l’un plutôt que l’autre vous situe socialement.",
+        "fr": "Le mobilier, les sanitaires, la voiture et la façon de manger ont chacun un mot **neutre** et un mot qui sonne **plus recherché ou plus populaire** :\n\n- `un canapé` et `un sofa`\n- `des toilettes`\n- `une bagnole` (familier ; neutre : `une voiture`)\n- `bouffer` (familier ; neutre : `manger`)\n\nChoisir l’un plutôt que l’autre te situe socialement.",
         "de": "Möbel, Sanitärräume, Autos und Essen haben jeweils ein **neutrales** Wort und ein Wort, das **gehobener oder derber** klingt:\n\n- `un canapé` und `un sofa`\n- `des toilettes`\n- `une bagnole` (umgangssprachlich; neutral: `une voiture`)\n- `bouffer` (umgangssprachlich; neutral: `manger`)\n\nDie Wahl des einen statt des anderen verortet dich sozial."
       }
     }

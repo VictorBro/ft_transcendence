@@ -40,7 +40,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -55,7 +55,7 @@
               },
               "text": {
                 "en": "Use `seit` + dative + present tense for something that began in the past and still continues: `Ich wohne seit zwei Jahren in Kassel.`\n\n- `seit einem Jahr`, `seit einer Woche`, `seit zwei Monaten`: the dative follows it, and plural nouns usually end in -n.\n- The verb stays in the present tense, not in the perfect.\n\nQuestion: `Seit wann lernst du Deutsch?`",
-                "fr": "Utilisez `seit` + datif + présent pour ce qui a commencé dans le passé et continue encore : `Ich wohne seit zwei Jahren in Kassel.`\n\n- `seit einem Jahr`, `seit einer Woche`, `seit zwei Monaten` : le datif suit ce mot, et les noms au pluriel se terminent le plus souvent par -n.\n- Le verbe reste au présent, pas au parfait.\n\nQuestion : `Seit wann lernst du Deutsch?`",
+                "fr": "Utilise `seit` + datif + présent pour ce qui a commencé dans le passé et continue encore : `Ich wohne seit zwei Jahren in Kassel.`\n\n- `seit einem Jahr`, `seit einer Woche`, `seit zwei Monaten` : le datif suit ce mot, et les noms au pluriel se terminent le plus souvent par -n.\n- Le verbe reste au présent, pas au parfait.\n\nQuestion : `Seit wann lernst du Deutsch?`",
                 "de": "Mit `seit` + Dativ + Präsens sagst du, was in der Vergangenheit begonnen hat und noch andauert: `Ich wohne seit zwei Jahren in Kassel.`\n\n- `seit einem Jahr`, `seit einer Woche`, `seit zwei Monaten`: Danach steht der Dativ, und Nomen im Plural enden meist auf -n.\n- Das Verb bleibt im Präsens, nicht im Perfekt.\n\nFrage: `Seit wann lernst du Deutsch?`"
               },
               "formTable": [
@@ -126,7 +126,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -234,7 +234,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -326,7 +326,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it.",
-            "fr": "Trouvez le mot faux et corrigez-le.",
+            "fr": "Trouve le mot faux et corrige-le.",
             "de": "Finde das falsche Wort und korrigiere es."
           },
           "items": [
@@ -422,7 +422,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -437,7 +437,7 @@
               },
               "text": {
                 "en": "`vor` + dative says when something happened in the past: `Ich war vor einem Monat in Rom.` `in` + dative says when something will happen: `Der Kurs beginnt in drei Tagen.`\n\n- `vor zwei Tagen` = two days ago; `in zwei Tagen` = two days from now.\n- `seit` counts up to now, `vor` points to a moment in the past, `in` to a moment in the future.\n- All three take the dative: `einem Jahr`, `einer Woche`, `zwei Monaten`.\n\nDo not mix them up: `vor einer Woche` is past, `in einer Woche` is future.",
-                "fr": "`vor` + datif indique quand quelque chose a eu lieu dans le passé : `Ich war vor einem Monat in Rom.` `in` + datif indique quand quelque chose aura lieu : `Der Kurs beginnt in drei Tagen.`\n\n- `vor zwei Tagen` = il y a deux jours ; `in zwei Tagen` = dans deux jours.\n- `seit` compte jusqu'à maintenant, `vor` renvoie à un moment du passé, `in` à un moment du futur.\n- Les trois prennent le datif : `einem Jahr`, `einer Woche`, `zwei Monaten`.\n\nNe les confondez pas : `vor einer Woche` est passé, `in einer Woche` est futur.",
+                "fr": "`vor` + datif indique quand quelque chose a eu lieu dans le passé : `Ich war vor einem Monat in Rom.` `in` + datif indique quand quelque chose aura lieu : `Der Kurs beginnt in drei Tagen.`\n\n- `vor zwei Tagen` = il y a deux jours ; `in zwei Tagen` = dans deux jours.\n- `seit` compte jusqu'à maintenant, `vor` renvoie à un moment du passé, `in` à un moment du futur.\n- Les trois prennent le datif : `einem Jahr`, `einer Woche`, `zwei Monaten`.\n\nNe les confonds pas : `vor einer Woche` est passé, `in einer Woche` est futur.",
                 "de": "`vor` + Dativ sagt, wann etwas in der Vergangenheit war: `Ich war vor einem Monat in Rom.` `in` + Dativ sagt, wann etwas in der Zukunft sein wird: `Der Kurs beginnt in drei Tagen.`\n\n- `vor zwei Tagen`: so lange ist es her; `in zwei Tagen`: so lange dauert es noch.\n- `seit` zählt bis jetzt, `vor` zeigt auf einen Moment in der Vergangenheit, `in` auf einen Moment in der Zukunft.\n- Alle drei stehen mit dem Dativ: `einem Jahr`, `einer Woche`, `zwei Monaten`.\n\nVerwechsle sie nicht: `vor einer Woche` ist Vergangenheit, `in einer Woche` ist Zukunft."
               },
               "formTable": [
@@ -508,7 +508,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -628,7 +628,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -720,7 +720,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -809,7 +809,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it.",
-            "fr": "Trouvez le mot faux et corrigez-le.",
+            "fr": "Trouve le mot faux et corrige-le.",
             "de": "Finde das falsche Wort und korrigiere es."
           },
           "items": [
@@ -864,7 +864,7 @@
       "id": "feedback",
       "role": "feedback",
       "blockId": null,
-      "label": { "en": "Your feedback", "fr": "Votre retour", "de": "Dein Feedback" },
+      "label": { "en": "Your feedback", "fr": "Ton retour", "de": "Dein Feedback" },
       "pages": [
         {
           "pageId": "feedback",
@@ -872,7 +872,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Continue to the final exam.",
-            "fr": "Passez à l’examen final.",
+            "fr": "Passe à l’examen final.",
             "de": "Weiter zur Abschlussprüfung."
           },
           "items": [{ "type": "production_feedback_placeholder", "itemId": "feedback" }]
@@ -891,7 +891,7 @@
           "timeLimitS": 100,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -945,7 +945,7 @@
           "timeLimitS": 130,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -1013,7 +1013,7 @@
           "timeLimitS": 120,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [

@@ -48,7 +48,7 @@
       "targetIds": ["frown", "wink", "blush", "raise-eyebrows", "roll-eyes", "grin"],
       "introduction": {
         "en": "These movements of the **face** show feelings without words:\n\n- `frown`\n- `wink`\n- `blush`\n- `raise your eyebrows`\n- `roll your eyes`\n- `grin`\n\nThink about what each one shows: annoyance, a joke, shyness, surprise, boredom or delight.",
-        "fr": "Ces mouvements du **visage** montrent des sentiments sans paroles :\n\n- `frown`\n- `wink`\n- `blush`\n- `raise your eyebrows`\n- `roll your eyes`\n- `grin`\n\nPensez à ce que chacun montre : l’agacement, une plaisanterie, la timidité, la surprise, l’ennui ou la joie.",
+        "fr": "Ces mouvements du **visage** montrent des sentiments sans paroles :\n\n- `frown`\n- `wink`\n- `blush`\n- `raise your eyebrows`\n- `roll your eyes`\n- `grin`\n\nPense à ce que chacun montre : l’agacement, une plaisanterie, la timidité, la surprise, l’ennui ou la joie.",
         "de": "Diese Bewegungen des **Gesichts** zeigen Gefühle ohne Worte:\n\n- `frown`\n- `wink`\n- `blush`\n- `raise your eyebrows`\n- `roll your eyes`\n- `grin`\n\nDenke darüber nach, was jede zeigt: Verärgerung, einen Scherz, Schüchternheit, Überraschung, Langeweile oder Freude."
       }
     },

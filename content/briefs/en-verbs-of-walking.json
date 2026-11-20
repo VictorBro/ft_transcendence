@@ -48,7 +48,7 @@
       "targetIds": ["stroll", "amble", "saunter", "stride", "march", "swagger"],
       "introduction": {
         "en": "Six verbs for walking **with ease, confidence or purpose**. Each one also says something about the walker's attitude and speed:\n\n- `stroll`: walk slowly, for pleasure\n- `amble`: walk at a relaxed, unhurried pace\n- `saunter`: walk casually, looking quite unworried\n- `stride`: walk with long, purposeful steps\n- `march`: walk with firm, regular steps\n- `swagger`: walk proudly, to show off\n\nChoose the verb that fits both the **speed** and the **mood**.",
-        "fr": "Six verbes pour marcher **avec aisance, assurance ou détermination**. Chacun dit aussi quelque chose de l'attitude et de la vitesse de la personne :\n\n- `stroll` : marcher lentement, pour le plaisir\n- `amble` : marcher d'un pas tranquille et sans hâte\n- `saunter` : marcher avec nonchalance, l'air insouciant\n- `stride` : marcher à grands pas résolus\n- `march` : marcher d'un pas ferme et régulier\n- `swagger` : marcher fièrement, pour se faire remarquer\n\nChoisissez le verbe qui convient à la fois à la **vitesse** et à l'**humeur**.",
+        "fr": "Six verbes pour marcher **avec aisance, assurance ou détermination**. Chacun dit aussi quelque chose de l'attitude et de la vitesse de la personne :\n\n- `stroll` : marcher lentement, pour le plaisir\n- `amble` : marcher d'un pas tranquille et sans hâte\n- `saunter` : marcher avec nonchalance, l'air insouciant\n- `stride` : marcher à grands pas résolus\n- `march` : marcher d'un pas ferme et régulier\n- `swagger` : marcher fièrement, pour se faire remarquer\n\nChoisis le verbe qui convient à la fois à la **vitesse** et à l'**humeur**.",
         "de": "Sechs Verben für Gehen **mit Leichtigkeit, Selbstvertrauen oder Zielstrebigkeit**. Jedes sagt auch etwas über Haltung und Tempo der Person:\n\n- `stroll`: langsam gehen, zum Vergnügen\n- `amble`: in entspanntem, gemächlichem Tempo gehen\n- `saunter`: lässig gehen und dabei unbekümmert wirken\n- `stride`: mit langen, zielstrebigen Schritten gehen\n- `march`: mit festen, gleichmäßigen Schritten gehen\n- `swagger`: stolz gehen, um anzugeben\n\nWähle das Verb, das zu **Tempo** und **Stimmung** passt."
       }
     },
@@ -192,7 +192,7 @@
       },
       "explanation": {
         "en": "To saunter is to walk in a relaxed, confident way, as if nothing could worry you.",
-        "fr": "Saunter, c'est marcher de façon détendue et assurée, comme si rien ne pouvait vous inquiéter.",
+        "fr": "Saunter, c'est marcher de façon détendue et assurée, comme si rien ne pouvait t'inquiéter.",
         "de": "Saunter heißt, entspannt und selbstsicher zu gehen, als könne einen nichts beunruhigen."
       },
       "genderExplanation": null,

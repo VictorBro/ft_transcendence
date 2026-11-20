@@ -48,7 +48,7 @@
       "targetIds": ["dabord", "puis", "ensuite", "apres", "plus-tard"],
       "introduction": {
         "en": "Use these words to **start** a story and to link the actions one after another:\n\n- `d’abord`\n- `puis`\n- `ensuite`\n- `après`\n- `plus tard`",
-        "fr": "Utilisez ces mots pour **commencer** une histoire et pour enchaîner les actions l’une après l’autre :\n\n- `d’abord`\n- `puis`\n- `ensuite`\n- `après`\n- `plus tard`",
+        "fr": "Utilise ces mots pour **commencer** une histoire et pour enchaîner les actions l’une après l’autre :\n\n- `d’abord`\n- `puis`\n- `ensuite`\n- `après`\n- `plus tard`",
         "de": "Mit diesen Wörtern **beginnst** du eine Geschichte und verbindest die Handlungen nacheinander:\n\n- `d’abord`\n- `puis`\n- `ensuite`\n- `après`\n- `plus tard`"
       }
     },

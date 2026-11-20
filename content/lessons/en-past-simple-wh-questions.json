@@ -40,7 +40,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -55,7 +55,7 @@
               },
               "text": {
                 "en": "To ask about the past, put a question word first, then `did`, then the subject, then the **base form** of the verb: `Where did you go?` `What did she buy?`\n\n- Question words: **where**, **when**, **why**, **what**, **who**, **how**.\n- `did` already shows the past, so the verb stays in the base form: `Where did you go?`, not `Where did you went?`\n- The order is the same for every subject: `Why did he leave?` `When did they arrive?`",
-                "fr": "Pour poser une question sur le passé, mettez d'abord un mot interrogatif, puis `did`, puis le sujet, puis la **forme de base** du verbe : `Where did you go?` `What did she buy?`\n\n- Mots interrogatifs : **where** (où), **when** (quand), **why** (pourquoi), **what** (quoi), **who** (qui), **how** (comment).\n- `did` marque déjà le passé, donc le verbe reste à la forme de base : `Where did you go?`, et non `Where did you went?`\n- L'ordre est le même pour tous les sujets : `Why did he leave?` `When did they arrive?`",
+                "fr": "Pour poser une question sur le passé, mets d'abord un mot interrogatif, puis `did`, puis le sujet, puis la **forme de base** du verbe : `Where did you go?` `What did she buy?`\n\n- Mots interrogatifs : **where** (où), **when** (quand), **why** (pourquoi), **what** (quoi), **who** (qui), **how** (comment).\n- `did` marque déjà le passé, donc le verbe reste à la forme de base : `Where did you go?`, et non `Where did you went?`\n- L'ordre est le même pour tous les sujets : `Why did he leave?` `When did they arrive?`",
                 "de": "Um nach der Vergangenheit zu fragen, steht zuerst ein Fragewort, dann `did`, dann das Subjekt, dann die **Grundform** des Verbs: `Where did you go?` `What did she buy?`\n\n- Fragewörter: **where** (wo), **when** (wann), **why** (warum), **what** (was), **who** (wer), **how** (wie).\n- `did` zeigt schon die Vergangenheit, deshalb bleibt das Verb in der Grundform: `Where did you go?`, nicht `Where did you went?`\n- Die Reihenfolge ist für jedes Subjekt gleich: `Why did he leave?` `When did they arrive?`"
               },
               "formTable": [],
@@ -103,7 +103,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -135,7 +135,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -167,7 +167,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -199,7 +199,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -219,7 +219,7 @@
               "ruleIds": ["r-wh-order"],
               "answerExplanation": {
                 "en": "For a question about the past, put did between what and the subject.",
-                "fr": "Pour une question sur le passé, placez did entre what et le sujet.",
+                "fr": "Pour une question sur le passé, place did entre what et le sujet.",
                 "de": "Bei einer Frage über die Vergangenheit steht did zwischen what und dem Subjekt."
               }
             }
@@ -243,7 +243,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -273,7 +273,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -303,7 +303,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -333,7 +333,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -371,7 +371,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -402,7 +402,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -435,7 +435,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -479,7 +479,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -494,7 +494,7 @@
               },
               "text": {
                 "en": "You can ask for more detail with **how** or **what** plus another word, in front of `did`:\n\n- **how long** (time): `How long did you stay?`\n- **how much** or **how many** (quantity): `How much did it cost?` `How many photos did you take?`\n- **what time** (the clock): `What time did you get up?`\n\nIn everyday English the preposition goes at the end: `Who did you go with?` `What did you talk about?`",
-                "fr": "Vous pouvez demander plus de précisions avec **how** ou **what** plus un autre mot, devant `did` :\n\n- **how long** (la durée) : `How long did you stay?`\n- **how much** ou **how many** (la quantité) : `How much did it cost?` `How many photos did you take?`\n- **what time** (l'heure) : `What time did you get up?`\n\nEn anglais courant, la préposition se place à la fin : `Who did you go with?` `What did you talk about?`",
+                "fr": "Tu peux demander plus de précisions avec **how** ou **what** plus un autre mot, devant `did` :\n\n- **how long** (la durée) : `How long did you stay?`\n- **how much** ou **how many** (la quantité) : `How much did it cost?` `How many photos did you take?`\n- **what time** (l'heure) : `What time did you get up?`\n\nEn anglais courant, la préposition se place à la fin : `Who did you go with?` `What did you talk about?`",
                 "de": "Mehr Einzelheiten erfragst du mit **how** oder **what** plus einem weiteren Wort vor `did`:\n\n- **how long** (Dauer): `How long did you stay?`\n- **how much** oder **how many** (Menge): `How much did it cost?` `How many photos did you take?`\n- **what time** (Uhrzeit): `What time did you get up?`\n\nIm Alltagsenglisch steht die Präposition am Ende: `Who did you go with?` `What did you talk about?`"
               },
               "formTable": [],
@@ -549,7 +549,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -581,7 +581,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -613,7 +613,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -653,7 +653,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -685,7 +685,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -717,7 +717,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -748,7 +748,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -788,7 +788,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it.",
-            "fr": "Trouvez le mot faux et corrigez-le.",
+            "fr": "Trouve le mot faux et corrige-le.",
             "de": "Finde das falsche Wort und korrigiere es."
           },
           "items": [
@@ -822,7 +822,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it.",
-            "fr": "Trouvez le mot faux et corrigez-le.",
+            "fr": "Trouve le mot faux et corrige-le.",
             "de": "Finde das falsche Wort und korrigiere es."
           },
           "items": [
@@ -858,7 +858,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it.",
-            "fr": "Trouvez le mot faux et corrigez-le.",
+            "fr": "Trouve le mot faux et corrige-le.",
             "de": "Finde das falsche Wort und korrigiere es."
           },
           "items": [
@@ -891,7 +891,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it.",
-            "fr": "Trouvez le mot faux et corrigez-le.",
+            "fr": "Trouve le mot faux et corrige-le.",
             "de": "Finde das falsche Wort und korrigiere es."
           },
           "items": [
@@ -936,7 +936,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -966,7 +966,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -996,7 +996,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -1026,7 +1026,7 @@
       "id": "feedback",
       "role": "feedback",
       "blockId": null,
-      "label": { "en": "Your feedback", "fr": "Votre retour", "de": "Dein Feedback" },
+      "label": { "en": "Your feedback", "fr": "Ton retour", "de": "Dein Feedback" },
       "pages": [
         {
           "pageId": "feedback",
@@ -1034,7 +1034,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Continue to the final exam.",
-            "fr": "Passez à l’examen final.",
+            "fr": "Passe à l’examen final.",
             "de": "Weiter zur Abschlussprüfung."
           },
           "items": [{ "type": "production_feedback_placeholder", "itemId": "feedback" }]
@@ -1053,7 +1053,7 @@
           "timeLimitS": 160,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -1121,7 +1121,7 @@
           "timeLimitS": 180,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -1214,7 +1214,7 @@
           "timeLimitS": 120,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [

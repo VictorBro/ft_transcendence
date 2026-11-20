@@ -48,7 +48,7 @@
       "targetIds": ["first", "at-first", "then", "next", "after-that"],
       "introduction": {
         "en": "Use these words to put the steps of a story or a recipe in **order**:\n\n- `first`\n- `at first`\n- `then`\n- `next`\n- `after that`\n\nThey tell the listener what happens before and after.",
-        "fr": "Utilisez ces mots pour mettre les étapes d'une histoire ou d'une recette dans l'**ordre** :\n\n- `first`\n- `at first`\n- `then`\n- `next`\n- `after that`\n\nIls disent à l'auditeur ce qui se passe avant et après.",
+        "fr": "Utilise ces mots pour mettre les étapes d'une histoire ou d'une recette dans l'**ordre** :\n\n- `first`\n- `at first`\n- `then`\n- `next`\n- `after that`\n\nIls disent à l'auditeur ce qui se passe avant et après.",
         "de": "Mit diesen Wörtern bringst du die Schritte einer Geschichte oder eines Rezepts in die **Reihenfolge**:\n\n- `first`\n- `at first`\n- `then`\n- `next`\n- `after that`\n\nSie zeigen dem Zuhörer, was davor und danach passiert."
       }
     },
@@ -62,7 +62,7 @@
       "targetIds": ["later", "meanwhile", "suddenly", "finally", "in-the-end"],
       "introduction": {
         "en": "Use these words to show **time**, a surprise or the end of a story:\n\n- `later`\n- `meanwhile`\n- `suddenly`\n- `finally`\n- `in the end`\n\nThey make your story easier to follow.",
-        "fr": "Utilisez ces mots pour indiquer le **temps**, une surprise ou la fin d'une histoire :\n\n- `later`\n- `meanwhile`\n- `suddenly`\n- `finally`\n- `in the end`\n\nIls rendent votre récit plus facile à suivre.",
+        "fr": "Utilise ces mots pour indiquer le **temps**, une surprise ou la fin d'une histoire :\n\n- `later`\n- `meanwhile`\n- `suddenly`\n- `finally`\n- `in the end`\n\nIls rendent ton récit plus facile à suivre.",
         "de": "Mit diesen Wörtern zeigst du die **Zeit**, eine Überraschung oder das Ende einer Geschichte:\n\n- `later`\n- `meanwhile`\n- `suddenly`\n- `finally`\n- `in the end`\n\nSie machen deine Geschichte leichter verständlich."
       }
     }

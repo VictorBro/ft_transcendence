@@ -48,7 +48,7 @@
       "targetIds": ["geburt", "geboren", "baby", "kind", "kindheit", "jugend"],
       "introduction": {
         "en": "A life begins with birth. Learn the first stages:\n\n- `die Geburt`\n- `geboren`\n- `das Baby`\n- `das Kind`\n- `die Kindheit`\n- `die Jugend`",
-        "fr": "Une vie commence par la naissance. Apprenez les premières étapes :\n\n- `die Geburt`\n- `geboren`\n- `das Baby`\n- `das Kind`\n- `die Kindheit`\n- `die Jugend`",
+        "fr": "Une vie commence par la naissance. Apprends les premières étapes :\n\n- `die Geburt`\n- `geboren`\n- `das Baby`\n- `das Kind`\n- `die Kindheit`\n- `die Jugend`",
         "de": "Ein Leben beginnt mit der Geburt. Lerne die ersten Abschnitte:\n\n- `die Geburt`\n- `geboren`\n- `das Baby`\n- `das Kind`\n- `die Kindheit`\n- `die Jugend`"
       }
     },
@@ -62,7 +62,7 @@
       "targetIds": ["erwachsen", "leben", "alter", "rente", "rentner", "rentnerin"],
       "introduction": {
         "en": "Later come adulthood, old age and retirement. Note **Rentner** and **Rentnerin**:\n\n- `erwachsen`\n- `das Leben`\n- `das Alter`\n- `die Rente`\n- `der Rentner`\n- `die Rentnerin`",
-        "fr": "Viennent ensuite l’âge adulte, la vieillesse et la retraite. Notez **Rentner** et **Rentnerin** :\n\n- `erwachsen`\n- `das Leben`\n- `das Alter`\n- `die Rente`\n- `der Rentner`\n- `die Rentnerin`",
+        "fr": "Viennent ensuite l’âge adulte, la vieillesse et la retraite. Note **Rentner** et **Rentnerin** :\n\n- `erwachsen`\n- `das Leben`\n- `das Alter`\n- `die Rente`\n- `der Rentner`\n- `die Rentnerin`",
         "de": "Später kommen das Erwachsensein, das Alter und die Rente. Achte auf **Rentner** und **Rentnerin**:\n\n- `erwachsen`\n- `das Leben`\n- `das Alter`\n- `die Rente`\n- `der Rentner`\n- `die Rentnerin`"
       }
     }
@@ -407,7 +407,7 @@
         "referenceTargetIds": ["leben", "geburt", "rente", "rentner"],
         "explanation": {
           "en": "You have only one life, so enjoy every day.",
-          "fr": "On n’a qu’une vie, alors profitez de chaque jour.",
+          "fr": "On n’a qu’une vie, alors profite de chaque jour.",
           "de": "Man hat nur ein Leben, deshalb soll man jeden Tag genießen."
         }
       },

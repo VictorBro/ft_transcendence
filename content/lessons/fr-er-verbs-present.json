@@ -40,7 +40,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -105,7 +105,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Connect each pronoun with its partner.",
-            "fr": "Reliez chaque pronom à son partenaire.",
+            "fr": "Relie chaque pronom à son partenaire.",
             "de": "Verbinde jedes Pronomen mit seinem Partner."
           },
           "items": [
@@ -203,7 +203,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -307,7 +307,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -403,7 +403,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -418,7 +418,7 @@
               },
               "text": {
                 "en": "When speaking, the endings `-e`, `-es` and `-ent` are silent: `je parle`, `tu parles`, `il parle` and `ils parlent` all sound the same. Only `nous parlons` and `vous parlez` sound different.\n\nBefore a vowel or a mute h, the s of `nous`, `vous`, `ils` and `elles` is pronounced z: `ils aiment`, `elles habitent`. So `ils aiment` does not sound like `il aime`.\n\nBefore a vowel or a mute h, `je` becomes `j'`:\n\n- `j'habite`\n- `j'aime`\n\nIn writing, check the subject to choose the right ending: `Marie parle`, `Marie et Paul parlent`.",
-                "fr": "À l'oral, les terminaisons `-e`, `-es` et `-ent` ne se prononcent pas : `je parle`, `tu parles`, `il parle` et `ils parlent` ont le même son. Seuls `nous parlons` et `vous parlez` sonnent différemment.\n\nDevant une voyelle ou un h muet, le s de `nous`, `vous`, `ils` et `elles` se prononce z : `ils aiment`, `elles habitent`. Donc `ils aiment` ne se prononce pas comme `il aime`.\n\nDevant une voyelle ou un h muet, `je` devient `j'` :\n\n- `j'habite`\n- `j'aime`\n\nÀ l'écrit, vérifiez le sujet pour choisir la bonne terminaison : `Marie parle`, `Marie et Paul parlent`.",
+                "fr": "À l'oral, les terminaisons `-e`, `-es` et `-ent` ne se prononcent pas : `je parle`, `tu parles`, `il parle` et `ils parlent` ont le même son. Seuls `nous parlons` et `vous parlez` sonnent différemment.\n\nDevant une voyelle ou un h muet, le s de `nous`, `vous`, `ils` et `elles` se prononce z : `ils aiment`, `elles habitent`. Donc `ils aiment` ne se prononce pas comme `il aime`.\n\nDevant une voyelle ou un h muet, `je` devient `j'` :\n\n- `j'habite`\n- `j'aime`\n\nÀ l'écrit, vérifie le sujet pour choisir la bonne terminaison : `Marie parle`, `Marie et Paul parlent`.",
                 "de": "Gesprochen werden die Endungen `-e`, `-es` und `-ent` nicht: `je parle`, `tu parles`, `il parle` und `ils parlent` klingen gleich. Nur `nous parlons` und `vous parlez` klingen anders.\n\nVor einem Vokal oder stummen h wird das s von `nous`, `vous`, `ils` und `elles` als z gesprochen: `ils aiment`, `elles habitent`. Deshalb klingt `ils aiment` nicht wie `il aime`.\n\nVor einem Vokal oder stummen h wird `je` zu `j'`:\n\n- `j'habite`\n- `j'aime`\n\nSchriftlich prüfst du das Subjekt, um die richtige Endung zu wählen: `Marie parle`, `Marie et Paul parlent`."
               },
               "formTable": [
@@ -461,7 +461,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the form for each pronoun.",
-            "fr": "Écrivez la forme pour chaque pronom.",
+            "fr": "Écris la forme pour chaque pronom.",
             "de": "Schreib die Form zu jedem Pronomen."
           },
           "items": [
@@ -559,7 +559,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -643,7 +643,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -731,7 +731,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -777,7 +777,7 @@
       "id": "feedback",
       "role": "feedback",
       "blockId": null,
-      "label": { "en": "Your feedback", "fr": "Votre retour", "de": "Dein Feedback" },
+      "label": { "en": "Your feedback", "fr": "Ton retour", "de": "Dein Feedback" },
       "pages": [
         {
           "pageId": "feedback",
@@ -785,7 +785,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Continue to the final exam.",
-            "fr": "Passez à l’examen final.",
+            "fr": "Passe à l’examen final.",
             "de": "Weiter zur Abschlussprüfung."
           },
           "items": [{ "type": "production_feedback_placeholder", "itemId": "feedback" }]
@@ -804,7 +804,7 @@
           "timeLimitS": 150,
           "instructions": {
             "en": "Type the form for each pronoun.",
-            "fr": "Écrivez la forme pour chaque pronom.",
+            "fr": "Écris la forme pour chaque pronom.",
             "de": "Schreib die Form zu jedem Pronomen."
           },
           "items": [
@@ -890,7 +890,7 @@
           "timeLimitS": 100,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -958,7 +958,7 @@
           "timeLimitS": 80,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [

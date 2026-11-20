@@ -36,7 +36,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Recall each expression, then turn the card to check it.",
-            "fr": "Rappelez-vous chaque expression, puis retournez la carte pour vérifier.",
+            "fr": "Rappelle-toi chaque expression, puis retourne la carte pour vérifier.",
             "de": "Erinnere dich an jeden Ausdruck und dreh dann die Karte um."
           },
           "items": [
@@ -69,7 +69,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read and listen. Turn a line to see its translation and a note.",
-            "fr": "Lisez et écoutez. Retournez une réplique pour voir sa traduction et une remarque.",
+            "fr": "Lis et écoute. Retourne une réplique pour voir sa traduction et une remarque.",
             "de": "Lies und hör zu. Dreh eine Zeile um, um Übersetzung und Hinweis zu sehen."
           },
           "items": [
@@ -132,7 +132,7 @@
                   },
                   "note": {
                     "en": "Explain the custom, not the person: it is about culture, not character.",
-                    "fr": "Expliquez la coutume, pas la personne : il s’agit de culture, pas de caractère.",
+                    "fr": "Explique la coutume, pas la personne : il s’agit de culture, pas de caractère.",
                     "de": "Erklären Sie den Brauch, nicht die Person: Es geht um Kultur, nicht um Charakter."
                   },
                   "expressionIds": ["in-my-country"]
@@ -245,7 +245,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Match each expression with its translation.",
-            "fr": "Associez chaque expression à sa traduction.",
+            "fr": "Associe chaque expression à sa traduction.",
             "de": "Ordne jedem Ausdruck seine Übersetzung zu."
           },
           "items": [
@@ -258,7 +258,7 @@
                   "id": "in-my-country",
                   "answerExplanation": {
                     "en": "Explains a custom from your own culture, followed by a verb.",
-                    "fr": "Explique une coutume de votre culture, suivie d’un verbe.",
+                    "fr": "Explique une coutume de ta culture, suivie d’un verbe.",
                     "de": "Erklärt einen Brauch aus Ihrer Kultur, danach folgt ein Verb."
                   }
                 },
@@ -282,7 +282,7 @@
                   "id": "what-i-meant",
                   "answerExplanation": {
                     "en": "Restates your point more clearly.",
-                    "fr": "Reformule plus clairement votre idée.",
+                    "fr": "Reformule plus clairement ton idée.",
                     "de": "Formuliert Ihren Gedanken klarer."
                   }
                 },
@@ -298,7 +298,7 @@
                   "id": "came-across-as",
                   "answerExplanation": {
                     "en": "Shows you understand why the other person reacted as they did.",
-                    "fr": "Montre que vous comprenez pourquoi l’autre a réagi ainsi.",
+                    "fr": "Montre que tu comprends pourquoi l’autre a réagi ainsi.",
                     "de": "Zeigt, dass Sie verstehen, warum der andere so reagiert hat."
                   }
                 }
@@ -320,7 +320,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the expression that fits the gap.",
-            "fr": "Choisissez l’expression qui complète la réplique.",
+            "fr": "Choisis l’expression qui complète la réplique.",
             "de": "Wähle den Ausdruck, der in die Lücke passt."
           },
           "items": [
@@ -355,7 +355,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the expression that fits the gap.",
-            "fr": "Choisissez l’expression qui complète la réplique.",
+            "fr": "Choisis l’expression qui complète la réplique.",
             "de": "Wähle den Ausdruck, der in die Lücke passt."
           },
           "items": [
@@ -390,7 +390,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the expression that fits the gap.",
-            "fr": "Choisissez l’expression qui complète la réplique.",
+            "fr": "Choisis l’expression qui complète la réplique.",
             "de": "Wähle den Ausdruck, der in die Lücke passt."
           },
           "items": [
@@ -422,7 +422,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the expression that fits the gap.",
-            "fr": "Choisissez l’expression qui complète la réplique.",
+            "fr": "Choisis l’expression qui complète la réplique.",
             "de": "Wähle den Ausdruck, der in die Lücke passt."
           },
           "items": [
@@ -457,7 +457,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the expression that fits the gap.",
-            "fr": "Choisissez l’expression qui complète la réplique.",
+            "fr": "Choisis l’expression qui complète la réplique.",
             "de": "Wähle den Ausdruck, der in die Lücke passt."
           },
           "items": [
@@ -492,7 +492,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the expression that fits the gap.",
-            "fr": "Choisissez l’expression qui complète la réplique.",
+            "fr": "Choisis l’expression qui complète la réplique.",
             "de": "Wähle den Ausdruck, der in die Lücke passt."
           },
           "items": [
@@ -535,7 +535,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in order.",
-            "fr": "Mettez les mots dans l’ordre.",
+            "fr": "Mets les mots dans l’ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -571,7 +571,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in order.",
-            "fr": "Mettez les mots dans l’ordre.",
+            "fr": "Mets les mots dans l’ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -607,7 +607,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in order.",
-            "fr": "Mettez les mots dans l’ordre.",
+            "fr": "Mets les mots dans l’ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -644,7 +644,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in order.",
-            "fr": "Mettez les mots dans l’ordre.",
+            "fr": "Mets les mots dans l’ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -680,7 +680,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in order.",
-            "fr": "Mettez les mots dans l’ordre.",
+            "fr": "Mets les mots dans l’ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -715,7 +715,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in order.",
-            "fr": "Mettez les mots dans l’ordre.",
+            "fr": "Mets les mots dans l’ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -760,7 +760,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Listen, then choose the reply that fits.",
-            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "fr": "Écoute, puis choisis la réponse qui convient.",
             "de": "Hör zu und wähle dann die passende Antwort."
           },
           "items": [
@@ -797,7 +797,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Listen, then choose the reply that fits.",
-            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "fr": "Écoute, puis choisis la réponse qui convient.",
             "de": "Hör zu und wähle dann die passende Antwort."
           },
           "items": [
@@ -834,7 +834,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Listen, then choose the reply that fits.",
-            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "fr": "Écoute, puis choisis la réponse qui convient.",
             "de": "Hör zu und wähle dann die passende Antwort."
           },
           "items": [
@@ -871,7 +871,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Listen, then choose the reply that fits.",
-            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "fr": "Écoute, puis choisis la réponse qui convient.",
             "de": "Hör zu und wähle dann die passende Antwort."
           },
           "items": [
@@ -908,7 +908,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Listen, then choose the reply that fits.",
-            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "fr": "Écoute, puis choisis la réponse qui convient.",
             "de": "Hör zu und wähle dann die passende Antwort."
           },
           "items": [
@@ -945,7 +945,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Listen, then choose the reply that fits.",
-            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "fr": "Écoute, puis choisis la réponse qui convient.",
             "de": "Hör zu und wähle dann die passende Antwort."
           },
           "items": [
@@ -990,7 +990,7 @@
           "timeLimitS": 180,
           "instructions": {
             "en": "Build the answer. Not every word fits.",
-            "fr": "Construisez la réponse. Tous les mots ne servent pas.",
+            "fr": "Construis la réponse. Tous les mots ne servent pas.",
             "de": "Bilde die Antwort. Nicht jedes Wort passt."
           },
           "items": [
@@ -1125,7 +1125,7 @@
           "timeLimitS": 210,
           "instructions": {
             "en": "Fill each gap with an expression from this lesson.",
-            "fr": "Complétez chaque trou avec une expression de la leçon.",
+            "fr": "Complète chaque trou avec une expression de la leçon.",
             "de": "Fülle jede Lücke mit einem Ausdruck aus dieser Lektion."
           },
           "items": [

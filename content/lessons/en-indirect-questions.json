@@ -40,7 +40,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -55,7 +55,7 @@
               },
               "text": {
                 "en": "To ask politely, start with `Do you know` or `Could you tell me`, then use **statement word order**: subject first, then the verb.\n\n- Direct: `Where is the station?` Indirect: `Do you know where the station is?`\n- Do not use `do`, `does` or `did` after the question word: `Could you tell me what time the shop opens?`\n- Keep the tense: `Do you know why she left?`\n\nThe first part is a question, so it ends with a question mark. The second part is not a question any more.",
-                "fr": "Pour demander poliment, commencez par `Do you know` ou `Could you tell me`, puis utilisez l'**ordre d'une phrase affirmative** : le sujet d'abord, puis le verbe.\n\n- Direct : `Where is the station?` Indirect : `Do you know where the station is?`\n- N'utilisez pas `do`, `does` ou `did` après le mot interrogatif : `Could you tell me what time the shop opens?`\n- Gardez le temps : `Do you know why she left?`\n\nLa première partie est une question, elle se termine donc par un point d'interrogation. La seconde partie n'est plus une question.",
+                "fr": "Pour demander poliment, commence par `Do you know` ou `Could you tell me`, puis utilise l'**ordre d'une phrase affirmative** : le sujet d'abord, puis le verbe.\n\n- Direct : `Where is the station?` Indirect : `Do you know where the station is?`\n- N'utilise pas `do`, `does` ou `did` après le mot interrogatif : `Could you tell me what time the shop opens?`\n- Garde le temps : `Do you know why she left?`\n\nLa première partie est une question, elle se termine donc par un point d'interrogation. La seconde partie n'est plus une question.",
                 "de": "Um höflich zu fragen, beginne mit `Do you know` oder `Could you tell me` und benutze dann die **Wortstellung des Aussagesatzes**: erst das Subjekt, dann das Verb.\n\n- Direkt: `Where is the station?` Indirekt: `Do you know where the station is?`\n- Benutze nach dem Fragewort kein `do`, `does` oder `did`: `Could you tell me what time the shop opens?`\n- Behalte die Zeitform: `Do you know why she left?`\n\nDer erste Teil ist eine Frage und endet daher mit einem Fragezeichen. Der zweite Teil ist keine Frage mehr."
               },
               "formTable": [
@@ -115,7 +115,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -215,7 +215,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -295,7 +295,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -413,7 +413,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -428,7 +428,7 @@
               },
               "text": {
                 "en": "For questions with the answer yes or no, use `if` (or `whether`) after the polite opening, and keep statement order.\n\n- Direct: `Is the museum open?` Indirect: `Could you tell me if the museum is open?`\n- Direct: `Does she like jazz?` Indirect: `Do you know whether she likes jazz?`\n- Do not use `that` instead of `if`, and do not use `do` or `does` here.\n\nWith question words the order is the same: `Do you know how far the beach is?`",
-                "fr": "Pour les questions dont la réponse est oui ou non, utilisez `if` (ou `whether`) après la formule de politesse, et gardez l'ordre d'une phrase affirmative.\n\n- Direct : `Is the museum open?` Indirect : `Could you tell me if the museum is open?`\n- Direct : `Does she like jazz?` Indirect : `Do you know whether she likes jazz?`\n- N'utilisez pas `that` à la place de `if`, et n'utilisez pas `do` ni `does` ici.\n\nAvec un mot interrogatif, l'ordre est le même : `Do you know how far the beach is?`",
+                "fr": "Pour les questions dont la réponse est oui ou non, utilise `if` (ou `whether`) après la formule de politesse, et garde l'ordre d'une phrase affirmative.\n\n- Direct : `Is the museum open?` Indirect : `Could you tell me if the museum is open?`\n- Direct : `Does she like jazz?` Indirect : `Do you know whether she likes jazz?`\n- N'utilise pas `that` à la place de `if`, et n'utilise pas `do` ni `does` ici.\n\nAvec un mot interrogatif, l'ordre est le même : `Do you know how far the beach is?`",
                 "de": "Bei Fragen mit der Antwort Ja oder Nein verwendest du nach der höflichen Einleitung `if` (oder `whether`) und behältst die Wortstellung des Aussagesatzes bei.\n\n- Direkt: `Is the museum open?` Indirekt: `Could you tell me if the museum is open?`\n- Direkt: `Does she like jazz?` Indirekt: `Do you know whether she likes jazz?`\n- Benutze nicht `that` statt `if` und hier auch kein `do` oder `does`.\n\nMit einem Fragewort ist die Reihenfolge gleich: `Do you know how far the beach is?`"
               },
               "formTable": [
@@ -483,7 +483,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -567,7 +567,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -637,7 +637,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -732,7 +732,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it.",
-            "fr": "Trouvez le mot faux et corrigez-le.",
+            "fr": "Trouve le mot faux et corrige-le.",
             "de": "Finde das falsche Wort und korrigiere es."
           },
           "items": [
@@ -794,7 +794,7 @@
       "id": "feedback",
       "role": "feedback",
       "blockId": null,
-      "label": { "en": "Your feedback", "fr": "Votre retour", "de": "Dein Feedback" },
+      "label": { "en": "Your feedback", "fr": "Ton retour", "de": "Dein Feedback" },
       "pages": [
         {
           "pageId": "feedback",
@@ -802,7 +802,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Continue to the final exam.",
-            "fr": "Passez à l’examen final.",
+            "fr": "Passe à l’examen final.",
             "de": "Weiter zur Abschlussprüfung."
           },
           "items": [{ "type": "production_feedback_placeholder", "itemId": "feedback" }]
@@ -821,7 +821,7 @@
           "timeLimitS": 120,
           "instructions": {
             "en": "Answer every item before the time runs out.",
-            "fr": "Répondez à chaque question avant la fin du temps imparti.",
+            "fr": "Réponds à chaque question avant la fin du temps imparti.",
             "de": "Beantworte jede Aufgabe, bevor die Zeit abläuft."
           },
           "items": [
@@ -889,7 +889,7 @@
           "timeLimitS": 70,
           "instructions": {
             "en": "Answer every item before the time runs out.",
-            "fr": "Répondez à chaque question avant la fin du temps imparti.",
+            "fr": "Réponds à chaque question avant la fin du temps imparti.",
             "de": "Beantworte jede Aufgabe, bevor die Zeit abläuft."
           },
           "items": [
@@ -943,7 +943,7 @@
           "timeLimitS": 150,
           "instructions": {
             "en": "Answer every item before the time runs out.",
-            "fr": "Répondez à chaque question avant la fin du temps imparti.",
+            "fr": "Réponds à chaque question avant la fin du temps imparti.",
             "de": "Beantworte jede Aufgabe, bevor die Zeit abläuft."
           },
           "items": [

@@ -48,7 +48,7 @@
       "targetIds": ["eminent", "imminent", "prodige", "prodigue"],
       "introduction": {
         "en": "These words look alike but mean different things. Keep each pair apart:\n\n- `éminent` means distinguished, `imminent` means about to happen\n- `un prodige` is a marvel, `prodigue` means lavish with money or effort",
-        "fr": "Ces mots se ressemblent mais n’ont pas le même sens. Séparez bien chaque paire :\n\n- `éminent` signifie très distingué, `imminent` signifie sur le point d’arriver\n- `un prodige` est une merveille, `prodigue` signifie qui donne sans compter",
+        "fr": "Ces mots se ressemblent mais n’ont pas le même sens. Sépare bien chaque paire :\n\n- `éminent` signifie très distingué, `imminent` signifie sur le point d’arriver\n- `un prodige` est une merveille, `prodigue` signifie qui donne sans compter",
         "de": "Diese Wörter sehen ähnlich aus, bedeuten aber Verschiedenes. Halte jedes Paar auseinander:\n\n- `éminent` heißt angesehen, `imminent` heißt unmittelbar bevorstehend\n- `un prodige` ist ein Wunder, `prodigue` heißt verschwenderisch oder freigebig"
       }
     },

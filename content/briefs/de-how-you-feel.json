@@ -48,7 +48,7 @@
       "targetIds": ["gut", "prima", "schlecht", "muede", "wach"],
       "introduction": {
         "en": "Say how you feel with **es geht mir** or **ich bin** and an adjective: `Es geht mir gut.` `Ich bin müde.`\n\n- `gut`: good, well\n- `prima`: great\n- `schlecht`: bad\n- `müde`: tired\n- `wach`: awake",
-        "fr": "Dites comment vous vous sentez avec **es geht mir** ou **ich bin** et un adjectif : `Es geht mir gut.` `Ich bin müde.`\n\n- `gut` : bien\n- `prima` : super\n- `schlecht` : mal, mauvais\n- `müde` : fatigué\n- `wach` : éveillé",
+        "fr": "Dis comment tu te sens avec **es geht mir** ou **ich bin** et un adjectif : `Es geht mir gut.` `Ich bin müde.`\n\n- `gut` : bien\n- `prima` : super\n- `schlecht` : mal, mauvais\n- `müde` : fatigué\n- `wach` : éveillé",
         "de": "Sag mit **es geht mir** oder **ich bin** und einem Adjektiv, wie du dich fühlst: `Es geht mir gut.` `Ich bin müde.`\n\n- `gut`: nicht schlecht, in Ordnung\n- `prima`: sehr gut\n- `schlecht`: nicht gut\n- `müde`: man möchte schlafen\n- `wach`: nicht mehr im Schlaf"
       }
     },

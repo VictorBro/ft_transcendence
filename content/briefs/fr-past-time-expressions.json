@@ -51,7 +51,7 @@
       ],
       "introduction": {
         "en": "Use these expressions to place an event **in the recent past**:\n\n- `hier`, `hier soir`, `avant-hier`\n- `ce matin`, `tout à l’heure`\n- `il y a trois jours`\n\nThey go with the **passé composé**: `j’ai travaillé hier`.",
-        "fr": "Utilisez ces expressions pour situer un événement **dans le passé proche** :\n\n- `hier`, `hier soir`, `avant-hier`\n- `ce matin`, `tout à l’heure`\n- `il y a trois jours`\n\nElles s’emploient avec le **passé composé** : `j’ai travaillé hier`.",
+        "fr": "Utilise ces expressions pour situer un événement **dans le passé proche** :\n\n- `hier`, `hier soir`, `avant-hier`\n- `ce matin`, `tout à l’heure`\n- `il y a trois jours`\n\nElles s’emploient avec le **passé composé** : `j’ai travaillé hier`.",
         "de": "Mit diesen Ausdrücken ordnest du ein Ereignis **in der nahen Vergangenheit** ein:\n\n- `hier`, `hier soir`, `avant-hier`\n- `ce matin`, `tout à l’heure`\n- `il y a trois jours`\n\nSie stehen mit dem **passé composé**: `j’ai travaillé hier`."
       }
     },
@@ -65,7 +65,7 @@
       "targetIds": ["semaine-derniere", "mois-dernier", "ete-dernier", "annee-derniere"],
       "introduction": {
         "en": "To go further back, put **dernier** or **dernière** after the time word:\n\n- `la semaine dernière`\n- `le mois dernier`\n- `l’été dernier`\n- `l’année dernière`\n\nThe ending agrees with the word: `dernier` (masculine), `dernière` (feminine).",
-        "fr": "Pour remonter plus loin, placez **dernier** ou **dernière** après le mot de temps :\n\n- `la semaine dernière`\n- `le mois dernier`\n- `l’été dernier`\n- `l’année dernière`\n\nLa terminaison s’accorde avec le mot : `dernier` (masculin), `dernière` (féminin).",
+        "fr": "Pour remonter plus loin, place **dernier** ou **dernière** après le mot de temps :\n\n- `la semaine dernière`\n- `le mois dernier`\n- `l’été dernier`\n- `l’année dernière`\n\nLa terminaison s’accorde avec le mot : `dernier` (masculin), `dernière` (féminin).",
         "de": "Um weiter zurückzugehen, setzt du **dernier** oder **dernière** nach das Zeitwort:\n\n- `la semaine dernière`\n- `le mois dernier`\n- `l’été dernier`\n- `l’année dernière`\n\nDie Endung richtet sich nach dem Wort: `dernier` (maskulin), `dernière` (feminin)."
       }
     }

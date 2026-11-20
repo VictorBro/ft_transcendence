@@ -40,7 +40,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -55,7 +55,7 @@
               },
               "text": {
                 "en": "To sound **tentative**, English steps back into the past. The past does not mean past time here: it adds distance and makes a request easier to refuse.\n\n- `I hope you can help.` becomes `I was hoping you could help.`\n- `I want to ask something.` becomes `I wanted to ask something.`\n- The past continuous (`was hoping`, `was wondering`) is softer than the past simple.\n\nAdd `could` or `would` in the second part: `I was wondering if you could...`",
-                "fr": "Pour paraître **hésitant** et poli, l'anglais recule dans le passé. Ce passé n'exprime pas le temps : il crée de la distance et rend une demande plus facile à refuser.\n\n- `I hope you can help.` devient `I was hoping you could help.`\n- `I want to ask something.` devient `I wanted to ask something.`\n- Le past continuous (`was hoping`, `was wondering`) est plus doux que le prétérit simple.\n\nAjoutez `could` ou `would` dans la seconde partie : `I was wondering if you could...`",
+                "fr": "Pour paraître **hésitant** et poli, l'anglais recule dans le passé. Ce passé n'exprime pas le temps : il crée de la distance et rend une demande plus facile à refuser.\n\n- `I hope you can help.` devient `I was hoping you could help.`\n- `I want to ask something.` devient `I wanted to ask something.`\n- Le past continuous (`was hoping`, `was wondering`) est plus doux que le prétérit simple.\n\nAjoute `could` ou `would` dans la seconde partie : `I was wondering if you could...`",
                 "de": "Um **zurückhaltend** und höflich zu klingen, geht das Englische in die Vergangenheit zurück. Diese Vergangenheit meint keine Zeit: Sie schafft Abstand und macht eine Bitte leichter ablehnbar.\n\n- `I hope you can help.` wird zu `I was hoping you could help.`\n- `I want to ask something.` wird zu `I wanted to ask something.`\n- Das Past Continuous (`was hoping`, `was wondering`) klingt weicher als das Simple Past.\n\nSetze im zweiten Teil `could` oder `would` ein: `I was wondering if you could...`"
               },
               "formTable": [
@@ -119,7 +119,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -137,7 +137,7 @@
               "answerChoiceId": "c-2",
               "hint": {
                 "en": "Sound tentative: use a past form.",
-                "fr": "Soyez hésitant : employez une forme du passé.",
+                "fr": "Sois hésitant : emploie une forme du passé.",
                 "de": "Klinge zurückhaltend: Benutze eine Vergangenheitsform."
               },
               "ruleIds": ["rule-tentative-past"],
@@ -161,7 +161,7 @@
               "answerChoiceId": "c-1",
               "hint": {
                 "en": "Sound tentative: use the past simple.",
-                "fr": "Soyez hésitant : employez le prétérit.",
+                "fr": "Sois hésitant : emploie le prétérit.",
                 "de": "Klinge zurückhaltend: Benutze das Simple Past."
               },
               "ruleIds": ["rule-tentative-past"],
@@ -185,7 +185,7 @@
               "answerChoiceId": "c-3",
               "hint": {
                 "en": "Sound as tentative as possible: use the past continuous.",
-                "fr": "Soyez le plus hésitant possible : employez le past continuous.",
+                "fr": "Sois le plus hésitant possible : emploie le past continuous.",
                 "de": "Klinge so zurückhaltend wie möglich: Benutze das Past Continuous."
               },
               "ruleIds": ["rule-tentative-past"],
@@ -215,7 +215,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -293,7 +293,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -380,7 +380,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -395,7 +395,7 @@
               },
               "text": {
                 "en": "Use the present continuous with **always**, **constantly** or **forever** to show irritation at a repeated habit. The speaker means: this happens too often.\n\n- `She's constantly losing her keys.`\n- `He's always leaving the lights on.`\n- `You were forever interrupting me.` (a past habit that annoyed you)\n\nThe simple present is neutral: `She loses her keys.` Tone and stress carry the complaint.",
-                "fr": "Employez le présent continu avec **always**, **constantly** ou **forever** pour montrer votre agacement devant une habitude qui se répète. Le sens : cela arrive trop souvent.\n\n- `She's constantly losing her keys.`\n- `He's always leaving the lights on.`\n- `You were forever interrupting me.` (une habitude passée qui agaçait)\n\nLe présent simple est neutre : `She loses her keys.` Le ton et l'accent portent le reproche.",
+                "fr": "Emploie le présent continu avec **always**, **constantly** ou **forever** pour montrer ton agacement devant une habitude qui se répète. Le sens : cela arrive trop souvent.\n\n- `She's constantly losing her keys.`\n- `He's always leaving the lights on.`\n- `You were forever interrupting me.` (une habitude passée qui agaçait)\n\nLe présent simple est neutre : `She loses her keys.` Le ton et l'accent portent le reproche.",
                 "de": "Benutze das Present Continuous mit **always**, **constantly** oder **forever**, um Ärger über eine wiederholte Gewohnheit zu zeigen. Gemeint ist: Das passiert zu oft.\n\n- `She's constantly losing her keys.`\n- `He's always leaving the lights on.`\n- `You were forever interrupting me.` (eine vergangene Gewohnheit, die störte)\n\nDas Simple Present ist neutral: `She loses her keys.` Ton und Betonung tragen den Vorwurf."
               },
               "formTable": [
@@ -454,7 +454,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -472,7 +472,7 @@
               "answerChoiceId": "c-2",
               "hint": {
                 "en": "Show irritation at a habit happening now.",
-                "fr": "Montrez l'agacement devant une habitude actuelle.",
+                "fr": "Montre l'agacement devant une habitude actuelle.",
                 "de": "Zeige Ärger über eine aktuelle Gewohnheit."
               },
               "ruleIds": ["rule-irritation-continuous"],
@@ -496,7 +496,7 @@
               "answerChoiceId": "c-3",
               "hint": {
                 "en": "Show irritation at a habit happening now.",
-                "fr": "Montrez l'agacement devant une habitude actuelle.",
+                "fr": "Montre l'agacement devant une habitude actuelle.",
                 "de": "Zeige Ärger über eine aktuelle Gewohnheit."
               },
               "ruleIds": ["rule-irritation-continuous"],
@@ -520,7 +520,7 @@
               "answerChoiceId": "c-1",
               "hint": {
                 "en": "Show irritation at a habit happening now.",
-                "fr": "Montrez l'agacement devant une habitude actuelle.",
+                "fr": "Montre l'agacement devant une habitude actuelle.",
                 "de": "Zeige Ärger über eine aktuelle Gewohnheit."
               },
               "ruleIds": ["rule-irritation-continuous"],
@@ -550,7 +550,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -628,7 +628,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -715,7 +715,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -730,7 +730,7 @@
               },
               "text": {
                 "en": "To make an **assumption** about the present, use `will have` plus a past participle, or `will have been` plus an -ing form for something that has been going on for a while.\n\n- `You'll have been travelling all day.`\n- `She'll have heard the news by now.`\n- `You'll have had a long journey.`\n\nThe speaker is not predicting the future. They are guessing what is probably true now or has probably already happened.",
-                "fr": "Pour faire une **supposition** sur le présent, employez `will have` + participe passé, ou `will have been` + forme en -ing pour une action qui dure depuis un moment.\n\n- `You'll have been travelling all day.`\n- `She'll have heard the news by now.`\n- `You'll have had a long journey.`\n\nLe locuteur ne prédit pas l'avenir. Il devine ce qui est probablement vrai maintenant ou déjà arrivé.",
+                "fr": "Pour faire une **supposition** sur le présent, emploie `will have` + participe passé, ou `will have been` + forme en -ing pour une action qui dure depuis un moment.\n\n- `You'll have been travelling all day.`\n- `She'll have heard the news by now.`\n- `You'll have had a long journey.`\n\nLe locuteur ne prédit pas l'avenir. Il devine ce qui est probablement vrai maintenant ou déjà arrivé.",
                 "de": "Für eine **Vermutung** über die Gegenwart nimmst du `will have` plus Partizip Perfekt, oder `will have been` plus -ing-Form für etwas, das schon eine Weile andauert.\n\n- `You'll have been travelling all day.`\n- `She'll have heard the news by now.`\n- `You'll have had a long journey.`\n\nDer Sprecher sagt nicht die Zukunft voraus. Er vermutet, was jetzt wahrscheinlich stimmt oder schon geschehen ist."
               },
               "formTable": [
@@ -789,7 +789,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -831,7 +831,7 @@
               "answerChoiceId": "c-1",
               "hint": {
                 "en": "Make an assumption about what has probably happened.",
-                "fr": "Supposez ce qui s'est probablement passé.",
+                "fr": "Suppose ce qui s'est probablement passé.",
                 "de": "Vermute, was wahrscheinlich geschehen ist."
               },
               "ruleIds": ["rule-assumption-future-perfect"],
@@ -855,7 +855,7 @@
               "answerChoiceId": "c-2",
               "hint": {
                 "en": "Make an assumption about how long she has been working.",
-                "fr": "Supposez depuis combien de temps elle travaille.",
+                "fr": "Suppose depuis combien de temps elle travaille.",
                 "de": "Vermute, wie lange sie schon arbeitet."
               },
               "ruleIds": ["rule-assumption-future-perfect"],
@@ -885,7 +885,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -963,7 +963,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -1040,7 +1040,7 @@
       "id": "feedback",
       "role": "feedback",
       "blockId": null,
-      "label": { "en": "Your feedback", "fr": "Votre retour", "de": "Dein Feedback" },
+      "label": { "en": "Your feedback", "fr": "Ton retour", "de": "Dein Feedback" },
       "pages": [
         {
           "pageId": "feedback",
@@ -1048,7 +1048,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Continue to the final exam.",
-            "fr": "Passez à l’examen final.",
+            "fr": "Passe à l’examen final.",
             "de": "Weiter zur Abschlussprüfung."
           },
           "items": [{ "type": "production_feedback_placeholder", "itemId": "feedback" }]
@@ -1067,7 +1067,7 @@
           "timeLimitS": 150,
           "instructions": {
             "en": "Type the missing words. Use past forms to make the requests tentative.",
-            "fr": "Écrivez les mots manquants. Employez des formes du passé pour rendre les demandes hésitantes.",
+            "fr": "Écris les mots manquants. Emploie des formes du passé pour rendre les demandes hésitantes.",
             "de": "Schreib die fehlenden Wörter. Benutze Vergangenheitsformen, damit die Bitten zurückhaltend klingen."
           },
           "items": [
@@ -1135,7 +1135,7 @@
           "timeLimitS": 150,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -1203,7 +1203,7 @@
           "timeLimitS": 200,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [

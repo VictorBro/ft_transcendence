@@ -40,7 +40,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -55,7 +55,7 @@
               },
               "text": {
                 "en": "A negative question begins with an auxiliary verb joined to **n't**, then the subject: `Isn't it lovely?` `Don't you like it?`\n\nWith a question word, the question word comes first: `Why didn't you tell me?` In formal English, **not** goes after the subject: `Is it not lovely?`\n\n- Use the auxiliary of the tense: `Haven't you finished?` `Didn't she call?`\n- With no other auxiliary, use `do`: `Don't you agree?`\n- Keep the auxiliary before the subject. Never say `Why you didn't tell me?`",
-                "fr": "Une question négative commence par un auxiliaire uni à **n't**, puis le sujet : `Isn't it lovely?` `Don't you like it?`\n\nAvec un mot interrogatif, celui-ci vient en premier : `Why didn't you tell me?` En anglais soutenu, **not** se place après le sujet : `Is it not lovely?`\n\n- Utilisez l'auxiliaire du temps : `Haven't you finished?` `Didn't she call?`\n- Sans autre auxiliaire, utilisez `do` : `Don't you agree?`\n- Gardez l'auxiliaire avant le sujet. Ne dites jamais `Why you didn't tell me?`",
+                "fr": "Une question négative commence par un auxiliaire uni à **n't**, puis le sujet : `Isn't it lovely?` `Don't you like it?`\n\nAvec un mot interrogatif, celui-ci vient en premier : `Why didn't you tell me?` En anglais soutenu, **not** se place après le sujet : `Is it not lovely?`\n\n- Utilise l'auxiliaire du temps : `Haven't you finished?` `Didn't she call?`\n- Sans autre auxiliaire, utilise `do` : `Don't you agree?`\n- Garde l'auxiliaire avant le sujet. Ne dis jamais `Why you didn't tell me?`",
                 "de": "Eine verneinte Frage beginnt mit einem Hilfsverb, das mit **n't** verbunden ist, dann folgt das Subjekt: `Isn't it lovely?` `Don't you like it?`\n\nMit Fragewort steht das Fragewort zuerst: `Why didn't you tell me?` Im förmlichen Englisch steht **not** nach dem Subjekt: `Is it not lovely?`\n\n- Nimm das Hilfsverb der Zeit: `Haven't you finished?` `Didn't she call?`\n- Ohne anderes Hilfsverb nimmst du `do`: `Don't you agree?`\n- Das Hilfsverb bleibt vor dem Subjekt. Sag nie `Why you didn't tell me?`"
               },
               "formTable": [
@@ -131,7 +131,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -235,7 +235,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -327,7 +327,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -432,7 +432,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -447,7 +447,7 @@
               },
               "text": {
                 "en": "Negative questions are not really about the negative. They show what you think.\n\n- To check a belief: `Isn't that your bag?` You think it is.\n- To show surprise: `Haven't you eaten yet?`\n- To invite agreement: `Isn't she talented?`\n- To complain or suggest: `Why don't we go home?`\n\nTo answer, ignore the **n't** and give the facts. **Yes** goes with a positive answer and **no** with a negative one: `Don't you like it?` `Yes, I do.` means you like it, and `No, I don't.` means you do not.\n\nAlways add a short answer after yes or no, so there is no doubt.",
-                "fr": "Les questions négatives ne portent pas vraiment sur la négation. Elles montrent ce que vous pensez.\n\n- Pour vérifier une croyance : `Isn't that your bag?` Vous pensez que oui.\n- Pour exprimer la surprise : `Haven't you eaten yet?`\n- Pour inviter à approuver : `Isn't she talented?`\n- Pour se plaindre ou suggérer : `Why don't we go home?`\n\nPour répondre, ignorez **n't** et donnez les faits. **Yes** va avec une réponse positive et **no** avec une réponse négative : `Don't you like it?` `Yes, I do.` signifie que vous aimez, et `No, I don't.` que vous n'aimez pas.\n\nAjoutez toujours une réponse courte après yes ou no, pour éviter le doute.",
+                "fr": "Les questions négatives ne portent pas vraiment sur la négation. Elles montrent ce que tu penses.\n\n- Pour vérifier une croyance : `Isn't that your bag?` Tu penses que oui.\n- Pour exprimer la surprise : `Haven't you eaten yet?`\n- Pour inviter à approuver : `Isn't she talented?`\n- Pour se plaindre ou suggérer : `Why don't we go home?`\n\nPour répondre, ignore **n't** et donne les faits. **Yes** va avec une réponse positive et **no** avec une réponse négative : `Don't you like it?` `Yes, I do.` signifie que tu aimes, et `No, I don't.` que tu n'aimes pas.\n\nAjoute toujours une réponse courte après yes ou no, pour éviter le doute.",
                 "de": "Verneinte Fragen drehen sich nicht wirklich um die Verneinung. Sie zeigen, was du denkst.\n\n- Um eine Annahme zu prüfen: `Isn't that your bag?` Du denkst, dass es so ist.\n- Um Überraschung zu zeigen: `Haven't you eaten yet?`\n- Um Zustimmung einzuladen: `Isn't she talented?`\n- Um sich zu beschweren oder etwas vorzuschlagen: `Why don't we go home?`\n\nZum Antworten ignorierst du **n't** und nennst die Tatsachen. **Yes** passt zu einer positiven Antwort und **no** zu einer verneinenden: `Don't you like it?` `Yes, I do.` heißt, du magst es, und `No, I don't.` heißt, du magst es nicht.\n\nFüge nach yes oder no immer eine Kurzantwort hinzu, damit es keinen Zweifel gibt."
               },
               "formTable": [
@@ -502,7 +502,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -560,7 +560,7 @@
               "answerChoiceId": "c-1",
               "hint": {
                 "en": "You both saw the concert yesterday. Invite your friend to agree.",
-                "fr": "Vous avez vu le concert hier. Invitez votre ami à approuver.",
+                "fr": "Tu as vu le concert hier. Invite ton ami à approuver.",
                 "de": "Ihr habt das Konzert gestern gesehen. Lade deinen Freund zur Zustimmung ein."
               },
               "ruleIds": ["r-use"],
@@ -584,7 +584,7 @@
               "answerChoiceId": "c-1",
               "hint": {
                 "en": "You are suggesting a walk to a friend.",
-                "fr": "Vous proposez une promenade à un ami.",
+                "fr": "Tu proposes une promenade à un ami.",
                 "de": "Du schlägst einem Freund einen Spaziergang vor."
               },
               "ruleIds": ["r-use"],
@@ -614,7 +614,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -680,7 +680,7 @@
               "accepted": { "answers": ["Isn't"] },
               "hint": {
                 "en": "You are surprised. be, present, contracted negative",
-                "fr": "Vous êtes surpris. be, présent, forme négative contractée",
+                "fr": "Tu es surpris. be, présent, forme négative contractée",
                 "de": "Du bist überrascht. be, Präsens, verneinte Kurzform"
               },
               "ruleIds": ["r-use"],
@@ -706,7 +706,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it.",
-            "fr": "Trouvez le mot faux et corrigez-le.",
+            "fr": "Trouve le mot faux et corrige-le.",
             "de": "Finde das falsche Wort und korrigiere es."
           },
           "items": [
@@ -834,7 +834,7 @@
       "id": "feedback",
       "role": "feedback",
       "blockId": null,
-      "label": { "en": "Your feedback", "fr": "Votre retour", "de": "Dein Feedback" },
+      "label": { "en": "Your feedback", "fr": "Ton retour", "de": "Dein Feedback" },
       "pages": [
         {
           "pageId": "feedback",
@@ -842,7 +842,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Continue to the final exam.",
-            "fr": "Passez à l’examen final.",
+            "fr": "Passe à l’examen final.",
             "de": "Weiter zur Abschlussprüfung."
           },
           "items": [{ "type": "production_feedback_placeholder", "itemId": "feedback" }]
@@ -861,7 +861,7 @@
           "timeLimitS": 160,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -929,7 +929,7 @@
           "timeLimitS": 150,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -1002,7 +1002,7 @@
           "timeLimitS": 120,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [

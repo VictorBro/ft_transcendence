@@ -40,7 +40,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -55,7 +55,7 @@
               },
               "text": {
                 "en": "`sein` (to be) is **irregular**: learn its forms by heart. In the singular you say `ich bin`, `du bist` and `er/sie/es ist`.\n\nUse `sein` for your name, origin, job or how you feel: `Ich bin Lena.` `Er ist Lehrer.` `Sie ist müde.`\n\n- `du bist` ends in -st, `er ist` ends in -t: do not mix them up.\n- A job on its own has no article: `Sie ist Ärztin.`",
-                "fr": "`sein` (être) est **irrégulier** : apprenez ses formes par cœur. Au singulier, on dit `ich bin`, `du bist` et `er/sie/es ist`.\n\nUtilisez `sein` pour dire votre nom, votre origine, votre métier ou comment vous allez : `Ich bin Lena.` `Er ist Lehrer.` `Sie ist müde.`\n\n- `du bist` finit par -st, `er ist` par -t : ne les confondez pas.\n- Un métier seul n'a pas d'article : `Sie ist Ärztin.`",
+                "fr": "`sein` (être) est **irrégulier** : apprends ses formes par cœur. Au singulier, on dit `ich bin`, `du bist` et `er/sie/es ist`.\n\nUtilise `sein` pour dire ton nom, ton origine, ton métier ou comment tu vas : `Ich bin Lena.` `Er ist Lehrer.` `Sie ist müde.`\n\n- `du bist` finit par -st, `er ist` par -t : ne les confonds pas.\n- Un métier seul n'a pas d'article : `Sie ist Ärztin.`",
                 "de": "`sein` ist **unregelmäßig**: Lerne die Formen auswendig. Im Singular sagt man `ich bin`, `du bist` und `er/sie/es ist`.\n\nMit `sein` nennst du deinen Namen, deine Herkunft, deinen Beruf oder dein Befinden: `Ich bin Lena.` `Er ist Lehrer.` `Sie ist müde.`\n\n- `du bist` endet auf -st, `er ist` auf -t: Verwechsle sie nicht.\n- Ein Beruf allein steht ohne Artikel: `Sie ist Ärztin.`"
               },
               "formTable": [
@@ -105,7 +105,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -137,7 +137,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -169,7 +169,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -213,7 +213,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -243,7 +243,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -273,7 +273,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -311,7 +311,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it.",
-            "fr": "Trouvez le mot faux et corrigez-le.",
+            "fr": "Trouve le mot faux et corrige-le.",
             "de": "Finde das falsche Wort und korrigiere es."
           },
           "items": [
@@ -340,7 +340,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it.",
-            "fr": "Trouvez le mot faux et corrigez-le.",
+            "fr": "Trouve le mot faux et corrige-le.",
             "de": "Finde das falsche Wort und korrigiere es."
           },
           "items": [
@@ -370,7 +370,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it.",
-            "fr": "Trouvez le mot faux et corrigez-le.",
+            "fr": "Trouve le mot faux et corrige-le.",
             "de": "Finde das falsche Wort und korrigiere es."
           },
           "items": [
@@ -415,7 +415,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -430,7 +430,7 @@
               },
               "text": {
                 "en": "In the plural you say `wir sind`, `ihr seid` and `sie sind`.\n\nThe polite **Sie** is written with a capital letter. With `Sie` you address one person or several, and the verb is `Sie sind`.\n\n- `wir sind`, `sie sind` and `Sie sind` share the same verb form.\n- `ihr seid` is the plural of `du`: use it for several friends or family members.\n- `sie ist` means one woman, `sie sind` several people: the verb shows the difference.",
-                "fr": "Au pluriel, on dit `wir sind`, `ihr seid` et `sie sind`.\n\nLe **Sie** de politesse s'écrit avec une majuscule. Avec `Sie`, on s'adresse à une ou plusieurs personnes, et le verbe est `Sie sind`.\n\n- `wir sind`, `sie sind` et `Sie sind` ont la même forme verbale.\n- `ihr seid` est le pluriel de `du` : employez-le pour plusieurs amis ou membres de la famille.\n- `sie ist` signifie une femme, `sie sind` plusieurs personnes : le verbe montre la différence.",
+                "fr": "Au pluriel, on dit `wir sind`, `ihr seid` et `sie sind`.\n\nLe **Sie** de politesse s'écrit avec une majuscule. Avec `Sie`, on s'adresse à une ou plusieurs personnes, et le verbe est `Sie sind`.\n\n- `wir sind`, `sie sind` et `Sie sind` ont la même forme verbale.\n- `ihr seid` est le pluriel de `du` : emploie-le pour plusieurs amis ou membres de la famille.\n- `sie ist` signifie une femme, `sie sind` plusieurs personnes : le verbe montre la différence.",
                 "de": "Im Plural sagt man `wir sind`, `ihr seid` und `sie sind`.\n\nDas höfliche **Sie** schreibt man groß. Mit `Sie` sprichst du eine oder mehrere Personen an, und das Verb heißt `Sie sind`.\n\n- `wir sind`, `sie sind` und `Sie sind` haben dieselbe Verbform.\n- `ihr seid` ist der Plural von `du`: Benutze es für mehrere Freunde oder Familienmitglieder.\n- `sie ist` bedeutet eine Frau, `sie sind` mehrere Personen: Das Verb zeigt den Unterschied."
               },
               "formTable": [
@@ -483,7 +483,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Connect each pronoun with its partner.",
-            "fr": "Reliez chaque pronom à son partenaire.",
+            "fr": "Relie chaque pronom à son partenaire.",
             "de": "Verbinde jedes Pronomen mit seinem Partner."
           },
           "items": [
@@ -581,7 +581,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the form for each pronoun.",
-            "fr": "Écrivez la forme pour chaque pronom.",
+            "fr": "Écris la forme pour chaque pronom.",
             "de": "Schreib die Form zu jedem Pronomen."
           },
           "items": [
@@ -630,7 +630,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the form for each pronoun.",
-            "fr": "Écrivez la forme pour chaque pronom.",
+            "fr": "Écris la forme pour chaque pronom.",
             "de": "Schreib die Form zu jedem Pronomen."
           },
           "items": [
@@ -691,7 +691,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -723,7 +723,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -755,7 +755,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -787,7 +787,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -831,7 +831,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -861,7 +861,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -891,7 +891,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -921,7 +921,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -951,7 +951,7 @@
       "id": "feedback",
       "role": "feedback",
       "blockId": null,
-      "label": { "en": "Your feedback", "fr": "Votre retour", "de": "Dein Feedback" },
+      "label": { "en": "Your feedback", "fr": "Ton retour", "de": "Dein Feedback" },
       "pages": [
         {
           "pageId": "feedback",
@@ -959,7 +959,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Continue to the final exam.",
-            "fr": "Passez à l’examen final.",
+            "fr": "Passe à l’examen final.",
             "de": "Weiter zur Abschlussprüfung."
           },
           "items": [{ "type": "production_feedback_placeholder", "itemId": "feedback" }]
@@ -978,7 +978,7 @@
           "timeLimitS": 150,
           "instructions": {
             "en": "Type the form for each pronoun.",
-            "fr": "Écrivez la forme pour chaque pronom.",
+            "fr": "Écris la forme pour chaque pronom.",
             "de": "Schreib die Form zu jedem Pronomen."
           },
           "items": [
@@ -1064,7 +1064,7 @@
           "timeLimitS": 100,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -1132,7 +1132,7 @@
           "timeLimitS": 100,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [

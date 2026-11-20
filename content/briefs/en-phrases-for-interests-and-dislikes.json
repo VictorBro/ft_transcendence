@@ -7,7 +7,7 @@
   "title": "Phrases for likes and dislikes",
   "objective": {
     "en": "Say what you love and hate using twelve phrases such as be keen on, be into, can't stand and not my thing.",
-    "fr": "Dire ce que vous adorez et détestez avec douze expressions comme be keen on, be into, can't stand et not my thing.",
+    "fr": "Dire ce que tu adores et détestes avec douze expressions comme be keen on, be into, can't stand et not my thing.",
     "de": "Sagen, was du liebst und hasst, mit zwölf Wendungen wie be keen on, be into, can't stand und not my thing."
   },
   "estimatedMinutes": 19,
@@ -40,11 +40,11 @@
   "groups": [
     {
       "id": "likes",
-      "label": { "en": "Things you love", "fr": "Ce que vous aimez", "de": "Was du liebst" },
+      "label": { "en": "Things you love", "fr": "Ce que tu aimes", "de": "Was du liebst" },
       "targetIds": ["keen", "into", "fond", "crazy", "passionate", "enough"],
       "introduction": {
         "en": "These phrases say what you **like or love**. Most are followed by a noun or an -ing form:\n\n- `be keen on`\n- `be into`\n- `be fond of`\n- `be crazy about`\n- `be passionate about`\n- `can't get enough of`",
-        "fr": "Ces expressions disent ce que vous **aimez ou adorez**. La plupart sont suivies d'un nom ou d'une forme en -ing :\n\n- `be keen on`\n- `be into`\n- `be fond of`\n- `be crazy about`\n- `be passionate about`\n- `can't get enough of`",
+        "fr": "Ces expressions disent ce que tu **aimes ou adores**. La plupart sont suivies d'un nom ou d'une forme en -ing :\n\n- `be keen on`\n- `be into`\n- `be fond of`\n- `be crazy about`\n- `be passionate about`\n- `can't get enough of`",
         "de": "Diese Wendungen sagen, was du **magst oder liebst**. Die meisten stehen vor einem Nomen oder einer -ing-Form:\n\n- `be keen on`\n- `be into`\n- `be fond of`\n- `be crazy about`\n- `be passionate about`\n- `can't get enough of`"
       }
     },
@@ -52,13 +52,13 @@
       "id": "dislikes",
       "label": {
         "en": "Things you dislike",
-        "fr": "Ce que vous n'aimez pas",
+        "fr": "Ce que tu n'aimes pas",
         "de": "Was du nicht magst"
       },
       "targetIds": ["stand", "bear", "thing", "fan", "sick", "notime"],
       "introduction": {
         "en": "These phrases say what you **dislike or hate**. Some are strong and some are polite:\n\n- `can't stand`\n- `can't bear`\n- `not my thing`\n- `not a big fan of`\n- `be sick of`\n- `have no time for`",
-        "fr": "Ces expressions disent ce que vous **n'aimez pas ou détestez**. Certaines sont fortes, d'autres polies :\n\n- `can't stand`\n- `can't bear`\n- `not my thing`\n- `not a big fan of`\n- `be sick of`\n- `have no time for`",
+        "fr": "Ces expressions disent ce que tu **n'aimes pas ou détestes**. Certaines sont fortes, d'autres polies :\n\n- `can't stand`\n- `can't bear`\n- `not my thing`\n- `not a big fan of`\n- `be sick of`\n- `have no time for`",
         "de": "Diese Wendungen sagen, was du **nicht magst oder hasst**. Manche sind stark, andere höflich:\n\n- `can't stand`\n- `can't bear`\n- `not my thing`\n- `not a big fan of`\n- `be sick of`\n- `have no time for`"
       }
     }
@@ -255,7 +255,7 @@
       "ambiguityNote": null,
       "explanation": {
         "en": "Be passionate about is stronger than like: it means something matters deeply to you.",
-        "fr": "Be passionate about est plus fort que « aimer » : quelque chose compte profondément pour vous.",
+        "fr": "Be passionate about est plus fort que « aimer » : quelque chose compte profondément pour toi.",
         "de": "Be passionate about ist stärker als „mögen“: Etwas liegt dir sehr am Herzen."
       },
       "genderExplanation": null,
@@ -310,7 +310,7 @@
         "referenceTargetIds": ["enough", "keen", "notime", "thing"],
         "explanation": {
           "en": "Can't get enough of fits: you love the cookies and want more.",
-          "fr": "Can't get enough of convient : vous adorez les biscuits et en voulez encore.",
+          "fr": "Can't get enough of convient : tu adores les biscuits et en veux encore.",
           "de": "Can't get enough of passt: Du liebst die Kekse und willst mehr."
         }
       },
@@ -520,7 +520,7 @@
         "referenceTargetIds": ["sick", "crazy", "enough", "bear"],
         "explanation": {
           "en": "Sick of fits: you are tired of the repeated lunch.",
-          "fr": "Sick of convient : vous êtes las du même déjeuner répété.",
+          "fr": "Sick of convient : tu es las du même déjeuner répété.",
           "de": "Sick of passt: Du hast das ewig gleiche Mittagessen satt."
         }
       },
@@ -562,7 +562,7 @@
         "referenceTargetIds": ["notime", "fond", "into", "thing"],
         "explanation": {
           "en": "Have no time for fits: you have no patience for latecomers.",
-          "fr": "Have no time for convient : vous n'avez pas de patience pour les retardataires.",
+          "fr": "Have no time for convient : tu n'as pas de patience pour les retardataires.",
           "de": "Have no time for passt: Du hast keine Geduld für Zuspätkommende."
         }
       },

@@ -44,7 +44,7 @@
       "targetIds": ["rewrite", "reconsider", "rebuild", "misunderstand", "misinterpret"],
       "introduction": {
         "en": "Add **re-** to do something again, and **mis-** to do it wrongly:\n\n- `rewrite`: write again\n- `reconsider`: think about again\n- `rebuild`: build again\n- `misunderstand`: understand wrongly\n- `misinterpret`: interpret wrongly",
-        "fr": "Ajoutez **re-** pour faire quelque chose de nouveau, et **mis-** pour le faire de travers :\n\n- `rewrite` : écrire à nouveau\n- `reconsider` : réfléchir de nouveau\n- `rebuild` : construire à nouveau\n- `misunderstand` : mal comprendre\n- `misinterpret` : mal interpréter",
+        "fr": "Ajoute **re-** pour faire quelque chose de nouveau, et **mis-** pour le faire de travers :\n\n- `rewrite` : écrire à nouveau\n- `reconsider` : réfléchir de nouveau\n- `rebuild` : construire à nouveau\n- `misunderstand` : mal comprendre\n- `misinterpret` : mal interpréter",
         "de": "Mit **re-** tut man etwas noch einmal, mit **mis-** tut man es falsch:\n\n- `rewrite`: noch einmal schreiben\n- `reconsider`: noch einmal überdenken\n- `rebuild`: wieder aufbauen\n- `misunderstand`: falsch verstehen\n- `misinterpret`: falsch deuten"
       }
     },
@@ -54,7 +54,7 @@
       "targetIds": ["overcook", "overestimate", "overreact", "underpaid", "underestimate"],
       "introduction": {
         "en": "Add **over-** for too much and **under-** for too little:\n\n- `overcook`: cook for too long\n- `overestimate`: think something is bigger or better than it is\n- `overreact`: react too strongly\n- `underpaid`: paid too little\n- `underestimate`: think something is smaller or weaker than it is",
-        "fr": "Ajoutez **over-** pour « trop » et **under-** pour « pas assez » :\n\n- `overcook` : cuire trop longtemps\n- `overestimate` : croire qu’une chose est plus grande ou meilleure qu’elle n’est\n- `overreact` : réagir trop fortement\n- `underpaid` : payé trop peu\n- `underestimate` : croire qu’une chose est plus petite ou plus faible qu’elle n’est",
+        "fr": "Ajoute **over-** pour « trop » et **under-** pour « pas assez » :\n\n- `overcook` : cuire trop longtemps\n- `overestimate` : croire qu’une chose est plus grande ou meilleure qu’elle n’est\n- `overreact` : réagir trop fortement\n- `underpaid` : payé trop peu\n- `underestimate` : croire qu’une chose est plus petite ou plus faible qu’elle n’est",
         "de": "Mit **over-** drückt man „zu viel“ aus, mit **under-** „zu wenig“:\n\n- `overcook`: zu lange kochen\n- `overestimate`: etwas für größer oder besser halten, als es ist\n- `overreact`: zu heftig reagieren\n- `underpaid`: zu schlecht bezahlt\n- `underestimate`: etwas für kleiner oder schwächer halten, als es ist"
       }
     },
@@ -64,7 +64,7 @@
       "targetIds": ["pre-order", "preheat", "pre-war", "post-war"],
       "introduction": {
         "en": "Add **pre-** for before and **post-** for after:\n\n- `pre-order`: order before a product is released\n- `preheat`: heat before using\n- `pre-war`: from the time before a war\n- `post-war`: from the time after a war",
-        "fr": "Ajoutez **pre-** pour « avant » et **post-** pour « après » :\n\n- `pre-order` : commander avant la sortie d’un produit\n- `preheat` : chauffer avant d’utiliser\n- `pre-war` : d’avant une guerre\n- `post-war` : d’après une guerre",
+        "fr": "Ajoute **pre-** pour « avant » et **post-** pour « après » :\n\n- `pre-order` : commander avant la sortie d’un produit\n- `preheat` : chauffer avant d’utiliser\n- `pre-war` : d’avant une guerre\n- `post-war` : d’après une guerre",
         "de": "Mit **pre-** drückt man „vor“ aus, mit **post-** „nach“:\n\n- `pre-order`: vor dem Erscheinen eines Produkts bestellen\n- `preheat`: vor der Benutzung vorheizen\n- `pre-war`: aus der Zeit vor einem Krieg\n- `post-war`: aus der Zeit nach einem Krieg"
       }
     }
@@ -232,7 +232,7 @@
         "referenceTargetIds": ["misunderstand", "overcook", "rewrite", "post-war"],
         "explanation": {
           "en": "If you get my words wrong, you misunderstand me.",
-          "fr": "Si vous saisissez mal mes mots, vous me comprenez mal : you misunderstand me.",
+          "fr": "Si tu saisis mal mes mots, tu me comprends mal : you misunderstand me.",
           "de": "Wenn du meine Worte falsch auffasst, missverstehst du mich."
         }
       },
@@ -484,7 +484,7 @@
         "referenceTargetIds": ["underestimate", "overcook", "rewrite", "post-war"],
         "explanation": {
           "en": "If you think a fast opponent is weak, you underestimate her.",
-          "fr": "Si vous croyez qu’une adversaire rapide est faible, vous la sous-estimez.",
+          "fr": "Si tu crois qu’une adversaire rapide est faible, tu la sous-estimes.",
           "de": "Wer eine schnelle Gegnerin für schwach hält, unterschätzt sie."
         }
       },

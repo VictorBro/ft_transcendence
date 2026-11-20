@@ -44,7 +44,7 @@
       "targetIds": ["italy", "japan", "brazil", "uk", "spain", "france", "germany", "china"],
       "introduction": {
         "en": "Learn **eight countries**. Always write them with a **capital letter**:\n\n- `Italy`\n- `Japan`\n- `Brazil`\n- `the UK`\n- `Spain`\n- `France`\n- `Germany`\n- `China`",
-        "fr": "Apprenez **huit pays**. Écrivez-les toujours avec une **majuscule** :\n\n- `Italy`\n- `Japan`\n- `Brazil`\n- `the UK`\n- `Spain`\n- `France`\n- `Germany`\n- `China`",
+        "fr": "Apprends **huit pays**. Écris-les toujours avec une **majuscule** :\n\n- `Italy`\n- `Japan`\n- `Brazil`\n- `the UK`\n- `Spain`\n- `France`\n- `Germany`\n- `China`",
         "de": "Lerne **acht Länder**. Schreibe sie immer mit einem **großen Anfangsbuchstaben**:\n\n- `Italy`\n- `Japan`\n- `Brazil`\n- `the UK`\n- `Spain`\n- `France`\n- `Germany`\n- `China`"
       }
     },

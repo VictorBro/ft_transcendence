@@ -40,7 +40,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -118,7 +118,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -222,7 +222,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -314,7 +314,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -396,7 +396,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -407,7 +407,7 @@
               "heading": { "en": "Emphatic did", "fr": "Did d'insistance", "de": "Betontes did" },
               "text": {
                 "en": "For the past, use `did` + base form: `I did call you, twice!` The sentence is positive, but the verb after `did` stays in the base form, never the past.\n\n- Correct a mistaken idea: `You didn't tell me. I did tell you, on Monday!`\n- Show surprise or contrast: `It did rain, but we still had fun.`\n- Not `I did called`: the past is already in `did`.\n\nThe stress falls on `did`, and it is often said louder and slower. Emphatic `did` is common in speech and informal writing, so use it for real contrast, not in every sentence.",
-                "fr": "Au passé, on emploie `did` + forme de base : `I did call you, twice!` La phrase est affirmative, mais le verbe après `did` reste à la forme de base, jamais au passé.\n\n- Corriger une idée fausse : `You didn't tell me. I did tell you, on Monday!`\n- Marquer la surprise ou l'opposition : `It did rain, but we still had fun.`\n- Pas de `I did called` : le passé est déjà dans `did`.\n\nL'accent tombe sur `did`, souvent dit plus fort et plus lentement. Ce `did` d'insistance est courant à l'oral et dans l'écrit familier ; réservez-le à un vrai contraste, pas à chaque phrase.",
+                "fr": "Au passé, on emploie `did` + forme de base : `I did call you, twice!` La phrase est affirmative, mais le verbe après `did` reste à la forme de base, jamais au passé.\n\n- Corriger une idée fausse : `You didn't tell me. I did tell you, on Monday!`\n- Marquer la surprise ou l'opposition : `It did rain, but we still had fun.`\n- Pas de `I did called` : le passé est déjà dans `did`.\n\nL'accent tombe sur `did`, souvent dit plus fort et plus lentement. Ce `did` d'insistance est courant à l'oral et dans l'écrit familier ; réserve-le à un vrai contraste, pas à chaque phrase.",
                 "de": "Für die Vergangenheit benutzt du `did` + Grundform: `I did call you, twice!` Der Satz ist bejaht, aber das Verb nach `did` bleibt in der Grundform, nie in der Vergangenheit.\n\n- Eine falsche Annahme korrigieren: `You didn't tell me. I did tell you, on Monday!`\n- Überraschung oder Gegensatz zeigen: `It did rain, but we still had fun.`\n- Nicht `I did called`: Die Vergangenheit steckt schon in `did`.\n\nDie Betonung liegt auf `did`, oft lauter und langsamer gesprochen. Das betonte `did` ist in Gesprächen und lockerer Schrift üblich; nutze es für echten Kontrast, nicht in jedem Satz."
               },
               "formTable": [
@@ -461,7 +461,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -501,7 +501,7 @@
               "ruleIds": ["rule-emphatic-past"],
               "answerExplanation": {
                 "en": "Did + base form corrects the idea that you forgot.",
-                "fr": "Did + forme de base corrige l'idée que vous avez oublié.",
+                "fr": "Did + forme de base corrige l'idée que tu as oublié.",
                 "de": "Did + Grundform korrigiert die Annahme, dass du es vergessen hast."
               }
             },
@@ -565,7 +565,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -657,7 +657,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it.",
-            "fr": "Trouvez le mot faux et corrigez-le.",
+            "fr": "Trouve le mot faux et corrige-le.",
             "de": "Finde das falsche Wort und korrigiere es."
           },
           "items": [
@@ -763,7 +763,7 @@
       "id": "feedback",
       "role": "feedback",
       "blockId": null,
-      "label": { "en": "Your feedback", "fr": "Votre retour", "de": "Dein Feedback" },
+      "label": { "en": "Your feedback", "fr": "Ton retour", "de": "Dein Feedback" },
       "pages": [
         {
           "pageId": "feedback",
@@ -771,7 +771,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Continue to the final exam.",
-            "fr": "Passez à l’examen final.",
+            "fr": "Passe à l’examen final.",
             "de": "Weiter zur Abschlussprüfung."
           },
           "items": [{ "type": "production_feedback_placeholder", "itemId": "feedback" }]
@@ -790,7 +790,7 @@
           "timeLimitS": 160,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -858,7 +858,7 @@
           "timeLimitS": 160,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -926,7 +926,7 @@
           "timeLimitS": 150,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [

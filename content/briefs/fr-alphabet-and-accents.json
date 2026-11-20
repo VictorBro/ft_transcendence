@@ -44,7 +44,7 @@
       "targetIds": ["alphabet", "lettre", "nom", "prenom", "epeler"],
       "introduction": {
         "en": "To **spell** your name, you say the letters of the alphabet. Learn these words:\n\n- `un alphabet`\n- `une lettre`\n- `un nom`\n- `un prénom`\n- `épeler`",
-        "fr": "Pour **épeler** votre nom, vous dites les lettres de l’alphabet. Apprenez ces mots :\n\n- `un alphabet`\n- `une lettre`\n- `un nom`\n- `un prénom`\n- `épeler`",
+        "fr": "Pour **épeler** ton nom, tu dis les lettres de l’alphabet. Apprends ces mots :\n\n- `un alphabet`\n- `une lettre`\n- `un nom`\n- `un prénom`\n- `épeler`",
         "de": "Um deinen Namen zu **buchstabieren**, nennst du die Buchstaben des Alphabets. Lerne diese Wörter:\n\n- `un alphabet`\n- `une lettre`\n- `un nom`\n- `un prénom`\n- `épeler`"
       }
     },
@@ -224,7 +224,7 @@
       "ambiguityNote": null,
       "explanation": {
         "en": "Prénom is the name given to you, before the family name. It has an acute accent on the first e.",
-        "fr": "Le prénom est le nom que l’on vous donne, avant le nom de famille. Il porte un accent aigu sur le premier e.",
+        "fr": "Le prénom est le nom que l’on te donne, avant le nom de famille. Il porte un accent aigu sur le premier e.",
         "de": "Le prénom ist der Vorname, der vor dem Familiennamen steht. Er hat einen Akzent Akut auf dem ersten e."
       },
       "genderExplanation": {

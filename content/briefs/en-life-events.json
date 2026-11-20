@@ -48,7 +48,7 @@
       "targetIds": ["born", "grow-up", "start-school", "leave-school", "university", "get-job"],
       "introduction": {
         "en": "These phrases describe **early life**. Learn each one with its verb:\n\n- `be born`\n- `grow up`\n- `start school`\n- `leave school`\n- `go to university`\n- `get a job`",
-        "fr": "Ces expressions décrivent **le début de la vie**. Apprenez chacune avec son verbe :\n\n- `be born`\n- `grow up`\n- `start school`\n- `leave school`\n- `go to university`\n- `get a job`",
+        "fr": "Ces expressions décrivent **le début de la vie**. Apprends chacune avec son verbe :\n\n- `be born`\n- `grow up`\n- `start school`\n- `leave school`\n- `go to university`\n- `get a job`",
         "de": "Diese Ausdrücke beschreiben **den Lebensanfang**. Lerne jeden mit seinem Verb:\n\n- `be born`\n- `grow up`\n- `start school`\n- `leave school`\n- `go to university`\n- `get a job`"
       }
     },

@@ -40,7 +40,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -55,7 +55,7 @@
               },
               "text": {
                 "en": "`on` is an indefinite pronoun, but in practice it replaces almost every person. The verb stays in the 3rd person singular: the **context** tells you who hides behind `on`.\n\n- **Modesty**: `on` for `je`. An author writes `On a voulu montrer que…` to keep the ego out of it.\n- **Reproach**: `on` for `tu` or `vous`, with irony or condescension: `Alors, on ne dit plus bonjour ?`\n- **Concern**: a nurse asks `Alors, on a bien dormi ?` instead of using `vous`, in a tender or patronising tone.\n\nTo interpret it, ask yourself: who speaks, to whom, and for what effect?",
-                "fr": "`on` est un pronom indéfini, mais il remplace en pratique presque toutes les personnes. Le verbe reste à la 3e personne du singulier : c'est le **contexte** qui dit qui se cache derrière `on`.\n\n- **Modestie** : `on` pour `je`. Un auteur écrit `On a voulu montrer que…` pour effacer son ego.\n- **Reproche** : `on` pour `tu` ou `vous`, avec ironie ou condescendance : `Alors, on ne dit plus bonjour ?`\n- **Sollicitude** : un soignant demande `Alors, on a bien dormi ?` au lieu de dire `vous`, sur un ton tendre ou paternaliste.\n\nPour interpréter, demandez-vous : qui parle, à qui, et pour quel effet ?",
+                "fr": "`on` est un pronom indéfini, mais il remplace en pratique presque toutes les personnes. Le verbe reste à la 3e personne du singulier : c'est le **contexte** qui dit qui se cache derrière `on`.\n\n- **Modestie** : `on` pour `je`. Un auteur écrit `On a voulu montrer que…` pour effacer son ego.\n- **Reproche** : `on` pour `tu` ou `vous`, avec ironie ou condescendance : `Alors, on ne dit plus bonjour ?`\n- **Sollicitude** : un soignant demande `Alors, on a bien dormi ?` au lieu de dire `vous`, sur un ton tendre ou paternaliste.\n\nPour interpréter, demande-toi : qui parle, à qui, et pour quel effet ?",
                 "de": "`on` ist ein unbestimmtes Pronomen, ersetzt aber in der Praxis fast jede Person. Das Verb bleibt in der 3. Person Singular: Der **Kontext** verrät, wer sich hinter `on` verbirgt.\n\n- **Bescheidenheit**: `on` für `je`. Ein Autor schreibt `On a voulu montrer que…`, um sein Ich zurückzunehmen.\n- **Vorwurf**: `on` für `tu` oder `vous`, mit Ironie oder Herablassung: `Alors, on ne dit plus bonjour ?`\n- **Fürsorge**: Eine Pflegerin fragt `Alors, on a bien dormi ?` statt `vous` zu sagen, in zärtlichem oder bevormundendem Ton.\n\nFrag dich zur Deutung: Wer spricht, mit wem, und mit welcher Wirkung?"
               },
               "formTable": [
@@ -126,7 +126,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -246,7 +246,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -334,7 +334,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -427,7 +427,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -520,7 +520,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Connect each pronoun with its partner.",
-            "fr": "Reliez chaque pronom à son partenaire.",
+            "fr": "Relie chaque pronom à son partenaire.",
             "de": "Verbinde jedes Pronomen mit seinem Partner."
           },
           "items": [
@@ -585,7 +585,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -685,7 +685,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it.",
-            "fr": "Trouvez le mot faux et corrigez-le.",
+            "fr": "Trouve le mot faux et corrige-le.",
             "de": "Finde das falsche Wort und korrigiere es."
           },
           "items": [
@@ -808,7 +808,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -884,7 +884,7 @@
       "id": "feedback",
       "role": "feedback",
       "blockId": null,
-      "label": { "en": "Your feedback", "fr": "Votre retour", "de": "Dein Feedback" },
+      "label": { "en": "Your feedback", "fr": "Ton retour", "de": "Dein Feedback" },
       "pages": [
         {
           "pageId": "feedback",
@@ -892,7 +892,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Continue to the final exam.",
-            "fr": "Passez à l’examen final.",
+            "fr": "Passe à l’examen final.",
             "de": "Weiter zur Abschlussprüfung."
           },
           "items": [{ "type": "production_feedback_placeholder", "itemId": "feedback" }]
@@ -911,7 +911,7 @@
           "timeLimitS": 240,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -1007,7 +1007,7 @@
           "timeLimitS": 200,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [

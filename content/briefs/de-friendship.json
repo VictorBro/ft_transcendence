@@ -48,7 +48,7 @@
       "targetIds": ["freundschaft", "freundeskreis", "kumpel", "vertrauen", "streit"],
       "introduction": {
         "en": "These five nouns describe friendships. Learn each one with its article:\n\n- `die Freundschaft`\n- `der Freundeskreis`\n- `der Kumpel`\n- `das Vertrauen`\n- `der Streit`\n\n**Kumpel** is colloquial: you use it for a good mate.",
-        "fr": "Ces cinq noms décrivent l’amitié. Apprenez chacun avec son article :\n\n- `die Freundschaft`\n- `der Freundeskreis`\n- `der Kumpel`\n- `das Vertrauen`\n- `der Streit`\n\n**Kumpel** est familier : on l’emploie pour un bon copain.",
+        "fr": "Ces cinq noms décrivent l’amitié. Apprends chacun avec son article :\n\n- `die Freundschaft`\n- `der Freundeskreis`\n- `der Kumpel`\n- `das Vertrauen`\n- `der Streit`\n\n**Kumpel** est familier : on l’emploie pour un bon copain.",
         "de": "Diese fünf Nomen beschreiben Freundschaften. Lerne jedes mit seinem Artikel:\n\n- `die Freundschaft`\n- `der Freundeskreis`\n- `der Kumpel`\n- `das Vertrauen`\n- `der Streit`\n\n**Kumpel** ist umgangssprachlich: Du sagst es für einen guten Freund."
       }
     },
@@ -146,7 +146,7 @@
       "ambiguityNote": null,
       "explanation": {
         "en": "Der Freundeskreis is the group of all your friends.",
-        "fr": "Der Freundeskreis, c’est l’ensemble de vos amis.",
+        "fr": "Der Freundeskreis, c’est l’ensemble de tes amis.",
         "de": "Der Freundeskreis ist die Gruppe aller deiner Freunde."
       },
       "genderExplanation": {
@@ -334,7 +334,7 @@
       "ambiguityNote": null,
       "explanation": {
         "en": "Treu describes someone who stays on your side, even in bad times.",
-        "fr": "Treu décrit quelqu’un qui reste de votre côté, même dans les mauvais moments.",
+        "fr": "Treu décrit quelqu’un qui reste de ton côté, même dans les mauvais moments.",
         "de": "Treu beschreibt jemanden, der auch in schlechten Zeiten zu dir hält."
       },
       "genderExplanation": null,
@@ -526,7 +526,7 @@
         "referenceTargetIds": ["vermissen", "vertragen", "anfreunden", "streiten"],
         "explanation": {
           "en": "Only vermisst fits: Anna has moved away and you are sad she is not there.",
-          "fr": "Seul « vermisst » convient : Anna est partie et elle vous manque.",
+          "fr": "Seul « vermisst » convient : Anna est partie et elle te manque.",
           "de": "Nur „vermisst“ passt: Anna ist weggezogen, und man ist traurig, dass sie nicht da ist."
         }
       },
@@ -555,7 +555,7 @@
       "ambiguityNote": null,
       "explanation": {
         "en": "Jemanden im Stich lassen means not to help someone when they need you. Stich is a noun and has a capital letter.",
-        "fr": "Jemanden im Stich lassen signifie ne pas aider quelqu’un quand il a besoin de vous. Stich est un nom et prend une majuscule.",
+        "fr": "Jemanden im Stich lassen signifie ne pas aider quelqu’un quand il a besoin de toi. Stich est un nom et prend une majuscule.",
         "de": "Jemanden im Stich lassen heißt, jemandem nicht zu helfen, wenn er einen braucht. Stich ist ein Nomen und wird großgeschrieben."
       },
       "genderExplanation": null,
@@ -643,7 +643,7 @@
       },
       "explanation": {
         "en": "Sich auf jemanden verlassen means to be sure that someone will help you and keep their word.",
-        "fr": "Sich auf jemanden verlassen signifie être sûr que quelqu’un vous aidera et tiendra parole.",
+        "fr": "Sich auf jemanden verlassen signifie être sûr que quelqu’un t’aidera et tiendra parole.",
         "de": "Sich auf jemanden verlassen heißt, sicher zu sein, dass jemand hilft und sein Wort hält."
       },
       "genderExplanation": null,
