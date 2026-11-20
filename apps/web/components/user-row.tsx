@@ -3,8 +3,7 @@ import { useFormatter, useTranslations } from 'next-intl';
 import type { Language, PublicUser } from '@ft/shared';
 
 import { Link } from '@/i18n/navigation';
-import { Avatar } from './avatar';
-import { PresenceDot } from './presence-dot';
+import { AvatarWithDot } from './presence-dot';
 
 /**
  * One person in a list: avatar and display name, linked to their profile, then
@@ -33,15 +32,7 @@ export function UserRow({
 
   return (
     <li className="flex flex-wrap items-center gap-3 py-3">
-      {/* relative: the dot is pinned to the avatar's bottom right corner. */}
-      <div className="relative shrink-0">
-        <Avatar src={user.avatarUrl} name={user.displayName} size={40} />
-        {online === undefined ? null : (
-          <span className="absolute -right-0.5 -bottom-0.5 flex">
-            <PresenceDot userId={user.id} online={online} />
-          </span>
-        )}
-      </div>
+      <AvatarWithDot user={user} online={online} size={40} />
       <div className="flex min-w-0 flex-[1_1_8rem] flex-col">
         {/* No prefetch: a list of people would cost a render each against the rate limit. */}
         <Link

@@ -1,5 +1,5 @@
 import { BadRequestException } from '@nestjs/common';
-import { isErrorCode, LanguageSchema, UserIdSchema } from '@ft/shared';
+import { isErrorCode, LanguageSchema, UserIdInputSchema } from '@ft/shared';
 import { createZodValidationPipe } from 'nestjs-zod';
 import { ZodError } from 'zod';
 
@@ -56,9 +56,5 @@ export const CodeValidationPipe = createZodValidationPipe({
  */
 export const LangParam = new CodeValidationPipe(LanguageSchema);
 
-/**
- * A user id in the path. Lower-cased, since z.uuid() accepts upper case and the
- * ids Postgres returns are lower case: compared or paired as typed, one person
- * could pass for two.
- */
-export const UserIdParam = new CodeValidationPipe(UserIdSchema.transform((id) => id.toLowerCase()));
+/** A user id in the path, lower-cased like every user id the API keys on. */
+export const UserIdParam = new CodeValidationPipe(UserIdInputSchema);

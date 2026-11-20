@@ -162,7 +162,7 @@ where it matters and keeps feedback fast where it doesn't.
 | Workflow | Trigger | Jobs |
 |---|---|---|
 | `ci.yml` | PR, push | Native: format check, lint, typecheck, TS-version assert (VERSIONS.md, held back: TypeScript). Docker `ci` stage: unit tests + coverage, Supertest e2e (compose db). Then build. |
-| `e2e.yml` | PR, push | Two jobs per browser (`lesson`, `rest`), each with a prod-target compose up, then Playwright: user flows, **console gate**, **legal pages** (`/privacy`, `/terms` return 200 with real content). |
+| `e2e.yml` | PR, push | Two jobs per browser (`lesson`, `rest`), each with a prod-target compose up, then Playwright in its own image (browsers and their system packages included): user flows, **console gate**, **legal pages** (`/privacy`, `/terms` return 200 with real content). |
 | `hygiene.yml` | PR, push | gitleaks, commitlint, `.env.example` drift, fail if `.env` staged, `prisma migrate diff`. |
 | `images.yml` | push to any branch; `v*` tags | Multi-arch build on every commit; tags per table below. |
 | `devcontainer.yml` | PR touching `.devcontainer/`, `.nvmrc`, `package.json` | Builds the devcontainer image; Node and pnpm must match the pins. |

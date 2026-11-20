@@ -13,7 +13,7 @@ import { wsConnections } from '../src/metrics/metrics';
 import { PrismaService } from '../src/prisma/prisma.service';
 import { ACTIVE_DAYS, activeDay } from '../src/users/active-day';
 import { seriesValue } from './metrics.fixtures';
-import { type ClientSocket, connect, connected, nextEvent, sessionCookie } from './socket.fixtures';
+import { type ClientSocket, connect, nextEvent, ready, sessionCookie } from './socket.fixtures';
 
 type Account = { agent: TestAgent; cookie: string; id: string; name: string };
 
@@ -73,10 +73,11 @@ describe('friends (e2e)', () => {
   };
 
   const opened: ClientSocket[] = [];
+  /** After its connect snapshot, so what `heard` records is only what happens next. */
   const tab = (account: Account) => {
     const socket = connect(port, account.cookie);
     opened.push(socket);
-    return connected(socket);
+    return ready(socket);
   };
 
   /** Every event the socket gets from now on, in order: what it missed is as telling. */
@@ -375,8 +376,7 @@ describe('friends (e2e)', () => {
     const kHeard = heard(kTab);
     const mHeard = heard(mTab);
 
-    // M, the friend, hears L's first socket: so an online did go out. Waited
-    // for among all M hears, since M's own snapshot on connect names L too.
+    // M, the friend, hears L's first socket: so an online did go out.
     await tab(l);
     await vi.waitFor(() =>
       expect(mHeard).toContainEqual([

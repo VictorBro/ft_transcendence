@@ -8,6 +8,12 @@ vi.mock('next/headers', () => ({
   headers: async () => ({ get: () => '88.10.20.30' }),
 }));
 
+vi.mock('next/navigation', () => ({
+  redirect: (path: string) => {
+    throw new Error(`redirected to ${path}`);
+  },
+}));
+
 import {
   buildApiUrl,
   DEFAULT_API_INTERNAL_URL,
@@ -20,6 +26,7 @@ import {
   pingApi,
   resolveApiBaseUrl,
   SESSION_PATH,
+  settle,
 } from './api';
 
 describe('resolveApiBaseUrl', () => {
@@ -433,5 +440,22 @@ describe('server GET failure results', () => {
       timeout.mockRestore();
       vi.unstubAllEnvs();
     }
+  });
+});
+
+describe('settle', () => {
+  it('hands over the data', () => {
+    expect(settle({ status: 'ok', data: 42 }, 'answer')).toBe(42);
+  });
+
+  it('sends a signed-out visitor to /login', () => {
+    expect(() => settle({ status: 'signed-out' }, 'answer')).toThrow('redirected to /login');
+  });
+
+  // A redirect would read as a logout, so the error boundary answers instead.
+  it('throws when the API did not answer', () => {
+    expect(() => settle({ status: 'unavailable', reason: 'HTTP 503' }, 'answer')).toThrow(
+      'Could not load the answer: HTTP 503',
+    );
   });
 });

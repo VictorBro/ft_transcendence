@@ -5,6 +5,7 @@ import { currentUser } from '@/lib/session';
 import { Avatar } from './avatar';
 import { ConnectionStatus } from './connection-status';
 import { LogOutButton } from './log-out-button';
+import { UnreadTotalBadge } from './unread-badge';
 
 /**
  * Server component, so the first paint already knows who is signed in. Doing
@@ -32,11 +33,15 @@ export async function SessionNav() {
   }
 
   const friends = await getTranslations('FriendsPage');
+  const messages = await getTranslations('MessagesPage');
 
   return (
     <>
       <ConnectionStatus />
-      <nav aria-label={t('accountNav')} className="flex min-w-0 items-center gap-4 text-sm">
+      <nav
+        aria-label={t('accountNav')}
+        className="flex min-w-0 flex-wrap items-center gap-x-4 gap-y-2 text-sm"
+      >
         <Link
           href="/profile"
           className="flex min-w-0 items-center gap-4 underline underline-offset-4"
@@ -52,6 +57,14 @@ export async function SessionNav() {
         </Link>
         <Link href="/friends" className="shrink-0 underline underline-offset-4">
           {friends('title')}
+        </Link>
+        {/* The badge is pinned to the link's corner, like the dot on an avatar,
+            so a count coming or going never reflows the header. */}
+        <Link href="/chat" className="relative shrink-0 underline underline-offset-4">
+          {messages('title')}
+          <span className="absolute -top-3 -right-3 flex">
+            <UnreadTotalBadge />
+          </span>
         </Link>
         <LogOutButton />
       </nav>

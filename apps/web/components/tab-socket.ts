@@ -3,10 +3,13 @@
 import { useEffect, useRef, useSyncExternalStore } from 'react';
 import { io, type Socket } from 'socket.io-client';
 import {
+  CLIENT_EVENTS,
   SERVER_EVENTS,
   type ClientToServerEvents,
+  type Message,
   type ServerEventName,
   type ServerToClientEvents,
+  type SocketAck,
 } from '@ft/shared';
 
 import { createPresenceMap } from '@/lib/presence';
@@ -19,6 +22,8 @@ import {
   type NextStep,
   type SocketStatus,
 } from '@/lib/reconnect';
+import { sendMessageOver } from '@/lib/send-message';
+import { createUnreadStore, unreadTotal, type UnreadCounts } from '@/lib/unread';
 
 type TabSocket = Socket<ServerToClientEvents, ClientToServerEvents>;
 type Payload<E extends ServerEventName> = Parameters<ServerToClientEvents[E]>[0];
@@ -41,6 +46,8 @@ const watchers = new Set<() => void>();
 // Fed from the socket's own listeners, set up with it below, so no update is
 // missed while no dot is on screen.
 const presence = createPresenceMap();
+// The same for the unread counts, so the account menu's badge is right on any page.
+const unread = createUnreadStore();
 
 function setStatus(next: SocketStatus): void {
   status = next;
@@ -82,6 +89,8 @@ function follow(step: NextStep): void {
     setStatus('closed');
     retryAfter(RETRY_FIRST_MS);
   } else if (step === 'signedOut') {
+    // The session is over: its counts must not outlive it on this tab.
+    unread.clear();
     setStatus('signedOut');
   }
 }
@@ -118,6 +127,7 @@ function socket(): TabSocket {
     // the dot must start from the render RefreshOn makes on this event, which
     // carries their `online`. Forgotten, so no older entry can stand above it.
     created.on(SERVER_EVENTS.FRIEND_ACCEPTED, ({ userId }) => presence.forget(userId));
+    created.on(SERVER_EVENTS.DM_UNREAD, (snapshot) => unread.apply(snapshot));
     tab = created;
   }
   return tab;
@@ -148,6 +158,7 @@ export function closeSocket(): void {
   cancelRetry();
   tab?.disconnect();
   presence.clear();
+  unread.clear();
   setStatus('closed');
 }
 
@@ -164,6 +175,43 @@ export function useFriendOnline(userId: string, rendered: boolean): boolean {
     () => undefined,
   );
   return heard ?? rendered;
+}
+
+/**
+ * Unread messages per conversation, as the tab last heard: undefined until the
+ * first dm:unread, which comes with every connect.
+ */
+export function useUnreadCounts(): UnreadCounts | undefined {
+  return useSyncExternalStore(unread.subscribe, unread.get, () => undefined);
+}
+
+/** Every conversation's, for the account menu. Undefined until heard, like the counts. */
+export function useUnreadTotal(): number | undefined {
+  const counts = useUnreadCounts();
+  return counts === undefined ? undefined : unreadTotal(counts);
+}
+
+/**
+ * One conversation's. Falls back to `rendered`, the server's count, until the
+ * tab has heard; after that a conversation missing from the counts has none.
+ */
+export function useUnread(userId: string, rendered: number): number {
+  const counts = useUnreadCounts();
+  return counts === undefined ? rendered : (counts[userId] ?? 0);
+}
+
+/** The stored message or a code; never queued while offline, see lib/send-message.ts. */
+export function sendMessage(userId: string, text: string): Promise<SocketAck<Message>> {
+  return sendMessageOver(socket(), userId, text);
+}
+
+/**
+ * Says what they sent you is read. Only while connected, and never queued: the
+ * thread asks again on the next connect, with the fresh counts in front of it.
+ */
+export function markRead(userId: string): void {
+  const current = socket();
+  if (current.connected) current.emit(CLIENT_EVENTS.DM_READ, { userId });
 }
 
 function subscribe(watch: () => void): () => void {

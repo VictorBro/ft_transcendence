@@ -121,18 +121,19 @@
     "save": "Save",
     "cancel": "Cancel"
   },
-  "ModeLayout": {
-    "backToCourse": "Back to course"
-  },
-  "ChatPage": {
-    "title": "Chat",
-    "heading": "Chat with your tutor",
-    "tutor": "Tutor",
-    "messageLabel": "Message",
-    "messagePlaceholder": "Your message...",
-    "sendMessage": "Send message",
-    "feedbackHeading": "Get feedback on your messages",
-    "feedbackIntro": "The AI will analyze your messages and give you personalized feedback."
+  "MessagesPage": {
+    "title": "Messages",
+    "conversations": "Conversations",
+    "noConversations": "No conversations yet. Write to one of your <friends>friends</friends>.",
+    "choose": "Choose a conversation.",
+    "allMessages": "All messages",
+    "noMessages": "No messages yet.",
+    "loadEarlier": "Load earlier messages",
+    "you": "You",
+    "messageLabel": "Write a message",
+    "send": "Send",
+    "onlyFriends": "Only friends can message each other. You can still read this conversation.",
+    "unread": "{count, plural, one {# unread message} other {# unread messages}}"
   },
   "ErrorPage": {
     "heading": "Something went wrong",
@@ -260,6 +261,11 @@
       "requestNotFound": "That request is no longer open",
       "notFound": "That person is not in your friends"
     },
+    "message": {
+      "notFriends": "Only friends can message each other",
+      "empty": "Write a message first",
+      "tooLong": "A message is limited to 1,000 characters"
+    },
     "request": {
       "invalid": "The request could not be read",
       "tooLarge": "The request is too large"
@@ -325,7 +331,8 @@
     "removeConfirm": "Remove {name} from your friends?",
     "cancel": "Cancel",
     "online": "Online",
-    "offline": "Offline"
+    "offline": "Offline",
+    "message": "Message"
   },
   "UserPage": {
     "courses": "Courses",
@@ -430,7 +437,6 @@
     "resultsHeading": "Your results",
     "resultsScore": "Score: {score} / 100",
     "parts": "Parts",
-    "goalReached": "Daily goal reached",
     "goalProgress": "Today: {done} of {target, plural, one {# lesson} other {# lessons}}",
     "points": "{points} / 1",
     "blank": "No answer",
@@ -513,6 +519,150 @@
     "vocabulary": "Vocabulary",
     "functions": "Everyday phrases",
     "reading": "Reading"
+  },
+  "Gamification": {
+    "rank": "Rank {rank} · {total} of {next} XP",
+    "rankBar": "Progress to the next rank",
+    "rules": "Achievements and rules",
+    "challengeHeading": "Today's challenge",
+    "challengeXp": "+{xp} XP",
+    "challengeDone": "Done",
+    "newToday": "New today",
+    "xpGained": "+{xp} XP",
+    "title": "Achievements",
+    "summary": "{earned} of {total} earned",
+    "earnedOn": "Earned on {date}",
+    "locked": "Not earned yet",
+    "progressBar": "{title}: progress",
+    "progress": {
+      "finished": "{current} of {target, plural, one {# lesson} other {# lessons}}",
+      "passed": "{current} of {target} passed",
+      "bestStreak": "{current} of {target} days",
+      "challengesDone": "{current} of {target} challenges"
+    },
+    "levelProgress": "Attempted {attempted} of {total} · Passed {passed}, {needed} needed",
+    "howItWorks": "How it works",
+    "xpHeading": "XP",
+    "ranksHeading": "Ranks",
+    "challengesHeading": "Daily challenges",
+    "achievementsHeading": "Achievements",
+    "challenges": {
+      "grammar": {
+        "title": "Grammar",
+        "rule": "Finish a grammar lesson."
+      },
+      "vocabulary": {
+        "title": "Vocabulary",
+        "rule": "Finish a vocabulary lesson."
+      },
+      "functions": {
+        "title": "Everyday phrases",
+        "rule": "Finish an everyday phrases lesson."
+      },
+      "reading": {
+        "title": "Reading",
+        "rule": "Finish a reading lesson."
+      },
+      "score90": {
+        "title": "90% or more",
+        "rule": "Score 90% or more in a lesson."
+      },
+      "beyondGoal": {
+        "title": "Beyond the goal",
+        "rule": "Finish one lesson more than your daily goal."
+      }
+    },
+    "achievements": {
+      "firstLesson": {
+        "title": "First lesson",
+        "rule": "Finish your first lesson."
+      },
+      "passed10": {
+        "title": "{target} lessons passed",
+        "rule": "Pass {target} lessons, each at {mark}% or more."
+      },
+      "passed25": {
+        "title": "{target} lessons passed",
+        "rule": "Pass {target} lessons, each at {mark}% or more."
+      },
+      "passed50": {
+        "title": "{target} lessons passed",
+        "rule": "Pass {target} lessons, each at {mark}% or more."
+      },
+      "streak3": {
+        "title": "{target}-day streak",
+        "rule": "Reach your daily goal {target} days in a row."
+      },
+      "streak7": {
+        "title": "{target}-day streak",
+        "rule": "Reach your daily goal {target} days in a row."
+      },
+      "streak30": {
+        "title": "{target}-day streak",
+        "rule": "Reach your daily goal {target} days in a row."
+      },
+      "streak100": {
+        "title": "{target}-day streak",
+        "rule": "Reach your daily goal {target} days in a row."
+      },
+      "challenges10": {
+        "title": "{target} challenges",
+        "rule": "Do {target} daily challenges."
+      },
+      "challenges50": {
+        "title": "{target} challenges",
+        "rule": "Do {target} daily challenges."
+      },
+      "levelA1": {
+        "title": "{level} complete",
+        "rule": "Attempt every available {level} lesson and pass at least {share}% of them."
+      },
+      "levelA2": {
+        "title": "{level} complete",
+        "rule": "Attempt every available {level} lesson and pass at least {share}% of them."
+      },
+      "levelB1": {
+        "title": "{level} complete",
+        "rule": "Attempt every available {level} lesson and pass at least {share}% of them."
+      },
+      "levelB2": {
+        "title": "{level} complete",
+        "rule": "Attempt every available {level} lesson and pass at least {share}% of them."
+      },
+      "levelC1": {
+        "title": "{level} complete",
+        "rule": "Attempt every available {level} lesson and pass at least {share}% of them."
+      },
+      "levelC2": {
+        "title": "{level} complete",
+        "rule": "Attempt every available {level} lesson and pass at least {share}% of them."
+      }
+    },
+    "xpLessonLabel": "Lesson",
+    "xpGoalLabel": "Daily goal reached",
+    "xpChallengeLabel": "Challenge done",
+    "xpAmount": "+{xp} XP",
+    "newAchievements": "{count, plural, one {New achievement} other {New achievements}}",
+    "summaryBar": "Achievements earned",
+    "groupCount": "{earned} of {total}",
+    "groups": {
+      "lessons": "Lessons",
+      "streaks": "Streaks",
+      "challenges": "Challenges",
+      "levels": "Levels"
+    },
+    "ruleLesson": "Finishing a lesson",
+    "ruleLessonNote": "Once per lesson a day",
+    "rulePoints": "Each point added to your best score",
+    "rulePointsNote": "From 60% to 85%: +25",
+    "ruleGoal": "Reaching your daily goal",
+    "ruleChallenge": "Doing the day's challenge",
+    "rankRow": "Rank {rank}",
+    "rankFrom": "from {xp} XP",
+    "ranksNote": "Each rank costs {step} XP more than the one before.",
+    "challengesRule": "One a day, among those your level can do.",
+    "achievementsKept": "Each one is earned once and kept for good.",
+    "achievementsPassed": "A lesson is passed at {mark}% or more."
   },
   "Topics": {
     "nouns_and_determiners": "Nouns and determiners",

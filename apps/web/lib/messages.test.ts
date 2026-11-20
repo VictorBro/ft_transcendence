@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { ERROR_CODES } from '@ft/shared';
+import { ACHIEVEMENTS, CHALLENGES, ERROR_CODES } from '@ft/shared';
 
 import en from '../messages/en.json';
 import fr from '../messages/fr.json';
@@ -37,6 +37,22 @@ describe.each(Object.entries(CATALOGUES))('messages/%s.json', (locale, tree) => 
    */
   it('translates exactly the declared error codes', () => {
     expect(keyPaths(tree.Errors as MessageTree).sort()).toEqual([...ERROR_CODES].sort());
+  });
+
+  /**
+   * Same contract for the gamification codes (#97): the API sends codes,
+   * and each owes a title and a one-line rule. A code added to ACHIEVEMENTS
+   * or CHALLENGES without its sentences fails here, not on the page.
+   */
+  it('gives every achievement and challenge code a title and a rule', () => {
+    const gamification = tree.Gamification as MessageTree;
+    const expected = (codes: readonly string[]) =>
+      codes.flatMap((code) => [`${code}.rule`, `${code}.title`]).sort();
+
+    expect(keyPaths(gamification.achievements as MessageTree).sort()).toEqual(
+      expected(ACHIEVEMENTS.map((achievement) => achievement.code)),
+    );
+    expect(keyPaths(gamification.challenges as MessageTree).sort()).toEqual(expected(CHALLENGES));
   });
 
   it('has no empty translation', () => {

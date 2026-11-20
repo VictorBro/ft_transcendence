@@ -401,10 +401,12 @@ migrate-new: ## Turn schema.prisma changes into a migration: make migrate-new NA
 	  printf 'migrate-new: name the change, e.g. make migrate-new NAME=add_streaks\n' >&2; \
 	  exit 1; \
 	fi
-	@# Writes the SQL, applies it and regenerates the client, so the next
-	@# typecheck already knows about the new columns. Commit the generated
-	@# directory under prisma/migrations with the schema change.
+	@# Writes the SQL and applies it, then regenerates the client, so the next
+	@# typecheck already knows about the new columns: Prisma 7's migrate dev no
+	@# longer generates. Commit the generated directory under prisma/migrations
+	@# with the schema change.
 	pnpm --filter @ft/api exec prisma migrate dev --name $(NAME)
+	pnpm --filter @ft/api run db:generate
 
 seed: ## Load development data into the database
 	$(MAKE) --no-print-directory tooling-image; \

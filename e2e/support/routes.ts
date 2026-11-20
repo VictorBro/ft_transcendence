@@ -48,6 +48,11 @@ export const PAGE_ROUTES: PageRoute[] = [
   { path: '/grafana/login', name: 'grafana login' },
   { path: '/this-route-does-not-exist', name: 'not found', expectedStatus: 404 },
   { path: `/en/learn/${ONBOARDED_COURSE.lang}`, name: 'course home', onboarded: true },
+  {
+    path: `/en/learn/${ONBOARDED_COURSE.lang}/achievements`,
+    name: 'achievements',
+    onboarded: true,
+  },
   { path: `/en/learn/${ONBOARDED_COURSE.lang}/lessons`, name: 'all lessons', onboarded: true },
   // The start control, since the fixture account has no run open. The countdown
   // on a live question is a local timer and issues no requests, so neither state
@@ -64,9 +69,10 @@ export const PAGE_ROUTES: PageRoute[] = [
     onboarded: true,
   },
   { path: '/en/onboarding', name: 'onboarding', onboarded: true },
-  { path: '/en/chat', name: 'chat', onboarded: true },
+  { path: '/en/chat', name: 'messages', onboarded: true },
   { path: '/en/friends', name: 'friends', onboarded: true, othersAvatars: true },
-  // /users/[id] has no fixed id: friends.spec.ts watches its console and measures it at 360.
+  // /users/[id] has no fixed id: friends.spec.ts and messages.spec.ts watch its
+  // console and measure it at 360.
   { path: '/en/profile', name: 'profile', onboarded: true },
   { path: '/en/profile/edit', name: 'edit profile', onboarded: true },
   { path: '/en/settings/2fa', name: 'two-factor settings', onboarded: true },
@@ -99,8 +105,8 @@ export const LEGAL_ROUTES: PageRoute[] = [
  * are pinned to /en, so the value read is the English one.
  *
  * These exist because the footer was previously only checked on "/", which let
- * the (dashboard) and (mode) shells ship with no footer at all while the test
- * titled "every page" stayed green.
+ * the signed-in shells ship with no footer at all while the test titled "every
+ * page" stayed green.
  */
 // Prefixed like the lists above, and for the same reason: an unprefixed path
 // only reaches the page through a middleware redirect, so a broken href would

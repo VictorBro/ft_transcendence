@@ -6,6 +6,7 @@ import { UserIdSchema, type PublicUser } from '@ft/shared';
 import { Link } from '@/i18n/navigation';
 import { Avatar } from '@/components/avatar';
 import { FriendButton, RemoveFriendButton, RequestButtons } from '@/components/friend-buttons';
+import { MessageLink } from '@/components/message-link';
 import { PresenceDot } from '@/components/presence-dot';
 import { RefreshOn } from '@/components/refresh-on';
 import {
@@ -160,6 +161,7 @@ async function ProfileAction({
   return (
     <>
       {status('isFriend')}
+      <MessageLink userId={user.id} />
       <RemoveFriendButton userId={user.id} name={user.displayName} />
     </>
   );

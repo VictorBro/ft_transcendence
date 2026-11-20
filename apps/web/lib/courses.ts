@@ -1,29 +1,16 @@
-import { redirect } from 'next/navigation';
 import { cache } from 'react';
 import { CoursesSchema, type Course, type Courses, type Language } from '@ft/shared';
 
-import { apiGet, type BaseResult } from './api';
+import { apiGet, settle, type BaseResult } from './api';
 
 /** Memoised per request: the header and the page body both ask. */
 export const loadCourses = cache(async function loadCourses(): Promise<BaseResult<Courses>> {
   return apiGet(CoursesSchema, '/api/courses');
 });
 
-/**
- * requireUser for pages that need the courses: this read answers the session
- * question too. An unavailable API throws, since a redirect reads as a logout.
- */
+/** requireUser for pages that need the courses: this read answers the session question too. */
 export async function requireCourses(): Promise<Courses> {
-  const result = await loadCourses();
-
-  if (result.status === 'signed-out') {
-    redirect('/login');
-  }
-
-  if (result.status === 'unavailable') {
-    throw new Error(`Could not load the courses: ${result.reason}`);
-  }
-  return result.data;
+  return settle(await loadCourses(), 'courses');
 }
 
 /** The course for a language, or null when the learner does not study it. */
