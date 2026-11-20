@@ -198,6 +198,20 @@ What learners do, and whether the question bank keeps up. Variable: `lang` (mult
 "Questions served by source" shows `written`, `generated` and `seen_fallback`. The last one is a
 learner who has seen every question at that level and gets an old one again.
 
+**Lesson discussion** (#150), the last panel of the LLM row, puts two series on one graph per
+`$__rate_interval`:
+
+| Series | Query | Reads as |
+|---|---|---|
+| `{{outcome}}` | `sum by (outcome) (increase(ft_llm_requests_total{purpose="lesson-discussion"}[$__rate_interval]))` | Tutor answers that reached Gemini, by how they ended: `ok`, or the failure reason the learner saw as an `llm.*` error event |
+| `refused: {{limit}}` | `sum by (limit) (increase(ft_llm_discussion_limited_total[$__rate_interval]))` | Messages answered 429 before any LLM call: `user_minute` or `user_day` (one learner too fast, `llm.tooManyMessages`), `global_minute` (everyone together, `llm.rateLimited`) |
+
+A steady `global_minute` means the shared key's budget is too small for the traffic: raise
+`LLM_DISCUSSION_GLOBAL_PER_MINUTE` only if the key's quota allows it ([DEPLOYMENT.md](DEPLOYMENT.md)
+§5). `rate_limited` among the outcomes means Google refused despite our own limit, so ours is set
+above the key's quota. A learner who closes the page mid-answer shows in neither: no outcome is
+counted for a cancelled stream.
+
 Under `LLM_PROVIDER=fixture`, the default wherever evaluators run, the LLM row shows "fixture"
 and no calls, and restock failures show as `llm_disabled`. A text panel at the top of the row
 says so, so the empty graphs do not read as broken.
@@ -360,8 +374,8 @@ Labels are always bounded: never a user id, an email, a session id, a lesson id 
 |---|---|---|---|
 | `http_request_duration_seconds` | histogram, 5 ms to 10 s | `method` (the 7 usual ones, else `OTHER`); `route` (the Express template with its prefix, such as `/api/courses/:lang/lessons/:id`, else `static` below 400 or `unmatched`); `status_code` (`499` when the client left) | `httpMetrics` middleware, first in `configureApp` |
 | `http_requests_in_flight` | gauge | none | the same middleware |
-| `ft_llm_requests_total` | counter | `provider`, `model`, `purpose`, `outcome` (`ok`, `unreachable`, `rate_limited`, `http_error`, `blocked`, `incomplete`, `invalid`) | `GeminiProvider.generateStructured` |
-| `ft_llm_request_duration_seconds` | histogram, 0.5 s to 90 s | `provider`, `model`, `purpose` | the same |
+| `ft_llm_requests_total` | counter | `provider`, `model`, `purpose`, `outcome` (`ok`, `unreachable`, `rate_limited`, `http_error`, `blocked`, `incomplete`, `invalid`) | `GeminiProvider.generateStructured` and `GeminiProvider.streamText`. `purpose` is `question-batch:<category>` or `lesson-discussion`. A stream counts `ok` only once the whole answer went through; a learner leaving counts no outcome |
+| `ft_llm_request_duration_seconds` | histogram, 0.5 s to 90 s | `provider`, `model`, `purpose` | the same, a stream from its request to its last piece |
 | `ft_llm_tokens_total` | counter | `provider`, `model`, `purpose`, `type` (`prompt`, `output`, `total`) | the same, from the usage Gemini reports |
 | `ft_llm_discussion_limited_total` | counter | `limit` (`user_minute`, `user_day`, `global_minute`) | `countMessage` (discussion-limits.ts), a lesson discussion message refused before any LLM call |
 | `ft_llm_provider_info` | gauge, always 1 | `provider`, `model` (`none` for the fixture) | `createLlmProvider` |
@@ -373,7 +387,7 @@ Labels are always bounded: never a user id, an email, a session id, a lesson id 
 | `ft_placement_draws_total` | counter | `lang`, `level`, `category`, `source` (`written`, `generated`, `seen_fallback`) | `PlacementQuestionService` |
 | `ft_placement_pool_exhausted_total` | counter | `lang`, `level` | the same, when no question is left |
 | `ft_placement_exams_total` | counter | `lang`, `event` (`started`, `completed`, `quit`) | `PlacementService` |
-| `ft_lesson_attempts_total` | counter | `lang`, `event` (`started`, `completed`) | `AttemptsService`: a new attempt (a retake too), its last page locked |
+| `ft_lesson_attempts_total` | counter | `lang`, `event` (`started`, `completed`) | `AttemptsService`: a new attempt (a retake too), its last page locked. No panel reads it yet (section 5, "Reading the lesson metrics") |
 | `ft_users` | gauge, read at scrape | none | `MetricsCollector`, cached 60 s |
 | `ft_active_users` | gauge, read at scrape | none | signed-in users seen by `AuthGuard` in the last 5 minutes |
 | `ft_ws_connections` | gauge | none | `SocketGateway`, accepted sockets only |
@@ -404,6 +418,23 @@ A collected gauge that fails or takes more than 3 s (Postgres hiccups or hangs) 
 keeps its last value, and a scrape never starts a second query while one is still running. It
 never fails or stalls the whole scrape, which would turn "Postgres hiccupped" into "the API is
 down".
+
+### Reading the lesson metrics
+
+Three series cover the Milestone 2 lesson loop. None of them carries a user, a lesson id or an
+attempt id.
+
+| Question | Query (Explore, or a panel) | Notes |
+|---|---|---|
+| How many lessons are started and finished? | `sum by (lang, event) (increase(ft_lesson_attempts_total[1h]))` | `started` counts every new attempt, a retake included; resuming one in progress counts nothing. `completed` counts attempts whose last page locked, pass or fail |
+| How many started attempts finish? | `sum(increase(ft_lesson_attempts_total{event="completed"}[24h])) / sum(increase(ft_lesson_attempts_total{event="started"}[24h]))` | A rough completion rate: an attempt started late yesterday and finished today skews one day. No dashboard panel shows this yet; it is Explore-only |
+| Does the tutor answer? | `sum by (outcome) (increase(ft_llm_requests_total{purpose="lesson-discussion"}[1h]))` | The Lesson discussion panel. Empty under the fixture, where no Gemini series exists |
+| Do learners hit the limits? | `sum by (limit) (increase(ft_llm_discussion_limited_total[1h]))` | Same panel, `refused: …`. Exists at 0 for every limit from the start, with any provider |
+| What does the tutor cost? | `sum(increase(ft_llm_tokens_total{purpose="lesson-discussion", type="total"}[24h]))` | Tokens as Gemini reports them; the Tokens per hour panel shows every purpose |
+
+`LlmErrorRateHigh` (rule 14) covers the discussion too: it reads every purpose of
+`ft_llm_requests_total`. No rule watches `ft_lesson_attempts_total` or the discussion limits: a
+learner who is refused is told how long to wait, which is the intended behaviour, not an incident.
 
 ### Exporters and integrations
 
