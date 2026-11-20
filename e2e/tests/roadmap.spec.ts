@@ -463,4 +463,45 @@ test.describe('the roadmap and lesson loop', () => {
     ).toBeEnabled();
     expectSilent(violations);
   });
+
+  // The document beside the questions from 634 px of the task card (#148).
+  // At 834 px, an iPad, .lesson-main is display: contents and has no box to
+  // query: the card is the container, so the document stays beside them, as
+  // on the screens. A phone stacks it above.
+  test('a reading document sits beside its questions on a tablet and above them on a phone', async ({
+    freshLearner: page,
+  }) => {
+    const [id] = contentLessons(LANG, READING_LEVEL, 'reading');
+    expect(id, `a French ${READING_LEVEL} reading lesson`).toBeDefined();
+    const plan = lessonPlan(id!);
+    const open = plan.pages.findIndex((p) =>
+      p.items.some((item) => item.type === 'reading_document' && item.view === 'open'),
+    );
+    expect(open, 'a page with the document open').toBeGreaterThanOrEqual(0);
+    const violations = watchConsole(page);
+    await placeCourse(page, { lang: LANG, level: READING_LEVEL, dailyGoal: 10 });
+    await start(page, id!);
+    await playLesson(page, plan, { stop: (index) => index === open });
+
+    const documentBox = () => page.locator('.reading-doc-slot.is-side').boundingBox();
+    const questionBox = () =>
+      page.locator('.lesson-items > :not(.reading-doc-slot)').first().boundingBox();
+
+    await page.setViewportSize({ width: 834, height: 1112 });
+    await expect
+      .poll(async () => {
+        const [doc, question] = [await documentBox(), await questionBox()];
+        return doc !== null && question !== null && doc.x + doc.width <= question.x;
+      }, 'the document left of the questions at 834 px')
+      .toBe(true);
+
+    await page.setViewportSize({ width: 390, height: 844 });
+    await expect
+      .poll(async () => {
+        const [doc, question] = [await documentBox(), await questionBox()];
+        return doc !== null && question !== null && doc.y + doc.height <= question.y;
+      }, 'the document above the questions at 390 px')
+      .toBe(true);
+    expectSilent(violations);
+  });
 });

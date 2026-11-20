@@ -1206,12 +1206,14 @@ header:has(+ main .lesson-view) > div {
   border-radius: 12px;
 }
 /* The document beside the questions or the order, from 700 px of the
-   main column, the task card's border and padding included, as on the
-   screens (their .nav-main). */
-.lesson-main:has(.reading-doc-slot.is-side) {
+   main column, as on the screens (their .nav-main): 634 px of the task card,
+   which leaves out its 32 px padding and 1 px border on each side. The card
+   and not .lesson-main, which is display: contents from 960 px down and so
+   has no box to query: an 834 px iPad keeps the document beside them. */
+.lesson-task:has(.reading-doc-slot.is-side) {
   container: reading-task / inline-size;
 }
-@container reading-task (min-width: 700px) {
+@container reading-task (min-width: 634px) {
   .lesson-items:has(> .reading-doc-slot.is-side) {
     display: flow-root;
   }
