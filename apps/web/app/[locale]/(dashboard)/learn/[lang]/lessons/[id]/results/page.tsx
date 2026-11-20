@@ -4,6 +4,8 @@ import { getLocale, getTranslations } from 'next-intl/server';
 import type { Language, lessons } from '@ft/shared';
 
 import { PRIMARY_BUTTON } from '@/components/form';
+import { FinishXp } from '@/components/gamification';
+import { loadXp } from '@/lib/achievements';
 import { playable } from '@/components/lesson/kinds';
 import { gluedAfter } from '@/lib/lesson-gap';
 import { ResultsReview } from '@/components/lesson/results-review';
@@ -47,6 +49,8 @@ export default async function ResultsPage({ params }: { params: Params }) {
   const t = await getTranslations('Lesson');
   const locale = await getLocale();
   const { finish } = results;
+  // The course's XP now, for the rank bar of the XP card. Null without a level.
+  const xp = await loadXp(course);
 
   const languages = await getTranslations('Languages');
   return (
@@ -58,9 +62,22 @@ export default async function ResultsPage({ params }: { params: Params }) {
         caption={`${languages(course)} / ${card.level}`}
         summary={
           <section data-slot="finish" className="lesson-finish-summary">
-            {finish.goalJustMet ? (
-              <p className="font-semibold text-green-300">{t('goalReached')}</p>
-            ) : null}
+            {/* At the top: what this finish earned (#97), with the way out. Its "Daily goal reached" row says the goal was met. */}
+            <FinishXp
+              finish={finish}
+              xp={xp}
+              lang={course}
+              actions={
+                <>
+                  {playable(read.outline.kind) ? (
+                    <RetakeLesson lang={course} id={card.id} playPath={paths.play} />
+                  ) : null}
+                  <Link href={`/learn/${course}`} className={PRIMARY_BUTTON}>
+                    {t('backToCourse')}
+                  </Link>
+                </>
+              }
+            />
             <p>{t('goalProgress', { done: finish.doneCount, target: finish.target })}</p>
             <p className="text-slate-400">{t('best', { score: finish.best })}</p>
             <dl className="mt-2 flex flex-wrap gap-x-6 gap-y-1 text-slate-300">
@@ -84,16 +101,6 @@ export default async function ResultsPage({ params }: { params: Params }) {
               </div>
             </dl>
           </section>
-        }
-        actions={
-          <>
-            {playable(read.outline.kind) ? (
-              <RetakeLesson lang={course} id={card.id} playPath={paths.play} />
-            ) : null}
-            <Link href={`/learn/${course}`} className={PRIMARY_BUTTON}>
-              {t('backToCourse')}
-            </Link>
-          </>
         }
       >
         {results.steps.map((_step, n) => (

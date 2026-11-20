@@ -437,7 +437,6 @@
     "resultsHeading": "Deine Ergebnisse",
     "resultsScore": "Punkte: {score} / 100",
     "parts": "Teile",
-    "goalReached": "Tagesziel erreicht",
     "goalProgress": "Heute: {done} von {target, plural, one {# Lektion} other {# Lektionen}}",
     "points": "{points} / 1",
     "blank": "Keine Antwort",
@@ -516,6 +515,150 @@
     "vocabulary": "Wortschatz",
     "functions": "Alltagssprache",
     "reading": "Lesen"
+  },
+  "Gamification": {
+    "rank": "Rang {rank} · {total} von {next} XP",
+    "rankBar": "Fortschritt zum nächsten Rang",
+    "rules": "Erfolge und Regeln",
+    "challengeHeading": "Herausforderung des Tages",
+    "challengeXp": "+{xp} XP",
+    "challengeDone": "Geschafft",
+    "newToday": "Neu heute",
+    "xpGained": "+{xp} XP",
+    "title": "Erfolge",
+    "summary": "{earned} von {total} erreicht",
+    "earnedOn": "Erreicht am {date}",
+    "locked": "Noch nicht erreicht",
+    "progressBar": "{title}: Fortschritt",
+    "progress": {
+      "finished": "{current} von {target, plural, one {# Lektion} other {# Lektionen}}",
+      "passed": "{current} von {target} bestanden",
+      "bestStreak": "{current} von {target} Tagen",
+      "challengesDone": "{current} von {target} Herausforderungen"
+    },
+    "levelProgress": "Versucht: {attempted} von {total} · Bestanden: {passed}, {needed} nötig",
+    "howItWorks": "So funktioniert's",
+    "xpHeading": "XP",
+    "ranksHeading": "Ränge",
+    "challengesHeading": "Herausforderungen des Tages",
+    "achievementsHeading": "Erfolge",
+    "challenges": {
+      "grammar": {
+        "title": "Grammatik",
+        "rule": "Schließe eine Grammatiklektion ab."
+      },
+      "vocabulary": {
+        "title": "Wortschatz",
+        "rule": "Schließe eine Wortschatzlektion ab."
+      },
+      "functions": {
+        "title": "Alltagssprache",
+        "rule": "Schließe eine Lektion zur Alltagssprache ab."
+      },
+      "reading": {
+        "title": "Lesen",
+        "rule": "Schließe eine Leselektion ab."
+      },
+      "score90": {
+        "title": "90 % oder mehr",
+        "rule": "Erreiche 90 % oder mehr in einer Lektion."
+      },
+      "beyondGoal": {
+        "title": "Über das Ziel hinaus",
+        "rule": "Schließe eine Lektion mehr als dein Tagesziel ab."
+      }
+    },
+    "achievements": {
+      "firstLesson": {
+        "title": "Erste Lektion",
+        "rule": "Schließe deine erste Lektion ab."
+      },
+      "passed10": {
+        "title": "{target} Lektionen bestanden",
+        "rule": "Bestehe {target} Lektionen, jede mit {mark} % oder mehr."
+      },
+      "passed25": {
+        "title": "{target} Lektionen bestanden",
+        "rule": "Bestehe {target} Lektionen, jede mit {mark} % oder mehr."
+      },
+      "passed50": {
+        "title": "{target} Lektionen bestanden",
+        "rule": "Bestehe {target} Lektionen, jede mit {mark} % oder mehr."
+      },
+      "streak3": {
+        "title": "{target} Tage in Folge",
+        "rule": "Erreiche dein Tagesziel {target} Tage in Folge."
+      },
+      "streak7": {
+        "title": "{target} Tage in Folge",
+        "rule": "Erreiche dein Tagesziel {target} Tage in Folge."
+      },
+      "streak30": {
+        "title": "{target} Tage in Folge",
+        "rule": "Erreiche dein Tagesziel {target} Tage in Folge."
+      },
+      "streak100": {
+        "title": "{target} Tage in Folge",
+        "rule": "Erreiche dein Tagesziel {target} Tage in Folge."
+      },
+      "challenges10": {
+        "title": "{target} Herausforderungen",
+        "rule": "Schaffe {target} Herausforderungen des Tages."
+      },
+      "challenges50": {
+        "title": "{target} Herausforderungen",
+        "rule": "Schaffe {target} Herausforderungen des Tages."
+      },
+      "levelA1": {
+        "title": "{level} abgeschlossen",
+        "rule": "Versuche jede verfügbare {level}-Lektion und bestehe mindestens {share} % davon."
+      },
+      "levelA2": {
+        "title": "{level} abgeschlossen",
+        "rule": "Versuche jede verfügbare {level}-Lektion und bestehe mindestens {share} % davon."
+      },
+      "levelB1": {
+        "title": "{level} abgeschlossen",
+        "rule": "Versuche jede verfügbare {level}-Lektion und bestehe mindestens {share} % davon."
+      },
+      "levelB2": {
+        "title": "{level} abgeschlossen",
+        "rule": "Versuche jede verfügbare {level}-Lektion und bestehe mindestens {share} % davon."
+      },
+      "levelC1": {
+        "title": "{level} abgeschlossen",
+        "rule": "Versuche jede verfügbare {level}-Lektion und bestehe mindestens {share} % davon."
+      },
+      "levelC2": {
+        "title": "{level} abgeschlossen",
+        "rule": "Versuche jede verfügbare {level}-Lektion und bestehe mindestens {share} % davon."
+      }
+    },
+    "xpLessonLabel": "Lektion",
+    "xpGoalLabel": "Tagesziel erreicht",
+    "xpChallengeLabel": "Herausforderung geschafft",
+    "xpAmount": "+{xp} XP",
+    "newAchievements": "{count, plural, one {Neuer Erfolg} other {Neue Erfolge}}",
+    "summaryBar": "Erreichte Erfolge",
+    "groupCount": "{earned} von {total}",
+    "groups": {
+      "lessons": "Lektionen",
+      "streaks": "Serien",
+      "challenges": "Herausforderungen",
+      "levels": "Niveaus"
+    },
+    "ruleLesson": "Eine Lektion abschließen",
+    "ruleLessonNote": "Einmal pro Lektion und Tag",
+    "rulePoints": "Jeder Punkt, um den du deine Bestleistung verbesserst",
+    "rulePointsNote": "Von 60 % auf 85 %: +25",
+    "ruleGoal": "Dein Tagesziel erreichen",
+    "ruleChallenge": "Die Herausforderung des Tages schaffen",
+    "rankRow": "Rang {rank}",
+    "rankFrom": "ab {xp} XP",
+    "ranksNote": "Jeder Rang kostet {step} XP mehr als der vorige.",
+    "challengesRule": "Eine pro Tag, unter denen, die dein Niveau erlaubt.",
+    "achievementsKept": "Jeder wird einmal erreicht und bleibt.",
+    "achievementsPassed": "Eine Lektion ist ab {mark} % bestanden."
   },
   "Topics": {
     "nouns_and_determiners": "Nomen und Begleiter",
