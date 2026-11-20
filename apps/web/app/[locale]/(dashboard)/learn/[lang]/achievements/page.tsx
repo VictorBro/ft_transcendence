@@ -117,8 +117,8 @@ export default async function AchievementsPage({ params }: { params: Promise<{ l
         })}
       </div>
 
-      {/* Scrolls in its own column on a wide screen, like the list: the rules can outgrow a short window. */}
-      <aside className="-my-3 w-full shrink-0 py-3 lg:min-h-0 lg:w-95 lg:overflow-y-auto">
+      {/* A column on a wide screen, the rules scrolling in it like the list: they can outgrow a short window. */}
+      <aside className="-my-3 w-full shrink-0 py-3 lg:flex lg:min-h-0 lg:w-95 lg:flex-col">
         <HowItWorks />
       </aside>
     </div>
@@ -238,7 +238,9 @@ async function HowItWorks() {
   return (
     <section
       aria-labelledby="how-heading"
-      className="flex flex-col gap-6 rounded-2xl border border-slate-800 bg-slate-900 p-6"
+      // Its own scroller on a wide screen: focusable, so Safari's keyboard reaches the end of the rules.
+      tabIndex={0}
+      className="flex flex-col gap-6 rounded-2xl border border-slate-800 bg-slate-900 p-6 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400 lg:min-h-0 lg:overflow-y-auto"
     >
       <h2 id="how-heading" className="text-lg font-semibold text-slate-100">
         {t('howItWorks')}

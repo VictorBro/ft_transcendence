@@ -62,8 +62,22 @@ export default async function ResultsPage({ params }: { params: Params }) {
         caption={`${languages(course)} / ${card.level}`}
         summary={
           <section data-slot="finish" className="lesson-finish-summary">
-            {/* At the top: what this finish earned (#97). Its "Daily goal reached" row says the goal was met. */}
-            <FinishXp finish={finish} xp={xp} lang={course} />
+            {/* At the top: what this finish earned (#97), with the way out. Its "Daily goal reached" row says the goal was met. */}
+            <FinishXp
+              finish={finish}
+              xp={xp}
+              lang={course}
+              actions={
+                <>
+                  {playable(read.outline.kind) ? (
+                    <RetakeLesson lang={course} id={card.id} playPath={paths.play} />
+                  ) : null}
+                  <Link href={`/learn/${course}`} className={PRIMARY_BUTTON}>
+                    {t('backToCourse')}
+                  </Link>
+                </>
+              }
+            />
             <p>{t('goalProgress', { done: finish.doneCount, target: finish.target })}</p>
             <p className="text-slate-400">{t('best', { score: finish.best })}</p>
             <dl className="mt-2 flex flex-wrap gap-x-6 gap-y-1 text-slate-300">
@@ -87,16 +101,6 @@ export default async function ResultsPage({ params }: { params: Params }) {
               </div>
             </dl>
           </section>
-        }
-        actions={
-          <>
-            {playable(read.outline.kind) ? (
-              <RetakeLesson lang={course} id={card.id} playPath={paths.play} />
-            ) : null}
-            <Link href={`/learn/${course}`} className={PRIMARY_BUTTON}>
-              {t('backToCourse')}
-            </Link>
-          </>
         }
       >
         {results.steps.map((_step, n) => (

@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import { getTranslations } from 'next-intl/server';
 import {
   CHALLENGE_XP,
@@ -160,16 +161,19 @@ export async function NewToday({ codes, lang }: { codes: AchievementCode[]; lang
  * total, the lesson's share and the goal's and challenge's when they count,
  * each new achievement, then the rank the course is at now. `xp` is null when
  * the course's XP could not be read (no level yet): the card stands without
- * its rank. Inline, not a toast.
+ * its rank. Inline, not a toast. `actions` closes the card: the way out of
+ * the results (Retake, Back to course), so a long exam is not in the way.
  */
 export async function FinishXp({
   finish,
   xp,
   lang,
+  actions,
 }: {
   finish: FinishResult;
   xp: Xp | null;
   lang: Language;
+  actions?: ReactNode;
 }) {
   const t = await getTranslations('Gamification');
   const titles = await Promise.all(finish.newAchievements.map((code) => achievementTitle(code)));
@@ -225,6 +229,10 @@ export async function FinishXp({
           <RankLine xp={xp} lang={lang} />
         </div>
       )}
+
+      {actions ? (
+        <div className="flex flex-wrap gap-3 border-t border-indigo-500/20 pt-4">{actions}</div>
+      ) : null}
     </section>
   );
 }

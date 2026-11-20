@@ -99,7 +99,9 @@ test.describe('rank, challenge and achievements', () => {
     // The rank the course is at now, with the link to the rules.
     await expect(xp.getByText(`Rank 1 · ${finish.xpGained} of 100 XP`)).toBeVisible();
     await expect(xp.getByRole('link', { name: 'Achievements and rules' })).toBeVisible();
-    await expect(page.getByRole('link', { name: 'Back to course' })).toBeVisible();
+    // The way out is in the card, not after the review of every answer.
+    await expect(xp.getByRole('link', { name: 'Back to course' })).toBeVisible();
+    await expect(xp.getByRole('button', { name: 'Retake the lesson' })).toBeVisible();
 
     // The course page: the XP, the bar from the rank's start, and New today.
     await page.goto(home);
@@ -218,22 +220,32 @@ test.describe('rank, challenge and achievements', () => {
     await expectPinned(onboarded, 'achievements');
   });
 
-  // View source: both pages are server components, so the HTML holds everything.
-  test('both pages render without JavaScript', async ({ onboarded }) => {
+  // Server components: both pages work with JavaScript off. Role locators, not the
+  // HTML text, which holds every message of the catalogue in the flight payload.
+  test('both pages render without JavaScript', async ({ onboarded, browser }) => {
     await placeCourse(onboarded, ONBOARDED_COURSE);
     const today = await readToday(onboarded);
+    const context = await browser.newContext({
+      storageState: await onboarded.context().storageState(),
+      javaScriptEnabled: false,
+    });
+    try {
+      const page = await context.newPage();
+      await page.goto(`/en/learn/${ONBOARDED_COURSE.lang}`);
+      await expect(
+        page.getByText(`Rank ${today.xp.rank} · ${today.xp.total} of ${today.xp.nextRankAt} XP`),
+      ).toBeVisible();
+      await expect(page.getByRole('link', { name: 'Achievements and rules' })).toHaveAttribute(
+        'href',
+        `/en/learn/${ONBOARDED_COURSE.lang}/achievements`,
+      );
+      await expect(page.getByRole('region', { name: "Today's challenge" })).toBeVisible();
 
-    const course = await (await onboarded.request.get(`/en/learn/${ONBOARDED_COURSE.lang}`)).text();
-    expect(course).toContain(
-      `Rank ${today.xp.rank} · ${today.xp.total} of ${today.xp.nextRankAt} XP`,
-    );
-    expect(course).toContain('Achievements and rules');
-    expect(course).toContain('Today&#x27;s challenge');
-
-    const page = await (
-      await onboarded.request.get(`/en/learn/${ONBOARDED_COURSE.lang}/achievements`)
-    ).text();
-    expect(page.match(/data-achievement="/g)).toHaveLength(16);
-    expect(page).toContain('How it works');
+      await page.goto(`/en/learn/${ONBOARDED_COURSE.lang}/achievements`);
+      await expect(page.locator('[data-achievement]')).toHaveCount(16);
+      await expect(page.getByRole('region', { name: 'How it works' })).toBeVisible();
+    } finally {
+      await context.close();
+    }
   });
 });
