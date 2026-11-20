@@ -88,7 +88,7 @@
       "translations": { "en": ["Hi"], "fr": ["Salut (en arrivant)"] },
       "explanation": {
         "en": "Informal greeting at any time of day, for friends, family and people your age (du).",
-        "fr": "Salutation informelle à toute heure, pour les amis, la famille et les gens de votre âge (du).",
+        "fr": "Salutation informelle à toute heure, pour les amis, la famille et les gens de ton âge (du).",
         "de": "Informeller Gruß zu jeder Tageszeit, für Freunde, Familie und Gleichaltrige (du)."
       },
       "example": {

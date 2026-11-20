@@ -62,7 +62,7 @@
       "targetIds": ["correlation", "causalite", "interdependance", "analogie", "implication"],
       "introduction": {
         "en": "These nouns specify **the nature of the link** between two phenomena:\n\n- `une corrélation`: two variables vary together\n- `une causalité`: one produces the other\n- `une interdépendance`: each depends on the other\n- `une analogie`: a resemblance of structure\n- `une implication`: a logical consequence\n\nRemember: `corrélation` is not `causalité`.",
-        "fr": "Ces noms précisent **la nature du lien** entre deux phénomènes :\n\n- `une corrélation` : deux variables évoluent ensemble\n- `une causalité` : l'un produit l'autre\n- `une interdépendance` : chacun dépend de l'autre\n- `une analogie` : une ressemblance de structure\n- `une implication` : une conséquence logique\n\nRetenez : `corrélation` n'est pas `causalité`.",
+        "fr": "Ces noms précisent **la nature du lien** entre deux phénomènes :\n\n- `une corrélation` : deux variables évoluent ensemble\n- `une causalité` : l'un produit l'autre\n- `une interdépendance` : chacun dépend de l'autre\n- `une analogie` : une ressemblance de structure\n- `une implication` : une conséquence logique\n\nRetiens : `corrélation` n'est pas `causalité`.",
         "de": "Diese Nomen bestimmen **die Art der Verbindung** zwischen zwei Phänomenen:\n\n- `une corrélation`: zwei Variablen verändern sich gemeinsam\n- `une causalité`: das eine bewirkt das andere\n- `une interdépendance`: jedes hängt vom anderen ab\n- `une analogie`: eine Ähnlichkeit der Struktur\n- `une implication`: eine logische Folgerung\n\nMerke: `corrélation` ist nicht `causalité`."
       }
     }

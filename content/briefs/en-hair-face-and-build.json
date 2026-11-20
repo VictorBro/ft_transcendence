@@ -48,7 +48,7 @@
       "targetIds": ["curly", "wavy", "straight", "spiky", "ponytail", "bald", "beard", "moustache"],
       "introduction": {
         "en": "Use these words to describe someone's **hair**:\n\n- `curly`, `wavy`, `straight`, `spiky`: the shape of the hair\n- `ponytail`, `bald`: a hairstyle, or no hair at all\n- `beard`, `moustache`: hair on the face\n\nWe often use **with** or **has**: `a man with a beard`.",
-        "fr": "Utilisez ces mots pour décrire les **cheveux** de quelqu'un :\n\n- `curly`, `wavy`, `straight`, `spiky` : la forme des cheveux\n- `ponytail`, `bald` : une coiffure, ou l'absence de cheveux\n- `beard`, `moustache` : les poils du visage\n\nOn utilise souvent **with** ou **has** : `a man with a beard`.",
+        "fr": "Utilise ces mots pour décrire les **cheveux** de quelqu'un :\n\n- `curly`, `wavy`, `straight`, `spiky` : la forme des cheveux\n- `ponytail`, `bald` : une coiffure, ou l'absence de cheveux\n- `beard`, `moustache` : les poils du visage\n\nOn utilise souvent **with** ou **has** : `a man with a beard`.",
         "de": "Mit diesen Wörtern beschreibst du die **Haare** einer Person:\n\n- `curly`, `wavy`, `straight`, `spiky`: die Form der Haare\n- `ponytail`, `bald`: eine Frisur oder gar keine Haare\n- `beard`, `moustache`: Haare im Gesicht\n\nOft benutzt man **with** oder **has**: `a man with a beard`."
       }
     },

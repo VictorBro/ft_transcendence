@@ -40,7 +40,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -55,7 +55,7 @@
               },
               "text": {
                 "en": "Regular German verbs have a **stem** and an **ending**. Remove **-en** from the infinitive `wohnen` and add the ending that fits the pronoun: `ich wohne`, `du wohnst`, `er/sie/es wohnt`.\n\nIn the plural you say `wir wohnen`, `ihr wohnt` and `sie wohnen`. The polite `Sie wohnen` has the same form as `sie wohnen`.\n\n- `wir` and `sie/Sie` keep the infinitive form: `wir lernen`, `Sie lernen`.\n- `er/sie/es` and `ihr` both end in **-t**: `er lernt`, `ihr lernt`.\n- After `du` the ending is **-st**: not `du wohnt`, but `du wohnst`.",
-                "fr": "Les verbes réguliers allemands ont un **radical** et une **terminaison**. Enlevez **-en** de l'infinitif `wohnen` et ajoutez la terminaison qui correspond au pronom : `ich wohne`, `du wohnst`, `er/sie/es wohnt`.\n\nAu pluriel, on dit `wir wohnen`, `ihr wohnt` et `sie wohnen`. La forme de politesse `Sie wohnen` est identique à `sie wohnen`.\n\n- `wir` et `sie/Sie` gardent la forme de l'infinitif : `wir lernen`, `Sie lernen`.\n- `er/sie/es` et `ihr` se terminent tous deux par **-t** : `er lernt`, `ihr lernt`.\n- Après `du`, la terminaison est **-st** : pas `du wohnt`, mais `du wohnst`.",
+                "fr": "Les verbes réguliers allemands ont un **radical** et une **terminaison**. Enlève **-en** de l'infinitif `wohnen` et ajoute la terminaison qui correspond au pronom : `ich wohne`, `du wohnst`, `er/sie/es wohnt`.\n\nAu pluriel, on dit `wir wohnen`, `ihr wohnt` et `sie wohnen`. La forme de politesse `Sie wohnen` est identique à `sie wohnen`.\n\n- `wir` et `sie/Sie` gardent la forme de l'infinitif : `wir lernen`, `Sie lernen`.\n- `er/sie/es` et `ihr` se terminent tous deux par **-t** : `er lernt`, `ihr lernt`.\n- Après `du`, la terminaison est **-st** : pas `du wohnt`, mais `du wohnst`.",
                 "de": "Regelmäßige Verben haben einen **Stamm** und eine **Endung**. Streiche **-en** vom Infinitiv `wohnen` und hänge die Endung an, die zum Pronomen passt: `ich wohne`, `du wohnst`, `er/sie/es wohnt`.\n\nIm Plural sagt man `wir wohnen`, `ihr wohnt` und `sie wohnen`. Die Höflichkeitsform `Sie wohnen` sieht aus wie `sie wohnen`.\n\n- `wir` und `sie/Sie` behalten die Form des Infinitivs: `wir lernen`, `Sie lernen`.\n- `er/sie/es` und `ihr` enden beide auf **-t**: `er lernt`, `ihr lernt`.\n- Nach `du` steht die Endung **-st**: nicht `du wohnt`, sondern `du wohnst`."
               },
               "formTable": [
@@ -111,7 +111,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -143,7 +143,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -175,7 +175,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -207,7 +207,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -251,7 +251,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -281,7 +281,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -311,7 +311,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -341,7 +341,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -383,7 +383,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Connect each pronoun with its partner.",
-            "fr": "Reliez chaque pronom à son partenaire.",
+            "fr": "Relie chaque pronom à son partenaire.",
             "de": "Verbinde jedes Pronomen mit seinem Partner."
           },
           "items": [
@@ -481,7 +481,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -553,7 +553,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the form for each pronoun.",
-            "fr": "Écrivez la forme pour chaque pronom.",
+            "fr": "Écris la forme pour chaque pronom.",
             "de": "Schreib die Form zu jedem Pronomen."
           },
           "items": [
@@ -602,7 +602,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the form for each pronoun.",
-            "fr": "Écrivez la forme pour chaque pronom.",
+            "fr": "Écris la forme pour chaque pronom.",
             "de": "Schreib die Form zu jedem Pronomen."
           },
           "items": [
@@ -663,7 +663,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -695,7 +695,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -727,7 +727,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -759,7 +759,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -799,7 +799,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it.",
-            "fr": "Trouvez le mot faux et corrigez-le.",
+            "fr": "Trouve le mot faux et corrige-le.",
             "de": "Finde das falsche Wort und korrigiere es."
           },
           "items": [
@@ -834,7 +834,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it.",
-            "fr": "Trouvez le mot faux et corrigez-le.",
+            "fr": "Trouve le mot faux et corrige-le.",
             "de": "Finde das falsche Wort und korrigiere es."
           },
           "items": [
@@ -868,7 +868,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it.",
-            "fr": "Trouvez le mot faux et corrigez-le.",
+            "fr": "Trouve le mot faux et corrige-le.",
             "de": "Finde das falsche Wort und korrigiere es."
           },
           "items": [
@@ -903,7 +903,7 @@
       "id": "feedback",
       "role": "feedback",
       "blockId": null,
-      "label": { "en": "Your feedback", "fr": "Votre retour", "de": "Dein Feedback" },
+      "label": { "en": "Your feedback", "fr": "Ton retour", "de": "Dein Feedback" },
       "pages": [
         {
           "pageId": "feedback",
@@ -911,7 +911,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Continue to the final exam.",
-            "fr": "Passez à l’examen final.",
+            "fr": "Passe à l’examen final.",
             "de": "Weiter zur Abschlussprüfung."
           },
           "items": [{ "type": "production_feedback_placeholder", "itemId": "feedback" }]
@@ -930,7 +930,7 @@
           "timeLimitS": 120,
           "instructions": {
             "en": "Type the form for each pronoun.",
-            "fr": "Écrivez la forme pour chaque pronom.",
+            "fr": "Écris la forme pour chaque pronom.",
             "de": "Schreib die Form zu jedem Pronomen."
           },
           "items": [
@@ -989,7 +989,7 @@
           "timeLimitS": 90,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -1057,7 +1057,7 @@
           "timeLimitS": 90,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [

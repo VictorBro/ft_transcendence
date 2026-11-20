@@ -40,7 +40,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the rule and the example.",
-            "fr": "Lisez la règle et l’exemple.",
+            "fr": "Lis la règle et l’exemple.",
             "de": "Lies die Regel und das Beispiel."
           },
           "items": [
@@ -55,7 +55,7 @@
               },
               "text": {
                 "en": "Put ne before the verb and pas after it.",
-                "fr": "Placez ne avant le verbe et pas après.",
+                "fr": "Place ne avant le verbe et pas après.",
                 "de": "Setze ne vor das Verb und pas danach."
               },
               "formTable": [],
@@ -89,7 +89,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Build a negative sentence.",
-            "fr": "Construisez une phrase négative.",
+            "fr": "Construis une phrase négative.",
             "de": "Bilde einen verneinten Satz."
           },
           "items": [
@@ -138,7 +138,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Build a negative sentence.",
-            "fr": "Construisez une phrase négative.",
+            "fr": "Construis une phrase négative.",
             "de": "Bilde einen verneinten Satz."
           },
           "items": [
@@ -203,7 +203,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the rule and the example.",
-            "fr": "Lisez la règle et l’exemple.",
+            "fr": "Lis la règle et l’exemple.",
             "de": "Lies die Regel und das Beispiel."
           },
           "items": [
@@ -252,7 +252,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the missing word.",
-            "fr": "Choisissez le mot manquant.",
+            "fr": "Choisis le mot manquant.",
             "de": "Wähle das fehlende Wort."
           },
           "items": [
@@ -308,7 +308,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Select the wrong word and choose its correction.",
-            "fr": "Sélectionnez le mot faux et choisissez sa correction.",
+            "fr": "Sélectionne le mot faux et choisis sa correction.",
             "de": "Wähle das falsche Wort und seine Korrektur."
           },
           "items": [
@@ -380,7 +380,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read, then continue to the exam.",
-            "fr": "Lisez, puis passez à l’examen.",
+            "fr": "Lis, puis passe à l’examen.",
             "de": "Lies und gehe dann zum Test."
           },
           "items": [
@@ -408,7 +408,7 @@
           "timeLimitS": 60,
           "instructions": {
             "en": "Build the negative sentence.",
-            "fr": "Construisez la phrase négative.",
+            "fr": "Construis la phrase négative.",
             "de": "Bilde den verneinten Satz."
           },
           "items": [
@@ -461,7 +461,7 @@
           "timeLimitS": 45,
           "instructions": {
             "en": "Type the missing word.",
-            "fr": "Tapez le mot manquant.",
+            "fr": "Tape le mot manquant.",
             "de": "Tippe das fehlende Wort."
           },
           "items": [

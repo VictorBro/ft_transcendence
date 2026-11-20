@@ -61,7 +61,7 @@
       "translations": { "en": ["loan"], "de": ["Kredit", "Darlehen"] },
       "explanation": {
         "en": "Money a bank lends you and that you pay back later.",
-        "fr": "De l’argent qu’une banque vous prête et que vous rendez plus tard.",
+        "fr": "De l’argent qu’une banque te prête et que tu rends plus tard.",
         "de": "Geld, das eine Bank einem leiht und das man später zurückzahlt."
       }
     },

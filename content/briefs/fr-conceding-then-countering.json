@@ -51,7 +51,7 @@
       "translations": { "en": ["I grant you that"], "de": ["Ich gebe Ihnen recht, dass"] },
       "explanation": {
         "en": "Formal concession of a fact (vous), usually followed by mais and your own argument.",
-        "fr": "Concession formelle d’un fait (vous), généralement suivie de mais et de votre propre argument.",
+        "fr": "Concession formelle d’un fait (vous), généralement suivie de mais et de ton propre argument.",
         "de": "Förmliches Zugeständnis einer Tatsache (vous), meist gefolgt von mais und dem eigenen Argument."
       },
       "example": {

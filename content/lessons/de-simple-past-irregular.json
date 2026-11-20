@@ -40,7 +40,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -55,7 +55,7 @@
               },
               "text": {
                 "en": "Irregular (strong) verbs change their stem vowel in the simple past and take **no** `-te`: `fahren` → `fuhr`, `gehen` → `ging`, `schreiben` → `schrieb`, `liegen` → `lag`.\n\nThe endings are short: `ich fuhr`, `du fuhrst`, `er fuhr`, `wir fuhren`, `ihr fuhrt`, `sie fuhren`. With `ich` and `er/sie/es` there is no ending.\n\n- Learn the stem together with the infinitive: `kommen` → `kam`, `sehen` → `sah`, `bleiben` → `blieb`.\n- Do not add `-te`: `ich fuhr`, not `ich fahrte`.\n- The vowel change is not always predictable: learn each verb as a pair.",
-                "fr": "Les verbes irréguliers (forts) changent la voyelle du radical au prétérit et n’ont **pas** de `-te` : `fahren` → `fuhr`, `gehen` → `ging`, `schreiben` → `schrieb`, `liegen` → `lag`.\n\nLes terminaisons sont courtes : `ich fuhr`, `du fuhrst`, `er fuhr`, `wir fuhren`, `ihr fuhrt`, `sie fuhren`. Avec `ich` et `er/sie/es`, il n’y a pas de terminaison.\n\n- Apprenez le radical avec l’infinitif : `kommen` → `kam`, `sehen` → `sah`, `bleiben` → `blieb`.\n- N’ajoutez pas `-te` : `ich fuhr`, et non `ich fahrte`.\n- Le changement de voyelle n’est pas toujours prévisible : apprenez chaque verbe en paire.",
+                "fr": "Les verbes irréguliers (forts) changent la voyelle du radical au prétérit et n’ont **pas** de `-te` : `fahren` → `fuhr`, `gehen` → `ging`, `schreiben` → `schrieb`, `liegen` → `lag`.\n\nLes terminaisons sont courtes : `ich fuhr`, `du fuhrst`, `er fuhr`, `wir fuhren`, `ihr fuhrt`, `sie fuhren`. Avec `ich` et `er/sie/es`, il n’y a pas de terminaison.\n\n- Apprends le radical avec l’infinitif : `kommen` → `kam`, `sehen` → `sah`, `bleiben` → `blieb`.\n- N’ajoute pas `-te` : `ich fuhr`, et non `ich fahrte`.\n- Le changement de voyelle n’est pas toujours prévisible : apprends chaque verbe en paire.",
                 "de": "Unregelmäßige (starke) Verben wechseln im Präteritum den Stammvokal und haben **kein** `-te`: `fahren` → `fuhr`, `gehen` → `ging`, `schreiben` → `schrieb`, `liegen` → `lag`.\n\nDie Endungen sind kurz: `ich fuhr`, `du fuhrst`, `er fuhr`, `wir fuhren`, `ihr fuhrt`, `sie fuhren`. Bei `ich` und `er/sie/es` gibt es keine Endung.\n\n- Lerne den Stamm zusammen mit dem Infinitiv: `kommen` → `kam`, `sehen` → `sah`, `bleiben` → `blieb`.\n- Hänge kein `-te` an: `ich fuhr`, nicht `ich fahrte`.\n- Der Vokalwechsel ist nicht immer vorhersehbar: Lerne jedes Verb als Paar."
               },
               "formTable": [
@@ -117,7 +117,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Connect each pronoun with its partner.",
-            "fr": "Reliez chaque pronom à son partenaire.",
+            "fr": "Relie chaque pronom à son partenaire.",
             "de": "Verbinde jedes Pronomen mit seinem Partner."
           },
           "items": [
@@ -215,7 +215,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -339,7 +339,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -433,7 +433,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -448,7 +448,7 @@
               },
               "text": {
                 "en": "Mixed verbs change their stem **and** take `-te`: `bringen` → `brachte`, `denken` → `dachte`, `wissen` → `wusste`, `kennen` → `kannte`.\n\nThe endings are those of the regular verbs: `ich dachte`, `du dachtest`, `er dachte`, `wir dachten`, `ihr dachtet`, `sie dachten`. Here too `ich` and `er/sie/es` have the same form.\n\n- `bringen` and `denken` also change their consonants: `brachte`, `dachte`, not `bringte`.\n- `wissen` → `wusste`: `ich wusste`, `du wusstest`.\n- Compare: `er ging` (without `-te`) and `er brachte` (with `-te`).",
-                "fr": "Les verbes mixtes changent le radical **et** prennent `-te` : `bringen` → `brachte`, `denken` → `dachte`, `wissen` → `wusste`, `kennen` → `kannte`.\n\nLes terminaisons sont celles des verbes réguliers : `ich dachte`, `du dachtest`, `er dachte`, `wir dachten`, `ihr dachtet`, `sie dachten`. Ici aussi, `ich` et `er/sie/es` ont la même forme.\n\n- `bringen` et `denken` changent aussi les consonnes : `brachte`, `dachte`, et non `bringte`.\n- `wissen` → `wusste` : `ich wusste`, `du wusstest`.\n- Comparez : `er ging` (sans `-te`) et `er brachte` (avec `-te`).",
+                "fr": "Les verbes mixtes changent le radical **et** prennent `-te` : `bringen` → `brachte`, `denken` → `dachte`, `wissen` → `wusste`, `kennen` → `kannte`.\n\nLes terminaisons sont celles des verbes réguliers : `ich dachte`, `du dachtest`, `er dachte`, `wir dachten`, `ihr dachtet`, `sie dachten`. Ici aussi, `ich` et `er/sie/es` ont la même forme.\n\n- `bringen` et `denken` changent aussi les consonnes : `brachte`, `dachte`, et non `bringte`.\n- `wissen` → `wusste` : `ich wusste`, `du wusstest`.\n- Compare : `er ging` (sans `-te`) et `er brachte` (avec `-te`).",
                 "de": "Gemischte Verben ändern den Stamm **und** haben `-te`: `bringen` → `brachte`, `denken` → `dachte`, `wissen` → `wusste`, `kennen` → `kannte`.\n\nDie Endungen sind die der regelmäßigen Verben: `ich dachte`, `du dachtest`, `er dachte`, `wir dachten`, `ihr dachtet`, `sie dachten`. Auch hier haben `ich` und `er/sie/es` dieselbe Form.\n\n- `bringen` und `denken` ändern auch den Konsonanten: `brachte`, `dachte`, nicht `bringte`.\n- `wissen` → `wusste`: `ich wusste`, `du wusstest`.\n- Vergleiche: `er ging` (ohne `-te`) und `er brachte` (mit `-te`)."
               },
               "formTable": [
@@ -515,7 +515,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -619,7 +619,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -695,7 +695,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it.",
-            "fr": "Trouvez le mot faux et corrigez-le.",
+            "fr": "Trouve le mot faux et corrige-le.",
             "de": "Finde das falsche Wort und korrigiere es."
           },
           "items": [
@@ -804,7 +804,7 @@
       "id": "feedback",
       "role": "feedback",
       "blockId": null,
-      "label": { "en": "Your feedback", "fr": "Votre retour", "de": "Dein Feedback" },
+      "label": { "en": "Your feedback", "fr": "Ton retour", "de": "Dein Feedback" },
       "pages": [
         {
           "pageId": "feedback",
@@ -812,7 +812,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Continue to the final exam.",
-            "fr": "Passez à l’examen final.",
+            "fr": "Passe à l’examen final.",
             "de": "Weiter zur Abschlussprüfung."
           },
           "items": [{ "type": "production_feedback_placeholder", "itemId": "feedback" }]
@@ -831,7 +831,7 @@
           "timeLimitS": 160,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -899,7 +899,7 @@
           "timeLimitS": 160,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -967,7 +967,7 @@
           "timeLimitS": 100,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [

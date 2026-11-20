@@ -48,7 +48,7 @@
       "targetIds": ["letter", "alphabet", "capital-letter", "small-letter", "dot", "hyphen", "at"],
       "introduction": {
         "en": "Learn the words for the **alphabet** and its symbols:\n\n- `letter` and `alphabet`\n- `capital letter` and `small letter`\n- `dot`, `at` and `hyphen`",
-        "fr": "Apprenez les mots pour l’**alphabet** et ses symboles :\n\n- `letter` et `alphabet`\n- `capital letter` et `small letter`\n- `dot`, `at` et `hyphen`",
+        "fr": "Apprends les mots pour l’**alphabet** et ses symboles :\n\n- `letter` et `alphabet`\n- `capital letter` et `small letter`\n- `dot`, `at` et `hyphen`",
         "de": "Lerne die Wörter für das **Alphabet** und seine Zeichen:\n\n- `letter` und `alphabet`\n- `capital letter` und `small letter`\n- `dot`, `at` und `hyphen`"
       }
     },
@@ -511,7 +511,7 @@
       "ambiguityNote": null,
       "explanation": {
         "en": "Your name is the word people use for you, like Anna or Tom.",
-        "fr": "Votre « name » est le mot qu’on utilise pour vous appeler, comme Anna ou Tom.",
+        "fr": "Ton « name » est le mot qu’on utilise pour t’appeler, comme Anna ou Tom.",
         "de": "Dein „name“ ist das Wort, mit dem man dich anspricht, zum Beispiel Anna oder Tom."
       },
       "genderExplanation": null,
@@ -553,7 +553,7 @@
       "ambiguityNote": null,
       "explanation": {
         "en": "An email address, like tom at mail dot com, is where people send you emails.",
-        "fr": "Une « email address », comme tom at mail dot com, est l’adresse où l’on vous envoie des e-mails.",
+        "fr": "Une « email address », comme tom at mail dot com, est l’adresse où l’on t’envoie des e-mails.",
         "de": "Eine „email address“, zum Beispiel tom at mail dot com, ist die Adresse, an die man dir E-Mails schickt."
       },
       "genderExplanation": null,

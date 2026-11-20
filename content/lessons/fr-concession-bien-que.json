@@ -40,7 +40,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -55,7 +55,7 @@
               },
               "text": {
                 "en": "`Bien que` and `quoique` introduce a **concession**: a real fact that does not stop the main action. They are always followed by the **subjunctive**: `bien qu'il soit tard`, `quoiqu'elle ait raison`.\n\nMany subjunctive forms are irregular. Learn these:\n\n- `être` → `qu'il soit`\n- `avoir` → `qu'elle ait`\n- `faire` → `qu'il fasse`\n- `pouvoir` → `qu'il puisse`\n- `aller` → `qu'il aille`\n\nBefore a vowel the final e disappears: `quoiqu'il pleuve`.\n\nNo indicative after these conjunctions: you do not say `bien qu'il est tard`.",
-                "fr": "`Bien que` et `quoique` introduisent une **concession** : un fait réel qui n'empêche pas l'action principale. Ils sont toujours suivis du **subjonctif** : `bien qu'il soit tard`, `quoiqu'elle ait raison`.\n\nBeaucoup de formes du subjonctif sont irrégulières. Retenez celles-ci :\n\n- `être` → `qu'il soit`\n- `avoir` → `qu'elle ait`\n- `faire` → `qu'il fasse`\n- `pouvoir` → `qu'il puisse`\n- `aller` → `qu'il aille`\n\nDevant une voyelle, le e final disparaît : `quoiqu'il pleuve`.\n\nPas d'indicatif après ces conjonctions : on ne dit pas `bien qu'il est tard`.",
+                "fr": "`Bien que` et `quoique` introduisent une **concession** : un fait réel qui n'empêche pas l'action principale. Ils sont toujours suivis du **subjonctif** : `bien qu'il soit tard`, `quoiqu'elle ait raison`.\n\nBeaucoup de formes du subjonctif sont irrégulières. Retiens celles-ci :\n\n- `être` → `qu'il soit`\n- `avoir` → `qu'elle ait`\n- `faire` → `qu'il fasse`\n- `pouvoir` → `qu'il puisse`\n- `aller` → `qu'il aille`\n\nDevant une voyelle, le e final disparaît : `quoiqu'il pleuve`.\n\nPas d'indicatif après ces conjonctions : on ne dit pas `bien qu'il est tard`.",
                 "de": "`Bien que` und `quoique` leiten eine **Einräumung** ein: eine reale Tatsache, die die Haupthandlung nicht verhindert. Danach steht immer der **Subjonctif**: `bien qu'il soit tard`, `quoiqu'elle ait raison`.\n\nViele Subjonctif-Formen sind unregelmäßig. Merke dir diese:\n\n- `être` → `qu'il soit`\n- `avoir` → `qu'elle ait`\n- `faire` → `qu'il fasse`\n- `pouvoir` → `qu'il puisse`\n- `aller` → `qu'il aille`\n\nVor einem Vokal fällt das e am Ende weg: `quoiqu'il pleuve`.\n\nKein Indikativ nach diesen Konjunktionen: Man sagt nicht `bien qu'il est tard`."
               },
               "formTable": [
@@ -128,7 +128,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -232,7 +232,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -324,7 +324,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it.",
-            "fr": "Trouvez le mot faux et corrigez-le.",
+            "fr": "Trouve le mot faux et corrige-le.",
             "de": "Finde das falsche Wort und korrigiere es."
           },
           "items": [
@@ -453,7 +453,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -468,7 +468,7 @@
               },
               "text": {
                 "en": "`Même si` also concedes a point, but it takes the **indicative**: `même s'il fait froid`, `même si elle a raison`. The subjunctive is never used after it.\n\nThe difference lies in the meaning:\n\n- `bien que` states a fact as certain: `bien qu'il pleuve`.\n- `même si` can also suggest a mere possibility: `même s'il pleut`.\n\nThe tense follows the meaning: present for a likely case, imperfect plus conditional for an unlikely one: `même si j'ai le temps, je reste`, `même si j'avais le temps, je ne viendrais pas`.\n\nSo do not write `même s'il pleuve`.",
-                "fr": "`Même si` exprime aussi une concession, mais il se construit avec l'**indicatif** : `même s'il fait froid`, `même si elle a raison`. On n'emploie jamais le subjonctif après lui.\n\nLa différence est dans le sens :\n\n- `bien que` présente un fait comme certain : `bien qu'il pleuve`.\n- `même si` peut aussi suggérer une simple possibilité : `même s'il pleut`.\n\nLe temps suit le sens : présent pour un cas probable, imparfait et conditionnel pour un cas peu probable : `même si j'ai le temps, je reste`, `même si j'avais le temps, je ne viendrais pas`.\n\nN'écrivez donc pas `même s'il pleuve`.",
+                "fr": "`Même si` exprime aussi une concession, mais il se construit avec l'**indicatif** : `même s'il fait froid`, `même si elle a raison`. On n'emploie jamais le subjonctif après lui.\n\nLa différence est dans le sens :\n\n- `bien que` présente un fait comme certain : `bien qu'il pleuve`.\n- `même si` peut aussi suggérer une simple possibilité : `même s'il pleut`.\n\nLe temps suit le sens : présent pour un cas probable, imparfait et conditionnel pour un cas peu probable : `même si j'ai le temps, je reste`, `même si j'avais le temps, je ne viendrais pas`.\n\nN'écris donc pas `même s'il pleuve`.",
                 "de": "`Même si` räumt ebenfalls etwas ein, steht aber mit dem **Indikativ**: `même s'il fait froid`, `même si elle a raison`. Der Subjonctif steht danach nie.\n\nDer Unterschied liegt in der Bedeutung:\n\n- `bien que` stellt eine Tatsache als sicher dar: `bien qu'il pleuve`.\n- `même si` kann auch nur eine Möglichkeit andeuten: `même s'il pleut`.\n\nDie Zeit richtet sich nach dem Sinn: Präsens für einen wahrscheinlichen Fall, Imparfait plus Conditionnel für einen unwahrscheinlichen: `même si j'ai le temps, je reste`, `même si j'avais le temps, je ne viendrais pas`.\n\nSchreibe also nicht `même s'il pleuve`."
               },
               "formTable": [
@@ -532,7 +532,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -632,7 +632,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -722,7 +722,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -806,7 +806,7 @@
       "id": "feedback",
       "role": "feedback",
       "blockId": null,
-      "label": { "en": "Your feedback", "fr": "Votre retour", "de": "Dein Feedback" },
+      "label": { "en": "Your feedback", "fr": "Ton retour", "de": "Dein Feedback" },
       "pages": [
         {
           "pageId": "feedback",
@@ -814,7 +814,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Continue to the final exam.",
-            "fr": "Passez à l’examen final.",
+            "fr": "Passe à l’examen final.",
             "de": "Weiter zur Abschlussprüfung."
           },
           "items": [{ "type": "production_feedback_placeholder", "itemId": "feedback" }]
@@ -833,7 +833,7 @@
           "timeLimitS": 130,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -901,7 +901,7 @@
           "timeLimitS": 100,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -955,7 +955,7 @@
           "timeLimitS": 120,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [

@@ -51,7 +51,7 @@
       ],
       "introduction": {
         "en": "These words help you **plan** your days:\n\n- `schedule`\n- `appointment`\n- `deadline`\n- `to-do list`\n- `spare time`\n- `prioritise`\n\nIn British English you can also write `prioritize`.",
-        "fr": "Ces mots vous aident à **planifier** vos journées :\n\n- `schedule`\n- `appointment`\n- `deadline`\n- `to-do list`\n- `spare time`\n- `prioritise`\n\nEn anglais britannique, on peut aussi écrire `prioritize`.",
+        "fr": "Ces mots t’aident à **planifier** tes journées :\n\n- `schedule`\n- `appointment`\n- `deadline`\n- `to-do list`\n- `spare time`\n- `prioritise`\n\nEn anglais britannique, on peut aussi écrire `prioritize`.",
         "de": "Diese Wörter helfen dir, deine Tage zu **planen**:\n\n- `schedule`\n- `appointment`\n- `deadline`\n- `to-do list`\n- `spare time`\n- `prioritise`\n\nIm britischen Englisch kann man auch `prioritize` schreiben."
       }
     },
@@ -65,7 +65,7 @@
       "targetIds": ["punctual", "be-running-late", "behind-schedule", "hectic", "rush", "postpone"],
       "introduction": {
         "en": "These words describe being **on time**, late or very busy:\n\n- `punctual`\n- `be running late`\n- `behind schedule`\n- `hectic`\n- `rush`\n- `postpone`\n\nUse `be running late` for a person and `behind schedule` for a plan or project.",
-        "fr": "Ces mots décrivent le fait d’être **à l’heure**, en retard ou très occupé :\n\n- `punctual`\n- `be running late`\n- `behind schedule`\n- `hectic`\n- `rush`\n- `postpone`\n\nUtilisez `be running late` pour une personne et `behind schedule` pour un plan ou un projet.",
+        "fr": "Ces mots décrivent le fait d’être **à l’heure**, en retard ou très occupé :\n\n- `punctual`\n- `be running late`\n- `behind schedule`\n- `hectic`\n- `rush`\n- `postpone`\n\nUtilise `be running late` pour une personne et `behind schedule` pour un plan ou un projet.",
         "de": "Diese Wörter beschreiben, **pünktlich**, spät oder sehr beschäftigt zu sein:\n\n- `punctual`\n- `be running late`\n- `behind schedule`\n- `hectic`\n- `rush`\n- `postpone`\n\nBenutze `be running late` für eine Person und `behind schedule` für einen Plan oder ein Projekt."
       }
     }
@@ -394,7 +394,7 @@
       "ambiguityNote": null,
       "explanation": {
         "en": "Be running late means you will arrive later than planned.",
-        "fr": "Be running late signifie que vous arriverez plus tard que prévu.",
+        "fr": "Be running late signifie que tu arriveras plus tard que prévu.",
         "de": "Be running late bedeutet, dass du später ankommst als geplant."
       },
       "genderExplanation": null,
@@ -533,7 +533,7 @@
         "referenceTargetIds": ["rush", "schedule", "hectic", "appointment"],
         "explanation": {
           "en": "Don’t rush means do not hurry.",
-          "fr": "« Don’t rush » signifie ne vous pressez pas.",
+          "fr": "« Don’t rush » signifie ne te presse pas.",
           "de": "„Don’t rush“ heißt: Beeil dich nicht."
         }
       },

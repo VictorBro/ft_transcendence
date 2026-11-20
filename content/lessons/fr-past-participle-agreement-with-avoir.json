@@ -40,7 +40,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -131,7 +131,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -239,7 +239,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -331,7 +331,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it.",
-            "fr": "Trouvez le mot faux et corrigez-le.",
+            "fr": "Trouve le mot faux et corrige-le.",
             "de": "Finde das falsche Wort und korrigiere es."
           },
           "items": [
@@ -447,7 +447,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -462,7 +462,7 @@
               },
               "text": {
                 "en": "The relative pronoun `que` (or `qu'`) is a direct object: it stands for a noun placed before the verb. The participle therefore agrees with that noun: `La lettre que j'ai écrite est partie.` `Les villes qu'il a visitées sont belles.`\n\nThe same rule applies in a question with `quel`: `Quelles villes as-tu visitées ?` The object `quelles villes` comes before `avoir`.\n\n- Look for the object by asking `quoi ?` after the verb.\n- Check whether it comes before `avoir`.\n- If so, make the participle agree with it.",
-                "fr": "Le pronom relatif `que` (ou `qu'`) est un COD : il reprend un nom placé avant le verbe. Le participe s’accorde donc avec ce nom : `La lettre que j'ai écrite est partie.` `Les villes qu'il a visitées sont belles.`\n\nMême règle dans une question avec `quel` : `Quelles villes as-tu visitées ?` Le COD `quelles villes` est devant `avoir`.\n\n- Cherchez le COD en posant la question `quoi ?` après le verbe.\n- Regardez s’il est placé avant `avoir`.\n- Si oui, accordez le participe avec lui.",
+                "fr": "Le pronom relatif `que` (ou `qu'`) est un COD : il reprend un nom placé avant le verbe. Le participe s’accorde donc avec ce nom : `La lettre que j'ai écrite est partie.` `Les villes qu'il a visitées sont belles.`\n\nMême règle dans une question avec `quel` : `Quelles villes as-tu visitées ?` Le COD `quelles villes` est devant `avoir`.\n\n- Cherche le COD en posant la question `quoi ?` après le verbe.\n- Regarde s’il est placé avant `avoir`.\n- Si oui, accorde le participe avec lui.",
                 "de": "Das Relativpronomen `que` (oder `qu'`) ist ein direktes Objekt: Es vertritt ein Nomen vor dem Verb. Deshalb gleicht sich das Partizip an dieses Nomen an: `La lettre que j'ai écrite est partie.` `Les villes qu'il a visitées sont belles.`\n\nDie gleiche Regel gilt in einer Frage mit `quel`: `Quelles villes as-tu visitées ?` Das Objekt `quelles villes` steht vor `avoir`.\n\n- Such das Objekt, indem du nach dem Verb `quoi ?` fragst.\n- Prüfe, ob es vor `avoir` steht.\n- Wenn ja, gleiche das Partizip daran an."
               },
               "formTable": [
@@ -521,7 +521,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -625,7 +625,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -717,7 +717,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -811,7 +811,7 @@
       "id": "feedback",
       "role": "feedback",
       "blockId": null,
-      "label": { "en": "Your feedback", "fr": "Votre retour", "de": "Dein Feedback" },
+      "label": { "en": "Your feedback", "fr": "Ton retour", "de": "Dein Feedback" },
       "pages": [
         {
           "pageId": "feedback",
@@ -819,7 +819,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Continue to the final exam.",
-            "fr": "Passez à l’examen final.",
+            "fr": "Passe à l’examen final.",
             "de": "Weiter zur Abschlussprüfung."
           },
           "items": [{ "type": "production_feedback_placeholder", "itemId": "feedback" }]
@@ -838,7 +838,7 @@
           "timeLimitS": 130,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -906,7 +906,7 @@
           "timeLimitS": 130,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -974,7 +974,7 @@
           "timeLimitS": 120,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [

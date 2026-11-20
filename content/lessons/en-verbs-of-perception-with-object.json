@@ -7,7 +7,7 @@
   "title": "Verbs of perception: I saw him leave, I heard her singing",
   "objective": {
     "en": "Say what you saw, heard or noticed with a perception verb + object + -ing for an action in progress, or + base form for a whole action: I heard someone shouting. I saw him wink.",
-    "fr": "Dire ce que vous avez vu, entendu ou remarqué avec un verbe de perception + objet + -ing pour une action en cours, ou + forme de base pour une action entière : I saw him wink.",
+    "fr": "Dire ce que tu as vu, entendu ou remarqué avec un verbe de perception + objet + -ing pour une action en cours, ou + forme de base pour une action entière : I saw him wink.",
     "de": "Sagen, was man gesehen, gehört oder bemerkt hat: Wahrnehmungsverb + Objekt + -ing für eine laufende Handlung oder + Grundform für eine ganze Handlung: I heard someone shouting."
   },
   "estimatedMinutes": 19,
@@ -40,7 +40,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -114,7 +114,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -234,7 +234,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -246,7 +246,7 @@
               "accepted": { "answers": ["waiting"] },
               "hint": {
                 "en": "wait: use the -ing form",
-                "fr": "wait : utilisez la forme en -ing",
+                "fr": "wait : utilise la forme en -ing",
                 "de": "wait: die -ing-Form benutzen"
               },
               "ruleIds": ["rule-ing"],
@@ -264,7 +264,7 @@
               "accepted": { "answers": ["playing"] },
               "hint": {
                 "en": "play: use the -ing form",
-                "fr": "play : utilisez la forme en -ing",
+                "fr": "play : utilise la forme en -ing",
                 "de": "play: die -ing-Form benutzen"
               },
               "ruleIds": ["rule-ing"],
@@ -282,7 +282,7 @@
               "accepted": { "answers": ["decorating"] },
               "hint": {
                 "en": "decorate: use the -ing form",
-                "fr": "decorate : utilisez la forme en -ing",
+                "fr": "decorate : utilise la forme en -ing",
                 "de": "decorate: die -ing-Form benutzen"
               },
               "ruleIds": ["rule-ing"],
@@ -300,7 +300,7 @@
               "accepted": { "answers": ["arguing"] },
               "hint": {
                 "en": "argue: use the -ing form",
-                "fr": "argue : utilisez la forme en -ing",
+                "fr": "argue : utilise la forme en -ing",
                 "de": "argue: die -ing-Form benutzen"
               },
               "ruleIds": ["rule-ing"],
@@ -326,7 +326,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -433,7 +433,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -448,7 +448,7 @@
               },
               "text": {
                 "en": "Use the **base form** (the infinitive without to) when you saw or heard the **whole action**, from start to finish: `I saw him wink.` `We heard her sing the whole song.`\n\nCompare `I heard her sing.` (the whole song) with `I heard her singing.` (only part of it).\n\n- Never add to after the object: not `I saw him to leave`, but `I saw him leave.`\n- A short, quick action usually takes the base form: `I felt something touch my arm.`\n- With see, hear and watch both patterns exist: the meaning decides.",
-                "fr": "Utilisez la **forme de base** (l’infinitif sans to) quand vous avez vu ou entendu l’**action entière**, du début à la fin : `I saw him wink.` `We heard her sing the whole song.`\n\nComparez `I heard her sing.` (toute la chanson) et `I heard her singing.` (une partie seulement).\n\n- N’ajoutez jamais to après le complément : pas `I saw him to leave`, mais `I saw him leave.`\n- Une action courte et rapide prend souvent la forme de base : `I felt something touch my arm.`\n- Avec see, hear et watch, les deux structures existent : le sens décide.",
+                "fr": "Utilise la **forme de base** (l’infinitif sans to) quand tu as vu ou entendu l’**action entière**, du début à la fin : `I saw him wink.` `We heard her sing the whole song.`\n\nCompare `I heard her sing.` (toute la chanson) et `I heard her singing.` (une partie seulement).\n\n- N’ajoute jamais to après le complément : pas `I saw him to leave`, mais `I saw him leave.`\n- Une action courte et rapide prend souvent la forme de base : `I felt something touch my arm.`\n- Avec see, hear et watch, les deux structures existent : le sens décide.",
                 "de": "Verwende die **Grundform** (Infinitiv ohne to), wenn du die **ganze Handlung** vom Anfang bis zum Ende gesehen oder gehört hast: `I saw him wink.` `We heard her sing the whole song.`\n\nVergleiche `I heard her sing.` (das ganze Lied) mit `I heard her singing.` (nur ein Teil).\n\n- Setze nach dem Objekt nie to: nicht `I saw him to leave`, sondern `I saw him leave.`\n- Eine kurze, schnelle Handlung steht meist in der Grundform: `I felt something touch my arm.`\n- Bei see, hear und watch gibt es beide Muster: Die Bedeutung entscheidet."
               },
               "formTable": [
@@ -507,7 +507,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -627,7 +627,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -747,7 +747,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -759,7 +759,7 @@
               "accepted": { "answers": ["wink"] },
               "hint": {
                 "en": "wink: use the base form",
-                "fr": "wink : utilisez la forme de base",
+                "fr": "wink : utilise la forme de base",
                 "de": "wink: die Grundform benutzen"
               },
               "ruleIds": ["rule-base"],
@@ -777,7 +777,7 @@
               "accepted": { "answers": ["slam"] },
               "hint": {
                 "en": "slam: use the base form",
-                "fr": "slam : utilisez la forme de base",
+                "fr": "slam : utilise la forme de base",
                 "de": "slam: die Grundform benutzen"
               },
               "ruleIds": ["rule-base"],
@@ -795,7 +795,7 @@
               "accepted": { "answers": ["disappear"] },
               "hint": {
                 "en": "disappear: use the base form",
-                "fr": "disappear : utilisez la forme de base",
+                "fr": "disappear : utilise la forme de base",
                 "de": "disappear: die Grundform benutzen"
               },
               "ruleIds": ["rule-base"],
@@ -813,7 +813,7 @@
               "accepted": { "answers": ["announce"] },
               "hint": {
                 "en": "announce: use the base form",
-                "fr": "announce : utilisez la forme de base",
+                "fr": "announce : utilise la forme de base",
                 "de": "announce: die Grundform benutzen"
               },
               "ruleIds": ["rule-base"],
@@ -839,7 +839,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it.",
-            "fr": "Trouvez le mot faux et corrigez-le.",
+            "fr": "Trouve le mot faux et corrige-le.",
             "de": "Finde das falsche Wort und korrigiere es."
           },
           "items": [
@@ -952,7 +952,7 @@
       "id": "feedback",
       "role": "feedback",
       "blockId": null,
-      "label": { "en": "Your feedback", "fr": "Votre retour", "de": "Dein Feedback" },
+      "label": { "en": "Your feedback", "fr": "Ton retour", "de": "Dein Feedback" },
       "pages": [
         {
           "pageId": "feedback",
@@ -960,7 +960,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Continue to the final exam.",
-            "fr": "Passez à l’examen final.",
+            "fr": "Passe à l’examen final.",
             "de": "Weiter zur Abschlussprüfung."
           },
           "items": [{ "type": "production_feedback_placeholder", "itemId": "feedback" }]
@@ -979,7 +979,7 @@
           "timeLimitS": 100,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -1033,7 +1033,7 @@
           "timeLimitS": 120,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -1087,7 +1087,7 @@
           "timeLimitS": 150,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [

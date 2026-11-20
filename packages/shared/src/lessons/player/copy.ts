@@ -18,7 +18,7 @@ export const PLAYER_COPY = {
   /** The label of the exam step in every lesson, whatever its file says: Final exam. */
   exam: COPY.exam[0],
   /** The heading of the exam info page, as the prototype's. */
-  examIntro: L('Your final exam', 'Votre examen final', 'Deine Abschlussprüfung'),
+  examIntro: L('Your final exam', 'Ton examen final', 'Deine Abschlussprüfung'),
   /** Outline sections. */
   exercises: L('Exercises', 'Exercices', 'Übungen'),
   keywords: L('Key words', 'Mots clés', 'Schlüsselwörter'),

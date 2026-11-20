@@ -36,7 +36,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -117,7 +117,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -221,7 +221,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -313,7 +313,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -422,7 +422,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -437,7 +437,7 @@
               },
               "text": {
                 "en": "To say **since when** something has been going on, use `depuis` + a length of time or a starting point + the **present**: `J'habite ici depuis deux ans.` `Elle travaille ici depuis 2019.`\n\nTo ask the question: `Depuis quand habites-tu ici ?` or `Ça fait combien de temps que tu habites ici ?`\n\n- Do not mix up `depuis` and `il y a`. `Il y a` + a length of time says **when** something happened, with the passé composé: `Je suis arrivé il y a deux ans.`\n- `Depuis` + present: the situation continues. `Il y a` + passé composé: the action is over.\n- With `ne... pas`, for something that has not happened, `depuis` goes with the passé composé: `Je n'ai pas dormi depuis deux jours.` With `ne... plus`, the present stays: `Il ne fume plus depuis un an.`",
-                "fr": "Pour dire **depuis quand** quelque chose dure, on emploie `depuis` + une durée ou un point de départ + le **présent** : `J'habite ici depuis deux ans.` `Elle travaille ici depuis 2019.`\n\nPour poser la question : `Depuis quand habites-tu ici ?` ou `Ça fait combien de temps que tu habites ici ?`\n\n- Ne confondez pas `depuis` et `il y a`. `Il y a` + une durée dit **quand** quelque chose s'est passé, avec le passé composé : `Je suis arrivé il y a deux ans.`\n- `Depuis` + présent : la situation continue. `Il y a` + passé composé : l'action est terminée.\n- Avec `ne... pas`, pour quelque chose qui ne s'est pas produit, `depuis` s'emploie avec le passé composé : `Je n'ai pas dormi depuis deux jours.` Avec `ne... plus`, le présent reste : `Il ne fume plus depuis un an.`",
+                "fr": "Pour dire **depuis quand** quelque chose dure, on emploie `depuis` + une durée ou un point de départ + le **présent** : `J'habite ici depuis deux ans.` `Elle travaille ici depuis 2019.`\n\nPour poser la question : `Depuis quand habites-tu ici ?` ou `Ça fait combien de temps que tu habites ici ?`\n\n- Ne confonds pas `depuis` et `il y a`. `Il y a` + une durée dit **quand** quelque chose s'est passé, avec le passé composé : `Je suis arrivé il y a deux ans.`\n- `Depuis` + présent : la situation continue. `Il y a` + passé composé : l'action est terminée.\n- Avec `ne... pas`, pour quelque chose qui ne s'est pas produit, `depuis` s'emploie avec le passé composé : `Je n'ai pas dormi depuis deux jours.` Avec `ne... plus`, le présent reste : `Il ne fume plus depuis un an.`",
                 "de": "Um zu sagen, **seit wann** etwas andauert, verwendet man `depuis` + eine Zeitspanne oder einen Anfangspunkt + das **Präsens**: `J'habite ici depuis deux ans.` `Elle travaille ici depuis 2019.`\n\nDie Frage lautet: `Depuis quand habites-tu ici ?` oder `Ça fait combien de temps que tu habites ici ?`\n\n- Verwechsle `depuis` nicht mit `il y a`. `Il y a` + Zeitspanne sagt, **wann** etwas geschah, mit dem Passé composé: `Je suis arrivé il y a deux ans.`\n- `Depuis` + Präsens: Die Situation dauert an. `Il y a` + Passé composé: Die Handlung ist abgeschlossen.\n- Mit `ne... pas`, für etwas, das nicht geschehen ist, steht `depuis` mit dem Passé composé: `Je n'ai pas dormi depuis deux jours.` Mit `ne... plus` bleibt das Präsens: `Il ne fume plus depuis un an.`"
               },
               "formTable": [
@@ -503,7 +503,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -607,7 +607,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -695,7 +695,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it.",
-            "fr": "Trouvez le mot faux et corrigez-le.",
+            "fr": "Trouve le mot faux et corrige-le.",
             "de": "Finde das falsche Wort und korrigiere es."
           },
           "items": [
@@ -805,7 +805,7 @@
       "id": "feedback",
       "role": "feedback",
       "blockId": null,
-      "label": { "en": "Your feedback", "fr": "Votre retour", "de": "Dein Feedback" },
+      "label": { "en": "Your feedback", "fr": "Ton retour", "de": "Dein Feedback" },
       "pages": [
         {
           "pageId": "feedback",
@@ -813,7 +813,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Continue to the final exam.",
-            "fr": "Passez à l’examen final.",
+            "fr": "Passe à l’examen final.",
             "de": "Weiter zur Abschlussprüfung."
           },
           "items": [{ "type": "production_feedback_placeholder", "itemId": "feedback" }]
@@ -832,7 +832,7 @@
           "timeLimitS": 100,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -900,7 +900,7 @@
           "timeLimitS": 80,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -954,7 +954,7 @@
           "timeLimitS": 100,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [

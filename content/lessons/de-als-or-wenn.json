@@ -40,7 +40,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -55,7 +55,7 @@
               },
               "text": {
                 "en": "Use `als` for something that happened **one single time** in the past: `Als ich zehn war, zogen wir um.`\n\n`als` also fits a single longer period in the past: `Als ich Kind war, wohnten wir in Köln.`\n\n- In a clause with `als` the conjugated verb stands at the **end**.\n- When the `als` clause comes first, the verb of the main clause comes directly after the comma: `Als wir ankamen, regnete es.`\n- The `als` clause can also come second: `Es regnete, als wir ankamen.`",
-                "fr": "Utilisez `als` pour ce qui s’est passé **une seule fois** dans le passé : `Als ich zehn war, zogen wir um.`\n\n`als` convient aussi à une seule période plus longue du passé : `Als ich Kind war, wohnten wir in Köln.`\n\n- Dans une proposition avec `als`, le verbe conjugué est à la **fin**.\n- Quand la proposition avec `als` vient en premier, le verbe de la principale suit directement la virgule : `Als wir ankamen, regnete es.`\n- La proposition avec `als` peut aussi venir en second : `Es regnete, als wir ankamen.`",
+                "fr": "Utilise `als` pour ce qui s’est passé **une seule fois** dans le passé : `Als ich zehn war, zogen wir um.`\n\n`als` convient aussi à une seule période plus longue du passé : `Als ich Kind war, wohnten wir in Köln.`\n\n- Dans une proposition avec `als`, le verbe conjugué est à la **fin**.\n- Quand la proposition avec `als` vient en premier, le verbe de la principale suit directement la virgule : `Als wir ankamen, regnete es.`\n- La proposition avec `als` peut aussi venir en second : `Es regnete, als wir ankamen.`",
                 "de": "Verwende `als` für etwas, das **ein einziges Mal** in der Vergangenheit passiert ist: `Als ich zehn war, zogen wir um.`\n\n`als` passt auch zu einem einzelnen längeren Zeitraum in der Vergangenheit: `Als ich Kind war, wohnten wir in Köln.`\n\n- Im Satz mit `als` steht das konjugierte Verb am **Ende**.\n- Steht der `als`-Satz zuerst, folgt das Verb des Hauptsatzes direkt nach dem Komma: `Als wir ankamen, regnete es.`\n- Der `als`-Satz kann auch an zweiter Stelle stehen: `Es regnete, als wir ankamen.`"
               },
               "formTable": [],
@@ -110,7 +110,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -214,7 +214,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -306,7 +306,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -428,7 +428,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -443,7 +443,7 @@
               },
               "text": {
                 "en": "Use `wenn` for things that **repeat** in the past, and for the present and the future: `Immer wenn er kam, brachte er Blumen mit.`\n\nPresent: `Wenn ich müde bin, trinke ich Kaffee.` Future: `Wenn ich morgen Zeit habe, rufe ich dich an.`\n\nCompare:\n\n- once in the past: `Als ich gestern ankam, schlief er schon.`\n- again and again in the past: `Immer wenn ich ankam, schlief er schon.`\n\nThe verb stands at the end here, too: `Wenn es regnet, bleiben wir zu Hause.`",
-                "fr": "Utilisez `wenn` pour ce qui se **répète** dans le passé, ainsi que pour le présent et le futur : `Immer wenn er kam, brachte er Blumen mit.`\n\nAu présent : `Wenn ich müde bin, trinke ich Kaffee.` Au futur : `Wenn ich morgen Zeit habe, rufe ich dich an.`\n\nComparez :\n\n- une seule fois dans le passé : `Als ich gestern ankam, schlief er schon.`\n- encore et encore dans le passé : `Immer wenn ich ankam, schlief er schon.`\n\nLe verbe est aussi à la fin ici : `Wenn es regnet, bleiben wir zu Hause.`",
+                "fr": "Utilise `wenn` pour ce qui se **répète** dans le passé, ainsi que pour le présent et le futur : `Immer wenn er kam, brachte er Blumen mit.`\n\nAu présent : `Wenn ich müde bin, trinke ich Kaffee.` Au futur : `Wenn ich morgen Zeit habe, rufe ich dich an.`\n\nCompare :\n\n- une seule fois dans le passé : `Als ich gestern ankam, schlief er schon.`\n- encore et encore dans le passé : `Immer wenn ich ankam, schlief er schon.`\n\nLe verbe est aussi à la fin ici : `Wenn es regnet, bleiben wir zu Hause.`",
                 "de": "Verwende `wenn` für das, was sich in der Vergangenheit **wiederholt**, sowie für Gegenwart und Zukunft: `Immer wenn er kam, brachte er Blumen mit.`\n\nGegenwart: `Wenn ich müde bin, trinke ich Kaffee.` Zukunft: `Wenn ich morgen Zeit habe, rufe ich dich an.`\n\nVergleiche:\n\n- einmal in der Vergangenheit: `Als ich gestern ankam, schlief er schon.`\n- immer wieder in der Vergangenheit: `Immer wenn ich ankam, schlief er schon.`\n\nAuch hier steht das Verb am Ende: `Wenn es regnet, bleiben wir zu Hause.`"
               },
               "formTable": [],
@@ -505,7 +505,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -609,7 +609,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -697,7 +697,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it.",
-            "fr": "Trouvez le mot faux et corrigez-le.",
+            "fr": "Trouve le mot faux et corrige-le.",
             "de": "Finde das falsche Wort und korrigiere es."
           },
           "items": [
@@ -794,7 +794,7 @@
       "id": "feedback",
       "role": "feedback",
       "blockId": null,
-      "label": { "en": "Your feedback", "fr": "Votre retour", "de": "Dein Feedback" },
+      "label": { "en": "Your feedback", "fr": "Ton retour", "de": "Dein Feedback" },
       "pages": [
         {
           "pageId": "feedback",
@@ -802,7 +802,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Continue to the final exam.",
-            "fr": "Passez à l’examen final.",
+            "fr": "Passe à l’examen final.",
             "de": "Weiter zur Abschlussprüfung."
           },
           "items": [{ "type": "production_feedback_placeholder", "itemId": "feedback" }]
@@ -821,7 +821,7 @@
           "timeLimitS": 240,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -917,7 +917,7 @@
           "timeLimitS": 240,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [

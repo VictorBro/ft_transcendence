@@ -48,7 +48,7 @@
       "targetIds": ["onkel", "tante", "cousin", "cousine", "neffe", "nichte"],
       "introduction": {
         "en": "These relatives come in male and female pairs. Learn each noun with its **article**:\n\n- `der Onkel`\n- `die Tante`\n- `der Cousin`\n- `die Cousine`\n- `der Neffe`\n- `die Nichte`",
-        "fr": "Ces membres de la famille vont par paires masculin et féminin. Apprenez chaque nom avec son **article** :\n\n- `der Onkel`\n- `die Tante`\n- `der Cousin`\n- `die Cousine`\n- `der Neffe`\n- `die Nichte`",
+        "fr": "Ces membres de la famille vont par paires masculin et féminin. Apprends chaque nom avec son **article** :\n\n- `der Onkel`\n- `die Tante`\n- `der Cousin`\n- `die Cousine`\n- `der Neffe`\n- `die Nichte`",
         "de": "Diese Verwandten gibt es als männliche und weibliche Paare. Lerne jedes Nomen mit seinem **Artikel**:\n\n- `der Onkel`\n- `die Tante`\n- `der Cousin`\n- `die Cousine`\n- `der Neffe`\n- `die Nichte`"
       }
     },
@@ -95,7 +95,7 @@
       "ambiguityNote": null,
       "explanation": {
         "en": "Der Onkel is the brother of your father or mother.",
-        "fr": "Der Onkel est le frère de votre père ou de votre mère.",
+        "fr": "Der Onkel est le frère de ton père ou de ta mère.",
         "de": "Der Onkel ist der Bruder von Vater oder Mutter."
       },
       "genderExplanation": {
@@ -112,7 +112,7 @@
         "referenceTargetIds": ["onkel", "tante", "cousin", "enkelin"],
         "explanation": {
           "en": "The brother of your mother is your uncle.",
-          "fr": "Le frère de votre mère est votre oncle.",
+          "fr": "Le frère de ta mère est ton oncle.",
           "de": "Der Bruder deiner Mutter ist dein Onkel."
         }
       },
@@ -138,7 +138,7 @@
       "ambiguityNote": null,
       "explanation": {
         "en": "Die Tante is the sister of your father or mother.",
-        "fr": "Die Tante est la sœur de votre père ou de votre mère.",
+        "fr": "Die Tante est la sœur de ton père ou de ta mère.",
         "de": "Die Tante ist die Schwester von Vater oder Mutter."
       },
       "genderExplanation": {
@@ -155,7 +155,7 @@
         "referenceTargetIds": ["tante", "onkel", "neffe", "enkel"],
         "explanation": {
           "en": "The sister of your father is your aunt.",
-          "fr": "La sœur de votre père est votre tante.",
+          "fr": "La sœur de ton père est ta tante.",
           "de": "Die Schwester deines Vaters ist deine Tante."
         }
       },
@@ -181,7 +181,7 @@
       "ambiguityNote": null,
       "explanation": {
         "en": "Der Cousin is the son of your uncle or aunt.",
-        "fr": "Der Cousin est le fils de votre oncle ou de votre tante.",
+        "fr": "Der Cousin est le fils de ton oncle ou de ta tante.",
         "de": "Der Cousin ist der Sohn von Onkel oder Tante."
       },
       "genderExplanation": {
@@ -198,7 +198,7 @@
         "referenceTargetIds": ["cousin", "onkel", "enkel", "schwager"],
         "explanation": {
           "en": "The son of your aunt is your cousin.",
-          "fr": "Le fils de votre tante est votre cousin.",
+          "fr": "Le fils de ta tante est ton cousin.",
           "de": "Der Sohn deiner Tante ist dein Cousin."
         }
       },
@@ -227,7 +227,7 @@
       "ambiguityNote": null,
       "explanation": {
         "en": "Die Cousine is the daughter of your uncle or aunt.",
-        "fr": "Die Cousine est la fille de votre oncle ou de votre tante.",
+        "fr": "Die Cousine est la fille de ton oncle ou de ta tante.",
         "de": "Die Cousine ist die Tochter von Onkel oder Tante."
       },
       "genderExplanation": {
@@ -244,7 +244,7 @@
         "referenceTargetIds": ["cousine", "nichte", "enkelin", "schwiegermutter"],
         "explanation": {
           "en": "The daughter of your uncle is your cousin.",
-          "fr": "La fille de votre oncle est votre cousine.",
+          "fr": "La fille de ton oncle est ta cousine.",
           "de": "Die Tochter deines Onkels ist deine Cousine."
         }
       },
@@ -270,7 +270,7 @@
       "ambiguityNote": null,
       "explanation": {
         "en": "Der Neffe is the son of your brother or sister.",
-        "fr": "Der Neffe est le fils de votre frère ou de votre sœur.",
+        "fr": "Der Neffe est le fils de ton frère ou de ta sœur.",
         "de": "Der Neffe ist der Sohn von Bruder oder Schwester."
       },
       "genderExplanation": {
@@ -287,7 +287,7 @@
         "referenceTargetIds": ["neffe", "cousin", "schwager", "enkel"],
         "explanation": {
           "en": "The son of your sister is your nephew.",
-          "fr": "Le fils de votre sœur est votre neveu.",
+          "fr": "Le fils de ta sœur est ton neveu.",
           "de": "Der Sohn deiner Schwester ist dein Neffe."
         }
       },
@@ -313,7 +313,7 @@
       "ambiguityNote": null,
       "explanation": {
         "en": "Die Nichte is the daughter of your brother or sister.",
-        "fr": "Die Nichte est la fille de votre frère ou de votre sœur.",
+        "fr": "Die Nichte est la fille de ton frère ou de ta sœur.",
         "de": "Die Nichte ist die Tochter von Bruder oder Schwester."
       },
       "genderExplanation": {
@@ -330,7 +330,7 @@
         "referenceTargetIds": ["nichte", "cousine", "enkelin", "tante"],
         "explanation": {
           "en": "The daughter of your brother is your niece.",
-          "fr": "La fille de votre frère est votre nièce.",
+          "fr": "La fille de ton frère est ta nièce.",
           "de": "Die Tochter deines Bruders ist deine Nichte."
         }
       },
@@ -359,7 +359,7 @@
       "ambiguityNote": null,
       "explanation": {
         "en": "Der Enkel is the son of your son or daughter.",
-        "fr": "Der Enkel est le fils de votre fils ou de votre fille.",
+        "fr": "Der Enkel est le fils de ton fils ou de ta fille.",
         "de": "Der Enkel ist der Sohn von Sohn oder Tochter."
       },
       "genderExplanation": {
@@ -376,7 +376,7 @@
         "referenceTargetIds": ["enkel", "neffe", "cousin", "schwiegervater"],
         "explanation": {
           "en": "The son of your son is your grandson.",
-          "fr": "Le fils de votre fils est votre petit-fils.",
+          "fr": "Le fils de ton fils est ton petit-fils.",
           "de": "Der Sohn deines Sohnes ist dein Enkel."
         }
       },
@@ -405,7 +405,7 @@
       "ambiguityNote": null,
       "explanation": {
         "en": "Die Enkelin is the daughter of your son or daughter.",
-        "fr": "Die Enkelin est la fille de votre fils ou de votre fille.",
+        "fr": "Die Enkelin est la fille de ton fils ou de ta fille.",
         "de": "Die Enkelin ist die Tochter von Sohn oder Tochter."
       },
       "genderExplanation": {
@@ -422,7 +422,7 @@
         "referenceTargetIds": ["enkelin", "nichte", "cousine", "tante"],
         "explanation": {
           "en": "The daughter of your daughter is your granddaughter.",
-          "fr": "La fille de votre fille est votre petite-fille.",
+          "fr": "La fille de ta fille est ta petite-fille.",
           "de": "Die Tochter deiner Tochter ist deine Enkelin."
         }
       },
@@ -451,7 +451,7 @@
       "ambiguityNote": null,
       "explanation": {
         "en": "Die Verwandten are all the people who belong to your family.",
-        "fr": "Die Verwandten désigne toutes les personnes de votre famille.",
+        "fr": "Die Verwandten désigne toutes les personnes de ta famille.",
         "de": "Die Verwandten sind alle Personen, die zur Familie gehören."
       },
       "genderExplanation": {
@@ -497,7 +497,7 @@
       "ambiguityNote": null,
       "explanation": {
         "en": "Die Schwiegermutter is the mother of your husband or wife.",
-        "fr": "Die Schwiegermutter est la mère de votre mari ou de votre femme.",
+        "fr": "Die Schwiegermutter est la mère de ton mari ou de ta femme.",
         "de": "Die Schwiegermutter ist die Mutter von Ehemann oder Ehefrau."
       },
       "genderExplanation": {
@@ -514,7 +514,7 @@
         "referenceTargetIds": ["schwiegermutter", "tante", "cousine", "nichte"],
         "explanation": {
           "en": "The mother of your wife is your mother-in-law.",
-          "fr": "La mère de votre femme est votre belle-mère.",
+          "fr": "La mère de ta femme est ta belle-mère.",
           "de": "Die Mutter deiner Frau ist deine Schwiegermutter."
         }
       },
@@ -543,7 +543,7 @@
       "ambiguityNote": null,
       "explanation": {
         "en": "Der Schwiegervater is the father of your husband or wife.",
-        "fr": "Der Schwiegervater est le père de votre mari ou de votre femme.",
+        "fr": "Der Schwiegervater est le père de ton mari ou de ta femme.",
         "de": "Der Schwiegervater ist der Vater von Ehemann oder Ehefrau."
       },
       "genderExplanation": {
@@ -560,7 +560,7 @@
         "referenceTargetIds": ["schwiegervater", "onkel", "neffe", "schwager"],
         "explanation": {
           "en": "The father of your wife is your father-in-law.",
-          "fr": "Le père de votre femme est votre beau-père.",
+          "fr": "Le père de ta femme est ton beau-père.",
           "de": "Der Vater deiner Frau ist dein Schwiegervater."
         }
       },
@@ -589,7 +589,7 @@
       "ambiguityNote": null,
       "explanation": {
         "en": "Der Schwager is the brother of your husband or wife, or the husband of your sister.",
-        "fr": "Der Schwager est le frère de votre mari ou de votre femme, ou le mari de votre sœur.",
+        "fr": "Der Schwager est le frère de ton mari ou de ta femme, ou le mari de ta sœur.",
         "de": "Der Schwager ist der Bruder von Ehemann oder Ehefrau oder der Mann der Schwester."
       },
       "genderExplanation": {
@@ -606,7 +606,7 @@
         "referenceTargetIds": ["schwager", "schwiegervater", "cousin", "enkel"],
         "explanation": {
           "en": "The brother of your wife is your brother-in-law.",
-          "fr": "Le frère de votre femme est votre beau-frère.",
+          "fr": "Le frère de ta femme est ton beau-frère.",
           "de": "Der Bruder deiner Frau ist dein Schwager."
         }
       },
