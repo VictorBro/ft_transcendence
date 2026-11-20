@@ -1,7 +1,9 @@
 # Product Architecture
 
-The product, the modules, the AI layer and the schema. [TECHNICAL_PLAN.md](TECHNICAL_PLAN.md)
-covers the infrastructure around it: repository layout, containers, CI and build order.
+The product, the modules, the AI layer and the schema, as built at the end of Milestone 2.
+[TECHNICAL_PLAN.md](TECHNICAL_PLAN.md) covers the infrastructure around it (repository layout,
+containers, CI and build order), [ARCHITECTURE.md](ARCHITECTURE.md) the containers and the request
+paths, and [LESSONS.md](LESSONS.md) the lesson content, its seeding and the lesson player.
 
 The subject lists this project by name in chapter V.6:
 
@@ -15,22 +17,27 @@ The subject lists this project by name in chapter V.6:
 The product is one loop, repeated. Everything in this document exists to serve it.
 
 ```
-sign up / log in  →  onboarding  →  placement   →    daily goal    →    lesson  →  daily goal …
-                     (2 questions)  (binary search)  (today's lessons)  (teach → drill → score)
+sign up / log in  →  onboarding  →  placement   →    daily goal    →    lesson    →  results  →  daily goal …
+                     (2 questions)  (binary search)  (today's lessons)  (practice → discussion
+                                                                          → exam)
 ```
 
 | Step | What the learner sees | What the system does |
 |---|---|---|
 | **Onboarding** | Two questions: which language to learn, and a daily goal (10, 30 or 60 minutes). Repeated per language, so adding a second course starts here again | Creates a `UserLevel` row for that `(user, language)`. `level` stays null until placement sets it. No AI call. |
 | **Placement** | One question at a time, each with its own countdown, then a red and green report. Skippable by a learner who already knows their level, and overridable if they disagree with the result | Binary search over the six CEFR levels, in **our code**. Questions are multiple choice, so scoring is a string comparison, and the LLM restocks a cell in the background once a learner is down to 3 unseen questions in it. Writes `UserLevel.level`. See §1.2 |
-| **Daily goal** | Today's lessons from the level's syllabus: the ones that meet the goal, three extra, the streak and the level's progress. Nothing is locked: any lesson of the course language can be opened, and the all lessons page lists the whole level | Reads the seeded `Lesson` catalogue for (language, level) and the course's `LessonResult` rows, and proposes the lowest lessons not yet passed (§1.3). Writes nothing. No AI call. How the syllabus is sized and written is in [LESSONS.md](LESSONS.md) |
-| **Lesson** | The lesson itself: its exercises one page at a time, then an exam, then a score. **This is the next milestone, designed later**: until it ships, a stub page finishes a lesson with a typed score | Plays a lesson written ahead and committed to the repo (§1.4, [LESSONS.md](LESSONS.md)). Whether an AI tutor or corrections join it is decided with the lesson page |
-| **Result** | The score, mistakes to review, and the lesson counted toward today's goal, pass or fail | Score computed **in code** from the `Exercise` rows. The course's `LessonResult` keeps the best score, and the streak moves when the goal becomes met. No AI call. |
+| **Daily goal** | Today's lessons from the level's syllabus: the ones that meet the goal, three extra, the streak, the level's progress, XP and rank, and the daily challenge. Nothing is locked: any ready lesson of the course language can be played, and the all lessons page lists the whole level, "Coming soon" rows included | Reads the seeded `Lesson` catalogue for (language, level) and the course's `LessonResult` rows, and proposes the lowest **ready** lessons not yet passed (§1.3). Writes nothing. No AI call. How the syllabus is sized, written and seeded is in [LESSONS.md](LESSONS.md) |
+| **Lesson** | The lesson's start page, then the player: presentation and practice pages one at a time, each practice page corrected as soon as it is checked, a discussion with the lesson's tutor, then a timed exam (§1.4) | Plays a lesson written ahead and committed to the repo. The server runs the attempt in `LessonAttempt`: it sends only the page at the cursor, checks every answer and owns the exam timer. One LLM call per discussion message, streamed. Nothing else in a lesson calls the LLM |
+| **Results** | The score, every answer with its correction, the lesson counted toward today's goal pass or fail, and the XP, challenge and achievements it earned | Score computed **in code** from the answers the server stored, written once when the last page locks. The course's `LessonResult` keeps the best score, the streak moves when the goal becomes met, and the gamification columns and `UserAchievement` are written in the same transaction. No AI call |
 
 ### The rule that makes this work
 
-> **The LLM generates and judges individual items. Our code owns state, scoring and
+> **The LLM writes individual items and explains. Our code owns state, scoring and
 > progression.**
+
+In Milestone 2 the LLM does exactly two things at runtime: it restocks the placement bank when a
+cell runs low (§1.2), and it answers the learner on a lesson's discussion page (§1.4). It never
+writes a lesson, never scores an answer and never decides a level.
 
 This is the spine of the whole design, and it is worth defending in one place because every
 other decision follows from it:
@@ -42,8 +49,8 @@ other decision follows from it:
 - **It is testable.** With `LLM_PROVIDER=fixture` the entire progression is deterministic and
   unit-testable. Ask the LLM to own progression and nothing is testable without spending money.
   The proposal, the streak and level completion are pure functions with no clock and no database.
-- **It is cheap.** Proposing today's lessons, keeping the best score, moving the streak, deciding
-  that a level is complete, none of that needs a token.
+- **It is cheap.** Proposing today's lessons, scoring an attempt, keeping the best score, moving
+  the streak, deciding that a level is complete, none of that needs a token.
 - **It cannot embarrass you in a demo.** A model that decides to award B2 for a blank answer is
   a live failure. A binary search in TypeScript cannot.
 
@@ -119,9 +126,9 @@ their answer in red and the correct one in green. No explanations: nothing in th
 It is built from the run state and dies with it.
 
 **The run itself is not a table.** The bounds, the level being probed, the tally per category, the
-mistakes so far and the report live in Redis under the learner's session, with a TTL (§4). Close
-the session and the run goes with it. Two things outlive it: the `UserSeenQuestion` rows, and the
-final level.
+mistakes so far and the report live in Redis under the learner, `user:<id>:eval`, with a
+one-hour TTL (§4). A learner who signs in again within the hour comes back to the exam they left;
+after that the run is gone. Two things outlive it: the `UserSeenQuestion` rows, and the final level.
 
 **The whole run, drawn.** A thick border is an LLM call. There is one, off the draw's path: a
 cell is restocked in the background once a learner is down to 3 unseen questions in it.
@@ -167,17 +174,17 @@ lesson finished that day, 30 means three, 60 means six. That is why those three 
 others; ten divides all of them evenly. A finish counts pass or fail, from any list, and a lesson
 finished twice in a day counts once. Nothing tracks minutes, and `DailyStat` is not built.
 
-> **Open, for the team: how long a lesson takes.** The lessons of the prototype model are planned
-> at 10 to 15 minutes, more for some vocabulary lessons: `fr-subject-pronouns` has
-> `estimatedMinutes: 15`. Six of them can then take well over the 60-minute goal. Either the goal
-> keeps counting 1, 3 or 6 lessons and the minutes are a rough label, or the authoring kit
-> ([#83](https://github.com/VictorBro/ft_transcendence/issues/83)) keeps every lesson near ten
-> minutes. Until the team decides, this section assumes about ten.
+> **Open, for the team: how long a lesson takes.** The goal counts lessons at
+> `LESSON_MINUTES = 10`, but the 216 ready lessons are planned at 8 to 37 minutes
+> (`estimatedMinutes`, median 18). Six of them can take well over the 60-minute goal. Either the
+> goal keeps counting 1, 3 or 6 lessons and the minutes are a rough label, or the authoring kit
+> ([#83](https://github.com/VictorBro/ft_transcendence/issues/83)) keeps lessons nearer ten
+> minutes. The code does the first today.
 
 The goal does two things:
 
 - **Sizes today's plan.** The daily goal page proposes as many lessons as the goal still needs,
-  then three extra. They come from a queue over the current level: the lessons not finished
+  then three extra. They come from a queue over the current level's ready lessons: the ones not finished
   today, first the ones not yet passed in syllabus order (failed ones included), then passed
   ones as review, least recently finished first. Once the goal is met, only the three extra
   remain. The next day, the proposal starts again at the lowest lesson not yet passed.
@@ -191,7 +198,16 @@ The goal does two things:
   met this week".
 
 Gamification also reads the goal: meeting it earns XP, and one daily challenge asks for a lesson
-beyond it ([#94](https://github.com/VictorBro/ft_transcendence/issues/94)).
+beyond it ([#94](https://github.com/VictorBro/ft_transcendence/issues/94),
+[#95](https://github.com/VictorBro/ft_transcendence/issues/95)).
+
+**Gamification, per course.** XP (10 for a lesson's first finish of the day plus every point it
+adds to that lesson's best score, 20 for meeting the goal, 30 for the challenge) and ranks (rank
+n to n + 1 needs n × 100 more XP); one daily challenge out of six, picked by a hash of the course
+and the day, so nothing stores it; and 16 achievements, earned once and never lost. The rules are
+pure functions (`gamification.rules.ts`), the awards run inside the finish transaction
+(`gamification.ts`), and the course page, the results and `/learn/{lang}/achievements` show them
+(#97). Leaderboards, badges and rewards are not built.
 
 **The day is the learner's.** `User.timeZone` (an IANA zone sent by the browser, UTC by default)
 decides when a day ends, so a learner in Tokyo and one in New York each get their own midnight. A
@@ -199,8 +215,9 @@ finish that arrives after local midnight counts for the new day. A course's day 
 backwards: it is never before its `lastGoalDay` or its newest result's day, so a flight west
 cannot undo a day that was already met.
 
-**A level is complete when every lesson was attempted and at least 80% are passed.** A lesson is
-passed when its best score is 70 or more. Only a complete level offers "Start B1": attempting
+**A level is complete when every ready lesson was attempted and at least 80% are passed.** A
+lesson is passed when its best score is 70 or more. With 12 ready lessons per level today, that is
+all 12 attempted and 10 passed; the bar moves as more lessons become ready. Only a complete level offers "Start B1": attempting
 every lesson means the whole syllabus was seen, and 80% means it was learned, without asking for a
 perfect score on each one. The learner can still change level, or retake placement, at any time.
 **Switching level keeps all progress**: nothing is reset, and switching back continues where the
@@ -210,190 +227,164 @@ learner stopped.
 regenerates nothing and moves no progress: the same list of lessons is simply walked faster or
 slower. A syllabus per goal would mean three copies of every level to generate and review, and a
 learner dropping from 60 to 10 would need their finished lessons mapped onto a different list.
-Every lesson takes about ten minutes, so none of that arises: no single lesson can overflow the
-smallest goal. Every language has the same number of lessons per level, from 120 at A1 to 320 at
-C2. How many there are, how they are split by kind and how they are written is in
-[LESSONS.md](LESSONS.md).
+Every language has the same number of outline entries per level, from 120 at A1 to 320 at C2:
+3,990 `Lesson` rows in all, of which **216 are ready, the first 12 of each language and level**.
+How many there are, how they are split by kind, how they are written and how the seed sets `ready`
+is in [LESSONS.md](LESSONS.md) §0 to §4.
 
 What it must never do is gate content. A learner past their goal keeps going if they want; it
 is a target, not a cap, and a cap would punish exactly the behaviour the product exists for.
 **No lesson is locked either.** The order only decides which lessons are proposed: the learner can
-open any lesson of the course language, and every finish counts.
+open any ready lesson of the course language, of any level, and every finish counts.
 
-### 1.4 Anatomy of a lesson, and where RAG runs in it
+### 1.4 Anatomy of a lesson
 
-The lesson page is the milestone after the course roadmap. Until it ships, a stub page stands in
-for it and finishes a lesson with a typed score (§3).
+A lesson is **written ahead, not generated**: its exercises, answer keys, exam and scoring are in
+one or two committed JSON files, checked by the validators of the lesson prototype and copied into
+`Lesson.brief` and `Lesson.content` by the seed ([LESSONS.md](LESSONS.md) §4). The Milestone 2
+replan ([#137](https://github.com/VictorBro/ft_transcendence/issues/137)) replaced the earlier
+plan, where a tutor turned a short brief into exercises at runtime with RAG grounding and caches.
+None of that was built.
 
-> **The lesson model changed in the Milestone 2 replan
-> ([#137](https://github.com/VictorBro/ft_transcendence/issues/137)).** A lesson is no longer a
-> short brief that a tutor turns into exercises at runtime. It is written ahead, as a full lesson:
-> exercises, answer keys, an exam and scoring, in one file per lesson, checked by the validators
-> of the lesson prototype and committed to the repo ([LESSONS.md](LESSONS.md)). The walkthrough
-> below is the earlier tutor plan. The lesson page milestone, designed later, decides which of it
-> stays: the explanation, the RAG grounding, the corrections and the caches.
+**The four lesson pages.** Each kind has its own player (#146 to #149), on three routes under
+`/{locale}/learn/{lang}/lessons/{id}`: the start page, `/play` and `/results`.
 
-The earlier walkthrough, for a learner with a 10-minute goal who opens "passé composé":
-
-| Minute | What the learner sees | What the system does |
+| Kind | What the learner does | Web player |
 |---|---|---|
-| 0:00 | Opens the lesson, from today's proposal or from the all lessons page | Reads the seeded `Lesson` row by its id, with its brief and content. Nothing is written. No AI call |
-| 0:01 | The intro streams in, with a "source" citation | **Cache lookup first**, keyed on the lesson id. On a hit, the explanation replays from Redis: no retrieval, no LLM, no cost. On a miss: retrieve top-k chunks filtered on the lesson's `(language, level, topic or theme)`, stream the grounded explanation, cache it for everyone |
-| ~2:30 | First exercise appears | The exercise set was generated once per `(lesson id, seed)` as structured calls and cached the same way. Retrieved example sentences may serve as raw material at generation time |
-| each answer | The correction, with the mistakes named | One structured call: `{ correct, mistakes[], correctedText }`. **No retrieval here**: the learner is waiting, and judging an answer against its expected answer needs no reference passages |
-| whenever | Learner leaves mid-lesson | The answered `Exercise` rows attach to the course's `LessonResult` for this lesson, and a redo replaces them. The lesson page milestone decides how a lesson left halfway is saved and resumed |
-| end | The score, and "Daily goal reached" with the streak day | Score computed in code from the `Exercise` rows, then the finish: the best score lands on `LessonResult`, the lesson counts toward today's goal, and the goal met moves the streak. No AI call. The next lesson is offered; the goal never gates |
+| Grammar | Explanations, then exercises (matching, gaps to choose or type, word order, spot the error), then a timed exam | on `main` (#146) |
+| Vocabulary | Each group's introduction and flashcards, matching, a gender overview, practice, then a translation exam. No listening (below) | on `main` (#147) |
+| Functions | A situation with two roles, expressions, listening replies with **Show the text**, a dialogue, then an exam in parts | on `main` (#149) |
+| Reading | Two documents of one genre: one to learn with, a new one in the exam | not yet: #148, PR #203. Its start page says it cannot be played here yet |
 
-Whether the explanation and exercise caches also key on the interface language is for the lesson
-page milestone to decide.
+A learner with a 10-minute goal who opens a grammar lesson from today's proposal:
 
-So RAG runs in exactly three places, and two of them are invisible:
+| Moment | What the learner sees | What the system does |
+|---|---|---|
+| Start page | The title, the objective, the minutes and the numbered learning points | `GET …/attempt` reads the lesson row and the attempt, if any. Nothing is written |
+| Start | The first page | `POST …/attempt { locale }` creates the `LessonAttempt`: the mother tongue fixed from the interface locale, a new 32-byte secret, the cursor at 0 |
+| Each practice page | Its correction, as soon as it is checked | `POST …/attempt/pages/:index` locks that page's answers, scores them and moves the cursor. The keys of that page only are sent back |
+| Discussion page | A chat with the lesson's tutor, optional | `POST …/discussion` streams the tutor's answer as Server-Sent Events. Unscored, and nothing of it is stored (§5) |
+| Exam pages | A countdown per page, no correction | The deadline is set when the page is sent; a late page locks blank |
+| Results | The score, every answer and its correction, XP, the challenge and achievements | The last page locks: the results are written once, and the finish (best score, goal, streak, XP, achievements) runs in the same transaction |
 
-1. **Grounding the explanation**, on cache miss only. The first learner ever to open a B1
-   passé composé lesson pays the retrieval and the generation; everyone after replays the cache.
-2. **Sourcing exercise generation**, same cache-miss timing: retrieved level-graded sentences
-   make better raw material than the model's imagination.
-3. **"Ask the tutor"**, the free-form question box. The only interactive retrieval, because the
-   question is different every time and cannot be cached.
+Two rules shape every page ([LESSONS.md](LESSONS.md) §11):
 
-Retrieval is a server-side step inside prompt assembly. The learner never sees it, except as the
-citation under the explanation, which is also how the RAG module demonstrates itself at
-evaluation.
+- **The mother tongue.** The help around the lesson is in the interface language, unless that is
+  the course language, then in the first other of en, fr, de. It is fixed on the attempt at its
+  start.
+- **Vocabulary without listening.** The vocabulary player drops the prototype's listening choice
+  and dictation, so its exam is the translation only. Functions keep their listening replies, read
+  by the browser's speech synthesis, with **Show the text** for a browser that has no voice.
 
-### 1.5 The second mode: cross-language chat
+**The discussion step replaces the tutor walkthrough.** It is the only place a learner talks to
+the LLM in a lesson: one page, right before the exam info page, where the tutor knows the lesson's
+teaching fields and the learner's wrong practice answers, but never the exam or its answers. How it
+is built is in [LESSONS.md](LESSONS.md) §12 and [ARCHITECTURE.md](ARCHITECTURE.md) §5.
 
-The tutor is one half of the product. The other is two learners talking to each other, each in
-their own language, with the AI in the middle.
+### 1.5 Not built: cross-language chat
 
-```
-Anna (de) types   "Ich bin gestern nach Berlin gefahren."
-                            |
-                            +-- corrected for Anna, her own mistakes named
-                            +-- translated for Luc:  "Je suis allé à Berlin hier."
-```
-
-Anna never leaves German, Luc never leaves French, and both are reading real language written by
-a real person rather than generated practice text. It is the feature that makes this a platform
-rather than a quiz app, and it is what earns the real-time module: two clients, one shared
-conversation, updates neither of them asked for.
-
-Three things fall out of it:
-
-**One LLM call per message, not two.** Correcting the sender and translating for the recipient is
-a single structured call returning `{ corrected, mistakes[], translated }`. Two calls would double
-the cost and the latency for no gain.
-
-**The message sends before the AI answers.** `translated` and `correctedBody` are nullable and
-filled when the call returns. A rate-limited or slow model must delay the translation, never the
-message: a chat that blocks on an API is not a chat.
-
-**Chat mistakes count.** The corrections here produce the same `Mistake` rows a lesson exercise
-does, so "60% of your errors are verb agreement" covers how the learner actually writes, not only
-how they answer drills. That is why `Mistake` hangs off either an exercise or a message.
-
-This is also the strongest candidate if you ever need a **Modules of choice** entry: real-time
-cross-language conversation with inline correction is substantial, and easy to justify.
+An early idea paired two learners, each writing their own language, with one LLM call per message
+correcting the sender and translating for the other. It is not built. Direct messages between
+friends (#158) are plain text with no AI in the middle, and no table stores a correction or a
+mistake.
 
 ---
 
 ## 2. Modules and points
 
 14 required, bonus capped at +5, so **19 is the maximum that can count**. Anything beyond that
-is insurance against a module failing on the day.
+is insurance against a module failing on the day. A module shown at evaluation that does not fully
+work is worth 0.
 
-The team tracks each module's current status and points on the wiki:
-[status and points](https://github.com/VictorBro/ft_transcendence/wiki/status-points-on--4-October-2026).
+The README's Modules section (#160) carries the justification, the implementation and the owners
+of each module. This table is the plan it follows, with each module's state on `main`.
 
-### Core, build these, in this order
+| Chapter | Module | Type | Pts | State on `main` |
+|---|---|---|---|---|
+| IV.1 Web | Framework for frontend and backend | Major | 2 | Next.js 16 and NestJS 11 |
+| IV.1 Web | Real-time features with WebSockets | Major | 2 | Gateway on `/ws`: live course updates (#154), friend events (#155), online status (#157), direct messages (#158) |
+| IV.1 Web | User interaction: chat, profiles, friends | Major | 2 | Friends (#155), public profiles (#156), direct messages between friends (#158) |
+| IV.1 Web | ORM | Minor | 1 | Prisma 7 |
+| IV.1 Web | Server-side rendering | Minor | 1 | App Router server components; it has to be shown, see §9 |
+| IV.1 Web | Advanced search | Minor | 1 | The all lessons page: filters (status, kind, topic, theme, text), sort, group and numbered pages of 20 in the URL (#81, #87). Milestone 2 |
+| IV.2 Accessibility | Support for at least 3 languages | Minor | 1 | `next-intl`, English, French and German |
+| IV.2 Accessibility | Support for additional browsers | Minor | 1 | Every Playwright suite on Chromium, Firefox and WebKit in CI (#159) |
+| IV.3 User management | Standard user management | Major | 2 | Profile, avatar, friends, public profiles, online status |
+| IV.3 User management | Complete 2FA | Minor | 1 | TOTP and recovery codes |
+| IV.4 Artificial intelligence | Complete LLM system interface | Major | 2 | Gemini behind `LlmProvider`: the placement bank restock (structured output) and the lesson discussion (streaming), with error handling and rate limits (#150, #151). Milestone 2 |
+| IV.6 Gaming and UX | Gamification | Minor | 1 | XP and ranks, a daily challenge and 16 achievements, stored per course (#94, #95, #97). Milestone 2 |
+| IV.7 DevOps | Monitoring with Prometheus and Grafana | Major | 2 | [MONITORING.md](MONITORING.md) (#129) |
+| IV.10 Module of choice | **Custom major: CI/CD** | Major | 2 | Five workflows, required checks on `main`, multi-arch images on GHCR, pull-based deploys ([TECHNICAL_PLAN.md](TECHNICAL_PLAN.md) §5, [DEPLOYMENT.md](DEPLOYMENT.md)) |
+| IV.10 Module of choice | **Custom minor: cloud deployment with DNS and Let's Encrypt** | Minor | 1 | A cloud VM, an A record, and Caddy's automatic Let's Encrypt certificate ([DEPLOYMENT.md](DEPLOYMENT.md)) |
+| | | | **22** | 7 majors and 8 minors, 3 above the 19 that count |
 
-| Module | Type | Pts | Status |
-|---|---|---|---|
-| Framework for frontend and backend | Major | 2 | done (Next.js + NestJS) |
-| ORM | Minor | 1 | done (Prisma 7) |
-| Standard user management | Major | 2 | done: profile, avatar, friends (#155), public profiles (#156), online status (#157) |
-| Complete 2FA | Minor | 1 | done |
-| i18n, ≥3 languages | Minor | 1 | locales declared, `next-intl` not wired |
-| Additional browsers (≥2) | Minor | 1 | Playwright projects + documentation |
-| Complete LLM interface | Major | 2 | interface exists, no provider |
-| Real-time via WebSockets | Major | 2 | gateway on `/ws`: live course updates (#154), friend events (#155), online status (#157), direct messages (#158) |
-| Complete RAG system | Major | 2 | pgvector installed, no corpus |
-| User interaction: chat, profiles, friends | Major | 2 | done: friends (#155), profiles (#156), direct messages between friends (#158) |
-| | | **16** | |
+The team tracks each module's status on the wiki:
+[status and points](https://github.com/VictorBro/ft_transcendence/wiki/status-points-on--21-October-2026).
 
-> **Open, for the team: the tutor inside a lesson.** Lessons now ship with their exercises, answer
-> keys and exam (§1.4, [LESSONS.md](LESSONS.md)), so a lesson no longer needs an LLM to be played.
-> The LLM still restocks the placement bank (§1.2) and corrects and translates the chat (§1.5).
-> But **Complete RAG system** relies on the tutor alone: the grounded explanation and "ask the
-> tutor" of §1.4. The lesson page milestone decides whether that tutor is built. If it is not, RAG
-> needs another use, or its 2 points are at risk. Until then, §1.4, the caches of §4 and §5, and
-> `Exercise` in §7 describe the earlier tutor plan.
+**Gamification outside a game.** The module sits in the gaming chapter but, unlike its four
+neighbours, carries no "requires a game" note. It is claimed on that reading; confirm it with
+staff before the defence.
 
-### Buffer, pick from these once the core is green
+**Dropped**, and so not claimed:
 
-| Module | Type | Pts | Why it fits |
-|---|---|---|---|
-| SSR | Minor | 1 | App Router already server-renders; needs deliberate proof (see §9) |
-| Advanced search | Minor | 1 | The all lessons page: filters (status, kind, topic, theme, text), sort, group, and numbered pages of 20 in the URL, over the current level. It runs in memory, because a level has at most 320 lessons |
-| User activity analytics dashboard | Minor | 1 | `LessonResult` and `Mistake` hold the progress to chart. `DailyStat` is not built |
-| Gamification | Minor | 1 | Claimed: XP and ranks, a daily challenge and achievements, per course ([#94](https://github.com/VictorBro/ft_transcendence/issues/94), [#95](https://github.com/VictorBro/ft_transcendence/issues/95), [#97](https://github.com/VictorBro/ft_transcendence/issues/97)). A streak alone is not one of the subject's items. **Check with staff** that it counts outside a game: it sits in the gaming chapter but, unlike its four neighbours, carries no "requires a game" note |
-| Custom design system (≥10 components) | Minor | 1 | `packages/ui` is already the place |
-| Notification system | Minor | 1 | Needs the socket layer, which the core already builds |
-| Public API | Major | 2 | Swagger + throttler already in the stack; needs API keys and 5 documented endpoints |
-| Advanced analytics dashboard | Major | 2 | Charts, real-time, CSV/PDF export, a superset of the minor one |
-
-Core 16 + four cheap minors ≈ **20 claimable**, one point of slack above the 19 ceiling and six
-above the 14 floor. That is the target.
+| Module | Why |
+|---|---|
+| Complete RAG system | Lessons are authored and committed, so nothing at runtime retrieves reference passages. pgvector stays installed in the database image, unused |
+| Notification system | Not built. The socket layer pushes live updates, but no notification is stored or listed |
+| User activity analytics dashboard | Not built: `/dashboard` redirects to `/learn` |
+| Public API, custom design system, advanced analytics | Not built |
 
 **Explicitly out**: OAuth, RTL, every gaming module except Gamification, WAF/Vault, ELK,
 microservices, blockchain, file upload, PWA, WCAG AA, voice, image recognition.
 
 ---
 
-## 3. Transport: what is REST and what is a WebSocket
+## 3. Transport: REST, Server-Sent Events and a WebSocket
 
 This is the question that decides the shape of the codebase, so it gets a straight answer.
 
 **Most of this product is request/response.** Onboarding, today's lessons, starting a lesson,
-submitting an answer, reading progress, all of that is HTTP. A tutor that answers one learner is not
+submitting a page, reading progress, all of that is HTTP. A tutor that answers one learner is not
 "real-time" in the sense the subject means; the module asks for *"real-time updates across
 clients"* and *"handle connection/disconnection gracefully"*, which is a multi-client claim.
 
-So the socket layer has to earn its keep on genuinely multi-client surfaces. It does, on four:
+So the socket layer has to earn its keep on genuinely multi-client surfaces. It does, on three:
 
 | Surface | Why it must be a socket | Serves module |
 |---|---|---|
-| **Cross-language chat**, each learner writing their own language, the AI translating and correcting between them (§1.5) | Two clients, one conversation, sub-second echo | Real-time (Major) |
-| **Chat** | Same | User interaction (Major) |
+| **Direct messages** between friends | Two clients, one conversation, sub-second echo, unread counts | Real-time (Major), User interaction (Major) |
 | **Presence**, friends' online status | Server pushes state changes nobody polled for | User management (Major) |
-| **Notifications** | Same | Notification system (Minor) |
+| **Live course and friend updates** | A change in one tab shows in the account's other tabs, and on the friend's | Real-time (Major) |
 
-**Tutor token streaming rides on the same socket.** Not because it must, Server-Sent Events
-would do, but because a second transport means a second authentication path, a second
-reconnection story and a second cancellation path, for no gain. One gateway, one handshake, one
-`disconnect` handler is less code and a much shorter answer at evaluation.
+**The lesson discussion streams over Server-Sent Events, not over the socket.** One learner, one
+request, one answer read as it is written: a `POST` whose response is `text/event-stream`. It
+reuses the REST route's session cookie, guards, validation pipe and error codes, every check that
+can fail answers with a status before the stream opens, and closing the response cancels the
+Gemini call. A socket would add a second authentication, validation and error path for a
+one-to-one exchange. The browser reads it with `fetch` and a stream reader, since `EventSource`
+only sends `GET`.
 
 ### The split
 
 | | Transport | Examples |
 |---|---|---|
-| **Everything CRUD** | REST, Nest controllers, documented in Swagger | `POST /api/courses`, `GET /api/courses/:lang/today`, `GET /api/courses/:lang/lessons`, `POST /api/courses/:lang/lessons/:id/attempt` |
+| **Everything CRUD** | REST, Nest controllers, documented in Swagger | `POST /api/courses`, `GET /api/courses/:lang/today`, `GET /api/courses/:lang/lessons`, `GET` and `POST /api/courses/:lang/lessons/:id/attempt`, `POST …/attempt/pages/:index` |
+| **One answer, streamed** | Server-Sent Events on a `POST` | `POST /api/courses/:lang/lessons/:id/discussion`: `delta`, `done` or `error`, and a heartbeat |
 | **Everything live** | socket.io on `/ws` | `course:updated`, `friend:request`, `friend:accepted`, `friend:removed`, `presence:update`, `dm:message`, `dm:unread` from the server; `dm:send` (with an ack) and `dm:read` from the browser |
 
-**The course stays in the path, and the API is language-neutral.** No route takes a `locale`
+**The course stays in the path, and the API is language-neutral.** No read route takes a `locale`
 parameter. A lesson is written in one language, the course's, like a question in the bank, so the
 response is the same for every interface language. The web app translates the page around the
-lesson, never the lesson.
+lesson. Two requests carry the interface locale on purpose: `POST …/attempt { locale }` fixes the
+attempt's mother tongue, and the discussion answers in the session user's locale.
 
 **No route takes a score.** The server runs every lesson attempt under
 `/api/courses/:lang/lessons/:id/attempt`: it sends only the page the learner is on, checks every
 answer, owns the exam timer, and when the last page locks it records the score from the answers it
 stored, keeping the best one, and counts the lesson toward today's goal. The finish and its goal
 rules come with [#82](https://github.com/VictorBro/ft_transcendence/issues/82), the attempt with
-[#145](https://github.com/VictorBro/ft_transcendence/issues/145); docs/LESSONS.md, "Scoring", has
+[#145](https://github.com/VictorBro/ft_transcendence/issues/145); [LESSONS.md](LESSONS.md) §10 has
 the details.
-
-The REST half is also what the **Public API** module documents, if you take it. That is a
-reason to keep the domain reachable over HTTP even where a socket would do.
 
 ### Gateway rules
 
@@ -404,7 +395,7 @@ Use it. Four rules:
 1. **Mount with `path`, not `namespace`.** `path` is the HTTP endpoint engine.io listens on;
    `namespace` is a logical channel multiplexed over it. The Caddyfile routes `/ws/*` to the
    api, so the gateway is `@WebSocketGateway({ path: '/ws' })` and the client is
-   `io({ path: '/ws' })`. Namespaces are for later, when tutor and chat want separating.
+   `io({ path: '/ws' })`. Namespaces are for later, if two kinds of traffic ever need separating.
 2. **Authenticate the handshake.** The same express-session middleware the REST side runs reads
    the signed session cookie (same origin, so the browser sends it), the Origin must be ours
    (same-site is not same-origin), and the socket gets `SocketData { userId, sessionId }`. An
@@ -416,26 +407,28 @@ Use it. Four rules:
 
 ---
 
-## 4. Redis: six distinct jobs
+## 4. Redis: what it holds
 
-Redis is already in the stack. It is not one thing, it is six, and they have different
-lifetimes.
+Redis is already in the stack. It is not one thing but several, with different lifetimes.
 
 **Redis is here for expiry, not for sharing.** The api runs as a single replica and is meant to:
 one machine, one `docker compose up`, no orchestrator. Nothing below is in Redis so that a second
-process can read it. Every row is hot, disposable and expiring, which is a shape that wants a
+process can read it. Every key is hot, disposable and expiring, which is a shape that wants a
 store with a TTL however many replicas there are. The rule of thumb, when something new comes up:
 if it has to survive from one request to the next, it is Redis or Postgres, and losing it costs a
 redo rather than data; if it does not, it is a plain constant or a per-request value in code.
 
-| Job | Why Redis and not Postgres | Status |
-|---|---|---|
-| **Session store** (`connect-redis`) | Sessions are hot, short-lived and disposable. Restarting the api must not log everyone out | in use |
-| **Throttler counters** | Per-minute counters with a TTL | not yet: `@nestjs/throttler` runs without a storage adapter, so counters sit in process memory. Correct for one replica; the only cost is that a restart clears everyone's limit. Moving them is optional, not pending work |
-| **LLM response cache** | An explanation is keyed on the lesson id, an exercise set on the lesson id and a seed, so a redo can get a different set. The same B1 *passé composé* explanation is generated once and served to everyone. Whether the key also carries the interface language is for the lesson page milestone to decide. The single biggest cost lever in the project | to build |
-| **Per-user token budget** | An atomic counter with a daily TTL, checked by a guard before any LLM call | not built: the lesson discussion counts messages instead (per learner per minute and per day, and for everyone per minute, `discussion-limits.ts`, #150), and each answer is capped at 1,000 output tokens |
-| **Presence** | A socket count per user, `presence:<id>`: `INCR` on connect, `DECR` 10 s after a disconnect, so a reload never shows as leaving. No TTL and no heartbeat: socket.io's own ping already turns a client that vanished into a `disconnect`. Every count is deleted at boot, since a crash never took its sockets back (one API instance assumed). See ARCHITECTURE.md §4 | done (#157) |
-| **Placement run state** | The search bounds, the level being probed, the tally per category, the mistakes so far, the current question's deadline and the report. **Always with a TTL** (one hour, `PLACEMENT_REDIS_KEY_TTL`). It is keyed by the user (`user:<id>:eval`), not by the session as first planned, so a learner who signs in again within the hour comes back to the exam they left. It lives exactly as long as the exam, so a table would be a row deleted minutes after it was written, and the TTL doubles as the abandoned-exam cleanup | done |
+| Job | Keys | Why Redis and not Postgres | Status |
+|---|---|---|---|
+| **Session store** (`connect-redis`) | `sess:<sid>` | Sessions are hot, short-lived and disposable. Restarting the api must not log everyone out | in use |
+| **Placement run state** | `user:<id>:eval`, `user:<id>:eval_questions`, `user:<id>:eval_lock` | The search bounds, the level being probed, the tally per category, the mistakes so far, the current question's deadline and the report. **Always with a TTL**, one hour (`PLACEMENT_REDIS_KEY_TTL`). Keyed by the user, not by the session as first planned, so a learner who signs in again within the hour comes back to the exam they left. It lives exactly as long as the exam, so a table would be a row deleted minutes after it was written, and the TTL doubles as the abandoned-exam cleanup | in use (#48) |
+| **Lesson discussion limits** | `discussion:user:<id>:minute`, `discussion:user:<id>:day`, `discussion:global:minute` | Fixed-window counters: the first message creates the key with its TTL (60 s or 24 h), `INCR`, `EXPIRE … NX` and `TTL` in one `MULTI`, so a crash never leaves a counter without expiry. The TTL is also the `Retry-After` | in use (#150) |
+| **Presence** | `presence:<id>` | A socket count per user: `INCR` on connect, `DECR` 10 s after a disconnect, so a reload never shows as leaving. Every count is deleted at boot, since a crash never took its sockets back (one API instance assumed). See ARCHITECTURE.md §4 | in use (#157) |
+| **Throttler counters** | none | `@nestjs/throttler` runs without a storage adapter, so its counters sit in process memory. Correct for one replica; the only cost is that a restart clears everyone's limit | not in Redis, by choice |
+
+Not built, and no longer planned: an LLM response cache and a per-user token budget. Lessons are
+authored, so there is no generated explanation or exercise set to cache, and the discussion's
+limits stand in for the budget (§5).
 
 ---
 
@@ -443,280 +436,148 @@ redo rather than data; if it does not, it is a plain constant or a per-request v
 
 ### Provider
 
-`LLM_PROVIDER` is `fixture | gemini | disabled` (`cached` is planned, not implemented yet), and
-CI stays on `fixture` forever. The vendor is one file behind the `LlmProvider` interface. Team
-decision: **Gemini 3.6 Flash** (`gemini-3.6-flash`, the default when `LLM_MODEL` is empty),
-chosen for native JSON-schema output and price, **on a free key** (decided 2026-11-20, #204).
+`LLM_PROVIDER` picks the implementation of `LlmProvider` once, at boot (`createLlmProvider` in
+`apps/api/src/llm/llm.factory.ts`), and a bad value stops the start:
 
-Verified 2026-08-22: the model has a real free tier, roughly 30 requests/minute and 1,500/day
-per key, and on the free tier **Google may use prompts and outputs for training and human
-review**. Paid tiers are not used for training. That one clause has three consequences:
+| `LLM_PROVIDER` | Placement restock | Lesson discussion | Used by |
+|---|---|---|---|
+| `fixture` (default) | Writes no question: the draw falls back to the oldest question seen | One canned answer, streamed. Special messages (`#fail-midstream`, `#timeout`, `#blocked`) trigger each failure, for the specs | Development, CI, every test |
+| `gemini` | One structured call per cell running low | Gemini's answer, streamed | A server with a key |
+| `disabled` | Like the fixture | Every message ends with `error { code: "llm.disabled" }` | A server that runs no LLM at all |
 
-1. **The Privacy Policy says it** (section 4, #204). Learner-typed text (the wrong answers and
-   the tutor chat) is sent to Google and may be used to train models. The Privacy Policy is a
-   rejection criterion in its own right, so moving to a paid key, where the clause does not apply
-   (a few tens of euros for the whole project at our volume), is a policy change: section 4 of
-   `/privacy`, in en, fr and de, and its `lastUpdated`, in the same PR as the key.
-2. **Never put identity in a prompt.** Email, display name and user id have no business in any
-   prompt. The tutor needs the lesson's level and brief and the learner's answer text, nothing
-   else.
-3. **30 RPM is a platform-wide ceiling on one key.** The Redis exercise cache and the per-user
-   budget guard stop being cost optimisations and become what keeps a multi-user demo alive.
-   The provider should catch a 429 and degrade to `cached` rather than surface an error
-   mid-lesson.
+`LLM_API_KEY` is required with `gemini`, and the api refuses to start without it. `LLM_MODEL` is
+the Gemini model id; **empty means `gemini-3.6-flash`** (`DEFAULT_GEMINI_MODEL`). The provider and
+model in use are exported as `ft_llm_provider_info{provider, model}`. The deployment compose file
+requires `LLM_PROVIDER` to be set: there is no silent fallback on a server
+([DEPLOYMENT.md](DEPLOYMENT.md) §5).
 
-Still to record in [VERSIONS.md](VERSIONS.md) before the first real call:
+**The key.** It lives in `.env` as `LLM_API_KEY` and nowhere else, and is sent in a request header,
+never in a URL. A key that has been pasted into a chat, a doc or a ticket is burned: rotate it.
+gitleaks guards commits, not conversations.
 
-1. **Pin the exact model id**, the dated snapshot, not the floating alias: a silently rotated
-   model changes behaviour under a green test suite.
-2. **Pin the embedding model and its dimension separately.** The vector column's dimension is
-   fixed in a migration; changing the embedding model later means re-embedding the whole corpus
-   and a new migration.
-3. **Key hygiene.** The key lives in `.env` as `LLM_API_KEY` and nowhere else. A key that has
-   been pasted into a chat, a doc or a ticket is burned: rotate it. gitleaks guards commits,
-   not conversations.
+**What reaches Google.** The discussion sends the learner's messages, the earlier turns, the
+lesson's teaching fields and the learner's wrong practice answers. Never an email, a display name or
+a user id.
 
-### Two call shapes, not one
+**A free key, decided 2026-11-20 (#204).** Verified 2026-08-22: Gemini's free tier allows roughly
+30 requests a minute and 1,500 a day per key, and on it **Google may use prompts and outputs for
+training and human review**; paid tiers are not used for training. The Privacy Policy says so
+(`/privacy`, section 4), and it is a rejection criterion in its own right. Moving to a paid key,
+a few tens of euros for the whole project at our volume, is therefore a policy change: section 4
+in en, fr and de, and its `lastUpdated`, in the same pull request as the key.
 
-Structured output and streaming pull in opposite directions, you cannot validate JSON until it
-is complete. Resolve it in the interface rather than in every call site:
+### Two call shapes
+
+Structured output and streaming pull in opposite directions: you cannot validate JSON until it
+is complete. The interface resolves it with two methods rather than in every call site:
 
 ```ts
 interface LlmProvider {
-  // Validated JSON. Used for placement items, exercises, corrections, judgments.
-  // The Zod schema comes from @ft/shared and is also what the client parses.
-  generateStructured<T>(req: StructuredRequest<T>): Promise<T>;
+  // Validated JSON: the placement bank restock. The Zod schema comes from @ft/shared.
+  generateStructured<S extends z.ZodType>(request: StructuredRequest<S>): Promise<z.output<S>>;
 
-  // Prose, token by token. Used for the tutor's explanation and for peer-practice hints.
-  streamText(req: TextRequest): AsyncIterable<string>;
+  // Prose, piece by piece: the lesson discussion.
+  streamText(request: StreamRequest): AsyncIterable<string>;
+}
+
+interface StreamRequest {
+  purpose: LlmPurpose;          // 'lesson-discussion'
+  system: string;               // the tutor's prompt, built on the server
+  messages: LlmMessage[];       // { role: 'user' | 'assistant', text }, oldest first
+  maxOutputTokens: number;      // 1,000 for the discussion
+  signal: AbortSignal;          // aborted when the learner leaves
 }
 ```
 
-Which shape each step uses:
+| Step | Shape | Purpose label | Why |
+|---|---|---|---|
+| Placement bank restock | structured | `question-batch:<category>` | It has fields: question, options, answer. Schema-validated, deduplicated, then written to `QuestionBank` |
+| Lesson discussion | **stream** | `lesson-discussion` | It is prose, and reading it as it is written is the point |
+| Scoring an attempt | computed in code | none | Not an LLM call at all |
 
-| Step | Shape | Why |
-|---|---|---|
-| Placement item | structured | It has fields: prompt, skill, target level |
-| Lesson explanation | **stream** | It is prose, and watching it appear is the demo |
-| Exercise generation | structured | Rendered as a form, not as text |
-| Answer correction | structured | `{ correctedText, mistakes[], encouragement }`, the mistakes drive analytics |
-| Lesson summary | computed in code | Not an LLM call at all |
+Gemini's `streamText` calls `streamGenerateContent?alt=sse` and yields each text part as it
+arrives. A failure is an `LlmError` with a fixed `reason` (`unreachable`, `rate_limited`,
+`http_error`, `blocked`, `incomplete`, `invalid`, `disabled`), which the metrics count and the
+discussion route turns into an `llm.*` error code. The learner leaving aborts the call, so Google
+stops writing an answer nobody reads, and counts no outcome. Every call times out after 90 s.
 
-Every structured response is parsed with the **same Zod schema the client uses**. That is what
-`packages/shared` is for, and it satisfies the mandatory "validated on both sides" requirement
-for free.
-
-### RAG, and what the corpus actually is
-
-The module wants *"a large dataset"*, *"users can ask questions and get relevant answers"*,
-*"proper context retrieval and response generation"*. For this product the corpus is **curated
-reference content we author or source**, never user data:
-
-- grammar reference: rules, conjugation tables, usage notes, exceptions
-- graded example sentences per CEFR level
-- vocabulary sets with usage and collocations
-- a catalogue of common learner errors and their explanations
-
-RAG is not decoration here. Two places it does real work:
-
-1. **Grounding explanations.** Models are confidently wrong about grammar exceptions. Retrieving
-   the actual rule text and putting it in the prompt is the difference between a tutor that
-   teaches and one that misleads. Cite the source chunk in the UI and the module demonstrates
-   itself.
-2. **"Ask the tutor"** free-form questions, *"when do I use passé composé instead of
-   imparfait?"*, which is literally the module's own description.
-
-### How it works, mechanically
-
-Two pipelines that never run at the same time.
-
-**Ingest: offline, rerun only when content changes.** A seed-time script, not a service.
-
-1. Read the source files from the repo (table below).
-2. Split into chunks of a few hundred words, one idea per chunk: whole documents do not fit a
-   prompt, and the chunk is the unit of retrieval.
-3. Embed each chunk. The embedding model returns a vector of N numbers encoding what the chunk
-   *means*, so chunks about similar things get numerically similar vectors.
-4. Store text and vector in `DocumentChunk.embedding vector(N)`, HNSW index on the column.
+### The lesson discussion, end to end
 
 ```mermaid
-flowchart LR
-    subgraph src["Source files, committed to git"]
-        notes["Grammar notes,<br/>written by us"]
-        tato["Tatoeba sentences,<br/>CC BY"]
-        wikt["Wiktionary tables,<br/>CC BY-SA"]
+sequenceDiagram
+    participant W as Discussion window (web)
+    participant A as DiscussionController (api)
+    participant R as redis
+    participant P as db
+    participant G as Gemini
+
+    W->>A: POST /api/courses/:lang/lessons/:id/discussion<br/>{ attemptId, message, history }
+    A->>P: course, ready lesson, attempt on its discussion page?
+    alt fails
+        A-->>W: 404 / 409 JSON error
     end
-
-    notes --> chunk
-    tato --> chunk
-    wikt --> chunk
-    chunk["Split into chunks<br/><small>a few hundred words,<br/>one idea each</small>"]
-    chunk --> embed["Embedding model<br/><small>meaning becomes vector(N)</small>"]
-    embed --> store[("DocumentChunk<br/><small>text + embedding,<br/>HNSW index</small>")]
-
-    classDef llm stroke-width:3px
-    class embed llm
+    A->>R: INCR the three windows
+    alt over a limit
+        A-->>W: 429 { retryAfter } + Retry-After
+    end
+    A-->>W: 200 text/event-stream
+    A->>G: streamGenerateContent?alt=sse<br/>system prompt + turns, 1,000 tokens max
+    loop each piece
+        G-->>A: text
+        A-->>W: event: delta { text }
+    end
+    A-->>W: event: done {} (or event: error { code })
 ```
-
-**Retrieve: per request, inside the tutor.**
-
-1. Embed the learner's question (or the lesson's summary) with the same model.
-2. Nearest-neighbour query, plain SQL thanks to pgvector:
-
-```sql
-SELECT c.content, c."documentId"
-FROM "DocumentChunk" c
-JOIN "Document" d ON d.id = c."documentId"
-WHERE d.language = $1 AND c.level = ANY($2)
-  AND c.topic = $4            -- a grammar lesson's cell; c.theme = $4 for the other kinds
-ORDER BY c.embedding <=> $3   -- cosine distance, served by the HNSW index
-LIMIT 5;
-```
-
-A lesson's explanation keeps the last filter, so it retrieves only its own cell's reference.
-"Ask the tutor" drops it and searches the whole of the learner's levels.
-
-3. Put those chunks in the prompt: "answer using only these reference passages, cite the one
-   you used". The model answers from our verified text instead of its memory, the UI shows the
-   citation, and correcting a grammar note corrects every future answer with no retraining.
-
-```mermaid
-flowchart LR
-    q["Learner question,<br/>or the lesson's summary"] --> qe["Embed the question<br/><small>same model as ingest</small>"]
-    qe --> nn["Nearest-neighbour SQL<br/><small>top 5 by cosine distance,<br/>filtered on language, level<br/>and the lesson's topic or theme</small>"]
-    store[("DocumentChunk")] --> nn
-    nn --> prompt["Prompt: answer only from these<br/>passages, cite the one you used"]
-    prompt --> model["Gemini"]
-    model --> ui["Streamed answer,<br/>citation shown in the UI"]
-
-    classDef llm stroke-width:3px
-    class qe,model llm
-```
-
-This is search by meaning, not by keyword: a question about "past tense" finds the chunk about
-the passé composé because their vectors are close, where a keyword search finds nothing.
-`CREATE EXTENSION IF NOT EXISTS vector` belongs in the first migration that needs it; see the
-note in [VERSIONS.md](VERSIONS.md).
-
-**Where RAG is deliberately not used: the placement test and per-answer corrections.**
-Both are interactive moments where a learner is waiting, and neither is improved by reference
-passages: a correction judges the answer against its expected answer, and placement items come
-from the item bank with judging as a plain structured call. Retrieval there would add latency exactly where a learner is
-watching a spinner, and to placement it would also add a moving part to the one flow that must
-be explainable in a sentence, without improving the level estimate. The single sensible touchpoint is offline:
-when the bank runs dry and a fresh item is generated, retrieving a few level-graded example
-sentences to base it on makes the item more faithful to its claimed level. Optional, and only
-after bank, search and tutor all work.
-
-**Same generator, two different stores.** Lesson exercises and placement items are both
-LLM-generated, optionally RAG-grounded, so the natural question is why they are not handled the
-same way. Because the artifacts have opposite jobs:
-
-| | Lesson exercise | Placement item |
-|---|---|---|
-| Stored in | Redis cache, keyed `(lesson id, seed)` | `QuestionBank` rows |
-| Reuse | Same set for every learner: repeating practice material is harmless | Never the same twice per learner, enforced against `UserSeenQuestion` |
-| Human review | None: the correction loop absorbs a weak exercise, it costs one drill | Before seeding: an ambiguous item mislabels everyone who sees it |
-| Comparability | Not needed | The point: generating a fresh test every time would measure March and May with different rulers |
-
-The bank is placement's cache with per-user exclusion and a review gate, because its content is a
-measuring instrument rather than practice material. The two flows meet in cascade step 2: a
-cell running low gets a fresh batch exactly like an exercise set, but written into the bank, so
-everybody reuses it and each learner still meets each question only once.
-
-**Never embed user-generated content into the shared index.** One learner's practice text
-retrieved into another learner's lesson is a data leak, and a live one during a demo.
-
-### Where the corpus comes from
-
-Three sources, in descending order of how much of the corpus they should be:
-
-| Source | Licence | Use it for |
-|---|---|---|
-| **Written by us** | ours | Grammar reference notes, one per (level, grammar topic) cell, shared by that cell's lessons. At most 78 cells (13 topics × 6 levels) × ~400 words for one language. This is the backbone and the part that is genuinely our work |
-| **[Tatoeba](https://tatoeba.org)** | CC BY 2.0 FR | Graded example sentences. Millions of sentences with translations, downloadable as TSV. The single best source for authentic examples |
-| **[Wiktionary](https://kaikki.org)** (via Wiktextract JSON) | CC BY-SA 4.0 | Conjugation tables, definitions, usage notes, false friends |
-
-Also viable: **Wikibooks** language courses (CC BY-SA), **Universal Dependencies** treebanks for
-grammatically annotated sentences, **OPUS** for parallel corpora.
-
-**Drafting with the LLM is legitimate; skipping the human check is not.** Generating the grammar
-notes with Gemini and having a speaker of the language verify each one is a reasonable division of
-labour, and the README's Resources section must say so, the subject requires documenting how AI
-was used and for which parts. An unverified generated corpus is exactly the failure mode chapter I
-of the subject warns about, and it is worse here than usual: a wrong rule in the corpus is
-retrieved and taught confidently to every learner.
-
-**Do not use**: scraped commercial course content (Duolingo, Babbel, copyright), anything whose
-licence cannot be named, or user-generated content from our own app.
-
-### The evaluator has no API key
-
-Embedding the corpus needs an embedding model, which needs a key. `make` must still work without
-one, or the RAG module cannot be demonstrated at evaluation. Decide this before writing the ingest
-script, because it shapes it:
-
-1. **Commit embeddings for a demo subset.** The grammar reference alone is a few hundred chunks;
-   at 768 dimensions that is roughly 1 MB of floats, which git handles fine. Seed loads them
-   directly, no network, no key.
-2. **Generate the rest at ingest time**, gated behind a key, for the bulk corpora that are too
-   large to commit.
-3. **The fixture provider returns deterministic pseudo-embeddings**, so unit and e2e tests
-   exercise the retrieval path with no key and no spend.
-
-That combination keeps `make` green on a clean clone and still lets the full corpus exist.
 
 ### Cost control
 
-Four layers, all before feature work:
+1. `LLM_PROVIDER=fixture` in CI and in every unit and e2e test. No test spends money.
+2. **Lessons are authored offline**, with Claude Code on members' own subscriptions
+   ([LESSONS.md](LESSONS.md) §7). The app's key never writes one.
+3. **The discussion's limits**, counted in Redis before any LLM call: per learner 2 a minute and 60
+   a day, and 5 a minute for everyone together, all changeable in `.env`. Over one: 429, with
+   `retryAfter`.
+4. **Capped answers**: 1,000 output tokens, a 500-character message, the last 10 turns.
+5. **Visible spend**: `ft_llm_requests_total`, `ft_llm_tokens_total` and
+   `ft_llm_discussion_limited_total` on the Learning dashboard, and the `LlmErrorRateHigh` alert
+   ([MONITORING.md](MONITORING.md)). No table records LLM calls.
 
-1. `LLM_PROVIDER=fixture` in CI and in every unit test. No test ever spends money.
-2. Redis cache, explanations keyed on the lesson id and exercise sets on the lesson id and a
-   seed: both are generated once, not once per learner.
-   **Placement items are exempt.** Caching them by content key would hand every learner the same
-   test and break §1.2 outright. Their reuse mechanism is the item bank plus per-user exclusion,
-   which is a different thing that happens to look similar.
-3. Per-user daily token budget in Redis, enforced by a Nest guard.
-4. A global daily ceiling with a kill switch to `cached`, so a bug cannot drain the key overnight.
-
-Every call writes an `LlmCall` row (tokens, latency, cache hit). That is how spend stays visible,
-and it is a ready-made data source for the analytics dashboard.
+**Placement items are not cached by content.** Caching them would hand every learner the same
+test and break §1.2. Their reuse mechanism is the item bank plus per-user exclusion.
 
 ---
 
 ## 6. Throttling: four separate jobs
 
-`@nestjs/throttler` is already installed and globally bound. It is doing four different things,
-and only the first is obvious:
+`@nestjs/throttler` is installed and globally bound. Four jobs, and only the first is obvious:
 
-| Where | Against what |
-|---|---|
-| **Auth endpoints** | Credential stuffing and TOTP brute force. Tighter limits than the global default |
-| **LLM endpoints** | Money. This is the difference between a bug costing €2 and €200 |
-| **Public API** | The module *requires* rate limiting as an explicit acceptance criterion |
-| **Socket events** | `dm:send`, `dm:read`. **The HTTP guard does not cover these**, a socket connection is one HTTP upgrade, so a client can emit thousands of events through a single allowed request. The gateway's own screen limits each socket to 20 of each event per 10 s, and each has a budget per account: 30 `dm:send` and 100 `dm:read` a minute (ARCHITECTURE.md §4) |
+| Where | Against what | How |
+|---|---|---|
+| **Auth endpoints** | Credential stuffing and TOTP brute force | Per address: `LOGIN_LIMIT_PER_MINUTE` (5), `SIGNUP_LIMIT_PER_MINUTE` (20), tighter than the global `RATE_LIMIT_PER_MINUTE` (100) per account or address |
+| **The lesson discussion** | Money, and the shared key's quota | Its own Redis windows, after every 404 and 409 check, so a refused request uses up nothing: `LLM_DISCUSSION_USER_PER_MINUTE` (2), `LLM_DISCUSSION_USER_PER_DAY` (60), `LLM_DISCUSSION_GLOBAL_PER_MINUTE` (5). Each hit counts in `ft_llm_discussion_limited_total{limit}` |
+| **Socket events** | `dm:send`, `dm:read`. **The HTTP guard does not cover these**: a socket connection is one HTTP upgrade, so a client can emit thousands of events through a single allowed request | The gateway's own screen limits each socket to 20 of each event per 10 s, and each has a budget per account: 30 `dm:send` and 100 `dm:read` a minute (ARCHITECTURE.md §4) |
+| **Public API** | The module *requires* rate limiting | Not claimed (§2) |
 
-That last row is the one that gets missed. Write it when the gateway is written, not after.
+Every limit is read once at boot; anything but a whole number stops the api.
 
 ---
 
 ## 7. Data model
 
-**Fifteen tables beside `User` and `RecoveryCode`, ten of which are already migrated**
-(`UserLevel`, `QuestionBank`, `UserSeenQuestion`, `Lesson`, `LessonResult`, `LessonAttempt`,
-`UserAchievement`, `Friendship`, `Conversation`, `Message`). The course roadmap adds `Lesson`,
-`LessonResult`, `LessonAttempt` and `UserAchievement` (all migrated); the lesson page adds
-`Exercise` and `Mistake`; social, content and operations add `Friendship`, `Conversation` and
-`Message` (migrated), `Document`, `DocumentChunk` and `LlmCall`. Every one is load-bearing for a
-module we claim. The rule applied throughout: a table earns its place by being read at runtime, and
-a 1:1 relationship is a column, not a table.
+**Ten tables beside `User` and `RecoveryCode`, all migrated** (`apps/api/prisma/schema.prisma`):
+`UserLevel`, `QuestionBank` and `UserSeenQuestion` from Milestone 1; `Lesson`, `LessonResult`,
+`LessonAttempt` and `UserAchievement` from Milestone 2; `Friendship`, `Conversation` and `Message`
+from Milestone 3. The rule applied throughout: a table earns its place by being read at runtime,
+and a 1:1 relationship is a column, not a table. There are no SQL views; the "views" of the lesson
+player are Zod schemas of what the browser may see ([LESSONS.md](LESSONS.md) §10,
+[milestone2-data-model.html](milestone2-data-model.html#player)).
 
 Everything is UUID-keyed, with five exceptions. `LessonResult`, `UserAchievement`, `Friendship`
 and `Conversation` are keyed by their pair (`(userLevelId, lessonId)`, `(userLevelId, code)`, and
 for the last two the two user ids, smaller first), because the pair is what makes a row unique.
 `Lesson` is keyed by its authored id (`de-separable-verbs`), because it is seeded from content and
-results attach to it. Anything worth dating has `createdAt`, and every user-owned row cascades on user delete, so
-deleting an account leaves nothing orphaned.
+results attach to it. Anything worth dating has `createdAt`, and every user-owned row cascades on
+user delete, so deleting an account leaves nothing orphaned.
 
 ### 7.1 Languages
 
@@ -766,47 +627,27 @@ erDiagram
     UserLevel    ||--o{ LessonAttempt    : "attempts"
     Lesson       ||--o{ LessonAttempt    : "attempted as"
     UserLevel    ||--o{ UserAchievement  : "earned"
-    LessonResult ||--o{ Exercise         : "drills"
-    Exercise     ||--o{ Mistake          : "names"
-    Message      ||--o{ Mistake          : "also names"
 ```
 
 | Table | Holds | Notes |
 |---|---|---|
-| `UserLevel` | userId, lang, level?, dailyGoal, streak, bestStreak, lastGoalDay?, xp, lastChallengeDay?, lastChallengeCode?, challengesDone | Unique `(userId, lang)`, so a user may learn two languages. Onboarding writes it with `level` null; placement fills it in, or a learner who skips sets it directly. The goal sizes today's plan and defines the streak, it never locks content. `streak`, `bestStreak` and `lastGoalDay` are the whole streak (§1.3); `xp`, `lastChallengeDay`, `lastChallengeCode` and `challengesDone` are the gamification counters, and `lastChallengeCode` keeps the code a challenge was done under, so a level change that day does not move it. All of them are per course, and finishing and goal changes take a row lock on this row (§9) |
+| `UserLevel` | id, userId, lang, level?, dailyGoal, streak, bestStreak, lastGoalDay?, **xp, lastChallengeDay?, lastChallengeCode?, challengesDone**, createdAt, updatedAt | Unique `(userId, lang)`: one row is one course, so a user may learn two languages. Onboarding writes it with `level` null; placement fills it in, or a learner who skips sets it directly. `streak`, `bestStreak` and `lastGoalDay` are the whole streak (§1.3). The four **gamification columns** (#95): `xp` the course's total, `lastChallengeDay` the course day the challenge was last done, `lastChallengeCode` the code it was done under, so a level change that day does not move it, and `challengesDone` the count the challenge achievements read. Finishing and goal changes take a row lock on this row (§9) |
 | `QuestionBank` | id, sourceId?, lang, level, topic, category, readText?, question, options, answer, timeLimitS | The reusable pool, seeded from `content/items/*.json` and grown at runtime when a learner runs low in a cell. `sourceId` is the authored id the seed matches on, and its absence marks a question the LLM wrote. Full spec in [ITEM_BANK.md](ITEM_BANK.md) |
-| `UserSeenQuestion` | userId, questionId | Unique `(userId, questionId)`. **The exposure record**, and the whole reason placement never repeats a question: the draw is a `NOT EXISTS` over these rows. It is per user and not per run, so a retake cannot serve an old question either |
-| `Lesson` | id, lang, level, position, kind, topic?, theme?, title, summary, brief, content? | **The seeded catalogue, never written at runtime.** One row is one outline entry: `db:seed` writes every entry of `content/outlines/` (title = working title, summary = intent, empty brief), then fills the rows whose lesson files exist (`content/briefs/<id>.json`, `content/lessons/<id>.json`): title from the file, summary = the objective in the course language, brief and content = the files ([#135](https://github.com/VictorBro/ft_transcendence/issues/135), which also adds the `content` column). `id` is the authored key: the language and a few English words, no level, so a lesson can move level and keep its results. It is permanent once on `main`. `kind` is grammar, vocabulary, functions or reading; `topic` (the `Topic` enum) is set exactly on grammar lessons, `theme` exactly on the others. Title and summary are in the course language; the lesson body also carries help text in en, fr and de. The lesson cards never send the brief or the content. Index on `(lang, level, position)`. Full guide in [LESSONS.md](LESSONS.md) |
-| `LessonResult` | userLevelId, lessonId, score, day, finishedAt | Primary key `(userLevelId, lessonId)`: **one row per course and lesson, with no history.** Every finish upserts it: `score` keeps the best, `day` is the learner's day of the latest finish, `finishedAt` its moment. No row means not started, a best of 70 or more means done, anything else failed. Today's count is the rows whose `day` is today |
-| `LessonAttempt` | id, userLevelId, lessonId, motherTongue, secret, startedAt, page, deadline?, answers, completedAt?, results? | Unique `(userLevelId, lessonId)`: **the current or last attempt at a lesson**, run and scored by the server (#145). `secret` keys the refs that name units, options and tokens, and is never sent; `page` is the cursor and `deadline` that of the exam page at it; `answers` holds the locked answers, and `results` is written once, when the last page locks. The plan is never stored: every request rebuilds it from the lesson row. Full guide in [LESSONS.md](LESSONS.md) |
-| `UserAchievement` | userLevelId, code, day, earnedAt | Primary key `(userLevelId, code)`, so an achievement is earned once and never lost. `day` is the course day it was earned. The 16 codes are strings fixed in code |
-| `Exercise` | userLevelId, lessonId, ordinal, type, prompt, options, expectedAnswer, learnerAnswer, correct, correctedText, feedback, answeredAt | The question, the answer and the correction in one row, because there is exactly one of each. Three tables here would be normalising a 1:1:1. Attaches to the course's `LessonResult` for that lesson, and a redo replaces the previous rows. The lesson page milestone decides the rest of its shape |
-| `Mistake` | exerciseId?, messageId?, type, span, explanation | The one place a child table is right: one answer produces *many* mistakes and they must be countable by type in SQL. Exactly one of the two parents is set, a drill answer or a chat message, so the analytics cover how the learner writes and not only how they drill |
+| `UserSeenQuestion` | userId, questionId | Unique `(userId, questionId)`. **The exposure record**, and the whole reason placement never repeats a question: the draw is a `NOT EXISTS` over these rows |
+| `Lesson` | id, lang, level, position, kind, topic?, theme?, title, summary, brief, **content?**, **ready**, updatedAt | **The seeded catalogue, never written at runtime.** One row per outline entry, 3,990 in all. `brief` is `{}` and `content` null until the lesson's files exist; then they hold the parsed brief and content file. `content` stays null for a vocabulary lesson, whose lesson is built from its brief (#135). **`ready`** is set by the seed on every run: true when the files exist and pass `validateLesson`, 216 today (#84). `kind` is grammar, vocabulary, functions or reading; `topic` is set exactly on grammar lessons, `theme` exactly on the others. The lesson cards never send the brief or the content. Index on `(lang, level, position)`. Full guide in [LESSONS.md](LESSONS.md) §4 |
+| `LessonResult` | userLevelId, lessonId, score, day, finishedAt | Primary key `(userLevelId, lessonId)`: **one row per course and lesson, with no history.** Every finish upserts it: `score` keeps the best, `day` is the learner's day of the latest finish, `finishedAt` its moment. No row means not started, a best of 70 or more means passed, anything else failed. Today's count is the rows whose `day` is today. `lessonId` is `Restrict`: a lesson with results cannot be deleted |
+| **`LessonAttempt`** | id, userLevelId, lessonId, motherTongue, secret, startedAt, page, deadline?, answers, completedAt?, results? | Unique `(userLevelId, lessonId)`: **the current or last attempt at a lesson**, run and scored by the server (#145). `motherTongue` is a `Locale`, fixed at the start. `secret` is 32 random bytes that key the refs naming units, options and tokens, and is never sent. `page` is the cursor and `deadline` that of the exam page at it. `answers` (JSON, `{}` at first) maps a unit id to its locked `{ response, outcome, points, timedOut, gender? }`, and `results` (JSON) is written once, when the last page locks. A retake replaces the row; a seed that changes the lesson deletes the unfinished ones. The plan is never stored: every request rebuilds it from the lesson row |
+| **`UserAchievement`** | userLevelId, code, day, earnedAt | Primary key `(userLevelId, code)`, so an achievement is earned once and never lost (#95). `code` is one of the 16 `ACHIEVEMENTS` codes, a string fixed in code. `day` is the course day it was earned |
 
 **There is no `Topic` table.** `enum Topic` already exists in the schema for the question bank,
 and "topic" means one of its 13 grammar categories. On `Lesson` it labels grammar lessons only.
 The order, the titles and the count of the lessons all live in `Lesson` itself.
 
-**`Mistake.type` being a database enum rather than free text is the highest-leverage decision in
-this schema.** It is what turns "the AI corrected me" into "60% of your errors are verb
-agreement", which is simultaneously the analytics dashboard, the review suggestions, and the most
-convincing thing you can put on screen at evaluation. The taxonomy comes from the team's own
-prompt PoC and handles what French and German actually need:
+**No table holds a discussion.** The lesson discussion is stateless: the browser sends the earlier
+turns back with each message, and the server stores nothing of it. No table records LLM calls
+either: the metrics do (§5).
 
-```prisma
-enum MistakeType {
-  accents
-  ligatures_diacritics_special_characters
-  other_spelling
-  punctuation
-  grammatical_gender
-  sentence_structure_and_word_order
-  other_grammar
-  expression_and_idiomatic_language
-}
-```
-
-### 7.3 Social, content and operations
+### 7.3 Social
 
 ```mermaid
 erDiagram
@@ -814,19 +655,13 @@ erDiagram
     User     ||--o{ Conversation  : "is in"
     Conversation ||--o{ Message   : "holds"
     User     ||--o{ Message       : "sends"
-    Message  ||--o{ Mistake       : "corrected into"
-    User     ||--o{ LlmCall       : "triggers"
-    Document ||--o{ DocumentChunk : "chunked into"
 ```
 
 | Table | Holds | Notes |
 |---|---|---|
 | `Friendship` | pairKey, requesterId, addresseeId, status, createdAt, updatedAt | `pending / accepted`; declining, cancelling and removing delete the row. Keyed by the pair, smaller id first, so A to B and B to A cannot both exist |
 | `Conversation` | pairKey, userAId, userBId, createdAt, lastMessageAt | One per pair who have exchanged a message, keyed like `Friendship`, so a pair cannot get two. `lastMessageAt` orders the list. It outlives the friendship: the history stays readable by both. Two users and no participants table, because group chat is not claimed |
-| `Message` | id, pairKey, senderId, text, createdAt, readAt? | A direct message between friends (#158), 1 to 1,000 characters. `readAt` stays null until the other user reads it, and is never sent. The history pages on `(pairKey, createdAt, id)`. The cross-language chat of §1.5 is not built: it would add `bodyLanguage`, `correctedBody?` and `translated?`, the last two nullable so the message sends before the AI answers, and one translation per message, because the conversation has two people in it |
-| `Document` | language, cefr?, title, kind, sourceUrl, licence, attribution, checksum | Source material for RAG. **`licence` and `attribution` are not optional**: a mixed corpus needs per-document provenance, and CC BY-SA text has to be credited wherever it surfaces. `checksum` makes re-ingest idempotent |
-| `DocumentChunk` | documentId, level, topic?, theme?, ordinal, content, embedding `vector(N)` | HNSW index on `embedding`. `level` with `topic` or `theme` lets a lesson retrieve only its own cell's reference: one grammar note per (level, topic), shared by all of that cell's lessons |
-| `LlmCall` | userId?, purpose, model, tokensIn, tokensOut, latencyMs, cacheHit, createdAt | Cost instrumentation, and the evidence at evaluation that spend is controlled. Cost in euros is derived from tokens and the price in config, not stored, because the price changes |
+| `Message` | id, pairKey, senderId, text, createdAt, readAt? | A direct message between friends (#158), 1 to 1,000 characters. `readAt` stays null until the other user reads it, and is never sent. The history pages on `(pairKey, createdAt, id)` |
 
 Presence is **not** a table. It is a socket count per user in Redis, `presence:<id>` (§4).
 
@@ -835,8 +670,8 @@ rows by `day`, and the streak is three columns on `UserLevel` (§1.3).
 
 ### 7.4 What each module needs
 
-The point of the cut: the 16-point core needs **no table beyond the fifteen**, and most of the
-buffer modules need none either.
+Every claimed module (§2) runs on the twelve tables of the schema, Redis and the metrics. None needs
+another table.
 
 | Module | Pts | Tables it needs |
 |---|---|---|
@@ -845,18 +680,16 @@ buffer modules need none either.
 | Standard user management | 2 | `User`, `Friendship` (+ Redis presence) |
 | Complete 2FA | 1 | `User`, `RecoveryCode` |
 | i18n, additional browsers, SSR | 3 | none |
-| Complete LLM interface | 2 | `Lesson`, `LessonResult`, `Exercise`, `LlmCall` |
+| Complete LLM interface | 2 | `QuestionBank` (the restock), `Lesson` and `LessonAttempt` (the discussion's prompt and its guard) (+ Redis limits) |
 | Real-time via WebSockets | 2 | `Conversation`, `Message` (+ Redis presence) |
-| Complete RAG | 2 | `Document`, `DocumentChunk` |
 | User interaction: chat, profiles, friends | 2 | `Conversation`, `Message`, `Friendship`, `User` |
-| **Activity analytics dashboard** | 1 | none new: `LessonResult` + `Mistake` |
+| **Advanced search** | 1 | `Lesson` + `LessonResult`, searched in memory: a level has at most 320 lessons |
 | **Gamification** | 1 | `UserAchievement`, plus `xp`, `lastChallengeDay`, `lastChallengeCode` and `challengesDone` on `UserLevel` |
-| **Advanced search** | 1 | none new: `Lesson` + `LessonResult` |
-| Notification system | 1 | +1 (`Notification`) |
-| Public API | 2 | +1 (`ApiKey`, hashed like a password) |
+| Monitoring | 2 | none: Prometheus keeps its own data |
+| CI/CD, cloud deployment | 3 | none |
 
-Add those last two tables **with** their module, not before it. A table for a module nobody has
-committed to is the same mistake as a column for a mechanism nobody can run.
+A table for a module nobody has committed to is the same mistake as a column for a mechanism
+nobody can run, so the dropped modules of §2 add none.
 
 ## 8. What the skeleton already gives you
 
@@ -869,19 +702,19 @@ load-bearing.
 | `apps/api` NestJS | All business logic and data access | keep, half a Major |
 | `apps/web` Next.js | Presentation and SSR only | keep, half a Major |
 | `packages/shared` | Zod contracts. One schema, validated on both sides | keep, **mandatory requirement**, and the socket contract already lives here |
-| `packages/ui` | Component library | keep, the design system Minor lives here |
+| `packages/ui` | Component library | keep; the design system Minor is not claimed (§2) |
 | `packages/{eslint-config,tsconfig}` | Shared presets. The two tsconfigs differ deliberately | keep |
 | Caddy + internal CA | Single TLS entry, one origin, no CORS | keep, **HTTPS is mandatory** |
-| Postgres 18 + pgvector | Relational data and the RAG index in one datastore | keep |
-| Redis | Six jobs, see §4 | keep |
+| Postgres 18 + pgvector | Relational data. pgvector is installed in the image and unused since RAG was dropped (§2) | keep |
+| Redis | Sessions, placement runs, discussion limits, presence, see §4 | keep |
 | Prisma 7 | ORM Minor; `schema.prisma` doubles as the README's schema section | keep |
 | argon2 + express-session + connect-redis | Mandatory hashed/salted auth | keep |
 | otpauth + qrcode-generator | 2FA Minor | keep, done |
-| `@nestjs/swagger` | API docs; the Public API module needs them | keep |
+| `@nestjs/swagger` | API docs at `/api/docs`, the SSE route included | keep |
 | `@nestjs/throttler` | Four jobs, see §6 | keep |
 | Playwright + console gate | The zero-console-errors **rejection criterion** | keep |
 | CI: ci / e2e / hygiene / images / devcontainer | gitleaks, commitlint, `.env` hygiene, Prisma drift | keep |
-| `LLM_PROVIDER` fixture/gemini | Free CI, deterministic tests, swappable vendor | keep, now points at Gemini |
+| `LLM_PROVIDER` fixture / gemini / disabled | Free CI, deterministic tests, swappable vendor (§5) | keep |
 
 ## 9. Two things that will quietly cost you points
 
@@ -902,23 +735,27 @@ test early, it is the cheapest possible proof of a rejection-criterion requireme
 
 ---
 
-## 10. Build order
+## 10. Build order, as it happened
 
-1. **Domain migration**, the §7 tables, the seeded `Lesson` catalogue and a starter
-   `QuestionBank` for one language. Authored questions, no generation yet.
-2. **`LlmProvider` + fixture**, `generateStructured` and `streamText`, plus the Zod schemas in
-   `@ft/shared`. No vendor at this step: Gemini comes at step 6.
-3. **Onboarding + placement**, the binary search and bank sampling excluding `UserSeenQuestion`.
-   Entirely on fixtures. Both are plain unit tests: sit the exam twice as the same user and
-   assert zero question overlap.
-4. **Daily goal and all lessons pages**, server-rendered from `Lesson` and `LessonResult`.
-5. **Lesson loop**, explanation, exercises, corrections, scoring. Still on fixtures.
-6. **Wire Gemini**, flip `LLM_PROVIDER=gemini` behind the budget guard and the cache. First real
-   spend happens here, with instrumentation already in place.
-7. **Socket gateway**, auth guard, tutor stream, presence.
-8. **RAG**, corpus files, ingest script, retrieval in the explanation prompt.
-9. **Social**, friends, presence, and the cross-language chat of §1.5.
-10. **Buffer modules**, pick from §2 by cost.
+The original plan built the lesson loop on an LLM tutor, then RAG. The Milestone 2 replan (#137)
+swapped both for authored lessons and one streamed discussion. What was built, in order:
 
-Steps 1 to 5 need no API key and no network. That is deliberate: four people can build the entire
-product on fixtures while one person settles the vendor (settled: Gemini 3.6 Flash on a free key, §5).
+1. **Domain migration** and the seeded catalogues: `QuestionBank` from `content/items/`, then one
+   `Lesson` row per outline entry (#79, #134).
+2. **`LlmProvider` + fixture**, `generateStructured` first, with the Zod schemas in `@ft/shared`.
+3. **Onboarding and placement** (Milestone 1): the binary search and bank sampling excluding
+   `UserSeenQuestion`, on fixtures, then Gemini restocking the bank (#54).
+4. **The roadmap** (Milestone 2): the rules as pure functions (#80), the reads and the search
+   (#81), the finish and the streak (#82), the daily goal and all lessons pages (#86, #87).
+5. **The lesson model and content**: the prototype's schemas and validators (#135, #136), the
+   authoring kit (#83), French A1 and the ready flag (#84), then 12 lessons per level everywhere
+   (#91 to #93).
+6. **The lesson loop**: the player domain (#144), attempts scored on the server (#145), the lesson
+   pages (#146 to #149), the discussion stream (#150) and its window (#151). `streamText` lands
+   with #150.
+7. **Gamification**: rules (#94), awards (#95), pages (#97).
+8. **Socket gateway and social** (Milestone 3): gateway, friends, profiles, presence, messages
+   (#154 to #158).
+
+Every step before the first real Gemini call ran on fixtures, with no API key and no network, and
+CI still does.
