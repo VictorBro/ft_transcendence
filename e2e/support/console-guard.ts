@@ -174,6 +174,26 @@ export function isExpectedDocumentFailure(
 }
 
 /**
+ * The same line for a request the page expects to be refused, and says so on
+ * screen: the lesson discussion's 429 (#151) shows its countdown. Matched
+ * narrowly: that one status, attributed to a URL containing `path`. Any other
+ * failing request on the page still fails the gate.
+ */
+export function isExpectedRefusal(
+  violation: ConsoleViolation,
+  path: string,
+  expectedStatus: number,
+): boolean {
+  return (
+    violation.kind === 'console.error' &&
+    violation.text.startsWith(
+      `Failed to load resource: the server responded with a status of ${expectedStatus} `,
+    ) &&
+    (violation.where?.includes(path) ?? false)
+  );
+}
+
+/**
  * /friends lists other learners, and avatar.spec.ts removes its avatar while
  * another worker's /friends may be loading it. The image then answers 404,
  * logged as a console.error at the image URL: the other account's, not the

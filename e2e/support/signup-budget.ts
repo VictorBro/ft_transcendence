@@ -68,6 +68,16 @@ const LOGINS: Budget = {
   log: join(tmpdir(), 'ft-e2e-logins.json'),
 };
 
+/**
+ * POST /courses/:lang/lessons/:id/discussion (#150) also has a limit for all
+ * learners together, by minute, as LLM_DISCUSSION_GLOBAL_PER_MINUTE sets it:
+ * every learner of the run counts against it, whatever their address.
+ */
+const DISCUSSIONS: Budget = {
+  perWindow: perMinute('LLM_DISCUSSION_GLOBAL_PER_MINUTE', 5),
+  log: join(tmpdir(), 'ft-e2e-discussions.json'),
+};
+
 /** A lock held longer than this belongs to a worker that died holding it. */
 const STALE_LOCK_MS = 5_000;
 
@@ -226,3 +236,6 @@ export const logInSlot = (): Promise<void> => waitForBudget(LOGINS, {});
 
 /** Long enough for a worker fixture to queue for a slot and then sign up. */
 export const WORKER_SIGNUP_TIMEOUT_MS = MAX_SETUP_ATTEMPTS * WINDOW_MS + 30_000;
+
+/** The same for a lesson discussion message: call it right before sending one. */
+export const discussionSlot = (): Promise<void> => waitForBudget(DISCUSSIONS, {});
