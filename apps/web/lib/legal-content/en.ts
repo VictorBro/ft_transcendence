@@ -152,6 +152,7 @@ export const termsOfService: LegalDocument = {
       heading: '4. AI-generated content',
       paragraphs: [
         'The tutor of a lesson discussion answers with a large language model, Google Gemini, and the same model wrote some of the placement test questions. The lessons were drafted with the help of a language model and checked before publication; scores and levels come from fixed rules, not from a model. Language models are confidently wrong on a regular basis. Treat everything the tutor produces as practice material from a fallible partner, not as authoritative instruction.',
+        'Before each exam, you can ask the tutor about the lesson. Your questions and the text of the lesson are sent to Google Gemini, as the Privacy Policy explains, and ft_transcendence does not store the discussion. The tutor is not available during the exam.',
         'Placement and exam results estimate your proficiency for the purpose of choosing your next lessons. They are not a certification, they map only loosely onto formal frameworks such as CEFR, and they carry no academic or professional weight. Do not present them as a qualification.',
         'Never rely on the tutor for medical, legal, financial, or safety-critical translation. If a mistranslation could hurt someone, use a qualified human translator.',
       ],

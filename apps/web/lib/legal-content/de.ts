@@ -152,6 +152,7 @@ export const termsOfService: LegalDocument = {
       heading: '4. Von KI generierte Inhalte',
       paragraphs: [
         'Der Tutor des Lektionsgesprächs antwortet mit einem großen Sprachmodell, Google Gemini, und dasselbe Modell hat einen Teil der Fragen des Einstufungstests geschrieben. Die Lektionen wurden mit Hilfe eines Sprachmodells entworfen und vor der Veröffentlichung geprüft; Punktzahlen und Niveaus kommen aus festen Regeln, nicht aus einem Modell. Sprachmodelle liegen regelmäßig mit großer Überzeugung falsch. Betrachten Sie alles, was der Tutor produziert, als Übungsmaterial eines fehlbaren Partners, nicht als maßgebliche Anleitung.',
+        'Vor jeder Prüfung können Sie dem Tutor Fragen zur Lektion stellen. Ihre Fragen und der Text der Lektion werden an Google Gemini gesendet, wie in der Datenschutzerklärung beschrieben, und ft_transcendence speichert das Gespräch nicht. Während der Prüfung ist der Tutor nicht verfügbar.',
         'Einstufungs- und Prüfungsergebnisse schätzen Ihr Kompetenzniveau zu dem einzigen Zweck, Ihre nächsten Lektionen auszuwählen. Sie sind keine Zertifizierung, sie entsprechen nur lose formalen Rahmenwerken wie dem GER, und sie haben kein akademisches oder berufliches Gewicht. Präsentieren Sie sie nicht als Qualifikation.',
         'Verlassen Sie sich niemals auf den Tutor für medizinische, rechtliche, finanzielle, oder sicherheitskritische Übersetzungen. Wenn eine Fehlübersetzung jemandem schaden könnte, ziehen Sie einen qualifizierten menschlichen Übersetzer hinzu.',
       ],
