@@ -433,9 +433,9 @@ redo rather than data; if it does not, it is a plain constant or a per-request v
 | **Session store** (`connect-redis`) | Sessions are hot, short-lived and disposable. Restarting the api must not log everyone out | in use |
 | **Throttler counters** | Per-minute counters with a TTL | not yet: `@nestjs/throttler` runs without a storage adapter, so counters sit in process memory. Correct for one replica; the only cost is that a restart clears everyone's limit. Moving them is optional, not pending work |
 | **LLM response cache** | An explanation is keyed on the lesson id, an exercise set on the lesson id and a seed, so a redo can get a different set. The same B1 *passé composé* explanation is generated once and served to everyone. Whether the key also carries the interface language is for the lesson page milestone to decide. The single biggest cost lever in the project | to build |
-| **Per-user token budget** | An atomic counter with a daily TTL, checked by a guard before any LLM call | to build |
+| **Per-user token budget** | An atomic counter with a daily TTL, checked by a guard before any LLM call | not built: the lesson discussion counts messages instead (per learner per minute and per day, and for everyone per minute, `discussion-limits.ts`, #150), and each answer is capped at 1,000 output tokens |
 | **Presence** | A socket count per user, `presence:<id>`: `INCR` on connect, `DECR` 10 s after a disconnect, so a reload never shows as leaving. No TTL and no heartbeat: socket.io's own ping already turns a client that vanished into a `disconnect`. Every count is deleted at boot, since a crash never took its sockets back (one API instance assumed). See ARCHITECTURE.md §4 | done (#157) |
-| **Placement run state** | The search bounds, the level being probed, the tally per category, the mistakes so far, the current question's deadline and the report. **Keyed by the session, never by the user, and always with a TTL.** Keyed by the user it would outlive the login that started it and a learner would come back to a half-finished exam; keyed by the session it goes when they go, which is what was asked for. It lives exactly as long as the exam, so a table would be a row deleted minutes after it was written, and the TTL doubles as the abandoned-exam cleanup | to build |
+| **Placement run state** | The search bounds, the level being probed, the tally per category, the mistakes so far, the current question's deadline and the report. **Always with a TTL** (one hour, `PLACEMENT_REDIS_KEY_TTL`). It is keyed by the user (`user:<id>:eval`), not by the session as first planned, so a learner who signs in again within the hour comes back to the exam they left. It lives exactly as long as the exam, so a table would be a row deleted minutes after it was written, and the TTL doubles as the abandoned-exam cleanup | done |
 
 ---
 
@@ -443,20 +443,20 @@ redo rather than data; if it does not, it is a plain constant or a per-request v
 
 ### Provider
 
-`LLM_PROVIDER` is `fixture | gemini` (`cached` is planned, not implemented yet), and CI stays on
-`fixture` forever. The vendor is
-one file behind the `LlmProvider` interface. Team decision: **Gemini 3.1 Flash-Lite**, chosen
-for native JSON-schema output and price.
+`LLM_PROVIDER` is `fixture | gemini | disabled` (`cached` is planned, not implemented yet), and
+CI stays on `fixture` forever. The vendor is one file behind the `LlmProvider` interface. Team
+decision: **Gemini 3.6 Flash** (`gemini-3.6-flash`, the default when `LLM_MODEL` is empty),
+chosen for native JSON-schema output and price, **on a free key** (decided 2026-11-20, #204).
 
 Verified 2026-08-22: the model has a real free tier, roughly 30 requests/minute and 1,500/day
 per key, and on the free tier **Google may use prompts and outputs for training and human
 review**. Paid tiers are not used for training. That one clause has three consequences:
 
-1. **The Privacy Policy must say it.** Learner-typed text (answers, tutor chat) is sent to
-   Google and may be used to train models. The Privacy Policy is a rejection criterion in its own
-   right. Disclose it now, or budget for the paid tier where
-   the clause does not apply; at our volume the paid cost is a few tens of euros for the whole
-   project.
+1. **The Privacy Policy says it** (section 4, #204). Learner-typed text (the wrong answers and
+   the tutor chat) is sent to Google and may be used to train models. The Privacy Policy is a
+   rejection criterion in its own right, so moving to a paid key, where the clause does not apply
+   (a few tens of euros for the whole project at our volume), is a policy change: section 4 of
+   `/privacy`, in en, fr and de, and its `lastUpdated`, in the same PR as the key.
 2. **Never put identity in a prompt.** Email, display name and user id have no business in any
    prompt. The tutor needs the lesson's level and brief and the learner's answer text, nothing
    else.
@@ -907,7 +907,7 @@ test early, it is the cheapest possible proof of a rejection-criterion requireme
 1. **Domain migration**, the §7 tables, the seeded `Lesson` catalogue and a starter
    `QuestionBank` for one language. Authored questions, no generation yet.
 2. **`LlmProvider` + fixture**, `generateStructured` and `streamText`, plus the Zod schemas in
-   `@ft/shared`. No vendor yet.
+   `@ft/shared`. No vendor at this step: Gemini comes at step 6.
 3. **Onboarding + placement**, the binary search and bank sampling excluding `UserSeenQuestion`.
    Entirely on fixtures. Both are plain unit tests: sit the exam twice as the same user and
    assert zero question overlap.
@@ -921,4 +921,4 @@ test early, it is the cheapest possible proof of a rejection-criterion requireme
 10. **Buffer modules**, pick from §2 by cost.
 
 Steps 1 to 5 need no API key and no network. That is deliberate: four people can build the entire
-product on fixtures while one person settles the vendor.
+product on fixtures while one person settles the vendor (settled: Gemini 3.6 Flash on a free key, §5).
