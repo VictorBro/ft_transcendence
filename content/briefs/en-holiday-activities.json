@@ -48,7 +48,7 @@
       "targetIds": ["sunbathe", "swim-sea", "sandcastle", "relax", "hiking", "photos"],
       "introduction": {
         "en": "Learn **six activities** for the beach and the countryside:\n\n- `sunbathe`\n- `swim in the sea`\n- `build a sandcastle`\n- `relax`\n- `go hiking`\n- `take photos`",
-        "fr": "Apprenez **six activités** pour la plage et la campagne :\n\n- `sunbathe`\n- `swim in the sea`\n- `build a sandcastle`\n- `relax`\n- `go hiking`\n- `take photos`",
+        "fr": "Apprends **six activités** pour la plage et la campagne :\n\n- `sunbathe`\n- `swim in the sea`\n- `build a sandcastle`\n- `relax`\n- `go hiking`\n- `take photos`",
         "de": "Lerne **sechs Aktivitäten** für den Strand und das Land:\n\n- `sunbathe`\n- `swim in the sea`\n- `build a sandcastle`\n- `relax`\n- `go hiking`\n- `take photos`"
       }
     },
@@ -62,7 +62,7 @@
       "targetIds": ["sightseeing", "souvenirs", "tour", "bike", "explore", "museum"],
       "introduction": {
         "en": "Now learn **six activities** for a city break or a trip:\n\n- `go sightseeing`\n- `buy souvenirs`\n- `go on a tour`\n- `hire a bike`\n- `explore`\n- `visit a museum`",
-        "fr": "Apprenez maintenant **six activités** pour un séjour en ville ou un voyage :\n\n- `go sightseeing`\n- `buy souvenirs`\n- `go on a tour`\n- `hire a bike`\n- `explore`\n- `visit a museum`",
+        "fr": "Apprends maintenant **six activités** pour un séjour en ville ou un voyage :\n\n- `go sightseeing`\n- `buy souvenirs`\n- `go on a tour`\n- `hire a bike`\n- `explore`\n- `visit a museum`",
         "de": "Lerne jetzt **sechs Aktivitäten** für einen Städtetrip oder eine Reise:\n\n- `go sightseeing`\n- `buy souvenirs`\n- `go on a tour`\n- `hire a bike`\n- `explore`\n- `visit a museum`"
       }
     }
@@ -427,7 +427,7 @@
       "ambiguityNote": null,
       "explanation": {
         "en": "You go on a tour when a guide shows you around a place.",
-        "fr": "On fait une visite guidée quand un guide vous montre un lieu.",
+        "fr": "On fait une visite guidée quand un guide te montre un lieu.",
         "de": "Man macht eine Tour, wenn ein Guide einem einen Ort zeigt."
       },
       "genderExplanation": null,

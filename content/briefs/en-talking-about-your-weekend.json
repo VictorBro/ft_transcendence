@@ -7,7 +7,7 @@
   "title": "Talking about your weekend",
   "objective": {
     "en": "Ask a friend about their weekend and tell them about yours in order: where you went, what you saw and what you did.",
-    "fr": "Demander à un ami comment s’est passé son week-end et raconter le vôtre dans l’ordre : où vous êtes allé, ce que vous avez vu et fait.",
+    "fr": "Demander à un ami comment s’est passé son week-end et raconter le tien dans l’ordre : où tu es allé, ce que tu as vu et fait.",
     "de": "Einen Freund nach seinem Wochenende fragen und von dem eigenen der Reihe nach erzählen: wohin man ging, was man sah und tat."
   },
   "estimatedMinutes": 16,
@@ -85,7 +85,7 @@
       },
       "explanation": {
         "en": "Tells where you went. Went is the past of go.",
-        "fr": "Dit où vous êtes allé. Went est le passé de go.",
+        "fr": "Dit où tu es allé. Went est le passé de go.",
         "de": "Sagt, wohin ihr gegangen seid. Went ist die Vergangenheit von go."
       },
       "example": {
@@ -142,7 +142,7 @@
       "translations": { "fr": ["C’était super"], "de": ["Es war toll"] },
       "explanation": {
         "en": "Gives your general opinion of the weekend or a trip.",
-        "fr": "Donne votre avis général sur le week-end ou une sortie.",
+        "fr": "Donne ton avis général sur le week-end ou une sortie.",
         "de": "Gibt deine allgemeine Meinung zum Wochenende oder zu einem Ausflug."
       },
       "example": {

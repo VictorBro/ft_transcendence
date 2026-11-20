@@ -62,7 +62,7 @@
       "targetIds": ["commettre", "effectuer", "mener", "fournir"],
       "introduction": {
         "en": "Instead of faire, choose the verb that fits the **action** and its **object**:\n\n- `commettre une erreur`\n- `effectuer un virement`\n- `mener une enquête`\n- `fournir un effort`",
-        "fr": "À la place de faire, choisissez le verbe qui convient à l’**action** et à son **complément** :\n\n- `commettre une erreur`\n- `effectuer un virement`\n- `mener une enquête`\n- `fournir un effort`",
+        "fr": "À la place de faire, choisis le verbe qui convient à l’**action** et à son **complément** :\n\n- `commettre une erreur`\n- `effectuer un virement`\n- `mener une enquête`\n- `fournir un effort`",
         "de": "Wähle statt faire das Verb, das zur **Handlung** und zu ihrem **Objekt** passt:\n\n- `commettre une erreur`\n- `effectuer un virement`\n- `mener une enquête`\n- `fournir un effort`"
       }
     },
@@ -76,7 +76,7 @@
       "targetIds": ["dresser", "constituer", "formuler", "emettre"],
       "introduction": {
         "en": "Replace mettre and être with verbs that **establish** or **express** something:\n\n- `dresser un bilan`\n- `constituer un risque`\n- `formuler une critique`\n- `émettre une réserve`",
-        "fr": "Remplacez mettre et être par des verbes qui **établissent** ou **expriment** quelque chose :\n\n- `dresser un bilan`\n- `constituer un risque`\n- `formuler une critique`\n- `émettre une réserve`",
+        "fr": "Remplace mettre et être par des verbes qui **établissent** ou **expriment** quelque chose :\n\n- `dresser un bilan`\n- `constituer un risque`\n- `formuler une critique`\n- `émettre une réserve`",
         "de": "Ersetze mettre und être durch Verben, die etwas **erstellen** oder **ausdrücken**:\n\n- `dresser un bilan`\n- `constituer un risque`\n- `formuler une critique`\n- `émettre une réserve`"
       }
     }

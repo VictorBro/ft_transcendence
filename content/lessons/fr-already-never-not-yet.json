@@ -40,7 +40,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -55,7 +55,7 @@
               },
               "text": {
                 "en": "Use `déjà` (already) to say that something happened before now. It goes between the auxiliary and the participle: `J'ai déjà visité Paris.`\n\nTo say that something has not happened yet, put `ne… pas encore` around the auxiliary: `Je ne suis pas encore allé à Rome.`\n\n- Questions work the same way: `Tu es déjà allé à Paris ?`\n- A short answer is enough: `Pas encore.` means not yet, but maybe soon.",
-                "fr": "Employez `déjà` pour dire qu’une chose s’est passée avant maintenant. Il se place entre l’auxiliaire et le participe : `J'ai déjà visité Paris.`\n\nPour dire qu’une chose ne s’est pas encore passée, entourez l’auxiliaire avec `ne… pas encore` : `Je ne suis pas encore allé à Rome.`\n\n- La question suit le même ordre : `Tu es déjà allé à Paris ?`\n- Une réponse courte suffit : `Pas encore.` veut dire « pas maintenant, mais peut-être bientôt ».",
+                "fr": "Emploie `déjà` pour dire qu’une chose s’est passée avant maintenant. Il se place entre l’auxiliaire et le participe : `J'ai déjà visité Paris.`\n\nPour dire qu’une chose ne s’est pas encore passée, entoure l’auxiliaire avec `ne… pas encore` : `Je ne suis pas encore allé à Rome.`\n\n- La question suit le même ordre : `Tu es déjà allé à Paris ?`\n- Une réponse courte suffit : `Pas encore.` veut dire « pas maintenant, mais peut-être bientôt ».",
                 "de": "Mit `déjà` (schon) sagst du, dass etwas vor jetzt passiert ist. Es steht zwischen Hilfsverb und Partizip: `J'ai déjà visité Paris.`\n\nUm zu sagen, dass etwas noch nicht passiert ist, setzt du `ne… pas encore` um das Hilfsverb: `Je ne suis pas encore allé à Rome.`\n\n- Fragen funktionieren genauso: `Tu es déjà allé à Paris ?`\n- Eine kurze Antwort genügt: `Pas encore.` heißt „noch nicht, aber vielleicht bald“."
               },
               "formTable": [
@@ -121,7 +121,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -157,7 +157,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -189,7 +189,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -225,7 +225,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -269,7 +269,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -299,7 +299,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -329,7 +329,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -355,7 +355,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -389,7 +389,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -419,7 +419,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -451,7 +451,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -494,7 +494,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -509,7 +509,7 @@
               },
               "text": {
                 "en": "Use `ne… jamais` to say that something has never happened in your life. It goes around the auxiliary, like the negation with pas: `Je n'ai jamais vu la mer.`\n\n- `jamais` can also answer alone: `Tu es déjà allé au Japon ? Non, jamais.`\n- Compare: `Je n'ai jamais pris l'avion.` means never in my life, `Je n'ai pas encore pris l'avion.` means not yet, but maybe soon.",
-                "fr": "Employez `ne… jamais` pour dire qu’une chose ne s’est jamais passée dans votre vie. Il entoure l’auxiliaire, comme la négation avec pas : `Je n'ai jamais vu la mer.`\n\n- `jamais` peut aussi répondre seul : `Tu es déjà allé au Japon ? Non, jamais.`\n- Comparez : `Je n'ai jamais pris l'avion.` veut dire « jamais dans ma vie », `Je n'ai pas encore pris l'avion.` veut dire « pas encore, mais peut-être bientôt ».",
+                "fr": "Emploie `ne… jamais` pour dire qu’une chose ne s’est jamais passée dans ta vie. Il entoure l’auxiliaire, comme la négation avec pas : `Je n'ai jamais vu la mer.`\n\n- `jamais` peut aussi répondre seul : `Tu es déjà allé au Japon ? Non, jamais.`\n- Compare : `Je n'ai jamais pris l'avion.` veut dire « jamais dans ma vie », `Je n'ai pas encore pris l'avion.` veut dire « pas encore, mais peut-être bientôt ».",
                 "de": "Mit `ne… jamais` sagst du, dass etwas in deinem Leben nie passiert ist. Es steht um das Hilfsverb, wie die Verneinung mit pas: `Je n'ai jamais vu la mer.`\n\n- `jamais` kann auch allein antworten: `Tu es déjà allé au Japon ? Non, jamais.`\n- Vergleiche: `Je n'ai jamais pris l'avion.` heißt „noch nie im Leben“, `Je n'ai pas encore pris l'avion.` heißt „noch nicht, aber vielleicht bald“."
               },
               "formTable": [
@@ -575,7 +575,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -611,7 +611,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -643,7 +643,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -675,7 +675,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -719,7 +719,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -749,7 +749,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -779,7 +779,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -809,7 +809,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -843,7 +843,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it.",
-            "fr": "Trouvez le mot faux et corrigez-le.",
+            "fr": "Trouve le mot faux et corrige-le.",
             "de": "Finde das falsche Wort und korrigiere es."
           },
           "items": [
@@ -881,7 +881,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it.",
-            "fr": "Trouvez le mot faux et corrigez-le.",
+            "fr": "Trouve le mot faux et corrige-le.",
             "de": "Finde das falsche Wort und korrigiere es."
           },
           "items": [
@@ -926,7 +926,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -958,7 +958,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -990,7 +990,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -1021,7 +1021,7 @@
       "id": "feedback",
       "role": "feedback",
       "blockId": null,
-      "label": { "en": "Your feedback", "fr": "Votre retour", "de": "Dein Feedback" },
+      "label": { "en": "Your feedback", "fr": "Ton retour", "de": "Dein Feedback" },
       "pages": [
         {
           "pageId": "feedback",
@@ -1029,7 +1029,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Continue to the final exam.",
-            "fr": "Passez à l’examen final.",
+            "fr": "Passe à l’examen final.",
             "de": "Weiter zur Abschlussprüfung."
           },
           "items": [{ "type": "production_feedback_placeholder", "itemId": "feedback" }]
@@ -1048,7 +1048,7 @@
           "timeLimitS": 100,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -1116,7 +1116,7 @@
           "timeLimitS": 80,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -1170,7 +1170,7 @@
           "timeLimitS": 130,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [

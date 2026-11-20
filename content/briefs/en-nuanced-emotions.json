@@ -68,7 +68,7 @@
       "targetIds": ["elated", "nostalgic", "wistful", "bittersweet", "forlorn"],
       "introduction": {
         "en": "Some feelings mix happiness with sadness, or look back at the past. Notice the **different shades**:\n\n- `elated`: extremely happy and excited\n- `nostalgic`: fondly remembering the past\n- `wistful`: quietly sad about something lost or unreachable\n- `bittersweet`: both happy and sad together\n- `forlorn`: lonely, sad and abandoned",
-        "fr": "Certains sentiments mêlent bonheur et tristesse, ou regardent le passé. Remarquez les **différentes nuances** :\n\n- `elated` : extrêmement heureux et enthousiaste\n- `nostalgic` : se souvenant avec tendresse du passé\n- `wistful` : discrètement triste à cause de ce qui est perdu ou inaccessible\n- `bittersweet` : à la fois heureux et triste\n- `forlorn` : seul, triste et abandonné",
+        "fr": "Certains sentiments mêlent bonheur et tristesse, ou regardent le passé. Remarque les **différentes nuances** :\n\n- `elated` : extrêmement heureux et enthousiaste\n- `nostalgic` : se souvenant avec tendresse du passé\n- `wistful` : discrètement triste à cause de ce qui est perdu ou inaccessible\n- `bittersweet` : à la fois heureux et triste\n- `forlorn` : seul, triste et abandonné",
         "de": "Manche Gefühle mischen Glück mit Traurigkeit oder blicken in die Vergangenheit. Beachte die **verschiedenen Nuancen**:\n\n- `elated`: überglücklich und begeistert\n- `nostalgic`: sich liebevoll an die Vergangenheit erinnernd\n- `wistful`: still traurig über etwas Verlorenes oder Unerreichbares\n- `bittersweet`: froh und traurig zugleich\n- `forlorn`: einsam, traurig und verlassen"
       }
     }

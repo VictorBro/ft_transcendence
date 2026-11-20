@@ -56,7 +56,7 @@
       ],
       "introduction": {
         "en": "Learn the **letters** of the German alphabet and its special characters:\n\n- `der Buchstabe`, `das Alphabet`\n- `der Umlaut`: `ä`, `ö`, `ü`\n- `das Eszett`: `ß`",
-        "fr": "Apprenez les **lettres** de l’alphabet allemand et ses caractères spéciaux :\n\n- `der Buchstabe`, `das Alphabet`\n- `der Umlaut` : `ä`, `ö`, `ü`\n- `das Eszett` : `ß`",
+        "fr": "Apprends les **lettres** de l’alphabet allemand et ses caractères spéciaux :\n\n- `der Buchstabe`, `das Alphabet`\n- `der Umlaut` : `ä`, `ö`, `ü`\n- `das Eszett` : `ß`",
         "de": "Lerne die **Buchstaben** des deutschen Alphabets und seine Sonderzeichen:\n\n- `der Buchstabe`, `das Alphabet`\n- `der Umlaut`: `ä`, `ö`, `ü`\n- `das Eszett`: `ß`"
       }
     },
@@ -70,7 +70,7 @@
       "targetIds": ["punkt", "bindestrich", "at-zeichen", "adresse", "name"],
       "introduction": {
         "en": "You need these **signs** when you give a name or an address:\n\n- `der Punkt`\n- `der Bindestrich`\n- `das At-Zeichen`\n- `die Adresse`, `der Name`",
-        "fr": "Vous avez besoin de ces **signes** pour donner un nom ou une adresse :\n\n- `der Punkt`\n- `der Bindestrich`\n- `das At-Zeichen`\n- `die Adresse`, `der Name`",
+        "fr": "Tu as besoin de ces **signes** pour donner un nom ou une adresse :\n\n- `der Punkt`\n- `der Bindestrich`\n- `das At-Zeichen`\n- `die Adresse`, `der Name`",
         "de": "Diese **Zeichen** brauchst du, wenn du einen Namen oder eine Adresse nennst:\n\n- `der Punkt`\n- `der Bindestrich`\n- `das At-Zeichen`\n- `die Adresse`, `der Name`"
       }
     },
@@ -84,7 +84,7 @@
       "targetIds": ["gross", "klein", "buchstabieren"],
       "introduction": {
         "en": "Say whether a letter is **big** or small, and spell a word aloud:\n\n- `groß`, `klein`\n- `buchstabieren`",
-        "fr": "Dites si une lettre est **grande** ou petite, et épelez un mot à voix haute :\n\n- `groß`, `klein`\n- `buchstabieren`",
+        "fr": "Dis si une lettre est **grande** ou petite, et épelle un mot à voix haute :\n\n- `groß`, `klein`\n- `buchstabieren`",
         "de": "Sag, ob ein Buchstabe **groß** oder klein ist, und buchstabiere ein Wort laut:\n\n- `groß`, `klein`\n- `buchstabieren`"
       }
     }

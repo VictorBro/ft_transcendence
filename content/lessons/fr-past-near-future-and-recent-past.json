@@ -40,7 +40,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -55,7 +55,7 @@
               },
               "text": {
                 "en": "At the imperfect, `aller` + infinitive says that an action was **about to** happen in the past. A second action, in the passé composé, often interrupts it.\n\n`J'allais sortir quand il a appelé.` The call came just before you left.\n\n- `j'allais`, `tu allais`, `il allait`\n- `nous allions`, `vous alliez`, `ils allaient`\n\nDo not confuse it with `Je suis allé`: there the movement really took place.",
-                "fr": "À l'imparfait, `aller` + infinitif dit qu'une action était **sur le point** d'arriver dans le passé. Une seconde action, au passé composé, l'interrompt souvent.\n\n`J'allais sortir quand il a appelé.` L'appel est arrivé juste avant votre départ.\n\n- `j'allais`, `tu allais`, `il allait`\n- `nous allions`, `vous alliez`, `ils allaient`\n\nNe confondez pas avec `Je suis allé` : là, le déplacement a vraiment eu lieu.",
+                "fr": "À l'imparfait, `aller` + infinitif dit qu'une action était **sur le point** d'arriver dans le passé. Une seconde action, au passé composé, l'interrompt souvent.\n\n`J'allais sortir quand il a appelé.` L'appel est arrivé juste avant ton départ.\n\n- `j'allais`, `tu allais`, `il allait`\n- `nous allions`, `vous alliez`, `ils allaient`\n\nNe confonds pas avec `Je suis allé` : là, le déplacement a vraiment eu lieu.",
                 "de": "Im Imparfait drückt `aller` + Infinitiv aus, dass eine Handlung in der Vergangenheit **kurz bevorstand**. Eine zweite Handlung im Passé composé unterbricht sie oft.\n\n`J'allais sortir quand il a appelé.` Der Anruf kam kurz vor dem Weggehen.\n\n- `j'allais`, `tu allais`, `il allait`\n- `nous allions`, `vous alliez`, `ils allaient`\n\nVerwechsle es nicht mit `Je suis allé`: Dort hat die Bewegung wirklich stattgefunden."
               },
               "formTable": [
@@ -107,7 +107,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -139,7 +139,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -171,7 +171,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -215,7 +215,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -245,7 +245,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -275,7 +275,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -313,7 +313,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -346,7 +346,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -380,7 +380,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -425,7 +425,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -496,7 +496,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -528,7 +528,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -560,7 +560,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -604,7 +604,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -634,7 +634,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -664,7 +664,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -694,7 +694,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -732,7 +732,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -766,7 +766,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -803,7 +803,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -849,7 +849,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -864,7 +864,7 @@
               },
               "text": {
                 "en": "Both forms set the scene around an event in the passé composé, but they look in different directions.\n\n- `j'allais partir quand il a appelé`: the departure had not happened yet.\n- `je venais d'arriver quand il a appelé`: the arrival had just happened.\n\nAsk yourself: has the action **not started yet** (`allais`) or has it **just ended** (`venais de`)? The second action, in the passé composé, is the event of the story.\n\nIf the action really happened, use the passé composé: `Je suis parti.`",
-                "fr": "Les deux formes installent le décor autour d'un événement au passé composé, mais elles ne regardent pas dans la même direction.\n\n- `j'allais partir quand il a appelé` : le départ n'avait pas encore eu lieu.\n- `je venais d'arriver quand il a appelé` : l'arrivée venait d'avoir lieu.\n\nDemandez-vous : l'action n'a-t-elle **pas encore commencé** (`allais`) ou vient-elle de **se terminer** (`venais de`) ? La seconde action, au passé composé, est l'événement du récit.\n\nSi l'action a vraiment eu lieu, on emploie le passé composé : `Je suis parti.`",
+                "fr": "Les deux formes installent le décor autour d'un événement au passé composé, mais elles ne regardent pas dans la même direction.\n\n- `j'allais partir quand il a appelé` : le départ n'avait pas encore eu lieu.\n- `je venais d'arriver quand il a appelé` : l'arrivée venait d'avoir lieu.\n\nDemande-toi : l'action n'a-t-elle **pas encore commencé** (`allais`) ou vient-elle de **se terminer** (`venais de`) ? La seconde action, au passé composé, est l'événement du récit.\n\nSi l'action a vraiment eu lieu, on emploie le passé composé : `Je suis parti.`",
                 "de": "Beide Formen bauen die Szene um ein Ereignis im Passé composé auf, aber sie schauen in verschiedene Richtungen.\n\n- `j'allais partir quand il a appelé`: Der Aufbruch hatte noch nicht stattgefunden.\n- `je venais d'arriver quand il a appelé`: Die Ankunft war gerade geschehen.\n\nFrag dich: Hat die Handlung **noch nicht begonnen** (`allais`) oder ist sie **gerade zu Ende** (`venais de`)? Die zweite Handlung im Passé composé ist das Ereignis der Geschichte.\n\nWenn die Handlung wirklich stattgefunden hat, nimmt man das Passé composé: `Je suis parti.`"
               },
               "formTable": [],
@@ -905,7 +905,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -941,7 +941,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -977,7 +977,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -1021,7 +1021,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it.",
-            "fr": "Trouvez le mot faux et corrigez-le.",
+            "fr": "Trouve le mot faux et corrige-le.",
             "de": "Finde das falsche Wort und korrigiere es."
           },
           "items": [
@@ -1060,7 +1060,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it.",
-            "fr": "Trouvez le mot faux et corrigez-le.",
+            "fr": "Trouve le mot faux et corrige-le.",
             "de": "Finde das falsche Wort und korrigiere es."
           },
           "items": [
@@ -1099,7 +1099,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it.",
-            "fr": "Trouvez le mot faux et corrigez-le.",
+            "fr": "Trouve le mot faux et corrige-le.",
             "de": "Finde das falsche Wort und korrigiere es."
           },
           "items": [
@@ -1146,7 +1146,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -1179,7 +1179,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -1213,7 +1213,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -1250,7 +1250,7 @@
       "id": "feedback",
       "role": "feedback",
       "blockId": null,
-      "label": { "en": "Your feedback", "fr": "Votre retour", "de": "Dein Feedback" },
+      "label": { "en": "Your feedback", "fr": "Ton retour", "de": "Dein Feedback" },
       "pages": [
         {
           "pageId": "feedback",
@@ -1258,7 +1258,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Continue to the final exam.",
-            "fr": "Passez à l’examen final.",
+            "fr": "Passe à l’examen final.",
             "de": "Weiter zur Abschlussprüfung."
           },
           "items": [{ "type": "production_feedback_placeholder", "itemId": "feedback" }]
@@ -1277,7 +1277,7 @@
           "timeLimitS": 90,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -1331,7 +1331,7 @@
           "timeLimitS": 90,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -1385,7 +1385,7 @@
           "timeLimitS": 150,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [

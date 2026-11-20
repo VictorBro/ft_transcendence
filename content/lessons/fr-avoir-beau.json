@@ -40,7 +40,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -122,7 +122,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -154,7 +154,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -186,7 +186,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -218,7 +218,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -262,7 +262,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the form for each pronoun.",
-            "fr": "Écrivez la forme pour chaque pronom.",
+            "fr": "Écris la forme pour chaque pronom.",
             "de": "Schreib die Form zu jedem Pronomen."
           },
           "items": [
@@ -311,7 +311,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the form for each pronoun.",
-            "fr": "Écrivez la forme pour chaque pronom.",
+            "fr": "Écris la forme pour chaque pronom.",
             "de": "Schreib die Form zu jedem Pronomen."
           },
           "items": [
@@ -368,7 +368,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -402,7 +402,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -436,7 +436,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -473,7 +473,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -537,7 +537,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -552,7 +552,7 @@
               },
               "text": {
                 "en": "The tense is marked on `avoir` only; `beau` and the infinitive never change.\n\n- Present: `Elle a beau protester`\n- Passé composé: `Il a eu beau insister`\n- Imparfait: `Elle avait beau protester`\n- Futur: `Tu auras beau pleurer`\n\nChoose the tense by the moment of the story and keep it in both clauses: `Il a eu beau insister, elle a refusé.`\n\nNever link the two clauses with `donc` or `car`: they express consequence or cause, not contrast.",
-                "fr": "Le temps se marque sur `avoir` seulement ; `beau` et l'infinitif ne changent jamais.\n\n- Présent : `Elle a beau protester`\n- Passé composé : `Il a eu beau insister`\n- Imparfait : `Elle avait beau protester`\n- Futur : `Tu auras beau pleurer`\n\nChoisissez le temps selon le moment du récit et gardez-le dans les deux propositions : `Il a eu beau insister, elle a refusé.`\n\nNe reliez jamais les deux propositions par `donc` ou `car` : ils expriment la conséquence ou la cause, pas l'opposition.",
+                "fr": "Le temps se marque sur `avoir` seulement ; `beau` et l'infinitif ne changent jamais.\n\n- Présent : `Elle a beau protester`\n- Passé composé : `Il a eu beau insister`\n- Imparfait : `Elle avait beau protester`\n- Futur : `Tu auras beau pleurer`\n\nChoisis le temps selon le moment du récit et garde-le dans les deux propositions : `Il a eu beau insister, elle a refusé.`\n\nNe relie jamais les deux propositions par `donc` ou `car` : ils expriment la conséquence ou la cause, pas l'opposition.",
                 "de": "Die Zeit wird nur an `avoir` markiert; `beau` und der Infinitiv ändern sich nie.\n\n- Präsens: `Elle a beau protester`\n- Passé composé: `Il a eu beau insister`\n- Imparfait: `Elle avait beau protester`\n- Futur: `Tu auras beau pleurer`\n\nWähle die Zeit nach dem Zeitpunkt der Erzählung und behalte sie in beiden Sätzen bei: `Il a eu beau insister, elle a refusé.`\n\nVerbinde die beiden Sätze nie mit `donc` oder `car`: Sie drücken Folge oder Grund aus, nicht Gegensatz."
               },
               "formTable": [
@@ -621,7 +621,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -653,7 +653,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -685,7 +685,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -729,7 +729,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -759,7 +759,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -789,7 +789,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -819,7 +819,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -857,7 +857,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it.",
-            "fr": "Trouvez le mot faux et corrigez-le.",
+            "fr": "Trouve le mot faux et corrige-le.",
             "de": "Finde das falsche Wort und korrigiere es."
           },
           "items": [
@@ -897,7 +897,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it.",
-            "fr": "Trouvez le mot faux et corrigez-le.",
+            "fr": "Trouve le mot faux et corrige-le.",
             "de": "Finde das falsche Wort und korrigiere es."
           },
           "items": [
@@ -938,7 +938,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it.",
-            "fr": "Trouvez le mot faux et corrigez-le.",
+            "fr": "Trouve le mot faux et corrige-le.",
             "de": "Finde das falsche Wort und korrigiere es."
           },
           "items": [
@@ -975,7 +975,7 @@
       "id": "feedback",
       "role": "feedback",
       "blockId": null,
-      "label": { "en": "Your feedback", "fr": "Votre retour", "de": "Dein Feedback" },
+      "label": { "en": "Your feedback", "fr": "Ton retour", "de": "Dein Feedback" },
       "pages": [
         {
           "pageId": "feedback",
@@ -983,7 +983,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Continue to the final exam.",
-            "fr": "Passez à l’examen final.",
+            "fr": "Passe à l’examen final.",
             "de": "Weiter zur Abschlussprüfung."
           },
           "items": [{ "type": "production_feedback_placeholder", "itemId": "feedback" }]
@@ -1002,7 +1002,7 @@
           "timeLimitS": 120,
           "instructions": {
             "en": "Type the form for each pronoun.",
-            "fr": "Écrivez la forme pour chaque pronom.",
+            "fr": "Écris la forme pour chaque pronom.",
             "de": "Schreib die Form zu jedem Pronomen."
           },
           "items": [
@@ -1051,7 +1051,7 @@
           "timeLimitS": 140,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -1119,7 +1119,7 @@
           "timeLimitS": 150,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [

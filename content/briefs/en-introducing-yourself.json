@@ -43,7 +43,7 @@
       "translations": { "fr": ["Salut, je suis"], "de": ["Hallo, ich bin"] },
       "explanation": {
         "en": "A friendly way to say your name: Hi, I'm + your name.",
-        "fr": "Une façon amicale de dire son prénom : Hi, I'm + votre prénom.",
+        "fr": "Une façon amicale de dire son prénom : Hi, I'm + ton prénom.",
         "de": "Eine freundliche Art, den eigenen Namen zu sagen: Hi, I'm + Name."
       },
       "example": {

@@ -44,7 +44,7 @@
       "targetIds": ["aunt", "uncle", "cousin", "niece", "nephew", "grandson", "granddaughter"],
       "introduction": {
         "en": "These are relatives in your wider family. Note that **cousin** can be a boy or a girl:\n\n- `aunt`\n- `uncle`\n- `cousin`\n- `niece`\n- `nephew`\n- `grandson`\n- `granddaughter`",
-        "fr": "Voici les proches de votre famille élargie. Notez que **cousin** peut désigner un garçon ou une fille :\n\n- `aunt`\n- `uncle`\n- `cousin`\n- `niece`\n- `nephew`\n- `grandson`\n- `granddaughter`",
+        "fr": "Voici les proches de ta famille élargie. Note que **cousin** peut désigner un garçon ou une fille :\n\n- `aunt`\n- `uncle`\n- `cousin`\n- `niece`\n- `nephew`\n- `grandson`\n- `granddaughter`",
         "de": "Das sind Verwandte aus deiner erweiterten Familie. Beachte, dass **cousin** ein Junge oder ein Mädchen sein kann:\n\n- `aunt`\n- `uncle`\n- `cousin`\n- `niece`\n- `nephew`\n- `grandson`\n- `granddaughter`"
       }
     },
@@ -58,7 +58,7 @@
       "targetIds": ["boyfriend", "girlfriend", "partner", "brother-in-law", "mother-in-law"],
       "introduction": {
         "en": "Here are words for people you are in a relationship with, and for your **in-laws** (your partner’s family):\n\n- `boyfriend`\n- `girlfriend`\n- `partner`\n- `brother-in-law`\n- `mother-in-law`",
-        "fr": "Voici des mots pour les personnes avec qui vous êtes en couple, et pour votre **belle-famille** (la famille de votre partenaire) :\n\n- `boyfriend`\n- `girlfriend`\n- `partner`\n- `brother-in-law`\n- `mother-in-law`",
+        "fr": "Voici des mots pour les personnes avec qui tu es en couple, et pour ta **belle-famille** (la famille de ton partenaire) :\n\n- `boyfriend`\n- `girlfriend`\n- `partner`\n- `brother-in-law`\n- `mother-in-law`",
         "de": "Hier sind Wörter für Menschen, mit denen du in einer Beziehung bist, und für deine **angeheirateten Verwandten** (die Familie deines Partners):\n\n- `boyfriend`\n- `girlfriend`\n- `partner`\n- `brother-in-law`\n- `mother-in-law`"
       }
     }
@@ -87,7 +87,7 @@
       "ambiguityNote": null,
       "explanation": {
         "en": "An aunt is the sister of your mother or father, or the wife of your uncle.",
-        "fr": "Une tante est la sœur de votre mère ou de votre père, ou l’épouse de votre oncle.",
+        "fr": "Une tante est la sœur de ta mère ou de ton père, ou l’épouse de ton oncle.",
         "de": "Eine Tante ist die Schwester deiner Mutter oder deines Vaters oder die Frau deines Onkels."
       },
       "genderExplanation": null,
@@ -100,7 +100,7 @@
         "referenceTargetIds": ["aunt", "uncle", "nephew", "partner"],
         "explanation": {
           "en": "Only aunt fits: she is your mother’s sister.",
-          "fr": "Seul « aunt » convient : c’est la sœur de votre mère.",
+          "fr": "Seul « aunt » convient : c’est la sœur de ta mère.",
           "de": "Nur „aunt“ passt: Sie ist die Schwester deiner Mutter."
         }
       },
@@ -129,7 +129,7 @@
       "ambiguityNote": null,
       "explanation": {
         "en": "An uncle is the brother of your mother or father, or the husband of your aunt.",
-        "fr": "Un oncle est le frère de votre mère ou de votre père, ou le mari de votre tante.",
+        "fr": "Un oncle est le frère de ta mère ou de ton père, ou le mari de ta tante.",
         "de": "Ein Onkel ist der Bruder deiner Mutter oder deines Vaters oder der Mann deiner Tante."
       },
       "genderExplanation": null,
@@ -142,7 +142,7 @@
         "referenceTargetIds": ["uncle", "aunt", "niece", "girlfriend"],
         "explanation": {
           "en": "Only uncle fits: he is your father’s brother.",
-          "fr": "Seul « uncle » convient : c’est le frère de votre père.",
+          "fr": "Seul « uncle » convient : c’est le frère de ton père.",
           "de": "Nur „uncle“ passt: Er ist der Bruder deines Vaters."
         }
       },
@@ -175,7 +175,7 @@
       },
       "explanation": {
         "en": "A cousin is the child of your aunt or uncle. The word is the same for a boy and a girl.",
-        "fr": "Un cousin est l’enfant de votre tante ou de votre oncle. Le mot est le même pour un garçon et une fille.",
+        "fr": "Un cousin est l’enfant de ta tante ou de ton oncle. Le mot est le même pour un garçon et une fille.",
         "de": "Ein Cousin ist das Kind deiner Tante oder deines Onkels. Das Wort ist für Jungen und Mädchen gleich."
       },
       "genderExplanation": null,
@@ -188,7 +188,7 @@
         "referenceTargetIds": ["cousin", "niece", "grandson", "partner"],
         "explanation": {
           "en": "Only cousin fits: she is the child of your aunt.",
-          "fr": "Seul « cousin » convient : c’est l’enfant de votre tante.",
+          "fr": "Seul « cousin » convient : c’est l’enfant de ta tante.",
           "de": "Nur „cousin“ passt: Sie ist das Kind deiner Tante."
         }
       },
@@ -214,7 +214,7 @@
       "ambiguityNote": null,
       "explanation": {
         "en": "A niece is the daughter of your brother or sister.",
-        "fr": "Une nièce est la fille de votre frère ou de votre sœur.",
+        "fr": "Une nièce est la fille de ton frère ou de ta sœur.",
         "de": "Eine Nichte ist die Tochter deines Bruders oder deiner Schwester."
       },
       "genderExplanation": null,
@@ -227,7 +227,7 @@
         "referenceTargetIds": ["niece", "nephew", "uncle", "girlfriend"],
         "explanation": {
           "en": "Only niece fits: she is your brother’s daughter.",
-          "fr": "Seul « niece » convient : c’est la fille de votre frère.",
+          "fr": "Seul « niece » convient : c’est la fille de ton frère.",
           "de": "Nur „niece“ passt: Sie ist die Tochter deines Bruders."
         }
       },
@@ -256,7 +256,7 @@
       "ambiguityNote": null,
       "explanation": {
         "en": "A nephew is the son of your brother or sister.",
-        "fr": "Un neveu est le fils de votre frère ou de votre sœur.",
+        "fr": "Un neveu est le fils de ton frère ou de ta sœur.",
         "de": "Ein Neffe ist der Sohn deines Bruders oder deiner Schwester."
       },
       "genderExplanation": null,
@@ -269,7 +269,7 @@
         "referenceTargetIds": ["nephew", "niece", "aunt", "boyfriend"],
         "explanation": {
           "en": "Only nephew fits: he is your sister’s son.",
-          "fr": "Seul « nephew » convient : c’est le fils de votre sœur.",
+          "fr": "Seul « nephew » convient : c’est le fils de ta sœur.",
           "de": "Nur „nephew“ passt: Er ist der Sohn deiner Schwester."
         }
       },
@@ -298,7 +298,7 @@
       "ambiguityNote": null,
       "explanation": {
         "en": "A grandson is the son of your son or daughter.",
-        "fr": "Un petit-fils est le fils de votre fils ou de votre fille.",
+        "fr": "Un petit-fils est le fils de ton fils ou de ta fille.",
         "de": "Ein Enkel ist der Sohn deines Sohnes oder deiner Tochter."
       },
       "genderExplanation": null,
@@ -311,7 +311,7 @@
         "referenceTargetIds": ["grandson", "granddaughter", "nephew", "cousin"],
         "explanation": {
           "en": "Only grandson fits: he is your daughter’s son.",
-          "fr": "Seul « grandson » convient : c’est le fils de votre fille.",
+          "fr": "Seul « grandson » convient : c’est le fils de ta fille.",
           "de": "Nur „grandson“ passt: Er ist der Sohn deiner Tochter."
         }
       },
@@ -340,7 +340,7 @@
       "ambiguityNote": null,
       "explanation": {
         "en": "A granddaughter is the daughter of your son or daughter.",
-        "fr": "Une petite-fille est la fille de votre fils ou de votre fille.",
+        "fr": "Une petite-fille est la fille de ton fils ou de ta fille.",
         "de": "Eine Enkelin ist die Tochter deines Sohnes oder deiner Tochter."
       },
       "genderExplanation": null,
@@ -353,7 +353,7 @@
         "referenceTargetIds": ["granddaughter", "grandson", "niece", "aunt"],
         "explanation": {
           "en": "Only granddaughter fits: she is your son’s daughter.",
-          "fr": "Seul « granddaughter » convient : c’est la fille de votre fils.",
+          "fr": "Seul « granddaughter » convient : c’est la fille de ton fils.",
           "de": "Nur „granddaughter“ passt: Sie ist die Tochter deines Sohnes."
         }
       },
@@ -471,7 +471,7 @@
       "ambiguityNote": null,
       "explanation": {
         "en": "Your partner is the person you are in a long relationship with. The word works for a man or a woman.",
-        "fr": "Votre partner est la personne avec qui vous êtes en couple depuis longtemps. Le mot s’emploie pour un homme ou une femme.",
+        "fr": "Ton partner est la personne avec qui tu es en couple depuis longtemps. Le mot s’emploie pour un homme ou une femme.",
         "de": "Dein partner ist die Person, mit der du in einer langen Beziehung bist. Das Wort gilt für Männer und Frauen."
       },
       "genderExplanation": null,
@@ -484,7 +484,7 @@
         "referenceTargetIds": ["partner", "uncle", "niece", "grandson"],
         "explanation": {
           "en": "Only partner fits: it is the person you live with in a relationship.",
-          "fr": "Seul « partner » convient : c’est la personne avec qui vous vivez en couple.",
+          "fr": "Seul « partner » convient : c’est la personne avec qui tu vis en couple.",
           "de": "Nur „partner“ passt: Das ist die Person, mit der du in einer Beziehung lebst."
         }
       },
@@ -510,7 +510,7 @@
       "ambiguityNote": null,
       "explanation": {
         "en": "Your brother-in-law is your husband’s or wife’s brother, or your sister’s husband.",
-        "fr": "Votre brother-in-law est le frère de votre mari ou de votre femme, ou le mari de votre sœur.",
+        "fr": "Ton brother-in-law est le frère de ton mari ou de ta femme, ou le mari de ta sœur.",
         "de": "Dein brother-in-law ist der Bruder deines Mannes oder deiner Frau oder der Mann deiner Schwester."
       },
       "genderExplanation": null,
@@ -523,7 +523,7 @@
         "referenceTargetIds": ["brother-in-law", "uncle", "nephew", "girlfriend"],
         "explanation": {
           "en": "Only brother-in-law fits: he is your wife’s brother.",
-          "fr": "Seul « brother-in-law » convient : c’est le frère de votre femme.",
+          "fr": "Seul « brother-in-law » convient : c’est le frère de ta femme.",
           "de": "Nur „brother-in-law“ passt: Er ist der Bruder deiner Frau."
         }
       },
@@ -552,7 +552,7 @@
       "ambiguityNote": null,
       "explanation": {
         "en": "Your mother-in-law is the mother of your husband or wife.",
-        "fr": "Votre mother-in-law est la mère de votre mari ou de votre femme.",
+        "fr": "Ta mother-in-law est la mère de ton mari ou de ta femme.",
         "de": "Deine mother-in-law ist die Mutter deines Mannes oder deiner Frau."
       },
       "genderExplanation": null,
@@ -565,7 +565,7 @@
         "referenceTargetIds": ["mother-in-law", "aunt", "granddaughter", "boyfriend"],
         "explanation": {
           "en": "Only mother-in-law fits: she is your husband’s mother.",
-          "fr": "Seul « mother-in-law » convient : c’est la mère de votre mari.",
+          "fr": "Seul « mother-in-law » convient : c’est la mère de ton mari.",
           "de": "Nur „mother-in-law“ passt: Sie ist die Mutter deines Mannes."
         }
       },

@@ -40,7 +40,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -55,7 +55,7 @@
               },
               "text": {
                 "en": "In the Perfekt you need `haben` or `sein` as the auxiliary verb. Use `sein` when someone **changes place**: `Ich bin nach Rom gefahren.` `Wir sind geflogen.`\n\nUse `sein` also when something **changes state**: `Er ist eingeschlafen.` `Ich bin aufgewacht.`\n\n- `Er ist eingeschlafen.` describes the change into sleep, but `Er hat acht Stunden geschlafen.` only tells how long, with no change.\n- Ask yourself: does the place or the state change? Then use `sein`.",
-                "fr": "Au Perfekt, on utilise `haben` ou `sein` comme auxiliaire. On utilise `sein` quand quelqu'un **change de lieu** : `Ich bin nach Rom gefahren.` `Wir sind geflogen.`\n\nOn utilise aussi `sein` quand quelque chose **change d'état** : `Er ist eingeschlafen.` `Ich bin aufgewacht.`\n\n- `Er ist eingeschlafen.` décrit le passage au sommeil, mais `Er hat acht Stunden geschlafen.` indique seulement la durée, sans changement.\n- Demandez-vous : le lieu ou l'état change-t-il ? Alors utilisez `sein`.",
+                "fr": "Au Perfekt, on utilise `haben` ou `sein` comme auxiliaire. On utilise `sein` quand quelqu'un **change de lieu** : `Ich bin nach Rom gefahren.` `Wir sind geflogen.`\n\nOn utilise aussi `sein` quand quelque chose **change d'état** : `Er ist eingeschlafen.` `Ich bin aufgewacht.`\n\n- `Er ist eingeschlafen.` décrit le passage au sommeil, mais `Er hat acht Stunden geschlafen.` indique seulement la durée, sans changement.\n- Demande-toi : le lieu ou l'état change-t-il ? Alors utilise `sein`.",
                 "de": "Im Perfekt brauchst du `haben` oder `sein` als Hilfsverb. Du nimmst `sein`, wenn jemand den **Ort wechselt**: `Ich bin nach Rom gefahren.` `Wir sind geflogen.`\n\nDu nimmst `sein` auch, wenn sich ein **Zustand ändert**: `Er ist eingeschlafen.` `Ich bin aufgewacht.`\n\n- `Er ist eingeschlafen.` beschreibt den Wechsel in den Schlaf, `Er hat acht Stunden geschlafen.` nennt nur die Dauer, ohne Wechsel.\n- Frag dich: Wechselt der Ort oder der Zustand? Dann nimmst du `sein`."
               },
               "formTable": [
@@ -108,7 +108,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -212,7 +212,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -288,7 +288,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it.",
-            "fr": "Trouvez le mot faux et corrigez-le.",
+            "fr": "Trouve le mot faux et corrige-le.",
             "de": "Finde das falsche Wort und korrigiere es."
           },
           "items": [
@@ -399,7 +399,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -414,7 +414,7 @@
               },
               "text": {
                 "en": "With the verbs `sein` and `bleiben` the auxiliary is `sein`: `Ich bin müde gewesen.` `Wir sind zu Hause geblieben.`\n\nOtherwise use `haben`, especially with an object in the accusative: `Ich habe einen Kuchen gegessen.` `Wer hat das Auto gefahren?`\n\n- `fahren` with a place: `Ich bin nach Rom gefahren.`\n- `fahren` with an object: `Ich habe das Auto gefahren.`\n- Not sure? Check: is the verb `sein` or `bleiben`, or does the place or state change? If not, use `haben`.",
-                "fr": "Avec les verbes `sein` et `bleiben`, on utilise `sein` comme auxiliaire : `Ich bin müde gewesen.` `Wir sind zu Hause geblieben.`\n\nDans les autres cas, on utilise `haben`, surtout avec un complément à l'accusatif : `Ich habe einen Kuchen gegessen.` `Wer hat das Auto gefahren?`\n\n- `fahren` avec un lieu : `Ich bin nach Rom gefahren.`\n- `fahren` avec un objet : `Ich habe das Auto gefahren.`\n- Un doute ? Vérifiez : le verbe est-il `sein` ou `bleiben`, ou le lieu ou l'état change-t-il ? Sinon, utilisez `haben`.",
+                "fr": "Avec les verbes `sein` et `bleiben`, on utilise `sein` comme auxiliaire : `Ich bin müde gewesen.` `Wir sind zu Hause geblieben.`\n\nDans les autres cas, on utilise `haben`, surtout avec un complément à l'accusatif : `Ich habe einen Kuchen gegessen.` `Wer hat das Auto gefahren?`\n\n- `fahren` avec un lieu : `Ich bin nach Rom gefahren.`\n- `fahren` avec un objet : `Ich habe das Auto gefahren.`\n- Un doute ? Vérifie : le verbe est-il `sein` ou `bleiben`, ou le lieu ou l'état change-t-il ? Sinon, utilise `haben`.",
                 "de": "Bei den Verben `sein` und `bleiben` nimmst du `sein` als Hilfsverb: `Ich bin müde gewesen.` `Wir sind zu Hause geblieben.`\n\nSonst nimmst du `haben`, besonders bei einem Akkusativobjekt: `Ich habe einen Kuchen gegessen.` `Wer hat das Auto gefahren?`\n\n- `fahren` mit Ortsangabe: `Ich bin nach Rom gefahren.`\n- `fahren` mit Objekt: `Ich habe das Auto gefahren.`\n- Unsicher? Prüfe: Ist das Verb `sein` oder `bleiben`, oder wechselt der Ort oder der Zustand? Sonst nimmst du `haben`."
               },
               "formTable": [
@@ -471,7 +471,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -575,7 +575,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -651,7 +651,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -718,7 +718,7 @@
       "id": "feedback",
       "role": "feedback",
       "blockId": null,
-      "label": { "en": "Your feedback", "fr": "Votre retour", "de": "Dein Feedback" },
+      "label": { "en": "Your feedback", "fr": "Ton retour", "de": "Dein Feedback" },
       "pages": [
         {
           "pageId": "feedback",
@@ -726,7 +726,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Continue to the final exam.",
-            "fr": "Passez à l’examen final.",
+            "fr": "Passe à l’examen final.",
             "de": "Weiter zur Abschlussprüfung."
           },
           "items": [{ "type": "production_feedback_placeholder", "itemId": "feedback" }]
@@ -745,7 +745,7 @@
           "timeLimitS": 200,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -841,7 +841,7 @@
           "timeLimitS": 140,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [

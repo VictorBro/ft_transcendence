@@ -40,7 +40,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -55,7 +55,7 @@
               },
               "text": {
                 "en": "The verb **be** has three forms in the present: `am`, `is` and `are`.\n\n- `I am` is the only form with I.\n- `he is`, `she is` and `it is` use is for one person or thing.\n- `you are` uses are, for one person or for several.\n\nUse **be** to say who you are and where you are from: `I am Tom.` `She is from Spain.`",
-                "fr": "Le verbe **be** (être) a trois formes au présent : `am`, `is` et `are`.\n\n- `I am` est la seule forme avec I.\n- `he is`, `she is` et `it is` utilisent is pour une personne ou une chose.\n- `you are` utilise are, pour une personne ou plusieurs.\n\nUtilisez **be** pour dire qui vous êtes et d'où vous venez : `I am Tom.` `She is from Spain.`",
+                "fr": "Le verbe **be** (être) a trois formes au présent : `am`, `is` et `are`.\n\n- `I am` est la seule forme avec I.\n- `he is`, `she is` et `it is` utilisent is pour une personne ou une chose.\n- `you are` utilise are, pour une personne ou plusieurs.\n\nUtilise **be** pour dire qui tu es et d'où tu viens : `I am Tom.` `She is from Spain.`",
                 "de": "Das Verb **be** (sein) hat im Präsens drei Formen: `am`, `is` und `are`.\n\n- `I am` ist die einzige Form mit I.\n- `he is`, `she is` und `it is` verwenden is für eine Person oder eine Sache.\n- `you are` verwendet are, für eine oder mehrere Personen.\n\nMit **be** sagst du, wer du bist und woher du kommst: `I am Tom.` `She is from Spain.`"
               },
               "formTable": [
@@ -102,7 +102,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -134,7 +134,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -166,7 +166,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -198,7 +198,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -242,7 +242,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -268,7 +268,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -294,7 +294,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -320,7 +320,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -354,7 +354,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it.",
-            "fr": "Trouvez le mot faux et corrigez-le.",
+            "fr": "Trouve le mot faux et corrige-le.",
             "de": "Finde das falsche Wort und korrigiere es."
           },
           "items": [
@@ -384,7 +384,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it.",
-            "fr": "Trouvez le mot faux et corrigez-le.",
+            "fr": "Trouve le mot faux et corrige-le.",
             "de": "Finde das falsche Wort und korrigiere es."
           },
           "items": [
@@ -418,7 +418,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it.",
-            "fr": "Trouvez le mot faux et corrigez-le.",
+            "fr": "Trouve le mot faux et corrige-le.",
             "de": "Finde das falsche Wort und korrigiere es."
           },
           "items": [
@@ -460,7 +460,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -527,7 +527,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the form for each pronoun.",
-            "fr": "Écrivez la forme pour chaque pronom.",
+            "fr": "Écris la forme pour chaque pronom.",
             "de": "Schreib die Form zu jedem Pronomen."
           },
           "items": [
@@ -576,7 +576,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the short form of be for each pronoun.",
-            "fr": "Écrivez la forme courte de be pour chaque pronom.",
+            "fr": "Écris la forme courte de be pour chaque pronom.",
             "de": "Schreib die Kurzform von be zu jedem Pronomen."
           },
           "items": [
@@ -637,7 +637,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -669,7 +669,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -701,7 +701,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -741,7 +741,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -770,7 +770,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -800,7 +800,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -837,7 +837,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -863,7 +863,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -893,7 +893,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -923,7 +923,7 @@
       "id": "feedback",
       "role": "feedback",
       "blockId": null,
-      "label": { "en": "Your feedback", "fr": "Votre retour", "de": "Dein Feedback" },
+      "label": { "en": "Your feedback", "fr": "Ton retour", "de": "Dein Feedback" },
       "pages": [
         {
           "pageId": "feedback",
@@ -931,7 +931,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Continue to the final exam.",
-            "fr": "Passez à l’examen final.",
+            "fr": "Passe à l’examen final.",
             "de": "Weiter zur Abschlussprüfung."
           },
           "items": [{ "type": "production_feedback_placeholder", "itemId": "feedback" }]
@@ -950,7 +950,7 @@
           "timeLimitS": 100,
           "instructions": {
             "en": "Type the full form of be (am, is, are) for each pronoun.",
-            "fr": "Écrivez la forme complète de be (am, is, are) pour chaque pronom.",
+            "fr": "Écris la forme complète de be (am, is, are) pour chaque pronom.",
             "de": "Schreib die volle Form von be (am, is, are) zu jedem Pronomen."
           },
           "items": [
@@ -999,7 +999,7 @@
           "timeLimitS": 100,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -1067,7 +1067,7 @@
           "timeLimitS": 120,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [

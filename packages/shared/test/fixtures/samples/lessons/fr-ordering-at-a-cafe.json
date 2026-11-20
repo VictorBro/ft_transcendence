@@ -40,7 +40,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Recall each word, then turn the card to check it.",
-            "fr": "Rappelez-vous chaque mot, puis retournez la carte pour vérifier.",
+            "fr": "Rappelle-toi chaque mot, puis retourne la carte pour vérifier.",
             "de": "Erinnere dich an jedes Wort und dreh dann die Karte um."
           },
           "items": [
@@ -58,7 +58,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Recall each expression, then turn the card to check it.",
-            "fr": "Rappelez-vous chaque expression, puis retournez la carte pour vérifier.",
+            "fr": "Rappelle-toi chaque expression, puis retourne la carte pour vérifier.",
             "de": "Erinnere dich an jeden Ausdruck und dreh dann die Karte um."
           },
           "items": [
@@ -88,7 +88,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read and listen. Turn a line to see its translation and a note.",
-            "fr": "Lisez et écoutez. Retournez une réplique pour voir sa traduction et une remarque.",
+            "fr": "Lis et écoute. Retourne une réplique pour voir sa traduction et une remarque.",
             "de": "Lies und hör zu. Dreh eine Zeile um, um Übersetzung und Hinweis zu sehen."
           },
           "items": [
@@ -106,7 +106,7 @@
                   },
                   "note": {
                     "en": "The waiter greets you and asks for your order.",
-                    "fr": "Le serveur vous salue et demande votre commande.",
+                    "fr": "Le serveur te salue et demande ta commande.",
                     "de": "Der Kellner grüßt Sie und fragt nach Ihrer Bestellung."
                   },
                   "expressionIds": ["vous-desirez"]
@@ -121,7 +121,7 @@
                   },
                   "note": {
                     "en": "Je voudrais + what you want: the polite way to order.",
-                    "fr": "Je voudrais + ce que vous voulez : la façon polie de commander.",
+                    "fr": "Je voudrais + ce que tu veux : la façon polie de commander.",
                     "de": "Je voudrais + was Sie möchten: die höfliche Art zu bestellen."
                   },
                   "expressionIds": ["je-voudrais"]
@@ -136,7 +136,7 @@
                   },
                   "note": {
                     "en": "The waiter repeats the order and asks if you want more.",
-                    "fr": "Le serveur répète la commande et demande si vous voulez autre chose.",
+                    "fr": "Le serveur répète la commande et demande si tu veux autre chose.",
                     "de": "Der Kellner wiederholt die Bestellung und fragt, ob Sie noch etwas möchten."
                   },
                   "expressionIds": []
@@ -181,7 +181,7 @@
                   },
                   "note": {
                     "en": "C’est tout. ends your order.",
-                    "fr": "C’est tout. termine votre commande.",
+                    "fr": "C’est tout. termine ta commande.",
                     "de": "C’est tout. beendet Ihre Bestellung."
                   },
                   "expressionIds": []
@@ -268,7 +268,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Match each expression with its translation.",
-            "fr": "Associez chaque expression à sa traduction.",
+            "fr": "Associe chaque expression à sa traduction.",
             "de": "Ordne jedem Ausdruck seine Übersetzung zu."
           },
           "items": [
@@ -289,7 +289,7 @@
                   "id": "je-voudrais",
                   "answerExplanation": {
                     "en": "The polite way to order: Je voudrais + what you want.",
-                    "fr": "La façon polie de commander : Je voudrais + ce que vous voulez.",
+                    "fr": "La façon polie de commander : Je voudrais + ce que tu veux.",
                     "de": "Die höfliche Art zu bestellen: Je voudrais + was Sie möchten."
                   }
                 },
@@ -319,7 +319,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Match each word with its translation.",
-            "fr": "Associez chaque mot à sa traduction.",
+            "fr": "Associe chaque mot à sa traduction.",
             "de": "Ordne jedem Wort seine Übersetzung zu."
           },
           "items": [
@@ -382,7 +382,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the gender of each noun.",
-            "fr": "Choisissez le genre de chaque nom.",
+            "fr": "Choisis le genre de chaque nom.",
             "de": "Wähle das Genus jedes Nomens."
           },
           "items": [
@@ -411,7 +411,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the expression that fits the gap.",
-            "fr": "Choisissez l’expression qui complète la réplique.",
+            "fr": "Choisis l’expression qui complète la réplique.",
             "de": "Wähle den Ausdruck, der in die Lücke passt."
           },
           "items": [
@@ -441,7 +441,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the expression that fits the gap.",
-            "fr": "Choisissez l’expression qui complète la réplique.",
+            "fr": "Choisis l’expression qui complète la réplique.",
             "de": "Wähle den Ausdruck, der in die Lücke passt."
           },
           "items": [
@@ -471,7 +471,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the expression that fits the gap.",
-            "fr": "Choisissez l’expression qui complète la réplique.",
+            "fr": "Choisis l’expression qui complète la réplique.",
             "de": "Wähle den Ausdruck, der in die Lücke passt."
           },
           "items": [
@@ -501,7 +501,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the expression that fits the gap.",
-            "fr": "Choisissez l’expression qui complète la réplique.",
+            "fr": "Choisis l’expression qui complète la réplique.",
             "de": "Wähle den Ausdruck, der in die Lücke passt."
           },
           "items": [
@@ -543,7 +543,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in order.",
-            "fr": "Mettez les mots dans l’ordre.",
+            "fr": "Mets les mots dans l’ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -591,7 +591,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in order.",
-            "fr": "Mettez les mots dans l’ordre.",
+            "fr": "Mets les mots dans l’ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -623,7 +623,7 @@
               "acceptedOrders": [["t1", "t2", "t3", "t4"]],
               "answerExplanation": {
                 "en": "Je voudrais comes first, then what you order.",
-                "fr": "Je voudrais vient d’abord, puis ce que vous commandez.",
+                "fr": "Je voudrais vient d’abord, puis ce que tu commandes.",
                 "de": "Zuerst Je voudrais, dann das Bestellte."
               }
             }
@@ -635,7 +635,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in order.",
-            "fr": "Mettez les mots dans l’ordre.",
+            "fr": "Mets les mots dans l’ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -679,7 +679,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in order.",
-            "fr": "Mettez les mots dans l’ordre.",
+            "fr": "Mets les mots dans l’ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -735,7 +735,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Listen, then choose the reply that fits.",
-            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "fr": "Écoute, puis choisis la réponse qui convient.",
             "de": "Hör zu und wähle dann die passende Antwort."
           },
           "items": [
@@ -781,7 +781,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Listen, then choose the reply that fits.",
-            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "fr": "Écoute, puis choisis la réponse qui convient.",
             "de": "Hör zu und wähle dann die passende Antwort."
           },
           "items": [
@@ -827,7 +827,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Listen, then choose the reply that fits.",
-            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "fr": "Écoute, puis choisis la réponse qui convient.",
             "de": "Hör zu und wähle dann die passende Antwort."
           },
           "items": [
@@ -873,7 +873,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Listen, then choose the reply that fits.",
-            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "fr": "Écoute, puis choisis la réponse qui convient.",
             "de": "Hör zu und wähle dann die passende Antwort."
           },
           "items": [
@@ -931,7 +931,7 @@
           "timeLimitS": 90,
           "instructions": {
             "en": "Translate each word into French, with its article for nouns.",
-            "fr": "Traduisez chaque mot en français, avec l’article pour les noms.",
+            "fr": "Traduis chaque mot en français, avec l’article pour les noms.",
             "de": "Übersetze jedes Wort ins Französische, bei Nomen mit Artikel."
           },
           "items": [
@@ -1011,7 +1011,7 @@
           "timeLimitS": 180,
           "instructions": {
             "en": "Build the answer. Not every word fits.",
-            "fr": "Construisez la réponse. Tous les mots ne servent pas.",
+            "fr": "Construis la réponse. Tous les mots ne servent pas.",
             "de": "Bilde die Antwort. Nicht jedes Wort passt."
           },
           "items": [
@@ -1187,7 +1187,7 @@
           "timeLimitS": 264,
           "instructions": {
             "en": "Fill each gap with an expression from this lesson.",
-            "fr": "Complétez chaque trou avec une expression de la leçon.",
+            "fr": "Complète chaque trou avec une expression de la leçon.",
             "de": "Fülle jede Lücke mit einem Ausdruck aus dieser Lektion."
           },
           "items": [

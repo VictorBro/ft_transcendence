@@ -61,7 +61,7 @@
       "translations": { "fr": ["J’espère pouvoir"], "de": ["Ich hoffe, … zu können"] },
       "explanation": {
         "en": "Followed by a verb: it says what you would like to do in the future.",
-        "fr": "Suivi d’un verbe : cela dit ce que vous aimeriez faire à l’avenir.",
+        "fr": "Suivi d’un verbe : cela dit ce que tu aimerais faire à l’avenir.",
         "de": "Mit einem Verb: Es sagt, was man in Zukunft gern tun möchte."
       }
     },
@@ -71,7 +71,7 @@
       "translations": { "fr": ["J’ai tellement hâte"], "de": ["Ich kann es kaum erwarten"] },
       "explanation": {
         "en": "You are very impatient for something good to happen. Often followed by to + verb.",
-        "fr": "Vous êtes très impatient que quelque chose de bien arrive. Souvent suivi de to + verbe.",
+        "fr": "Tu es très impatient que quelque chose de bien arrive. Souvent suivi de to + verbe.",
         "de": "Man ist sehr ungeduldig, dass etwas Schönes passiert. Oft mit to + Verb."
       }
     },

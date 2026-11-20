@@ -48,7 +48,7 @@
       "targetIds": ["sensitive", "touchy", "thrifty", "tight-fisted", "inquisitive", "nosy"],
       "introduction": {
         "en": "The same trait can earn **praise** or **criticism**. Compare each pair:\n\n- `sensitive` usually shows approval (aware of other people’s feelings), though it can also mean easily hurt; `touchy` is a criticism.\n- `thrifty` shows approval; `tight-fisted` is a criticism.\n- `inquisitive` usually shows approval; `nosy` is a criticism.",
-        "fr": "Un même trait peut valoir un **éloge** ou une **critique**. Comparez chaque paire :\n\n- `sensitive` est le plus souvent élogieux (attentif aux sentiments des autres), mais peut aussi vouloir dire facilement blessé ; `touchy` est une critique.\n- `thrifty` est élogieux ; `tight-fisted` est une critique.\n- `inquisitive` est le plus souvent élogieux ; `nosy` est une critique.",
+        "fr": "Un même trait peut valoir un **éloge** ou une **critique**. Compare chaque paire :\n\n- `sensitive` est le plus souvent élogieux (attentif aux sentiments des autres), mais peut aussi vouloir dire facilement blessé ; `touchy` est une critique.\n- `thrifty` est élogieux ; `tight-fisted` est une critique.\n- `inquisitive` est le plus souvent élogieux ; `nosy` est une critique.",
         "de": "Dieselbe Eigenschaft kann **Lob** oder **Kritik** bedeuten. Vergleiche jedes Paar:\n\n- `sensitive` ist meist anerkennend (achtsam gegenüber den Gefühlen anderer), kann aber auch leicht verletzlich bedeuten; `touchy` ist Kritik.\n- `thrifty` ist anerkennend; `tight-fisted` ist Kritik.\n- `inquisitive` ist meist anerkennend; `nosy` ist Kritik."
       }
     },
@@ -62,7 +62,7 @@
       "targetIds": ["self-assured", "cocky", "persistent", "pushy", "frank", "tactless"],
       "introduction": {
         "en": "Choosing the right word shows whether you **admire** or **disapprove**. Compare these pairs:\n\n- `self-assured` shows approval; `cocky` is a criticism.\n- `persistent` shows approval; `pushy` is a criticism.\n- `frank` shows approval; `tactless` is a criticism.",
-        "fr": "Le choix du mot montre si vous **admirez** ou **désapprouvez**. Comparez ces paires :\n\n- `self-assured` est élogieux ; `cocky` est une critique.\n- `persistent` est élogieux ; `pushy` est une critique.\n- `frank` est élogieux ; `tactless` est une critique.",
+        "fr": "Le choix du mot montre si tu **admires** ou **désapprouves**. Compare ces paires :\n\n- `self-assured` est élogieux ; `cocky` est une critique.\n- `persistent` est élogieux ; `pushy` est une critique.\n- `frank` est élogieux ; `tactless` est une critique.",
         "de": "Die Wortwahl zeigt, ob du **bewunderst** oder **missbilligst**. Vergleiche diese Paare:\n\n- `self-assured` ist anerkennend; `cocky` ist Kritik.\n- `persistent` ist anerkennend; `pushy` ist Kritik.\n- `frank` ist anerkennend; `tactless` ist Kritik."
       }
     }

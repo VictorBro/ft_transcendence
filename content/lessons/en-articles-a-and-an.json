@@ -40,7 +40,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -51,7 +51,7 @@
               "heading": { "en": "a or an", "fr": "a ou an", "de": "a oder an" },
               "text": {
                 "en": "Use `a` or `an` before one thing. Which one you choose depends on the **sound** of the next word.\n\n- `a` goes before a consonant sound: `a book`, `a dog`.\n- `an` goes before a vowel sound: `an apple`, `an egg`.\n\nDo not use them with a plural: say `books`, not `a books`.",
-                "fr": "Utilisez `a` ou `an` devant une seule chose. Le choix dépend du **son** du mot suivant.\n\n- `a` se place devant un son consonne : `a book`, `a dog`.\n- `an` se place devant un son voyelle : `an apple`, `an egg`.\n\nNe les utilisez pas devant un pluriel : dites `books`, et non `a books`.",
+                "fr": "Utilise `a` ou `an` devant une seule chose. Le choix dépend du **son** du mot suivant.\n\n- `a` se place devant un son consonne : `a book`, `a dog`.\n- `an` se place devant un son voyelle : `an apple`, `an egg`.\n\nNe les utilise pas devant un pluriel : dis `books`, et non `a books`.",
                 "de": "Benutze `a` oder `an` vor einer einzelnen Sache. Welches du wählst, hängt vom **Laut** des nächsten Wortes ab.\n\n- `a` steht vor einem Konsonantenlaut: `a book`, `a dog`.\n- `an` steht vor einem Vokallaut: `an apple`, `an egg`.\n\nBenutze sie nicht vor dem Plural: Sag `books`, nicht `a books`."
               },
               "formTable": [],
@@ -90,7 +90,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -210,7 +210,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type a or an.",
-            "fr": "Écrivez a ou an.",
+            "fr": "Écris a ou an.",
             "de": "Schreib a oder an."
           },
           "items": [
@@ -286,7 +286,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it with a or an.",
-            "fr": "Trouvez le mot faux et corrigez-le avec a ou an.",
+            "fr": "Trouve le mot faux et corrige-le avec a ou an.",
             "de": "Finde das falsche Wort und korrigiere es mit a oder an."
           },
           "items": [
@@ -371,7 +371,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -386,7 +386,7 @@
               },
               "text": {
                 "en": "Look at the **sound**, not the letter. Some words start with a letter that sounds different.\n\n- The h is silent, so you hear a vowel sound: `an hour`, `an honest man`.\n- The u sounds like the y in yes, so it is a consonant sound: `a university`, `a uniform`.\n\nWith jobs, use `a` or `an` too: `She's a nurse.` `Tom is an engineer.`",
-                "fr": "Regardez le **son**, pas la lettre. Certains mots commencent par une lettre qui se prononce autrement.\n\n- Le h est muet, donc on entend un son voyelle : `an hour`, `an honest man`.\n- Le u se prononce comme le y de yes, donc c'est un son consonne : `a university`, `a uniform`.\n\nAvec les métiers, on emploie aussi `a` ou `an` : `She's a nurse.` `Tom is an engineer.`",
+                "fr": "Regarde le **son**, pas la lettre. Certains mots commencent par une lettre qui se prononce autrement.\n\n- Le h est muet, donc on entend un son voyelle : `an hour`, `an honest man`.\n- Le u se prononce comme le y de yes, donc c'est un son consonne : `a university`, `a uniform`.\n\nAvec les métiers, on emploie aussi `a` ou `an` : `She's a nurse.` `Tom is an engineer.`",
                 "de": "Achte auf den **Laut**, nicht auf den Buchstaben. Manche Wörter beginnen mit einem Buchstaben, der anders klingt.\n\n- Das h ist stumm, also hörst du einen Vokallaut: `an hour`, `an honest man`.\n- Das u klingt wie das y in yes, also ist es ein Konsonantenlaut: `a university`, `a uniform`.\n\nBei Berufen steht ebenfalls `a` oder `an`: `She's a nurse.` `Tom is an engineer.`"
               },
               "formTable": [],
@@ -432,7 +432,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -536,7 +536,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type a or an.",
-            "fr": "Écrivez a ou an.",
+            "fr": "Écris a ou an.",
             "de": "Schreib a oder an."
           },
           "items": [
@@ -616,7 +616,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -695,7 +695,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it with a or an.",
-            "fr": "Trouvez le mot faux et corrigez-le avec a ou an.",
+            "fr": "Trouve le mot faux et corrige-le avec a ou an.",
             "de": "Finde das falsche Wort und korrigiere es mit a oder an."
           },
           "items": [
@@ -771,7 +771,7 @@
       "id": "feedback",
       "role": "feedback",
       "blockId": null,
-      "label": { "en": "Your feedback", "fr": "Votre retour", "de": "Dein Feedback" },
+      "label": { "en": "Your feedback", "fr": "Ton retour", "de": "Dein Feedback" },
       "pages": [
         {
           "pageId": "feedback",
@@ -779,7 +779,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Continue to the final exam.",
-            "fr": "Passez à l’examen final.",
+            "fr": "Passe à l’examen final.",
             "de": "Weiter zur Abschlussprüfung."
           },
           "items": [{ "type": "production_feedback_placeholder", "itemId": "feedback" }]
@@ -798,7 +798,7 @@
           "timeLimitS": 140,
           "instructions": {
             "en": "Type a or an.",
-            "fr": "Écrivez a ou an.",
+            "fr": "Écris a ou an.",
             "de": "Schreib a oder an."
           },
           "items": [
@@ -866,7 +866,7 @@
           "timeLimitS": 100,
           "instructions": {
             "en": "Type a or an.",
-            "fr": "Écrivez a ou an.",
+            "fr": "Écris a ou an.",
             "de": "Schreib a oder an."
           },
           "items": [
@@ -920,7 +920,7 @@
           "timeLimitS": 100,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [

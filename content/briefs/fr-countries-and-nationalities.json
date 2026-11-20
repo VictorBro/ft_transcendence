@@ -44,7 +44,7 @@
       "targetIds": ["france", "espagne", "japon", "italie", "allemagne", "bresil", "canada"],
       "introduction": {
         "en": "Learn **seven countries**. A country takes an article, so learn them together:\n\n- `la France`\n- `l’Espagne`\n- `le Japon`\n- `l’Italie`\n- `l’Allemagne`\n- `le Brésil`\n- `le Canada`\n\nThe article shows the gender: `le` is masculine, `la` is feminine. Before a vowel, both become `l’`.",
-        "fr": "Apprenez **sept pays**. Un pays s’emploie avec un article, apprenez-les donc ensemble :\n\n- `la France`\n- `l’Espagne`\n- `le Japon`\n- `l’Italie`\n- `l’Allemagne`\n- `le Brésil`\n- `le Canada`\n\nL’article indique le genre : `le` est masculin, `la` est féminin. Devant une voyelle, les deux deviennent `l’`.",
+        "fr": "Apprends **sept pays**. Un pays s’emploie avec un article, apprends-les donc ensemble :\n\n- `la France`\n- `l’Espagne`\n- `le Japon`\n- `l’Italie`\n- `l’Allemagne`\n- `le Brésil`\n- `le Canada`\n\nL’article indique le genre : `le` est masculin, `la` est féminin. Devant une voyelle, les deux deviennent `l’`.",
         "de": "Lerne **sieben Länder**. Ein Land steht mit Artikel, also lerne sie zusammen:\n\n- `la France`\n- `l’Espagne`\n- `le Japon`\n- `l’Italie`\n- `l’Allemagne`\n- `le Brésil`\n- `le Canada`\n\nDer Artikel zeigt das Genus: `le` ist maskulin, `la` ist feminin. Vor einem Vokal werden beide zu `l’`."
       }
     },
@@ -62,7 +62,7 @@
       ],
       "introduction": {
         "en": "Each country has a **nationality**. Learn the masculine and the feminine together:\n\n- `français`, `française`\n- `espagnol`, `espagnole`\n- `japonais`, `japonaise`\n- `italien`, `italienne`\n- `allemand`, `allemande`\n- `brésilien`, `brésilienne`\n- `canadien`, `canadienne`\n\nFor a woman, add **-e** or change the ending. Listen: in `japonais` and `japonaise` the last sound changes, but `espagnol` and `espagnole` sound the same.",
-        "fr": "Chaque pays a une **nationalité**. Apprenez ensemble le masculin et le féminin :\n\n- `français`, `française`\n- `espagnol`, `espagnole`\n- `japonais`, `japonaise`\n- `italien`, `italienne`\n- `allemand`, `allemande`\n- `brésilien`, `brésilienne`\n- `canadien`, `canadienne`\n\nPour une femme, on ajoute **-e** ou on change la fin du mot. Écoutez : dans `japonais` et `japonaise`, le dernier son change, mais `espagnol` et `espagnole` se prononcent de la même façon.",
+        "fr": "Chaque pays a une **nationalité**. Apprends ensemble le masculin et le féminin :\n\n- `français`, `française`\n- `espagnol`, `espagnole`\n- `japonais`, `japonaise`\n- `italien`, `italienne`\n- `allemand`, `allemande`\n- `brésilien`, `brésilienne`\n- `canadien`, `canadienne`\n\nPour une femme, on ajoute **-e** ou on change la fin du mot. Écoute : dans `japonais` et `japonaise`, le dernier son change, mais `espagnol` et `espagnole` se prononcent de la même façon.",
         "de": "Jedes Land hat eine **Nationalität**. Lerne die männliche und die weibliche Form zusammen:\n\n- `français`, `française`\n- `espagnol`, `espagnole`\n- `japonais`, `japonaise`\n- `italien`, `italienne`\n- `allemand`, `allemande`\n- `brésilien`, `brésilienne`\n- `canadien`, `canadienne`\n\nFür eine Frau hängt man **-e** an oder ändert die Endung. Hör zu: Bei `japonais` und `japonaise` ändert sich der letzte Laut, aber `espagnol` und `espagnole` klingen gleich."
       }
     }

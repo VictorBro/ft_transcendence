@@ -40,7 +40,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -111,7 +111,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -215,7 +215,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -311,7 +311,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the form for each pronoun.",
-            "fr": "Écrivez la forme pour chaque pronom.",
+            "fr": "Écris la forme pour chaque pronom.",
             "de": "Schreib die Form zu jedem Pronomen."
           },
           "items": [
@@ -372,7 +372,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -387,7 +387,7 @@
               },
               "text": {
                 "en": "In the plural, put the endings after the stem: `nous attendons`, `vous attendez`, `ils attendent`. They are the same endings as for -er verbs.\n\n- `nous vendons`, `vous vendez`, `elles vendent`.\n- The **d** is silent in `il répond` but pronounced in `ils répondent`. That is how you hear the difference between singular and plural.\n\nSame pattern with `perdre`: `je perds`, `nous perdons`, `ils perdent`.",
-                "fr": "Au pluriel, ajoutez les terminaisons au radical : `nous attendons`, `vous attendez`, `ils attendent`. Ce sont les mêmes terminaisons que pour les verbes en -er.\n\n- `nous vendons`, `vous vendez`, `elles vendent`.\n- Le **d** ne s'entend pas dans `il répond`, mais il s'entend dans `ils répondent`. C'est ainsi qu'on distingue le singulier du pluriel.\n\nMême modèle avec `perdre` : `je perds`, `nous perdons`, `ils perdent`.",
+                "fr": "Au pluriel, ajoute les terminaisons au radical : `nous attendons`, `vous attendez`, `ils attendent`. Ce sont les mêmes terminaisons que pour les verbes en -er.\n\n- `nous vendons`, `vous vendez`, `elles vendent`.\n- Le **d** ne s'entend pas dans `il répond`, mais il s'entend dans `ils répondent`. C'est ainsi qu'on distingue le singulier du pluriel.\n\nMême modèle avec `perdre` : `je perds`, `nous perdons`, `ils perdent`.",
                 "de": "Im Plural hängst du die Endungen an den Stamm: `nous attendons`, `vous attendez`, `ils attendent`. Es sind dieselben Endungen wie bei den Verben auf -er.\n\n- `nous vendons`, `vous vendez`, `elles vendent`.\n- Das **d** hört man bei `il répond` nicht, bei `ils répondent` aber schon. So hörst du den Unterschied zwischen Singular und Plural.\n\nDasselbe Muster bei `perdre`: `je perds`, `nous perdons`, `ils perdent`."
               },
               "formTable": [
@@ -447,7 +447,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Connect each pronoun with its partner.",
-            "fr": "Reliez chaque pronom à son partenaire.",
+            "fr": "Relie chaque pronom à son partenaire.",
             "de": "Verbinde jedes Pronomen mit seinem Partner."
           },
           "items": [
@@ -545,7 +545,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -649,7 +649,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -741,7 +741,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it.",
-            "fr": "Trouvez le mot faux et corrigez-le.",
+            "fr": "Trouve le mot faux et corrige-le.",
             "de": "Finde das falsche Wort und korrigiere es."
           },
           "items": [
@@ -832,7 +832,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -913,7 +913,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -997,7 +997,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -1089,7 +1089,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -1154,7 +1154,7 @@
       "id": "feedback",
       "role": "feedback",
       "blockId": null,
-      "label": { "en": "Your feedback", "fr": "Votre retour", "de": "Dein Feedback" },
+      "label": { "en": "Your feedback", "fr": "Ton retour", "de": "Dein Feedback" },
       "pages": [
         {
           "pageId": "feedback",
@@ -1162,7 +1162,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Continue to the final exam.",
-            "fr": "Passez à l’examen final.",
+            "fr": "Passe à l’examen final.",
             "de": "Weiter zur Abschlussprüfung."
           },
           "items": [{ "type": "production_feedback_placeholder", "itemId": "feedback" }]
@@ -1181,7 +1181,7 @@
           "timeLimitS": 120,
           "instructions": {
             "en": "Type the form for each pronoun.",
-            "fr": "Écrivez la forme pour chaque pronom.",
+            "fr": "Écris la forme pour chaque pronom.",
             "de": "Schreib die Form zu jedem Pronomen."
           },
           "items": [
@@ -1240,7 +1240,7 @@
           "timeLimitS": 100,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -1308,7 +1308,7 @@
           "timeLimitS": 100,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [

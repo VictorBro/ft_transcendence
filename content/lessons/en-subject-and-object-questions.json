@@ -40,7 +40,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -97,7 +97,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -197,7 +197,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -285,7 +285,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it.",
-            "fr": "Trouvez le mot faux et corrigez-le.",
+            "fr": "Trouve le mot faux et corrige-le.",
             "de": "Finde das falsche Wort und korrigiere es."
           },
           "items": [
@@ -400,7 +400,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -415,7 +415,7 @@
               },
               "text": {
                 "en": "In an **object question** the question word is the object, so you need an auxiliary: `do`, `does` or `did`, then the subject, then the base verb: `Who did you call?` `What did she say?`\n\nCompare the two patterns:\n\n- Subject question: `Who called Tom?` (Who = the person who called)\n- Object question: `Who did Tom call?` (Who = the person Tom called)\n\nAsk yourself: is the question word doing the action (subject) or receiving it (object)? With other auxiliaries the order is the same: `What has she bought?`",
-                "fr": "Dans une **question sur l'objet**, le mot interrogatif est le complément : il faut donc un auxiliaire, `do`, `does` ou `did`, puis le sujet, puis le verbe à l'infinitif sans to : `Who did you call?` `What did she say?`\n\nComparez les deux structures :\n\n- Question sur le sujet : `Who called Tom?` (Who = la personne qui a appelé)\n- Question sur l'objet : `Who did Tom call?` (Who = la personne que Tom a appelée)\n\nDemandez-vous : le mot interrogatif fait-il l'action (sujet) ou la reçoit-il (objet) ? Avec les autres auxiliaires, l'ordre est le même : `What has she bought?`",
+                "fr": "Dans une **question sur l'objet**, le mot interrogatif est le complément : il faut donc un auxiliaire, `do`, `does` ou `did`, puis le sujet, puis le verbe à l'infinitif sans to : `Who did you call?` `What did she say?`\n\nCompare les deux structures :\n\n- Question sur le sujet : `Who called Tom?` (Who = la personne qui a appelé)\n- Question sur l'objet : `Who did Tom call?` (Who = la personne que Tom a appelée)\n\nDemande-toi : le mot interrogatif fait-il l'action (sujet) ou la reçoit-il (objet) ? Avec les autres auxiliaires, l'ordre est le même : `What has she bought?`",
                 "de": "In einer **Objektfrage** ist das Fragewort das Objekt, deshalb braucht man ein Hilfsverb: `do`, `does` oder `did`, dann das Subjekt und dann das Verb in der Grundform: `Who did you call?` `What did she say?`\n\nVergleiche die beiden Muster:\n\n- Subjektfrage: `Who called Tom?` (Who = die Person, die angerufen hat)\n- Objektfrage: `Who did Tom call?` (Who = die Person, die Tom angerufen hat)\n\nFrag dich: Führt das Fragewort die Handlung aus (Subjekt) oder erfährt es sie (Objekt)? Bei anderen Hilfsverben ist die Reihenfolge gleich: `What has she bought?`"
               },
               "formTable": [],
@@ -454,7 +454,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -554,7 +554,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -654,7 +654,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -722,7 +722,7 @@
               "ruleIds": ["rule-object-aux", "rule-subject-or-object"],
               "answerExplanation": {
                 "en": "You watched the film, so Which film is the object: use did + you + base verb.",
-                "fr": "C'est vous qui avez regardé le film, donc Which film est le complément : did + you + infinitif.",
+                "fr": "C'est toi qui as regardé le film, donc Which film est le complément : did + you + infinitif.",
                 "de": "Du hast den Film gesehen, also ist Which film das Objekt: did + you + Grundform."
               }
             }
@@ -734,7 +734,7 @@
       "id": "feedback",
       "role": "feedback",
       "blockId": null,
-      "label": { "en": "Your feedback", "fr": "Votre retour", "de": "Dein Feedback" },
+      "label": { "en": "Your feedback", "fr": "Ton retour", "de": "Dein Feedback" },
       "pages": [
         {
           "pageId": "feedback",
@@ -742,7 +742,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Continue to the final exam.",
-            "fr": "Passez à l’examen final.",
+            "fr": "Passe à l’examen final.",
             "de": "Weiter zur Abschlussprüfung."
           },
           "items": [{ "type": "production_feedback_placeholder", "itemId": "feedback" }]
@@ -761,7 +761,7 @@
           "timeLimitS": 100,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -815,7 +815,7 @@
           "timeLimitS": 100,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -869,7 +869,7 @@
           "timeLimitS": 160,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -949,7 +949,7 @@
               "ruleIds": ["rule-subject-or-object"],
               "answerExplanation": {
                 "en": "What is the thing that woke you, so it is the subject: no did, past form woke.",
-                "fr": "What est ce qui vous a réveillé, donc le sujet : pas de did, forme du passé woke.",
+                "fr": "What est ce qui t'a réveillé, donc le sujet : pas de did, forme du passé woke.",
                 "de": "What ist das, was dich geweckt hat, also das Subjekt: kein did, Vergangenheitsform woke."
               }
             }

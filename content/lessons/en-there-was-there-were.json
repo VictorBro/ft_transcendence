@@ -40,7 +40,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -55,7 +55,7 @@
               },
               "text": {
                 "en": "`there was` and `there were` say that something existed in the past. Use `there was` with one thing or an uncountable noun. Use `there were` with more than one thing.\n\n- `There was a party last night.`\n- `There was some music in the park.`\n- `There were two beds in the room.`\n\nThe present forms are `there is` and `there are`. In the past, they become `there was` and `there were`: look at the noun that follows. Compare `There was a lot of snow.` and `There were a lot of people.`",
-                "fr": "`there was` et `there were` indiquent que quelque chose existait dans le passé. On emploie `there was` avec un seul élément ou un nom indénombrable, et `there were` avec plusieurs éléments.\n\n- `There was a party last night.`\n- `There was some music in the park.`\n- `There were two beds in the room.`\n\nAu présent, on dit `there is` et `there are`. Au passé, ils deviennent `there was` et `there were` : regardez le nom qui suit. Comparez `There was a lot of snow.` et `There were a lot of people.`",
+                "fr": "`there was` et `there were` indiquent que quelque chose existait dans le passé. On emploie `there was` avec un seul élément ou un nom indénombrable, et `there were` avec plusieurs éléments.\n\n- `There was a party last night.`\n- `There was some music in the park.`\n- `There were two beds in the room.`\n\nAu présent, on dit `there is` et `there are`. Au passé, ils deviennent `there was` et `there were` : regarde le nom qui suit. Compare `There was a lot of snow.` et `There were a lot of people.`",
                 "de": "`there was` und `there were` sagen, dass etwas in der Vergangenheit da war. Man benutzt `there was` bei einer Sache oder einem nicht zählbaren Nomen und `there were` bei mehr als einer Sache.\n\n- `There was a party last night.`\n- `There was some music in the park.`\n- `There were two beds in the room.`\n\nIm Präsens heißt es `there is` und `there are`. In der Vergangenheit werden daraus `there was` und `there were`: Achte auf das Nomen danach. Vergleiche `There was a lot of snow.` und `There were a lot of people.`"
               },
               "formTable": [
@@ -117,7 +117,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -221,7 +221,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -301,7 +301,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it.",
-            "fr": "Trouvez le mot faux et corrigez-le.",
+            "fr": "Trouve le mot faux et corrige-le.",
             "de": "Finde das falsche Wort und korrigiere es."
           },
           "items": [
@@ -400,7 +400,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -415,7 +415,7 @@
               },
               "text": {
                 "en": "For a negative, add `n't`: `there wasn't` and `there weren't`. After a negative, use `a` with one thing and `any` with plural or uncountable nouns.\n\n- `There wasn't a lift in the hotel.`\n- `There weren't any seats on the train.`\n- `There wasn't any milk.`\n\nFor a question, put `was` or `were` before `there`, and answer with a short answer.\n\n- `Was there a doctor in the village?` `Yes, there was.`\n- `Were there any shops near the hotel?` `No, there weren't.`",
-                "fr": "Pour la forme négative, ajoutez `n't` : `there wasn't` et `there weren't`. Après une négation, on emploie `a` avec un seul élément et `any` avec un pluriel ou un nom indénombrable.\n\n- `There wasn't a lift in the hotel.`\n- `There weren't any seats on the train.`\n- `There wasn't any milk.`\n\nPour une question, placez `was` ou `were` avant `there`, et répondez par une réponse courte.\n\n- `Was there a doctor in the village?` `Yes, there was.`\n- `Were there any shops near the hotel?` `No, there weren't.`",
+                "fr": "Pour la forme négative, ajoute `n't` : `there wasn't` et `there weren't`. Après une négation, on emploie `a` avec un seul élément et `any` avec un pluriel ou un nom indénombrable.\n\n- `There wasn't a lift in the hotel.`\n- `There weren't any seats on the train.`\n- `There wasn't any milk.`\n\nPour une question, place `was` ou `were` avant `there`, et réponds par une réponse courte.\n\n- `Was there a doctor in the village?` `Yes, there was.`\n- `Were there any shops near the hotel?` `No, there weren't.`",
                 "de": "Für die Verneinung hängst du `n't` an: `there wasn't` und `there weren't`. Nach einer Verneinung steht `a` bei einer Sache und `any` bei Plural oder nicht zählbaren Nomen.\n\n- `There wasn't a lift in the hotel.`\n- `There weren't any seats on the train.`\n- `There wasn't any milk.`\n\nFür eine Frage stellst du `was` oder `were` vor `there` und antwortest mit einer Kurzantwort.\n\n- `Was there a doctor in the village?` `Yes, there was.`\n- `Were there any shops near the hotel?` `No, there weren't.`"
               },
               "formTable": [
@@ -477,7 +477,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -577,7 +577,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -681,7 +681,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -765,7 +765,7 @@
       "id": "feedback",
       "role": "feedback",
       "blockId": null,
-      "label": { "en": "Your feedback", "fr": "Votre retour", "de": "Dein Feedback" },
+      "label": { "en": "Your feedback", "fr": "Ton retour", "de": "Dein Feedback" },
       "pages": [
         {
           "pageId": "feedback",
@@ -773,7 +773,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Continue to the final exam.",
-            "fr": "Passez à l’examen final.",
+            "fr": "Passe à l’examen final.",
             "de": "Weiter zur Abschlussprüfung."
           },
           "items": [{ "type": "production_feedback_placeholder", "itemId": "feedback" }]
@@ -792,7 +792,7 @@
           "timeLimitS": 120,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -860,7 +860,7 @@
           "timeLimitS": 90,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -914,7 +914,7 @@
           "timeLimitS": 110,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [

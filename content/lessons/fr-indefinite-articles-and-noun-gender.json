@@ -36,7 +36,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -47,7 +47,7 @@
               "heading": { "en": "un and une", "fr": "un et une", "de": "un und une" },
               "text": {
                 "en": "Every French noun is **masculine** or **feminine**. The word for “a” changes: `un` goes with masculine nouns and `une` with feminine nouns.\n\n- `un livre`, `un stylo`\n- `une table`, `une chaise`\n\nYou cannot guess the gender from the meaning. Learn each noun **with its article**: `un cahier`.",
-                "fr": "Tout nom français est **masculin** ou **féminin**. L’article change : `un` s’emploie avec les noms masculins et `une` avec les noms féminins.\n\n- `un livre`, `un stylo`\n- `une table`, `une chaise`\n\nOn ne devine pas le genre d’après le sens. Apprenez chaque nom **avec son article** : `un cahier`.",
+                "fr": "Tout nom français est **masculin** ou **féminin**. L’article change : `un` s’emploie avec les noms masculins et `une` avec les noms féminins.\n\n- `un livre`, `un stylo`\n- `une table`, `une chaise`\n\nOn ne devine pas le genre d’après le sens. Apprends chaque nom **avec son article** : `un cahier`.",
                 "de": "Jedes französische Nomen ist **maskulin** oder **feminin**. Das Wort für „ein“ ändert sich: `un` steht bei maskulinen Nomen, `une` bei femininen Nomen.\n\n- `un livre`, `un stylo`\n- `une table`, `une chaise`\n\nDas Genus lässt sich nicht aus der Bedeutung erraten. Lerne jedes Nomen **mit seinem Artikel**: `un cahier`."
               },
               "formTable": [
@@ -93,7 +93,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -197,7 +197,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -239,7 +239,7 @@
               "ruleIds": ["r-gender-learn"],
               "answerExplanation": {
                 "en": "Fenêtre is feminine. Learn it with its article: une fenêtre.",
-                "fr": "Fenêtre est féminin. Apprenez-le avec son article : une fenêtre.",
+                "fr": "Fenêtre est féminin. Apprends-le avec son article : une fenêtre.",
                 "de": "Fenêtre ist feminin. Lerne es mit seinem Artikel: une fenêtre."
               }
             },
@@ -253,7 +253,7 @@
               "ruleIds": ["r-gender-learn"],
               "answerExplanation": {
                 "en": "Livre is masculine. Learn it with its article: un livre.",
-                "fr": "Livre est masculin. Apprenez-le avec son article : un livre.",
+                "fr": "Livre est masculin. Apprends-le avec son article : un livre.",
                 "de": "Livre ist maskulin. Lerne es mit seinem Artikel: un livre."
               }
             }
@@ -277,7 +277,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it.",
-            "fr": "Trouvez le mot faux et corrigez-le.",
+            "fr": "Trouve le mot faux et corrige-le.",
             "de": "Finde das falsche Wort und korrigiere es."
           },
           "items": [
@@ -333,7 +333,7 @@
               "ruleIds": ["r-gender-learn"],
               "answerExplanation": {
                 "en": "Tableau is masculine. Learn it with its article: un tableau.",
-                "fr": "Tableau est masculin. Apprenez-le avec son article : un tableau.",
+                "fr": "Tableau est masculin. Apprends-le avec son article : un tableau.",
                 "de": "Tableau ist maskulin. Lerne es mit seinem Artikel: un tableau."
               }
             }
@@ -353,7 +353,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -410,7 +410,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -510,7 +510,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -600,7 +600,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -676,7 +676,7 @@
       "id": "feedback",
       "role": "feedback",
       "blockId": null,
-      "label": { "en": "Your feedback", "fr": "Votre retour", "de": "Dein Feedback" },
+      "label": { "en": "Your feedback", "fr": "Ton retour", "de": "Dein Feedback" },
       "pages": [
         {
           "pageId": "feedback",
@@ -684,7 +684,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Continue to the final exam.",
-            "fr": "Passez à l’examen final.",
+            "fr": "Passe à l’examen final.",
             "de": "Weiter zur Abschlussprüfung."
           },
           "items": [{ "type": "production_feedback_placeholder", "itemId": "feedback" }]
@@ -703,7 +703,7 @@
           "timeLimitS": 100,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -745,7 +745,7 @@
               "ruleIds": ["r-gender-learn"],
               "answerExplanation": {
                 "en": "Table is feminine. Learn it with its article: une table.",
-                "fr": "Table est féminin. Apprenez-le avec son article : une table.",
+                "fr": "Table est féminin. Apprends-le avec son article : une table.",
                 "de": "Table ist feminin. Lerne es mit seinem Artikel: une table."
               }
             },
@@ -759,7 +759,7 @@
               "ruleIds": ["r-gender-learn"],
               "answerExplanation": {
                 "en": "Stylo is masculine. Learn it with its article: un stylo.",
-                "fr": "Stylo est masculin. Apprenez-le avec son article : un stylo.",
+                "fr": "Stylo est masculin. Apprends-le avec son article : un stylo.",
                 "de": "Stylo ist maskulin. Lerne es mit seinem Artikel: un stylo."
               }
             }
@@ -771,7 +771,7 @@
           "timeLimitS": 70,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -825,7 +825,7 @@
           "timeLimitS": 80,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [

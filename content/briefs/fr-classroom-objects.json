@@ -44,7 +44,7 @@
       "targetIds": ["livre", "cahier", "stylo", "crayon", "gomme", "regle"],
       "introduction": {
         "en": "Here are **six school supplies** you use every day:\n\n- `un livre`\n- `un cahier`\n- `un stylo`\n- `un crayon`\n- `une gomme`\n- `une règle`",
-        "fr": "Voici **six objets scolaires** que vous utilisez tous les jours :\n\n- `un livre`\n- `un cahier`\n- `un stylo`\n- `un crayon`\n- `une gomme`\n- `une règle`",
+        "fr": "Voici **six objets scolaires** que tu utilises tous les jours :\n\n- `un livre`\n- `un cahier`\n- `un stylo`\n- `un crayon`\n- `une gomme`\n- `une règle`",
         "de": "Hier sind **sechs Schulsachen**, die du jeden Tag benutzt:\n\n- `un livre`\n- `un cahier`\n- `un stylo`\n- `un crayon`\n- `une gomme`\n- `une règle`"
       }
     },
@@ -54,7 +54,7 @@
       "targetIds": ["sac", "table", "chaise", "tableau", "porte", "fenetre"],
       "introduction": {
         "en": "Now look around the room. Learn **six more objects**:\n\n- `un sac`\n- `une table`\n- `une chaise`\n- `un tableau`\n- `une porte`\n- `une fenêtre`",
-        "fr": "Regardez maintenant autour de vous. Apprenez **six autres objets** :\n\n- `un sac`\n- `une table`\n- `une chaise`\n- `un tableau`\n- `une porte`\n- `une fenêtre`",
+        "fr": "Regarde maintenant autour de toi. Apprends **six autres objets** :\n\n- `un sac`\n- `une table`\n- `une chaise`\n- `un tableau`\n- `une porte`\n- `une fenêtre`",
         "de": "Sieh dich jetzt im Raum um. Lerne **sechs weitere Gegenstände**:\n\n- `un sac`\n- `une table`\n- `une chaise`\n- `un tableau`\n- `une porte`\n- `une fenêtre`"
       }
     }

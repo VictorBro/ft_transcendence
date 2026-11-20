@@ -58,7 +58,7 @@
       "translations": { "en": ["What’s your name?"], "de": ["Wie heißt du?"] },
       "explanation": {
         "en": "Asks someone’s name. Informal (tu): use it with a friend or someone your age.",
-        "fr": "Pour demander le nom de quelqu’un. Familier (tu) : avec un ami ou une personne de votre âge.",
+        "fr": "Pour demander le nom de quelqu’un. Familier (tu) : avec un ami ou une personne de ton âge.",
         "de": "Fragt nach dem Namen. Informell (tu): unter Freunden oder Gleichaltrigen."
       },
       "example": {

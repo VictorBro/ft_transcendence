@@ -40,7 +40,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -55,7 +55,7 @@
               },
               "text": {
                 "en": "Put an adverb **before** an adjective to change its strength. `a bit` makes it weaker: `It's a bit cold.` (cold, but not very cold).\n\n`really` makes it stronger: `The test was really easy.`\n\n- `a bit` is informal and often goes with negative ideas: `a bit slow`, `a bit noisy`.\n- `really` can also go in a noun phrase: `a really good film`.",
-                "fr": "Placez un adverbe **devant** un adjectif pour changer son intensité. `a bit` l'affaiblit : `It's a bit cold.` (il fait froid, mais pas très froid).\n\n`really` le renforce : `The test was really easy.`\n\n- `a bit` est familier et s'emploie souvent avec des idées négatives : `a bit slow`, `a bit noisy`.\n- `really` peut aussi s'employer dans un groupe nominal : `a really good film`.",
+                "fr": "Place un adverbe **devant** un adjectif pour changer son intensité. `a bit` l'affaiblit : `It's a bit cold.` (il fait froid, mais pas très froid).\n\n`really` le renforce : `The test was really easy.`\n\n- `a bit` est familier et s'emploie souvent avec des idées négatives : `a bit slow`, `a bit noisy`.\n- `really` peut aussi s'employer dans un groupe nominal : `a really good film`.",
                 "de": "Setze ein Adverb **vor** ein Adjektiv, um seine Stärke zu ändern. `a bit` schwächt ab: `It's a bit cold.` (kalt, aber nicht sehr kalt).\n\n`really` verstärkt: `The test was really easy.`\n\n- `a bit` ist umgangssprachlich und steht oft bei negativen Eindrücken: `a bit slow`, `a bit noisy`.\n- `really` steht auch in einer Nominalgruppe: `a really good film`."
               },
               "formTable": [
@@ -117,7 +117,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -233,7 +233,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -325,7 +325,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -408,7 +408,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -423,7 +423,7 @@
               },
               "text": {
                 "en": "`so` and `extremely` make an adjective much stronger, and `extremely` is the strongest: `The hotel was extremely expensive.`\n\n`so` is very common in speech, often with feelings: `I'm so tired.` Use it before an adjective on its own, not before a noun: `The film was so long.`\n\nFrom weak to strong: `a bit cold`, `really cold`, `so cold`, `extremely cold`.\n\n- Do not say `a so long film`: say `a really long film`.\n- Before `extremely` use `an`, not `a`: `an extremely hot day`.",
-                "fr": "`so` et `extremely` renforcent beaucoup un adjectif, et `extremely` est le plus fort : `The hotel was extremely expensive.`\n\n`so` est très courant à l'oral, souvent avec des sentiments : `I'm so tired.` Employez-le devant un adjectif seul, pas devant un nom : `The film was so long.`\n\nDu plus faible au plus fort : `a bit cold`, `really cold`, `so cold`, `extremely cold`.\n\n- Ne dites pas `a so long film` : dites `a really long film`.\n- Devant `extremely`, employez `an` et non `a` : `an extremely hot day`.",
+                "fr": "`so` et `extremely` renforcent beaucoup un adjectif, et `extremely` est le plus fort : `The hotel was extremely expensive.`\n\n`so` est très courant à l'oral, souvent avec des sentiments : `I'm so tired.` Emploie-le devant un adjectif seul, pas devant un nom : `The film was so long.`\n\nDu plus faible au plus fort : `a bit cold`, `really cold`, `so cold`, `extremely cold`.\n\n- Ne dis pas `a so long film` : dites `a really long film`.\n- Devant `extremely`, emploie `an` et non `a` : `an extremely hot day`.",
                 "de": "`so` und `extremely` verstärken ein Adjektiv deutlich, und `extremely` ist am stärksten: `The hotel was extremely expensive.`\n\n`so` ist in der gesprochenen Sprache sehr häufig, oft bei Gefühlen: `I'm so tired.` Es steht vor einem Adjektiv allein, nicht vor einem Nomen: `The film was so long.`\n\nVon schwach zu stark: `a bit cold`, `really cold`, `so cold`, `extremely cold`.\n\n- Sag nicht `a so long film`, sondern `a really long film`.\n- Vor `extremely` steht `an`, nicht `a`: `an extremely hot day`."
               },
               "formTable": [
@@ -482,7 +482,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -590,7 +590,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it.",
-            "fr": "Trouvez le mot faux et corrigez-le.",
+            "fr": "Trouve le mot faux et corrige-le.",
             "de": "Finde das falsche Wort und korrigiere es."
           },
           "items": [
@@ -686,7 +686,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -760,7 +760,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -811,7 +811,7 @@
       "id": "feedback",
       "role": "feedback",
       "blockId": null,
-      "label": { "en": "Your feedback", "fr": "Votre retour", "de": "Dein Feedback" },
+      "label": { "en": "Your feedback", "fr": "Ton retour", "de": "Dein Feedback" },
       "pages": [
         {
           "pageId": "feedback",
@@ -819,7 +819,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Continue to the final exam.",
-            "fr": "Passez à l’examen final.",
+            "fr": "Passe à l’examen final.",
             "de": "Weiter zur Abschlussprüfung."
           },
           "items": [{ "type": "production_feedback_placeholder", "itemId": "feedback" }]
@@ -838,7 +838,7 @@
           "timeLimitS": 120,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -906,7 +906,7 @@
           "timeLimitS": 90,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -960,7 +960,7 @@
           "timeLimitS": 120,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [

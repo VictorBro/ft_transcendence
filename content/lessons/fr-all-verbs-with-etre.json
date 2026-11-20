@@ -40,7 +40,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -55,7 +55,7 @@
               },
               "text": {
                 "en": "Most verbs form the passé composé with `avoir`. You already know some verbs that use **être**, such as `aller`, `venir`, `partir`, `arriver` and `rester`. Nine more verbs complete the list: `monter`, `descendre`, `entrer`, `sortir`, `tomber`, `rentrer`, `retourner`, `devenir` and `mourir`.\n\nThe pattern is **être** in the present + the past participle: `je suis tombé`, `il est entré`.\n\n- Regular participles: `monté`, `descendu`, `entré`, `sorti`, `tombé`, `rentré`, `retourné`.\n- Two are irregular: `devenu` and `mort`.\n- These verbs mostly express a movement: going up, down, in or out.",
-                "fr": "La plupart des verbes forment le passé composé avec `avoir`. Vous connaissez déjà des verbes qui utilisent **être**, comme `aller`, `venir`, `partir`, `arriver` et `rester`. Neuf autres verbes complètent la liste : `monter`, `descendre`, `entrer`, `sortir`, `tomber`, `rentrer`, `retourner`, `devenir` et `mourir`.\n\nLe schéma est **être** au présent + le participe passé : `je suis tombé`, `il est entré`.\n\n- Participes réguliers : `monté`, `descendu`, `entré`, `sorti`, `tombé`, `rentré`, `retourné`.\n- Deux sont irréguliers : `devenu` et `mort`.\n- Ces verbes expriment surtout un mouvement : monter, descendre, entrer, sortir.",
+                "fr": "La plupart des verbes forment le passé composé avec `avoir`. Tu connais déjà des verbes qui utilisent **être**, comme `aller`, `venir`, `partir`, `arriver` et `rester`. Neuf autres verbes complètent la liste : `monter`, `descendre`, `entrer`, `sortir`, `tomber`, `rentrer`, `retourner`, `devenir` et `mourir`.\n\nLe schéma est **être** au présent + le participe passé : `je suis tombé`, `il est entré`.\n\n- Participes réguliers : `monté`, `descendu`, `entré`, `sorti`, `tombé`, `rentré`, `retourné`.\n- Deux sont irréguliers : `devenu` et `mort`.\n- Ces verbes expriment surtout un mouvement : monter, descendre, entrer, sortir.",
                 "de": "Die meisten Verben bilden das passé composé mit `avoir`. Einige Verben mit **être** kennst du schon, zum Beispiel `aller`, `venir`, `partir`, `arriver` und `rester`. Neun weitere Verben vervollständigen die Liste: `monter`, `descendre`, `entrer`, `sortir`, `tomber`, `rentrer`, `retourner`, `devenir` und `mourir`.\n\nDas Schema ist **être** im Präsens + Partizip: `je suis tombé`, `il est entré`.\n\n- Regelmäßige Partizipien: `monté`, `descendu`, `entré`, `sorti`, `tombé`, `rentré`, `retourné`.\n- Zwei sind unregelmäßig: `devenu` und `mort`.\n- Diese Verben drücken meist eine Bewegung aus: hinauf, hinunter, hinein, hinaus."
               },
               "formTable": [
@@ -130,7 +130,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -254,7 +254,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Connect each pronoun with its partner.",
-            "fr": "Reliez chaque pronom à son partenaire.",
+            "fr": "Relie chaque pronom à son partenaire.",
             "de": "Verbinde jedes Pronomen mit seinem Partner."
           },
           "items": [
@@ -352,7 +352,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -448,7 +448,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -519,7 +519,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -619,7 +619,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it.",
-            "fr": "Trouvez le mot faux et corrigez-le.",
+            "fr": "Trouve le mot faux et corrige-le.",
             "de": "Finde das falsche Wort und korrigiere es."
           },
           "items": [
@@ -737,7 +737,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -820,7 +820,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the form for each pronoun.",
-            "fr": "Écrivez la forme pour chaque pronom.",
+            "fr": "Écris la forme pour chaque pronom.",
             "de": "Schreib die Form zu jedem Pronomen."
           },
           "items": [
@@ -869,7 +869,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the form for each pronoun.",
-            "fr": "Écrivez la forme pour chaque pronom.",
+            "fr": "Écris la forme pour chaque pronom.",
             "de": "Schreib die Form zu jedem Pronomen."
           },
           "items": [
@@ -918,7 +918,7 @@
       "id": "feedback",
       "role": "feedback",
       "blockId": null,
-      "label": { "en": "Your feedback", "fr": "Votre retour", "de": "Dein Feedback" },
+      "label": { "en": "Your feedback", "fr": "Ton retour", "de": "Dein Feedback" },
       "pages": [
         {
           "pageId": "feedback",
@@ -926,7 +926,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Continue to the final exam.",
-            "fr": "Passez à l’examen final.",
+            "fr": "Passe à l’examen final.",
             "de": "Weiter zur Abschlussprüfung."
           },
           "items": [{ "type": "production_feedback_placeholder", "itemId": "feedback" }]
@@ -945,7 +945,7 @@
           "timeLimitS": 160,
           "instructions": {
             "en": "Type the form for each pronoun.",
-            "fr": "Écrivez la forme pour chaque pronom.",
+            "fr": "Écris la forme pour chaque pronom.",
             "de": "Schreib die Form zu jedem Pronomen."
           },
           "items": [
@@ -1004,7 +1004,7 @@
           "timeLimitS": 130,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -1072,7 +1072,7 @@
           "timeLimitS": 100,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [

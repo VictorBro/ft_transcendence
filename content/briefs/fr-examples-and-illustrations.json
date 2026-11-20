@@ -48,7 +48,7 @@
       "targetIds": ["par-exemple", "notamment", "entre-autres", "a-titre-d-exemple", "ainsi"],
       "introduction": {
         "en": "These expressions introduce an example that supports your argument:\n\n- `par exemple`: the neutral choice, in speech and writing\n- `notamment`: singles out one case among several\n- `entre autres`: signals that the list is not complete\n- `à titre d’exemple`: formal, for one illustrative case\n- `ainsi`: opens a concrete example that follows from the idea",
-        "fr": "Ces expressions introduisent un exemple qui soutient votre argument :\n\n- `par exemple` : le choix neutre, à l’oral comme à l’écrit\n- `notamment` : isole un cas parmi plusieurs\n- `entre autres` : signale que la liste n’est pas complète\n- `à titre d’exemple` : soutenu, pour un seul cas illustratif\n- `ainsi` : ouvre un exemple concret qui découle de l’idée",
+        "fr": "Ces expressions introduisent un exemple qui soutient ton argument :\n\n- `par exemple` : le choix neutre, à l’oral comme à l’écrit\n- `notamment` : isole un cas parmi plusieurs\n- `entre autres` : signale que la liste n’est pas complète\n- `à titre d’exemple` : soutenu, pour un seul cas illustratif\n- `ainsi` : ouvre un exemple concret qui découle de l’idée",
         "de": "Diese Ausdrücke leiten ein Beispiel ein, das dein Argument stützt:\n\n- `par exemple`: die neutrale Wahl, mündlich wie schriftlich\n- `notamment`: hebt einen Fall unter mehreren hervor\n- `entre autres`: zeigt an, dass die Aufzählung nicht vollständig ist\n- `à titre d’exemple`: gehoben, für einen einzelnen Beispielfall\n- `ainsi`: eröffnet ein konkretes Beispiel, das sich aus der Idee ergibt"
       }
     },

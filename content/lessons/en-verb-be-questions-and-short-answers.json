@@ -40,7 +40,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -55,7 +55,7 @@
               },
               "text": {
                 "en": "To ask a yes or no question with `be`, put `am`, `is` or `are` **first**, before the subject.\n\n- `You are tired.` → `Are you tired?`\n- `She is from Italy.` → `Is she from Italy?`\n- `I am late.` → `Am I late?`\n\nChoose the form by the subject: `am` with `I`, `is` with `he`, `she`, `it`, and `are` with `you`, `we`, `they`.\n\nA question with `be` does not use `do`: say `Are you tired?`, not `Do you are tired?`",
-                "fr": "Pour poser une question fermée avec `be`, placez `am`, `is` ou `are` **en premier**, avant le sujet.\n\n- `You are tired.` → `Are you tired?`\n- `She is from Italy.` → `Is she from Italy?`\n- `I am late.` → `Am I late?`\n\nChoisissez la forme selon le sujet : `am` avec `I`, `is` avec `he`, `she`, `it`, et `are` avec `you`, `we`, `they`.\n\nUne question avec `be` n'utilise pas `do` : dites `Are you tired?`, et non `Do you are tired?`",
+                "fr": "Pour poser une question fermée avec `be`, place `am`, `is` ou `are` **en premier**, avant le sujet.\n\n- `You are tired.` → `Are you tired?`\n- `She is from Italy.` → `Is she from Italy?`\n- `I am late.` → `Am I late?`\n\nChoisis la forme selon le sujet : `am` avec `I`, `is` avec `he`, `she`, `it`, et `are` avec `you`, `we`, `they`.\n\nUne question avec `be` n'utilise pas `do` : dis `Are you tired?`, et non `Do you are tired?`",
                 "de": "Für eine Ja-Nein-Frage mit `be` stellst du `am`, `is` oder `are` **an den Anfang**, vor das Subjekt.\n\n- `You are tired.` → `Are you tired?`\n- `She is from Italy.` → `Is she from Italy?`\n- `I am late.` → `Am I late?`\n\nWähle die Form nach dem Subjekt: `am` mit `I`, `is` mit `he`, `she`, `it` und `are` mit `you`, `we`, `they`.\n\nEine Frage mit `be` braucht kein `do`: Sage `Are you tired?`, nicht `Do you are tired?`"
               },
               "formTable": [
@@ -102,7 +102,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -206,7 +206,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -301,7 +301,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -393,7 +393,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
+            "fr": "Lis l’explication et les exemples.",
             "de": "Lies die Erklärung und die Beispiele."
           },
           "items": [
@@ -408,7 +408,7 @@
               },
               "text": {
                 "en": "Answer a yes or no question with a **short answer**: `Yes` or `No`, the subject, and `am`, `is` or `are`. Do not repeat the rest of the sentence.\n\n- `Are you tired?` → `Yes, I am.`\n- `Is she from Italy?` → `No, she isn't.`\n- `Are they at home?` → `Yes, they are.`\n\nAfter `Yes`, never shorten the verb: say `Yes, I am.`, not `Yes, I'm.` After `No`, use `isn't`, `aren't` or `I'm not`.\n\nThe pronoun changes: a question with `you` gets an answer with `I`.",
-                "fr": "Répondez à une question fermée par une **réponse courte** : `Yes` ou `No`, le sujet, puis `am`, `is` ou `are`. Ne répétez pas le reste de la phrase.\n\n- `Are you tired?` → `Yes, I am.`\n- `Is she from Italy?` → `No, she isn't.`\n- `Are they at home?` → `Yes, they are.`\n\nAprès `Yes`, ne contractez jamais le verbe : dites `Yes, I am.`, et non `Yes, I'm.` Après `No`, utilisez `isn't`, `aren't` ou `I'm not`.\n\nLe pronom change : une question avec `you` reçoit une réponse avec `I`.",
+                "fr": "Réponds à une question fermée par une **réponse courte** : `Yes` ou `No`, le sujet, puis `am`, `is` ou `are`. Ne répète pas le reste de la phrase.\n\n- `Are you tired?` → `Yes, I am.`\n- `Is she from Italy?` → `No, she isn't.`\n- `Are they at home?` → `Yes, they are.`\n\nAprès `Yes`, ne contracte jamais le verbe : dis `Yes, I am.`, et non `Yes, I'm.` Après `No`, utilise `isn't`, `aren't` ou `I'm not`.\n\nLe pronom change : une question avec `you` reçoit une réponse avec `I`.",
                 "de": "Beantworte eine Ja-Nein-Frage mit einer **Kurzantwort**: `Yes` oder `No`, das Subjekt und `am`, `is` oder `are`. Wiederhole nicht den Rest des Satzes.\n\n- `Are you tired?` → `Yes, I am.`\n- `Is she from Italy?` → `No, she isn't.`\n- `Are they at home?` → `Yes, they are.`\n\nNach `Yes` verwendest du nie die Kurzform: Sage `Yes, I am.`, nicht `Yes, I'm.` Nach `No` verwendest du `isn't`, `aren't` oder `I'm not`.\n\nDas Pronomen ändert sich: Auf eine Frage mit `you` antwortest du mit `I`."
               },
               "formTable": [
@@ -479,7 +479,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
+            "fr": "Choisis le mot qui complète la phrase.",
             "de": "Wähle das Wort, das den Satz ergänzt."
           },
           "items": [
@@ -583,7 +583,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -597,7 +597,7 @@
               "ruleIds": ["rule-short-answers"],
               "answerExplanation": {
                 "en": "Repeat the subject and use is: Yes, she is.",
-                "fr": "Reprenez le sujet et utilisez is : Yes, she is.",
+                "fr": "Reprends le sujet et utilise is : Yes, she is.",
                 "de": "Wiederhole das Subjekt und nutze is: Yes, she is."
               }
             },
@@ -659,7 +659,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Find the wrong word and correct it.",
-            "fr": "Trouvez le mot faux et corrigez-le.",
+            "fr": "Trouve le mot faux et corrige-le.",
             "de": "Finde das falsche Wort und korrigiere es."
           },
           "items": [
@@ -757,7 +757,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -823,7 +823,7 @@
       "id": "feedback",
       "role": "feedback",
       "blockId": null,
-      "label": { "en": "Your feedback", "fr": "Votre retour", "de": "Dein Feedback" },
+      "label": { "en": "Your feedback", "fr": "Ton retour", "de": "Dein Feedback" },
       "pages": [
         {
           "pageId": "feedback",
@@ -831,7 +831,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Continue to the final exam.",
-            "fr": "Passez à l’examen final.",
+            "fr": "Passe à l’examen final.",
             "de": "Weiter zur Abschlussprüfung."
           },
           "items": [{ "type": "production_feedback_placeholder", "itemId": "feedback" }]
@@ -850,7 +850,7 @@
           "timeLimitS": 120,
           "instructions": {
             "en": "Put the words in the right order.",
-            "fr": "Mettez les mots dans le bon ordre.",
+            "fr": "Mets les mots dans le bon ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -916,7 +916,7 @@
           "timeLimitS": 130,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -984,7 +984,7 @@
           "timeLimitS": 100,
           "instructions": {
             "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
+            "fr": "Écris les mots manquants.",
             "de": "Schreib die fehlenden Wörter."
           },
           "items": [
@@ -998,7 +998,7 @@
               "ruleIds": ["rule-short-answers"],
               "answerExplanation": {
                 "en": "Repeat the subject and use is: Yes, he is.",
-                "fr": "Reprenez le sujet et utilisez is : Yes, he is.",
+                "fr": "Reprends le sujet et utilise is : Yes, he is.",
                 "de": "Wiederhole das Subjekt und nutze is: Yes, he is."
               }
             },

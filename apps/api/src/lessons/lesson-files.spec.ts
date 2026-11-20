@@ -109,6 +109,30 @@ describe('content/briefs and content/lessons', () => {
     expect(clashes).toEqual([]);
   });
 
+  // The interface says tu (#106), and so does the help around the exercises
+  // (#207). A label may name the vous being taught ("Le pluriel : nous, vous,
+  // ils, elles"), so only votre and vos, and an imperative in -ez opening an
+  // instruction ("Choisissez…"), give away a lesson that says vous.
+  it('addresses the learner with tu in its French step labels and instructions', () => {
+    const possessive = (fr: string) => /\b(votre|vos)\b/i.test(fr);
+    // The first word of each sentence: "Lisez", "Rappelez" (of Rappelez-vous).
+    const imperative = (fr: string) =>
+      fr.split(/(?<=[.?!;:])\s+/).some((sentence) => /ez$/i.test(sentence.split(/[\s-]/)[0]));
+    const formal = new Set<string>();
+    for (const id of contentIds) {
+      const { steps } = read(LESSONS_DIR, `${id}.json`) as {
+        steps: { label: { fr: string }; pages: { instructions: { fr: string } }[] }[];
+      };
+      for (const { label, pages } of steps) {
+        if (possessive(label.fr)) formal.add(`${id}: ${label.fr}`);
+        for (const { instructions } of pages)
+          if (possessive(instructions.fr) || imperative(instructions.fr))
+            formal.add(`${id}: ${instructions.fr}`);
+      }
+    }
+    expect([...formal]).toEqual([]);
+  });
+
   // The seed's rule: a brief, plus a content file for every kind but vocabulary.
   it.each([...levels])(
     '%s: the lessons with files are its first entries, with no gap',

@@ -75,7 +75,7 @@
       "translations": { "fr": ["J’ai trouvé que c’était"], "de": ["Ich fand, es war"] },
       "explanation": {
         "en": "Gives your opinion of something in the past: I thought it was + an adjective.",
-        "fr": "Donne votre avis sur quelque chose de passé : I thought it was + un adjectif.",
+        "fr": "Donne ton avis sur quelque chose de passé : I thought it was + un adjectif.",
         "de": "Gibt Ihre Meinung zu etwas Vergangenem: I thought it was + ein Adjektiv."
       },
       "example": {
@@ -111,7 +111,7 @@
       "translations": { "fr": ["Je suis d’accord"], "de": ["Ich stimme zu", "Da hast du recht"] },
       "explanation": {
         "en": "Says you have the same opinion. Never say I am agree.",
-        "fr": "Dit que vous avez le même avis. On ne dit jamais I am agree.",
+        "fr": "Dit que tu as le même avis. On ne dit jamais I am agree.",
         "de": "Sagt, dass Sie derselben Meinung sind. Nie I am agree sagen."
       },
       "example": {
@@ -129,7 +129,7 @@
       "translations": { "fr": ["Vraiment ?"], "de": ["Wirklich?"] },
       "explanation": {
         "en": "Shows surprise at a friend's opinion, often before you give a different one.",
-        "fr": "Montre votre surprise devant l’avis d’un ami, souvent avant d’en donner un autre.",
+        "fr": "Montre ta surprise devant l’avis d’un ami, souvent avant d’en donner un autre.",
         "de": "Zeigt Überraschung über die Meinung eines Freundes, oft bevor Sie eine andere sagen."
       },
       "example": {
@@ -147,7 +147,7 @@
       },
       "explanation": {
         "en": "Says you have a different opinion. Give your reason after it, to sound friendly.",
-        "fr": "Dit que vous avez un autre avis. Donnez ensuite votre raison, pour rester aimable.",
+        "fr": "Dit que tu as un autre avis. Donne ensuite ta raison, pour rester aimable.",
         "de": "Sagt, dass Sie anderer Meinung sind. Nennen Sie danach Ihren Grund, damit es freundlich klingt."
       },
       "example": {

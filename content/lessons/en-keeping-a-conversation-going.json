@@ -36,7 +36,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Recall each expression, then turn the card to check it.",
-            "fr": "Rappelez-vous chaque expression, puis retournez la carte pour vérifier.",
+            "fr": "Rappelle-toi chaque expression, puis retourne la carte pour vérifier.",
             "de": "Erinnere dich an jeden Ausdruck und dreh dann die Karte um."
           },
           "items": [
@@ -69,7 +69,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Read and listen. Turn a line to see its translation and a note.",
-            "fr": "Lisez et écoutez. Retournez une réplique pour voir sa traduction et une remarque.",
+            "fr": "Lis et écoute. Retourne une réplique pour voir sa traduction et une remarque.",
             "de": "Lies und hör zu. Dreh eine Zeile um, um Übersetzung und Hinweis zu sehen."
           },
           "items": [
@@ -207,7 +207,7 @@
                   },
                   "note": {
                     "en": "Anyway signals that you are moving to the end; give a reason.",
-                    "fr": "Anyway annonce la fin de la conversation ; donnez une raison.",
+                    "fr": "Anyway annonce la fin de la conversation ; donne une raison.",
                     "de": "Anyway kündigt das Ende an; nenne einen Grund."
                   },
                   "expressionIds": ["anyway-get-going"]
@@ -245,7 +245,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Match each expression with its translation.",
-            "fr": "Associez chaque expression à sa traduction.",
+            "fr": "Associe chaque expression à sa traduction.",
             "de": "Ordne jedem Ausdruck seine Übersetzung zu."
           },
           "items": [
@@ -320,7 +320,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the expression that fits the gap.",
-            "fr": "Choisissez l’expression qui complète la réplique.",
+            "fr": "Choisis l’expression qui complète la réplique.",
             "de": "Wähle den Ausdruck, der in die Lücke passt."
           },
           "items": [
@@ -352,7 +352,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the expression that fits the gap.",
-            "fr": "Choisissez l’expression qui complète la réplique.",
+            "fr": "Choisis l’expression qui complète la réplique.",
             "de": "Wähle den Ausdruck, der in die Lücke passt."
           },
           "items": [
@@ -384,7 +384,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the expression that fits the gap.",
-            "fr": "Choisissez l’expression qui complète la réplique.",
+            "fr": "Choisis l’expression qui complète la réplique.",
             "de": "Wähle den Ausdruck, der in die Lücke passt."
           },
           "items": [
@@ -419,7 +419,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the expression that fits the gap.",
-            "fr": "Choisissez l’expression qui complète la réplique.",
+            "fr": "Choisis l’expression qui complète la réplique.",
             "de": "Wähle den Ausdruck, der in die Lücke passt."
           },
           "items": [
@@ -454,7 +454,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the expression that fits the gap.",
-            "fr": "Choisissez l’expression qui complète la réplique.",
+            "fr": "Choisis l’expression qui complète la réplique.",
             "de": "Wähle den Ausdruck, der in die Lücke passt."
           },
           "items": [
@@ -486,7 +486,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Choose the expression that fits the gap.",
-            "fr": "Choisissez l’expression qui complète la réplique.",
+            "fr": "Choisis l’expression qui complète la réplique.",
             "de": "Wähle den Ausdruck, der in die Lücke passt."
           },
           "items": [
@@ -526,7 +526,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in order.",
-            "fr": "Mettez les mots dans l’ordre.",
+            "fr": "Mets les mots dans l’ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -559,7 +559,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in order.",
-            "fr": "Mettez les mots dans l’ordre.",
+            "fr": "Mets les mots dans l’ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -593,7 +593,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in order.",
-            "fr": "Mettez les mots dans l’ordre.",
+            "fr": "Mets les mots dans l’ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -628,7 +628,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in order.",
-            "fr": "Mettez les mots dans l’ordre.",
+            "fr": "Mets les mots dans l’ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -662,7 +662,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in order.",
-            "fr": "Mettez les mots dans l’ordre.",
+            "fr": "Mets les mots dans l’ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -695,7 +695,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in order.",
-            "fr": "Mettez les mots dans l’ordre.",
+            "fr": "Mets les mots dans l’ordre.",
             "de": "Bring die Wörter in die richtige Reihenfolge."
           },
           "items": [
@@ -737,7 +737,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Listen, then choose the reply that fits.",
-            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "fr": "Écoute, puis choisis la réponse qui convient.",
             "de": "Hör zu und wähle dann die passende Antwort."
           },
           "items": [
@@ -756,7 +756,7 @@
               "answerOptionId": "o1",
               "answerExplanation": {
                 "en": "You are meeting for the first time, so you ask what brings her here.",
-                "fr": "Vous vous rencontrez, donc vous demandez ce qui l’amène ici.",
+                "fr": "Vous vous rencontrez, donc tu demandes ce qui l’amène ici.",
                 "de": "Ihr trefft euch zum ersten Mal, also fragst du, was sie hierherführt."
               }
             }
@@ -768,7 +768,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Listen, then choose the reply that fits.",
-            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "fr": "Écoute, puis choisis la réponse qui convient.",
             "de": "Hör zu und wähle dann die passende Antwort."
           },
           "items": [
@@ -787,7 +787,7 @@
               "answerOptionId": "o1",
               "answerExplanation": {
                 "en": "You ask how she knows the host.",
-                "fr": "Vous demandez comment elle connaît l’hôtesse.",
+                "fr": "Tu demandes comment elle connaît l’hôtesse.",
                 "de": "Du fragst, woher sie die Gastgeberin kennt."
               }
             }
@@ -799,7 +799,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Listen, then choose the reply that fits.",
-            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "fr": "Écoute, puis choisis la réponse qui convient.",
             "de": "Hör zu und wähle dann die passende Antwort."
           },
           "items": [
@@ -818,7 +818,7 @@
               "answerOptionId": "o1",
               "answerExplanation": {
                 "en": "She mentions an experience, so you ask what it was like.",
-                "fr": "Elle évoque une expérience, donc vous demandez comment c’était.",
+                "fr": "Elle évoque une expérience, donc tu demandes comment c’était.",
                 "de": "Sie erwähnt eine Erfahrung, also fragst du, wie es war."
               }
             }
@@ -830,7 +830,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Listen, then choose the reply that fits.",
-            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "fr": "Écoute, puis choisis la réponse qui convient.",
             "de": "Hör zu und wähle dann die passende Antwort."
           },
           "items": [
@@ -849,7 +849,7 @@
               "answerOptionId": "o1",
               "answerExplanation": {
                 "en": "You show interest and ask him to say more.",
-                "fr": "Vous montrez de l’intérêt et lui demandez d’en dire plus.",
+                "fr": "Tu montres de l’intérêt et lui demandes d’en dire plus.",
                 "de": "Du zeigst Interesse und bittest ihn, mehr zu erzählen."
               }
             }
@@ -861,7 +861,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Listen, then choose the reply that fits.",
-            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "fr": "Écoute, puis choisis la réponse qui convient.",
             "de": "Hör zu und wähle dann die passende Antwort."
           },
           "items": [
@@ -880,7 +880,7 @@
               "answerOptionId": "o1",
               "answerExplanation": {
                 "en": "It is late, so you start to end the conversation.",
-                "fr": "Il est tard, donc vous commencez à conclure la conversation.",
+                "fr": "Il est tard, donc tu commences à conclure la conversation.",
                 "de": "Es ist spät, also beginnst du, das Gespräch zu beenden."
               }
             }
@@ -892,7 +892,7 @@
           "timeLimitS": null,
           "instructions": {
             "en": "Listen, then choose the reply that fits.",
-            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "fr": "Écoute, puis choisis la réponse qui convient.",
             "de": "Hör zu und wähle dann die passende Antwort."
           },
           "items": [
@@ -911,7 +911,7 @@
               "answerOptionId": "o1",
               "answerExplanation": {
                 "en": "He is leaving, so you say a warm goodbye.",
-                "fr": "Il s’en va, donc vous dites un au revoir chaleureux.",
+                "fr": "Il s’en va, donc tu dis un au revoir chaleureux.",
                 "de": "Er geht, also verabschiedest du dich herzlich."
               }
             }
@@ -931,7 +931,7 @@
           "timeLimitS": 180,
           "instructions": {
             "en": "Build the answer. Not every word fits.",
-            "fr": "Construisez la réponse. Tous les mots ne servent pas.",
+            "fr": "Construis la réponse. Tous les mots ne servent pas.",
             "de": "Bilde die Antwort. Nicht jedes Wort passt."
           },
           "items": [
@@ -1042,7 +1042,7 @@
           "timeLimitS": 210,
           "instructions": {
             "en": "Fill each gap with an expression from this lesson.",
-            "fr": "Complétez chaque trou avec une expression de la leçon.",
+            "fr": "Complète chaque trou avec une expression de la leçon.",
             "de": "Fülle jede Lücke mit einem Ausdruck aus dieser Lektion."
           },
           "items": [

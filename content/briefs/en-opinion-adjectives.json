@@ -7,7 +7,7 @@
   "title": "Opinion adjectives",
   "objective": {
     "en": "Say what you think of a place, a film or a meal with twelve opinion adjectives.",
-    "fr": "Dire ce que vous pensez d'un lieu, d'un film ou d'un repas avec douze adjectifs d'opinion.",
+    "fr": "Dire ce que tu penses d'un lieu, d'un film ou d'un repas avec douze adjectifs d'opinion.",
     "de": "Mit zwölf Adjektiven sagen, was du von einem Ort, einem Film oder einem Essen hältst."
   },
   "estimatedMinutes": 19,
@@ -44,7 +44,7 @@
       "targetIds": ["amazing", "brilliant", "fantastic", "lovely", "wonderful", "delicious"],
       "introduction": {
         "en": "Use these adjectives when you **like** something:\n\n- `amazing`\n- `brilliant`\n- `fantastic`\n- `lovely`\n- `wonderful`\n- `delicious`\n\nYou can say a place is `lovely` or a film is `fantastic`. Use `delicious` for food.",
-        "fr": "Utilisez ces adjectifs quand vous **aimez** quelque chose :\n\n- `amazing`\n- `brilliant`\n- `fantastic`\n- `lovely`\n- `wonderful`\n- `delicious`\n\nOn peut dire qu'un lieu est `lovely` ou qu'un film est `fantastic`. Employez `delicious` pour la nourriture.",
+        "fr": "Utilise ces adjectifs quand tu **aimes** quelque chose :\n\n- `amazing`\n- `brilliant`\n- `fantastic`\n- `lovely`\n- `wonderful`\n- `delicious`\n\nOn peut dire qu'un lieu est `lovely` ou qu'un film est `fantastic`. Emploie `delicious` pour la nourriture.",
         "de": "Benutze diese Adjektive, wenn dir etwas **gefällt**:\n\n- `amazing`\n- `brilliant`\n- `fantastic`\n- `lovely`\n- `wonderful`\n- `delicious`\n\nDu kannst sagen, ein Ort ist `lovely` oder ein Film ist `fantastic`. Für Essen benutzt du `delicious`."
       }
     },
@@ -58,7 +58,7 @@
       "targetIds": ["awful", "terrible", "horrible", "disgusting", "strange", "boring"],
       "introduction": {
         "en": "Use these adjectives when you **do not like** something, or when it is odd:\n\n- `awful`\n- `terrible`\n- `horrible`\n- `disgusting`\n- `strange`\n- `boring`\n\n`Awful`, `terrible` and `horrible` are all very bad. `Disgusting` is for things that make you feel sick, like bad food, smells or dirty places. `Strange` means unusual.",
-        "fr": "Utilisez ces adjectifs quand vous **n'aimez pas** quelque chose, ou quand c'est bizarre :\n\n- `awful`\n- `terrible`\n- `horrible`\n- `disgusting`\n- `strange`\n- `boring`\n\n`Awful`, `terrible` et `horrible` veulent tous dire très mauvais. `Disgusting` s'emploie pour ce qui donne envie de vomir : une nourriture avariée, une odeur, un endroit sale. `Strange` veut dire inhabituel.",
+        "fr": "Utilise ces adjectifs quand tu **n'aimes pas** quelque chose, ou quand c'est bizarre :\n\n- `awful`\n- `terrible`\n- `horrible`\n- `disgusting`\n- `strange`\n- `boring`\n\n`Awful`, `terrible` et `horrible` veulent tous dire très mauvais. `Disgusting` s'emploie pour ce qui donne envie de vomir : une nourriture avariée, une odeur, un endroit sale. `Strange` veut dire inhabituel.",
         "de": "Benutze diese Adjektive, wenn dir etwas **nicht gefällt** oder wenn es komisch ist:\n\n- `awful`\n- `terrible`\n- `horrible`\n- `disgusting`\n- `strange`\n- `boring`\n\n`Awful`, `terrible` und `horrible` bedeuten alle sehr schlecht. `Disgusting` sagst du bei Dingen, bei denen dir übel wird: schlechtes Essen, Gerüche oder schmutzige Orte. `Strange` bedeutet ungewöhnlich."
       }
     }
