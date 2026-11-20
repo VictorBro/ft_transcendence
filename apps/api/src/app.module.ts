@@ -16,6 +16,7 @@ import { FriendsModule } from './friends/friends.module';
 import { CoursesModule } from './courses/courses.module';
 import { PlacementModule } from './placement/placement.module';
 import { LessonsModule } from './lessons/lessons.module';
+import { MessagesModule } from './messages/messages.module';
 
 @Module({
   imports: [
@@ -33,6 +34,7 @@ import { LessonsModule } from './lessons/lessons.module';
     AuthModule,
     UsersModule,
     FriendsModule,
+    MessagesModule,
     HealthModule,
     CoursesModule,
     PlacementModule,

@@ -63,28 +63,13 @@ jobs:
 
       - uses: ./.github/actions/setup
 
-      # Before the stack comes up: this step is slow, and there is no reason to
-      # have containers idling while it runs. The browser build is cached per
-      # Playwright version; its system packages are not, so a hit still
-      # installs those.
-      - name: Read the Playwright version
-        id: playwright
-        run: echo "version=$(node -p "require('./e2e/package.json').devDependencies['@playwright/test']")" >> "$GITHUB_OUTPUT"
-
-      - name: Restore the browser build
-        id: browsers
-        uses: actions/cache@v6.1.0
-        with:
-          path: ~/.cache/ms-playwright
-          key: playwright-${{ steps.playwright.outputs.version }}-${{ matrix.browser }}
-
-      - name: Install the browser build Playwright pins
-        if: steps.browsers.outputs.cache-hit != 'true'
-        run: pnpm --filter @ft/e2e exec playwright install --with-deps ${{ matrix.browser }}
-
-      - name: Install the browser's system packages
-        if: steps.browsers.outputs.cache-hit == 'true'
-        run: pnpm --filter @ft/e2e exec playwright install-deps ${{ matrix.browser }}
+      # Playwright runs in its own image, which carries the browsers and their
+      # system packages: nothing comes from the runner's apt mirror, which some
+      # days took 20 minutes for WebKit's (scripts/playwright-in-image.sh).
+      # Pulled before the stack comes up, so no container idles meanwhile;
+      # --version also proves the image runs the mounted node_modules.
+      - name: Pull the Playwright image
+        run: ./scripts/playwright-in-image.sh --version
 
       # No .env file. Every value in compose.yml is ${VAR:-default} except
       # SESSION_SECRET and the Grafana keys, supplied above, so the stack comes
@@ -116,8 +101,11 @@ jobs:
         id: migrate
         run: make db-ready
 
+      # What test:e2e runs, with Playwright in its image.
       - name: Run the suite
-        run: pnpm --filter @ft/e2e run test:e2e --project=${{ matrix.browser }}
+        run: |
+          pnpm --filter @ft/shared run build
+          ./scripts/playwright-in-image.sh test --project=${{ matrix.browser }}
 
       # --wait proves the containers run. This proves Prometheus scrapes every
       # target, evaluates every rule and has found Alertmanager. After the
@@ -131,15 +119,16 @@ jobs:
         run: ./scripts/check-monitoring.sh
 
       # Alone and after the suite: it restarts the API, which every test beside
-      # it and SSR would lose. In one job only: test:e2e:restart pins Chromium,
-      # and the retry loop is the same code on every engine. The spec calls
+      # it and SSR would lose. In one job only, on Chromium as test:e2e:restart
+      # runs it: the retry loop is the same code on every engine. The spec calls
       # plain `docker compose`, so the job's file list goes in through
       # COMPOSE_FILE.
       - name: Restart the API under an open page
         if: env.STACK_CHECKS == 'true'
-        run: pnpm --filter @ft/e2e run test:e2e:restart
+        run: ./scripts/playwright-in-image.sh test --project=chromium
         env:
           COMPOSE_FILE: compose.yml:compose.prod.yml
+          E2E_RESTART: "1"
 
       # Container logs are the only way to tell an app bug from an
       # infrastructure one once the stack is gone.

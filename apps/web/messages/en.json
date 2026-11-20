@@ -121,18 +121,19 @@
     "save": "Save",
     "cancel": "Cancel"
   },
-  "ModeLayout": {
-    "backToCourse": "Back to course"
-  },
-  "ChatPage": {
-    "title": "Chat",
-    "heading": "Chat with your tutor",
-    "tutor": "Tutor",
-    "messageLabel": "Message",
-    "messagePlaceholder": "Your message...",
-    "sendMessage": "Send message",
-    "feedbackHeading": "Get feedback on your messages",
-    "feedbackIntro": "The AI will analyze your messages and give you personalized feedback."
+  "MessagesPage": {
+    "title": "Messages",
+    "conversations": "Conversations",
+    "noConversations": "No conversations yet. Write to one of your <friends>friends</friends>.",
+    "choose": "Choose a conversation.",
+    "allMessages": "All messages",
+    "noMessages": "No messages yet.",
+    "loadEarlier": "Load earlier messages",
+    "you": "You",
+    "messageLabel": "Write a message",
+    "send": "Send",
+    "onlyFriends": "Only friends can message each other. You can still read this conversation.",
+    "unread": "{count, plural, one {# unread message} other {# unread messages}}"
   },
   "ErrorPage": {
     "heading": "Something went wrong",
@@ -260,6 +261,11 @@
       "requestNotFound": "That request is no longer open",
       "notFound": "That person is not in your friends"
     },
+    "message": {
+      "notFriends": "Only friends can message each other",
+      "empty": "Write a message first",
+      "tooLong": "A message is limited to 1,000 characters"
+    },
     "request": {
       "invalid": "The request could not be read",
       "tooLarge": "The request is too large"
@@ -325,7 +331,8 @@
     "removeConfirm": "Remove {name} from your friends?",
     "cancel": "Cancel",
     "online": "Online",
-    "offline": "Offline"
+    "offline": "Offline",
+    "message": "Message"
   },
   "UserPage": {
     "courses": "Courses",

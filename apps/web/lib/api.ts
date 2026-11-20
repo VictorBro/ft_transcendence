@@ -1,4 +1,5 @@
 import { cookies, headers } from 'next/headers';
+import { redirect } from 'next/navigation';
 
 /**
  * The only place apps/web talks to NestJS. Per the architecture rule, Next does
@@ -44,6 +45,19 @@ export type SessionResult = BaseResult<SessionUser>;
 
 /** A 404 read as an answer, nothing there, rather than as a failure. */
 export type FindResult<T> = BaseResult<T> | { status: 'not-found' };
+
+/** A page's read: the data, or /login for a signed-out visitor. */
+export function settle<T>(result: BaseResult<T>, what: string): T {
+  if (result.status === 'signed-out') {
+    redirect('/login');
+  }
+
+  // Thrown, since a redirect would read as a logout.
+  if (result.status === 'unavailable') {
+    throw new Error(`Could not load the ${what}: ${result.reason}`);
+  }
+  return result.data;
+}
 
 /** Falls back to the compose service name when API_INTERNAL_URL is unset or blank. */
 export function resolveApiBaseUrl(raw: string | undefined): string {

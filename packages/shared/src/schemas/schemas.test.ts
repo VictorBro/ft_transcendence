@@ -25,6 +25,7 @@ import {
   SUPPORTED_LOCALES,
   TimeZoneSchema,
   UpdateProfileSchema,
+  UserIdInputSchema,
   UserSchema,
   UserSearchQuerySchema,
   isErrorCode,
@@ -132,6 +133,14 @@ describe('UserSchema', () => {
 
     expect(publicUser).not.toHaveProperty('email');
     expect(Object.keys(publicUser).sort()).toEqual(['avatarUrl', 'displayName', 'id']);
+  });
+});
+
+describe('UserIdInputSchema', () => {
+  // Postgres returns lower case: as typed, one person could pass for two.
+  it('lower-cases a user id, and refuses what is not one', () => {
+    expect(UserIdInputSchema.parse(validUser.id.toUpperCase())).toBe(validUser.id);
+    expect(UserIdInputSchema.safeParse('nope').success).toBe(false);
   });
 });
 

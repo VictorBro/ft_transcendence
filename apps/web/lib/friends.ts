@@ -1,5 +1,4 @@
 /** Server half of the friends API, like courses.ts. */
-import { redirect } from 'next/navigation';
 import { cache } from 'react';
 import {
   FriendsSchema,
@@ -13,7 +12,7 @@ import {
   type RecentlyActiveUser,
 } from '@ft/shared';
 
-import { apiFind, apiGet, type BaseResult, type FindResult } from './api';
+import { apiFind, apiGet, settle, type FindResult } from './api';
 
 // Any change between two people re-renders both their pages: the lists, the
 // buttons and Recently active.
@@ -45,18 +44,6 @@ export const loadProfile = cache(async function loadProfile(
 ): Promise<FindResult<PublicProfile>> {
   return apiFind(PublicProfileSchema, `/api/users/${id}`);
 });
-
-function settle<T>(result: BaseResult<T>, what: string): T {
-  if (result.status === 'signed-out') {
-    redirect('/login');
-  }
-
-  // Thrown, since a redirect would read as a logout.
-  if (result.status === 'unavailable') {
-    throw new Error(`Could not load the ${what}: ${result.reason}`);
-  }
-  return result.data;
-}
 
 export type Relation = 'none' | 'sent' | 'received' | 'friend';
 

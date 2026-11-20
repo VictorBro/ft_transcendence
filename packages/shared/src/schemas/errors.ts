@@ -88,6 +88,10 @@ export const ERROR_CODES = [
   /** No pending request between the two: never sent, or already answered or cancelled. */
   'friend.requestNotFound',
   'friend.notFound',
+  /** Only friends can message each other, and nobody is their own friend. */
+  'message.notFriends',
+  'message.empty',
+  'message.tooLong',
   /** A body no schema rule names: not JSON, not an object, a field of the wrong type. */
   'request.invalid',
   /** A body over the parser's size limit. */

@@ -121,18 +121,19 @@
     "save": "Enregistrer",
     "cancel": "Annuler"
   },
-  "ModeLayout": {
-    "backToCourse": "Retour au cours"
-  },
-  "ChatPage": {
-    "title": "Conversation",
-    "heading": "Discuter avec ton tuteur",
-    "tutor": "Tuteur",
-    "messageLabel": "Message",
-    "messagePlaceholder": "Ton message…",
-    "sendMessage": "Envoyer le message",
-    "feedbackHeading": "Reçois un retour sur tes messages",
-    "feedbackIntro": "L'IA analysera tes messages et te donnera un retour personnalisé."
+  "MessagesPage": {
+    "title": "Messages",
+    "conversations": "Conversations",
+    "noConversations": "Pas encore de conversation. Écris à l'un de tes <friends>amis</friends>.",
+    "choose": "Choisis une conversation.",
+    "allMessages": "Tous les messages",
+    "noMessages": "Pas encore de message.",
+    "loadEarlier": "Charger les messages précédents",
+    "you": "Toi",
+    "messageLabel": "Écrire un message",
+    "send": "Envoyer",
+    "onlyFriends": "Seuls les amis peuvent s'écrire. Tu peux toujours relire cette conversation.",
+    "unread": "{count, plural, one {# message non lu} other {# messages non lus}}"
   },
   "ErrorPage": {
     "heading": "Une erreur est survenue",
@@ -260,6 +261,11 @@
       "requestNotFound": "Cette demande n'est plus en attente",
       "notFound": "Cette personne n'est pas dans tes amis"
     },
+    "message": {
+      "notFriends": "Seuls les amis peuvent s'écrire",
+      "empty": "Écris d'abord un message",
+      "tooLong": "Un message est limité à 1000 caractères"
+    },
     "request": {
       "invalid": "La requête est illisible",
       "tooLarge": "La requête est trop volumineuse"
@@ -325,7 +331,8 @@
     "removeConfirm": "Retirer {name} de tes amis ?",
     "cancel": "Annuler",
     "online": "En ligne",
-    "offline": "Hors ligne"
+    "offline": "Hors ligne",
+    "message": "Écrire"
   },
   "UserPage": {
     "courses": "Cours",

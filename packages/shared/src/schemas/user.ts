@@ -10,6 +10,13 @@ export type UserRole = z.infer<typeof UserRoleSchema>;
 export const UserIdSchema = z.uuid();
 
 /**
+ * A user id as the API keys it. Lower-cased, since z.uuid() accepts upper case
+ * and the ids Postgres returns are lower case: compared or paired as typed, one
+ * person could pass for two.
+ */
+export const UserIdInputSchema = UserIdSchema.transform((id) => id.toLowerCase());
+
+/**
  * Every message here is an ERROR_CODES entry rather than a sentence: the API
  * returns these verbatim and the browser renders them in the reader's language.
  * See ./errors.ts.

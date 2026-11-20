@@ -1,7 +1,9 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import type { PublicUser } from '@ft/shared';
 
+import { Avatar } from './avatar';
 import { useFriendOnline } from './tab-socket';
 
 /**
@@ -28,5 +30,30 @@ export function PresenceDot({ userId, online }: { userId: string; online: boolea
       aria-label={t(live ? 'online' : 'offline')}
       className={`size-3 shrink-0 rounded-full ring-2 ring-slate-950 ${live ? 'bg-green-500' : 'bg-slate-500'}`}
     />
+  );
+}
+
+/**
+ * An avatar with the dot pinned to its bottom right corner, for a friend only:
+ * no `online`, no dot. A span, so it may sit inside a link.
+ */
+export function AvatarWithDot({
+  user,
+  online,
+  size,
+}: {
+  user: PublicUser;
+  online?: boolean;
+  size: number;
+}) {
+  return (
+    <span className="relative shrink-0">
+      <Avatar src={user.avatarUrl} name={user.displayName} size={size} />
+      {online === undefined ? null : (
+        <span className="absolute -right-0.5 -bottom-0.5 flex">
+          <PresenceDot userId={user.id} online={online} />
+        </span>
+      )}
+    </span>
   );
 }

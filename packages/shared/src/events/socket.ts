@@ -1,7 +1,9 @@
 import { z } from 'zod';
 
-import { ERROR_CODES } from '../schemas/errors';
+import { ERROR_CODES, type ErrorCode } from '../schemas/errors';
 import { LanguageSchema } from '../schemas/language';
+import { MessageSchema, MessageTextSchema, type Message } from '../schemas/message';
+import { UserIdInputSchema } from '../schemas/user';
 
 /**
  * socket.io reserves `connect`, `connect_error`, `disconnect`, `disconnecting`,
@@ -11,8 +13,10 @@ import { LanguageSchema } from '../schemas/language';
  * a server socket with no `error` listener would crash the process.
  */
 
-/** None yet: #158 adds the first ones. */
-export const CLIENT_EVENTS = {} as const;
+export const CLIENT_EVENTS = {
+  DM_SEND: 'dm:send',
+  DM_READ: 'dm:read',
+} as const;
 
 export const SERVER_EVENTS = {
   COURSE_UPDATED: 'course:updated',
@@ -20,6 +24,8 @@ export const SERVER_EVENTS = {
   FRIEND_ACCEPTED: 'friend:accepted',
   FRIEND_REMOVED: 'friend:removed',
   PRESENCE_UPDATE: 'presence:update',
+  DM_MESSAGE: 'dm:message',
+  DM_UNREAD: 'dm:unread',
   APP_ERROR: 'app:error',
 } as const;
 
@@ -61,6 +67,34 @@ export const PresenceUpdateSchema = z.object({
 });
 export type PresenceUpdate = z.infer<typeof PresenceUpdateSchema>;
 
+/**
+ * In every direct message event, `userId` is the other person of the
+ * conversation, as seen from the room or the sender: the conversation's name,
+ * as in a friend event.
+ */
+export const DmSendSchema = z.object({ userId: UserIdInputSchema, text: MessageTextSchema });
+export type DmSend = z.input<typeof DmSendSchema>;
+
+/** "I have read what they sent me." */
+export const DmReadSchema = z.object({ userId: UserIdInputSchema });
+export type DmRead = z.input<typeof DmReadSchema>;
+
+/** A stored message, to both rooms: the sender's other tabs show it too. */
+export const DmMessageSchema = z.object({ userId: z.uuid(), message: MessageSchema });
+export type DmMessage = z.infer<typeof DmMessageSchema>;
+
+/**
+ * The unread messages of every conversation, keyed by the other user; one with
+ * none is left out. Always the whole picture, never a change to apply. `at` is
+ * taken before the count, so a snapshot never outranks the one sent after a
+ * write it missed: a tab keeps the latest, whatever order they arrive in.
+ */
+export const DmUnreadSchema = z.object({
+  counts: z.record(z.uuid(), z.number().int().positive()),
+  at: z.iso.datetime(),
+});
+export type DmUnread = z.infer<typeof DmUnreadSchema>;
+
 /** An ERROR_CODES entry, like every HTTP error, so the browser words it in its own language. */
 export const AppErrorSchema = z.object({
   code: z.enum(ERROR_CODES),
@@ -71,7 +105,10 @@ export type AppError = z.infer<typeof AppErrorSchema>;
  * Anything arriving on the gateway is untrusted, including from our own client.
  * The gateway parses every event with this map before a handler sees it.
  */
-export const CLIENT_EVENT_SCHEMAS = {} as const satisfies Record<ClientEventName, z.ZodType>;
+export const CLIENT_EVENT_SCHEMAS = {
+  [CLIENT_EVENTS.DM_SEND]: DmSendSchema,
+  [CLIENT_EVENTS.DM_READ]: DmReadSchema,
+} as const satisfies Record<ClientEventName, z.ZodType>;
 
 const schemas: Readonly<Record<string, z.ZodType>> = CLIENT_EVENT_SCHEMAS;
 
@@ -79,6 +116,12 @@ const schemas: Readonly<Record<string, z.ZodType>> = CLIENT_EVENT_SCHEMAS;
 export function clientEventSchema(event: string): z.ZodType | undefined {
   return Object.hasOwn(schemas, event) ? schemas[event] : undefined;
 }
+
+/**
+ * The answer to an event sent with an ack, shaped like the web's ApiResult. A
+ * refused event is answered too, so a caller never waits out its own timeout.
+ */
+export type SocketAck<T> = { ok: true; data: T } | { ok: false; code: ErrorCode };
 
 /* ------------------------------------------------------------- typed pairs */
 
@@ -88,11 +131,15 @@ export interface ServerToClientEvents {
   [SERVER_EVENTS.FRIEND_ACCEPTED]: (payload: FriendEvent) => void;
   [SERVER_EVENTS.FRIEND_REMOVED]: (payload: FriendEvent) => void;
   [SERVER_EVENTS.PRESENCE_UPDATE]: (payload: PresenceUpdate) => void;
+  [SERVER_EVENTS.DM_MESSAGE]: (payload: DmMessage) => void;
+  [SERVER_EVENTS.DM_UNREAD]: (payload: DmUnread) => void;
   [SERVER_EVENTS.APP_ERROR]: (payload: AppError) => void;
 }
 
-/** Empty until #158: an interface with no member would trip no-empty-object-type. */
-export type ClientToServerEvents = Record<string, never>;
+export interface ClientToServerEvents {
+  [CLIENT_EVENTS.DM_SEND]: (payload: DmSend, ack: (answer: SocketAck<Message>) => void) => void;
+  [CLIENT_EVENTS.DM_READ]: (payload: DmRead) => void;
+}
 
 /** Nothing crosses between nodes yet; the Redis adapter will fill this in. */
 export type InterServerEvents = Record<string, never>;

@@ -141,6 +141,10 @@ export interface Account {
 const longestDisplayName = (): string =>
   `browser${crypto.randomUUID().replace(/-/g, '').slice(0, 25)}`;
 
+/** The id of the account signed in on this page. */
+export const idOf = async (page: Page): Promise<string> =>
+  ((await (await page.request.get('/api/auth/me')).json()) as { id: string }).id;
+
 /** Signs up in a throwaway context, runs `setUp` as that user, keeps the cookies. */
 const newAccount = async (
   browser: Browser,
@@ -189,7 +193,12 @@ const pageFor = async (
  * it rather than pay one more signup per worker against the signup limit.
  */
 export const test = base.extend<
-  { signedIn: Page; onboarded: Page; freshLearner: Page },
+  {
+    signedIn: Page;
+    onboarded: Page;
+    freshLearner: Page;
+    ids: { onboarded: string; signedIn: string };
+  },
   { account: Account; onboardedAccount: Account }
 >({
   account: [
@@ -233,6 +242,22 @@ export const test = base.extend<
     await signUp(page);
     await use(page);
     await context.close();
+  },
+
+  /**
+   * The two accounts' ids, and the pair as friends for one test, through the
+   * API: the buttons are friends.spec.ts's to cover. The friendship ends
+   * however the test does, since the worker's next test expects the pair not
+   * to be friends. Unchecked, so a test may end it first.
+   */
+  ids: async ({ onboarded, signedIn }, use) => {
+    const [onboardedId, signedInId] = await Promise.all([idOf(onboarded), idOf(signedIn)]);
+    const asked = await onboarded.request.post(`/api/friends/requests/${signedInId}`);
+    expect(asked.ok()).toBe(true);
+    const accepted = await signedIn.request.post(`/api/friends/requests/${onboardedId}/accept`);
+    expect(accepted.ok()).toBe(true);
+    await use({ onboarded: onboardedId, signedIn: signedInId });
+    await onboarded.request.delete(`/api/friends/${signedInId}`);
   },
 });
 

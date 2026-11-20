@@ -5,7 +5,7 @@ export const privacyPolicy: LegalDocument = {
   title: 'Politique de confidentialité',
   description:
     'Ce que ft_transcendence collecte pendant que vous apprenez une langue avec la plateforme, pourquoi nous le collectons, combien de temps nous le conservons, et comment le récupérer ou le faire supprimer.',
-  lastUpdated: '2026-11-07',
+  lastUpdated: '2026-11-16',
   intro:
     "ft_transcendence est une plateforme d'apprentissage des langues pilotée par IA. Bien enseigner une langue implique d'observer comment vous l'utilisez, ce service traite donc davantage d'informations sur votre comportement d'apprentissage qu'un site web classique. Cette politique explique précisément ce que cela signifie en pratique, écrite pour être lue plutôt que survolée.",
   sections: [
@@ -24,7 +24,7 @@ export const privacyPolicy: LegalDocument = {
         "Données de compte : l'adresse e-mail et le nom d'affichage que vous fournissez à l'inscription, un mot de passe stocké uniquement sous forme de hash Argon2, et, si vous l'activez, vos paramètres d'authentification à deux facteurs. Nous ne stockons jamais un mot de passe sous une forme lisible.",
         "Données d'apprentissage : la langue cible et le niveau de compétence que vous choisissez, les réponses soumises aux exercices et évaluations, le niveau que notre moteur d'évaluation en déduit, les séries de jours, les scores, et les indicateurs de progression utilisés par les fonctionnalités de gamification.",
         "Données de conversation : les invites que vous envoyez au tuteur IA et les réponses qu'il retourne. Dans un contexte d'apprentissage des langues, ces échanges sont le produit lui-même, car la correction et l'évaluation du niveau dépendent toutes deux de vos tentatives précédentes, erreurs comprises.",
-        "Données d'interaction : relations d'amitié, si vous êtes en ligne en ce moment (le nombre d'onglets de l'application que vous avez ouverts, sans historique), le jour où vous avez ouvert l'application pour la dernière fois en étant connecté (le jour seulement, pas l'heure, et seul le plus récent), messages envoyés en chat ou pendant une session en direct, et résultats des manches de pratique à deux joueurs. Tout ce que vous envoyez à un autre apprenant lui est visible.",
+        "Données d'interaction : relations d'amitié, si vous êtes en ligne en ce moment (le nombre d'onglets de l'application que vous avez ouverts, sans historique), le jour où vous avez ouvert l'application pour la dernière fois en étant connecté (le jour seulement, pas l'heure, et seul le plus récent), et les messages que vous envoyez à vos amis, chacun conservé avec le moment où il a été lu (que l'expéditeur ne voit jamais). Tout ce que vous envoyez à un autre apprenant lui est visible.",
         "Données techniques : adresse IP, user agent du navigateur, horodatages, et traces d'erreurs capturées par les journaux serveur. Elles sont collectées pour faire fonctionner le service et détecter les abus, pas pour construire un profil vous concernant.",
       ],
     },
@@ -50,16 +50,16 @@ export const privacyPolicy: LegalDocument = {
       id: 'retention',
       heading: '5. Durée de conservation des données',
       paragraphs: [
-        "Les données de compte sont conservées jusqu'à la suppression du compte. La progression d'apprentissage et les résultats d'évaluation sont conservés pendant toute la durée de vie du compte, car les supprimer réinitialiserait l'évaluation de niveau qui rend la plateforme utile. Une amitié ou une demande d'ami est conservée jusqu'à ce que l'un de vous deux la retire, la refuse ou l'annule, ou supprime son compte.",
-        "Les transcriptions des conversations IA sont conservées douze mois, puis supprimées automatiquement. Les messages de chat envoyés à d'autres apprenants sont conservés douze mois. Les journaux serveur contenant des adresses IP sont conservés trente jours, puis purgés.",
-        "Supprimer votre compte retire les données de compte, les données d'apprentissage et les transcriptions sous trente jours. Les messages que vous avez envoyés à un autre apprenant restent visibles par cet apprenant, détachés de votre profil, car ils font partie d'une conversation que vous ne possédez pas seul. Les sauvegardes sont purgées selon leur propre cycle glissant, qui se termine sous quatre-vingt-dix jours.",
+        "Les données de compte sont conservées jusqu'à la suppression du compte. La progression d'apprentissage et les résultats d'évaluation sont conservés pendant toute la durée de vie du compte, car les supprimer réinitialiserait l'évaluation de niveau qui rend la plateforme utile. Une amitié ou une demande d'ami est conservée jusqu'à ce que l'un de vous deux la retire, la refuse ou l'annule, ou supprime son compte. Les messages sont conservés tant que les deux comptes de la conversation existent : retirer un ami laisse la conversation lisible par vous deux, et la suppression de l'un des deux comptes la supprime.",
+        'Les transcriptions des conversations IA sont conservées douze mois, puis supprimées automatiquement. Les journaux serveur contenant des adresses IP sont conservés trente jours, puis purgés.',
+        "Supprimer votre compte retire les données de compte, les données d'apprentissage, les transcriptions et vos conversations avec d'autres apprenants sous trente jours. Les sauvegardes sont purgées selon leur propre cycle glissant, qui se termine sous quatre-vingt-dix jours.",
       ],
     },
     {
       id: 'sharing',
       heading: "6. Qui d'autre voit vos données",
       paragraphs: [
-        "Les autres apprenants voient votre nom d'affichage, votre avatar, et tout ce que vous leur envoyez. Seuls vos amis voient si vous êtes en ligne en ce moment, par une pastille à côté de votre nom : un apprenant qui vous a seulement envoyé une demande ne le voit pas, et personne ne voit quand vous étiez en ligne pour la dernière fois. Tout apprenant connecté peut ouvrir votre profil, qui montre les langues que vous apprenez, votre niveau dans chacune et votre série de jours en cours. Il peut aussi vous trouver par votre nom d'affichage ou parmi les apprenants actifs récemment, et vous envoyer une demande d'ami. Vous figurez parmi les apprenants actifs récemment à partir du jour où vous ouvrez l'application en étant connecté, et jusqu'à une semaine après ce jour. La liste est triée par nom d'affichage et ne montre aucune date, mais quelqu'un qui la surveille peut voir quand vous revenez après plus d'une semaine d'absence. Votre liste d'amis n'est visible que par vous. Votre adresse e-mail, votre fuseau horaire, votre langue d'interface et vos paramètres d'authentification à deux facteurs ne sont jamais montrés aux autres apprenants.",
+        "Les autres apprenants voient votre nom d'affichage, votre avatar, et tout ce que vous leur envoyez. Seuls les amis peuvent s'écrire, et une conversation n'est visible que par les deux personnes qui y participent. Seuls vos amis voient si vous êtes en ligne en ce moment, par une pastille à côté de votre nom : un apprenant qui vous a seulement envoyé une demande ne le voit pas, et personne ne voit quand vous étiez en ligne pour la dernière fois. Tout apprenant connecté peut ouvrir votre profil, qui montre les langues que vous apprenez, votre niveau dans chacune et votre série de jours en cours. Il peut aussi vous trouver par votre nom d'affichage ou parmi les apprenants actifs récemment, et vous envoyer une demande d'ami. Vous figurez parmi les apprenants actifs récemment à partir du jour où vous ouvrez l'application en étant connecté, et jusqu'à une semaine après ce jour. La liste est triée par nom d'affichage et ne montre aucune date, mais quelqu'un qui la surveille peut voir quand vous revenez après plus d'une semaine d'absence. Votre liste d'amis n'est visible que par vous. Votre adresse e-mail, votre fuseau horaire, votre langue d'interface et vos paramètres d'authentification à deux facteurs ne sont jamais montrés aux autres apprenants.",
         "En dehors de la plateforme, les données n'atteignent que l'infrastructure et les fournisseurs de modèles nécessaires à son fonctionnement. Nous ne partageons pas de données avec des annonceurs, des courtiers en données, ou des réseaux d'analyse. Si nous sommes un jour contraints de divulguer des données par une décision de justice, nous vous en informerons sauf interdiction de le faire.",
       ],
     },
@@ -118,7 +118,7 @@ export const termsOfService: LegalDocument = {
   title: "Conditions d'utilisation",
   description:
     "Les règles d'utilisation de ft_transcendence : qui peut s'inscrire, ce qui constitue un usage acceptable, ce que sont (et ne sont pas) les leçons générées par IA, et comment les comptes prennent fin.",
-  lastUpdated: '2026-08-01',
+  lastUpdated: '2026-11-16',
   intro:
     "Ces conditions constituent l'accord entre vous et les mainteneurs de ft_transcendence. Elles sont courtes parce que le service est petit, et précises parce qu'un tuteur IA et des sessions en direct entre inconnus créent tous deux des situations que des conditions génériques ne couvrent pas.",
   sections: [
@@ -159,7 +159,7 @@ export const termsOfService: LegalDocument = {
       id: 'user-content',
       heading: '5. Votre contenu',
       paragraphs: [
-        "Vous conservez la propriété de tout ce que vous écrivez : réponses aux exercices, messages de chat, texte de profil. Vous nous accordez une licence non exclusive pour stocker, traiter, et afficher ce contenu strictement dans le but de vous fournir le service, ainsi qu'aux apprenants à qui vous l'envoyez. La licence prend fin lorsque le contenu est supprimé.",
+        "Vous conservez la propriété de tout ce que vous écrivez : réponses aux exercices, messages à vos amis, texte de profil. Vous nous accordez une licence non exclusive pour stocker, traiter, et afficher ce contenu strictement dans le but de vous fournir le service, ainsi qu'aux apprenants à qui vous l'envoyez. La licence prend fin lorsque le contenu est supprimé.",
         "Nous n'entraînons pas de modèles sur votre contenu et nous ne l'ajoutons pas au corpus d'apprentissage partagé. Ne publiez pas de contenu que vous n'avez pas le droit de partager, et ne collez pas de secrets, d'identifiants, ou de données personnelles appartenant à d'autres personnes dans le tuteur.",
       ],
     },
