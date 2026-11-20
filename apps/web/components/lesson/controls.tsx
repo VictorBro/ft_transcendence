@@ -1,6 +1,6 @@
 'use client';
 
-import { useId, useRef, type KeyboardEvent } from 'react';
+import { useId, useLayoutEffect, useRef, type KeyboardEvent } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import type { Language } from '@ft/shared';
 
@@ -66,6 +66,54 @@ export function radioArrows(event: KeyboardEvent<HTMLElement>) {
   const next = radios[(at + step + radios.length) % radios.length]!;
   next.focus();
   if (next.getAttribute('aria-checked') !== 'true') next.click();
+}
+
+/**
+ * The focus of an order control (B1's words, #148's sentences). A tap
+ * moves a piece between the order and the bank, so the button pressed
+ * unmounts and the focus would fall to <body>: a keyboard learner would
+ * Tab again from the top of the page for every piece. Instead it stays in
+ * the list the piece left, on the piece now at its place, else on the
+ * last one, else on the other list's last piece. The lists are marked
+ * data-order-side="placed" and "bank" inside `root`; `moved` is called
+ * with where the piece was, before the change goes out.
+ */
+export function useOrderFocus() {
+  const root = useRef<HTMLDivElement>(null);
+  const pending = useRef<{ from: 'placed' | 'bank'; index: number } | null>(null);
+  useLayoutEffect(() => {
+    const move = pending.current;
+    if (!move || !root.current) return;
+    pending.current = null;
+    const side = (name: string) => [
+      ...root.current!.querySelectorAll<HTMLButtonElement>(
+        `[data-order-side="${name}"] button:not(:disabled)`,
+      ),
+    ];
+    const same = side(move.from);
+    const other = side(move.from === 'placed' ? 'bank' : 'placed');
+    (same[Math.min(move.index, same.length - 1)] ?? other.at(-1))?.focus();
+  });
+  return {
+    root,
+    moved: (from: 'placed' | 'bank', index: number) => {
+      pending.current = { from, index };
+    },
+  };
+}
+
+/**
+ * A placed piece's button: the piece in the course language, named
+ * "Remove …" in the interface's, with only the piece tagged `lang`, so a
+ * screen reader speaks each part in its own voice.
+ */
+export function PlacedPieceLabel({ id, text, lang }: { id: string; text: string; lang: Language }) {
+  const t = useTranslations('Lesson');
+  return (
+    <span id={id} hidden>
+      {t.rich('remove', { text, piece: (chunks) => <span lang={lang}>{chunks}</span> })}
+    </span>
+  );
 }
 
 /** The tab stop of a radio group: the picked option, else the first. */
@@ -379,9 +427,10 @@ export function OrderControl({
   const bank = unit.tokens.filter((x) => !placed.includes(x.ref));
   const set = (tokens: Ref[]) => onChange(tokens.length ? { tokens } : undefined);
   const lineId = useId();
+  const focus = useOrderFocus();
 
   return (
-    <div className="flex flex-col gap-3">
+    <div ref={focus.root} className="flex flex-col gap-3">
       <PromptLine unit={unit} lang={lang} />
       <div className="flex flex-col gap-1">
         <span
@@ -392,7 +441,7 @@ export function OrderControl({
         </span>
         <ol
           aria-labelledby={lineId}
-          lang={lang}
+          data-order-side="placed"
           className={`flex min-h-14 flex-wrap items-center gap-2 rounded-md border border-dashed p-2 ${outcomeTone(
             feedback?.outcome,
           )}`}
@@ -402,11 +451,15 @@ export function OrderControl({
               <button
                 type="button"
                 disabled={locked}
-                aria-label={t('remove', { text: text(ref) })}
-                onClick={() => set(placed.filter((_, m) => m !== n))}
+                aria-labelledby={`${lineId}-${ref}`}
+                onClick={() => {
+                  focus.moved('placed', n);
+                  set(placed.filter((_, m) => m !== n));
+                }}
                 className="min-h-10 rounded-md border border-indigo-400 bg-indigo-500/20 px-3 py-1 text-slate-100 disabled:cursor-default"
               >
-                {text(ref)}
+                <PlacedPieceLabel id={`${lineId}-${ref}`} text={text(ref)} lang={lang} />
+                <span lang={lang}>{text(ref)}</span>
               </button>
             </li>
           ))}
@@ -416,13 +469,22 @@ export function OrderControl({
         <span className="text-xs font-semibold tracking-widest text-slate-500 uppercase">
           {t('wordBank')}
         </span>
-        <div lang={lang} className="flex flex-wrap gap-2" role="group" aria-label={t('wordBank')}>
-          {bank.map((token) => (
+        <div
+          className="flex flex-wrap gap-2"
+          role="group"
+          aria-label={t('wordBank')}
+          data-order-side="bank"
+        >
+          {bank.map((token, n) => (
             <button
               key={token.ref}
               type="button"
+              lang={lang}
               disabled={locked}
-              onClick={() => set([...placed, token.ref])}
+              onClick={() => {
+                focus.moved('bank', n);
+                set([...placed, token.ref]);
+              }}
               className="min-h-10 rounded-md border border-slate-700 bg-slate-900 px-3 py-1 text-slate-100 transition-colors hover:bg-slate-800 disabled:cursor-default disabled:opacity-60"
             >
               {token.text}

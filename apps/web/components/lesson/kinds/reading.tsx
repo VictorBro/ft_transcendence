@@ -2,19 +2,13 @@
 
 import { useEffect, useEffectEvent, useId, useRef, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
-import type { Language } from '@ft/shared';
+import { lessons, type Language } from '@ft/shared';
 
 import { pick } from '@/lib/localized';
-import {
-  clock,
-  markKeywords,
-  readSkim,
-  secondsLeft,
-  skimValue,
-  type SkimState,
-} from '@/lib/reading';
+import { markKeywords, readSkim, secondsLeft, skimValue, type SkimState } from '@/lib/reading';
 import { MatchingBoard } from '../board';
-import { ChoiceControl, outcomeTone } from '../controls';
+import { ChoiceControl, outcomeTone, PlacedPieceLabel, useOrderFocus } from '../controls';
+import { Countdown } from '../countdown';
 import { Flashcards } from '../flashcards';
 import type { AnswerProps, ItemProps, ItemRenderers, Ref, UnitFeedback, UnitView } from '../types';
 import { ItemCard } from '../units';
@@ -128,7 +122,8 @@ function ReadingDocument(props: ItemProps<'reading_document'>) {
       className="reading-doc-slot is-side"
       data-reading-document={item.view}
       role="region"
-      aria-label={t('readingDocument')}
+      // The exam's is a second text: its name says so, as on the screens.
+      aria-label={item.view === 'exam' ? t('examDocument') : t('readingDocument')}
       tabIndex={0}
     >
       <DocumentText document={item.document} lang={lang} labelled={false} />
@@ -263,25 +258,14 @@ export function SkimOpen({
   return (
     <>
       <div className="reading-skim-bar">
-        <div
-          role="timer"
-          aria-label={t('timeToSkim')}
-          className="lesson-countdown reading-countdown grid gap-1 rounded-xl border border-slate-800 bg-slate-950 px-4 py-3"
-        >
-          <span className="text-sm text-slate-400">{t('timeToSkim')}</span>
-          <span
-            data-testid="skim-time-left"
-            className="text-2xl font-semibold text-slate-100 tabular-nums"
-          >
-            {clock(left)}
-          </span>
-          <span aria-hidden="true" className="h-1.5 overflow-hidden rounded-full bg-slate-800">
-            <span
-              className="block h-full rounded-full bg-cyan-300"
-              style={{ width: `${Math.min(100, (left / seconds) * 100)}%` }}
-            />
-          </span>
-        </div>
+        <Countdown
+          label={t('timeToSkim')}
+          seconds={left}
+          total={seconds}
+          testId="skim-time-left"
+          className="reading-countdown"
+          calm="border-slate-800 bg-slate-950"
+        />
         <button
           type="button"
           onClick={onFinish}
@@ -316,7 +300,9 @@ function ReadingNote({
   const locale = useLocale();
   const right = feedback.outcome === 'fully_correct';
   return (
+    // A status, as on the screens: the note is read when Check shows it.
     <div
+      role="status"
       className={`reading-note ${right ? 'is-right' : 'is-wrong'}`}
       data-outcome={feedback.outcome}
     >
@@ -449,15 +435,16 @@ function OrderPieces({
   const note = feedback?.get(unit.ref);
   const piece =
     'reading-piece min-h-11 rounded-md border px-4 py-2 text-center disabled:cursor-default';
+  const focus = useOrderFocus();
 
   return (
-    <div data-unit={unit.ref} className="reading-order flex flex-col gap-4">
+    <div ref={focus.root} data-unit={unit.ref} className="reading-order flex flex-col gap-4">
       <span id={orderId} className="sr-only">
         {t('yourOrder')}
       </span>
       <ol
         aria-labelledby={orderId}
-        lang={lang}
+        data-order-side="placed"
         className={`reading-order-placed flex min-h-16 flex-col items-start gap-2 rounded-md ${
           note ? `border p-2 ${outcomeTone(note.outcome)}` : ''
         }`}
@@ -467,30 +454,38 @@ function OrderPieces({
             <button
               type="button"
               disabled={locked}
-              aria-label={t('remove', { text: text(ref) })}
-              onClick={() => set(placed.filter((_, m) => m !== n))}
+              aria-labelledby={`${orderId}-${ref}`}
+              onClick={() => {
+                focus.moved('placed', n);
+                set(placed.filter((_, m) => m !== n));
+              }}
               className={`${piece} border-indigo-400 bg-slate-950 text-slate-100`}
             >
-              {text(ref)}
+              <PlacedPieceLabel id={`${orderId}-${ref}`} text={text(ref)} lang={lang} />
+              <span lang={lang}>{text(ref)}</span>
             </button>
           </li>
         ))}
       </ol>
       <div
-        lang={lang}
         role="group"
         aria-label={t('piecesToPlace')}
+        data-order-side="bank"
         // Once checked, an empty bank is only the rule above the note, as on the screen.
         className={`reading-order-bank flex flex-col items-start gap-2 border-t border-slate-800 pt-4 ${
           locked && left.length === 0 ? '' : 'min-h-16'
         }`}
       >
-        {left.map((token) => (
+        {left.map((token, n) => (
           <button
             key={token.ref}
             type="button"
+            lang={lang}
             disabled={locked}
-            onClick={() => set([...placed, token.ref])}
+            onClick={() => {
+              focus.moved('bank', n);
+              set([...placed, token.ref]);
+            }}
             className={`${piece} border-slate-700 bg-slate-950 text-slate-100 hover:bg-slate-900 disabled:opacity-60`}
           >
             {token.text}
@@ -500,7 +495,7 @@ function OrderPieces({
       {note ? (
         <ReadingNote
           feedback={note}
-          yours={placed.length ? placed.map(text).join(' → ') : null}
+          yours={placed.length ? placed.map(text).join(lessons.player.ORDER_SEPARATOR) : null}
           lang={lang}
         />
       ) : null}

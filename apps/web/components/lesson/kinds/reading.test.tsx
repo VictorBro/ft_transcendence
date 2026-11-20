@@ -191,6 +191,8 @@ describe('the reading lesson (#148) on PR #142 sample', () => {
     );
     expect(text(reading)).toContain('Time to skim');
     expect(text(reading)).toContain('0:45');
+    // The time is the timer, and its name gives the time left.
+    expect(reading).toContain('role="timer" aria-label="Time to skim: 0:45"');
     expect(text(reading)).toContain("I've finished reading");
     expect(text(reading)).toContain(
       'The question opens when the time is up or when you have finished reading.',
@@ -224,14 +226,22 @@ describe('the reading lesson (#148) on PR #142 sample', () => {
   it('orders the pieces beside the document', () => {
     const { open, checked } = html('structure');
     expect(open).toContain('reading-doc-slot is-side');
-    expect(open).toContain('aria-label="Pieces to place"');
-    expect(checked).toContain('class="reading-note is-right" data-outcome="fully_correct"');
+    // The interface's labels are not tagged with the course language; the pieces are.
+    expect(open).toMatch(/<div role="group" aria-label="Pieces to place" data-order-side="bank"/);
+    expect(checked).toContain(
+      'role="status" class="reading-note is-right" data-outcome="fully_correct"',
+    );
+    // A placed piece is named in the interface's language, the piece in French.
+    expect(checked).toMatch(
+      /<span id="[^"]+" hidden="">Remove <span lang="fr">[^<]+<\/span><\/span>/,
+    );
   });
 
   it('shows the second document only on the exam page, with no key word marked', () => {
     const { open, checked, view } = html('exam');
     expect(checked).toBeNull();
     expect(view.role).toBe('exam');
+    expect(open).toContain('role="region" aria-label="Exam document"');
     expect(open).toContain('<span>Paul</span><span>Vendredi 9:15</span>');
     expect(open).not.toContain('<mark');
     expect(open).not.toContain('Jeudi 18:42');
@@ -275,7 +285,7 @@ describe('a reading lesson answered wrong', () => {
     const reversed = [...unit.acceptedOrders[0]!]
       .reverse()
       .map((id) => unit.tokens.find((t) => t.id === id)!.text)
-      .join(' → ');
+      .join(lessons.player.ORDER_SEPARATOR);
     expect(text(checked!)).toContain(reversed);
   });
 

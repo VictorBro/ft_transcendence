@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
-import { clock, markKeywords, readSkim, secondsLeft, skimValue } from './reading';
+import { clock } from './clock';
+import { markKeywords, readSkim, secondsLeft, skimValue } from './reading';
 
 const marked = (paragraph: string, highlights: string[]) =>
   markKeywords(paragraph, highlights)

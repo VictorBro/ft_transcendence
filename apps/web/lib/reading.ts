@@ -83,10 +83,3 @@ export function readSkim(kept: string | null, now: number, seconds: number): Ski
 export function secondsLeft(deadline: number, now: number): number {
   return Math.max(0, Math.ceil((deadline - now) / 1000));
 }
-
-/** m:ss */
-export function clock(seconds: number): string {
-  const m = Math.floor(seconds / 60);
-  const s = seconds % 60;
-  return `${m}:${s.toString().padStart(2, '0')}`;
-}
