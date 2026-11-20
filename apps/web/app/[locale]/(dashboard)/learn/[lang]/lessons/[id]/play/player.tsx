@@ -6,6 +6,7 @@ import { lessons, type Language } from '@ft/shared';
 
 import { FormError, PRIMARY_BUTTON } from '@/components/form';
 import { ConfirmDialog } from '@/components/lesson/confirm-dialog';
+import { Discussion } from '@/components/lesson/discussion';
 import { ITEM_RENDERERS } from '@/components/lesson/kinds';
 import { LessonNavigation } from '@/components/lesson/navigation';
 import type {
@@ -411,6 +412,8 @@ export function LessonPlayer({
         return { label: t('startExam'), onClick: () => void post() };
       case 'exam':
         return { label: lastExam ? t('finishExam') : t('next'), onClick: () => void post() };
+      case 'discussion':
+        return { label: t('continueToExam'), onClick: () => void post() };
       default:
         return { label: t('continue'), onClick: () => void post() };
     }
@@ -500,13 +503,16 @@ export function LessonPlayer({
             ) : null}
 
             {page.role === 'discussion' ? (
-              // #151 fills this slot.
-              <section
-                data-slot="discussion"
-                className="rounded-2xl border border-dashed border-slate-800 p-6 text-slate-400"
-              >
-                {t('discussionSoon')}
-              </section>
+              <>
+                <p className="text-slate-300">{t('discussionIntro')}</p>
+                <Discussion
+                  key={view.attemptId}
+                  lang={lang}
+                  id={id}
+                  attemptId={view.attemptId}
+                  onStale={(code, status) => void reread(code, status)}
+                />
+              </>
             ) : null}
 
             {/* Keyed by page, so the items of a new page start afresh. */}
@@ -528,6 +534,9 @@ export function LessonPlayer({
 
             <div className="lesson-task-footer flex flex-col gap-3">
               <FormError message={error} />
+              {page.role === 'discussion' ? (
+                <p className="self-end text-sm text-slate-400">{t('tutorOffDuringExam')}</p>
+              ) : null}
               <div className="flex flex-wrap items-center justify-end gap-x-6 gap-y-3">
                 {/* Read out as it changes: "Line 3 of 8", "Flip every card to continue." */}
                 <p

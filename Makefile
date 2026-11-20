@@ -302,7 +302,7 @@ playwright:
 	@# .env: compose strips dotenv quotes and make would not. A shell value still
 	@# wins, as it does for compose. Through the environment, never argv, which
 	@# `ps` shows every local user.
-	@# The signup and login limits come from the api container the same way, so
+	@# The signup, login and discussion limits come from the api container the same way, so
 	@# the suite queues to what the api really runs with
 	@# (e2e/support/signup-budget.ts). Empty means the default on both sides.
 	@# Then the restart run (e2e/tests/restart.spec.ts): it restarts the API of
@@ -316,7 +316,9 @@ playwright:
 	export GRAFANA_ADMIN_PASSWORD; \
 	SIGNUP_LIMIT_PER_MINUTE="$$($(COMPOSE_DEV) exec -T api printenv SIGNUP_LIMIT_PER_MINUTE 2>/dev/null)"; \
 	LOGIN_LIMIT_PER_MINUTE="$$($(COMPOSE_DEV) exec -T api printenv LOGIN_LIMIT_PER_MINUTE 2>/dev/null)"; \
-	export SIGNUP_LIMIT_PER_MINUTE LOGIN_LIMIT_PER_MINUTE; \
+	LLM_DISCUSSION_GLOBAL_PER_MINUTE="$$($(COMPOSE_DEV) exec -T api printenv LLM_DISCUSSION_GLOBAL_PER_MINUTE 2>/dev/null)"; \
+	LLM_DISCUSSION_USER_PER_MINUTE="$$($(COMPOSE_DEV) exec -T api printenv LLM_DISCUSSION_USER_PER_MINUTE 2>/dev/null)"; \
+	export SIGNUP_LIMIT_PER_MINUTE LOGIN_LIMIT_PER_MINUTE LLM_DISCUSSION_GLOBAL_PER_MINUTE LLM_DISCUSSION_USER_PER_MINUTE; \
 	E2E_BASE_URL=$(E2E_BASE_URL) pnpm --filter @ft/e2e run test:e2e $(addprefix --project=,$(BROWSERS)) < /dev/null; \
 	status=$$?; \
 	if [ "$$status" -eq 0 ]; then \
