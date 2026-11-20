@@ -1,7 +1,6 @@
-import type { APIResponse, Locator, Page } from '@playwright/test';
+import type { Locator, Page } from '@playwright/test';
 
 import { expectPinned } from '../support/layout';
-import { keepRequestBudget } from '../support/request-budget';
 import {
   courseLevel,
   enrol,
@@ -25,21 +24,13 @@ import {
 const PLACEMENT = `/en/learn/${ONBOARDED_COURSE.lang}/placement`;
 
 /**
- * What one test of this file can spend of the account's per-minute budget at
- * most: a whole run through the API (up to 30 answers), the pages it renders,
- * and the clearing and placing around it.
- */
-const REQUESTS_PER_TEST = 60;
-
-/**
  * A run outlives the page and only one may be live per learner, in any
  * language, so each test clears it on both sides of itself. The account is
  * worker-scoped: a run left live would answer 409 to every later start.
  */
-const clearRun = async (page: Page): Promise<APIResponse> => {
+const clearRun = async (page: Page): Promise<void> => {
   const cleared = await page.request.delete('/api/placement');
   expect([204, 404]).toContain(cleared.status());
-  return cleared;
 };
 
 /** The countdown renders its seconds inside the timer, so this reads the clock. */
@@ -180,9 +171,8 @@ const finishRun = async (
   );
 
 test.describe('placement exam', () => {
-  test.beforeEach(async ({ onboarded }, testInfo) => {
-    // The account is shared by the worker's every test: start with room for this one.
-    await keepRequestBudget(await clearRun(onboarded), REQUESTS_PER_TEST, testInfo);
+  test.beforeEach(async ({ onboarded }) => {
+    await clearRun(onboarded);
   });
 
   test.afterEach(async ({ onboarded }) => {
