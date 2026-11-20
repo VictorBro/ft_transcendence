@@ -68,11 +68,27 @@ function KeywordMatching({ item, ...props }: ItemProps<'reading_keyword_matching
 
 /* ------------------------------------------------------------- document */
 
-/** The document: its title, the small lines above it, then the paragraphs with the key words marked. */
-function DocumentText({ document, lang }: { document: DocumentItem['document']; lang: Language }) {
+/**
+ * The document: its title, the small lines above it, then the paragraphs
+ * with the key words marked. `labelled` is false when the region around
+ * it already carries the name.
+ */
+function DocumentText({
+  document,
+  lang,
+  labelled = true,
+}: {
+  document: DocumentItem['document'];
+  lang: Language;
+  labelled?: boolean;
+}) {
   const t = useTranslations('Lesson');
   return (
-    <article className="reading-document" lang={lang} aria-label={t('readingDocument')}>
+    <article
+      className="reading-document"
+      lang={lang}
+      aria-label={labelled ? t('readingDocument') : undefined}
+    >
       {document.title ? <h2 className="reading-title">{document.title}</h2> : null}
       {document.meta.length > 0 ? (
         <p className="reading-meta">
@@ -99,13 +115,23 @@ function DocumentText({ document, lang }: { document: DocumentItem['document']; 
 }
 
 function ReadingDocument(props: ItemProps<'reading_document'>) {
+  const t = useTranslations('Lesson');
   const { item, lang } = props;
   if (item.view === 'skim') return <SkimDocument {...props} />;
   // Detail, structure and the exam: the document stays open, beside the
-  // questions from 700 px of task width (lesson.css).
+  // questions from 700 px of task width (lesson.css). There it scrolls on
+  // its own, and nothing inside takes the focus: the box itself does, so
+  // a keyboard reaches the end of a long text (WebKit does not focus a
+  // scroller by itself).
   return (
-    <section className="reading-doc-slot is-side" data-reading-document={item.view}>
-      <DocumentText document={item.document} lang={lang} />
+    <section
+      className="reading-doc-slot is-side"
+      data-reading-document={item.view}
+      role="region"
+      aria-label={t('readingDocument')}
+      tabIndex={0}
+    >
+      <DocumentText document={item.document} lang={lang} labelled={false} />
     </section>
   );
 }
@@ -117,19 +143,28 @@ function ReadingDocument(props: ItemProps<'reading_document'>) {
  * above the question.
  */
 function SkimDocument({ item, lang, hold, keep, feedback }: ItemProps<'reading_document'>) {
-  const t = useTranslations('Lesson');
   const seconds = item.skimSeconds ?? 60;
-  // Before hydration the countdown shows its whole time; the browser's clock and storage come after.
+  // Null until hydration: the browser's clock and storage come after.
   const [state, setState] = useState<SkimState | null>(null);
   const [now, setNow] = useState<number | null>(null);
   const root = useRef<HTMLElement>(null);
-  // Set by I've finished reading: the question's heading takes the focus once it opens.
+  // Set when the document is put away: the question's heading takes the focus once it opens.
   const focusQuestion = useRef(false);
 
   function open(byHand: boolean) {
     const next: SkimState = { phase: 'question' };
     keep.save(SKIM_KEY, skimValue(next));
-    focusQuestion.current = byHand;
+    // I've finished reading moves the focus. So does the countdown, when the
+    // focus is on <body> or in the task (the page's heading, the document,
+    // the held Check): the document going away would drop it, or leave it
+    // where nothing says the question has opened. Focus elsewhere on the
+    // page (the header, a menu) stays where it is.
+    const active = document.activeElement;
+    focusQuestion.current =
+      byHand ||
+      active === null ||
+      active === document.body ||
+      !!root.current?.closest('.lesson-task')?.contains(active);
     setState(next);
   }
   const timeUp = useEffectEvent(() => open(false));
@@ -173,6 +208,14 @@ function SkimDocument({ item, lang, hold, keep, feedback }: ItemProps<'reading_d
 
   const left = deadline !== null && now !== null ? secondsLeft(deadline, now) : seconds;
 
+  // Before hydration the kept state is unknown: after a reload the skim
+  // may be over. Nothing of the document is drawn until it is read, but
+  // the page stays marked as reading, so the question stays hidden and
+  // Check held.
+  if (state === null && feedback === null) {
+    return <section ref={root} className="reading-doc-slot" data-skim="reading" aria-busy="true" />;
+  }
+
   // Once checked, the document is back above the question.
   if (feedback !== null) {
     return (
@@ -186,6 +229,39 @@ function SkimDocument({ item, lang, hold, keep, feedback }: ItemProps<'reading_d
 
   return (
     <section ref={root} className="reading-doc-slot flex flex-col gap-6" data-skim="reading">
+      <SkimOpen
+        document={item.document}
+        lang={lang}
+        seconds={seconds}
+        left={left}
+        onFinish={() => open(true)}
+      />
+    </section>
+  );
+}
+
+/**
+ * The open skim page as drawn once hydrated: the countdown with `left` of
+ * its `seconds`, I've finished reading, the document and the line saying
+ * when the question opens. Exported for the component test, which renders
+ * no effect and so never gets past the empty page before hydration.
+ */
+export function SkimOpen({
+  document,
+  lang,
+  seconds,
+  left,
+  onFinish,
+}: {
+  document: DocumentItem['document'];
+  lang: Language;
+  seconds: number;
+  left: number;
+  onFinish: () => void;
+}) {
+  const t = useTranslations('Lesson');
+  return (
+    <>
       <div className="reading-skim-bar">
         <div
           role="timer"
@@ -208,17 +284,15 @@ function SkimDocument({ item, lang, hold, keep, feedback }: ItemProps<'reading_d
         </div>
         <button
           type="button"
-          // Not before hydration: the press would be lost.
-          disabled={state === null}
-          onClick={() => open(true)}
-          className="min-h-11 rounded-md border border-slate-700 bg-slate-900 px-5 py-2 text-slate-100 transition-colors hover:bg-slate-800 disabled:cursor-default"
+          onClick={onFinish}
+          className="min-h-11 rounded-md border border-slate-700 bg-slate-900 px-5 py-2 text-slate-100 transition-colors hover:bg-slate-800"
         >
           {t('finishedReading')}
         </button>
       </div>
-      <DocumentText document={item.document} lang={lang} />
+      <DocumentText document={document} lang={lang} />
       <p className="reading-locked text-slate-400">{t('questionOpens')}</p>
-    </section>
+    </>
   );
 }
 
@@ -265,12 +339,15 @@ function ReadingNote({
       </p>
       {right ? null : (
         <>
-          <p lang={lang} className="font-semibold text-green-400">
-            {feedback.answer}
+          {/* The colours and the line-through say which is which; a screen reader hears it. */}
+          <p className="font-semibold text-green-400">
+            <span className="sr-only">{t('correctAnswer')}: </span>
+            <span lang={lang}>{feedback.answer}</span>
           </p>
           {yours ? (
-            <p lang={lang} className="text-red-400 line-through">
-              {yours}
+            <p className="text-red-400 line-through">
+              <span className="sr-only">{t('yourAnswer')}: </span>
+              <span lang={lang}>{yours}</span>
             </p>
           ) : null}
           <p className="text-slate-400">{pick(feedback.explanation, locale)}</p>
@@ -289,18 +366,20 @@ function Question({
   feedback,
   locked,
 }: AnswerProps & { unit: ChoiceUnit }) {
+  const promptId = useId();
   const value = answers[unit.ref];
   const note = feedback?.get(unit.ref);
   const picked = value && 'option' in value ? value.option : undefined;
   const yours = unit.options.find((o) => o.ref === picked)?.text ?? null;
   return (
     <div data-unit={unit.ref} className="reading-question flex flex-col gap-3">
-      <p lang={lang} className="reading-question-prompt">
+      <p id={promptId} lang={lang} className="reading-question-prompt">
         {unit.prompt.learning}
       </p>
       <ChoiceControl
-        // The question is above: the control gets the options only.
+        // The question is above: the control gets the options only, and its group is named after it.
         unit={{ ...unit, prompt: {} }}
+        labelledBy={promptId}
         value={value}
         onChange={(answer) => onAnswer(unit.ref, answer)}
         feedback={note}

@@ -297,7 +297,11 @@ export function ChoiceControl({
   feedback,
   locked,
   lang,
-}: ControlProps<'choice'>) {
+  labelledBy,
+}: ControlProps<'choice'> & {
+  /** The id of the question this group answers, when the caller draws it: the group is named after it. */
+  labelledBy?: string;
+}) {
   const t = useTranslations('Lesson');
   const genders = useTranslations('Genders');
   // An option the interface words (a gender) shows in the interface language.
@@ -316,7 +320,8 @@ export function ChoiceControl({
       )}
       <div
         role="radiogroup"
-        aria-label={t('pick')}
+        aria-label={labelledBy ? undefined : t('pick')}
+        aria-labelledby={labelledBy}
         onKeyDown={radioArrows}
         className="lesson-choice-options flex flex-col gap-3"
       >

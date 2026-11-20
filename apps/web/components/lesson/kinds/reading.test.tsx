@@ -12,6 +12,7 @@ import type { Answer, ItemProps, Ref, UnitFeedback } from '../types';
 
 type PageView = lessons.player.PageView;
 import { ITEM_RENDERERS, playable, START_FIELDS } from './index';
+import { SkimOpen } from './reading';
 
 /**
  * The reading kind (#148) played on PR #142's sample, "Lire un SMS", the
@@ -20,9 +21,11 @@ import { ITEM_RENDERERS, playable, START_FIELDS } from './index';
  * kind's renderers as the player renders it: open, with the learner's
  * answers, and checked with the feedback the core gives.
  *
- * renderToStaticMarkup, as packages/ui: no DOM, so the countdown shows its
- * first second and the skim question is in the markup, hidden by
- * lesson.css while the document is marked data-skim="reading".
+ * renderToStaticMarkup, as packages/ui: no DOM and no effect, so a skim
+ * page is as the server draws it, before the kept countdown is read: no
+ * document yet, and the question in the markup, hidden by lesson.css while
+ * the page is marked data-skim="reading". The open document is rendered on
+ * its own (SkimOpen), as the page draws it once hydrated.
  */
 
 const SAMPLES = join(__dirname, '../../../../../packages/shared/test/fixtures/samples');
@@ -162,21 +165,40 @@ describe('the reading lesson (#148) on PR #142 sample', () => {
   });
 
   it('skims with the countdown, then asks the question from memory', () => {
-    const { open, checked } = html('skim');
-    // The document is open, with its countdown, and the question is held back.
+    const { open, checked, view } = html('skim');
+    // Before hydration: marked as reading, so the question is held back, and
+    // nothing of the document, which a reload after the skim must not show.
     expect(open).toContain('data-skim="reading"');
-    expect(text(open)).toContain('Time to skim');
-    expect(text(open)).toContain('0:45');
-    expect(text(open)).toContain("I've finished reading");
-    expect(text(open)).toContain(
-      'The question opens when the time is up or when you have finished reading.',
-    );
+    expect(open).not.toContain('reading-document');
+    expect(text(open)).not.toContain('Time to skim');
+    expect(text(open)).not.toContain('Jeudi 18:42');
     expect(open).toContain('reading-skim-question');
     expect(text(open)).toContain('Answer from memory');
+
+    // Hydrated: the document is open, with its countdown.
+    const item = view.items.find((i) => i.type === 'reading_document')!;
+    if (item.type !== 'reading_document') throw new Error('no document');
+    const reading = renderToStaticMarkup(
+      <NextIntlClientProvider locale="en" messages={en} timeZone="UTC">
+        <SkimOpen
+          document={item.document}
+          lang="fr"
+          seconds={item.skimSeconds!}
+          left={item.skimSeconds!}
+          onFinish={() => {}}
+        />
+      </NextIntlClientProvider>,
+    );
+    expect(text(reading)).toContain('Time to skim');
+    expect(text(reading)).toContain('0:45');
+    expect(text(reading)).toContain("I've finished reading");
+    expect(text(reading)).toContain(
+      'The question opens when the time is up or when you have finished reading.',
+    );
     // The meta line, and every key word marked where it is in the text (avant twice).
-    expect(open).toContain('<span>Léa</span><span>Jeudi 18:42</span>');
-    expect(open.match(/<mark class="reading-keyword">/g)).toHaveLength(6);
-    expect(open).toContain('<mark class="reading-keyword">Après</mark>');
+    expect(reading).toContain('<span>Léa</span><span>Jeudi 18:42</span>');
+    expect(reading.match(/<mark class="reading-keyword">/g)).toHaveLength(6);
+    expect(reading).toContain('<mark class="reading-keyword">Après</mark>');
     // Checked: the document is back above the question, and the note says Correct.
     expect(checked).toContain('data-skim="checked"');
     expect(checked).not.toContain('Time to skim');
@@ -186,6 +208,13 @@ describe('the reading lesson (#148) on PR #142 sample', () => {
   it('puts the detail questions beside the document, true or false in French', () => {
     const { open } = html('detail');
     expect(open).toContain('reading-doc-slot is-side');
+    // The side document is a named region a keyboard can focus, to scroll it.
+    expect(open).toContain('role="region" aria-label="Document" tabindex="0"');
+    // Each radio group is named after its question, not "Choose an answer".
+    expect(open).not.toContain('aria-label="Choose an answer"');
+    const ids = [...open.matchAll(/<p id="([^"]+)" lang="fr" class="reading-question-prompt">/g)];
+    expect(ids).toHaveLength(4);
+    for (const [, id] of ids) expect(open).toContain(`role="radiogroup" aria-labelledby="${id}"`);
     expect(open.match(/class="reading-question /g)).toHaveLength(4);
     expect(text(open)).toContain('Quel jour Léa propose-t-elle de se voir ?');
     expect(text(open)).toContain('Vrai');
@@ -226,10 +255,13 @@ describe('a reading lesson answered wrong', () => {
     const picked = unit.options.find((o) => !unit.correct.includes(o.id))!.text;
     expect(checked).toContain('class="reading-note is-wrong" data-outcome="incorrect"');
     expect(text(checked!)).toContain('Incorrect');
+    // Each line says which it is to a screen reader; the colours say it on screen.
     expect(checked).toContain(
-      `<p lang="fr" class="font-semibold text-green-400">${unit.answer}</p>`,
+      `<p class="font-semibold text-green-400"><span class="sr-only">Correct answer: </span><span lang="fr">${unit.answer}</span></p>`,
     );
-    expect(checked).toContain(`<p lang="fr" class="text-red-400 line-through">${picked}</p>`);
+    expect(checked).toContain(
+      `<p class="text-red-400 line-through"><span class="sr-only">Your answer: </span><span lang="fr">${picked}</span></p>`,
+    );
     expect(text(checked!)).toContain(unit.explanation.en);
   });
 
