@@ -139,8 +139,9 @@ channel; the rest of the template is already correct.
 
 ### The LLM provider and its limits
 
-All read by the api at boot; a bad value stops it, so a typo shows at the deploy, not on the first
-lesson. `compose.yml` and `compose.deploy.yml` pass the same names.
+All read by the api at boot. A bad provider, a missing Gemini key or a limit that is not a whole
+number stops it, so the typo shows at the deploy, not on the first lesson. `LLM_MODEL` is not
+checked: a wrong model id shows as `http_error` on the first call. `compose.yml` and `compose.deploy.yml` pass the same names.
 
 | Variable | Default | Meaning |
 | --- | --- | --- |
@@ -158,8 +159,9 @@ Empty means the default. The three discussion limits are counted in Redis before
 over one, the api answers 429 with `Retry-After` and `retryAfter` in the body, and
 `ft_llm_discussion_limited_total{limit}` counts it ([MONITORING.md](MONITORING.md) §5).
 
-`LESSON_STUB` is gone. It used to switch on a stub lesson page and a `PUT …/result` route that
-took a typed score; both were removed with the server-scored attempts (#145). A server `.env` that
+`LESSON_STUB` is gone. It used to open a `PUT …/result` route that took a typed score, for dev
+and CI before the lesson page existed; the route and the variable were removed with the
+server-scored attempts (#145). A server `.env` that
 still has the line is harmless: nothing reads it. Delete it.
 
 On the server, so the secrets stay out of your shell history:
@@ -209,12 +211,14 @@ before the app is usable.
 
 `ready` is recomputed on every run from the files alone: a lesson whose files exist and pass
 `validateLesson` is ready, every other row is not, and only ready lessons can be proposed or
-played. An invalid lesson file stops the seed before it writes anything, naming the id. Demo
-learners are never seeded here: they need `NODE_ENV=development` ([LESSONS.md](LESSONS.md) §4).
+played. An invalid lesson file stops the lesson half of the seed before it writes any lesson,
+naming the id; the questions, seeded first, are already written. Demo learners are never seeded
+here: they need `NODE_ENV=development` and a non-empty `DEMO_PASSWORD` (`demoSkipReason` in
+`apps/api/prisma/seed.ts`), and the `migrate` service sets neither.
 
 Both halves upsert on the authored ids, so the seed is safe on every redeploy. On success it ends
 with `seeded N questions` and `seeded N lessons`, where `N lessons` counts only new or changed
-rows. It fails, and writes nothing, if the database holds a lesson that no file has: a shipped
+rows. It fails, and writes no lesson, if the database holds a lesson that no file has: a shipped
 lesson is edited or moved, never deleted. A lesson whose brief or content changed loses its
 unfinished attempts, in the same transaction; results stay.
 

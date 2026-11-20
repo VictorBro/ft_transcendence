@@ -46,17 +46,17 @@ ft_transcendence/
 │   ├── CODEOWNERS
 │   └── pull_request_template.md
 ├── apps/
-│   ├── web/                       # Next.js, 5-stage Dockerfile
-│   └── api/                       # NestJS, 5-stage Dockerfile
+│   ├── web/                       # Next.js, 6-stage Dockerfile
+│   └── api/                       # NestJS, the same 6 stages plus `prune`
 ├── packages/
 │   ├── shared/                    # Zod schemas, socket event contracts
-│   ├── ui/                        # design system → minor module
+│   ├── ui/                        # shared components (the design-system module is not claimed)
 │   ├── eslint-config/
 │   └── tsconfig/
 ├── infra/
 │   └── caddy/Caddyfile
 ├── docs/
-├── compose.yml                    # topology: caddy · web · api · db · redis
+├── compose.yml                    # topology: caddy · web · api · db · redis, plus the monitoring stack
 ├── compose.override.yml           # dev, auto-loaded: dev targets, bind mounts, workspace service
 ├── compose.prod.yml               # prod targets, no mounts, restart policies
 ├── Makefile
@@ -93,7 +93,7 @@ apps/api/src/
 
 ## 3. Docker
 
-Both apps use identical stage names:
+Both apps use the same stage names; the api adds a `prune` stage between `build` and `prod`:
 
 | Stage | Contents | Used by |
 |---|---|---|
@@ -149,11 +149,11 @@ Database image: `pgvector/pgvector:0.8.7-pg18-trixie` (plain `postgres` has no p
 
 ## 4. Makefile
 
-**Bare `make` is the evaluator path**: builds prod targets, starts `compose.prod.yml`, migrates,
-seeds. That is the graded single command, and it runs the same artifacts the console gate tests.
+**Bare `make` is the evaluator path**: runs the CI checks, builds prod targets, starts `compose.prod.yml`, migrates,
+seeds, then runs the browser tests. That is the graded single command, and it runs the same artifacts the console gate tests.
 
 ```
-make            # evaluator: certs → build (prod) → up → migrate → seed
+make            # evaluator: CI checks → build (prod) → up → migrate → seed → certs → monitoring-check → Playwright
 make dev        # dev stack (compose.override): hot reload, bind mounts
 make down / logs / ps / shell
 make test / test-e2e / lint / format / typecheck
@@ -275,6 +275,6 @@ The team clones the slice pattern per feature instead of inventing five differen
 | Schema and migrations drift apart | CI `migrate diff` on every PR |
 | Node 26 LTS lands mid-project | Stay on 24 until a stable Next fixes its Node 26 regression (VERSIONS.md, held back: Node) |
 | Hydration warnings trip console gate | Gate live from day one; surfaces at the causing commit |
-| Slow HMR on bind mounts | Watch during step 5. Fallback: `apps/web` to Vite. **Costs the SSR minor point (16 → 15)**; budget still clears 14. |
+| Slow HMR on bind mounts | Watch during step 5. Fallback: `apps/web` to Vite. **Costs the SSR minor point (22 → 21, still above the 19 that count)**; budget still clears 14. |
 | LLM spend | Fixture provider in CI, lessons authored offline, per-learner and global discussion limits, capped answers, see PRODUCT_ARCHITECTURE.md §5 |
 | Uneven commit distribution | CODEOWNERS, required reviews, periodic `git shortlog -sn` |

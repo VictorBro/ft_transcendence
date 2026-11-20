@@ -364,8 +364,10 @@ the search and the achievements:
 | `AttemptsController` | `GET lessons/:id/attempt`, `POST lessons/:id/attempt`, `POST lessons/:id/attempt/pages/:index` | `AttemptsService`: stores the `LessonAttempt` and runs the pure functions of `lessons.player` |
 | `DiscussionController` | `POST lessons/:id/discussion`, answered as `text/event-stream` | `DiscussionService`: the checks, the limits and the prompt, then `LlmProvider.streamText` |
 
-Every route sits behind the global `AuthGuard` and validation pipe, answers 404 for an unknown
-course or a lesson that is not ready, and 409 `course.notPlaced` before placement. The web app
+Every route sits behind the global `AuthGuard` and validation pipe and answers 404 for an unknown
+course. The attempt and discussion routes also answer 404 for a lesson that is not ready, and every
+route but `GET lessons/:id` (a lesson card opens before placement too, ready or not) answers 409
+`course.notPlaced` before placement. The web app
 calls them from three pages, `/{locale}/learn/{lang}/lessons/{id}`, `…/play` and `…/results`
 ([LESSONS.md](LESSONS.md) §11).
 
@@ -378,11 +380,11 @@ sequenceDiagram
     participant P as db
 
     B->>A: POST …/attempt { locale }
-    A->>P: lock UserLevel, read Lesson (ready), upsert LessonAttempt<br/>(motherTongue, secret, page 0)
-    A-->>B: 201 AttemptView: the page at the cursor, refs only
+    A->>P: lock UserLevel, read Lesson (ready), find LessonAttempt:<br/>in progress kept, finished deleted, else create (motherTongue, secret, page 0)
+    A-->>B: 201 AttemptView (200 when resuming): the page at the cursor, refs only
     loop each page
         B->>A: POST …/attempt/pages/:index { attemptId, answers }
-        A->>P: lock UserLevel then LessonAttempt, rebuild the plan,<br/>score and lock the page, move the cursor
+        A->>P: lock UserLevel, hold Lesson FOR SHARE, rebuild the plan,<br/>score and lock the page, move the cursor
         A-->>B: 200 { feedback (practice only), attempt }
     end
     Note over A,P: the last page: results written once, applyFinish<br/>(LessonResult, streak, XP, UserAchievement) in the same transaction
@@ -395,8 +397,9 @@ sequenceDiagram
 - **Refs, never ids.** Every unit, option and token the browser sees is named by
   HMAC-SHA256(secret, path), base64url, 16 characters (`attempt-ref.ts`). A ref from another
   attempt is a 400.
-- **One transaction per write**, locking the course row first, then the attempt, so two tabs
-  submitting the same page give one lock and one finish. A stale index, an old `attemptId` or a
+- **One transaction per write**, locking the course row first (`FOR UPDATE`), then holding the
+  lesson row `FOR SHARE` so a reseed waits; the course lock alone means two tabs submitting the
+  same page give one lock and one finish. A stale index, an old `attemptId` or a
   finished attempt is 409 `attempt.stale`.
 - **The server owns the exam clock**: the deadline is set when an exam page is sent, with 2 s of
   grace.
@@ -543,8 +546,10 @@ so they reach the monitoring containers too. Day to day:
 
 ## 7. Tools that are not services
 
-Neither runs as part of the stack; both are throwaway containers on the same
-network, built from the api `build` stage (`ft_transcendence/api-tooling`).
+None of them runs as part of the stack. Swagger UI is served by the api itself.
+Prisma Studio and the migrate and seed commands are throwaway containers on the
+same network, built from the api `build` stage (`ft_transcendence/api-tooling`),
+and RedisInsight is a throwaway container of its upstream image.
 
 ```mermaid
 flowchart LR
@@ -678,5 +683,8 @@ honest is that `passwordHash` never appears in any schema there.
 The same holds for lessons: `@ft/shared`'s `lessons` namespace holds the lesson
 file schemas and `validateLesson` (run by the seed, the specs and the authoring
 kit), and the pure player (`buildPlan`, scoring, the views the browser may see),
-run by `AttemptsService` on the server. The web app imports only its view
-schemas and types, so the player pages and the API parse the same shapes.
+run by `AttemptsService` on the server. The web app imports its view schemas
+and types, plus a few pure helpers and constants for the forms (the article and
+plural checks, which item types skip feedback when right, the practice weight,
+the reading order separator), so the player pages and the API parse the same
+shapes. It never builds a plan or scores an answer outside the tests.

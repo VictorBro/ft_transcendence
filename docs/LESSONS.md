@@ -88,7 +88,7 @@ the text search matches them. A title is at most 80 characters and a summary at 
 
 **How long a lesson takes.** The daily goal counts lessons: 10, 30 or 60 minutes means 1, 3 or 6
 lessons finished that day (`LESSON_MINUTES = 10`). The ready lessons are planned longer than that:
-their `estimatedMinutes` run from 8 to 37, with a median of 18. Whether the goal keeps counting
+their `estimatedMinutes` run from 8 to 37, with a median of 17.5. Whether the goal keeps counting
 lessons or the kit keeps lessons nearer ten minutes is still open for the team
 ([PRODUCT_ARCHITECTURE.md](PRODUCT_ARCHITECTURE.md) §1.3).
 
@@ -155,11 +155,13 @@ vocabulary and grammar lessons, 16 have functions (not en C1 or fr C2) and 13 ha
 de A1, en A1, fr A1, fr C1 or fr C2). A daily challenge that asks for a kind is only drawn when the
 level has a ready lesson of that kind (#95).
 
-**French A1**, the demo level and the one every e2e test onboards into: ten lessons were copied from
-the lesson prototype (`lesson_prototype` at `c806f47`), and two functions lessons,
-`fr-introducing-yourself` and `fr-thanking-and-apologising`, were written with the prototype's
-functions authoring tool (bastian-schnitzler/lesson_prototype#121). All twelve landed in PR #171
-(#84). The other 17 levels were written with the authoring kit of §7 (#91 to #93).
+**French A1** is the demo level and the one every e2e test onboards into. Its first twelve lessons
+landed in PR #171 (#84): ten copied from the lesson prototype (`lesson_prototype` at `c806f47`),
+and two functions lessons, `fr-introducing-yourself` and `fr-thanking-and-apologising`, written
+with the prototype's functions authoring tool (bastian-schnitzler/lesson_prototype#121). PR #183
+(#93) then rewrote all twelve with the authoring kit of §7, along with the rest of French, so the
+files on `main` come from the kit for all 18 levels (#91 to #93): their `provenance` names
+`ft lessons:author`.
 
 ### Where the counts come from
 
@@ -301,13 +303,13 @@ The brief of `fr-subject-pronouns`, shortened:
   "lang": "fr",
   "level": "A1",
   "locales": ["en", "fr", "de"],
-  "title": "Les pronoms je, tu, il, elle…",
+  "title": "Les pronoms sujets : je, tu, il, elle…",
   "objective": {
-    "en": "Use the French subject pronouns je, tu, il, elle, on, nous, vous, ils and elles.",
-    "fr": "Employer les pronoms sujets je, tu, il, elle, on, nous, vous, ils et elles.",
-    "de": "Die französischen Subjektpronomen je, tu, il, elle, on, nous, vous, ils und elles verwenden."
+    "en": "Use the subject pronouns je, tu, il, elle, on, nous, vous, ils and elles, choose tu or vous, ils or elles, and use on for nous in everyday speech.",
+    "fr": "Employer je, tu, il, elle, on, nous, vous, ils et elles, choisir tu ou vous, ils ou elles, et dire on à la place de nous à l'oral.",
+    "de": "Die Subjektpronomen je, tu, il, elle, on, nous, vous, ils und elles verwenden, tu oder vous, ils oder elles wählen und on statt nous im Alltag benutzen."
   },
-  "estimatedMinutes": 15,
+  "estimatedMinutes": 16,
   "provenance": { "generator": "…", "model": "…", "promptVersion": "…", "generatedAt": "…", "inputHashes": { "outline": "…" } },
   "topic": "pronouns",
   "rules": ["…"],
@@ -390,7 +392,7 @@ Two ways, the same checks. Both skip a lesson that already has files.
 |---|---|---|
 | Command | `/author-lessons de c1` | `pnpm --filter @ft/api lessons:author de c1` |
 | Lessons | the next 12 entries without files, or the ids given | the next 12 entries without files (`--max`), or `--only` |
-| Who writes | the session, checking each draft with `lessons:check` | `claude -p`, cut off from the repo; issues sent back up to `--attempts` times (default 4) |
+| Who writes | the session, checking each draft with `lessons:check` | `claude -p`, cut off from the repo; at most `--attempts` replies per lesson, the first included (default 4) |
 | Gross errors | the session reads each lesson once | not read: read a few per kind before the PR |
 | Fails | listed in the hand-over | last draft and issues in `$TMPDIR/ft-lessons-author/failed/` |
 
@@ -589,7 +591,7 @@ so there are four lesson experiences, one per kind:
 | Grammar | #146 | Yes |
 | Vocabulary | #147 | Yes |
 | Functions | #149 | Yes |
-| Reading | #148 | Not yet (PR #203). Until it merges, a reading lesson's start page says "This kind of lesson cannot be played here yet." The server side, its plan and its attempt are already in place |
+| Reading | #148 | Yes (PR #203) |
 
 ### The plan
 

@@ -421,7 +421,7 @@ down".
 
 ### Reading the lesson metrics
 
-Three series cover the Milestone 2 lesson loop. None of them carries a user, a lesson id or an
+Four metrics cover the Milestone 2 lesson loop. None of them carries a user, a lesson id or an
 attempt id.
 
 | Question | Query (Explore, or a panel) | Notes |

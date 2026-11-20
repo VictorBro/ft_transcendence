@@ -176,7 +176,8 @@ finished twice in a day counts once. Nothing tracks minutes, and `DailyStat` is 
 
 > **Open, for the team: how long a lesson takes.** The goal counts lessons at
 > `LESSON_MINUTES = 10`, but the 216 ready lessons are planned at 8 to 37 minutes
-> (`estimatedMinutes`, median 18). Six of them can take well over the 60-minute goal. Either the
+> (`estimatedMinutes`, median 17.5), so the six lessons of the 60-minute goal can take well over an
+> hour. Either the
 > goal keeps counting 1, 3 or 6 lessons and the minutes are a rough label, or the authoring kit
 > ([#83](https://github.com/VictorBro/ft_transcendence/issues/83)) keeps lessons nearer ten
 > minutes. The code does the first today.
@@ -229,8 +230,8 @@ slower. A syllabus per goal would mean three copies of every level to generate a
 learner dropping from 60 to 10 would need their finished lessons mapped onto a different list.
 Every language has the same number of outline entries per level, from 120 at A1 to 320 at C2:
 3,990 `Lesson` rows in all, of which **216 are ready, the first 12 of each language and level**.
-How many there are, how they are split by kind, how they are written and how the seed sets `ready`
-is in [LESSONS.md](LESSONS.md) §0 to §4.
+How many there are and how they are split by kind is in [LESSONS.md](LESSONS.md) §0 to §3, how the
+seed sets `ready` in §4, and how they are written in §7.
 
 What it must never do is gate content. A learner past their goal keeps going if they want; it
 is a target, not a cap, and a cap would punish exactly the behaviour the product exists for.
@@ -254,7 +255,7 @@ None of that was built.
 | Grammar | Explanations, then exercises (matching, gaps to choose or type, word order, spot the error), then a timed exam | on `main` (#146) |
 | Vocabulary | Each group's introduction and flashcards, matching, a gender overview, practice, then a translation exam. No listening (below) | on `main` (#147) |
 | Functions | A situation with two roles, expressions, listening replies with **Show the text**, a dialogue, then an exam in parts | on `main` (#149) |
-| Reading | Two documents of one genre: one to learn with, a new one in the exam | not yet: #148, PR #203. Its start page says it cannot be played here yet |
+| Reading | Two documents of one genre: one to learn with, a new one in the exam | on `main` (#148) |
 
 A learner with a 10-minute goal who opens a grammar lesson from today's proposal:
 
@@ -296,8 +297,9 @@ mistake.
 is insurance against a module failing on the day. A module shown at evaluation that does not fully
 work is worth 0.
 
-The README's Modules section (#160) carries the justification, the implementation and the owners
-of each module. This table is the plan it follows, with each module's state on `main`.
+The README's Modules section (#160) is to carry the justification, the implementation and the
+owners of each module; today it covers Monitoring only. This table is the plan it follows, with
+each module's state on `main`.
 
 | Chapter | Module | Type | Pts | State on `main` |
 |---|---|---|---|---|
@@ -370,13 +372,14 @@ only sends `GET`.
 |---|---|---|
 | **Everything CRUD** | REST, Nest controllers, documented in Swagger | `POST /api/courses`, `GET /api/courses/:lang/today`, `GET /api/courses/:lang/lessons`, `GET` and `POST /api/courses/:lang/lessons/:id/attempt`, `POST …/attempt/pages/:index` |
 | **One answer, streamed** | Server-Sent Events on a `POST` | `POST /api/courses/:lang/lessons/:id/discussion`: `delta`, `done` or `error`, and a heartbeat |
-| **Everything live** | socket.io on `/ws` | `course:updated`, `friend:request`, `friend:accepted`, `friend:removed`, `presence:update`, `dm:message`, `dm:unread` from the server; `dm:send` (with an ack) and `dm:read` from the browser |
+| **Everything live** | socket.io on `/ws` | `course:updated`, `friend:request`, `friend:accepted`, `friend:removed`, `presence:update`, `dm:message`, `dm:unread` and `app:error` from the server; `dm:send` (with an ack) and `dm:read` from the browser |
 
 **The course stays in the path, and the API is language-neutral.** No read route takes a `locale`
 parameter. A lesson is written in one language, the course's, like a question in the bank, so the
 response is the same for every interface language. The web app translates the page around the
-lesson. Two requests carry the interface locale on purpose: `POST …/attempt { locale }` fixes the
-attempt's mother tongue, and the discussion answers in the session user's locale.
+lesson. Two places use the interface locale on purpose: `POST …/attempt { locale }` sends it to fix
+the attempt's mother tongue, and the discussion, whose body carries no locale, reads the session
+user's and answers in it.
 
 **No route takes a score.** The server runs every lesson attempt under
 `/api/courses/:lang/lessons/:id/attempt`: it sends only the page the learner is on, checks every
@@ -421,7 +424,7 @@ redo rather than data; if it does not, it is a plain constant or a per-request v
 | Job | Keys | Why Redis and not Postgres | Status |
 |---|---|---|---|
 | **Session store** (`connect-redis`) | `sess:<sid>` | Sessions are hot, short-lived and disposable. Restarting the api must not log everyone out | in use |
-| **Placement run state** | `user:<id>:eval`, `user:<id>:eval_questions`, `user:<id>:eval_lock` | The search bounds, the level being probed, the tally per category, the mistakes so far, the current question's deadline and the report. **Always with a TTL**, one hour (`PLACEMENT_REDIS_KEY_TTL`). Keyed by the user, not by the session as first planned, so a learner who signs in again within the hour comes back to the exam they left. It lives exactly as long as the exam, so a table would be a row deleted minutes after it was written, and the TTL doubles as the abandoned-exam cleanup | in use (#48) |
+| **Placement run state** | `user:<id>:eval`, `user:<id>:eval_questions`, `user:<id>:eval_lock` | The search bounds, the level being probed, the tally per category, the mistakes so far, the current question's deadline and the report. **Always with a TTL**: one hour (`PLACEMENT_REDIS_KEY_TTL`) for `eval` and `eval_questions`, and 5 s (`PLACEMENT_LOCK_TTL_SECONDS`) for `eval_lock`, the `SET NX EX` lock that keeps two starts or two answers of one learner from racing. Keyed by the user, not by the session as first planned, so a learner who signs in again within the hour comes back to the exam they left. It lives exactly as long as the exam, so a table would be a row deleted minutes after it was written, and the TTL doubles as the abandoned-exam cleanup | in use (#48) |
 | **Lesson discussion limits** | `discussion:user:<id>:minute`, `discussion:user:<id>:day`, `discussion:global:minute` | Fixed-window counters: the first message creates the key with its TTL (60 s or 24 h), `INCR`, `EXPIRE … NX` and `TTL` in one `MULTI`, so a crash never leaves a counter without expiry. The TTL is also the `Retry-After` | in use (#150) |
 | **Presence** | `presence:<id>` | A socket count per user: `INCR` on connect, `DECR` 10 s after a disconnect, so a reload never shows as leaving. Every count is deleted at boot, since a crash never took its sockets back (one API instance assumed). See ARCHITECTURE.md §4 | in use (#157) |
 | **Throttler counters** | none | `@nestjs/throttler` runs without a storage adapter, so its counters sit in process memory. Correct for one replica; the only cost is that a restart clears everyone's limit | not in Redis, by choice |
@@ -460,7 +463,9 @@ lesson's teaching fields and the learner's wrong practice answers. Never an emai
 a user id.
 
 **A free key, decided 2026-11-20 (#204).** Verified 2026-08-22: Gemini's free tier allows roughly
-30 requests a minute and 1,500 a day per key, and on it **Google may use prompts and outputs for
+30 requests a minute and 1,500 a day per key. In practice the key refused calls after fewer than 10
+in two minutes, which is why `LLM_DISCUSSION_GLOBAL_PER_MINUTE` defaults to 5 (Google AI Studio
+shows the current quota). On the free tier **Google may use prompts and outputs for
 training and human review**; paid tiers are not used for training. The Privacy Policy says so
 (`/privacy`, section 4), and it is a rejection criterion in its own right. Moving to a paid key,
 a few tens of euros for the whole project at our volume, is therefore a policy change: section 4
@@ -516,7 +521,7 @@ sequenceDiagram
     alt fails
         A-->>W: 404 / 409 JSON error
     end
-    A->>R: INCR the three windows
+    A->>R: INCR each window in turn, stopping at the first over its limit
     alt over a limit
         A-->>W: 429 { retryAfter } + Retry-After
     end
@@ -633,7 +638,7 @@ erDiagram
 |---|---|---|
 | `UserLevel` | id, userId, lang, level?, dailyGoal, streak, bestStreak, lastGoalDay?, **xp, lastChallengeDay?, lastChallengeCode?, challengesDone**, createdAt, updatedAt | Unique `(userId, lang)`: one row is one course, so a user may learn two languages. Onboarding writes it with `level` null; placement fills it in, or a learner who skips sets it directly. `streak`, `bestStreak` and `lastGoalDay` are the whole streak (§1.3). The four **gamification columns** (#95): `xp` the course's total, `lastChallengeDay` the course day the challenge was last done, `lastChallengeCode` the code it was done under, so a level change that day does not move it, and `challengesDone` the count the challenge achievements read. Finishing and goal changes take a row lock on this row (§9) |
 | `QuestionBank` | id, sourceId?, lang, level, topic, category, readText?, question, options, answer, timeLimitS | The reusable pool, seeded from `content/items/*.json` and grown at runtime when a learner runs low in a cell. `sourceId` is the authored id the seed matches on, and its absence marks a question the LLM wrote. Full spec in [ITEM_BANK.md](ITEM_BANK.md) |
-| `UserSeenQuestion` | userId, questionId | Unique `(userId, questionId)`. **The exposure record**, and the whole reason placement never repeats a question: the draw is a `NOT EXISTS` over these rows |
+| `UserSeenQuestion` | id, userId, questionId, createdAt, updatedAt | Unique `(userId, questionId)`. **The exposure record**, and the whole reason placement never repeats a question: the draw is a `NOT EXISTS` over these rows, and `updatedAt`, bumped on every serve, picks the oldest-seen fallback |
 | `Lesson` | id, lang, level, position, kind, topic?, theme?, title, summary, brief, **content?**, **ready**, updatedAt | **The seeded catalogue, never written at runtime.** One row per outline entry, 3,990 in all. `brief` is `{}` and `content` null until the lesson's files exist; then they hold the parsed brief and content file. `content` stays null for a vocabulary lesson, whose lesson is built from its brief (#135). **`ready`** is set by the seed on every run: true when the files exist and pass `validateLesson`, 216 today (#84). `kind` is grammar, vocabulary, functions or reading; `topic` is set exactly on grammar lessons, `theme` exactly on the others. The lesson cards never send the brief or the content. Index on `(lang, level, position)`. Full guide in [LESSONS.md](LESSONS.md) §4 |
 | `LessonResult` | userLevelId, lessonId, score, day, finishedAt | Primary key `(userLevelId, lessonId)`: **one row per course and lesson, with no history.** Every finish upserts it: `score` keeps the best, `day` is the learner's day of the latest finish, `finishedAt` its moment. No row means not started, a best of 70 or more means passed, anything else failed. Today's count is the rows whose `day` is today. `lessonId` is `Restrict`: a lesson with results cannot be deleted |
 | **`LessonAttempt`** | id, userLevelId, lessonId, motherTongue, secret, startedAt, page, deadline?, answers, completedAt?, results? | Unique `(userLevelId, lessonId)`: **the current or last attempt at a lesson**, run and scored by the server (#145). `motherTongue` is a `Locale`, fixed at the start. `secret` is 32 random bytes that key the refs naming units, options and tokens, and is never sent. `page` is the cursor and `deadline` that of the exam page at it. `answers` (JSON, `{}` at first) maps a unit id to its locked `{ response, outcome, points, timedOut, gender? }`, and `results` (JSON) is written once, when the last page locks. A retake replaces the row; a seed that changes the lesson deletes the unfinished ones. The plan is never stored: every request rebuilds it from the lesson row |
