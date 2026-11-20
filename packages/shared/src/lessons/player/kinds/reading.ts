@@ -35,7 +35,9 @@ export const reading: KindModule<ReadingBrief, ReadingContent, ReadingItem> = {
       ? { key: 'keywords', title: PLAYER_COPY.keywords }
       : { key: 'document', title: PLAYER_COPY.document },
   pointTitle: (page) => page.stepLabel,
-  // Nothing but the sections: the situation names the genre and answers the skim question.
-  start: () => ({}),
+  // The number of key words only. The situation would answer the skim
+  // question ("Camille … writes a post … to tell her readers about her three
+  // days in Marseille" before "Why does she write?"), and the genre too.
+  start: (brief) => ({ words: brief.keywords.length }),
   examPart: () => undefined,
 };

@@ -10,9 +10,12 @@ export default defineConfig({
       '@': rootDir,
     },
   },
+  // tsconfig keeps JSX for Next ("preserve"): the component tests need it compiled.
+  oxc: { jsx: { runtime: 'automatic' } },
   test: {
     environment: 'node',
-    include: ['lib/**/*.test.ts'],
+    // Components are tested with renderToStaticMarkup, as in packages/ui: no DOM.
+    include: ['lib/**/*.test.ts', 'components/**/*.test.tsx'],
     coverage: {
       provider: 'v8',
       reporter: ['text-summary', 'lcov'],
