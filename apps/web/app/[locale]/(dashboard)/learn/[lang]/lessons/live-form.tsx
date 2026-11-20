@@ -23,6 +23,8 @@ const SEARCH_DELAY_MS = 250;
  */
 const moveHash = (hash: string) => {
   const state: unknown = window.history.state;
+  // Only the fragment moves, on the same page: no navigation for the router to do.
+  // eslint-disable-next-line @next/next/no-location-assign-relative-destination
   window.location.href = `#${hash}`;
   window.history.replaceState(state, '', window.location.href);
 };
