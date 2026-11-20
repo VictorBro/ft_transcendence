@@ -123,8 +123,8 @@ scp infra/caddy/Caddyfile.prod ubuntu@140.238.209.2:~/Caddyfile
 scp infra/deploy/.env.example ubuntu@140.238.209.2:~/.env
 ```
 
-Fill in five values, and the Discord webhook if alerts should reach a channel; the rest of the
-template is already correct.
+Fill in five values, decide the LLM provider, and add the Discord webhook if alerts should reach a
+channel; the rest of the template is already correct.
 
 | Key | Value |
 | --- | --- |
@@ -134,6 +134,35 @@ template is already correct.
 | `GRAFANA_ADMIN_PASSWORD` | `openssl rand -hex 24`. Applied only when the `grafana-data` volume is created; changing it later needs a reset ([MONITORING.md](MONITORING.md) section 2) |
 | `GRAFANA_SECRET_KEY` | `openssl rand -hex 32`. Set once: changing it breaks what Grafana has encrypted |
 | `DISCORD_WEBHOOK_URL` | optional. Empty: alerts are only visible in Grafana |
+| `LLM_PROVIDER` | **required**: `fixture`, `gemini` or `disabled` (below). `compose.deploy.yml` refuses to start without it |
+| `LLM_API_KEY` | with `gemini` only. Pasted like the webhook, with `read -rs` |
+
+### The LLM provider and its limits
+
+All read by the api at boot. A bad provider, a missing Gemini key or a limit that is not a whole
+number stops it, so the typo shows at the deploy, not on the first lesson. `LLM_MODEL` is not
+checked: a wrong model id shows as `http_error` on the first call. `compose.yml` and `compose.deploy.yml` pass the same names.
+
+| Variable | Default | Meaning |
+| --- | --- | --- |
+| `LLM_PROVIDER` | `fixture` locally; none on a server | `gemini`: the placement bank restocks a cell that runs low, and the lesson discussion answers. `fixture`: no network, no question written, the tutor gives one canned answer; what CI runs. `disabled`: no LLM at all, every discussion message ends with `llm.disabled` |
+| `LLM_API_KEY` | empty | The Gemini key, sent in the `x-goog-api-key` header. Required with `gemini` |
+| `LLM_MODEL` | empty = `gemini-3.6-flash` | The Gemini model id. Ignored by the other providers |
+| `LLM_DISCUSSION_USER_PER_MINUTE` | 2 | Discussion messages per learner per minute |
+| `LLM_DISCUSSION_USER_PER_DAY` | 60 | Per learner per day. The window starts at the learner's first message, not at midnight |
+| `LLM_DISCUSSION_GLOBAL_PER_MINUTE` | 5 | For everyone together: keep it under the key's per-minute quota, which the bank restocks share. 5 suits a free key |
+| `RATE_LIMIT_PER_MINUTE` | 100 | Every HTTP route, per account, or per address when signed out |
+| `SIGNUP_LIMIT_PER_MINUTE` | 20 | Signups per address |
+| `LOGIN_LIMIT_PER_MINUTE` | 5 | Password and 2FA code checks per address |
+
+Empty means the default. The three discussion limits are counted in Redis before any LLM call;
+over one, the api answers 429 with `Retry-After` and `retryAfter` in the body, and
+`ft_llm_discussion_limited_total{limit}` counts it ([MONITORING.md](MONITORING.md) §5).
+
+`LESSON_STUB` is gone. It used to open a `PUT …/result` route that took a typed score, for dev
+and CI before the lesson page existed; the route and the variable were removed with the
+server-scored attempts (#145). A server `.env` that
+still has the line is harmless: nothing reads it. Delete it.
 
 On the server, so the secrets stay out of your shell history:
 
@@ -152,6 +181,13 @@ contains `/` but never `|`.
 read -rs url && sed -i "s|^DISCORD_WEBHOOK_URL=.*|DISCORD_WEBHOOK_URL=$url|" .env && unset url
 ```
 
+With Gemini, set the provider and paste the key the same way:
+
+```bash
+sed -i "s|^LLM_PROVIDER=.*|LLM_PROVIDER=gemini|" .env
+read -rs key && sed -i "s|^LLM_API_KEY=.*|LLM_API_KEY=$key|" .env && unset key
+```
+
 On a 1 GB shape, add swap before the first `up` ([Memory](#memory)).
 
 ```bash
@@ -162,11 +198,40 @@ docker compose -f compose.deploy.yml up -d
 
 `--profile migrate` on the pull is required, or the tooling image that runs the migration is
 skipped. `migrate` applies the migrations, then runs `db:seed`: the question bank and the
-lessons ship as files in `content/`, so a fresh database needs them before the app is usable.
-Both upsert on the authored ids, so the seed is safe on every redeploy. On success it ends with
-`seeded N questions` and `seeded N lessons`, where `N lessons` counts only new or changed rows.
-It fails, and writes nothing, if the database holds a lesson that no file has: a shipped
-lesson is edited or moved, never deleted.
+lessons ship as files in `content/`, inside the tooling image, so a fresh database needs them
+before the app is usable.
+
+**What the seed loads**, all from files committed to the repo and authored offline:
+
+| From | Into | Rows |
+| --- | --- | --- |
+| `content/items/*.json` | `QuestionBank`, matched on `sourceId` | the authored questions |
+| `content/outlines/*.json` | `Lesson`, one row per entry | 3,990, every entry, written or not |
+| `content/briefs/`, `content/lessons/` | `Lesson.brief`, `Lesson.content`, the title and summary, and `ready = true` | 216 ready lessons, the first 12 of each language and level |
+
+`ready` is recomputed on every run from the files alone: a lesson whose files exist and pass
+`validateLesson` is ready, every other row is not, and only ready lessons can be proposed or
+played. An invalid lesson file stops the lesson half of the seed before it writes any lesson,
+naming the id; the questions, seeded first, are already written. Demo learners are never seeded
+here: they need `NODE_ENV=development` and a non-empty `DEMO_PASSWORD` (`demoSkipReason` in
+`apps/api/prisma/seed.ts`), and the `migrate` service sets neither.
+
+Both halves upsert on the authored ids, so the seed is safe on every redeploy. On success it ends
+with `seeded N questions` and `seeded N lessons`, where `N lessons` counts only new or changed
+rows. It fails, and writes no lesson, if the database holds a lesson that no file has: a shipped
+lesson is edited or moved, never deleted. A lesson whose brief or content changed loses its
+unfinished attempts, in the same transaction; results stay.
+
+**Who does what, when:**
+
+| When | What | Where |
+| --- | --- | --- |
+| Authoring | Outlines, briefs and lesson files are written and committed | a member's machine, Claude Code ([LESSONS.md](LESSONS.md) §7) |
+| Build | images.yml builds `api`, `web`, `tooling` and the monitoring images; `tooling` carries `content/` | GitHub Actions, pushed to GHCR |
+| Deploy | `migrate`: `prisma migrate deploy`, then `db:seed` | the tooling image, on the server |
+| Runtime | The api reads lessons from Postgres and calls the LLM only for restocks and discussions | the `api` container, which has no `content/` |
+
+Nothing generates a lesson at build, deploy or seed time.
 
 ```bash
 docker compose -f compose.deploy.yml ps

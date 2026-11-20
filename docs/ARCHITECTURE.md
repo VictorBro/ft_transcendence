@@ -102,7 +102,7 @@ happens in `infra/caddy/Caddyfile`:
 
 | Path | Goes to | Note |
 |---|---|---|
-| `/api`, `/api/*` | `api:3001` | Prefix forwarded intact; `handle_path` would strip it and every route would 404 |
+| `/api`, `/api/*` | `api:3001` | Prefix forwarded intact; `handle_path` would strip it and every route would 404. The lesson discussion streams through here as `text/event-stream`, flushed as it comes (§5) |
 | `/ws`, `/ws/*` | `api:3001` | socket.io. Caddy detects the Upgrade handshake inside `reverse_proxy` |
 | `/grafana/metrics`, `/grafana/metrics/*` | nothing, 404 | Grafana's metrics are off, and would be unauthenticated if on. Caddy refuses them too, and this matcher must stay above the next one |
 | `/grafana`, `/grafana/*` | `grafana:3000` | Prefix forwarded intact, like `/api`: Grafana serves itself under `/grafana` |
@@ -352,7 +352,111 @@ sequenceDiagram
 
 ---
 
-## 5. Development (`make dev`)
+## 5. A lesson: the attempt routes and the discussion stream
+
+A lesson is played over plain REST, and its discussion streams over Server-Sent Events on one
+`POST`. Both live in `LessonsModule` (`apps/api/src/lessons/`), which also holds the daily view,
+the search and the achievements:
+
+| Controller | Routes, under `/api/courses/:lang` | Service |
+|---|---|---|
+| `LessonsController` | `GET today`, `GET lessons`, `GET lessons/:id`, `GET achievements` | `LessonsService`: the reads, the in-memory search, `applyFinish` |
+| `AttemptsController` | `GET lessons/:id/attempt`, `POST lessons/:id/attempt`, `POST lessons/:id/attempt/pages/:index` | `AttemptsService`: stores the `LessonAttempt` and runs the pure functions of `lessons.player` |
+| `DiscussionController` | `POST lessons/:id/discussion`, answered as `text/event-stream` | `DiscussionService`: the checks, the limits and the prompt, then `LlmProvider.streamText` |
+
+Every route sits behind the global `AuthGuard` and validation pipe and answers 404 for an unknown
+course. The attempt and discussion routes also answer 404 for a lesson that is not ready, and every
+route but `GET lessons/:id` (a lesson card opens before placement too, ready or not) answers 409
+`course.notPlaced` before placement. The web app
+calls them from three pages, `/{locale}/learn/{lang}/lessons/{id}`, `…/play` and `…/results`
+([LESSONS.md](LESSONS.md) §11).
+
+### The attempt
+
+```mermaid
+sequenceDiagram
+    participant B as Browser (player)
+    participant A as api: AttemptsController
+    participant P as db
+
+    B->>A: POST …/attempt { locale }
+    A->>P: lock UserLevel, read Lesson (ready), find LessonAttempt:<br/>in progress kept, finished deleted, else create (motherTongue, secret, page 0)
+    A-->>B: 201 AttemptView (200 when resuming): the page at the cursor, refs only
+    loop each page
+        B->>A: POST …/attempt/pages/:index { attemptId, answers }
+        A->>P: lock UserLevel, hold Lesson FOR SHARE, rebuild the plan,<br/>score and lock the page, move the cursor
+        A-->>B: 200 { feedback (practice only), attempt }
+    end
+    Note over A,P: the last page: results written once, applyFinish<br/>(LessonResult, streak, XP, UserAchievement) in the same transaction
+```
+
+- **`LessonAttempt` is the only state.** One row per course and lesson: the mother tongue, a
+  32-byte secret, the cursor, the exam deadline, the locked answers and, once finished, the
+  results. The plan is rebuilt from the `Lesson` row with `buildPlan` on every request and never
+  stored, so a change of code never strands a stored plan.
+- **Refs, never ids.** Every unit, option and token the browser sees is named by
+  HMAC-SHA256(secret, path), base64url, 16 characters (`attempt-ref.ts`). A ref from another
+  attempt is a 400.
+- **One transaction per write**, locking the course row first (`FOR UPDATE`), then holding the
+  lesson row `FOR SHARE` so a reseed waits; the course lock alone means two tabs submitting the
+  same page give one lock and one finish. A stale index, an old `attemptId` or a
+  finished attempt is 409 `attempt.stale`.
+- **The server owns the exam clock**: the deadline is set when an exam page is sent, with 2 s of
+  grace.
+
+### The discussion stream
+
+```mermaid
+sequenceDiagram
+    participant B as Browser (discussion window)
+    participant C as caddy
+    participant A as api: DiscussionController
+    participant R as redis
+    participant G as Gemini
+
+    B->>C: POST …/lessons/:id/discussion { attemptId, message, history }
+    C->>A: proxy
+    A->>A: course, ready lesson, cursor on the discussion page?<br/>else 404 / 409, as JSON
+    A->>R: count the message in three windows<br/>else 429 + Retry-After, as JSON
+    A-->>B: 200, text/event-stream; cache-control: no-cache, no-transform
+    A->>G: streamGenerateContent?alt=sse
+    loop as Gemini writes
+        G-->>A: a piece of text
+        A-->>B: event: delta / data: {"text":"…"}
+    end
+    A-->>B: event: done (or event: error {"code":"llm.…"})
+    Note over A,B: ": heartbeat" comment every 15 s while open
+```
+
+- **Two halves, because of HTTP.** `DiscussionService.open()` runs every check that can still answer
+  with a status, then `countMessage()` the rate limits. Only then does `openEventStream()`
+  (`event-stream.ts`) send the 200 and its headers. After that a failure can only be an event:
+  `error { code }`, with an `llm.*` code from the `LlmError`'s reason (`llm.unavailable`,
+  `llm.rateLimited`, `llm.blocked`, `llm.incomplete`, `llm.disabled`), or `unknown` for a bug.
+- **Cancelled with the page.** When the browser closes the response, an `AbortSignal` cancels the
+  Gemini call, also when it left during the checks. Stop in the window does the same.
+- **Stateless.** The body carries the last 10 turns; the server builds the system prompt from the
+  lesson's brief and the attempt's wrong practice answers (`discussion-prompt.ts`) and stores
+  nothing.
+- **The browser** reads it with `fetch` and a stream reader (`apps/web/lib/discussion-client.ts`),
+  since `EventSource` only sends `GET`. A refusal before the stream arrives as the usual JSON error,
+  with `retryAfter` on a 429.
+
+### SSE through Caddy, and the `encode` exclusion
+
+Caddy compresses every route (`encode zstd gzip` in both Caddyfiles). A compressor holds bytes back
+until it has enough to compress, which would turn a stream of small `delta` events into a few late
+bursts. Issue #150 planned to exclude `text/event-stream` from `encode` if that happened. **The
+Caddyfiles carry no exclusion**: the API marks the stream `Cache-Control: no-cache, no-transform`,
+and Caddy's `encode` leaves a `no-transform` response uncompressed, while `reverse_proxy` flushes
+an event stream as it comes. Checked by hand through Caddy against Gemini in PR #201: the pieces
+arrive one by one. The heartbeat keeps any proxy on the way from closing a quiet stream. If a
+future Caddy version changes either behaviour, the fix is a matcher on the `encode` directive, not
+a change in the API.
+
+---
+
+## 6. Development (`make dev`)
 
 Files: `compose.yml` + `compose.override.yml`, which loads automatically. Images
 are built at the `dev` stage, source is bind-mounted, and both apps hot reload.
@@ -440,10 +544,12 @@ so they reach the monitoring containers too. Day to day:
 
 ---
 
-## 6. Tools that are not services
+## 7. Tools that are not services
 
-Neither runs as part of the stack; both are throwaway containers on the same
-network, built from the api `build` stage (`ft_transcendence/api-tooling`).
+None of them runs as part of the stack. Swagger UI is served by the api itself.
+Prisma Studio and the migrate and seed commands are throwaway containers on the
+same network, built from the api `build` stage (`ft_transcendence/api-tooling`),
+and RedisInsight is a throwaway container of its upstream image.
 
 ```mermaid
 flowchart LR
@@ -471,9 +577,33 @@ flowchart LR
 There is no Adminer or pgAdmin service in this project; Prisma Studio is the
 database browser, and it already knows the schema.
 
+### The tooling image and the content it carries
+
+The migrate and seed containers run the api Dockerfile's `build` stage: locally
+as `ft_transcendence/api-tooling` (`make tooling-image`), on a server as
+`ghcr.io/victorbro/ft_transcendence/tooling`, built and pushed by images.yml.
+That stage is `COPY . .` of the repo minus `Dockerfile.dockerignore` (no `docs`,
+`infra`, `.git`, no `*.md`), so it carries the Prisma CLI, the migrations, the
+seed and every authored file under `content/`:
+
+| Directory | What the seed does with it |
+|---|---|
+| `content/items/` | The question bank: one `QuestionBank` row per authored question, matched on `sourceId` |
+| `content/outlines/` | One `Lesson` row per entry, 3,990 in all, with its position |
+| `content/briefs/` | The brief of each written lesson, 216 today |
+| `content/lessons/` | The content file of each written lesson that is not vocabulary, 108 today |
+
+The image only **carries** them. Nothing in it writes or generates content: the
+`migrate` service runs `prisma migrate deploy`, then `db:seed`, which validates
+the files and sets `Lesson.ready` ([LESSONS.md](LESSONS.md) §4). The authoring
+kit's scripts are in the image too, since they live in `apps/api/scripts`, but
+nothing runs them there. The `api` runtime image (`prod` stage) has neither the
+Prisma CLI, the migrations nor `content/`: at runtime the api reads lessons from
+Postgres only.
+
 ---
 
-## 7. What CI runs
+## 8. What CI runs
 
 Five workflows. `ci` and `e2e` are the ones that gate a merge on behaviour;
 `devcontainer` runs only when the devcontainer image changes.
@@ -522,17 +652,17 @@ production stack, the live monitoring check and Playwright.
 
 ---
 
-## 8. Where the code lives
+## 9. Where the code lives
 
 ```mermaid
 flowchart TB
     subgraph apps
         web["apps/web<br/><small>Next.js: pages, forms, SSR</small>"]
-        api["apps/api<br/><small>NestJS: auth, users, health</small>"]
+        api["apps/api<br/><small>NestJS: auth, users, courses, placement,<br/>lessons, llm, gateway, friends, messages, metrics</small>"]
     end
 
     subgraph packages
-        shared["packages/shared<br/><small>Zod schemas, contracts</small>"]
+        shared["packages/shared<br/><small>Zod schemas, contracts,<br/>lesson schemas, validators, player</small>"]
         ui["packages/ui<br/><small>design system</small>"]
         tsconfig["packages/tsconfig"]
         eslint["packages/eslint-config"]
@@ -549,3 +679,12 @@ flowchart TB
 signup endpoint apply the *same* `CreateUserSchema`, which is what the subject
 means by validating in both frontend and backend. The one rule that keeps it
 honest is that `passwordHash` never appears in any schema there.
+
+The same holds for lessons: `@ft/shared`'s `lessons` namespace holds the lesson
+file schemas and `validateLesson` (run by the seed, the specs and the authoring
+kit), and the pure player (`buildPlan`, scoring, the views the browser may see),
+run by `AttemptsService` on the server. The web app imports its view schemas
+and types, plus a few pure helpers and constants for the forms (the article and
+plural checks, which item types skip feedback when right, the practice weight,
+the reading order separator), so the player pages and the API parse the same
+shapes. It never builds a plan or scores an answer outside the tests.

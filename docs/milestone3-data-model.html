@@ -115,7 +115,7 @@ html{scroll-behavior:smooth}
 <div class="leg">
 <span class="m k-e jump" data-target="enums" role="link" tabindex="0">Enums + constants</span><span class="m k-c jump" data-target="socket" role="link" tabindex="0">Socket contract · #154</span><span class="m k-d jump" data-target="database" role="link" tabindex="0">Database · #155 / #158</span><span class="m k-q jump" data-target="redis" role="link" tabindex="0">Redis · #157</span><span class="m k-a jump" data-target="api" role="link" tabindex="0">REST schemas · #155 / #156 / #158</span><span class="m k-p jump" data-target="web" role="link" tabindex="0">Web · #154 to #158</span><span class="m k-h jump" data-target="evaluation" role="link" tabindex="0">Evaluation · #159 to #161</span>
 <span class="m k-n jump" data-target="modules" role="link" tabindex="0">NestJS modules</span></div>
-<p class="stleg" id="stleg"><b>Issue status</b><span><i style="background:var(--st-open)"></i>open</span><span><i style="background:var(--st-work)"></i>in work (assigned or a PR linked)</span><span><i style="background:var(--st-closed)"></i>closed</span><span><i class="ready"></i>green frame: ready, open and not blocked, nobody on it yet</span><span id="live">Snapshot of 28 October 2026, refreshed from GitHub on load.</span></p>
+<p class="stleg" id="stleg"><b>Issue status</b><span><i style="background:var(--st-open)"></i>open</span><span><i style="background:var(--st-work)"></i>in work (assigned or a PR linked)</span><span><i style="background:var(--st-closed)"></i>closed</span><span><i class="ready"></i>green frame: ready, open and not blocked, nobody on it yet</span><span id="live">Snapshot of 20 November 2026, refreshed from GitHub on load.</span></p>
 <p class="m1note"><i aria-hidden="true"></i>Grey cards tagged "existing" are on main and reused or changed, not reimplemented.</p>
 
 <section class="g k-e" id="enums"><div class="gh"><i class="ti ti-list-details" aria-hidden="true"></i>Enums and constants<span class="def">packages/shared/src/events/socket.ts</span><span class="def">friendship in #155</span></div>
@@ -231,17 +231,17 @@ html{scroll-behavior:smooth}
 <script src="gh-status.js"></script>
 <script>
 const base='https://github.com/VictorBro/ft_transcendence/issues/';
-/* Title, state, assignees and linked PR of each issue, as of 28 October 2026.
+/* Title, state, assignees and linked PR of each issue, as of 20 November 2026.
    Replaced by the live state from GitHub (gh-status.js) when the page loads. */
-const ISSUES={34:{t:"Restore the signup rate limit to 10 per minute",s:"open",a:["bastian-schnitzler"],b:0,pr:null},
-154:{t:"feat: the WebSocket gateway",s:"open",a:["VictorBro"],b:0,pr:null},
-155:{t:"feat: friends",s:"open",a:[],b:1,pr:null},
-156:{t:"feat: public profiles",s:"open",a:[],b:1,pr:null},
-157:{t:"feat: online status",s:"open",a:[],b:2,pr:null},
-158:{t:"feat: direct messages between friends",s:"open",a:[],b:2,pr:null},
-159:{t:"test(e2e): Firefox and WebKit",s:"open",a:["bastian-schnitzler"],b:0,pr:[165, "bastian-schnitzler", "open"]},
-160:{t:"docs: the README for the evaluation",s:"open",a:[],b:1,pr:null},
-161:{t:"docs: defence runbook and rehearsal",s:"open",a:[],b:2,pr:null}};
+const ISSUES={34:{t:"Restore the signup rate limit to 10 per minute",s:"closed",a:["bastian-schnitzler"],b:0,pr:[172, "bastian-schnitzler", "merged"]},
+154:{t:"feat: the WebSocket gateway",s:"closed",a:["VictorBro"],b:0,pr:[181, "VictorBro", "merged"]},
+155:{t:"feat: friends",s:"closed",a:["VictorBro"],b:0,pr:[189, "VictorBro", "merged"]},
+156:{t:"feat: public profiles",s:"closed",a:["VictorBro"],b:0,pr:[193, "VictorBro", "merged"]},
+157:{t:"feat: online status",s:"closed",a:["VYAntares"],b:0,pr:[195, "VYAntares", "merged"]},
+158:{t:"feat: direct messages between friends",s:"closed",a:["VictorBro"],b:0,pr:[200, "VictorBro", "merged"]},
+159:{t:"test(e2e): Firefox and WebKit",s:"closed",a:["bastian-schnitzler"],b:0,pr:null},
+160:{t:"docs: the README for the evaluation",s:"open",a:["VYAntares"],b:1,pr:null},
+161:{t:"docs: defence runbook and rehearsal",s:"open",a:["VYAntares"],b:1,pr:null}};
 const STATUS_TEXT={open:'open',work:'in work',closed:'closed'};
 /* Closed, else in work when it has a PR or an assignee, else open. */
 const statusOf=i=>i.s==='closed'?'closed':((i.pr||i.a.length)?'work':'open');
@@ -270,7 +270,7 @@ paintIssues();
   Object.keys(live).forEach(n=>{const g=live[n];ISSUES[n]={t:g.t,s:g.s,a:g.a,b:g.b,pr:g.pr};});
   paintIssues();
   document.getElementById('live').textContent='Live from GitHub.';
-}).catch(()=>{document.getElementById('live').textContent='GitHub could not be reached: snapshot of 28 October 2026.';});
+}).catch(()=>{document.getElementById('live').textContent='GitHub could not be reached: snapshot of 20 November 2026.';});
 document.querySelectorAll('.jump').forEach(el=>{
   const go=()=>document.getElementById(el.dataset.target).scrollIntoView({block:'start'});
   el.addEventListener('click',e=>{if(e.target.closest('a'))return;go();});

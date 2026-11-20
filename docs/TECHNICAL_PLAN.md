@@ -1,10 +1,11 @@
 # Technical Plan
 
-Status: **proposed**, pending team review.
+Status: **adopted**. Written before the scaffold, kept as the record of the infrastructure decisions; where the build differs, this file says so.
 Companions: [SUBJECT_SUMMARY.md](SUBJECT_SUMMARY.md) (requirements), [VERSIONS.md](VERSIONS.md) (what moves together, what is held back).
 
-Product: **AI-driven foreign language learning platform**. AI-generated learning content,
-AI-assessed proficiency levelling, single-player practice, live two-player sessions over WebSockets.
+Product: **AI-driven foreign language learning platform**. An authored lesson catalogue with
+server-scored lessons, adaptive CEFR placement whose question bank an LLM restocks, an LLM tutor
+before each lesson exam, and live social features over WebSockets.
 
 ---
 
@@ -14,11 +15,11 @@ AI-assessed proficiency levelling, single-player practice, live two-player sessi
 |---|---|---|
 | Frontend | **Next.js** (App Router) | Framework major module. SSR minor point. `next-intl` for the i18n module. Public pages indexable. |
 | Backend | **NestJS** | WebSocket gateways, DI (mockable LLM provider), guards, throttler, Swagger, validation pipes. Module boundaries map onto team members. |
-| Database | **Postgres 18 + pgvector** | RAG needs vector search; pgvector avoids a second datastore. |
+| Database | **Postgres 18 + pgvector** | Relational data. pgvector was chosen for RAG, which was dropped (PRODUCT_ARCHITECTURE.md §2); the extension stays in the image, unused. |
 | ORM | **Prisma 7** | Minor module; `schema.prisma` doubles as the README schema doc. |
-| Cache / sessions | **Redis** | Sessions, presence, the LLM response cache. |
+| Cache / sessions | **Redis** | Sessions, placement runs, the lesson discussion's rate limits, presence. |
 | Proxy | **Caddy** | Single TLS entry point (mandatory HTTPS). Same-origin kills CORS; httpOnly cookies just work. Internal CA for dev certs. |
-| Real-time | **socket.io** | One transport for presence, sessions, LLM token streaming. |
+| Real-time | **socket.io** | Presence, live course and friend updates, direct messages. The lesson discussion streams over Server-Sent Events on a REST route instead (ARCHITECTURE.md §5). |
 | Monorepo | **pnpm workspaces + Turborepo** | Strict node_modules; cached tasks. |
 | Contracts | **Zod in `packages/shared`** | One schema validates frontend and backend (mandatory requirement). |
 | Tests | **Vitest, Supertest, Playwright** | Units, API e2e, browser e2e + console gate. |
@@ -45,17 +46,17 @@ ft_transcendence/
 │   ├── CODEOWNERS
 │   └── pull_request_template.md
 ├── apps/
-│   ├── web/                       # Next.js, 5-stage Dockerfile
-│   └── api/                       # NestJS, 5-stage Dockerfile
+│   ├── web/                       # Next.js, 6-stage Dockerfile
+│   └── api/                       # NestJS, the same 6 stages plus `prune`
 ├── packages/
 │   ├── shared/                    # Zod schemas, socket event contracts
-│   ├── ui/                        # design system → minor module
+│   ├── ui/                        # shared components (the design-system module is not claimed)
 │   ├── eslint-config/
 │   └── tsconfig/
 ├── infra/
 │   └── caddy/Caddyfile
 ├── docs/
-├── compose.yml                    # topology: caddy · web · api · db · redis
+├── compose.yml                    # topology: caddy · web · api · db · redis, plus the monitoring stack
 ├── compose.override.yml           # dev, auto-loaded: dev targets, bind mounts, workspace service
 ├── compose.prod.yml               # prod targets, no mounts, restart policies
 ├── Makefile
@@ -65,24 +66,34 @@ ft_transcendence/
 Scaffolding note: `create-next-app` / `nest new` generate standalone projects (own `.git`,
 lockfile). Scaffold into a temp dir, move `src/` + app config into `apps/*`, delete the rest.
 
-### NestJS module seams (one owner each)
+### NestJS module seams, as built
+
+The plan had seven seams (`auth`, `users`, `lessons`, `assessment`, `ai`, `realtime`,
+`common`). The code split them further:
 
 ```
 apps/api/src/
-├── auth/          # signup, login, sessions, guards; 2FA/OAuth later
-├── users/         # profiles, avatars, friends, presence
-├── lessons/       # seeded lesson catalogue, daily goal, results (no content CRUD)
-├── assessment/    # level questionnaires, scoring, CEFR mapping
-├── ai/            # LlmProvider iface, RAG retrieval, prompts
-├── realtime/      # socket.io gateways: session, presence, chat
-└── common/        # pipes, filters, interceptors, throttler
+├── auth/                 # signup, login, sessions, the global AuthGuard, 2FA
+├── users/                # profiles, avatars, public profiles, time zone
+├── courses/              # a course per (user, language): goal, level, active course
+├── placement/            # the adaptive placement exam, its state in Redis
+├── items/                # the spec that checks content/items/
+├── question-generation/  # restocking the bank with the LLM
+├── lessons/              # catalogue, daily view, search, attempts, discussion, gamification
+├── llm/                  # LlmProvider: fixture, gemini, disabled; generateStructured, streamText
+├── gateway/              # socket.io on /ws: handshake, screen, rooms
+├── friends/  presence/  messages/   # Milestone 3 social features
+├── metrics/              # Prometheus registry and the :9464 listener
+├── demo/                 # demo learners, seeded on development stacks only
+├── throttler/  prisma/  redis/  health/
+└── validation.pipe.ts, error-code.filter.ts   # Zod validation, error codes
 ```
 
 ---
 
 ## 3. Docker
 
-Both apps use identical stage names:
+Both apps use the same stage names; the api adds a `prune` stage between `build` and `prod`:
 
 | Stage | Contents | Used by |
 |---|---|---|
@@ -138,11 +149,11 @@ Database image: `pgvector/pgvector:0.8.7-pg18-trixie` (plain `postgres` has no p
 
 ## 4. Makefile
 
-**Bare `make` is the evaluator path**: builds prod targets, starts `compose.prod.yml`, migrates,
-seeds. That is the graded single command, and it runs the same artifacts the console gate tests.
+**Bare `make` is the evaluator path**: runs the CI checks, builds prod targets, starts `compose.prod.yml`, migrates,
+seeds, then runs the browser tests. That is the graded single command, and it runs the same artifacts the console gate tests.
 
 ```
-make            # evaluator: certs → build (prod) → up → migrate → seed
+make            # evaluator: CI checks → build (prod) → up → migrate → seed → certs → monitoring-check → Playwright
 make dev        # dev stack (compose.override): hot reload, bind mounts
 make down / logs / ps / shell
 make test / test-e2e / lint / format / typecheck
@@ -241,7 +252,11 @@ truth, so the two documents cannot disagree.
    `main` ruleset (§5 PR policy) so the rules exist before the first real PR.
 5. **Vertical slice**: auth (argon2, httpOnly cookie, guard) → one Prisma model + migration →
    one streaming AI endpoint on `fixture` → one socket.io room (join/leave/reconnect) → Next
-   pages consuming all three.
+   pages consuming all three. The streaming AI endpoint shipped as the lesson discussion,
+   [#150](https://github.com/VictorBro/ft_transcendence/issues/150) "feat(api): stream the lesson
+   discussion, with error handling and rate limits" (PR #201): Server-Sent Events on
+   `POST /api/courses/:lang/lessons/:id/discussion`, `streamText` on the fixture and on Gemini,
+   with its window in #151. It streams over SSE, not over the socket (ARCHITECTURE.md §5).
 6. **Slice tests**: unit per layer, one Supertest e2e, one Playwright flow, console gate live.
 7. **Images**: multi-arch manifest on GHCR.
 8. **Handoff**: README skeleton with all mandatory sections, **including the Resources section
@@ -260,7 +275,6 @@ The team clones the slice pattern per feature instead of inventing five differen
 | Schema and migrations drift apart | CI `migrate diff` on every PR |
 | Node 26 LTS lands mid-project | Stay on 24 until a stable Next fixes its Node 26 regression (VERSIONS.md, held back: Node) |
 | Hydration warnings trip console gate | Gate live from day one; surfaces at the causing commit |
-| Slow HMR on bind mounts | Watch during step 5. Fallback: `apps/web` to Vite. **Costs the SSR minor point (16 → 15)**; budget still clears 14. |
-| LLM spend | Cache, per-user budget and a global ceiling, see PRODUCT_ARCHITECTURE.md §5 |
-| RAG scope creep | Fix corpus + chunking before writing retrieval code |
+| Slow HMR on bind mounts | Watch during step 5. Fallback: `apps/web` to Vite. **Costs the SSR minor point (22 → 21, still above the 19 that count)**; budget still clears 14. |
+| LLM spend | Fixture provider in CI, lessons authored offline, per-learner and global discussion limits, capped answers, see PRODUCT_ARCHITECTURE.md §5 |
 | Uneven commit distribution | CODEOWNERS, required reviews, periodic `git shortlog -sn` |
