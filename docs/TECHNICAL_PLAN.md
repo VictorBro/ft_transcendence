@@ -39,6 +39,7 @@ At defence, "which runtime owns what" must be a one-sentence answer. This rule i
 ft_transcendence/
 ├── .devcontainer/
 │   ├── devcontainer.json          # → ../compose.yml + ../compose.override.yml, service: workspace
+│   ├── initialize.sh              # host side, before every open: fits .env to the Docker daemon
 │   └── Dockerfile                 # workspace tooling image: node, pnpm, gh, docker CLI
 ├── .github/
 │   ├── workflows/                 # ci.yml · e2e.yml · images.yml · hygiene.yml · devcontainer.yml (§5)
@@ -121,6 +122,11 @@ Database image: `pgvector/pgvector:0.8.7-pg18-trixie` (plain `postgres` has no p
 - The `workspace` service is defined in `compose.override.yml` under `profiles: ["devcontainer"]`,
   built from `.devcontainer/Dockerfile`. Explicitly targeting a profiled service activates its
   profile, so the devcontainer starts it while plain `make dev` skips it.
+- The session user depends on the daemon: `user: ${WORKSPACE_USER:-node}` on the service and no
+  `remoteUser` in `devcontainer.json`. `.devcontainer/initialize.sh` (the `initializeCommand`, on
+  the host) writes `WORKSPACE_USER=root` and the per-user `DOCKER_SOCKET` into `.env` on a rootless
+  daemon, where container root is the host user, and moves published ports that cannot be bound.
+  On a rootful daemon it changes nothing.
 - Set `shutdownAction` deliberately: the default `stopCompose` stops the whole stack (db included)
   when VS Code closes.
 - **State survives rebuilds via named volumes** on the workspace service (compose-based
@@ -165,7 +171,7 @@ where it matters and keeps feedback fast where it doesn't.
 | `e2e.yml` | PR, push | Two jobs per browser (`lesson`, `rest`), each with a prod-target compose up, then Playwright in its own image (browsers and their system packages included): user flows, **console gate**, **legal pages** (`/privacy`, `/terms` return 200 with real content). |
 | `hygiene.yml` | PR, push | gitleaks, commitlint, `.env.example` drift, fail if `.env` staged, `prisma migrate diff`. |
 | `images.yml` | push to any branch; `v*` tags | Multi-arch build on every commit; tags per table below. |
-| `devcontainer.yml` | PR touching `.devcontainer/`, `.nvmrc`, `package.json` | Builds the devcontainer image; Node and pnpm must match the pins. |
+| `devcontainer.yml` | PR touching `.devcontainer/`, `.nvmrc`, `package.json` | Builds the devcontainer image; Node and pnpm must match the pins; the entrypoint runs as root and as node; the host preflight fits a rootless daemon. |
 
 ### Multi-arch (`images.yml`)
 

@@ -100,6 +100,39 @@ of lint, typecheck, test and build in `turbo.json`.
 - **Windows:** work inside **WSL2**, and keep the repository on the WSL2
   filesystem (`~/projects/...`), not on `C:\`. A Windows path bind-mounted into
   Docker Desktop crosses a filesystem boundary and makes hot reload crawl.
+- **42 school machines (rootless Docker, no sudo):** nothing to configure by
+  hand. Before every "Reopen in Container", `.devcontainer/initialize.sh` looks
+  at the Docker daemon, writes what fits it into `.env`, and prints each change
+  in the Dev Containers log. On a cluster machine that means:
+  - the container runs as `root`, which on a rootless daemon is your own user
+    on the host, so files it writes are yours. `node` could not write the repo;
+  - it gets the daemon's per-user socket, so `docker` and `make` work inside;
+  - caddy moves off 80 and 443, which nothing can bind without root, to the
+    first free ports from 8080 and 8443 up. The app is at
+    `https://localhost:<HTTPS_PORT>`: `make` prints the address. Open it
+    directly, the automatic http->https redirect only exists on the default
+    ports;
+  - postgres and redis move the same way when 5432 or 6379 is taken. On the
+    clusters 6379 always is: they run their own redis.
+
+  What it cannot do for you:
+  - `.env` is fitted when the container opens. Replace it while the container
+    is open (a copy from your laptop, a `git clean`) and `make` stops on a port
+    the daemon cannot publish: "Dev Containers: Reload Window" fits it again,
+    and `make doctor` says when that is the problem.
+  - Set your git identity and `ssh-add` your GitHub key **on the host**. VS
+    Code copies the first and forwards the second into every new container,
+    and on a fresh session the agent is empty (`make doctor` says whether it is
+    missing or just empty).
+  - Docker keeps its images and volumes on the machine, not in your home. On a
+    machine you have not used, the first open builds everything again, and
+    `gh auth login`, the Claude login and the browser's trust in
+    `certs/ft-local-root.crt` start over. Run `make down` before you log out,
+    or the stack comes back with the daemon at your next login there.
+  - Mind the home quota: `node_modules` and the pnpm store live in the repo,
+    about 1 GB on disk, and a `make` adds build output and Playwright reports
+    on top. `make clean` gives those back.
+
 - **Everyone:** the devcontainer is not just the smoothest path, most `make`
   targets refuse to run outside it. Open the folder in VS Code, "Reopen in
   Container", and the toolchain, extensions and hooks are already set up.

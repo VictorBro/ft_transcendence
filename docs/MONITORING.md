@@ -110,7 +110,7 @@ the server run the same config. The cost: a config edit in dev needs a rebuild, 
 
 | From | URL | Password |
 |---|---|---|
-| Your browser | <https://localhost/grafana> (`https://localhost:<HTTPS_PORT>/grafana` if you set one) | `grep GRAFANA_ADMIN_PASSWORD .env` |
+| Your browser | <https://localhost/grafana> (`https://localhost:<HTTPS_PORT>/grafana` when `HTTPS_PORT` in `.env` is not 443, as on every 42 machine) | `grep GRAFANA_ADMIN_PASSWORD .env` |
 | A terminal inside the devcontainer | `https://caddy/grafana` | the same |
 | The server | <https://transcendence.dpdns.org/grafana> | `grep GRAFANA_ADMIN_PASSWORD ~/.env` on the server |
 
@@ -581,8 +581,9 @@ Caddyfile from before monitoring: Caddy reads it only at start, and compose does
 caddy for a change to a bind-mounted file. `docker compose restart caddy`, once.
 `check-monitoring.sh` prints the same hint.
 
-**node-exporter will not start (rootless Docker, Docker Desktop).** Its one host bind is
-`/:/rootfs:ro`. If a machine refuses it, the fallback is to drop that bind in `compose.yml`:
+**node-exporter will not start (Docker Desktop, a rootless daemon that refuses the bind).** Its
+one host bind is `/:/rootfs:ro`. The rootless daemon on the 42 clusters accepts it. If a machine
+refuses it, the fallback is to drop that bind in `compose.yml`:
 CPU, memory, load and disk I/O still come from the container's own `/proc`, and only the root
 disk panels and rules are lost. On Docker Desktop the host is the Linux VM, not the laptop, and
 the VM may have no `/` filesystem to report, which `check-monitoring.sh` only warns about.

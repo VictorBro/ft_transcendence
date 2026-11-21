@@ -83,6 +83,56 @@ else
   fail 'docker CLI cannot reach the daemon'
   hint 'Inside the devcontainer the socket bridge failed: check /tmp/docker-init.log,'
   hint 'and that compose.override.yml still mounts /var/run/docker-host.sock.'
+  hint 'On a rootless daemon DOCKER_SOCKET in .env must be its per-user socket:'
+  hint '.devcontainer/initialize.sh sets it when the container is (re)built.'
+fi
+
+# On a rootless daemon container uid 0 is the host user and every other uid is
+# a subuid that cannot write the bind-mounted repo, so the session has to be
+# root there, and must not be root anywhere else. .devcontainer/initialize.sh
+# decides this on the host before the container is created; a container that
+# predates it, or a .env replaced while the container was open, is how the two
+# come apart.
+#
+# Read from the user namespace, not asked of the daemon: in exactly that
+# mismatch the daemon does not answer either. A rootless daemon maps container
+# uid 0 to one unprivileged host uid ("0 102469 1"), a rootful one maps
+# everything to itself ("0 0 4294967295").
+if [ -f /.dockerenv ] && [ -r /proc/self/uid_map ]; then
+  refit='Command Palette, "Dev Containers: Rebuild Container": it runs .devcontainer/initialize.sh on the host first.'
+  env_value() {
+    sed -n "s/^[[:space:]]*$1=//p" .env 2>/dev/null | tail -n 1 | tr -d "\"' \t\r"
+  }
+  if [ -n "$(awk 'NR == 1 && $1 == 0 && $2 != 0 && $3 == 1' /proc/self/uid_map)" ]; then
+    if [ "$(id -u)" -eq 0 ]; then
+      ok 'rootless daemon, session is root (your own user on the host)'
+    else
+      fail "rootless daemon, but the session is $(id -un): it cannot write the repo"
+      hint "$refit"
+    fi
+    # What initialize.sh would have written. A .env copied in from a laptop, or
+    # recreated by make while the container was open, has none of it, and the
+    # next `make` then stops on a port the daemon cannot publish.
+    unfit=''
+    [ "$(env_value WORKSPACE_USER)" = root ] || unfit="$unfit WORKSPACE_USER"
+    [ -n "$(env_value DOCKER_SOCKET)" ] || unfit="$unfit DOCKER_SOCKET"
+    for key in HTTP_PORT HTTPS_PORT; do
+      value="$(env_value "$key")"
+      case "$value" in
+        '' | *[!0-9]*) unfit="$unfit $key" ;;
+        *) [ "$value" -ge 1024 ] || unfit="$unfit $key" ;;
+      esac
+    done
+    if [ -z "$unfit" ]; then
+      ok '.env is fitted to a rootless daemon'
+    else
+      fail ".env is not fitted to a rootless daemon:$unfit"
+      hint "$refit"
+    fi
+  elif [ "$(id -u)" -eq 0 ]; then
+    fail 'rootful daemon, but the session is root: files it writes are root-owned on the host'
+    hint "$refit"
+  fi
 fi
 
 if [ -d node_modules ] && [ -d e2e/node_modules ]; then
@@ -107,6 +157,8 @@ else
   fail 'git user.name or user.email is unset'
   hint 'git config --global user.name "Your Name"'
   hint 'git config --global user.email "you@example.com"'
+  hint 'Run them on the HOST: VS Code copies ~/.gitconfig into every new container,'
+  hint 'while a value set in here is gone at the next rebuild.'
 fi
 
 # --- github access -----------------------------------------------------------
@@ -118,11 +170,28 @@ github_identity() {
 }
 
 key_count=0
-if [ -n "${SSH_AUTH_SOCK:-}" ] && ssh-add -l >/dev/null 2>&1; then
-  key_count="$(ssh-add -l | wc -l | tr -d ' ')"
-  ok "ssh agent available, $key_count key(s)"
-else
+if [ -z "${SSH_AUTH_SOCK:-}" ]; then
   warn 'no ssh agent (VS Code forwards one; plain docker exec does not)'
+else
+  # ssh-add -l exits 0 holding keys, 1 when the agent answers but is empty, and
+  # 2 when it cannot be reached at all. Reporting 1 as "no ssh agent" sends you
+  # to look at the forwarding, which is the one part that is working: on a
+  # fresh machine the usual cause is that nobody has run ssh-add on the HOST.
+  ssh-add -l >/dev/null 2>&1
+  case $? in
+    0)
+      key_count="$(ssh-add -l | wc -l | tr -d ' ')"
+      ok "ssh agent available, $key_count key(s)"
+      ;;
+    1)
+      warn 'ssh agent reachable but holding no keys'
+      hint 'On the HOST, not in this container: ssh-add <your private key>,'
+      hint 'e.g. ssh-add ~/.ssh/id_ed25519. The container sees it at once.'
+      ;;
+    *)
+      warn 'SSH_AUTH_SOCK is set but no agent answers on it'
+      ;;
+  esac
 fi
 
 identity="$(github_identity)"

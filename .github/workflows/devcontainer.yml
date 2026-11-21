@@ -48,3 +48,57 @@ jobs:
           echo "node $node_have (want $node_want), pnpm $pnpm_have (want $pnpm_want)"
           test "$node_have" = "$node_want"
           test "$pnpm_have" = "$pnpm_want"
+
+      # On a rootless daemon (the 42 clusters) the workspace service runs this
+      # image as root, a path no runner takes on its own. The entrypoint is
+      # what makes root at home in /home/node and joins the Docker socket, so
+      # run it both ways against the runner's socket: as root, where the join
+      # is a symlink, and as node, the socat bridge every laptop uses.
+      - name: The entrypoint works as root and as node
+        run: |
+          docker run --rm --user root -e HOME=/home/node \
+            -v /var/run/docker.sock:/var/run/docker-host.sock ft/devcontainer:ci \
+            /usr/local/share/docker-init.sh sh -ec '
+              test "$(id -u)" = 0
+              test "$(getent passwd root | cut -d: -f6)" = /home/node
+              test "$(stat -c %u /home/node)" = 0
+              zsh -ic "whence croot >/dev/null"
+              docker version --format "{{.Server.Version}}"
+            '
+          docker run --rm \
+            -v /var/run/docker.sock:/var/run/docker-host.sock ft/devcontainer:ci \
+            /usr/local/share/docker-init.sh sh -ec '
+              test "$(id -un)" = node
+              test "$(stat -c %U /home/node)" = node
+              for _ in 1 2 3 4 5 6 7 8 9 10; do
+                [ -S /var/run/docker.sock ] && break
+                sleep 0.5
+              done
+              docker version --format "{{.Server.Version}}"
+            '
+
+      # .devcontainer/initialize.sh runs on every teammate's host before the
+      # container opens, under whatever /bin/sh that host has, and its rootless
+      # half only ever runs on a school machine. So: parse it with dash, run it
+      # against a daemon that says it is rootless, then run it again, which
+      # must change nothing and say nothing.
+      - name: The host preflight fits .env to a rootless daemon
+        run: |
+          dash -n .devcontainer/initialize.sh
+          work="$(mktemp -d)"
+          mkdir -p "$work/repo/.devcontainer" "$work/bin"
+          cp .devcontainer/initialize.sh "$work/repo/.devcontainer/"
+          cp .env.example compose.yml "$work/repo/"
+          python3 -c 'import socket, sys; socket.socket(socket.AF_UNIX).bind(sys.argv[1])' \
+            "$work/docker.sock"
+          printf '%s\n' '#!/bin/sh' 'case "$1" in' \
+            "  info) echo '[\"name=seccomp,profile=builtin\",\"name=rootless\"]' ;;" \
+            "  context) echo 'unix://$work/docker.sock' ;;" \
+            'esac' > "$work/bin/docker"
+          chmod +x "$work/bin/docker"
+          PATH="$work/bin:$PATH" dash "$work/repo/.devcontainer/initialize.sh"
+          grep -qx 'WORKSPACE_USER=root' "$work/repo/.env"
+          grep -qx "DOCKER_SOCKET=$work/docker.sock" "$work/repo/.env"
+          cp "$work/repo/.env" "$work/before"
+          test -z "$(PATH="$work/bin:$PATH" dash "$work/repo/.devcontainer/initialize.sh")"
+          cmp "$work/repo/.env" "$work/before"

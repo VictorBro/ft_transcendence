@@ -23,6 +23,15 @@ const DISCUSSION = plan.pages.findIndex((p) => p.role === 'discussion');
 /** The per-learner limit a minute, as make reads it from the api container; the default in CI. */
 const USER_PER_MINUTE = Number(process.env.LLM_DISCUSSION_USER_PER_MINUTE || 2);
 
+/**
+ * The provider the api container runs, as make reads it from there; fixture in
+ * CI and when unset. Two tests below read the fixture tutor's own answer and
+ * its failure on purpose, which no real provider gives: they skip on a stack
+ * that runs one (LLM_PROVIDER=gemini in a developer's .env).
+ */
+const FIXTURE_TUTOR = (process.env.LLM_PROVIDER || 'fixture') === 'fixture';
+const NEEDS_FIXTURE = 'reads the fixture tutor; this stack runs another LLM_PROVIDER';
+
 /** FIXTURE_ANSWER in apps/api/src/llm/fixture.provider.ts, its pieces joined. */
 const ANSWER =
   'This is the fixture tutor. It gives the same answer to every question. Set LLM_PROVIDER=gemini for a real one.';
@@ -45,6 +54,7 @@ test.describe('the discussion page', () => {
   test('streams an answer, stops one, counts down after the limit, then goes to the exam', async ({
     freshLearner,
   }) => {
+    test.skip(!FIXTURE_TUTOR, NEEDS_FIXTURE);
     const learner = freshLearner;
     const violations = watchConsole(learner);
     const tutor = await openDiscussion(learner);
@@ -99,6 +109,7 @@ test.describe('the discussion page', () => {
   });
 
   test('keeps the answer so far when it fails, with Try again', async ({ freshLearner }) => {
+    test.skip(!FIXTURE_TUTOR, NEEDS_FIXTURE);
     const learner = freshLearner;
     const violations = watchConsole(learner);
     const tutor = await openDiscussion(learner);
