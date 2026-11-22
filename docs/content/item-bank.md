@@ -1,7 +1,7 @@
 # Item bank: authoring spec
 
 What to write, in what shape, so placement questions can be seeded, served and never repeated for
-the same learner. See [PRODUCT_ARCHITECTURE.md](PRODUCT_ARCHITECTURE.md) §1.2 for why the bank
+the same learner. See [architecture/product.md](../architecture/product.md) §1.2 for why the bank
 exists.
 
 Audience: whoever adds a language, or replaces a question that turned out to be wrong.
@@ -156,7 +156,7 @@ comparison_and_quantity    information_structure_and_pragmatics
 Vocabulary and reading items use the closest fit, or
 `information_structure_and_pragmatics`. The same list labels grammar lessons (`Lesson.topic`), so a
 grammar item and the lesson that teaches it speak the same language. The other lesson kinds carry
-a `theme` instead (see [LESSONS.md](LESSONS.md)). Generated items are held to the list too:
+a `theme` instead (see [content/lessons.md](lessons.md)). Generated items are held to the list too:
 vocabulary under `VOCABULARY_TOPICS` in `packages/shared/src/schemas/item.ts` (the word classes,
 plus `information_structure_and_pragmatics` for set phrases), reading always under
 `information_structure_and_pragmatics`.
@@ -206,7 +206,7 @@ editing a question in the JSON file changes the row instead of creating a second
 A learner is not asked the same question twice: the draw excludes every question already tied to
 that user through `UserSeenQuestion`. It is keyed per user and not per run, so a retake cannot
 serve an old question either. The single exception is a cell the LLM could not refill in time
-(§6), step 3 of the cascade in [PRODUCT_ARCHITECTURE.md](PRODUCT_ARCHITECTURE.md) §1.2. Table
+(§6), step 3 of the cascade in [architecture/product.md](../architecture/product.md) §1.2. Table
 detail is in §7.2 there.
 
 There is deliberately no difficulty score, no served/correct counters and no calibration. Those
@@ -230,7 +230,7 @@ enough.
 A batch is retried once when a retry can help (rate limit, server error, a reply that breaks the
 schema), and a cell whose batch failed or added nothing is left alone for 10 minutes. A learner
 with nothing unseen left meanwhile gets the question they saw longest ago. The full cascade is in
-[PRODUCT_ARCHITECTURE.md](PRODUCT_ARCHITECTURE.md) §1.2. The code is in
+[architecture/product.md](../architecture/product.md) §1.2. The code is in
 `apps/api/src/question-generation/`.
 
 ---

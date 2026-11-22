@@ -64,7 +64,7 @@ import { LlmError, LlmFailure, LlmProvider, StructuredRequest } from "./llm.prov
 - `Logger` : le logger de NestJS. Il écrit des lignes dans le terminal avec un préfixe (ici `[GeminiProvider]`).
 - `QUESTION_CATEGORIES` : la liste des catégories (`vocabulary`, `grammar`, `reading`). Le constructeur s'en sert pour connaître tous les `purpose` possibles (section 5).
 - `z` : Zod. Cette fois c'est un **vrai import**, pas `import type`, car on appelle des fonctions de Zod à l'exécution : `z.toJSONSchema` et `z.prettifyError`. Dans `llm.provider.ts`, c'était `import type` parce que Zod n'y servait qu'aux types.
-- `llmRequestDuration`, `llmRequests`, `llmTokens` : trois métriques Prometheus, déclarées dans `src/metrics/metrics.ts`. Un histogramme pour la durée des appels, un compteur d'appels par issue, un compteur de tokens. Prometheus les lit, Grafana les affiche (voir `docs/MONITORING.md`, section 5).
+- `llmRequestDuration`, `llmRequests`, `llmTokens` : trois métriques Prometheus, déclarées dans `src/metrics/metrics.ts`. Un histogramme pour la durée des appels, un compteur d'appels par issue, un compteur de tokens. Prometheus les lit, Grafana les affiche (voir `docs/operations/monitoring.md`, section 5).
 - `LlmError` (une classe, utilisée avec `new`), `LlmFailure` (le type des raisons d'échec, section 12), `LlmProvider` (l'interface qu'on implémente), `StructuredRequest` (le type de la requête).
 
 ---

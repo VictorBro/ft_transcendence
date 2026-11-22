@@ -1,7 +1,7 @@
 /**
  * What lessons:author prints while it runs and at the end (#83): one line
  * per lesson, then the totals, the time per lesson by kind (the figure
- * docs/LESSONS.md quotes) and an estimate for the rest of the level. The
+ * docs/content/lessons.md quotes) and an estimate for the rest of the level. The
  * same figures go to a JSON report in WORK_DIR.
  */
 import { join } from 'node:path';

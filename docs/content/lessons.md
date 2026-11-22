@@ -1,9 +1,9 @@
 # Lessons: content, seeding and play
 
 What a lesson is, how many there are, how they are planned, written, checked and seeded, how a
-learner plays one, and how an attempt is scored. [PRODUCT_ARCHITECTURE.md](PRODUCT_ARCHITECTURE.md)
+learner plays one, and how an attempt is scored. [architecture/product.md](../architecture/product.md)
 says how the daily goal and the all lessons page use them, and
-[ARCHITECTURE.md](ARCHITECTURE.md) §5 traces the routes. Why the lesson model is the one of the
+[architecture/overview.md](../architecture/overview.md) §5 traces the routes. Why the lesson model is the one of the
 lesson prototype is in [#137](https://github.com/VictorBro/ft_transcendence/issues/137).
 
 Audience: whoever writes an outline, runs the authoring kit, checks a level, or needs to explain the
@@ -43,7 +43,7 @@ A grammar lesson has a `topic` and no `theme`. The other three kinds have a `the
 `topic`. Never both, never neither.
 
 **Topics** (13), the grammar categories the question bank already uses
-([ITEM_BANK.md](ITEM_BANK.md) §4):
+([content/item-bank.md](item-bank.md) §4):
 
 ```
 nouns_and_determiners      pronouns                  verbs_morphology
@@ -90,7 +90,7 @@ the text search matches them. A title is at most 80 characters and a summary at 
 lessons finished that day (`LESSON_MINUTES = 10`). The ready lessons are planned longer than that:
 their `estimatedMinutes` run from 8 to 37, with a median of 17.5. Whether the goal keeps counting
 lessons or the kit keeps lessons nearer ten minutes is still open for the team
-([PRODUCT_ARCHITECTURE.md](PRODUCT_ARCHITECTURE.md) §1.3).
+([architecture/product.md](../architecture/product.md) §1.3).
 
 ---
 
@@ -262,7 +262,7 @@ entry, and the content file repeats the brief's `title` and `objective` word for
 ### What the seed does
 
 `db:seed` (`apps/api/prisma/seed.ts`) runs after every migration: `make`, `make seed`, and the
-`migrate` service of a deployment ([DEPLOYMENT.md](DEPLOYMENT.md) §5). For lessons, `seedLessons`:
+`migrate` service of a deployment ([operations/deployment.md](../operations/deployment.md) §5). For lessons, `seedLessons`:
 
 1. Reads every outline and builds one row per entry, with its position, title = working title,
    summary = intent, brief `{}`, content null and `ready = false`. A duplicate id stops the seed.
@@ -320,7 +320,7 @@ The brief of `fr-subject-pronouns`, shortened:
 ```
 
 The full shape of each kind is in the schemas of `packages/shared/src/lessons/schemas/`, and card by
-card in [milestone2-data-model.html](milestone2-data-model.html#files).
+card in [milestone2-data-model.html](../site/milestone2-data-model.html#files).
 
 ### Who carries the files where
 
@@ -479,7 +479,7 @@ The checks catch shapes, not mistakes.
 inventory, word list, course or test.** You may look at Profile Deutsch, the Goethe word lists,
 the English Vocabulary Profile or the Inventaire linguistique to judge what belongs at a level,
 but the entries, sentences and texts must be ours. The same rule holds for the question bank
-([ITEM_BANK.md](ITEM_BANK.md) §1).
+([content/item-bank.md](item-bank.md) §1).
 
 ---
 
@@ -552,7 +552,7 @@ After the results, `POST attempt` is a retake: the old attempt goes, and a new o
 secret, so new refs and a new order.
 
 `ft_lesson_attempts_total{lang, event}` counts the attempts `started` (a retake too) and
-`completed` ([MONITORING.md](MONITORING.md) §5).
+`completed` ([operations/monitoring.md](../operations/monitoring.md) §5).
 
 ### What no web app can stop
 
@@ -651,7 +651,7 @@ visit. The turns live in the page only: leaving the page forgets them.
 **What the server does** (#150): `POST /api/courses/:lang/lessons/:id/discussion` with
 `{ attemptId, message, history }` (`LessonDiscussionSchema`). It answers as **Server-Sent Events**
 on that one response: `delta { text }` for each piece, then `done {}`, or `error { code }`, with a
-`: heartbeat` comment every 15 s. [ARCHITECTURE.md](ARCHITECTURE.md) §5 traces it.
+`: heartbeat` comment every 15 s. [architecture/overview.md](../architecture/overview.md) §5 traces it.
 
 | Rule | How |
 |---|---|
@@ -660,7 +660,7 @@ on that one response: `delta { text }` for each piece, then `done {}`, or `error
 | It can explain the learner's mistakes | The prompt also holds the attempt's wrong practice answers, at most 20, read from `LessonAttempt.answers`. Exam answers never: none is locked before the discussion page |
 | It answers in the interface language | The prompt asks for the learner's interface locale, with course-language examples |
 | Nothing is stored | The browser sends the last 10 turns back with each message. The server keeps no transcript |
-| Bounded | A message is at most 500 characters, an answer at most 1,000 output tokens, and the learner's and global per-minute and per-day limits apply ([DEPLOYMENT.md](DEPLOYMENT.md) §5) |
+| Bounded | A message is at most 500 characters, an answer at most 1,000 output tokens, and the learner's and global per-minute and per-day limits apply ([operations/deployment.md](../operations/deployment.md) §5) |
 
 With `LLM_PROVIDER=fixture`, the default in development and CI, the tutor gives one canned answer.
 With `LLM_PROVIDER=disabled`, every message ends with the error `llm.disabled`.

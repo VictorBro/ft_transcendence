@@ -21,7 +21,7 @@ Allows you, from branch `main`, to switch into a specific commit in detached `HE
 
 # Monitoring in development
 
-`make dev` leaves the monitoring stack off: its seven services sit behind the `monitoring` compose profile, so a laptop stays light. It also removes the monitoring containers a previous `make` left running, and keeps their data. `make`, `make up` and the server always run it. The full picture is in [MONITORING.md](MONITORING.md).
+`make dev` leaves the monitoring stack off: its seven services sit behind the `monitoring` compose profile, so a laptop stays light. It also removes the monitoring containers a previous `make` left running, and keeps their data. `make`, `make up` and the server always run it. The full picture is in [operations/monitoring.md](monitoring.md).
 
 ### `make monitoring-up`
 Starts the dev stack plus Prometheus, Alertmanager, Grafana and the exporters. It goes through `make dev`, so migrations, the seed and the certificate export run as usual, and the first run writes the two Grafana secrets into `.env`.
@@ -33,7 +33,7 @@ Starts the dev stack plus Prometheus, Alertmanager, Grafana and the exporters. I
 The config under `infra/monitoring/` is baked into three small images, not bind-mounted. Run `make monitoring-up` again after an edit: it rebuilds them in seconds and recreates what changed.
 - Rules: `./scripts/check-monitoring-config.sh` runs promtool and the rule unit tests without starting the stack.
 - Dashboards: Grafana refuses to save a provisioned dashboard, on purpose. Edit it there, then Export, Export as JSON, **Classic** model, with "Export the dashboard to use in another instance" **off**. Replace the file in `infra/monitoring/grafana/dashboards/`, keep `"id": null` and the uid, run `make format`, then `make monitoring-up`.
-- Adding a metric, a panel or an alert has a short checklist each in [MONITORING.md](MONITORING.md) section 7.
+- Adding a metric, a panel or an alert has a short checklist each in [operations/monitoring.md](monitoring.md) section 7.
 
 ### `make monitoring-check`
 Every scrape target up, every rule healthy, an Alertmanager found, and every series a rule or panel reads present. It polls for up to 150 s, so it can run straight after `make monitoring-up`. `make` runs it too.

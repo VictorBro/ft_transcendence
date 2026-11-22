@@ -196,7 +196,7 @@ const TIME_LIMIT_S: Record<QuestionCategory, Record<Level, number>> = {
 - `Record<K, V>` (déjà vu dans la factory) : un objet avec **toutes** les clés `K`, chacune contenant un `V`.
 - Ici c'est imbriqué : pour chaque catégorie, un objet qui donne un nombre pour chaque niveau.
 - L'avantage : si on oublie un niveau ou une catégorie, **ça ne compile pas**. TypeScript exige les 3 × 6 cases.
-- Les valeurs viennent du tableau de `docs/ITEM_BANK.md`, en prenant le **haut** de chaque fourchette, car un passage généré peut être long.
+- Les valeurs viennent du tableau de `docs/content/item-bank.md`, en prenant le **haut** de chaque fourchette, car un passage généré peut être long.
 
 Avant (#69), c'était le **modèle** qui donnait `timeLimitS` dans sa réponse. Maintenant le modèle ne le donne plus, et c'est ce tableau qui décide. Un modèle n'a aucune raison d'être bon pour choisir un chrono.
 

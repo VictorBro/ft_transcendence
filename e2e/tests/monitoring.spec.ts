@@ -4,7 +4,7 @@ import { expect, test, type APIRequestContext } from '@playwright/test';
  * The monitoring module's security surface, through Caddy: Grafana is the one
  * monitoring service anyone outside the compose network can reach, and only
  * behind its own login. Prometheus, Alertmanager and every metrics endpoint
- * stay internal. docs/MONITORING.md lists what is exposed and why.
+ * stay internal. docs/operations/monitoring.md lists what is exposed and why.
  */
 
 const DASHBOARD_UIDS = ['ft-overview', 'ft-api', 'ft-learning', 'ft-infrastructure'];
@@ -87,7 +87,7 @@ test.describe.serial('monitoring, as the Grafana admin', () => {
 
     expect(
       response.status(),
-      'GRAFANA_ADMIN_PASSWORD in .env does not match grafana-data: reset it, see docs/MONITORING.md',
+      'GRAFANA_ADMIN_PASSWORD in .env does not match grafana-data: reset it, see docs/operations/monitoring.md',
     ).toBe(200);
   });
 

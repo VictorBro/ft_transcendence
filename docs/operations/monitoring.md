@@ -3,8 +3,8 @@
 The Major module "Monitoring system with Prometheus and Grafana": Prometheus collects metrics
 from the app, the stores and the host, Grafana shows them on four dashboards behind its own
 login, and alert rules post to Discord through Alertmanager.
-Companions: [ARCHITECTURE.md](ARCHITECTURE.md) (where it sits in the stack),
-[DEPLOYMENT.md](DEPLOYMENT.md) (the server), [VERSIONS.md](VERSIONS.md) (image sources and the Prometheus LTS line).
+Companions: [architecture/overview.md](../architecture/overview.md) (where it sits in the stack),
+[operations/deployment.md](deployment.md) (the server), [operations/versions.md](versions.md) (image sources and the Prometheus LTS line).
 
 | The subject asks for | Here |
 |---|---|
@@ -99,7 +99,7 @@ flowchart LR
 | The `/grafana` route and the `:2020` site | `infra/caddy/Caddyfile`, `Caddyfile.prod` | the existing bind mount, the server's `Caddyfile` |
 
 Baked rather than bind-mounted, because the server has no checkout and holds exactly three files
-(DEPLOYMENT.md). images.yml publishes the three images with the same revision label as `api` and
+(operations/deployment.md). images.yml publishes the three images with the same revision label as `api` and
 `web`, so `deploy.sh` rolls out a rule or dashboard change like any code change, and dev, CI and
 the server run the same config. The cost: a config edit in dev needs a rebuild, which
 `make monitoring-up` does in seconds.
@@ -119,7 +119,7 @@ The user is `admin`. There is no other account and no sign-up.
 `make`, `make up` and `make monitoring-up` run `make env-file` first. It creates `.env` from
 `.env.example` if there is none, and writes 48 random hex characters into
 `GRAFANA_ADMIN_PASSWORD` and `GRAFANA_SECRET_KEY` when they are empty. It never changes a value
-that is set. The server's `.env` is filled by hand (DEPLOYMENT.md).
+that is set. The server's `.env` is filled by hand (operations/deployment.md).
 
 ### The password is applied once
 
@@ -207,7 +207,7 @@ learner who has seen every question at that level and gets an old one again.
 | `refused: {{limit}}` | `sum by (limit) (increase(ft_llm_discussion_limited_total[$__rate_interval]))` | Messages answered 429 before any LLM call: `user_minute` or `user_day` (one learner too fast, `llm.tooManyMessages`), `global_minute` (everyone together, `llm.rateLimited`) |
 
 A steady `global_minute` means the shared key's budget is too small for the traffic: raise
-`LLM_DISCUSSION_GLOBAL_PER_MINUTE` only if the key's quota allows it ([DEPLOYMENT.md](DEPLOYMENT.md)
+`LLM_DISCUSSION_GLOBAL_PER_MINUTE` only if the key's quota allows it ([operations/deployment.md](deployment.md)
 §5). `rate_limited` among the outcomes means Google refused despite our own limit, so ours is set
 above the key's quota. A learner who closes the page mid-answer shows in neither: no outcome is
 counted for a cancelled stream.
@@ -328,7 +328,7 @@ The webhook is a credential: anyone holding the URL can post to the channel. So:
 
 To create one in Discord: Server Settings, Integrations, Webhooks, New Webhook, pick the channel,
 Copy Webhook URL. Then add it to `.env` (on the server, with the `read -rs` line in
-DEPLOYMENT.md, so it stays out of your shell history) and run `make up`, `make monitoring-up`, or
+operations/deployment.md, so it stays out of your shell history) and run `make up`, `make monitoring-up`, or
 on the server `docker compose -f compose.deploy.yml up -d`. Compose recreates alertmanager because
 its environment changed.
 
@@ -631,7 +631,7 @@ means the webhook is empty in the environment alertmanager got. Otherwise, check
 whose `reason` label says why.
 
 **Containers restart on the server, or `HostMemoryLow` fires.** Memory. `free -m` and
-`docker stats --no-stream`, then [DEPLOYMENT.md](DEPLOYMENT.md), Memory. Each monitoring service
+`docker stats --no-stream`, then [operations/deployment.md](deployment.md), Memory. Each monitoring service
 has a hard `mem_limit`, so a runaway one is OOM-killed and restarted instead of the kernel
 picking the app.
 

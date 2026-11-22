@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 /**
- * The i18n module (SUBJECT_SUMMARY.md: "i18n with ≥3 complete languages, language
+ * The i18n module (docs/subject/summary.md: "i18n with ≥3 complete languages, language
  * switcher, all text translatable") is otherwise invisible to the rest of the
  * suite: every other spec is deliberately pinned to /en (see routes.ts). This is
  * the one place that proves the other two languages are real, the switcher

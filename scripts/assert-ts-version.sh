@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Guards the TypeScript hold in docs/VERSIONS.md.
+# Guards the TypeScript hold in docs/operations/versions.md.
 #
 # TypeScript 7 is npm `latest` and ships no compiler API until 7.1, which
 # typescript-eslint (peer `typescript <6.1.0`), @nestjs/cli and Next's type
@@ -106,7 +106,7 @@ if [ "$failures" -ne 0 ]; then
   cat >&2 <<EOF
 ${failures} check(s) failed.
 
-typescript must be exactly ${EXPECTED} everywhere. See docs/VERSIONS.md (held back: TypeScript).
+typescript must be exactly ${EXPECTED} everywhere. See docs/operations/versions.md (held back: TypeScript).
 Fix by pinning the exact version in the offending manifest and re-running
 'pnpm install --lockfile-only', not by relaxing this script.
 EOF

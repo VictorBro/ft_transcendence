@@ -1,7 +1,7 @@
 # Deploying to Oracle Cloud
 
 Live at **https://transcendence.dpdns.org** on `140.238.209.2`. Grafana is at
-**https://transcendence.dpdns.org/grafana** ([MONITORING.md](MONITORING.md)).
+**https://transcendence.dpdns.org/grafana** ([operations/monitoring.md](monitoring.md)).
 
 Three files go on the server. Everything else comes from `ghcr.io`, which is public, so the
 host needs no registry login and no checkout.
@@ -131,7 +131,7 @@ channel; the rest of the template is already correct.
 | `ACME_EMAIL` | a real address |
 | `SESSION_SECRET` | `openssl rand -hex 32` |
 | `POSTGRES_PASSWORD` | `openssl rand -hex 32`, **hex not base64**: it goes into `DATABASE_URL` and a `/` breaks the parse |
-| `GRAFANA_ADMIN_PASSWORD` | `openssl rand -hex 24`. Applied only when the `grafana-data` volume is created; changing it later needs a reset ([MONITORING.md](MONITORING.md) section 2) |
+| `GRAFANA_ADMIN_PASSWORD` | `openssl rand -hex 24`. Applied only when the `grafana-data` volume is created; changing it later needs a reset ([operations/monitoring.md](monitoring.md) section 2) |
 | `GRAFANA_SECRET_KEY` | `openssl rand -hex 32`. Set once: changing it breaks what Grafana has encrypted |
 | `DISCORD_WEBHOOK_URL` | optional. Empty: alerts are only visible in Grafana |
 | `LLM_PROVIDER` | **required**: `fixture`, `gemini` or `disabled` (below). `compose.deploy.yml` refuses to start without it |
@@ -157,7 +157,7 @@ checked: a wrong model id shows as `http_error` on the first call. `compose.yml`
 
 Empty means the default. The three discussion limits are counted in Redis before any LLM call;
 over one, the api answers 429 with `Retry-After` and `retryAfter` in the body, and
-`ft_llm_discussion_limited_total{limit}` counts it ([MONITORING.md](MONITORING.md) §5).
+`ft_llm_discussion_limited_total{limit}` counts it ([operations/monitoring.md](monitoring.md) §5).
 
 `LESSON_STUB` is gone. It used to open a `PUT …/result` route that took a typed score, for dev
 and CI before the lesson page existed; the route and the variable were removed with the
@@ -226,7 +226,7 @@ unfinished attempts, in the same transaction; results stay.
 
 | When | What | Where |
 | --- | --- | --- |
-| Authoring | Outlines, briefs and lesson files are written and committed | a member's machine, Claude Code ([LESSONS.md](LESSONS.md) §7) |
+| Authoring | Outlines, briefs and lesson files are written and committed | a member's machine, Claude Code ([content/lessons.md](../content/lessons.md) §7) |
 | Build | images.yml builds `api`, `web`, `tooling` and the monitoring images; `tooling` carries `content/` | GitHub Actions, pushed to GHCR |
 | Deploy | `migrate`: `prisma migrate deploy`, then `db:seed` | the tooling image, on the server |
 | Runtime | The api reads lessons from Postgres and calls the LLM only for restocks and discussions | the `api` container, which has no `content/` |
@@ -399,7 +399,7 @@ caddy running on the old one.
 
 **5. Check.** Open https://transcendence.dpdns.org/grafana and log in as `admin`, with the
 password from `grep GRAFANA_ADMIN_PASSWORD .env`. Overview should be green. With a webhook set,
-send a test alert ([MONITORING.md](MONITORING.md) section 4, with
+send a test alert ([operations/monitoring.md](monitoring.md) section 4, with
 `docker compose -f compose.deploy.yml` in place of `docker compose`). Then watch `free -m` and
 `docker stats --no-stream` for a day before trusting the limits.
 

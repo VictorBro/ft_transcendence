@@ -1,7 +1,7 @@
 # Technical Plan
 
 Status: **adopted**. Written before the scaffold, kept as the record of the infrastructure decisions; where the build differs, this file says so.
-Companions: [SUBJECT_SUMMARY.md](SUBJECT_SUMMARY.md) (requirements), [VERSIONS.md](VERSIONS.md) (what moves together, what is held back).
+Companions: [subject/summary.md](../subject/summary.md) (requirements), [operations/versions.md](../operations/versions.md) (what moves together, what is held back).
 
 Product: **AI-driven foreign language learning platform**. An authored lesson catalogue with
 server-scored lessons, adaptive CEFR placement whose question bank an LLM restocks, an LLM tutor
@@ -15,11 +15,11 @@ before each lesson exam, and live social features over WebSockets.
 |---|---|---|
 | Frontend | **Next.js** (App Router) | Framework major module. SSR minor point. `next-intl` for the i18n module. Public pages indexable. |
 | Backend | **NestJS** | WebSocket gateways, DI (mockable LLM provider), guards, throttler, Swagger, validation pipes. Module boundaries map onto team members. |
-| Database | **Postgres 18 + pgvector** | Relational data. pgvector was chosen for RAG, which was dropped (PRODUCT_ARCHITECTURE.md §2); the extension stays in the image, unused. |
+| Database | **Postgres 18 + pgvector** | Relational data. pgvector was chosen for RAG, which was dropped (architecture/product.md §2); the extension stays in the image, unused. |
 | ORM | **Prisma 7** | Minor module; `schema.prisma` doubles as the README schema doc. |
 | Cache / sessions | **Redis** | Sessions, placement runs, the lesson discussion's rate limits, presence. |
 | Proxy | **Caddy** | Single TLS entry point (mandatory HTTPS). Same-origin kills CORS; httpOnly cookies just work. Internal CA for dev certs. |
-| Real-time | **socket.io** | Presence, live course and friend updates, direct messages. The lesson discussion streams over Server-Sent Events on a REST route instead (ARCHITECTURE.md §5). |
+| Real-time | **socket.io** | Presence, live course and friend updates, direct messages. The lesson discussion streams over Server-Sent Events on a REST route instead (architecture/overview.md §5). |
 | Monorepo | **pnpm workspaces + Turborepo** | Strict node_modules; cached tasks. |
 | Contracts | **Zod in `packages/shared`** | One schema validates frontend and backend (mandatory requirement). |
 | Tests | **Vitest, Supertest, Playwright** | Units, API e2e, browser e2e + console gate. |
@@ -178,7 +178,7 @@ where it matters and keeps feedback fast where it doesn't.
 
 | Workflow | Trigger | Jobs |
 |---|---|---|
-| `ci.yml` | PR, push | Native: format check, lint, typecheck, TS-version assert (VERSIONS.md, held back: TypeScript). Docker `ci` stage: unit tests + coverage, Supertest e2e (compose db). Then build. |
+| `ci.yml` | PR, push | Native: format check, lint, typecheck, TS-version assert (operations/versions.md, held back: TypeScript). Docker `ci` stage: unit tests + coverage, Supertest e2e (compose db). Then build. |
 | `e2e.yml` | PR, push | Two jobs per browser (`lesson`, `rest`), each with a prod-target compose up, then Playwright in its own image (browsers and their system packages included): user flows, **console gate**, **legal pages** (`/privacy`, `/terms` return 200 with real content). |
 | `hygiene.yml` | PR, push | gitleaks, commitlint, `.env.example` drift, fail if `.env` staged, `prisma migrate diff`. |
 | `images.yml` | push to any branch; `v*` tags | Multi-arch build on every commit; tags per table below. |
@@ -243,7 +243,7 @@ stale branch tags, per-commit pushes accumulate fast.
 
 ## 6. Product, AI and data model
 
-Moved to [PRODUCT_ARCHITECTURE.md](PRODUCT_ARCHITECTURE.md): the learner journey, the module
+Moved to [architecture/product.md](product.md): the learner journey, the module
 list and their points, the AI provider and its cost controls, and the schema. One source of
 truth, so the two documents cannot disagree.
 
@@ -262,7 +262,7 @@ truth, so the two documents cannot disagree.
    [#150](https://github.com/VictorBro/ft_transcendence/issues/150) "feat(api): stream the lesson
    discussion, with error handling and rate limits" (PR #201): Server-Sent Events on
    `POST /api/courses/:lang/lessons/:id/discussion`, `streamText` on the fixture and on Gemini,
-   with its window in #151. It streams over SSE, not over the socket (ARCHITECTURE.md §5).
+   with its window in #151. It streams over SSE, not over the socket (architecture/overview.md §5).
 6. **Slice tests**: unit per layer, one Supertest e2e, one Playwright flow, console gate live.
 7. **Images**: multi-arch manifest on GHCR.
 8. **Handoff**: README skeleton with all mandatory sections, **including the Resources section
@@ -277,10 +277,10 @@ The team clones the slice pattern per feature instead of inventing five differen
 
 | Risk | Mitigation |
 |---|---|
-| `pnpm up --latest` pulls TS 7 | Exact pin + CI version assert (VERSIONS.md, held back: TypeScript) |
+| `pnpm up --latest` pulls TS 7 | Exact pin + CI version assert (operations/versions.md, held back: TypeScript) |
 | Schema and migrations drift apart | CI `migrate diff` on every PR |
-| Node 26 LTS lands mid-project | Stay on 24 until a stable Next fixes its Node 26 regression (VERSIONS.md, held back: Node) |
+| Node 26 LTS lands mid-project | Stay on 24 until a stable Next fixes its Node 26 regression (operations/versions.md, held back: Node) |
 | Hydration warnings trip console gate | Gate live from day one; surfaces at the causing commit |
 | Slow HMR on bind mounts | Watch during step 5. Fallback: `apps/web` to Vite. **Costs the SSR minor point (22 → 21, still above the 19 that count)**; budget still clears 14. |
-| LLM spend | Fixture provider in CI, lessons authored offline, per-learner and global discussion limits, capped answers, see PRODUCT_ARCHITECTURE.md §5 |
+| LLM spend | Fixture provider in CI, lessons authored offline, per-learner and global discussion limits, capped answers, see architecture/product.md §5 |
 | Uneven commit distribution | CODEOWNERS, required reviews, periodic `git shortlog -sn` |

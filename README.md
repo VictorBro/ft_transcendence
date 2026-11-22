@@ -87,7 +87,7 @@ no question is generated. To use Gemini, create a key at
 The project runs on a free key, on which Google may use what learners write to
 the tutor to train its models: the Privacy Policy (`/privacy`, section 4) says
 so, and moving to a paid key or another vendor means changing it first
-(docs/PRODUCT_ARCHITECTURE.md section 5).
+(docs/architecture/product.md section 5).
 
 For day-to-day development use `make dev`, which starts the same stack with hot
 reload. `make help` lists every target.
@@ -126,15 +126,15 @@ Known limits, once the lessons land (#146 to #151):
 | Contracts          | Zod in `packages/shared`                  | One schema validates both the browser and the server                                                               |
 | Tests              | Vitest, Supertest, Playwright             | Units, API integration, browser end to end                                                                         |
 
-Full reasoning in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) and
-[docs/PRODUCT_ARCHITECTURE.md](docs/PRODUCT_ARCHITECTURE.md).
+Full reasoning in [docs/architecture/overview.md](docs/architecture/overview.md) and
+[docs/architecture/product.md](docs/architecture/product.md).
 
 ---
 
 ## Database Schema
 
 <!-- TODO: diagram plus tables and relations. The model is designed in
-     docs/PRODUCT_ARCHITECTURE.md section 7; copy it here as it gets built. -->
+     docs/architecture/product.md section 7; copy it here as it gets built. -->
 
 TODO
 
@@ -148,7 +148,7 @@ TODO
 
 <!-- TODO: every claimed module, Major = 2 / Minor = 1, the point total, a
      justification for each, how it was implemented and by whom. The planned
-     set is in docs/PRODUCT_ARCHITECTURE.md section 2. -->
+     set is in docs/architecture/product.md section 2. -->
 
 ### Monitoring system with Prometheus and Grafana (Major, 2 points)
 
@@ -160,7 +160,7 @@ behind its own login, with sign-up and anonymous access off. 25 alert rules,
 unit-tested with promtool, go through Alertmanager to a Discord channel. Only Caddy
 publishes a port: Prometheus, Alertmanager, the exporters and the API's metrics
 port stay on the internal network. Details in
-[docs/MONITORING.md](docs/MONITORING.md).
+[docs/operations/monitoring.md](docs/operations/monitoring.md).
 
 TODO: the other modules.
 

@@ -155,7 +155,7 @@ footer{font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6}
 </head>
 <body>
 <main>
-<div class="navrow"><nav class="topnav" aria-label="Project docs"><a href="index.html" aria-current="page"><i class="ti ti-layout-dashboard" aria-hidden="true"></i>Overview</a><a href="milestone1-data-model.html"><i class="ti ti-git-compare" aria-hidden="true"></i>Data model · M1</a><a href="milestone2-data-model.html"><i class="ti ti-database" aria-hidden="true"></i>Data model · M2</a><a href="milestone3-data-model.html"><i class="ti ti-plug-connected" aria-hidden="true"></i>Data model · M3</a></nav><a class="prod" href="https://trans.vyantares.ch" title="The deployed app: trans.vyantares.ch"><i class="ti ti-rocket" aria-hidden="true"></i>production<i class="ti ti-arrow-up-right" aria-hidden="true"></i></a><a class="prod" href="https://transcendence.dpdns.org" title="The first deployment, on the VPS: transcendence.dpdns.org"><i class="ti ti-history" aria-hidden="true"></i>production (old)<i class="ti ti-arrow-up-right" aria-hidden="true"></i></a><a class="prod" href="https://bastian-schnitzler.github.io/lesson_prototype/" title="The lesson prototype: bastian-schnitzler.github.io/lesson_prototype"><i class="ti ti-flask" aria-hidden="true"></i>prototype<i class="ti ti-arrow-up-right" aria-hidden="true"></i></a><nav class="topnav repo" aria-label="ft_transcendence on GitHub"><span class="repo-l"><i class="ti ti-brand-github" aria-hidden="true"></i>ft_transcendence</span><a href="https://github.com/VictorBro/ft_transcendence"><i class="ti ti-code" aria-hidden="true"></i>code</a><a href="https://github.com/VictorBro/ft_transcendence/pulls"><i class="ti ti-git-pull-request" aria-hidden="true"></i>PRs</a><a href="https://github.com/users/VictorBro/projects/1"><i class="ti ti-layout-kanban" aria-hidden="true"></i>Kanban</a><a href="https://github.com/VictorBro/ft_transcendence/milestones"><i class="ti ti-flag" aria-hidden="true"></i>milestones</a><a href="https://github.com/VictorBro/ft_transcendence/issues"><i class="ti ti-circle-dot" aria-hidden="true"></i>issues</a></nav></div>
+<div class="navrow"><nav class="topnav" aria-label="Project docs"><a href="index.html" aria-current="page"><i class="ti ti-layout-dashboard" aria-hidden="true"></i>Overview</a><a href="site/milestone1-data-model.html"><i class="ti ti-git-compare" aria-hidden="true"></i>Data model · M1</a><a href="site/milestone2-data-model.html"><i class="ti ti-database" aria-hidden="true"></i>Data model · M2</a><a href="site/milestone3-data-model.html"><i class="ti ti-plug-connected" aria-hidden="true"></i>Data model · M3</a></nav><a class="prod" href="https://trans.vyantares.ch" title="The deployed app: trans.vyantares.ch"><i class="ti ti-rocket" aria-hidden="true"></i>production<i class="ti ti-arrow-up-right" aria-hidden="true"></i></a><a class="prod" href="https://transcendence.dpdns.org" title="The first deployment, on the VPS: transcendence.dpdns.org"><i class="ti ti-history" aria-hidden="true"></i>production (old)<i class="ti ti-arrow-up-right" aria-hidden="true"></i></a><a class="prod" href="https://bastian-schnitzler.github.io/lesson_prototype/" title="The lesson prototype: bastian-schnitzler.github.io/lesson_prototype"><i class="ti ti-flask" aria-hidden="true"></i>prototype<i class="ti ti-arrow-up-right" aria-hidden="true"></i></a><nav class="topnav repo" aria-label="ft_transcendence on GitHub"><span class="repo-l"><i class="ti ti-brand-github" aria-hidden="true"></i>ft_transcendence</span><a href="https://github.com/VictorBro/ft_transcendence"><i class="ti ti-code" aria-hidden="true"></i>code</a><a href="https://github.com/VictorBro/ft_transcendence/pulls"><i class="ti ti-git-pull-request" aria-hidden="true"></i>PRs</a><a href="https://github.com/users/VictorBro/projects/1"><i class="ti ti-layout-kanban" aria-hidden="true"></i>Kanban</a><a href="https://github.com/VictorBro/ft_transcendence/milestones"><i class="ti ti-flag" aria-hidden="true"></i>milestones</a><a href="https://github.com/VictorBro/ft_transcendence/issues"><i class="ti ti-circle-dot" aria-hidden="true"></i>issues</a></nav></div>
 <p class="eyebrow">ft_transcendence · project docs</p>
 <h1>Milestones</h1>
 <p class="intro">ft_transcendence is an AI-driven platform for learning a foreign language. A short adaptive test places each learner at a CEFR level, and a roadmap then gives them lessons sized to their daily goal. This page summarises the milestones in progress: what each one delivers, how its issues depend on each other, and the data model behind it.</p>
@@ -209,7 +209,7 @@ footer{font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6}
 </div>
 
 <h3>Data model</h3>
-<a class="dm" href="milestone1-data-model.html"><i class="ti ti-git-compare" aria-hidden="true"></i><div><b>Onboarding data model: spec vs code</b><span>Every format from the shared contract to the Redis run state, checked against main, with each difference between the issues and the code.</span></div></a>
+<a class="dm" href="site/milestone1-data-model.html"><i class="ti ti-git-compare" aria-hidden="true"></i><div><b>Onboarding data model: spec vs code</b><span>Every format from the shared contract to the Redis run state, checked against main, with each difference between the issues and the code.</span></div></a>
 </div>
 </section>
 
@@ -225,7 +225,7 @@ footer{font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6}
 <div class="ms-body">
 <!-- How a lesson works (Milestone 2, as built). Every figure here is taken from content/ and the code on main:
      3,990 outline entries, 216 ready lessons (12 per language and level), the four kinds and their players,
-     the five page roles of the plan, and the discussion route. LESSONS.md is the prose version. -->
+     the five page roles of the plan, and the discussion route. content/lessons.md is the prose version. -->
 <h3>How a lesson works</h3>
 <!-- The ladder from planned to playable: each step is a subset of the one before. -->
 <div class="ladder" role="list" aria-label="From outline entry to ready lesson">
@@ -390,7 +390,7 @@ footer{font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6}
 </div></div></div>
 
 <h3>Data model</h3>
-<a class="dm" href="milestone2-data-model.html"><i class="ti ti-database" aria-hidden="true"></i><div><b>Lessons data model</b><span>Every lesson format, from the prototype's lesson files through the seed, the Prisma models and the player views to the attempt, discussion and gamification APIs, with the issues that reference each one.</span></div></a>
+<a class="dm" href="site/milestone2-data-model.html"><i class="ti ti-database" aria-hidden="true"></i><div><b>Lessons data model</b><span>Every lesson format, from the prototype's lesson files through the seed, the Prisma models and the player views to the attempt, discussion and gamification APIs, with the issues that reference each one.</span></div></a>
 </div>
 </section>
 
@@ -460,13 +460,13 @@ footer{font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6}
 </div></div></div>
 
 <h3>Data model</h3>
-<a class="dm" href="milestone3-data-model.html"><i class="ti ti-plug-connected" aria-hidden="true"></i><div><b>Social and real-time data model</b><span>The socket events and rooms, the friendship and message tables, presence in Redis, the REST schemas and the modules, with the issues that reference each one.</span></div></a>
+<a class="dm" href="site/milestone3-data-model.html"><i class="ti ti-plug-connected" aria-hidden="true"></i><div><b>Social and real-time data model</b><span>The socket events and rooms, the friendship and message tables, presence in Redis, the REST schemas and the modules, with the issues that reference each one.</span></div></a>
 </div>
 </section>
 
 <footer>Issue states, assignees and linked PRs as of 20 November 2026, the last merge on main being PR #208. All three refresh from the GitHub API when the page loads (cached for five minutes); a linked PR is one whose description says "closes #N". <span id="live"></span> Source: <a href="https://github.com/VictorBro/ft_transcendence">VictorBro/ft_transcendence</a> · <a href="https://github.com/VictorBro/ft_transcendence/milestones">all milestones</a>.</footer>
 </main>
-<script src="gh-status.js"></script>
+<script src="site/gh-status.js"></script>
 <script>
 const repo='VictorBro/ft_transcendence';
 const issueUrl=n=>'https://github.com/'+repo+'/issues/'+n;

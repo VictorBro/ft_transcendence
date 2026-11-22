@@ -252,7 +252,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      # TECHNICAL_PLAN.md section 5:
+      # docs/architecture/technical-plan.md section 5:
       #   side branch  -> <branch>-<shortsha>
       #   main         -> main-<shortsha> and latest
       #   tag vX.Y.Z   -> X.Y.Z, X.Y, X

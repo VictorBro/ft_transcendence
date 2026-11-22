@@ -1,9 +1,9 @@
 # Product Architecture
 
 The product, the modules, the AI layer and the schema, as built at the end of Milestone 2.
-[TECHNICAL_PLAN.md](TECHNICAL_PLAN.md) covers the infrastructure around it (repository layout,
-containers, CI and build order), [ARCHITECTURE.md](ARCHITECTURE.md) the containers and the request
-paths, and [LESSONS.md](LESSONS.md) the lesson content, its seeding and the lesson player.
+[architecture/technical-plan.md](technical-plan.md) covers the infrastructure around it (repository layout,
+containers, CI and build order), [architecture/overview.md](overview.md) the containers and the request
+paths, and [content/lessons.md](../content/lessons.md) the lesson content, its seeding and the lesson player.
 
 The subject lists this project by name in chapter V.6:
 
@@ -26,7 +26,7 @@ sign up / log in  →  onboarding  →  placement   →    daily goal    →    
 |---|---|---|
 | **Onboarding** | Two questions: which language to learn, and a daily goal (10, 30 or 60 minutes). Repeated per language, so adding a second course starts here again | Creates a `UserLevel` row for that `(user, language)`. `level` stays null until placement sets it. No AI call. |
 | **Placement** | One question at a time, each with its own countdown, then a red and green report. Skippable by a learner who already knows their level, and overridable if they disagree with the result | Binary search over the six CEFR levels, in **our code**. Questions are multiple choice, so scoring is a string comparison, and the LLM restocks a cell in the background once a learner is down to 3 unseen questions in it. Writes `UserLevel.level`. See §1.2 |
-| **Daily goal** | Today's lessons from the level's syllabus: the ones that meet the goal, three extra, the streak, the level's progress, XP and rank, and the daily challenge. Nothing is locked: any ready lesson of the course language can be played, and the all lessons page lists the whole level, "Coming soon" rows included | Reads the seeded `Lesson` catalogue for (language, level) and the course's `LessonResult` rows, and proposes the lowest **ready** lessons not yet passed (§1.3). Writes nothing. No AI call. How the syllabus is sized, written and seeded is in [LESSONS.md](LESSONS.md) |
+| **Daily goal** | Today's lessons from the level's syllabus: the ones that meet the goal, three extra, the streak, the level's progress, XP and rank, and the daily challenge. Nothing is locked: any ready lesson of the course language can be played, and the all lessons page lists the whole level, "Coming soon" rows included | Reads the seeded `Lesson` catalogue for (language, level) and the course's `LessonResult` rows, and proposes the lowest **ready** lessons not yet passed (§1.3). Writes nothing. No AI call. How the syllabus is sized, written and seeded is in [content/lessons.md](../content/lessons.md) |
 | **Lesson** | The lesson's start page, then the player: presentation and practice pages one at a time, each practice page corrected as soon as it is checked, a discussion with the lesson's tutor, then a timed exam (§1.4) | Plays a lesson written ahead and committed to the repo. The server runs the attempt in `LessonAttempt`: it sends only the page at the cursor, checks every answer and owns the exam timer. One LLM call per discussion message, streamed. Nothing else in a lesson calls the LLM |
 | **Results** | The score, every answer with its correction, the lesson counted toward today's goal pass or fail, and the XP, challenge and achievements it earned | Score computed **in code** from the answers the server stored, written once when the last page locks. The course's `LessonResult` keeps the best score, the streak moves when the goal becomes met, and the gamification columns and `UserAchievement` are written in the same transaction. No AI call |
 
@@ -230,7 +230,7 @@ slower. A syllabus per goal would mean three copies of every level to generate a
 learner dropping from 60 to 10 would need their finished lessons mapped onto a different list.
 Every language has the same number of outline entries per level, from 120 at A1 to 320 at C2:
 3,990 `Lesson` rows in all, of which **216 are ready, the first 12 of each language and level**.
-How many there are and how they are split by kind is in [LESSONS.md](LESSONS.md) §0 to §3, how the
+How many there are and how they are split by kind is in [content/lessons.md](../content/lessons.md) §0 to §3, how the
 seed sets `ready` in §4, and how they are written in §7.
 
 What it must never do is gate content. A learner past their goal keeps going if they want; it
@@ -242,7 +242,7 @@ open any ready lesson of the course language, of any level, and every finish cou
 
 A lesson is **written ahead, not generated**: its exercises, answer keys, exam and scoring are in
 one or two committed JSON files, checked by the validators of the lesson prototype and copied into
-`Lesson.brief` and `Lesson.content` by the seed ([LESSONS.md](LESSONS.md) §4). The Milestone 2
+`Lesson.brief` and `Lesson.content` by the seed ([content/lessons.md](../content/lessons.md) §4). The Milestone 2
 replan ([#137](https://github.com/VictorBro/ft_transcendence/issues/137)) replaced the earlier
 plan, where a tutor turned a short brief into exercises at runtime with RAG grounding and caches.
 None of that was built.
@@ -268,7 +268,7 @@ A learner with a 10-minute goal who opens a grammar lesson from today's proposal
 | Exam pages | A countdown per page, no correction | The deadline is set when the page is sent; a late page locks blank |
 | Results | The score, every answer and its correction, XP, the challenge and achievements | The last page locks: the results are written once, and the finish (best score, goal, streak, XP, achievements) runs in the same transaction |
 
-Two rules shape every page ([LESSONS.md](LESSONS.md) §11):
+Two rules shape every page ([content/lessons.md](../content/lessons.md) §11):
 
 - **The mother tongue.** The help around the lesson is in the interface language, unless that is
   the course language, then in the first other of en, fr, de. It is fixed on the attempt at its
@@ -280,7 +280,7 @@ Two rules shape every page ([LESSONS.md](LESSONS.md) §11):
 **The discussion step replaces the tutor walkthrough.** It is the only place a learner talks to
 the LLM in a lesson: one page, right before the exam info page, where the tutor knows the lesson's
 teaching fields and the learner's wrong practice answers, but never the exam or its answers. How it
-is built is in [LESSONS.md](LESSONS.md) §12 and [ARCHITECTURE.md](ARCHITECTURE.md) §5.
+is built is in [content/lessons.md](../content/lessons.md) §12 and [architecture/overview.md](overview.md) §5.
 
 ### 1.5 Not built: cross-language chat
 
@@ -315,9 +315,9 @@ each module's state on `main`.
 | IV.3 User management | Complete 2FA | Minor | 1 | TOTP and recovery codes |
 | IV.4 Artificial intelligence | Complete LLM system interface | Major | 2 | Gemini behind `LlmProvider`: the placement bank restock (structured output) and the lesson discussion (streaming), with error handling and rate limits (#150, #151). Milestone 2 |
 | IV.6 Gaming and UX | Gamification | Minor | 1 | XP and ranks, a daily challenge and 16 achievements, stored per course (#94, #95, #97). Milestone 2 |
-| IV.7 DevOps | Monitoring with Prometheus and Grafana | Major | 2 | [MONITORING.md](MONITORING.md) (#129) |
-| IV.10 Module of choice | **Custom major: CI/CD** | Major | 2 | Five workflows, required checks on `main`, multi-arch images on GHCR, pull-based deploys ([TECHNICAL_PLAN.md](TECHNICAL_PLAN.md) §5, [DEPLOYMENT.md](DEPLOYMENT.md)) |
-| IV.10 Module of choice | **Custom minor: cloud deployment with DNS and Let's Encrypt** | Minor | 1 | A cloud VM, an A record, and Caddy's automatic Let's Encrypt certificate ([DEPLOYMENT.md](DEPLOYMENT.md)) |
+| IV.7 DevOps | Monitoring with Prometheus and Grafana | Major | 2 | [operations/monitoring.md](../operations/monitoring.md) (#129) |
+| IV.10 Module of choice | **Custom major: CI/CD** | Major | 2 | Five workflows, required checks on `main`, multi-arch images on GHCR, pull-based deploys ([architecture/technical-plan.md](technical-plan.md) §5, [operations/deployment.md](../operations/deployment.md)) |
+| IV.10 Module of choice | **Custom minor: cloud deployment with DNS and Let's Encrypt** | Minor | 1 | A cloud VM, an A record, and Caddy's automatic Let's Encrypt certificate ([operations/deployment.md](../operations/deployment.md)) |
 | | | | **22** | 7 majors and 8 minors, 3 above the 19 that count |
 
 The team tracks each module's status on the wiki:
@@ -386,12 +386,12 @@ user's and answers in it.
 answer, owns the exam timer, and when the last page locks it records the score from the answers it
 stored, keeping the best one, and counts the lesson toward today's goal. The finish and its goal
 rules come with [#82](https://github.com/VictorBro/ft_transcendence/issues/82), the attempt with
-[#145](https://github.com/VictorBro/ft_transcendence/issues/145); [LESSONS.md](LESSONS.md) §10 has
+[#145](https://github.com/VictorBro/ft_transcendence/issues/145); [content/lessons.md](../content/lessons.md) §10 has
 the details.
 
 ### Gateway rules
 
-The contract already exists in [packages/shared/src/events/socket.ts](../packages/shared/src/events/socket.ts) -
+The contract already exists in [packages/shared/src/events/socket.ts](../../packages/shared/src/events/socket.ts) -
 event names, Zod payload schemas, `ServerToClientEvents` / `ClientToServerEvents`, `SocketData`.
 Use it. Four rules:
 
@@ -426,7 +426,7 @@ redo rather than data; if it does not, it is a plain constant or a per-request v
 | **Session store** (`connect-redis`) | `sess:<sid>` | Sessions are hot, short-lived and disposable. Restarting the api must not log everyone out | in use |
 | **Placement run state** | `user:<id>:eval`, `user:<id>:eval_questions`, `user:<id>:eval_lock` | The search bounds, the level being probed, the tally per category, the mistakes so far, the current question's deadline and the report. **Always with a TTL**: one hour (`PLACEMENT_REDIS_KEY_TTL`) for `eval` and `eval_questions`, and 5 s (`PLACEMENT_LOCK_TTL_SECONDS`) for `eval_lock`, the `SET NX EX` lock that keeps two starts or two answers of one learner from racing. Keyed by the user, not by the session as first planned, so a learner who signs in again within the hour comes back to the exam they left. It lives exactly as long as the exam, so a table would be a row deleted minutes after it was written, and the TTL doubles as the abandoned-exam cleanup | in use (#48) |
 | **Lesson discussion limits** | `discussion:user:<id>:minute`, `discussion:user:<id>:day`, `discussion:global:minute` | Fixed-window counters: the first message creates the key with its TTL (60 s or 24 h), `INCR`, `EXPIRE … NX` and `TTL` in one `MULTI`, so a crash never leaves a counter without expiry. The TTL is also the `Retry-After` | in use (#150) |
-| **Presence** | `presence:<id>` | A socket count per user: `INCR` on connect, `DECR` 10 s after a disconnect, so a reload never shows as leaving. Every count is deleted at boot, since a crash never took its sockets back (one API instance assumed). See ARCHITECTURE.md §4 | in use (#157) |
+| **Presence** | `presence:<id>` | A socket count per user: `INCR` on connect, `DECR` 10 s after a disconnect, so a reload never shows as leaving. Every count is deleted at boot, since a crash never took its sockets back (one API instance assumed). See architecture/overview.md §4 | in use (#157) |
 | **Throttler counters** | none | `@nestjs/throttler` runs without a storage adapter, so its counters sit in process memory. Correct for one replica; the only cost is that a restart clears everyone's limit | not in Redis, by choice |
 
 Not built, and no longer planned: an LLM response cache and a per-user token budget. Lessons are
@@ -452,7 +452,7 @@ limits stand in for the budget (§5).
 the Gemini model id; **empty means `gemini-3.6-flash`** (`DEFAULT_GEMINI_MODEL`). The provider and
 model in use are exported as `ft_llm_provider_info{provider, model}`. The deployment compose file
 requires `LLM_PROVIDER` to be set: there is no silent fallback on a server
-([DEPLOYMENT.md](DEPLOYMENT.md) §5).
+([operations/deployment.md](../operations/deployment.md) §5).
 
 **The key.** It lives in `.env` as `LLM_API_KEY` and nowhere else, and is sent in a request header,
 never in a URL. A key that has been pasted into a chat, a doc or a ticket is burned: rotate it.
@@ -538,14 +538,14 @@ sequenceDiagram
 
 1. `LLM_PROVIDER=fixture` in CI and in every unit and e2e test. No test spends money.
 2. **Lessons are authored offline**, with Claude Code on members' own subscriptions
-   ([LESSONS.md](LESSONS.md) §7). The app's key never writes one.
+   ([content/lessons.md](../content/lessons.md) §7). The app's key never writes one.
 3. **The discussion's limits**, counted in Redis before any LLM call: per learner 2 a minute and 60
    a day, and 5 a minute for everyone together, all changeable in `.env`. Over one: 429, with
    `retryAfter`.
 4. **Capped answers**: 1,000 output tokens, a 500-character message, the last 10 turns.
 5. **Visible spend**: `ft_llm_requests_total`, `ft_llm_tokens_total` and
    `ft_llm_discussion_limited_total` on the Learning dashboard, and the `LlmErrorRateHigh` alert
-   ([MONITORING.md](MONITORING.md)). No table records LLM calls.
+   ([operations/monitoring.md](../operations/monitoring.md)). No table records LLM calls.
 
 **Placement items are not cached by content.** Caching them would hand every learner the same
 test and break §1.2. Their reuse mechanism is the item bank plus per-user exclusion.
@@ -560,7 +560,7 @@ test and break §1.2. Their reuse mechanism is the item bank plus per-user exclu
 |---|---|---|
 | **Auth endpoints** | Credential stuffing and TOTP brute force | Per address: `LOGIN_LIMIT_PER_MINUTE` (5), `SIGNUP_LIMIT_PER_MINUTE` (20), tighter than the global `RATE_LIMIT_PER_MINUTE` (100) per account or address |
 | **The lesson discussion** | Money, and the shared key's quota | Its own Redis windows, after every 404 and 409 check, so a refused request uses up nothing: `LLM_DISCUSSION_USER_PER_MINUTE` (2), `LLM_DISCUSSION_USER_PER_DAY` (60), `LLM_DISCUSSION_GLOBAL_PER_MINUTE` (5). Each hit counts in `ft_llm_discussion_limited_total{limit}` |
-| **Socket events** | `dm:send`, `dm:read`. **The HTTP guard does not cover these**: a socket connection is one HTTP upgrade, so a client can emit thousands of events through a single allowed request | The gateway's own screen limits each socket to 20 of each event per 10 s, and each has a budget per account: 30 `dm:send` and 100 `dm:read` a minute (ARCHITECTURE.md §4) |
+| **Socket events** | `dm:send`, `dm:read`. **The HTTP guard does not cover these**: a socket connection is one HTTP upgrade, so a client can emit thousands of events through a single allowed request | The gateway's own screen limits each socket to 20 of each event per 10 s, and each has a budget per account: 30 `dm:send` and 100 `dm:read` a minute (architecture/overview.md §4) |
 | **Public API** | The module *requires* rate limiting | Not claimed (§2) |
 
 Every limit is read once at boot; anything but a whole number stops the api.
@@ -574,8 +574,8 @@ Every limit is read once at boot; anything but a whole number stops the api.
 `LessonAttempt` and `UserAchievement` from Milestone 2; `Friendship`, `Conversation` and `Message`
 from Milestone 3. The rule applied throughout: a table earns its place by being read at runtime,
 and a 1:1 relationship is a column, not a table. There are no SQL views; the "views" of the lesson
-player are Zod schemas of what the browser may see ([LESSONS.md](LESSONS.md) §10,
-[milestone2-data-model.html](milestone2-data-model.html#player)).
+player are Zod schemas of what the browser may see ([content/lessons.md](../content/lessons.md) §10,
+[milestone2-data-model.html](../site/milestone2-data-model.html#player)).
 
 Everything is UUID-keyed, with five exceptions. `LessonResult`, `UserAchievement`, `Friendship`
 and `Conversation` are keyed by their pair (`(userLevelId, lessonId)`, `(userLevelId, code)`, and
@@ -637,9 +637,9 @@ erDiagram
 | Table | Holds | Notes |
 |---|---|---|
 | `UserLevel` | id, userId, lang, level?, dailyGoal, streak, bestStreak, lastGoalDay?, **xp, lastChallengeDay?, lastChallengeCode?, challengesDone**, createdAt, updatedAt | Unique `(userId, lang)`: one row is one course, so a user may learn two languages. Onboarding writes it with `level` null; placement fills it in, or a learner who skips sets it directly. `streak`, `bestStreak` and `lastGoalDay` are the whole streak (§1.3). The four **gamification columns** (#95): `xp` the course's total, `lastChallengeDay` the course day the challenge was last done, `lastChallengeCode` the code it was done under, so a level change that day does not move it, and `challengesDone` the count the challenge achievements read. Finishing and goal changes take a row lock on this row (§9) |
-| `QuestionBank` | id, sourceId?, lang, level, topic, category, readText?, question, options, answer, timeLimitS | The reusable pool, seeded from `content/items/*.json` and grown at runtime when a learner runs low in a cell. `sourceId` is the authored id the seed matches on, and its absence marks a question the LLM wrote. Full spec in [ITEM_BANK.md](ITEM_BANK.md) |
+| `QuestionBank` | id, sourceId?, lang, level, topic, category, readText?, question, options, answer, timeLimitS | The reusable pool, seeded from `content/items/*.json` and grown at runtime when a learner runs low in a cell. `sourceId` is the authored id the seed matches on, and its absence marks a question the LLM wrote. Full spec in [content/item-bank.md](../content/item-bank.md) |
 | `UserSeenQuestion` | id, userId, questionId, createdAt, updatedAt | Unique `(userId, questionId)`. **The exposure record**, and the whole reason placement never repeats a question: the draw is a `NOT EXISTS` over these rows, and `updatedAt`, bumped on every serve, picks the oldest-seen fallback |
-| `Lesson` | id, lang, level, position, kind, topic?, theme?, title, summary, brief, **content?**, **ready**, updatedAt | **The seeded catalogue, never written at runtime.** One row per outline entry, 3,990 in all. `brief` is `{}` and `content` null until the lesson's files exist; then they hold the parsed brief and content file. `content` stays null for a vocabulary lesson, whose lesson is built from its brief (#135). **`ready`** is set by the seed on every run: true when the files exist and pass `validateLesson`, 216 today (#84). `kind` is grammar, vocabulary, functions or reading; `topic` is set exactly on grammar lessons, `theme` exactly on the others. The lesson cards never send the brief or the content. Index on `(lang, level, position)`. Full guide in [LESSONS.md](LESSONS.md) §4 |
+| `Lesson` | id, lang, level, position, kind, topic?, theme?, title, summary, brief, **content?**, **ready**, updatedAt | **The seeded catalogue, never written at runtime.** One row per outline entry, 3,990 in all. `brief` is `{}` and `content` null until the lesson's files exist; then they hold the parsed brief and content file. `content` stays null for a vocabulary lesson, whose lesson is built from its brief (#135). **`ready`** is set by the seed on every run: true when the files exist and pass `validateLesson`, 216 today (#84). `kind` is grammar, vocabulary, functions or reading; `topic` is set exactly on grammar lessons, `theme` exactly on the others. The lesson cards never send the brief or the content. Index on `(lang, level, position)`. Full guide in [content/lessons.md](../content/lessons.md) §4 |
 | `LessonResult` | userLevelId, lessonId, score, day, finishedAt | Primary key `(userLevelId, lessonId)`: **one row per course and lesson, with no history.** Every finish upserts it: `score` keeps the best, `day` is the learner's day of the latest finish, `finishedAt` its moment. No row means not started, a best of 70 or more means passed, anything else failed. Today's count is the rows whose `day` is today. `lessonId` is `Restrict`: a lesson with results cannot be deleted |
 | **`LessonAttempt`** | id, userLevelId, lessonId, motherTongue, secret, startedAt, page, deadline?, answers, completedAt?, results? | Unique `(userLevelId, lessonId)`: **the current or last attempt at a lesson**, run and scored by the server (#145). `motherTongue` is a `Locale`, fixed at the start. `secret` is 32 random bytes that key the refs naming units, options and tokens, and is never sent. `page` is the cursor and `deadline` that of the exam page at it. `answers` (JSON, `{}` at first) maps a unit id to its locked `{ response, outcome, points, timedOut, gender? }`, and `results` (JSON) is written once, when the last page locks. A retake replaces the row; a seed that changes the lesson deletes the unfinished ones. The plan is never stored: every request rebuilds it from the lesson row |
 | **`UserAchievement`** | userLevelId, code, day, earnedAt | Primary key `(userLevelId, code)`, so an achievement is earned once and never lost (#95). `code` is one of the 16 `ACHIEVEMENTS` codes, a string fixed in code. `day` is the course day it was earned |

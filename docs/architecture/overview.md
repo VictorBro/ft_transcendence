@@ -1,8 +1,8 @@
 # Architecture
 
 How the containers fit together, in production and in development.
-Companions: [TECHNICAL_PLAN.md](TECHNICAL_PLAN.md) (decisions and rationale),
-[VERSIONS.md](VERSIONS.md) (what moves together, what is held back), [SUBJECT_SUMMARY.md](SUBJECT_SUMMARY.md) (requirements).
+Companions: [architecture/technical-plan.md](technical-plan.md) (decisions and rationale),
+[operations/versions.md](../operations/versions.md) (what moves together, what is held back), [subject/summary.md](../subject/summary.md) (requirements).
 
 Every diagram below is generated from the compose files as they actually are. If
 you change a port or a route, change the diagram in the same commit.
@@ -24,7 +24,7 @@ be a one-sentence answer, and this is it.
 
 Files: `compose.yml` + `compose.prod.yml`. Images are built at the `prod` stage,
 no source is bind-mounted, and every service carries `restart: unless-stopped`.
-The monitoring stack is always on here ([MONITORING.md](MONITORING.md)).
+The monitoring stack is always on here ([operations/monitoring.md](../operations/monitoring.md)).
 
 ```mermaid
 flowchart LR
@@ -330,7 +330,7 @@ sequenceDiagram
   other. Several replicas would need `@socket.io/redis-adapter`, which carries
   room emits through Redis (`InterServerEvents` waits for it), and a presence
   boot reset that leaves the other instances' counts alone. The api runs one
-  replica by design ([PRODUCT_ARCHITECTURE.md](PRODUCT_ARCHITECTURE.md) §4).
+  replica by design ([architecture/product.md](product.md) §4).
 - **One connection per tab**, held in module scope (`components/tab-socket.ts`)
   and opened by `SessionNav` for a signed-in user, so a route group remount or a
   locale switch never drops it and an anonymous page never opens one. WebSocket
@@ -369,7 +369,7 @@ course. The attempt and discussion routes also answer 404 for a lesson that is n
 route but `GET lessons/:id` (a lesson card opens before placement too, ready or not) answers 409
 `course.notPlaced` before placement. The web app
 calls them from three pages, `/{locale}/learn/{lang}/lessons/{id}`, `…/play` and `…/results`
-([LESSONS.md](LESSONS.md) §11).
+([content/lessons.md](../content/lessons.md) §11).
 
 ### The attempt
 
@@ -547,7 +547,7 @@ and the devcontainer stay as light as before, `make monitoring-up` opts in, and 
 prod overlay, which never loads the override, always runs them. Without the profile
 `/grafana` answers 502. `make down`, `make clean` and `make logs` pass the profile,
 so they reach the monitoring containers too. Day to day:
-[DEVELOPMENT.md](DEVELOPMENT.md).
+[operations/development.md](../operations/development.md).
 
 ---
 
@@ -602,7 +602,7 @@ seed and every authored file under `content/`:
 
 The image only **carries** them. Nothing in it writes or generates content: the
 `migrate` service runs `prisma migrate deploy`, then `db:seed`, which validates
-the files and sets `Lesson.ready` ([LESSONS.md](LESSONS.md) §4). The authoring
+the files and sets `Lesson.ready` ([content/lessons.md](../content/lessons.md) §4). The authoring
 kit's scripts are in the image too, since they live in `apps/api/scripts`, but
 nothing runs them there. The `api` runtime image (`prod` stage) has neither the
 Prisma CLI, the migrations nor `content/`: at runtime the api reads lessons from
