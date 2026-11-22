@@ -113,7 +113,7 @@ sequenceDiagram
    `no-transform` part asks every proxy not to compress the body, which would hold the pieces
    back. A `: heartbeat` comment every 15 seconds keeps a quiet connection from being closed
    ([event-stream.ts](../../apps/api/src/lessons/event-stream.ts)). For how this passes through
-   Caddy, see [../architecture/overview.md](../architecture/overview.md), section 5.
+   Caddy, see [../architecture/realtime.md](../architecture/realtime.md), section 4.
 6. **Gemini writes.** `GeminiProvider.stream` reads Gemini's own SSE body, joins events cut
    across network packets, and passes on each piece of text. It asks for no "thinking" before
    the answer (`thinkingBudget: 0`), because the thinking is billed and counts against the

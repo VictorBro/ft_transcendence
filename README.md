@@ -133,8 +133,8 @@ Full reasoning in [docs/architecture/overview.md](docs/architecture/overview.md)
 
 ## Database Schema
 
-<!-- TODO: diagram plus tables and relations. The model is designed in
-     docs/architecture/product.md section 7; copy it here as it gets built. -->
+<!-- TODO: diagram plus tables and relations. The model is documented in
+     docs/architecture/data-model.md; copy it here as it gets built. -->
 
 TODO
 
@@ -146,23 +146,99 @@ TODO
 
 ## Modules
 
-<!-- TODO: every claimed module, Major = 2 / Minor = 1, the point total, a
-     justification for each, how it was implemented and by whom. The planned
-     set is in docs/architecture/product.md section 2. -->
+A Major module is worth 2 points and a Minor module 1 point. The subject requires
+14 points, and the bonus above them is capped at 5. Each module has its own file
+in [docs/modules/](docs/modules/README.md): what the subject asks, how we meet it,
+where the code is, how to show it, the tests, and who built it.
 
-### Monitoring system with Prometheus and Grafana (Major, 2 points)
+| Module                                                                             | Type           | Points |
+| ---------------------------------------------------------------------------------- | -------------- | ------ |
+| [Framework for frontend and backend](docs/modules/framework.md)                    | Major          | 2      |
+| [ORM for the database](docs/modules/orm.md)                                        | Minor          | 1      |
+| [Standard user management](docs/modules/user-management.md)                        | Major          | 2      |
+| [Complete 2FA](docs/modules/two-factor-auth.md)                                    | Minor          | 1      |
+| [User interaction: chat, profiles and friends](docs/modules/user-interaction.md)   | Major          | 2      |
+| [Real-time features via WebSockets](docs/modules/websockets.md)                    | Major          | 2      |
+| [Complete LLM interface](docs/modules/llm-interface.md)                            | Major          | 2      |
+| [Internationalization: 3 languages](docs/modules/i18n.md)                          | Minor          | 1      |
+| [Support for 2 additional browsers](docs/modules/browsers.md)                      | Minor          | 1      |
+| [Server-Side Rendering](docs/modules/ssr.md)                                       | Minor          | 1      |
+| [Advanced search](docs/modules/advanced-search.md)                                 | Minor          | 1      |
+| [Gamification](docs/modules/gamification.md)                                       | Minor          | 1      |
+| [Monitoring with Prometheus and Grafana](docs/modules/monitoring.md)               | Major          | 2      |
+| [CI/CD](docs/modules/custom-ci-cd.md)                                              | Major (custom) | 2      |
+| [Cloud deployment with DNS and Let's Encrypt](docs/modules/custom-cloud-deploy.md) | Minor (custom) | 1      |
+| **Total**                                                                          |                | **22** |
 
-Prometheus collects metrics every 30 seconds: from the API and Caddy directly,
-from the host, Postgres and Redis through exporters, and from a blackbox exporter
-that probes the web app and Grafana. Grafana shows them on four dashboards
-provisioned from the repo (Overview, API, Learning, Infrastructure), at `/grafana`
-behind its own login, with sign-up and anonymous access off. 25 alert rules,
-unit-tested with promtool, go through Alertmanager to a Discord channel. Only Caddy
-publishes a port: Prometheus, Alertmanager, the exporters and the API's metrics
-port stay on the internal network. Details in
-[docs/operations/monitoring.md](docs/operations/monitoring.md).
+**22 points claimed, 19 count** (14 required plus the 5-point bonus). The other
+3 points are a margin in case a module is not accepted at the evaluation. The
+modules we do not claim, and why, are in
+[docs/modules/README.md](docs/modules/README.md#not-claimed).
 
-TODO: the other modules.
+### Custom module: CI/CD (Major, 2 points)
+
+Every change goes through the same automatic path: checks on the pull request,
+a merge button locked until they pass and a teammate approves, then images built,
+scanned and published, and a server that updates itself. Full file:
+[docs/modules/custom-ci-cd.md](docs/modules/custom-ci-cd.md).
+
+- **Why we chose it.** The subject rejects the project for a single console
+  warning, a missing legal page or a committed `.env`, and a reviewer cannot see a
+  console warning in a diff. Five people push to one repository, and commits are
+  graded. The app also runs on a real server, and updating it by hand after each
+  merge would be slow and error-prone.
+- **The technical challenges.** Images for two processor types (`amd64` and
+  `arm64`) built on native runners, without emulation, and tagged once so no
+  machine pulls the wrong one. A server that pulls the images itself, so GitHub
+  holds no key to the server, and that waits until all images of a release agree
+  before it deploys. Tests inside the Dockerfile's `ci` stage, so they run with the
+  production image's Node and libraries. A browser suite on three engines, each
+  against its own production stack, split so it fits in the time. A single gate
+  job that fails unless the whole matrix passed, because GitHub counts a skipped
+  job as passed. A security scanner pinned by commit hash after its tags were
+  force-pushed to malicious commits in March 2026.
+- **The value it adds.** `main` always works: every commit on it after the first
+  is a squashed pull request. The rejection rules are tested on every
+  change, on the build the evaluator runs. A merge reaches the live site with
+  nobody on the server, and every `main` commit has an image to roll back to.
+- **Why it deserves its size.** A trivial CI is one workflow that runs the tests.
+  This one is 5 workflows, 1 shared action, 10 scripts and 3 git hooks; 41 checks
+  on a typical pull request, 19 of them required; a full production stack started
+  6 times per run for 3 browser engines; 18 image jobs per push; and a deploy
+  agent that handles half-published releases, failed migrations, retries and
+  rollback. It has run for the whole project.
+
+### Custom module: cloud deployment with DNS and Let's Encrypt (Minor, 1 point)
+
+The app runs on an Oracle Cloud server under a real domain,
+<https://transcendence.dpdns.org>, with a Let's Encrypt certificate that every
+browser trusts. A second copy runs at <https://trans.vyantares.ch>, behind another
+web server. Full file:
+[docs/modules/custom-cloud-deploy.md](docs/modules/custom-cloud-deploy.md).
+
+- **Why we chose it.** The subject asks for HTTPS. On a laptop our certificate
+  comes from Caddy's own authority, which each browser must be told to trust; on
+  the public server anyone gets a certificate the browser already trusts. A
+  public address also lets the team test on real devices, and gives the images
+  that CI/CD publishes a place to run.
+- **The technical challenges.** A very small server (most likely 1 GB of RAM),
+  handled with memory limits on the monitoring services and a swapfile. Let's
+  Encrypt's rate limits, handled by making sure DNS resolves before the first start and keeping
+  the certificate in a volume. An IP address that can change. A server with no
+  checkout of the code, so a standalone compose file that only pulls images, and
+  secrets with no defaults. A second host where another web server owns the HTTPS
+  ports, so our Caddy becomes a plain HTTP backend that still sees the visitor's
+  real address. Monitoring that stays private on a public server.
+- **The value it adds.** The evaluator can open the app on any device with a
+  trusted certificate. HSTS and the security headers are on every answer, and
+  HTTP/3 works. A fresh server needs three files and three commands. Monitoring
+  sees real traffic.
+- **Why it deserves its size.** It is real infrastructure outside the repo (a
+  cloud instance, a firewall, a DNS zone, a trusted certificate), live and
+  checkable from outside in a minute, on two hosts that work differently. It is a
+  Minor and not a Major because Caddy does the certificate protocol itself, there
+  is almost no application code in it, and the automatic build and deploy are
+  counted under CI/CD, not twice.
 
 ## Individual Contributions
 

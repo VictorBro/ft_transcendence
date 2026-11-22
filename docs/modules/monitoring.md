@@ -27,10 +27,10 @@ rules, and access that is protected.
 | The subject asks | What we built | Where |
 | ---------------- | ------------- | ----- |
 | Prometheus | Prometheus 3.13.5 (the LTS line). It reads 10 targets every 30 s, checks the rules every 30 s, and keeps 15 days or 1 GB of data. | [`prometheus.yml`](../../infra/monitoring/prometheus/prometheus.yml), [`Dockerfile`](../../infra/monitoring/prometheus/Dockerfile) |
-| Exporters | Four exporters: node (the server: CPU, memory, disk), postgres, redis, and blackbox (it calls web's `/healthz`, `/healthz/upstream` and Grafana's health page from outside). The API and Caddy publish their own metrics too: the API has 18 metrics of its own in `metrics.ts`, plus 3 gauges read from the database when Prometheus asks, plus the Node.js defaults. | [`compose.yml`](../../compose.yml), [`apps/api/src/metrics/`](../../apps/api/src/metrics) |
+| Exporters | Four exporters: node (the server: CPU, memory, disk), postgres, redis, and blackbox (it calls web's `/healthz`, `/healthz/upstream` and Grafana's health page from outside). The API and Caddy publish their own metrics too: the API has 18 metrics of its own in `metrics.ts`, plus 3 gauges filled when Prometheus asks (accounts and the question bank, read from the database, and signed-in users, counted in memory), plus the Node.js defaults. | [`compose.yml`](../../compose.yml), [`apps/api/src/metrics/`](../../apps/api/src/metrics) |
 | Custom dashboards | Four dashboards we wrote ourselves, with 79 panels in all: Overview (18), API (17), Learning (18), Infrastructure (26). They are loaded from the repo when Grafana starts. | [`grafana/dashboards/`](../../infra/monitoring/grafana/dashboards), [`dashboards.yml`](../../infra/monitoring/grafana/provisioning/dashboards/dashboards.yml) |
 | Alerting rules | 25 rules in 6 groups (availability, api, learning, stores, host, monitoring): 7 critical, 18 warning. 10 unit tests run with `promtool`. Alertmanager groups the alerts and posts them to Discord. | [`alerts.yml`](../../infra/monitoring/prometheus/rules/alerts.yml), [`alerts.test.yml`](../../infra/monitoring/prometheus/tests/alerts.test.yml), [`alertmanager.yml`](../../infra/monitoring/alertmanager/alertmanager.yml) |
-| Secured access | Grafana is the only monitoring service you can reach, at `/grafana`, and only with its login. No sign-up, no anonymous access, no default password, a lock after 5 wrong passwords. Prometheus, Alertmanager, the exporters and the API's metrics port have no route from outside and publish no port. | [`grafana.ini`](../../infra/monitoring/grafana/grafana.ini), [`entrypoint.sh`](../../infra/monitoring/grafana/entrypoint.sh), [`Caddyfile`](../../infra/caddy/Caddyfile) |
+| Secured access | Grafana is the only monitoring service you can reach, at `/grafana`, and only with its login. No sign-up, no anonymous access, no default password, a lock after 5 wrong passwords in 5 minutes from one address. Prometheus, Alertmanager, the exporters and the API's metrics port have no route from outside and publish no port. | [`grafana.ini`](../../infra/monitoring/grafana/grafana.ini), [`entrypoint.sh`](../../infra/monitoring/grafana/entrypoint.sh), [`Caddyfile`](../../infra/caddy/Caddyfile) |
 
 ### Why it is worth 2 points
 
@@ -43,7 +43,7 @@ rules, and access that is protected.
   fires, and some tests prove a rule stays quiet when it should (for example
   "Low RAM with free swap stays quiet").
 - **Access is closed by default, and checked.** A script fails CI if any service
-  other than Caddy publishes a port, and a Playwright test checks the login, the
+  other than Caddy publishes a port in the production or server stack, and a Playwright test checks the login, the
   401 for anonymous reads and the 404 for the metrics paths.
 - **It runs in production too.** The same three images run on the server
   ([`compose.deploy.yml`](../../compose.deploy.yml)), so the deployed app is
@@ -121,8 +121,8 @@ flowchart LR
 
 ## How to show it at the defence
 
-1. Run `make`. It runs every check, starts the production stack and then
-   `make monitoring-check`. The `run` step prints the Grafana address and the line
+1. Run `make`. It runs every check, starts the production stack, then
+   `make monitoring-check` and the Playwright tests. The `run` step prints the Grafana address and the line
    to read the password.
 2. Run `make monitoring-check` again on its own. It shows every target up, every
    rule healthy and one Alertmanager found.
@@ -159,7 +159,7 @@ A small live change: edit a threshold or a `for` in `alerts.yml` and its test, r
 | Test | What it checks |
 | ---- | -------------- |
 | [`infra/monitoring/prometheus/tests/alerts.test.yml`](../../infra/monitoring/prometheus/tests/alerts.test.yml) | 10 `promtool` tests: `ApiDown` fires after a minute and not before, the error rate needs real traffic, the fixture's restock failures stay quiet, low RAM with free swap stays quiet, and the other critical rules fire after their minute |
-| [`scripts/check-monitoring-config.sh`](../../scripts/check-monitoring-config.sh) | `promtool check config` and `promtool test rules`, `amtool check-config` on both Alertmanager configs and the Discord route, `caddy validate`, checks on the dashboard JSON, and only Caddy publishing ports. Runs in [`ci.yml`](../../.github/workflows/ci.yml) (job `monitoring config`) and in `make ci` |
+| [`scripts/check-monitoring-config.sh`](../../scripts/check-monitoring-config.sh) | `promtool check config` and `promtool test rules`, `amtool check-config` on both Alertmanager configs and the Discord route, `caddy validate`, checks on the dashboard JSON, and only Caddy publishing ports in the production and server stacks. Runs in [`ci.yml`](../../.github/workflows/ci.yml) (job `monitoring config`) and in `make ci` |
 | [`scripts/check-monitoring.sh`](../../scripts/check-monitoring.sh) | On a running stack: every target up, every rule healthy, an Alertmanager found, every series in `REQUIRED_SERIES` present. Runs in [`e2e.yml`](../../.github/workflows/e2e.yml) and in `make` |
 | [`e2e/tests/monitoring.spec.ts`](../../e2e/tests/monitoring.spec.ts) | Through Caddy: "an anonymous visitor only gets the login page", "the Grafana API refuses anonymous reads", "sign-up is off", "metrics endpoints stay internal", "the four dashboards are provisioned", "Prometheus feeds Grafana" |
 | [`apps/api/test/metrics.e2e-spec.ts`](../../apps/api/test/metrics.e2e-spec.ts) | The real NestJS pipeline: a request is counted under its route template, never its URL; "serves no metrics at /api/metrics"; the bank and accounts are collected at scrape time |

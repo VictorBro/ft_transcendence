@@ -202,8 +202,9 @@ A poor or incomplete README hurts the evaluation.
 
 ## Bonus
 
-Only considered once modules worth the 14 mandatory points are all implemented. Each extra module must be fully
-functional, meet its description, add real value, and be justified in the README.
+Only considered once modules worth the 14 mandatory points are all implemented. Each extra
+module must be fully functional, meet its description, add real value, and be justified in
+the README.
 Major = 2, Minor = 1, **capped at 5 bonus points**.
 
 ## Submission and evaluation

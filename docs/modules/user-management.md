@@ -149,7 +149,7 @@ sequenceDiagram
 - On start, the API deletes every `presence:*` counter, because no connection survives a restart.
 
 The WebSocket side is explained in [websockets.md](./websockets.md) and in
-[../architecture/overview.md](../architecture/overview.md), section 4.
+[../architecture/realtime.md](../architecture/realtime.md), section 3.
 
 ### The profile pages
 

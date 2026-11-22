@@ -177,7 +177,7 @@ conversation, with an **All messages** link back. A friend opened before the fir
 listed on top. Friends in the list have an online dot. Times are shown in the account's time zone.
 
 More about the gateway, the rooms and the socket events is in
-[../architecture/overview.md](../architecture/overview.md), section 4, and in
+[../architecture/realtime.md](../architecture/realtime.md), section 3, and in
 [websockets.md](./websockets.md).
 
 ## Where the code is
@@ -291,7 +291,7 @@ Chromium, Firefox and WebKit, as CI does.
   but the server may have stored the message. Sending it again then shows it twice
   ([send-message.ts](../../apps/web/lib/send-message.ts)).
 - **One API instance.** Socket rooms live in the memory of the API process, so all users must be
-  on the same instance ([../architecture/overview.md](../architecture/overview.md), section 4).
+  on the same instance ([../architecture/realtime.md](../architecture/realtime.md), "One API instance").
 
 ## Who built it
 

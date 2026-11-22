@@ -8,12 +8,20 @@ test runs on Chromium, Firefox and WebKit, on every pull request.
 
 ## What the subject asks
 
-The module is one line in the Accessibility and Internationalization table of
+The module is a Minor row in the Accessibility and Internationalization table of
 [../subject/summary.md](../subject/summary.md):
 
-> | Type | Module |
-> | --- | --- |
-> | Minor | ≥2 additional browsers fully supported, tested, documented |
+> ≥2 additional browsers fully supported, tested, documented
+
+The PDF ([../subject/ft_transcendence.pdf](../subject/ft_transcendence.pdf), chapter IV,
+Accessibility and Internationalization) words it like this:
+
+> Minor: Support for additional browsers.
+>
+> - Full compatibility with at least 2 additional browsers (Firefox, Safari, Edge, etc.).
+> - Test and fix all features in each browser.
+> - Document any browser-specific limitations.
+> - Consistent UI/UX across all supported browsers.
 
 "Additional" means on top of the browser the mandatory part already asks for. The same file
 lists, under "Mandatory part":
@@ -30,7 +38,8 @@ So the two additional browsers must also show no console errors or warnings.
 | At least 2 additional browsers | Firefox and WebKit (Safari's engine), next to Chromium. Playwright (the tool that drives a real browser in our tests) has one "project" per engine: `chromium` (Desktop Chrome), `firefox` (Desktop Firefox) and `webkit` (Desktop Safari). | [e2e/playwright.config.ts](../../e2e/playwright.config.ts) |
 | Fully supported | The app has fixes for things only one engine does (see "How it works"). The console gate (a test that fails on any console error or warning) runs on all three engines. **Partly:** we test desktop browsers only, and Playwright's WebKit build, not the Safari app itself. | [e2e/support/console-guard.ts](../../e2e/support/console-guard.ts), [e2e/tests/console.spec.ts](../../e2e/tests/console.spec.ts) |
 | Tested | Every spec file runs on all three engines in CI: 3 engines × 2 parts = 6 jobs, each on its own production stack. A final job, "playwright (production stack)", fails if any of the six did not pass. **Partly:** a few tests run on Chromium only, each with a `test.skip` that gives the reason (listed under "Limits and choices"). | [.github/workflows/e2e.yml](../../.github/workflows/e2e.yml) |
-| Documented | The README has a "Browser support" section: which engines, how CI runs them, how to run one engine, and the known limits. | [README.md](../../README.md#browser-support) |
+| Documented, with the limits of each browser | The README has a "Browser support" section: which engines, how CI runs them, how to run one engine, and the known limits (no speech voice, mobile browsers not tested). | [README.md](../../README.md#browser-support) |
+| Consistent UI/UX across browsers | The three engines get the same pages, the same styles and the same tests, with the same checks of what is on screen. The phone-width layout check also runs on each engine. **Partly:** no test compares screenshots between engines. | [e2e/tests/layout-gate.spec.ts](../../e2e/tests/layout-gate.spec.ts) |
 
 ## How it works
 
@@ -45,7 +54,7 @@ and on every push to `main`. Its matrix is `browser: [chromium, firefox, webkit]
 other spec is the other part (`E2E_PART` in the config). Each job:
 
 1. starts the production stack (`compose.yml` + `compose.prod.yml`);
-2. applies the migrations (`make db-ready`);
+2. applies the migrations and loads the question bank (`make db-ready`);
 3. runs `./scripts/playwright-in-image.sh test --project=<browser>`.
 
 [scripts/playwright-in-image.sh](../../scripts/playwright-in-image.sh) runs Playwright inside
@@ -150,11 +159,11 @@ These ones matter most for this module:
 
   | Test | Reason given in the code |
   | --- | --- |
-  | `restart.spec.ts`: "an open page reconnects after an API restart, silently" | Two API restarts in 15 minutes fire the `ApiRestarting` alert, so one engine restarts it: "one restart a run, on Chromium". The comment says Firefox and WebKit are checked by hand. |
+  | `restart.spec.ts`: "an open page reconnects after an API restart, silently" | Two API starts in 15 minutes fire the `ApiRestarting` alert, so one engine restarts it: "one restart a run, on Chromium". The comment says Firefox and WebKit are checked by hand. |
   | `lesson.spec.ts`: "says when the time ran out while the learner was away" | The wait is the server's: "Chromium covers the wait". |
   | `lesson.spec.ts`: "every French A1 grammar / vocabulary / functions lesson" | The renderers are already tested on every engine by the single-lesson tests: "Chromium covers the content". |
   | `lesson.spec.ts`: "shows the Listen buttons once a French voice is there" | The voice is a fake one put into the page: "The voice is a stub". |
-  | `level-complete.spec.ts`: "the level complete card starts the next level" | It plays through the API, not the browser: "the engine adds nothing, the rate limit minutes". |
+  | `level-complete.spec.ts`: "the level complete card starts the next level" | It plays through the API, not the browser: "API play: the engine adds nothing, the rate limit minutes". |
 
 - **Read aloud depends on the browser.** Without a voice for the language, there are no Listen
   buttons. The functions listening reply is answered through **Show the text**. Real voices on

@@ -56,9 +56,9 @@
 # /apps/api/Dockerfile  @owner-a @owner-b
 # /apps/web/Dockerfile  @owner-a @owner-b
 #
-# docs/VERSIONS.md is load-bearing: its TypeScript hold is enforced by CI,
+# docs/operations/versions.md is load-bearing: its TypeScript hold is enforced by CI,
 # and the pnpm files decide what every package resolves to. Whole-team review,
 # so a bump is a decision rather than a drive-by.
-# /docs/VERSIONS.md     @VictorBro @avarrett @bastian-schnitzler @luca-mattei @VYAntares
+# /docs/operations/versions.md     @VictorBro @avarrett @bastian-schnitzler @luca-mattei @VYAntares
 # /pnpm-lock.yaml       @owner-a @owner-b
 # /pnpm-workspace.yaml  @owner-a @owner-b

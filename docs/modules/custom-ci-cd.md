@@ -14,21 +14,14 @@ CI means "continuous integration": checking every change automatically. CD means
 
 ## What the subject asks
 
-From "Modules of choice" in chapter IV of
-[../subject/ft_transcendence.pdf](../subject/ft_transcendence.pdf) (summary in
-[../subject/summary.md](../subject/summary.md)):
+From "Modules of choice" in [../subject/summary.md](../subject/summary.md) (the full text
+is in chapter IV of [../subject/ft_transcendence.pdf](../subject/ft_transcendence.pdf)):
 
-> Major: Implement a custom module that is not listed above.
->
-> - The module must be substantial and demonstrate technical complexity.
-> - You must provide proper justification in your README.md explaining:
->   - Why you chose this module.
->   - What technical challenges it addresses.
->   - How it adds value to your project.
->   - Why it deserves Major module status (2 points).
-> - Taking shortcuts or implementing trivial features will result in rejection.
-> - Be creative and think outside the box.
-> - The module should be relevant to your project context.
+> Major | Custom module, substantial and technically complex, justified in the README (why
+> chosen, what challenges, what value, why 2 points). Trivial features = rejection
+
+The four questions are answered below, in "Why we chose it", "The technical challenges",
+"The value it adds" and "Why it deserves its size".
 
 CI/CD is not in the subject's module list. The DevOps section lists ELK, Prometheus and
 Grafana, microservices, and a health check page with backups. None of them builds,
@@ -41,7 +34,7 @@ where the proof is.
 
 | What we claim | What we built | Where |
 | ------------- | ------------- | ----- |
-| Every change is checked before it can merge | Four workflows run on every pull request and again on `main` after the merge: `ci`, `e2e`, `hygiene`, `images`. A fifth, `devcontainer`, runs when the development container's files change. On pull request #212 that made 41 checks. | [`.github/workflows/`](../../.github/workflows) |
+| Every change is checked before it can merge | Three workflows run on every pull request and again on `main` after the merge: `ci`, `e2e`, `hygiene`. A fourth, `images`, runs on every push to any branch, so its jobs show on the pull request too. A fifth, `devcontainer`, runs when the development container's files change. On pull request #212 that made 41 checks. | [`.github/workflows/`](../../.github/workflows) |
 | Nobody can skip the checks | A GitHub ruleset on `main`: no direct push, no force push, no deletion, squash merge only, 1 approving review, approvals dismissed on a new push, every review thread resolved, 19 named checks required and the branch up to date with `main`. The API reports `current_user_can_bypass: never`. | Ruleset `ci` (id 20536130), read with `gh api repos/VictorBro/ft_transcendence/rulesets/20536130` |
 | Tests run in the same environment as production | Unit tests and the NestJS Supertest suite run inside the `ci` stage of each app's Dockerfile, against real PostgreSQL and Redis containers | `unit-tests` job in [`ci.yml`](../../.github/workflows/ci.yml), `ci` stage in [`apps/api/Dockerfile`](../../apps/api/Dockerfile) and [`apps/web/Dockerfile`](../../apps/web/Dockerfile) |
 | Browser tests on the production build | The production compose stack starts in CI, then Playwright runs every spec on Chromium, Firefox and WebKit, in 6 parallel jobs | [`e2e.yml`](../../.github/workflows/e2e.yml) |
@@ -204,8 +197,12 @@ password stored in GitHub.
 
 ## How to show it at the defence
 
-You need a teammate with write access to the repository, and SSH access to the server
-for steps 9 and 10.
+You need a teammate with write access to the repository, and SSH access to one of the two
+servers for steps 9 and 10. Both run the same timer: the Oracle instance behind
+<https://transcendence.dpdns.org> (files in `/home/ubuntu`) and the shared VPS behind
+<https://trans.vyantares.ch> (files in `~/ft_transcendence`), see
+[../operations/deployment.md](../operations/deployment.md) "Automatic deploys" and "Behind
+another reverse proxy". Use whichever one is up.
 
 1. Make a small, safe change on a branch. The branch name follows the `type/slug` rule:
    ```bash
@@ -217,7 +214,7 @@ for steps 9 and 10.
    ```
    The hooks run during `commit` and `push`. Show that `git commit` on `main` is refused.
 2. Open the pull request with a title GitHub would write itself:
-   `gh pr create --title "Defence demo" --fill`. The `pr title` job
+   `gh pr create --title "Defence demo" --body "Defence demo"`. The `pr title` job
    renames it to `docs: defence demo` (the commit subject). Show the job log, which ends
    with `Renamed to: ...`.
 3. Open the **Checks** tab of the pull request, or run `gh pr checks <number>`. Show the
@@ -242,12 +239,14 @@ for steps 9 and 10.
    journalctl -u ft-deploy.service -n 50
    ```
    Look for `deploying <sha>` with the merge commit. Or start it at once with
-   `sudo systemctl start ft-deploy.service`. Then show which commit is running:
+   `sudo systemctl start ft-deploy.service`. Then show which commit the server has:
    ```bash
    docker image inspect -f '{{index .Config.Labels "org.opencontainers.image.revision"}}' \
      ghcr.io/victorbro/ft_transcendence/api:latest
    ```
-10. Open <https://transcendence.dpdns.org> and show the change live.
+10. On your own machine, `git fetch && git rev-parse origin/main` prints the same commit.
+    A doc change does not show on the page. To see the change in the browser too, change
+    a visible text in step 1 instead, then open the site of the server you used.
 
 If there is no time to wait for a run, open the last merged pull request (for example
 [#212](https://github.com/VictorBro/ft_transcendence/pull/212)) and its runs on `main`
@@ -293,8 +292,8 @@ merge of #212 (commit `e0ba88c`), `hygiene` took about 1 minute, `ci` and `image
 - **Commits are graded.** The subject grades commits from every member with clear
   messages. commitlint, the pull request title check and squash-only merges keep the
   history of `main` readable.
-- **The app runs on a real server.** It runs at <https://transcendence.dpdns.org> (see
-  [custom-cloud-deploy.md](custom-cloud-deploy.md)). Updating it by hand after each merge
+- **The app runs on real servers.** It runs at <https://transcendence.dpdns.org> and
+  <https://trans.vyantares.ch> (see [custom-cloud-deploy.md](custom-cloud-deploy.md)). Updating it by hand after each merge
   would be slow and would go wrong. CD makes `main` and the live site the same thing.
 
 ## The technical challenges
@@ -329,8 +328,10 @@ it.
    production stack. Playwright's own `--shard` cuts by test count, which put almost
    every slow test in one half. We split by file instead (`E2E_PART`: `lesson.spec.ts`
    alone, then the rest; see [`e2e/playwright.config.ts`](../../e2e/playwright.config.ts)).
-   Each stack keeps its own signup count, because `POST /auth/signup` is rate limited
-   (`e2e/support/signup-budget.ts`). Playwright runs inside its own image, because
+   `POST /auth/signup` and `POST /auth/login` are rate limited per address, and every
+   worker of a job reaches Caddy from the same address, so the workers share one budget
+   and book each request in a shared log instead of racing into a `429`
+   ([`e2e/support/signup-budget.ts`](../../e2e/support/signup-budget.ts)). Playwright runs inside its own image, because
    installing WebKit's system packages from the runner's mirror sometimes took long
    enough to time the job out.
 6. **A required check that cannot lie.** In GitHub, a skipped job counts as passed. With
@@ -397,8 +398,7 @@ checks exactly those things on every change.
 
 - **Trivy reports, it does not block.** A new advisory can appear without any change in
   our code. Blocking would make old green pull requests red and stop the image push. The
-  findings are in the Security tab, and the pull request template asks the author to
-  check new dependencies. The `tooling` image is not scanned: it only migrates and seeds
+  findings are in the Security tab. The `tooling` image is not scanned: it only migrates and seeds
   ([`../operations/versions.md`](../operations/versions.md)).
 - **Not every image build is required.** The ruleset requires `build api` and
   `build web` on both architectures. The `tooling` and monitoring builds, the manifest
@@ -417,19 +417,19 @@ checks exactly those things on every change.
 - **Review is required, code owners are not.** CODEOWNERS asks the whole team on every
   path, and the ruleset needs one approval from anyone. "Require review from Code
   Owners" is off (`require_code_owner_review: false`). The CODEOWNERS file keeps a
-  commented-out plan for named owners of `.github/`, `scripts/` and `infra/`.
+  commented-out plan for named owners of `.github/`, `scripts/`, `infra/` and other paths.
 - **Up to 5 minutes of delay.** The price of a pull-based deploy without a deploy key.
 
 ## Who built it
 
 | Member | GitHub | What they built | Issues and PRs |
 | ------ | ------ | --------------- | -------------- |
-| Victor | [VictorBro](https://github.com/VictorBro) | Almost all of the module. The five workflows and the shared setup action in the scaffold; the git hooks, the app boundary check and the pull request title check; the Prisma format and drift checks; the deployment stack and the `tooling` image; the automatic deploy (`deploy.sh` and the timer); the monitoring images in `images.yml`; one e2e job per browser; Playwright in its own image; the `devcontainer` workflow. 15 of the 29 commits that touch `.github/`, `scripts/` and `infra/deploy/`. | [#2](https://github.com/VictorBro/ft_transcendence/pull/2), [#23](https://github.com/VictorBro/ft_transcendence/pull/23), [#29](https://github.com/VictorBro/ft_transcendence/pull/29) (his commit in that PR), [#65](https://github.com/VictorBro/ft_transcendence/pull/65), [#66](https://github.com/VictorBro/ft_transcendence/pull/66), [#130](https://github.com/VictorBro/ft_transcendence/pull/130), [#131](https://github.com/VictorBro/ft_transcendence/pull/131), [#189](https://github.com/VictorBro/ft_transcendence/pull/189), [#198](https://github.com/VictorBro/ft_transcendence/pull/198), [#200](https://github.com/VictorBro/ft_transcendence/pull/200), [#210](https://github.com/VictorBro/ft_transcendence/pull/210) |
+| Victor | [VictorBro](https://github.com/VictorBro) | Almost all of the module. The first four workflows and the shared setup action in the scaffold; the git hooks, the app boundary check and the pull request title check; the Prisma format and drift checks; the deployment stack and the `tooling` image; the automatic deploy (`deploy.sh` and the timer); the monitoring images in `images.yml`; one e2e job per browser; Playwright in its own image; the `devcontainer` workflow. 15 of the 28 commits on `main` that touch `.github/`, `scripts/` and `infra/deploy/`. | [#2](https://github.com/VictorBro/ft_transcendence/pull/2), [#23](https://github.com/VictorBro/ft_transcendence/pull/23), [#29](https://github.com/VictorBro/ft_transcendence/pull/29) (his commit in that PR), [#65](https://github.com/VictorBro/ft_transcendence/pull/65), [#66](https://github.com/VictorBro/ft_transcendence/pull/66), [#130](https://github.com/VictorBro/ft_transcendence/pull/130), [#131](https://github.com/VictorBro/ft_transcendence/pull/131), [#189](https://github.com/VictorBro/ft_transcendence/pull/189), [#198](https://github.com/VictorBro/ft_transcendence/pull/198), [#200](https://github.com/VictorBro/ft_transcendence/pull/200), [#210](https://github.com/VictorBro/ft_transcendence/pull/210) |
 | Bastian | [bastian-schnitzler](https://github.com/bastian-schnitzler) | Firefox and WebKit in the `e2e` matrix, and a commitlint ignore rule for commits written by Copilot Autofix. | [#159](https://github.com/VictorBro/ft_transcendence/issues/159), [#169](https://github.com/VictorBro/ft_transcendence/pull/169), [#114](https://github.com/VictorBro/ft_transcendence/pull/114) |
-| Endrit | [VYAntares](https://github.com/VYAntares) | The e2e migration step now also loads the question bank (`make db-ready`), and new server variables in `infra/deploy/.env.example`. | [#58](https://github.com/VictorBro/ft_transcendence/pull/58), [#69](https://github.com/VictorBro/ft_transcendence/pull/69), [#206](https://github.com/VictorBro/ft_transcendence/pull/206) |
-| Anaïs | [avarrett](https://github.com/avarrett) (commits as ninisse) | Small changes that came with her features: `ci.yml`, `scripts/assert-ts-version.sh`, `scripts/check-env-example.sh` and `infra/deploy/.env.example`. | [#104](https://github.com/VictorBro/ft_transcendence/pull/104), [#190](https://github.com/VictorBro/ft_transcendence/pull/190) |
+| Endrit | [VYAntares](https://github.com/VYAntares) | The e2e migration step now also loads the question bank (`make db-ready`), new server variables in `infra/deploy/.env.example`, and new variables known to `scripts/check-env-example.sh`. | [#58](https://github.com/VictorBro/ft_transcendence/pull/58), [#69](https://github.com/VictorBro/ft_transcendence/pull/69), [#143](https://github.com/VictorBro/ft_transcendence/pull/143), [#178](https://github.com/VictorBro/ft_transcendence/pull/178), [#206](https://github.com/VictorBro/ft_transcendence/pull/206) |
+| Anaïs | [avarrett](https://github.com/avarrett) (commits as ninisse) | Small changes that came with her features: `ci.yml`, `scripts/assert-ts-version.sh`, `scripts/check-env-example.sh` and `infra/deploy/.env.example`. | [#42](https://github.com/VictorBro/ft_transcendence/pull/42), [#104](https://github.com/VictorBro/ft_transcendence/pull/104), [#190](https://github.com/VictorBro/ft_transcendence/pull/190) |
 | Luca | [luca-mattei](https://github.com/luca-mattei) | Small changes that came with his features: one variable in `ci.yml`, and new server variables in `infra/deploy/.env.example`. | [#141](https://github.com/VictorBro/ft_transcendence/pull/141), [#201](https://github.com/VictorBro/ft_transcendence/pull/201) |
 
-The commit counts come from `git shortlog -sn --no-merges HEAD -- .github infra/deploy
-scripts` (Endrit's commits appear as "EA" and "VYAntares"). Every member uses the
+The commit counts come from `git shortlog -sn --no-merges origin/main -- .github
+infra/deploy scripts` on 2026-11-22 (Endrit commits as "EA"). Every member uses the
 pipeline: all of their pull requests went through it.

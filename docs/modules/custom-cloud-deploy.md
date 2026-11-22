@@ -99,18 +99,11 @@ flowchart LR
   the Let's Encrypt certificate, HSTS, and the visitor's address resolved through a
   front proxy.
 
-What the live site served on 22 November 2026 (with `openssl s_client`, see below):
-
-| | transcendence.dpdns.org | trans.vyantares.ch |
-| --- | --- | --- |
-| Issuer | `C=US, O=Let's Encrypt, CN=YE2` | `C=US, O=Let's Encrypt, CN=YE1` |
-| Valid from | 19 November 2026 | 18 October 2026 |
-| Valid until | 17 February 2027 | 16 January 2027 |
-| Issued by | our Caddy | the host's front proxy |
-
-The deployment files were merged on 20 September 2026 (PR #65 and #66). The certificate
-on `transcendence.dpdns.org` was issued two months later, and nothing in the repo or in
-[`deployment.md`](../operations/deployment.md) asks anyone to request one by hand.
+Both public names have a Let's Encrypt certificate that lasts 90 days. On
+`transcendence.dpdns.org` our Caddy requests and renews it. On `trans.vyantares.ch` the
+host's front proxy does (see below). Neither the repo nor
+[`deployment.md`](../operations/deployment.md) has a step that requests or renews a
+certificate by hand. The defence steps show the dates the live certificate has.
 
 ### The second host, behind another reverse proxy
 
@@ -163,31 +156,34 @@ that happens without a person, after a merge, belongs to CI/CD.
 
 ## How to show it at the defence
 
-From any machine with internet access. The commands only read.
+From any machine with internet access. The commands only read. Steps 1 to 3 work on
+either public name: set `HOST=transcendence.dpdns.org` (the Oracle instance, where our
+Caddy holds the certificate) or `HOST=trans.vyantares.ch` (the shared VPS, where the front
+proxy holds it). Show both if both answer, or the one that does.
 
 1. **The DNS record.**
 
    ```bash
-   dig transcendence.dpdns.org A +noall +answer
+   dig "$HOST" A +noall +answer
    ```
 
-   It shows `transcendence.dpdns.org. 300 IN A 140.238.209.2`. Then
-   `dig +short AAAA transcendence.dpdns.org` prints nothing: there is only the `A`
-   record. Without `dig`, `getent ahostsv4 transcendence.dpdns.org` gives the address.
+   It shows one `A` record with the host's address; for `transcendence.dpdns.org` it is
+   `transcendence.dpdns.org. 300 IN A 140.238.209.2`. Then `dig +short AAAA "$HOST"`
+   prints nothing: there is only the `A` record. Without `dig`,
+   `getent ahostsv4 "$HOST"` gives the address.
 
 2. **The certificate.**
 
    ```bash
-   echo | openssl s_client -connect transcendence.dpdns.org:443 \
-     -servername transcendence.dpdns.org 2>/dev/null \
+   echo | openssl s_client -connect "$HOST:443" -servername "$HOST" 2>/dev/null \
      | openssl x509 -noout -issuer -subject -dates -ext subjectAltName
    ```
 
-   The issuer is `O=Let's Encrypt`, the subject is `CN=transcendence.dpdns.org`, and
-   `notBefore` to `notAfter` is 90 days. The same with curl:
+   The issuer is `O=Let's Encrypt`, the subject is `CN=` the name, and `notBefore` to
+   `notAfter` is 90 days. The same with curl:
 
    ```bash
-   curl -sv -o /dev/null https://transcendence.dpdns.org/ 2>&1 | grep -A6 'Server certificate'
+   curl -sv -o /dev/null "https://$HOST/" 2>&1 | grep -A6 'Server certificate'
    ```
 
    It shows the subject, the start and expire dates, the Let's Encrypt issuer and
@@ -196,42 +192,44 @@ From any machine with internet access. The commands only read.
 3. **HTTPS only.**
 
    ```bash
-   curl -sI http://transcendence.dpdns.org/
-   curl -sI https://transcendence.dpdns.org/
+   curl -sI "http://$HOST/"
+   curl -sI "https://$HOST/"
    ```
 
    The first answers `308 Permanent Redirect` to `https://`. The second shows
    `strict-transport-security: max-age=31536000; includeSubDomains`, `via: 1.1 Caddy`
-   and `alt-svc: h3=":443"`. Open the site in a browser and click the lock: no warning,
-   and the certificate is from Let's Encrypt.
+   and `alt-svc: h3=":443"`. On `trans.vyantares.ch`, `via: 1.1 Caddy` comes twice: the
+   front proxy, then ours. Open the site in a browser and click the lock: no warning, and
+   the certificate is from Let's Encrypt.
 
 4. **The config behind it.** Open [`Caddyfile.prod`](../../infra/caddy/Caddyfile.prod):
    show `email {$ACME_EMAIL}`, the `{$SITE_DOMAIN}` site and the HSTS header. Open
    [`compose.deploy.yml`](../../compose.deploy.yml): show the three ports and the
-   `caddy-data` volume. That is the whole certificate setup.
+   `caddy-data` volume. That is the whole certificate setup. Open
+   [`compose.deploy.proxy.yml`](../../compose.deploy.proxy.yml) to show how the second
+   host differs: no ports, plain HTTP behind the front proxy, the two labels.
 
-5. **The server** (a team member with the SSH key):
+5. **The server** (a team member with the SSH key). On the Oracle instance:
 
    ```bash
    ssh ubuntu@140.238.209.2
-   ls                                        # compose.deploy.yml, Caddyfile, .env among others
+   ls -a                                     # compose.deploy.yml, Caddyfile, .env among others
    docker compose -f compose.deploy.yml ps
    docker compose -f compose.deploy.yml exec caddy find /data/caddy/certificates -name '*.crt'
    docker compose -f compose.deploy.yml logs caddy | grep -i certificate
    ```
 
    `ps` shows Caddy as the only service with published ports. `find` shows the
-   certificate Caddy stored in its volume.
+   certificate Caddy stored in its volume. On the shared VPS the files are in
+   `~/ft_transcendence`, and
+   `docker compose -f compose.deploy.yml -f compose.deploy.proxy.yml ps` shows no
+   published port at all, since the front proxy owns 80 and 443
+   ([`deployment.md`](../operations/deployment.md) "Behind another reverse proxy").
 
 6. **The cloud side** (optional, needs an OCI session, see
-   [`deployment.md`](../operations/deployment.md) section 1): the instance list
-   command of section 2 shows the instance, and its security list shows only 80, 443
-   and 443/udp.
-
-7. **The second host.** `curl -sI https://trans.vyantares.ch/` shows `via: 1.1 Caddy`
-   twice: the front proxy, then ours. Its certificate (step 2 with this name) is also
-   from Let's Encrypt, requested by the front proxy. Open
-   [`compose.deploy.proxy.yml`](../../compose.deploy.proxy.yml) to show how.
+   [`deployment.md`](../operations/deployment.md) section 1): the instance list command
+   of section 2 shows the instance. Its ingress rules are the ones of section 2: 80/tcp,
+   443/tcp and 443/udp.
 
 ## Tests that prove it
 
@@ -270,7 +268,7 @@ The script runs in the `monitoring config` job of
   estimated 330 to 450 MB. We answered with a hard `mem_limit` on every monitoring
   service (800 MB together), `cpu_shares: 256` for Prometheus and Grafana so they yield
   to the app, and a 2 GB swapfile ([`deployment.md`](../operations/deployment.md),
-  "Memory"). The images are built for both `amd64` and `arm64`
+  "Memory"). The CI/CD module builds the images for both `amd64` and `arm64`
   ([`images.yml`](../../.github/workflows/images.yml)), so either shape can run them.
 - **A certificate authority with rate limits.** Let's Encrypt allows only a few
   certificates per domain per week. Two rules protect us: the DNS record must resolve
@@ -360,12 +358,12 @@ Why it is not a Major:
 
 | Member | GitHub | What they built | Issues and PRs |
 | ------ | ------ | --------------- | -------------- |
-| Victor | [VictorBro](https://github.com/VictorBro) | `compose.deploy.yml`, `Caddyfile.prod` with Let's Encrypt and HSTS, the server's `.env.example`, and the Oracle Cloud runbook. Then the `/grafana` route and the memory limits for the server, and the overlay for the host behind another reverse proxy, with the trusted-proxy fix for the visitor's address. | [#65](https://github.com/VictorBro/ft_transcendence/pull/65), [#66](https://github.com/VictorBro/ft_transcendence/pull/66), [#130](https://github.com/VictorBro/ft_transcendence/pull/130), [#131](https://github.com/VictorBro/ft_transcendence/pull/131) |
-| Endrit | [VYAntares](https://github.com/VYAntares) | Made `LLM_PROVIDER` required in `compose.deploy.yml`, so the server never inherits a default AI provider. | [#69](https://github.com/VictorBro/ft_transcendence/pull/69) |
+| Victor | [VictorBro](https://github.com/VictorBro) | `compose.deploy.yml`, `Caddyfile.prod` with Let's Encrypt and HSTS, the server's `.env.example`, and the Oracle Cloud runbook. Then the `/grafana` route and the memory limits for the server, and the overlay for the host behind another reverse proxy, with the trusted-proxy fix for the visitor's address. Later, new image versions and the rate-limit variables on the server. | [#65](https://github.com/VictorBro/ft_transcendence/pull/65), [#66](https://github.com/VictorBro/ft_transcendence/pull/66), [#130](https://github.com/VictorBro/ft_transcendence/pull/130), [#131](https://github.com/VictorBro/ft_transcendence/pull/131), [#198](https://github.com/VictorBro/ft_transcendence/pull/198) |
+| Endrit | [VYAntares](https://github.com/VYAntares) | Made `LLM_PROVIDER` required in `compose.deploy.yml`, so the server never inherits a default AI provider. Capped and rotated the container logs on the server (`x-logging`). | [#69](https://github.com/VictorBro/ft_transcendence/pull/69), [#206](https://github.com/VictorBro/ft_transcendence/pull/206) |
 | Luca | [luca-mattei](https://github.com/luca-mattei) | The seed step in the `migrate` service, and the discussion limits passed to the api. | [#123](https://github.com/VictorBro/ft_transcendence/pull/123), [#201](https://github.com/VictorBro/ft_transcendence/pull/201) |
 | Bastian | [bastian-schnitzler](https://github.com/bastian-schnitzler) | The `keepalive 4s` setting on the `/api` and `/ws` routes of `Caddyfile.prod`, shorter than Node's keep-alive timeout. | [#192](https://github.com/VictorBro/ft_transcendence/pull/192) |
 
 From `git log --follow` on `compose.deploy.yml`, `infra/caddy/Caddyfile.prod`,
 `compose.deploy.proxy.yml` and `infra/deploy/.env.example`, and `gh pr view` for the
-pull requests. Anaïs ([avarrett](https://github.com/avarrett) (commits as ninisse)) changed only a comment in
-these files ([#104](https://github.com/VictorBro/ft_transcendence/pull/104)).
+pull requests. Anaïs ([avarrett](https://github.com/avarrett), commits as ninisse) changed only
+comments in these files ([#104](https://github.com/VictorBro/ft_transcendence/pull/104)).

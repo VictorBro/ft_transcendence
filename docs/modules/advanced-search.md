@@ -131,8 +131,9 @@ lesson kind, it links to this page with a filter already set, for example
    **Descending**: the last lesson of the level comes first. Set **Sort** to **Score** or
    **Last finished**: with a new account no lesson has a result yet, so they keep their order.
    Finish one lesson first to see it move to the top.
-9. **Groups.** Set **Group** to **Kind**: headers Grammar, Vocabulary, Everyday phrases and
-   Reading appear. Set it to **Status**: "Not started", then "Coming soon".
+9. **Groups.** Set **Group** to **Kind**: the rows now come kind by kind, under a **Grammar**
+   header. The grammar lessons fill the first pages; page 3 shows where the **Vocabulary** header
+   starts. Set it to **Status**: "Not started", then "Coming soon".
 10. **The URL is the view.** Copy the URL, open it in a new tab: the same boxes, selects and
     rows. Press **Back** in the first tab: it undoes one change.
 11. **A hand-edited URL.** Open `/en/learn/fr/lessons?sort=foo&page=0`: no error, the default
@@ -152,7 +153,7 @@ lesson kind, it links to this page with a filter already set, for example
 | Test | What it checks |
 | --- | --- |
 | [`apps/api/src/lessons/lesson-search.spec.ts`](../../apps/api/src/lessons/lesson-search.spec.ts) | `searchLessons` alone. Text: case and accents, part of a word, "finds Mädchen from maedchen in German only", "keeps oe in French, so coeur finds cœur and never cour", "needs every word, in any order". Filters: any of the listed values, "needs every filter to match", soon and todo. Sort: by score and finishedAt "never started last in both directions", "breaks ties by position ascending, whatever the dir". Groups: status, day and kind order. Pages: "returns one page of LESSONS_PAGE_SIZE and the total", "clamps a page past the end to the last page", "counts the total after the filters, not before", "is page 1 with no matches" |
-| [`apps/api/test/lessons.e2e-spec.ts`](../../apps/api/test/lessons.e2e-spec.ts) | The real route with a database: 401 without a session, 400 for a language that is not learnable, 409 before placement; "lists only the current level"; the search on the title and the summary; statuses, a repeated key, topic and theme; sort by score; groups; "falls back on the defaults for unknown values, never a 400"; "brings a page past the end back to the last one"; "answers an empty page when nothing matches"; Swagger documents the parameters |
+| [`apps/api/test/lessons.e2e-spec.ts`](../../apps/api/test/lessons.e2e-spec.ts) | The real route with a database: 401 without a session, 400 for an unknown language, 409 before placement; "lists only the current level"; the search on the title and the summary; statuses, a repeated key, topic and theme; sort by score; groups; "falls back on the defaults for unknown values, never a 400"; "brings a page past the end back to the last one"; "answers an empty page when nothing matches"; Swagger documents the parameters |
 | [`packages/shared/src/schemas/lesson.test.ts`](../../packages/shared/src/schemas/lesson.test.ts) | `LessonQuerySchema`: "defaults every field", "reads page from digits only", "falls back to the defaults and drops unknown list values", "reads a repeated key like one comma list", `q` cut to 100 |
 | [`apps/web/lib/lesson-list.test.ts`](../../apps/web/lib/lesson-list.test.ts) | The URL leaves the defaults out; group headers start wherever the key changes |
 | [`e2e/tests/lessons.spec.ts`](../../e2e/tests/lessons.spec.ts) | In a real browser: "a direct load renders exactly the view in its URL", "pages of 20 over the whole level, with a working pager", "a hand-edited URL renders the default view", "groups put a header wherever the group changes", "a box applies as soon as it is checked, and its chip takes it off", "Back undoes one change, not all of them", "a search applies once the typing stops", the phone sheet, "without JavaScript, the form still filters and the pager still pages", "a search without accents finds a title with them, in every interface language", and who can open the page |
@@ -186,4 +187,4 @@ The Playwright tests run in [`.github/workflows/e2e.yml`](../../.github/workflow
 | Member | GitHub | What they built | Issues and PRs |
 | --- | --- | --- | --- |
 | Endrit | [VYAntares](https://github.com/VYAntares) | The API side: `GET /api/courses/:lang/lessons`, `searchLessons` (text, filters, sort, groups, pages), the German "ae/oe/ue" match, the DTOs and the Swagger docs, with their unit and Supertest tests. | [#81](https://github.com/VictorBro/ft_transcendence/issues/81), [#128](https://github.com/VictorBro/ft_transcendence/pull/128) |
-| Luca | [luca-mattei](https://github.com/luca-mattei) | The all lessons page: the GET form, the live form, filters, chips, sort, groups, pager and phone sheet. On the API side, the `soon` status for lessons not written yet. The e2e tests. | [#87](https://github.com/VictorBro/ft_transcendence/issues/87), [#196](https://github.com/VictorBro/ft_transcendence/pull/196) |
+| Luca | [luca-mattei](https://github.com/luca-mattei) | The all lessons page: the GET form, the live form, filters, chips, sort, groups, pager and phone sheet. On the API side, the `soon` status for lessons not written yet. The e2e tests in `lessons.spec.ts`. | [#87](https://github.com/VictorBro/ft_transcendence/issues/87), [#196](https://github.com/VictorBro/ft_transcendence/pull/196) |

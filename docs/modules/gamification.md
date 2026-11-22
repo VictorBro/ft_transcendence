@@ -11,8 +11,6 @@ course page, the lesson results and an achievements page show it.
 The module is one line in the Gaming and user experience table of
 [../subject/summary.md](../subject/summary.md):
 
-> | Type | Module |
-> | --- | --- |
 > | Minor | Gamification: ≥3 of achievements / badges / leaderboards / XP / daily challenges / rewards, persisted, with visual feedback |
 
 The PDF ([../subject/ft_transcendence.pdf](../subject/ft_transcendence.pdf), chapter IV, Gaming
@@ -38,7 +36,7 @@ module has no such sentence, and the "requires at least one working game" rule i
 their actions", fit any app. So we claim it, and the "user actions" are finishing lessons and
 reaching the daily goal. This is our reading of the subject. The team has written down that it must
 be confirmed with staff before the defence
-([../architecture/product.md](../architecture/product.md), §2, "Gamification outside a game").
+([README.md](README.md#gamification-outside-a-game), "Gamification outside a game").
 
 ## How we meet it
 
@@ -47,7 +45,7 @@ be confirmed with staff before the defence
 | At least 3 of the six features | Three: **XP with ranks** (the subject's "XP/level system"), **daily challenges** (one a day out of six), and **achievements** (16). Badges, leaderboards and rewards are not built. | [`packages/shared/src/schemas/gamification.ts`](../../packages/shared/src/schemas/gamification.ts), [`apps/api/src/lessons/gamification.rules.ts`](../../apps/api/src/lessons/gamification.rules.ts) |
 | Stored in the database | Four columns on the course row `UserLevel` (`xp`, `lastChallengeDay`, `lastChallengeCode`, `challengesDone`) and a `UserAchievement` table, one row per earned achievement. Written in the same transaction as the lesson result. | [`apps/api/prisma/schema.prisma`](../../apps/api/prisma/schema.prisma), [`migration.sql`](../../apps/api/prisma/migrations/20261107184854_add_gamification/migration.sql), [`apps/api/src/lessons/gamification.ts`](../../apps/api/src/lessons/gamification.ts) |
 | Visual feedback | Progress bars for the rank, for each achievement and for the whole list; an XP card on the lesson results with each new achievement; a "New today" list and a "Today's challenge" card with a **Done** mark on the course page. | [`apps/web/components/gamification.tsx`](../../apps/web/components/gamification.tsx), [`achievements/page.tsx`](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/achievements/page.tsx>) |
-| Clear rules and progression | A **How it works** panel on the achievements page lists the XP of each action, the XP each rank starts at, the six challenges and the achievement rules. Every number on it comes from the shared constants the API uses. Each achievement card says its own rule. | [`achievements/page.tsx`](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/achievements/page.tsx>) (`HowItWorks`), [`apps/web/lib/achievements.ts`](../../apps/web/lib/achievements.ts) |
+| Clear rules and progression | A **How it works** panel on the achievements page lists the XP of each action, the XP each rank starts at, the six challenges and the achievement rules. The XP amounts, the rank thresholds and the pass mark on it come from the shared constants the API uses. Each achievement card says its own rule. | [`achievements/page.tsx`](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/achievements/page.tsx>) (`HowItWorks`), [`apps/web/lib/achievements.ts`](../../apps/web/lib/achievements.ts) |
 
 ## How it works
 
@@ -155,9 +153,9 @@ The stack must be running (`make run`, or `make` to run every check first). The 
 
 **A new learner (XP, challenge, first achievement)**
 
-1. Open `https://localhost/en/signup`, create an account, pick **Français** and click **Next**.
-   Click **I already know my level**, choose A1 and click **Start learning** (or **Take the placement
-   test**).
+1. Open `https://localhost/en/signup`, create an account, pick **Français** under "Language to learn", pick a
+   "Daily goal", and click **Next**. Click **I already know my level**, choose **A0** (a beginner, so
+   the course is French A1) and click **Start learning**.
 2. On the course page (`/en/learn/fr`), show under the title: "Rank 1 · 0 of 100 XP" with an empty
    bar, and the link **Achievements and rules**. Below it is the **Today's challenge** card with
    its rule and "+30 XP".
@@ -170,7 +168,7 @@ The stack must be running (`make run`, or `make` to run every check first). The 
    the challenge was done, its card shows **Done**.
 6. Click **Achievements and rules**. The page shows "1 of 16 earned", four groups (**Lessons**,
    **Streaks**, **Challenges**, **Levels**), the **First lesson** card in green with "Earned on"
-   and the date, and the other cards greyed with their progress bars, for example "0 of 7 days".
+   and the date, and the other cards greyed, each with its progress bar.
    On the side, **How it works** lists the XP of each action and the XP each rank starts at.
 
 **It is stored in the database**
@@ -216,9 +214,8 @@ has a 12-day streak.
   played today. While a level has only some lessons written, the achievement can be earned on
   those, and a lesson added later does not take it back (comment on `earned()` in
   [`gamification.rules.ts`](../../apps/api/src/lessons/gamification.rules.ts)).
-- **Feedback is inline, not a pop-up.** The XP card is part of the results page, not a toast. The
-  project has no notification system ([../architecture/product.md](../architecture/product.md),
-  §2).
+- **Feedback is inline, not a pop-up.** The XP card is part of the results page, not a toast. We do not claim the notification module
+  ([README.md](README.md#not-claimed)).
 - **Old attempts.** An attempt finished before the awards existed (#95) earned nothing. Its
   results show no XP rows, only that the goal was met (`EARNED_NOTHING` in
   [`attempts.service.ts`](../../apps/api/src/lessons/attempts.service.ts), `legacyGoal` in
@@ -228,5 +225,5 @@ has a 12-day streak.
 
 | Member | GitHub | What they built | Issues and PRs |
 | ------ | ------ | --------------- | -------------- |
-| Anaïs | `avarrett` (commits as `ninisse`) | The whole module: the constants, schemas and pure rules; the database columns, `UserAchievement` and `award()` in the finish and goal transactions, with the API e2e tests; the course page parts, the results XP card, the achievements page and the Playwright test. | [#132](https://github.com/VictorBro/ft_transcendence/pull/132) (closes [#94](https://github.com/VictorBro/ft_transcendence/issues/94)), [#180](https://github.com/VictorBro/ft_transcendence/pull/180) (closes [#95](https://github.com/VictorBro/ft_transcendence/issues/95)), [#199](https://github.com/VictorBro/ft_transcendence/pull/199) (closes [#97](https://github.com/VictorBro/ft_transcendence/issues/97)) |
+| Anaïs | [avarrett](https://github.com/avarrett) (commits as `ninisse`) | The whole module: the constants, schemas and pure rules; the database columns, `UserAchievement` and `award()` in the finish and goal transactions, with the API e2e tests; the course page parts, the results XP card, the achievements page and the Playwright test. | [#132](https://github.com/VictorBro/ft_transcendence/pull/132) (closes [#94](https://github.com/VictorBro/ft_transcendence/issues/94)), [#180](https://github.com/VictorBro/ft_transcendence/pull/180) (closes [#95](https://github.com/VictorBro/ft_transcendence/issues/95)), [#199](https://github.com/VictorBro/ft_transcendence/pull/199) (closes [#97](https://github.com/VictorBro/ft_transcendence/issues/97)) |
 | Victor | [VictorBro](https://github.com/VictorBro) | Wrote the three issues that specify the feature. | [#94](https://github.com/VictorBro/ft_transcendence/issues/94), [#95](https://github.com/VictorBro/ft_transcendence/issues/95), [#97](https://github.com/VictorBro/ft_transcendence/issues/97) |

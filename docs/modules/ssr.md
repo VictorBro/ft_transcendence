@@ -37,14 +37,14 @@ sequenceDiagram
     participant W as Next.js (web)
     participant A as NestJS (api)
     B->>C: GET /en/learn/fr/lessons?kind=grammar
-    C->>W: everything that is not /api or /ws
+    C->>W: every path but /api, /ws and /grafana
     W->>A: GET /api/auth/me, /api/courses, /api/courses/fr/lessons?kind=grammar (with the cookie)
     A-->>W: JSON, checked with the shared Zod schemas
     W-->>B: full HTML: title, filters, lesson rows, pager
     Note over B: The page can be read now. JavaScript then makes the buttons and forms live (hydration).
 ```
 
-1. **The request reaches Next.js.** Caddy sends every path that is not `/api` or `/ws` to the
+1. **The request reaches Next.js.** Caddy sends every path except `/api`, `/ws` and `/grafana` to the
    `web` container ([`infra/caddy/Caddyfile`](../../infra/caddy/Caddyfile)).
    [`proxy.ts`](../../apps/web/proxy.ts) adds the language to the URL if it is missing.
 2. **The layout and the page run on the server.** They are `async` server components. The
@@ -53,8 +53,8 @@ sequenceDiagram
    all lessons page
    [`lessons/page.tsx`](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/page.tsx>)
    calls `requireCourses()` and then `loadLessonPage()`.
-3. **The data comes from NestJS.** [`lib/api.ts`](../../apps/web/lib/api.ts) is the only
-   place `apps/web` talks to NestJS. It calls `http://api:3001` (or `API_INTERNAL_URL`),
+3. **The data comes from NestJS.** [`lib/api.ts`](../../apps/web/lib/api.ts) makes every call
+   from the Next.js server to NestJS. It calls `http://api:3001` (or `API_INTERNAL_URL`),
    passes on the browser's cookie and the visitor's address, sets `cache: 'no-store'`, and
    checks the answer with a Zod schema. A 401 sends the visitor to `/login`. Any other failure
    throws, so the error page shows and nobody is logged out by a restart.

@@ -15,11 +15,11 @@ before each lesson exam, and live social features over WebSockets.
 |---|---|---|
 | Frontend | **Next.js** (App Router) | Framework major module. SSR minor point. `next-intl` for the i18n module. Public pages indexable. |
 | Backend | **NestJS** | WebSocket gateways, DI (mockable LLM provider), guards, throttler, Swagger, validation pipes. Module boundaries map onto team members. |
-| Database | **Postgres 18 + pgvector** | Relational data. pgvector was chosen for RAG, which was dropped (architecture/product.md §2); the extension stays in the image, unused. |
+| Database | **Postgres 18 + pgvector** | Relational data. pgvector was chosen for RAG, which was dropped ([modules/README.md](../modules/README.md#not-claimed), "Not claimed"); the extension stays in the image, unused. |
 | ORM | **Prisma 7** | Minor module; `schema.prisma` doubles as the README schema doc. |
 | Cache / sessions | **Redis** | Sessions, placement runs, the lesson discussion's rate limits, presence. |
 | Proxy | **Caddy** | Single TLS entry point (mandatory HTTPS). Same-origin kills CORS; httpOnly cookies just work. Internal CA for dev certs. |
-| Real-time | **socket.io** | Presence, live course and friend updates, direct messages. The lesson discussion streams over Server-Sent Events on a REST route instead (architecture/overview.md §5). |
+| Real-time | **socket.io** | Presence, live course and friend updates, direct messages. The lesson discussion streams over Server-Sent Events on a REST route instead ([architecture/realtime.md](realtime.md) §4). |
 | Monorepo | **pnpm workspaces + Turborepo** | Strict node_modules; cached tasks. |
 | Contracts | **Zod in `packages/shared`** | One schema validates frontend and backend (mandatory requirement). |
 | Tests | **Vitest, Supertest, Playwright** | Units, API e2e, browser e2e + console gate. |
@@ -250,10 +250,10 @@ stale branch tags, per-commit pushes accumulate fast.
 
 ## 6. Product, AI and data model
 
-Moved to [architecture/product.md](product.md): the learner journey, the AI provider and its
-cost controls, and the schema. The modules we claim and their points are listed in
-[modules/README.md](../modules/README.md). One source of truth, so the two documents cannot
-disagree.
+Moved out of this plan. The learner journey and the AI provider with its cost controls are in
+[architecture/product.md](product.md), and the schema is in [architecture/data-model.md](data-model.md).
+The modules we claim and their points are listed in [modules/README.md](../modules/README.md). Each
+topic has one home, so the documents cannot disagree.
 
 ---
 
@@ -270,7 +270,7 @@ disagree.
    [#150](https://github.com/VictorBro/ft_transcendence/issues/150) "feat(api): stream the lesson
    discussion, with error handling and rate limits" (PR #201): Server-Sent Events on
    `POST /api/courses/:lang/lessons/:id/discussion`, `streamText` on the fixture and on Gemini,
-   with its window in #151. It streams over SSE, not over the socket (architecture/overview.md §5).
+   with its window in #151. It streams over SSE, not over the socket ([architecture/realtime.md](realtime.md) §1).
 6. **Slice tests**: unit per layer, one Supertest e2e, one Playwright flow, console gate live.
 7. **Images**: multi-arch manifest on GHCR.
 8. **Handoff**: README skeleton with all mandatory sections, **including the Resources section

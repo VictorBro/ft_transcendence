@@ -203,8 +203,8 @@ The Grafana **API** dashboard has a **WebSocket** row with the panels **Open con
 | [apps/web/app/healthz/api/route.ts](../../apps/web/app/healthz/api/route.ts) | The probe the tab asks before each retry |
 | [infra/caddy/Caddyfile](../../infra/caddy/Caddyfile) | Routes `/ws` and `/ws/*` to the API |
 
-The design is also described in [../architecture/overview.md](../architecture/overview.md),
-section 4, and in [../architecture/product.md](../architecture/product.md), section 3.
+The design is also described in [../architecture/realtime.md](../architecture/realtime.md),
+sections 1 and 3.
 
 ## How to show it at the defence
 
@@ -295,7 +295,7 @@ restart test. `make playwright-all` runs Playwright on Chromium, Firefox and Web
 - **Two states only:** online and offline. There is no "away" status.
 - **The lesson discussion does not use the socket.** It streams the tutor's answer over
   Server-Sent Events on a normal `POST`, because it is one learner and one answer
-  ([../architecture/product.md](../architecture/product.md), section 3). It is part of the LLM
+  ([../architecture/realtime.md](../architecture/realtime.md), section 1). It is part of the LLM
   module, not this one.
 - **Shared with other modules.** The chat belongs to
   [user-interaction.md](./user-interaction.md) and the online status to

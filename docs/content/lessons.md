@@ -3,7 +3,8 @@
 What a lesson is, how many there are, how they are planned, written, checked and seeded, how a
 learner plays one, and how an attempt is scored. [architecture/product.md](../architecture/product.md)
 says how the daily goal and the all lessons page use them, and
-[architecture/overview.md](../architecture/overview.md) §5 traces the routes. Why the lesson model is the one of the
+[architecture/overview.md](../architecture/overview.md) §5 traces the routes, and
+[architecture/realtime.md](../architecture/realtime.md) §4 the discussion stream. Why the lesson model is the one of the
 lesson prototype is in [#137](https://github.com/VictorBro/ft_transcendence/issues/137).
 
 Audience: whoever writes an outline, runs the authoring kit, checks a level, or needs to explain the
@@ -651,7 +652,7 @@ visit. The turns live in the page only: leaving the page forgets them.
 **What the server does** (#150): `POST /api/courses/:lang/lessons/:id/discussion` with
 `{ attemptId, message, history }` (`LessonDiscussionSchema`). It answers as **Server-Sent Events**
 on that one response: `delta { text }` for each piece, then `done {}`, or `error { code }`, with a
-`: heartbeat` comment every 15 s. [architecture/overview.md](../architecture/overview.md) §5 traces it.
+`: heartbeat` comment every 15 s. [architecture/realtime.md](../architecture/realtime.md) §4 traces it.
 
 | Rule | How |
 |---|---|
