@@ -42,10 +42,11 @@ services:
       CADDY_EXTRA_HOSTNAME: ${CADDY_EXTRA_HOSTNAME:-ft-transcendence.test}
     ports:
       # Overridable for hosts that cannot bind ports below 1024 (rootless
-      # Docker on a sudo-less school machine): set HTTP_PORT/HTTPS_PORT in
-      # .env, e.g. 8080/8443, and open https://localhost:8443 directly. The
-      # automatic http->https redirect assumes the default ports, so with
-      # overrides just use the https URL.
+      # Docker on a sudo-less school machine): .devcontainer/initialize.sh
+      # sets HTTP_PORT/HTTPS_PORT in .env there, 8080/8443 when those are
+      # free, and the app is at https://localhost:<HTTPS_PORT>. The automatic
+      # http->https redirect assumes the default ports, so with overrides just
+      # use the https URL.
       - "${HTTP_PORT:-80}:80"
       - "${HTTPS_PORT:-443}:443"
       # HTTP/3. Caddy enables it by default and the browser silently falls back

@@ -56,7 +56,7 @@ E2E_EMAIL_PREFIX ?= browser-
 # published ports live on the HOST, so the suite talks to the caddy service
 # name over the shared compose network instead; the Caddyfile lists `caddy` as
 # a site address for exactly this. /.dockerenv exists only inside a container.
-E2E_BASE_URL ?= $(if $(wildcard /.dockerenv),https://caddy,https://localhost)
+E2E_BASE_URL ?= $(if $(wildcard /.dockerenv),https://caddy,$(PUBLIC_URL))
 
 # The engines `make playwright` runs. Chromium alone by default: three engines on
 # one stack were most of a `make all`, and CI runs all three anyway, each in its
@@ -76,6 +76,14 @@ ENV_FILE := $(wildcard .env)
 env_get = $(strip $(if $(ENV_FILE),$(shell sed -n 's/^[[:space:]]*$(1)=//p' $(ENV_FILE) | tail -1)))
 POSTGRES_HOST_PORT ?= $(or $(call env_get,POSTGRES_HOST_PORT),5432)
 REDIS_HOST_PORT    ?= $(or $(call env_get,REDIS_HOST_PORT),6379)
+
+# Where a browser on this machine reaches caddy. The port is only spelled out
+# when it is not the default: a rootless daemon cannot publish 443, so on a
+# school machine .devcontainer/initialize.sh moves it, to 8443 when that is
+# free.
+HTTPS_PORT  ?= $(or $(call env_get,HTTPS_PORT),443)
+PUBLIC_PORT := $(if $(filter-out 443,$(HTTPS_PORT)),:$(HTTPS_PORT))
+PUBLIC_URL  := https://localhost$(PUBLIC_PORT)
 
 # Standard ports on the compose network, published ports from a host shell. A
 # wrong port here connects to another database instead of failing.
@@ -148,7 +156,7 @@ all:
 	@$(MAKE) --no-print-directory playwright
 	@printf '\n  ALL GREEN: checks, build, e2e on Chromium (console gate included) all passed.\n'
 	@printf '  CI also runs Firefox and WebKit: `make playwright-all` does too.\n'
-	@printf '  The PRODUCTION stack is now running at https://localhost\n'
+	@printf '  The PRODUCTION stack is now running at $(PUBLIC_URL)\n'
 	@printf '  `make dev` gets hot reload back, `make down` stops everything.\n'
 	@printf '  `make report` opens the Playwright report.\n\n'
 
@@ -161,9 +169,9 @@ run:
 	@# certs runs last, not first: Caddy mints its internal CA on first boot, so
 	@# there is nothing to export until the stack is up.
 	@$(MAKE) --no-print-directory certs
-	@printf '\n  ft_transcendence is running:  https://localhost\n'
-	@printf '  API docs:                     https://localhost/api/docs\n'
-	@printf '  Grafana:                      https://localhost/grafana  (admin, password: grep GRAFANA_ADMIN_PASSWORD .env)\n'
+	@printf '\n  ft_transcendence is running:  $(PUBLIC_URL)\n'
+	@printf '  API docs:                     $(PUBLIC_URL)/api/docs\n'
+	@printf '  Grafana:                      $(PUBLIC_URL)/grafana  (admin, password: grep GRAFANA_ADMIN_PASSWORD .env)\n'
 	@printf '  Logs:                         make logs\n\n'
 
 # env-file: compose.prod.yml requires both Grafana keys, see the monitoring
@@ -204,7 +212,7 @@ dev: ## Start the development stack: bind-mounted source, hot reload
 	@# nothing exported Caddy's CA for the browser to trust.
 	@$(MAKE) --no-print-directory db-ready
 	@$(MAKE) --no-print-directory certs
-	@printf '\n  Dev stack up: https://localhost\n'
+	@printf '\n  Dev stack up: $(PUBLIC_URL)\n'
 	@printf '  The web and api containers reinstall dependencies on start;\n'
 	@printf '  follow them with `make logs` until the servers report ready.\n\n'
 
@@ -272,7 +280,7 @@ env-file: ## Create .env if missing, generate the Grafana secrets, add new keys
 # Learning dashboard reads the bank), and exports the CA.
 monitoring-up: env-file ## Dev stack plus Prometheus, Grafana, Alertmanager: https://localhost/grafana
 	@$(MAKE) --no-print-directory dev COMPOSE_DEV='$(COMPOSE_DEV) --profile monitoring'
-	@printf '\n  Grafana: https://localhost/grafana  (user admin, password: grep GRAFANA_ADMIN_PASSWORD .env)\n\n'
+	@printf '\n  Grafana: $(PUBLIC_URL)/grafana  (user admin, password: grep GRAFANA_ADMIN_PASSWORD .env)\n\n'
 
 # The dev file list works on the prod stack too (see down), so `all` uses it.
 monitoring-check: ## Every scrape target up, every rule healthy, Alertmanager found
@@ -305,6 +313,9 @@ playwright:
 	@# The signup, login and discussion limits come from the api container the same way, so
 	@# the suite queues to what the api really runs with
 	@# (e2e/support/signup-budget.ts). Empty means the default on both sides.
+	@# So does the tutor's provider: the two discussion tests that read the fixture
+	@# tutor's answer skip themselves on a stack that runs a real one, instead of
+	@# failing on whatever LLM_PROVIDER a developer keeps in .env. CI runs fixture.
 	@# Then the restart run (e2e/tests/restart.spec.ts): it restarts the API of
 	@# the production stack once, on Chromium only, since two restarts in 15
 	@# minutes fire ApiRestarting. When `up` has just recreated a rebuilt api
@@ -318,7 +329,8 @@ playwright:
 	LOGIN_LIMIT_PER_MINUTE="$$($(COMPOSE_DEV) exec -T api printenv LOGIN_LIMIT_PER_MINUTE 2>/dev/null)"; \
 	LLM_DISCUSSION_GLOBAL_PER_MINUTE="$$($(COMPOSE_DEV) exec -T api printenv LLM_DISCUSSION_GLOBAL_PER_MINUTE 2>/dev/null)"; \
 	LLM_DISCUSSION_USER_PER_MINUTE="$$($(COMPOSE_DEV) exec -T api printenv LLM_DISCUSSION_USER_PER_MINUTE 2>/dev/null)"; \
-	export SIGNUP_LIMIT_PER_MINUTE LOGIN_LIMIT_PER_MINUTE LLM_DISCUSSION_GLOBAL_PER_MINUTE LLM_DISCUSSION_USER_PER_MINUTE; \
+	LLM_PROVIDER="$$($(COMPOSE_DEV) exec -T api printenv LLM_PROVIDER 2>/dev/null)"; \
+	export SIGNUP_LIMIT_PER_MINUTE LOGIN_LIMIT_PER_MINUTE LLM_DISCUSSION_GLOBAL_PER_MINUTE LLM_DISCUSSION_USER_PER_MINUTE LLM_PROVIDER; \
 	E2E_BASE_URL=$(E2E_BASE_URL) pnpm --filter @ft/e2e run test:e2e $(addprefix --project=,$(BROWSERS)) < /dev/null; \
 	status=$$?; \
 	if [ "$$status" -eq 0 ]; then \
@@ -469,7 +481,7 @@ certs: ## Export Caddy's local root CA to ./certs
 	printf '  Linux system-wide (sudo): sudo cp %s/ft-local-root.crt /usr/local/share/ca-certificates/ && sudo update-ca-certificates\n' '$(CERTS_DIR)'; \
 	printf '  macOS (sudo): sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain %s/ft-local-root.crt\n' '$(CERTS_DIR)'; \
 	printf 'From another device (e.g. your laptop, stack on a school computer):\n'; \
-	printf '  add "<server-ip> %s" to /etc/hosts there, import the cert, open https://%s\n' \
+	printf '  add "<server-ip> %s" to /etc/hosts there, import the cert, open https://%s$(PUBLIC_PORT)\n' \
 	  "$${CADDY_EXTRA_HOSTNAME:-ft-transcendence.test}" "$${CADDY_EXTRA_HOSTNAME:-ft-transcendence.test}"
 
 # --- housekeeping ------------------------------------------------------------

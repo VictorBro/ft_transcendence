@@ -1,0 +1,6 @@
+{
+  "id": "bake-compat",
+  "version": "1.0.0",
+  "name": "Bake compatibility shim",
+  "description": "Installs nothing. See the features note in devcontainer.json."
+}

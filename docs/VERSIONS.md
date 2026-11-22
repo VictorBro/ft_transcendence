@@ -75,6 +75,13 @@ migrates and seeds, and which Trivy does not scan.
   anonymous limit of 100 pulls per 6 hours that a school NAT shares. Grafana is
   `grafana/grafana`; `grafana/grafana-oss` stopped at 13.0.2. Every image is amd64 and arm64:
   check with `docker buildx imagetools inspect <ref>`.
+- **Dev Containers and Bake.** Compose builds through Buildx Bake, which refuses the Dockerfile
+  the Dev Containers CLI generates in its temp folder unless a feature makes the CLI pass that
+  folder as a build context ("additional privileges requested: --allow=fs.read=..."). The empty
+  feature `.devcontainer/features/bake-compat` exists only for that: seen 2026-11 with Compose
+  2.39 and 5.6, Buildx 0.38, Dev Containers 0.475. To see whether it is still needed, take its
+  entry out of `devcontainer.json` and rebuild the container: if it still builds, delete the
+  folder and `devcontainer-lock.json` too.
 - **Chosen over the obvious one.** `@prometheus-io/client`, not the deprecated `prom-client` or
   `@willsoto/nestjs-prometheus`, which serves metrics on the public port. `otpauth` (one
   dependency), not `otplib` (six). `qrcode-generator`, not `qrcode`, which pulls `yargs` into the

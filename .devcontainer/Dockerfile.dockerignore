@@ -1,10 +1,12 @@
 # Patterns are relative to the REPO ROOT: that is the build context.
 #
 # BuildKit prefers <dockerfile>.dockerignore over <context>/.dockerignore, so
-# this is the file it reads for the workspace image.
+# this is the file it reads for `docker compose build workspace` and for CI.
+# VS Code builds from a generated copy of the Dockerfile in its own temp folder
+# and reads neither, so keep every COPY in the Dockerfile to a named file.
 #
-# The image copies two shell rc files and nothing else, so the context is cut
-# down to just this directory. Everything the developer works on arrives at
+# The image copies the entrypoint and two shell rc files and nothing else, so
+# the context is cut down to just this directory. Everything the developer works on arrives at
 # runtime through the bind mount, never through the build.
 
 *

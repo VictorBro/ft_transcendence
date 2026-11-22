@@ -527,10 +527,17 @@ skips it while `.devcontainer/devcontainer.json` naming the service activates it
 `shutdownAction: none` is deliberate: the default would stop the whole stack when
 the editor window closes.
 
+Who the session runs as depends on the Docker daemon, and `.devcontainer/initialize.sh`
+decides it on the host before every open: `node` on a rootful daemon, `root` on a
+rootless one (the 42 clusters), where root inside a container is your own user on the
+host and `node` could not write the repo. The same script hands the container the
+daemon's socket and moves published ports the daemon cannot bind.
+
 > **Ports inside the devcontainer.** Compose publishes to the *host's* loopback,
 > and the devcontainer is just another container on the network. From a terminal
 > inside it, reach the stack by service name, `https://caddy/api/health` rather than
-> `https://localhost`. From your browser on the host, `https://localhost` is right.
+> `https://localhost`. From your browser on the host, `https://localhost` is right,
+> with `:<HTTPS_PORT>` when that is not 443 (a 42 machine).
 
 ### The monitoring profile
 
@@ -606,7 +613,8 @@ Postgres only.
 ## 8. What CI runs
 
 Five workflows. `ci` and `e2e` are the ones that gate a merge on behaviour;
-`devcontainer` runs only when the devcontainer image changes.
+`devcontainer` runs only when the devcontainer image changes, or the compose
+files that start it.
 
 ```mermaid
 flowchart TB
@@ -631,7 +639,7 @@ flowchart TB
     end
 
     subgraph devcontainer["devcontainer.yml, devcontainer paths only"]
-        d1["build the image<br/>Node and pnpm match the pins"]
+        d1["build the image<br/>Node and pnpm match the pins<br/>entrypoint as root and as node<br/>host preflight on a rootless daemon"]
     end
 ```
 

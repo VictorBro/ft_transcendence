@@ -1,14 +1,20 @@
 name: devcontainer
 
-# Builds the devcontainer image when something it is made of changes. Nothing
-# else in CI builds it, so a broken image was only found by the next teammate
-# who rebuilt. Not a required check: it runs only on the paths below.
+# Builds the devcontainer image when something it is made of changes, and
+# starts it the way compose does. Nothing else in CI builds it, so a broken
+# image was only found by the next teammate who rebuilt. Not a required check:
+# it runs only on the paths below.
 on:
   pull_request:
     paths:
       - .devcontainer/**
       - .nvmrc
       - package.json
+      # The workspace service the job starts, and the two files the host
+      # preflight is run against.
+      - compose.yml
+      - compose.override.yml
+      - .env.example
       - .github/workflows/devcontainer.yml
 
 permissions:
@@ -48,3 +54,79 @@ jobs:
           echo "node $node_have (want $node_want), pnpm $pnpm_have (want $pnpm_want)"
           test "$node_have" = "$node_want"
           test "$pnpm_have" = "$pnpm_want"
+
+      # On a rootless daemon (the 42 clusters) the workspace service runs this
+      # image as root, a path no runner takes on its own. The entrypoint is
+      # what makes root at home in /home/node and joins the Docker socket, so
+      # run it both ways against the runner's socket: as root, where the join
+      # is a symlink, and as node, the socat bridge every laptop uses.
+      #
+      # Through compose, not `docker run`: the user, HOME, the socket mount and
+      # the command are compose.override.yml's to say, and flags repeated here
+      # would go on passing after that file stopped saying them. WORKSPACE_USER
+      # is what .devcontainer/initialize.sh writes on a rootless host. The
+      # image is the one built above, under the name compose has for the
+      # service; --no-build turns a wrong name into an error, not a rebuild.
+      #
+      # `up` returns before the entrypoint is done, so both runs wait for the
+      # socket, the last thing it sets up. HOME is read from PID 1, which has
+      # the environment compose gave the container: an exec'd shell without
+      # one is handed the passwd entry's home, which the entrypoint has
+      # rewritten by then.
+      - name: The entrypoint works as root and as node
+        run: |
+          compose() { docker compose --profile devcontainer "$@"; }
+          docker tag ft/devcontainer:ci "$(compose config --images workspace)"
+
+          WORKSPACE_USER=root compose up -d --no-build workspace
+          compose exec -T workspace sh -ec '
+            for _ in 1 2 3 4 5 6 7 8 9 10; do
+              [ -S /var/run/docker.sock ] && break
+              sleep 0.5
+            done
+            test "$(id -u)" = 0
+            grep -qzx HOME=/home/node /proc/1/environ
+            test "$(getent passwd root | cut -d: -f6)" = /home/node
+            test "$(stat -c %u /home/node)" = 0
+            zsh -ic "whence croot >/dev/null"
+            docker version --format "{{.Server.Version}}"
+          '
+          # With its volumes, so the second run starts as clean as the first.
+          compose down --volumes
+
+          compose up -d --no-build workspace
+          compose exec -T workspace sh -ec '
+            for _ in 1 2 3 4 5 6 7 8 9 10; do
+              [ -S /var/run/docker.sock ] && break
+              sleep 0.5
+            done
+            test "$(id -un)" = node
+            test "$(stat -c %U /home/node)" = node
+            docker version --format "{{.Server.Version}}"
+          '
+
+      # .devcontainer/initialize.sh runs on every teammate's host before the
+      # container opens, under whatever /bin/sh that host has, and its rootless
+      # half only ever runs on a school machine. So: parse it with dash, run it
+      # against a daemon that says it is rootless, then run it again, which
+      # must change nothing and say nothing.
+      - name: The host preflight fits .env to a rootless daemon
+        run: |
+          dash -n .devcontainer/initialize.sh
+          work="$(mktemp -d)"
+          mkdir -p "$work/repo/.devcontainer" "$work/bin"
+          cp .devcontainer/initialize.sh "$work/repo/.devcontainer/"
+          cp .env.example compose.yml "$work/repo/"
+          python3 -c 'import socket, sys; socket.socket(socket.AF_UNIX).bind(sys.argv[1])' \
+            "$work/docker.sock"
+          printf '%s\n' '#!/bin/sh' 'case "$1" in' \
+            "  info) echo '[\"name=seccomp,profile=builtin\",\"name=rootless\"]' ;;" \
+            "  context) echo 'unix://$work/docker.sock' ;;" \
+            'esac' > "$work/bin/docker"
+          chmod +x "$work/bin/docker"
+          PATH="$work/bin:$PATH" dash "$work/repo/.devcontainer/initialize.sh"
+          grep -qx 'WORKSPACE_USER=root' "$work/repo/.env"
+          grep -qx "DOCKER_SOCKET=$work/docker.sock" "$work/repo/.env"
+          cp "$work/repo/.env" "$work/before"
+          test -z "$(PATH="$work/bin:$PATH" dash "$work/repo/.devcontainer/initialize.sh")"
+          cmp "$work/repo/.env" "$work/before"
