@@ -100,8 +100,11 @@ fi
 # everything to itself ("0 0 4294967295").
 if [ -f /.dockerenv ] && [ -r /proc/self/uid_map ]; then
   refit='Command Palette, "Dev Containers: Rebuild Container": it runs .devcontainer/initialize.sh on the host first.'
+  # Read the way initialize.sh reads it, which is the way compose does: an
+  # optional `export`, the last occurrence wins, a ` #` starts a comment.
   env_value() {
-    sed -n "s/^[[:space:]]*$1=//p" .env 2>/dev/null | tail -n 1 | tr -d "\"' \t\r"
+    sed -n "s/^[[:space:]]*\(export[[:space:]][[:space:]]*\)\{0,1\}$1=//p" .env 2>/dev/null |
+      tail -n 1 | sed 's/[[:space:]]#.*$//' | tr -d "\"' \t\r"
   }
   if [ -n "$(awk 'NR == 1 && $1 == 0 && $2 != 0 && $3 == 1' /proc/self/uid_map)" ]; then
     if [ "$(id -u)" -eq 0 ]; then
@@ -116,17 +119,41 @@ if [ -f /.dockerenv ] && [ -r /proc/self/uid_map ]; then
     unfit=''
     [ "$(env_value WORKSPACE_USER)" = root ] || unfit="$unfit WORKSPACE_USER"
     [ -n "$(env_value DOCKER_SOCKET)" ] || unfit="$unfit DOCKER_SOCKET"
-    for key in HTTP_PORT HTTPS_PORT; do
+    # The two ports cannot be judged the same way. initialize.sh moves one only
+    # when it is below the HOST's net.ipv4.ip_unprivileged_port_start: 1024,
+    # unless the host lowered it so that a rootless daemon can publish 80 and
+    # 443. That number cannot be read from in here, /proc/sys in a container
+    # describes the container's own network namespace. So a port below 1024 is
+    # settled only by caddy publishing it right now, and is a warning
+    # otherwise: a FAIL would never clear on a host that allows the port, where
+    # a rebuild writes the same value again.
+    low=''
+    for pair in HTTP_PORT:80 HTTPS_PORT:443; do
+      key="${pair%:*}"
       value="$(env_value "$key")"
+      # Unset is the compose default, the standard port.
+      value="${value:-${pair#*:}}"
       case "$value" in
-        '' | *[!0-9]*) unfit="$unfit $key" ;;
-        *) [ "$value" -ge 1024 ] || unfit="$unfit $key" ;;
+        *[!0-9]*) unfit="$unfit $key" ;;
+        *)
+          if [ "$value" -lt 1024 ] &&
+            [ "$(docker compose port caddy "${pair#*:}" 2>/dev/null | sed 's/.*://')" != "$value" ]; then
+            low="$low $key=$value"
+          fi
+          ;;
       esac
     done
-    if [ -z "$unfit" ]; then
-      ok '.env is fitted to a rootless daemon'
-    else
+    if [ -n "$unfit" ]; then
       fail ".env is not fitted to a rootless daemon:$unfit"
+      hint "$refit"
+    elif [ -z "$low" ]; then
+      ok '.env is fitted to a rootless daemon'
+    fi
+    if [ -n "$low" ]; then
+      warn "below 1024, which a rootless daemon publishes only where the host allows it:$low"
+      hint 'Nothing publishes them now, and the host setting that decides,'
+      hint 'net.ipv4.ip_unprivileged_port_start, cannot be read from inside a container.'
+      hint 'If make stops on a privileged port, initialize.sh moves them:'
       hint "$refit"
     fi
   elif [ "$(id -u)" -eq 0 ]; then

@@ -483,7 +483,8 @@ database browser, and it already knows the schema.
 ## 7. What CI runs
 
 Five workflows. `ci` and `e2e` are the ones that gate a merge on behaviour;
-`devcontainer` runs only when the devcontainer image changes.
+`devcontainer` runs only when the devcontainer image changes, or the compose
+files that start it.
 
 ```mermaid
 flowchart TB

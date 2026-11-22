@@ -1,14 +1,20 @@
 name: devcontainer
 
-# Builds the devcontainer image when something it is made of changes. Nothing
-# else in CI builds it, so a broken image was only found by the next teammate
-# who rebuilt. Not a required check: it runs only on the paths below.
+# Builds the devcontainer image when something it is made of changes, and
+# starts it the way compose does. Nothing else in CI builds it, so a broken
+# image was only found by the next teammate who rebuilt. Not a required check:
+# it runs only on the paths below.
 on:
   pull_request:
     paths:
       - .devcontainer/**
       - .nvmrc
       - package.json
+      # The workspace service the job starts, and the two files the host
+      # preflight is run against.
+      - compose.yml
+      - compose.override.yml
+      - .env.example
       - .github/workflows/devcontainer.yml
 
 permissions:
@@ -54,28 +60,50 @@ jobs:
       # what makes root at home in /home/node and joins the Docker socket, so
       # run it both ways against the runner's socket: as root, where the join
       # is a symlink, and as node, the socat bridge every laptop uses.
+      #
+      # Through compose, not `docker run`: the user, HOME, the socket mount and
+      # the command are compose.override.yml's to say, and flags repeated here
+      # would go on passing after that file stopped saying them. WORKSPACE_USER
+      # is what .devcontainer/initialize.sh writes on a rootless host. The
+      # image is the one built above, under the name compose has for the
+      # service; --no-build turns a wrong name into an error, not a rebuild.
+      #
+      # `up` returns before the entrypoint is done, so both runs wait for the
+      # socket, the last thing it sets up. HOME is read from PID 1, which has
+      # the environment compose gave the container: an exec'd shell without
+      # one is handed the passwd entry's home, which the entrypoint has
+      # rewritten by then.
       - name: The entrypoint works as root and as node
         run: |
-          docker run --rm --user root -e HOME=/home/node \
-            -v /var/run/docker.sock:/var/run/docker-host.sock ft/devcontainer:ci \
-            /usr/local/share/docker-init.sh sh -ec '
-              test "$(id -u)" = 0
-              test "$(getent passwd root | cut -d: -f6)" = /home/node
-              test "$(stat -c %u /home/node)" = 0
-              zsh -ic "whence croot >/dev/null"
-              docker version --format "{{.Server.Version}}"
-            '
-          docker run --rm \
-            -v /var/run/docker.sock:/var/run/docker-host.sock ft/devcontainer:ci \
-            /usr/local/share/docker-init.sh sh -ec '
-              test "$(id -un)" = node
-              test "$(stat -c %U /home/node)" = node
-              for _ in 1 2 3 4 5 6 7 8 9 10; do
-                [ -S /var/run/docker.sock ] && break
-                sleep 0.5
-              done
-              docker version --format "{{.Server.Version}}"
-            '
+          compose() { docker compose --profile devcontainer "$@"; }
+          docker tag ft/devcontainer:ci "$(compose config --images workspace)"
+
+          WORKSPACE_USER=root compose up -d --no-build workspace
+          compose exec -T workspace sh -ec '
+            for _ in 1 2 3 4 5 6 7 8 9 10; do
+              [ -S /var/run/docker.sock ] && break
+              sleep 0.5
+            done
+            test "$(id -u)" = 0
+            grep -qzx HOME=/home/node /proc/1/environ
+            test "$(getent passwd root | cut -d: -f6)" = /home/node
+            test "$(stat -c %u /home/node)" = 0
+            zsh -ic "whence croot >/dev/null"
+            docker version --format "{{.Server.Version}}"
+          '
+          # With its volumes, so the second run starts as clean as the first.
+          compose down --volumes
+
+          compose up -d --no-build workspace
+          compose exec -T workspace sh -ec '
+            for _ in 1 2 3 4 5 6 7 8 9 10; do
+              [ -S /var/run/docker.sock ] && break
+              sleep 0.5
+            done
+            test "$(id -un)" = node
+            test "$(stat -c %U /home/node)" = node
+            docker version --format "{{.Server.Version}}"
+          '
 
       # .devcontainer/initialize.sh runs on every teammate's host before the
       # container opens, under whatever /bin/sh that host has, and its rootless
