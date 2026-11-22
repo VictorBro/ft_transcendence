@@ -25,7 +25,7 @@ Allows you, from branch `main`, to switch into a specific commit in detached `HE
 
 ### `make monitoring-up`
 Starts the dev stack plus Prometheus, Alertmanager, Grafana and the exporters. It goes through `make dev`, so migrations, the seed and the certificate export run as usual, and the first run writes the two Grafana secrets into `.env`.
-- Grafana: `https://localhost/grafana`, user `admin`, password from `grep GRAFANA_ADMIN_PASSWORD .env`. From a terminal inside the devcontainer, use `https://caddy/grafana`.
+- Grafana: `https://localhost/grafana` (with `:<HTTPS_PORT>` when that is not 443, as on a 42 machine: the command prints the address), user `admin`, password from `grep GRAFANA_ADMIN_PASSWORD .env`. From a terminal inside the devcontainer, use `https://caddy/grafana`.
 - Without it, `/grafana` answers 502.
 - `make down`, `make logs` and `make clean` include the monitoring containers, e.g. `make logs SERVICES="prometheus alertmanager"`.
 

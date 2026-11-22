@@ -228,7 +228,22 @@ COPY --chown=node:node .devcontainer/bash-history.sh /home/node/.bash-history.sh
 RUN printf '\n. "$HOME/.bash-history.sh"\n' >> /home/node/.bashrc \
     && chown node:node /home/node/.bashrc
 
-# Everything from here runs unprivileged; sudo covers the rest.
+# `docker exec` gives a process the umask of the daemon's runtime, not the
+# container's: 022 under a rootful daemon, 000 under the rootless one on the 42
+# machines. VS Code starts everything through exec, so there each terminal, and
+# whatever `make` or pnpm writes from one, would leave world-writable files in
+# the repo, and ssh refuses a config it finds that way. zshenv is read by every
+# zsh, bash.bashrc by an interactive bash, profile.d by login shells. A bare
+# `sh -c` reads none of them: that is how postCreateCommand runs, so
+# devcontainer.json sets the umask in that command itself. What the editor
+# writes on its own (a file saved from VS Code) is out of reach either way.
+RUN echo 'umask 022' >> /etc/zsh/zshenv \
+    && echo 'umask 022' >> /etc/bash.bashrc \
+    && echo 'umask 022' > /etc/profile.d/00-umask.sh
+
+# Everything from here runs unprivileged; sudo covers the rest. On a rootless
+# daemon compose.override.yml runs the workspace service as root instead, and
+# docker-init.sh makes root at home in /home/node.
 USER node
 WORKDIR /workspace
 
