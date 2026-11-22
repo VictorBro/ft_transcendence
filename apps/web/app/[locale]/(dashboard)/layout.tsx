@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 
 import { DashboardNav } from '@/components/dashboard-nav';
 import { LegalFooter } from '@/components/legal-footer';
+import { LocaleSync } from '@/components/locale-sync';
 import { Shell, Wordmark } from '@/components/shell';
 import { TimeZoneSync } from '@/components/time-zone-sync';
 import { currentUser } from '@/lib/session';
@@ -15,6 +16,7 @@ export default async function DashboardLayout({ children }: { children: ReactNod
   return (
     <>
       {user ? <TimeZoneSync storedTimeZone={user.timeZone} /> : null}
+      {user ? <LocaleSync storedLocale={user.locale} /> : null}
       <Shell
         brand={<Wordmark href="/learn" />}
         nav={<DashboardNav />}
