@@ -8,7 +8,7 @@ they prefer.
 | ------- | -------------------- | --------------------------- |
 | Victor  | `VictorBro`          | [victor/](victor/README.md)   |
 | Endrit  | `VYAntares`          | [endrit/](endrit/README.md)   |
-| Anaïs   | `ninisse`            | [anais/](anais/README.md)     |
+| Anaïs   | `avarrett`           | [anais/](anais/README.md)     |
 | Luca    | `luca-mattei`        | [luca/](luca/README.md)       |
 | Bastian | `bastian-schnitzler` | [bastian/](bastian/README.md) |
 

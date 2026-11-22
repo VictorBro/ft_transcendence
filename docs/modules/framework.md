@@ -8,15 +8,10 @@ made with NestJS (a framework for Node.js servers).
 
 ## What the subject asks
 
-From the module list, Web section (see [../subject/summary.md](../subject/summary.md)
-and chapter IV of [../subject/ft_transcendence.pdf](../subject/ft_transcendence.pdf)):
+The module is one line in the Web modules table of
+[../subject/summary.md](../subject/summary.md):
 
-> Major: Use a framework for both the frontend and backend.
->
-> - Use a frontend framework (React, Vue, Angular, Svelte, etc.).
-> - Use a backend framework (Express, NestJS, Django, Flask, Ruby on Rails, etc.).
-> - Full-stack frameworks (Next.js, Nuxt.js, SvelteKit) count as both if you use both
->   their frontend and backend capabilities.
+> | Major | Framework for both frontend and backend (full-stack frameworks count as both) |
 
 The subject also says what a framework is:
 
@@ -29,7 +24,7 @@ The subject also says what a framework is:
 | The subject asks | What we built | Where |
 | ---------------- | ------------- | ----- |
 | A frontend framework | Next.js 16 with the App Router, on React 19. Every page is a Next.js page. | [`apps/web/package.json`](../../apps/web/package.json), [`apps/web/app/`](../../apps/web/app) |
-| A backend framework | NestJS 11. Every API route is a NestJS controller. | [`apps/api/package.json`](../../apps/api/package.json), [`apps/api/src/`](../../apps/api/src) |
+| A backend framework | NestJS 11. Every API route is a method in a NestJS controller. | [`apps/api/package.json`](../../apps/api/package.json), [`apps/api/src/`](../../apps/api/src) |
 | Full-stack frameworks count as both | Not used as our proof. We do not count Next.js as our backend: NestJS is the backend. Next.js only renders pages and calls NestJS. | [`../architecture/overview.md`](../architecture/overview.md), section 1 |
 
 Both frameworks are named as frameworks in the subject's own list, so neither one
@@ -85,7 +80,7 @@ are no server actions (`'use server'`) in `apps/web`.
 
 - **Modules.** [`apps/api/src/app.module.ts`](../../apps/api/src/app.module.ts)
   joins the feature modules together (auth, users, friends, messages, courses,
-  placement, lessons, the WebSocket gateway, health, metrics). There are 15 module
+  placement, lessons, the WebSocket gateway, health, metrics). There are 16 module
   files under `apps/api/src/`.
 - **Controllers.** There are 10 controllers, for example
   [`friends.controller.ts`](../../apps/api/src/friends/friends.controller.ts). Each
@@ -236,10 +231,10 @@ Playwright suite, including the smoke test, runs in
 
 | Member | GitHub | What they built | Issues and PRs |
 | ------ | ------ | --------------- | -------------- |
-| Victor | [VictorBro](https://github.com/VictorBro) | The project scaffold: the Next.js app, the NestJS app, the shared package, Caddy and compose. Then the first database-backed health check, and the auth pages with the session wiring between the two apps. Most commits in `apps/web` and in `apps/api`. | [#2](https://github.com/VictorBro/ft_transcendence/pull/2), [#3](https://github.com/VictorBro/ft_transcendence/pull/3), [#5](https://github.com/VictorBro/ft_transcendence/pull/5) |
-| Bastian | [bastian-schnitzler](https://github.com/bastian-schnitzler) | The generic API clients: `apiGet` for Next.js server rendering, and `clientGet`, `clientPost`, `clientPut`, `clientDelete` for the browser, with their tests. | [#45](https://github.com/VictorBro/ft_transcendence/issues/45), [#57](https://github.com/VictorBro/ft_transcendence/pull/57) |
-| Endrit | [VYAntares](https://github.com/VYAntares) | The error-code contract in NestJS: `ErrorCodeFilter` and the code-based validation pipe, so every error reply carries a code the browser translates. | [#108](https://github.com/VictorBro/ft_transcendence/issues/108), [#126](https://github.com/VictorBro/ft_transcendence/pull/126) |
-| Anaïs | [ninisse](https://github.com/ninisse) | Features built on both frameworks: 4 commits in `apps/web` and 8 in `apps/api`. | |
+| Victor | [VictorBro](https://github.com/VictorBro) | The project scaffold: the Next.js app, the NestJS app, the shared package, Caddy and compose. Then the first database-backed health check, and the auth pages with the session wiring between the two apps. 14 commits in `apps/web` and 14 in `apps/api`. | [#2](https://github.com/VictorBro/ft_transcendence/pull/2), [#3](https://github.com/VictorBro/ft_transcendence/pull/3), [#5](https://github.com/VictorBro/ft_transcendence/pull/5) |
+| Bastian | [bastian-schnitzler](https://github.com/bastian-schnitzler) | The generic API clients: `apiGet` for Next.js server rendering, and `clientGet`, `clientPost`, `clientPut`, `clientPatch`, `clientDelete` for the browser, with their tests. 7 commits in `apps/web` and 8 in `apps/api`. | [#45](https://github.com/VictorBro/ft_transcendence/issues/45), [#57](https://github.com/VictorBro/ft_transcendence/pull/57) |
+| Endrit | [VYAntares](https://github.com/VYAntares) | The error-code contract in NestJS: `ErrorCodeFilter` and the code-based validation pipe, so every error reply carries a code the browser translates. 6 commits in `apps/web` and 15 in `apps/api` (as EA and VYAntares). | [#108](https://github.com/VictorBro/ft_transcendence/issues/108), [#126](https://github.com/VictorBro/ft_transcendence/pull/126) |
+| Anaïs | [avarrett](https://github.com/avarrett) (commits as ninisse) | Features built on both frameworks: 4 commits in `apps/web` and 8 in `apps/api`. | |
 | Luca | [luca-mattei](https://github.com/luca-mattei) | Features built on both frameworks: 9 commits in `apps/web` and 6 in `apps/api`. | |
 
 The commit counts come from `git shortlog -sn --no-merges HEAD -- apps/web` and

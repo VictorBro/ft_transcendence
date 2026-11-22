@@ -226,7 +226,8 @@ normal window and a private window.
 
 8. In the private window, sign up a second user the same way.
 9. In window 1, click **Friends** in the header. The second user is under **Recently active**.
-   You can also type part of their name in **Search by display name** and click **Search**.
+   You can also type part of their name (at least 3 characters) in **Search by display name**
+   and click **Search**.
 10. Click their name. Their profile page (`/users/<id>`) shows their name, avatar and
     **Courses**. Click **Add friend**: the page shows "Request sent" and **Cancel request**.
 11. In the private window, open **Friends**. Under **Requests received**, click **Accept**. Window 1
@@ -269,6 +270,9 @@ Chromium, Firefox and WebKit, as CI does.
   export have no button: the privacy policy says to write to the contact address. Changing the
   email is left out on purpose ([user.ts](../../packages/shared/src/schemas/user.ts),
   `UpdateProfileSchema`): it is a change of identity, not a profile edit.
+- **Shared with user interaction.** The friends system and the public profile page also count for
+  [user-interaction.md](./user-interaction.md). That module adds the chat. Profile editing, the
+  avatar and the online status are only claimed here.
 - **No editing of other users.** There is no `PATCH /api/users/:id`. Editing someone else's
   profile belongs to the advanced permissions module, which we do not claim.
 - **The public profile shows no XP or achievements.** It shows courses, levels and streaks. The

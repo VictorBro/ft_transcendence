@@ -1,6 +1,6 @@
 # Product Architecture
 
-The product, the modules, the AI layer and the schema, as built at the end of Milestone 2.
+The product, the AI layer, Redis and throttling, as built at the end of Milestone 2.
 [architecture/technical-plan.md](technical-plan.md) covers the infrastructure around it (repository layout,
 containers, CI and build order), [architecture/overview.md](overview.md) the containers and the request
 paths, and [content/lessons.md](../content/lessons.md) the lesson content, its seeding and the lesson player.
@@ -280,7 +280,7 @@ Two rules shape every page ([content/lessons.md](../content/lessons.md) §11):
 **The discussion step replaces the tutor walkthrough.** It is the only place a learner talks to
 the LLM in a lesson: one page, right before the exam info page, where the tutor knows the lesson's
 teaching fields and the learner's wrong practice answers, but never the exam or its answers. How it
-is built is in [content/lessons.md](../content/lessons.md) §12 and [architecture/overview.md](overview.md) §5.
+is built is in [content/lessons.md](../content/lessons.md) §12 and [architecture/realtime.md](realtime.md) §4.
 
 ### 1.5 Not built: cross-language chat
 
@@ -293,120 +293,19 @@ mistake.
 
 ## 2. Modules and points
 
-14 required, bonus capped at +5, so **19 is the maximum that can count**. Anything beyond that
-is insurance against a module failing on the day. A module shown at evaluation that does not fully
-work is worth 0.
-
-The README's Modules section (#160) is to carry the justification, the implementation and the
-owners of each module; today it covers Monitoring only. This table is the plan it follows, with
-each module's state on `main`.
-
-| Chapter | Module | Type | Pts | State on `main` |
-|---|---|---|---|---|
-| IV.1 Web | Framework for frontend and backend | Major | 2 | Next.js 16 and NestJS 11 |
-| IV.1 Web | Real-time features with WebSockets | Major | 2 | Gateway on `/ws`: live course updates (#154), friend events (#155), online status (#157), direct messages (#158) |
-| IV.1 Web | User interaction: chat, profiles, friends | Major | 2 | Friends (#155), public profiles (#156), direct messages between friends (#158) |
-| IV.1 Web | ORM | Minor | 1 | Prisma 7 |
-| IV.1 Web | Server-side rendering | Minor | 1 | App Router server components; it has to be shown, see §9 |
-| IV.1 Web | Advanced search | Minor | 1 | The all lessons page: filters (status, kind, topic, theme, text), sort, group and numbered pages of 20 in the URL (#81, #87). Milestone 2 |
-| IV.2 Accessibility | Support for at least 3 languages | Minor | 1 | `next-intl`, English, French and German |
-| IV.2 Accessibility | Support for additional browsers | Minor | 1 | Every Playwright suite on Chromium, Firefox and WebKit in CI (#159) |
-| IV.3 User management | Standard user management | Major | 2 | Profile, avatar, friends, public profiles, online status |
-| IV.3 User management | Complete 2FA | Minor | 1 | TOTP and recovery codes |
-| IV.4 Artificial intelligence | Complete LLM system interface | Major | 2 | Gemini behind `LlmProvider`: the placement bank restock (structured output) and the lesson discussion (streaming), with error handling and rate limits (#150, #151). Milestone 2 |
-| IV.6 Gaming and UX | Gamification | Minor | 1 | XP and ranks, a daily challenge and 16 achievements, stored per course (#94, #95, #97). Milestone 2 |
-| IV.7 DevOps | Monitoring with Prometheus and Grafana | Major | 2 | [operations/monitoring.md](../operations/monitoring.md) (#129) |
-| IV.10 Module of choice | **Custom major: CI/CD** | Major | 2 | Five workflows, required checks on `main`, multi-arch images on GHCR, pull-based deploys ([architecture/technical-plan.md](technical-plan.md) §5, [operations/deployment.md](../operations/deployment.md)) |
-| IV.10 Module of choice | **Custom minor: cloud deployment with DNS and Let's Encrypt** | Minor | 1 | A cloud VM, an A record, and Caddy's automatic Let's Encrypt certificate ([operations/deployment.md](../operations/deployment.md)) |
-| | | | **22** | 7 majors and 8 minors, 3 above the 19 that count |
-
-The team tracks each module's status on the wiki:
-[status and points](https://github.com/VictorBro/ft_transcendence/wiki/status-points-on--21-October-2026).
-
-**Gamification outside a game.** The module sits in the gaming chapter but, unlike its four
-neighbours, carries no "requires a game" note. It is claimed on that reading; confirm it with
-staff before the defence.
-
-**Dropped**, and so not claimed:
-
-| Module | Why |
-|---|---|
-| Complete RAG system | Lessons are authored and committed, so nothing at runtime retrieves reference passages. pgvector stays installed in the database image, unused |
-| Notification system | Not built. The socket layer pushes live updates, but no notification is stored or listed |
-| User activity analytics dashboard | Not built: `/dashboard` redirects to `/learn` |
-| Public API, custom design system, advanced analytics | Not built |
-
-**Explicitly out**: OAuth, RTL, every gaming module except Gamification, WAF/Vault, ELK,
-microservices, blockchain, file upload, PWA, WCAG AA, voice, image recognition.
+The modules we claim, their type and points, and the total are in
+[modules/README.md](../modules/README.md), with one file per module that explains what was built
+and where the code is. That table is the only copy, so it cannot drift from this document.
 
 ---
 
 ## 3. Transport: REST, Server-Sent Events and a WebSocket
 
-This is the question that decides the shape of the codebase, so it gets a straight answer.
-
-**Most of this product is request/response.** Onboarding, today's lessons, starting a lesson,
-submitting a page, reading progress, all of that is HTTP. A tutor that answers one learner is not
-"real-time" in the sense the subject means; the module asks for *"real-time updates across
-clients"* and *"handle connection/disconnection gracefully"*, which is a multi-client claim.
-
-So the socket layer has to earn its keep on genuinely multi-client surfaces. It does, on three:
-
-| Surface | Why it must be a socket | Serves module |
-|---|---|---|
-| **Direct messages** between friends | Two clients, one conversation, sub-second echo, unread counts | Real-time (Major), User interaction (Major) |
-| **Presence**, friends' online status | Server pushes state changes nobody polled for | User management (Major) |
-| **Live course and friend updates** | A change in one tab shows in the account's other tabs, and on the friend's | Real-time (Major) |
-
-**The lesson discussion streams over Server-Sent Events, not over the socket.** One learner, one
-request, one answer read as it is written: a `POST` whose response is `text/event-stream`. It
-reuses the REST route's session cookie, guards, validation pipe and error codes, every check that
-can fail answers with a status before the stream opens, and closing the response cancels the
-Gemini call. A socket would add a second authentication, validation and error path for a
-one-to-one exchange. The browser reads it with `fetch` and a stream reader, since `EventSource`
-only sends `GET`.
-
-### The split
-
-| | Transport | Examples |
-|---|---|---|
-| **Everything CRUD** | REST, Nest controllers, documented in Swagger | `POST /api/courses`, `GET /api/courses/:lang/today`, `GET /api/courses/:lang/lessons`, `GET` and `POST /api/courses/:lang/lessons/:id/attempt`, `POST …/attempt/pages/:index` |
-| **One answer, streamed** | Server-Sent Events on a `POST` | `POST /api/courses/:lang/lessons/:id/discussion`: `delta`, `done` or `error`, and a heartbeat |
-| **Everything live** | socket.io on `/ws` | `course:updated`, `friend:request`, `friend:accepted`, `friend:removed`, `presence:update`, `dm:message`, `dm:unread` and `app:error` from the server; `dm:send` (with an ack) and `dm:read` from the browser |
-
-**The course stays in the path, and the API is language-neutral.** No read route takes a `locale`
-parameter. A lesson is written in one language, the course's, like a question in the bank, so the
-response is the same for every interface language. The web app translates the page around the
-lesson. Two places use the interface locale on purpose: `POST …/attempt { locale }` sends it to fix
-the attempt's mother tongue, and the discussion, whose body carries no locale, reads the session
-user's and answers in it.
-
-**No route takes a score.** The server runs every lesson attempt under
-`/api/courses/:lang/lessons/:id/attempt`: it sends only the page the learner is on, checks every
-answer, owns the exam timer, and when the last page locks it records the score from the answers it
-stored, keeping the best one, and counts the lesson toward today's goal. The finish and its goal
-rules come with [#82](https://github.com/VictorBro/ft_transcendence/issues/82), the attempt with
-[#145](https://github.com/VictorBro/ft_transcendence/issues/145); [content/lessons.md](../content/lessons.md) §10 has
-the details.
-
-### Gateway rules
-
-The contract already exists in [packages/shared/src/events/socket.ts](../../packages/shared/src/events/socket.ts) -
-event names, Zod payload schemas, `ServerToClientEvents` / `ClientToServerEvents`, `SocketData`.
-Use it. Four rules:
-
-1. **Mount with `path`, not `namespace`.** `path` is the HTTP endpoint engine.io listens on;
-   `namespace` is a logical channel multiplexed over it. The Caddyfile routes `/ws/*` to the
-   api, so the gateway is `@WebSocketGateway({ path: '/ws' })` and the client is
-   `io({ path: '/ws' })`. Namespaces are for later, if two kinds of traffic ever need separating.
-2. **Authenticate the handshake.** The same express-session middleware the REST side runs reads
-   the signed session cookie (same origin, so the browser sends it), the Origin must be ours
-   (same-site is not same-origin), and the socket gets `SocketData { userId, sessionId }`. An
-   unauthenticated socket is refused at the handshake, never connected.
-3. **Parse every inbound payload with the shared Zod schema.** `CLIENT_EVENT_SCHEMAS` exists for
-   this. Anything arriving on a gateway is untrusted, including from our own client.
-4. **Rate-limit per socket.** `@nestjs/throttler`'s guard is HTTP-only; socket events bypass it
-   entirely. See §6.
+Most of the product is request and response over REST. The socket.io gateway on `/ws` carries what
+several clients must see at once: live course and friend updates, online status and direct
+messages. The lesson discussion streams one answer over Server-Sent Events on a `POST`.
+[architecture/realtime.md](realtime.md) says which feature uses which, why, and how the gateway and
+the stream work.
 
 ---
 
@@ -426,7 +325,7 @@ redo rather than data; if it does not, it is a plain constant or a per-request v
 | **Session store** (`connect-redis`) | `sess:<sid>` | Sessions are hot, short-lived and disposable. Restarting the api must not log everyone out | in use |
 | **Placement run state** | `user:<id>:eval`, `user:<id>:eval_questions`, `user:<id>:eval_lock` | The search bounds, the level being probed, the tally per category, the mistakes so far, the current question's deadline and the report. **Always with a TTL**: one hour (`PLACEMENT_REDIS_KEY_TTL`) for `eval` and `eval_questions`, and 5 s (`PLACEMENT_LOCK_TTL_SECONDS`) for `eval_lock`, the `SET NX EX` lock that keeps two starts or two answers of one learner from racing. Keyed by the user, not by the session as first planned, so a learner who signs in again within the hour comes back to the exam they left. It lives exactly as long as the exam, so a table would be a row deleted minutes after it was written, and the TTL doubles as the abandoned-exam cleanup | in use (#48) |
 | **Lesson discussion limits** | `discussion:user:<id>:minute`, `discussion:user:<id>:day`, `discussion:global:minute` | Fixed-window counters: the first message creates the key with its TTL (60 s or 24 h), `INCR`, `EXPIRE … NX` and `TTL` in one `MULTI`, so a crash never leaves a counter without expiry. The TTL is also the `Retry-After` | in use (#150) |
-| **Presence** | `presence:<id>` | A socket count per user: `INCR` on connect, `DECR` 10 s after a disconnect, so a reload never shows as leaving. Every count is deleted at boot, since a crash never took its sockets back (one API instance assumed). See architecture/overview.md §4 | in use (#157) |
+| **Presence** | `presence:<id>` | A socket count per user: `INCR` on connect, `DECR` 10 s after a disconnect, so a reload never shows as leaving. Every count is deleted at boot, since a crash never took its sockets back (one API instance assumed). See [architecture/realtime.md](realtime.md) §3 | in use (#157) |
 | **Throttler counters** | none | `@nestjs/throttler` runs without a storage adapter, so its counters sit in process memory. Correct for one replica; the only cost is that a restart clears everyone's limit | not in Redis, by choice |
 
 Not built, and no longer planned: an LLM response cache and a per-user token budget. Lessons are
@@ -560,8 +459,8 @@ test and break §1.2. Their reuse mechanism is the item bank plus per-user exclu
 |---|---|---|
 | **Auth endpoints** | Credential stuffing and TOTP brute force | Per address: `LOGIN_LIMIT_PER_MINUTE` (5), `SIGNUP_LIMIT_PER_MINUTE` (20), tighter than the global `RATE_LIMIT_PER_MINUTE` (100) per account or address |
 | **The lesson discussion** | Money, and the shared key's quota | Its own Redis windows, after every 404 and 409 check, so a refused request uses up nothing: `LLM_DISCUSSION_USER_PER_MINUTE` (2), `LLM_DISCUSSION_USER_PER_DAY` (60), `LLM_DISCUSSION_GLOBAL_PER_MINUTE` (5). Each hit counts in `ft_llm_discussion_limited_total{limit}` |
-| **Socket events** | `dm:send`, `dm:read`. **The HTTP guard does not cover these**: a socket connection is one HTTP upgrade, so a client can emit thousands of events through a single allowed request | The gateway's own screen limits each socket to 20 of each event per 10 s, and each has a budget per account: 30 `dm:send` and 100 `dm:read` a minute (architecture/overview.md §4) |
-| **Public API** | The module *requires* rate limiting | Not claimed (§2) |
+| **Socket events** | `dm:send`, `dm:read`. **The HTTP guard does not cover these**: a socket connection is one HTTP upgrade, so a client can emit thousands of events through a single allowed request | The gateway's own screen limits each socket to 20 of each event per 10 s, and each has a budget per account: 30 `dm:send` and 100 `dm:read` a minute ([architecture/realtime.md](realtime.md) §3) |
+| **Public API** | The module *requires* rate limiting | Not claimed ([modules/README.md](../modules/README.md)) |
 
 Every limit is read once at boot; anything but a whole number stops the api.
 
@@ -569,132 +468,10 @@ Every limit is read once at boot; anything but a whole number stops the api.
 
 ## 7. Data model
 
-**Ten tables beside `User` and `RecoveryCode`, all migrated** (`apps/api/prisma/schema.prisma`):
-`UserLevel`, `QuestionBank` and `UserSeenQuestion` from Milestone 1; `Lesson`, `LessonResult`,
-`LessonAttempt` and `UserAchievement` from Milestone 2; `Friendship`, `Conversation` and `Message`
-from Milestone 3. The rule applied throughout: a table earns its place by being read at runtime,
-and a 1:1 relationship is a column, not a table. There are no SQL views; the "views" of the lesson
-player are Zod schemas of what the browser may see ([content/lessons.md](../content/lessons.md) §10,
-[milestone2-data-model.html](../site/milestone2-data-model.html#player)).
-
-Everything is UUID-keyed, with five exceptions. `LessonResult`, `UserAchievement`, `Friendship`
-and `Conversation` are keyed by their pair (`(userLevelId, lessonId)`, `(userLevelId, code)`, and
-for the last two the two user ids, smaller first), because the pair is what makes a row unique.
-`Lesson` is keyed by its authored id (`de-separable-verbs`), because it is seeded from content and
-results attach to it. Anything worth dating has `createdAt`, and every user-owned row cascades on
-user delete, so deleting an account leaves nothing orphaned.
-
-### 7.1 Languages
-
-Two enums with the same three values today, because they answer two different questions:
-
-```prisma
-enum Locale   { en fr de }   // the language the interface is rendered in
-enum Language { en fr de }   // the language being taught
-enum Level    { A1 A2 B1 B2 C1 C2 }
-```
-
-`User.locale` is a display preference and follows next-intl's routing. `UserLevel.lang` and
-`QuestionBank.lang` say what a learner is studying. An English speaker learning French sets one
-to `en` and the other to `fr`, so collapsing them into one enum would make that row unsayable.
-They drift apart for real the day a learnable language ships that the UI is not translated into,
-and nothing has to change when it does.
-
-**Both appear in the URL, and they mean different things.** The course is a path segment:
-`/{locale}/learn/{lang}/…`, so `/fr/learn/de` is a French interface teaching German. Putting the
-course in the path rather than in a column is what lets a link be shared, the back button work,
-and two tabs sit on two courses at once. The header will therefore carry two language controls;
-they have to read differently, along the lines of "Interface: English" against "Learning: German",
-or nobody will know which one they just changed.
-
-`User.activeLang` exists for one job only: deciding where a bare sign-in lands when the URL says
-nothing. It is a convenience, not the source of truth, and any page that has a `lang` in its path
-ignores it.
-
-`User.timeZone` is an IANA zone (`Europe/Zurich`), sent by the browser and UTC by default. It
-decides when the learner's day ends, so it is what every day in §1.3 is counted in. No other
-user ever sees it.
-
-**A learner studies several languages at once, so "has this person onboarded" is always a
-question about `(userId, lang)`.** Someone who has finished French and is adding German still
-needs onboarding for German. A check that asks only "does this user have any level at all" gets
-that case wrong, silently, and only for the users who like the product most.
-
-### 7.2 Learning
-
-```mermaid
-erDiagram
-    User         ||--o{ UserLevel        : "learns"
-    User         ||--o{ UserSeenQuestion : "was asked"
-    QuestionBank ||--o{ UserSeenQuestion : "asked as"
-    UserLevel    ||--o{ LessonResult     : "results of"
-    Lesson       ||--o{ LessonResult     : "finished as"
-    UserLevel    ||--o{ LessonAttempt    : "attempts"
-    Lesson       ||--o{ LessonAttempt    : "attempted as"
-    UserLevel    ||--o{ UserAchievement  : "earned"
-```
-
-| Table | Holds | Notes |
-|---|---|---|
-| `UserLevel` | id, userId, lang, level?, dailyGoal, streak, bestStreak, lastGoalDay?, **xp, lastChallengeDay?, lastChallengeCode?, challengesDone**, createdAt, updatedAt | Unique `(userId, lang)`: one row is one course, so a user may learn two languages. Onboarding writes it with `level` null; placement fills it in, or a learner who skips sets it directly. `streak`, `bestStreak` and `lastGoalDay` are the whole streak (§1.3). The four **gamification columns** (#95): `xp` the course's total, `lastChallengeDay` the course day the challenge was last done, `lastChallengeCode` the code it was done under, so a level change that day does not move it, and `challengesDone` the count the challenge achievements read. Finishing and goal changes take a row lock on this row (§9) |
-| `QuestionBank` | id, sourceId?, lang, level, topic, category, readText?, question, options, answer, timeLimitS | The reusable pool, seeded from `content/items/*.json` and grown at runtime when a learner runs low in a cell. `sourceId` is the authored id the seed matches on, and its absence marks a question the LLM wrote. Full spec in [content/item-bank.md](../content/item-bank.md) |
-| `UserSeenQuestion` | id, userId, questionId, createdAt, updatedAt | Unique `(userId, questionId)`. **The exposure record**, and the whole reason placement never repeats a question: the draw is a `NOT EXISTS` over these rows, and `updatedAt`, bumped on every serve, picks the oldest-seen fallback |
-| `Lesson` | id, lang, level, position, kind, topic?, theme?, title, summary, brief, **content?**, **ready**, updatedAt | **The seeded catalogue, never written at runtime.** One row per outline entry, 3,990 in all. `brief` is `{}` and `content` null until the lesson's files exist; then they hold the parsed brief and content file. `content` stays null for a vocabulary lesson, whose lesson is built from its brief (#135). **`ready`** is set by the seed on every run: true when the files exist and pass `validateLesson`, 216 today (#84). `kind` is grammar, vocabulary, functions or reading; `topic` is set exactly on grammar lessons, `theme` exactly on the others. The lesson cards never send the brief or the content. Index on `(lang, level, position)`. Full guide in [content/lessons.md](../content/lessons.md) §4 |
-| `LessonResult` | userLevelId, lessonId, score, day, finishedAt | Primary key `(userLevelId, lessonId)`: **one row per course and lesson, with no history.** Every finish upserts it: `score` keeps the best, `day` is the learner's day of the latest finish, `finishedAt` its moment. No row means not started, a best of 70 or more means passed, anything else failed. Today's count is the rows whose `day` is today. `lessonId` is `Restrict`: a lesson with results cannot be deleted |
-| **`LessonAttempt`** | id, userLevelId, lessonId, motherTongue, secret, startedAt, page, deadline?, answers, completedAt?, results? | Unique `(userLevelId, lessonId)`: **the current or last attempt at a lesson**, run and scored by the server (#145). `motherTongue` is a `Locale`, fixed at the start. `secret` is 32 random bytes that key the refs naming units, options and tokens, and is never sent. `page` is the cursor and `deadline` that of the exam page at it. `answers` (JSON, `{}` at first) maps a unit id to its locked `{ response, outcome, points, timedOut, gender? }`, and `results` (JSON) is written once, when the last page locks. A retake replaces the row; a seed that changes the lesson deletes the unfinished ones. The plan is never stored: every request rebuilds it from the lesson row |
-| **`UserAchievement`** | userLevelId, code, day, earnedAt | Primary key `(userLevelId, code)`, so an achievement is earned once and never lost (#95). `code` is one of the 16 `ACHIEVEMENTS` codes, a string fixed in code. `day` is the course day it was earned |
-
-**There is no `Topic` table.** `enum Topic` already exists in the schema for the question bank,
-and "topic" means one of its 13 grammar categories. On `Lesson` it labels grammar lessons only.
-The order, the titles and the count of the lessons all live in `Lesson` itself.
-
-**No table holds a discussion.** The lesson discussion is stateless: the browser sends the earlier
-turns back with each message, and the server stores nothing of it. No table records LLM calls
-either: the metrics do (§5).
-
-### 7.3 Social
-
-```mermaid
-erDiagram
-    User     ||--o{ Friendship    : "requests"
-    User     ||--o{ Conversation  : "is in"
-    Conversation ||--o{ Message   : "holds"
-    User     ||--o{ Message       : "sends"
-```
-
-| Table | Holds | Notes |
-|---|---|---|
-| `Friendship` | pairKey, requesterId, addresseeId, status, createdAt, updatedAt | `pending / accepted`; declining, cancelling and removing delete the row. Keyed by the pair, smaller id first, so A to B and B to A cannot both exist |
-| `Conversation` | pairKey, userAId, userBId, createdAt, lastMessageAt | One per pair who have exchanged a message, keyed like `Friendship`, so a pair cannot get two. `lastMessageAt` orders the list. It outlives the friendship: the history stays readable by both. Two users and no participants table, because group chat is not claimed |
-| `Message` | id, pairKey, senderId, text, createdAt, readAt? | A direct message between friends (#158), 1 to 1,000 characters. `readAt` stays null until the other user reads it, and is never sent. The history pages on `(pairKey, createdAt, id)` |
-
-Presence is **not** a table. It is a socket count per user in Redis, `presence:<id>` (§4).
-
-`DailyStat` is **not built** either. Nothing tracks minutes: the daily goal counts `LessonResult`
-rows by `day`, and the streak is three columns on `UserLevel` (§1.3).
-
-### 7.4 What each module needs
-
-Every claimed module (§2) runs on the twelve tables of the schema, Redis and the metrics. None needs
-another table.
-
-| Module | Pts | Tables it needs |
-|---|---|---|
-| Framework FE + BE | 2 | none |
-| ORM | 1 | none, it is the mechanism |
-| Standard user management | 2 | `User`, `Friendship` (+ Redis presence) |
-| Complete 2FA | 1 | `User`, `RecoveryCode` |
-| i18n, additional browsers, SSR | 3 | none |
-| Complete LLM interface | 2 | `QuestionBank` (the restock), `Lesson` and `LessonAttempt` (the discussion's prompt and its guard) (+ Redis limits) |
-| Real-time via WebSockets | 2 | `Conversation`, `Message` (+ Redis presence) |
-| User interaction: chat, profiles, friends | 2 | `Conversation`, `Message`, `Friendship`, `User` |
-| **Advanced search** | 1 | `Lesson` + `LessonResult`, searched in memory: a level has at most 320 lessons |
-| **Gamification** | 1 | `UserAchievement`, plus `xp`, `lastChallengeDay`, `lastChallengeCode` and `challengesDone` on `UserLevel` |
-| Monitoring | 2 | none: Prometheus keeps its own data |
-| CI/CD, cloud deployment | 3 | none |
-
-A table for a module nobody has committed to is the same mistake as a column for a mechanism
-nobody can run, so the dropped modules of §2 add none.
+Twelve tables, all migrated, from `User` to `Message`. Every model with its columns, keys and
+indexes, what it is for and which feature uses it, the Redis keys, and the tables of the old plan
+that were dropped are in [architecture/data-model.md](data-model.md).
+`apps/api/prisma/schema.prisma` is the source of truth.
 
 ## 8. What the skeleton already gives you
 
@@ -707,10 +484,10 @@ load-bearing.
 | `apps/api` NestJS | All business logic and data access | keep, half a Major |
 | `apps/web` Next.js | Presentation and SSR only | keep, half a Major |
 | `packages/shared` | Zod contracts. One schema, validated on both sides | keep, **mandatory requirement**, and the socket contract already lives here |
-| `packages/ui` | Component library | keep; the design system Minor is not claimed (§2) |
+| `packages/ui` | Component library | keep; the design system Minor is not claimed ([modules/README.md](../modules/README.md)) |
 | `packages/{eslint-config,tsconfig}` | Shared presets. The two tsconfigs differ deliberately | keep |
 | Caddy + internal CA | Single TLS entry, one origin, no CORS | keep, **HTTPS is mandatory** |
-| Postgres 18 + pgvector | Relational data. pgvector is installed in the image and unused since RAG was dropped (§2) | keep |
+| Postgres 18 + pgvector | Relational data. pgvector is installed in the image and unused since RAG was dropped ([modules/README.md](../modules/README.md)) | keep |
 | Redis | Sessions, placement runs, discussion limits, presence, see §4 | keep |
 | Prisma 7 | ORM Minor; `schema.prisma` doubles as the README's schema section | keep |
 | argon2 + express-session + connect-redis | Mandatory hashed/salted auth | keep |

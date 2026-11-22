@@ -658,7 +658,7 @@ on that one response: `delta { text }` for each piece, then `done {}`, or `error
 | Only on the discussion page | The attempt's cursor must be on its discussion page, else 409 `attempt.stale`. Once the exam starts, the tutor is gone |
 | The tutor knows the lesson, not the answers | The system prompt is built on the server from a pick of the brief's teaching fields per kind. Never the content file, the brief's exam plan, or a reading lesson's genre and documents, since the exam asks about a new document of the same genre |
 | It can explain the learner's mistakes | The prompt also holds the attempt's wrong practice answers, at most 20, read from `LessonAttempt.answers`. Exam answers never: none is locked before the discussion page |
-| It answers in the interface language | The prompt asks for the learner's interface locale, with course-language examples |
+| It answers in the interface language | The prompt asks for the learner's interface language, stored in `User.locale` ([#211](https://github.com/VictorBro/ft_transcendence/issues/211)), with examples in the course language |
 | Nothing is stored | The browser sends the last 10 turns back with each message. The server keeps no transcript |
 | Bounded | A message is at most 500 characters, an answer at most 1,000 output tokens, and the learner's and global per-minute and per-day limits apply ([operations/deployment.md](../operations/deployment.md) §5) |
 

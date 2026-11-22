@@ -21,8 +21,8 @@ The mandatory part says that 2FA is not required there, and comes from this modu
 
 The subject gives no more detail. We read "complete" as the whole life of a second factor: a
 user can turn it on, it is asked for at every login, there is a way in when the phone is lost,
-and the user can turn it off again. The rows below follow that reading. Two rules of the
-mandatory part also apply to every form, so they have a row too:
+and the user can turn it off again. The rows below follow that reading. One rule of the
+mandatory part also applies to every form, so it has a row too:
 
 > All forms and inputs validated **both frontend and backend**.
 
@@ -36,7 +36,7 @@ mandatory part also apply to every form, so they have a row too:
 | Asked for at login | When 2FA is on, a correct password does not sign the user in. `POST /api/auth/login` answers `202` with `{ twoFactorRequired: true }` and puts the user id under a separate session key, `pendingUserId`. The guard that protects every route reads only `userId`, so a half-finished login opens nothing. `POST /api/auth/2fa/verify` checks the code and only then starts the real session. | [auth.controller.ts](../../apps/api/src/auth/auth.controller.ts), [session.d.ts](../../apps/api/src/auth/session.d.ts), [auth.guard.ts](../../apps/api/src/auth/auth.guard.ts), [login-form.tsx](../../apps/web/app/%5Blocale%5D/%28main%29/login/login-form.tsx) |
 | A way in when the phone is lost | Ten recovery codes, made when 2FA is turned on and shown once. Each has 20 characters in four groups of five (`xxxxx-xxxxx-xxxxx-xxxxx`), from an alphabet without look-alike characters (no `i`, `l`, `o`, `0`, `1`). The login step takes either a six-digit code or a recovery code. Each recovery code works once. | [two-factor.service.ts](../../apps/api/src/auth/two-factor.service.ts) (`issueRecoveryCodes`, `consumeRecoveryCode`), [two-factor.ts](../../packages/shared/src/schemas/two-factor.ts) |
 | Recovery codes kept safely | The database keeps only a SHA-256 hash of each code, in the `RecoveryCode` table, never the code itself. A code is marked used in the same database statement that finds it, so two logins at the same moment cannot both use one code. | [schema.prisma](../../apps/api/prisma/schema.prisma) (`RecoveryCode`), [migration](../../apps/api/prisma/migrations/20260809004816_two_factor/migration.sql) |
-| Turning it off | `DELETE /api/auth/2fa` asks for the password again, not only a valid session, so a browser left open is not enough. It clears the secret and deletes the recovery codes in one transaction. | [auth.controller.ts](../../apps/api/src/auth/auth.controller.ts) (`disableTwoFactor`), [two-factor.service.ts](../../apps/api/src/auth/two-factor.service.ts) (`disable`) |
+| Turning it off | `DELETE /api/auth/2fa` asks for the password again, not only a valid session, so that a browser left open is not enough. It clears the secret and deletes the recovery codes in one transaction. **Gap:** `POST /api/auth/2fa/setup` needs only a session, and it also turns 2FA off (see [Limits and choices](#limits-and-choices)). | [auth.controller.ts](../../apps/api/src/auth/auth.controller.ts) (`disableTwoFactor`), [two-factor.service.ts](../../apps/api/src/auth/two-factor.service.ts) (`disable`) |
 | Codes cannot be guessed quickly | Every route that checks a code or a password (`login`, `2fa/verify`, `2fa/enable`, `DELETE 2fa`) allows 5 tries a minute per IP address (`LOGIN_LIMIT_PER_MINUTE`). After that the API answers `429`. | [auth.controller.ts](../../apps/api/src/auth/auth.controller.ts), [rate-limits.ts](../../apps/api/src/throttler/rate-limits.ts), [../operations/deployment.md](../operations/deployment.md) |
 | (Mandatory part) Forms validated in the browser and on the server | One set of Zod schemas in `@ft/shared` checks the code fields on both sides: `TotpCodeSchema` (six digits), `RecoveryCodeSchema` (hyphens and spaces removed, then 20 letters or digits) and `SecondFactorSchema` (either one). The API applies them through `nestjs-zod`, and the login form and the setup form apply them before they send anything. **Partly:** the "turn off" form sends the password without checking it in the browser first. The server checks it with `DisableTwoFactorSchema`, and an empty password still gets a clear message ("Enter your password"). | [two-factor.ts](../../packages/shared/src/schemas/two-factor.ts), [auth.dto.ts](../../apps/api/src/auth/auth.dto.ts), [two-factor-panel.tsx](../../apps/web/app/%5Blocale%5D/%28main%29/settings/2fa/two-factor-panel.tsx) |
 
@@ -225,6 +225,11 @@ Run the unit tests with `make test`, the API tests against a real database and R
   but no route calls it on its own.
 - **Turning 2FA on does not sign out other devices.** Only the current session gets a new id.
   Sessions already open in other browsers stay valid until they end.
+- **Setup can turn 2FA off without the password.** `beginEnrolment` writes a new secret and sets
+  `totpEnabledAt` to `null` every time, even when 2FA is on. The settings page shows **Set up**
+  only while 2FA is off, but the API route `POST /api/auth/2fa/setup` needs only a session. So a
+  browser left open can turn 2FA off by calling it, without the password that `DELETE /api/auth/2fa`
+  asks for.
 - **A half-finished login lasts as long as a session.** The `pendingUserId` session uses the same
   cookie lifetime as a full session (7 days, renewed on each request, `SESSION_TTL_MS` in
   [app.setup.ts](../../apps/api/src/app.setup.ts)). The code is still required to finish it.
@@ -238,7 +243,7 @@ From `git log --follow` on the 2FA files and `gh pr view` on each pull request.
 
 | Member | GitHub | What they built | Issues and PRs |
 | --- | --- | --- | --- |
-| Victor | `VictorBro` | The whole module: `TwoFactorService`, the 2FA routes and the `202` login step, the two session keys, the `RecoveryCode` table and migration, the shared schemas, the login form and the settings page, and all the tests above. Later: the per-address limit (`ThrottleByIp`), and closing the old session's WebSockets when 2FA changes. | #4, #5, #21 (merged into #20), #27, #181 |
-| Luca | `luca-mattei` | Moved the login and 2FA pages under `[locale]` and translated their texts into English, French and German; the service now sends error codes instead of English sentences. | #26 |
+| Victor | `VictorBro` | The whole module: `TwoFactorService`, the 2FA routes and the `202` login step, the two session keys, the `RecoveryCode` table and migration, the shared schemas, the login form and the settings page, and the 2FA tests in the API and in the browser. Later: the per-address limit (`ThrottleByIp`), and closing the old session's WebSockets when 2FA changes. | #4, #5, #21 (merged into #20), #27, #181 |
+| Luca | `luca-mattei` | Moved the login and 2FA pages under `[locale]` and translated their texts into English, French and German; the service now sends error codes instead of English sentences, with the "validation messages" test. | #26 |
 | Endrit | `VYAntares` (commits as `EA`) | Moved the login and 2FA pages into the shared `(main)` layout; gave every 2FA schema rule an error code, so a missing field is also translated. | #20, #126 |
 | Bastian | `bastian-schnitzler` | The settings page now loads the 2FA status through the shared API client, which checks the answer with `TwoFactorStatusSchema`. | #57 |

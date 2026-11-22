@@ -1,6 +1,6 @@
 # ft_transcendence: Subject Summary
 
-Condensed from `ft_transcendence.pdf` (42 subject, version 21.2, 31 pages).
+Condensed from `ft_transcendence.pdf` (42 subject, version 21.2, 32 pages).
 This is a working reference: the PDF remains the authority.
 
 ## The project
@@ -202,7 +202,7 @@ A poor or incomplete README hurts the evaluation.
 
 ## Bonus
 
-Only considered once all 14 mandatory points are validated. Each extra module must be fully
+Only considered once modules worth the 14 mandatory points are all implemented. Each extra module must be fully
 functional, meet its description, add real value, and be justified in the README.
 Major = 2, Minor = 1, **capped at 5 bonus points**.
 

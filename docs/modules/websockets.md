@@ -10,18 +10,7 @@ coming online, or a course setting changed in another tab. Nobody has to reload 
 
 The module is one line in the Web modules table of [../subject/summary.md](../subject/summary.md):
 
-> | Type | Module |
-> | --- | --- |
 > | Major | Real-time features via WebSockets or similar (updates across clients, graceful dis/reconnect, efficient broadcasting) |
-
-The PDF ([../subject/ft_transcendence.pdf](../subject/ft_transcendence.pdf), chapter IV, Web)
-words it like this:
-
-> Major: Implement real-time features using WebSockets or similar technology.
->
-> - Real-time updates across clients.
-> - Handle connection/disconnection gracefully.
-> - Efficient message broadcasting.
 
 The mandatory part also asks for this, which the same connection helps with:
 
@@ -32,11 +21,11 @@ The mandatory part also asks for this, which the same connection helps with:
 
 | The subject asks | What we built | Where |
 | --- | --- | --- |
-| Real-time features using WebSockets | A socket.io server (a WebSocket library) inside the NestJS API, on the path `/ws`. It only uses the WebSocket transport, never long-polling. Caddy sends `/ws` to the API. | [socket.gateway.ts](../../apps/api/src/gateway/socket.gateway.ts), [Caddyfile](../../infra/caddy/Caddyfile) |
-| Real-time updates across clients | Eight server events. Four live features use them: direct messages and unread counts, friend requests, the online status of friends, and course changes that show in the user's other tabs. One person's action shows on the other person's screen, and in all their own open tabs, without a reload. | [packages/shared/src/events/socket.ts](../../packages/shared/src/events/socket.ts), [messages.service.ts](../../apps/api/src/messages/messages.service.ts), [friends.service.ts](../../apps/api/src/friends/friends.service.ts), [courses.service.ts](../../apps/api/src/courses/courses.service.ts) |
-| Handle connection gracefully | A socket is checked when it opens: same session cookie as the website, same origin, an account that still exists. A refused socket never connects, and the browser logs no error. On connect, the server sends a fresh snapshot: where each friend stands and what is unread. | [socket.gateway.ts](../../apps/api/src/gateway/socket.gateway.ts), [session-io.adapter.ts](../../apps/api/src/gateway/session-io.adapter.ts) |
-| Handle disconnection gracefully | The tab retries with a growing wait (1, 2, 4, 8, then 10 seconds). Before each retry it asks the web server if the API is up, so a server that is down causes no console error. A **Reconnecting…** label shows while it waits. After it is back, the page fetches what it missed. A friend who reloads the page does not flicker offline: offline is sent only 10 seconds after their last tab closed. Logging out closes that session's sockets. | [tab-socket.ts](../../apps/web/components/tab-socket.ts), [reconnect.ts](../../apps/web/lib/reconnect.ts), [connection-status.tsx](../../apps/web/components/connection-status.tsx), [presence.service.ts](../../apps/api/src/presence/presence.service.ts) |
-| Efficient message broadcasting | Every event goes to a room (a named group of sockets) for one user, `user:<id>`, never to everyone. The only way the rest of the API can send is `SocketsService.toUser()`, which addresses one user. Online status goes only to friends. Events are small: most carry only an id or a language, and the page reads the rest itself. Inbound events are limited per socket and checked against a schema. | [sockets.service.ts](../../apps/api/src/gateway/sockets.service.ts), [socket.gateway.ts](../../apps/api/src/gateway/socket.gateway.ts) |
+| Real-time features via WebSockets or similar | A socket.io server (a WebSocket library) inside the NestJS API, on the path `/ws`. It only uses the WebSocket transport, never long-polling. Caddy sends `/ws` to the API. | [socket.gateway.ts](../../apps/api/src/gateway/socket.gateway.ts), [Caddyfile](../../infra/caddy/Caddyfile) |
+| Updates across clients | Eight server events. Four live features use them: direct messages and unread counts, friend requests, the online status of friends, and course changes that show in the user's other tabs. One person's action shows on the other person's screen, and in all their own open tabs, without a reload. | [packages/shared/src/events/socket.ts](../../packages/shared/src/events/socket.ts), [messages.service.ts](../../apps/api/src/messages/messages.service.ts), [friends.service.ts](../../apps/api/src/friends/friends.service.ts), [courses.service.ts](../../apps/api/src/courses/courses.service.ts) |
+| Graceful connect | A socket is checked when it opens: same session cookie as the website, same origin, an account that still exists. A refused socket never connects, and the browser logs no error. On connect, the server sends a fresh snapshot: where each friend stands and what is unread. | [socket.gateway.ts](../../apps/api/src/gateway/socket.gateway.ts), [session-io.adapter.ts](../../apps/api/src/gateway/session-io.adapter.ts) |
+| Graceful disconnect and reconnect | The tab retries with a growing wait (1, 2, 4, 8, then 10 seconds). Before each retry it asks the web server if the API is up, so a server that is down causes no console error. A **Reconnecting…** label shows while it waits. After it is back, the page fetches what it missed. A friend who reloads the page does not flicker offline: offline is sent only 10 seconds after their last tab closed. Logging out closes that session's sockets. | [tab-socket.ts](../../apps/web/components/tab-socket.ts), [reconnect.ts](../../apps/web/lib/reconnect.ts), [connection-status.tsx](../../apps/web/components/connection-status.tsx), [presence.service.ts](../../apps/api/src/presence/presence.service.ts) |
+| Efficient broadcasting | Every event goes to a room (a named group of sockets) for one user, `user:<id>`, never to everyone. The only way the rest of the API can send is `SocketsService.toUser()`, which addresses one user. Online status goes only to friends. Events are small: most carry only an id or a language, and the page reads the rest itself. Inbound events are limited per socket and checked against a schema. | [sockets.service.ts](../../apps/api/src/gateway/sockets.service.ts), [socket.gateway.ts](../../apps/api/src/gateway/socket.gateway.ts) |
 
 All three points are met. "Efficient broadcasting" is met by sending each event only to the people
 it concerns. We do not broadcast to many users at once, because no feature needs it. See
@@ -105,13 +94,13 @@ frequent and a full reload costs several API calls
 
 ### Every inbound event is checked
 
-Nest's global guards and pipes do not run for socket events, so the gateway checks each event
-itself, before any handler (`screen()` in
+The checks NestJS runs on every HTTP request (its global guards and pipes) do not run for socket
+events, so the gateway checks each event itself, before any handler (`screen()` in
 [socket.gateway.ts](../../apps/api/src/gateway/socket.gateway.ts)):
 
 - **A rate limit per socket:** 20 events of each name per 10 seconds (`EVENT_LIMIT`,
   `EVENT_WINDOW_MS`). Unknown event names share one budget.
-- **A size limit:** 16 KB per frame (`maxHttpBufferSize`).
+- **A size limit:** 16 KB per message (`maxHttpBufferSize`).
 - **A schema check:** the payload is parsed with the Zod schema (a set of rules for data) of that
   event, `CLIENT_EVENT_SCHEMAS`. An unknown event has no schema and is refused.
 - **A refusal is never a crash.** It is answered with an error code: through the ack when there is
@@ -246,8 +235,9 @@ with separate cookies (for example a normal window and a private window), so you
 
 **3. Disconnect and reconnect.**
 
-1. Close every tab of window B. After about 10 seconds, B's dot on A's **Friends** page turns grey
-   (**Offline**). Open `/friends` in window B again: the dot turns green.
+1. Close window B. After about 10 seconds, B's dot on A's **Friends** page turns grey
+   (**Offline**). A private window forgets its cookies when it closes, so open a new private
+   window, click **Sign in** and sign in as user B: the dot on A's side turns green.
 2. Reload B's page: the dot on A's side stays green (the 10 second grace period).
 3. With A on the course page, restart the API from the repository root:
    `docker compose restart --no-deps api` (the command

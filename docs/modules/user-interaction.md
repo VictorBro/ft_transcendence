@@ -159,8 +159,9 @@ sequenceDiagram
   to every tab of the reader after each read. `at` is the time of the count, so a tab keeps the
   newest one, whatever order they arrive in ([lib/unread.ts](../../apps/web/lib/unread.ts)).
 - When a thread is open, the tab is visible and there is something unread, the page sends
-  `dm:read { userId }`. The server sets `readAt` and sends a new count. Reads are limited to 100 a
-  minute per account (`RATE_LIMIT_PER_MINUTE`).
+  `dm:read { userId }`. The server sets `readAt` and sends a new count. Reads are limited per account
+  to the API's general limit: 100 a minute unless `RATE_LIMIT_PER_MINUTE` in `.env` changes it
+  (`READ_LIMIT_PER_MINUTE` in [messages.service.ts](../../apps/api/src/messages/messages.service.ts)).
 - The header's **Messages** link shows the total in a badge, and 99+ above 99
   ([unread-badge.tsx](../../apps/web/components/unread-badge.tsx),
   [session-nav.tsx](../../apps/web/components/session-nav.tsx)). A screen reader hears the exact
@@ -214,7 +215,8 @@ normal window (window 1) and a private window (window 2).
    **Password** and **Confirm password**, then click **Create account**. Do the same in window 2
    with another user.
 2. In window 1, click **Friends** in the header. The second user is under **Recently active**. You
-   can also type part of their name in **Search by display name** and click **Search**.
+   can also type part of their name (at least 3 characters) in **Search by display name** and
+   click **Search**.
 3. Click their name. Their profile page (`/users/<id>`) shows their name, avatar and **Courses**.
    Click **Add friend**: the page shows "Request sent" and **Cancel request**.
 4. In window 2, open **Friends**. Under **Requests received**, click **Accept**. Window 1 changes

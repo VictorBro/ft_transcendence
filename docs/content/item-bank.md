@@ -64,9 +64,9 @@ Every item is the same shape: a question, four options, one correct answer and a
       "sourceId": "de-gram-0001",
       "level": "A1",
       "topic": "verbs_morphology",
-      "question": "Ich ___ aus Spanien.",
-      "options": ["ist", "sind", "bin", "sein"],
-      "answer": "bin",
+      "question": "Wir ___ heute Abend zu Hause.",
+      "options": ["bleiben", "bleibt", "bleibst", "bleibe"],
+      "answer": "bleiben",
       "timeLimitS": 30
     }
   ]
@@ -84,13 +84,13 @@ grammar one. `content/items/de-reading.json`:
   "items": [
     {
       "sourceId": "de-read-0001",
-      "level": "A2",
+      "level": "A1",
       "topic": "information_structure_and_pragmatics",
-      "readText": "Maria arbeitet in einer kleinen Bäckerei am Bahnhof. Sie beginnt um fünf Uhr morgens.",
-      "question": "Wann beginnt Maria mit der Arbeit?",
-      "options": ["Um fünf Uhr", "Um sieben Uhr", "Am Mittag", "Am Abend"],
-      "answer": "Um fünf Uhr",
-      "timeLimitS": 75
+      "readText": "Jonas wohnt in Leipzig. Er hat einen kleinen Hund, der Bruno heißt. Am Abend gehen die beiden zusammen im Park spazieren.",
+      "question": "Wann gehen Jonas und Bruno spazieren?",
+      "options": ["Am Abend", "Am Morgen", "Am Mittag", "Am Wochenende"],
+      "answer": "Am Abend",
+      "timeLimitS": 60
     }
   ]
 }
@@ -113,7 +113,7 @@ Time limits rise with the level and with how much there is to read. What the see
 |---|---|---|---|---|---|---|
 | `vocabulary` | 30 | 45 | 45 | 45 | 60 | 60 |
 | `grammar` | 30 | 45 | 60 | 60 | 75 | 90 |
-| `reading` | 60 to 75 | 75 to 105 | 90 | 105 to 120 | 120 to 165 | 150 to 180 |
+| `reading` | 60 to 75 | 90 to 105 | 90 | 105 to 120 | 120 to 165 | 150 to 180 |
 
 Reading is a range because the amount of text drives it: the passage and the four options, since
 long options take reading too. Match a neighbour with the same amount rather than picking a
@@ -223,7 +223,7 @@ A learner is never blocked. When a draw finds a learner down to 3 unseen questio
 the draw does not wait for it: 13 grammar questions, one per topic, 10 vocabulary questions, or 5
 reading questions, each on its own passage. The batch is checked against `generatedBatchSchema`,
 questions the cell already has are dropped, and the rest are saved with no `sourceId`, the cell's
-level and the time limit from §2. They stay, so the next learner to reach that cell gets them from
+level and the time limit from §3. They stay, so the next learner to reach that cell gets them from
 the bank. **The bank grows as it is used**, which is why 90 authored questions per language is
 enough.
 

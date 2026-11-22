@@ -115,7 +115,7 @@ html{scroll-behavior:smooth}
 <div class="leg">
 <span class="m k-e jump" data-target="enums" role="link" tabindex="0">Enums + constants · #77 / #135</span><span class="m k-c jump" data-target="contract" role="link" tabindex="0">Shared contract · #77</span><span class="m k-f jump" data-target="files" role="link" tabindex="0">Lesson files · #135</span><span class="m k-q jump" data-target="checks" role="link" tabindex="0">CI checks + seed · #134 / #135 / #84</span><span class="m k-d jump" data-target="database" role="link" tabindex="0">Database · #79 / #84 / #145 / #95</span><span class="m k-p jump" data-target="player" role="link" tabindex="0">Player + views · #144</span><span class="m k-a jump" data-target="api" role="link" tabindex="0">API schemas · #145 / #150 / #95</span><span class="m k-s jump" data-target="service" role="link" tabindex="0">Service types · #80 / #82 / #145</span><span class="m k-h jump" data-target="helper" role="link" tabindex="0">Helper types · one issue each</span>
 <span class="m k-n jump" data-target="modules" role="link" tabindex="0">NestJS modules</span></div>
-<p class="stleg" id="stleg"><b>Issue status</b><span><i style="background:var(--st-open)"></i>open</span><span><i style="background:var(--st-work)"></i>in work (assigned or a PR linked)</span><span><i style="background:var(--st-closed)"></i>closed</span><span><i class="ready"></i>green frame: ready, open and not blocked, nobody on it yet</span><span id="live">Snapshot of 20 November 2026, refreshed from GitHub on load.</span></p>
+<p class="stleg" id="stleg"><b>Issue status</b><span><i style="background:var(--st-open)"></i>open</span><span><i style="background:var(--st-work)"></i>in work (assigned or a PR linked)</span><span><i style="background:var(--st-closed)"></i>closed</span><span><i class="ready"></i>green frame: ready, open and not blocked, nobody on it yet</span><span id="live">Snapshot of 22 November 2026, refreshed from GitHub on load.</span></p>
 <p class="m1note"><i aria-hidden="true"></i>Grey cards tagged "from milestone 1", "existing" or "Prisma" are reused, not reimplemented.</p>
 
 <section class="g k-e" id="enums"><div class="gh"><i class="ti ti-list-details" aria-hidden="true"></i>Enums and constants<span class="def">defined in #77</span><span class="def">lesson files in #135</span><span class="def">gamification in #94</span></div>
@@ -292,7 +292,7 @@ html{scroll-behavior:smooth}
 <script src="gh-status.js"></script>
 <script>
 const base='https://github.com/VictorBro/ft_transcendence/issues/';
-/* Title, state, assignees and linked PR of each issue, as of 20 November 2026.
+/* Title, state, assignees and linked PR of each issue, as of 22 November 2026.
    Replaced by the live state from GitHub (gh-status.js) when the page loads. */
 const ISSUES={76:{t:"docs: record the lesson, daily goal and streak decisions",s:"closed",a:["VictorBro"],b:0,pr:[139, "VYAntares", "merged"]},
 77:{t:"feat(shared): lesson contracts and the content checks",s:"closed",a:["bastian-schnitzler"],b:0,pr:[103, "bastian-schnitzler", "merged"]},
@@ -335,7 +335,7 @@ const ISSUES={76:{t:"docs: record the lesson, daily goal and streak decisions",s
 149:{t:"feat(web): the functions lesson",s:"closed",a:["bastian-schnitzler"],b:0,pr:[197, "bastian-schnitzler", "merged"]},
 150:{t:"feat(api): stream the lesson discussion, with error handling and rate limits",s:"closed",a:["luca-mattei"],b:0,pr:[201, "luca-mattei", "merged"]},
 151:{t:"feat(web): the discussion window before the exam",s:"closed",a:["luca-mattei"],b:0,pr:[205, "luca-mattei", "merged"]},
-152:{t:"docs: Milestone 2 docs pass",s:"open",a:["VYAntares"],b:0,pr:null},
+152:{t:"docs: reorganise docs/, match Milestone 2, one file per module",s:"open",a:["VYAntares"],b:0,pr:null},
 153:{t:"fix(web): wording on shipped pages",s:"closed",a:["bastian-schnitzler"],b:0,pr:[173, "bastian-schnitzler", "merged"]}};
 const STATUS_TEXT={open:'open',work:'in work',closed:'closed'};
 /* Closed, else in work when it has a PR or an assignee, else open. */
@@ -365,7 +365,7 @@ paintIssues();
   Object.keys(live).forEach(n=>{const g=live[n];ISSUES[n]={t:g.t,s:g.s,a:g.a,b:g.b,pr:g.pr};});
   paintIssues();
   document.getElementById('live').textContent='Live from GitHub.';
-}).catch(()=>{document.getElementById('live').textContent='GitHub could not be reached: snapshot of 20 November 2026.';});
+}).catch(()=>{document.getElementById('live').textContent='GitHub could not be reached: snapshot of 22 November 2026.';});
 document.querySelectorAll('.jump').forEach(el=>{
   const go=()=>document.getElementById(el.dataset.target).scrollIntoView({block:'start'});
   el.addEventListener('click',e=>{if(e.target.closest('a'))return;go();});

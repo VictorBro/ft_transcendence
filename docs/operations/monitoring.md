@@ -378,12 +378,12 @@ Labels are always bounded: never a user id, an email, a session id, a lesson id 
 | `ft_llm_request_duration_seconds` | histogram, 0.5 s to 90 s | `provider`, `model`, `purpose` | the same, a stream from its request to its last piece |
 | `ft_llm_tokens_total` | counter | `provider`, `model`, `purpose`, `type` (`prompt`, `output`, `total`) | the same, from the usage Gemini reports |
 | `ft_llm_discussion_limited_total` | counter | `limit` (`user_minute`, `user_day`, `global_minute`) | `countMessage` (discussion-limits.ts), a lesson discussion message refused before any LLM call |
-| `ft_llm_provider_info` | gauge, always 1 | `provider`, `model` (`none` for the fixture) | `createLlmProvider` |
+| `ft_llm_provider_info` | gauge, always 1 | `provider`, `model` (`none` for the fixture and for `disabled`) | `createLlmProvider` |
 | `ft_question_restocks_total` | counter | `lang`, `level`, `category`, `status` (`busy`, `cooling`, `filled`, `empty`, `failed`) | `QuestionStockService` |
 | `ft_question_restock_failures_total` | counter | `category`, `reason` (`llm`, `llm_disabled`, `other`) | the same, when a fill throws |
 | `ft_question_restock_inserted_total` | counter | `lang`, `level`, `category` | the same, rows inserted |
 | `ft_question_restock_duration_seconds` | histogram, 0.5 s to 120 s | `category` | the same, LLM call to insert |
-| `ft_question_bank_questions` | gauge, read at scrape | `lang`, `level`, `category`, `source` (`written`, `generated`) | `MetricsCollector`, cached 60 s. All 108 cells, empty ones at 0 |
+| `ft_question_bank_questions` | gauge, read at scrape | `lang`, `level`, `category`, `source` (`written`, `generated`) | `MetricsCollector`, cached 60 s. All 54 cells (3 languages, 6 levels, 3 categories), each with both sources: 108 series, empty ones at 0 |
 | `ft_placement_draws_total` | counter | `lang`, `level`, `category`, `source` (`written`, `generated`, `seen_fallback`) | `PlacementQuestionService` |
 | `ft_placement_pool_exhausted_total` | counter | `lang`, `level` | the same, when no question is left |
 | `ft_placement_exams_total` | counter | `lang`, `event` (`started`, `completed`, `quit`) | `PlacementService` |
@@ -395,9 +395,11 @@ Labels are always bounded: never a user id, an email, a session id, a lesson id 
 | `ft_app_info` | gauge, always 1 | `version` (`APP_VERSION`) | `main.ts` |
 | Node defaults | various | none | `collectDefaultMetrics`: event loop lag, heap, GC, `process_*` |
 
-All of them live in `apps/api/src/metrics/metrics.ts`, on the API's own registry, so nothing a
-dependency registers leaks into the scrape. Sessions are counted by redis-exporter, not by the
-API, so the API never scans Redis.
+All of them are on the API's own registry, so nothing a dependency registers leaks into the
+scrape. Most are defined in `apps/api/src/metrics/metrics.ts`. The three gauges read at scrape
+(`ft_question_bank_questions`, `ft_users`, `ft_active_users`) are defined in
+`apps/api/src/metrics/metrics.collector.ts`, because they need Prisma. Sessions are counted by
+redis-exporter, not by the API, so the API never scans Redis.
 
 `increase()` cannot see a counter's first increment when the series is born at 1. So every label
 set an alert or a panel reads exists at 0 from the start: `ft_placement_exams_total` and
@@ -459,8 +461,10 @@ probed from outside its process instead.
 The rules this setup keeps:
 
 1. **Only caddy publishes ports** (80, 443, 443/udp). No monitoring service, and neither
-   `api:9464` nor `caddy:2020`, ever gets a `ports:` entry. `scripts/check-monitoring-config.sh`
-   asserts it on the resolved config of all three stacks.
+   `api:9464` nor `caddy:2020`, ever gets a `ports:` entry. In dev, db and redis also publish a
+   port on loopback (`compose.override.yml`). `scripts/check-monitoring-config.sh` checks this on
+   the resolved config of four stacks: dev, the prod overlay, the server, and the server behind
+   another reverse proxy, where no service publishes a port.
 2. **Caddy routes only `/grafana` and `/grafana/*` to the monitoring stack.** Prometheus and
    Alertmanager have no login of their own, so they have no route either. Grafana shows their
    rules, alerts and silences behind its login.
@@ -469,7 +473,8 @@ The rules this setup keeps:
 4. **`/api/metrics` does not exist.** The API's metrics listener sits outside Nest's prefix,
    guards, throttler, sessions and Swagger. A Supertest and a Playwright test pin the 404.
 5. **Scrapes are plain http inside the network**, which the subject allows: "Internal
-   container-to-container traffic may be unencrypted".
+   container-to-container traffic (e.g. server ↔ database) may be unencrypted"
+   ([subject/summary.md](../subject/summary.md)).
 
 ### Grafana's security settings
 
@@ -560,7 +565,7 @@ first three.
 
 | Check | Runs in | Proves |
 |---|---|---|
-| `scripts/check-monitoring-config.sh` | ci.yml (`monitoring config`), `make ci` | promtool on the config and rules, the rule unit tests, amtool on both Alertmanager configs and the Discord route, `caddy validate` on both Caddyfiles, dashboard lint, both entrypoints in the pinned image, the exposure rule on all three stacks, and exporter pins equal in `compose.yml` and `compose.deploy.yml` |
+| `scripts/check-monitoring-config.sh` | ci.yml (`monitoring config`), `make ci` | promtool on the config and rules, the rule unit tests, amtool on both Alertmanager configs and the Discord route, `caddy validate` on both Caddyfiles, dashboard lint, both entrypoints in the pinned image, the exposure rule on four stacks (section 6), and the same caddy, db, redis and exporter images and commands in `compose.yml` and `compose.deploy.yml` |
 | `scripts/check-monitoring.sh`, `make monitoring-check` | e2e.yml, `make` | every target up, every rule healthy, an Alertmanager found, every probe succeeding, and every series a rule or panel reads present. A misspelt metric does not make a rule unhealthy; it silently matches nothing, and only this sees it |
 | `e2e/tests/monitoring.spec.ts` | e2e.yml, `make` | Grafana through Caddy: login only, no sign-up, 401 for anonymous reads, 404 for both metrics paths, the four dashboards provisioned, data from the API and the seeded bank |
 

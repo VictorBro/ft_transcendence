@@ -1,6 +1,6 @@
-# Shell Aliases and Functions
+# Shell aliases and functions
 
-For developer convenience, custom shortcuts and functions are defined in [`.devcontainer/zshrc`](file:///workspace/.devcontainer/zshrc).
+For developer convenience, custom shortcuts and functions are defined in [`.devcontainer/zshrc`](../../.devcontainer/zshrc).
 
 ### `croot`
 Brings you back to the project root (`/workspace`) from any folder in your shell.

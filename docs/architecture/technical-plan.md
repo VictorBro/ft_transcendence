@@ -55,11 +55,18 @@ ft_transcendence/
 │   ├── eslint-config/
 │   └── tsconfig/
 ├── infra/
-│   └── caddy/Caddyfile
+│   ├── caddy/                     # Caddyfile (local stacks), Caddyfile.prod (deployments)
+│   ├── monitoring/                # Prometheus, Alertmanager and Grafana config
+│   └── deploy/                    # deploy.sh and its systemd service and timer
+├── content/                       # outlines, lesson briefs and files, placement items
+├── e2e/                           # Playwright tests
+├── scripts/                       # shell scripts that CI and make run
 ├── docs/
 ├── compose.yml                    # topology: caddy · web · api · db · redis, plus the monitoring stack
 ├── compose.override.yml           # dev, auto-loaded: dev targets, bind mounts, workspace service
 ├── compose.prod.yml               # prod targets, no mounts, restart policies
+├── compose.deploy.yml             # deployments: pulls the released images, never builds
+├── compose.deploy.proxy.yml       # overlay for a host where another reverse proxy owns 80 and 443
 ├── Makefile
 ├── turbo.json · pnpm-workspace.yaml · .env.example · README.md
 ```
@@ -75,7 +82,7 @@ The plan had seven seams (`auth`, `users`, `lessons`, `assessment`, `ai`, `realt
 ```
 apps/api/src/
 ├── auth/                 # signup, login, sessions, the global AuthGuard, 2FA
-├── users/                # profiles, avatars, public profiles, time zone
+├── users/                # profiles, avatars, public profiles, time zone, interface language
 ├── courses/              # a course per (user, language): goal, level, active course
 ├── placement/            # the adaptive placement exam, its state in Redis
 ├── items/                # the spec that checks content/items/
@@ -178,9 +185,9 @@ where it matters and keeps feedback fast where it doesn't.
 
 | Workflow | Trigger | Jobs |
 |---|---|---|
-| `ci.yml` | PR, push | Native: format check, lint, typecheck, TS-version assert (operations/versions.md, held back: TypeScript). Docker `ci` stage: unit tests + coverage, Supertest e2e (compose db). Then build. |
-| `e2e.yml` | PR, push | Two jobs per browser (`lesson`, `rest`), each with a prod-target compose up, then Playwright in its own image (browsers and their system packages included): user flows, **console gate**, **legal pages** (`/privacy`, `/terms` return 200 with real content). |
-| `hygiene.yml` | PR, push | gitleaks, commitlint, `.env.example` drift, fail if `.env` staged, `prisma migrate diff`. |
+| `ci.yml` | PR, push to `main` | Native: format check, lint, typecheck, TS-version assert (operations/versions.md, held back: TypeScript). Docker `ci` stage: unit tests + coverage, Supertest e2e (Postgres and Redis run as job services). Then build. |
+| `e2e.yml` | PR, push to `main` | Two jobs per browser (`lesson`, `rest`), each with a prod-target compose up, then Playwright in its own image (browsers and their system packages included): user flows, **console gate**, **legal pages** (`/privacy`, `/terms` return 200 with real content). |
+| `hygiene.yml` | PR, push to `main` | gitleaks, commitlint, PR title, `.env.example` drift, fail if `.env` staged, `prisma migrate diff`. |
 | `images.yml` | push to any branch; `v*` tags | Multi-arch build on every commit; tags per table below. |
 | `devcontainer.yml` | PR touching `.devcontainer/`, `.nvmrc`, `package.json`, `compose.yml`, `compose.override.yml`, `.env.example` | Builds the devcontainer image; Node and pnpm must match the pins; compose starts the workspace service as root and as node; the host preflight fits a rootless daemon. |
 
@@ -243,9 +250,10 @@ stale branch tags, per-commit pushes accumulate fast.
 
 ## 6. Product, AI and data model
 
-Moved to [architecture/product.md](product.md): the learner journey, the module
-list and their points, the AI provider and its cost controls, and the schema. One source of
-truth, so the two documents cannot disagree.
+Moved to [architecture/product.md](product.md): the learner journey, the AI provider and its
+cost controls, and the schema. The modules we claim and their points are listed in
+[modules/README.md](../modules/README.md). One source of truth, so the two documents cannot
+disagree.
 
 ---
 
