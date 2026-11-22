@@ -9,6 +9,18 @@
 {
   "name": "ft_transcendence",
 
+  // Runs on the HOST before compose is read, on every open. It fits the
+  // compose variables in .env to this machine's Docker daemon: on a rootless
+  // one (the 42 clusters, no sudo) the container runs as root, gets the
+  // per-user socket, and publishes no port below 1024. Where the values already
+  // work, which is every rootful machine with free ports, it changes nothing.
+  // The script header has the details.
+  //
+  // A string, so it goes through the host's shell, and `|| exit 0` because a
+  // failing initializeCommand stops the container from opening at all: on a
+  // host with no `sh` (plain Windows instead of WSL2) the defaults still apply.
+  "initializeCommand": "sh .devcontainer/initialize.sh || exit 0",
+
   // Both files, in this order, so compose merges the dev overlay the same way a
   // bare `docker compose up` does. compose.override.yml is where the workspace
   // service, its named volumes and its env live.
@@ -36,21 +48,35 @@
   // Overriding it would replace that PID 1 with the tool's own keepalive.
   "overrideCommand": false,
 
-  // uid/gid 1000 in the image, which matches the first user account on a Linux
-  // host, so files written here are owned correctly on the host side too. When
-  // they differ, VS Code remaps the container uid automatically before attach.
-  "remoteUser": "node",
-
-  // 42 school machines: if that automatic uid remap fails there (no sudo on
-  // the host, restrictive setups), uncomment this to skip it and fix file
-  // ownership from a container shell instead; `node` has passwordless sudo
-  // inside, so the host restriction does not follow you in.
-  // "updateRemoteUserUID": false,
+  // No "remoteUser" on purpose. VS Code then attaches as the user the workspace
+  // service runs as, `user:` in compose.override.yml, and that one depends on
+  // the machine:
+  //
+  //   node  On a rootful daemon. uid/gid 1000 in the image, which matches the
+  //         first user account on a Linux host, so files written here are
+  //         owned correctly on the host side too. When they differ, VS Code
+  //         remaps the container uid automatically before attach.
+  //   root  On a rootless daemon, where root in the container is your own user
+  //         on the host. The remap above cannot work there (it would chown to
+  //         a uid the daemon's user namespace does not have, "Invalid
+  //         argument"), and VS Code skips it for root.
+  //
+  // Naming a user here would pin one of the two for everybody. Do not reach
+  // for "updateRemoteUserUID": false either: it only skips the remap, the
+  // session stays uid 1000 and still cannot write the repo on a rootless
+  // daemon, and chowning the repo to make it writable hands the checkout to a
+  // subuid your host user no longer owns.
 
   // The one sanctioned install. It runs on the developer's machine after the
   // container exists, not during an image build, so it never races the
   // lockfile in CI.
-  "postCreateCommand": "pnpm install",
+  //
+  // `umask 022` first: this string runs as a bare `/bin/sh -c` through
+  // `docker exec`, which on a rootless daemon starts with umask 000 and reads
+  // none of the files the Dockerfile sets it in. Without it node_modules, the
+  // pnpm store and the git hook runner come out world-writable. A no-op
+  // everywhere else.
+  "postCreateCommand": "umask 022 && pnpm install",
 
   // Compose resolves relative bind-mount paths on the docker DAEMON's side,
   // i.e. against the HOST filesystem. Shells inside this container therefore
@@ -62,23 +88,41 @@
     "LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
   },
 
-  // No "features" block on purpose. Everything a feature would add (docker CLI,
+  // No real features on purpose. Everything a feature would add (docker CLI,
   // gh, zsh, sudo) is in .devcontainer/Dockerfile instead, where the version is
   // visible and the layer is cached with the rest of the image.
+  //
+  // The one entry installs nothing. VS Code builds this image from a
+  // Dockerfile it generates in its own temp folder, outside the repo. Compose
+  // builds through Buildx Bake, and Bake only reads paths it was told about.
+  // With no feature, nothing tells it about that folder, and "Reopen in
+  // Container" stops at
+  //   additional privileges requested: pass "--allow=fs.read=/tmp/
+  //   devcontainercli-.../Dockerfile-with-features"
+  // With any feature, the tool passes the folder as a named build context,
+  // which is exactly the permission Bake wants. Seen 2026-11 with Compose 2.39
+  // and 5.6 on Buildx 0.38, Dev Containers 0.475. Delete the entry, its folder
+  // and devcontainer-lock.json (written next to this file once a feature
+  // exists, and committed so nobody finds it untracked) when the Dev Containers
+  // CLI allows its own Dockerfile. docs/VERSIONS.md says how to tell.
+  "features": {
+    "./features/bake-compat": {}
+  },
 
-  // No "forwardPorts" either. caddy publishes 80, 443 and 443/udp straight to
-  // the host, so the app is reachable at https://localhost with the container
-  // ports never entering the picture.
+  // No "forwardPorts" either. caddy publishes its ports straight to the host
+  // (80, 443 and 443/udp, or HTTP_PORT and HTTPS_PORT from .env), so the app is
+  // reachable from the host's browser with the container ports never entering
+  // the picture.
 
   // NOTE for whoever owns compose.override.yml: the image carries the docker
   // CLI, buildx and compose plugins so `make` and `docker compose` work from
   // inside this shell, but a compose-based devcontainer takes its mounts from
   // the compose file, not from here. The workspace service therefore mounts
-  //     - /var/run/docker.sock:/var/run/docker-host.sock
-  // and its command runs .devcontainer/docker-init.sh, which bridges that
-  // socket to a node-owned /var/run/docker.sock via socat, the same mechanism
-  // as the official docker-outside-of-docker feature, so plain `docker ps`
-  // works here without sudo.
+  // the host's Docker socket at /var/run/docker-host.sock, and its command
+  // runs .devcontainer/docker-init.sh, which bridges that socket to a
+  // node-owned /var/run/docker.sock via socat, the same mechanism as the
+  // official docker-outside-of-docker feature, so plain `docker ps` works here
+  // without sudo. As root on a rootless daemon it is a plain symlink.
 
   "customizations": {
     "vscode": {

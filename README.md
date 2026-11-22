@@ -71,11 +71,12 @@ To get the six demo learners (streaks, results, a finished level), set
 `demo-anna@example.com` to `demo-felix@example.com` with that password. Every
 seed rebuilds them, on development stacks only.
 
-The app is served at <https://localhost>. `make` prints how to trust the local
-TLS certificate. API documentation is at <https://localhost/api/docs>.
-Grafana, with the monitoring dashboards and alerts, is at
-<https://localhost/grafana>: user `admin`, and the password `make` generated is in
-`.env` (`grep GRAFANA_ADMIN_PASSWORD .env`).
+The app is served at <https://localhost>, or at `https://localhost:<HTTPS_PORT>`
+on a machine that cannot publish port 443, such as a 42 school computer: `make`
+prints the address either way, and how to trust the local TLS certificate. API
+documentation is under `/api/docs`. Grafana, with the monitoring dashboards and
+alerts, is under `/grafana`: user `admin`, and the password `make` generated is
+in `.env` (`grep GRAFANA_ADMIN_PASSWORD .env`).
 
 The lesson tutor and the question generator use Gemini. With the default
 `LLM_PROVIDER=fixture` they call nothing: the tutor gives one canned answer and

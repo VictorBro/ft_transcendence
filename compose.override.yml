@@ -138,8 +138,26 @@ services:
       context: .
       dockerfile: .devcontainer/Dockerfile
     working_dir: /workspace
+    # Who the container, every shell in it and VS Code run as: devcontainer.json
+    # names no remoteUser, so the editor attaches as this user too.
+    #
+    # `node` (uid 1000) on a rootful daemon, where VS Code remaps that uid to
+    # yours when they differ. `root` on a rootless one (the 42 clusters): there
+    # container uid 0 IS your host user, while uid 1000 is a subuid that cannot
+    # write the bind-mounted repo. .devcontainer/initialize.sh looks at the
+    # daemon before every open and writes the right value into .env, so this is
+    # not something to set by hand. The literal name matters: VS Code skips its
+    # uid remap for `root`, and the remap cannot work on a rootless daemon.
+    user: ${WORKSPACE_USER:-node}
     environment:
       FT_DEVCONTAINER: "true"
+      # What `node` has anyway. For `root` it keeps the session on the volumes
+      # below instead of in /root: VS Code takes the home of a uid 0 session
+      # from the container's environment, and so does every shell.
+      # docker-init.sh covers the programs that ask the passwd file instead.
+      # One side effect on a rootful daemon: a `docker exec -u root` shell lands
+      # here too, not in /root. sudo is unaffected, it resets HOME itself.
+      HOME: /home/node
       # Without this, .claude.json is written to $HOME, outside the volume, and
       # every container rebuild logs you out.
       CLAUDE_CONFIG_DIR: /home/node/.claude
@@ -180,13 +198,28 @@ services:
       # socat. Same mechanism as the devcontainers docker-outside-of-docker
       # feature. Without the mount, `docker ps`, `make dev` and `make up` fail
       # from inside the devcontainer with "Cannot connect to the Docker daemon".
-      - /var/run/docker.sock:/var/run/docker-host.sock
+      #
+      # The default is the socket of a rootful daemon. A rootless one listens
+      # on a per-user path, and /var/run/docker.sock there, when it exists, is
+      # another daemon's: it mounts without complaint and then refuses every
+      # connection. .devcontainer/initialize.sh writes the real path into .env.
+      #
+      # Long form for create_host_path: the short form creates a missing source
+      # as a DIRECTORY on the host and starts the container with it, which
+      # leaves every docker command failing with nothing to explain why. This
+      # way a wrong path stops the container from being created, and says so.
+      - type: bind
+        source: ${DOCKER_SOCKET:-/var/run/docker.sock}
+        target: /var/run/docker-host.sock
+        bind:
+          create_host_path: false
     networks:
       - ft
     # PID 1 ignores signals it has no handler for, so a bare `sleep infinity`
     # would only stop on SIGKILL after the timeout.
     init: true
-    # docker-init.sh starts the socket bridge, then execs into sleep.
+    # docker-init.sh joins the Docker socket (a socat bridge as node, a symlink
+    # as root), then execs into sleep.
     command: ["/usr/local/share/docker-init.sh", "sleep", "infinity"]
 
 volumes:
