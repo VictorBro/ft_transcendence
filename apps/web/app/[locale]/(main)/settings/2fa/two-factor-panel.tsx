@@ -3,7 +3,12 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { EnableTwoFactorSchema, TwoFactorStatusSchema, type TwoFactorStatus } from '@ft/shared';
+import {
+  DisableTwoFactorSchema,
+  EnableTwoFactorSchema,
+  TwoFactorStatusSchema,
+  type TwoFactorStatus,
+} from '@ft/shared';
 import { clientGet, type ApiResult } from '@/lib/api-client';
 import { beginTwoFactorSetup, disableTwoFactor, enableTwoFactor } from '@/lib/auth-client';
 
@@ -74,7 +79,14 @@ export function TwoFactorPanel() {
     setPending(true);
     try {
       const password = String(new FormData(event.currentTarget).get('password') ?? '');
-      const result = await disableTwoFactor(password);
+      // The schema the API applies, so an empty password never leaves the page.
+      const parsed = DisableTwoFactorSchema.safeParse({ password });
+      if (!parsed.success) {
+        setError(errorMessage(parsed.error.issues[0].message));
+        return;
+      }
+
+      const result = await disableTwoFactor(parsed.data.password);
       if (fail(result)) {
         setRecoveryCodes(null);
         setStatus(await loadStatus());
