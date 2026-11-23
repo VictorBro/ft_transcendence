@@ -30,6 +30,33 @@ describe('TutorAnswer', () => {
     expect(out).not.toMatch(/[*#]/);
   });
 
+  it('renders a table and strikethrough (GFM), each cell in its own box', () => {
+    const out = html(
+      [
+        '| Pronoun | être |',
+        '| :-- | --: |',
+        '| je | suis |',
+        '| tu | es |',
+        '',
+        'Not ~~allé~~ but **allée**.',
+      ].join('\n'),
+    );
+    expect(out).toMatch(/<div class="overflow-x-auto"><table [^>]*>/);
+    expect(out).toMatch(/<th [^>]*>Pronoun<\/th>/);
+    expect(out).toMatch(/<td [^>]*>suis<\/td>/);
+    expect(out).toContain('style="text-align:right"');
+    expect(out).toMatch(/<del [^>]*>allé<\/del>/);
+    expect(out).not.toMatch(/[|~]/);
+  });
+
+  it('opens a link in a new tab, but keeps a footnote link on the page', () => {
+    const out = html('See [the docs](https://example.com)[^1].\n\n[^1]: A note.');
+    expect(out).toContain(
+      'href="https://example.com" target="_blank" rel="noopener noreferrer nofollow"',
+    );
+    expect(out).toMatch(/<a href="#user-content-fn-1" class="underline">/);
+  });
+
   it('shows raw HTML as text, never as markup', () => {
     const out = html('Look: <script>alert(1)</script> and <img src=x onerror="alert(2)">');
     expect(out).not.toContain('<script');
