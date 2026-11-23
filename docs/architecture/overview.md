@@ -4,7 +4,7 @@ How the containers fit together, in production and in development.
 Companions: [architecture/technical-plan.md](technical-plan.md) (decisions and rationale),
 [operations/versions.md](../operations/versions.md) (what moves together, what is held back), [subject/summary.md](../subject/summary.md) (requirements).
 
-Every diagram below is generated from the compose files as they actually are. If
+Every diagram below is drawn from the compose files as they actually are. If
 you change a port or a route, change the diagram in the same commit.
 
 ---
@@ -501,8 +501,9 @@ flowchart TB
     api --> tsconfig & eslint
 ```
 
-`packages/shared` is the reason validation cannot drift: the signup form and the
-signup endpoint apply the *same* `CreateUserSchema`, which is what the subject
+`packages/shared` is the reason validation cannot drift: the signup endpoint
+applies `CreateUserSchema`, and the signup form applies `SignUpFormSchema`, which
+is the same schema plus the password confirmation. That is what the subject
 means by validating in both frontend and backend. The one rule that keeps it
 honest is that `passwordHash` never appears in any schema there.
 

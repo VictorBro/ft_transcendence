@@ -28,14 +28,14 @@ const CHECK = `pnpm --filter @ft/api outlines:check ${lang}`;
 
 const BASE = `
 Course language: ${lang}. Standard: ${args.standard || 'ask the user'}. Repo: /workspace.
-Rules: docs/content/lessons.md, sections 1, 2, 4, 5, 9 and 10 (if it is not on the branch yet: git show origin/docs/76-lesson-docs:docs/LESSONS.md). The lesson counts per level and per kind are KIND_COUNTS[${lang}] and LESSONS_PER_LEVEL in packages/shared/src/schemas/lesson.ts; they are exact. Finished, reviewed outlines to learn the shape and quality from: content/outlines/en-*.json and de-*.json (all six levels) and fr-a1.json. The skill .claude/skills/outline-language/SKILL.md lists the rules the earlier reviews kept catching.
+Rules: docs/content/lessons.md, sections 1, 2, 3, 5, 8 and 9. The lesson counts per level and per kind are KIND_COUNTS[${lang}] and LESSONS_PER_LEVEL in packages/shared/src/schemas/lesson.ts; they are exact. Finished, reviewed outlines to learn the shape and quality from: content/outlines/en-*.json and de-*.json (all six levels) and fr-a1.json. The skill .claude/skills/outline-language/SKILL.md lists the rules the earlier reviews kept catching.
 Entry: {"id","kind","topic" (grammar only) or "theme" (other kinds),"workingTitle","intent"}, keys in that order. Topics and themes: TOPICS in packages/shared/src/schemas/item.ts and THEMES in lesson.ts.
 - id: "${lang}-" plus English words, lowercase and single hyphens, no digits, no level, at most 64 characters, unique across the language's six files and specific (${lang}-present-perfect-for-and-since, not ${lang}-present-perfect-two). Reading ids start ${lang}-reading-. British spelling in ids. Keep any ids the language's issue uses in its examples.
 - workingTitle: at most 80 characters, in the course language, unique across the six files after foldText. Conventions per kind: ${args.conventions || 'as in the existing outlines'}.
 - intent: one line, at most 200 characters, in the course language, what the learner can do after the lesson with concrete target language inline (after a colon or in brackets, no quotation marks). Vocabulary: about how many words and 5 to 8 examples, with their article in a language with grammatical gender. Never mention the level.
 - Style: no em or en dashes, no quotation marks of any kind (French may keep « »), no double spaces, no outer spaces.
 - One focus per lesson, ten minutes: about 3 grammar statements or 12 to 15 new words. Each lesson builds on the ones before it and on the levels below; nothing in an intent may use a word or structure taught later, except fixed phrases in function lessons. No two entries teach the same thing across all levels and kinds: a spiral point returns with a named slice. Grammar owns structures, vocabulary owns word sets, collocations, word formation, idioms and register, functions own communicative tasks, reading owns understanding a kind of text.
-- Copyright (docs/content/lessons.md section 10): never copy wording, examples or word lists from a source.${args.sources ? `\nSources the user named: ${args.sources}` : ''}`;
+- Copyright (docs/content/lessons.md section 9): never copy wording, examples or word lists from a source.${args.sources ? `\nSources the user named: ${args.sources}` : ''}`;
 
 const FINDINGS = {
   type: 'object',

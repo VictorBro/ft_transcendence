@@ -207,7 +207,7 @@ A learner is not asked the same question twice: the draw excludes every question
 that user through `UserSeenQuestion`. It is keyed per user and not per run, so a retake cannot
 serve an old question either. The single exception is a cell the LLM could not refill in time
 (§6), step 3 of the cascade in [architecture/product.md](../architecture/product.md) §1.2. Table
-detail is in §7.2 there.
+detail is in [architecture/data-model.md](../architecture/data-model.md) §5 (Learning).
 
 There is deliberately no difficulty score, no served/correct counters and no calibration. Those
 would need hundreds of answers per question before they meant anything, and this platform will

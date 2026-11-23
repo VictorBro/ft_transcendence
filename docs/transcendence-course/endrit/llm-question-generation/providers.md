@@ -5,7 +5,8 @@
 > [llm.factory.ts](../../../../apps/api/src/llm/llm.factory.ts),
 > [llm.module.ts](../../../../apps/api/src/llm/llm.module.ts),
 > [gemini.provider.ts](../../../../apps/api/src/llm/gemini.provider.ts),
-> [fixture.provider.ts](../../../../apps/api/src/llm/fixture.provider.ts).
+> [fixture.provider.ts](../../../../apps/api/src/llm/fixture.provider.ts),
+> [disabled.provider.ts](../../../../apps/api/src/llm/disabled.provider.ts).
 
 ---
 
@@ -33,6 +34,7 @@ classDiagram
   class LlmProvider {
     <<interface>>
     +generateStructured(request) Promise
+    +streamText(request) AsyncIterable
   }
 
   class StructuredRequest {
@@ -47,11 +49,18 @@ classDiagram
     -logger Logger
     -options apiKey et model
     +generateStructured(request) Promise
+    +streamText(request) AsyncIterable
     -send(request) Promise
   }
 
   class FixtureProvider {
     +generateStructured() Promise never
+    +streamText(request) AsyncIterable
+  }
+
+  class DisabledProvider {
+    +generateStructured() Promise never
+    +streamText() AsyncIterable
   }
 
   class LlmError {
@@ -83,12 +92,15 @@ classDiagram
 
   LlmProvider <|.. GeminiProvider : implements
   LlmProvider <|.. FixtureProvider : implements
+  LlmProvider <|.. DisabledProvider : implements
   LlmProvider ..> StructuredRequest : reçoit
   Error <|-- LlmError : extends
   GeminiProvider ..> LlmError : lance
-  FixtureProvider ..> LlmError : lance toujours
+  FixtureProvider ..> LlmError : lance (generateStructured)
+  DisabledProvider ..> LlmError : lance toujours
   createLlmProvider ..> GeminiProvider : new si gemini
   createLlmProvider ..> FixtureProvider : new si fixture
+  createLlmProvider ..> DisabledProvider : new si disabled
   LlmModule ..> createLlmProvider : useFactory appelle
   LlmModule --> LLM_PROVIDER : enregistre et exporte
   QuestionStockService --> LLM_PROVIDER : Inject
@@ -99,7 +111,7 @@ Lecture :
 - `<|..` = « implémente » (une classe respecte une interface).
 - `<|--` = « hérite de » (`LlmError extends Error`).
 - `..>` = « utilise / crée ».
-- `GeminiProvider` et `FixtureProvider` **n'ont pas** `@Injectable()` : Nest ne les construit pas
+- `GeminiProvider`, `FixtureProvider` et `DisabledProvider` **n'ont pas** `@Injectable()` : Nest ne les construit pas
   lui-même. C'est la factory qui fait `new`. Nest ne voit que le résultat, rangé sous le token.
 
 ---
@@ -109,8 +121,12 @@ Lecture :
 ```ts
 export interface LlmProvider {
   generateStructured<S extends z.ZodType>(request: StructuredRequest<S>): Promise<z.output<S>>;
+  streamText(request: StreamRequest): AsyncIterable<string>;
 }
 ```
+
+`streamText` (ajouté en #201) sert au tuteur des leçons : il renvoie la réponse morceau par
+morceau. Les questions de placement n'utilisent que `generateStructured`.
 
 - `<S extends z.ZodType>` : un **générique**. `S` est le type du schéma Zod passé dans la requête.
 - `Promise<z.output<S>>` : la réponse arrivera plus tard (`await`) et aura **la forme décrite par
@@ -122,7 +138,7 @@ export interface LlmProvider {
 
 | Champ | Rôle | Exemple |
 |---|---|---|
-| `purpose` | Étiquette pour les logs et les métriques. Type `` `question-batch:${QuestionCategory}` `` : une faute de frappe ne compile pas. | `"question-batch:grammar"` |
+| `purpose` | Étiquette pour les logs et les métriques. Type `` `question-batch:${QuestionCategory}` `` (ou `'lesson-discussion'` pour le tuteur) : une faute de frappe ne compile pas. | `"question-batch:grammar"` |
 | `system` | Les règles et le rôle du modèle. | `"You are an expert CEFR language exam designer..."` |
 | `user` | La demande précise. | `"Write 13 B1 grammar questions in \"fr\", one per topic."` |
 | `schema` | Le schéma Zod qui décrit **et** vérifie la réponse. | `generatedBatchSchema('grammar')` |
@@ -140,9 +156,11 @@ flowchart TD
   K -->|"non"| Err1["throw : LLM_PROVIDER=gemini needs LLM_API_KEY (l'API ne démarre pas)"]
   K -->|"oui"| M["model = LLM_MODEL ou gemini-3.6-flash"]
   M --> Gm["new GeminiProvider({ apiKey, model })"]
-  P -->|"autre valeur"| Err2["throw : must be fixture or gemini (l'API ne démarre pas)"]
+  P -->|"disabled"| Ds["new DisabledProvider()"]
+  P -->|"autre valeur"| Err2["throw : must be fixture, gemini or disabled (l'API ne démarre pas)"]
   Fx --> Metric["showProvider : métrique ft_llm_provider_info"]
   Gm --> Metric
+  Ds --> Metric
   Metric --> Tok["Objet rangé sous le token LLM_PROVIDER"]
 ```
 
@@ -152,7 +170,7 @@ Où sont les valeurs :
 |---|---|---|
 | [.env.example](../../../../.env.example) | `fixture` | Clé vide exprès : une vraie clé commitée serait une fuite. |
 | [compose.yml](../../../../compose.yml) (dev) | `${LLM_PROVIDER:-fixture}` | Défaut `fixture`. |
-| [compose.deploy.yml](../../../../compose.deploy.yml) (prod) | `${LLM_PROVIDER:?set LLM_PROVIDER to fixture or gemini}` | Obligatoire : docker compose refuse de lancer sans. |
+| [compose.deploy.yml](../../../../compose.deploy.yml) (prod) | `${LLM_PROVIDER:?set LLM_PROVIDER to fixture, gemini or disabled}` | Obligatoire : docker compose refuse de lancer sans. |
 | [llm.factory.ts](../../../../apps/api/src/llm/llm.factory.ts) | `LLM_PROVIDER = 'fixture'` (défaut du paramètre) | Dernier filet de sécurité. |
 
 **Pourquoi un échec au démarrage ?** « Fail fast » : une mauvaise config doit casser tout de
@@ -176,7 +194,7 @@ sequenceDiagram
 
   S->>G: generateStructured(request)
   G->>G: startTimer (métrique de durée)
-  G->>API: POST models/gemini-3.6-flash:generateContent, header x-goog-api-key, timeout 60 s
+  G->>API: POST models/gemini-3.6-flash:generateContent, header x-goog-api-key, timeout 90 s
   alt pas de réponse HTTP (réseau, DNS, timeout)
     G-->>S: LlmError unreachable, retryable
   else statut hors 2xx
@@ -223,13 +241,13 @@ modèle écrit autre chose à chaque appel.
 
 | `reason` | Quand | `retryable` |
 |---|---|---|
-| `unreachable` | Pas de réponse HTTP : réseau, DNS, timeout 60 s | oui |
+| `unreachable` | Pas de réponse HTTP : réseau, DNS, timeout 90 s | oui |
 | `rate_limited` | HTTP 429 | oui |
 | `http_error` | Autre statut hors 2xx. 408 et 5xx : oui. 400, 401, 403, 404 : non | dépend |
 | `blocked` | Gemini refuse le prompt (filtres de sécurité) | non |
 | `incomplete` | `finishReason` n'est pas `STOP` (ex. `MAX_TOKENS`) | non |
 | `invalid` | La réponse n'est pas du JSON, ou ne passe pas le schéma Zod | oui |
-| `disabled` | Le Fixture (aucun LLM derrière) | non |
+| `disabled` | Le Fixture (pour les questions) ou le `DisabledProvider` : aucun LLM derrière | non |
 
 `reason` est une **liste fixe** de mots (et pas le message libre) parce que Prometheus compte les
 échecs par `reason` : il faut un petit nombre de valeurs possibles. Ajouté en #130.

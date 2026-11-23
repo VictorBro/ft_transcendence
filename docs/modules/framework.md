@@ -119,8 +119,8 @@ There are two paths, and both reach the same NestJS routes.
    talks to NestJS" (its own comment). It calls `http://api:3001` over the Docker
    network (`API_INTERNAL_URL`), passes on the browser's cookie and the visitor's
    address, and checks the answer with a Zod schema. A 401 means "signed out"; any
-   other failure means "the API is unavailable", so a restart never logs anyone
-   out. [`apps/web/lib/session.ts`](../../apps/web/lib/session.ts) uses it to load
+   other failure means "the API is unavailable" (a page can also ask for a 404 to
+   mean "not found"), so a restart never logs anyone out. [`apps/web/lib/session.ts`](../../apps/web/lib/session.ts) uses it to load
    the signed-in user.
 2. **From the browser, after the page has loaded.**
    [`apps/web/lib/api-client.ts`](../../apps/web/lib/api-client.ts) sends

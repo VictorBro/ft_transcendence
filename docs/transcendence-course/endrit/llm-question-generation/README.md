@@ -57,10 +57,11 @@ Ce que `git log` montre sur ces deux dossiers :
 | PR | Auteur (git) | Ce qui a été fait |
 |---|---|---|
 | #69 | EA | Première version : `LlmProvider` + token `LLM_PROVIDER` (fichier `llm.interface.ts`), `FixtureProvider` qui renvoyait des fausses questions, `GeminiProvider`, un gros `QuestionGenerationService` (dossier `questions-generation/` avec un **s**) qui faisait tout : décider, appeler le LLM, réessayer, insérer, **et** servir la question avec le repli sur `UserSeenQuestion`. Script `generation:try`. |
-| #104 | ninisse | **Grosse refonte**. `llm.interface.ts` devient `llm.provider.ts` avec `StructuredRequest` (schéma Zod) et `LlmError` (champ `retryable`). Ajout de `llm.factory.ts`. `FixtureProvider` ne renvoie plus de fausses questions : il échoue. Le service est découpé : `question-stock.service.ts` (remplir) + `question-batch.ts` (fonctions pures) + `prompts/question-batch.prompt.ts`. Servir la question et le repli passent dans `PlacementQuestionService`. |
+| #104 | ninisse (la PR), VictorBro (le commit LLM dedans) | **Grosse refonte**. La PR est d'Anaïs (`ninisse`), mais ses changements LLM viennent d'un commit de Victor, comme le dit [llm-interface.md](../../../modules/llm-interface.md#who-built-it). `llm.interface.ts` devient `llm.provider.ts` avec `StructuredRequest` (schéma Zod) et `LlmError` (champ `retryable`). Ajout de `llm.factory.ts`. `FixtureProvider` ne renvoie plus de fausses questions : il échoue. Le service est découpé : `question-stock.service.ts` (remplir) + `question-batch.ts` (fonctions pures) + `prompts/question-batch.prompt.ts`. Servir la question et le repli passent dans `PlacementQuestionService`. |
 | #111 | EA | Modèle par défaut : `gemini-3.6-flash`. |
 | #121 | EA | Commentaires pédagogiques dans tout le code + les docs `GEMINI_PROVIDER.md` et `QUESTION_GENERATION.md`. Pas de changement de logique visible (le diff ne touche que des commentaires). |
 | #130 | VictorBro | Monitoring (Prometheus) : champ `reason` dans `LlmError` (type `LlmFailure`), compteurs de requêtes / tokens / durée dans Gemini, `showProvider` dans la factory, `counted` et `failureReason` dans le service de stock. |
+| #201 | luca-mattei | Le tuteur des leçons : `streamText` dans l'interface, dans Gemini et dans le Fixture (qui répond un texte fixe), le nouveau `DisabledProvider` (`LLM_PROVIDER=disabled`), et le timeout Gemini passé de 60 à 90 s. |
 
 **À savoir dire à l'oral** : « J'ai posé l'abstraction provider, le token d'injection,
 Gemini, la génération et le repli dans la PR #69. Ensuite l'équipe a refactoré : la
@@ -77,11 +78,12 @@ et [GEMINI_PROVIDER.md §13](../../../../apps/api/src/llm/GEMINI_PROVIDER.md).
 
 | Fichier | Rôle |
 |---|---|
-| [llm.provider.ts](../../../../apps/api/src/llm/llm.provider.ts) | Le **contrat**. Le token `LLM_PROVIDER` (un `Symbol`), l'interface `LlmProvider` (une seule méthode : `generateStructured`), le type `StructuredRequest` (purpose, system, user, schema), la classe d'erreur `LlmError` (`retryable`, `reason`). |
+| [llm.provider.ts](../../../../apps/api/src/llm/llm.provider.ts) | Le **contrat**. Le token `LLM_PROVIDER` (un `Symbol`), l'interface `LlmProvider` (deux méthodes : `generateStructured` pour les questions, `streamText` pour le tuteur des leçons), le type `StructuredRequest` (purpose, system, user, schema), la classe d'erreur `LlmError` (`retryable`, `reason`). |
 | [llm.factory.ts](../../../../apps/api/src/llm/llm.factory.ts) | `createLlmProvider` : lit `LLM_PROVIDER`, `LLM_API_KEY`, `LLM_MODEL` et construit **le bon** provider. Plante au démarrage si la config est fausse. |
 | [llm.module.ts](../../../../apps/api/src/llm/llm.module.ts) | Le module NestJS. Enregistre le token `LLM_PROVIDER` avec `useFactory` et l'**exporte**. |
-| [gemini.provider.ts](../../../../apps/api/src/llm/gemini.provider.ts) | Le vrai provider : un appel HTTP `fetch` à l'API Gemini, timeout 60 s, lecture de la réponse, validation Zod, erreurs `LlmError`, métriques. |
-| [fixture.provider.ts](../../../../apps/api/src/llm/fixture.provider.ts) | Le provider « sans clé » : il **échoue toujours** (`LlmError`, `retryable: false`, `reason: 'disabled'`). Aucun réseau, aucun coût. |
+| [gemini.provider.ts](../../../../apps/api/src/llm/gemini.provider.ts) | Le vrai provider : un appel HTTP `fetch` à l'API Gemini, timeout 90 s, lecture de la réponse, validation Zod, erreurs `LlmError`, métriques. |
+| [fixture.provider.ts](../../../../apps/api/src/llm/fixture.provider.ts) | Le provider « sans clé » : `generateStructured` **échoue toujours** (`LlmError`, `retryable: false`, `reason: 'disabled'`). `streamText` (le tuteur) renvoie un texte fixe. Aucun réseau, aucun coût. |
+| [disabled.provider.ts](../../../../apps/api/src/llm/disabled.provider.ts) | `LLM_PROVIDER=disabled` : aucun LLM, même pas le tuteur fixe. Les deux méthodes échouent tout de suite avec `reason: 'disabled'` (#201). |
 | `*.spec.ts` | Les tests unitaires (Vitest) de chaque fichier. |
 
 ### `question-generation/` : remplir la banque
@@ -125,6 +127,7 @@ flowchart LR
 **Un seul appelant dans l'API** : `PlacementQuestionService.getNewQuestion`. Il appelle
 `this.stock.restock(...)` une fois par catégorie, **à chaque question tirée**.
 (Le script `try-generation.ts` l'appelle aussi, mais à la main, hors HTTP.)
+Le token `LLM_PROVIDER` a un autre client, hors de ce module : `DiscussionService`, le tuteur des leçons (#201), qui appelle `streamText`.
 
 Les routes qui tirent une nouvelle question (préfixe global `api`, voir `API_PREFIX` dans
 [app.setup.ts](../../../../apps/api/src/app.setup.ts)) :
@@ -202,7 +205,7 @@ sequenceDiagram
 
 Point clé : **le tirage n'attend pas la génération**. L'apprenant reçoit sa question tout
 de suite (ou une ancienne en repli). Les nouvelles questions serviront aux tirages
-**suivants**. Un appel Gemini peut prendre des dizaines de secondes (timeout à 60 s) :
+**suivants**. Un appel Gemini peut prendre des dizaines de secondes (timeout à 90 s) :
 on ne fait pas attendre un humain pour ça.
 
 ---
@@ -366,7 +369,8 @@ classDiagram : [providers.md](providers.md).
 | absent ou `fixture` | ignorée | `FixtureProvider` (défaut dans `createLlmProvider` **et** dans `compose.yml`) |
 | `gemini` | remplie | `GeminiProvider`, modèle `LLM_MODEL` ou `gemini-3.6-flash` par défaut |
 | `gemini` | vide | **L'API refuse de démarrer** : `LLM_PROVIDER=gemini needs LLM_API_KEY` |
-| autre chose (`gpt`…) | — | **L'API refuse de démarrer** : `LLM_PROVIDER must be "fixture" or "gemini"` |
+| `disabled` | ignorée | `DisabledProvider` : aucun appel LLM, tout échoue avec `reason: 'disabled'` |
+| autre chose (`gpt`…) | — | **L'API refuse de démarrer** : `LLM_PROVIDER must be "fixture", "gemini" or "disabled"` |
 
 En déploiement, [compose.deploy.yml](../../../../compose.deploy.yml) **exige** `LLM_PROVIDER`
 (`${LLM_PROVIDER:?...}`) : on doit choisir explicitement. Pourquoi planter au démarrage ?
@@ -427,7 +431,9 @@ la même cellule dans le même processus.)
 | [llm.factory.spec.ts](../../../../apps/api/src/llm/llm.factory.spec.ts) | Le bon provider selon les variables, les erreurs de config. |
 | [llm.module.spec.ts](../../../../apps/api/src/llm/llm.module.spec.ts) | Le token `LLM_PROVIDER` est bien fourni par le module. |
 | [gemini.provider.spec.ts](../../../../apps/api/src/llm/gemini.provider.spec.ts) | `fetch` simulé : corps envoyé, header de clé, erreurs HTTP, blocage, réponse coupée, JSON invalide. |
-| [fixture.provider.spec.ts](../../../../apps/api/src/llm/fixture.provider.spec.ts) | Il rejette toujours, non retryable. |
+| [gemini.provider.stream.spec.ts](../../../../apps/api/src/llm/gemini.provider.stream.spec.ts) | `streamText` avec un faux `fetch` (le tuteur, #201). |
+| [fixture.provider.spec.ts](../../../../apps/api/src/llm/fixture.provider.spec.ts) | `generateStructured` rejette toujours, non retryable ; `streamText` envoie le texte fixe, ou échoue sur `#blocked`, `#timeout`, `#fail-midstream`. |
+| [disabled.provider.spec.ts](../../../../apps/api/src/llm/disabled.provider.spec.ts) | Les deux méthodes échouent avec `disabled`. |
 | [question-stock.service.spec.ts](../../../../apps/api/src/question-generation/question-stock.service.spec.ts) | stocked / busy / cooling / filled / failed, le retry, la pause. |
 | [question-batch.spec.ts](../../../../apps/api/src/question-generation/question-batch.spec.ts) | `freshItems` et `toRows`. |
 | [question-batch.prompt.spec.ts](../../../../apps/api/src/question-generation/prompts/question-batch.prompt.spec.ts) | Le contenu du prompt selon la cellule. |
@@ -448,7 +454,7 @@ pas les utiliser comme clé. Le `Symbol` est une vraie valeur à l'exécution.
 
 **Q : Comment l'API choisit entre Gemini et Fixture ?**
 R : Au démarrage, `useFactory` appelle `createLlmProvider` avec `LLM_PROVIDER`. `fixture` par
-défaut. `gemini` exige `LLM_API_KEY`, sinon l'API ne démarre pas.
+défaut. `gemini` exige `LLM_API_KEY`, sinon l'API ne démarre pas. `disabled` coupe tout LLM.
 
 **Q : Pourquoi le Fixture ne renvoie pas de fausses questions ?**
 R : Au début (#69) il en renvoyait. Mais une fausse question insérée en base est servie aux

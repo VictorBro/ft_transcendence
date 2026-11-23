@@ -102,7 +102,7 @@ Il a trois parties :
 
 | Dossier | Rôle | En une phrase |
 |---|---|---|
-| [`schemas/`](../../../../packages/shared/src/lessons/schemas/) | la **forme** des fichiers | « le champ `title` existe et fait moins de 300 caractères » |
+| [`schemas/`](../../../../packages/shared/src/lessons/schemas/) | la **forme** des fichiers | « le champ `title` existe et fait au plus 300 caractères » |
 | [`validation/`](../../../../packages/shared/src/lessons/validation/) | le **sens** des fichiers | « chaque règle citée existe, l'examen couvre toutes les règles » |
 | [`domain/`](../../../../packages/shared/src/lessons/domain/) | les **calculs** | « une page de 4 cartes dure 40 s », « découper le Markdown » |
 
@@ -122,7 +122,7 @@ Une seule source de vérité, pas de copie.
 |---|---|---|---|
 | Le **seed** (remplit la base) | [`apps/api/prisma/seed.ts`](../../../../apps/api/prisma/seed.ts) | `lessons.validateLesson` | une leçon invalide **arrête le seed** ; une leçon valide devient `ready: true` avec son titre et son résumé |
 | Le **kit d'auteur** (écrit les leçons avec un modèle) | [`apps/api/scripts/lessons/check-draft.ts`](../../../../apps/api/scripts/lessons/check-draft.ts) | `lessons.validateLesson` | renvoie les problèmes au modèle jusqu'à ce que la leçon passe |
-| | [`apps/api/scripts/lessons/times.ts`](../../../../apps/api/scripts/lessons/times.ts) | `vocabularyLesson`, `vocabularyMinutes`, `functionsPageEstimate`, `readingSkimSeconds`, `readingMinutes` | calcule les durées au lieu de laisser le modèle les inventer |
+| | [`apps/api/scripts/lessons/times.ts`](../../../../apps/api/scripts/lessons/times.ts) | `vocabularyLesson`, `vocabularyMinutes`, `functionsPageEstimate`, `functionsTimeLimit`, `readingPageEstimate`, `readingSkimSeconds`, `readingTimeLimit`, `readingMinutes` | calcule les durées au lieu de laisser le modèle les inventer |
 | | [`apps/api/scripts/lessons/complete.ts`](../../../../apps/api/scripts/lessons/complete.ts), [`files.ts`](../../../../apps/api/scripts/lessons/files.ts), [`check.ts`](../../../../apps/api/scripts/lessons/check.ts) | `ARTIFACT_SCHEMA_VERSION`, `hasContentFile` | remplit l'enveloppe, sait si un fichier contenu est attendu |
 | Les **tests de l'API** | [`apps/api/src/lessons/lesson-files.spec.ts`](../../../../apps/api/src/lessons/lesson-files.spec.ts), [`lesson-complete.spec.ts`](../../../../apps/api/src/lessons/lesson-complete.spec.ts) | `validateLesson`, `hasContentFile` | vérifient **tous** les fichiers de `content/` en CI |
 | Le **front** | [`apps/web/components/lesson/rich-text.tsx`](../../../../apps/web/components/lesson/rich-text.tsx) | `lessons.parseRichText` | affiche les explications en Markdown simple |
@@ -193,7 +193,6 @@ Une flèche `A --> B` veut dire « A importe B ».
 flowchart TD
   VL["validateLesson.ts"] --> VART["validation/artifacts.ts"]
   VL --> SART["schemas/artifacts.ts"]
-  VL --> GLEN["validation/grammarLength.ts"]
 
   VART --> SART
   VART --> VCOM["validation/common.ts"]
@@ -202,6 +201,7 @@ flowchart TD
   VART --> VGRA["validation/grammar.ts"]
   VART --> VFUN["validation/functions.ts"]
   VART --> VREA["validation/reading.ts"]
+  VART --> GLEN["validation/grammarLength.ts"]
 
   SART --> SVOC["schemas/vocabulary.ts"]
   SART --> SGRA["schemas/grammar.ts"]
@@ -230,7 +230,9 @@ flowchart TD
 
 À retenir pour l'oral : **les flèches descendent toujours**.
 `schemas/` ne connaît pas `validation/`. `domain/` ne connaît pas `validation/`.
-Seul `validation/` utilise les deux. Il n'y a pas de dépendance circulaire.
+Seul `validation/` utilise les deux. Il n'y a pas de dépendance circulaire à l'exécution :
+`validation/functions.ts` et `validation/vocabulary.ts` importent de `validation/artifacts.ts`
+seulement le type `OutlineContext` (`import type`, effacé à la compilation).
 
 ---
 

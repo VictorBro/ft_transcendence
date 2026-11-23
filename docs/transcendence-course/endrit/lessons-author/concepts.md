@@ -70,14 +70,15 @@ Dans [prompt.ts](../../../../apps/api/scripts/lessons/prompt.ts) :
 
 ```ts
 /** Raise it when the prompt changes: every file records the version it was written with. */
-export const PROMPT_VERSION = 'author-3';
+export const PROMPT_VERSION = 'author-4';
 ```
 
 `complete.ts` recopie cette valeur dans `provenance.promptVersion` de chaque fichier.
 
 Ça sert à :
 - **tracer** : on voit dans le fichier quel prompt l'a écrit (dans le dépôt, des leçons en
-  `author-2` et d'autres en `author-3`) ;
+  `author-2` et d'autres en `author-3` ; la version actuelle, `author-4` (#208), n'a encore écrit
+  aucun fichier) ;
 - **refaire de façon ciblée** : si `author-2` produisait un défaut, on retrouve exactement les
   leçons concernées ;
 - **comparer** : la qualité ou le nombre d'essais avant/après un changement de prompt.

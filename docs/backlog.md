@@ -5,9 +5,9 @@ on the board instead.
 
 ## README
 
-Fifteen `TODO` placeholders, all of them things the defence asks for directly:
+Thirteen `TODO` markers, all of them things the defence asks for directly:
 the five 42 logins, project management, the database schema, the features list,
-the modules with their point totals, and per-member contributions.
+per-member contributions, and the resources with how AI was used.
 
 ## No TODOs, no commented-out code
 

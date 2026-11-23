@@ -1,6 +1,6 @@
 # Product Architecture
 
-The product, the AI layer, Redis and throttling, as built at the end of Milestone 2.
+The product, the AI layer, Redis and throttling, as built on this branch.
 [architecture/technical-plan.md](technical-plan.md) covers the infrastructure around it (repository layout,
 containers, CI and build order), [architecture/overview.md](overview.md) the containers and the request
 paths, and [content/lessons.md](../content/lessons.md) the lesson content, its seeding and the lesson player.

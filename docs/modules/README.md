@@ -1,6 +1,6 @@
 # Modules
 
-A module is a feature from the subject's list of "modules of choice". Each one is worth points:
+A module is a feature from the subject's module list (chapter IV). Each one is worth points:
 a **Major** module is 2 points and a **Minor** module is 1 point. The project needs **14 points**.
 Points above 14 are a bonus, and the bonus is **capped at 5**, so at most **19 points count**
 ([../subject/summary.md](../subject/summary.md), "Modules: 14 points required" and "Bonus"). A
@@ -43,10 +43,15 @@ sections of [custom-ci-cd.md](custom-ci-cd.md) and
 
 ### Gamification outside a game
 
-Gamification is in the subject's gaming chapter, and our product is a language-learning app, not a
-game. Its neighbours there (Tournament, Game customization, Spectator mode) each say they require a
-game. Gamification does not, and the subject's rule "requires at least one working game" does not
-list it. So we claim it, and the rewarded actions are finishing lessons and reaching the daily
+Gamification is in the subject's gaming chapter (IV.6), and our product is a language-learning app,
+not a game. But the subject suggests it for exactly our kind of app: in chapter V.6, the "Language
+Learning Platform" has "Suggested modules: User interaction, Gamification, Multiple languages,
+Voice integration, Analytics dashboard". It is suggested for the Fitness Tracker (V.5) and the
+Forum Platform (V.3) too, and neither is a game. Its neighbours in IV.6 (Tournament, Game
+customization, Spectator mode) each say they require a game. Gamification does not, and the
+subject's dependency rule does not list it: "Gaming modules (AI Opponent, Tournament, Game
+customization, Spectator mode, Multiplayer 3+, Add another game) require that at least one game be
+implemented first." So we claim it, and the rewarded actions are finishing lessons and reaching the daily
 goal. This is our reading of the subject: **confirm it with staff before the defence**. The full
 argument is in [gamification.md](gamification.md).
 

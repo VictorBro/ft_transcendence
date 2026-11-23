@@ -60,8 +60,10 @@ prompt**, quand, et un hash (empreinte sha256) de l'entrée de l'outline. Exempl
 }
 ```
 
-Aujourd'hui dans le dépôt : 144 briefs portent `author-2` et 72 portent `author-3` (la version
-actuelle de `PROMPT_VERSION`).
+Aujourd'hui dans le dépôt : 144 briefs portent `author-2` et 72 portent `author-3`. La version
+actuelle de `PROMPT_VERSION` est `author-4` (depuis #208, qui demande le « tu » dans l'aide en
+français) : aucun fichier ne la porte encore. #208 a corrigé les fichiers existants à la main,
+sans changer leur provenance.
 
 ---
 
@@ -143,7 +145,7 @@ Tout est dans [apps/api/scripts/lessons/](../../../../apps/api/scripts/lessons/)
 | Fichier | Rôle en une phrase |
 |---|---|
 | [author.ts](../../../../apps/api/scripts/lessons/author.ts) | Le point d'entrée : lit les options, choisit les leçons (`pickLessons`), lance la boucle par leçon (`authorLesson`) dans un **pool** de 2 en parallèle, affiche le résumé |
-| [prompt.ts](../../../../apps/api/scripts/lessons/prompt.ts) | Construit les textes envoyés au modèle : `systemPrompt(kind)`, `lessonPrompt(...)`, `issuesPrompt(...)`, et `PROMPT_VERSION = 'author-3'` |
+| [prompt.ts](../../../../apps/api/scripts/lessons/prompt.ts) | Construit les textes envoyés au modèle : `systemPrompt(kind)`, `lessonPrompt(...)`, `issuesPrompt(...)`, et `PROMPT_VERSION = 'author-4'` |
 | [providers/chat.ts](../../../../apps/api/scripts/lessons/providers/chat.ts) | Le **contrat** d'un fournisseur de modèle (`Provider`, `Chat`, `Reply`), les erreurs `QuotaError` / `RateLimitError`, `refusal()` qui classe un refus, `retryRateLimits()` qui réessaie |
 | [providers/claude.ts](../../../../apps/api/scripts/lessons/providers/claude.ts) | L'implémentation Claude : trouve le binaire (`findClaude`), le lance avec `spawn` (`runClaude`), reprend la conversation avec `--resume` |
 | [reply.ts](../../../../apps/api/scripts/lessons/reply.ts) | Lit la réponse du modèle : extrait le premier objet JSON (`parseReply`) et l'applique au brouillon (`applyReply`) |
@@ -344,7 +346,7 @@ Commande : `pnpm --filter @ft/api lessons:author fr a2 --max 2`
 9. **`applyReply`** extrait le premier objet JSON (même s'il est dans un bloc de code ou suivi de
    texte) et remplace le brouillon.
 10. **`checkDraft`** : `complete()` ajoute `schemaVersion`, `id`, `lang`, `level`, `provenance`
-    (avec `promptVersion: "author-3"`), le barème (35 % pratique, 65 % examen), et calcule
+    (avec `promptVersion: "author-4"`), le barème (35 % pratique, 65 % examen), et calcule
     `estimatedMinutes` et les `timeLimitS` des pages d'examen. Puis `validateLesson` répond, par
     exemple, 3 problèmes du type `brief.blocks.1.exercises.0: …`.
 11. **`issuesPrompt`** liste ces 3 problèmes et propose de répondre seulement avec

@@ -602,10 +602,10 @@ each with its answer units. Every page has one of five roles (`PageRole`):
 | Role | What it is | Scored |
 |---|---|---|
 | `presentation` | Something to read, nothing to answer | No |
-| `practice` | Exercises, corrected page by page | Yes, 35% of the score by default |
+| `practice` | Exercises, corrected page by page | Yes, 35% of the score |
 | `discussion` | The talk with the tutor before the exam (§12) | No |
 | `examIntro` | The exam info page: its pages, questions and countdowns | No |
-| `exam` | A timed page, corrected only in the results | Yes, 65% by default |
+| `exam` | A timed page, corrected only in the results | Yes, 65% |
 
 What a kind does differently lives in its module, `packages/shared/src/lessons/player/kinds/`.
 
@@ -661,7 +661,7 @@ on that one response: `delta { text }` for each piece, then `done {}`, or `error
 | It can explain the learner's mistakes | The prompt also holds the attempt's wrong practice answers, at most 20, read from `LessonAttempt.answers`. Exam answers never: none is locked before the discussion page |
 | It answers in the interface language | The prompt asks for the learner's interface language, stored in `User.locale` ([#211](https://github.com/VictorBro/ft_transcendence/issues/211)), with examples in the course language |
 | Nothing is stored | The browser sends the last 10 turns back with each message. The server keeps no transcript |
-| Bounded | A message is at most 500 characters, an answer at most 1,000 output tokens, and the learner's and global per-minute and per-day limits apply ([operations/deployment.md](../operations/deployment.md) §5) |
+| Bounded | A message is at most 500 characters, an answer at most 1,000 output tokens, and the learner's per-minute and per-day limits and the global per-minute limit apply ([operations/deployment.md](../operations/deployment.md) §5) |
 
 With `LLM_PROVIDER=fixture`, the default in development and CI, the tutor gives one canned answer.
 With `LLM_PROVIDER=disabled`, every message ends with the error `llm.disabled`.

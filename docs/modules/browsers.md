@@ -36,10 +36,10 @@ So the two additional browsers must also show no console errors or warnings.
 | The subject asks | What we built | Where |
 | --- | --- | --- |
 | At least 2 additional browsers | Firefox and WebKit (Safari's engine), next to Chromium. Playwright (the tool that drives a real browser in our tests) has one "project" per engine: `chromium` (Desktop Chrome), `firefox` (Desktop Firefox) and `webkit` (Desktop Safari). | [e2e/playwright.config.ts](../../e2e/playwright.config.ts) |
-| Fully supported | The app has fixes for things only one engine does (see "How it works"). The console gate (a test that fails on any console error or warning) runs on all three engines. **Partly:** we test desktop browsers only, and Playwright's WebKit build, not the Safari app itself. | [e2e/support/console-guard.ts](../../e2e/support/console-guard.ts), [e2e/tests/console.spec.ts](../../e2e/tests/console.spec.ts) |
-| Tested | Every spec file runs on all three engines in CI: 3 engines × 2 parts = 6 jobs, each on its own production stack. A final job, "playwright (production stack)", fails if any of the six did not pass. **Partly:** a few tests run on Chromium only, each with a `test.skip` that gives the reason (listed under "Limits and choices"). | [.github/workflows/e2e.yml](../../.github/workflows/e2e.yml) |
+| Fully supported | The app has fixes for things only one engine does (see "How it works"). The console gate (a test that fails on any console error or warning) runs on all three engines. Desktop browsers only, see [Limits and choices](#limits-and-choices). | [e2e/support/console-guard.ts](../../e2e/support/console-guard.ts), [e2e/tests/console.spec.ts](../../e2e/tests/console.spec.ts) |
+| Tested | Every spec file runs on all three engines in CI: 3 engines × 2 parts = 6 jobs, each on its own production stack. A final job, "playwright (production stack)", fails if any of the six did not pass. A few tests run on Chromium only, each with a `test.skip` that gives the reason (see [Limits and choices](#limits-and-choices)). | [.github/workflows/e2e.yml](../../.github/workflows/e2e.yml) |
 | Documented, with the limits of each browser | The README has a "Browser support" section: which engines, how CI runs them, how to run one engine, and the known limits (no speech voice, mobile browsers not tested). | [README.md](../../README.md#browser-support) |
-| Consistent UI/UX across browsers | The three engines get the same pages, the same styles and the same tests, with the same checks of what is on screen. The phone-width layout check also runs on each engine. **Partly:** no test compares screenshots between engines. | [e2e/tests/layout-gate.spec.ts](../../e2e/tests/layout-gate.spec.ts) |
+| Consistent UI/UX across browsers | The three engines get the same pages, the same styles and the same tests, with the same checks of what is on screen. The phone-width layout check also runs on each engine. | [e2e/tests/layout-gate.spec.ts](../../e2e/tests/layout-gate.spec.ts) |
 
 ## How it works
 
@@ -165,6 +165,8 @@ These ones matter most for this module:
   | `lesson.spec.ts`: "shows the Listen buttons once a French voice is there" | The voice is a fake one put into the page: "The voice is a stub". |
   | `level-complete.spec.ts`: "the level complete card starts the next level" | It plays through the API, not the browser: "API play: the engine adds nothing, the rate limit minutes". |
 
+- **No screenshot comparison.** The tests check what is on screen on each engine, but no test
+  compares screenshots between engines.
 - **Read aloud depends on the browser.** Without a voice for the language, there are no Listen
   buttons. The functions listening reply is answered through **Show the text**. Real voices on
   Firefox and WebKit are not tested: headless browsers have none, and the voice test is Chromium

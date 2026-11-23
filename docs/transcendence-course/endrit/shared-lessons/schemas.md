@@ -59,9 +59,9 @@ Avantages :
 - les vérifications de sens peuvent **supposer** que la forme est bonne (pas besoin de tester `undefined` partout) ;
 - on peut **collecter tous les problèmes** avec la classe `Issues`, avec des messages clairs.
 
-(Le seul `refine` lié aux leçons est hors du dossier : `LessonTitleSchema` dans
-[`packages/shared/src/schemas/lesson.ts`](../../../../packages/shared/src/schemas/lesson.ts),
-que `validateLesson` réutilise pour le titre et le résumé.)
+(Les `refine` liés aux leçons sont hors du dossier, dans
+[`packages/shared/src/schemas/lesson.ts`](../../../../packages/shared/src/schemas/lesson.ts) : par exemple
+`LessonTitleSchema` et `LessonSummarySchema`, que `validateLesson` réutilise pour le titre et le résumé.)
 
 ### Pourquoi beaucoup de schémas sont des **fonctions** `(lang) => schema` ?
 
@@ -519,7 +519,7 @@ Apprendre 4 à 6 mots clés, puis lire un document réel (SMS, article…), puis
 | `READING_STAGES` | `flashcards, matching, skim, detail, structure, exam` (6, une page chacune) |
 | `SKIM_FOCUS` | `genre, author, purpose` : sur quoi porte la question de survol |
 | `READING_QUESTION_TYPES` | `reading_choice`, `reading_true_false` |
-| `TRUE_FALSE_LABELS` | `Vrai/Faux`, `Richtig/Falsch`, `True/False` ; lu par aucun code du dossier |
+| `TRUE_FALSE_LABELS` | `Vrai/Faux`, `Richtig/Falsch`, `True/False` ; lu seulement par le lecteur (`player/readingPlan.ts`) |
 
 **Règle importante** : les documents, questions et choix restent dans la **langue apprise**.
 Les traduire donnerait les réponses. Seules les consignes et les corrections sont en `{ en, fr, de }`.

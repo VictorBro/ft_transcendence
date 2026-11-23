@@ -44,7 +44,7 @@ Deux règles importantes :
 | [lesson-search.ts](../../../../apps/api/src/lessons/lesson-search.ts) | `searchLessons` (garder → trier → couper en pages) et `bareVowels` (astuce allemande `ae`/`oe`/`ue`). Fonctions pures, sans base de données. |
 | [course-lookup.ts](../../../../apps/api/src/lessons/course-lookup.ts) | `checkCourse` (404 / 409), `findLesson` (404 `lesson.notFound`), et `LESSON_SELECT` (les colonnes d'une carte de leçon, sans `brief`). Fonctions simples, réutilisées par d'autres fichiers. |
 | [lessons.dto.ts](../../../../apps/api/src/lessons/lessons.dto.ts) | Les DTO créés avec `createZodDto(...)`. `LessonQueryDto` valide les paramètres `?q=…&sort=…`. Les autres documentent les réponses dans Swagger (`/api/docs`). |
-| [lessons.module.ts](../../../../apps/api/src/lessons/lessons.module.ts) | Déclare `LessonsController`, `AttemptsController`, `LessonsService`, `AttemptsService`. Exporte `LessonsService`. |
+| [lessons.module.ts](../../../../apps/api/src/lessons/lessons.module.ts) | Importe `GatewayModule` et `LlmModule`. Déclare `LessonsController`, `AttemptsController`, `DiscussionController`, `LessonsService`, `AttemptsService`, `DiscussionService`. Exporte `LessonsService`. |
 | [lesson-search.spec.ts](../../../../apps/api/src/lessons/lesson-search.spec.ts) | Tests unitaires de la recherche : texte, accents, allemand, filtres, tri, groupes, pages. |
 | [course-lookup.spec.ts](../../../../apps/api/src/lessons/course-lookup.spec.ts) | Tests de `checkCourse` et `findLesson` (avec un faux client Prisma). |
 | [lesson-complete.spec.ts](../../../../apps/api/src/lessons/lesson-complete.spec.ts), [lesson-edits.spec.ts](../../../../apps/api/src/lessons/lesson-edits.spec.ts) | (#178) Ils testent l'outil `scripts/lessons/` (`lessons:author`), pas les routes HTTP. Ils sont rangés ici car ils parlent de leçons. |
@@ -59,6 +59,7 @@ Deux règles importantes :
 | [gamification.ts](../../../../apps/api/src/lessons/gamification.ts), [gamification.rules.ts](../../../../apps/api/src/lessons/gamification.rules.ts), route `GET achievements` | #95 / #180 | XP, rang, défi, succès. Ajoutés ensuite dans `today` (`xp`, `challenge`, `earnedToday`). |
 | [attempts.controller.ts](../../../../apps/api/src/lessons/attempts.controller.ts) | ninisse (#145) | Le lecteur de leçon (tentatives), sous le même préfixe `courses/:lang`. |
 | Champ `ready` et option `readyOnly` | bastian-schnitzler (#84) | Une leçon pas encore prête est listée mais jamais proposée. |
+| [discussion.controller.ts](../../../../apps/api/src/lessons/discussion.controller.ts), `discussion.service.ts` | luca-mattei (#201) | Le tuteur des leçons (questions au LLM avec `streamText`), sous le même préfixe `courses/:lang`. |
 
 ### Diagramme des fichiers et de leurs dépendances
 
@@ -119,7 +120,7 @@ Le préfixe global est `api` (posé dans [app.setup.ts](../../../../apps/api/src
 | 401 | `"auth.sessionRequired"` | Pas de session (le `AuthGuard` global refuse). |
 | 400 | `["course.unknownLanguage"]` | `:lang` n'est pas `en`/`fr`/`de` (le pipe `LangParam` refuse). C'est un **tableau**, car le pipe renvoie toujours une liste de codes. |
 | 404 | `"course.notFound"` | L'utilisateur n'a pas de cours dans cette langue. |
-| 429 | `"server.rateLimited"` | Plus de 100 requêtes par minute sur cette route pour ce compte (voir [../throttler/README.md](../throttler/README.md)). |
+| 429 | `"server.rateLimited"` | Plus de 100 requêtes par minute sur cette route pour ce compte (le défaut de `RATE_LIMIT_PER_MINUTE`, voir [../throttler/README.md](../throttler/README.md)). |
 
 ### `GET /api/courses/:lang/today`
 
@@ -469,4 +470,4 @@ R : Il lie une URL à une méthode, récupère l'utilisateur (`@CurrentUser`), l
 R : Pour garantir que le front reçoit exactement la forme promise. Une carte invalide = donnée corrompue = 500 visible dans les logs, plutôt qu'une réponse fausse cachée.
 
 **Q : Qu'est-ce que tu n'as pas écrit dans ce dossier ?**
-R : Les règles de la feuille de route (`roadmap.rules.ts`), la fin de leçon et l'objectif (`goal.ts`, `applyFinish`, #141), la gamification (#95) et les tentatives (`attempts.*`, #145).
+R : Les règles de la feuille de route (`roadmap.rules.ts`), la fin de leçon et l'objectif (`goal.ts`, `applyFinish`, #141), la gamification (#95), les tentatives (`attempts.*`, #145) et le tuteur (`discussion.*`, #201).

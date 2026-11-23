@@ -145,7 +145,7 @@ checked: a wrong model id shows as `http_error` on the first call. `compose.yml`
 
 | Variable | Default | Meaning |
 | --- | --- | --- |
-| `LLM_PROVIDER` | `fixture` locally; none on a server | `gemini`: the placement bank restocks a cell that runs low, and the lesson discussion answers. `fixture`: no network, no question written, the tutor gives one canned answer; what CI runs. `disabled`: no LLM at all, every discussion message ends with `llm.disabled` |
+| `LLM_PROVIDER` | `fixture` locally; on a server none in `compose.deploy.yml`, `fixture` in the template | `gemini`: the placement bank restocks a cell that runs low, and the lesson discussion answers. `fixture`: no network, no question written, the tutor gives one canned answer; what CI runs. `disabled`: no LLM at all, every discussion message ends with `llm.disabled` |
 | `LLM_API_KEY` | empty | The Gemini key, sent in the `x-goog-api-key` header. Required with `gemini` |
 | `LLM_MODEL` | empty = `gemini-3.6-flash` | The Gemini model id. Ignored by the other providers |
 | `LLM_DISCUSSION_USER_PER_MINUTE` | 2 | Discussion messages per learner per minute |

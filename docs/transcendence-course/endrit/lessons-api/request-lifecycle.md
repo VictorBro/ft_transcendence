@@ -111,7 +111,7 @@ flowchart TD
 
 Les deux guards sont globaux (`APP_GUARD`). Nest les exécute dans l'ordre où il les enregistre. Il scanne d'abord le module racine (`AppModule`, où est déclaré `IdentityThrottlerGuard`), puis les modules importés (`AuthModule`, où est déclaré `AuthGuard`). Donc **le throttler passe avant l'authentification**.
 
-Conséquence : un anonyme qui inonde une route privée est compté sur son adresse IP et reçoit `429` après 100 requêtes, avant même le `401`.
+Conséquence : un anonyme qui inonde une route privée est compté sur son adresse IP et reçoit `429` après 100 requêtes (la limite par défaut), avant même le `401`.
 
 > Point à vérifier : cet ordre est déduit du fonctionnement de Nest (`scanner.js`), aucun test du projet ne le fixe explicitement.
 

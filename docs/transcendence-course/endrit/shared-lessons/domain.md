@@ -302,12 +302,12 @@ Personne ne les réécrit : le code les met. Chaque texte existe en `{ en, fr, d
 | `EXERCISE_INSTRUCTIONS` | consigne de chacun des 7 exercices de grammaire | aucun code pour l'instant (le commentaire dit : prévu pour le kit d'auteur) |
 | `FUNCTIONS_COPY` | textes des leçons « fonctions » | aucun code pour l'instant (idem) |
 | `READING_COPY` | une paire par stade de lecture | aucun code pour l'instant (idem) |
+| `examInstruction(lang)` | consigne d'examen qui **nomme la langue du cours**, avec « with its article for nouns » seulement si `hasGender(lang)` | `vocabularyLesson` |
+| `dictationInstruction(lang)` | pareil pour la dictée | `vocabularyLesson` |
 
 Remarque : les fichiers de contenu réels contiennent déjà ces textes (par ex. « Connect each pronoun with its partner. » dans
 `fr-er-verbs-present`), mais je n'ai trouvé aucun code du dépôt qui les y copie depuis `lessonCopy.ts`, et aucun validateur ne vérifie
 qu'une consigne égale ces textes. Point à vérifier si on te pose la question.
-| `examInstruction(lang)` | consigne d'examen qui **nomme la langue du cours**, avec « with its article for nouns » seulement si `hasGender(lang)` | `vocabularyLesson` |
-| `dictationInstruction(lang)` | pareil pour la dictée | `vocabularyLesson` |
 
 ```
 examInstruction('de').en → "Translate each word into German, with its article for nouns."

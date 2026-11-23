@@ -6,9 +6,8 @@ description: Write the six lesson outlines (content/outlines/<lang>-a1.json to -
 # Outline a course language
 
 How the English and German outlines were written, so the next language follows the same
-process. The rules themselves are in `docs/content/lessons.md` (sections 1, 2, 4, 5, 9 and 10). This file
-says how to apply them. If `docs/content/lessons.md` is not on your branch yet, read it from the open docs
-PR: `git show origin/docs/76-lesson-docs:docs/LESSONS.md`.
+process. The rules themselves are in `docs/content/lessons.md` (sections 1, 2, 3, 5, 8 and 9). This file
+says how to apply them.
 
 ## Before starting
 
@@ -26,7 +25,7 @@ PR: `git show origin/docs/76-lesson-docs:docs/LESSONS.md`.
      | functions  | -ing phrase: Asking the way                      | infinitive phrase: Nach dem Weg fragen | infinitive: Se présenter |
      | reading    | Reading a train timetable                        | Einen Fahrplan lesen                   | Lire un SMS              |
    - sources they already trust, if any;
-   - who will read every entry, and the second reader (docs/content/lessons.md section 9).
+   - who will read every entry, and the second reader (docs/content/lessons.md section 8).
 3. **Branch** from main, e.g. `feat/<issue>-<lang>-outlines`.
 
 ## The process
@@ -79,11 +78,11 @@ These are what the reviews kept catching on en and de. The workflow puts them in
   a named slice. Grammar owns structures, vocabulary owns word sets, word formation and idioms,
   functions own communicative tasks, reading owns understanding a kind of text.
 - **Gendered languages:** every noun in a vocabulary intent has its article.
-- **Copyright:** nothing copied from an inventory, word list, course or test (docs/content/lessons.md section 10).
+- **Copyright:** nothing copied from an inventory, word list, course or test (docs/content/lessons.md section 9).
 
 ## Handing over
 
 Do not commit unless asked. The PR description names who read every entry and
 the second reader (both TODO until people have done it), the standard chosen, and the
-judgement calls the reviews left open. An LLM draft is only a draft: docs/content/lessons.md section 9 still
+judgement calls the reviews left open. An LLM draft is only a draft: docs/content/lessons.md section 8 still
 needs the human readers.

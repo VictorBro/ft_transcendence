@@ -198,9 +198,10 @@ Native runner matrix, not QEMU:
 ```yaml
 strategy:
   matrix:
-    include:
-      - { platform: linux/amd64, runner: ubuntu-24.04 }
-      - { platform: linux/arm64, runner: ubuntu-24.04-arm }
+    image: [api, web, tooling, prometheus, alertmanager, grafana]   # abridged
+    platform:
+      - { arch: amd64, name: linux/amd64, runner: ubuntu-24.04 }
+      - { arch: arm64, name: linux/arm64, runner: ubuntu-24.04-arm }
 ```
 
 Each job pushes by digest (`cache-from/to: type=gha`, scoped per arch); a final job merges digests

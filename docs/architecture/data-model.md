@@ -271,7 +271,7 @@ and the metrics. None needs another table.
 
 ## 9. Dropped from the old plan
 
-The first plan of this document (for example `docs/PRODUCT_ARCHITECTURE.md` at commit `207258a`)
+The first plan of this document (for example the old `PRODUCT_ARCHITECTURE.md` in `docs/`, at commit `207258a`)
 listed tables that the Milestone 2 replan (#137) and the dropped modules removed. None of them is in
 the schema or in any migration:
 

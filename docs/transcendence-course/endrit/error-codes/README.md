@@ -45,7 +45,7 @@
 | [apps/web/lib/messages.test.ts](../../../../apps/web/lib/messages.test.ts) | Vérifie que `Errors` contient **exactement** les clés de `ERROR_CODES`, dans les 3 langues. | équipe |
 | [apps/api/test/error-codes.e2e-spec.ts](../../../../apps/api/test/error-codes.e2e-spec.ts) | Test e2e : une requête par source d'erreur, et vérifie que `message` est un code. | moi (#126, en grande partie) |
 
-Où `LangParam` est utilisé : `lessons.controller.ts`, `attempts.controller.ts`, `courses.controller.ts`. (`UserIdParam` : `users.controller.ts`, `friends.controller.ts`.)
+Où `LangParam` est utilisé : `lessons.controller.ts`, `attempts.controller.ts`, `courses.controller.ts`, `discussion.controller.ts`. (`UserIdParam` : `users.controller.ts`, `friends.controller.ts`, `messages.controller.ts`.)
 
 ### Diagramme des fichiers et dépendances
 
@@ -293,7 +293,7 @@ Il démarre la vraie app avec `configureApp(app)` (comme `main.ts`) et ajoute un
 | Route inconnue | 404 | `server.unexpected` |
 | Crash | 500 | `server.unexpected` + `Logger.error` appelé avec `boom` |
 | 6ᵉ login en une minute depuis la même IP | 429 | `server.rateLimited` |
-| 11ᵉ inscription en une minute depuis la même IP | 429 | `server.rateLimited` |
+| 21ᵉ inscription en une minute depuis la même IP | 429 | `server.rateLimited` |
 
 Astuce du test : chaque cas utilise sa propre adresse `X-Forwarded-For` (`198.51.100.x`, plage réservée à la documentation) pour ne pas consommer le quota des autres cas.
 

@@ -54,7 +54,7 @@ the HTML pages below can be read there without cloning the repository.
 | [operations/deployment.md](operations/deployment.md)   | The Oracle Cloud server, DNS, the `.env`, deploying and redeploying, automatic deploys, memory, monitoring on the server, and running behind another reverse proxy |
 | [operations/monitoring.md](operations/monitoring.md)   | Prometheus, Grafana, the dashboards, the alerts and every metric                                                                                                   |
 | [operations/versions.md](operations/versions.md)       | What has to move together, what is held back, and when to look again                                                                                               |
-| [operations/development.md](operations/development.md) | The shell shortcuts of the devcontainer                                                                                                                            |
+| [operations/development.md](operations/development.md) | The shell shortcuts of the devcontainer, and the monitoring stack in development                                                                                   |
 
 ### content/
 

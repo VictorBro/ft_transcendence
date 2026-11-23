@@ -55,7 +55,7 @@ Extrait de `apps/api/prisma/schema.prisma` :
 
 ```prisma
 model QuestionBank {
-  id         String           @id @default(uuid())
+  id         String           @id @default(uuid()) @db.Uuid
   sourceId   String?          @unique
   lang       Language
   level      Level
@@ -635,7 +635,7 @@ Deux fonctions du fichier, hors de la classe, non exportées.
   - Un `filled` qui n'a rien ajouté (`inserted === 0`) est compté `empty` : le tableau de bord distingue ainsi un vrai remplissage d'un appel au LLM qui n'a rien apporté. Le résultat renvoyé, lui, reste `filled`.
   - `stocked` n'est jamais compté : il arrive à chaque question piochée. Le type du paramètre le dit : `RestockOutcome & { status: RestockStatus }` n'accepte que les statuts de `RESTOCK_STATUSES` (dans `src/metrics/metrics.ts`), où `stocked` n'est pas.
 - `failureReason` dit pourquoi un restock a échoué :
-  - `llm_disabled` : la `LlmError` du `FixtureProvider` (raison `disabled`), qui échoue à chaque restock **exprès**. L'alerte sur les échecs de restock l'ignore, sinon elle sonnerait sans arrêt partout où tourne la fixture, le défaut, chez les évaluateurs aussi.
+  - `llm_disabled` : la `LlmError` du `FixtureProvider` ou du `DisabledProvider` (raison `disabled`), qui échouent à chaque restock **exprès**. L'alerte sur les échecs de restock l'ignore, sinon elle sonnerait sans arrêt partout où tourne la fixture, le défaut, chez les évaluateurs aussi.
   - `llm` : toute autre `LlmError`, une vraie panne du LLM.
   - `other` : une erreur qui n'est pas une `LlmError` (la base de données, un bug).
 
@@ -720,7 +720,7 @@ Situation : Léa passe le placement en français, elle est au niveau B1. Il ne l
 
 Variantes :
 
-- Sans clé API (`LLM_PROVIDER=fixture`) : à l'étape 4, `FixtureProvider` lance une `LlmError` **non** retryable, de raison `disabled` → pas de 2e essai → `fill` attrape → `failed` + pause 10 min, compté dans les métriques avec la raison `llm_disabled` (6.7). Léa et Tom continuent avec les questions existantes, puis avec les plus anciennes déjà vues.
+- Sans vrai LLM (`LLM_PROVIDER=fixture`, le défaut, ou `disabled`) : à l'étape 4, `FixtureProvider` (ou `DisabledProvider`) lance une `LlmError` **non** retryable, de raison `disabled` → pas de 2e essai → `fill` attrape → `failed` + pause 10 min, compté dans les métriques avec la raison `llm_disabled` (6.7). Léa et Tom continuent avec les questions existantes, puis avec les plus anciennes déjà vues.
 - Gemini renvoie `429` deux fois : retryable, 2e essai, nouvel échec → `failed` + pause 10 min.
 - Les 13 questions sont toutes des doublons : `count = 0` → `filled` avec `inserted: 0` + pause 10 min.
 
@@ -795,7 +795,8 @@ Le nom de chaque test dit ce qu'il vérifie. C'est une bonne façon de relire le
 - pause de 10 minutes après un lot sans rien de neuf, mais pas après un lot qui a ajouté quelque chose ;
 - réessaie avec la même requête, et loggue pourquoi ;
 - une panne de la base devient `failed`, jamais un rejet ;
-- sans vrai LLM (fixture) : rien n'est enregistré, et la cellule part en pause.
+- sans vrai LLM (fixture) : rien n'est enregistré, et la cellule part en pause ;
+- métriques : chaque restock est compté par statut, jamais un tirage qui n'en demandait pas ; un lot sans rien de neuf compte `empty`, pas `filled` ; une panne de la base compte `other`.
 
 Pour les lancer :
 

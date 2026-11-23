@@ -28,14 +28,29 @@ and user experience) words it like this:
 > substantial. Focus on quality over quantity—three well-implemented features are better than six
 > poorly done ones.
 
-**This module without a game.** It is in the gaming chapter, and our product is a language-learning
-app, not a game. In the PDF, the Tournament, Game customization and Spectator modules around it
-each end with "This module requires you to have implemented at least one game". The Gamification
-module has no such sentence, and the "requires at least one working game" rule in
-[../subject/summary.md](../subject/summary.md) does not list it. Its own words, "reward users for
-their actions", fit any app. So we claim it, and the "user actions" are finishing lessons and
-reaching the daily goal. This is our reading of the subject. The team has written down that it must
-be confirmed with staff before the defence
+**This module without a game.** It is in the gaming chapter (IV.6), and our product is a
+language-learning app, not a game. The subject itself suggests it for apps like ours. In
+chapter V.6, "Specialized Projects", it lists:
+
+> Language Learning Platform: Lessons, exercises, progress tracking, and peer practice.
+>
+> - Suggested modules: User interaction, Gamification, Multiple languages, Voice integration,
+>   Analytics dashboard
+
+It also suggests Gamification for two other apps that are not games: the "Fitness Tracker" (V.5)
+and the "Forum Platform" (V.3).
+
+The subject's rule on dependencies does not list it. In chapter IV, "Important - Module
+Dependencies and Evaluation", it says:
+
+> Gaming modules (AI Opponent, Tournament, Game customization, Spectator mode, Multiplayer 3+,
+> Add another game) require that at least one game be implemented first.
+
+And in the PDF, the Tournament, Game customization and Spectator modules around it each end with
+"This module requires you to have implemented at least one game". The Gamification module has no
+such sentence. Its own words, "reward users for their actions", fit any app. So we claim it, and
+the "user actions" are finishing lessons and reaching the daily goal. This is our reading of the
+subject. The team has written down that it must be confirmed with staff before the defence
 ([README.md](README.md#gamification-outside-a-game), "Gamification outside a game").
 
 ## How we meet it

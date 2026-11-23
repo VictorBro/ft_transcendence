@@ -6,7 +6,7 @@
 
 ## 1. À quoi ça sert
 
-Le **rate limiting** (limitation de débit) empêche un même appelant d'envoyer trop de requêtes. Chez nous : **100 requêtes par minute et par route** pour un appelant, et moins sur les routes sensibles (login : 5, inscription : 10).
+Le **rate limiting** (limitation de débit) empêche un même appelant d'envoyer trop de requêtes. Chez nous : **100 requêtes par minute et par route** pour un appelant, et moins sur les routes sensibles (login : 5, inscription : 20). Ce sont les valeurs par défaut de [rate-limits.ts](../../../../apps/api/src/throttler/rate-limits.ts) ; le `.env` peut les changer (`RATE_LIMIT_PER_MINUTE`, `LOGIN_LIMIT_PER_MINUTE`, `SIGNUP_LIMIT_PER_MINUTE`).
 
 La vraie question est : **qui est « un appelant » ?**
 
@@ -45,9 +45,10 @@ La vraie question est : **qui est « un appelant » ?**
 | [identity-throttler.guard.spec.ts](../../../../apps/api/src/throttler/identity-throttler.guard.spec.ts) | Tests unitaires : 5 sur `getTracker`, 7 sur `canActivate`, avec de vrais décorateurs et un vrai `Reflector`. | moi (#20) |
 | [throttle-by-ip.decorator.ts](../../../../apps/api/src/throttler/throttle-by-ip.decorator.ts) | `@ThrottleByIp(limit, ttl)` : pose une limite **et** la métadonnée `throttle:by-ip`. | VictorBro (#21) |
 | [throttler-storage.spec.ts](../../../../apps/api/src/throttler/throttler-storage.spec.ts) | Test du stockage des compteurs. | bastian-schnitzler (#192) |
-| [app.module.ts](../../../../apps/api/src/app.module.ts) | `ThrottlerModule.forRoot({ throttlers: [{ ttl: 60_000, limit: 100 }], errorMessage: 'server.rateLimited' })` + enregistrement global du guard. | équipe (#20, #126) |
+| [rate-limits.ts](../../../../apps/api/src/throttler/rate-limits.ts) | `RATE_LIMITS` : `perAccount` (100), `signup` (20), `login` (5), lus une fois dans le `.env` au démarrage. Une valeur qui n'est pas un entier positif arrête l'API. | VictorBro (#198) |
+| [app.module.ts](../../../../apps/api/src/app.module.ts) | `ThrottlerModule.forRoot({ throttlers: [{ ttl: 60_000, limit: RATE_LIMITS.perAccount }], errorMessage: 'server.rateLimited' })` + enregistrement global du guard. | équipe (#20, #126, #198) |
 | [app.setup.ts](../../../../apps/api/src/app.setup.ts) | `set('trust proxy', 1)` : sans ça, `req.ip` serait l'adresse de Caddy. | équipe |
-| [auth.controller.ts](../../../../apps/api/src/auth/auth.controller.ts) | Utilise `@ThrottleByIp` : `signup` (10), `login` (5), `2fa/verify` (5), `2fa/enable` (5), `DELETE 2fa` (5). | équipe |
+| [auth.controller.ts](../../../../apps/api/src/auth/auth.controller.ts) | Utilise `@ThrottleByIp` : `signup` (`RATE_LIMITS.signup`, 20), et `RATE_LIMITS.login` (5) sur `login`, `2fa/verify`, `2fa/enable` et `DELETE 2fa`. | équipe |
 
 ### Diagramme des fichiers et dépendances
 
@@ -65,7 +66,7 @@ flowchart LR
   GUARD -->|"lit la clé THROTTLE_BY_IP"| DECO
   MOD -->|"enregistre en global"| GUARD
   MOD --> LIB
-  AUTHC -->|"@ThrottleByIp(5 ou 10)"| DECO
+  AUTHC -->|"@ThrottleByIp(5 ou 20)"| DECO
   DECO -->|"@Throttle"| LIB
   SETUP -.->|"req.ip et req.session"| GUARD
   SPEC --> GUARD
@@ -234,7 +235,7 @@ Ils utilisent de **vrais** décorateurs (`@ThrottleByIp`, `@Throttle`) sur une c
 | route `@Throttle` seul → par compte | choisir l'IP est explicite |
 | route sans décorateur → limite 100 | la limite globale s'applique |
 
-Les tests e2e de [error-codes.e2e-spec.ts](../../../../apps/api/test/error-codes.e2e-spec.ts) vérifient aussi le vrai 429 : 6ᵉ login et 11ᵉ inscription dans la minute depuis la même adresse.
+Les tests e2e de [error-codes.e2e-spec.ts](../../../../apps/api/test/error-codes.e2e-spec.ts) vérifient aussi le vrai 429 : 6ᵉ login et 21ᵉ inscription dans la minute depuis la même adresse.
 
 ## 7. Questions possibles à l'oral
 

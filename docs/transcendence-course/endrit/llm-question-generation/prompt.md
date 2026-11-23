@@ -149,7 +149,7 @@ type `LlmPurpose`.
       }
     }
   ],
-  "usageMetadata": { "promptTokenCount": 5200, "candidatesTokenCount": 1400, "totalTokenCount": 6600 }
+  "usageMetadata": { "promptTokenCount": 5200, "candidatesTokenCount": 1400, "thoughtsTokenCount": 300, "totalTokenCount": 6900 }
 }
 ```
 
@@ -164,7 +164,7 @@ Ce que fait le provider, dans l'ordre (`replyText` puis `parseReply`) :
    - les 13 `topic` sont tous différents (un par topic) ;
    - chaque item a 4 `options` non vides et **toutes différentes** ;
    - `answer` est **dans** `options` (mot pour mot).
-6. Log : `question-batch:grammar on gemini-3.6-flash: 5200 in, 1400 out, 6600 total tokens, 8123 ms`.
+6. Log : `question-batch:grammar on gemini-3.6-flash: 5200 in, 1400 out, 300 thinking, 6900 total tokens, 8123 ms`.
 
 Le schéma n'est **pas strict** : si le modèle ajoute un champ (`"level": "B1"`), il est ignoré au
 lieu de faire échouer le lot. Le niveau et le temps viennent de toute façon du serveur.

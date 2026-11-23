@@ -117,7 +117,8 @@ does not run the same checks twice.
   `prisma migration drift` replays the migrations into a throwaway database and fails if
   they do not match `schema.prisma`.
 - **[`devcontainer.yml`](../../.github/workflows/devcontainer.yml).** Only when
-  `.devcontainer/`, `.nvmrc`, `package.json`, a compose file or `.env.example` changes.
+  `.devcontainer/`, `.nvmrc`, `package.json`, `compose.yml`, `compose.override.yml`,
+  `.env.example` or the workflow itself changes.
   It builds the development image, checks Node and pnpm against the repo's pins, starts
   it as root and as `node`, and runs the host preflight script against a fake rootless
   Docker daemon.
