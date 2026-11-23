@@ -20,13 +20,15 @@ export function LanguageSwitcher() {
   const t = useTranslations('LanguageSwitcher');
 
   return (
-    <label className="flex items-center text-sm text-slate-400">
-      <span className="sr-only sm:not-sr-only sm:mr-2">{t('label')}</span>
+    <label className="flex items-center text-sm text-slate-400 max-sm:in-data-header-menu:justify-between">
+      <span className="sr-only max-sm:in-data-header-menu:not-sr-only sm:not-sr-only sm:mr-2">
+        {t('label')}
+      </span>
       <select
         value={locale}
         // replace, not push: back should not undo a language change.
         onChange={(event) => router.replace(pathname, { locale: event.target.value })}
-        className="cursor-pointer rounded-md border border-slate-800 bg-slate-900 py-1 pr-7 pl-2 text-slate-300 transition-colors hover:text-slate-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+        className="cursor-pointer rounded-md border border-slate-800 bg-slate-900 py-1 pr-7 pl-2 max-sm:in-data-header-menu:w-44 text-slate-300 transition-colors hover:text-slate-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
       >
         {SUPPORTED_LOCALES.map((option) => (
           <option key={option} value={option}>

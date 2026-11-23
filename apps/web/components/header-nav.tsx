@@ -1,16 +1,28 @@
+import { HeaderMenu } from './header-menu';
 import { LanguageSwitcher } from './language-switcher';
 import { SessionNav } from './session-nav';
+import { currentUser } from '@/lib/session';
 
 /**
  * The right of the header, the same in every shell. Passed to Shell as a
  * prop rather than rendered inside it, because SessionNav reads cookies and
  * Shell also serves error.tsx and the 404, which must not.
+ *
+ * Signed in, it folds into HeaderMenu on a phone. A visitor's three items fit
+ * one row, and folding them would hide Sign in.
  */
-export function HeaderNav() {
-  return (
-    <div className="flex min-w-0 flex-wrap items-center gap-x-4 gap-y-2">
+export async function HeaderNav() {
+  const user = await currentUser();
+  const items = (
+    <>
       <LanguageSwitcher />
       <SessionNav />
-    </div>
+    </>
+  );
+
+  return user === null ? (
+    <div className="flex min-w-0 flex-wrap items-center gap-x-4 gap-y-2">{items}</div>
+  ) : (
+    <HeaderMenu>{items}</HeaderMenu>
   );
 }

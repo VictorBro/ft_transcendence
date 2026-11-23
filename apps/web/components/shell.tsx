@@ -42,7 +42,7 @@ export function Shell({ brand, nav, fill = false, footer, children }: ShellProps
     <div className={`flex min-h-dvh flex-col ${fill ? 'lg:h-dvh' : ''}`}>
       <header className="border-b border-slate-800">
         <div
-          className={`${CONTAINER} flex flex-wrap items-baseline justify-between gap-x-4 gap-y-3 py-5`}
+          className={`${CONTAINER} flex flex-wrap items-baseline justify-between gap-x-4 gap-y-3 py-5 max-sm:items-center`}
         >
           {brand}
           {nav}

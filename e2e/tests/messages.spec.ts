@@ -31,6 +31,9 @@ const unique = (label: string) => `${label} ${crypto.randomUUID()}`;
 /** The account menu's link, named with its count while there is one. */
 const messagesLink = (page: Page, name = 'Messages', nav = 'Account') =>
   page.getByRole('navigation', { name: nav }).getByRole('link', { name });
+/** On a phone the account links fold behind this button, which carries the count. */
+const menuButton = (page: Page, name = 'Menu') =>
+  page.getByRole('button', { name: new RegExp(`^${name}`) });
 const thread = (page: Page, partner: string) => page.getByRole('log', { name: partner });
 const item = (scope: Locator, text: string) =>
   scope.getByRole('listitem').filter({ hasText: text });
@@ -230,8 +233,8 @@ test('a long thread scrolls in its own pane on a desktop, and the screens fit a 
 /**
  * The widest header there is: German, the longest name, both courses in the
  * switcher (as layout.spec.ts measures it), and the count on Messages. The
- * switcher is on the course pages only, so it is measured there, then Messages
- * is reached through its link.
+ * switcher is on the course pages only, so it is measured there, with the
+ * account menu closed and open, then Messages is reached through its link.
  */
 test('in German, the header fits a phone with a count, which the conversation clears', async ({
   onboarded: reader,
@@ -252,10 +255,15 @@ test('in German, the header fits a phone with a count, which the conversation cl
   const text = unique('hallo');
   await send(writer, text, 'Nachricht schreiben');
 
+  // Closed, the menu button shows the count; open, the Messages link does.
+  const menu = menuButton(reader, 'Menü');
+  await expect(menu).toHaveAccessibleName('Menü 1 ungelesene Nachricht');
+  await expectFitsTheScreen(reader, `/de/learn/${ONBOARDED_COURSE.lang}`);
+  await menu.click();
   await expect(messagesLink(reader, 'Nachrichten', 'Konto')).toHaveAccessibleName(
     'Nachrichten 1 ungelesene Nachricht',
   );
-  await expectFitsTheScreen(reader, `/de/learn/${ONBOARDED_COURSE.lang}`);
+  await expectFitsTheScreen(reader, `/de/learn/${ONBOARDED_COURSE.lang} (menu open)`);
 
   await messagesLink(reader, 'Nachrichten', 'Konto').click();
   await expect(reader).toHaveURL(/\/de\/chat$/);
@@ -267,7 +275,8 @@ test('in German, the header fits a phone with a count, which the conversation cl
     .click();
   await expect(item(thread(reader, account.displayName), text)).toBeVisible();
   // The count was on screen until this page opened, so its going is the read.
-  await expect(messagesLink(reader, 'Nachrichten', 'Konto')).toHaveAccessibleName('Nachrichten');
+  // Following the link closed the menu, so the count is gone from its button.
+  await expect(menu).toHaveAccessibleName('Menü');
   await expect.poll(() => unread(reader)).toBe(0);
 
   await expectSilent([reader, writer], violations);

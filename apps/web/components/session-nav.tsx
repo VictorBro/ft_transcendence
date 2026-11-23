@@ -40,11 +40,11 @@ export async function SessionNav() {
       <ConnectionStatus />
       <nav
         aria-label={t('accountNav')}
-        className="flex min-w-0 flex-wrap items-center gap-x-4 gap-y-2 text-sm"
+        className="flex min-w-0 flex-wrap items-center gap-x-4 gap-y-2 text-sm max-sm:flex-col max-sm:items-start max-sm:gap-y-1"
       >
         <Link
           href="/profile"
-          className="flex min-w-0 items-center gap-4 underline underline-offset-4"
+          className="flex min-w-0 items-center gap-4 underline underline-offset-4 max-sm:py-2"
         >
           <Avatar src={user.avatarUrl} name={user.displayName} size={24} />
           {/* The name where there is room for it. A display name may be 32
@@ -55,14 +55,14 @@ export async function SessionNav() {
           <span className="truncate max-sm:hidden">{user.displayName}</span>
           <span className="sm:hidden">{t('profile')}</span>
         </Link>
-        <Link href="/friends" className="shrink-0 underline underline-offset-4">
+        <Link href="/friends" className="shrink-0 underline underline-offset-4 max-sm:py-2">
           {friends('title')}
         </Link>
         {/* The badge is pinned to the link's corner, like the dot on an avatar,
             so a count coming or going never reflows the header. */}
-        <Link href="/chat" className="relative shrink-0 underline underline-offset-4">
+        <Link href="/chat" className="relative shrink-0 underline underline-offset-4 max-sm:py-2">
           {messages('title')}
-          <span className="absolute -top-3 -right-3 flex">
+          <span className="absolute -top-3 -right-3 flex max-sm:top-0">
             <UnreadTotalBadge />
           </span>
         </Link>

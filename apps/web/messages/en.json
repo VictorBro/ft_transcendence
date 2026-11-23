@@ -3,7 +3,8 @@
     "accountNav": "Account",
     "signIn": "Sign in",
     "createAccount": "Create account",
-    "profile": "Profile"
+    "profile": "Profile",
+    "menu": "Menu"
   },
   "LanguageSwitcher": {
     "label": "Language",
