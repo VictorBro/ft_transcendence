@@ -125,6 +125,43 @@ describe('two factor (e2e)', () => {
     await replay.post('/api/auth/2fa/verify').send({ code }).expect(401);
   });
 
+  /** A full login, password then code, from a fresh address. */
+  const signedIn = async () => {
+    const agent = agentFrom();
+    await agent.post('/api/auth/login').send({ email, password }).expect(202);
+    await agent.post('/api/auth/2fa/verify').send({ code: codeNow() }).expect(200);
+    return agent;
+  };
+
+  // #216: a session alone could turn the factor off, or replace it and its
+  // recovery codes with the attacker's, and lock the owner out.
+  it('refuses setup while 2FA is on, and the factor stays on', async () => {
+    const agent = await signedIn();
+
+    const setup = await agent.post('/api/auth/2fa/setup').expect(409);
+    expect(setup.body.message).toBe('twoFactor.alreadyEnabled');
+    expect(setup.body).not.toHaveProperty('secret');
+
+    const status = await agent.get('/api/auth/2fa').expect(200);
+    expect(status.body).toMatchObject({ enabled: true, enrolmentPending: false });
+
+    // The old authenticator still signs in.
+    await signedIn();
+  });
+
+  it('refuses enable while 2FA is on, and the recovery codes still work', async () => {
+    const agent = await signedIn();
+
+    const enable = await agent.post('/api/auth/2fa/enable').send({ code: codeNow() }).expect(409);
+    expect(enable.body.message).toBe('twoFactor.alreadyEnabled');
+    expect(enable.body).not.toHaveProperty('recoveryCodes');
+
+    // recoveryCodes[0] was spent above; the next one of the same set still works.
+    const login = agentFrom();
+    await login.post('/api/auth/login').send({ email, password }).expect(202);
+    await login.post('/api/auth/2fa/verify').send({ code: recoveryCodes[1] }).expect(200);
+  });
+
   it('needs the password to disable, then logs in with one factor again', async () => {
     const agent = agentFrom();
     await agent.post('/api/auth/login').send({ email, password }).expect(202);
@@ -136,5 +173,21 @@ describe('two factor (e2e)', () => {
     const plain = agentFrom();
     await plain.post('/api/auth/login').send({ email, password }).expect(200);
     await plain.get('/api/auth/me').expect(200);
+  });
+
+  // The way to change authenticator: off with the password, then set up again.
+  it('sets up a new authenticator once 2FA was turned off', async () => {
+    const agent = agentFrom();
+    await agent.post('/api/auth/login').send({ email, password }).expect(200);
+
+    const setup = await agent.post('/api/auth/2fa/setup').expect(200);
+    expect(setup.body.secret).not.toBe(secret);
+    secret = setup.body.secret;
+
+    const enabled = await agent.post('/api/auth/2fa/enable').send({ code: codeNow() }).expect(200);
+    expect(enabled.body.recoveryCodes).toHaveLength(10);
+
+    const status = await agent.get('/api/auth/2fa').expect(200);
+    expect(status.body).toMatchObject({ enabled: true, recoveryCodesRemaining: 10 });
   });
 });

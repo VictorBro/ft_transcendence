@@ -1,6 +1,11 @@
 import { createHash, randomBytes } from 'node:crypto';
 
-import { BadRequestException, Injectable, UnauthorizedException } from '@nestjs/common';
+import {
+  BadRequestException,
+  ConflictException,
+  Injectable,
+  UnauthorizedException,
+} from '@nestjs/common';
 import {
   RECOVERY_CODE_COUNT,
   RECOVERY_CODE_GROUPS,
@@ -70,13 +75,20 @@ export class TwoFactorService {
   /**
    * Writes a secret without enabling anything. The account keeps working with
    * one factor until a code proves the authenticator was actually configured.
+   *
+   * Refused once 2FA is on (#216): a new secret would turn the factor off, with
+   * a session alone and not the password DELETE /2fa asks for. The check is in
+   * the write's WHERE, so no request can slip in between a read and the write.
    */
   async beginEnrolment(userId: string, email: string) {
     const secret = new OTPAuth.Secret({ size: 20 }).base32;
-    await this.prisma.user.update({
-      where: { id: userId },
-      data: { totpSecret: secret, totpEnabledAt: null },
+    const { count } = await this.prisma.user.updateMany({
+      where: { id: userId, totpEnabledAt: null },
+      data: { totpSecret: secret },
     });
+    if (count === 0) {
+      throw new ConflictException('twoFactor.alreadyEnabled');
+    }
 
     const otpauthUri = totpFor(secret, email).toString();
     return { secret, otpauthUri, qrDataUrl: this.qrDataUrl(otpauthUri) };
@@ -110,12 +122,18 @@ export class TwoFactorService {
    * Proving the authenticator works before it becomes required, so a mistyped
    * secret cannot lock the account out. Returns the recovery codes, which the
    * caller shows exactly once.
+   *
+   * Refused once 2FA is on (#216), so a session alone cannot replace the
+   * owner's recovery codes.
    */
   async confirmEnrolment(userId: string, code: string): Promise<string[]> {
     const user = await this.prisma.user.findUnique({
       where: { id: userId },
-      select: { email: true, totpSecret: true },
+      select: { email: true, totpSecret: true, totpEnabledAt: true },
     });
+    if (user?.totpEnabledAt != null) {
+      throw new ConflictException('twoFactor.alreadyEnabled');
+    }
     if (user?.totpSecret == null) {
       throw new BadRequestException('twoFactor.setupFirst');
     }
@@ -123,7 +141,7 @@ export class TwoFactorService {
       throw new UnauthorizedException('twoFactor.invalidCode');
     }
 
-    await this.enable(userId);
+    await this.enable(userId, user.totpSecret);
     return this.issueRecoveryCodes(userId);
   }
 
@@ -174,11 +192,27 @@ export class TwoFactorService {
     return this.prisma.recoveryCode.count({ where: { userId, usedAt: null } });
   }
 
-  async enable(userId: string): Promise<void> {
-    await this.prisma.user.update({
-      where: { id: userId },
+  /**
+   * Turns on the secret the code was checked against, and only that one. A
+   * setup between the check and this write stores another secret, and a second
+   * confirmation may have won the race: either way nothing is turned on, and
+   * no second set of recovery codes is issued.
+   */
+  private async enable(userId: string, checkedSecret: string): Promise<void> {
+    const { count } = await this.prisma.user.updateMany({
+      where: { id: userId, totpSecret: checkedSecret, totpEnabledAt: null },
       data: { totpEnabledAt: new Date() },
     });
+    if (count > 0) {
+      return;
+    }
+    const now = await this.prisma.user.findUnique({
+      where: { id: userId },
+      select: { totpEnabledAt: true },
+    });
+    throw now?.totpEnabledAt != null
+      ? new ConflictException('twoFactor.alreadyEnabled')
+      : new BadRequestException('twoFactor.setupFirst');
   }
 
   /** Clearing the secret as well, so re-enabling always starts a fresh enrolment. */

@@ -216,7 +216,8 @@
       "recoveryCodeFormat": "Cela ne ressemble pas à un code de récupération",
       "secondFactorFormat": "Saisis un code à six chiffres de ton application, ou l'un de tes codes de récupération",
       "setupFirst": "Commence d'abord la configuration à deux facteurs",
-      "invalidCode": "Ce code n'est pas valide"
+      "invalidCode": "Ce code n'est pas valide",
+      "alreadyEnabled": "L'authentification à deux facteurs est déjà activée. Pour changer d'application, désactive-la d'abord."
     },
     "course": {
       "alreadyStarted": "Tu as déjà commencé un cours dans cette langue",
@@ -358,7 +359,10 @@
     "turnOff": "Désactiver",
     "disabledStatus": "L'authentification à deux facteurs est désactivée.",
     "working": "En cours…",
-    "setUp": "Configurer"
+    "setUp": "Configurer",
+    "loading": "Vérification de l'authentification à deux facteurs…",
+    "statusUnavailable": "Impossible de vérifier l'authentification à deux facteurs.",
+    "retry": "Réessayer"
   },
   "Placement": {
     "title": "Test de positionnement",
