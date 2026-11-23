@@ -8,6 +8,7 @@ import {
   SECOND_COURSE,
   test,
 } from '../support/session';
+import { openMenu } from '../support/menu';
 
 /**
  * The course home only renders a placed course, so everything here runs as
@@ -61,6 +62,7 @@ test.describe('course home', () => {
     await expect(onboarded.getByRole('combobox', { name: 'Daily goal' })).toHaveValue(
       String(ONBOARDED_COURSE.dailyGoal),
     );
+    await openMenu(onboarded);
     await expect(onboarded.getByRole('combobox', { name: 'Course' })).toHaveValue(
       ONBOARDED_COURSE.lang,
     );
@@ -195,11 +197,13 @@ test.describe('course home', () => {
       await second.goto('/en/learn/de');
 
       await expect(second.getByRole('heading', { name: 'German' })).toBeVisible();
+      await openMenu(second);
       await expect(second.getByRole('combobox', { name: 'Course' })).toHaveValue('de');
 
       // The first tab is untouched by the second opening a different course.
       await onboarded.reload();
       await expect(onboarded.getByRole('heading', { name: 'French' })).toBeVisible();
+      await openMenu(onboarded);
       await expect(onboarded.getByRole('combobox', { name: 'Course' })).toHaveValue('fr');
     } finally {
       await second.close();
@@ -209,6 +213,8 @@ test.describe('course home', () => {
   test('the switcher moves between courses', async ({ onboarded }) => {
     await placeCourse(onboarded, SECOND_COURSE);
     await onboarded.goto('/en/learn/fr');
+
+    await openMenu(onboarded);
 
     await onboarded.getByRole('combobox', { name: 'Course' }).selectOption('de');
 

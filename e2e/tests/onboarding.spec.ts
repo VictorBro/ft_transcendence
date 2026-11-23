@@ -1,6 +1,7 @@
 import type { Page } from '@playwright/test';
 
 import { enrol, expect, placeCourse, test } from '../support/session';
+import { openMenu } from '../support/menu';
 
 // `freshLearner` wherever a test starts a course: the shared `signedIn` account
 // is every other spec's learner with none, so tests that only look use it.
@@ -173,6 +174,8 @@ test.describe('onboarding', () => {
   // The onboarded account studies French, placed, and never English.
   test('the switcher can add a language', async ({ onboarded }) => {
     await onboarded.goto('/en/learn/fr');
+
+    await openMenu(onboarded);
 
     await onboarded.getByRole('combobox', { name: 'Course' }).selectOption('__add');
 

@@ -3,7 +3,7 @@
     "accountNav": "Compte",
     "signIn": "Se connecter",
     "createAccount": "Créer un compte",
-    "profile": "Profil"
+    "menu": "Menu"
   },
   "LanguageSwitcher": {
     "label": "Langue",
@@ -44,6 +44,8 @@
     "minutesPerDay": "{minutes} min",
     "takePlacement": "Passer le test de positionnement",
     "thisCourse": "Ce cours",
+    "rankTitle": "Ton rang",
+    "myCourse": "Mon cours",
     "streakKeep": "{count, plural, one {Série de # jour} other {Série de # jours}}. Atteins ton objectif quotidien pour la garder.",
     "streakToday": "{count, plural, one {Série de # jour} other {Série de # jours}}, aujourd'hui compris.",
     "streakStart": "Atteins ton objectif quotidien pour commencer une série.",
@@ -63,10 +65,10 @@
     "levelComplete": "Tu as terminé le niveau {level} : {attempted} sur {total} tentées, {passed} réussies, {needed, plural, one {# nécessaire} other {# nécessaires}}.",
     "levelCompleteTop": "Tu as terminé le niveau {level}, le plus haut.",
     "startLevel": "Commencer le niveau {level}",
-    "attempted": "Tentées : {attempted} sur {total}",
-    "passed": "Réussies : {passed} sur {total}, {needed, plural, one {# nécessaire} other {# nécessaires}}",
-    "comingSoon": "{count, plural, one {# bientôt disponible} other {# bientôt disponibles}}",
-    "bestStreak": "Meilleure série : {count, plural, one {# jour} other {# jours}}",
+    "attempted": "Tentées : <b>{attempted}</b> sur {total}",
+    "passed": "Réussies : <b>{passed}</b> sur {total}, {needed, plural, one {# nécessaire} other {# nécessaires}}",
+    "comingSoon": "<b>{count}</b> {count, plural, one {bientôt disponible} other {bientôt disponibles}}",
+    "bestStreak": "Meilleure série : <b>{count, plural, one {# jour} other {# jours}}</b>",
     "saveLevel": "Enregistrer",
     "levelSaved": "Niveau enregistré : {level}"
   },

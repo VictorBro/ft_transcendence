@@ -11,6 +11,7 @@ import {
   signUpSlot,
   test,
 } from '../support/session';
+import { openMenu } from '../support/menu';
 
 /**
  * The browser half of authentication. Supertest already proves the API, so what
@@ -42,6 +43,7 @@ test.describe('authentication in the browser', () => {
    * aborts it (NS_BINDING_ABORTED) and WebKit reports it interrupted.
    */
   const signOut = async (page: Page) => {
+    await openMenu(page);
     await page.getByRole('button', { name: 'Sign out' }).click();
     await expect(page).toHaveURL(/\/en$/);
     // The button redirects home whatever logOut() answered, so the URL alone
@@ -74,6 +76,7 @@ test.describe('authentication in the browser', () => {
     // The header is server-rendered, so seeing the name proves the cookie
     // reached NestJS through Next rather than only living in the browser.
     await page.reload();
+    await openMenu(page);
     await expect(page.getByRole('navigation', { name: 'Account' })).toContainText(displayName);
   });
 
@@ -133,6 +136,7 @@ test.describe('authentication in the browser', () => {
     await logIn(page, fields.email);
 
     await expect(page).toHaveURL(/\/en\/onboarding$/);
+    await openMenu(page);
     await expect(page.getByRole('navigation', { name: 'Account' })).toContainText(
       fields.displayName,
     );
@@ -165,6 +169,7 @@ test.describe('authentication in the browser', () => {
 
     await expect(page).toHaveURL(/\/profile$/);
     await expect(page.getByRole('heading', { level: 1, name: renamed })).toBeVisible();
+    await openMenu(page);
     await expect(page.getByRole('navigation', { name: 'Account' })).toContainText(renamed);
   });
 
@@ -249,6 +254,7 @@ test.describe('authentication in the browser', () => {
 
     // The second step lands where the first would have: no course, so onboarding.
     await expect(page).toHaveURL(/\/en\/onboarding$/);
+    await openMenu(page);
     await expect(page.getByRole('navigation', { name: 'Account' })).toContainText(displayName);
   });
 

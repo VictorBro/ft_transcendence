@@ -3,7 +3,7 @@
     "accountNav": "Account",
     "signIn": "Sign in",
     "createAccount": "Create account",
-    "profile": "Profile"
+    "menu": "Menu"
   },
   "LanguageSwitcher": {
     "label": "Language",
@@ -44,6 +44,8 @@
     "minutesPerDay": "{minutes} min",
     "takePlacement": "Take the placement test",
     "thisCourse": "This course",
+    "rankTitle": "Your rank",
+    "myCourse": "My course",
     "streakKeep": "{count, plural, one {# day streak} other {# day streak}}. Reach your daily goal to keep it.",
     "streakToday": "{count, plural, one {# day streak} other {# day streak}}, today included.",
     "streakStart": "Reach your daily goal to start a streak.",
@@ -63,10 +65,10 @@
     "levelComplete": "You finished {level}: {attempted} of {total} attempted, {passed} passed, {needed} needed.",
     "levelCompleteTop": "You finished {level}, the top level.",
     "startLevel": "Start {level}",
-    "attempted": "Attempted {attempted} of {total}",
-    "passed": "Passed {passed} of {total}, {needed} needed",
-    "comingSoon": "{count} coming soon",
-    "bestStreak": "Best streak: {count, plural, one {# day} other {# days}}",
+    "attempted": "Attempted <b>{attempted}</b> of {total}",
+    "passed": "Passed <b>{passed}</b> of {total}, {needed} needed",
+    "comingSoon": "<b>{count}</b> coming soon",
+    "bestStreak": "Best streak: <b>{count, plural, one {# day} other {# days}}</b>",
     "saveLevel": "Save",
     "levelSaved": "Level saved: {level}"
   },

@@ -42,7 +42,7 @@ export function Shell({ brand, nav, fill = false, footer, children }: ShellProps
     <div className={`flex min-h-dvh flex-col ${fill ? 'lg:h-dvh' : ''}`}>
       <header className="border-b border-slate-800">
         <div
-          className={`${CONTAINER} flex flex-wrap items-baseline justify-between gap-x-4 gap-y-3 py-5`}
+          className={`${CONTAINER} relative z-50 flex flex-wrap items-center justify-between gap-x-4 gap-y-3 py-2.5`}
         >
           {brand}
           {nav}
@@ -62,7 +62,7 @@ export function Shell({ brand, nav, fill = false, footer, children }: ShellProps
         scroll, header and footer included.
       */}
       <main
-        className={`${CONTAINER} flex-1 ${fill ? 'flex min-h-0 flex-col pt-8 pb-4' : 'py-8 sm:py-12'}`}
+        className={`${CONTAINER} flex-1 ${fill ? 'flex min-h-0 flex-col pt-5 pb-4' : 'py-8 sm:py-12'}`}
       >
         {children}
       </main>
@@ -81,7 +81,11 @@ export function Wordmark({ href = '/' }: { href?: '/' | '/learn' }) {
   const t = useTranslations('Layout');
 
   return (
-    <Link href={href} className="text-base font-semibold tracking-tight text-slate-100">
+    // Below lg the course page's My course button takes its place.
+    <Link
+      href={href}
+      className="text-base font-semibold tracking-tight text-slate-100 max-lg:[:root:has([data-course-menu-button])_&]:hidden"
+    >
       {t('productName')}
     </Link>
   );

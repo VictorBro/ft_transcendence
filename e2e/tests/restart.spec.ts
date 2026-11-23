@@ -46,7 +46,7 @@ test(
     await back;
     await expect(onboarded.getByText('Reconnecting…')).toBeHidden();
     // A signed-out header would hide the badge too.
-    await expect(onboarded.getByRole('button', { name: 'Sign out' })).toBeVisible();
+    await expect(onboarded.getByRole('button', { name: /^Menu/ })).toBeVisible();
 
     // After the refresh that coming back makes, so only the event can bring the value.
     await settle(onboarded);
