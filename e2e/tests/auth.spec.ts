@@ -231,4 +231,38 @@ test.describe('authentication in the browser', () => {
     await expect(page).toHaveURL(/\/en\/onboarding$/);
     await expect(page.getByRole('navigation', { name: 'Account' })).toContainText(displayName);
   });
+
+  test('checks the turn-off password in the browser before sending it', async ({ page }) => {
+    const fields = identity();
+
+    await signUp(page, fields);
+
+    await page.goto('/en/settings/2fa');
+    await page.getByRole('button', { name: 'Set up' }).click();
+    const secret = (await page.locator('code').innerText()).trim();
+    const totp = new TOTP({
+      issuer: 'ft_transcendence',
+      label: fields.email,
+      algorithm: 'SHA1',
+      digits: 6,
+      period: 30,
+      secret: Secret.fromBase32(secret),
+    });
+    await page.getByLabel('Code from your app').fill(totp.generate());
+    await page.getByRole('button', { name: 'Turn on' }).click();
+    await page.getByRole('button', { name: 'I have saved them' }).click();
+    await expect(page.getByText(/Two factor authentication is on/)).toBeVisible();
+
+    // The same schema as the API, so an empty password is caught without a request.
+    const deletes: string[] = [];
+    page.on('request', (request) => {
+      if (request.method() === 'DELETE' && request.url().endsWith('/api/auth/2fa')) {
+        deletes.push(request.url());
+      }
+    });
+    await page.getByRole('button', { name: 'Turn off' }).click();
+    await expect(page.getByText('Enter your password')).toBeVisible();
+    expect(deletes).toEqual([]);
+    await expect(page.getByText(/Two factor authentication is on/)).toBeVisible();
+  });
 });
