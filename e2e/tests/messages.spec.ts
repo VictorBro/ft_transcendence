@@ -18,6 +18,7 @@ import {
   SECOND_COURSE,
   test,
 } from '../support/session';
+import { openMenu } from '../support/menu';
 
 const PHONE = { width: 360, height: 800 };
 
@@ -31,7 +32,7 @@ const unique = (label: string) => `${label} ${crypto.randomUUID()}`;
 /** The account menu's link, named with its count while there is one. */
 const messagesLink = (page: Page, name = 'Messages', nav = 'Account') =>
   page.getByRole('navigation', { name: nav }).getByRole('link', { name });
-/** On a phone the account links fold behind this button, which carries the count. */
+/** The account links fold behind this button, which carries the count. */
 const menuButton = (page: Page, name = 'Menu') =>
   page.getByRole('button', { name: new RegExp(`^${name}`) });
 const thread = (page: Page, partner: string) => page.getByRole('log', { name: partner });
@@ -93,7 +94,7 @@ test('a message arrives live, is counted, is read by opening the thread, and sta
   await expect(item(thread(writer, account.displayName), first)).toHaveCount(1);
 
   // No reload on this side: the count arrives over the socket.
-  await expect(messagesLink(reader)).toHaveAccessibleName('Messages 1 unread message');
+  await expect(menuButton(reader)).toHaveAccessibleName('Menu 1 unread message');
 
   // A fresh load with the message unread: the thread reads it once it is on screen.
   const reconnected = liveConnection(reader);
@@ -102,7 +103,7 @@ test('a message arrives live, is counted, is read by opening the thread, and sta
   const readerThread = thread(reader, onboardedAccount.displayName);
   await expect(readerThread).toContainText(first);
   await expect.poll(() => unread(reader)).toBe(0);
-  await expect(messagesLink(reader)).toHaveAccessibleName('Messages');
+  await expect(menuButton(reader)).toHaveAccessibleName('Menu');
 
   // Live both ways with the thread open on each side.
   const second = unique('second');
@@ -259,7 +260,7 @@ test('in German, the header fits a phone with a count, which the conversation cl
   const menu = menuButton(reader, 'Menü');
   await expect(menu).toHaveAccessibleName('Menü 1 ungelesene Nachricht');
   await expectFitsTheScreen(reader, `/de/learn/${ONBOARDED_COURSE.lang}`);
-  await menu.click();
+  await openMenu(reader, 'Menü');
   await expect(messagesLink(reader, 'Nachrichten', 'Konto')).toHaveAccessibleName(
     'Nachrichten 1 ungelesene Nachricht',
   );

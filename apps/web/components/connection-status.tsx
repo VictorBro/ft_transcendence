@@ -34,9 +34,10 @@ export function ConnectionStatus() {
   return (
     // aria-live without role="status": announced when the pill appears, and the
     // course page keeps a single status role. Fixed, so the header never reflows.
+    // `visible`, since it sits inside the header menu, which is invisible when closed.
     <div
       aria-live="polite"
-      className="pointer-events-none fixed inset-x-0 bottom-4 z-50 flex justify-center px-4"
+      className="pointer-events-none visible fixed inset-x-0 bottom-4 z-50 flex justify-center px-4"
     >
       {status === 'reconnecting' ? (
         // Opaque, since it floats over the page.

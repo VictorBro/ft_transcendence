@@ -38,11 +38,11 @@ export function GoalPicker({ lang, dailyGoal }: { lang: Language; dailyGoal: Dai
   return (
     <div className="flex flex-col gap-2">
       <label className="flex items-center gap-2 text-sm text-slate-400">
-        <span>{t('dailyGoal')}</span>
+        <span className="flex-1">{t('dailyGoal')}</span>
         <select
           value={value}
           onChange={onChange}
-          className="cursor-pointer rounded-md border border-slate-800 bg-slate-900 py-1 pr-7 pl-2 text-slate-300 transition-colors hover:text-slate-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+          className="w-36 shrink-0 cursor-pointer rounded-md border border-slate-800 bg-slate-900 py-1.5 pr-7 pl-2 text-slate-300 transition-colors hover:text-slate-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
         >
           {DAILY_GOALS.map((goal) => (
             <option key={goal} value={goal}>

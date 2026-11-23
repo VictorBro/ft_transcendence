@@ -96,7 +96,7 @@ export async function ChallengeCard({ challenge, lang }: { challenge: Challenge;
     <section
       aria-labelledby="challenge-heading"
       data-done={challenge.done}
-      className="flex flex-col gap-3 rounded-2xl border border-slate-800 bg-slate-900 p-6"
+      className="flex flex-col gap-2 rounded-2xl border border-slate-800 bg-slate-900 p-5 lg:flex-1 lg:justify-center"
     >
       <h2 id="challenge-heading" className={HEADING}>
         {t('challengeHeading')}

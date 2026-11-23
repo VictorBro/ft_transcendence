@@ -2,6 +2,7 @@ import type { Page, Request } from '@playwright/test';
 
 import { formatViolations, settle, watchConsole } from '../support/console-guard';
 import { expect, ONBOARDED_COURSE, placeCourse, SECOND_COURSE, test } from '../support/session';
+import { openMenu } from '../support/menu';
 
 const home = (locale: string) => `/${locale}/learn/${ONBOARDED_COURSE.lang}`;
 
@@ -37,6 +38,7 @@ test.describe('locale sync', () => {
 
     const violations = watchConsole(page);
     const patched = page.waitForResponse((response) => isLocalePatch(response.request()));
+    await openMenu(page);
     await page.getByRole('combobox', { name: 'Language' }).selectOption('de');
     await expect(page).toHaveURL(home('de'));
     expect((await patched).status()).toBe(200);
@@ -44,7 +46,8 @@ test.describe('locale sync', () => {
 
     // Client-side, so LocaleSync stays mounted with the en the layout gave it:
     // only what it kept from the PATCH stops a second one.
-    const course = page.getByRole('combobox', { name: 'Kurs' });
+    await openMenu(page, 'Menü');
+    const course = page.getByRole('combobox', { name: 'Kurs', includeHidden: true });
     await course.selectOption(SECOND_COURSE.lang);
     // The switcher reads the URL, so this value means the new page is committed.
     await expect(course).toHaveValue(SECOND_COURSE.lang);
@@ -84,6 +87,7 @@ test.describe('locale sync', () => {
 
     // Client-side, so the course shell and LocaleSync stay mounted.
     const retried = page.waitForResponse((response) => isLocalePatch(response.request()));
+    await openMenu(page);
     await page.getByRole('combobox', { name: 'Cours' }).selectOption(SECOND_COURSE.lang);
     expect((await retried).status()).toBe(200);
     expect(await storedLocale(page)).toBe('fr');
@@ -107,7 +111,8 @@ test.describe('locale sync', () => {
     expect((await rejected).status()).toBe(400);
 
     // The same client-side switch that retries after a 500.
-    const course = page.getByRole('combobox', { name: 'Cours' });
+    await openMenu(page);
+    const course = page.getByRole('combobox', { name: 'Cours', includeHidden: true });
     await course.selectOption(SECOND_COURSE.lang);
     await expect(course).toHaveValue(SECOND_COURSE.lang);
     await afterEffects(page);

@@ -1,30 +1,49 @@
 'use client';
 
-import { useId, useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
+import { useEffect, useId, useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
 import { useTranslations } from 'next-intl';
 
 import { usePathname } from '@/i18n/navigation';
+import { useScrollLock } from './scroll-lock';
 import { UnreadTotalBadge } from './unread-badge';
 
 /**
- * The signed-in header's switchers and links, folded behind one button below
- * `sm`. A phone had them wrap into four rows above every page. From `sm` the
- * button is hidden and the panel carries the classes the row always had, so
- * the desktop header is unchanged.
+ * The signed-in header's switchers and links, folded behind one button so the
+ * header is the wordmark and that button on every screen. Open, the panel lies
+ * over the page under the header, right-aligned with the button, and a dark
+ * backdrop covers the page behind it.
  *
- * Returns two siblings rather than a wrapper: below `sm` the button sits on
- * the wordmark's row in Shell's header and the panel takes the full row under
- * it. The unread count rides on the button, so a closed menu still shows it.
+ * Shell's header row is `relative z-50`: the panel is placed against it, and
+ * the backdrop, at -z-10 inside that stacking context, dims the page while the
+ * wordmark and this button stay lit above it.
+ *
+ * Closed, the panel is `invisible` rather than display:none. SessionNav renders
+ * the fixed "Reconnecting…" pill inside it, which opts back in with `visible`.
+ * For the same reason the panel takes no transform or filter: either would make
+ * it the containing block of that fixed pill.
  */
 export function HeaderMenu({ children }: { children: ReactNode }) {
   const t = useTranslations('SessionNav');
   const pathname = usePathname();
   const panelId = useId();
   const button = useRef<HTMLButtonElement>(null);
+  const panel = useRef<HTMLDivElement>(null);
   // Open for the page it was opened on: following a link closes it, since the
   // header stays mounted across a navigation.
   const [openOn, setOpenOn] = useState<string | null>(null);
   const open = openOn === pathname;
+  useScrollLock(open);
+
+  // A click anywhere else, the backdrop included, closes it.
+  useEffect(() => {
+    if (!open) return;
+    function onPointerDown(event: PointerEvent) {
+      const target = event.target as Node;
+      if (!button.current?.contains(target) && !panel.current?.contains(target)) setOpenOn(null);
+    }
+    document.addEventListener('pointerdown', onPointerDown);
+    return () => document.removeEventListener('pointerdown', onPointerDown);
+  }, [open]);
 
   function onKeyDown(event: KeyboardEvent) {
     if (event.key === 'Escape' && open) {
@@ -35,6 +54,11 @@ export function HeaderMenu({ children }: { children: ReactNode }) {
 
   return (
     <>
+      <div
+        aria-hidden
+        className={`fixed inset-0 -z-10 bg-slate-950/75 transition-opacity duration-200 ${open ? 'opacity-100' : 'pointer-events-none opacity-0'}`}
+      />
+
       <button
         ref={button}
         type="button"
@@ -42,7 +66,7 @@ export function HeaderMenu({ children }: { children: ReactNode }) {
         aria-controls={panelId}
         onClick={() => setOpenOn(open ? null : pathname)}
         onKeyDown={onKeyDown}
-        className="relative flex size-10 cursor-pointer items-center justify-center rounded-md border border-slate-800 bg-slate-900 text-slate-300 transition-colors hover:text-slate-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 sm:hidden"
+        className="relative flex size-9 cursor-pointer items-center justify-center rounded-lg border border-slate-800 bg-slate-900 text-slate-300 transition-colors hover:border-slate-700 hover:text-slate-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
       >
         <span className="sr-only">{t('menu')}</span>
         <svg
@@ -62,10 +86,11 @@ export function HeaderMenu({ children }: { children: ReactNode }) {
       </button>
 
       <div
+        ref={panel}
         id={panelId}
         data-header-menu
         onKeyDown={onKeyDown}
-        className={`flex min-w-0 flex-wrap items-center gap-x-4 gap-y-2 max-sm:basis-full max-sm:flex-col max-sm:items-stretch max-sm:gap-y-3 max-sm:border-t max-sm:border-slate-800 max-sm:pt-4 ${open ? '' : 'max-sm:hidden'}`}
+        className={`${open ? '' : 'invisible'} absolute top-full right-4 left-4 mt-2 flex flex-col gap-1 rounded-2xl border border-slate-800 bg-slate-900 p-2 shadow-2xl shadow-black/50 sm:right-6 sm:left-auto sm:w-80`}
       >
         {children}
       </div>

@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 
 import { logOut } from '@/lib/auth-client';
 import { useRouter } from '@/i18n/navigation';
+import { MENU_ROW, MenuIcon } from './menu-icon';
 import { closeSocket } from './tab-socket';
 
 export function LogOutButton() {
@@ -27,12 +28,8 @@ export function LogOutButton() {
   }
 
   return (
-    <button
-      type="button"
-      onClick={() => void onClick()}
-      disabled={pending}
-      className="shrink-0 underline underline-offset-4 disabled:opacity-60 max-sm:py-2"
-    >
+    <button type="button" onClick={() => void onClick()} disabled={pending} className={MENU_ROW}>
+      <MenuIcon name="signOut" />
       {pending ? t('signingOut') : t('signOut')}
     </button>
   );

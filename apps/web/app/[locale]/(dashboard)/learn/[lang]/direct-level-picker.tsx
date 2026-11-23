@@ -41,12 +41,14 @@ export function DirectLevelPicker({ lang, level }: { lang: Language; level: Leve
   return (
     <div className="flex flex-col gap-2">
       <div className="flex flex-wrap items-center gap-2 text-sm text-slate-400">
-        <label htmlFor={selectId}>{t('level')}</label>
+        <label htmlFor={selectId} className="flex-1">
+          {t('level')}
+        </label>
         <select
           id={selectId}
           value={value}
           onChange={(event) => setValue(event.target.value as Level)}
-          className="cursor-pointer rounded-md border border-slate-800 bg-slate-900 py-1 pr-7 pl-2 text-slate-300 transition-colors hover:text-slate-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+          className="w-36 shrink-0 cursor-pointer rounded-md border border-slate-800 bg-slate-900 py-1.5 pr-7 pl-2 text-slate-300 transition-colors hover:text-slate-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
         >
           {LEVELS.map((option) => (
             <option key={option} value={option}>
@@ -59,7 +61,7 @@ export function DirectLevelPicker({ lang, level }: { lang: Language; level: Leve
             type="button"
             onClick={onSave}
             aria-disabled={pending}
-            className="cursor-pointer rounded-md border border-slate-700 px-3 py-1 font-medium text-slate-200 transition-colors hover:bg-slate-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 aria-disabled:opacity-60"
+            className="basis-full cursor-pointer rounded-md border border-slate-700 px-3 py-1.5 font-medium text-slate-200 transition-colors hover:bg-slate-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 aria-disabled:opacity-60"
           >
             {t('saveLevel')}
           </button>

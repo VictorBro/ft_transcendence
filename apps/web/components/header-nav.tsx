@@ -8,8 +8,8 @@ import { currentUser } from '@/lib/session';
  * prop rather than rendered inside it, because SessionNav reads cookies and
  * Shell also serves error.tsx and the 404, which must not.
  *
- * Signed in, it folds into HeaderMenu on a phone. A visitor's three items fit
- * one row, and folding them would hide Sign in.
+ * Signed in, it folds into HeaderMenu. A visitor's three items fit one row,
+ * and folding them would hide Sign in.
  */
 export async function HeaderNav() {
   const user = await currentUser();
