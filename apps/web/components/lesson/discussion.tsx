@@ -13,6 +13,8 @@ import { FormError, PRIMARY_BUTTON, SECONDARY_BUTTON } from '@/components/form';
 import { sendDiscussion } from '@/lib/discussion-client';
 import { useErrorMessage } from '@/lib/error-message';
 
+import { TutorAnswer } from './tutor-answer';
+
 /** One earlier turn: the learner's or the tutor's. */
 type DiscussionTurn = LessonDiscussionInput['history'][number];
 
@@ -200,17 +202,22 @@ export function Discussion({
                 // The failed answer, last of the list: dimmed and trailing off,
                 // so it reads as cut short, not finished, above its error.
                 data-interrupted={n === cut || undefined}
+                // The learner's text as typed; the tutor's in Markdown, its
+                // paragraphs from it: no pre-wrap, or every line doubles.
                 className={
                   turn.role === 'user'
                     ? 'self-end rounded-2xl bg-slate-800 px-4 py-2 whitespace-pre-wrap text-slate-100'
                     : n === cut
-                      ? 'whitespace-pre-wrap text-slate-400'
-                      : 'whitespace-pre-wrap text-slate-200'
+                      ? 'text-slate-400'
+                      : 'text-slate-200'
                 }
               >
                 <span className="sr-only">{turn.role === 'user' ? t('you') : t('tutor')}: </span>
-                {turn.text}
-                {n === cut ? <span aria-hidden="true">…</span> : null}
+                {turn.role === 'user' ? (
+                  turn.text
+                ) : (
+                  <TutorAnswer text={turn.text} cut={n === cut} />
+                )}
               </li>
             ),
           )}
