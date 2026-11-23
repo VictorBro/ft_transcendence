@@ -196,6 +196,8 @@ export class AuthController {
   @ApiOperation({ summary: 'Begin enrolment and return the QR to scan' })
   @ApiOkResponse({ type: TwoFactorSetupDto })
   @ApiUnauthorizedResponse({ description: 'No valid session' })
+  // To change authenticator, turn 2FA off first: that step asks for the password.
+  @ApiConflictResponse({ description: 'Two factor authentication is already on' })
   setUpTwoFactor(@CurrentUser() user: SessionUser): Promise<TwoFactorSetup> {
     return this.twoFactor.beginEnrolment(user.id, user.email);
   }
@@ -208,6 +210,7 @@ export class AuthController {
   @ApiOperation({ summary: 'Confirm enrolment and return the recovery codes' })
   @ApiOkResponse({ type: RecoveryCodesDto })
   @ApiUnauthorizedResponse({ description: 'No valid session, or that code is not valid' })
+  @ApiConflictResponse({ description: 'Two factor authentication is already on' })
   async enableTwoFactor(
     @Body() body: EnableTwoFactorDto,
     @CurrentUser() user: SessionUser,

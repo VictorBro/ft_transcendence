@@ -184,6 +184,26 @@ test.describe('authentication in the browser', () => {
     await expect(page.getByRole('button', { name: 'Turn on' })).toBeVisible();
   });
 
+  // #216: not knowing the status is not "off". Showing Set up then offered
+  // setup on an account whose 2FA might be on.
+  test('offers no setup when the 2FA status cannot be read', async ({ page }) => {
+    await signUp(page);
+
+    let failing = true;
+    await page.route('**/api/auth/2fa', (route) =>
+      failing && route.request().method() === 'GET' ? route.abort() : route.fallback(),
+    );
+
+    await page.goto('/en/settings/2fa');
+    await expect(page.getByText('Could not check two factor authentication.')).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Set up' })).toHaveCount(0);
+
+    failing = false;
+    await page.getByRole('button', { name: 'Try again' }).click();
+    await expect(page.getByText('Two factor authentication is off')).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Set up' })).toBeVisible();
+  });
+
   test('a signed-out visitor is sent to the login page', async ({ page }) => {
     await page.goto('/en/settings/2fa');
     await expect(page).toHaveURL(/\/login$/);

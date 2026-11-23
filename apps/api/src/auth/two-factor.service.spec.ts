@@ -1,4 +1,4 @@
-import { BadRequestException, UnauthorizedException } from '@nestjs/common';
+import { BadRequestException, ConflictException, UnauthorizedException } from '@nestjs/common';
 import * as OTPAuth from 'otpauth';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
@@ -20,7 +20,7 @@ function currentCode(secret: string): string {
 
 describe('TwoFactorService', () => {
   const prisma = {
-    user: { update: vi.fn(), findUnique: vi.fn() },
+    user: { update: vi.fn(), updateMany: vi.fn(), findUnique: vi.fn() },
     recoveryCode: { deleteMany: vi.fn(), createMany: vi.fn(), updateMany: vi.fn(), count: vi.fn() },
     $transaction: vi.fn(),
   } as unknown as PrismaService;
@@ -34,23 +34,35 @@ describe('TwoFactorService', () => {
 
   describe('enrolment', () => {
     it('stores a secret without enabling anything', async () => {
-      vi.mocked(prisma.user.update).mockResolvedValue({} as never);
+      vi.mocked(prisma.user.updateMany).mockResolvedValue({ count: 1 } as never);
 
       const setup = await service.beginEnrolment('u1', EMAIL);
 
       expect(setup.secret).toMatch(/^[A-Z2-7]+$/);
       expect(setup.otpauthUri).toContain('otpauth://totp/');
       expect(setup.qrDataUrl).toMatch(/^data:image\/gif;base64,/);
-      // The account keeps working with one factor until a code is proven.
-      expect(prisma.user.update).toHaveBeenCalledWith(
-        expect.objectContaining({ data: { totpSecret: setup.secret, totpEnabledAt: null } }),
-      );
+      // Only on an account whose 2FA is off, checked in the same statement.
+      expect(prisma.user.updateMany).toHaveBeenCalledWith({
+        where: { id: 'u1', totpEnabledAt: null },
+        data: { totpSecret: setup.secret },
+      });
+    });
+
+    it('refuses setup once 2FA is on, and returns no secret (#216)', async () => {
+      // The WHERE matched nothing: totpEnabledAt is set.
+      vi.mocked(prisma.user.updateMany).mockResolvedValue({ count: 0 } as never);
+
+      await expect(service.beginEnrolment('u1', EMAIL)).rejects.toMatchObject({
+        constructor: ConflictException,
+        message: 'twoFactor.alreadyEnabled',
+      });
     });
 
     it('refuses to confirm before setup has run', async () => {
       vi.mocked(prisma.user.findUnique).mockResolvedValue({
         email: EMAIL,
         totpSecret: null,
+        totpEnabledAt: null,
       } as never);
 
       await expect(service.confirmEnrolment('u1', '000000')).rejects.toBeInstanceOf(
@@ -58,31 +70,83 @@ describe('TwoFactorService', () => {
       );
     });
 
+    it('refuses to confirm once 2FA is on, and keeps the recovery codes (#216)', async () => {
+      const secret = new OTPAuth.Secret({ size: 20 }).base32;
+      vi.mocked(prisma.user.findUnique).mockResolvedValue({
+        email: EMAIL,
+        totpSecret: secret,
+        totpEnabledAt: new Date(),
+      } as never);
+
+      // Even with a real code: the codes must not be replaced on a session alone.
+      await expect(service.confirmEnrolment('u1', currentCode(secret))).rejects.toMatchObject({
+        constructor: ConflictException,
+        message: 'twoFactor.alreadyEnabled',
+      });
+      expect(prisma.user.updateMany).not.toHaveBeenCalled();
+      expect(prisma.$transaction).not.toHaveBeenCalled();
+    });
+
     it('rejects a wrong code and leaves the factor off', async () => {
       vi.mocked(prisma.user.findUnique).mockResolvedValue({
         email: EMAIL,
         totpSecret: new OTPAuth.Secret({ size: 20 }).base32,
+        totpEnabledAt: null,
       } as never);
 
       await expect(service.confirmEnrolment('u1', '000000')).rejects.toBeInstanceOf(
         UnauthorizedException,
       );
-      expect(prisma.user.update).not.toHaveBeenCalled();
+      expect(prisma.user.updateMany).not.toHaveBeenCalled();
     });
 
-    it('enables the factor and issues recovery codes for a real code', async () => {
+    it('enables the secret the code was checked against, and issues recovery codes', async () => {
       const secret = new OTPAuth.Secret({ size: 20 }).base32;
       vi.mocked(prisma.user.findUnique).mockResolvedValue({
         email: EMAIL,
         totpSecret: secret,
+        totpEnabledAt: null,
       } as never);
-      vi.mocked(prisma.user.update).mockResolvedValue({} as never);
+      vi.mocked(prisma.user.updateMany).mockResolvedValue({ count: 1 } as never);
 
       const codes = await service.confirmEnrolment('u1', currentCode(secret));
 
+      expect(prisma.user.updateMany).toHaveBeenCalledWith({
+        where: { id: 'u1', totpSecret: secret, totpEnabledAt: null },
+        data: { totpEnabledAt: expect.any(Date) as Date },
+      });
       expect(codes).toHaveLength(10);
       expect(new Set(codes).size).toBe(10);
       expect(codes[0]).toMatch(/^[a-z0-9]{5}(-[a-z0-9]{5}){3}$/);
+    });
+
+    it('turns nothing on when another setup replaced the secret after the check', async () => {
+      const secret = new OTPAuth.Secret({ size: 20 }).base32;
+      vi.mocked(prisma.user.findUnique)
+        .mockResolvedValueOnce({ email: EMAIL, totpSecret: secret, totpEnabledAt: null } as never)
+        .mockResolvedValueOnce({ totpEnabledAt: null } as never);
+      vi.mocked(prisma.user.updateMany).mockResolvedValue({ count: 0 } as never);
+
+      await expect(service.confirmEnrolment('u1', currentCode(secret))).rejects.toMatchObject({
+        constructor: BadRequestException,
+        message: 'twoFactor.setupFirst',
+      });
+      expect(prisma.$transaction).not.toHaveBeenCalled();
+    });
+
+    it('issues one set of codes when two confirmations race', async () => {
+      const secret = new OTPAuth.Secret({ size: 20 }).base32;
+      vi.mocked(prisma.user.findUnique)
+        .mockResolvedValueOnce({ email: EMAIL, totpSecret: secret, totpEnabledAt: null } as never)
+        .mockResolvedValueOnce({ totpEnabledAt: new Date() } as never);
+      // The other request turned it on first.
+      vi.mocked(prisma.user.updateMany).mockResolvedValue({ count: 0 } as never);
+
+      await expect(service.confirmEnrolment('u1', currentCode(secret))).rejects.toMatchObject({
+        constructor: ConflictException,
+        message: 'twoFactor.alreadyEnabled',
+      });
+      expect(prisma.$transaction).not.toHaveBeenCalled();
     });
   });
 
