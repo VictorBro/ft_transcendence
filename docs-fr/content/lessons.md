@@ -548,8 +548,9 @@ la même page une deuxième fois, un ancien `attemptId` ou une tentative finie d
 inconnue ou une réponse du mauvais type donne 400 `attempt.invalidAnswer`, et rien n'est verrouillé.
 Une unité vide vaut 0.
 
-Chaque écriture est une seule transaction qui verrouille d'abord le cours, puis la ligne de la
-tentative. Deux envois de la même dernière page donnent une seule fin : le second trouve la tentative
+Chaque écriture est une seule transaction qui verrouille d'abord le cours (`FOR UPDATE`), puis tient la
+ligne de la leçon `FOR SHARE` pour qu'un reseed attende. C'est le verrou du cours qui met les écritures
+l'une après l'autre : deux envois de la même dernière page donnent une seule fin, car le second trouve la tentative
 finie.
 
 ### Le minuteur de l'examen

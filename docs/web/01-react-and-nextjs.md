@@ -376,10 +376,10 @@ A browser `<form>`, when submitted, normally reloads the page. The app stops tha
   );
 ```
 
-The pattern used by all forms in the app:
+The pattern used by the free-text forms of the app (login, signup, profile, search...):
 
 1. `preventDefault()`, read `FormData`.
-2. Validate with the **same Zod schema the API uses** (from `@ft/shared`), so obvious mistakes never leave the page.
+2. Validate with the **same Zod schema the API uses** (from `@ft/shared`), so obvious mistakes never leave the page. The pickers (course, level, goal) skip this step: they only offer valid values, and the API validates what they send.
 3. Call the API from the browser (functions in `lib/*-client.ts`) or change the URL.
 4. Show errors with `FormError`, show "working" with `SubmitButton pending`.
 

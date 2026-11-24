@@ -70,7 +70,7 @@ flowchart LR
 
 1. `page.tsx` is an **async server component**. It reads data with the server helpers from chapter 4 (`requireUser`, `requireFriends`, `requireCourses`, ...).
 2. It renders a client component (a file that starts with `'use client'`) and passes it the data as props.
-3. The client component checks the input with the **same Zod schema the API uses** (from `@ft/shared`), then calls a `*-client.ts` function.
+3. A free-text form checks the input with the **same Zod schema the API uses** (from `@ft/shared`); a picker only offers valid values. Then it calls a `*-client.ts` function, and the API validates either way.
 4. After a write, it calls `router.refresh()`. This asks the server to render the page again with fresh data. So the server stays the one place that knows the truth.
 
 Most pages also have `export const dynamic = 'force-dynamic'`. This tells Next.js: never build this page ahead of time and never cache it, because it shows data for one person.

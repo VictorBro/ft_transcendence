@@ -530,8 +530,9 @@ same page again, an old `attemptId` or a finished attempt is 409 `attempt.stale`
 reads the attempt again to show where the learner is. An unknown ref or an answer of the wrong kind
 is 400 `attempt.invalidAnswer`, and nothing is locked. A blank unit scores 0.
 
-Every write is one transaction that locks the course first, then the attempt row. Two submits of
-the same last page give one finish: the second finds the attempt finished.
+Every write is one transaction that locks the course first (`FOR UPDATE`), then holds the lesson row `FOR SHARE` so a reseed waits.
+The course lock is what serialises the writes: two submits of
+the same last page give one finish, because the second finds the attempt finished.
 
 ### The exam timer
 

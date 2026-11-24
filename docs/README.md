@@ -21,7 +21,6 @@ the HTML pages below can be read there without cloning the repository.
 | [subject/](subject/summary.md)                          | What does the 42 subject require?                                                   |
 | [transcendence-course/](transcendence-course/README.md) | What did each team member build, explained in their own words for the defence?      |
 | [site/](site/milestone1-data-model.html)                | The pages and script behind the GitHub Pages site                                   |
-| [before-rework/](before-rework/README.md)               | What did the documentation say before this rework? An archive, not kept up to date  |
 
 ## Every document
 
@@ -103,11 +102,9 @@ the HTML pages below can be read there without cloning the repository.
 | [site/milestone3-data-model.html](site/milestone3-data-model.html) | Real-time and social: socket events, friendships, messages, presence               |
 | [site/gh-status.js](site/gh-status.js)                             | Not a document: the HTML pages load it to show live issue states from GitHub       |
 
-### before-rework/
-
-| Document                                           | What it covers                                                                                                   |
-| -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| [before-rework/README.md](before-rework/README.md) | The documentation as it was before this rework (#152), with its own index. Kept as an archive: it is not updated |
-
 Every count, route, variable and metric name in these documents is taken from the code on `main`.
 When the code changes, the document that owns the topic changes in the same pull request.
+
+The English `docs/` is the reference. [docs-fr/](../docs-fr/README.md) is its translation: when they
+disagree, `docs/` wins. A pull request that changes a page of `docs/` updates its `docs-fr/` twin in the
+same pull request, or opens an issue for it.

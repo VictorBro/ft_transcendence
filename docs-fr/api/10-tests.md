@@ -454,7 +454,8 @@ Son en-tête dit pourquoi c'est un test e2e :
 
 ### Étape 2 : Supertest
 
-**[Supertest](https://github.com/ladjs/supertest)** envoie des requêtes HTTP à un serveur Node sans vrai port réseau,
+**[Supertest](https://github.com/ladjs/supertest)** envoie des requêtes HTTP à un serveur Node : il
+lie l'app à un port libre au hasard sur 127.0.0.1, donc le test n'a besoin d'aucun port fixe,
 et te laisse vérifier la réponse :
 
 ```ts

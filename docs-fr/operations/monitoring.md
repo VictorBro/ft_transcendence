@@ -8,7 +8,7 @@ Documents liés : [architecture/overview.md](../architecture/overview.md) (où i
 
 | Le sujet demande                      | Ici                                                                                                       |
 | ------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| Prometheus qui collecte des métriques | 7 jobs de scrape et 3 probes, toutes les 30 s (section 1)                                                 |
+| Prometheus qui collecte des métriques | 8 jobs de scrape (7 cibles uniques, plus les 3 probes du job blackbox), toutes les 30 s (section 1)|
 | Des exporters et des intégrations     | les exporters node, postgres, redis et blackbox ; les métriques propres à Caddy et à l'API (section 5)    |
 | Des dashboards Grafana personnalisés  | Overview, API, Learning, Infrastructure, provisionnés depuis le dépôt (section 3)                         |
 | Des règles d'alerte                   | 25 règles, testées unitairement avec promtool, routées vers Discord (section 4)                           |
@@ -37,7 +37,7 @@ Deux services existants gagnent un listener interne, et aucun port publié :
 | `api`   | `:9464`  | seulement `GET /metrics`, depuis un simple serveur `node:http` en dehors de Nest (`apps/api/src/metrics`) |
 | `caddy` | `:2020`  | les métriques des requêtes de Caddy, sur un site à part. L'API d'admin sur `:2019` reste sur loopback     |
 
-Prometheus a 10 cibles : 7 jobs avec une cible chacun, plus les 3 probes blackbox. Il les
+Prometheus a 10 cibles dans 8 jobs : 7 jobs avec une cible chacun, plus le job blackbox et ses 3 probes. Il les
 scrape et évalue les règles toutes les 30 s, et garde 15 jours ou 1 GB de données, selon la limite atteinte
 en premier.
 

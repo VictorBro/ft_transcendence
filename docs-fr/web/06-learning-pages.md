@@ -72,7 +72,7 @@ Deux sortes de composants apparaissent dans ce chapitre (voir le [Chapitre 1](01
 
 | Sorte                                         | Où il tourne                                 | Utilisé ici pour                                                                                                               |
 | --------------------------------------------- | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| **Server component** (pas de `'use client'`)  | Sur le serveur Next.js, une fois par requête | Les pages, la carte Aujourd'hui, les lignes de leçon, les cartes de gamification. Ils lisent l'API et envoient du HTML simple. |
+| **Server component** (pas de `'use client'`)  | Sur le serveur Next.js, une fois par requête | Les pages, la carte Aujourd'hui, les lignes de leçon, les cartes de gamification. Ils lisent l'API et envoient un payload RSC (du HTML au premier chargement). |
 | **Client component** (`'use client'` en haut) | Aussi dans le navigateur                     | Tout ce qui réagit aux clics ou aux touches : les sélecteurs, le menu du cours, le formulaire live, le test de niveau.         |
 
 Une règle que tu verras encore et encore : **le serveur affiche la vérité, le client envoie seulement un
@@ -536,7 +536,7 @@ sequenceDiagram
     H->>A: PATCH (en file, dans l'ordre)
     A-->>H: 200 Course
     H->>S: router.refresh()
-    S-->>C: HTML de la page avec les nouvelles props
+    S-->>C: payload RSC avec les nouvelles props
 ```
 
 ### 4.8 `start-level.tsx`
@@ -801,7 +801,7 @@ sequenceDiagram
     P->>P: LessonQuerySchema.parse(searchParams)
     P->>A: GET /api/courses/de/lessons?kind=grammar
     A-->>P: LessonPage
-    P-->>R: nouveau HTML (valeurs par défaut = nouvelle requête)
+    P-->>R: payload RSC (valeurs par défaut = nouvelle requête)
     R-->>U: nouvelles lignes, l'URL a changé, Retour l'annule
 ```
 

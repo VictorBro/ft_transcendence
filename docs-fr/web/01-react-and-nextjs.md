@@ -376,10 +376,10 @@ Un `<form>` du navigateur, quand il est envoyé, recharge normalement la page. L
   );
 ```
 
-Le modèle suivi par tous les formulaires de l'app :
+Le modèle suivi par les formulaires de texte libre de l'app (connexion, inscription, profil, recherche...) :
 
 1. `preventDefault()`, lire `FormData`.
-2. Valider avec le **même schema Zod que celui de l'API** (venant de `@ft/shared`), pour que les erreurs évidentes ne quittent jamais la page.
+2. Valider avec le **même schema Zod que celui de l'API** (venant de `@ft/shared`), pour que les erreurs évidentes ne quittent jamais la page. Les sélecteurs (cours, niveau, objectif) sautent cette étape : ils ne proposent que des valeurs valides, et l'API valide ce qu'ils envoient.
 3. Appeler l'API depuis le navigateur (fonctions dans `lib/*-client.ts`) ou changer l'URL.
 4. Afficher les erreurs avec `FormError`, afficher « en cours » avec `SubmitButton pending`.
 

@@ -744,7 +744,7 @@ export default defineConfig({
 ```
 
 - `schema` et `migrations.path` : où sont les fichiers.
-- `migrations.seed` : la commande que Prisma lance quand il veut faire le seed (par exemple après `prisma migrate reset`).
+- `migrations.seed` : la commande que lance `prisma db seed`. Depuis Prisma 7, `migrate reset` et `migrate dev` ne font plus le seed d'eux-mêmes.
 - `datasource.url` : lu depuis `DATABASE_URL`, avec `''` comme valeur de secours. Pourquoi ne pas lancer d'erreur quand elle manque ?
   Parce que `prisma generate` tourne pendant le build Docker, où il n'y a ni base ni URL.
   Générer du code n'a pas besoin d'une base, donc ça ne doit pas échouer là.

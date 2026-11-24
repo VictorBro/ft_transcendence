@@ -72,7 +72,7 @@ Two kinds of components appear in this chapter (see [Chapter 1](01-react-and-nex
 
 | Kind | Runs where | Used here for |
 | --- | --- | --- |
-| **Server component** (no `'use client'`) | On the Next.js server, once per request | Pages, Today card, lesson rows, gamification cards. They read the API and send plain HTML. |
+| **Server component** (no `'use client'`) | On the Next.js server, once per request | Pages, Today card, lesson rows, gamification cards. They read the API and send an RSC payload (HTML on the first load). |
 | **Client component** (`'use client'` on top) | In the browser too | Anything that reacts to clicks or keys: pickers, the course menu, the live form, the placement exam. |
 
 A rule you will see again and again: **the server renders the truth, the client only sends a
@@ -534,7 +534,7 @@ sequenceDiagram
     H->>A: PATCH (queued, in order)
     A-->>H: 200 Course
     H->>S: router.refresh()
-    S-->>C: page HTML with new props
+    S-->>C: RSC payload with new props
 ```
 
 ### 4.8 `start-level.tsx`
@@ -799,7 +799,7 @@ sequenceDiagram
     P->>P: LessonQuerySchema.parse(searchParams)
     P->>A: GET /api/courses/de/lessons?kind=grammar
     A-->>P: LessonPage
-    P-->>R: new HTML (defaults = new query)
+    P-->>R: RSC payload (defaults = new query)
     R-->>U: new rows, URL changed, Back undoes it
 ```
 

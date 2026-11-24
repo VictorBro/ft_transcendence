@@ -8,7 +8,7 @@ Companions: [architecture/overview.md](../architecture/overview.md) (where it si
 
 | The subject asks for | Here |
 |---|---|
-| Prometheus collecting metrics | 7 scrape jobs and 3 probes, every 30 s (section 1) |
+| Prometheus collecting metrics | 8 scrape jobs (7 single targets, plus the blackbox job's 3 probes), every 30 s (section 1) |
 | Exporters and integrations | node, postgres, redis and blackbox exporters; Caddy's and the API's own metrics (section 5) |
 | Custom Grafana dashboards | Overview, API, Learning, Infrastructure, provisioned from the repo (section 3) |
 | Alerting rules | 25 rules, unit-tested with promtool, routed to Discord (section 4) |
@@ -37,7 +37,7 @@ Two existing services gain an internal listener, and no published port:
 | `api` | `:9464` | `GET /metrics` only, from a bare `node:http` server outside Nest (`apps/api/src/metrics`) |
 | `caddy` | `:2020` | Caddy's request metrics, on a site of its own. The admin API on `:2019` stays on loopback |
 
-Prometheus has 10 targets: 7 jobs with one target each, plus the 3 blackbox probes. It scrapes
+Prometheus has 10 targets in 8 jobs: 7 jobs with one target each, plus the blackbox job and its 3 probes. It scrapes
 them and evaluates the rules every 30 s, and keeps 15 days or 1 GB of data, whichever limit comes
 first.
 

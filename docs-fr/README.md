@@ -22,7 +22,6 @@ ouvre son [index.html](index.html) depuis ton clone.
 | [subject/](subject/summary.md)                                  | Que demande le sujet de 42 ?                                                                   |
 | [transcendence-course/](../docs/transcendence-course/README.md) | Qu'a construit chaque membre de l'équipe, expliqué avec ses propres mots pour la soutenance ?  |
 | [site/](../docs/site/milestone1-data-model.html)                | Les pages et le script derrière le site GitHub Pages                                           |
-| [before-rework/](../docs/before-rework/README.md)               | Que disait la documentation avant cette refonte ? Une archive, plus mise à jour                |
 
 ## Tous les documents
 
@@ -104,11 +103,9 @@ ouvre son [index.html](index.html) depuis ton clone.
 | [site/milestone3-data-model.html](../docs/site/milestone3-data-model.html) | Temps réel et social : événements du socket, amitiés, messages, présence                             |
 | [site/gh-status.js](../docs/site/gh-status.js)                             | Pas un document : les pages HTML le chargent pour afficher l'état des issues en direct depuis GitHub |
 
-### before-rework/
-
-| Document                                                   | Ce qu'il couvre                                                                                                                            |
-| ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| [before-rework/README.md](../docs/before-rework/README.md) | La documentation telle qu'elle était avant cette refonte (#152), avec son propre index. Gardée comme archive : elle n'est plus mise à jour |
-
 Chaque nombre, route, variable et nom de métrique dans ces documents vient du code sur `main`.
 Quand le code change, le document qui possède le sujet change dans la même pull request.
+
+La version anglaise `docs/` est la référence. Ce dossier en est la traduction : quand les deux ne disent
+pas la même chose, c'est `docs/` qui a raison. Une pull request qui change une page de `docs/` met à jour
+sa jumelle dans `docs-fr/` dans la même pull request, ou ouvre une issue pour ça.

@@ -1297,8 +1297,8 @@ apps/api/test/demo.e2e-spec.ts  → replayLearner() with replay-<stamp> identiti
 apps/api/src/demo/demo.planner.spec.ts → unit tests of the planner and clock
 ```
 
-`prisma.config.ts` also sets `seed: 'pnpm db:seed'`, so Prisma runs it after
-`prisma migrate reset`. From [seed.ts](../../apps/api/prisma/seed.ts):
+`prisma.config.ts` also sets `seed: 'pnpm db:seed'`, the command `prisma db seed`
+runs (Prisma 7 no longer seeds after `migrate reset`). From [seed.ts](../../apps/api/prisma/seed.ts):
 
 ```ts
     .then(async () => {

@@ -16,11 +16,12 @@ chaque dossier doit couvrir le code de cette liste.
   nom actuel.
 - « Touché » veut dire créé ou modifié, même d'une ligne. Ce n'est pas un pourcentage de lignes.
 - Entre parenthèses : les autres personnes qui ont aussi touché le fichier.
-- Les dossiers de données (`content/`, fixtures, la traduction `docs-fr/`, l'archive `docs/before-rework/`...) sont donnés en
-  nombre de fichiers.
+- Les dossiers de données (`content/`, fixtures...) sont donnés en nombre de fichiers.
+- La traduction `docs-fr/` n'est pas comptée : c'est une copie traduite de `docs/`, que d'autres ont écrit.
 
-Pour refaire le calcul : `git fetch origin '+refs/pull/*/head:refs/pr/*'`, puis pour chaque commit
-`(#N)` de `main`, comparer `git show --name-only` du squash avec les commits de
+Pour refaire le calcul : `git fetch origin '+refs/pull/*/head:refs/pr/*'`, puis pour chaque commit de
+`main`, prendre le dernier `(#N)` du sujet (7 squash en portent deux, par exemple
+`78cf1a1 ... (#68) (#75)`), et comparer `git show --name-only` du squash avec les commits de
 `git log --no-merges refs/pr/N --not <squash>^`.
 
 ## Les personnes
@@ -38,7 +39,7 @@ Pour refaire le calcul : `git fetch origin '+refs/pull/*/head:refs/pr/*'`, puis 
 | Personne | PR (auteur) | PR (a aidé) | Fichiers touchés | dont code (`apps`, `packages`, `e2e`) |
 | --- | ---: | ---: | ---: | ---: |
 | Victor | 23 | 11 | 448 | 333 |
-| Endrit | 27 | 5 | 799 | 262 |
+| Endrit | 27 | 5 | 709 | 262 |
 | Bastian | 21 | 1 | 212 | 165 |
 | Anaïs | 9 | 0 | 88 | 79 |
 | Luca | 11 | 0 | 171 | 159 |
@@ -331,11 +332,9 @@ A aussi écrit des commits dans les PR des autres :
 
 #### Documentation (`docs/`)
 
-- `docs-fr/` : 54 fichiers
 - `docs/` : `README.md`, `backlog.md` (Victor), `code-ownership.md`, `index.html` (Bastian)
 - `docs/api/` : `01-big-picture.md`, `02-boot-and-request-flow.md`, `03-infrastructure.md`, `04-database.md`, `05-auth-and-users.md`, `06-llm.md`, `07-courses-placement.md`, `08-lessons.md`, `09-social-and-realtime.md`, `10-tests.md`, `11-scripts.md`, `README.md`
 - `docs/architecture/` : `data-model.md`, `overview.md` (Victor), `product.md` (Victor, Anaïs), `realtime.md`, `technical-plan.md` (Victor)
-- `docs/before-rework/` : 36 fichiers
 - `docs/content/` : `item-bank.md` (Victor), `lessons.md` (Bastian, Anaïs)
 - `docs/modules/` : `README.md`, `_template.md`, `advanced-search.md`, `browsers.md`, `custom-ci-cd.md`, `custom-cloud-deploy.md`, `framework.md`, `gamification.md`, `i18n.md`, `llm-interface.md`, `monitoring.md`, `orm.md`, `ssr.md`, `two-factor-auth.md`, `user-interaction.md`, `user-management.md`, `websockets.md`
 - `docs/operations/` : `deployment.md` (Victor, Luca), `development.md` (Bastian, Victor), `monitoring.md` (Victor, Anaïs, Luca), `versions.md` (Victor, Bastian)

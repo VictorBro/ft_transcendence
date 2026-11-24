@@ -23,6 +23,7 @@ make all
 - [ ] No secret, key or token in the diff. New configuration is documented in `.env.example` and read through `compose.yml`.
 - [ ] Versions added or changed are pinned exactly, and `docs/operations/versions.md` says why when one is held back or has to move with another.
 - [ ] Schema changes ship with their generated migration.
+- [ ] `docs/` changed: the `docs-fr/` twin is updated, or an issue is opened for it.
 - [ ] Copilot's review is read and every comment is answered or fixed.
 
 # Screenshots
