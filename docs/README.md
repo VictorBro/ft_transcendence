@@ -10,6 +10,8 @@ the HTML pages below can be read there without cloning the repository.
 
 | Folder                                                  | The question it answers                                                             |
 | ------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| [api/](api/README.md)                                   | How does every file of `apps/api` work, explained from zero, chapter by chapter?    |
+| [web/](web/README.md)                                   | How does every file of `apps/web` work, from React basics to each page?             |
 | [modules/](modules/README.md)                           | Which modules do we claim, how many points, and how does each one meet the subject? |
 | [architecture/](architecture/overview.md)               | How is the app built, and why?                                                      |
 | [operations/](operations/deployment.md)                 | How do we run, deploy, monitor and update it?                                       |
