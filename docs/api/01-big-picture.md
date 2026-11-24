@@ -172,7 +172,7 @@ flowchart TD
 
 ## 4. Where the API sits in the system
 
-The whole app runs as Docker containers, described in [compose.yml](../../compose.yml) (plus the overlays `compose.override.yml` for dev and `compose.prod.yml`, and `compose.deploy.yml` for the server). Only **Caddy** opens a port to the outside world (in dev, Postgres and Redis also open one, but only on `127.0.0.1`). Caddy is a *reverse proxy*: one front door that sends each request to the right container, and does HTTPS.
+The whole app runs as Docker containers, described in [compose.yml](../../compose.yml) (plus the overlays `compose.override.yml` for dev and `compose.prod.yml`, and `compose.deploy.yml` for the server, plus `compose.deploy.proxy.yml` on a host where another proxy already owns ports 80 and 443). Only **Caddy** opens a port to the outside world (in dev, Postgres and Redis also open one, but only on `127.0.0.1`; with `compose.deploy.proxy.yml`, Caddy opens none and the front proxy reaches it over a Docker network). Caddy is a *reverse proxy*: one front door that sends each request to the right container, and does HTTPS.
 
 ```mermaid
 flowchart LR

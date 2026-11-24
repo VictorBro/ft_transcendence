@@ -53,12 +53,12 @@ Les leçons ne sont **pas** écrites par le serveur pendant qu'il tourne. Ce son
 écrits une fois, commités dans git, puis chargés dans la base de données par le seed (chapitre 4).
 Ils vivent dans le dossier [content/](../../content) à la racine :
 
-| Dossier             | Ce qu'il contient                                                                                                                                           | Exemple                      |
-| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
-| `content/outlines/` | Le plan d'un niveau : une entrée par leçon (id, kind, topic ou theme, titre de travail, intention). 6 niveaux × 3 langues = 18 fichiers.                    | `fr-a1.json`                 |
-| `content/briefs/`   | Un **brief** par leçon écrite : le plan de cette leçon (titre, objectif, cibles...).                                                                        | `fr-greetings.json`          |
-| `content/lessons/`  | Le **fichier de contenu** : la leçon jouable. Chaque type en a un sauf le vocabulaire (une leçon de vocabulaire est construite à partir de son brief seul). | `fr-ordering-at-a-cafe.json` |
-| `content/items/`    | Les questions de placement écrites à la main (chapitre 7). Vérifiées par `item-files.spec.ts`.                                                              | `de-grammar.json`            |
+| Dossier             | Ce qu'il contient                                                                                                                                           | Exemple                          |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
+| `content/outlines/` | Le plan d'un niveau : une entrée par leçon (id, kind, topic ou theme, titre de travail, intention). 6 niveaux × 3 langues = 18 fichiers.                    | `fr-a1.json`                     |
+| `content/briefs/`   | Un **brief** par leçon écrite : le plan de cette leçon (titre, objectif, cibles...).                                                                        | `fr-greetings-and-goodbyes.json` |
+| `content/lessons/`  | Le **fichier de contenu** : la leçon jouable. Chaque type en a un sauf le vocabulaire (une leçon de vocabulaire est construite à partir de son brief seul). | `fr-greetings-and-goodbyes.json` |
+| `content/items/`    | Les questions de placement écrites à la main (chapitre 7). Vérifiées par `item-files.spec.ts`.                                                              | `de-grammar.json`                |
 
 ### La chaîne d'écriture des leçons
 
@@ -113,12 +113,12 @@ Extrait de [apps/api/package.json](../../apps/api/package.json) :
     "lessons:check": "pnpm --filter @ft/shared run build && tsx scripts/lessons/check.ts"
 ```
 
-| Script           | Commande typique (depuis la racine du repo)                                      | Notes                                                                                                       |
-| ---------------- | -------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `outlines:check` | `pnpm --filter @ft/api outlines:check de --level B1`                             | lit `content/outlines`                                                                                      |
-| `generation:try` | `LLM_PROVIDER=gemini pnpm --filter @ft/api generation:try b1 vocabulary grammar` | charge le `.env` de la racine s'il existe ; **écrit dans la base de données**, peut **dépenser des tokens** |
-| `lessons:check`  | `pnpm --filter @ft/api lessons:check fr-greetings --draft draft.json`            | build `@ft/shared` d'abord                                                                                  |
-| `lessons:author` | `pnpm --filter @ft/api lessons:author fr a1 --max 3`                             | build `@ft/shared` d'abord ; demande que Claude Code soit installé et connecté                              |
+| Script           | Commande typique (depuis la racine du repo)                                        | Notes                                                                                                       |
+| ---------------- | ---------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `outlines:check` | `pnpm --filter @ft/api outlines:check de --level B1`                               | lit `content/outlines`                                                                                      |
+| `generation:try` | `LLM_PROVIDER=gemini pnpm --filter @ft/api generation:try b1 vocabulary grammar`   | charge le `.env` de la racine s'il existe ; **écrit dans la base de données**, peut **dépenser des tokens** |
+| `lessons:check`  | `pnpm --filter @ft/api lessons:check fr-greetings-and-goodbyes --draft draft.json` | build `@ft/shared` d'abord                                                                                  |
+| `lessons:author` | `pnpm --filter @ft/api lessons:author fr a1 --max 3`                               | build `@ft/shared` d'abord ; demande que Claude Code soit installé et connecté                              |
 
 Pourquoi faire le build de `@ft/shared` d'abord ? Les scripts de leçons appellent
 `lessons.validateLesson` et les formules de durée de `@ft/shared`, et ils doivent utiliser les
@@ -340,7 +340,7 @@ sequenceDiagram
   commits » (ce que le kit garde entre deux lancements mais que personne ne commite : system
   prompts, brouillons ratés, rapports).
 - `readOutline(lang, level)` parse un outline avec son schema Zod.
-- `locate(id)` trouve un id dans les six outlines de sa langue (`fr-greetings` → `fr`, son niveau,
+- `locate(id)` trouve un id dans les six outlines de sa langue (`fr-greetings-and-goodbyes` → `fr`, son niveau,
   son entrée).
 - `filesOf(entry)` répond `'none'`, `'partial'` ou `'complete'`. « Partial » (un brief sans son
   contenu, ou l'inverse, ou une leçon de vocabulaire avec un fichier de contenu qu'elle ne devrait
@@ -556,7 +556,7 @@ donne toujours le même texte, et donc le même hash : `canonicalJson({ b: 1, a:
 **Exports** : `Outcome`, `LessonRun`, `newRun`, `addUsage`, `clock`, `printProgress`,
 `failedDraftPath`, `Summary`, `printSummary`, `saveReport`.
 
-Une ligne par leçon terminée (`✓ [3/12] fr-greetings vocabulary 2 attempts 1 min 40 s …`), puis un
+Une ligne par leçon terminée (`✓ [3/12] fr-greetings-and-goodbyes functions 2 attempts 1 min 40 s …`), puis un
 résumé : écrites / ratées / pas faites, temps réel par leçon, moyennes **par kind**, tokens, le coût
 équivalent API, et une estimation du temps restant pour le niveau. `saveReport` écrit les mêmes
 chiffres dans `WORK_DIR/report-<date>.json`. Ce sont les chiffres cités dans le tableau des temps de
@@ -648,8 +648,11 @@ Comparer une chaîne de problèmes avec `''` (au lieu de `expect(parsed.success)
 dire qu'un échec **affiche chaque problème** avec son chemin. Les autres tests :
 
 - le nom du fichier correspond à `itemFileName(lang, category)` ;
-- aucun `sourceId` n'est dans deux fichiers (« Ids are permanent: PlacementAnswer rows point at
-  them » — les ids sont permanents : des lignes PlacementAnswer pointent vers eux) ;
+- aucun `sourceId` n'est dans deux fichiers. Le commentaire du code dit « Ids are permanent:
+  PlacementAnswer rows point at them » (les ids sont permanents : des lignes PlacementAnswer
+  pointent vers eux), mais le schema n'a pas de modèle `PlacementAnswer` : les lignes qui pointent
+  vers une question sont des lignes `UserSeenQuestion`, et le seed fait un upsert de chaque
+  question par son `sourceId` ;
 - les catégories manquantes par langue sont **signalées** avec `console.info`, pas en échec, parce
   que « a language part-way through authoring is a normal state » (une langue à moitié écrite est un
   état normal).

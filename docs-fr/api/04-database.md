@@ -799,7 +799,7 @@ Chaque dossier s'appelle `<date et heure>_<nom>/migration.sql`. La date au débu
 
 | Dossier                                            | Ce qu'elle a changé                                                                                                                                     |
 | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `20260807022236_init_user`                         | Crée les enums `Role` et `Locale` et la table `User`, avec `email` et `displayName` uniques.                                                            |
+| `20260807022236_init_user`                         | Crée les enums `Role` et `Locale` et la table `User` (avec `locale`, par défaut `en`), avec `email` et `displayName` uniques.                           |
 | `20260809004816_two_factor`                        | Ajoute `totpSecret` et `totpEnabledAt` à `User` ; crée `RecoveryCode` (`codeHash` unique, index sur `userId`, cascade).                                 |
 | `20260913181513_add_user_levels_and_question_bank` | Crée les enums `QuestionCategory`, `Level`, `Language`, `Topic` et les tables `UserLevel`, `QuestionBank`, `UserSeenQuestion` avec leurs clés et index. |
 | `20260913184446_question_bank_source_id_unique`    | Rend `QuestionBank.sourceId` unique (pour que le seed puisse faire un upsert dessus).                                                                   |

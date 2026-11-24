@@ -3,7 +3,7 @@
 Un module est une fonctionnalité de la liste des modules du sujet (chapitre IV). Chacun rapporte des points :
 un module **Major** vaut 2 points et un module **Minor** vaut 1 point. Le projet demande **14 points**.
 Les points au-dessus de 14 sont un bonus, et ce bonus est **plafonné à 5**, donc au plus **19 points comptent**
-([../subject/summary.md](../subject/summary.md), « Modules: 14 points required » et « Bonus »). Un
+([../subject/summary.md](../subject/summary.md), « Modules : 14 points requis » et « Bonus »). Un
 module qui ne marche pas le jour de l'évaluation compte 0, donc on en annonce plus que 19 pour garder une
 marge.
 
@@ -73,5 +73,10 @@ code.
 | RTL support                          | Minor | Les trois langues (anglais, français, allemand) s'écrivent toutes de gauche à droite ([i18n.md](i18n.md))                                                                                                                                                         |
 | User activity analytics dashboard    | Minor | Aucun tableau de bord de l'activité des utilisateurs n'est construit ; les tables `DailyStat` et `Mistake` de l'ancien plan ont été abandonnées ([data-model.md](../architecture/data-model.md) §9)                                                               |
 
-On n'annonce pas non plus les autres modules de jeu (ils demandent tous un jeu), Advanced chat, WAF et
-Vault, ELK, les microservices, ni la blockchain.
+On n'annonce pas non plus les autres modules de la liste, et on ne les a pas construits : les autres
+modules de jeu et Game statistics (ils demandent tous un jeu), Advanced chat, Real-time collaborative features, Advanced
+permissions, Organization system, les autres modules d'IA (Recommendation system, Content moderation,
+Voice/speech, Sentiment analysis, Image recognition), WAF et Vault, ELK, les microservices, Health
+check and status page, Advanced analytics dashboard, Data export and import, GDPR compliance, et
+les deux modules blockchain. Les modules Minor frontend framework et backend framework ne sont pas
+annoncés non plus : le module Major framework plus haut couvre déjà les deux.

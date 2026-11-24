@@ -70,7 +70,7 @@ on `main` and formats the staged files. `pre-push` runs a fast subset of `make c
 be skipped with `--no-verify`, so every one of these checks also runs in CI.
 
 `make ci` runs everything the `ci` workflow runs, natively. `make all` runs `make ci`,
-then starts the production stack and runs Playwright on Chromium. The pull request
+then starts the production stack, checks the monitoring stack and runs Playwright on Chromium. The pull request
 template asks for `make all` to be green
 ([`.github/pull_request_template.md`](../../.github/pull_request_template.md)).
 
@@ -89,14 +89,15 @@ does not run the same checks twice.
   ([`scripts/check-app-boundaries.sh`](../../scripts/check-app-boundaries.sh)), and the
   monitoring config check
   ([`scripts/check-monitoring-config.sh`](../../scripts/check-monitoring-config.sh)).
-  Anything that runs project code runs inside the Docker `ci` stage: the unit tests with
+  The tests of the two apps run inside the Docker `ci` stage: the unit tests with
   coverage for `api` and `web`, and the Supertest suite against PostgreSQL (pgvector) and
   Redis service containers. Coverage under 60% lines or functions fails the test command
-  (the `thresholds` in each `vitest.config.mts`). Then `build` builds the whole
-  workspace.
+  (the `thresholds` in each `vitest.config.mts`). `package tests` runs the tests of
+  `packages/` natively, since no container runtime changes them. Then `build` builds the
+  whole workspace.
 - **[`e2e.yml`](../../.github/workflows/e2e.yml).** A matrix of 3 browsers times 2
   parts. Each job starts the production stack with
-  `docker compose -f compose.yml -f compose.prod.yml up -d --build --wait`, waits until
+  `docker compose -f compose.yml -f compose.prod.yml up -d --build --wait --wait-timeout 300`, waits until
   Caddy answers `/healthz`, applies the migrations with `make db-ready`, and runs
   Playwright inside Playwright's own image
   ([`scripts/playwright-in-image.sh`](../../scripts/playwright-in-image.sh)). One job
@@ -358,7 +359,7 @@ it.
 
 ## The value it adds
 
-- **`main` always works.** 93 pull requests were merged by 2026-11-22. Every commit on
+- **`main` always works.** 87 pull requests were merged into `main` by 2026-11-22. Every commit on
   `main` after the initial one is a squashed pull request. The ruleset was created on
   2026-08-07, right after the scaffold (#2), and since then it allows no direct push.
 - **The rejection rules are tested, not hoped for.** The console gate, the legal pages

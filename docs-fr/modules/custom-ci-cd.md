@@ -14,11 +14,12 @@ CI veut dire « continuous integration » (intégration continue) : vérifier ch
 
 ## Ce que demande le sujet
 
-Tiré de « Modules of choice » dans [../subject/summary.md](../subject/summary.md) (le texte complet
+Tiré de « Modules au choix » dans [../subject/summary.md](../subject/summary.md) (le texte complet
 est au chapitre IV de [../../docs/subject/ft_transcendence.pdf](../../docs/subject/ft_transcendence.pdf)) :
 
-> Major | Custom module, substantial and technically complex, justified in the README (why
-> chosen, what challenges, what value, why 2 points). Trivial features = rejection
+> Major | Module sur mesure, conséquent et techniquement complexe, justifié dans le README
+> (pourquoi ce choix, quelles difficultés, quelle valeur, pourquoi 2 points). Fonctionnalités
+> triviales = refus
 
 On répond aux quatre questions plus bas, dans « Pourquoi on l'a choisi », « Les défis techniques »,
 « Ce que ça apporte » et « Pourquoi il mérite sa taille ».
@@ -44,7 +45,7 @@ où se trouve la preuve.
 | Les failles de sécurité connues sont signalées                  | Trivy scanne chaque image de production avant qu'elle soit poussée. Les résultats vont dans le log du job et dans l'onglet Security du dépôt                                                                                                                                                                                                                                                         | Les étapes Trivy dans [`images.yml`](../../.github/workflows/images.yml)                                                                                                                                   |
 | Chaque build peut être retrouvé                                 | Tags : `<branch>-<shortsha>` sur une branche secondaire, `main-<shortsha>` et `latest` sur `main`, `X.Y.Z`, `X.Y`, `X` sur un tag `vX.Y.Z`                                                                                                                                                                                                                                                           | Le job `merge` dans [`images.yml`](../../.github/workflows/images.yml), [`../architecture/technical-plan.md`](../architecture/technical-plan.md) section 5                                                 |
 | Deploy automatique                                              | Un timer systemd sur le serveur lance `deploy.sh` toutes les cinq minutes. Il fait le pull, les migrations et le redémarrage seulement quand une image a changé                                                                                                                                                                                                                                      | [`infra/deploy/`](../../infra/deploy)                                                                                                                                                                      |
-| Retour en arrière                                               | Fixer `IMAGE_TAG` sur un ancien `main-<shortsha>` dans le `.env` du serveur                                                                                                                                                                                                                                                                                                                          | [`../operations/deployment.md`](../operations/deployment.md) « Redeploying »                                                                                                                               |
+| Retour en arrière                                               | Fixer `IMAGE_TAG` sur un ancien `main-<shortsha>` dans le `.env` du serveur                                                                                                                                                                                                                                                                                                                          | [`../operations/deployment.md`](../operations/deployment.md) « Redéployer »                                                                                                                                |
 | Les mêmes vérifications avant le push                           | Les hooks git et `make ci` / `make all` lancent les mêmes scripts sur la machine du développeur                                                                                                                                                                                                                                                                                                      | [`.husky/`](../../.husky), [`Makefile`](../../Makefile)                                                                                                                                                    |
 
 ## Comment ça marche
@@ -70,7 +71,7 @@ sur `main` et formate les fichiers ajoutés. `pre-push` lance une partie rapide 
 sauter un hook avec `--no-verify`, donc chacune de ces vérifications tourne aussi dans la CI.
 
 `make ci` lance tout ce que le workflow `ci` lance, en natif. `make all` lance `make ci`,
-puis démarre la stack de production et lance Playwright sur Chromium. Le modèle de pull request
+puis démarre la stack de production, vérifie la stack de monitoring et lance Playwright sur Chromium. Le modèle de pull request
 demande que `make all` soit vert
 ([`.github/pull_request_template.md`](../../.github/pull_request_template.md)).
 
@@ -89,14 +90,15 @@ ne lance pas les mêmes vérifications deux fois.
   ([`scripts/check-app-boundaries.sh`](../../scripts/check-app-boundaries.sh)), et la
   vérification de la config de monitoring
   ([`scripts/check-monitoring-config.sh`](../../scripts/check-monitoring-config.sh)).
-  Tout ce qui lance du code du projet tourne dans le stage Docker `ci` : les tests unitaires avec
+  Les tests des deux apps tournent dans le stage Docker `ci` : les tests unitaires avec
   couverture pour `api` et `web`, et la suite Supertest contre des service containers PostgreSQL (pgvector) et
   Redis. Une couverture sous 60 % des lignes ou des fonctions fait échouer la commande de test
-  (les `thresholds` dans chaque `vitest.config.mts`). Ensuite `build` fait le build de tout le
+  (les `thresholds` dans chaque `vitest.config.mts`). `package tests` lance les tests de
+  `packages/` en natif, puisqu'aucun runtime de container ne les change. Ensuite `build` fait le build de tout le
   workspace.
 - **[`e2e.yml`](../../.github/workflows/e2e.yml).** Une matrice de 3 navigateurs fois 2
   parties. Chaque job démarre la stack de production avec
-  `docker compose -f compose.yml -f compose.prod.yml up -d --build --wait`, attend que
+  `docker compose -f compose.yml -f compose.prod.yml up -d --build --wait --wait-timeout 300`, attend que
   Caddy réponde sur `/healthz`, applique les migrations avec `make db-ready`, et lance
   Playwright dans l'image de Playwright elle-même
   ([`scripts/playwright-in-image.sh`](../../scripts/playwright-in-image.sh)). Un job
@@ -202,8 +204,8 @@ Il te faut un coéquipier avec un accès en écriture au dépôt, et un accès S
 serveurs pour les étapes 9 et 10. Les deux font tourner le même timer : l'instance Oracle derrière
 <https://transcendence.dpdns.org> (fichiers dans `/home/ubuntu`) et le VPS partagé derrière
 <https://trans.vyantares.ch> (fichiers dans `~/ft_transcendence`), voir
-[../operations/deployment.md](../operations/deployment.md) « Automatic deploys » et « Behind
-another reverse proxy ». Utilise celui qui est en marche.
+[../operations/deployment.md](../operations/deployment.md) « Les deploys automatiques » et « Derrière
+un autre reverse proxy ». Utilise celui qui est en marche.
 
 1. Fais un petit changement sans risque sur une branche. Le nom de la branche suit la règle `type/slug` :
    ```bash
@@ -358,7 +360,7 @@ l'explique.
 
 ## Ce que ça apporte
 
-- **`main` marche toujours.** 93 pull requests ont été mergées au 2026-11-22. Chaque commit sur
+- **`main` marche toujours.** 87 pull requests ont été mergées dans `main` au 2026-11-22. Chaque commit sur
   `main` après le premier est une pull request en squash. Le ruleset a été créé le
   2026-08-07, juste après la base du projet (#2), et depuis il n'autorise aucun push direct.
 - **Les règles de rejet sont testées, pas espérées.** Le contrôle de la console, les pages légales
@@ -413,7 +415,7 @@ vérifie exactement ces choses à chaque changement.
   `images.yml`.
 - **Certains fichiers du serveur sont copiés à la main.** Un changement de `compose.deploy.yml` ou de
   `Caddyfile.prod` n'est pas déployé par le timer : il faut un `scp` et un redémarrage
-  ([`../operations/deployment.md`](../operations/deployment.md) « Automatic deploys »).
+  ([`../operations/deployment.md`](../operations/deployment.md) « Les deploys automatiques »).
   Seules les images bougent automatiquement.
 - **La review est obligatoire, les code owners non.** CODEOWNERS demande toute l'équipe sur chaque
   chemin, et le ruleset demande une approbation de n'importe qui. « Require review from Code

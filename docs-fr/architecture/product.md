@@ -118,7 +118,7 @@ puisse le voir, et ce n'est jamais lui qui juge.
 **Sauter, changer et repasser.** Un apprenant qui connaît déjà son niveau saute l'examen et
 fixe son niveau directement. Un apprenant qui n'est pas d'accord avec le résultat peut le changer tout de suite. Un
 nouveau passage est la même recherche relancée, qui tire avec les mêmes lignes `UserSeenQuestion`, donc il pose
-de nouvelles questions sauf si l'étape 3 se déclenche. Les trois écrivent par le même endpoint, et seul le
+de nouvelles questions sauf si l'étape 3 se déclenche. Les trois finissent par la même écriture, `CoursesService.setLevel`, et seul le
 niveau actuel est stocké, jamais un historique des passages. Un passage où toutes les réponses ont dépassé le temps n'écrit
 rien : un apprenant qui est parti n'a rien mesuré, donc le cours garde le niveau qu'il avait, ou
 reste sans niveau, et le résultat le dit avec `applied: false`.
@@ -463,7 +463,7 @@ test et casserait le §1.2. Leur mécanisme de réutilisation, c'est la banque d
 | **Événements du socket**   | `dm:send`, `dm:read`. **Le guard HTTP ne les couvre pas** : une connexion socket est un seul upgrade HTTP, donc un client peut émettre des milliers d'événements à travers une seule requête autorisée | Le filtre du gateway limite chaque socket à 20 de chaque événement par 10 s, et chacun a un budget par compte : 30 `dm:send` et 100 `dm:read` par minute ([architecture/realtime.md](realtime.md) §3)                                                                                                   |
 | **API publique**           | Le module _exige_ une limitation de débit                                                                                                                                                              | Pas revendiqué ([modules/README.md](../modules/README.md))                                                                                                                                                                                                                                              |
 
-Chaque limite est lue une fois au démarrage ; tout ce qui n'est pas un nombre entier arrête l'api.
+Chaque limite est lue une fois au démarrage ; tout ce qui n'est pas un nombre entier arrête l'api (les limites HTTP refusent aussi 0).
 
 ---
 
@@ -510,7 +510,7 @@ désactivé. Une démo où l'évaluateur désactive JavaScript et voit quand mê
 
 **Le « Multi-user simultaneous support » (support simultané de plusieurs utilisateurs) est obligatoire, pas un module.** Deux onglets qui finissent des leçons au
 même moment, ou beaucoup d'apprenants à la fois, ne doivent pas corrompre l'état des autres. Ça veut dire : un
-verrou de ligne sur le cours (`SELECT ... FOR UPDATE` sur sa ligne `UserLevel`) autour des fins de leçon et des changements
+verrou de ligne sur le cours (`SELECT ... FOR UPDATE` sur sa ligne `UserLevel`) autour de chaque écriture d'une tentative (la dernière est la fin de leçon) et des changements
 d'objectif, pour que deux fins qui atteignent toutes les deux l'objectif valident le jour une seule fois et fassent avancer la série une seule fois ;
 la clé primaire `(userLevelId, lessonId)` de `LessonResult`, pour qu'un double-clic ne puisse pas créer deux
 résultats ; et un test e2e qui pilote **deux contextes de navigateur en même temps** sur un seul compte. Écris ce

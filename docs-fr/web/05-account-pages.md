@@ -713,7 +713,7 @@ Les classes `max-sm:flex-col-reverse` mettent l'avatar au-dessus du nom sur les 
   // are kept apart: inside one form the button would look like it saved both.
 ```
 
-**1. L'avatar.** Un input de fichier caché dans un `<label>` (pour que le texte du label soit le lien cliquable "Upload", Envoyer). Il accepte PNG, JPEG et WebP.
+**1. L'avatar.** Un input de fichier caché dans un `<label>` (pour que le texte du label soit le lien cliquable : "Upload avatar" (Ajouter un avatar), ou "Change avatar" (Changer d'avatar) s'il y en a un). Il accepte PNG, JPEG et WebP.
 
 ```tsx
   async function onAvatarChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -748,9 +748,9 @@ Les classes `max-sm:flex-col-reverse` mettent l'avatar au-dessus du nom sur les 
 - `uploadAvatar(file)` envoie `POST /api/users/me/avatar` en `multipart/form-data`.
 - `router.refresh()` réaffiche la page sur le serveur, donc le nouveau `user.avatarUrl` arrive et l'image change.
 
-Un bouton "Remove" (Supprimer) apparaît seulement quand il y a un avatar. Il appelle `removeAvatar()` (`DELETE /api/users/me/avatar`).
+Un bouton "Remove avatar" (Supprimer l'avatar) apparaît seulement quand il y a un avatar. Il appelle `removeAvatar()` (`DELETE /api/users/me/avatar`).
 
-`avatarPending` est un seul state avec trois valeurs (`'upload' | 'remove' | null`) et pas deux booléens. Le commentaire dit pourquoi : le label doit montrer **quelle** action est en cours ("Uploading..." ou "Removing...").
+`avatarPending` est un seul state avec trois valeurs (`'upload' | 'remove' | null`) et pas deux booléens. Le commentaire dit pourquoi : le texte doit montrer **quelle** action est en cours ("Uploading..." sur le label, ou "Removing..." sur le bouton).
 
 **2. Le nom affiché.** Un formulaire normal avec un seul `Field`, vérifié avec `UpdateProfileSchema`, enregistré avec `updateProfile()` (`PATCH /api/users/me`). En cas de succès :
 
@@ -1180,7 +1180,7 @@ L'ordre des vérifications compte :
 
 `loadProfile` est enveloppé dans le `cache()` de React. `generateMetadata` (qui met le nom de la personne comme titre de l'onglet) et la page l'appellent tous les deux avec le même id, mais l'API n'est appelée qu'une fois par requête. Le commentaire dans `generateMetadata` explique pourquoi il n'appelle pas `notFound()` lui-même : il pourrait entrer en course avec la redirection de la page vers `/login`.
 
-**Affiche :** le nom, un point de présence (seulement si cette personne est ton ami), un avatar de 128 px, des boutons d'action, et une liste de ses cours avec la langue, le niveau et la série de jours (streak) (pas de série affichée à 0).
+**Affiche :** le nom, un point de présence (seulement si cette personne est ton ami), un avatar de 128 px, des boutons d'action, et une liste de ses cours avec la langue, le niveau et la série de jours (streak) (pas de série affichée à 0). Sur téléphone, comme sur `/profile`, l'avatar passe au-dessus du nom (`max-sm:flex-col-reverse`) et les boutons sont centrés.
 
 ```tsx
   const relation = profile.id === me.id ? 'self' : relationTo(lists, profile.id);

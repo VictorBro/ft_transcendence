@@ -667,10 +667,12 @@ que pour le HTTP. Quand un handler de socket lance une erreur, Nest émettrait p
 - Tout le reste est un bug : c'est loggé et la réponse est `server.unexpected`.
 
 Donc les services peuvent lancer les mêmes `HttpException` pour le HTTP et pour les sockets.
-Chaque gateway le déclare avec `@UseFilters(SocketExceptionFilter)`.
+Une gateway qui a des handlers le déclare avec `@UseFilters(SocketExceptionFilter)` : aujourd'hui
+c'est `MessagesGateway` (`SocketGateway` n'a aucun handler `@SubscribeMessage`).
 
 **Spec :** [socket-exception.filter.spec.ts](../../apps/api/src/gateway/socket-exception.filter.spec.ts)
-vérifie les deux cas (exception avec code, erreur inconnue) avec et sans ack.
+vérifie qu'une exception avec code garde son code (dans l'ack, ou comme `app:error` sans ack), et
+qu'un crash, ou une `HttpException` qui contient une phrase, est loggé et reçoit `server.unexpected`.
 
 ---
 

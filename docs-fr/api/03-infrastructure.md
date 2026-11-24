@@ -49,7 +49,7 @@ apps/api/src/
                  dto/health-response.dto.ts (+ 2 specs)
 ```
 
-Tous suivent l'ordre de démarrage décrit dans [02-boot-and-request-flow.md](02-boot-and-request-flow.md) : les services sont construits par `NestFactory.create`, ils se connectent pendant `init()` (dans `app.listen`), et ils se ferment quand l'app s'arrête.
+Tous suivent l'ordre de démarrage décrit dans [02-boot-and-request-flow.md](02-boot-and-request-flow.md) : les services sont construits par `NestFactory.create`, ils se connectent pendant `init()` (dans `app.listen`), et ils se ferment quand l'app est fermée avec `app.close()` (les tests le font). `main.ts` n'active pas les shutdown hooks, donc un container arrêté quitte simplement.
 
 ### Les lifecycle hooks
 
@@ -172,7 +172,7 @@ Dans cette API, Redis contient :
 | Sessions                             | `sess:<id>`         | [app.setup.ts](../../apps/api/src/app.setup.ts) (connect-redis)                           |
 | Compteurs de présence en ligne       | `presence:<userId>` | [presence.service.ts](../../apps/api/src/presence/presence.service.ts)                    |
 | État d'un test de placement en cours | `user:<userId>:eval` (+ `:eval_questions`, `:eval_lock`) | [placement-session.service.ts](../../apps/api/src/placement/placement-session.service.ts) |
-| Limites de discussion des leçons | `discussion:user:<userId>:minute`, `discussion:global:minute` | [discussion-limits.ts](../../apps/api/src/lessons/discussion-limits.ts) |
+| Limites de discussion des leçons | `discussion:user:<userId>:minute`, `discussion:user:<userId>:day`, `discussion:global:minute` | [discussion-limits.ts](../../apps/api/src/lessons/discussion-limits.ts) |
 
 La gateway des sockets l'utilise aussi : elle vérifie que la clé `sess:<id>` d'un socket existe encore. Chacun de ces usages est expliqué dans son propre chapitre.
 
@@ -393,7 +393,7 @@ sequenceDiagram
 **Specs :**
 
 - [identity-throttler.guard.spec.ts](../../apps/api/src/throttler/identity-throttler.guard.spec.ts) : les utilisateurs connectés ont une clé basée sur leur id, deux utilisateurs derrière une même IP ont des clés séparées, les appelants anonymes retombent sur l'adresse, et des appels complets à `canActivate` comptent dans le bon compteur.
-- [throttler-storage.spec.ts](../../apps/api/src/throttler/throttler-storage.spec.ts) : vérifie que le stockage en mémoire de la bibliothèque garde les clés différentes séparées (un blocage sur une route ne change pas le compteur d'une autre route).
+- [throttler-storage.spec.ts](../../apps/api/src/throttler/throttler-storage.spec.ts) : vérifie que le stockage en mémoire de la bibliothèque garde les clés différentes séparées (quand le blocage d'une clé se termine, il n'annule pas les timers d'expiration d'une autre clé, donc la rafale de signups suivante ne reçoit pas de fausse 429).
 
 ## metrics/ — des chiffres pour Prometheus
 
@@ -475,7 +475,7 @@ Les métriques exportées :
 | `lessonAttempts`          | Counter                  | lang, event                       | leçons                                                  |
 | `appInfo`                 | Gauge (toujours 1)       | version                           | `main.ts`                                               |
 
-Il exporte aussi les valeurs de labels autorisées sous forme de listes constantes (`WS_OUTCOMES`, `RESTOCK_STATUSES`, `RESTOCK_FAILURE_REASONS`, `DRAW_SOURCES`, `EXAM_EVENTS`, `LESSON_ATTEMPT_EVENTS`, `AUTH_SERIES`) et leurs types. Cela garde les labels bornés.
+Il exporte aussi les valeurs de labels autorisées sous forme de listes constantes (`WS_OUTCOMES`, `RESTOCK_STATUSES`, `RESTOCK_FAILURE_REASONS`, `DRAW_SOURCES`, `EXAM_EVENTS`, `LESSON_ATTEMPT_EVENTS`, `AUTH_SERIES`), et trois de leurs types (`RestockStatus`, `RestockFailureReason`, `DrawSource`). Cela garde les labels bornés.
 
 **Séries créées à 0.** À la fin du fichier, des boucles créent toutes les séries importantes avec la valeur 0 :
 
@@ -488,13 +488,16 @@ for (const lang of LEARNABLE_LANGUAGES) {
   ...
 ```
 
-Pourquoi : la fonction `increase()` de Prometheus compare deux valeurs dans le temps. Si une série apparaît pour la première fois déjà à 1, il n'y a pas de valeur « avant », donc ce premier événement est perdu. Commencer à 0 règle le problème. `AUTH_SERIES` fait la même chose pour les routes de login et de signup, avec `httpRequestDuration.zero(...)`, pour les panneaux du dashboard d'auth.
+Pourquoi : la fonction `increase()` de Prometheus compare deux valeurs dans le temps. Si une série apparaît pour la première fois déjà à 1, il n'y a pas de valeur « avant », donc ce premier événement est perdu. Commencer à 0 règle le problème. `AUTH_SERIES` fait la même chose pour les routes de signup, de login et de vérification 2FA, avec `httpRequestDuration.zero(...)`, pour les panneaux du dashboard d'auth.
 
 **Utilisateurs actifs.** Le fichier garde aussi une petite liste en mémoire des utilisateurs vus récemment :
 
 ```ts
 const ACTIVE_WINDOW_MS = 5 * 60_000;
 
+// In memory, so per process: enough for the single API replica, like the
+// restock maps (question-stock.service.ts). Oldest first: a touch moves the
+// user to the end, so pruning stops at the first recent entry.
 const lastSeen = new Map<string, number>();
 
 /** Called by AuthGuard for every signed-in request. */
@@ -540,6 +543,8 @@ export function httpMetrics(req: Request, res: Response, next: NextFunction): vo
 /** The template, never the URL: ids and query strings would make a series per request. */
 export function routeOf(req: Request, status: number): string {
   if (req.route?.path) return `${req.baseUrl ?? ''}${req.route.path}`;
+  // No route: an avatar from express.static, or a request nothing handled. An
+  // abort before routing (499) is unmatched, whatever the default 200 said.
   return status < 400 ? 'static' : 'unmatched';
 }
 ```
@@ -578,7 +583,7 @@ export function startMetricsServer(port: number): Promise<Server> {
 }
 ```
 
-Il utilise le simple module `http` de Node, pas Nest. Seul `GET /metrics` marche ; tout le reste donne 404. `registry.metrics()` construit le texte (et lance les collectors plus bas). Comme il est sur un port séparé que seul Prometheus peut joindre dans le réseau Docker, il n'a besoin ni de login ni de rate limit.
+Il utilise le simple module `http` de Node, pas Nest. Seul `GET /metrics` marche ; tout le reste donne 404. `registry.metrics()` construit le texte (et lance les collectors plus bas). Comme il est sur un port séparé que Caddy ne route jamais et que compose ne publie jamais, seuls les containers du réseau Docker (Prometheus) peuvent le joindre, donc il n'a besoin ni de login ni de rate limit.
 
 `main.ts` fait trois choses après `listen`, pour qu'un démarrage raté ne laisse jamais un port de métriques ouvert : `collectDefaultMetrics({ register: registry })` ajoute les métriques standard du process Node de la bibliothèque (mémoire, CPU, event loop...), `appInfo` est mis à 1 avec la version, et `startMetricsServer(METRICS_PORT)` démarre. Si le port échoue, l'erreur est seulement écrite dans les logs : le monitoring ne doit jamais faire tomber l'app.
 

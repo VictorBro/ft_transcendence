@@ -51,7 +51,7 @@ stockage de fichiers, de la lecture audio et sa propre approche de l'accessibili
 
 Un fichier par langue et par catégorie, dans `content/items/`, nommé d'après les deux valeurs
 qu'il déclare : `de-grammar.json`, `fr-reading.json`. Les noms de champs sont les noms de colonnes
-de `QuestionBank`, donc le seed est une simple insertion.
+de `QuestionBank`, donc le seed copie chaque question telle quelle dans sa ligne, retrouvée par `sourceId`.
 
 Chaque question a la même forme : une question, quatre choix, une seule bonne réponse et un temps
 limite. `content/items/de-grammar.json` :
@@ -177,15 +177,12 @@ Deux tables. Les fichiers JSON sont la source de vérité dans git ; le script d
 ```prisma
 model QuestionBank {
   id         String           @id @default(uuid()) @db.Uuid
-  // The id from the file, and null on a question the LLM wrote at runtime.
-  // That is also how the two are told apart: a question with no sourceId is one
-  // no human reviewed.
   sourceId   String?          @unique
   lang       Language
   level      Level
   topic      Topic
-  category   QuestionCategory                   // vocabulary | grammar | reading
-  readText   String?                            // reading questions only
+  category   QuestionCategory
+  readText   String?
   question   String
   options    String[]
   answer     String
@@ -199,8 +196,13 @@ model QuestionBank {
 }
 
 model UserSeenQuestion {
-  userId     String @db.Uuid
-  questionId String @db.Uuid
+  id           String       @id @default(uuid()) @db.Uuid
+  userId       String       @db.Uuid
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  questionId   String       @db.Uuid
+  questionBank QuestionBank @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
 
   @@unique([userId, questionId])
 }
@@ -209,7 +211,8 @@ model UserSeenQuestion {
 Deux ids, c'est voulu. `id` est la clé interne vers laquelle pointent toutes les autres tables,
 donc rien ne casse quand une question est rechargée. `sourceId` est à toi : c'est par lui que le
 seed trouve la ligne à mettre à jour, et modifier une question dans le fichier JSON change la ligne
-au lieu d'en créer une deuxième.
+au lieu d'en créer une deuxième. Une question écrite par le LLM pendant que l'app tourne n'a pas de
+`sourceId` : c'est comme ça qu'on distingue les deux, et ça veut dire que personne ne l'a relue.
 
 On ne pose jamais deux fois la même question à un apprenant : le tirage exclut toutes les questions
 déjà liées à cet utilisateur par `UserSeenQuestion`. C'est par utilisateur et pas par test, donc

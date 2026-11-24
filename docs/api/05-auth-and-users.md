@@ -262,7 +262,7 @@ The same file holds the constants `RECOVERY_CODE_COUNT = 10`, `RECOVERY_CODE_GRO
 | POST | `/auth/2fa/verify` | `@Public` | login | Finish a pending login with a TOTP or recovery code |
 | GET | `/auth/2fa` | session | — | 2FA status of my account |
 | POST | `/auth/2fa/setup` | session | — | Start enrolment: new secret + QR code (409 if 2FA is already on) |
-| POST | `/auth/2fa/enable` | session | login | Confirm with a first code, turn 2FA on, return recovery codes |
+| POST | `/auth/2fa/enable` | session | login | Confirm with a first code, turn 2FA on, return recovery codes (409 if 2FA is already on) |
 | DELETE | `/auth/2fa` | session | login | Turn 2FA off, needs the password again (204) |
 | POST | `/auth/logout` | `@Public` | — | Destroy the session, clear the cookie (204) |
 | GET | `/auth/me` | session | — | Return the signed-in user |
@@ -494,10 +494,11 @@ sequenceDiagram
   }
 ```
 
-Both need a session. `@CurrentUser()` gives the user the guard loaded. The settings page uses the status to show "on", "off" or "setup started", and how many recovery codes are left.
+Both need a session. `@CurrentUser()` gives the user the guard loaded. The settings page uses the status to show "on" (with how many recovery codes are left) or "off". It does not read `enrolmentPending`: the QR form only shows right after **Set up**.
 Setup answers `409 twoFactor.alreadyEnabled` if 2FA is already on: to change the authenticator you must turn 2FA off first, and that step asks for the password.
 Before #219 (issue #216), setup wrote a new secret even when 2FA was on. That turned 2FA off with only a session, no password.
 The settings panel ([two-factor-panel.tsx](../../apps/web/app/%5Blocale%5D/%28main%29/settings/2fa/two-factor-panel.tsx)) also shows a loading line until the status is known, and a failed status shows an error and **Try again**, never **Set up**.
+If setup or enable answers `409 twoFactor.alreadyEnabled` (2FA turned on in another tab), the panel closes the setup form and loads the status again.
 
 ### POST /auth/2fa/enable
 
@@ -530,6 +531,7 @@ If 2FA is already on, it answers `409 twoFactor.alreadyEnabled` (#216): a sessio
 ```
 
 This is called **re-authentication**: for a sensitive action, a live session is not enough. Answer: 204 No Content.
+The settings panel first checks the password with `DisableTwoFactorSchema`, the schema the API applies (#218, issue #217): an empty password shows `password.required` and sends no request.
 
 ### POST /auth/logout
 
@@ -1096,7 +1098,7 @@ This is the authorization-by-design idea: the id comes from the session, never f
 
 Two fields are not sent by a form but by the web app itself, on this same route:
 
-- `locale`: [locale-sync.tsx](../../apps/web/components/locale-sync.tsx) (`LocaleSync`, in the `(dashboard)` layout) sends `PATCH /users/me { locale }` when the page language differs from `User.locale` (#212, issue #211). The lesson tutor reads `User.locale` to answer in that language ([discussion.service.ts](../../apps/api/src/lessons/discussion.service.ts)).
+- `locale`: [locale-sync.tsx](../../apps/web/components/locale-sync.tsx) (`LocaleSync`, in the `(dashboard)` layout) sends `PATCH /users/me { locale }` when the page language differs from `User.locale` (#212, issue #211). One request at a time; after a failure it tries again on the next page, but not after a 400. The lesson tutor reads `User.locale` to answer in that language ([discussion.service.ts](../../apps/api/src/lessons/discussion.service.ts)).
 - `timeZone`: [time-zone-sync.tsx](../../apps/web/components/time-zone-sync.tsx) sends the browser's time zone.
 
 ### POST /users/me/avatar: the upload

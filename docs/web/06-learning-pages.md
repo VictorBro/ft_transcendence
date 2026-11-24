@@ -120,7 +120,7 @@ What it does:
   breakpoint (a wide screen), so each page pane scrolls on its own.
 - `nav={<DashboardNav />}` is the header nav with the **course switcher** (section 9).
 - The empty `<div id={COURSE_MENU_SLOT}>` is a **slot**: an empty place in the header. The course
-  page later puts its "My course" button into it (section 4.2). `className="contents"` makes the
+  page later puts its "My course" button into it (section 4.5). `className="contents"` makes the
   div itself invisible to the layout, so the button inside behaves as a direct child of the header.
 
 ### `lib/course-menu-slot.ts`
@@ -231,8 +231,8 @@ Three exports:
 Why two regexes? `proxy.ts` (Chapter 2) writes the cookie when you open a course home. Next.js
 **prefetches** links (it loads them in the background before you click). If the cookie were set for
 any `/learn/de/...` URL, a link you only *saw* could change your "last course". The strict regex
-stops that. The file "imports nothing" because `proxy.ts` runs in the middleware, which should stay
-small.
+stops that. The file "imports nothing": its comment says both the middleware (`proxy.ts`) and a client
+component (`CourseSwitcher`) read it.
 
 ---
 
@@ -341,7 +341,7 @@ decides the 404.
       <RefreshOn events={[SERVER_EVENTS.COURSE_UPDATED]} />
 ```
 
-- `empty`: a level may have no ready lesson yet. Then the page shows only a "no lessons ready"
+- `empty`: a level may have no ready lesson yet. Then the page shows only a "Lessons for this level are on their way."
   message instead of the Today card, the challenge, and the attempted and passed stats.
 - `RefreshOn` (Chapter 3) listens on the socket. When the server says `COURSE_UPDATED` (for
   example the level changed in another tab), the page re-renders itself.
@@ -678,7 +678,7 @@ export function rankStartOf(rank: number): number {
 
 - `achievementParams` gives the numbers for an achievement's text. The text is in the message
   files, the numbers come from the shared constants. So the text always matches the rule the API
-  applies ("Pass 10 lessons with 70% or more").
+  applies ("Pass 10 lessons, each at 70% or more.").
 - `rankStartOf` gives where a rank starts. With `RANK_STEP = 100`: rank 1 at 0, rank 2 at 100,
   rank 3 at 300, rank 4 at 600. Each step is 100 more than the last.
 - `loadAchievements(lang)` reads `GET /api/courses/:lang/achievements`. An unavailable API throws
@@ -691,8 +691,10 @@ export function rankStartOf(rank: number): number {
 
 File: [achievements/page.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/achievements/page.tsx>)
 
-The same guards as the course page (courses, language, level), then one API call. Then:
+The same guards as the course page (courses, language, level), then one API call. Like the course
+page, it has `RefreshOn` for `COURSE_UPDATED`. Then:
 
+- A "Back to course" link to `/learn/<lang>`.
 - A summary "5 of 16 earned" with a bar.
 - The achievements in four groups: `lessons`, `streaks`, `challenges`, `levels`.
 - A side column `HowItWorks` with every rule.
@@ -1160,7 +1162,8 @@ A server component. Its guards differ from the course page:
 ```
 
 `apiFind` (Chapter 4) is like `apiGet` but treats a 404 as "not found" instead of an error. So:
-no run yet is normal, and the page shows the start screen.
+no run yet is normal, and the page shows the start screen. A 401 (the session ended between the two
+reads) goes to `/login`, and an unavailable API throws (the error page shows).
 
 ```tsx
   // One run per learner, whatever the language. A live one elsewhere is where

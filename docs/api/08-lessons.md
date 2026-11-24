@@ -296,8 +296,9 @@ This exported function is called by the last page of an attempt (and by `finish(
 It returns the "finish block" shown on the results page: `countedToday`, `doneCount`, `target`, `goalJustMet`,
 `best`, `xpGained`, `challengeJustDone`, `newAchievements`.
 
-Every answer of this service goes through its strict shared schema. One bad card fails the whole reply with a 500,
-on purpose: it means corrupt data (a bug to see), and the strict schema is what makes sure a `brief` never leaves.
+Every answer of this service goes through its shared schema. One bad card fails the whole reply with a 500, on
+purpose: it means corrupt data (a bug to see), and the strict card schema (`LessonCardSchema`) is what makes sure a
+`brief` never leaves.
 
 ## lesson-search.ts — the advanced search
 
@@ -336,8 +337,8 @@ export function bareVowels(text: string): string {
 }
 ```
 
-In German only, the search tries the plain word, then the bare word, then the bare word against a bare title. Not
-in French, where `coeur` would become `cour`, another word.
+In every language the search tries the plain word. In German only, it then tries the bare word, then the bare word
+against a bare title or summary. Not in French, where `coeur` would become `cour`, another word.
 
 ### Step 2 — sort
 

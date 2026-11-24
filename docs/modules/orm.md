@@ -194,8 +194,8 @@ The api e2e tests (`apps/api/test/`) run against a real PostgreSQL. CI first run
   ([prisma.service.ts](../../apps/api/src/prisma/prisma.service.ts)), `FOR UPDATE` on the course row
   ([goal.ts](../../apps/api/src/lessons/goal.ts)) and `FOR SHARE` on the lesson row
   ([attempts.service.ts](../../apps/api/src/lessons/attempts.service.ts)). Prisma has no function
-  for row locks. They use the `$queryRaw` tagged template of the Prisma client, inside Prisma
-  transactions. No `$queryRawUnsafe` or `$executeRawUnsafe` is used anywhere in `apps/api`.
+  for row locks. All three use the `$queryRaw` tagged template of the Prisma client, and the two
+  locks run inside Prisma transactions. No `$queryRawUnsafe` or `$executeRawUnsafe` is used anywhere in `apps/api`.
 - **Errors are matched by code.** The services read `error.code` (`P2002`, `P2025`, `P2003`)
   instead of checking the Prisma error class.
 - **The generated client is not committed.** It is rebuilt in each place that needs it, inside the

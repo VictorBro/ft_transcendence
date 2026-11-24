@@ -262,7 +262,7 @@ Le même fichier contient les constantes `RECOVERY_CODE_COUNT = 10`, `RECOVERY_C
 | POST    | `/auth/2fa/verify` | `@Public` | login                    | Termine une connexion en attente avec un code TOTP ou un code de secours                                                             |
 | GET     | `/auth/2fa`        | session   | —                        | État de la 2FA de mon compte                                                                                                         |
 | POST    | `/auth/2fa/setup`  | session   | —                        | Commence l'inscription : nouveau secret + QR code (409 si la 2FA est déjà active)                                                    |
-| POST    | `/auth/2fa/enable` | session   | login                    | Confirme avec un premier code, active la 2FA, renvoie les codes de secours                                                           |
+| POST    | `/auth/2fa/enable` | session   | login                    | Confirme avec un premier code, active la 2FA, renvoie les codes de secours (409 si la 2FA est déjà active)                           |
 | DELETE  | `/auth/2fa`        | session   | login                    | Désactive la 2FA, redemande le mot de passe (204)                                                                                    |
 | POST    | `/auth/logout`     | `@Public` | —                        | Détruit la session, efface le cookie (204)                                                                                           |
 | GET     | `/auth/me`         | session   | —                        | Renvoie l'utilisateur connecté                                                                                                       |
@@ -494,10 +494,11 @@ sequenceDiagram
   }
 ```
 
-Les deux ont besoin d'une session. `@CurrentUser()` donne l'utilisateur que le guard a chargé. La page des réglages utilise l'état pour afficher « activée », « désactivée » ou « configuration commencée », et combien de codes de secours il reste.
+Les deux ont besoin d'une session. `@CurrentUser()` donne l'utilisateur que le guard a chargé. La page des réglages utilise l'état pour afficher « activée » (avec le nombre de codes de secours restants) ou « désactivée ». Elle ne lit pas `enrolmentPending` : le formulaire du QR code n'apparaît que juste après **Configurer**.
 Setup répond `409 twoFactor.alreadyEnabled` si la 2FA est déjà active : pour changer d'app d'authentification, tu dois d'abord désactiver la 2FA, et cette étape demande le mot de passe.
 Avant #219 (issue #216), setup écrivait un nouveau secret même quand la 2FA était active. Ça désactivait la 2FA avec une simple session, sans mot de passe.
 Le panneau des réglages ([two-factor-panel.tsx](../../apps/web/app/%5Blocale%5D/%28main%29/settings/2fa/two-factor-panel.tsx)) affiche aussi une ligne de chargement tant que l'état n'est pas connu, et un état en échec affiche une erreur et **Réessayer**, jamais **Configurer**.
+Si setup ou enable répond `409 twoFactor.alreadyEnabled` (2FA activée dans un autre onglet), le panneau ferme le formulaire de configuration et recharge l'état.
 
 ### POST /auth/2fa/enable
 
@@ -530,6 +531,7 @@ Si la 2FA est déjà active, elle répond `409 twoFactor.alreadyEnabled` (#216) 
 ```
 
 Ça s'appelle la **ré-authentification** : pour une action sensible, une session active ne suffit pas. Réponse : 204 No Content.
+Le panneau des réglages vérifie d'abord le mot de passe avec `DisableTwoFactorSchema`, le schema que l'API applique (#218, issue #217) : un mot de passe vide affiche `password.required` et n'envoie aucune requête.
 
 ### POST /auth/logout
 
@@ -1096,7 +1098,7 @@ C'est l'idée de l'autorisation par la conception : l'id vient de la session, ja
 
 Deux champs ne sont pas envoyés par un formulaire mais par l'app web elle-même, sur cette même route :
 
-- `locale` : [locale-sync.tsx](../../apps/web/components/locale-sync.tsx) (`LocaleSync`, dans le layout `(dashboard)`) envoie `PATCH /users/me { locale }` quand la langue de la page diffère de `User.locale` (#212, issue #211). Le tuteur de leçon lit `User.locale` pour répondre dans cette langue ([discussion.service.ts](../../apps/api/src/lessons/discussion.service.ts)).
+- `locale` : [locale-sync.tsx](../../apps/web/components/locale-sync.tsx) (`LocaleSync`, dans le layout `(dashboard)`) envoie `PATCH /users/me { locale }` quand la langue de la page diffère de `User.locale` (#212, issue #211). Une seule requête à la fois ; après un échec, il réessaie à la page suivante, mais pas après un 400. Le tuteur de leçon lit `User.locale` pour répondre dans cette langue ([discussion.service.ts](../../apps/api/src/lessons/discussion.service.ts)).
 - `timeZone` : [time-zone-sync.tsx](../../apps/web/components/time-zone-sync.tsx) envoie le fuseau horaire du navigateur.
 
 ### POST /users/me/avatar : l'upload

@@ -63,8 +63,8 @@ flowchart LR
 ```
 
 Caddy (the reverse proxy, the "front door" of the site) sends every path that starts with `/api` to the
-API (`/ws`, the live socket of chapter 3, too), and every other path to Next.js (see
-`infra/caddy/Caddyfile`). So:
+API (`/ws`, the live socket of chapter 3, too), `/grafana` to Grafana, and every other path to
+Next.js (see `infra/caddy/Caddyfile`). So:
 
 - From the **browser**, a client file just calls the short path `/api/courses`. Caddy routes it.
 - From the **Next.js server**, a server file calls `http://api:3001/api/courses` directly over the
@@ -350,8 +350,9 @@ export async function apiGet<Schema extends z.ZodType>(
 Callers of `api.ts`: `session.ts`, `courses.ts`, `friends.ts`, `conversations.ts`, `lessons.ts`, and also
 `lib/lesson.ts`, `lib/achievements.ts` and the placement page (covered in chapters 6 and 7).
 
-**Test:** [api.test.ts](../../apps/web/lib/api.test.ts) checks the URL helpers, the timeout name, and that
-`fetchSession`/`apiGet`/`apiFind` give `signed-out`, `not-found` and `unavailable` in the right cases.
+**Test:** [api.test.ts](../../apps/web/lib/api.test.ts) checks the URL helpers, the timeout name, that
+`fetchSession`/`apiGet`/`apiFind` give `signed-out`, `not-found` and `unavailable` in the right cases,
+`pingApi`, and `settle`.
 
 ### `session.ts` — who is the visitor?
 
@@ -697,8 +698,10 @@ export function setCourseLevel(lang: Language, input: unknown): Promise<ApiResul
 }
 ```
 
-"The level has one writer": choosing a level by hand and finishing the placement exam both end at the
-same API route, so the rule is in one place.
+"The level has one writer": every level change ends in the same API method, `CoursesService.setLevel`.
+This route calls it for a level picked by hand; the placement exam calls it directly when it ends
+(`placement.service.ts`), without this route. The code comment above still says the exam calls the
+endpoint, which is out of date.
 
 Callers: `onboarding/choose-course.tsx`, `onboarding/choose-level.tsx`, `start-level.tsx`,
 `direct-level-picker.tsx`, `components/change-level.tsx`.

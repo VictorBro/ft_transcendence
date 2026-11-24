@@ -705,7 +705,7 @@ et il échoue pour la personne qui a écrit l'item au lieu de celui qui lance le
 
 ## 7. Le dossier `coverage/`
 
-`pnpm --filter @ft/api test:cov` écrit [apps/api/coverage/](../../apps/api/coverage). Il est **généré** et listé
+`pnpm --filter @ft/api test:cov` écrit `apps/api/coverage/`. Il est **généré** et listé
 dans `.gitignore`, donc il n'est jamais commité.
 
 ```

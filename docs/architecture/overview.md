@@ -1,6 +1,7 @@
 # Architecture
 
-How the containers fit together, in production and in development.
+How the containers fit together, in production and in development. The server deployment
+(`compose.deploy.yml`) is in [operations/deployment.md](../operations/deployment.md).
 Companions: [architecture/technical-plan.md](technical-plan.md) (decisions and rationale),
 [operations/versions.md](../operations/versions.md) (what moves together, what is held back), [subject/summary.md](../subject/summary.md) (requirements).
 
@@ -141,7 +142,7 @@ sequenceDiagram
     A-->>B: 200 SessionUser + Set-Cookie ft.sid
 
     Note over B,C: next navigation
-    B->>C: GET /learn
+    B->>C: GET /en/learn
     C->>W: proxy
     W->>A: GET /api/auth/me, cookie forwarded<br/>(http://api:3001, not through caddy)
     A->>R: look up session
@@ -175,12 +176,12 @@ sequenceDiagram
     participant N as api (NestJS)
     participant P as db
 
-    Note over B,N: on load: wss /ws/ with ft.sid, joins user:<id>
+    Note over B,N: on load: wss /ws/ with ft.sid, joins user:#lt;id#gt;
     A->>C: PATCH /api/courses/de {dailyGoal}
     C->>N: proxy
     N->>P: transaction, COMMIT
     N-->>A: 200 Course
-    N->>C: course:updated {lang} to room user:<id>
+    N->>C: course:updated {lang} to room user:#lt;id#gt;
     C->>B: over the open WebSocket
     B->>B: router.refresh()
     B->>C: GET /en/learn/de (server components)
@@ -420,7 +421,8 @@ seed and every authored file under `content/`:
 | `content/lessons/` | The content file of each written lesson that is not vocabulary, 108 today |
 
 The image only **carries** them. Nothing in it writes or generates content: the
-`migrate` service runs `prisma migrate deploy`, then `db:seed`, which validates
+`migrate` service of `compose.deploy.yml` (locally, `make migrate` then `make seed`) runs
+`prisma migrate deploy`, then `db:seed`, which validates
 the files and sets `Lesson.ready` ([content/lessons.md](../content/lessons.md) §4). The authoring
 kit's scripts are in the image too, since they live in `apps/api/scripts`, but
 nothing runs them there. The `api` runtime image (`prod` stage) has neither the
@@ -437,11 +439,13 @@ files that start it.
 
 ```mermaid
 flowchart TB
-    pr["Pull request"] --> ci & e2e & hygiene & images & devcontainer
+    pr["Pull request"] --> ci & e2e & hygiene & devcontainer
+    push["Push to any branch"] --> images
 
     subgraph ci["ci.yml"]
         c1["format · lint · typecheck<br/>TS version assert"] --> c2["unit tests + coverage"] --> c3["Supertest against<br/>real Postgres + Redis"]
         c4["monitoring config<br/>promtool · amtool · caddy validate"]
+        c5["package tests · build<br/>apps compile separately"]
     end
 
     subgraph e2e["e2e.yml, two jobs per browser (lesson, rest)"]
@@ -450,7 +454,7 @@ flowchart TB
     end
 
     subgraph hygiene["hygiene.yml"]
-        h1["gitleaks · commitlint<br/>.env drift · migrate diff"]
+        h1["gitleaks · commitlint · PR title<br/>.env drift · migrate diff"]
     end
 
     subgraph images["images.yml"]

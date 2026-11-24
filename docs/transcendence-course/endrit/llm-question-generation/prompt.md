@@ -256,7 +256,7 @@ niveau de la cellule, jamais celui du modèle.
 
 **Q : Pourquoi une question par topic en grammaire ?**
 R : Pour couvrir tous les points de grammaire de façon équilibrée, et le schéma Zod le vérifie
-(`new Set(topics).size === TOPICS.length`).
+(`new Set(items.map((i) => i.topic)).size === TOPICS.length`).
 
 **Q : Pourquoi des exemples en anglais pour toutes les langues ?**
 R : Un seul texte à maintenir. Le prompt dit de ne pas les copier : ils montrent la **difficulté**,

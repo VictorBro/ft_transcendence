@@ -30,16 +30,16 @@ Pour refaire le calcul : `git fetch origin '+refs/pull/*/head:refs/pr/*'`, puis 
 | --- | --- | --- | --- |
 | Victor | `VictorBro` | `VictorBro <vmb1111@…>` | [victor/](transcendence-course/victor/README.md) |
 | Endrit | `VYAntares` | `VYAntares`, `EA` (même email), `eahmeti` (login 42) | [endrit/](transcendence-course/endrit/README.md) |
-| Bastian | `bastian-schnitzler` | `bastian-schnitzler`, `Bastian Schnitzler`, `Bastian`, `baschni`, `Heinz Ruehman` (même email `baschni@…`) | [bastian/](transcendence-course/bastian/README.md) |
+| Bastian | `bastian-schnitzler` | `bastian-schnitzler`, `Bastian Schnitzler`, `Bastian`, `baschni`, `Heinz Ruehman` (email `baschni@…` ou adresse `noreply` GitHub) | [bastian/](transcendence-course/bastian/README.md) |
 | Anaïs | `avarrett` | `ninisse <avarretta@…>` | [anais/](transcendence-course/anais/README.md) |
-| Luca | `luca-mattei` | `luca-mattei`, `lumattei`, `Luca Mattei` (même email `luca@…`) | [luca/](transcendence-course/luca/README.md) |
+| Luca | `luca-mattei` | `luca-mattei`, `lumattei`, `Luca Mattei` (email `luca@…` ou adresse `noreply` GitHub) | [luca/](transcendence-course/luca/README.md) |
 
 ## En un coup d'œil
 
 | Personne | PR (auteur) | PR (a aidé) | Fichiers touchés | dont code (`apps`, `packages`, `e2e`) |
 | --- | ---: | ---: | ---: | ---: |
 | Victor | 23 | 11 | 448 | 333 |
-| Endrit | 27 | 5 | 709 | 262 |
+| Endrit | 27 | 5 | 710 | 262 |
 | Bastian | 21 | 1 | 212 | 165 |
 | Anaïs | 9 | 0 | 88 | 79 |
 | Luca | 11 | 0 | 171 | 159 |
@@ -191,7 +191,7 @@ A aussi écrit des commits dans les PR des autres :
 - `.github/workflows/` : `ci.yml` (Luca, Anaïs, Endrit), `devcontainer.yml`, `e2e.yml` (Bastian), `hygiene.yml`, `images.yml` (Endrit)
 - `.husky/` : `commit-msg`, `pre-commit` (Bastian), `pre-push`
 - `.vscode/` : `extensions.json`, `settings.json`
-- `/` : `.editorconfig`, `.env.example` (Endrit, Luca, Anaïs), `.gitattributes`, `.gitignore` (Endrit, Bastian), `.nvmrc`, `.prettierignore`, `.prettierrc`, `CONTRIBUTING.md`, `Makefile` (Bastian, Endrit, Luca), `README.md` (Endrit, Bastian, Luca), `compose.deploy.proxy.yml`, `compose.deploy.yml` (Endrit, Luca), `compose.override.yml` (Bastian), `compose.prod.yml`, `compose.yml` (Anaïs, Luca, Endrit), `package.json`, `pnpm-lock.yaml` (Luca, Anaïs, Bastian, Endrit), `pnpm-workspace.yaml` (Luca, Endrit), `turbo.json`
+- `/` : `.editorconfig`, `.env.example` (Endrit, Luca, Anaïs), `.gitattributes`, `.gitignore` (Endrit, Bastian), `.nvmrc`, `.prettierignore` (Endrit), `.prettierrc`, `CONTRIBUTING.md`, `Makefile` (Bastian, Endrit, Luca), `README.md` (Endrit, Bastian, Luca), `compose.deploy.proxy.yml`, `compose.deploy.yml` (Endrit, Luca), `compose.override.yml` (Bastian), `compose.prod.yml`, `compose.yml` (Anaïs, Luca, Endrit), `package.json`, `pnpm-lock.yaml` (Luca, Anaïs, Bastian, Endrit), `pnpm-workspace.yaml` (Luca, Endrit), `turbo.json`
 - `infra/caddy/` : `Caddyfile` (Bastian), `Caddyfile.prod` (Bastian)
 - `infra/deploy/` : `.env.example` (Endrit, Luca), `deploy.sh`, `ft-deploy.service`, `ft-deploy.timer`
 - `infra/monitoring/alertmanager/` : `Dockerfile`, `alertmanager.yml`, `entrypoint.sh`, `silent.yml`
@@ -246,7 +246,7 @@ A aussi écrit des commits dans les PR des autres :
 - #104 feat: 50 placement and result
 - #107 feat: 105 fr outline A1
 
-### Ses fichiers (799)
+### Ses fichiers (710)
 
 #### API (`apps/api`)
 
@@ -364,7 +364,7 @@ A aussi écrit des commits dans les PR des autres :
 - `.devcontainer/` : `devcontainer.json` (Victor)
 - `.github/` : `CODEOWNERS` (Victor), `pull_request_template.md` (Victor)
 - `.github/workflows/` : `ci.yml` (Victor, Luca, Anaïs), `images.yml` (Victor)
-- `/` : `.env.example` (Victor, Luca, Anaïs), `.gitignore` (Victor, Bastian), `Makefile` (Victor, Bastian, Luca), `README.md` (Victor, Bastian, Luca), `compose.deploy.yml` (Victor, Luca), `compose.yml` (Victor, Anaïs, Luca), `pnpm-lock.yaml` (Victor, Luca, Anaïs, Bastian), `pnpm-workspace.yaml` (Victor, Luca)
+- `/` : `.env.example` (Victor, Luca, Anaïs), `.gitignore` (Victor, Bastian), `.prettierignore` (Victor), `Makefile` (Victor, Bastian, Luca), `README.md` (Victor, Bastian, Luca), `compose.deploy.yml` (Victor, Luca), `compose.yml` (Victor, Anaïs, Luca), `pnpm-lock.yaml` (Victor, Luca, Anaïs, Bastian), `pnpm-workspace.yaml` (Victor, Luca)
 - `infra/deploy/` : `.env.example` (Victor, Luca)
 - `infra/monitoring/grafana/` : `Dockerfile` (Victor)
 - `infra/monitoring/prometheus/` : `Dockerfile` (Victor)

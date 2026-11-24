@@ -128,8 +128,9 @@ Certaines pages ont été construites pour que le HTML du serveur suffise tout s
    sur Mac), tape "Disable JavaScript" et appuie sur Entrée. Garde les outils de développement ouverts : le
    réglage ne dure que tant qu'ils sont ouverts. (Firefox : `about:config`, mets
    `javascript.enabled` à `false`.)
-7. Recharge `/en/learn/fr`. Les leçons du jour, la progression, la ligne du rang et "Today's
-   challenge" sont toujours là. Clique sur **Achievements and rules** : la page des succès s'affiche.
+7. Recharge `/en/learn/fr` dans une fenêtre d'au moins 1024 px de large. Les leçons du jour, la
+   progression, la ligne du rang et "Today's challenge" sont toujours là. (Dans une fenêtre plus étroite,
+   le rang et le défi sont derrière le bouton **My course**, qui a besoin de JavaScript.) Clique sur **Achievements and rules** : la page des succès s'affiche.
 8. Va sur `/en/learn/fr/lessons`. Coche **Grammar**, mets **Direction** sur **Descending**, et
    clique sur **Apply**. L'URL a maintenant `kind=grammar` et `dir=desc`, et la liste suit. Clique sur
    **Clear filters**, puis sur **2** dans la pagination sous la liste : la page 2 s'ouvre. Tout ça a tourné sur le

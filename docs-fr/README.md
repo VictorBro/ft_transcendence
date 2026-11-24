@@ -31,7 +31,7 @@ ouvre son [index.html](index.html) depuis ton clone.
 | ---------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [index.html](index.html)                       | La version française de la page d'accueil du site GitHub Pages : le produit sur une page, les milestones et leurs issues avec leur état en direct depuis GitHub |
 | [backlog.md](backlog.md)                       | Le travail qu'on sait devoir faire, pas encore planifié                                                                                                         |
-| [code-ownership.md](../docs/code-ownership.md) | Qui a touché quel fichier, et dans quelles pull requests : le point de départ de chaque dossier de transcendence-course/                                        |
+| [code-ownership.md](../docs/code-ownership.md) | Qui a touché quel fichier, et dans quelles pull requests, en français : le point de départ de chaque dossier de transcendence-course/                           |
 
 ### api/
 

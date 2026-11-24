@@ -765,7 +765,7 @@ flowchart LR
   ST -->|"useUnread(id)"| ROW["ConversationRow badge"]
   ST -->|"useUnreadTotal"| HDR["Header UnreadTotalBadge"]
   CT -->|"dm:read"| SO
-  SO -->|dm:read| API
+  SO -->|"dm:read"| API
 ```
 
 Tests: [unread.test.ts](../../apps/web/lib/unread.test.ts) — nothing before the first snapshot, replace not merge,
@@ -780,7 +780,15 @@ Chapter 3 covers [presence.ts](../../apps/web/lib/presence.ts) and the socket li
 thread header:
 
 ```tsx
-export function AvatarWithDot({ user, online, size }: { user: PublicUser; online?: boolean; size: number }) {
+export function AvatarWithDot({
+  user,
+  online,
+  size,
+}: {
+  user: PublicUser;
+  online?: boolean;
+  size: number;
+}) {
   return (
     <span className="relative shrink-0">
       <Avatar src={user.avatarUrl} name={user.displayName} size={size} />

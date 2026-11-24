@@ -129,8 +129,8 @@ recovery codes in one transaction. Turning it on again always starts with a new 
 ### Monitoring
 
 The API counts `POST /api/auth/2fa/verify` answers with status `401`, and the Grafana API
-dashboard has a "2FA failures" panel. The `SignInFailuresSpike` alert counts failed sign-ins and
-2FA checks together. See [../operations/monitoring.md](../operations/monitoring.md) and
+dashboard has a "2FA failures" panel. The `SignInFailuresSpike` alert counts failed or throttled sign-ins and
+2FA checks together (`401` or `429`). See [../operations/monitoring.md](../operations/monitoring.md) and
 [metrics.ts](../../apps/api/src/metrics/metrics.ts).
 
 ## Where the code is
@@ -258,5 +258,5 @@ From `git log --follow` on the 2FA files and `gh pr view` on each pull request.
 | --- | --- | --- | --- |
 | Victor | `VictorBro` | The whole module: `TwoFactorService`, the 2FA routes and the `202` login step, the two session keys, the `RecoveryCode` table and migration, the shared schemas, the login form and the settings page, and the 2FA tests in the API and in the browser. Later: the per-address limit (`ThrottleByIp`), and closing the old session's WebSockets when 2FA changes. | #4, #5, #21 (merged into #20), #27, #181 |
 | Luca | `luca-mattei` | Moved the login and 2FA pages under `[locale]` and translated their texts into English, French and German; the service now sends error codes instead of English sentences, with the "validation messages" test. | #26 |
-| Endrit | `VYAntares` (commits as `EA`) | Moved the login and 2FA pages into the shared `(main)` layout; gave every 2FA schema rule an error code, so a missing field is also translated. Later: the turn-off password checked in the browser, and setup and enable refused while 2FA is on. | #20, #126, #216, #218, #219 |
+| Endrit | `VYAntares` (commits as `EA`) | Moved the login and 2FA pages into the shared `(main)` layout; gave every 2FA schema rule an error code, so a missing field is also translated. Later: the turn-off password checked in the browser, and setup and enable refused while 2FA is on. | #20, #126, #216, #217, #218, #219 |
 | Bastian | `bastian-schnitzler` | The settings page now loads the 2FA status through the shared API client, which checks the answer with `TwoFactorStatusSchema`. | #57 |

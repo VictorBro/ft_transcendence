@@ -63,8 +63,8 @@ flowchart LR
 ```
 
 Caddy (le reverse proxy, la « porte d'entrée » du site) envoie chaque chemin qui commence par `/api` à
-l'API (`/ws`, le socket en direct du chapitre 3, aussi), et tous les autres chemins à Next.js (voir
-`infra/caddy/Caddyfile`). Donc :
+l'API (`/ws`, le socket en direct du chapitre 3, aussi), `/grafana` à Grafana, et tous les autres
+chemins à Next.js (voir `infra/caddy/Caddyfile`). Donc :
 
 - Depuis le **navigateur**, un fichier client appelle juste le chemin court `/api/courses`. Caddy fait
   le routage.
@@ -172,7 +172,7 @@ sequenceDiagram
 
 ## Séquence 2 : un client component appelle l'API après un clic
 
-Exemple : le bouton « Add friend » (« Ajouter un ami ») dans `components/friend-buttons.tsx`.
+Exemple : le bouton « Add friend » (« Ajouter en ami ») dans `components/friend-buttons.tsx`.
 
 ```mermaid
 sequenceDiagram
@@ -365,8 +365,8 @@ Les appelants de `api.ts` : `session.ts`, `courses.ts`, `friends.ts`, `conversat
 aussi `lib/lesson.ts`, `lib/achievements.ts` et la page de placement (vus aux chapitres 6 et 7).
 
 **Test :** [api.test.ts](../../apps/web/lib/api.test.ts) vérifie les helpers d'URL, le nom du timeout,
-et que `fetchSession`/`apiGet`/`apiFind` donnent `signed-out`, `not-found` et `unavailable` dans les bons
-cas.
+que `fetchSession`/`apiGet`/`apiFind` donnent `signed-out`, `not-found` et `unavailable` dans les bons
+cas, `pingApi`, et `settle`.
 
 ### `session.ts` — qui est le visiteur ?
 
@@ -739,9 +739,11 @@ export function setCourseLevel(lang: Language, input: unknown): Promise<ApiResul
 }
 ```
 
-« The level has one writer » (le niveau n'a qu'un seul auteur) : choisir un niveau à la main et finir
-l'examen de placement arrivent tous les deux sur la même route d'API, donc la règle est à un seul
-endroit.
+« The level has one writer » (le niveau n'a qu'un seul auteur) : chaque changement de niveau finit dans
+la même méthode de l'API, `CoursesService.setLevel`. Cette route l'appelle pour un niveau choisi à la
+main ; l'examen de placement l'appelle directement quand il se termine (`placement.service.ts`), sans
+passer par cette route. Le commentaire du code au-dessus dit encore que l'examen appelle cette route :
+il n'est plus à jour.
 
 Appelants : `onboarding/choose-course.tsx`, `onboarding/choose-level.tsx`, `start-level.tsx`,
 `direct-level-picker.tsx`, `components/change-level.tsx`.

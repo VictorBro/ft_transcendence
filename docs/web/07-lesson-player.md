@@ -515,7 +515,7 @@ useEffect(() => {
 3. It loads the drafts from `localStorage` (only now: the server has no `localStorage`).
 4. On an **exam** page, the `remainingMs` that came with the HTML is old: it was counted before the HTML, the JavaScript download and the hydration. So it reads the attempt again (`readAttempt`) and notes `asked = Date.now()` **before** the request. Using the request start (not its arrival) means the tab's deadline is never later than the server's. Many checks (`live`, `activeView`, `sent`) make sure a late answer does not rewind a player that has already moved on.
 
-Two more effects:
+Three more effects:
 
 - Drafts follow the learner into storage: `saveDrafts(...)` every time `drafts` changes (once loaded, and until the attempt is over).
 - When the page changes, the new page's `<h1>` takes the focus (`heading.current?.focus(...)`), so a screen reader says where the learner is.
@@ -899,7 +899,7 @@ Two columns: options on the left, units' boxes on the right. Select one side, th
 
 ### [flashcards.tsx](../../apps/web/components/lesson/flashcards.tsx) — "B3"
 
-Cards with the translation on the front and the course-language word on the back (plus an optional explanation and example, each with a Listen button). Two sets: `turned` (turned at least once: counts) and `back` (showing the back now). Until every card was turned, it holds the page:
+Cards with the translation on the front and the course-language word on the back (plus an optional explanation and example). The word and the example each have a Listen button. Two sets: `turned` (turned at least once: counts) and `back` (showing the back now). Until every card was turned, it holds the page:
 
 ```tsx
 useEffect(() => {
@@ -1102,6 +1102,12 @@ try {
       }
     }
   }
+} catch {
+  // Stop, or the connection dropped while reading.
+  return cut;
+} finally {
+  // Closes the response when we leave before its end; nothing to do after it.
+  reader.cancel().catch(() => undefined);
 }
 ```
 

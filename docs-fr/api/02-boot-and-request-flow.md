@@ -29,7 +29,7 @@ flowchart TD
     D --> D2["Pipe global + filter global"]
     D --> D3["Adaptateur WebSocket + Swagger"]
     B --> E["app.listen(3001, '0.0.0.0')"]
-    E --> E1["init : les modules se connectent (Postgres, Redis), body parser, routes"]
+    E --> E1["init : body parser, gateways, routes, puis onModuleInit (Postgres, Redis se connectent)"]
     B --> F["Métriques : métriques par défaut, infos de l'app, serveur sur :9464"]
 ```
 
@@ -81,7 +81,7 @@ Ligne par ligne :
 - `import 'reflect-metadata'` (première ligne du fichier) : une petite librairie qui permet aux décorateurs comme `@Injectable()` de stocker des informations sur les classes. Nest a besoin qu'elle soit chargée avant tout le reste.
 - `NestFactory.create(AppModule)` : Nest lit `AppModule`, suit chaque `imports: [...]`, et construit chaque provider qu'il trouve (injection de dépendances, voir [01-big-picture.md](01-big-picture.md)). Il crée aussi un serveur Express à l'intérieur. Attention : le simple fait d'_importer_ certains fichiers exécute déjà du code, avant même `bootstrap()`. Par exemple, `app.setup.ts` lit `AVATAR_STORAGE_DIR` au moment de l'import, et `throttler/rate-limits.ts` lit les variables de rate limit. Un `AVATAR_STORAGE_DIR` manquant, ou une rate limit qui n'est pas un nombre entier positif, arrête l'API à ce moment-là, avant que quoi que ce soit écoute. (Une rate limit vide garde sa valeur par défaut.)
 - `configureApp(app)` : ajoute toutes les règles globales (section suivante).
-- `app.listen(port, '0.0.0.0')` : appelle d'abord le `init()` de Nest. Pendant `init()`, chaque `onModuleInit()` s'exécute, donc `PrismaService` se connecte à Postgres et `RedisService` se connecte à Redis (voir [03-infrastructure.md](03-infrastructure.md)). Nest ajoute aussi son body parser JSON et les routes. Ensuite le serveur HTTP démarre. `0.0.0.0` veut dire « écoute sur toutes les cartes réseau », pour que les autres containers (Caddy, l'app web) puissent l'atteindre. `localhost` accepterait seulement les appels venant du même container.
+- `app.listen(port, '0.0.0.0')` : appelle d'abord le `init()` de Nest. `init()` ajoute le body parser JSON de Nest, branche les gateways, ajoute les routes, puis lance chaque `onModuleInit()` : `PrismaService` se connecte à Postgres et `RedisService` se connecte à Redis (voir [03-infrastructure.md](03-infrastructure.md)). Ensuite le serveur HTTP démarre. `0.0.0.0` veut dire « écoute sur toutes les cartes réseau », pour que les autres containers (Caddy, l'app web) puissent l'atteindre. `localhost` accepterait seulement les appels venant du même container.
 - Après `listen` : la partie métriques. `collectDefaultMetrics` ajoute les chiffres standard de Node.js (mémoire, CPU, event loop). `appInfo` enregistre la version qui tourne. `startMetricsServer` ouvre un deuxième petit serveur HTTP sur le port 9464 pour Prometheus. S'il échoue, l'erreur est seulement loguée : l'app continue de marcher.
 - `void bootstrap()` : lance la fonction async. `void` dit à TypeScript « je sais que ça renvoie une Promise et je ne l'attends pas ».
 
@@ -99,7 +99,7 @@ Ligne par ligne :
 export function configureApp(app: INestApplication): void {
 ```
 
-Les tests e2e (dans `apps/api/test/`, voir [10-tests.md](10-tests.md)) construisent l'app eux-mêmes et envoient de vraies requêtes HTTP avec Supertest. Si les règles globales étaient dans `bootstrap()`, les tests tourneraient _sans_ sessions, sans le pipe de validation, sans le filter d'erreurs. Ils testeraient une autre app. Donc les deux utilisent la même fonction :
+Les tests e2e (dans `apps/api/test/`, voir [10-tests.md](10-tests.md)) construisent l'app eux-mêmes (tous sauf `demo` et `seed`, qui lancent le code du seed sans app) et envoient de vraies requêtes HTTP avec Supertest. Si les règles globales étaient dans `bootstrap()`, les tests tourneraient _sans_ sessions, sans le pipe de validation, sans le filter d'erreurs. Ils testeraient une autre app. Donc les deux utilisent la même fonction :
 
 ```ts
 // apps/api/test/app.e2e-spec.ts

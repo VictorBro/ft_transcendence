@@ -22,7 +22,7 @@
 ## 1. C'est quoi une leçon ?
 
 Notre application apprend des langues (français, allemand, anglais).
-Une **leçon** est un petit cours de 10 à 20 minutes : on apprend, on s'entraîne, puis on passe un examen chronométré.
+Une **leçon** est un petit cours de 8 à 37 minutes (les leçons de `content/` aujourd'hui) : on apprend, on s'entraîne, puis on passe un examen chronométré.
 
 Une leçon, c'est **un ou deux fichiers JSON**, écrits à l'avance et rangés dans le dépôt :
 
@@ -127,7 +127,7 @@ Une seule source de vérité, pas de copie.
 | Les **tests de l'API** | [`apps/api/src/lessons/lesson-files.spec.ts`](../../../../apps/api/src/lessons/lesson-files.spec.ts), [`lesson-complete.spec.ts`](../../../../apps/api/src/lessons/lesson-complete.spec.ts) | `validateLesson`, `hasContentFile` | vérifient **tous** les fichiers de `content/` en CI |
 | La **discussion** avec le tuteur (PR #201, Luca) | [`apps/api/src/lessons/discussion.service.ts`](../../../../apps/api/src/lessons/discussion.service.ts) | `lessons.isSupportedKind`, `lessons.briefSchema` | relit le brief stocké en base avant d'écrire le prompt du tuteur |
 | Le **front** | [`apps/web/components/lesson/rich-text.tsx`](../../../../apps/web/components/lesson/rich-text.tsx) | `lessons.parseRichText` | affiche les explications en Markdown simple |
-| Le lecteur de leçon | `packages/shared/src/lessons/player/` | types des schémas, quelques constantes (`GenderSchema`, `SKIM_FOCUS`, `TRUE_FALSE_LABELS`, `STRIPPED_ARTICLES`), `vocabularyLesson`, `functionsTerms`, `COPY` | (hors périmètre) |
+| Le lecteur de leçon | `packages/shared/src/lessons/player/` | types des schémas, quelques constantes (`GenderSchema`, `SKIM_FOCUS`, `TRUE_FALSE_LABELS`), `vocabularyLesson`, `functionsTerms`, `COPY` | (hors périmètre) |
 
 ```mermaid
 sequenceDiagram

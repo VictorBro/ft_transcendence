@@ -164,6 +164,7 @@ Dans le [package.json](../../package.json) racine, turbo lance le même script d
 ```json
     "test": "turbo run test",
     "test:cov": "turbo run test:cov",
+    ...
     "ci": "pnpm run format:check && turbo run lint typecheck test:cov build"
 ```
 
@@ -531,8 +532,8 @@ Les règles principales de [playwright.config.ts](../../e2e/playwright.config.ts
   `https://localhost`).
 - `retries: 0` : un test qui ne passe qu'à la deuxième fois veut dire une **app** instable, donc il doit échouer.
 - `forbidOnly` en CI : un `test.only` oublié ne lancerait qu'un seul test en silence et paraîtrait quand même vert.
-- Chaque spec tourne sur les trois navigateurs.
-- `restart.spec.ts` (avec le tag `@restart`) redémarre l'API sous une page ouverte, donc il tourne seul, après les autres.
+- Chaque spec tourne sur les trois projets (chromium, firefox, webkit). Quelques tests se sautent eux-mêmes hors de Chromium avec un `test.skip` qui donne la raison : `restart.spec.ts`, cinq endroits dans `lesson.spec.ts` (le test du temps écoulé pendant l'absence, et quatre blocs `describe` : les trois « every French A1 … lesson », qui bouclent sur beaucoup de leçons, et la leçon de vocabulaire avec une voix) et un dans `level-complete.spec.ts`. Les deux tests de `discussion.spec.ts` qui lisent la réponse du tuteur de fixture se sautent sur une stack qui lance un autre `LLM_PROVIDER` (la CI lance le fixture).
+- `restart.spec.ts` (avec le tag `@restart`) redémarre l'API sous une page ouverte, donc il tourne seul, après les autres, sur Chromium seulement (`test:e2e:restart`).
 
 Deux specs sont des contrôles spéciaux :
 
@@ -549,12 +550,12 @@ conversation d'un ancien ami n'a pas de zone de saisie, et les heures s'affichen
 
 Comment les lancer :
 
-| Où                                    | Commande                                                                                                                                                                                            |
-| ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| En local, stack déjà lancée           | `make playwright` (Chromium) ou `make playwright-all` (trois navigateurs)                                                                                                                           |
-| En local, en démarrant aussi la stack | `make test-e2e`                                                                                                                                                                                     |
-| Dernier rapport                       | `make report` (sert `e2e/playwright-report` sur le port 9323)                                                                                                                                       |
-| GitHub                                | [e2e.yml](../../.github/workflows/e2e.yml) : 3 navigateurs x 2 parties (`lesson.spec.ts` seul, et le reste), chacune sur sa propre stack ; un job de contrôle final `playwright (production stack)` |
+| Où                                    | Commande                                                                                                                                                                                                                                                     |
+| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| En local, stack déjà lancée           | `make playwright` (Chromium) ou `make playwright-all` (trois navigateurs)                                                                                                                                                                                    |
+| En local, en démarrant aussi la stack | `make test-e2e`                                                                                                                                                                                                                                              |
+| Dernier rapport                       | `make report` (sert `e2e/playwright-report` sur le port 9323)                                                                                                                                                                                                |
+| GitHub                                | [e2e.yml](../../.github/workflows/e2e.yml) : 3 navigateurs x 2 parties (`lesson.spec.ts` seul, et le reste), chacune sur sa propre stack ; le job chromium « rest » lance aussi `restart.spec.ts` ; un job de contrôle final `playwright (production stack)` |
 
 En cas d'échec, la CI envoie `e2e/playwright-report` et `e2e/test-results` (traces et captures d'écran).
 

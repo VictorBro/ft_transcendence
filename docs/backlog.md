@@ -12,7 +12,9 @@ per-member contributions, and the resources with how AI was used. Tracked in
 
 ## No TODOs, no commented-out code
 
-Nothing ships with a `TODO` or a commented-out block. One left in source today:
+Nothing ships with a `TODO` or a commented-out block. Two left in source today:
 
 - `.github/workflows/images.yml`, the prune of untagged image versions and of
   branch tags whose branch is gone.
+- `.devcontainer/zshrc`, a commented-out `export PATH="/workspace/.devcontainer:$PATH"` line
+  above the aliases.

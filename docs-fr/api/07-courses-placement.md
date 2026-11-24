@@ -180,8 +180,10 @@ setGoal(
 - `@ApiParam` est écrit à la main parce que `Language` est seulement un type, et Swagger ne peut pas voir les types
   à l'exécution.
 - Le controller passe `new Date()` au service, pour qu'un test puisse donner n'importe quel "maintenant".
-- `PATCH /courses/:lang/level` est utilisé dans trois cas (d'après son résumé) : l'apprenant a sauté l'onboarding,
-  le résultat du placement, ou l'apprenant choisit un autre niveau à la main.
+- Le résumé de `PATCH /courses/:lang/level` cite trois cas : l'apprenant a sauté l'onboarding, le résultat du
+  placement, ou l'apprenant choisit un autre niveau à la main. En vrai, l'app web l'appelle pour l'onboarding et pour
+  un niveau choisi à la main. Le résultat du placement ne passe pas par cette route : `PlacementService` appelle
+  directement `CoursesService.setLevel` (plus bas).
 
 ### `courses.service.ts`
 
@@ -191,8 +193,10 @@ setGoal(
 const COURSE_SELECT = { lang: true, dailyGoal: true, level: true } as const;
 ```
 
-Chaque lecture ne demande que ces trois colonnes, donc les ids, la série (streak) et les XP ne fuient jamais dans une
-réponse de cours.
+Les lectures et les écritures de `listCoursesUser`, `createCourse` et `write` ne demandent que ces trois colonnes.
+`setGoal` lit la ligne entière (les fonctions de l'objectif prennent toute la ligne), mais sa réponse passe par `CourseSchema.parse`,
+qui ne garde que ces trois champs. Donc les ids, la série (streak) et les XP ne fuient jamais dans une réponse de
+cours.
 
 **`listCoursesUser`** lit l'utilisateur avec ses cours (`userLevels`), du plus ancien au plus récent, et son
 `activeLang`. Il lit **à travers l'utilisateur** (`where: { id: userId }`), donc les cours d'un autre utilisateur sont

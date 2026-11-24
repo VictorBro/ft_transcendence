@@ -108,7 +108,7 @@ Both apps use the same stage names; the api adds a `prune` stage between `build`
 | `base` | `node:24.22.3-trixie-slim`, pnpm from npm | |
 | `deps` | `pnpm install --frozen-lockfile`, BuildKit cache mounts | |
 | `dev` | full deps, source bind-mounted, `pnpm dev` | compose.override |
-| `ci` | deps + source, runs tests, emits coverage | e2e/test jobs in CI (§5) |
+| `ci` | deps + source, runs tests, emits coverage | the unit tests job in CI (§5) |
 | `build` | compiles (Next standalone / Nest dist) | |
 | `prod` | runtime only, non-root, tini, HEALTHCHECK | compose.prod, GHCR |
 
@@ -185,7 +185,7 @@ where it matters and keeps feedback fast where it doesn't.
 
 | Workflow | Trigger | Jobs |
 |---|---|---|
-| `ci.yml` | PR, push to `main` | Native: format check, lint, typecheck, TS-version assert (operations/versions.md, held back: TypeScript). Docker `ci` stage: unit tests + coverage, Supertest e2e (Postgres and Redis run as job services). Then build. |
+| `ci.yml` | PR, push to `main` | Native: format check, lint, typecheck, TS-version assert (operations/versions.md, held back: TypeScript), apps compile separately, monitoring config. Docker `ci` stage: unit tests + coverage, Supertest e2e (Postgres and Redis run as job services). Then package tests and build. |
 | `e2e.yml` | PR, push to `main` | Two jobs per browser (`lesson`, `rest`), each with a prod-target compose up, then Playwright in its own image (browsers and their system packages included): user flows, **console gate**, **legal pages** (`/privacy`, `/terms` return 200 with real content). |
 | `hygiene.yml` | PR, push to `main` | gitleaks, commitlint, PR title, `.env.example` drift, fail if `.env` staged, `prisma migrate diff`. |
 | `images.yml` | push to any branch; `v*` tags | Multi-arch build on every commit; tags per table below. |

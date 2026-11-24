@@ -42,8 +42,8 @@ Après chaque mise à jour : `pnpm audit`, `make all`, puis `make playwright-all
    `/api*path` au lieu de `unmatched` : corrige ça avec la mise à jour. `@nestjs/config` 12 et
    `@nestjs/cli` 12 tournent déjà sur Nest 11.
 4. **Prisma 7**. Le tag `latest` de npm pour `prisma` pointe vers une release candidate 8.0, donc ne fais jamais
-   `pnpm up --latest` dessus. `CHECKPOINT_DISABLE=1` dans les images et le devcontainer empêche le
-   CLI d'annoncer cette RC (#61).
+   `pnpm up --latest` dessus. `CHECKPOINT_DISABLE=1` dans l'étape `base` du Dockerfile de l'api et dans le devcontainer
+   empêche le CLI d'annoncer cette RC (#61).
 5. **Prometheus 3.13**, la branche LTS (corrections jusqu'au 2027-07-31), pas la version mineure la plus récente.
 6. **pnpm 11**, pas 12. pnpm 12 est une réécriture native avec des réglages plus stricts, et rien ici
    n'en a encore besoin. `updateNotifier: false` dans `pnpm-workspace.yaml` empêche pnpm de l'annoncer.

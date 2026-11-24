@@ -1,6 +1,7 @@
 # Architecture
 
-Comment les containers s'assemblent, en production et en développement.
+Comment les containers s'assemblent, en production et en développement. Le déploiement sur un serveur
+(`compose.deploy.yml`) est dans [operations/deployment.md](../operations/deployment.md).
 À lire avec : [architecture/technical-plan.md](technical-plan.md) (les décisions et leurs raisons),
 [operations/versions.md](../operations/versions.md) (ce qui bouge ensemble, ce qui est retenu), [subject/summary.md](../subject/summary.md) (les exigences).
 
@@ -141,7 +142,7 @@ sequenceDiagram
     A-->>B: 200 SessionUser + Set-Cookie ft.sid
 
     Note over B,C: navigation suivante
-    B->>C: GET /learn
+    B->>C: GET /en/learn
     C->>W: proxy
     W->>A: GET /api/auth/me, cookie transmis<br/>(http://api:3001, sans passer par caddy)
     A->>R: cherche la session
@@ -175,12 +176,12 @@ sequenceDiagram
     participant N as api (NestJS)
     participant P as db
 
-    Note over B,N: au chargement : wss /ws/ avec ft.sid, rejoint user:<id>
+    Note over B,N: au chargement : wss /ws/ avec ft.sid, rejoint user:#lt;id#gt;
     A->>C: PATCH /api/courses/de {dailyGoal}
     C->>N: proxy
     N->>P: transaction, COMMIT
     N-->>A: 200 Course
-    N->>C: course:updated {lang} vers la room user:<id>
+    N->>C: course:updated {lang} vers la room user:#lt;id#gt;
     C->>B: par le WebSocket ouvert
     B->>B: router.refresh()
     B->>C: GET /en/learn/de (server components)
@@ -420,7 +421,8 @@ seed et chaque fichier écrit à la main sous `content/` :
 | `content/lessons/`  | Le fichier de contenu de chaque leçon écrite qui n'est pas du vocabulaire, 108 aujourd'hui                |
 
 L'image ne fait que les **transporter**. Rien dedans n'écrit ni ne génère de contenu : le
-service `migrate` exécute `prisma migrate deploy`, puis `db:seed`, qui valide
+service `migrate` de `compose.deploy.yml` (en local, `make migrate` puis `make seed`) exécute
+`prisma migrate deploy`, puis `db:seed`, qui valide
 les fichiers et fixe `Lesson.ready` ([content/lessons.md](../content/lessons.md) §4). Les scripts du kit
 d'écriture sont aussi dans l'image, puisqu'ils vivent dans `apps/api/scripts`, mais
 rien ne les exécute là. L'image runtime `api` (stage `prod`) n'a ni la
@@ -437,11 +439,13 @@ qui la lancent.
 
 ```mermaid
 flowchart TB
-    pr["Pull request"] --> ci & e2e & hygiene & images & devcontainer
+    pr["Pull request"] --> ci & e2e & hygiene & devcontainer
+    push["Push sur n'importe quelle branche"] --> images
 
     subgraph ci["ci.yml"]
         c1["format · lint · typecheck<br/>vérif de la version TS"] --> c2["tests unitaires + couverture"] --> c3["Supertest contre<br/>un vrai Postgres + Redis"]
         c4["config du monitoring<br/>promtool · amtool · caddy validate"]
+        c5["tests des packages · build<br/>les apps compilent séparément"]
     end
 
     subgraph e2e["e2e.yml, deux jobs par navigateur (lesson, rest)"]
@@ -450,7 +454,7 @@ flowchart TB
     end
 
     subgraph hygiene["hygiene.yml"]
-        h1["gitleaks · commitlint<br/>dérive .env · migrate diff"]
+        h1["gitleaks · commitlint · titre de la PR<br/>dérive .env · migrate diff"]
     end
 
     subgraph images["images.yml"]

@@ -246,7 +246,11 @@ largeur sur téléphone, une colonne de 20rem à droite à partir de `sm`), et u
 page.
 
 ```tsx
-
+  // Open for the page it was opened on: following a link closes it, since the
+  // header stays mounted across a navigation.
+  const [openOn, setOpenOn] = useState<string | null>(null);
+  const open = openOn === pathname;
+  useScrollLock(open);
 ```
 
 Une astuce maligne : le state n'est pas `true/false` mais _le chemin où le menu a été ouvert_. Le
@@ -282,7 +286,7 @@ Comment il se ferme :
   `visible`. Pour la même raison, le panneau n'a ni `transform` ni `filter` : ils changeraient
   l'endroit où un enfant `fixed` est placé.
 - `data-header-menu` permet aux enfants de changer leur apparence quand ils sont dans le menu : la
-  variante Tailwind `in-data-header-menu:` (utilisée par `LanguageSwitcher`).
+  variante Tailwind `in-data-header-menu:` (utilisée par `LanguageSwitcher` et `CourseSwitcher`).
 - Le bouton affiche `<UnreadTotalBadge />` dans son coin, donc tu vois les nouveaux messages sans
   ouvrir le menu.
 - Le fond sombre est `fixed inset-0 -z-10` : dans le contexte d'empilement `z-50` du header, donc il
@@ -1016,7 +1020,23 @@ Fichier : [unread-badge.tsx](../../apps/web/components/unread-badge.tsx) — exp
 et `UnreadTotalBadge`.
 
 ```tsx
+export function UnreadBadge({ count }: { count: number | undefined }) {
+  const t = useTranslations('MessagesPage');
 
+  if (count === undefined || count === 0) return null;
+  return (
+    // inline-flex, so the underline of a link around it does not run through it.
+    <span className="inline-flex h-5 min-w-5 shrink-0 items-center justify-center rounded-full bg-red-500 px-1.5 text-xs font-semibold text-white">
+      <span aria-hidden>{badgeText(count)}</span>
+      <span className="sr-only">{t('unread', { count })}</span>
+    </span>
+  );
+}
+
+/** Every conversation's, for the account menu's Messages link. */
+export function UnreadTotalBadge() {
+  return <UnreadBadge count={useUnreadTotal()} />;
+}
 ```
 
 - Un cercle rouge avec le nombre. Rien à 0, et rien avant que l'onglet ait reçu l'info

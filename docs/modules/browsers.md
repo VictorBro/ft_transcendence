@@ -38,8 +38,8 @@ So the two additional browsers must also show no console errors or warnings.
 | At least 2 additional browsers | Firefox and WebKit (Safari's engine), next to Chromium. Playwright (the tool that drives a real browser in our tests) has one "project" per engine: `chromium` (Desktop Chrome), `firefox` (Desktop Firefox) and `webkit` (Desktop Safari). | [e2e/playwright.config.ts](../../e2e/playwright.config.ts) |
 | Fully supported | The app has fixes for things only one engine does (see "How it works"). The console gate (a test that fails on any console error or warning) runs on all three engines. Desktop browsers only, see [Limits and choices](#limits-and-choices). | [e2e/support/console-guard.ts](../../e2e/support/console-guard.ts), [e2e/tests/console.spec.ts](../../e2e/tests/console.spec.ts) |
 | Tested | Every spec file runs on all three engines in CI: 3 engines × 2 parts = 6 jobs, each on its own production stack. A final job, "playwright (production stack)", fails if any of the six did not pass. A few tests run on Chromium only, each with a `test.skip` that gives the reason (see [Limits and choices](#limits-and-choices)). | [.github/workflows/e2e.yml](../../.github/workflows/e2e.yml) |
-| Documented, with the limits of each browser | The README has a "Browser support" section: which engines, how CI runs them, how to run one engine, and the known limits (no speech voice, mobile browsers not tested). | [README.md](../../README.md#browser-support) |
-| Consistent UI/UX across browsers | The three engines get the same pages, the same styles and the same tests, with the same checks of what is on screen. The phone-width layout check also runs on each engine. | [e2e/tests/layout-gate.spec.ts](../../e2e/tests/layout-gate.spec.ts) |
+| Documented, with the limits of each browser | The README has a "Browser support" section: which engines, how CI runs them, the tests that run on Chromium only (with a link to the list in [Limits and choices](#limits-and-choices)), how to run one engine, and the known limits (no speech voice, mobile browsers not tested). | [README.md](../../README.md#browser-support) |
+| Consistent UI/UX across browsers | The three engines get the same pages, the same styles and the same tests, with the same checks of what is on screen. The phone-width layout check also runs on each engine. | [e2e/tests/layout.spec.ts](../../e2e/tests/layout.spec.ts), [e2e/tests/layout-gate.spec.ts](../../e2e/tests/layout-gate.spec.ts) |
 
 ## How it works
 
@@ -56,6 +56,9 @@ other spec is the other part (`E2E_PART` in the config). Each job:
 1. starts the production stack (`compose.yml` + `compose.prod.yml`);
 2. applies the migrations and loads the question bank (`make db-ready`);
 3. runs `./scripts/playwright-in-image.sh test --project=<browser>`.
+
+One job only, `playwright (chromium, rest)`, then checks the monitoring stack and runs the API
+restart test alone, after the suite (`E2E_RESTART=1`).
 
 [scripts/playwright-in-image.sh](../../scripts/playwright-in-image.sh) runs Playwright inside
 Microsoft's Playwright image (`mcr.microsoft.com/playwright:v<version>-noble`, the version from
@@ -99,7 +102,7 @@ without sound ([apps/web/components/lesson/kinds/functions.tsx](../../apps/web/c
 
 | Path | What it does |
 | --- | --- |
-| [e2e/playwright.config.ts](../../e2e/playwright.config.ts) | The three projects `chromium`, `firefox`, `webkit`; the `lesson`/`rest` split; 2 workers, no retries. |
+| [e2e/playwright.config.ts](../../e2e/playwright.config.ts) | The three projects `chromium`, `firefox`, `webkit`; the `lesson`/`rest` split; 2 workers (1 for the restart run), no retries. |
 | [.github/workflows/e2e.yml](../../.github/workflows/e2e.yml) | The 6 jobs (3 engines × 2 parts) and the gate job "playwright (production stack)". |
 | [scripts/playwright-in-image.sh](../../scripts/playwright-in-image.sh) | Runs Playwright in its official image, which has the three browsers. |
 | [Makefile](../../Makefile) | `BROWSERS`, `make playwright`, `make playwright-all`, `make report`. |
@@ -145,7 +148,8 @@ These ones matter most for this module:
 | --- | --- |
 | [e2e/tests/console.spec.ts](../../e2e/tests/console.spec.ts) | Every route in `e2e/support/routes.ts`, signed out and signed in, and client-side navigation: no console error, no warning, no uncaught exception, no failed request. On all three engines. |
 | [e2e/tests/lesson.spec.ts](../../e2e/tests/lesson.spec.ts) | "plays from the lesson page to the results, which stay" and the other grammar lesson tests; "plays to the results in a browser with no voice" (vocabulary); "plays to the results in a browser with no voice, through Show the text" (functions). On all three engines. |
-| [e2e/tests/layout-gate.spec.ts](../../e2e/tests/layout-gate.spec.ts) | The phone-width layout check on each engine. It sets `isMobile` except on Firefox, and checks WebKit's late viewport update. |
+| [e2e/tests/layout.spec.ts](../../e2e/tests/layout.spec.ts) | Every page of the route lists, and the placement pages, fit a 360 px wide phone screen, on each engine. |
+| [e2e/tests/layout-gate.spec.ts](../../e2e/tests/layout-gate.spec.ts) | The phone-width check itself, on each engine. It sets `isMobile` except on Firefox, and checks WebKit's late viewport update. |
 | [e2e/tests/auth.spec.ts](../../e2e/tests/auth.spec.ts), [e2e/tests/course.spec.ts](../../e2e/tests/course.spec.ts), [e2e/tests/time-zone.spec.ts](../../e2e/tests/time-zone.spec.ts) | They wait for a redirect or a refresh to finish before the next page. Without that wait, Firefox and WebKit report the navigation as aborted or cancelled, which the console gate would catch. |
 | [e2e/tests/signup-budget.spec.ts](../../e2e/tests/signup-budget.spec.ts) | The waiting logic that keeps sign-ups under the rate limit: it waits out a 429 (too many requests) and stops after three. |
 
@@ -155,15 +159,18 @@ These ones matter most for this module:
   tested (README, and "Not in this issue" in #159).
 - **WebKit, not Safari.** Playwright's WebKit is the engine behind Safari, not the Safari app. Its
   Firefox and Chromium are Playwright builds too, not the branded browsers.
-- **Some tests run on Chromium only.** Each one says why in its `test.skip`:
+- **Some tests run on Chromium only.** Seven `test.skip` calls say so, each with its reason.
+  Three of them skip a whole group ("every French A1 ... lesson"), which holds one test per
+  written French A1 lesson of that kind (the grammar and functions groups leave out the lesson
+  their single-lesson test already plays on every engine), so that group grows with the content:
 
   | Test | Reason given in the code |
   | --- | --- |
-  | `restart.spec.ts`: "an open page reconnects after an API restart, silently" | Two API starts in 15 minutes fire the `ApiRestarting` alert, so one engine restarts it: "one restart a run, on Chromium". The comment says Firefox and WebKit are checked by hand. |
-  | `lesson.spec.ts`: "says when the time ran out while the learner was away" | The wait is the server's: "Chromium covers the wait". |
-  | `lesson.spec.ts`: "every French A1 grammar / vocabulary / functions lesson" | The renderers are already tested on every engine by the single-lesson tests: "Chromium covers the content". |
-  | `lesson.spec.ts`: "shows the Listen buttons once a French voice is there" | The voice is a fake one put into the page: "The voice is a stub". |
-  | `level-complete.spec.ts`: "the level complete card starts the next level" | It plays through the API, not the browser: "API play: the engine adds nothing, the rate limit minutes". |
+  | `restart.spec.ts:28`: "an open page reconnects after an API restart, silently" | Two API starts in 15 minutes fire the `ApiRestarting` alert, so one engine restarts it: "one restart a run, on Chromium". The comment says Firefox and WebKit are checked by hand. |
+  | `lesson.spec.ts:257`: "says when the time ran out while the learner was away" | The wait is the server's: "Chromium covers the wait". |
+  | `lesson.spec.ts:289`, `:409` and `:469`: the groups "every French A1 grammar / vocabulary / functions lesson" | The renderers are already tested on every engine by the single-lesson tests: "Chromium covers the content". |
+  | `lesson.spec.ts:371`: "shows the Listen buttons once a French voice is there" | The voice is a fake one put into the page: "The voice is a stub". |
+  | `level-complete.spec.ts:40`: "the level complete card starts the next level" | It plays through the API, not the browser: "API play: the engine adds nothing, the rate limit minutes". |
 
 - **No screenshot comparison.** The tests check what is on screen on each engine, but no test
   compares screenshots between engines.

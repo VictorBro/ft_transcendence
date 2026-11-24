@@ -70,8 +70,9 @@ flowchart LR
    - **sort** them: first by group, then by the chosen sort and direction, then by order;
    - **cut** one page of 20. A page past the end gives the last page; no match gives page 1,
      empty.
-5. **The answer.** `LessonPageSchema` has `items`, `total` (matching lessons), `levelTotal`
-   (all lessons of the level), `page` (the page really shown) and `pageSize`. The page renders
+5. **The answer.** `LessonPageSchema` has `day` (the course day, for the Today and Yesterday
+   labels), `items`, `total` (matching lessons), `levelTotal` (all lessons of the level), `page`
+   (the page really shown) and `pageSize`. The page renders
    the rows, the count ("N lessons"), the chips and the pager from it.
 6. **Without JavaScript**, the filters, the search box and the selects are one plain
    `<form method="get">`. **Apply** (inside `<noscript>`) sends it, and the browser loads the

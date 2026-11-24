@@ -713,7 +713,7 @@ The `max-sm:flex-col-reverse` classes put the avatar above the name on phones.
   // are kept apart: inside one form the button would look like it saved both.
 ```
 
-**1. The avatar.** A hidden file input inside a `<label>` (so the label text is the clickable "Upload" link). It accepts PNG, JPEG and WebP.
+**1. The avatar.** A hidden file input inside a `<label>` (so the label text is the clickable link: "Upload avatar", or "Change avatar" when there is one). It accepts PNG, JPEG and WebP.
 
 ```tsx
   async function onAvatarChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -748,9 +748,9 @@ The `max-sm:flex-col-reverse` classes put the avatar above the name on phones.
 - `uploadAvatar(file)` sends `POST /api/users/me/avatar` as `multipart/form-data`.
 - `router.refresh()` re-renders the page on the server, so the new `user.avatarUrl` arrives and the picture changes.
 
-A "Remove" button appears only when there is an avatar. It calls `removeAvatar()` (`DELETE /api/users/me/avatar`).
+A "Remove avatar" button appears only when there is an avatar. It calls `removeAvatar()` (`DELETE /api/users/me/avatar`).
 
-`avatarPending` is one state with three values (`'upload' | 'remove' | null`) and not two booleans. The comment says why: the label must show **which** action is running ("Uploading..." or "Removing...").
+`avatarPending` is one state with three values (`'upload' | 'remove' | null`) and not two booleans. The comment says why: the text must show **which** action is running ("Uploading..." on the label, or "Removing..." on the button).
 
 **2. The display name.** A normal form with one `Field`, checked with `UpdateProfileSchema`, saved with `updateProfile()` (`PATCH /api/users/me`). On success:
 
@@ -1180,7 +1180,7 @@ The order of the checks matters:
 
 `loadProfile` is wrapped in React's `cache()`. `generateMetadata` (which sets the tab title to the person's name) and the page both call it with the same id, but the API is called only once per request. The comment in `generateMetadata` explains why it does not call `notFound()` itself: it could race with the page's redirect to `/login`.
 
-**Shows:** the name, a presence dot (only if this person is your friend), a 128 px avatar, action buttons, and a list of their courses with language, level and streak (no streak shown at 0).
+**Shows:** the name, a presence dot (only if this person is your friend), a 128 px avatar, action buttons, and a list of their courses with language, level and streak (no streak shown at 0). On phones, as on `/profile`, the avatar goes above the name (`max-sm:flex-col-reverse`) and the buttons are centred.
 
 ```tsx
   const relation = profile.id === me.id ? 'self' : relationTo(lists, profile.id);

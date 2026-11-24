@@ -73,5 +73,10 @@ code.
 | RTL support                          | Minor | The three languages (English, French, German) are all written left to right ([i18n.md](i18n.md))                                                                                                                          |
 | User activity analytics dashboard    | Minor | No dashboard of user activity is built; the old plan's `DailyStat` and `Mistake` tables were dropped ([data-model.md](../architecture/data-model.md) §9)                                                                  |
 
-We also do not claim any other gaming module (they all require a game), Advanced chat, WAF and
-Vault, ELK, microservices, or blockchain.
+We also do not claim the other modules of the list, and did not build them: the other gaming
+modules and Game statistics (they all require a game), Advanced chat, Real-time collaborative features, Advanced
+permissions, Organization system, the other AI modules (Recommendation system, Content moderation,
+Voice/speech, Sentiment analysis, Image recognition), WAF and Vault, ELK, microservices, Health
+check and status page, Advanced analytics dashboard, Data export and import, GDPR compliance, and
+the two blockchain modules. The Minor frontend and backend framework modules are not claimed
+either: the Major framework module above already covers both.

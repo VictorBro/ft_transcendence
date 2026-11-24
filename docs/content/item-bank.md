@@ -50,7 +50,7 @@ accessibility story.
 
 One file per language and category, under `content/items/`, named after the two it declares:
 `de-grammar.json`, `fr-reading.json`. The field names are the `QuestionBank` column names, so the
-seed is a straight insert.
+seed copies each item into its row as it is, matched on `sourceId`.
 
 Every item is the same shape: a question, four options, one correct answer and a time limit.
 `content/items/de-grammar.json`:
@@ -170,15 +170,12 @@ Two tables. The JSON files are the source of truth in git; the seed script loads
 ```prisma
 model QuestionBank {
   id         String           @id @default(uuid()) @db.Uuid
-  // The id from the file, and null on a question the LLM wrote at runtime.
-  // That is also how the two are told apart: a question with no sourceId is one
-  // no human reviewed.
   sourceId   String?          @unique
   lang       Language
   level      Level
   topic      Topic
-  category   QuestionCategory                   // vocabulary | grammar | reading
-  readText   String?                            // reading questions only
+  category   QuestionCategory
+  readText   String?
   question   String
   options    String[]
   answer     String
@@ -192,8 +189,13 @@ model QuestionBank {
 }
 
 model UserSeenQuestion {
-  userId     String @db.Uuid
-  questionId String @db.Uuid
+  id           String       @id @default(uuid()) @db.Uuid
+  userId       String       @db.Uuid
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  questionId   String       @db.Uuid
+  questionBank QuestionBank @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
 
   @@unique([userId, questionId])
 }
@@ -201,7 +203,9 @@ model UserSeenQuestion {
 
 Two ids on purpose. `id` is the internal key every other table points at, so nothing breaks when
 a question is re-seeded. `sourceId` is yours, it is how the seed finds the row to update, and
-editing a question in the JSON file changes the row instead of creating a second one.
+editing a question in the JSON file changes the row instead of creating a second one. A question
+the LLM wrote at runtime has no `sourceId`: that is how the two are told apart, and it means no
+human reviewed it.
 
 A learner is not asked the same question twice: the draw excludes every question already tied to
 that user through `UserSeenQuestion`. It is keyed per user and not per run, so a retake cannot

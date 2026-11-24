@@ -116,7 +116,7 @@ can see it, and is never the thing that judges.
 **Skipping, overriding and retaking.** A learner who already knows their level skips the exam and
 sets their level directly. A learner who disagrees with the result can change it on the spot. A
 retake is the same search run again, drawing against the same `UserSeenQuestion` rows, so it asks
-new questions unless step 3 fires. All three write through the same endpoint, and only the
+new questions unless step 3 fires. All three end in the same write, `CoursesService.setLevel`, and only the
 current level is stored, never a history of runs. A run where every answer timed out writes
 nothing: a learner who walked away measured nothing, so the course keeps the level it had, or
 stays without one, and the result says so with `applied: false`.
@@ -461,7 +461,7 @@ test and break §1.2. Their reuse mechanism is the item bank plus per-user exclu
 | **Socket events** | `dm:send`, `dm:read`. **The HTTP guard does not cover these**: a socket connection is one HTTP upgrade, so a client can emit thousands of events through a single allowed request | The gateway's own screen limits each socket to 20 of each event per 10 s, and each has a budget per account: 30 `dm:send` and 100 `dm:read` a minute ([architecture/realtime.md](realtime.md) §3) |
 | **Public API** | The module *requires* rate limiting | Not claimed ([modules/README.md](../modules/README.md)) |
 
-Every limit is read once at boot; anything but a whole number stops the api.
+Every limit is read once at boot; anything but a whole number stops the api (the HTTP limits also refuse 0).
 
 ---
 
@@ -508,7 +508,7 @@ off. A demo where the evaluator disables JavaScript and still sees text is the w
 
 **"Multi-user simultaneous support" is mandatory, not a module.** Two tabs finishing lessons at
 the same moment, or many learners at once, must not corrupt each other's state. That means: a
-row lock on the course (`SELECT ... FOR UPDATE` on its `UserLevel` row) around finishing and goal
+row lock on the course (`SELECT ... FOR UPDATE` on its `UserLevel` row) around every attempt write (the last one is the finish) and goal
 changes, so two finishes that both reach the goal meet the day once and move the streak once;
 `LessonResult`'s primary key `(userLevelId, lessonId)`, so a double-click cannot create two
 results; and an e2e test that drives **two browser contexts at once** on one account. Write that

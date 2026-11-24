@@ -42,8 +42,8 @@ After any bump: `pnpm audit`, `make all`, then `make playwright-all`.
    `/api*path` instead of `unmatched`: fix that with the bump. `@nestjs/config` 12 and
    `@nestjs/cli` 12 already run on Nest 11.
 4. **Prisma 7**. npm's `latest` tag for `prisma` points at an 8.0 release candidate, so never
-   `pnpm up --latest` it. `CHECKPOINT_DISABLE=1` in the images and the devcontainer keeps the
-   CLI from advertising that RC (#61).
+   `pnpm up --latest` it. `CHECKPOINT_DISABLE=1` in the api Dockerfile's `base` stage and the devcontainer keeps
+   the CLI from advertising that RC (#61).
 5. **Prometheus 3.13**, the LTS line (fixes until 2027-07-31), not the newest minor.
 6. **pnpm 11**, not 12. pnpm 12 is a native rewrite with stricter settings, and nothing here
    needs it yet. `updateNotifier: false` in `pnpm-workspace.yaml` keeps pnpm from advertising it.

@@ -705,7 +705,7 @@ who wrote the item instead of for whoever runs the seed a week later."
 
 ## 7. The `coverage/` folder
 
-`pnpm --filter @ft/api test:cov` writes [apps/api/coverage/](../../apps/api/coverage). It is
+`pnpm --filter @ft/api test:cov` writes `apps/api/coverage/`. It is
 **generated** and listed in `.gitignore`, so it is never committed.
 
 ```

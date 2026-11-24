@@ -11,21 +11,21 @@ faite avec NestJS (un framework pour les serveurs Node.js).
 Le module est une ligne du tableau des modules Web de
 [../subject/summary.md](../subject/summary.md) :
 
-> | Major | Framework for both frontend and backend (full-stack frameworks count as both) |
+> | Major | Framework pour le frontend et le backend (un framework full-stack compte pour les deux si tu utilises son frontend et son backend) |
 
 Le sujet dit aussi ce qu'est un framework :
 
-> Framework definition used by the subject: structured architecture + built-in features +
-> full ecosystem. React, Vue, Angular, Svelte, Next.js are frameworks; Express, Fastify,
-> NestJS, Django, Flask, Rails are frameworks. jQuery, Lodash, Axios are **not**.
+> Définition d'un framework utilisée par le sujet : architecture structurée + fonctionnalités intégrées +
+> écosystème complet. React, Vue, Angular, Svelte, Next.js sont des frameworks ; Express, Fastify,
+> NestJS, Django, Flask, Rails sont des frameworks. jQuery, Lodash, Axios n'en sont **pas**.
 
 ## Comment on y répond
 
-| Le sujet demande                                 | Ce qu'on a construit                                                                                                                                                 | Où                                                                                            |
-| ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| Un framework frontend                            | Next.js 16 avec l'App Router, sur React 19. Chaque page est une page Next.js.                                                                                        | [`apps/web/package.json`](../../apps/web/package.json), [`apps/web/app/`](../../apps/web/app) |
-| Un framework backend                             | NestJS 11. Chaque route de l'API est une méthode dans un controller NestJS.                                                                                          | [`apps/api/package.json`](../../apps/api/package.json), [`apps/api/src/`](../../apps/api/src) |
-| Les frameworks full-stack comptent pour les deux | On ne s'en sert pas comme preuve. On ne compte pas Next.js comme notre backend : NestJS est le backend. Next.js fait seulement le rendu des pages et appelle NestJS. | [`../architecture/overview.md`](../architecture/overview.md), section 1                       |
+| Le sujet demande                                                                         | Ce qu'on a construit                                                                                                                                                 | Où                                                                                            |
+| ---------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| Un framework frontend                                                                    | Next.js 16 avec l'App Router, sur React 19. Chaque page est une page Next.js.                                                                                        | [`apps/web/package.json`](../../apps/web/package.json), [`apps/web/app/`](../../apps/web/app) |
+| Un framework backend                                                                     | NestJS 11. Chaque route de l'API est une méthode dans un controller NestJS.                                                                                          | [`apps/api/package.json`](../../apps/api/package.json), [`apps/api/src/`](../../apps/api/src) |
+| Un framework full-stack compte pour les deux, si tu utilises son frontend et son backend | On ne s'en sert pas comme preuve. On ne compte pas Next.js comme notre backend : NestJS est le backend. Next.js fait seulement le rendu des pages et appelle NestJS. | [`../architecture/overview.md`](../architecture/overview.md), section 1                       |
 
 Les deux frameworks sont cités comme frameworks dans la liste du sujet lui-même, donc aucun des deux
 n'a besoin d'être défendu.

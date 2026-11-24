@@ -799,7 +799,7 @@ Each folder is `<date and time>_<name>/migration.sql`. The date at the front kee
 
 | Folder | What it changed |
 | --- | --- |
-| `20260807022236_init_user` | Creates the `Role` and `Locale` enums and the `User` table, with unique `email` and `displayName`. |
+| `20260807022236_init_user` | Creates the `Role` and `Locale` enums and the `User` table (with `locale`, default `en`), with unique `email` and `displayName`. |
 | `20260809004816_two_factor` | Adds `totpSecret` and `totpEnabledAt` to `User`; creates `RecoveryCode` (unique `codeHash`, index on `userId`, cascade). |
 | `20260913181513_add_user_levels_and_question_bank` | Creates the `QuestionCategory`, `Level`, `Language`, `Topic` enums and the `UserLevel`, `QuestionBank`, `UserSeenQuestion` tables with their keys and indexes. |
 | `20260913184446_question_bank_source_id_unique` | Makes `QuestionBank.sourceId` unique (so the seed can upsert on it). |

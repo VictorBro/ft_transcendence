@@ -122,7 +122,7 @@ de: "Diese Nomen sind **maskulin**: `ein Buch`."   ✗ learning-language forms d
 8. `finish`.
 
 Important : **le même carnet `issues`** est passé à toutes les étapes 4 à 6.
-Donc une vérification de type qui dit « je m'arrête s'il y a déjà des problèmes » voit aussi les problèmes d'enveloppe (c'est le cas de la lecture, voir §7).
+Donc une vérification de type qui dit « je m'arrête s'il y a déjà des problèmes » voit aussi les problèmes d'enveloppe (c'est le cas de la lecture, voir §8).
 
 ---
 

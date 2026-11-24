@@ -55,8 +55,8 @@ root [content/](../../content) folder:
 | Folder | What it holds | Example |
 | --- | --- | --- |
 | `content/outlines/` | The plan of a level: one entry per lesson (id, kind, topic or theme, working title, intent). 6 levels × 3 languages = 18 files. | `fr-a1.json` |
-| `content/briefs/` | One **brief** per written lesson: the plan of that lesson (title, objective, targets...). | `fr-greetings.json` |
-| `content/lessons/` | The **content file**: the playable lesson. Every kind but vocabulary has one (a vocabulary lesson is built from its brief alone). | `fr-ordering-at-a-cafe.json` |
+| `content/briefs/` | One **brief** per written lesson: the plan of that lesson (title, objective, targets...). | `fr-greetings-and-goodbyes.json` |
+| `content/lessons/` | The **content file**: the playable lesson. Every kind but vocabulary has one (a vocabulary lesson is built from its brief alone). | `fr-greetings-and-goodbyes.json` |
 | `content/items/` | The authored placement questions (chapter 7). Checked by `item-files.spec.ts`. | `de-grammar.json` |
 
 ### The lesson authoring pipeline
@@ -116,7 +116,7 @@ From [apps/api/package.json](../../apps/api/package.json):
 | --- | --- | --- |
 | `outlines:check` | `pnpm --filter @ft/api outlines:check de --level B1` | reads `content/outlines` |
 | `generation:try` | `LLM_PROVIDER=gemini pnpm --filter @ft/api generation:try b1 vocabulary grammar` | loads the root `.env` if it exists; **writes to the database**, can **spend tokens** |
-| `lessons:check` | `pnpm --filter @ft/api lessons:check fr-greetings --draft draft.json` | builds `@ft/shared` first |
+| `lessons:check` | `pnpm --filter @ft/api lessons:check fr-greetings-and-goodbyes --draft draft.json` | builds `@ft/shared` first |
 | `lessons:author` | `pnpm --filter @ft/api lessons:author fr a1 --max 3` | builds `@ft/shared` first; needs Claude Code installed and logged in |
 
 Why build `@ft/shared` first? The lesson scripts call `lessons.validateLesson` and the
@@ -332,7 +332,7 @@ sequenceDiagram
 - `WORK_DIR` is `$TMPDIR/ft-lessons-author`: "what the kit keeps between runs but nobody
   commits" (system prompts, failed drafts, reports).
 - `readOutline(lang, level)` parses an outline with its Zod schema.
-- `locate(id)` finds an id in its language's six outlines (`fr-greetings` → `fr`, its level,
+- `locate(id)` finds an id in its language's six outlines (`fr-greetings-and-goodbyes` → `fr`, its level,
   its entry).
 - `filesOf(entry)` answers `'none'`, `'partial'` or `'complete'`. "Partial" (a brief without
   its content, or the reverse, or a vocabulary lesson with a content file it should not have) is
@@ -536,7 +536,7 @@ same text, and therefore the same hash: `canonicalJson({ b: 1, a: [2] })` → `'
 **Exports**: `Outcome`, `LessonRun`, `newRun`, `addUsage`, `clock`, `printProgress`,
 `failedDraftPath`, `Summary`, `printSummary`, `saveReport`.
 
-One line per finished lesson (`✓ [3/12] fr-greetings vocabulary 2 attempts 1 min 40 s …`),
+One line per finished lesson (`✓ [3/12] fr-greetings-and-goodbyes functions 2 attempts 1 min 40 s …`),
 then a summary: written / failed / not done, wall time per lesson, averages **by kind**,
 tokens, the API-equivalent cost, and an estimate of the time left for the level. `saveReport`
 writes the same numbers to `WORK_DIR/report-<date>.json`. These are the figures quoted in the
@@ -625,7 +625,9 @@ Comparing a string of issues with `''` (instead of `expect(parsed.success).toBe(
 a failure **prints every issue** with its path. The other tests:
 
 - the file name matches `itemFileName(lang, category)`;
-- no `sourceId` is in two files ("Ids are permanent: PlacementAnswer rows point at them");
+- no `sourceId` is in two files. The code comment says "Ids are permanent: PlacementAnswer rows
+  point at them", but the schema has no `PlacementAnswer` model: the rows that point at a question
+  are `UserSeenQuestion` rows, and the seed upserts each question by its `sourceId`;
 - missing categories per language are **reported** with `console.info`, not failed, because
   "a language part-way through authoring is a normal state".
 

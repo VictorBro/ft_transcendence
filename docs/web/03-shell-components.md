@@ -242,7 +242,11 @@ size. Open, a panel appears under the header (full width on phones, a 20rem colu
 from `sm`), and a dark backdrop covers the page.
 
 ```tsx
-
+  // Open for the page it was opened on: following a link closes it, since the
+  // header stays mounted across a navigation.
+  const [openOn, setOpenOn] = useState<string | null>(null);
+  const open = openOn === pathname;
+  useScrollLock(open);
 ```
 
 A smart trick: the state is not `true/false` but *the path where the menu was opened*. The layout
@@ -277,7 +281,7 @@ How it closes:
   reason the panel has no `transform` or `filter`: those would change where a `fixed` child is
   placed.
 - `data-header-menu` lets children change their look when they are inside the menu: Tailwind's
-  `in-data-header-menu:` variant (used by `LanguageSwitcher`).
+  `in-data-header-menu:` variant (used by `LanguageSwitcher` and `CourseSwitcher`).
 - The button shows `<UnreadTotalBadge />` in its corner, so you see new messages without opening
   the menu.
 - The backdrop is `fixed inset-0 -z-10`: inside the header's `z-50` stacking context, so it dims
@@ -996,7 +1000,23 @@ File: [unread-badge.tsx](../../apps/web/components/unread-badge.tsx) — exports
 `UnreadTotalBadge`.
 
 ```tsx
+export function UnreadBadge({ count }: { count: number | undefined }) {
+  const t = useTranslations('MessagesPage');
 
+  if (count === undefined || count === 0) return null;
+  return (
+    // inline-flex, so the underline of a link around it does not run through it.
+    <span className="inline-flex h-5 min-w-5 shrink-0 items-center justify-center rounded-full bg-red-500 px-1.5 text-xs font-semibold text-white">
+      <span aria-hidden>{badgeText(count)}</span>
+      <span className="sr-only">{t('unread', { count })}</span>
+    </span>
+  );
+}
+
+/** Every conversation's, for the account menu's Messages link. */
+export function UnreadTotalBadge() {
+  return <UnreadBadge count={useUnreadTotal()} />;
+}
 ```
 
 - A red circle with the count. Nothing at 0, and nothing before the tab has heard

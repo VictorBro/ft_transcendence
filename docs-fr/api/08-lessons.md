@@ -303,9 +303,9 @@ la démo). Elle tourne **dans la transaction de l'appelant**, avec le cours déj
 Elle renvoie le « bloc de fin » montré sur la page des résultats : `countedToday`, `doneCount`, `target`,
 `goalJustMet`, `best`, `xpGained`, `challengeJustDone`, `newAchievements`.
 
-Chaque réponse de ce service passe par son schéma partagé strict. Une seule mauvaise carte fait échouer toute la
-réponse avec une 500, exprès : ça veut dire des données corrompues (un bug à voir), et le schéma strict est ce qui
-garantit qu'un `brief` ne sort jamais.
+Chaque réponse de ce service passe par son schéma partagé. Une seule mauvaise carte fait échouer toute la réponse
+avec une 500, exprès : ça veut dire des données corrompues (un bug à voir), et le schéma strict de la carte
+(`LessonCardSchema`) est ce qui garantit qu'un `brief` ne sort jamais.
 
 ## lesson-search.ts — la recherche avancée
 
@@ -344,8 +344,9 @@ export function bareVowels(text: string): string {
 }
 ```
 
-En allemand seulement, la recherche essaie le mot tel quel, puis le mot sans le `e`, puis le mot sans le `e` contre
-un titre sans le `e`. Pas en français, où `coeur` deviendrait `cour`, un autre mot.
+Dans toutes les langues, la recherche essaie le mot tel quel. En allemand seulement, elle essaie ensuite le mot
+sans le `e`, puis le mot sans le `e` contre un titre ou un résumé sans le `e`. Pas en français, où `coeur`
+deviendrait `cour`, un autre mot.
 
 ### Étape 2 — trier
 

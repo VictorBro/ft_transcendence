@@ -8,7 +8,7 @@ Documents liés : [architecture/overview.md](../architecture/overview.md) (où i
 
 | Le sujet demande                      | Ici                                                                                                       |
 | ------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| Prometheus qui collecte des métriques | 8 jobs de scrape (7 cibles uniques, plus les 3 probes du job blackbox), toutes les 30 s (section 1)|
+| Prometheus qui collecte des métriques | 8 jobs de scrape (7 cibles uniques, plus les 3 probes du job blackbox), toutes les 30 s (section 1)       |
 | Des exporters et des intégrations     | les exporters node, postgres, redis et blackbox ; les métriques propres à Caddy et à l'API (section 5)    |
 | Des dashboards Grafana personnalisés  | Overview, API, Learning, Infrastructure, provisionnés depuis le dépôt (section 3)                         |
 | Des règles d'alerte                   | 25 règles, testées unitairement avec promtool, routées vers Discord (section 4)                           |

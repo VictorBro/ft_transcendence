@@ -158,8 +158,8 @@ vérification du §8 l'impose), donc « la prochaine leçon à écrire » est to
 | Prêtes, les 18 niveaux | 108         | 61        | 26        | 21      | 216    |
 
 La répartition par niveau suit l'ordre de chaque plan, pas `KIND_COUNTS`. Les 18 niveaux ont des
-leçons de vocabulaire et de grammaire prêtes, 16 ont des fonctions (pas en C1 ni fr C2) et 13 ont
-de la lecture (pas de A1, en A1, fr A1, fr C1 ni fr C2). Un défi du jour qui demande un type n'est
+leçons de vocabulaire et de grammaire prêtes, 16 ont des fonctions (pas `en` C1 ni `fr` C2) et 13 ont
+de la lecture (pas `de` A1, `en` A1, `fr` A1, `fr` C1 ni `fr` C2). Un défi du jour qui demande un type n'est
 tiré que si le niveau a une leçon prête de ce type (#95).
 
 **Le français A1** est le niveau de démo et celui où tous les tests e2e font l'onboarding. Ses

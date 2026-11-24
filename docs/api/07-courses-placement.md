@@ -175,8 +175,10 @@ setGoal(
 - `LangParam` (from `validation.pipe.ts`, chapter 2) checks that `:lang` is a known language.
 - `@ApiParam` is written by hand because `Language` is only a type, and Swagger cannot see types at runtime.
 - The controller passes `new Date()` to the service, so a test can give any "now".
-- `PATCH /courses/:lang/level` is used in three cases (from its summary): the learner skipped onboarding, the
-  placement result, or the learner chooses another level by hand.
+- The summary of `PATCH /courses/:lang/level` names three cases: the learner skipped onboarding, the placement
+  result, or the learner chooses another level by hand. In fact the web app calls it for onboarding and for a level
+  picked by hand. The placement result does not go through this route: `PlacementService` calls
+  `CoursesService.setLevel` directly (below).
 
 ### `courses.service.ts`
 
@@ -186,7 +188,9 @@ setGoal(
 const COURSE_SELECT = { lang: true, dailyGoal: true, level: true } as const;
 ```
 
-Every read asks for these three columns only, so ids, streak and XP never leak into a course response.
+The reads and the writes of `listCoursesUser`, `createCourse` and `write` ask for these three columns only.
+`setGoal` reads the whole row (the goal helpers take the whole row), but its answer goes through `CourseSchema.parse`, which
+keeps only these three fields. So ids, streak and XP never leak into a course response.
 
 **`listCoursesUser`** reads the user with their courses (`userLevels`), oldest first, and their `activeLang`. It
 reads **through the user** (`where: { id: userId }`), so another user's courses are unreachable by construction. A

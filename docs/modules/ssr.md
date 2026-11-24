@@ -128,8 +128,9 @@ Some pages were built so that the server's HTML is enough on its own:
    on a Mac), type "Disable JavaScript" and press Enter. Keep the developer tools open: the
    setting only lasts while they are open. (Firefox: `about:config`, set
    `javascript.enabled` to `false`.)
-7. Reload `/en/learn/fr`. The day's lessons, the progress, the rank line and "Today's
-   challenge" are still there. Click **Achievements and rules**: the achievements page shows.
+7. Reload `/en/learn/fr` in a window at least 1024 px wide. The day's lessons, the progress,
+   the rank line and "Today's challenge" are still there. (In a narrower window the rank and the
+   challenge sit behind the **My course** button, which needs JavaScript.) Click **Achievements and rules**: the achievements page shows.
 8. Go to `/en/learn/fr/lessons`. Tick **Grammar**, set **Direction** to **Descending**, and
    click **Apply**. The URL now has `kind=grammar` and `dir=desc`, and the list follows. Click
    **Clear filters**, then **2** in the pager under the list: page 2 opens. All of this ran on the

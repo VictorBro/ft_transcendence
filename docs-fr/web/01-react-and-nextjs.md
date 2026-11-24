@@ -275,7 +275,7 @@ Une recherche dans `apps/web` (`app`, `components`, `lib`) trouve ces hooks. Cha
 
 `useActionState`, `useOptimistic`, `useFormStatus` et `use()` ne sont **pas** utilisés dans cette app.
 
-L'app écrit aussi ses propres hooks (un hook personnalisé est juste une fonction qui commence par `use` et qui appelle d'autres hooks) : `useServerEvent`, `useSocketStatus`, `useUnreadTotal`, `useFriendOnline` dans [tab-socket.ts](../../apps/web/components/tab-socket.ts), `useErrorMessage` dans [lib/error-message.ts](../../apps/web/lib/error-message.ts), et celui de [lib/use-course-save.ts](../../apps/web/lib/use-course-save.ts). Les chapitres 3 et 4 les expliquent.
+L'app écrit aussi ses propres hooks (un hook personnalisé est juste une fonction qui commence par `use` et qui appelle d'autres hooks). Ceux qui sont partagés : `useServerEvent`, `useSocketStatus`, `useUnreadCounts`, `useUnreadTotal`, `useUnread`, `useFriendOnline` dans [tab-socket.ts](../../apps/web/components/tab-socket.ts), `useScrollLock` dans [scroll-lock.ts](../../apps/web/components/scroll-lock.ts), `useErrorMessage` dans [lib/error-message.ts](../../apps/web/lib/error-message.ts), et `useCourseSave` dans [lib/use-course-save.ts](../../apps/web/lib/use-course-save.ts). Les chapitres 3 et 4 les expliquent. Quelques autres sont posés à côté du code qui les utilise (les pages et le lecteur de leçon, le chat, les boutons d'amis).
 
 Quelques mots de plus sur les moins courants :
 

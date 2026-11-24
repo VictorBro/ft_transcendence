@@ -119,12 +119,12 @@ sequenceDiagram
     participant N as api (NestJS)
     participant P as db
 
-    Note over B,N: on load: wss /ws/ with ft.sid, joins user:<id>
+    Note over B,N: on load: wss /ws/ with ft.sid, joins user:#lt;id#gt;
     A->>C: PATCH /api/courses/de {dailyGoal}
     C->>N: proxy
     N->>P: transaction, COMMIT
     N-->>A: 200 Course
-    N->>C: course:updated {lang} to room user:<id>
+    N->>C: course:updated {lang} to room user:#lt;id#gt;
     C->>B: over the open WebSocket
     B->>B: router.refresh()
     B->>C: GET /en/learn/de (server components)

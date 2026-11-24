@@ -770,7 +770,7 @@ flowchart LR
   ST -->|"useUnread(id)"| ROW["badge de ConversationRow"]
   ST -->|"useUnreadTotal"| HDR["UnreadTotalBadge de l'en-tête"]
   CT -->|"dm:read"| SO
-  SO -->|dm:read| API
+  SO -->|"dm:read"| API
 ```
 
 Tests : [unread.test.ts](../../apps/web/lib/unread.test.ts) — rien avant le premier snapshot, remplacer et pas fusionner,
@@ -785,7 +785,15 @@ Le chapitre 3 couvre [presence.ts](../../apps/web/lib/presence.ts) et les listen
 l'en-tête du fil :
 
 ```tsx
-export function AvatarWithDot({ user, online, size }: { user: PublicUser; online?: boolean; size: number }) {
+export function AvatarWithDot({
+  user,
+  online,
+  size,
+}: {
+  user: PublicUser;
+  online?: boolean;
+  size: number;
+}) {
   return (
     <span className="relative shrink-0">
       <Avatar src={user.avatarUrl} name={user.displayName} size={size} />

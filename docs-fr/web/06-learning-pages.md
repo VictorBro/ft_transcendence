@@ -120,7 +120,7 @@ Ce qu'il fait :
   `lg` (un écran large), donc chaque panneau de page défile tout seul.
 - `nav={<DashboardNav />}` est la nav du header avec le **sélecteur de cours** (section 9).
 - Le `<div id={COURSE_MENU_SLOT}>` vide est un **slot** : une place vide dans le header. La page du
-  cours y met plus tard son bouton « My course » (section 4.2). `className="contents"` rend le
+  cours y met plus tard son bouton « My course » (section 4.5). `className="contents"` rend le
   div lui-même invisible pour la mise en page, donc le bouton à l'intérieur se comporte comme un enfant direct du header.
 
 ### `lib/course-menu-slot.ts`
@@ -231,8 +231,8 @@ Trois exports :
 Pourquoi deux regex ? `proxy.ts` (Chapitre 2) écrit le cookie quand tu ouvres l'accueil d'un cours. Next.js
 **prefetch** les liens (il les charge en arrière-plan avant que tu cliques). Si le cookie était posé pour
 n'importe quelle URL `/learn/de/...`, un lien que tu as seulement _vu_ pourrait changer ton « dernier cours ». La regex stricte
-empêche ça. Le fichier « n'importe rien » parce que `proxy.ts` tourne dans le middleware, qui doit rester
-petit.
+empêche ça. Le fichier « n'importe rien » : son commentaire dit que le middleware (`proxy.ts`) et un client
+component (`CourseSwitcher`) le lisent tous les deux.
 
 ---
 
@@ -341,8 +341,8 @@ décide de la 404.
       <RefreshOn events={[SERVER_EVENTS.COURSE_UPDATED]} />
 ```
 
-- `empty` : un niveau peut n'avoir encore aucune leçon prête. Alors la page montre seulement un message « aucune leçon prête »
-  à la place de la carte Aujourd'hui, du défi, et des stats « tentées » et « réussies ».
+- `empty` : un niveau peut n'avoir encore aucune leçon prête. Alors la page montre seulement le message « Lessons for this level are on their way. »
+  (les leçons de ce niveau arrivent) à la place de la carte Aujourd'hui, du défi, et des stats « tentées » et « réussies ».
 - `RefreshOn` (Chapitre 3) écoute le socket. Quand le serveur dit `COURSE_UPDATED` (par
   exemple le niveau a changé dans un autre onglet), la page s'affiche à nouveau.
 
@@ -680,7 +680,7 @@ export function rankStartOf(rank: number): number {
 
 - `achievementParams` donne les nombres pour le texte d'un succès. Le texte est dans les fichiers de
   messages, les nombres viennent des constantes partagées. Donc le texte correspond toujours à la règle que l'API
-  applique (« Pass 10 lessons with 70% or more »).
+  applique (« Pass 10 lessons, each at 70% or more. », réussis 10 leçons, chacune à 70 % ou plus).
 - `rankStartOf` donne où un rang commence. Avec `RANK_STEP = 100` : rang 1 à 0, rang 2 à 100,
   rang 3 à 300, rang 4 à 600. Chaque marche fait 100 de plus que la précédente.
 - `loadAchievements(lang)` lit `GET /api/courses/:lang/achievements`. Une API indisponible lance une erreur
@@ -693,8 +693,10 @@ export function rankStartOf(rank: number): number {
 
 Fichier : [achievements/page.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/achievements/page.tsx>)
 
-Les mêmes guards que la page du cours (cours, langue, niveau), puis un seul appel à l'API. Ensuite :
+Les mêmes guards que la page du cours (cours, langue, niveau), puis un seul appel à l'API. Comme la page
+du cours, elle a `RefreshOn` pour `COURSE_UPDATED`. Ensuite :
 
+- Un lien « Back to course » (retour au cours) vers `/learn/<lang>`.
 - Un résumé « 5 of 16 earned » avec une barre.
 - Les succès en quatre groupes : `lessons`, `streaks`, `challenges`, `levels`.
 - Une colonne de côté `HowItWorks` avec toutes les règles.
@@ -1162,7 +1164,8 @@ Un server component. Ses guards sont différents de ceux de la page du cours :
 ```
 
 `apiFind` (Chapitre 4) est comme `apiGet` mais traite une 404 comme « pas trouvé » au lieu d'une erreur. Donc :
-pas encore de test en cours, c'est normal, et la page montre l'écran de départ.
+pas encore de test en cours, c'est normal, et la page montre l'écran de départ. Un 401 (la session s'est
+terminée entre les deux lectures) va vers `/login`, et une API indisponible lance une erreur (la page d'erreur s'affiche).
 
 ```tsx
   // One run per learner, whatever the language. A live one elsewhere is where

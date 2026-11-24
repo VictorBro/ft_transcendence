@@ -796,11 +796,12 @@ flowchart TD
 2. With no locale in the URL, the `next-intl` middleware looks at its `NEXT_LOCALE` cookie (the
    last language used), then the browser's `Accept-Language` header, then the default `en`, and
    redirects. `NEXT_LOCALE` is a session cookie: it has no `maxAge`, so it ends when the browser
-   closes. The middleware also sets it when a page is opened in a language that is not the
-   browser's own.
+   closes. On a page load (not a prefetch), the middleware also writes it: when the URL's
+   language differs from the cookie, or, with no cookie yet, from the browser's own language.
 3. **Changing language**: the `LanguageSwitcher` select calls
-   `router.replace(pathname, { locale })`. The page reloads at the same path in the new
-   language, and `next-intl` writes `NEXT_LOCALE` in the browser. `replace` (not `push`) so the
+   `router.replace(pathname, { locale })`. The app opens the same path in the new language with a
+   client navigation (no full page load; the root layout renders again), and `next-intl` writes
+   `NEXT_LOCALE` in the browser. `replace` (not `push`) so the
    Back button does not undo a language change.
 4. **Telling the server**: [LocaleSync](../../apps/web/components/locale-sync.tsx), in the
    `(dashboard)` layout only, saves the URL's language in `User.locale` (`PATCH /api/users/me`

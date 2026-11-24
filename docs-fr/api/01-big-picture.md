@@ -23,7 +23,7 @@ Pense à un restaurant.
 
 Dans ce projet, la cuisine est `apps/api`, un programme NestJS. La salle est `apps/web`, un programme Next.js. La règle de tout le projet est écrite dans [docs/architecture/overview.md](../architecture/overview.md) :
 
-> **NestJS possède toute la logique métier et l'accès aux données. Next.js fait seulement l'affichage et le SSR.**
+> **NestJS possède toute la logique métier et l'accès aux données. Next.js fait seulement la présentation et le SSR.**
 
 Donc chaque règle (« est-ce que cet utilisateur peut voir cette leçon ? », « combien d'XP donne une leçon terminée ? ») et chaque lecture ou écriture dans la base de données se passe dans l'API. L'app web ne fait que demander et afficher.
 
@@ -172,7 +172,7 @@ flowchart TD
 
 ## 4. La place de l'API dans le système
 
-Toute l'app tourne dans des containers Docker, décrits dans [compose.yml](../../compose.yml) (plus les surcouches `compose.override.yml` pour le dev et `compose.prod.yml`, et `compose.deploy.yml` pour le serveur). Seul **Caddy** ouvre un port vers l'extérieur (en dev, Postgres et Redis en ouvrent aussi un, mais seulement sur `127.0.0.1`). Caddy est un _reverse proxy_ : une seule porte d'entrée qui envoie chaque requête au bon container, et qui gère le HTTPS.
+Toute l'app tourne dans des containers Docker, décrits dans [compose.yml](../../compose.yml) (plus les surcouches `compose.override.yml` pour le dev et `compose.prod.yml`, et `compose.deploy.yml` pour le serveur, plus `compose.deploy.proxy.yml` sur une machine où un autre proxy possède déjà les ports 80 et 443). Seul **Caddy** ouvre un port vers l'extérieur (en dev, Postgres et Redis en ouvrent aussi un, mais seulement sur `127.0.0.1` ; avec `compose.deploy.proxy.yml`, Caddy n'en ouvre aucun et le proxy de devant le joint par un réseau Docker). Caddy est un _reverse proxy_ : une seule porte d'entrée qui envoie chaque requête au bon container, et qui gère le HTTPS.
 
 ```mermaid
 flowchart LR

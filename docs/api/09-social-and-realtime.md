@@ -663,11 +663,13 @@ client does not listen to. This filter does the right thing instead:
   `app:error`).
 - Anything else is a bug: it is logged and answered `server.unexpected`.
 
-So the services can throw the same `HttpException`s for HTTP and for sockets. Each
-gateway declares it with `@UseFilters(SocketExceptionFilter)`.
+So the services can throw the same `HttpException`s for HTTP and for sockets. A gateway
+with handlers declares it with `@UseFilters(SocketExceptionFilter)`: today that is
+`MessagesGateway` (`SocketGateway` has no `@SubscribeMessage` handler).
 
 **Spec:** [socket-exception.filter.spec.ts](../../apps/api/src/gateway/socket-exception.filter.spec.ts)
-checks both cases (coded exception, unknown error) with and without an ack.
+checks that a coded exception keeps its code (in the ack, or as `app:error` without an ack),
+and that a crash, or an `HttpException` holding a sentence, is logged and answered `server.unexpected`.
 
 ---
 

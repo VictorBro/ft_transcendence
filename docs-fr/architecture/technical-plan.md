@@ -103,14 +103,14 @@ apps/api/src/
 
 Les deux apps utilisent les mêmes noms de stages ; l'api ajoute un stage `prune` entre `build` et `prod` :
 
-| Stage   | Contenu                                                         | Utilisé par                 |
-| ------- | --------------------------------------------------------------- | --------------------------- |
-| `base`  | `node:24.22.3-trixie-slim`, pnpm depuis npm                     |                             |
-| `deps`  | `pnpm install --frozen-lockfile`, cache mounts BuildKit         |                             |
-| `dev`   | toutes les dépendances, source montée en bind mount, `pnpm dev` | compose.override            |
-| `ci`    | dépendances + source, lance les tests, produit la couverture    | jobs e2e/test de la CI (§5) |
-| `build` | compile (Next standalone / Nest dist)                           |                             |
-| `prod`  | runtime uniquement, non-root, tini, HEALTHCHECK                 | compose.prod, GHCR          |
+| Stage   | Contenu                                                         | Utilisé par                           |
+| ------- | --------------------------------------------------------------- | ------------------------------------- |
+| `base`  | `node:24.22.3-trixie-slim`, pnpm depuis npm                     |                                       |
+| `deps`  | `pnpm install --frozen-lockfile`, cache mounts BuildKit         |                                       |
+| `dev`   | toutes les dépendances, source montée en bind mount, `pnpm dev` | compose.override                      |
+| `ci`    | dépendances + source, lance les tests, produit la couverture    | job des tests unitaires de la CI (§5) |
+| `build` | compile (Next standalone / Nest dist)                           |                                       |
+| `prod`  | runtime uniquement, non-root, tini, HEALTHCHECK                 | compose.prod, GHCR                    |
 
 Règles :
 
@@ -183,13 +183,13 @@ make clean
 le stage Docker `ci` pour avoir le même environnement. Ça garde le stage ci de la conception d'origine
 là où il compte et garde un retour rapide là où il ne compte pas.
 
-| Workflow           | Déclencheur                                                                                                     | Jobs                                                                                                                                                                                                                                                                                                         |
-| ------------------ | --------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `ci.yml`           | PR, push sur `main`                                                                                             | Natif : vérif du format, lint, typecheck, vérif de la version TS (operations/versions.md, retenu : TypeScript). Stage Docker `ci` : tests unitaires + couverture, e2e Supertest (Postgres et Redis tournent comme services du job). Puis build.                                                              |
-| `e2e.yml`          | PR, push sur `main`                                                                                             | Deux jobs par navigateur (`lesson`, `rest`), chacun avec un compose up des cibles prod, puis Playwright dans sa propre image (navigateurs et leurs paquets système compris) : parcours utilisateur, **contrôle de la console**, **pages légales** (`/privacy`, `/terms` répondent 200 avec un vrai contenu). |
-| `hygiene.yml`      | PR, push sur `main`                                                                                             | gitleaks, commitlint, titre de la PR, dérive de `.env.example`, échec si `.env` est indexé, `prisma migrate diff`.                                                                                                                                                                                           |
-| `images.yml`       | push sur n'importe quelle branche ; tags `v*`                                                                   | Build multi-arch à chaque commit ; tags selon le tableau plus bas.                                                                                                                                                                                                                                           |
-| `devcontainer.yml` | PR qui touche `.devcontainer/`, `.nvmrc`, `package.json`, `compose.yml`, `compose.override.yml`, `.env.example` | Builde l'image du devcontainer ; Node et pnpm doivent correspondre aux versions fixées ; compose lance le service workspace en root et en node ; la vérification préalable de l'hôte s'adapte à un daemon rootless.                                                                                          |
+| Workflow           | Déclencheur                                                                                                     | Jobs                                                                                                                                                                                                                                                                                                                       |
+| ------------------ | --------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ci.yml`           | PR, push sur `main`                                                                                             | Natif : vérif du format, lint, typecheck, vérif de la version TS (operations/versions.md, retenu : TypeScript), les apps compilent séparément, config du monitoring. Stage Docker `ci` : tests unitaires + couverture, e2e Supertest (Postgres et Redis tournent comme services du job). Puis tests des packages et build. |
+| `e2e.yml`          | PR, push sur `main`                                                                                             | Deux jobs par navigateur (`lesson`, `rest`), chacun avec un compose up des cibles prod, puis Playwright dans sa propre image (navigateurs et leurs paquets système compris) : parcours utilisateur, **contrôle de la console**, **pages légales** (`/privacy`, `/terms` répondent 200 avec un vrai contenu).               |
+| `hygiene.yml`      | PR, push sur `main`                                                                                             | gitleaks, commitlint, titre de la PR, dérive de `.env.example`, échec si `.env` est indexé, `prisma migrate diff`.                                                                                                                                                                                                         |
+| `images.yml`       | push sur n'importe quelle branche ; tags `v*`                                                                   | Build multi-arch à chaque commit ; tags selon le tableau plus bas.                                                                                                                                                                                                                                                         |
+| `devcontainer.yml` | PR qui touche `.devcontainer/`, `.nvmrc`, `package.json`, `compose.yml`, `compose.override.yml`, `.env.example` | Builde l'image du devcontainer ; Node et pnpm doivent correspondre aux versions fixées ; compose lance le service workspace en root et en node ; la vérification préalable de l'hôte s'adapte à un daemon rootless.                                                                                                        |
 
 ### Multi-arch (`images.yml`)
 

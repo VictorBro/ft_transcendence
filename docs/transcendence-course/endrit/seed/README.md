@@ -156,7 +156,7 @@ sequenceDiagram
 
 Les étapes sont enchaînées avec `.then(...)`. Une erreur dans cette chaîne va dans `.catch` :
 `console.error` puis `process.exit(1)`. Les erreurs d'avant la chaîne (`demoPassword`,
-`new PrismaService()` sans `DATABASE_URL`) sont lancées tout de suite et arrêtent aussi Node avec
+`new PrismaService()` sans `DATABASE_URL`, le premier `findContentDir('items')`) sont lancées tout de suite et arrêtent aussi Node avec
 le code 1. Le code de sortie 1 fait échouer `make` ou le déploiement.
 
 ---

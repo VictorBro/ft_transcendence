@@ -194,8 +194,8 @@ Les tests e2e de l'api (`apps/api/test/`) tournent sur un vrai PostgreSQL. La CI
   ([prisma.service.ts](../../apps/api/src/prisma/prisma.service.ts)), `FOR UPDATE` sur la ligne du cours
   ([goal.ts](../../apps/api/src/lessons/goal.ts)) et `FOR SHARE` sur la ligne de la leçon
   ([attempts.service.ts](../../apps/api/src/lessons/attempts.service.ts)). Prisma n'a pas de fonction
-  pour verrouiller des lignes. Elles utilisent le template tagué `$queryRaw` du client Prisma, dans des transactions
-  Prisma. Aucun `$queryRawUnsafe` ni `$executeRawUnsafe` n'est utilisé nulle part dans `apps/api`.
+  pour verrouiller des lignes. Les trois utilisent le template tagué `$queryRaw` du client Prisma, et les deux verrous
+  tournent dans des transactions Prisma. Aucun `$queryRawUnsafe` ni `$executeRawUnsafe` n'est utilisé nulle part dans `apps/api`.
 - **Les erreurs sont reconnues par leur code.** Les services lisent `error.code` (`P2002`, `P2025`, `P2003`)
   au lieu de vérifier la classe de l'erreur Prisma.
 - **Le client généré n'est pas commité.** Il est reconstruit à chaque endroit qui en a besoin, dans

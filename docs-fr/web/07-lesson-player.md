@@ -515,7 +515,7 @@ useEffect(() => {
 3. Il charge les brouillons depuis `localStorage` (seulement maintenant : le serveur n'a pas de `localStorage`).
 4. Sur une page d'**examen**, le `remainingMs` venu avec le HTML est vieux : il a été calculé avant le HTML, le téléchargement du JavaScript et l'hydratation. Donc il relit l'attempt (`readAttempt`) et note `asked = Date.now()` **avant** la requête. Utiliser le début de la requête (et pas son arrivée) veut dire que la date limite de l'onglet n'est jamais plus tard que celle du serveur. Plusieurs vérifications (`live`, `activeView`, `sent`) font en sorte qu'une réponse en retard ne fasse pas reculer un player qui est déjà passé à la suite.
 
-Encore deux effets :
+Encore trois effets :
 
 - Les brouillons suivent l'apprenant dans le stockage : `saveDrafts(...)` à chaque changement de `drafts` (une fois chargés, et jusqu'à la fin de l'attempt).
 - Quand la page change, le `<h1>` de la nouvelle page prend le focus (`heading.current?.focus(...)`), pour qu'un lecteur d'écran dise où est l'apprenant.
@@ -899,7 +899,7 @@ Deux colonnes : les options à gauche, les cases des unités à droite. Tu séle
 
 ### [flashcards.tsx](../../apps/web/components/lesson/flashcards.tsx) — « B3 »
 
-Des cartes avec la traduction au recto et le mot dans la langue du cours au verso (plus une explication et un exemple en option, chacun avec un bouton Écouter). Deux ensembles : `turned` (retournée au moins une fois : ça compte) et `back` (montre le verso en ce moment). Tant que chaque carte n'a pas été retournée, il retient la page :
+Des cartes avec la traduction au recto et le mot dans la langue du cours au verso (plus une explication et un exemple en option). Le mot et l'exemple ont chacun un bouton Écouter. Deux ensembles : `turned` (retournée au moins une fois : ça compte) et `back` (montre le verso en ce moment). Tant que chaque carte n'a pas été retournée, il retient la page :
 
 ```tsx
 useEffect(() => {
@@ -1102,6 +1102,12 @@ try {
       }
     }
   }
+} catch {
+  // Stop, or the connection dropped while reading.
+  return cut;
+} finally {
+  // Closes the response when we leave before its end; nothing to do after it.
+  reader.cancel().catch(() => undefined);
 }
 ```
 

@@ -12,7 +12,9 @@ les contributions de chaque membre, et les ressources avec la façon dont l'IA a
 
 ## Pas de TODO, pas de code commenté
 
-Rien n'est livré avec un `TODO` ou un bloc de code commenté. Il en reste un dans le code aujourd'hui :
+Rien n'est livré avec un `TODO` ou un bloc de code commenté. Il en reste deux dans le code aujourd'hui :
 
 - `.github/workflows/images.yml`, le nettoyage des versions d'image sans tag et des
   tags de branche dont la branche n'existe plus.
+- `.devcontainer/zshrc`, une ligne `export PATH="/workspace/.devcontainer:$PATH"` commentée,
+  au-dessus des alias.

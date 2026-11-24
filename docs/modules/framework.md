@@ -11,7 +11,7 @@ made with NestJS (a framework for Node.js servers).
 The module is one line in the Web modules table of
 [../subject/summary.md](../subject/summary.md):
 
-> | Major | Framework for both frontend and backend (full-stack frameworks count as both) |
+> | Major | Framework for both frontend and backend (a full-stack framework counts as both if you use its frontend and its backend) |
 
 The subject also says what a framework is:
 
@@ -25,7 +25,7 @@ The subject also says what a framework is:
 | ---------------- | ------------- | ----- |
 | A frontend framework | Next.js 16 with the App Router, on React 19. Every page is a Next.js page. | [`apps/web/package.json`](../../apps/web/package.json), [`apps/web/app/`](../../apps/web/app) |
 | A backend framework | NestJS 11. Every API route is a method in a NestJS controller. | [`apps/api/package.json`](../../apps/api/package.json), [`apps/api/src/`](../../apps/api/src) |
-| Full-stack frameworks count as both | Not used as our proof. We do not count Next.js as our backend: NestJS is the backend. Next.js only renders pages and calls NestJS. | [`../architecture/overview.md`](../architecture/overview.md), section 1 |
+| A full-stack framework counts as both, if you use its frontend and its backend | Not used as our proof. We do not count Next.js as our backend: NestJS is the backend. Next.js only renders pages and calls NestJS. | [`../architecture/overview.md`](../architecture/overview.md), section 1 |
 
 Both frameworks are named as frameworks in the subject's own list, so neither one
 needs an argument.

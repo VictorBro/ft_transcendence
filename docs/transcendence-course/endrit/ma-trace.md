@@ -117,7 +117,7 @@ Mon rôle en une phrase : **je porte le domaine des leçons**, de la base de don
 ### Attention : du code à mon nom que je n'ai pas écrit
 
 - `apps/web/components/shell.tsx` et `throttle-by-ip.decorator.ts` (`@ThrottleByIp`) : écrits par VictorBro (#21, commit `e2768146`, fusionnée dans ma #20). Le même commit retravaille aussi `identity-throttler.guard.ts` et son test.
-- `docs/brand/*` (#133) : le commit d'origine est de `eahmeti`, une identité que Git ne rattache pas à mon compte. Ce dossier a été supprimé depuis (commit `0b00fa7`).
+- Les fichiers de branding de la #133 : le commit d'origine est de `eahmeti`, une identité que Git ne rattache pas à mon compte. Ils ont été supprimés depuis (commit `0b00fa7`).
 - `lib/api.test.ts` et `e2e/support/session.ts` : environ 40 à 45 % écrits par VictorBro.
 
 ## 6. Ce que je dois savoir expliquer

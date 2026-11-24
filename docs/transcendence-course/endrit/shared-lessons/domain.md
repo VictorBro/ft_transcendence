@@ -31,9 +31,10 @@ Moins de syntaxe = moins de surprises, pas de HTML injecté, et on peut **compar
 ### Les types
 
 ```ts
-type Inline = { kind: 'text' | 'strong' | 'learning'; text: string };
-type Block  = { kind: 'paragraph'; inlines: Inline[] }
-            | { kind: 'list'; ordered: boolean; items: Inline[][] };
+export type Inline = { kind: 'text' | 'strong' | 'learning'; text: string };
+/** A paragraph (a list of pieces), or a list (one list of pieces per line). */
+export type Block =
+  { kind: 'paragraph'; inlines: Inline[] } | { kind: 'list'; ordered: boolean; items: Inline[][] };
 ```
 
 ### `parseRichText(source) → { blocks, errors }`
@@ -85,7 +86,7 @@ Exemples d'erreurs :
 | `See [this](http://x.y)` | `block 1: links or images not allowed` |
 | `**unclosed` | `block 1: unclosed or empty **bold**` |
 | `*italic*` | ``block 1: only **bold** and `form` markup is allowed (found "*")`` |
-| `Text\n- item` | `separate a list from surrounding text with a blank line` |
+| `Text\n- item` | `block 1: separate a list from surrounding text with a blank line` |
 
 ```mermaid
 flowchart TD
@@ -125,7 +126,7 @@ Elles sont dans la langue apprise : elles doivent être **les mêmes** dans les 
 
 Détail : `lower()` met en minuscules et remplace les apostrophes typographiques `’` par `'`, pour que `l’école` soit reconnu comme `l'école`.
 Pour un article qui finit par `'` (`l'`), pas besoin d'espace après ; pour les autres, on cherche `"article "` avec un espace
-(sinon `"une"` serait vu au début de `"unicorne"`).
+(sinon `"un"` serait vu au début de `"uniforme"`).
 
 ---
 
@@ -306,8 +307,9 @@ Personne ne les réécrit : le code les met. Chaque texte existe en `{ en, fr, d
 | `dictationInstruction(lang)` | pareil pour la dictée | `vocabularyLesson` |
 
 Remarque : les fichiers de contenu réels contiennent déjà ces textes (par ex. « Connect each pronoun with its partner. » dans
-`fr-er-verbs-present`), mais je n'ai trouvé aucun code du dépôt qui les y copie depuis `lessonCopy.ts`, et aucun validateur ne vérifie
-qu'une consigne égale ces textes. Point à vérifier si on te pose la question.
+`fr-er-verbs-present`). Aucun code ne les copie lui-même : le kit d'auteur envoie le fichier `domain/lessonCopy.ts` entier
+au modèle, dans son prompt ([`prompt.ts`](../../../../apps/api/scripts/lessons/prompt.ts), liste `COMMON`), et c'est le modèle qui
+les recopie. Aucun validateur ne vérifie qu'une consigne égale ces textes.
 
 ```
 examInstruction('de').en → "Translate each word into German, with its article for nouns."

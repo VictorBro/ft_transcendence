@@ -11,7 +11,7 @@ page marche avec JavaScript désactivé.
 
 Le module est une ligne du tableau Web de [../subject/summary.md](../subject/summary.md) :
 
-> | Minor | Advanced search: filters, sorting, pagination |
+> | Minor | Recherche avancée : filtres, tri, pagination |
 
 Le PDF ([../../docs/subject/ft_transcendence.pdf](../../docs/subject/ft_transcendence.pdf), chapitre IV, Web)
 le formule comme ceci :
@@ -70,8 +70,9 @@ flowchart LR
    - **trier** : d'abord par groupe, puis par le tri et le sens choisis, puis par ordre ;
    - **couper** une page de 20. Une page après la fin donne la dernière page ; aucun résultat donne la page 1,
      vide.
-5. **La réponse.** `LessonPageSchema` a `items`, `total` (les leçons qui correspondent), `levelTotal`
-   (toutes les leçons du niveau), `page` (la page vraiment affichée) et `pageSize`. La page affiche
+5. **La réponse.** `LessonPageSchema` a `day` (le jour du cours, pour les libellés Today et Yesterday),
+   `items`, `total` (les leçons qui correspondent), `levelTotal` (toutes les leçons du niveau), `page`
+   (la page vraiment affichée) et `pageSize`. La page affiche
    les lignes, le compte (« N lessons »), les puces et la pagination à partir de ça.
 6. **Sans JavaScript**, les filtres, la zone de recherche et les listes déroulantes sont un simple
    `<form method="get">`. **Apply** (dans `<noscript>`) l'envoie, et le navigateur charge la

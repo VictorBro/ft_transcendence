@@ -2,7 +2,7 @@
 
 <!-- Copie ce fichier dans modules/<module-name>.md. Garde chaque titre, dans cet ordre, pour que
      l'évaluateur trouve la même chose au même endroit dans chaque fichier de module. Écris des
-     phrases courtes en anglais simple. Chaque affirmation doit être vraie sur main : cite le fichier qui la prouve. -->
+     phrases courtes en français simple, avec « tu ». Chaque affirmation doit être vraie sur main : cite le fichier qui la prouve. -->
 
 **Type :** Major ou Minor. **Points :** 2 ou 1. **Statut :** fait.
 

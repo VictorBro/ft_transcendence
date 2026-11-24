@@ -8,10 +8,10 @@ dans un navigateur tourne sur Chromium, Firefox et WebKit, à chaque pull reques
 
 ## Ce que demande le sujet
 
-Le module est une ligne Minor du tableau Accessibility and Internationalization de
+Le module est une ligne Minor du tableau Accessibilité et internationalisation de
 [../subject/summary.md](../subject/summary.md) :
 
-> ≥2 additional browsers fully supported, tested, documented
+> ≥2 navigateurs supplémentaires entièrement supportés, testés, documentés
 
 Le PDF ([../../docs/subject/ft_transcendence.pdf](../../docs/subject/ft_transcendence.pdf), chapitre IV,
 Accessibility and Internationalization) le formule comme ceci :
@@ -24,10 +24,10 @@ Accessibility and Internationalization) le formule comme ceci :
 > - Consistent UI/UX across all supported browsers.
 
 « Additional » veut dire en plus du navigateur que la partie obligatoire demande déjà. Le même fichier
-liste, sous « Mandatory part » :
+liste, sous « Partie obligatoire » :
 
-> - Compatible with the latest stable **Google Chrome**.
-> - **No JS errors or warnings** in the browser console.
+> - Compatible avec la dernière version stable de **Google Chrome**.
+> - **Aucune erreur ni warning JS** dans la console du navigateur.
 
 Donc les deux navigateurs en plus ne doivent pas non plus afficher d'erreurs ou d'avertissements dans la console.
 
@@ -38,8 +38,8 @@ Donc les deux navigateurs en plus ne doivent pas non plus afficher d'erreurs ou 
 | Au moins 2 navigateurs en plus                    | Firefox et WebKit (le moteur de Safari), à côté de Chromium. Playwright (l'outil qui pilote un vrai navigateur dans nos tests) a un « project » par moteur : `chromium` (Desktop Chrome), `firefox` (Desktop Firefox) et `webkit` (Desktop Safari).                                                                                                                             | [e2e/playwright.config.ts](../../e2e/playwright.config.ts)                                                                       |
 | Entièrement supportés                             | L'app a des corrections pour des choses que seul un moteur fait (voir « Comment ça marche »). Le contrôle de la console (un test qui échoue à la moindre erreur ou au moindre avertissement dans la console) tourne sur les trois moteurs. Navigateurs de bureau seulement, voir [Limites et choix](#limites-et-choix).                                                         | [e2e/support/console-guard.ts](../../e2e/support/console-guard.ts), [e2e/tests/console.spec.ts](../../e2e/tests/console.spec.ts) |
 | Testés                                            | Chaque fichier de spec tourne sur les trois moteurs dans la CI : 3 moteurs × 2 parties = 6 jobs, chacun sur sa propre stack de production. Un dernier job, « playwright (production stack) », échoue si un des six n'a pas réussi. Quelques tests tournent seulement sur Chromium, chacun avec un `test.skip` qui donne la raison (voir [Limites et choix](#limites-et-choix)). | [.github/workflows/e2e.yml](../../.github/workflows/e2e.yml)                                                                     |
-| Documentés, avec les limites de chaque navigateur | Le README a une section « Browser support » : quels moteurs, comment la CI les lance, comment lancer un seul moteur, et les limites connues (pas de voix de lecture, navigateurs mobiles pas testés).                                                                                                                                                                           | [README.md](../../README.md#browser-support)                                                                                     |
-| UI/UX cohérente entre les navigateurs             | Les trois moteurs reçoivent les mêmes pages, les mêmes styles et les mêmes tests, avec les mêmes vérifications de ce qui est à l'écran. La vérification de la mise en page en largeur de téléphone tourne aussi sur chaque moteur.                                                                                                                                              | [e2e/tests/layout-gate.spec.ts](../../e2e/tests/layout-gate.spec.ts)                                                             |
+| Documentés, avec les limites de chaque navigateur | Le README a une section « Browser support » : quels moteurs, comment la CI les lance, les tests qui tournent seulement sur Chromium (avec un lien vers la liste dans [Limites et choix](#limites-et-choix)), comment lancer un seul moteur, et les limites connues (pas de voix de lecture, navigateurs mobiles pas testés).                                                    | [README.md](../../README.md#browser-support)                                                                                     |
+| UI/UX cohérente entre les navigateurs             | Les trois moteurs reçoivent les mêmes pages, les mêmes styles et les mêmes tests, avec les mêmes vérifications de ce qui est à l'écran. La vérification de la mise en page en largeur de téléphone tourne aussi sur chaque moteur.                                                                                                                                              | [e2e/tests/layout.spec.ts](../../e2e/tests/layout.spec.ts), [e2e/tests/layout-gate.spec.ts](../../e2e/tests/layout-gate.spec.ts) |
 
 ## Comment ça marche
 
@@ -57,6 +57,9 @@ les autres specs sont l'autre partie (`E2E_PART` dans la config). Chaque job :
 1. démarre la stack de production (`compose.yml` + `compose.prod.yml`) ;
 2. applique les migrations et charge la banque de questions (`make db-ready`) ;
 3. lance `./scripts/playwright-in-image.sh test --project=<browser>`.
+
+Un seul job, `playwright (chromium, rest)`, vérifie ensuite la stack de monitoring et lance le test de
+redémarrage de l'API tout seul, après la suite (`E2E_RESTART=1`).
 
 [scripts/playwright-in-image.sh](../../scripts/playwright-in-image.sh) lance Playwright dans
 l'image Playwright de Microsoft (`mcr.microsoft.com/playwright:v<version>-noble`, la version vient de
@@ -100,7 +103,7 @@ sans le son ([apps/web/components/lesson/kinds/functions.tsx](../../apps/web/com
 
 | Chemin                                                                                                                                                                                                                                                                                                                | Ce qu'il fait                                                                                                                                            |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [e2e/playwright.config.ts](../../e2e/playwright.config.ts)                                                                                                                                                                                                                                                            | Les trois projects `chromium`, `firefox`, `webkit` ; la séparation `lesson`/`rest` ; 2 workers, pas de nouvel essai.                                     |
+| [e2e/playwright.config.ts](../../e2e/playwright.config.ts)                                                                                                                                                                                                                                                            | Les trois projects `chromium`, `firefox`, `webkit` ; la séparation `lesson`/`rest` ; 2 workers (1 pour le run de redémarrage), pas de nouvel essai.      |
 | [.github/workflows/e2e.yml](../../.github/workflows/e2e.yml)                                                                                                                                                                                                                                                          | Les 6 jobs (3 moteurs × 2 parties) et le job de contrôle « playwright (production stack) ».                                                              |
 | [scripts/playwright-in-image.sh](../../scripts/playwright-in-image.sh)                                                                                                                                                                                                                                                | Lance Playwright dans son image officielle, qui contient les trois navigateurs.                                                                          |
 | [Makefile](../../Makefile)                                                                                                                                                                                                                                                                                            | `BROWSERS`, `make playwright`, `make playwright-all`, `make report`.                                                                                     |
@@ -146,7 +149,8 @@ Celles-ci comptent le plus pour ce module :
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [e2e/tests/console.spec.ts](../../e2e/tests/console.spec.ts)                                                                                                                         | Chaque route de `e2e/support/routes.ts`, déconnecté et connecté, et la navigation côté client : pas d'erreur dans la console, pas d'avertissement, pas d'exception non attrapée, pas de requête échouée. Sur les trois moteurs.                                                          |
 | [e2e/tests/lesson.spec.ts](../../e2e/tests/lesson.spec.ts)                                                                                                                           | « plays from the lesson page to the results, which stay » et les autres tests de leçon de grammaire ; « plays to the results in a browser with no voice » (vocabulaire) ; « plays to the results in a browser with no voice, through Show the text » (functions). Sur les trois moteurs. |
-| [e2e/tests/layout-gate.spec.ts](../../e2e/tests/layout-gate.spec.ts)                                                                                                                 | La vérification de la mise en page en largeur de téléphone sur chaque moteur. Elle met `isMobile` sauf sur Firefox, et vérifie la mise à jour tardive du viewport sur WebKit.                                                                                                            |
+| [e2e/tests/layout.spec.ts](../../e2e/tests/layout.spec.ts)                                                                                                                           | Chaque page des listes de routes, et les pages du placement, tiennent dans un écran de téléphone de 360 px de large, sur chaque moteur.                                                                                                                                                  |
+| [e2e/tests/layout-gate.spec.ts](../../e2e/tests/layout-gate.spec.ts)                                                                                                                 | La vérification de largeur de téléphone elle-même, sur chaque moteur. Elle met `isMobile` sauf sur Firefox, et vérifie la mise à jour tardive du viewport sur WebKit.                                                                                                                    |
 | [e2e/tests/auth.spec.ts](../../e2e/tests/auth.spec.ts), [e2e/tests/course.spec.ts](../../e2e/tests/course.spec.ts), [e2e/tests/time-zone.spec.ts](../../e2e/tests/time-zone.spec.ts) | Ils attendent qu'une redirection ou un rafraîchissement soit fini avant la page suivante. Sans cette attente, Firefox et WebKit signalent la navigation comme interrompue ou annulée, ce que le contrôle de la console attraperait.                                                      |
 | [e2e/tests/signup-budget.spec.ts](../../e2e/tests/signup-budget.spec.ts)                                                                                                             | La logique d'attente qui garde les inscriptions sous la limite de requêtes : elle attend la fin d'un 429 (trop de requêtes) et s'arrête après trois.                                                                                                                                     |
 
@@ -156,15 +160,18 @@ Celles-ci comptent le plus pour ce module :
   testés (README, et « Not in this issue » dans #159).
 - **WebKit, pas Safari.** Le WebKit de Playwright est le moteur derrière Safari, pas l'app Safari. Ses
   Firefox et Chromium sont aussi des builds de Playwright, pas les navigateurs officiels.
-- **Certains tests tournent seulement sur Chromium.** Chacun dit pourquoi dans son `test.skip` :
+- **Certains tests tournent seulement sur Chromium.** Sept appels `test.skip` le disent, chacun avec sa raison.
+  Trois d'entre eux sautent tout un groupe (« every French A1 ... lesson »), qui contient un test par
+  leçon française A1 écrite de ce type (les groupes grammaire et functions laissent de côté la leçon
+  que leur test d'une seule leçon joue déjà sur chaque moteur), donc ce groupe grandit avec le contenu :
 
-  | Test                                                                           | Raison donnée dans le code                                                                                                                                                                                            |
-  | ------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-  | `restart.spec.ts` : « an open page reconnects after an API restart, silently » | Deux démarrages de l'API en 15 minutes déclenchent l'alerte `ApiRestarting`, donc un seul moteur la redémarre : « one restart a run, on Chromium ». Le commentaire dit que Firefox et WebKit sont vérifiés à la main. |
-  | `lesson.spec.ts` : « says when the time ran out while the learner was away »   | L'attente est celle du serveur : « Chromium covers the wait ».                                                                                                                                                        |
-  | `lesson.spec.ts` : « every French A1 grammar / vocabulary / functions lesson » | Les renderers sont déjà testés sur chaque moteur par les tests d'une seule leçon : « Chromium covers the content ».                                                                                                   |
-  | `lesson.spec.ts` : « shows the Listen buttons once a French voice is there »   | La voix est une fausse voix ajoutée dans la page : « The voice is a stub ».                                                                                                                                           |
-  | `level-complete.spec.ts` : « the level complete card starts the next level »   | Il joue via l'API, pas via le navigateur : « API play: the engine adds nothing, the rate limit minutes ».                                                                                                             |
+  | Test                                                                                                              | Raison donnée dans le code                                                                                                                                                                                            |
+  | ----------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | `restart.spec.ts:28` : « an open page reconnects after an API restart, silently »                                 | Deux démarrages de l'API en 15 minutes déclenchent l'alerte `ApiRestarting`, donc un seul moteur la redémarre : « one restart a run, on Chromium ». Le commentaire dit que Firefox et WebKit sont vérifiés à la main. |
+  | `lesson.spec.ts:257` : « says when the time ran out while the learner was away »                                  | L'attente est celle du serveur : « Chromium covers the wait ».                                                                                                                                                        |
+  | `lesson.spec.ts:289`, `:409` et `:469` : les groupes « every French A1 grammar / vocabulary / functions lesson » | Les renderers sont déjà testés sur chaque moteur par les tests d'une seule leçon : « Chromium covers the content ».                                                                                                   |
+  | `lesson.spec.ts:371` : « shows the Listen buttons once a French voice is there »                                  | La voix est une fausse voix ajoutée dans la page : « The voice is a stub ».                                                                                                                                           |
+  | `level-complete.spec.ts:40` : « the level complete card starts the next level »                                   | Il joue via l'API, pas via le navigateur : « API play: the engine adds nothing, the rate limit minutes ».                                                                                                             |
 
 - **Pas de comparaison de captures d'écran.** Les tests vérifient ce qui est à l'écran sur chaque moteur, mais aucun test
   ne compare des captures d'écran entre moteurs.

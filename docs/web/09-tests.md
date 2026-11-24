@@ -162,6 +162,7 @@ In the root [package.json](../../package.json), turbo runs the same script in **
 ```json
     "test": "turbo run test",
     "test:cov": "turbo run test:cov",
+    ...
     "ci": "pnpm run format:check && turbo run lint typecheck test:cov build"
 ```
 
@@ -529,8 +530,8 @@ Main rules from [playwright.config.ts](../../e2e/playwright.config.ts):
   `https://localhost`).
 - `retries: 0`: a test that passes only the second time means a flaky **app**, so it must fail.
 - `forbidOnly` in CI: a forgotten `test.only` would silently run one test and still look green.
-- Every spec runs on the three browsers.
-- `restart.spec.ts` (tagged `@restart`) restarts the API under an open page, so it runs alone afterwards.
+- Every spec runs on the three projects (chromium, firefox, webkit). A few tests skip themselves outside Chromium with a `test.skip` that gives the reason: `restart.spec.ts`, five places in `lesson.spec.ts` (the test of the time that ran out while away, and four `describe` blocks: the three "every French A1 … lesson" ones, which loop over many lessons, and the vocabulary lesson with a voice) and one in `level-complete.spec.ts`. The two `discussion.spec.ts` tests that read the fixture tutor's answer skip on a stack that runs another `LLM_PROVIDER` (CI runs the fixture).
+- `restart.spec.ts` (tagged `@restart`) restarts the API under an open page, so it runs alone afterwards, on Chromium only (`test:e2e:restart`).
 
 Two specs are special gates:
 
@@ -552,7 +553,7 @@ How to run them:
 | Local, stack already up | `make playwright` (Chromium) or `make playwright-all` (three browsers) |
 | Local, start the stack too | `make test-e2e` |
 | Last report | `make report` (serves `e2e/playwright-report` on port 9323) |
-| GitHub | [e2e.yml](../../.github/workflows/e2e.yml): 3 browsers x 2 parts (`lesson.spec.ts` alone, and the rest), each on its own stack; a final `playwright (production stack)` gate job |
+| GitHub | [e2e.yml](../../.github/workflows/e2e.yml): 3 browsers x 2 parts (`lesson.spec.ts` alone, and the rest), each on its own stack; the chromium "rest" job also runs `restart.spec.ts`; a final `playwright (production stack)` gate job |
 
 On failure, CI uploads `e2e/playwright-report` and `e2e/test-results` (traces and screenshots).
 
