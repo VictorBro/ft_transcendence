@@ -16,7 +16,7 @@ chaque dossier doit couvrir le code de cette liste.
   nom actuel.
 - « Touché » veut dire créé ou modifié, même d'une ligne. Ce n'est pas un pourcentage de lignes.
 - Entre parenthèses : les autres personnes qui ont aussi touché le fichier.
-- Les dossiers de données (`content/`, `docs/mockups`, fixtures...) sont donnés en
+- Les dossiers de données (`content/`, fixtures...) sont donnés en
   nombre de fichiers.
 
 Pour refaire le calcul : `git fetch origin '+refs/pull/*/head:refs/pr/*'`, puis pour chaque commit
@@ -175,7 +175,6 @@ A aussi écrit des commits dans les PR des autres :
 - `docs/` : `backlog.md` (Endrit)
 - `docs/architecture/` : `overview.md` (Endrit), `product.md` (Endrit, Anaïs), `technical-plan.md` (Endrit)
 - `docs/content/` : `item-bank.md` (Endrit)
-- `docs/mockups/` : 111 fichiers
 - `docs/operations/` : `deployment.md` (Luca, Endrit), `development.md` (Bastian, Endrit), `monitoring.md` (Anaïs, Luca, Endrit), `versions.md` (Bastian, Endrit)
 - `docs/site/` : 2 fichiers (aussi : Bastian, Endrit)
 - `docs/subject/` : `ft_transcendence.pdf` (Endrit), `summary.md` (Endrit)

@@ -1112,7 +1112,7 @@ header:has(+ main .lesson-view) > div {
   color: rgb(199 210 254);
 }
 
-/* Reading (#148), after docs/mockups/lessons/reading/. */
+/* Reading (#148), after the reading mockups of the lesson prototype. */
 .reading-document {
   padding: 20px 24px;
   border: 1px solid #334155;

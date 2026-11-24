@@ -18,7 +18,6 @@ the HTML pages below can be read there without cloning the repository.
 | [content/](content/lessons.md)                          | What are the lessons and placement questions, and how are they written and loaded?  |
 | [subject/](subject/summary.md)                          | What does the 42 subject require?                                                   |
 | [transcendence-course/](transcendence-course/README.md) | What did each team member build, explained in their own words for the defence?      |
-| [mockups/](mockups/lessons/README.md)                   | What should each lesson screen look like?                                           |
 | [site/](site/milestone1-data-model.html)                | The pages and script behind the GitHub Pages site                                   |
 
 ## Every document
@@ -76,12 +75,6 @@ the HTML pages below can be read there without cloning the repository.
 | Document                                                         | What it covers                                                                                                                                                                                                                                                                                        |
 | ---------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [transcendence-course/README.md](transcendence-course/README.md) | How the folder works, and one folder per member: [victor/](transcendence-course/victor/README.md), [endrit/](transcendence-course/endrit/README.md), [anais/](transcendence-course/anais/README.md), [luca/](transcendence-course/luca/README.md), [bastian/](transcendence-course/bastian/README.md) |
-
-### mockups/
-
-| Document                                               | What it covers                                                                                              |
-| ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------- |
-| [mockups/lessons/README.md](mockups/lessons/README.md) | The target look of every lesson page, one PNG and one HTML file per screen, from Bastian's lesson prototype |
 
 ### site/
 

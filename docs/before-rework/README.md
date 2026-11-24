@@ -28,7 +28,6 @@ Where each topic lives, so every fact has one home. The repository's root
 | **Deployment** | [DEPLOYMENT.md](DEPLOYMENT.md) | The servers, DNS, the `.env`, what the seed loads, the LLM and rate-limit variables, automatic deploys |
 | **Monitoring** | [MONITORING.md](MONITORING.md) | Prometheus, Grafana, the dashboards, the alerts, every metric |
 | **Planning** | [BACKLOG.md](BACKLOG.md) | Work we know we owe, not scheduled yet |
-| **Brand** | [brand/](brand/README.md) | The logo, its assets and the brand slides |
 
 `gh-status.js` is not a document: the HTML pages load it to show live issue states from GitHub.
 
