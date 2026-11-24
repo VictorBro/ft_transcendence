@@ -96,11 +96,14 @@ reload. `make help` lists every target.
 
 The app is tested on desktop Chromium, Firefox and WebKit (the engine behind
 Safari): every Playwright suite runs on all three in CI (two jobs and two stacks
-per engine) and with `make playwright-all`. Seven tests run on Chromium only,
-each with a `test.skip` that says why: the API restart run
-(`e2e/tests/restart.spec.ts`), five tests of `e2e/tests/lesson.spec.ts` and one
-of `e2e/tests/level-complete.spec.ts`. The list and the reasons are in
-[docs/modules/browsers.md](docs/modules/browsers.md#limits-and-choices). `make` runs Chromium alone to stay quick. Run one engine with
+per engine) and with `make playwright-all`. Some tests run on Chromium only.
+Seven `test.skip` calls say which ones and why: the API restart run
+(`e2e/tests/restart.spec.ts`), one in `e2e/tests/level-complete.spec.ts`, and
+five in `e2e/tests/lesson.spec.ts` (one test and four `describe` blocks, three
+of which loop over the written French A1 lessons of one kind). The list and the
+reasons are in
+[docs/modules/browsers.md](docs/modules/browsers.md#limits-and-choices). `make`
+runs Chromium alone to stay quick. Run one engine with
 `pnpm --filter @ft/e2e run test:e2e --project=firefox`.
 
 Known limits:
