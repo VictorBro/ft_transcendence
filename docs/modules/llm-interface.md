@@ -16,11 +16,26 @@ The module is a Major row in the Artificial Intelligence modules table of
 
 > Complete LLM interface: text and/or image generation, streaming, error handling, rate limiting
 
-Two general rules also apply:
+The PDF ([../subject/ft_transcendence.pdf](../subject/ft_transcendence.pdf), chapter IV, Artificial
+Intelligence) words it like this:
 
-> Every claimed module must be **demonstrated live**; non-functional or incomplete = 0 points.
+> Major: Implement a complete LLM system interface.
+>
+> - Generate text and/or images based on user input.
+> - Handle streaming responses properly.
+> - Implement error handling and rate limiting.
 
-> Credentials in a local `.env` ignored by Git, plus a committed `.env.example`.
+Two general rules also apply. Chapter IV, under "Important - Module Dependencies and
+Evaluation", says:
+
+> During evaluation: You will be asked to demonstrate each claimed module. Only fully functional
+> and properly implemented modules will be counted toward your final score. Non-functional or
+> incomplete modules = 0 points.
+
+Chapter III.3, Technical requirements, says:
+
+> Store credentials (API keys, environment variables, etc.) in a local .env file that is ignored
+> by Git, and provide an .env.example file.
 
 The API key of the LLM is a credential, so the second rule has a row below.
 
@@ -33,7 +48,7 @@ The API key of the LLM is a credential, so the second rule has a row below.
 | Streaming | The tutor's answer streams from Gemini to the browser. The API calls Gemini's `streamGenerateContent?alt=sse` and passes on each piece of text as soon as it arrives. It sends each piece to the browser as a Server-Sent Events (SSE) `delta` event: one HTTP response that stays open and receives small messages. The browser shows each piece as it comes, and draws the Markdown the model writes (bold, lists, tables) instead of its `*` and `#` (#213). The placement questions are not streamed, because JSON cannot be checked before it is complete. | [gemini.provider.ts](../../apps/api/src/llm/gemini.provider.ts) (`stream`, `sseData`), [event-stream.ts](../../apps/api/src/lessons/event-stream.ts), [discussion.controller.ts](../../apps/api/src/lessons/discussion.controller.ts), [discussion-client.ts](../../apps/web/lib/discussion-client.ts), [discussion.tsx](../../apps/web/components/lesson/discussion.tsx), [tutor-answer.tsx](../../apps/web/components/lesson/tutor-answer.tsx) |
 | Stopping a stream | A **Stop** button replaces **Send** while the answer comes. It cancels the request. The API sees the connection close and aborts the Gemini call, so Google stops writing (and billing) an answer nobody reads. The same happens when the learner closes the page. | [discussion.tsx](../../apps/web/components/lesson/discussion.tsx), [event-stream.ts](../../apps/api/src/lessons/event-stream.ts) (`signal`), [gemini.provider.ts](../../apps/api/src/llm/gemini.provider.ts) |
 | Error handling | Every failure becomes an `LlmError` with one of seven fixed reasons: `unreachable`, `rate_limited`, `http_error`, `blocked`, `incomplete`, `invalid`, `disabled`. Each call times out after 90 seconds. The tutor route turns the reason into an error code (`llm.unavailable`, `llm.rateLimited`, `llm.blocked`, `llm.incomplete`, `llm.disabled`), and the page shows a sentence in the learner's language with a **Try again** button. If the answer breaks halfway, the words already shown stay on screen, dimmed and ending with "…". For placement questions, an error that may pass on a second try gets one retry; after that the cell waits 10 minutes. | [llm.provider.ts](../../apps/api/src/llm/llm.provider.ts) (`LlmFailure`, `LlmError`), [discussion.controller.ts](../../apps/api/src/lessons/discussion.controller.ts) (`ERROR_CODE`), [errors.ts](../../packages/shared/src/schemas/errors.ts), [discussion.tsx](../../apps/web/components/lesson/discussion.tsx), [question-stock.service.ts](../../apps/api/src/question-generation/question-stock.service.ts) (`generate`) |
-| Rate limiting | Three limits on tutor messages, counted in Redis before any LLM call: 2 a minute and 60 a day per learner, and 5 a minute for everyone together. Each one can be changed in `.env`. Over a limit, the API answers `429` with the number of seconds to wait, and the page shows a countdown. A message refused for another reason (for example `409`) uses up nothing. **Partly:** the placement question restocks share the same Gemini key, but these limits do not count them. A restock is limited in another way: one at a time per cell, and a 10-minute pause after a failure or a batch with nothing new. | [discussion-limits.ts](../../apps/api/src/lessons/discussion-limits.ts), [discussion.controller.ts](../../apps/api/src/lessons/discussion.controller.ts), [.env.example](../../.env.example), [question-stock.service.ts](../../apps/api/src/question-generation/question-stock.service.ts) |
+| Rate limiting | Three limits on tutor messages, counted in Redis before any LLM call: 2 a minute and 60 a day per learner, and 5 a minute for everyone together. Each one can be changed in `.env`. Over a limit, the API answers `429` with the number of seconds to wait, and the page shows a countdown. A message refused for another reason (for example `409`) uses up nothing. | [discussion-limits.ts](../../apps/api/src/lessons/discussion-limits.ts), [discussion.controller.ts](../../apps/api/src/lessons/discussion.controller.ts), [.env.example](../../.env.example) |
 | Limits on size, which also limit cost | A message has at most 500 characters, the browser sends back at most the last 10 turns, and an answer has at most 1,000 output tokens (a token is a small piece of a word). The same Zod schema checks the message in the browser and in the API. | [lesson.ts](../../packages/shared/src/schemas/lesson.ts) (`DISCUSSION_LIMITS`, `LessonDiscussionSchema`), [discussion.service.ts](../../apps/api/src/lessons/discussion.service.ts) (`MAX_OUTPUT_TOKENS`) |
 | (General rule) The key is kept out of git | `LLM_API_KEY` is set only in `.env`, which git ignores, and it is empty in the committed `.env.example`. The API sends it to Google in the `x-goog-api-key` header, never in the URL. With `LLM_PROVIDER=gemini` and no key, the API refuses to start. | [.env.example](../../.env.example), [llm.factory.ts](../../apps/api/src/llm/llm.factory.ts), [gemini.provider.ts](../../apps/api/src/llm/gemini.provider.ts) |
 | (General rule) It works live at the defence | The default provider, `fixture`, needs no key and no network: the tutor streams a fixed answer, and special words in a message cause each failure on purpose. With a Gemini key in `.env`, the same page talks to the real model. | [fixture.provider.ts](../../apps/api/src/llm/fixture.provider.ts), [README.md](../../README.md) |
@@ -199,7 +214,8 @@ minutes. See [../operations/monitoring.md](../operations/monitoring.md) and
 
 Part A works with no key (the default `LLM_PROVIDER=fixture`). Part B needs a Gemini key. Each
 learner can send the tutor 2 messages a minute, so follow the order below: the third message is
-the rate limit demo.
+the rate limit demo. The minute starts with the first message and does not slide, so do steps 5
+to 7 within one minute, and wait one minute before step 14.
 
 **Part A: streaming, errors and limits, without a key**
 
@@ -246,7 +262,8 @@ the rate limit demo.
 13. **Stop.** Ask a longer question, and click **Stop** while the answer is coming. The words
     already shown stay as the tutor's turn, and **Send** comes back. On the API side, the call
     to Gemini is cancelled.
-14. Switch the interface to French or German and ask again: the tutor answers in that language.
+14. Wait one minute: steps 12 and 13 used this minute's 2 messages. Then switch the interface to
+    French or German and ask again: the tutor answers in that language.
 15. In Grafana, the **Provider** panel now shows `gemini` and the model, and **Tokens per hour**
     and **Calls by outcome** show the calls.
 

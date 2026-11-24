@@ -13,11 +13,32 @@ Le module est une ligne du tableau des modules Web de
 
 > | Major | Framework pour le frontend et le backend (un framework full-stack compte pour les deux si tu utilises son frontend et son backend) |
 
-Le sujet dit aussi ce qu'est un framework :
+Le PDF ([../../docs/subject/ft_transcendence.pdf](../../docs/subject/ft_transcendence.pdf), chapitre IV, Web) le formule ainsi :
 
-> Définition d'un framework utilisée par le sujet : architecture structurée + fonctionnalités intégrées +
-> écosystème complet. React, Vue, Angular, Svelte, Next.js sont des frameworks ; Express, Fastify,
-> NestJS, Django, Flask, Rails sont des frameworks. jQuery, Lodash, Axios n'en sont **pas**.
+> Major: Use a framework for both the frontend and backend.
+>
+> - Use a frontend framework (React, Vue, Angular, Svelte, etc.).
+> - Use a backend framework (Express, NestJS, Django, Flask, Ruby on Rails, etc.).
+> - Full-stack frameworks (Next.js, Nuxt.js, SvelteKit) count as both if you use both their
+>   frontend and backend capabilities.
+
+Le PDF dit aussi ce qu'est un framework, au chapitre III.3, Technical requirements :
+
+> What is a Framework? For this project, a framework is defined as a comprehensive tool that
+> provides:
+>
+> - A structured architecture and conventions for organizing code.
+> - Built-in features for common tasks (routing, state management, etc.).
+> - A complete ecosystem of tools and libraries.
+>
+> Examples:
+>
+> - Frontend frameworks: React, Vue, Angular, Svelte, Next.js (these are frameworks).
+> - Backend frameworks: Express, Fastify, NestJS, Django, Flask, Ruby on Rails.
+> - Not frameworks: jQuery (library), Lodash (utility library), Axios (HTTP client).
+>
+> Note: React is considered a framework in this context due to its ecosystem and architectural
+> patterns, even though it is technically a library.
 
 ## Comment on y répond
 

@@ -13,11 +13,32 @@ The module is one line in the Web modules table of
 
 > | Major | Framework for both frontend and backend (a full-stack framework counts as both if you use its frontend and its backend) |
 
-The subject also says what a framework is:
+The PDF ([../subject/ft_transcendence.pdf](../subject/ft_transcendence.pdf), chapter IV, Web) words it like this:
 
-> Framework definition used by the subject: structured architecture + built-in features +
-> full ecosystem. React, Vue, Angular, Svelte, Next.js are frameworks; Express, Fastify,
-> NestJS, Django, Flask, Rails are frameworks. jQuery, Lodash, Axios are **not**.
+> Major: Use a framework for both the frontend and backend.
+>
+> - Use a frontend framework (React, Vue, Angular, Svelte, etc.).
+> - Use a backend framework (Express, NestJS, Django, Flask, Ruby on Rails, etc.).
+> - Full-stack frameworks (Next.js, Nuxt.js, SvelteKit) count as both if you use both their
+>   frontend and backend capabilities.
+
+The PDF also says what a framework is, in chapter III.3, Technical requirements:
+
+> What is a Framework? For this project, a framework is defined as a comprehensive tool that
+> provides:
+>
+> - A structured architecture and conventions for organizing code.
+> - Built-in features for common tasks (routing, state management, etc.).
+> - A complete ecosystem of tools and libraries.
+>
+> Examples:
+>
+> - Frontend frameworks: React, Vue, Angular, Svelte, Next.js (these are frameworks).
+> - Backend frameworks: Express, Fastify, NestJS, Django, Flask, Ruby on Rails.
+> - Not frameworks: jQuery (library), Lodash (utility library), Axios (HTTP client).
+>
+> Note: React is considered a framework in this context due to its ecosystem and architectural
+> patterns, even though it is technically a library.
 
 ## How we meet it
 

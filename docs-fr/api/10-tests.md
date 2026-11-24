@@ -131,7 +131,9 @@ Ce que fait chaque partie :
 
 - **`swc.vite(...)`** : Vitest doit transformer le TypeScript en JavaScript. L'injection de dépendances de Nest
   (chapitre 1) lit les **types des paramètres du constructeur** dans des « métadonnées » cachées que seuls certains
-  compilateurs écrivent. `swc` les écrit ; celui par défaut (`oxc`, désactivé avec `oxc: false`), non. Sans ça,
+  compilateurs écrivent. `swc` les écrit. Le transformateur par défaut de Vite 8, `oxc`, peut aussi les écrire,
+  mais il est désactivé avec `oxc: false` pour que swc soit le seul transformateur et que les métadonnées ne
+  dépendent jamais de celui des deux qui est passé en premier. Sans ça,
   chaque test qui demande un provider à Nest échoue avec « Nest can't resolve dependencies ».
 - **`include`** : seulement les fichiers sous `src/` qui finissent par `.spec.ts`.
 - **`setupFiles: ['reflect-metadata']`** : charge la petite bibliothèque qui stocke ces métadonnées, avant tous les
@@ -729,7 +731,8 @@ CI échoue. Seuls les tests unitaires comptent : le lancement e2e n'a pas de cou
   vrai Postgres et un vrai Redis.
 - Ce projet utilise **Vitest**, avec deux configs : `vitest.config.mts` (`src/**/*.spec.ts`) et
   `vitest.config.e2e.mts` (`test/**/*.e2e-spec.ts`).
-- Le plugin **swc** est obligatoire : sans les métadonnées des décorateurs, Nest ne peut rien injecter.
+- Le plugin **swc** est le seul transformateur (Oxc est désactivé, donc un seul outil écrit les métadonnées des
+  décorateurs) ; sans ces métadonnées, Nest ne peut rien injecter.
 - Les mocks sont des `vi.fn()` ; la plupart des specs construisent le service **à la main** avec `new`, quelques-unes
   utilisent `Test.createTestingModule` avec `{ provide, useValue }`.
 - Les specs e2e démarrent `AppModule`, appellent le **même `configureApp`** que `main.ts`, et lui parlent avec

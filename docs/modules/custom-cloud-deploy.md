@@ -11,19 +11,49 @@ another web server already owns the HTTPS ports.
 
 ## What the subject asks
 
-From "Modules of choice" in [../subject/summary.md](../subject/summary.md) (chapter IV of
-[../subject/ft_transcendence.pdf](../subject/ft_transcendence.pdf)):
+The module is a row in the Modules of choice table of
+[../subject/summary.md](../subject/summary.md):
 
-> | Type  | Module                                                                                                                                                                  |
-> | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+> | Type  | Module                                                                                                                                                            |
+> | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 > | Major | Custom module, substantial and technically complex, justified in the README (why chosen, what challenges, what value, why 2 points). Trivial features = rejection |
-> | Minor | Same, smaller scope, still requires justification                                                                                                                       |
+> | Minor | Same, smaller scope, still requires justification                                                                                                                 |
 
-The README rules add that the Modules section must give a "justification for each
-(especially custom ones), how implemented, by whom".
+The Minor builds on the Major ("Same as the major module"), so both are quoted below.
 
-The mandatory part already asks for "**HTTPS** for every connection to the backend from
-outside". We meet that rule on every machine with Caddy's own local certificate
+The PDF ([../subject/ft_transcendence.pdf](../subject/ft_transcendence.pdf), chapter IV.10, Modules of
+choice) words it like this:
+
+> Major: Implement a custom module that is not listed above.
+>
+> - The module must be substantial and demonstrate technical complexity.
+> - You must provide proper justification in your README.md explaining:
+>   - Why you chose this module.
+>   - What technical challenges it addresses.
+>   - How it adds value to your project.
+>   - Why it deserves Major module status (2 points).
+> - Taking shortcuts or implementing trivial features will result in rejection.
+> - Be creative and think outside the box.
+> - The module should be relevant to your project context.
+
+> Minor: Same as the major module but smaller in scope and less complex.
+>
+> - Must still demonstrate technical skill and creativity.
+> - Should add meaningful value to your project.
+> - Requires justification in README.md (similar to Major, but for 1 point).
+
+The README rules (chapter VI, Readme Requirements) add, for the Modules section:
+
+> - Modules:
+>   - List of all chosen modules (Major and Minor).
+>   - Point calculation (Major = 2pts, Minor = 1pt).
+>   - Justification for each module choice, especially for custom "Modules of choice".
+>   - How each module was implemented.
+>   - Which team member(s) worked on each module.
+
+The mandatory part (chapter III.3, Technical requirements) already says: "Any connection to the
+backend, from a browser, from a script, from an external API, etc., must use HTTPS."
+We meet that rule on every machine with Caddy's own local certificate
 authority ([`infra/caddy/Caddyfile`](../../infra/caddy/Caddyfile), `local_certs`). This
 module is what comes on top: a public server, a public name, and a certificate the
 browser trusts without being told to.

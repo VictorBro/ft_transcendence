@@ -14,11 +14,25 @@ CI means "continuous integration": checking every change automatically. CD means
 
 ## What the subject asks
 
-From "Modules of choice" in [../subject/summary.md](../subject/summary.md) (the full text
-is in chapter IV of [../subject/ft_transcendence.pdf](../subject/ft_transcendence.pdf)):
+The module is one line in the Modules of choice table of
+[../subject/summary.md](../subject/summary.md):
 
-> Major | Custom module, substantial and technically complex, justified in the README (why
-> chosen, what challenges, what value, why 2 points). Trivial features = rejection
+> | Major | Custom module, substantial and technically complex, justified in the README (why chosen, what challenges, what value, why 2 points). Trivial features = rejection |
+
+The PDF ([../subject/ft_transcendence.pdf](../subject/ft_transcendence.pdf), chapter IV.10, Modules of
+choice) words it like this:
+
+> Major: Implement a custom module that is not listed above.
+>
+> - The module must be substantial and demonstrate technical complexity.
+> - You must provide proper justification in your README.md explaining:
+>   - Why you chose this module.
+>   - What technical challenges it addresses.
+>   - How it adds value to your project.
+>   - Why it deserves Major module status (2 points).
+> - Taking shortcuts or implementing trivial features will result in rejection.
+> - Be creative and think outside the box.
+> - The module should be relevant to your project context.
 
 The four questions are answered below, in "Why we chose it", "The technical challenges",
 "The value it adds" and "Why it deserves its size".

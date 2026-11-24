@@ -73,7 +73,7 @@ flowchart LR
 3. A free-text form checks the input with the **same Zod schema the API uses** (from `@ft/shared`); a picker only offers valid values. Then it calls a `*-client.ts` function, and the API validates either way.
 4. After a write, it calls `router.refresh()`. This asks the server to render the page again with fresh data. So the server stays the one place that knows the truth.
 
-Most pages also have `export const dynamic = 'force-dynamic'`. This tells Next.js: never build this page ahead of time and never cache it, because it shows data for one person.
+Most pages also have `export const dynamic = 'force-dynamic'`. It tells Next.js: never build this page ahead of time and never cache it, because it shows data for one person. Reading the session already does that: `currentUser()` reads the request's cookies, and both `HeaderNav` and `DashboardNav` call it, so every page under these layouts is rendered on each request anyway. `force-dynamic` says it explicitly in the page itself.
 
 ### Summary table
 
@@ -112,7 +112,7 @@ export default function MainLayout({ children }: { children: ReactNode }) {
 
 It gives `Shell` three slots: the app name on the left (`Wordmark`), the header links (`HeaderNav`), and the footer with links to the legal pages (`LegalFooter`). Those components are explained in [03-shell-components.md](03-shell-components.md).
 
-`HeaderNav` has two looks. A visitor sees one row: the language switcher, "Sign in" and "Create account". A signed-in user sees one menu button (`HeaderMenu`). It opens a panel with the language switcher, a link to `/profile` (avatar and name), "Friends", "Messages" and "Log out". The language switcher changes the URL's locale. This layout does not save it: only the `(dashboard)` layout renders `LocaleSync`, which stores it in `User.locale` (chapter 6).
+`HeaderNav` has two looks. A visitor sees one row: the language switcher, "Sign in" and "Create account". A signed-in user sees one menu button (`HeaderMenu`). It opens a panel with the language switcher, a link to `/profile` (avatar and name), "Friends", "Messages" and "Log out". The language switcher changes the URL's locale. This layout does not save it: only the `(dashboard)` layout renders `LocaleSync`, which stores it in `User.locale` (chapter 3).
 
 The comment explains a choice. Other groups (like the dashboard) use a `fill` shell, where the page fills the screen exactly and the footer is pinned at the bottom. Here the pages are "documents" that can be longer than the screen (the privacy policy, for example), so the footer simply comes after the content.
 
@@ -141,7 +141,7 @@ export default async function HomePage() {
 
 - **Data:** `currentUser()` from [lib/session.ts](../../apps/web/lib/session.ts). It returns the user or `null`. It never redirects: the home page is for everyone, so if the session check fails, the page just shows the signed-out version.
 - **What the user can do:** click one button. A signed-in visitor sees "Continue learning" and goes to `/learn`. A visitor goes to `/signup`.
-- **Why `force-dynamic`:** the comment says it. Without it, Next.js might build the page once at build time, when nobody is signed in. Then everyone would see the "Start now" button.
+- **Why `force-dynamic`:** the comment says it: a copy built once at build time, when nobody is signed in, would show everyone the "Start now" button. The session read already prevents that: `currentUser()` reads the request's cookies (`cookies()` in [lib/api.ts](../../apps/web/lib/api.ts)), and the layout's `HeaderNav` calls it too, so Next.js renders the page on each request with or without the line. `force-dynamic` states it explicitly, so the page does not depend on that side effect.
 
 The logo uses Next's `<Image>` with `width={896}` (twice the largest size on screen, so it stays sharp on a retina screen) and `priority` (load it first, it is the main picture). The `flex-col-reverse ... lg:flex-row` classes put the logo above the text on small screens and to the right on large ones.
 
@@ -1315,7 +1315,7 @@ export default async function PrivacyPage({ params }: Props) {
 }
 ```
 
-They read the `locale` from the URL, pick the document, and set the tab title and the page description from it. They need no session and call no API: anyone can read them, signed in or not. They are not `force-dynamic`, because the content is the same for every visitor.
+They read the `locale` from the URL, pick the document, and set the tab title and the page description from it. They need no session and call no API: anyone can read them, signed in or not. They do not export `force-dynamic`, because their own content is the same for every visitor. They are still rendered on each request: the `(main)` layout's `HeaderNav` reads the session cookie, and reading cookies makes the route dynamic.
 
 ---
 
@@ -1348,7 +1348,7 @@ export function Flag({ lang, className }: { lang: Language; className?: string }
 
 - Every page in `(main)` shares one layout: wordmark, header nav (one menu button when signed in), legal footer, and a footer that comes after the content.
 - The usual shape is a **server page** that loads data (`requireUser`, `requireCourses`, `requireFriends`) and a **client form** that validates with the shared Zod schema, calls a `*-client.ts` function, then calls `router.refresh()`.
-- `force-dynamic` is on every page that shows one person's data, so Next.js never builds or caches it ahead of time.
+- `force-dynamic` is on every page that shows one person's data. The session read in the nav already makes every page dynamic; `force-dynamic` states it explicitly.
 - The login form has two steps in one component. The two `<form>`s have different `key`s so the password never shows up in the code field.
 - Onboarding's step is **computed from the API** (`resolveOnboardingStep`), not kept in state: a course with `level: null` means "pick a level next". This survives refreshes and abandoned exams.
 - The 2FA panel keeps "loading" and "failed" separate from "off" (bug #216), and shows recovery codes first because they are shown only once. The API refuses setup and enable while 2FA is on (PR #219), so only the password can turn it off.

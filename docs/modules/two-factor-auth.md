@@ -14,17 +14,26 @@ The module is one line in the User Management modules table of
 
 > | Minor | Complete 2FA |
 
-The mandatory part says that 2FA is not required there, and comes from this module:
+The PDF ([../subject/ft_transcendence.pdf](../subject/ft_transcendence.pdf), chapter IV, User
+Management) words it like this:
 
-> Basic **user management**: signup + login, at minimum email/password with **hashed and
-> salted** passwords. OAuth / 2FA come from modules.
+> Minor: Implement a complete 2FA (Two-Factor Authentication) system for the users.
+
+The mandatory part (chapter III.3, Technical requirements) says that 2FA is not required there,
+and can come from a module:
+
+> - Your application must have a basic user management system. Users must be able to sign up
+>   and log in securely:
+>   - At minimum: email and password authentication with proper security (hashed passwords,
+>     salted, etc.).
+>   - Additional authentication methods (OAuth, 2FA, etc.) can be implemented via modules.
 
 The subject gives no more detail. We read "complete" as the whole life of a second factor: a
 user can turn it on, it is asked for at every login, there is a way in when the phone is lost,
 and the user can turn it off again. The rows below follow that reading. One rule of the
 mandatory part also applies to every form, so it has a row too:
 
-> All forms and inputs validated **both frontend and backend**.
+> - All forms and user inputs must be properly validated in both the frontend and backend.
 
 ## How we meet it
 

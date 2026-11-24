@@ -13,11 +13,24 @@ Le module est une ligne du tableau User Management modules de
 
 > | Major | Standard user management: profile editing, avatar upload (with default), friends + online status, profile page |
 
-Deux règles de la partie obligatoire s'appliquent au même code :
+Le PDF ([../../docs/subject/ft_transcendence.pdf](../../docs/subject/ft_transcendence.pdf), chapitre IV, User
+Management) le formule ainsi :
 
-> - Basic **user management**: signup + login, at minimum email/password with
->   **hashed and salted** passwords. OAuth / 2FA come from modules.
-> - All forms and inputs validated **both frontend and backend**.
+> Major: Standard user management and authentication.
+>
+> - Users can update their profile information.
+> - Users can upload an avatar (with a default avatar if none provided).
+> - Users can add other users as friends and see their online status.
+> - Users have a profile page displaying their information.
+
+Deux règles de la partie obligatoire (chapitre III.3, Technical requirements) s'appliquent au même code :
+
+> - Your application must have a basic user management system. Users must be able to sign up
+>   and log in securely:
+>   - At minimum: email and password authentication with proper security (hashed passwords,
+>     salted, etc.).
+>   - Additional authentication methods (OAuth, 2FA, etc.) can be implemented via modules.
+> - All forms and user inputs must be properly validated in both the frontend and backend.
 
 L'inscription et la connexion font partie de la partie obligatoire, pas de ce module, donc ce fichier n'en parle pas.
 

@@ -13,13 +13,26 @@ Le module est une ligne du tableau Web modules de
 
 > | Minor | ORM for the database |
 
+Le PDF ([../../docs/subject/ft_transcendence.pdf](../../docs/subject/ft_transcendence.pdf), chapitre IV, Web) le formule ainsi :
+
+> Minor: Use an ORM for the database.
+
 Le sujet ne donne pas de règle en plus pour ce module. Deux règles de la partie obligatoire touchent le même
-code, donc ce fichier montre aussi comment l'ORM aide pour elles :
+code, donc ce fichier montre aussi comment l'ORM aide pour elles. Le chapitre III.3, Technical
+requirements, dit :
 
-> Database with a clear schema and well-defined relations.
+> The database must have a clear schema and well-defined relations.
 
-> **Multi-user simultaneous support**: concurrent logins, concurrent actions handled correctly,
-> real-time updates propagated, no data corruption or race conditions.
+Le chapitre III.2, General requirements, dit :
+
+> Multi-user Support (Mandatory): Your website must support multiple users simultaneously. This
+> is a core requirement of the project. Users should be able to interact with the application at
+> the same time without conflicts or performance issues. This includes:
+>
+> - Multiple users can be logged in and active at the same time.
+> - Concurrent actions by different users are handled properly.
+> - Real-time updates are reflected across all connected users when applicable.
+> - No data corruption or race conditions occur with simultaneous user actions.
 
 ## Comment on y répond
 

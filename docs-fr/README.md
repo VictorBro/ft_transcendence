@@ -6,7 +6,9 @@ Où se trouve chaque sujet, pour que chaque fait ait une seule place. Le [README
 racine du dépôt est le point d'entrée pour l'évaluation ; ce dossier contient le détail qui se cache derrière.
 
 GitHub Pages sert le dossier anglais `docs/` depuis `main` à l'adresse <https://victorbro.github.io/ft_transcendence/>,
-donc tu peux lire là-bas les pages HTML de `docs/` sans cloner le dépôt. Ce dossier-ci n'est pas en ligne :
+donc tu peux lire là-bas les pages HTML de `docs/` sans cloner le dépôt. Le fichier
+[.nojekyll](../docs/.nojekyll) désactive Jekyll, donc le site sert chaque fichier tel quel : un `.md` revient brut,
+les `{{ }}` qu'il contient restent intacts, et un nom qui commence par `_` n'est pas ignoré. Ce dossier-ci n'est pas en ligne :
 ouvre son [index.html](index.html) depuis ton clone.
 
 ## Les dossiers

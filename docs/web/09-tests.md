@@ -176,7 +176,8 @@ In the root [package.json](../../package.json), turbo runs the same script in **
 |---|---|---|
 | Your machine, one app | `pnpm --filter @ft/web test` (or `test:cov`) | Vitest in `apps/web` |
 | Your machine, all | `make test` → `pnpm run test` | Every package's unit tests |
-| `make ci` / `make` | `pnpm run ci` | format, lint, typecheck, `test:cov`, build |
+| Your machine, CI checks | `make ci` | The repo checks in `scripts/`, then `pnpm run ci` (format, lint, typecheck, `test:cov`, build), `prisma migrate deploy` and the API e2e |
+| Your machine, everything | `make` (target `all`) | `make ci`, then the production stack (`make run`), `make monitoring-check` and Playwright on Chromium |
 | Docker `ci` stage | [apps/web/Dockerfile](../../apps/web/Dockerfile) `CMD`: `pnpm lint && pnpm typecheck && pnpm test:cov` | The same, inside the image |
 | GitHub CI | [ci.yml](../../.github/workflows/ci.yml), job `unit tests (web)` | `pnpm --filter @ft/web run test:cov` inside the `ci` Docker stage |
 | git pre-push hook | [.husky/pre-push](../../.husky/pre-push) | Only lint and typecheck, **not** tests (kept fast) |

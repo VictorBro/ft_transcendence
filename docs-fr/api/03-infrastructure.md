@@ -112,7 +112,7 @@ function requireDatabaseUrl(): string {
 }
 ```
 
-Pourquoi : sans elle, le driver Postgres utilise ses propres valeurs par défaut et échoue plus tard avec une erreur qui parle de `localhost`, ce qui t'envoie déboguer la mauvaise chose. C'est une fonction libre (pas une méthode) parce que la classe a une propriété (`logger`), donc `super()` doit être la première ligne du constructeur et rien ne peut tourner avant.
+Pourquoi : sans elle, le driver Postgres utilise ses propres valeurs par défaut et échoue plus tard avec une erreur qui parle de `localhost`, ce qui t'envoie déboguer la mauvaise chose. C'est une fonction libre (pas une méthode) parce qu'elle tourne dans les arguments de `super(...)`, avant que `this` existe, donc elle ne peut pas être une méthode d'instance.
 
 ```ts
 @Injectable()
@@ -141,7 +141,7 @@ export class PrismaService extends PrismaClient implements OnModuleInit, OnModul
   }
 ```
 
-L'API se connecte au démarrage, pas à la première requête. Le commentaire explique : avec un mauvais `DATABASE_URL`, le container ne démarre pas, et le health check de compose le voit, au lieu de faire échouer la requête du premier utilisateur.
+Le commentaire dit que la connexion se fait au démarrage pour qu'un mauvais `DATABASE_URL` fasse échouer le démarrage du container. Ce n'est pas ce qui se passe : avec `@prisma/adapter-pg`, `$connect()` construit seulement un `pg.Pool`, et un pool n'ouvre aucune connexion avant sa première requête. Donc avec un mauvais `DATABASE_URL`, `$connect()` réussit, l'API écrit « database connected » dans les logs, et c'est la première requête qui échoue (`/api/health` indique alors `database` à `down`). L'issue #221 suit ce point.
 
 ```ts
   async ping(): Promise<number> {
@@ -208,7 +208,7 @@ export class RedisService implements OnModuleInit, OnModuleDestroy {
 ```
 
 - Contrairement à Prisma, il n'_étend_ pas le client. Il le garde dans un champ public, `client`. Le reste du code écrit `this.redis.client.incr(...)`.
-- `connectTimeout: 5_000` : un mauvais hôte pourrait attendre pour toujours ; cinq secondes transforment ça en une erreur claire au démarrage.
+- `connectTimeout: 5_000` : arrête une tentative de connexion après cinq secondes. Le commentaire dit que ça transforme un mauvais hôte en erreur au démarrage, mais non : la bibliothèque `redis` réessaie ensuite (sa stratégie par défaut réessaie après toute erreur sauf un timeout de socket, en attendant jusqu'à environ 2 secondes entre deux essais), donc `client.connect()` ne se termine jamais et l'API reste bloquée avant `listen` au lieu de s'arrêter. L'issue #221 suit ce point.
 - `client.on('error', ...)` : en Node, un événement `'error'` sans listener fait planter le process. Ici, il est seulement écrit dans les logs, et la bibliothèque `redis` se reconnecte toute seule.
 
 `onModuleInit` appelle `client.connect()`, `onModuleDestroy` appelle `client.close()`, et `ping()` mesure `client.ping()` en millisecondes, exactement comme celui de Prisma.
@@ -683,7 +683,7 @@ export class HealthController {
 - `@Public()` : pas besoin de login, donc `AuthGuard` la laisse passer.
 - `@SkipThrottle()` : le rate limiter ignore cette route. Sinon, un site très chargé pourrait faire échouer le health check avec une 429.
 - `security: []` : dans Swagger, cette route n'a pas besoin de cookie.
-- Elle **répond toujours 200**. Le vrai état est dans le body. Si elle répondait 500 pendant que Postgres démarre encore, Docker pourrait redémarrer un container qui va très bien.
+- Elle **répond toujours 200**. Le vrai état est dans le body. Le commentaire dit qu'une réponse non-2xx ferait redémarrer le container par Docker, mais Docker et Compose ne redémarrent jamais un container `unhealthy` (seul Swarm le fait) : une réponse non-2xx le marquerait seulement `unhealthy` et ferait échouer `docker compose up --wait`. L'issue #221 suit ce point.
 
 **Spec** ([health.controller.spec.ts](../../apps/api/src/health/health.controller.spec.ts)) : la réponse correspond au contrat Zod partagé.
 
@@ -818,7 +818,7 @@ export class DependencyHealthDto implements DependencyHealth {
 ## Idées clés à retenir
 
 - `PrismaModule` et `RedisModule` sont les seuls modules `@Global` : un client de base de données partagé, une connexion Redis partagée.
-- Les deux services vérifient leur variable d'URL à la construction, se connectent dans `onModuleInit` (pour qu'une mauvaise configuration échoue au démarrage), se ferment dans `onModuleDestroy`, et offrent un `ping()` qui renvoie des millisecondes.
+- Les deux services vérifient leur variable d'URL à la construction, se connectent dans `onModuleInit` (pour qu'une mauvaise configuration échoue au démarrage, mais aucun des deux n'y arrive : le `$connect()` de Prisma n'ouvre rien, et Redis réessaie sans fin), se ferment dans `onModuleDestroy`, et offrent un `ping()` qui renvoie des millisecondes.
 - Redis est un stockage clé/valeur rapide en mémoire : ici pour les sessions, la présence, l'état du placement et les limites de discussion.
 - Le rate limiting donne à chaque appelant un budget par minute. `IdentityThrottlerGuard` compte par compte (ou par adresse quand on n'est pas connecté), et les routes avec `@ThrottleByIp` comptent par adresse, pour qu'un attaquant ne puisse pas multiplier les budgets avec beaucoup de comptes.
 - Les limites viennent de variables d'env, lues une fois à l'import, et une mauvaise valeur arrête l'API.

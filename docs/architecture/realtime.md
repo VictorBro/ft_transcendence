@@ -222,8 +222,9 @@ sequenceDiagram
     their unread counts, and `GET /api/conversations/:userId/messages?cursor=` pages the history, 50
     at a time on `(createdAt, id)`. Reading needs no friendship: the history stays readable by both
     after unfriending.
-  - **Unread counts are snapshots.** `dm:unread { counts, at }` holds every conversation's count,
-    keyed by the other user, never a change to apply. It goes to the recipient after each message,
+  - **Unread counts are snapshots.** `dm:unread { counts, at }` holds the count of every conversation
+    with unread messages, keyed by the other user (one with none is left out): always the whole
+    picture, never a change to apply. It goes to the recipient after each message,
     without holding up the ack (a failure is logged); to the reader after each `dm:read`, changed
     or not, so a read always converges; and to each new socket after the presence snapshot, empty
     included, so the tab can tell "nothing unread" from "not heard yet". `at` is taken before the

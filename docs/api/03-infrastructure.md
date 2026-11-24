@@ -112,7 +112,7 @@ function requireDatabaseUrl(): string {
 }
 ```
 
-Why: without it, the Postgres driver uses its own defaults and fails later with an error about `localhost`, which sends you to debug the wrong thing. It is a free function (not a method) because the class has a property (`logger`), so `super()` must be the first line of the constructor and nothing can run before it.
+Why: without it, the Postgres driver uses its own defaults and fails later with an error about `localhost`, which sends you to debug the wrong thing. It is a free function (not a method) because it runs inside the `super(...)` arguments, before `this` exists, so it cannot be an instance method.
 
 ```ts
 @Injectable()
@@ -141,7 +141,7 @@ export class PrismaService extends PrismaClient implements OnModuleInit, OnModul
   }
 ```
 
-The API connects at start, not on the first query. The comment explains: a wrong `DATABASE_URL` then makes the container fail to start, which the compose health check catches, instead of failing the first user's request.
+The comment says this connects at start so that a wrong `DATABASE_URL` fails the container's start. That is not what happens: with `@prisma/adapter-pg`, `$connect()` only builds a `pg.Pool`, and a pool opens no connection before its first query. So with a wrong `DATABASE_URL`, `$connect()` resolves, the API logs "database connected", and the first query is what fails (`/api/health` then reports `database` as `down`). Issue #221 tracks this.
 
 ```ts
   async ping(): Promise<number> {
@@ -208,7 +208,7 @@ export class RedisService implements OnModuleInit, OnModuleDestroy {
 ```
 
 - Unlike Prisma, it does not *extend* the client. It holds it in a public field, `client`. Other code writes `this.redis.client.incr(...)`.
-- `connectTimeout: 5_000`: a wrong host could wait forever; five seconds turns it into a clear start error.
+- `connectTimeout: 5_000`: ends one connection attempt after five seconds. The comment says this turns a wrong host into a start error, but it does not: the `redis` library then retries (its default strategy retries after every error except a socket timeout, waiting up to about 2 seconds between tries), so `client.connect()` never settles and the API hangs before `listen` instead of stopping. Issue #221 tracks this.
 - `client.on('error', ...)`: in Node, an `'error'` event with no listener crashes the process. Here it is only logged, and the `redis` library reconnects by itself.
 
 `onModuleInit` calls `client.connect()`, `onModuleDestroy` calls `client.close()`, and `ping()` measures `client.ping()` in milliseconds, exactly like Prisma's.
@@ -683,7 +683,7 @@ export class HealthController {
 - `@Public()`: no login needed, so `AuthGuard` lets it pass.
 - `@SkipThrottle()`: the rate limiter ignores this route. Otherwise a busy site could make the health check fail with 429.
 - `security: []`: in Swagger, this route needs no cookie.
-- It **always answers 200**. The real state is in the body. If it answered 500 when Postgres is still starting, Docker could restart a container that is fine.
+- It **always answers 200**. The real state is in the body. The comment says a non-2xx would make Docker restart the container, but Docker and Compose never restart an `unhealthy` container (only Swarm does): a non-2xx would only mark it `unhealthy` and make `docker compose up --wait` fail. Issue #221 tracks this.
 
 **Spec** ([health.controller.spec.ts](../../apps/api/src/health/health.controller.spec.ts)): the reply matches the shared Zod contract.
 
@@ -818,7 +818,7 @@ export class DependencyHealthDto implements DependencyHealth {
 ## Key ideas to remember
 
 - `PrismaModule` and `RedisModule` are the only `@Global` modules: one shared database client, one shared Redis connection.
-- Both services check their URL variable at construction, connect in `onModuleInit` (so a bad setup fails at start), close in `onModuleDestroy`, and offer a `ping()` that returns milliseconds.
+- Both services check their URL variable at construction, connect in `onModuleInit` (meant to fail a bad setup at start, but neither does: Prisma's `$connect()` opens nothing, and Redis retries forever), close in `onModuleDestroy`, and offer a `ping()` that returns milliseconds.
 - Redis is fast in-memory key/value storage: here for sessions, presence, placement state and discussion limits.
 - Rate limiting gives each caller a budget per minute. `IdentityThrottlerGuard` counts per account (or per address when signed out), and `@ThrottleByIp` routes count per address, so an attacker cannot multiply budgets with many accounts.
 - Limits come from env variables, read once at import, and a bad value stops the API.

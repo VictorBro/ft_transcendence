@@ -500,8 +500,10 @@ suivante et la met en forme pour le navigateur.
 3. Pour chaque catégorie, lire jusqu'à 100 questions de cette langue et de ce niveau **que l'utilisateur n'a jamais
    vues** (`userSeenQuestions: { none: { userId } }`), les écrites en premier.
 4. Dire au stock combien il en reste, **sans attendre** (`void this.stock.restock(...)`).
-5. Préférer les questions écrites : les générées attendent qu'il ne reste plus aucune écrite.
-6. Choisir une catégorie au hasard, puis une question au hasard dedans.
+5. Dans chaque catégorie, préférer les questions écrites : les générées de cette catégorie attendent qu'il ne reste
+   plus aucune écrite dans cette catégorie.
+6. Choisir une catégorie au hasard, puis une question au hasard dedans. Une question générée peut donc venir d'une
+   catégorie pendant qu'une autre catégorie a encore des écrites.
 7. S'il ne reste rien de pas vu nulle part : servir la question que cet utilisateur a **vue il y a le plus
    longtemps**, mais pas une de ce passage.
 8. Si même ça est vide : 404 `placement.poolExhausted`.
@@ -1186,7 +1188,8 @@ règles de contenu). La forme est envoyée à Gemini comme `responseJsonSchema` 
 - Le chrono est sur le serveur. Une réponse en retard compte comme un timeout (`null`), avec 2 secondes de marge.
 - Le payload de la question est un schema **strict**, donc la réponse ne peut jamais fuir ; les options sont
   mélangées une fois et gardées, donc un rechargement affiche la même chose.
-- Les questions sont tirées d'abord parmi les pas vues, **les écrites avant les générées**, puis la plus anciennement
+- Les questions sont tirées d'abord parmi les pas vues, **les écrites avant les générées dans chaque catégorie**
+  (puis une catégorie au hasard), puis la plus anciennement
   vue. C'est seulement quand même ça est vide que le passage échoue avec `poolExhausted`.
 - Chaque tirage appelle `restock` sans attendre. À 3 questions pas vues ou moins, `QuestionStockService` demande un
   lot au LLM, enlève les doublons, et enregistre des lignes avec `sourceId: null` et des limites de temps fixées par

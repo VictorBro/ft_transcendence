@@ -6,7 +6,9 @@ Where each topic lives, so every fact has one home. The repository's root
 [README](../README.md) is the evaluation entry point; this folder holds the detail behind it.
 
 GitHub Pages serves this folder from `main` at <https://victorbro.github.io/ft_transcendence/>, so
-the HTML pages below can be read there without cloning the repository.
+the HTML pages below can be read there without cloning the repository. [.nojekyll](.nojekyll) turns
+Jekyll off, so the site serves every file as it is: a `.md` file comes back raw, `{{ }}` inside it
+stays intact, and a name starting with `_` is not skipped.
 
 ## The folders
 

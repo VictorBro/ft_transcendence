@@ -11,19 +11,49 @@ un autre serveur web occupe déjà les ports HTTPS.
 
 ## Ce que demande le sujet
 
-Tiré de « Modules of choice » dans [../subject/summary.md](../subject/summary.md) (chapitre IV de
-[../../docs/subject/ft_transcendence.pdf](../../docs/subject/ft_transcendence.pdf)) :
+Le module est une ligne du tableau Modules of choice de
+[../subject/summary.md](../subject/summary.md) :
 
 > | Type  | Module                                                                                                                                                            |
 > | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 > | Major | Custom module, substantial and technically complex, justified in the README (why chosen, what challenges, what value, why 2 points). Trivial features = rejection |
 > | Minor | Same, smaller scope, still requires justification                                                                                                                 |
 
-Les règles du README ajoutent que la section Modules doit donner une « justification for each
-(especially custom ones), how implemented, by whom » (une justification pour chacun, surtout les custom, comment il est fait, par qui).
+Le Minor s'appuie sur le Major ("Same as the major module"), donc les deux sont cités plus bas.
 
-La partie obligatoire demande déjà « **HTTPS** for every connection to the backend from
-outside ». On respecte cette règle sur chaque machine avec l'autorité de certification locale
+Le PDF ([../../docs/subject/ft_transcendence.pdf](../../docs/subject/ft_transcendence.pdf), chapitre IV.10, Modules of
+choice) le formule ainsi :
+
+> Major: Implement a custom module that is not listed above.
+>
+> - The module must be substantial and demonstrate technical complexity.
+> - You must provide proper justification in your README.md explaining:
+>   - Why you chose this module.
+>   - What technical challenges it addresses.
+>   - How it adds value to your project.
+>   - Why it deserves Major module status (2 points).
+> - Taking shortcuts or implementing trivial features will result in rejection.
+> - Be creative and think outside the box.
+> - The module should be relevant to your project context.
+
+> Minor: Same as the major module but smaller in scope and less complex.
+>
+> - Must still demonstrate technical skill and creativity.
+> - Should add meaningful value to your project.
+> - Requires justification in README.md (similar to Major, but for 1 point).
+
+Les règles du README (chapitre VI, Readme Requirements) ajoutent, pour la section Modules :
+
+> - Modules:
+>   - List of all chosen modules (Major and Minor).
+>   - Point calculation (Major = 2pts, Minor = 1pt).
+>   - Justification for each module choice, especially for custom "Modules of choice".
+>   - How each module was implemented.
+>   - Which team member(s) worked on each module.
+
+La partie obligatoire (chapitre III.3, Technical requirements) dit déjà : « Any connection to the
+backend, from a browser, from a script, from an external API, etc., must use HTTPS. »
+On respecte cette règle sur chaque machine avec l'autorité de certification locale
 de Caddy ([`infra/caddy/Caddyfile`](../../infra/caddy/Caddyfile), `local_certs`). Ce
 module, c'est ce qui vient en plus : un serveur public, un nom public, et un certificat que le
 navigateur accepte sans qu'on le lui dise.

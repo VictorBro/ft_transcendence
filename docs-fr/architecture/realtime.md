@@ -222,8 +222,9 @@ sequenceDiagram
     leurs compteurs de non-lus, et `GET /api/conversations/:userId/messages?cursor=` pagine l'historique, 50
     à la fois sur `(createdAt, id)`. Lire n'a pas besoin d'amitié : l'historique reste lisible par les deux
     après la fin de l'amitié.
-  - **Les compteurs de non-lus sont des instantanés.** `dm:unread { counts, at }` contient le compteur de chaque conversation,
-    avec pour clé l'autre utilisateur, jamais un changement à appliquer. Il va au destinataire après chaque message,
+  - **Les compteurs de non-lus sont des instantanés.** `dm:unread { counts, at }` contient le compteur de chaque conversation
+    qui a des messages non lus, avec pour clé l'autre utilisateur (une conversation sans non-lus n'y figure pas) :
+    toujours l'état complet, jamais un changement à appliquer. Il va au destinataire après chaque message,
     sans retarder l'ack (un échec est loggé) ; au lecteur après chaque `dm:read`, qu'il y ait un changement
     ou non, pour qu'une lecture finisse toujours par converger ; et à chaque nouveau socket après l'instantané de présence, vide
     compris, pour que l'onglet puisse distinguer « rien de non lu » de « pas encore de nouvelles ». `at` est pris avant le

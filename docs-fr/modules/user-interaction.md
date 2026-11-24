@@ -11,15 +11,25 @@ Le module est une ligne du tableau Web modules de [../subject/summary.md](../sub
 
 > | Major | User interaction: basic **chat** + **profiles** + **friends** |
 
-Le même fichier ajoute une règle à son sujet :
+Le PDF ([../../docs/subject/ft_transcendence.pdf](../../docs/subject/ft_transcendence.pdf), chapitre IV, Web) le formule ainsi :
 
-> - Advanced chat requires the basic chat from the "User interaction" module.
+> Major: Allow users to interact with other users. The minimum requirements are:
+>
+> - A basic chat system (send/receive messages between users).
+> - A profile system (view user information).
+> - A friends system (add/remove friends, see friends list).
+
+Le chapitre IV ajoute une règle à son sujet, sous "Important - Module Dependencies and Evaluation" :
+
+> - Advanced chat features require the basic chat functionality from the "User interaction"
+>   module.
 
 On ne revendique pas Advanced chat, donc ce fichier ne couvre que le chat de base.
 
-Une règle de la partie obligatoire s'applique aussi à la zone de chat :
+Une règle de la partie obligatoire (chapitre III.3, Technical requirements) s'applique aussi à la
+zone de chat :
 
-> - All forms and inputs validated **both frontend and backend**.
+> - All forms and user inputs must be properly validated in both the frontend and backend.
 
 ### En quoi il diffère de la gestion standard des utilisateurs
 
@@ -154,6 +164,7 @@ sequenceDiagram
 - `Message.readAt` est vide jusqu'à ce que l'autre utilisateur lise le message. Il n'est jamais envoyé au
   navigateur, donc l'expéditeur ne voit pas quand un message a été lu.
 - `dm:unread { counts, at }` contient le nombre de non-lus de chaque conversation
+  qui a des messages non lus ; une conversation sans non-lus n'y figure pas
   ([unread.ts](../../apps/api/src/messages/unread.ts)). C'est toujours l'état complet, jamais une
   différence à ajouter. Le serveur l'envoie quand un onglet se connecte, au destinataire après chaque message, et
   à chaque onglet du lecteur après chaque lecture. `at` est l'heure du comptage, donc un onglet garde le

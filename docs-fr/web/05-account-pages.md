@@ -73,7 +73,7 @@ flowchart LR
 3. Un formulaire de texte libre vérifie ce qui a été saisi avec le **même schema Zod que l'API** (venant de `@ft/shared`) ; un sélecteur ne propose que des valeurs valides. Puis il appelle une fonction `*-client.ts`, et l'API valide dans les deux cas.
 4. Après une écriture, il appelle `router.refresh()`. Cela demande au serveur d'afficher la page à nouveau avec des données fraîches. Ainsi, le serveur reste le seul endroit qui connaît la vérité.
 
-La plupart des pages ont aussi `export const dynamic = 'force-dynamic'`. Cela dit à Next.js : ne construis jamais cette page à l'avance et ne la mets jamais en cache, car elle montre les données d'une seule personne.
+La plupart des pages ont aussi `export const dynamic = 'force-dynamic'`. Cela dit à Next.js : ne construis jamais cette page à l'avance et ne la mets jamais en cache, car elle montre les données d'une seule personne. Lire la session le fait déjà : `currentUser()` lit les cookies de la requête, et `HeaderNav` comme `DashboardNav` l'appellent, donc chaque page sous ces layouts est de toute façon rendue à chaque requête. `force-dynamic` le dit explicitement dans la page elle-même.
 
 ### Tableau récapitulatif
 
@@ -112,7 +112,7 @@ export default function MainLayout({ children }: { children: ReactNode }) {
 
 Il donne trois emplacements à `Shell` : le nom de l'app à gauche (`Wordmark`), les liens de l'en-tête (`HeaderNav`), et le pied de page avec les liens vers les pages légales (`LegalFooter`). Ces composants sont expliqués dans [03-shell-components.md](03-shell-components.md).
 
-`HeaderNav` a deux formes. Un visiteur voit une seule ligne : le sélecteur de langue, "Sign in" (Se connecter) et "Create account" (Créer un compte). Un utilisateur connecté voit un seul bouton de menu (`HeaderMenu`). Il ouvre un panneau avec le sélecteur de langue, un lien vers `/profile` (avatar et nom), "Friends" (Amis), "Messages" et "Log out" (Se déconnecter). Le sélecteur de langue change la locale de l'URL. Ce layout ne l'enregistre pas : seul le layout `(dashboard)` affiche `LocaleSync`, qui la stocke dans `User.locale` (chapitre 6).
+`HeaderNav` a deux formes. Un visiteur voit une seule ligne : le sélecteur de langue, "Sign in" (Se connecter) et "Create account" (Créer un compte). Un utilisateur connecté voit un seul bouton de menu (`HeaderMenu`). Il ouvre un panneau avec le sélecteur de langue, un lien vers `/profile` (avatar et nom), "Friends" (Amis), "Messages" et "Log out" (Se déconnecter). Le sélecteur de langue change la locale de l'URL. Ce layout ne l'enregistre pas : seul le layout `(dashboard)` affiche `LocaleSync`, qui la stocke dans `User.locale` (chapitre 3).
 
 Le commentaire explique un choix. D'autres groupes (comme le tableau de bord) utilisent un shell `fill`, où la page remplit exactement l'écran et le pied de page est collé en bas. Ici, les pages sont des "documents" qui peuvent être plus longs que l'écran (la politique de confidentialité, par exemple), donc le pied de page vient simplement après le contenu.
 
@@ -141,7 +141,7 @@ export default async function HomePage() {
 
 - **Données :** `currentUser()` de [lib/session.ts](../../apps/web/lib/session.ts). Il renvoie l'utilisateur ou `null`. Il ne redirige jamais : la page d'accueil est pour tout le monde, donc si la vérification de session échoue, la page montre juste la version "non connecté".
 - **Ce que l'utilisateur peut faire :** cliquer sur un bouton. Un visiteur connecté voit "Continue learning" (Continuer à apprendre) et va sur `/learn`. Un visiteur non connecté va sur `/signup`.
-- **Pourquoi `force-dynamic` :** le commentaire le dit. Sans lui, Next.js pourrait construire la page une seule fois au moment du build, quand personne n'est connecté. Alors tout le monde verrait le bouton "Start now" (Commencer).
+- **Pourquoi `force-dynamic` :** le commentaire le dit : une copie construite une seule fois au moment du build, quand personne n'est connecté, montrerait à tout le monde le bouton "Start now" (Commencer). La lecture de la session l'empêche déjà : `currentUser()` lit les cookies de la requête (`cookies()` dans [lib/api.ts](../../apps/web/lib/api.ts)), et le `HeaderNav` du layout l'appelle aussi, donc Next.js rend la page à chaque requête, avec ou sans cette ligne. `force-dynamic` le dit explicitement, pour que la page ne dépende pas de cet effet de bord.
 
 Le logo utilise le `<Image>` de Next avec `width={896}` (deux fois la plus grande taille à l'écran, pour qu'il reste net sur un écran retina) et `priority` (le charger en premier, c'est l'image principale). Les classes `flex-col-reverse ... lg:flex-row` mettent le logo au-dessus du texte sur les petits écrans et à droite sur les grands.
 
@@ -1315,7 +1315,7 @@ export default async function PrivacyPage({ params }: Props) {
 }
 ```
 
-Ils lisent la `locale` dans l'URL, choisissent le document, et en tirent le titre de l'onglet et la description de la page. Ils n'ont besoin d'aucune session et n'appellent aucune API : tout le monde peut les lire, connecté ou non. Ils ne sont pas `force-dynamic`, car le contenu est le même pour chaque visiteur.
+Ils lisent la `locale` dans l'URL, choisissent le document, et en tirent le titre de l'onglet et la description de la page. Ils n'ont besoin d'aucune session et n'appellent aucune API : tout le monde peut les lire, connecté ou non. Ils n'exportent pas `force-dynamic`, car leur propre contenu est le même pour chaque visiteur. Ils sont quand même rendus à chaque requête : le `HeaderNav` du layout `(main)` lit le cookie de session, et lire les cookies rend la route dynamique.
 
 ---
 
@@ -1348,7 +1348,7 @@ export function Flag({ lang, className }: { lang: Language; className?: string }
 
 - Chaque page de `(main)` partage un seul layout : wordmark, navigation de l'en-tête (un seul bouton de menu quand on est connecté), pied de page légal, et un pied de page qui vient après le contenu.
 - La forme habituelle est une **page serveur** qui charge les données (`requireUser`, `requireCourses`, `requireFriends`) et un **formulaire client** qui valide avec le schema Zod partagé, appelle une fonction `*-client.ts`, puis appelle `router.refresh()`.
-- `force-dynamic` est mis sur chaque page qui montre les données d'une personne, pour que Next.js ne la construise ni ne la mette en cache à l'avance.
+- `force-dynamic` est mis sur chaque page qui montre les données d'une personne. La lecture de la session dans la nav rend déjà chaque page dynamique ; `force-dynamic` le dit explicitement.
 - Le formulaire de connexion a deux étapes dans un seul composant. Les deux `<form>` ont des `key` différentes pour que le mot de passe n'apparaisse jamais dans le champ du code.
 - L'étape de l'onboarding est **calculée à partir de l'API** (`resolveOnboardingStep`), pas gardée dans le state : un cours avec `level: null` veut dire "choisir un niveau ensuite". Cela survit aux rafraîchissements et aux examens abandonnés.
 - Le panneau 2FA sépare "chargement" et "échec" de "désactivée" (bug #216), et montre les codes de secours en premier car ils ne sont affichés qu'une fois. L'API refuse setup et enable tant que la 2FA est activée (PR #219), donc seul le mot de passe peut la désactiver.

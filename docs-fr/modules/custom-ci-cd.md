@@ -14,12 +14,25 @@ CI veut dire « continuous integration » (intégration continue) : vérifier ch
 
 ## Ce que demande le sujet
 
-Tiré de « Modules au choix » dans [../subject/summary.md](../subject/summary.md) (le texte complet
-est au chapitre IV de [../../docs/subject/ft_transcendence.pdf](../../docs/subject/ft_transcendence.pdf)) :
+Le module est une ligne du tableau Modules of choice de
+[../subject/summary.md](../subject/summary.md) :
 
-> Major | Module sur mesure, conséquent et techniquement complexe, justifié dans le README
-> (pourquoi ce choix, quelles difficultés, quelle valeur, pourquoi 2 points). Fonctionnalités
-> triviales = refus
+> | Major | Custom module, substantial and technically complex, justified in the README (why chosen, what challenges, what value, why 2 points). Trivial features = rejection |
+
+Le PDF ([../../docs/subject/ft_transcendence.pdf](../../docs/subject/ft_transcendence.pdf), chapitre IV.10, Modules of
+choice) le formule ainsi :
+
+> Major: Implement a custom module that is not listed above.
+>
+> - The module must be substantial and demonstrate technical complexity.
+> - You must provide proper justification in your README.md explaining:
+>   - Why you chose this module.
+>   - What technical challenges it addresses.
+>   - How it adds value to your project.
+>   - Why it deserves Major module status (2 points).
+> - Taking shortcuts or implementing trivial features will result in rejection.
+> - Be creative and think outside the box.
+> - The module should be relevant to your project context.
 
 On répond aux quatre questions plus bas, dans « Pourquoi on l'a choisi », « Les défis techniques »,
 « Ce que ça apporte » et « Pourquoi il mérite sa taille ».

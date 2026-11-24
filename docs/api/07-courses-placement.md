@@ -483,8 +483,10 @@ and formats it for the browser.
 3. For each category, read up to 100 questions of this language and level **the user has never seen**
    (`userSeenQuestions: { none: { userId } }`), written ones first.
 4. Tell the stock how many are left, **without waiting** (`void this.stock.restock(...)`).
-5. Prefer written questions: generated ones wait until no written one is left.
-6. Pick a random category, then a random question in it.
+5. Inside each category, prefer written questions: that category's generated ones wait until none of its written
+   ones is left.
+6. Pick a random category, then a random question in it. So a generated question can come from one category while
+   another category still has written ones.
 7. If nothing unseen is left anywhere: serve the question this user **saw longest ago**, but not one from this run.
 8. If even that is empty: 404 `placement.poolExhausted`.
 
@@ -1145,8 +1147,8 @@ so the prompt only carries the content rules." The shape is sent to Gemini as `r
 - The clock is on the server. A late answer counts as a timeout (`null`), with 2 seconds of grace.
 - The question payload is a **strict** schema, so the answer can never leak; options are shuffled once and kept, so
   a reload looks the same.
-- Questions are drawn unseen first, **written before generated**, then the oldest seen one. Only when even that is
-  empty does the run fail with `poolExhausted`.
+- Questions are drawn unseen first, **written before generated inside each category** (then a random category),
+  then the oldest seen one. Only when even that is empty does the run fail with `poolExhausted`.
 - Each draw calls `restock` without waiting. At 3 or fewer unseen questions, `QuestionStockService` asks the LLM
   for a batch, drops duplicates, and saves rows with `sourceId: null` and server-set time limits.
 - A restock is never doubled (`busy`), never rejects, retries once only on a retryable `LlmError`, and cools a cell

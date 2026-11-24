@@ -12,10 +12,25 @@ The module is one line in the Web modules table of [../subject/summary.md](../su
 
 > | Major | Real-time features via WebSockets or similar (updates across clients, graceful dis/reconnect, efficient broadcasting) |
 
-The mandatory part also asks for this, which the same connection helps with:
+The PDF ([../subject/ft_transcendence.pdf](../subject/ft_transcendence.pdf), chapter IV, Web) words it like this:
 
-> - **Multi-user simultaneous support**: concurrent logins, concurrent actions handled correctly,
->   real-time updates propagated, no data corruption or race conditions.
+> Major: Implement real-time features using WebSockets or similar technology.
+>
+> - Real-time updates across clients.
+> - Handle connection/disconnection gracefully.
+> - Efficient message broadcasting.
+
+The mandatory part (chapter III.2, General requirements) also asks for this, which the same
+connection helps with:
+
+> Multi-user Support (Mandatory): Your website must support multiple users simultaneously. This
+> is a core requirement of the project. Users should be able to interact with the application at
+> the same time without conflicts or performance issues. This includes:
+>
+> - Multiple users can be logged in and active at the same time.
+> - Concurrent actions by different users are handled properly.
+> - Real-time updates are reflected across all connected users when applicable.
+> - No data corruption or race conditions occur with simultaneous user actions.
 
 ## How we meet it
 

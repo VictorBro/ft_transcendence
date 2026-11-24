@@ -174,14 +174,15 @@ Dans le [package.json](../../package.json) racine, turbo lance le même script d
 
 ### Où ils tournent
 
-| Où                  | Commande                                                                                                   | Ce que ça lance pour le web                                         |
-| ------------------- | ---------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| Ta machine, une app | `pnpm --filter @ft/web test` (ou `test:cov`)                                                               | Vitest dans `apps/web`                                              |
-| Ta machine, tout    | `make test` → `pnpm run test`                                                                              | Les tests unitaires de chaque package                               |
-| `make ci` / `make`  | `pnpm run ci`                                                                                              | format, lint, typecheck, `test:cov`, build                          |
-| Étape Docker `ci`   | `CMD` de [apps/web/Dockerfile](../../apps/web/Dockerfile) : `pnpm lint && pnpm typecheck && pnpm test:cov` | La même chose, dans l'image                                         |
-| CI GitHub           | [ci.yml](../../.github/workflows/ci.yml), job `unit tests (web)`                                           | `pnpm --filter @ft/web run test:cov` dans l'étape Docker `ci`       |
-| hook git pre-push   | [.husky/pre-push](../../.husky/pre-push)                                                                   | Seulement lint et typecheck, **pas** les tests (pour rester rapide) |
+| Où                                     | Commande                                                                                                   | Ce que ça lance pour le web                                                                                                                              |
+| -------------------------------------- | ---------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Ta machine, une app                    | `pnpm --filter @ft/web test` (ou `test:cov`)                                                               | Vitest dans `apps/web`                                                                                                                                   |
+| Ta machine, tout                       | `make test` → `pnpm run test`                                                                              | Les tests unitaires de chaque package                                                                                                                    |
+| Ta machine, les vérifications de la CI | `make ci`                                                                                                  | Les vérifications du dépôt dans `scripts/`, puis `pnpm run ci` (format, lint, typecheck, `test:cov`, build), `prisma migrate deploy` et les e2e de l'API |
+| Ta machine, tout le pipeline           | `make` (cible `all`)                                                                                       | `make ci`, puis la stack de production (`make run`), `make monitoring-check` et Playwright sur Chromium                                                  |
+| Étape Docker `ci`                      | `CMD` de [apps/web/Dockerfile](../../apps/web/Dockerfile) : `pnpm lint && pnpm typecheck && pnpm test:cov` | La même chose, dans l'image                                                                                                                              |
+| CI GitHub                              | [ci.yml](../../.github/workflows/ci.yml), job `unit tests (web)`                                           | `pnpm --filter @ft/web run test:cov` dans l'étape Docker `ci`                                                                                            |
+| hook git pre-push                      | [.husky/pre-push](../../.husky/pre-push)                                                                   | Seulement lint et typecheck, **pas** les tests (pour rester rapide)                                                                                      |
 
 En CI, le job `unit-tests` fait le build de l'étape `ci` du Dockerfile et lance les tests **dans** cette image, donc
 "ça passe en CI" veut dire "ça passe dans le même environnement que la production". Le dossier de couverture est ensuite copié dehors

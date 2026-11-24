@@ -13,11 +13,19 @@ panneau, chaque règle, chaque réglage, comment les changer) est
 
 ## Ce que demande le sujet
 
-Dans la liste des modules, section DevOps (voir [../subject/summary.md](../subject/summary.md)
-et le chapitre IV de [../../docs/subject/ft_transcendence.pdf](../../docs/subject/ft_transcendence.pdf)) :
+Le module est une ligne du tableau DevOps de [../subject/summary.md](../subject/summary.md) :
 
-> Major | Prometheus + Grafana monitoring: exporters, custom dashboards, alerting rules,
-> secured access
+> | Major | Prometheus + Grafana monitoring: exporters, custom dashboards, alerting rules, secured access |
+
+Le PDF ([../../docs/subject/ft_transcendence.pdf](../../docs/subject/ft_transcendence.pdf), chapitre IV, Devops) le formule ainsi :
+
+> Major: Monitoring system with Prometheus and Grafana.
+>
+> - Set up Prometheus to collect metrics.
+> - Configure exporters and integrations.
+> - Create custom Grafana dashboards.
+> - Set up alerting rules.
+> - Secure access to Grafana.
 
 Il y a donc cinq choses à montrer : Prometheus, des exporters, nos propres dashboards, des règles
 d'alerte, et un accès protégé.

@@ -11,15 +11,25 @@ The module is one line in the Web modules table of [../subject/summary.md](../su
 
 > | Major | User interaction: basic **chat** + **profiles** + **friends** |
 
-The same file adds one rule about it:
+The PDF ([../subject/ft_transcendence.pdf](../subject/ft_transcendence.pdf), chapter IV, Web) words it like this:
 
-> - Advanced chat requires the basic chat from the "User interaction" module.
+> Major: Allow users to interact with other users. The minimum requirements are:
+>
+> - A basic chat system (send/receive messages between users).
+> - A profile system (view user information).
+> - A friends system (add/remove friends, see friends list).
+
+Chapter IV adds one rule about it, under "Important - Module Dependencies and Evaluation":
+
+> - Advanced chat features require the basic chat functionality from the "User interaction"
+>   module.
 
 We do not claim Advanced chat, so this file covers only the basic chat.
 
-One rule of the mandatory part applies to the chat box too:
+One rule of the mandatory part (chapter III.3, Technical requirements) applies to the chat box
+too:
 
-> - All forms and inputs validated **both frontend and backend**.
+> - All forms and user inputs must be properly validated in both the frontend and backend.
 
 ### How it differs from standard user management
 
@@ -154,6 +164,7 @@ sequenceDiagram
 - `Message.readAt` is empty until the other user reads the message. It is never sent to the
   browser, so the sender does not see when a message was read.
 - `dm:unread { counts, at }` holds the unread count of every conversation
+  that has unread messages; one with none is left out
   ([unread.ts](../../apps/api/src/messages/unread.ts)). It is always the whole picture, never a
   change to add. The server sends it when a tab connects, to the recipient after each message, and
   to every tab of the reader after each read. `at` is the time of the count, so a tab keeps the

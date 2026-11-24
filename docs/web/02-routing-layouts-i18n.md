@@ -238,7 +238,9 @@ It exports four things:
 **`viewport`** — tells phones to use the device width (no zoomed-out desktop page).
 
 **`generateStaticParams()`** — returns `[{locale:'en'},{locale:'fr'},{locale:'de'}]`. It tells
-Next.js which values `[locale]` can have, so it can prepare them at build time.
+Next.js which values `[locale]` can have, so it can prepare them at build time. In practice no page
+under the three groups is built ahead: each group layout renders `HeaderNav` or `DashboardNav`, which
+read the session cookie, and reading cookies makes a route dynamic.
 
 **`generateMetadata()`** — gives the page `<title>` and description, translated:
 

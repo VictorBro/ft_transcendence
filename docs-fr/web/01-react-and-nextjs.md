@@ -379,7 +379,7 @@ Un `<form>` du navigateur, quand il est envoyé, recharge normalement la page. L
 Le modèle suivi par les formulaires de texte libre de l'app (connexion, inscription, profil, recherche...) :
 
 1. `preventDefault()`, lire `FormData`.
-2. Valider avec le **même schema Zod que celui de l'API** (venant de `@ft/shared`), pour que les erreurs évidentes ne quittent jamais la page. Les sélecteurs (cours, niveau, objectif) sautent cette étape : ils ne proposent que des valeurs valides, et l'API valide ce qu'ils envoient.
+2. Valider avec le **même schema Zod que celui de l'API** (venant de `@ft/shared`), pour que les erreurs évidentes ne quittent jamais la page. Les sélecteurs (cours, niveau, objectif) sautent cette étape : ils ne proposent que des valeurs valides, et l'API valide ce qu'ils envoient. Les réponses tapées du lecteur de leçon sont un troisième cas : ce sont des inputs contrôlés (`value` plus `onChange`) sans vérification Zod dans la page, et le `maxLength={300}` de chacun ([controls.tsx](../../apps/web/components/lesson/controls.tsx), [vocabulary.tsx](../../apps/web/components/lesson/kinds/vocabulary.tsx)) reprend la limite d'`AnswerSchema` dans `@ft/shared` (`text: z.string().max(300)`), pour que le navigateur ne puisse pas envoyer un texte que l'API refuserait.
 3. Appeler l'API depuis le navigateur (fonctions dans `lib/*-client.ts`) ou changer l'URL.
 4. Afficher les erreurs avec `FormError`, afficher « en cours » avec `SubmitButton pending`.
 
@@ -483,7 +483,7 @@ Une page ou un layout peut aussi exporter :
 
 - `generateMetadata()` ou `metadata` : le `<title>` et la description. La page de connexion utilise `generateMetadata` pour que le titre de l'onglet soit traduit.
 - `generateStaticParams()` : la liste des valeurs de param à construire à l'avance. Le layout racine renvoie les trois locales.
-- `export const dynamic = 'force-dynamic'` : « toujours faire le rendu à chaque requête, ne jamais mettre en cache ». Utilisé sur les pages dont le contenu dépend de qui demande, et sur les routes de santé (health).
+- `export const dynamic = 'force-dynamic'` : « toujours faire le rendu à chaque requête, ne jamais mettre en cache ». Utilisé sur les pages dont le contenu dépend de qui demande, et sur les routes de santé (health). Sur les pages, il dit ce qui est déjà vrai : lire le cookie de session (`cookies()`, appelé par `currentUser()` et par la nav de chaque layout de groupe) rend à lui seul une route dynamique. Sur les routes de santé, qui ne lisent aucun cookie, c'est lui qui les empêche d'être construites une seule fois.
 - `viewport` : les réglages du viewport mobile (layout racine).
 
 Le chapitre 2 passe en revue chaque fichier de `app/` en détail.

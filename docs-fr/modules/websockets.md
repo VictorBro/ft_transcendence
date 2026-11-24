@@ -12,10 +12,25 @@ Le module est une ligne du tableau Web modules de [../subject/summary.md](../sub
 
 > | Major | Real-time features via WebSockets or similar (updates across clients, graceful dis/reconnect, efficient broadcasting) |
 
-La partie obligatoire demande aussi ceci, et la même connexion y aide :
+Le PDF ([../../docs/subject/ft_transcendence.pdf](../../docs/subject/ft_transcendence.pdf), chapitre IV, Web) le formule ainsi :
 
-> - **Multi-user simultaneous support**: concurrent logins, concurrent actions handled correctly,
->   real-time updates propagated, no data corruption or race conditions.
+> Major: Implement real-time features using WebSockets or similar technology.
+>
+> - Real-time updates across clients.
+> - Handle connection/disconnection gracefully.
+> - Efficient message broadcasting.
+
+La partie obligatoire (chapitre III.2, General requirements) demande aussi ceci, et la même
+connexion y aide :
+
+> Multi-user Support (Mandatory): Your website must support multiple users simultaneously. This
+> is a core requirement of the project. Users should be able to interact with the application at
+> the same time without conflicts or performance issues. This includes:
+>
+> - Multiple users can be logged in and active at the same time.
+> - Concurrent actions by different users are handled properly.
+> - Real-time updates are reflected across all connected users when applicable.
+> - No data corruption or race conditions occur with simultaneous user actions.
 
 ## Comment on y répond
 

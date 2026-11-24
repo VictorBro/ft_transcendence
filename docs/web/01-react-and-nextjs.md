@@ -379,7 +379,7 @@ A browser `<form>`, when submitted, normally reloads the page. The app stops tha
 The pattern used by the free-text forms of the app (login, signup, profile, search...):
 
 1. `preventDefault()`, read `FormData`.
-2. Validate with the **same Zod schema the API uses** (from `@ft/shared`), so obvious mistakes never leave the page. The pickers (course, level, goal) skip this step: they only offer valid values, and the API validates what they send.
+2. Validate with the **same Zod schema the API uses** (from `@ft/shared`), so obvious mistakes never leave the page. The pickers (course, level, goal) skip this step: they only offer valid values, and the API validates what they send. The typed answers of the lesson player are a third case: they are controlled inputs (`value` plus `onChange`) with no Zod check on the page, and `maxLength={300}` on each one ([controls.tsx](../../apps/web/components/lesson/controls.tsx), [vocabulary.tsx](../../apps/web/components/lesson/kinds/vocabulary.tsx)) mirrors the limit of `AnswerSchema` in `@ft/shared` (`text: z.string().max(300)`), so the browser cannot send a text the API would refuse.
 3. Call the API from the browser (functions in `lib/*-client.ts`) or change the URL.
 4. Show errors with `FormError`, show "working" with `SubmitButton pending`.
 
@@ -483,7 +483,7 @@ A page or layout can also export:
 
 - `generateMetadata()` or `metadata`: the `<title>` and description. The login page uses `generateMetadata` so the browser tab title is translated.
 - `generateStaticParams()`: the list of param values to build ahead of time. The root layout returns the three locales.
-- `export const dynamic = 'force-dynamic'`: "always render on each request, never cache". Used on pages whose content depends on who is asking, and on the health routes.
+- `export const dynamic = 'force-dynamic'`: "always render on each request, never cache". Used on pages whose content depends on who is asking, and on the health routes. On the pages it states what is already true: reading the session cookie (`cookies()`, called by `currentUser()` and by the nav in every group layout) makes a route dynamic on its own. On the health routes, which read no cookie, it is what keeps them from being built once.
 - `viewport`: the mobile viewport settings (root layout).
 
 Chapter 2 walks through every file of `app/` in detail.
