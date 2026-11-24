@@ -42,6 +42,8 @@ export const ERROR_CODES = [
   'auth.sessionRequired',
   'twoFactor.setupFirst',
   'twoFactor.invalidCode',
+  /** Setup or enable on an account whose 2FA is on: turn it off first, with the password. */
+  'twoFactor.alreadyEnabled',
   /** One course per language, which is what UserLevel's unique index enforces. */
   'course.alreadyStarted',
   'course.notFound',

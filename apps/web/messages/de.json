@@ -3,7 +3,7 @@
     "accountNav": "Konto",
     "signIn": "Anmelden",
     "createAccount": "Konto erstellen",
-    "profile": "Profil"
+    "menu": "Menü"
   },
   "LanguageSwitcher": {
     "label": "Sprache",
@@ -44,6 +44,8 @@
     "minutesPerDay": "{minutes} Min.",
     "takePlacement": "Einstufungstest machen",
     "thisCourse": "Dieser Kurs",
+    "rankTitle": "Dein Rang",
+    "myCourse": "Mein Kurs",
     "streakKeep": "{count, plural, one {# Tag in Folge} other {# Tage in Folge}}. Erreiche dein Tagesziel, um die Serie zu halten.",
     "streakToday": "{count, plural, one {# Tag in Folge} other {# Tage in Folge}}, heute mitgezählt.",
     "streakStart": "Erreiche dein Tagesziel, um eine Serie zu starten.",
@@ -63,10 +65,10 @@
     "levelComplete": "Du hast {level} abgeschlossen: {attempted} von {total} versucht, {passed} bestanden, {needed} nötig.",
     "levelCompleteTop": "Du hast {level} abgeschlossen, das höchste Niveau.",
     "startLevel": "{level} starten",
-    "attempted": "Versucht: {attempted} von {total}",
-    "passed": "Bestanden: {passed} von {total}, {needed} nötig",
-    "comingSoon": "{count} demnächst verfügbar",
-    "bestStreak": "Längste Serie: {count, plural, one {# Tag} other {# Tage}}",
+    "attempted": "Versucht: <b>{attempted}</b> von {total}",
+    "passed": "Bestanden: <b>{passed}</b> von {total}, {needed} nötig",
+    "comingSoon": "<b>{count}</b> demnächst verfügbar",
+    "bestStreak": "Längste Serie: <b>{count, plural, one {# Tag} other {# Tage}}</b>",
     "saveLevel": "Speichern",
     "levelSaved": "Niveau gespeichert: {level}"
   },
@@ -216,7 +218,8 @@
       "recoveryCodeFormat": "Das sieht nicht nach einem Wiederherstellungscode aus",
       "secondFactorFormat": "Gib einen sechsstelligen Code aus deiner App oder einen deiner Wiederherstellungscodes ein",
       "setupFirst": "Starte zuerst die Zwei-Faktor-Einrichtung",
-      "invalidCode": "Dieser Code ist nicht gültig"
+      "invalidCode": "Dieser Code ist nicht gültig",
+      "alreadyEnabled": "Die Zwei-Faktor-Authentifizierung ist bereits aktiviert. Um die App zu wechseln, deaktiviere sie zuerst."
     },
     "course": {
       "alreadyStarted": "Du hast in dieser Sprache bereits einen Kurs begonnen",
@@ -358,7 +361,10 @@
     "turnOff": "Deaktivieren",
     "disabledStatus": "Die Zwei-Faktor-Authentifizierung ist deaktiviert.",
     "working": "Wird bearbeitet…",
-    "setUp": "Einrichten"
+    "setUp": "Einrichten",
+    "loading": "Zwei-Faktor-Authentifizierung wird geprüft…",
+    "statusUnavailable": "Die Zwei-Faktor-Authentifizierung konnte nicht geprüft werden.",
+    "retry": "Erneut versuchen"
   },
   "Placement": {
     "title": "Einstufungstest",

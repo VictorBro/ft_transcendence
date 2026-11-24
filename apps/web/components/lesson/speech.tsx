@@ -3,6 +3,7 @@
 import { useCallback, useSyncExternalStore } from 'react';
 import { useTranslations } from 'next-intl';
 import type { Language } from '@ft/shared';
+import { pickVoice, SPEECH_RATE, spokenText } from '@/lib/voice';
 
 /*
  * Speech through the browser's speechSynthesis (#147). Nothing in a lesson
@@ -21,10 +22,10 @@ function subscribe(onChange: () => void) {
   return () => s.removeEventListener('voiceschanged', onChange);
 }
 
-/** The first voice of the language, or null: none on the server, and none on many headless browsers. */
+/** The most natural voice of the language (lib/voice), or null: none on the server, and none on many headless browsers. */
 function voiceFor(lang: Language): SpeechSynthesisVoice | null {
   const voices = synth()?.getVoices() ?? [];
-  return voices.find((v) => v.lang.toLowerCase().split(/[-_]/)[0] === lang) ?? null;
+  return pickVoice(voices, lang);
 }
 
 /** Stops what is being read aloud, if anything. */
@@ -44,11 +45,13 @@ export function useSpeech(lang: Language): ((text: string) => void) | null {
     (text: string) => {
       const s = synth();
       const voice = s?.getVoices().find((v) => v.voiceURI === uri);
-      if (!s || !voice) return;
+      const said = spokenText(text);
+      if (!s || !voice || !said) return;
       s.cancel();
-      const utterance = new SpeechSynthesisUtterance(text);
+      const utterance = new SpeechSynthesisUtterance(said);
       utterance.voice = voice;
       utterance.lang = voice.lang;
+      utterance.rate = SPEECH_RATE;
       s.speak(utterance);
     },
     [uri],

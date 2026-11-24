@@ -48,7 +48,14 @@ export function UserRow({
           </p>
         ) : null}
       </div>
-      {children}
+      {/* Below sm the actions take their own row, under the name, so a pair
+        like Message and Remove never splits across two lines. From sm the
+        wrapper steps aside and they sit in the row as before. */}
+      {children === undefined ? null : (
+        <div className="flex flex-wrap items-center gap-3 max-sm:basis-full max-sm:pl-13 sm:contents">
+          {children}
+        </div>
+      )}
     </li>
   );
 }

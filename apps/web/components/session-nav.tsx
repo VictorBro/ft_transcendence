@@ -5,6 +5,7 @@ import { currentUser } from '@/lib/session';
 import { Avatar } from './avatar';
 import { ConnectionStatus } from './connection-status';
 import { LogOutButton } from './log-out-button';
+import { MENU_ROW, MenuIcon } from './menu-icon';
 import { UnreadTotalBadge } from './unread-badge';
 
 /**
@@ -40,32 +41,27 @@ export async function SessionNav() {
       <ConnectionStatus />
       <nav
         aria-label={t('accountNav')}
-        className="flex min-w-0 flex-wrap items-center gap-x-4 gap-y-2 text-sm"
+        className="mt-1 flex min-w-0 flex-col gap-0.5 border-t border-slate-800 pt-2"
       >
-        <Link
-          href="/profile"
-          className="flex min-w-0 items-center gap-4 underline underline-offset-4"
-        >
+        <Link href="/profile" className={MENU_ROW}>
           <Avatar src={user.avatarUrl} name={user.displayName} size={24} />
-          {/* The name where there is room for it. A display name may be 32
-            characters with nothing to break on, which on a phone leaves the
-            rest of the row nothing, and truncating it to three letters tells
-            the reader less than naming the destination does. The avatar alone
-            would not read as a link. */}
-          <span className="truncate max-sm:hidden">{user.displayName}</span>
-          <span className="sm:hidden">{t('profile')}</span>
+          {/* The name, truncated: a display name may be 32 characters with
+            nothing to break on, and the row is as wide as the menu. */}
+          <span className="truncate">{user.displayName}</span>
         </Link>
-        <Link href="/friends" className="shrink-0 underline underline-offset-4">
+        <Link href="/friends" className={MENU_ROW}>
+          <MenuIcon name="friends" />
           {friends('title')}
         </Link>
-        {/* The badge is pinned to the link's corner, like the dot on an avatar,
-            so a count coming or going never reflows the header. */}
-        <Link href="/chat" className="relative shrink-0 underline underline-offset-4">
+        {/* The count at the row's end, where a menu shows one. */}
+        <Link href="/chat" className={MENU_ROW}>
+          <MenuIcon name="messages" />
           {messages('title')}
-          <span className="absolute -top-3 -right-3 flex">
+          <span className="ml-auto flex">
             <UnreadTotalBadge />
           </span>
         </Link>
+        <div aria-hidden className="my-1 border-t border-slate-800" />
         <LogOutButton />
       </nav>
     </>

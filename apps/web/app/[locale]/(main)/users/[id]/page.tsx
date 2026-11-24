@@ -71,9 +71,9 @@ export default async function UserPage({ params }: { params: Promise<{ id: strin
   return (
     <div className="mx-auto flex w-full max-w-md flex-col gap-10">
       <section className="flex flex-col gap-4">
-        <div className="flex items-start justify-between gap-4">
+        <div className="flex items-start justify-between gap-4 max-sm:flex-col-reverse max-sm:items-center">
           {/* The dot sits beside the heading, not in it, so the heading stays the name alone. */}
-          <div className="flex min-w-0 items-center gap-3">
+          <div className="flex min-w-0 items-center gap-3 max-sm:max-w-full">
             <h1 className="min-w-0 text-2xl font-semibold tracking-tight wrap-break-word">
               {profile.displayName}
             </h1>
@@ -83,7 +83,7 @@ export default async function UserPage({ params }: { params: Promise<{ id: strin
           </div>
           <Avatar src={profile.avatarUrl} name={profile.displayName} size={128} />
         </div>
-        <div className="flex flex-wrap items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3 max-sm:justify-center">
           <ProfileAction relation={relation} user={profile} />
         </div>
       </section>
@@ -130,7 +130,7 @@ async function ProfileAction({
 }) {
   const t = await getTranslations('FriendsPage');
   const status = (key: 'requestSent' | 'requestReceived' | 'isFriend') => (
-    <span className="text-sm text-slate-400">{t(key)}</span>
+    <span className="text-sm text-slate-400 max-sm:basis-full max-sm:text-center">{t(key)}</span>
   );
 
   if (relation === 'self') {

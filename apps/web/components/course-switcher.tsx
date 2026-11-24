@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import type { Course } from '@ft/shared';
 
 import { usePathname, useRouter } from '@/i18n/navigation';
+import { MenuIcon } from './menu-icon';
 import { learnPathLang } from '@/lib/course-path';
 
 /** Not a language code, so it cannot collide with a course. */
@@ -32,12 +33,15 @@ export function CourseSwitcher({ courses }: { courses: Course[] }) {
   }
 
   return (
-    <label className="flex items-center text-sm text-slate-400">
-      <span className="sr-only sm:not-sr-only sm:mr-2">{t('label')}</span>
+    <label className="flex items-center text-sm text-slate-400 in-data-header-menu:min-h-11 in-data-header-menu:gap-3 in-data-header-menu:px-3">
+      <MenuIcon name="course" className="hidden in-data-header-menu:flex" />
+      <span className="sr-only in-data-header-menu:not-sr-only in-data-header-menu:flex-1 in-data-header-menu:text-slate-200 sm:not-sr-only sm:mr-2 in-data-header-menu:sm:mr-0">
+        {t('label')}
+      </span>
       <select
         value={current ?? ''}
         onChange={onChange}
-        className="cursor-pointer rounded-md border border-slate-800 bg-slate-900 py-1 pr-7 pl-2 text-slate-300 transition-colors hover:text-slate-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+        className="cursor-pointer rounded-md border border-slate-800 bg-slate-900 py-1 pr-7 pl-2 in-data-header-menu:w-36 in-data-header-menu:py-1.5 text-slate-300 transition-colors hover:text-slate-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
       >
         {/* On a 404 under /learn, no course is open. */}
         {current === null ? (

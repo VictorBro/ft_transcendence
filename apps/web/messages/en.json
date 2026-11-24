@@ -3,7 +3,7 @@
     "accountNav": "Account",
     "signIn": "Sign in",
     "createAccount": "Create account",
-    "profile": "Profile"
+    "menu": "Menu"
   },
   "LanguageSwitcher": {
     "label": "Language",
@@ -44,6 +44,8 @@
     "minutesPerDay": "{minutes} min",
     "takePlacement": "Take the placement test",
     "thisCourse": "This course",
+    "rankTitle": "Your rank",
+    "myCourse": "My course",
     "streakKeep": "{count, plural, one {# day streak} other {# day streak}}. Reach your daily goal to keep it.",
     "streakToday": "{count, plural, one {# day streak} other {# day streak}}, today included.",
     "streakStart": "Reach your daily goal to start a streak.",
@@ -63,10 +65,10 @@
     "levelComplete": "You finished {level}: {attempted} of {total} attempted, {passed} passed, {needed} needed.",
     "levelCompleteTop": "You finished {level}, the top level.",
     "startLevel": "Start {level}",
-    "attempted": "Attempted {attempted} of {total}",
-    "passed": "Passed {passed} of {total}, {needed} needed",
-    "comingSoon": "{count} coming soon",
-    "bestStreak": "Best streak: {count, plural, one {# day} other {# days}}",
+    "attempted": "Attempted <b>{attempted}</b> of {total}",
+    "passed": "Passed <b>{passed}</b> of {total}, {needed} needed",
+    "comingSoon": "<b>{count}</b> coming soon",
+    "bestStreak": "Best streak: <b>{count, plural, one {# day} other {# days}}</b>",
     "saveLevel": "Save",
     "levelSaved": "Level saved: {level}"
   },
@@ -216,7 +218,8 @@
       "recoveryCodeFormat": "That does not look like a recovery code",
       "secondFactorFormat": "Enter a six digit code from your app, or one of your recovery codes",
       "setupFirst": "Start two factor setup first",
-      "invalidCode": "That code is not valid"
+      "invalidCode": "That code is not valid",
+      "alreadyEnabled": "Two factor authentication is already on. To change your authenticator, turn it off first."
     },
     "course": {
       "alreadyStarted": "You have already started a course in that language",
@@ -358,7 +361,10 @@
     "turnOff": "Turn off",
     "disabledStatus": "Two factor authentication is off.",
     "working": "Working…",
-    "setUp": "Set up"
+    "setUp": "Set up",
+    "loading": "Checking two factor authentication…",
+    "statusUnavailable": "Could not check two factor authentication.",
+    "retry": "Try again"
   },
   "Placement": {
     "title": "Placement test",

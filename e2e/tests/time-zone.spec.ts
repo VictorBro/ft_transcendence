@@ -2,6 +2,7 @@ import type { Page, Request } from '@playwright/test';
 
 import { formatViolations, settle, watchConsole } from '../support/console-guard';
 import { expect, ONBOARDED_COURSE, placeCourse, SECOND_COURSE, test } from '../support/session';
+import { openMenu } from '../support/menu';
 
 const home = `/en/learn/${ONBOARDED_COURSE.lang}`;
 
@@ -89,6 +90,7 @@ test.describe('time zone sync', () => {
 
     // Client-side, so the course shell and TimeZoneSync stay mounted.
     const retried = page.waitForResponse((response) => isProfilePatch(response.request()));
+    await openMenu(page);
     await page.getByRole('combobox', { name: 'Course' }).selectOption(SECOND_COURSE.lang);
     expect((await retried).status()).toBe(200);
 
@@ -118,7 +120,8 @@ test.describe('time zone sync', () => {
     const switched = page.waitForResponse((response) =>
       isPageFetch(response.request(), `/en/learn/${SECOND_COURSE.lang}`),
     );
-    const course = page.getByRole('combobox', { name: 'Course' });
+    await openMenu(page);
+    const course = page.getByRole('combobox', { name: 'Course', includeHidden: true });
     await course.selectOption(SECOND_COURSE.lang);
     await switched;
     // The switcher reads the URL, so this value means the new page is committed.
