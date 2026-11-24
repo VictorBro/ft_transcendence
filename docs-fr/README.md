@@ -20,7 +20,6 @@ tu peux lire les pages HTML ci-dessous là-bas sans cloner le dépôt.
 | [content/](content/lessons.md)                                  | Que sont les leçons et les questions de placement, et comment sont-elles écrites et chargées ? |
 | [subject/](subject/summary.md)                                  | Que demande le sujet de 42 ?                                                                   |
 | [transcendence-course/](../docs/transcendence-course/README.md) | Qu'a construit chaque membre de l'équipe, expliqué avec ses propres mots pour la soutenance ?  |
-| [brand/](../docs/brand/README.md)                               | À quoi ressemblent le logo et la marque ?                                                      |
 | [mockups/](../docs/mockups/lessons/README.md)                   | À quoi doit ressembler chaque écran de leçon ?                                                 |
 | [site/](../docs/site/milestone1-data-model.html)                | Les pages et le script derrière le site GitHub Pages                                           |
 
@@ -80,13 +79,11 @@ tu peux lire les pages HTML ci-dessous là-bas sans cloner le dépôt.
 | ------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [transcendence-course/README.md](../docs/transcendence-course/README.md) | Comment marche le dossier, et un dossier par membre : [victor/](../docs/transcendence-course/victor/README.md), [endrit/](../docs/transcendence-course/endrit/README.md), [anais/](../docs/transcendence-course/anais/README.md), [luca/](../docs/transcendence-course/luca/README.md), [bastian/](../docs/transcendence-course/bastian/README.md) |
 
-### brand/ et mockups/
+### mockups/
 
-| Document                                                       | Ce qu'il couvre                                                                                                              |
-| -------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| [brand/README.md](../docs/brand/README.md)                     | La charte de la marque : le logo, les couleurs et la typographie, avec les fichiers dans `svg/`, `png/`, `web/` et `slides/` |
-| [brand/index.html](../docs/brand/index.html)                   | La vue d'ensemble visuelle de la marque, à ouvrir dans un navigateur                                                         |
-| [mockups/lessons/README.md](../docs/mockups/lessons/README.md) | Le rendu visé pour chaque page de leçon, un PNG et un fichier HTML par écran, tirés du prototype de leçon de Bastian         |
+| Document                                                       | Ce qu'il couvre                                                                                                      |
+| -------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| [mockups/lessons/README.md](../docs/mockups/lessons/README.md) | Le rendu visé pour chaque page de leçon, un PNG et un fichier HTML par écran, tirés du prototype de leçon de Bastian |
 
 ### site/
 

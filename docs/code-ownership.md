@@ -16,7 +16,7 @@ chaque dossier doit couvrir le code de cette liste.
   nom actuel.
 - « Touché » veut dire créé ou modifié, même d'une ligne. Ce n'est pas un pourcentage de lignes.
 - Entre parenthèses : les autres personnes qui ont aussi touché le fichier.
-- Les dossiers de données (`content/`, `docs/mockups`, `docs/brand`, fixtures...) sont donnés en
+- Les dossiers de données (`content/`, `docs/mockups`, fixtures...) sont donnés en
   nombre de fichiers.
 
 Pour refaire le calcul : `git fetch origin '+refs/pull/*/head:refs/pr/*'`, puis pour chaque commit
@@ -333,7 +333,6 @@ A aussi écrit des commits dans les PR des autres :
 
 - `docs/` : `README.md`, `backlog.md` (Victor), `index.html` (Bastian)
 - `docs/architecture/` : `data-model.md`, `overview.md` (Victor), `product.md` (Victor, Anaïs), `realtime.md`, `technical-plan.md` (Victor)
-- `docs/brand/` : 62 fichiers
 - `docs/content/` : `item-bank.md` (Victor), `lessons.md` (Bastian, Anaïs)
 - `docs/modules/` : `README.md`, `_template.md`, `advanced-search.md`, `browsers.md`, `custom-ci-cd.md`, `custom-cloud-deploy.md`, `framework.md`, `gamification.md`, `i18n.md`, `llm-interface.md`, `monitoring.md`, `orm.md`, `ssr.md`, `two-factor-auth.md`, `user-interaction.md`, `user-management.md`, `websockets.md`
 - `docs/operations/` : `deployment.md` (Victor, Luca), `development.md` (Bastian, Victor), `monitoring.md` (Victor, Anaïs, Luca), `versions.md` (Victor, Bastian)

@@ -18,7 +18,6 @@ the HTML pages below can be read there without cloning the repository.
 | [content/](content/lessons.md)                          | What are the lessons and placement questions, and how are they written and loaded?  |
 | [subject/](subject/summary.md)                          | What does the 42 subject require?                                                   |
 | [transcendence-course/](transcendence-course/README.md) | What did each team member build, explained in their own words for the defence?      |
-| [brand/](brand/README.md)                               | What do the logo and the brand look like?                                           |
 | [mockups/](mockups/lessons/README.md)                   | What should each lesson screen look like?                                           |
 | [site/](site/milestone1-data-model.html)                | The pages and script behind the GitHub Pages site                                   |
 
@@ -78,12 +77,10 @@ the HTML pages below can be read there without cloning the repository.
 | ---------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [transcendence-course/README.md](transcendence-course/README.md) | How the folder works, and one folder per member: [victor/](transcendence-course/victor/README.md), [endrit/](transcendence-course/endrit/README.md), [anais/](transcendence-course/anais/README.md), [luca/](transcendence-course/luca/README.md), [bastian/](transcendence-course/bastian/README.md) |
 
-### brand/ and mockups/
+### mockups/
 
 | Document                                               | What it covers                                                                                              |
 | ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------- |
-| [brand/README.md](brand/README.md)                     | The brand guidelines: the logo, colours and type, with the assets in `svg/`, `png/`, `web/` and `slides/`   |
-| [brand/index.html](brand/index.html)                   | The visual overview of the brand, to open in a browser                                                      |
 | [mockups/lessons/README.md](mockups/lessons/README.md) | The target look of every lesson page, one PNG and one HTML file per screen, from Bastian's lesson prototype |
 
 ### site/
