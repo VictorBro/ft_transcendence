@@ -119,14 +119,14 @@ apps/api/src/
 
 ### `courses.module.ts`
 
-[courses.module.ts](../../../apps/api/src/courses/courses.module.ts) déclare le controller et le service, importe
+[courses.module.ts](../../apps/api/src/courses/courses.module.ts) déclare le controller et le service, importe
 `GatewayModule` (pour `SocketsService`, afin de prévenir les autres onglets de l'utilisateur qu'un cours a changé,
 chapitre 9), et **exporte** `CoursesService`. `PlacementModule` l'importe, parce que l'examen écrit le niveau final
 avec `CoursesService.setLevel`.
 
 ### `courses.dto.ts`
 
-[courses.dto.ts](../../../apps/api/src/courses/courses.dto.ts) transforme les schemas Zod partagés en classes DTO
+[courses.dto.ts](../../apps/api/src/courses/courses.dto.ts) transforme les schemas Zod partagés en classes DTO
 Nest avec `createZodDto` (le chapitre 2 explique comment le pipe de validation les utilise) :
 
 ```ts
@@ -137,7 +137,7 @@ export class CourseDto extends createZodDto(CourseSchema) {}
 export class CoursesDto extends createZodDto(CoursesSchema) {}
 ```
 
-Les schemas vivent dans [packages/shared/src/schemas/course.ts](../../../packages/shared/src/schemas/course.ts),
+Les schemas vivent dans [packages/shared/src/schemas/course.ts](../../packages/shared/src/schemas/course.ts),
 donc l'app web vérifie les mêmes règles :
 
 | Schema              | Forme                                       | Notes                                                                                                      |
@@ -150,7 +150,7 @@ donc l'app web vérifie les mêmes règles :
 
 ### `courses.controller.ts`
 
-[courses.controller.ts](../../../apps/api/src/courses/courses.controller.ts) a quatre routes. Toutes ont besoin
+[courses.controller.ts](../../apps/api/src/courses/courses.controller.ts) a quatre routes. Toutes ont besoin
 d'une session (le guard d'auth global du chapitre 5) ; `@CurrentUser()` donne l'utilisateur connecté.
 
 | Méthode et chemin            | Appel au service                 | Réponse         | Erreurs                     |
@@ -185,7 +185,7 @@ setGoal(
 
 ### `courses.service.ts`
 
-[courses.service.ts](../../../apps/api/src/courses/courses.service.ts) parle à Prisma.
+[courses.service.ts](../../apps/api/src/courses/courses.service.ts) parle à Prisma.
 
 ```ts
 const COURSE_SELECT = { lang: true, dailyGoal: true, level: true } as const;
@@ -275,7 +275,7 @@ private async write(userId: string, lang: Language, data: CourseWrite) {
   champ, jamais les deux.
 - Après ça, `setLevel` envoie `COURSE_UPDATED` aux sockets de l'utilisateur.
 
-[courses.service.spec.ts](../../../apps/api/src/courses/courses.service.spec.ts) teste chaque méthode avec un Prisma
+[courses.service.spec.ts](../../apps/api/src/courses/courses.service.spec.ts) teste chaque méthode avec un Prisma
 mocké : le conflit, le not-found, le verrou et les récompenses d'objectif, la clé composée, et que les sockets ne
 sont prévenus qu'après un commit.
 
@@ -285,7 +285,7 @@ sont prévenus qu'après un commit.
 
 ### Les règles de l'examen
 
-D'après [packages/shared/src/schemas/placement.ts](../../../packages/shared/src/schemas/placement.ts) :
+D'après [packages/shared/src/schemas/placement.ts](../../packages/shared/src/schemas/placement.ts) :
 
 ```ts
 /** A level is `perCategory` times the three QUESTION_CATEGORIES, and the second mistake ends it. */
@@ -322,7 +322,7 @@ Donc un examen teste 2 ou 3 niveaux, avec entre 6 et 18 questions.
 
 ### Les routes HTTP : `placement.controller.ts`
 
-[placement.controller.ts](../../../apps/api/src/placement/placement.controller.ts) a quatre routes. Chacune appelle
+[placement.controller.ts](../../apps/api/src/placement/placement.controller.ts) a quatre routes. Chacune appelle
 simplement `PlacementService`.
 
 | Route                     | Service          | Réponse                                 | Erreurs principales                                                                                    |
@@ -340,7 +340,7 @@ changer.
 
 ### Les DTO : `placement.dto.ts`
 
-[placement.dto.ts](../../../apps/api/src/placement/placement.dto.ts) enveloppe quatre schemas partagés :
+[placement.dto.ts](../../apps/api/src/placement/placement.dto.ts) enveloppe quatre schemas partagés :
 
 | DTO                    | Forme                                                                                                      | Notes                                                                                                                              |
 | ---------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
@@ -359,7 +359,7 @@ bas.
 
 ### L'examen en cours : `placement.schema.ts`
 
-[placement.schema.ts](../../../apps/api/src/placement/placement.schema.ts) décrit un examen en cours, l'`ExamSession`.
+[placement.schema.ts](../../apps/api/src/placement/placement.schema.ts) décrit un examen en cours, l'`ExamSession`.
 Il est vérifié avec Zod à chaque fois qu'il est chargé depuis Redis.
 
 ```ts
@@ -405,7 +405,7 @@ export const ExamSessionSchema = z.object({
 
 ### Le stockage Redis et le verrou : `placement-session.service.ts`
 
-[placement-session.service.ts](../../../apps/api/src/placement/placement-session.service.ts) est le seul fichier
+[placement-session.service.ts](../../apps/api/src/placement/placement-session.service.ts) est le seul fichier
 qui touche Redis pour l'examen. Un utilisateur a trois clés :
 
 | Clé                        | Type Redis | Contenu                                         | Durée de vie                                                                  |
@@ -482,7 +482,7 @@ suivante.
 
 ### Choisir une question : `placement-question.service.ts`
 
-[placement-question.service.ts](../../../apps/api/src/placement/placement-question.service.ts) choisit la question
+[placement-question.service.ts](../../apps/api/src/placement/placement-question.service.ts) choisit la question
 suivante et la met en forme pour le navigateur.
 
 **`getNewQuestion`** travaille par étapes :
@@ -585,7 +585,7 @@ quand l'apprenant fait des erreurs.
 
 ### Noter et faire bouger le niveau : `placement-progress.service.ts`
 
-[placement-progress.service.ts](../../../apps/api/src/placement/placement-progress.service.ts) contient la logique de
+[placement-progress.service.ts](../../apps/api/src/placement/placement-progress.service.ts) contient la logique de
 l'examen.
 
 **`getQuestion`** lit une ligne de la banque par id, ou 404 `placement.notFound`.
@@ -677,7 +677,7 @@ cours. Une seule vraie réponse, même fausse, suffit pour appliquer le résulta
 
 ### Le chef d'orchestre : `placement.service.ts`
 
-[placement.service.ts](../../../apps/api/src/placement/placement.service.ts) utilise les trois aides et
+[placement.service.ts](../../apps/api/src/placement/placement.service.ts) utilise les trois aides et
 `CoursesService`. Il ré-exporte aussi quelques constantes (`PLACEMENT_REDIS_KEY_TTL`, `MAX_QUESTIONS_PER_LEVEL`,
 `NETWORK_GRACE_S`) et définit `START_LEVEL = 'B1'`.
 
@@ -838,29 +838,29 @@ Dans `Ended`, `GET /placement` et `POST /placement/answers` renvoient tous les d
 
 ### `placement.module.ts`
 
-[placement.module.ts](../../../apps/api/src/placement/placement.module.ts) importe `CoursesModule` (pour `setLevel`
+[placement.module.ts](../../apps/api/src/placement/placement.module.ts) importe `CoursesModule` (pour `setLevel`
 et `listCoursesUser`) et `QuestionGenerationModule` (pour le stock). Il fournit et exporte les quatre services.
 `RedisService` et `PrismaService` viennent de modules globaux (chapitre 3).
 
 ### Les tests du placement
 
-- [placement.service.spec.ts](../../../apps/api/src/placement/placement.service.spec.ts) : démarrage à B1, nouveaux
+- [placement.service.spec.ts](../../apps/api/src/placement/placement.service.spec.ts) : démarrage à B1, nouveaux
   essais, la vérification du cours, le verrou, un rechargement montre la même question, les réponses en retard
   comptées comme timeouts, la banque qui se vide, quitter, les métriques, et la règle `applied`.
-- [placement-session.service.spec.ts](../../../apps/api/src/placement/placement-session.service.spec.ts) : le verrou
+- [placement-session.service.spec.ts](../../apps/api/src/placement/placement-session.service.spec.ts) : le verrou
   (un seul propriétaire, libération seulement par token, réessais) et sauvegarder/charger (TTL d'une heure, en cours
   ou pas, vieux passages sans `currentOptions`).
-- [placement-question.service.spec.ts](../../../apps/api/src/placement/placement-question.service.spec.ts) : les
+- [placement-question.service.spec.ts](../../apps/api/src/placement/placement-question.service.spec.ts) : les
   écrites avant les générées, le repli sur la question vue il y a le plus longtemps, les appels à restock pas
   attendus, `poolExhausted`, `getMaxQuestionsRemaining`, et que le payload ne contient jamais la réponse.
-- [placement-progress.service.spec.ts](../../../apps/api/src/placement/placement-progress.service.spec.ts) : les
+- [placement-progress.service.spec.ts](../../apps/api/src/placement/placement-progress.service.spec.ts) : les
   mouvements de niveau, le timeout avec la marge, et le rapport.
 
 ---
 
 ## `question-generation/` — remplir la banque avec le LLM
 
-[QUESTION_GENERATION.md](../../../apps/api/src/question-generation/QUESTION_GENERATION.md) (en français) explique ce
+[QUESTION_GENERATION.md](../../apps/api/src/question-generation/QUESTION_GENERATION.md) (en français) explique ce
 dossier en détail, avec un long exemple pas à pas. Voici la visite.
 
 ### La banque de questions et la "cellule"
@@ -892,7 +892,7 @@ Combien de questions un appel au LLM écrit (d'après `@ft/shared`) :
 | `reading`    | 5 (`READING_BATCH_SIZE`)     | toujours `information_structure_and_pragmatics`         | chacune avec son propre passage de 25 à 100 mots |
 
 `generatedBatchSchema(category)` dans
-[packages/shared/src/schemas/item.ts](../../../packages/shared/src/schemas/item.ts) est le schema Zod d'un lot : le
+[packages/shared/src/schemas/item.ts](../../packages/shared/src/schemas/item.ts) est le schema Zod d'un lot : le
 nombre exact, 4 options différentes, la réponse parmi les options, une question de grammaire par thème, des passages
 de lecture distincts. Un item généré n'a **pas** de `sourceId`, de `level` ni de `timeLimitS` : c'est le serveur qui
 les fixe, jamais le modèle.
@@ -917,13 +917,13 @@ flowchart TD
 
 ### `question-generation.module.ts`
 
-[question-generation.module.ts](../../../apps/api/src/question-generation/question-generation.module.ts) importe
+[question-generation.module.ts](../../apps/api/src/question-generation/question-generation.module.ts) importe
 `LlmModule` (pour que `QuestionStockService` puisse injecter `LLM_PROVIDER`), fournit `QuestionStockService`, et
 l'exporte pour `PlacementModule`.
 
 ### `question-stock.service.ts` — le gardien du stock
 
-[question-stock.service.ts](../../../apps/api/src/question-generation/question-stock.service.ts) ne fait que
+[question-stock.service.ts](../../apps/api/src/question-generation/question-stock.service.ts) ne fait que
 **remplir** la banque. Choisir une question à afficher, c'est le travail de `PlacementQuestionService`.
 
 ```ts
@@ -1038,7 +1038,7 @@ sans clé, ignoré par l'alerte) ; une erreur qui ne vient pas du LLM compte com
 
 ### `question-batch.ts` — des aides pures
 
-[question-batch.ts](../../../apps/api/src/question-generation/question-batch.ts) n'a ni base de données, ni LLM, ni
+[question-batch.ts](../../apps/api/src/question-generation/question-batch.ts) n'a ni base de données, ni LLM, ni
 Nest : il prend des données et renvoie des données, donc il est facile à tester.
 
 Les **limites de temps** sont fixées par le serveur, par catégorie et par niveau (le modèle ne les choisit jamais) :
@@ -1093,7 +1093,7 @@ de la cellule, jamais du modèle, donc une question ne peut pas être rangée au
 
 ### `prompts/question-batch.prompt.ts` — ce que le LLM lit
 
-[question-batch.prompt.ts](../../../apps/api/src/question-generation/prompts/question-batch.prompt.ts) ne fait que
+[question-batch.prompt.ts](../../apps/api/src/question-generation/prompts/question-batch.prompt.ts) ne fait que
 construire du texte : les messages `system` et `user` pour un lot.
 
 Il a trois parties :
@@ -1135,13 +1135,13 @@ règles de contenu). La forme est envoyée à Gemini comme `responseJsonSchema` 
 
 ### Les tests de la génération de questions
 
-- [question-batch.spec.ts](../../../apps/api/src/question-generation/question-batch.spec.ts) : les doublons ignorent
+- [question-batch.spec.ts](../../apps/api/src/question-generation/question-batch.spec.ts) : les doublons ignorent
   la casse et les espaces, gardent une vraie différence, enlèvent une répétition dans un lot, distinguent les
   questions de lecture par leur passage ; les lignes reçoivent la cellule, `sourceId: null` et la limite de temps de
   la cellule.
-- [question-batch.prompt.spec.ts](../../../apps/api/src/question-generation/prompts/question-batch.prompt.spec.ts) :
+- [question-batch.prompt.spec.ts](../../apps/api/src/question-generation/prompts/question-batch.prompt.spec.ts) :
   le prompt de chaque catégorie contient la langue, le niveau, les règles communes et ses propres règles.
-- [question-stock.service.spec.ts](../../../apps/api/src/question-generation/question-stock.service.spec.ts) : le
+- [question-stock.service.spec.ts](../../apps/api/src/question-generation/question-stock.service.spec.ts) : le
   seuil de 3, seules les nouvelles questions enregistrées, un seul restock par cellule (`busy`), la pause de
   10 minutes, le réessai, un échec de la base de données devient `failed`, la fixture n'enregistre rien, et les
   métriques.

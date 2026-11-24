@@ -66,14 +66,14 @@ Deux sortes de composants se mélangent ici (voir chapitre 1) :
 Un server component peut passer un server component comme `children` à un client component. C'est
 comme ça que `HeaderMenu` (client) contient `SessionNav` (serveur).
 
-Les fichiers de ce chapitre sont dans [apps/web/components](../../../apps/web/components). On suit
+Les fichiers de ce chapitre sont dans [apps/web/components](../../apps/web/components). On suit
 l'ordre de l'écran : cadre, header, menu, helpers, puis le socket.
 
 ---
 
 ## 2. `shell.tsx` : le cadre
 
-Fichier : [shell.tsx](../../../apps/web/components/shell.tsx) — exporte `Shell`, `ShellProps` et
+Fichier : [shell.tsx](../../apps/web/components/shell.tsx) — exporte `Shell`, `ShellProps` et
 `Wordmark`.
 
 Le commentaire dit que les groupes ne diffèrent que sur quatre points, et les quatre sont des props :
@@ -148,7 +148,7 @@ place du logo.
 
 ### `lib/course-menu-slot.ts`
 
-Fichier : [course-menu-slot.ts](../../../apps/web/lib/course-menu-slot.ts)
+Fichier : [course-menu-slot.ts](../../apps/web/lib/course-menu-slot.ts)
 
 ```ts
 export const COURSE_MENU_SLOT = "course-menu-slot";
@@ -167,7 +167,7 @@ component, donc la constante vit dans un module simple que les deux peuvent impo
 
 ### `header-nav.tsx`
 
-Fichier : [header-nav.tsx](../../../apps/web/components/header-nav.tsx) — utilisé par `(main)` et
+Fichier : [header-nav.tsx](../../apps/web/components/header-nav.tsx) — utilisé par `(main)` et
 `(messages)`.
 
 ```tsx
@@ -199,7 +199,7 @@ nav et `SessionNav` partagent une seule lecture de session.
 
 ### `dashboard-nav.tsx`
 
-Fichier : [dashboard-nav.tsx](../../../apps/web/components/dashboard-nav.tsx) — utilisé par
+Fichier : [dashboard-nav.tsx](../../apps/web/components/dashboard-nav.tsx) — utilisé par
 `(dashboard)`.
 
 ```tsx
@@ -224,7 +224,7 @@ dans `(messages)` aucun cours n'est ouvert. `Promise.all` lance les deux requêt
 
 ## 4. `header-menu.tsx` : le bouton du menu et le panneau
 
-Fichier : [header-menu.tsx](../../../apps/web/components/header-menu.tsx) — un client component,
+Fichier : [header-menu.tsx](../../apps/web/components/header-menu.tsx) — un client component,
 exporte `HeaderMenu`.
 
 Il range les liens de l'utilisateur connecté derrière un seul bouton (un « hamburger » ☰ qui devient
@@ -281,7 +281,7 @@ Comment il se ferme :
 
 ### `scroll-lock.ts`
 
-Fichier : [scroll-lock.ts](../../../apps/web/components/scroll-lock.ts) — exporte le hook
+Fichier : [scroll-lock.ts](../../apps/web/components/scroll-lock.ts) — exporte le hook
 `useScrollLock(locked)`.
 
 Quand un menu est ouvert, un glissement du doigt sur la page sombre derrière ne doit pas la faire
@@ -319,7 +319,7 @@ export function useScrollLock(locked: boolean): void {
 
 ### `menu-icon.tsx`
 
-Fichier : [menu-icon.tsx](../../../apps/web/components/menu-icon.tsx) — exporte `MenuIcon` et
+Fichier : [menu-icon.tsx](../../apps/web/components/menu-icon.tsx) — exporte `MenuIcon` et
 `MENU_ROW`.
 
 `MenuIcon` dessine une petite icône SVG d'après son nom : `course`, `language`, `friends`,
@@ -335,7 +335,7 @@ focus. `SessionNav` et `LogOutButton` l'utilisent, donc toutes les lignes se res
 
 ## 5. `session-nav.tsx` : qui est connecté
 
-Fichier : [session-nav.tsx](../../../apps/web/components/session-nav.tsx) — un server component,
+Fichier : [session-nav.tsx](../../apps/web/components/session-nav.tsx) — un server component,
 exporte `SessionNav`.
 
 Le commentaire : c'est un server component, donc le premier affichage sait déjà qui est connecté. Le
@@ -373,7 +373,7 @@ s'ouvre exactement sur les pages où l'utilisateur est connecté.
 
 ### `log-out-button.tsx`
 
-Fichier : [log-out-button.tsx](../../../apps/web/components/log-out-button.tsx) — client component.
+Fichier : [log-out-button.tsx](../../apps/web/components/log-out-button.tsx) — client component.
 
 ```tsx
 async function onClick() {
@@ -403,7 +403,7 @@ async function onClick() {
 
 ## 6. `language-switcher.tsx`
 
-Fichier : [language-switcher.tsx](../../../apps/web/components/language-switcher.tsx) — client
+Fichier : [language-switcher.tsx](../../apps/web/components/language-switcher.tsx) — client
 component.
 
 ```tsx
@@ -471,7 +471,7 @@ sequenceDiagram
 
 ### `time-zone-sync.tsx`
 
-Fichier : [time-zone-sync.tsx](../../../apps/web/components/time-zone-sync.tsx)
+Fichier : [time-zone-sync.tsx](../../apps/web/components/time-zone-sync.tsx)
 
 Le serveur a besoin du fuseau horaire de l'apprenant pour savoir quand « aujourd'hui » commence
 (objectifs du jour, séries).
@@ -510,7 +510,7 @@ useEffect(() => {
 
 ### `locale-sync.tsx`
 
-Fichier : [locale-sync.tsx](../../../apps/web/components/locale-sync.tsx)
+Fichier : [locale-sync.tsx](../../apps/web/components/locale-sync.tsx)
 
 Le même modèle pour la langue de l'interface. L'API en a besoin parce que le tuteur des leçons répond
 dans cette langue.
@@ -541,7 +541,7 @@ dernière valeur enregistrée est gardée dans un ref (`stored`), sinon chaque p
 
 ### `legal-footer.tsx`
 
-Fichier : [legal-footer.tsx](../../../apps/web/components/legal-footer.tsx)
+Fichier : [legal-footer.tsx](../../apps/web/components/legal-footer.tsx)
 
 Le petit footer avec les liens Privacy (confidentialité) et Terms (conditions), le même dans chaque
 shell.
@@ -595,7 +595,7 @@ Les noms des événements sont partagés entre l'API et le web dans `@ft/shared`
 
 ### Pourquoi « un socket par onglet », et pourquoi pas un provider React ?
 
-Fichier : [tab-socket.ts](../../../apps/web/components/tab-socket.ts)
+Fichier : [tab-socket.ts](../../apps/web/components/tab-socket.ts)
 
 La façon habituelle en React serait un composant « SocketProvider » près du haut de l'arbre. Le
 commentaire explique pourquoi ça ne marche pas ici : les route groups se remontent quand tu passes de
@@ -616,15 +616,15 @@ const presence = createPresenceMap();
 const unread = createUnreadStore();
 ```
 
-| Variable           | Contient                                                                                                |
-| ------------------ | ------------------------------------------------------------------------------------------------------- |
-| `tab`              | L'unique client socket.io, créé à la première utilisation                                               |
-| `status`           | `'closed'`, `'connected'`, `'reconnecting'` ou `'signedOut'`                                            |
-| `timer`, `attempt` | La nouvelle tentative en attente et combien ont échoué d'affilée                                        |
-| `dial`             | Un compteur pour annuler une ancienne sonde (voir plus bas)                                             |
-| `watchers`         | Les composants React qui veulent savoir quand `status` change                                           |
-| `presence`         | Qui est en ligne (de [lib/presence.ts](../../../apps/web/lib/presence.ts), chapitre 8)                  |
-| `unread`           | Le nombre de non-lus par conversation (de [lib/unread.ts](../../../apps/web/lib/unread.ts), chapitre 8) |
+| Variable           | Contient                                                                                             |
+| ------------------ | ---------------------------------------------------------------------------------------------------- |
+| `tab`              | L'unique client socket.io, créé à la première utilisation                                            |
+| `status`           | `'closed'`, `'connected'`, `'reconnecting'` ou `'signedOut'`                                         |
+| `timer`, `attempt` | La nouvelle tentative en attente et combien ont échoué d'affilée                                     |
+| `dial`             | Un compteur pour annuler une ancienne sonde (voir plus bas)                                          |
+| `watchers`         | Les composants React qui veulent savoir quand `status` change                                        |
+| `presence`         | Qui est en ligne (de [lib/presence.ts](../../apps/web/lib/presence.ts), chapitre 8)                  |
+| `unread`           | Le nombre de non-lus par conversation (de [lib/unread.ts](../../apps/web/lib/unread.ts), chapitre 8) |
 
 Rien ne tourne pendant le rendu serveur : le socket n'est créé que quand le code du navigateur appelle
 `socket()` pour la première fois.
@@ -676,7 +676,7 @@ vont directement dans leurs stores, donc rien n'est manqué même quand aucun co
 
 ### Les règles : `lib/reconnect.ts`
 
-Fichier : [reconnect.ts](../../../apps/web/lib/reconnect.ts)
+Fichier : [reconnect.ts](../../apps/web/lib/reconnect.ts)
 
 Les décisions sont des fonctions pures, gardées en dehors de `tab-socket.ts` pour pouvoir les tester
 sans navigateur.
@@ -716,7 +716,7 @@ export function afterConnectError(active: boolean, message: string): NextStep {
   réponse avec un schema zod. Cette route répond toujours 200, donc la sonde elle-même n'affiche
   jamais d'erreur dans la console.
 
-Le test [lib/reconnect.test.ts](../../../apps/web/lib/reconnect.test.ts) vérifie les valeurs du
+Le test [lib/reconnect.test.ts](../../apps/web/lib/reconnect.test.ts) vérifie les valeurs du
 backoff et leur écart, chaque raison de déconnexion, chaque erreur de connexion, et `apiIsUp` quand
 l'API est en marche, en panne, avec un body bizarre, une requête ratée, et qu'il n'utilise jamais une
 réponse en cache.
@@ -834,7 +834,7 @@ pas rajouté à chaque rendu, mais il appelle toujours le dernier handler.
 
 ## 9. `connection-status.tsx` : ouvrir le socket et la pastille
 
-Fichier : [connection-status.tsx](../../../apps/web/components/connection-status.tsx)
+Fichier : [connection-status.tsx](../../apps/web/components/connection-status.tsx)
 
 ```tsx
 export function ConnectionStatus() {
@@ -869,7 +869,7 @@ export function ConnectionStatus() {
 
 ## 10. `refresh-on.tsx` : refaire le rendu sur les événements serveur
 
-Fichier : [refresh-on.tsx](../../../apps/web/components/refresh-on.tsx) — exporte `RefreshOn`.
+Fichier : [refresh-on.tsx](../../apps/web/components/refresh-on.tsx) — exporte `RefreshOn`.
 
 Les pages de cette app sont surtout des server components : leurs données sont lues sur le serveur.
 Quand un ami accepte ta demande, le serveur envoie `friend:accepted`, mais le HTML de la page est
@@ -946,7 +946,7 @@ sequenceDiagram
 
 ## 11. `unread-badge.tsx`
 
-Fichier : [unread-badge.tsx](../../../apps/web/components/unread-badge.tsx) — exporte `UnreadBadge`
+Fichier : [unread-badge.tsx](../../apps/web/components/unread-badge.tsx) — exporte `UnreadBadge`
 et `UnreadTotalBadge`.
 
 ```tsx
@@ -980,7 +980,7 @@ export function UnreadTotalBadge() {
 
 ## 12. À propos de `lib/clock.ts`
 
-Fichier : [clock.ts](../../../apps/web/lib/clock.ts)
+Fichier : [clock.ts](../../apps/web/lib/clock.ts)
 
 ```ts
 /** m:ss, for a countdown: 45 is 0:45, 70 is 1:10. */

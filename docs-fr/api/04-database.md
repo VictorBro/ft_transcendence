@@ -5,10 +5,10 @@ Dans ce chapitre :
 - Ce qu'est une base de données relationnelle, et ce qu'est PostgreSQL
 - Tables, lignes, colonnes, clés, relations et index, avec des images simples
 - Ce qu'est un ORM, et ce que Prisma fait pour nous
-- [schema.prisma](../../../apps/api/prisma/schema.prisma) : toutes les tables (models) et tous les enums de l'app
-- [prisma.config.ts](../../../apps/api/prisma.config.ts) : où Prisma trouve la base de données
+- [schema.prisma](../../apps/api/prisma/schema.prisma) : toutes les tables (models) et tous les enums de l'app
+- [prisma.config.ts](../../apps/api/prisma.config.ts) : où Prisma trouve la base de données
 - Les migrations : ce que c'est, la liste des 15, et comment elles arrivent jusqu'à une base
-- [seed.ts](../../../apps/api/prisma/seed.ts) : comment les questions et les leçons de `content/` entrent dans la base
+- [seed.ts](../../apps/api/prisma/seed.ts) : comment les questions et les leçons de `content/` entrent dans la base
 - `src/generated/prisma` : le code que Prisma écrit pour nous
 - De vraies requêtes tirées des services
 
@@ -26,7 +26,7 @@ La mémoire (RAM) est perdue au redémarrage, donc l'API garde ces données dans
 dont le seul travail est de stocker les données en sécurité et de les retrouver vite.
 
 On utilise **PostgreSQL** (souvent appelé « Postgres »). C'est une base de données **relationnelle** gratuite et très répandue.
-Elle tourne dans son propre container Docker, le service `db` dans [compose.yml](../../../compose.yml)
+Elle tourne dans son propre container Docker, le service `db` dans [compose.yml](../../compose.yml)
 (l'image est `pgvector/pgvector`, une version de Postgres qui a aussi l'extension pgvector).
 L'API s'y connecte avec une URL comme celle-ci, tirée de `.env.example` :
 
@@ -141,7 +141,7 @@ puis le client généré.
 
 ## 2. `prisma/schema.prisma` : la forme des données
 
-[schema.prisma](../../../apps/api/prisma/schema.prisma) est la seule source de vérité pour la
+[schema.prisma](../../apps/api/prisma/schema.prisma) est la seule source de vérité pour la
 base de données. Tout le reste (migrations SQL, client typé) en découle.
 
 ### Les deux blocs d'en-tête
@@ -709,7 +709,7 @@ Les mêmes valeurs existent aussi dans `packages/shared` (sous forme de schemas 
 
 ## 3. `prisma.config.ts` : où Prisma trouve la base de données
 
-[prisma.config.ts](../../../apps/api/prisma.config.ts) est lu par la **Prisma CLI** (pas par l'API qui tourne).
+[prisma.config.ts](../../apps/api/prisma.config.ts) est lu par la **Prisma CLI** (pas par l'API qui tourne).
 
 ```ts
 import { defineConfig } from "prisma/config";
@@ -742,10 +742,10 @@ export default defineConfig({
   Générer du code n'a pas besoin d'une base, donc ça ne doit pas échouer là.
 - `shadowDatabaseUrl` : une **shadow database** (base fantôme) est une base vide et jetable que Prisma utilise pour rejouer
   toutes les migrations et comparer le résultat avec le schema. Seule la vérification de drift (dérive)
-  ([scripts/check-prisma-drift.sh](../../../scripts/check-prisma-drift.sh)) la définit. Le spread
+  ([scripts/check-prisma-drift.sh](../../scripts/check-prisma-drift.sh)) la définit. Le spread
   `...(x ? { x } : {})` ajoute la clé seulement quand elle a une valeur, parce que Prisma refuse une chaîne vide.
 
-L'API qui tourne n'utilise pas ce fichier : [PrismaService](../../../apps/api/src/prisma/prisma.service.ts)
+L'API qui tourne n'utilise pas ce fichier : [PrismaService](../../apps/api/src/prisma/prisma.service.ts)
 (chapitre 3) lit `DATABASE_URL` lui-même et se connecte par le driver `@prisma/adapter-pg`.
 
 ---
@@ -857,7 +857,7 @@ Le `package.json` de l'API a trois scripts :
 | `db:migrate`  | `prisma migrate dev`    | **développement seulement** : écrire une nouvelle migration à partir des changements du schema et l'appliquer |
 | `db:deploy`   | `prisma migrate deploy` | appliquer les migrations manquantes, sans jamais en écrire de nouvelles (sûr pour n'importe quel serveur)     |
 
-En pratique, tu utilises le [Makefile](../../../Makefile) :
+En pratique, tu utilises le [Makefile](../../Makefile) :
 
 - `make migrate-new NAME=add_streaks` lance `prisma migrate dev --name add_streaks`, puis
   `db:generate`. Le commentaire du Makefile dit pourquoi la deuxième étape est là : le `migrate dev` de Prisma 7
@@ -865,17 +865,17 @@ En pratique, tu utilises le [Makefile](../../../Makefile) :
 - `make migrate` lance `prisma migrate deploy` dans un **tooling container** (container d'outils) jetable.
   Pourquoi un container ? L'image de production n'a ni Prisma CLI ni fichiers de migration (elle a seulement le
   `dist` compilé), donc le Makefile build l'étape `build` de
-  [apps/api/Dockerfile](../../../apps/api/Dockerfile) sous le nom `ft_transcendence/api-tooling` et y lance la commande,
+  [apps/api/Dockerfile](../../apps/api/Dockerfile) sous le nom `ft_transcendence/api-tooling` et y lance la commande,
   sur le réseau compose pour pouvoir joindre le service `db`.
 - `make db-ready` = `make migrate` puis `make seed`. `make dev` l'appelle à la fin, donc un
   clone tout neuf a toujours les tables et les données. Les deux étapes peuvent être relancées sans risque.
 - `make ci` lance `prisma migrate deploy` avant les tests e2e, plus deux vérifications :
-  [check-prisma-format.sh](../../../scripts/check-prisma-format.sh) (le schema est bien formaté) et
-  [check-prisma-drift.sh](../../../scripts/check-prisma-drift.sh). La vérification de drift rejoue chaque
+  [check-prisma-format.sh](../../scripts/check-prisma-format.sh) (le schema est bien formaté) et
+  [check-prisma-drift.sh](../../scripts/check-prisma-drift.sh). La vérification de drift rejoue chaque
   migration dans une shadow database et compare avec `schema.prisma`. Si tu as modifié le schema
   mais oublié `make migrate-new`, elle échoue avec « schema.prisma has changes with no migration ».
 
-Sur le serveur déployé, [compose.deploy.yml](../../../compose.deploy.yml) a un service `migrate` qui ne tourne qu'une fois
+Sur le serveur déployé, [compose.deploy.yml](../../compose.deploy.yml) a un service `migrate` qui ne tourne qu'une fois
 (derrière un profile, donc `up` ne le démarre jamais). Il utilise l'image d'outils publiée et lance :
 
 ```
@@ -901,7 +901,7 @@ flowchart TD
 
 Un **seed** remplit la base avec les données dont l'app a besoin pour marcher : ici les questions de placement
 et les leçons. Elles sont écrites par l'équipe sous forme de fichiers JSON dans le dossier
-[content/](../../../content) à la racine du repo, et pas tapées à la main dans la base :
+[content/](../../content) à la racine du repo, et pas tapées à la main dans la base :
 
 ```
 content/
@@ -952,7 +952,7 @@ if (require.main === module) {
 ```
 
 - `require.main === module` est vrai seulement quand ce fichier est le programme lancé. Le test e2e
-  [test/seed.e2e-spec.ts](../../../apps/api/test/seed.e2e-spec.ts) importe les fonctions, et cette garde
+  [test/seed.e2e-spec.ts](../../apps/api/test/seed.e2e-spec.ts) importe les fonctions, et cette garde
   empêche l'import de faire le seed de la vraie base.
 - Il utilise `PrismaService` (chapitre 3), pas un simple `PrismaClient`, parce que la partie démo réutilise des services de l'API.
 - Trois étapes : les questions, les leçons, puis (seulement en développement) les apprenants de démo.
@@ -1122,7 +1122,7 @@ tout le reste, y compris « non défini » sur le serveur public, veut dire pas 
 `demoPassword` vérifie le mot de passe avec le même `PasswordSchema` que l'inscription, donc un mot de passe de démo
 faible échoue avant que quoi que ce soit soit écrit. Il n'affiche jamais le mot de passe.
 
-**Tests** : [test/seed.e2e-spec.ts](../../../apps/api/test/seed.e2e-spec.ts) lance ces fonctions
+**Tests** : [test/seed.e2e-spec.ts](../../apps/api/test/seed.e2e-spec.ts) lance ces fonctions
 sur une vraie base : upserts idempotents (qu'on peut relancer sans effet en plus), erreurs claires sur les mauvais fichiers, `Restrict` sur les leçons qui ont des
 résultats, `ready` qui suit les fichiers, et les règles pour sauter la démo. Le chapitre 10 en parle.
 
@@ -1143,7 +1143,7 @@ Si tu changes le schema, tu régénères, et les fichiers sont réécrits.
 
 ### Est-il commité dans git ?
 
-**Non.** [apps/api/.gitignore](../../../apps/api/.gitignore) dit :
+**Non.** [apps/api/.gitignore](../../apps/api/.gitignore) dit :
 
 ```
 # Prisma client output. Generated from schema.prisma on install and in the Docker
@@ -1154,15 +1154,15 @@ src/generated/
 C'est une sortie de build : relire des milliers de lignes générées dans chaque pull request ne servirait à rien.
 À la place, chaque endroit qui en a besoin le génère d'abord :
 
-- [turbo.json](../../../turbo.json) : les tâches `build`, `lint` (et d'autres) dépendent de `db:generate`. Son
+- [turbo.json](../../turbo.json) : les tâches `build`, `lint` (et d'autres) dépendent de `db:generate`. Son
   commentaire : « without it, a fresh clone fails to typecheck, test or build until someone runs prisma generate by hand. » (sans ça, un clone tout neuf ne passe ni le typecheck, ni les tests, ni le build tant que quelqu'un n'a pas lancé prisma generate à la main).
-- [apps/api/Dockerfile](../../../apps/api/Dockerfile) : les étapes `ci` et `build` lancent `prisma generate`.
-- [compose.override.yml](../../../compose.override.yml) : le container `api` de dev lance `prisma generate` avant `pnpm dev`.
+- [apps/api/Dockerfile](../../apps/api/Dockerfile) : les étapes `ci` et `build` lancent `prisma generate`.
+- [compose.override.yml](../../compose.override.yml) : le container `api` de dev lance `prisma generate` avant `pnpm dev`.
 - `make migrate-new` lance `db:generate` après avoir écrit la migration.
 
 Il se trouve aussi dans `src/` (voir le commentaire du generator dans la section 2), donc ESLint
 (`ignores: ['**/generated/**']`) et la couverture de tests (`src/generated/**` dans
-[vitest.config.mts](../../../apps/api/vitest.config.mts)) l'ignorent explicitement.
+[vitest.config.mts](../../apps/api/vitest.config.mts)) l'ignorent explicitement.
 
 ### Ce qu'est chaque fichier, en gros
 
@@ -1183,7 +1183,7 @@ src/generated/prisma/
     └── prismaNamespaceBrowser.ts  the browser-safe part of that namespace
 ```
 
-L'API importe depuis `client.ts`. Par exemple, [prisma.service.ts](../../../apps/api/src/prisma/prisma.service.ts)
+L'API importe depuis `client.ts`. Par exemple, [prisma.service.ts](../../apps/api/src/prisma/prisma.service.ts)
 fait `import { PrismaClient } from '../generated/prisma/client';`, et `seed.ts` importe `Prisma` et
 `PrismaClient` du même endroit.
 
@@ -1195,7 +1195,7 @@ Voici à quoi ressemble le code Prisma dans les services. Les détails de chaque
 
 ### Exemple 1 : créer un utilisateur, et laisser la contrainte d'unicité faire la vérification
 
-Tiré de [auth.service.ts](../../../apps/api/src/auth/auth.service.ts) :
+Tiré de [auth.service.ts](../../apps/api/src/auth/auth.service.ts) :
 
 ```ts
 try {
@@ -1234,7 +1234,7 @@ ligne ou `null`.
 
 ### Exemple 2 : `select` et une relation dans une seule requête
 
-Tiré de [users.service.ts](../../../apps/api/src/users/users.service.ts) :
+Tiré de [users.service.ts](../../apps/api/src/users/users.service.ts) :
 
 ```ts
 const user = await this.prisma.user.findUnique({
@@ -1252,7 +1252,7 @@ base. `userLevels` est un champ de relation : Prisma charge aussi les cours de l
 
 ### Exemple 3 : une transaction, et une pagination par keyset sur un index
 
-Tiré de [messages.service.ts](../../../apps/api/src/messages/messages.service.ts), l'envoi d'un message :
+Tiré de [messages.service.ts](../../apps/api/src/messages/messages.service.ts), l'envoi d'un message :
 
 ```ts
 const [, row] = await this.prisma.$transaction([
@@ -1291,8 +1291,8 @@ const rows = await this.prisma.message.findMany({
 - PostgreSQL stocke les données dans des **tables** de colonnes typées. Les **clés primaires** nomment les lignes,
   les **clés étrangères** relient les tables, les **contraintes d'unicité** interdisent les doublons, les **index** rendent les recherches rapides.
 - **Prisma** est l'ORM : tu écris `prisma.user.findUnique(...)`, il écrit le SQL, et TypeScript le vérifie.
-- [schema.prisma](../../../apps/api/prisma/schema.prisma) est la seule source de vérité : 12 models, 9 enums.
-  Dans Prisma 7, l'URL se trouve dans [prisma.config.ts](../../../apps/api/prisma.config.ts), pas dans le schema.
+- [schema.prisma](../../apps/api/prisma/schema.prisma) est la seule source de vérité : 12 models, 9 enums.
+  Dans Prisma 7, l'URL se trouve dans [prisma.config.ts](../../apps/api/prisma.config.ts), pas dans le schema.
 - Plusieurs règles vivent exprès dans la base : email/nom uniques, un cours par langue,
   un `pairKey` par paire, `Restrict` sur les leçons qui ont des résultats. Le code compte sur elles au lieu de faire des vérifications qui peuvent se faire doubler.
 - Une **migration** est une étape SQL commitée. `make migrate-new NAME=...` en écrit une ; `prisma migrate deploy`

@@ -1,6 +1,6 @@
 # Alias et fonctions du shell
 
-Pour faciliter la vie des développeurs, des raccourcis et des fonctions sont définis dans [`.devcontainer/zshrc`](../../../.devcontainer/zshrc).
+Pour faciliter la vie des développeurs, des raccourcis et des fonctions sont définis dans [`.devcontainer/zshrc`](../../.devcontainer/zshrc).
 
 ### `croot`
 

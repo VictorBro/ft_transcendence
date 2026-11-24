@@ -24,10 +24,10 @@ Imagine le chat comme un **bureau de poste avec un haut-parleur**.
 
 Deux canaux sont utilisés :
 
-| Canal                 | Sert à                                                                                  | Code                                                                                                                                 |
-| --------------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| HTTP (`fetch`)        | Premier affichage de la page, « charger plus ancien », rattrapage après une reconnexion | [conversations.ts](../../../apps/web/lib/conversations.ts), [conversations-client.ts](../../../apps/web/lib/conversations-client.ts) |
-| WebSocket (socket.io) | Envoyer (`dm:send`), marquer comme lu (`dm:read`), recevoir (`dm:message`, `dm:unread`) | [tab-socket.ts](../../../apps/web/components/tab-socket.ts), [send-message.ts](../../../apps/web/lib/send-message.ts)                |
+| Canal                 | Sert à                                                                                  | Code                                                                                                                           |
+| --------------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| HTTP (`fetch`)        | Premier affichage de la page, « charger plus ancien », rattrapage après une reconnexion | [conversations.ts](../../apps/web/lib/conversations.ts), [conversations-client.ts](../../apps/web/lib/conversations-client.ts) |
+| WebSocket (socket.io) | Envoyer (`dm:send`), marquer comme lu (`dm:read`), recevoir (`dm:message`, `dm:unread`) | [tab-socket.ts](../../apps/web/components/tab-socket.ts), [send-message.ts](../../apps/web/lib/send-message.ts)                |
 
 Un **WebSocket** est une connexion qui reste ouverte, donc le serveur peut envoyer des nouvelles au navigateur à tout
 moment. HTTP, c'est « demander, puis recevoir une réponse » ; un WebSocket, c'est « garder la ligne de téléphone ouverte ».
@@ -118,7 +118,7 @@ tes autres onglets ouverts l'affichent aussi. Si l'envoi échoue, ton texte est 
 
 ## `layout.tsx` — la coque des Messages
 
-[layout.tsx](<../../../apps/web/app/[locale]/(messages)/layout.tsx>) entoure chaque page du route group `(messages)`.
+[layout.tsx](<../../apps/web/app/[locale]/(messages)/layout.tsx>) entoure chaque page du route group `(messages)`.
 (Un route group est un dossier entre parenthèses : il regroupe des pages sous un même layout sans rien ajouter à l'URL. Voir le chapitre 2.)
 
 ```tsx
@@ -140,7 +140,7 @@ export default function MessagesLayout({ children }: { children: ReactNode }) {
 
 ## `chat/page.tsx` — le server component
 
-[page.tsx](<../../../apps/web/app/[locale]/(messages)/chat/page.tsx>) tourne **sur le serveur**. Il charge les données et
+[page.tsx](<../../apps/web/app/[locale]/(messages)/chat/page.tsx>) tourne **sur le serveur**. Il charge les données et
 rend les deux client components. L'URL est `/chat` (la liste seule) ou `/chat?with=<userId>` (la liste + un fil).
 
 ```tsx
@@ -211,7 +211,7 @@ est rendue à nouveau depuis le serveur, parce que ça change les personnes à q
 
 Comme les autres fichiers d'API (chapitre 4), il y a une **moitié serveur** et une **moitié navigateur**.
 
-[conversations.ts](../../../apps/web/lib/conversations.ts) (serveur, utilisé par `page.tsx`) :
+[conversations.ts](../../apps/web/lib/conversations.ts) (serveur, utilisé par `page.tsx`) :
 
 ```ts
 export async function requireConversations(): Promise<Conversation[]> {
@@ -227,7 +227,7 @@ export async function loadMessagePage(userId: string): Promise<MessagePage> {
 }
 ```
 
-[conversations-client.ts](../../../apps/web/lib/conversations-client.ts) (navigateur, utilisé par `chat-thread.tsx`) :
+[conversations-client.ts](../../apps/web/lib/conversations-client.ts) (navigateur, utilisé par `chat-thread.tsx`) :
 
 ```ts
 export function fetchNewestMessages(userId: string): Promise<ApiResult<MessagePage>> {
@@ -242,7 +242,7 @@ export function fetchEarlierMessages(
 }
 ```
 
-Les formes des données viennent de `@ft/shared` ([message.ts](../../../packages/shared/src/schemas/message.ts)) :
+Les formes des données viennent de `@ft/shared` ([message.ts](../../packages/shared/src/schemas/message.ts)) :
 
 | Type           | Champs                                            | Sens                                                                                                         |
 | -------------- | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
@@ -253,14 +253,14 @@ Les formes des données viennent de `@ft/shared` ([message.ts](../../../packages
 Un **cursor** est un marque-page : « donne-moi les messages avant celui-ci ». Ici c'est l'id du message le plus ancien de la
 page. C'est mieux que « page numéro 3 », parce que les nouveaux messages ne décalent pas les pages.
 
-Tests : [conversations-client.test.ts](../../../apps/web/lib/conversations-client.test.ts) vérifie l'URL avec et
+Tests : [conversations-client.test.ts](../../apps/web/lib/conversations-client.test.ts) vérifie l'URL avec et
 sans `cursor`, et qu'un échec revient sous forme de code.
 
 ---
 
 ## `chat/conversation-list.tsx` — la liste, en direct
 
-[conversation-list.tsx](<../../../apps/web/app/[locale]/(messages)/chat/conversation-list.tsx>) est un client component.
+[conversation-list.tsx](<../../apps/web/app/[locale]/(messages)/chat/conversation-list.tsx>) est un client component.
 Il affiche chaque conversation, la plus récente d'abord, chacune avec un avatar, un point, le nom et un badge de non-lus.
 
 La partie clé : quand un nouveau message arrive, sa ligne monte en haut **sans** redemander au serveur.
@@ -308,7 +308,7 @@ requêtes de l'API.
 
 ## `chat/chat-thread.tsx` — une conversation
 
-[chat-thread.tsx](<../../../apps/web/app/[locale]/(messages)/chat/chat-thread.tsx>) est le plus gros fichier. Il contient :
+[chat-thread.tsx](<../../apps/web/app/[locale]/(messages)/chat/chat-thread.tsx>) est le plus gros fichier. Il contient :
 
 - `ChatThread` : les messages et toute la logique pour « rester à jour ».
 - `MessageItem` : une bulle.
@@ -501,7 +501,7 @@ et `keyCode === 229` le détecte sur Safari.
 
 ## `lib/send-message.ts` — `dm:send` et son ack
 
-[send-message.ts](../../../apps/web/lib/send-message.ts) contient la logique d'envoi. Elle est gardée en dehors de `tab-socket.ts` pour
+[send-message.ts](../../apps/web/lib/send-message.ts) contient la logique d'envoi. Elle est gardée en dehors de `tab-socket.ts` pour
 pouvoir être testée avec un faux socket (le vrai a besoin d'un navigateur). `tab-socket.ts` l'appelle simplement :
 
 ```ts
@@ -550,7 +550,7 @@ export async function sendMessageOver(
 `SendSocket` est une petite interface : juste `connected` et `timeout(...).emitWithAck(...)`. Le test passe un faux
 objet avec cette forme.
 
-Tests : [send-message.test.ts](../../../apps/web/lib/send-message.test.ts) — succès, refus hors ligne (rien
+Tests : [send-message.test.ts](../../apps/web/lib/send-message.test.ts) — succès, refus hors ligne (rien
 d'envoyé), timeout, un code de refus, `server.unexpected`, et de mauvaises réponses.
 
 ---
@@ -590,7 +590,7 @@ sequenceDiagram
   BS->>BB: le badge disparaît
 ```
 
-Notes sur ce diagramme (d'après [messages.service.ts](../../../apps/api/src/messages/messages.service.ts), voir le
+Notes sur ce diagramme (d'après [messages.service.ts](../../apps/api/src/messages/messages.service.ts), voir le
 chapitre 9 de l'API) :
 
 - Le serveur envoie `dm:message` aux **deux rooms** avant de renvoyer l'ack. Donc le propre fil d'Alice affiche son message
@@ -603,7 +603,7 @@ chapitre 9 de l'API) :
 
 ## `lib/thread.ts` — la fusion, gardée pure
 
-[thread.ts](../../../apps/web/lib/thread.ts) contient les règles de fusion sous forme de **fonctions pures** : elles prennent seulement des valeurs et
+[thread.ts](../../apps/web/lib/thread.ts) contient les règles de fusion sous forme de **fonctions pures** : elles prennent seulement des valeurs et
 renvoient de nouvelles valeurs, sans React, sans réseau. Ça les rend faciles à tester.
 
 ### `mergeMessages`
@@ -677,7 +677,7 @@ Renvoie les options d'`Intl.DateTimeFormat` : seulement l'heure pour un message 
 décidé dans le fuseau horaire du **lecteur** (celui de son compte). Si le navigateur ne connaît pas ce nom de fuseau, il se rabat
 sur le fuseau du navigateur lui-même (`knownZone`).
 
-Tests : [thread.test.ts](../../../apps/web/lib/thread.test.ts) couvre chaque cas : doublons, même milliseconde, un rattrapage
+Tests : [thread.test.ts](../../apps/web/lib/thread.test.ts) couvre chaque cas : doublons, même milliseconde, un rattrapage
 qui rejoint ou non, un message entendu pendant le fetch, une page plus ancienne jetée, et les formats d'heure.
 
 ---
@@ -686,7 +686,7 @@ qui rejoint ou non, un message entendu pendant le fetch, une page plus ancienne 
 
 ### Le store
 
-[unread.ts](../../../apps/web/lib/unread.ts) crée un petit store (magasin de données) qui vit aussi longtemps que le socket de l'onglet (pas une seule
+[unread.ts](../../apps/web/lib/unread.ts) crée un petit store (magasin de données) qui vit aussi longtemps que le socket de l'onglet (pas une seule
 page), donc le badge de l'en-tête est juste sur **chaque** page.
 
 Le serveur envoie toujours **l'image complète** (`dm:unread` = `{ counts: { userId: n }, at }`), jamais « +1 ». Donc un
@@ -736,7 +736,7 @@ gagne. Le serveur envoie un `dm:unread` à chaque connexion, donc ce passage se 
 
 ### Le badge
 
-[unread-badge.tsx](../../../apps/web/components/unread-badge.tsx) :
+[unread-badge.tsx](../../apps/web/components/unread-badge.tsx) :
 
 ```tsx
 export function UnreadBadge({ count }: { count: number | undefined }) {
@@ -759,7 +759,7 @@ export function UnreadTotalBadge() {
 - Rien à 0, et rien avant que l'onglet ait entendu quelque chose. Donc un « 0 » ne clignote jamais au premier affichage.
 - L'œil voit `99+` ; un lecteur d'écran entend la phrase complète avec le nombre exact.
 - `UnreadBadge` est utilisé pour chaque ligne de la liste des conversations. `UnreadTotalBadge` est utilisé dans l'en-tête
-  ([header-menu.tsx](../../../apps/web/components/header-menu.tsx), [session-nav.tsx](../../../apps/web/components/session-nav.tsx)).
+  ([header-menu.tsx](../../apps/web/components/header-menu.tsx), [session-nav.tsx](../../apps/web/components/session-nav.tsx)).
 
 ```mermaid
 flowchart LR
@@ -772,15 +772,15 @@ flowchart LR
   SO -->|dm:read| API
 ```
 
-Tests : [unread.test.ts](../../../apps/web/lib/unread.test.ts) — rien avant le premier snapshot, remplacer et pas fusionner,
+Tests : [unread.test.ts](../../apps/web/lib/unread.test.ts) — rien avant le premier snapshot, remplacer et pas fusionner,
 snapshots dans le désordre, ceux qui écoutent prévenus même sans changement, clear, `badgeText`, `unreadTotal`.
 
 ---
 
 ## La présence : `presence-dot.tsx` et `lib/presence.ts`
 
-Le chapitre 3 couvre [presence.ts](../../../apps/web/lib/presence.ts) et les listeners du socket. Dans le chat, c'est utilisé par
-`AvatarWithDot` dans [presence-dot.tsx](../../../apps/web/components/presence-dot.tsx), dans chaque ligne de la liste et dans
+Le chapitre 3 couvre [presence.ts](../../apps/web/lib/presence.ts) et les listeners du socket. Dans le chat, c'est utilisé par
+`AvatarWithDot` dans [presence-dot.tsx](../../apps/web/components/presence-dot.tsx), dans chaque ligne de la liste et dans
 l'en-tête du fil :
 
 ```tsx
@@ -811,15 +811,15 @@ export function AvatarWithDot({
   tant que l'onglet n'a rien entendu sur cet ami. Vert quand il est en ligne, gris sinon, avec un libellé « Online »/« Offline » pour les
   lecteurs d'écran.
 
-Tests : [presence.test.ts](../../../apps/web/lib/presence.test.ts).
+Tests : [presence.test.ts](../../apps/web/lib/presence.test.ts).
 
 ---
 
 ## `message-link.tsx` — la porte d'entrée
 
-[message-link.tsx](../../../apps/web/components/message-link.tsx) est le bouton « Message » sur la
-[page des amis](<../../../apps/web/app/[locale]/(main)/friends/page.tsx>) et sur un
-[profil utilisateur](<../../../apps/web/app/[locale]/(main)/users/[id]/page.tsx>) :
+[message-link.tsx](../../apps/web/components/message-link.tsx) est le bouton « Message » sur la
+[page des amis](<../../apps/web/app/[locale]/(main)/friends/page.tsx>) et sur un
+[profil utilisateur](<../../apps/web/app/[locale]/(main)/users/[id]/page.tsx>) :
 
 ```tsx
 export function MessageLink({ userId }: { userId: string }) {
@@ -842,12 +842,12 @@ lien du profil juste à côté. Pas de prefetch, encore pour la limite de requê
 
 Le chapitre 3 explique la boucle de nouvel essai en détail. Pour le chat, ce qui compte :
 
-| Événement           | Règle dans [reconnect.ts](../../../apps/web/lib/reconnect.ts) | Ce que voit le chat                                                                                                                                 |
-| ------------------- | ------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Connexion perdue    | `afterDisconnect` → `'reconnect'`                             | statut `reconnecting` ; les envois échouent tout de suite (`network.unreachable`)                                                                   |
-| Nouvel essai        | `backoffMs` : 1, 2, 4, 8, puis 10 s, ±25 % au hasard          | `apiIsUp()` vérifie `/healthz/api` avant de se connecter                                                                                            |
-| De nouveau en ligne | événement `connect`                                           | statut `connected` → le fil lance `fetchNewestMessages` + `catchUp` ; un nouveau `dm:unread` arrive ; l'effet « marquer comme lu » tourne à nouveau |
-| Session finie       | `afterConnectError` → `'signedOut'`                           | store des non-lus vidé                                                                                                                              |
+| Événement           | Règle dans [reconnect.ts](../../apps/web/lib/reconnect.ts) | Ce que voit le chat                                                                                                                                 |
+| ------------------- | ---------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Connexion perdue    | `afterDisconnect` → `'reconnect'`                          | statut `reconnecting` ; les envois échouent tout de suite (`network.unreachable`)                                                                   |
+| Nouvel essai        | `backoffMs` : 1, 2, 4, 8, puis 10 s, ±25 % au hasard       | `apiIsUp()` vérifie `/healthz/api` avant de se connecter                                                                                            |
+| De nouveau en ligne | événement `connect`                                        | statut `connected` → le fil lance `fetchNewestMessages` + `catchUp` ; un nouveau `dm:unread` arrive ; l'effet « marquer comme lu » tourne à nouveau |
+| Session finie       | `afterConnectError` → `'signedOut'`                        | store des non-lus vidé                                                                                                                              |
 
 Donc rien n'est perdu : pendant l'absence, des événements `dm:message` sont ratés, mais le fetch de rattrapage à la reconnexion les
 ramène, et `mergeMessages` fait en sorte qu'aucun ne s'affiche deux fois.
@@ -868,15 +868,15 @@ sequenceDiagram
   T->>T: catchUp(held, newest, before)
 ```
 
-Tests : [reconnect.test.ts](../../../apps/web/lib/reconnect.test.ts).
+Tests : [reconnect.test.ts](../../apps/web/lib/reconnect.test.ts).
 
 ---
 
 ## `lib/serial-queue.ts` — pas une partie du chat
 
-[serial-queue.ts](../../../apps/web/lib/serial-queue.ts) lance des tâches async l'une après l'autre, dans l'ordre. Il était listé
+[serial-queue.ts](../../apps/web/lib/serial-queue.ts) lance des tâches async l'une après l'autre, dans l'ordre. Il était listé
 avec les fichiers du chat, mais le chat ne l'utilise **pas** : le `Composer` permet un envoi à la fois avec son drapeau `sending`
-à la place. Son seul utilisateur est [use-course-save.ts](../../../apps/web/lib/use-course-save.ts) (chapitre 6), pour que deux sauvegardes
+à la place. Son seul utilisateur est [use-course-save.ts](../../apps/web/lib/use-course-save.ts) (chapitre 6), pour que deux sauvegardes
 du même réglage arrivent au serveur dans l'ordre où l'apprenant les a faites. Le chapitre 9 parcourt son test.
 
 ---

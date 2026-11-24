@@ -20,7 +20,7 @@ L'app a deux programmes qui se parlent :
 - Le **backend** (`apps/api`, NestJS) garde les données : utilisateurs, cours, leçons, messages. Il répond aux requêtes HTTP avec du JSON.
 - Le **frontend** (`apps/web`, Next.js) est ce que l'apprenant voit : les pages, les boutons, les formulaires. Il demande les données au backend et les transforme en écrans.
 
-Un restaurant est une bonne image. La cuisine (l'API) prépare les plats. La salle (l'app web) est l'endroit où les clients s'assoient, lisent le menu et commandent. Le serveur porte les commandes entre les deux. La salle ne cuisine jamais : la `description` dans [package.json](../../../apps/web/package.json) le dit clairement : _"Next.js frontend: presentation and SSR only, all domain logic lives in @ft/api"_ (frontend Next.js : uniquement présentation et SSR, toute la logique métier vit dans @ft/api).
+Un restaurant est une bonne image. La cuisine (l'API) prépare les plats. La salle (l'app web) est l'endroit où les clients s'assoient, lisent le menu et commandent. Le serveur porte les commandes entre les deux. La salle ne cuisine jamais : la `description` dans [package.json](../../apps/web/package.json) le dit clairement : _"Next.js frontend: presentation and SSR only, all domain logic lives in @ft/api"_ (frontend Next.js : uniquement présentation et SSR, toute la logique métier vit dans @ft/api).
 
 ```mermaid
 flowchart LR
@@ -31,7 +31,7 @@ flowchart LR
   A --> D[("PostgreSQL / Redis")]
 ```
 
-Caddy est la porte d'entrée. Il envoie les requêtes `/api/...` à NestJS et tout le reste à Next.js. Next.js appelle aussi l'API lui-même, depuis le serveur, par le réseau Docker interne (voir [lib/api.ts](../../../apps/web/lib/api.ts), `DEFAULT_API_INTERNAL_URL = 'http://api:3001'`).
+Caddy est la porte d'entrée. Il envoie les requêtes `/api/...` à NestJS et tout le reste à Next.js. Next.js appelle aussi l'API lui-même, depuis le serveur, par le réseau Docker interne (voir [lib/api.ts](../../apps/web/lib/api.ts), `DEFAULT_API_INTERNAL_URL = 'http://api:3001'`).
 
 ### HTML, CSS et JavaScript dans le navigateur
 
@@ -65,11 +65,11 @@ flowchart TD
   PA --> FB["FriendButton / MessageLink / ..."]
 ```
 
-C'est le vrai arbre de la page de profil d'un utilisateur, [users/[id]/page.tsx](<../../../apps/web/app/[locale]/(main)/users/[id]/page.tsx>).
+C'est le vrai arbre de la page de profil d'un utilisateur, [users/[id]/page.tsx](<../../apps/web/app/[locale]/(main)/users/[id]/page.tsx>).
 
 ### JSX
 
-Un component est une fonction qui renvoie du **JSX**. Le JSX ressemble à du HTML, mais il vit dans du JavaScript. Un outil de build le transforme en simples appels de fonction. Voici la page 404, [not-found.tsx](../../../apps/web/app/[locale]/not-found.tsx) :
+Un component est une fonction qui renvoie du **JSX**. Le JSX ressemble à du HTML, mais il vit dans du JavaScript. Un outil de build le transforme en simples appels de fonction. Voici la page 404, [not-found.tsx](../../apps/web/app/[locale]/not-found.tsx) :
 
 ```tsx
 export default function LocaleNotFound() {
@@ -98,14 +98,14 @@ Les règles du JSX à connaître :
 - `{ ... }` ouvre une « fenêtre JavaScript » : `{t('heading')}` met le résultat d'un appel de fonction dans la page.
 - L'attribut HTML `class` s'écrit `className` (parce que `class` est un mot réservé en JS), et `for` s'écrit `htmlFor`.
 - Un component renvoie un seul élément racine. Pour en renvoyer plusieurs sans enveloppe, utilise un **fragment** `<>...</>` (tu le verras dans `ProfileAction` dans la page utilisateur).
-- Renvoyer `null` veut dire « ne rien dessiner ». [time-zone-sync.tsx](../../../apps/web/components/time-zone-sync.tsx) renvoie `null` : il fait seulement un travail, il n'affiche rien.
+- Renvoyer `null` veut dire « ne rien dessiner ». [time-zone-sync.tsx](../../apps/web/components/time-zone-sync.tsx) renvoie `null` : il fait seulement un travail, il n'affiche rien.
 - Les conditions utilisent du JS normal : `cond ? <A /> : <B />` ou `cond ? <A /> : null`.
 
 ### Components et props
 
 Les **props** (propriétés) sont les entrées d'un component, comme les arguments d'une fonction. Un parent les passe comme des attributs, et l'enfant les reçoit dans un seul objet. Pour l'enfant, elles sont en lecture seule.
 
-Le meilleur exemple est [components/shell.tsx](../../../apps/web/components/shell.tsx), le cadre dans lequel chaque page s'affiche :
+Le meilleur exemple est [components/shell.tsx](../../apps/web/components/shell.tsx), le cadre dans lequel chaque page s'affiche :
 
 ```tsx
 export interface ShellProps {
@@ -125,7 +125,7 @@ export function Shell({ brand, nav, fill = false, footer, children }: ShellProps
       <header className="border-b border-slate-800">
 ```
 
-Et un parent qui l'utilise, [(main)/layout.tsx](<../../../apps/web/app/[locale]/(main)/layout.tsx>) :
+Et un parent qui l'utilise, [(main)/layout.tsx](<../../apps/web/app/[locale]/(main)/layout.tsx>) :
 
 ```tsx
 export default function MainLayout({ children }: { children: ReactNode }) {
@@ -148,7 +148,7 @@ export default function MainLayout({ children }: { children: ReactNode }) {
 
 Les props viennent du parent. Le **state** (état) est la mémoire propre du component : une valeur qui peut changer avec le temps, comme « le bouton est-il occupé ? ». Quand le state change, React redessine le component avec la nouvelle valeur.
 
-Un **hook** est une fonction dont le nom commence par `use`. Les hooks permettent à un component de se brancher sur des fonctionnalités de React (mémoire, effets de bord...). `useState` est le premier. Tiré de [log-out-button.tsx](../../../apps/web/components/log-out-button.tsx) :
+Un **hook** est une fonction dont le nom commence par `use`. Les hooks permettent à un component de se brancher sur des fonctionnalités de React (mémoire, effets de bord...). `useState` est le premier. Tiré de [log-out-button.tsx](../../apps/web/components/log-out-button.tsx) :
 
 ```tsx
 export function LogOutButton() {
@@ -181,7 +181,7 @@ export function LogOutButton() {
 
 `useState(false)` renvoie une paire : la valeur actuelle (`pending`) et un setter (`setPending`). Appeler `setPending(true)` ne change pas `pending` sur place. Ça demande à React de relancer `LogOutButton()`, et dans ce nouveau passage `pending` vaut `true`, donc le bouton affiche "Signing out..." (« Déconnexion... ») et il est désactivé.
 
-Les règles des hooks (vérifiées par ESLint, voir section 7) : appelle les hooks seulement au premier niveau d'un component ou d'un autre hook, jamais dans un `if` ou une boucle. Le commentaire dans [refresh-on.tsx](../../../apps/web/components/refresh-on.tsx) montre que l'app respecte ça : _"One component per event: a hook cannot run in a loop."_ (un component par événement : un hook ne peut pas tourner dans une boucle).
+Les règles des hooks (vérifiées par ESLint, voir section 7) : appelle les hooks seulement au premier niveau d'un component ou d'un autre hook, jamais dans un `if` ou une boucle. Le commentaire dans [refresh-on.tsx](../../apps/web/components/refresh-on.tsx) montre que l'app respecte ça : _"One component per event: a hook cannot run in a loop."_ (un component par événement : un hook ne peut pas tourner dans une boucle).
 
 ### Le rendu et le re-rendu
 
@@ -202,13 +202,13 @@ flowchart LR
 
 React garde une copie légère du dernier résultat et compare le nouveau avec. Il ne touche au DOM que là où quelque chose a vraiment changé. C'est pour ça que tu peux écrire « dessine tout à partir des données actuelles » et quand même avoir une page rapide.
 
-`reactStrictMode: true` dans [next.config.ts](../../../apps/web/next.config.ts) fait que React, en développement seulement, fait le rendu des components et lance les effects deux fois exprès, pour trouver les bugs où le code ne supporte pas d'être relancé.
+`reactStrictMode: true` dans [next.config.ts](../../apps/web/next.config.ts) fait que React, en développement seulement, fait le rendu des components et lance les effects deux fois exprès, pour trouver les bugs où le code ne supporte pas d'être relancé.
 
 ### Les effects avec `useEffect`
 
 Le rendu doit être « pur » : calculer du JSX à partir des props et du state, rien d'autre. Le travail qui touche le monde extérieur (timers, appels réseau, APIs du navigateur, sockets) va dans un **effect** (effet). `useEffect(fn, deps)` lance `fn` _après_ que React a dessiné l'écran, et le relance seulement quand une valeur de la liste `deps` change.
 
-[time-zone-sync.tsx](../../../apps/web/components/time-zone-sync.tsx) lit le fuseau horaire du navigateur et l'enregistre s'il est différent de celui stocké :
+[time-zone-sync.tsx](../../apps/web/components/time-zone-sync.tsx) lit le fuseau horaire du navigateur et l'enregistre s'il est différent de celui stocké :
 
 ```tsx
 useEffect(() => {
@@ -233,7 +233,7 @@ useEffect(() => {
 
 Le fuseau horaire n'existe que dans le navigateur, donc ce code ne peut pas tourner pendant le rendu serveur : un effect est le bon endroit. Les deps `[storedTimeZone, router, pathname]` veulent dire « relance quand l'une de ces valeurs change », donc il réessaie après chaque changement de page.
 
-Un effect peut renvoyer une fonction de **cleanup** (nettoyage). React l'appelle avant le passage suivant et quand le component disparaît (il est **démonté**, unmount). [exam-timer.tsx](<../../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/play/exam-timer.tsx>) démarre un timer et l'arrête dans le cleanup :
+Un effect peut renvoyer une fonction de **cleanup** (nettoyage). React l'appelle avant le passage suivant et quand le component disparaît (il est **démonté**, unmount). [exam-timer.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/play/exam-timer.tsx>) démarre un timer et l'arrête dans le cleanup :
 
 ```tsx
 useEffect(() => {
@@ -254,31 +254,31 @@ useEffect(() => {
 
 Une recherche dans `apps/web` (`app`, `components`, `lib`) trouve ces hooks. Chaque ligne dit à quoi il sert et donne un vrai endroit où il est utilisé.
 
-| Hook                   | Vient de         | Ce qu'il fait                                                                                    | Vrai exemple                                                                                                              |
-| ---------------------- | ---------------- | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------- |
-| `useState`             | react            | Mémoire du component qui déclenche un re-rendu                                                   | `pending` dans [log-out-button.tsx](../../../apps/web/components/log-out-button.tsx)                                      |
-| `useEffect`            | react            | Lancer des effets de bord après le rendu, avec cleanup                                           | [time-zone-sync.tsx](../../../apps/web/components/time-zone-sync.tsx)                                                     |
-| `useRef`               | react            | Mémoire qui ne déclenche **pas** de re-rendu ; peut aussi tenir un élément du DOM                | `inFlight`, `rejected` dans time-zone-sync ; `wasAway` dans [refresh-on.tsx](../../../apps/web/components/refresh-on.tsx) |
-| `useId`                | react            | Un id unique, le même sur le serveur et dans le navigateur                                       | la paire label/input dans [form.tsx](../../../apps/web/components/form.tsx)                                               |
-| `useMemo`              | react            | Retenir une valeur calculée jusqu'à ce que ses deps changent                                     | `keep` dans [player.tsx](<../../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/play/player.tsx>)          |
-| `useCallback`          | react            | Retenir une fonction jusqu'à ce que ses deps changent                                            | `show` et `hold` dans player.tsx                                                                                          |
-| `useTransition`        | react            | Marquer une mise à jour comme « pas urgente » et obtenir un drapeau `pending`                    | [friend-search.tsx](<../../../apps/web/app/[locale]/(main)/friends/friend-search.tsx>)                                    |
-| `useLayoutEffect`      | react            | Comme `useEffect`, mais tourne avant que le navigateur dessine                                   | garder la position du scroll dans [chat-thread.tsx](<../../../apps/web/app/[locale]/(messages)/chat/chat-thread.tsx>)     |
-| `useSyncExternalStore` | react            | Lire une valeur qui vit hors de React et refaire le rendu quand elle change                      | état du socket, compteurs de non-lus dans [tab-socket.ts](../../../apps/web/components/tab-socket.ts)                     |
-| `useEffectEvent`       | react            | Une fonction qu'un effect peut appeler, qui voit toujours les dernières props, sans être une dep | `zero` dans exam-timer.tsx                                                                                                |
-| `useRouter`            | next-intl / next | Aller sur une autre page ou rafraîchir les données du serveur depuis le code                     | `router.replace('/')` dans log-out-button.tsx                                                                             |
-| `usePathname`          | next-intl        | Le chemin actuel de l'URL (sans la locale)                                                       | déclencheur dans time-zone-sync.tsx                                                                                       |
-| `useSearchParams`      | next/navigation  | Lire la partie `?a=b` de l'URL                                                                   | [live-form.tsx](<../../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/live-form.tsx>)                          |
-| `useTranslations`      | next-intl        | Obtenir la fonction `t()` pour une partie du catalogue de textes                                 | presque tous les components                                                                                               |
-| `useLocale`            | next-intl        | La langue actuelle (`en`, `fr`, `de`)                                                            | [language-switcher.tsx](../../../apps/web/components/language-switcher.tsx)                                               |
+| Hook                   | Vient de         | Ce qu'il fait                                                                                    | Vrai exemple                                                                                                           |
+| ---------------------- | ---------------- | ------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------- |
+| `useState`             | react            | Mémoire du component qui déclenche un re-rendu                                                   | `pending` dans [log-out-button.tsx](../../apps/web/components/log-out-button.tsx)                                      |
+| `useEffect`            | react            | Lancer des effets de bord après le rendu, avec cleanup                                           | [time-zone-sync.tsx](../../apps/web/components/time-zone-sync.tsx)                                                     |
+| `useRef`               | react            | Mémoire qui ne déclenche **pas** de re-rendu ; peut aussi tenir un élément du DOM                | `inFlight`, `rejected` dans time-zone-sync ; `wasAway` dans [refresh-on.tsx](../../apps/web/components/refresh-on.tsx) |
+| `useId`                | react            | Un id unique, le même sur le serveur et dans le navigateur                                       | la paire label/input dans [form.tsx](../../apps/web/components/form.tsx)                                               |
+| `useMemo`              | react            | Retenir une valeur calculée jusqu'à ce que ses deps changent                                     | `keep` dans [player.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/play/player.tsx>)          |
+| `useCallback`          | react            | Retenir une fonction jusqu'à ce que ses deps changent                                            | `show` et `hold` dans player.tsx                                                                                       |
+| `useTransition`        | react            | Marquer une mise à jour comme « pas urgente » et obtenir un drapeau `pending`                    | [friend-search.tsx](<../../apps/web/app/[locale]/(main)/friends/friend-search.tsx>)                                    |
+| `useLayoutEffect`      | react            | Comme `useEffect`, mais tourne avant que le navigateur dessine                                   | garder la position du scroll dans [chat-thread.tsx](<../../apps/web/app/[locale]/(messages)/chat/chat-thread.tsx>)     |
+| `useSyncExternalStore` | react            | Lire une valeur qui vit hors de React et refaire le rendu quand elle change                      | état du socket, compteurs de non-lus dans [tab-socket.ts](../../apps/web/components/tab-socket.ts)                     |
+| `useEffectEvent`       | react            | Une fonction qu'un effect peut appeler, qui voit toujours les dernières props, sans être une dep | `zero` dans exam-timer.tsx                                                                                             |
+| `useRouter`            | next-intl / next | Aller sur une autre page ou rafraîchir les données du serveur depuis le code                     | `router.replace('/')` dans log-out-button.tsx                                                                          |
+| `usePathname`          | next-intl        | Le chemin actuel de l'URL (sans la locale)                                                       | déclencheur dans time-zone-sync.tsx                                                                                    |
+| `useSearchParams`      | next/navigation  | Lire la partie `?a=b` de l'URL                                                                   | [live-form.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/live-form.tsx>)                          |
+| `useTranslations`      | next-intl        | Obtenir la fonction `t()` pour une partie du catalogue de textes                                 | presque tous les components                                                                                            |
+| `useLocale`            | next-intl        | La langue actuelle (`en`, `fr`, `de`)                                                            | [language-switcher.tsx](../../apps/web/components/language-switcher.tsx)                                               |
 
 `useActionState`, `useOptimistic`, `useFormStatus` et `use()` ne sont **pas** utilisés dans cette app.
 
-L'app écrit aussi ses propres hooks (un hook personnalisé est juste une fonction qui commence par `use` et qui appelle d'autres hooks) : `useServerEvent`, `useSocketStatus`, `useUnreadTotal`, `useFriendOnline` dans [tab-socket.ts](../../../apps/web/components/tab-socket.ts), `useErrorMessage` dans [lib/error-message.ts](../../../apps/web/lib/error-message.ts), et celui de [lib/use-course-save.ts](../../../apps/web/lib/use-course-save.ts). Les chapitres 3 et 4 les expliquent.
+L'app écrit aussi ses propres hooks (un hook personnalisé est juste une fonction qui commence par `use` et qui appelle d'autres hooks) : `useServerEvent`, `useSocketStatus`, `useUnreadTotal`, `useFriendOnline` dans [tab-socket.ts](../../apps/web/components/tab-socket.ts), `useErrorMessage` dans [lib/error-message.ts](../../apps/web/lib/error-message.ts), et celui de [lib/use-course-save.ts](../../apps/web/lib/use-course-save.ts). Les chapitres 3 et 4 les expliquent.
 
 Quelques mots de plus sur les moins courants :
 
-**`useRef`** est une boîte avec un champ `.current`. Changer `.current` ne refait pas de rendu. Dans [refresh-on.tsx](../../../apps/web/components/refresh-on.tsx), il retient « le socket était-il absent avant ? » entre deux rendus :
+**`useRef`** est une boîte avec un champ `.current`. Changer `.current` ne refait pas de rendu. Dans [refresh-on.tsx](../../apps/web/components/refresh-on.tsx), il retient « le socket était-il absent avant ? » entre deux rendus :
 
 ```tsx
 const seen = useRef(false);
@@ -326,11 +326,11 @@ Pour dessiner une liste, utilise la méthode de tableau `.map()` pour transforme
 
 La key est comme un badge avec un nom. Quand la liste change, React utilise les badges pour savoir quel `<li>` est lequel, pour pouvoir déplacer, ajouter ou enlever le bon au lieu de tout redessiner. Utilise un id venant des données (`course.lang`, un id d'utilisateur), pas l'index du tableau, quand l'ordre peut changer.
 
-Une key peut aussi servir exprès à _réinitialiser_ un component : une nouvelle key veut dire « c'est un autre component, repars de zéro ». Le formulaire de connexion fait ça (commentaire : _"Distinct key from the password form"_ (key différente de celle du formulaire de mot de passe) dans [login-form.tsx](<../../../apps/web/app/[locale]/(main)/login/login-form.tsx>)).
+Une key peut aussi servir exprès à _réinitialiser_ un component : une nouvelle key veut dire « c'est un autre component, repars de zéro ». Le formulaire de connexion fait ça (commentaire : _"Distinct key from the password form"_ (key différente de celle du formulaire de mot de passe) dans [login-form.tsx](<../../apps/web/app/[locale]/(main)/login/login-form.tsx>)).
 
 ### Les événements
 
-Tu passes une fonction à une prop d'événement : `onClick`, `onSubmit`, `onChange`, `onKeyDown`... React l'appelle avec un objet **event** (événement). Passe la fonction, ne l'appelle pas : `onClick={reset}`, pas `onClick={reset()}`. Tiré de [error.tsx](../../../apps/web/app/[locale]/error.tsx) :
+Tu passes une fonction à une prop d'événement : `onClick`, `onSubmit`, `onChange`, `onKeyDown`... React l'appelle avec un objet **event** (événement). Passe la fonction, ne l'appelle pas : `onClick={reset}`, pas `onClick={reset()}`. Tiré de [error.tsx](../../apps/web/app/[locale]/error.tsx) :
 
 ```tsx
 <button
@@ -344,7 +344,7 @@ Tu passes une fonction à une prop d'événement : `onClick`, `onSubmit`, `onCha
 
 ### Les formulaires
 
-Un `<form>` du navigateur, quand il est envoyé, recharge normalement la page. L'app empêche ça avec `event.preventDefault()` et traite les données en JavaScript. Les champs sont lus avec `FormData`, la façon standard du navigateur de lire les valeurs d'un formulaire par leur `name`. Tiré de [friend-search.tsx](<../../../apps/web/app/[locale]/(main)/friends/friend-search.tsx>) :
+Un `<form>` du navigateur, quand il est envoyé, recharge normalement la page. L'app empêche ça avec `event.preventDefault()` et traite les données en JavaScript. Les champs sont lus avec `FormData`, la façon standard du navigateur de lire les valeurs d'un formulaire par leur `name`. Tiré de [friend-search.tsx](<../../apps/web/app/[locale]/(main)/friends/friend-search.tsx>) :
 
 ```tsx
 function submit(event: FormEvent<HTMLFormElement>) {
@@ -384,7 +384,7 @@ Le modèle suivi par tous les formulaires de l'app :
 
 Les inputs sont **non contrôlés** (uncontrolled) : ils gardent leur propre valeur et le code la lit à l'envoi (`defaultValue` donne la première valeur). Un input **contrôlé** (controlled) serait `value={state}` plus `onChange={...}` pour mettre à jour le state à chaque touche.
 
-Les pièces de formulaire partagées vivent dans [components/form.tsx](../../../apps/web/components/form.tsx) : `Field` (un label lié à un input avec `useId`, pour les lecteurs d'écran), `FormError` (`role="alert"` pour que l'erreur soit annoncée), `SubmitButton`, et des chaînes de classes pour les boutons.
+Les pièces de formulaire partagées vivent dans [components/form.tsx](../../apps/web/components/form.tsx) : `Field` (un label lié à un input avec `useId`, pour les lecteurs d'écran), `FormError` (`role="alert"` pour que l'erreur soit annoncée), `SubmitButton`, et des chaînes de classes pour les boutons.
 
 ---
 
@@ -429,15 +429,15 @@ app/
 
 Les noms de fichiers spéciaux que Next.js connaît :
 
-| Fichier            | Rôle                                                                                                                    | Dans cette app                                                                             |
-| ------------------ | ----------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| `page.tsx`         | Le contenu d'une URL                                                                                                    | Beaucoup, par ex. [login/page.tsx](<../../../apps/web/app/[locale]/(main)/login/page.tsx>) |
-| `layout.tsx`       | Un cadre autour de toutes les pages en dessous. Il reste à l'écran quand tu passes d'une de ces pages à une autre       | [[locale]/layout.tsx](../../../apps/web/app/[locale]/layout.tsx), plus un par route group  |
-| `error.tsx`        | Affiché quand quelque chose en dessous lance une erreur. Doit être un Client Component. Reçoit `reset()` pour réessayer | [[locale]/error.tsx](../../../apps/web/app/[locale]/error.tsx)                             |
-| `global-error.tsx` | Affiché quand le layout racine lui-même lance une erreur. A son propre `<html>`                                         | [global-error.tsx](../../../apps/web/app/global-error.tsx)                                 |
-| `not-found.tsx`    | Affiché quand le code appelle `notFound()`                                                                              | [[locale]/not-found.tsx](../../../apps/web/app/[locale]/not-found.tsx)                     |
-| `loading.tsx`      | Affiché pendant le chargement d'une page                                                                                | **Pas utilisé** dans cette app                                                             |
-| `route.ts`         | Un endpoint HTTP (GET, POST...) au lieu d'une page                                                                      | [healthz/route.ts](../../../apps/web/app/healthz/route.ts)                                 |
+| Fichier            | Rôle                                                                                                                    | Dans cette app                                                                          |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `page.tsx`         | Le contenu d'une URL                                                                                                    | Beaucoup, par ex. [login/page.tsx](<../../apps/web/app/[locale]/(main)/login/page.tsx>) |
+| `layout.tsx`       | Un cadre autour de toutes les pages en dessous. Il reste à l'écran quand tu passes d'une de ces pages à une autre       | [[locale]/layout.tsx](../../apps/web/app/[locale]/layout.tsx), plus un par route group  |
+| `error.tsx`        | Affiché quand quelque chose en dessous lance une erreur. Doit être un Client Component. Reçoit `reset()` pour réessayer | [[locale]/error.tsx](../../apps/web/app/[locale]/error.tsx)                             |
+| `global-error.tsx` | Affiché quand le layout racine lui-même lance une erreur. A son propre `<html>`                                         | [global-error.tsx](../../apps/web/app/global-error.tsx)                                 |
+| `not-found.tsx`    | Affiché quand le code appelle `notFound()`                                                                              | [[locale]/not-found.tsx](../../apps/web/app/[locale]/not-found.tsx)                     |
+| `loading.tsx`      | Affiché pendant le chargement d'une page                                                                                | **Pas utilisé** dans cette app                                                          |
+| `route.ts`         | Un endpoint HTTP (GET, POST...) au lieu d'une page                                                                      | [healthz/route.ts](../../apps/web/app/healthz/route.ts)                                 |
 
 Les layouts s'emboîtent comme des poupées russes. Pour `/fr/login`, Next.js construit :
 
@@ -453,7 +453,7 @@ Les modèles de noms de dossiers :
 
 - **Route group `(name)`** (groupe de routes) : les parenthèses veulent dire « ce dossier ne fait pas partie de l'URL ». Il sert seulement à regrouper des pages pour qu'elles partagent un layout. `(main)`, `(dashboard)` et `(messages)` ont chacun leur propre `layout.tsx` avec un header et un footer différents, mais `/fr/login` ne contient pas `main`.
 - **Segment dynamique `[name]`** : correspond à n'importe quel morceau de l'URL et le donne à la page comme param. `[locale]` correspond à `fr`, `[id]` à un id d'utilisateur, `[lang]` à une langue de cours.
-- **Catch-all `[...name]`** (attrape-tout) : correspond à un ou plusieurs morceaux. [[...rest]/page.tsx](../../../apps/web/app/[locale]/[...rest]/page.tsx) attrape chaque chemin inconnu et appelle `notFound()`, pour que le visiteur voie la 404 traduite au lieu de celle de Next, en anglais :
+- **Catch-all `[...name]`** (attrape-tout) : correspond à un ou plusieurs morceaux. [[...rest]/page.tsx](../../apps/web/app/[locale]/[...rest]/page.tsx) attrape chaque chemin inconnu et appelle `notFound()`, pour que le visiteur voie la 404 traduite au lieu de celle de Next, en anglais :
 
 ```tsx
 export default function CatchAllPage() {
@@ -517,14 +517,14 @@ flowchart LR
   I -->|"fetch /api/... (via Caddy)"| API["NestJS"]
 ```
 
-L'**hydratation** (hydration) est l'étape où React, dans le navigateur, prend le HTML envoyé par le serveur et y attache les gestionnaires d'événements et le state, pour qu'il devienne interactif. Le HTML du serveur et le premier rendu du navigateur doivent correspondre. Le layout racine utilise `suppressHydrationWarning` sur `<html>` seulement, parce que les extensions du navigateur y ajoutent des attributs (voir le commentaire dans [[locale]/layout.tsx](../../../apps/web/app/[locale]/layout.tsx)).
+L'**hydratation** (hydration) est l'étape où React, dans le navigateur, prend le HTML envoyé par le serveur et y attache les gestionnaires d'événements et le state, pour qu'il devienne interactif. Le HTML du serveur et le premier rendu du navigateur doivent correspondre. Le layout racine utilise `suppressHydrationWarning` sur `<html>` seulement, parce que les extensions du navigateur y ajoutent des attributs (voir le commentaire dans [[locale]/layout.tsx](../../apps/web/app/[locale]/layout.tsx)).
 
 Comment les deux sortes se mélangent, avec la page utilisateur comme exemple :
 
 - `UserPage` est un Server Component (`async`, pas de `'use client'`). Il appelle `requireUser()` et `loadProfile(id)` sur le serveur.
 - Il affiche `PresenceDot` et `FriendButton`, qui sont des Client Components (ils doivent changer sans rechargement). Il leur passe des données simples en props : `userId`, `online`.
 - Les props passées du serveur au client doivent être **sérialisables** (chaînes, nombres, objets simples, tableaux, JSX). Tu ne peux pas passer une fonction d'un Server Component à un Client Component.
-- Un Client Component ne peut pas importer un Server Component, mais il peut en recevoir un comme `children` ou comme autre prop JSX. C'est pour ça que [shell.tsx](../../../apps/web/components/shell.tsx) prend `nav` en prop au lieu d'afficher lui-même la nav de session : le commentaire dit que ça garde le Shell utilisable depuis l'error boundary, qui est un Client Component.
+- Un Client Component ne peut pas importer un Server Component, mais il peut en recevoir un comme `children` ou comme autre prop JSX. C'est pour ça que [shell.tsx](../../apps/web/components/shell.tsx) prend `nav` en prop au lieu d'afficher lui-même la nav de session : le commentaire dit que ça garde le Shell utilisable depuis l'error boundary, qui est un Client Component.
 
 Comment savoir lequel est lequel en lisant un fichier :
 
@@ -566,7 +566,7 @@ sequenceDiagram
 
 ### Charger les données sur le serveur, avec les cookies
 
-Un Server Component peut simplement faire `await` sur une fonction qui appelle l'API. L'astuce, c'est que l'API a besoin du **cookie de session** du visiteur, mais l'appel vient du serveur Next.js, pas du navigateur. Donc le serveur copie le cookie de la requête entrante dans sa propre requête. C'est fait à un seul endroit, [lib/api.ts](../../../apps/web/lib/api.ts) :
+Un Server Component peut simplement faire `await` sur une fonction qui appelle l'API. L'astuce, c'est que l'API a besoin du **cookie de session** du visiteur, mais l'appel vient du serveur Next.js, pas du navigateur. Donc le serveur copie le cookie de la requête entrante dans sa propre requête. C'est fait à un seul endroit, [lib/api.ts](../../apps/web/lib/api.ts) :
 
 ```ts
 export async function fetchWithRequestHeaderAndIP<R>(
@@ -591,7 +591,7 @@ export async function fetchWithRequestHeaderAndIP<R>(
 
 `cookies()` et `headers()` viennent de `next/headers` et ne marchent que sur le serveur, pendant une requête. Le fetch lui-même utilise `cache: 'no-store'` pour que les données d'un visiteur ne soient jamais mises en cache pour un autre.
 
-Ensuite, [lib/session.ts](../../../apps/web/lib/session.ts) l'enveloppe pour les pages :
+Ensuite, [lib/session.ts](../../apps/web/lib/session.ts) l'enveloppe pour les pages :
 
 ```ts
 export const loadSession = cache(async function loadSession(): Promise<SessionResult> {
@@ -610,11 +610,11 @@ Les deux façons dont l'app parle à l'API :
 
 ### Server actions : pas utilisées
 
-Next.js a des **server actions** (des fonctions marquées `'use server'` qu'un formulaire peut appeler directement sur le serveur). Cette app n'en a **aucune**. La raison est écrite en haut de [lib/auth-client.ts](../../../apps/web/lib/auth-client.ts) : _"These run in the page rather than through a server action because the session cookie is set by the API's response, and Caddy serves both origins as one, so the browser's own request carries and receives it with nothing to relay."_ (Elles tournent dans la page plutôt que via une server action parce que le cookie de session est posé par la réponse de l'API, et Caddy sert les deux origines comme une seule, donc la propre requête du navigateur l'envoie et le reçoit sans rien à relayer.)
+Next.js a des **server actions** (des fonctions marquées `'use server'` qu'un formulaire peut appeler directement sur le serveur). Cette app n'en a **aucune**. La raison est écrite en haut de [lib/auth-client.ts](../../apps/web/lib/auth-client.ts) : _"These run in the page rather than through a server action because the session cookie is set by the API's response, and Caddy serves both origins as one, so the browser's own request carries and receives it with nothing to relay."_ (Elles tournent dans la page plutôt que via une server action parce que le cookie de session est posé par la réponse de l'API, et Caddy sert les deux origines comme une seule, donc la propre requête du navigateur l'envoie et le reçoit sans rien à relayer.)
 
 ### Les route handlers
 
-Un fichier `route.ts` répond directement en HTTP, sans React. [healthz/route.ts](../../../apps/web/app/healthz/route.ts) est le health check de Docker :
+Un fichier `route.ts` répond directement en HTTP, sans React. [healthz/route.ts](../../apps/web/app/healthz/route.ts) est le health check de Docker :
 
 ```ts
 export const dynamic = "force-dynamic";
@@ -630,7 +630,7 @@ export function GET() {
 - `useRouter()` fait la même chose depuis le code : `router.push(url)` (ajoute à l'historique), `router.replace(url)` (remplace l'entrée actuelle de l'historique), `router.refresh()` (demande au serveur de refaire le rendu de la page actuelle avec des données fraîches, en gardant le state côté client).
 - `redirect(url)` et `notFound()` (de `next/navigation`) sont pour les Server Components : ils arrêtent le rendu et envoient le visiteur ailleurs.
 
-L'app n'importe **pas** `Link` et `useRouter` directement depuis `next`. Elle utilise des copies qui connaissent la locale, dans [i18n/navigation.ts](../../../apps/web/i18n/navigation.ts), donc `href="/friends"` devient `/fr/friends` tout seul :
+L'app n'importe **pas** `Link` et `useRouter` directement depuis `next`. Elle utilise des copies qui connaissent la locale, dans [i18n/navigation.ts](../../apps/web/i18n/navigation.ts), donc `href="/friends"` devient `/fr/friends` tout seul :
 
 ```ts
 import { createNavigation } from "next-intl/navigation";
@@ -641,7 +641,7 @@ import { routing } from "./routing";
 export const { Link, redirect, usePathname, useRouter, getPathname } = createNavigation(routing);
 ```
 
-`router.refresh()` est beaucoup utilisé : après la connexion, après la déconnexion, après un événement du socket ([refresh-on.tsx](../../../apps/web/components/refresh-on.tsx)). C'est la façon dont le client dit « les données ont changé, donne-moi un nouveau rendu serveur ».
+`router.refresh()` est beaucoup utilisé : après la connexion, après la déconnexion, après un événement du socket ([refresh-on.tsx](../../apps/web/components/refresh-on.tsx)). C'est la façon dont le client dit « les données ont changé, donne-moi un nouveau rendu serveur ».
 
 ---
 
@@ -651,7 +651,7 @@ Tailwind est un framework CSS fait de toutes petites classes toutes prêtes. Cha
 
 Analogie : au lieu de mélanger ta propre peinture pour chaque mur, tu as une boîte d'autocollants avec des étiquettes (« rouge », « grande marge », « arrondi ») et tu en colles plusieurs sur chaque élément.
 
-Lecture d'une vraie liste de classes tirée de [not-found.tsx](../../../apps/web/app/[locale]/not-found.tsx) :
+Lecture d'une vraie liste de classes tirée de [not-found.tsx](../../apps/web/app/[locale]/not-found.tsx) :
 
 ```
 mt-2 rounded-full bg-indigo-700 px-6 py-2 text-sm font-semibold text-white transition-colors hover:bg-indigo-800
@@ -668,7 +668,7 @@ mt-2 rounded-full bg-indigo-700 px-6 py-2 text-sm font-semibold text-white trans
 
 Les préfixes sont des conditions : `hover:`, `focus-visible:`, `disabled:`, et les tailles d'écran `sm:`, `lg:` (à partir de cette largeur) ou `max-sm:` (en dessous). La page utilisateur utilise `max-sm:flex-col-reverse` pour mettre le nom sous l'avatar sur les téléphones.
 
-L'app utilise **Tailwind 4**, qui se configure en CSS, pas dans un `tailwind.config.js` (il n'y en a pas). La configuration est dans [app/globals.css](../../../apps/web/app/globals.css) :
+L'app utilise **Tailwind 4**, qui se configure en CSS, pas dans un `tailwind.config.js` (il n'y en a pas). La configuration est dans [app/globals.css](../../apps/web/app/globals.css) :
 
 ```css
 @import "tailwindcss";
@@ -697,7 +697,7 @@ Tailwind tourne comme un plugin **PostCSS** (PostCSS est un outil qui transforme
 
 Tous les fichiers sont en `.ts` / `.tsx` (TypeScript, `.tsx` = TypeScript avec du JSX). TypeScript vérifie les types avant que le code ne tourne. Dans React, l'usage principal est de **typer les props**. Trois styles apparaissent dans l'app :
 
-Type en ligne, pour les petits components ([unread-badge.tsx](../../../apps/web/components/unread-badge.tsx)) :
+Type en ligne, pour les petits components ([unread-badge.tsx](../../apps/web/components/unread-badge.tsx)) :
 
 ```tsx
 export function UnreadBadge({ count }: { count: number | undefined }) {
@@ -705,7 +705,7 @@ export function UnreadBadge({ count }: { count: number | undefined }) {
 
 Une `interface` nommée, quand les props sont nombreuses ou documentées (`ShellProps` dans shell.tsx, montré plus haut).
 
-Étendre les attributs HTML, pour qu'un component accepte toutes les props normales d'un `<input>` plus les siennes ([form.tsx](../../../apps/web/components/form.tsx)) :
+Étendre les attributs HTML, pour qu'un component accepte toutes les props normales d'un `<input>` plus les siennes ([form.tsx](../../apps/web/components/form.tsx)) :
 
 ```tsx
 type FieldProps = InputHTMLAttributes<HTMLInputElement> & {
@@ -767,7 +767,7 @@ Les dossiers générés que tu peux ignorer : `.next/` (résultat du build et ca
 | `i18n/`, `messages/` | Les langues                                                                                                                  | « Est-ce que ça concerne la traduction ? »         |
 | `public/`            | Les fichiers que le navigateur charge par URL, par ex. `/logo.webp`                                                          | « Est-ce qu'il lui faut une URL fixe ? »           |
 
-**`public/`** : tout ce qui est ici est servi à la racine du site. `logo.webp` est le logo (déjà à la bonne taille, parce que l'optimiseur d'images est désactivé, voir next.config). [robots.txt](../../../apps/web/public/robots.txt) dit aux moteurs de recherche d'ignorer `/healthz` et `/grafana` :
+**`public/`** : tout ce qui est ici est servi à la racine du site. `logo.webp` est le logo (déjà à la bonne taille, parce que l'optimiseur d'images est désactivé, voir next.config). [robots.txt](../../apps/web/public/robots.txt) dit aux moteurs de recherche d'ignorer `/healthz` et `/grafana` :
 
 ```
 User-agent: *
@@ -784,7 +784,7 @@ Disallow: /grafana
 
 ### package.json
 
-[package.json](../../../apps/web/package.json) nomme le package `@ft/web` (un workspace dans le monorepo pnpm).
+[package.json](../../apps/web/package.json) nomme le package `@ft/web` (un workspace dans le monorepo pnpm).
 
 Les scripts (à lancer avec `pnpm <name>` dans `apps/web`) :
 
@@ -816,7 +816,7 @@ Les dépendances de dev (outils seulement) : `typescript`, `@types/*` (types pou
 
 ### next.config.ts
 
-[next.config.ts](../../../apps/web/next.config.ts) contient les réglages de Next.js :
+[next.config.ts](../../apps/web/next.config.ts) contient les réglages de Next.js :
 
 ```ts
 const nextConfig: NextConfig = {
@@ -854,14 +854,14 @@ export default withNextIntl(nextConfig);
 
 ### tsconfig.json
 
-[tsconfig.json](../../../apps/web/tsconfig.json) étend la config partagée `@ft/tsconfig/nextjs.json` (qui règle `jsx: "preserve"` pour que Next compile le JSX lui-même, `moduleResolution: "bundler"`, `noEmit`, le plugin `next`, et les types du DOM). Il ajoute :
+[tsconfig.json](../../apps/web/tsconfig.json) étend la config partagée `@ft/tsconfig/nextjs.json` (qui règle `jsx: "preserve"` pour que Next compile le JSX lui-même, `moduleResolution: "bundler"`, `noEmit`, le plugin `next`, et les types du DOM). Il ajoute :
 
 - `paths: { "@/*": ["./*"] }` : l'alias `@/`. `import { Field } from '@/components/form'` veut dire `apps/web/components/form`, quelle que soit la profondeur du dossier.
 - `include` : tous les fichiers `.ts`, `.mts`, `.tsx`, `next-env.d.ts`, et `.next/types/**/*.ts` (les fichiers de routes typées que Next génère ; le commentaire explique pourquoi `.next` n'est pas exclu).
 
 ### postcss.config.mjs
 
-[postcss.config.mjs](../../../apps/web/postcss.config.mjs) a un seul plugin, l'intégration PostCSS de Tailwind 4 :
+[postcss.config.mjs](../../apps/web/postcss.config.mjs) a un seul plugin, l'intégration PostCSS de Tailwind 4 :
 
 ```js
 /** Tailwind 4 ships its PostCSS integration as a separate package. */
@@ -874,19 +874,19 @@ const config = {
 
 ### eslint.config.mjs
 
-[eslint.config.mjs](../../../apps/web/eslint.config.mjs) fait deux lignes : il ré-exporte la config partagée `@ft/eslint-config/next` ([packages/eslint-config/next.js](../../../packages/eslint-config/next.js)). Cette config partagée ajoute les règles « core web vitals » de Next.js et les règles des hooks React : `rules-of-hooks` (erreur : pas de hooks dans un `if` ou une boucle) et `exhaustive-deps` (avertissement : la liste de deps d'un effect doit nommer chaque valeur qu'il utilise). Elle ignore `.next/` et `next-env.d.ts`.
+[eslint.config.mjs](../../apps/web/eslint.config.mjs) fait deux lignes : il ré-exporte la config partagée `@ft/eslint-config/next` ([packages/eslint-config/next.js](../../packages/eslint-config/next.js)). Cette config partagée ajoute les règles « core web vitals » de Next.js et les règles des hooks React : `rules-of-hooks` (erreur : pas de hooks dans un `if` ou une boucle) et `exhaustive-deps` (avertissement : la liste de deps d'un effect doit nommer chaque valeur qu'il utilise). Elle ignore `.next/` et `next-env.d.ts`.
 
 ### vitest.config.mts
 
-[vitest.config.mts](../../../apps/web/vitest.config.mts) configure Vitest, le lanceur de tests. En bref : les tests tournent dans un environnement Node (pas de DOM de navigateur ; les components sont testés avec `renderToStaticMarkup`), les fichiers de test sont `lib/**/*.test.ts` et `components/**/*.test.tsx`, l'alias `@` est copié depuis tsconfig, le JSX est compilé pour les tests, et la couverture mesure seulement `lib/`, avec un minimum de 60 % des lignes et des fonctions. Le chapitre 9 couvre les tests.
+[vitest.config.mts](../../apps/web/vitest.config.mts) configure Vitest, le lanceur de tests. En bref : les tests tournent dans un environnement Node (pas de DOM de navigateur ; les components sont testés avec `renderToStaticMarkup`), les fichiers de test sont `lib/**/*.test.ts` et `components/**/*.test.tsx`, l'alias `@` est copié depuis tsconfig, le JSX est compilé pour les tests, et la couverture mesure seulement `lib/`, avec un minimum de 60 % des lignes et des fonctions. Le chapitre 9 couvre les tests.
 
 ### next-env.d.ts
 
-[next-env.d.ts](../../../apps/web/next-env.d.ts) est généré par Next.js. Il charge les types globaux de Next (par exemple pour que `import logo from './x.webp'` passe la vérification de types) et les types de routes générés. Ne le modifie pas ; le fichier le dit lui-même.
+[next-env.d.ts](../../apps/web/next-env.d.ts) est généré par Next.js. Il charge les types globaux de Next (par exemple pour que `import logo from './x.webp'` passe la vérification de types) et les types de routes générés. Ne le modifie pas ; le fichier le dit lui-même.
 
 ### Dockerfile
 
-Le [Dockerfile](../../../apps/web/Dockerfile) construit le container web. Son contexte de build est la **racine du repository** (`docker build -f apps/web/Dockerfile --target prod .`), parce que pnpm a besoin du lockfile et du manifeste de chaque workspace. Il a plusieurs **stages** (étapes ; un stage est une étape du build, qui peut réutiliser une étape précédente) :
+Le [Dockerfile](../../apps/web/Dockerfile) construit le container web. Son contexte de build est la **racine du repository** (`docker build -f apps/web/Dockerfile --target prod .`), parce que pnpm a besoin du lockfile et du manifeste de chaque workspace. Il a plusieurs **stages** (étapes ; un stage est une étape du build, qui peut réutiliser une étape précédente) :
 
 ```mermaid
 flowchart LR
@@ -910,8 +910,8 @@ flowchart LR
 
 Les deux listent ce que Docker ne doit pas copier dans le build (`node_modules`, `.next`, `coverage`, `.env`, `.git`, `docs`...). Un seul est vraiment utilisé :
 
-- [Dockerfile.dockerignore](../../../apps/web/Dockerfile.dockerignore) est celui qui s'applique : BuildKit lit d'abord `<dockerfile name>.dockerignore` à côté du Dockerfile. Il est obligatoire : sans `**/node_modules`, le `COPY . .` des stages `ci` et `build` écraserait les packages tout juste installés avec ceux de la machine hôte.
-- [.dockerignore](../../../apps/web/.dockerignore) est une copie de référence avec les mêmes règles, pour les gens qui lisent le dossier. Docker ne le lit jamais, parce que le contexte est la racine du repo. Les deux doivent rester synchronisés.
+- [Dockerfile.dockerignore](../../apps/web/Dockerfile.dockerignore) est celui qui s'applique : BuildKit lit d'abord `<dockerfile name>.dockerignore` à côté du Dockerfile. Il est obligatoire : sans `**/node_modules`, le `COPY . .` des stages `ci` et `build` écraserait les packages tout juste installés avec ceux de la machine hôte.
+- [.dockerignore](../../apps/web/.dockerignore) est une copie de référence avec les mêmes règles, pour les gens qui lisent le dossier. Docker ne le lit jamais, parce que le contexte est la racine du repo. Les deux doivent rester synchronisés.
 
 ---
 

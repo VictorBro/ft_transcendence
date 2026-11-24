@@ -197,7 +197,7 @@ les chapitres 5, 7 et 8).
 
 ## gateway/gateway.module.ts
 
-[gateway.module.ts](../../../apps/api/src/gateway/gateway.module.ts) est minuscule :
+[gateway.module.ts](../../apps/api/src/gateway/gateway.module.ts) est minuscule :
 
 ```ts
 /**
@@ -220,7 +220,7 @@ export class GatewayModule {}
 
 ## gateway/session-io.adapter.ts
 
-[session-io.adapter.ts](../../../apps/api/src/gateway/session-io.adapter.ts) est la pièce qui
+[session-io.adapter.ts](../../apps/api/src/gateway/session-io.adapter.ts) est la pièce qui
 permet au socket de réutiliser le cookie de login.
 
 ```ts
@@ -253,7 +253,7 @@ export class SessionIoAdapter extends IoAdapter {
   passage, `socket.request.session` contient la session, exactement comme `req.session` dans un
   controller HTTP.
 
-Qui l'appelle ? [app.setup.ts](../../../apps/api/src/app.setup.ts) (Chapitre 2), juste après avoir
+Qui l'appelle ? [app.setup.ts](../../apps/api/src/app.setup.ts) (Chapitre 2), juste après avoir
 construit le middleware de session :
 
 ```ts
@@ -265,7 +265,7 @@ app.useWebSocketAdapter(new SessionIoAdapter(app, sessionMiddleware));
 
 ## gateway/socket.gateway.ts
 
-[socket.gateway.ts](../../../apps/api/src/gateway/socket.gateway.ts) est le plus gros fichier de ce
+[socket.gateway.ts](../../apps/api/src/gateway/socket.gateway.ts) est le plus gros fichier de ce
 chapitre. Il fait cinq choses :
 
 1. Il fixe les options du serveur (chemin, transport, limite de taille).
@@ -572,14 +572,14 @@ Les sessions dans Redis ont une durée de vie. Quand une session expire, personn
 donc ses sockets resteraient ouverts pour toujours. Chaque minute, la gateway regarde les ids de
 session des sockets ouverts et ferme ceux dont la clé a disparu.
 
-**Spec :** [socket.gateway.spec.ts](../../../apps/api/src/gateway/socket.gateway.spec.ts) teste
+**Spec :** [socket.gateway.spec.ts](../../apps/api/src/gateway/socket.gateway.spec.ts) teste
 `sameOrigin`, `fixedWindow`, chaque refus d'`authenticate`, la limite de débit et la validation
 dans `screen`, les messages de présence à la connexion / déconnexion, la photo des non-lus, et le
 balayage.
 
 ## gateway/sockets.service.ts
 
-[sockets.service.ts](../../../apps/api/src/gateway/sockets.service.ts) est la **seule porte** que
+[sockets.service.ts](../../apps/api/src/gateway/sockets.service.ts) est la **seule porte** que
 le reste de l'API utilise pour atteindre un navigateur.
 
 ```ts
@@ -628,13 +628,13 @@ export class SocketsService {
 - `closeSession` déconnecte tous les sockets de cette session. `true` veut dire « ferme aussi la
   connexion en dessous ».
 
-**Spec :** [sockets.service.spec.ts](../../../apps/api/src/gateway/sockets.service.spec.ts) vérifie
+**Spec :** [sockets.service.spec.ts](../../apps/api/src/gateway/sockets.service.spec.ts) vérifie
 que `toUser` émet seulement vers la room de l'utilisateur, ne fait rien avant `attach`, et que
 `closeSession` ne ferme que les sockets de cette session.
 
 ## gateway/socket-exception.filter.ts
 
-[socket-exception.filter.ts](../../../apps/api/src/gateway/socket-exception.filter.ts) est la
+[socket-exception.filter.ts](../../apps/api/src/gateway/socket-exception.filter.ts) est la
 version socket de l'`ErrorCodeFilter` du Chapitre 2.
 
 ```ts
@@ -669,18 +669,18 @@ que pour le HTTP. Quand un handler de socket lance une erreur, Nest émettrait p
 Donc les services peuvent lancer les mêmes `HttpException` pour le HTTP et pour les sockets.
 Chaque gateway le déclare avec `@UseFilters(SocketExceptionFilter)`.
 
-**Spec :** [socket-exception.filter.spec.ts](../../../apps/api/src/gateway/socket-exception.filter.spec.ts)
+**Spec :** [socket-exception.filter.spec.ts](../../apps/api/src/gateway/socket-exception.filter.spec.ts)
 vérifie les deux cas (exception avec code, erreur inconnue) avec et sans ack.
 
 ---
 
 ## presence/presence.module.ts et presence/presence.service.ts
 
-[presence.module.ts](../../../apps/api/src/presence/presence.module.ts) fournit et exporte
+[presence.module.ts](../../apps/api/src/presence/presence.module.ts) fournit et exporte
 `PresenceService`, et n'importe rien (Redis est global). C'est pour ça que `GatewayModule` et
 `FriendsModule` peuvent tous les deux l'importer sans boucle.
 
-[presence.service.ts](../../../apps/api/src/presence/presence.service.ts) garde, **dans Redis**,
+[presence.service.ts](../../apps/api/src/presence/presence.service.ts) garde, **dans Redis**,
 combien de sockets chaque utilisateur a ouverts, sous la clé `presence:<userId>`. Il ne fait que
 répondre aux questions ; prévenir les amis, c'est le travail de la gateway.
 
@@ -745,7 +745,7 @@ sequenceDiagram
 Ben ne voit jamais Anna « clignoter » hors ligne. Note le commentaire : le code suppose **une seule**
 instance de l'API (le nettoyage au démarrage effacerait les comptes des autres instances).
 
-**Spec :** [presence.service.spec.ts](../../../apps/api/src/presence/presence.service.spec.ts)
+**Spec :** [presence.service.spec.ts](../../apps/api/src/presence/presence.service.spec.ts)
 utilise de faux minuteurs pour vérifier la règle du premier socket, le délai de grâce, les
 rechargements, la remise à zéro des comptes négatifs, `isOnline`, et le nettoyage au démarrage.
 
@@ -753,7 +753,7 @@ rechargements, la remise à zéro des comptes négatifs, `isOnline`, et le netto
 
 ## friends/pair.ts
 
-[pair.ts](../../../apps/api/src/friends/pair.ts) fait trois lignes, mais il est utilisé partout
+[pair.ts](../../apps/api/src/friends/pair.ts) fait trois lignes, mais il est utilisé partout
 dans ce chapitre :
 
 ```ts
@@ -775,7 +775,7 @@ est la clé primaire de `Friendship` et de `Conversation`. Ça veut dire :
 
 ## friends/friend-ids.ts
 
-[friend-ids.ts](../../../apps/api/src/friends/friend-ids.ts) contient deux fonctions simples (pas
+[friend-ids.ts](../../apps/api/src/friends/friend-ids.ts) contient deux fonctions simples (pas
 des méthodes de service) :
 
 ```ts
@@ -807,20 +807,20 @@ paramètre évite ça.
 
 ## friends/friends.module.ts
 
-[friends.module.ts](../../../apps/api/src/friends/friends.module.ts) enregistre
+[friends.module.ts](../../apps/api/src/friends/friends.module.ts) enregistre
 `FriendsController` et `FriendsService`, et importe `GatewayModule` (pour `SocketsService`) et
 `PresenceModule` (pour `isOnline`).
 
 ## friends/friends.dto.ts
 
-[friends.dto.ts](../../../apps/api/src/friends/friends.dto.ts) transforme deux schemas Zod de
+[friends.dto.ts](../../apps/api/src/friends/friends.dto.ts) transforme deux schemas Zod de
 `@ft/shared` en classes avec `createZodDto`. Ils servent seulement à **documenter les réponses**
 dans Swagger (`/api/docs`) ; aucun body de requête n'est validé ici, parce que chaque route friends
 ne prend qu'un id d'utilisateur dans le chemin.
 
 ## friends/friends.controller.ts
 
-[friends.controller.ts](../../../apps/api/src/friends/friends.controller.ts) définit cinq routes
+[friends.controller.ts](../../apps/api/src/friends/friends.controller.ts) définit cinq routes
 sous `/api/friends`. Toutes demandent une session (l'`AuthGuard` global, Chapitre 5). L'autre
 utilisateur est toujours dans le chemin, vérifié par `UserIdParam` (Chapitre 2).
 
@@ -843,7 +843,7 @@ La route d'envoi a sa propre limite de débit, plus stricte :
 
 ## friends/friends.service.ts
 
-[friends.service.ts](../../../apps/api/src/friends/friends.service.ts) contient les règles.
+[friends.service.ts](../../apps/api/src/friends/friends.service.ts) contient les règles.
 
 ### Le cycle de vie d'une demande d'ami
 
@@ -961,7 +961,7 @@ L'événement ne porte que l'id de l'**autre** utilisateur. Il veut dire « ta l
 relis-la avec `GET /api/friends` ». Il y a une seule source de vérité (la route HTTP), et le
 socket dit seulement « regarde à nouveau ».
 
-**Spec :** [friends.service.spec.ts](../../../apps/api/src/friends/friends.service.spec.ts) teste
+**Spec :** [friends.service.spec.ts](../../apps/api/src/friends/friends.service.spec.ts) teste
 `pairKey`, l'envoi (à soi-même, nouvelle demande, la course, un compte supprimé), les suppressions
 conditionnelles, et le tri et l'indicateur `online` de `list`.
 
@@ -969,21 +969,21 @@ conditionnelles, et le tri et l'indicateur `online` de `list`.
 
 ## messages/messages.module.ts
 
-[messages.module.ts](../../../apps/api/src/messages/messages.module.ts) enregistre
+[messages.module.ts](../../apps/api/src/messages/messages.module.ts) enregistre
 `MessagesController`, `MessagesService` et `MessagesGateway`, et importe `GatewayModule` pour
 `SocketsService`. Le stockage du throttler qu'il injecte vient du `ThrottlerModule` global
 (Chapitre 3).
 
 ## messages/messages.dto.ts
 
-[messages.dto.ts](../../../apps/api/src/messages/messages.dto.ts) :
+[messages.dto.ts](../../apps/api/src/messages/messages.dto.ts) :
 
 - `MessagePageQueryDto` — **valide** la query string `?cursor=...` avant que le controller la voie.
 - `ConversationsDto`, `MessagePageDto` — documentent seulement les réponses dans Swagger.
 
 ## messages/messages.controller.ts
 
-[messages.controller.ts](../../../apps/api/src/messages/messages.controller.ts) est en **lecture
+[messages.controller.ts](../../apps/api/src/messages/messages.controller.ts) est en **lecture
 seule** :
 
 ```ts
@@ -1001,7 +1001,7 @@ export class MessagesController {
 
 ## messages/messages.gateway.ts
 
-[messages.gateway.ts](../../../apps/api/src/messages/messages.gateway.ts) est la deuxième gateway.
+[messages.gateway.ts](../../apps/api/src/messages/messages.gateway.ts) est la deuxième gateway.
 Elle utilise les mêmes `GATEWAY_OPTIONS`, donc elle vit sur le même serveur et le même chemin `/ws`
 que `SocketGateway`.
 
@@ -1040,7 +1040,7 @@ export class MessagesGateway {
 
 ## messages/messages.service.ts
 
-[messages.service.ts](../../../apps/api/src/messages/messages.service.ts) a quatre méthodes
+[messages.service.ts](../../apps/api/src/messages/messages.service.ts) a quatre méthodes
 publiques.
 
 ### Des limites de débit partagées par tous les sockets
@@ -1161,14 +1161,14 @@ chacune par l'**autre** utilisateur, et ajoute son compteur de non-lus depuis `u
   du plus ancien au plus récent, comme un chat.
 - Pas besoin d'amitié : l'historique reste lisible après avoir retiré un ami.
 
-**Spec :** [messages.service.spec.ts](../../../apps/api/src/messages/messages.service.spec.ts)
+**Spec :** [messages.service.spec.ts](../../apps/api/src/messages/messages.service.spec.ts)
 teste la transaction et son horodatage unique, les deux événements `dm:message`, le fait que l'ack
 n'attend pas le compteur de non-lus, les limites par compte, `read`, la pagination, et
 `conversations`.
 
 ## messages/unread.ts
 
-[unread.ts](../../../apps/api/src/messages/unread.ts) compte ce que tu n'as pas lu :
+[unread.ts](../../apps/api/src/messages/unread.ts) compte ce que tu n'as pas lu :
 
 ```ts
 export async function unreadCounts(prisma: PrismaService, me: string): Promise<DmUnread> {
@@ -1198,7 +1198,7 @@ export async function unreadCounts(prisma: PrismaService, me: string): Promise<D
 - C'est une fonction, comme `friend-ids.ts`, parce que la gateway (qui l'envoie à la connexion) ne
   peut pas importer `MessagesModule`.
 
-**Spec :** [unread.spec.ts](../../../apps/api/src/messages/unread.spec.ts) vérifie la requête, que
+**Spec :** [unread.spec.ts](../../apps/api/src/messages/unread.spec.ts) vérifie la requête, que
 les conversations vides ne sont pas incluses, et que `at` est pris avant le comptage.
 
 ### Le flux complet : Anna envoie un message à Ben
@@ -1241,7 +1241,7 @@ sequenceDiagram
 
 ## Tous les événements du socket
 
-Les noms vivent dans [packages/shared/src/events/socket.ts](../../../packages/shared/src/events/socket.ts),
+Les noms vivent dans [packages/shared/src/events/socket.ts](../../packages/shared/src/events/socket.ts),
 avec un schema Zod pour chaque payload. Le navigateur et l'API importent le même fichier.
 
 | Événement         | Sens                       | Payload                  | Envoyé par                                 | Signification                                                                               |
@@ -1291,7 +1291,7 @@ apps/api/src/demo/demo.planner.spec.ts → unit tests of the planner and clock
 ```
 
 `prisma.config.ts` définit aussi `seed: 'pnpm db:seed'`, donc Prisma le lance après
-`prisma migrate reset`. Extrait de [seed.ts](../../../apps/api/prisma/seed.ts) :
+`prisma migrate reset`. Extrait de [seed.ts](../../apps/api/prisma/seed.ts) :
 
 ```ts
     .then(async () => {
@@ -1342,7 +1342,7 @@ flowchart LR
 
 ### demo/demo.data.ts
 
-[demo.data.ts](../../../apps/api/src/demo/demo.data.ts) ne contient que des données : les six
+[demo.data.ts](../../apps/api/src/demo/demo.data.ts) ne contient que des données : les six
 profils et ce que chacun montre.
 
 | Apprenant | Fuseau horaire   | Ce que montrent les pages en français A1                                                                                                      |
@@ -1366,7 +1366,7 @@ Il exporte aussi `demoEmail(name)` → `demo-<name>@example.com`, `demoDisplayNa
 
 ### demo/demo.clock.ts
 
-[demo.clock.ts](../../../apps/api/src/demo/demo.clock.ts) est « le temps et le hasard » de la démo.
+[demo.clock.ts](../../apps/api/src/demo/demo.clock.ts) est « le temps et le hasard » de la démo.
 Toutes les fonctions sont **pures** (pas de base de données, même entrée → même sortie) :
 
 - `daysBefore(day, count)` — le jour du calendrier `count` jours plus tôt (utilise `previousDay` des
@@ -1385,7 +1385,7 @@ Résultat : deux seeds le même jour écrivent les mêmes lignes.
 
 ### demo/demo.planner.ts
 
-[demo.planner.ts](../../../apps/api/src/demo/demo.planner.ts) transforme un `DemoCourse` en une
+[demo.planner.ts](../../apps/api/src/demo/demo.planner.ts) transforme un `DemoCourse` en une
 liste de jours à rejouer, du plus ancien au plus récent, aujourd'hui en dernier :
 
 ```ts
@@ -1413,7 +1413,7 @@ apprenant qui suit la page du jour.
 
 ### demo/demo.ts
 
-[demo.ts](../../../apps/api/src/demo/demo.ts) lance le replay. Il exporte :
+[demo.ts](../../apps/api/src/demo/demo.ts) lance le replay. Il exporte :
 
 - `seedDemo(prisma, { runNow, password })` — construit les services **à la main** (le seed tourne
   en dehors de Nest, donc pas d'injection de dépendances), supprime tous les anciens utilisateurs de
@@ -1445,10 +1445,10 @@ non attaché n'envoie simplement rien.
 Le fichier est dans `src/` exprès : si un service reçoit un nouvel argument de constructeur, la
 vérification TypeScript échoue ici, et pas seulement quand quelqu'un lance le seed.
 
-**Specs :** [demo.planner.spec.ts](../../../apps/api/src/demo/demo.planner.spec.ts) teste
+**Specs :** [demo.planner.spec.ts](../../apps/api/src/demo/demo.planner.spec.ts) teste
 `atLocalTime`, `daysBefore`, `pastScore`, `planCourse` (fuseaux horaires, leçons finies à 19:00,
 répartition du jour, même plan au deuxième lancement, changements de niveau), `daysToAttemptAll`,
-et les profils eux-mêmes. [demo.e2e-spec.ts](../../../apps/api/test/demo.e2e-spec.ts) rejoue les
+et les profils eux-mêmes. [demo.e2e-spec.ts](../../apps/api/test/demo.e2e-spec.ts) rejoue les
 profils de ben et chloe contre un vrai Postgres avec des emails `replay-<stamp>` (voir
 [10-tests.md](10-tests.md)).
 

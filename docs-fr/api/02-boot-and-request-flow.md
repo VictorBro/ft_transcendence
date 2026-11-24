@@ -35,13 +35,13 @@ flowchart TD
 
 Les fichiers de ce chapitre :
 
-| Fichier                                                            | Rôle                                                                                        |
-| ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------- |
-| [main.ts](../../../apps/api/src/main.ts)                           | Le vrai point d'entrée. Démarre tout.                                                       |
-| [app.setup.ts](../../../apps/api/src/app.setup.ts)                 | `configureApp` : toutes les règles globales du pipeline de requête.                         |
-| [app.module.ts](../../../apps/api/src/app.module.ts)               | Le module racine : liste tous les autres modules.                                           |
-| [validation.pipe.ts](../../../apps/api/src/validation.pipe.ts)     | Vérifie les bodies et les paramètres des requêtes avec Zod, répond avec des codes d'erreur. |
-| [error-code.filter.ts](../../../apps/api/src/error-code.filter.ts) | Le dernier filet de sécurité : chaque réponse d'erreur porte un code d'erreur.              |
+| Fichier                                                         | Rôle                                                                                        |
+| --------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| [main.ts](../../apps/api/src/main.ts)                           | Le vrai point d'entrée. Démarre tout.                                                       |
+| [app.setup.ts](../../apps/api/src/app.setup.ts)                 | `configureApp` : toutes les règles globales du pipeline de requête.                         |
+| [app.module.ts](../../apps/api/src/app.module.ts)               | Le module racine : liste tous les autres modules.                                           |
+| [validation.pipe.ts](../../apps/api/src/validation.pipe.ts)     | Vérifie les bodies et les paramètres des requêtes avec Zod, répond avec des codes d'erreur. |
+| [error-code.filter.ts](../../apps/api/src/error-code.filter.ts) | Le dernier filet de sécurité : chaque réponse d'erreur porte un code d'erreur.              |
 
 Deux mots très utilisés dans ce chapitre :
 
@@ -87,7 +87,7 @@ Ligne par ligne :
 
 ## app.setup.ts — le règlement de la maison
 
-[app.setup.ts](../../../apps/api/src/app.setup.ts) exporte des constantes et une fonction, `configureApp`.
+[app.setup.ts](../../apps/api/src/app.setup.ts) exporte des constantes et une fonction, `configureApp`.
 
 ### Pourquoi un fichier séparé ?
 
@@ -249,7 +249,7 @@ Le code de login (dans [05-auth-and-users.md](05-auth-and-users.md)) écrit `req
 app.useWebSocketAdapter(new SessionIoAdapter(app, sessionMiddleware));
 ```
 
-Les fonctionnalités temps réel (chat, présence) utilisent Socket.IO sur `/ws`. Ces connexions ne passent pas par les middlewares Express. [SessionIoAdapter](../../../apps/api/src/gateway/session-io.adapter.ts) donne le _même_ objet `sessionMiddleware` au moteur de Socket.IO (`server.engine.use(this.session)`), pour qu'un socket sache qui est connecté avec le même cookie. Il doit être défini avant `init()`, parce que c'est là que les gateways démarrent. Plus de détails dans [09-social-and-realtime.md](09-social-and-realtime.md).
+Les fonctionnalités temps réel (chat, présence) utilisent Socket.IO sur `/ws`. Ces connexions ne passent pas par les middlewares Express. [SessionIoAdapter](../../apps/api/src/gateway/session-io.adapter.ts) donne le _même_ objet `sessionMiddleware` au moteur de Socket.IO (`server.engine.use(this.session)`), pour qu'un socket sache qui est connecté avec le même cookie. Il doit être défini avant `init()`, parce que c'est là que les gateways démarrent. Plus de détails dans [09-social-and-realtime.md](09-social-and-realtime.md).
 
 ### Étape 8 — Swagger (la page de documentation de l'API)
 
@@ -295,7 +295,7 @@ Les avatars sont servis avant le middleware de session, donc charger une image n
 
 ## app.module.ts — le module racine
 
-[app.module.ts](../../../apps/api/src/app.module.ts) est le module donné à `NestFactory.create`. Il n'a pas de code à lui ; il liste des modules.
+[app.module.ts](../../apps/api/src/app.module.ts) est le module donné à `NestFactory.create`. Il n'a pas de code à lui ; il liste des modules.
 
 ```ts
 @Module({
@@ -357,7 +357,7 @@ Pourquoi enregistrer les guards avec `APP_GUARD` et pas avec `app.useGlobalGuard
 
 ## validation.pipe.ts — vérifier l'entrée avec Zod
 
-[validation.pipe.ts](../../../apps/api/src/validation.pipe.ts) exporte trois choses : `CodeValidationPipe` (une classe), et deux instances prêtes à l'emploi, `LangParam` et `UserIdParam`.
+[validation.pipe.ts](../../apps/api/src/validation.pipe.ts) exporte trois choses : `CodeValidationPipe` (une classe), et deux instances prêtes à l'emploi, `LangParam` et `UserIdParam`.
 
 ### Théorie : c'est quoi la validation ?
 
@@ -454,7 +454,7 @@ Un paramètre d'URL comme `:lang` n'a pas de classe DTO, donc le pipe est créé
 
 ## ERROR_CODES — la liste partagée
 
-[errors.ts](../../../packages/shared/src/schemas/errors.ts) dans `@ft/shared` contient la liste de tous les codes :
+[errors.ts](../../packages/shared/src/schemas/errors.ts) dans `@ft/shared` contient la liste de tous les codes :
 
 ```ts
 export const ERROR_CODES = [
@@ -482,7 +482,7 @@ export function isErrorCode(value: string): value is ErrorCode {
 
 ## error-code.filter.ts — le dernier filet de sécurité
 
-[error-code.filter.ts](../../../apps/api/src/error-code.filter.ts) exporte `ErrorCodeFilter`.
+[error-code.filter.ts](../../apps/api/src/error-code.filter.ts) exporte `ErrorCodeFilter`.
 
 ### Théorie : les exception filters
 
@@ -559,7 +559,7 @@ Content-Type: application/json
 { "email": "ana@example.com", "password": "Secret123" }
 ```
 
-La route dans [auth.controller.ts](../../../apps/api/src/auth/auth.controller.ts) :
+La route dans [auth.controller.ts](../../apps/api/src/auth/auth.controller.ts) :
 
 ```ts
   @Public()

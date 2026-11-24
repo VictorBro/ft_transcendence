@@ -67,7 +67,7 @@ Quelques tables de la base de données reviennent partout dans ce chapitre (voir
 
 ## lessons.module.ts
 
-[lessons.module.ts](../../../apps/api/src/lessons/lessons.module.ts) assemble le module.
+[lessons.module.ts](../../apps/api/src/lessons/lessons.module.ts) assemble le module.
 
 ```ts
 @Module({
@@ -83,12 +83,12 @@ export class LessonsModule {}
 - `GatewayModule` donne `SocketsService` : après une tentative finie, l'API dit aux autres onglets de l'utilisateur
   « ton cours a changé » (voir [09-social-and-realtime.md](09-social-and-realtime.md)).
 - `LlmModule` donne le provider IA pour le tuteur (voir [06-llm.md](06-llm.md)).
-- `LessonsService` est exporté. Le code de démo ([../../apps/api/src/demo/demo.ts](../../../apps/api/src/demo/demo.ts))
+- `LessonsService` est exporté. Le code de démo ([../../apps/api/src/demo/demo.ts](../../apps/api/src/demo/demo.ts))
   l'utilise pour rejouer des leçons finies. `AppModule` importe ce module.
 
 ## lessons.dto.ts
 
-[lessons.dto.ts](../../../apps/api/src/lessons/lessons.dto.ts) transforme des schémas Zod partagés en classes. Un
+[lessons.dto.ts](../../apps/api/src/lessons/lessons.dto.ts) transforme des schémas Zod partagés en classes. Un
 **DTO** (Data Transfer Object, objet de transfert de données) est la forme des données qui entrent ou qui sortent.
 Les schémas vivent dans `@ft/shared`, donc l'app web utilise les mêmes formes. Nest et Swagger ont besoin d'une
 classe, et `createZodDto` en fabrique une.
@@ -118,7 +118,7 @@ Les DTO d'« entrée » sont vérifiés par le pipe de validation global (chapit
 
 ## lessons.controller.ts — les routes de lecture
 
-[lessons.controller.ts](../../../apps/api/src/lessons/lessons.controller.ts) est le serveur au restaurant : il
+[lessons.controller.ts](../../apps/api/src/lessons/lessons.controller.ts) est le serveur au restaurant : il
 prend la commande et la passe à la cuisine (`LessonsService`). Chaque route tient en une ligne. Toutes les routes
 commencent par `courses/:lang`, et `LangParam` vérifie que `:lang` est une langue qu'on peut apprendre.
 
@@ -150,7 +150,7 @@ voir.
 
 ## course-lookup.ts — les vérifications partagées
 
-Avant le service, regarde [course-lookup.ts](../../../apps/api/src/lessons/course-lookup.ts), car chaque route
+Avant le service, regarde [course-lookup.ts](../../apps/api/src/lessons/course-lookup.ts), car chaque route
 l'utilise. Il garde les vérifications du cours et de la leçon au même endroit, donc le même cas donne toujours la
 même erreur. Ce sont de simples fonctions (pas un service), donc du code dans une transaction peut les appeler avec
 son propre `tx`.
@@ -178,12 +178,12 @@ a un niveau qui n'est pas `null`.
 langue donne aussi la même 404. Avec `readyOnly`, une leçon qui n'est pas prête (pas encore de fichiers) est aussi
 une 404. Appelle-la toujours après `checkCourse` : sans cours, la réponse doit être `course.notFound`.
 
-_Spec :_ [course-lookup.spec.ts](../../../apps/api/src/lessons/course-lookup.spec.ts) vérifie les cas 404/409 et
+_Spec :_ [course-lookup.spec.ts](../../apps/api/src/lessons/course-lookup.spec.ts) vérifie les cas 404/409 et
 qu'un mauvais id n'atteint jamais la base de données.
 
 ## lessons.service.ts — la liste, une carte, aujourd'hui, les succès
 
-[lessons.service.ts](../../../apps/api/src/lessons/lessons.service.ts) lit les données, les transforme dans les
+[lessons.service.ts](../../apps/api/src/lessons/lessons.service.ts) lit les données, les transforme dans les
 types que veulent les règles, appelle les règles, et parse la réponse avec son schéma partagé.
 
 ### Les selects et les petites fonctions d'aide
@@ -296,7 +296,7 @@ garantit qu'un `brief` ne sort jamais.
 
 ## lesson-search.ts — la recherche avancée
 
-[lesson-search.ts](../../../apps/api/src/lessons/lesson-search.ts) fait la recherche de la page « toutes les
+[lesson-search.ts](../../apps/api/src/lessons/lesson-search.ts) fait la recherche de la page « toutes les
 leçons », en mémoire, en trois étapes : **garder, trier, couper**.
 
 ```mermaid
@@ -371,13 +371,13 @@ const start = (page - 1) * LESSONS_PAGE_SIZE;
 `LESSONS_PAGE_SIZE` vaut 20. Demander la page 99 donne la dernière page, pas une page vide. Aucun résultat donne la
 page 1 avec une liste vide. `total` est le nombre sur toutes les pages.
 
-_Spec :_ [lesson-search.spec.ts](../../../apps/api/src/lessons/lesson-search.spec.ts) vérifie la recherche de texte
+_Spec :_ [lesson-search.spec.ts](../../apps/api/src/lessons/lesson-search.spec.ts) vérifie la recherche de texte
 (accents, `ae/oe/ue` en allemand, `cœur` en français), chaque filtre, chaque tri avec les nulls à la fin, et chaque
 groupe.
 
 ## roadmap.rules.ts — objectif du jour, file d'attente, streak, progression du niveau
 
-[roadmap.rules.ts](../../../apps/api/src/lessons/roadmap.rules.ts) contient toutes les règles de l'objectif du
+[roadmap.rules.ts](../../apps/api/src/lessons/roadmap.rules.ts) contient toutes les règles de l'objectif du
 jour, de la streak et de la fin d'un niveau. C'est pur : l'appelant donne `now` et `timeZone`.
 
 Les constantes viennent de `@ft/shared` :
@@ -441,13 +441,13 @@ repartir à 1.
 `localDay` fixe la locale à `'en'` et utilise `formatToParts`, car certaines locales (comme `fa-IR`) utilisent un
 autre calendrier et donneraient une autre date.
 
-_Spec :_ [roadmap.rules.spec.ts](../../../apps/api/src/lessons/roadmap.rules.spec.ts) est la plus grosse spec : elle
+_Spec :_ [roadmap.rules.spec.ts](../../apps/api/src/lessons/roadmap.rules.spec.ts) est la plus grosse spec : elle
 vérifie chaque règle avec beaucoup d'histoires jour après jour (un changement de niveau à midi, des révisions qui
 tournent, les 80 % arrondis au-dessus, etc.).
 
 ## goal.ts — le verrou et les écritures de l'objectif du jour
 
-[goal.ts](../../../apps/api/src/lessons/goal.ts) contient les écritures sur le jour d'un cours. Ce sont de simples
+[goal.ts](../../apps/api/src/lessons/goal.ts) contient les écritures sur le jour d'un cours. Ce sont de simples
 fonctions, donc `applyFinish` ici et `setGoal` dans `courses.service.ts` (chapitre 7) les appellent avec leur propre
 `tx`, et les deux modules ne s'importent jamais l'un l'autre. `users.service.ts` lit aussi `currentDay` et
 `storedStreak`.
@@ -479,7 +479,7 @@ elle garde ses types.
 `meetGoal` compte les résultats du jour (une ligne par leçon), et renvoie un `GoalOutcome` :
 `{ justMet, doneCount, streak, bestStreak }`. `justMet` est vrai seulement quand cet appel a validé le jour.
 
-_Spec :_ [goal.spec.ts](../../../apps/api/src/lessons/goal.spec.ts) vérifie la requête du verrou, qu'un jour n'est
+_Spec :_ [goal.spec.ts](../../apps/api/src/lessons/goal.spec.ts) vérifie la requête du verrou, qu'un jour n'est
 jamais validé deux fois, et que `lastGoalDay` ne recule jamais.
 
 ## La tentative de leçon
@@ -505,7 +505,7 @@ Le plan n'est **jamais enregistré**. Il est reconstruit à partir de la ligne d
 
 ### attempts.controller.ts
 
-[attempts.controller.ts](../../../apps/api/src/lessons/attempts.controller.ts) a le préfixe
+[attempts.controller.ts](../../apps/api/src/lessons/attempts.controller.ts) a le préfixe
 `courses/:lang/lessons/:id/attempt`. Aucune route ne prend de score : c'est le serveur qui le calcule.
 
 | Route                         | Body                     | Réponse                                                                   |
@@ -530,7 +530,7 @@ même 409 `attempt.stale`.
 
 ### attempt-ref.ts — cacher les ids internes
 
-[attempt-ref.ts](../../../apps/api/src/lessons/attempt-ref.ts) fabrique les « refs » que voit le navigateur. Chaque
+[attempt-ref.ts](../../apps/api/src/lessons/attempt-ref.ts) fabrique les « refs » que voit le navigateur. Chaque
 tentative reçoit un secret de 32 octets aléatoires (enregistré, jamais envoyé). Une ref est un HMAC d'un chemin
 interne avec ce secret :
 
@@ -549,12 +549,12 @@ reconstruites à chaque requête), le navigateur ne peut pas voir quelle option 
 une ref d'une autre tentative est inconnue. Le navigateur répond avec des refs, et la fonction partagée
 `readAnswers` les retransforme en ids. Une ref inconnue fait refuser toute la page.
 
-_Spec :_ [attempt-ref.spec.ts](../../../apps/api/src/lessons/attempt-ref.spec.ts) vérifie la forme de la ref, et
+_Spec :_ [attempt-ref.spec.ts](../../apps/api/src/lessons/attempt-ref.spec.ts) vérifie la forme de la ref, et
 qu'elle est stable pour un secret et différente pour un autre.
 
 ### attempts.service.ts
 
-[attempts.service.ts](../../../apps/api/src/lessons/attempts.service.ts) gère chaque tentative.
+[attempts.service.ts](../../apps/api/src/lessons/attempts.service.ts) gère chaque tentative.
 
 Les fonctions d'aide en haut du fichier :
 
@@ -687,8 +687,8 @@ sequenceDiagram
 
 ## gamification.rules.ts et gamification.ts — XP, défi, succès
 
-Même découpage que pour la roadmap : [gamification.rules.ts](../../../apps/api/src/lessons/gamification.rules.ts)
-est pur (il décide), [gamification.ts](../../../apps/api/src/lessons/gamification.ts) charge et écrit. Le mot est
+Même découpage que pour la roadmap : [gamification.rules.ts](../../apps/api/src/lessons/gamification.rules.ts)
+est pur (il décide), [gamification.ts](../../apps/api/src/lessons/gamification.ts) charge et écrit. Le mot est
 toujours **rank** (rang) pour l'XP, jamais « level », car « level » veut dire A1 à C2.
 
 ### Les règles de l'XP
@@ -788,7 +788,7 @@ qui valide le jour).
 
 Il renvoie `{ xpGained, challengeJustDone, newAchievements }`, qui rejoint le bloc de fin.
 
-_Spec :_ [gamification.rules.spec.ts](../../../apps/api/src/lessons/gamification.rules.spec.ts) vérifie les exemples
+_Spec :_ [gamification.rules.spec.ts](../../apps/api/src/lessons/gamification.rules.spec.ts) vérifie les exemples
 d'XP, les seuils des rangs, que les défis se répartissent sur 600 jours et ne choisissent jamais un type
 impossible, une valeur de hash fixée, `challengeMet`, `earned` et `progress`.
 
@@ -821,7 +821,7 @@ event: done
 data: {}
 ```
 
-[event-stream.ts](../../../apps/api/src/lessons/event-stream.ts) transforme une réponse Express en un stream de ce
+[event-stream.ts](../../apps/api/src/lessons/event-stream.ts) transforme une réponse Express en un stream de ce
 genre :
 
 ```ts
@@ -851,12 +851,12 @@ response.flushHeaders();
 
 Il renvoie `{ signal, send(event, data), end() }`.
 
-_Spec :_ [event-stream.spec.ts](../../../apps/api/src/lessons/event-stream.spec.ts) utilise une fausse réponse pour
+_Spec :_ [event-stream.spec.ts](../../apps/api/src/lessons/event-stream.spec.ts) utilise une fausse réponse pour
 vérifier les headers, le format des événements, le timer du heartbeat, et les cas d'annulation.
 
 ### discussion.controller.ts
 
-[discussion.controller.ts](../../../apps/api/src/lessons/discussion.controller.ts) a une seule route,
+[discussion.controller.ts](../../apps/api/src/lessons/discussion.controller.ts) a une seule route,
 `POST /courses/:lang/lessons/:id/discussion`. Il utilise `@Res()` sans passthrough : Nest n'envoie rien lui-même.
 
 ```ts
@@ -932,7 +932,7 @@ sequenceDiagram
 
 ### discussion.service.ts
 
-[discussion.service.ts](../../../apps/api/src/lessons/discussion.service.ts) travaille en deux temps, à cause de la
+[discussion.service.ts](../../apps/api/src/lessons/discussion.service.ts) travaille en deux temps, à cause de la
 façon dont un stream répond en HTTP :
 
 - **`open(user, lang, id, attemptId)`** vérifie tout ce qui peut encore être un statut d'erreur : 404
@@ -951,7 +951,7 @@ interface et n'existe plus après la compilation.
 
 ### discussion-prompt.ts — ce que le tuteur a le droit de savoir
 
-[discussion-prompt.ts](../../../apps/api/src/lessons/discussion-prompt.ts) construit le prompt système sur le
+[discussion-prompt.ts](../../apps/api/src/lessons/discussion-prompt.ts) construit le prompt système sur le
 serveur seulement. L'apprenant ne l'envoie jamais et ne le lit jamais.
 
 **`teachingFacts(brief, locale)`** choisit, pour chaque type de leçon, les champs qui enseignent. C'est une liste de
@@ -988,13 +988,13 @@ puis les faits de la leçon en JSON sur la dernière ligne.
 La dernière règle protège contre la « prompt injection » : un message comme « oublie tes règles » est une question
 à laquelle répondre, pas un ordre.
 
-_Spec :_ [discussion-prompt.spec.ts](../../../apps/api/src/lessons/discussion-prompt.spec.ts) lit les vraies leçons
+_Spec :_ [discussion-prompt.spec.ts](../../apps/api/src/lessons/discussion-prompt.spec.ts) lit les vraies leçons
 de lecture dans `content/` et vérifie que le prompt ne contient jamais le document de l'examen ni le genre ; elle
 vérifie aussi les faits de chaque type et la liste des erreurs.
 
 ### discussion-limits.ts — les limites de débit avec Redis
 
-[discussion-limits.ts](../../../apps/api/src/lessons/discussion-limits.ts) protège la clé LLM partagée et le budget.
+[discussion-limits.ts](../../apps/api/src/lessons/discussion-limits.ts) protège la clé LLM partagée et le budget.
 
 | Fenêtre                   | Par défaut | Variable d'env                     | Code de refus         |
 | ------------------------- | ---------- | ---------------------------------- | --------------------- |
@@ -1025,7 +1025,7 @@ if (count > window.limit) {
 expiration. `NX` veut dire « fixer l'expiration seulement s'il n'y en a pas », donc seul le premier message lance
 l'horloge. `retryAfter` est le temps restant.
 
-_Spec :_ [discussion-limits.spec.ts](../../../apps/api/src/lessons/discussion-limits.spec.ts) vérifie les valeurs
+_Spec :_ [discussion-limits.spec.ts](../../apps/api/src/lessons/discussion-limits.spec.ts) vérifie les valeurs
 par défaut, les valeurs lues dans l'env, et que `six`, `1.5` ou `-1` empêchent le démarrage.
 
 ## Les specs de contenu : vérifier le dossier `content/`
@@ -1034,12 +1034,12 @@ Quatre specs de ce dossier ne testent pas du code de l'API. Elles vérifient les
 écrit dans `content/` (et les scripts d'écriture dans `apps/api/scripts/lessons/`, chapitre 11). Elles tournent avec
 les autres tests unitaires, donc un mauvais fichier casse la CI.
 
-| Spec                                                                             | Ce qu'elle vérifie                                                                                                                                                                                                                                                                                                                 |
-| -------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [outline-files.spec.ts](../../../apps/api/src/lessons/outline-files.spec.ts)     | chaque `content/outlines/<lang>-<level>.json` : correspond au schéma de l'outline, porte le nom de sa langue et de son niveau, a le bon nombre de leçons et de chaque type, pas d'id réservé `<lang>-test-`, pas d'id ni de titre de travail utilisé deux fois dans une langue. Passe s'il n'y a aucun fichier                     |
-| [lesson-files.spec.ts](../../../apps/api/src/lessons/lesson-files.spec.ts)       | chaque `content/briefs/<id>.json` et `content/lessons/<id>.json` : a une entrée dans l'outline, passe `validateLesson` (la même vérification que le seed), pas de titre deux fois dans une langue, les consignes en français disent `tu`, et dans chaque niveau les leçons avec des fichiers sont les premières entrées, sans trou |
-| [lesson-complete.spec.ts](../../../apps/api/src/lessons/lesson-complete.spec.ts) | l'étape `complete` du kit d'écriture (`scripts/lessons/complete.ts`) : à partir d'un brouillon allégé, elle reconstruit une leçon valide avec les bonnes durées à la seconde près ; aussi `canonicalJson`                                                                                                                          |
-| [lesson-edits.spec.ts](../../../apps/api/src/lessons/lesson-edits.spec.ts)       | comment le kit lit la réponse d'un modèle : `applyEdits` (chemins avec des points, refuse `__proto__`), `parseReply`, `applyReply`, et comment les refus et les limites de débit sont réessayés                                                                                                                                    |
+| Spec                                                                          | Ce qu'elle vérifie                                                                                                                                                                                                                                                                                                                 |
+| ----------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [outline-files.spec.ts](../../apps/api/src/lessons/outline-files.spec.ts)     | chaque `content/outlines/<lang>-<level>.json` : correspond au schéma de l'outline, porte le nom de sa langue et de son niveau, a le bon nombre de leçons et de chaque type, pas d'id réservé `<lang>-test-`, pas d'id ni de titre de travail utilisé deux fois dans une langue. Passe s'il n'y a aucun fichier                     |
+| [lesson-files.spec.ts](../../apps/api/src/lessons/lesson-files.spec.ts)       | chaque `content/briefs/<id>.json` et `content/lessons/<id>.json` : a une entrée dans l'outline, passe `validateLesson` (la même vérification que le seed), pas de titre deux fois dans une langue, les consignes en français disent `tu`, et dans chaque niveau les leçons avec des fichiers sont les premières entrées, sans trou |
+| [lesson-complete.spec.ts](../../apps/api/src/lessons/lesson-complete.spec.ts) | l'étape `complete` du kit d'écriture (`scripts/lessons/complete.ts`) : à partir d'un brouillon allégé, elle reconstruit une leçon valide avec les bonnes durées à la seconde près ; aussi `canonicalJson`                                                                                                                          |
+| [lesson-edits.spec.ts](../../apps/api/src/lessons/lesson-edits.spec.ts)       | comment le kit lit la réponse d'un modèle : `applyEdits` (chemins avec des points, refuse `__proto__`), `parseReply`, `applyReply`, et comment les refus et les limites de débit sont réessayés                                                                                                                                    |
 
 La règle « sans trou » compte pour la roadmap : `plan` et `levelProgress` lisent seulement les leçons prêtes, donc
 les leçons prêtes doivent toujours être les premières par position.

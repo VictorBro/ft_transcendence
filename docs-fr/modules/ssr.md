@@ -12,7 +12,7 @@ Le module est une ligne du tableau Web de [../subject/summary.md](../subject/sum
 
 > | Minor | Server-Side Rendering (SSR) |
 
-Le PDF ([../subject/ft_transcendence.pdf](../../subject/ft_transcendence.pdf), chapitre IV, Web)
+Le PDF ([../subject/ft_transcendence.pdf](../../docs/subject/ft_transcendence.pdf), chapitre IV, Web)
 le formule ainsi :
 
 > Minor: Server-Side Rendering (SSR) for improved performance and SEO.
@@ -22,11 +22,11 @@ framework ([framework.md](framework.md)) : Next.js est l'outil qui fait le rendu
 
 ## Comment on y répond
 
-| Ce que demande le sujet         | Ce qu'on a construit                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | Où                                                                                                                                                                                                                                                                                                                      |
-| ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Rendu côté serveur              | Les 22 pages sont des server components Next.js : aucun `page.tsx` ne commence par `'use client'`. Les pages qui montrent des données les chargent sur le serveur, depuis NestJS, pendant leur rendu : la session, les cours, les leçons du jour, les amis, la liste des leçons. Le HTML qui sort du serveur contient déjà ces données. 16 des pages mettent `dynamic = 'force-dynamic'`, donc elles sont rendues de nouveau à chaque requête, pour l'utilisateur qui demande.                                    | [`apps/web/app/[locale]/`](../../../apps/web/app), [`lib/session.ts`](../../../apps/web/lib/session.ts), [`lib/api.ts`](../../../apps/web/lib/api.ts), [`lib/lessons.ts`](../../../apps/web/lib/lessons.ts), [`lib/friends.ts`](../../../apps/web/lib/friends.ts), [`lib/courses.ts`](../../../apps/web/lib/courses.ts) |
-| Pour de meilleures performances | Le premier HTML a déjà le contenu, donc le navigateur peut dessiner la page avant que du JavaScript tourne. Il n'a pas besoin d'appeler l'API lui-même avant de pouvoir montrer les données. Le serveur parle à NestJS par le réseau Docker interne. Seules les parties qui réagissent aux clics sont des client components, dans leurs propres fichiers. On n'a pas de mesure de performance à montrer ; voir [Limites et choix](#limites-et-choix).                                                             | [`lib/api.ts`](../../../apps/web/lib/api.ts) (`API_INTERNAL_URL`), [`lessons/page.tsx`](<../../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/page.tsx>)                                                                                                                                                     |
-| Pour un meilleur SEO            | Chaque page a un `<title>` fait sur le serveur, dans la langue de la page. 18 pages définissent le leur avec `generateMetadata` ; les autres reçoivent le nom du site depuis le layout racine. Le layout racine définit aussi la `description` du site et `<html lang>`. Les pages publiques (accueil, connexion, inscription, privacy, terms) sont du HTML complet pour un moteur de recherche. [`robots.txt`](../../../apps/web/public/robots.txt) autorise le site et laisse `/healthz` et `/grafana` de côté. | [`[locale]/layout.tsx`](../../../apps/web/app/[locale]/layout.tsx), [`privacy/page.tsx`](<../../../apps/web/app/[locale]/(main)/privacy/page.tsx>), [`apps/web/public/robots.txt`](../../../apps/web/public/robots.txt)                                                                                                 |
+| Ce que demande le sujet         | Ce qu'on a construit                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Où                                                                                                                                                                                                                                                                                                    |
+| ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Rendu côté serveur              | Les 22 pages sont des server components Next.js : aucun `page.tsx` ne commence par `'use client'`. Les pages qui montrent des données les chargent sur le serveur, depuis NestJS, pendant leur rendu : la session, les cours, les leçons du jour, les amis, la liste des leçons. Le HTML qui sort du serveur contient déjà ces données. 16 des pages mettent `dynamic = 'force-dynamic'`, donc elles sont rendues de nouveau à chaque requête, pour l'utilisateur qui demande.                                 | [`apps/web/app/[locale]/`](../../apps/web/app), [`lib/session.ts`](../../apps/web/lib/session.ts), [`lib/api.ts`](../../apps/web/lib/api.ts), [`lib/lessons.ts`](../../apps/web/lib/lessons.ts), [`lib/friends.ts`](../../apps/web/lib/friends.ts), [`lib/courses.ts`](../../apps/web/lib/courses.ts) |
+| Pour de meilleures performances | Le premier HTML a déjà le contenu, donc le navigateur peut dessiner la page avant que du JavaScript tourne. Il n'a pas besoin d'appeler l'API lui-même avant de pouvoir montrer les données. Le serveur parle à NestJS par le réseau Docker interne. Seules les parties qui réagissent aux clics sont des client components, dans leurs propres fichiers. On n'a pas de mesure de performance à montrer ; voir [Limites et choix](#limites-et-choix).                                                          | [`lib/api.ts`](../../apps/web/lib/api.ts) (`API_INTERNAL_URL`), [`lessons/page.tsx`](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/page.tsx>)                                                                                                                                         |
+| Pour un meilleur SEO            | Chaque page a un `<title>` fait sur le serveur, dans la langue de la page. 18 pages définissent le leur avec `generateMetadata` ; les autres reçoivent le nom du site depuis le layout racine. Le layout racine définit aussi la `description` du site et `<html lang>`. Les pages publiques (accueil, connexion, inscription, privacy, terms) sont du HTML complet pour un moteur de recherche. [`robots.txt`](../../apps/web/public/robots.txt) autorise le site et laisse `/healthz` et `/grafana` de côté. | [`[locale]/layout.tsx`](../../apps/web/app/[locale]/layout.tsx), [`privacy/page.tsx`](<../../apps/web/app/[locale]/(main)/privacy/page.tsx>), [`apps/web/public/robots.txt`](../../apps/web/public/robots.txt)                                                                                        |
 
 ## Comment ça marche
 
@@ -45,40 +45,40 @@ sequenceDiagram
 ```
 
 1. **La requête arrive chez Next.js.** Caddy envoie chaque chemin sauf `/api`, `/ws` et `/grafana` au
-   container `web` ([`infra/caddy/Caddyfile`](../../../infra/caddy/Caddyfile)).
-   [`proxy.ts`](../../../apps/web/proxy.ts) ajoute la langue à l'URL si elle manque.
+   container `web` ([`infra/caddy/Caddyfile`](../../infra/caddy/Caddyfile)).
+   [`proxy.ts`](../../apps/web/proxy.ts) ajoute la langue à l'URL si elle manque.
 2. **Le layout et la page tournent sur le serveur.** Ce sont des server components `async`. Le
-   layout racine [`[locale]/layout.tsx`](../../../apps/web/app/[locale]/layout.tsx) vérifie la
+   layout racine [`[locale]/layout.tsx`](../../apps/web/app/[locale]/layout.tsx) vérifie la
    langue et charge le catalogue de textes. Une page demande ensuite ses données. Par exemple, la
    page de toutes les leçons
-   [`lessons/page.tsx`](<../../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/page.tsx>)
+   [`lessons/page.tsx`](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/page.tsx>)
    appelle `requireCourses()` puis `loadLessonPage()`.
-3. **Les données viennent de NestJS.** [`lib/api.ts`](../../../apps/web/lib/api.ts) fait chaque appel
+3. **Les données viennent de NestJS.** [`lib/api.ts`](../../apps/web/lib/api.ts) fait chaque appel
    du serveur Next.js vers NestJS. Il appelle `http://api:3001` (ou `API_INTERNAL_URL`),
    transmet le cookie du navigateur et l'adresse du visiteur, met `cache: 'no-store'`, et
    vérifie la réponse avec un schema Zod. Un 401 envoie le visiteur vers `/login`. Tout autre échec
    lève une erreur, donc la page d'erreur s'affiche et personne n'est déconnecté par un redémarrage.
 4. **Une seule lecture de la session par rendu.** `loadSession()` dans
-   [`lib/session.ts`](../../../apps/web/lib/session.ts) est enveloppé dans le `cache` de React, donc le
+   [`lib/session.ts`](../../apps/web/lib/session.ts) est enveloppé dans le `cache` de React, donc le
    layout et la page partagent un seul appel à `/api/auth/me`. `currentUser()` est pour les pages que tout le monde
    peut voir ; `requireUser()` est pour les pages qui ont besoin d'un utilisateur connecté.
 5. **Le titre est fait sur le serveur aussi.** `generateMetadata` lit le bon catalogue et
    renvoie le titre. Le layout racine ajoute `| ft_transcendence` avec un modèle, donc l'onglet de
    la page de toutes les leçons dit "All lessons | ft_transcendence". Certains titres viennent des données :
    une page de profil a pour titre le display name de la personne
-   ([`users/[id]/page.tsx`](<../../../apps/web/app/[locale]/(main)/users/[id]/page.tsx>)), une page de
+   ([`users/[id]/page.tsx`](<../../apps/web/app/[locale]/(main)/users/[id]/page.tsx>)), une page de
    leçon le titre de la leçon.
 6. **Jamais de cache entre utilisateurs.** Une page qui lit la session met
    `export const dynamic = 'force-dynamic'`, avec un commentaire qui dit pourquoi, par exemple "Renders one
    specific person's friends, so it must never be prerendered or cached"
-   ([`friends/page.tsx`](<../../../apps/web/app/[locale]/(main)/friends/page.tsx>)). Les six pages
+   ([`friends/page.tsx`](<../../apps/web/app/[locale]/(main)/friends/page.tsx>)). Les six pages
    qui ne l'ont pas sont les pages de connexion, d'inscription, privacy et terms, la page not-found qui attrape tout et
    l'ancienne redirection `/dashboard`.
 7. **JavaScript arrive en dernier.** Le navigateur affiche le HTML, puis React fait l'hydration (il attache les
    gestionnaires de clics). Les parties interactives sont de petits client components à côté de la page : le
    formulaire de filtres en direct, les sélecteurs de niveau et d'objectif, le lecteur de leçon, le chat. Quand les données du
    serveur changent à cause d'un autre utilisateur, un client component appelle `router.refresh()`, et le
-   serveur refait le rendu de la page ([`refresh-on.tsx`](../../../apps/web/components/refresh-on.tsx)).
+   serveur refait le rendu de la page ([`refresh-on.tsx`](../../apps/web/components/refresh-on.tsx)).
 
 ### Les pages construites pour marcher sans JavaScript
 
@@ -95,19 +95,19 @@ Certaines pages ont été construites pour que le HTML du serveur suffise tout s
 
 ## Où est le code
 
-| Chemin                                                                                                                                          | Ce qu'il fait                                                                                                 |
-| ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| [`apps/web/app/[locale]/`](../../../apps/web/app)                                                                                               | Les 22 pages, en server components                                                                            |
-| [`apps/web/app/[locale]/layout.tsx`](../../../apps/web/app/[locale]/layout.tsx)                                                                 | Layout racine : `<html lang>`, le modèle de titre et la description, le catalogue de textes                   |
-| [`apps/web/lib/api.ts`](../../../apps/web/lib/api.ts)                                                                                           | Les appels côté serveur vers NestJS : `apiGet`, `apiFind`, transmission du cookie et de l'adresse, `no-store` |
-| [`apps/web/lib/session.ts`](../../../apps/web/lib/session.ts)                                                                                   | `loadSession` (en cache pour un rendu), `currentUser`, `requireUser`                                          |
-| [`apps/web/lib/courses.ts`](../../../apps/web/lib/courses.ts)                                                                                   | `requireCourses`, `findCourse` : les cours dont une page a besoin                                             |
-| [`apps/web/lib/lessons.ts`](../../../apps/web/lib/lessons.ts)                                                                                   | `loadToday` et `loadLessonPage`, lus sur le serveur                                                           |
-| [`apps/web/lib/friends.ts`](../../../apps/web/lib/friends.ts)                                                                                   | `requireFriends`, `searchUsers`, `loadProfile`, lus sur le serveur                                            |
-| [`apps/web/app/[locale]/(dashboard)/learn/[lang]/page.tsx`](<../../../apps/web/app/[locale]/(dashboard)/learn/[lang]/page.tsx>)                 | La page du cours : les cours et les leçons du jour chargés sur le serveur                                     |
-| [`apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/page.tsx`](<../../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/page.tsx>) | La page de toutes les leçons : lit sa recherche depuis l'URL sur le serveur                                   |
-| [`apps/web/components/refresh-on.tsx`](../../../apps/web/components/refresh-on.tsx)                                                             | Demande au serveur de refaire le rendu de la page quand un événement en direct arrive                         |
-| [`apps/web/public/robots.txt`](../../../apps/web/public/robots.txt)                                                                             | Dit aux moteurs de recherche quoi indexer                                                                     |
+| Chemin                                                                                                                                       | Ce qu'il fait                                                                                                 |
+| -------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| [`apps/web/app/[locale]/`](../../apps/web/app)                                                                                               | Les 22 pages, en server components                                                                            |
+| [`apps/web/app/[locale]/layout.tsx`](../../apps/web/app/[locale]/layout.tsx)                                                                 | Layout racine : `<html lang>`, le modèle de titre et la description, le catalogue de textes                   |
+| [`apps/web/lib/api.ts`](../../apps/web/lib/api.ts)                                                                                           | Les appels côté serveur vers NestJS : `apiGet`, `apiFind`, transmission du cookie et de l'adresse, `no-store` |
+| [`apps/web/lib/session.ts`](../../apps/web/lib/session.ts)                                                                                   | `loadSession` (en cache pour un rendu), `currentUser`, `requireUser`                                          |
+| [`apps/web/lib/courses.ts`](../../apps/web/lib/courses.ts)                                                                                   | `requireCourses`, `findCourse` : les cours dont une page a besoin                                             |
+| [`apps/web/lib/lessons.ts`](../../apps/web/lib/lessons.ts)                                                                                   | `loadToday` et `loadLessonPage`, lus sur le serveur                                                           |
+| [`apps/web/lib/friends.ts`](../../apps/web/lib/friends.ts)                                                                                   | `requireFriends`, `searchUsers`, `loadProfile`, lus sur le serveur                                            |
+| [`apps/web/app/[locale]/(dashboard)/learn/[lang]/page.tsx`](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/page.tsx>)                 | La page du cours : les cours et les leçons du jour chargés sur le serveur                                     |
+| [`apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/page.tsx`](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/page.tsx>) | La page de toutes les leçons : lit sa recherche depuis l'URL sur le serveur                                   |
+| [`apps/web/components/refresh-on.tsx`](../../apps/web/components/refresh-on.tsx)                                                             | Demande au serveur de refaire le rendu de la page quand un événement en direct arrive                         |
+| [`apps/web/public/robots.txt`](../../apps/web/public/robots.txt)                                                                             | Dit aux moteurs de recherche quoi indexer                                                                     |
 
 ## Comment le montrer à la soutenance
 
@@ -140,20 +140,20 @@ Certaines pages ont été construites pour que le HTML du serveur suffise tout s
 
 ## Les tests qui le prouvent
 
-| Test                                                                                    | Ce qu'il vérifie                                                                                                                                                                                                                        |
-| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`e2e/tests/today.spec.ts`](../../../e2e/tests/today.spec.ts)                           | "the page renders the proposal without JavaScript" : le HTML brut de la page du cours contient la barre de progression et un lien vers chaque leçon du jour                                                                             |
-| [`e2e/tests/lessons.spec.ts`](../../../e2e/tests/lessons.spec.ts)                       | Avec `javaScriptEnabled: false` : "without JavaScript, the form still filters and the pager still pages", et "without JavaScript, the phone sheet applies its boxes". Aussi "a direct load renders exactly the view in its URL"         |
-| [`e2e/tests/roadmap.spec.ts`](../../../e2e/tests/roadmap.spec.ts)                       | "the all lessons page: the Passed filter, page 2 by URL, and no JavaScript" : la liste s'affiche sans JavaScript, avec la leçon réussie marquée **Passed**. Un autre test lit le HTML brut d'une leçon de lecture après un rechargement |
-| [`e2e/tests/lesson.spec.ts`](../../../e2e/tests/lesson.spec.ts)                         | "plays from the lesson page to the results, which stay" : sans JavaScript, la page de leçon montre son titre et **See your results**, et la page de résultats montre "Your results" et chaque réponse                                   |
-| [`e2e/tests/lesson-regressions.spec.ts`](../../../e2e/tests/lesson-regressions.spec.ts) | "results fragments select one part across navigation and without JavaScript" : les liens `#part-N` de la page de résultats, avec JavaScript désactivé                                                                                   |
-| [`e2e/tests/gamification.spec.ts`](../../../e2e/tests/gamification.spec.ts)             | "both pages render without JavaScript" : la page du cours montre le rang et le défi, et la page des succès montre 16 succès et "How it works"                                                                                           |
-| [`e2e/tests/legal.spec.ts`](../../../e2e/tests/legal.spec.ts)                           | Les pages privacy et terms répondent 200 avec `text/html` et un vrai document dans le HTML brut                                                                                                                                         |
-| [`e2e/tests/i18n.spec.ts`](../../../e2e/tests/i18n.spec.ts)                             | "the tab title is translated", et chaque locale met `lang` sur `<html>`                                                                                                                                                                 |
-| [`apps/web/lib/session.test.ts`](../../../apps/web/lib/session.test.ts)                 | La lecture de la session côté serveur : cookies et adresse transmis, redirection vers `/login` sur un 401, erreur levée (pas de redirection) quand l'API est en panne                                                                   |
-| [`apps/web/lib/api.test.ts`](../../../apps/web/lib/api.test.ts)                         | Le client API côté serveur utilisé par chaque rendu de page                                                                                                                                                                             |
+| Test                                                                                 | Ce qu'il vérifie                                                                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`e2e/tests/today.spec.ts`](../../e2e/tests/today.spec.ts)                           | "the page renders the proposal without JavaScript" : le HTML brut de la page du cours contient la barre de progression et un lien vers chaque leçon du jour                                                                             |
+| [`e2e/tests/lessons.spec.ts`](../../e2e/tests/lessons.spec.ts)                       | Avec `javaScriptEnabled: false` : "without JavaScript, the form still filters and the pager still pages", et "without JavaScript, the phone sheet applies its boxes". Aussi "a direct load renders exactly the view in its URL"         |
+| [`e2e/tests/roadmap.spec.ts`](../../e2e/tests/roadmap.spec.ts)                       | "the all lessons page: the Passed filter, page 2 by URL, and no JavaScript" : la liste s'affiche sans JavaScript, avec la leçon réussie marquée **Passed**. Un autre test lit le HTML brut d'une leçon de lecture après un rechargement |
+| [`e2e/tests/lesson.spec.ts`](../../e2e/tests/lesson.spec.ts)                         | "plays from the lesson page to the results, which stay" : sans JavaScript, la page de leçon montre son titre et **See your results**, et la page de résultats montre "Your results" et chaque réponse                                   |
+| [`e2e/tests/lesson-regressions.spec.ts`](../../e2e/tests/lesson-regressions.spec.ts) | "results fragments select one part across navigation and without JavaScript" : les liens `#part-N` de la page de résultats, avec JavaScript désactivé                                                                                   |
+| [`e2e/tests/gamification.spec.ts`](../../e2e/tests/gamification.spec.ts)             | "both pages render without JavaScript" : la page du cours montre le rang et le défi, et la page des succès montre 16 succès et "How it works"                                                                                           |
+| [`e2e/tests/legal.spec.ts`](../../e2e/tests/legal.spec.ts)                           | Les pages privacy et terms répondent 200 avec `text/html` et un vrai document dans le HTML brut                                                                                                                                         |
+| [`e2e/tests/i18n.spec.ts`](../../e2e/tests/i18n.spec.ts)                             | "the tab title is translated", et chaque locale met `lang` sur `<html>`                                                                                                                                                                 |
+| [`apps/web/lib/session.test.ts`](../../apps/web/lib/session.test.ts)                 | La lecture de la session côté serveur : cookies et adresse transmis, redirection vers `/login` sur un 401, erreur levée (pas de redirection) quand l'API est en panne                                                                   |
+| [`apps/web/lib/api.test.ts`](../../apps/web/lib/api.test.ts)                         | Le client API côté serveur utilisé par chaque rendu de page                                                                                                                                                                             |
 
-Les tests Playwright tournent dans [`.github/workflows/e2e.yml`](../../../.github/workflows/e2e.yml),
+Les tests Playwright tournent dans [`.github/workflows/e2e.yml`](../../.github/workflows/e2e.yml),
 sur le build de production.
 
 ## Limites et choix
@@ -173,7 +173,7 @@ sur le build de production.
 - **Le HTML transporte aussi le catalogue de textes.** Le layout racine passe tout le catalogue de
   la langue de la page aux client components. C'est pour ça que les tests e2e vérifient ce qui est affiché
   avec des locators par rôle, et pas en cherchant une phrase dans le HTML brut (le commentaire dans
-  [`gamification.spec.ts`](../../../e2e/tests/gamification.spec.ts) le dit).
+  [`gamification.spec.ts`](../../e2e/tests/gamification.spec.ts) le dit).
 
 ## Qui l'a construit
 

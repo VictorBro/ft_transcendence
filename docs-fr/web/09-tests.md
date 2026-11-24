@@ -94,7 +94,7 @@ flowchart LR
 
 ## `vitest.config.mts` — les réglages des tests
 
-[vitest.config.mts](../../../apps/web/vitest.config.mts) dit à Vitest comment lancer les tests web.
+[vitest.config.mts](../../apps/web/vitest.config.mts) dit à Vitest comment lancer les tests web.
 
 ```ts
 export default defineConfig({
@@ -146,7 +146,7 @@ Ligne par ligne :
 
 ### Les scripts
 
-Dans [apps/web/package.json](../../../apps/web/package.json) :
+Dans [apps/web/package.json](../../apps/web/package.json) :
 
 ```json
     "test": "vitest run",
@@ -156,7 +156,7 @@ Dans [apps/web/package.json](../../../apps/web/package.json) :
 - `vitest run` lance chaque test une fois et s'arrête (sans `run`, Vitest surveillerait les fichiers et relancerait à chaque changement).
 - `--coverage` mesure aussi la couverture et vérifie les seuils.
 
-Dans le [package.json](../../../package.json) racine, turbo lance le même script dans **chaque** package :
+Dans le [package.json](../../package.json) racine, turbo lance le même script dans **chaque** package :
 
 ```json
     "test": "turbo run test",
@@ -164,20 +164,20 @@ Dans le [package.json](../../../package.json) racine, turbo lance le même scrip
     "ci": "pnpm run format:check && turbo run lint typecheck test:cov build"
 ```
 
-**turbo** est le lanceur de tâches du monorepo. Dans [turbo.json](../../../turbo.json), `test` et `test:cov` dépendent de
+**turbo** est le lanceur de tâches du monorepo. Dans [turbo.json](../../turbo.json), `test` et `test:cov` dépendent de
 `^build` (faire d'abord le build des packages que celui-ci importe, comme `@ft/shared`) et de `db:generate`. `test:cov` déclare
 `coverage/**` comme sa sortie, pour que turbo puisse la mettre en cache.
 
 ### Où ils tournent
 
-| Où                  | Commande                                                                                                      | Ce que ça lance pour le web                                         |
-| ------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| Ta machine, une app | `pnpm --filter @ft/web test` (ou `test:cov`)                                                                  | Vitest dans `apps/web`                                              |
-| Ta machine, tout    | `make test` → `pnpm run test`                                                                                 | Les tests unitaires de chaque package                               |
-| `make ci` / `make`  | `pnpm run ci`                                                                                                 | format, lint, typecheck, `test:cov`, build                          |
-| Étape Docker `ci`   | `CMD` de [apps/web/Dockerfile](../../../apps/web/Dockerfile) : `pnpm lint && pnpm typecheck && pnpm test:cov` | La même chose, dans l'image                                         |
-| CI GitHub           | [ci.yml](../../../.github/workflows/ci.yml), job `unit tests (web)`                                           | `pnpm --filter @ft/web run test:cov` dans l'étape Docker `ci`       |
-| hook git pre-push   | [.husky/pre-push](../../../.husky/pre-push)                                                                   | Seulement lint et typecheck, **pas** les tests (pour rester rapide) |
+| Où                  | Commande                                                                                                   | Ce que ça lance pour le web                                         |
+| ------------------- | ---------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| Ta machine, une app | `pnpm --filter @ft/web test` (ou `test:cov`)                                                               | Vitest dans `apps/web`                                              |
+| Ta machine, tout    | `make test` → `pnpm run test`                                                                              | Les tests unitaires de chaque package                               |
+| `make ci` / `make`  | `pnpm run ci`                                                                                              | format, lint, typecheck, `test:cov`, build                          |
+| Étape Docker `ci`   | `CMD` de [apps/web/Dockerfile](../../apps/web/Dockerfile) : `pnpm lint && pnpm typecheck && pnpm test:cov` | La même chose, dans l'image                                         |
+| CI GitHub           | [ci.yml](../../.github/workflows/ci.yml), job `unit tests (web)`                                           | `pnpm --filter @ft/web run test:cov` dans l'étape Docker `ci`       |
+| hook git pre-push   | [.husky/pre-push](../../.husky/pre-push)                                                                   | Seulement lint et typecheck, **pas** les tests (pour rester rapide) |
 
 En CI, le job `unit-tests` fait le build de l'étape `ci` du Dockerfile et lance les tests **dans** cette image, donc
 "ça passe en CI" veut dire "ça passe dans le même environnement que la production". Le dossier de couverture est ensuite copié dehors
@@ -199,7 +199,7 @@ flowchart LR
 
 ## Visite 1 : un test de bibliothèque — `lib/serial-queue.test.ts`
 
-D'abord le code testé, [serial-queue.ts](../../../apps/web/lib/serial-queue.ts) :
+D'abord le code testé, [serial-queue.ts](../../apps/web/lib/serial-queue.ts) :
 
 ```ts
 export function serialQueue() {
@@ -215,9 +215,9 @@ export function serialQueue() {
 
 `serialQueue()` te donne une fonction `run`. Chaque tâche que tu donnes à `run` ne démarre qu'après la fin de la précédente
 (`tail.then(task)`). `tail = result.catch(...)` veut dire qu'une tâche ratée ne bloque pas les suivantes. Elle est
-utilisée par [use-course-save.ts](../../../apps/web/lib/use-course-save.ts), pour que deux enregistrements arrivent au serveur dans l'ordre.
+utilisée par [use-course-save.ts](../../apps/web/lib/use-course-save.ts), pour que deux enregistrements arrivent au serveur dans l'ordre.
 
-Maintenant le test, [serial-queue.test.ts](../../../apps/web/lib/serial-queue.test.ts) :
+Maintenant le test, [serial-queue.test.ts](../../apps/web/lib/serial-queue.test.ts) :
 
 ```ts
 import { describe, expect, it } from "vitest";
@@ -319,9 +319,9 @@ describe('fetchNewestMessages', () => {
 
 D'autres sortes de faux utilisés dans ce dossier :
 
-- [send-message.test.ts](../../../apps/web/lib/send-message.test.ts) construit un **faux socket** : un objet avec
+- [send-message.test.ts](../../apps/web/lib/send-message.test.ts) construit un **faux socket** : un objet avec
   `connected` et `timeout(...).emitWithAck(...)`, c'est tout ce dont `sendMessageOver` a besoin (voir chapitre 8).
-- [api.test.ts](../../../apps/web/lib/api.test.ts) et [session.test.ts](../../../apps/web/lib/session.test.ts) utilisent
+- [api.test.ts](../../apps/web/lib/api.test.ts) et [session.test.ts](../../apps/web/lib/session.test.ts) utilisent
   `vi.mock('next/headers', ...)` et `vi.mock('next/navigation', ...)` pour simuler les cookies, les headers et `redirect`
   (qui ici lance une erreur avec le chemin, pour que le test puisse vérifier où il irait).
 
@@ -329,11 +329,11 @@ D'autres sortes de faux utilisés dans ce dossier :
 
 ## Visite 2 : un test de composant — `components/lesson/tutor-answer.test.tsx`
 
-Le composant, [tutor-answer.tsx](../../../apps/web/components/lesson/tutor-answer.tsx) (chapitre 7), montre la réponse du tuteur
+Le composant, [tutor-answer.tsx](../../apps/web/components/lesson/tutor-answer.tsx) (chapitre 7), montre la réponse du tuteur
 IA. La réponse est du Markdown écrit par un LLM, donc elle doit être jolie (gras, listes, tableaux) **et** sûre
 (pas de HTML brut, pas de liens `javascript:`, pas d'images).
 
-Le test, [tutor-answer.test.tsx](../../../apps/web/components/lesson/tutor-answer.test.tsx) :
+Le test, [tutor-answer.test.tsx](../../apps/web/components/lesson/tutor-answer.test.tsx) :
 
 ```tsx
 import { renderToStaticMarkup } from "react-dom/server";
@@ -408,7 +408,7 @@ Ces tests protègent contre le **XSS** (cross-site scripting : quelqu'un qui arr
 
 Ce que ce style de test **ne peut pas** faire : cliquer, taper, ou lancer des effets (`useEffect` ne tourne pas dans
 `renderToStaticMarkup`). Pour un composant avec des traductions, le test l'enveloppe dans `NextIntlClientProvider`, comme le fait
-[reading.test.tsx](../../../apps/web/components/lesson/kinds/reading.test.tsx) avec `messages/en.json`.
+[reading.test.tsx](../../apps/web/components/lesson/kinds/reading.test.tsx) avec `messages/en.json`.
 
 ---
 
@@ -418,65 +418,65 @@ Ce que ce style de test **ne peut pas** faire : cliquer, taper, ou lancer des ef
 
 ### `components/`
 
-| Fichier                                                                                     | Ce qu'il vérifie                                                                                                                                                                                                                                                                                                                       |
-| ------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [lesson/tutor-answer.test.tsx](../../../apps/web/components/lesson/tutor-answer.test.tsx)   | Le Markdown du tuteur s'affiche en HTML stylé (gras, listes, tableaux, texte barré), les liens sont sûrs, le HTML brut/les images/`javascript:` ne s'affichent jamais, une réponse coupée finit par `…`.                                                                                                                               |
-| [lesson/kinds/reading.test.tsx](../../../apps/web/components/lesson/kinds/reading.test.tsx) | Joue la leçon de lecture d'exemple "Lire un SMS" via le cœur de leçon partagé et affiche chaque page : cartes de mots clés, tableau d'association, compte à rebours de lecture rapide, questions de détail, mise en ordre, page d'examen ; mauvaises réponses marquées justes ; score 100 quand tout est juste, 0 quand tout est faux. |
+| Fichier                                                                                  | Ce qu'il vérifie                                                                                                                                                                                                                                                                                                                       |
+| ---------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [lesson/tutor-answer.test.tsx](../../apps/web/components/lesson/tutor-answer.test.tsx)   | Le Markdown du tuteur s'affiche en HTML stylé (gras, listes, tableaux, texte barré), les liens sont sûrs, le HTML brut/les images/`javascript:` ne s'affichent jamais, une réponse coupée finit par `…`.                                                                                                                               |
+| [lesson/kinds/reading.test.tsx](../../apps/web/components/lesson/kinds/reading.test.tsx) | Joue la leçon de lecture d'exemple "Lire un SMS" via le cœur de leçon partagé et affiche chaque page : cartes de mots clés, tableau d'association, compte à rebours de lecture rapide, questions de détail, mise en ordre, page d'examen ; mauvaises réponses marquées justes ; score 100 quand tout est juste, 0 quand tout est faux. |
 
 ### `lib/` — couche API et session
 
-| Fichier                                                                            | Ce qu'il vérifie                                                                                                                                                                                                                                     |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [api.test.ts](../../../apps/web/lib/api.test.ts)                                   | URL de base de l'API (valeur de secours, espaces retirés, slashs), `buildApiUrl`, `describeFetchError` ; `fetchSession` transmet le cookie et l'adresse, lit 401 comme non connecté et 429/500/204/JSON invalide/délai dépassé comme "indisponible". |
-| [api-client.test.ts](../../../apps/web/lib/api-client.test.ts)                     | `clientGet`/`clientPost` : validation par schema, credentials, codes d'erreur et statut, panne réseau, 204, paramètres de requête, corps JSON ou `FormData`, headers, refus d'un chemin avec `?`.                                                    |
-| [session.test.ts](../../../apps/web/lib/session.test.ts)                           | `currentUser` transmet les cookies et l'adresse, donne `null` quand l'API est en panne ; `requireUser` renvoie l'utilisateur, redirige vers la connexion, ou lance une erreur quand l'API est en panne.                                              |
-| [auth-client.test.ts](../../../apps/web/lib/auth-client.test.ts)                   | Inscription, connexion (un facteur ou 202 pour la 2FA), déconnexion et désactivation de la 2FA (204), vérification, enrôlement, modification du profil, envoi/suppression de l'avatar ; les erreurs et le réseau coupé deviennent des codes.         |
-| [friends-client.test.ts](../../../apps/web/lib/friends-client.test.ts)             | Envoyer, accepter, supprimer une demande d'ami, retirer un ami : bonne URL et bonne méthode, erreurs sous forme de codes.                                                                                                                            |
-| [friends.test.ts](../../../apps/web/lib/friends.test.ts)                           | `relationTo` : quelqu'un est un ami, une demande reçue, une demande envoyée, ou personne.                                                                                                                                                            |
-| [conversations-client.test.ts](../../../apps/web/lib/conversations-client.test.ts) | Page la plus récente sans curseur, page plus ancienne avec curseur, échec sous forme de code.                                                                                                                                                        |
-| [courses-client.test.ts](../../../apps/web/lib/courses-client.test.ts)             | `startCourse` et `setCourseLevel` : résultat, langue dans le chemin, conflit/cours manquant sous forme de codes, mauvaise réponse refusée.                                                                                                           |
-| [placement-client.test.ts](../../../apps/web/lib/placement-client.test.ts)         | Démarrer, répondre (y compris `null` quand le temps est écoulé), résultat, quitter l'examen de placement ; codes de conflit et d'onboarding ; mauvais payloads refusés.                                                                              |
-| [placement-schema.test.ts](../../../apps/web/lib/placement-schema.test.ts)         | Le schema d'état du placement accepte/refuse des formes, garde les textes de lecture ; `isPlacementResult` distingue un résultat d'une question.                                                                                                     |
-| [lesson-client.test.ts](../../../apps/web/lib/lesson-client.test.ts)               | Routes des tentatives (démarrer, envoyer une page, page périmée, aucune clé de réponse divulguée), la mémoire des tentatives dans l'onglet, et les brouillons enregistrés dans le stockage.                                                          |
-| [discussion-client.test.ts](../../../apps/web/lib/discussion-client.test.ts)       | Le flux de discussion avec le tuteur : morceaux transmis au fur et à mesure, événements d'erreur, connexion coupée, 429 avec temps d'attente, refus, panne réseau.                                                                                   |
+| Fichier                                                                         | Ce qu'il vérifie                                                                                                                                                                                                                                     |
+| ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [api.test.ts](../../apps/web/lib/api.test.ts)                                   | URL de base de l'API (valeur de secours, espaces retirés, slashs), `buildApiUrl`, `describeFetchError` ; `fetchSession` transmet le cookie et l'adresse, lit 401 comme non connecté et 429/500/204/JSON invalide/délai dépassé comme "indisponible". |
+| [api-client.test.ts](../../apps/web/lib/api-client.test.ts)                     | `clientGet`/`clientPost` : validation par schema, credentials, codes d'erreur et statut, panne réseau, 204, paramètres de requête, corps JSON ou `FormData`, headers, refus d'un chemin avec `?`.                                                    |
+| [session.test.ts](../../apps/web/lib/session.test.ts)                           | `currentUser` transmet les cookies et l'adresse, donne `null` quand l'API est en panne ; `requireUser` renvoie l'utilisateur, redirige vers la connexion, ou lance une erreur quand l'API est en panne.                                              |
+| [auth-client.test.ts](../../apps/web/lib/auth-client.test.ts)                   | Inscription, connexion (un facteur ou 202 pour la 2FA), déconnexion et désactivation de la 2FA (204), vérification, enrôlement, modification du profil, envoi/suppression de l'avatar ; les erreurs et le réseau coupé deviennent des codes.         |
+| [friends-client.test.ts](../../apps/web/lib/friends-client.test.ts)             | Envoyer, accepter, supprimer une demande d'ami, retirer un ami : bonne URL et bonne méthode, erreurs sous forme de codes.                                                                                                                            |
+| [friends.test.ts](../../apps/web/lib/friends.test.ts)                           | `relationTo` : quelqu'un est un ami, une demande reçue, une demande envoyée, ou personne.                                                                                                                                                            |
+| [conversations-client.test.ts](../../apps/web/lib/conversations-client.test.ts) | Page la plus récente sans curseur, page plus ancienne avec curseur, échec sous forme de code.                                                                                                                                                        |
+| [courses-client.test.ts](../../apps/web/lib/courses-client.test.ts)             | `startCourse` et `setCourseLevel` : résultat, langue dans le chemin, conflit/cours manquant sous forme de codes, mauvaise réponse refusée.                                                                                                           |
+| [placement-client.test.ts](../../apps/web/lib/placement-client.test.ts)         | Démarrer, répondre (y compris `null` quand le temps est écoulé), résultat, quitter l'examen de placement ; codes de conflit et d'onboarding ; mauvais payloads refusés.                                                                              |
+| [placement-schema.test.ts](../../apps/web/lib/placement-schema.test.ts)         | Le schema d'état du placement accepte/refuse des formes, garde les textes de lecture ; `isPlacementResult` distingue un résultat d'une question.                                                                                                     |
+| [lesson-client.test.ts](../../apps/web/lib/lesson-client.test.ts)               | Routes des tentatives (démarrer, envoyer une page, page périmée, aucune clé de réponse divulguée), la mémoire des tentatives dans l'onglet, et les brouillons enregistrés dans le stockage.                                                          |
+| [discussion-client.test.ts](../../apps/web/lib/discussion-client.test.ts)       | Le flux de discussion avec le tuteur : morceaux transmis au fur et à mesure, événements d'erreur, connexion coupée, 429 avec temps d'attente, refus, panne réseau.                                                                                   |
 
 ### `lib/` — chat et socket
 
-| Fichier                                                            | Ce qu'il vérifie                                                                                                                                                                                                                                                    |
-| ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [send-message.test.ts](../../../apps/web/lib/send-message.test.ts) | `sendMessageOver` avec un faux socket : message enregistré renvoyé, refusé tout de suite hors ligne, délai dépassé vu comme injoignable, codes de refus, `server.unexpected` reformulé, mauvais acks.                                                               |
-| [thread.test.ts](../../../apps/web/lib/thread.test.ts)             | `mergeMessages` (sans doublons, tri par id dans la même milliseconde), `catchUp` (rejoint ou recommence, messages entendus pendant le fetch), `addEarlier` (jette une page périmée), `timeFormat` (aujourd'hui, plus ancien, fuseau du lecteur, fuseau de secours). |
-| [unread.test.ts](../../../apps/web/lib/unread.test.ts)             | Store des non-lus : rien avant le premier snapshot, remplacer et non fusionner, le snapshot le plus récent gagne, observateurs prévenus à chaque fois, clear, désabonnement ; `badgeText` 99+ ; `unreadTotal`.                                                      |
-| [presence.test.ts](../../../apps/web/lib/presence.test.ts)         | Map de présence : inconnu tant que rien n'est entendu, dernier statut gardé, observateurs prévenus seulement en cas de changement, forget, clear, désabonnement.                                                                                                    |
-| [reconnect.test.ts](../../../apps/web/lib/reconnect.test.ts)       | `backoffMs` (doublement, dispersion, plafond), `afterDisconnect`, `afterConnectError`, `apiIsUp` (en marche, en panne, mauvais corps, requête échouée, pas de cache).                                                                                               |
+| Fichier                                                         | Ce qu'il vérifie                                                                                                                                                                                                                                                    |
+| --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [send-message.test.ts](../../apps/web/lib/send-message.test.ts) | `sendMessageOver` avec un faux socket : message enregistré renvoyé, refusé tout de suite hors ligne, délai dépassé vu comme injoignable, codes de refus, `server.unexpected` reformulé, mauvais acks.                                                               |
+| [thread.test.ts](../../apps/web/lib/thread.test.ts)             | `mergeMessages` (sans doublons, tri par id dans la même milliseconde), `catchUp` (rejoint ou recommence, messages entendus pendant le fetch), `addEarlier` (jette une page périmée), `timeFormat` (aujourd'hui, plus ancien, fuseau du lecteur, fuseau de secours). |
+| [unread.test.ts](../../apps/web/lib/unread.test.ts)             | Store des non-lus : rien avant le premier snapshot, remplacer et non fusionner, le snapshot le plus récent gagne, observateurs prévenus à chaque fois, clear, désabonnement ; `badgeText` 99+ ; `unreadTotal`.                                                      |
+| [presence.test.ts](../../apps/web/lib/presence.test.ts)         | Map de présence : inconnu tant que rien n'est entendu, dernier statut gardé, observateurs prévenus seulement en cas de changement, forget, clear, désabonnement.                                                                                                    |
+| [reconnect.test.ts](../../apps/web/lib/reconnect.test.ts)       | `backoffMs` (doublement, dispersion, plafond), `afterDisconnect`, `afterConnectError`, `apiIsUp` (en marche, en panne, mauvais corps, requête échouée, pas de cache).                                                                                               |
 
 ### `lib/` — cours, leçons et résultats
 
-| Fichier                                                                      | Ce qu'il vérifie                                                                                                                                                                 |
-| ---------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [courses.test.ts](../../../apps/web/lib/courses.test.ts)                     | `findCourse`, sur quel cours arriver (cookie, puis `activeLang`, puis le premier), `landingPath`, lire la langue dans un chemin `/learn/...`.                                    |
-| [onboarding.test.ts](../../../apps/web/lib/onboarding.test.ts)               | Quelle étape d'onboarding afficher : choix de la langue, choix du niveau, cours non fini le plus récent, le cours d'où vient l'apprenant.                                        |
-| [level.test.ts](../../../apps/web/lib/level.test.ts)                         | `nextLevel` (un au-dessus, C2 reste C2, débutant en A1) et `masteredBelow`, aller-retour pour chaque niveau.                                                                     |
-| [lesson.test.ts](../../../apps/web/lib/lesson.test.ts)                       | `loadLesson` : carte et tentative, 404 pour les leçons invalides/pas prêtes, redirection vers l'onboarding, redirection vers la connexion ; `lessonTitle` ; l'étape de la leçon. |
-| [lesson-list.test.ts](../../../apps/web/lib/lesson-list.test.ts)             | Filtres d'URL de la liste des leçons, regroupement des lignes par statut et par jour, `previousDay` à travers les mois et les années bissextiles.                                |
-| [lesson-navigation.test.ts](../../../apps/web/lib/lesson-navigation.test.ts) | La frise de la leçon : pages d'entraînement sur un seul point, explications répétées séparées, une couleur par section.                                                          |
-| [lesson-history.test.ts](../../../apps/web/lib/lesson-history.test.ts)       | La cible "retour" du lecteur est mémorisée dans l'historique du navigateur (fausse `window`), jamais de retour vers les résultats en cas de reprise, ni hors du site.            |
-| [lesson-gap.test.ts](../../../apps/web/lib/lesson-gap.test.ts)               | `gluedAfter` : ponctuation collée à un trou, l'espace français avant `?` et `!`.                                                                                                 |
-| [reading.test.ts](../../../apps/web/lib/reading.test.ts)                     | `markKeywords` (chaque occurrence, la plus longue gagne, mots entiers) et le compte à rebours de lecture rapide (échéance gardée après rechargement, m:ss).                      |
-| [result-part.test.ts](../../../apps/web/lib/result-part.test.ts)             | Les fragments `#part-N` de la page de résultats pointent vers la bonne partie d'entraînement ou d'examen.                                                                        |
-| [result-score-tone.test.ts](../../../apps/web/lib/result-score-tone.test.ts) | Tranches de score : faible sous 50, partiel, réussi à partir de 70, excellent à partir de 90.                                                                                    |
-| [xp-breakdown.test.ts](../../../apps/web/lib/xp-breakdown.test.ts)           | Les lignes d'XP d'une fin de leçon (objectif, défi) font bien `xpGained` au total ; anciennes fins et fins simples.                                                              |
-| [voice.test.ts](../../../apps/web/lib/voice.test.ts)                         | `pickVoice` (ordre des régions, préférences naturelle/féminine/en ligne) et `spokenText` (trous lus comme des pauses, Markdown retiré).                                          |
+| Fichier                                                                   | Ce qu'il vérifie                                                                                                                                                                 |
+| ------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [courses.test.ts](../../apps/web/lib/courses.test.ts)                     | `findCourse`, sur quel cours arriver (cookie, puis `activeLang`, puis le premier), `landingPath`, lire la langue dans un chemin `/learn/...`.                                    |
+| [onboarding.test.ts](../../apps/web/lib/onboarding.test.ts)               | Quelle étape d'onboarding afficher : choix de la langue, choix du niveau, cours non fini le plus récent, le cours d'où vient l'apprenant.                                        |
+| [level.test.ts](../../apps/web/lib/level.test.ts)                         | `nextLevel` (un au-dessus, C2 reste C2, débutant en A1) et `masteredBelow`, aller-retour pour chaque niveau.                                                                     |
+| [lesson.test.ts](../../apps/web/lib/lesson.test.ts)                       | `loadLesson` : carte et tentative, 404 pour les leçons invalides/pas prêtes, redirection vers l'onboarding, redirection vers la connexion ; `lessonTitle` ; l'étape de la leçon. |
+| [lesson-list.test.ts](../../apps/web/lib/lesson-list.test.ts)             | Filtres d'URL de la liste des leçons, regroupement des lignes par statut et par jour, `previousDay` à travers les mois et les années bissextiles.                                |
+| [lesson-navigation.test.ts](../../apps/web/lib/lesson-navigation.test.ts) | La frise de la leçon : pages d'entraînement sur un seul point, explications répétées séparées, une couleur par section.                                                          |
+| [lesson-history.test.ts](../../apps/web/lib/lesson-history.test.ts)       | La cible "retour" du lecteur est mémorisée dans l'historique du navigateur (fausse `window`), jamais de retour vers les résultats en cas de reprise, ni hors du site.            |
+| [lesson-gap.test.ts](../../apps/web/lib/lesson-gap.test.ts)               | `gluedAfter` : ponctuation collée à un trou, l'espace français avant `?` et `!`.                                                                                                 |
+| [reading.test.ts](../../apps/web/lib/reading.test.ts)                     | `markKeywords` (chaque occurrence, la plus longue gagne, mots entiers) et le compte à rebours de lecture rapide (échéance gardée après rechargement, m:ss).                      |
+| [result-part.test.ts](../../apps/web/lib/result-part.test.ts)             | Les fragments `#part-N` de la page de résultats pointent vers la bonne partie d'entraînement ou d'examen.                                                                        |
+| [result-score-tone.test.ts](../../apps/web/lib/result-score-tone.test.ts) | Tranches de score : faible sous 50, partiel, réussi à partir de 70, excellent à partir de 90.                                                                                    |
+| [xp-breakdown.test.ts](../../apps/web/lib/xp-breakdown.test.ts)           | Les lignes d'XP d'une fin de leçon (objectif, défi) font bien `xpGained` au total ; anciennes fins et fins simples.                                                              |
+| [voice.test.ts](../../apps/web/lib/voice.test.ts)                         | `pickVoice` (ordre des régions, préférences naturelle/féminine/en ligne) et `spokenText` (trous lus comme des pauses, Markdown retiré).                                          |
 
 ### `lib/` — textes, traductions et petits helpers
 
-| Fichier                                                            | Ce qu'il vérifie                                                                                                                                                 |
-| ------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [messages.test.ts](../../../apps/web/lib/messages.test.ts)         | `messages/en.json`, `fr.json`, `de.json` ont exactement les mêmes clés, traduisent chaque code d'erreur, chaque succès/défi, et n'ont aucun texte vide.          |
-| [legal.test.ts](../../../apps/web/lib/legal.test.ts)               | Pages de confidentialité et de conditions : assez longues, ancres uniques et stables, aucune section vide, date fixe, metadata, mêmes ancres dans chaque langue. |
-| [localized.test.ts](../../../apps/web/lib/localized.test.ts)       | `pick` : le texte dans la langue de l'interface, avec des valeurs de secours.                                                                                    |
-| [avatar.test.ts](../../../apps/web/lib/avatar.test.ts)             | Initiale de l'avatar (majuscule, jamais un demi-caractère, valeur de secours) et couleur (stable pour un nom, dans les limites).                                 |
-| [serial-queue.test.ts](../../../apps/web/lib/serial-queue.test.ts) | Les tâches tournent l'une après l'autre ; un échec n'arrête pas la suivante.                                                                                     |
+| Fichier                                                         | Ce qu'il vérifie                                                                                                                                                 |
+| --------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [messages.test.ts](../../apps/web/lib/messages.test.ts)         | `messages/en.json`, `fr.json`, `de.json` ont exactement les mêmes clés, traduisent chaque code d'erreur, chaque succès/défi, et n'ont aucun texte vide.          |
+| [legal.test.ts](../../apps/web/lib/legal.test.ts)               | Pages de confidentialité et de conditions : assez longues, ancres uniques et stables, aucune section vide, date fixe, metadata, mêmes ancres dans chaque langue. |
+| [localized.test.ts](../../apps/web/lib/localized.test.ts)       | `pick` : le texte dans la langue de l'interface, avec des valeurs de secours.                                                                                    |
+| [avatar.test.ts](../../apps/web/lib/avatar.test.ts)             | Initiale de l'avatar (majuscule, jamais un demi-caractère, valeur de secours) et couleur (stable pour un nom, dans les limites).                                 |
+| [serial-queue.test.ts](../../apps/web/lib/serial-queue.test.ts) | Les tâches tournent l'une après l'autre ; un échec n'arrête pas la suivante.                                                                                     |
 
 `messages.test.ts` mérite une remarque : next-intl ne fait **pas** échouer le build quand une traduction manque — il affiche le
 chemin de la clé sur la page en ligne. Ce test est la seule chose qui repère une traduction manquante avant un humain.
@@ -522,7 +522,7 @@ e2e/
 ce qu'il y a à l'écran, comme une personne. Ces tests tournent contre la stack de **production** (construite avec Docker Compose),
 jamais contre `next dev`.
 
-Les règles principales de [playwright.config.ts](../../../e2e/playwright.config.ts) :
+Les règles principales de [playwright.config.ts](../../e2e/playwright.config.ts) :
 
 - Pas de `webServer` : Docker Compose démarre la stack, Playwright visite seulement `E2E_BASE_URL` (par défaut
   `https://localhost`).
@@ -533,23 +533,23 @@ Les règles principales de [playwright.config.ts](../../../e2e/playwright.config
 
 Deux specs sont des contrôles spéciaux :
 
-- [console.spec.ts](../../../e2e/tests/console.spec.ts) : visite chaque route et échoue sur **n'importe quelle** erreur ou avertissement dans la console,
+- [console.spec.ts](../../e2e/tests/console.spec.ts) : visite chaque route et échoue sur **n'importe quelle** erreur ou avertissement dans la console,
   exception non attrapée ou requête échouée.
-- [legal.spec.ts](../../../e2e/tests/legal.spec.ts) : `/privacy` et `/terms` répondent 200 avec un vrai contenu.
+- [legal.spec.ts](../../e2e/tests/legal.spec.ts) : `/privacy` et `/terms` répondent 200 avec un vrai contenu.
 
-Pour le chat (chapitre 8), [messages.spec.ts](../../../e2e/tests/messages.spec.ts) vérifie ce que les tests unitaires ne peuvent pas :
+Pour le chat (chapitre 8), [messages.spec.ts](../../e2e/tests/messages.spec.ts) vérifie ce que les tests unitaires ne peuvent pas :
 deux vrais navigateurs, l'un écrit, l'autre voit arriver en direct le message et le compteur de non-lus, ouvrir la conversation remet
 le compteur à zéro, Maj+Entrée fait une nouvelle ligne, un message envoyé pendant que le socket était coupé arrive quand il revient, la
 conversation d'un ancien ami n'a pas de zone de saisie, et les heures s'affichent dans le fuseau horaire du compte.
 
 Comment les lancer :
 
-| Où                                    | Commande                                                                                                                                                                                               |
-| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| En local, stack déjà lancée           | `make playwright` (Chromium) ou `make playwright-all` (trois navigateurs)                                                                                                                              |
-| En local, en démarrant aussi la stack | `make test-e2e`                                                                                                                                                                                        |
-| Dernier rapport                       | `make report` (sert `e2e/playwright-report` sur le port 9323)                                                                                                                                          |
-| GitHub                                | [e2e.yml](../../../.github/workflows/e2e.yml) : 3 navigateurs x 2 parties (`lesson.spec.ts` seul, et le reste), chacune sur sa propre stack ; un job de contrôle final `playwright (production stack)` |
+| Où                                    | Commande                                                                                                                                                                                            |
+| ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| En local, stack déjà lancée           | `make playwright` (Chromium) ou `make playwright-all` (trois navigateurs)                                                                                                                           |
+| En local, en démarrant aussi la stack | `make test-e2e`                                                                                                                                                                                     |
+| Dernier rapport                       | `make report` (sert `e2e/playwright-report` sur le port 9323)                                                                                                                                       |
+| GitHub                                | [e2e.yml](../../.github/workflows/e2e.yml) : 3 navigateurs x 2 parties (`lesson.spec.ts` seul, et le reste), chacune sur sa propre stack ; un job de contrôle final `playwright (production stack)` |
 
 En cas d'échec, la CI envoie `e2e/playwright-report` et `e2e/test-results` (traces et captures d'écran).
 

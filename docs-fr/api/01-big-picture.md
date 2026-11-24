@@ -82,7 +82,7 @@ Le code de statut est un nombre qui dit comment ça s'est passé. Le premier chi
 | `429` | Too Many Requests     | Le rate limiter (limiteur de débit) a dit « ralentis »                                                         |
 | `500` | Internal Server Error | Un bug ou un crash                                                                                             |
 
-Dans cette API, le `message` de chaque erreur est un **code** comme `"auth.sessionRequired"`, jamais une phrase. Le navigateur connaît la langue du lecteur, donc c'est lui qui transforme le code en mots ([apps/web/lib/error-message.ts](../../../apps/web/lib/error-message.ts)). Le chapitre 2 montre comment.
+Dans cette API, le `message` de chaque erreur est un **code** comme `"auth.sessionRequired"`, jamais une phrase. Le navigateur connaît la langue du lecteur, donc c'est lui qui transforme le code en mots ([apps/web/lib/error-message.ts](../../apps/web/lib/error-message.ts)). Le chapitre 2 montre comment.
 
 ### JSON
 
@@ -103,7 +103,7 @@ HTTP n'a pas de mémoire : chaque requête est seule. Pour se souvenir que « c'
 3. Le navigateur envoie `Cookie: ft.sid=<random id>` à chaque requête suivante, tout seul.
 4. L'API lit l'id, trouve la session dans Redis, et sait que c'est Alice.
 
-Le cookie est `httpOnly` (le JavaScript de la page ne peut pas le lire), donc un script injecté dans la page ne peut pas le voler. C'est configuré dans [app.setup.ts](../../../apps/api/src/app.setup.ts) (chapitre 2) et utilisé par le module auth (chapitre 5).
+Le cookie est `httpOnly` (le JavaScript de la page ne peut pas le lire), donc un script injecté dans la page ne peut pas le voler. C'est configuré dans [app.setup.ts](../../apps/api/src/app.setup.ts) (chapitre 2) et utilisé par le module auth (chapitre 5).
 
 ### REST
 
@@ -122,29 +122,29 @@ Donc `PATCH /api/courses/fr/level` veut dire « change le niveau de mon cours de
 
 ## 3. Ce que fait cette API : les modules
 
-Le code de [apps/api/src](../../../apps/api/src) est découpé en **modules** (la section 6 explique ce qu'est un module). Voici chacun, avec ses routes. Toutes les routes HTTP commencent par `/api` (le préfixe global défini dans `app.setup.ts`).
+Le code de [apps/api/src](../../apps/api/src) est découpé en **modules** (la section 6 explique ce qu'est un module). Voici chacun, avec ses routes. Toutes les routes HTTP commencent par `/api` (le préfixe global défini dans `app.setup.ts`).
 
-| Dossier                                                           | Module                     | Ce qu'il fait                                                                                                                            | Routes / points d'entrée                                                                                                                                              |
-| ----------------------------------------------------------------- | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [prisma/](../../../apps/api/src/prisma)                           | `PrismaModule` (global)    | Donne à chaque module `PrismaService`, la connexion à Postgres                                                                           | aucune                                                                                                                                                                |
-| [redis/](../../../apps/api/src/redis)                             | `RedisModule` (global)     | Donne à chaque module `RedisService`, la connexion à Redis (sessions, présence, compteurs)                                               | aucune                                                                                                                                                                |
-| [throttler/](../../../apps/api/src/throttler)                     | pas de module, un guard    | Rate limiting : combien de requêtes par minute, comptées par compte ou par IP                                                            | s'applique à chaque route                                                                                                                                             |
-| [metrics/](../../../apps/api/src/metrics)                         | `MetricsModule`            | Les chiffres Prometheus (temps des requêtes, utilisateurs actifs), servis sur un port séparé, 9464                                       | `:9464/metrics` (interne)                                                                                                                                             |
-| [health/](../../../apps/api/src/health)                           | `HealthModule`             | « Est-ce que je suis vivant ? Est-ce que Postgres et Redis répondent ? » pour Docker et la CI                                            | `GET /api/health`                                                                                                                                                     |
-| [auth/](../../../apps/api/src/auth)                               | `AuthModule`               | Inscription, connexion, déconnexion, sessions, authentification à deux facteurs (TOTP) ; le `AuthGuard` global                           | `/api/auth/signup`, `login`, `logout`, `me`, `2fa`, `2fa/setup`, `2fa/enable`, `2fa/verify`                                                                           |
-| [users/](../../../apps/api/src/users)                             | `UsersModule`              | Profils : lister et chercher des utilisateurs, en lire un, changer mon profil, envoyer ou supprimer mon avatar                           | `/api/users`, `/api/users/recently-active`, `/api/users/:id`, `/api/users/me`, `/api/users/me/avatar`                                                                 |
-| [llm/](../../../apps/api/src/llm)                                 | `LlmModule`                | Choisit le fournisseur d'IA (un vrai modèle, ou un faux « fixture » pour les tests) et l'exporte sous le nom `LLM_PROVIDER`              | aucune                                                                                                                                                                |
-| [courses/](../../../apps/api/src/courses)                         | `CoursesModule`            | Les langues qu'un utilisateur étudie, l'objectif du jour, le niveau                                                                      | `/api/courses`, `/api/courses/:lang`, `/api/courses/:lang/level`                                                                                                      |
-| [question-generation/](../../../apps/api/src/question-generation) | `QuestionGenerationModule` | Écrit de nouvelles questions de placement avec le LLM quand le stock baisse                                                              | aucune (utilisé par placement)                                                                                                                                        |
-| [placement/](../../../apps/api/src/placement)                     | `PlacementModule`          | Le test de placement qui trouve ton niveau                                                                                               | `/api/placement`, `/api/placement/answers`                                                                                                                            |
-| [lessons/](../../../apps/api/src/lessons)                         | `LessonsModule`            | La leçon du jour, la liste des leçons, une leçon, les succès, les tentatives (répondre aux pages), l'XP, la discussion avec le tuteur IA | `/api/courses/:lang/today`, `.../lessons`, `.../lessons/:id`, `.../achievements`, `.../lessons/:id/attempt`, `.../attempt/pages/:index`, `.../lessons/:id/discussion` |
-| [gateway/](../../../apps/api/src/gateway)                         | `GatewayModule`            | Le serveur socket.io sur `/ws` ; `SocketsService` permet aux autres modules de pousser des événements à un utilisateur                   | WebSocket `/ws`                                                                                                                                                       |
-| [presence/](../../../apps/api/src/presence)                       | `PresenceModule`           | Qui est en ligne en ce moment (gardé dans Redis)                                                                                         | aucune                                                                                                                                                                |
-| [friends/](../../../apps/api/src/friends)                         | `FriendsModule`            | Liste d'amis, envoyer, accepter, refuser des demandes, retirer un ami                                                                    | `/api/friends`, `/api/friends/requests/:userId`, `.../accept`, `/api/friends/:userId`                                                                                 |
-| [messages/](../../../apps/api/src/messages)                       | `MessagesModule`           | Messages privés : lister les conversations, lire une conversation ; envoyer et marquer comme lu via le socket                            | `/api/conversations`, `/api/conversations/:userId/messages`, événements socket                                                                                        |
-| [demo/](../../../apps/api/src/demo)                               | pas de module              | Des apprenants de démo, rejoués jour après jour à travers les vrais services. Lancé par le seed, en dehors de Nest                       | aucune                                                                                                                                                                |
-| [items/](../../../apps/api/src/items)                             | pas de module, un test     | `item-files.spec.ts` vérifie les questions de placement écrites à la main dans `content/items`                                           | aucune                                                                                                                                                                |
-| [generated/](../../../apps/api/src/generated)                     | pas de module              | Le client Prisma, généré à partir de `schema.prisma`. Jamais modifié à la main                                                           | aucune                                                                                                                                                                |
+| Dossier                                                        | Module                     | Ce qu'il fait                                                                                                                            | Routes / points d'entrée                                                                                                                                              |
+| -------------------------------------------------------------- | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [prisma/](../../apps/api/src/prisma)                           | `PrismaModule` (global)    | Donne à chaque module `PrismaService`, la connexion à Postgres                                                                           | aucune                                                                                                                                                                |
+| [redis/](../../apps/api/src/redis)                             | `RedisModule` (global)     | Donne à chaque module `RedisService`, la connexion à Redis (sessions, présence, compteurs)                                               | aucune                                                                                                                                                                |
+| [throttler/](../../apps/api/src/throttler)                     | pas de module, un guard    | Rate limiting : combien de requêtes par minute, comptées par compte ou par IP                                                            | s'applique à chaque route                                                                                                                                             |
+| [metrics/](../../apps/api/src/metrics)                         | `MetricsModule`            | Les chiffres Prometheus (temps des requêtes, utilisateurs actifs), servis sur un port séparé, 9464                                       | `:9464/metrics` (interne)                                                                                                                                             |
+| [health/](../../apps/api/src/health)                           | `HealthModule`             | « Est-ce que je suis vivant ? Est-ce que Postgres et Redis répondent ? » pour Docker et la CI                                            | `GET /api/health`                                                                                                                                                     |
+| [auth/](../../apps/api/src/auth)                               | `AuthModule`               | Inscription, connexion, déconnexion, sessions, authentification à deux facteurs (TOTP) ; le `AuthGuard` global                           | `/api/auth/signup`, `login`, `logout`, `me`, `2fa`, `2fa/setup`, `2fa/enable`, `2fa/verify`                                                                           |
+| [users/](../../apps/api/src/users)                             | `UsersModule`              | Profils : lister et chercher des utilisateurs, en lire un, changer mon profil, envoyer ou supprimer mon avatar                           | `/api/users`, `/api/users/recently-active`, `/api/users/:id`, `/api/users/me`, `/api/users/me/avatar`                                                                 |
+| [llm/](../../apps/api/src/llm)                                 | `LlmModule`                | Choisit le fournisseur d'IA (un vrai modèle, ou un faux « fixture » pour les tests) et l'exporte sous le nom `LLM_PROVIDER`              | aucune                                                                                                                                                                |
+| [courses/](../../apps/api/src/courses)                         | `CoursesModule`            | Les langues qu'un utilisateur étudie, l'objectif du jour, le niveau                                                                      | `/api/courses`, `/api/courses/:lang`, `/api/courses/:lang/level`                                                                                                      |
+| [question-generation/](../../apps/api/src/question-generation) | `QuestionGenerationModule` | Écrit de nouvelles questions de placement avec le LLM quand le stock baisse                                                              | aucune (utilisé par placement)                                                                                                                                        |
+| [placement/](../../apps/api/src/placement)                     | `PlacementModule`          | Le test de placement qui trouve ton niveau                                                                                               | `/api/placement`, `/api/placement/answers`                                                                                                                            |
+| [lessons/](../../apps/api/src/lessons)                         | `LessonsModule`            | La leçon du jour, la liste des leçons, une leçon, les succès, les tentatives (répondre aux pages), l'XP, la discussion avec le tuteur IA | `/api/courses/:lang/today`, `.../lessons`, `.../lessons/:id`, `.../achievements`, `.../lessons/:id/attempt`, `.../attempt/pages/:index`, `.../lessons/:id/discussion` |
+| [gateway/](../../apps/api/src/gateway)                         | `GatewayModule`            | Le serveur socket.io sur `/ws` ; `SocketsService` permet aux autres modules de pousser des événements à un utilisateur                   | WebSocket `/ws`                                                                                                                                                       |
+| [presence/](../../apps/api/src/presence)                       | `PresenceModule`           | Qui est en ligne en ce moment (gardé dans Redis)                                                                                         | aucune                                                                                                                                                                |
+| [friends/](../../apps/api/src/friends)                         | `FriendsModule`            | Liste d'amis, envoyer, accepter, refuser des demandes, retirer un ami                                                                    | `/api/friends`, `/api/friends/requests/:userId`, `.../accept`, `/api/friends/:userId`                                                                                 |
+| [messages/](../../apps/api/src/messages)                       | `MessagesModule`           | Messages privés : lister les conversations, lire une conversation ; envoyer et marquer comme lu via le socket                            | `/api/conversations`, `/api/conversations/:userId/messages`, événements socket                                                                                        |
+| [demo/](../../apps/api/src/demo)                               | pas de module              | Des apprenants de démo, rejoués jour après jour à travers les vrais services. Lancé par le seed, en dehors de Nest                       | aucune                                                                                                                                                                |
+| [items/](../../apps/api/src/items)                             | pas de module, un test     | `item-files.spec.ts` vérifie les questions de placement écrites à la main dans `content/items`                                           | aucune                                                                                                                                                                |
+| [generated/](../../apps/api/src/generated)                     | pas de module              | Le client Prisma, généré à partir de `schema.prisma`. Jamais modifié à la main                                                           | aucune                                                                                                                                                                |
 
 À côté d'eux, en haut de `src`, il y a les fichiers de démarrage : `main.ts`, `app.setup.ts`, `app.module.ts`, `validation.pipe.ts`, `error-code.filter.ts`. Ils sont au chapitre 2.
 
@@ -172,7 +172,7 @@ flowchart TD
 
 ## 4. La place de l'API dans le système
 
-Toute l'app tourne dans des containers Docker, décrits dans [compose.yml](../../../compose.yml) (plus `compose.prod.yml` et `compose.override.yml`). Seul **Caddy** ouvre un port vers l'extérieur. Caddy est un _reverse proxy_ : une seule porte d'entrée qui envoie chaque requête au bon container, et qui gère le HTTPS.
+Toute l'app tourne dans des containers Docker, décrits dans [compose.yml](../../compose.yml) (plus `compose.prod.yml` et `compose.override.yml`). Seul **Caddy** ouvre un port vers l'extérieur. Caddy est un _reverse proxy_ : une seule porte d'entrée qui envoie chaque requête au bon container, et qui gère le HTTPS.
 
 ```mermaid
 flowchart LR
@@ -187,7 +187,7 @@ flowchart LR
     prom["prometheus"] -.->|"scrape :9464"| api
 ```
 
-Les règles de routage sont dans [infra/caddy/Caddyfile](../../../infra/caddy/Caddyfile) :
+Les règles de routage sont dans [infra/caddy/Caddyfile](../../infra/caddy/Caddyfile) :
 
 ```text
 	# NestJS sets a global "api" prefix, so the prefix is forwarded intact.
@@ -246,7 +246,7 @@ Un **module** est une boîte qui regroupe les pièces d'une fonctionnalité. C'e
 | `providers`   | Mes classes que Nest doit construire (services, guards, factories) |
 | `exports`     | Lesquels de mes providers les autres modules peuvent utiliser      |
 
-En voici un vrai, [courses.module.ts](../../../apps/api/src/courses/courses.module.ts) :
+En voici un vrai, [courses.module.ts](../../apps/api/src/courses/courses.module.ts) :
 
 ```ts
 @Module({
@@ -260,9 +260,9 @@ export class CoursesModule {}
 
 Le corps de la classe est vide : le décorateur porte toute l'information. `CoursesModule` a besoin de `SocketsService` venant de `GatewayModule` (pour pousser des événements « le cours a changé »), et il exporte `CoursesService` parce que `PlacementModule` l'utilise.
 
-Tous les modules partent d'une seule racine, [app.module.ts](../../../apps/api/src/app.module.ts), qui les liste dans `imports`. Nest commence par là et parcourt l'arbre.
+Tous les modules partent d'une seule racine, [app.module.ts](../../apps/api/src/app.module.ts), qui les liste dans `imports`. Nest commence par là et parcourt l'arbre.
 
-Un module peut être **global** avec `@Global()`. Alors ses exports sont disponibles partout sans l'importer. Seuls deux modules font ça, et [prisma.module.ts](../../../apps/api/src/prisma/prisma.module.ts) explique pourquoi :
+Un module peut être **global** avec `@Global()`. Alors ses exports sont disponibles partout sans l'importer. Seuls deux modules font ça, et [prisma.module.ts](../../apps/api/src/prisma/prisma.module.ts) explique pourquoi :
 
 ```ts
 /**
@@ -280,7 +280,7 @@ export class PrismaModule {}
 
 ### 6.2 Controllers
 
-Un **controller** est le serveur du restaurant. Il reçoit les requêtes HTTP, lit l'entrée (body, paramètres d'URL, utilisateur courant), appelle un service, et renvoie le résultat. Il ne doit contenir aucune règle métier. Extrait de [courses.controller.ts](../../../apps/api/src/courses/courses.controller.ts) :
+Un **controller** est le serveur du restaurant. Il reçoit les requêtes HTTP, lit l'entrée (body, paramètres d'URL, utilisateur courant), appelle un service, et renvoie le résultat. Il ne doit contenir aucune règle métier. Extrait de [courses.controller.ts](../../apps/api/src/courses/courses.controller.ts) :
 
 ```ts
 @ApiTags('courses')
@@ -313,7 +313,7 @@ export class CoursesController {
 
 ### 6.3 Providers et services
 
-Un **provider** est n'importe quelle classe (ou valeur) que Nest construit et distribue. Le type le plus courant est un **service** : le cuisinier, là où se fait le vrai travail. Un service est une classe marquée `@Injectable()`. Extrait de [courses.service.ts](../../../apps/api/src/courses/courses.service.ts) :
+Un **provider** est n'importe quelle classe (ou valeur) que Nest construit et distribue. Le type le plus courant est un **service** : le cuisinier, là où se fait le vrai travail. Un service est une classe marquée `@Injectable()`. Extrait de [courses.service.ts](../../apps/api/src/courses/courses.service.ts) :
 
 ```ts
 @Injectable()
@@ -340,7 +340,7 @@ export class CoursesService {
 
 Remarque deux choses. Le service n'écrit jamais `new PrismaService()` : il en _demande_ juste un dans son constructeur. Et il lance une `UnauthorizedException` avec un code ; Nest la transforme en réponse `401`.
 
-Un provider n'est pas toujours une classe. [llm.module.ts](../../../apps/api/src/llm/llm.module.ts) utilise un **factory provider** : une fonction que Nest appelle une fois au démarrage, avec un token Symbol comme nom :
+Un provider n'est pas toujours une classe. [llm.module.ts](../../apps/api/src/llm/llm.module.ts) utilise un **factory provider** : une fonction que Nest appelle une fois au démarrage, avec un token Symbol comme nom :
 
 ```ts
     {
@@ -393,9 +393,9 @@ Un **décorateur** est le `@Something()` écrit au-dessus d'une classe, d'une m�
 | Méthode   | `@Get()`, `@Post(':id')`, `@Public()`, `@SkipThrottle()`, `@UseInterceptors()` | Route, règles pour une route                     |
 | Paramètre | `@Body()`, `@Param('lang')`, `@CurrentUser()`                                  | Quelle partie de la requête va dans cet argument |
 
-Comment Nest sait-il que le constructeur demande un `PrismaService`, si les types disparaissent à la compilation ? Les options TypeScript `experimentalDecorators` et `emitDecoratorMetadata` (dans [packages/tsconfig/nest.json](../../../packages/tsconfig/nest.json)) font écrire au compilateur les types du constructeur dans des métadonnées cachées appelées `design:paramtypes`. Le package `reflect-metadata` les lit. C'est pour ça que `main.ts` commence par `import 'reflect-metadata'`, et que la config ESLint désactive la règle qui changerait `import { X }` en `import type { X }` (un import de type seul est effacé, et les métadonnées sont perdues).
+Comment Nest sait-il que le constructeur demande un `PrismaService`, si les types disparaissent à la compilation ? Les options TypeScript `experimentalDecorators` et `emitDecoratorMetadata` (dans [packages/tsconfig/nest.json](../../packages/tsconfig/nest.json)) font écrire au compilateur les types du constructeur dans des métadonnées cachées appelées `design:paramtypes`. Le package `reflect-metadata` les lit. C'est pour ça que `main.ts` commence par `import 'reflect-metadata'`, et que la config ESLint désactive la règle qui changerait `import { X }` en `import type { X }` (un import de type seul est effacé, et les métadonnées sont perdues).
 
-Ce projet crée aussi ses propres décorateurs. Extrait de [auth.decorators.ts](../../../apps/api/src/auth/auth.decorators.ts) :
+Ce projet crée aussi ses propres décorateurs. Extrait de [auth.decorators.ts](../../apps/api/src/auth/auth.decorators.ts) :
 
 ```ts
 /** Opens a route to anonymous callers. Everything else requires a session. */
@@ -428,15 +428,15 @@ flowchart LR
     filter --> res
 ```
 
-| Pièce                | Question à laquelle elle répond                                                    | Exemple dans cette API                                                                                                                                    |
-| -------------------- | ---------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Middleware**       | « Faire quelque chose avec chaque requête brute »                                  | `httpMetrics` (chronomètre chaque requête), `express-session` (charge la session depuis Redis). Les deux dans `app.setup.ts`                              |
-| **Guard**            | « Est-ce que cet appelant a le droit d'entrer ? » Renvoie true ou lance une erreur | `AuthGuard` (demande une session sauf avec `@Public()`), `IdentityThrottlerGuard` (rate limit). Les deux globaux, enregistrés avec `APP_GUARD`            |
-| **Interceptor**      | « Envelopper le handler : faire quelque chose avant et après »                     | `FileInterceptor('avatar', ...)` de `@nestjs/platform-express` lit le fichier d'avatar envoyé (utilise `multer`)                                          |
-| **Pipe**             | « L'entrée est-elle valide ? La convertir »                                        | `CodeValidationPipe` (vérification Zod de chaque body), `LangParam` (vérifie `:lang`) dans [validation.pipe.ts](../../../apps/api/src/validation.pipe.ts) |
-| **Exception filter** | « Quelque chose a lancé une erreur : quelle réponse on envoie ? »                  | `ErrorCodeFilter` (global), `AvatarTooLargeFilter` dans users, `SocketExceptionFilter` pour les sockets                                                   |
+| Pièce                | Question à laquelle elle répond                                                    | Exemple dans cette API                                                                                                                                 |
+| -------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Middleware**       | « Faire quelque chose avec chaque requête brute »                                  | `httpMetrics` (chronomètre chaque requête), `express-session` (charge la session depuis Redis). Les deux dans `app.setup.ts`                           |
+| **Guard**            | « Est-ce que cet appelant a le droit d'entrer ? » Renvoie true ou lance une erreur | `AuthGuard` (demande une session sauf avec `@Public()`), `IdentityThrottlerGuard` (rate limit). Les deux globaux, enregistrés avec `APP_GUARD`         |
+| **Interceptor**      | « Envelopper le handler : faire quelque chose avant et après »                     | `FileInterceptor('avatar', ...)` de `@nestjs/platform-express` lit le fichier d'avatar envoyé (utilise `multer`)                                       |
+| **Pipe**             | « L'entrée est-elle valide ? La convertir »                                        | `CodeValidationPipe` (vérification Zod de chaque body), `LangParam` (vérifie `:lang`) dans [validation.pipe.ts](../../apps/api/src/validation.pipe.ts) |
+| **Exception filter** | « Quelque chose a lancé une erreur : quelle réponse on envoie ? »                  | `ErrorCodeFilter` (global), `AvatarTooLargeFilter` dans users, `SocketExceptionFilter` pour les sockets                                                |
 
-Un commentaire dans [http-metrics.middleware.ts](../../../apps/api/src/metrics/http-metrics.middleware.ts) montre pourquoi l'ordre compte :
+Un commentaire dans [http-metrics.middleware.ts](../../apps/api/src/metrics/http-metrics.middleware.ts) montre pourquoi l'ordre compte :
 
 ```ts
 /**
@@ -468,7 +468,7 @@ export type StartCourseInput = z.infer<typeof StartCourseSchema>;
 
 ### @ft/shared
 
-Ce schema ne vit pas dans l'API. Il vit dans [packages/shared/src/schemas/course.ts](../../../packages/shared/src/schemas/course.ts). Le package `@ft/shared` est le **contrat** entre l'API et l'app web. Son [index.ts](../../../packages/shared/src/index.ts) explique pourquoi :
+Ce schema ne vit pas dans l'API. Il vit dans [packages/shared/src/schemas/course.ts](../../packages/shared/src/schemas/course.ts). Le package `@ft/shared` est le **contrat** entre l'API et l'app web. Son [index.ts](../../packages/shared/src/index.ts) explique pourquoi :
 
 ```ts
 /**
@@ -497,7 +497,7 @@ Il est compilé dans `packages/shared/dist`, et l'API l'importe sous le nom `@ft
 
 ### nestjs-zod
 
-Normalement, Nest valide avec des _classes DTO_ (Data Transfer Object : une classe qui décrit un body). `nestjs-zod` construit une telle classe à partir d'un schema Zod. Extrait de [courses.dto.ts](../../../apps/api/src/courses/courses.dto.ts) :
+Normalement, Nest valide avec des _classes DTO_ (Data Transfer Object : une classe qui décrit un body). `nestjs-zod` construit une telle classe à partir d'un schema Zod. Extrait de [courses.dto.ts](../../apps/api/src/courses/courses.dto.ts) :
 
 ```ts
 import { createZodDto } from "nestjs-zod";
@@ -552,15 +552,15 @@ apps/api/
 └── .gitignore
 ```
 
-| Dossier          | Ce que c'est                                                                                                                                                                                                                                                                       | Modifié à la main ? |
-| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- |
-| `src/`           | Tout le code qui tourne dans le serveur. Les tests unitaires (`*.spec.ts`) sont à côté du fichier qu'ils testent                                                                                                                                                                   | Oui                 |
-| `src/generated/` | Le client Prisma : du code TypeScript fabriqué par `prisma generate` à partir de `schema.prisma`. [.gitignore](../../../apps/api/.gitignore) le garde hors de git : _"committing it would put a build artifact under review"_ (le commiter mettrait un artefact de build en revue) | Non                 |
-| `prisma/`        | Le schema de la base de données, l'historique des migrations, et le script de seed                                                                                                                                                                                                 | Oui                 |
-| `scripts/`       | Des outils que tu lances à la main avec `tsx` : écrire et vérifier des leçons, vérifier les plans, essayer la génération de questions par le LLM. Ne font pas partie du serveur                                                                                                    | Oui                 |
-| `test/`          | Les tests end-to-end : ils démarrent toute l'app et envoient de vraies requêtes HTTP avec Supertest                                                                                                                                                                                | Oui                 |
-| `coverage/`      | Rapport HTML et `lcov` fabriqué par `pnpm test:cov`                                                                                                                                                                                                                                | Non                 |
-| `dist/`          | La sortie de `nest build`. C'est ce qui tourne en production                                                                                                                                                                                                                       | Non                 |
+| Dossier          | Ce que c'est                                                                                                                                                                                                                                                                    | Modifié à la main ? |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- |
+| `src/`           | Tout le code qui tourne dans le serveur. Les tests unitaires (`*.spec.ts`) sont à côté du fichier qu'ils testent                                                                                                                                                                | Oui                 |
+| `src/generated/` | Le client Prisma : du code TypeScript fabriqué par `prisma generate` à partir de `schema.prisma`. [.gitignore](../../apps/api/.gitignore) le garde hors de git : _"committing it would put a build artifact under review"_ (le commiter mettrait un artefact de build en revue) | Non                 |
+| `prisma/`        | Le schema de la base de données, l'historique des migrations, et le script de seed                                                                                                                                                                                              | Oui                 |
+| `scripts/`       | Des outils que tu lances à la main avec `tsx` : écrire et vérifier des leçons, vérifier les plans, essayer la génération de questions par le LLM. Ne font pas partie du serveur                                                                                                 | Oui                 |
+| `test/`          | Les tests end-to-end : ils démarrent toute l'app et envoient de vraies requêtes HTTP avec Supertest                                                                                                                                                                             | Oui                 |
+| `coverage/`      | Rapport HTML et `lcov` fabriqué par `pnpm test:cov`                                                                                                                                                                                                                             | Non                 |
+| `dist/`          | La sortie de `nest build`. C'est ce qui tourne en production                                                                                                                                                                                                                    | Non                 |
 
 ---
 
@@ -568,7 +568,7 @@ apps/api/
 
 ### 9.1 package.json
 
-[package.json](../../../apps/api/package.json) nomme le package `@ft/api` et liste ses scripts et ses dépendances. `"files": ["dist"]` dit que seul `dist` est livré quand le Dockerfile lance `pnpm deploy`.
+[package.json](../../apps/api/package.json) nomme le package `@ft/api` et liste ses scripts et ses dépendances. `"files": ["dist"]` dit que seul `dist` est livré quand le Dockerfile lance `pnpm deploy`.
 
 Lance un script depuis la racine du repo avec `pnpm --filter @ft/api <script>`, ou depuis `apps/api` avec `pnpm <script>`.
 
@@ -620,7 +620,7 @@ Lance un script depuis la racine du repo avec `pnpm --filter @ft/api <script>`, 
 
 ### 9.2 nest-cli.json et nest-cli.dev.json
 
-Ils configurent la commande `nest`. [nest-cli.json](../../../apps/api/nest-cli.json) :
+Ils configurent la commande `nest`. [nest-cli.json](../../apps/api/nest-cli.json) :
 
 ```json
 {
@@ -639,7 +639,7 @@ Ils configurent la commande `nest`. [nest-cli.json](../../../apps/api/nest-cli.j
 - `deleteOutDir: true` : vider `dist` avant chaque build, pour qu'aucun vieux fichier ne reste.
 - `collection` : les modèles utilisés par `nest generate` (pas utilisé par les scripts).
 
-[nest-cli.dev.json](../../../apps/api/nest-cli.dev.json) est le même fichier avec `"deleteOutDir": false`. Seul le script `dev` l'utilise. Le fichier ne donne pas de raison ; l'effet est que le mode watch n'efface pas `dist` (ni les infos de build incrémental gardées dedans) à chaque démarrage.
+[nest-cli.dev.json](../../apps/api/nest-cli.dev.json) est le même fichier avec `"deleteOutDir": false`. Seul le script `dev` l'utilise. Le fichier ne donne pas de raison ; l'effet est que le mode watch n'efface pas `dist` (ni les infos de build incrémental gardées dedans) à chaque démarrage.
 
 ### 9.3 tsconfig.json et tsconfig.build.json
 
@@ -652,7 +652,7 @@ flowchart LR
     ts --> build["apps/api/tsconfig.build.json<br/>src seulement, pas de specs<br/>(nest build)"]
 ```
 
-[tsconfig.json](../../../apps/api/tsconfig.json) est utilisé par `pnpm typecheck` et par ton éditeur. Il inclut les tests et les scripts pour qu'ils soient aussi vérifiés :
+[tsconfig.json](../../apps/api/tsconfig.json) est utilisé par `pnpm typecheck` et par ton éditeur. Il inclut les tests et les scripts pour qu'ils soient aussi vérifiés :
 
 ```jsonc
     // Nothing imports this app's types, and emitting declarations makes every
@@ -669,13 +669,13 @@ flowchart LR
   "include": ["src/**/*.ts", "test/**/*.ts", "scripts/**/*.ts"],
 ```
 
-[tsconfig.build.json](../../../apps/api/tsconfig.build.json) l'étend pour `nest build` : seulement `src`, pas `test` et pas de `*.spec.ts`. Il définit `rootDir: "./src"` pour que la sortie soit `dist/main.js` et pas `dist/src/main.js`. Les deux fichiers utilisent des noms de `tsBuildInfoFile` différents, pour qu'un typecheck et un build ne mélangent pas leur état sauvegardé.
+[tsconfig.build.json](../../apps/api/tsconfig.build.json) l'étend pour `nest build` : seulement `src`, pas `test` et pas de `*.spec.ts`. Il définit `rootDir: "./src"` pour que la sortie soit `dist/main.js` et pas `dist/src/main.js`. Les deux fichiers utilisent des noms de `tsBuildInfoFile` différents, pour qu'un typecheck et un build ne mélangent pas leur état sauvegardé.
 
-Le [nest.json](../../../packages/tsconfig/nest.json) partagé utilise `"module": "commonjs"` (l'ancien système de modules de Node, celui que Nest attend) et active `experimentalDecorators` et `emitDecoratorMetadata` (section 6.5).
+Le [nest.json](../../packages/tsconfig/nest.json) partagé utilise `"module": "commonjs"` (l'ancien système de modules de Node, celui que Nest attend) et active `experimentalDecorators` et `emitDecoratorMetadata` (section 6.5).
 
 ### 9.4 eslint.config.mjs
 
-[eslint.config.mjs](../../../apps/api/eslint.config.mjs) réutilise les règles Nest partagées et ignore les dossiers générés :
+[eslint.config.mjs](../../apps/api/eslint.config.mjs) réutilise les règles Nest partagées et ignore les dossiers générés :
 
 ```js
 // .mjs, not .js: this package must stay CommonJS ("type": "module" would make
@@ -691,13 +691,13 @@ export default [
 ];
 ```
 
-Le fichier partagé [packages/eslint-config/nest.js](../../../packages/eslint-config/nest.js) désactive `consistent-type-imports` (elle casserait la DI, section 6.5) et `no-extraneous-class` (un module Nest est une classe vide avec un décorateur).
+Le fichier partagé [packages/eslint-config/nest.js](../../packages/eslint-config/nest.js) désactive `consistent-type-imports` (elle casserait la DI, section 6.5) et `no-extraneous-class` (un module Nest est une classe vide avec un décorateur).
 
 ### 9.5 Config des tests : vitest.config.mts et vitest.config.e2e.mts
 
 La liste des tâches dit « jest config », mais ce projet utilise **Vitest**, pas Jest. Vitest est un lanceur de tests avec presque la même API (`describe`, `it`, `expect`). Il n'y a aucun fichier Jest.
 
-[vitest.config.mts](../../../apps/api/vitest.config.mts) sert aux tests unitaires. La partie importante est le compilateur :
+[vitest.config.mts](../../apps/api/vitest.config.mts) sert aux tests unitaires. La partie importante est le compilateur :
 
 ```ts
   plugins: [
@@ -710,11 +710,11 @@ La liste des tâches dit « jest config », mais ce projet utilise **Vitest**, p
 
 Il lance `src/**/*.spec.ts`, charge `reflect-metadata` en premier, définit `AVATAR_STORAGE_DIR` (l'app refuse de se charger sans), et demande au moins 60 % de couverture des lignes et des fonctions, en ignorant `main.ts`, `app.setup.ts`, `*.module.ts` et `src/generated`.
 
-[vitest.config.e2e.mts](../../../apps/api/vitest.config.e2e.mts) sert à `test/**/*.e2e-spec.ts`. Il force `LLM_PROVIDER: 'fixture'` (pour qu'aucun test ne dépense d'argent sur une vraie IA), remet les limites de débit à leurs valeurs par défaut, donne 30 secondes par test, et lance les fichiers un par un (`fileParallelism: false`) parce qu'ils partagent des lignes de la base. Les deux fichiers finissent en `.mts` parce que le package est en CommonJS et que Vite doit charger la config en ESM. Le chapitre 10 parle des tests en détail.
+[vitest.config.e2e.mts](../../apps/api/vitest.config.e2e.mts) sert à `test/**/*.e2e-spec.ts`. Il force `LLM_PROVIDER: 'fixture'` (pour qu'aucun test ne dépense d'argent sur une vraie IA), remet les limites de débit à leurs valeurs par défaut, donne 30 secondes par test, et lance les fichiers un par un (`fileParallelism: false`) parce qu'ils partagent des lignes de la base. Les deux fichiers finissent en `.mts` parce que le package est en CommonJS et que Vite doit charger la config en ESM. Le chapitre 10 parle des tests en détail.
 
 ### 9.6 prisma.config.ts
 
-[prisma.config.ts](../../../apps/api/prisma.config.ts) dit à la CLI Prisma où sont le schema, les migrations et la commande de seed, et quelle URL de base de données utiliser :
+[prisma.config.ts](../../apps/api/prisma.config.ts) dit à la CLI Prisma où sont le schema, les migrations et la commande de seed, et quelle URL de base de données utiliser :
 
 ```ts
 export default defineConfig({
@@ -729,7 +729,7 @@ Il lit `process.env.DATABASE_URL ?? ''` au lieu du helper `env()` de Prisma, par
 
 ### 9.7 Dockerfile
 
-Le [Dockerfile](../../../apps/api/Dockerfile) construit l'image de l'API. Son contexte de build est la **racine du repo**, pas `apps/api`, parce que pnpm a besoin du lockfile racine pour résoudre les packages `workspace:*` :
+Le [Dockerfile](../../apps/api/Dockerfile) construit l'image de l'API. Son contexte de build est la **racine du repo**, pas `apps/api`, parce que pnpm a besoin du lockfile racine pour résoudre les packages `workspace:*` :
 
 ```text
 #   docker build -f apps/api/Dockerfile --target prod -t ft/api .
@@ -765,11 +765,11 @@ Ils listent ce que Docker ne doit **pas** envoyer dans le build : `node_modules`
 # to the sibling .dockerignore.
 ```
 
-Donc [Dockerfile.dockerignore](../../../apps/api/Dockerfile.dockerignore) est celui qui sert vraiment (contexte = racine du repo), et [.dockerignore](../../../apps/api/.dockerignore) servirait si quelqu'un buildait avec `apps/api` comme contexte.
+Donc [Dockerfile.dockerignore](../../apps/api/Dockerfile.dockerignore) est celui qui sert vraiment (contexte = racine du repo), et [.dockerignore](../../apps/api/.dockerignore) servirait si quelqu'un buildait avec `apps/api` comme contexte.
 
 ### 9.9 .gitignore
 
-[.gitignore](../../../apps/api/.gitignore) a une seule ligne : `src/generated/`. Le client Prisma est reconstruit à l'installation et pendant le build Docker.
+[.gitignore](../../apps/api/.gitignore) a une seule ligne : `src/generated/`. Le client Prisma est reconstruit à l'installation et pendant le build Docker.
 
 ---
 

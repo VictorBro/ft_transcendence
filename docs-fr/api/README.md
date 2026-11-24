@@ -4,7 +4,7 @@ Ce dossier explique **tout ce qu'il y a dans `apps/api`** : ce que fait chaque d
 Il est écrit en français simple. Lis les chapitres dans l'ordre : chacun s'appuie sur le précédent.
 
 Les chapitres suivent la façon dont le programme tourne. On commence par la porte d'entrée
-([app.setup.ts](../../../apps/api/src/app.setup.ts) et [main.ts](../../../apps/api/src/main.ts)), puis on
+([app.setup.ts](../../apps/api/src/app.setup.ts) et [main.ts](../../apps/api/src/main.ts)), puis on
 ouvre les modules un par un, dans l'ordre où une requête les rencontre.
 
 ```mermaid

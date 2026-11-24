@@ -66,7 +66,7 @@ C'est pour ça que ce projet utilise des sessions.
 
 ### Comment la session est stockée dans Redis
 
-La configuration de la session est dans [app.setup.ts](../../../apps/api/src/app.setup.ts) (voir [02-boot-and-request-flow.md](02-boot-and-request-flow.md)).
+La configuration de la session est dans [app.setup.ts](../../apps/api/src/app.setup.ts) (voir [02-boot-and-request-flow.md](02-boot-and-request-flow.md)).
 Elle utilise le middleware (code qui passe sur chaque requête) `express-session` avec un store `connect-redis` :
 
 ```ts
@@ -157,7 +157,7 @@ apps/api/src/
 
 ## auth.module.ts
 
-[auth.module.ts](../../../apps/api/src/auth/auth.module.ts) regroupe la partie auth de l'app :
+[auth.module.ts](../../apps/api/src/auth/auth.module.ts) regroupe la partie auth de l'app :
 
 ```ts
 @Module({
@@ -175,12 +175,12 @@ export class AuthModule {}
   Un provider avec ce token devient un **guard global** : Nest le lance avant **chaque** route de toute l'app, pas seulement les routes de ce module.
 - `exports: [AuthService]` — les autres modules peuvent injecter `AuthService`.
 
-`AuthModule` est importé dans [app.module.ts](../../../apps/api/src/app.module.ts) avec tous les autres modules de fonctionnalités.
+`AuthModule` est importé dans [app.module.ts](../../apps/api/src/app.module.ts) avec tous les autres modules de fonctionnalités.
 
 ## auth.dto.ts et les schemas partagés
 
 Un **DTO** ("Data Transfer Object", objet de transfert de données) est une classe qui décrit la forme du body d'une requête ou d'une réponse.
-Dans ce projet, les vraies règles sont des **schemas Zod** dans `packages/shared`, et [auth.dto.ts](../../../apps/api/src/auth/auth.dto.ts) ne fait que les emballer :
+Dans ce projet, les vraies règles sont des **schemas Zod** dans `packages/shared`, et [auth.dto.ts](../../apps/api/src/auth/auth.dto.ts) ne fait que les emballer :
 
 ```ts
 /**
@@ -205,7 +205,7 @@ Chaque message d'erreur dans ces schemas est un **code** comme `'password.tooSho
 
 ### Les schemas de packages/shared
 
-Depuis [user.ts](../../../packages/shared/src/schemas/user.ts) :
+Depuis [user.ts](../../packages/shared/src/schemas/user.ts) :
 
 | Schema                | Utilisé par                    | Règles                                                                                              |
 | --------------------- | ------------------------------ | --------------------------------------------------------------------------------------------------- |
@@ -235,7 +235,7 @@ Le `max(128)` compte : argon2 hache n'importe quelle longueur, donc sans limite 
 `UpdateProfileSchema` laisse de côté exprès `email`, `role` et `avatarUrl` : changer l'email ou le rôle est un changement de privilège,
 et `avatarUrl` désigne un fichier sur le disque du serveur, donc quelqu'un qui pourrait le modifier « pourrait désigner le fichier de quelqu'un d'autre et nous le faire supprimer ».
 
-Depuis [two-factor.ts](../../../packages/shared/src/schemas/two-factor.ts) :
+Depuis [two-factor.ts](../../packages/shared/src/schemas/two-factor.ts) :
 
 | Schema                    | Règles                                                                          |
 | ------------------------- | ------------------------------------------------------------------------------- |
@@ -253,7 +253,7 @@ Le même fichier contient les constantes `RECOVERY_CODE_COUNT = 10`, `RECOVERY_C
 
 ## auth.controller.ts
 
-[auth.controller.ts](../../../apps/api/src/auth/auth.controller.ts) contient toutes les routes `/api/auth/*`. D'abord, la liste complète :
+[auth.controller.ts](../../apps/api/src/auth/auth.controller.ts) contient toutes les routes `/api/auth/*`. D'abord, la liste complète :
 
 | Méthode | Chemin             | Guard     | Limite de débit (par IP) | Ce qu'elle fait                                                                                                                      |
 | ------- | ------------------ | --------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
@@ -601,12 +601,12 @@ L'app web l'appelle pour savoir « suis-je connecté, et en tant que qui ? ». L
 Utilisée après l'activation ou la désactivation de la 2FA. Elle se contente de **logger** une erreur au lieu de la lancer : le changement de 2FA est déjà enregistré,
 et les codes de secours doivent quand même arriver à l'utilisateur.
 
-**Tests :** [auth.controller.spec.ts](../../../apps/api/src/auth/auth.controller.spec.ts) vérifie que la déconnexion efface le cookie et ferme les sockets, échoue quand Redis ne peut pas détruire la session,
+**Tests :** [auth.controller.spec.ts](../../apps/api/src/auth/auth.controller.spec.ts) vérifie que la déconnexion efface le cookie et ferme les sockets, échoue quand Redis ne peut pas détruire la session,
 que chaque route qui crée un nouvel id de session ferme les sockets de l'ancien id, et que les codes de secours sont renvoyés même quand la rotation échoue.
 
 ## auth.service.ts
 
-[auth.service.ts](../../../apps/api/src/auth/auth.service.ts) fait le travail sur les mots de passe. Il a seulement besoin de `PrismaService`.
+[auth.service.ts](../../apps/api/src/auth/auth.service.ts) fait le travail sur les mots de passe. Il a seulement besoin de `PrismaService`.
 
 ### Les réglages d'argon2
 
@@ -711,12 +711,12 @@ Il renvoie aussi si la 2FA est active (`totpEnabledAt` est rempli), pour que le 
 - `verifyPassword(userId, password)` — ré-authentification, utilisée par `DELETE /auth/2fa`. Renvoie `true`/`false`, ne lance jamais d'erreur pour un mauvais mot de passe.
 - `findById(id)` — renvoie un `SessionUser` ou `null`. Utilisée par le guard à chaque requête et par `2fa/verify`.
 
-**Tests :** [auth.service.spec.ts](../../../apps/api/src/auth/auth.service.spec.ts) vérifie qu'un hash argon2id est stocké (jamais le mot de passe), que les emails sont mis en minuscules, que le hash n'est jamais renvoyé,
+**Tests :** [auth.service.spec.ts](../../apps/api/src/auth/auth.service.spec.ts) vérifie qu'un hash argon2id est stocké (jamais le mot de passe), que les emails sont mis en minuscules, que le hash n'est jamais renvoyé,
 que P2002 devient un 409 et que les autres erreurs passent telles quelles, qu'un email inconnu reçoit le même message qu'un mauvais mot de passe, et que `findById` renvoie null pour un utilisateur absent.
 
 ## auth.decorators.ts
 
-[auth.decorators.ts](../../../apps/api/src/auth/auth.decorators.ts) est petit mais central :
+[auth.decorators.ts](../../apps/api/src/auth/auth.decorators.ts) est petit mais central :
 
 ```ts
 export const IS_PUBLIC = "auth:public";
@@ -737,7 +737,7 @@ export const CurrentUser = createParamDecorator((_data: unknown, context: Execut
 
 Un **guard** dans Nest est une classe avec une méthode `canActivate`. Il tourne avant le handler de la route. S'il renvoie `true`, la requête continue ; s'il lance une erreur, la requête s'arrête.
 
-[auth.guard.ts](../../../apps/api/src/auth/auth.guard.ts) :
+[auth.guard.ts](../../apps/api/src/auth/auth.guard.ts) :
 
 ```ts
 /**
@@ -802,13 +802,13 @@ flowchart TD
 
 « Privé par défaut », c'est le choix de conception clé : si un développeur oublie un décorateur, la route est **fermée**, pas ouverte.
 
-**Tests :** [auth.guard.spec.ts](../../../apps/api/src/auth/auth.guard.spec.ts) vérifie que les routes `@Public` passent sans toucher à la session, qu'une session absente est refusée,
+**Tests :** [auth.guard.spec.ts](../../apps/api/src/auth/auth.guard.spec.ts) vérifie que les routes `@Public` passent sans toucher à la session, qu'une session absente est refusée,
 qu'une session valide attache l'utilisateur et le compte comme actif, et qu'une session dont l'utilisateur a disparu est détruite.
 
 ## session.d.ts
 
 Par défaut, TypeScript ne sait pas ce que tu mets dans `request.session`. Écrire `request.session.userId` serait une erreur de type.
-[session.d.ts](../../../apps/api/src/auth/session.d.ts) règle ça :
+[session.d.ts](../../apps/api/src/auth/session.d.ts) règle ça :
 
 ```ts
 import "express-session";
@@ -835,7 +835,7 @@ La première ligne `import 'express-session'` fait de ce fichier un module, ce q
 
 ## two-factor.service.ts
 
-[two-factor.service.ts](../../../apps/api/src/auth/two-factor.service.ts) fait tout le travail de la 2FA avec deux bibliothèques : `otpauth` (les calculs TOTP) et `qrcode-generator` (dessine l'image du QR code).
+[two-factor.service.ts](../../apps/api/src/auth/two-factor.service.ts) fait tout le travail de la 2FA avec deux bibliothèques : `otpauth` (les calculs TOTP) et `qrcode-generator` (dessine l'image du QR code).
 Les données vivent sur la ligne `User` (`totpSecret`, `totpEnabledAt`) et dans la table `RecoveryCode` (voir [04-database.md](04-database.md)).
 
 ### Le cycle de vie de la 2FA
@@ -1015,14 +1015,14 @@ Six chiffres : on essaie le TOTP. Sinon (ou si le TOTP a échoué) : on l'essaie
 
 Vide `totpSecret` et `totpEnabledAt` et supprime tous les codes de secours, en une seule transaction. Donc réactiver la 2FA commence toujours avec un secret tout neuf.
 
-**Tests :** [two-factor.service.spec.ts](../../../apps/api/src/auth/two-factor.service.spec.ts) couvre l'inscription à la 2FA (secret stocké mais pas activé, refus une fois la 2FA active (#216), mauvais code, cas de courses entre requêtes)
+**Tests :** [two-factor.service.spec.ts](../../apps/api/src/auth/two-factor.service.spec.ts) couvre l'inscription à la 2FA (secret stocké mais pas activé, refus une fois la 2FA active (#216), mauvais code, cas de courses entre requêtes)
 et le second facteur (TOTP actuel accepté, refusé si jamais activé, codes de secours avec ou sans tirets, un code déjà utilisé refusé).
 
 ---
 
 ## users.module.ts
 
-[users.module.ts](../../../apps/api/src/users/users.module.ts) est un module tout simple :
+[users.module.ts](../../apps/api/src/users/users.module.ts) est un module tout simple :
 
 ```ts
 @Module({
@@ -1037,7 +1037,7 @@ Il n'importe pas `AuthModule`. Il n'en a pas besoin : le guard est global, `@Cur
 
 ## users.controller.ts
 
-[users.controller.ts](../../../apps/api/src/users/users.controller.ts) contient les routes `/api/users/*`. Aucune n'est `@Public`, donc toutes ont besoin d'une session.
+[users.controller.ts](../../apps/api/src/users/users.controller.ts) contient les routes `/api/users/*`. Aucune n'est `@Public`, donc toutes ont besoin d'une session.
 
 | Méthode | Chemin                   | Body / paramètres         | Ce qu'elle fait                                                 |
 | ------- | ------------------------ | ------------------------- | --------------------------------------------------------------- |
@@ -1066,7 +1066,7 @@ Il n'importe pas `AuthModule`. Il n'en a pas besoin : le guard est global, `@Cur
 ```
 
 - L'**ordre** des routes compte : Express essaie les routes de haut en bas, donc `recently-active` doit venir avant `:id`.
-- `UserIdParam` (de [validation.pipe.ts](../../../apps/api/src/validation.pipe.ts)) vérifie que l'id est un UUID et le met en minuscules. Un mauvais id répond 400 avant que le service tourne.
+- `UserIdParam` (de [validation.pipe.ts](../../apps/api/src/validation.pipe.ts)) vérifie que l'id est un UUID et le met en minuscules. Un mauvais id répond 400 avant que le service tourne.
 - Le controller passe `new Date()` comme « maintenant ». Ça rend le service facile à tester avec une date fixe.
 
 ### PATCH /users/me
@@ -1157,7 +1157,7 @@ Un fichier texte renommé en `.png` échoue ici et il est supprimé.
 
 `AvatarTooLargeFilter` est un petit **exception filter** (filtre d'exceptions) défini dans le même fichier. Multer lance `PayloadTooLargeException` avec la phrase anglaise "File too large" ; le filtre la remplace par le code `avatar.invalidFile`, comme toutes les autres erreurs de cette API.
 
-Les fichiers enregistrés sont servis comme fichiers statiques sous `/api/uploads/avatars/` (`AVATAR_ROUTE`, configuré dans [app.setup.ts](../../../apps/api/src/app.setup.ts)).
+Les fichiers enregistrés sont servis comme fichiers statiques sous `/api/uploads/avatars/` (`AVATAR_ROUTE`, configuré dans [app.setup.ts](../../apps/api/src/app.setup.ts)).
 
 ### DELETE /users/me/avatar
 
@@ -1165,7 +1165,7 @@ Appelle `clearAvatar` : l'utilisateur revient à l'image par défaut, et l'ancie
 
 ## users.dto.ts
 
-[users.dto.ts](../../../apps/api/src/users/users.dto.ts) emballe quatre schemas de `packages/shared/src/schemas/user.ts` :
+[users.dto.ts](../../apps/api/src/users/users.dto.ts) emballe quatre schemas de `packages/shared/src/schemas/user.ts` :
 
 ```ts
 // The search params (?q=…), checked like a display name before the controller gets them.
@@ -1185,7 +1185,7 @@ export class RecentlyActiveDto extends createZodDto(RecentlyActiveSchema) {}
 
 ## public-user.ts
 
-[public-user.ts](../../../apps/api/src/users/public-user.ts) est une seule constante :
+[public-user.ts](../../apps/api/src/users/public-user.ts) est une seule constante :
 
 ```ts
 /** The columns another user may see, tied to PublicUserSchema's keys. */
@@ -1205,7 +1205,7 @@ Elle est utilisée par `UsersService` et aussi par d'autres modules qui affichen
 
 ## users.service.ts
 
-[users.service.ts](../../../apps/api/src/users/users.service.ts) contient la logique. Il a seulement besoin de `PrismaService`.
+[users.service.ts](../../apps/api/src/users/users.service.ts) contient la logique. Il a seulement besoin de `PrismaService`.
 
 ### search
 
@@ -1311,12 +1311,12 @@ export const AVATAR_URL_PREFIX = `${AVATAR_ROUTE}/`;
 - Le fichier à supprimer vient de la **propre ligne** de l'utilisateur, jamais de la requête.
 - `deleteAvatarFile` vérifie le préfixe, puis utilise `basename(filename)` pour qu'une valeur bizarre comme `../../etc/passwd` reste dans le dossier des avatars. C'est « au mieux » : si le fichier a déjà disparu (`ENOENT`), il ne fait rien, et les autres erreurs sont seulement loggées, parce que la ligne en base est déjà mise à jour.
 
-**Tests :** [users.service.spec.ts](../../../apps/api/src/users/users.service.spec.ts) vérifie que le chemin de l'avatar est relatif, que l'ancien fichier est supprimé (et seulement dans le dossier), que les erreurs de unlink ne font pas échouer la requête,
+**Tests :** [users.service.spec.ts](../../apps/api/src/users/users.service.spec.ts) vérifie que le chemin de l'avatar est relatif, que l'ancien fichier est supprimé (et seulement dans le dossier), que les erreurs de unlink ne font pas échouer la requête,
 que la recherche échappe `_` et t'exclut, que les utilisateurs récemment actifs utilisent les 7 derniers jours UTC triés par nom, que P2002 devient un 409, et que la série du profil utilise le fuseau horaire du propriétaire.
 
 ## active-day.ts
 
-[active-day.ts](../../../apps/api/src/users/active-day.ts) a deux toutes petites fonctions de dates pour « Recently active » (récemment actifs) :
+[active-day.ts](../../apps/api/src/users/active-day.ts) a deux toutes petites fonctions de dates pour « Recently active » (récemment actifs) :
 
 ```ts
 export const ACTIVE_DAYS = 7;
@@ -1350,7 +1350,7 @@ flowchart LR
   DB --> S
 ```
 
-**Tests :** [active-day.spec.ts](../../../apps/api/src/users/active-day.spec.ts) vérifie que n'importe quelle heure garde son jour UTC, et que `activeSince` recule de 6 jours, même à travers un changement de mois et d'année.
+**Tests :** [active-day.spec.ts](../../apps/api/src/users/active-day.spec.ts) vérifie que n'importe quelle heure garde son jour UTC, et que `activeSince` recule de 6 jours, même à travers un changement de mois et d'année.
 
 ---
 

@@ -11,7 +11,7 @@ L'api parle au navigateur de trois façons. Cette page dit quelle fonction utili
 [architecture/overview.md](overview.md) montre les containers et comment Caddy route `/api` et `/ws`.
 [architecture/data-model.md](data-model.md) contient les tables que ces routes et ces événements écrivent. Le
 contrat du socket est dans
-[packages/shared/src/events/socket.ts](../../../packages/shared/src/events/socket.ts).
+[packages/shared/src/events/socket.ts](../../packages/shared/src/events/socket.ts).
 
 ---
 
@@ -71,8 +71,8 @@ stockées ([content/lessons.md](../content/lessons.md) §10).
 
 ## 2. À travers Caddy
 
-Les deux Caddyfiles ([infra/caddy/Caddyfile](../../../infra/caddy/Caddyfile) et
-[infra/caddy/Caddyfile.prod](../../../infra/caddy/Caddyfile.prod)) envoient `/api` et `/api/*`, et `/ws`
+Les deux Caddyfiles ([infra/caddy/Caddyfile](../../infra/caddy/Caddyfile) et
+[infra/caddy/Caddyfile.prod](../../infra/caddy/Caddyfile.prod)) envoient `/api` et `/api/*`, et `/ws`
 et `/ws/*`, vers `api:3001`. Il n'y a pas de directive websocket : Caddy 2 détecte la poignée de main Upgrade
 dans `reverse_proxy`. Le gateway doit être monté sur `/ws` plutôt que sur le `/socket.io` par défaut de socket.io,
 sinon la requête tomberait sur `web`. Comme la page, `/api` et `/ws` partagent
@@ -85,9 +85,9 @@ Le stream SSE passe par la route `/api` comme n'importe quelle autre requête.
 ## 3. Le gateway WebSocket
 
 Le gateway est socket.io sur `/ws`, dans l'api et sur son serveur HTTP
-([apps/api/src/gateway/](../../../apps/api/src/gateway/)). `SocketGateway` authentifie, filtre chaque
+([apps/api/src/gateway/](../../apps/api/src/gateway/)). `SocketGateway` authentifie, filtre chaque
 événement entrant et gère la présence ; `MessagesGateway`
-([messages.gateway.ts](../../../apps/api/src/messages/messages.gateway.ts)) gère `dm:send` et
+([messages.gateway.ts](../../apps/api/src/messages/messages.gateway.ts)) gère `dm:send` et
 `dm:read`. Ils partagent un seul serveur, donc ils partagent un seul objet d'options, `GATEWAY_OPTIONS` : chemin `/ws`,
 transport WebSocket uniquement, frames limitées à 16 Kio.
 
@@ -184,7 +184,7 @@ sequenceDiagram
   et /users/[id] se rafraîchissent sur n'importe lequel. Refuser et annuler envoient `friend:removed` : la ligne entre
   les deux a disparu.
 - **La présence** (`presence:update { userId, status, at }`, `online` ou `offline`), dans
-  `PresenceService` ([apps/api/src/presence/](../../../apps/api/src/presence/)) :
+  `PresenceService` ([apps/api/src/presence/](../../apps/api/src/presence/)) :
   - **Un compteur par utilisateur** dans Redis, `presence:<id>` : `INCR` quand un socket s'ouvre, `DECR` quand il
     se ferme. En ligne dès le premier socket.
   - **Un délai de grâce de 10 s** (`PRESENCE_GRACE_MS`) : un socket fermé n'est retiré du compteur qu'après
@@ -210,7 +210,7 @@ sequenceDiagram
     décrémentés, donc `onApplicationBootstrap` supprime chaque clé `presence:*` (`SCAN`, jamais `KEYS`). Un compteur
     qui descend quand même sous zéro est remis à zéro.
 - **Les messages privés** entre amis (`dm:send`, `dm:message`, `dm:unread`, `dm:read`), dans
-  `MessagesService` ([apps/api/src/messages/](../../../apps/api/src/messages/)). Dans chaque payload,
+  `MessagesService` ([apps/api/src/messages/](../../apps/api/src/messages/)). Dans chaque payload,
   `userId` est l'autre personne de la conversation, comme dans un événement d'ami :
   - **Envoyés par le socket, lus par REST.** `dm:send { userId, text }` vient avec un ack. Seuls les
     amis acceptés peuvent envoyer (`areFriends()`), donc une demande en attente, ou toi-même, reçoit
@@ -260,14 +260,14 @@ compteurs des autres instances. L'api tourne avec une seule réplique par concep
 ### Le côté navigateur
 
 - **Une connexion par onglet**, gardée au niveau du module
-  ([apps/web/components/tab-socket.ts](../../../apps/web/components/tab-socket.ts)) et ouverte par
+  ([apps/web/components/tab-socket.ts](../../apps/web/components/tab-socket.ts)) et ouverte par
   `SessionNav` pour un utilisateur connecté, donc un remontage de groupe de routes ou un changement de locale ne la coupe jamais, et
   une page anonyme n'en ouvre jamais. Transport WebSocket uniquement : un long poll garde une requête ouverte,
   et un 502 en polling est une erreur dans la console.
 - **Se reconnecter sans bruit dans la console.** Une tentative de connexion WebSocket ratée est une erreur de console qu'aucun code ne peut
   cacher, donc chaque nouvel essai (1, 2, 4, 8, puis toutes les 10 s, avec un peu d'aléatoire) demande d'abord `/healthz/api`, une route web
   qui répond toujours 200, et ne se connecte qu'une fois que l'api répond
-  ([apps/web/lib/reconnect.ts](../../../apps/web/lib/reconnect.ts)). « Reconnecting… » (reconnexion…) s'affiche pendant ce temps,
+  ([apps/web/lib/reconnect.ts](../../apps/web/lib/reconnect.ts)). « Reconnecting… » (reconnexion…) s'affiche pendant ce temps,
   et revenir rafraîchit la page, car les événements envoyés pendant l'absence sont perdus.
 - **Ce que la sonde ne peut pas cacher** : l'api qui meurt entre une sonde et la connexion (une ligne), et l'échec
   de la sonde elle-même quand web redémarre aussi ou que le portable se retrouve hors ligne.
@@ -281,7 +281,7 @@ compteurs des autres instances. L'api tourne avec une seule réplique par concep
 ## 4. Le stream de discussion de leçon
 
 La route est `DiscussionController`
-([discussion.controller.ts](../../../apps/api/src/lessons/discussion.controller.ts)), dans son propre
+([discussion.controller.ts](../../apps/api/src/lessons/discussion.controller.ts)), dans son propre
 controller car elle répond avec un stream d'événements sur une seule réponse HTTP plutôt qu'avec une seule
 réponse JSON. [content/lessons.md](../content/lessons.md) §12 explique ce que le tuteur sait et ce que la
 page de discussion affiche.
@@ -310,7 +310,7 @@ sequenceDiagram
 
 - **Deux moitiés, à cause de HTTP.** `DiscussionService.open()` exécute chaque vérification qui peut encore
   répondre avec un statut, puis `countMessage()` les limites de débit. Seulement ensuite `openEventStream()`
-  ([event-stream.ts](../../../apps/api/src/lessons/event-stream.ts)) envoie le 200 et ses headers.
+  ([event-stream.ts](../../apps/api/src/lessons/event-stream.ts)) envoie le 200 et ses headers.
   Après ça, un échec ne peut être qu'un événement : `error { code }`, avec un code `llm.*` tiré de la
   raison de la `LlmError` (`llm.unavailable`, `llm.rateLimited`, `llm.blocked`, `llm.incomplete`,
   `llm.disabled`), ou `unknown` pour un bug.
@@ -320,7 +320,7 @@ sequenceDiagram
   brief de la leçon et les mauvaises réponses d'entraînement de la tentative (`discussion-prompt.ts`) et ne stocke
   rien.
 - **Le navigateur** le lit avec `fetch` et un lecteur de stream
-  ([apps/web/lib/discussion-client.ts](../../../apps/web/lib/discussion-client.ts)), car
+  ([apps/web/lib/discussion-client.ts](../../apps/web/lib/discussion-client.ts)), car
   `EventSource` n'envoie que des `GET`. Un refus avant le stream arrive comme l'erreur JSON habituelle, avec
   `retryAfter` sur un 429.
 

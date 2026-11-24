@@ -1,8 +1,8 @@
 # Modèle de données
 
 Les tables telles qu'elles existent sur cette branche. La source de vérité est
-[apps/api/prisma/schema.prisma](../../../apps/api/prisma/schema.prisma) et ses migrations dans
-[apps/api/prisma/migrations/](../../../apps/api/prisma/migrations/). Si cette page et le schema ne
+[apps/api/prisma/schema.prisma](../../apps/api/prisma/schema.prisma) et ses migrations dans
+[apps/api/prisma/migrations/](../../apps/api/prisma/migrations/). Si cette page et le schema ne
 sont pas d'accord, c'est le schema qui a raison, et c'est cette page qu'il faut changer.
 
 [architecture/product.md](product.md) explique le produit que ces tables servent,
@@ -23,7 +23,7 @@ Milestone 3.
   table.
 - **Il n'y a pas de vues SQL.** Les « vues » du lecteur de leçons sont des schemas Zod de ce que le navigateur
   a le droit de voir ([content/lessons.md](../content/lessons.md) §10,
-  [milestone2-data-model.html](../../site/milestone2-data-model.html#player)).
+  [milestone2-data-model.html](../../docs/site/milestone2-data-model.html#player)).
 - **Clés.** La plupart des tables ont un `id` UUID. Cinq n'en ont pas : `LessonResult` et `UserAchievement` ont
   pour clé leur paire (`(userLevelId, lessonId)` et `(userLevelId, code)`), `Friendship` et
   `Conversation` ont pour clé `pairKey`, les deux ids d'utilisateur avec le plus petit en premier, car c'est la paire qui
@@ -171,12 +171,12 @@ dans ce cas, sans rien dire, et seulement pour les utilisateurs qui aiment le pl
 Les colonnes de `User` qui méritent une explication :
 
 - **`passwordHash`** est en argon2id. Lui, les colonnes `totp*` et `lastActiveDay` n'ont pas d'équivalent dans
-  `UserSchema` de [packages/shared/src/schemas/user.ts](../../../packages/shared/src/schemas/user.ts),
+  `UserSchema` de [packages/shared/src/schemas/user.ts](../../packages/shared/src/schemas/user.ts),
   et ça doit rester comme ça (c'est le commentaire du schema lui-même).
 - **`locale`** (par défaut `en`) est la langue de l'interface, stockée pour que le serveur puisse répondre dans cette langue :
   le tuteur des leçons la lit (`discussionPrompt(…, user.locale, …)` dans
-  [discussion.service.ts](../../../apps/api/src/lessons/discussion.service.ts)). L'app web l'écrit :
-  `LocaleSync` ([apps/web/components/locale-sync.tsx](../../../apps/web/components/locale-sync.tsx))
+  [discussion.service.ts](../../apps/api/src/lessons/discussion.service.ts)). L'app web l'écrit :
+  `LocaleSync` ([apps/web/components/locale-sync.tsx](../../apps/web/components/locale-sync.tsx))
   envoie `PATCH /api/users/me { locale }` quand la locale de l'URL est différente de celle stockée (#211).
   Aucune page ne l'affiche.
 - **`timeZone`** est un fuseau IANA (`Europe/Zurich`), envoyé par le navigateur, `UTC` par défaut. Il
@@ -184,14 +184,14 @@ Les colonnes de `User` qui méritent une explication :
   ce fuseau ([product.md](product.md) §1.3). Aucun autre utilisateur ne le voit.
 - **`activeLang`** a un seul rôle : décider où arrive une connexion simple quand l'URL ne nomme aucun cours.
   Changer l'objectif quotidien d'un cours ou son niveau le met à jour
-  ([courses.service.ts](../../../apps/api/src/courses/courses.service.ts)). Une page avec un `lang` dans son
+  ([courses.service.ts](../../apps/api/src/courses/courses.service.ts)). Une page avec un `lang` dans son
   chemin l'ignore.
 - **`lastActiveDay`** est le jour UTC où un onglet a ouvert son socket pour la dernière fois. Le gateway l'écrit une fois par
   jour, et `GET /api/users/recently-active` le lit (les 7 derniers jours). Il n'est jamais envoyé.
 - **`totpSecret`** est rempli quand l'activation de la 2FA commence ; **`totpEnabledAt`** reste null jusqu'à ce qu'un premier
   code soit vérifié, donc une activation abandonnée ne bloque jamais une connexion.
 - **`avatarUrl`** pointe vers un fichier envoyé, servi sous `/api/uploads/avatars`
-  (`AVATAR_ROUTE` dans [app.setup.ts](../../../apps/api/src/app.setup.ts)) ; le fichier lui-même est sur le disque,
+  (`AVATAR_ROUTE` dans [app.setup.ts](../../apps/api/src/app.setup.ts)) ; le fichier lui-même est sur le disque,
   pas dans la base de données.
 
 ---
@@ -223,11 +223,11 @@ par `day`, et la série tient en trois colonnes de `UserLevel`.
 
 ## 6. Social
 
-| Table          | Colonnes                                                        | Clés et index                                                            | À quoi elle sert                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| -------------- | --------------------------------------------------------------- | ------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Friendship`   | pairKey, requesterId, addresseeId, status, createdAt, updatedAt | Clé primaire `pairKey`, index sur `requesterId`, index sur `addresseeId` | **Une ligne par paire d'utilisateurs**, une demande tant que `pending`, une amitié une fois `accepted` (#155). Refuser, annuler et retirer suppriment la ligne. `pairKey` contient les deux ids, le plus petit en premier ([apps/api/src/friends/pair.ts](../../../apps/api/src/friends/pair.ts)), donc A vers B et B vers A partagent une seule clé et deux demandes croisées ne peuvent pas créer deux lignes. Accepter est la seule mise à jour, donc `updatedAt` est le moment où une demande est devenue une amitié. Lue par /friends, les profils publics, la présence et les messages privés (seuls les amis acceptés peuvent envoyer) |
-| `Conversation` | pairKey, userAId, userBId, createdAt, lastMessageAt             | Clé primaire `pairKey`, index sur `userAId`, index sur `userBId`         | **Une ligne par paire qui a échangé un message** (#158), avec la même clé que `Friendship`, donc une paire ne peut pas en avoir deux. `userAId` est le plus petit id. `lastMessageAt`, mis à jour à chaque message, trie la liste des conversations. Elle survit à l'amitié : l'historique reste lisible par les deux. Deux colonnes d'utilisateur et pas de table de participants, car le chat de groupe n'est pas revendiqué                                                                                                                                                                                                                |
-| `Message`      | id, pairKey, senderId, text, createdAt, readAt?                 | Index sur `(pairKey, createdAt, id)`, index sur `(pairKey, readAt)`      | **Un message privé entre amis** (#158). `text` est un `VARCHAR(1000)`. `readAt` reste null jusqu'à ce que l'autre utilisateur le lise, et n'est jamais envoyé. Le premier index est la clé de pagination (keyset) de l'historique, du plus récent au plus ancien ; le second garde le coût des compteurs de non-lus et d'une lecture proportionnel à ce qui n'est pas lu, pas à tout l'historique                                                                                                                                                                                                                                             |
+| Table          | Colonnes                                                        | Clés et index                                                            | À quoi elle sert                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| -------------- | --------------------------------------------------------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `Friendship`   | pairKey, requesterId, addresseeId, status, createdAt, updatedAt | Clé primaire `pairKey`, index sur `requesterId`, index sur `addresseeId` | **Une ligne par paire d'utilisateurs**, une demande tant que `pending`, une amitié une fois `accepted` (#155). Refuser, annuler et retirer suppriment la ligne. `pairKey` contient les deux ids, le plus petit en premier ([apps/api/src/friends/pair.ts](../../apps/api/src/friends/pair.ts)), donc A vers B et B vers A partagent une seule clé et deux demandes croisées ne peuvent pas créer deux lignes. Accepter est la seule mise à jour, donc `updatedAt` est le moment où une demande est devenue une amitié. Lue par /friends, les profils publics, la présence et les messages privés (seuls les amis acceptés peuvent envoyer) |
+| `Conversation` | pairKey, userAId, userBId, createdAt, lastMessageAt             | Clé primaire `pairKey`, index sur `userAId`, index sur `userBId`         | **Une ligne par paire qui a échangé un message** (#158), avec la même clé que `Friendship`, donc une paire ne peut pas en avoir deux. `userAId` est le plus petit id. `lastMessageAt`, mis à jour à chaque message, trie la liste des conversations. Elle survit à l'amitié : l'historique reste lisible par les deux. Deux colonnes d'utilisateur et pas de table de participants, car le chat de groupe n'est pas revendiqué                                                                                                                                                                                                             |
+| `Message`      | id, pairKey, senderId, text, createdAt, readAt?                 | Index sur `(pairKey, createdAt, id)`, index sur `(pairKey, readAt)`      | **Un message privé entre amis** (#158). `text` est un `VARCHAR(1000)`. `readAt` reste null jusqu'à ce que l'autre utilisateur le lise, et n'est jamais envoyé. Le premier index est la clé de pagination (keyset) de l'historique, du plus récent au plus ancien ; le second garde le coût des compteurs de non-lus et d'une lecture proportionnel à ce qui n'est pas lu, pas à tout l'historique                                                                                                                                                                                                                                          |
 
 ---
 
@@ -237,12 +237,12 @@ Redis contient aussi des données, mais rien dedans n'est fait pour durer : chaq
 expire, ou est remise à zéro au démarrage. [product.md](product.md) §4 explique pourquoi chacune est dans Redis et pas dans
 Postgres. Les clés, d'après le code :
 
-| Clés                                                                                  | Quoi                                                                                                                                              | Écrit par                                                                                    |
-| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `sess:<sid>`                                                                          | La session (`connect-redis`, préfixe `SESSION_KEY_PREFIX`)                                                                                        | [app.setup.ts](../../../apps/api/src/app.setup.ts)                                           |
-| `user:<id>:eval`, `user:<id>:eval_questions`, `user:<id>:eval_lock`                   | Un passage de placement : son état, les questions posées, et un verrou court. TTL d'une heure pour les deux premières (`PLACEMENT_REDIS_KEY_TTL`) | [placement-session.service.ts](../../../apps/api/src/placement/placement-session.service.ts) |
-| `discussion:user:<id>:minute`, `discussion:user:<id>:day`, `discussion:global:minute` | Les fenêtres de limite de débit de la discussion de leçon                                                                                         | [discussion-limits.ts](../../../apps/api/src/lessons/discussion-limits.ts)                   |
-| `presence:<id>`                                                                       | Un compteur de sockets par utilisateur, supprimé au démarrage                                                                                     | [presence.service.ts](../../../apps/api/src/presence/presence.service.ts)                    |
+| Clés                                                                                  | Quoi                                                                                                                                              | Écrit par                                                                                 |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `sess:<sid>`                                                                          | La session (`connect-redis`, préfixe `SESSION_KEY_PREFIX`)                                                                                        | [app.setup.ts](../../apps/api/src/app.setup.ts)                                           |
+| `user:<id>:eval`, `user:<id>:eval_questions`, `user:<id>:eval_lock`                   | Un passage de placement : son état, les questions posées, et un verrou court. TTL d'une heure pour les deux premières (`PLACEMENT_REDIS_KEY_TTL`) | [placement-session.service.ts](../../apps/api/src/placement/placement-session.service.ts) |
+| `discussion:user:<id>:minute`, `discussion:user:<id>:day`, `discussion:global:minute` | Les fenêtres de limite de débit de la discussion de leçon                                                                                         | [discussion-limits.ts](../../apps/api/src/lessons/discussion-limits.ts)                   |
+| `presence:<id>`                                                                       | Un compteur de sockets par utilisateur, supprimé au démarrage                                                                                     | [presence.service.ts](../../apps/api/src/presence/presence.service.ts)                    |
 
 La présence n'est **pas** une table : le statut en ligne, c'est ce compteur, et il disparaît avec les sockets.
 

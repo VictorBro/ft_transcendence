@@ -83,7 +83,7 @@ base de données, pas dans React.
 
 ## 2. La coque : `(dashboard)/layout.tsx`
 
-Fichier : [layout.tsx](<../../../apps/web/app/[locale]/(dashboard)/layout.tsx>)
+Fichier : [layout.tsx](<../../apps/web/app/[locale]/(dashboard)/layout.tsx>)
 
 Chaque page de ce groupe est dessinée dans ce layout. C'est un server component (il est `async`).
 
@@ -125,7 +125,7 @@ Ce qu'il fait :
 
 ### `lib/course-menu-slot.ts`
 
-Fichier : [course-menu-slot.ts](../../../apps/web/lib/course-menu-slot.ts)
+Fichier : [course-menu-slot.ts](../../apps/web/lib/course-menu-slot.ts)
 
 ```ts
 /**
@@ -147,7 +147,7 @@ aux deux côtés la vraie chaîne.
 
 ### `dashboard/page.tsx`
 
-Fichier : [dashboard/page.tsx](<../../../apps/web/app/[locale]/(dashboard)/dashboard/page.tsx>)
+Fichier : [dashboard/page.tsx](<../../apps/web/app/[locale]/(dashboard)/dashboard/page.tsx>)
 
 ```tsx
 /** Kept so old links and bookmarks still land somewhere. */
@@ -160,7 +160,7 @@ L'app avait avant une page `/dashboard`. Maintenant elle fait seulement une redi
 
 ### `learn/page.tsx`
 
-Fichier : [learn/page.tsx](<../../../apps/web/app/[locale]/(dashboard)/learn/page.tsx>)
+Fichier : [learn/page.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/page.tsx>)
 
 ```tsx
 /** Reads the session, the courses and the ft.lang cookie on every request. */
@@ -199,7 +199,7 @@ flowchart LR
 
 ### `lib/course-path.ts`
 
-Fichier : [course-path.ts](../../../apps/web/lib/course-path.ts)
+Fichier : [course-path.ts](../../apps/web/lib/course-path.ts)
 
 ```ts
 /** The course last opened here. What NEXT_LOCALE is for the interface. */
@@ -238,7 +238,7 @@ petit.
 
 ## 4. La page du cours : `learn/[lang]/page.tsx`
 
-Fichier : [learn/[lang]/page.tsx](<../../../apps/web/app/[locale]/(dashboard)/learn/[lang]/page.tsx>)
+Fichier : [learn/[lang]/page.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/page.tsx>)
 
 C'est la page principale de l'app. C'est un server component. D'abord, l'arbre de ce qu'elle dessine :
 
@@ -388,7 +388,7 @@ ne sont pas encore prêtes ; la ligne de la meilleure série s'affiche toujours.
 
 ### 4.5 `course-menu.tsx` : une colonne, deux apparences
 
-Fichier : [course-menu.tsx](<../../../apps/web/app/[locale]/(dashboard)/learn/[lang]/course-menu.tsx>)
+Fichier : [course-menu.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/course-menu.tsx>)
 
 Sur un écran large (`lg` et plus), les cartes sont simplement une colonne à droite. Sur un téléphone, une colonne
 sous toutes les leçons serait très longue, donc les cartes **se replient derrière un bouton « My course »** dans le
@@ -451,7 +451,7 @@ course » prend la place du nom de l'app. Avant que le bouton soit monté, le no
 
 ### 4.6 `today.tsx` : la carte Aujourd'hui et ses amis
 
-Fichier : [today.tsx](<../../../apps/web/app/[locale]/(dashboard)/learn/[lang]/today.tsx>)
+Fichier : [today.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/today.tsx>)
 
 Que des server components. Exports : `StreakLine`, `TodayCard`, `MoreLessons`, `LevelComplete`.
 
@@ -539,7 +539,7 @@ sequenceDiagram
 
 ### 4.8 `start-level.tsx`
 
-Fichier : [start-level.tsx](<../../../apps/web/app/[locale]/(dashboard)/learn/[lang]/start-level.tsx>)
+Fichier : [start-level.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/start-level.tsx>)
 
 ```tsx
 /** "Start A2" on the level complete card: the same write as the level picker. */
@@ -560,7 +560,7 @@ Un seul bouton. `setCourseLevel` (dans `lib/courses-client.ts`) envoie le nouvea
 
 ### 4.9 `goal-picker.tsx` : enregistre au changement
 
-Fichier : [goal-picker.tsx](<../../../apps/web/app/[locale]/(dashboard)/learn/[lang]/goal-picker.tsx>)
+Fichier : [goal-picker.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/goal-picker.tsx>)
 
 Un `<select>` avec les trois `DAILY_GOALS` (10, 30, 60 minutes par jour).
 
@@ -595,7 +595,7 @@ async function onChange(event: React.ChangeEvent<HTMLSelectElement>) {
 
 ### 4.10 `direct-level-picker.tsx` : enregistre avec un bouton
 
-Fichier : [direct-level-picker.tsx](<../../../apps/web/app/[locale]/(dashboard)/learn/[lang]/direct-level-picker.tsx>)
+Fichier : [direct-level-picker.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/direct-level-picker.tsx>)
 
 Le select du niveau (A1 à C2). Pourquoi ne pas enregistrer au changement comme l'objectif ? Le commentaire explique :
 
@@ -623,7 +623,7 @@ gardée ; seules les propositions changent.
 
 ## 5. Gamification : `components/gamification.tsx` et `lib/achievements.ts`
 
-Fichier : [gamification.tsx](../../../apps/web/components/gamification.tsx)
+Fichier : [gamification.tsx](../../apps/web/components/gamification.tsx)
 
 Des server components sans state, « so a page without JavaScript shows it too » (pour qu'une page sans JavaScript les montre aussi). Exports :
 
@@ -659,7 +659,7 @@ C'est un bon exemple de « filtres dans l'URL » (section 7) : n'importe quel li
 `FinishXp` est utilisé par la page des résultats de leçon ; il utilise `xpBreakdown()` (de `lib/xp-breakdown.ts`)
 pour lister les lignes d'XP (leçon, objectif, défi). Le Chapitre 7 l'explique dans son contexte.
 
-Fichier : [achievements.ts](../../../apps/web/lib/achievements.ts)
+Fichier : [achievements.ts](../../apps/web/lib/achievements.ts)
 
 ```ts
 /** The messages' params for one achievement: its target, or its level. */
@@ -689,7 +689,7 @@ export function rankStartOf(rank: number): number {
 
 ### `achievements/page.tsx`
 
-Fichier : [achievements/page.tsx](<../../../apps/web/app/[locale]/(dashboard)/learn/[lang]/achievements/page.tsx>)
+Fichier : [achievements/page.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/achievements/page.tsx>)
 
 Les mêmes guards que la page du cours (cours, langue, niveau), puis un seul appel à l'API. Ensuite :
 
@@ -731,7 +731,7 @@ le montant à droite). La section a `tabIndex={0}` pour que le clavier de Safari
 
 ## 6. Les helpers de niveau : `lib/level.ts`
 
-Fichier : [level.ts](../../../apps/web/lib/level.ts)
+Fichier : [level.ts](../../apps/web/lib/level.ts)
 
 L'app demande « qu'est-ce que tu **maîtrises** ? » puis enseigne **le niveau au-dessus**. Ce fichier contient
 cette règle.
@@ -808,7 +808,7 @@ formulaire `GET`, et l'URL change de la même façon.
 
 ### 7.1 `lib/lesson-list.ts`
 
-Fichier : [lesson-list.ts](../../../apps/web/lib/lesson-list.ts)
+Fichier : [lesson-list.ts](../../apps/web/lib/lesson-list.ts)
 
 ```ts
 /** What a query reads as when the URL says nothing: the API's defaults. */
@@ -852,7 +852,7 @@ export function lessonsHref(lang: string, query: LessonQuery): string {
 
 ### 7.2 `lessons/page.tsx`
 
-Fichier : [lessons/page.tsx](<../../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/page.tsx>)
+Fichier : [lessons/page.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/page.tsx>)
 
 Les trois mêmes guards que la page du cours. Ensuite :
 
@@ -906,7 +906,7 @@ flowchart TD
 
 ### 7.3 `lessons/lesson-list.tsx`
 
-Fichier : [lesson-list.tsx](<../../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/lesson-list.tsx>)
+Fichier : [lesson-list.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/lesson-list.tsx>)
 
 Des server components qui dessinent les champs du formulaire et la liste. Les champs utilisent des valeurs **par défaut**
 (`defaultChecked`, `defaultValue`), pas du state React contrôlé : le serveur fixe leur valeur de
@@ -976,7 +976,7 @@ autres filtres (`lessonsHref(lang, { ...query, page: number })`). La page actuel
 
 ### 7.4 `lessons/live-form.tsx`
 
-Fichier : [live-form.tsx](<../../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/live-form.tsx>)
+Fichier : [live-form.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/live-form.tsx>)
 
 C'est le fichier le plus délicat du chapitre. C'est le `<form method="get">` lui-même, plus du
 JavaScript qui applique chaque changement tout de suite.
@@ -1083,7 +1083,7 @@ Le handler `onClick` attrape les liens `#filters` et `#` ; `onSubmit` gère « S
 
 ### 7.5 `lessons/fold-details.tsx`
 
-Fichier : [fold-details.tsx](<../../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/fold-details.tsx>)
+Fichier : [fold-details.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/fold-details.tsx>)
 
 Un élément `<details>` (un pli que le navigateur ouvre et ferme tout seul) dont le serveur
 **suggère** seulement l'état ouvert.
@@ -1118,7 +1118,7 @@ serveur envoie.
 
 ### 8.1 `lib/placement-schema.ts`
 
-Fichier : [placement-schema.ts](../../../apps/web/lib/placement-schema.ts)
+Fichier : [placement-schema.ts](../../apps/web/lib/placement-schema.ts)
 
 ```ts
 export const PlacementStateSchema = z.union([PlacementQuestionSchema, PlacementResultSchema]);
@@ -1142,7 +1142,7 @@ dit à TypeScript « après que cette vérification est vraie, traite `state` co
 
 ### 8.2 `placement/page.tsx`
 
-Fichier : [placement/page.tsx](<../../../apps/web/app/[locale]/(dashboard)/learn/[lang]/placement/page.tsx>)
+Fichier : [placement/page.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/placement/page.tsx>)
 
 Un server component. Ses guards sont différents de ceux de la page du cours :
 
@@ -1185,7 +1185,7 @@ départ en français.
 
 ### 8.3 `placement-exam.tsx` : la machine à états
 
-Fichier : [placement-exam.tsx](<../../../apps/web/app/[locale]/(dashboard)/learn/[lang]/placement/placement-exam.tsx>)
+Fichier : [placement-exam.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/placement/placement-exam.tsx>)
 
 Un client component. Son state principal est `state: PlacementState | null`. L'écran affiché dépend
 seulement de ça :
@@ -1278,7 +1278,7 @@ vers `exit`.
 
 ### 8.4 `start-screen.tsx`
 
-Fichier : [start-screen.tsx](<../../../apps/web/app/[locale]/(dashboard)/learn/[lang]/placement/start-screen.tsx>)
+Fichier : [start-screen.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/placement/start-screen.tsx>)
 
 Un petit formulaire : un titre, une description avec le nom de la langue, et, pour un apprenant qui a déjà
 un niveau, « Your course is at B1 » (parce que finir le test écrit un nouveau niveau, il doit le savoir avant).
@@ -1287,7 +1287,7 @@ Puis `FormError`, un `SubmitButton` qui appelle `onStart`, et un lien « Back »
 
 ### 8.5 `question-screen.tsx`
 
-Fichier : [question-screen.tsx](<../../../apps/web/app/[locale]/(dashboard)/learn/[lang]/placement/question-screen.tsx>)
+Fichier : [question-screen.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/placement/question-screen.tsx>)
 
 Dessine une question : une barre sticky avec la progression et un compte à rebours, le texte à lire s'il y en a un (dans un
 `<blockquote>`), la question, les options sous forme de boutons, une erreur, et un bouton Quit.
@@ -1340,7 +1340,7 @@ le dialog. Il est en premier, pour que le focus commence sur le choix sûr ; « 
 
 ### 8.6 `result-screen.tsx`
 
-Fichier : [result-screen.tsx](<../../../apps/web/app/[locale]/(dashboard)/learn/[lang]/placement/result-screen.tsx>)
+Fichier : [result-screen.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/placement/result-screen.tsx>)
 
 ```tsx
 const correct = report.filter((entry) => entry.wasCorrect).length;
@@ -1372,7 +1372,7 @@ Le titre des réponses utilise `result.targetLevel`, le niveau donné par le tes
 
 ### 9.1 `components/course-switcher.tsx`
 
-Fichier : [course-switcher.tsx](../../../apps/web/components/course-switcher.tsx)
+Fichier : [course-switcher.tsx](../../apps/web/components/course-switcher.tsx)
 
 Un `<select>` dans le header (affiché par `DashboardNav`, Chapitre 3) pour passer d'un de tes cours à l'autre,
 avec une dernière option « Add a language ».
@@ -1402,7 +1402,7 @@ function onChange(event: React.ChangeEvent<HTMLSelectElement>) {
 
 ### 9.2 `components/level-picker.tsx`
 
-Fichier : [level-picker.tsx](../../../apps/web/components/level-picker.tsx)
+Fichier : [level-picker.tsx](../../apps/web/components/level-picker.tsx)
 
 Exporte `LevelPicker` et `LevelSummary`. Utilisé par l'onboarding (Chapitre 5) et `ChangeLevel`, et
 `LevelSummary` par l'écran de résultat. Le même choix donne le même cours partout.
@@ -1437,7 +1437,7 @@ grand niveau dans la même boîte.
 
 ### 9.3 `components/change-level.tsx`
 
-Fichier : [change-level.tsx](../../../apps/web/components/change-level.tsx)
+Fichier : [change-level.tsx](../../apps/web/components/change-level.tsx)
 
 Un bouton qui ouvre un `<dialog>` modal avec un `LevelPicker`, pour fixer le niveau sans test.
 Utilisé sur l'écran de résultat du test de niveau.
@@ -1474,7 +1474,7 @@ ne marche que quand le choix change le cours. À l'envoi, il appelle `setCourseL
 
 ## 10. `lib/onboarding.ts` (utilisé par le Chapitre 5)
 
-Fichier : [onboarding.ts](../../../apps/web/lib/onboarding.ts)
+Fichier : [onboarding.ts](../../apps/web/lib/onboarding.ts)
 
 Pas utilisé par les pages du tableau de bord, mais les guards de ce chapitre envoient les apprenants vers
 `/onboarding?lang=..`, et cette fonction décide quelle étape ils y voient.

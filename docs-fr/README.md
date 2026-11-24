@@ -1,8 +1,8 @@
 # Documentation du projet
 
-Ceci est la version française de la documentation. La version anglaise est ici : [README.md](../README.md).
+Ceci est la version française de la documentation. La version anglaise est ici : [README.md](../docs/README.md).
 
-Où se trouve chaque sujet, pour que chaque fait ait une seule place. Le [README](../../README.md) à la
+Où se trouve chaque sujet, pour que chaque fait ait une seule place. Le [README](../README.md) à la
 racine du dépôt est le point d'entrée pour l'évaluation ; ce dossier contient le détail qui se cache derrière.
 
 GitHub Pages sert ce dossier depuis `main` à l'adresse <https://victorbro.github.io/ft_transcendence/>, donc
@@ -10,19 +10,19 @@ tu peux lire les pages HTML ci-dessous là-bas sans cloner le dépôt.
 
 ## Les dossiers
 
-| Dossier                                                    | La question à laquelle il répond                                                               |
-| ---------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| [api/](api/README.md)                                      | Comment marche chaque fichier de `apps/api`, expliqué depuis zéro, chapitre par chapitre ?     |
-| [web/](web/README.md)                                      | Comment marche chaque fichier de `apps/web`, des bases de React jusqu'à chaque page ?          |
-| [modules/](modules/README.md)                              | Quels modules on revendique, combien de points, et comment chacun répond au sujet ?            |
-| [architecture/](architecture/overview.md)                  | Comment l'app est construite, et pourquoi ?                                                    |
-| [operations/](operations/deployment.md)                    | Comment on la lance, la déploie, la surveille et la met à jour ?                               |
-| [content/](content/lessons.md)                             | Que sont les leçons et les questions de placement, et comment sont-elles écrites et chargées ? |
-| [subject/](subject/summary.md)                             | Que demande le sujet de 42 ?                                                                   |
-| [transcendence-course/](../transcendence-course/README.md) | Qu'a construit chaque membre de l'équipe, expliqué avec ses propres mots pour la soutenance ?  |
-| [brand/](../brand/README.md)                               | À quoi ressemblent le logo et la marque ?                                                      |
-| [mockups/](../mockups/lessons/README.md)                   | À quoi doit ressembler chaque écran de leçon ?                                                 |
-| [site/](../site/milestone1-data-model.html)                | Les pages et le script derrière le site GitHub Pages                                           |
+| Dossier                                                         | La question à laquelle il répond                                                               |
+| --------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| [api/](api/README.md)                                           | Comment marche chaque fichier de `apps/api`, expliqué depuis zéro, chapitre par chapitre ?     |
+| [web/](web/README.md)                                           | Comment marche chaque fichier de `apps/web`, des bases de React jusqu'à chaque page ?          |
+| [modules/](modules/README.md)                                   | Quels modules on revendique, combien de points, et comment chacun répond au sujet ?            |
+| [architecture/](architecture/overview.md)                       | Comment l'app est construite, et pourquoi ?                                                    |
+| [operations/](operations/deployment.md)                         | Comment on la lance, la déploie, la surveille et la met à jour ?                               |
+| [content/](content/lessons.md)                                  | Que sont les leçons et les questions de placement, et comment sont-elles écrites et chargées ? |
+| [subject/](subject/summary.md)                                  | Que demande le sujet de 42 ?                                                                   |
+| [transcendence-course/](../docs/transcendence-course/README.md) | Qu'a construit chaque membre de l'équipe, expliqué avec ses propres mots pour la soutenance ?  |
+| [brand/](../docs/brand/README.md)                               | À quoi ressemblent le logo et la marque ?                                                      |
+| [mockups/](../docs/mockups/lessons/README.md)                   | À quoi doit ressembler chaque écran de leçon ?                                                 |
+| [site/](../docs/site/milestone1-data-model.html)                | Les pages et le script derrière le site GitHub Pages                                           |
 
 ## Tous les documents
 
@@ -69,33 +69,33 @@ tu peux lire les pages HTML ci-dessous là-bas sans cloner le dépôt.
 
 ### subject/
 
-| Document                                                        | Ce qu'il couvre                                                                               |
-| --------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| [subject/summary.md](subject/summary.md)                        | Un résumé du sujet : la partie obligatoire, les modules, les règles du README et l'évaluation |
-| [subject/ft_transcendence.pdf](../subject/ft_transcendence.pdf) | Le sujet lui-même, qui reste la référence                                                     |
+| Document                                                             | Ce qu'il couvre                                                                               |
+| -------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| [subject/summary.md](subject/summary.md)                             | Un résumé du sujet : la partie obligatoire, les modules, les règles du README et l'évaluation |
+| [subject/ft_transcendence.pdf](../docs/subject/ft_transcendence.pdf) | Le sujet lui-même, qui reste la référence                                                     |
 
 ### transcendence-course/
 
-| Document                                                            | Ce qu'il couvre                                                                                                                                                                                                                                                                                                           |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [transcendence-course/README.md](../transcendence-course/README.md) | Comment marche le dossier, et un dossier par membre : [victor/](../transcendence-course/victor/README.md), [endrit/](../transcendence-course/endrit/README.md), [anais/](../transcendence-course/anais/README.md), [luca/](../transcendence-course/luca/README.md), [bastian/](../transcendence-course/bastian/README.md) |
+| Document                                                                 | Ce qu'il couvre                                                                                                                                                                                                                                                                                                                                    |
+| ------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [transcendence-course/README.md](../docs/transcendence-course/README.md) | Comment marche le dossier, et un dossier par membre : [victor/](../docs/transcendence-course/victor/README.md), [endrit/](../docs/transcendence-course/endrit/README.md), [anais/](../docs/transcendence-course/anais/README.md), [luca/](../docs/transcendence-course/luca/README.md), [bastian/](../docs/transcendence-course/bastian/README.md) |
 
 ### brand/ et mockups/
 
-| Document                                                  | Ce qu'il couvre                                                                                                              |
-| --------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| [brand/README.md](../brand/README.md)                     | La charte de la marque : le logo, les couleurs et la typographie, avec les fichiers dans `svg/`, `png/`, `web/` et `slides/` |
-| [brand/index.html](../brand/index.html)                   | La vue d'ensemble visuelle de la marque, à ouvrir dans un navigateur                                                         |
-| [mockups/lessons/README.md](../mockups/lessons/README.md) | Le rendu visé pour chaque page de leçon, un PNG et un fichier HTML par écran, tirés du prototype de leçon de Bastian         |
+| Document                                                       | Ce qu'il couvre                                                                                                              |
+| -------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| [brand/README.md](../docs/brand/README.md)                     | La charte de la marque : le logo, les couleurs et la typographie, avec les fichiers dans `svg/`, `png/`, `web/` et `slides/` |
+| [brand/index.html](../docs/brand/index.html)                   | La vue d'ensemble visuelle de la marque, à ouvrir dans un navigateur                                                         |
+| [mockups/lessons/README.md](../docs/mockups/lessons/README.md) | Le rendu visé pour chaque page de leçon, un PNG et un fichier HTML par écran, tirés du prototype de leçon de Bastian         |
 
 ### site/
 
-| Document                                                              | Ce qu'il couvre                                                                                      |
-| --------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| [site/milestone1-data-model.html](../site/milestone1-data-model.html) | Onboarding et placement : chaque format, la spec comparée au code                                    |
-| [site/milestone2-data-model.html](../site/milestone2-data-model.html) | Leçons : les fichiers de leçon, le seed, les API des tentatives et de la discussion, la gamification |
-| [site/milestone3-data-model.html](../site/milestone3-data-model.html) | Temps réel et social : événements du socket, amitiés, messages, présence                             |
-| [site/gh-status.js](../site/gh-status.js)                             | Pas un document : les pages HTML le chargent pour afficher l'état des issues en direct depuis GitHub |
+| Document                                                                   | Ce qu'il couvre                                                                                      |
+| -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| [site/milestone1-data-model.html](../docs/site/milestone1-data-model.html) | Onboarding et placement : chaque format, la spec comparée au code                                    |
+| [site/milestone2-data-model.html](../docs/site/milestone2-data-model.html) | Leçons : les fichiers de leçon, le seed, les API des tentatives et de la discussion, la gamification |
+| [site/milestone3-data-model.html](../docs/site/milestone3-data-model.html) | Temps réel et social : événements du socket, amitiés, messages, présence                             |
+| [site/gh-status.js](../docs/site/gh-status.js)                             | Pas un document : les pages HTML le chargent pour afficher l'état des issues en direct depuis GitHub |
 
 Chaque nombre, route, variable et nom de métrique dans ces documents vient du code sur `main`.
 Quand le code change, le document qui possède le sujet change dans la même pull request.

@@ -6,10 +6,10 @@ Dans ce chapitre :
 - Mocks, fakes et stubs : les doublures qu'un test utilise à la place de la vraie chose
 - La pyramide des tests et la couverture de code
 - Comment les tests tournent **ici** : Vitest (pas Jest), les deux fichiers de config, les commandes, la CI
-- Une spec unitaire lue ligne par ligne : [auth.service.spec.ts](../../../apps/api/src/auth/auth.service.spec.ts)
-- Une spec e2e lue ligne par ligne : [auth.e2e-spec.ts](../../../apps/api/test/auth.e2e-spec.ts)
-- Un tableau de chaque spec e2e et de chaque fixture dans [apps/api/test](../../../apps/api/test)
-- Un tableau de chaque spec unitaire (`*.spec.ts`) dans [apps/api/src](../../../apps/api/src), par module
+- Une spec unitaire lue ligne par ligne : [auth.service.spec.ts](../../apps/api/src/auth/auth.service.spec.ts)
+- Une spec e2e lue ligne par ligne : [auth.e2e-spec.ts](../../apps/api/test/auth.e2e-spec.ts)
+- Un tableau de chaque spec e2e et de chaque fixture dans [apps/api/test](../../apps/api/test)
+- Un tableau de chaque spec unitaire (`*.spec.ts`) dans [apps/api/src](../../apps/api/src), par module
 - Le dossier `coverage/`
 
 ---
@@ -45,11 +45,11 @@ données...). Les deux sont nécessaires.
 Dans un test unitaire, on ne veut pas de vraie base de données. On met une **doublure** à sa place. Il y a trois
 noms courants (les gens les mélangent souvent, et ce n'est pas grave) :
 
-| Nom      | Ce que c'est                                                                                           | Exemple ici                                                                                                                      |
-| -------- | ------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------- |
-| **Stub** | Renvoie une réponse fixe, rien de plus.                                                                | `prisma.user.findUnique.mockResolvedValue(null)` : « l'utilisateur n'existe pas ».                                               |
-| **Mock** | Un stub qui **enregistre** aussi comment il a été appelé, pour que le test puisse vérifier les appels. | `vi.fn()` de Vitest : `expect(prisma.user.create.mock.calls[0][0].data.email).toBe(...)`.                                        |
-| **Fake** | Une petite version qui marche de la vraie chose, gardée en mémoire.                                    | `fakeRedis()` dans [placement.fixtures.ts](../../../apps/api/test/placement.fixtures.ts) : un tout petit Redis fait d'une `Map`. |
+| Nom      | Ce que c'est                                                                                           | Exemple ici                                                                                                                   |
+| -------- | ------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------- |
+| **Stub** | Renvoie une réponse fixe, rien de plus.                                                                | `prisma.user.findUnique.mockResolvedValue(null)` : « l'utilisateur n'existe pas ».                                            |
+| **Mock** | Un stub qui **enregistre** aussi comment il a été appelé, pour que le test puisse vérifier les appels. | `vi.fn()` de Vitest : `expect(prisma.user.create.mock.calls[0][0].data.email).toBe(...)`.                                     |
+| **Fake** | Une petite version qui marche de la vraie chose, gardée en mémoire.                                    | `fakeRedis()` dans [placement.fixtures.ts](../../apps/api/test/placement.fixtures.ts) : un tout petit Redis fait d'une `Map`. |
 
 Une **fixture** est une donnée de test préparée (un fichier JSON, une ligne d'utilisateur, une fonction qui en
 construit une).
@@ -66,7 +66,7 @@ flowchart TB
 ```
 
 L'idée : **beaucoup** de tests unitaires rapides en bas, **moins** de tests e2e lents en haut. Les tests dans le
-navigateur (Playwright, dans le dossier [e2e/](../../../e2e) à la racine) sont encore plus haut ; ils appartiennent
+navigateur (Playwright, dans le dossier [e2e/](../../e2e) à la racine) sont encore plus haut ; ils appartiennent
 à l'app web et à toute la stack, pas à ce chapitre.
 
 ### La couverture
@@ -85,13 +85,13 @@ fonctions**, sinon la commande échoue.
 
 Beaucoup de tutoriels NestJS utilisent **Jest**. Ce projet utilise **[Vitest](https://vitest.dev)**, un lanceur de
 tests avec presque la même API (`describe`, `it`, `expect`, `beforeEach`) mais construit sur Vite. Il n'y a **pas de
-clé `jest`** dans [package.json](../../../apps/api/package.json) et pas de `jest-e2e.json`. À la place, il y a deux
+clé `jest`** dans [package.json](../../apps/api/package.json) et pas de `jest-e2e.json`. À la place, il y a deux
 fichiers de config :
 
-| Fichier                                                          | Lance               | Fichiers qu'il prend    |
-| ---------------------------------------------------------------- | ------------------- | ----------------------- |
-| [vitest.config.mts](../../../apps/api/vitest.config.mts)         | les tests unitaires | `src/**/*.spec.ts`      |
-| [vitest.config.e2e.mts](../../../apps/api/vitest.config.e2e.mts) | les tests e2e       | `test/**/*.e2e-spec.ts` |
+| Fichier                                                       | Lance               | Fichiers qu'il prend    |
+| ------------------------------------------------------------- | ------------------- | ----------------------- |
+| [vitest.config.mts](../../apps/api/vitest.config.mts)         | les tests unitaires | `src/**/*.spec.ts`      |
+| [vitest.config.e2e.mts](../../apps/api/vitest.config.e2e.mts) | les tests e2e       | `test/**/*.e2e-spec.ts` |
 
 Dans un fichier de test, tout vient de `vitest` :
 
@@ -102,7 +102,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 `vi` est la boîte à outils de Vitest : `vi.fn()` crée une fonction mock, `vi.useFakeTimers()` fige l'horloge,
 `vi.resetAllMocks()` vide tous les mocks.
 
-### La config unitaire : [vitest.config.mts](../../../apps/api/vitest.config.mts)
+### La config unitaire : [vitest.config.mts](../../apps/api/vitest.config.mts)
 
 ```ts
   plugins: [
@@ -136,7 +136,7 @@ Ce que fait chaque partie :
 - **`include`** : seulement les fichiers sous `src/` qui finissent par `.spec.ts`.
 - **`setupFiles: ['reflect-metadata']`** : charge la petite bibliothèque qui stocke ces métadonnées, avant tous les
   tests.
-- **`env`** : fixe `AVATAR_STORAGE_DIR`, car [app.setup.ts](../../../apps/api/src/app.setup.ts) refuse de se
+- **`env`** : fixe `AVATAR_STORAGE_DIR`, car [app.setup.ts](../../apps/api/src/app.setup.ts) refuse de se
   charger sans.
 
 Le même fichier contient les règles de couverture :
@@ -168,7 +168,7 @@ Le même fichier contient les règles de couverture :
 fichiers du dossier `coverage/` (section 7). Les fichiers de module et `main.ts` sont laissés de côté : ils ne font
 que brancher les choses ensemble, et les tests e2e les exécutent.
 
-### La config e2e : [vitest.config.e2e.mts](../../../apps/api/vitest.config.e2e.mts)
+### La config e2e : [vitest.config.e2e.mts](../../apps/api/vitest.config.e2e.mts)
 
 Elle répète le plugin swc (le commentaire explique qu'elle n'importe pas la config unitaire, car la fusion lancerait
 chaque spec unitaire une seconde fois), puis :
@@ -209,7 +209,7 @@ Trois choses à remarquer :
 
 ### Les commandes
 
-Depuis [apps/api/package.json](../../../apps/api/package.json) :
+Depuis [apps/api/package.json](../../apps/api/package.json) :
 
 | Script     | Commande                                    | Ce qu'il fait                                                   |
 | ---------- | ------------------------------------------- | --------------------------------------------------------------- |
@@ -228,14 +228,14 @@ pnpm --filter @ft/api test:e2e                               # e2e (needs Postgr
 
 Plus haut, les outils appellent les mêmes scripts :
 
-| Où                                           | Cible                        | Lance                                                                                                                            |
-| -------------------------------------------- | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| [package.json](../../../package.json) racine | `pnpm test`, `pnpm test:cov` | `turbo run test` / `test:cov` dans chaque package                                                                                |
-| [package.json](../../../package.json) racine | `pnpm run ci`                | vérification du format, puis `turbo run lint typecheck test:cov build`                                                           |
-| [turbo.json](../../../turbo.json)            | `test`, `test:cov`           | dépendent de `^build` (build `@ft/shared` d'abord) et de `db:generate` (le client Prisma)                                        |
-| [Makefile](../../../Makefile)                | `make test`                  | `pnpm run test` (les tests unitaires de tout le workspace)                                                                       |
-| [Makefile](../../../Makefile)                | `make ci`                    | démarre Postgres et Redis (`stores-up`), lance `pnpm run ci`, applique les migrations, puis `pnpm --filter @ft/api run test:e2e` |
-| [Makefile](../../../Makefile)                | `make` (= `make all`)        | `make ci`, puis la stack de production, puis Playwright                                                                          |
+| Où                                        | Cible                        | Lance                                                                                                                            |
+| ----------------------------------------- | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| [package.json](../../package.json) racine | `pnpm test`, `pnpm test:cov` | `turbo run test` / `test:cov` dans chaque package                                                                                |
+| [package.json](../../package.json) racine | `pnpm run ci`                | vérification du format, puis `turbo run lint typecheck test:cov build`                                                           |
+| [turbo.json](../../turbo.json)            | `test`, `test:cov`           | dépendent de `^build` (build `@ft/shared` d'abord) et de `db:generate` (le client Prisma)                                        |
+| [Makefile](../../Makefile)                | `make test`                  | `pnpm run test` (les tests unitaires de tout le workspace)                                                                       |
+| [Makefile](../../Makefile)                | `make ci`                    | démarre Postgres et Redis (`stores-up`), lance `pnpm run ci`, applique les migrations, puis `pnpm --filter @ft/api run test:e2e` |
+| [Makefile](../../Makefile)                | `make` (= `make all`)        | `make ci`, puis la stack de production, puis Playwright                                                                          |
 
 Note : `make test-e2e` dans le Makefile est la suite **Playwright** dans le navigateur, pas la suite Supertest de ce
 chapitre. La suite Supertest tourne dans `make ci`.
@@ -262,11 +262,11 @@ stores-up:
 	@$(COMPOSE_DEV) up -d --wait db redis >/dev/null
 ```
 
-### Dans la CI : [.github/workflows/ci.yml](../../../.github/workflows/ci.yml)
+### Dans la CI : [.github/workflows/ci.yml](../../.github/workflows/ci.yml)
 
 Le job `unit-tests` (branche de matrice `app: api`) déclare deux **services**, un Postgres (image
 `pgvector/pgvector`) et un Redis, avec des health checks. Ensuite il build le stage `ci` de
-[apps/api/Dockerfile](../../../apps/api/Dockerfile) et lance, à l'intérieur :
+[apps/api/Dockerfile](../../apps/api/Dockerfile) et lance, à l'intérieur :
 
 ```yaml
 command: pnpm --filter @ft/api exec prisma migrate deploy && pnpm --filter @ft/api run test:cov && pnpm --filter @ft/api run test:e2e
@@ -274,7 +274,7 @@ command: pnpm --filter @ft/api exec prisma migrate deploy && pnpm --filter @ft/a
 
 avec `--network host` et `DATABASE_URL=postgresql://ft:ft_local_dev@127.0.0.1:5432/...`,
 `REDIS_URL=redis://127.0.0.1:6379`. Le dossier `coverage/` est copié dehors et uploadé comme un artifact nommé
-`coverage-api`. (L'autre workflow, [e2e.yml](../../../.github/workflows/e2e.yml), est la suite Playwright dans le
+`coverage-api`. (L'autre workflow, [e2e.yml](../../.github/workflows/e2e.yml), est la suite Playwright dans le
 navigateur.)
 
 ```mermaid
@@ -291,7 +291,7 @@ flowchart LR
 
 ---
 
-## 3. Lire une spec unitaire : [auth.service.spec.ts](../../../apps/api/src/auth/auth.service.spec.ts)
+## 3. Lire une spec unitaire : [auth.service.spec.ts](../../apps/api/src/auth/auth.service.spec.ts)
 
 `AuthService` (chapitre 5) inscrit les utilisateurs et vérifie les mots de passe. Il a besoin de `PrismaService`.
 Dans un test unitaire, on lui donne un Prisma **mock** à la place.
@@ -369,7 +369,7 @@ flowchart LR
 Seulement 4 specs unitaires utilisent `Test.createTestingModule` (auth.service, health.controller, health.service,
 llm.module). Les 49 autres appellent juste `new TheService(fakeA, fakeB)` à la main, ce qui est plus simple quand tu
 n'as pas besoin que Nest branche quoi que ce soit. Par exemple
-[auth.guard.spec.ts](../../../apps/api/src/auth/auth.guard.spec.ts) :
+[auth.guard.spec.ts](../../apps/api/src/auth/auth.guard.spec.ts) :
 `const auth = { findById: vi.fn() } as unknown as AuthService;`.
 
 ### Étape 3 : les tests
@@ -413,7 +413,7 @@ passe et un email inconnu, email insensible à la casse, `null` pour un utilisat
 
 ---
 
-## 4. Lire une spec e2e : [auth.e2e-spec.ts](../../../apps/api/test/auth.e2e-spec.ts)
+## 4. Lire une spec e2e : [auth.e2e-spec.ts](../../apps/api/test/auth.e2e-spec.ts)
 
 Son en-tête dit pourquoi c'est un test e2e :
 
@@ -443,7 +443,7 @@ afterAll(async () => {
 ```
 
 - Cette fois, le module de test importe **tout** `AppModule` : chaque vrai module, aucun mock.
-- **`configureApp(app)`** est la même fonction que celle qu'appelle [main.ts](../../../apps/api/src/main.ts)
+- **`configureApp(app)`** est la même fonction que celle qu'appelle [main.ts](../../apps/api/src/main.ts)
   (chapitre 2). Elle ajoute le préfixe `/api`, le pipe de validation Zod, le filtre d'erreurs, le middleware de
   session avec son store Redis, etc. Comme `main.ts` et les tests la partagent, l'app testée est configurée
   **exactement** comme la vraie. Le code le dit : « Here rather than in bootstrap() so the Supertest suite can reach
@@ -532,16 +532,16 @@ fixation »), et `/api/health` toujours public.
 - **Une horloge figée** : `vi.useFakeTimers({ toFake: ['Date'], shouldAdvanceTime: true })` et
   `vi.setSystemTime(NOON)` dans les specs lessons, attempts, finish et gamification. Seul `Date` est simulé, donc
   Postgres et Redis marchent encore ; le commentaire dans
-  [lessons.e2e-spec.ts](../../../apps/api/test/lessons.e2e-spec.ts) explique que ça empêche un lancement qui passe
+  [lessons.e2e-spec.ts](../../apps/api/test/lessons.e2e-spec.ts) explique que ça empêche un lancement qui passe
   minuit UTC de voir deux jours différents.
 - **Une adresse par agent** : l'inscription et le login sont limités par IP, donc
-  [gateway.e2e-spec.ts](../../../apps/api/test/gateway.e2e-spec.ts) donne à chaque agent son propre
+  [gateway.e2e-spec.ts](../../apps/api/test/gateway.e2e-spec.ts) donne à chaque agent son propre
   `X-Forwarded-For: 192.0.2.N`.
 - **Des ids de test** : les leçons fixtures utilisent des ids comme `fr-test-...`, que le seed sait ignorer.
 
 ---
 
-## 5. Chaque spec e2e et chaque fixture dans [apps/api/test](../../../apps/api/test)
+## 5. Chaque spec e2e et chaque fixture dans [apps/api/test](../../apps/api/test)
 
 ```
 apps/api/test/
@@ -558,38 +558,38 @@ apps/api/test/
 
 ### Les specs e2e
 
-| Fichier                                                                     | Ce qu'il vérifie                                                                                                                                                                                                                                                                                                                                              |
-| --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [app.e2e-spec.ts](../../../apps/api/test/app.e2e-spec.ts)                   | `GET /api/health` répond avec la forme que publie `@ft/shared` ; le document OpenAPI (Swagger) est servi sur `/api/docs`.                                                                                                                                                                                                                                     |
-| [auth.e2e-spec.ts](../../../apps/api/test/auth.e2e-spec.ts)                 | Inscription, options du cookie, 409 pour un doublon, même 401 pour un mauvais mot de passe et un email inconnu, login / `/me` / logout, nouvel id de session au login (section 4).                                                                                                                                                                            |
-| [two-factor.e2e-spec.ts](../../../apps/api/test/two-factor.e2e-spec.ts)     | Activation de la 2FA avec un vrai code TOTP, login qui s'arrête à 202 avec une demi-session, second facteur, code de récupération utilisé une seule fois, setup/enable refusés quand elle est active (#216), la désactivation demande le mot de passe.                                                                                                        |
-| [users.e2e-spec.ts](../../../apps/api/test/users.e2e-spec.ts)               | Upload d'avatar (chemin relatif, servi en retour, ancien fichier supprimé, mauvais type / faux octets / trop gros refusés avec des codes), fuseau horaire enregistré ou refusé, les champs du profil public.                                                                                                                                                  |
-| [courses.e2e-spec.ts](../../../apps/api/test/courses.e2e-spec.ts)           | Aller-retour d'un cours (créer, lister, objectif, niveau, langue active), les règles (pas de second cours, pas de cours implicite, objectif / langue / niveau valides), personne ne voit les cours d'un autre utilisateur.                                                                                                                                    |
-| [placement.e2e-spec.ts](../../../apps/api/test/placement.e2e-spec.ts)       | Les routes de l'examen de placement avec ses propres lignes en allemand : départ en B1, même question au rechargement, un seul passage à la fois, répondre, abandonner, aller jusqu'à un résultat qui place le cours, passage où tout expire, utilisateurs séparés.                                                                                           |
-| [lessons.e2e-spec.ts](../../../apps/api/test/lessons.e2e-spec.ts)           | Les trois lectures de leçons (`today`, liste `lessons` avec recherche / filtre / tri / groupe / pages, une leçon) : avant le placement, en A1, après un passage en A2, streaks, autres utilisateurs, Swagger.                                                                                                                                                 |
-| [attempts.e2e-spec.ts](../../../apps/api/test/attempts.e2e-spec.ts)         | La tentative de leçon (#145) : démarrage (une seule tentative pour deux démarrages parallèles), pages d'entraînement et cursors périmés, le chrono de l'examen avec ses 2 s de marge, fermeture une seule fois, reprises, tentatives supprimées quand un nouveau seed change la leçon.                                                                        |
-| [finish.e2e-spec.ts](../../../apps/api/test/finish.e2e-spec.ts)             | Finir des leçons par les routes de tentative : qui peut jouer, première fin, meilleur score gardé, objectif atteint à la troisième leçon et la streak, une seule validation pour deux fins parallèles, changements d'objectif, changements de niveau.                                                                                                         |
-| [gamification.e2e-spec.ts](../../../apps/api/test/gamification.e2e-spec.ts) | XP, le défi du jour et les succès (#95) : nombres d'XP exacts, défi donné une seule fois, GOAL_XP, streak7, levelA1, la route des succès, Swagger.                                                                                                                                                                                                            |
-| [discussion.e2e-spec.ts](../../../apps/api/test/discussion.e2e-spec.ts)     | Le stream du tuteur IA avec le provider fixture : vérifications avant le stream (session, cours, tentative périmée), événements `delta` puis `done`, erreurs d'entraînement dans le prompt, codes d'erreur, annulation quand l'apprenant part, les limites par minute et par jour.                                                                            |
-| [friends.e2e-spec.ts](../../../apps/api/test/friends.e2e-spec.ts)           | Recherche d'utilisateurs, « récemment actifs », le flux demande / accepter / retirer entendu sur de vrais sockets, événements en ligne pour les amis seulement, demandes croisées, suppression de compte, 10 demandes par minute.                                                                                                                             |
-| [messages.e2e-spec.ts](../../../apps/api/test/messages.e2e-spec.ts)         | Pagination de l'historique des messages, qui peut envoyer, `dm:send` et `dm:read` sur de vrais sockets, nombres de non-lus, liste des conversations, acks pour les événements refusés, le budget par minute, retrait d'un ami.                                                                                                                                |
-| [gateway.e2e-spec.ts](../../../apps/api/test/gateway.e2e-spec.ts)           | Le handshake du socket (session, cookie falsifié, origine, sockets par session), sockets fermés quand la session se termine (logout, nouveau login, expiration, changement de 2FA), événements `course:updated`, événements inconnus et limites anti-flood.                                                                                                   |
-| [error-codes.e2e-spec.ts](../../../apps/api/test/error-codes.e2e-spec.ts)   | Chaque `message` d'erreur est une entrée de `ERROR_CODES` (#108) : codes Zod, `:lang` inconnu, pas de session, body JSON mauvais ou énorme, route inconnue, un crash, limites de débit sur le login et l'inscription.                                                                                                                                         |
-| [metrics.e2e-spec.ts](../../../apps/api/test/metrics.e2e-spec.ts)           | Les métriques HTTP à travers le vrai pipeline Express : modèle de route (jamais l'URL), chemins sans correspondance, pas de `/api/metrics`, jauges de la banque et des comptes au moment du scrape.                                                                                                                                                           |
-| [seed.e2e-spec.ts](../../../apps/api/test/seed.e2e-spec.ts)                 | Le seed (chapitre 4) sur un vrai Postgres : `seedQuestionBank` (chargement, idempotent, la mise à jour garde l'id, échoue sur des fichiers mauvais ou en double, les 270 vrais items) et `seedLessons` (correspondance avec l'outline, pas de réécriture, ids gardés, Restrict, flags ready, leçons invalides refusées) ; `demoSkipReason` et `demoPassword`. |
-| [demo.e2e-spec.ts](../../../apps/api/test/demo.e2e-spec.ts)                 | Le rejeu des apprenants de démo (#85) pour ben et chloe sous des identités de test : streaks, fins du jour, une fin juste après minuit heure locale à Tokyo.                                                                                                                                                                                                  |
+| Fichier                                                                  | Ce qu'il vérifie                                                                                                                                                                                                                                                                                                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [app.e2e-spec.ts](../../apps/api/test/app.e2e-spec.ts)                   | `GET /api/health` répond avec la forme que publie `@ft/shared` ; le document OpenAPI (Swagger) est servi sur `/api/docs`.                                                                                                                                                                                                                                     |
+| [auth.e2e-spec.ts](../../apps/api/test/auth.e2e-spec.ts)                 | Inscription, options du cookie, 409 pour un doublon, même 401 pour un mauvais mot de passe et un email inconnu, login / `/me` / logout, nouvel id de session au login (section 4).                                                                                                                                                                            |
+| [two-factor.e2e-spec.ts](../../apps/api/test/two-factor.e2e-spec.ts)     | Activation de la 2FA avec un vrai code TOTP, login qui s'arrête à 202 avec une demi-session, second facteur, code de récupération utilisé une seule fois, setup/enable refusés quand elle est active (#216), la désactivation demande le mot de passe.                                                                                                        |
+| [users.e2e-spec.ts](../../apps/api/test/users.e2e-spec.ts)               | Upload d'avatar (chemin relatif, servi en retour, ancien fichier supprimé, mauvais type / faux octets / trop gros refusés avec des codes), fuseau horaire enregistré ou refusé, les champs du profil public.                                                                                                                                                  |
+| [courses.e2e-spec.ts](../../apps/api/test/courses.e2e-spec.ts)           | Aller-retour d'un cours (créer, lister, objectif, niveau, langue active), les règles (pas de second cours, pas de cours implicite, objectif / langue / niveau valides), personne ne voit les cours d'un autre utilisateur.                                                                                                                                    |
+| [placement.e2e-spec.ts](../../apps/api/test/placement.e2e-spec.ts)       | Les routes de l'examen de placement avec ses propres lignes en allemand : départ en B1, même question au rechargement, un seul passage à la fois, répondre, abandonner, aller jusqu'à un résultat qui place le cours, passage où tout expire, utilisateurs séparés.                                                                                           |
+| [lessons.e2e-spec.ts](../../apps/api/test/lessons.e2e-spec.ts)           | Les trois lectures de leçons (`today`, liste `lessons` avec recherche / filtre / tri / groupe / pages, une leçon) : avant le placement, en A1, après un passage en A2, streaks, autres utilisateurs, Swagger.                                                                                                                                                 |
+| [attempts.e2e-spec.ts](../../apps/api/test/attempts.e2e-spec.ts)         | La tentative de leçon (#145) : démarrage (une seule tentative pour deux démarrages parallèles), pages d'entraînement et cursors périmés, le chrono de l'examen avec ses 2 s de marge, fermeture une seule fois, reprises, tentatives supprimées quand un nouveau seed change la leçon.                                                                        |
+| [finish.e2e-spec.ts](../../apps/api/test/finish.e2e-spec.ts)             | Finir des leçons par les routes de tentative : qui peut jouer, première fin, meilleur score gardé, objectif atteint à la troisième leçon et la streak, une seule validation pour deux fins parallèles, changements d'objectif, changements de niveau.                                                                                                         |
+| [gamification.e2e-spec.ts](../../apps/api/test/gamification.e2e-spec.ts) | XP, le défi du jour et les succès (#95) : nombres d'XP exacts, défi donné une seule fois, GOAL_XP, streak7, levelA1, la route des succès, Swagger.                                                                                                                                                                                                            |
+| [discussion.e2e-spec.ts](../../apps/api/test/discussion.e2e-spec.ts)     | Le stream du tuteur IA avec le provider fixture : vérifications avant le stream (session, cours, tentative périmée), événements `delta` puis `done`, erreurs d'entraînement dans le prompt, codes d'erreur, annulation quand l'apprenant part, les limites par minute et par jour.                                                                            |
+| [friends.e2e-spec.ts](../../apps/api/test/friends.e2e-spec.ts)           | Recherche d'utilisateurs, « récemment actifs », le flux demande / accepter / retirer entendu sur de vrais sockets, événements en ligne pour les amis seulement, demandes croisées, suppression de compte, 10 demandes par minute.                                                                                                                             |
+| [messages.e2e-spec.ts](../../apps/api/test/messages.e2e-spec.ts)         | Pagination de l'historique des messages, qui peut envoyer, `dm:send` et `dm:read` sur de vrais sockets, nombres de non-lus, liste des conversations, acks pour les événements refusés, le budget par minute, retrait d'un ami.                                                                                                                                |
+| [gateway.e2e-spec.ts](../../apps/api/test/gateway.e2e-spec.ts)           | Le handshake du socket (session, cookie falsifié, origine, sockets par session), sockets fermés quand la session se termine (logout, nouveau login, expiration, changement de 2FA), événements `course:updated`, événements inconnus et limites anti-flood.                                                                                                   |
+| [error-codes.e2e-spec.ts](../../apps/api/test/error-codes.e2e-spec.ts)   | Chaque `message` d'erreur est une entrée de `ERROR_CODES` (#108) : codes Zod, `:lang` inconnu, pas de session, body JSON mauvais ou énorme, route inconnue, un crash, limites de débit sur le login et l'inscription.                                                                                                                                         |
+| [metrics.e2e-spec.ts](../../apps/api/test/metrics.e2e-spec.ts)           | Les métriques HTTP à travers le vrai pipeline Express : modèle de route (jamais l'URL), chemins sans correspondance, pas de `/api/metrics`, jauges de la banque et des comptes au moment du scrape.                                                                                                                                                           |
+| [seed.e2e-spec.ts](../../apps/api/test/seed.e2e-spec.ts)                 | Le seed (chapitre 4) sur un vrai Postgres : `seedQuestionBank` (chargement, idempotent, la mise à jour garde l'id, échoue sur des fichiers mauvais ou en double, les 270 vrais items) et `seedLessons` (correspondance avec l'outline, pas de réécriture, ids gardés, Restrict, flags ready, leçons invalides refusées) ; `demoSkipReason` et `demoPassword`. |
+| [demo.e2e-spec.ts](../../apps/api/test/demo.e2e-spec.ts)                 | Le rejeu des apprenants de démo (#85) pour ben et chloe sous des identités de test : streaks, fins du jour, une fin juste après minuit heure locale à Tokyo.                                                                                                                                                                                                  |
 
 ### Les fixtures
 
-| Fichier / dossier                                                          | Ce qu'il donne                                                                                                                                                                                                                                                                                                                                      | Utilisé par                                                                                                                                            |
-| -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [attempts.fixtures.ts](../../../apps/api/test/attempts.fixtures.ts)        | `shortLesson(id, position, level, lang)` : une ligne de leçon prête construite sur le court brief de vocabulaire de `@ft/shared`. `openAttempt` : démarre une tentative et reconstruit le plan et les refs des réponses comme le fait le serveur. `playToLast`, `playLesson` : jouent chaque page juste ou vide.                                    | specs e2e attempts, finish, gamification, discussion, gateway                                                                                          |
-| [metrics.fixtures.ts](../../../apps/api/test/metrics.fixtures.ts)          | `seriesValue(metric, labels, suffix)` : la valeur d'une série Prometheus, ou `undefined` si elle n'existe pas.                                                                                                                                                                                                                                      | beaucoup de specs unitaires (metrics, gateway, llm/gemini, placement, question-stock) et les specs e2e metrics, attempts, friends, messages et gateway |
-| [placement.fixtures.ts](../../../apps/api/test/placement.fixtures.ts)      | `examSession()` (un passage tel qu'il commence), `questionRow()` (une ligne de la banque en allemand B1), `placementBank()` (3 lignes par niveau et catégorie), `wrongChoice()`, `fakeRedis()` (un Redis en mémoire avec `set NX`, hashes, listes, `multi`, le script de libération du verrou), `bankPrisma(rows)` (un faux Prisma pour la banque). | les quatre specs unitaires de placement, placement e2e                                                                                                 |
-| [socket.fixtures.ts](../../../apps/api/test/socket.fixtures.ts)            | `sessionCookie(res)`, `connect(port, cookie)` (client websocket seulement sur `/ws`), `nextEvent`, `connected`, `ready` (attend `dm:unread`), `refusal`, `collect`.                                                                                                                                                                                 | specs e2e gateway, friends, messages                                                                                                                   |
-| [fixtures/seed-valid/](../../../apps/api/test/fixtures/seed-valid)         | `en-grammar.json` avec un item correct (`en-gram-9001`).                                                                                                                                                                                                                                                                                            | seed e2e : charge et relie chaque colonne                                                                                                              |
-| [fixtures/seed-invalid/](../../../apps/api/test/fixtures/seed-invalid)     | `en-grammar.json` dont l'item n'a que 3 options.                                                                                                                                                                                                                                                                                                    | seed e2e : doit échouer bruyamment, en nommant le fichier et la raison                                                                                 |
-| [fixtures/seed-duplicate/](../../../apps/api/test/fixtures/seed-duplicate) | `en-grammar-a.json` et `en-grammar-b.json`, les deux avec le `sourceId` `en-gram-9002`.                                                                                                                                                                                                                                                             | seed e2e : doit échouer avant d'écrire quoi que ce soit                                                                                                |
+| Fichier / dossier                                                       | Ce qu'il donne                                                                                                                                                                                                                                                                                                                                      | Utilisé par                                                                                                                                            |
+| ----------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [attempts.fixtures.ts](../../apps/api/test/attempts.fixtures.ts)        | `shortLesson(id, position, level, lang)` : une ligne de leçon prête construite sur le court brief de vocabulaire de `@ft/shared`. `openAttempt` : démarre une tentative et reconstruit le plan et les refs des réponses comme le fait le serveur. `playToLast`, `playLesson` : jouent chaque page juste ou vide.                                    | specs e2e attempts, finish, gamification, discussion, gateway                                                                                          |
+| [metrics.fixtures.ts](../../apps/api/test/metrics.fixtures.ts)          | `seriesValue(metric, labels, suffix)` : la valeur d'une série Prometheus, ou `undefined` si elle n'existe pas.                                                                                                                                                                                                                                      | beaucoup de specs unitaires (metrics, gateway, llm/gemini, placement, question-stock) et les specs e2e metrics, attempts, friends, messages et gateway |
+| [placement.fixtures.ts](../../apps/api/test/placement.fixtures.ts)      | `examSession()` (un passage tel qu'il commence), `questionRow()` (une ligne de la banque en allemand B1), `placementBank()` (3 lignes par niveau et catégorie), `wrongChoice()`, `fakeRedis()` (un Redis en mémoire avec `set NX`, hashes, listes, `multi`, le script de libération du verrou), `bankPrisma(rows)` (un faux Prisma pour la banque). | les quatre specs unitaires de placement, placement e2e                                                                                                 |
+| [socket.fixtures.ts](../../apps/api/test/socket.fixtures.ts)            | `sessionCookie(res)`, `connect(port, cookie)` (client websocket seulement sur `/ws`), `nextEvent`, `connected`, `ready` (attend `dm:unread`), `refusal`, `collect`.                                                                                                                                                                                 | specs e2e gateway, friends, messages                                                                                                                   |
+| [fixtures/seed-valid/](../../apps/api/test/fixtures/seed-valid)         | `en-grammar.json` avec un item correct (`en-gram-9001`).                                                                                                                                                                                                                                                                                            | seed e2e : charge et relie chaque colonne                                                                                                              |
+| [fixtures/seed-invalid/](../../apps/api/test/fixtures/seed-invalid)     | `en-grammar.json` dont l'item n'a que 3 options.                                                                                                                                                                                                                                                                                                    | seed e2e : doit échouer bruyamment, en nommant le fichier et la raison                                                                                 |
+| [fixtures/seed-duplicate/](../../apps/api/test/fixtures/seed-duplicate) | `en-grammar-a.json` et `en-grammar-b.json`, les deux avec le `sourceId` `en-gram-9002`.                                                                                                                                                                                                                                                             | seed e2e : doit échouer avant d'écrire quoi que ce soit                                                                                                |
 
 Note : les fichiers `.fixtures.ts` vivent dans `test/` mais certaines specs **unitaires** les importent aussi (par
 exemple `fakeRedis` dans les specs de placement). Ils ne finissent ni par `.e2e-spec.ts` ni par `.spec.ts`, donc
@@ -597,102 +597,102 @@ aucune des deux configs ne les lance comme tests.
 
 ---
 
-## 6. Chaque spec unitaire dans [apps/api/src](../../../apps/api/src)
+## 6. Chaque spec unitaire dans [apps/api/src](../../apps/api/src)
 
 53 fichiers. Chacun est à côté du fichier qu'il teste (`x.service.ts` → `x.service.spec.ts`).
 
 ### auth (chapitre 5)
 
-| Spec                                                                                | Ce qu'elle vérifie                                                                                                                                             |
-| ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [auth.controller.spec.ts](../../../apps/api/src/auth/auth.controller.spec.ts)       | Le logout efface le cookie et ferme les sockets de la session ; chaque nouvel id de session (inscription, login, étapes de la 2FA) ferme celui qu'il remplace. |
-| [auth.guard.spec.ts](../../../apps/api/src/auth/auth.guard.spec.ts)                 | Les routes `@Public` passent ; pas de session → 401 ; attache l'utilisateur et le compte comme actif ; détruit une session dont l'utilisateur n'existe plus.   |
-| [auth.service.spec.ts](../../../apps/api/src/auth/auth.service.spec.ts)             | Hash argon2id, email en minuscules, pas de hash renvoyé, P2002 → 409, vérification des identifiants (section 3).                                               |
-| [two-factor.service.spec.ts](../../../apps/api/src/auth/two-factor.service.spec.ts) | Activation (setup, confirmation, refus quand elle est active, courses entre requêtes), le second facteur avec les codes TOTP et les codes de récupération.     |
+| Spec                                                                             | Ce qu'elle vérifie                                                                                                                                             |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [auth.controller.spec.ts](../../apps/api/src/auth/auth.controller.spec.ts)       | Le logout efface le cookie et ferme les sockets de la session ; chaque nouvel id de session (inscription, login, étapes de la 2FA) ferme celui qu'il remplace. |
+| [auth.guard.spec.ts](../../apps/api/src/auth/auth.guard.spec.ts)                 | Les routes `@Public` passent ; pas de session → 401 ; attache l'utilisateur et le compte comme actif ; détruit une session dont l'utilisateur n'existe plus.   |
+| [auth.service.spec.ts](../../apps/api/src/auth/auth.service.spec.ts)             | Hash argon2id, email en minuscules, pas de hash renvoyé, P2002 → 409, vérification des identifiants (section 3).                                               |
+| [two-factor.service.spec.ts](../../apps/api/src/auth/two-factor.service.spec.ts) | Activation (setup, confirmation, refus quand elle est active, courses entre requêtes), le second facteur avec les codes TOTP et les codes de récupération.     |
 
 ### users (chapitre 5)
 
-| Spec                                                                       | Ce qu'elle vérifie                                                                                                                                                                                                |
-| -------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [users.service.spec.ts](../../../apps/api/src/users/users.service.spec.ts) | Chemins d'avatar et suppression de fichiers (jamais en dehors du dossier de stockage), la recherche échappe les jokers, récemment actifs sur 7 jours UTC, conflits de profil, streak sur le jour du propriétaire. |
-| [active-day.spec.ts](../../../apps/api/src/users/active-day.spec.ts)       | `activeDay` garde le jour UTC ; `activeSince` recule de 6 jours.                                                                                                                                                  |
+| Spec                                                                    | Ce qu'elle vérifie                                                                                                                                                                                                |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [users.service.spec.ts](../../apps/api/src/users/users.service.spec.ts) | Chemins d'avatar et suppression de fichiers (jamais en dehors du dossier de stockage), la recherche échappe les jokers, récemment actifs sur 7 jours UTC, conflits de profil, streak sur le jour du propriétaire. |
+| [active-day.spec.ts](../../apps/api/src/users/active-day.spec.ts)       | `activeDay` garde le jour UTC ; `activeSince` recule de 6 jours.                                                                                                                                                  |
 
 ### Infrastructure : prisma, redis, throttler, metrics, health (chapitre 3)
 
-| Spec                                                                                                 | Ce qu'elle vérifie                                                                                                                                              |
-| ---------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [prisma.service.spec.ts](../../../apps/api/src/prisma/prisma.service.spec.ts)                        | Se connecte au bootstrap, se déconnecte à l'arrêt, latence du `ping`, refuse un `DATABASE_URL` vide.                                                            |
-| [redis.service.spec.ts](../../../apps/api/src/redis/redis.service.spec.ts)                           | Se connecte à l'init, se ferme à l'arrêt, `ping`, refuse un `REDIS_URL` vide.                                                                                   |
-| [identity-throttler.guard.spec.ts](../../../apps/api/src/throttler/identity-throttler.guard.spec.ts) | Identifie un appelant connecté par l'utilisateur, un anonyme par l'IP ; les routes `@ThrottleByIp` ; les limites par route et le plafond par défaut.            |
-| [rate-limits.spec.ts](../../../apps/api/src/throttler/rate-limits.spec.ts)                           | `readLimit` : valeur par défaut quand rien n'est fixé, entier positif, erreur qui nomme la variable.                                                            |
-| [throttler-storage.spec.ts](../../../apps/api/src/throttler/throttler-storage.spec.ts)               | Les compteurs d'inscription expirent tout seuls, même après le blocage d'une autre route.                                                                       |
-| [http-metrics.middleware.spec.ts](../../../apps/api/src/metrics/http-metrics.middleware.spec.ts)     | Mesure le temps de chaque requête sous son modèle de route, 499 pour un client parti, « unmatched », compté une seule fois ; `routeOf`, `methodOf`.             |
-| [metrics-server.spec.ts](../../../apps/api/src/metrics/metrics-server.spec.ts)                       | `GET /metrics` au format Prometheus, les autres chemins, 500 sur un registre cassé, port déjà pris.                                                             |
-| [metrics.collector.spec.ts](../../../apps/api/src/metrics/metrics.collector.spec.ts)                 | Jauges de la banque et des comptes, au plus une requête par minute, garde les anciennes valeurs en cas d'échec, réponse en 3 s quand la base de données bloque. |
-| [metrics.spec.ts](../../../apps/api/src/metrics/metrics.spec.ts)                                     | Les séries que lisent les alertes existent à 0 dès le départ ; utilisateurs actifs sur 5 minutes.                                                               |
-| [health.controller.spec.ts](../../../apps/api/src/health/health.controller.spec.ts)                  | Le payload correspond au contrat publié.                                                                                                                        |
-| [health.service.spec.ts](../../../apps/api/src/health/health.service.spec.ts)                        | Version, uptime, ok / degraded / down selon les sondes Postgres et Redis.                                                                                       |
+| Spec                                                                                              | Ce qu'elle vérifie                                                                                                                                              |
+| ------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [prisma.service.spec.ts](../../apps/api/src/prisma/prisma.service.spec.ts)                        | Se connecte au bootstrap, se déconnecte à l'arrêt, latence du `ping`, refuse un `DATABASE_URL` vide.                                                            |
+| [redis.service.spec.ts](../../apps/api/src/redis/redis.service.spec.ts)                           | Se connecte à l'init, se ferme à l'arrêt, `ping`, refuse un `REDIS_URL` vide.                                                                                   |
+| [identity-throttler.guard.spec.ts](../../apps/api/src/throttler/identity-throttler.guard.spec.ts) | Identifie un appelant connecté par l'utilisateur, un anonyme par l'IP ; les routes `@ThrottleByIp` ; les limites par route et le plafond par défaut.            |
+| [rate-limits.spec.ts](../../apps/api/src/throttler/rate-limits.spec.ts)                           | `readLimit` : valeur par défaut quand rien n'est fixé, entier positif, erreur qui nomme la variable.                                                            |
+| [throttler-storage.spec.ts](../../apps/api/src/throttler/throttler-storage.spec.ts)               | Les compteurs d'inscription expirent tout seuls, même après le blocage d'une autre route.                                                                       |
+| [http-metrics.middleware.spec.ts](../../apps/api/src/metrics/http-metrics.middleware.spec.ts)     | Mesure le temps de chaque requête sous son modèle de route, 499 pour un client parti, « unmatched », compté une seule fois ; `routeOf`, `methodOf`.             |
+| [metrics-server.spec.ts](../../apps/api/src/metrics/metrics-server.spec.ts)                       | `GET /metrics` au format Prometheus, les autres chemins, 500 sur un registre cassé, port déjà pris.                                                             |
+| [metrics.collector.spec.ts](../../apps/api/src/metrics/metrics.collector.spec.ts)                 | Jauges de la banque et des comptes, au plus une requête par minute, garde les anciennes valeurs en cas d'échec, réponse en 3 s quand la base de données bloque. |
+| [metrics.spec.ts](../../apps/api/src/metrics/metrics.spec.ts)                                     | Les séries que lisent les alertes existent à 0 dès le départ ; utilisateurs actifs sur 5 minutes.                                                               |
+| [health.controller.spec.ts](../../apps/api/src/health/health.controller.spec.ts)                  | Le payload correspond au contrat publié.                                                                                                                        |
+| [health.service.spec.ts](../../apps/api/src/health/health.service.spec.ts)                        | Version, uptime, ok / degraded / down selon les sondes Postgres et Redis.                                                                                       |
 
 ### llm (chapitre 6)
 
-| Spec                                                                                       | Ce qu'elle vérifie                                                                                                                    |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------- |
-| [disabled.provider.spec.ts](../../../apps/api/src/llm/disabled.provider.spec.ts)           | N'écrit aucune question ; le stream de la discussion échoue avant son premier morceau.                                                |
-| [fixture.provider.spec.ts](../../../apps/api/src/llm/fixture.provider.spec.ts)             | Refuse les demandes de questions ; `streamText` envoie une réponse fixe et simule des streams bloqués, en timeout, coupés et annulés. |
-| [gemini.provider.spec.ts](../../../apps/api/src/llm/gemini.provider.spec.ts)               | La requête (schéma, clé dans un header), timeout de 90 s, parsing, logs, quels échecs sont réessayés et lesquels non, métriques.      |
-| [gemini.provider.stream.spec.ts](../../../apps/api/src/llm/gemini.provider.stream.spec.ts) | `streamText` en SSE : événements coupés entre plusieurs paquets, raisons de fin, streams cassés, l'apprenant qui part, métriques.     |
-| [llm.factory.spec.ts](../../../apps/api/src/llm/llm.factory.spec.ts)                       | `createLlmProvider` choisit fixture / disabled / Gemini, modèle par défaut, refuse une clé manquante ou un nom inconnu.               |
-| [llm.module.spec.ts](../../../apps/api/src/llm/llm.module.spec.ts)                         | Le module construit le provider que nomme `LLM_PROVIDER`, ou le fixture par défaut.                                                   |
+| Spec                                                                                    | Ce qu'elle vérifie                                                                                                                    |
+| --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| [disabled.provider.spec.ts](../../apps/api/src/llm/disabled.provider.spec.ts)           | N'écrit aucune question ; le stream de la discussion échoue avant son premier morceau.                                                |
+| [fixture.provider.spec.ts](../../apps/api/src/llm/fixture.provider.spec.ts)             | Refuse les demandes de questions ; `streamText` envoie une réponse fixe et simule des streams bloqués, en timeout, coupés et annulés. |
+| [gemini.provider.spec.ts](../../apps/api/src/llm/gemini.provider.spec.ts)               | La requête (schéma, clé dans un header), timeout de 90 s, parsing, logs, quels échecs sont réessayés et lesquels non, métriques.      |
+| [gemini.provider.stream.spec.ts](../../apps/api/src/llm/gemini.provider.stream.spec.ts) | `streamText` en SSE : événements coupés entre plusieurs paquets, raisons de fin, streams cassés, l'apprenant qui part, métriques.     |
+| [llm.factory.spec.ts](../../apps/api/src/llm/llm.factory.spec.ts)                       | `createLlmProvider` choisit fixture / disabled / Gemini, modèle par défaut, refuse une clé manquante ou un nom inconnu.               |
+| [llm.module.spec.ts](../../apps/api/src/llm/llm.module.spec.ts)                         | Le module construit le provider que nomme `LLM_PROVIDER`, ou le fixture par défaut.                                                   |
 
 ### courses, placement, question-generation (chapitre 7)
 
-| Spec                                                                                                             | Ce qu'elle vérifie                                                                                                                                                |
-| ---------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [courses.service.spec.ts](../../../apps/api/src/courses/courses.service.spec.ts)                                 | Liste à travers l'utilisateur, création sans niveau, `setGoal` (verrou, streak, GOAL_XP, événement socket après le commit), `setLevel` (clé composée, not-found). |
-| [placement.service.spec.ts](../../../apps/api/src/placement/placement.service.spec.ts)                           | Démarrage, rechargement, envoi (timeouts, verrou), abandon, métriques, placement du cours à la fin.                                                               |
-| [placement-question.service.spec.ts](../../../apps/api/src/placement/placement-question.service.spec.ts)         | Tirer une question pas encore vue, repli sur des lignes générées ou déjà vues, réserve épuisée, la question envoyée sans sa réponse, métriques.                   |
-| [placement-session.service.spec.ts](../../../apps/api/src/placement/placement-session.service.spec.ts)           | Le verrou Redis (un seul appelant, token, réessais) et le passage enregistré (expiration, en cours ou non, anciens formats). Utilise `fakeRedis`.                 |
-| [placement-progress.service.spec.ts](../../../apps/api/src/placement/placement-progress.service.spec.ts)         | Faire bouger le niveau après chaque réponse, les temps écoulés, le résultat final.                                                                                |
-| [question-batch.prompt.spec.ts](../../../apps/api/src/question-generation/prompts/question-batch.prompt.spec.ts) | Le prompt demande les bonnes questions par catégorie et par sujet.                                                                                                |
-| [question-batch.spec.ts](../../../apps/api/src/question-generation/question-batch.spec.ts)                       | `freshItems` enlève les doublons ; `toRows` range les items dans leur case avec la bonne limite de temps.                                                         |
-| [question-stock.service.spec.ts](../../../apps/api/src/question-generation/question-stock.service.spec.ts)       | Quand une case est réapprovisionnée, un seul réapprovisionnement à la fois, 10 min de pause, réessais, ne rejette jamais, métriques.                              |
+| Spec                                                                                                          | Ce qu'elle vérifie                                                                                                                                                |
+| ------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [courses.service.spec.ts](../../apps/api/src/courses/courses.service.spec.ts)                                 | Liste à travers l'utilisateur, création sans niveau, `setGoal` (verrou, streak, GOAL_XP, événement socket après le commit), `setLevel` (clé composée, not-found). |
+| [placement.service.spec.ts](../../apps/api/src/placement/placement.service.spec.ts)                           | Démarrage, rechargement, envoi (timeouts, verrou), abandon, métriques, placement du cours à la fin.                                                               |
+| [placement-question.service.spec.ts](../../apps/api/src/placement/placement-question.service.spec.ts)         | Tirer une question pas encore vue, repli sur des lignes générées ou déjà vues, réserve épuisée, la question envoyée sans sa réponse, métriques.                   |
+| [placement-session.service.spec.ts](../../apps/api/src/placement/placement-session.service.spec.ts)           | Le verrou Redis (un seul appelant, token, réessais) et le passage enregistré (expiration, en cours ou non, anciens formats). Utilise `fakeRedis`.                 |
+| [placement-progress.service.spec.ts](../../apps/api/src/placement/placement-progress.service.spec.ts)         | Faire bouger le niveau après chaque réponse, les temps écoulés, le résultat final.                                                                                |
+| [question-batch.prompt.spec.ts](../../apps/api/src/question-generation/prompts/question-batch.prompt.spec.ts) | Le prompt demande les bonnes questions par catégorie et par sujet.                                                                                                |
+| [question-batch.spec.ts](../../apps/api/src/question-generation/question-batch.spec.ts)                       | `freshItems` enlève les doublons ; `toRows` range les items dans leur case avec la bonne limite de temps.                                                         |
+| [question-stock.service.spec.ts](../../apps/api/src/question-generation/question-stock.service.spec.ts)       | Quand une case est réapprovisionnée, un seul réapprovisionnement à la fois, 10 min de pause, réessais, ne rejette jamais, métriques.                              |
 
 ### lessons (chapitre 8)
 
-| Spec                                                                                   | Ce qu'elle vérifie                                                                                                                                                                      |
-| -------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [attempt-ref.spec.ts](../../../apps/api/src/lessons/attempt-ref.spec.ts)               | `refOf` donne des refs stables qui dépendent du secret.                                                                                                                                 |
-| [course-lookup.spec.ts](../../../apps/api/src/lessons/course-lookup.spec.ts)           | `checkCourse` (404 / 409) et `findLesson` (404, mauvais ids).                                                                                                                           |
-| [discussion-limits.spec.ts](../../../apps/api/src/lessons/discussion-limits.spec.ts)   | Valeurs par défaut et mauvaises valeurs de `readDiscussionLimits`.                                                                                                                      |
-| [discussion-prompt.spec.ts](../../../apps/api/src/lessons/discussion-prompt.spec.ts)   | Le prompt système du tuteur : pas de document d'examen, faits qui enseignent en JSON, erreurs d'entraînement (jamais les réponses de l'examen, au plus `MAX_MISTAKES`).                 |
-| [event-stream.spec.ts](../../../apps/api/src/lessons/event-stream.spec.ts)             | Headers SSE, format des événements, heartbeat de 15 s, annulation quand le navigateur part.                                                                                             |
-| [gamification.rules.spec.ts](../../../apps/api/src/lessons/gamification.rules.spec.ts) | XP par fin, rangs, le hash du défi du jour, `challengeMet`, succès gagnés, barres de progression.                                                                                       |
-| [goal.spec.ts](../../../apps/api/src/lessons/goal.spec.ts)                             | `lockCourse` (FOR UPDATE), `meetGoal` (streak écrite une seule fois), `latestDay`.                                                                                                      |
-| [roadmap.rules.spec.ts](../../../apps/api/src/lessons/roadmap.rules.spec.ts)           | Le plan du jour : statut, fusion des résultats, ordre de la file, `plan`, progression du niveau, jours locaux, streaks, un parcours complet du premier jour.                            |
-| [lesson-search.spec.ts](../../../apps/api/src/lessons/lesson-search.spec.ts)           | Recherche (accents, ae/oe/ue en allemand, chaque mot), filtres, tri, groupe, pages.                                                                                                     |
-| [outline-files.spec.ts](../../../apps/api/src/lessons/outline-files.spec.ts)           | Chaque fichier de `content/outlines` : schéma, nom, nombre d'entrées par type, pas d'id `-test-`, pas d'id ni de titre en double.                                                       |
-| [lesson-files.spec.ts](../../../apps/api/src/lessons/lesson-files.spec.ts)             | Chaque fichier de `content/briefs` et `content/lessons` : a une entrée dans l'outline, passe `validateLesson`, pas de contenu orphelin, pas de titre en double, le français utilise tu. |
-| [lesson-complete.spec.ts](../../../apps/api/src/lessons/lesson-complete.spec.ts)       | L'étape `complete` de `scripts/lessons` (chapitre 11).                                                                                                                                  |
-| [lesson-edits.spec.ts](../../../apps/api/src/lessons/lesson-edits.spec.ts)             | Les modifications, le parsing des réponses et la gestion des refus de `scripts/lessons` (chapitre 11).                                                                                  |
+| Spec                                                                                | Ce qu'elle vérifie                                                                                                                                                                      |
+| ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [attempt-ref.spec.ts](../../apps/api/src/lessons/attempt-ref.spec.ts)               | `refOf` donne des refs stables qui dépendent du secret.                                                                                                                                 |
+| [course-lookup.spec.ts](../../apps/api/src/lessons/course-lookup.spec.ts)           | `checkCourse` (404 / 409) et `findLesson` (404, mauvais ids).                                                                                                                           |
+| [discussion-limits.spec.ts](../../apps/api/src/lessons/discussion-limits.spec.ts)   | Valeurs par défaut et mauvaises valeurs de `readDiscussionLimits`.                                                                                                                      |
+| [discussion-prompt.spec.ts](../../apps/api/src/lessons/discussion-prompt.spec.ts)   | Le prompt système du tuteur : pas de document d'examen, faits qui enseignent en JSON, erreurs d'entraînement (jamais les réponses de l'examen, au plus `MAX_MISTAKES`).                 |
+| [event-stream.spec.ts](../../apps/api/src/lessons/event-stream.spec.ts)             | Headers SSE, format des événements, heartbeat de 15 s, annulation quand le navigateur part.                                                                                             |
+| [gamification.rules.spec.ts](../../apps/api/src/lessons/gamification.rules.spec.ts) | XP par fin, rangs, le hash du défi du jour, `challengeMet`, succès gagnés, barres de progression.                                                                                       |
+| [goal.spec.ts](../../apps/api/src/lessons/goal.spec.ts)                             | `lockCourse` (FOR UPDATE), `meetGoal` (streak écrite une seule fois), `latestDay`.                                                                                                      |
+| [roadmap.rules.spec.ts](../../apps/api/src/lessons/roadmap.rules.spec.ts)           | Le plan du jour : statut, fusion des résultats, ordre de la file, `plan`, progression du niveau, jours locaux, streaks, un parcours complet du premier jour.                            |
+| [lesson-search.spec.ts](../../apps/api/src/lessons/lesson-search.spec.ts)           | Recherche (accents, ae/oe/ue en allemand, chaque mot), filtres, tri, groupe, pages.                                                                                                     |
+| [outline-files.spec.ts](../../apps/api/src/lessons/outline-files.spec.ts)           | Chaque fichier de `content/outlines` : schéma, nom, nombre d'entrées par type, pas d'id `-test-`, pas d'id ni de titre en double.                                                       |
+| [lesson-files.spec.ts](../../apps/api/src/lessons/lesson-files.spec.ts)             | Chaque fichier de `content/briefs` et `content/lessons` : a une entrée dans l'outline, passe `validateLesson`, pas de contenu orphelin, pas de titre en double, le français utilise tu. |
+| [lesson-complete.spec.ts](../../apps/api/src/lessons/lesson-complete.spec.ts)       | L'étape `complete` de `scripts/lessons` (chapitre 11).                                                                                                                                  |
+| [lesson-edits.spec.ts](../../apps/api/src/lessons/lesson-edits.spec.ts)             | Les modifications, le parsing des réponses et la gestion des refus de `scripts/lessons` (chapitre 11).                                                                                  |
 
 ### items
 
-| Spec                                                                 | Ce qu'elle vérifie                                                                                                                                    |
-| -------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [item-files.spec.ts](../../../apps/api/src/items/item-files.spec.ts) | Chaque fichier de `content/items` (questions de placement) : schéma, nom de fichier, pas d'id partagé, catégories manquantes signalées (chapitre 11). |
+| Spec                                                              | Ce qu'elle vérifie                                                                                                                                    |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [item-files.spec.ts](../../apps/api/src/items/item-files.spec.ts) | Chaque fichier de `content/items` (questions de placement) : schéma, nom de fichier, pas d'id partagé, catégories manquantes signalées (chapitre 11). |
 
 ### gateway, presence, friends, messages, demo (chapitre 9)
 
-| Spec                                                                                             | Ce qu'elle vérifie                                                                                                                                           |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [socket.gateway.spec.ts](../../../apps/api/src/gateway/socket.gateway.spec.ts)                   | `sameOrigin`, `fixedWindow`, le handshake, le tri et les limites des événements, acks, présence et non-lus à la connexion, fermeture des sessions terminées. |
-| [sockets.service.spec.ts](../../../apps/api/src/gateway/sockets.service.spec.ts)                 | Émet seulement vers la room de l'utilisateur ; ferme les sockets d'une session.                                                                              |
-| [socket-exception.filter.spec.ts](../../../apps/api/src/gateway/socket-exception.filter.spec.ts) | Les codes d'erreur vont dans l'ack, ou dans `app:error` quand il n'y a pas d'ack.                                                                            |
-| [presence.service.spec.ts](../../../apps/api/src/presence/presence.service.spec.ts)              | En ligne au premier socket, hors ligne après le délai de grâce, compteurs gardés par utilisateur, remise à zéro au démarrage.                                |
-| [friends.service.spec.ts](../../../apps/api/src/friends/friends.service.spec.ts)                 | `pairKey`, envoi de demandes (à soi-même, demandes croisées, 404), écritures qui ne trouvent rien, la liste avec les indicateurs en ligne.                   |
-| [messages.service.spec.ts](../../../apps/api/src/messages/messages.service.spec.ts)              | Envoi (une seule transaction, les deux rooms prévenues, budget), lecture, pagination avec un cursor, liste des conversations.                                |
-| [unread.spec.ts](../../../apps/api/src/messages/unread.spec.ts)                                  | `unreadCounts` par conversation.                                                                                                                             |
-| [demo.planner.spec.ts](../../../apps/api/src/demo/demo.planner.spec.ts)                          | `atLocalTime`, `daysBefore`, `pastScore`, `planCourse`, `daysToAttemptAll`, les six profils de démo.                                                         |
+| Spec                                                                                          | Ce qu'elle vérifie                                                                                                                                           |
+| --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [socket.gateway.spec.ts](../../apps/api/src/gateway/socket.gateway.spec.ts)                   | `sameOrigin`, `fixedWindow`, le handshake, le tri et les limites des événements, acks, présence et non-lus à la connexion, fermeture des sessions terminées. |
+| [sockets.service.spec.ts](../../apps/api/src/gateway/sockets.service.spec.ts)                 | Émet seulement vers la room de l'utilisateur ; ferme les sockets d'une session.                                                                              |
+| [socket-exception.filter.spec.ts](../../apps/api/src/gateway/socket-exception.filter.spec.ts) | Les codes d'erreur vont dans l'ack, ou dans `app:error` quand il n'y a pas d'ack.                                                                            |
+| [presence.service.spec.ts](../../apps/api/src/presence/presence.service.spec.ts)              | En ligne au premier socket, hors ligne après le délai de grâce, compteurs gardés par utilisateur, remise à zéro au démarrage.                                |
+| [friends.service.spec.ts](../../apps/api/src/friends/friends.service.spec.ts)                 | `pairKey`, envoi de demandes (à soi-même, demandes croisées, 404), écritures qui ne trouvent rien, la liste avec les indicateurs en ligne.                   |
+| [messages.service.spec.ts](../../apps/api/src/messages/messages.service.spec.ts)              | Envoi (une seule transaction, les deux rooms prévenues, budget), lecture, pagination avec un cursor, liste des conversations.                                |
+| [unread.spec.ts](../../apps/api/src/messages/unread.spec.ts)                                  | `unreadCounts` par conversation.                                                                                                                             |
+| [demo.planner.spec.ts](../../apps/api/src/demo/demo.planner.spec.ts)                          | `atLocalTime`, `daysBefore`, `pastScore`, `planCourse`, `daysToAttemptAll`, les six profils de démo.                                                         |
 
 Trois de ces specs lisent de **vrais fichiers**, pas du code : `outline-files`, `lesson-files` et `item-files`. Le
 commentaire dans `item-files.spec.ts` dit pourquoi ce sont des tests et pas des scripts : « it runs in `make`, in
@@ -704,7 +704,7 @@ et il échoue pour la personne qui a écrit l'item au lieu de celui qui lance le
 
 ## 7. Le dossier `coverage/`
 
-`pnpm --filter @ft/api test:cov` écrit [apps/api/coverage/](../../../apps/api/coverage). Il est **généré** et listé
+`pnpm --filter @ft/api test:cov` écrit [apps/api/coverage/](../../apps/api/coverage). Il est **généré** et listé
 dans `.gitignore`, donc il n'est jamais commité.
 
 ```

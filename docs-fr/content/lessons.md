@@ -344,7 +344,7 @@ Le brief de `fr-subject-pronouns`, raccourci :
 ```
 
 La forme complète de chaque type est dans les schemas de `packages/shared/src/lessons/schemas/`, et
-carte par carte dans [milestone2-data-model.html](../../site/milestone2-data-model.html#files).
+carte par carte dans [milestone2-data-model.html](../../docs/site/milestone2-data-model.html#files).
 
 ### Qui transporte les fichiers, et où
 

@@ -5,10 +5,10 @@ Dans ce chapitre :
 - Ce qu'est un LLM, et à quoi l'API s'en sert
 - Le pattern "provider" : une interface, plusieurs classes derrière (comme des adaptateurs de prise électrique)
 - Ce qu'est le streaming, et pourquoi la réponse du tuteur est streamée
-- [llm.provider.ts](../../../apps/api/src/llm/llm.provider.ts) : le contrat et le type d'erreur
-- [llm.factory.ts](../../../apps/api/src/llm/llm.factory.ts) et [llm.module.ts](../../../apps/api/src/llm/llm.module.ts) : comment un provider est choisi à partir du fichier `.env`
-- [gemini.provider.ts](../../../apps/api/src/llm/gemini.provider.ts) : le vrai (requêtes HTTP, streaming, erreurs, timeouts, métriques)
-- [fixture.provider.ts](../../../apps/api/src/llm/fixture.provider.ts) et [disabled.provider.ts](../../../apps/api/src/llm/disabled.provider.ts) : les faux, pour les tests et pour une stack sans clé
+- [llm.provider.ts](../../apps/api/src/llm/llm.provider.ts) : le contrat et le type d'erreur
+- [llm.factory.ts](../../apps/api/src/llm/llm.factory.ts) et [llm.module.ts](../../apps/api/src/llm/llm.module.ts) : comment un provider est choisi à partir du fichier `.env`
+- [gemini.provider.ts](../../apps/api/src/llm/gemini.provider.ts) : le vrai (requêtes HTTP, streaming, erreurs, timeouts, métriques)
+- [fixture.provider.ts](../../apps/api/src/llm/fixture.provider.ts) et [disabled.provider.ts](../../apps/api/src/llm/disabled.provider.ts) : les faux, pour les tests et pour une stack sans clé
 - Qui utilise le LLM dans le reste de l'API
 
 ---
@@ -142,7 +142,7 @@ démarrage, puis chaque provider.
 
 ## `llm.provider.ts` — le contrat
 
-[llm.provider.ts](../../../apps/api/src/llm/llm.provider.ts) ne contient aucune logique. Il décrit la "forme de
+[llm.provider.ts](../../apps/api/src/llm/llm.provider.ts) ne contient aucune logique. Il décrit la "forme de
 prise" que chaque provider doit avoir. Il exporte :
 
 | Export              | Genre           | Rôle                                                                             |
@@ -285,7 +285,7 @@ libre créerait une nouvelle série de métriques pour chaque message. Le sens d
 
 ## `llm.factory.ts` — choisir un provider
 
-[llm.factory.ts](../../../apps/api/src/llm/llm.factory.ts) exporte une seule fonction, `createLlmProvider`. Elle lit
+[llm.factory.ts](../../apps/api/src/llm/llm.factory.ts) exporte une seule fonction, `createLlmProvider`. Elle lit
 trois réglages et construit le bon provider.
 
 | Réglage        | Valeurs                                   | Par défaut         |
@@ -336,14 +336,14 @@ Comment ça marche :
 provider tourne. Elle appelle d'abord `reset()`, donc un deuxième appel (dans un test) laisse un seul provider, pas
 deux.
 
-[llm.factory.spec.ts](../../../apps/api/src/llm/llm.factory.spec.ts) vérifie chaque cas : la fixture par défaut, le
+[llm.factory.spec.ts](../../apps/api/src/llm/llm.factory.spec.ts) vérifie chaque cas : la fixture par défaut, le
 provider désactivé, Gemini avec sa clé et son modèle, et les erreurs.
 
 ---
 
 ## `llm.module.ts` — offrir le provider à l'app
 
-[llm.module.ts](../../../apps/api/src/llm/llm.module.ts) est un petit module Nest. Il utilise un **factory
+[llm.module.ts](../../apps/api/src/llm/llm.module.ts) est un petit module Nest. Il utilise un **factory
 provider** : au lieu de donner à Nest une classe à construire, on lui donne une fonction à appeler.
 
 ```ts
@@ -385,7 +385,7 @@ flowchart TD
     P --> DS["DiscussionService<br/>@Inject(LLM_PROVIDER)"]
 ```
 
-[llm.module.spec.ts](../../../apps/api/src/llm/llm.module.spec.ts) construit le vrai module avec un faux
+[llm.module.spec.ts](../../apps/api/src/llm/llm.module.spec.ts) construit le vrai module avec un faux
 `ConfigService` : il vérifie que le provider nommé dans `LLM_PROVIDER` est construit, que la fixture est la valeur
 par défaut, et que Gemini sans clé échoue.
 
@@ -393,8 +393,8 @@ par défaut, et que Gemini sans clé échoue.
 
 ## `gemini.provider.ts` — le vrai provider
 
-[gemini.provider.ts](../../../apps/api/src/llm/gemini.provider.ts) est le plus gros fichier. Il appelle l'API Gemini
-de Google en HTTP. Le document en français [GEMINI_PROVIDER.md](../../../apps/api/src/llm/GEMINI_PROVIDER.md) juste à
+[gemini.provider.ts](../../apps/api/src/llm/gemini.provider.ts) est le plus gros fichier. Il appelle l'API Gemini
+de Google en HTTP. Le document en français [GEMINI_PROVIDER.md](../../apps/api/src/llm/GEMINI_PROVIDER.md) juste à
 côté l'explique ligne par ligne, avec un historique des changements depuis la PR #69. Voici la visite.
 
 Le fichier a trois parties :
@@ -796,10 +796,10 @@ ignoré.
 
 ### Les tests de Gemini
 
-- [gemini.provider.spec.ts](../../../apps/api/src/llm/gemini.provider.spec.ts) mocke `fetch` et vérifie
+- [gemini.provider.spec.ts](../../apps/api/src/llm/gemini.provider.spec.ts) mocke `fetch` et vérifie
   `generateStructured` : la clé est dans un header et jamais dans l'URL, le JSON Schema est envoyé, le timeout de
   90 s, l'assemblage des parties sans les réflexions, les logs, quelles erreurs sont retryable, et les métriques.
-- [gemini.provider.stream.spec.ts](../../../apps/api/src/llm/gemini.provider.stream.spec.ts) vérifie `streamText` :
+- [gemini.provider.stream.spec.ts](../../apps/api/src/llm/gemini.provider.stream.spec.ts) vérifie `streamText` :
   l'endpoint SSE, les événements coupés entre des paquets (même au milieu d'un caractère), les commentaires ignorés,
   chaque arrêt précoce, l'apprenant qui part (une `AbortError`, aucun résultat compté, body annulé), et les
   métriques.
@@ -808,7 +808,7 @@ ignoré.
 
 ## `fixture.provider.ts` — de fausses réponses, pour les tests et le développement
 
-[fixture.provider.ts](../../../apps/api/src/llm/fixture.provider.ts) est le provider **par défaut**. Il ne touche
+[fixture.provider.ts](../../apps/api/src/llm/fixture.provider.ts) est le provider **par défaut**. Il ne touche
 jamais le réseau. Pourquoi existe-t-il ?
 
 - **Pas de clé, pas de coût.** Un nouveau développeur peut faire tourner toute l'app sans compte Google.
@@ -894,14 +894,14 @@ async *streamText({ messages, signal }: StreamRequest): AsyncIterable<string> {
 | `#fail-midstream`                          | envoie 2 morceaux, puis échoue avec `unreachable` |
 | n'importe quoi d'autre                     | envoie les 3 morceaux de `FIXTURE_ANSWER`         |
 
-[fixture.provider.spec.ts](../../../apps/api/src/llm/fixture.provider.spec.ts) vérifie chaque ligne de ce tableau,
+[fixture.provider.spec.ts](../../apps/api/src/llm/fixture.provider.spec.ts) vérifie chaque ligne de ce tableau,
 l'annulation, et que `generateStructured` échoue toujours de façon non retryable.
 
 ---
 
 ## `disabled.provider.ts` — pas de LLM du tout
 
-[disabled.provider.ts](../../../apps/api/src/llm/disabled.provider.ts) sert à une stack qui ne doit faire tourner
+[disabled.provider.ts](../../apps/api/src/llm/disabled.provider.ts) sert à une stack qui ne doit faire tourner
 **aucun** LLM, pas même le tuteur tout fait de la fixture.
 
 ```ts
@@ -925,7 +925,7 @@ Chaque appel échoue tout de suite avec la raison `disabled`. La discussion de l
 d'erreur `llm.disabled`, et un restock compte comme `llm_disabled`, que l'alerte ignore. `streamText` est un
 générateur `async *` sans `yield`, donc la règle ESLint `require-yield` est désactivée pour cette ligne.
 
-[disabled.provider.spec.ts](../../../apps/api/src/llm/disabled.provider.spec.ts) vérifie que les deux méthodes
+[disabled.provider.spec.ts](../../apps/api/src/llm/disabled.provider.spec.ts) vérifie que les deux méthodes
 échouent.
 
 Les trois providers côte à côte :
@@ -942,10 +942,10 @@ Les trois providers côte à côte :
 
 Une recherche de `LLM_PROVIDER` en dehors de `src/llm` trouve exactement deux utilisateurs, chacun avec une méthode :
 
-| Utilisateur                                                                                 | Module                                         | Méthode              | Purpose                     |
-| ------------------------------------------------------------------------------------------- | ---------------------------------------------- | -------------------- | --------------------------- |
-| [QuestionStockService](../../../apps/api/src/question-generation/question-stock.service.ts) | `QuestionGenerationModule` importe `LlmModule` | `generateStructured` | `question-batch:<category>` |
-| [DiscussionService](../../../apps/api/src/lessons/discussion.service.ts)                    | `LessonsModule` importe `LlmModule`            | `streamText`         | `lesson-discussion`         |
+| Utilisateur                                                                              | Module                                         | Méthode              | Purpose                     |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------- | -------------------- | --------------------------- |
+| [QuestionStockService](../../apps/api/src/question-generation/question-stock.service.ts) | `QuestionGenerationModule` importe `LlmModule` | `generateStructured` | `question-batch:<category>` |
+| [DiscussionService](../../apps/api/src/lessons/discussion.service.ts)                    | `LessonsModule` importe `LlmModule`            | `streamText`         | `lesson-discussion`         |
 
 Les deux le demandent de la même façon :
 
@@ -967,7 +967,7 @@ answer(system: string, body: LessonDiscussionInput, signal: AbortSignal): AsyncI
 }
 ```
 
-[discussion.controller.ts](../../../apps/api/src/lessons/discussion.controller.ts) attrape une `LlmError` et
+[discussion.controller.ts](../../apps/api/src/lessons/discussion.controller.ts) attrape une `LlmError` et
 transforme sa `reason` en code d'erreur pour le navigateur. Le stock de questions lit `retryable` pour décider d'un
 deuxième essai. Les deux sont expliqués dans leurs propres chapitres : [07-courses-placement.md](07-courses-placement.md)
 et [08-lessons.md](08-lessons.md).

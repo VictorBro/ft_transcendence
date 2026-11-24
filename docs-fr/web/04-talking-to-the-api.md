@@ -6,7 +6,7 @@ Dans ce chapitre :
 - Pourquoi `apps/web/lib/` a deux sortes de fichiers : les fichiers serveur (`x.ts`) et les fichiers navigateur (`x-client.ts`).
 - Comment une erreur voyage sous forme de code court (une entrée de `ERROR_CODES`) et devient une phrase dans la langue du lecteur.
 - Chaque fichier de la couche API, dans l'ordre où l'app les utilise, en commençant par les deux fichiers de base
-  [api.ts](../../../apps/web/lib/api.ts) et [api-client.ts](../../../apps/web/lib/api-client.ts).
+  [api.ts](../../apps/web/lib/api.ts) et [api-client.ts](../../apps/web/lib/api-client.ts).
 - Un tableau de toutes les fonctions navigateur avec leur méthode HTTP et leur route d'API.
 
 ---
@@ -102,7 +102,7 @@ apps/web/lib/
 | Utilisé par      | les server components (`page.tsx`, `layout.tsx`)                   | les client components (`'use client'`)                |
 | Rôle typique     | **lire** les données pour construire la page                       | **écrire** après un clic (POST, PATCH, DELETE)        |
 | Cookie           | copié à la main depuis `next/headers`                              | ajouté par le navigateur                              |
-| Fichier de base  | [api.ts](../../../apps/web/lib/api.ts)                             | [api-client.ts](../../../apps/web/lib/api-client.ts)  |
+| Fichier de base  | [api.ts](../../apps/web/lib/api.ts)                                | [api-client.ts](../../apps/web/lib/api-client.ts)     |
 | Type du résultat | `{ status: 'ok' \| 'signed-out' \| 'unavailable' \| 'not-found' }` | `{ ok: true, data }` ou `{ ok: false, code, status }` |
 | En cas d'échec   | redirection vers `/login` ou throw (page d'erreur)                 | renvoie un code, le composant affiche un message      |
 
@@ -114,7 +114,7 @@ erreur.
 
 L'API n'envoie jamais une phrase comme « Mot de passe trop court ». Elle envoie un **code** :
 `password.tooShort`. Tous les codes vivent dans une seule liste, `ERROR_CODES`, dans
-[packages/shared/src/schemas/errors.ts](../../../packages/shared/src/schemas/errors.ts). Le fichier
+[packages/shared/src/schemas/errors.ts](../../packages/shared/src/schemas/errors.ts). Le fichier
 explique pourquoi :
 
 > a string rendered by the server cannot be re-rendered in the reader's language once it has crossed the wire.
@@ -196,7 +196,7 @@ et les server components relisent (Séquence 1). Il y a une seule source de vér
 
 ### `api.ts` — la base serveur
 
-[api.ts](../../../apps/web/lib/api.ts) est « le seul endroit où apps/web parle à NestJS » depuis le
+[api.ts](../../apps/web/lib/api.ts) est « le seul endroit où apps/web parle à NestJS » depuis le
 serveur. Son commentaire du haut dit que Next.js fait « presentation and SSR only » (seulement la
 présentation et le SSR ; SSR = server-side rendering : construire le HTML sur le serveur), donc rien ici
 ne connaît les règles métier. Il construit une URL, appelle l'API et vérifie la réponse.
@@ -351,7 +351,7 @@ export async function apiGet<Schema extends z.ZodType>(
   afficher « rien ici » au lieu d'une page d'erreur. Utilisé par `loadProfile`, `lib/lesson.ts` et la
   page de placement.
 - `fetchSession(options)` : `fetchJson(SessionUserSchema, '/api/auth/me', options)`. Il ne lit pas la
-  requête lui-même ; [session.ts](../../../apps/web/lib/session.ts) l'enveloppe.
+  requête lui-même ; [session.ts](../../apps/web/lib/session.ts) l'enveloppe.
 - `pingApi(options)` : utilisé par `app/healthz/api` et `app/healthz/upstream` (chapitre 2). Il demande
   seulement « est-ce que le container web peut joindre l'API ? ». Toute réponse HTTP, même 500, compte
   comme `ok` ; seule une erreur réseau ou un timeout de 2 secondes donne `unreachable`.
@@ -359,13 +359,13 @@ export async function apiGet<Schema extends z.ZodType>(
 Les appelants de `api.ts` : `session.ts`, `courses.ts`, `friends.ts`, `conversations.ts`, `lessons.ts`, et
 aussi `lib/lesson.ts`, `lib/achievements.ts` et la page de placement (vus aux chapitres 6 et 7).
 
-**Test :** [api.test.ts](../../../apps/web/lib/api.test.ts) vérifie les helpers d'URL, le nom du timeout,
+**Test :** [api.test.ts](../../apps/web/lib/api.test.ts) vérifie les helpers d'URL, le nom du timeout,
 et que `fetchSession`/`apiGet`/`apiFind` donnent `signed-out`, `not-found` et `unavailable` dans les bons
 cas.
 
 ### `session.ts` — qui est le visiteur ?
 
-[session.ts](../../../apps/web/lib/session.ts) répond à « qui est connecté ? » pour les server components.
+[session.ts](../../apps/web/lib/session.ts) répond à « qui est connecté ? » pour les server components.
 
 ```ts
 export const loadSession = cache(async function loadSession(): Promise<SessionResult> {
@@ -399,13 +399,13 @@ Appelants : `app/[locale]/(main)/page.tsx`, les pages de profil, `settings/2fa`,
 layout `(dashboard)`, et les composants de nav du chapitre 3 (`session-nav.tsx`, `header-nav.tsx`,
 `dashboard-nav.tsx`).
 
-**Test :** [session.test.ts](../../../apps/web/lib/session.test.ts) vérifie que les cookies sont transmis
+**Test :** [session.test.ts](../../apps/web/lib/session.test.ts) vérifie que les cookies sont transmis
 en un seul header, que l'IP est transmise sans changement, que `currentUser` se replie sur `null`, et que
 `requireUser` redirige sur un 401 mais lance une erreur quand l'API est indisponible.
 
 ### `courses.ts` — les cours de l'apprenant
 
-[courses.ts](../../../apps/web/lib/courses.ts) est la moitié serveur de l'API des cours.
+[courses.ts](../../apps/web/lib/courses.ts) est la moitié serveur de l'API des cours.
 
 ```ts
 /** Memoised per request: the header and the page body both ask. */
@@ -434,12 +434,12 @@ Il a aussi trois helpers purs (sans réseau) :
 
 Appelants : les pages `/learn`, `onboarding/page.tsx`, `dashboard-nav.tsx`, `lib/lesson.ts`.
 
-**Test :** [courses.test.ts](../../../apps/web/lib/courses.test.ts) vérifie `findCourse`, l'ordre de
+**Test :** [courses.test.ts](../../apps/web/lib/courses.test.ts) vérifie `findCourse`, l'ordre de
 choix du cours (cookie, puis `activeLang`, puis le premier) et `landingPath`.
 
 ### `friends.ts` — amis, recherche, profils
 
-[friends.ts](../../../apps/web/lib/friends.ts) est la moitié serveur de l'API des amis.
+[friends.ts](../../apps/web/lib/friends.ts) est la moitié serveur de l'API des amis.
 
 - `FRIEND_EVENTS` : les trois événements socket (`FRIEND_REQUEST`, `FRIEND_ACCEPTED`, `FRIEND_REMOVED`)
   qui doivent faire refaire le rendu d'une page d'amis. Les pages le passent au composant `RefreshOn`
@@ -468,11 +468,11 @@ export function relationTo(lists: Friends, userId: string): Relation {
 
 Appelants : `friends/page.tsx`, `users/[id]/page.tsx`, `chat/page.tsx`.
 
-**Test :** [friends.test.ts](../../../apps/web/lib/friends.test.ts) vérifie `relationTo` pour chaque cas.
+**Test :** [friends.test.ts](../../apps/web/lib/friends.test.ts) vérifie `relationTo` pour chaque cas.
 
 ### `conversations.ts` — le chat au premier affichage
 
-[conversations.ts](../../../apps/web/lib/conversations.ts) a deux lecteurs, les deux passent par
+[conversations.ts](../../apps/web/lib/conversations.ts) a deux lecteurs, les deux passent par
 `settle` :
 
 - `requireConversations()` : `GET /api/conversations`, la liste sur `/chat`.
@@ -485,7 +485,7 @@ navigateur par `conversations-client.ts`. Appelant : `app/[locale]/(messages)/ch
 
 ### `lessons.ts` — aujourd'hui et la liste des leçons
 
-[lessons.ts](../../../apps/web/lib/lessons.ts) n'utilise pas `settle`. Il gère le résultat à la main :
+[lessons.ts](../../apps/web/lib/lessons.ts) n'utilise pas `settle`. Il gère le résultat à la main :
 
 ```ts
 export async function loadToday(lang: Language): Promise<Today | "signed-out"> {
@@ -517,7 +517,7 @@ Pas de fichier de test à lui.
 
 ### `api-client.ts` — la base navigateur
 
-[api-client.ts](../../../apps/web/lib/api-client.ts) est la moitié navigateur. Son commentaire du haut
+[api-client.ts](../../apps/web/lib/api-client.ts) est la moitié navigateur. Son commentaire du haut
 donne la règle :
 
 > Failures carry a code, never a sentence: the component that displays them turns it into text in the
@@ -624,13 +624,13 @@ Appelants : tous les fichiers `*-client.ts`, plus quelques composants qui l'appe
 exemple `goal-picker.tsx` appelle `clientPatch` sur `/api/courses/:lang`, et `two-factor-panel.tsx`
 appelle `clientGet` sur `/api/auth/2fa`).
 
-**Test :** [api-client.test.ts](../../../apps/web/lib/api-client.test.ts) vérifie la validation par
+**Test :** [api-client.test.ts](../../apps/web/lib/api-client.test.ts) vérifie la validation par
 schema, le mauvais JSON, l'échec réseau sous forme de code, le 204 avec un schema void, les paramètres de
 requête, les body JSON contre `FormData`, et les headers.
 
 ### `error-message.ts` — le code devient une phrase
 
-[error-message.ts](../../../apps/web/lib/error-message.ts) est « le seul endroit où un code d'erreur
+[error-message.ts](../../apps/web/lib/error-message.ts) est « le seul endroit où un code d'erreur
 devient une phrase ». C'est un hook React, donc il a `'use client'`.
 
 ```ts
@@ -669,7 +669,7 @@ chat, examen de placement, lecteur de leçon...). Pas de fichier de test à lui,
 
 ### `auth-client.ts` — inscription, login, 2FA, profil
 
-[auth-client.ts](../../../apps/web/lib/auth-client.ts) explique pourquoi le login tourne dans le
+[auth-client.ts](../../apps/web/lib/auth-client.ts) explique pourquoi le login tourne dans le
 navigateur et pas dans une server action Next.js :
 
 > the session cookie is set by the API's response, and Caddy serves both origins as one, so the browser's
@@ -712,13 +712,13 @@ Appelants : `login-form.tsx`, `signup-form.tsx`, `profile-form.tsx`, `two-factor
 chapitre 3 `log-out-button.tsx`, `locale-sync.tsx`, `time-zone-sync.tsx` (ces deux-là appellent
 `updateProfile`).
 
-**Test :** [auth-client.test.ts](../../../apps/web/lib/auth-client.test.ts) vérifie l'inscription, le
+**Test :** [auth-client.test.ts](../../apps/web/lib/auth-client.test.ts) vérifie l'inscription, le
 premier code d'un tableau de validation, le code de secours, le login 200 contre 202, l'échec réseau, et
 les appels qui répondent 204.
 
 ### `courses-client.ts` — commencer un cours, choisir un niveau
 
-[courses-client.ts](../../../apps/web/lib/courses-client.ts) :
+[courses-client.ts](../../apps/web/lib/courses-client.ts) :
 
 ```ts
 export function startCourse(input: unknown): Promise<ApiResult<Course>> {
@@ -738,12 +738,12 @@ endroit.
 Appelants : `onboarding/choose-course.tsx`, `onboarding/choose-level.tsx`, `start-level.tsx`,
 `direct-level-picker.tsx`, `components/change-level.tsx`.
 
-**Test :** [courses-client.test.ts](../../../apps/web/lib/courses-client.test.ts) vérifie les deux
+**Test :** [courses-client.test.ts](../../apps/web/lib/courses-client.test.ts) vérifie les deux
 appels, la langue dans le chemin, les erreurs sous forme de codes, et une réponse qui n'est pas un cours.
 
 ### `friends-client.ts` — les demandes d'ami
 
-[friends-client.ts](../../../apps/web/lib/friends-client.ts) : quatre écritures, chacune nomme l'autre
+[friends-client.ts](../../apps/web/lib/friends-client.ts) : quatre écritures, chacune nomme l'autre
 utilisateur dans le chemin. `sendFriendRequest` renvoie un `FriendRequestResult` (il dit si la demande
 est devenue une amitié tout de suite, quand l'autre personne t'avait déjà demandé). Les trois autres
 répondent 204 (`z.void()`). `deleteFriendRequest` sert à la fois à **refuser** la sienne et à **annuler**
@@ -754,12 +754,12 @@ Appelant : `components/friend-buttons.tsx` (voir Séquence 2). Après chaque éc
 `router.refresh()`, même en cas d'échec, parce qu'un échec c'est « nearly always the other side moving
 first » (presque toujours l'autre côté qui a bougé en premier).
 
-**Test :** [friends-client.test.ts](../../../apps/web/lib/friends-client.test.ts) vérifie la méthode et le
+**Test :** [friends-client.test.ts](../../apps/web/lib/friends-client.test.ts) vérifie la méthode et le
 chemin de chaque appel, le 204 comme succès, et les erreurs sous forme de codes.
 
 ### `conversations-client.ts` — plus de messages
 
-[conversations-client.ts](../../../apps/web/lib/conversations-client.ts) :
+[conversations-client.ts](../../apps/web/lib/conversations-client.ts) :
 
 ```ts
 /** What the thread catches up with after a connect. */
@@ -780,12 +780,12 @@ Un **cursor** est un marque-page : l'API en donne un avec chaque page (`nextCurs
 pour avoir la page d'avant. Appelant : `chat/chat-thread.tsx` (chapitre 8). L'envoi d'un message passe
 par le WebSocket, pas par ici.
 
-**Test :** [conversations-client.test.ts](../../../apps/web/lib/conversations-client.test.ts) vérifie le
+**Test :** [conversations-client.test.ts](../../apps/web/lib/conversations-client.test.ts) vérifie le
 chemin sans et avec le cursor, et un échec sous forme de code.
 
 ### `lesson-client.ts` — tentatives de leçon, mémoire de l'onglet, brouillons
 
-[lesson-client.ts](../../../apps/web/lib/lesson-client.ts) a trois parties.
+[lesson-client.ts](../../apps/web/lib/lesson-client.ts) a trois parties.
 
 **1. Les routes de tentative.** Une « attempt » (tentative) est un passage complet dans une leçon.
 
@@ -830,13 +830,13 @@ stockage peut être désactivé ou plein, et la page doit quand même marcher.
 
 Appelants : `lessons/[id]/lesson-actions.tsx` et `lessons/[id]/play/player.tsx` (chapitre 7).
 
-**Test :** [lesson-client.test.ts](../../../apps/web/lib/lesson-client.test.ts) vérifie les routes de
+**Test :** [lesson-client.test.ts](../../apps/web/lib/lesson-client.test.ts) vérifie les routes de
 tentative et les codes, la mémoire de l'onglet (stale, forget, newer), et que les brouillons sont gardés
 et effacés.
 
 ### `discussion-client.ts` — une réponse du tuteur en streaming
 
-[discussion-client.ts](../../../apps/web/lib/discussion-client.ts) est différent : il n'utilise pas
+[discussion-client.ts](../../apps/web/lib/discussion-client.ts) est différent : il n'utilise pas
 `send`, parce que la réponse n'est pas un seul body JSON. L'API la **streame** avec des Server-Sent
 Events (SSE : le serveur garde la réponse ouverte et écrit de petits événements l'un après l'autre). Le
 texte arrive morceau par morceau, comme quelqu'un qui tape.
@@ -895,13 +895,13 @@ avec `readCode`. Un 429 porte aussi `retryAfter` (les secondes à attendre), qui
 
 Appelant : `components/lesson/discussion.tsx` (chapitre 7).
 
-**Test :** [discussion-client.test.ts](../../../apps/web/lib/discussion-client.test.ts) vérifie la route,
+**Test :** [discussion-client.test.ts](../../apps/web/lib/discussion-client.test.ts) vérifie la route,
 des morceaux coupés n'importe où dans le body, du texte qui arrive avant la fin, un événement d'erreur, un
 stream coupé, un 429 avec `retryAfter`, un refus avec et sans JSON, et un échec réseau.
 
 ### `placement-client.ts` — l'examen de placement
 
-[placement-client.ts](../../../apps/web/lib/placement-client.ts) : trois appels. `startPlacement(lang)` et
+[placement-client.ts](../../apps/web/lib/placement-client.ts) : trois appels. `startPlacement(lang)` et
 `submitPlacementAnswer(questionId, choice)` renvoient tous les deux un `PlacementState` (la question
 suivante, ou le résultat). `choice` peut être `null` quand le compte à rebours est fini. `quitPlacement()`
 supprime la session d'examen (204). Le schema vient de `lib/placement-schema.ts`.
@@ -909,7 +909,7 @@ supprime la session d'examen (204). Le schema vient de `lib/placement-schema.ts`
 Appelant : `learn/[lang]/placement/placement-exam.tsx` (chapitre 6). Le premier état au chargement de la
 page est lu sur le serveur avec `apiFind(PlacementStateSchema, '/api/placement')`.
 
-**Test :** [placement-client.test.ts](../../../apps/web/lib/placement-client.test.ts) vérifie les body de
+**Test :** [placement-client.test.ts](../../apps/web/lib/placement-client.test.ts) vérifie les body de
 départ et de réponse (y compris `null`), le résultat final, les codes de conflit et d'onboarding, les
 mauvais payloads, et l'échec réseau.
 
@@ -919,7 +919,7 @@ mauvais payloads, et l'échec réseau.
 
 ### `serial-queue.ts` — une écriture après l'autre
 
-[serial-queue.ts](../../../apps/web/lib/serial-queue.ts) est minuscule :
+[serial-queue.ts](../../apps/web/lib/serial-queue.ts) est minuscule :
 
 ```ts
 export function serialQueue() {
@@ -939,12 +939,12 @@ arrivent au serveur dans cet ordre, donc la valeur finale est 20. `tail` avale l
 (`catch(() => undefined)`) pour qu'une tâche ratée ne bloque pas les suivantes, mais `result` échoue
 quand même pour son propre appelant.
 
-**Test :** [serial-queue.test.ts](../../../apps/web/lib/serial-queue.test.ts) vérifie qu'une tâche attend
+**Test :** [serial-queue.test.ts](../../apps/web/lib/serial-queue.test.ts) vérifie qu'une tâche attend
 la précédente, et qu'un échec n'arrête pas la tâche suivante.
 
 ### `use-course-save.ts` — enregistrer un réglage du cours
 
-[use-course-save.ts](../../../apps/web/lib/use-course-save.ts) est un hook client utilisé par
+[use-course-save.ts](../../apps/web/lib/use-course-save.ts) est un hook client utilisé par
 `GoalPicker`, `DirectLevelPicker` et `StartLevel`. Il assemble tout ce qui précède : la file, le message
 d'erreur et le refresh.
 
@@ -994,7 +994,7 @@ Pas de fichier de test à lui.
 
 ### `localized.ts` — choisir la bonne langue
 
-[localized.ts](../../../apps/web/lib/localized.ts) a deux fonctions pures pour le contenu qui vient de
+[localized.ts](../../apps/web/lib/localized.ts) a deux fonctions pures pour le contenu qui vient de
 l'API en plusieurs langues (les textes des leçons) :
 
 ```ts
@@ -1008,7 +1008,7 @@ export function pick(text: { en: string; fr: string; de: string }, locale: strin
 l'interface si elle est là, sinon la première de `en`, `fr`, `de`, sinon une chaîne vide. Appelants : les
 pages de leçon et la plupart de `components/lesson/*` (chapitre 7).
 
-**Test :** [localized.test.ts](../../../apps/web/lib/localized.test.ts) vérifie les deux fonctions.
+**Test :** [localized.test.ts](../../apps/web/lib/localized.test.ts) vérifie les deux fonctions.
 
 ---
 

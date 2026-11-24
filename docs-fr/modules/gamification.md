@@ -13,7 +13,7 @@ Le module est une ligne du tableau Gaming and user experience de
 
 > | Minor | Gamification: ≥3 of achievements / badges / leaderboards / XP / daily challenges / rewards, persisted, with visual feedback |
 
-Le PDF ([../../subject/ft_transcendence.pdf](../../subject/ft_transcendence.pdf), chapitre IV, Gaming
+Le PDF ([../../subject/ft_transcendence.pdf](../../docs/subject/ft_transcendence.pdf), chapitre IV, Gaming
 and user experience) le formule comme ceci :
 
 > Minor: A gamification system to reward users for their actions.
@@ -55,19 +55,19 @@ sujet. L'équipe a noté que ça doit être confirmé avec le staff avant la sou
 
 ## Comment on y répond
 
-| Le sujet demande                      | Ce qu'on a construit                                                                                                                                                                                                                                                                                                                          | Où                                                                                                                                                                                                                                                                       |
-| ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Au moins 3 des six fonctionnalités    | Trois : **XP avec des rangs** (le « XP/level system » du sujet), **défis du jour** (un par jour parmi six), et **succès** (16). Les badges, les classements et les récompenses ne sont pas construits.                                                                                                                                        | [`packages/shared/src/schemas/gamification.ts`](../../../packages/shared/src/schemas/gamification.ts), [`apps/api/src/lessons/gamification.rules.ts`](../../../apps/api/src/lessons/gamification.rules.ts)                                                               |
-| Stocké dans la base de données        | Quatre colonnes sur la ligne de cours `UserLevel` (`xp`, `lastChallengeDay`, `lastChallengeCode`, `challengesDone`) et une table `UserAchievement`, une ligne par succès gagné. Écrit dans la même transaction que le résultat de la leçon.                                                                                                   | [`apps/api/prisma/schema.prisma`](../../../apps/api/prisma/schema.prisma), [`migration.sql`](../../../apps/api/prisma/migrations/20261107184854_add_gamification/migration.sql), [`apps/api/src/lessons/gamification.ts`](../../../apps/api/src/lessons/gamification.ts) |
-| Retour visuel                         | Des barres de progression pour le rang, pour chaque succès et pour toute la liste ; une carte XP sur les résultats de la leçon avec chaque nouveau succès ; une liste « New today » et une carte « Today's challenge » avec une marque **Done** sur la page du cours.                                                                         | [`apps/web/components/gamification.tsx`](../../../apps/web/components/gamification.tsx), [`achievements/page.tsx`](<../../../apps/web/app/[locale]/(dashboard)/learn/[lang]/achievements/page.tsx>)                                                                      |
-| Des règles et une progression claires | Un panneau **How it works** sur la page des succès liste les XP de chaque action, les XP où commence chaque rang, les six défis et les règles des succès. Les montants d'XP, les seuils des rangs et la note de réussite qui y sont affichés viennent des constantes partagées que l'API utilise. Chaque carte de succès dit sa propre règle. | [`achievements/page.tsx`](<../../../apps/web/app/[locale]/(dashboard)/learn/[lang]/achievements/page.tsx>) (`HowItWorks`), [`apps/web/lib/achievements.ts`](../../../apps/web/lib/achievements.ts)                                                                       |
+| Le sujet demande                      | Ce qu'on a construit                                                                                                                                                                                                                                                                                                                          | Où                                                                                                                                                                                                                                                              |
+| ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Au moins 3 des six fonctionnalités    | Trois : **XP avec des rangs** (le « XP/level system » du sujet), **défis du jour** (un par jour parmi six), et **succès** (16). Les badges, les classements et les récompenses ne sont pas construits.                                                                                                                                        | [`packages/shared/src/schemas/gamification.ts`](../../packages/shared/src/schemas/gamification.ts), [`apps/api/src/lessons/gamification.rules.ts`](../../apps/api/src/lessons/gamification.rules.ts)                                                            |
+| Stocké dans la base de données        | Quatre colonnes sur la ligne de cours `UserLevel` (`xp`, `lastChallengeDay`, `lastChallengeCode`, `challengesDone`) et une table `UserAchievement`, une ligne par succès gagné. Écrit dans la même transaction que le résultat de la leçon.                                                                                                   | [`apps/api/prisma/schema.prisma`](../../apps/api/prisma/schema.prisma), [`migration.sql`](../../apps/api/prisma/migrations/20261107184854_add_gamification/migration.sql), [`apps/api/src/lessons/gamification.ts`](../../apps/api/src/lessons/gamification.ts) |
+| Retour visuel                         | Des barres de progression pour le rang, pour chaque succès et pour toute la liste ; une carte XP sur les résultats de la leçon avec chaque nouveau succès ; une liste « New today » et une carte « Today's challenge » avec une marque **Done** sur la page du cours.                                                                         | [`apps/web/components/gamification.tsx`](../../apps/web/components/gamification.tsx), [`achievements/page.tsx`](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/achievements/page.tsx>)                                                                   |
+| Des règles et une progression claires | Un panneau **How it works** sur la page des succès liste les XP de chaque action, les XP où commence chaque rang, les six défis et les règles des succès. Les montants d'XP, les seuils des rangs et la note de réussite qui y sont affichés viennent des constantes partagées que l'API utilise. Chaque carte de succès dit sa propre règle. | [`achievements/page.tsx`](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/achievements/page.tsx>) (`HowItWorks`), [`apps/web/lib/achievements.ts`](../../apps/web/lib/achievements.ts)                                                                    |
 
 ## Comment ça marche
 
 ### Les trois fonctionnalités et leurs règles
 
 Tous les nombres sont des constantes dans
-[`packages/shared/src/schemas/gamification.ts`](../../../packages/shared/src/schemas/gamification.ts),
+[`packages/shared/src/schemas/gamification.ts`](../../packages/shared/src/schemas/gamification.ts),
 donc l'API et les pages web lisent les mêmes valeurs.
 
 - **XP.** Finir une leçon rapporte `LESSON_XP` (10), une fois par leçon et par jour, plus chaque point qu'elle
@@ -90,9 +90,9 @@ donc l'API et les pages web lisent les mêmes valeurs.
   et que sa barre baisse.
 
 Les règles sont des fonctions pures dans
-[`gamification.rules.ts`](../../../apps/api/src/lessons/gamification.rules.ts) : pas d'horloge, pas de
+[`gamification.rules.ts`](../../apps/api/src/lessons/gamification.rules.ts) : pas d'horloge, pas de
 base de données, pas de hasard. C'est ce qui permet à
-[`gamification.rules.spec.ts`](../../../apps/api/src/lessons/gamification.rules.spec.ts) de tester chaque
+[`gamification.rules.spec.ts`](../../apps/api/src/lessons/gamification.rules.spec.ts) de tester chaque
 règle sans base de données.
 
 ### Ce qui se passe quand une leçon se termine
@@ -109,23 +109,23 @@ flowchart TD
 ```
 
 1. Le serveur note la leçon lui-même à partir des réponses qu'il a stockées, donc aucun navigateur ne peut envoyer un score
-   ([`attempts.service.ts`](../../../apps/api/src/lessons/attempts.service.ts)).
+   ([`attempts.service.ts`](../../apps/api/src/lessons/attempts.service.ts)).
 2. Dans une seule transaction, `applyFinish()` dans
-   [`lessons.service.ts`](../../../apps/api/src/lessons/lessons.service.ts) enregistre le résultat, appelle
+   [`lessons.service.ts`](../../apps/api/src/lessons/lessons.service.ts) enregistre le résultat, appelle
    `meetGoal()`, puis appelle `award()` dans
-   [`gamification.ts`](../../../apps/api/src/lessons/gamification.ts).
+   [`gamification.ts`](../../apps/api/src/lessons/gamification.ts).
 3. `award()` vérifie si cette fin fait le défi du jour pour la première fois, additionne les
    XP, et les écrit comme un ajout sur la ligne du cours. Il compte ensuite ce que lisent les succès
    (leçons finies et réussies, meilleure série, défis faits, la progression du niveau), demande à
    `earned()` lesquels sont atteints, et stocke les nouveaux avec `createMany`.
-4. La ligne du cours est verrouillée (`FOR UPDATE`, dans [`goal.ts`](../../../apps/api/src/lessons/goal.ts))
+4. La ligne du cours est verrouillée (`FOR UPDATE`, dans [`goal.ts`](../../apps/api/src/lessons/goal.ts))
    pendant toute la transaction, donc deux fins au même moment ne peuvent pas donner le défi deux fois.
    La clé primaire `(userLevelId, code)` de `UserAchievement` stocke aussi un code une seule fois.
 5. La réponse contient `xpGained`, `challengeJustDone` et `newAchievements`, et la page des résultats
    les affiche.
 
 Baisser l'objectif du jour peut aussi valider la journée. Donc `setGoal()` dans
-[`courses.service.ts`](../../../apps/api/src/courses/courses.service.ts) (`PATCH /api/courses/:lang`)
+[`courses.service.ts`](../../apps/api/src/courses/courses.service.ts) (`PATCH /api/courses/:lang`)
 appelle aussi `award()`, sous le même verrou : il peut rapporter `GOAL_XP` et un succès de série.
 
 ### Ce que l'apprenant lit
@@ -134,32 +134,32 @@ appelle aussi `award()`, sous le même verrou : il peut rapporter `GOAL_XP` et u
   `done`) et `earnedToday` (les codes gagnés pendant ce jour du cours).
 - `GET /api/courses/:lang/achievements` renvoie les 16 succès, dans l'ordre du catalogue, chacun avec
   le jour où il a été gagné (ou null) et sa barre de progression (`current`, `target`). Les deux routes sont dans
-  [`lessons.controller.ts`](../../../apps/api/src/lessons/lessons.controller.ts).
+  [`lessons.controller.ts`](../../apps/api/src/lessons/lessons.controller.ts).
 
 L'API envoie seulement des codes. Les pages web les traduisent, à partir des messages `Gamification` dans
-[`apps/web/messages/en.json`](../../../apps/web/messages/en.json) et les autres langues. Toutes les
+[`apps/web/messages/en.json`](../../apps/web/messages/en.json) et les autres langues. Toutes les
 vues de gamification sont des server components sans state, donc elles marchent avec JavaScript désactivé. Les
 pages du cours et des succès se rechargent sur l'événement socket `course:updated` (`RefreshOn`), donc une
 leçon finie dans un autre onglet apparaît.
 
 ## Où est le code
 
-| Chemin                                                                                                                                                                    | Ce qu'il fait                                                                                                          |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| [`packages/shared/src/schemas/gamification.ts`](../../../packages/shared/src/schemas/gamification.ts)                                                                     | Les prix en XP, `RANK_STEP`, les six `CHALLENGES`, les 16 `ACHIEVEMENTS`, et les schemas Zod de ce que renvoie l'API   |
-| [`apps/api/src/lessons/gamification.rules.ts`](../../../apps/api/src/lessons/gamification.rules.ts)                                                                       | Les règles pures : `xpForFinish`, `rankOf`, `possibleChallenges`, `challengeFor`, `challengeMet`, `progress`, `earned` |
-| [`apps/api/src/lessons/gamification.ts`](../../../apps/api/src/lessons/gamification.ts)                                                                                   | `award()` : charge ce que lisent les règles et écrit ce qu'elles décident, dans la transaction de l'appelant           |
-| [`apps/api/src/lessons/lessons.service.ts`](../../../apps/api/src/lessons/lessons.service.ts)                                                                             | `applyFinish()` appelle `award()` ; `today()` et `achievements()` lisent l'état stocké                                 |
-| [`apps/api/src/courses/courses.service.ts`](../../../apps/api/src/courses/courses.service.ts)                                                                             | `setGoal()` : un objectif plus bas qui valide la journée appelle `award()`                                             |
-| [`apps/api/src/lessons/lessons.controller.ts`](../../../apps/api/src/lessons/lessons.controller.ts)                                                                       | `GET /api/courses/:lang/achievements`                                                                                  |
-| [`apps/api/prisma/schema.prisma`](../../../apps/api/prisma/schema.prisma)                                                                                                 | Les colonnes de gamification sur `UserLevel`, et `UserAchievement`                                                     |
-| [`apps/api/prisma/migrations/20261107184854_add_gamification/`](../../../apps/api/prisma/migrations/20261107184854_add_gamification/migration.sql)                        | La migration qui les ajoute                                                                                            |
-| [`apps/web/components/gamification.tsx`](../../../apps/web/components/gamification.tsx)                                                                                   | `RankLine`, `ChallengeCard`, `NewToday`, `FinishXp`, `DoneMark`                                                        |
-| [`apps/web/app/[locale]/(dashboard)/learn/[lang]/achievements/page.tsx`](<../../../apps/web/app/[locale]/(dashboard)/learn/[lang]/achievements/page.tsx>)                 | La page des succès : les 16 cartes en quatre groupes, et le panneau **How it works**                                   |
-| [`apps/web/app/[locale]/(dashboard)/learn/[lang]/page.tsx`](<../../../apps/web/app/[locale]/(dashboard)/learn/[lang]/page.tsx>)                                           | La page du cours : rang, défi du jour, nouveautés du jour                                                              |
-| [`apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/results/page.tsx`](<../../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/results/page.tsx>) | Les résultats de la leçon : la carte XP en haut                                                                        |
-| [`apps/web/lib/achievements.ts`](../../../apps/web/lib/achievements.ts)                                                                                                   | Charge les succès, et remplit les nombres de chaque règle à partir des constantes partagées                            |
-| [`apps/web/lib/xp-breakdown.ts`](../../../apps/web/lib/xp-breakdown.ts)                                                                                                   | Sépare les XP d'une fin en lignes leçon, objectif et défi                                                              |
+| Chemin                                                                                                                                                                 | Ce qu'il fait                                                                                                          |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| [`packages/shared/src/schemas/gamification.ts`](../../packages/shared/src/schemas/gamification.ts)                                                                     | Les prix en XP, `RANK_STEP`, les six `CHALLENGES`, les 16 `ACHIEVEMENTS`, et les schemas Zod de ce que renvoie l'API   |
+| [`apps/api/src/lessons/gamification.rules.ts`](../../apps/api/src/lessons/gamification.rules.ts)                                                                       | Les règles pures : `xpForFinish`, `rankOf`, `possibleChallenges`, `challengeFor`, `challengeMet`, `progress`, `earned` |
+| [`apps/api/src/lessons/gamification.ts`](../../apps/api/src/lessons/gamification.ts)                                                                                   | `award()` : charge ce que lisent les règles et écrit ce qu'elles décident, dans la transaction de l'appelant           |
+| [`apps/api/src/lessons/lessons.service.ts`](../../apps/api/src/lessons/lessons.service.ts)                                                                             | `applyFinish()` appelle `award()` ; `today()` et `achievements()` lisent l'état stocké                                 |
+| [`apps/api/src/courses/courses.service.ts`](../../apps/api/src/courses/courses.service.ts)                                                                             | `setGoal()` : un objectif plus bas qui valide la journée appelle `award()`                                             |
+| [`apps/api/src/lessons/lessons.controller.ts`](../../apps/api/src/lessons/lessons.controller.ts)                                                                       | `GET /api/courses/:lang/achievements`                                                                                  |
+| [`apps/api/prisma/schema.prisma`](../../apps/api/prisma/schema.prisma)                                                                                                 | Les colonnes de gamification sur `UserLevel`, et `UserAchievement`                                                     |
+| [`apps/api/prisma/migrations/20261107184854_add_gamification/`](../../apps/api/prisma/migrations/20261107184854_add_gamification/migration.sql)                        | La migration qui les ajoute                                                                                            |
+| [`apps/web/components/gamification.tsx`](../../apps/web/components/gamification.tsx)                                                                                   | `RankLine`, `ChallengeCard`, `NewToday`, `FinishXp`, `DoneMark`                                                        |
+| [`apps/web/app/[locale]/(dashboard)/learn/[lang]/achievements/page.tsx`](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/achievements/page.tsx>)                 | La page des succès : les 16 cartes en quatre groupes, et le panneau **How it works**                                   |
+| [`apps/web/app/[locale]/(dashboard)/learn/[lang]/page.tsx`](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/page.tsx>)                                           | La page du cours : rang, défi du jour, nouveautés du jour                                                              |
+| [`apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/results/page.tsx`](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/results/page.tsx>) | Les résultats de la leçon : la carte XP en haut                                                                        |
+| [`apps/web/lib/achievements.ts`](../../apps/web/lib/achievements.ts)                                                                                                   | Charge les succès, et remplit les nombres de chaque règle à partir des constantes partagées                            |
+| [`apps/web/lib/xp-breakdown.ts`](../../apps/web/lib/xp-breakdown.ts)                                                                                                   | Sépare les XP d'une fin en lignes leçon, objectif et défi                                                              |
 
 ## Comment le montrer à la soutenance
 
@@ -196,7 +196,7 @@ La stack doit tourner (`make run`, ou `make` pour lancer toutes les vérificatio
 **Un apprenant avec plus d'historique (en option)**
 
 Si `DEMO_PASSWORD` est défini dans `.env`, le seed construit des apprenants de démo
-([`.env.example`](../../../.env.example), [`demo.data.ts`](../../../apps/api/src/demo/demo.data.ts)).
+([`.env.example`](../../.env.example), [`demo.data.ts`](../../apps/api/src/demo/demo.data.ts)).
 Ils sont rejoués à travers les vrais services, donc ils ont gagné leurs XP et leurs succès avec les mêmes
 règles. Connecte-toi sur `https://localhost/en/login` avec `demo-eva@example.com` : son français A1 est
 terminé, donc `/en/learn/fr/achievements` affiche **A1 complete** comme gagné. `demo-ben@example.com`
@@ -204,14 +204,14 @@ a une série de 12 jours.
 
 ## Les tests qui le prouvent
 
-| Test                                                                                                            | Ce qu'il vérifie                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`apps/api/src/lessons/gamification.rules.spec.ts`](../../../apps/api/src/lessons/gamification.rules.spec.ts)   | Chaque règle : les XP d'une fin et d'une leçon refaite, les seuils des rangs (rang 2 à 100, rang 3 à 300), le défi est le même pour un cours et un jour, se répartit sur les six codes, ne choisit jamais un type sans leçon prête, et son hash est figé ; `challengeMet` (89 ne valide pas score90, 90 oui) ; `earned` et `progress` pour les séries, les comptes et les niveaux                                                                                     |
-| [`packages/shared/src/schemas/gamification.test.ts`](../../../packages/shared/src/schemas/gamification.test.ts) | Six codes de défi, seize codes de succès dans un ordre fixe, un par niveau CECRL, les prix en XP, et les schemas qui refusent une barre qui dépasse sa fin ou un total hors de son rang                                                                                                                                                                                                                                                                               |
-| [`apps/api/test/gamification.e2e-spec.ts`](../../../apps/api/test/gamification.e2e-spec.ts)                     | La vraie API sur une base de données : le défi est donné une seule fois quand deux dernières pages arrivent ensemble ; `GOAL_XP` une seule fois ; une leçon refaite avec un score plus bas ne rapporte rien ; streak7 et levelA1 viennent seulement de la bonne fin ; la liste des succès avec les jours où ils ont été gagnés ; un défi fait garde son code après un changement de niveau ; les succès sont supprimés avec l'utilisateur ; la route est dans Swagger |
-| [`e2e/tests/gamification.spec.ts`](../../../e2e/tests/gamification.spec.ts)                                     | Dans le navigateur : une première fin affiche ses XP, **First lesson** et le rang sur les résultats, la page du cours et la page des succès ; faire le défi affiche **Done** et atteint le rang 2 ; un clic ouvre les règles ; les deux pages s'affichent sans JavaScript                                                                                                                                                                                             |
-| [`apps/web/lib/xp-breakdown.test.ts`](../../../apps/web/lib/xp-breakdown.test.ts)                               | La somme des lignes de la carte XP fait bien `xpGained`                                                                                                                                                                                                                                                                                                                                                                                                               |
-| [`apps/web/lib/messages.test.ts`](../../../apps/web/lib/messages.test.ts)                                       | Chaque code de succès et de défi a un titre et une règle dans les messages                                                                                                                                                                                                                                                                                                                                                                                            |
+| Test                                                                                                         | Ce qu'il vérifie                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| ------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`apps/api/src/lessons/gamification.rules.spec.ts`](../../apps/api/src/lessons/gamification.rules.spec.ts)   | Chaque règle : les XP d'une fin et d'une leçon refaite, les seuils des rangs (rang 2 à 100, rang 3 à 300), le défi est le même pour un cours et un jour, se répartit sur les six codes, ne choisit jamais un type sans leçon prête, et son hash est figé ; `challengeMet` (89 ne valide pas score90, 90 oui) ; `earned` et `progress` pour les séries, les comptes et les niveaux                                                                                     |
+| [`packages/shared/src/schemas/gamification.test.ts`](../../packages/shared/src/schemas/gamification.test.ts) | Six codes de défi, seize codes de succès dans un ordre fixe, un par niveau CECRL, les prix en XP, et les schemas qui refusent une barre qui dépasse sa fin ou un total hors de son rang                                                                                                                                                                                                                                                                               |
+| [`apps/api/test/gamification.e2e-spec.ts`](../../apps/api/test/gamification.e2e-spec.ts)                     | La vraie API sur une base de données : le défi est donné une seule fois quand deux dernières pages arrivent ensemble ; `GOAL_XP` une seule fois ; une leçon refaite avec un score plus bas ne rapporte rien ; streak7 et levelA1 viennent seulement de la bonne fin ; la liste des succès avec les jours où ils ont été gagnés ; un défi fait garde son code après un changement de niveau ; les succès sont supprimés avec l'utilisateur ; la route est dans Swagger |
+| [`e2e/tests/gamification.spec.ts`](../../e2e/tests/gamification.spec.ts)                                     | Dans le navigateur : une première fin affiche ses XP, **First lesson** et le rang sur les résultats, la page du cours et la page des succès ; faire le défi affiche **Done** et atteint le rang 2 ; un clic ouvre les règles ; les deux pages s'affichent sans JavaScript                                                                                                                                                                                             |
+| [`apps/web/lib/xp-breakdown.test.ts`](../../apps/web/lib/xp-breakdown.test.ts)                               | La somme des lignes de la carte XP fait bien `xpGained`                                                                                                                                                                                                                                                                                                                                                                                                               |
+| [`apps/web/lib/messages.test.ts`](../../apps/web/lib/messages.test.ts)                                       | Chaque code de succès et de défi a un titre et une règle dans les messages                                                                                                                                                                                                                                                                                                                                                                                            |
 
 ## Limites et choix
 
@@ -228,13 +228,13 @@ a une série de 12 jours.
 - **Les succès de niveau suivent les leçons prêtes.** « A1 complete » lit les leçons qu'on peut
   jouer aujourd'hui. Tant qu'un niveau n'a que quelques leçons écrites, le succès peut être gagné sur
   celles-là, et une leçon ajoutée plus tard ne le reprend pas (commentaire sur `earned()` dans
-  [`gamification.rules.ts`](../../../apps/api/src/lessons/gamification.rules.ts)).
+  [`gamification.rules.ts`](../../apps/api/src/lessons/gamification.rules.ts)).
 - **Le retour est dans la page, pas dans une pop-up.** La carte XP fait partie de la page des résultats, ce n'est pas un toast. On n'annonce pas le module de notifications
   ([README.md](README.md#non-annoncés)).
 - **Les anciennes tentatives.** Une tentative finie avant que les récompenses existent (#95) n'a rien rapporté. Ses
   résultats n'affichent pas de lignes d'XP, seulement que l'objectif a été atteint (`EARNED_NOTHING` dans
-  [`attempts.service.ts`](../../../apps/api/src/lessons/attempts.service.ts), `legacyGoal` dans
-  [`xp-breakdown.ts`](../../../apps/web/lib/xp-breakdown.ts)).
+  [`attempts.service.ts`](../../apps/api/src/lessons/attempts.service.ts), `legacyGoal` dans
+  [`xp-breakdown.ts`](../../apps/web/lib/xp-breakdown.ts)).
 
 ## Qui l'a construit
 

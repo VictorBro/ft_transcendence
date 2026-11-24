@@ -12,7 +12,7 @@ Dans ce chapitre :
 ## Vue d'ensemble
 
 Toutes les pages de ce chapitre sont dans un seul dossier :
-[`apps/web/app/[locale]/(main)/`](<../../../apps/web/app/[locale]/(main)/>). Le nom `(main)` a des parenthèses, c'est donc un **route group** (un groupe de routes) : il ne fait pas partie de l'URL. Tu peux lire comment marchent les route groups dans [02-routing-layouts-i18n.md](02-routing-layouts-i18n.md). Le dossier regroupe ces pages pour qu'elles partagent un seul layout, le "cadre vitrine et compte".
+[`apps/web/app/[locale]/(main)/`](<../../apps/web/app/[locale]/(main)/>). Le nom `(main)` a des parenthèses, c'est donc un **route group** (un groupe de routes) : il ne fait pas partie de l'URL. Tu peux lire comment marchent les route groups dans [02-routing-layouts-i18n.md](02-routing-layouts-i18n.md). Le dossier regroupe ces pages pour qu'elles partagent un seul layout, le "cadre vitrine et compte".
 
 ```
 app/[locale]/(main)/
@@ -94,7 +94,7 @@ La plupart des pages ont aussi `export const dynamic = 'force-dynamic'`. Cela di
 
 ## `layout.tsx` — le cadre de ce groupe
 
-[layout.tsx](<../../../apps/web/app/[locale]/(main)/layout.tsx>) est le layout dans lequel chaque page de `(main)` est dessinée. C'est un server component.
+[layout.tsx](<../../apps/web/app/[locale]/(main)/layout.tsx>) est le layout dans lequel chaque page de `(main)` est dessinée. C'est un server component.
 
 ```tsx
 /**
@@ -118,7 +118,7 @@ Le commentaire explique un choix. D'autres groupes (comme le tableau de bord) ut
 
 ## `page.tsx` — la page d'accueil (`/`)
 
-[page.tsx](<../../../apps/web/app/[locale]/(main)/page.tsx>) est un **server component** async. Il montre un titre, une courte intro, le logo et un gros bouton.
+[page.tsx](<../../apps/web/app/[locale]/(main)/page.tsx>) est un **server component** async. Il montre un titre, une courte intro, le logo et un gros bouton.
 
 ```tsx
 // The call to action reads from the session, so this page is never prerendered:
@@ -137,7 +137,7 @@ export default async function HomePage() {
           </Link>
 ```
 
-- **Données :** `currentUser()` de [lib/session.ts](../../../apps/web/lib/session.ts). Il renvoie l'utilisateur ou `null`. Il ne redirige jamais : la page d'accueil est pour tout le monde, donc si la vérification de session échoue, la page montre juste la version "non connecté".
+- **Données :** `currentUser()` de [lib/session.ts](../../apps/web/lib/session.ts). Il renvoie l'utilisateur ou `null`. Il ne redirige jamais : la page d'accueil est pour tout le monde, donc si la vérification de session échoue, la page montre juste la version "non connecté".
 - **Ce que l'utilisateur peut faire :** cliquer sur un bouton. Un visiteur connecté voit "Continue learning" (Continuer à apprendre) et va sur `/learn`. Un visiteur non connecté va sur `/signup`.
 - **Pourquoi `force-dynamic` :** le commentaire le dit. Sans lui, Next.js pourrait construire la page une seule fois au moment du build, quand personne n'est connecté. Alors tout le monde verrait le bouton "Start now" (Commencer).
 
@@ -147,7 +147,7 @@ Le logo utilise le `<Image>` de Next avec `width={896}` (deux fois la plus grand
 
 ## Les morceaux de formulaire partagés — `components/form.tsx`
 
-Avant les formulaires de connexion et d'inscription, il nous faut les petites pièces qui servent à les construire. [form.tsx](../../../apps/web/components/form.tsx) est un fichier de **client component** (`'use client'`) qui exporte :
+Avant les formulaires de connexion et d'inscription, il nous faut les petites pièces qui servent à les construire. [form.tsx](../../apps/web/components/form.tsx) est un fichier de **client component** (`'use client'`) qui exporte :
 
 | Export                                                           | Ce que c'est                                                                                        |
 | ---------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
@@ -217,7 +217,7 @@ Les constantes de classes partent toutes d'une seule chaîne `BUTTON`. Elle met 
 
 ### `signup/page.tsx`
 
-[signup/page.tsx](<../../../apps/web/app/[locale]/(main)/signup/page.tsx>) est un petit **server component**. Il affiche un titre et `<SignUpForm />`. Il ne charge aucune donnée.
+[signup/page.tsx](<../../apps/web/app/[locale]/(main)/signup/page.tsx>) est un petit **server component**. Il affiche un titre et `<SignUpForm />`. Il ne charge aucune donnée.
 
 ```tsx
 export async function generateMetadata(): Promise<Metadata> {
@@ -231,7 +231,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 ### `signup/signup-form.tsx`
 
-[signup-form.tsx](<../../../apps/web/app/[locale]/(main)/signup/signup-form.tsx>) est un **client component**. Il a quatre champs : e-mail, nom affiché, mot de passe, confirmation du mot de passe.
+[signup-form.tsx](<../../apps/web/app/[locale]/(main)/signup/signup-form.tsx>) est un **client component**. Il a quatre champs : e-mail, nom affiché, mot de passe, confirmation du mot de passe.
 
 ```tsx
 async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -274,9 +274,9 @@ async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
 
 1. `event.preventDefault()` empêche le navigateur d'envoyer la page entière. On gère l'envoi en JavaScript.
 2. `FormData` lit les valeurs des inputs grâce à leur `name`.
-3. `SignUpFormSchema.safeParse(...)` vérifie les valeurs avec le schema Zod partagé. `safeParse` ne lance pas d'erreur : il renvoie `{ success, data }` ou `{ success: false, error }`. Le message d'erreur est un **code** (comme `password.tooShort`), et `errorMessage()` (de [lib/error-message.ts](../../../apps/web/lib/error-message.ts), voir chapitre 4) le transforme en phrase dans la langue de la page. Seul le premier problème est affiché.
+3. `SignUpFormSchema.safeParse(...)` vérifie les valeurs avec le schema Zod partagé. `safeParse` ne lance pas d'erreur : il renvoie `{ success, data }` ou `{ success: false, error }`. Le message d'erreur est un **code** (comme `password.tooShort`), et `errorMessage()` (de [lib/error-message.ts](../../apps/web/lib/error-message.ts), voir chapitre 4) le transforme en phrase dans la langue de la page. Seul le premier problème est affiché.
 4. La valeur "confirmation du mot de passe" est retirée avant l'envoi, car l'API ne la connaît pas.
-5. `signUp()` de [lib/auth-client.ts](../../../apps/web/lib/auth-client.ts) envoie `POST /api/auth/signup`. L'API crée l'utilisateur et pose le cookie de session.
+5. `signUp()` de [lib/auth-client.ts](../../apps/web/lib/auth-client.ts) envoie `POST /api/auth/signup`. L'API crée l'utilisateur et pose le cookie de session.
 6. En cas de succès, on va sur `/onboarding`. `router.replace` (et pas `push`) veut dire que le bouton Retour ne ramènera pas au formulaire d'inscription. `router.refresh()` fait réafficher l'en-tête, maintenant connecté.
 7. `finally` remet toujours `pending` à faux, même si quelque chose a lancé une erreur.
 
@@ -288,7 +288,7 @@ Le formulaire a `noValidate` : cela coupe les bulles d'erreur du navigateur, pou
 
 ### `login/page.tsx`
 
-[login/page.tsx](<../../../apps/web/app/[locale]/(main)/login/page.tsx>) est un **server component** comme la page d'inscription : un titre et `<LoginForm />`.
+[login/page.tsx](<../../apps/web/app/[locale]/(main)/login/page.tsx>) est un **server component** comme la page d'inscription : un titre et `<LoginForm />`.
 
 ```tsx
 // generateMetadata rather than a static export: the browser tab is the one piece
@@ -299,7 +299,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 ### `login/login-form.tsx`
 
-[login-form.tsx](<../../../apps/web/app/[locale]/(main)/login/login-form.tsx>) est un **client component** avec **deux étapes** dans un seul composant. Une variable de state `secondFactor` dit à quelle étape on est.
+[login-form.tsx](<../../apps/web/app/[locale]/(main)/login/login-form.tsx>) est un **client component** avec **deux étapes** dans un seul composant. Une variable de state `secondFactor` dit à quelle étape on est.
 
 ```mermaid
 sequenceDiagram
@@ -414,7 +414,7 @@ L'idée clé : **l'étape n'est pas gardée dans le state React**. Elle est calc
 
 ### `lib/onboarding.ts`
 
-[onboarding.ts](../../../apps/web/lib/onboarding.ts) contient cette décision sous forme de fonction pure (pas de React, pas de fetch), donc elle est facile à tester.
+[onboarding.ts](../../apps/web/lib/onboarding.ts) contient cette décision sous forme de fonction pure (pas de React, pas de fetch), donc elle est facile à tester.
 
 ```ts
 export type OnboardingStep =
@@ -450,11 +450,11 @@ export function resolveOnboardingStep(
 | sinon, un cours n'a pas de niveau                      | étape 2 pour le **plus récent** de ces cours (`findLast`)  |
 | sinon (chaque cours a un niveau)                       | étape 1, rien de sélectionné (ajout d'une nouvelle langue) |
 
-Le type de retour est une **union discriminée** : le champ `step` dit à TypeScript quel autre champ existe. [onboarding.test.ts](../../../apps/web/lib/onboarding.test.ts) teste chaque ligne de ce tableau.
+Le type de retour est une **union discriminée** : le champ `step` dit à TypeScript quel autre champ existe. [onboarding.test.ts](../../apps/web/lib/onboarding.test.ts) teste chaque ligne de ce tableau.
 
 ### `onboarding/page.tsx`
 
-[onboarding/page.tsx](<../../../apps/web/app/[locale]/(main)/onboarding/page.tsx>) est un **server component** async, `force-dynamic`.
+[onboarding/page.tsx](<../../apps/web/app/[locale]/(main)/onboarding/page.tsx>) est un **server component** async, `force-dynamic`.
 
 ```tsx
 export default async function OnboardingPage({
@@ -485,7 +485,7 @@ export default async function OnboardingPage({
 }
 ```
 
-- **Données :** `requireCourses()` de [lib/courses.ts](../../../apps/web/lib/courses.ts) (`GET /api/courses`). Il redirige aussi un visiteur non connecté vers `/login`. Il donne la liste des cours et `activeLang`, le cours que l'utilisateur a utilisé en dernier.
+- **Données :** `requireCourses()` de [lib/courses.ts](../../apps/web/lib/courses.ts) (`GET /api/courses`). Il redirige aussi un visiteur non connecté vers `/login`. Il donne la liste des cours et `activeLang`, le cours que l'utilisateur a utilisé en dernier.
 - `searchParams` est une Promise dans cette version de Next.js, donc on l'attend avec `await`.
 - `?lang=` est vérifié avec `LanguageSchema`. Une mauvaise valeur (`?lang=xyz`) est simplement ignorée.
 - La page sert aussi à **ajouter une deuxième langue plus tard**. Le commentaire explique pourquoi elle n'est pas sous `/learn/[lang]` : le `[lang]` est justement ce que cette page choisit.
@@ -494,7 +494,7 @@ L'astuce `key={step.preselected}` : `ChooseCourse` utilise `preselected` seuleme
 
 ### `onboarding/choose-course.tsx` — étape 1
 
-[choose-course.tsx](<../../../apps/web/app/[locale]/(main)/onboarding/choose-course.tsx>) est un **client component**. Il montre deux groupes de boutons radio : la langue (avec un drapeau) et l'objectif par jour (10, 30 ou 60 minutes).
+[choose-course.tsx](<../../apps/web/app/[locale]/(main)/onboarding/choose-course.tsx>) est un **client component**. Il montre deux groupes de boutons radio : la langue (avec un drapeau) et l'objectif par jour (10, 30 ou 60 minutes).
 
 ```tsx
 /** Typed against DailyGoal, so a value the schema drops stops compiling here. */
@@ -532,14 +532,14 @@ router.replace(`/onboarding?lang=${result.data.lang}`);
 router.refresh();
 ```
 
-`startCourse()` de [lib/courses-client.ts](../../../apps/web/lib/courses-client.ts) envoie `POST /api/courses`. Le cours est enregistré **tout de suite**, sans niveau. C'est ce qui permet à l'étape 2 de survivre à un rafraîchissement. Ensuite la page se recharge avec `?lang=` mis sur le nouveau cours, et `resolveOnboardingStep` renvoie maintenant l'étape 2.
+`startCourse()` de [lib/courses-client.ts](../../apps/web/lib/courses-client.ts) envoie `POST /api/courses`. Le cours est enregistré **tout de suite**, sans niveau. C'est ce qui permet à l'étape 2 de survivre à un rafraîchissement. Ensuite la page se recharge avec `?lang=` mis sur le nouveau cours, et `resolveOnboardingStep` renvoie maintenant l'étape 2.
 
 ### `onboarding/choose-level.tsx` — étape 2
 
-[choose-level.tsx](<../../../apps/web/app/[locale]/(main)/onboarding/choose-level.tsx>) est un **client component**. Il reçoit le `course` en prop. Il montre le drapeau, le nom de la langue et l'objectif par jour, puis deux choix :
+[choose-level.tsx](<../../apps/web/app/[locale]/(main)/onboarding/choose-level.tsx>) est un **client component**. Il reçoit le `course` en prop. Il montre le drapeau, le nom de la langue et l'objectif par jour, puis deux choix :
 
 - **Passer le test** : un simple lien vers `/learn/<lang>/placement`, l'examen de placement (chapitre 6). C'est l'examen lui-même qui enregistre le niveau.
-- **Choisir mon niveau moi-même** : ouvre le `LevelPicker` ([components/level-picker.tsx](../../../apps/web/components/level-picker.tsx), expliqué au chapitre 6). L'utilisateur clique sur ce qu'il maîtrise déjà : `A0` (rien), `A1`, ... `C2`.
+- **Choisir mon niveau moi-même** : ouvre le `LevelPicker` ([components/level-picker.tsx](../../apps/web/components/level-picker.tsx), expliqué au chapitre 6). L'utilisateur clique sur ce qu'il maîtrise déjà : `A0` (rien), `A1`, ... `C2`.
 
 Le state a un type subtil :
 
@@ -579,7 +579,7 @@ const [launching, setLaunching] = useState(false);
       router.refresh();
 ```
 
-- `nextLevel()` de [lib/level.ts](../../../apps/web/lib/level.ts) transforme "maîtrisé" en "ce qu'il faut enseigner" : `A2` maîtrisé veut dire que le cours est `B1` ; rien de maîtrisé (`null`) veut dire `A1` ; `C2` reste `C2`.
+- `nextLevel()` de [lib/level.ts](../../apps/web/lib/level.ts) transforme "maîtrisé" en "ce qu'il faut enseigner" : `A2` maîtrisé veut dire que le cours est `B1` ; rien de maîtrisé (`null`) veut dire `A1` ; `C2` reste `C2`.
 - `setCourseLevel()` envoie `PATCH /api/courses/<lang>/level`. C'est le même endpoint que celui de l'examen de placement, donc le niveau n'a qu'un seul endroit qui l'écrit.
 - `Promise.all` attend à la fois l'appel à l'API et un minuteur de 1,5 s. Si le réseau est lent, l'utilisateur n'attend pas 1,5 s **de plus** : les deux tournent en même temps. `LAUNCH_MS` (1500) correspond aux keyframes `launch` dans `app/globals.css`.
 - `prefersReducedMotion()` lit le réglage du système "réduire les animations". S'il est activé, il n'y a pas d'animation du tout et le minuteur est de 0 ms.
@@ -587,7 +587,7 @@ const [launching, setLaunching] = useState(false);
 
 ### `onboarding/rocket.tsx`
 
-[rocket.tsx](<../../../apps/web/app/[locale]/(main)/onboarding/rocket.tsx>) dessine la fusée en SVG inline, aux couleurs du wordmark (des dégradés du violet au bleu). Il n'a pas de `'use client'` et pas de state : c'est juste du markup.
+[rocket.tsx](<../../apps/web/app/[locale]/(main)/onboarding/rocket.tsx>) dessine la fusée en SVG inline, aux couleurs du wordmark (des dégradés du violet au bleu). Il n'a pas de `'use client'` et pas de state : c'est juste du markup.
 
 ```tsx
 export function Rocket({ className, bob = true }: { className?: string; bob?: boolean }) {
@@ -611,7 +611,7 @@ export function Rocket({ className, bob = true }: { className?: string; bob?: bo
 
 Les pages profil et amis montrent des avatars, alors regardons-les d'abord.
 
-[lib/avatar.ts](../../../apps/web/lib/avatar.ts) a deux fonctions pures pour le **dessin de secours** (le cercle coloré avec une lettre, affiché quand il n'y a pas d'image envoyée). Elles sont dans `lib/` et pas dans le composant, pour que la suite de tests de lib puisse les tester sans DOM de navigateur.
+[lib/avatar.ts](../../apps/web/lib/avatar.ts) a deux fonctions pures pour le **dessin de secours** (le cercle coloré avec une lettre, affiché quand il n'y a pas d'image envoyée). Elles sont dans `lib/` et pas dans le composant, pour que la suite de tests de lib puisse les tester sans DOM de navigateur.
 
 ```ts
 /** Stable per name, so the same person keeps the same colour. */
@@ -631,9 +631,9 @@ export function avatarInitial(name: string): string {
 - `avatarHue` est un tout petit hash : le même nom donne toujours le même nombre entre 0 et 359, utilisé comme teinte de couleur.
 - `avatarInitial` utilise `[...name]` pour découper selon les vrais caractères (code points). `name[0]` couperait un emoji ou un caractère chinois en deux, car ils prennent deux "code units" dans les chaînes JavaScript.
 
-[avatar.test.ts](../../../apps/web/lib/avatar.test.ts) vérifie la majuscule, le cas de l'emoji, le secours `'?'` et que la teinte est stable.
+[avatar.test.ts](../../apps/web/lib/avatar.test.ts) vérifie la majuscule, le cas de l'emoji, le secours `'?'` et que la teinte est stable.
 
-[components/avatar.tsx](../../../apps/web/components/avatar.tsx) est un composant sans `'use client'`, donc il peut tourner sur le serveur ou dans des client components.
+[components/avatar.tsx](../../apps/web/components/avatar.tsx) est un composant sans `'use client'`, donc il peut tourner sur le serveur ou dans des client components.
 
 ```tsx
 export function Avatar({ src, name, size }: { src: string | null; name: string; size: number }) {
@@ -668,7 +668,7 @@ export function Avatar({ src, name, size }: { src: string | null; name: string; 
 
 ## Ton profil (`/profile`)
 
-[profile/page.tsx](<../../../apps/web/app/[locale]/(main)/profile/page.tsx>) est un **server component** async, `force-dynamic`. Il n'a pas de partie client.
+[profile/page.tsx](<../../apps/web/app/[locale]/(main)/profile/page.tsx>) est un **server component** async, `force-dynamic`. Il n'a pas de partie client.
 
 ```tsx
 export default async function ProfilePage() {
@@ -690,7 +690,7 @@ Les classes `max-sm:flex-col-reverse` mettent l'avatar au-dessus du nom sur les 
 
 ### `profile/edit/page.tsx`
 
-[profile/edit/page.tsx](<../../../apps/web/app/[locale]/(main)/profile/edit/page.tsx>) est un **server component**. Il appelle `requireUser()` et passe l'utilisateur à `<ProfileForm user={user} />`. Il affiche aussi un lien "Back to profile" (Retour au profil) et le `<h1>`.
+[profile/edit/page.tsx](<../../apps/web/app/[locale]/(main)/profile/edit/page.tsx>) est un **server component**. Il appelle `requireUser()` et passe l'utilisateur à `<ProfileForm user={user} />`. Il affiche aussi un lien "Back to profile" (Retour au profil) et le `<h1>`.
 
 ```tsx
 // Heading here, not in ProfileForm, so the page has an h1 and the form stays a
@@ -699,7 +699,7 @@ Les classes `max-sm:flex-col-reverse` mettent l'avatar au-dessus du nom sur les 
 
 ### `profile/edit/profile-form.tsx`
 
-[profile-form.tsx](<../../../apps/web/app/[locale]/(main)/profile/edit/profile-form.tsx>) est un **client component** avec deux parties séparées :
+[profile-form.tsx](<../../apps/web/app/[locale]/(main)/profile/edit/profile-form.tsx>) est un **client component** avec deux parties séparées :
 
 ```tsx
 // The avatar saves the moment it is picked, the name only on submit, so they
@@ -762,7 +762,7 @@ La double authentification (2FA) veut dire : pour te connecter, il te faut ton m
 
 ### `settings/2fa/page.tsx`
 
-[settings/2fa/page.tsx](<../../../apps/web/app/[locale]/(main)/settings/2fa/page.tsx>) est un **server component**. Il affiche seulement un titre et une intro, puis `<TwoFactorPanel />`.
+[settings/2fa/page.tsx](<../../apps/web/app/[locale]/(main)/settings/2fa/page.tsx>) est un **server component**. Il affiche seulement un titre et une intro, puis `<TwoFactorPanel />`.
 
 ```tsx
 export default async function TwoFactorPage() {
@@ -773,7 +773,7 @@ export default async function TwoFactorPage() {
 
 ### `settings/2fa/two-factor-panel.tsx`
 
-[two-factor-panel.tsx](<../../../apps/web/app/[locale]/(main)/settings/2fa/two-factor-panel.tsx>) est un **client component**. Contrairement aux autres pages, il charge ses propres données dans le navigateur, avec `useEffect` :
+[two-factor-panel.tsx](<../../apps/web/app/[locale]/(main)/settings/2fa/two-factor-panel.tsx>) est un **client component**. Contrairement aux autres pages, il charge ses propres données dans le navigateur, avec `useEffect` :
 
 ```tsx
 /**
@@ -851,7 +851,7 @@ La page des amis et la page d'un utilisateur sont construites à partir de quelq
 
 ### `lib/presence.ts` — qui est en ligne, d'après ce que l'onglet a entendu en dernier
 
-[presence.ts](../../../apps/web/lib/presence.ts) exporte `createPresenceMap()`. C'est un petit store : une `Map` qui va de l'id d'un utilisateur vers `true`/`false` (en ligne ou non), plus une liste d'"observateurs" à appeler quand quelque chose change.
+[presence.ts](../../apps/web/lib/presence.ts) exporte `createPresenceMap()`. C'est un petit store : une `Map` qui va de l'id d'un utilisateur vers `true`/`false` (en ligne ou non), plus une liste d'"observateurs" à appeler quand quelque chose change.
 
 ```ts
 export function createPresenceMap(): PresenceMap {
@@ -887,15 +887,15 @@ export function createPresenceMap(): PresenceMap {
 }
 ```
 
-Qui l'utilise : [components/tab-socket.ts](../../../apps/web/components/tab-socket.ts) (chapitre 3) crée **une seule** map pour tout l'onglet du navigateur. Quand le WebSocket reçoit `presence:update`, il appelle `apply` ; sur `friend:removed`, `forget` ; à la déconnexion ou à une nouvelle connexion, `clear`. La map n'appelle les observateurs que quand une valeur change vraiment, donc React ne réaffiche pas pour rien.
+Qui l'utilise : [components/tab-socket.ts](../../apps/web/components/tab-socket.ts) (chapitre 3) crée **une seule** map pour tout l'onglet du navigateur. Quand le WebSocket reçoit `presence:update`, il appelle `apply` ; sur `friend:removed`, `forget` ; à la déconnexion ou à une nouvelle connexion, `clear`. La map n'appelle les observateurs que quand une valeur change vraiment, donc React ne réaffiche pas pour rien.
 
 Pourquoi une map qui vit dans l'onglet, et pas dans une page ? Le commentaire le dit : Next.js peut restaurer une ancienne page depuis son cache quand tu appuies sur Retour. Cette ancienne page a été affichée avec d'anciennes valeurs "en ligne". La map se souvient de ce qui s'est passé pendant que la page n'était pas là. `get()` renvoie `undefined` pour un ami dont l'onglet n'a pas eu de nouvelles, et alors l'appelant utilise la valeur affichée par le serveur.
 
-[presence.test.ts](../../../apps/web/lib/presence.test.ts) vérifie : undefined avant toute nouvelle, le dernier statut gagne, les observateurs ne sont appelés que sur de vrais changements, `forget`, `clear`, et le désabonnement.
+[presence.test.ts](../../apps/web/lib/presence.test.ts) vérifie : undefined avant toute nouvelle, le dernier statut gagne, les observateurs ne sont appelés que sur de vrais changements, `forget`, `clear`, et le désabonnement.
 
 ### `components/presence-dot.tsx` — le point vert ou gris
 
-[presence-dot.tsx](../../../apps/web/components/presence-dot.tsx) est un **client component**, car le point doit changer sans recharger la page.
+[presence-dot.tsx](../../apps/web/components/presence-dot.tsx) est un **client component**, car le point doit changer sans recharger la page.
 
 ```tsx
 export function PresenceDot({ userId, online }: { userId: string; online: boolean }) {
@@ -918,7 +918,7 @@ export function PresenceDot({ userId, online }: { userId: string; online: boolea
 
 ### `components/user-row.tsx` — une personne dans une liste
 
-[user-row.tsx](../../../apps/web/components/user-row.tsx) n'a pas de `'use client'` ; il est affiché par les pages serveur. Il montre un avatar (peut-être avec un point), le nom sous forme de lien vers `/users/<id>`, une ligne facultative de langues, puis ses `children` (les boutons).
+[user-row.tsx](../../apps/web/components/user-row.tsx) n'a pas de `'use client'` ; il est affiché par les pages serveur. Il montre un avatar (peut-être avec un point), le nom sous forme de lien vers `/users/<id>`, une ligne facultative de langues, puis ses `children` (les boutons).
 
 ```tsx
 {
@@ -946,11 +946,11 @@ export function PresenceDot({ userId, online }: { userId: string; online: boolea
 
 ### `components/message-link.tsx`
 
-[message-link.tsx](../../../apps/web/components/message-link.tsx) est un lien stylé comme un bouton secondaire, vers `/chat?with=<userId>` (les pages de chat sont dans [08-chat.md](08-chat.md)). Son texte est juste "Message", sans le nom, pour qu'on ne le confonde jamais avec le lien du profil juste à côté. Il a aussi `prefetch={false}`, pour la même raison que `UserRow`.
+[message-link.tsx](../../apps/web/components/message-link.tsx) est un lien stylé comme un bouton secondaire, vers `/chat?with=<userId>` (les pages de chat sont dans [08-chat.md](08-chat.md)). Son texte est juste "Message", sans le nom, pour qu'on ne le confonde jamais avec le lien du profil juste à côté. Il a aussi `prefetch={false}`, pour la même raison que `UserRow`.
 
 ### `components/friend-buttons.tsx` — ajouter, accepter, refuser, annuler, retirer
 
-[friend-buttons.tsx](../../../apps/web/components/friend-buttons.tsx) est un fichier de **client component**. Il exporte `FriendButton`, `RequestButtons` et `RemoveFriendButton`.
+[friend-buttons.tsx](../../apps/web/components/friend-buttons.tsx) est un fichier de **client component**. Il exporte `FriendButton`, `RequestButtons` et `RemoveFriendButton`.
 
 ```tsx
 type Action = 'add' | 'accept' | 'decline' | 'cancelRequest';
@@ -965,7 +965,7 @@ const ACTIONS = {
 } satisfies Record<...>;
 ```
 
-Un server component ne peut pas passer une **fonction** en prop à un client component (les fonctions ne peuvent pas être envoyées sur le réseau). Donc la page serveur passe un **nom** comme `action="add"`, et ce tableau transforme le nom en fonction et en style. Les fonctions d'écriture sont dans [lib/friends-client.ts](../../../apps/web/lib/friends-client.ts) :
+Un server component ne peut pas passer une **fonction** en prop à un client component (les fonctions ne peuvent pas être envoyées sur le réseau). Donc la page serveur passe un **nom** comme `action="add"`, et ce tableau transforme le nom en fonction et en style. Les fonctions d'écriture sont dans [lib/friends-client.ts](../../apps/web/lib/friends-client.ts) :
 
 | Action                     | Fonction              | Appel API                                   |
 | -------------------------- | --------------------- | ------------------------------------------- |
@@ -1031,7 +1031,7 @@ La page est rafraîchie **même quand l'appel échoue**. Le commentaire au-dessu
 
 ## La page des amis (`/friends`)
 
-[friends/page.tsx](<../../../apps/web/app/[locale]/(main)/friends/page.tsx>) est un **server component** async, `force-dynamic`.
+[friends/page.tsx](<../../apps/web/app/[locale]/(main)/friends/page.tsx>) est un **server component** async, `force-dynamic`.
 
 ```tsx
 // A hand-edited ?q= is ignored rather than an error; the form checks what is
@@ -1045,7 +1045,7 @@ const [lists, found, recent] = await Promise.all([
 ]);
 ```
 
-**Données** (toutes venant de [lib/friends.ts](../../../apps/web/lib/friends.ts), chargées en parallèle avec `Promise.all`) :
+**Données** (toutes venant de [lib/friends.ts](../../apps/web/lib/friends.ts), chargées en parallèle avec `Promise.all`) :
 
 | Helper             | Appel API                        | Donne                                                                                  |
 | ------------------ | -------------------------------- | -------------------------------------------------------------------------------------- |
@@ -1095,11 +1095,11 @@ async function SearchAction({ relation, userId }: { relation: Relation; userId: 
 
 `relationTo(lists, userId)` (dans `lib/friends.ts`) regarde dans tes trois listes et renvoie `'friend'`, `'received'`, `'sent'` ou `'none'`.
 
-**Mises à jour en direct :** `<RefreshOn events={FRIEND_EVENTS} />` ([components/refresh-on.tsx](../../../apps/web/components/refresh-on.tsx), chapitre 3) n'affiche rien. Il écoute sur le WebSocket de l'onglet les événements `friend:request`, `friend:accepted` et `friend:removed`, et appelle `router.refresh()` quand l'un d'eux arrive. Donc si quelqu'un t'envoie une demande, elle apparaît sur ta page d'amis sans recharger. Il rafraîchit aussi après la reconnexion du socket, car les événements envoyés pendant la coupure sont perdus.
+**Mises à jour en direct :** `<RefreshOn events={FRIEND_EVENTS} />` ([components/refresh-on.tsx](../../apps/web/components/refresh-on.tsx), chapitre 3) n'affiche rien. Il écoute sur le WebSocket de l'onglet les événements `friend:request`, `friend:accepted` et `friend:removed`, et appelle `router.refresh()` quand l'un d'eux arrive. Donc si quelqu'un t'envoie une demande, elle apparaît sur ta page d'amis sans recharger. Il rafraîchit aussi après la reconnexion du socket, car les événements envoyés pendant la coupure sont perdus.
 
 ### `friends/friend-search.tsx`
 
-[friend-search.tsx](<../../../apps/web/app/[locale]/(main)/friends/friend-search.tsx>) est un **client component** : un champ de recherche et un bouton.
+[friend-search.tsx](<../../apps/web/app/[locale]/(main)/friends/friend-search.tsx>) est un **client component** : un champ de recherche et un bouton.
 
 ```tsx
 /** The query goes in the URL: the page renders the results, so a live refresh updates them too. */
@@ -1134,7 +1134,7 @@ Il n'appelle **pas** l'API lui-même. Il change seulement l'URL en `/friends?q=.
 
 ## Le profil de quelqu'un (`/users/:id`)
 
-[users/[id]/page.tsx](<../../../apps/web/app/[locale]/(main)/users/[id]/page.tsx>) est un **server component** async, `force-dynamic`. `[id]` est un **segment dynamique** : n'importe quelle valeur dans l'URL arrive dans `params.id`.
+[users/[id]/page.tsx](<../../apps/web/app/[locale]/(main)/users/[id]/page.tsx>) est un **server component** async, `force-dynamic`. `[id]` est un **segment dynamique** : n'importe quelle valeur dans l'URL arrive dans `params.id`.
 
 ```tsx
 export default async function UserPage({ params }: { params: Promise<{ id: string }> }) {
@@ -1199,7 +1199,7 @@ Le sujet du projet rejette un projet sans politique de confidentialité ni condi
 
 ### `lib/legal.ts` — la forme d'un document légal
 
-[legal.ts](../../../apps/web/lib/legal.ts) :
+[legal.ts](../../apps/web/lib/legal.ts) :
 
 ```ts
 /**
@@ -1220,7 +1220,7 @@ Il exporte :
 
 ### `lib/legal-content/` — le texte en trois langues
 
-[en.ts](../../../apps/web/lib/legal-content/en.ts), [fr.ts](../../../apps/web/lib/legal-content/fr.ts) et [de.ts](../../../apps/web/lib/legal-content/de.ts) exportent chacun `privacyPolicy`, `termsOfService` et `legalDocuments` (une liste des deux). Le texte est de la simple donnée :
+[en.ts](../../apps/web/lib/legal-content/en.ts), [fr.ts](../../apps/web/lib/legal-content/fr.ts) et [de.ts](../../apps/web/lib/legal-content/de.ts) exportent chacun `privacyPolicy`, `termsOfService` et `legalDocuments` (une liste des deux). Le texte est de la simple donnée :
 
 ```ts
 export const privacyPolicy: LegalDocument = {
@@ -1240,7 +1240,7 @@ export const privacyPolicy: LegalDocument = {
 
 La politique de confidentialité a 12 sections (champ d'application, données collectées, pourquoi, traitement par l'IA avec Google Gemini, durée de conservation, partage, cookies, tes droits, sécurité, âge, changements, contact). Les conditions en ont 11 (acceptation, conditions d'accès, usage acceptable, contenu de l'IA, ton contenu, amis et messages, disponibilité, résiliation, limites de responsabilité, droit applicable, contact). Les trois fichiers utilisent les **mêmes ids de section**, donc un lien comme `/fr/privacy#retention` marche dans toutes les langues.
 
-[index.ts](../../../apps/web/lib/legal-content/index.ts) est le registre :
+[index.ts](../../apps/web/lib/legal-content/index.ts) est le registre :
 
 ```ts
 const CATALOGUE: Partial<Record<Locale, LegalContent>> = { en, fr, de };
@@ -1255,11 +1255,11 @@ export function getLegalContent(locale: Locale): LegalContent {
 
 `getLegalContent` revient à l'anglais pour une langue sans texte. Le commentaire explique : afficher une 404 ou une page vide ferait échouer le sujet, donc un vrai texte dans une autre langue vaut mieux.
 
-[legal.test.ts](../../../apps/web/lib/legal.test.ts) vérifie chaque document : au moins 1500 caractères, des ids de section uniques, aucune section vide, une date fixe, les metadata présentes, et que chaque langue garde les ids de section anglais.
+[legal.test.ts](../../apps/web/lib/legal.test.ts) vérifie chaque document : au moins 1500 caractères, des ids de section uniques, aucune section vide, une date fixe, les metadata présentes, et que chaque langue garde les ids de section anglais.
 
 ### `components/legal-article.tsx`
 
-[legal-article.tsx](../../../apps/web/components/legal-article.tsx) est un **server component** async qui dessine un `LegalDocument` :
+[legal-article.tsx](../../apps/web/components/legal-article.tsx) est un **server component** async qui dessine un `LegalDocument` :
 
 ```tsx
 export async function LegalArticle({ doc }: { doc: LegalDocument }) {
@@ -1283,7 +1283,7 @@ Chaque section reçoit `id={section.id}`, donc les liens `#ancre` y sautent. `sc
 
 ### `privacy/page.tsx` et `terms/page.tsx`
 
-[privacy/page.tsx](<../../../apps/web/app/[locale]/(main)/privacy/page.tsx>) et [terms/page.tsx](<../../../apps/web/app/[locale]/(main)/terms/page.tsx>) sont le même petit **server component**, un pour chaque document :
+[privacy/page.tsx](<../../apps/web/app/[locale]/(main)/privacy/page.tsx>) et [terms/page.tsx](<../../apps/web/app/[locale]/(main)/terms/page.tsx>) sont le même petit **server component**, un pour chaque document :
 
 ```tsx
 type Props = { params: Promise<{ locale: Locale }> };
@@ -1308,7 +1308,7 @@ Ils lisent la `locale` dans l'URL, choisissent le document, et en tirent le titr
 
 ## `components/flag.tsx`
 
-[flag.tsx](../../../apps/web/components/flag.tsx) dessine un petit drapeau pour une langue qu'on peut apprendre (`fr`, `de`, `en`) en SVG inline. L'onboarding l'utilise pour les boutons de langue et à côté du nom du cours.
+[flag.tsx](../../apps/web/components/flag.tsx) dessine un petit drapeau pour une langue qu'on peut apprendre (`fr`, `de`, `en`) en SVG inline. L'onboarding l'utilise pour les boutons de langue et à côté du nom du cours.
 
 ```tsx
 export function Flag({ lang, className }: { lang: Language; className?: string }) {

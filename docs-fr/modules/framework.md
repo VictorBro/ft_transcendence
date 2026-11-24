@@ -21,11 +21,11 @@ Le sujet dit aussi ce qu'est un framework :
 
 ## Comment on y répond
 
-| Le sujet demande                                 | Ce qu'on a construit                                                                                                                                                 | Où                                                                                                  |
-| ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| Un framework frontend                            | Next.js 16 avec l'App Router, sur React 19. Chaque page est une page Next.js.                                                                                        | [`apps/web/package.json`](../../../apps/web/package.json), [`apps/web/app/`](../../../apps/web/app) |
-| Un framework backend                             | NestJS 11. Chaque route de l'API est une méthode dans un controller NestJS.                                                                                          | [`apps/api/package.json`](../../../apps/api/package.json), [`apps/api/src/`](../../../apps/api/src) |
-| Les frameworks full-stack comptent pour les deux | On ne s'en sert pas comme preuve. On ne compte pas Next.js comme notre backend : NestJS est le backend. Next.js fait seulement le rendu des pages et appelle NestJS. | [`../architecture/overview.md`](../architecture/overview.md), section 1                             |
+| Le sujet demande                                 | Ce qu'on a construit                                                                                                                                                 | Où                                                                                            |
+| ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| Un framework frontend                            | Next.js 16 avec l'App Router, sur React 19. Chaque page est une page Next.js.                                                                                        | [`apps/web/package.json`](../../apps/web/package.json), [`apps/web/app/`](../../apps/web/app) |
+| Un framework backend                             | NestJS 11. Chaque route de l'API est une méthode dans un controller NestJS.                                                                                          | [`apps/api/package.json`](../../apps/api/package.json), [`apps/api/src/`](../../apps/api/src) |
+| Les frameworks full-stack comptent pour les deux | On ne s'en sert pas comme preuve. On ne compte pas Next.js comme notre backend : NestJS est le backend. Next.js fait seulement le rendu des pages et appelle NestJS. | [`../architecture/overview.md`](../architecture/overview.md), section 1                       |
 
 Les deux frameworks sont cités comme frameworks dans la liste du sujet lui-même, donc aucun des deux
 n'a besoin d'être défendu.
@@ -47,8 +47,8 @@ flowchart LR
     A --> R[(Redis)]
 ```
 
-Les routes sont dans [`infra/caddy/Caddyfile`](../../../infra/caddy/Caddyfile). Les
-containers sont dans [`compose.yml`](../../../compose.yml).
+Les routes sont dans [`infra/caddy/Caddyfile`](../../infra/caddy/Caddyfile). Les
+containers sont dans [`compose.yml`](../../compose.yml).
 
 La règle que l'équipe suit est écrite dans
 [`../architecture/overview.md`](../architecture/overview.md) : « NestJS owns all
@@ -60,55 +60,55 @@ pas de server actions (`'use server'`) dans `apps/web`.
 ### Le frontend : Next.js
 
 - **Pages.** Chaque page est un fichier `page.tsx` sous
-  [`apps/web/app/[locale]/`](../../../apps/web/app). Il y en a 22. Aucune ne commence
+  [`apps/web/app/[locale]/`](../../apps/web/app). Il y en a 22. Aucune ne commence
   par `'use client'`, donc elles font toutes leur rendu sur le serveur. Les parties qui réagissent aux
   clics (formulaires, le lecteur de leçons, le chat) sont des client components dans leurs propres
   fichiers.
 - **Fonctionnalités intégrées qu'on utilise :** le routing basé sur les fichiers, les groupes de routes comme `(main)`,
   `(dashboard)` et `(messages)`, un segment dynamique `[locale]` pour la langue,
   des layouts partagés, une page d'erreur par langue
-  ([`error.tsx`](../../../apps/web/app/[locale]/error.tsx)), une page not-found,
+  ([`error.tsx`](../../apps/web/app/[locale]/error.tsx)), une page not-found,
   `generateMetadata` pour les titres des pages, et des route handlers pour les health checks (vérifications de santé)
-  ([`apps/web/app/healthz/`](../../../apps/web/app/healthz)).
-- **Le hook de requête.** [`apps/web/proxy.ts`](../../../apps/web/proxy.ts) tourne avant
+  ([`apps/web/app/healthz/`](../../apps/web/app/healthz)).
+- **Le hook de requête.** [`apps/web/proxy.ts`](../../apps/web/proxy.ts) tourne avant
   chaque page. Il ajoute la langue dans l'URL (avec `next-intl`) et garde le dernier
   cours ouvert dans un cookie.
-- **Build.** [`apps/web/next.config.ts`](../../../apps/web/next.config.ts) met
+- **Build.** [`apps/web/next.config.ts`](../../apps/web/next.config.ts) met
   `output: 'standalone'`, donc l'image de production contient seulement ce dont Next.js a besoin pour
   tourner.
 
 ### Le backend : NestJS
 
-- **Modules.** [`apps/api/src/app.module.ts`](../../../apps/api/src/app.module.ts)
+- **Modules.** [`apps/api/src/app.module.ts`](../../apps/api/src/app.module.ts)
   réunit les modules de fonctionnalités (auth, users, friends, messages, courses,
   placement, lessons, la gateway WebSocket, health, metrics). Il y a 16 fichiers de module
   sous `apps/api/src/`.
 - **Controllers.** Il y a 10 controllers, par exemple
-  [`friends.controller.ts`](../../../apps/api/src/friends/friends.controller.ts). Chaque
+  [`friends.controller.ts`](../../apps/api/src/friends/friends.controller.ts). Chaque
   route est une méthode avec un décorateur comme `@Get()` ou `@Post('requests/:userId')`.
 - **Injection de dépendances.** NestJS construit chaque service et le donne aux classes
   qui le demandent. Par exemple,
-  [`llm.module.ts`](../../../apps/api/src/llm/llm.module.ts) construit le provider d'IA
+  [`llm.module.ts`](../../apps/api/src/llm/llm.module.ts) construit le provider d'IA
   une seule fois au démarrage à partir des réglages, et les autres modules le demandent par son nom. C'est
   ce qui permet aux tests de mettre un faux provider à la place.
 - **Fonctionnalités intégrées qu'on utilise :**
   - un guard sur chaque route, `AuthGuard`
-    ([`auth.guard.ts`](../../../apps/api/src/auth/auth.guard.ts)), enregistré pour
-    toute l'app dans [`auth.module.ts`](../../../apps/api/src/auth/auth.module.ts). Une
+    ([`auth.guard.ts`](../../apps/api/src/auth/auth.guard.ts)), enregistré pour
+    toute l'app dans [`auth.module.ts`](../../apps/api/src/auth/auth.module.ts). Une
     route est privée sauf si elle est marquée `@Public()`.
   - un pipe de validation pour chaque body de requête
-    ([`validation.pipe.ts`](../../../apps/api/src/validation.pipe.ts)), avec des schemas
+    ([`validation.pipe.ts`](../../apps/api/src/validation.pipe.ts)), avec des schemas
     Zod.
   - un exception filter qui transforme chaque erreur en code d'erreur
-    ([`error-code.filter.ts`](../../../apps/api/src/error-code.filter.ts)).
+    ([`error-code.filter.ts`](../../apps/api/src/error-code.filter.ts)).
   - des limites de requêtes avec `@nestjs/throttler`, réglées dans `app.module.ts`.
   - des gateways WebSocket avec `@nestjs/websockets` et socket.io, sur le chemin `/ws`
-    ([`socket.gateway.ts`](../../../apps/api/src/gateway/socket.gateway.ts)).
+    ([`socket.gateway.ts`](../../apps/api/src/gateway/socket.gateway.ts)).
   - une page OpenAPI faite avec `@nestjs/swagger`, servie sur `/api/docs`.
 - **Une seule configuration pour l'app et les tests.** `configureApp()` dans
-  [`app.setup.ts`](../../../apps/api/src/app.setup.ts) met le préfixe global `/api`,
+  [`app.setup.ts`](../../apps/api/src/app.setup.ts) met le préfixe global `/api`,
   la session, le pipe, le filter et la page Swagger. À la fois
-  [`main.ts`](../../../apps/api/src/main.ts) et les tests Supertest l'appellent, donc les
+  [`main.ts`](../../apps/api/src/main.ts) et les tests Supertest l'appellent, donc les
   tests passent par le même chemin de requête que la production.
 
 ### Comment les deux se parlent
@@ -116,58 +116,58 @@ pas de server actions (`'use server'`) dans `apps/web`.
 Il y a deux chemins, et les deux arrivent aux mêmes routes NestJS.
 
 1. **Depuis le serveur Next.js, pendant qu'il fait le rendu d'une page.**
-   [`apps/web/lib/api.ts`](../../../apps/web/lib/api.ts) est « the only place apps/web
+   [`apps/web/lib/api.ts`](../../apps/web/lib/api.ts) est « the only place apps/web
    talks to NestJS » (le seul endroit où apps/web parle à NestJS, d'après son propre commentaire). Il appelle `http://api:3001` par le réseau
    Docker (`API_INTERNAL_URL`), transmet le cookie du navigateur et l'adresse du
    visiteur, et vérifie la réponse avec un schema Zod. Un 401 veut dire « déconnecté » ; tout
    autre échec veut dire « l'API n'est pas disponible » (une page peut aussi demander qu'un 404
-   veuille dire « introuvable »), donc un redémarrage ne déconnecte jamais personne. [`apps/web/lib/session.ts`](../../../apps/web/lib/session.ts) l'utilise pour charger
+   veuille dire « introuvable »), donc un redémarrage ne déconnecte jamais personne. [`apps/web/lib/session.ts`](../../apps/web/lib/session.ts) l'utilise pour charger
    l'utilisateur connecté.
 2. **Depuis le navigateur, après le chargement de la page.**
-   [`apps/web/lib/api-client.ts`](../../../apps/web/lib/api-client.ts) envoie
+   [`apps/web/lib/api-client.ts`](../../apps/web/lib/api-client.ts) envoie
    des requêtes same-origin vers `/api/...` (par exemple `/api/auth/login` dans
-   [`auth-client.ts`](../../../apps/web/lib/auth-client.ts)). Caddy les passe à
+   [`auth-client.ts`](../../apps/web/lib/auth-client.ts)). Caddy les passe à
    NestJS. Le client WebSocket dans
-   [`tab-socket.ts`](../../../apps/web/components/tab-socket.ts) se connecte à `/ws`
+   [`tab-socket.ts`](../../apps/web/components/tab-socket.ts) se connecte à `/ws`
    de la même façon.
 
 Les deux apps partagent la forme de leurs données via
-[`packages/shared`](../../../packages/shared/package.json) (« Zod contracts shared by
+[`packages/shared`](../../packages/shared/package.json) (« Zod contracts shared by
 @ft/api and @ft/web: one schema, validated on both sides »). Par exemple, le formulaire
 d'inscription vérifie `SignUpFormSchema` dans le navigateur, et l'API vérifie
 `CreateUserSchema`, que `SignUpFormSchema` étend
-([`user.ts`](../../../packages/shared/src/schemas/user.ts),
-[`auth.dto.ts`](../../../apps/api/src/auth/auth.dto.ts)).
+([`user.ts`](../../packages/shared/src/schemas/user.ts),
+[`auth.dto.ts`](../../apps/api/src/auth/auth.dto.ts)).
 
 ## Où est le code
 
-| Chemin                                                                            | Ce qu'il fait                                                              |
-| --------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| [`apps/web/`](../../../apps/web)                                                  | L'app Next.js : pages, layouts, composants                                 |
-| [`apps/web/app/[locale]/`](../../../apps/web/app)                                 | Toutes les pages, un dossier par route                                     |
-| [`apps/web/proxy.ts`](../../../apps/web/proxy.ts)                                 | Tourne avant chaque page : préfixe de langue et cookie du cours            |
-| [`apps/web/next.config.ts`](../../../apps/web/next.config.ts)                     | Les réglages de Next.js : build standalone, plugin `next-intl`             |
-| [`apps/web/lib/api.ts`](../../../apps/web/lib/api.ts)                             | Les appels côté serveur de Next.js vers NestJS                             |
-| [`apps/web/lib/api-client.ts`](../../../apps/web/lib/api-client.ts)               | Les appels du navigateur vers `/api/...`                                   |
-| [`apps/web/lib/session.ts`](../../../apps/web/lib/session.ts)                     | Charge l'utilisateur connecté pour une page (`currentUser`, `requireUser`) |
-| [`apps/web/app/healthz/`](../../../apps/web/app/healthz)                          | Route handlers Next.js : santé du web, et si le web peut joindre l'API     |
-| [`apps/api/`](../../../apps/api)                                                  | L'app NestJS                                                               |
-| [`apps/api/src/main.ts`](../../../apps/api/src/main.ts)                           | Démarre NestJS sur le port 3001                                            |
-| [`apps/api/src/app.module.ts`](../../../apps/api/src/app.module.ts)               | Le module racine : réunit chaque module de fonctionnalité                  |
-| [`apps/api/src/app.setup.ts`](../../../apps/api/src/app.setup.ts)                 | Préfixe global, session, validation, filter d'erreurs, Swagger             |
-| [`apps/api/src/validation.pipe.ts`](../../../apps/api/src/validation.pipe.ts)     | Valide les bodies et les paramètres de route avec Zod                      |
-| [`apps/api/src/error-code.filter.ts`](../../../apps/api/src/error-code.filter.ts) | Fait que chaque réponse d'erreur contient un code d'erreur                 |
-| [`apps/api/src/auth/auth.guard.ts`](../../../apps/api/src/auth/auth.guard.ts)     | Le guard qui protège chaque route par défaut                               |
-| [`packages/shared/`](../../../packages/shared)                                    | Les schemas Zod et les types utilisés par les deux apps                    |
-| [`infra/caddy/Caddyfile`](../../../infra/caddy/Caddyfile)                         | Envoie `/api` et `/ws` à NestJS, le reste à Next.js                        |
-| [`compose.yml`](../../../compose.yml)                                             | Les containers `caddy`, `web` et `api`                                     |
+| Chemin                                                                         | Ce qu'il fait                                                              |
+| ------------------------------------------------------------------------------ | -------------------------------------------------------------------------- |
+| [`apps/web/`](../../apps/web)                                                  | L'app Next.js : pages, layouts, composants                                 |
+| [`apps/web/app/[locale]/`](../../apps/web/app)                                 | Toutes les pages, un dossier par route                                     |
+| [`apps/web/proxy.ts`](../../apps/web/proxy.ts)                                 | Tourne avant chaque page : préfixe de langue et cookie du cours            |
+| [`apps/web/next.config.ts`](../../apps/web/next.config.ts)                     | Les réglages de Next.js : build standalone, plugin `next-intl`             |
+| [`apps/web/lib/api.ts`](../../apps/web/lib/api.ts)                             | Les appels côté serveur de Next.js vers NestJS                             |
+| [`apps/web/lib/api-client.ts`](../../apps/web/lib/api-client.ts)               | Les appels du navigateur vers `/api/...`                                   |
+| [`apps/web/lib/session.ts`](../../apps/web/lib/session.ts)                     | Charge l'utilisateur connecté pour une page (`currentUser`, `requireUser`) |
+| [`apps/web/app/healthz/`](../../apps/web/app/healthz)                          | Route handlers Next.js : santé du web, et si le web peut joindre l'API     |
+| [`apps/api/`](../../apps/api)                                                  | L'app NestJS                                                               |
+| [`apps/api/src/main.ts`](../../apps/api/src/main.ts)                           | Démarre NestJS sur le port 3001                                            |
+| [`apps/api/src/app.module.ts`](../../apps/api/src/app.module.ts)               | Le module racine : réunit chaque module de fonctionnalité                  |
+| [`apps/api/src/app.setup.ts`](../../apps/api/src/app.setup.ts)                 | Préfixe global, session, validation, filter d'erreurs, Swagger             |
+| [`apps/api/src/validation.pipe.ts`](../../apps/api/src/validation.pipe.ts)     | Valide les bodies et les paramètres de route avec Zod                      |
+| [`apps/api/src/error-code.filter.ts`](../../apps/api/src/error-code.filter.ts) | Fait que chaque réponse d'erreur contient un code d'erreur                 |
+| [`apps/api/src/auth/auth.guard.ts`](../../apps/api/src/auth/auth.guard.ts)     | Le guard qui protège chaque route par défaut                               |
+| [`packages/shared/`](../../packages/shared)                                    | Les schemas Zod et les types utilisés par les deux apps                    |
+| [`infra/caddy/Caddyfile`](../../infra/caddy/Caddyfile)                         | Envoie `/api` et `/ws` à NestJS, le reste à Next.js                        |
+| [`compose.yml`](../../compose.yml)                                             | Les containers `caddy`, `web` et `api`                                     |
 
 ## Comment le montrer à la soutenance
 
 1. Lance l'app avec `make run` (ou `make`, qui lance aussi toutes les vérifications avant). À
    la fin, il affiche l'adresse de l'app et l'adresse de la doc de l'API.
-2. Ouvre [`apps/web/package.json`](../../../apps/web/package.json) et
-   [`apps/api/package.json`](../../../apps/api/package.json). Montre `next` et `react`
+2. Ouvre [`apps/web/package.json`](../../apps/web/package.json) et
+   [`apps/api/package.json`](../../apps/api/package.json). Montre `next` et `react`
    dans le premier, `@nestjs/core` et les autres paquets `@nestjs/*` dans le second.
 3. Ouvre <https://localhost/>. Tu es envoyé vers un chemin avec une langue dedans, comme
    `/en`. Cette page est rendue par Next.js.
@@ -183,31 +183,31 @@ d'inscription vérifie `SignUpFormSchema` dans le navigateur, et l'API vérifie
    Montre que la requête est `POST /api/auth/signup` sur la même adresse
    (`localhost`), et que tu arrives sur `/en/onboarding`.
 8. Dans le code, montre une route de bout en bout : la page
-   [`profile/page.tsx`](<../../../apps/web/app/[locale]/(main)/profile/page.tsx>) (un
+   [`profile/page.tsx`](<../../apps/web/app/[locale]/(main)/profile/page.tsx>) (un
    server component qui appelle `requireUser()`), puis
-   [`session.ts`](../../../apps/web/lib/session.ts) et
-   [`api.ts`](../../../apps/web/lib/api.ts), puis `@Get('me')` dans
-   [`auth.controller.ts`](../../../apps/api/src/auth/auth.controller.ts).
+   [`session.ts`](../../apps/web/lib/session.ts) et
+   [`api.ts`](../../apps/web/lib/api.ts), puis `@Get('me')` dans
+   [`auth.controller.ts`](../../apps/api/src/auth/auth.controller.ts).
 
 Si la stack ne tourne pas sur le port 443, utilise l'adresse que `make` affiche
 (`https://localhost:<HTTPS_PORT>`), comme l'explique le README.
 
 ## Les tests qui le prouvent
 
-| Test                                                                                      | Ce qu'il vérifie                                                                                                                                                                                                                                                 |
-| ----------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`e2e/tests/smoke.spec.ts`](../../../e2e/tests/smoke.spec.ts)                             | Sur la stack de production : la page d'accueil s'affiche ; `/healthz` et `/api/health` répondent ; « web reaches api over the internal network » (`/healthz/upstream`) ; « the OpenAPI document is served behind the same origin » ; un chemin inconnu donne 404 |
-| [`apps/api/test/app.e2e-spec.ts`](../../../apps/api/test/app.e2e-spec.ts)                 | Démarre la vraie app NestJS avec `configureApp()` et Supertest : `/api/health` correspond au schema partagé, et `/api/docs-json` est servi                                                                                                                       |
-| [`apps/api/test/error-codes.e2e-spec.ts`](../../../apps/api/test/error-codes.e2e-spec.ts) | Le pipe et le filter : les bodies invalides, les routes inconnues, les plantages et les limites de requêtes répondent tous avec un code d'erreur                                                                                                                 |
-| [`apps/api/src/auth/auth.guard.spec.ts`](../../../apps/api/src/auth/auth.guard.spec.ts)   | Le guard global : une route `@Public` passe, une route sans session est refusée                                                                                                                                                                                  |
-| [`apps/web/lib/api.test.ts`](../../../apps/web/lib/api.test.ts)                           | Le client côté serveur : construction de l'URL, transmission du cookie et de l'adresse, 401 lu comme déconnecté, 429, 500 et les délais dépassés lus comme indisponible                                                                                          |
-| [`apps/web/lib/api-client.test.ts`](../../../apps/web/lib/api-client.test.ts)             | Le client du navigateur : credentials same-origin, bodies JSON et FormData, vérifications par schema, erreurs réseau transformées en codes                                                                                                                       |
-| [`apps/web/lib/session.test.ts`](../../../apps/web/lib/session.test.ts)                   | `currentUser` et `requireUser` : redirection vers `/login` sur un 401, lève une erreur (sans rediriger) quand l'API est en panne                                                                                                                                 |
+| Test                                                                                   | Ce qu'il vérifie                                                                                                                                                                                                                                                 |
+| -------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`e2e/tests/smoke.spec.ts`](../../e2e/tests/smoke.spec.ts)                             | Sur la stack de production : la page d'accueil s'affiche ; `/healthz` et `/api/health` répondent ; « web reaches api over the internal network » (`/healthz/upstream`) ; « the OpenAPI document is served behind the same origin » ; un chemin inconnu donne 404 |
+| [`apps/api/test/app.e2e-spec.ts`](../../apps/api/test/app.e2e-spec.ts)                 | Démarre la vraie app NestJS avec `configureApp()` et Supertest : `/api/health` correspond au schema partagé, et `/api/docs-json` est servi                                                                                                                       |
+| [`apps/api/test/error-codes.e2e-spec.ts`](../../apps/api/test/error-codes.e2e-spec.ts) | Le pipe et le filter : les bodies invalides, les routes inconnues, les plantages et les limites de requêtes répondent tous avec un code d'erreur                                                                                                                 |
+| [`apps/api/src/auth/auth.guard.spec.ts`](../../apps/api/src/auth/auth.guard.spec.ts)   | Le guard global : une route `@Public` passe, une route sans session est refusée                                                                                                                                                                                  |
+| [`apps/web/lib/api.test.ts`](../../apps/web/lib/api.test.ts)                           | Le client côté serveur : construction de l'URL, transmission du cookie et de l'adresse, 401 lu comme déconnecté, 429, 500 et les délais dépassés lus comme indisponible                                                                                          |
+| [`apps/web/lib/api-client.test.ts`](../../apps/web/lib/api-client.test.ts)             | Le client du navigateur : credentials same-origin, bodies JSON et FormData, vérifications par schema, erreurs réseau transformées en codes                                                                                                                       |
+| [`apps/web/lib/session.test.ts`](../../apps/web/lib/session.test.ts)                   | `currentUser` et `requireUser` : redirection vers `/login` sur un 401, lève une erreur (sans rediriger) quand l'API est en panne                                                                                                                                 |
 
 La suite Supertest de NestJS tourne dans la CI dans
-[`.github/workflows/ci.yml`](../../../.github/workflows/ci.yml) (`test:e2e`). La
+[`.github/workflows/ci.yml`](../../.github/workflows/ci.yml) (`test:e2e`). La
 suite Playwright, avec le smoke test, tourne dans
-[`.github/workflows/e2e.yml`](../../../.github/workflows/e2e.yml).
+[`.github/workflows/e2e.yml`](../../.github/workflows/e2e.yml).
 
 ## Limites et choix
 

@@ -5,10 +5,10 @@ Dans ce chapitre :
 - Ce qu'est un « script » ici, et en quoi il diffère du serveur de l'API
 - Le dossier `content/` et la **chaîne d'écriture des leçons** : outlines → briefs → leçons
 - Comment chaque script est lancé (`package.json`, pnpm, les skills de Claude Code)
-- [check-outlines.ts](../../../apps/api/scripts/check-outlines.ts) et
-  [try-generation.ts](../../../apps/api/scripts/try-generation.ts)
-- Le kit d'écriture des leçons dans [scripts/lessons/](../../../apps/api/scripts/lessons), fichier par fichier
-- Les specs qui testent le kit, et [item-files.spec.ts](../../../apps/api/src/items/item-files.spec.ts)
+- [check-outlines.ts](../../apps/api/scripts/check-outlines.ts) et
+  [try-generation.ts](../../apps/api/scripts/try-generation.ts)
+- Le kit d'écriture des leçons dans [scripts/lessons/](../../apps/api/scripts/lessons), fichier par fichier
+- Les specs qui testent le kit, et [item-files.spec.ts](../../apps/api/src/items/item-files.spec.ts)
 
 ---
 
@@ -51,7 +51,7 @@ apps/api/scripts/
 
 Les leçons ne sont **pas** écrites par le serveur pendant qu'il tourne. Ce sont des fichiers JSON,
 écrits une fois, commités dans git, puis chargés dans la base de données par le seed (chapitre 4).
-Ils vivent dans le dossier [content/](../../../content) à la racine :
+Ils vivent dans le dossier [content/](../../content) à la racine :
 
 | Dossier             | Ce qu'il contient                                                                                                                                           | Exemple                      |
 | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
@@ -84,7 +84,7 @@ flowchart TD
 En mots :
 
 1. Les **outlines** (plans de niveau) sont écrits d'abord (avec le skill `/outline-language` dans
-   [.claude/skills/outline-language](../../../.claude/skills/outline-language/SKILL.md)) et vérifiés
+   [.claude/skills/outline-language](../../.claude/skills/outline-language/SKILL.md)) et vérifiés
    avec `outlines:check` jusqu'à ce qu'il affiche `ok`.
 2. Pour chaque entrée, un modèle écrit un **brouillon** : un brief, puis un fichier de contenu.
 3. Le kit **complète** le brouillon (les parties que le code peut calculer), le **valide** avec
@@ -104,7 +104,7 @@ règle arrive au prochain lancement sans rien d'autre à mettre à jour.
 
 ## 2. Comment les scripts sont lancés
 
-Extrait de [apps/api/package.json](../../../apps/api/package.json) :
+Extrait de [apps/api/package.json](../../apps/api/package.json) :
 
 ```json
     "generation:try": "tsx --env-file-if-exists=../../.env scripts/try-generation.ts",
@@ -130,9 +130,9 @@ règles **actuelles**, pas un vieux build.
 Il n'y a **pas de cible Makefile ni de tâche turbo** pour ces scripts ; tu les lances à la main. Les
 deux **skills** de Claude Code les appellent :
 
-- [.claude/skills/author-lessons/SKILL.md](../../../.claude/skills/author-lessons/SKILL.md) :
+- [.claude/skills/author-lessons/SKILL.md](../../.claude/skills/author-lessons/SKILL.md) :
   `lessons:check <id> --rules`, puis `--draft <draft>`, puis `--write`.
-- [.claude/skills/outline-language/SKILL.md](../../../.claude/skills/outline-language/SKILL.md) :
+- [.claude/skills/outline-language/SKILL.md](../../.claude/skills/outline-language/SKILL.md) :
   `outlines:check <lang>`, aussi avec `--dir` sur un dossier de travail.
 
 Les règles pour écrire le contenu sont expliquées pour les humains dans
@@ -140,10 +140,10 @@ Les règles pour écrire le contenu sont expliquées pour les humains dans
 
 ---
 
-## 3. [check-outlines.ts](../../../apps/api/scripts/check-outlines.ts)
+## 3. [check-outlines.ts](../../apps/api/scripts/check-outlines.ts)
 
 **À quoi il sert** : il vérifie les six fichiers d'outline d'une langue pendant qu'on les écrit. Il
-vérifie ce que vérifie [outline-files.spec.ts](../../../apps/api/src/lessons/outline-files.spec.ts),
+vérifie ce que vérifie [outline-files.spec.ts](../../apps/api/src/lessons/outline-files.spec.ts),
 **plus** le style maison que la spec laisse aux relecteurs.
 
 **Exports** : rien. Il lance `main()`.
@@ -192,7 +192,7 @@ Il affiche `ok`, ou la liste et `process.exitCode = 1`.
 
 ---
 
-## 4. [try-generation.ts](../../../apps/api/scripts/try-generation.ts)
+## 4. [try-generation.ts](../../apps/api/scripts/try-generation.ts)
 
 **À quoi il sert** : un vrai test du générateur de questions par IA (chapitre 7), en dehors des
 tests. Son en-tête prévient : « WRITES to DATABASE_URL and, with Gemini, spends tokens » (il écrit
@@ -225,7 +225,7 @@ statut et le temps. `finally` déconnecte Prisma.
 
 ---
 
-## 5. Le kit d'écriture des leçons : [scripts/lessons/](../../../apps/api/scripts/lessons)
+## 5. Le kit d'écriture des leçons : [scripts/lessons/](../../apps/api/scripts/lessons)
 
 Deux points d'entrée partagent la même vérification :
 
@@ -253,7 +253,7 @@ flowchart LR
 
 On suit un lancement de `lessons:author`, dans l'ordre où le code s'exécute.
 
-### 5.1 [author.ts](../../../apps/api/scripts/lessons/author.ts) : l'écrivain sans surveillance
+### 5.1 [author.ts](../../apps/api/scripts/lessons/author.ts) : l'écrivain sans surveillance
 
 **À quoi il sert** : il écrit les leçons d'un niveau avec Claude Code, sur l'abonnement du membre
 (pas de clé d'API), 12 leçons par lancement par défaut. Son en-tête dessine la boucle :
@@ -331,7 +331,7 @@ sequenceDiagram
     A->>F: writeLesson(id, brief, content)
 ```
 
-### 5.2 [files.ts](../../../apps/api/scripts/lessons/files.ts) : où vivent les choses
+### 5.2 [files.ts](../../apps/api/scripts/lessons/files.ts) : où vivent les choses
 
 **Exports** : `BRIEFS_DIR`, `LESSONS_DIR`, `WORK_DIR`, `Located`, `readJson`, `writeWork`,
 `readOutline`, `locate`, `filesOf`, `readUsedTitles`, `writeLesson`.
@@ -350,7 +350,7 @@ sequenceDiagram
 - `writeLesson` formate le JSON avec **prettier**, en utilisant la config prettier du repo, pour que
   les fichiers ressemblent au reste de `content/`.
 
-### 5.3 [prompt.ts](../../../apps/api/scripts/lessons/prompt.ts) : ce que lit le modèle
+### 5.3 [prompt.ts](../../apps/api/scripts/lessons/prompt.ts) : ce que lit le modèle
 
 **Exports** : `PROMPT_VERSION` (`'author-4'`, noté dans la provenance de chaque fichier),
 `systemPrompt(kind)`, `lessonPrompt(request)`, `issuesPrompt(issues, editProblems)`.
@@ -379,7 +379,7 @@ Le **prompt de la leçon** contient ce qui change d'une leçon à l'autre : l'en
 plus tard), et les titres déjà pris. Le **prompt des problèmes** liste ce qui ne va toujours pas et
 demande des `edits` quand seules quelques choses sont fausses.
 
-### 5.4 [providers/chat.ts](../../../apps/api/scripts/lessons/providers/chat.ts) : l'interface
+### 5.4 [providers/chat.ts](../../apps/api/scripts/lessons/providers/chat.ts) : l'interface
 
 **Exports** : les types `Usage`, `Reply`, `Chat`, `Provider` ; les erreurs `QuotaError` et
 `RateLimitError` ; `QUOTA_MESSAGE`, `RATE_LIMIT_MESSAGE`, `refusal`, `RETRY_DELAYS_MS`,
@@ -412,7 +412,7 @@ says 'limit' somewhere (a memory limit, a line limit) fails one lesson, not the 
 exprès : un plantage qui dit seulement « limit » quelque part, comme une limite de mémoire ou de
 lignes, fait échouer une leçon, pas tout le lancement).
 
-### 5.5 [providers/claude.ts](../../../apps/api/scripts/lessons/providers/claude.ts) : Claude Code sans interface
+### 5.5 [providers/claude.ts](../../apps/api/scripts/lessons/providers/claude.ts) : Claude Code sans interface
 
 **Exports** : `ClaudeOptions`, `findClaude`, `claudeProvider`.
 
@@ -441,7 +441,7 @@ reste une seule conversation.
   l'API, « not billed on a subscription: a measure of the quota used » (pas facturé sur un
   abonnement : une mesure du quota utilisé).
 
-### 5.6 [reply.ts](../../../apps/api/scripts/lessons/reply.ts) : lire la réponse
+### 5.6 [reply.ts](../../apps/api/scripts/lessons/reply.ts) : lire la réponse
 
 **Exports** : `parseReply(text)`, `applyReply(draft, text)`.
 
@@ -466,7 +466,7 @@ for (let i = start; i < text.length; i++) {
 (passé à `applyEdits`), ou un brief seul (certains modèles envoient ça pour le vocabulaire). Il
 renvoie les problèmes d'edits, ou un message d'erreur pour une réponse qu'il ne peut pas lire.
 
-### 5.7 [edits.ts](../../../apps/api/scripts/lessons/edits.ts) : de petites corrections
+### 5.7 [edits.ts](../../apps/api/scripts/lessons/edits.ts) : de petites corrections
 
 **Exports** : `Edit`, `applyEdits(draft, edits)`.
 
@@ -485,7 +485,7 @@ Tout ce qui ne peut pas s'appliquer est signalé en retour, jamais deviné (inde
 manquant). `__proto__`, `constructor` et `prototype` sont refusés, parce qu'ils atteindraient le
 prototype de tous les objets.
 
-### 5.8 [check-draft.ts](../../../apps/api/scripts/lessons/check-draft.ts) : la vérification partagée
+### 5.8 [check-draft.ts](../../apps/api/scripts/lessons/check-draft.ts) : la vérification partagée
 
 **Exports** : `Issue`, `DraftCheck`, `checkDraft(draft, ctx, usedTitles)`.
 
@@ -507,7 +507,7 @@ L'id de la leçon elle-même est ignoré, donc vérifier une leçon déjà écri
 titre. `author.ts` et `check.ts` l'appellent tous les deux, donc les deux façons d'écrire une leçon
 sont jugées de la même manière.
 
-### 5.9 [complete.ts](../../../apps/api/scripts/lessons/complete.ts) : ce que le code écrit lui-même
+### 5.9 [complete.ts](../../apps/api/scripts/lessons/complete.ts) : ce que le code écrit lui-même
 
 **Exports** : `Draft`, `CompleteContext`, `GENERATOR` (`'ft lessons:author'`), `complete`.
 
@@ -526,7 +526,7 @@ l'ajoute :
 Une leçon de vocabulaire n'a pas de fichier de contenu, donc un fichier de contenu envoyé par le
 modèle est jeté. Le brouillon reçu n'est pas modifié (`structuredClone`).
 
-### 5.10 [times.ts](../../../apps/api/scripts/lessons/times.ts) : chaque durée
+### 5.10 [times.ts](../../apps/api/scripts/lessons/times.ts) : chaque durée
 
 **Exports** : `pagesOf`, `computeTimes(kind, brief, content, level)`.
 
@@ -544,14 +544,14 @@ Chaque fonction travaille sur du JSON brut qui n'est pas encore passé par un sc
 cassées sont laissées telles que le brouillon les a écrites (`try { … } catch {}`), et
 `validateLesson` les signale.
 
-### 5.11 [json.ts](../../../apps/api/scripts/lessons/json.ts) : fonctions utiles
+### 5.11 [json.ts](../../apps/api/scripts/lessons/json.ts) : fonctions utiles
 
 **Exports** : `Json` (un type `any` pour la sortie non typée du modèle), `isObject`,
 `canonicalJson`, `sha256`. `canonicalJson` trie les clés et retire les espaces, donc la même valeur
 donne toujours le même texte, et donc le même hash : `canonicalJson({ b: 1, a: [2] })` →
 `'{"a":[2],"b":1}'`.
 
-### 5.12 [report.ts](../../../apps/api/scripts/lessons/report.ts) : ce que tu vois
+### 5.12 [report.ts](../../apps/api/scripts/lessons/report.ts) : ce que tu vois
 
 **Exports** : `Outcome`, `LessonRun`, `newRun`, `addUsage`, `clock`, `printProgress`,
 `failedDraftPath`, `Summary`, `printSummary`, `saveReport`.
@@ -562,7 +562,7 @@ résumé : écrites / ratées / pas faites, temps réel par leçon, moyennes **p
 chiffres dans `WORK_DIR/report-<date>.json`. Ce sont les chiffres cités dans le tableau des temps de
 [docs/content/lessons.md](../content/lessons.md).
 
-### 5.13 [check.ts](../../../apps/api/scripts/lessons/check.ts) : vérifier une leçon
+### 5.13 [check.ts](../../apps/api/scripts/lessons/check.ts) : vérifier une leçon
 
 **À quoi il sert** : la boucle du skill `/author-lessons`, et l'outil pour quiconque écrit une leçon
 à la main avec un autre modèle.
@@ -598,14 +598,14 @@ recalcule chaque durée, donc un fichier avec de mauvaises durées passerait ici
 Le dossier scripts n'a pas de tests à lui ; les specs vivent dans `src/` pour que `pnpm test` les
 lance.
 
-| Spec                                                                             | Ce qu'elle vérifie                                                                                                                                                                                                                                                                                                                             |
-| -------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [lesson-complete.spec.ts](../../../apps/api/src/lessons/lesson-complete.spec.ts) | Prend des leçons prototypes de chaque kind (de `packages/shared/test/fixtures`), retire ce qu'on dit au modèle de laisser de côté, lance `complete`, et vérifie que le résultat passe `validateLesson` et retrouve **les mêmes durées à la seconde près**. Aussi les hashes de provenance, le contenu de vocabulaire jeté, et `canonicalJson`. |
-| [lesson-edits.spec.ts](../../../apps/api/src/lessons/lesson-edits.spec.ts)       | `applyEdits` (chemins avec points, ordre des suppressions, mauvais index, ajout en fin, `__proto__` refusé), `parseReply`, `applyReply`, `refusal`, `retryRateLimits`.                                                                                                                                                                         |
-| [outline-files.spec.ts](../../../apps/api/src/lessons/outline-files.spec.ts)     | Chaque outline commité (ce que `outlines:check` vérifie aussi, sans le style maison).                                                                                                                                                                                                                                                          |
-| [lesson-files.spec.ts](../../../apps/api/src/lessons/lesson-files.spec.ts)       | Chaque brief et fichier de contenu commité, **tel qu'il est écrit** (sans `complete`).                                                                                                                                                                                                                                                         |
+| Spec                                                                          | Ce qu'elle vérifie                                                                                                                                                                                                                                                                                                                             |
+| ----------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [lesson-complete.spec.ts](../../apps/api/src/lessons/lesson-complete.spec.ts) | Prend des leçons prototypes de chaque kind (de `packages/shared/test/fixtures`), retire ce qu'on dit au modèle de laisser de côté, lance `complete`, et vérifie que le résultat passe `validateLesson` et retrouve **les mêmes durées à la seconde près**. Aussi les hashes de provenance, le contenu de vocabulaire jeté, et `canonicalJson`. |
+| [lesson-edits.spec.ts](../../apps/api/src/lessons/lesson-edits.spec.ts)       | `applyEdits` (chemins avec points, ordre des suppressions, mauvais index, ajout en fin, `__proto__` refusé), `parseReply`, `applyReply`, `refusal`, `retryRateLimits`.                                                                                                                                                                         |
+| [outline-files.spec.ts](../../apps/api/src/lessons/outline-files.spec.ts)     | Chaque outline commité (ce que `outlines:check` vérifie aussi, sans le style maison).                                                                                                                                                                                                                                                          |
+| [lesson-files.spec.ts](../../apps/api/src/lessons/lesson-files.spec.ts)       | Chaque brief et fichier de contenu commité, **tel qu'il est écrit** (sans `complete`).                                                                                                                                                                                                                                                         |
 
-### [item-files.spec.ts](../../../apps/api/src/items/item-files.spec.ts)
+### [item-files.spec.ts](../../apps/api/src/items/item-files.spec.ts)
 
 Cette spec vérifie les **questions de placement** écrites à la main dans `content/items` (un fichier
 par langue et par catégorie, comme `fr-grammar.json`). Elle est dans ce chapitre parce qu'elle joue

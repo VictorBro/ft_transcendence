@@ -54,7 +54,7 @@ Chaque URL visible par l'utilisateur dans cette app commence par une langue : `/
 
 ## 2. `proxy.ts` : le portier
 
-Fichier : [proxy.ts](../../../apps/web/proxy.ts)
+Fichier : [proxy.ts](../../apps/web/proxy.ts)
 
 ```ts
 import createMiddleware from "next-intl/middleware";
@@ -88,7 +88,7 @@ Ligne par ligne :
 | ------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `createMiddleware(routing)`                | Construit le middleware de langue de `next-intl` à partir de nos réglages de routing (voir section 7). C'est fait une seule fois, quand le fichier se charge.                                                                                                                                                                                      |
 | `const response = intl(request)`           | Lance le middleware `next-intl`. Si l'URL n'a pas de locale (`/login`), il en choisit une et **redirige** vers `/en/login` (ou `/fr/login`...). Si l'URL en a déjà une, il laisse la requête continuer. Il ajoute aussi des headers `Link: <...>; hreflang="fr"`, pour que les moteurs de recherche trouvent les versions dans les autres langues. |
-| `courseHomeLang(pathname)`                 | Vient de [lib/course-path.ts](../../../apps/web/lib/course-path.ts). Renvoie `"de"` pour `/en/learn/de` (une page d'accueil de cours) et `null` pour tout le reste, y compris pour les pages plus profondes comme `/en/learn/de/lessons`.                                                                                                          |
+| `courseHomeLang(pathname)`                 | Vient de [lib/course-path.ts](../../apps/web/lib/course-path.ts). Renvoie `"de"` pour `/en/learn/de` (une page d'accueil de cours) et `null` pour tout le reste, y compris pour les pages plus profondes comme `/en/learn/de/lessons`.                                                                                                             |
 | `response.cookies.set(COURSE_COOKIE, ...)` | Enregistre le cookie `ft.lang` = le cours que l'apprenant vient d'ouvrir. Il dure un an (`maxAge` en secondes). `httpOnly` veut dire que le JavaScript du navigateur ne peut pas le lire.                                                                                                                                                          |
 | `return response`                          | Transmet la réponse (peut-être modifiée).                                                                                                                                                                                                                                                                                                          |
 
@@ -174,39 +174,39 @@ flowchart TD
 
 `/{locale}` veut dire `/en`, `/fr` ou `/de`. Les chemins sont sous `apps/web/app/[locale]/`.
 
-| URL                                           | Fichier                                                                                                                      | Groupe      | Note                                                     |
-| --------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ----------- | -------------------------------------------------------- |
-| `/{locale}`                                   | [(main)/page.tsx](<../../../apps/web/app/[locale]/(main)/page.tsx>)                                                          | (main)      | Accueil (page d'arrivée)                                 |
-| `/{locale}/login`                             | [(main)/login/page.tsx](<../../../apps/web/app/[locale]/(main)/login/page.tsx>)                                              | (main)      | Connexion                                                |
-| `/{locale}/signup`                            | [(main)/signup/page.tsx](<../../../apps/web/app/[locale]/(main)/signup/page.tsx>)                                            | (main)      | Créer un compte                                          |
-| `/{locale}/onboarding`                        | [(main)/onboarding/page.tsx](<../../../apps/web/app/[locale]/(main)/onboarding/page.tsx>)                                    | (main)      | Choisir un cours et un niveau                            |
-| `/{locale}/profile`                           | [(main)/profile/page.tsx](<../../../apps/web/app/[locale]/(main)/profile/page.tsx>)                                          | (main)      | Mon profil (connecté)                                    |
-| `/{locale}/profile/edit`                      | [(main)/profile/edit/page.tsx](<../../../apps/web/app/[locale]/(main)/profile/edit/page.tsx>)                                | (main)      | Modifier le nom et l'avatar                              |
-| `/{locale}/settings/2fa`                      | [(main)/settings/2fa/page.tsx](<../../../apps/web/app/[locale]/(main)/settings/2fa/page.tsx>)                                | (main)      | Réglages de la connexion à deux facteurs                 |
-| `/{locale}/friends`                           | [(main)/friends/page.tsx](<../../../apps/web/app/[locale]/(main)/friends/page.tsx>)                                          | (main)      | Amis et demandes                                         |
-| `/{locale}/users/{id}`                        | [(main)/users/[id]/page.tsx](<../../../apps/web/app/[locale]/(main)/users/[id]/page.tsx>)                                    | (main)      | Le profil d'un autre utilisateur                         |
-| `/{locale}/privacy`                           | [(main)/privacy/page.tsx](<../../../apps/web/app/[locale]/(main)/privacy/page.tsx>)                                          | (main)      | Politique de confidentialité                             |
-| `/{locale}/terms`                             | [(main)/terms/page.tsx](<../../../apps/web/app/[locale]/(main)/terms/page.tsx>)                                              | (main)      | Conditions d'utilisation                                 |
-| `/{locale}/dashboard`                         | [(dashboard)/dashboard/page.tsx](<../../../apps/web/app/[locale]/(dashboard)/dashboard/page.tsx>)                            | (dashboard) | Redirige seulement vers `/learn`                         |
-| `/{locale}/learn`                             | [(dashboard)/learn/page.tsx](<../../../apps/web/app/[locale]/(dashboard)/learn/page.tsx>)                                    | (dashboard) | Redirige vers le dernier cours (lit le cookie `ft.lang`) |
-| `/{locale}/learn/{lang}`                      | [(dashboard)/learn/[lang]/page.tsx](<../../../apps/web/app/[locale]/(dashboard)/learn/[lang]/page.tsx>)                      | (dashboard) | Accueil du cours                                         |
-| `/{locale}/learn/{lang}/achievements`         | [.../achievements/page.tsx](<../../../apps/web/app/[locale]/(dashboard)/learn/[lang]/achievements/page.tsx>)                 | (dashboard) | Succès (achievements)                                    |
-| `/{locale}/learn/{lang}/placement`            | [.../placement/page.tsx](<../../../apps/web/app/[locale]/(dashboard)/learn/[lang]/placement/page.tsx>)                       | (dashboard) | Examen de placement                                      |
-| `/{locale}/learn/{lang}/lessons`              | [.../lessons/page.tsx](<../../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/page.tsx>)                           | (dashboard) | Liste des leçons et recherche                            |
-| `/{locale}/learn/{lang}/lessons/{id}`         | [.../lessons/[id]/page.tsx](<../../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/page.tsx>)                 | (dashboard) | Page de départ d'une leçon                               |
-| `/{locale}/learn/{lang}/lessons/{id}/play`    | [.../lessons/[id]/play/page.tsx](<../../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/play/page.tsx>)       | (dashboard) | Lecteur de leçon                                         |
-| `/{locale}/learn/{lang}/lessons/{id}/results` | [.../lessons/[id]/results/page.tsx](<../../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/results/page.tsx>) | (dashboard) | Résultats de la leçon                                    |
-| `/{locale}/chat`                              | [(messages)/chat/page.tsx](<../../../apps/web/app/[locale]/(messages)/chat/page.tsx>)                                        | (messages)  | Messages                                                 |
-| `/{locale}/anything-else`                     | [[...rest]/page.tsx](../../../apps/web/app/[locale]/[...rest]/page.tsx)                                                      | aucun       | Affiche la page 404                                      |
+| URL                                           | Fichier                                                                                                                   | Groupe      | Note                                                     |
+| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ----------- | -------------------------------------------------------- |
+| `/{locale}`                                   | [(main)/page.tsx](<../../apps/web/app/[locale]/(main)/page.tsx>)                                                          | (main)      | Accueil (page d'arrivée)                                 |
+| `/{locale}/login`                             | [(main)/login/page.tsx](<../../apps/web/app/[locale]/(main)/login/page.tsx>)                                              | (main)      | Connexion                                                |
+| `/{locale}/signup`                            | [(main)/signup/page.tsx](<../../apps/web/app/[locale]/(main)/signup/page.tsx>)                                            | (main)      | Créer un compte                                          |
+| `/{locale}/onboarding`                        | [(main)/onboarding/page.tsx](<../../apps/web/app/[locale]/(main)/onboarding/page.tsx>)                                    | (main)      | Choisir un cours et un niveau                            |
+| `/{locale}/profile`                           | [(main)/profile/page.tsx](<../../apps/web/app/[locale]/(main)/profile/page.tsx>)                                          | (main)      | Mon profil (connecté)                                    |
+| `/{locale}/profile/edit`                      | [(main)/profile/edit/page.tsx](<../../apps/web/app/[locale]/(main)/profile/edit/page.tsx>)                                | (main)      | Modifier le nom et l'avatar                              |
+| `/{locale}/settings/2fa`                      | [(main)/settings/2fa/page.tsx](<../../apps/web/app/[locale]/(main)/settings/2fa/page.tsx>)                                | (main)      | Réglages de la connexion à deux facteurs                 |
+| `/{locale}/friends`                           | [(main)/friends/page.tsx](<../../apps/web/app/[locale]/(main)/friends/page.tsx>)                                          | (main)      | Amis et demandes                                         |
+| `/{locale}/users/{id}`                        | [(main)/users/[id]/page.tsx](<../../apps/web/app/[locale]/(main)/users/[id]/page.tsx>)                                    | (main)      | Le profil d'un autre utilisateur                         |
+| `/{locale}/privacy`                           | [(main)/privacy/page.tsx](<../../apps/web/app/[locale]/(main)/privacy/page.tsx>)                                          | (main)      | Politique de confidentialité                             |
+| `/{locale}/terms`                             | [(main)/terms/page.tsx](<../../apps/web/app/[locale]/(main)/terms/page.tsx>)                                              | (main)      | Conditions d'utilisation                                 |
+| `/{locale}/dashboard`                         | [(dashboard)/dashboard/page.tsx](<../../apps/web/app/[locale]/(dashboard)/dashboard/page.tsx>)                            | (dashboard) | Redirige seulement vers `/learn`                         |
+| `/{locale}/learn`                             | [(dashboard)/learn/page.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/page.tsx>)                                    | (dashboard) | Redirige vers le dernier cours (lit le cookie `ft.lang`) |
+| `/{locale}/learn/{lang}`                      | [(dashboard)/learn/[lang]/page.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/page.tsx>)                      | (dashboard) | Accueil du cours                                         |
+| `/{locale}/learn/{lang}/achievements`         | [.../achievements/page.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/achievements/page.tsx>)                 | (dashboard) | Succès (achievements)                                    |
+| `/{locale}/learn/{lang}/placement`            | [.../placement/page.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/placement/page.tsx>)                       | (dashboard) | Examen de placement                                      |
+| `/{locale}/learn/{lang}/lessons`              | [.../lessons/page.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/page.tsx>)                           | (dashboard) | Liste des leçons et recherche                            |
+| `/{locale}/learn/{lang}/lessons/{id}`         | [.../lessons/[id]/page.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/page.tsx>)                 | (dashboard) | Page de départ d'une leçon                               |
+| `/{locale}/learn/{lang}/lessons/{id}/play`    | [.../lessons/[id]/play/page.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/play/page.tsx>)       | (dashboard) | Lecteur de leçon                                         |
+| `/{locale}/learn/{lang}/lessons/{id}/results` | [.../lessons/[id]/results/page.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/results/page.tsx>) | (dashboard) | Résultats de la leçon                                    |
+| `/{locale}/chat`                              | [(messages)/chat/page.tsx](<../../apps/web/app/[locale]/(messages)/chat/page.tsx>)                                        | (messages)  | Messages                                                 |
+| `/{locale}/anything-else`                     | [[...rest]/page.tsx](../../apps/web/app/[locale]/[...rest]/page.tsx)                                                      | aucun       | Affiche la page 404                                      |
 
 Les routes qui ne sont pas des pages (pas de langue, pas de layout) :
 
-| URL                 | Fichier                                                                      | Réponse                                          |
-| ------------------- | ---------------------------------------------------------------------------- | ------------------------------------------------ |
-| `/healthz`          | [healthz/route.ts](../../../apps/web/app/healthz/route.ts)                   | `{"status":"ok","service":"web"}`                |
-| `/healthz/api`      | [healthz/api/route.ts](../../../apps/web/app/healthz/api/route.ts)           | `{"api":"up"}` ou `{"api":"down"}`, toujours 200 |
-| `/healthz/upstream` | [healthz/upstream/route.ts](../../../apps/web/app/healthz/upstream/route.ts) | 200, ou 503 quand l'API est injoignable          |
-| `/icon.svg`         | [icon.svg](../../../apps/web/app/icon.svg)                                   | L'icône de l'onglet                              |
+| URL                 | Fichier                                                                   | Réponse                                          |
+| ------------------- | ------------------------------------------------------------------------- | ------------------------------------------------ |
+| `/healthz`          | [healthz/route.ts](../../apps/web/app/healthz/route.ts)                   | `{"status":"ok","service":"web"}`                |
+| `/healthz/api`      | [healthz/api/route.ts](../../apps/web/app/healthz/api/route.ts)           | `{"api":"up"}` ou `{"api":"down"}`, toujours 200 |
+| `/healthz/upstream` | [healthz/upstream/route.ts](../../apps/web/app/healthz/upstream/route.ts) | 200, ou 503 quand l'API est injoignable          |
+| `/icon.svg`         | [icon.svg](../../apps/web/app/icon.svg)                                   | L'icône de l'onglet                              |
 
 Les autres fichiers `.tsx` dans ces dossiers (comme `login-form.tsx`) ne sont pas des routes. Seuls
 `page.tsx`, `layout.tsx`, `route.ts` et quelques autres noms spéciaux ont un sens pour Next.js.
@@ -219,7 +219,7 @@ expliquent.
 
 ### 4.1 `app/[locale]/layout.tsx` : le layout racine
 
-Fichier : [app/[locale]/layout.tsx](../../../apps/web/app/[locale]/layout.tsx)
+Fichier : [app/[locale]/layout.tsx](../../apps/web/app/[locale]/layout.tsx)
 
 C'est le **layout racine** (root layout) : le plus extérieur, celui qui dessine `<html>` et `<body>`. D'habitude, une
 app Next.js l'a dans `app/layout.tsx`. Ici, il est _dans_ `[locale]`, exprès. Le commentaire
@@ -325,7 +325,7 @@ flowchart LR
 
 Les trois utilisent le même component `Shell` et le même `LegalFooter`. Le chapitre 3 les explique.
 
-**[(main)/layout.tsx](<../../../apps/web/app/[locale]/(main)/layout.tsx>)** — le cadre de la vitrine et
+**[(main)/layout.tsx](<../../apps/web/app/[locale]/(main)/layout.tsx>)** — le cadre de la vitrine et
 du compte :
 
 ```tsx
@@ -338,12 +338,12 @@ export default function MainLayout({ children }: { children: ReactNode }) {
 }
 ```
 
-**[(messages)/layout.tsx](<../../../apps/web/app/[locale]/(messages)/layout.tsx>)** — le même, mais
+**[(messages)/layout.tsx](<../../apps/web/app/[locale]/(messages)/layout.tsx>)** — le même, mais
 avec `fill` et le logo qui mène à `/learn`. Le commentaire explique pourquoi il n'a pas de sélecteur de cours :
 aucun cours n'est ouvert ici, et le sélecteur coûte un appel à l'API à chaque rendu. La page de chat
 refait souvent son rendu (à chaque événement d'ami), donc ce coût s'accumulerait.
 
-**[(dashboard)/layout.tsx](<../../../apps/web/app/[locale]/(dashboard)/layout.tsx>)** — le cadre
+**[(dashboard)/layout.tsx](<../../apps/web/app/[locale]/(dashboard)/layout.tsx>)** — le cadre
 des cours :
 
 ```tsx
@@ -408,7 +408,7 @@ flowchart TD
 
 ### `[locale]/error.tsx`
 
-Fichier : [error.tsx](../../../apps/web/app/[locale]/error.tsx)
+Fichier : [error.tsx](../../apps/web/app/[locale]/error.tsx)
 
 Un fichier d'erreur doit être un **client component** (`'use client'`), parce qu'il reçoit une fonction `reset`
 qui réessaie le rendu dans le navigateur.
@@ -439,8 +439,8 @@ passé), parce que c'est justement la lecture de la session qui a échoué.
 
 ### `[locale]/not-found.tsx` et `[...rest]/page.tsx`
 
-Fichiers : [not-found.tsx](../../../apps/web/app/[locale]/not-found.tsx),
-[[...rest]/page.tsx](../../../apps/web/app/[locale]/[...rest]/page.tsx)
+Fichiers : [not-found.tsx](../../apps/web/app/[locale]/not-found.tsx),
+[[...rest]/page.tsx](../../apps/web/app/[locale]/[...rest]/page.tsx)
 
 `not-found.tsx` dessine la 404 traduite, avec un lien "Go home" (« Retour à l'accueil ») et le footer juridique. Il n'a pas de
 nav de compte : lire les cookies ferait de chaque 404 un rendu dynamique (non mis en cache).
@@ -461,7 +461,7 @@ traduite.
 
 ### `global-error.tsx`
 
-Fichier : [global-error.tsx](../../../apps/web/app/global-error.tsx)
+Fichier : [global-error.tsx](../../apps/web/app/global-error.tsx)
 
 C'est la seule page d'erreur au-dessus de `[locale]`. Elle attrape les erreurs du layout racine — le layout
 qui charge les traductions. Donc elle ne peut pas utiliser les traductions (ça échouerait une deuxième fois), et
@@ -487,11 +487,11 @@ export function GET() {
 `dynamic = 'force-dynamic'` veut dire « lance ça à chaque requête », ne réponds jamais avec une copie faite au
 moment du build. Un health check doit dire la vérité _maintenant_.
 
-| Route                                                                | Qui l'appelle                                                 | Pourquoi                                                                                                                                                               |
-| -------------------------------------------------------------------- | ------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [/healthz](../../../apps/web/app/healthz/route.ts)                   | Le `HEALTHCHECK` de Docker                                    | « Le serveur web est-il vivant ? » Pas sous `/api`, parce que Caddy envoie `/api` à NestJS.                                                                            |
-| [/healthz/api](../../../apps/web/app/healthz/api/route.ts)           | Le socket de l'onglet, avant chaque nouvel essai (chapitre 3) | Interroge l'API avec `pingApi`. Toujours 200 avec `{api:'up'}` ou `{api:'down'}`, parce que le navigateur affiche chaque réponse 5xx comme une erreur dans la console. |
-| [/healthz/upstream](../../../apps/web/app/healthz/upstream/route.ts) | Prometheus et l'alerte blackbox                               | Même ping, mais répond **503** quand l'API est injoignable, pour que le monitoring le voie.                                                                            |
+| Route                                                             | Qui l'appelle                                                 | Pourquoi                                                                                                                                                               |
+| ----------------------------------------------------------------- | ------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [/healthz](../../apps/web/app/healthz/route.ts)                   | Le `HEALTHCHECK` de Docker                                    | « Le serveur web est-il vivant ? » Pas sous `/api`, parce que Caddy envoie `/api` à NestJS.                                                                            |
+| [/healthz/api](../../apps/web/app/healthz/api/route.ts)           | Le socket de l'onglet, avant chaque nouvel essai (chapitre 3) | Interroge l'API avec `pingApi`. Toujours 200 avec `{api:'up'}` ou `{api:'down'}`, parce que le navigateur affiche chaque réponse 5xx comme une erreur dans la console. |
+| [/healthz/upstream](../../apps/web/app/healthz/upstream/route.ts) | Prometheus et l'alerte blackbox                               | Même ping, mais répond **503** quand l'API est injoignable, pour que le monitoring le voie.                                                                            |
 
 Le commentaire de `upstream` explique pourquoi elle existe : les pages normales affichent une vue déconnectée quand l'API
 est en panne, exprès. Donc un `API_INTERNAL_URL` faux afficherait quand même des pages valides et rien
@@ -504,7 +504,7 @@ qui aurait atteint sa propre limite de requêtes (rate limit) verrait alors une 
 
 ### `globals.css`
 
-Fichier : [globals.css](../../../apps/web/app/globals.css)
+Fichier : [globals.css](../../apps/web/app/globals.css)
 
 Importé une fois par le layout racine (et par `global-error.tsx`). Il utilise **Tailwind CSS 4** : tu
 écris de petits noms de classes comme `px-4 text-slate-100` dans le JSX, et Tailwind construit le CSS pour
@@ -538,7 +538,7 @@ les classes qu'il trouve.
 
 ### `lesson.css`
 
-Fichier : [lesson.css](../../../apps/web/app/lesson.css)
+Fichier : [lesson.css](../../apps/web/app/lesson.css)
 
 Environ 1 200 lignes de CSS simple pour les pages de leçon, importées par `globals.css`. La première ligne
 dit qu'il suit les maquettes de design. Il utilise des noms de classes normaux (`.lesson-view`, `.lesson-layout`,
@@ -557,7 +557,7 @@ explique le lecteur de leçon.
 
 ### `icon.svg`
 
-Fichier : [icon.svg](../../../apps/web/app/icon.svg)
+Fichier : [icon.svg](../../apps/web/app/icon.svg)
 
 Un fichier nommé `icon.svg` dans `app/` est pris par Next.js comme icône d'onglet (favicon) de chaque
 page ; Next ajoute lui-même la balise `<link rel="icon">`. C'est un carré bleu arrondi avec trois lignes
@@ -592,7 +592,7 @@ flowchart TD
 
 ### `i18n/routing.ts`
 
-Fichier : [routing.ts](../../../apps/web/i18n/routing.ts)
+Fichier : [routing.ts](../../apps/web/i18n/routing.ts)
 
 ```ts
 export const routing = defineRouting({
@@ -605,7 +605,7 @@ export const routing = defineRouting({
 ```
 
 La liste des langues vient du package partagé
-([packages/shared/src/schemas/locale.ts](../../../packages/shared/src/schemas/locale.ts)) :
+([packages/shared/src/schemas/locale.ts](../../packages/shared/src/schemas/locale.ts)) :
 `['en', 'fr', 'de']`, par défaut `'en'`. C'est le seul endroit où cette liste existe : le modèle utilisateur de l'API
 l'utilise aussi.
 
@@ -614,7 +614,7 @@ sa langue.
 
 ### `i18n/request.ts`
 
-Fichier : [request.ts](../../../apps/web/i18n/request.ts)
+Fichier : [request.ts](../../apps/web/i18n/request.ts)
 
 ```ts
 export default getRequestConfig(async ({ requestLocale }) => {
@@ -635,7 +635,7 @@ arriverait jusqu'à l'`import` et ferait planter ("file not found", fichier intr
 
 ### `i18n/navigation.ts`
 
-Fichier : [navigation.ts](../../../apps/web/i18n/navigation.ts)
+Fichier : [navigation.ts](../../apps/web/i18n/navigation.ts)
 
 ```ts
 export const { Link, redirect, usePathname, useRouter, getPathname } = createNavigation(routing);
@@ -649,8 +649,8 @@ depuis `next/link`.
 
 ### `messages/en.json`, `fr.json`, `de.json`
 
-Fichiers : [en.json](../../../apps/web/messages/en.json), [fr.json](../../../apps/web/messages/fr.json),
-[de.json](../../../apps/web/messages/de.json)
+Fichiers : [en.json](../../apps/web/messages/en.json), [fr.json](../../apps/web/messages/fr.json),
+[de.json](../../apps/web/messages/de.json)
 
 Chaque fichier est un seul objet JSON. Les clés du premier niveau sont des **namespaces** (espaces de noms) : en général un par component ou
 par page. À l'intérieur, il y a les clés. Les trois fichiers ont les mêmes 37 namespaces et les mêmes clés.
@@ -708,7 +708,7 @@ choisie selon le nombre. Ils peuvent aussi avoir des **balises** pour du texte e
 `"... <privacy>Privacy Policy</privacy> and <terms>Terms of Service</terms>."` (le chapitre 3 montre
 comment elles deviennent des liens).
 
-Le test [lib/messages.test.ts](../../../apps/web/lib/messages.test.ts) vérifie que `fr.json` et
+Le test [lib/messages.test.ts](../../apps/web/lib/messages.test.ts) vérifie que `fr.json` et
 `de.json` ont exactement les mêmes clés que `en.json`, qu'aucun texte n'est vide, et que chaque code d'erreur de l'API
 et chaque succès a une traduction.
 

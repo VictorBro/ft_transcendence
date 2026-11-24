@@ -15,7 +15,7 @@ CI veut dire « continuous integration » (intégration continue) : vérifier ch
 ## Ce que demande le sujet
 
 Tiré de « Modules of choice » dans [../subject/summary.md](../subject/summary.md) (le texte complet
-est au chapitre IV de [../../subject/ft_transcendence.pdf](../../subject/ft_transcendence.pdf)) :
+est au chapitre IV de [../../subject/ft_transcendence.pdf](../../docs/subject/ft_transcendence.pdf)) :
 
 > Major | Custom module, substantial and technically complex, justified in the README (why
 > chosen, what challenges, what value, why 2 points). Trivial features = rejection
@@ -32,20 +32,20 @@ ne teste ni ne livre le code.
 Un module custom n'a pas de liste d'exigences fixe, donc ce tableau liste ce qu'on annonce et
 où se trouve la preuve.
 
-| Ce qu'on annonce                                                | Ce qu'on a construit                                                                                                                                                                                                                                                                                                                                                                                 | Où                                                                                                                                                                                                                  |
-| --------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Chaque changement est vérifié avant de pouvoir être mergé       | Trois workflows tournent à chaque pull request et encore sur `main` après le merge : `ci`, `e2e`, `hygiene`. Un quatrième, `images`, tourne à chaque push sur n'importe quelle branche, donc ses jobs apparaissent aussi sur la pull request. Un cinquième, `devcontainer`, tourne quand les fichiers du container de développement changent. Sur la pull request #212, ça faisait 41 vérifications. | [`.github/workflows/`](../../../.github/workflows)                                                                                                                                                                  |
-| Personne ne peut sauter les vérifications                       | Un ruleset GitHub sur `main` : pas de push direct, pas de force push, pas de suppression, merge en squash seulement, 1 review qui approuve, les approbations annulées à chaque nouveau push, chaque fil de review résolu, 19 vérifications nommées obligatoires et la branche à jour avec `main`. L'API indique `current_user_can_bypass: never`.                                                    | Ruleset `ci` (id 20536130), lu avec `gh api repos/VictorBro/ft_transcendence/rulesets/20536130`                                                                                                                     |
-| Les tests tournent dans le même environnement que la production | Les tests unitaires et la suite Supertest de NestJS tournent dans le stage `ci` du Dockerfile de chaque app, contre de vrais containers PostgreSQL et Redis                                                                                                                                                                                                                                          | Le job `unit-tests` dans [`ci.yml`](../../../.github/workflows/ci.yml), le stage `ci` dans [`apps/api/Dockerfile`](../../../apps/api/Dockerfile) et [`apps/web/Dockerfile`](../../../apps/web/Dockerfile)           |
-| Des tests navigateur sur le build de production                 | La stack compose de production démarre dans la CI, puis Playwright lance chaque spec sur Chromium, Firefox et WebKit, en 6 jobs en parallèle                                                                                                                                                                                                                                                         | [`e2e.yml`](../../../.github/workflows/e2e.yml)                                                                                                                                                                     |
-| Les règles de rejet du sujet sont vérifiées par une machine     | Zéro erreur et zéro avertissement dans la console, de vraies pages légales, pas de `.env` commité                                                                                                                                                                                                                                                                                                    | [`e2e/tests/console.spec.ts`](../../../e2e/tests/console.spec.ts), [`e2e/tests/legal.spec.ts`](../../../e2e/tests/legal.spec.ts), le job `env-example` dans [`hygiene.yml`](../../../.github/workflows/hygiene.yml) |
-| Un historique propre et pas de secrets qui fuient               | gitleaks sur tout l'historique, commitlint sur chaque commit, une vérification du titre de pull request qui renomme les mauvais titres, une vérification de dérive des migrations Prisma                                                                                                                                                                                                             | [`hygiene.yml`](../../../.github/workflows/hygiene.yml), [`scripts/pr-title.sh`](../../../scripts/pr-title.sh), [`.github/commitlint.config.mjs`](../../../.github/commitlint.config.mjs)                           |
-| Des images pour deux types de processeur                        | 6 images (`api`, `web`, `tooling`, `prometheus`, `alertmanager`, `grafana`), chacune construite en natif sur `amd64` et sur `arm64`, puis réunies en une seule image multi-arch                                                                                                                                                                                                                      | [`images.yml`](../../../.github/workflows/images.yml)                                                                                                                                                               |
-| Les failles de sécurité connues sont signalées                  | Trivy scanne chaque image de production avant qu'elle soit poussée. Les résultats vont dans le log du job et dans l'onglet Security du dépôt                                                                                                                                                                                                                                                         | Les étapes Trivy dans [`images.yml`](../../../.github/workflows/images.yml)                                                                                                                                         |
-| Chaque build peut être retrouvé                                 | Tags : `<branch>-<shortsha>` sur une branche secondaire, `main-<shortsha>` et `latest` sur `main`, `X.Y.Z`, `X.Y`, `X` sur un tag `vX.Y.Z`                                                                                                                                                                                                                                                           | Le job `merge` dans [`images.yml`](../../../.github/workflows/images.yml), [`../architecture/technical-plan.md`](../architecture/technical-plan.md) section 5                                                       |
-| Deploy automatique                                              | Un timer systemd sur le serveur lance `deploy.sh` toutes les cinq minutes. Il fait le pull, les migrations et le redémarrage seulement quand une image a changé                                                                                                                                                                                                                                      | [`infra/deploy/`](../../../infra/deploy)                                                                                                                                                                            |
-| Retour en arrière                                               | Fixer `IMAGE_TAG` sur un ancien `main-<shortsha>` dans le `.env` du serveur                                                                                                                                                                                                                                                                                                                          | [`../operations/deployment.md`](../operations/deployment.md) « Redeploying »                                                                                                                                        |
-| Les mêmes vérifications avant le push                           | Les hooks git et `make ci` / `make all` lancent les mêmes scripts sur la machine du développeur                                                                                                                                                                                                                                                                                                      | [`.husky/`](../../../.husky), [`Makefile`](../../../Makefile)                                                                                                                                                       |
+| Ce qu'on annonce                                                | Ce qu'on a construit                                                                                                                                                                                                                                                                                                                                                                                 | Où                                                                                                                                                                                                         |
+| --------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Chaque changement est vérifié avant de pouvoir être mergé       | Trois workflows tournent à chaque pull request et encore sur `main` après le merge : `ci`, `e2e`, `hygiene`. Un quatrième, `images`, tourne à chaque push sur n'importe quelle branche, donc ses jobs apparaissent aussi sur la pull request. Un cinquième, `devcontainer`, tourne quand les fichiers du container de développement changent. Sur la pull request #212, ça faisait 41 vérifications. | [`.github/workflows/`](../../.github/workflows)                                                                                                                                                            |
+| Personne ne peut sauter les vérifications                       | Un ruleset GitHub sur `main` : pas de push direct, pas de force push, pas de suppression, merge en squash seulement, 1 review qui approuve, les approbations annulées à chaque nouveau push, chaque fil de review résolu, 19 vérifications nommées obligatoires et la branche à jour avec `main`. L'API indique `current_user_can_bypass: never`.                                                    | Ruleset `ci` (id 20536130), lu avec `gh api repos/VictorBro/ft_transcendence/rulesets/20536130`                                                                                                            |
+| Les tests tournent dans le même environnement que la production | Les tests unitaires et la suite Supertest de NestJS tournent dans le stage `ci` du Dockerfile de chaque app, contre de vrais containers PostgreSQL et Redis                                                                                                                                                                                                                                          | Le job `unit-tests` dans [`ci.yml`](../../.github/workflows/ci.yml), le stage `ci` dans [`apps/api/Dockerfile`](../../apps/api/Dockerfile) et [`apps/web/Dockerfile`](../../apps/web/Dockerfile)           |
+| Des tests navigateur sur le build de production                 | La stack compose de production démarre dans la CI, puis Playwright lance chaque spec sur Chromium, Firefox et WebKit, en 6 jobs en parallèle                                                                                                                                                                                                                                                         | [`e2e.yml`](../../.github/workflows/e2e.yml)                                                                                                                                                               |
+| Les règles de rejet du sujet sont vérifiées par une machine     | Zéro erreur et zéro avertissement dans la console, de vraies pages légales, pas de `.env` commité                                                                                                                                                                                                                                                                                                    | [`e2e/tests/console.spec.ts`](../../e2e/tests/console.spec.ts), [`e2e/tests/legal.spec.ts`](../../e2e/tests/legal.spec.ts), le job `env-example` dans [`hygiene.yml`](../../.github/workflows/hygiene.yml) |
+| Un historique propre et pas de secrets qui fuient               | gitleaks sur tout l'historique, commitlint sur chaque commit, une vérification du titre de pull request qui renomme les mauvais titres, une vérification de dérive des migrations Prisma                                                                                                                                                                                                             | [`hygiene.yml`](../../.github/workflows/hygiene.yml), [`scripts/pr-title.sh`](../../scripts/pr-title.sh), [`.github/commitlint.config.mjs`](../../.github/commitlint.config.mjs)                           |
+| Des images pour deux types de processeur                        | 6 images (`api`, `web`, `tooling`, `prometheus`, `alertmanager`, `grafana`), chacune construite en natif sur `amd64` et sur `arm64`, puis réunies en une seule image multi-arch                                                                                                                                                                                                                      | [`images.yml`](../../.github/workflows/images.yml)                                                                                                                                                         |
+| Les failles de sécurité connues sont signalées                  | Trivy scanne chaque image de production avant qu'elle soit poussée. Les résultats vont dans le log du job et dans l'onglet Security du dépôt                                                                                                                                                                                                                                                         | Les étapes Trivy dans [`images.yml`](../../.github/workflows/images.yml)                                                                                                                                   |
+| Chaque build peut être retrouvé                                 | Tags : `<branch>-<shortsha>` sur une branche secondaire, `main-<shortsha>` et `latest` sur `main`, `X.Y.Z`, `X.Y`, `X` sur un tag `vX.Y.Z`                                                                                                                                                                                                                                                           | Le job `merge` dans [`images.yml`](../../.github/workflows/images.yml), [`../architecture/technical-plan.md`](../architecture/technical-plan.md) section 5                                                 |
+| Deploy automatique                                              | Un timer systemd sur le serveur lance `deploy.sh` toutes les cinq minutes. Il fait le pull, les migrations et le redémarrage seulement quand une image a changé                                                                                                                                                                                                                                      | [`infra/deploy/`](../../infra/deploy)                                                                                                                                                                      |
+| Retour en arrière                                               | Fixer `IMAGE_TAG` sur un ancien `main-<shortsha>` dans le `.env` du serveur                                                                                                                                                                                                                                                                                                                          | [`../operations/deployment.md`](../operations/deployment.md) « Redeploying »                                                                                                                               |
+| Les mêmes vérifications avant le push                           | Les hooks git et `make ci` / `make all` lancent les mêmes scripts sur la machine du développeur                                                                                                                                                                                                                                                                                                      | [`.husky/`](../../.husky), [`Makefile`](../../Makefile)                                                                                                                                                    |
 
 ## Comment ça marche
 
@@ -63,7 +63,7 @@ flowchart TD
 
 ### 1. Sur la machine du développeur
 
-Trois hooks git dans [`.husky/`](../../../.husky) tournent avant que quoi que ce soit arrive sur GitHub.
+Trois hooks git dans [`.husky/`](../../.husky) tournent avant que quoi que ce soit arrive sur GitHub.
 `commit-msg` lance commitlint avec la même config que la CI. `pre-commit` refuse un commit
 sur `main` et formate les fichiers ajoutés. `pre-push` lance une partie rapide de `make ci`
 (la version fixée de TypeScript, `.env.example`, les frontières entre apps, lint et typecheck). On peut
@@ -72,7 +72,7 @@ sauter un hook avec `--no-verify`, donc chacune de ces vérifications tourne aus
 `make ci` lance tout ce que le workflow `ci` lance, en natif. `make all` lance `make ci`,
 puis démarre la stack de production et lance Playwright sur Chromium. Le modèle de pull request
 demande que `make all` soit vert
-([`.github/pull_request_template.md`](../../../.github/pull_request_template.md)).
+([`.github/pull_request_template.md`](../../.github/pull_request_template.md)).
 
 ### 2. À chaque pull request
 
@@ -80,43 +80,43 @@ Chaque workflow a un groupe `concurrency` par branche, donc un nouveau push annu
 de la même pull request. Les événements push sont filtrés sur `main`, donc un commit de pull request
 ne lance pas les mêmes vérifications deux fois.
 
-- **[`ci.yml`](../../../.github/workflows/ci.yml).** Le plan l'appelle « hybride »
+- **[`ci.yml`](../../.github/workflows/ci.yml).** Le plan l'appelle « hybride »
   ([`technical-plan.md`](../architecture/technical-plan.md) section 5). Les vérifications qui ne font que
   lire des fichiers tournent directement sur le runner, parce qu'elles sont rapides : `format:check`, `lint`,
   `typecheck`, la version fixée TypeScript 6.0.3
-  ([`scripts/assert-ts-version.sh`](../../../scripts/assert-ts-version.sh)), la vérification que
+  ([`scripts/assert-ts-version.sh`](../../scripts/assert-ts-version.sh)), la vérification que
   `apps/web` et `apps/api` compilent séparément
-  ([`scripts/check-app-boundaries.sh`](../../../scripts/check-app-boundaries.sh)), et la
+  ([`scripts/check-app-boundaries.sh`](../../scripts/check-app-boundaries.sh)), et la
   vérification de la config de monitoring
-  ([`scripts/check-monitoring-config.sh`](../../../scripts/check-monitoring-config.sh)).
+  ([`scripts/check-monitoring-config.sh`](../../scripts/check-monitoring-config.sh)).
   Tout ce qui lance du code du projet tourne dans le stage Docker `ci` : les tests unitaires avec
   couverture pour `api` et `web`, et la suite Supertest contre des service containers PostgreSQL (pgvector) et
   Redis. Une couverture sous 60 % des lignes ou des fonctions fait échouer la commande de test
   (les `thresholds` dans chaque `vitest.config.mts`). Ensuite `build` fait le build de tout le
   workspace.
-- **[`e2e.yml`](../../../.github/workflows/e2e.yml).** Une matrice de 3 navigateurs fois 2
+- **[`e2e.yml`](../../.github/workflows/e2e.yml).** Une matrice de 3 navigateurs fois 2
   parties. Chaque job démarre la stack de production avec
   `docker compose -f compose.yml -f compose.prod.yml up -d --build --wait`, attend que
   Caddy réponde sur `/healthz`, applique les migrations avec `make db-ready`, et lance
   Playwright dans l'image de Playwright elle-même
-  ([`scripts/playwright-in-image.sh`](../../../scripts/playwright-in-image.sh)). Un job
+  ([`scripts/playwright-in-image.sh`](../../scripts/playwright-in-image.sh)). Un job
   (Chromium, `rest`) vérifie aussi que Prometheus collecte chaque cible
-  ([`scripts/check-monitoring.sh`](../../../scripts/check-monitoring.sh)) et redémarre
-  l'API sous une page ouverte ([`e2e/tests/restart.spec.ts`](../../../e2e/tests/restart.spec.ts)).
+  ([`scripts/check-monitoring.sh`](../../scripts/check-monitoring.sh)) et redémarre
+  l'API sous une page ouverte ([`e2e/tests/restart.spec.ts`](../../e2e/tests/restart.spec.ts)).
   En cas d'échec, le job envoie le rapport Playwright et affiche les logs des containers. Un dernier
   job, `playwright (production stack)`, est celui que le ruleset exige : il échoue sauf si
   chaque job de la matrice a réussi.
-- **[`hygiene.yml`](../../../.github/workflows/hygiene.yml).** `gitleaks` scanne tout
+- **[`hygiene.yml`](../../.github/workflows/hygiene.yml).** `gitleaks` scanne tout
   l'historique. `commitlint` vérifie chaque commit de la pull request. `pr title` vérifie le
   titre, parce que GitHub l'utilise comme sujet du commit de squash.
-  [`scripts/pr-title.sh`](../../../scripts/pr-title.sh) renomme un mauvais titre à partir du sujet du
+  [`scripts/pr-title.sh`](../../scripts/pr-title.sh) renomme un mauvais titre à partir du sujet du
   seul commit, ou à partir d'un nom de branche comme `ci/lint-pr-title`. `.env hygiene`
   échoue si un fichier `.env` est suivi par git, et
-  [`scripts/check-env-example.sh`](../../../scripts/check-env-example.sh) vérifie que
+  [`scripts/check-env-example.sh`](../../scripts/check-env-example.sh) vérifie que
   `.env.example`, les fichiers compose et le code citent les mêmes variables.
   `prisma migration drift` rejoue les migrations dans une base de données jetable et échoue si
   elles ne correspondent pas à `schema.prisma`.
-- **[`devcontainer.yml`](../../../.github/workflows/devcontainer.yml).** Seulement quand
+- **[`devcontainer.yml`](../../.github/workflows/devcontainer.yml).** Seulement quand
   `.devcontainer/`, `.nvmrc`, `package.json`, `compose.yml`, `compose.override.yml`,
   `.env.example` ou le workflow lui-même change.
   Il construit l'image de développement, vérifie Node et pnpm par rapport aux versions fixées du dépôt, la démarre
@@ -124,13 +124,13 @@ ne lance pas les mêmes vérifications deux fois.
   rootless.
 
 Tous les jobs qui ont besoin de Node partagent une étape de setup,
-[`.github/actions/setup/action.yml`](../../../.github/actions/setup/action.yml) : pnpm à partir de
+[`.github/actions/setup/action.yml`](../../.github/actions/setup/action.yml) : pnpm à partir de
 `packageManager`, Node à partir de `.nvmrc`, un cache du store pnpm, et
 `pnpm install --frozen-lockfile`.
 
 ### 3. Construire et publier les images
 
-[`images.yml`](../../../.github/workflows/images.yml) tourne à chaque push sur n'importe quelle branche, donc un
+[`images.yml`](../../.github/workflows/images.yml) tourne à chaque push sur n'importe quelle branche, donc un
 Dockerfile cassé se voit sur la pull request, pas après le merge.
 
 1. **Build, 12 jobs.** Chacune des 6 images est construite sur un runner natif `ubuntu-24.04`
@@ -151,13 +151,13 @@ construite. Le deploy l'utilise.
 
 ### 4. Le deploy
 
-Le serveur lance [`compose.deploy.yml`](../../../compose.deploy.yml). Nos images y utilisent
+Le serveur lance [`compose.deploy.yml`](../../compose.deploy.yml). Nos images y utilisent
 le tag `${IMAGE_TAG:-latest}`, donc par défaut le serveur suit `main`.
 
-[`infra/deploy/ft-deploy.timer`](../../../infra/deploy/ft-deploy.timer) démarre
-[`ft-deploy.service`](../../../infra/deploy/ft-deploy.service) 3 minutes après le démarrage puis
+[`infra/deploy/ft-deploy.timer`](../../infra/deploy/ft-deploy.timer) démarre
+[`ft-deploy.service`](../../infra/deploy/ft-deploy.service) 3 minutes après le démarrage puis
 toutes les 5 minutes, avec jusqu'à 60 secondes de retard aléatoire. Le service lance
-[`deploy.sh`](../../../infra/deploy/deploy.sh) :
+[`deploy.sh`](../../infra/deploy/deploy.sh) :
 
 1. `docker compose pull` de chaque image.
 2. Lire le label `revision` de chacune de nos images. Si elles ne citent pas toutes le même
@@ -176,25 +176,25 @@ de deploy stocké dans GitHub.
 
 ## Où est le code
 
-| Chemin                                                                                                                                  | Ce qu'il fait                                                                                                                                                         |
-| --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`.github/workflows/ci.yml`](../../../.github/workflows/ci.yml)                                                                         | Format, lint, typecheck, version fixée de TypeScript, frontières entre apps, config de monitoring, tests unitaires et Supertest dans Docker, tests des paquets, build |
-| [`.github/workflows/e2e.yml`](../../../.github/workflows/e2e.yml)                                                                       | La stack de production plus Playwright sur 3 navigateurs, vérification du monitoring, test de redémarrage de l'API, le job de contrôle obligatoire                    |
-| [`.github/workflows/hygiene.yml`](../../../.github/workflows/hygiene.yml)                                                               | gitleaks, commitlint, titre de pull request, hygiène du `.env`, dérive Prisma                                                                                         |
-| [`.github/workflows/images.yml`](../../../.github/workflows/images.yml)                                                                 | Build multi-arch, Trivy, push par digest, manifest lists et tags                                                                                                      |
-| [`.github/workflows/devcontainer.yml`](../../../.github/workflows/devcontainer.yml)                                                     | Construit et démarre le container de développement                                                                                                                    |
-| [`.github/actions/setup/action.yml`](../../../.github/actions/setup/action.yml)                                                         | L'étape partagée Node, pnpm et installation                                                                                                                           |
-| [`.github/commitlint.config.mjs`](../../../.github/commitlint.config.mjs)                                                               | Les règles des messages de commit utilisées par la CI et le hook `commit-msg`                                                                                         |
-| [`.github/pull_request_template.md`](../../../.github/pull_request_template.md)                                                         | Ce que chaque pull request doit dire et vérifier                                                                                                                      |
-| [`.github/CODEOWNERS`](../../../.github/CODEOWNERS)                                                                                     | Demande une review à toute l'équipe sur chaque chemin                                                                                                                 |
-| [`.husky/`](../../../.husky)                                                                                                            | Les hooks `commit-msg`, `pre-commit` et `pre-push`                                                                                                                    |
-| [`scripts/`](../../../scripts)                                                                                                          | Les scripts de vérification que la CI, les hooks et `make` partagent                                                                                                  |
-| [`Makefile`](../../../Makefile)                                                                                                         | `make ci` et `make all` : le pipeline sur un ordinateur portable                                                                                                      |
-| [`apps/api/Dockerfile`](../../../apps/api/Dockerfile), [`apps/web/Dockerfile`](../../../apps/web/Dockerfile)                            | Le stage `ci` pour les tests, le stage `prod` qui est livré, le stage `build` de l'api qui devient `tooling`                                                          |
-| [`infra/monitoring/*/Dockerfile`](../../../infra/monitoring)                                                                            | Prometheus, Alertmanager et Grafana avec notre config dedans, donc une règle mergée sur `main` est déployée comme du code                                             |
-| [`infra/deploy/deploy.sh`](../../../infra/deploy/deploy.sh)                                                                             | Pull, vérification de la release, migration, redémarrage                                                                                                              |
-| [`infra/deploy/ft-deploy.service`](../../../infra/deploy/ft-deploy.service), [`ft-deploy.timer`](../../../infra/deploy/ft-deploy.timer) | Lancent `deploy.sh` toutes les cinq minutes                                                                                                                           |
-| [`compose.deploy.yml`](../../../compose.deploy.yml)                                                                                     | Ce que le serveur fait tourner, avec `IMAGE_TAG`                                                                                                                      |
+| Chemin                                                                                                                            | Ce qu'il fait                                                                                                                                                         |
+| --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`.github/workflows/ci.yml`](../../.github/workflows/ci.yml)                                                                      | Format, lint, typecheck, version fixée de TypeScript, frontières entre apps, config de monitoring, tests unitaires et Supertest dans Docker, tests des paquets, build |
+| [`.github/workflows/e2e.yml`](../../.github/workflows/e2e.yml)                                                                    | La stack de production plus Playwright sur 3 navigateurs, vérification du monitoring, test de redémarrage de l'API, le job de contrôle obligatoire                    |
+| [`.github/workflows/hygiene.yml`](../../.github/workflows/hygiene.yml)                                                            | gitleaks, commitlint, titre de pull request, hygiène du `.env`, dérive Prisma                                                                                         |
+| [`.github/workflows/images.yml`](../../.github/workflows/images.yml)                                                              | Build multi-arch, Trivy, push par digest, manifest lists et tags                                                                                                      |
+| [`.github/workflows/devcontainer.yml`](../../.github/workflows/devcontainer.yml)                                                  | Construit et démarre le container de développement                                                                                                                    |
+| [`.github/actions/setup/action.yml`](../../.github/actions/setup/action.yml)                                                      | L'étape partagée Node, pnpm et installation                                                                                                                           |
+| [`.github/commitlint.config.mjs`](../../.github/commitlint.config.mjs)                                                            | Les règles des messages de commit utilisées par la CI et le hook `commit-msg`                                                                                         |
+| [`.github/pull_request_template.md`](../../.github/pull_request_template.md)                                                      | Ce que chaque pull request doit dire et vérifier                                                                                                                      |
+| [`.github/CODEOWNERS`](../../.github/CODEOWNERS)                                                                                  | Demande une review à toute l'équipe sur chaque chemin                                                                                                                 |
+| [`.husky/`](../../.husky)                                                                                                         | Les hooks `commit-msg`, `pre-commit` et `pre-push`                                                                                                                    |
+| [`scripts/`](../../scripts)                                                                                                       | Les scripts de vérification que la CI, les hooks et `make` partagent                                                                                                  |
+| [`Makefile`](../../Makefile)                                                                                                      | `make ci` et `make all` : le pipeline sur un ordinateur portable                                                                                                      |
+| [`apps/api/Dockerfile`](../../apps/api/Dockerfile), [`apps/web/Dockerfile`](../../apps/web/Dockerfile)                            | Le stage `ci` pour les tests, le stage `prod` qui est livré, le stage `build` de l'api qui devient `tooling`                                                          |
+| [`infra/monitoring/*/Dockerfile`](../../infra/monitoring)                                                                         | Prometheus, Alertmanager et Grafana avec notre config dedans, donc une règle mergée sur `main` est déployée comme du code                                             |
+| [`infra/deploy/deploy.sh`](../../infra/deploy/deploy.sh)                                                                          | Pull, vérification de la release, migration, redémarrage                                                                                                              |
+| [`infra/deploy/ft-deploy.service`](../../infra/deploy/ft-deploy.service), [`ft-deploy.timer`](../../infra/deploy/ft-deploy.timer) | Lancent `deploy.sh` toutes les cinq minutes                                                                                                                           |
+| [`compose.deploy.yml`](../../compose.deploy.yml)                                                                                  | Ce que le serveur fait tourner, avec `IMAGE_TAG`                                                                                                                      |
 
 ## Comment le montrer à la soutenance
 
@@ -258,16 +258,16 @@ dans l'onglet **Actions**.
 Le pipeline est testé en le faisant tourner : chaque pull request est un test du pipeline. Voici les
 vérifications qui prouvent que le pipeline lui-même fait son travail.
 
-| Test                                                                                          | Ce qu'il vérifie                                                                                                                                    |
-| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`e2e/tests/console.spec.ts`](../../../e2e/tests/console.spec.ts)                             | Sur le build de production : zéro erreur, zéro avertissement, zéro exception non attrapée et zéro requête échouée dans la console, sur chaque route |
-| [`e2e/tests/legal.spec.ts`](../../../e2e/tests/legal.spec.ts)                                 | `/privacy` et `/terms` répondent 200 avec un vrai contenu                                                                                           |
-| [`e2e/tests/smoke.spec.ts`](../../../e2e/tests/smoke.spec.ts)                                 | La stack de production démarrée par le pipeline sert l'app, l'API et les routes de santé                                                            |
-| [`e2e/tests/restart.spec.ts`](../../../e2e/tests/restart.spec.ts)                             | Un vrai redémarrage de l'API sous une page ouverte, lancé une fois après la suite                                                                   |
-| [`scripts/check-monitoring.sh`](../../../scripts/check-monitoring.sh)                         | Après la suite : Prometheus collecte chaque cible, chaque règle est en bonne santé, Alertmanager est trouvé                                         |
-| `playwright (production stack)` dans [`e2e.yml`](../../../.github/workflows/e2e.yml)          | Échoue sauf si chacun des 6 jobs navigateur a réussi                                                                                                |
-| « Inspect the published manifest » dans [`images.yml`](../../../.github/workflows/images.yml) | L'image multi-arch existe sous son nouveau tag après le job de merge                                                                                |
-| [`devcontainer.yml`](../../../.github/workflows/devcontainer.yml)                             | L'image de développement se construit, a les versions fixées de Node et pnpm, et démarre en root et en `node`                                       |
+| Test                                                                                       | Ce qu'il vérifie                                                                                                                                    |
+| ------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`e2e/tests/console.spec.ts`](../../e2e/tests/console.spec.ts)                             | Sur le build de production : zéro erreur, zéro avertissement, zéro exception non attrapée et zéro requête échouée dans la console, sur chaque route |
+| [`e2e/tests/legal.spec.ts`](../../e2e/tests/legal.spec.ts)                                 | `/privacy` et `/terms` répondent 200 avec un vrai contenu                                                                                           |
+| [`e2e/tests/smoke.spec.ts`](../../e2e/tests/smoke.spec.ts)                                 | La stack de production démarrée par le pipeline sert l'app, l'API et les routes de santé                                                            |
+| [`e2e/tests/restart.spec.ts`](../../e2e/tests/restart.spec.ts)                             | Un vrai redémarrage de l'API sous une page ouverte, lancé une fois après la suite                                                                   |
+| [`scripts/check-monitoring.sh`](../../scripts/check-monitoring.sh)                         | Après la suite : Prometheus collecte chaque cible, chaque règle est en bonne santé, Alertmanager est trouvé                                         |
+| `playwright (production stack)` dans [`e2e.yml`](../../.github/workflows/e2e.yml)          | Échoue sauf si chacun des 6 jobs navigateur a réussi                                                                                                |
+| « Inspect the published manifest » dans [`images.yml`](../../.github/workflows/images.yml) | L'image multi-arch existe sous son nouveau tag après le job de merge                                                                                |
+| [`devcontainer.yml`](../../.github/workflows/devcontainer.yml)                             | L'image de développement se construit, a les versions fixées de Node et pnpm, et démarre en root et en `node`                                       |
 
 L'historique des runs, tiré de `gh run list` le 2026-11-22, en comptant depuis le premier run le
 2026-08-07 :
@@ -328,11 +328,11 @@ l'explique.
 5. **Une suite navigateur qui tient dans le temps.** Trois navigateurs, chacun contre sa propre
    stack de production. Le `--shard` de Playwright coupe selon le nombre de tests, ce qui mettait presque
    tous les tests lents dans une moitié. On coupe plutôt par fichier (`E2E_PART` : `lesson.spec.ts`
-   seul, puis le reste ; voir [`e2e/playwright.config.ts`](../../../e2e/playwright.config.ts)).
+   seul, puis le reste ; voir [`e2e/playwright.config.ts`](../../e2e/playwright.config.ts)).
    `POST /auth/signup` et `POST /auth/login` ont une limite de requêtes par adresse, et chaque
    worker d'un job arrive sur Caddy depuis la même adresse, donc les workers partagent un seul budget
    et réservent chaque requête dans un log partagé au lieu de se battre jusqu'à un `429`
-   ([`e2e/support/signup-budget.ts`](../../../e2e/support/signup-budget.ts)). Playwright tourne dans sa propre image, parce que
+   ([`e2e/support/signup-budget.ts`](../../e2e/support/signup-budget.ts)). Playwright tourne dans sa propre image, parce que
    installer les paquets système de WebKit depuis le miroir du runner prenait parfois assez de temps
    pour que le job dépasse son délai.
 6. **Une vérification obligatoire qui ne peut pas mentir.** Dans GitHub, un job sauté compte comme réussi. Avec
@@ -379,7 +379,7 @@ l'explique.
 Une CI triviale, c'est un workflow qui lance `npm test`. Ce module est un pipeline qui va de la
 machine du développeur jusqu'au serveur en ligne :
 
-- **5 workflows et 1 action partagée**, plus **10 scripts** dans [`scripts/`](../../../scripts)
+- **5 workflows et 1 action partagée**, plus **10 scripts** dans [`scripts/`](../../scripts)
   partagés par la CI, `make` et **3 hooks git**.
 - **41 vérifications** sur une pull request typique (#212), dont le ruleset en **exige 19**.
 - **Une stack de production complète démarrée 6 fois par run**, pour **3 moteurs de navigateur**.

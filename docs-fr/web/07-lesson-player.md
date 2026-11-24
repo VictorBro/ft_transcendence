@@ -19,17 +19,17 @@ Dans ce chapitre :
 
 Un apprenant joue une leçon en trois étapes, et chaque étape a sa propre URL :
 
-| URL                                  | Fichier                                                                                                                                                                                                           | Rendu sur                | Ce qu'elle montre                            |
-| ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ | -------------------------------------------- |
-| `/learn/fr/lessons/fr-a1-01`         | [page.tsx](<../../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/page.tsx>)                                                                                                                       | serveur                  | titre, objectif, plan, le bouton principal   |
-| `/learn/fr/lessons/fr-a1-01/play`    | [play/page.tsx](<../../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/play/page.tsx>) + [play/player.tsx](<../../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/play/player.tsx>) | serveur, puis navigateur | une page de la leçon à la fois               |
-| `/learn/fr/lessons/fr-a1-01/results` | [results/page.tsx](<../../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/results/page.tsx>)                                                                                                       | serveur                  | score, XP, chaque réponse avec sa correction |
+| URL                                  | Fichier                                                                                                                                                                                                     | Rendu sur                | Ce qu'elle montre                            |
+| ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ | -------------------------------------------- |
+| `/learn/fr/lessons/fr-a1-01`         | [page.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/page.tsx>)                                                                                                                    | serveur                  | titre, objectif, plan, le bouton principal   |
+| `/learn/fr/lessons/fr-a1-01/play`    | [play/page.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/play/page.tsx>) + [play/player.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/play/player.tsx>) | serveur, puis navigateur | une page de la leçon à la fois               |
+| `/learn/fr/lessons/fr-a1-01/results` | [results/page.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/results/page.tsx>)                                                                                                    | serveur                  | score, XP, chaque réponse avec sa correction |
 
 Le mot important est **attempt** (tentative). Une attempt, c'est une partie d'une leçon, enregistrée sur le serveur. Elle a un id (`attemptId`) et un **cursor** : l'index de la page où se trouve l'apprenant. Le cursor avance seulement, il ne recule jamais. Quand la dernière page est envoyée, l'attempt est finie et a des résultats.
 
 > Analogie : l'attempt, c'est comme une **partie de jeu de société gardée à la poste**. Tu ne gardes jamais le plateau chez toi. À chaque coup, tu envoies une lettre (« je joue cette page avec ces réponses »), et la poste te renvoie le nouveau plateau. Si tu perds ta copie, tu redemandes à la poste.
 
-C'est exactement la règle du player, écrite en haut de [player.tsx](<../../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/play/player.tsx>) :
+C'est exactement la règle du player, écrite en haut de [player.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/play/player.tsx>) :
 
 ```tsx
 /**
@@ -54,7 +54,7 @@ flowchart LR
 
 ### Les trois routes de l'API
 
-Tous les appels d'attempt de leçon vont vers un seul chemin, `/api/courses/:lang/lessons/:id/attempt` (voir le [chapitre 8 de la doc de l'API](../api/08-lessons.md)). Le commentaire en haut de [view.ts](../../../packages/shared/src/lessons/player/view.ts) les liste :
+Tous les appels d'attempt de leçon vont vers un seul chemin, `/api/courses/:lang/lessons/:id/attempt` (voir le [chapitre 8 de la doc de l'API](../api/08-lessons.md)). Le commentaire en haut de [view.ts](../../packages/shared/src/lessons/player/view.ts) les liste :
 
 ```ts
  *   GET  attempt              → AttemptRead
@@ -68,7 +68,7 @@ Plus une autre pour le tuteur : `POST /api/courses/:lang/lessons/:id/discussion`
 
 ## La forme des données de leçon (`lessons.player` dans packages/shared)
 
-L'app web et l'API partagent les mêmes types. Ils sont dans [packages/shared/src/lessons/player/view.ts](../../../packages/shared/src/lessons/player/view.ts) et sont exportés comme `lessons.player` depuis `@ft/shared`. Ce sont des schemas **zod** : zod est une librairie qui décrit la forme des données et peut la vérifier pendant l'exécution (`Schema.parse(data)` lance une erreur si les données ne collent pas).
+L'app web et l'API partagent les mêmes types. Ils sont dans [packages/shared/src/lessons/player/view.ts](../../packages/shared/src/lessons/player/view.ts) et sont exportés comme `lessons.player` depuis `@ft/shared`. Ce sont des schemas **zod** : zod est une librairie qui décrit la forme des données et peut la vérifier pendant l'exécution (`Schema.parse(data)` lance une erreur si les données ne collent pas).
 
 Chaque schema est un `z.strictObject`. « Strict » veut dire qu'une clé inconnue fait échouer la vérification. Le commentaire explique pourquoi :
 
@@ -114,7 +114,7 @@ AttemptRead                 GET attempt
 
 Les quatre résultats possibles viennent du code de notation partagé : `fully_correct`, `orthography_only` (juste mais avec une faute d'orthographe ou d'accent : un demi-point), `incorrect`, `unanswered`.
 
-### Le contrat côté web : [components/lesson/types.ts](../../../apps/web/components/lesson/types.ts)
+### Le contrat côté web : [components/lesson/types.ts](../../apps/web/components/lesson/types.ts)
 
 Ce fichier ré-exporte d'abord les types partagés avec des noms courts (`ItemView`, `UnitView`, `Answer`, `Ref`, `LessonOutline`, `Localized`…). Ensuite il définit ce que le player donne à **chaque** composant d'item :
 
@@ -165,11 +165,11 @@ export interface KindParts {
 }
 ```
 
-Un **kind** (grammaire, vocabulaire, fonctions, lecture) apporte une table « type d'item → composant React », plus quelques blocs pour la page de départ de la leçon. Le player cherche dans cette table et ne demande jamais « de quel kind est cette leçon ? ». On verra le registre dans [kinds/index.ts](../../../apps/web/components/lesson/kinds/index.ts) plus bas.
+Un **kind** (grammaire, vocabulaire, fonctions, lecture) apporte une table « type d'item → composant React », plus quelques blocs pour la page de départ de la leçon. Le player cherche dans cette table et ne demande jamais « de quel kind est cette leçon ? ». On verra le registre dans [kinds/index.ts](../../apps/web/components/lesson/kinds/index.ts) plus bas.
 
 ---
 
-## Les helpers côté serveur : [lib/lesson.ts](../../../apps/web/lib/lesson.ts)
+## Les helpers côté serveur : [lib/lesson.ts](../../apps/web/lib/lesson.ts)
 
 Les trois pages commencent de la même façon, donc elles partagent `loadLesson`. C'est le **guard** (garde) des pages de leçon :
 
@@ -227,7 +227,7 @@ export function lessonStage(attempt: AttemptRead["attempt"]): LessonStage {
 
 Testé dans `lib/lesson.test.ts` (l'ordre du guard, le titre, l'étape).
 
-### [lib/lesson-cursor.ts](../../../apps/web/lib/lesson-cursor.ts)
+### [lib/lesson-cursor.ts](../../apps/web/lib/lesson-cursor.ts)
 
 Un tout petit fichier partagé par les pages serveur et le code du navigateur (donc il n'importe ni l'un ni l'autre) :
 
@@ -245,7 +245,7 @@ Un cursor, c'est « quelle attempt, quelle page » (page `null` = finie). Il ser
 
 ---
 
-## La page de leçon : [page.tsx](<../../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/page.tsx>)
+## La page de leçon : [page.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/page.tsx>)
 
 Un **server component** (il est `async` et n'a pas de `'use client'`). `export const dynamic = 'force-dynamic'` dit à Next.js de ne jamais le mettre en cache : il lit la session et l'attempt à chaque requête.
 
@@ -276,7 +276,7 @@ Il rend aussi `<FreshOnReturn>` en haut (expliqué juste après).
 
 ---
 
-## [lesson-actions.tsx](<../../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/lesson-actions.tsx>) — le bouton principal
+## [lesson-actions.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/lesson-actions.tsx>) — le bouton principal
 
 Un fichier client (`'use client'`) avec trois exports utilisés par la page de leçon et la page des résultats.
 
@@ -342,7 +342,7 @@ Il ne rend rien (`return null`). C'est un petit composant de « comportement ».
 
 ---
 
-## Les helpers navigateur pour l'attempt : [lib/lesson-client.ts](../../../apps/web/lib/lesson-client.ts) (en bref)
+## Les helpers navigateur pour l'attempt : [lib/lesson-client.ts](../../apps/web/lib/lesson-client.ts) (en bref)
 
 Le chapitre [04-talking-to-the-api.md](04-talking-to-the-api.md) explique `clientGet` / `clientPost` et `ApiResult`. Ce fichier a trois parties.
 
@@ -381,7 +381,7 @@ Chaque accès au stockage est dans un `try/catch` : le stockage peut être désa
 
 Testé dans `lib/lesson-client.test.ts` (« the attempt routes », « the tab memory », « the drafts »).
 
-### [lib/lesson-history.ts](../../../apps/web/lib/lesson-history.ts)
+### [lib/lesson-history.ts](../../apps/web/lib/lesson-history.ts)
 
 Le bouton ✕ du player doit se comporter comme Retour **si** le player a été ouvert depuis la page de leçon, et sinon aller sur la page de leçon. Ce fichier s'en souvient, dans l'entrée de l'historique du navigateur elle-même :
 
@@ -407,7 +407,7 @@ Testé dans `lib/lesson-history.test.ts`.
 
 ---
 
-## La route play : [play/page.tsx](<../../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/play/page.tsx>)
+## La route play : [play/page.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/play/page.tsx>)
 
 Un server component court. Il charge la leçon, puis renvoie l'apprenant sur la page de leçon quand il n'y a rien à jouer :
 
@@ -439,7 +439,7 @@ Donc le player commence toujours avec une vraie attempt en cours (`initial`). Le
 
 ---
 
-## Le player : [play/player.tsx](<../../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/play/player.tsx>)
+## Le player : [play/player.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/play/player.tsx>)
 
 C'est le plus gros fichier du chapitre. Regardons-le d'abord de l'extérieur.
 
@@ -761,7 +761,7 @@ possible: 100,
 
 ---
 
-## Le timer de l'examen : [play/exam-timer.tsx](<../../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/play/exam-timer.tsx>)
+## Le timer de l'examen : [play/exam-timer.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/play/exam-timer.tsx>)
 
 Le serveur stocke quand chaque page d'examen a commencé, et donne `remainingMs` avec la vue. Le player calcule une **date limite** selon l'horloge de cet onglet : `receivedAt + view.remainingMs`, et la donne à `ExamTimer` :
 
@@ -797,13 +797,13 @@ Pourquoi une date limite et pas « enlever 1 chaque seconde » ? Le commentaire 
 
 Le player donne au timer `key={`${view.attemptId}:${page.index}`}`, donc chaque page d'examen a un timer neuf.
 
-### [components/lesson/countdown.tsx](../../../apps/web/components/lesson/countdown.tsx)
+### [components/lesson/countdown.tsx](../../apps/web/components/lesson/countdown.tsx)
 
 La boîte dessinée par le timer de l'examen et par la page de survol de la lecture. Elle affiche le libellé, le temps en `m:ss` (`clock()` de `lib/clock`) et une barre. Les 10 dernières secondes sont en rouge. Pour l'accessibilité, le temps a `role="timer"` et un `aria-label` comme « Time left: 0:45 » ; le libellé visible est `aria-hidden` pour ne pas être lu deux fois. Un timer n'est pas une région live : rien n'est annoncé chaque seconde.
 
 ---
 
-## La navigation : [components/lesson/navigation.tsx](../../../apps/web/components/lesson/navigation.tsx) et [lib/lesson-navigation.ts](../../../apps/web/lib/lesson-navigation.ts)
+## La navigation : [components/lesson/navigation.tsx](../../apps/web/components/lesson/navigation.tsx) et [lib/lesson-navigation.ts](../../apps/web/lib/lesson-navigation.ts)
 
 La barre latérale liste les **points** de la leçon (les points d'enseignement numérotés) et l'examen final. La version téléphone est une bande de marqueurs ronds avec une infobulle.
 
@@ -835,13 +835,13 @@ Un nouveau point commence avec chaque page de présentation, ou avec une page d'
 
 ## Les briques de components/lesson/
 
-### [units.tsx](../../../apps/web/components/lesson/units.tsx)
+### [units.tsx](../../apps/web/components/lesson/units.tsx)
 
 - `Units` : les unités d'un item, l'une sous l'autre. Pour chaque unité il dessine un `UnitControl`, puis, une fois vérifiée, sa correction : rien de plus pour une unité texte (le contrôle l'affiche), un statut réservé aux lecteurs d'écran pour un choix (les couleurs montrent déjà la bonne option), et un `FeedbackNote` pour les unités order et spot. Chaque unité est dans `<div data-unit={unit.ref}>` : la ref ne dit rien sur la réponse, donc elle est sans danger dans le HTML (les tests l'utilisent).
 - `Hint` : l'indice d'un item dans la langue de l'interface.
 - `ItemCard` : l'enveloppe `<section className="lesson-item">`.
 
-### [controls.tsx](../../../apps/web/components/lesson/controls.tsx) — un contrôle par sorte d'unité (« B1 »)
+### [controls.tsx](../../apps/web/components/lesson/controls.tsx) — un contrôle par sorte d'unité (« B1 »)
 
 Le commentaire dit tout :
 
@@ -871,7 +871,7 @@ Le commentaire dit tout :
 | `FeedbackNote`                        | Le texte de correction : résultat, « la réponse était … », « … est accepté aussi », et l'explication.                                                                                                                                                                                                               |
 | `UnitControl`                         | Un `switch` sur `unit.kind` pour choisir l'un des quatre contrôles.                                                                                                                                                                                                                                                 |
 
-`TextControl` utilise `gluedAfter` de [lib/lesson-gap.ts](../../../apps/web/lib/lesson-gap.ts) :
+`TextControl` utilise `gluedAfter` de [lib/lesson-gap.ts](../../apps/web/lib/lesson-gap.ts) :
 
 ```ts
 export function gluedAfter(after: string | undefined, lang: Language): boolean {
@@ -882,14 +882,14 @@ export function gluedAfter(after: string | undefined, lang: Language): boolean {
 
 Il dit si le texte après un trou doit y être collé (« un ___. » n'a pas d'espace avant le point). La typographie française garde une espace avant `? ! ; :`, donc ceux-là ne se collent qu'en anglais et en allemand. Utilisé aussi par la page des résultats. Testé dans `lib/lesson-gap.test.ts`.
 
-### [board.tsx](../../../apps/web/components/lesson/board.tsx) — le tableau d'association (« B2 »)
+### [board.tsx](../../apps/web/components/lesson/board.tsx) — le tableau d'association (« B2 »)
 
 `MatchingBoard` est un tableau d'unités de choix qui partagent **un seul jeu d'options**, chaque option utilisée une fois. Il a deux mises en page :
 
 - `pairs` → `MatchingPairs` (fichier suivant).
 - `drag` → `DragBoard` (dans ce fichier) : une réserve d'options au-dessus des lignes. Tu glisses une option sur une ligne, ou tu cliques sur une option puis sur une ligne (ou dans l'autre sens). `pair(unit, option)` vide la case qui avait cette option avant, donc chaque option est utilisée une fois. Le commentaire note une bizarrerie de navigateur : « Firefox never starts a drag from a `<button>` » (Firefox ne lance jamais un glisser depuis un `<button>`), donc les options sont des `<div role="button" tabIndex=0 draggable>` avec leur propre gestion d'Entrée/Espace. Après Check le texte choisi glisse en place (`animate-lesson-slide`) et les lignes fausses affichent un `FeedbackNote`.
 
-### [matching-pairs.tsx](../../../apps/web/components/lesson/matching-pairs.tsx)
+### [matching-pairs.tsx](../../apps/web/components/lesson/matching-pairs.tsx)
 
 Deux colonnes : les options à gauche, les cases des unités à droite. Tu sélectionnes un côté, puis l'autre, et une courbe les relie (un `<path>` SVG). Sur téléphone, des pastilles numérotées remplacent les courbes.
 
@@ -899,7 +899,7 @@ Deux colonnes : les options à gauche, les cases des unités à droite. Tu séle
 - Après Check, `checkedRows()` (exportée, pure) calcule la nouvelle ligne de chaque case de droite : une paire juste garde la ligne de son choix ; une case fausse va à la première ligne libre d'un de ses bons partenaires. Puis chaque case **glisse** vers sa nouvelle ligne : le premier `useLayoutEffect` se souvient du `top` de chaque ligne avant Check ; le deuxième, quand la correction arrive, utilise la Web Animations API (`row.animate(...)`, `MATCH_SLIDE_MS = 1200` ms) et redessine les courbes à chaque image de l'animation (`requestAnimationFrame`) pour qu'elles bougent avec les cases. Le flash vert du player attend ce glissement.
 - Avec `speak`, un bouton Écouter est à côté de chaque case ; avec `persons`, il y a un espace entre les lignes du singulier et du pluriel (les six personnes d'un verbe).
 
-### [flashcards.tsx](../../../apps/web/components/lesson/flashcards.tsx) — « B3 »
+### [flashcards.tsx](../../apps/web/components/lesson/flashcards.tsx) — « B3 »
 
 Des cartes avec la traduction au recto et le mot dans la langue du cours au verso (plus une explication et un exemple en option, chacun avec un bouton Écouter). Deux ensembles : `turned` (retournée au moins une fois : ça compte) et `back` (montre le verso en ce moment). Tant que chaque carte n'a pas été retournée, il retient la page :
 
@@ -912,15 +912,15 @@ useEffect(() => {
 
 Le nettoyage (`return () => hold(..., null)`) enlève le hold quand l'item disparaît. Chaque item qui retient fait pareil.
 
-### [gender-page.tsx](../../../apps/web/components/lesson/gender-page.tsx) — « B4 »
+### [gender-page.tsx](../../apps/web/components/lesson/gender-page.tsx) — « B4 »
 
 Une ligne par nom avec une pastille par genre (un groupe radio). Check attend que chaque nom ait un genre (un hold `block`). Avant Check seul le mot nu s'affiche ; la forme enseignée (« le cahier ») et la traduction arrivent avec la correction. `useOptionLabel()` traduit une option `ui` (« masculine ») dans la langue de l'interface.
 
-### [rich-text.tsx](../../../apps/web/components/lesson/rich-text.tsx)
+### [rich-text.tsx](../../apps/web/components/lesson/rich-text.tsx)
 
 Les textes d'enseignement **propres à la leçon** sont écrits dans un tout petit Markdown : paragraphes, listes, `**gras**` et `` `formes` `` dans la langue du cours. `lessons.parseRichText` (partagé) transforme la source en blocs et en éléments en ligne ; `RichText` les dessine. Un élément en ligne `learning` reçoit l'attribut `lang` du cours et une couleur indigo. Pas de state, donc ça marche côté serveur ou client. (Les réponses du tuteur utilisent plutôt une vraie librairie Markdown ; voir `TutorAnswer`.)
 
-### [confirm-dialog.tsx](../../../apps/web/components/lesson/confirm-dialog.tsx)
+### [confirm-dialog.tsx](../../apps/web/components/lesson/confirm-dialog.tsx)
 
 Une question avec deux réponses (Quitter l'examen ? Recommencer ?). Il utilise l'élément natif `<dialog>` : ouvert avec `showModal()`, il apporte gratuitement un piège à focus et Échap. Le bouton « non » est dans `<form method="dialog">`, donc un clic ferme juste la boîte de dialogue. Il est en premier, pour que la boîte s'ouvre sur le choix **sans risque**. Le bouton rouge « oui » appelle `onYes`. La `ref` est passée comme une prop normale (React 19 le permet).
 
@@ -928,7 +928,7 @@ Une question avec deux réponses (Quitter l'examen ? Recommencer ?). Il utilise 
 
 ## Les quatre kinds de leçon : components/lesson/kinds/
 
-### Le registre : [kinds/index.ts](../../../apps/web/components/lesson/kinds/index.ts)
+### Le registre : [kinds/index.ts](../../apps/web/components/lesson/kinds/index.ts)
 
 ```ts
 const KINDS: KindParts[] = [
@@ -958,16 +958,16 @@ export function playable(kind: LessonKind): boolean {
 
 ### Les écrans de départ
 
-| Fichier                                                                                | Export              | Ce qu'il montre sur la page de leçon                    |
-| -------------------------------------------------------------------------------------- | ------------------- | ------------------------------------------------------- |
-| [grammar-start.tsx](../../../apps/web/components/lesson/kinds/grammar-start.tsx)       | `NewVerbs` (field)  | un tableau « verbe / traduction » de `outline.newVerbs` |
-| [vocabulary-start.tsx](../../../apps/web/components/lesson/kinds/vocabulary-start.tsx) | `wordCount` (fact)  | « · 8 words » après les minutes                         |
-| [functions-start.tsx](../../../apps/web/components/lesson/kinds/functions-start.tsx)   | `Situation` (field) | la situation du dialogue                                |
-| [reading-start.tsx](../../../apps/web/components/lesson/kinds/reading-start.tsx)       | `KeyWords` (field)  | « 5 key words » (5 mots-clés)                           |
+| Fichier                                                                             | Export              | Ce qu'il montre sur la page de leçon                    |
+| ----------------------------------------------------------------------------------- | ------------------- | ------------------------------------------------------- |
+| [grammar-start.tsx](../../apps/web/components/lesson/kinds/grammar-start.tsx)       | `NewVerbs` (field)  | un tableau « verbe / traduction » de `outline.newVerbs` |
+| [vocabulary-start.tsx](../../apps/web/components/lesson/kinds/vocabulary-start.tsx) | `wordCount` (fact)  | « · 8 words » après les minutes                         |
+| [functions-start.tsx](../../apps/web/components/lesson/kinds/functions-start.tsx)   | `Situation` (field) | la situation du dialogue                                |
+| [reading-start.tsx](../../apps/web/components/lesson/kinds/reading-start.tsx)       | `KeyWords` (field)  | « 5 key words » (5 mots-clés)                           |
 
 Chacun renvoie `null` quand le plan n'a pas cette donnée, donc tous les fields peuvent être rendus pour chaque leçon. L'écran de départ de la lecture ne montre **ni** la situation **ni** le genre du texte : « either one would answer the skim question » (l'un ou l'autre donnerait la réponse à la question de survol).
 
-### [kinds/grammar.tsx](../../../apps/web/components/lesson/kinds/grammar.tsx)
+### [kinds/grammar.tsx](../../apps/web/components/lesson/kinds/grammar.tsx)
 
 | Type d'item                                   | Composant                                                                       |
 | --------------------------------------------- | ------------------------------------------------------------------------------- |
@@ -980,7 +980,7 @@ Chacun renvoie `null` quand le plan n'a pas cette donnée, donc tous les fields 
 
 La plupart des composants font trois lignes : les parties génériques font le travail.
 
-### [kinds/vocabulary.tsx](../../../apps/web/components/lesson/kinds/vocabulary.tsx)
+### [kinds/vocabulary.tsx](../../apps/web/components/lesson/kinds/vocabulary.tsx)
 
 | Type d'item                   | Composant                                                                                                                                                               |
 | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1003,7 +1003,7 @@ useEffect(() => {
 
 Il exporte aussi `useGenderLabel()` et `TranslationExam`, réutilisés par le kind fonctions.
 
-### [kinds/functions.tsx](../../../apps/web/components/lesson/kinds/functions.tsx)
+### [kinds/functions.tsx](../../apps/web/components/lesson/kinds/functions.tsx)
 
 Les leçons « fonctions » enseignent des expressions à travers un dialogue entre deux rôles (`outline.roles`).
 
@@ -1025,7 +1025,7 @@ Helpers : `splitLine` coupe « Marc: Bonjour ! » en rôle et texte ; `otherRole
 
 `ListeningChoice` affiche toujours « Show the text » : sans voix dans le navigateur, c'est le seul moyen d'avancer.
 
-### [kinds/reading.tsx](../../../apps/web/components/lesson/kinds/reading.tsx) et [lib/reading.ts](../../../apps/web/lib/reading.ts)
+### [kinds/reading.tsx](../../apps/web/components/lesson/kinds/reading.tsx) et [lib/reading.ts](../../apps/web/lib/reading.ts)
 
 La logique sans navigateur est dans `lib/reading.ts`, et les composants dessinent seulement ce qu'elle renvoie.
 
@@ -1077,7 +1077,7 @@ Les états de `SkimDocument` : `null` avant l'hydratation (il dessine une case v
 
 Après l'entraînement et avant l'examen, il y a une page de **discussion** : l'apprenant peut poser des questions sur la leçon à un tuteur IA. L'examen se fait ensuite sans le tuteur.
 
-### [lib/discussion-client.ts](../../../apps/web/lib/discussion-client.ts) (en bref ; voir aussi le [chapitre 4](04-talking-to-the-api.md))
+### [lib/discussion-client.ts](../../apps/web/lib/discussion-client.ts) (en bref ; voir aussi le [chapitre 4](04-talking-to-the-api.md))
 
 Le serveur répond avec des **Server-Sent Events (SSE)** : une longue réponse HTTP qui envoie de petits événements texte l'un après l'autre. Le navigateur a un `EventSource` intégré pour les SSE, mais il ne fait que du GET sans body. Ici on doit faire un POST avec le message et l'historique, donc le code utilise `fetch` et lit le body **à la main** :
 
@@ -1116,7 +1116,7 @@ try {
 
 Testé dans `lib/discussion-client.test.ts`.
 
-### [components/lesson/discussion.tsx](../../../apps/web/components/lesson/discussion.tsx)
+### [components/lesson/discussion.tsx](../../apps/web/components/lesson/discussion.tsx)
 
 Le serveur **ne garde rien** entre deux messages. Les tours vivent dans le state de ce composant, et chaque message renvoie les `DISCUSSION_LIMITS.historyTurns` (10) derniers tours. Quand la page s'en va, la discussion disparaît : elle n'est jamais stockée.
 
@@ -1165,7 +1165,7 @@ sequenceDiagram
   end
 ```
 
-### [components/lesson/tutor-answer.tsx](../../../apps/web/components/lesson/tutor-answer.tsx)
+### [components/lesson/tutor-answer.tsx](../../apps/web/components/lesson/tutor-answer.tsx)
 
 Le modèle écrit du Markdown (gras, listes, titres, tableaux). `TutorAnswer` le rend avec **react-markdown** et le plugin **remark-gfm** (le Markdown façon GitHub : tableaux, ~~texte barré~~). Il fait attention, parce que le texte vient d'un LLM :
 
@@ -1189,7 +1189,7 @@ Le modèle écrit du Markdown (gras, listes, titres, tableaux). `TutorAnswer` le
 
 ---
 
-## La synthèse vocale : [components/lesson/speech.tsx](../../../apps/web/components/lesson/speech.tsx) et [lib/voice.ts](../../../apps/web/lib/voice.ts)
+## La synthèse vocale : [components/lesson/speech.tsx](../../apps/web/components/lesson/speech.tsx) et [lib/voice.ts](../../apps/web/lib/voice.ts)
 
 La **Web Speech API** a une partie appelée `speechSynthesis` : le navigateur (ou le système d'exploitation) lit du texte à voix haute. Pas de serveur, pas de coût. Rien dans une leçon n'a **besoin** d'une voix : sans voix pour la langue du cours, les boutons Écouter ne sont tout simplement pas rendus.
 
@@ -1250,7 +1250,7 @@ Testé dans `lib/voice.test.ts` (`pickVoice`, `spokenText`).
 
 ---
 
-## La page des résultats : [results/page.tsx](<../../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/results/page.tsx>)
+## La page des résultats : [results/page.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/results/page.tsx>)
 
 Un server component. Il charge la leçon ; s'il n'y a pas de résultats (`read.attempt?.results ?? null`), il redirige vers la page de leçon. Il appelle aussi `loadXp(course)` pour la barre de rang de la carte XP.
 
@@ -1272,7 +1272,7 @@ Il rend `<FreshOnReturn>` et `<ResultsReview>` avec :
 
 Une ligne avec `interfaceAnswer` est une **ligne de genre** et va à `GenderRow` : « cahier: ~~Feminine~~ → Masculine », puis le pourquoi. `TONE` donne à chaque résultat une couleur de bordure.
 
-### [components/lesson/results-review.tsx](../../../apps/web/components/lesson/results-review.tsx)
+### [components/lesson/results-review.tsx](../../apps/web/components/lesson/results-review.tsx)
 
 Un composant client qui entoure les panneaux d'un menu latéral : « Final exam » (examen final ; le score), chaque partie de l'examen s'il y en a plusieurs, puis chaque étape d'entraînement notée. Chaque entrée est un simple lien `<a href="#part-N">`. La partie choisie vient du **hash** de l'URL :
 
@@ -1285,7 +1285,7 @@ Encore `useSyncExternalStore`, cette fois sur `window.location.hash` avec l'év�
 
 Chaque panneau a un bandeau avec le score de la partie, coloré selon son pourcentage.
 
-### [lib/result-part.ts](../../../apps/web/lib/result-part.ts) et [lib/result-score-tone.ts](../../../apps/web/lib/result-score-tone.ts)
+### [lib/result-part.ts](../../apps/web/lib/result-part.ts) et [lib/result-score-tone.ts](../../apps/web/lib/result-score-tone.ts)
 
 ```ts
 export function resultPart(hash: string, count: number, fallback: number): number {
@@ -1298,7 +1298,7 @@ export function resultPart(hash: string, count: number, fallback: number): numbe
 
 `#part-3` → index 2 ; tout ce qui n'est pas valide → la valeur de repli (la première étape d'examen). `resultScoreTone(score)` associe un pourcentage à une classe CSS : ≥ 90 `score-excellent`, ≥ 70 `score-passed`, ≥ 50 `score-partial`, sinon `score-low`. Les deux ont de petits tests.
 
-### [lib/xp-breakdown.ts](../../../apps/web/lib/xp-breakdown.ts)
+### [lib/xp-breakdown.ts](../../apps/web/lib/xp-breakdown.ts)
 
 La carte XP dit de quoi sont faits les XP. `xpBreakdown(finish)` découpe `xpGained` en lignes :
 

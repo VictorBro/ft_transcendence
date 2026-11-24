@@ -78,7 +78,7 @@ sequenceDiagram
 
 ### prisma.module.ts
 
-[prisma.module.ts](../../../apps/api/src/prisma/prisma.module.ts) exporte `PrismaModule` :
+[prisma.module.ts](../../apps/api/src/prisma/prisma.module.ts) exporte `PrismaModule` :
 
 ```ts
 /**
@@ -98,7 +98,7 @@ export class PrismaModule {}
 
 ### prisma.service.ts
 
-[prisma.service.ts](../../../apps/api/src/prisma/prisma.service.ts) exporte `PrismaService`. Il _est_ le client Prisma : il fait `extends PrismaClient`, donc `this.prisma.user.findMany()` marche directement dessus.
+[prisma.service.ts](../../apps/api/src/prisma/prisma.service.ts) exporte `PrismaService`. Il _est_ le client Prisma : il fait `extends PrismaClient`, donc `this.prisma.user.findMany()` marche directement dessus.
 
 D'abord, une vérification avant tout le reste :
 
@@ -155,7 +155,7 @@ L'API se connecte au démarrage, pas à la première requête. Le commentaire ex
 
 **Qui l'utilise :** presque tous les services (`AuthService`, `LessonsService`, `MetricsCollector`, `HealthService`...).
 
-**Spec** ([prisma.service.spec.ts](../../../apps/api/src/prisma/prisma.service.spec.ts)) : vérifie qu'il se connecte à l'init, se déconnecte à l'arrêt, que `ping` donne une latence, et qu'un ping qui échoue est rejeté.
+**Spec** ([prisma.service.spec.ts](../../apps/api/src/prisma/prisma.service.spec.ts)) : vérifie qu'il se connecte à l'init, se déconnecte à l'arrêt, que `ping` donne une latence, et qu'un ping qui échoue est rejeté.
 
 ## redis/ — la mémoire rapide partagée
 
@@ -167,22 +167,22 @@ Analogie : Postgres, c'est la salle d'archives avec ses armoires : sûre, bien r
 
 Dans cette API, Redis contient :
 
-| Donnée                               | Exemple de clé      | Où                                                                                           |
-| ------------------------------------ | ------------------- | -------------------------------------------------------------------------------------------- |
-| Sessions                             | `sess:<id>`         | [app.setup.ts](../../../apps/api/src/app.setup.ts) (connect-redis)                           |
-| Compteurs de présence en ligne       | `presence:<userId>` | [presence.service.ts](../../../apps/api/src/presence/presence.service.ts)                    |
-| État d'un test de placement en cours | —                   | [placement-session.service.ts](../../../apps/api/src/placement/placement-session.service.ts) |
-| Limites de discussion des leçons     | —                   | [discussion.service.ts](../../../apps/api/src/lessons/discussion.service.ts)                 |
+| Donnée                               | Exemple de clé      | Où                                                                                        |
+| ------------------------------------ | ------------------- | ----------------------------------------------------------------------------------------- |
+| Sessions                             | `sess:<id>`         | [app.setup.ts](../../apps/api/src/app.setup.ts) (connect-redis)                           |
+| Compteurs de présence en ligne       | `presence:<userId>` | [presence.service.ts](../../apps/api/src/presence/presence.service.ts)                    |
+| État d'un test de placement en cours | —                   | [placement-session.service.ts](../../apps/api/src/placement/placement-session.service.ts) |
+| Limites de discussion des leçons     | —                   | [discussion.service.ts](../../apps/api/src/lessons/discussion.service.ts)                 |
 
 La gateway des sockets l'utilise aussi. Chacun de ces usages est expliqué dans son propre chapitre.
 
 ### redis.module.ts
 
-[redis.module.ts](../../../apps/api/src/redis/redis.module.ts) exporte `RedisModule`. Même forme que `PrismaModule` : `@Global()`, il fournit et exporte `RedisService`.
+[redis.module.ts](../../apps/api/src/redis/redis.module.ts) exporte `RedisModule`. Même forme que `PrismaModule` : `@Global()`, il fournit et exporte `RedisService`.
 
 ### redis.service.ts
 
-[redis.service.ts](../../../apps/api/src/redis/redis.service.ts) exporte `RedisService`. Il commence par `requireRedisUrl()`, la même vérification « échouer au démarrage si `REDIS_URL` manque » que pour Prisma.
+[redis.service.ts](../../apps/api/src/redis/redis.service.ts) exporte `RedisService`. Il commence par `requireRedisUrl()`, la même vérification « échouer au démarrage si `REDIS_URL` manque » que pour Prisma.
 
 ```ts
 /**
@@ -213,7 +213,7 @@ export class RedisService implements OnModuleInit, OnModuleDestroy {
 
 `onModuleInit` appelle `client.connect()`, `onModuleDestroy` appelle `client.close()`, et `ping()` mesure `client.ping()` en millisecondes, exactement comme celui de Prisma.
 
-**Spec** ([redis.service.spec.ts](../../../apps/api/src/redis/redis.service.spec.ts)) : connexion à l'init, fermeture à l'arrêt, `ping` renvoie une latence finie, un ping qui échoue est rejeté.
+**Spec** ([redis.service.spec.ts](../../apps/api/src/redis/redis.service.spec.ts)) : connexion à l'init, fermeture à l'arrêt, `ping` renvoie une latence finie, un ping qui échoue est rejeté.
 
 ## throttler/ — le rate limiting
 
@@ -248,7 +248,7 @@ La configuration globale est dans `AppModule` ([02-boot-and-request-flow.md](02-
 
 ### rate-limits.ts
 
-[rate-limits.ts](../../../apps/api/src/throttler/rate-limits.ts) exporte `readLimit` et `RATE_LIMITS`.
+[rate-limits.ts](../../apps/api/src/throttler/rate-limits.ts) exporte `readLimit` et `RATE_LIMITS`.
 
 ```ts
 export const RATE_LIMITS = {
@@ -287,11 +287,11 @@ return value;
 
 Les valeurs sont lues une seule fois, quand le fichier est importé. Le commentaire de doc explique pourquoi : des décorateurs comme `@ThrottleByIp(RATE_LIMITS.login)` ont besoin d'un nombre au moment où la classe est définie, avant que `ConfigService` existe.
 
-**Spec** ([rate-limits.spec.ts](../../../apps/api/src/throttler/rate-limits.spec.ts)) : valeur par défaut si non définie/vide, accepte un entier positif (en retirant les espaces), refuse tout le reste avec le nom de la variable dans l'erreur.
+**Spec** ([rate-limits.spec.ts](../../apps/api/src/throttler/rate-limits.spec.ts)) : valeur par défaut si non définie/vide, accepte un entier positif (en retirant les espaces), refuse tout le reste avec le nom de la variable dans l'erreur.
 
 ### throttle-by-ip.decorator.ts
 
-[throttle-by-ip.decorator.ts](../../../apps/api/src/throttler/throttle-by-ip.decorator.ts) exporte `THROTTLE_BY_IP` (une clé de métadonnée) et le décorateur `ThrottleByIp`.
+[throttle-by-ip.decorator.ts](../../apps/api/src/throttler/throttle-by-ip.decorator.ts) exporte `THROTTLE_BY_IP` (une clé de métadonnée) et le décorateur `ThrottleByIp`.
 
 ```ts
 export const THROTTLE_BY_IP = "throttle:by-ip";
@@ -313,7 +313,7 @@ Pourquoi sa propre clé de métadonnée et pas celle de la bibliothèque ? Le co
 
 ### identity-throttler.guard.ts
 
-[identity-throttler.guard.ts](../../../apps/api/src/throttler/identity-throttler.guard.ts) exporte `IdentityThrottlerGuard`, une sous-classe du `ThrottlerGuard` de la bibliothèque.
+[identity-throttler.guard.ts](../../apps/api/src/throttler/identity-throttler.guard.ts) exporte `IdentityThrottlerGuard`, une sous-classe du `ThrottlerGuard` de la bibliothèque.
 
 **Le problème qu'il résout** (d'après le commentaire de la classe) : le guard par défaut compte par `req.ip`. Mais dans ce déploiement, les navigateurs passent par Caddy, et les rendus serveur de Next.js appellent l'API depuis le container `web`. Beaucoup d'utilisateurs peuvent partager une même adresse, donc avec le comportement par défaut toute la plateforme partageait un seul budget : le 101e visiteur dans la minute était refusé.
 
@@ -390,8 +390,8 @@ sequenceDiagram
 
 **Specs :**
 
-- [identity-throttler.guard.spec.ts](../../../apps/api/src/throttler/identity-throttler.guard.spec.ts) : les utilisateurs connectés ont une clé basée sur leur id, deux utilisateurs derrière une même IP ont des clés séparées, les appelants anonymes retombent sur l'adresse, et des appels complets à `canActivate` comptent dans le bon compteur.
-- [throttler-storage.spec.ts](../../../apps/api/src/throttler/throttler-storage.spec.ts) : vérifie que le stockage en mémoire de la bibliothèque garde les clés différentes séparées (un blocage sur une route ne change pas le compteur d'une autre route).
+- [identity-throttler.guard.spec.ts](../../apps/api/src/throttler/identity-throttler.guard.spec.ts) : les utilisateurs connectés ont une clé basée sur leur id, deux utilisateurs derrière une même IP ont des clés séparées, les appelants anonymes retombent sur l'adresse, et des appels complets à `canActivate` comptent dans le bon compteur.
+- [throttler-storage.spec.ts](../../apps/api/src/throttler/throttler-storage.spec.ts) : vérifie que le stockage en mémoire de la bibliothèque garde les clés différentes séparées (un blocage sur une route ne change pas le compteur d'une autre route).
 
 ## metrics/ — des chiffres pour Prometheus
 
@@ -431,7 +431,7 @@ flowchart LR
 
 ### metrics.ts — le registry et toutes les métriques
 
-[metrics.ts](../../../apps/api/src/metrics/metrics.ts) est un simple fichier, pas un service Nest :
+[metrics.ts](../../apps/api/src/metrics/metrics.ts) est un simple fichier, pas un service Nest :
 
 ```ts
 // Module level, not an injected service: the services that record are built by
@@ -505,11 +505,11 @@ export function touchActiveUser(userId: string, now = Date.now()): void {
 
 Une `Map` JavaScript garde l'ordre d'insertion. Supprimer puis remettre déplace l'utilisateur à la fin, donc les plus anciens sont toujours en premier. `prune` retire les entrées du début tant qu'elles ont plus de 5 minutes, et s'arrête à la première récente. `countActiveUsers()` renvoie la taille. Comme tout est en mémoire, le compte est par process ; le commentaire dit que cela suffit pour une seule instance de l'API.
 
-**Spec** ([metrics.spec.ts](../../../apps/api/src/metrics/metrics.spec.ts)) : vérifie que les séries à zéro existent dès le départ, et que les utilisateurs actifs sont comptés une seule fois et disparaissent après 5 minutes.
+**Spec** ([metrics.spec.ts](../../apps/api/src/metrics/metrics.spec.ts)) : vérifie que les séries à zéro existent dès le départ, et que les utilisateurs actifs sont comptés une seule fois et disparaissent après 5 minutes.
 
 ### http-metrics.middleware.ts — mesurer le temps de chaque requête
 
-[http-metrics.middleware.ts](../../../apps/api/src/metrics/http-metrics.middleware.ts) exporte `httpMetrics`, `routeOf` et `methodOf`. C'est le premier middleware ajouté dans `configureApp`.
+[http-metrics.middleware.ts](../../apps/api/src/metrics/http-metrics.middleware.ts) exporte `httpMetrics`, `routeOf` et `methodOf`. C'est le premier middleware ajouté dans `configureApp`.
 
 ```ts
 /**
@@ -546,11 +546,11 @@ Le label route est le _template_ (`/api/users/:id`), pas la vraie URL (`/api/use
 
 `methodOf` renvoie la méthode si c'est une des 7 méthodes courantes, sinon `OTHER`. N'importe qui peut envoyer une méthode bizarre comme `PROPFIND` ; cela garde le label borné.
 
-**Spec** ([http-metrics.middleware.spec.ts](../../../apps/api/src/metrics/http-metrics.middleware.spec.ts)) : enregistre à la fermeture avec la route et le statut, 499 pour un départ trop tôt, `unmatched` sans route, compte une seule fois même si `close` arrive deux fois, plus des cas pour `routeOf` et `methodOf`.
+**Spec** ([http-metrics.middleware.spec.ts](../../apps/api/src/metrics/http-metrics.middleware.spec.ts)) : enregistre à la fermeture avec la route et le statut, 499 pour un départ trop tôt, `unmatched` sans route, compte une seule fois même si `close` arrive deux fois, plus des cas pour `routeOf` et `methodOf`.
 
 ### metrics-server.ts — la porte /metrics
 
-[metrics-server.ts](../../../apps/api/src/metrics/metrics-server.ts) exporte `METRICS_PORT` (9464) et `startMetricsServer`.
+[metrics-server.ts](../../apps/api/src/metrics/metrics-server.ts) exporte `METRICS_PORT` (9464) et `startMetricsServer`.
 
 ```ts
 /**
@@ -578,11 +578,11 @@ export function startMetricsServer(port: number): Promise<Server> {
 
 Il utilise le simple module `http` de Node, pas Nest. Seul `GET /metrics` marche ; tout le reste donne 404. `registry.metrics()` construit le texte (et lance les collectors plus bas). Comme il est sur un port séparé que seul Prometheus peut joindre dans le réseau Docker, il n'a besoin ni de login ni de rate limit. `main.ts` le démarre après `listen`.
 
-**Spec** ([metrics-server.spec.ts](../../../apps/api/src/metrics/metrics-server.spec.ts)) : sert le registry avec le bon content type, répond 500 quand le registry échoue, est rejeté quand le port est déjà pris.
+**Spec** ([metrics-server.spec.ts](../../apps/api/src/metrics/metrics-server.spec.ts)) : sert le registry avec le bon content type, répond 500 quand le registry échoue, est rejeté quand le port est déjà pris.
 
 ### metrics.collector.ts — des chiffres lus dans la base
 
-[metrics.collector.ts](../../../apps/api/src/metrics/metrics.collector.ts) exporte `MetricsCollector`, un service Nest (il a besoin de `PrismaService`). Il crée trois gauges dont la valeur est calculée **quand Prometheus fait son scrape** (la fonction `collect`), au lieu d'être mise à jour quand quelque chose se passe :
+[metrics.collector.ts](../../apps/api/src/metrics/metrics.collector.ts) exporte `MetricsCollector`, un service Nest (il a besoin de `PrismaService`). Il crée trois gauges dont la valeur est calculée **quand Prometheus fait son scrape** (la fonction `collect`), au lieu d'être mise à jour quand quelque chose se passe :
 
 | Gauge                        | Valeur                                                                                              |
 | ---------------------------- | --------------------------------------------------------------------------------------------------- |
@@ -622,11 +622,11 @@ flowchart TD
 
 `onModuleDestroy` retire les trois gauges du registry. Le commentaire dit pourquoi : sinon, un test e2e qui construit deux apps aurait l'erreur « metric already registered ».
 
-**Spec** ([metrics.collector.spec.ts](../../../apps/api/src/metrics/metrics.collector.spec.ts)) : compte par case et par source, cases vides à 0, au plus une requête par minute, garde les dernières valeurs quand la base échoue, répond en moins de 3 s quand elle bloque, se désinscrit au destroy.
+**Spec** ([metrics.collector.spec.ts](../../apps/api/src/metrics/metrics.collector.spec.ts)) : compte par case et par source, cases vides à 0, au plus une requête par minute, garde les dernières valeurs quand la base échoue, répond en moins de 3 s quand elle bloque, se désinscrit au destroy.
 
 ### metrics.module.ts
 
-[metrics.module.ts](../../../apps/api/src/metrics/metrics.module.ts) exporte `MetricsModule`, qui fournit seulement `MetricsCollector`. Il n'est pas `@Global` et n'exporte rien : le reste du code enregistre à travers les fonctions et objets simples de `metrics.ts`.
+[metrics.module.ts](../../apps/api/src/metrics/metrics.module.ts) exporte `MetricsModule`, qui fournit seulement `MetricsCollector`. Il n'est pas `@Global` et n'exporte rien : le reste du code enregistre à travers les fonctions et objets simples de `metrics.ts`.
 
 ## health/ — « tu es en vie ? »
 
@@ -642,11 +642,11 @@ Analogie : une infirmière qui passe toutes les quelques minutes et demande « c
 
 ### health.module.ts
 
-[health.module.ts](../../../apps/api/src/health/health.module.ts) exporte `HealthModule` : un controller (`HealthController`), un provider (`HealthService`). Il n'importe ni Prisma ni Redis, parce que les deux sont globaux.
+[health.module.ts](../../apps/api/src/health/health.module.ts) exporte `HealthModule` : un controller (`HealthController`), un provider (`HealthService`). Il n'importe ni Prisma ni Redis, parce que les deux sont globaux.
 
 ### health.controller.ts
 
-[health.controller.ts](../../../apps/api/src/health/health.controller.ts) exporte `HealthController`, route `GET /api/health`.
+[health.controller.ts](../../apps/api/src/health/health.controller.ts) exporte `HealthController`, route `GET /api/health`.
 
 ```ts
 @ApiTags("health")
@@ -676,11 +676,11 @@ export class HealthController {
 - `security: []` : dans Swagger, cette route n'a pas besoin de cookie.
 - Elle **répond toujours 200**. Le vrai état est dans le body. Si elle répondait 500 pendant que Postgres démarre encore, Docker pourrait redémarrer un container qui va très bien.
 
-**Spec** ([health.controller.spec.ts](../../../apps/api/src/health/health.controller.spec.ts)) : la réponse correspond au contrat Zod partagé.
+**Spec** ([health.controller.spec.ts](../../apps/api/src/health/health.controller.spec.ts)) : la réponse correspond au contrat Zod partagé.
 
 ### health.service.ts
 
-[health.service.ts](../../../apps/api/src/health/health.service.ts) exporte `SLOW_DEPENDENCY_MS` (250) et `HealthService`. Il reçoit `ConfigService`, `PrismaService` et `RedisService`.
+[health.service.ts](../../apps/api/src/health/health.service.ts) exporte `SLOW_DEPENDENCY_MS` (250) et `HealthService`. Il reçoit `ConfigService`, `PrismaService` et `RedisService`.
 
 ```ts
   private async probe(name: DependencyHealth['name'], run: () => Promise<number>) {
@@ -776,13 +776,13 @@ sequenceDiagram
     C-->>D: "200 { status: 'ok', ... }"
 ```
 
-**Spec** ([health.service.spec.ts](../../../apps/api/src/health/health.service.spec.ts)) : version et nom du service, uptime en secondes entières, payload accepté par le schema de `@ft/shared`, `ok` quand c'est rapide, `degraded` quand c'est lent, `down` sans lancer d'erreur quand une sonde échoue (aussi quand seul Redis est en panne).
+**Spec** ([health.service.spec.ts](../../apps/api/src/health/health.service.spec.ts)) : version et nom du service, uptime en secondes entières, payload accepté par le schema de `@ft/shared`, `ok` quand c'est rapide, `degraded` quand c'est lent, `down` sans lancer d'erreur quand une sonde échoue (aussi quand seul Redis est en panne).
 
 ### dto/health-response.dto.ts
 
-[health-response.dto.ts](../../../apps/api/src/health/dto/health-response.dto.ts) exporte `DependencyHealthDto` et `HealthResponseDto`.
+[health-response.dto.ts](../../apps/api/src/health/dto/health-response.dto.ts) exporte `DependencyHealthDto` et `HealthResponseDto`.
 
-La forme de la réponse est définie une seule fois en Zod dans `@ft/shared` ([health.ts](../../../packages/shared/src/schemas/health.ts)) : `HealthResponseSchema`, `DependencyHealthSchema`, `HealthStatusSchema` (`ok | degraded | down`), `DependencyNameSchema` (`database | redis`). Mais Swagger lit les décorateurs des classes, pas Zod. Donc ce fichier décrit la même forme avec des classes :
+La forme de la réponse est définie une seule fois en Zod dans `@ft/shared` ([health.ts](../../packages/shared/src/schemas/health.ts)) : `HealthResponseSchema`, `DependencyHealthSchema`, `HealthStatusSchema` (`ok | degraded | down`), `DependencyNameSchema` (`database | redis`). Mais Swagger lit les décorateurs des classes, pas Zod. Donc ce fichier décrit la même forme avec des classes :
 
 ```ts
 /**
