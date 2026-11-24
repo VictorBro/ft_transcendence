@@ -753,8 +753,9 @@ export function UnreadTotalBadge() {
 
 - Nothing at 0, and nothing before the tab has heard. So a "0" never flashes on the first paint.
 - The eye sees `99+`; a screen reader hears the full phrase with the exact number.
-- `UnreadBadge` is used per row in the conversation list. `UnreadTotalBadge` is used in the header
-  ([header-menu.tsx](../../apps/web/components/header-menu.tsx), [session-nav.tsx](../../apps/web/components/session-nav.tsx)).
+- `UnreadBadge` is used per row in the conversation list. `UnreadTotalBadge` is used twice in the header: on the
+  menu button, so the count shows while the menu is closed ([header-menu.tsx](../../apps/web/components/header-menu.tsx)),
+  and on the Messages row inside the menu ([session-nav.tsx](../../apps/web/components/session-nav.tsx)).
 
 ```mermaid
 flowchart LR

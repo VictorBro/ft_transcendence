@@ -266,11 +266,12 @@ A search of `apps/web` (`app`, `components`, `lib`) finds these hooks. Each line
 | `useLayoutEffect` | react | Like `useEffect`, but runs before the browser paints | keeping the scroll position in [chat-thread.tsx](<../../apps/web/app/[locale]/(messages)/chat/chat-thread.tsx>) |
 | `useSyncExternalStore` | react | Read a value that lives outside React and re-render when it changes | socket status, unread counts in [tab-socket.ts](../../apps/web/components/tab-socket.ts) |
 | `useEffectEvent` | react | A function an effect can call that always sees the latest props, without being a dep | `zero` in exam-timer.tsx |
-| `useRouter` | next-intl / next | Move to another page or refresh the server data from code | `router.replace('/')` in log-out-button.tsx |
-| `usePathname` | next-intl | The current URL path (without the locale) | trigger in time-zone-sync.tsx |
+| `useRouter` | next-intl (through `@/i18n/navigation`) | Move to another page or refresh the server data from code | `router.replace('/')` in log-out-button.tsx |
+| `usePathname` | next-intl (through `@/i18n/navigation`) | The current URL path (without the locale) | trigger in time-zone-sync.tsx |
 | `useSearchParams` | next/navigation | Read the `?a=b` part of the URL | [live-form.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/live-form.tsx>) |
 | `useTranslations` | next-intl | Get the `t()` function for one part of the text catalogue | almost every component |
 | `useLocale` | next-intl | The current language (`en`, `fr`, `de`) | [language-switcher.tsx](../../apps/web/components/language-switcher.tsx) |
+| `useFormatter` | next-intl | Format dates and numbers in the current language | message times in [chat-thread.tsx](<../../apps/web/app/[locale]/(messages)/chat/chat-thread.tsx>) |
 
 `useActionState`, `useOptimistic`, `useFormStatus` and `use()` are **not** used in this app.
 
@@ -410,8 +411,11 @@ Each folder inside `app/` is a piece of the URL. A folder becomes a visible page
 app/
 ├── global-error.tsx            last-resort error page
 ├── globals.css                 global styles (Tailwind)
+├── lesson.css                  lesson player styles (imported by globals.css)
 ├── icon.svg                    the favicon (Next picks it up by name)
 ├── healthz/route.ts            GET /healthz  (a route handler, no page)
+├── healthz/api/route.ts        GET /healthz/api
+├── healthz/upstream/route.ts   GET /healthz/upstream
 └── [locale]/                   /en, /fr, /de   (dynamic segment)
     ├── layout.tsx              <html> and <body> for every page
     ├── error.tsx               error page for everything inside
@@ -491,7 +495,7 @@ This is the most important idea of modern Next.js. Every component runs in one o
 - A **Server Component** runs only on the server (the Next.js container). It can be `async`, can `await` data, can read cookies and secret environment variables. Its code is **never** sent to the browser. It cannot use state, effects or event handlers, because there is no browser there and no user to click.
 - A **Client Component** is marked with `'use client'` at the top of its file. It is rendered once on the server too (to make the first HTML), and then its code is sent to the browser, where it becomes interactive: state, effects, `onClick`, browser APIs.
 
-**By default, every component is a Server Component.** You add `'use client'` only where you need interactivity. 58 files in the app have it (forms, buttons, the socket, the lesson player). Pages and layouts are mostly Server Components.
+**By default, every component is a Server Component.** You add `'use client'` only where you need interactivity. 57 files in the app have it (forms, buttons, the socket, the lesson player). Pages and layouts are mostly Server Components.
 
 Analogy: a Server Component is a photo printed at the shop and handed to you. A Client Component is a small machine handed to you with its instruction manual (the JavaScript), so it can still move in your hands.
 
@@ -521,7 +525,7 @@ flowchart LR
 
 How the two kinds mix, with the user page as example:
 
-- `UserPage` is a Server Component (`async`, no `'use client'`). It calls `requireUser()` and `loadProfile(id)` on the server.
+- `UserPage` is a Server Component (`async`, no `'use client'`). It calls `requireUser()`, `loadProfile(id)` and `requireFriends()` on the server.
 - It renders `PresenceDot` and `FriendButton`, which are Client Components (they must change without a reload). It passes them plain data as props: `userId`, `online`.
 - Props passed from server to client must be **serialisable** (strings, numbers, plain objects, arrays, JSX). You cannot pass a function from a Server Component to a Client Component.
 - A Client Component cannot import a Server Component, but it can receive one as `children` or another JSX prop. That is why [shell.tsx](../../apps/web/components/shell.tsx) takes `nav` as a prop instead of rendering the session nav itself: the comment says it keeps the Shell usable from the error boundary, which is a Client Component.
@@ -628,9 +632,9 @@ export function GET() {
 
 - `<Link href="/friends">` is a smarter `<a>`. Next.js loads the new page in the background and swaps only what changed: the layouts stay on screen, nothing reloads.
 - `useRouter()` does the same from code: `router.push(url)` (adds to history), `router.replace(url)` (replaces the current history entry), `router.refresh()` (asks the server to render the current page again with fresh data, keeping client state).
-- `redirect(url)` and `notFound()` (from `next/navigation`) are for Server Components: they stop the render and send the visitor elsewhere.
+- `redirect(url)` and `notFound()` (from `next/navigation`) are for Server Components: they stop the render and send the visitor elsewhere. The app calls `redirect('/login')` with no locale: the browser then asks for `/login`, and `proxy.ts` adds the locale back (chapter 2).
 
-The app does **not** import `Link` and `useRouter` from `next` directly. It uses locale-aware copies from [i18n/navigation.ts](../../apps/web/i18n/navigation.ts), so `href="/friends"` becomes `/fr/friends` by itself:
+The app does **not** import `Link`, `useRouter` and `usePathname` from `next` directly. It uses locale-aware copies from [i18n/navigation.ts](../../apps/web/i18n/navigation.ts), so `href="/friends"` becomes `/fr/friends` by itself:
 
 ```ts
 import { createNavigation } from 'next-intl/navigation';
@@ -674,8 +678,15 @@ The app uses **Tailwind 4**, which is configured in CSS, not in a `tailwind.conf
 @import 'tailwindcss';
 @import './lesson.css';
 
+/* Tailwind 4 resolves `dark:` through prefers-color-scheme unless told
+   otherwise. The layouts put `dark` on <html> to pin the app to one palette,
+   so the variant has to follow that class or the two disagree: body stays
+   dark while every `dark:` utility switches off on a light OS. */
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* Tailwind 4 is CSS-first: there is no tailwind.config.js. Source detection is
+   declared explicitly so class scanning does not depend on the working
+   directory the build happens to run from inside the container. */
 @source '.';
 
 @source '../components';
@@ -923,7 +934,7 @@ Both list what Docker must not copy into the build (`node_modules`, `.next`, `co
 - In the **App Router**, folders are URLs: `page.tsx` is a page, `layout.tsx` wraps pages, `(group)` is not in the URL, `[x]` is a param, `[...x]` catches the rest.
 - Components are **Server Components by default**. `'use client'` is needed for state, effects and events. Server code can `await`, read cookies and call the API; its code never reaches the browser.
 - Pages are **rendered on the server** with the visitor's cookie copied into the API call (`lib/api.ts`), then **hydrated** in the browser. Forms call the API from the browser. There are no server actions.
-- Use `Link`, `useRouter`, `redirect` from `@/i18n/navigation` so URLs keep their locale; `router.refresh()` asks for a fresh server render.
+- Use `Link` and `useRouter` from `@/i18n/navigation` so URLs keep their locale. Server code uses `redirect` from `next/navigation`, and `proxy.ts` adds the locale. `router.refresh()` asks for a fresh server render.
 - Styling is **Tailwind 4**, configured in `app/globals.css` (no `tailwind.config.js`).
 - `output: 'standalone'` plus the multi-stage `Dockerfile` give a small production image that runs `node apps/web/server.js`.
 

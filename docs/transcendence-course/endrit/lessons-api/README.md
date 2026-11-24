@@ -54,11 +54,11 @@ Deux règles importantes :
 
 | Fichier | Auteur / PR | Lien avec mon code |
 |---|---|---|
-| [roadmap.rules.ts](../../../../apps/api/src/lessons/roadmap.rules.ts) | ninisse (#80) | `plan`, `levelProgress`, `courseDay`, `statusOf`… : les règles que `today` appelle. |
+| [roadmap.rules.ts](../../../../apps/api/src/lessons/roadmap.rules.ts) | ninisse (#120, ticket #80) | `plan`, `levelProgress`, `courseDay`, `statusOf`… : les règles que `today` appelle. |
 | [goal.ts](../../../../apps/api/src/lessons/goal.ts) et `applyFinish` dans `lessons.service.ts` | luca-mattei (#141) | La fin de leçon et l'objectif quotidien. Ils réutilisent `checkCourse` et `findLesson`. |
 | [gamification.ts](../../../../apps/api/src/lessons/gamification.ts), [gamification.rules.ts](../../../../apps/api/src/lessons/gamification.rules.ts), route `GET achievements` | #95 / #180 | XP, rang, défi, succès. Ajoutés ensuite dans `today` (`xp`, `challenge`, `earnedToday`). |
-| [attempts.controller.ts](../../../../apps/api/src/lessons/attempts.controller.ts) | ninisse (#145) | Le lecteur de leçon (tentatives), sous le même préfixe `courses/:lang`. |
-| Champ `ready` et option `readyOnly` | bastian-schnitzler (#84) | Une leçon pas encore prête est listée mais jamais proposée. |
+| [attempts.controller.ts](../../../../apps/api/src/lessons/attempts.controller.ts) | ninisse (#190, ticket #145) | Le lecteur de leçon (tentatives), sous le même préfixe `courses/:lang`. |
+| Champ `ready` et option `readyOnly` | bastian-schnitzler (#171, ticket #84) | Une leçon pas encore prête est listée mais jamais proposée. |
 | [discussion.controller.ts](../../../../apps/api/src/lessons/discussion.controller.ts), `discussion.service.ts` | luca-mattei (#201) | Le tuteur des leçons (questions au LLM avec `streamText`), sous le même préfixe `courses/:lang`. |
 
 ### Diagramme des fichiers et de leurs dépendances
@@ -126,7 +126,7 @@ Le préfixe global est `api` (posé dans [app.setup.ts](../../../../apps/api/src
 
 - **Paramètres** : `lang` (chemin).
 - **Réponses** : `200` (`TodaySchema`), `401`, `400`, `404`, **`409 course.notPlaced`** (cours sans niveau).
-- **Contenu** : le jour du cours, l'objectif (`target`), les leçons faites (`done`), proposées (`proposed`) et en plus (`extra`), la série de jours (`streak`), la progression dans le niveau, le niveau suivant, puis l'XP, le défi et les succès du jour (ajoutés par la gamification, #95).
+- **Contenu** : le jour du cours, l'objectif (`target`), les leçons faites (`done`), proposées (`proposed`) et en plus (`extra`), la série de jours (`streak`), la progression dans le niveau, le niveau suivant, puis l'XP, le défi et les succès du jour (ajoutés par la gamification, #180, ticket #95).
 
 Exemple (raccourci) :
 
@@ -139,7 +139,7 @@ Exemple (raccourci) :
     {
       "id": "fr-greetings-and-goodbyes", "level": "A1", "position": 1,
       "kind": "functions", "topic": null, "theme": "daily_life",
-      "title": "Bonjour, au revoir", "summary": "Saluer et prendre congé.",
+      "title": "Bonjour, au revoir", "summary": "Saluer et prendre congé.", "ready": true,
       "status": "done", "score": 85, "day": "2026-11-15",
       "finishedAt": "2026-11-15T08:12:00.000Z"
     }
@@ -164,7 +164,7 @@ Exemple (raccourci) :
 | Paramètre | Valeurs | Défaut | Si la valeur est fausse |
 |---|---|---|---|
 | `q` | texte libre (coupé à 100 caractères) | `''` | `''` |
-| `status` | liste `todo,done,failed` | `[]` (pas de filtre) | valeurs inconnues ignorées |
+| `status` | liste `todo,done,failed,soon` (`soon` = leçon pas encore prête) | `[]` (pas de filtre) | valeurs inconnues ignorées |
 | `kind` | liste `grammar,vocabulary,functions,reading` | `[]` | ignorées |
 | `topic`, `theme` | listes | `[]` | ignorées |
 | `sort` | `position`, `score`, `finishedAt` | `position` | `position` |
@@ -185,7 +185,7 @@ Exemple pour `GET /api/courses/fr/lessons?q=coeur&page=1` :
     {
       "id": "fr-le-coeur", "level": "A1", "position": 7,
       "kind": "vocabulary", "topic": null, "theme": "health",
-      "title": "Le cœur", "summary": "…",
+      "title": "Le cœur", "summary": "…", "ready": true,
       "status": "todo", "score": null, "day": null, "finishedAt": null
     }
   ],
@@ -209,12 +209,12 @@ Exemple (tiré du test e2e, avant placement) :
 {
   "id": "fr-test-alpha", "level": "A1", "position": 9001,
   "kind": "grammar", "topic": "nouns_and_determiners", "theme": null,
-  "title": "Le cœur du testeur", "summary": "Une leçon de test.",
+  "title": "Le cœur du testeur", "summary": "Une leçon de test.", "ready": true,
   "status": "todo", "score": null, "day": null, "finishedAt": null
 }
 ```
 
-> La route `GET /api/courses/:lang/achievements` est dans le même controller, mais elle vient de la gamification (#95), pas de moi.
+> La route `GET /api/courses/:lang/achievements` est dans le même controller, mais elle vient de la gamification (#180, ticket #95), pas de moi.
 
 ## 4. Diagrammes
 
@@ -264,7 +264,7 @@ sequenceDiagram
     L-->>F: ConflictException 409 course.notPlaced
   end
   par en parallèle (Promise.all)
-    S->>DB: lesson.findMany where lang, level select LESSON_SELECT + ready
+    S->>DB: lesson.findMany where lang, level select LESSON_SELECT (avec ready)
   and
     S->>DB: lessonResult.findMany select RESULT_SELECT
   end
@@ -337,8 +337,15 @@ Sans `select`, Prisma lit **toutes** les colonnes. La table `Lesson` a une colon
 ```ts
 // course-lookup.ts
 export const LESSON_SELECT = {
-  id: true, level: true, position: true, kind: true,
-  topic: true, theme: true, title: true, summary: true,
+  id: true,
+  level: true,
+  position: true,
+  kind: true,
+  topic: true,
+  theme: true,
+  title: true,
+  summary: true,
+  ready: true,
 } as const;
 ```
 
@@ -366,11 +373,17 @@ export const LESSON_SELECT = {
 `foldText` vient de `@ft/shared` ([lesson.ts](../../../../packages/shared/src/schemas/lesson.ts)) :
 
 ```ts
-s.normalize('NFC').toLowerCase()
- .replace(/[ßœæ]/g, …)   // ß → ss, œ → oe, æ → ae
- .normalize('NFD')        // "é" devient "e" + accent séparé
- .replace(/\p{M}/gu, '')  // on supprime les accents séparés
+export function foldText(s: string): string {
+  return s
+    .normalize('NFC')
+    .toLowerCase()
+    .replace(FOLDED_LETTER, (letter) => FOLDED_LETTERS[letter as FoldedLetter])
+    .normalize('NFD')
+    .replace(/\p{M}/gu, '');
+}
 ```
+
+`FOLDED_LETTERS` = `{ ß: 'ss', œ: 'oe', æ: 'ae' }`, et `FOLDED_LETTER` est la regex `[ßœæ]` construite à partir de ses clés. `normalize('NFD')` fait de « é » un « e » suivi d'un accent séparé, puis `replace(/\p{M}/gu, '')` supprime ces accents.
 
 - **NFD** (normalisation Unicode « décomposée ») coupe une lettre accentuée en lettre de base + signe diacritique. `\p{M}` = « tous les signes diacritiques ». On les retire.
 - `ß`, `œ`, `æ` ne se décomposent pas : on les remplace à la main.
@@ -411,7 +424,7 @@ Cookie: ft.sid=...
 6. **Service, `load()`.**
    - `userLevel.findUnique({ where: { userId_lang }, select: COURSE_SELECT })` → `{ id: "c1", level: "A1", … }`.
    - `checkCourse(..., { placed: true })` : il y a un cours et un niveau → on continue.
-   - En parallèle : les 120 leçons `fr` A1 (avec `LESSON_SELECT` + `ready`) et tous les résultats du cours (`RESULT_SELECT`).
+   - En parallèle : les 120 leçons `fr` A1 (avec `LESSON_SELECT`, qui contient `ready`) et tous les résultats du cours (`RESULT_SELECT`).
    - Calcul du jour du cours dans le fuseau d'Alice.
 7. **Cartes.** Chaque leçon devient une carte : avec un résultat, statut `done` (score ≥ 70) ou `failed`. Sans résultat, `todo` avec `score/day/finishedAt` à `null`.
 8. **`searchLessons`.** `foldText("Coeur")` = `"coeur"`. On garde les cartes dont le titre ou le résumé plié contient `"coeur"` (ex. « Le cœur » → `"le coeur"`). Tri par score croissant, `null` à la fin, égalités départagées par la position. Page 1 : les 20 premières.
@@ -470,4 +483,4 @@ R : Il lie une URL à une méthode, récupère l'utilisateur (`@CurrentUser`), l
 R : Pour garantir que le front reçoit exactement la forme promise. Une carte invalide = donnée corrompue = 500 visible dans les logs, plutôt qu'une réponse fausse cachée.
 
 **Q : Qu'est-ce que tu n'as pas écrit dans ce dossier ?**
-R : Les règles de la feuille de route (`roadmap.rules.ts`), la fin de leçon et l'objectif (`goal.ts`, `applyFinish`, #141), la gamification (#95), les tentatives (`attempts.*`, #145) et le tuteur (`discussion.*`, #201).
+R : Les règles de la feuille de route (`roadmap.rules.ts`), la fin de leçon et l'objectif (`goal.ts`, `applyFinish`, #141), la gamification (#180), les tentatives (`attempts.*`, #190) et le tuteur (`discussion.*`, #201).

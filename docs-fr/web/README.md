@@ -30,4 +30,4 @@ flowchart LR
 | 8   | [Chat](08-chat.md)                                   | Conversations, messages en direct, compteurs de non-lus                                         | `app/[locale]/(messages)`                |
 | 9   | [Tests](09-tests.md)                                 | Vitest, tester des fonctions et des components, couverture                                      | `*.test.ts(x)`                           |
 
-L'API avec laquelle ce site parle a son propre guide : [docs/api](../api/README.md).
+L'API avec laquelle ce site parle a son propre guide : [docs-fr/api](../api/README.md).

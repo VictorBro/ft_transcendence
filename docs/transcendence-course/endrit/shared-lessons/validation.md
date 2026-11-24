@@ -223,7 +223,7 @@ brief.id: must equal the outline ID fr-asking-the-way
 
 ## 5. Vocabulaire : `checkVocabularyBrief`
 
-C'est **la seule** vérification d'une leçon de vocabulaire (pas de fichier contenu). Elle regarde trois choses.
+C'est **la seule** vérification d'une leçon de vocabulaire (pas de fichier contenu). Elle regarde trois choses (a, b, c), puis la durée (d).
 
 **a) Les listes**
 - ids des mots uniques, ids des groupes uniques ;
@@ -235,7 +235,8 @@ C'est **la seule** vérification d'une leçon de vocabulaire (pas de fichier con
   - langue à genre (fr, de) : au moins un genre, et seulement des genres de la langue (`fr` : masculin/féminin ; `de` : + neutre) ;
   - anglais : **aucun** genre (`en nouns have no gender`) ;
   - un nombre (`number` non nul) ;
-  - fr / de sans `articleException` : `examForms`, `teachingForm` et `genderVariants` **commencent par le bon article** (`articleIssue`) ;
+  - fr / de sans `articleException` : `examForms` et `teachingForm` **commencent par le bon article** (`articleIssue` : l'article doit aussi
+    correspondre au genre et au nombre) ; les `genderVariants` doivent seulement **commencer par un article** de la langue (`teachingArticle`), sans contrôle d'accord ;
   - fr / de **avec** `articleException` : les `examForms` ne doivent **pas** avoir d'article (sinon l'exception est inutile) ;
   - anglais : `articleException` doit être `null` ;
   - `term` sans article (`"un livre"` refusé comme `term`).
@@ -418,6 +419,7 @@ en allemand, `der/die/das` montre directement les trois genres.
 | [`validation/functions.test.ts`](../../../../packages/shared/src/lessons/validation/functions.test.ts) | fonctions : échantillon accepté, cas d'erreur, durées |
 | [`validation/reading.test.ts`](../../../../packages/shared/src/lessons/validation/reading.test.ts) | lecture : échantillon, durées, compte des mots, surlignages en mots entiers, leçon max par niveau ≤ 15 min |
 | [`domain/richText.test.ts`](../../../../packages/shared/src/lessons/domain/richText.test.ts) | Markdown simple : accepté et refusé |
+| [`domain/lessonCopy.test.ts`](../../../../packages/shared/src/lessons/domain/lessonCopy.test.ts) | les textes fixes en français tutoient l'apprenant (PR #208) |
 
 Les tests lisent des fixtures dans `packages/shared/test/fixtures/` :
 `samples/` (leçons complètes) et `content/` (leçons courtes, qui échouent exprès aux règles de longueur).

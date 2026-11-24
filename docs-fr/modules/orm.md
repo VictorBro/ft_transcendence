@@ -114,6 +114,11 @@ attrape ces codes et répond avec une erreur claire :
 - Un display name déjà pris lors de la modification du profil
   ([users.service.ts](../../apps/api/src/users/users.service.ts)).
 
+D'autres écritures mettent la vérification dans le `where` d'un `updateMany` et lisent le `count`, donc la
+vérification et l'écriture sont une seule instruction. Un code de récupération n'est marqué utilisé que tant que `usedAt`
+est `null`, et la configuration et l'activation de la 2FA n'écrivent que tant que `totpEnabledAt` est `null`
+([two-factor.service.ts](../../apps/api/src/auth/two-factor.service.ts), [#219](https://github.com/VictorBro/ft_transcendence/pull/219)).
+
 ### Les vérifications qui gardent le schema et les migrations d'accord
 
 | Vérification  | Ce qu'elle fait                                                                                                                                                                                                             | Où elle tourne                                                                                                                                                     |
@@ -169,7 +174,7 @@ Appuie sur Ctrl+C pour arrêter Studio.
 
 | Test                                                                       | Ce qu'il vérifie                                                                                                                                                                                                                        |
 | -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [prisma.service.spec.ts](../../apps/api/src/prisma/prisma.service.spec.ts) | Le client se connecte au démarrage et se déconnecte à l'arrêt ; `ping` lance une requête ; il refuse de démarrer avec un `DATABASE_URL` vide.                                                                                           |
+| [prisma.service.spec.ts](../../apps/api/src/prisma/prisma.service.spec.ts) | Le client se connecte au démarrage et se déconnecte à l'arrêt ; `ping` lance une requête et donne la latence ; un `ping` qui échoue rejette, et c'est l'appelant qui décide ce que ça veut dire.                                                                                           |
 | [health.service.spec.ts](../../apps/api/src/health/health.service.spec.ts) | Le rapport de santé dit `down` sans lever d'erreur quand la sonde de la base échoue, et `degraded` quand elle est lente.                                                                                                                |
 | [test/auth.e2e-spec.ts](../../apps/api/test/auth.e2e-spec.ts)              | "refuses a duplicate email with 409" : la clé unique sur `User.email`.                                                                                                                                                                  |
 | [test/seed.e2e-spec.ts](../../apps/api/test/seed.e2e-spec.ts)              | Les upserts du seed : "running it twice leaves the same row count and id (idempotent upsert)", "refuses to delete a lesson that has a result (Restrict)", "fails on an invalid lesson, names its id and the issue, and writes nothing". |

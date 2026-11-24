@@ -28,8 +28,8 @@ A prompt has two parts in this project:
 
 | Part     | What it is                                              | Example                                     |
 | -------- | ------------------------------------------------------- | ------------------------------------------- |
-| `system` | The rules and the role of the model. Same for many calls. | "You are an expert CEFR exam designer..."  |
-| `user`   | The precise request (or the conversation, for the tutor). | "Write 13 B1 grammar questions in "fr"."   |
+| `system` | The rules and the role of the model. Same for many calls. | "You are an expert CEFR language exam designer." |
+| `user`   | The precise request (or the conversation, for the tutor). | "Write 13 B1 grammar questions in "fr", one per topic." |
 
 The API uses the LLM for **two jobs**:
 
@@ -128,7 +128,7 @@ apps/api/src/llm/
 ├── fixture.provider.ts         fake provider: no network (default)
 ├── disabled.provider.ts        fake provider: everything fails
 ├── GEMINI_PROVIDER.md          long French explanation of gemini.provider.ts
-└── *.spec.ts                   unit tests (one per file, two for Gemini)
+└── *.spec.ts                   unit tests (one per file but llm.provider.ts, two for Gemini)
 ```
 
 We read them in the order the app uses them: first the contract, then how the app picks a provider at boot,
@@ -202,6 +202,11 @@ export interface StreamRequest {
   messages: LlmMessage[];
   /** The longest answer we pay for, in tokens. The model stops there, mid-sentence if it must. */
   maxOutputTokens: number;
+  /**
+   * Cancels the call. The route aborts it when the learner closes the page, so the
+   * provider stops reading the answer and Google stops writing it.
+   * It is required: a stream nobody can stop keeps spending tokens for no one.
+   */
   signal: AbortSignal;
 }
 ```
@@ -450,6 +455,9 @@ Google's envelope, one for the model's text.
 
 ```ts
 constructor(private readonly options: { apiKey: string; model: string }) {
+  // Every purpose, outcome and token type starts at 0. A counter that appears at 1
+  // hides its first call from Prometheus' rate(), so the first failures would not
+  // count, nor the first call's tokens.
   for (const purpose of PURPOSES) {
     for (const outcome of OUTCOMES) {
       llmRequests.inc({ provider: 'gemini', model: options.model, purpose, outcome }, 0);
@@ -740,7 +748,7 @@ function streamBody({ system, messages, maxOutputTokens }: StreamRequest) {
 - `thinkingBudget: 0` turns off the model's "thinking". The comment explains why: thinking counts against
   `maxOutputTokens` (250 to 660 tokens were measured before answers of 66 to 120), it could cut the answer, and it
   is billed too. A short tutor answer does not need it.
-- No JSON schema: the answer is free text.
+- No JSON schema: the answer is free text. A real model often writes it in Markdown; the browser renders it (`tutor-answer.tsx`, #214, see [web chapter 7](../web/07-lesson-player.md)). The API passes the text on as it is.
 
 ### `sseData` and `eventData`: reading the event stream
 

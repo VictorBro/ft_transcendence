@@ -25,7 +25,7 @@ Signup and login are the mandatory part, not this module, so this file does not 
 
 | The subject asks | What we built | Where |
 | --- | --- | --- |
-| Profile editing | The **Edit profile** page changes the display name and the avatar (next row). The interface language and the time zone are saved on the same route, `PATCH /api/users/me`, but by the app itself, not by a form: the language when the user switches it, the time zone from the browser. Email and password are not on this page (see [Limits and choices](#limits-and-choices)). | [profile-form.tsx](../../apps/web/app/[locale]/(main)/profile/edit/profile-form.tsx), [users.controller.ts](../../apps/api/src/users/users.controller.ts), [locale-sync.tsx](../../apps/web/components/locale-sync.tsx), [time-zone-sync.tsx](../../apps/web/components/time-zone-sync.tsx) |
+| Profile editing | The **Edit profile** page changes the display name and the avatar (next row). The interface language and the time zone are saved on the same route, `PATCH /api/users/me`, but by the app itself, not by a form: the language when a learning page opens in a language other than the saved one (the lesson tutor answers in `User.locale`), the time zone from the browser. Email and password are not on this page (see [Limits and choices](#limits-and-choices)). | [profile-form.tsx](../../apps/web/app/[locale]/(main)/profile/edit/profile-form.tsx), [users.controller.ts](../../apps/api/src/users/users.controller.ts), [locale-sync.tsx](../../apps/web/components/locale-sync.tsx), [time-zone-sync.tsx](../../apps/web/components/time-zone-sync.tsx) |
 | Avatar upload | On the same page: **Upload avatar** (or **Change avatar**) and **Remove avatar**. PNG, JPEG or WebP, 2 MiB at most. The browser checks the size first. The server checks the type, the size and the first bytes of the file. The old file is deleted when it is replaced or removed. | [profile-form.tsx](../../apps/web/app/[locale]/(main)/profile/edit/profile-form.tsx), [users.controller.ts](../../apps/api/src/users/users.controller.ts), [users.service.ts](../../apps/api/src/users/users.service.ts) |
 | With a default | A user with no avatar gets a circle with the first letter of their display name. The colour comes from the name, so the same person always has the same colour. It is drawn in the page (SVG), so there is no image file to lose. | [avatar.tsx](../../apps/web/components/avatar.tsx), [lib/avatar.ts](../../apps/web/lib/avatar.ts) |
 | Friends | The **Friends** page: search by display name, a "Recently active" list, send, accept, decline and cancel requests, remove a friend. The other user sees each change without a reload. | [friends/page.tsx](../../apps/web/app/[locale]/(main)/friends/page.tsx), [friends.service.ts](../../apps/api/src/friends/friends.service.ts) |
@@ -87,7 +87,7 @@ flowchart LR
   the old file. It takes the file name from the user's own row, and only inside the avatar folder.
 - When `avatarUrl` is empty, the `Avatar` component ([avatar.tsx](../../apps/web/components/avatar.tsx))
   draws the default: a circle with the first letter of the display name, in a colour computed
-  from the name ([lib/avatar.ts](../../apps/web/lib/avatar.ts)). The avatar shows in the header,
+  from the name ([lib/avatar.ts](../../apps/web/lib/avatar.ts)). The avatar shows in the header menu,
   on both profile pages, and in every list of users.
 
 ### Friends
@@ -188,7 +188,7 @@ The WebSocket side is explained in [websockets.md](./websockets.md) and in
 | [apps/web/app/[locale]/(main)/friends/](../../apps/web/app/[locale]/(main)/friends) | The friends page and its search form. |
 | [apps/web/components/avatar.tsx](../../apps/web/components/avatar.tsx), [apps/web/lib/avatar.ts](../../apps/web/lib/avatar.ts) | The avatar, and the drawn default. |
 | [apps/web/components/presence-dot.tsx](../../apps/web/components/presence-dot.tsx), [apps/web/components/tab-socket.ts](../../apps/web/components/tab-socket.ts), [apps/web/lib/presence.ts](../../apps/web/lib/presence.ts) | The online dot, and the tab's live map of who is online. |
-| [apps/web/components/session-nav.tsx](../../apps/web/components/session-nav.tsx) | The header: your avatar and name link to `/profile`, then **Friends**. |
+| [apps/web/components/session-nav.tsx](../../apps/web/components/session-nav.tsx), [apps/web/components/header-menu.tsx](../../apps/web/components/header-menu.tsx) | The account links in the header menu: your avatar and name link to `/profile`, then **Friends**, **Messages** and **Sign out**. |
 | [apps/web/lib/auth-client.ts](../../apps/web/lib/auth-client.ts) | `updateProfile`, `uploadAvatar`, `removeAvatar`: the browser calls to the API. |
 
 ## How to show it at the defence
@@ -202,11 +202,11 @@ normal window and a private window.
 
 1. Open `https://localhost/en/signup`. Fill in **Email**, **Display name**, **Password** and
    **Confirm password**, then click **Create account**. The app opens the onboarding page.
-2. Click your display name or avatar in the header (on a phone it says **Profile**). The **Profile** page shows your name, email, "Joined"
+2. Open the menu in the header (the button at the top right) and click your display name. The **Profile** page shows your name, email, "Joined"
    date and the default avatar: a coloured circle with your first letter.
 3. Click **Edit profile**. Change **Display name** to `ab` and click **Save changes**: the form
    shows "Display name needs at least 3 characters". Now type a valid new name and click **Save
-   changes**. You are back on **Profile** with the new name, and the header shows it too.
+   changes**. You are back on **Profile** with the new name, and the header menu shows it too.
 4. Validation on the server too: in a terminal, send a short name straight to the API, without
    the form. Copy the `ft.sid` cookie from the browser's developer tools first.
    ```sh
@@ -216,7 +216,7 @@ normal window and a private window.
    ```
    The answer is 400 with the code `displayName.tooShort`.
 5. Back on **Edit profile**, click **Upload avatar** and pick a PNG, JPEG or WebP under 2 MiB. The
-   picture replaces the circle, on the page and in the header. The link now says **Change avatar**.
+   picture replaces the circle, on the page and in the header menu. The link now says **Change avatar**.
 6. Pick a file that is not an image, for example a PDF. The page shows "That file could not be
    used as an avatar. Try a PNG, JPEG or WebP." Pick an image over 2 MiB: "File is too large.
    Maximum size is 2 MiB."
@@ -225,7 +225,7 @@ normal window and a private window.
 **Friends, the profile page and online status (both windows)**
 
 8. In the private window, sign up a second user the same way.
-9. In window 1, click **Friends** in the header. The second user is under **Recently active**.
+9. In window 1, open the menu in the header and click **Friends**. The second user is under **Recently active**.
    You can also type part of their name (at least 3 characters) in **Search by display name**
    and click **Search**.
 10. Click their name. Their profile page (`/users/<id>`) shows their name, avatar and
@@ -248,7 +248,7 @@ normal window and a private window.
 | Test | What it checks |
 | --- | --- |
 | [e2e/tests/avatar.spec.ts](../../e2e/tests/avatar.spec.ts) | "uploads, renders, and removes again": the default is drawn, an uploaded PNG is served back and really decodes, **Remove avatar** brings the default back. "refuses a file that is not an image". "a signed out visitor cannot reach the edit page". |
-| [e2e/tests/auth.spec.ts](../../e2e/tests/auth.spec.ts) | "saves a profile edit and shows it in the header": **Edit profile**, new **Display name**, **Save changes**, the new name on the page and in the header. |
+| [e2e/tests/auth.spec.ts](../../e2e/tests/auth.spec.ts) | "saves a profile edit and shows it in the header": **Edit profile**, new **Display name**, **Save changes**, the new name on the page and in the header menu. |
 | [e2e/tests/friends.spec.ts](../../e2e/tests/friends.spec.ts) | "a stranger found by search is added from their profile, then visited as a friend"; "a request shows up live, is accepted, and both lists follow"; "a friend's dot goes grey when they leave and green when they come back" (two browsers, the 10 s grace period); "a profile needs a session"; "an unknown or malformed profile is a 404". |
 | [apps/api/test/users.e2e-spec.ts](../../apps/api/test/users.e2e-spec.ts) | Avatars: "stores a relative path and serves the file back", "deletes the previous file when the avatar is replaced", "rejects a file whose bytes are not the type it claims, and keeps nothing", "rejects an oversized file with a code, not a sentence", "will not let the profile patch set an avatar url". Profile: "shows the public fields and nothing else", "answers 404 for an unknown id and 400 for a malformed one". |
 | [apps/api/test/friends.e2e-spec.ts](../../apps/api/test/friends.e2e-spec.ts) | Search and recently active; "a request reaches both users, is accepted, then removed, and a stranger hears none of it"; "a friend hears you come online, and someone who only sent you a request does not". |
@@ -297,5 +297,5 @@ From `git log --follow` on the files above and `gh pr view` on each pull request
 | --- | --- | --- | --- |
 | Victor | `VictorBro` | The first profile page and `PATCH /api/users/me` with the display name rule; friends and the friends page; user search; the public profile page and `GET /api/users/:id`; "Recently active" and `lastActiveDay`; the online dot in the messages. | #5, #189 (closes #155), #193 (closes #156), #200 (closes #158) |
 | Anaïs | `avarrett` (commits as `ninisse`) | Avatar upload and removal: the upload route and its checks, file storage and deletion, the **Edit profile** page and form, the drawn default avatar, and the avatar e2e test. | #42 (closes #11) |
-| Endrit | `VYAntares` (commits as `EA`) | Online status: `PresenceService` and the Redis counter with the grace period, the gateway's presence events, `isOnline` in the friends list, the `PresenceDot`, and the two-browser e2e test. | #195 (closes #157) |
+| Endrit | `VYAntares` (commits as `EA`) | Online status: `PresenceService` and the Redis counter with the grace period, the gateway's presence events, `isOnline` in the friends list, the `PresenceDot`, and the two-browser e2e test. Later: the header menu, and the profile pages laid out for phones. | #195 (closes #157), #220 |
 | Luca | `luca-mattei` | The time zone and the interface language saved on the user through `PATCH /api/users/me`; the profile page laid out for phone screens. | #109 (closes #78), #212 (closes #211), #75 (closes #68) |

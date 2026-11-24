@@ -194,7 +194,8 @@ A `model` is a table. Each line is a column: `name  Type  @attributes`.
 
 ### The whole schema in one picture
 
-Relation fields (like `recoveryCodes`) are left out: only real columns are shown.
+Relation fields (like `recoveryCodes`) are left out: only real columns are shown. To keep the picture small,
+most `createdAt` / `updatedAt` / `startedAt` columns are left out too (the code blocks below show them).
 `PK` = primary key, `FK` = foreign key, `UK` = unique.
 
 ```mermaid
@@ -378,13 +379,16 @@ One row per account.
 - `email` and `displayName` are both `@unique`: two accounts cannot share either. The sign-up code
   relies on this (section 7, example 1).
 - `passwordHash`: never the password itself, only its argon2 hash (chapter 5).
-- `locale`: the language of the interface (`en`, `fr`, `de`). `activeLang`: the course the user
+- `locale`: the language of the interface (`en`, `fr`, `de`). It is set at sign-up, and the web app
+  saves it again with `PATCH /api/users/me` when the URL's language differs from it (#211).
+  The lesson tutor reads it to answer in that language. `activeLang`: the course the user
   is learning right now (null before the first course).
 - `timeZone`: an IANA name like `Europe/Paris`, used to know when "today" starts for the streak.
 - `lastActiveDay`: a `DATE` (no time). Written once a day by the WebSocket gateway (chapter 9).
+  It keeps the user in "Recently active" for a week.
 - `totpSecret` / `totpEnabledAt`: two-factor login. The comment explains why there are two columns:
   the secret is saved when setup starts, but 2FA is only "on" once `totpEnabledAt` is set.
-- The comment at the top is important: some columns (the hash, the TOTP secret) are **private**.
+- The comment at the top is important: some columns (the hash, the TOTP columns, `lastActiveDay`) are **private**.
   The shared `UserSchema` that the browser sees must never get them.
 
 The relation fields at the bottom (`recoveryCodes`, `userLevels`, `friendshipsRequested`, ...) are
@@ -442,7 +446,8 @@ The name is a bit misleading: a `UserLevel` row is **one course** (for example "
 
 - `@@unique([userId, lang])`: a user has at most one course per language.
 - `level` is null until the placement test (or the user) picks a level (A1 to C2).
-- `dailyGoal`: how many lessons a day the user wants.
+- `dailyGoal`: minutes a day the user wants to study: 10, 30 or 60 (`DAILY_GOALS` in `@ft/shared`).
+  With 10 minutes a lesson, that means 1, 3 or 6 lessons a day.
 - `streak`, `bestStreak`, `lastGoalDay`: the "days in a row" counter.
 - `xp`, `lastChallengeDay`, `lastChallengeCode`, `challengesDone`: points and the daily challenge (gamification, chapter 8).
 
@@ -579,8 +584,8 @@ model LessonAttempt {
 ```
 
 The server-side state of one lesson being played (chapter 8 explains the flow).
-`@@unique([userLevelId, lessonId])`: only one attempt per course and lesson is kept; a new start
-replaces the old one. `secret` is raw bytes (`BYTEA`) used to sign references, and never leaves the server.
+`@@unique([userLevelId, lessonId])`: only one attempt per course and lesson is kept. A start
+resumes the attempt still in progress, or deletes a finished one and creates a new one. `secret` is raw bytes (`BYTEA`) used to sign references, and never leaves the server.
 `completedAt` null means "still in progress".
 
 ### `UserAchievement`
@@ -602,7 +607,8 @@ model UserAchievement {
 ```
 
 A badge. The composite primary key `(userLevelId, code)` means a course can earn each badge only
-once, even if two lessons finish at the same moment: the second insert simply fails.
+once, even if two lessons finish at the same moment. The code writes with `createMany({ ..., skipDuplicates: true })`
+([gamification.ts](../../apps/api/src/lessons/gamification.ts)), so the second write of the same badge is just skipped.
 
 ### `Friendship`
 
@@ -624,7 +630,8 @@ model Friendship {
 }
 ```
 
-A nice trick: the primary key is `pairKey`, the two user ids sorted and joined. Alice-to-Bob and
+A nice trick: the primary key is `pairKey`, the two user ids sorted and joined with `:` (`pairKey()` in
+[pair.ts](../../apps/api/src/friends/pair.ts)). Alice-to-Bob and
 Bob-to-Alice give the **same** key, so if both click "add friend" at the same time, the database
 keeps only one row. `status` is `pending` (a request) or `accepted`. The two indexes serve
 "requests I sent" and "requests I received".
@@ -635,6 +642,7 @@ keeps only one row. `status` is `pending` (a request) or `accepted`. The two ind
 // One row per pair who have exchanged a message, keyed like Friendship. It
 // outlives the friendship: the history stays readable by both.
 model Conversation {
+  // Both ids, smaller first (src/friends/pair.ts), so a pair cannot get two.
   pairKey       String    @id
   // The smaller id.
   userAId       String    @db.Uuid
@@ -831,7 +839,9 @@ CREATE TABLE "RecoveryCode" (
 
 You can see how Prisma words map to SQL: `DateTime` becomes `TIMESTAMP(3)` (millisecond precision),
 `String?` becomes `TEXT` without `NOT NULL`, `@default(now())` becomes `DEFAULT CURRENT_TIMESTAMP`.
-Note there is no `DEFAULT` for `updatedAt`: Prisma fills it from the client side, not in SQL.
+Two Prisma defaults have no SQL `DEFAULT` at all: `id` is `UUID NOT NULL` because `uuid()` is made by
+the client, and `updatedAt` (in `User`, first migration) is `TIMESTAMP(3) NOT NULL` because Prisma fills it
+from the client side, not in SQL.
 
 Migrations are **never edited** after they are committed: a database somewhere may already have run
 them. A change is always a *new* migration.
@@ -849,13 +859,14 @@ another database (MySQL, say), Prisma would see the mismatch and stop, because t
 
 ### How migrations are applied
 
-The `package.json` of the API has three scripts:
+The `package.json` of the API has four `db:` scripts:
 
 | Script | Command | When |
 | --- | --- | --- |
 | `db:generate` | `prisma generate` | write the typed client (section 6) |
 | `db:migrate` | `prisma migrate dev` | **development only**: write a new migration from schema changes and apply it |
 | `db:deploy` | `prisma migrate deploy` | apply the missing migrations, never write new ones (safe for any server) |
+| `db:seed` | `tsx prisma/seed.ts` | load the content (section 5) |
 
 In practice you use the [Makefile](../../Makefile):
 
@@ -867,8 +878,8 @@ In practice you use the [Makefile](../../Makefile):
   compiled `dist`), so the Makefile builds the `build` stage of
   [apps/api/Dockerfile](../../apps/api/Dockerfile) as `ft_transcendence/api-tooling` and runs the command there,
   on the compose network so it can reach the `db` service.
-- `make db-ready` = `make migrate` then `make seed`. `make dev` calls it at the end, so a fresh
-  clone always gets tables and data. Both steps are safe to repeat.
+- `make db-ready` = `make migrate` then `make seed`. `make dev`, `make run` and `make reset-db` call it,
+  so a fresh clone always gets tables and data. Both steps are safe to repeat.
 - `make ci` runs `prisma migrate deploy` before the e2e tests, plus two checks:
   [check-prisma-format.sh](../../scripts/check-prisma-format.sh) (the schema is formatted) and
   [check-prisma-drift.sh](../../scripts/check-prisma-drift.sh). The drift check replays every
@@ -913,7 +924,8 @@ content/
 
 It is run with `pnpm db:seed`, which is `tsx prisma/seed.ts` (`tsx` runs TypeScript directly, no build).
 `make seed` and the deploy `migrate` service call it. It is safe to run many times: it **upserts**
-(update if it exists, insert if not) and only writes what changed.
+(update if it exists, insert if not). The questions are upserted again on every run; the lessons
+part only writes what changed.
 
 ### The main block: what runs, in order
 
@@ -1133,7 +1145,7 @@ results, `ready` following the files, and the demo skip rules. Chapter 10 covers
 ### What is generated code?
 
 `prisma generate` reads `schema.prisma` and **writes TypeScript files** for you: one set of types
-and methods per model. You never edit them; the first line of each file says so:
+and methods per model. You never edit them; the top of each file says so:
 
 ```ts
 /* !!! This is code generated by Prisma. Do not edit directly. !!! */
@@ -1287,7 +1299,7 @@ message, both or neither. And loading the history, one page at a time:
 
 `where pairKey`, `orderBy createdAt, id`: exactly the columns of the index
 `@@index([pairKey, createdAt, id])`. The database reads the page straight from the index.
-`take: PAGE_SIZE + 1` asks for one extra row only to know whether an older page exists.
+`take: MESSAGE_PAGE_SIZE + 1` asks for one extra row only to know whether an older page exists.
 
 ---
 

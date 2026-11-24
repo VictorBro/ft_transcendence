@@ -453,7 +453,10 @@ broken to load" (pour que quitter marche même sur un passage trop cassé pour �
 les deux modifier le passage. Le service utilise un petit verrou Redis :
 
 ```ts
-async acquireLock(userId: string, ttlSeconds = PLACEMENT_LOCK_TTL_SECONDS): Promise<string | null> {
+async acquireLock(
+  userId: string,
+  ttlSeconds = PLACEMENT_LOCK_TTL_SECONDS,
+): Promise<string | null> {
   const token = randomUUID();
   const result = await this.redis.client.set(this.evalLockKey(userId), token, {
     NX: true,
@@ -512,7 +515,7 @@ const questions = await this.prisma.questionBank.findMany({
     },
   },
   // Written rows first, so the take never hides one behind generated rows.
-  orderBy: { sourceId: { sort: "asc", nulls: "last" } },
+  orderBy: { sourceId: { sort: 'asc', nulls: 'last' } },
   take: LIMIT_UNSEEN_QUESTIONS_TO_RETRIEVE,
 });
 
@@ -540,10 +543,18 @@ const oldest = await this.prisma.userSeenQuestion.findFirst({
     ...(excludeQuestionIds.length > 0
       ? { questionId: { notIn: [...new Set(excludeQuestionIds)] } }
       : {}),
-    questionBank: { lang: session.lang, level, category: { in: [...pool] } },
+    questionBank: {
+      lang: session.lang,
+      level,
+      category: { in: [...pool] },
+    },
   },
-  orderBy: { updatedAt: "asc" },
-  include: { questionBank: true },
+  orderBy: {
+    updatedAt: 'asc',
+  },
+  include: {
+    questionBank: true,
+  },
 });
 ```
 
@@ -612,17 +623,17 @@ if (!isCorrect) {
   session.mistakesPerLevel += 1;
 }
 
-let levelChange: "down" | "stay" | "up" = "stay";
+let levelChange: 'down' | 'stay' | 'up' = 'stay';
 
 if (session.mistakesPerLevel > PLACEMENT_ROUNDS.maxMistakes) {
-  levelChange = "down";
+  levelChange = 'down';
 } else {
   const askedInCurrentLevel = Object.values(session.askedPerCategory).reduce(
     (sum, count) => sum + count,
     0,
   );
   if (askedInCurrentLevel + 1 >= MAX_QUESTIONS_PER_LEVEL) {
-    levelChange = "up";
+    levelChange = 'up';
   }
 }
 ```
@@ -637,7 +648,7 @@ Ensuite :
   - `down` : `hi = level`, sauter à mi-chemin vers `lo`.
 
 ```ts
-if (levelChange === "up") {
+if (levelChange === 'up') {
   session.lo = Math.min(session.hi, session.level + 1);
   const nextIndex = Math.min(
     session.hi - 1,
@@ -744,9 +755,12 @@ again" (pour que l'apprenant puisse recommencer).
 
 ```ts
 if (session.answers.some((answer) => answer.questionId === question.id)) {
-  throw new ConflictException("placement.invalidSession");
+  throw new ConflictException('placement.invalidSession');
 }
-session.answers.push({ questionId: question.id, choice });
+session.answers.push({
+  questionId: question.id,
+  choice,
+});
 session.totalAnswered += 1;
 this.progressService.adjustSessionFromAnswer(choice, question, session);
 
@@ -757,7 +771,7 @@ if (result !== undefined) {
   }
   await this.sessionService.saveExamSession(userId, session);
   // Here, not wherever a result is read: this answer is the one that ended the run.
-  placementExams.inc({ lang: session.lang, event: "completed" });
+  placementExams.inc({ lang: session.lang, event: 'completed' });
   return result;
 }
 
@@ -980,11 +994,16 @@ processus Node.
 **`fill`** fait le travail, entièrement dans un `try/catch` :
 
 ```ts
+// 1. Ask the LLM (with one retry when it makes sense, see generate).
 const items = await this.generate(cell, key);
+// 2. Read the questions already in this cell. "where: cell" works because Cell's
+//    fields have the same names as the columns. "select" reads only two columns.
 const stored = await this.prisma.questionBank.findMany({
   where: cell,
   select: { question: true, readText: true },
 });
+// 3. Keep only the new ones, turn them into rows, save them all in one query.
+//    createMany returns how many rows it inserted ("count").
 const { count } = await this.prisma.questionBank.createMany({
   data: toRows(cell, freshItems(items, stored)),
 });
@@ -1013,6 +1032,7 @@ const request = {
 try {
   return (await this.llm.generateStructured(request)).items;
 } catch (error) {
+  // "instanceof LlmError" checks the error's class (a catch can receive anything).
   // Only a retryable LlmError gets a second try; anything else is thrown again.
   if (!(error instanceof LlmError && error.retryable)) throw error;
   this.logger.warn(`retrying ${key}: ${error.message}`);
@@ -1054,10 +1074,10 @@ const TIME_LIMIT_S: Record<QuestionCategory, Record<Level, number>> = {
 La **détection des doublons** compare une clé normalisée :
 
 ```ts
-const normalise = (text: string) => text.trim().toLowerCase().replace(/\s+/g, " ");
+const normalise = (text: string) => text.trim().toLowerCase().replace(/\s+/g, ' ');
 
 const itemKey = ({ question, readText }: GeneratedItem | Stored) =>
-  [readText ?? "", question].map(normalise).join("\n");
+  [readText ?? '', question].map(normalise).join('\n');
 
 export function freshItems(items: readonly GeneratedItem[], stored: readonly Stored[]) {
   const seen = new Set(stored.map(itemKey));

@@ -133,7 +133,7 @@ Le code de [apps/api/src](../../apps/api/src) est découpé en **modules** (la s
 | [health/](../../apps/api/src/health)                           | `HealthModule`             | « Est-ce que je suis vivant ? Est-ce que Postgres et Redis répondent ? » pour Docker et la CI                                            | `GET /api/health`                                                                                                                                                     |
 | [auth/](../../apps/api/src/auth)                               | `AuthModule`               | Inscription, connexion, déconnexion, sessions, authentification à deux facteurs (TOTP) ; le `AuthGuard` global                           | `/api/auth/signup`, `login`, `logout`, `me`, `2fa`, `2fa/setup`, `2fa/enable`, `2fa/verify`                                                                           |
 | [users/](../../apps/api/src/users)                             | `UsersModule`              | Profils : lister et chercher des utilisateurs, en lire un, changer mon profil, envoyer ou supprimer mon avatar                           | `/api/users`, `/api/users/recently-active`, `/api/users/:id`, `/api/users/me`, `/api/users/me/avatar`                                                                 |
-| [llm/](../../apps/api/src/llm)                                 | `LlmModule`                | Choisit le fournisseur d'IA (un vrai modèle, ou un faux « fixture » pour les tests) et l'exporte sous le nom `LLM_PROVIDER`              | aucune                                                                                                                                                                |
+| [llm/](../../apps/api/src/llm)                                 | `LlmModule`                | Choisit le fournisseur d'IA (`gemini`, le vrai modèle ; `fixture`, un faux pour les tests ; ou `disabled`) et l'exporte sous le nom `LLM_PROVIDER`              | aucune                                                                                                                                                                |
 | [courses/](../../apps/api/src/courses)                         | `CoursesModule`            | Les langues qu'un utilisateur étudie, l'objectif du jour, le niveau                                                                      | `/api/courses`, `/api/courses/:lang`, `/api/courses/:lang/level`                                                                                                      |
 | [question-generation/](../../apps/api/src/question-generation) | `QuestionGenerationModule` | Écrit de nouvelles questions de placement avec le LLM quand le stock baisse                                                              | aucune (utilisé par placement)                                                                                                                                        |
 | [placement/](../../apps/api/src/placement)                     | `PlacementModule`          | Le test de placement qui trouve ton niveau                                                                                               | `/api/placement`, `/api/placement/answers`                                                                                                                            |
@@ -172,13 +172,14 @@ flowchart TD
 
 ## 4. La place de l'API dans le système
 
-Toute l'app tourne dans des containers Docker, décrits dans [compose.yml](../../compose.yml) (plus `compose.prod.yml` et `compose.override.yml`). Seul **Caddy** ouvre un port vers l'extérieur. Caddy est un _reverse proxy_ : une seule porte d'entrée qui envoie chaque requête au bon container, et qui gère le HTTPS.
+Toute l'app tourne dans des containers Docker, décrits dans [compose.yml](../../compose.yml) (plus les surcouches `compose.override.yml` pour le dev et `compose.prod.yml`, et `compose.deploy.yml` pour le serveur). Seul **Caddy** ouvre un port vers l'extérieur (en dev, Postgres et Redis en ouvrent aussi un, mais seulement sur `127.0.0.1`). Caddy est un _reverse proxy_ : une seule porte d'entrée qui envoie chaque requête au bon container, et qui gère le HTTPS.
 
 ```mermaid
 flowchart LR
     browser["Navigateur"] -->|"HTTPS :443"| caddy["caddy<br/>(TLS, routage)"]
     caddy -->|"/api/*"| api["api<br/>NestJS :3001"]
     caddy -->|"/ws/*"| api
+    caddy -->|"/grafana/*"| grafana["grafana<br/>(monitoring)"]
     caddy -->|"tout le reste"| web["web<br/>Next.js :3000"]
     web -->|"fetch côté serveur<br/>http://api:3001"| api
     api --> db[("db<br/>Postgres 18 + pgvector")]
@@ -202,24 +203,24 @@ Pourquoi une seule porte d'entrée pour le web et l'api ? Parce qu'alors `/` et 
 Le service `api` dans `compose.yml` montre ce dont l'API a besoin pour démarrer :
 
 ```yaml
-api:
-  logging: *logging
-  build:
-    context: .
-    dockerfile: apps/api/Dockerfile
-  depends_on:
-    db:
-      condition: service_healthy
-    redis:
-      condition: service_healthy
-  environment:
-    NODE_ENV: ${NODE_ENV:-development}
-    # Prometheus scrapes metrics on 9464 (apps/api/src/metrics). Internal
-    # only: never add it to ports.
-    PORT: 3001
+  api:
+    logging: *logging
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      NODE_ENV: ${NODE_ENV:-development}
+      # Prometheus scrapes metrics on 9464 (apps/api/src/metrics). Internal
+      # only: never add it to ports.
+      PORT: 3001
 ```
 
-Il attend que Postgres et Redis soient en bonne santé, et reçoit ses réglages par des variables d'environnement : `DATABASE_URL`, `REDIS_URL`, `SESSION_SECRET`, `LLM_PROVIDER`, `LLM_API_KEY`, `LLM_MODEL`, les limites de débit, et `AVATAR_STORAGE_DIR` (où vont les avatars envoyés, un volume Docker).
+Il attend que Postgres et Redis soient en bonne santé, et reçoit ses réglages par des variables d'environnement : `DATABASE_URL`, `REDIS_URL`, `SESSION_SECRET`, `LLM_PROVIDER`, `LLM_API_KEY`, `LLM_MODEL`, `APP_VERSION`, les limites de débit (`RATE_LIMIT_PER_MINUTE`, `SIGNUP_LIMIT_PER_MINUTE`, `LOGIN_LIMIT_PER_MINUTE`) et les limites du tuteur IA (`LLM_DISCUSSION_*`), et `AVATAR_STORAGE_DIR` (où vont les avatars envoyés, un volume Docker).
 
 ---
 
@@ -500,14 +501,14 @@ Il est compilé dans `packages/shared/dist`, et l'API l'importe sous le nom `@ft
 Normalement, Nest valide avec des _classes DTO_ (Data Transfer Object : une classe qui décrit un body). `nestjs-zod` construit une telle classe à partir d'un schema Zod. Extrait de [courses.dto.ts](../../apps/api/src/courses/courses.dto.ts) :
 
 ```ts
-import { createZodDto } from "nestjs-zod";
+import { createZodDto } from 'nestjs-zod';
 import {
   StartCourseSchema,
   SetGoalSchema,
   SetLevelSchema,
   CourseSchema,
   CoursesSchema,
-} from "@ft/shared";
+} from '@ft/shared';
 
 export class StartCourseDto extends createZodDto(StartCourseSchema) {}
 ```
@@ -680,13 +681,13 @@ Le [nest.json](../../packages/tsconfig/nest.json) partagé utilise `"module": "c
 ```js
 // .mjs, not .js: this package must stay CommonJS ("type": "module" would make
 // Nest's dist/main.js unloadable), and ESLint imports the config file as-is.
-import nest from "@ft/eslint-config/nest";
+import nest from '@ft/eslint-config/nest';
 
 export default [
   ...nest,
   {
     // src/generated is the Prisma client: emitted code, never hand-edited.
-    ignores: ["dist/**", "coverage/**", "**/generated/**"],
+    ignores: ['dist/**', 'coverage/**', '**/generated/**'],
   },
 ];
 ```
@@ -695,7 +696,7 @@ Le fichier partagé [packages/eslint-config/nest.js](../../packages/eslint-confi
 
 ### 9.5 Config des tests : vitest.config.mts et vitest.config.e2e.mts
 
-La liste des tâches dit « jest config », mais ce projet utilise **Vitest**, pas Jest. Vitest est un lanceur de tests avec presque la même API (`describe`, `it`, `expect`). Il n'y a aucun fichier Jest.
+Tu t'attends peut-être à une config Jest, mais ce projet utilise **Vitest**, pas Jest. Vitest est un lanceur de tests avec presque la même API (`describe`, `it`, `expect`). Il n'y a aucun fichier Jest.
 
 [vitest.config.mts](../../apps/api/vitest.config.mts) sert aux tests unitaires. La partie importante est le compilateur :
 
@@ -757,7 +758,7 @@ Points utiles à savoir, chacun expliqué par un commentaire dans le fichier :
 
 ### 9.8 .dockerignore et Dockerfile.dockerignore
 
-Ils listent ce que Docker ne doit **pas** envoyer dans le build : `node_modules`, `dist`, `generated`, `coverage`, les fichiers `.env`, `docs`, `*.md`, etc. Les deux fichiers sont identiques exprès :
+Ils listent ce que Docker ne doit **pas** envoyer dans le build : `node_modules`, `dist`, `generated`, `coverage`, les fichiers `.env`, `docs`, `*.md`, etc. Les deux fichiers ont les mêmes règles exprès (seul leur commentaire d'en-tête change) :
 
 ```text
 # BuildKit prefers <dockerfile>.dockerignore over <context>/.dockerignore, which
@@ -769,7 +770,7 @@ Donc [Dockerfile.dockerignore](../../apps/api/Dockerfile.dockerignore) est celui
 
 ### 9.9 .gitignore
 
-[.gitignore](../../apps/api/.gitignore) a une seule ligne : `src/generated/`. Le client Prisma est reconstruit à l'installation et pendant le build Docker.
+[.gitignore](../../apps/api/.gitignore) a une seule règle (sous un commentaire) : `src/generated/`. Le client Prisma est reconstruit à l'installation et pendant le build Docker.
 
 ---
 
@@ -778,7 +779,7 @@ Donc [Dockerfile.dockerignore](../../apps/api/Dockerfile.dockerignore) est celui
 - L'API est la cuisine : toutes les règles et tout l'accès aux données vivent dans `apps/api`. L'app web ne fait que demander et afficher.
 - HTTP = méthode + chemin + headers + body ; la réponse a un code de statut. Les bodies sont en JSON. Les erreurs portent un code, pas une phrase.
 - La connexion est retenue par le cookie de session `ft.sid` ; la session elle-même est stockée dans Redis.
-- Seul Caddy fait face à l'extérieur. `/api/*` et `/ws/*` vont à l'API, tout le reste à Next.js, le tout sur une seule origine.
+- Seul Caddy fait face à l'extérieur. `/api/*` et `/ws/*` vont à l'API, `/grafana/*` à Grafana, tout le reste à Next.js, le tout sur une seule origine.
 - Un **module** Nest regroupe une fonctionnalité ; un **controller** répond aux routes ; un **service** fait le travail ; Nest **injecte** les services dans les constructeurs et construit chacun une seule fois.
 - Les **décorateurs** attachent des métadonnées ; `emitDecoratorMetadata` + `reflect-metadata` permettent à Nest de voir les types des constructeurs à l'exécution. N'utilise jamais `import type` pour quelque chose que tu injectes.
 - Une requête passe par : middleware → guards → interceptors → pipes → controller → interceptors ; tout ce qui lance une erreur va dans un exception filter.

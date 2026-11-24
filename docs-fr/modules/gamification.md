@@ -156,7 +156,7 @@ leçon finie dans un autre onglet apparaît.
 | [`apps/api/prisma/migrations/20261107184854_add_gamification/`](../../apps/api/prisma/migrations/20261107184854_add_gamification/migration.sql)                        | La migration qui les ajoute                                                                                            |
 | [`apps/web/components/gamification.tsx`](../../apps/web/components/gamification.tsx)                                                                                   | `RankLine`, `ChallengeCard`, `NewToday`, `FinishXp`, `DoneMark`                                                        |
 | [`apps/web/app/[locale]/(dashboard)/learn/[lang]/achievements/page.tsx`](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/achievements/page.tsx>)                 | La page des succès : les 16 cartes en quatre groupes, et le panneau **How it works**                                   |
-| [`apps/web/app/[locale]/(dashboard)/learn/[lang]/page.tsx`](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/page.tsx>)                                           | La page du cours : rang, défi du jour, nouveautés du jour                                                              |
+| [`apps/web/app/[locale]/(dashboard)/learn/[lang]/page.tsx`](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/page.tsx>)                                           | La page du cours : les nouveautés du jour sous le titre ; le rang et le défi du jour dans les cartes de côté           |
 | [`apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/results/page.tsx`](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/results/page.tsx>) | Les résultats de la leçon : la carte XP en haut                                                                        |
 | [`apps/web/lib/achievements.ts`](../../apps/web/lib/achievements.ts)                                                                                                   | Charge les succès, et remplit les nombres de chaque règle à partir des constantes partagées                            |
 | [`apps/web/lib/xp-breakdown.ts`](../../apps/web/lib/xp-breakdown.ts)                                                                                                   | Sépare les XP d'une fin en lignes leçon, objectif et défi                                                              |
@@ -171,9 +171,10 @@ La stack doit tourner (`make run`, ou `make` pour lancer toutes les vérificatio
 1. Ouvre `https://localhost/en/signup`, crée un compte, choisis **Français** sous « Language to learn », choisis un
    « Daily goal », et clique sur **Next**. Clique sur **I already know my level**, choisis **A0** (un débutant, donc
    le cours est le français A1) et clique sur **Start learning**.
-2. Sur la page du cours (`/en/learn/fr`), montre sous le titre : « Rank 1 · 0 of 100 XP » avec une
-   barre vide, et le lien **Achievements and rules**. En dessous, il y a la carte **Today's challenge** avec
-   sa règle et « +30 XP ».
+2. Sur la page du cours (`/en/learn/fr`), montre la colonne de côté. Sa carte **Your rank** montre
+   « Rank 1 · 0 of 100 XP » avec une barre vide, et le lien **Achievements and rules**. En dessous,
+   il y a la carte **Today's challenge** avec sa règle et « +30 XP ». Dans une fenêtre étroite, ces
+   cartes sont derrière le bouton **My course** en haut à gauche (#220).
 3. Ouvre une des leçons du jour, clique sur **Start the lesson**, passe les pages et l'examen, et
    clique sur **Finish the exam**.
 4. En haut des résultats, une carte affiche « +N XP » avec une ligne **Lesson**, puis **New achievement**

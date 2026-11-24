@@ -166,7 +166,12 @@ export function Field({ label, hint, ...input }: FieldProps) {
       <label htmlFor={id} className="text-sm font-medium">
         {label}
       </label>
-      <input id={id} aria-describedby={hintId} className="..." {...input} />
+      <input
+        id={id}
+        aria-describedby={hintId}
+        className="..."
+        {...input}
+      />
       {hint ? (
         <p id={hintId} className="text-xs text-slate-400">
           {hint}
@@ -221,9 +226,9 @@ Les constantes de classes partent toutes d'une seule chaîne `BUTTON`. Elle met 
 
 ```tsx
 export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations("SignUpPage");
+  const t = await getTranslations('SignUpPage');
 
-  return { title: t("heading") };
+  return { title: t('heading') };
 }
 ```
 
@@ -234,40 +239,40 @@ export async function generateMetadata(): Promise<Metadata> {
 [signup-form.tsx](<../../apps/web/app/[locale]/(main)/signup/signup-form.tsx>) est un **client component**. Il a quatre champs : e-mail, nom affiché, mot de passe, confirmation du mot de passe.
 
 ```tsx
-async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
-  event.preventDefault();
-  setPending(true);
-  const form = new FormData(event.currentTarget);
+  async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setPending(true);
+    const form = new FormData(event.currentTarget);
 
-  try {
-    // Identical rules to the API's, from the same schema, which is what the
-    // subject means by validating on both sides. The confirmation is the one
-    // rule the server does not share, so it is stripped before sending.
-    const parsed = SignUpFormSchema.safeParse({
-      email: form.get("email"),
-      displayName: form.get("displayName"),
-      password: form.get("password"),
-      confirmPassword: form.get("confirmPassword"),
-    });
-    if (!parsed.success) {
-      setError(errorMessage(parsed.error.issues[0].message));
-      return;
+    try {
+      // Identical rules to the API's, from the same schema, which is what the
+      // subject means by validating on both sides. The confirmation is the one
+      // rule the server does not share, so it is stripped before sending.
+      const parsed = SignUpFormSchema.safeParse({
+        email: form.get('email'),
+        displayName: form.get('displayName'),
+        password: form.get('password'),
+        confirmPassword: form.get('confirmPassword'),
+      });
+      if (!parsed.success) {
+        setError(errorMessage(parsed.error.issues[0].message));
+        return;
+      }
+
+      const { confirmPassword: _confirmPassword, ...credentials } = parsed.data;
+      const result = await signUp(credentials);
+      if (!result.ok) {
+        setError(errorMessage(result.code, result.status));
+        return;
+      }
+
+      // A new account has no course yet, so /learn would only redirect here.
+      router.replace('/onboarding');
+      router.refresh();
+    } finally {
+      setPending(false);
     }
-
-    const { confirmPassword: _confirmPassword, ...credentials } = parsed.data;
-    const result = await signUp(credentials);
-    if (!result.ok) {
-      setError(errorMessage(result.code, result.status));
-      return;
-    }
-
-    // A new account has no course yet, so /learn would only redirect here.
-    router.replace("/onboarding");
-    router.refresh();
-  } finally {
-    setPending(false);
   }
-}
 ```
 
 Étape par étape :
@@ -329,43 +334,43 @@ sequenceDiagram
 Le state :
 
 ```tsx
-const [secondFactor, setSecondFactor] = useState(false);
-const [error, setError] = useState<string | null>(null);
-const [pending, setPending] = useState(false);
+  const [secondFactor, setSecondFactor] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [pending, setPending] = useState(false);
 
-/** /learn reads the session on the server, which proves the cookie survived. */
-function done() {
-  router.replace("/learn");
-  router.refresh();
-}
+  /** /learn reads the session on the server, which proves the cookie survived. */
+  function done() {
+    router.replace('/learn');
+    router.refresh();
+  }
 ```
 
 Étape 1, le mot de passe :
 
 ```tsx
-async function submitPassword(form: FormData) {
-  // The same schema the API applies, so the obvious mistakes never leave the page.
-  const parsed = LoginSchema.safeParse({
-    email: form.get("email"),
-    password: form.get("password"),
-  });
-  if (!parsed.success) {
-    setError(errorMessage(parsed.error.issues[0].message));
-    return;
-  }
+  async function submitPassword(form: FormData) {
+    // The same schema the API applies, so the obvious mistakes never leave the page.
+    const parsed = LoginSchema.safeParse({
+      email: form.get('email'),
+      password: form.get('password'),
+    });
+    if (!parsed.success) {
+      setError(errorMessage(parsed.error.issues[0].message));
+      return;
+    }
 
-  const result = await logIn(parsed.data);
-  if (result.ok === "twoFactor") {
-    setSecondFactor(true);
-    setError(null);
-    return;
+    const result = await logIn(parsed.data);
+    if (result.ok === 'twoFactor') {
+      setSecondFactor(true);
+      setError(null);
+      return;
+    }
+    if (!result.ok) {
+      setError(errorMessage(result.code, result.status));
+      return;
+    }
+    done();
   }
-  if (!result.ok) {
-    setError(errorMessage(result.code, result.status));
-    return;
-  }
-  done();
-}
 ```
 
 `logIn()` dans `auth-client.ts` renvoie une de ces trois choses : un succès, un échec, ou la valeur spéciale `{ ok: 'twoFactor' }` quand l'API dit qu'un code est encore nécessaire. Dans ce cas, le formulaire passe à l'étape 2.
@@ -373,7 +378,7 @@ async function submitPassword(form: FormData) {
 Étape 2, le code : `submitCode` fait la même chose avec `SecondFactorSchema` et `verifySecondFactor(code)`, qui envoie `POST /api/auth/2fa/verify`. Un seul handler `onSubmit` choisit la bonne fonction :
 
 ```tsx
-await (secondFactor ? submitCode(form) : submitPassword(form));
+      await (secondFactor ? submitCode(form) : submitPassword(form));
 ```
 
 Il y a un détail important dans l'affichage :
@@ -418,7 +423,7 @@ L'idée clé : **l'étape n'est pas gardée dans le state React**. Elle est calc
 
 ```ts
 export type OnboardingStep =
-  { step: "chooseCourse"; preselected: Language | null } | { step: "chooseLevel"; course: Course };
+  { step: 'chooseCourse'; preselected: Language | null } | { step: 'chooseLevel'; course: Course };
 
 export function resolveOnboardingStep(
   courses: readonly Course[],
@@ -427,17 +432,17 @@ export function resolveOnboardingStep(
   const course = courses.find((candidate) => candidate.lang === wanted);
 
   if (wanted !== null && course === undefined) {
-    return { step: "chooseCourse", preselected: wanted };
+    return { step: 'chooseCourse', preselected: wanted };
   }
   if (course?.level === null) {
-    return { step: "chooseLevel", course };
+    return { step: 'chooseLevel', course };
   }
 
   const unfinished = courses.findLast((candidate) => candidate.level === null);
 
   return unfinished === undefined
-    ? { step: "chooseCourse", preselected: null }
-    : { step: "chooseLevel", course: unfinished };
+    ? { step: 'chooseCourse', preselected: null }
+    : { step: 'chooseLevel', course: unfinished };
 }
 ```
 
@@ -469,7 +474,7 @@ export default async function OnboardingPage({
 
   return (
     <div className="mx-auto flex w-full max-w-md flex-col gap-8">
-      {step.step === "chooseCourse" ? (
+      {step.step === 'chooseCourse' ? (
         <ChooseCourse
           // Remounts when ?lang= changes, since the preselection is only a starting value.
           key={step.preselected}
@@ -517,19 +522,19 @@ const DAILY_GOALS: readonly DailyGoal[] = [10, 30, 60];
 À l'envoi :
 
 ```tsx
-const result = await startCourse({ lang, dailyGoal });
+      const result = await startCourse({ lang, dailyGoal });
 
-// A studied language cannot be picked, so course.alreadyStarted only
-// reaches here when a second tab started the same one first.
-if (!result.ok) {
-  setError(errorMessage(result.code, result.status));
-  return;
-}
+      // A studied language cannot be picked, so course.alreadyStarted only
+      // reaches here when a second tab started the same one first.
+      if (!result.ok) {
+        setError(errorMessage(result.code, result.status));
+        return;
+      }
 
-// A stale ?lang= would keep step one open when another language was picked.
-router.replace(`/onboarding?lang=${result.data.lang}`);
-// Without this the server never re-reads, and the page stays on step one.
-router.refresh();
+      // A stale ?lang= would keep step one open when another language was picked.
+      router.replace(`/onboarding?lang=${result.data.lang}`);
+      // Without this the server never re-reads, and the page stays on step one.
+      router.refresh();
 ```
 
 `startCourse()` de [lib/courses-client.ts](../../apps/web/lib/courses-client.ts) envoie `POST /api/courses`. Le cours est enregistré **tout de suite**, sans niveau. C'est ce qui permet à l'étape 2 de survivre à un rafraîchissement. Ensuite la page se recharge avec `?lang=` mis sur le nouveau cours, et `resolveOnboardingStep` renvoie maintenant l'étape 2.
@@ -544,13 +549,13 @@ router.refresh();
 Le state a un type subtil :
 
 ```tsx
-const [picking, setPicking] = useState(false);
-// Three states, and the two empty-looking ones differ: undefined is nothing
-// picked yet, null is "I have mastered nothing", which is a real answer.
-const [mastered, setMastered] = useState<Level | null | undefined>(undefined);
-const [error, setError] = useState<string | null>(null);
-const [pending, setPending] = useState(false);
-const [launching, setLaunching] = useState(false);
+  const [picking, setPicking] = useState(false);
+  // Three states, and the two empty-looking ones differ: undefined is nothing
+  // picked yet, null is "I have mastered nothing", which is a real answer.
+  const [mastered, setMastered] = useState<Level | null | undefined>(undefined);
+  const [error, setError] = useState<string | null>(null);
+  const [pending, setPending] = useState(false);
+  const [launching, setLaunching] = useState(false);
 ```
 
 À l'envoi, le niveau est enregistré et une animation de fusée se joue en même temps :
@@ -624,7 +629,7 @@ export function avatarHue(name: string): number {
 }
 
 export function avatarInitial(name: string): string {
-  return [...name][0]?.toUpperCase() ?? "?";
+  return [...name][0]?.toUpperCase() ?? '?';
 }
 ```
 
@@ -693,8 +698,8 @@ Les classes `max-sm:flex-col-reverse` mettent l'avatar au-dessus du nom sur les 
 [profile/edit/page.tsx](<../../apps/web/app/[locale]/(main)/profile/edit/page.tsx>) est un **server component**. Il appelle `requireUser()` et passe l'utilisateur à `<ProfileForm user={user} />`. Il affiche aussi un lien "Back to profile" (Retour au profil) et le `<h1>`.
 
 ```tsx
-// Heading here, not in ProfileForm, so the page has an h1 and the form stays a
-// form. One key feeds the link on /profile, this title and this heading.
+  // Heading here, not in ProfileForm, so the page has an h1 and the form stays a
+  // form. One key feeds the link on /profile, this title and this heading.
 ```
 
 ### `profile/edit/profile-form.tsx`
@@ -702,38 +707,38 @@ Les classes `max-sm:flex-col-reverse` mettent l'avatar au-dessus du nom sur les 
 [profile-form.tsx](<../../apps/web/app/[locale]/(main)/profile/edit/profile-form.tsx>) est un **client component** avec deux parties séparées :
 
 ```tsx
-// The avatar saves the moment it is picked, the name only on submit, so they
-// are kept apart: inside one form the button would look like it saved both.
+  // The avatar saves the moment it is picked, the name only on submit, so they
+  // are kept apart: inside one form the button would look like it saved both.
 ```
 
 **1. L'avatar.** Un input de fichier caché dans un `<label>` (pour que le texte du label soit le lien cliquable "Upload", Envoyer). Il accepte PNG, JPEG et WebP.
 
 ```tsx
-async function onAvatarChange(event: React.ChangeEvent<HTMLInputElement>) {
-  const file = event.target.files?.[0];
-  if (!file) {
-    return;
-  }
-  event.target.value = "";
-
-  if (file.size > MAX_AVATAR_BYTES) {
-    setAvatarError(t("avatarTooLarge", { size: MAX_AVATAR_BYTES / 1024 ** 2 }));
-    return;
-  }
-
-  setAvatarPending("upload");
-  setAvatarError(null);
-  try {
-    const result = await uploadAvatar(file);
-    if (!result.ok) {
-      setAvatarError(errorMessage(result.code, result.status));
+  async function onAvatarChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const file = event.target.files?.[0];
+    if (!file) {
       return;
     }
-    router.refresh();
-  } finally {
-    setAvatarPending(null);
+    event.target.value = '';
+
+    if (file.size > MAX_AVATAR_BYTES) {
+      setAvatarError(t('avatarTooLarge', { size: MAX_AVATAR_BYTES / 1024 ** 2 }));
+      return;
+    }
+
+    setAvatarPending('upload');
+    setAvatarError(null);
+    try {
+      const result = await uploadAvatar(file);
+      if (!result.ok) {
+        setAvatarError(errorMessage(result.code, result.status));
+        return;
+      }
+      router.refresh();
+    } finally {
+      setAvatarPending(null);
+    }
   }
-}
 ```
 
 - `event.target.value = ''` vide l'input, pour que choisir à nouveau le même fichier déclenche quand même `onChange`.
@@ -748,10 +753,10 @@ Un bouton "Remove" (Supprimer) apparaît seulement quand il y a un avatar. Il ap
 **2. Le nom affiché.** Un formulaire normal avec un seul `Field`, vérifié avec `UpdateProfileSchema`, enregistré avec `updateProfile()` (`PATCH /api/users/me`). En cas de succès :
 
 ```tsx
-setError(null);
-router.push("/profile");
-// The header greets the user by name, so it has to re-render too.
-router.refresh();
+      setError(null);
+      router.push('/profile');
+      // The header greets the user by name, so it has to re-render too.
+      router.refresh();
 ```
 
 ---
@@ -825,18 +830,18 @@ Les codes de secours passent en premier car, comme le dit le commentaire, ils so
 Deux petits helpers gèrent les résultats :
 
 ```tsx
-function fail(result: ApiResult<unknown>) {
-  setError(result.ok ? null : errorMessage(result.code, result.status));
-  return result.ok;
-}
-
-/** The page was out of date: 2FA is on (another tab). Show what is true now. */
-async function staleOnConflict(result: ApiResult<unknown>) {
-  if (!result.ok && result.code === "twoFactor.alreadyEnabled") {
-    setSetup(null);
-    setStatus(await loadStatus());
+  function fail(result: ApiResult<unknown>) {
+    setError(result.ok ? null : errorMessage(result.code, result.status));
+    return result.ok;
   }
-}
+
+  /** The page was out of date: 2FA is on (another tab). Show what is true now. */
+  async function staleOnConflict(result: ApiResult<unknown>) {
+    if (!result.ok && result.code === 'twoFactor.alreadyEnabled') {
+      setSetup(null);
+      setStatus(await loadStatus());
+    }
+  }
 ```
 
 Malgré son nom, `fail()` renvoie `true` quand l'appel a **réussi** ; il met ou efface le message d'erreur. `staleOnConflict` gère le cas où la 2FA a été activée dans un autre onglet : l'API répond `twoFactor.alreadyEnabled`, et le panneau recharge le vrai statut.
@@ -864,7 +869,7 @@ export function createPresenceMap(): PresenceMap {
   return {
     get: (userId) => online.get(userId),
     apply(update) {
-      const next = update.status === "online";
+      const next = update.status === 'online';
       if (online.get(update.userId) === next) return;
       online.set(update.userId, next);
       changed();
@@ -899,14 +904,19 @@ Pourquoi une map qui vit dans l'onglet, et pas dans une page ? Le commentaire le
 
 ```tsx
 export function PresenceDot({ userId, online }: { userId: string; online: boolean }) {
-  const t = useTranslations("FriendsPage");
+  const t = useTranslations('FriendsPage');
   const live = useFriendOnline(userId, online);
 
   return (
+    // role="img" with a label: a screen reader says "Online" or "Offline"
+    // instead of a colour it cannot see. The ring, the page's own background,
+    // sets the dot apart from the avatar it sits on. shrink-0: an empty flex
+    // item may shrink to nothing, and a long name beside it would squeeze it
+    // into a thin pill.
     <span
       role="img"
-      aria-label={t(live ? "online" : "offline")}
-      className={`size-3 shrink-0 rounded-full ring-2 ring-slate-950 ${live ? "bg-green-500" : "bg-slate-500"}`}
+      aria-label={t(live ? 'online' : 'offline')}
+      className={`size-3 shrink-0 rounded-full ring-2 ring-slate-950 ${live ? 'bg-green-500' : 'bg-slate-500'}`}
     />
   );
 }
@@ -921,23 +931,19 @@ export function PresenceDot({ userId, online }: { userId: string; online: boolea
 [user-row.tsx](../../apps/web/components/user-row.tsx) n'a pas de `'use client'` ; il est affiché par les pages serveur. Il montre un avatar (peut-être avec un point), le nom sous forme de lien vers `/users/<id>`, une ligne facultative de langues, puis ses `children` (les boutons).
 
 ```tsx
-{
-  /* No prefetch: a list of people would cost a render each against the rate limit. */
-}
-<Link
-  href={`/users/${user.id}`}
-  prefetch={false}
-  className="max-w-full self-start truncate underline underline-offset-4"
->
-  {user.displayName}
-</Link>;
-{
-  languages !== undefined && languages.length > 0 ? (
-    <p className="truncate text-sm text-slate-400">
-      {format.list(languages.map((lang) => t(lang)))}
-    </p>
-  ) : null;
-}
+        {/* No prefetch: a list of people would cost a render each against the rate limit. */}
+        <Link
+          href={`/users/${user.id}`}
+          prefetch={false}
+          className="max-w-full self-start truncate underline underline-offset-4"
+        >
+          {user.displayName}
+        </Link>
+        {languages !== undefined && languages.length > 0 ? (
+          <p className="truncate text-sm text-slate-400">
+            {format.list(languages.map((lang) => t(lang)))}
+          </p>
+        ) : null}
 ```
 
 - `prefetch={false}` : normalement, Next.js charge à l'avance les pages vers lesquelles il y a un lien. Pour une liste de 20 personnes, cela ferait 20 affichages serveur, chacun appelant l'API et comptant dans la limite de requêtes (rate limit).
@@ -1008,19 +1014,19 @@ La page est rafraîchie **même quand l'appel échoue**. Le commentaire au-dessu
 - `RemoveFriendButton` demande d'abord, dans un `<dialog>` :
 
 ```tsx
-<dialog ref={dialog} aria-labelledby={questionId} className="...">
-  <form method="dialog" className="flex flex-col gap-6">
-    <p id={questionId} className="wrap-break-word">
-      {t("removeConfirm", { name })}
-    </p>
-    <div className="grid grid-cols-2 gap-3">
-      <button className={SECONDARY_BUTTON}>{t("cancel")}</button>
-      <button type="button" onClick={remove} className="...">
-        {t("remove")}
-      </button>
-    </div>
-  </form>
-</dialog>
+      <dialog ref={dialog} aria-labelledby={questionId} className="...">
+        <form method="dialog" className="flex flex-col gap-6">
+          <p id={questionId} className="wrap-break-word">
+            {t('removeConfirm', { name })}
+          </p>
+          <div className="grid grid-cols-2 gap-3">
+            <button className={SECONDARY_BUTTON}>{t('cancel')}</button>
+            <button type="button" onClick={remove} className="...">
+              {t('remove')}
+            </button>
+          </div>
+        </form>
+      </dialog>
 ```
 
 `showModal()` ouvre la boîte de dialogue HTML native. Le navigateur garde alors le focus du clavier à l'intérieur et la ferme avec Échap. `<form method="dialog">` veut dire que le bouton Cancel (Annuler) ferme la boîte sans JavaScript. Cancel vient en premier, donc il reçoit le focus : le choix sûr est celui par défaut.
@@ -1034,15 +1040,15 @@ La page est rafraîchie **même quand l'appel échoue**. Le commentaire au-dessu
 [friends/page.tsx](<../../apps/web/app/[locale]/(main)/friends/page.tsx>) est un **server component** async, `force-dynamic`.
 
 ```tsx
-// A hand-edited ?q= is ignored rather than an error; the form checks what is
-// typed. Empty means no search, since a valid query has 3 characters at least.
-const search = UserSearchQuerySchema.safeParse({ q: (await searchParams).q });
-const query = search.success ? search.data.q : "";
-const [lists, found, recent] = await Promise.all([
-  requireFriends(),
-  query === "" ? null : searchUsers(query),
-  recentlyActive(),
-]);
+  // A hand-edited ?q= is ignored rather than an error; the form checks what is
+  // typed. Empty means no search, since a valid query has 3 characters at least.
+  const search = UserSearchQuerySchema.safeParse({ q: (await searchParams).q });
+  const query = search.success ? search.data.q : '';
+  const [lists, found, recent] = await Promise.all([
+    requireFriends(),
+    query === '' ? null : searchUsers(query),
+    recentlyActive(),
+  ]);
 ```
 
 **Données** (toutes venant de [lib/friends.ts](../../apps/web/lib/friends.ts), chargées en parallèle avec `Promise.all`) :
@@ -1081,13 +1087,13 @@ Seule la liste "Your friends" (Tes amis) passe `online={user.online}` à `UserRo
 ```tsx
 /** A search row offers only what fits, so a 409 only ever comes from a race. */
 async function SearchAction({ relation, userId }: { relation: Relation; userId: string }) {
-  const t = await getTranslations("FriendsPage");
+  const t = await getTranslations('FriendsPage');
 
-  if (relation === "none") return <FriendButton action="add" userId={userId} />;
-  if (relation === "received") return <FriendButton action="accept" userId={userId} />;
+  if (relation === 'none') return <FriendButton action="add" userId={userId} />;
+  if (relation === 'received') return <FriendButton action="accept" userId={userId} />;
   return (
     <span className="text-sm text-slate-400">
-      {t(relation === "sent" ? "requestSent" : "isFriend")}
+      {t(relation === 'sent' ? 'requestSent' : 'isFriend')}
     </span>
   );
 }
@@ -1173,10 +1179,10 @@ L'ordre des vérifications compte :
 **Affiche :** le nom, un point de présence (seulement si cette personne est ton ami), un avatar de 128 px, des boutons d'action, et une liste de ses cours avec la langue, le niveau et la série de jours (streak) (pas de série affichée à 0).
 
 ```tsx
-const relation = profile.id === me.id ? "self" : relationTo(lists, profile.id);
-// Your friends list already says who is online. Anyone not in it, you
-// included, gets no dot: only a friend may see when you are online.
-const friend = lists.friends.find((user) => user.id === profile.id);
+  const relation = profile.id === me.id ? 'self' : relationTo(lists, profile.id);
+  // Your friends list already says who is online. Anyone not in it, you
+  // included, gets no dot: only a friend may see when you are online.
+  const friend = lists.friends.find((user) => user.id === profile.id);
 ```
 
 `ProfileAction` (dans le même fichier) choisit les boutons selon la relation :
@@ -1288,6 +1294,9 @@ Chaque section reçoit `id={section.id}`, donc les liens `#ancre` y sautent. `sc
 ```tsx
 type Props = { params: Promise<{ locale: Locale }> };
 
+// generateMetadata, not a static `metadata` export: the title and description
+// are part of the translated document, so they cannot be known before the
+// locale segment is resolved.
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const { privacyPolicy } = getLegalContent(locale);
@@ -1319,7 +1328,7 @@ export function Flag({ lang, className }: { lang: Language; className?: string }
       height="16"
       aria-hidden
       // A ring, not an SVG stroke: a stroke would thicken with the flag.
-      className={`shrink-0 rounded-xs ring-1 ring-white/50 ${className ?? ""}`}
+      className={`shrink-0 rounded-xs ring-1 ring-white/50 ${className ?? ''}`}
     >
       {FLAGS[lang]}
     </svg>

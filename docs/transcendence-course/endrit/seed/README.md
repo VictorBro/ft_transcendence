@@ -63,7 +63,7 @@ C'est l'**idempotence** (voir §7.1).
 | [prisma/schema.prisma](../../../../apps/api/prisma/schema.prisma) | Les modèles `QuestionBank` (avec `sourceId @unique`) et `Lesson` (avec `content Json?` et `ready`). |
 | [migrations/20260913184446_question_bank_source_id_unique](../../../../apps/api/prisma/migrations/20260913184446_question_bank_source_id_unique/migration.sql) | `CREATE UNIQUE INDEX "QuestionBank_sourceId_key"` : permet `upsert where: { sourceId }`. |
 | [migrations/20261007134739_add_lessons](../../../../apps/api/prisma/migrations/20261007134739_add_lessons/migration.sql) | Crée `Lesson`, `LessonResult`, les enums `LessonKind` et `Theme`. |
-| [migrations/20261024122424_add_lesson_content](../../../../apps/api/prisma/migrations/20261024122424_add_lesson_content/migration.sql) | `ALTER TABLE "Lesson" ADD COLUMN "content" JSONB;` (nullable). |
+| [migrations/20261024122424_add_lesson_content](../../../../apps/api/prisma/migrations/20261024122424_add_lesson_content/migration.sql) | `ALTER TABLE "Lesson" ADD COLUMN     "content" JSONB;` (nullable). |
 | [migrations/20261028175100_add_lesson_ready](../../../../apps/api/prisma/migrations/20261028175100_add_lesson_ready/migration.sql) | `ready BOOLEAN NOT NULL DEFAULT false`. |
 | [packages/shared/src/schemas/item.ts](../../../../packages/shared/src/schemas/item.ts) | `ItemFileSchema` : valide un fichier de questions (format du `sourceId`, 4 options, réponse dans les options, `readText` seulement en lecture…). |
 | [packages/shared/src/schemas/lesson.ts](../../../../packages/shared/src/schemas/lesson.ts) | `LessonOutlineFileSchema` : valide un fichier d'outline. |
@@ -154,8 +154,10 @@ sequenceDiagram
   S->>DB: $disconnect
 ```
 
-Les étapes sont enchaînées avec `.then(...)`. Une erreur n'importe où va dans `.catch` :
-`console.error` puis `process.exit(1)`. Le code de sortie 1 fait échouer `make` ou le déploiement.
+Les étapes sont enchaînées avec `.then(...)`. Une erreur dans cette chaîne va dans `.catch` :
+`console.error` puis `process.exit(1)`. Les erreurs d'avant la chaîne (`demoPassword`,
+`new PrismaService()` sans `DATABASE_URL`) sont lancées tout de suite et arrêtent aussi Node avec
+le code 1. Le code de sortie 1 fait échouer `make` ou le déploiement.
 
 ---
 
@@ -325,7 +327,8 @@ seed de la vraie base.
 ### 7.7 La migration `add_lesson_content` et `Prisma.DbNull`
 
 ```sql
-ALTER TABLE "Lesson" ADD COLUMN "content" JSONB;
+-- AlterTable
+ALTER TABLE "Lesson" ADD COLUMN     "content" JSONB;
 ```
 
 - `JSONB` : du JSON stocké en binaire par Postgres. Une leçon a un contenu riche (exercices,
@@ -427,8 +430,8 @@ Extrait réel de [content/outlines/fr-a1.json](../../../../content/outlines/fr-a
    `validateLesson` les vérifie, puis `title`, `summary`, `brief`, `content` viennent des fichiers
    et `ready: true`.
 3. Comparaison avec la base : si la ligne est identique (`isDeepStrictEqual`, qui ignore l'ordre
-   des clés comme le fait `jsonb`), elle n'est **pas** écrite.
-4. Si le **brief** a changé : `upsert` de la leçon **et** `deleteMany` des `LessonAttempt` de cette
+   des clés, car `jsonb` ne le garde pas), elle n'est **pas** écrite.
+4. Si le **brief** ou le **contenu** a changé : `upsert` de la leçon **et** `deleteMany` des `LessonAttempt` de cette
    leçon avec `completedAt: null`, dans la même transaction. Les tentatives finies et les
    résultats restent.
 

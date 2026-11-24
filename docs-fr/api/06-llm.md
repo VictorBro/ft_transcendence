@@ -27,10 +27,10 @@ facture au nombre de tokens : les tokens qu'on envoie (le prompt) plus les token
 
 Dans ce projet, un prompt a deux parties :
 
-| Partie   | Ce que c'est                                                    | Exemple                                   |
-| -------- | --------------------------------------------------------------- | ----------------------------------------- |
-| `system` | Les règles et le rôle du modèle. Pareil pour beaucoup d'appels. | "You are an expert CEFR exam designer..." |
-| `user`   | La demande précise (ou la conversation, pour le tuteur).        | "Write 13 B1 grammar questions in "fr"."  |
+| Partie   | Ce que c'est                                                    | Exemple                                                 |
+| -------- | --------------------------------------------------------------- | ------------------------------------------------------- |
+| `system` | Les règles et le rôle du modèle. Pareil pour beaucoup d'appels. | "You are an expert CEFR language exam designer."        |
+| `user`   | La demande précise (ou la conversation, pour le tuteur).        | "Write 13 B1 grammar questions in "fr", one per topic." |
 
 L'API utilise le LLM pour **deux tâches** :
 
@@ -132,7 +132,7 @@ apps/api/src/llm/
 ├── fixture.provider.ts         fake provider: no network (default)
 ├── disabled.provider.ts        fake provider: everything fails
 ├── GEMINI_PROVIDER.md          long French explanation of gemini.provider.ts
-└── *.spec.ts                   unit tests (one per file, two for Gemini)
+└── *.spec.ts                   unit tests (one per file but llm.provider.ts, two for Gemini)
 ```
 
 On les lit dans l'ordre où l'app les utilise : d'abord le contrat, puis comment l'app choisit un provider au
@@ -162,7 +162,7 @@ prise" que chaque provider doit avoir. Il exporte :
 // The name other classes use to ask Nest for the LLM provider.
 // It is a Symbol, a unique value that still exists at runtime,
 // because the LlmProvider interface is erased when the code is compiled.
-export const LLM_PROVIDER = Symbol("LLM_PROVIDER");
+export const LLM_PROVIDER = Symbol('LLM_PROVIDER');
 ```
 
 Au chapitre 1, on a vu que Nest trouve quoi injecter grâce à la **classe** d'un paramètre du constructeur. Une
@@ -174,7 +174,7 @@ unique : aucun autre code ne peut créer la même par erreur. Une classe demande
 ### Le purpose
 
 ```ts
-export type LlmPurpose = `question-batch:${QuestionCategory}` | "lesson-discussion";
+export type LlmPurpose = `question-batch:${QuestionCategory}` | 'lesson-discussion';
 ```
 
 C'est un **template literal type**. `QuestionCategory` vaut `'grammar' | 'vocabulary' | 'reading'`, donc les valeurs
@@ -207,6 +207,11 @@ export interface StreamRequest {
   messages: LlmMessage[];
   /** The longest answer we pay for, in tokens. The model stops there, mid-sentence if it must. */
   maxOutputTokens: number;
+  /**
+   * Cancels the call. The route aborts it when the learner closes the page, so the
+   * provider stops reading the answer and Google stops writing it.
+   * It is required: a stream nobody can stop keeps spending tokens for no one.
+   */
   signal: AbortSignal;
 }
 ```
@@ -241,7 +246,7 @@ export interface LlmProvider {
 
 ```ts
 export type LlmFailure =
-  "unreachable" | "rate_limited" | "http_error" | "blocked" | "incomplete" | "invalid" | "disabled";
+  'unreachable' | 'rate_limited' | 'http_error' | 'blocked' | 'incomplete' | 'invalid' | 'disabled';
 
 export class LlmError extends Error {
   constructor(
@@ -252,7 +257,7 @@ export class LlmError extends Error {
     readonly reason: LlmFailure,
   ) {
     super(message);
-    this.name = "LlmError";
+    this.name = 'LlmError';
   }
 }
 ```
@@ -296,23 +301,23 @@ trois réglages et construit le bon provider.
 
 ```ts
 export function createLlmProvider({
-  LLM_PROVIDER = "fixture",
+  LLM_PROVIDER = 'fixture',
   LLM_API_KEY,
   LLM_MODEL,
 }: LlmEnv): LlmProvider {
   switch (LLM_PROVIDER) {
-    case "fixture":
-      showProvider("fixture", "none");
+    case 'fixture':
+      showProvider('fixture', 'none');
       return new FixtureProvider();
-    case "gemini": {
-      if (!LLM_API_KEY) throw new Error("LLM_PROVIDER=gemini needs LLM_API_KEY. See .env.example.");
+    case 'gemini': {
+      if (!LLM_API_KEY) throw new Error('LLM_PROVIDER=gemini needs LLM_API_KEY. See .env.example.');
       // The braces after "case" give this "model" its own scope inside the switch.
       const model = LLM_MODEL || DEFAULT_GEMINI_MODEL;
-      showProvider("gemini", model);
+      showProvider('gemini', model);
       return new GeminiProvider({ apiKey: LLM_API_KEY, model });
     }
-    case "disabled":
-      showProvider("disabled", "none");
+    case 'disabled':
+      showProvider('disabled', 'none');
       return new DisabledProvider();
     default:
       throw new Error(
@@ -354,9 +359,9 @@ provider** : au lieu de donner à Nest une classe à construire, on lui donne un
       inject: [ConfigService],
       useFactory: (config: ConfigService) =>
         createLlmProvider({
-          LLM_PROVIDER: config.get("LLM_PROVIDER"),
-          LLM_API_KEY: config.get("LLM_API_KEY"),
-          LLM_MODEL: config.get("LLM_MODEL"),
+          LLM_PROVIDER: config.get('LLM_PROVIDER'),
+          LLM_API_KEY: config.get('LLM_API_KEY'),
+          LLM_MODEL: config.get('LLM_MODEL'),
         }),
     },
   ],
@@ -408,7 +413,7 @@ Le fichier a trois parties :
 ### Les constantes
 
 ```ts
-const API = "https://generativelanguage.googleapis.com/v1beta/models";
+const API = 'https://generativelanguage.googleapis.com/v1beta/models';
 // How long we wait for Gemini before giving up: 90 seconds. "90_000" is just 90000,
 // the "_" only makes the number easier to read. A free key waited 73 to 83 s for
 // its first word on 2026-11-18, where 2 to 40 s was usual before.
@@ -459,6 +464,9 @@ Note : pour `generateStructured`, le texte du modèle est **lui-même une chaîn
 
 ```ts
 constructor(private readonly options: { apiKey: string; model: string }) {
+  // Every purpose, outcome and token type starts at 0. A counter that appears at 1
+  // hides its first call from Prometheus' rate(), so the first failures would not
+  // count, nor the first call's tokens.
   for (const purpose of PURPOSES) {
     for (const outcome of OUTCOMES) {
       llmRequests.inc({ provider: 'gemini', model: options.model, purpose, outcome }, 0);
@@ -510,8 +518,8 @@ fait dans `send`.
 
 ```ts
 const response = await fetch(`${API}/${model}:generateContent`, {
-  method: "POST",
-  headers: { "content-type": "application/json", "x-goog-api-key": apiKey },
+  method: 'POST',
+  headers: { 'content-type': 'application/json', 'x-goog-api-key': apiKey },
   body: JSON.stringify(requestBody(request)),
   signal: AbortSignal.timeout(TIMEOUT_MS),
 }).catch(unreachable);
@@ -520,11 +528,11 @@ if (!response.ok) {
   throw new LlmError(
     `Gemini ${response.status}: ${body}`,
     isRetryable(response.status),
-    response.status === 429 ? "rate_limited" : "http_error",
+    response.status === 429 ? 'rate_limited' : 'http_error',
   );
 }
 
-const reply = parseJson(body, "response") as GeminiReply;
+const reply = parseJson(body, 'response') as GeminiReply;
 // Counted before the reply is checked: one that fails the check was still billed.
 this.record(request.purpose, reply.usageMetadata, started);
 return parseReply(request.schema, replyText(reply));
@@ -565,9 +573,9 @@ flowchart TD
 function requestBody({ system, user, schema }: StructuredRequest<z.ZodType>) {
   return {
     systemInstruction: { parts: [{ text: system }] },
-    contents: [{ role: "user", parts: [{ text: user }] }],
+    contents: [{ role: 'user', parts: [{ text: user }] }],
     generationConfig: {
-      responseMimeType: "application/json",
+      responseMimeType: 'application/json',
       responseJsonSchema: z.toJSONSchema(schema),
     },
   };
@@ -599,12 +607,12 @@ function isRetryable(status: number): boolean {
 function replyText(reply: GeminiReply): string {
   // Gemini refused to answer our prompt at all (safety filters).
   const blocked = reply.promptFeedback?.blockReason;
-  if (blocked) throw new LlmError(`Gemini blocked the prompt: ${blocked}`, false, "blocked");
+  if (blocked) throw new LlmError(`Gemini blocked the prompt: ${blocked}`, false, 'blocked');
 
   const candidate = reply.candidates?.[0];
-  if (candidate?.finishReason !== "STOP") {
-    const reason = candidate ? (candidate.finishReason ?? "no finish reason") : "no candidate";
-    throw new LlmError(`Gemini stopped early: ${reason}`, false, "incomplete");
+  if (candidate?.finishReason !== 'STOP') {
+    const reason = candidate ? (candidate.finishReason ?? 'no finish reason') : 'no candidate';
+    throw new LlmError(`Gemini stopped early: ${reason}`, false, 'incomplete');
   }
   return answerText(candidate);
 }
@@ -645,9 +653,9 @@ lire le flag (voir `QuestionStockService` au chapitre 7).
 
 ```ts
 this.logger.log(
-  `${purpose} on ${model}: ${usage?.promptTokenCount ?? "?"} in, ` +
-    `${usage?.candidatesTokenCount ?? "?"} out, ${thinking} thinking, ` +
-    `${usage?.totalTokenCount ?? "?"} total tokens, ` +
+  `${purpose} on ${model}: ${usage?.promptTokenCount ?? '?'} in, ` +
+    `${usage?.candidatesTokenCount ?? '?'} out, ${thinking} thinking, ` +
+    `${usage?.totalTokenCount ?? '?'} total tokens, ` +
     `${Date.now() - started} ms`,
 );
 ```
@@ -709,10 +717,10 @@ Ensuite, elle fait un POST vers `:streamGenerateContent?alt=sse` avec `streamBod
 
 ```ts
 for await (const data of sseData(response.body, lost)) {
-  const reply = parseJson(data, "response") as GeminiReply;
+  const reply = parseJson(data, 'response') as GeminiReply;
   usage = reply.usageMetadata ?? usage;
   const blocked = reply.promptFeedback?.blockReason;
-  if (blocked) throw new LlmError(`Gemini blocked the prompt: ${blocked}`, false, "blocked");
+  if (blocked) throw new LlmError(`Gemini blocked the prompt: ${blocked}`, false, 'blocked');
 
   const candidate = reply.candidates?.[0];
   const text = answerText(candidate);
@@ -721,11 +729,11 @@ for await (const data of sseData(response.body, lost)) {
     yield text;
   }
   const reason = candidate?.finishReason;
-  if (reason && reason !== "STOP") {
-    const failure = FILTERED.has(reason) ? "blocked" : "incomplete";
+  if (reason && reason !== 'STOP') {
+    const failure = FILTERED.has(reason) ? 'blocked' : 'incomplete';
     throw new LlmError(`Gemini stopped early: ${reason}`, false, failure);
   }
-  if (reason === "STOP") finished = true;
+  if (reason === 'STOP') finished = true;
 }
 ```
 
@@ -741,7 +749,7 @@ function streamBody({ system, messages, maxOutputTokens }: StreamRequest) {
   return {
     systemInstruction: { parts: [{ text: system }] },
     contents: messages.map(({ role, text }) => ({
-      role: role === "assistant" ? "model" : "user",
+      role: role === 'assistant' ? 'model' : 'user',
       parts: [{ text }],
     })),
     generationConfig: { maxOutputTokens, thinkingConfig: { thinkingBudget: 0 } },
@@ -754,7 +762,7 @@ function streamBody({ system, messages, maxOutputTokens }: StreamRequest) {
 - `thinkingBudget: 0` coupe la "réflexion" du modèle. Le commentaire explique pourquoi : la réflexion compte dans
   `maxOutputTokens` (on a mesuré 250 à 660 tokens avant des réponses de 66 à 120), elle pourrait couper la réponse,
   et elle est facturée aussi. Une réponse courte du tuteur n'en a pas besoin.
-- Pas de schema JSON : la réponse est du texte libre.
+- Pas de schema JSON : la réponse est du texte libre. Un vrai modèle l'écrit souvent en Markdown ; c'est le navigateur qui l'affiche (`tutor-answer.tsx`, #214, voir le [chapitre web 7](../web/07-lesson-player.md)). L'API transmet le texte tel quel.
 
 ### `sseData` et `eventData` : lire le flux d'événements
 
@@ -763,18 +771,18 @@ demi. Donc `sseData` garde un `buffer` et ne laisse sortir que des événements 
 
 ```ts
 const reader = body.pipeThrough(new TextDecoderStream()).getReader();
-let buffer = "";
+let buffer = '';
 try {
   for (;;) {
     const { done, value } = await reader.read().catch(lost);
     if (done) return;
-    buffer = (buffer + value).replace(/\r\n/g, "\n");
-    let end = buffer.indexOf("\n\n");
+    buffer = (buffer + value).replace(/\r\n/g, '\n');
+    let end = buffer.indexOf('\n\n');
     while (end !== -1) {
       const data = eventData(buffer.slice(0, end));
       buffer = buffer.slice(end + 2);
       if (data !== undefined) yield data;
-      end = buffer.indexOf("\n\n");
+      end = buffer.indexOf('\n\n');
     }
   }
 } finally {
@@ -841,18 +849,18 @@ panne du LLM, et le test de niveau se rabat sur les questions que l'apprenant a 
 
 ```ts
 export const FIXTURE_ANSWER = [
-  "This is the fixture tutor. ",
-  "It gives the same answer to every question. ",
-  "Set LLM_PROVIDER=gemini for a real one.",
+  'This is the fixture tutor. ',
+  'It gives the same answer to every question. ',
+  'Set LLM_PROVIDER=gemini for a real one.',
 ];
 
 export const FIXTURE_FAILURES = {
   /** Sends part of the answer, then the connection drops. */
-  midstream: "#fail-midstream",
+  midstream: '#fail-midstream',
   /** No answer comes in time. */
-  timeout: "#timeout",
+  timeout: '#timeout',
   /** The prompt is refused before any text. */
-  blocked: "#blocked",
+  blocked: '#blocked',
 } as const;
 ```
 
@@ -918,7 +926,7 @@ export class DisabledProvider implements LlmProvider {
 }
 
 /** Not retryable: a second try meets the same setting. */
-const disabled = () => new LlmError("LLM_PROVIDER=disabled", false, "disabled");
+const disabled = () => new LlmError('LLM_PROVIDER=disabled', false, 'disabled');
 ```
 
 Chaque appel échoue tout de suite avec la raison `disabled`. La discussion de la leçon se termine alors avec le code

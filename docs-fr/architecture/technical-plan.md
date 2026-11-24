@@ -198,7 +198,7 @@ Une matrice de runners natifs, pas QEMU :
 ```yaml
 strategy:
   matrix:
-    image: [api, web, tooling, prometheus, alertmanager, grafana] # abridged
+    image: [api, web, tooling, prometheus, alertmanager, grafana]   # abridged
     platform:
       - { arch: amd64, name: linux/amd64, runner: ubuntu-24.04 }
       - { arch: arm64, name: linux/arm64, runner: ubuntu-24.04-arm }

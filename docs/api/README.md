@@ -26,7 +26,7 @@ flowchart LR
 | #   | Chapter                                                | What you learn                                                                                    | Main folders                                                  |
 | --- | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
 | 1   | [The big picture](01-big-picture.md)                   | What an API is, HTTP, REST, how NestJS works (modules, controllers, services, injection), the tools | `apps/api/` root files                                        |
-| 2   | [Boot and request flow](02-boot-and-request-flow.md)   | What happens when the API starts, and the full path of one request                                | `main.ts`, `app.setup.ts`, `app.module.ts`                    |
+| 2   | [Boot and request flow](02-boot-and-request-flow.md)   | What happens when the API starts, and the full path of one request                                | `main.ts`, `app.setup.ts`, `app.module.ts`, `validation.pipe.ts`, `error-code.filter.ts` |
 | 3   | [Infrastructure](03-infrastructure.md)                 | The modules every other module leans on                                                           | `src/prisma`, `src/redis`, `src/throttler`, `src/metrics`, `src/health` |
 | 4   | [Database](04-database.md)                             | PostgreSQL, Prisma, every table, migrations, the seed                                             | `prisma/`, `src/generated`                                    |
 | 5   | [Auth and users](05-auth-and-users.md)                 | Sign up, log in, sessions, 2FA, profiles, avatars                                                 | `src/auth`, `src/users`                                       |
@@ -35,7 +35,7 @@ flowchart LR
 | 8   | [Lessons](08-lessons.md)                               | Lessons, attempts, XP and achievements, the AI tutor                                              | `src/lessons`                                                 |
 | 9   | [Social and real time](09-social-and-realtime.md)      | WebSockets, presence, friends, chat, the demo data                                                | `src/gateway`, `src/presence`, `src/friends`, `src/messages`, `src/demo` |
 | 10  | [Tests](10-tests.md)                                   | Unit tests, end-to-end tests, mocks, fixtures, coverage                                           | `*.spec.ts`, `test/`                                          |
-| 11  | [Scripts](11-scripts.md)                               | The command-line tools that write and check lessons                                               | `scripts/`                                                    |
+| 11  | [Scripts](11-scripts.md)                               | The command-line tools that write and check lessons                                               | `scripts/`, `src/items`                                       |
 
 ## How to read the code next to the docs
 

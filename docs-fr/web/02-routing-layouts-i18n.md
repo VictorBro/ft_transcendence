@@ -57,23 +57,27 @@ Chaque URL visible par l'utilisateur dans cette app commence par une langue : `/
 Fichier : [proxy.ts](../../apps/web/proxy.ts)
 
 ```ts
-import createMiddleware from "next-intl/middleware";
-import type { NextRequest } from "next/server";
+import createMiddleware from 'next-intl/middleware';
+import type { NextRequest } from 'next/server';
 
-import { routing } from "@/i18n/routing";
-import { COURSE_COOKIE, courseHomeLang } from "@/lib/course-path";
+import { routing } from '@/i18n/routing';
+import { COURSE_COOKIE, courseHomeLang } from '@/lib/course-path';
 
 const intl = createMiddleware(routing);
 
+/**
+ * next-intl's middleware, plus the cookie /learn reads to know which course to
+ * open. Written here because a server component cannot set one during a render.
+ */
 export default function proxy(request: NextRequest) {
   const response = intl(request);
   const lang = courseHomeLang(request.nextUrl.pathname);
 
   if (lang !== null) {
     response.cookies.set(COURSE_COOKIE, lang, {
-      path: "/",
+      path: '/',
       httpOnly: true,
-      sameSite: "lax",
+      sameSite: 'lax',
       maxAge: 60 * 60 * 24 * 365,
     });
   }
@@ -109,8 +113,10 @@ export const config = {
   // Match all pathnames except for
   // - … if they start with `/api`, `/trpc`, `/_next` or `/_vercel`
   // - … the ones containing a dot (e.g. `favicon.ico`)
-  // Exclude /healthz: ...
-  matcher: "/((?!api|trpc|_next|_vercel|healthz|.*\\..*).*)",
+  // Exclude /healthz: it's a machine health-check endpoint (used by Docker and
+  // e2e smoke tests), not a user-facing page. It has no locale-prefixed version,
+  // so letting the middleware redirect it would 404 and mark the container unhealthy.
+  matcher: '/((?!api|trpc|_next|_vercel|healthz|.*\\..*).*)',
 };
 ```
 
@@ -237,19 +243,22 @@ Next.js quelles valeurs `[locale]` peut avoir, pour qu'il puisse les préparer a
 **`generateMetadata()`** — donne le `<title>` et la description de la page, traduits :
 
 ```tsx
-const { locale } = await params;
-const t = await getTranslations({ locale, namespace: "Layout" });
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'Layout' });
 
-const productName = t("productName");
+  // A proper noun, so the three catalogues carry the same string. It still
+  // comes from a catalogue: the module is graded on no user-facing text being
+  // hardcoded, not on every string differing between languages.
+  const productName = t('productName');
 
-return {
-  title: {
-    default: productName,
-    template: `%s | ${productName}`,
-  },
-  description: t("description"),
-  applicationName: productName,
-};
+  return {
+    title: {
+      default: productName,
+      template: `%s | ${productName}`,
+    },
+    description: t('description'),
+    applicationName: productName,
+  };
 ```
 
 `template` veut dire : quand une page met son propre titre, comme `"Log in"`, l'onglet affiche
@@ -260,24 +269,31 @@ vient quand même d'un fichier de traduction, parce que les règles du projet di
 **Le component de layout** lui-même :
 
 ```tsx
-const { locale } = await params;
+  const { locale } = await params;
 
-if (!hasLocale(routing.locales, locale)) {
-  notFound();
-}
+  // A URL like /es/login matches this segment before anything else can reject
+  // it. Without this the render would continue with an unknown locale and
+  // next-intl would answer every key with its own path.
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
 
-setRequestLocale(locale);
-const messages = await getMessages();
+  setRequestLocale(locale);
+  const messages = await getMessages();
 
-return (
-  <html lang={locale} suppressHydrationWarning className="dark">
-    <body className="bg-slate-950 font-sans text-slate-100 antialiased">
-      <NextIntlClientProvider locale={locale} messages={messages}>
-        {children}
-      </NextIntlClientProvider>
-    </body>
-  </html>
-);
+  return (
+    // Extensions like Dark Reader stamp attributes on <html> before React
+    // hydrates, which otherwise logs a mismatch an evaluator would read as a
+    // console gate failure. This covers that one element, not its children, so
+    // a real mismatch anywhere inside still reports.
+    <html lang={locale} suppressHydrationWarning className="dark">
+      <body className="bg-slate-950 font-sans text-slate-100 antialiased">
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          {children}
+        </NextIntlClientProvider>
+      </body>
+    </html>
+  );
 ```
 
 Étape par étape :
@@ -323,7 +339,10 @@ flowchart LR
     MsgL --> P3["/chat"]
 ```
 
-Les trois utilisent le même component `Shell` et le même `LegalFooter`. Le chapitre 3 les explique.
+Les trois utilisent le même component `Shell` et le même `LegalFooter`. `HeaderNav` et `DashboardNav` affichent
+le sélecteur de langue et les liens du compte. Pour un utilisateur connecté, ils replient tout ça dans
+`HeaderMenu` : un seul bouton de menu, sur toutes les tailles d'écran, avec le nombre de non-lus dessus. Un visiteur
+voit les éléments sur une seule ligne à la place. Le chapitre 3 les explique.
 
 **[(main)/layout.tsx](<../../apps/web/app/[locale]/(main)/layout.tsx>)** — le cadre de la vitrine et
 du compte :
@@ -477,10 +496,10 @@ API dans l'app web.
 
 ```ts
 // app/healthz/route.ts
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic';
 
 export function GET() {
-  return NextResponse.json({ status: "ok", service: "web" });
+  return NextResponse.json({ status: 'ok', service: 'web' });
 }
 ```
 
@@ -511,13 +530,23 @@ Importé une fois par le layout racine (et par `global-error.tsx`). Il utilise *
 les classes qu'il trouve.
 
 ```css
-@import "tailwindcss";
-@import "./lesson.css";
+@import 'tailwindcss';
+@import './lesson.css';
 
+/* Tailwind 4 resolves `dark:` through prefers-color-scheme unless told
+   otherwise. The layouts put `dark` on <html> to pin the app to one palette,
+   so the variant has to follow that class or the two disagree: body stays
+   dark while every `dark:` utility switches off on a light OS. */
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* Tailwind 4 is CSS-first: there is no tailwind.config.js. Source detection is
+   declared explicitly so class scanning does not depend on the working
+   directory the build happens to run from inside the container. */
 @source '.';
+
 @source '../components';
+
+/* @ft/ui is source only: its classes are scanned from there. */
 @source '../../../packages/ui/src';
 ```
 
@@ -541,7 +570,7 @@ les classes qu'il trouve.
 Fichier : [lesson.css](../../apps/web/app/lesson.css)
 
 Environ 1 200 lignes de CSS simple pour les pages de leçon, importées par `globals.css`. La première ligne
-dit qu'il suit les maquettes de design. Il utilise des noms de classes normaux (`.lesson-view`, `.lesson-layout`,
+dit qu'il suit les maquettes du prototype. Il utilise des noms de classes normaux (`.lesson-view`, `.lesson-layout`,
 `.lesson-sidebar`, `.lesson-timeline`, `.lesson-task`, `.lesson-results-banner`...) parce que les
 écrans de leçon ont une grille précise, plus facile à écrire en CSS. Quelques règles utilisent `:has()` pour
 élargir le shell seulement quand une leçon est à l'écran :
@@ -596,11 +625,15 @@ Fichier : [routing.ts](../../apps/web/i18n/routing.ts)
 
 ```ts
 export const routing = defineRouting({
+  // A list of all locales that are supported
   locales: SUPPORTED_LOCALES,
+
+  // Used when no locale matches
   defaultLocale: DEFAULT_LOCALE,
+
   // Prefix even the default locale, so no route is ambiguous about the language
   // it renders and every href carries one.
-  localePrefix: "always",
+  localePrefix: 'always',
 });
 ```
 
@@ -644,8 +677,10 @@ export const { Link, redirect, usePathname, useRouter, getPathname } = createNav
 Ils remplacent les versions de Next.js. Ils ajoutent la locale actuelle à ta place :
 `<Link href="/login">` sur une page en français va vers `/fr/login`. `usePathname()` renvoie le chemin
 _sans_ la locale (`/login`). `router.replace(pathname, { locale: 'de' })` change de
-langue. Les components de cette app importent `Link` et `useRouter` depuis `@/i18n/navigation`, pas
-depuis `next/link`.
+langue. Les components de cette app importent `Link`, `useRouter` et `usePathname` depuis
+`@/i18n/navigation`, pas depuis `next/link` ou `next/navigation`. Le `redirect` de ce fichier n'est pas
+utilisé : le code serveur appelle `redirect('/login')` de `next/navigation`, sans locale, et
+`proxy.ts` ajoute la locale à la requête suivante.
 
 ### `messages/en.json`, `fr.json`, `de.json`
 
@@ -730,9 +765,9 @@ Dans un **client component**, ou un server component non async, utilise le hook 
 
 ```tsx
 // app/[locale]/error.tsx  ('use client')
-const t = useTranslations("ErrorPage");
+const t = useTranslations('ErrorPage');
 // ...
-<h1>{t("heading")}</h1>;
+<h1>{t('heading')}</h1>
 ```
 
 `t('heading')` cherche `ErrorPage.heading` dans le catalogue actuel. Avec une valeur :
@@ -752,28 +787,36 @@ flowchart TD
     D -- non --> R3["redirection vers /en/learn"]
     USE --> E["l'utilisateur choisit Deutsch dans LanguageSwitcher"]
     E --> F["router.replace(path, locale: 'de')<br/>l'URL devient /de/..."]
-    F --> G["le middleware enregistre NEXT_LOCALE=de"]
-    F --> H["LocaleSync (dans le layout dashboard)<br/>PATCH locale du profil = de"]
+    F --> G["next-intl dans le navigateur<br/>met le cookie NEXT_LOCALE à de"]
+    F --> H["LocaleSync (dans le layout dashboard)<br/>PATCH /api/users/me avec locale de<br/>enregistré dans User.locale"]
 ```
 
-1. **L'URL gagne.** `/fr/...` est en français, toujours.
+1. **L'URL gagne.** `/fr/...` est en français, toujours. Rien ne lit `User.locale` pour choisir la
+   langue d'une page.
 2. Sans locale dans l'URL, le middleware `next-intl` regarde son cookie `NEXT_LOCALE` (la
    dernière langue utilisée), puis le header `Accept-Language` du navigateur, puis la valeur par défaut `en`, et
-   redirige.
+   redirige. `NEXT_LOCALE` est un cookie de session : il n'a pas de `maxAge`, donc il disparaît quand le
+   navigateur se ferme. Le middleware le pose aussi quand une page est ouverte dans une langue qui n'est pas
+   celle du navigateur.
 3. **Changer de langue** : le select `LanguageSwitcher` appelle
    `router.replace(pathname, { locale })`. La page se recharge au même chemin dans la nouvelle
-   langue. `replace` (pas `push`) pour que le bouton Retour n'annule pas un changement de langue.
-4. **Prévenir le serveur** : `LocaleSync` dans le layout `(dashboard)` enregistre la langue dans le
-   profil de l'utilisateur (`PATCH` avec `{ locale }`) quand elle diffère de celle stockée. L'API en a besoin
-   parce que le tuteur des leçons répond dans la langue de l'interface de l'apprenant. Le chapitre 3 montre le
-   code.
+   langue, et `next-intl` écrit `NEXT_LOCALE` dans le navigateur. `replace` (pas `push`) pour que le
+   bouton Retour n'annule pas un changement de langue.
+4. **Prévenir le serveur** : [LocaleSync](../../apps/web/components/locale-sync.tsx), seulement dans le
+   layout `(dashboard)`, enregistre la langue de l'URL dans `User.locale` (`PATCH /api/users/me`
+   avec `{ locale }`) quand elle diffère de celle stockée. Une seule requête part à la fois. Un
+   échec est réessayé à la page suivante ; un `400` n'est pas réessayé. L'API en a besoin parce que le
+   tuteur des leçons répond dans la langue de l'interface de l'apprenant. L'inscription n'envoie pas de locale,
+   donc un nouveau compte commence avec `en` jusqu'à sa première page du dashboard. Un changement fait sur une page
+   `(main)` ou `(messages)` est enregistré à la page du dashboard suivante. Le chapitre 3 montre le code.
 
 ---
 
 ## Idées clés à retenir
 
 - Chaque URL de page commence par une locale (`/en`, `/fr`, `/de`) ; `proxy.ts` l'ajoute quand elle manque et
-  enregistre aussi le dernier cours ouvert dans le cookie `ft.lang`.
+  enregistre aussi le dernier cours ouvert dans le cookie `ft.lang`. L'URL décide de la langue ;
+  `LocaleSync` la copie seulement dans `User.locale` pour le tuteur.
 - Les dossiers sont des URLs. `[x]` est une partie dynamique, `[...x]` attrape tout, `(x)` est un groupe qui
   ajoute un layout mais pas de morceau d'URL.
 - Le layout racine vit dans `[locale]/layout.tsx` pour que `<html lang>` soit juste ; il charge le
@@ -786,7 +829,8 @@ flowchart TD
   de l'onglet et le monitoring.
 - Styles : Tailwind 4 dans `globals.css`, du CSS simple pour les leçons dans `lesson.css`.
 - Traductions : `getTranslations` sur le serveur, `useTranslations` dans le client, des clés regroupées par
-  namespace dans `messages/*.json` ; les liens et les redirections viennent de `@/i18n/navigation`.
+  namespace dans `messages/*.json` ; les liens et le router viennent de `@/i18n/navigation`, les redirections serveur
+  de `next/navigation` (le middleware ajoute la locale).
 
 ---
 

@@ -328,9 +328,23 @@ export const LLM_PROVIDER = Symbol('LLM_PROVIDER');
 Le module dit « sous ce nom, voici l'objet » :
 
 ```ts
-// llm.module.ts
-{ provide: LLM_PROVIDER, inject: [ConfigService], useFactory: (config) => createLlmProvider({...}) }
-exports: [LLM_PROVIDER]
+// llm.module.ts (commentaires retirés)
+@Module({
+  providers: [
+    {
+      provide: LLM_PROVIDER,
+      inject: [ConfigService],
+      useFactory: (config: ConfigService) =>
+        createLlmProvider({
+          LLM_PROVIDER: config.get('LLM_PROVIDER'),
+          LLM_API_KEY: config.get('LLM_API_KEY'),
+          LLM_MODEL: config.get('LLM_MODEL'),
+        }),
+    },
+  ],
+  exports: [LLM_PROVIDER],
+})
+export class LlmModule {}
 ```
 
 Le service dit « donne-moi l'objet rangé sous ce nom » :

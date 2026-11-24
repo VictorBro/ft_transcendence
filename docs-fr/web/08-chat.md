@@ -165,14 +165,14 @@ export default async function MessagesPage({
 Ensuite il choisit avec qui est le fil ouvert :
 
 ```tsx
-const parsed = UserIdInputSchema.safeParse((await searchParams).with);
-const withId = parsed.success ? parsed.data : null;
-// Someone you may write to, or share a conversation with: nobody else has a thread here.
-const friend = lists.friends.find((user) => user.id === withId);
-const other = friend ?? conversations.find(({ user }) => user.id === withId)?.user;
-const page = other === undefined ? null : await loadMessagePage(other.id);
+  const parsed = UserIdInputSchema.safeParse((await searchParams).with);
+  const withId = parsed.success ? parsed.data : null;
+  // Someone you may write to, or share a conversation with: nobody else has a thread here.
+  const friend = lists.friends.find((user) => user.id === withId);
+  const other = friend ?? conversations.find(({ user }) => user.id === withId)?.user;
+  const page = other === undefined ? null : await loadMessagePage(other.id);
 
-const friendsOnline = Object.fromEntries(lists.friends.map((user) => [user.id, user.online]));
+  const friendsOnline = Object.fromEntries(lists.friends.map((user) => [user.id, user.online]));
 ```
 
 - `?with=` est vérifié avec un schema Zod. Une mauvaise valeur est simplement ignorée : tu vois la liste seule, pas de page d'erreur.
@@ -185,14 +185,14 @@ const friendsOnline = Object.fromEntries(lists.friends.map((user) => [user.id, u
 Le rendu :
 
 ```tsx
-<ChatThread
-  key={other.id}
-  user={other}
-  online={friend?.online}
-  page={page}
-  me={me.id}
-  timeZone={me.timeZone}
-/>
+          <ChatThread
+            key={other.id}
+            user={other}
+            online={friend?.online}
+            page={page}
+            me={me.id}
+            timeZone={me.timeZone}
+          />
 ```
 
 - `key={other.id}` : quand tu ouvres une autre conversation, React voit une nouvelle key et démarre un `ChatThread` **neuf**
@@ -215,14 +215,14 @@ Comme les autres fichiers d'API (chapitre 4), il y a une **moitié serveur** et 
 
 ```ts
 export async function requireConversations(): Promise<Conversation[]> {
-  return settle(await apiGet(ConversationsSchema, "/api/conversations"), "conversations")
+  return settle(await apiGet(ConversationsSchema, '/api/conversations'), 'conversations')
     .conversations;
 }
 
 export async function loadMessagePage(userId: string): Promise<MessagePage> {
   return settle(
     await apiGet(MessagePageSchema, `/api/conversations/${userId}/messages`),
-    "messages",
+    'messages',
   );
 }
 ```
@@ -266,20 +266,20 @@ Il affiche chaque conversation, la plus récente d'abord, chacune avec un avatar
 La partie clé : quand un nouveau message arrive, sa ligne monte en haut **sans** redemander au serveur.
 
 ```tsx
-// The last message heard per conversation since the render, which may be later than its own.
-const [heard, setHeard] = useState<Partial<Record<string, string>>>({});
+  // The last message heard per conversation since the render, which may be later than its own.
+  const [heard, setHeard] = useState<Partial<Record<string, string>>>({});
 
-useServerEvent(SERVER_EVENTS.DM_MESSAGE, ({ userId, message }) => {
-  if (conversations.some(({ user }) => user.id === userId)) {
-    setHeard((last) => ({ ...last, [userId]: message.createdAt }));
-  } else {
-    router.refresh();
-  }
-});
+  useServerEvent(SERVER_EVENTS.DM_MESSAGE, ({ userId, message }) => {
+    if (conversations.some(({ user }) => user.id === userId)) {
+      setHeard((last) => ({ ...last, [userId]: message.createdAt }));
+    } else {
+      router.refresh();
+    }
+  });
 
-const latest = ({ user, lastMessageAt }: Conversation) =>
-  Math.max(Date.parse(lastMessageAt), Date.parse(heard[user.id] ?? lastMessageAt));
-const ordered = [...conversations].sort((a, b) => latest(b) - latest(a));
+  const latest = ({ user, lastMessageAt }: Conversation) =>
+    Math.max(Date.parse(lastMessageAt), Date.parse(heard[user.id] ?? lastMessageAt));
+  const ordered = [...conversations].sort((a, b) => latest(b) - latest(a));
 ```
 
 - `useServerEvent` (de `tab-socket.ts`) lance la fonction chaque fois que `dm:message` arrive.
@@ -295,9 +295,9 @@ Encore une règle : si tu as ouvert un ami avec `?with=` mais que tu ne lui as j
 l'ajoute quand même en haut, pour que la liste ne dise jamais « personne » à côté de son fil ouvert :
 
 ```tsx
-if (open !== null && !conversations.some(({ user }) => user.id === open.id)) {
-  rows.unshift({ user: open, unread: 0 });
-}
+  if (open !== null && !conversations.some(({ user }) => user.id === open.id)) {
+    rows.unshift({ user: open, unread: 0 });
+  }
 ```
 
 Chaque ligne (`ConversationRow`) reçoit son compteur en direct avec `useUnread(user.id, unread)` — voir la section des non-lus plus bas —
@@ -352,11 +352,11 @@ Une **ref** (`useRef`) est une boîte qui garde une valeur entre les rendus, mai
 ### 1. Un nouveau message arrive en direct
 
 ```tsx
-useServerEvent(SERVER_EVENTS.DM_MESSAGE, ({ userId, message }) => {
-  if (userId !== user.id) return;
-  stick.current ||= message.senderId === me || atNewest(pane.current, bottom.current);
-  setPage((held) => ({ ...held, messages: mergeMessages(held.messages, [message]) }));
-});
+  useServerEvent(SERVER_EVENTS.DM_MESSAGE, ({ userId, message }) => {
+    if (userId !== user.id) return;
+    stick.current ||= message.senderId === me || atNewest(pane.current, bottom.current);
+    setPage((held) => ({ ...held, messages: mergeMessages(held.messages, [message]) }));
+  });
 ```
 
 - Le `userId` de l'événement est **l'autre personne** de la conversation (le serveur lui envoie `{ userId: me }` et
@@ -369,20 +369,20 @@ useServerEvent(SERVER_EVENTS.DM_MESSAGE, ({ userId, message }) => {
 ### 2. Rattrapage à chaque connexion
 
 ```tsx
-useEffect(() => {
-  if (status !== "connected") return;
-  let current = true;
-  // Taken now: a message heard during the fetch says nothing about the gap.
-  const before = shown.current;
-  void fetchNewestMessages(user.id).then((result) => {
-    if (!current || !result.ok) return;
-    stick.current ||= atNewest(pane.current, bottom.current);
-    setPage((held) => catchUp(held, result.data, before));
-  });
-  return () => {
-    current = false;
-  };
-}, [status, user.id]);
+  useEffect(() => {
+    if (status !== 'connected') return;
+    let current = true;
+    // Taken now: a message heard during the fetch says nothing about the gap.
+    const before = shown.current;
+    void fetchNewestMessages(user.id).then((result) => {
+      if (!current || !result.ok) return;
+      stick.current ||= atNewest(pane.current, bottom.current);
+      setPage((held) => catchUp(held, result.data, before));
+    });
+    return () => {
+      current = false;
+    };
+  }, [status, user.id]);
 ```
 
 Chaque fois que le statut du socket devient `connected` (la première fois, et après chaque reconnexion), le fil récupère
@@ -393,9 +393,9 @@ la page la plus récente par HTTP. Pourquoi ? Pendant que le socket était coup�
 ### 3. Marquer comme lu
 
 ```tsx
-useEffect(() => {
-  if (visible && status === "connected" && (counts?.[user.id] ?? 0) > 0) markRead(user.id);
-}, [visible, status, counts, user.id]);
+  useEffect(() => {
+    if (visible && status === 'connected' && (counts?.[user.id] ?? 0) > 0) markRead(user.id);
+  }, [visible, status, counts, user.id]);
 ```
 
 Si l'onglet est au premier plan (`visible`), connecté, et que cette conversation a des messages non lus, envoyer `dm:read`. Le
@@ -406,18 +406,18 @@ Un onglet caché ne marque jamais rien comme lu (`usePageVisible` utilise `docum
 ### 4. Le défilement
 
 ```tsx
-useEffect(() => {
-  if (!stick.current) return;
-  stick.current = false;
-  showNewest(pane.current, bottom.current);
-}, [page.messages]);
+  useEffect(() => {
+    if (!stick.current) return;
+    stick.current = false;
+    showNewest(pane.current, bottom.current);
+  }, [page.messages]);
 
-useLayoutEffect(() => {
-  const id = anchor.current;
-  if (id === null) return;
-  anchor.current = null;
-  pane.current?.querySelector(`[data-id="${id}"]`)?.scrollIntoView({ block: "start" });
-}, [page.messages]);
+  useLayoutEffect(() => {
+    const id = anchor.current;
+    if (id === null) return;
+    anchor.current = null;
+    pane.current?.querySelector(`[data-id="${id}"]`)?.scrollIntoView({ block: 'start' });
+  }, [page.messages]);
 ```
 
 - `useEffect` tourne **après** l'affichage. Il sert à défiler jusqu'en bas, après que Next.js a fait son propre défilement vers
@@ -457,24 +457,24 @@ En bas : le `Composer` pour un ami, ou le texte « only friends can write » (se
 ### Le `Composer`
 
 ```tsx
-async function send() {
-  if (sending) return;
-  const parsed = MessageTextSchema.safeParse(text);
-  if (!parsed.success) {
-    setError(errorMessage(parsed.error.issues[0]?.message ?? "unknown"));
-    return;
-  }
+  async function send() {
+    if (sending) return;
+    const parsed = MessageTextSchema.safeParse(text);
+    if (!parsed.success) {
+      setError(errorMessage(parsed.error.issues[0]?.message ?? 'unknown'));
+      return;
+    }
 
-  setSending(true);
-  const result = await sendMessage(userId, parsed.data);
-  setSending(false);
-  if (!result.ok) {
-    setError(errorMessage(result.code));
-    return;
+    setSending(true);
+    const result = await sendMessage(userId, parsed.data);
+    setSending(false);
+    if (!result.ok) {
+      setError(errorMessage(result.code));
+      return;
+    }
+    setText('');
+    setError(null);
   }
-  setText("");
-  setError(null);
-}
 ```
 
 - Le texte est d'abord vérifié dans le navigateur avec le **même** schema que celui du serveur (`MessageTextSchema` : sans espaces au début et à la fin,
@@ -485,12 +485,12 @@ async function send() {
 Le clavier :
 
 ```tsx
-function onKeyDown(event: KeyboardEvent<HTMLTextAreaElement>) {
-  const { isComposing, keyCode } = event.nativeEvent;
-  if (event.key !== "Enter" || event.shiftKey || isComposing || keyCode === 229) return;
-  event.preventDefault();
-  event.currentTarget.form?.requestSubmit();
-}
+  function onKeyDown(event: KeyboardEvent<HTMLTextAreaElement>) {
+    const { isComposing, keyCode } = event.nativeEvent;
+    if (event.key !== 'Enter' || event.shiftKey || isComposing || keyCode === 229) return;
+    event.preventDefault();
+    event.currentTarget.form?.requestSubmit();
+  }
 ```
 
 Entrée envoie, Maj+Entrée fait une nouvelle ligne. Un **IME** est l'outil utilisé pour taper des langues comme le japonais ou le chinois :
@@ -531,9 +531,9 @@ export async function sendMessageOver(
   }
 
   const parsed = AckSchema.safeParse(answer);
-  if (!parsed.success) return { ok: false, code: "unknown" };
-  if (!parsed.data.ok && parsed.data.code === "server.unexpected") {
-    return { ok: false, code: "unknown" };
+  if (!parsed.success) return { ok: false, code: 'unknown' };
+  if (!parsed.data.ok && parsed.data.code === 'server.unexpected') {
+    return { ok: false, code: 'unknown' };
   }
   return parsed.data;
 }
@@ -713,7 +713,7 @@ Il exporte aussi `badgeText` (`"99+"` au-dessus de 99) et `unreadTotal` (la somm
 `tab-socket.ts` crée un store et le remplit depuis le socket :
 
 ```ts
-created.on(SERVER_EVENTS.DM_UNREAD, (snapshot) => unread.apply(snapshot));
+    created.on(SERVER_EVENTS.DM_UNREAD, (snapshot) => unread.apply(snapshot));
 ```
 
 Et fournit des hooks React pour le lire (avec `useSyncExternalStore`, la façon de React de lire un store qui vit en dehors de React) :
@@ -740,13 +740,13 @@ gagne. Le serveur envoie un `dm:unread` à chaque connexion, donc ce passage se 
 
 ```tsx
 export function UnreadBadge({ count }: { count: number | undefined }) {
-  const t = useTranslations("MessagesPage");
+  const t = useTranslations('MessagesPage');
 
   if (count === undefined || count === 0) return null;
   return (
     <span className="inline-flex h-5 min-w-5 ...">
       <span aria-hidden>{badgeText(count)}</span>
-      <span className="sr-only">{t("unread", { count })}</span>
+      <span className="sr-only">{t('unread', { count })}</span>
     </span>
   );
 }
@@ -758,8 +758,9 @@ export function UnreadTotalBadge() {
 
 - Rien à 0, et rien avant que l'onglet ait entendu quelque chose. Donc un « 0 » ne clignote jamais au premier affichage.
 - L'œil voit `99+` ; un lecteur d'écran entend la phrase complète avec le nombre exact.
-- `UnreadBadge` est utilisé pour chaque ligne de la liste des conversations. `UnreadTotalBadge` est utilisé dans l'en-tête
-  ([header-menu.tsx](../../apps/web/components/header-menu.tsx), [session-nav.tsx](../../apps/web/components/session-nav.tsx)).
+- `UnreadBadge` est utilisé pour chaque ligne de la liste des conversations. `UnreadTotalBadge` est utilisé deux fois dans l'en-tête : sur le
+  bouton du menu, pour que le nombre se voie quand le menu est fermé ([header-menu.tsx](../../apps/web/components/header-menu.tsx)),
+  et sur la ligne Messages dans le menu ([session-nav.tsx](../../apps/web/components/session-nav.tsx)).
 
 ```mermaid
 flowchart LR
@@ -784,15 +785,7 @@ Le chapitre 3 couvre [presence.ts](../../apps/web/lib/presence.ts) et les listen
 l'en-tête du fil :
 
 ```tsx
-export function AvatarWithDot({
-  user,
-  online,
-  size,
-}: {
-  user: PublicUser;
-  online?: boolean;
-  size: number;
-}) {
+export function AvatarWithDot({ user, online, size }: { user: PublicUser; online?: boolean; size: number }) {
   return (
     <span className="relative shrink-0">
       <Avatar src={user.avatarUrl} name={user.displayName} size={size} />
@@ -823,11 +816,11 @@ Tests : [presence.test.ts](../../apps/web/lib/presence.test.ts).
 
 ```tsx
 export function MessageLink({ userId }: { userId: string }) {
-  const t = useTranslations("FriendsPage");
+  const t = useTranslations('FriendsPage');
 
   return (
     <Link href={`/chat?with=${userId}`} prefetch={false} className={SECONDARY_BUTTON}>
-      {t("message")}
+      {t('message')}
     </Link>
   );
 }

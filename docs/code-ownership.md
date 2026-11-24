@@ -16,7 +16,7 @@ chaque dossier doit couvrir le code de cette liste.
   nom actuel.
 - « Touché » veut dire créé ou modifié, même d'une ligne. Ce n'est pas un pourcentage de lignes.
 - Entre parenthèses : les autres personnes qui ont aussi touché le fichier.
-- Les dossiers de données (`content/`, fixtures...) sont donnés en
+- Les dossiers de données (`content/`, fixtures, la traduction `docs-fr/`, l'archive `docs/before-rework/`...) sont donnés en
   nombre de fichiers.
 
 Pour refaire le calcul : `git fetch origin '+refs/pull/*/head:refs/pr/*'`, puis pour chaque commit
@@ -37,10 +37,10 @@ Pour refaire le calcul : `git fetch origin '+refs/pull/*/head:refs/pr/*'`, puis 
 
 | Personne | PR (auteur) | PR (a aidé) | Fichiers touchés | dont code (`apps`, `packages`, `e2e`) |
 | --- | ---: | ---: | ---: | ---: |
-| Victor | 23 | 11 | 559 | 333 |
-| Endrit | 27 | 5 | 746 | 261 |
+| Victor | 23 | 11 | 448 | 333 |
+| Endrit | 27 | 5 | 799 | 262 |
 | Bastian | 21 | 1 | 212 | 165 |
-| Anaïs | 9 | 0 | 86 | 77 |
+| Anaïs | 9 | 0 | 88 | 79 |
 | Luca | 11 | 0 | 171 | 159 |
 
 ## Victor (`VictorBro`)
@@ -86,7 +86,7 @@ A aussi écrit des commits dans les PR des autres :
 - #104 feat: 50 placement and result
 - #107 feat: 105 fr outline A1
 
-### Ses fichiers (559)
+### Ses fichiers (448)
 
 #### API (`apps/api`)
 
@@ -131,13 +131,13 @@ A aussi écrit des commits dans les PR des autres :
 - `apps/web/app/[locale]/(main)/login/` : `login-form.tsx` (Endrit, Luca)
 - `apps/web/app/[locale]/(main)/onboarding/` : `choose-course.tsx` (Luca, Bastian), `choose-level.tsx` (Luca), `page.tsx` (Luca)
 - `apps/web/app/[locale]/(main)/profile/` : `page.tsx` (Endrit, Luca, Anaïs)
-- `apps/web/app/[locale]/(main)/profile/edit/` : `page.tsx` (Anaïs), `profile-form.tsx`
+- `apps/web/app/[locale]/(main)/profile/edit/` : `page.tsx` (Anaïs), `profile-form.tsx` (Anaïs)
 - `apps/web/app/[locale]/(main)/settings/2fa/` : `page.tsx` (Endrit, Luca), `two-factor-panel.tsx` (Endrit, Luca, Bastian)
 - `apps/web/app/[locale]/(main)/signup/` : `signup-form.tsx` (Endrit, Luca)
 - `apps/web/app/[locale]/(main)/users/[id]/` : `page.tsx` (Endrit)
 - `apps/web/app/[locale]/(messages)/` : `layout.tsx`
 - `apps/web/app/[locale]/(messages)/chat/` : `chat-thread.tsx`, `conversation-list.tsx`, `page.tsx`
-- `apps/web/app/healthz/` : `route.ts` (Luca)
+- `apps/web/app/healthz/` : `route.ts` (Endrit, Luca)
 - `apps/web/app/healthz/api/` : `route.ts`
 - `apps/web/app/healthz/upstream/` : `route.ts` (Endrit, Luca)
 - `apps/web/components/` : `avatar.tsx` (Anaïs), `change-level.tsx` (Endrit), `connection-status.tsx` (Endrit), `course-switcher.tsx` (Endrit), `dashboard-nav.tsx` (Luca, Endrit), `form.tsx` (Luca, Endrit), `friend-buttons.tsx`, `header-nav.tsx` (Luca, Endrit), `language-switcher.tsx` (Luca, Endrit), `legal-article.tsx` (Endrit, Luca), `legal-footer.tsx` (Endrit, Luca), `level-picker.tsx`, `log-out-button.tsx` (Luca, Endrit), `message-link.tsx`, `presence-dot.tsx` (Endrit), `refresh-on.tsx`, `session-nav.tsx` (Luca, Anaïs, Endrit), `shell.tsx` (Luca, Endrit), `tab-socket.ts` (Endrit), `unread-badge.tsx`, `user-row.tsx` (Endrit)
@@ -245,13 +245,13 @@ A aussi écrit des commits dans les PR des autres :
 - #104 feat: 50 placement and result
 - #107 feat: 105 fr outline A1
 
-### Ses fichiers (746)
+### Ses fichiers (799)
 
 #### API (`apps/api`)
 
 - `apps/api/` : `package.json` (Victor, Anaïs, Bastian), `prisma.config.ts` (Victor), `tsconfig.json` (Victor)
 - `apps/api/prisma/` : `schema.prisma` (Victor, Anaïs, Luca, Bastian), `seed.ts` (Victor, Luca, Bastian, Anaïs)
-- `apps/api/prisma/migrations/` : `20260913181513_add_user_levels_and_question_bank`, `20260913184446_question_bank_source_id_unique`, `20261024122424_add_lesson_content`
+- `apps/api/prisma/migrations/` : `20260913181513_add_user_levels_and_question_bank` (Anaïs), `20260913184446_question_bank_source_id_unique`, `20261024122424_add_lesson_content`
 - `apps/api/scripts/` : `check-outlines.ts` (Victor), `try-generation.ts` (Victor)
 - `apps/api/scripts/lessons/` : `author.ts`, `check-draft.ts`, `check.ts`, `complete.ts`, `edits.ts`, `files.ts`, `json.ts`, `prompt.ts`, `reply.ts`, `report.ts`, `times.ts`
 - `apps/api/scripts/lessons/providers/` : `chat.ts`, `claude.ts`
@@ -290,6 +290,7 @@ A aussi écrit des commits dans les PR des autres :
 - `apps/web/app/[locale]/(main)/settings/2fa/` : `page.tsx` (Victor, Luca), `two-factor-panel.tsx` (Victor, Luca, Bastian)
 - `apps/web/app/[locale]/(main)/signup/` : `signup-form.tsx` (Victor, Luca)
 - `apps/web/app/[locale]/(main)/users/[id]/` : `page.tsx` (Victor)
+- `apps/web/app/healthz/` : `route.ts` (Victor, Luca)
 - `apps/web/app/healthz/upstream/` : `route.ts` (Victor, Luca)
 - `apps/web/components/` : `change-level.tsx` (Victor), `connection-status.tsx` (Victor), `course-switcher.tsx` (Victor), `dashboard-nav.tsx` (Victor, Luca), `form.tsx` (Victor, Luca), `gamification.tsx` (Anaïs), `header-menu.tsx`, `header-nav.tsx` (Victor, Luca), `language-switcher.tsx` (Luca, Victor), `legal-article.tsx` (Victor, Luca), `legal-footer.tsx` (Luca, Victor), `log-out-button.tsx` (Victor, Luca), `menu-icon.tsx`, `presence-dot.tsx` (Victor), `scroll-lock.ts`, `session-nav.tsx` (Victor, Luca, Anaïs), `shell.tsx` (Victor, Luca), `tab-socket.ts` (Victor), `user-row.tsx` (Victor)
 - `apps/web/components/lesson/` : `controls.tsx` (Bastian), `countdown.tsx`, `discussion.tsx` (Luca), `speech.tsx` (Bastian), `tutor-answer.test.tsx`, `tutor-answer.tsx`
@@ -330,8 +331,11 @@ A aussi écrit des commits dans les PR des autres :
 
 #### Documentation (`docs/`)
 
-- `docs/` : `README.md`, `backlog.md` (Victor), `index.html` (Bastian)
+- `docs-fr/` : 54 fichiers
+- `docs/` : `README.md`, `backlog.md` (Victor), `code-ownership.md`, `index.html` (Bastian)
+- `docs/api/` : `01-big-picture.md`, `02-boot-and-request-flow.md`, `03-infrastructure.md`, `04-database.md`, `05-auth-and-users.md`, `06-llm.md`, `07-courses-placement.md`, `08-lessons.md`, `09-social-and-realtime.md`, `10-tests.md`, `11-scripts.md`, `README.md`
 - `docs/architecture/` : `data-model.md`, `overview.md` (Victor), `product.md` (Victor, Anaïs), `realtime.md`, `technical-plan.md` (Victor)
+- `docs/before-rework/` : 36 fichiers
 - `docs/content/` : `item-bank.md` (Victor), `lessons.md` (Bastian, Anaïs)
 - `docs/modules/` : `README.md`, `_template.md`, `advanced-search.md`, `browsers.md`, `custom-ci-cd.md`, `custom-cloud-deploy.md`, `framework.md`, `gamification.md`, `i18n.md`, `llm-interface.md`, `monitoring.md`, `orm.md`, `ssr.md`, `two-factor-auth.md`, `user-interaction.md`, `user-management.md`, `websockets.md`
 - `docs/operations/` : `deployment.md` (Victor, Luca), `development.md` (Bastian, Victor), `monitoring.md` (Victor, Anaïs, Luca), `versions.md` (Victor, Bastian)
@@ -340,7 +344,7 @@ A aussi écrit des commits dans les PR des autres :
 - `docs/transcendence-course/` : `README.md`
 - `docs/transcendence-course/anais/` : `README.md`
 - `docs/transcendence-course/bastian/` : `README.md`
-- `docs/transcendence-course/endrit/` : `README.md`
+- `docs/transcendence-course/endrit/` : `README.md`, `ma-trace.md`
 - `docs/transcendence-course/endrit/demo/` : `README.md`, `concepts.md`
 - `docs/transcendence-course/endrit/error-codes/` : `README.md`
 - `docs/transcendence-course/endrit/lessons-api/` : `README.md`, `request-lifecycle.md`
@@ -351,6 +355,7 @@ A aussi écrit des commits dans les PR des autres :
 - `docs/transcendence-course/endrit/throttler/` : `README.md`
 - `docs/transcendence-course/luca/` : `README.md`
 - `docs/transcendence-course/victor/` : `README.md`
+- `docs/web/` : `01-react-and-nextjs.md`, `02-routing-layouts-i18n.md`, `03-shell-components.md`, `04-talking-to-the-api.md`, `05-account-pages.md`, `06-learning-pages.md`, `07-lesson-player.md`, `08-chat.md`, `09-tests.md`, `README.md`
 
 #### Infra, CI et racine du repo
 
@@ -482,13 +487,13 @@ A aussi écrit des commits dans les PR des autres :
 - #190 feat: 145 lesson attempts
 - #199 feat: 97 gamification pages
 
-### Ses fichiers (86)
+### Ses fichiers (88)
 
 #### API (`apps/api`)
 
 - `apps/api/` : `Dockerfile` (Victor), `package.json` (Victor, Endrit, Bastian), `vitest.config.e2e.mts` (Victor, Luca)
 - `apps/api/prisma/` : `schema.prisma` (Victor, Endrit, Luca, Bastian), `seed.ts` (Victor, Endrit, Luca, Bastian)
-- `apps/api/prisma/migrations/` : `20260917234934_add_active_lang`, `20261103225542_add_lesson_attempt`, `20261107184854_add_gamification`
+- `apps/api/prisma/migrations/` : `20260913181513_add_user_levels_and_question_bank` (Endrit), `20260917234934_add_active_lang`, `20261103225542_add_lesson_attempt`, `20261107184854_add_gamification`
 - `apps/api/src/` : `app.module.ts` (Victor, Endrit, Bastian), `app.setup.ts` (Victor, Luca, Endrit)
 - `apps/api/src/auth/` : `auth.controller.ts` (Victor, Luca, Bastian, Endrit)
 - `apps/api/src/courses/` : `courses.controller.ts` (Victor, Endrit, Luca), `courses.dto.ts`, `courses.module.ts` (Bastian, Victor), `courses.service.spec.ts` (Victor, Luca), `courses.service.ts` (Endrit, Luca, Victor)
@@ -504,7 +509,7 @@ A aussi écrit des commits dans les PR des autres :
 - `apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/results/` : `page.tsx` (Bastian)
 - `apps/web/app/[locale]/(dashboard)/learn/[lang]/placement/` : `page.tsx` (Victor), `placement-exam.tsx` (Victor)
 - `apps/web/app/[locale]/(main)/profile/` : `page.tsx` (Victor, Endrit, Luca)
-- `apps/web/app/[locale]/(main)/profile/edit/` : `page.tsx` (Victor)
+- `apps/web/app/[locale]/(main)/profile/edit/` : `page.tsx` (Victor), `profile-form.tsx` (Victor)
 - `apps/web/components/` : `avatar.tsx` (Victor), `gamification.tsx` (Endrit), `session-nav.tsx` (Victor, Luca, Endrit)
 - `apps/web/components/lesson/` : `results-review.tsx` (Bastian)
 - `apps/web/lib/` : `achievements.ts`, `auth-client.ts` (Victor, Luca, Bastian), `error-message.ts` (Luca, Victor), `messages.test.ts` (Luca, Victor), `placement-client.test.ts` (Victor), `placement-client.ts`, `placement-schema.ts`, `xp-breakdown.test.ts`, `xp-breakdown.ts`
@@ -584,7 +589,7 @@ A aussi écrit des commits dans les PR des autres :
 - `apps/web/app/[locale]/(main)/signup/` : `page.tsx`, `signup-form.tsx` (Victor, Endrit)
 - `apps/web/app/[locale]/(main)/terms/` : `page.tsx`
 - `apps/web/app/[locale]/[...rest]/` : `page.tsx`
-- `apps/web/app/healthz/` : `route.ts` (Victor)
+- `apps/web/app/healthz/` : `route.ts` (Victor, Endrit)
 - `apps/web/app/healthz/upstream/` : `route.ts` (Victor, Endrit)
 - `apps/web/components/` : `dashboard-nav.tsx` (Victor, Endrit), `flag.tsx`, `form.tsx` (Victor, Endrit), `header-nav.tsx` (Victor, Endrit), `language-switcher.tsx` (Victor, Endrit), `legal-article.tsx` (Victor, Endrit), `legal-footer.tsx` (Endrit, Victor), `locale-sync.tsx`, `log-out-button.tsx` (Victor, Endrit), `session-nav.tsx` (Victor, Anaïs, Endrit), `shell.tsx` (Victor, Endrit), `time-zone-sync.tsx`
 - `apps/web/components/lesson/` : `discussion.tsx` (Endrit)

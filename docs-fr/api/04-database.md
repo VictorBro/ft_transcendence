@@ -635,6 +635,7 @@ ne garde qu'une ligne. `status` vaut `pending` (une demande) ou `accepted`. Les 
 // One row per pair who have exchanged a message, keyed like Friendship. It
 // outlives the friendship: the history stays readable by both.
 model Conversation {
+  // Both ids, smaller first (src/friends/pair.ts), so a pair cannot get two.
   pairKey       String    @id
   // The smaller id.
   userAId       String    @db.Uuid
@@ -712,7 +713,7 @@ Les mêmes valeurs existent aussi dans `packages/shared` (sous forme de schemas 
 [prisma.config.ts](../../apps/api/prisma.config.ts) est lu par la **Prisma CLI** (pas par l'API qui tourne).
 
 ```ts
-import { defineConfig } from "prisma/config";
+import { defineConfig } from 'prisma/config';
 
 const shadowDatabaseUrl = process.env.SHADOW_DATABASE_URL;
 
@@ -720,14 +721,14 @@ const shadowDatabaseUrl = process.env.SHADOW_DATABASE_URL;
 // variable is unset, and `prisma generate` runs during the Docker build, where
 // no database exists yet. Migration commands fail with a clear error instead.
 export default defineConfig({
-  schema: "prisma/schema.prisma",
+  schema: 'prisma/schema.prisma',
   migrations: {
-    path: "prisma/migrations",
-    seed: "pnpm db:seed",
+    path: 'prisma/migrations',
+    seed: 'pnpm db:seed',
   },
 
   datasource: {
-    url: process.env.DATABASE_URL ?? "",
+    url: process.env.DATABASE_URL ?? '',
     // `migrate diff --from-migrations` needs this; every other command rejects
     // it as an empty string with P1013, so unset means absent, not ''.
     ...(shadowDatabaseUrl ? { shadowDatabaseUrl } : {}),
@@ -928,11 +929,11 @@ if (require.main === module) {
   // without Nest nothing calls onModuleInit: Prisma connects on the first query.
   const prisma = new PrismaService();
 
-  seedQuestionBank(findContentDir("items"), prisma)
-    .then((count) => console.log(`seeded ${count} questions from ${findContentDir("items")}`))
-    .then(() => seedLessons(dirname(findContentDir("outlines")), prisma))
+  seedQuestionBank(findContentDir('items'), prisma)
+    .then((count) => console.log(`seeded ${count} questions from ${findContentDir('items')}`))
+    .then(() => seedLessons(dirname(findContentDir('outlines')), prisma))
     .then((count) =>
-      console.log(`seeded ${count} lessons from ${dirname(findContentDir("outlines"))}`),
+      console.log(`seeded ${count} lessons from ${dirname(findContentDir('outlines'))}`),
     )
     .then(async () => {
       if (password === null) {
@@ -940,7 +941,7 @@ if (require.main === module) {
         return;
       }
       // Loaded here only, so the public server never even reads the demo code.
-      const { seedDemo } = await import("../src/demo/demo");
+      const { seedDemo } = await import('../src/demo/demo');
       await seedDemo(prisma, { runNow: new Date(), password });
     })
     .catch((err) => {
@@ -1078,19 +1079,19 @@ C'est la plus grosse. Son commentaire de doc explique les règles :
    à partir de l'ancienne version et pointerait vers des pages qui n'existent plus. Celles-là sont supprimées.
 
 ```ts
-await prisma.$transaction([
-  ...writes.map(({ content, ...fields }) => {
-    const row = { ...fields, content: content ?? Prisma.DbNull };
-    return prisma.lesson.upsert({ where: { id: row.id }, create: row, update: row });
-  }),
-  ...(edited.length > 0
-    ? [
-        prisma.lessonAttempt.deleteMany({
-          where: { lessonId: { in: edited }, completedAt: null },
-        }),
-      ]
-    : []),
-]);
+  await prisma.$transaction([
+    ...writes.map(({ content, ...fields }) => {
+      const row = { ...fields, content: content ?? Prisma.DbNull };
+      return prisma.lesson.upsert({ where: { id: row.id }, create: row, update: row });
+    }),
+    ...(edited.length > 0
+      ? [
+          prisma.lessonAttempt.deleteMany({
+            where: { lessonId: { in: edited }, completedAt: null },
+          }),
+        ]
+      : []),
+  ]);
 ```
 
 Encore une seule transaction. `Prisma.DbNull` est la façon de dire « NULL SQL » pour une colonne `Json?` (un simple `null`
@@ -1105,12 +1106,12 @@ elle n'est plus prête. Pas besoin de migration.
 ```ts
 export function demoSkipReason(env: NodeJS.ProcessEnv): string | null {
   // An allowlist: the public server seeds with only DATABASE_URL, NODE_ENV unset.
-  if (env.NODE_ENV !== "development") {
-    return `NODE_ENV is ${env.NODE_ENV ?? "unset"}, not development`;
+  if (env.NODE_ENV !== 'development') {
+    return `NODE_ENV is ${env.NODE_ENV ?? 'unset'}, not development`;
   }
   // Every .env has the key (make env-file adds it empty), so empty means skip.
-  if ((env.DEMO_PASSWORD ?? "").trim() === "") {
-    return "DEMO_PASSWORD is empty";
+  if ((env.DEMO_PASSWORD ?? '').trim() === '') {
+    return 'DEMO_PASSWORD is empty';
   }
   return null;
 }
@@ -1198,24 +1199,29 @@ Voici à quoi ressemble le code Prisma dans les services. Les détails de chaque
 Tiré de [auth.service.ts](../../apps/api/src/auth/auth.service.ts) :
 
 ```ts
-try {
-  const user = await this.prisma.user.create({
-    data: {
-      email: input.email.toLowerCase(),
-      displayName: input.displayName,
-      passwordHash,
-      ...(input.locale ? { locale: input.locale } : {}),
-    },
-  });
-  return AuthService.toSessionUser(user);
-} catch (error) {
-  // P2002 is the unique constraint on email or displayName. Caught rather
-  // than pre-checked: a SELECT before INSERT still races another signup.
-  if (typeof error === "object" && error !== null && "code" in error && error.code === "P2002") {
-    throw new ConflictException("auth.identityTaken");
-  }
-  throw error;
-}
+    try {
+      const user = await this.prisma.user.create({
+        data: {
+          email: input.email.toLowerCase(),
+          displayName: input.displayName,
+          passwordHash,
+          ...(input.locale ? { locale: input.locale } : {}),
+        },
+      });
+      return AuthService.toSessionUser(user);
+    } catch (error) {
+      // P2002 is the unique constraint on email or displayName. Caught rather
+      // than pre-checked: a SELECT before INSERT still races another signup.
+      if (
+        typeof error === 'object' &&
+        error !== null &&
+        'code' in error &&
+        error.code === 'P2002'
+      ) {
+        throw new ConflictException('auth.identityTaken');
+      }
+      throw error;
+    }
 ```
 
 `id`, `role`, `createdAt` et les autres ne sont pas donnés : les valeurs par défaut du schema les remplissent. Le code ne
@@ -1226,7 +1232,7 @@ insère directement, et si le `@unique` sur `email` ou `displayName` refuse, Pri
 Relire est tout aussi court (même fichier) :
 
 ```ts
-const user = await this.prisma.user.findUnique({ where: { email: email.toLowerCase() } });
+    const user = await this.prisma.user.findUnique({ where: { email: email.toLowerCase() } });
 ```
 
 `findUnique` n'accepte que des champs uniques dans `where` (`id`, `email`, `displayName`), et renvoie la
@@ -1237,14 +1243,14 @@ ligne ou `null`.
 Tiré de [users.service.ts](../../apps/api/src/users/users.service.ts) :
 
 ```ts
-const user = await this.prisma.user.findUnique({
-  where: { id },
-  select: {
-    ...PUBLIC_USER_SELECT,
-    timeZone: true,
-    userLevels: { orderBy: { createdAt: "asc" } },
-  },
-});
+    const user = await this.prisma.user.findUnique({
+      where: { id },
+      select: {
+        ...PUBLIC_USER_SELECT,
+        timeZone: true,
+        userLevels: { orderBy: { createdAt: 'asc' } },
+      },
+    });
 ```
 
 `select` liste les colonnes à renvoyer, donc les colonnes privées comme `passwordHash` ne quittent même jamais la
@@ -1255,29 +1261,29 @@ base. `userLevels` est un champ de relation : Prisma charge aussi les cours de l
 Tiré de [messages.service.ts](../../apps/api/src/messages/messages.service.ts), l'envoi d'un message :
 
 ```ts
-const [, row] = await this.prisma.$transaction([
-  this.prisma.conversation.upsert({
-    where: { pairKey: key },
-    create: { pairKey: key, userAId, userBId, createdAt: now, lastMessageAt: now },
-    update: { lastMessageAt: now },
-  }),
-  this.prisma.message.create({
-    data: { pairKey: key, senderId: me, text, createdAt: now },
-    select: MESSAGE_SELECT,
-  }),
-]);
+    const [, row] = await this.prisma.$transaction([
+      this.prisma.conversation.upsert({
+        where: { pairKey: key },
+        create: { pairKey: key, userAId, userBId, createdAt: now, lastMessageAt: now },
+        update: { lastMessageAt: now },
+      }),
+      this.prisma.message.create({
+        data: { pairKey: key, senderId: me, text, createdAt: now },
+        select: MESSAGE_SELECT,
+      }),
+    ]);
 ```
 
 Créer la conversation si c'est le premier message (ou juste avancer `lastMessageAt`), et ajouter le
 message : les deux ou aucun. Et charger l'historique, une page à la fois :
 
 ```ts
-const rows = await this.prisma.message.findMany({
-  where: { pairKey: key, ...before },
-  select: MESSAGE_SELECT,
-  orderBy: [{ createdAt: "desc" }, { id: "desc" }],
-  take: MESSAGE_PAGE_SIZE + 1,
-});
+    const rows = await this.prisma.message.findMany({
+      where: { pairKey: key, ...before },
+      select: MESSAGE_SELECT,
+      orderBy: [{ createdAt: 'desc' }, { id: 'desc' }],
+      take: MESSAGE_PAGE_SIZE + 1,
+    });
 ```
 
 `where pairKey`, `orderBy createdAt, id` : exactement les colonnes de l'index

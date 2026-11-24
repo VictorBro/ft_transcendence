@@ -133,7 +133,7 @@ The code in [apps/api/src](../../apps/api/src) is split into **modules** (sectio
 | [health/](../../apps/api/src/health) | `HealthModule` | "Am I alive? Are Postgres and Redis reachable?" for Docker and CI | `GET /api/health` |
 | [auth/](../../apps/api/src/auth) | `AuthModule` | Sign up, log in, log out, sessions, two-factor auth (TOTP); the global `AuthGuard` | `/api/auth/signup`, `login`, `logout`, `me`, `2fa`, `2fa/setup`, `2fa/enable`, `2fa/verify` |
 | [users/](../../apps/api/src/users) | `UsersModule` | Profiles: list and search users, read one, change my profile, upload or delete my avatar | `/api/users`, `/api/users/recently-active`, `/api/users/:id`, `/api/users/me`, `/api/users/me/avatar` |
-| [llm/](../../apps/api/src/llm) | `LlmModule` | Picks the AI provider (a real model, or a "fixture" fake for tests) and exports it as `LLM_PROVIDER` | none |
+| [llm/](../../apps/api/src/llm) | `LlmModule` | Picks the AI provider (`gemini`, the real model; `fixture`, a fake for tests; or `disabled`) and exports it as `LLM_PROVIDER` | none |
 | [courses/](../../apps/api/src/courses) | `CoursesModule` | The languages a user studies, the daily goal, the level | `/api/courses`, `/api/courses/:lang`, `/api/courses/:lang/level` |
 | [question-generation/](../../apps/api/src/question-generation) | `QuestionGenerationModule` | Writes new placement questions with the LLM when the stock runs low | none (used by placement) |
 | [placement/](../../apps/api/src/placement) | `PlacementModule` | The placement exam that finds your level | `/api/placement`, `/api/placement/answers` |
@@ -172,13 +172,14 @@ flowchart TD
 
 ## 4. Where the API sits in the system
 
-The whole app runs as Docker containers, described in [compose.yml](../../compose.yml) (plus `compose.prod.yml` and `compose.override.yml`). Only **Caddy** opens a port to the outside world. Caddy is a *reverse proxy*: one front door that sends each request to the right container, and does HTTPS.
+The whole app runs as Docker containers, described in [compose.yml](../../compose.yml) (plus the overlays `compose.override.yml` for dev and `compose.prod.yml`, and `compose.deploy.yml` for the server). Only **Caddy** opens a port to the outside world (in dev, Postgres and Redis also open one, but only on `127.0.0.1`). Caddy is a *reverse proxy*: one front door that sends each request to the right container, and does HTTPS.
 
 ```mermaid
 flowchart LR
     browser["Browser"] -->|"HTTPS :443"| caddy["caddy<br/>(TLS, routing)"]
     caddy -->|"/api/*"| api["api<br/>NestJS :3001"]
     caddy -->|"/ws/*"| api
+    caddy -->|"/grafana/*"| grafana["grafana<br/>(monitoring)"]
     caddy -->|"everything else"| web["web<br/>Next.js :3000"]
     web -->|"server-side fetch<br/>http://api:3001"| api
     api --> db[("db<br/>Postgres 18 + pgvector")]
@@ -219,7 +220,7 @@ The `api` service in `compose.yml` shows what the API needs to start:
       PORT: 3001
 ```
 
-It waits for Postgres and Redis to be healthy, and gets its settings from environment variables: `DATABASE_URL`, `REDIS_URL`, `SESSION_SECRET`, `LLM_PROVIDER`, `LLM_API_KEY`, `LLM_MODEL`, rate limits, and `AVATAR_STORAGE_DIR` (where uploaded avatars go, a Docker volume).
+It waits for Postgres and Redis to be healthy, and gets its settings from environment variables: `DATABASE_URL`, `REDIS_URL`, `SESSION_SECRET`, `LLM_PROVIDER`, `LLM_API_KEY`, `LLM_MODEL`, `APP_VERSION`, the rate limits (`RATE_LIMIT_PER_MINUTE`, `SIGNUP_LIMIT_PER_MINUTE`, `LOGIN_LIMIT_PER_MINUTE`) and the AI tutor limits (`LLM_DISCUSSION_*`), and `AVATAR_STORAGE_DIR` (where uploaded avatars go, a Docker volume).
 
 ---
 
@@ -695,7 +696,7 @@ The shared [packages/eslint-config/nest.js](../../packages/eslint-config/nest.js
 
 ### 9.5 Test config: vitest.config.mts and vitest.config.e2e.mts
 
-The task list says "jest config", but this project uses **Vitest**, not Jest. Vitest is a test runner with almost the same API (`describe`, `it`, `expect`). There is no Jest file.
+You may expect a Jest config, but this project uses **Vitest**, not Jest. Vitest is a test runner with almost the same API (`describe`, `it`, `expect`). There is no Jest file.
 
 [vitest.config.mts](../../apps/api/vitest.config.mts) is for unit tests. The key part is the compiler:
 
@@ -757,7 +758,7 @@ Points worth knowing, each explained by a comment in the file:
 
 ### 9.8 .dockerignore and Dockerfile.dockerignore
 
-They list what Docker must **not** send into the build: `node_modules`, `dist`, `generated`, `coverage`, `.env` files, `docs`, `*.md`, and so on. The two files are identical on purpose:
+They list what Docker must **not** send into the build: `node_modules`, `dist`, `generated`, `coverage`, `.env` files, `docs`, `*.md`, and so on. The two files have the same rules on purpose (only their header comment differs):
 
 ```text
 # BuildKit prefers <dockerfile>.dockerignore over <context>/.dockerignore, which
@@ -769,7 +770,7 @@ So [Dockerfile.dockerignore](../../apps/api/Dockerfile.dockerignore) is the one 
 
 ### 9.9 .gitignore
 
-[.gitignore](../../apps/api/.gitignore) has one line: `src/generated/`. The Prisma client is rebuilt on install and in the Docker build.
+[.gitignore](../../apps/api/.gitignore) has one rule (under a comment): `src/generated/`. The Prisma client is rebuilt on install and in the Docker build.
 
 ---
 
@@ -778,7 +779,7 @@ So [Dockerfile.dockerignore](../../apps/api/Dockerfile.dockerignore) is the one 
 - The API is the kitchen: all rules and all data access live in `apps/api`. The web app only asks and shows.
 - HTTP = method + path + headers + body; the answer has a status code. Bodies are JSON. Errors carry a code, not a sentence.
 - Login is remembered by the `ft.sid` session cookie; the session itself is stored in Redis.
-- Only Caddy faces the outside. `/api/*` and `/ws/*` go to the API, everything else to Next.js, all on one origin.
+- Only Caddy faces the outside. `/api/*` and `/ws/*` go to the API, `/grafana/*` to Grafana, everything else to Next.js, all on one origin.
 - A Nest **module** groups a feature; a **controller** answers routes; a **service** does the work; Nest **injects** services into constructors and builds each one once.
 - **Decorators** attach metadata; `emitDecoratorMetadata` + `reflect-metadata` let Nest see constructor types at run time. Never use `import type` for something you inject.
 - A request goes: middleware → guards → interceptors → pipes → controller → interceptors; anything thrown goes to an exception filter.

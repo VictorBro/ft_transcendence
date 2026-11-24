@@ -312,7 +312,7 @@ Exemple réel raccourci (`fr-classroom-objects`) :
 
 Personne n'écrit ce fichier. Ce schéma décrit ce que `vocabularyLesson()` **doit renvoyer**. Les tests le vérifient.
 
-- `steps` : 6 ou 7 étapes (`.min(6).max(7)`). Pourquoi 7 pour 6 stades ? Le stade `practice` a **deux** étapes
+- `steps` : 6 ou 7 étapes (`.min(VOCABULARY_STAGES.length).max(VOCABULARY_STAGES.length + 1)`, donc 6 à 7). Pourquoi 7 pour 6 stades ? Le stade `practice` a **deux** étapes
   (les trous, puis l'écoute). Une leçon sans nom genré n'a pas d'étape de genre : 6 étapes.
 - Chaque étape : `id`, `stage` (un des 6 stades), `role` (`introduction` / `exercise` / `overview` / `exam`), `label`, `pages` (1 à 60).
 - Chaque page : `pageId`, `estimatedDurationS`, `timeLimitS` (nullable : seulement l'examen), `instructions`, `items` (1 à 12).

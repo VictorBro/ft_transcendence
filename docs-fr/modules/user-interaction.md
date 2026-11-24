@@ -162,8 +162,10 @@ sequenceDiagram
   `dm:read { userId }`. Le serveur remplit `readAt` et envoie un nouveau comptage. Les lectures sont limitées par compte
   à la limite générale de l'API : 100 par minute sauf si `RATE_LIMIT_PER_MINUTE` dans `.env` la change
   (`READ_LIMIT_PER_MINUTE` dans [messages.service.ts](../../apps/api/src/messages/messages.service.ts)).
-- Le lien **Messages** du header affiche le total dans un badge, et 99+ au-dessus de 99
+- Le header affiche le total dans un badge, et 99+ au-dessus de 99 : sur le bouton **Menu**, et sur la
+  ligne **Messages** dans ce menu
   ([unread-badge.tsx](../../apps/web/components/unread-badge.tsx),
+  [header-menu.tsx](../../apps/web/components/header-menu.tsx),
   [session-nav.tsx](../../apps/web/components/session-nav.tsx)). Un lecteur d'écran entend le nombre
   exact, par exemple "1 unread message".
 
@@ -200,7 +202,7 @@ Plus de détails sur le gateway, les rooms et les événements du socket sont da
 | [apps/web/components/friend-buttons.tsx](../../apps/web/components/friend-buttons.tsx), [apps/web/components/message-link.tsx](../../apps/web/components/message-link.tsx)         | Les boutons d'ami, et le bouton **Message** vers une conversation.                                                                                                                           |
 | [apps/web/components/tab-socket.ts](../../apps/web/components/tab-socket.ts)                                                                                                       | Le socket unique de l'onglet : envoie `dm:send` et `dm:read`, garde les nombres de non-lus.                                                                                                  |
 | [apps/web/lib/send-message.ts](../../apps/web/lib/send-message.ts), [apps/web/lib/thread.ts](../../apps/web/lib/thread.ts), [apps/web/lib/unread.ts](../../apps/web/lib/unread.ts) | L'envoi et son ack ; comment les nouveaux messages et les pages rejoignent le fil ; le stockage des non-lus et le texte du badge.                                                            |
-| [apps/web/components/unread-badge.tsx](../../apps/web/components/unread-badge.tsx), [apps/web/components/session-nav.tsx](../../apps/web/components/session-nav.tsx)               | Le badge des non-lus, et le header avec **Friends** et **Messages**.                                                                                                                         |
+| [apps/web/components/unread-badge.tsx](../../apps/web/components/unread-badge.tsx), [apps/web/components/header-menu.tsx](../../apps/web/components/header-menu.tsx), [apps/web/components/session-nav.tsx](../../apps/web/components/session-nav.tsx)               | Le badge des non-lus, et les liens du compte dans le menu du header, avec **Friends** et **Messages**.                                                                                                                         |
 
 ## Comment le montrer à la soutenance
 
@@ -214,7 +216,7 @@ fenêtre normale (fenêtre 1) et une fenêtre privée (fenêtre 2).
 1. Dans la fenêtre 1, ouvre `https://localhost/en/signup`. Remplis **Email**, **Display name**,
    **Password** et **Confirm password**, puis clique sur **Create account**. Fais la même chose dans la fenêtre 2
    avec un autre utilisateur.
-2. Dans la fenêtre 1, clique sur **Friends** dans le header. Le deuxième utilisateur est sous **Recently active**. Tu
+2. Dans la fenêtre 1, ouvre le menu du header (le bouton en haut à droite) et clique sur **Friends**. Le deuxième utilisateur est sous **Recently active**. Tu
    peux aussi taper une partie de son nom (au moins 3 caractères) dans **Search by display name** et
    cliquer sur **Search**.
 3. Clique sur son nom. Sa page de profil (`/users/<id>`) montre son nom, son avatar et **Courses**.
@@ -228,8 +230,8 @@ fenêtre normale (fenêtre 1) et une fenêtre privée (fenêtre 2).
    messages yet."
 6. Dans la fenêtre 2, ouvre n'importe quelle page, par exemple **Friends**.
 7. Dans la fenêtre 1, tape un message dans **Write a message** et appuie sur Entrée. Il apparaît dans le fil.
-   Dans la fenêtre 2, sans rechargement, le lien **Messages** du header affiche un badge avec 1.
-8. Dans la fenêtre 2, clique sur **Messages**, puis sur le nom du premier utilisateur. Le message est là, et le
+   Dans la fenêtre 2, sans rechargement, le bouton du menu dans le header affiche un badge avec 1.
+8. Dans la fenêtre 2, ouvre le menu et clique sur **Messages**, puis sur le nom du premier utilisateur. Le message est là, et le
    badge disparaît.
 9. Réponds depuis la fenêtre 2. Utilise Shift+Entrée pour une deuxième ligne, puis clique sur **Send**. La réponse s'affiche dans
    la fenêtre 1 tout de suite.

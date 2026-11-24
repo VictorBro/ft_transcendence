@@ -22,7 +22,7 @@ L'outil pour demander, c'est `fetch`. C'est une fonction intégrée au navigateu
 donnes une URL et des options (méthode, headers, body), et elle te rend une `Response` :
 
 ```ts
-const response = await fetch("/api/courses", { method: "GET" });
+const response = await fetch('/api/courses', { method: 'GET' });
 const data = await response.json(); // read the body as JSON
 ```
 
@@ -63,7 +63,8 @@ flowchart LR
 ```
 
 Caddy (le reverse proxy, la « porte d'entrée » du site) envoie chaque chemin qui commence par `/api` à
-l'API, et tous les autres chemins à Next.js (voir `infra/caddy/Caddyfile`). Donc :
+l'API (`/ws`, le socket en direct du chapitre 3, aussi), et tous les autres chemins à Next.js (voir
+`infra/caddy/Caddyfile`). Donc :
 
 - Depuis le **navigateur**, un fichier client appelle juste le chemin court `/api/courses`. Caddy fait
   le routage.
@@ -127,14 +128,18 @@ Le seul endroit où un code devient une phrase humaine est la partie `Errors` de
 
 ```mermaid
 flowchart LR
-  A["L'API lance BadRequestException('password.tooShort')"] --> F["ErrorCodeFilter : le message est un code"]
-  F --> J["Body JSON : { statusCode: 400, message: 'password.tooShort' }"]
-  J --> R["readCode(body) dans api-client.ts"]
+  A["API : CodeValidationPipe, le body échoue à PasswordSchema"] --> F["ErrorCodeFilter : le message est déjà un code, envoyé tel quel"]
+  F --> J["Body JSON : { statusCode: 400, message: ['password.tooShort'] }"]
+  J --> R["readCode(body) dans api-client.ts : le premier code"]
   R --> RES["{ ok: false, code: 'password.tooShort', status: 400 }"]
   RES --> H["useErrorMessage() dans error-message.ts"]
   H --> T["fr.json Errors.password.tooShort"]
   T --> S["Phrase affichée en français"]
 ```
+
+Un code peut aussi venir du code de l'API elle-même, comme
+`throw new BadRequestException('avatar.invalidFile')` : alors `message` est une seule chaîne, pas un
+tableau. `readCode` lit les deux.
 
 La couche navigateur invente aussi deux codes à elle : `network.unreachable` (la requête n'a jamais eu
 de réponse) et `server.unexpected` (la réponse n'était pas celle qu'on attendait). Les deux sont aussi
@@ -210,7 +215,7 @@ les fonctions `settle`, `resolveApiBaseUrl`, `buildApiUrl`, `describeFetchError`
 
 ```ts
 export type BaseResult<T> =
-  { status: "ok"; data: T } | { status: "signed-out" } | { status: "unavailable"; reason: string };
+  { status: 'ok'; data: T } | { status: 'signed-out' } | { status: 'unavailable'; reason: string };
 
 /**
  * Three answers, not two. "signed-out" is a verdict the API delivered (401);
@@ -220,7 +225,7 @@ export type BaseResult<T> =
 export type SessionResult = BaseResult<SessionUser>;
 
 /** A 404 read as an answer, nothing there, rather than as a failure. */
-export type FindResult<T> = BaseResult<T> | { status: "not-found" };
+export type FindResult<T> = BaseResult<T> | { status: 'not-found' };
 ```
 
 C'est l'idée la plus importante du fichier. Si l'API redémarre, ou dit « trop de requêtes » (429), on ne
@@ -235,12 +240,12 @@ envoyait les gens sur la page de login sans raison. Maintenant :
 
 ```ts
 export function settle<T>(result: BaseResult<T>, what: string): T {
-  if (result.status === "signed-out") {
-    redirect("/login");
+  if (result.status === 'signed-out') {
+    redirect('/login');
   }
 
   // Thrown, since a redirect would read as a logout.
-  if (result.status === "unavailable") {
+  if (result.status === 'unavailable') {
     throw new Error(`Could not load the ${what}: ${result.reason}`);
   }
   return result.data;
@@ -253,7 +258,7 @@ gardé, donc un rechargement marche quand l'API est revenue.
 
 #### Helpers d'URL
 
-`resolveApiBaseUrl(raw)` lit `API_INTERNAL_URL` ; si elle est vide, il prend `http://api:3001` à la place
+`resolveApiBaseUrl(raw)` reçoit la valeur de `API_INTERNAL_URL` ; si elle est absente ou vide, il prend `http://api:3001` à la place
 (le nom du service Docker Compose), et il enlève les slashs à la fin. `buildApiUrl(base, path)` colle les
 deux et ajoute le `/` du début s'il manque. `describeFetchError(error)` transforme une erreur en raison
 courte, et nomme le cas du timeout : `'the request timed out'`.
@@ -268,10 +273,10 @@ export async function fetchWithRequestHeaderAndIP<R>(
   const cookie = store
     .getAll()
     .map(({ name, value }) => `${name}=${value}`)
-    .join("; ");
+    .join('; ');
 
   // Passed through unchanged rather than appended to. ...
-  const forwardedFor = (await headers()).get("x-forwarded-for");
+  const forwardedFor = (await headers()).get('x-forwarded-for');
 
   return fetcher({
     baseUrl: process.env.API_INTERNAL_URL,
@@ -296,25 +301,25 @@ l'adresse la plus à droite, donc ajouter l'adresse du container web casserait �
 partie principale :
 
 ```ts
-const url = new URL(buildApiUrl(baseUrl, apiPath));
-new URLSearchParams(urlParams).forEach((value, key) => url.searchParams.set(key, value));
-const response = await fetchImpl(url.toString(), {
-  cache: "no-store",
-  headers: {
-    accept: "application/json",
-    ...(cookie ? { cookie } : {}),
-    ...(forwardedFor ? { "x-forwarded-for": forwardedFor } : {}),
-  },
-  signal: AbortSignal.timeout(timeoutMs),
-});
+    const url = new URL(buildApiUrl(baseUrl, apiPath));
+    new URLSearchParams(urlParams).forEach((value, key) => url.searchParams.set(key, value));
+    const response = await fetchImpl(url.toString(), {
+      cache: 'no-store',
+      headers: {
+        accept: 'application/json',
+        ...(cookie ? { cookie } : {}),
+        ...(forwardedFor ? { 'x-forwarded-for': forwardedFor } : {}),
+      },
+      signal: AbortSignal.timeout(timeoutMs),
+    });
 
-if (response.status === 401) {
-  return { status: "signed-out" };
-}
+    if (response.status === 401) {
+      return { status: 'signed-out' };
+    }
 
-if (notFound && response.status === 404) {
-  return { status: "not-found" };
-}
+    if (notFound && response.status === 404) {
+      return { status: 'not-found' };
+    }
 ```
 
 À remarquer :
@@ -383,7 +388,7 @@ Deux façons de l'utiliser :
 ```ts
 export async function currentUser(): Promise<SessionUser | null> {
   const result = await loadSession();
-  return result.status === "ok" ? result.data : null;
+  return result.status === 'ok' ? result.data : null;
 }
 ```
 
@@ -410,12 +415,12 @@ en un seul header, que l'IP est transmise sans changement, que `currentUser` se 
 ```ts
 /** Memoised per request: the header and the page body both ask. */
 export const loadCourses = cache(async function loadCourses(): Promise<BaseResult<Courses>> {
-  return apiGet(CoursesSchema, "/api/courses");
+  return apiGet(CoursesSchema, '/api/courses');
 });
 
 /** requireUser for pages that need the courses: this read answers the session question too. */
 export async function requireCourses(): Promise<Courses> {
-  return settle(await loadCourses(), "courses");
+  return settle(await loadCourses(), 'courses');
 }
 ```
 
@@ -435,7 +440,8 @@ Il a aussi trois helpers purs (sans réseau) :
 Appelants : les pages `/learn`, `onboarding/page.tsx`, `dashboard-nav.tsx`, `lib/lesson.ts`.
 
 **Test :** [courses.test.ts](../../apps/web/lib/courses.test.ts) vérifie `findCourse`, l'ordre de
-choix du cours (cookie, puis `activeLang`, puis le premier) et `landingPath`.
+choix du cours (cookie, puis `activeLang`, puis le premier) et `landingPath`. Il teste aussi
+`learnPathLang` et `courseHomeLang` de `lib/course-path.ts`.
 
 ### `friends.ts` — amis, recherche, profils
 
@@ -459,10 +465,10 @@ choix du cours (cookie, puis `activeLang`, puis le premier) et `landingPath`.
 export function relationTo(lists: Friends, userId: string): Relation {
   const has = (users: PublicUser[]) => users.some((user) => user.id === userId);
 
-  if (has(lists.friends)) return "friend";
-  if (has(lists.received)) return "received";
-  if (has(lists.sent)) return "sent";
-  return "none";
+  if (has(lists.friends)) return 'friend';
+  if (has(lists.received)) return 'received';
+  if (has(lists.sent)) return 'sent';
+  return 'none';
 }
 ```
 
@@ -488,13 +494,13 @@ navigateur par `conversations-client.ts`. Appelant : `app/[locale]/(messages)/ch
 [lessons.ts](../../apps/web/lib/lessons.ts) n'utilise pas `settle`. Il gère le résultat à la main :
 
 ```ts
-export async function loadToday(lang: Language): Promise<Today | "signed-out"> {
+export async function loadToday(lang: Language): Promise<Today | 'signed-out'> {
   const result = await apiGet(TodaySchema, `/api/courses/${lang}/today`);
 
-  if (result.status === "unavailable") {
+  if (result.status === 'unavailable') {
     throw new Error(`Could not load today's lessons: ${result.reason}`);
   }
-  return result.status === "signed-out" ? "signed-out" : result.data;
+  return result.status === 'signed-out' ? 'signed-out' : result.data;
 }
 ```
 
@@ -540,12 +546,12 @@ Les fonctions navigateur ne lancent jamais d'erreur. L'appelant reçoit toujours
 
 ```ts
 export function readCode(body: unknown): string | null {
-  if (typeof body === "object" && body !== null && "message" in body) {
+  if (typeof body === 'object' && body !== null && 'message' in body) {
     const { message } = body as { message: unknown };
-    if (typeof message === "string") {
+    if (typeof message === 'string') {
       return message;
     }
-    if (Array.isArray(message) && typeof message[0] === "string") {
+    if (Array.isArray(message) && typeof message[0] === 'string') {
       return message[0];
     }
   }
@@ -560,24 +566,24 @@ les mêmes règles avant d'envoyer, donc afficher le premier code suffit.
 #### `send` — la seule fonction qui appelle `fetch`
 
 ```ts
-let response: Response;
-try {
-  const query = new URLSearchParams(params).toString();
-  const requestPath = path + (query ? `?${query}` : "");
-  const headers = new Headers({ accept: "application/json" });
-  const isFormData = typeof FormData !== "undefined" && init.body instanceof FormData;
-  if (init.body !== undefined && !isFormData) {
-    headers.set("content-type", "application/json");
+  let response: Response;
+  try {
+    const query = new URLSearchParams(params).toString();
+    const requestPath = path + (query ? `?${query}` : '');
+    const headers = new Headers({ accept: 'application/json' });
+    const isFormData = typeof FormData !== 'undefined' && init.body instanceof FormData;
+    if (init.body !== undefined && !isFormData) {
+      headers.set('content-type', 'application/json');
+    }
+    new Headers(init.headers).forEach((value, key) => headers.set(key, value));
+    response = await fetch(requestPath, {
+      ...init,
+      credentials: 'same-origin',
+      headers,
+    });
+  } catch {
+    return { ok: false, code: 'network.unreachable', status: 0 };
   }
-  new Headers(init.headers).forEach((value, key) => headers.set(key, value));
-  response = await fetch(requestPath, {
-    ...init,
-    credentials: "same-origin",
-    headers,
-  });
-} catch {
-  return { ok: false, code: "network.unreachable", status: 0 };
-}
 ```
 
 - Le chemin est relatif (`/api/...`), donc le navigateur l'envoie au même site. Caddy le route vers
@@ -593,21 +599,21 @@ try {
 Ensuite la réponse est lue :
 
 ```ts
-let body: unknown;
-if (response.status !== 204) {
-  try {
-    body = await response.json();
-  } catch {
-    return { ok: false, code: "server.unexpected", status: response.status };
+  let body: unknown;
+  if (response.status !== 204) {
+    try {
+      body = await response.json();
+    } catch {
+      return { ok: false, code: 'server.unexpected', status: response.status };
+    }
   }
-}
-if (!response.ok) {
-  return {
-    ok: false,
-    code: readCode(body) ?? "server.unexpected",
-    status: response.status,
-  };
-}
+  if (!response.ok) {
+    return {
+      ok: false,
+      code: readCode(body) ?? 'server.unexpected',
+      status: response.status,
+    };
+  }
 ```
 
 Un 204 n'a pas de body, donc `body` reste `undefined`. Pour ce cas, les appelants passent `z.void()`
@@ -635,10 +641,10 @@ devient une phrase ». C'est un hook React, donc il a `'use client'`.
 
 ```ts
 export function useErrorMessage(): (code: string, status?: number) => string {
-  const t = useTranslations("Errors");
+  const t = useTranslations('Errors');
 
   return useCallback(
-    (code, status = 0) => t(isErrorCode(code) ? code : "unknown", { status }),
+    (code, status = 0) => t(isErrorCode(code) ? code : 'unknown', { status }),
     [t],
   );
 }
@@ -647,7 +653,7 @@ export function useErrorMessage(): (code: string, status?: number) => string {
 - `useTranslations('Errors')` (next-intl, chapitre 2) donne une fonction `t` qui lit la section
   `Errors` du fichier de la langue actuelle.
 - `isErrorCode(code)` (de `@ft/shared`) vérifie que le code est dans `ERROR_CODES`. Sinon, on affiche la
-  phrase `unknown` (« Something went wrong. Please try again. », « Un problème est survenu. Réessaie. »)
+  phrase `unknown` (« Something went wrong. Please try again. », « Une erreur est survenue. Réessaie. »)
   au lieu d'un texte serveur en anglais dans une page en français.
 - `status` est toujours passé, parce que `server.unexpected` l'utilise : « The server answered HTTP
   {status} ».
@@ -689,14 +695,16 @@ Le login est le seul cas spécial. L'API répond **200** avec l'utilisateur, ou 
 const LoginResponseSchema = z.union([SessionUserSchema, TwoFactorRequiredSchema]);
 
 /** The 202 branch of a login: password accepted, second factor still owed. */
-export type LoginResult = ApiResult<SessionUser> | { ok: "twoFactor" };
+export type LoginResult = ApiResult<SessionUser> | { ok: 'twoFactor' };
+
+...
 
 export async function logIn(input: unknown): Promise<LoginResult> {
-  const result = await clientPost(LoginResponseSchema, "/api/auth/login", input);
+  const result = await clientPost(LoginResponseSchema, '/api/auth/login', input);
   if (!result.ok) {
     return result;
   }
-  return "twoFactorRequired" in result.data ? { ok: "twoFactor" } : { ok: true, data: result.data };
+  return 'twoFactorRequired' in result.data ? { ok: 'twoFactor' } : { ok: true, data: result.data };
 }
 ```
 
@@ -722,7 +730,7 @@ les appels qui répondent 204.
 
 ```ts
 export function startCourse(input: unknown): Promise<ApiResult<Course>> {
-  return clientPost(CourseSchema, "/api/courses", input);
+  return clientPost(CourseSchema, '/api/courses', input);
 }
 
 /** The endpoint the placement exam also calls: the level has one writer. */
@@ -752,7 +760,8 @@ entre deux personnes).
 
 Appelant : `components/friend-buttons.tsx` (voir Séquence 2). Après chaque écriture, il appelle
 `router.refresh()`, même en cas d'échec, parce qu'un échec c'est « nearly always the other side moving
-first » (presque toujours l'autre côté qui a bougé en premier).
+first » (presque toujours l'autre côté qui a bougé en premier). La seule exception est un échec réseau
+(`status: 0`) : hors ligne, le refresh ne pourrait pas joindre le serveur non plus.
 
 **Test :** [friends-client.test.ts](../../apps/web/lib/friends-client.test.ts) vérifie la méthode et le
 chemin de chaque appel, le 204 comme succès, et les erreurs sous forme de codes.
@@ -949,28 +958,28 @@ la précédente, et qu'un échec n'arrête pas la tâche suivante.
 d'erreur et le refresh.
 
 ```ts
-async function save(write: () => Promise<ApiResult<unknown>>): Promise<boolean> {
-  inFlight.current += 1;
-  setWriting(true);
-  setError(null);
-  try {
-    const result = await run(write);
-    if (!result.ok) {
-      setError(errorMessage(result.code, result.status));
-      return false;
-    }
+  async function save(write: () => Promise<ApiResult<unknown>>): Promise<boolean> {
+    inFlight.current += 1;
+    setWriting(true);
     setError(null);
-    startRefresh(() => router.refresh());
-    return true;
-  } finally {
-    inFlight.current -= 1;
-    if (inFlight.current === 0) {
-      setWriting(false);
+    try {
+      const result = await run(write);
+      if (!result.ok) {
+        setError(errorMessage(result.code, result.status));
+        return false;
+      }
+      setError(null);
+      startRefresh(() => router.refresh());
+      return true;
+    } finally {
+      inFlight.current -= 1;
+      if (inFlight.current === 0) {
+        setWriting(false);
+      }
     }
   }
-}
 
-return { pending: writing || refreshing, error, save };
+  return { pending: writing || refreshing, error, save };
 ```
 
 - `useState(serialQueue)` : React appelle `serialQueue()` une fois et garde la même file pendant toute la
@@ -1000,7 +1009,7 @@ l'API en plusieurs langues (les textes des leçons) :
 ```ts
 /** A text in en, fr and de, read in the interface language; English for any other. */
 export function pick(text: { en: string; fr: string; de: string }, locale: string): string {
-  return locale === "fr" || locale === "de" ? text[locale] : text.en;
+  return locale === 'fr' || locale === 'de' ? text[locale] : text.en;
 }
 ```
 
@@ -1045,6 +1054,13 @@ Tous les chemins passent par Caddy jusqu'à l'API. `:lang` est une langue de cou
 | placement-client.ts     | `submitPlacementAnswer` | POST    | `/api/placement/answers`                              | `PlacementState`                                 |
 | placement-client.ts     | `quitPlacement`         | DELETE  | `/api/placement`                                      | 204                                              |
 
+Deux composants appellent `api-client.ts` directement, sans fichier `*-client.ts` :
+
+| Fichier | Helper | Méthode | Route de l'API | Réponse en cas de succès |
+|---|---|---|---|---|
+| two-factor-panel.tsx | `clientGet` | GET | `/api/auth/2fa` | statut de la 2FA |
+| goal-picker.tsx | `clientPatch` | PATCH | `/api/courses/:lang` (body : `dailyGoal`) | `Course` |
+
 Et les lecteurs côté serveur, pour comparer (tous en GET, appelés depuis `http://api:3001`) :
 
 | Fichier             | Fonction                      | Route d'API                           |
@@ -1060,6 +1076,9 @@ Et les lecteurs côté serveur, pour comparer (tous en GET, appelés depuis `htt
 | conversations.ts    | `loadMessagePage`             | `/api/conversations/:userId/messages` |
 | lessons.ts          | `loadToday`                   | `/api/courses/:lang/today`            |
 | lessons.ts          | `loadLessonPage`              | `/api/courses/:lang/lessons?...`      |
+
+`lib/lesson.ts`, `lib/achievements.ts` et la page placement lisent aussi par `api.ts`. Les chapitres 6
+et 7 les montrent.
 
 ---
 

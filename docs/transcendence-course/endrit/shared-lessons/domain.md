@@ -84,7 +84,7 @@ Exemples d'erreurs :
 | `# Heading` | `block 1: headings are not allowed` |
 | `See [this](http://x.y)` | `block 1: links or images not allowed` |
 | `**unclosed` | `block 1: unclosed or empty **bold**` |
-| `*italic*` | `only **bold** and `form` markup is allowed (found "*")` |
+| `*italic*` | ``block 1: only **bold** and `form` markup is allowed (found "*")`` |
 | `Text\n- item` | `separate a list from surrounding text with a blank line` |
 
 ```mermaid
@@ -299,9 +299,9 @@ Personne ne les réécrit : le code les met. Chaque texte existe en `{ en, fr, d
 |---|---|---|
 | `L(en, fr, de)` | raccourci pour écrire `{ en, fr, de }` | interne |
 | `COPY` | paires `[nom d'étape, consigne]` du vocabulaire, + explication, feedback, examen de grammaire | `vocabularyLesson`, `player/` |
-| `EXERCISE_INSTRUCTIONS` | consigne de chacun des 7 exercices de grammaire | aucun code pour l'instant (le commentaire dit : prévu pour le kit d'auteur) |
-| `FUNCTIONS_COPY` | textes des leçons « fonctions » | aucun code pour l'instant (idem) |
-| `READING_COPY` | une paire par stade de lecture | aucun code pour l'instant (idem) |
+| `EXERCISE_INSTRUCTIONS` | consigne de chacun des 7 exercices de grammaire | seulement `lessonCopy.test.ts` (le commentaire dit : prévu pour le kit d'auteur) |
+| `FUNCTIONS_COPY` | textes des leçons « fonctions » | seulement `lessonCopy.test.ts` (idem) |
+| `READING_COPY` | une paire par stade de lecture | seulement `lessonCopy.test.ts` (idem) |
 | `examInstruction(lang)` | consigne d'examen qui **nomme la langue du cours**, avec « with its article for nouns » seulement si `hasGender(lang)` | `vocabularyLesson` |
 | `dictationInstruction(lang)` | pareil pour la dictée | `vocabularyLesson` |
 

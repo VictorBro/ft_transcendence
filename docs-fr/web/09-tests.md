@@ -100,21 +100,24 @@ flowchart LR
 export default defineConfig({
   resolve: {
     alias: {
-      "@": rootDir,
+      '@': rootDir,
     },
   },
   // tsconfig keeps JSX for Next ("preserve"): the component tests need it compiled.
-  oxc: { jsx: { runtime: "automatic" } },
+  oxc: { jsx: { runtime: 'automatic' } },
   test: {
-    environment: "node",
+    environment: 'node',
     // Components are tested with renderToStaticMarkup, as in packages/ui: no DOM.
-    include: ["lib/**/*.test.ts", "components/**/*.test.tsx"],
+    include: ['lib/**/*.test.ts', 'components/**/*.test.tsx'],
     coverage: {
-      provider: "v8",
-      reporter: ["text-summary", "lcov"],
-      reportsDirectory: "coverage",
-      include: ["lib/**/*.ts"],
-      exclude: ["lib/**/*.test.ts"],
+      provider: 'v8',
+      reporter: ['text-summary', 'lcov'],
+      reportsDirectory: 'coverage',
+      // Server components and route handlers need a browser runtime plus an RSC
+      // renderer to exercise; the logic they call lives in lib/ instead, which
+      // is what the thresholds below actually measure.
+      include: ['lib/**/*.ts'],
+      exclude: ['lib/**/*.test.ts'],
       thresholds: {
         lines: 60,
         functions: 60,
@@ -220,9 +223,9 @@ utilisée par [use-course-save.ts](../../apps/web/lib/use-course-save.ts), pour 
 Maintenant le test, [serial-queue.test.ts](../../apps/web/lib/serial-queue.test.ts) :
 
 ```ts
-import { describe, expect, it } from "vitest";
+import { describe, expect, it } from 'vitest';
 
-import { serialQueue } from "./serial-queue";
+import { serialQueue } from './serial-queue';
 
 const later = <T>(value: T, ms: number) =>
   new Promise<T>((resolve) => setTimeout(() => resolve(value), ms));
@@ -336,10 +339,10 @@ IA. La réponse est du Markdown écrit par un LLM, donc elle doit être jolie (g
 Le test, [tutor-answer.test.tsx](../../apps/web/components/lesson/tutor-answer.test.tsx) :
 
 ```tsx
-import { renderToStaticMarkup } from "react-dom/server";
-import { describe, expect, it } from "vitest";
+import { renderToStaticMarkup } from 'react-dom/server';
+import { describe, expect, it } from 'vitest';
 
-import { TutorAnswer } from "./tutor-answer";
+import { TutorAnswer } from './tutor-answer';
 
 /** The answer as the server draws it: no DOM, as the other component tests. */
 const html = (text: string, cut = false) =>
@@ -352,27 +355,27 @@ const html = (text: string, cut = false) =>
 ### Test 1 : le Markdown devient du vrai HTML
 
 ```tsx
-it("renders the Markdown the model writes, with no * or # left", () => {
-  const out = html(
-    [
-      "### Your mistakes",
-      "",
-      "You wrote **je suis allé** but *elle*:",
-      "",
-      "* the participle agrees",
-      "* with the subject",
-      "",
-      "1. first",
-      "2. second",
-    ].join("\n"),
-  );
-  expect(out).toContain('<strong class="font-semibold text-slate-100">je suis allé</strong>');
-  expect(out).toContain('<em class="italic">elle</em>');
-  expect(out).toMatch(/<ul [^>]*list-disc[^>]*>\s*<li>the participle agrees<\/li>/);
-  expect(out).toMatch(/<ol [^>]*list-decimal/);
-  expect(out).toContain(">Your mistakes</p>");
-  expect(out).not.toMatch(/[*#]/);
-});
+  it('renders the Markdown the model writes, with no * or # left', () => {
+    const out = html(
+      [
+        '### Your mistakes',
+        '',
+        'You wrote **je suis allé** but *elle*:',
+        '',
+        '* the participle agrees',
+        '* with the subject',
+        '',
+        '1. first',
+        '2. second',
+      ].join('\n'),
+    );
+    expect(out).toContain('<strong class="font-semibold text-slate-100">je suis allé</strong>');
+    expect(out).toContain('<em class="italic">elle</em>');
+    expect(out).toMatch(/<ul [^>]*list-disc[^>]*>\s*<li>the participle agrees<\/li>/);
+    expect(out).toMatch(/<ol [^>]*list-decimal/);
+    expect(out).toContain('>Your mistakes</p>');
+    expect(out).not.toMatch(/[*#]/);
+  });
 ```
 
 - `toContain` vérifie un morceau exact du HTML ; `toMatch` vérifie avec une expression régulière (plus souple sur
@@ -383,18 +386,18 @@ it("renders the Markdown the model writes, with no * or # left", () => {
 ### Tests 4 et 5 : la sécurité
 
 ```tsx
-it("shows raw HTML as text, never as markup", () => {
-  const out = html('Look: <script>alert(1)</script> and <img src=x onerror="alert(2)">');
-  expect(out).not.toContain("<script");
-  expect(out).not.toContain("<img");
-  expect(out).toContain("&lt;script&gt;");
-});
+  it('shows raw HTML as text, never as markup', () => {
+    const out = html('Look: <script>alert(1)</script> and <img src=x onerror="alert(2)">');
+    expect(out).not.toContain('<script');
+    expect(out).not.toContain('<img');
+    expect(out).toContain('&lt;script&gt;');
+  });
 
-it("shows no image and no javascript: link", () => {
-  const out = html("![pixel](https://example.com/p.png) [click](javascript:alert(1))");
-  expect(out).not.toContain("<img");
-  expect(out).not.toContain("javascript:");
-});
+  it('shows no image and no javascript: link', () => {
+    const out = html('![pixel](https://example.com/p.png) [click](javascript:alert(1))');
+    expect(out).not.toContain('<img');
+    expect(out).not.toContain('javascript:');
+  });
 ```
 
 Ces tests protègent contre le **XSS** (cross-site scripting : quelqu'un qui arrive à faire tourner son propre script dans ta page). Un
@@ -418,10 +421,10 @@ Ce que ce style de test **ne peut pas** faire : cliquer, taper, ou lancer des ef
 
 ### `components/`
 
-| Fichier                                                                                  | Ce qu'il vérifie                                                                                                                                                                                                                                                                                                                       |
-| ---------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [lesson/tutor-answer.test.tsx](../../apps/web/components/lesson/tutor-answer.test.tsx)   | Le Markdown du tuteur s'affiche en HTML stylé (gras, listes, tableaux, texte barré), les liens sont sûrs, le HTML brut/les images/`javascript:` ne s'affichent jamais, une réponse coupée finit par `…`.                                                                                                                               |
-| [lesson/kinds/reading.test.tsx](../../apps/web/components/lesson/kinds/reading.test.tsx) | Joue la leçon de lecture d'exemple "Lire un SMS" via le cœur de leçon partagé et affiche chaque page : cartes de mots clés, tableau d'association, compte à rebours de lecture rapide, questions de détail, mise en ordre, page d'examen ; mauvaises réponses marquées justes ; score 100 quand tout est juste, 0 quand tout est faux. |
+| Fichier                                                                                  | Ce qu'il vérifie                                                                                                                                                                                                                                                                                                                                              |
+| ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [lesson/tutor-answer.test.tsx](../../apps/web/components/lesson/tutor-answer.test.tsx)   | Le Markdown du tuteur s'affiche en HTML stylé (gras, listes, tableaux, texte barré), les liens sont sûrs, le HTML brut/les images/`javascript:` ne s'affichent jamais, une réponse coupée finit par `…`.                                                                                                                                                      |
+| [lesson/kinds/reading.test.tsx](../../apps/web/components/lesson/kinds/reading.test.tsx) | Joue la leçon de lecture d'exemple "Lire un SMS" via le cœur de leçon partagé et affiche chaque page : cartes de mots clés, tableau d'association, compte à rebours de lecture rapide, questions de détail, mise en ordre, page d'examen ; mauvaises réponses marquées, avec la bonne réponse à côté ; score 100 quand tout est juste, 0 quand tout est faux. |
 
 ### `lib/` — couche API et session
 
@@ -539,7 +542,9 @@ Deux specs sont des contrôles spéciaux :
 
 Pour le chat (chapitre 8), [messages.spec.ts](../../e2e/tests/messages.spec.ts) vérifie ce que les tests unitaires ne peuvent pas :
 deux vrais navigateurs, l'un écrit, l'autre voit arriver en direct le message et le compteur de non-lus, ouvrir la conversation remet
-le compteur à zéro, Maj+Entrée fait une nouvelle ligne, un message envoyé pendant que le socket était coupé arrive quand il revient, la
+le compteur à zéro, Maj+Entrée fait une nouvelle ligne, un ami à qui tu écris pour la première fois apparaît dans la liste, un long fil défile
+dans son propre panneau et les écrans tiennent sur un téléphone, sur un téléphone le bouton du menu de l'en-tête, fermé, montre le compteur
+(en allemand), un message envoyé pendant que le socket était coupé arrive quand il revient, la
 conversation d'un ancien ami n'a pas de zone de saisie, et les heures s'affichent dans le fuseau horaire du compte.
 
 Comment les lancer :

@@ -162,8 +162,10 @@ sequenceDiagram
   `dm:read { userId }`. The server sets `readAt` and sends a new count. Reads are limited per account
   to the API's general limit: 100 a minute unless `RATE_LIMIT_PER_MINUTE` in `.env` changes it
   (`READ_LIMIT_PER_MINUTE` in [messages.service.ts](../../apps/api/src/messages/messages.service.ts)).
-- The header's **Messages** link shows the total in a badge, and 99+ above 99
+- The header shows the total in a badge, and 99+ above 99: on the **Menu** button, and on the
+  **Messages** row inside that menu
   ([unread-badge.tsx](../../apps/web/components/unread-badge.tsx),
+  [header-menu.tsx](../../apps/web/components/header-menu.tsx),
   [session-nav.tsx](../../apps/web/components/session-nav.tsx)). A screen reader hears the exact
   number, for example "1 unread message".
 
@@ -200,7 +202,7 @@ More about the gateway, the rooms and the socket events is in
 | [apps/web/components/friend-buttons.tsx](../../apps/web/components/friend-buttons.tsx), [apps/web/components/message-link.tsx](../../apps/web/components/message-link.tsx) | The friend buttons, and the **Message** button to a conversation. |
 | [apps/web/components/tab-socket.ts](../../apps/web/components/tab-socket.ts) | The tab's one socket: sends `dm:send` and `dm:read`, keeps the unread counts. |
 | [apps/web/lib/send-message.ts](../../apps/web/lib/send-message.ts), [apps/web/lib/thread.ts](../../apps/web/lib/thread.ts), [apps/web/lib/unread.ts](../../apps/web/lib/unread.ts) | The send and its ack; how new messages and pages join the thread; the unread store and badge text. |
-| [apps/web/components/unread-badge.tsx](../../apps/web/components/unread-badge.tsx), [apps/web/components/session-nav.tsx](../../apps/web/components/session-nav.tsx) | The unread badge, and the header with **Friends** and **Messages**. |
+| [apps/web/components/unread-badge.tsx](../../apps/web/components/unread-badge.tsx), [apps/web/components/header-menu.tsx](../../apps/web/components/header-menu.tsx), [apps/web/components/session-nav.tsx](../../apps/web/components/session-nav.tsx) | The unread badge, and the account links of the header menu, with **Friends** and **Messages**. |
 
 ## How to show it at the defence
 
@@ -214,7 +216,7 @@ normal window (window 1) and a private window (window 2).
 1. In window 1, open `https://localhost/en/signup`. Fill in **Email**, **Display name**,
    **Password** and **Confirm password**, then click **Create account**. Do the same in window 2
    with another user.
-2. In window 1, click **Friends** in the header. The second user is under **Recently active**. You
+2. In window 1, open the menu in the header (the button at the top right) and click **Friends**. The second user is under **Recently active**. You
    can also type part of their name (at least 3 characters) in **Search by display name** and
    click **Search**.
 3. Click their name. Their profile page (`/users/<id>`) shows their name, avatar and **Courses**.
@@ -228,8 +230,8 @@ normal window (window 1) and a private window (window 2).
    messages yet."
 6. In window 2, open any page, for example **Friends**.
 7. In window 1, type a message in **Write a message** and press Enter. It appears in the thread.
-   In window 2, without a reload, the **Messages** link in the header shows a badge with 1.
-8. In window 2, click **Messages**, then the first user's name. The message is there, and the
+   In window 2, without a reload, the menu button in the header shows a badge with 1.
+8. In window 2, open the menu and click **Messages**, then the first user's name. The message is there, and the
    badge goes away.
 9. Reply from window 2. Use Shift+Enter for a second line, then click **Send**. The reply shows in
    window 1 at once.

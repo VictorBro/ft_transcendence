@@ -134,8 +134,8 @@ La **présence**, c'est « est-ce que cet ami utilise l'app en ce moment ? ». L
 
 Pourquoi ce délai ? Quand tu recharges une page, l'ancien socket se ferme et un nouveau s'ouvre un
 instant plus tard. Sans l'attente, tes amis te verraient passer hors ligne puis revenir en ligne à
-chaque rechargement. Le nombre de sockets ouverts vit dans **Redis** (`presence:<userId>`), pas en
-mémoire, donc il est partagé et résiste à la façon dont l'API est construite.
+chaque rechargement. Le nombre de sockets ouverts vit dans **Redis** (`presence:<userId>`), pas dans
+la mémoire de l'API.
 
 ---
 
@@ -190,7 +190,7 @@ flowchart TD
 
 D'autres modules utilisent aussi `SocketsService` pour envoyer des événements :
 `courses.service.ts` et `lessons/attempts.service.ts` envoient `course:updated`, et
-`auth.controller.ts` appelle `closeSession()` au login, au logout et aux changements de 2FA (voir
+`auth.controller.ts` appelle `closeSession()` à l'inscription, au login, au logout et aux changements de 2FA (voir
 les chapitres 5, 7 et 8).
 
 ---
@@ -257,10 +257,10 @@ Qui l'appelle ? [app.setup.ts](../../apps/api/src/app.setup.ts) (Chapitre 2), ju
 construit le middleware de session :
 
 ```ts
-app.use(sessionMiddleware);
-// engine.io answers /ws before Express does, so the gateway gets the same
-// middleware. Here, before init, which is when gateways bind.
-app.useWebSocketAdapter(new SessionIoAdapter(app, sessionMiddleware));
+  app.use(sessionMiddleware);
+  // engine.io answers /ws before Express does, so the gateway gets the same
+  // middleware. Here, before init, which is when gateways bind.
+  app.useWebSocketAdapter(new SessionIoAdapter(app, sessionMiddleware));
 ```
 
 ## gateway/socket.gateway.ts
@@ -279,7 +279,7 @@ chapitre. Il fait cinq choses :
 
 ```ts
 /** Caddy sends /ws and /ws/* to the api, in dev and in prod. */
-export const SOCKET_PATH = "/ws";
+export const SOCKET_PATH = '/ws';
 export const EVENT_LIMIT = 20;
 /** Sockets one session may hold: one per tab, and nobody keeps 20 tabs of the app open. */
 export const SESSION_SOCKET_LIMIT = 20;
@@ -326,7 +326,7 @@ export function refuse(socket: AppSocket, ack: Ack | undefined, code: ErrorCode)
     return;
   }
   socket.emit(SERVER_EVENTS.APP_ERROR, { code });
-  wsEvents.inc({ direction: "out", event: SERVER_EVENTS.APP_ERROR, outcome: "ok" });
+  wsEvents.inc({ direction: 'out', event: SERVER_EVENTS.APP_ERROR, outcome: 'ok' });
 }
 ```
 
@@ -343,7 +343,7 @@ export const GATEWAY_OPTIONS = {
   path: SOCKET_PATH,
   serveClient: false,
   // One transport: the handshake is a single upgrade and nothing long-polls.
-  transports: ["websocket"],
+  transports: ['websocket'],
   // Events are small; socket.io's 1 MB default would let 20 events be 20 MB of zod input.
   maxHttpBufferSize: 16_384,
 } satisfies GatewayMetadata;
@@ -606,7 +606,7 @@ export class SocketsService {
   ): void {
     if (!this.server) return;
     this.server.to(userRoom(userId)).emit(event, ...args);
-    wsEvents.inc({ direction: "out", event, outcome: "ok" });
+    wsEvents.inc({ direction: 'out', event, outcome: 'ok' });
   }
 
   /** Every socket opened with this session id: the session has ended or been replaced. */
@@ -642,18 +642,18 @@ version socket de l'`ErrorCodeFilter` du Chapitre 2.
 @Catch()
 export class SocketExceptionFilter implements ExceptionFilter {
   // Nest's own name for its handler, so these lines read like the ones it logs.
-  private readonly logger = new Logger("WsExceptionsHandler");
+  private readonly logger = new Logger('WsExceptionsHandler');
 
   catch(exception: unknown, host: ArgumentsHost): void {
     // What Nest hands a handler: the socket, the payload, the ack, the event name.
     const [socket, , ack] = host.getArgs<[AppSocket, unknown, Ack | undefined]>();
-    let code: ErrorCode = "server.unexpected";
+    let code: ErrorCode = 'server.unexpected';
     if (exception instanceof HttpException && isErrorCode(exception.message)) {
       code = exception.message;
     } else {
       this.logger.error(exception);
     }
-    refuse(socket, typeof ack === "function" ? ack : undefined, code);
+    refuse(socket, typeof ack === 'function' ? ack : undefined, code);
   }
 }
 ```
@@ -689,6 +689,9 @@ export const PRESENCE_GRACE_MS = 10_000;
 
 const presenceKey = (userId: string): string => `presence:${userId}`;
 ```
+
+Le test e2e `e2e/tests/friends.spec.ts` ne peut pas importer l'API, donc il garde sa propre copie
+de `PRESENCE_GRACE_MS`. Change les deux ensemble.
 
 | Méthode                    | Ce qu'elle fait                                                                                                                                   | Commande Redis     |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ |
@@ -822,12 +825,13 @@ ne prend qu'un id d'utilisateur dans le chemin.
 
 [friends.controller.ts](../../apps/api/src/friends/friends.controller.ts) définit cinq routes
 sous `/api/friends`. Toutes demandent une session (l'`AuthGuard` global, Chapitre 5). L'autre
-utilisateur est toujours dans le chemin, vérifié par `UserIdParam` (Chapitre 2).
+utilisateur est toujours dans le chemin, vérifié par `UserIdParam` (Chapitre 2) : un chemin qui
+n'est pas un id d'utilisateur reçoit 400.
 
 | Méthode et chemin                           | Appel au service          | Succès                                    | Erreurs                                                                                         |
 | ------------------------------------------- | ------------------------- | ----------------------------------------- | ----------------------------------------------------------------------------------------------- |
 | `GET /api/friends`                          | `list(me)`                | 200 `{ friends, received, sent }`         | 401                                                                                             |
-| `POST /api/friends/requests/:userId`        | `send(me, them)`          | 201 `{ status: 'pending' \| 'accepted' }` | 400 `friend.self`, 404 `user.notFound`, 409 `friend.alreadyRequested` / `friend.alreadyFriends` |
+| `POST /api/friends/requests/:userId`        | `send(me, them)`          | 201 `{ status: 'pending' \| 'accepted' }` | 400 `friend.self`, 404 `user.notFound` (ou `friend.requestNotFound` si leur demande a été annulée entre-temps), 409 `friend.alreadyRequested` / `friend.alreadyFriends` |
 | `POST /api/friends/requests/:userId/accept` | `accept(me, them)`        | 204                                       | 404 `friend.requestNotFound`                                                                    |
 | `DELETE /api/friends/requests/:userId`      | `deleteRequest(me, them)` | 204 (refusée ou annulée)                  | 404 `friend.requestNotFound`                                                                    |
 | `DELETE /api/friends/:userId`               | `remove(me, them)`        | 204                                       | 404 `friend.notFound`                                                                           |
@@ -867,14 +871,14 @@ Chaque flèche qui change quelque chose envoie un événement aux **deux** utili
 ### `list`
 
 ```ts
-for (const row of rows) {
-  const mine = row.requesterId === me;
-  const other = mine ? row.addressee : row.requester;
-  if (row.status === "accepted") friends.push(other);
-  else (mine ? lists.sent : lists.received).push(other);
-}
-const online = await this.presence.isOnline(friends.map((friend) => friend.id));
-lists.friends = friends.map((friend) => ({ ...friend, online: online.has(friend.id) }));
+    for (const row of rows) {
+      const mine = row.requesterId === me;
+      const other = mine ? row.addressee : row.requester;
+      if (row.status === 'accepted') friends.push(other);
+      else (mine ? lists.sent : lists.received).push(other);
+    }
+    const online = await this.presence.isOnline(friends.map((friend) => friend.id));
+    lists.friends = friends.map((friend) => ({ ...friend, online: online.has(friend.id) }));
 ```
 
 Il lit chaque ligne où tu es le demandeur ou le destinataire, les plus récentes d'abord, et les
@@ -911,14 +915,14 @@ champs publics d'un utilisateur.
 `send` refuse d'abord une demande à toi-même (`friend.self`). Ensuite il gère une course :
 
 ```ts
-try {
-  return await this.trySend(me, them);
-} catch (error) {
-  // Their request got in between our read and our insert: read again, and
-  // it is theirs to accept. Once only: ...
-  if (hasCode(error, "P2002")) return this.trySend(me, them);
-  throw error;
-}
+    try {
+      return await this.trySend(me, them);
+    } catch (error) {
+      // Their request got in between our read and our insert: read again, and
+      // it is theirs to accept. Once only: ...
+      if (hasCode(error, 'P2002')) return this.trySend(me, them);
+      throw error;
+    }
 ```
 
 `P2002` est l'erreur Prisma « la clé unique existe déjà ». Elle arrive si les deux utilisateurs
@@ -943,7 +947,8 @@ importer les classes de Prisma, donc de simples mocks marchent dans les tests.
 ```
 
 Chaque écriture est **une seule requête conditionnelle** : « mets à jour / supprime la ligne de
-cette paire _si_ elle est dans cet état ». Si rien ne correspond, `count` vaut 0 et la réponse est 404. Tu ne peux accepter qu'une demande où **eux** sont le demandeur. `deleteRequest` ne supprime
+cette paire _si_ elle est dans cet état ». Si rien ne correspond, `count` vaut 0 et la réponse est
+404. Tu ne peux accepter qu'une demande où **eux** sont le demandeur. `deleteRequest` ne supprime
 qu'une ligne `pending`, `remove` qu'une ligne `accepted`, les deux via la méthode privée `drop()`.
 Ainsi, un vieil onglet qui affiche encore une demande ne peut pas supprimer un ami par erreur.
 
@@ -1052,7 +1057,13 @@ export const SEND_LIMIT_PER_MINUTE = 30;
 ...
   /** One `event` from the account, refused past its budget of a minute, from all its sockets together. */
   private async spend(event: string, me: string, limit: number): Promise<void> {
-    const { isBlocked } = await this.throttler.increment(`${event}:${me}`, 60_000, limit, 60_000, 'default');
+    const { isBlocked } = await this.throttler.increment(
+      `${event}:${me}`,
+      60_000,
+      limit,
+      60_000,
+      'default',
+    );
     if (isBlocked) {
       throw new HttpException('server.rateLimited', HttpStatus.TOO_MANY_REQUESTS);
     }
@@ -1175,7 +1186,7 @@ export async function unreadCounts(prisma: PrismaService, me: string): Promise<D
   // Before the query: a stamp taken after it could outrank the snapshot of a write it missed.
   const at = new Date().toISOString();
   const rows = await prisma.message.groupBy({
-    by: ["senderId"],
+    by: ['senderId'],
     where: {
       readAt: null,
       senderId: { not: me },
@@ -1258,8 +1269,8 @@ avec un schema Zod pour chaque payload. Le navigateur et l'API importent le mêm
 | `app:error`       | serveur → client           | `{ code }`               | `refuse()`                                 | Un événement sans ack a été refusé (limite de débit, mauvais payload, erreur)               |
 
 Deux règles tirées du commentaire en haut de ce fichier : le serveur n'utilise jamais les noms
-réservés de Socket.IO (`connect`, `disconnect`, `error`...), c'est pourquoi les erreurs utilisent
-`app:error` ; et aucun événement client ne peut s'appeler `error`, parce que ça ferait planter le
+réservés de Socket.IO (`connect`, `connect_error`, `disconnect`...), c'est pourquoi les erreurs
+utilisent `app:error` et pas `error` ; et aucun événement client ne peut s'appeler `error`, parce que ça ferait planter le
 serveur.
 
 Les événements propres à Socket.IO sont aussi utilisés : le refus au handshake arrive dans le
@@ -1420,19 +1431,19 @@ apprenant qui suit la page du jour.
   démo (la cascade de la base supprime leurs cours et résultats), puis rejoue chaque profil :
 
 ```ts
-const services: DemoServices = {
-  prisma,
-  auth: new AuthService(prisma),
-  // Never attached outside Nest: the replay's level changes reach no socket.
-  courses: new CoursesService(prisma, new SocketsService()),
-  lessons: new LessonsService(prisma),
-};
+  const services: DemoServices = {
+    prisma,
+    auth: new AuthService(prisma),
+    // Never attached outside Nest: the replay's level changes reach no socket.
+    courses: new CoursesService(prisma, new SocketsService()),
+    lessons: new LessonsService(prisma),
+  };
 
-await prisma.user.deleteMany({ where: { email: DEMO_EMAIL_FILTER } });
+  await prisma.user.deleteMany({ where: { email: DEMO_EMAIL_FILTER } });
 ```
 
-C'est le lien avec ce chapitre : `CoursesService` a besoin d'un `SocketsService`, et un service
-non attaché n'envoie simplement rien.
+  C'est le lien avec ce chapitre : `CoursesService` a besoin d'un `SocketsService`, et un service
+  non attaché n'envoie simplement rien.
 
 - `replayLearner(services, identity, profile, runNow)` — inscrit l'apprenant, écrit le fuseau
   horaire et `lastActiveDay` (un apprenant du seed n'ouvre jamais de socket, donc ça le fait

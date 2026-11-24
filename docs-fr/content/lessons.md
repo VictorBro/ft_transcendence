@@ -220,13 +220,7 @@ début de chaque plan est ce qu'on écrit en premier.
 L'entrée 2 de `content/outlines/fr-a1.json`, donc la position 2 du français A1 :
 
 ```json
-{
-  "id": "fr-subject-pronouns",
-  "kind": "grammar",
-  "topic": "pronouns",
-  "workingTitle": "Les pronoms je, tu, il, elle…",
-  "intent": "Employer les pronoms sujets je, tu, il, elle, on, nous, vous, ils et elles, choisir tu ou vous selon la personne, ils ou elles selon le groupe, et on pour dire nous à l'oral."
-}
+{ "id": "fr-subject-pronouns", "kind": "grammar", "topic": "pronouns", "workingTitle": "Les pronoms je, tu, il, elle…", "intent": "Employer les pronoms sujets je, tu, il, elle, on, nous, vous, ils et elles, choisir tu ou vous selon la personne, ils ou elles selon le groupe, et on pour dire nous à l'oral." }
 ```
 
 **Avant que ses fichiers existent**, sa ligne `Lesson` a `title` = le titre provisoire, `summary` =
@@ -328,13 +322,7 @@ Le brief de `fr-subject-pronouns`, raccourci :
     "de": "Die Subjektpronomen je, tu, il, elle, on, nous, vous, ils und elles verwenden, tu oder vous, ils oder elles wählen und on statt nous im Alltag benutzen."
   },
   "estimatedMinutes": 16,
-  "provenance": {
-    "generator": "…",
-    "model": "…",
-    "promptVersion": "…",
-    "generatedAt": "…",
-    "inputHashes": { "outline": "…" }
-  },
+  "provenance": { "generator": "…", "model": "…", "promptVersion": "…", "generatedAt": "…", "inputHashes": { "outline": "…" } },
   "topic": "pronouns",
   "rules": ["…"],
   "blocks": ["…"],

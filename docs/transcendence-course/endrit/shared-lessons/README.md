@@ -125,8 +125,9 @@ Une seule source de vérité, pas de copie.
 | | [`apps/api/scripts/lessons/times.ts`](../../../../apps/api/scripts/lessons/times.ts) | `vocabularyLesson`, `vocabularyMinutes`, `functionsPageEstimate`, `functionsTimeLimit`, `readingPageEstimate`, `readingSkimSeconds`, `readingTimeLimit`, `readingMinutes` | calcule les durées au lieu de laisser le modèle les inventer |
 | | [`apps/api/scripts/lessons/complete.ts`](../../../../apps/api/scripts/lessons/complete.ts), [`files.ts`](../../../../apps/api/scripts/lessons/files.ts), [`check.ts`](../../../../apps/api/scripts/lessons/check.ts) | `ARTIFACT_SCHEMA_VERSION`, `hasContentFile` | remplit l'enveloppe, sait si un fichier contenu est attendu |
 | Les **tests de l'API** | [`apps/api/src/lessons/lesson-files.spec.ts`](../../../../apps/api/src/lessons/lesson-files.spec.ts), [`lesson-complete.spec.ts`](../../../../apps/api/src/lessons/lesson-complete.spec.ts) | `validateLesson`, `hasContentFile` | vérifient **tous** les fichiers de `content/` en CI |
+| La **discussion** avec le tuteur (PR #201, Luca) | [`apps/api/src/lessons/discussion.service.ts`](../../../../apps/api/src/lessons/discussion.service.ts) | `lessons.isSupportedKind`, `lessons.briefSchema` | relit le brief stocké en base avant d'écrire le prompt du tuteur |
 | Le **front** | [`apps/web/components/lesson/rich-text.tsx`](../../../../apps/web/components/lesson/rich-text.tsx) | `lessons.parseRichText` | affiche les explications en Markdown simple |
-| Le lecteur de leçon | `packages/shared/src/lessons/player/` | types des schémas, `vocabularyLesson`, `functionsTerms`, `COPY` | (hors périmètre) |
+| Le lecteur de leçon | `packages/shared/src/lessons/player/` | types des schémas, quelques constantes (`GenderSchema`, `SKIM_FOCUS`, `TRUE_FALSE_LABELS`, `STRIPPED_ARTICLES`), `vocabularyLesson`, `functionsTerms`, `COPY` | (hors périmètre) |
 
 ```mermaid
 sequenceDiagram
@@ -188,6 +189,8 @@ flowchart TD
 ## 4. Qui dépend de qui
 
 Une flèche `A --> B` veut dire « A importe B ».
+Pour garder le dessin lisible, il manque les flèches vers `schemas/` : chaque validateur importe le schéma de son type
+(`validation/grammar.ts` → `schemas/grammar.ts`…), et `domain/` importe aussi des types et constantes de `schemas/`.
 
 ```mermaid
 flowchart TD
@@ -221,7 +224,9 @@ flowchart TD
   VFUN --> DFL["domain/functionsLesson.ts"]
   VFUN --> DART
   VFUN --> DVL
+  VFUN --> VCOM
   VREA --> DRL["domain/readingLesson.ts"]
+  VREA --> VCOM
 
   DVL --> DLC["domain/lessonCopy.ts"]
   DVL --> DVA["domain/vocabularyAnswers.ts"]

@@ -387,11 +387,11 @@ interface LlmProvider {
 }
 
 interface StreamRequest {
-  purpose: LlmPurpose; // 'lesson-discussion'
-  system: string; // the tutor's prompt, built on the server
-  messages: LlmMessage[]; // { role: 'user' | 'assistant', text }, oldest first
-  maxOutputTokens: number; // 1,000 for the discussion
-  signal: AbortSignal; // aborted when the learner leaves
+  purpose: LlmPurpose;          // 'lesson-discussion'
+  system: string;               // the tutor's prompt, built on the server
+  messages: LlmMessage[];       // { role: 'user' | 'assistant', text }, oldest first
+  maxOutputTokens: number;      // 1,000 for the discussion
+  signal: AbortSignal;          // aborted when the learner leaves
 }
 ```
 

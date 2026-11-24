@@ -43,7 +43,7 @@ flowchart LR
   LS & AS & GOAL & GAM --> DB[(PostgreSQL via Prisma)]
 ```
 
-The files split in two families:
+The files split in three families:
 
 | Family | Files | Touches the database? |
 | --- | --- | --- |
@@ -111,7 +111,8 @@ export class LessonQueryDto extends createZodDto(LessonQuerySchema) {}
 | `SubmitPageDto` `{ attemptId, answers }` | in (body) | `POST …/attempt/pages/:index` |
 | `LessonDiscussionDto` `{ attemptId, message, history }` | in (body) | `POST …/discussion` |
 
-The "in" DTOs are checked by the global validation pipe (chapter 2). A bad body gives a 400 `request.invalid`.
+The "in" DTOs are checked by the global validation pipe (chapter 2). A bad body gives a 400 with the code of the
+broken rule (for example `profile.invalidLocale` for a bad `locale`), or `request.invalid` when no rule names one.
 
 ## lessons.controller.ts — the read routes
 
@@ -122,6 +123,7 @@ passes it to the kitchen (`LessonsService`). Every route is one line. All routes
 ```ts
 @Controller('courses/:lang')
 export class LessonsController {
+  // Nest gives the service here by itself (dependency injection).
   constructor(private readonly lessons: LessonsService) {}
 
   @Get('today')
@@ -202,6 +204,10 @@ type ResultRow = Prisma.LessonResultGetPayload<{ select: typeof RESULT_SELECT }>
     const course = checkCourse(await this.findCourse(userId, lang), { placed: true });
     const level = course.level;
 
+    // The 2 queries do not need each other, so they run at the same time.
+    // The results are NOT filtered by level: after a level change at noon,
+    // the lessons of the old level finished this morning must stay in today's done.
+    // Every lesson of the level, ready or not: the list shows them all.
     const [lessons, results] = await Promise.all([
       this.prisma.lesson.findMany({
         where: { lang, level },
@@ -273,7 +279,14 @@ This exported function is called by the last page of an attempt (and by `finish(
   const goal = await meetGoal(tx, course, day);
   // A lesson finished twice in a day counts once: the first time.
   const countedToday = old === null || dayOf(old.day) !== day;
-  const rewards = await award(tx, course, day, { type: 'finish', goal, lesson, score,
+  const rewards = await award(tx, course, day, {
+    type: 'finish',
+    goal,
+    lesson,
+    score,
+    oldBest: old?.score ?? null,
+    countedToday,
+  });
 ```
 
 1. The result: the best score stays, but the day and time move to this finish.
@@ -356,6 +369,7 @@ never started, because its row hides the score.
 ```ts
   const lastPage = Math.max(1, Math.ceil(matches.length / LESSONS_PAGE_SIZE));
   const page = Math.min(query.page, lastPage);
+  // Pages start at 1, but lists start at 0: page 1 starts at 0, page 2 at 20.
   const start = (page - 1) * LESSONS_PAGE_SIZE;
 ```
 
@@ -813,13 +827,15 @@ data: {}
     clearInterval(heartbeat);
     if (!response.writableFinished) abort.abort();
   });
-  // The browser may have left during the checks before this call: ...
+  // The browser may have left during the checks before this call: its "close"
+  // has fired already and will not fire again, so the listener above never runs.
   if (response.destroyed) abort.abort();
 
   response.writeHead(200, {
     'content-type': 'text/event-stream; charset=utf-8',
     'cache-control': 'no-cache, no-transform',
   });
+  // writeHead only prepares the headers; this sends them now, before the first event.
   response.flushHeaders();
 ```
 

@@ -68,9 +68,9 @@ limite. `content/items/de-grammar.json` :
       "question": "Wir ___ heute Abend zu Hause.",
       "options": ["bleiben", "bleibt", "bleibst", "bleibe"],
       "answer": "bleiben",
-      "timeLimitS": 30,
-    },
-  ],
+      "timeLimitS": 30
+    }
+  ]
 }
 ```
 
@@ -91,9 +91,9 @@ lecture n'est jamais à côté d'une question de grammaire. `content/items/de-re
       "question": "Wann gehen Jonas und Bruno spazieren?",
       "options": ["Am Abend", "Am Morgen", "Am Mittag", "Am Wochenende"],
       "answer": "Am Abend",
-      "timeLimitS": 60,
-    },
-  ],
+      "timeLimitS": 60
+    }
+  ]
 }
 ```
 

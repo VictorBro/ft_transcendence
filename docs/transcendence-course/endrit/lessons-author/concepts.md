@@ -22,11 +22,20 @@ Dans [providers/claude.ts](../../../../apps/api/scripts/lessons/providers/claude
 
 ```ts
 const child = spawn(bin, args, { cwd: WORK_DIR, stdio: ['pipe', 'pipe', 'pipe'] });
-child.stdout.on('data', (d) => (stdout += d));   // on accumule la réponse morceau par morceau
+// [...]
+child.stdout.on('data', (d) => (stdout += d));
 child.stderr.on('data', (d) => (stderr += d));
-child.on('close', (code) => { /* JSON.parse(stdout) … */ });
-child.stdin.end(prompt);                          // on écrit le prompt puis on ferme stdin
+child.on('error', (e) => settle(() => reject(e)));
+child.on('close', (code) =>
+  settle(() => {
+    // [...] JSON.parse(stdout), puis resolve ou reject
+  }),
+);
+child.stdin.end(prompt);
 ```
+
+(`// [...]` marque les lignes coupées.) Les données de stdout arrivent morceau par morceau et sont
+accumulées dans `stdout`. `stdin.end(prompt)` écrit le prompt puis ferme stdin.
 
 - **`spawn`** lance le programme **sans attendre** sa fin (asynchrone). On reçoit les données au
   fur et à mesure (événements `data`), puis l'événement `close` à la fin.
@@ -119,7 +128,8 @@ exprès** : un crash qui parle d'une « memory limit » ne doit pas arrêter tou
 attente est **plus longue** que la précédente (souvent le double).
 
 ```ts
-export const RETRY_DELAYS_MS = [30_000, 60_000, 120_000]; // 30 s, 1 min, 2 min : on double
+/** The pauses before each retry: 30 s, 1 min, 2 min, then the run stops. */
+export const RETRY_DELAYS_MS = [30_000, 60_000, 120_000];
 ```
 
 `retryRateLimits(call)` :

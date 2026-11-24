@@ -61,15 +61,15 @@ async function bootstrap(): Promise<void> {
 
   // 0.0.0.0, not localhost: bound to the loopback interface the process is
   // unreachable from outside the container.
-  await app.listen(Number(process.env.PORT ?? DEFAULT_PORT), "0.0.0.0");
+  await app.listen(Number(process.env.PORT ?? DEFAULT_PORT), '0.0.0.0');
 
   // After listen: a boot that fails never leaves a metrics port answering.
   collectDefaultMetrics({ register: registry });
-  appInfo.set({ version: process.env.APP_VERSION ?? "0.0.0" }, 1);
+  appInfo.set({ version: process.env.APP_VERSION ?? '0.0.0' }, 1);
   // Logged, not thrown: monitoring must never take the app down. Prometheus
   // then reports the api as down, which is the right alarm.
   startMetricsServer(METRICS_PORT).catch((error: unknown) =>
-    new Logger("Metrics").error(`metrics listener failed: ${String(error)}`),
+    new Logger('Metrics').error(`metrics listener failed: ${String(error)}`),
   );
 }
 
@@ -79,7 +79,7 @@ void bootstrap();
 Ligne par ligne :
 
 - `import 'reflect-metadata'` (première ligne du fichier) : une petite librairie qui permet aux décorateurs comme `@Injectable()` de stocker des informations sur les classes. Nest a besoin qu'elle soit chargée avant tout le reste.
-- `NestFactory.create(AppModule)` : Nest lit `AppModule`, suit chaque `imports: [...]`, et construit chaque provider qu'il trouve (injection de dépendances, voir [01-big-picture.md](01-big-picture.md)). Il crée aussi un serveur Express à l'intérieur. Attention : le simple fait d'_importer_ certains fichiers exécute déjà du code. Par exemple, `app.setup.ts` lit `AVATAR_STORAGE_DIR` au moment de l'import, et `throttler/rate-limits.ts` lit les variables de rate limit. Une variable manquante arrête l'API ici, avant que quoi que ce soit écoute.
+- `NestFactory.create(AppModule)` : Nest lit `AppModule`, suit chaque `imports: [...]`, et construit chaque provider qu'il trouve (injection de dépendances, voir [01-big-picture.md](01-big-picture.md)). Il crée aussi un serveur Express à l'intérieur. Attention : le simple fait d'_importer_ certains fichiers exécute déjà du code, avant même `bootstrap()`. Par exemple, `app.setup.ts` lit `AVATAR_STORAGE_DIR` au moment de l'import, et `throttler/rate-limits.ts` lit les variables de rate limit. Un `AVATAR_STORAGE_DIR` manquant, ou une rate limit qui n'est pas un nombre entier positif, arrête l'API à ce moment-là, avant que quoi que ce soit écoute. (Une rate limit vide garde sa valeur par défaut.)
 - `configureApp(app)` : ajoute toutes les règles globales (section suivante).
 - `app.listen(port, '0.0.0.0')` : appelle d'abord le `init()` de Nest. Pendant `init()`, chaque `onModuleInit()` s'exécute, donc `PrismaService` se connecte à Postgres et `RedisService` se connecte à Redis (voir [03-infrastructure.md](03-infrastructure.md)). Nest ajoute aussi son body parser JSON et les routes. Ensuite le serveur HTTP démarre. `0.0.0.0` veut dire « écoute sur toutes les cartes réseau », pour que les autres containers (Caddy, l'app web) puissent l'atteindre. `localhost` accepterait seulement les appels venant du même container.
 - Après `listen` : la partie métriques. `collectDefaultMetrics` ajoute les chiffres standard de Node.js (mémoire, CPU, event loop). `appInfo` enregistre la version qui tourne. `startMetricsServer` ouvre un deuxième petit serveur HTTP sur le port 9464 pour Prometheus. S'il échoue, l'erreur est seulement loguée : l'app continue de marcher.
@@ -103,8 +103,8 @@ Les tests e2e (dans `apps/api/test/`, voir [10-tests.md](10-tests.md)) construis
 
 ```ts
 // apps/api/test/app.e2e-spec.ts
-configureApp(app);
-await app.init();
+    configureApp(app);
+    await app.init();
 ```
 
 ```mermaid
@@ -125,15 +125,15 @@ flowchart LR
 | `SESSION_KEY_PREFIX` | `'sess:'`                                                   | Préfixe des clés de session dans Redis.           |
 | `SESSION_TTL_MS`     | 7 jours                                                     | Combien de temps vit une session inactive.        |
 
-Deux d'entre elles sont vérifiées au démarrage :
+Deux réglages obligatoires sont vérifiés au démarrage : `AVATAR_STORAGE_DIR` ici, et `SESSION_SECRET` (plus bas).
 
 ```ts
 export const AVATAR_STORAGE_DIR = requireAvatarStorageDir();
 
 function requireAvatarStorageDir(): string {
   const dir = process.env.AVATAR_STORAGE_DIR;
-  if (dir === undefined || dir.trim() === "") {
-    throw new Error("AVATAR_STORAGE_DIR is unset: the api cannot start. See compose.yml.");
+  if (dir === undefined || dir.trim() === '') {
+    throw new Error('AVATAR_STORAGE_DIR is unset: the api cannot start. See compose.yml.');
   }
   return dir;
 }
@@ -146,8 +146,8 @@ Le commentaire au-dessus donne la raison : avec un « dossier temporaire » par 
 ### Étape 1 — le middleware de métriques, en premier
 
 ```ts
-// First, so it also times the avatars, the session load and every rejection.
-app.use(httpMetrics);
+  // First, so it also times the avatars, the session load and every rejection.
+  app.use(httpMetrics);
 ```
 
 `httpMetrics` lance un chrono pour chaque requête et l'arrête quand la réponse est envoyée (détails dans [03-infrastructure.md](03-infrastructure.md)). C'est le premier middleware, donc le temps mesuré couvre aussi tout ce qui vient après, même les requêtes refusées tôt.
@@ -155,7 +155,7 @@ app.use(httpMetrics);
 ### Étape 2 — le préfixe global
 
 ```ts
-app.setGlobalPrefix(API_PREFIX);
+  app.setGlobalPrefix(API_PREFIX);
 ```
 
 Un controller avec `@Controller('auth')` et `@Post('login')` répond sur `/api/auth/login`, pas sur `/auth/login`. Caddy (le reverse proxy devant) envoie chaque URL `/api/...` à cette API et le reste à l'app web.
@@ -163,8 +163,8 @@ Un controller avec `@Controller('auth')` et `@Post('login')` répond sur `/api/a
 ### Étape 3 — les fichiers d'avatar
 
 ```ts
-// Here rather than in bootstrap() so the Supertest suite can reach it.
-(app as NestExpressApplication).useStaticAssets(AVATAR_STORAGE_DIR, { prefix: AVATAR_ROUTE });
+  // Here rather than in bootstrap() so the Supertest suite can reach it.
+  (app as NestExpressApplication).useStaticAssets(AVATAR_STORAGE_DIR, { prefix: AVATAR_ROUTE });
 ```
 
 `useStaticAssets` sert les fichiers d'un dossier tels quels (le `express.static` d'Express). Un fichier `abc.png` dans le dossier est disponible sur `/api/uploads/avatars/abc.png`. Le préfixe répète `api` parce que les fichiers statiques ne reçoivent pas le préfixe global. Le cast `as NestExpressApplication` est nécessaire parce que `useStaticAssets` n'existe que sur la version Express d'une app Nest.
@@ -172,10 +172,10 @@ Un controller avec `@Controller('auth')` et `@Post('login')` répond sur `/api/a
 ### Étape 4 — trust proxy
 
 ```ts
-// Caddy terminates TLS and forwards plain http, so express only learns the
-// request was secure from X-Forwarded-Proto. Without this, `cookie.secure`
-// suppresses the Set-Cookie header and nobody can log in.
-app.getHttpAdapter().getInstance().set("trust proxy", 1);
+  // Caddy terminates TLS and forwards plain http, so express only learns the
+  // request was secure from X-Forwarded-Proto. Without this, `cookie.secure`
+  // suppresses the Set-Cookie header and nobody can log in.
+  app.getHttpAdapter().getInstance().set('trust proxy', 1);
 ```
 
 Un **reverse proxy** est un serveur qui reçoit la requête du navigateur et la transmet au vrai serveur. Ici, Caddy fait le HTTPS avec le navigateur, puis parle en HTTP simple à l'API. Donc l'API voit « HTTP ». Caddy ajoute des headers comme `X-Forwarded-Proto: https` et `X-Forwarded-For: <client IP>`. `trust proxy = 1` dit à Express : « fais confiance à un proxy devant toi, crois ses headers ». Deux effets :
@@ -186,10 +186,10 @@ Un **reverse proxy** est un serveur qui reçoit la requête du navigateur et la 
 ### Étape 5 — le pipe global et le filter global
 
 ```ts
-app.useGlobalPipes(new CodeValidationPipe());
-// And whatever never reaches the pipe or our throws: a malformed or oversized
-// body, an unknown route, a crash.
-app.useGlobalFilters(new ErrorCodeFilter(app.getHttpAdapter()));
+  app.useGlobalPipes(new CodeValidationPipe());
+  // And whatever never reaches the pipe or our throws: a malformed or oversized
+  // body, an unknown route, a crash.
+  app.useGlobalFilters(new ErrorCodeFilter(app.getHttpAdapter()));
 ```
 
 - Un **pipe** transforme ou vérifie l'entrée d'une méthode de controller avant qu'elle s'exécute. Global veut dire « sur chaque route ».
@@ -200,24 +200,24 @@ Le commentaire dans le fichier donne la règle principale de cette API : **chaqu
 ### Étape 6 — les sessions stockées dans Redis
 
 ```ts
-const sessionMiddleware = session({
-  name: SESSION_COOKIE,
-  secret: requireSessionSecret(),
-  store: new RedisStore({ client: app.get(RedisService).client, prefix: SESSION_KEY_PREFIX }),
-  // The cookie is an opaque id, so there is nothing to write back unless the
-  // session itself changed, and an anonymous visitor gets no session at all.
-  resave: false,
-  saveUninitialized: false,
-  rolling: true,
-  cookie: {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
-    maxAge: SESSION_TTL_MS,
-    path: "/",
-  },
-});
-app.use(sessionMiddleware);
+  const sessionMiddleware = session({
+    name: SESSION_COOKIE,
+    secret: requireSessionSecret(),
+    store: new RedisStore({ client: app.get(RedisService).client, prefix: SESSION_KEY_PREFIX }),
+    // The cookie is an opaque id, so there is nothing to write back unless the
+    // session itself changed, and an anonymous visitor gets no session at all.
+    resave: false,
+    saveUninitialized: false,
+    rolling: true,
+    cookie: {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      maxAge: SESSION_TTL_MS,
+      path: '/',
+    },
+  });
+  app.use(sessionMiddleware);
 ```
 
 Une **session**, c'est la façon dont le serveur se souvient de toi entre deux requêtes. Analogie : un vestiaire. Tu laisses ton manteau (tes données : `userId`), tu reçois un ticket avec un numéro (le cookie `ft.sid`). Chaque fois que tu reviens, tu montres le ticket et le serveur retrouve ton manteau. Le ticket seul ne dit rien sur toi.
@@ -244,9 +244,9 @@ Le code de login (dans [05-auth-and-users.md](05-auth-and-users.md)) écrit `req
 ### Étape 7 — les sessions sur les WebSockets aussi
 
 ```ts
-// engine.io answers /ws before Express does, so the gateway gets the same
-// middleware. Here, before init, which is when gateways bind.
-app.useWebSocketAdapter(new SessionIoAdapter(app, sessionMiddleware));
+  // engine.io answers /ws before Express does, so the gateway gets the same
+  // middleware. Here, before init, which is when gateways bind.
+  app.useWebSocketAdapter(new SessionIoAdapter(app, sessionMiddleware));
 ```
 
 Les fonctionnalités temps réel (chat, présence) utilisent Socket.IO sur `/ws`. Ces connexions ne passent pas par les middlewares Express. [SessionIoAdapter](../../apps/api/src/gateway/session-io.adapter.ts) donne le _même_ objet `sessionMiddleware` au moteur de Socket.IO (`server.engine.use(this.session)`), pour qu'un socket sache qui est connecté avec le même cookie. Il doit être défini avant `init()`, parce que c'est là que les gateways démarrent. Plus de détails dans [09-social-and-realtime.md](09-social-and-realtime.md).
@@ -265,6 +265,9 @@ Les fonctionnalités temps réel (chat, présence) utilisent Socket.IO sur `/ws`
     .addSecurityRequirements('cookie')
     .build();
 
+  // SwaggerModule does not inherit the global prefix, so the path repeats it.
+  // cleanupOpenApiDoc strips nestjs-zod's internal extensions and the 3.1 null
+  // syntax it emits, which are invalid under the 3.0.0 header.
   SwaggerModule.setup(
     `${API_PREFIX}/docs`,
     app,
@@ -307,12 +310,13 @@ Les avatars sont servis avant le middleware de session, donc charger une image n
     // their own address.
     ThrottlerModule.forRoot({
       throttlers: [{ ttl: 60_000, limit: RATE_LIMITS.perAccount }],
-      errorMessage: "server.rateLimited",
+      errorMessage: 'server.rateLimited',
     }),
     PrismaModule,
     RedisModule,
     AuthModule,
-    ...MetricsModule,
+    ...
+    MetricsModule,
   ],
   providers: [{ provide: APP_GUARD, useClass: IdentityThrottlerGuard }],
 })
@@ -338,7 +342,7 @@ Chaque import :
 | `GatewayModule`                            | La gateway Socket.IO (`/ws`).                                                                              | [09](09-social-and-realtime.md)                  |
 | `MetricsModule`                            | `MetricsCollector`, les métriques basées sur la base de données.                                           | [03](03-infrastructure.md)                       |
 
-Les modules qui ne sont pas listés ici (LLM, présence, génération de questions, démo...) sont importés par les modules de fonctionnalité qui en ont besoin.
+Les modules qui ne sont pas listés ici (LLM, présence, génération de questions) sont importés par les modules de fonctionnalité qui en ont besoin. (`demo/` n'est pas un module : le seed le lance en dehors de Nest.)
 
 Est-ce que l'ordre compte ? Presque pas : Nest construit un graphe de dépendances, donc un service est construit après les services dont il a besoin, quel que soit l'ordre dans cette liste. L'ordre compte seulement pour quelques choses du type « premier enregistré, premier exécuté », comme les guards globaux (partie suivante).
 
@@ -366,8 +370,8 @@ Les données qui viennent du réseau peuvent être n'importe quoi : un champ man
 ```ts
 // packages/shared/src/schemas/user.ts
 export const LoginSchema = z.object({
-  email: z.email("email.invalid"),
-  password: z.string("password.required").min(1, "password.required").max(128, "password.tooLong"),
+  email: z.email('email.invalid'),
+  password: z.string('password.required').min(1, 'password.required').max(128, 'password.tooLong'),
 });
 ```
 
@@ -405,17 +409,20 @@ export const CodeValidationPipe = createZodValidationPipe({
     new BadRequestException(
       error instanceof ZodError
         ? [
+            // A Set keeps one copy of each code: three mistyped fields give one
+            // `request.invalid`, not three. Spread back into an array, which is
+            // what BadRequestException puts in `message`.
             ...new Set(
               error.issues.map((issue) =>
                 // An issue no rule names (the body is not an object, a key holds
                 // the wrong type) carries Zod's English default instead of a code.
-                isErrorCode(issue.message) ? issue.message : "request.invalid",
+                isErrorCode(issue.message) ? issue.message : 'request.invalid',
               ),
             ),
           ]
         : // Never happens with nestjs-zod, which always passes a ZodError: a
           // code anyway, so even this branch keeps the contract.
-          "request.invalid",
+          'request.invalid',
     ),
 });
 ```
@@ -458,14 +465,22 @@ Un paramètre d'URL comme `:lang` n'a pas de classe DTO, donc le pipe est créé
 
 ```ts
 export const ERROR_CODES = [
-  "displayName.tooShort",
-  ..."auth.invalidCredentials",
-  ..."request.invalid",
-  "request.tooLarge",
-  "network.unreachable",
-  "server.unexpected",
-  "server.rateLimited",
-  "unknown",
+  'displayName.tooShort',
+  ...
+  'auth.invalidCredentials',
+  ...
+  'request.invalid',
+  /** A body over the parser's size limit. */
+  'request.tooLarge',
+  /** The browser never reached the API: offline, DNS, proxy down. */
+  'network.unreachable',
+  /** A status the client has no specific wording for. Carries `{status}`. */
+  'server.unexpected',
+  /** Too many requests from one address or session; the throttler's reply. */
+  'server.rateLimited',
+  /** Last resort, so an unrecognised code degrades to a translated sentence
+   *  instead of leaking English server text into a French page. */
+  'unknown',
 ] as const;
 
 export type ErrorCode = (typeof ERROR_CODES)[number];
@@ -497,7 +512,8 @@ Quand du code lance une erreur, Nest ne crashe pas. Il donne l'erreur à un **ex
 ```ts
 @Catch()
 export class ErrorCodeFilter extends BaseExceptionFilter {
-  private readonly logger = new Logger("ExceptionsHandler");
+  // Nest's own name for its handler, so these lines read like the ones it logs.
+  private readonly logger = new Logger('ExceptionsHandler');
 
   override catch(exception: unknown, host: ArgumentsHost): void {
     // Almost every error lands here: already coded, so Nest replies as usual.
@@ -601,14 +617,14 @@ sequenceDiagram
     R-->>MW: session ou rien
     Note over MW: le body parser JSON remplit req.body
     MW->>TG: route trouvée, lance les guards
-    TG->>TG: "@ThrottleByIp: clé ip:<client>, limite 5/min"
+    TG->>TG: "@ThrottleByIp: clé = IP du client, limite 5/min"
     TG->>AG: sous la limite
     AG->>AG: "@Public(): laisse passer"
     AG->>P: guards OK
     P->>P: "vérifie le body avec LoginSchema"
     P->>CT: "login(body, request, response)"
     CT->>S: "validateCredentials(email, password)"
-    S->>DB: "user.findUnique({ email })"
+    S->>DB: "user.findUnique (email en minuscules)"
     DB-->>S: ligne de l'utilisateur
     S->>S: argon2.verify(passwordHash, password)
     S-->>CT: "{ user, twoFactorEnabled: false }"
@@ -624,11 +640,11 @@ sequenceDiagram
 3. L'URL n'est pas un avatar, donc **express-session** s'exécute. Si le navigateur a envoyé un cookie `ft.sid`, la session est chargée depuis Redis. Une première visite n'en a pas.
 4. Le **body parser** transforme le texte JSON en `req.body`.
 5. Nest trouve la route (`AuthController.login`) et lance les **guards globaux** :
-   - `IdentityThrottlerGuard` : la route a `@ThrottleByIp(5)`, donc la clé est l'IP du client, avec une limite de 5 par minute. Sous la limite : on continue.
+   - `IdentityThrottlerGuard` : la route a `@ThrottleByIp(RATE_LIMITS.login)` (5 par défaut, `LOGIN_LIMIT_PER_MINUTE`), donc la clé est l'IP du client, avec une limite de 5 par minute. Sous la limite : on continue.
    - `AuthGuard` : la route est `@Public()`, donc il la laisse passer.
 6. Le **pipe global** vérifie `req.body` avec `LoginSchema` (parce que le type du paramètre est `LoginDto`).
-7. Le **controller** appelle `AuthService.validateCredentials`, qui appelle **Prisma** pour trouver l'utilisateur, puis vérifie le hash du mot de passe avec argon2.
-8. De retour dans le controller, `startSession` régénère la session (un nouvel id, pour bloquer la fixation de session, voir [05-auth-and-users.md](05-auth-and-users.md)), écrit `userId`, et la sauvegarde dans **Redis**. express-session ajoute `Set-Cookie: ft.sid=...` à la réponse.
+7. Le **controller** appelle `AuthService.validateCredentials`, qui appelle **Prisma** pour trouver l'utilisateur (email en minuscules), puis vérifie le hash du mot de passe avec argon2. Un email inconnu lance quand même argon2 sur un faux hash, pour que la réponse prenne le même temps.
+8. De retour dans le controller, `startSession` régénère la session (un nouvel id, pour bloquer la fixation de session, voir [05-auth-and-users.md](05-auth-and-users.md)), écrit `userId`, et la sauvegarde dans **Redis**. Ensuite `sockets.closeSession(...)` ferme les sockets encore ouverts sur l'ancien id de session. express-session ajoute `Set-Cookie: ft.sid=...` à la réponse.
 9. Nest envoie `200` avec l'utilisateur en JSON (`@HttpCode(HttpStatus.OK)` ; sans lui, un POST répond 201).
 10. Sur l'événement `close`, **httpMetrics** arrête le chrono et enregistre `POST /api/auth/login 200`.
 

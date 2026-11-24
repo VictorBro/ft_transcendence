@@ -151,16 +151,16 @@ vérifie ce que vérifie [outline-files.spec.ts](../../apps/api/src/lessons/outl
 **Comment il marche** : il lit les arguments, puis fait une boucle sur les six niveaux :
 
 ```ts
-const lang = LanguageSchema.safeParse(process.argv[2]);
-const level = option("--level");
-const onlyLevel = level === undefined ? undefined : LevelSchema.safeParse(level.toUpperCase());
-if (!lang.success || onlyLevel?.success === false) {
-  console.error(USAGE);
-  process.exitCode = 1;
-  return;
-}
-// pnpm --filter runs from apps/api, as vitest does.
-const dir = resolve(option("--dir") ?? join(process.cwd(), "../../content/outlines"));
+  const lang = LanguageSchema.safeParse(process.argv[2]);
+  const level = option('--level');
+  const onlyLevel = level === undefined ? undefined : LevelSchema.safeParse(level.toUpperCase());
+  if (!lang.success || onlyLevel?.success === false) {
+    console.error(USAGE);
+    process.exitCode = 1;
+    return;
+  }
+  // pnpm --filter runs from apps/api, as vitest does.
+  const dir = resolve(option('--dir') ?? join(process.cwd(), '../../content/outlines'));
 ```
 
 Pour chaque fichier, il collecte les **problèmes** (des chaînes de texte) au lieu de s'arrêter au
@@ -179,8 +179,8 @@ premier :
 | aucun id ou titre (normalisé) utilisé deux fois dans la langue                                                | doublons sur les six niveaux                                                                   |
 
 ```ts
-// A lesson can move level and keep its id (docs/content/lessons.md section 5).
-if (/(^|-)[abc][12](-|$)/.test(entry.id)) problems.push(`${at}: id names a level`);
+      // A lesson can move level and keep its id (docs/content/lessons.md section 5).
+      if (/(^|-)[abc][12](-|$)/.test(entry.id)) problems.push(`${at}: id names a level`);
 ```
 
 À la fin, `--level` ne garde que les problèmes qui nomment le fichier de ce niveau, « so several
@@ -276,30 +276,30 @@ leçons prêtes doivent former un début d'outline sans trou.
 **`authorLesson`** écrit une leçon :
 
 ```ts
-while (run.attempts < s.attempts && !s.stop) {
-  run.attempts++;
-  const reply = await chat.send(prompt);
-  addUsage(run, reply);
+    while (run.attempts < s.attempts && !s.stop) {
+      run.attempts++;
+      const reply = await chat.send(prompt);
+      addUsage(run, reply);
 
-  const read = applyReply(draft, reply.text);
-  if ("error" in read) {
-    issues = [{ path: "", message: read.error }];
-    prompt = issuesPrompt(issues, []);
-    continue;
-  }
-  const check = checkDraft(draft, ctx, s.usedTitles);
-  draft = check.completed;
-  issues = check.issues;
-  // A failed edit is sent back even when the lesson passes: the model meant something else.
-  if (check.files && read.editProblems.length === 0) {
-    // No await between the title check and this line: two lessons cannot take one title.
-    s.usedTitles.set(foldText(check.files.title), { title: check.files.title, id: entry.id });
-    await writeLesson(entry.id, check.files.brief, check.files.content);
-    run.outcome = "written";
-    return run;
-  }
-  prompt = issuesPrompt(issues, read.editProblems);
-}
+      const read = applyReply(draft, reply.text);
+      if ('error' in read) {
+        issues = [{ path: '', message: read.error }];
+        prompt = issuesPrompt(issues, []);
+        continue;
+      }
+      const check = checkDraft(draft, ctx, s.usedTitles);
+      draft = check.completed;
+      issues = check.issues;
+      // A failed edit is sent back even when the lesson passes: the model meant something else.
+      if (check.files && read.editProblems.length === 0) {
+        // No await between the title check and this line: two lessons cannot take one title.
+        s.usedTitles.set(foldText(check.files.title), { title: check.files.title, id: entry.id });
+        await writeLesson(entry.id, check.files.brief, check.files.content);
+        run.outcome = 'written';
+        return run;
+      }
+      prompt = issuesPrompt(issues, read.editProblems);
+    }
 ```
 
 - Chaque leçon a **une seule conversation** (`startChat`), donc le modèle voit ses réponses
@@ -343,8 +343,8 @@ sequenceDiagram
 - `locate(id)` trouve un id dans les six outlines de sa langue (`fr-greetings` → `fr`, son niveau,
   son entrée).
 - `filesOf(entry)` répond `'none'`, `'partial'` ou `'complete'`. « Partial » (un brief sans son
-  contenu, ou une leçon de vocabulaire avec un fichier de contenu qu'elle ne devrait pas avoir) est
-  laissé tel quel.
+  contenu, ou l'inverse, ou une leçon de vocabulaire avec un fichier de contenu qu'elle ne devrait
+  pas avoir) est laissé tel quel.
 - `readUsedTitles(lang)` lit le titre de chaque brief, **normalisé** (majuscules et accents retirés
   avec `foldText`), donc « Les métiers » et « les metiers » comptent comme le même titre.
 - `writeLesson` formate le JSON avec **prettier**, en utilisant la config prettier du repo, pour que
@@ -361,23 +361,23 @@ un résumé) : les fichiers source des schemas et des validateurs pour ce kind (
 `packages/shared/src/lessons/`), une leçon complète qui passe, et le format de réponse :
 
 ```ts
-const files = [...COMMON, ...sources]
-  .map(
-    (f) =>
-      `<source path="packages/shared/src/lessons/${f}">\n${readFileSync(join(LESSONS, f), "utf8")}\n</source>`,
-  )
-  .join("\n\n");
+  const files = [...COMMON, ...sources]
+    .map(
+      (f) =>
+        `<source path="packages/shared/src/lessons/${f}">\n${readFileSync(join(LESSONS, f), 'utf8')}\n</source>`,
+    )
+    .join('\n\n');
 ```
 
-Il liste aussi ce que le programme calcule (pour que le modèle puisse le laisser de côté), et « What
-the checks cannot see » (ce que les vérifications ne voient pas) : une seule bonne réponse par trou
-d'examen, chaque orthographe acceptée, les accords, pas de faux « seulement » ou « jamais », et le
-texte d'aide en français qui utilise le **tu**.
+Il liste aussi ce que le programme calcule (pour que le modèle puisse le laisser de côté), demande
+un texte d'aide en français qui utilise le **tu**, et liste « What the checks cannot see » (ce que
+les vérifications ne voient pas) : une seule bonne réponse par trou d'examen, chaque orthographe
+acceptée, les accords, pas de faux « seulement » ou « jamais ».
 
 Le **prompt de la leçon** contient ce qui change d'une leçon à l'autre : l'entrée de l'outline, les
 **cinq entrées de chaque côté** (pour que le modèle ne les répète pas et n'enseigne pas ce qui vient
 plus tard), et les titres déjà pris. Le **prompt des problèmes** liste ce qui ne va toujours pas et
-demande des `edits` quand seules quelques choses sont fausses.
+les edits qui n'ont pas pu s'appliquer, et demande des `edits` plutôt qu'une leçon entière.
 
 ### 5.4 [providers/chat.ts](../../apps/api/scripts/lessons/providers/chat.ts) : l'interface
 
@@ -420,11 +420,11 @@ Il lance `claude -p` (Claude Code sans son interface) avec le login du membre. C
 coupé du repo et de la configuration du membre :
 
 ```ts
-const baseArgs = [
-  ...["-p", "--output-format", "json", "--model", o.model],
-  ...["--tools", "", "--setting-sources", "", "--strict-mcp-config"],
-  ...(o.effort ? ["--effort", o.effort] : []),
-];
+  const baseArgs = [
+    ...['-p', '--output-format', 'json', '--model', o.model],
+    ...['--tools', '', '--setting-sources', '', '--strict-mcp-config'],
+    ...(o.effort ? ['--effort', o.effort] : []),
+  ];
 ```
 
 Pas d'outils, pas de settings, pas de serveurs MCP, et `--system-prompt-file` avec le system prompt
@@ -450,16 +450,16 @@ la **première** `{` et avance jusqu'à l'accolade qui la ferme, en sautant les 
 l'intérieur des chaînes :
 
 ```ts
-for (let i = start; i < text.length; i++) {
-  const ch = text[i];
-  if (inString) {
-    // A backslash skips the character after it, so \" does not end the string.
-    if (ch === "\\") i++;
-    else if (ch === '"') inString = false;
-  } else if (ch === '"') inString = true;
-  else if (ch === "{") depth++;
-  else if (ch === "}" && --depth === 0) return JSON.parse(text.slice(start, i + 1));
-}
+  for (let i = start; i < text.length; i++) {
+    const ch = text[i];
+    if (inString) {
+      // A backslash skips the character after it, so \" does not end the string.
+      if (ch === '\\') i++;
+      else if (ch === '"') inString = false;
+    } else if (ch === '"') inString = true;
+    else if (ch === '{') depth++;
+    else if (ch === '}' && --depth === 0) return JSON.parse(text.slice(start, i + 1));
+  }
 ```
 
 `applyReply` accepte trois formes : `{"brief":…,"content":…}` (la leçon entière), `{"edits":[…]}`
@@ -520,7 +520,7 @@ l'ajoute :
 - la **provenance** : générateur, modèle, version du prompt, date, et `inputHashes` (le sha256 de
   l'entrée de l'outline, et pour le contenu aussi celui du brief final, « since the content is
   written from the brief » — puisque le contenu est écrit à partir du brief) ;
-- les poids du **score** (pratique 35, examen 65) ;
+- le **score** (poids de la pratique 35, poids de l'examen 65, crédit d'orthographe 0,5) ;
 - chaque **durée** (via `computeTimes`).
 
 Une leçon de vocabulaire n'a pas de fichier de contenu, donc un fichier de contenu envoyé par le
@@ -585,6 +585,7 @@ Comment il marche :
   reste. Il affiche « the brief passes; write the content next » (le brief passe ; écris le contenu
   ensuite).
 - `--write` refuse si la leçon a déjà des fichiers.
+- `--model` nomme l'auteur dans la provenance (par défaut `claude-code`).
 - Code de sortie 1 tant qu'il reste quelque chose à corriger.
 
 L'en-tête donne un avertissement : sur les fichiers commités, `complete` tourne à nouveau et

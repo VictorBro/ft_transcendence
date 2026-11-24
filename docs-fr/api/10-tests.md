@@ -58,7 +58,7 @@ construit une).
 
 ```mermaid
 flowchart TB
-    E2E["tests e2e<br/>19 fichiers dans test/<br/>lents, vrai Postgres + Redis"]
+    E2E["tests e2e<br/>18 fichiers dans test/<br/>lents, vrai Postgres + Redis"]
     UNIT["tests unitaires<br/>53 fichiers *.spec.ts dans src/<br/>rapides, pas de base de données"]
     E2E --- UNIT
     style E2E fill:#f6d5a8,stroke:#a0522d
@@ -96,7 +96,7 @@ fichiers de config :
 Dans un fichier de test, tout vient de `vitest` :
 
 ```ts
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 ```
 
 `vi` est la boîte à outils de Vitest : `vi.fn()` crée une fonction mock, `vi.useFakeTimers()` fige l'horloge,
@@ -234,8 +234,8 @@ Plus haut, les outils appellent les mêmes scripts :
 | [package.json](../../package.json) racine | `pnpm run ci`                | vérification du format, puis `turbo run lint typecheck test:cov build`                                                           |
 | [turbo.json](../../turbo.json)            | `test`, `test:cov`           | dépendent de `^build` (build `@ft/shared` d'abord) et de `db:generate` (le client Prisma)                                        |
 | [Makefile](../../Makefile)                | `make test`                  | `pnpm run test` (les tests unitaires de tout le workspace)                                                                       |
-| [Makefile](../../Makefile)                | `make ci`                    | démarre Postgres et Redis (`stores-up`), lance `pnpm run ci`, applique les migrations, puis `pnpm --filter @ft/api run test:e2e` |
-| [Makefile](../../Makefile)                | `make` (= `make all`)        | `make ci`, puis la stack de production, puis Playwright                                                                          |
+| [Makefile](../../Makefile)                | `make ci`                    | crée `.env` (`env-file`), démarre Postgres et Redis (`stores-up`), lance les vérifications de `scripts/`, puis `pnpm run ci`, applique les migrations, puis `pnpm --filter @ft/api run test:e2e` |
+| [Makefile](../../Makefile)                | `make` (= `make all`)        | `make ci`, puis la stack de production (`make run`), `make monitoring-check`, puis Playwright |
 
 Note : `make test-e2e` dans le Makefile est la suite **Playwright** dans le navigateur, pas la suite Supertest de ce
 chapitre. La suite Supertest tourne dans `make ci`.
@@ -301,16 +301,16 @@ Dans un test unitaire, on lui donne un Prisma **mock** à la place.
 ```ts
 function userRow(overrides: Record<string, unknown> = {}) {
   return {
-    id: "11111111-1111-4111-8111-111111111111",
-    email: "learner@example.com",
-    displayName: "learner",
-    passwordHash: "replaced in beforeEach",
+    id: '11111111-1111-4111-8111-111111111111',
+    email: 'learner@example.com',
+    displayName: 'learner',
+    passwordHash: 'replaced in beforeEach',
     avatarUrl: null,
-    locale: "en",
-    timeZone: "UTC",
-    role: "USER",
-    createdAt: new Date("2026-01-01T00:00:00.000Z"),
-    updatedAt: new Date("2026-01-02T00:00:00.000Z"),
+    locale: 'en',
+    timeZone: 'UTC',
+    role: 'USER',
+    createdAt: new Date('2026-01-01T00:00:00.000Z'),
+    updatedAt: new Date('2026-01-02T00:00:00.000Z'),
     // Prisma returns every scalar, so the null columns belong here too: without
     // them an absent field reads as undefined and the 2FA check inverts.
     totpSecret: null,
@@ -375,16 +375,16 @@ n'as pas besoin que Nest branche quoi que ce soit. Par exemple
 ### Étape 3 : les tests
 
 ```ts
-it("stores an argon2id hash, never the password", async () => {
-  prisma.user.create.mockResolvedValue(userRow({ passwordHash: "x" }));
+    it('stores an argon2id hash, never the password', async () => {
+      prisma.user.create.mockResolvedValue(userRow({ passwordHash: 'x' }));
 
-  await service.signUp({ email: "A@Example.com", displayName: "learner", password });
+      await service.signUp({ email: 'A@Example.com', displayName: 'learner', password });
 
-  const stored = prisma.user.create.mock.calls[0][0].data.passwordHash;
-  expect(stored).toMatch(/^\$argon2id\$/);
-  expect(stored).not.toContain(password);
-  await expect(argon2.verify(stored, password)).resolves.toBe(true);
-});
+      const stored = prisma.user.create.mock.calls[0][0].data.passwordHash;
+      expect(stored).toMatch(/^\$argon2id\$/);
+      expect(stored).not.toContain(password);
+      await expect(argon2.verify(stored, password)).resolves.toBe(true);
+    });
 ```
 
 - **Arrange** : `mockResolvedValue` fait renvoyer à `create` une promesse d'une ligne d'utilisateur (un stub).
@@ -394,13 +394,13 @@ it("stores an argon2id hash, never the password", async () => {
   qu'il correspond vraiment au mot de passe.
 
 ```ts
-it("turns the unique-constraint race into a 409", async () => {
-  prisma.user.create.mockRejectedValue(Object.assign(new Error("unique"), { code: "P2002" }));
+    it('turns the unique-constraint race into a 409', async () => {
+      prisma.user.create.mockRejectedValue(Object.assign(new Error('unique'), { code: 'P2002' }));
 
-  await expect(
-    service.signUp({ email: "a@b.co", displayName: "learner", password }),
-  ).rejects.toBeInstanceOf(ConflictException);
-});
+      await expect(
+        service.signUp({ email: 'a@b.co', displayName: 'learner', password }),
+      ).rejects.toBeInstanceOf(ConflictException);
+    });
 ```
 
 `mockRejectedValue` fait **échouer** le mock, comme Postgres quand l'email existe déjà (code d'erreur Prisma
@@ -428,18 +428,18 @@ Son en-tête dit pourquoi c'est un test e2e :
 ### Étape 1 : démarrer la vraie app
 
 ```ts
-beforeAll(async () => {
-  const moduleRef = await Test.createTestingModule({ imports: [AppModule] }).compile();
-  app = moduleRef.createNestApplication();
-  configureApp(app);
-  await app.init();
-  prisma = app.get(PrismaService);
-});
+  beforeAll(async () => {
+    const moduleRef = await Test.createTestingModule({ imports: [AppModule] }).compile();
+    app = moduleRef.createNestApplication();
+    configureApp(app);
+    await app.init();
+    prisma = app.get(PrismaService);
+  });
 
-afterAll(async () => {
-  await prisma.user.deleteMany({ where: { email } });
-  await app.close();
-});
+  afterAll(async () => {
+    await prisma.user.deleteMany({ where: { email } });
+    await app.close();
+  });
 ```
 
 - Cette fois, le module de test importe **tout** `AppModule` : chaque vrai module, aucun mock.
@@ -458,22 +458,22 @@ afterAll(async () => {
 et te laisse vérifier la réponse :
 
 ```ts
-const server = () => app.getHttpServer();
+  const server = () => app.getHttpServer();
 
-it("signs up, sets an httpOnly session cookie, and never returns the hash", async () => {
-  const response = await request(server())
-    .post("/api/auth/signup")
-    .send({ email, displayName, password })
-    .expect(201);
+  it('signs up, sets an httpOnly session cookie, and never returns the hash', async () => {
+    const response = await request(server())
+      .post('/api/auth/signup')
+      .send({ email, displayName, password })
+      .expect(201);
 
-  expect(response.body).toMatchObject({ email, displayName, role: "USER", timeZone: "UTC" });
-  expect(response.body).not.toHaveProperty("passwordHash");
+    expect(response.body).toMatchObject({ email, displayName, role: 'USER', timeZone: 'UTC' });
+    expect(response.body).not.toHaveProperty('passwordHash');
 
-  const cookie = response.headers["set-cookie"][0];
-  expect(cookie).toContain(SESSION_COOKIE);
-  expect(cookie.toLowerCase()).toContain("httponly");
-  expect(cookie.toLowerCase()).toContain("samesite=lax");
-});
+    const cookie = response.headers['set-cookie'][0];
+    expect(cookie).toContain(SESSION_COOKIE);
+    expect(cookie.toLowerCase()).toContain('httponly');
+    expect(cookie.toLowerCase()).toContain('samesite=lax');
+  });
 ```
 
 `request(server()).post(url).send(body).expect(201)` envoie un POST avec un body JSON et échoue si le statut n'est
@@ -482,17 +482,17 @@ pas 201. Ensuite on vérifie le body et le header `Set-Cookie`.
 ### Étape 3 : un agent garde les cookies
 
 ```ts
-it("logs in, serves /me, and drops access after logout", async () => {
-  const agent = request.agent(server());
+  it('logs in, serves /me, and drops access after logout', async () => {
+    const agent = request.agent(server());
 
-  await agent.post("/api/auth/login").send({ email, password }).expect(200);
-  const me = await agent.get("/api/auth/me").expect(200);
-  expect(me.body.email).toBe(email);
-  expect(me.body.timeZone).toBe("UTC");
+    await agent.post('/api/auth/login').send({ email, password }).expect(200);
+    const me = await agent.get('/api/auth/me').expect(200);
+    expect(me.body.email).toBe(email);
+    expect(me.body.timeZone).toBe('UTC');
 
-  await agent.post("/api/auth/logout").expect(204);
-  await agent.get("/api/auth/me").expect(401);
-});
+    await agent.post('/api/auth/logout').expect(204);
+    await agent.get('/api/auth/me').expect(401);
+  });
 ```
 
 `request.agent(...)` est comme un petit navigateur : il **garde en mémoire les cookies** entre les requêtes. Donc
@@ -545,7 +545,7 @@ fixation »), et `/api/health` toujours public.
 
 ```
 apps/api/test/
-├── *.e2e-spec.ts          19 spec files (run by test:e2e)
+├── *.e2e-spec.ts          18 spec files (run by test:e2e)
 ├── attempts.fixtures.ts   play a lesson attempt through the routes
 ├── metrics.fixtures.ts    read one Prometheus series
 ├── placement.fixtures.ts  exam run, bank rows, fakeRedis, bankPrisma

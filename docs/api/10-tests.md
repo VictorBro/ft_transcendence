@@ -57,7 +57,7 @@ A **fixture** is prepared test data (a JSON file, a user row, a helper that buil
 
 ```mermaid
 flowchart TB
-    E2E["e2e tests<br/>19 files in test/<br/>slow, real Postgres + Redis"]
+    E2E["e2e tests<br/>18 files in test/<br/>slow, real Postgres + Redis"]
     UNIT["unit tests<br/>53 files *.spec.ts in src/<br/>fast, no database"]
     E2E --- UNIT
     style E2E fill:#f6d5a8,stroke:#a0522d
@@ -234,8 +234,8 @@ Higher up, the tools call the same scripts:
 | root [package.json](../../package.json) | `pnpm run ci` | format check, then `turbo run lint typecheck test:cov build` |
 | [turbo.json](../../turbo.json) | `test`, `test:cov` | depend on `^build` (build `@ft/shared` first) and `db:generate` (the Prisma client) |
 | [Makefile](../../Makefile) | `make test` | `pnpm run test` (unit tests of the whole workspace) |
-| [Makefile](../../Makefile) | `make ci` | starts Postgres and Redis (`stores-up`), runs `pnpm run ci`, applies migrations, then `pnpm --filter @ft/api run test:e2e` |
-| [Makefile](../../Makefile) | `make` (= `make all`) | `make ci`, then the production stack, then Playwright |
+| [Makefile](../../Makefile) | `make ci` | makes `.env` (`env-file`), starts Postgres and Redis (`stores-up`), runs the `scripts/` checks, then `pnpm run ci`, applies migrations, then `pnpm --filter @ft/api run test:e2e` |
+| [Makefile](../../Makefile) | `make` (= `make all`) | `make ci`, then the production stack (`make run`), `make monitoring-check`, then Playwright |
 
 Note: `make test-e2e` in the Makefile is the **Playwright** browser suite, not the Supertest
 suite of this chapter. The Supertest suite runs inside `make ci`.
@@ -546,7 +546,7 @@ against "session fixation"), and `/api/health` still public.
 
 ```
 apps/api/test/
-├── *.e2e-spec.ts          19 spec files (run by test:e2e)
+├── *.e2e-spec.ts          18 spec files (run by test:e2e)
 ├── attempts.fixtures.ts   play a lesson attempt through the routes
 ├── metrics.fixtures.ts    read one Prometheus series
 ├── placement.fixtures.ts  exam run, bank rows, fakeRedis, bankPrisma

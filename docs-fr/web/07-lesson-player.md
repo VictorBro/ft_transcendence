@@ -216,12 +216,12 @@ Les autres exports :
 - `lessonStage(attempt)` : où en est l'apprenant.
 
 ```ts
-export type LessonStage = "new" | "running" | "exam" | "finished";
+export type LessonStage = 'new' | 'running' | 'exam' | 'finished';
 
-export function lessonStage(attempt: AttemptRead["attempt"]): LessonStage {
-  if (attempt === null) return "new";
-  if (attempt.current === null) return "finished";
-  return attempt.current.role === "exam" ? "exam" : "running";
+export function lessonStage(attempt: AttemptRead['attempt']): LessonStage {
+  if (attempt === null) return 'new';
+  if (attempt.current === null) return 'finished';
+  return attempt.current.role === 'exam' ? 'exam' : 'running';
 }
 ```
 
@@ -256,15 +256,13 @@ Il dessine la carte de départ :
 3. Une ligne d'infos : « About 14 minutes · 8 words » (environ 14 minutes · 8 mots). Les minutes viennent d'abord, puis les **start facts** de chaque kind :
 
 ```tsx
-{
-  [
-    t("aboutMinutes", { minutes: outline.minutes }),
-    // Each kind's facts: "About 14 minutes · 8 words".
-    ...START_FACTS.map((fact) => fact(outline, (key, values) => t(key, values))),
-  ]
-    .filter(Boolean)
-    .join(" · ");
-}
+{[
+  t('aboutMinutes', { minutes: outline.minutes }),
+  // Each kind's facts: "About 14 minutes · 8 words".
+  ...START_FACTS.map((fact) => fact(outline, (key, values) => t(key, values))),
+]
+  .filter(Boolean)
+  .join(' · ')}
 ```
 
 4. Le statut et le meilleur score.
@@ -286,7 +284,7 @@ Un fichier client (`'use client'`) avec trois exports utilisés par la page de l
 async function start() {
   setPending(true);
   setError(null);
-  const result = await startAttempt(lang, id, LocaleSchema.catch("en").parse(locale));
+  const result = await startAttempt(lang, id, LocaleSchema.catch('en').parse(locale));
   if (result.ok) {
     rememberAttempt(lang, id, result.data);
     // Pushed, so Back from the player comes to the page before it.
@@ -387,13 +385,13 @@ Le bouton ✕ du player doit se comporter comme Retour **si** le player a été 
 
 ```ts
 export function preparePlayerNavigation(playPath: string) {
-  const lessonPath = playPath.replace(/\/play$/, "");
+  const lessonPath = playPath.replace(/\/play$/, '');
   pendingSource = window.location.pathname.endsWith(lessonPath) ? window.location.pathname : null;
 }
 
 export function recordPlayerOrigin(pagePath: string) {
   if (pendingSource?.endsWith(pagePath) && window.location.pathname.endsWith(`${pagePath}/play`)) {
-    window.history.replaceState({ ...window.history.state, [marker]: pendingSource }, "");
+    window.history.replaceState({ ...window.history.state, [marker]: pendingSource }, '');
   }
   pendingSource = null;
 }
@@ -416,8 +414,8 @@ const stage = lessonStage(read.attempt);
 // A kind the browser cannot play yet: the lesson page says so.
 if (
   read.attempt === null ||
-  stage === "new" ||
-  stage === "finished" ||
+  stage === 'new' ||
+  stage === 'finished' ||
   !playable(read.outline.kind)
 ) {
   redirect(paths.page);
@@ -680,10 +678,10 @@ Les items appellent `hold(key, value)`. Le player garde un `Hold` par clé dans 
 ```tsx
 // Holds only stand before the page is sent: Continue after a Check is never held.
 const pageHolds = checked ? [] : Object.values(holds);
-const blocked = pageHolds.some((h) => h.kind === "block");
-const nudging = pageHolds.some((h) => h.kind === "nudge");
+const blocked = pageHolds.some((h) => h.kind === 'block');
+const nudging = pageHolds.some((h) => h.kind === 'nudge');
 // A step lends the button to an item (Next line) before anything else.
-const step = pageHolds.find((h) => h.kind === "step" && h.onStep);
+const step = pageHolds.find((h) => h.kind === 'step' && h.onStep);
 ```
 
 Le texte et l'action du bouton viennent d'un petit `switch` :
@@ -731,13 +729,13 @@ onClick={(event) => {
 `Item` choisit le composant dans le registre, ou affiche « ne peut pas encore être affiché » :
 
 ```tsx
-function Item({ item, ...props }: Omit<ItemProps, "item"> & { item: ItemView }) {
-  const t = useTranslations("Lesson");
+function Item({ item, ...props }: Omit<ItemProps, 'item'> & { item: ItemView }) {
+  const t = useTranslations('Lesson');
   const Renderer = ITEM_RENDERERS[item.type] as React.ComponentType<ItemProps> | undefined;
   if (!Renderer) {
     return (
       <ItemCard>
-        <p className="text-slate-400">{t("unavailable")}</p>
+        <p className="text-slate-400">{t('unavailable')}</p>
       </ItemCard>
     );
   }
@@ -812,11 +810,11 @@ La barre latérale liste les **points** de la leçon (les points d'enseignement 
 ```ts
 let pointIndex = -1;
 outline.pages.forEach((page, index) => {
-  if (page.role !== "presentation" && page.role !== "practice") return;
+  if (page.role !== 'presentation' && page.role !== 'practice') return;
   const previous = outline.pages[index - 1];
   if (
-    page.role === "presentation" ||
-    previous?.role !== "practice" ||
+    page.role === 'presentation' ||
+    previous?.role !== 'practice' ||
     JSON.stringify(previous.step) !== JSON.stringify(page.step)
   ) {
     pointIndex += 1;
@@ -876,7 +874,7 @@ Le commentaire dit tout :
 ```ts
 export function gluedAfter(after: string | undefined, lang: Language): boolean {
   if (!after) return false;
-  return /^[.,…)]/u.test(after) || (lang !== "fr" && /^[?!;:]/u.test(after));
+  return /^[.,…)]/u.test(after) || (lang !== 'fr' && /^[?!;:]/u.test(after));
 }
 ```
 
@@ -905,7 +903,7 @@ Des cartes avec la traduction au recto et le mot dans la langue du cours au vers
 
 ```tsx
 useEffect(() => {
-  hold(`cards:${key}`, done ? null : { kind: "block", message: t("flipEveryCard") });
+  hold(`cards:${key}`, done ? null : { kind: 'block', message: t('flipEveryCard') });
   return () => hold(`cards:${key}`, null);
 }, [hold, key, done, t]);
 ```
@@ -932,15 +930,15 @@ Une question avec deux réponses (Quitter l'examen ? Recommencer ?). Il utilise 
 
 ```ts
 const KINDS: KindParts[] = [
-  { kind: "grammar", renderers: grammarRenderers, startFields: [NewVerbs] },
+  { kind: 'grammar', renderers: grammarRenderers, startFields: [NewVerbs] },
   {
-    kind: "vocabulary",
+    kind: 'vocabulary',
     renderers: vocabularyRenderers,
     startFields: [],
     startFacts: [wordCount],
   },
-  { kind: "functions", renderers: functionsRenderers, startFields: [Situation] },
-  { kind: "reading", renderers: readingRenderers, startFields: [KeyWords] },
+  { kind: 'functions', renderers: functionsRenderers, startFields: [Situation] },
+  { kind: 'reading', renderers: readingRenderers, startFields: [KeyWords] },
 ];
 
 export const ITEM_RENDERERS: ItemRenderers = Object.assign({}, ...KINDS.map((k) => k.renderers));
@@ -996,7 +994,7 @@ La plupart des composants font trois lignes : les parties génériques font le t
 ```tsx
 useEffect(() => {
   // Not on a page whose time ran out: nothing can be typed any more.
-  hold(`article:${unit.ref}`, missing && !locked ? { kind: "nudge" } : null);
+  hold(`article:${unit.ref}`, missing && !locked ? { kind: 'nudge' } : null);
   return () => hold(`article:${unit.ref}`, null);
 }, [hold, unit.ref, missing, locked]);
 ```
@@ -1034,17 +1032,17 @@ La logique sans navigateur est dans `lib/reading.ts`, et les composants dessinen
 La page de **survol** (skim) est spéciale : le document est ouvert pendant peu de temps, puis il disparaît et une question est posée **de mémoire**. Le compte à rebours est celui du navigateur (le serveur ne stocke pas de date limite), donc il est gardé avec les brouillons :
 
 ```ts
-export type SkimState = { phase: "reading"; deadline: number } | { phase: "question" };
+export type SkimState = { phase: 'reading'; deadline: number } | { phase: 'question' };
 
 export function readSkim(kept: string | null, now: number, seconds: number): SkimState {
-  if (kept === "question") return { phase: "question" };
-  const match = /^reading:(\d+)$/.exec(kept ?? "");
+  if (kept === 'question') return { phase: 'question' };
+  const match = /^reading:(\d+)$/.exec(kept ?? '');
   const deadline = match ? Number(match[1]) : now + seconds * 1000;
   // A deadline further away than a whole countdown was not written here: start again.
   if (!Number.isSafeInteger(deadline) || deadline > now + seconds * 1000) {
-    return { phase: "reading", deadline: now + seconds * 1000 };
+    return { phase: 'reading', deadline: now + seconds * 1000 };
   }
-  return deadline <= now ? { phase: "question" } : { phase: "reading", deadline };
+  return deadline <= now ? { phase: 'question' } : { phase: 'reading', deadline };
 }
 ```
 
@@ -1069,7 +1067,7 @@ Comment le document de survol et sa question (deux items séparés) se coordonne
 
 Les états de `SkimDocument` : `null` avant l'hydratation (il dessine une case vide, `aria-busy`, toujours marquée reading, donc la question reste cachée et Check retenu), `reading` (compte à rebours + « I've finished reading » (j'ai fini de lire) + document), `question` (caché), et une fois vérifié le document revient au-dessus de la question. Quand le document disparaît, le focus passe au titre de la question (sauf si le focus est ailleurs sur la page, comme un menu). `SkimOpen` est exporté pour le test du composant.
 
-`reading.test.tsx` joue une leçon de lecture d'exemple : il vérifie qu'elle est jouable, les infos de la page de départ, les flashcards, le tableau, le déroulé du survol, les questions à côté du document, les mauvaises réponses, et une partie complète jusqu'aux résultats.
+`reading.test.tsx` joue une leçon de lecture d'exemple : il vérifie qu'elle est jouable, les infos de la page de départ, les flashcards, le tableau, le déroulé du survol, les questions et la mise en ordre à côté du document, le second document sur la page d'examen, les mauvaises réponses, et une partie complète jusqu'aux résultats.
 
 ---
 
@@ -1173,7 +1171,7 @@ Le modèle écrit du Markdown (gras, listes, titres, tableaux). `TutorAnswer` le
 <Markdown
   remarkPlugins={[remarkGfm]}
   components={components}
-  disallowedElements={["img"]}
+  disallowedElements={['img']}
   unwrapDisallowed
 >
   {text}
@@ -1310,9 +1308,9 @@ if (finish.xpGained < goal + challenge) {
 }
 return {
   rows: [
-    { source: "lesson", xp: finish.xpGained - goal - challenge },
-    ...(goal > 0 ? [{ source: "goal" as const, xp: goal }] : []),
-    ...(challenge > 0 ? [{ source: "challenge" as const, xp: challenge }] : []),
+    { source: 'lesson', xp: finish.xpGained - goal - challenge },
+    ...(goal > 0 ? [{ source: 'goal' as const, xp: goal }] : []),
+    ...(challenge > 0 ? [{ source: 'challenge' as const, xp: challenge }] : []),
   ],
   legacyGoal: false,
 };

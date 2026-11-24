@@ -156,7 +156,7 @@ lesson finished in another tab shows up.
 | [`apps/api/prisma/migrations/20261107184854_add_gamification/`](../../apps/api/prisma/migrations/20261107184854_add_gamification/migration.sql) | The migration that adds them |
 | [`apps/web/components/gamification.tsx`](../../apps/web/components/gamification.tsx) | `RankLine`, `ChallengeCard`, `NewToday`, `FinishXp`, `DoneMark` |
 | [`apps/web/app/[locale]/(dashboard)/learn/[lang]/achievements/page.tsx`](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/achievements/page.tsx>) | The achievements page: the 16 cards in four groups, and the **How it works** panel |
-| [`apps/web/app/[locale]/(dashboard)/learn/[lang]/page.tsx`](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/page.tsx>) | The course page: rank, today's challenge, new today |
+| [`apps/web/app/[locale]/(dashboard)/learn/[lang]/page.tsx`](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/page.tsx>) | The course page: new today under the title; the rank and today's challenge in the side cards |
 | [`apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/results/page.tsx`](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/results/page.tsx>) | The lesson results: the XP card at the top |
 | [`apps/web/lib/achievements.ts`](../../apps/web/lib/achievements.ts) | Loads the achievements, and fills the numbers of each rule from the shared constants |
 | [`apps/web/lib/xp-breakdown.ts`](../../apps/web/lib/xp-breakdown.ts) | Splits a finish's XP into lesson, goal and challenge rows |
@@ -171,9 +171,10 @@ The stack must be running (`make run`, or `make` to run every check first). The 
 1. Open `https://localhost/en/signup`, create an account, pick **Français** under "Language to learn", pick a
    "Daily goal", and click **Next**. Click **I already know my level**, choose **A0** (a beginner, so
    the course is French A1) and click **Start learning**.
-2. On the course page (`/en/learn/fr`), show under the title: "Rank 1 · 0 of 100 XP" with an empty
-   bar, and the link **Achievements and rules**. Below it is the **Today's challenge** card with
-   its rule and "+30 XP".
+2. On the course page (`/en/learn/fr`), show the side column. Its **Your rank** card shows
+   "Rank 1 · 0 of 100 XP" with an empty bar, and the link **Achievements and rules**. Below it is
+   the **Today's challenge** card with its rule and "+30 XP". On a narrow window, these cards are
+   behind the **My course** button at the top left (#220).
 3. Open one of today's lessons, click **Start the lesson**, go through the pages and the exam, and
    click **Finish the exam**.
 4. At the top of the results, a card shows "+N XP" with a **Lesson** row, then **New achievement**

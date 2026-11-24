@@ -119,6 +119,7 @@ Lecture :
 ## 3. Le contrat, mot à mot
 
 ```ts
+// llm.provider.ts (commentaires retirés)
 export interface LlmProvider {
   generateStructured<S extends z.ZodType>(request: StructuredRequest<S>): Promise<z.output<S>>;
   streamText(request: StreamRequest): AsyncIterable<string>;

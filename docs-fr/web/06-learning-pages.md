@@ -133,7 +133,7 @@ Fichier : [course-menu-slot.ts](../../apps/web/lib/course-menu-slot.ts)
  * Its own module: a constant exported from a 'use client' file reaches a
  * server component as a client reference, not as the string.
  */
-export const COURSE_MENU_SLOT = "course-menu-slot";
+export const COURSE_MENU_SLOT = 'course-menu-slot';
 ```
 
 Une seule chaîne. Pourquoi un fichier à part ? Le layout (serveur) et `course-menu.tsx` (client) en ont tous les deux
@@ -152,7 +152,7 @@ Fichier : [dashboard/page.tsx](<../../apps/web/app/[locale]/(dashboard)/dashboar
 ```tsx
 /** Kept so old links and bookmarks still land somewhere. */
 export default function DashboardPage() {
-  redirect("/learn");
+  redirect('/learn');
 }
 ```
 
@@ -164,7 +164,7 @@ Fichier : [learn/page.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/page.t
 
 ```tsx
 /** Reads the session, the courses and the ft.lang cookie on every request. */
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic';
 
 /** Where sign-in and the home links go. Renders nothing: it only picks the page. */
 export default async function LearnPage() {
@@ -203,7 +203,7 @@ Fichier : [course-path.ts](../../apps/web/lib/course-path.ts)
 
 ```ts
 /** The course last opened here. What NEXT_LOCALE is for the interface. */
-export const COURSE_COOKIE = "ft.lang";
+export const COURSE_COOKIE = 'ft.lang';
 
 /** Anchored on /learn: the locale prefix is a two-letter segment too. */
 export function learnPathLang(pathname: string): string | null {
@@ -361,14 +361,14 @@ La deuxième colonne est enveloppée dans `<CourseMenu>`. Elle contient cinq car
 ### 4.4 `StatRow` et `t.rich`
 
 ```tsx
-<StatRow icon="passed">
-  {t.rich("passed", {
-    passed: progress.passed,
-    total: progress.total,
-    needed: progress.needed,
-    b: strong,
-  })}
-</StatRow>
+              <StatRow icon="passed">
+                {t.rich('passed', {
+                  passed: progress.passed,
+                  total: progress.total,
+                  needed: progress.needed,
+                  b: strong,
+                })}
+              </StatRow>
 ```
 
 `t.rich` est la fonction de next-intl pour un message avec des balises dedans. Le texte du message dans
@@ -409,15 +409,15 @@ HTML à un autre endroit de la page. Ici, le bouton est écrit dans `CourseMenu`
 dans le slot du header de la section 2 :
 
 ```tsx
-const [slot, setSlot] = useState<HTMLElement | null>(null);
-// Open for the page it was opened on, as the account menu: a link closes it.
-const [openOn, setOpenOn] = useState<string | null>(null);
-const open = openOn === pathname;
-useScrollLock(open);
+  const [slot, setSlot] = useState<HTMLElement | null>(null);
+  // Open for the page it was opened on, as the account menu: a link closes it.
+  const [openOn, setOpenOn] = useState<string | null>(null);
+  const open = openOn === pathname;
+  useScrollLock(open);
 
-useEffect(() => {
-  setSlot(document.getElementById(COURSE_MENU_SLOT));
-}, []);
+  useEffect(() => {
+    setSlot(document.getElementById(COURSE_MENU_SLOT));
+  }, []);
 ```
 
 - `slot` commence à `null`. C'est seulement dans le navigateur, après le premier rendu (`useEffect`), qu'on peut trouver
@@ -433,13 +433,13 @@ ou sur `Escape` (et remet alors le focus sur le bouton, pour les utilisateurs du
 Le panneau lui-même est toujours dans le HTML. Les classes CSS font le reste :
 
 ```tsx
-<aside
-  ref={panel}
-  id={panelId}
-  className={`${className} ${open ? "" : "max-lg:hidden"} max-lg:fixed max-lg:top-16 max-lg:z-50 ...`}
->
-  {children}
-</aside>
+      <aside
+        ref={panel}
+        id={panelId}
+        className={`${className} ${open ? '' : 'max-lg:hidden'} max-lg:fixed max-lg:top-16 max-lg:z-50 ...`}
+      >
+        {children}
+      </aside>
 ```
 
 `max-lg:` veut dire « seulement sous `lg` ». Donc sous `lg`, l'aside est caché sauf si `open`, et quand il est ouvert il
@@ -458,14 +458,14 @@ Que des server components. Exports : `StreakLine`, `TodayCard`, `MoreLessons`, `
 **`StreakLine`** choisit une phrase parmi trois :
 
 ```tsx
-if (streak.current === 0) {
-  return <p className="text-slate-400">{t("streakStart")}</p>;
-}
-return (
-  <p className="text-slate-400">
-    {t(streak.today ? "streakToday" : "streakKeep", { count: streak.current })}
-  </p>
-);
+  if (streak.current === 0) {
+    return <p className="text-slate-400">{t('streakStart')}</p>;
+  }
+  return (
+    <p className="text-slate-400">
+      {t(streak.today ? 'streakToday' : 'streakKeep', { count: streak.current })}
+    </p>
+  );
 ```
 
 « Start a streak today », « 3-day streak, today counts », ou « 3-day streak, play today to keep it »
@@ -475,8 +475,8 @@ return (
 **`TodayCard`** est l'objectif du jour :
 
 ```tsx
-const t = await getTranslations("Course");
-const [next, ...rest] = today.met ? [] : today.proposed;
+  const t = await getTranslations('Course');
+  const [next, ...rest] = today.met ? [] : today.proposed;
 ```
 
 - Si l'objectif est atteint, rien n'est proposé (`next` vaut `undefined`).
@@ -565,23 +565,23 @@ Fichier : [goal-picker.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang
 Un `<select>` avec les trois `DAILY_GOALS` (10, 30, 60 minutes par jour).
 
 ```tsx
-const [value, setValue] = useState(dailyGoal);
-const latest = useRef(0);
+  const [value, setValue] = useState(dailyGoal);
+  const latest = useRef(0);
 
-useEffect(() => setValue(dailyGoal), [dailyGoal]);
+  useEffect(() => setValue(dailyGoal), [dailyGoal]);
 
-async function onChange(event: React.ChangeEvent<HTMLSelectElement>) {
-  const next = Number(event.target.value) as DailyGoal;
+  async function onChange(event: React.ChangeEvent<HTMLSelectElement>) {
+    const next = Number(event.target.value) as DailyGoal;
 
-  setValue(next);
-  const pick = ++latest.current;
-  const saved = await save(() =>
-    clientPatch(CourseSchema, `/api/courses/${lang}`, { dailyGoal: next }),
-  );
-  if (!saved && pick === latest.current) {
-    setValue(dailyGoal);
+    setValue(next);
+    const pick = ++latest.current;
+    const saved = await save(() =>
+      clientPatch(CourseSchema, `/api/courses/${lang}`, { dailyGoal: next }),
+    );
+    if (!saved && pick === latest.current) {
+      setValue(dailyGoal);
+    }
   }
-}
 ```
 
 - La nouvelle valeur s'affiche **tout de suite** (`setValue(next)`), avant que le serveur réponde. On appelle ça une
@@ -639,11 +639,11 @@ Des server components sans state, « so a page without JavaScript shows it too �
 La barre de `RankLine` commence vide à chaque rang :
 
 ```tsx
-<ProgressBar
-  value={xp.total - xp.rankStart}
-  max={xp.nextRankAt - xp.rankStart}
-  label={t("rankBar")}
-/>
+      <ProgressBar
+        value={xp.total - xp.rankStart}
+        max={xp.nextRankAt - xp.rankStart}
+        label={t('rankBar')}
+      />
 ```
 
 `ChallengeCard` : quand le défi est un type de leçon (grammaire, vocabulaire, fonctions, lecture), son
@@ -665,7 +665,7 @@ Fichier : [achievements.ts](../../apps/web/lib/achievements.ts)
 /** The messages' params for one achievement: its target, or its level. */
 export function achievementParams(code: AchievementCode): Record<string, string | number> {
   const definition = ACHIEVEMENTS.find((achievement) => achievement.code === code)!;
-  return "level" in definition
+  return 'level' in definition
     ? { level: definition.level, share: Math.round(LEVEL_PASS_SHARE * 100) }
     : { target: definition.target, mark: LESSON_PASS_MARK };
 }
@@ -702,14 +702,14 @@ Le groupe d'un succès est trouvé à partir de sa définition :
 ```tsx
 function groupOf(code: AchievementCode): Group {
   const definition = ACHIEVEMENTS.find((achievement) => achievement.code === code)!;
-  if ("level" in definition) return "levels";
+  if ('level' in definition) return 'levels';
   switch (definition.stat) {
-    case "bestStreak":
-      return "streaks";
-    case "challengesDone":
-      return "challenges";
+    case 'bestStreak':
+      return 'streaks';
+    case 'challengesDone':
+      return 'challenges';
     default:
-      return "lessons";
+      return 'lessons';
   }
 }
 ```
@@ -737,7 +737,7 @@ L'app demande « qu'est-ce que tu **maîtrises** ? » puis enseigne **le niveau 
 cette règle.
 
 ```ts
-export const BEGINNER = "A0";
+export const BEGINNER = 'A0';
 
 /** What a learner can claim to have mastered. Null is the beginner. */
 export const MASTERY_OPTIONS = [null, ...LEVELS] as const;
@@ -817,9 +817,9 @@ const DEFAULTS = LessonQuerySchema.parse({});
 export function lessonQueryParams(query: LessonQuery): Record<string, string> {
   const params: Record<string, string> = {};
   for (const [key, value] of Object.entries(query)) {
-    const text = Array.isArray(value) ? value.join(",") : String(value);
+    const text = Array.isArray(value) ? value.join(',') : String(value);
     const fallback = DEFAULTS[key as keyof LessonQuery];
-    if (text !== (Array.isArray(fallback) ? fallback.join(",") : String(fallback))) {
+    if (text !== (Array.isArray(fallback) ? fallback.join(',') : String(fallback))) {
       params[key] = text;
     }
   }
@@ -829,7 +829,7 @@ export function lessonQueryParams(query: LessonQuery): Record<string, string> {
 /** The all lessons page at this query. */
 export function lessonsHref(lang: string, query: LessonQuery): string {
   const search = new URLSearchParams(lessonQueryParams(query)).toString();
-  return `/learn/${lang}/lessons${search === "" ? "" : `?${search}`}`;
+  return `/learn/${lang}/lessons${search === '' ? '' : `?${search}`}`;
 }
 ```
 
@@ -857,15 +857,15 @@ Fichier : [lessons/page.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lan
 Les trois mêmes guards que la page du cours. Ensuite :
 
 ```tsx
-// Every field falls back to its default, so a hand-edited URL shows the
-// default view, and the form shows what the API applies.
-const query = LessonQuerySchema.parse(await searchParams);
-const page = await loadLessonPage(course.lang, query);
-if (page === "signed-out") {
-  redirect("/login");
-}
-// The page really shown: past the end, the API gives the last one.
-const shown = { ...query, page: page.page };
+  // Every field falls back to its default, so a hand-edited URL shows the
+  // default view, and the form shows what the API applies.
+  const query = LessonQuerySchema.parse(await searchParams);
+  const page = await loadLessonPage(course.lang, query);
+  if (page === 'signed-out') {
+    redirect('/login');
+  }
+  // The page really shown: past the end, the API gives the last one.
+  const shown = { ...query, page: page.page };
 ```
 
 `searchParams` est la query string de l'URL. La page la parse avec le schema partagé, interroge
@@ -916,13 +916,13 @@ sans JavaScript.
 **`Choices`** : un filtre sous forme de cases à cocher, toutes avec le même `name` :
 
 ```tsx
-<input
-  type="checkbox"
-  name={name}
-  value={option.value}
-  defaultChecked={checked.includes(option.value)}
-  className="size-4 shrink-0 accent-slate-100"
-/>
+          <input
+            type="checkbox"
+            name={name}
+            value={option.value}
+            defaultChecked={checked.includes(option.value)}
+            className="size-4 shrink-0 accent-slate-100"
+          />
 ```
 
 Un formulaire GET envoie `kind=grammar&kind=reading`. Le schema lit ça comme `kind=grammar,reading`.
@@ -936,8 +936,7 @@ un lien vers `#filters`. Elle utilise le sélecteur CSS `:target` : un élément
 l'URL (`#filters`) reçoit les classes `target:`. Donc la sheet s'ouvre **sans JavaScript** :
 
 ```tsx
-className =
-  "max-lg:hidden max-lg:target:fixed max-lg:target:inset-0 max-lg:target:z-50 max-lg:target:flex ...";
+      className="max-lg:hidden max-lg:target:fixed max-lg:target:inset-0 max-lg:target:z-50 max-lg:target:flex ..."
 ```
 
 Le lien « Close » est `href="#"`, ce qui enlève le hash. Le bouton « Show the lessons » est un submit
@@ -954,7 +953,8 @@ key basée sur sa valeur : un nouveau nœud DOM perdrait le focus du clavier.
 sans ce filtre :
 
 ```tsx
-const without = (patch: Partial<LessonQuery>) => lessonsHref(lang, { ...query, ...patch, page: 1 });
+  const without = (patch: Partial<LessonQuery>) =>
+    lessonsHref(lang, { ...query, ...patch, page: 1 });
 ```
 
 Puis un lien « Clear filters » vers le simple `/learn/<lang>/lessons`. Les liens marchent sans JavaScript.
@@ -1010,7 +1010,7 @@ Il lit le formulaire avec `FormData`, le parse avec le même schema, construit l
 `lessonsHref`, et le pousse :
 
 ```tsx
-startTransition(() => router.push(`${href}${window.location.hash}`, { scroll: false }));
+      startTransition(() => router.push(`${href}${window.location.hash}`, { scroll: false }));
 ```
 
 - `useTransition` donne `pending`, qui devient l'attribut `data-pending` (les lignes pâlissent).
@@ -1029,21 +1029,21 @@ rester comme ils ont été tapés (l'apprenant est peut-être encore en train de
 - `sent` : les query strings que ce formulaire a poussées et qui peuvent encore arriver.
 
 ```tsx
-useEffect(() => {
-  const now = searchParams.toString();
-  if (now === shown.current) return;
-  shown.current = now;
-  const own = sent.current.indexOf(now);
-  if (own !== -1) {
-    sent.current = sent.current.slice(own + 1);
-    return;
-  }
-  putBack();
-  // From lg the page scrolls in a pane, which a query-only navigation
-  // leaves where it was: Next at the bottom would open page 2 at its end.
-  // Not after the form's own changes: the box under the pointer would move.
-  form.current?.closest("[data-scroll-pane]")?.scrollTo({ top: 0 });
-}, [searchParams, putBack]);
+  useEffect(() => {
+    const now = searchParams.toString();
+    if (now === shown.current) return;
+    shown.current = now;
+    const own = sent.current.indexOf(now);
+    if (own !== -1) {
+      sent.current = sent.current.slice(own + 1);
+      return;
+    }
+    putBack();
+    // From lg the page scrolls in a pane, which a query-only navigation
+    // leaves where it was: Next at the bottom would open page 2 at its end.
+    // Not after the form's own changes: the box under the pointer would move.
+    form.current?.closest('[data-scroll-pane]')?.scrollTo({ top: 0 });
+  }, [searchParams, putBack]);
 ```
 
 Quand l'URL change : si c'est une des nôtres, on la retire de `sent` avec les plus anciennes et on ne fait rien.
@@ -1089,13 +1089,13 @@ Un élément `<details>` (un pli que le navigateur ouvre et ferme tout seul) don
 **suggère** seulement l'état ouvert.
 
 ```tsx
-const [open, setOpen] = useState(checked);
-// Adjusted while rendering, not in an effect: React's way to follow a prop.
-const [wasChecked, setWasChecked] = useState(checked);
-if (checked !== wasChecked) {
-  setWasChecked(checked);
-  if (checked) setOpen(true);
-}
+  const [open, setOpen] = useState(checked);
+  // Adjusted while rendering, not in an effect: React's way to follow a prop.
+  const [wasChecked, setWasChecked] = useState(checked);
+  if (checked !== wasChecked) {
+    setWasChecked(checked);
+    if (checked) setOpen(true);
+  }
 ```
 
 - Il commence ouvert si une de ses cases est cochée.
@@ -1127,7 +1127,7 @@ export type PlacementState = z.infer<typeof PlacementStateSchema>;
 
 //We will know what type is returned saying state is PlacementResult, if report is not found it is not PlacementResult but PlacementQuestion
 export function isPlacementResult(state: PlacementState): state is PlacementResult {
-  return "report" in state;
+  return 'report' in state;
 }
 ```
 
@@ -1147,36 +1147,36 @@ Fichier : [placement/page.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[l
 Un server component. Ses guards sont différents de ceux de la page du cours :
 
 ```tsx
-// Unlike CoursePage, a null level is exactly who this page is for: placement
-// is what sets it. Only a language the learner does not study is sent back to
-// onboarding, where the course gets created.
-const course = findCourse(courses, parsed.data);
-if (course === null) {
-  redirect(`/onboarding?lang=${parsed.data}`);
-}
+  // Unlike CoursePage, a null level is exactly who this page is for: placement
+  // is what sets it. Only a language the learner does not study is sent back to
+  // onboarding, where the course gets created.
+  const course = findCourse(courses, parsed.data);
+  if (course === null) {
+    redirect(`/onboarding?lang=${parsed.data}`);
+  }
 
-// A 404 is no run yet: the page offers the start control for it.
-const result = await apiFind(PlacementStateSchema, "/api/placement");
+  // A 404 is no run yet: the page offers the start control for it.
+  const result = await apiFind(PlacementStateSchema, '/api/placement');
 ```
 
 `apiFind` (Chapitre 4) est comme `apiGet` mais traite une 404 comme « pas trouvé » au lieu d'une erreur. Donc :
 pas encore de test en cours, c'est normal, et la page montre l'écran de départ.
 
 ```tsx
-// One run per learner, whatever the language. A live one elsewhere is where
-// the learner belongs; a finished one elsewhere is only a report, which the
-// start control here replaces.
-if (run !== null && run.lang !== parsed.data && !isPlacementResult(run)) {
-  redirect(`/learn/${run.lang}/placement`);
-}
+  // One run per learner, whatever the language. A live one elsewhere is where
+  // the learner belongs; a finished one elsewhere is only a report, which the
+  // start control here replaces.
+  if (run !== null && run.lang !== parsed.data && !isPlacementResult(run)) {
+    redirect(`/learn/${run.lang}/placement`);
+  }
 
-return (
-  <PlacementExam
-    lang={parsed.data}
-    courseLevel={course.level}
-    initial={run?.lang === parsed.data ? run : null}
-  />
-);
+  return (
+    <PlacementExam
+      lang={parsed.data}
+      courseLevel={course.level}
+      initial={run?.lang === parsed.data ? run : null}
+    />
+  );
 ```
 
 Un apprenant a au plus un test en cours, dans n'importe quelle langue. Si un test tourne en allemand et que tu ouvres la
@@ -1214,19 +1214,19 @@ stateDiagram-v2
 Le reste du state :
 
 ```tsx
-const [state, setState] = useState<PlacementState | null>(initial);
-const [error, setError] = useState<string | null>(null);
-const [pending, setPending] = useState(false);
-// Kept after a success: the old question's timer can still fire before React
-// swaps the next one in, and must not post a stale null for it.
-const answering = useRef<string | null>(null);
-// The course as this page knows it: the server's level, then whatever an
-// applied run or a pick on the result writes, with no reload in between.
-const [level, setLevel] = useState<Level | null>(courseLevel);
-const [finishedHere, setFinishedHere] = useState(false);
+  const [state, setState] = useState<PlacementState | null>(initial);
+  const [error, setError] = useState<string | null>(null);
+  const [pending, setPending] = useState(false);
+  // Kept after a success: the old question's timer can still fire before React
+  // swaps the next one in, and must not post a stale null for it.
+  const answering = useRef<string | null>(null);
+  // The course as this page knows it: the server's level, then whatever an
+  // applied run or a pick on the result writes, with no reload in between.
+  const [level, setLevel] = useState<Level | null>(courseLevel);
+  const [finishedHere, setFinishedHere] = useState(false);
 
-// Onboarding owns an unplaced course, the course page a placed one.
-const exit = level === null ? `/onboarding?lang=${lang}` : `/learn/${lang}`;
+  // Onboarding owns an unplaced course, the course page a placed one.
+  const exit = level === null ? `/onboarding?lang=${lang}` : `/learn/${lang}`;
 ```
 
 - `send()` enveloppe chaque requête : met `pending`, vide `error`, lance la requête, vide `pending`.
@@ -1243,29 +1243,29 @@ const exit = level === null ? `/onboarding?lang=${lang}` : `/learn/${lang}`;
 La fonction `answer()` :
 
 ```tsx
-async function answer(questionId: string, choice: string | null) {
-  if (answering.current === questionId) {
-    return;
-  }
-  answering.current = questionId;
-  const result = await send(() => submitPlacementAnswer(questionId, choice));
-  if (result.ok) {
-    setState(result.data);
-    if (isPlacementResult(result.data)) {
-      setFinishedHere(true);
-      if (result.data.applied) {
-        setLevel(result.data.targetLevel);
-      }
+  async function answer(questionId: string, choice: string | null) {
+    if (answering.current === questionId) {
+      return;
     }
-    return;
+    answering.current = questionId;
+    const result = await send(() => submitPlacementAnswer(questionId, choice));
+    if (result.ok) {
+      setState(result.data);
+      if (isPlacementResult(result.data)) {
+        setFinishedHere(true);
+        if (result.data.applied) {
+          setLevel(result.data.targetLevel);
+        }
+      }
+      return;
+    }
+    answering.current = null;
+    // A dead question with only an error under it is a dead end; Start is not.
+    if (RUN_GONE.has(result.code)) {
+      setState(null);
+    }
+    fail(result);
   }
-  answering.current = null;
-  // A dead question with only an error under it is a dead end; Start is not.
-  if (RUN_GONE.has(result.code)) {
-    setState(null);
-  }
-  fail(result);
-}
 ```
 
 `choice` vaut `null` quand le minuteur est arrivé à zéro. `RUN_GONE` contient trois codes d'erreur
@@ -1301,25 +1301,25 @@ La `ProgressBar` ici est locale et décorative (`aria-hidden`) : son total est
 **`Countdown`** est le minuteur :
 
 ```tsx
-// A deadline, not a count of ticks: a hidden tab gets its timers throttled,
-// while the server goes on measuring the limit from when it served the question.
-const [deadline] = useState(() => Date.now() + remainingS * 1000);
-const [left, setLeft] = useState(remainingS);
-const expire = useEffectEvent(onExpire);
+  // A deadline, not a count of ticks: a hidden tab gets its timers throttled,
+  // while the server goes on measuring the limit from when it served the question.
+  const [deadline] = useState(() => Date.now() + remainingS * 1000);
+  const [left, setLeft] = useState(remainingS);
+  const expire = useEffectEvent(onExpire);
 
-useEffect(() => {
-  // Four ticks a second, so the last one is not swallowed by a tick landing
-  // just past it. Only a whole second changes state, so the rest cost nothing.
-  const interval = setInterval(() => {
-    const seconds = Math.max(0, Math.ceil((deadline - Date.now()) / 1000));
-    setLeft(seconds);
-    if (seconds === 0) {
-      clearInterval(interval);
-      expire();
-    }
-  }, 250);
-  return () => clearInterval(interval);
-}, [deadline]);
+  useEffect(() => {
+    // Four ticks a second, so the last one is not swallowed by a tick landing
+    // just past it. Only a whole second changes state, so the rest cost nothing.
+    const interval = setInterval(() => {
+      const seconds = Math.max(0, Math.ceil((deadline - Date.now()) / 1000));
+      setLeft(seconds);
+      if (seconds === 0) {
+        clearInterval(interval);
+        expire();
+      }
+    }, 250);
+    return () => clearInterval(interval);
+  }, [deadline]);
 ```
 
 - Il garde une **échéance** (deadline, un moment précis), pas un nombre de ticks. Les navigateurs ralentissent les timers dans les onglets
@@ -1343,9 +1343,9 @@ le dialog. Il est en premier, pour que le focus commence sur le choix sûr ; « 
 Fichier : [result-screen.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/placement/result-screen.tsx>)
 
 ```tsx
-const correct = report.filter((entry) => entry.wasCorrect).length;
-// Only narrows: an applied run always leaves the course a level.
-const applied = result.applied && level !== null;
+  const correct = report.filter((entry) => entry.wasCorrect).length;
+  // Only narrows: an applied run always leaves the course a level.
+  const applied = result.applied && level !== null;
 ```
 
 La section du haut :
@@ -1378,16 +1378,16 @@ Un `<select>` dans le header (affiché par `DashboardNav`, Chapitre 3) pour pass
 avec une dernière option « Add a language ».
 
 ```tsx
-// From the URL: a layout does not re-render on navigation within it. A value
-// matching no option would make the browser show the first instead.
-const path = learnPathLang(pathname);
-const current = courses.some((course) => course.lang === path) ? path : null;
+  // From the URL: a layout does not re-render on navigation within it. A value
+  // matching no option would make the browser show the first instead.
+  const path = learnPathLang(pathname);
+  const current = courses.some((course) => course.lang === path) ? path : null;
 
-function onChange(event: React.ChangeEvent<HTMLSelectElement>) {
-  const value = event.target.value;
+  function onChange(event: React.ChangeEvent<HTMLSelectElement>) {
+    const value = event.target.value;
 
-  router.push(value === ADD_LANGUAGE ? "/onboarding" : `/learn/${value}`);
-}
+    router.push(value === ADD_LANGUAGE ? '/onboarding' : `/learn/${value}`);
+  }
 ```
 
 - Le cours actuel vient de l'**URL** (`learnPathLang`), pas d'une prop. Le layout qui
@@ -1443,20 +1443,16 @@ Un bouton qui ouvre un `<dialog>` modal avec un `LevelPicker`, pour fixer le niv
 Utilisé sur l'écran de résultat du test de niveau.
 
 ```tsx
-// Shown once its content is in, so the focus lands inside it.
-useEffect(() => {
-  if (open) dialog.current?.showModal();
-}, [open]);
+  // Shown once its content is in, so the focus lands inside it.
+  useEffect(() => {
+    if (open) dialog.current?.showModal();
+  }, [open]);
 ```
 
 ```tsx
-{
-  /* Mounted per opening: a closed dialog leaves no second picker in the
-            page, and each opening starts over from the course as it is. */
-}
-{
-  open ? <LevelForm lang={lang} level={level} onSaved={saved} onCancel={close} /> : null;
-}
+        {/* Mounted per opening: a closed dialog leaves no second picker in the
+            page, and each opening starts over from the course as it is. */}
+        {open ? <LevelForm lang={lang} level={level} onSaved={saved} onCancel={close} /> : null}
 ```
 
 - `open` est du state React. Le mettre à true affiche le formulaire, puis l'effet appelle `showModal()`, pour que le
@@ -1487,17 +1483,17 @@ export function resolveOnboardingStep(
   const course = courses.find((candidate) => candidate.lang === wanted);
 
   if (wanted !== null && course === undefined) {
-    return { step: "chooseCourse", preselected: wanted };
+    return { step: 'chooseCourse', preselected: wanted };
   }
   if (course?.level === null) {
-    return { step: "chooseLevel", course };
+    return { step: 'chooseLevel', course };
   }
 
   const unfinished = courses.findLast((candidate) => candidate.level === null);
 
   return unfinished === undefined
-    ? { step: "chooseCourse", preselected: null }
-    : { step: "chooseLevel", course: unfinished };
+    ? { step: 'chooseCourse', preselected: null }
+    : { step: 'chooseLevel', course: unfinished };
 }
 ```
 

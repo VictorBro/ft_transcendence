@@ -26,7 +26,7 @@ flowchart LR
 | #   | Chapitre                                                           | Ce que tu apprends                                                                                           | Dossiers principaux                                                      |
 | --- | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
 | 1   | [Vue d'ensemble](01-big-picture.md)                                | Ce qu'est une API, HTTP, REST, comment marche NestJS (modules, controllers, services, injection), les outils | fichiers à la racine de `apps/api/`                                      |
-| 2   | [Démarrage et parcours d'une requête](02-boot-and-request-flow.md) | Ce qui se passe quand l'API démarre, et le chemin complet d'une requête                                      | `main.ts`, `app.setup.ts`, `app.module.ts`                               |
+| 2   | [Démarrage et parcours d'une requête](02-boot-and-request-flow.md) | Ce qui se passe quand l'API démarre, et le chemin complet d'une requête                                      | `main.ts`, `app.setup.ts`, `app.module.ts`, `validation.pipe.ts`, `error-code.filter.ts` |
 | 3   | [Infrastructure](03-infrastructure.md)                             | Les modules sur lesquels tous les autres modules s'appuient                                                  | `src/prisma`, `src/redis`, `src/throttler`, `src/metrics`, `src/health`  |
 | 4   | [Base de données](04-database.md)                                  | PostgreSQL, Prisma, chaque table, les migrations, le seed                                                    | `prisma/`, `src/generated`                                               |
 | 5   | [Auth et utilisateurs](05-auth-and-users.md)                       | Inscription, connexion, sessions, 2FA, profils, avatars                                                      | `src/auth`, `src/users`                                                  |
@@ -35,7 +35,7 @@ flowchart LR
 | 8   | [Leçons](08-lessons.md)                                            | Les leçons, les tentatives, l'XP et les succès, le tuteur IA                                                 | `src/lessons`                                                            |
 | 9   | [Social et temps réel](09-social-and-realtime.md)                  | WebSockets, présence, amis, chat, les données de démo                                                        | `src/gateway`, `src/presence`, `src/friends`, `src/messages`, `src/demo` |
 | 10  | [Tests](10-tests.md)                                               | Tests unitaires, tests end-to-end, mocks, fixtures, couverture                                               | `*.spec.ts`, `test/`                                                     |
-| 11  | [Scripts](11-scripts.md)                                           | Les outils en ligne de commande qui écrivent et vérifient les leçons                                         | `scripts/`                                                               |
+| 11  | [Scripts](11-scripts.md)                                           | Les outils en ligne de commande qui écrivent et vérifient les leçons                                         | `scripts/`, `src/items`                                                  |
 
 ## Comment lire le code à côté de la doc
 

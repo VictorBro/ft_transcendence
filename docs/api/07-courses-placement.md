@@ -357,7 +357,11 @@ export const ExamSessionSchema = z.object({
   lo: z.number().int().min(0).max(6),
   hi: z.number().int().min(0).max(6),
   level: z.number().int().min(0).max(6).nullable(),
-  mistakesPerLevel: z.number().int().min(0).max(PLACEMENT_ROUNDS.maxMistakes + 1),
+  mistakesPerLevel: z
+    .number()
+    .int()
+    .min(0)
+    .max(PLACEMENT_ROUNDS.maxMistakes + 1),
   askedPerCategory: z.record(
     QuestionCategorySchema,
     z.number().int().nonnegative().min(0).max(PLACEMENT_ROUNDS.perCategory),
@@ -435,7 +439,10 @@ live run, without a full load, "so quitting must work on a run too broken to loa
 run. The service uses a small Redis lock:
 
 ```ts
-async acquireLock(userId: string, ttlSeconds = PLACEMENT_LOCK_TTL_SECONDS): Promise<string | null> {
+async acquireLock(
+  userId: string,
+  ttlSeconds = PLACEMENT_LOCK_TTL_SECONDS,
+): Promise<string | null> {
   const token = randomUUID();
   const result = await this.redis.client.set(this.evalLockKey(userId), token, {
     NX: true,
@@ -516,10 +523,18 @@ const oldest = await this.prisma.userSeenQuestion.findFirst({
     ...(excludeQuestionIds.length > 0
       ? { questionId: { notIn: [...new Set(excludeQuestionIds)] } }
       : {}),
-    questionBank: { lang: session.lang, level, category: { in: [...pool] } },
+    questionBank: {
+      lang: session.lang,
+      level,
+      category: { in: [...pool] },
+    },
   },
-  orderBy: { updatedAt: 'asc' },
-  include: { questionBank: true },
+  orderBy: {
+    updatedAt: 'asc',
+  },
+  include: {
+    questionBank: true,
+  },
 });
 ```
 
@@ -715,7 +730,10 @@ If the bank runs dry mid-run (`placement.poolExhausted`), the run is deleted, "s
 if (session.answers.some((answer) => answer.questionId === question.id)) {
   throw new ConflictException('placement.invalidSession');
 }
-session.answers.push({ questionId: question.id, choice });
+session.answers.push({
+  questionId: question.id,
+  choice,
+});
 session.totalAnswered += 1;
 this.progressService.adjustSessionFromAnswer(choice, question, session);
 
@@ -944,11 +962,16 @@ rejects with nobody listening ("unhandled rejection") can crash the Node process
 **`fill`** does the work, all inside `try/catch`:
 
 ```ts
+// 1. Ask the LLM (with one retry when it makes sense, see generate).
 const items = await this.generate(cell, key);
+// 2. Read the questions already in this cell. "where: cell" works because Cell's
+//    fields have the same names as the columns. "select" reads only two columns.
 const stored = await this.prisma.questionBank.findMany({
   where: cell,
   select: { question: true, readText: true },
 });
+// 3. Keep only the new ones, turn them into rows, save them all in one query.
+//    createMany returns how many rows it inserted ("count").
 const { count } = await this.prisma.questionBank.createMany({
   data: toRows(cell, freshItems(items, stored)),
 });
@@ -976,6 +999,7 @@ const request = {
 try {
   return (await this.llm.generateStructured(request)).items;
 } catch (error) {
+  // "instanceof LlmError" checks the error's class (a catch can receive anything).
   // Only a retryable LlmError gets a second try; anything else is thrown again.
   if (!(error instanceof LlmError && error.retryable)) throw error;
   this.logger.warn(`retrying ${key}: ${error.message}`);

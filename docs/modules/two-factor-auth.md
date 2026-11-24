@@ -31,12 +31,12 @@ mandatory part also applies to every form, so it has a row too:
 | The subject asks | What we built | Where |
 | --- | --- | --- |
 | A second factor | TOTP (time-based one-time password, the standard that Google Authenticator and similar apps use): SHA-1, 6 digits, a new code every 30 seconds. The server accepts the code of the current 30-second step and of one step either side, for clocks that are a little off. Built with the `otpauth` library. | [two-factor.service.ts](../../apps/api/src/auth/two-factor.service.ts) |
-| Turning it on | Two steps. `POST /api/auth/2fa/setup` stores a new secret and returns it with a QR code. The factor is not active yet. `POST /api/auth/2fa/enable` turns it on only when the user sends a valid code, which proves the app was set up correctly. So a setup that is abandoned, or a secret typed wrong, cannot lock anyone out. | [two-factor.service.ts](../../apps/api/src/auth/two-factor.service.ts) (`beginEnrolment`, `confirmEnrolment`), [auth.controller.ts](../../apps/api/src/auth/auth.controller.ts) |
+| Turning it on | Two steps. `POST /api/auth/2fa/setup` stores a new secret and returns it with a QR code. The factor is not active yet. `POST /api/auth/2fa/enable` turns it on only when the user sends a valid code, which proves the app was set up correctly. So a setup that is abandoned, or a secret typed wrong, cannot lock anyone out. While 2FA is on, both routes answer `409` with `twoFactor.alreadyEnabled`: to change authenticator, the user turns 2FA off first, with the password ([#219](https://github.com/VictorBro/ft_transcendence/pull/219)). | [two-factor.service.ts](../../apps/api/src/auth/two-factor.service.ts) (`beginEnrolment`, `confirmEnrolment`), [auth.controller.ts](../../apps/api/src/auth/auth.controller.ts) |
 | A QR code to scan | The server draws the QR code (with `qrcode-generator`) and sends it as an image inside the JSON (a `data:` URL). The page also shows the secret as text, for apps that cannot scan. | [two-factor.service.ts](../../apps/api/src/auth/two-factor.service.ts) (`qrDataUrl`), [two-factor-panel.tsx](../../apps/web/app/%5Blocale%5D/%28main%29/settings/2fa/two-factor-panel.tsx) |
 | Asked for at login | When 2FA is on, a correct password does not sign the user in. `POST /api/auth/login` answers `202` with `{ twoFactorRequired: true }` and puts the user id under a separate session key, `pendingUserId`. The guard that protects every route reads only `userId`, so a half-finished login opens nothing. `POST /api/auth/2fa/verify` checks the code and only then starts the real session. | [auth.controller.ts](../../apps/api/src/auth/auth.controller.ts), [session.d.ts](../../apps/api/src/auth/session.d.ts), [auth.guard.ts](../../apps/api/src/auth/auth.guard.ts), [login-form.tsx](../../apps/web/app/%5Blocale%5D/%28main%29/login/login-form.tsx) |
 | A way in when the phone is lost | Ten recovery codes, made when 2FA is turned on and shown once. Each has 20 characters in four groups of five (`xxxxx-xxxxx-xxxxx-xxxxx`), from an alphabet without look-alike characters (no `i`, `l`, `o`, `0`, `1`). The login step takes either a six-digit code or a recovery code. Each recovery code works once. | [two-factor.service.ts](../../apps/api/src/auth/two-factor.service.ts) (`issueRecoveryCodes`, `consumeRecoveryCode`), [two-factor.ts](../../packages/shared/src/schemas/two-factor.ts) |
 | Recovery codes kept safely | The database keeps only a SHA-256 hash of each code, in the `RecoveryCode` table, never the code itself. A code is marked used in the same database statement that finds it, so two logins at the same moment cannot both use one code. | [schema.prisma](../../apps/api/prisma/schema.prisma) (`RecoveryCode`), [migration](../../apps/api/prisma/migrations/20260809004816_two_factor/migration.sql) |
-| Turning it off | `DELETE /api/auth/2fa` asks for the password again, not only a valid session, so that a browser left open is not enough. It clears the secret and deletes the recovery codes in one transaction. **Gap:** `POST /api/auth/2fa/setup` needs only a session, and it also turns 2FA off (see [Limits and choices](#limits-and-choices)). | [auth.controller.ts](../../apps/api/src/auth/auth.controller.ts) (`disableTwoFactor`), [two-factor.service.ts](../../apps/api/src/auth/two-factor.service.ts) (`disable`) |
+| Turning it off | `DELETE /api/auth/2fa` asks for the password again, not only a valid session, so that a browser left open is not enough. It clears the secret and deletes the recovery codes in one transaction. It is the only way to turn 2FA off: setup and enable are refused while 2FA is on. | [auth.controller.ts](../../apps/api/src/auth/auth.controller.ts) (`disableTwoFactor`), [two-factor.service.ts](../../apps/api/src/auth/two-factor.service.ts) (`disable`) |
 | Codes cannot be guessed quickly | Every route that checks a code or a password (`login`, `2fa/verify`, `2fa/enable`, `DELETE 2fa`) allows 5 tries a minute per IP address (`LOGIN_LIMIT_PER_MINUTE`). After that the API answers `429`. | [auth.controller.ts](../../apps/api/src/auth/auth.controller.ts), [rate-limits.ts](../../apps/api/src/throttler/rate-limits.ts), [../operations/deployment.md](../operations/deployment.md) |
 | (Mandatory part) Forms validated in the browser and on the server | One set of Zod schemas in `@ft/shared` checks the code fields on both sides: `TotpCodeSchema` (six digits), `RecoveryCodeSchema` (hyphens and spaces removed, then 20 letters or digits) and `SecondFactorSchema` (either one). The "turn off" form uses `DisableTwoFactorSchema` (the password, 1 to 128 characters). The API applies them through `nestjs-zod`, and the login form, the setup form and the turn-off form apply them before they send anything ([#218](https://github.com/VictorBro/ft_transcendence/pull/218) for the turn-off form). | [two-factor.ts](../../packages/shared/src/schemas/two-factor.ts), [auth.dto.ts](../../apps/api/src/auth/auth.dto.ts), [two-factor-panel.tsx](../../apps/web/app/%5Blocale%5D/%28main%29/settings/2fa/two-factor-panel.tsx) |
 
@@ -59,13 +59,17 @@ route sums this up as `{ enabled, enrolmentPending, recoveryCodesRemaining }`.
 ### Turning it on
 
 1. The user opens `/settings/2fa` and clicks **Set up**.
-2. `POST /api/auth/2fa/setup` makes a new 20-byte secret, saves it in `totpSecret`, sets
-   `totpEnabledAt` to `null`, and returns the secret, the `otpauth://` link and the QR image. The
-   QR label is the user's email, the issuer is `ft_transcendence`.
+2. `POST /api/auth/2fa/setup` makes a new 20-byte secret and saves it in `totpSecret`, but only
+   if 2FA is off: the check `totpEnabledAt: null` is in the same write. If 2FA is on, it answers
+   `409` and sends no secret. Otherwise it returns the secret, the `otpauth://` link and the QR
+   image. The QR label is the user's email, the issuer is `ft_transcendence`.
 3. The user scans the QR code with their app and types the code it shows.
-4. `POST /api/auth/2fa/enable` checks the code against the stored secret. If it is right, it sets
-   `totpEnabledAt`, deletes any old recovery codes, creates ten new ones, and returns them in
-   clear text. This is the only time the server ever sends them.
+4. `POST /api/auth/2fa/enable` checks the code against the stored secret. It answers `409` if
+   2FA is already on. If the code is right, it sets `totpEnabledAt`, but only if the secret is
+   still the one it checked and 2FA is still off. If another request changed that in between, it
+   turns nothing on (`409` or `400 twoFactor.setupFirst`). Then it deletes any old recovery
+   codes, creates ten new ones, and returns them in clear text. This is the only time the server
+   ever sends them.
 5. The session gets a new id, and the WebSocket connections of the old id are closed. The user
    stays signed in.
 
@@ -110,6 +114,11 @@ sequenceDiagram
   an attacker plants a session id before the login and uses it after. See
   [../architecture/overview.md](../architecture/overview.md), section 3, for the same login
   traced through Caddy and Redis.
+
+The settings page shows **Set up** only when it knows 2FA is off. While `GET /api/auth/2fa`
+loads, it shows "Checking two factor authentication…". If that call fails, it shows an error and
+**Try again**, never **Set up**. If setup or enable answers `409` (2FA was turned on in another
+tab), the page closes the setup form and loads the status again.
 
 ### Turning it off
 
@@ -168,7 +177,7 @@ routes allow 5 tries a minute per IP address, so do the steps at a calm pace: if
 8. To show that only hashes are stored, open a database shell with `make shell SERVICE=db` and
    run `psql -U ft -d ft_transcendence -c 'select "codeHash", "usedAt" from "RecoveryCode";'`.
    You see 64-character hashes, not the codes you copied.
-9. Click **Sign out**. Go to `/en/login`, type the email and password, and click **Sign in**.
+9. Open the menu in the header and click **Sign out**. Go to `/en/login`, type the email and password, and click **Sign in**.
    You are not signed in yet: the page asks "Enter the six digit code from your authenticator
    app, or one of your recovery codes."
 10. Optional: in a new tab, open `https://localhost/api/auth/me`. It answers `401`, because a
@@ -194,13 +203,13 @@ Run the unit tests with `make test`, the API tests against a real database and R
 
 | Test | What it checks |
 | --- | --- |
-| [apps/api/src/auth/two-factor.service.spec.ts](../../apps/api/src/auth/two-factor.service.spec.ts) | Setup stores a secret without turning anything on; confirm refuses before setup and refuses a wrong code; a real code turns 2FA on and makes recovery codes; a code is refused when 2FA was never turned on; a recovery code works with or without hyphens; a used recovery code is refused |
+| [apps/api/src/auth/two-factor.service.spec.ts](../../apps/api/src/auth/two-factor.service.spec.ts) | Setup stores a secret without turning anything on; setup and confirm are refused with `409` while 2FA is on (#216); confirm refuses before setup and refuses a wrong code; a real code turns 2FA on and makes recovery codes; a secret replaced after the check turns nothing on; two confirmations at the same time make only one set of codes; a code is refused when 2FA was never turned on; a recovery code works with or without hyphens; a used recovery code is refused |
 | [apps/api/src/auth/auth.service.spec.ts](../../apps/api/src/auth/auth.service.spec.ts) | "reports an enrolled second factor": `validateCredentials` says when 2FA is on |
 | [apps/api/src/auth/auth.controller.spec.ts](../../apps/api/src/auth/auth.controller.spec.ts) | A new session id, and the old id's sockets closed, on a login that still needs a code, on the code step, and when 2FA is turned on or off; the recovery codes are still returned if the session id cannot be changed |
-| [apps/api/test/two-factor.e2e-spec.ts](../../apps/api/test/two-factor.e2e-spec.ts) | Full API flow on real Postgres and Redis: setup returns a QR, `000000` is refused, a real code turns it on and returns 10 codes; login stops at `202` and that session gets `401` on `/api/auth/me`; the code step gives a new session cookie; `/2fa/verify` with no pending login is refused; a recovery code works once and never again; turning off needs the right password, then a login with the password alone answers `200` |
+| [apps/api/test/two-factor.e2e-spec.ts](../../apps/api/test/two-factor.e2e-spec.ts) | Full API flow on real Postgres and Redis: setup returns a QR, `000000` is refused, a real code turns it on and returns 10 codes; login stops at `202` and that session gets `401` on `/api/auth/me`; the code step gives a new session cookie; `/2fa/verify` with no pending login is refused; a recovery code works once and never again; setup and enable answer `409` while 2FA is on, and the old app code and recovery codes still work; turning off needs the right password, then a login with the password alone answers `200`; after that, setup and enable work again with a new secret |
 | [apps/api/test/gateway.e2e-spec.ts](../../apps/api/test/gateway.e2e-spec.ts) | "a 2FA change replaces the session and its sockets": turning 2FA on closes the old WebSocket, and the old cookie can no longer open one |
 | [packages/shared/src/schemas/schemas.test.ts](../../packages/shared/src/schemas/schemas.test.ts) | "validation messages": a bad `SecondFactorSchema`, `EnableTwoFactorSchema` or `DisableTwoFactorSchema` input gives an error code that can be translated, not Zod's English default |
-| [e2e/tests/auth.spec.ts](../../e2e/tests/auth.spec.ts) | In a real browser: "offers two factor enrolment with a scannable QR"; "a signed-out visitor is sent to the login page"; "enrols in 2FA, then signs in with the code" (the test reads the secret from the page, acts as the app, turns 2FA on and sees the recovery codes screen, signs out, checks the code field is empty, and signs in with a code); "checks the turn-off password in the browser before sending it" (an empty password shows "Enter your password" and sends no request, [#218](https://github.com/VictorBro/ft_transcendence/pull/218)). CI runs them on Chromium, Firefox and WebKit. |
+| [e2e/tests/auth.spec.ts](../../e2e/tests/auth.spec.ts) | In a real browser: "offers two factor enrolment with a scannable QR"; "offers no setup when the 2FA status cannot be read" (the page shows an error and **Try again**, not **Set up**); "a signed-out visitor is sent to the login page"; "enrols in 2FA, then signs in with the code" (the test reads the secret from the page, acts as the app, turns 2FA on and sees the recovery codes screen, signs out, checks the code field is empty, and signs in with a code); "checks the turn-off password in the browser before sending it" (an empty password shows "Enter your password" and sends no request, [#218](https://github.com/VictorBro/ft_transcendence/pull/218)). CI runs them on Chromium, Firefox and WebKit. |
 | [e2e/support/routes.ts](../../e2e/support/routes.ts) | `/en/settings/2fa` is in the list of pages the browser checks visit as a signed-in user, for example the console check ([console.spec.ts](../../e2e/tests/console.spec.ts)), which fails on anything the browser console reports |
 
 ## Limits and choices
@@ -225,11 +234,15 @@ Run the unit tests with `make test`, the API tests against a real database and R
   but no route calls it on its own.
 - **Turning 2FA on does not sign out other devices.** Only the current session gets a new id.
   Sessions already open in other browsers stay valid until they end.
-- **Setup can turn 2FA off without the password.** `beginEnrolment` writes a new secret and sets
-  `totpEnabledAt` to `null` every time, even when 2FA is on. The settings page shows **Set up**
-  only while 2FA is off, but the API route `POST /api/auth/2fa/setup` needs only a session. So a
-  browser left open can turn 2FA off by calling it, without the password that `DELETE /api/auth/2fa`
-  asks for. The fix is tracked in [#216](https://github.com/VictorBro/ft_transcendence/issues/216).
+- **Changing authenticator needs the password.** There is no "replace my app" route. While 2FA is
+  on, `POST /api/auth/2fa/setup` and `POST /api/auth/2fa/enable` answer `409`
+  (`twoFactor.alreadyEnabled`). The user turns 2FA off with the password, then sets it up again.
+  Before [#219](https://github.com/VictorBro/ft_transcendence/pull/219), setup turned 2FA off with a
+  session alone ([#216](https://github.com/VictorBro/ft_transcendence/issues/216)).
+- **Setting up 2FA asks for no password.** On an account without 2FA, a session is enough to
+  start setup and turn it on.
+- **The code limit is per IP address, not per account.** Someone who already has the password and
+  can change address can keep guessing codes for one account.
 - **A half-finished login lasts as long as a session.** The `pendingUserId` session uses the same
   cookie lifetime as a full session (7 days, renewed on each request, `SESSION_TTL_MS` in
   [app.setup.ts](../../apps/api/src/app.setup.ts)). The code is still required to finish it.
@@ -245,5 +258,5 @@ From `git log --follow` on the 2FA files and `gh pr view` on each pull request.
 | --- | --- | --- | --- |
 | Victor | `VictorBro` | The whole module: `TwoFactorService`, the 2FA routes and the `202` login step, the two session keys, the `RecoveryCode` table and migration, the shared schemas, the login form and the settings page, and the 2FA tests in the API and in the browser. Later: the per-address limit (`ThrottleByIp`), and closing the old session's WebSockets when 2FA changes. | #4, #5, #21 (merged into #20), #27, #181 |
 | Luca | `luca-mattei` | Moved the login and 2FA pages under `[locale]` and translated their texts into English, French and German; the service now sends error codes instead of English sentences, with the "validation messages" test. | #26 |
-| Endrit | `VYAntares` (commits as `EA`) | Moved the login and 2FA pages into the shared `(main)` layout; gave every 2FA schema rule an error code, so a missing field is also translated. | #20, #126 |
+| Endrit | `VYAntares` (commits as `EA`) | Moved the login and 2FA pages into the shared `(main)` layout; gave every 2FA schema rule an error code, so a missing field is also translated. Later: the turn-off password checked in the browser, and setup and enable refused while 2FA is on. | #20, #126, #216, #218, #219 |
 | Bastian | `bastian-schnitzler` | The settings page now loads the 2FA status through the shared API client, which checks the answer with `TwoFactorStatusSchema`. | #57 |

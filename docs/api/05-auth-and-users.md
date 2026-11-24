@@ -495,7 +495,9 @@ sequenceDiagram
 ```
 
 Both need a session. `@CurrentUser()` gives the user the guard loaded. The settings page uses the status to show "on", "off" or "setup started", and how many recovery codes are left.
-Setup answers 409 if 2FA is already on: to change the authenticator you must turn 2FA off first, and that step asks for the password.
+Setup answers `409 twoFactor.alreadyEnabled` if 2FA is already on: to change the authenticator you must turn 2FA off first, and that step asks for the password.
+Before #219 (issue #216), setup wrote a new secret even when 2FA was on. That turned 2FA off with only a session, no password.
+The settings panel ([two-factor-panel.tsx](../../apps/web/app/%5Blocale%5D/%28main%29/settings/2fa/two-factor-panel.tsx)) also shows a loading line until the status is known, and a failed status shows an error and **Try again**, never **Set up**.
 
 ### POST /auth/2fa/enable
 
@@ -513,6 +515,7 @@ Setup answers 409 if 2FA is already on: to change the authenticator you must tur
 
 The user types the first code from their app. If it is right, 2FA is on and the user gets the 10 recovery codes (shown only this once).
 The session id changes because privileges changed. It is rate limited because "a stolen cookie must not turn into a code-guessing oracle".
+If 2FA is already on, it answers `409 twoFactor.alreadyEnabled` (#216): a session alone cannot replace the owner's recovery codes.
 
 ### DELETE /auth/2fa
 
@@ -535,6 +538,8 @@ This is called **re-authentication**: for a sensitive action, a live session is 
   @Public()
   @Post('logout')
   @HttpCode(HttpStatus.NO_CONTENT)
+  @ApiOperation({ summary: 'Destroy the current session', security: [] })
+  @ApiNoContentResponse({ description: 'Signed out, whether or not there was a session' })
   async logout(@Req() request: Request): Promise<void> {
     const ended = request.sessionID;
     // Failing loudly rather than returning 204: if the store entry survives, the
@@ -846,10 +851,12 @@ stateDiagram-v2
   Off --> Pending: POST /2fa/setup (totpSecret set)
   Pending --> Pending: setup again (new secret)
   Pending --> On: POST /2fa/enable with a good code (totpEnabledAt set, 10 codes)
+  On --> On: setup or enable again (409, nothing changes)
   On --> Off: DELETE /2fa with password (both cleared, codes deleted)
 ```
 
 A "Pending" account still logs in with only the password: `validateCredentials` looks at `totpEnabledAt`, not at `totpSecret`.
+The only way out of "On" is `DELETE /2fa`, which asks for the password.
 
 ### Constants and helpers
 
@@ -1017,6 +1024,7 @@ Clears `totpSecret` and `totpEnabledAt` and deletes all recovery codes, in one t
 
 **Tests:** [two-factor.service.spec.ts](../../apps/api/src/auth/two-factor.service.spec.ts) covers enrolment (secret stored but not enabled, refusals once 2FA is on (#216), wrong code, race cases)
 and the second factor (current TOTP accepted, refused when never enabled, recovery codes with or without hyphens, a spent code refused).
+The e2e test [two-factor.e2e-spec.ts](../../apps/api/test/two-factor.e2e-spec.ts) runs the whole flow through the HTTP routes, including the 409s of #216.
 
 ---
 
@@ -1085,6 +1093,11 @@ It does not import `AuthModule`. It does not need to: the guard is global, `@Cur
 ```
 
 This is the authorization-by-design idea: the id comes from the session, never from the URL, so you cannot edit someone else by changing a number.
+
+Two fields are not sent by a form but by the web app itself, on this same route:
+
+- `locale`: [locale-sync.tsx](../../apps/web/components/locale-sync.tsx) (`LocaleSync`, in the `(dashboard)` layout) sends `PATCH /users/me { locale }` when the page language differs from `User.locale` (#212, issue #211). The lesson tutor reads `User.locale` to answer in that language ([discussion.service.ts](../../apps/api/src/lessons/discussion.service.ts)).
+- `timeZone`: [time-zone-sync.tsx](../../apps/web/components/time-zone-sync.tsx) sends the browser's time zone.
 
 ### POST /users/me/avatar: the upload
 

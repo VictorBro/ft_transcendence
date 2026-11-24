@@ -79,7 +79,7 @@ void bootstrap();
 Line by line:
 
 - `import 'reflect-metadata'` (first line of the file): a small library that lets decorators like `@Injectable()` store information on classes. Nest needs it loaded before anything else.
-- `NestFactory.create(AppModule)`: Nest reads `AppModule`, follows every `imports: [...]`, and builds every provider it finds (dependency injection, see [01-big-picture.md](01-big-picture.md)). It also creates an Express server inside. Note: just *importing* some files already runs code. For example `app.setup.ts` reads `AVATAR_STORAGE_DIR` at import time, and `throttler/rate-limits.ts` reads the rate limit variables. A missing variable stops the API here, before anything listens.
+- `NestFactory.create(AppModule)`: Nest reads `AppModule`, follows every `imports: [...]`, and builds every provider it finds (dependency injection, see [01-big-picture.md](01-big-picture.md)). It also creates an Express server inside. Note: just *importing* some files already runs code, even before `bootstrap()`. For example `app.setup.ts` reads `AVATAR_STORAGE_DIR` at import time, and `throttler/rate-limits.ts` reads the rate limit variables. A missing `AVATAR_STORAGE_DIR`, or a rate limit that is not a positive whole number, stops the API there, before anything listens. (An empty rate limit keeps its default.)
 - `configureApp(app)`: adds all the global rules (next section).
 - `app.listen(port, '0.0.0.0')`: this calls Nest's `init()` first. During `init()`, every `onModuleInit()` runs, so `PrismaService` connects to Postgres and `RedisService` connects to Redis (see [03-infrastructure.md](03-infrastructure.md)). Nest also adds its JSON body parser and the routes. Then the HTTP server starts. `0.0.0.0` means "listen on every network card", so other containers (Caddy, the web app) can reach it. `localhost` would only accept calls from inside the same container.
 - After `listen`: the metrics part. `collectDefaultMetrics` adds standard Node.js numbers (memory, CPU, event loop). `appInfo` records the running version. `startMetricsServer` opens a second small HTTP server on port 9464 for Prometheus. If it fails, the error is only logged: the app keeps working.
@@ -125,7 +125,7 @@ flowchart LR
 | `SESSION_KEY_PREFIX` | `'sess:'` | Prefix of session keys in Redis. |
 | `SESSION_TTL_MS` | 7 days | How long an idle session lives. |
 
-Two of them are checked at start:
+Two required settings are checked at start: `AVATAR_STORAGE_DIR` here, and `SESSION_SECRET` (below).
 
 ```ts
 export const AVATAR_STORAGE_DIR = requireAvatarStorageDir();
@@ -265,6 +265,9 @@ Real-time features (chat, presence) use Socket.IO on `/ws`. Those connections do
     .addSecurityRequirements('cookie')
     .build();
 
+  // SwaggerModule does not inherit the global prefix, so the path repeats it.
+  // cleanupOpenApiDoc strips nestjs-zod's internal extensions and the 3.1 null
+  // syntax it emits, which are invalid under the 3.0.0 header.
   SwaggerModule.setup(
     `${API_PREFIX}/docs`,
     app,
@@ -339,7 +342,7 @@ Every import:
 | `GatewayModule` | The Socket.IO gateway (`/ws`). | [09](09-social-and-realtime.md) |
 | `MetricsModule` | `MetricsCollector`, the database-based metrics. | [03](03-infrastructure.md) |
 
-Modules not listed here (LLM, presence, question generation, demo...) are imported by the feature modules that need them.
+Modules not listed here (LLM, presence, question generation) are imported by the feature modules that need them. (`demo/` is not a module: the seed runs it outside Nest.)
 
 Does the order matter? Mostly no: Nest builds a dependency graph, so a service is built after the services it needs, whatever the order in this list. Order only matters for a few "first registered, first run" things, like global guards (next part).
 
@@ -406,6 +409,9 @@ export const CodeValidationPipe = createZodValidationPipe({
     new BadRequestException(
       error instanceof ZodError
         ? [
+            // A Set keeps one copy of each code: three mistyped fields give one
+            // `request.invalid`, not three. Spread back into an array, which is
+            // what BadRequestException puts in `message`.
             ...new Set(
               error.issues.map((issue) =>
                 // An issue no rule names (the body is not an object, a key holds
@@ -464,10 +470,16 @@ export const ERROR_CODES = [
   'auth.invalidCredentials',
   ...
   'request.invalid',
+  /** A body over the parser's size limit. */
   'request.tooLarge',
+  /** The browser never reached the API: offline, DNS, proxy down. */
   'network.unreachable',
+  /** A status the client has no specific wording for. Carries `{status}`. */
   'server.unexpected',
+  /** Too many requests from one address or session; the throttler's reply. */
   'server.rateLimited',
+  /** Last resort, so an unrecognised code degrades to a translated sentence
+   *  instead of leaking English server text into a French page. */
   'unknown',
 ] as const;
 
@@ -500,6 +512,7 @@ When code throws an error, Nest does not crash. It gives the error to an **excep
 ```ts
 @Catch()
 export class ErrorCodeFilter extends BaseExceptionFilter {
+  // Nest's own name for its handler, so these lines read like the ones it logs.
   private readonly logger = new Logger('ExceptionsHandler');
 
   override catch(exception: unknown, host: ArgumentsHost): void {
@@ -604,14 +617,14 @@ sequenceDiagram
     R-->>MW: session or nothing
     Note over MW: JSON body parser fills req.body
     MW->>TG: route found: run guards
-    TG->>TG: "@ThrottleByIp: key ip:<client>, limit 5/min"
+    TG->>TG: "@ThrottleByIp: key = client IP, limit 5/min"
     TG->>AG: under the limit
     AG->>AG: "@Public(): let it pass"
     AG->>P: guards OK
     P->>P: "check body with LoginSchema"
     P->>CT: "login(body, request, response)"
     CT->>S: "validateCredentials(email, password)"
-    S->>DB: "user.findUnique({ email })"
+    S->>DB: "user.findUnique (email in lower case)"
     DB-->>S: user row
     S->>S: argon2.verify(passwordHash, password)
     S-->>CT: "{ user, twoFactorEnabled: false }"
@@ -627,11 +640,11 @@ Step by step:
 3. The URL is not an avatar, so **express-session** runs. If the browser sent a `ft.sid` cookie, the session is loaded from Redis. A first visit has none.
 4. **Body parser** turns the JSON text into `req.body`.
 5. Nest finds the route (`AuthController.login`) and runs the **global guards**:
-   - `IdentityThrottlerGuard`: the route has `@ThrottleByIp(5)`, so the key is the client IP, limit 5 per minute. Under the limit: go on.
+   - `IdentityThrottlerGuard`: the route has `@ThrottleByIp(RATE_LIMITS.login)` (5 by default, `LOGIN_LIMIT_PER_MINUTE`), so the key is the client IP, limit 5 per minute. Under the limit: go on.
    - `AuthGuard`: the route is `@Public()`, so it lets it pass.
 6. The **global pipe** checks `req.body` against `LoginSchema` (because the parameter type is `LoginDto`).
-7. The **controller** calls `AuthService.validateCredentials`, which calls **Prisma** to find the user, then checks the password hash with argon2.
-8. Back in the controller, `startSession` regenerates the session (a new id, to block session fixation, see [05-auth-and-users.md](05-auth-and-users.md)), writes `userId`, and saves it to **Redis**. express-session adds `Set-Cookie: ft.sid=...` to the reply.
+7. The **controller** calls `AuthService.validateCredentials`, which calls **Prisma** to find the user (email in lower case), then checks the password hash with argon2. An unknown email still runs argon2 on a dummy hash, so the answer takes the same time.
+8. Back in the controller, `startSession` regenerates the session (a new id, to block session fixation, see [05-auth-and-users.md](05-auth-and-users.md)), writes `userId`, and saves it to **Redis**. Then `sockets.closeSession(...)` closes any socket still open on the old session id. express-session adds `Set-Cookie: ft.sid=...` to the reply.
 9. Nest sends `200` with the user as JSON (`@HttpCode(HttpStatus.OK)`; without it a POST answers 201).
 10. On the `close` event, **httpMetrics** stops the timer and records `POST /api/auth/login 200`.
 

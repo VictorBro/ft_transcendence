@@ -112,7 +112,7 @@ function requireDatabaseUrl(): string {
 }
 ```
 
-Why: without it, the Postgres driver uses its own defaults and fails later with an error about `localhost`, which sends you to debug the wrong thing. It is a free function (not a method) because `super()` must be the first line of the constructor.
+Why: without it, the Postgres driver uses its own defaults and fails later with an error about `localhost`, which sends you to debug the wrong thing. It is a free function (not a method) because the class has a property (`logger`), so `super()` must be the first line of the constructor and nothing can run before it.
 
 ```ts
 @Injectable()
@@ -155,7 +155,7 @@ The API connects at start, not on the first query. The comment explains: a wrong
 
 **Who uses it:** almost every service (`AuthService`, `LessonsService`, `MetricsCollector`, `HealthService`...).
 
-**Spec** ([prisma.service.spec.ts](../../apps/api/src/prisma/prisma.service.spec.ts)): checks it connects on init, disconnects on shutdown, that `ping` reports a latency, and that a failing ping rejects.
+**Spec** ([prisma.service.spec.ts](../../apps/api/src/prisma/prisma.service.spec.ts)): checks it connects on init, disconnects on shutdown, that `ping` reports a latency, that a failing ping rejects, and that it refuses to build when `DATABASE_URL` is unset, empty or blank.
 
 ## redis/ — the shared fast memory
 
@@ -171,10 +171,10 @@ In this API, Redis holds:
 |---|---|---|
 | Sessions | `sess:<id>` | [app.setup.ts](../../apps/api/src/app.setup.ts) (connect-redis) |
 | Online presence counters | `presence:<userId>` | [presence.service.ts](../../apps/api/src/presence/presence.service.ts) |
-| Placement exam run state | — | [placement-session.service.ts](../../apps/api/src/placement/placement-session.service.ts) |
-| Lesson discussion limits | — | [discussion.service.ts](../../apps/api/src/lessons/discussion.service.ts) |
+| Placement exam run state | `user:<userId>:eval` (+ `:eval_questions`, `:eval_lock`) | [placement-session.service.ts](../../apps/api/src/placement/placement-session.service.ts) |
+| Lesson discussion limits | `discussion:user:<userId>:minute`, `discussion:global:minute` | [discussion-limits.ts](../../apps/api/src/lessons/discussion-limits.ts) |
 
-The socket gateway uses it too. Each of these is explained in its own chapter.
+The socket gateway uses it too: it checks that the `sess:<id>` key of a socket still exists. Each of these is explained in its own chapter.
 
 ### redis.module.ts
 
@@ -213,7 +213,7 @@ export class RedisService implements OnModuleInit, OnModuleDestroy {
 
 `onModuleInit` calls `client.connect()`, `onModuleDestroy` calls `client.close()`, and `ping()` measures `client.ping()` in milliseconds, exactly like Prisma's.
 
-**Spec** ([redis.service.spec.ts](../../apps/api/src/redis/redis.service.spec.ts)): connect on init, close on shutdown, `ping` returns a finite latency, a failing ping rejects.
+**Spec** ([redis.service.spec.ts](../../apps/api/src/redis/redis.service.spec.ts)): connect on init, close on shutdown, `ping` returns a finite latency, a failing ping rejects, and it refuses to build when `REDIS_URL` is unset, empty or blank.
 
 ## throttler/ — rate limiting
 
@@ -307,7 +307,9 @@ export function ThrottleByIp(limit: number, ttl = 60_000) {
 
 **Why count by IP on these routes?** The comment explains with an attack: on a route that checks a password, if we counted per account, an attacker with N accounts would get N budgets, so "5 per minute" would become 5×N. Counting by machine gives one budget whatever account is used.
 
-It is used on `login`, `signup`, `2fa/verify` and other routes that check a secret (see [05-auth-and-users.md](05-auth-and-users.md)).
+It is used on the five routes that check a secret: `POST /api/auth/signup` (limit `signup`), and `POST /api/auth/login`, `POST /api/auth/2fa/verify`, `POST /api/auth/2fa/enable`, `DELETE /api/auth/2fa` (limit `login`). See [05-auth-and-users.md](05-auth-and-users.md).
+
+One other route sets its own limit with the library's plain `@Throttle`, so it is still counted per account: `POST /api/friends/requests/:userId`, 10 a minute.
 
 Why its own metadata key and not the library's? The comment lists three ways the library's key could silently fail (its name depends on the throttler name, it is not exported, and it is missing when only a ttl is set).
 
@@ -397,9 +399,9 @@ sequenceDiagram
 
 ### What are metrics and Prometheus?
 
-**Metrics** are numbers that describe the app over time: "how many requests per second", "how long login takes", "how many users are online". **Prometheus** is a program that, every few seconds, visits a URL of the app (`/metrics`), reads all the numbers, and stores them with the time. Then Grafana draws graphs and alerts fire when a number looks bad.
+**Metrics** are numbers that describe the app over time: "how many requests per second", "how long login takes", "how many users are online". **Prometheus** is a program that, every 30 seconds here, visits a URL of the app (`/metrics`), reads all the numbers, and stores them with the time. Then Grafana draws graphs and alerts fire when a number looks bad.
 
-Analogy: the dashboard of a car. The car does not record a video of the trip; it shows a few gauges (speed, fuel, temperature). Prometheus is a passenger who writes down the gauges every 15 seconds.
+Analogy: the dashboard of a car. The car does not record a video of the trip; it shows a few gauges (speed, fuel, temperature). Prometheus is a passenger who writes down the gauges every 30 seconds (`scrape_interval: 30s` in [prometheus.yml](../../infra/monitoring/prometheus/prometheus.yml)).
 
 The main metric types (from the `@prometheus-io/client` library):
 
@@ -421,11 +423,11 @@ http_request_duration_seconds_count{method="POST",route="/api/auth/login",status
 flowchart LR
     subgraph API["api container"]
         MW["httpMetrics middleware"] --> REG["registry (metrics.ts)"]
-        SV["services: LLM, placement, lessons, gateway"] --> REG
+        SV["services: LLM, placement, question generation, lessons, gateway"] --> REG
         COL["MetricsCollector (reads Postgres at scrape)"] --> REG
         REG --> MS["metrics server :9464 /metrics"]
     end
-    PROM["Prometheus"] -- "scrape every few seconds" --> MS
+    PROM["Prometheus"] -- "scrape every 30 s" --> MS
     PROM --> GRAF["Grafana dashboards + alerts"]
 ```
 
@@ -458,9 +460,9 @@ The exported metrics:
 | `httpRequestsInFlight` | Gauge | — | `httpMetrics` middleware |
 | `wsConnections` | Gauge | — | socket gateway ([09](09-social-and-realtime.md)) |
 | `wsEvents` | Counter | direction, event, outcome | socket gateway |
-| `llmRequests` | Counter | provider, model, purpose, outcome | LLM providers ([06](06-llm.md)) |
-| `llmRequestDuration` | Histogram (0.5 s to 90 s) | provider, model, purpose | LLM providers |
-| `llmTokens` | Counter | provider, model, purpose, type | LLM providers |
+| `llmRequests` | Counter | provider, model, purpose, outcome | `gemini.provider.ts` ([06](06-llm.md)) |
+| `llmRequestDuration` | Histogram (0.5 s to 90 s) | provider, model, purpose | `gemini.provider.ts` |
+| `llmTokens` | Counter | provider, model, purpose, type | `gemini.provider.ts` |
 | `llmProviderInfo` | Gauge (always 1) | provider, model | `llm.factory.ts` |
 | `discussionLimited` | Counter | limit | lesson discussion ([08](08-lessons.md)) |
 | `questionRestocks` | Counter | lang, level, category, status | question generation ([07](07-courses-placement.md)) |
@@ -576,13 +578,15 @@ export function startMetricsServer(port: number): Promise<Server> {
 }
 ```
 
-It uses Node's plain `http` module, not Nest. Only `GET /metrics` works; everything else is 404. `registry.metrics()` builds the text (and runs the collectors below). Because it is on a separate port that only Prometheus can reach inside the Docker network, it needs no login and no rate limit. `main.ts` starts it after `listen`.
+It uses Node's plain `http` module, not Nest. Only `GET /metrics` works; everything else is 404. `registry.metrics()` builds the text (and runs the collectors below). Because it is on a separate port that only Prometheus can reach inside the Docker network, it needs no login and no rate limit.
 
-**Spec** ([metrics-server.spec.ts](../../apps/api/src/metrics/metrics-server.spec.ts)): serves the registry with the right content type, answers 500 when the registry fails, rejects when the port is taken.
+`main.ts` does three things after `listen`, so a failed boot never leaves a metrics port answering: `collectDefaultMetrics({ register: registry })` adds the library's standard Node process metrics (memory, CPU, event loop...), `appInfo` is set to 1 with the version, and `startMetricsServer(METRICS_PORT)` starts. If the port fails, the error is only logged: monitoring must never take the app down.
+
+**Spec** ([metrics-server.spec.ts](../../apps/api/src/metrics/metrics-server.spec.ts)): serves the registry with the right content type, answers 404 to another path or method, answers 500 when the registry fails, rejects when the port is taken.
 
 ### metrics.collector.ts — numbers read from the database
 
-[metrics.collector.ts](../../apps/api/src/metrics/metrics.collector.ts) exports `MetricsCollector`, a Nest service (it needs `PrismaService`). It creates three gauges whose value is computed **when Prometheus scrapes** (the `collect` function), instead of being updated when something happens:
+[metrics.collector.ts](../../apps/api/src/metrics/metrics.collector.ts) exports `MetricsCollector`, a Nest service (it needs `PrismaService`). In `onModuleInit` it creates three gauges whose value is computed **when Prometheus scrapes** (the `collect` function), instead of being updated when something happens:
 
 | Gauge | Value |
 |---|---|
@@ -602,7 +606,7 @@ It uses Node's plain `http` module, not Nest. Only `GET /metrics` works; everyth
     });
 ```
 
-Two wrappers protect the database queries:
+Two wrappers protect the database queries of the first two gauges (`ft_active_users` only reads memory, so it has none):
 
 - `cached(ttlMs, collect)`: runs the query at most once per minute (`CACHE_MS = 60_000`), and never twice at the same time. Between, the gauge keeps its last value. Questions and accounts change slowly, so one query a minute is enough.
 - `guarded(name, collect)`: if the query fails or takes more than 3 s (`COLLECT_TIMEOUT_MS`), it logs a warning and keeps the last value. The comment explains: a failing `collect` would fail the *whole* scrape, and Prometheus would think the API is down when only Postgres had a small problem.
@@ -635,7 +639,7 @@ flowchart TD
 A **health check** is a small endpoint that answers "am I working?". Other tools call it again and again:
 
 - Docker's `HEALTHCHECK` decides if the container is healthy.
-- CI waits for it before running tests.
+- CI waits for it before running the e2e tests (`docker compose up --wait` waits for that `HEALTHCHECK`).
 - Dashboards show it.
 
 Analogy: a nurse who passes every few minutes and asks "how do you feel?". The patient answers, and also reports how the heart (Postgres) and the lungs (Redis) are doing.
@@ -810,8 +814,7 @@ export class DependencyHealthDto implements DependencyHealth {
 
 - `PrismaModule` and `RedisModule` are the only `@Global` modules: one shared database client, one shared Redis connection.
 - Both services check their URL variable at construction, connect in `onModuleInit` (so a bad setup fails at start), close in `onModuleDestroy`, and offer a `ping()` that returns milliseconds.
-- Redis is fast in-memory key/value storage: here for sessions, presence, placement state and discussion limits.
-- Rate limiting gives each caller a budget per minute. `IdentityThrottlerGuard` counts per account (or per address when signed out), and `@ThrottleByIp` routes count per address, so an attacker cannot multiply budgets with many accounts.
+- Redis is fast in-memory key/value storage: here for sessions, presence, placement state and discussion limits.- Rate limiting gives each caller a budget per minute. `IdentityThrottlerGuard` counts per account (or per address when signed out), and `@ThrottleByIp` routes count per address, so an attacker cannot multiply budgets with many accounts.
 - Limits come from env variables, read once at import, and a bad value stops the API.
 - Metrics live in one registry in `metrics.ts`, with bounded labels. Prometheus reads them on a separate port, 9464, outside Nest.
 - `httpMetrics` is a middleware (not an interceptor) so it sees every request, even refused ones, and records the route template, not the URL.

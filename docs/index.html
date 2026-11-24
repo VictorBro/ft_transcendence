@@ -465,15 +465,15 @@ footer{font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6}
 </div>
 </section>
 
-<footer>Issue states, assignees and linked PRs as of 22 November 2026, the last merge on main being PR #212. All three refresh from the GitHub API when the page loads (cached for five minutes); a linked PR is one whose description says "closes #N". <span id="live"></span> Source: <a href="https://github.com/VictorBro/ft_transcendence">VictorBro/ft_transcendence</a> · <a href="https://github.com/VictorBro/ft_transcendence/milestones">all milestones</a>.</footer>
+<footer>Issue states, assignees and linked PRs as of 23 November 2026, the last merge on main being PR #220. All three refresh from the GitHub API when the page loads (cached for five minutes); a linked PR is one whose description says "closes #N", "fixes #N" or "resolves #N". <span id="live"></span> Source: <a href="https://github.com/VictorBro/ft_transcendence">VictorBro/ft_transcendence</a> · <a href="https://github.com/VictorBro/ft_transcendence/milestones">all milestones</a>.</footer>
 </main>
 <script src="site/gh-status.js"></script>
 <script>
 const repo='VictorBro/ft_transcendence';
 const issueUrl=n=>'https://github.com/'+repo+'/issues/'+n;
 /* Snapshot of each issue: state, assignees, and the PR linked in its Development panel
-   (merged first, then open, then the newest). State and assignees refresh live below;
-   linked PRs need an authenticated API, so they come from this snapshot. */
+   (merged first, then open, then the newest). gh-status.js refreshes all three from the
+   public API on load; this snapshot shows until then, or if GitHub cannot be reached. */
 const ISSUES={43:{s:"closed",a:["VYAntares"],b:0,pr:[58, "VYAntares", "merged"]},
 44:{s:"closed",a:["VictorBro"],b:0,pr:[55, "VictorBro", "merged"]},
 45:{s:"closed",a:["bastian-schnitzler"],b:0,pr:[57, "bastian-schnitzler", "merged"]},
@@ -544,7 +544,6 @@ const ISSUES={43:{s:"closed",a:["VYAntares"],b:0,pr:[58, "VYAntares", "merged"]}
 const esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 /* Responsible: whoever opened the linked PR, else the first assignee. */
 const responsible=i=>(i.pr&&i.pr[1])||i.a[0]||null;
-/* Closed, else in work when someone is responsible, else open. */
 /* Closed; else in work when someone is responsible; else ready when no open issue blocks it; else open. */
 const statusOf=i=>i.s==='closed'?'closed':(responsible(i)?'work':(i.b===0?'ready':'open'));
 const STATUS_TEXT={open:'open',ready:'ready',work:'in work',closed:'closed'};
@@ -563,7 +562,7 @@ function renderIssues(){
     el.replaceWith(div);
   });
 }
-/* Issue titles for the hover text on the graph's issue links, as of 22 November 2026; replaced by the live titles. */
+/* Issue titles for the hover text on the graph's issue links, as of 23 November 2026; replaced by the live titles. */
 const GRAPH_TITLES={"76": "docs: record the lesson, daily goal and streak decisions", "77": "feat(shared): lesson contracts and the content checks", "78": "feat: store the learner's time zone", "79": "feat(api): lesson tables, and seed the lessons on every stack", "80": "feat(api): roadmap rules as pure functions", "81": "feat(api): today and all lessons reads, with the lesson search", "82": "feat(api): finish a lesson, meet the goal, keep the streak", "83": "feat(content): lesson authoring kit for Claude Code", "84": "feat(content): French A1 lessons and the ready flag", "85": "feat(api): seed demo learners on development stacks", "86": "feat(web): the daily goal page", "87": "feat(web): the all lessons page, with advanced search", "88": "feat(content): outline the German lessons, A1 to C2", "89": "feat(content): outline the English lessons, A1 to C2", "90": "feat(content): outline the French lessons, A2 to C2", "91": "feat(content): German lessons, A1 to C2", "92": "feat(content): English lessons, A1 to C2", "93": "feat(content): French lessons, A2 to C2", "94": "feat: gamification rules, XP, challenges and achievements", "95": "feat(api): award XP, the daily challenge and achievements", "96": "test(e2e): the roadmap and lesson loop on real lessons", "97": "feat(web): rank, challenge and achievements pages", "105": "feat(content): outline the French A1 lessons", "106": "fix(web): address French learners with tu, as the German messages do with du", "108": "fix(api): send an error code in every error message", "113": "fix: check if randomization in question serving needs seed", "115": "req: design reading lessons", "116": "req: design function lessons", "117": "feat: lesson prototype and final lesson model", "134": "feat(api): seed the lessons from the outlines", "135": "feat(shared): port the prototype's lesson schemas and validators", "136": "feat(shared): make the lesson validators work for German and English", "137": "docs: replan Milestone 2, lessons are authored with Claude Code from the prototype model", "144": "feat(shared): the lesson player domain", "145": "feat(api): lesson attempts on the server", "146": "feat(web): the lesson page, the player and the grammar lesson", "147": "feat(web): the vocabulary lesson", "148": "feat(web): the reading lesson", "149": "feat(web): the functions lesson", "150": "feat(api): stream the lesson discussion, with error handling and rate limits", "151": "feat(web): the discussion window before the exam", "152": "docs: reorganise docs/, match Milestone 2, one file per module", "153": "fix(web): wording on shipped pages", "34": "Restore the signup rate limit to 10 per minute", "204": "fix(web): the privacy policy's training clause, once the Gemini key is chosen", "207": "fix(shared): address French learners with tu in the player and lesson copy", "211": "fix(web): User.locale follows the interface language", "154": "feat: the WebSocket gateway", "155": "feat: friends", "156": "feat: public profiles", "157": "feat: online status", "158": "feat: direct messages between friends", "159": "test(e2e): Firefox and WebKit", "160": "docs: the README for the evaluation", "161": "docs: defence runbook and rehearsal"};
 const graphTitle=n=>'#'+n+': '+(GRAPH_TITLES[n]||'');
 const attr=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));

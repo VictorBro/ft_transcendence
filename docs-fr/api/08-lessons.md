@@ -43,7 +43,7 @@ flowchart LR
   LS & AS & GOAL & GAM --> DB[(PostgreSQL via Prisma)]
 ```
 
-Les fichiers se rangent en familles :
+Les fichiers se rangent en trois familles :
 
 | Famille                                              | Fichiers                                                                                                                                                  | Touche la base de données ? |
 | ---------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
@@ -113,8 +113,9 @@ export class LessonQueryDto extends createZodDto(LessonQuerySchema) {}
 | `SubmitPageDto` `{ attemptId, answers }`                           | entrée (body)         | `POST …/attempt/pages/:index`            |
 | `LessonDiscussionDto` `{ attemptId, message, history }`            | entrée (body)         | `POST …/discussion`                      |
 
-Les DTO d'« entrée » sont vérifiés par le pipe de validation global (chapitre 2). Un mauvais body donne une 400
-`request.invalid`.
+Les DTO d'« entrée » sont vérifiés par le pipe de validation global (chapitre 2). Un mauvais body donne une 400 avec
+le code de la règle cassée (par exemple `profile.invalidLocale` pour une mauvaise `locale`), ou `request.invalid`
+quand aucune règle n'en donne.
 
 ## lessons.controller.ts — les routes de lecture
 
@@ -125,6 +126,7 @@ commencent par `courses/:lang`, et `LangParam` vérifie que `:lang` est une lang
 ```ts
 @Controller('courses/:lang')
 export class LessonsController {
+  // Nest gives the service here by itself (dependency injection).
   constructor(private readonly lessons: LessonsService) {}
 
   @Get('today')
@@ -161,13 +163,13 @@ leçon complète) n'est pas dans la liste, donc il ne peut jamais fuiter dans un
 **`checkCourse(row, { placed })`** lance la bonne erreur pour une ligne de cours déjà lue :
 
 ```ts
-if (!row) {
-  throw new NotFoundException("course.notFound");
-}
-if (placed && row.level === null) {
-  throw new ConflictException("course.notPlaced");
-}
-return row;
+  if (!row) {
+    throw new NotFoundException('course.notFound');
+  }
+  if (placed && row.level === null) {
+    throw new ConflictException('course.notPlaced');
+  }
+  return row;
 ```
 
 Il a deux « overloads » TypeScript (deux signatures). Avec `{ placed: true }`, TypeScript sait que la ligne renvoyée
@@ -204,20 +206,24 @@ type ResultRow = Prisma.LessonResultGetPayload<{ select: typeof RESULT_SELECT }>
 ### `load()` — ce dont `today` et `lessons` ont besoin tous les deux
 
 ```ts
-const course = checkCourse(await this.findCourse(userId, lang), { placed: true });
-const level = course.level;
+    const course = checkCourse(await this.findCourse(userId, lang), { placed: true });
+    const level = course.level;
 
-const [lessons, results] = await Promise.all([
-  this.prisma.lesson.findMany({
-    where: { lang, level },
-    orderBy: { position: "asc" },
-    select: LESSON_SELECT,
-  }),
-  this.prisma.lessonResult.findMany({
-    where: { userLevelId: course.id },
-    select: RESULT_SELECT,
-  }),
-]);
+    // The 2 queries do not need each other, so they run at the same time.
+    // The results are NOT filtered by level: after a level change at noon,
+    // the lessons of the old level finished this morning must stay in today's done.
+    // Every lesson of the level, ready or not: the list shows them all.
+    const [lessons, results] = await Promise.all([
+      this.prisma.lesson.findMany({
+        where: { lang, level },
+        orderBy: { position: 'asc' },
+        select: LESSON_SELECT,
+      }),
+      this.prisma.lessonResult.findMany({
+        where: { userLevelId: course.id },
+        select: RESULT_SELECT,
+      }),
+    ]);
 ```
 
 Les deux requêtes tournent en même temps (`Promise.all`). Les résultats ne sont **pas** filtrés par niveau : si
@@ -241,9 +247,9 @@ puis le résultat. Renvoie une `LessonCard`.
 ### `today()` — le plan du jour
 
 ```ts
-const cards = cardsById([...rows.map((row) => row.lesson), ...lessons], resultsById(results));
-const toCards = (ids: LessonId[]) => ids.map((id) => cards.get(id)!);
-const { done, proposed, extra } = plan(lessons, results, day, goal);
+    const cards = cardsById([...rows.map((row) => row.lesson), ...lessons], resultsById(results));
+    const toCards = (ids: LessonId[]) => ids.map((id) => cards.get(id)!);
+    const { done, proposed, extra } = plan(lessons, results, day, goal);
 ```
 
 `plan()` (dans roadmap.rules.ts) renvoie des ids de leçons ; la map des cartes les transforme en cartes. La réponse
@@ -280,7 +286,14 @@ la démo). Elle tourne **dans la transaction de l'appelant**, avec le cours déj
   const goal = await meetGoal(tx, course, day);
   // A lesson finished twice in a day counts once: the first time.
   const countedToday = old === null || dayOf(old.day) !== day;
-  const rewards = await award(tx, course, day, { type: 'finish', goal, lesson, score,
+  const rewards = await award(tx, course, day, {
+    type: 'finish',
+    goal,
+    lesson,
+    score,
+    oldBest: old?.score ?? null,
+    countedToday,
+  });
 ```
 
 1. Le résultat : le meilleur score reste, mais le jour et l'heure passent à cette fin.
@@ -327,7 +340,7 @@ Bonus pour l'allemand : les gens tapent `ae`, `oe`, `ue` pour `ä`, `ö`, `ü`. 
 
 ```ts
 export function bareVowels(text: string): string {
-  return text.replace(/([aou])e/g, "$1");
+  return text.replace(/([aou])e/g, '$1');
 }
 ```
 
@@ -340,7 +353,7 @@ un titre sans le `e`. Pas en français, où `coeur` deviendrait `cour`, un autre
 décide) :
 
 ```ts
-return (a, b) => group(a, b) || sort(a, b) || a.position - b.position;
+  return (a, b) => group(a, b) || sort(a, b) || a.position - b.position;
 ```
 
 | `group`  | Ordre (jamais inversé par `dir`)                                        |
@@ -363,9 +376,10 @@ réponse. Une leçon pas prête est triée comme jamais commencée, car sa ligne
 ### Étape 3 — couper
 
 ```ts
-const lastPage = Math.max(1, Math.ceil(matches.length / LESSONS_PAGE_SIZE));
-const page = Math.min(query.page, lastPage);
-const start = (page - 1) * LESSONS_PAGE_SIZE;
+  const lastPage = Math.max(1, Math.ceil(matches.length / LESSONS_PAGE_SIZE));
+  const page = Math.min(query.page, lastPage);
+  // Pages start at 1, but lists start at 0: page 1 starts at 0, page 2 at 20.
+  const start = (page - 1) * LESSONS_PAGE_SIZE;
 ```
 
 `LESSONS_PAGE_SIZE` vaut 20. Demander la page 99 donne la dernière page, pas une page vide. Aucun résultat donne la
@@ -410,16 +424,16 @@ Les constantes viennent de `@ft/shared` :
 La fonction `plan` montre comment les listes sont coupées :
 
 ```ts
-const done = doneOn(results, day).map((result) => result.lessonId);
-const ready = lessons.filter((lesson) => lesson.ready);
-const upNext = queue(ready, results, day);
-const proposedCount = Math.max(0, target(goal) - done.length);
+  const done = doneOn(results, day).map((result) => result.lessonId);
+  const ready = lessons.filter((lesson) => lesson.ready);
+  const upNext = queue(ready, results, day);
+  const proposedCount = Math.max(0, target(goal) - done.length);
 
-return {
-  done,
-  proposed: upNext.slice(0, proposedCount),
-  extra: upNext.slice(proposedCount, proposedCount + EXTRA_COUNT),
-};
+  return {
+    done,
+    proposed: upNext.slice(0, proposedCount),
+    extra: upNext.slice(proposedCount, proposedCount + EXTRA_COUNT),
+  };
 ```
 
 Exemple : objectif 60 (cible 6), deux faites aujourd'hui → 4 proposées, 3 en plus.
@@ -427,12 +441,12 @@ Exemple : objectif 60 (cible 6), deux faites aujourd'hui → 4 proposées, 3 en 
 La règle de la streak (`metOn`) :
 
 ```ts
-if (streak.lastGoalDay !== null && day <= streak.lastGoalDay) {
-  return streak;
-}
-const consecutive = streak.lastGoalDay !== null && previousDay(day) === streak.lastGoalDay;
-const next = consecutive ? streak.streak + 1 : 1;
-return { streak: next, bestStreak: Math.max(streak.bestStreak, next), lastGoalDay: day };
+  if (streak.lastGoalDay !== null && day <= streak.lastGoalDay) {
+    return streak;
+  }
+  const consecutive = streak.lastGoalDay !== null && previousDay(day) === streak.lastGoalDay;
+  const next = consecutive ? streak.streak + 1 : 1;
+  return { streak: next, bestStreak: Math.max(streak.bestStreak, next), lastGoalDay: day };
 ```
 
 Atteindre l'objectif encore le même jour ne fait rien. Le jour juste après prolonge la streak. Un trou la fait
@@ -466,11 +480,11 @@ pourraient lire « 2 faites », les deux écrivent, et la streak avancerait deux
 second :
 
 ```ts
-await tx.$queryRaw`
+  await tx.$queryRaw`
     SELECT id FROM "UserLevel"
     WHERE "userId" = ${userId}::uuid AND "lang" = ${lang}::"Language"
     FOR UPDATE`;
-return tx.userLevel.findUnique({ where: { userId_lang: { userId, lang } } });
+  return tx.userLevel.findUnique({ where: { userId_lang: { userId, lang } } });
 ```
 
 Le SQL brut sert seulement au verrou (Prisma n'a pas de `FOR UPDATE`). La ligne est ensuite lue par Prisma, donc
@@ -518,11 +532,11 @@ Un POST répond 201 par défaut. Pour répondre 200 quand on reprend, le control
 `@Res({ passthrough: true })` : il peut fixer le statut et Nest envoie quand même la valeur renvoyée.
 
 ```ts
-// A POST answers 201 by default; resuming creates nothing.
-if (!created) {
-  response.status(HttpStatus.OK);
-}
-return attempt;
+    // A POST answers 201 by default; resuming creates nothing.
+    if (!created) {
+      response.status(HttpStatus.OK);
+    }
+    return attempt;
 ```
 
 Pour les pages, `index` est lu avec `Number(index)`. Tout ce qui n'est pas le cursor (« abc » compris) donne la
@@ -540,7 +554,7 @@ export const newSecret = () => randomBytes(32);
 export const refOf =
   (secret: Uint8Array): RefOf =>
   (path) =>
-    createHmac("sha256", secret).update(path).digest("base64url").slice(0, 16);
+    createHmac('sha256', secret).update(path).digest('base64url').slice(0, 16);
 ```
 
 Un **HMAC** est une « signature » d'un texte avec une clé secrète : le même secret et le même texte donnent toujours
@@ -571,14 +585,14 @@ maternelle peut construire l'outline.
 **`start()`** tourne dans une seule transaction : verrouiller le cours, trouver la leçon (`FOR SHARE`), puis :
 
 ```ts
-const old = await tx.lessonAttempt.findUnique({ where: { userLevelId_lessonId: key } });
-if (old && old.completedAt === null) {
-  const plan = shared.player.buildPlan(source, old.motherTongue);
-  return { created: false, attempt: this.parse(plan, old, now) };
-}
-if (old) {
-  await tx.lessonAttempt.delete({ where: { id: old.id } });
-}
+      const old = await tx.lessonAttempt.findUnique({ where: { userLevelId_lessonId: key } });
+      if (old && old.completedAt === null) {
+        const plan = shared.player.buildPlan(source, old.motherTongue);
+        return { created: false, attempt: this.parse(plan, old, now) };
+      }
+      if (old) {
+        await tx.lessonAttempt.delete({ where: { id: old.id } });
+      }
 ```
 
 - une tentative en cours → la renvoyer telle quelle (pas de redémarrage avant les résultats) ;
@@ -592,12 +606,19 @@ comptée **après** le commit, donc un démarrage annulé (rollback) ne compte r
 **`submit()`** tourne aussi dans une seule transaction, sous le verrou du cours :
 
 ```ts
-const result = shared.player.submit(plan, stateOf(row), index, body.answers, now.getTime(), ref);
-if (!result.ok) {
-  throw result.error === "stale"
-    ? new ConflictException("attempt.stale")
-    : new BadRequestException("attempt.invalidAnswer");
-}
+      const result = shared.player.submit(
+        plan,
+        stateOf(row),
+        index,
+        body.answers,
+        now.getTime(),
+        ref,
+      );
+      if (!result.ok) {
+        throw result.error === 'stale'
+          ? new ConflictException('attempt.stale')
+          : new BadRequestException('attempt.invalidAnswer');
+      }
 ```
 
 La fonction partagée `submit` accepte **seulement la page au cursor, une seule fois**. Elle note chaque unité de la
@@ -608,12 +629,12 @@ vide et « hors temps ».
 Quand la dernière page ferme la tentative :
 
 ```ts
-const sheet = shared.player.results(plan, result.state);
-// From the exact total: sheet.score is already cut to one decimal.
-const { total } = shared.player.lessonResults(plan, result.state.answers);
-const score = shared.player.storedScore(total);
-const finish = await applyFinish(tx, course, lesson, score, user.timeZone, now);
-results = { ...sheet, finish };
+        const sheet = shared.player.results(plan, result.state);
+        // From the exact total: sheet.score is already cut to one decimal.
+        const { total } = shared.player.lessonResults(plan, result.state.answers);
+        const score = shared.player.storedScore(total);
+        const finish = await applyFinish(tx, course, lesson, score, user.timeZone, now);
+        results = { ...sheet, finish };
 ```
 
 **Le score :** le total est 35 % du pourcentage de l'entraînement plus 65 % du pourcentage de l'examen (si une
@@ -734,8 +755,8 @@ Le défi du jour est **calculé, pas enregistré** : `challengeFor(userLevelId, 
 sans tâche à minuit.
 
 ```ts
-const possible = possibleChallenges(readyKinds);
-return possible[fmix32(fnv1a(`${userLevelId}:${day}`)) % possible.length];
+  const possible = possibleChallenges(readyKinds);
+  return possible[fmix32(fnv1a(`${userLevelId}:${day}`)) % possible.length];
 ```
 
 `fnv1a` est un petit hash rapide. Seul, il garde le motif pair/impair de son entrée, et les clés ne diffèrent que
@@ -825,22 +846,24 @@ data: {}
 genre :
 
 ```ts
-const abort = new AbortController();
-// A comment line (": ...") is ignored by the reader but keeps bytes moving.
-const heartbeat = setInterval(() => response.write(": heartbeat\n\n"), HEARTBEAT_MS);
-// "close" also fires after a normal end(); writableFinished tells the two apart.
-response.on("close", () => {
-  clearInterval(heartbeat);
-  if (!response.writableFinished) abort.abort();
-});
-// The browser may have left during the checks before this call: ...
-if (response.destroyed) abort.abort();
+  const abort = new AbortController();
+  // A comment line (": ...") is ignored by the reader but keeps bytes moving.
+  const heartbeat = setInterval(() => response.write(': heartbeat\n\n'), HEARTBEAT_MS);
+  // "close" also fires after a normal end(); writableFinished tells the two apart.
+  response.on('close', () => {
+    clearInterval(heartbeat);
+    if (!response.writableFinished) abort.abort();
+  });
+  // The browser may have left during the checks before this call: its "close"
+  // has fired already and will not fire again, so the listener above never runs.
+  if (response.destroyed) abort.abort();
 
-response.writeHead(200, {
-  "content-type": "text/event-stream; charset=utf-8",
-  "cache-control": "no-cache, no-transform",
-});
-response.flushHeaders();
+  response.writeHead(200, {
+    'content-type': 'text/event-stream; charset=utf-8',
+    'cache-control': 'no-cache, no-transform',
+  });
+  // writeHead only prepares the headers; this sends them now, before the first event.
+  response.flushHeaders();
 ```
 
 - Le **heartbeat** (battement de cœur, toutes les 15 s) empêche les proxies de fermer une connexion silencieuse.
@@ -1009,16 +1032,16 @@ démarrage (une faute de frappe ne doit pas désactiver une limite).
 lance l'horloge ; quand la clé expire, le compte repart de zéro.
 
 ```ts
-const [count, , ttl] = await client
-  .multi()
-  .incr(window.key)
-  .expire(window.key, window.seconds, "NX")
-  .ttl(window.key)
-  .execTyped();
-if (count > window.limit) {
-  discussionLimited.inc({ limit: window.name });
-  return { code: window.code, retryAfter: Math.max(ttl, 1) };
-}
+    const [count, , ttl] = await client
+      .multi()
+      .incr(window.key)
+      .expire(window.key, window.seconds, 'NX')
+      .ttl(window.key)
+      .execTyped();
+    if (count > window.limit) {
+      discussionLimited.inc({ limit: window.name });
+      return { code: window.code, retryAfter: Math.max(ttl, 1) };
+    }
 ```
 
 `multi()` exécute les commandes comme une seule transaction, donc un crash ne peut pas laisser un compteur sans

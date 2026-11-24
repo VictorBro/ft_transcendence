@@ -1,5 +1,7 @@
 # Project documentation
 
+This is the English documentation. The French translation is here: [docs-fr/](../docs-fr/README.md).
+
 Where each topic lives, so every fact has one home. The repository's root
 [README](../README.md) is the evaluation entry point; this folder holds the detail behind it.
 
@@ -19,15 +21,31 @@ the HTML pages below can be read there without cloning the repository.
 | [subject/](subject/summary.md)                          | What does the 42 subject require?                                                   |
 | [transcendence-course/](transcendence-course/README.md) | What did each team member build, explained in their own words for the defence?      |
 | [site/](site/milestone1-data-model.html)                | The pages and script behind the GitHub Pages site                                   |
+| [before-rework/](before-rework/README.md)               | What did the documentation say before this rework? An archive, not kept up to date  |
 
 ## Every document
 
 ### At the root
 
-| Document                 | What it covers                                                                                                                |
-| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------- |
-| [index.html](index.html) | The home page of the GitHub Pages site: the product on one page, the milestones and their issues with live states from GitHub |
-| [backlog.md](backlog.md) | Work we know we owe, not scheduled yet                                                                                        |
+| Document                               | What it covers                                                                                                                |
+| -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| [index.html](index.html)               | The home page of the GitHub Pages site: the product on one page, the milestones and their issues with live states from GitHub |
+| [backlog.md](backlog.md)               | Work we know we owe, not scheduled yet                                                                                        |
+| [code-ownership.md](code-ownership.md) | Who touched which file, and in which pull requests, in French: the starting point of each folder in transcendence-course/     |
+
+### api/
+
+| Document                                                                                                                                                                                                                                                                                                                           | What it covers                                                        |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| [api/README.md](api/README.md)                                                                                                                                                                                                                                                                                                     | The reading order and what each chapter teaches                       |
+| [01](api/01-big-picture.md), [02](api/02-boot-and-request-flow.md), [03](api/03-infrastructure.md), [04](api/04-database.md), [05](api/05-auth-and-users.md), [06](api/06-llm.md), [07](api/07-courses-placement.md), [08](api/08-lessons.md), [09](api/09-social-and-realtime.md), [10](api/10-tests.md), [11](api/11-scripts.md) | The eleven chapters, from what an API is to the tests and the scripts |
+
+### web/
+
+| Document                                                                                                                                                                                                                                                                                | What it covers                                                            |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| [web/README.md](web/README.md)                                                                                                                                                                                                                                                          | The reading order and what each chapter teaches                           |
+| [01](web/01-react-and-nextjs.md), [02](web/02-routing-layouts-i18n.md), [03](web/03-shell-components.md), [04](web/04-talking-to-the-api.md), [05](web/05-account-pages.md), [06](web/06-learning-pages.md), [07](web/07-lesson-player.md), [08](web/08-chat.md), [09](web/09-tests.md) | The nine chapters, from React basics to each page, the chat and the tests |
 
 ### modules/
 
@@ -84,6 +102,12 @@ the HTML pages below can be read there without cloning the repository.
 | [site/milestone2-data-model.html](site/milestone2-data-model.html) | Lessons: the lesson files, the seed, the attempt and discussion APIs, gamification |
 | [site/milestone3-data-model.html](site/milestone3-data-model.html) | Real-time and social: socket events, friendships, messages, presence               |
 | [site/gh-status.js](site/gh-status.js)                             | Not a document: the HTML pages load it to show live issue states from GitHub       |
+
+### before-rework/
+
+| Document                                           | What it covers                                                                                                   |
+| -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| [before-rework/README.md](before-rework/README.md) | The documentation as it was before this rework (#152), with its own index. Kept as an archive: it is not updated |
 
 Every count, route, variable and metric name in these documents is taken from the code on `main`.
 When the code changes, the document that owns the topic changes in the same pull request.

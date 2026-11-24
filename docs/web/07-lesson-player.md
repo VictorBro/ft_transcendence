@@ -1067,7 +1067,7 @@ How do the skim document and its question (two separate items) coordinate? They 
 
 `SkimDocument` states: `null` before hydration (it draws an empty, `aria-busy` slot still marked reading, so the question stays hidden and Check held), `reading` (countdown + "I've finished reading" + document), `question` (hidden), and once checked the document comes back above the question. When the document goes away, the focus moves to the question's heading (unless the focus is somewhere else on the page, like a menu). `SkimOpen` is exported for the component test.
 
-`reading.test.tsx` plays a sample reading lesson: it checks that it is playable, the start page facts, flashcards, the board, the skim flow, the questions beside the document, wrong answers, and a full play to the results.
+`reading.test.tsx` plays a sample reading lesson: it checks that it is playable, the start page facts, flashcards, the board, the skim flow, the questions and the ordering beside the document, the second document on the exam page, wrong answers, and a full play to the results.
 
 ---
 

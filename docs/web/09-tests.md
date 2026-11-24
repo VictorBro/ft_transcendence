@@ -111,6 +111,9 @@ export default defineConfig({
       provider: 'v8',
       reporter: ['text-summary', 'lcov'],
       reportsDirectory: 'coverage',
+      // Server components and route handlers need a browser runtime plus an RSC
+      // renderer to exercise; the logic they call lives in lib/ instead, which
+      // is what the thresholds below actually measure.
       include: ['lib/**/*.ts'],
       exclude: ['lib/**/*.test.ts'],
       thresholds: {
@@ -419,7 +422,7 @@ What this style of test **cannot** do: click, type, or run effects (`useEffect` 
 | File | What it checks |
 |---|---|
 | [lesson/tutor-answer.test.tsx](../../apps/web/components/lesson/tutor-answer.test.tsx) | The tutor's Markdown renders as styled HTML (bold, lists, tables, strikethrough), links are safe, raw HTML/images/`javascript:` never render, a cut answer ends with `…`. |
-| [lesson/kinds/reading.test.tsx](../../apps/web/components/lesson/kinds/reading.test.tsx) | Plays the sample reading lesson "Lire un SMS" through the shared lesson core and renders each page: key word cards, matching board, skim countdown, detail questions, ordering, exam page; wrong answers marked right; score 100 when all right, 0 when all wrong. |
+| [lesson/kinds/reading.test.tsx](../../apps/web/components/lesson/kinds/reading.test.tsx) | Plays the sample reading lesson "Lire un SMS" through the shared lesson core and renders each page: key word cards, matching board, skim countdown, detail questions, ordering, exam page; wrong answers marked, with the right answer beside them; score 100 when all right, 0 when all wrong. |
 
 ### `lib/` — API layer and session
 
@@ -537,8 +540,10 @@ Two specs are special gates:
 
 For the chat (chapter 8), [messages.spec.ts](../../e2e/tests/messages.spec.ts) checks what the unit tests cannot:
 two real browsers, one writes, the other sees the message and the unread count arrive live, opening the thread clears
-the count, Shift+Enter makes a new line, a message sent while the socket was down arrives when it is back, an
-ex-friend's thread has no box, and times show in the account's time zone.
+the count, Shift+Enter makes a new line, a friend written to for the first time is listed, a long thread scrolls in
+its own pane and the screens fit a phone, on a phone the closed header menu button shows the count (in German), a
+message sent while the socket was down arrives when it is back, an ex-friend's thread has no box, and times show in
+the account's time zone.
 
 How to run them:
 

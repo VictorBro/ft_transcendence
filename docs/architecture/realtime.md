@@ -298,7 +298,7 @@ sequenceDiagram
     C->>A: proxy
     A->>A: course, ready lesson, cursor on the discussion page?<br/>else 404 / 409, as JSON
     A->>R: count the message in three windows<br/>else 429 + Retry-After, as JSON
-    A-->>B: 200, text/event-stream; cache-control: no-cache, no-transform
+    A-->>B: 200, text/event-stream<br/>cache-control: no-cache, no-transform
     A->>G: streamGenerateContent?alt=sse
     loop as Gemini writes
         G-->>A: a piece of text

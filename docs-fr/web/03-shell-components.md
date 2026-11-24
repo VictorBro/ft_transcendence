@@ -77,14 +77,15 @@ Fichier : [shell.tsx](../../apps/web/components/shell.tsx) — exporte `Shell`, 
 `Wordmark`.
 
 Le commentaire dit que les groupes ne diffèrent que sur quatre points, et les quatre sont des props :
-ce qui est à gauche de la nav (`brand`), la nav (`nav`), le footer (`footer`), et si le cadre est
-fixé à l'écran (`fill`). Donc le markup du header, l'espace sur les côtés et la largeur max sont
-écrits une seule fois.
+ce qui est à gauche de la nav (`brand`), le footer (`footer`), si le cadre est fixé à l'écran
+(`fill`), et la page elle-même (`children`). Donc le markup du header, l'espace sur les côtés et la
+largeur max sont écrits une seule fois. La nav (`nav`) est aussi une prop, pour une autre raison
+(voir plus bas).
 
 ```tsx
 export function Shell({ brand, nav, fill = false, footer, children }: ShellProps) {
   return (
-    <div className={`flex min-h-dvh flex-col ${fill ? "lg:h-dvh" : ""}`}>
+    <div className={`flex min-h-dvh flex-col ${fill ? 'lg:h-dvh' : ''}`}>
       <header className="border-b border-slate-800">
         <div
           className={`${CONTAINER} relative z-50 flex flex-wrap items-center justify-between gap-x-4 gap-y-3 py-2.5`}
@@ -94,8 +95,20 @@ export function Shell({ brand, nav, fill = false, footer, children }: ShellProps
         </div>
       </header>
 
+      {/*
+        `min-h-0` is what makes `fill` work, from `lg` where the frame is
+        pinned. A flex child defaults to min-height:auto, which refuses to
+        shrink below its content, so a tall page pushes the footer off the
+        screen and the panes' lg:overflow-y-auto never gets a box to scroll in.
+        Setting it here means a page can size itself to the pane with h-full and
+        own its own scrolling. `flex flex-col` is for the pages that fill this
+        box with a single pane and centre inside it. A pane that scrolls also
+        needs `relative`: an sr-only label is absolutely positioned, and with
+        no positioned ancestor it escapes the pane and makes the whole page
+        scroll, header and footer included.
+      */}
       <main
-        className={`${CONTAINER} flex-1 ${fill ? "flex min-h-0 flex-col pt-5 pb-4" : "py-8 sm:py-12"}`}
+        className={`${CONTAINER} flex-1 ${fill ? 'flex min-h-0 flex-col pt-5 pb-4' : 'py-8 sm:py-12'}`}
       >
         {children}
       </main>
@@ -125,8 +138,8 @@ cookies). Ceux-là ne passent pas de `nav`. Donc `Shell` lui-même ne charge auc
 `Wordmark` est le nom du produit sous forme de lien vers l'accueil :
 
 ```tsx
-export function Wordmark({ href = "/" }: { href?: "/" | "/learn" }) {
-  const t = useTranslations("Layout");
+export function Wordmark({ href = '/' }: { href?: '/' | '/learn' }) {
+  const t = useTranslations('Layout');
 
   return (
     // Below lg the course page's My course button takes its place.
@@ -134,7 +147,7 @@ export function Wordmark({ href = "/" }: { href?: "/" | "/learn" }) {
       href={href}
       className="text-base font-semibold tracking-tight text-slate-100 max-lg:[:root:has([data-course-menu-button])_&]:hidden"
     >
-      {t("productName")}
+      {t('productName')}
     </Link>
   );
 }
@@ -151,7 +164,7 @@ place du logo.
 Fichier : [course-menu-slot.ts](../../apps/web/lib/course-menu-slot.ts)
 
 ```ts
-export const COURSE_MENU_SLOT = "course-menu-slot";
+export const COURSE_MENU_SLOT = 'course-menu-slot';
 ```
 
 Une seule chaîne : l'`id` du `<div>` vide que le layout `(dashboard)` met dans le header. Le menu du
@@ -228,16 +241,12 @@ Fichier : [header-menu.tsx](../../apps/web/components/header-menu.tsx) — un cl
 exporte `HeaderMenu`.
 
 Il range les liens de l'utilisateur connecté derrière un seul bouton (un « hamburger » ☰ qui devient
-✕). Quand il est ouvert, un panneau apparaît sous le header à droite, et un fond sombre couvre la
+✕), sur toutes les tailles d'écran. Quand il est ouvert, un panneau apparaît sous le header (pleine
+largeur sur téléphone, une colonne de 20rem à droite à partir de `sm`), et un fond sombre couvre la
 page.
 
 ```tsx
-const pathname = usePathname();
-// Open for the page it was opened on: following a link closes it, since the
-// header stays mounted across a navigation.
-const [openOn, setOpenOn] = useState<string | null>(null);
-const open = openOn === pathname;
-useScrollLock(open);
+
 ```
 
 Une astuce maligne : le state n'est pas `true/false` mais _le chemin où le menu a été ouvert_. Le
@@ -255,15 +264,15 @@ Comment il se ferme :
 - **Nouveau clic sur le bouton**.
 
 ```tsx
-<div
-  ref={panel}
-  id={panelId}
-  data-header-menu
-  onKeyDown={onKeyDown}
-  className={`${open ? "" : "invisible"} absolute top-full right-4 left-4 mt-2 ...`}
->
-  {children}
-</div>
+      <div
+        ref={panel}
+        id={panelId}
+        data-header-menu
+        onKeyDown={onKeyDown}
+        className={`${open ? '' : 'invisible'} absolute top-full right-4 left-4 mt-2 ...`}
+      >
+        {children}
+      </div>
 ```
 
 - `aria-expanded` et `aria-controls={panelId}` sur le bouton disent aux lecteurs d'écran qu'il ouvre
@@ -288,23 +297,29 @@ Quand un menu est ouvert, un glissement du doigt sur la page sombre derrière ne
 défiler.
 
 ```ts
+/** How many open overlays hold the lock: the two header menus may overlap a moment. */
 let holders = 0;
 
+/**
+ * Stops the page from scrolling while an overlay is open, so a swipe on the
+ * dimmed page behind a menu does not move it. The scrollbar's width goes to
+ * padding while it is hidden, so a desktop page does not shift sideways.
+ */
 export function useScrollLock(locked: boolean): void {
   useEffect(() => {
     if (!locked) return;
     const root = document.documentElement;
     if (holders === 0) {
       const scrollbar = window.innerWidth - root.clientWidth;
-      root.style.overflow = "hidden";
+      root.style.overflow = 'hidden';
       if (scrollbar > 0) document.body.style.paddingRight = `${scrollbar}px`;
     }
     holders += 1;
     return () => {
       holders -= 1;
       if (holders === 0) {
-        root.style.overflow = "";
-        document.body.style.paddingRight = "";
+        root.style.overflow = '';
+        document.body.style.paddingRight = '';
       }
     };
   }, [locked]);
@@ -376,19 +391,19 @@ s'ouvre exactement sur les pages où l'utilisateur est connecté.
 Fichier : [log-out-button.tsx](../../apps/web/components/log-out-button.tsx) — client component.
 
 ```tsx
-async function onClick() {
-  setPending(true);
-  try {
-    await logOut();
-    closeSocket();
-    // Home rather than the current page, which may well have needed the
-    // session that just ended.
-    router.replace("/");
-    router.refresh();
-  } finally {
-    setPending(false);
+  async function onClick() {
+    setPending(true);
+    try {
+      await logOut();
+      closeSocket();
+      // Home rather than the current page, which may well have needed the
+      // session that just ended.
+      router.replace('/');
+      router.refresh();
+    } finally {
+      setPending(false);
+    }
   }
-}
 ```
 
 1. `logOut()` (de `lib/auth-client.ts`, chapitre 4) demande à l'API de terminer la session.
@@ -411,12 +426,12 @@ export function LanguageSwitcher() {
   const pathname = usePathname();
   const router = useRouter();
   const locale = useLocale();
-  const t = useTranslations("LanguageSwitcher");
+  const t = useTranslations('LanguageSwitcher');
 
   return (
     <label className="...">
       <MenuIcon name="language" className="hidden in-data-header-menu:flex" />
-      <span className="sr-only ...">{t("label")}</span>
+      <span className="sr-only ...">{t('label')}</span>
       <select
         value={locale}
         // replace, not push: back should not undo a language change.
@@ -455,6 +470,10 @@ export function LanguageSwitcher() {
 Ils **n'affichent rien** (`return null`). Ils lancent seulement un effet : si la valeur du navigateur
 est différente de celle enregistrée dans le profil, envoyer un `PATCH` à l'API.
 
+Seul le layout `(dashboard)` les affiche. Donc une langue choisie sur une page `(main)` ou
+`(messages)` (profil, amis, chat) est enregistrée dans `User.locale` à la prochaine page
+`(dashboard)` (`/learn`...).
+
 ```mermaid
 sequenceDiagram
     participant L as layout (dashboard) (serveur)
@@ -477,24 +496,24 @@ Le serveur a besoin du fuseau horaire de l'apprenant pour savoir quand « aujour
 (objectifs du jour, séries).
 
 ```tsx
-useEffect(() => {
-  // Older browsers may not resolve a zone: there is nothing to send then.
-  const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-  if (!timeZone || timeZone === storedTimeZone || inFlight.current || rejected.current) {
-    return;
-  }
-
-  inFlight.current = true;
-  // A failure needs no message: the next page tries again, unless it was a 400.
-  void updateProfile({ timeZone }).then((result) => {
-    inFlight.current = false;
-    if (result.ok) {
-      router.refresh();
-    } else if (result.status === 400) {
-      rejected.current = true;
+  useEffect(() => {
+    // Older browsers may not resolve a zone: there is nothing to send then.
+    const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    if (!timeZone || timeZone === storedTimeZone || inFlight.current || rejected.current) {
+      return;
     }
-  });
-}, [storedTimeZone, router, pathname]);
+
+    inFlight.current = true;
+    // A failure needs no message: the next page tries again, unless it was a 400.
+    void updateProfile({ timeZone }).then((result) => {
+      inFlight.current = false;
+      if (result.ok) {
+        router.refresh();
+      } else if (result.status === 400) {
+        rejected.current = true;
+      }
+    });
+  }, [storedTimeZone, router, pathname]);
 ```
 
 - `Intl.DateTimeFormat().resolvedOptions().timeZone` donne par exemple `"Europe/Paris"`. Il est
@@ -524,6 +543,7 @@ dans cette langue.
     }
 
     inFlight.current = true;
+    // A failure needs no message: the next page tries again, unless it was a 400.
     void updateProfile({ locale }).then((result) => {
       inFlight.current = false;
       if (result.ok) {
@@ -547,19 +567,19 @@ Le petit footer avec les liens Privacy (confidentialité) et Terms (conditions),
 shell.
 
 ```tsx
-const link = (href: string) => (chunks: ReactNode) => (
-  <Link href={href} className="underline underline-offset-4 hover:text-slate-300">
-    {chunks}
-  </Link>
-);
+  const link = (href: string) => (chunks: ReactNode) => (
+    <Link href={href} className="underline underline-offset-4 hover:text-slate-300">
+      {chunks}
+    </Link>
+  );
 
-return (
-  <footer className="shrink-0 px-6 pt-2 pb-3 text-center text-[11px] text-slate-500">
-    <nav aria-label={t("legalNav")}>
-      {t.rich("legalSentence", { privacy: link("/privacy"), terms: link("/terms") })}
-    </nav>
-  </footer>
-);
+  return (
+    <footer className="shrink-0 px-6 pt-2 pb-3 text-center text-[11px] text-slate-500">
+      <nav aria-label={t('legalNav')}>
+        {t.rich('legalSentence', { privacy: link('/privacy'), terms: link('/terms') })}
+      </nav>
+    </footer>
+  );
 ```
 
 `t.rich` lit le texte `"... <privacy>Privacy Policy</privacy> and <terms>Terms of Service</terms>."`
@@ -606,13 +626,16 @@ onglet, donc ces variables vivent aussi longtemps que l'onglet.
 
 ```ts
 let tab: TabSocket | undefined;
-let status: SocketStatus = "closed";
+let status: SocketStatus = 'closed';
 let timer: ReturnType<typeof setTimeout> | undefined;
 let attempt = 0;
 // Bumped by every new owner of the socket, so a probe still out knows it lost.
 let dial = 0;
 const watchers = new Set<() => void>();
+// Fed from the socket's own listeners, set up with it below, so no update is
+// missed while no dot is on screen.
 const presence = createPresenceMap();
+// The same for the unread counts, so the account menu's badge is right on any page.
 const unread = createUnreadStore();
 ```
 
@@ -635,23 +658,34 @@ Rien ne tourne pendant le rendu serveur : le socket n'est créé que quand le co
 function socket(): TabSocket {
   if (tab === undefined) {
     const created: TabSocket = io({
-      path: "/ws",
-      transports: ["websocket"],
+      path: '/ws',
+      // Never long-polling: an open poll keeps the e2e settle() waiting, and a
+      // polled 502 is a console error.
+      transports: ['websocket'],
       autoConnect: false,
+      // Our own loop above instead, so nothing dials while the API is down.
       reconnection: false,
+      // Firefox logs an interrupted connection when a page unloads with a
+      // socket open. socket.io leaves this off.
       closeOnBeforeunload: true,
     });
-    created.on("connect", () => {
+    created.on('connect', () => {
       attempt = 0;
+      // Every connect brings a full snapshot of the friends, and what the tab
+      // heard before may be stale: a friend:removed missed while away would
+      // otherwise keep an old entry above a fresh render.
       presence.clear();
-      setStatus("connected");
+      setStatus('connected');
     });
-    created.on("disconnect", (reason) => follow(afterDisconnect(reason)));
-    created.on("connect_error", (error) =>
+    created.on('disconnect', (reason) => follow(afterDisconnect(reason)));
+    created.on('connect_error', (error) =>
       follow(afterConnectError(created.active, error.message)),
     );
     created.on(SERVER_EVENTS.PRESENCE_UPDATE, (update) => presence.apply(update));
     created.on(SERVER_EVENTS.FRIEND_REMOVED, ({ userId }) => presence.forget(userId));
+    // A new friend: no presence:update comes for someone already online, so
+    // the dot must start from the render RefreshOn makes on this event, which
+    // carries their `online`. Forgotten, so no older entry can stand above it.
     created.on(SERVER_EVENTS.FRIEND_ACCEPTED, ({ userId }) => presence.forget(userId));
     created.on(SERVER_EVENTS.DM_UNREAD, (snapshot) => unread.apply(snapshot));
     tab = created;
@@ -682,8 +716,8 @@ Les décisions sont des fonctions pures, gardées en dehors de `tab-socket.ts` p
 sans navigateur.
 
 ```ts
-export type SocketStatus = "closed" | "connected" | "reconnecting" | "signedOut";
-export type NextStep = "stay" | "retryQuietly" | "reconnect" | "signedOut";
+export type SocketStatus = 'closed' | 'connected' | 'reconnecting' | 'signedOut';
+export type NextStep = 'stay' | 'retryQuietly' | 'reconnect' | 'signedOut';
 
 export const RETRY_FIRST_MS = 1_000;
 export const RETRY_MAX_MS = 10_000;
@@ -693,14 +727,23 @@ export function backoffMs(attempt: number, random: () => number = Math.random): 
   return Math.min(RETRY_MAX_MS, RETRY_FIRST_MS * 2 ** attempt) * (0.75 + random() / 2);
 }
 
+/**
+ * The server closing the socket means the session ended or was replaced: one
+ * quiet retry lets the handshake tell which. We closed it: nothing to do.
+ * Anything else is a lost connection.
+ */
 export function afterDisconnect(reason: string): NextStep {
-  if (reason === "io client disconnect") return "stay";
-  if (reason === "io server disconnect") return "retryQuietly";
-  return "reconnect";
+  if (reason === 'io client disconnect') return 'stay';
+  if (reason === 'io server disconnect') return 'retryQuietly';
+  return 'reconnect';
 }
 
+/**
+ * A refused handshake is the one sign the session is over. socket.io marks it
+ * by leaving the socket inactive; a dial that failed on the way stays active.
+ */
 export function afterConnectError(active: boolean, message: string): NextStep {
-  return !active && message === "auth.sessionRequired" ? "signedOut" : "reconnect";
+  return !active && message === 'auth.sessionRequired' ? 'signedOut' : 'reconnect';
 }
 ```
 
@@ -724,28 +767,44 @@ réponse en cache.
 ### La boucle de nouvelles tentatives
 
 ```ts
+// Ends the pending retry, and the probe of one already under way.
+function cancelRetry(): void {
+  clearTimeout(timer);
+  dial += 1;
+}
+
+// A failed WebSocket dial is a console error no code can hide, so a retry
+// dials only once web says the API answers.
 async function probeThenDial(): Promise<void> {
   const mine = dial;
   const up = await apiIsUp();
+  // A newer dial owns the socket: dialing again would open a second server
+  // socket, and a 'down' would mark a live one reconnecting.
   if (mine !== dial) return;
   if (up) {
     socket().connect();
     return;
   }
-  setStatus("reconnecting");
+  setStatus('reconnecting');
   retryAfter(backoffMs(attempt++));
 }
 
+function retryAfter(ms: number): void {
+  cancelRetry();
+  timer = setTimeout(() => void probeThenDial(), ms);
+}
+
 function follow(step: NextStep): void {
-  if (step === "reconnect") {
-    setStatus("reconnecting");
+  if (step === 'reconnect') {
+    setStatus('reconnecting');
     retryAfter(backoffMs(attempt++));
-  } else if (step === "retryQuietly") {
-    setStatus("closed");
+  } else if (step === 'retryQuietly') {
+    setStatus('closed');
     retryAfter(RETRY_FIRST_MS);
-  } else if (step === "signedOut") {
+  } else if (step === 'signedOut') {
+    // The session is over: its counts must not outlive it on this tab.
     unread.clear();
-    setStatus("signedOut");
+    setStatus('signedOut');
   }
 }
 ```
@@ -799,7 +858,7 @@ export function useSocketStatus(): SocketStatus {
   return useSyncExternalStore(
     subscribe,
     () => status,
-    () => "closed",
+    () => 'closed',
   );
 }
 ```
@@ -812,18 +871,19 @@ et de non-lus marchent de la même façon avec leurs propres stores.
 `useServerEvent` utilise deux effets :
 
 ```ts
-const latest = useRef(handler);
-useEffect(() => {
-  latest.current = handler;
-});
-useEffect(() => {
-  const current = socket();
-  const listener = (payload: Payload<E>) => latest.current(payload);
-  current.on(event, listener as never);
-  return () => {
-    current.off(event, listener as never);
-  };
-}, [event]);
+  const latest = useRef(handler);
+  useEffect(() => {
+    latest.current = handler;
+  });
+  useEffect(() => {
+    const current = socket();
+    const listener = (payload: Payload<E>) => latest.current(payload);
+    // socket.io cannot resolve its listener type for a generic event name.
+    current.on(event, listener as never);
+    return () => {
+      current.off(event, listener as never);
+    };
+  }, [event]);
 ```
 
 Le premier garde le `handler` le plus récent dans un ref après chaque rendu. Le second ajoute un
@@ -837,19 +897,25 @@ pas rajouté à chaque rendu, mais il appelle toujours le dernier handler.
 Fichier : [connection-status.tsx](../../apps/web/components/connection-status.tsx)
 
 ```tsx
-export function ConnectionStatus() {
-  const status = useSocketStatus();
-  const router = useRouter();
-  const t = useTranslations('Connection');
   const pathname = usePathname();
+  // A page that mounts after a refusal was just rendered for a signed-in user:
+  // only a refusal seen while mounted calls for a refresh.
   const previous = useRef(status);
 
   useEffect(() => connectSocket(), [pathname]);
 
+  // The server refused this session: a guarded page then redirects to /login,
+  // so a sign-out in another tab shows up here.
   useEffect(() => {
     if (status === 'signedOut' && previous.current !== 'signedOut') router.refresh();
     previous.current = status;
   }, [status, router]);
+
+  return (
+    // aria-live without role="status": announced when the pill appears, and the
+    // course page keeps a single status role. Fixed, so the header never reflows.
+    // `visible`, since it sits inside the header menu, which is invisible when closed.
+    <div
 ```
 
 1. **Ouvre le socket** au mount, et de nouveau à chaque changement de page (`pathname` comme
@@ -886,7 +952,7 @@ Utilisé sur ces pages :
 | `friends`, `users/[id]`, `chat`                                | `FRIEND_EVENTS` = `friend:request`, `friend:accepted`, `friend:removed` (de `lib/friends.ts`) |
 
 ```tsx
-// in app/[locale]/(dashboard)/learn/[lang]/page.tsx
+// dans app/[locale]/(dashboard)/learn/[lang]/page.tsx
 <RefreshOn events={[SERVER_EVENTS.COURSE_UPDATED]} />
 ```
 
@@ -899,9 +965,9 @@ export function RefreshOn({ events }: { events: readonly ServerEventName[] }) {
 
   // Once, however many events: one refresh per reconnect.
   useEffect(() => {
-    if (status === "connected" && wasAway.current) router.refresh();
-    if (status === "connected") seen.current = true;
-    wasAway.current = seen.current && status !== "connected";
+    if (status === 'connected' && wasAway.current) router.refresh();
+    if (status === 'connected') seen.current = true;
+    wasAway.current = seen.current && status !== 'connected';
   }, [status, router]);
 
   return events.map((event) => <RefreshOnEvent key={event} event={event} />);
@@ -950,21 +1016,7 @@ Fichier : [unread-badge.tsx](../../apps/web/components/unread-badge.tsx) — exp
 et `UnreadTotalBadge`.
 
 ```tsx
-export function UnreadBadge({ count }: { count: number | undefined }) {
-  const t = useTranslations("MessagesPage");
 
-  if (count === undefined || count === 0) return null;
-  return (
-    <span className="inline-flex h-5 min-w-5 ... rounded-full bg-red-500 ...">
-      <span aria-hidden>{badgeText(count)}</span>
-      <span className="sr-only">{t("unread", { count })}</span>
-    </span>
-  );
-}
-
-export function UnreadTotalBadge() {
-  return <UnreadBadge count={useUnreadTotal()} />;
-}
 ```
 
 - Un cercle rouge avec le nombre. Rien à 0, et rien avant que l'onglet ait reçu l'info

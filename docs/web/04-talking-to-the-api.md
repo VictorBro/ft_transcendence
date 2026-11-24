@@ -63,7 +63,8 @@ flowchart LR
 ```
 
 Caddy (the reverse proxy, the "front door" of the site) sends every path that starts with `/api` to the
-API, and every other path to Next.js (see `infra/caddy/Caddyfile`). So:
+API (`/ws`, the live socket of chapter 3, too), and every other path to Next.js (see
+`infra/caddy/Caddyfile`). So:
 
 - From the **browser**, a client file just calls the short path `/api/courses`. Caddy routes it.
 - From the **Next.js server**, a server file calls `http://api:3001/api/courses` directly over the
@@ -120,14 +121,17 @@ The only place a code becomes a human sentence is the `Errors` part of `apps/web
 
 ```mermaid
 flowchart LR
-  A["API throws BadRequestException('password.tooShort')"] --> F["ErrorCodeFilter: message is a code"]
-  F --> J["JSON body: { statusCode: 400, message: 'password.tooShort' }"]
-  J --> R["readCode(body) in api-client.ts"]
+  A["API: CodeValidationPipe, the body fails PasswordSchema"] --> F["ErrorCodeFilter: message is already a code, sent as is"]
+  F --> J["JSON body: { statusCode: 400, message: ['password.tooShort'] }"]
+  J --> R["readCode(body) in api-client.ts: first code"]
   R --> RES["{ ok: false, code: 'password.tooShort', status: 400 }"]
   RES --> H["useErrorMessage() in error-message.ts"]
   H --> T["fr.json Errors.password.tooShort"]
   T --> S["Sentence shown in French"]
 ```
+
+A code can also come from the API's own code, like `throw new BadRequestException('avatar.invalidFile')`:
+then `message` is one string, not an array. `readCode` reads both.
 
 The browser layer also invents two codes of its own: `network.unreachable` (the request never got an
 answer) and `server.unexpected` (the answer was not what we expected). Both are in `ERROR_CODES` too.
@@ -244,7 +248,7 @@ reload works when the API is back.
 
 #### URL helpers
 
-`resolveApiBaseUrl(raw)` reads `API_INTERNAL_URL`; if it is empty it falls back to `http://api:3001` (the
+`resolveApiBaseUrl(raw)` gets the value of `API_INTERNAL_URL`; if it is unset or blank it falls back to `http://api:3001` (the
 Docker Compose service name), and it removes trailing slashes. `buildApiUrl(base, path)` joins the two and
 adds a missing leading `/`. `describeFetchError(error)` turns an error into a short reason, and names the
 timeout case: `'the request timed out'`.
@@ -418,7 +422,8 @@ It also has three pure helpers (no network):
 Callers: the `/learn` pages, `onboarding/page.tsx`, `dashboard-nav.tsx`, `lib/lesson.ts`.
 
 **Test:** [courses.test.ts](../../apps/web/lib/courses.test.ts) checks `findCourse`, the landing order
-(cookie, then `activeLang`, then first) and `landingPath`.
+(cookie, then `activeLang`, then first) and `landingPath`. It also tests `learnPathLang` and
+`courseHomeLang` from `lib/course-path.ts`.
 
 ### `friends.ts` — friends, search, profiles
 
@@ -653,6 +658,8 @@ const LoginResponseSchema = z.union([SessionUserSchema, TwoFactorRequiredSchema]
 /** The 202 branch of a login: password accepted, second factor still owed. */
 export type LoginResult = ApiResult<SessionUser> | { ok: 'twoFactor' };
 
+...
+
 export async function logIn(input: unknown): Promise<LoginResult> {
   const result = await clientPost(LoginResponseSchema, '/api/auth/login', input);
   if (!result.ok) {
@@ -708,7 +715,8 @@ right away, when the other person had already asked you). The three others answe
 one request between two people".
 
 Caller: `components/friend-buttons.tsx` (see Sequence 2). After each write it calls `router.refresh()`,
-even on failure, because a failure is "nearly always the other side moving first".
+even on failure, because a failure is "nearly always the other side moving first". The one exception is
+a network failure (`status: 0`): offline, the refresh could not reach the server either.
 
 **Test:** [friends-client.test.ts](../../apps/web/lib/friends-client.test.ts) checks the method and path
 of each call, the 204 as success, and errors as codes.
@@ -988,6 +996,13 @@ user's id.
 | placement-client.ts | `submitPlacementAnswer` | POST | `/api/placement/answers` | `PlacementState` |
 | placement-client.ts | `quitPlacement` | DELETE | `/api/placement` | 204 |
 
+Two components call `api-client.ts` directly, with no `*-client.ts` file:
+
+| File | Helper | Method | API route | Success answer |
+|---|---|---|---|---|
+| two-factor-panel.tsx | `clientGet` | GET | `/api/auth/2fa` | 2FA status |
+| goal-picker.tsx | `clientPatch` | PATCH | `/api/courses/:lang` (body: `dailyGoal`) | `Course` |
+
 And the server readers, for comparison (all GET, called from `http://api:3001`):
 
 | File | Function | API route |
@@ -1003,6 +1018,9 @@ And the server readers, for comparison (all GET, called from `http://api:3001`):
 | conversations.ts | `loadMessagePage` | `/api/conversations/:userId/messages` |
 | lessons.ts | `loadToday` | `/api/courses/:lang/today` |
 | lessons.ts | `loadLessonPage` | `/api/courses/:lang/lessons?...` |
+
+`lib/lesson.ts`, `lib/achievements.ts` and the placement page also read through `api.ts`. Chapters 6
+and 7 show them.
 
 ---
 

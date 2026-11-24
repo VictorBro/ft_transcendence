@@ -33,7 +33,7 @@
 | Fichier | Rôle | Auteur |
 |---|---|---|
 | [error-code.filter.ts](../../../../apps/api/src/error-code.filter.ts) | `ErrorCodeFilter` + fonctions `messageOf`, `isCoded`, `statusOf`, `fallbackCode`. | moi (#126) |
-| [validation.pipe.ts](../../../../apps/api/src/validation.pipe.ts) | `CodeValidationPipe` (#126), `LangParam` (#126/#128). `UserIdParam` a été ajouté ensuite par VictorBro (#155, amis). | moi + VictorBro |
+| [validation.pipe.ts](../../../../apps/api/src/validation.pipe.ts) | `CodeValidationPipe` (#126), `LangParam` (#126/#128). `UserIdParam` a été ajouté ensuite par VictorBro (#189, amis, ticket #155). | moi + VictorBro |
 | [app.setup.ts](../../../../apps/api/src/app.setup.ts) | **Branche** le pipe et le filtre pour toute l'app : `app.useGlobalPipes(new CodeValidationPipe())` et `app.useGlobalFilters(new ErrorCodeFilter(app.getHttpAdapter()))`. | équipe |
 | [app.module.ts](../../../../apps/api/src/app.module.ts) | `ThrottlerModule.forRoot({ …, errorMessage: 'server.rateLimited' })` : le throttler envoie lui aussi un code (#126). | équipe |
 | [main.ts](../../../../apps/api/src/main.ts) | Crée l'app et appelle `configureApp(app)` (dans `app.setup.ts`). | équipe |
@@ -110,12 +110,25 @@ Codes liés à ce socle :
 
 ```ts
 export const CodeValidationPipe = createZodValidationPipe({
+  // nestjs-zod types the error as unknown, so check it is Zod's before reading issues.
   createValidationException: (error: unknown) =>
     new BadRequestException(
       error instanceof ZodError
-        ? [...new Set(error.issues.map((issue) =>
-            isErrorCode(issue.message) ? issue.message : 'request.invalid'))]
-        : 'request.invalid',
+        ? [
+            // A Set keeps one copy of each code: three mistyped fields give one
+            // `request.invalid`, not three. Spread back into an array, which is
+            // what BadRequestException puts in `message`.
+            ...new Set(
+              error.issues.map((issue) =>
+                // An issue no rule names (the body is not an object, a key holds
+                // the wrong type) carries Zod's English default instead of a code.
+                isErrorCode(issue.message) ? issue.message : 'request.invalid',
+              ),
+            ),
+          ]
+        : // Never happens with nestjs-zod, which always passes a ZodError: a
+          // code anyway, so even this branch keeps the contract.
+          'request.invalid',
     ),
 });
 ```
@@ -142,15 +155,26 @@ Résultat :
 ## 5. `ErrorCodeFilter` en détail
 
 ```ts
+// No argument: catches every exception, not only one class of them.
 @Catch()
 export class ErrorCodeFilter extends BaseExceptionFilter {
+  // Nest's own name for its handler, so these lines read like the ones it logs.
+  private readonly logger = new Logger('ExceptionsHandler');
+
   override catch(exception: unknown, host: ArgumentsHost): void {
+    // Almost every error lands here: already coded, so Nest replies as usual.
     if (exception instanceof HttpException && isCoded(messageOf(exception.getResponse()))) {
-      super.catch(exception, host);       // déjà un code : Nest répond normalement
+      super.catch(exception, host);
       return;
     }
+
     const status = statusOf(exception);
-    if (status >= 500) this.logger.error(exception);   // un bug : on garde la stack
+    // A 500 is a bug: keep the stack in the log, as Nest's own handler does.
+    // A 4xx is the caller's mistake and needs no log.
+    if (status >= 500) {
+      this.logger.error(exception);
+    }
+    // Same status, coded message: the reply keeps Nest's { statusCode, message } shape.
     super.catch(new HttpException(fallbackCode(status), status), host);
   }
 }
@@ -231,7 +255,7 @@ sequenceDiagram
   participant CT as LessonsController
   participant F as ErrorCodeFilter
 
-  U->>W: ouvre /courses/klingon/today
+  U->>W: action qui appelle l API avec lang = klingon
   W->>G: GET /api/courses/klingon/today
   G->>P: session OK, quota OK
   P->>P: LanguageSchema.safeParse(klingon) échoue

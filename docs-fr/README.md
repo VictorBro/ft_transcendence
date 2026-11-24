@@ -5,8 +5,9 @@ Ceci est la version française de la documentation. La version anglaise est ici 
 Où se trouve chaque sujet, pour que chaque fait ait une seule place. Le [README](../README.md) à la
 racine du dépôt est le point d'entrée pour l'évaluation ; ce dossier contient le détail qui se cache derrière.
 
-GitHub Pages sert ce dossier depuis `main` à l'adresse <https://victorbro.github.io/ft_transcendence/>, donc
-tu peux lire les pages HTML ci-dessous là-bas sans cloner le dépôt.
+GitHub Pages sert le dossier anglais `docs/` depuis `main` à l'adresse <https://victorbro.github.io/ft_transcendence/>,
+donc tu peux lire là-bas les pages HTML de `docs/` sans cloner le dépôt. Ce dossier-ci n'est pas en ligne :
+ouvre son [index.html](index.html) depuis ton clone.
 
 ## Les dossiers
 
@@ -21,15 +22,31 @@ tu peux lire les pages HTML ci-dessous là-bas sans cloner le dépôt.
 | [subject/](subject/summary.md)                                  | Que demande le sujet de 42 ?                                                                   |
 | [transcendence-course/](../docs/transcendence-course/README.md) | Qu'a construit chaque membre de l'équipe, expliqué avec ses propres mots pour la soutenance ?  |
 | [site/](../docs/site/milestone1-data-model.html)                | Les pages et le script derrière le site GitHub Pages                                           |
+| [before-rework/](../docs/before-rework/README.md)               | Que disait la documentation avant cette refonte ? Une archive, plus mise à jour                |
 
 ## Tous les documents
 
 ### À la racine
 
-| Document                 | Ce qu'il couvre                                                                                                                         |
-| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
-| [index.html](index.html) | La page d'accueil du site GitHub Pages : le produit sur une page, les milestones et leurs issues avec leur état en direct depuis GitHub |
-| [backlog.md](backlog.md) | Le travail qu'on sait devoir faire, pas encore planifié                                                                                 |
+| Document                                       | Ce qu'il couvre                                                                                                                                                 |
+| ---------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [index.html](index.html)                       | La version française de la page d'accueil du site GitHub Pages : le produit sur une page, les milestones et leurs issues avec leur état en direct depuis GitHub |
+| [backlog.md](backlog.md)                       | Le travail qu'on sait devoir faire, pas encore planifié                                                                                                         |
+| [code-ownership.md](../docs/code-ownership.md) | Qui a touché quel fichier, et dans quelles pull requests : le point de départ de chaque dossier de transcendence-course/                                        |
+
+### api/
+
+| Document                                                                                                                                                                                                                                                                                                                           | Ce qu'il couvre                                                         |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| [api/README.md](api/README.md)                                                                                                                                                                                                                                                                                                     | L'ordre de lecture et ce que chaque chapitre apprend                    |
+| [01](api/01-big-picture.md), [02](api/02-boot-and-request-flow.md), [03](api/03-infrastructure.md), [04](api/04-database.md), [05](api/05-auth-and-users.md), [06](api/06-llm.md), [07](api/07-courses-placement.md), [08](api/08-lessons.md), [09](api/09-social-and-realtime.md), [10](api/10-tests.md), [11](api/11-scripts.md) | Les onze chapitres, de ce qu'est une API jusqu'aux tests et aux scripts |
+
+### web/
+
+| Document                                                                                                                                                                                                                                                                                | Ce qu'il couvre                                                                  |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| [web/README.md](web/README.md)                                                                                                                                                                                                                                                          | L'ordre de lecture et ce que chaque chapitre apprend                             |
+| [01](web/01-react-and-nextjs.md), [02](web/02-routing-layouts-i18n.md), [03](web/03-shell-components.md), [04](web/04-talking-to-the-api.md), [05](web/05-account-pages.md), [06](web/06-learning-pages.md), [07](web/07-lesson-player.md), [08](web/08-chat.md), [09](web/09-tests.md) | Les neuf chapitres, des bases de React jusqu'à chaque page, le chat et les tests |
 
 ### modules/
 
@@ -86,6 +103,12 @@ tu peux lire les pages HTML ci-dessous là-bas sans cloner le dépôt.
 | [site/milestone2-data-model.html](../docs/site/milestone2-data-model.html) | Leçons : les fichiers de leçon, le seed, les API des tentatives et de la discussion, la gamification |
 | [site/milestone3-data-model.html](../docs/site/milestone3-data-model.html) | Temps réel et social : événements du socket, amitiés, messages, présence                             |
 | [site/gh-status.js](../docs/site/gh-status.js)                             | Pas un document : les pages HTML le chargent pour afficher l'état des issues en direct depuis GitHub |
+
+### before-rework/
+
+| Document                                                   | Ce qu'il couvre                                                                                                                            |
+| ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| [before-rework/README.md](../docs/before-rework/README.md) | La documentation telle qu'elle était avant cette refonte (#152), avec son propre index. Gardée comme archive : elle n'est plus mise à jour |
 
 Chaque nombre, route, variable et nom de métrique dans ces documents vient du code sur `main`.
 Quand le code change, le document qui possède le sujet change dans la même pull request.

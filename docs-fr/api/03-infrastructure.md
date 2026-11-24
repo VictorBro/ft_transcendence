@@ -105,14 +105,14 @@ D'abord, une vérification avant tout le reste :
 ```ts
 function requireDatabaseUrl(): string {
   const url = process.env.DATABASE_URL;
-  if (url === undefined || url.trim() === "") {
-    throw new Error("DATABASE_URL is unset: the api cannot start. See .env.example.");
+  if (url === undefined || url.trim() === '') {
+    throw new Error('DATABASE_URL is unset: the api cannot start. See .env.example.');
   }
   return url;
 }
 ```
 
-Pourquoi : sans elle, le driver Postgres utilise ses propres valeurs par défaut et échoue plus tard avec une erreur qui parle de `localhost`, ce qui t'envoie déboguer la mauvaise chose. C'est une fonction libre (pas une méthode) parce que `super()` doit être la première ligne du constructeur.
+Pourquoi : sans elle, le driver Postgres utilise ses propres valeurs par défaut et échoue plus tard avec une erreur qui parle de `localhost`, ce qui t'envoie déboguer la mauvaise chose. C'est une fonction libre (pas une méthode) parce que la classe a une propriété (`logger`), donc `super()` doit être la première ligne du constructeur et rien ne peut tourner avant.
 
 ```ts
 @Injectable()
@@ -155,7 +155,7 @@ L'API se connecte au démarrage, pas à la première requête. Le commentaire ex
 
 **Qui l'utilise :** presque tous les services (`AuthService`, `LessonsService`, `MetricsCollector`, `HealthService`...).
 
-**Spec** ([prisma.service.spec.ts](../../apps/api/src/prisma/prisma.service.spec.ts)) : vérifie qu'il se connecte à l'init, se déconnecte à l'arrêt, que `ping` donne une latence, et qu'un ping qui échoue est rejeté.
+**Spec** ([prisma.service.spec.ts](../../apps/api/src/prisma/prisma.service.spec.ts)) : vérifie qu'il se connecte à l'init, se déconnecte à l'arrêt, que `ping` donne une latence, qu'un ping qui échoue est rejeté, et qu'il refuse d'être construit quand `DATABASE_URL` est absente, vide ou faite d'espaces.
 
 ## redis/ — la mémoire rapide partagée
 
@@ -171,10 +171,10 @@ Dans cette API, Redis contient :
 | ------------------------------------ | ------------------- | ----------------------------------------------------------------------------------------- |
 | Sessions                             | `sess:<id>`         | [app.setup.ts](../../apps/api/src/app.setup.ts) (connect-redis)                           |
 | Compteurs de présence en ligne       | `presence:<userId>` | [presence.service.ts](../../apps/api/src/presence/presence.service.ts)                    |
-| État d'un test de placement en cours | —                   | [placement-session.service.ts](../../apps/api/src/placement/placement-session.service.ts) |
-| Limites de discussion des leçons     | —                   | [discussion.service.ts](../../apps/api/src/lessons/discussion.service.ts)                 |
+| État d'un test de placement en cours | `user:<userId>:eval` (+ `:eval_questions`, `:eval_lock`) | [placement-session.service.ts](../../apps/api/src/placement/placement-session.service.ts) |
+| Limites de discussion des leçons | `discussion:user:<userId>:minute`, `discussion:global:minute` | [discussion-limits.ts](../../apps/api/src/lessons/discussion-limits.ts) |
 
-La gateway des sockets l'utilise aussi. Chacun de ces usages est expliqué dans son propre chapitre.
+La gateway des sockets l'utilise aussi : elle vérifie que la clé `sess:<id>` d'un socket existe encore. Chacun de ces usages est expliqué dans son propre chapitre.
 
 ### redis.module.ts
 
@@ -213,7 +213,7 @@ export class RedisService implements OnModuleInit, OnModuleDestroy {
 
 `onModuleInit` appelle `client.connect()`, `onModuleDestroy` appelle `client.close()`, et `ping()` mesure `client.ping()` en millisecondes, exactement comme celui de Prisma.
 
-**Spec** ([redis.service.spec.ts](../../apps/api/src/redis/redis.service.spec.ts)) : connexion à l'init, fermeture à l'arrêt, `ping` renvoie une latence finie, un ping qui échoue est rejeté.
+**Spec** ([redis.service.spec.ts](../../apps/api/src/redis/redis.service.spec.ts)) : connexion à l'init, fermeture à l'arrêt, `ping` renvoie une latence finie, un ping qui échoue est rejeté, et il refuse d'être construit quand `REDIS_URL` est absente, vide ou faite d'espaces.
 
 ## throttler/ — le rate limiting
 
@@ -253,11 +253,11 @@ La configuration globale est dans `AppModule` ([02-boot-and-request-flow.md](02-
 ```ts
 export const RATE_LIMITS = {
   /** Requests a minute on every route, per account, or per address when signed out. */
-  perAccount: readLimit(process.env, "RATE_LIMIT_PER_MINUTE", 100),
+  perAccount: readLimit(process.env, 'RATE_LIMIT_PER_MINUTE', 100),
   /** ... */
-  signup: readLimit(process.env, "SIGNUP_LIMIT_PER_MINUTE", 20),
+  signup: readLimit(process.env, 'SIGNUP_LIMIT_PER_MINUTE', 20),
   /** Password or 2FA code checks a minute per address, on each route that makes one. */
-  login: readLimit(process.env, "LOGIN_LIMIT_PER_MINUTE", 5),
+  login: readLimit(process.env, 'LOGIN_LIMIT_PER_MINUTE', 5),
 } as const;
 ```
 
@@ -270,15 +270,15 @@ export const RATE_LIMITS = {
 `readLimit` lit une variable :
 
 ```ts
-const raw = env[name]?.trim();
-if (raw === undefined || raw === "") {
-  return fallback;
-}
-const value = Number(raw);
-if (!/^\d+$/.test(raw) || !Number.isSafeInteger(value) || value < 1) {
-  throw new Error(`${name} must be a positive integer, not "${raw}"`);
-}
-return value;
+  const raw = env[name]?.trim();
+  if (raw === undefined || raw === '') {
+    return fallback;
+  }
+  const value = Number(raw);
+  if (!/^\d+$/.test(raw) || !Number.isSafeInteger(value) || value < 1) {
+    throw new Error(`${name} must be a positive integer, not "${raw}"`);
+  }
+  return value;
 ```
 
 - Non définie ou vide → la valeur par défaut.
@@ -294,7 +294,7 @@ Les valeurs sont lues une seule fois, quand le fichier est importé. Le commenta
 [throttle-by-ip.decorator.ts](../../apps/api/src/throttler/throttle-by-ip.decorator.ts) exporte `THROTTLE_BY_IP` (une clé de métadonnée) et le décorateur `ThrottleByIp`.
 
 ```ts
-export const THROTTLE_BY_IP = "throttle:by-ip";
+export const THROTTLE_BY_IP = 'throttle:by-ip';
 
 export function ThrottleByIp(limit: number, ttl = 60_000) {
   return applyDecorators(Throttle({ default: { limit, ttl } }), SetMetadata(THROTTLE_BY_IP, true));
@@ -307,7 +307,9 @@ export function ThrottleByIp(limit: number, ttl = 60_000) {
 
 **Pourquoi compter par IP sur ces routes ?** Le commentaire l'explique avec une attaque : sur une route qui vérifie un mot de passe, si on comptait par compte, un attaquant avec N comptes aurait N budgets, donc « 5 par minute » deviendrait 5×N. Compter par machine donne un seul budget, quel que soit le compte utilisé.
 
-Il est utilisé sur `login`, `signup`, `2fa/verify` et d'autres routes qui vérifient un secret (voir [05-auth-and-users.md](05-auth-and-users.md)).
+Il est utilisé sur les cinq routes qui vérifient un secret : `POST /api/auth/signup` (limite `signup`), et `POST /api/auth/login`, `POST /api/auth/2fa/verify`, `POST /api/auth/2fa/enable`, `DELETE /api/auth/2fa` (limite `login`). Voir [05-auth-and-users.md](05-auth-and-users.md).
+
+Une autre route fixe sa propre limite avec le simple `@Throttle` de la bibliothèque, donc elle reste comptée par compte : `POST /api/friends/requests/:userId`, 10 par minute.
 
 Pourquoi sa propre clé de métadonnée et pas celle de la bibliothèque ? Le commentaire donne trois façons dont la clé de la bibliothèque pourrait échouer sans bruit (son nom dépend du nom du throttler, elle n'est pas exportée, et elle est absente quand seul un ttl est défini).
 
@@ -397,9 +399,9 @@ sequenceDiagram
 
 ### Que sont les métriques et Prometheus ?
 
-Les **métriques** sont des chiffres qui décrivent l'app dans le temps : « combien de requêtes par seconde », « combien de temps prend le login », « combien d'utilisateurs sont en ligne ». **Prometheus** est un programme qui, toutes les quelques secondes, visite une URL de l'app (`/metrics`), lit tous les chiffres, et les enregistre avec l'heure. Ensuite, Grafana dessine des graphiques et des alertes se déclenchent quand un chiffre semble mauvais.
+Les **métriques** sont des chiffres qui décrivent l'app dans le temps : « combien de requêtes par seconde », « combien de temps prend le login », « combien d'utilisateurs sont en ligne ». **Prometheus** est un programme qui, ici toutes les 30 secondes, visite une URL de l'app (`/metrics`), lit tous les chiffres, et les enregistre avec l'heure. Ensuite, Grafana dessine des graphiques et des alertes se déclenchent quand un chiffre semble mauvais.
 
-Analogie : le tableau de bord d'une voiture. La voiture n'enregistre pas une vidéo du trajet ; elle montre quelques jauges (vitesse, essence, température). Prometheus est un passager qui note les jauges toutes les 15 secondes.
+Analogie : le tableau de bord d'une voiture. La voiture n'enregistre pas une vidéo du trajet ; elle montre quelques jauges (vitesse, essence, température). Prometheus est un passager qui note les jauges toutes les 30 secondes (`scrape_interval: 30s` dans [prometheus.yml](../../infra/monitoring/prometheus/prometheus.yml)).
 
 Les principaux types de métriques (de la bibliothèque `@prometheus-io/client`) :
 
@@ -421,11 +423,11 @@ http_request_duration_seconds_count{method="POST",route="/api/auth/login",status
 flowchart LR
     subgraph API["container api"]
         MW["middleware httpMetrics"] --> REG["registry (metrics.ts)"]
-        SV["services : LLM, placement, lessons, gateway"] --> REG
+        SV["services : LLM, placement, génération de questions, lessons, gateway"] --> REG
         COL["MetricsCollector (lit Postgres au scrape)"] --> REG
         REG --> MS["serveur de métriques :9464 /metrics"]
     end
-    PROM["Prometheus"] -- "scrape toutes les quelques secondes" --> MS
+    PROM["Prometheus"] -- "scrape toutes les 30 s" --> MS
     PROM --> GRAF["dashboards Grafana + alertes"]
 ```
 
@@ -441,9 +443,9 @@ flowchart LR
 export const registry = new Registry();
 
 export const httpRequestDuration = new Histogram({
-  name: "http_request_duration_seconds",
-  help: "HTTP requests by method, route template and final status code",
-  labelNames: ["method", "route", "status_code"] as const,
+  name: 'http_request_duration_seconds',
+  help: 'HTTP requests by method, route template and final status code',
+  labelNames: ['method', 'route', 'status_code'] as const,
   registers: [registry],
 });
 ```
@@ -458,9 +460,9 @@ Les métriques exportées :
 | `httpRequestsInFlight`    | Gauge                    | —                                 | middleware `httpMetrics`                                |
 | `wsConnections`           | Gauge                    | —                                 | gateway des sockets ([09](09-social-and-realtime.md))   |
 | `wsEvents`                | Counter                  | direction, event, outcome         | gateway des sockets                                     |
-| `llmRequests`             | Counter                  | provider, model, purpose, outcome | providers LLM ([06](06-llm.md))                         |
-| `llmRequestDuration`      | Histogram (0,5 s à 90 s) | provider, model, purpose          | providers LLM                                           |
-| `llmTokens`               | Counter                  | provider, model, purpose, type    | providers LLM                                           |
+| `llmRequests`             | Counter                  | provider, model, purpose, outcome | `gemini.provider.ts` ([06](06-llm.md)) |
+| `llmRequestDuration`      | Histogram (0,5 s à 90 s) | provider, model, purpose          | `gemini.provider.ts` |
+| `llmTokens`               | Counter                  | provider, model, purpose, type    | `gemini.provider.ts` |
 | `llmProviderInfo`         | Gauge (toujours 1)       | provider, model                   | `llm.factory.ts`                                        |
 | `discussionLimited`       | Counter                  | limit                             | discussion des leçons ([08](08-lessons.md))             |
 | `questionRestocks`        | Counter                  | lang, level, category, status     | génération de questions ([07](07-courses-placement.md)) |
@@ -520,7 +522,7 @@ Une `Map` JavaScript garde l'ordre d'insertion. Supprimer puis remettre déplace
 export function httpMetrics(req: Request, res: Response, next: NextFunction): void {
   const stop = httpRequestDuration.startTimer({ method: methodOf(req) });
   httpRequestsInFlight.inc();
-  res.once("close", () => {
+  res.once('close', () => {
     httpRequestsInFlight.dec();
     // 499: the client left before the reply finished.
     const status = res.writableFinished ? res.statusCode : 499;
@@ -537,8 +539,8 @@ export function httpMetrics(req: Request, res: Response, next: NextFunction): vo
 ```ts
 /** The template, never the URL: ids and query strings would make a series per request. */
 export function routeOf(req: Request, status: number): string {
-  if (req.route?.path) return `${req.baseUrl ?? ""}${req.route.path}`;
-  return status < 400 ? "static" : "unmatched";
+  if (req.route?.path) return `${req.baseUrl ?? ''}${req.route.path}`;
+  return status < 400 ? 'static' : 'unmatched';
 }
 ```
 
@@ -560,29 +562,31 @@ Le label route est le _template_ (`/api/users/:id`), pas la vraie URL (`/api/use
  */
 export function startMetricsServer(port: number): Promise<Server> {
   const server = createServer((req, res) => {
-    if (req.method !== "GET" || req.url !== "/metrics") {
+    if (req.method !== 'GET' || req.url !== '/metrics') {
       res.writeHead(404).end();
       return;
     }
     registry.metrics().then(
-      (body) => res.writeHead(200, { "content-type": registry.contentType }).end(body),
+      (body) => res.writeHead(200, { 'content-type': registry.contentType }).end(body),
       () => res.writeHead(500).end(),
     );
   });
   return new Promise((resolve, reject) => {
-    server.once("error", reject);
-    server.listen(port, "0.0.0.0", () => resolve(server));
+    server.once('error', reject);
+    server.listen(port, '0.0.0.0', () => resolve(server));
   });
 }
 ```
 
-Il utilise le simple module `http` de Node, pas Nest. Seul `GET /metrics` marche ; tout le reste donne 404. `registry.metrics()` construit le texte (et lance les collectors plus bas). Comme il est sur un port séparé que seul Prometheus peut joindre dans le réseau Docker, il n'a besoin ni de login ni de rate limit. `main.ts` le démarre après `listen`.
+Il utilise le simple module `http` de Node, pas Nest. Seul `GET /metrics` marche ; tout le reste donne 404. `registry.metrics()` construit le texte (et lance les collectors plus bas). Comme il est sur un port séparé que seul Prometheus peut joindre dans le réseau Docker, il n'a besoin ni de login ni de rate limit.
 
-**Spec** ([metrics-server.spec.ts](../../apps/api/src/metrics/metrics-server.spec.ts)) : sert le registry avec le bon content type, répond 500 quand le registry échoue, est rejeté quand le port est déjà pris.
+`main.ts` fait trois choses après `listen`, pour qu'un démarrage raté ne laisse jamais un port de métriques ouvert : `collectDefaultMetrics({ register: registry })` ajoute les métriques standard du process Node de la bibliothèque (mémoire, CPU, event loop...), `appInfo` est mis à 1 avec la version, et `startMetricsServer(METRICS_PORT)` démarre. Si le port échoue, l'erreur est seulement écrite dans les logs : le monitoring ne doit jamais faire tomber l'app.
+
+**Spec** ([metrics-server.spec.ts](../../apps/api/src/metrics/metrics-server.spec.ts)) : sert le registry avec le bon content type, répond 404 à un autre chemin ou une autre méthode, répond 500 quand le registry échoue, est rejeté quand le port est déjà pris.
 
 ### metrics.collector.ts — des chiffres lus dans la base
 
-[metrics.collector.ts](../../apps/api/src/metrics/metrics.collector.ts) exporte `MetricsCollector`, un service Nest (il a besoin de `PrismaService`). Il crée trois gauges dont la valeur est calculée **quand Prometheus fait son scrape** (la fonction `collect`), au lieu d'être mise à jour quand quelque chose se passe :
+[metrics.collector.ts](../../apps/api/src/metrics/metrics.collector.ts) exporte `MetricsCollector`, un service Nest (il a besoin de `PrismaService`). Dans `onModuleInit`, il crée trois gauges dont la valeur est calculée **quand Prometheus fait son scrape** (la fonction `collect`), au lieu d'être mise à jour quand quelque chose se passe :
 
 | Gauge                        | Valeur                                                                                              |
 | ---------------------------- | --------------------------------------------------------------------------------------------------- |
@@ -591,18 +595,18 @@ Il utilise le simple module `http` de Node, pas Nest. Seul `GET /metrics` marche
 | `ft_active_users`            | `countActiveUsers()` de metrics.ts.                                                                 |
 
 ```ts
-new Gauge({
-  name: USERS,
-  help: "Accounts",
-  registers: [registry],
-  collect: this.guarded(
-    USERS,
-    cached(CACHE_MS, async (gauge: Gauge) => gauge.set(await this.prisma.user.count())),
-  ),
-});
+    new Gauge({
+      name: USERS,
+      help: 'Accounts',
+      registers: [registry],
+      collect: this.guarded(
+        USERS,
+        cached(CACHE_MS, async (gauge: Gauge) => gauge.set(await this.prisma.user.count())),
+      ),
+    });
 ```
 
-Deux wrappers (fonctions qui en enveloppent une autre) protègent les requêtes à la base :
+Deux wrappers (fonctions qui en enveloppent une autre) protègent les requêtes à la base des deux premières gauges (`ft_active_users` lit seulement la mémoire, donc elle n'en a pas) :
 
 - `cached(ttlMs, collect)` : lance la requête au plus une fois par minute (`CACHE_MS = 60_000`), et jamais deux fois en même temps. Entre les deux, la gauge garde sa dernière valeur. Les questions et les comptes changent lentement, donc une requête par minute suffit.
 - `guarded(name, collect)` : si la requête échoue ou prend plus de 3 s (`COLLECT_TIMEOUT_MS`), il écrit un avertissement dans les logs et garde la dernière valeur. Le commentaire explique : un `collect` qui échoue ferait échouer _tout_ le scrape, et Prometheus croirait que l'API est en panne alors que seul Postgres avait un petit problème.
@@ -635,7 +639,7 @@ flowchart TD
 Un **health check** est un petit endpoint qui répond à « est-ce que je marche ? ». D'autres outils l'appellent encore et encore :
 
 - Le `HEALTHCHECK` de Docker décide si le container est en bonne santé.
-- La CI l'attend avant de lancer les tests.
+- La CI l'attend avant de lancer les tests e2e (`docker compose up --wait` attend ce `HEALTHCHECK`).
 - Les dashboards l'affichent.
 
 Analogie : une infirmière qui passe toutes les quelques minutes et demande « comment tu te sens ? ». Le patient répond, et dit aussi comment vont le cœur (Postgres) et les poumons (Redis).
@@ -649,18 +653,18 @@ Analogie : une infirmière qui passe toutes les quelques minutes et demande « c
 [health.controller.ts](../../apps/api/src/health/health.controller.ts) exporte `HealthController`, route `GET /api/health`.
 
 ```ts
-@ApiTags("health")
+@ApiTags('health')
 // The Docker HEALTHCHECK has no session and must never get a 401.
 @Public()
 // The Docker HEALTHCHECK and CI poll this endpoint. Sharing the per-IP throttle
 // budget with real traffic would make container health depend on load.
 @SkipThrottle()
-@Controller("health")
+@Controller('health')
 export class HealthController {
   constructor(private readonly health: HealthService) {}
 
   @Get()
-  @ApiOperation({ summary: "Liveness probe", security: [] })
+  @ApiOperation({ summary: 'Liveness probe', security: [] })
   @ApiOkResponse({ type: HealthResponseDto })
   // Always 200, including when a dependency is down: the body carries the
   // verdict. A non-2xx here would make Docker restart a container whose only

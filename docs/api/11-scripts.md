@@ -335,7 +335,8 @@ sequenceDiagram
 - `locate(id)` finds an id in its language's six outlines (`fr-greetings` → `fr`, its level,
   its entry).
 - `filesOf(entry)` answers `'none'`, `'partial'` or `'complete'`. "Partial" (a brief without
-  its content, or a vocabulary lesson with a content file it should not have) is left alone.
+  its content, or the reverse, or a vocabulary lesson with a content file it should not have) is
+  left alone.
 - `readUsedTitles(lang)` reads every brief's title, **folded** (case and accents removed with
   `foldText`), so "Les métiers" and "les metiers" count as the same.
 - `writeLesson` formats the JSON with **prettier**, using the repo's own prettier config, so the
@@ -360,14 +361,14 @@ passes, and the reply format:
     .join('\n\n');
 ```
 
-It also lists what the program computes (so the model may leave it out), and "What the checks
-cannot see": one correct answer per exam gap, every accepted spelling, agreement, no false
-"only" or "never", and the French help text using **tu**.
+It also lists what the program computes (so the model may leave it out), asks for French help
+text that uses **tu**, and lists "What the checks cannot see": one correct answer per exam gap,
+every accepted spelling, agreement, no false "only" or "never".
 
 The **lesson prompt** holds what changes per lesson: the outline entry, the **five entries on
 each side** (so the model neither repeats them nor teaches what comes later), and the titles
-already taken. The **issues prompt** lists what is still wrong and asks for `edits` when only a
-few things are wrong.
+already taken. The **issues prompt** lists what is still wrong and the edits that could not
+apply, and asks for `edits` rather than a whole new lesson.
 
 ### 5.4 [providers/chat.ts](../../apps/api/scripts/lessons/providers/chat.ts): the interface
 
@@ -501,7 +502,7 @@ The model is not asked to write what the code knows or can compute exactly. `com
 - the **provenance**: generator, model, prompt version, date, and `inputHashes` (the sha256 of
   the outline entry, and for the content also of the final brief, "since the content is written
   from the brief");
-- the **scoring** weights (practice 35, exam 65);
+- the **scoring** (practice weight 35, exam weight 65, orthography credit 0.5);
 - every **duration** (via `computeTimes`).
 
 A vocabulary lesson has no content file, so a content file the model sent is dropped. The
@@ -562,6 +563,7 @@ How it works:
   yet, and a placeholder `estimatedMinutes` lets the rest be checked. It prints "the brief
   passes; write the content next".
 - `--write` refuses if the lesson already has files.
+- `--model` names the writer in the provenance (default `claude-code`).
 - Exit code 1 while anything is left to fix.
 
 The header gives one warning: on committed files `complete` runs again and recomputes every

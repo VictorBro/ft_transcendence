@@ -134,7 +134,7 @@ sequenceDiagram
 Why the grace period? When you reload a page, the old socket closes and a new one opens
 a moment later. Without the wait, your friends would see you go offline and come back
 online at every reload. The count of open sockets lives in **Redis** (`presence:<userId>`),
-not in memory, so it is shared and survives the way the API is built.
+not in the API's memory.
 
 ---
 
@@ -189,7 +189,7 @@ flowchart TD
 
 Also, other modules use `SocketsService` to push events: `courses.service.ts` and
 `lessons/attempts.service.ts` send `course:updated`, and `auth.controller.ts` calls
-`closeSession()` on login, logout and 2FA changes (see chapters 5, 7 and 8).
+`closeSession()` on signup, login, logout and 2FA changes (see chapters 5, 7 and 8).
 
 ---
 
@@ -687,6 +687,9 @@ export const PRESENCE_GRACE_MS = 10_000;
 const presenceKey = (userId: string): string => `presence:${userId}`;
 ```
 
+The e2e test `e2e/tests/friends.spec.ts` cannot import the API, so it keeps its own copy of
+`PRESENCE_GRACE_MS`. Change both together.
+
 | Method | What it does | Redis command |
 | --- | --- | --- |
 | `onApplicationBootstrap()` | At start, delete every `presence:*` key. No socket survives a restart, but a crash may have left counts behind. | `SCAN` + `DEL` |
@@ -819,12 +822,13 @@ friend route takes only a user id in the path.
 
 [friends.controller.ts](../../apps/api/src/friends/friends.controller.ts) defines five
 routes under `/api/friends`. All need a session (the global `AuthGuard`, Chapter 5).
-The other user is always in the path, checked by `UserIdParam` (Chapter 2).
+The other user is always in the path, checked by `UserIdParam` (Chapter 2): a path that is not a
+user id gets 400.
 
 | Method and path | Service call | Success | Errors |
 | --- | --- | --- | --- |
 | `GET /api/friends` | `list(me)` | 200 `{ friends, received, sent }` | 401 |
-| `POST /api/friends/requests/:userId` | `send(me, them)` | 201 `{ status: 'pending' \| 'accepted' }` | 400 `friend.self`, 404 `user.notFound`, 409 `friend.alreadyRequested` / `friend.alreadyFriends` |
+| `POST /api/friends/requests/:userId` | `send(me, them)` | 201 `{ status: 'pending' \| 'accepted' }` | 400 `friend.self`, 404 `user.notFound` (or `friend.requestNotFound` if their request was cancelled meanwhile), 409 `friend.alreadyRequested` / `friend.alreadyFriends` |
 | `POST /api/friends/requests/:userId/accept` | `accept(me, them)` | 204 | 404 `friend.requestNotFound` |
 | `DELETE /api/friends/requests/:userId` | `deleteRequest(me, them)` | 204 (declined or cancelled) | 404 `friend.requestNotFound` |
 | `DELETE /api/friends/:userId` | `remove(me, them)` | 204 | 404 `friend.notFound` |
@@ -1051,7 +1055,13 @@ export const SEND_LIMIT_PER_MINUTE = 30;
 ...
   /** One `event` from the account, refused past its budget of a minute, from all its sockets together. */
   private async spend(event: string, me: string, limit: number): Promise<void> {
-    const { isBlocked } = await this.throttler.increment(`${event}:${me}`, 60_000, limit, 60_000, 'default');
+    const { isBlocked } = await this.throttler.increment(
+      `${event}:${me}`,
+      60_000,
+      limit,
+      60_000,
+      'default',
+    );
     if (isBlocked) {
       throw new HttpException('server.rateLimited', HttpStatus.TOO_MANY_REQUESTS);
     }
@@ -1255,7 +1265,8 @@ with a Zod schema for each payload. The browser and the API import the same file
 | `app:error` | server → client | `{ code }` | `refuse()` | An event without ack was refused (rate limit, bad payload, error) |
 
 Two rules from the comment at the top of that file: the server never uses Socket.IO's
-reserved names (`connect`, `disconnect`, `error`...), which is why errors use `app:error`;
+reserved names (`connect`, `connect_error`, `disconnect`...), which is why errors use
+`app:error` and not `error`;
 and no client event may be called `error`, because it would crash the server.
 
 Socket.IO's own events are also used: the handshake refusal arrives in the browser as

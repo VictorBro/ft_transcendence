@@ -73,18 +73,18 @@ Un component est une fonction qui renvoie du **JSX**. Le JSX ressemble à du HTM
 
 ```tsx
 export default function LocaleNotFound() {
-  const t = useTranslations("NotFoundPage");
+  const t = useTranslations('NotFoundPage');
 
   return (
     <Shell brand={<Wordmark />} footer={<LegalFooter />}>
       <div className="flex flex-col items-center gap-4 py-24 text-center">
-        <h1 className="text-3xl font-semibold tracking-tight">{t("heading")}</h1>
-        <p className="max-w-md text-slate-400">{t("intro")}</p>
+        <h1 className="text-3xl font-semibold tracking-tight">{t('heading')}</h1>
+        <p className="max-w-md text-slate-400">{t('intro')}</p>
         <Link
           href="/"
           className="mt-2 rounded-full bg-indigo-700 px-6 py-2 text-sm font-semibold text-white transition-colors hover:bg-indigo-800"
         >
-          {t("goHome")}
+          {t('goHome')}
         </Link>
       </div>
     </Shell>
@@ -153,7 +153,7 @@ Un **hook** est une fonction dont le nom commence par `use`. Les hooks permetten
 ```tsx
 export function LogOutButton() {
   const router = useRouter();
-  const t = useTranslations("LogOutButton");
+  const t = useTranslations('LogOutButton');
   const [pending, setPending] = useState(false);
 
   async function onClick() {
@@ -163,7 +163,7 @@ export function LogOutButton() {
       closeSocket();
       // Home rather than the current page, which may well have needed the
       // session that just ended.
-      router.replace("/");
+      router.replace('/');
       router.refresh();
     } finally {
       setPending(false);
@@ -173,7 +173,7 @@ export function LogOutButton() {
   return (
     <button type="button" onClick={() => void onClick()} disabled={pending} className={MENU_ROW}>
       <MenuIcon name="signOut" />
-      {pending ? t("signingOut") : t("signOut")}
+      {pending ? t('signingOut') : t('signOut')}
     </button>
   );
 }
@@ -211,24 +211,24 @@ Le rendu doit être « pur » : calculer du JSX à partir des props et du state,
 [time-zone-sync.tsx](../../apps/web/components/time-zone-sync.tsx) lit le fuseau horaire du navigateur et l'enregistre s'il est différent de celui stocké :
 
 ```tsx
-useEffect(() => {
-  // Older browsers may not resolve a zone: there is nothing to send then.
-  const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-  if (!timeZone || timeZone === storedTimeZone || inFlight.current || rejected.current) {
-    return;
-  }
-
-  inFlight.current = true;
-  // A failure needs no message: the next page tries again, unless it was a 400.
-  void updateProfile({ timeZone }).then((result) => {
-    inFlight.current = false;
-    if (result.ok) {
-      router.refresh();
-    } else if (result.status === 400) {
-      rejected.current = true;
+  useEffect(() => {
+    // Older browsers may not resolve a zone: there is nothing to send then.
+    const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    if (!timeZone || timeZone === storedTimeZone || inFlight.current || rejected.current) {
+      return;
     }
-  });
-}, [storedTimeZone, router, pathname]);
+
+    inFlight.current = true;
+    // A failure needs no message: the next page tries again, unless it was a 400.
+    void updateProfile({ timeZone }).then((result) => {
+      inFlight.current = false;
+      if (result.ok) {
+        router.refresh();
+      } else if (result.status === 400) {
+        rejected.current = true;
+      }
+    });
+  }, [storedTimeZone, router, pathname]);
 ```
 
 Le fuseau horaire n'existe que dans le navigateur, donc ce code ne peut pas tourner pendant le rendu serveur : un effect est le bon endroit. Les deps `[storedTimeZone, router, pathname]` veulent dire « relance quand l'une de ces valeurs change », donc il réessaie après chaque changement de page.
@@ -236,18 +236,18 @@ Le fuseau horaire n'existe que dans le navigateur, donc ce code ne peut pas tour
 Un effect peut renvoyer une fonction de **cleanup** (nettoyage). React l'appelle avant le passage suivant et quand le component disparaît (il est **démonté**, unmount). [exam-timer.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/play/exam-timer.tsx>) démarre un timer et l'arrête dans le cleanup :
 
 ```tsx
-useEffect(() => {
-  if (ranOut) return;
-  const interval = setInterval(() => {
-    const now = Math.max(0, Math.ceil((deadline - Date.now()) / 1000));
-    setSeconds(now);
-    if (now === 0) {
-      clearInterval(interval);
-      zero();
-    }
-  }, 250);
-  return () => clearInterval(interval);
-}, [deadline, ranOut]);
+  useEffect(() => {
+    if (ranOut) return;
+    const interval = setInterval(() => {
+      const now = Math.max(0, Math.ceil((deadline - Date.now()) / 1000));
+      setSeconds(now);
+      if (now === 0) {
+        clearInterval(interval);
+        zero();
+      }
+    }, 250);
+    return () => clearInterval(interval);
+  }, [deadline, ranOut]);
 ```
 
 ### Les autres hooks utilisés dans l'app
@@ -266,11 +266,12 @@ Une recherche dans `apps/web` (`app`, `components`, `lib`) trouve ces hooks. Cha
 | `useLayoutEffect`      | react            | Comme `useEffect`, mais tourne avant que le navigateur dessine                                   | garder la position du scroll dans [chat-thread.tsx](<../../apps/web/app/[locale]/(messages)/chat/chat-thread.tsx>)     |
 | `useSyncExternalStore` | react            | Lire une valeur qui vit hors de React et refaire le rendu quand elle change                      | état du socket, compteurs de non-lus dans [tab-socket.ts](../../apps/web/components/tab-socket.ts)                     |
 | `useEffectEvent`       | react            | Une fonction qu'un effect peut appeler, qui voit toujours les dernières props, sans être une dep | `zero` dans exam-timer.tsx                                                                                             |
-| `useRouter`            | next-intl / next | Aller sur une autre page ou rafraîchir les données du serveur depuis le code                     | `router.replace('/')` dans log-out-button.tsx                                                                          |
-| `usePathname`          | next-intl        | Le chemin actuel de l'URL (sans la locale)                                                       | déclencheur dans time-zone-sync.tsx                                                                                    |
+| `useRouter`            | next-intl (via `@/i18n/navigation`) | Aller sur une autre page ou rafraîchir les données du serveur depuis le code                     | `router.replace('/')` dans log-out-button.tsx                                                                          |
+| `usePathname`          | next-intl (via `@/i18n/navigation`) | Le chemin actuel de l'URL (sans la locale)                                                       | déclencheur dans time-zone-sync.tsx                                                                                    |
 | `useSearchParams`      | next/navigation  | Lire la partie `?a=b` de l'URL                                                                   | [live-form.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/live-form.tsx>)                          |
 | `useTranslations`      | next-intl        | Obtenir la fonction `t()` pour une partie du catalogue de textes                                 | presque tous les components                                                                                            |
 | `useLocale`            | next-intl        | La langue actuelle (`en`, `fr`, `de`)                                                            | [language-switcher.tsx](../../apps/web/components/language-switcher.tsx)                                               |
+| `useFormatter` | next-intl | Formater les dates et les nombres dans la langue actuelle | l'heure des messages dans [chat-thread.tsx](<../../apps/web/app/[locale]/(messages)/chat/chat-thread.tsx>) |
 
 `useActionState`, `useOptimistic`, `useFormStatus` et `use()` ne sont **pas** utilisés dans cette app.
 
@@ -281,15 +282,15 @@ Quelques mots de plus sur les moins courants :
 **`useRef`** est une boîte avec un champ `.current`. Changer `.current` ne refait pas de rendu. Dans [refresh-on.tsx](../../apps/web/components/refresh-on.tsx), il retient « le socket était-il absent avant ? » entre deux rendus :
 
 ```tsx
-const seen = useRef(false);
-const wasAway = useRef(false);
+  const seen = useRef(false);
+  const wasAway = useRef(false);
 
-// Once, however many events: one refresh per reconnect.
-useEffect(() => {
-  if (status === "connected" && wasAway.current) router.refresh();
-  if (status === "connected") seen.current = true;
-  wasAway.current = seen.current && status !== "connected";
-}, [status, router]);
+  // Once, however many events: one refresh per reconnect.
+  useEffect(() => {
+    if (status === 'connected' && wasAway.current) router.refresh();
+    if (status === 'connected') seen.current = true;
+    wasAway.current = seen.current && status !== 'connected';
+  }, [status, router]);
 ```
 
 Il peut aussi pointer vers un élément du DOM : `const form = useRef<HTMLFormElement>(null)` dans live-form.tsx, puis `<form ref={form}>`.
@@ -301,7 +302,7 @@ export function useSocketStatus(): SocketStatus {
   return useSyncExternalStore(
     subscribe,
     () => status,
-    () => "closed",
+    () => 'closed',
   );
 }
 ```
@@ -333,13 +334,13 @@ Une key peut aussi servir exprès à _réinitialiser_ un component : une nouvell
 Tu passes une fonction à une prop d'événement : `onClick`, `onSubmit`, `onChange`, `onKeyDown`... React l'appelle avec un objet **event** (événement). Passe la fonction, ne l'appelle pas : `onClick={reset}`, pas `onClick={reset()}`. Tiré de [error.tsx](../../apps/web/app/[locale]/error.tsx) :
 
 ```tsx
-<button
-  type="button"
-  onClick={reset}
-  className="rounded-full bg-indigo-700 px-6 py-2 font-semibold text-white transition-colors hover:bg-indigo-800"
->
-  {t("tryAgain")}
-</button>
+          <button
+            type="button"
+            onClick={reset}
+            className="rounded-full bg-indigo-700 px-6 py-2 font-semibold text-white transition-colors hover:bg-indigo-800"
+          >
+            {t('tryAgain')}
+          </button>
 ```
 
 ### Les formulaires
@@ -347,32 +348,32 @@ Tu passes une fonction à une prop d'événement : `onClick`, `onSubmit`, `onCha
 Un `<form>` du navigateur, quand il est envoyé, recharge normalement la page. L'app empêche ça avec `event.preventDefault()` et traite les données en JavaScript. Les champs sont lus avec `FormData`, la façon standard du navigateur de lire les valeurs d'un formulaire par leur `name`. Tiré de [friend-search.tsx](<../../apps/web/app/[locale]/(main)/friends/friend-search.tsx>) :
 
 ```tsx
-function submit(event: FormEvent<HTMLFormElement>) {
-  event.preventDefault();
-  const q = new FormData(event.currentTarget).get("q");
-  // ...
-  const parsed = UserSearchQuerySchema.safeParse({ q });
-  if (!parsed.success) {
-    setError(errorMessage(parsed.error.issues[0].message));
-    return;
+  function submit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const q = new FormData(event.currentTarget).get('q');
+    // ...
+    const parsed = UserSearchQuerySchema.safeParse({ q });
+    if (!parsed.success) {
+      setError(errorMessage(parsed.error.issues[0].message));
+      return;
+    }
+    setError(null);
+    startTransition(() => router.replace({ pathname: '/friends', query: { q: parsed.data.q } }));
   }
-  setError(null);
-  startTransition(() => router.replace({ pathname: "/friends", query: { q: parsed.data.q } }));
-}
 
-return (
-  <form role="search" onSubmit={submit} className="flex flex-col gap-3">
-    <Field
-      label={t("searchLabel")}
-      type="search"
-      name="q"
-      defaultValue={query}
-      autoComplete="off"
-    />
-    <FormError message={error} />
-    <SubmitButton pending={pending}>{t("search")}</SubmitButton>
-  </form>
-);
+  return (
+    <form role="search" onSubmit={submit} className="flex flex-col gap-3">
+      <Field
+        label={t('searchLabel')}
+        type="search"
+        name="q"
+        defaultValue={query}
+        autoComplete="off"
+      />
+      <FormError message={error} />
+      <SubmitButton pending={pending}>{t('search')}</SubmitButton>
+    </form>
+  );
 ```
 
 Le modèle suivi par tous les formulaires de l'app :
@@ -410,8 +411,11 @@ Chaque dossier dans `app/` est un morceau de l'URL. Un dossier devient une page 
 app/
 ├── global-error.tsx            last-resort error page
 ├── globals.css                 global styles (Tailwind)
+├── lesson.css                  lesson player styles (imported by globals.css)
 ├── icon.svg                    the favicon (Next picks it up by name)
 ├── healthz/route.ts            GET /healthz  (a route handler, no page)
+├── healthz/api/route.ts        GET /healthz/api
+├── healthz/upstream/route.ts   GET /healthz/upstream
 └── [locale]/                   /en, /fr, /de   (dynamic segment)
     ├── layout.tsx              <html> and <body> for every page
     ├── error.tsx               error page for everything inside
@@ -491,7 +495,7 @@ C'est l'idée la plus importante du Next.js moderne. Chaque component tourne dan
 - Un **Server Component** tourne seulement sur le serveur (le container Next.js). Il peut être `async`, peut faire `await` sur des données, peut lire les cookies et les variables d'environnement secrètes. Son code n'est **jamais** envoyé au navigateur. Il ne peut pas utiliser de state, d'effects ou de gestionnaires d'événements, parce qu'il n'y a pas de navigateur là-bas, ni d'utilisateur pour cliquer.
 - Un **Client Component** est marqué avec `'use client'` en haut de son fichier. Son rendu est fait une fois sur le serveur aussi (pour produire le premier HTML), puis son code est envoyé au navigateur, où il devient interactif : state, effects, `onClick`, APIs du navigateur.
 
-**Par défaut, chaque component est un Server Component.** Tu ajoutes `'use client'` seulement là où tu as besoin d'interactivité. 58 fichiers de l'app l'ont (formulaires, boutons, le socket, le lecteur de leçon). Les pages et les layouts sont surtout des Server Components.
+**Par défaut, chaque component est un Server Component.** Tu ajoutes `'use client'` seulement là où tu as besoin d'interactivité. 57 fichiers de l'app l'ont (formulaires, boutons, le socket, le lecteur de leçon). Les pages et les layouts sont surtout des Server Components.
 
 Analogie : un Server Component est une photo imprimée au magasin et qu'on te donne. Un Client Component est une petite machine qu'on te donne avec son mode d'emploi (le JavaScript), pour qu'elle puisse encore bouger dans tes mains.
 
@@ -521,7 +525,7 @@ L'**hydratation** (hydration) est l'étape où React, dans le navigateur, prend 
 
 Comment les deux sortes se mélangent, avec la page utilisateur comme exemple :
 
-- `UserPage` est un Server Component (`async`, pas de `'use client'`). Il appelle `requireUser()` et `loadProfile(id)` sur le serveur.
+- `UserPage` est un Server Component (`async`, pas de `'use client'`). Il appelle `requireUser()`, `loadProfile(id)` et `requireFriends()` sur le serveur.
 - Il affiche `PresenceDot` et `FriendButton`, qui sont des Client Components (ils doivent changer sans rechargement). Il leur passe des données simples en props : `userId`, `online`.
 - Les props passées du serveur au client doivent être **sérialisables** (chaînes, nombres, objets simples, tableaux, JSX). Tu ne peux pas passer une fonction d'un Server Component à un Client Component.
 - Un Client Component ne peut pas importer un Server Component, mais il peut en recevoir un comme `children` ou comme autre prop JSX. C'est pour ça que [shell.tsx](../../apps/web/components/shell.tsx) prend `nav` en prop au lieu d'afficher lui-même la nav de session : le commentaire dit que ça garde le Shell utilisable depuis l'error boundary, qui est un Client Component.
@@ -576,10 +580,10 @@ export async function fetchWithRequestHeaderAndIP<R>(
   const cookie = store
     .getAll()
     .map(({ name, value }) => `${name}=${value}`)
-    .join("; ");
+    .join('; ');
 
   // ...
-  const forwardedFor = (await headers()).get("x-forwarded-for");
+  const forwardedFor = (await headers()).get('x-forwarded-for');
 
   return fetcher({
     baseUrl: process.env.API_INTERNAL_URL,
@@ -617,10 +621,10 @@ Next.js a des **server actions** (des fonctions marquées `'use server'` qu'un f
 Un fichier `route.ts` répond directement en HTTP, sans React. [healthz/route.ts](../../apps/web/app/healthz/route.ts) est le health check de Docker :
 
 ```ts
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic';
 
 export function GET() {
-  return NextResponse.json({ status: "ok", service: "web" });
+  return NextResponse.json({ status: 'ok', service: 'web' });
 }
 ```
 
@@ -628,13 +632,13 @@ export function GET() {
 
 - `<Link href="/friends">` est un `<a>` plus malin. Next.js charge la nouvelle page en arrière-plan et remplace seulement ce qui a changé : les layouts restent à l'écran, rien ne se recharge.
 - `useRouter()` fait la même chose depuis le code : `router.push(url)` (ajoute à l'historique), `router.replace(url)` (remplace l'entrée actuelle de l'historique), `router.refresh()` (demande au serveur de refaire le rendu de la page actuelle avec des données fraîches, en gardant le state côté client).
-- `redirect(url)` et `notFound()` (de `next/navigation`) sont pour les Server Components : ils arrêtent le rendu et envoient le visiteur ailleurs.
+- `redirect(url)` et `notFound()` (de `next/navigation`) sont pour les Server Components : ils arrêtent le rendu et envoient le visiteur ailleurs. L'app appelle `redirect('/login')` sans locale : le navigateur demande alors `/login`, et `proxy.ts` remet la locale (chapitre 2).
 
-L'app n'importe **pas** `Link` et `useRouter` directement depuis `next`. Elle utilise des copies qui connaissent la locale, dans [i18n/navigation.ts](../../apps/web/i18n/navigation.ts), donc `href="/friends"` devient `/fr/friends` tout seul :
+L'app n'importe **pas** `Link`, `useRouter` et `usePathname` directement depuis `next`. Elle utilise des copies qui connaissent la locale, dans [i18n/navigation.ts](../../apps/web/i18n/navigation.ts), donc `href="/friends"` devient `/fr/friends` tout seul :
 
 ```ts
-import { createNavigation } from "next-intl/navigation";
-import { routing } from "./routing";
+import { createNavigation } from 'next-intl/navigation';
+import { routing } from './routing';
 
 // Lightweight wrappers around Next.js' navigation
 // APIs that consider the routing configuration
@@ -671,11 +675,18 @@ Les préfixes sont des conditions : `hover:`, `focus-visible:`, `disabled:`, et 
 L'app utilise **Tailwind 4**, qui se configure en CSS, pas dans un `tailwind.config.js` (il n'y en a pas). La configuration est dans [app/globals.css](../../apps/web/app/globals.css) :
 
 ```css
-@import "tailwindcss";
-@import "./lesson.css";
+@import 'tailwindcss';
+@import './lesson.css';
 
+/* Tailwind 4 resolves `dark:` through prefers-color-scheme unless told
+   otherwise. The layouts put `dark` on <html> to pin the app to one palette,
+   so the variant has to follow that class or the two disagree: body stays
+   dark while every `dark:` utility switches off on a light OS. */
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* Tailwind 4 is CSS-first: there is no tailwind.config.js. Source detection is
+   declared explicitly so class scanning does not depend on the working
+   directory the build happens to run from inside the container. */
 @source '.';
 
 @source '../components';
@@ -821,16 +832,16 @@ Les dépendances de dev (outils seulement) : `typescript`, `@types/*` (types pou
 ```ts
 const nextConfig: NextConfig = {
   // The prod Docker stage ships .next/standalone and nothing else.
-  output: "standalone",
+  output: 'standalone',
   // pnpm workspace: tracing has to start at the repo root, or the symlinked
   // dependencies never make it into the standalone bundle.
   outputFileTracingRoot: workspaceRoot,
   turbopack: {
     root: workspaceRoot,
   },
-  allowedDevOrigins: ["ft-transcendence.test", "localhost"],
+  allowedDevOrigins: ['ft-transcendence.test', 'localhost'],
   // @ft/ui ships TypeScript source, not a build, so Next compiles it.
-  transpilePackages: ["@ft/ui"],
+  transpilePackages: ['@ft/ui'],
   reactStrictMode: true,
   poweredByHeader: false,
   images: { unoptimized: true },
@@ -867,7 +878,7 @@ export default withNextIntl(nextConfig);
 /** Tailwind 4 ships its PostCSS integration as a separate package. */
 const config = {
   plugins: {
-    "@tailwindcss/postcss": {},
+    '@tailwindcss/postcss': {},
   },
 };
 ```
@@ -923,7 +934,7 @@ Les deux listent ce que Docker ne doit pas copier dans le build (`node_modules`,
 - Dans l'**App Router**, les dossiers sont des URLs : `page.tsx` est une page, `layout.tsx` enveloppe des pages, `(group)` n'est pas dans l'URL, `[x]` est un param, `[...x]` attrape le reste.
 - Les components sont des **Server Components par défaut**. `'use client'` est nécessaire pour le state, les effects et les événements. Le code serveur peut faire `await`, lire les cookies et appeler l'API ; son code n'arrive jamais au navigateur.
 - Les pages sont **rendues sur le serveur** avec le cookie du visiteur copié dans l'appel à l'API (`lib/api.ts`), puis **hydratées** dans le navigateur. Les formulaires appellent l'API depuis le navigateur. Il n'y a pas de server actions.
-- Utilise `Link`, `useRouter`, `redirect` de `@/i18n/navigation` pour que les URLs gardent leur locale ; `router.refresh()` demande un nouveau rendu serveur.
+- Utilise `Link` et `useRouter` de `@/i18n/navigation` pour que les URLs gardent leur locale. Le code serveur utilise `redirect` de `next/navigation`, et `proxy.ts` ajoute la locale. `router.refresh()` demande un nouveau rendu serveur.
 - Le style, c'est **Tailwind 4**, configuré dans `app/globals.css` (pas de `tailwind.config.js`).
 - `output: 'standalone'` plus le `Dockerfile` multi-stage donnent une petite image de production qui lance `node apps/web/server.js`.
 

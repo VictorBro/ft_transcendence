@@ -1927,9 +1927,10 @@
       </section>
 
       <footer>
-        États des issues, personnes assignées et PR liées au 22 novembre 2026, le dernier merge sur
-        main étant la PR #212. Les trois se mettent à jour depuis l'API GitHub au chargement de la
-        page (cache de cinq minutes) ; une PR liée est une PR dont la description dit "closes #N".
+        États des issues, personnes assignées et PR liées au 23 novembre 2026, le dernier merge sur
+        main étant la PR #220. Les trois se mettent à jour depuis l'API GitHub au chargement de la
+        page (cache de cinq minutes) ; une PR liée est une PR dont la description dit "closes #N",
+        "fixes #N" ou "resolves #N".
         <span id="live"></span> Source :
         <a href="https://github.com/VictorBro/ft_transcendence">VictorBro/ft_transcendence</a> ·
         <a href="https://github.com/VictorBro/ft_transcendence/milestones">tous les jalons</a>.
@@ -1940,8 +1941,8 @@
       const repo = 'VictorBro/ft_transcendence';
       const issueUrl = (n) => 'https://github.com/' + repo + '/issues/' + n;
       /* Snapshot of each issue: state, assignees, and the PR linked in its Development panel
-   (merged first, then open, then the newest). State and assignees refresh live below;
-   linked PRs need an authenticated API, so they come from this snapshot. */
+   (merged first, then open, then the newest). gh-status.js refreshes all three from the
+   public API on load; this snapshot shows until then, or if GitHub cannot be reached. */
       const ISSUES = {
         43: { s: 'closed', a: ['VYAntares'], b: 0, pr: [58, 'VYAntares', 'merged'] },
         44: { s: 'closed', a: ['VictorBro'], b: 0, pr: [55, 'VictorBro', 'merged'] },
@@ -2073,7 +2074,6 @@
         );
       /* Responsible: whoever opened the linked PR, else the first assignee. */
       const responsible = (i) => (i.pr && i.pr[1]) || i.a[0] || null;
-      /* Closed, else in work when someone is responsible, else open. */
       /* Closed; else in work when someone is responsible; else ready when no open issue blocks it; else open. */
       const statusOf = (i) =>
         i.s === 'closed' ? 'closed' : responsible(i) ? 'work' : i.b === 0 ? 'ready' : 'open';
@@ -2145,7 +2145,7 @@
           el.replaceWith(div);
         });
       }
-      /* Issue titles for the hover text on the graph's issue links, as of 22 November 2026; replaced by the live titles. */
+      /* Issue titles for the hover text on the graph's issue links, as of 23 November 2026; replaced by the live titles. */
       const GRAPH_TITLES = {
         76: 'docs: record the lesson, daily goal and streak decisions',
         77: 'feat(shared): lesson contracts and the content checks',

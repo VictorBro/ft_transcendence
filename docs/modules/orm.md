@@ -114,6 +114,11 @@ catches these codes and answers with a clear error:
 - A taken display name on profile edit
   ([users.service.ts](../../apps/api/src/users/users.service.ts)).
 
+Other writes put the check in the `where` of an `updateMany` and read the `count`, so the check
+and the write are one statement. A recovery code is marked used only while `usedAt` is `null`,
+and 2FA setup and enable write only while `totpEnabledAt` is `null`
+([two-factor.service.ts](../../apps/api/src/auth/two-factor.service.ts), [#219](https://github.com/VictorBro/ft_transcendence/pull/219)).
+
 ### Checks that keep the schema and the migrations in step
 
 | Check | What it does | Where it runs |
@@ -169,7 +174,7 @@ Press Ctrl+C to stop Studio.
 
 | Test | What it checks |
 | --- | --- |
-| [prisma.service.spec.ts](../../apps/api/src/prisma/prisma.service.spec.ts) | The client connects on start and disconnects on shutdown; `ping` runs one query; it refuses to start with an empty `DATABASE_URL`. |
+| [prisma.service.spec.ts](../../apps/api/src/prisma/prisma.service.spec.ts) | The client connects on start and disconnects on shutdown; `ping` runs one query and reports the latency; a failing `ping` rejects, so the caller decides what it means. |
 | [health.service.spec.ts](../../apps/api/src/health/health.service.spec.ts) | The health report says `down` without throwing when the database probe fails, and `degraded` when it is slow. |
 | [test/auth.e2e-spec.ts](../../apps/api/test/auth.e2e-spec.ts) | "refuses a duplicate email with 409": the unique key on `User.email`. |
 | [test/seed.e2e-spec.ts](../../apps/api/test/seed.e2e-spec.ts) | The seed upserts: "running it twice leaves the same row count and id (idempotent upsert)", "refuses to delete a lesson that has a result (Restrict)", "fails on an invalid lesson, names its id and the issue, and writes nothing". |

@@ -118,13 +118,14 @@ Dans `QuestionStockService.generate` :
 
 ```ts
 const request = {
-  purpose: `question-batch:${cell.category}`,   // "question-batch:grammar"
-  schema: generatedBatchSchema(cell.category),  // 13 items, un par topic
-  ...buildQuestionBatchPrompt(cell),            // ajoute system et user
+  purpose: `question-batch:${cell.category}`,
+  schema: generatedBatchSchema(cell.category),
+  ...buildQuestionBatchPrompt(cell),
 } as const;
 ```
 
-`...` (spread) recopie les champs `system` et `user` dans l'objet. `as const` garde `purpose`
+Pour `fr / B1 / grammar` : `purpose` vaut `"question-batch:grammar"`, et le schéma attend 13 items,
+un par topic. `...` (spread) recopie les champs `system` et `user` dans l'objet. `as const` garde `purpose`
 comme le texte exact `"question-batch:grammar"` et pas juste `string`, pour qu'il corresponde au
 type `LlmPurpose`.
 
@@ -229,7 +230,9 @@ aucun niveau n'est oublié.
 ### 6.4 L'insertion
 
 ```ts
-const { count } = await this.prisma.questionBank.createMany({ data: toRows(cell, freshItems(items, stored)) });
+const { count } = await this.prisma.questionBank.createMany({
+  data: toRows(cell, freshItems(items, stored)),
+});
 ```
 
 Une seule requête SQL pour toutes les lignes. `count` = nombre réellement inséré. Si `count` vaut

@@ -70,23 +70,23 @@ La configuration de la session est dans [app.setup.ts](../../apps/api/src/app.se
 Elle utilise le middleware (code qui passe sur chaque requête) `express-session` avec un store `connect-redis` :
 
 ```ts
-const sessionMiddleware = session({
-  name: SESSION_COOKIE,
-  secret: requireSessionSecret(),
-  store: new RedisStore({ client: app.get(RedisService).client, prefix: SESSION_KEY_PREFIX }),
-  // The cookie is an opaque id, so there is nothing to write back unless the
-  // session itself changed, and an anonymous visitor gets no session at all.
-  resave: false,
-  saveUninitialized: false,
-  rolling: true,
-  cookie: {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
-    maxAge: SESSION_TTL_MS,
-    path: "/",
-  },
-});
+  const sessionMiddleware = session({
+    name: SESSION_COOKIE,
+    secret: requireSessionSecret(),
+    store: new RedisStore({ client: app.get(RedisService).client, prefix: SESSION_KEY_PREFIX }),
+    // The cookie is an opaque id, so there is nothing to write back unless the
+    // session itself changed, and an anonymous visitor gets no session at all.
+    resave: false,
+    saveUninitialized: false,
+    rolling: true,
+    cookie: {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      maxAge: SESSION_TTL_MS,
+      path: '/',
+    },
+  });
 ```
 
 Ce que ça veut dire :
@@ -225,8 +225,8 @@ Deux commentaires de ce fichier expliquent bien les choix :
  * account's valid password with a message that reads like a policy complaint.
  */
 export const LoginSchema = z.object({
-  email: z.email("email.invalid"),
-  password: z.string("password.required").min(1, "password.required").max(128, "password.tooLong"),
+  email: z.email('email.invalid'),
+  password: z.string('password.required').min(1, 'password.required').max(128, 'password.tooLong'),
 });
 ```
 
@@ -495,7 +495,9 @@ sequenceDiagram
 ```
 
 Les deux ont besoin d'une session. `@CurrentUser()` donne l'utilisateur que le guard a chargé. La page des réglages utilise l'état pour afficher « activée », « désactivée » ou « configuration commencée », et combien de codes de secours il reste.
-Setup répond 409 si la 2FA est déjà active : pour changer d'app d'authentification, tu dois d'abord désactiver la 2FA, et cette étape demande le mot de passe.
+Setup répond `409 twoFactor.alreadyEnabled` si la 2FA est déjà active : pour changer d'app d'authentification, tu dois d'abord désactiver la 2FA, et cette étape demande le mot de passe.
+Avant #219 (issue #216), setup écrivait un nouveau secret même quand la 2FA était active. Ça désactivait la 2FA avec une simple session, sans mot de passe.
+Le panneau des réglages ([two-factor-panel.tsx](../../apps/web/app/%5Blocale%5D/%28main%29/settings/2fa/two-factor-panel.tsx)) affiche aussi une ligne de chargement tant que l'état n'est pas connu, et un état en échec affiche une erreur et **Réessayer**, jamais **Configurer**.
 
 ### POST /auth/2fa/enable
 
@@ -513,17 +515,18 @@ Setup répond 409 si la 2FA est déjà active : pour changer d'app d'authentific
 
 L'utilisateur tape le premier code de son app. S'il est bon, la 2FA est activée et l'utilisateur reçoit les 10 codes de secours (affichés seulement cette fois-ci).
 L'id de session change parce que les privilèges ont changé. La route a une limite de débit parce qu'« un cookie volé ne doit pas devenir un moyen de deviner les codes ».
+Si la 2FA est déjà active, elle répond `409 twoFactor.alreadyEnabled` (#216) : une simple session ne peut pas remplacer les codes de secours du propriétaire.
 
 ### DELETE /auth/2fa
 
 ```ts
-// The password again, not just the session: an unattended browser should not
-// be enough to remove a factor.
-if (!(await this.auth.verifyPassword(user.id, body.password))) {
-  throw new UnauthorizedException("auth.incorrectPassword");
-}
-await this.twoFactor.disable(user.id);
-await this.rotateSession(request, user.id);
+    // The password again, not just the session: an unattended browser should not
+    // be enough to remove a factor.
+    if (!(await this.auth.verifyPassword(user.id, body.password))) {
+      throw new UnauthorizedException('auth.incorrectPassword');
+    }
+    await this.twoFactor.disable(user.id);
+    await this.rotateSession(request, user.id);
 ```
 
 Ça s'appelle la **ré-authentification** : pour une action sensible, une session active ne suffit pas. Réponse : 204 No Content.
@@ -535,6 +538,8 @@ await this.rotateSession(request, user.id);
   @Public()
   @Post('logout')
   @HttpCode(HttpStatus.NO_CONTENT)
+  @ApiOperation({ summary: 'Destroy the current session', security: [] })
+  @ApiNoContentResponse({ description: 'Signed out, whether or not there was a session' })
   async logout(@Req() request: Request): Promise<void> {
     const ended = request.sessionID;
     // Failing loudly rather than returning 204: if the store entry survives, the
@@ -628,7 +633,7 @@ const ARGON2_OPTIONS = {
  * one for a real account. Skipping it leaks which emails are registered through
  * response timing alone.
  */
-const DUMMY_HASH = argon2.hash("timing-equaliser", ARGON2_OPTIONS);
+const DUMMY_HASH = argon2.hash('timing-equaliser', ARGON2_OPTIONS);
 ```
 
 `memoryCost` est en Kio : 19 456 Kio = 19 Mio. `DUMMY_HASH` est une **Promise**, calculée une seule fois quand le fichier se charge.
@@ -682,21 +687,21 @@ Elle est `static`, donc `UsersService` peut appeler `AuthService.toSessionUser(.
 ### validateCredentials
 
 ```ts
-const user = await this.prisma.user.findUnique({ where: { email: email.toLowerCase() } });
+    const user = await this.prisma.user.findUnique({ where: { email: email.toLowerCase() } });
 
-if (user === null) {
-  await argon2.verify(await DUMMY_HASH, password).catch(() => false);
-  throw new UnauthorizedException("auth.invalidCredentials");
-}
+    if (user === null) {
+      await argon2.verify(await DUMMY_HASH, password).catch(() => false);
+      throw new UnauthorizedException('auth.invalidCredentials');
+    }
 
-if (!(await argon2.verify(user.passwordHash, password))) {
-  throw new UnauthorizedException("auth.invalidCredentials");
-}
+    if (!(await argon2.verify(user.passwordHash, password))) {
+      throw new UnauthorizedException('auth.invalidCredentials');
+    }
 
-return {
-  user: AuthService.toSessionUser(user),
-  twoFactorEnabled: user.totpEnabledAt != null,
-};
+    return {
+      user: AuthService.toSessionUser(user),
+      twoFactorEnabled: user.totpEnabledAt != null,
+    };
 ```
 
 Deux protections ici :
@@ -719,7 +724,7 @@ que P2002 devient un 409 et que les autres erreurs passent telles quelles, qu'un
 [auth.decorators.ts](../../apps/api/src/auth/auth.decorators.ts) est petit mais central :
 
 ```ts
-export const IS_PUBLIC = "auth:public";
+export const IS_PUBLIC = 'auth:public';
 
 /** Opens a route to anonymous callers. Everything else requires a session. */
 export const Public = () => SetMetadata(IS_PUBLIC, true);
@@ -763,7 +768,7 @@ export class AuthGuard implements CanActivate {
     const request = context.switchToHttp().getRequest<Request & { user?: SessionUser }>();
     const userId = request.session?.userId;
     if (userId === undefined) {
-      throw new UnauthorizedException("auth.sessionRequired");
+      throw new UnauthorizedException('auth.sessionRequired');
     }
 
     // Re-read the user rather than trusting a copy in the session: a deleted or
@@ -771,7 +776,7 @@ export class AuthGuard implements CanActivate {
     const user = await this.auth.findById(userId);
     if (user === null) {
       request.session.destroy(() => undefined);
-      throw new UnauthorizedException("auth.sessionRequired");
+      throw new UnauthorizedException('auth.sessionRequired');
     }
 
     request.user = user;
@@ -811,9 +816,9 @@ Par défaut, TypeScript ne sait pas ce que tu mets dans `request.session`. Écri
 [session.d.ts](../../apps/api/src/auth/session.d.ts) règle ça :
 
 ```ts
-import "express-session";
+import 'express-session';
 
-declare module "express-session" {
+declare module 'express-session' {
   interface SessionData {
     /** Set only once authentication is complete. The guard reads this. */
     userId?: string;
@@ -846,15 +851,17 @@ stateDiagram-v2
   Off --> Pending: POST /2fa/setup (totpSecret rempli)
   Pending --> Pending: setup à nouveau (nouveau secret)
   Pending --> On: POST /2fa/enable avec un bon code (totpEnabledAt rempli, 10 codes)
+  On --> On: setup ou enable à nouveau (409, rien ne change)
   On --> Off: DELETE /2fa avec le mot de passe (les deux vidés, codes supprimés)
 ```
 
 Un compte « Pending » (en attente) se connecte encore avec seulement le mot de passe : `validateCredentials` regarde `totpEnabledAt`, pas `totpSecret`.
+La seule sortie de « On », c'est `DELETE /2fa`, qui demande le mot de passe.
 
 ### Constantes et fonctions utilitaires
 
 ```ts
-const ISSUER = "ft_transcendence";
+const ISSUER = 'ft_transcendence';
 
 /**
  * One step either side of the current one, so a code typed as the interval
@@ -864,13 +871,13 @@ const ISSUER = "ft_transcendence";
 const VALIDATION_WINDOW = 1;
 
 /** Excludes look-alike characters, because these get copied off a screen by hand. */
-const RECOVERY_ALPHABET = "abcdefghjkmnpqrstuvwxyz23456789";
+const RECOVERY_ALPHABET = 'abcdefghjkmnpqrstuvwxyz23456789';
 
 function totpFor(secret: string, label: string): OTPAuth.TOTP {
   return new OTPAuth.TOTP({
     issuer: ISSUER,
     label,
-    algorithm: "SHA1",
+    algorithm: 'SHA1',
     digits: 6,
     period: 30,
     secret: OTPAuth.Secret.fromBase32(secret),
@@ -890,7 +897,7 @@ function totpFor(secret: string, label: string): OTPAuth.TOTP {
  * are not random; these are.
  */
 function digest(code: string): string {
-  return createHash("sha256").update(code).digest("hex");
+  return createHash('sha256').update(code).digest('hex');
 }
 ```
 
@@ -954,10 +961,10 @@ L'utilisateur doit prouver que le téléphone a été bien configuré **avant** 
 La méthode privée `enable` met elle aussi les conditions dans le `WHERE` :
 
 ```ts
-const { count } = await this.prisma.user.updateMany({
-  where: { id: userId, totpSecret: checkedSecret, totpEnabledAt: null },
-  data: { totpEnabledAt: new Date() },
-});
+    const { count } = await this.prisma.user.updateMany({
+      where: { id: userId, totpSecret: checkedSecret, totpEnabledAt: null },
+      data: { totpEnabledAt: new Date() },
+    });
 ```
 
 Elle active **seulement le secret qui a été vérifié**. Si un autre setup a remplacé le secret entre-temps, ou si deux confirmations arrivent en même temps, `count` vaut 0 et elle lance une erreur (409 ou 400) — donc aucun deuxième lot de codes de secours n'est créé.
@@ -1017,6 +1024,7 @@ Vide `totpSecret` et `totpEnabledAt` et supprime tous les codes de secours, en u
 
 **Tests :** [two-factor.service.spec.ts](../../apps/api/src/auth/two-factor.service.spec.ts) couvre l'inscription à la 2FA (secret stocké mais pas activé, refus une fois la 2FA active (#216), mauvais code, cas de courses entre requêtes)
 et le second facteur (TOTP actuel accepté, refusé si jamais activé, codes de secours avec ou sans tirets, un code déjà utilisé refusé).
+Le test e2e [two-factor.e2e-spec.ts](../../apps/api/test/two-factor.e2e-spec.ts) joue tout le parcours à travers les routes HTTP, y compris les 409 de #216.
 
 ---
 
@@ -1085,6 +1093,11 @@ Il n'importe pas `AuthModule`. Il n'en a pas besoin : le guard est global, `@Cur
 ```
 
 C'est l'idée de l'autorisation par la conception : l'id vient de la session, jamais de l'URL, donc tu ne peux pas modifier quelqu'un d'autre en changeant un nombre.
+
+Deux champs ne sont pas envoyés par un formulaire mais par l'app web elle-même, sur cette même route :
+
+- `locale` : [locale-sync.tsx](../../apps/web/components/locale-sync.tsx) (`LocaleSync`, dans le layout `(dashboard)`) envoie `PATCH /users/me { locale }` quand la langue de la page diffère de `User.locale` (#212, issue #211). Le tuteur de leçon lit `User.locale` pour répondre dans cette langue ([discussion.service.ts](../../apps/api/src/lessons/discussion.service.ts)).
+- `timeZone` : [time-zone-sync.tsx](../../apps/web/components/time-zone-sync.tsx) envoie le fuseau horaire du navigateur.
 
 ### POST /users/me/avatar : l'upload
 
@@ -1264,20 +1277,20 @@ Le fuseau horaire est lu mais **pas** renvoyé : le résultat est construit cham
 ### recentlyActive
 
 ```ts
-const users = await this.prisma.user.findMany({
-  where: {
-    id: { not: me },
-    lastActiveDay: { gte: activeSince(now) },
-    friendshipsRequested: { none: { addresseeId: me } },
-    friendshipsAddressed: { none: { requesterId: me } },
-  },
-  select: {
-    ...PUBLIC_USER_SELECT,
-    userLevels: { select: { lang: true }, orderBy: { createdAt: "asc" } },
-  },
-  orderBy: { displayName: "asc" },
-  take: RECENTLY_ACTIVE_LIMIT,
-});
+    const users = await this.prisma.user.findMany({
+      where: {
+        id: { not: me },
+        lastActiveDay: { gte: activeSince(now) },
+        friendshipsRequested: { none: { addresseeId: me } },
+        friendshipsAddressed: { none: { requesterId: me } },
+      },
+      select: {
+        ...PUBLIC_USER_SELECT,
+        userLevels: { select: { lang: true }, orderBy: { createdAt: 'asc' } },
+      },
+      orderBy: { displayName: 'asc' },
+      take: RECENTLY_ACTIVE_LIMIT,
+    });
 ```
 
 Les personnes vues ces 7 derniers jours, pas toi, et pas quelqu'un avec qui tu as déjà une demande d'ami ou une amitié. Chaque ligne liste aussi les langues qu'elles apprennent.

@@ -205,6 +205,7 @@ flowchart LR
   prompt -->|"lit le code source"| shared
   files --> shared
   report --> files
+  report --> chat
 ```
 
 ---
@@ -231,10 +232,10 @@ sequenceDiagram
   A->>F: readOutline(fr, A2)
   F-->>A: outline validée par LessonOutlineFileSchema
   A->>A: pickLessons() : entrées sans fichiers, dans l'ordre, sans trou
-  A->>F: readUsedTitles(fr)
   A->>C: claudeProvider(options)
   C->>P: systemPrompt(kind) pour les 4 types
   C->>F: writeWork(kind.system.md)
+  A->>F: readUsedTitles(fr)
   loop pool : 2 leçons en parallèle
     A->>C: startChat(kind)
     A->>P: lessonPrompt(entrée, 5 voisines de chaque côté, titres pris)

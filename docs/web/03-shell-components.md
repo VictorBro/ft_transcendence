@@ -77,8 +77,9 @@ File: [shell.tsx](../../apps/web/components/shell.tsx) — exports `Shell`, `She
 `Wordmark`.
 
 The comment says the groups differ in only four ways, and all four are props: what is left of
-the nav (`brand`), the nav (`nav`), the footer (`footer`), and whether the frame is pinned to the
-screen (`fill`). So the header markup, the side space and the max width are written once.
+the nav (`brand`), the footer (`footer`), whether the frame is pinned to the screen (`fill`),
+and the page itself (`children`). So the header markup, the side space and the max width are
+written once. The nav (`nav`) is a prop too, for another reason (see below).
 
 ```tsx
 export function Shell({ brand, nav, fill = false, footer, children }: ShellProps) {
@@ -93,6 +94,18 @@ export function Shell({ brand, nav, fill = false, footer, children }: ShellProps
         </div>
       </header>
 
+      {/*
+        `min-h-0` is what makes `fill` work, from `lg` where the frame is
+        pinned. A flex child defaults to min-height:auto, which refuses to
+        shrink below its content, so a tall page pushes the footer off the
+        screen and the panes' lg:overflow-y-auto never gets a box to scroll in.
+        Setting it here means a page can size itself to the pane with h-full and
+        own its own scrolling. `flex flex-col` is for the pages that fill this
+        box with a single pane and centre inside it. A pane that scrolls also
+        needs `relative`: an sr-only label is absolutely positioned, and with
+        no positioned ancestor it escapes the pane and makes the whole page
+        scroll, header and footer included.
+      */}
       <main
         className={`${CONTAINER} flex-1 ${fill ? 'flex min-h-0 flex-col pt-5 pb-4' : 'py-8 sm:py-12'}`}
       >
@@ -224,16 +237,12 @@ separate component because in `(main)` it would load courses for anonymous visit
 File: [header-menu.tsx](../../apps/web/components/header-menu.tsx) — a client component, exports
 `HeaderMenu`.
 
-It folds the signed-in links behind one button (a "hamburger" ☰ that becomes ✕). Open, a panel
-appears under the header on the right, and a dark backdrop covers the page.
+It folds the signed-in links behind one button (a "hamburger" ☰ that becomes ✕), on every screen
+size. Open, a panel appears under the header (full width on phones, a 20rem column on the right
+from `sm`), and a dark backdrop covers the page.
 
 ```tsx
-  const pathname = usePathname();
-  // Open for the page it was opened on: following a link closes it, since the
-  // header stays mounted across a navigation.
-  const [openOn, setOpenOn] = useState<string | null>(null);
-  const open = openOn === pathname;
-  useScrollLock(open);
+
 ```
 
 A smart trick: the state is not `true/false` but *the path where the menu was opened*. The layout
@@ -282,8 +291,14 @@ File: [scroll-lock.ts](../../apps/web/components/scroll-lock.ts) — exports the
 While a menu is open, a swipe on the dark page behind must not scroll it.
 
 ```ts
+/** How many open overlays hold the lock: the two header menus may overlap a moment. */
 let holders = 0;
 
+/**
+ * Stops the page from scrolling while an overlay is open, so a swipe on the
+ * dimmed page behind a menu does not move it. The scrollbar's width goes to
+ * padding while it is hidden, so a desktop page does not shift sideways.
+ */
 export function useScrollLock(locked: boolean): void {
   useEffect(() => {
     if (!locked) return;
@@ -446,6 +461,9 @@ export function LanguageSwitcher() {
 They **render nothing** (`return null`). They only run an effect: if the browser's value differs
 from the one saved in the profile, send a `PATCH` to the API.
 
+Only the `(dashboard)` layout renders them. So a language picked on a `(main)` or `(messages)` page
+(profile, friends, chat) is saved in `User.locale` on the next `(dashboard)` page (`/learn`...).
+
 ```mermaid
 sequenceDiagram
     participant L as (dashboard) layout (server)
@@ -514,6 +532,7 @@ in it.
     }
 
     inFlight.current = true;
+    // A failure needs no message: the next page tries again, unless it was a 400.
     void updateProfile({ locale }).then((result) => {
       inFlight.current = false;
       if (result.ok) {
@@ -600,7 +619,10 @@ let attempt = 0;
 // Bumped by every new owner of the socket, so a probe still out knows it lost.
 let dial = 0;
 const watchers = new Set<() => void>();
+// Fed from the socket's own listeners, set up with it below, so no update is
+// missed while no dot is on screen.
 const presence = createPresenceMap();
+// The same for the unread counts, so the account menu's badge is right on any page.
 const unread = createUnreadStore();
 ```
 
@@ -624,13 +646,21 @@ function socket(): TabSocket {
   if (tab === undefined) {
     const created: TabSocket = io({
       path: '/ws',
+      // Never long-polling: an open poll keeps the e2e settle() waiting, and a
+      // polled 502 is a console error.
       transports: ['websocket'],
       autoConnect: false,
+      // Our own loop above instead, so nothing dials while the API is down.
       reconnection: false,
+      // Firefox logs an interrupted connection when a page unloads with a
+      // socket open. socket.io leaves this off.
       closeOnBeforeunload: true,
     });
     created.on('connect', () => {
       attempt = 0;
+      // Every connect brings a full snapshot of the friends, and what the tab
+      // heard before may be stale: a friend:removed missed while away would
+      // otherwise keep an old entry above a fresh render.
       presence.clear();
       setStatus('connected');
     });
@@ -640,6 +670,9 @@ function socket(): TabSocket {
     );
     created.on(SERVER_EVENTS.PRESENCE_UPDATE, (update) => presence.apply(update));
     created.on(SERVER_EVENTS.FRIEND_REMOVED, ({ userId }) => presence.forget(userId));
+    // A new friend: no presence:update comes for someone already online, so
+    // the dot must start from the render RefreshOn makes on this event, which
+    // carries their `online`. Forgotten, so no older entry can stand above it.
     created.on(SERVER_EVENTS.FRIEND_ACCEPTED, ({ userId }) => presence.forget(userId));
     created.on(SERVER_EVENTS.DM_UNREAD, (snapshot) => unread.apply(snapshot));
     tab = created;
@@ -681,12 +714,21 @@ export function backoffMs(attempt: number, random: () => number = Math.random): 
   return Math.min(RETRY_MAX_MS, RETRY_FIRST_MS * 2 ** attempt) * (0.75 + random() / 2);
 }
 
+/**
+ * The server closing the socket means the session ended or was replaced: one
+ * quiet retry lets the handshake tell which. We closed it: nothing to do.
+ * Anything else is a lost connection.
+ */
 export function afterDisconnect(reason: string): NextStep {
   if (reason === 'io client disconnect') return 'stay';
   if (reason === 'io server disconnect') return 'retryQuietly';
   return 'reconnect';
 }
 
+/**
+ * A refused handshake is the one sign the session is over. socket.io marks it
+ * by leaving the socket inactive; a dial that failed on the way stays active.
+ */
 export function afterConnectError(active: boolean, message: string): NextStep {
   return !active && message === 'auth.sessionRequired' ? 'signedOut' : 'reconnect';
 }
@@ -710,9 +752,19 @@ body, a failed request, and that it never uses a cached answer.
 ### The retry loop
 
 ```ts
+// Ends the pending retry, and the probe of one already under way.
+function cancelRetry(): void {
+  clearTimeout(timer);
+  dial += 1;
+}
+
+// A failed WebSocket dial is a console error no code can hide, so a retry
+// dials only once web says the API answers.
 async function probeThenDial(): Promise<void> {
   const mine = dial;
   const up = await apiIsUp();
+  // A newer dial owns the socket: dialing again would open a second server
+  // socket, and a 'down' would mark a live one reconnecting.
   if (mine !== dial) return;
   if (up) {
     socket().connect();
@@ -720,6 +772,11 @@ async function probeThenDial(): Promise<void> {
   }
   setStatus('reconnecting');
   retryAfter(backoffMs(attempt++));
+}
+
+function retryAfter(ms: number): void {
+  cancelRetry();
+  timer = setTimeout(() => void probeThenDial(), ms);
 }
 
 function follow(step: NextStep): void {
@@ -730,6 +787,7 @@ function follow(step: NextStep): void {
     setStatus('closed');
     retryAfter(RETRY_FIRST_MS);
   } else if (step === 'signedOut') {
+    // The session is over: its counts must not outlive it on this tab.
     unread.clear();
     setStatus('signedOut');
   }
@@ -804,6 +862,7 @@ work the same way with their own stores.
   useEffect(() => {
     const current = socket();
     const listener = (payload: Payload<E>) => latest.current(payload);
+    // socket.io cannot resolve its listener type for a generic event name.
     current.on(event, listener as never);
     return () => {
       current.off(event, listener as never);
@@ -822,19 +881,25 @@ re-added on each render, but it always calls the latest handler.
 File: [connection-status.tsx](../../apps/web/components/connection-status.tsx)
 
 ```tsx
-export function ConnectionStatus() {
-  const status = useSocketStatus();
-  const router = useRouter();
-  const t = useTranslations('Connection');
   const pathname = usePathname();
+  // A page that mounts after a refusal was just rendered for a signed-in user:
+  // only a refusal seen while mounted calls for a refresh.
   const previous = useRef(status);
 
   useEffect(() => connectSocket(), [pathname]);
 
+  // The server refused this session: a guarded page then redirects to /login,
+  // so a sign-out in another tab shows up here.
   useEffect(() => {
     if (status === 'signedOut' && previous.current !== 'signedOut') router.refresh();
     previous.current = status;
   }, [status, router]);
+
+  return (
+    // aria-live without role="status": announced when the pill appears, and the
+    // course page keeps a single status role. Fixed, so the header never reflows.
+    // `visible`, since it sits inside the header menu, which is invisible when closed.
+    <div
 ```
 
 1. **Opens the socket** on mount, and again on each page change (`pathname` as trigger), so a
@@ -931,21 +996,7 @@ File: [unread-badge.tsx](../../apps/web/components/unread-badge.tsx) — exports
 `UnreadTotalBadge`.
 
 ```tsx
-export function UnreadBadge({ count }: { count: number | undefined }) {
-  const t = useTranslations('MessagesPage');
 
-  if (count === undefined || count === 0) return null;
-  return (
-    <span className="inline-flex h-5 min-w-5 ... rounded-full bg-red-500 ...">
-      <span aria-hidden>{badgeText(count)}</span>
-      <span className="sr-only">{t('unread', { count })}</span>
-    </span>
-  );
-}
-
-export function UnreadTotalBadge() {
-  return <UnreadBadge count={useUnreadTotal()} />;
-}
 ```
 
 - A red circle with the count. Nothing at 0, and nothing before the tab has heard

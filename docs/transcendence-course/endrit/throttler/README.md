@@ -1,6 +1,6 @@
 # Rate limiting : `IdentityThrottlerGuard`
 
-> PR concernée : **#20**. Fichiers à moi : `identity-throttler.guard.ts` et son test.
+> PR concernée : **#20**. Fichiers à moi : `identity-throttler.guard.ts` et son test. VictorBro les a retouchés dans sa PR #21 (commit `e276814`) : le guard lit maintenant sa métadonnée `THROTTLE_BY_IP` au lieu de « la route fixe sa propre limite ».
 > **Pas à moi** : [throttle-by-ip.decorator.ts](../../../../apps/api/src/throttler/throttle-by-ip.decorator.ts) (`@ThrottleByIp`), écrit par VictorBro dans sa PR #21, fusionnée dans ma #20. C'est pour ça qu'il apparaît à mon nom dans Git.
 > Vue d'ensemble de la requête : [../lessons-api/request-lifecycle.md](../lessons-api/request-lifecycle.md).
 
@@ -41,8 +41,8 @@ La vraie question est : **qui est « un appelant » ?**
 
 | Fichier | Rôle | Auteur |
 |---|---|---|
-| [identity-throttler.guard.ts](../../../../apps/api/src/throttler/identity-throttler.guard.ts) | Le guard. Remplace `getTracker` (qui compter) et `handleRequest` (lire `@ThrottleByIp`). | moi (#20) |
-| [identity-throttler.guard.spec.ts](../../../../apps/api/src/throttler/identity-throttler.guard.spec.ts) | Tests unitaires : 5 sur `getTracker`, 7 sur `canActivate`, avec de vrais décorateurs et un vrai `Reflector`. | moi (#20) |
+| [identity-throttler.guard.ts](../../../../apps/api/src/throttler/identity-throttler.guard.ts) | Le guard. Remplace `getTracker` (qui compter) et `handleRequest` (lire `@ThrottleByIp`). | moi (#20), retouché par VictorBro (#21) |
+| [identity-throttler.guard.spec.ts](../../../../apps/api/src/throttler/identity-throttler.guard.spec.ts) | Tests unitaires : 5 sur `getTracker`, 7 sur `canActivate`, avec de vrais décorateurs et un vrai `Reflector`. | moi (#20), retouché par VictorBro (#21) |
 | [throttle-by-ip.decorator.ts](../../../../apps/api/src/throttler/throttle-by-ip.decorator.ts) | `@ThrottleByIp(limit, ttl)` : pose une limite **et** la métadonnée `throttle:by-ip`. | VictorBro (#21) |
 | [throttler-storage.spec.ts](../../../../apps/api/src/throttler/throttler-storage.spec.ts) | Test du stockage des compteurs. | bastian-schnitzler (#192) |
 | [rate-limits.ts](../../../../apps/api/src/throttler/rate-limits.ts) | `RATE_LIMITS` : `perAccount` (100), `signup` (20), `login` (5), lus une fois dans le `.env` au démarrage. Une valeur qui n'est pas un entier positif arrête l'API. | VictorBro (#198) |
@@ -79,9 +79,13 @@ flowchart LR
 
 ```ts
 protected override async getTracker(req: Request): Promise<string> {
+  // Checked before the session: a route guarding a secret must count every
+  // attempt from one machine against one budget, whoever is signed in.
   if ((req as TrackedRequest)[BY_IP] === true) {
-    return `ip:${this.clientAddress(req)}`;      // route sensible : toujours par IP
+    return `ip:${this.clientAddress(req)}`;
   }
+
+  // saveUninitialized is false, so an anonymous visitor carries no session.
   const userId = req.session?.userId;
   return userId === undefined ? `ip:${this.clientAddress(req)}` : `user:${userId}`;
 }
@@ -105,10 +109,16 @@ Avec `trust proxy = 1`, Express ignore un saut de proxy et prend l'adresse la pl
 ```ts
 protected override async handleRequest(request: ThrottlerRequest): Promise<boolean> {
   const { context } = request;
+
+  // Assigned on every pass rather than only when true. handleRequest runs
+  // once per configured throttler, and a flag that is only ever set would
+  // leak from one throttler to the next within a single request.
   (this.getRequestResponse(context).req as TrackedRequest)[BY_IP] =
     this.reflector.getAllAndOverride<boolean>(THROTTLE_BY_IP, [
-      context.getHandler(), context.getClass(),
+      context.getHandler(),
+      context.getClass(),
     ]) ?? false;
+
   return super.handleRequest(request);
 }
 ```
@@ -261,7 +271,7 @@ R : Par route : la clé contient le nom de la classe et de la méthode. 100 requ
 R : Un 429 avec `message: "server.rateLimited"`. Le front affiche « Trop de tentatives. Nouvel essai possible dans une minute ».
 
 **Q : Qui a écrit `@ThrottleByIp` ?**
-R : VictorBro, dans sa PR #21 fusionnée dans ma #20. Moi, j'ai écrit le guard qui lit sa métadonnée, et les tests qui vérifient les deux ensemble.
+R : VictorBro, dans sa PR #21 fusionnée dans ma #20. Moi, j'ai écrit le guard et ses tests ; dans la même PR #21, VictorBro les a adaptés pour que le guard lise sa métadonnée `THROTTLE_BY_IP`.
 
 **Q : Le throttler passe avant ou après l'authentification ?**
 R : Avant (il est déclaré dans `AppModule`, scanné en premier par Nest ; `AuthGuard` est dans `AuthModule`). Un anonyme qui inonde est donc compté sur son IP. *(Déduit de l'ordre d'enregistrement de Nest, pas testé explicitement.)*
