@@ -75,8 +75,8 @@ answer keys, an exam and how it is scored. Its schemas and validators are in `@f
 - **The content** (`content/lessons/<id>.json`, every kind except vocabulary) holds the lesson as
   the learner plays it: steps, pages and items. A vocabulary lesson has no content file: its
   lesson is derived from its brief.
-- Both start with the same envelope: `schemaVersion`, `id`, `kind`, `lang`, `level`, `locales`,
-  `title`, `objective`, `estimatedMinutes` and `provenance`.
+- Both start with the same envelope: `schemaVersion`, `id`, `lang`, `level`, `locales`, `title`,
+  `objective`, `estimatedMinutes`, `provenance` and `kind`.
 
 **Languages in a lesson.** What is learned (words, sentences, texts, answers) is in the course
 language. The help around it (the objective, instructions, translations) is in English, French and
@@ -300,7 +300,6 @@ The brief of `fr-subject-pronouns`, shortened:
 {
   "schemaVersion": 2,
   "id": "fr-subject-pronouns",
-  "kind": "grammar",
   "lang": "fr",
   "level": "A1",
   "locales": ["en", "fr", "de"],
@@ -312,6 +311,7 @@ The brief of `fr-subject-pronouns`, shortened:
   },
   "estimatedMinutes": 16,
   "provenance": { "generator": "…", "model": "…", "promptVersion": "…", "generatedAt": "…", "inputHashes": { "outline": "…" } },
+  "kind": "grammar",
   "topic": "pronouns",
   "rules": ["…"],
   "blocks": ["…"],
@@ -646,7 +646,7 @@ there and becomes it. On that page the learner can talk with the lesson's tutor,
 on to the exam. Skipping the talk costs nothing.
 
 **What the learner sees** (#151): a chat window with three suggested prompts (explain my mistakes,
-a summary, an example), the answer appearing as it is written, Stop, and the earlier turns of this
+a summary, an example), the answer appearing as it is written and shown as Markdown (#213), Stop, and the earlier turns of this
 visit. The turns live in the page only: leaving the page forgets them.
 
 **What the server does** (#150): `POST /api/courses/:lang/lessons/:id/discussion` with

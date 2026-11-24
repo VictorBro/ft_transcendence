@@ -12,7 +12,7 @@ Le module est une ligne du tableau Web de [../subject/summary.md](../subject/sum
 
 > | Minor | Server-Side Rendering (SSR) |
 
-Le PDF ([../subject/ft_transcendence.pdf](../../docs/subject/ft_transcendence.pdf), chapitre IV, Web)
+Le PDF ([../../docs/subject/ft_transcendence.pdf](../../docs/subject/ft_transcendence.pdf), chapitre IV, Web)
 le formule ainsi :
 
 > Minor: Server-Side Rendering (SSR) for improved performance and SEO.

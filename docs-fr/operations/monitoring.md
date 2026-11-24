@@ -472,8 +472,9 @@ Les règles que suit cette installation :
    et Caddy répond 404 pour ce chemin avant de faire suivre au proxy.
 4. **`/api/metrics` n'existe pas.** Le listener de métriques de l'API est en dehors du préfixe de Nest,
    des guards, du throttler, des sessions et de Swagger. Un test Supertest et un test Playwright vérifient le 404.
-5. **Les scrapes sont en http simple dans le réseau**, ce que le sujet autorise : "Internal
-   container-to-container traffic (e.g. server ↔ database) may be unencrypted" (le trafic interne entre containers peut ne pas être chiffré)
+5. **Les scrapes sont en http simple dans le réseau**, ce que le sujet autorise (chapitre III.3) : "Connections
+   inside the backend itself (e.g., web server and database, software inside your container(s))
+   can be without encryption" (les connexions à l'intérieur du backend, par exemple entre le serveur web et la base, peuvent ne pas être chiffrées)
    ([subject/summary.md](../subject/summary.md)).
 
 ### Les réglages de sécurité de Grafana

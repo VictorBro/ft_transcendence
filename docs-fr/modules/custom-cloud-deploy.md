@@ -12,7 +12,7 @@ un autre serveur web occupe déjà les ports HTTPS.
 ## Ce que demande le sujet
 
 Tiré de « Modules of choice » dans [../subject/summary.md](../subject/summary.md) (chapitre IV de
-[../../subject/ft_transcendence.pdf](../../docs/subject/ft_transcendence.pdf)) :
+[../../docs/subject/ft_transcendence.pdf](../../docs/subject/ft_transcendence.pdf)) :
 
 > | Type  | Module                                                                                                                                                            |
 > | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |

@@ -1,6 +1,8 @@
 # Ma trace dans ft_transcendence — EA (VYAntares)
 
-> Résumé tiré de `CODE_OWNERSHIP.md` (analyse de `origin/main` au 2026-11-05).
+> Résumé tiré d'une ancienne analyse `CODE_OWNERSHIP.md` de `origin/main` au 2026-11-05 (ce fichier n'est pas dans le repo).
+> Les chiffres datent de ce jour-là. La liste à jour des fichiers touchés est [docs/code-ownership.md](../../code-ownership.md) :
+> depuis, 9 PR de plus sont à mon nom (#195, #202, #203, #206, #208, #214, #218, #219, #220), soit 27.
 > Identités Git : `VYAntares <endroahm@hotmail.com>` et `EA <endroahm@hotmail.com>` (même personne).
 
 ## 1. En chiffres
@@ -51,13 +53,13 @@ Mon rôle en une phrase : **je porte le domaine des leçons**, de la base de don
 ### `src/llm/` + `src/question-generation/` — génération de questions par LLM (#69, #111, #121)
 
 - `llm.provider.ts` (`LlmProvider`, token `LLM_PROVIDER`), `llm.module.ts`, `llm.factory.ts`, `fixture.provider.ts`, `gemini.provider.ts`.
-- `prompts/question-batch.prompt.ts` (`buildQuestionBatchPrompt`), `question-batch.ts`, réapprovisionnement avec retry et repli sur `UserSeenQuestion`.
+- `prompts/question-batch.prompt.ts` (`buildQuestionBatchPrompt`), `question-batch.ts`, réapprovisionnement avec retry (`question-stock.service.ts`) ; quand il n'y a plus de question non vue, le placement ressert la plus ancienne question déjà vue (`UserSeenQuestion`, dans `placement/placement-question.service.ts`).
 - Docs : `QUESTION_GENERATION.md` (94 %), `GEMINI_PROVIDER.md` (78 %).
 - Retravaillé ensuite par VictorBro (#104, #130) et ninisse.
 
 ### Socle — codes d'erreur (#126)
 
-- `error-code.filter.ts` (100 %) : JSON invalide → `request.invalid`, corps > 100 kB → `request.tooLarge`, route inconnue ou crash → `server.unexpected`.
+- `error-code.filter.ts` (100 %) : JSON invalide → `request.invalid`, corps > 100 kB → `request.tooLarge`, tout autre statut sans code (route inconnue 404, crash 500…) → `server.unexpected`.
 - `validation.pipe.ts` (81 %) : `CodeValidationPipe`, `LangParam`.
 
 ### `prisma/seed.ts` (77 %) — seed (#58, #140, #142, #143)
@@ -67,7 +69,7 @@ Mon rôle en une phrase : **je porte le domaine des leçons**, de la base de don
 
 ### `src/throttler/` (#20)
 
-- `identity-throttler.guard.ts` + spec (100 % à mon nom).
+- `identity-throttler.guard.ts` + spec (100 % à mon nom, mais VictorBro les a retravaillés dans #21, commit `e2768146`, fusionnée dans ma #20 : voir l'attention en 5).
 
 ### `scripts/lessons/` — outil `lessons:author` (#178)
 
@@ -81,7 +83,7 @@ Mon rôle en une phrase : **je porte le domaine des leçons**, de la base de don
 ## 4. Hors backend
 
 - **`packages/shared/src/lessons/`** (#142, #162), à 99 % à moi : `schemas/*` (vocabulaire, grammaire, lecture, fonctions, `artifactCommon`), `validation/*` (`validateBrief`, `validateContent`, `checkGrammarContent`…), `domain/*` (`parseRichText`, `vocabularyLesson`, `lessonCopy`…), `validateLesson`. Porté du prototype, puis étendu à DE et EN.
-- **Frontend** (#20, #125) : page chat, coquille `(mode)`, `error.tsx`, `healthz/upstream`, parties de `lib/api.ts` et `lib/session.ts`, tutoiement en français.
+- **Frontend** (#20, #125) : page chat et coquille `(mode)` (supprimées depuis par VictorBro : les autres modes dans la #64, la page chat et la coquille dans la #200), `healthz/upstream`, parties de `lib/api.ts` et `lib/session.ts`, tutoiement en français.
 - **Docs** : `docs/content/lessons.md` (98 %), décisions sur leçons, objectif et streak (#139).
 - **Contenu** : outlines FR A2–C2, briefs et leçons FR/EN/DE de A1 à C2.
 
@@ -95,7 +97,7 @@ Mon rôle en une phrase : **je porte le domaine des leçons**, de la base de don
 | 10-04 | #111 | Modèle Gemini par défaut : `gemini-3.6-flash`                                      |                          4 / 4 |
 | 10-09 | #121 | Outlines FR A2 à C2, docs LLM et génération de questions                           |                 1 659 / 10 173 |
 | 10-09 | #126 | Un code d'erreur dans chaque réponse d'erreur de l'API (filtre et pipe)            |                      443 / 443 |
-| 10-09 | #125 | Tutoiement des apprenants en français                                              |                        62 / 62 |
+| 10-08 | #125 | Tutoiement des apprenants en français                                              |                        62 / 62 |
 | 10-13 | #128 | API des leçons : today, liste, détail, recherche sans accents                      |              **1 896** / 1 896 |
 | 10-21 | #140 | Seed des leçons depuis les outlines                                                |                        32 / 32 |
 | 10-21 | #139 | Doc des décisions sur leçons, objectif quotidien et streak                         |                      527 / 527 |
@@ -106,16 +108,16 @@ Mon rôle en une phrase : **je porte le domaine des leçons**, de la base de don
 | 11-01 | #178 | Outil `lessons:author` : Claude Code écrit et valide les leçons                    |              **1 935** / 1 935 |
 | 11-02 | #183 | Briefs et leçons FR, A1 à C2                                                       |                    16 / 64 573 |
 | 11-03 | #184 | Briefs et leçons EN, A1 à C2                                                       |                     0 / 61 329 |
-| 11-04 | #185 | Briefs et leçons DE, A1 à C2                                                       |                     1 / 66 509 |
+| 11-03 | #185 | Briefs et leçons DE, A1 à C2                                                       |                     1 / 66 509 |
 
 **Contributions dans les PR des autres** (cachées par le squash) : #104 placement (+178 lignes, dont 47 % de `change-level.tsx`), #29 migration onboarding (+145, avec `schemas/item.ts`), #24 et #27 (petites retouches).
 
-**En cours, pas encore sur `main`** : branche `feat/86-daily-goal-page` (page de l'objectif quotidien + tests e2e).
+**Branche `feat/86-daily-goal-page`** (page de l'objectif quotidien + tests e2e) : fusionnée le 2026-11-05 dans la PR #186 de bastian-schnitzler. Ses commits d'origine sont tous de bastian-schnitzler.
 
 ### Attention : du code à mon nom que je n'ai pas écrit
 
-- `apps/web/components/shell.tsx` et `throttle-by-ip.decorator.ts` (`@ThrottleByIp`) : écrits par VictorBro (#21, fusionnée dans ma #20).
-- `docs/brand/*` (#133) : le commit d'origine est de `eahmeti`, une identité que Git ne rattache pas à mon compte.
+- `apps/web/components/shell.tsx` et `throttle-by-ip.decorator.ts` (`@ThrottleByIp`) : écrits par VictorBro (#21, commit `e2768146`, fusionnée dans ma #20). Le même commit retravaille aussi `identity-throttler.guard.ts` et son test.
+- `docs/brand/*` (#133) : le commit d'origine est de `eahmeti`, une identité que Git ne rattache pas à mon compte. Ce dossier a été supprimé depuis (commit `0b00fa7`).
 - `lib/api.test.ts` et `e2e/support/session.ts` : environ 40 à 45 % écrits par VictorBro.
 
 ## 6. Ce que je dois savoir expliquer

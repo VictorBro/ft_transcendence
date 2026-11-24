@@ -375,23 +375,22 @@ en en, fr et de, et son `lastUpdated`, dans la même pull request que la clé.
 ### Deux formes d'appel
 
 La sortie structurée et le streaming tirent dans des directions opposées : on ne peut pas valider du JSON tant qu'il
-n'est pas complet. L'interface règle ça avec deux méthodes plutôt qu'à chaque endroit qui appelle :
+n'est pas complet. L'interface règle ça avec deux méthodes plutôt qu'à chaque endroit qui appelle. Tiré de
+[apps/api/src/llm/llm.provider.ts](../../apps/api/src/llm/llm.provider.ts), sans ses commentaires :
 
 ```ts
-interface LlmProvider {
-  // Validated JSON: the placement bank restock. The Zod schema comes from @ft/shared.
-  generateStructured<S extends z.ZodType>(request: StructuredRequest<S>): Promise<z.output<S>>;
-
-  // Prose, piece by piece: the lesson discussion.
-  streamText(request: StreamRequest): AsyncIterable<string>;
+export interface StreamRequest {
+  purpose: LlmPurpose;
+  system: string;
+  messages: LlmMessage[];
+  maxOutputTokens: number;
+  signal: AbortSignal;
 }
 
-interface StreamRequest {
-  purpose: LlmPurpose;          // 'lesson-discussion'
-  system: string;               // the tutor's prompt, built on the server
-  messages: LlmMessage[];       // { role: 'user' | 'assistant', text }, oldest first
-  maxOutputTokens: number;      // 1,000 for the discussion
-  signal: AbortSignal;          // aborted when the learner leaves
+export interface LlmProvider {
+  generateStructured<S extends z.ZodType>(request: StructuredRequest<S>): Promise<z.output<S>>;
+
+  streamText(request: StreamRequest): AsyncIterable<string>;
 }
 ```
 

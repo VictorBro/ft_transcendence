@@ -6,8 +6,9 @@ plutôt sur le board.
 ## README
 
 Treize marqueurs `TODO`, tous des choses que la soutenance demande directement :
-les cinq logins 42, la gestion de projet, le schéma de la base de données, la liste des fonctionnalités,
-les contributions de chaque membre, et les ressources avec la façon dont l'IA a été utilisée.
+les cinq logins 42, les fonctionnalités clés, la gestion de projet, le schéma de la base de données, la liste des fonctionnalités,
+les contributions de chaque membre, et les ressources avec la façon dont l'IA a été utilisée. Suivi dans
+[#160](https://github.com/VictorBro/ft_transcendence/issues/160).
 
 ## Pas de TODO, pas de code commenté
 

@@ -79,8 +79,8 @@ sous `packages/shared/src/lessons/` (#135, #136), exportés sous le namespace `l
 - **Le contenu** (`content/lessons/<id>.json`, tous les types sauf le vocabulaire) contient la leçon
   telle que l'apprenant la joue : étapes, pages et items. Une leçon de vocabulaire n'a pas de
   fichier de contenu : sa leçon est déduite de son brief.
-- Les deux commencent par la même enveloppe : `schemaVersion`, `id`, `kind`, `lang`, `level`,
-  `locales`, `title`, `objective`, `estimatedMinutes` et `provenance`.
+- Les deux commencent par la même enveloppe : `schemaVersion`, `id`, `lang`, `level`, `locales`,
+  `title`, `objective`, `estimatedMinutes`, `provenance` et `kind`.
 
 **Les langues dans une leçon.** Ce qu'on apprend (mots, phrases, textes, réponses) est dans la langue
 du cours. L'aide autour (l'objectif, les consignes, les traductions) est en anglais, en français et
@@ -311,7 +311,6 @@ Le brief de `fr-subject-pronouns`, raccourci :
 {
   "schemaVersion": 2,
   "id": "fr-subject-pronouns",
-  "kind": "grammar",
   "lang": "fr",
   "level": "A1",
   "locales": ["en", "fr", "de"],
@@ -323,6 +322,7 @@ Le brief de `fr-subject-pronouns`, raccourci :
   },
   "estimatedMinutes": 16,
   "provenance": { "generator": "…", "model": "…", "promptVersion": "…", "generatedAt": "…", "inputHashes": { "outline": "…" } },
+  "kind": "grammar",
   "topic": "pronouns",
   "rules": ["…"],
   "blocks": ["…"],
@@ -670,7 +670,7 @@ d'une leçon de grammaire est déjà là et devient cette page. Sur cette page, 
 avec le tuteur de la leçon, un LLM, puis passer à l'examen. Sauter la discussion ne coûte rien.
 
 **Ce que voit l'apprenant** (#151) : une fenêtre de chat avec trois suggestions (explique mes
-erreurs, un résumé, un exemple), la réponse qui s'affiche au fur et à mesure qu'elle est écrite,
+erreurs, un résumé, un exemple), la réponse qui s'affiche au fur et à mesure qu'elle est écrite et rendue en Markdown (#213),
 Stop, et les échanges précédents de cette visite. Les échanges vivent seulement dans la page :
 quitter la page les oublie.
 

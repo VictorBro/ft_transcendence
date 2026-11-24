@@ -36,7 +36,7 @@ flowchart LR
             web["web<br/><small>Next.js 16 :3000<br/>build standalone</small>"]
             api["api<br/><small>NestJS 11 :3001<br/>préfixe global /api</small>"]
             db[("db<br/><small>Postgres 18<br/>+ pgvector :5432</small>")]
-            redis[("redis<br/><small>sessions<br/>:6379</small>")]
+            redis[("redis<br/><small>sessions, placement,<br/>limites, présence :6379</small>")]
 
             subgraph mon["monitoring (profile en dev, toujours actif avec make)"]
                 prometheus["prometheus<br/><small>:9090, 15 j / 1 Go</small>"]
@@ -121,6 +121,7 @@ La connexion touche toutes les couches, c'est donc la plus utile à suivre.
 sequenceDiagram
     participant B as Navigateur
     participant C as caddy
+    participant W as web (Next.js)
     participant A as api (NestJS)
     participant R as redis
     participant P as db
@@ -130,7 +131,7 @@ sequenceDiagram
     A->>P: cherche l'utilisateur par email
     A->>A: vérification argon2id
     alt second facteur activé
-        A->>R: stocke la session {pendingUserId}
+        A->>R: régénère la session, stocke {pendingUserId}
         A-->>B: 202 {twoFactorRequired:true}
         B->>C: POST /api/auth/2fa/verify {code}
         C->>A: proxy
@@ -141,12 +142,12 @@ sequenceDiagram
 
     Note over B,C: navigation suivante
     B->>C: GET /learn
-    C->>B: servi par web (Next)
-    Note over C,A: le serveur de Next transmet le cookie
-    C->>A: GET /api/auth/me
+    C->>W: proxy
+    W->>A: GET /api/auth/me, cookie transmis<br/>(http://api:3001, sans passer par caddy)
     A->>R: cherche la session
     A->>P: relit l'utilisateur
-    A-->>C: SessionUser
+    A-->>W: SessionUser
+    W-->>B: la page rendue, via caddy
 ```
 
 Deux détails bons à savoir :
@@ -484,7 +485,7 @@ stack de production, la vérif du monitoring en direct et Playwright.
 flowchart TB
     subgraph apps
         web["apps/web<br/><small>Next.js : pages, formulaires, SSR</small>"]
-        api["apps/api<br/><small>NestJS : auth, users, courses, placement,<br/>lessons, llm, gateway, friends, messages, metrics</small>"]
+        api["apps/api<br/><small>NestJS : auth, users, courses, placement,<br/>question-generation, lessons, llm, gateway,<br/>friends, presence, messages, metrics</small>"]
     end
 
     subgraph packages

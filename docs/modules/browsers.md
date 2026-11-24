@@ -73,7 +73,7 @@ CI runs it". The devcontainer image has the system libraries of the three browse
 
 - A navigation cancels the prefetches still open. Every engine reports this as a failed request:
   Chromium `net::ERR_ABORTED`, Firefox `NS_BINDING_ABORTED`, WebKit `cancelled` or
-  `Load request cancelled`. The gate ignores these four words only.
+  `Load request cancelled`. The gate ignores these four messages only.
 - Three Firefox warnings are allowed, and only on `/grafana/` pages: they come from Grafana's own
   code, not ours. The same warning on one of our pages still fails the test.
 - `settle()` waits for the page to go quiet. Firefox sometimes never reports `networkidle`, so it

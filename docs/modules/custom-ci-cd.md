@@ -51,14 +51,14 @@ where the proof is.
 
 ```mermaid
 flowchart TD
-    D[Developer] -- "commit and push hooks: commitlint,\nlint-staged, a fast subset of make ci" --> B[Side branch]
-    B -- push --> IMG1["images: build 6 images x 2 arch,\nTrivy, push branch-shortsha tag"]
-    B -- "pull request" --> PR{{"ci, e2e, hygiene\n(+ devcontainer)"}}
-    PR -- "19 required checks green\n+ 1 approval" --> M[Squash merge to main]
+    D[Developer] -- "commit and push hooks: commitlint,<br/>lint-staged, a fast subset of make ci" --> B[Side branch]
+    B -- push --> IMG1["images: build 6 images x 2 arch,<br/>Trivy, push branch-shortsha tag"]
+    B -- "pull request" --> PR{{"ci, e2e, hygiene<br/>(+ devcontainer)"}}
+    PR -- "19 required checks green<br/>+ 1 approval" --> M[Squash merge to main]
     M --> RUN2["ci, e2e, hygiene run again on main"]
-    M --> IMG2["images: push main-shortsha and latest\nto ghcr.io"]
+    M --> IMG2["images: push main-shortsha and latest<br/>to ghcr.io"]
     IMG2 --> S["Server: ft-deploy.timer every 5 min"]
-    S -- "deploy.sh: pull, check labels,\nmigrate, up -d" --> L[Live site]
+    S -- "deploy.sh: pull, check labels,<br/>migrate, up -d" --> L[Live site]
 ```
 
 ### 1. On the developer's machine

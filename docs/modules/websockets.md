@@ -218,20 +218,21 @@ with separate cookies (for example a normal window and a private window), so you
    know my level**, pick a level, then **Start learning**. You land on the course page,
    `/en/learn/<lang>`.
 3. Open the same course page in a second tab of window A.
-4. In the first tab, change **Daily goal** in the **This course** box.
+4. In the first tab, change **Daily goal** in the **This course** box (in a narrow window, click
+   **My course** first).
 5. The second tab shows the new value without a reload. Do the same with **Level** and **Save**.
 
 **2. Live updates between two people.**
 
 1. In window B, sign up as user B.
-2. Both users open **Friends** (`/friends`).
+2. Both users open the menu in the header and click **Friends** (`/friends`).
 3. User A types B's display name in **Search by display name**, clicks **Search**, then **Add
    friend**.
 4. On B's screen, A appears under **Requests received** without a reload. B clicks **Accept**.
    Both lists show the other person under **Your friends**, with a green dot (**Online**).
-5. User A clicks **Message** next to B. User B opens **Messages** (`/chat`).
+5. User A clicks **Message** next to B. User B opens **Messages** (`/chat`) from the header menu.
 6. A types in **Write a message** and clicks **Send**. The message appears on B's side at once, and
-   B's **Messages** link in the header shows a red unread badge until B opens the conversation.
+   B's menu button in the header shows a red unread badge until B opens the conversation.
 
 **3. Disconnect and reconnect.**
 
@@ -245,7 +246,7 @@ with separate cookies (for example a normal window and a private window), so you
 4. A **Reconnecting…** label appears at the bottom of A's page, then goes away when the API is
    back. The browser console (DevTools) shows no error. A is still signed in, and a goal change
    from another tab shows again.
-5. Click **Sign out** in one tab of A. A's other tabs lose their socket, and a page that needs a
+5. In one tab of A, open the header menu and click **Sign out**. A's other tabs lose their socket, and a page that needs a
    session sends them to the login page.
 
 **4. Optional: the metrics.** Open Grafana at `https://localhost/grafana` (user `admin`, password:

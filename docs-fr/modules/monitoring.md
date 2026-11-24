@@ -14,7 +14,7 @@ panneau, chaque règle, chaque réglage, comment les changer) est
 ## Ce que demande le sujet
 
 Dans la liste des modules, section DevOps (voir [../subject/summary.md](../subject/summary.md)
-et le chapitre IV de [../subject/ft_transcendence.pdf](../../docs/subject/ft_transcendence.pdf)) :
+et le chapitre IV de [../../docs/subject/ft_transcendence.pdf](../../docs/subject/ft_transcendence.pdf)) :
 
 > Major | Prometheus + Grafana monitoring: exporters, custom dashboards, alerting rules,
 > secured access

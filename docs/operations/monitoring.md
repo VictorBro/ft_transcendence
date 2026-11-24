@@ -472,9 +472,9 @@ The rules this setup keeps:
    and Caddy answers 404 for the path before proxying.
 4. **`/api/metrics` does not exist.** The API's metrics listener sits outside Nest's prefix,
    guards, throttler, sessions and Swagger. A Supertest and a Playwright test pin the 404.
-5. **Scrapes are plain http inside the network**, which the subject allows: "Internal
-   container-to-container traffic (e.g. server ↔ database) may be unencrypted"
-   ([subject/summary.md](../subject/summary.md)).
+5. **Scrapes are plain http inside the network**, which the subject allows (chapter III.3): "Connections
+   inside the backend itself (e.g., web server and database, software inside your container(s))
+   can be without encryption" ([subject/summary.md](../subject/summary.md)).
 
 ### Grafana's security settings
 

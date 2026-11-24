@@ -194,7 +194,8 @@ Un `model` est une table. Chaque ligne est une colonne : `name  Type  @attribute
 
 ### Tout le schema en une image
 
-Les champs de relation (comme `recoveryCodes`) ne sont pas montrés : seulement les vraies colonnes.
+Les champs de relation (comme `recoveryCodes`) ne sont pas montrés : seulement les vraies colonnes. Pour garder l'image petite,
+la plupart des colonnes `createdAt` / `updatedAt` / `startedAt` sont aussi laissées de côté (les blocs de code plus bas les montrent).
 `PK` = clé primaire, `FK` = clé étrangère, `UK` = unique.
 
 ```mermaid
@@ -378,13 +379,16 @@ Une ligne par compte.
 - `email` et `displayName` sont tous les deux `@unique` : deux comptes ne peuvent partager ni l'un ni l'autre. Le code d'inscription
   compte là-dessus (section 7, exemple 1).
 - `passwordHash` : jamais le mot de passe lui-même, seulement son hash argon2 (chapitre 5).
-- `locale` : la langue de l'interface (`en`, `fr`, `de`). `activeLang` : le cours que l'utilisateur
+- `locale` : la langue de l'interface (`en`, `fr`, `de`). Elle est fixée à l'inscription, et l'app web
+  l'enregistre à nouveau avec `PATCH /api/users/me` quand la langue de l'URL est différente (#211).
+  Le tuteur des leçons la lit pour répondre dans cette langue. `activeLang` : le cours que l'utilisateur
   apprend en ce moment (null avant le premier cours).
 - `timeZone` : un nom IANA comme `Europe/Paris`, utilisé pour savoir quand « aujourd'hui » commence pour la série de jours (streak).
 - `lastActiveDay` : une `DATE` (sans heure). Écrite une fois par jour par la gateway WebSocket (chapitre 9).
+  Elle garde l'utilisateur dans « Recently active » (actifs récemment) pendant une semaine.
 - `totpSecret` / `totpEnabledAt` : la connexion à deux facteurs. Le commentaire explique pourquoi il y a deux colonnes :
   le secret est enregistré quand la configuration commence, mais la 2FA n'est « activée » qu'une fois `totpEnabledAt` rempli.
-- Le commentaire du haut est important : certaines colonnes (le hash, le secret TOTP) sont **privées**.
+- Le commentaire du haut est important : certaines colonnes (le hash, les colonnes TOTP, `lastActiveDay`) sont **privées**.
   Le `UserSchema` partagé que voit le navigateur ne doit jamais les recevoir.
 
 Les champs de relation en bas (`recoveryCodes`, `userLevels`, `friendshipsRequested`, ...) ne sont
@@ -442,7 +446,8 @@ Le nom est un peu trompeur : une ligne `UserLevel` est **un cours** (par exemple
 
 - `@@unique([userId, lang])` : un utilisateur a au plus un cours par langue.
 - `level` est null tant que le test de placement (ou l'utilisateur) n'a pas choisi un niveau (A1 à C2).
-- `dailyGoal` : combien de leçons par jour l'utilisateur veut faire.
+- `dailyGoal` : les minutes par jour que l'utilisateur veut étudier : 10, 30 ou 60 (`DAILY_GOALS` dans `@ft/shared`).
+  Avec 10 minutes par leçon, cela fait 1, 3 ou 6 leçons par jour.
 - `streak`, `bestStreak`, `lastGoalDay` : le compteur de « jours d'affilée ».
 - `xp`, `lastChallengeDay`, `lastChallengeCode`, `challengesDone` : les points et le défi du jour (gamification, chapitre 8).
 
@@ -579,8 +584,8 @@ model LessonAttempt {
 ```
 
 L'état côté serveur d'une leçon en cours (le chapitre 8 explique le déroulé).
-`@@unique([userLevelId, lessonId])` : on garde une seule tentative par cours et par leçon ; un nouveau départ
-remplace l'ancienne. `secret` est en octets bruts (`BYTEA`), utilisé pour signer les références, et ne quitte jamais le serveur.
+`@@unique([userLevelId, lessonId])` : on garde une seule tentative par cours et par leçon. Un départ
+reprend la tentative encore en cours, ou supprime une tentative terminée et en crée une nouvelle. `secret` est en octets bruts (`BYTEA`), utilisé pour signer les références, et ne quitte jamais le serveur.
 `completedAt` à null veut dire « encore en cours ».
 
 ### `UserAchievement`
@@ -602,7 +607,8 @@ model UserAchievement {
 ```
 
 Un badge. La clé primaire composite `(userLevelId, code)` veut dire qu'un cours ne peut gagner chaque badge
-qu'une fois, même si deux leçons se terminent au même moment : le deuxième insert échoue simplement.
+qu'une fois, même si deux leçons se terminent au même moment. Le code écrit avec `createMany({ ..., skipDuplicates: true })`
+([gamification.ts](../../apps/api/src/lessons/gamification.ts)), donc la deuxième écriture du même badge est simplement ignorée.
 
 ### `Friendship`
 
@@ -624,7 +630,8 @@ model Friendship {
 }
 ```
 
-Une astuce sympa : la clé primaire est `pairKey`, les deux ids d'utilisateurs triés et collés ensemble. Alice-vers-Bob et
+Une astuce sympa : la clé primaire est `pairKey`, les deux ids d'utilisateurs triés et collés avec `:` (`pairKey()` dans
+[pair.ts](../../apps/api/src/friends/pair.ts)). Alice-vers-Bob et
 Bob-vers-Alice donnent la **même** clé, donc si les deux cliquent sur « add friend » (ajouter un ami) en même temps, la base
 ne garde qu'une ligne. `status` vaut `pending` (une demande) ou `accepted`. Les deux index servent
 « les demandes que j'ai envoyées » et « les demandes que j'ai reçues ».
@@ -832,7 +839,9 @@ CREATE TABLE "RecoveryCode" (
 
 Tu vois comment les mots de Prisma deviennent du SQL : `DateTime` devient `TIMESTAMP(3)` (précision à la milliseconde),
 `String?` devient `TEXT` sans `NOT NULL`, `@default(now())` devient `DEFAULT CURRENT_TIMESTAMP`.
-Remarque qu'il n'y a pas de `DEFAULT` pour `updatedAt` : Prisma le remplit côté client, pas en SQL.
+Deux valeurs par défaut de Prisma n'ont aucun `DEFAULT` SQL : `id` est `UUID NOT NULL` parce que `uuid()` est créé par
+le client, et `updatedAt` (dans `User`, première migration) est `TIMESTAMP(3) NOT NULL` parce que Prisma le remplit
+côté client, pas en SQL.
 
 Les migrations ne sont **jamais modifiées** après leur commit : une base quelque part les a peut-être déjà
 lancées. Un changement est toujours une _nouvelle_ migration.
@@ -850,13 +859,14 @@ une autre base (MySQL, par exemple), Prisma verrait la différence et s'arrêter
 
 ### Comment les migrations sont appliquées
 
-Le `package.json` de l'API a trois scripts :
+Le `package.json` de l'API a quatre scripts `db:` :
 
 | Script        | Commande                | Quand                                                                                                         |
 | ------------- | ----------------------- | ------------------------------------------------------------------------------------------------------------- |
 | `db:generate` | `prisma generate`       | écrire le client typé (section 6)                                                                             |
 | `db:migrate`  | `prisma migrate dev`    | **développement seulement** : écrire une nouvelle migration à partir des changements du schema et l'appliquer |
 | `db:deploy`   | `prisma migrate deploy` | appliquer les migrations manquantes, sans jamais en écrire de nouvelles (sûr pour n'importe quel serveur)     |
+| `db:seed`     | `tsx prisma/seed.ts`    | charger le contenu (section 5)                                                                                |
 
 En pratique, tu utilises le [Makefile](../../Makefile) :
 
@@ -868,7 +878,7 @@ En pratique, tu utilises le [Makefile](../../Makefile) :
   `dist` compilé), donc le Makefile build l'étape `build` de
   [apps/api/Dockerfile](../../apps/api/Dockerfile) sous le nom `ft_transcendence/api-tooling` et y lance la commande,
   sur le réseau compose pour pouvoir joindre le service `db`.
-- `make db-ready` = `make migrate` puis `make seed`. `make dev` l'appelle à la fin, donc un
+- `make db-ready` = `make migrate` puis `make seed`. `make dev`, `make run` et `make reset-db` l'appellent, donc un
   clone tout neuf a toujours les tables et les données. Les deux étapes peuvent être relancées sans risque.
 - `make ci` lance `prisma migrate deploy` avant les tests e2e, plus deux vérifications :
   [check-prisma-format.sh](../../scripts/check-prisma-format.sh) (le schema est bien formaté) et
@@ -914,7 +924,8 @@ content/
 
 On le lance avec `pnpm db:seed`, qui correspond à `tsx prisma/seed.ts` (`tsx` exécute du TypeScript directement, sans build).
 `make seed` et le service `migrate` du déploiement l'appellent. On peut le lancer autant de fois qu'on veut sans risque : il fait des **upserts**
-(mettre à jour si la ligne existe, insérer sinon) et n'écrit que ce qui a changé.
+(mettre à jour si la ligne existe, insérer sinon). Les questions sont réécrites à chaque lancement ; la partie
+leçons n'écrit que ce qui a changé.
 
 ### Le bloc principal : ce qui tourne, dans l'ordre
 
@@ -1134,7 +1145,7 @@ résultats, `ready` qui suit les fichiers, et les règles pour sauter la démo. 
 ### Qu'est-ce que du code généré ?
 
 `prisma generate` lit `schema.prisma` et **écrit des fichiers TypeScript** pour toi : un ensemble de types
-et de méthodes par model. Tu ne les modifies jamais ; la première ligne de chaque fichier le dit :
+et de méthodes par model. Tu ne les modifies jamais ; le haut de chaque fichier le dit :
 
 ```ts
 /* !!! This is code generated by Prisma. Do not edit directly. !!! */
@@ -1288,7 +1299,7 @@ message : les deux ou aucun. Et charger l'historique, une page à la fois :
 
 `where pairKey`, `orderBy createdAt, id` : exactement les colonnes de l'index
 `@@index([pairKey, createdAt, id])`. La base lit la page directement dans l'index.
-`take: PAGE_SIZE + 1` demande une ligne en plus, seulement pour savoir s'il existe une page plus ancienne.
+`take: MESSAGE_PAGE_SIZE + 1` demande une ligne en plus, seulement pour savoir s'il existe une page plus ancienne.
 
 ---
 

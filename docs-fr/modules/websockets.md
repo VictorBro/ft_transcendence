@@ -219,20 +219,21 @@ avec des cookies séparés (par exemple une fenêtre normale et une fenêtre pri
    know my level**, choisis un niveau, puis **Start learning**. Tu arrives sur la page du cours,
    `/en/learn/<lang>`.
 3. Ouvre la même page du cours dans un deuxième onglet de la fenêtre A.
-4. Dans le premier onglet, change **Daily goal** dans le bloc **This course**.
+4. Dans le premier onglet, change **Daily goal** dans le bloc **This course** (dans une fenêtre étroite, clique
+   d'abord sur **My course**).
 5. Le deuxième onglet montre la nouvelle valeur sans rechargement. Fais la même chose avec **Level** et **Save**.
 
 **2. Des mises à jour en direct entre deux personnes.**
 
 1. Dans la fenêtre B, inscris-toi en tant qu'utilisateur B.
-2. Les deux utilisateurs ouvrent **Friends** (`/friends`).
+2. Les deux utilisateurs ouvrent le menu du header et cliquent sur **Friends** (`/friends`).
 3. L'utilisateur A tape le display name de B dans **Search by display name**, clique sur **Search**, puis sur **Add
    friend**.
 4. Sur l'écran de B, A apparaît sous **Requests received** sans rechargement. B clique sur **Accept**.
    Les deux listes montrent l'autre personne sous **Your friends**, avec un point vert (**Online**).
-5. L'utilisateur A clique sur **Message** à côté de B. L'utilisateur B ouvre **Messages** (`/chat`).
+5. L'utilisateur A clique sur **Message** à côté de B. L'utilisateur B ouvre **Messages** (`/chat`) depuis le menu du header.
 6. A tape dans **Write a message** et clique sur **Send**. Le message apparaît tout de suite chez B, et
-   le lien **Messages** du header de B affiche un badge rouge de non-lus jusqu'à ce que B ouvre la conversation.
+   le bouton du menu dans le header de B affiche un badge rouge de non-lus jusqu'à ce que B ouvre la conversation.
 
 **3. Déconnexion et reconnexion.**
 
@@ -246,7 +247,7 @@ avec des cookies séparés (par exemple une fenêtre normale et une fenêtre pri
 4. Un libellé **Reconnecting…** apparaît en bas de la page de A, puis disparaît quand l'API est
    revenue. La console du navigateur (DevTools) ne montre aucune erreur. A est toujours connecté, et un changement d'objectif
    depuis un autre onglet s'affiche de nouveau.
-5. Clique sur **Sign out** dans un onglet de A. Les autres onglets de A perdent leur socket, et une page qui a besoin d'une
+5. Dans un onglet de A, ouvre le menu du header et clique sur **Sign out**. Les autres onglets de A perdent leur socket, et une page qui a besoin d'une
    session les envoie vers la page de connexion.
 
 **4. En option : les métriques.** Ouvre Grafana sur `https://localhost/grafana` (utilisateur `admin`, mot de passe :

@@ -13,7 +13,7 @@ Le module est une ligne Minor du tableau Accessibility and Internationalization 
 
 > ≥2 additional browsers fully supported, tested, documented
 
-Le PDF ([../../subject/ft_transcendence.pdf](../../docs/subject/ft_transcendence.pdf), chapitre IV,
+Le PDF ([../../docs/subject/ft_transcendence.pdf](../../docs/subject/ft_transcendence.pdf), chapitre IV,
 Accessibility and Internationalization) le formule comme ceci :
 
 > Minor: Support for additional browsers.

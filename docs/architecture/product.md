@@ -373,23 +373,22 @@ in en, fr and de, and its `lastUpdated`, in the same pull request as the key.
 ### Two call shapes
 
 Structured output and streaming pull in opposite directions: you cannot validate JSON until it
-is complete. The interface resolves it with two methods rather than in every call site:
+is complete. The interface resolves it with two methods rather than in every call site. From
+[apps/api/src/llm/llm.provider.ts](../../apps/api/src/llm/llm.provider.ts), without its comments:
 
 ```ts
-interface LlmProvider {
-  // Validated JSON: the placement bank restock. The Zod schema comes from @ft/shared.
-  generateStructured<S extends z.ZodType>(request: StructuredRequest<S>): Promise<z.output<S>>;
-
-  // Prose, piece by piece: the lesson discussion.
-  streamText(request: StreamRequest): AsyncIterable<string>;
+export interface StreamRequest {
+  purpose: LlmPurpose;
+  system: string;
+  messages: LlmMessage[];
+  maxOutputTokens: number;
+  signal: AbortSignal;
 }
 
-interface StreamRequest {
-  purpose: LlmPurpose;          // 'lesson-discussion'
-  system: string;               // the tutor's prompt, built on the server
-  messages: LlmMessage[];       // { role: 'user' | 'assistant', text }, oldest first
-  maxOutputTokens: number;      // 1,000 for the discussion
-  signal: AbortSignal;          // aborted when the learner leaves
+export interface LlmProvider {
+  generateStructured<S extends z.ZodType>(request: StructuredRequest<S>): Promise<z.output<S>>;
+
+  streamText(request: StreamRequest): AsyncIterable<string>;
 }
 ```
 

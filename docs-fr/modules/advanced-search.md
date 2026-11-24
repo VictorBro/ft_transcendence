@@ -13,7 +13,7 @@ Le module est une ligne du tableau Web de [../subject/summary.md](../subject/sum
 
 > | Minor | Advanced search: filters, sorting, pagination |
 
-Le PDF ([../../subject/ft_transcendence.pdf](../../docs/subject/ft_transcendence.pdf), chapitre IV, Web)
+Le PDF ([../../docs/subject/ft_transcendence.pdf](../../docs/subject/ft_transcendence.pdf), chapitre IV, Web)
 le formule comme ceci :
 
 > Minor: Implement advanced search functionality with filters, sorting, and pagination.

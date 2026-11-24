@@ -67,7 +67,7 @@ isn't fully functional at evaluation counts as **0**.
 
 | Type | Module |
 |---|---|
-| Major | Framework for both frontend and backend (full-stack frameworks count as both) |
+| Major | Framework for both frontend and backend (a full-stack framework counts as both if you use its frontend and its backend) |
 | Minor | Frontend framework |
 | Minor | Backend framework |
 | Major | Real-time features via WebSockets or similar (updates across clients, graceful dis/reconnect, efficient broadcasting) |
@@ -131,7 +131,7 @@ isn't fully functional at evaluation counts as **0**.
 | Major | Multiplayer 3+ players, fair mechanics, synchronization |
 | Major | A second distinct game with history and matchmaking |
 | Major | Advanced 3D graphics (Three.js, Babylon.js): immersive environment, advanced rendering, smooth performance |
-| Minor | Advanced chat: blocking, game invites from chat, in-chat notifications, profile access, history, typing indicators and read receipts |
+| Minor | Advanced chat: blocking, game invites from chat, game and tournament notifications in chat, profile access, history, typing indicators and read receipts |
 | Minor | Tournament system: brackets, matchup order, matchmaking, registration and management |
 | Minor | Game customization: power-ups, maps/themes, settings, defaults available |
 | Minor | Gamification: ≥3 of achievements / badges / leaderboards / XP / daily challenges / rewards, persisted, with visual feedback |
@@ -176,7 +176,7 @@ isn't fully functional at evaluation counts as **0**.
 - AI: AI opponent (2) = **2**
 - **Total: 14**
 
-The subject also lists ~25 other project ideas across gaming, social/collaborative,
+The subject also lists 25 other project ideas across gaming, social/collaborative,
 creative/media, productivity, and specialized niches: see chapter V of the PDF.
 
 ## README requirements

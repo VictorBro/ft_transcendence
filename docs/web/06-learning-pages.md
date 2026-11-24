@@ -264,7 +264,7 @@ flowchart TD
     S1 --> GP["GoalPicker (client)"]
     CM --> RK["Rank card: RankLine"]
     CM --> CC["ChallengeCard"]
-    CM --> ST["Stats list: StatRow x 2-4"]
+    CM --> ST["Stats list: StatRow x 1-4"]
     CM --> PL["Link: Take the placement test"]
 ```
 
@@ -320,6 +320,7 @@ decides the 404.
 
 | Field | Meaning |
 | --- | --- |
+| `day` | The course day (a date like `2026-03-03`) |
 | `target`, `met` | How many lessons the daily goal asks, and whether that number is reached |
 | `done`, `proposed`, `extra` | Lessons finished today, proposed until the target, and more after it |
 | `streak` | `current`, `best`, and `today` (does today already count?) |
@@ -341,7 +342,7 @@ decides the 404.
 ```
 
 - `empty`: a level may have no ready lesson yet. Then the page shows only a "no lessons ready"
-  message instead of the Today card, the challenge and the stats.
+  message instead of the Today card, the challenge, and the attempted and passed stats.
 - `RefreshOn` (Chapter 3) listens on the socket. When the server says `COURSE_UPDATED` (for
   example the level changed in another tab), the page re-renders itself.
 
@@ -372,7 +373,7 @@ The second column is wrapped in `<CourseMenu>`. It holds five cards:
 ```
 
 `t.rich` is the next-intl function for a message with tags inside. The message text in
-`messages/en.json` contains something like `<b>{passed}</b> of {total} passed`, and `b: strong`
+`messages/en.json` contains `Passed <b>{passed}</b> of {total}, {needed} needed`, and `b: strong`
 says "draw `<b>` with this function":
 
 ```tsx
@@ -384,7 +385,7 @@ const strong = (chunks: ReactNode) => (
 
 `STAT_ICONS` maps each stat (`attempted`, `passed`, `comingSoon`, `streak`) to a colour and an SVG
 path, and `StatRow` draws the icon then the text. The "coming soon" row only shows when some lessons
-are not ready yet; the best streak row always shows.
+are not ready yet; the best streak row always shows. So the list has 1 to 4 rows.
 
 ### 4.5 `course-menu.tsx`: one column, two looks
 
@@ -468,8 +469,8 @@ All server components. Exports: `StreakLine`, `TodayCard`, `MoreLessons`, `Level
   );
 ```
 
-"Start a streak today", "3-day streak, today counts", or "3-day streak, play today to keep it".
-`count` lets the messages use ICU plurals ("1 day" / "3 days").
+"Reach your daily goal to start a streak.", "3 day streak, today included.", or "3 day streak.
+Reach your daily goal to keep it." `count` goes into an ICU plural message (`{count, plural, ...}`).
 
 **`TodayCard`** is the daily goal:
 
@@ -480,8 +481,8 @@ All server components. Exports: `StreakLine`, `TodayCard`, `MoreLessons`, `Level
 
 - If the goal is met, nothing is proposed (`next` is `undefined`).
 - Otherwise the first proposed lesson (`next`) gets the **primary** button ("Start"), the others
-  (`rest`) a secondary one.
-- The header says "Goal reached" or "10 min a day: 1 of 3 lessons", with a `ProgressBar` (from the
+  (`rest`) a secondary one. A "Next up" badge sits above them.
+- The header says "Daily goal reached" or "10 min goal: 1 of 3 lessons", with a `ProgressBar` (from the
   `@ft/ui` package) of `done.length` over `target`.
 - Finished lessons are listed with `DoneRow`, then the proposals with `LessonRow`.
 
@@ -494,7 +495,7 @@ false again, so the card shows the done rows over the new target and proposes th
 | --- | --- |
 | `LessonText` | Title and summary with `lang={lang}`, so a screen reader reads them in the course language's voice. |
 | `CheckIcon` | A check (passed) or a circling arrow (try again). Shape differs, not only colour, for colour-blind users. |
-| `DoneRow` | A lesson finished today: score if passed, or a "Failed, 45%" line in amber. A level badge if the lesson is from another level. |
+| `DoneRow` | A lesson finished today: score if passed, or a "Not passed yet, best 45%. Counts for today." line in amber. A level badge if the lesson is from another level. |
 | `LessonRow` | Position number, text, "10 min" (`LESSON_MINUTES`), and a `Link` button. `prefetch={false}`: a row only seen is not a lesson opened. |
 
 **`MoreLessons`** lists `today.extra` (lessons past the target) with an "Open" button, and returns
@@ -601,7 +602,7 @@ The level select (A1 to C2). Why not save on change like the goal? The comment e
 > On a closed select every arrow key fires `change`, so saving on change would rewrite the course
 > at each level a keyboard user looks at.
 
-So there is a "Save level" button, shown only when the pick differs from the stored level:
+So there is a "Save" button, shown only when the pick differs from the stored level:
 
 ```tsx
         {value === level ? null : (
@@ -716,12 +717,12 @@ function groupOf(code: AchievementCode): Group {
 The comment on `GROUPS` notes that each group is a run in the catalogue, so filtering keeps the
 API's order.
 
-`AchievementCard` draws one achievement. Earned: green, with `DoneMark` and "Earned on 3 March
-2026". Not earned: grey, with a bar of `current / target` and a progress sentence. The date is a
+`AchievementCard` draws one achievement. Earned: green, with `DoneMark` and "Earned on March 3,
+2026" (`dateStyle: 'long'`). Not earned: grey, with a bar of `current / target` and a progress sentence. The date is a
 **course day** (a calendar date like `2026-03-03`), not an instant. So it is formatted in UTC, and
 it never moves by one day for a reader in another time zone.
 
-`HowItWorks` lists the XP rules (`LESSON_XP`, `GOAL_XP`, `CHALLENGE_XP`), ranks 1 to 6 with
+`HowItWorks` lists the XP rules (`LESSON_XP`, 1 XP for each point added to your best score, `GOAL_XP`, `CHALLENGE_XP`), ranks 1 to 6 with
 `rankStartOf`, the challenges, and two notes about achievements. Every number comes from shared
 constants, so nothing is typed twice. `RuleRow` is one line of a `<dl>` grid (rule on the left,
 amount on the right). The section has `tabIndex={0}` so Safari's keyboard can scroll it.
@@ -942,7 +943,7 @@ The "Close" link is `href="#"`, which removes the hash. The "Show the lessons" b
 with `formAction="?"` and `data-close-sheet`. The comment says why `"?"`: a GET form would keep the
 page's `#filters` and leave the sheet open.
 
-**`Select`** and **`LessonToolbar`**: the search box (`name="q"`, `type="search"`), a "Filters (3)"
+**`Select`** and **`LessonToolbar`**: the search box (`name="q"`, `type="search"`), a "Filters · 3"
 link for phones, and three selects (sort, direction, group). The "Apply" button is inside
 `<noscript>`, so it only shows when JavaScript is off. The total ("12 lessons") is in a
 `role="status"` paragraph, so screen readers announce it. The `Select` comment notes it is not
@@ -967,7 +968,7 @@ lesson is one big link to the lesson page; a lesson not ready is greyed, with no
 `group-data-pending:opacity-50`: while `LiveForm` waits for the next view, the form gets
 `data-pending`, and the rows fade.
 
-**`LessonPager`**: "1–20 of 45", then Previous, numbered pages and Next. Every page link keeps the
+**`LessonPager`**: "1 to 20 of 45", then Previous, numbered pages and Next. Every page link keeps the
 other filters (`lessonsHref(lang, { ...query, page: number })`). The current page has
 `aria-current="page"`.
 
@@ -1280,7 +1281,7 @@ to `exit`.
 File: [start-screen.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/placement/start-screen.tsx>)
 
 A small form: a heading, a description with the language name, and, for a learner who already has
-a level, "Your course is at B1" (because finishing writes a new level, they should know first).
+a level, "Your lessons are at B1 now..." (because finishing writes a new level, they should know first).
 Then `FormError`, a `SubmitButton` that calls `onStart`, and a "Back" link to `exit`. It is a
 `<form>` so Enter starts the test too.
 
@@ -1333,8 +1334,8 @@ The `ProgressBar` here is local and decorative (`aria-hidden`): its total is
   has `role="timer"` and a label like "Seconds left: 12".
 
 **`QuitButton`** opens a `<dialog>` with `showModal()`. A modal dialog gives a focus trap and Escape
-for free. The first button ("No, keep going") is inside `<form method="dialog">`, so it just closes
-the dialog. It is first, so the focus starts on the safe choice; "Yes, quit" is red and calls
+for free. The first button ("Keep going") has no type inside `<form method="dialog">`, so it just closes
+the dialog. It is first, so the focus starts on the safe choice; "Quit" is red and calls
 `onQuit`. Quitting throws away every answer, and a stray tap is easy on a phone, so it asks.
 
 ### 8.6 `result-screen.tsx`
@@ -1353,14 +1354,14 @@ The top section:
   (finished on this page) or "Back to course" (a result loaded with the page).
 - If `applied`: a `LevelSummary` (from `level-picker.tsx`) with the big level and "12 of 20
   correct". If not applied (every question timed out), a notice that the course was left alone.
-- Two actions: "Retake" (calls `onRetake`, which is `start`) and, if applied, a `ChangeLevel`
-  button to pick another level by hand. `onSaved={onLevelChange}` updates `level` in the exam
+- Two actions: "Retake the test" (calls `onRetake`, which is `start`) and, if applied, a `ChangeLevel`
+  button ("Choose another level") to pick another level by hand. `onSaved={onLevelChange}` updates `level` in the exam
   without a reload.
 
 The bottom section lists every answer (`Answer`): a `Verdict` icon (an SVG check or cross, "drawn
 rather than a glyph, which fonts render as anything from an emoji to a box"), the reading text in a
 fold, the question, "Your answer" and, if wrong, "Correct answer". `QuestionLevel` shows the
-question's level as a small badge; the eye sees "B1", a screen reader hears "Question level B1".
+question's level as a small badge; the eye sees "B1", a screen reader hears "Level B1".
 
 The answers heading uses `result.targetLevel`, the level the exam gave. It does not follow a later
 `ChangeLevel`.
@@ -1391,13 +1392,13 @@ with a last option "Add a language".
 
 - The current course comes from the **URL** (`learnPathLang`), not from a prop. The layout that
   holds the header does not re-render when you move between pages, so a prop would be stale.
-- If the URL has no known course (a 404 under `/learn`), a disabled "No course" option shows, so the
+- If the URL has no known course (a 404 under `/learn`), a disabled "No course open" option shows, so the
   browser does not show the first course by mistake.
 - `ADD_LANGUAGE = '__add'` is not a language code, so it cannot collide with a course.
 - The comment explains the label "Course": an e2e test looks for the locale switcher by the name
   "Language", and a second box with that name would break it.
 - The `in-data-header-menu:` classes change the look when the switcher sits inside the header menu
-  on small screens (Chapter 3).
+  (`HeaderMenu`, for a signed-in user, on every screen size; Chapter 3).
 
 ### 9.2 `components/level-picker.tsx`
 

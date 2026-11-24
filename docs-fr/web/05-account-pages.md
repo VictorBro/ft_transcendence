@@ -112,6 +112,8 @@ export default function MainLayout({ children }: { children: ReactNode }) {
 
 Il donne trois emplacements à `Shell` : le nom de l'app à gauche (`Wordmark`), les liens de l'en-tête (`HeaderNav`), et le pied de page avec les liens vers les pages légales (`LegalFooter`). Ces composants sont expliqués dans [03-shell-components.md](03-shell-components.md).
 
+`HeaderNav` a deux formes. Un visiteur voit une seule ligne : le sélecteur de langue, "Sign in" (Se connecter) et "Create account" (Créer un compte). Un utilisateur connecté voit un seul bouton de menu (`HeaderMenu`). Il ouvre un panneau avec le sélecteur de langue, un lien vers `/profile` (avatar et nom), "Friends" (Amis), "Messages" et "Log out" (Se déconnecter). Le sélecteur de langue change la locale de l'URL. Ce layout ne l'enregistre pas : seul le layout `(dashboard)` affiche `LocaleSync`, qui la stocke dans `User.locale` (chapitre 6).
+
 Le commentaire explique un choix. D'autres groupes (comme le tableau de bord) utilisent un shell `fill`, où la page remplit exactement l'écran et le pied de page est collé en bas. Ici, les pages sont des "documents" qui peuvent être plus longs que l'écran (la politique de confidentialité, par exemple), donc le pied de page vient simplement après le contenu.
 
 ---
@@ -279,7 +281,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 1. `event.preventDefault()` empêche le navigateur d'envoyer la page entière. On gère l'envoi en JavaScript.
 2. `FormData` lit les valeurs des inputs grâce à leur `name`.
-3. `SignUpFormSchema.safeParse(...)` vérifie les valeurs avec le schema Zod partagé. `safeParse` ne lance pas d'erreur : il renvoie `{ success, data }` ou `{ success: false, error }`. Le message d'erreur est un **code** (comme `password.tooShort`), et `errorMessage()` (de [lib/error-message.ts](../../apps/web/lib/error-message.ts), voir chapitre 4) le transforme en phrase dans la langue de la page. Seul le premier problème est affiché.
+3. `SignUpFormSchema.safeParse(...)` vérifie les valeurs avec le schema Zod partagé. `safeParse` ne lance pas d'erreur : il renvoie `{ success, data }` ou `{ success: false, error }`. Le message d'erreur est un **code** (comme `password.tooShort`), et `errorMessage()` (la fonction que renvoie le hook `useErrorMessage()` de [lib/error-message.ts](../../apps/web/lib/error-message.ts), voir chapitre 4) le transforme en phrase dans la langue de la page. Seul le premier problème est affiché.
 4. La valeur "confirmation du mot de passe" est retirée avant l'envoi, car l'API ne la connaît pas.
 5. `signUp()` de [lib/auth-client.ts](../../apps/web/lib/auth-client.ts) envoie `POST /api/auth/signup`. L'API crée l'utilisateur et pose le cookie de session.
 6. En cas de succès, on va sur `/onboarding`. `router.replace` (et pas `push`) veut dire que le bouton Retour ne ramènera pas au formulaire d'inscription. `router.refresh()` fait réafficher l'en-tête, maintenant connecté.
@@ -318,7 +320,7 @@ sequenceDiagram
     API-->>F: 200 SessionUser (cookie posé)
     F->>F: done() -> /learn
   else 2FA activée
-    API-->>F: 200 { twoFactorRequired }
+    API-->>F: 202 { twoFactorRequired }
     F->>F: setSecondFactor(true), affiche le formulaire du code
     U->>F: tape le code à 6 chiffres (ou un code de secours)
     F->>F: SecondFactorSchema.safeParse()
@@ -373,7 +375,7 @@ Le state :
   }
 ```
 
-`logIn()` dans `auth-client.ts` renvoie une de ces trois choses : un succès, un échec, ou la valeur spéciale `{ ok: 'twoFactor' }` quand l'API dit qu'un code est encore nécessaire. Dans ce cas, le formulaire passe à l'étape 2.
+`logIn()` dans `auth-client.ts` renvoie une de ces trois choses : un succès, un échec, ou la valeur spéciale `{ ok: 'twoFactor' }` quand l'API dit qu'un code est encore nécessaire (statut `202` avec `{ twoFactorRequired: true }`). Dans ce cas, le formulaire passe à l'étape 2.
 
 Étape 2, le code : `submitCode` fait la même chose avec `SecondFactorSchema` et `verifySecondFactor(code)`, qui envoie `POST /api/auth/2fa/verify`. Un seul handler `onSubmit` choisit la bonne fonction :
 
@@ -409,8 +411,8 @@ flowchart TD
   R -->|"aucun cours sans niveau"| C["Étape 1 : ChooseCourse<br/>langue + objectif par jour"]
   C -->|"POST /api/courses<br/>puis ?lang=xx + refresh"| R
   R -->|"un cours a level = null"| D["Étape 2 : ChooseLevel"]
-  D -->|"Passer le test"| E["/learn/xx/placement<br/>(chapitre 6)"]
-  D -->|"Le choisir moi-même :<br/>LevelPicker + fusée"| F["PATCH /api/courses/xx/level"]
+  D -->|"Take the placement test<br/>(Passer le test de niveau)"| E["/learn/xx/placement<br/>(chapitre 6)"]
+  D -->|"I already know my level :<br/>LevelPicker + fusée"| F["PATCH /api/courses/xx/level"]
   E -->|"l'examen fixe le niveau"| G
   F --> G["/learn/xx<br/>première page du cours (chapitre 6)"]
 ```
@@ -543,8 +545,8 @@ const DAILY_GOALS: readonly DailyGoal[] = [10, 30, 60];
 
 [choose-level.tsx](<../../apps/web/app/[locale]/(main)/onboarding/choose-level.tsx>) est un **client component**. Il reçoit le `course` en prop. Il montre le drapeau, le nom de la langue et l'objectif par jour, puis deux choix :
 
-- **Passer le test** : un simple lien vers `/learn/<lang>/placement`, l'examen de placement (chapitre 6). C'est l'examen lui-même qui enregistre le niveau.
-- **Choisir mon niveau moi-même** : ouvre le `LevelPicker` ([components/level-picker.tsx](../../apps/web/components/level-picker.tsx), expliqué au chapitre 6). L'utilisateur clique sur ce qu'il maîtrise déjà : `A0` (rien), `A1`, ... `C2`.
+- **Take the placement test** (Passer le test de niveau) : un simple lien vers `/learn/<lang>/placement`, l'examen de placement (chapitre 6). C'est l'examen lui-même qui enregistre le niveau.
+- **I already know my level** (Je connais déjà mon niveau) : ouvre le `LevelPicker` ([components/level-picker.tsx](../../apps/web/components/level-picker.tsx), expliqué au chapitre 6). L'utilisateur clique sur ce qu'il maîtrise déjà : `A0` (rien), `A1`, ... `C2`.
 
 Le state a un type subtil :
 
@@ -585,7 +587,7 @@ Le state a un type subtil :
 ```
 
 - `nextLevel()` de [lib/level.ts](../../apps/web/lib/level.ts) transforme "maîtrisé" en "ce qu'il faut enseigner" : `A2` maîtrisé veut dire que le cours est `B1` ; rien de maîtrisé (`null`) veut dire `A1` ; `C2` reste `C2`.
-- `setCourseLevel()` envoie `PATCH /api/courses/<lang>/level`. C'est le même endpoint que celui de l'examen de placement, donc le niveau n'a qu'un seul endroit qui l'écrit.
+- `setCourseLevel()` envoie `PATCH /api/courses/<lang>/level`. L'examen de placement n'appelle pas cet endpoint : l'API enregistre elle-même son niveau, avec la même méthode `CoursesService.setLevel()`. Donc le niveau n'a toujours qu'un seul endroit qui l'écrit.
 - `Promise.all` attend à la fois l'appel à l'API et un minuteur de 1,5 s. Si le réseau est lent, l'utilisateur n'attend pas 1,5 s **de plus** : les deux tournent en même temps. `LAUNCH_MS` (1500) correspond aux keyframes `launch` dans `app/globals.css`.
 - `prefersReducedMotion()` lit le réglage du système "réduire les animations". S'il est activé, il n'y a pas d'animation du tout et le minuteur est de 0 ms.
 - En cas de succès, l'utilisateur arrive sur `/learn/<lang>`, la première page de son cours.
@@ -685,7 +687,7 @@ export default async function ProfilePage() {
 
 - **Données :** `requireUser()` (`GET /api/auth/me` via `loadSession`, chapitre 4). Un visiteur non connecté est redirigé vers `/login`.
 - **Affiche :** le nom affiché, l'e-mail, la date de création du compte (mise en forme pour la langue de la page avec `toLocaleDateString(locale)`), et un avatar de 128 px.
-- **Ce que l'utilisateur peut faire :** suivre deux liens : "Edit profile" (Modifier le profil, `/profile/edit`) et "Two-factor authentication" (Double authentification, `/settings/2fa`).
+- **Ce que l'utilisateur peut faire :** suivre deux liens : "Edit profile" (Modifier le profil, `/profile/edit`) et, dans une section "Security" (Sécurité), "Two factor authentication" (Double authentification, `/settings/2fa`).
 
 Les classes `max-sm:flex-col-reverse` mettent l'avatar au-dessus du nom sur les téléphones.
 
@@ -797,7 +799,7 @@ async function loadStatus(): Promise<Status> {
   }, []);
 ```
 
-`useEffect(..., [])` tourne une seule fois, après la première apparition du composant dans le navigateur. Le commentaire parle du bug #216 : avant la correction, "chargement" et "échec" étaient traités comme "2FA désactivée", donc la page proposait "Set up" (Configurer) à un utilisateur qui avait déjà la 2FA activée. Maintenant il y a des états séparés.
+`useEffect(..., [])` tourne une seule fois, après la première apparition du composant dans le navigateur. Le commentaire parle du bug #216, corrigé par la PR #219. Avant la correction, "chargement" et "échec" étaient traités comme "2FA désactivée", donc la page proposait "Set up" (Configurer) à un utilisateur qui avait déjà la 2FA activée. Et `POST /api/auth/2fa/setup` écrivait un nouveau secret avec la 2FA désactivée : un clic désactivait la 2FA sans le mot de passe. Maintenant le panneau a des états séparés, et l'API refuse setup et enable tant que la 2FA est activée (`409 twoFactor.alreadyEnabled`). Pour changer d'application, l'utilisateur désactive d'abord la 2FA, avec le mot de passe.
 
 Le panneau montre un écran à la fois. L'ordre des tests `if` dans l'affichage donne la priorité :
 
@@ -805,23 +807,25 @@ Le panneau montre un écran à la fois. L'ordre des tests `if` dans l'affichage 
 stateDiagram-v2
   [*] --> loading
   loading --> failed: GET /api/auth/2fa échoue
-  failed --> loading: Réessayer
+  failed --> loading: Réessayer (Try again)
   loading --> off: enabled = false
   loading --> on: enabled = true
   off --> scanning: Configurer (POST /2fa/setup)
+  off --> on: 409 alreadyEnabled, statut rechargé
   scanning --> recoveryCodes: code OK (POST /2fa/enable)
+  scanning --> on: 409 alreadyEnabled, statut rechargé
   recoveryCodes --> on: "Je les ai enregistrés"
   on --> off: mot de passe OK (DELETE /api/auth/2fa)
 ```
 
 | Écran              | Affiché quand            | Ce que fait l'utilisateur                                                             | Appel API                                             |
 | ------------------ | ------------------------ | ------------------------------------------------------------------------------------- | ----------------------------------------------------- |
-| Codes de secours   | `recoveryCodes !== null` | lit et enregistre les codes, clique sur "I saved them" (Je les ai enregistrés)        | aucun                                                 |
+| Codes de secours   | `recoveryCodes !== null` | lit et enregistre les codes, clique sur "I have saved them" (Je les ai enregistrés)        | aucun                                                 |
 | Scanner le QR code | `setup !== null`         | scanne l'image QR (ou tape le secret), entre un code                                  | `enableTwoFactor(code)` → `POST /api/auth/2fa/enable` |
 | Chargement         | `status === 'loading'`   | attend                                                                                |                                                       |
-| Échec              | `status === 'failed'`    | clique sur Retry (Réessayer)                                                          | `GET /api/auth/2fa` à nouveau                         |
-| Activée            | `status.enabled`         | voit combien de codes de secours restent, tape le mot de passe, Turn off (Désactiver) | `disableTwoFactor(password)` → `DELETE /api/auth/2fa` |
-| Désactivée         | sinon                    | clique sur Set up (Configurer)                                                        | `beginTwoFactorSetup()` → `POST /api/auth/2fa/setup`  |
+| Échec              | `status === 'failed'`    | clique sur "Try again" (Réessayer)                                                          | `GET /api/auth/2fa` à nouveau                         |
+| Activée            | `status.enabled`         | voit combien de codes de secours restent, tape le mot de passe, clique sur "Turn off" (Désactiver) | `disableTwoFactor(password)` → `DELETE /api/auth/2fa` |
+| Désactivée         | sinon                    | clique sur "Set up" (Configurer)                                                      | `beginTwoFactorSetup()` → `POST /api/auth/2fa/setup`  |
 
 Les codes de secours passent en premier car, comme le dit le commentaire, ils sont "shown once, never retrievable again" (affichés une fois, impossibles à récupérer ensuite). Ce sont des codes de secours pour un téléphone perdu.
 
@@ -844,9 +848,9 @@ Deux petits helpers gèrent les résultats :
   }
 ```
 
-Malgré son nom, `fail()` renvoie `true` quand l'appel a **réussi** ; il met ou efface le message d'erreur. `staleOnConflict` gère le cas où la 2FA a été activée dans un autre onglet : l'API répond `twoFactor.alreadyEnabled`, et le panneau recharge le vrai statut.
+Malgré son nom, `fail()` renvoie `true` quand l'appel a **réussi** ; il met ou efface le message d'erreur. `staleOnConflict` tourne après "Set up" et après le code : si la 2FA a été activée dans un autre onglet, l'API répond `409 twoFactor.alreadyEnabled`, et le panneau ferme l'écran du QR code et recharge le vrai statut.
 
-Le code et le mot de passe sont d'abord vérifiés dans le navigateur avec `EnableTwoFactorSchema` et `DisableTwoFactorSchema` (de `@ft/shared`), donc un mot de passe vide est repéré avant toute requête.
+Le code et le mot de passe sont d'abord vérifiés dans le navigateur avec `EnableTwoFactorSchema` et `DisableTwoFactorSchema` (de `@ft/shared`), donc un mot de passe vide est repéré avant toute requête (#217, PR #218). L'API vérifie à nouveau le mot de passe avant de désactiver la 2FA.
 
 ---
 
@@ -892,7 +896,7 @@ export function createPresenceMap(): PresenceMap {
 }
 ```
 
-Qui l'utilise : [components/tab-socket.ts](../../apps/web/components/tab-socket.ts) (chapitre 3) crée **une seule** map pour tout l'onglet du navigateur. Quand le WebSocket reçoit `presence:update`, il appelle `apply` ; sur `friend:removed`, `forget` ; à la déconnexion ou à une nouvelle connexion, `clear`. La map n'appelle les observateurs que quand une valeur change vraiment, donc React ne réaffiche pas pour rien.
+Qui l'utilise : [components/tab-socket.ts](../../apps/web/components/tab-socket.ts) (chapitre 3) crée **une seule** map pour tout l'onglet du navigateur. Quand le WebSocket reçoit `presence:update`, il appelle `apply` ; sur `friend:removed` et `friend:accepted`, `forget` (le point d'un nouvel ami part alors du nouveau rendu serveur) ; à la déconnexion ou à une nouvelle connexion, `clear`. La map n'appelle les observateurs que quand une valeur change vraiment, donc React ne réaffiche pas pour rien.
 
 Pourquoi une map qui vit dans l'onglet, et pas dans une page ? Le commentaire le dit : Next.js peut restaurer une ancienne page depuis son cache quand tu appuies sur Retour. Cette ancienne page a été affichée avec d'anciennes valeurs "en ligne". La map se souvient de ce qui s'est passé pendant que la page n'était pas là. `get()` renvoie `undefined` pour un ami dont l'onglet n'a pas eu de nouvelles, et alors l'appelant utilise la valeur affichée par le serveur.
 
@@ -1190,10 +1194,10 @@ L'ordre des vérifications compte :
 | Relation   | Ce qui est affiché                                                         |
 | ---------- | -------------------------------------------------------------------------- |
 | `self`     | lien "Edit profile" (Modifier le profil)                                   |
-| `none`     | Add (Ajouter)                                                              |
-| `sent`     | "Request sent" (Demande envoyée) + Cancel request (Annuler la demande)     |
-| `received` | "Request received" (Demande reçue) + Accept / Decline (Accepter / Refuser) |
-| `friend`   | "Friends" (Amis) + Message + Remove (Retirer)                              |
+| `none`     | "Add friend" (Ajouter en ami)                                               |
+| `sent`     | "Request sent" (Demande envoyée) + "Cancel request" (Annuler la demande) |
+| `received` | "Request received" (Demande reçue) + "Accept" / "Decline" (Accepter / Refuser) |
+| `friend`   | "Already friends" (Déjà amis) + "Message" + "Remove" (Retirer)          |
 
 Ce sont les mêmes composants que sur la page des amis, donc les appels à l'API sont les mêmes. La page a aussi `<RefreshOn events={FRIEND_EVENTS} />`, donc les boutons changent en direct quand l'autre personne agit.
 
@@ -1342,12 +1346,12 @@ export function Flag({ lang, className }: { lang: Language; className?: string }
 
 ## Les idées clés à retenir
 
-- Chaque page de `(main)` partage un seul layout : wordmark, navigation de l'en-tête, pied de page légal, et un pied de page qui vient après le contenu.
+- Chaque page de `(main)` partage un seul layout : wordmark, navigation de l'en-tête (un seul bouton de menu quand on est connecté), pied de page légal, et un pied de page qui vient après le contenu.
 - La forme habituelle est une **page serveur** qui charge les données (`requireUser`, `requireCourses`, `requireFriends`) et un **formulaire client** qui valide avec le schema Zod partagé, appelle une fonction `*-client.ts`, puis appelle `router.refresh()`.
 - `force-dynamic` est mis sur chaque page qui montre les données d'une personne, pour que Next.js ne la construise ni ne la mette en cache à l'avance.
 - Le formulaire de connexion a deux étapes dans un seul composant. Les deux `<form>` ont des `key` différentes pour que le mot de passe n'apparaisse jamais dans le champ du code.
 - L'étape de l'onboarding est **calculée à partir de l'API** (`resolveOnboardingStep`), pas gardée dans le state : un cours avec `level: null` veut dire "choisir un niveau ensuite". Cela survit aux rafraîchissements et aux examens abandonnés.
-- Le panneau 2FA sépare "chargement" et "échec" de "désactivée" (bug #216), et montre les codes de secours en premier car ils ne sont affichés qu'une fois.
+- Le panneau 2FA sépare "chargement" et "échec" de "désactivée" (bug #216), et montre les codes de secours en premier car ils ne sont affichés qu'une fois. L'API refuse setup et enable tant que la 2FA est activée (PR #219), donc seul le mot de passe peut la désactiver.
 - Les boutons d'amis reçoivent un **nom** d'action de la page serveur, rafraîchissent la page après chaque écriture (même ratée), et restent désactivés jusqu'à l'arrivée de la page fraîche.
 - La recherche d'amis écrit seulement `?q=` dans l'URL ; c'est la page serveur qui fait la recherche, donc les rafraîchissements en direct gardent des résultats justes.
 - Seuls les amis voient un point de présence. Le point lit une map de présence commune à tout l'onglet, alimentée par le WebSocket, et revient à la valeur du serveur sinon.

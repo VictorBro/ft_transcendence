@@ -180,8 +180,8 @@ sequenceDiagram
   que de garder une deuxième copie du cours. `RefreshOn` prend la liste des événements qui rafraîchissent une
   page.
 - **Les événements d'amis** (`friend:request`, `friend:accepted`, `friend:removed`) vont aux deux utilisateurs de la
-  paire, donc les autres onglets de celui qui agit suivent aussi. Ils transportent `{ userId }`, l'autre utilisateur, et /friends
-  et /users/[id] se rafraîchissent sur n'importe lequel. Refuser et annuler envoient `friend:removed` : la ligne entre
+  paire, donc les autres onglets de celui qui agit suivent aussi. Ils transportent `{ userId }`, l'autre utilisateur, et /friends,
+  /users/[id] et /chat se rafraîchissent sur n'importe lequel. Refuser et annuler envoient `friend:removed` : la ligne entre
   les deux a disparu.
 - **La présence** (`presence:update { userId, status, at }`, `online` ou `offline`), dans
   `PresenceService` ([apps/api/src/presence/](../../apps/api/src/presence/)) :
@@ -238,8 +238,8 @@ sequenceDiagram
     instantané. `readAt` ne quitte jamais le serveur. L'index sur `(pairKey, readAt)` garde le coût des compteurs
     et d'une lecture proportionnel à ce qui n'est pas lu, pas à tout l'historique.
   - **Dans l'onglet** : `tab-socket.ts` garde le dernier instantané aussi longtemps que le socket, comme la
-    table de présence, et le supprime à la déconnexion. Le badge Messages du menu du compte affiche son total, 99+
-    au-delà de 99, et rien avant le premier instantané. `sendMessage()` refuse tout de suite avec
+    table de présence, et le supprime à la déconnexion du compte. Le badge du bouton du menu de l'en-tête et de son lien
+    Messages affiche son total (#220), 99+ au-delà de 99, et rien avant le premier instantané. `sendMessage()` refuse tout de suite avec
     `network.unreachable` quand il n'y a pas de connexion : socket.io mettrait l'événement en attente et le livrerait longtemps
     après que le fil a dit que l'envoi avait échoué. Un ack perdu (10 s, ou le socket qui se ferme) dit la même chose, même si
     le message a peut-être été stocké : le renvoyer peut alors l'afficher deux fois, c'est accepté, car rien ne

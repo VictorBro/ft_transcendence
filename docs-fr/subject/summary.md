@@ -68,7 +68,7 @@ ne marche pas complètement à l'évaluation compte pour **0**.
 
 | Type  | Module                                                                                                                                   |
 | ----- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| Major | Framework pour le frontend et le backend (les frameworks full-stack comptent pour les deux)                                              |
+| Major | Framework pour le frontend et le backend (un framework full-stack compte pour les deux si tu utilises son frontend et son backend)                                              |
 | Minor | Framework frontend                                                                                                                       |
 | Minor | Framework backend                                                                                                                        |
 | Major | Fonctionnalités temps réel via WebSockets ou équivalent (mises à jour entre clients, déconnexion/reconnexion propre, diffusion efficace) |
@@ -132,7 +132,7 @@ ne marche pas complètement à l'évaluation compte pour **0**.
 | Major | Multijoueur à 3+ joueurs, mécaniques équitables, synchronisation                                                                                                  |
 | Major | Un deuxième jeu différent avec historique et matchmaking                                                                                                          |
 | Major | Graphismes 3D avancés (Three.js, Babylon.js) : environnement immersif, rendu avancé, performances fluides                                                         |
-| Minor | Chat avancé : blocage, invitations à jouer depuis le chat, notifications dans le chat, accès aux profils, historique, indicateurs de frappe et accusés de lecture |
+| Minor | Chat avancé : blocage, invitations à jouer depuis le chat, notifications de jeu et de tournoi dans le chat, accès aux profils, historique, indicateurs de frappe et accusés de lecture |
 | Minor | Système de tournoi : tableaux, ordre des matchs, matchmaking, inscription et gestion                                                                              |
 | Minor | Personnalisation du jeu : power-ups, cartes/thèmes, réglages, valeurs par défaut disponibles                                                                      |
 | Minor | Gamification : ≥3 parmi succès / badges / classements / XP / défis du jour / récompenses, sauvegardés, avec un retour visuel                                      |
@@ -177,7 +177,7 @@ ne marche pas complètement à l'évaluation compte pour **0**.
 - IA : adversaire IA (2) = **2**
 - **Total : 14**
 
-Le sujet liste aussi environ 25 autres idées de projet : jeu, social/collaboratif,
+Le sujet liste aussi 25 autres idées de projet : jeu, social/collaboratif,
 créatif/médias, productivité, et niches spécialisées : voir le chapitre V du PDF.
 
 ## Exigences pour le README

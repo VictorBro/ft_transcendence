@@ -15,7 +15,7 @@ CI veut dire « continuous integration » (intégration continue) : vérifier ch
 ## Ce que demande le sujet
 
 Tiré de « Modules of choice » dans [../subject/summary.md](../subject/summary.md) (le texte complet
-est au chapitre IV de [../../subject/ft_transcendence.pdf](../../docs/subject/ft_transcendence.pdf)) :
+est au chapitre IV de [../../docs/subject/ft_transcendence.pdf](../../docs/subject/ft_transcendence.pdf)) :
 
 > Major | Custom module, substantial and technically complex, justified in the README (why
 > chosen, what challenges, what value, why 2 points). Trivial features = rejection
@@ -51,14 +51,14 @@ où se trouve la preuve.
 
 ```mermaid
 flowchart TD
-    D[Développeur] -- "hooks de commit et de push : commitlint,\nlint-staged, une partie rapide de make ci" --> B[Branche secondaire]
-    B -- push --> IMG1["images : build de 6 images x 2 arch,\nTrivy, push du tag branch-shortsha"]
-    B -- "pull request" --> PR{{"ci, e2e, hygiene\n(+ devcontainer)"}}
-    PR -- "19 vérifications obligatoires vertes\n+ 1 approbation" --> M[Squash merge sur main]
+    D[Développeur] -- "hooks de commit et de push : commitlint,<br/>lint-staged, une partie rapide de make ci" --> B[Branche secondaire]
+    B -- push --> IMG1["images : build de 6 images x 2 arch,<br/>Trivy, push du tag branch-shortsha"]
+    B -- "pull request" --> PR{{"ci, e2e, hygiene<br/>(+ devcontainer)"}}
+    PR -- "19 vérifications obligatoires vertes<br/>+ 1 approbation" --> M[Squash merge sur main]
     M --> RUN2["ci, e2e, hygiene tournent encore sur main"]
-    M --> IMG2["images : push de main-shortsha et latest\nsur ghcr.io"]
+    M --> IMG2["images : push de main-shortsha et latest<br/>sur ghcr.io"]
     IMG2 --> S["Serveur : ft-deploy.timer toutes les 5 min"]
-    S -- "deploy.sh : pull, vérifie les labels,\nmigre, up -d" --> L[Site en ligne]
+    S -- "deploy.sh : pull, vérifie les labels,<br/>migre, up -d" --> L[Site en ligne]
 ```
 
 ### 1. Sur la machine du développeur

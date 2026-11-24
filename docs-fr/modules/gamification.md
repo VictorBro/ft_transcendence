@@ -13,7 +13,7 @@ Le module est une ligne du tableau Gaming and user experience de
 
 > | Minor | Gamification: ≥3 of achievements / badges / leaderboards / XP / daily challenges / rewards, persisted, with visual feedback |
 
-Le PDF ([../../subject/ft_transcendence.pdf](../../docs/subject/ft_transcendence.pdf), chapitre IV, Gaming
+Le PDF ([../../docs/subject/ft_transcendence.pdf](../../docs/subject/ft_transcendence.pdf), chapitre IV, Gaming
 and user experience) le formule comme ceci :
 
 > Minor: A gamification system to reward users for their actions.

@@ -180,8 +180,8 @@ sequenceDiagram
   than keeping a second copy of the course. `RefreshOn` takes the list of events that refresh a
   page.
 - **Friend events** (`friend:request`, `friend:accepted`, `friend:removed`) go to both users of the
-  pair, so the actor's other tabs follow too. They carry `{ userId }`, the other user, and /friends
-  and /users/[id] refresh on any of them. Decline and cancel send `friend:removed`: the row between
+  pair, so the actor's other tabs follow too. They carry `{ userId }`, the other user, and /friends,
+  /users/[id] and /chat refresh on any of them. Decline and cancel send `friend:removed`: the row between
   the two is gone.
 - **Presence** (`presence:update { userId, status, at }`, `online` or `offline`), in
   `PresenceService` ([apps/api/src/presence/](../../apps/api/src/presence/)):
@@ -238,8 +238,8 @@ sequenceDiagram
     snapshot. `readAt` never leaves the server. The index on `(pairKey, readAt)` keeps the counts
     and a read at the cost of what is unread, not of the whole history.
   - **In the tab**: `tab-socket.ts` keeps the last snapshot for as long as the socket, like the
-    presence map, and drops it on sign-out. The account menu's Messages badge shows its total, 99+
-    past 99, and nothing before the first snapshot. `sendMessage()` refuses at once with
+    presence map, and drops it on sign-out. The badge on the header menu's button and on its Messages
+    link shows its total (#220), 99+ past 99, and nothing before the first snapshot. `sendMessage()` refuses at once with
     `network.unreachable` when not connected: socket.io would buffer the event and deliver it long
     after the thread said it failed. A lost ack (10 s, or the socket closing) says the same, though
     the message may have been stored: sending it again can then show it twice, accepted, as nothing

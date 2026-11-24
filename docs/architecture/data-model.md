@@ -141,7 +141,7 @@ enum Topic            { … }                        // 13 grammar categories
 enum Theme            { … }                        // 14 themes
 ```
 
-`Locale` and `Language` have the same three values today, because they answer two different
+`Locale` and `Language` have the same three values today, but they answer two different
 questions. `User.locale` is the interface language. `UserLevel.lang`, `QuestionBank.lang` and
 `Lesson.lang` say what is taught. An English speaker learning French has one set to `en` and the
 other to `fr`, so one enum for both would make that row impossible to write. They drift apart the

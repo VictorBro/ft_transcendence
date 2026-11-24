@@ -36,7 +36,7 @@ flowchart LR
             web["web<br/><small>Next.js 16 :3000<br/>standalone build</small>"]
             api["api<br/><small>NestJS 11 :3001<br/>global prefix /api</small>"]
             db[("db<br/><small>Postgres 18<br/>+ pgvector :5432</small>")]
-            redis[("redis<br/><small>sessions<br/>:6379</small>")]
+            redis[("redis<br/><small>sessions, placement,<br/>limits, presence :6379</small>")]
 
             subgraph mon["monitoring (profile in dev, always on with make)"]
                 prometheus["prometheus<br/><small>:9090, 15 d / 1 GB</small>"]
@@ -121,6 +121,7 @@ Signing in touches every layer, so it is the useful one to trace.
 sequenceDiagram
     participant B as Browser
     participant C as caddy
+    participant W as web (Next.js)
     participant A as api (NestJS)
     participant R as redis
     participant P as db
@@ -130,7 +131,7 @@ sequenceDiagram
     A->>P: find user by email
     A->>A: argon2id verify
     alt second factor enabled
-        A->>R: store session {pendingUserId}
+        A->>R: regenerate session, store {pendingUserId}
         A-->>B: 202 {twoFactorRequired:true}
         B->>C: POST /api/auth/2fa/verify {code}
         C->>A: proxy
@@ -141,12 +142,12 @@ sequenceDiagram
 
     Note over B,C: next navigation
     B->>C: GET /learn
-    C->>B: served by web (Next)
-    Note over C,A: Next's server forwards the cookie
-    C->>A: GET /api/auth/me
+    C->>W: proxy
+    W->>A: GET /api/auth/me, cookie forwarded<br/>(http://api:3001, not through caddy)
     A->>R: look up session
     A->>P: re-read the user
-    A-->>C: SessionUser
+    A-->>W: SessionUser
+    W-->>B: the rendered page, through caddy
 ```
 
 Two details worth knowing:
@@ -484,7 +485,7 @@ production stack, the live monitoring check and Playwright.
 flowchart TB
     subgraph apps
         web["apps/web<br/><small>Next.js: pages, forms, SSR</small>"]
-        api["apps/api<br/><small>NestJS: auth, users, courses, placement,<br/>lessons, llm, gateway, friends, messages, metrics</small>"]
+        api["apps/api<br/><small>NestJS: auth, users, courses, placement,<br/>question-generation, lessons, llm, gateway,<br/>friends, presence, messages, metrics</small>"]
     end
 
     subgraph packages
