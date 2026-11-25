@@ -49,5 +49,33 @@ test.describe('dashboard pages', () => {
     ).toHaveAttribute('href', '/en/learn');
   });
 
+  // The account shell must not throw a signed-in user out to the marketing
+  // page (#224); a visitor still goes there.
+  for (const path of [
+    '/en',
+    '/en/profile',
+    '/en/friends',
+    '/en/settings',
+    '/en/privacy',
+    '/en/terms',
+  ]) {
+    test(`the wordmark on ${path} links to /learn when signed in`, async ({ onboarded }) => {
+      await onboarded.goto(path);
+
+      await expect(
+        onboarded.getByRole('link', { name: 'ft_transcendence', exact: true }),
+      ).toHaveAttribute('href', '/en/learn');
+    });
+  }
+
+  test('the wordmark links to the start page for a visitor', async ({ page }) => {
+    await page.goto('/en/privacy');
+
+    await expect(page.getByRole('link', { name: 'ft_transcendence', exact: true })).toHaveAttribute(
+      'href',
+      '/en',
+    );
+  });
+
   // Their console gate is in console.spec.ts, driven by `onboarded` in routes.ts.
 });
