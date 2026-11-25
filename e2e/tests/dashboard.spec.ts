@@ -1,3 +1,5 @@
+import type { Page } from '@playwright/test';
+
 import { expect, ONBOARDED_COURSE, placeCourse, SECOND_COURSE, test } from '../support/session';
 
 const home = `/en/learn/${ONBOARDED_COURSE.lang}`;
@@ -54,8 +56,9 @@ test.describe('dashboard pages', () => {
   for (const path of [
     '/en',
     '/en/profile',
+    '/en/profile/edit',
     '/en/friends',
-    '/en/settings',
+    '/en/settings/2fa',
     '/en/privacy',
     '/en/terms',
   ]) {
@@ -75,6 +78,29 @@ test.describe('dashboard pages', () => {
       'href',
       '/en',
     );
+  });
+
+  // The 404 reads the session for its two links home, like the shells above.
+  const expectNotFoundLinks = async (tab: Page, home: string) => {
+    const response = await tab.goto('/en/this-route-does-not-exist');
+    expect(response?.status()).toBe(404);
+
+    await expect(tab.getByRole('link', { name: 'ft_transcendence', exact: true })).toHaveAttribute(
+      'href',
+      home,
+    );
+    await expect(tab.getByRole('link', { name: 'Go home', exact: true })).toHaveAttribute(
+      'href',
+      home,
+    );
+  };
+
+  test('the 404 links home to /learn when signed in', async ({ onboarded }) => {
+    await expectNotFoundLinks(onboarded, '/en/learn');
+  });
+
+  test('the 404 links home to the start page for a visitor', async ({ page }) => {
+    await expectNotFoundLinks(page, '/en');
   });
 
   // Their console gate is in console.spec.ts, driven by `onboarded` in routes.ts.
