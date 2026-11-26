@@ -134,7 +134,7 @@ services:
   db:
     logging: *logging
     # Not the plain `postgres` image: it ships without pgvector. Never below
-    # 0.8.2 (CVE-2026-3172, docs/VERSIONS.md).
+    # 0.8.2 (CVE-2026-3172, docs/operations/versions.md).
     image: pgvector/pgvector:0.8.7-pg18-trixie
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-ft}
@@ -175,7 +175,7 @@ services:
     networks:
       - ft
 
-  # The Prometheus and Grafana module, see docs/MONITORING.md.
+  # The Prometheus and Grafana module, see docs/operations/monitoring.md.
   # Always on in the prod overlay. compose.override.yml puts these behind the
   # monitoring profile, so `make dev` stays light and `make monitoring-up`
   # opts in. None of these publishes a port: Grafana is reached through caddy

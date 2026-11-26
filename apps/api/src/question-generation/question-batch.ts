@@ -22,7 +22,7 @@ type Stored = { question: string; readText: string | null };
  * Record<A, B> is an object with every key of A, each holding a B. Here it is nested:
  * for each category, for each level, a number. TypeScript checks that no category
  * and no level is forgotten.
- * The numbers are docs/ITEM_BANK.md's table, reading at the top of each range:
+ * The numbers are docs/content/item-bank.md's table, reading at the top of each range:
  * a generated passage may be long. The model never chooses the time limit.
  */
 const TIME_LIMIT_S: Record<QuestionCategory, Record<Level, number>> = {

@@ -51,9 +51,10 @@ model User {
 }
 
 // Single-use fallback when the authenticator is lost. Stored as a SHA-256 digest
-// rather than argon2: the codes are 160 bits of randomness, so there is nothing
-// to brute force, and a plain digest lets a login check one indexed lookup
-// instead of ten argon2 verifications.
+// rather than argon2: the codes are about 99 bits of randomness (20 characters
+// from a 31-character alphabet), so there is nothing to brute force, and a plain
+// digest lets a login check one indexed lookup instead of ten argon2
+// verifications.
 model RecoveryCode {
   id        String    @id @default(uuid()) @db.Uuid
   userId    String    @db.Uuid

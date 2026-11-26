@@ -14,8 +14,8 @@ import type { AnswerProps, ItemProps, ItemRenderers, Ref, UnitFeedback, UnitView
 import { ItemCard } from '../units';
 
 /**
- * The reading kind's renderers (#148), built after the screens in
- * docs/mockups/lessons/reading/: the key words as B3 flashcards and on
+ * The reading kind's renderers (#148), built after the reading mockups
+ * of the lesson prototype: the key words as B3 flashcards and on
  * the B2 board, the document with its key words marked, the skim
  * countdown and its question from memory, the detail questions and the
  * B1 order control beside the document, and the exam on the second

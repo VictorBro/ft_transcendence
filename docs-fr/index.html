@@ -1,0 +1,2402 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Jalons ft_transcendence</title>
+    <meta
+      name="description"
+      content="Les jalons (milestones) de ft_transcendence, une plateforme d'apprentissage des langues pilotée par l'IA : ce que chacun livre, comment ses issues dépendent les unes des autres, et son modèle de données."
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css"
+    />
+    <style>
+      :root {
+        --surface-0: #fafaf8;
+        --surface-1: #f5f4ef;
+        --surface-2: #ffffff;
+        --border: rgba(31, 30, 29, 0.15);
+        --text-primary: #1f1e1d;
+        --text-secondary: #5e5d59;
+        --text-muted: #8a8983;
+        --text-accent: #185fa5;
+        --font-sans:
+          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+        --open: #3b6d11;
+        --open-bg: #eaf3de;
+        --closed: #534ab7;
+        --closed-bg: #eeedfe;
+        --ready: #2b8a3e;
+        --st-open: #3b6d11;
+        --st-open-bg: #f1f7ea;
+        --st-work: #ba7517;
+        --st-work-bg: #fdf4e4;
+        --st-closed: #534ab7;
+        --st-closed-bg: #f3f2fd;
+      }
+      .k-1 {
+        --gb: #e6f1fb;
+        --gd: #85b7eb;
+        --gt: #0c447c;
+      }
+      .k-2 {
+        --gb: #faeeda;
+        --gd: #ef9f27;
+        --gt: #633806;
+      }
+      .k-3 {
+        --gb: #e1f5ee;
+        --gd: #5dcaa5;
+        --gt: #085041;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --surface-0: #1f1e1d;
+          --surface-1: #262624;
+          --surface-2: #30302e;
+          --border: rgba(222, 220, 209, 0.15);
+          --text-primary: #f5f4ef;
+          --text-secondary: #c2c0b6;
+          --text-muted: #9c9a92;
+          --text-accent: #85b7eb;
+          --open: #97c459;
+          --open-bg: #173404;
+          --closed: #afa9ec;
+          --closed-bg: #26215c;
+          --ready: #7cc94a;
+          --st-open: #97c459;
+          --st-open-bg: #1e2b13;
+          --st-work: #ef9f27;
+          --st-work-bg: #33240c;
+          --st-closed: #afa9ec;
+          --st-closed-bg: #24213f;
+        }
+        .k-1 {
+          --gb: #042c53;
+          --gd: #378add;
+          --gt: #b5d4f4;
+        }
+        .k-2 {
+          --gb: #412402;
+          --gd: #ba7517;
+          --gt: #fac775;
+        }
+        .k-3 {
+          --gb: #04342c;
+          --gd: #1d9e75;
+          --gt: #9fe1cb;
+        }
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        background: var(--surface-0);
+        color: var(--text-primary);
+        font-family: var(--font-sans);
+      }
+      main {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: calc(28px + env(safe-area-inset-top, 0px)) 20px
+          calc(40px + env(safe-area-inset-bottom, 0px));
+      }
+      a {
+        color: var(--text-accent);
+      }
+      .eyebrow {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        color: var(--text-muted);
+        margin: 0 0 6px;
+      }
+      h1 {
+        font-size: 26px;
+        font-weight: 500;
+        margin: 0 0 8px;
+      }
+      .intro {
+        font-size: 15px;
+        line-height: 1.6;
+        color: var(--text-secondary);
+        margin: 0 0 20px;
+        max-width: 72ch;
+      }
+      .toc {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 0 0 24px;
+      }
+      .toc a {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+        text-decoration: none;
+        color: var(--gt);
+        background: var(--gb);
+        border: 0.5px solid var(--gd);
+        border-radius: 999px;
+        padding: 5px 12px;
+      }
+      .toc a:hover {
+        filter: brightness(0.97);
+      }
+      .ms {
+        background: var(--surface-2);
+        border: 0.5px solid var(--border);
+        border-radius: 14px;
+        margin: 0 0 22px;
+        overflow: hidden;
+        scroll-margin-top: 12px;
+      }
+      .ms-head {
+        background: var(--gb);
+        border-bottom: 0.5px solid var(--gd);
+        padding: 16px 18px;
+        color: var(--gt);
+      }
+      .ms-head .num {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        opacity: 0.85;
+      }
+      .ms-head h2 {
+        font-size: 19px;
+        font-weight: 500;
+        margin: 2px 0 8px;
+        color: var(--gt);
+      }
+      .ms-head p {
+        font-size: 14px;
+        line-height: 1.55;
+        margin: 0;
+        max-width: 75ch;
+        color: var(--gt);
+        opacity: 0.9;
+      }
+      .prog {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 12px;
+        font-size: 12px;
+        color: var(--gt);
+      }
+      .bar {
+        flex: 1;
+        max-width: 320px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--surface-2);
+        border: 0.5px solid var(--gd);
+        overflow: hidden;
+      }
+      .bar span {
+        display: block;
+        height: 100%;
+        background: var(--gd);
+        border-radius: 999px;
+        transition: width 0.4s;
+      }
+      .ms-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 12px;
+        font-size: 13px;
+        font-weight: 500;
+        text-decoration: none;
+        color: var(--gt);
+        background: var(--surface-2);
+        border: 0.5px solid var(--gd);
+        border-radius: 999px;
+        padding: 5px 12px;
+      }
+      .ms-link:hover,
+      .ms-link:focus-visible {
+        text-decoration: underline;
+      }
+      .ms-body {
+        padding: 16px 18px 18px;
+      }
+      h3 {
+        font-size: 13px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--text-muted);
+        margin: 18px 0 10px;
+      }
+      h3:first-child {
+        margin-top: 0;
+      }
+      /* Captions under the graphs: a paragraph, since they sit in a div, not a figure. */
+      .figcaption {
+        font-size: 12px;
+        color: var(--text-muted);
+        margin: 6px 0 0;
+        line-height: 1.5;
+      }
+      .flow {
+        display: flex;
+        gap: 6px;
+        align-items: stretch;
+        overflow-x: auto;
+        padding-bottom: 4px;
+      }
+      .stage {
+        flex: 1 0 170px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .stage-h {
+        font-size: 11px;
+        font-weight: 500;
+        color: var(--text-secondary);
+        font-family: var(--font-mono);
+        padding: 0 2px;
+      }
+      .arrow {
+        flex: 0 0 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-muted);
+      }
+      .grp {
+        border: 0.5px dashed var(--border);
+        border-radius: 8px;
+        padding: 6px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .grp-h {
+        font-size: 11px;
+        color: var(--text-muted);
+        padding: 0 2px;
+      }
+      .iss {
+        --st: var(--text-muted);
+        --st-bg: var(--surface-2);
+        position: relative;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        grid-template-areas: 'no . who' 't t t' '. . pr';
+        gap: 3px 6px;
+        font-size: 12px;
+        line-height: 1.35;
+        color: var(--text-primary);
+        background: var(--st-bg);
+        border: 0.5px solid var(--border);
+        border-left: 4px solid var(--st);
+        border-radius: 7px;
+        padding: 6px 8px 5px;
+      }
+      a.iss {
+        text-decoration: none;
+      }
+      .iss.ready {
+        --st: var(--st-open);
+        --st-bg: var(--st-open-bg);
+      }
+      .iss.work {
+        --st: var(--st-work);
+        --st-bg: var(--st-work-bg);
+      }
+      .iss.closed {
+        --st: var(--st-closed);
+        --st-bg: var(--st-closed-bg);
+      }
+      .iss:hover {
+        border-color: var(--text-accent);
+        border-left-color: var(--st);
+      }
+      .iss .no {
+        grid-area: no;
+        font-family: var(--font-mono);
+        color: var(--text-muted);
+      }
+      .iss .t {
+        grid-area: t;
+        color: var(--text-primary);
+        text-decoration: none;
+      }
+      .iss .t::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 7px;
+      }
+      .iss .t:focus-visible {
+        outline: none;
+      }
+      .iss .t:focus-visible::after {
+        outline: 2px solid var(--text-accent);
+        outline-offset: 2px;
+      }
+      .iss .who {
+        grid-area: who;
+        justify-self: end;
+        position: relative;
+        z-index: 1;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        max-width: 110px;
+        font-size: 11px;
+        color: var(--text-secondary);
+        text-decoration: none;
+      }
+      .iss .who img {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        background: var(--surface-2);
+      }
+      .iss .who span {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .iss .who:hover span,
+      .iss .who:focus-visible span {
+        text-decoration: underline;
+      }
+      .iss .pr {
+        grid-area: pr;
+        justify-self: end;
+        position: relative;
+        z-index: 1;
+        display: inline-flex;
+        align-items: center;
+        gap: 3px;
+        font-family: var(--font-mono);
+        font-size: 10.5px;
+        color: var(--text-accent);
+        text-decoration: none;
+      }
+      .iss .pr:hover,
+      .iss .pr:focus-visible {
+        text-decoration: underline;
+      }
+      .sw {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .sw::before {
+        content: '';
+        width: 12px;
+        height: 12px;
+        border-radius: 3px;
+        background: var(--b);
+        border: 0.5px solid var(--border);
+        border-left: 4px solid var(--c);
+      }
+      .sw.open {
+        --c: var(--text-muted);
+        --b: var(--surface-2);
+      }
+      .sw.ready {
+        --c: var(--st-open);
+        --b: var(--st-open-bg);
+      }
+      .sw.work {
+        --c: var(--st-work);
+        --b: var(--st-work-bg);
+      }
+      .sw.closed {
+        --c: var(--st-closed);
+        --b: var(--st-closed-bg);
+      }
+      .sr {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+      }
+      .dm {
+        display: flex;
+        gap: 14px;
+        align-items: center;
+        text-decoration: none;
+        color: var(--text-primary);
+        border: 0.5px solid var(--gd);
+        background: var(--gb);
+        border-radius: 10px;
+        padding: 12px 14px;
+      }
+      .dm:hover {
+        filter: brightness(0.97);
+      }
+      .dm i {
+        font-size: 26px;
+        color: var(--gt);
+      }
+      .dm b {
+        display: block;
+        font-weight: 500;
+        font-size: 14px;
+        color: var(--gt);
+      }
+      .dm span {
+        font-size: 13px;
+        color: var(--gt);
+        opacity: 0.85;
+        line-height: 1.45;
+      }
+      .legend {
+        display: flex;
+        gap: 10px;
+        font-size: 12px;
+        color: var(--text-secondary);
+        align-items: center;
+        margin: 0 0 8px;
+        flex-wrap: wrap;
+      }
+      footer {
+        font-size: 12px;
+        color: var(--text-muted);
+        margin-top: 8px;
+        line-height: 1.6;
+      }
+      /* dependency graphs of milestones 2 and 3 */
+      :root {
+        --n-base-bg: #e7f5e9;
+        --n-base-bd: #2b8a3e;
+        --n-sink-bg: #ede9fe;
+        --n-sink-bd: #4c1d95;
+        --n-sum-bg: #fff4d6;
+        --n-sum-bd: #d97706;
+        --edge: #8a8983;
+        --edge-crit: #2b8a3e;
+        --lbl-bg: #ffffff;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --n-base-bg: #173404;
+          --n-base-bd: #639922;
+          --n-sink-bg: #26215c;
+          --n-sink-bd: #7f77dd;
+          --n-sum-bg: #412402;
+          --n-sum-bd: #ef9f27;
+          --edge: #9c9a92;
+          --edge-crit: #97c459;
+          --lbl-bg: #30302e;
+        }
+      }
+      .gwrap {
+        overflow-x: auto;
+        border: 0.5px solid var(--border);
+        border-radius: 10px;
+        background: var(--surface-1);
+        padding: 16px;
+      }
+      .gwrap:focus-visible {
+        outline: 2px solid var(--text-accent);
+        outline-offset: 2px;
+      }
+      .graph {
+        position: relative;
+        display: grid;
+        grid-template-rows: auto auto auto;
+        row-gap: 34px;
+        width: max-content;
+        align-items: center;
+      }
+      #g2 {
+        grid-template-columns: 150px 150px 150px 150px 150px 140px 150px 120px 150px 120px 150px;
+      }
+      #g3 {
+        grid-template-columns: 150px 150px 150px 150px 150px;
+      }
+      .edges {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+        pointer-events: none;
+      }
+      .edges > path {
+        fill: none;
+        stroke: var(--edge);
+        stroke-width: 1.5;
+      }
+      .edges > path.crit {
+        stroke: var(--edge-crit);
+        stroke-width: 3;
+      }
+      .gn {
+        position: relative;
+        z-index: 1;
+        border-radius: 8px;
+        border: 1.5px solid;
+        padding: 8px 10px;
+        font-size: 11.5px;
+        line-height: 1.35;
+        color: var(--text-primary);
+        text-align: center;
+      }
+      .gn b {
+        display: block;
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .gn span {
+        display: block;
+        color: var(--text-secondary);
+        margin-top: 2px;
+      }
+      .gn p {
+        margin: 6px 0 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        justify-content: center;
+        font-family: var(--font-mono);
+      }
+      .gn i {
+        display: block;
+        font-size: 10px;
+        letter-spacing: 0.08em;
+        color: var(--text-muted);
+        margin-top: 4px;
+      }
+      .gn.base {
+        background: var(--n-base-bg);
+        border-color: var(--n-base-bd);
+      }
+      .gn.sink {
+        background: var(--n-sink-bg);
+        border-color: var(--n-sink-bd);
+        border-style: dashed;
+      }
+      .gn.summit {
+        background: var(--n-sum-bg);
+        border-color: var(--n-sum-bd);
+        border-width: 3px;
+      }
+      .gn a.inum {
+        text-decoration: none;
+        font-size: 11px;
+        font-weight: 500;
+        padding: 1px 5px;
+        border-radius: 999px;
+        color: var(--open);
+        background: transparent;
+      }
+      .gn a.inum.work {
+        color: var(--st-work);
+        background: var(--st-work-bg);
+        box-shadow: inset 0 0 0 1px var(--st-work);
+      }
+      .gn a.inum.closed {
+        color: var(--closed);
+        background: var(--closed-bg);
+      }
+      .gn a.inum:hover,
+      .gn a.inum:focus-visible {
+        text-decoration: underline;
+      }
+      .gn a.inum.ready {
+        box-shadow: 0 0 0 1.5px var(--ready);
+      }
+      .elbl {
+        position: absolute;
+        z-index: 2;
+        transform: translate(-50%, -50%);
+        background: var(--lbl-bg);
+        border: 0.5px solid var(--border);
+        border-radius: 5px;
+        padding: 2px 5px;
+        font-family: var(--font-mono);
+        font-size: 10.5px;
+        line-height: 1.45;
+        color: var(--text-secondary);
+        white-space: nowrap;
+        text-align: center;
+      }
+      .elbl a {
+        color: var(--text-accent);
+        text-decoration: none;
+      }
+      .elbl a:hover,
+      .elbl a:focus-visible {
+        text-decoration: underline;
+      }
+      .glegend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px 16px;
+        align-items: center;
+        font-size: 12px;
+        color: var(--text-secondary);
+        margin: 8px 0 0;
+      }
+      .glegend span {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .swatch {
+        padding: 1px 8px;
+        border-radius: 5px;
+        border: 1.5px solid;
+      }
+      .swatch.summit {
+        background: var(--n-sum-bg);
+        border-color: var(--n-sum-bd);
+        border-width: 2.5px;
+      }
+      .swatch.sink {
+        background: var(--n-sink-bg);
+        border-color: var(--n-sink-bd);
+        border-style: dashed;
+      }
+      @media (max-width: 700px) {
+        .flow {
+          flex-direction: column;
+        }
+        .stage {
+          flex: none;
+        }
+        .arrow {
+          flex: none;
+          height: 16px;
+          transform: rotate(90deg);
+        }
+      }
+      .topnav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        margin: 0 0 18px;
+        padding: 4px;
+        border: 0.5px solid var(--border);
+        border-radius: 10px;
+        background: var(--surface-2);
+        width: fit-content;
+        max-width: 100%;
+      }
+      .topnav a {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+        color: var(--text-secondary);
+        text-decoration: none;
+        padding: 5px 10px;
+        border-radius: 7px;
+      }
+      .topnav a:hover {
+        color: var(--text-primary);
+        background: var(--surface-1);
+      }
+      .topnav a:focus-visible {
+        outline: 2px solid var(--text-accent);
+        outline-offset: 1px;
+      }
+      .topnav a[aria-current='page'] {
+        color: var(--surface-0);
+        background: var(--text-primary);
+        font-weight: 500;
+      }
+      .navrow {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: stretch;
+        gap: 12px;
+        margin: 0 0 18px;
+      }
+      .navrow .topnav {
+        margin: 0;
+      }
+      .prod {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--text-primary);
+        text-decoration: none;
+        padding: 9px 14px;
+        border: 0.5px solid var(--border);
+        border-radius: 10px;
+        background: var(--surface-2);
+      }
+      .prod:hover {
+        background: var(--surface-1);
+      }
+      .prod:focus-visible {
+        outline: 2px solid var(--text-accent);
+        outline-offset: 1px;
+      }
+      .prod .ti-arrow-up-right {
+        color: var(--text-muted);
+      }
+      .topnav.repo .repo-l {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--text-primary);
+        padding: 5px 8px 5px 10px;
+        border-right: 0.5px solid var(--border);
+        margin-right: 2px;
+      }
+      /* How a lesson works (milestone 2): the ladder of lesson states, the learning flow, the kinds and the discussion.
+   Colours come from the milestone's --gb/--gd/--gt tokens, so light and dark mode follow the section. */
+      .ladder {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 8px;
+        margin: 0 0 8px;
+      }
+      .rung {
+        border: 0.5px solid var(--border);
+        border-radius: 10px;
+        background: var(--surface-1);
+        padding: 10px 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+      .rung b {
+        font-size: 22px;
+        font-weight: 600;
+        font-variant-numeric: tabular-nums;
+      }
+      .rung span {
+        font-size: 13px;
+        font-weight: 500;
+      }
+      .rung small {
+        font-size: 11.5px;
+        color: var(--text-muted);
+        line-height: 1.4;
+      }
+      .rung.now {
+        background: var(--gb);
+        border-color: var(--gd);
+        color: var(--gt);
+      }
+      .rung.now small {
+        color: var(--gt);
+        opacity: 0.85;
+      }
+      .note {
+        font-size: 12.5px;
+        line-height: 1.55;
+        color: var(--text-secondary);
+        margin: 0 0 16px;
+        max-width: 80ch;
+      }
+      .note code,
+      .disc code {
+        font-family: var(--font-mono);
+        font-size: 11.5px;
+      }
+      .lflow {
+        margin: 0 0 8px;
+      }
+      .lstep {
+        border: 0.5px solid var(--border);
+        border-radius: 8px;
+        background: var(--surface-1);
+        padding: 8px 10px;
+        font-size: 12px;
+        line-height: 1.45;
+        color: var(--text-secondary);
+        height: 100%;
+      }
+      .lstep b {
+        display: block;
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--text-primary);
+        margin-bottom: 2px;
+      }
+      /* The one step that calls the LLM gets the thick border the architecture diagrams use for LLM calls. */
+      .lstep.llm {
+        border: 2px solid var(--gd);
+        background: var(--gb);
+        color: var(--gt);
+      }
+      .lstep.llm b {
+        color: var(--gt);
+      }
+      .kinds {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 8px;
+        margin: 0 0 16px;
+      }
+      .kind {
+        border: 0.5px solid var(--border);
+        border-radius: 10px;
+        padding: 10px 12px;
+        font-size: 12.5px;
+        line-height: 1.5;
+        color: var(--text-secondary);
+        background: var(--surface-2);
+      }
+      .kind-h {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 6px;
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--text-primary);
+        margin-bottom: 4px;
+      }
+      .kind-h i {
+        color: var(--gt);
+      }
+      .kind-h span {
+        font-size: 10.5px;
+        font-weight: 500;
+        border-radius: 999px;
+        padding: 1px 7px;
+        margin-left: auto;
+      }
+      .kind-h .ok {
+        color: var(--st-closed);
+        background: var(--st-closed-bg);
+      }
+      .kind-h .wip {
+        color: var(--st-work);
+        background: var(--st-work-bg);
+      }
+      .disc {
+        border: 0.5px solid var(--gd);
+        border-radius: 10px;
+        background: var(--gb);
+        color: var(--gt);
+        padding: 12px 14px;
+        margin: 0 0 8px;
+      }
+      .disc-h {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+        font-weight: 500;
+        margin-bottom: 6px;
+      }
+      .disc ol {
+        margin: 0;
+        padding-left: 20px;
+        font-size: 12.5px;
+        line-height: 1.55;
+      }
+      .disc li {
+        margin: 2px 0;
+      }
+      @media (max-width: 700px) {
+        .ladder {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="navrow">
+        <nav class="topnav" aria-label="Docs du projet">
+          <a href="index.html" aria-current="page"
+            ><i class="ti ti-layout-dashboard" aria-hidden="true"></i>Vue d'ensemble</a
+          ><a href="../docs/site/milestone1-data-model.html"
+            ><i class="ti ti-git-compare" aria-hidden="true"></i>Modèle de données · M1</a
+          ><a href="../docs/site/milestone2-data-model.html"
+            ><i class="ti ti-database" aria-hidden="true"></i>Modèle de données · M2</a
+          ><a href="../docs/site/milestone3-data-model.html"
+            ><i class="ti ti-plug-connected" aria-hidden="true"></i>Modèle de données · M3</a
+          >
+        </nav>
+        <a
+          class="prod"
+          href="https://transcendence.dpdns.org"
+          title="Production, sur l'instance Oracle Cloud : transcendence.dpdns.org"
+          ><i class="ti ti-rocket" aria-hidden="true"></i>production<i
+            class="ti ti-arrow-up-right"
+            aria-hidden="true"
+          ></i></a
+        ><a
+          class="prod"
+          href="https://trans.vyantares.ch"
+          title="Une deuxième copie, sur un VPS partagé : trans.vyantares.ch"
+          ><i class="ti ti-server" aria-hidden="true"></i>deuxième copie<i
+            class="ti ti-arrow-up-right"
+            aria-hidden="true"
+          ></i></a
+        ><a
+          class="prod"
+          href="https://bastian-schnitzler.github.io/lesson_prototype/"
+          title="Le prototype de leçon : bastian-schnitzler.github.io/lesson_prototype"
+          ><i class="ti ti-flask" aria-hidden="true"></i>prototype<i
+            class="ti ti-arrow-up-right"
+            aria-hidden="true"
+          ></i
+        ></a>
+        <nav class="topnav repo" aria-label="ft_transcendence sur GitHub">
+          <span class="repo-l"
+            ><i class="ti ti-brand-github" aria-hidden="true"></i>ft_transcendence</span
+          ><a href="https://github.com/VictorBro/ft_transcendence"
+            ><i class="ti ti-code" aria-hidden="true"></i>code</a
+          ><a href="https://github.com/VictorBro/ft_transcendence/pulls"
+            ><i class="ti ti-git-pull-request" aria-hidden="true"></i>PRs</a
+          ><a href="https://github.com/users/VictorBro/projects/1"
+            ><i class="ti ti-layout-kanban" aria-hidden="true"></i>Kanban</a
+          ><a href="https://github.com/VictorBro/ft_transcendence/milestones"
+            ><i class="ti ti-flag" aria-hidden="true"></i>jalons</a
+          ><a href="https://github.com/VictorBro/ft_transcendence/issues"
+            ><i class="ti ti-circle-dot" aria-hidden="true"></i>issues</a
+          >
+        </nav>
+      </div>
+      <p class="eyebrow">ft_transcendence · docs du projet</p>
+      <h1>Jalons</h1>
+      <p class="intro">
+        ft_transcendence est une plateforme pilotée par l'IA pour apprendre une langue étrangère. Un
+        court test adaptatif place chaque apprenant à un niveau du CECRL, puis une feuille de route
+        (roadmap) lui donne des leçons à la taille de son objectif du jour. Cette page résume les
+        jalons (milestones) en cours : ce que chacun livre, comment ses issues dépendent les unes
+        des autres, et le modèle de données derrière.
+      </p>
+
+      <nav class="toc" aria-label="Jalons">
+        <a class="k-1" href="#m1"
+          ><i class="ti ti-target-arrow" aria-hidden="true"></i>1 · Onboarding et évaluation</a
+        >
+        <a class="k-2" href="#m2"
+          ><i class="ti ti-route" aria-hidden="true"></i>2 · Feuille de route du cours et leçons</a
+        >
+        <a class="k-3" href="#m3"
+          ><i class="ti ti-users" aria-hidden="true"></i>3 · Temps réel, social et soutenance</a
+        >
+      </nav>
+
+      <!-- MILESTONE 1 -->
+      <section class="ms k-1" id="m1" data-milestone="1">
+        <div class="ms-head">
+          <div class="num">Jalon 1</div>
+          <h2>Onboarding et évaluation</h2>
+          <p>
+            Un nouvel apprenant choisit une langue et un objectif du jour de 10, 30 ou 60 minutes,
+            puis passe un test de niveau adaptatif ou choisit son niveau lui-même. Le test fait une
+            recherche dichotomique à partir de B1 sur 270 questions écrites à la main, et c'est le
+            serveur qui gère le chrono. L'apprenant arrive ensuite sur l'accueil du cours, et peut
+            passer d'un cours à l'autre ou ajouter une autre langue. Toutes les issues sont fermées
+            : la page du test de niveau et son écran de résultat (#50) sont arrivés avec la PR #104.
+          </p>
+          <div class="prog">
+            <div
+              class="bar"
+              role="progressbar"
+              aria-label="Issues fermées du jalon 1"
+              aria-valuemin="0"
+              aria-valuemax="12"
+              aria-valuenow="12"
+            >
+              <span style="width: 100%"></span>
+            </div>
+            <span class="prog-t">12 issues fermées sur 12</span>
+          </div>
+          <a class="ms-link" href="https://github.com/VictorBro/ft_transcendence/milestone/1"
+            ><i class="ti ti-brand-github" aria-hidden="true"></i>Ouvrir le jalon 1 sur GitHub<i
+              class="ti ti-arrow-up-right"
+              aria-hidden="true"
+            ></i
+          ></a>
+        </div>
+        <div class="ms-body">
+          <h3>Flux des dépendances</h3>
+          <div class="legend">
+            <span class="sw open">ouverte, bloquée</span
+            ><span class="sw ready"
+              >prête : ouverte, pas bloquée et personne dessus pour l'instant</span
+            ><span class="sw work">en cours</span><span class="sw closed">fermée</span
+            ><span
+              >En haut à droite : qui est responsable (l'auteur de la PR liée, sinon la personne
+              assignée). En bas à droite : la PR liée.</span
+            >
+          </div>
+          <p class="legend">
+            Chaque colonne dépend de celles d'avant, comme indiqué dans les issues.
+          </p>
+          <div class="flow">
+            <div class="stage">
+              <div class="stage-h">Fondations</div>
+              <a class="iss" data-n="44" href="#"
+                ><span class="no">#44</span
+                ><span class="t">Noter les décisions sur l'onboarding et le test de niveau</span></a
+              >
+              <a class="iss" data-n="43" href="#"
+                ><span class="no">#43</span><span class="t">Seed de la banque de questions</span></a
+              >
+              <a class="iss" data-n="45" href="#"
+                ><span class="no">#45</span><span class="t">Client d'API générique</span></a
+              >
+            </div>
+            <div class="arrow" aria-hidden="true"><i class="ti ti-chevron-right"></i></div>
+            <div class="stage">
+              <div class="stage-h">Contrats</div>
+              <a class="iss" data-n="46" href="#"
+                ><span class="no">#46</span
+                ><span class="t">Contrats des cours et du test de niveau</span></a
+              >
+            </div>
+            <div class="arrow" aria-hidden="true"><i class="ti ti-chevron-right"></i></div>
+            <div class="stage">
+              <div class="stage-h">Cours</div>
+              <a class="iss" data-n="47" href="#"
+                ><span class="no">#47</span
+                ><span class="t">API des cours et écriture unifiée du niveau</span></a
+              >
+            </div>
+            <div class="arrow" aria-hidden="true"><i class="ti ti-chevron-right"></i></div>
+            <div class="stage">
+              <div class="stage-h">Fonctionnalités</div>
+              <a class="iss" data-n="48" href="#"
+                ><span class="no">#48</span
+                ><span class="t">API du test de niveau sur Redis</span></a
+              >
+              <a class="iss" data-n="49" href="#"
+                ><span class="no">#49</span><span class="t">Onboarding, par cours</span></a
+              >
+              <a class="iss" data-n="51" href="#"
+                ><span class="no">#51</span
+                ><span class="t">Tableau de bord du cours et sélecteur</span></a
+              >
+            </div>
+            <div class="arrow" aria-hidden="true"><i class="ti ti-chevron-right"></i></div>
+            <div class="stage">
+              <div class="stage-h">Finitions</div>
+              <a class="iss" data-n="52" href="#"
+                ><span class="no">#52</span
+                ><span class="t">Arrivée après connexion et guards</span></a
+              >
+              <a class="iss" data-n="53" href="#"
+                ><span class="no">#53</span
+                ><span class="t">Fixture e2e d'un apprenant déjà onboardé</span></a
+              >
+              <a class="iss" data-n="50" href="#"
+                ><span class="no">#50</span
+                ><span class="t">Page du test de niveau et résultat</span></a
+              >
+              <a class="iss" data-n="54" href="#"
+                ><span class="no">#54</span
+                ><span class="t">Générer une question quand la réserve est vide</span></a
+              >
+            </div>
+          </div>
+
+          <h3>Modèle de données</h3>
+          <a class="dm" href="../docs/site/milestone1-data-model.html"
+            ><i class="ti ti-git-compare" aria-hidden="true"></i>
+            <div>
+              <b>Modèle de données de l'onboarding : spec et code</b
+              ><span
+                >Chaque format, du contrat partagé à l'état du test dans Redis, vérifié par rapport
+                à main, avec chaque différence entre les issues et le code.</span
+              >
+            </div></a
+          >
+        </div>
+      </section>
+
+      <!-- MILESTONE 2 -->
+      <section class="ms k-2" id="m2" data-milestone="2">
+        <div class="ms-head">
+          <div class="num">Jalon 2 · pour le 1er décembre 2026</div>
+          <h2>Feuille de route du cours et leçons</h2>
+          <p>
+            La page du cours et les leçons : la page de l'objectif du jour, la page de toutes les
+            leçons avec recherche avancée, les quatre pages de leçon (grammaire, vocabulaire,
+            fonctions, lecture), une discussion avec le tuteur LLM avant chaque examen, des
+            résultats notés sur le serveur, la série (streak), la fin d'un niveau et la gamification
+            (XP, un défi du jour, 16 succès). Replanifié dans #137 : une leçon suit le modèle du
+            prototype et est écrite hors ligne. Les 3 990 entrées de plan sont toutes chargées comme
+            lignes de leçon ; 216 sont prêtes, les 12 premières de chaque langue et niveau, et les
+            autres s'affichent comme "Coming soon" (« Bientôt »). Tout est sur main sauf cette passe
+            de documentation (#152). Modules apportés : l'interface LLM (major), la recherche
+            avancée et la gamification (minors).
+          </p>
+          <div class="prog">
+            <div
+              class="bar"
+              role="progressbar"
+              aria-label="Issues fermées du jalon 2"
+              aria-valuemin="0"
+              aria-valuemax="45"
+              aria-valuenow="44"
+            >
+              <span style="width: 97.8%"></span>
+            </div>
+            <span class="prog-t">44 issues fermées sur 45</span>
+          </div>
+          <a class="ms-link" href="https://github.com/VictorBro/ft_transcendence/milestone/2"
+            ><i class="ti ti-brand-github" aria-hidden="true"></i>Ouvrir le jalon 2 sur GitHub<i
+              class="ti ti-arrow-up-right"
+              aria-hidden="true"
+            ></i
+          ></a>
+        </div>
+        <div class="ms-body">
+          <!-- How a lesson works (Milestone 2, as built). Every figure here is taken from content/ and the code on main:
+     3,990 outline entries, 216 ready lessons (12 per language and level), the four kinds and their players,
+     the five page roles of the plan, and the discussion route. content/lessons.md is the prose version. -->
+          <h3>Comment marche une leçon</h3>
+          <!-- The ladder from planned to playable: each step is a subset of the one before. -->
+          <div class="ladder" role="list" aria-label="De l'entrée de plan à la leçon prête">
+            <div class="rung" role="listitem">
+              <b>3 990</b><span>entrées de plan</span
+              ><small>content/outlines, 1 330 par langue</small>
+            </div>
+            <div class="rung" role="listitem">
+              <b>3 990</b><span>lignes Lesson chargées</span
+              ><small>une par entrée, écrites par db:seed</small>
+            </div>
+            <div class="rung" role="listitem">
+              <b>216</b><span>leçons écrites</span
+              ><small
+                >content/briefs (216) et content/lessons (108, tous les types sauf le
+                vocabulaire)</small
+              >
+            </div>
+            <div class="rung now" role="listitem">
+              <b>216</b><span>prêtes à jouer</span
+              ><small
+                >Lesson.ready : les fichiers existent et sont valides. Les 12 premières de chacune
+                des 18 paires langue et niveau</small
+              >
+            </div>
+          </div>
+          <p class="note">
+            Écrites hors ligne et commitées ; le seed ne fait que les lire. Rien ne génère de leçon
+            à l'exécution, au deploy ou dans l'image d'outillage. Prêtes par type : 108 vocabulaire,
+            61 grammaire, 26 fonctions, 21 lecture. Les 3 774 autres lignes sont listées comme
+            "Coming soon" (« Bientôt »).
+          </p>
+
+          <!-- The learner's path through one attempt: the five page roles of buildPlan, in order. -->
+          <div class="flow lflow" role="group" aria-label="Les pages d'une tentative de leçon">
+            <div class="stage">
+              <div class="stage-h">1 · page de départ</div>
+              <div class="lstep">
+                <b>Plan</b>titre, objectif, minutes, points d'apprentissage numérotés
+              </div>
+            </div>
+            <div class="arrow" aria-hidden="true"><i class="ti ti-chevron-right"></i></div>
+            <div class="stage">
+              <div class="stage-h">2 · présentation + entraînement</div>
+              <div class="lstep">
+                <b>Une page à la fois</b>chaque page d'entraînement est corrigée une fois validée ;
+                35 % du score
+              </div>
+            </div>
+            <div class="arrow" aria-hidden="true"><i class="ti ti-chevron-right"></i></div>
+            <div class="stage">
+              <div class="stage-h">3 · discussion</div>
+              <div class="lstep llm">
+                <b>Parler avec le tuteur</b>non notée, facultative ; streamée en SSE
+              </div>
+            </div>
+            <div class="arrow" aria-hidden="true"><i class="ti ti-chevron-right"></i></div>
+            <div class="stage">
+              <div class="stage-h">4 · infos d'examen + examen</div>
+              <div class="lstep">
+                <b>Pages chronométrées</b>le serveur gère le chrono ; pas de correction avant la fin
+                ; 65 %
+              </div>
+            </div>
+            <div class="arrow" aria-hidden="true"><i class="ti ti-chevron-right"></i></div>
+            <div class="stage">
+              <div class="stage-h">5 · résultats</div>
+              <div class="lstep">
+                <b>Score et corrections</b>meilleur score gardé, objectif et série, XP, défi, succès
+              </div>
+            </div>
+          </div>
+          <p class="note">
+            Le serveur gère chaque tentative dans <code>LessonAttempt</code> : il n'envoie que la
+            page au curseur, désigne chaque réponse par une ref propre à la tentative, vérifie
+            chaque page une seule fois, et écrit les résultats quand la dernière page est
+            verrouillée. Aucune route ne prend un score. Le texte d'aide est dans la langue
+            maternelle de l'apprenant : la langue de l'interface, ou une autre quand c'est la langue
+            du cours.
+          </p>
+
+          <!-- The four kinds, each with its own player in apps/web/components/lesson/kinds. -->
+          <div class="kinds">
+            <div class="kind">
+              <div class="kind-h">
+                <i class="ti ti-abc" aria-hidden="true"></i>Grammaire
+                <span class="ok">sur main · #146</span>
+              </div>
+              Des explications, puis des associations, des textes à trous, l'ordre des mots et la
+              recherche d'erreur, puis un examen chronométré.
+            </div>
+            <div class="kind">
+              <div class="kind-h">
+                <i class="ti ti-cards" aria-hidden="true"></i>Vocabulaire
+                <span class="ok">sur main · #147</span>
+              </div>
+              Présentations et flashcards par groupe, associations, genres, entraînement, puis un
+              examen de traduction. Pas d'écoute.
+            </div>
+            <div class="kind">
+              <div class="kind-h">
+                <i class="ti ti-messages" aria-hidden="true"></i>Fonctions
+                <span class="ok">sur main · #149</span>
+              </div>
+              Une situation avec deux rôles, des expressions, des réponses à l'écoute avec Show the
+              text (« Afficher le texte »), puis un examen en plusieurs parties.
+            </div>
+            <div class="kind">
+              <div class="kind-h">
+                <i class="ti ti-file-text" aria-hidden="true"></i>Lecture
+                <span class="ok">sur main · #148</span>
+              </div>
+              Un document pour apprendre, et un nouveau du même genre à l'examen.
+            </div>
+          </div>
+
+          <!-- The discussion route, end to end: the one LLM call a lesson makes. -->
+          <div class="disc">
+            <div class="disc-h">
+              <i class="ti ti-message-chatbot" aria-hidden="true"></i>La discussion, avant chaque
+              examen (#150, #151)
+            </div>
+            <ol>
+              <li>
+                <b>Demander.</b> <code>POST /api/courses/:lang/lessons/:id/discussion</code> avec
+                <code>{ attemptId, message, history }</code> : 500 caractères au plus et les 10
+                derniers échanges. Le serveur ne stocke rien.
+              </li>
+              <li>
+                <b>D'abord les vérifications, en erreurs JSON.</b> Une leçon prête, le curseur de la
+                tentative sur sa page de discussion (sinon 409 <code>attempt.stale</code>), puis les
+                limites dans Redis : 2 par minute et 60 par jour par apprenant, 5 par minute pour
+                tout le monde (sinon 429 avec <code>retryAfter</code>).
+              </li>
+              <li>
+                <b>Ensuite un stream.</b> <code>text/event-stream</code> :
+                <code>delta { text }</code> pour chaque morceau, puis <code>done</code>, ou
+                <code>error { code }</code> avec un code <code>llm.*</code> ; un heartbeat toutes
+                les 15 s.
+              </li>
+              <li>
+                <b>Le tuteur</b> connaît les champs d'enseignement de la leçon et les mauvaises
+                réponses d'entraînement de l'apprenant, jamais l'examen. Gemini via
+                <code>streamText</code>, <code>LLM_MODEL</code> ou <code>gemini-3.6-flash</code>, 1
+                000 tokens de sortie au plus ; la fixture en CI.
+              </li>
+            </ol>
+          </div>
+          <p class="note">
+            Compté sur le tableau de bord Learning de Grafana : les réponses du tuteur par résultat
+            et les messages refusés par une limite. Les leçons commencées et finies sont dans
+            <code>ft_lesson_attempts_total</code>.
+          </p>
+
+          <h3>Graphe des dépendances</h3>
+          <div
+            class="gwrap"
+            tabindex="0"
+            role="group"
+            aria-label="Graphe des dépendances du jalon 2. Défile sur le côté sur les petits écrans."
+          >
+            <div class="graph" id="g2">
+              <svg class="edges" aria-hidden="true">
+                <defs>
+                  <marker
+                    id="ah2"
+                    viewBox="0 0 10 10"
+                    refX="9"
+                    refY="5"
+                    markerWidth="7"
+                    markerHeight="7"
+                    orient="auto-start-reverse"
+                  >
+                    <path d="M0,0 L10,5 L0,10 z" fill="var(--edge)" />
+                  </marker>
+                  <marker
+                    id="ahc2"
+                    viewBox="0 0 10 10"
+                    refX="9"
+                    refY="5"
+                    markerWidth="4"
+                    markerHeight="4"
+                    orient="auto-start-reverse"
+                  >
+                    <path d="M0,0 L10,5 L0,10 z" fill="var(--edge-crit)" />
+                  </marker>
+                </defs>
+              </svg>
+              <div class="gn base" id="G1a" style="grid-column: 1; grid-row: 1">
+                <b>G1a</b
+                ><span>Modèle de leçon : conceptions, prototype, schemas et validateurs</span>
+                <p>#115 #116 #117 #135</p>
+              </div>
+              <div class="gn base" id="G1b" style="grid-column: 1; grid-row: 2">
+                <b>G1b</b
+                ><span
+                  >API de la feuille de route, règles de gamification, seed, plans A1 - C2</span
+                >
+                <p>#76 #77 #78 #79 #80 #81 #82 #94 #134 #105 #88 #89 #90</p>
+              </div>
+              <div class="gn base" id="G2a" style="grid-column: 3; grid-row: 1">
+                <b>G2a</b><span>Leçons de français A1 et le drapeau ready, domaine du lecteur</span>
+                <p>#84 #144</p>
+              </div>
+              <div class="gn base" id="G2b" style="grid-column: 3; grid-row: 3">
+                <b>G2b</b><span>Validateurs allemand et anglais</span>
+                <p>#136</p>
+              </div>
+              <div class="gn base" id="G3a" style="grid-column: 5; grid-row: 1">
+                <b>G3a</b><span>Tentatives de leçon sur le serveur</span>
+                <p>#145</p>
+              </div>
+              <div class="gn base" id="G3b" style="grid-column: 5; grid-row: 3">
+                <b>G3b</b><span>Kit d'écriture de leçons</span>
+                <p>#83</p>
+              </div>
+              <div class="gn base" id="G4a" style="grid-column: 7; grid-row: 1">
+                <b>G4a</b><span>Page de leçon et grammaire, stream de la discussion</span>
+                <p>#146 #150</p>
+              </div>
+              <div class="gn base" id="G4b" style="grid-column: 7; grid-row: 2">
+                <b>G4b</b
+                ><span>Apprenants de démo, pages du cours, récompenses de gamification</span>
+                <p>#85 #86 #87 #95</p>
+              </div>
+              <div class="gn base" id="G4c" style="grid-column: 7; grid-row: 3">
+                <b>G4c</b><span>Leçons DE, EN A1 - C2, FR A2 - C2</span>
+                <p>#91 #92 #93</p>
+              </div>
+              <div class="gn base" id="G5a" style="grid-column: 9; grid-row: 1">
+                <b>G5a</b><span>Leçons de vocabulaire et de fonctions, fenêtre de discussion</span>
+                <p>#147 #149 #151</p>
+              </div>
+              <div class="gn base" id="G5b" style="grid-column: 9; grid-row: 2">
+                <b>G5b</b><span>E2e de la boucle des leçons, pages de gamification</span>
+                <p>#96 #97</p>
+              </div>
+              <div class="gn summit" id="G6" style="grid-column: 11; grid-row: 1">
+                <b>G6</b><span>Leçon de lecture, docs du jalon 2</span>
+                <p>#148 #152</p>
+                <i>SOMMET</i>
+              </div>
+            </div>
+          </div>
+          <div class="glegend">
+            <span
+              ><svg width="34" height="10" aria-hidden="true">
+                <line
+                  x1="0"
+                  y1="5"
+                  x2="34"
+                  y2="5"
+                  stroke="var(--edge-crit)"
+                  stroke-width="3"
+                /></svg
+              >chemin critique</span
+            ><span
+              ><svg width="34" height="10" aria-hidden="true">
+                <line x1="0" y1="5" x2="34" y2="5" stroke="var(--edge)" stroke-width="1.5" /></svg
+              >autre dépendance</span
+            ><span class="swatch summit">sommet</span
+            ><span
+              >Les numéros d'issue sont colorés selon leur statut et mènent à GitHub. Un cadre vert
+              marque une issue prête : ouverte, toutes les issues qui la bloquent sont fermées, et
+              personne dessus pour l'instant.</span
+            >
+          </div>
+          <p class="figcaption">
+            Les flèches portent les liens GitHub "blocked by" (« bloquée par ») qu'elles
+            représentent. Les flèches déjà impliquées par un groupe intermédiaire ne sont pas
+            dessinées. Pas dessiné : #84 bloque aussi #91 à #93, tout comme les plans #88, #89 et
+            #90 (G1b) ; #76 (G1b) bloque #83. Dans G5a, #149 attend #147. Dans la colonne 1, #135
+            (G1a) attend le seed #134 (G1b). #152 débloque le README du jalon 3 (#160). Les
+            corrections de formulation #153 n'ont pas de dépendances et sont listées sous les
+            groupes.
+          </p>
+
+          <h3>Groupes</h3>
+          <div class="legend">
+            <span class="sw open">ouverte, bloquée</span
+            ><span class="sw ready"
+              >prête : ouverte, pas bloquée et personne dessus pour l'instant</span
+            ><span class="sw work">en cours</span><span class="sw closed">fermée</span
+            ><span
+              >En haut à droite : qui est responsable (l'auteur de la PR liée, sinon la personne
+              assignée). En bas à droite : la PR liée.</span
+            >
+          </div>
+          <p class="legend">
+            Les groupes avec le même numéro (a, b, c) peuvent avancer en parallèle. Chaque colonne
+            attend celles d'avant.
+          </p>
+          <div class="flow">
+            <div class="stage">
+              <div class="grp">
+                <div class="grp-h">G1a · modèle de leçon</div>
+                <a class="iss" data-n="115" href="#"
+                  ><span class="no">#115</span
+                  ><span class="t">Concevoir les leçons de lecture</span></a
+                >
+                <a class="iss" data-n="116" href="#"
+                  ><span class="no">#116</span
+                  ><span class="t">Concevoir les leçons de fonctions</span></a
+                >
+                <a class="iss" data-n="117" href="#"
+                  ><span class="no">#117</span
+                  ><span class="t">Prototype de leçon et modèle de leçon final</span></a
+                >
+                <a class="iss" data-n="135" href="#"
+                  ><span class="no">#135</span
+                  ><span class="t">Porter les schemas et validateurs du prototype</span></a
+                >
+              </div>
+              <div class="grp">
+                <div class="grp-h">G1b · API de la feuille de route et plans</div>
+                <a class="iss" data-n="76" href="#"
+                  ><span class="no">#76</span
+                  ><span class="t">Doc : décisions sur les leçons, l'objectif et la série</span></a
+                >
+                <a class="iss" data-n="77" href="#"
+                  ><span class="no">#77</span
+                  ><span class="t">Contrats des leçons et vérifications du contenu</span></a
+                >
+                <a class="iss" data-n="78" href="#"
+                  ><span class="no">#78</span
+                  ><span class="t">Fuseau horaire de l'apprenant</span></a
+                >
+                <a class="iss" data-n="79" href="#"
+                  ><span class="no">#79</span><span class="t">Tables des leçons et seed</span></a
+                >
+                <a class="iss" data-n="80" href="#"
+                  ><span class="no">#80</span
+                  ><span class="t">Règles de la feuille de route</span></a
+                >
+                <a class="iss" data-n="81" href="#"
+                  ><span class="no">#81</span
+                  ><span class="t">Lectures du jour et de toutes les leçons</span></a
+                >
+                <a class="iss" data-n="82" href="#"
+                  ><span class="no">#82</span
+                  ><span class="t">Finir une leçon, garder la série</span></a
+                >
+                <a class="iss" data-n="94" href="#"
+                  ><span class="no">#94</span><span class="t">Règles de gamification</span></a
+                >
+                <a class="iss" data-n="134" href="#"
+                  ><span class="no">#134</span
+                  ><span class="t">Seed des leçons à partir des plans</span></a
+                >
+                <a class="iss" data-n="105" href="#"
+                  ><span class="no">#105</span><span class="t">Plan du français A1</span></a
+                >
+                <a class="iss" data-n="88" href="#"
+                  ><span class="no">#88</span><span class="t">Plan de l'allemand</span></a
+                >
+                <a class="iss" data-n="89" href="#"
+                  ><span class="no">#89</span><span class="t">Plan de l'anglais</span></a
+                >
+                <a class="iss" data-n="90" href="#"
+                  ><span class="no">#90</span><span class="t">Plan du français, A2–C2</span></a
+                >
+              </div>
+            </div>
+            <div class="arrow" aria-hidden="true"><i class="ti ti-chevron-right"></i></div>
+            <div class="stage">
+              <div class="grp">
+                <div class="grp-h">G2a · données des leçons</div>
+                <a class="iss" data-n="84" href="#"
+                  ><span class="no">#84</span
+                  ><span class="t">Leçons de français A1 et le drapeau ready</span></a
+                >
+                <a class="iss" data-n="144" href="#"
+                  ><span class="no">#144</span
+                  ><span class="t">Le domaine du lecteur de leçon</span></a
+                >
+              </div>
+              <div class="grp">
+                <div class="grp-h">G2b</div>
+                <a class="iss" data-n="136" href="#"
+                  ><span class="no">#136</span
+                  ><span class="t">Validateurs pour l'allemand et l'anglais</span></a
+                >
+              </div>
+            </div>
+            <div class="arrow" aria-hidden="true"><i class="ti ti-chevron-right"></i></div>
+            <div class="stage">
+              <div class="grp">
+                <div class="grp-h">G3a</div>
+                <a class="iss" data-n="145" href="#"
+                  ><span class="no">#145</span
+                  ><span class="t">Tentatives de leçon sur le serveur</span></a
+                >
+              </div>
+              <div class="grp">
+                <div class="grp-h">G3b</div>
+                <a class="iss" data-n="83" href="#"
+                  ><span class="no">#83</span
+                  ><span class="t">Kit d'écriture de leçons pour Claude Code</span></a
+                >
+              </div>
+            </div>
+            <div class="arrow" aria-hidden="true"><i class="ti ti-chevron-right"></i></div>
+            <div class="stage">
+              <div class="grp">
+                <div class="grp-h">G4a · page de leçon, LLM</div>
+                <a class="iss" data-n="146" href="#"
+                  ><span class="no">#146</span
+                  ><span class="t">Page de leçon, lecteur et leçon de grammaire</span></a
+                >
+                <a class="iss" data-n="150" href="#"
+                  ><span class="no">#150</span
+                  ><span class="t">Streamer la discussion de la leçon</span></a
+                >
+              </div>
+              <div class="grp">
+                <div class="grp-h">G4b · pages du cours, gamification</div>
+                <a class="iss" data-n="85" href="#"
+                  ><span class="no">#85</span><span class="t">Apprenants de démo</span></a
+                >
+                <a class="iss" data-n="86" href="#"
+                  ><span class="no">#86</span><span class="t">Page de l'objectif du jour</span></a
+                >
+                <a class="iss" data-n="87" href="#"
+                  ><span class="no">#87</span
+                  ><span class="t">Page de toutes les leçons avec recherche</span></a
+                >
+                <a class="iss" data-n="95" href="#"
+                  ><span class="no">#95</span
+                  ><span class="t">API de l'XP, du défi et des succès</span></a
+                >
+              </div>
+              <div class="grp">
+                <div class="grp-h">G4c · contenu</div>
+                <a class="iss" data-n="91" href="#"
+                  ><span class="no">#91</span><span class="t">Leçons d'allemand, A1–C2</span></a
+                >
+                <a class="iss" data-n="92" href="#"
+                  ><span class="no">#92</span><span class="t">Leçons d'anglais, A1–C2</span></a
+                >
+                <a class="iss" data-n="93" href="#"
+                  ><span class="no">#93</span><span class="t">Leçons de français, A2–C2</span></a
+                >
+              </div>
+            </div>
+            <div class="arrow" aria-hidden="true"><i class="ti ti-chevron-right"></i></div>
+            <div class="stage">
+              <div class="grp">
+                <div class="grp-h">G5a · types de leçon, tuteur</div>
+                <a class="iss" data-n="147" href="#"
+                  ><span class="no">#147</span><span class="t">La leçon de vocabulaire</span></a
+                >
+                <a class="iss" data-n="149" href="#"
+                  ><span class="no">#149</span><span class="t">La leçon de fonctions</span></a
+                >
+                <a class="iss" data-n="151" href="#"
+                  ><span class="no">#151</span
+                  ><span class="t">Fenêtre de discussion avant l'examen</span></a
+                >
+              </div>
+              <div class="grp">
+                <div class="grp-h">G5b</div>
+                <a class="iss" data-n="96" href="#"
+                  ><span class="no">#96</span
+                  ><span class="t">E2e de la feuille de route et de la boucle des leçons</span></a
+                >
+                <a class="iss" data-n="97" href="#"
+                  ><span class="no">#97</span
+                  ><span class="t">Pages du rang, du défi et des succès</span></a
+                >
+              </div>
+            </div>
+            <div class="arrow" aria-hidden="true"><i class="ti ti-chevron-right"></i></div>
+            <div class="stage">
+              <div class="grp">
+                <div class="grp-h">G6 · sommet</div>
+                <a class="iss" data-n="148" href="#"
+                  ><span class="no">#148</span><span class="t">La leçon de lecture</span></a
+                >
+                <a class="iss" data-n="152" href="#"
+                  ><span class="no">#152</span
+                  ><span class="t">Passe sur les docs du jalon 2</span></a
+                >
+              </div>
+            </div>
+          </div>
+
+          <p class="legend">Corrections et planification dans le jalon, hors du graphe :</p>
+          <div class="flow">
+            <div class="stage" style="max-width: 340px">
+              <div class="grp">
+                <div class="grp-h">Corrections et planification</div>
+                <a class="iss" data-n="153" href="#"
+                  ><span class="no">#153</span
+                  ><span class="t">Formulations sur les pages livrées</span></a
+                >
+                <a class="iss" data-n="106" href="#"
+                  ><span class="no">#106</span
+                  ><span class="t">Tutoyer les apprenants français</span></a
+                >
+                <a class="iss" data-n="207" href="#"
+                  ><span class="no">#207</span
+                  ><span class="t">Le tutoiement dans le lecteur et les textes des leçons</span></a
+                >
+                <a class="iss" data-n="211" href="#"
+                  ><span class="no">#211</span
+                  ><span class="t">Stocker la langue de l'interface dans User.locale</span></a
+                >
+                <a class="iss" data-n="108" href="#"
+                  ><span class="no">#108</span
+                  ><span class="t">Un code d'erreur dans chaque message d'erreur</span></a
+                >
+                <a class="iss" data-n="113" href="#"
+                  ><span class="no">#113</span
+                  ><span class="t">Hasard avec graine dans le tirage des questions</span></a
+                >
+                <a class="iss" data-n="137" href="#"
+                  ><span class="no">#137</span
+                  ><span class="t">Nouveau plan : des leçons sur le modèle du prototype</span></a
+                >
+              </div>
+            </div>
+          </div>
+
+          <h3>Modèle de données</h3>
+          <a class="dm" href="../docs/site/milestone2-data-model.html"
+            ><i class="ti ti-database" aria-hidden="true"></i>
+            <div>
+              <b>Modèle de données des leçons</b
+              ><span
+                >Chaque format de leçon, des fichiers de leçon du prototype jusqu'aux API de
+                tentative, de discussion et de gamification, en passant par le seed, les modèles
+                Prisma et les vues du lecteur, avec les issues qui parlent de chacun.</span
+              >
+            </div></a
+          >
+        </div>
+      </section>
+
+      <!-- MILESTONE 3 -->
+      <section class="ms k-3" id="m3" data-milestone="3">
+        <div class="ms-head">
+          <div class="num">Jalon 3 · pour le 1er décembre 2026</div>
+          <h2>Temps réel, social et soutenance</h2>
+          <p>
+            La moitié sociale de l'app et la soutenance. Amis, profils publics, statut en ligne et
+            messages privés, en direct via WebSockets : le major temps réel, le major interaction
+            entre utilisateurs et la moitié manquante de la gestion standard des utilisateurs, 6 des
+            19 points. Ensuite, ce que l'évaluation vérifie en plus des fonctionnalités : deux
+            navigateurs de plus, le README et une soutenance répétée. Il avance en parallèle du
+            jalon 2. Une connexion WebSocket par onglet, dans une room
+            <code>user:&lt;id&gt;</code> ; la discussion des leçons est streamée en SSE (jalon 2),
+            pas par le socket. Pas fait : les notifications. Toutes les issues de fonctionnalités
+            sont fermées ; il reste le README pour l'évaluation (#160) et le guide de soutenance
+            (#161).
+          </p>
+          <div class="prog">
+            <div
+              class="bar"
+              role="progressbar"
+              aria-label="Issues fermées du jalon 3"
+              aria-valuemin="0"
+              aria-valuemax="10"
+              aria-valuenow="8"
+            >
+              <span style="width: 80%"></span>
+            </div>
+            <span class="prog-t">8 issues fermées sur 10</span>
+          </div>
+          <a class="ms-link" href="https://github.com/VictorBro/ft_transcendence/milestone/3"
+            ><i class="ti ti-brand-github" aria-hidden="true"></i>Ouvrir le jalon 3 sur GitHub<i
+              class="ti ti-arrow-up-right"
+              aria-hidden="true"
+            ></i
+          ></a>
+        </div>
+        <div class="ms-body">
+          <h3>Graphe des dépendances</h3>
+          <div
+            class="gwrap"
+            tabindex="0"
+            role="group"
+            aria-label="Graphe des dépendances du jalon 3. Défile sur le côté sur les petits écrans."
+          >
+            <div class="graph" id="g3">
+              <svg class="edges" aria-hidden="true">
+                <defs>
+                  <marker
+                    id="ah3"
+                    viewBox="0 0 10 10"
+                    refX="9"
+                    refY="5"
+                    markerWidth="7"
+                    markerHeight="7"
+                    orient="auto-start-reverse"
+                  >
+                    <path d="M0,0 L10,5 L0,10 z" fill="var(--edge)" />
+                  </marker>
+                  <marker
+                    id="ahc3"
+                    viewBox="0 0 10 10"
+                    refX="9"
+                    refY="5"
+                    markerWidth="4"
+                    markerHeight="4"
+                    orient="auto-start-reverse"
+                  >
+                    <path d="M0,0 L10,5 L0,10 z" fill="var(--edge-crit)" />
+                  </marker>
+                </defs>
+              </svg>
+              <div class="gn base" id="S1" style="grid-column: 1; grid-row: 1">
+                <b>S1</b><span>Gateway WebSocket</span>
+                <p>#154</p>
+              </div>
+              <div class="gn base" id="S2" style="grid-column: 3; grid-row: 2">
+                <b>S2</b><span>Amis</span>
+                <p>#155</p>
+              </div>
+              <div class="gn summit" id="S3" style="grid-column: 5; grid-row: 1">
+                <b>S3</b><span>Profils publics, statut en ligne, messages privés</span>
+                <p>#156 #157 #158</p>
+                <i>SOMMET</i>
+              </div>
+              <div class="gn base" id="D1" style="grid-column: 1; grid-row: 3">
+                <b>D1</b><span>Firefox et WebKit, README pour l'évaluation</span>
+                <p>#159 #160</p>
+              </div>
+              <div class="gn summit" id="D2" style="grid-column: 5; grid-row: 3">
+                <b>D2</b><span>Guide de soutenance et répétition</span>
+                <p>#161</p>
+                <i>DERNIER</i>
+              </div>
+            </div>
+          </div>
+          <div class="glegend">
+            <span
+              ><svg width="34" height="10" aria-hidden="true">
+                <line
+                  x1="0"
+                  y1="5"
+                  x2="34"
+                  y2="5"
+                  stroke="var(--edge-crit)"
+                  stroke-width="3"
+                /></svg
+              >chemin critique</span
+            ><span
+              ><svg width="34" height="10" aria-hidden="true">
+                <line x1="0" y1="5" x2="34" y2="5" stroke="var(--edge)" stroke-width="1.5" /></svg
+              >autre dépendance</span
+            ><span class="swatch summit">sommet</span
+            ><span
+              >Les numéros d'issue sont colorés selon leur statut et mènent à GitHub. Un cadre vert
+              marque une issue prête.</span
+            >
+          </div>
+          <p class="figcaption">
+            Les flèches portent les liens GitHub "blocked by" (« bloquée par ») qu'elles
+            représentent. Dans S3, #156 attend seulement #155 (la partie REST des amis peut
+            commencer avant la gateway). #160 attend #152, la passe sur les docs du jalon 2. Le run
+            de #159 passe au vert une fois que les pages de leçon (#146 à #151) et S1 à S3 sont
+            arrivées, et #161 vient en dernier, une fois que chaque fonctionnalité qu'il montre est
+            sur main. La limite d'inscription #34 n'a pas de dépendances.
+          </p>
+
+          <h3>Groupes</h3>
+          <div class="legend">
+            <span class="sw open">ouverte, bloquée</span
+            ><span class="sw ready"
+              >prête : ouverte, pas bloquée et personne dessus pour l'instant</span
+            ><span class="sw work">en cours</span><span class="sw closed">fermée</span
+            ><span
+              >En haut à droite : qui est responsable (l'auteur de la PR liée, sinon la personne
+              assignée). En bas à droite : la PR liée.</span
+            >
+          </div>
+          <p class="legend">
+            S est la chaîne temps réel et social, D la chaîne de la soutenance. Elles avancent en
+            parallèle.
+          </p>
+          <div class="flow">
+            <div class="stage">
+              <div class="grp">
+                <div class="grp-h">S1 · temps réel</div>
+                <a class="iss" data-n="154" href="#"
+                  ><span class="no">#154</span><span class="t">La gateway WebSocket</span></a
+                >
+              </div>
+              <div class="grp">
+                <div class="grp-h">D1 · évaluation</div>
+                <a class="iss" data-n="159" href="#"
+                  ><span class="no">#159</span><span class="t">E2e sur Firefox et WebKit</span></a
+                >
+                <a class="iss" data-n="160" href="#"
+                  ><span class="no">#160</span><span class="t">Le README pour l'évaluation</span></a
+                >
+              </div>
+            </div>
+            <div class="arrow" aria-hidden="true"><i class="ti ti-chevron-right"></i></div>
+            <div class="stage">
+              <div class="grp">
+                <div class="grp-h">S2</div>
+                <a class="iss" data-n="155" href="#"
+                  ><span class="no">#155</span><span class="t">Amis</span></a
+                >
+              </div>
+            </div>
+            <div class="arrow" aria-hidden="true"><i class="ti ti-chevron-right"></i></div>
+            <div class="stage">
+              <div class="grp">
+                <div class="grp-h">S3 · sommet</div>
+                <a class="iss" data-n="156" href="#"
+                  ><span class="no">#156</span><span class="t">Profils publics</span></a
+                >
+                <a class="iss" data-n="157" href="#"
+                  ><span class="no">#157</span><span class="t">Statut en ligne</span></a
+                >
+                <a class="iss" data-n="158" href="#"
+                  ><span class="no">#158</span><span class="t">Messages privés entre amis</span></a
+                >
+              </div>
+              <div class="grp">
+                <div class="grp-h">D2 · dernier</div>
+                <a class="iss" data-n="161" href="#"
+                  ><span class="no">#161</span
+                  ><span class="t">Guide de soutenance et répétition</span></a
+                >
+              </div>
+            </div>
+          </div>
+
+          <p class="legend">Corrections du jalon sans dépendances, hors du graphe :</p>
+          <div class="flow">
+            <div class="stage" style="max-width: 340px">
+              <div class="grp">
+                <div class="grp-h">Corrections</div>
+                <a class="iss" data-n="34" href="#"
+                  ><span class="no">#34</span
+                  ><span class="t">Limite d'inscription remise à 10 par minute</span></a
+                >
+                <a class="iss" data-n="204" href="#"
+                  ><span class="no">#204</span
+                  ><span class="t"
+                    >La politique de confidentialité avec une clé Gemini gratuite</span
+                  ></a
+                >
+              </div>
+            </div>
+          </div>
+
+          <h3>Modèle de données</h3>
+          <a class="dm" href="../docs/site/milestone3-data-model.html"
+            ><i class="ti ti-plug-connected" aria-hidden="true"></i>
+            <div>
+              <b>Modèle de données social et temps réel</b
+              ><span
+                >Les événements et les rooms du socket, les tables d'amitié et de messages, la
+                présence dans Redis, les schemas REST et les modules, avec les issues qui parlent de
+                chacun.</span
+              >
+            </div></a
+          >
+        </div>
+      </section>
+
+      <footer>
+        États des issues, personnes assignées et PR liées au 23 novembre 2026, le dernier merge sur
+        main étant la PR #220. Les trois se mettent à jour depuis l'API GitHub au chargement de la
+        page (cache de cinq minutes) ; une PR liée est une PR dont la description dit "closes #N",
+        "fixes #N" ou "resolves #N".
+        <span id="live"></span> Source :
+        <a href="https://github.com/VictorBro/ft_transcendence">VictorBro/ft_transcendence</a> ·
+        <a href="https://github.com/VictorBro/ft_transcendence/milestones">tous les jalons</a>.
+      </footer>
+    </main>
+    <script src="../docs/site/gh-status.js"></script>
+    <script>
+      const repo = 'VictorBro/ft_transcendence';
+      const issueUrl = (n) => 'https://github.com/' + repo + '/issues/' + n;
+      /* Snapshot of each issue: state, assignees, and the PR linked in its Development panel
+   (merged first, then open, then the newest). gh-status.js refreshes all three from the
+   public API on load; this snapshot shows until then, or if GitHub cannot be reached. */
+      const ISSUES = {
+        43: { s: 'closed', a: ['VYAntares'], b: 0, pr: [58, 'VYAntares', 'merged'] },
+        44: { s: 'closed', a: ['VictorBro'], b: 0, pr: [55, 'VictorBro', 'merged'] },
+        45: {
+          s: 'closed',
+          a: ['bastian-schnitzler'],
+          b: 0,
+          pr: [57, 'bastian-schnitzler', 'merged'],
+        },
+        46: { s: 'closed', a: ['luca-mattei'], b: 0, pr: [59, 'luca-mattei', 'merged'] },
+        47: { s: 'closed', a: ['avarrett'], b: 0, pr: [60, 'avarrett', 'merged'] },
+        48: {
+          s: 'closed',
+          a: ['bastian-schnitzler'],
+          b: 0,
+          pr: [71, 'bastian-schnitzler', 'merged'],
+        },
+        49: { s: 'closed', a: ['luca-mattei'], b: 0, pr: [67, 'luca-mattei', 'merged'] },
+        50: { s: 'closed', a: ['avarrett'], b: 0, pr: [104, 'avarrett', 'merged'] },
+        51: { s: 'closed', a: ['VictorBro'], b: 0, pr: [64, 'VictorBro', 'merged'] },
+        52: { s: 'closed', a: ['VictorBro'], b: 0, pr: [99, 'VictorBro', 'merged'] },
+        53: { s: 'closed', a: ['luca-mattei'], b: 0, pr: null },
+        54: { s: 'closed', a: ['VYAntares'], b: 0, pr: [69, 'VYAntares', 'merged'] },
+        76: { s: 'closed', a: ['VictorBro'], b: 0, pr: [139, 'VYAntares', 'merged'] },
+        77: {
+          s: 'closed',
+          a: ['bastian-schnitzler'],
+          b: 0,
+          pr: [103, 'bastian-schnitzler', 'merged'],
+        },
+        78: { s: 'closed', a: ['luca-mattei'], b: 0, pr: [109, 'luca-mattei', 'merged'] },
+        79: { s: 'closed', a: ['luca-mattei'], b: 0, pr: [123, 'luca-mattei', 'merged'] },
+        80: { s: 'closed', a: ['avarrett'], b: 0, pr: [120, 'avarrett', 'merged'] },
+        81: { s: 'closed', a: ['VYAntares'], b: 0, pr: [128, 'VYAntares', 'merged'] },
+        82: { s: 'closed', a: ['luca-mattei'], b: 0, pr: [141, 'luca-mattei', 'merged'] },
+        83: { s: 'closed', a: ['VYAntares'], b: 0, pr: [178, 'VYAntares', 'merged'] },
+        84: {
+          s: 'closed',
+          a: ['bastian-schnitzler'],
+          b: 0,
+          pr: [171, 'bastian-schnitzler', 'merged'],
+        },
+        85: { s: 'closed', a: ['VYAntares'], b: 0, pr: [143, 'VYAntares', 'merged'] },
+        86: {
+          s: 'closed',
+          a: ['bastian-schnitzler'],
+          b: 0,
+          pr: [186, 'bastian-schnitzler', 'merged'],
+        },
+        87: { s: 'closed', a: ['luca-mattei'], b: 0, pr: [196, 'luca-mattei', 'merged'] },
+        88: { s: 'closed', a: ['VictorBro'], b: 0, pr: [122, 'VictorBro', 'merged'] },
+        89: { s: 'closed', a: ['VictorBro'], b: 0, pr: [119, 'VictorBro', 'merged'] },
+        90: { s: 'closed', a: ['VYAntares'], b: 0, pr: [121, 'VYAntares', 'merged'] },
+        91: { s: 'closed', a: ['VYAntares'], b: 0, pr: [185, 'VYAntares', 'merged'] },
+        92: { s: 'closed', a: ['VYAntares'], b: 0, pr: [184, 'VYAntares', 'merged'] },
+        93: { s: 'closed', a: ['VYAntares'], b: 0, pr: [183, 'VYAntares', 'merged'] },
+        94: { s: 'closed', a: ['avarrett'], b: 0, pr: [132, 'avarrett', 'merged'] },
+        95: { s: 'closed', a: ['avarrett'], b: 0, pr: [180, 'avarrett', 'merged'] },
+        96: { s: 'closed', a: ['VYAntares'], b: 0, pr: [202, 'VYAntares', 'merged'] },
+        97: { s: 'closed', a: ['avarrett'], b: 0, pr: [199, 'avarrett', 'merged'] },
+        105: {
+          s: 'closed',
+          a: ['bastian-schnitzler'],
+          b: 0,
+          pr: [107, 'bastian-schnitzler', 'merged'],
+        },
+        106: { s: 'closed', a: ['VYAntares'], b: 0, pr: [125, 'VYAntares', 'merged'] },
+        108: { s: 'closed', a: ['VYAntares'], b: 0, pr: [126, 'VYAntares', 'merged'] },
+        113: { s: 'closed', a: [], b: 0, pr: null },
+        115: { s: 'closed', a: ['luca-mattei', 'avarrett', 'VYAntares'], b: 0, pr: null },
+        116: { s: 'closed', a: ['bastian-schnitzler'], b: 0, pr: null },
+        117: { s: 'closed', a: ['bastian-schnitzler'], b: 0, pr: null },
+        134: { s: 'closed', a: [], b: 0, pr: [140, 'VYAntares', 'merged'] },
+        135: { s: 'closed', a: ['VYAntares'], b: 0, pr: [142, 'VYAntares', 'merged'] },
+        136: { s: 'closed', a: ['VYAntares'], b: 0, pr: [162, 'VYAntares', 'merged'] },
+        137: { s: 'closed', a: [], b: 0, pr: [138, 'VYAntares', 'closed'] },
+        144: {
+          s: 'closed',
+          a: ['bastian-schnitzler'],
+          b: 0,
+          pr: [175, 'bastian-schnitzler', 'merged'],
+        },
+        145: { s: 'closed', a: ['avarrett'], b: 0, pr: [190, 'avarrett', 'merged'] },
+        146: {
+          s: 'closed',
+          a: ['bastian-schnitzler'],
+          b: 0,
+          pr: [192, 'bastian-schnitzler', 'merged'],
+        },
+        147: { s: 'closed', a: ['avarrett'], b: 0, pr: [197, 'bastian-schnitzler', 'merged'] },
+        148: { s: 'closed', a: ['VYAntares'], b: 0, pr: [203, 'VYAntares', 'merged'] },
+        149: {
+          s: 'closed',
+          a: ['bastian-schnitzler'],
+          b: 0,
+          pr: [197, 'bastian-schnitzler', 'merged'],
+        },
+        150: { s: 'closed', a: ['luca-mattei'], b: 0, pr: [201, 'luca-mattei', 'merged'] },
+        151: { s: 'closed', a: ['luca-mattei'], b: 0, pr: [205, 'luca-mattei', 'merged'] },
+        152: { s: 'open', a: ['VYAntares'], b: 0, pr: [215, 'VYAntares', 'open'] },
+        153: {
+          s: 'closed',
+          a: ['bastian-schnitzler'],
+          b: 0,
+          pr: [173, 'bastian-schnitzler', 'merged'],
+        },
+        34: {
+          s: 'closed',
+          a: ['bastian-schnitzler'],
+          b: 0,
+          pr: [172, 'bastian-schnitzler', 'merged'],
+        },
+        204: { s: 'closed', a: ['VYAntares'], b: 0, pr: [206, 'VYAntares', 'merged'] },
+        207: { s: 'closed', a: ['VYAntares'], b: 0, pr: [208, 'VYAntares', 'merged'] },
+        211: { s: 'closed', a: ['luca-mattei'], b: 0, pr: [212, 'luca-mattei', 'merged'] },
+        154: { s: 'closed', a: ['VictorBro'], b: 0, pr: [181, 'VictorBro', 'merged'] },
+        155: { s: 'closed', a: ['VictorBro'], b: 0, pr: [189, 'VictorBro', 'merged'] },
+        156: { s: 'closed', a: ['VictorBro'], b: 0, pr: [193, 'VictorBro', 'merged'] },
+        157: { s: 'closed', a: ['VYAntares'], b: 0, pr: [195, 'VYAntares', 'merged'] },
+        158: { s: 'closed', a: ['VictorBro'], b: 0, pr: [200, 'VictorBro', 'merged'] },
+        159: { s: 'closed', a: ['bastian-schnitzler'], b: 0, pr: null },
+        160: { s: 'open', a: ['VYAntares'], b: 1, pr: null },
+        161: { s: 'open', a: ['VYAntares'], b: 1, pr: null },
+      };
+      const esc = (t) =>
+        String(t).replace(
+          /[&<>"]/g,
+          (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c],
+        );
+      /* Responsible: whoever opened the linked PR, else the first assignee. */
+      const responsible = (i) => (i.pr && i.pr[1]) || i.a[0] || null;
+      /* Closed; else in work when someone is responsible; else ready when no open issue blocks it; else open. */
+      const statusOf = (i) =>
+        i.s === 'closed' ? 'closed' : responsible(i) ? 'work' : i.b === 0 ? 'ready' : 'open';
+      const STATUS_TEXT = { open: 'ouverte', ready: 'prête', work: 'en cours', closed: 'fermée' };
+      const blockText = (i) =>
+        !i || i.s === 'closed' || i.b == null
+          ? ''
+          : i.b
+            ? ', bloquée par ' +
+              i.b +
+              ' issue' +
+              (i.b > 1 ? 's' : '') +
+              ' ouverte' +
+              (i.b > 1 ? 's' : '')
+            : ', pas bloquée';
+      function renderIssues() {
+        document.querySelectorAll('.iss').forEach((el) => {
+          const n = el.dataset.n,
+            i = ISSUES[n];
+          const title = el.dataset.title || el.querySelector('.t').textContent;
+          const st = i ? statusOf(i) : 'open',
+            who = i && responsible(i),
+            pr = i && i.pr;
+          const div = document.createElement('div');
+          div.className = 'iss ' + st;
+          div.dataset.n = n;
+          div.dataset.title = title;
+          div.innerHTML =
+            '<span class="no">#' +
+            n +
+            '</span>' +
+            (who
+              ? '<a class="who" href="https://github.com/' +
+                esc(who) +
+                '" title="Responsable : ' +
+                esc(who) +
+                '"><img src="https://github.com/' +
+                esc(who) +
+                '.png?size=32" alt="" width="16" height="16" loading="lazy"><span>' +
+                esc(who) +
+                '</span></a>'
+              : '') +
+            '<a class="t" href="' +
+            issueUrl(n) +
+            '" title="Issue #' +
+            n +
+            ', ' +
+            STATUS_TEXT[st] +
+            blockText(i) +
+            '">' +
+            esc(title) +
+            '<span class="sr"> (' +
+            STATUS_TEXT[st] +
+            blockText(i) +
+            ')</span></a>' +
+            (pr
+              ? '<a class="pr" href="https://github.com/' +
+                repo +
+                '/pull/' +
+                pr[0] +
+                '" title="PR liée #' +
+                pr[0] +
+                ', ' +
+                ({ merged: 'mergée', open: 'ouverte', closed: 'fermée' }[pr[2]] || pr[2]) +
+                '"><i class="ti ti-git-pull-request" aria-hidden="true"></i>#' +
+                pr[0] +
+                '</a>'
+              : '');
+          el.replaceWith(div);
+        });
+      }
+      /* Issue titles for the hover text on the graph's issue links, as of 23 November 2026; replaced by the live titles. */
+      const GRAPH_TITLES = {
+        76: 'docs: record the lesson, daily goal and streak decisions',
+        77: 'feat(shared): lesson contracts and the content checks',
+        78: "feat: store the learner's time zone",
+        79: 'feat(api): lesson tables, and seed the lessons on every stack',
+        80: 'feat(api): roadmap rules as pure functions',
+        81: 'feat(api): today and all lessons reads, with the lesson search',
+        82: 'feat(api): finish a lesson, meet the goal, keep the streak',
+        83: 'feat(content): lesson authoring kit for Claude Code',
+        84: 'feat(content): French A1 lessons and the ready flag',
+        85: 'feat(api): seed demo learners on development stacks',
+        86: 'feat(web): the daily goal page',
+        87: 'feat(web): the all lessons page, with advanced search',
+        88: 'feat(content): outline the German lessons, A1 to C2',
+        89: 'feat(content): outline the English lessons, A1 to C2',
+        90: 'feat(content): outline the French lessons, A2 to C2',
+        91: 'feat(content): German lessons, A1 to C2',
+        92: 'feat(content): English lessons, A1 to C2',
+        93: 'feat(content): French lessons, A2 to C2',
+        94: 'feat: gamification rules, XP, challenges and achievements',
+        95: 'feat(api): award XP, the daily challenge and achievements',
+        96: 'test(e2e): the roadmap and lesson loop on real lessons',
+        97: 'feat(web): rank, challenge and achievements pages',
+        105: 'feat(content): outline the French A1 lessons',
+        106: 'fix(web): address French learners with tu, as the German messages do with du',
+        108: 'fix(api): send an error code in every error message',
+        113: 'fix: check if randomization in question serving needs seed',
+        115: 'req: design reading lessons',
+        116: 'req: design function lessons',
+        117: 'feat: lesson prototype and final lesson model',
+        134: 'feat(api): seed the lessons from the outlines',
+        135: "feat(shared): port the prototype's lesson schemas and validators",
+        136: 'feat(shared): make the lesson validators work for German and English',
+        137: 'docs: replan Milestone 2, lessons are authored with Claude Code from the prototype model',
+        144: 'feat(shared): the lesson player domain',
+        145: 'feat(api): lesson attempts on the server',
+        146: 'feat(web): the lesson page, the player and the grammar lesson',
+        147: 'feat(web): the vocabulary lesson',
+        148: 'feat(web): the reading lesson',
+        149: 'feat(web): the functions lesson',
+        150: 'feat(api): stream the lesson discussion, with error handling and rate limits',
+        151: 'feat(web): the discussion window before the exam',
+        152: 'docs: reorganise docs/, match Milestone 2, one file per module',
+        153: 'fix(web): wording on shipped pages',
+        34: 'Restore the signup rate limit to 10 per minute',
+        204: "fix(web): the privacy policy's training clause, once the Gemini key is chosen",
+        207: 'fix(shared): address French learners with tu in the player and lesson copy',
+        211: 'fix(web): User.locale follows the interface language',
+        154: 'feat: the WebSocket gateway',
+        155: 'feat: friends',
+        156: 'feat: public profiles',
+        157: 'feat: online status',
+        158: 'feat: direct messages between friends',
+        159: 'test(e2e): Firefox and WebKit',
+        160: 'docs: the README for the evaluation',
+        161: 'docs: defence runbook and rehearsal',
+      };
+      const graphTitle = (n) => '#' + n + ': ' + (GRAPH_TITLES[n] || '');
+      const attr = (t) =>
+        String(t).replace(
+          /[&<>"]/g,
+          (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c],
+        );
+      const linkify = (s) =>
+        s.replace(
+          /#(\d+)/g,
+          (m, n) =>
+            '<a href="' + issueUrl(n) + '" title="' + attr(graphTitle(n)) + '">#' + n + '</a>',
+        );
+
+      /* The dependency graphs: [from, to, critical path, the issue-level links the edge stands for]. */
+      const GRAPHS = [
+        {
+          id: 'g2',
+          m: '2',
+          edges: [
+            ['G1a', 'G2a', true, ['#135 → #84, #144']],
+            ['G2a', 'G3a', true, ['#84, #144 → #145']],
+            ['G3a', 'G4a', true, ['#145 → #146, #150']],
+            ['G4a', 'G5a', true, ['#146 → #147, #149', '#146, #150 → #151']],
+            ['G5a', 'G6', true, ['#147 → #148']],
+            ['G1a', 'G2b', false, ['#135 → #136']],
+            ['G2b', 'G3b', false, ['#136 → #83']],
+            ['G3b', 'G4c', false, ['#83 → #91, #92, #93']],
+            ['G4c', 'G6', false, ['#93 → #148']],
+            ['G2a', 'G4b', false, ['#84 → #85, #86, #87']],
+            ['G1b', 'G4b', false, ['#81, #82, #134 → #85, #86, #87', '#79, #81, #82, #94 → #95']],
+            ['G3a', 'G4b', false, ['#145 → #95']],
+            ['G4b', 'G5b', false, ['#86, #87 → #96', '#86, #95 → #97']],
+            ['G4a', 'G5b', false, ['#146 → #96, #97']],
+          ],
+        },
+        {
+          id: 'g3',
+          m: '3',
+          edges: [
+            ['S1', 'S2', true, ['#154 → #155']],
+            ['S2', 'S3', true, ['#155 → #156, #157, #158']],
+            ['S1', 'S3', false, ['#154 → #157, #158']],
+            ['D1', 'D2', false, ['#159, #160 → #161']],
+          ],
+        },
+      ];
+      GRAPHS.forEach((G) => {
+        G.el = document.getElementById(G.id);
+        G.svg = G.el.querySelector('svg.edges');
+        /* Issue numbers in the nodes become chips coloured by the state shown in the groups list below. */
+        G.el.querySelectorAll('.gn p').forEach((p) => {
+          p.innerHTML = p.textContent
+            .trim()
+            .split(/\s+/)
+            .map((t) => {
+              const n = t.slice(1);
+              return (
+                '<a class="inum" data-n="' +
+                n +
+                '" href="' +
+                issueUrl(n) +
+                '" title="' +
+                attr(graphTitle(n)) +
+                '">#' +
+                n +
+                '</a>'
+              );
+            })
+            .join('');
+        });
+        G.labels = G.edges.map((e) => {
+          const d = document.createElement('div');
+          d.className = 'elbl';
+          d.innerHTML = e[3].map(linkify).join('<br>');
+          G.el.appendChild(d);
+          return d;
+        });
+      });
+      function syncGraphStates() {
+        document.querySelectorAll('.graph a.inum').forEach((a) => {
+          const i = ISSUES[a.dataset.n],
+            st = i ? statusOf(i) : 'open';
+          a.classList.toggle('closed', st === 'closed');
+          a.classList.toggle('work', st === 'work');
+          a.classList.toggle('ready', st === 'ready');
+        });
+      }
+      function drawGraph(G) {
+        const g = G.el.getBoundingClientRect();
+        const box = (id) => {
+          const r = document.getElementById(id).getBoundingClientRect();
+          return {
+            l: r.left - g.left,
+            r: r.right - g.left,
+            t: r.top - g.top,
+            b: r.bottom - g.top,
+            cy: (r.top + r.bottom) / 2 - g.top,
+          };
+        };
+        G.svg.querySelectorAll(':scope>path').forEach((p) => p.remove());
+        G.edges.forEach(([a, b, crit], i) => {
+          const s = box(a),
+            t = box(b);
+          const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+          let x1, y1, x2, y2;
+          if (Math.abs(s.l - t.l) < 2) {
+            /* same column: straight down from the bottom of one node to the top of the next */
+            x1 = x2 = (s.l + s.r) / 2;
+            y1 = s.b;
+            y2 = t.t - 2;
+            p.setAttribute('d', 'M' + x1 + ',' + y1 + ' L' + x2 + ',' + y2);
+          } else {
+            x1 = s.r;
+            y1 = s.cy;
+            x2 = t.l - 2;
+            y2 = t.cy;
+            const dx = Math.max(40, (x2 - x1) * 0.5);
+            p.setAttribute(
+              'd',
+              'M' +
+                x1 +
+                ',' +
+                y1 +
+                ' C' +
+                (x1 + dx) +
+                ',' +
+                y1 +
+                ' ' +
+                (x2 - dx) +
+                ',' +
+                y2 +
+                ' ' +
+                x2 +
+                ',' +
+                y2,
+            );
+          }
+          if (crit) p.setAttribute('class', 'crit');
+          p.setAttribute('marker-end', crit ? 'url(#ahc' + G.m + ')' : 'url(#ah' + G.m + ')');
+          G.svg.appendChild(p);
+          /* label at the curve's midpoint (t = 0.5 of a symmetric cubic) */
+          G.labels[i].style.left = (x1 + x2) / 2 + 'px';
+          G.labels[i].style.top = (y1 + y2) / 2 + 'px';
+        });
+      }
+      const drawGraphs = () => GRAPHS.forEach(drawGraph);
+      renderIssues();
+      drawGraphs();
+      syncGraphStates();
+      if ('ResizeObserver' in window) {
+        const ro = new ResizeObserver(drawGraphs);
+        GRAPHS.forEach((G) => ro.observe(G.el));
+      }
+      addEventListener('load', drawGraphs);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(drawGraphs);
+
+      function setProgress(section) {
+        const chips = [...section.querySelectorAll('.iss')];
+        const closed = chips.filter((c) => c.classList.contains('closed')).length;
+        const total = chips.length;
+        const bar = section.querySelector('.bar');
+        bar.setAttribute('aria-valuenow', closed);
+        bar.setAttribute('aria-valuemax', total);
+        bar.querySelector('span').style.width = (total ? (closed / total) * 100 : 0) + '%';
+        section.querySelector('.prog-t').textContent = closed + ' issues fermées sur ' + total;
+      }
+
+      /* Refresh state, assignees and linked PRs from the public API (gh-status.js); keep the snapshot if it fails or is rate-limited. */
+      document.querySelectorAll('section.ms').forEach(setProgress);
+      (window.ghStatus || Promise.reject(new Error('gh-status.js not loaded')))
+        .then((live) => {
+          Object.keys(ISSUES).forEach((n) => {
+            const g = live[n];
+            if (!g) return;
+            const i = ISSUES[n];
+            i.s = g.s;
+            i.a = g.a;
+            i.pr = g.pr;
+            if (g.b != null) i.b = g.b;
+            if (g.t) GRAPH_TITLES[n] = g.t;
+          });
+          renderIssues();
+          document.querySelectorAll('section.ms').forEach(setProgress);
+          syncGraphStates();
+          document
+            .querySelectorAll('.graph a.inum')
+            .forEach((a) => (a.title = graphTitle(a.dataset.n)));
+          document.getElementById('live').textContent =
+            "La page montre maintenant l'état en direct depuis GitHub.";
+        })
+        .catch(() => {
+          document.getElementById('live').textContent =
+            "GitHub n'a pas pu être joint, donc ceci est l'instantané.";
+        });
+    </script>
+  </body>
+</html>

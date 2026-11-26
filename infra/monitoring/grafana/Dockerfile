@@ -1,6 +1,6 @@
 # Upstream Grafana with the security settings, datasources and dashboards
 # baked in, so dev, CI and the server run the same ones. grafana/grafana, not
-# grafana/grafana-oss, which stopped at 13.0.2 (docs/VERSIONS.md).
+# grafana/grafana-oss, which stopped at 13.0.2 (docs/operations/versions.md).
 FROM grafana/grafana:13.3.1 AS prod
 COPY grafana.ini /etc/grafana/grafana.ini
 COPY provisioning/ /etc/grafana/provisioning/

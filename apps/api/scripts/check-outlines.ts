@@ -110,7 +110,7 @@ function main() {
       if (Object.keys(rawEntry).join() !== order.join()) {
         problems.push(`${at}: keys must be ${order.join(', ')}`);
       }
-      // A lesson can move level and keep its id (LESSONS.md section 5).
+      // A lesson can move level and keep its id (docs/content/lessons.md section 5).
       if (/(^|-)[abc][12](-|$)/.test(entry.id)) problems.push(`${at}: id names a level`);
 
       for (const field of ['workingTitle', 'intent'] as const) {

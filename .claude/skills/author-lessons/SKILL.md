@@ -8,7 +8,7 @@ description: Write the lessons of one level (content/briefs and content/lessons)
 How a member writes lessons in one Claude Code session (#83). The rules are not here: they are
 the validators in `packages/shared/src/lessons/`, and `lessons:check <id> --rules` prints them
 with one lesson that passes, the same text `lessons:author` sends to a model. This file says how
-to work through a level. The quality bar is `docs/LESSONS.md` section 7: a lesson that passes and
+to work through a level. The quality bar is `docs/content/lessons.md` section 7: a lesson that passes and
 has no gross error is good enough.
 
 ## Arguments
@@ -54,6 +54,6 @@ npx prettier --check content/briefs content/lessons
 ## Handing over
 
 Do not commit unless asked. Report the lessons written, the ones that failed with their issues,
-and the time per lesson by kind (`docs/LESSONS.md` section 7 keeps a table of them). A member
+and the time per lesson by kind (`docs/content/lessons.md` section 7 keeps a table of them). A member
 without Claude Code follows the same steps with another model, pasting `--rules` into it, or runs
 `lessons:author` (section 7).

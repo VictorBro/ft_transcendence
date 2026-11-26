@@ -1,6 +1,6 @@
 name: ci
 
-# Hybrid by design (TECHNICAL_PLAN.md section 5): checks that only read files run
+# Hybrid by design (docs/architecture/technical-plan.md section 5): checks that only read files run
 # natively on the runner, because they are fast and their environment does not
 # affect the result. Anything that EXECUTES project code runs inside the `ci`
 # Docker stage, so a test passes here for the same reason it passes in prod.
@@ -27,7 +27,7 @@ env:
   TURBO_TELEMETRY_DISABLED: "1"
 
 jobs:
-  # docs/VERSIONS.md, held back: TypeScript. npm `latest` for typescript is 7.x,
+  # docs/operations/versions.md, held back: TypeScript. npm `latest` for typescript is 7.x,
   # which ships no compiler API until 7.1: typescript-eslint (peer <6.1.0),
   # @nestjs/cli and Next's type check all need it. One `pnpm up --latest`
   # reintroduces it silently, so this is a gate rather than a comment in a doc.
