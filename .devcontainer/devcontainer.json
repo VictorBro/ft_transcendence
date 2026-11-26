@@ -104,7 +104,7 @@
   // and 5.6 on Buildx 0.38, Dev Containers 0.475. Delete the entry, its folder
   // and devcontainer-lock.json (written next to this file once a feature
   // exists, and committed so nobody finds it untracked) when the Dev Containers
-  // CLI allows its own Dockerfile. docs/VERSIONS.md says how to tell.
+  // CLI allows its own Dockerfile. docs/operations/versions.md says how to tell.
   "features": {
     "./features/bake-compat": {}
   },
