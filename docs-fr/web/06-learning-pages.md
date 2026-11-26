@@ -484,7 +484,7 @@ aujourd'hui compris / série de 3 jours, atteins ton objectif du jour pour la ga
 - Si l'objectif est atteint, rien n'est proposé (`next` vaut `undefined`).
 - Sinon, la première leçon proposée (`next`) reçoit le bouton **principal** (« Start »), les autres
   (`rest`) un bouton secondaire. Un badge « Next up » (À suivre) est au-dessus.
-- L'en-tête dit « Daily goal reached » ou « 10 min goal: 1 of 3 lessons », avec une `ProgressBar` (du
+- L'en-tête dit « Daily goal reached » ou « 30 min goal: 1 of 3 lessons », avec une `ProgressBar` (du
   package `@ft/ui`) de `done.length` sur `target`.
 - Les leçons finies sont listées avec `DoneRow`, puis les propositions avec `LessonRow`.
 

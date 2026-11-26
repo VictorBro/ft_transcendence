@@ -356,6 +356,8 @@ its environment changed.
 4. **A real alert, from a scrape.** `docker compose stop api`. Under Alerting, `ApiDown` goes
    pending, then firing after a minute, and Discord gets "[FIRING:1] ApiDown" within about
    2.5 minutes. `docker compose start api`, and "[RESOLVED]" follows within 1 to 2 minutes.
+   Within 15 minutes of `make`, "[FIRING:1] ApiRestarting" follows too: the Playwright restart
+   test already restarted the API once, and this start is the second.
 5. **Delivery health.** On Infrastructure, "Notifications sent and failed" shows failures for
    `discord` flat at 0. A wrong URL fires `AlertNotificationsFailing`, which shows in Grafana,
    with a `reason` label such as `authError`, `rateLimited` or `clientError`.
@@ -505,7 +507,9 @@ subdomain.
 
 ### Checking it by hand
 
-Against the stack `make` started (`-k`: the certificate is Caddy's local CA):
+Against the stack `make` started (`-k`: the certificate is Caddy's local CA). Inside the
+devcontainer, use `https://caddy` instead of `https://localhost`. From the host, add
+`:<HTTPS_PORT>` when it is not 443, as on every 42 machine (section 2):
 
 ```bash
 curl -sk https://localhost/grafana/api/health                                     # 200, "database": "ok"
@@ -585,7 +589,9 @@ agree on the syntax. It never prints a resolved compose config: that would carry
    show `ApiDown`, with `WebCannotReachApi` muted in Discord. With a webhook set, Discord gets
    the message.
 6. `docker compose start api`. The alert resolves, and Discord gets the resolved message within
-   about 1 to 2 minutes.
+   about 1 to 2 minutes. Within 15 minutes of step 1, `ApiRestarting` (warning) fires too once
+   the API is back: the Playwright restart test already restarted it once, and this start is the
+   second.
 
 For "a small live modification": change a threshold or a `for` in `alerts.yml` and its test, run
 `./scripts/check-monitoring-config.sh` and `make up`, and show the changed rule under Alerting.

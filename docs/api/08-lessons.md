@@ -9,6 +9,9 @@ In this chapter:
 - How the AI tutor answers piece by piece with Server-Sent Events (SSE).
 - What the big content specs check in the `content/` folder.
 
+Routes in this chapter are written without the global `/api` prefix ([app.setup.ts](../../apps/api/src/app.setup.ts)):
+`GET /courses/:lang/today` is `GET /api/courses/:lang/today` on the wire.
+
 ## The big picture
 
 The learner opens a course (for example French). The app then shows **today's plan**: lessons already done today,
@@ -82,8 +85,9 @@ export class LessonsModule {}
 - `GatewayModule` gives `SocketsService`: after a finished attempt, the API tells the user's other tabs
   "your course changed" (see [09-social-and-realtime.md](09-social-and-realtime.md)).
 - `LlmModule` gives the AI provider for the tutor (see [06-llm.md](06-llm.md)).
-- `LessonsService` is exported. The demo code ([../../apps/api/src/demo/demo.ts](../../apps/api/src/demo/demo.ts))
-  uses it to replay finished lessons. `AppModule` imports this module.
+- `LessonsService` is exported, but no other module injects it. The demo code
+  ([../../apps/api/src/demo/demo.ts](../../apps/api/src/demo/demo.ts)) builds its own with `new LessonsService(prisma)`
+  to replay finished lessons. `AppModule` imports this module.
 
 ## lessons.dto.ts
 

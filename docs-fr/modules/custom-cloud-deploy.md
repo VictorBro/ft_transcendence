@@ -11,13 +11,13 @@ un autre serveur web occupe déjà les ports HTTPS.
 
 ## Ce que demande le sujet
 
-Le module est une ligne du tableau Modules of choice de
+Le module est une ligne du tableau Modules au choix de
 [../subject/summary.md](../subject/summary.md) :
 
-> | Type  | Module                                                                                                                                                            |
-> | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-> | Major | Custom module, substantial and technically complex, justified in the README (why chosen, what challenges, what value, why 2 points). Trivial features = rejection |
-> | Minor | Same, smaller scope, still requires justification                                                                                                                 |
+> | Type  | Module                                                                                                                                                                                         |
+> | ----- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+> | Major | Module sur mesure, conséquent et techniquement complexe, justifié dans le README (pourquoi ce choix, quelles difficultés, quelle valeur, pourquoi 2 points). Fonctionnalités triviales = refus |
+> | Minor | Pareil, en plus petit, demande quand même une justification                                                                                                                                    |
 
 Le Minor s'appuie sur le Major ("Same as the major module"), donc les deux sont cités plus bas.
 
@@ -66,13 +66,13 @@ où se trouve la preuve.
 | Ce qu'on annonce                                                              | Ce qu'on a construit                                                                                                                                                                                                      | Où                                                                                                                                                          |
 | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Un serveur dans un cloud public                                               | Une instance Oracle Cloud (Ubuntu 24.04) dans la région `eu-zurich-1`, configurée avec les réglages du runbook et pilotée avec l'outil en ligne de commande OCI, avec Docker installé au premier démarrage par cloud-init | [`../operations/deployment.md`](../operations/deployment.md) sections 1 et 2                                                                                |
-| Un pare-feu qui ouvre seulement ce qui est nécessaire                         | La security list du cloud ouvre 80/tcp, 443/tcp et 443/udp. Rien d'autre : Grafana, Prometheus et Alertmanager ne sont jamais ouverts (3000, 9090, 9093)                                                                  | [`../operations/deployment.md`](../operations/deployment.md) section 2                                                                                      |
+| Un pare-feu qui ouvre seulement ce qui est nécessaire                         | La security list du cloud ouvre 22/tcp (SSH, pour l'équipe), 80/tcp, 443/tcp et 443/udp. Rien d'autre : Grafana, Prometheus et Alertmanager ne sont jamais ouverts (3000, 9090, 9093)                                     | [`../operations/deployment.md`](../operations/deployment.md) section 2                                                                                      |
 | Un vrai nom de domaine                                                        | Un enregistrement `A`, `transcendence.dpdns.org` vers `140.238.209.2`, TTL 300                                                                                                                                            | [`../operations/deployment.md`](../operations/deployment.md) section 4                                                                                      |
 | Un certificat de Let's Encrypt, obtenu et renouvelé sans étape manuelle       | Caddy l'obtient tout seul pour `SITE_DOMAIN`, avec `ACME_EMAIL` comme adresse de contact, et le stocke dans le volume `caddy-data`                                                                                        | [`infra/caddy/Caddyfile.prod`](../../infra/caddy/Caddyfile.prod), [`compose.deploy.yml`](../../compose.deploy.yml)                                          |
 | HTTPS seulement                                                               | Le HTTP simple répond `308 Permanent Redirect` vers `https://`. HSTS (un header qui dit au navigateur d'utiliser seulement HTTPS pendant un an) est envoyé dans chaque réponse                                            | `Strict-Transport-Security` dans [`Caddyfile.prod`](../../infra/caddy/Caddyfile.prod)                                                                       |
 | Un serveur qui n'a pas besoin d'une copie du dépôt                            | Trois fichiers sur l'hôte. Chaque image est récupérée depuis le registre public `ghcr.io`, donc il n'y a ni build ni connexion au registre sur le serveur                                                                 | [`compose.deploy.yml`](../../compose.deploy.yml) (commentaire en haut)                                                                                      |
 | Des secrets de production qui ne peuvent pas retomber sur une valeur publique | `SESSION_SECRET`, `POSTGRES_PASSWORD`, `LLM_PROVIDER` et les deux clés Grafana n'ont pas de valeur par défaut : compose refuse de démarrer sans eux                                                                       | `${...:?...}` dans [`compose.deploy.yml`](../../compose.deploy.yml), [`infra/deploy/.env.example`](../../infra/deploy/.env.example)                         |
-| Un deuxième hôte derrière un autre reverse proxy                              | Un fichier overlay : notre Caddy ne publie aucun port et reçoit les requêtes du proxy de l'hôte, qui a le certificat                                                                                                      | [`compose.deploy.proxy.yml`](../../compose.deploy.proxy.yml), [`../operations/deployment.md`](../operations/deployment.md) « Behind another reverse proxy » |
+| Un deuxième hôte derrière un autre reverse proxy                              | Un fichier overlay : notre Caddy ne publie aucun port et reçoit les requêtes du proxy de l'hôte, qui a le certificat                                                                                                      | [`compose.deploy.proxy.yml`](../../compose.deploy.proxy.yml), [`deployment.md`](../operations/deployment.md) « Derrière un autre reverse proxy »            |
 
 ## Comment ça marche
 
@@ -92,8 +92,8 @@ flowchart LR
 1. **DNS.** Le navigateur demande `transcendence.dpdns.org` et reçoit un seul enregistrement `A`, l'adresse
    publique de l'instance Oracle. Il n'y a pas d'enregistrement `AAAA`, ni `www`, ni `MX`,
    exprès ([`deployment.md`](../operations/deployment.md) section 4).
-2. **Le pare-feu du cloud.** La security list d'Oracle laisse entrer seulement 80/tcp, 443/tcp et
-   443/udp. Sur l'instance, Docker publie seulement les ports de Caddy. On ne touche pas au
+2. **Le pare-feu du cloud.** La security list d'Oracle laisse entrer seulement 22/tcp (SSH),
+   80/tcp, 443/tcp et 443/udp. Sur l'instance, Docker publie seulement les ports de Caddy. On ne touche pas au
    `iptables` de l'instance : Docker publie les ports via la chaîne `FORWARD`, et
    vider les règles avec la stack lancée casse le réseau des containers (section 2).
 3. **Caddy.** Le service `caddy` dans [`compose.deploy.yml`](../../compose.deploy.yml)
@@ -255,12 +255,12 @@ qui l'a). Montre les deux si les deux répondent, ou celui qui répond.
    `~/ft_transcendence`, et
    `docker compose -f compose.deploy.yml -f compose.deploy.proxy.yml ps` ne montre
    aucun port publié, puisque le proxy placé devant occupe 80 et 443
-   ([`deployment.md`](../operations/deployment.md) « Behind another reverse proxy »).
+   ([`deployment.md`](../operations/deployment.md) « Derrière un autre reverse proxy »).
 
 6. **Le côté cloud** (en option, il faut une session OCI, voir
    [`deployment.md`](../operations/deployment.md) section 1) : la commande qui liste les instances
-   à la section 2 montre l'instance. Ses règles d'entrée sont celles de la section 2 : 80/tcp,
-   443/tcp et 443/udp.
+   à la section 2 montre l'instance. Ses règles d'entrée sont celles de la section 2 : 22/tcp,
+   80/tcp, 443/tcp et 443/udp.
 
 ## Les tests qui le prouvent
 
@@ -293,13 +293,14 @@ Le script tourne dans le job `monitoring config` de
 
 ## Les défis techniques
 
-- **Un tout petit serveur.** Le modèle utilisé est très probablement `VM.Standard.E2.1.Micro` :
-  1 Go de RAM et une partie d'un seul cœur partagé. Le modèle plus grand `VM.Standard.A1.Flex` est
+- **Un tout petit serveur.** Le modèle que le runbook met en place est `VM.Standard.E2.1.Micro` :
+  1 Go de RAM et une partie d'un seul cœur partagé. Le modèle et la RAM du serveur en ligne
+  ne sont pas encore mesurés. Le modèle plus grand `VM.Standard.A1.Flex` est
   « usually out of host capacity » (en général sans place disponible). L'app prend environ 450 Mo et le monitoring ajoute
   environ 330 à 450 Mo selon l'estimation. On a répondu avec un `mem_limit` strict sur chaque service de monitoring
   (800 Mo en tout), `cpu_shares: 256` pour Prometheus et Grafana pour qu'ils laissent la place
   à l'app, et un fichier de swap de 2 Go ([`deployment.md`](../operations/deployment.md),
-  « Memory »). Le module CI/CD construit les images pour `amd64` et `arm64`
+  « Mémoire »). Le module CI/CD construit les images pour `amd64` et `arm64`
   ([`images.yml`](../../.github/workflows/images.yml)), donc les deux modèles peuvent les faire tourner.
 - **Une autorité de certification avec des limites.** Let's Encrypt n'accepte que quelques
   certificats par domaine et par semaine. Deux règles nous protègent : l'enregistrement DNS doit marcher
@@ -378,7 +379,7 @@ Pourquoi ce n'est pas un Major :
 - **Les changements des fichiers du serveur sont manuels.** Un changement de `compose.deploy.yml` ou de
   `Caddyfile.prod` demande `scp`, `up -d`, et un redémarrage de Caddy, parce que Caddy lit sa
   config seulement au démarrage ([`deployment.md`](../operations/deployment.md),
-  « Automatic deploys »).
+  « Les deploys automatiques »).
 - **L'instance n'est pas décrite en code.** Le runbook donne un tableau de réglages et
   le fichier cloud-init ; il n'y a pas de Terraform ni d'autre infrastructure-as-code pour
   la reconstruire en une commande.

@@ -2,14 +2,15 @@
 
 > Ce dossier explique le code du dossier
 > [`packages/shared/src/lessons/`](../../../../packages/shared/src/lessons/), en français simple.
-> Tu as écrit ce code (PR #142 : portage depuis le prototype ; PR #162 : allemand et anglais).
-> Le but : pouvoir l'expliquer à l'oral, avec tes mots.
+> J'ai porté ce code dans le projet (PR #142 : portage depuis le prototype de Bastian,
+> `bastian-schnitzler/lesson_prototype@928484d` ; PR #162 : allemand et anglais).
+> Le but : pouvoir l'expliquer à l'oral, avec mes mots.
 >
 > Le sous-dossier `player/` (le lecteur de leçon) n'est **pas** couvert ici.
 
 ## Plan de ce dossier
 
-| Fichier | Ce que tu y trouves |
+| Fichier | Ce qu'on y trouve |
 |---|---|
 | [README.md](README.md) | La vue d'ensemble (ce fichier) |
 | [schemas.md](schemas.md) | Chaque schéma Zod, champ par champ |

@@ -183,7 +183,8 @@ In the root [package.json](../../package.json), turbo runs the same script in **
 | git pre-push hook | [.husky/pre-push](../../.husky/pre-push) | Only lint and typecheck, **not** tests (kept fast) |
 
 In CI, the `unit-tests` job builds the `ci` stage of the Dockerfile and runs the tests **inside** that image, so
-"it passes in CI" means "it passes in the same environment as production". The coverage folder is then copied out
+"it passes in CI" means "it passes on the same Node base image as production" (`node:24.22.3-trixie-slim`). The
+production image itself is tested by Playwright ([e2e.yml](../../.github/workflows/e2e.yml)). The coverage folder is then copied out
 and uploaded as an artifact named `coverage-web` (kept 7 days). The CI comment adds: the thresholds are a **merge
 blocker** — the test command itself exits with an error below 60%.
 

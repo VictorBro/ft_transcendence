@@ -72,9 +72,8 @@ Les routes sont dans [`infra/caddy/Caddyfile`](../../infra/caddy/Caddyfile). Les
 containers sont dans [`compose.yml`](../../compose.yml).
 
 La règle que l'équipe suit est écrite dans
-[`../architecture/overview.md`](../architecture/overview.md) : « NestJS owns all
-business logic and data access. Next.js does presentation and SSR only. » (NestJS possède toute
-la logique métier et l'accès aux données ; Next.js fait seulement l'affichage et le SSR.) Le code
+[`../architecture/overview.md`](../architecture/overview.md) : « NestJS possède toute
+la logique métier et l'accès aux données. Next.js fait seulement la présentation et le SSR. » Le code
 la respecte : aucun fichier de `apps/web` n'utilise Prisma (la bibliothèque de base de données), et il n'y a
 pas de server actions (`'use server'`) dans `apps/web`.
 
@@ -255,10 +254,10 @@ suite Playwright, avec le smoke test, tourne dans
 | ------- | --------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Victor  | [VictorBro](https://github.com/VictorBro)                             | La base du projet : l'app Next.js, l'app NestJS, le paquet partagé, Caddy et compose. Puis le premier health check relié à la base de données, et les pages d'auth avec le branchement de la session entre les deux apps. 14 commits dans `apps/web` et 14 dans `apps/api`. | [#2](https://github.com/VictorBro/ft_transcendence/pull/2), [#3](https://github.com/VictorBro/ft_transcendence/pull/3), [#5](https://github.com/VictorBro/ft_transcendence/pull/5) |
 | Bastian | [bastian-schnitzler](https://github.com/bastian-schnitzler)           | Les clients d'API génériques : `apiGet` pour le rendu serveur de Next.js, et `clientGet`, `clientPost`, `clientPut`, `clientPatch`, `clientDelete` pour le navigateur, avec leurs tests. 7 commits dans `apps/web` et 8 dans `apps/api`.                                    | [#45](https://github.com/VictorBro/ft_transcendence/issues/45), [#57](https://github.com/VictorBro/ft_transcendence/pull/57)                                                       |
-| Endrit  | [VYAntares](https://github.com/VYAntares)                             | Le contrat des codes d'erreur dans NestJS : `ErrorCodeFilter` et le pipe de validation basé sur les codes, pour que chaque réponse d'erreur contienne un code que le navigateur traduit. 11 commits dans `apps/web` et 17 dans `apps/api` (sous les noms EA et VYAntares).  | [#108](https://github.com/VictorBro/ft_transcendence/issues/108), [#126](https://github.com/VictorBro/ft_transcendence/pull/126)                                                   |
+| Endrit  | [VYAntares](https://github.com/VYAntares)                             | Le contrat des codes d'erreur dans NestJS : `ErrorCodeFilter` et le pipe de validation basé sur les codes, pour que chaque réponse d'erreur contienne un code que le navigateur traduit. 11 commits dans `apps/web` et 16 dans `apps/api` (sous les noms EA et VYAntares).  | [#108](https://github.com/VictorBro/ft_transcendence/issues/108), [#126](https://github.com/VictorBro/ft_transcendence/pull/126)                                                   |
 | Anaïs   | [avarrett](https://github.com/avarrett) (commits sous le nom ninisse) | Des fonctionnalités construites sur les deux frameworks : 4 commits dans `apps/web` et 8 dans `apps/api`.                                                                                                                                                                   |                                                                                                                                                                                    |
 | Luca    | [luca-mattei](https://github.com/luca-mattei)                         | Des fonctionnalités construites sur les deux frameworks : 9 commits dans `apps/web` et 6 dans `apps/api`.                                                                                                                                                                   |                                                                                                                                                                                    |
 
-Le nombre de commits vient de `git shortlog -sn --no-merges HEAD -- apps/web` et
+Le nombre de commits vient de `git shortlog -sn --no-merges main -- apps/web` et
 `-- apps/api`. Les pull requests sont fusionnées en squash, donc un commit correspond en général à une pull
 request.

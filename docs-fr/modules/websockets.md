@@ -8,9 +8,9 @@ qui passe en ligne, ou un réglage de cours changé dans un autre onglet. Person
 
 ## Ce que demande le sujet
 
-Le module est une ligne du tableau Web modules de [../subject/summary.md](../subject/summary.md) :
+Le module est une ligne du tableau Web de [../subject/summary.md](../subject/summary.md) :
 
-> | Major | Real-time features via WebSockets or similar (updates across clients, graceful dis/reconnect, efficient broadcasting) |
+> | Major | Fonctionnalités temps réel via WebSockets ou équivalent (mises à jour entre clients, déconnexion/reconnexion propre, diffusion efficace) |
 
 Le PDF ([../../docs/subject/ft_transcendence.pdf](../../docs/subject/ft_transcendence.pdf), chapitre IV, Web) le formule ainsi :
 
@@ -224,7 +224,9 @@ sections 1 et 3.
 
 ## Comment le montrer à la soutenance
 
-Lance la stack avec `make run`. Elle affiche l'adresse, `https://localhost`. Utilise deux fenêtres de navigateur
+Lance la stack avec `make run`. Elle affiche l'adresse, `https://localhost`. Si le port 443 n'était
+pas libre, utilise l'adresse que `make run` affiche (par exemple `https://localhost:8443` sur une
+machine de 42). Utilise deux fenêtres de navigateur
 avec des cookies séparés (par exemple une fenêtre normale et une fenêtre privée), pour pouvoir être deux personnes.
 
 **1. Un changement dans un onglet s'affiche dans un autre onglet (même utilisateur).**

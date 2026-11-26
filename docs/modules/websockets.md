@@ -223,7 +223,9 @@ sections 1 and 3.
 
 ## How to show it at the defence
 
-Start the stack with `make run`. It prints the address, `https://localhost`. Use two browser windows
+Start the stack with `make run`. It prints the address, `https://localhost`. If port 443 was not
+free, use the address that `make run` prints (for example `https://localhost:8443` on a 42
+machine). Use two browser windows
 with separate cookies (for example a normal window and a private window), so you can be two people.
 
 **1. A change in one tab shows in another tab (same user).**

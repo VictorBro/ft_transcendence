@@ -249,7 +249,8 @@ another reverse proxy". Use whichever one is up.
 7. Open one `playwright (...)` job of the `e2e` run. Show the steps: start the production
    stack, wait for the proxy, apply migrations, run the suite.
 8. Have a teammate approve, then **Squash and merge**. Show the four workflows starting
-   again on `main`, and the `images` run adding `main-<shortsha>` and `latest`.
+   again on `main`, and the `images` run adding `main-<shortsha>` and `latest`. A fifth run,
+   `pages build and deployment`, is GitHub's own: it publishes `docs/` to GitHub Pages.
 9. On the server, a few minutes later:
    ```bash
    journalctl -u ft-deploy.service -n 50
@@ -381,9 +382,12 @@ it.
 - **A merge reaches the live site with nobody on the server.** About 4 minutes of
   `images`, then at most 5 minutes until the next timer tick. This also covers the
   monitoring config: a new alert rule merged to `main` deploys like code.
-- **Any release can be found and rolled back.** Every `main` commit has a
+- **Any release can be found, and recent ones rolled back.** Every `main` commit has a
   `main-<shortsha>` image. Pinning `IMAGE_TAG` to it in the server's `.env` holds or
-  rolls back the server.
+  rolls back the server, by hand. With the current compose file this works back to the
+  #129 monitoring merge; older tags need that commit's compose file
+  ([`deployment.md`](../operations/deployment.md) "Redeploying"). The database schema does
+  not roll back: migrations only go forward.
 - **The same images run on both processor types.** One image name serves `amd64` and
   `arm64` machines, so the server can be either kind without a change.
 - **New teammates get fast, local feedback.** The hooks and `make all` run the same
@@ -401,7 +405,7 @@ developer's machine to the live server:
 - **18 image jobs per push**: 6 images on 2 architectures, then 6 manifest lists.
   Security scanning with results tracked in the Security tab.
 - **A deploy agent** (`deploy.sh` with a systemd service and timer) that handles a release
-  still being published, failed migrations, retries and rollback, with no credential in
+  still being published, failed migrations and retries, with no credential in
   GitHub.
 - **It has been running for the whole project:** more than 600 runs each of `ci`, `e2e`
   and `images` since 2026-08-07.

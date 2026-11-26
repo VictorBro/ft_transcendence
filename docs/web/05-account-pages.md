@@ -112,7 +112,7 @@ export default function MainLayout({ children }: { children: ReactNode }) {
 
 It gives `Shell` three slots: the app name on the left (`Wordmark`), the header links (`HeaderNav`), and the footer with links to the legal pages (`LegalFooter`). Those components are explained in [03-shell-components.md](03-shell-components.md).
 
-`HeaderNav` has two looks. A visitor sees one row: the language switcher, "Sign in" and "Create account". A signed-in user sees one menu button (`HeaderMenu`). It opens a panel with the language switcher, a link to `/profile` (avatar and name), "Friends", "Messages" and "Log out". The language switcher changes the URL's locale. This layout does not save it: only the `(dashboard)` layout renders `LocaleSync`, which stores it in `User.locale` (chapter 3).
+`HeaderNav` has two looks. A visitor sees one row: the language switcher, "Sign in" and "Create account". A signed-in user sees one menu button (`HeaderMenu`). It opens a panel with the language switcher, a link to `/profile` (avatar and name), "Friends", "Messages" and "Sign out". The language switcher changes the URL's locale. This layout does not save it: only the `(dashboard)` layout renders `LocaleSync`, which stores it in `User.locale` (chapter 3).
 
 The comment explains a choice. Other groups (like the dashboard) use a `fill` shell, where the page fills the screen exactly and the footer is pinned at the bottom. Here the pages are "documents" that can be longer than the screen (the privacy policy, for example), so the footer simply comes after the content.
 
@@ -636,7 +636,7 @@ export function avatarInitial(name: string): string {
 ```
 
 - `avatarHue` is a tiny hash: the same name always gives the same number between 0 and 359, used as a colour hue.
-- `avatarInitial` uses `[...name]` to split by real characters (code points). `name[0]` would cut an emoji or a Chinese character in half, because those take two "code units" in JavaScript strings.
+- `avatarInitial` uses `[...name]` to split by real characters (code points). `name[0]` would cut an emoji (or a rare character outside the BMP) in half, because those take two "code units" in JavaScript strings. A common Chinese character takes only one.
 
 [avatar.test.ts](../../apps/web/lib/avatar.test.ts) checks the upper case, the emoji case, the `'?'` fallback and that the hue is stable.
 

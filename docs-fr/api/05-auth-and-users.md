@@ -2,11 +2,13 @@
 
 Dans ce chapitre :
 
-- La théorie : authentification ou autorisation, hachage des mots de passe, sessions et cookies, 2FA et codes de secours
+- La théorie : authentification ou autorisation, hachage des mots de passe, sessions et cookies, 2FA et codes de récupération
 - Comment une session vit dans Redis et voyage dans un cookie
 - Le dossier `auth/`, fichier par fichier : module, DTOs, controller (chaque route), service, guard, décorateurs, `session.d.ts`, service de double authentification
 - Quatre diagrammes de séquence : inscription, connexion sans 2FA, connexion avec 2FA, déconnexion
 - Le dossier `users/`, fichier par fichier : module, controller (chaque route, avec l'upload d'avatar), DTOs, service, `public-user.ts`, `active-day.ts`
+
+Les routes de ce chapitre sont écrites sans le préfixe global `/api` ([app.setup.ts](../../apps/api/src/app.setup.ts)) : `PATCH /users/me` est `PATCH /api/users/me` sur le réseau.
 
 ---
 
@@ -125,9 +127,9 @@ Cette app utilise le **TOTP** ("Time-based One-Time Password", mot de passe à u
 
 Le code change toutes les 30 secondes, donc un code vu par quelqu'un d'autre devient vite inutile.
 
-### Les codes de secours
+### Les codes de récupération
 
-Si tu perds ton téléphone, tu perds le second facteur. Les **codes de secours** (recovery codes) règlent ce problème.
+Si tu perds ton téléphone, tu perds le second facteur. Les **codes de récupération** (recovery codes) règlent ce problème.
 Quand tu actives la 2FA, l'API te donne 10 codes aléatoires (comme `abcde-fghjk-mnpqr-stuvw`). Tu les notes.
 Chacun peut remplacer un code TOTP **une seule fois**. Le serveur garde seulement un condensé SHA-256 de chaque code, jamais le code lui-même.
 
@@ -241,7 +243,7 @@ Depuis [two-factor.ts](../../packages/shared/src/schemas/two-factor.ts) :
 | ------------------------- | ------------------------------------------------------------------------------- |
 | `TotpCodeSchema`          | exactement 6 chiffres (une chaîne, pour que `012345` garde son zéro au début)   |
 | `RecoveryCodeSchema`      | enlève les espaces et les `-`, passe en minuscules, puis 20 caractères `a-z0-9` |
-| `SecondFactorSchema`      | `{ code }` où code est **soit** un code TOTP **soit** un code de secours        |
+| `SecondFactorSchema`      | `{ code }` où code est **soit** un code TOTP **soit** un code de récupération   |
 | `EnableTwoFactorSchema`   | `{ code }`, TOTP uniquement                                                     |
 | `DisableTwoFactorSchema`  | `{ password }`                                                                  |
 | `TwoFactorSetupSchema`    | réponse : `secret`, `otpauthUri`, `qrDataUrl`                                   |
@@ -259,10 +261,10 @@ Le même fichier contient les constantes `RECOVERY_CODE_COUNT = 10`, `RECOVERY_C
 | ------- | ------------------ | --------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
 | POST    | `/auth/signup`     | `@Public` | signup (20/min)          | Crée le compte, démarre une session, renvoie l'utilisateur (201)                                                                     |
 | POST    | `/auth/login`      | `@Public` | login (5/min)            | Vérifie le mot de passe. Sans 2FA : session + utilisateur (200). Avec 2FA : session en attente + `{ twoFactorRequired: true }` (202) |
-| POST    | `/auth/2fa/verify` | `@Public` | login                    | Termine une connexion en attente avec un code TOTP ou un code de secours                                                             |
+| POST    | `/auth/2fa/verify` | `@Public` | login                    | Termine une connexion en attente avec un code TOTP ou un code de récupération                                                        |
 | GET     | `/auth/2fa`        | session   | —                        | État de la 2FA de mon compte                                                                                                         |
 | POST    | `/auth/2fa/setup`  | session   | —                        | Commence l'inscription : nouveau secret + QR code (409 si la 2FA est déjà active)                                                    |
-| POST    | `/auth/2fa/enable` | session   | login                    | Confirme avec un premier code, active la 2FA, renvoie les codes de secours (409 si la 2FA est déjà active)                           |
+| POST    | `/auth/2fa/enable` | session   | login                    | Confirme avec un premier code, active la 2FA, renvoie les codes de récupération (409 si la 2FA est déjà active)                      |
 | DELETE  | `/auth/2fa`        | session   | login                    | Désactive la 2FA, redemande le mot de passe (204)                                                                                    |
 | POST    | `/auth/logout`     | `@Public` | —                        | Détruit la session, efface le cookie (204)                                                                                           |
 | GET     | `/auth/me`         | session   | —                        | Renvoie l'utilisateur connecté                                                                                                       |
@@ -471,7 +473,7 @@ sequenceDiagram
   B->>C: "POST /auth/2fa/verify { code }"
   C->>R: lit la session, pendingUserId
   C->>T: verifySecondFactor(pendingUserId, code)
-  alt code TOTP ou de secours OK
+  alt code TOTP ou de récupération OK
     T-->>C: true
     C->>S: findById(pendingUserId)
     C->>R: regenerate, save "{ userId }"
@@ -494,7 +496,7 @@ sequenceDiagram
   }
 ```
 
-Les deux ont besoin d'une session. `@CurrentUser()` donne l'utilisateur que le guard a chargé. La page des réglages utilise l'état pour afficher « activée » (avec le nombre de codes de secours restants) ou « désactivée ». Elle ne lit pas `enrolmentPending` : le formulaire du QR code n'apparaît que juste après **Configurer**.
+Les deux ont besoin d'une session. `@CurrentUser()` donne l'utilisateur que le guard a chargé. La page des réglages utilise l'état pour afficher « activée » (avec le nombre de codes de récupération restants) ou « désactivée ». Elle ne lit pas `enrolmentPending` : le formulaire du QR code n'apparaît que juste après **Configurer**.
 Setup répond `409 twoFactor.alreadyEnabled` si la 2FA est déjà active : pour changer d'app d'authentification, tu dois d'abord désactiver la 2FA, et cette étape demande le mot de passe.
 Avant #219 (issue #216), setup écrivait un nouveau secret même quand la 2FA était active. Ça désactivait la 2FA avec une simple session, sans mot de passe.
 Le panneau des réglages ([two-factor-panel.tsx](../../apps/web/app/%5Blocale%5D/%28main%29/settings/2fa/two-factor-panel.tsx)) affiche aussi une ligne de chargement tant que l'état n'est pas connu, et un état en échec affiche une erreur et **Réessayer**, jamais **Configurer**.
@@ -514,9 +516,9 @@ Si setup ou enable répond `409 twoFactor.alreadyEnabled` (2FA activée dans un 
   }
 ```
 
-L'utilisateur tape le premier code de son app. S'il est bon, la 2FA est activée et l'utilisateur reçoit les 10 codes de secours (affichés seulement cette fois-ci).
+L'utilisateur tape le premier code de son app. S'il est bon, la 2FA est activée et l'utilisateur reçoit les 10 codes de récupération (affichés seulement cette fois-ci).
 L'id de session change parce que les privilèges ont changé. La route a une limite de débit parce qu'« un cookie volé ne doit pas devenir un moyen de deviner les codes ».
-Si la 2FA est déjà active, elle répond `409 twoFactor.alreadyEnabled` (#216) : une simple session ne peut pas remplacer les codes de secours du propriétaire.
+Si la 2FA est déjà active, elle répond `409 twoFactor.alreadyEnabled` (#216) : une simple session ne peut pas remplacer les codes de récupération du propriétaire.
 
 ### DELETE /auth/2fa
 
@@ -606,10 +608,10 @@ L'app web l'appelle pour savoir « suis-je connecté, et en tant que qui ? ». L
 ```
 
 Utilisée après l'activation ou la désactivation de la 2FA. Elle se contente de **logger** une erreur au lieu de la lancer : le changement de 2FA est déjà enregistré,
-et les codes de secours doivent quand même arriver à l'utilisateur.
+et les codes de récupération doivent quand même arriver à l'utilisateur.
 
 **Tests :** [auth.controller.spec.ts](../../apps/api/src/auth/auth.controller.spec.ts) vérifie que la déconnexion efface le cookie et ferme les sockets, échoue quand Redis ne peut pas détruire la session,
-que chaque route qui crée un nouvel id de session ferme les sockets de l'ancien id, et que les codes de secours sont renvoyés même quand la rotation échoue.
+que chaque route qui crée un nouvel id de session ferme les sockets de l'ancien id, et que les codes de récupération sont renvoyés même quand la rotation échoue.
 
 ## auth.service.ts
 
@@ -969,7 +971,7 @@ La méthode privée `enable` met elle aussi les conditions dans le `WHERE` :
     });
 ```
 
-Elle active **seulement le secret qui a été vérifié**. Si un autre setup a remplacé le secret entre-temps, ou si deux confirmations arrivent en même temps, `count` vaut 0 et elle lance une erreur (409 ou 400) — donc aucun deuxième lot de codes de secours n'est créé.
+Elle active **seulement le secret qui a été vérifié**. Si un autre setup a remplacé le secret entre-temps, ou si deux confirmations arrivent en même temps, `count` vaut 0 et elle lance une erreur (409 ou 400) — donc aucun deuxième lot de codes de récupération n'est créé.
 
 ### verifySecondFactor (POST /2fa/verify)
 
@@ -991,9 +993,9 @@ Elle active **seulement le secret qui a été vérifié**. Si un autre setup a r
   }
 ```
 
-Six chiffres : on essaie le TOTP. Sinon (ou si le TOTP a échoué) : on l'essaie comme code de secours, après avoir enlevé les espaces et les tirets.
+Six chiffres : on essaie le TOTP. Sinon (ou si le TOTP a échoué) : on l'essaie comme code de récupération, après avoir enlevé les espaces et les tirets.
 
-### Les codes de secours
+### Les codes de récupération
 
 ```ts
   async issueRecoveryCodes(userId: string): Promise<string[]> {
@@ -1022,10 +1024,10 @@ Six chiffres : on essaie le TOTP. Sinon (ou si le TOTP a échoué) : on l'essaie
 
 ### disable (DELETE /2fa)
 
-Vide `totpSecret` et `totpEnabledAt` et supprime tous les codes de secours, en une seule transaction. Donc réactiver la 2FA commence toujours avec un secret tout neuf.
+Vide `totpSecret` et `totpEnabledAt` et supprime tous les codes de récupération, en une seule transaction. Donc réactiver la 2FA commence toujours avec un secret tout neuf.
 
 **Tests :** [two-factor.service.spec.ts](../../apps/api/src/auth/two-factor.service.spec.ts) couvre l'inscription à la 2FA (secret stocké mais pas activé, refus une fois la 2FA active (#216), mauvais code, cas de courses entre requêtes)
-et le second facteur (TOTP actuel accepté, refusé si jamais activé, codes de secours avec ou sans tirets, un code déjà utilisé refusé).
+et le second facteur (TOTP actuel accepté, refusé si jamais activé, codes de récupération avec ou sans tirets, un code déjà utilisé refusé).
 Le test e2e [two-factor.e2e-spec.ts](../../apps/api/test/two-factor.e2e-spec.ts) joue tout le parcours à travers les routes HTTP, y compris les 409 de #216.
 
 ---
@@ -1378,7 +1380,7 @@ flowchart LR
 - `AuthGuard` est **global** (`APP_GUARD`) : chaque route est privée sauf si elle est marquée `@Public()`. Il relit l'utilisateur depuis Postgres à chaque requête.
 - `session.d.ts` utilise la **fusion de déclarations** pour ajouter `userId` et `pendingUserId` au type de `express-session`.
 - Une connexion avec 2FA se fait en deux étapes : `login` remplit `pendingUserId` (202), `2fa/verify` remplit `userId`. Le guard ne fait confiance qu'à `userId`.
-- Les secrets TOTP sont stockés par utilisateur ; les codes de secours sont aléatoires, stockés en condensés SHA-256, à usage unique, vérifiés et consommés dans une seule requête SQL.
+- Les secrets TOTP sont stockés par utilisateur ; les codes de récupération sont aléatoires, stockés en condensés SHA-256, à usage unique, vérifiés et consommés dans une seule requête SQL.
 - La sécurité face aux requêtes simultanées vient des conditions mises dans le `WHERE` d'un seul `updateMany`, et du fait d'attraper `P2002` au lieu de vérifier avant.
 - Avatars : nom de fichier aléatoire, filtre de type, limite de taille, vérification des magic bytes, URL relative, suppression limitée au dossier.
 

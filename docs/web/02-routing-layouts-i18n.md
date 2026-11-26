@@ -183,7 +183,7 @@ flowchart TD
 | URL | File | Group | Note |
 | --- | --- | --- | --- |
 | `/{locale}` | [(main)/page.tsx](<../../apps/web/app/[locale]/(main)/page.tsx>) | (main) | Home (landing page) |
-| `/{locale}/login` | [(main)/login/page.tsx](<../../apps/web/app/[locale]/(main)/login/page.tsx>) | (main) | Log in |
+| `/{locale}/login` | [(main)/login/page.tsx](<../../apps/web/app/[locale]/(main)/login/page.tsx>) | (main) | Sign in |
 | `/{locale}/signup` | [(main)/signup/page.tsx](<../../apps/web/app/[locale]/(main)/signup/page.tsx>) | (main) | Create an account |
 | `/{locale}/onboarding` | [(main)/onboarding/page.tsx](<../../apps/web/app/[locale]/(main)/onboarding/page.tsx>) | (main) | Choose a course and level |
 | `/{locale}/profile` | [(main)/profile/page.tsx](<../../apps/web/app/[locale]/(main)/profile/page.tsx>) | (main) | My profile (signed in) |
@@ -263,8 +263,8 @@ read the session cookie, and reading cookies makes a route dynamic.
   };
 ```
 
-`template` means: when a page sets its own title, like `"Log in"`, the tab shows
-`"Log in | ft_transcendence"`. The product name is the same in all three files, but it still
+`template` means: when a page sets its own title, like `"Sign in"`, the tab shows
+`"Sign in | ft_transcendence"`. The product name is the same in all three files, but it still
 comes from a translation file, because the project rules say no user-facing text may be
 written directly in the code.
 

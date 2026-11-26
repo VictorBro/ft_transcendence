@@ -482,7 +482,7 @@ Reach your daily goal to keep it." `count` goes into an ICU plural message (`{co
 - If the goal is met, nothing is proposed (`next` is `undefined`).
 - Otherwise the first proposed lesson (`next`) gets the **primary** button ("Start"), the others
   (`rest`) a secondary one. A "Next up" badge sits above them.
-- The header says "Daily goal reached" or "10 min goal: 1 of 3 lessons", with a `ProgressBar` (from the
+- The header says "Daily goal reached" or "30 min goal: 1 of 3 lessons", with a `ProgressBar` (from the
   `@ft/ui` package) of `done.length` over `target`.
 - Finished lessons are listed with `DoneRow`, then the proposals with `LessonRow`.
 

@@ -6,7 +6,8 @@ This is a working reference: the PDF remains the authority.
 ## The project
 
 Final Common Core project, **group of 4 to 5 people**. The content is *your* choice: any real-world web app.
-Split into a **mandatory core** + **modules**.
+Split into a **mandatory core** + **modules**. Every member must contribute to both the mandatory
+part and the modules.
 
 ## Team roles (mandatory)
 
@@ -24,13 +25,16 @@ work breakdown, peer code review, decision notes, a chat channel.
 
 ## Mandatory part
 
+The general requirements in this list (III.2) are all required: missing any one of them =
+**project rejected**.
+
 - Web app with **frontend + backend + database**.
 - Git with commits from **all** members, meaningful messages, visible work distribution.
 - **Containerized** (Docker / Podman / equivalent), launched with a **single command**.
 - Compatible with the latest stable **Google Chrome**.
 - **No JS errors or warnings** in the browser console.
 - Accessible **Privacy Policy** and **Terms of Service** pages: real content, reachable
-  (e.g. footer links). Missing or placeholder pages = **project rejected**.
+  (e.g. footer links). Missing, inadequate or placeholder pages = **project rejected**.
 - **Multi-user simultaneous support**: concurrent logins, concurrent actions handled
   correctly, real-time updates propagated, no data corruption or race conditions.
 

@@ -187,7 +187,7 @@ La gateway des sockets l'utilise aussi : elle vérifie que la clé `sess:<id>` d
 ```ts
 /**
  * The one Redis connection. Sessions, presence, the placement run state, and
- * later the generated lesson cache, all share it rather than opening their own.
+ * the lesson discussion's rate limits all share it rather than opening their own.
  */
 @Injectable()
 export class RedisService implements OnModuleInit, OnModuleDestroy {

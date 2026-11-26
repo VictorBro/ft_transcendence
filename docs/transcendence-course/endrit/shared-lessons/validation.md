@@ -402,11 +402,13 @@ en, nom avec un genre         → en nouns have no gender
 ```
 
 Pourquoi l'article **indéfini** en français et **défini** en allemand ?
-Le code le décide dans `TEACHING_ARTICLES`. Le commentaire de `articles.ts` renvoie à une décision `D39` pour le français,
-mais cette décision n'est documentée nulle part ailleurs dans le dépôt.
-Explication pédagogique possible (à dire comme **ton** raisonnement, elle n'est pas écrite dans le code) :
-en français `le/la` devient `l'` devant une voyelle (`l'école`) et cache le genre, alors que `un/une` le montre toujours ;
-en allemand, `der/die/das` montre directement les trois genres.
+Le code le décide dans `TEACHING_ARTICLES`. Le commentaire de `articles.ts` renvoie à la décision `D39` pour le français.
+Elle vient du prototype de Bastian (`bastian-schnitzler/lesson_prototype@928484d`, `docs/SPEC.md`, ligne D39,
+« Exam article policy ») : les noms sont enseignés et examinés avec l'article indéfini partout où il est grammatical,
+car `l'` (élidé devant une voyelle, `l'école`) cache le genre, alors que `un/une` le montre toujours.
+Seules les formes sans article indéfini possible ont une exception (noms propres comme les pays, verbes, nombres…).
+Pour l'allemand, D39 ne dit rien ; mon explication (elle n'est pas écrite dans le code) : `der/die/das` montre
+directement les trois genres.
 
 ---
 

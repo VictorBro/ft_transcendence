@@ -109,7 +109,9 @@ lesson kind, it links to this page with a filter already set, for example
 
 ## How to show it at the defence
 
-1. Start the app with `make run` (or `make`) and open `https://localhost`.
+1. Start the app with `make run` (or `make`) and open `https://localhost`. If port 443 was not
+   free, use the address that `make run` prints (for example `https://localhost:8443` on a 42
+   machine).
 2. Create an account at `/en/signup`: fill **Email**, **Display name**, **Password** and
    **Confirm password**, then click **Create account**. You land on `/en/onboarding`.
 3. Under "Language to learn" pick **Français**, pick a "Daily goal", and click **Next**. Click

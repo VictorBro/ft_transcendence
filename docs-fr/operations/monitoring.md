@@ -356,6 +356,8 @@ son environnement a changé.
 4. **Une vraie alerte, depuis un scrape.** `docker compose stop api`. Sous Alerting, `ApiDown` passe
    en attente (pending), puis active (firing) après une minute, et Discord reçoit "[FIRING:1] ApiDown" en environ
    2,5 minutes. `docker compose start api`, et "[RESOLVED]" suit en 1 à 2 minutes.
+   Dans les 15 minutes qui suivent `make`, "[FIRING:1] ApiRestarting" suit aussi : le test Playwright
+   de redémarrage a déjà redémarré l'API une fois, et ce démarrage est le deuxième.
 5. **La santé de la livraison.** Sur Infrastructure, "Notifications sent and failed" montre les échecs pour
    `discord` à plat sur 0. Une mauvaise URL déclenche `AlertNotificationsFailing`, qui apparaît dans Grafana,
    avec un label `reason` comme `authError`, `rateLimited` ou `clientError`.
@@ -505,7 +507,9 @@ anonyme et un seul compte. Si ça devient important un jour, la solution est un 
 
 ### Le vérifier à la main
 
-Sur la stack que `make` a lancée (`-k` : le certificat vient de la CA locale de Caddy) :
+Sur la stack que `make` a lancée (`-k` : le certificat vient de la CA locale de Caddy). Dans le
+devcontainer, utilise `https://caddy` au lieu de `https://localhost`. Depuis l'hôte, ajoute
+`:<HTTPS_PORT>` quand il n'est pas 443, comme sur chaque machine de 42 (section 2) :
 
 ```bash
 curl -sk https://localhost/grafana/api/health                                     # 200, "database": "ok"
@@ -585,7 +589,9 @@ sont d'accord sur la syntaxe. Elle n'affiche jamais une config compose résolue 
    montrent `ApiDown`, avec `WebCannotReachApi` muet sur Discord. Si un webhook est défini, Discord reçoit
    le message.
 6. `docker compose start api`. L'alerte se résout, et Discord reçoit le message de résolution en
-   environ 1 à 2 minutes.
+   environ 1 à 2 minutes. Dans les 15 minutes qui suivent l'étape 1, `ApiRestarting` (warning) se
+   déclenche aussi quand l'API revient : le test Playwright de redémarrage l'a déjà redémarrée une
+   fois, et ce démarrage est le deuxième.
 
 Pour "une petite modification en direct" : change un seuil ou un `for` dans `alerts.yml` et son test, lance
 `./scripts/check-monitoring-config.sh` et `make up`, et montre la règle modifiée sous Alerting.

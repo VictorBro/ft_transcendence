@@ -263,8 +263,8 @@ aucune page des trois groupes n'est construite à l'avance : chaque layout de gr
   };
 ```
 
-`template` veut dire : quand une page met son propre titre, comme `"Log in"`, l'onglet affiche
-`"Log in | ft_transcendence"`. Le nom du produit est le même dans les trois fichiers, mais il
+`template` veut dire : quand une page met son propre titre, comme `"Sign in"`, l'onglet affiche
+`"Sign in | ft_transcendence"`. Le nom du produit est le même dans les trois fichiers, mais il
 vient quand même d'un fichier de traduction, parce que les règles du projet disent qu'aucun texte visible par l'utilisateur ne peut être
 écrit directement dans le code.
 

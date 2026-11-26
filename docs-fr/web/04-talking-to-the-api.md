@@ -721,7 +721,7 @@ chapitre 3 `log-out-button.tsx`, `locale-sync.tsx`, `time-zone-sync.tsx` (ces de
 `updateProfile`).
 
 **Test :** [auth-client.test.ts](../../apps/web/lib/auth-client.test.ts) vérifie l'inscription, le
-premier code d'un tableau de validation, le code de secours, le login 200 contre 202, l'échec réseau, et
+premier code d'un tableau de validation, le code d'erreur par défaut, le login 200 contre 202, l'échec réseau, et
 les appels qui répondent 204.
 
 ### `courses-client.ts` — commencer un cours, choisir un niveau
@@ -733,7 +733,10 @@ export function startCourse(input: unknown): Promise<ApiResult<Course>> {
   return clientPost(CourseSchema, '/api/courses', input);
 }
 
-/** The endpoint the placement exam also calls: the level has one writer. */
+/**
+ * A level picked by hand. The level has one writer, CoursesService.setLevel:
+ * this route calls it, and the placement exam calls it on the server.
+ */
 export function setCourseLevel(lang: Language, input: unknown): Promise<ApiResult<Course>> {
   return clientPatch(CourseSchema, `/api/courses/${lang}/level`, input);
 }
@@ -742,8 +745,7 @@ export function setCourseLevel(lang: Language, input: unknown): Promise<ApiResul
 « The level has one writer » (le niveau n'a qu'un seul auteur) : chaque changement de niveau finit dans
 la même méthode de l'API, `CoursesService.setLevel`. Cette route l'appelle pour un niveau choisi à la
 main ; l'examen de placement l'appelle directement quand il se termine (`placement.service.ts`), sans
-passer par cette route. Le commentaire du code au-dessus dit encore que l'examen appelle cette route :
-il n'est plus à jour.
+passer par cette route.
 
 Appelants : `onboarding/choose-course.tsx`, `onboarding/choose-level.tsx`, `start-level.tsx`,
 `direct-level-picker.tsx`, `components/change-level.tsx`.

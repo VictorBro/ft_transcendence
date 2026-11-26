@@ -142,7 +142,9 @@ flowchart LR
    `ft_transcendence`: show **Learning** (the seeded question bank by level) and
    **API** (requests and latency by route).
 5. Open **Alerting** and show the 25 rules, grouped as in `alerts.yml`.
-6. Show what is closed, from a terminal:
+6. Show what is closed, from a terminal. Inside the devcontainer, use `https://caddy`
+   instead of `https://localhost`. From the host, add `:<HTTPS_PORT>` when it is not 443, as
+   on every 42 machine:
 
    ```bash
    curl -sk -o /dev/null -w '%{http_code}\n' https://localhost/grafana/api/search    # 401
@@ -155,7 +157,9 @@ flowchart LR
    goes pending, then firing after about a minute. With `DISCORD_WEBHOOK_URL` set,
    Discord gets "[FIRING:1] ApiDown".
 8. `docker compose start api`. The alert resolves within a minute or two, and
-   Discord gets the "[RESOLVED]" message.
+   Discord gets the "[RESOLVED]" message. Within 15 minutes of `make`, `ApiRestarting`
+   (warning) fires too once the API is back: the Playwright restart test already restarted it
+   once, and this start is the second.
 
 A small live change: edit a threshold or a `for` in `alerts.yml` and its test, run
 `./scripts/check-monitoring-config.sh` and `make up`, and show the new rule under
@@ -202,7 +206,7 @@ These limits come from section 10 of
 
 | Member | GitHub | What they built | Issues and PRs |
 | ------ | ------ | --------------- | -------------- |
-| Victor | [VictorBro](https://github.com/VictorBro) | The whole module: Prometheus, Alertmanager, Grafana and the exporters, the four dashboards, the 25 rules and their tests, the API metrics listener, the checks and the guide. Later, the published-port check for a deploy behind another proxy (#131), the WebSocket metrics and panels (in #181, which Endrit co-authored), and new versions of the monitoring images. | [#129](https://github.com/VictorBro/ft_transcendence/issues/129), [#130](https://github.com/VictorBro/ft_transcendence/pull/130), [#131](https://github.com/VictorBro/ft_transcendence/pull/131), [#181](https://github.com/VictorBro/ft_transcendence/pull/181), [#198](https://github.com/VictorBro/ft_transcendence/pull/198) |
+| Victor | [VictorBro](https://github.com/VictorBro) | The whole module: Prometheus, Alertmanager, Grafana and the exporters, the four dashboards, the 25 rules and their tests, the API metrics listener, the checks and the guide. Later, the published-port check for a deploy behind another proxy (#131), the WebSocket metrics and panels (#181), and new versions of the monitoring images. | [#129](https://github.com/VictorBro/ft_transcendence/issues/129), [#130](https://github.com/VictorBro/ft_transcendence/pull/130), [#131](https://github.com/VictorBro/ft_transcendence/pull/131), [#181](https://github.com/VictorBro/ft_transcendence/pull/181), [#198](https://github.com/VictorBro/ft_transcendence/pull/198) |
 | Luca | [luca-mattei](https://github.com/luca-mattei) | The lesson discussion metric (`ft_llm_discussion_limited_total`) and its panel on the Learning dashboard. | [#201](https://github.com/VictorBro/ft_transcendence/pull/201) |
 | Anaïs | [avarrett](https://github.com/avarrett) (commits as ninisse) | The lesson attempt metric, `ft_lesson_attempts_total`. | [#190](https://github.com/VictorBro/ft_transcendence/pull/190) |
 

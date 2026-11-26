@@ -144,7 +144,7 @@ Le code de [apps/api/src](../../apps/api/src) est découpé en **modules** (la s
 | [messages/](../../apps/api/src/messages)                       | `MessagesModule`           | Messages privés : lister les conversations, lire une conversation ; envoyer et marquer comme lu via le socket                            | `/api/conversations`, `/api/conversations/:userId/messages`, événements socket                                                                                        |
 | [demo/](../../apps/api/src/demo)                               | pas de module              | Des apprenants de démo, rejoués jour après jour à travers les vrais services. Lancé par le seed, en dehors de Nest                       | aucune                                                                                                                                                                |
 | [items/](../../apps/api/src/items)                             | pas de module, un test     | `item-files.spec.ts` vérifie les questions de placement écrites à la main dans `content/items`                                           | aucune                                                                                                                                                                |
-| [generated/](../../apps/api/src/generated)                     | pas de module              | Le client Prisma, généré à partir de `schema.prisma`. Jamais modifié à la main                                                           | aucune                                                                                                                                                                |
+| `generated/`                                                   | pas de module              | Le client Prisma, généré à partir de `schema.prisma`, hors de git. Jamais modifié à la main                                              | aucune                                                                                                                                                                |
 
 À côté d'eux, en haut de `src`, il y a les fichiers de démarrage : `main.ts`, `app.setup.ts`, `app.module.ts`, `validation.pipe.ts`, `error-code.filter.ts`. Ils sont au chapitre 2.
 
@@ -640,7 +640,7 @@ Ils configurent la commande `nest`. [nest-cli.json](../../apps/api/nest-cli.json
 - `deleteOutDir: true` : vider `dist` avant chaque build, pour qu'aucun vieux fichier ne reste.
 - `collection` : les modèles utilisés par `nest generate` (pas utilisé par les scripts).
 
-[nest-cli.dev.json](../../apps/api/nest-cli.dev.json) est le même fichier avec `"deleteOutDir": false`. Seul le script `dev` l'utilise. Le fichier ne donne pas de raison ; l'effet est que le mode watch n'efface pas `dist` (ni les infos de build incrémental gardées dedans) à chaque démarrage.
+[nest-cli.dev.json](../../apps/api/nest-cli.dev.json) est le même fichier avec `"deleteOutDir": false`. Seul le script `dev` l'utilise. La raison est dans [compose.override.yml](../../compose.override.yml) (le volume `api-dist`) : en dev, `dist` est un volume Docker monté sur `apps/api/dist`, pour que les fichiers que le conteneur compile en root n'arrivent jamais dans le checkout du dépôt. Un point de montage ne peut pas être supprimé (EBUSY), donc `deleteOutDir: true` y échouerait.
 
 ### 9.3 tsconfig.json et tsconfig.build.json
 
@@ -758,7 +758,7 @@ Points utiles à savoir, chacun expliqué par un commentaire dans le fichier :
 
 ### 9.8 .dockerignore et Dockerfile.dockerignore
 
-Ils listent ce que Docker ne doit **pas** envoyer dans le build : `node_modules`, `dist`, `generated`, `coverage`, les fichiers `.env`, `docs`, `*.md`, etc. Les deux fichiers ont les mêmes règles exprès (seul leur commentaire d'en-tête change) :
+Ils listent ce que Docker ne doit **pas** envoyer dans le build : `node_modules`, `dist`, `generated`, `coverage`, les fichiers `.env`, `docs`, `docs-fr`, `*.md`, etc. Les deux fichiers ont les mêmes règles exprès (seul leur commentaire d'en-tête change) :
 
 ```text
 # BuildKit prefers <dockerfile>.dockerignore over <context>/.dockerignore, which

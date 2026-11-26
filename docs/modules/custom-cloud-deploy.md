@@ -66,7 +66,7 @@ where the proof is.
 | What we claim | What we built | Where |
 | ------------- | ------------- | ----- |
 | A server in a public cloud | An Oracle Cloud instance (Ubuntu 24.04) in the `eu-zurich-1` region, set up with the settings in the runbook and reached with the OCI command-line tool, with Docker installed at first boot by cloud-init | [`../operations/deployment.md`](../operations/deployment.md) sections 1 and 2 |
-| A firewall that opens only what is needed | The cloud security list opens 80/tcp, 443/tcp and 443/udp. Nothing else: Grafana, Prometheus and Alertmanager are never opened (3000, 9090, 9093) | [`../operations/deployment.md`](../operations/deployment.md) section 2 |
+| A firewall that opens only what is needed | The cloud security list opens 22/tcp (SSH, for the team), 80/tcp, 443/tcp and 443/udp. Nothing else: Grafana, Prometheus and Alertmanager are never opened (3000, 9090, 9093) | [`../operations/deployment.md`](../operations/deployment.md) section 2 |
 | A real domain name | An `A` record, `transcendence.dpdns.org` to `140.238.209.2`, TTL 300 | [`../operations/deployment.md`](../operations/deployment.md) section 4 |
 | A certificate from Let's Encrypt, obtained and renewed with no manual step | Caddy gets it on its own for `SITE_DOMAIN`, with `ACME_EMAIL` as the contact address, and stores it in the `caddy-data` volume | [`infra/caddy/Caddyfile.prod`](../../infra/caddy/Caddyfile.prod), [`compose.deploy.yml`](../../compose.deploy.yml) |
 | HTTPS only | Plain HTTP answers `308 Permanent Redirect` to `https://`. HSTS (a header that tells the browser to use only HTTPS for a year) is sent on every answer | `Strict-Transport-Security` in [`Caddyfile.prod`](../../infra/caddy/Caddyfile.prod) |
@@ -92,8 +92,8 @@ flowchart LR
 1. **DNS.** The browser asks for `transcendence.dpdns.org` and gets one `A` record, the
    public address of the Oracle instance. There is no `AAAA`, no `www` and no `MX`
    record, on purpose ([`deployment.md`](../operations/deployment.md) section 4).
-2. **The cloud firewall.** Oracle's security list lets in only 80/tcp, 443/tcp and
-   443/udp. On the instance, Docker publishes only Caddy's ports. The instance's own
+2. **The cloud firewall.** Oracle's security list lets in only 22/tcp (SSH),
+   80/tcp, 443/tcp and 443/udp. On the instance, Docker publishes only Caddy's ports. The instance's own
    `iptables` is left alone: Docker publishes ports through the `FORWARD` chain, and
    flushing the rules with the stack up breaks container networking (section 2).
 3. **Caddy.** The `caddy` service in [`compose.deploy.yml`](../../compose.deploy.yml)
@@ -258,8 +258,8 @@ proxy holds it). Show both if both answer, or the one that does.
 
 6. **The cloud side** (optional, needs an OCI session, see
    [`deployment.md`](../operations/deployment.md) section 1): the instance list command
-   of section 2 shows the instance. Its ingress rules are the ones of section 2: 80/tcp,
-   443/tcp and 443/udp.
+   of section 2 shows the instance. Its ingress rules are the ones of section 2: 22/tcp,
+   80/tcp, 443/tcp and 443/udp.
 
 ## Tests that prove it
 
@@ -292,8 +292,9 @@ The script runs in the `monitoring config` job of
 
 ## The technical challenges
 
-- **A very small server.** The shape in use is most likely `VM.Standard.E2.1.Micro`:
-  1 GB of RAM and a part of one shared core. The larger `VM.Standard.A1.Flex` is
+- **A very small server.** The shape the runbook sets up is `VM.Standard.E2.1.Micro`:
+  1 GB of RAM and a part of one shared core. The shape and RAM of the running server
+  are not measured yet. The larger `VM.Standard.A1.Flex` is
   "usually out of host capacity". The app takes about 450 MB and monitoring adds an
   estimated 330 to 450 MB. We answered with a hard `mem_limit` on every monitoring
   service (800 MB together), `cpu_shares: 256` for Prometheus and Grafana so they yield

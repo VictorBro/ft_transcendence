@@ -17,8 +17,11 @@ words it like this:
 
 > Minor: Server-Side Rendering (SSR) for improved performance and SEO.
 
-No dependency rule in the subject applies to this module. It sits on top of the framework
-module ([framework.md](framework.md)): Next.js is the tool that renders on the server.
+The subject has one rule about this module: "SSR is incompatible with the ICP blockchain
+backend" ([../subject/summary.md](../subject/summary.md), dependency rules). We do not claim
+either blockchain module ([README.md](README.md)), so the rule is met. The module sits on top
+of the framework module ([framework.md](framework.md)): Next.js is the tool that renders on
+the server.
 
 ## How we meet it
 
@@ -111,7 +114,9 @@ Some pages were built so that the server's HTML is enough on its own:
 
 ## How to show it at the defence
 
-1. Start the app with `make run` (or `make`) and open `https://localhost`.
+1. Start the app with `make run` (or `make`) and open `https://localhost`. If port 443 was not
+   free, use the address that `make run` prints (for example `https://localhost:8443` on a 42
+   machine).
 2. **The public page in the HTML.** Open `view-source:https://localhost/en` (or right-click,
    **View Page Source**). Search for "Learn a language with a tutor that adapts to you!": the
    headline is in the HTML the server sent. Also show `<html lang="en"`, the `<title>` and the
@@ -126,7 +131,9 @@ Some pages were built so that the server's HTML is enough on its own:
    server rendered this list for this user.
 6. **Turn JavaScript off.** In Chrome: open the developer tools, press Ctrl+Shift+P (Cmd+Shift+P
    on a Mac), type "Disable JavaScript" and press Enter. Keep the developer tools open: the
-   setting only lasts while they are open. (Firefox: `about:config`, set
+   setting only lasts while they are open. Dock them at the bottom (menu ⋮ > **Dock side**):
+   at the side they make the page narrower, and step 7 needs a page at least 1024 px wide.
+   (Firefox: `about:config`, set
    `javascript.enabled` to `false`.)
 7. Reload `/en/learn/fr` in a window at least 1024 px wide. The day's lessons, the progress,
    the rank line and "Today's challenge" are still there. (In a narrower window the rank and the
@@ -168,8 +175,10 @@ against the production build.
   data out of another user's page. The cost is one render, and a few API calls, per page view.
 - **No performance numbers.** We did not measure load times against a client-only version. The
   claim is the one the subject makes for SSR: the first HTML already holds the content.
-- **SEO is basic.** Titles, a description, `lang` and `robots.txt`. There is no sitemap, no
-  `hreflang` links between the three languages, and no Open Graph tags. Most pages need an
+- **SEO is basic.** Titles, a description, `lang`, `robots.txt`, and the `hreflang` links
+  between the three languages: the `next-intl` middleware in [`proxy.ts`](../../apps/web/proxy.ts)
+  adds a `Link` header with them (`en`, `fr`, `de`, `x-default`) to every page. There is no
+  sitemap and no Open Graph tags. Most pages need an
   account, so they are not meant for search engines anyway.
 - **The HTML also carries the text catalogue.** The root layout passes the whole catalogue of
   the page's language to the client components. This is why the e2e tests check what is shown

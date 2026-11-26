@@ -431,7 +431,7 @@ Step by step:
 
 1. `createZodValidationPipe` (from `nestjs-zod`) makes a pipe class. We only change one option: how to build the error.
 2. When validation fails, Zod gives a `ZodError` with a list of `issues` (one per problem).
-3. For each issue, take `issue.message`. If it is a known code (`isErrorCode`), keep it. If not (for example Zod's English default "Expected string, received number"), use `request.invalid`.
+3. For each issue, take `issue.message`. If it is a known code (`isErrorCode`), keep it. If not (for example Zod's English default "Invalid input: expected string, received number"), use `request.invalid`.
 4. `new Set(...)` removes duplicates: three wrong fields with the same code give one code.
 5. `BadRequestException` (HTTP 400) with this array as `message`.
 

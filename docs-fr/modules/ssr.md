@@ -17,8 +17,11 @@ le formule ainsi :
 
 > Minor: Server-Side Rendering (SSR) for improved performance and SEO.
 
-Aucune règle de dépendance du sujet ne s'applique à ce module. Il repose sur le module
-framework ([framework.md](framework.md)) : Next.js est l'outil qui fait le rendu sur le serveur.
+Le sujet a une règle sur ce module : "SSR is incompatible with the ICP blockchain backend"
+([../subject/summary.md](../subject/summary.md), règles de dépendance). On ne revendique aucun
+des deux modules blockchain ([README.md](README.md)), donc la règle est respectée. Le module
+repose sur le module framework ([framework.md](framework.md)) : Next.js est l'outil qui fait le
+rendu sur le serveur.
 
 ## Comment on y répond
 
@@ -111,7 +114,9 @@ Certaines pages ont été construites pour que le HTML du serveur suffise tout s
 
 ## Comment le montrer à la soutenance
 
-1. Lance l'app avec `make run` (ou `make`) et ouvre `https://localhost`.
+1. Lance l'app avec `make run` (ou `make`) et ouvre `https://localhost`. Si le port 443 n'était pas
+   libre, utilise l'adresse que `make run` affiche (par exemple `https://localhost:8443` sur une
+   machine de 42).
 2. **La page publique dans le HTML.** Ouvre `view-source:https://localhost/en` (ou clic droit,
    **View Page Source**). Cherche "Learn a language with a tutor that adapts to you!" : le
    titre est dans le HTML envoyé par le serveur. Montre aussi `<html lang="en"`, le `<title>` et la
@@ -126,7 +131,9 @@ Certaines pages ont été construites pour que le HTML du serveur suffise tout s
    serveur a fait le rendu de cette liste pour cet utilisateur.
 6. **Désactive JavaScript.** Dans Chrome : ouvre les outils de développement, appuie sur Ctrl+Shift+P (Cmd+Shift+P
    sur Mac), tape "Disable JavaScript" et appuie sur Entrée. Garde les outils de développement ouverts : le
-   réglage ne dure que tant qu'ils sont ouverts. (Firefox : `about:config`, mets
+   réglage ne dure que tant qu'ils sont ouverts. Ancre-les en bas (menu ⋮ > **Dock side**) :
+   sur le côté, ils rendent la page plus étroite, et l'étape 7 demande une page d'au moins
+   1024 px de large. (Firefox : `about:config`, mets
    `javascript.enabled` à `false`.)
 7. Recharge `/en/learn/fr` dans une fenêtre d'au moins 1024 px de large. Les leçons du jour, la
    progression, la ligne du rang et "Today's challenge" sont toujours là. (Dans une fenêtre plus étroite,
@@ -168,8 +175,10 @@ sur le build de production.
   hors de la page d'un autre. Le prix est un rendu, et quelques appels à l'API, par affichage de page.
 - **Pas de chiffres de performance.** On n'a pas mesuré les temps de chargement face à une version uniquement côté client. Ce
   qu'on affirme est ce que le sujet dit du SSR : le premier HTML contient déjà le contenu.
-- **Le SEO est basique.** Des titres, une description, `lang` et `robots.txt`. Il n'y a pas de sitemap, pas de
-  liens `hreflang` entre les trois langues, et pas de balises Open Graph. La plupart des pages demandent un
+- **Le SEO est basique.** Des titres, une description, `lang`, `robots.txt`, et les liens `hreflang`
+  entre les trois langues : le middleware `next-intl` de [`proxy.ts`](../../apps/web/proxy.ts) ajoute
+  à chaque page un header `Link` qui les contient (`en`, `fr`, `de`, `x-default`). Il n'y a pas de
+  sitemap ni de balises Open Graph. La plupart des pages demandent un
   compte, donc elles ne sont de toute façon pas faites pour les moteurs de recherche.
 - **Le HTML transporte aussi le catalogue de textes.** Le layout racine passe tout le catalogue de
   la langue de la page aux client components. C'est pour ça que les tests e2e vérifient ce qui est affiché

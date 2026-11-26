@@ -692,7 +692,10 @@ export function startCourse(input: unknown): Promise<ApiResult<Course>> {
   return clientPost(CourseSchema, '/api/courses', input);
 }
 
-/** The endpoint the placement exam also calls: the level has one writer. */
+/**
+ * A level picked by hand. The level has one writer, CoursesService.setLevel:
+ * this route calls it, and the placement exam calls it on the server.
+ */
 export function setCourseLevel(lang: Language, input: unknown): Promise<ApiResult<Course>> {
   return clientPatch(CourseSchema, `/api/courses/${lang}/level`, input);
 }
@@ -700,8 +703,7 @@ export function setCourseLevel(lang: Language, input: unknown): Promise<ApiResul
 
 "The level has one writer": every level change ends in the same API method, `CoursesService.setLevel`.
 This route calls it for a level picked by hand; the placement exam calls it directly when it ends
-(`placement.service.ts`), without this route. The code comment above still says the exam calls the
-endpoint, which is out of date.
+(`placement.service.ts`), without this route.
 
 Callers: `onboarding/choose-course.tsx`, `onboarding/choose-level.tsx`, `start-level.tsx`,
 `direct-level-picker.tsx`, `components/change-level.tsx`.

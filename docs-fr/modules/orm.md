@@ -8,10 +8,10 @@ avec des appels de fonction normaux et des objets typés, au lieu d'écrire du S
 
 ## Ce que demande le sujet
 
-Le module est une ligne du tableau Web modules de
+Le module est une ligne du tableau Web de
 [../subject/summary.md](../subject/summary.md) :
 
-> | Minor | ORM for the database |
+> | Minor | ORM pour la base de données |
 
 Le PDF ([../../docs/subject/ft_transcendence.pdf](../../docs/subject/ft_transcendence.pdf), chapitre IV, Web) le formule ainsi :
 
@@ -77,14 +77,16 @@ flowchart LR
 ```
 
 - [prisma.service.ts](../../apps/api/src/prisma/prisma.service.ts) est le seul endroit où le client
-  est créé. Il refuse de démarrer si `DATABASE_URL` est vide. Il se connecte quand l'api démarre, pas
-  à la première requête, donc une mauvaise adresse arrête le container tout de suite.
+  est créé. Il refuse de démarrer si `DATABASE_URL` est vide. Il appelle `$connect()` quand l'api
+  démarre, mais avec `@prisma/adapter-pg` cela construit seulement un `pg.Pool`, qui n'ouvre aucune
+  connexion avant sa première requête. Une mauvaise adresse ne se voit donc qu'à la première requête,
+  et `/api/health` indique alors `database` à `down` (#221, corrigé par #222).
 - Le générateur `prisma-client` de Prisma 7 fait un client sans moteur de requêtes à lui. Il a besoin d'un
   adaptateur pour atteindre la base de données, donc le service passe `new PrismaPg({ connectionString })`.
 - [prisma.module.ts](../../apps/api/src/prisma/prisma.module.ts) est marqué `@Global()`, donc chaque
   module de fonctionnalité peut injecter `PrismaService` sans l'importer de nouveau.
 - Seule l'api a un client Prisma. L'app web reçoit ses données à travers l'api
-  ([../architecture/overview.md](../architecture/overview.md), "The rule that explains the rest"),
+  ([../architecture/overview.md](../architecture/overview.md), « La règle qui explique tout le reste »),
   et [scripts/check-app-boundaries.sh](../../scripts/check-app-boundaries.sh) échoue si une app
   compile le code de l'autre.
 
@@ -166,7 +168,7 @@ La stack doit tourner : `make run` la démarre, et `make` (la cible par défaut,
    exemple `20261116224104_add_messages`. Explique que Prisma l'a écrit à partir du schema.
 3. **Un client, un endroit.** Ouvre
    [apps/api/src/prisma/prisma.service.ts](../../apps/api/src/prisma/prisma.service.ts) : l'adaptateur
-   `PrismaPg` et la connexion au démarrage.
+   `PrismaPg` et `$connect()` dans `onModuleInit` (il n'ouvre encore aucune connexion, voir #221).
 4. **Une requête typée.** Ouvre [apps/api/src/auth/auth.service.ts](../../apps/api/src/auth/auth.service.ts),
    `signUp` : `this.prisma.user.create(...)`, et le catch de `P2002`.
 5. **Voir les données.** Lance `make studio` et ouvre `http://127.0.0.1:5555`. C'est Prisma Studio, une
@@ -187,7 +189,7 @@ Appuie sur Ctrl+C pour arrêter Studio.
 
 | Test                                                                       | Ce qu'il vérifie                                                                                                                                                                                                                        |
 | -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [prisma.service.spec.ts](../../apps/api/src/prisma/prisma.service.spec.ts) | Le client se connecte au démarrage et se déconnecte à l'arrêt ; `ping` lance une requête et donne la latence ; un `ping` qui échoue rejette, et c'est l'appelant qui décide ce que ça veut dire.                                                                                           |
+| [prisma.service.spec.ts](../../apps/api/src/prisma/prisma.service.spec.ts) | Le service appelle `$connect()` au démarrage et `$disconnect()` à l'arrêt ; `ping` lance une requête et donne la latence ; un `ping` qui échoue rejette, et c'est l'appelant qui décide ce que ça veut dire.                                                                                           |
 | [health.service.spec.ts](../../apps/api/src/health/health.service.spec.ts) | Le rapport de santé dit `down` sans lever d'erreur quand la sonde de la base échoue, et `degraded` quand elle est lente.                                                                                                                |
 | [test/auth.e2e-spec.ts](../../apps/api/test/auth.e2e-spec.ts)              | "refuses a duplicate email with 409" : la clé unique sur `User.email`.                                                                                                                                                                  |
 | [test/seed.e2e-spec.ts](../../apps/api/test/seed.e2e-spec.ts)              | Les upserts du seed : "running it twice leaves the same row count and id (idempotent upsert)", "refuses to delete a lesson that has a result (Restrict)", "fails on an invalid lesson, names its id and the issue, and writes nothing". |

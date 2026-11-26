@@ -144,7 +144,7 @@ The code in [apps/api/src](../../apps/api/src) is split into **modules** (sectio
 | [messages/](../../apps/api/src/messages) | `MessagesModule` | Direct messages: list conversations, read a conversation; send and mark read over the socket | `/api/conversations`, `/api/conversations/:userId/messages`, socket events |
 | [demo/](../../apps/api/src/demo) | no module | Demo learners, replayed day by day through the real services. Run by the seed, outside Nest | none |
 | [items/](../../apps/api/src/items) | no module, one test | `item-files.spec.ts` checks the authored placement questions in `content/items` | none |
-| [generated/](../../apps/api/src/generated) | no module | The Prisma client, generated from `schema.prisma`. Never edited by hand | none |
+| `generated/` | no module | The Prisma client, generated from `schema.prisma` and kept out of git. Never edited by hand | none |
 
 Next to them, at the top of `src`, are the boot files: `main.ts`, `app.setup.ts`, `app.module.ts`, `validation.pipe.ts`, `error-code.filter.ts`. They are chapter 2.
 
@@ -640,7 +640,7 @@ These configure the `nest` command. [nest-cli.json](../../apps/api/nest-cli.json
 - `deleteOutDir: true`: empty `dist` before each build, so no old file stays behind.
 - `collection`: the templates used by `nest generate` (not used by the scripts).
 
-[nest-cli.dev.json](../../apps/api/nest-cli.dev.json) is the same file with `"deleteOutDir": false`. Only the `dev` script uses it. The file gives no reason; the effect is that watch mode does not wipe `dist` (and the incremental build info kept there) each time it starts.
+[nest-cli.dev.json](../../apps/api/nest-cli.dev.json) is the same file with `"deleteOutDir": false`. Only the `dev` script uses it. The reason is in [compose.override.yml](../../compose.override.yml) (the `api-dist` volume): in dev, `dist` is a Docker volume mounted on `apps/api/dist`, so the files the container builds as root never reach the repo checkout. A mount point cannot be removed (EBUSY), so `deleteOutDir: true` would fail there.
 
 ### 9.3 tsconfig.json and tsconfig.build.json
 
@@ -758,7 +758,7 @@ Points worth knowing, each explained by a comment in the file:
 
 ### 9.8 .dockerignore and Dockerfile.dockerignore
 
-They list what Docker must **not** send into the build: `node_modules`, `dist`, `generated`, `coverage`, `.env` files, `docs`, `*.md`, and so on. The two files have the same rules on purpose (only their header comment differs):
+They list what Docker must **not** send into the build: `node_modules`, `dist`, `generated`, `coverage`, `.env` files, `docs`, `docs-fr`, `*.md`, and so on. The two files have the same rules on purpose (only their header comment differs):
 
 ```text
 # BuildKit prefers <dockerfile>.dockerignore over <context>/.dockerignore, which

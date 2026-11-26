@@ -24,10 +24,10 @@ Accessibility and Internationalization) words it like this:
 > - Consistent UI/UX across all supported browsers.
 
 "Additional" means on top of the browser the mandatory part already asks for. The same file
-lists, under "Mandatory part":
+says, in chapter III.2, General requirements:
 
-> - Compatible with the latest stable **Google Chrome**.
-> - **No JS errors or warnings** in the browser console.
+> - Your website must be compatible with the latest stable version of Google Chrome.
+> - No warnings or errors about the Javascript code should appear in the browser console.
 
 So the two additional browsers must also show no console errors or warnings.
 
@@ -38,7 +38,7 @@ So the two additional browsers must also show no console errors or warnings.
 | At least 2 additional browsers | Firefox and WebKit (Safari's engine), next to Chromium. Playwright (the tool that drives a real browser in our tests) has one "project" per engine: `chromium` (Desktop Chrome), `firefox` (Desktop Firefox) and `webkit` (Desktop Safari). | [e2e/playwright.config.ts](../../e2e/playwright.config.ts) |
 | Fully supported | The app has fixes for things only one engine does (see "How it works"). The console gate (a test that fails on any console error or warning) runs on all three engines. Desktop browsers only, see [Limits and choices](#limits-and-choices). | [e2e/support/console-guard.ts](../../e2e/support/console-guard.ts), [e2e/tests/console.spec.ts](../../e2e/tests/console.spec.ts) |
 | Tested | Every spec file runs on all three engines in CI: 3 engines × 2 parts = 6 jobs, each on its own production stack. A final job, "playwright (production stack)", fails if any of the six did not pass. A few tests run on Chromium only, each with a `test.skip` that gives the reason (see [Limits and choices](#limits-and-choices)). | [.github/workflows/e2e.yml](../../.github/workflows/e2e.yml) |
-| Documented, with the limits of each browser | The README has a "Browser support" section: which engines, how CI runs them, the tests that run on Chromium only (with a link to the list in [Limits and choices](#limits-and-choices)), how to run one engine, and the known limits (no speech voice, mobile browsers not tested). | [README.md](../../README.md#browser-support) |
+| Documented, with the limits of each browser | The README has a "Browser support" section: which engines, how CI runs them, the tests that run on Chromium only (with a link to the list in [Limits and choices](#limits-and-choices)), how to run one engine, and the known limits (no speech voice, real mobile browsers not tested, the 360 px phone width checked on each engine). | [README.md](../../README.md#browser-support) |
 | Consistent UI/UX across browsers | The three engines get the same pages, the same styles and the same tests, with the same checks of what is on screen. The phone-width layout check also runs on each engine. | [e2e/tests/layout.spec.ts](../../e2e/tests/layout.spec.ts), [e2e/tests/layout-gate.spec.ts](../../e2e/tests/layout-gate.spec.ts) |
 
 ## How it works
@@ -123,19 +123,25 @@ without sound ([apps/web/components/lesson/kinds/functions.tsx](../../apps/web/c
    `playwright (firefox, lesson)`, `playwright (firefox, rest)`, `playwright (webkit, lesson)`,
    `playwright (webkit, rest)`, and the gate `playwright (production stack)`, all green.
 3. **The tests, run live.** Inside the devcontainer, with the stack up (after `make` or
-   `make run`):
+   `make run`), and before the rest of the demo:
 
    ```bash
    make playwright BROWSERS="firefox webkit"   # the two additional engines
    make playwright-all                         # or all three, as CI does
-   make report                                 # serves the report on http://127.0.0.1:9323
    ```
 
-   In the report, filter by project (`firefox`, `webkit`) and show the passed tests. Point out the
-   few skipped ones and their reason. A full run takes a while: start it before the other modules.
+   Let the run finish before showing anything else in the app. After a green suite, its last step
+   restarts the API ([e2e/tests/restart.spec.ts](../../e2e/tests/restart.spec.ts)), so a page
+   open at that moment loses the API for a few seconds. The terminal lists every test with its engine,
+   for example `[firefox] ›`: show the passed ones, and point out the few skipped ones (their
+   reasons are in [Limits and choices](#limits-and-choices)). `make report` serves only the last
+   run's report, and every run replaces it: after a green suite, that is the restart run alone,
+   one Chromium test. For each engine's results, use the terminal and the CI jobs of step 2. CI
+   uploads a report (`playwright-report-<browser>-<part>`) only for a job that failed.
 
 4. **By hand.** On the evaluator's machine, open the address `make` printed (for example
-   <https://localhost>) in Firefox, then in Safari if there is a Mac. Open the browser's developer
+   <https://localhost>, or `https://localhost:8443` on a 42 machine where port 443 was not free)
+   in Firefox, then in Safari if there is a Mac. Open the browser's developer
    console. Go to `/en/login`, click **Create one**, sign up and go through the onboarding. Open a
    lesson. The console stays empty. In Firefox, a drag board can be played by dragging the options.
 

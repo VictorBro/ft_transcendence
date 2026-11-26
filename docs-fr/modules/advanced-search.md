@@ -109,7 +109,9 @@ type de leçon, il renvoie vers cette page avec un filtre déjà mis, par exempl
 
 ## Comment le montrer à la soutenance
 
-1. Lance l'app avec `make run` (ou `make`) et ouvre `https://localhost`.
+1. Lance l'app avec `make run` (ou `make`) et ouvre `https://localhost`. Si le port 443 n'était pas
+   libre, utilise l'adresse que `make run` affiche (par exemple `https://localhost:8443` sur une
+   machine de 42).
 2. Crée un compte sur `/en/signup` : remplis **Email**, **Display name**, **Password** et
    **Confirm password**, puis clique sur **Create account**. Tu arrives sur `/en/onboarding`.
 3. Sous « Language to learn », choisis **Français**, choisis un « Daily goal », et clique sur **Next**. Clique

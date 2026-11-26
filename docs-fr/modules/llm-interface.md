@@ -11,10 +11,10 @@ envoyer.
 
 ## Ce que demande le sujet
 
-Le module est une ligne Major dans le tableau Artificial Intelligence modules de
+Le module est une ligne Major dans le tableau Intelligence artificielle de
 [../subject/summary.md](../subject/summary.md) :
 
-> Complete LLM interface: text and/or image generation, streaming, error handling, rate limiting
+> Interface LLM complète : génération de texte et/ou d'images, streaming, gestion des erreurs, limitation de débit
 
 Le PDF ([../../docs/subject/ft_transcendence.pdf](../../docs/subject/ft_transcendence.pdf), chapitre IV, Artificial
 Intelligence) le formule ainsi :
@@ -219,7 +219,9 @@ la démo de la limite de débit. La minute commence au premier message et ne gli
 
 **Partie A : streaming, erreurs et limites, sans clé**
 
-1. Lance l'app avec `make run` (ou `make all`) et ouvre `https://localhost`.
+1. Lance l'app avec `make run` (ou `make all`) et ouvre `https://localhost`. Si le port 443
+   n'était pas libre, utilise l'adresse que `make run` affiche (par exemple `https://localhost:8443`
+   sur une machine de 42).
 2. Crée un compte sur `/en/signup` : remplis **Email**, **Display name**, **Password** et
    **Confirm password**, puis clique sur **Create account**. Tu arrives sur `/en/onboarding`.
 3. Sous "Language to learn", choisis **Français**, choisis un "Daily goal", et clique sur **Next**. Clique sur

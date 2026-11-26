@@ -6,7 +6,8 @@ C'est une référence de travail : le PDF reste la seule autorité.
 ## Le projet
 
 Dernier projet du Common Core, **groupe de 4 à 5 personnes**. Le contenu est _ton_ choix : n'importe quelle app web réaliste.
-Divisé en un **tronc obligatoire** + des **modules**.
+Divisé en un **tronc obligatoire** + des **modules**. Chaque membre doit contribuer à la fois à la
+partie obligatoire et aux modules.
 
 ## Rôles dans l'équipe (obligatoires)
 
@@ -24,14 +25,17 @@ découpage du travail, revue de code entre pairs, notes de décision, un canal d
 
 ## Partie obligatoire
 
+Les exigences générales de cette liste (III.2) sont toutes obligatoires : en manquer une seule =
+**projet refusé**.
+
 - App web avec **frontend + backend + base de données**.
 - Git avec des commits de **tous** les membres, des messages clairs, une répartition du travail visible.
 - **Conteneurisée** (Docker / Podman / équivalent), lancée avec une **seule commande**.
 - Compatible avec la dernière version stable de **Google Chrome**.
 - **Aucune erreur ni warning JS** dans la console du navigateur.
 - Des pages **Privacy Policy** (politique de confidentialité) et **Terms of Service** (conditions d'utilisation)
-  accessibles : vrai contenu, faciles à trouver (par exemple des liens dans le footer). Pages absentes ou
-  bouche-trous = **projet refusé**.
+  accessibles : vrai contenu, faciles à trouver (par exemple des liens dans le footer). Pages absentes,
+  inadaptées ou bouche-trous = **projet refusé**.
 - **Plusieurs utilisateurs en même temps** : connexions simultanées, actions simultanées gérées
   correctement, mises à jour en temps réel propagées, pas de corruption de données ni de race conditions.
 

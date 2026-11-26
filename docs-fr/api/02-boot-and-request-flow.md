@@ -431,7 +431,7 @@ export const CodeValidationPipe = createZodValidationPipe({
 
 1. `createZodValidationPipe` (de `nestjs-zod`) fabrique une classe de pipe. On change une seule option : comment construire l'erreur.
 2. Quand la validation échoue, Zod donne une `ZodError` avec une liste d'`issues` (une par problème).
-3. Pour chaque issue, on prend `issue.message`. Si c'est un code connu (`isErrorCode`), on le garde. Sinon (par exemple le message anglais par défaut de Zod « Expected string, received number »), on utilise `request.invalid`.
+3. Pour chaque issue, on prend `issue.message`. Si c'est un code connu (`isErrorCode`), on le garde. Sinon (par exemple le message anglais par défaut de Zod « Invalid input: expected string, received number »), on utilise `request.invalid`.
 4. `new Set(...)` enlève les doublons : trois champs faux avec le même code donnent un seul code.
 5. `BadRequestException` (HTTP 400) avec ce tableau comme `message`.
 

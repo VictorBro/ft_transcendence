@@ -45,11 +45,11 @@ oci compute instance list --auth security_token --output table \
 
 | Setting | Value |
 | --- | --- |
-| Shape | `VM.Standard.E2.1.Micro` (always available, 1 GB: see [Memory](#memory)). `VM.Standard.A1.Flex` at 2 OCPU / 12 GB is better but usually "out of host capacity" |
+| Shape | `VM.Standard.E2.1.Micro` (always available, 1 GB: see [Memory](#memory); the running server's shape is not measured yet). `VM.Standard.A1.Flex` at 2 OCPU / 12 GB is better but usually "out of host capacity" |
 | Image | Canonical Ubuntu 24.04, architecture matching the shape |
 | Subnet | public, **"Assign a public IPv4 address" = Yes** |
 | SSH | paste your own public key |
-| Ingress | 80/tcp, 443/tcp, 443/udp. Nothing else: Grafana is reached through Caddy on 443, so never open 3000, 9090 or 9093 |
+| Ingress | 22/tcp (SSH, for the `ssh` and `scp` below), 80/tcp, 443/tcp, 443/udp. Nothing else: Grafana is reached through Caddy on 443, so never open 3000, 9090 or 9093 |
 
 Cloud-init, to install Docker at boot. `#cloud-config` must be the first line or the file is
 silently ignored. Set `arch=` to `amd64` or `arm64` to match the shape:
@@ -298,8 +298,8 @@ start, and `up -d` does not recreate caddy for a changed file.
 
 ## Memory
 
-The shape in use is most likely `VM.Standard.E2.1.Micro`: 1 GB of RAM and a fraction of a
-shared core. The app (Postgres, Redis, Next, Nest, Caddy) takes roughly 450 MB, and monitoring
+The shape section 2 sets up is `VM.Standard.E2.1.Micro`: 1 GB of RAM and a fraction of a
+shared core. The shape and RAM of the running server are not measured yet. The app (Postgres, Redis, Next, Nest, Caddy) takes roughly 450 MB, and monitoring
 adds an estimated 330 to 450 MB. Measure before trusting any of it:
 
 ```bash

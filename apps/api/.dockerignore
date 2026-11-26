@@ -9,6 +9,7 @@
 .devcontainer
 .vscode
 docs
+docs-fr
 infra
 certs
 

@@ -6,12 +6,19 @@ chaque dossier doit couvrir le code de cette liste.
 
 ## Comment c'est calculé
 
-- On part des 91 PR fusionnées sur `main`, plus les commits de la branche `docs/152-docs-rework`
-  (pas encore fusionnée).
+- On part des 92 PR fusionnées sur `main`.
+- Six autres PR ont été fusionnées dans la branche d'une autre PR, pas dans `main` : #21 (dans #20),
+  #32 et #33 (dans #29), #100 et #101 (dans #71), #127 (dans #122). Leurs commits arrivent sur `main`
+  avec le squash de cette autre PR, et sont comptés avec elle.
 - Les PR sont squashées, donc le commit sur `main` porte un seul nom. Pour savoir qui a vraiment écrit
   quoi, on relit **les commits d'origine de chaque PR** (`refs/pull/N/head`). Un fichier compte pour une
   personne si un de ses commits d'origine l'a modifié et que le changement est resté dans le squash.
 - Les commits signés `Claude` ou `Copilot` comptent pour l'auteur de la PR (c'est lui qui pilotait).
+- #215 (la réorganisation de `docs/`) compte seulement pour la documentation : tout `docs/`, `README.md` et
+  les autres `.md`, comme `GEMINI_PROVIDER.md` rangé à côté du code. Ailleurs, elle ne change que des
+  commentaires ou des messages (surtout des chemins vers la doc), ce qui ne fait pas de quelqu'un un
+  auteur. Seules exceptions : `.prettierignore` et les quatre `.dockerignore` de `apps/api` et `apps/web`,
+  où elle ajoute une vraie règle (`docs-fr`).
 - Seuls les fichiers qui existent aujourd'hui sont listés. Les fichiers renommés sont suivis jusqu'à leur
   nom actuel.
 - « Touché » veut dire créé ou modifié, même d'une ligne. Ce n'est pas un pourcentage de lignes.
@@ -39,7 +46,7 @@ Pour refaire le calcul : `git fetch origin '+refs/pull/*/head:refs/pr/*'`, puis 
 | Personne | PR (auteur) | PR (a aidé) | Fichiers touchés | dont code (`apps`, `packages`, `e2e`) |
 | --- | ---: | ---: | ---: | ---: |
 | Victor | 23 | 11 | 448 | 333 |
-| Endrit | 27 | 5 | 710 | 262 |
+| Endrit | 28 | 5 | 701 | 263 |
 | Bastian | 21 | 1 | 212 | 165 |
 | Anaïs | 9 | 0 | 88 | 79 |
 | Luca | 11 | 0 | 171 | 159 |
@@ -91,10 +98,10 @@ A aussi écrit des commits dans les PR des autres :
 
 #### API (`apps/api`)
 
-- `apps/api/` : `.dockerignore`, `.gitignore`, `Dockerfile` (Anaïs), `Dockerfile.dockerignore`, `eslint.config.mjs`, `nest-cli.dev.json`, `nest-cli.json`, `package.json` (Anaïs, Endrit, Bastian), `prisma.config.ts` (Endrit), `tsconfig.build.json`, `tsconfig.json` (Endrit), `vitest.config.e2e.mts` (Luca, Anaïs), `vitest.config.mts`
+- `apps/api/` : `.dockerignore` (Endrit), `.gitignore`, `Dockerfile` (Anaïs), `Dockerfile.dockerignore` (Endrit), `eslint.config.mjs`, `nest-cli.dev.json`, `nest-cli.json`, `package.json` (Anaïs, Endrit, Bastian), `prisma.config.ts` (Endrit), `tsconfig.build.json`, `tsconfig.json` (Endrit), `vitest.config.e2e.mts` (Luca, Anaïs), `vitest.config.mts`
 - `apps/api/prisma/` : `schema.prisma` (Endrit, Anaïs, Luca, Bastian), `seed.ts` (Endrit, Luca, Bastian, Anaïs)
 - `apps/api/prisma/migrations/` : `20260807022236_init_user`, `20260809004816_two_factor`, `20261104003255_add_friendships`, `20261106181514_add_user_last_active_day`, `20261116224104_add_messages`, `20261118210619_add_message_unread_index`, `migration_lock.toml`
-- `apps/api/scripts/` : `check-outlines.ts` (Endrit), `try-generation.ts` (Endrit)
+- `apps/api/scripts/` : `check-outlines.ts`, `try-generation.ts` (Endrit)
 - `apps/api/src/` : `app.module.ts` (Endrit, Anaïs, Bastian), `app.setup.ts` (Luca, Anaïs, Endrit), `main.ts`, `validation.pipe.ts` (Endrit)
 - `apps/api/src/auth/` : `auth.controller.spec.ts`, `auth.controller.ts` (Luca, Bastian, Anaïs, Endrit), `auth.decorators.ts`, `auth.dto.ts`, `auth.guard.spec.ts`, `auth.guard.ts` (Endrit), `auth.module.ts`, `auth.service.spec.ts` (Luca), `auth.service.ts` (Luca), `session.d.ts`, `two-factor.service.spec.ts` (Endrit), `two-factor.service.ts` (Luca, Endrit)
 - `apps/api/src/courses/` : `courses.controller.ts` (Anaïs, Endrit, Luca), `courses.module.ts` (Anaïs, Bastian), `courses.service.spec.ts` (Anaïs, Luca), `courses.service.ts` (Anaïs, Endrit, Luca)
@@ -110,7 +117,7 @@ A aussi écrit des commits dans les PR des autres :
 - `apps/api/src/metrics/` : `http-metrics.middleware.spec.ts`, `http-metrics.middleware.ts`, `metrics-server.spec.ts`, `metrics-server.ts`, `metrics.collector.spec.ts`, `metrics.collector.ts`, `metrics.module.ts`, `metrics.spec.ts` (Anaïs), `metrics.ts` (Anaïs, Luca)
 - `apps/api/src/placement/` : `placement-progress.service.spec.ts` (Bastian), `placement-progress.service.ts` (Bastian), `placement-question.service.spec.ts` (Bastian, Endrit), `placement-question.service.ts` (Bastian, Endrit), `placement-session.service.spec.ts` (Bastian), `placement-session.service.ts` (Bastian), `placement.module.ts` (Bastian, Endrit), `placement.schema.ts` (Bastian), `placement.service.spec.ts` (Bastian, Endrit), `placement.service.ts` (Bastian, Endrit)
 - `apps/api/src/prisma/` : `prisma.module.ts`, `prisma.service.spec.ts`, `prisma.service.ts`
-- `apps/api/src/question-generation/` : `QUESTION_GENERATION.md` (Endrit), `question-batch.spec.ts` (Endrit), `question-batch.ts` (Endrit), `question-generation.module.ts` (Endrit), `question-stock.service.spec.ts`, `question-stock.service.ts` (Endrit)
+- `apps/api/src/question-generation/` : `QUESTION_GENERATION.md` (Endrit), `question-batch.spec.ts`, `question-batch.ts` (Endrit), `question-generation.module.ts` (Endrit), `question-stock.service.spec.ts`, `question-stock.service.ts` (Endrit)
 - `apps/api/src/question-generation/prompts/` : `question-batch.prompt.spec.ts`, `question-batch.prompt.ts` (Endrit)
 - `apps/api/src/redis/` : `redis.module.ts`, `redis.service.spec.ts`, `redis.service.ts` (Endrit)
 - `apps/api/src/throttler/` : `identity-throttler.guard.spec.ts` (Endrit), `identity-throttler.guard.ts` (Endrit), `rate-limits.spec.ts`, `rate-limits.ts`, `throttle-by-ip.decorator.ts`
@@ -119,7 +126,7 @@ A aussi écrit des commits dans les PR des autres :
 
 #### Web (`apps/web`)
 
-- `apps/web/` : `.dockerignore`, `Dockerfile`, `Dockerfile.dockerignore`, `eslint.config.mjs`, `next.config.ts` (Endrit, Luca, Bastian), `package.json` (Luca, Bastian, Endrit), `postcss.config.mjs`, `proxy.ts` (Luca), `tsconfig.json`, `vitest.config.mts` (Endrit)
+- `apps/web/` : `.dockerignore` (Endrit), `Dockerfile`, `Dockerfile.dockerignore` (Endrit), `eslint.config.mjs`, `next.config.ts` (Endrit, Luca, Bastian), `package.json` (Luca, Bastian, Endrit), `postcss.config.mjs`, `proxy.ts` (Luca), `tsconfig.json`, `vitest.config.mts` (Endrit)
 - `apps/web/app/` : `globals.css` (Endrit, Luca, Bastian), `icon.svg`
 - `apps/web/app/[locale]/` : `error.tsx` (Luca), `layout.tsx` (Luca), `not-found.tsx` (Luca)
 - `apps/web/app/[locale]/(dashboard)/` : `layout.tsx` (Endrit, Luca)
@@ -164,7 +171,7 @@ A aussi écrit des commits dans les PR des autres :
 
 - `e2e/` : `eslint.config.mjs`, `package.json` (Bastian), `playwright.config.ts` (Bastian, Luca), `tsconfig.json`
 - `e2e/support/` : `console-guard.ts` (Bastian, Luca), `layout.ts` (Luca, Bastian), `live.ts`, `routes.ts` (Endrit, Luca, Anaïs, Bastian), `session.ts` (Endrit, Luca, Bastian), `signup-budget.ts` (Bastian, Luca)
-- `e2e/tests/` : `auth.spec.ts` (Endrit, Luca, Anaïs, Bastian), `avatar.spec.ts`, `console.spec.ts` (Luca), `course.spec.ts` (Luca, Endrit, Bastian), `dashboard.spec.ts` (Endrit, Luca, Bastian), `discussion.spec.ts` (Luca), `friends.spec.ts` (Endrit), `i18n.spec.ts` (Luca, Endrit), `landing.spec.ts` (Bastian), `layout.spec.ts` (Luca), `legal.spec.ts` (Endrit, Luca), `level-complete.spec.ts`, `live.spec.ts` (Bastian), `messages.spec.ts` (Endrit), `monitoring.spec.ts` (Endrit), `onboarding.spec.ts` (Luca, Bastian, Endrit), `placement.spec.ts` (Endrit, Anaïs, Bastian), `restart.spec.ts` (Endrit), `smoke.spec.ts` (Endrit, Luca), `today.spec.ts` (Bastian, Luca)
+- `e2e/tests/` : `auth.spec.ts` (Endrit, Luca, Anaïs, Bastian), `avatar.spec.ts`, `console.spec.ts` (Luca), `course.spec.ts` (Luca, Endrit, Bastian), `dashboard.spec.ts` (Endrit, Luca, Bastian), `discussion.spec.ts` (Luca), `friends.spec.ts` (Endrit), `i18n.spec.ts` (Luca, Endrit), `landing.spec.ts` (Bastian), `layout.spec.ts` (Luca), `legal.spec.ts` (Endrit, Luca), `level-complete.spec.ts`, `live.spec.ts` (Bastian), `messages.spec.ts` (Endrit), `monitoring.spec.ts`, `onboarding.spec.ts` (Luca, Bastian, Endrit), `placement.spec.ts` (Endrit, Anaïs, Bastian), `restart.spec.ts` (Endrit), `smoke.spec.ts` (Endrit, Luca), `today.spec.ts` (Bastian, Luca)
 
 #### Contenu pédagogique (`content/`)
 
@@ -183,12 +190,12 @@ A aussi écrit des commits dans les PR des autres :
 #### Infra, CI et racine du repo
 
 - `.claude/skills/outline-language/` : `SKILL.md` (Endrit), `merge-plan.mjs`
-- `.claude/workflows/` : `outline-language.js` (Endrit)
-- `.devcontainer/` : `Dockerfile` (Bastian), `Dockerfile.dockerignore`, `bash-history.sh`, `devcontainer-lock.json`, `devcontainer.json` (Endrit), `docker-init.sh`, `initialize.sh`, `zshrc` (Bastian)
+- `.claude/workflows/` : `outline-language.js`
+- `.devcontainer/` : `Dockerfile` (Bastian), `Dockerfile.dockerignore`, `bash-history.sh`, `devcontainer-lock.json`, `devcontainer.json`, `docker-init.sh`, `initialize.sh`, `zshrc` (Bastian)
 - `.devcontainer/features/bake-compat/` : `devcontainer-feature.json`, `install.sh`
-- `.github/` : `CODEOWNERS` (Endrit), `commitlint.config.mjs` (Bastian), `pull_request_template.md` (Endrit)
+- `.github/` : `CODEOWNERS`, `commitlint.config.mjs` (Bastian), `pull_request_template.md` (Endrit)
 - `.github/actions/setup/` : `action.yml`
-- `.github/workflows/` : `ci.yml` (Luca, Anaïs, Endrit), `devcontainer.yml`, `e2e.yml` (Bastian), `hygiene.yml`, `images.yml` (Endrit)
+- `.github/workflows/` : `ci.yml` (Luca, Anaïs), `devcontainer.yml`, `e2e.yml` (Bastian), `hygiene.yml`, `images.yml`
 - `.husky/` : `commit-msg`, `pre-commit` (Bastian), `pre-push`
 - `.vscode/` : `extensions.json`, `settings.json`
 - `/` : `.editorconfig`, `.env.example` (Endrit, Luca, Anaïs), `.gitattributes`, `.gitignore` (Endrit, Bastian), `.nvmrc`, `.prettierignore` (Endrit), `.prettierrc`, `CONTRIBUTING.md`, `Makefile` (Bastian, Endrit, Luca), `README.md` (Endrit, Bastian, Luca), `compose.deploy.proxy.yml`, `compose.deploy.yml` (Endrit, Luca), `compose.override.yml` (Bastian), `compose.prod.yml`, `compose.yml` (Anaïs, Luca, Endrit), `package.json`, `pnpm-lock.yaml` (Luca, Anaïs, Bastian, Endrit), `pnpm-workspace.yaml` (Luca, Endrit), `turbo.json`
@@ -196,14 +203,14 @@ A aussi écrit des commits dans les PR des autres :
 - `infra/deploy/` : `.env.example` (Endrit, Luca), `deploy.sh`, `ft-deploy.service`, `ft-deploy.timer`
 - `infra/monitoring/alertmanager/` : `Dockerfile`, `alertmanager.yml`, `entrypoint.sh`, `silent.yml`
 - `infra/monitoring/alertmanager/templates/` : `discord.tmpl`
-- `infra/monitoring/grafana/` : `Dockerfile` (Endrit), `entrypoint.sh`, `grafana.ini`
+- `infra/monitoring/grafana/` : `Dockerfile`, `entrypoint.sh`, `grafana.ini`
 - `infra/monitoring/grafana/dashboards/` : 4 fichiers (aussi : Luca)
 - `infra/monitoring/grafana/provisioning/dashboards/` : `dashboards.yml`
 - `infra/monitoring/grafana/provisioning/datasources/` : `datasources.yml`
-- `infra/monitoring/prometheus/` : `Dockerfile` (Endrit), `prometheus.yml`
-- `infra/monitoring/prometheus/rules/` : `alerts.yml` (Endrit)
-- `infra/monitoring/prometheus/tests/` : `alerts.test.yml` (Endrit)
-- `scripts/` : `assert-ts-version.sh` (Anaïs, Endrit), `check-app-boundaries.sh`, `check-dev-env.sh`, `check-env-example.sh` (Endrit), `check-monitoring-config.sh`, `check-monitoring.sh`, `check-prisma-drift.sh`, `check-prisma-format.sh`, `playwright-in-image.sh`, `pr-title.sh`
+- `infra/monitoring/prometheus/` : `Dockerfile`, `prometheus.yml`
+- `infra/monitoring/prometheus/rules/` : `alerts.yml`
+- `infra/monitoring/prometheus/tests/` : `alerts.test.yml`
+- `scripts/` : `assert-ts-version.sh` (Anaïs), `check-app-boundaries.sh`, `check-dev-env.sh`, `check-env-example.sh` (Endrit), `check-monitoring-config.sh`, `check-monitoring.sh`, `check-prisma-drift.sh`, `check-prisma-format.sh`, `playwright-in-image.sh`, `pr-title.sh`
 
 ## Endrit (`VYAntares`)
 
@@ -236,7 +243,7 @@ A aussi écrit des commits dans les PR des autres :
 - #218 fix(web): #217 check the 2FA turn-off password in the browser
 - #219 fix: #216 refuse 2FA setup and enable while 2FA is on
 - #220 fix(web): header menu, course cards and phone layouts
-- branche `docs/152-docs-rework` (pas encore fusionnée) : réorganisation de `docs/`
+- #215 docs: #152 reorganise docs/, match Milestone 2, one file per module
 
 A aussi écrit des commits dans les PR des autres :
 
@@ -246,14 +253,14 @@ A aussi écrit des commits dans les PR des autres :
 - #104 feat: 50 placement and result
 - #107 feat: 105 fr outline A1
 
-### Ses fichiers (710)
+### Ses fichiers (701)
 
 #### API (`apps/api`)
 
-- `apps/api/` : `package.json` (Victor, Anaïs, Bastian), `prisma.config.ts` (Victor), `tsconfig.json` (Victor)
+- `apps/api/` : `.dockerignore` (Victor), `Dockerfile.dockerignore` (Victor), `package.json` (Victor, Anaïs, Bastian), `prisma.config.ts` (Victor), `tsconfig.json` (Victor)
 - `apps/api/prisma/` : `schema.prisma` (Victor, Anaïs, Luca, Bastian), `seed.ts` (Victor, Luca, Bastian, Anaïs)
 - `apps/api/prisma/migrations/` : `20260913181513_add_user_levels_and_question_bank` (Anaïs), `20260913184446_question_bank_source_id_unique`, `20261024122424_add_lesson_content`
-- `apps/api/scripts/` : `check-outlines.ts` (Victor), `try-generation.ts` (Victor)
+- `apps/api/scripts/` : `try-generation.ts` (Victor)
 - `apps/api/scripts/lessons/` : `author.ts`, `check-draft.ts`, `check.ts`, `complete.ts`, `edits.ts`, `files.ts`, `json.ts`, `prompt.ts`, `reply.ts`, `report.ts`, `times.ts`
 - `apps/api/scripts/lessons/providers/` : `chat.ts`, `claude.ts`
 - `apps/api/src/` : `app.module.ts` (Victor, Anaïs, Bastian), `app.setup.ts` (Victor, Luca, Anaïs), `error-code.filter.ts`, `validation.pipe.ts` (Victor)
@@ -267,7 +274,7 @@ A aussi écrit des commits dans les PR des autres :
 - `apps/api/src/llm/` : `GEMINI_PROVIDER.md` (Victor, Luca), `fixture.provider.spec.ts` (Victor, Luca), `fixture.provider.ts` (Victor, Luca), `gemini.provider.spec.ts` (Victor, Luca), `gemini.provider.ts` (Victor, Luca), `llm.factory.spec.ts` (Victor, Luca), `llm.factory.ts` (Victor, Luca), `llm.module.spec.ts` (Victor), `llm.module.ts` (Victor), `llm.provider.ts` (Victor, Luca)
 - `apps/api/src/placement/` : `placement-question.service.spec.ts` (Victor, Bastian), `placement-question.service.ts` (Victor, Bastian), `placement.module.ts` (Bastian, Victor), `placement.service.spec.ts` (Victor, Bastian), `placement.service.ts` (Bastian, Victor)
 - `apps/api/src/presence/` : `presence.module.ts`, `presence.service.spec.ts`, `presence.service.ts`
-- `apps/api/src/question-generation/` : `QUESTION_GENERATION.md` (Victor), `question-batch.spec.ts` (Victor), `question-batch.ts` (Victor), `question-generation.module.ts` (Victor), `question-stock.service.ts` (Victor)
+- `apps/api/src/question-generation/` : `QUESTION_GENERATION.md` (Victor), `question-batch.ts` (Victor), `question-generation.module.ts` (Victor), `question-stock.service.ts` (Victor)
 - `apps/api/src/question-generation/prompts/` : `question-batch.prompt.ts` (Victor)
 - `apps/api/src/redis/` : `redis.service.ts` (Victor)
 - `apps/api/src/throttler/` : `identity-throttler.guard.spec.ts` (Victor), `identity-throttler.guard.ts` (Victor)
@@ -276,7 +283,7 @@ A aussi écrit des commits dans les PR des autres :
 
 #### Web (`apps/web`)
 
-- `apps/web/` : `next.config.ts` (Victor, Luca, Bastian), `package.json` (Victor, Luca, Bastian), `vitest.config.mts` (Victor)
+- `apps/web/` : `.dockerignore` (Victor), `Dockerfile.dockerignore` (Victor), `next.config.ts` (Victor, Luca, Bastian), `package.json` (Victor, Luca, Bastian), `vitest.config.mts` (Victor)
 - `apps/web/app/` : `globals.css` (Victor, Luca, Bastian), `lesson.css` (Bastian)
 - `apps/web/app/[locale]/(dashboard)/` : `layout.tsx` (Victor, Luca)
 - `apps/web/app/[locale]/(dashboard)/dashboard/` : `page.tsx` (Victor, Luca)
@@ -321,7 +328,7 @@ A aussi écrit des commits dans les PR des autres :
 #### Tests navigateur (`e2e/`)
 
 - `e2e/support/` : `lesson-play.ts` (Bastian, Luca), `menu.ts`, `routes.ts` (Victor, Luca, Anaïs, Bastian), `session.ts` (Victor, Luca, Bastian)
-- `e2e/tests/` : `auth.spec.ts` (Victor, Luca, Anaïs, Bastian), `course.spec.ts` (Victor, Luca, Bastian), `dashboard.spec.ts` (Victor, Luca, Bastian), `friends.spec.ts` (Victor), `i18n.spec.ts` (Luca, Victor), `legal.spec.ts` (Victor, Luca), `locale.spec.ts` (Luca), `messages.spec.ts` (Victor), `monitoring.spec.ts` (Victor), `onboarding.spec.ts` (Victor, Luca, Bastian), `placement.spec.ts` (Victor, Anaïs, Bastian), `restart.spec.ts` (Victor), `roadmap.spec.ts`, `smoke.spec.ts` (Victor, Luca), `time-zone.spec.ts` (Luca, Bastian)
+- `e2e/tests/` : `auth.spec.ts` (Victor, Luca, Anaïs, Bastian), `course.spec.ts` (Victor, Luca, Bastian), `dashboard.spec.ts` (Victor, Luca, Bastian), `friends.spec.ts` (Victor), `i18n.spec.ts` (Luca, Victor), `legal.spec.ts` (Victor, Luca), `locale.spec.ts` (Luca), `messages.spec.ts` (Victor), `onboarding.spec.ts` (Victor, Luca, Bastian), `placement.spec.ts` (Victor, Anaïs, Bastian), `restart.spec.ts` (Victor), `roadmap.spec.ts`, `smoke.spec.ts` (Victor, Luca), `time-zone.spec.ts` (Luca, Bastian)
 
 #### Contenu pédagogique (`content/`)
 
@@ -360,17 +367,10 @@ A aussi écrit des commits dans les PR des autres :
 
 - `.claude/skills/author-lessons/` : `SKILL.md`
 - `.claude/skills/outline-language/` : `SKILL.md` (Victor)
-- `.claude/workflows/` : `outline-language.js` (Victor)
-- `.devcontainer/` : `devcontainer.json` (Victor)
-- `.github/` : `CODEOWNERS` (Victor), `pull_request_template.md` (Victor)
-- `.github/workflows/` : `ci.yml` (Victor, Luca, Anaïs), `images.yml` (Victor)
+- `.github/` : `pull_request_template.md` (Victor)
 - `/` : `.env.example` (Victor, Luca, Anaïs), `.gitignore` (Victor, Bastian), `.prettierignore` (Victor), `Makefile` (Victor, Bastian, Luca), `README.md` (Victor, Bastian, Luca), `compose.deploy.yml` (Victor, Luca), `compose.yml` (Victor, Anaïs, Luca), `pnpm-lock.yaml` (Victor, Luca, Anaïs, Bastian), `pnpm-workspace.yaml` (Victor, Luca)
 - `infra/deploy/` : `.env.example` (Victor, Luca)
-- `infra/monitoring/grafana/` : `Dockerfile` (Victor)
-- `infra/monitoring/prometheus/` : `Dockerfile` (Victor)
-- `infra/monitoring/prometheus/rules/` : `alerts.yml` (Victor)
-- `infra/monitoring/prometheus/tests/` : `alerts.test.yml` (Victor)
-- `scripts/` : `assert-ts-version.sh` (Victor, Anaïs), `check-env-example.sh` (Victor)
+- `scripts/` : `check-env-example.sh` (Victor)
 
 ## Bastian (`bastian-schnitzler`)
 
@@ -533,9 +533,9 @@ A aussi écrit des commits dans les PR des autres :
 
 #### Infra, CI et racine du repo
 
-- `.github/workflows/` : `ci.yml` (Victor, Luca, Endrit)
+- `.github/workflows/` : `ci.yml` (Victor, Luca)
 - `/` : `.env.example` (Victor, Endrit, Luca), `compose.yml` (Victor, Luca, Endrit), `pnpm-lock.yaml` (Victor, Luca, Bastian, Endrit)
-- `scripts/` : `assert-ts-version.sh` (Victor, Endrit)
+- `scripts/` : `assert-ts-version.sh` (Victor)
 
 ## Luca (`luca-mattei`)
 
@@ -615,7 +615,7 @@ A aussi écrit des commits dans les PR des autres :
 
 #### Infra, CI et racine du repo
 
-- `.github/workflows/` : `ci.yml` (Victor, Anaïs, Endrit)
+- `.github/workflows/` : `ci.yml` (Victor, Anaïs)
 - `/` : `.env.example` (Victor, Endrit, Anaïs), `Makefile` (Victor, Bastian, Endrit), `README.md` (Victor, Endrit, Bastian), `compose.deploy.yml` (Victor, Endrit), `compose.yml` (Victor, Anaïs, Endrit), `pnpm-lock.yaml` (Victor, Anaïs, Bastian, Endrit), `pnpm-workspace.yaml` (Victor, Endrit)
 - `infra/deploy/` : `.env.example` (Victor, Endrit)
 - `infra/monitoring/grafana/dashboards/` : 1 fichiers (aussi : Victor)

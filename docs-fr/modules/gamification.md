@@ -8,10 +8,10 @@ page du cours, les résultats des leçons et une page des succès l'affichent.
 
 ## Ce que demande le sujet
 
-Le module est une ligne du tableau Gaming and user experience de
+Le module est une ligne du tableau Jeu et expérience utilisateur de
 [../subject/summary.md](../subject/summary.md) :
 
-> | Minor | Gamification: ≥3 of achievements / badges / leaderboards / XP / daily challenges / rewards, persisted, with visual feedback |
+> | Minor | Gamification : ≥3 parmi succès / badges / classements / XP / défis du jour / récompenses, sauvegardés, avec un retour visuel |
 
 Le PDF ([../../docs/subject/ft_transcendence.pdf](../../docs/subject/ft_transcendence.pdf), chapitre IV, Gaming
 and user experience) le formule comme ceci :

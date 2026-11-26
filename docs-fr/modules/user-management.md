@@ -8,10 +8,10 @@ la page de profil d'un autre utilisateur.
 
 ## Ce que demande le sujet
 
-Le module est une ligne du tableau User Management modules de
+Le module est une ligne du tableau Gestion des utilisateurs de
 [../subject/summary.md](../subject/summary.md) :
 
-> | Major | Standard user management: profile editing, avatar upload (with default), friends + online status, profile page |
+> | Major | Gestion standard des utilisateurs : modification du profil, upload d'avatar (avec un avatar par défaut), amis + statut en ligne, page de profil |
 
 Le PDF ([../../docs/subject/ft_transcendence.pdf](../../docs/subject/ft_transcendence.pdf), chapitre IV, User
 Management) le formule ainsi :
@@ -230,8 +230,9 @@ fenêtre normale et une fenêtre privée.
    La réponse est 400 avec le code `displayName.tooShort`.
 5. De retour sur **Edit profile**, clique sur **Upload avatar** et choisis un PNG, JPEG ou WebP de moins de 2 MiB.
    L'image remplace le cercle, sur la page et dans le menu du header. Le lien dit maintenant **Change avatar**.
-6. Choisis un fichier qui n'est pas une image, par exemple un PDF. La page affiche "That file could not be
-   used as an avatar. Try a PNG, JPEG or WebP." Choisis une image de plus de 2 MiB : "File is too large.
+6. Renomme un PDF en `fake.png` et choisis-le (le choix de fichier ne montre que les PNG, JPEG et WebP).
+   Le serveur lit ses premiers octets et le refuse : la page affiche "That file could not be used as an
+   avatar. Try a PNG, JPEG or WebP." Choisis une image de plus de 2 MiB : "File is too large.
    Maximum size is 2 MiB."
 7. Clique sur **Remove avatar**. Le cercle par défaut revient.
 

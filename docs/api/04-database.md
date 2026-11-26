@@ -36,6 +36,10 @@ DATABASE_URL=postgresql://ft:ft_local_dev@db:5432/ft_transcendence?schema=public
 
 Read it as: user `ft`, password `ft_local_dev`, host `db`, port `5432`, database `ft_transcendence`.
 
+These are local development defaults: [compose.yml](../../compose.yml) and the `Makefile` fall back
+to them. [compose.deploy.yml](../../compose.deploy.yml) has no default for these two secrets: it refuses to start
+if `POSTGRES_PASSWORD` or `SESSION_SECRET` is unset or empty.
+
 ### Tables, rows and columns
 
 Think of a database as a **binder of spreadsheets**.
@@ -379,8 +383,9 @@ One row per account.
 - `email` and `displayName` are both `@unique`: two accounts cannot share either. The sign-up code
   relies on this (section 7, example 1).
 - `passwordHash`: never the password itself, only its argon2 hash (chapter 5).
-- `locale`: the language of the interface (`en`, `fr`, `de`). It is set at sign-up, and the web app
-  saves it again with `PATCH /api/users/me` when the URL's language differs from it (#211).
+- `locale`: the language of the interface (`en`, `fr`, `de`). It starts as `en`, the schema default:
+  the API accepts a `locale` at sign-up, but the web form does not send one. Then, once a dashboard
+  page loads, the web app saves the URL's language with `PATCH /api/users/me` when it differs (#211).
   The lesson tutor reads it to answer in that language. `activeLang`: the course the user
   is learning right now (null before the first course).
 - `timeZone`: an IANA name like `Europe/Paris`, used to know when "today" starts for the streak.
@@ -399,9 +404,10 @@ not columns. Note the names in `@relation("FriendshipRequester")`: `User` has *t
 
 ```prisma
 // Single-use fallback when the authenticator is lost. Stored as a SHA-256 digest
-// rather than argon2: the codes are 160 bits of randomness, so there is nothing
-// to brute force, and a plain digest lets a login check one indexed lookup
-// instead of ten argon2 verifications.
+// rather than argon2: the codes are about 99 bits of randomness (20 characters
+// from a 31-character alphabet), so there is nothing to brute force, and a plain
+// digest lets a login check one indexed lookup instead of ten argon2
+// verifications.
 model RecoveryCode {
   id        String    @id @default(uuid()) @db.Uuid
   userId    String    @db.Uuid
@@ -699,6 +705,9 @@ other value.
 | `LessonKind` | `grammar`, `vocabulary`, `functions`, `reading` | `Lesson.kind` |
 | `Theme` | 14 themes (`daily_life`, `travel`, `food_and_drink`, ...) | `Lesson.theme` |
 | `FriendshipStatus` | `pending`, `accepted` | `Friendship.status` |
+
+`role` is stored and sent back with the user, but no route checks it and nothing sets `ADMIN`:
+every account is `USER` (the default), and `UpdateProfileSchema` does not accept `role` (chapter 5).
 
 `Locale` and `Language` have the same values but mean different things (the interface language
 versus the course language), so they are two types. The schema explains why the list is in the

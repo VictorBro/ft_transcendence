@@ -230,9 +230,10 @@ normal window and a private window.
    The answer is 400 with the code `displayName.tooShort`.
 5. Back on **Edit profile**, click **Upload avatar** and pick a PNG, JPEG or WebP under 2 MiB. The
    picture replaces the circle, on the page and in the header menu. The link now says **Change avatar**.
-6. Pick a file that is not an image, for example a PDF. The page shows "That file could not be
-   used as an avatar. Try a PNG, JPEG or WebP." Pick an image over 2 MiB: "File is too large.
-   Maximum size is 2 MiB."
+6. Rename a PDF to `fake.png` and pick it (the file picker only shows PNG, JPEG and WebP files).
+   The server reads its first bytes and refuses it: the page shows "That file could not be used
+   as an avatar. Try a PNG, JPEG or WebP." Pick an image over 2 MiB: "File is too large. Maximum
+   size is 2 MiB."
 7. Click **Remove avatar**. The default circle comes back.
 
 **Friends, the profile page and online status (both windows)**

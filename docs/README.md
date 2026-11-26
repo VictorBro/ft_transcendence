@@ -21,7 +21,7 @@ stays intact, and a name starting with `_` is not skipped.
 | [operations/](operations/deployment.md)                 | How do we run, deploy, monitor and update it?                                       |
 | [content/](content/lessons.md)                          | What are the lessons and placement questions, and how are they written and loaded?  |
 | [subject/](subject/summary.md)                          | What does the 42 subject require?                                                   |
-| [transcendence-course/](transcendence-course/README.md) | What did each team member build, explained in their own words for the defence?      |
+| [transcendence-course/](transcendence-course/README.md) | What did each team member build, explained in their own words for the defence? Only endrit/ is written so far. |
 | [site/](site/milestone1-data-model.html)                | The pages and script behind the GitHub Pages site                                   |
 
 ## Every document
@@ -93,7 +93,7 @@ stays intact, and a name starting with `_` is not skipped.
 
 | Document                                                         | What it covers                                                                                                                                                                                                                                                                                        |
 | ---------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [transcendence-course/README.md](transcendence-course/README.md) | How the folder works, and one folder per member: [victor/](transcendence-course/victor/README.md), [endrit/](transcendence-course/endrit/README.md), [anais/](transcendence-course/anais/README.md), [luca/](transcendence-course/luca/README.md), [bastian/](transcendence-course/bastian/README.md) |
+| [transcendence-course/README.md](transcendence-course/README.md) | How the folder works, and one folder per member: [victor/](transcendence-course/victor/README.md), [endrit/](transcendence-course/endrit/README.md), [anais/](transcendence-course/anais/README.md), [luca/](transcendence-course/luca/README.md), [bastian/](transcendence-course/bastian/README.md). Only endrit/ is written so far; the other four say "Not written yet" |
 
 ### site/
 

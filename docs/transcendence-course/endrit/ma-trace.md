@@ -1,39 +1,35 @@
 # Ma trace dans ft_transcendence — EA (VYAntares)
 
 > Résumé tiré d'une ancienne analyse `CODE_OWNERSHIP.md` de `origin/main` au 2026-11-05 (ce fichier n'est pas dans le repo).
-> Les chiffres datent de ce jour-là. La liste à jour des fichiers touchés est [docs/code-ownership.md](../../code-ownership.md) :
-> depuis, 9 PR de plus sont à mon nom (#195, #202, #203, #206, #208, #214, #218, #219, #220), soit 27.
+> Les chiffres de la section 1 se refont avec les commandes du tableau. Les pourcentages par fichier des sections suivantes
+> viennent de l'ancienne analyse : ce sont des ordres de grandeur, que l'on ne peut pas refaire ici.
+> La liste à jour des fichiers touchés est [docs/code-ownership.md](../../code-ownership.md) :
+> depuis, 9 PR de plus sont à mon nom (#195, #202, #203, #206, #208, #214, #218, #219, #220), soit 27, et 28 avec cette PR de docs (#215).
 > Identités Git : `VYAntares <endroahm@hotmail.com>` et `EA <endroahm@hotmail.com>` (même personne).
 
 ## 1. En chiffres
 
-| Indicateur                                                        |                               Valeur |
-| ----------------------------------------------------------------- | -----------------------------------: |
-| PR fusionnées sur `main` (squash à mon nom)                       |                                   18 |
-| Commits, toutes branches (hors merges)                            |                                   88 |
-| Période                                                           |              2026-08-22 → 2026-11-04 |
-| Lignes à mon nom, périmètre principal (code, tests, config, docs) |  **17 335 (27,4 %, 2e de l'équipe)** |
-| … dont source / tests / docs / config                             |          10 189 / 4 801 / 2 291 / 54 |
-| Contenu pédagogique (`content/`, JSON)                            | ≈ 200 900 lignes (87,6 % du contenu) |
-| Fixtures de test                                                  |                10 398 lignes (100 %) |
-| Fichiers du périmètre principal où j'ai au moins une ligne        |                                  193 |
+Seulement des chiffres que l'on peut refaire, une fois #215 fusionnée :
+
+| Indicateur                                              | Valeur | Comment le refaire                                                                                                  |
+| ------------------------------------------------------- | -----: | ------------------------------------------------------------------------------------------------------------------- |
+| PR fusionnées sur `main` que j'ai ouvertes              |     28 | `gh pr list --repo VictorBro/ft_transcendence --author VYAntares --state merged --base main --limit 300 --json number --jq length` |
+| Période (première et dernière de ces PR)                | 2026-08-22 → 2026-11-23 | la même commande avec `--json number,mergedAt`                                                     |
+| Fichiers touchés (créés ou modifiés, même d'une ligne)  |    701 | [docs/code-ownership.md](../../code-ownership.md), « En un coup d'œil », avec sa méthode de calcul                  |
+| … dont code (`apps`, `packages`, `e2e`)                 |    263 | idem                                                                                                                |
+
+Les parts en lignes de l'ancienne analyse (total, par zone) ne sont plus données ici : personne ne
+peut les refaire sans ce fichier.
 
 Mon rôle en une phrase : **je porte le domaine des leçons**, de la base de données au contenu : lecture et recherche via l'API, validateurs partagés, outil de génération avec Claude Code, seed, démo, codes d'erreur, génération de questions par LLM.
 
-## 2. Mes parts par zone du repo
+## 2. Mes zones du repo
 
-| Zone                                                     |                        Ma part |
-| -------------------------------------------------------- | -----------------------------: |
-| Shared – Schémas et validateurs de leçons                |                     **99,4 %** |
-| Outillage de génération de contenu (scripts, skills)     |                     **75,7 %** |
-| Backend – Leçons, objectif quotidien, gamification, démo |                     **58,9 %** |
-| Base de données (Prisma)                                 |                         30,4 % |
-| Backend – Socle (erreurs, validation)                    |                         29,5 % |
-| Backend – Cours, placement, banque de questions, LLM     |                         27,6 % |
-| Backend – Auth / rate limiting                           | 17,7 % (voir l'attention en 5) |
-| Documentation                                            |                         16,7 % |
-| Frontend Next.js                                         |                          6,8 % |
-| Tests E2E Playwright                                     |                          5,0 % |
+La liste des fichiers que j'ai touchés, dossier par dossier, est dans
+[docs/code-ownership.md](../../code-ownership.md). Les zones où je suis le plus présent : les schémas et
+validateurs de leçons de `packages/shared/src/lessons/` (portés du prototype de Bastian,
+`bastian-schnitzler/lesson_prototype@928484d`, dans #142, puis étendus dans #162), l'outillage de
+génération de contenu, et le backend des leçons, de l'objectif quotidien et de la démo.
 
 ## 3. Les modules backend où j'ai travaillé (`apps/api`)
 
@@ -82,7 +78,7 @@ Mon rôle en une phrase : **je porte le domaine des leçons**, de la base de don
 
 ## 4. Hors backend
 
-- **`packages/shared/src/lessons/`** (#142, #162), à 99 % à moi : `schemas/*` (vocabulaire, grammaire, lecture, fonctions, `artifactCommon`), `validation/*` (`validateBrief`, `validateContent`, `checkGrammarContent`…), `domain/*` (`parseRichText`, `vocabularyLesson`, `lessonCopy`…), `validateLesson`. Porté du prototype, puis étendu à DE et EN.
+- **`packages/shared/src/lessons/`** (#142, #162) : `schemas/*` (vocabulaire, grammaire, lecture, fonctions, `artifactCommon`), `validation/*` (`validateBrief`, `validateContent`, `checkGrammarContent`…), `domain/*` (`parseRichText`, `vocabularyLesson`, `lessonCopy`…), `validateLesson`. Porté du prototype de Bastian (`bastian-schnitzler/lesson_prototype@928484d`), puis étendu à DE et EN.
 - **Frontend** (#20, #125) : page chat et coquille `(mode)` (supprimées depuis par VictorBro : les autres modes dans la #64, la page chat et la coquille dans la #200), `healthz/upstream`, parties de `lib/api.ts` et `lib/session.ts`, tutoiement en français.
 - **Docs** : `docs/content/lessons.md` (98 %), décisions sur leçons, objectif et streak (#139).
 - **Contenu** : outlines FR A2–C2, briefs et leçons FR/EN/DE de A1 à C2.

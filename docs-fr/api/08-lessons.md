@@ -9,6 +9,9 @@ Dans ce chapitre :
 - Comment le tuteur IA répond morceau par morceau avec les Server-Sent Events (SSE).
 - Ce que vérifient les grosses specs de contenu dans le dossier `content/`.
 
+Les routes de ce chapitre sont écrites sans le préfixe global `/api` ([app.setup.ts](../../apps/api/src/app.setup.ts)) :
+`GET /courses/:lang/today` est `GET /api/courses/:lang/today` sur le réseau.
+
 ## Vue d'ensemble
 
 L'apprenant ouvre un cours (par exemple le français). L'app montre alors le **plan du jour** : les leçons déjà faites
@@ -83,8 +86,9 @@ export class LessonsModule {}
 - `GatewayModule` donne `SocketsService` : après une tentative finie, l'API dit aux autres onglets de l'utilisateur
   « ton cours a changé » (voir [09-social-and-realtime.md](09-social-and-realtime.md)).
 - `LlmModule` donne le provider IA pour le tuteur (voir [06-llm.md](06-llm.md)).
-- `LessonsService` est exporté. Le code de démo ([../../apps/api/src/demo/demo.ts](../../apps/api/src/demo/demo.ts))
-  l'utilise pour rejouer des leçons finies. `AppModule` importe ce module.
+- `LessonsService` est exporté, mais aucun autre module ne l'injecte. Le code de démo
+  ([../../apps/api/src/demo/demo.ts](../../apps/api/src/demo/demo.ts)) crée le sien avec `new LessonsService(prisma)`
+  pour rejouer des leçons finies. `AppModule` importe ce module.
 
 ## lessons.dto.ts
 

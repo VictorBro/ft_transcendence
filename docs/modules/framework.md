@@ -254,10 +254,10 @@ Playwright suite, including the smoke test, runs in
 | ------ | ------ | --------------- | -------------- |
 | Victor | [VictorBro](https://github.com/VictorBro) | The project scaffold: the Next.js app, the NestJS app, the shared package, Caddy and compose. Then the first database-backed health check, and the auth pages with the session wiring between the two apps. 14 commits in `apps/web` and 14 in `apps/api`. | [#2](https://github.com/VictorBro/ft_transcendence/pull/2), [#3](https://github.com/VictorBro/ft_transcendence/pull/3), [#5](https://github.com/VictorBro/ft_transcendence/pull/5) |
 | Bastian | [bastian-schnitzler](https://github.com/bastian-schnitzler) | The generic API clients: `apiGet` for Next.js server rendering, and `clientGet`, `clientPost`, `clientPut`, `clientPatch`, `clientDelete` for the browser, with their tests. 7 commits in `apps/web` and 8 in `apps/api`. | [#45](https://github.com/VictorBro/ft_transcendence/issues/45), [#57](https://github.com/VictorBro/ft_transcendence/pull/57) |
-| Endrit | [VYAntares](https://github.com/VYAntares) | The error-code contract in NestJS: `ErrorCodeFilter` and the code-based validation pipe, so every error reply carries a code the browser translates. 11 commits in `apps/web` and 17 in `apps/api` (as EA and VYAntares). | [#108](https://github.com/VictorBro/ft_transcendence/issues/108), [#126](https://github.com/VictorBro/ft_transcendence/pull/126) |
+| Endrit | [VYAntares](https://github.com/VYAntares) | The error-code contract in NestJS: `ErrorCodeFilter` and the code-based validation pipe, so every error reply carries a code the browser translates. 11 commits in `apps/web` and 16 in `apps/api` (as EA and VYAntares). | [#108](https://github.com/VictorBro/ft_transcendence/issues/108), [#126](https://github.com/VictorBro/ft_transcendence/pull/126) |
 | Anaïs | [avarrett](https://github.com/avarrett) (commits as ninisse) | Features built on both frameworks: 4 commits in `apps/web` and 8 in `apps/api`. | |
 | Luca | [luca-mattei](https://github.com/luca-mattei) | Features built on both frameworks: 9 commits in `apps/web` and 6 in `apps/api`. | |
 
-The commit counts come from `git shortlog -sn --no-merges HEAD -- apps/web` and
+The commit counts come from `git shortlog -sn --no-merges main -- apps/web` and
 `-- apps/api`. Pull requests are squash-merged, so one commit is usually one pull
 request.

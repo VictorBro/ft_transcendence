@@ -45,11 +45,11 @@ oci compute instance list --auth security_token --output table \
 
 | Réglage | Valeur                                                                                                                                                                                                 |
 | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Shape   | `VM.Standard.E2.1.Micro` (toujours disponible, 1 GB : voir [Mémoire](#mémoire)). `VM.Standard.A1.Flex` avec 2 OCPU / 12 GB est mieux, mais répond en général "out of host capacity" (plus de capacité) |
+| Shape   | `VM.Standard.E2.1.Micro` (toujours disponible, 1 GB : voir [Mémoire](#mémoire) ; le shape du serveur en ligne n'est pas encore mesuré). `VM.Standard.A1.Flex` avec 2 OCPU / 12 GB est mieux, mais répond en général "out of host capacity" (plus de capacité) |
 | Image   | Canonical Ubuntu 24.04, avec l'architecture qui correspond au shape                                                                                                                                    |
 | Subnet  | public, **"Assign a public IPv4 address" = Yes**                                                                                                                                                       |
 | SSH     | colle ta propre clé publique                                                                                                                                                                           |
-| Ingress | 80/tcp, 443/tcp, 443/udp. Rien d'autre : on atteint Grafana à travers Caddy sur 443, donc n'ouvre jamais 3000, 9090 ou 9093                                                                            |
+| Ingress | 22/tcp (SSH, pour les `ssh` et `scp` plus bas), 80/tcp, 443/tcp, 443/udp. Rien d'autre : on atteint Grafana à travers Caddy sur 443, donc n'ouvre jamais 3000, 9090 ou 9093                                                                            |
 
 Cloud-init, pour installer Docker au démarrage. `#cloud-config` doit être la première ligne, sinon le fichier est
 ignoré sans message. Mets `arch=` à `amd64` ou `arm64` selon le shape :
@@ -298,8 +298,8 @@ démarrage, et `up -d` ne recrée pas caddy pour un fichier modifié.
 
 ## Mémoire
 
-Le shape utilisé est très probablement `VM.Standard.E2.1.Micro` : 1 GB de RAM et une fraction d'un
-cœur partagé. L'app (Postgres, Redis, Next, Nest, Caddy) prend environ 450 MB, et le monitoring
+Le shape que la section 2 met en place est `VM.Standard.E2.1.Micro` : 1 GB de RAM et une fraction d'un
+cœur partagé. Le shape et la RAM du serveur en ligne ne sont pas encore mesurés. L'app (Postgres, Redis, Next, Nest, Caddy) prend environ 450 MB, et le monitoring
 ajoute environ 330 à 450 MB d'après une estimation. Mesure avant de te fier à ces chiffres :
 
 ```bash

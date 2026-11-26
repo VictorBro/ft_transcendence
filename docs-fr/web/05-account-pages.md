@@ -112,7 +112,7 @@ export default function MainLayout({ children }: { children: ReactNode }) {
 
 Il donne trois emplacements à `Shell` : le nom de l'app à gauche (`Wordmark`), les liens de l'en-tête (`HeaderNav`), et le pied de page avec les liens vers les pages légales (`LegalFooter`). Ces composants sont expliqués dans [03-shell-components.md](03-shell-components.md).
 
-`HeaderNav` a deux formes. Un visiteur voit une seule ligne : le sélecteur de langue, "Sign in" (Se connecter) et "Create account" (Créer un compte). Un utilisateur connecté voit un seul bouton de menu (`HeaderMenu`). Il ouvre un panneau avec le sélecteur de langue, un lien vers `/profile` (avatar et nom), "Friends" (Amis), "Messages" et "Log out" (Se déconnecter). Le sélecteur de langue change la locale de l'URL. Ce layout ne l'enregistre pas : seul le layout `(dashboard)` affiche `LocaleSync`, qui la stocke dans `User.locale` (chapitre 3).
+`HeaderNav` a deux formes. Un visiteur voit une seule ligne : le sélecteur de langue, "Sign in" (Se connecter) et "Create account" (Créer un compte). Un utilisateur connecté voit un seul bouton de menu (`HeaderMenu`). Il ouvre un panneau avec le sélecteur de langue, un lien vers `/profile` (avatar et nom), "Friends" (Amis), "Messages" et "Sign out" (Se déconnecter). Le sélecteur de langue change la locale de l'URL. Ce layout ne l'enregistre pas : seul le layout `(dashboard)` affiche `LocaleSync`, qui la stocke dans `User.locale` (chapitre 3).
 
 Le commentaire explique un choix. D'autres groupes (comme le tableau de bord) utilisent un shell `fill`, où la page remplit exactement l'écran et le pied de page est collé en bas. Ici, les pages sont des "documents" qui peuvent être plus longs que l'écran (la politique de confidentialité, par exemple), donc le pied de page vient simplement après le contenu.
 
@@ -322,7 +322,7 @@ sequenceDiagram
   else 2FA activée
     API-->>F: 202 { twoFactorRequired }
     F->>F: setSecondFactor(true), affiche le formulaire du code
-    U->>F: tape le code à 6 chiffres (ou un code de secours)
+    U->>F: tape le code à 6 chiffres (ou un code de récupération)
     F->>F: SecondFactorSchema.safeParse()
     F->>API: POST /api/auth/2fa/verify
     API-->>F: 200 SessionUser (cookie posé)
@@ -636,7 +636,7 @@ export function avatarInitial(name: string): string {
 ```
 
 - `avatarHue` est un tout petit hash : le même nom donne toujours le même nombre entre 0 et 359, utilisé comme teinte de couleur.
-- `avatarInitial` utilise `[...name]` pour découper selon les vrais caractères (code points). `name[0]` couperait un emoji ou un caractère chinois en deux, car ils prennent deux "code units" dans les chaînes JavaScript.
+- `avatarInitial` utilise `[...name]` pour découper selon les vrais caractères (code points). `name[0]` couperait un emoji (ou un caractère rare hors du BMP) en deux, car ils prennent deux "code units" dans les chaînes JavaScript. Un caractère chinois courant n'en prend qu'une.
 
 [avatar.test.ts](../../apps/web/lib/avatar.test.ts) vérifie la majuscule, le cas de l'emoji, le secours `'?'` et que la teinte est stable.
 
@@ -818,16 +818,16 @@ stateDiagram-v2
   on --> off: mot de passe OK (DELETE /api/auth/2fa)
 ```
 
-| Écran              | Affiché quand            | Ce que fait l'utilisateur                                                             | Appel API                                             |
-| ------------------ | ------------------------ | ------------------------------------------------------------------------------------- | ----------------------------------------------------- |
-| Codes de secours   | `recoveryCodes !== null` | lit et enregistre les codes, clique sur "I have saved them" (Je les ai enregistrés)        | aucun                                                 |
-| Scanner le QR code | `setup !== null`         | scanne l'image QR (ou tape le secret), entre un code                                  | `enableTwoFactor(code)` → `POST /api/auth/2fa/enable` |
-| Chargement         | `status === 'loading'`   | attend                                                                                |                                                       |
-| Échec              | `status === 'failed'`    | clique sur "Try again" (Réessayer)                                                          | `GET /api/auth/2fa` à nouveau                         |
-| Activée            | `status.enabled`         | voit combien de codes de secours restent, tape le mot de passe, clique sur "Turn off" (Désactiver) | `disableTwoFactor(password)` → `DELETE /api/auth/2fa` |
-| Désactivée         | sinon                    | clique sur "Set up" (Configurer)                                                      | `beginTwoFactorSetup()` → `POST /api/auth/2fa/setup`  |
+| Écran                 | Affiché quand            | Ce que fait l'utilisateur                                                                               | Appel API                                             |
+| --------------------- | ------------------------ | ------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| Codes de récupération | `recoveryCodes !== null` | lit et enregistre les codes, clique sur "I have saved them" (Je les ai enregistrés)                     | aucun                                                 |
+| Scanner le QR code    | `setup !== null`         | scanne l'image QR (ou tape le secret), entre un code                                                    | `enableTwoFactor(code)` → `POST /api/auth/2fa/enable` |
+| Chargement            | `status === 'loading'`   | attend                                                                                                  |                                                       |
+| Échec                 | `status === 'failed'`    | clique sur "Try again" (Réessayer)                                                                      | `GET /api/auth/2fa` à nouveau                         |
+| Activée               | `status.enabled`         | voit combien de codes de récupération restent, tape le mot de passe, clique sur "Turn off" (Désactiver) | `disableTwoFactor(password)` → `DELETE /api/auth/2fa` |
+| Désactivée            | sinon                    | clique sur "Set up" (Configurer)                                                                        | `beginTwoFactorSetup()` → `POST /api/auth/2fa/setup`  |
 
-Les codes de secours passent en premier car, comme le dit le commentaire, ils sont "shown once, never retrievable again" (affichés une fois, impossibles à récupérer ensuite). Ce sont des codes de secours pour un téléphone perdu.
+Les codes de récupération passent en premier car, comme le dit le commentaire, ils sont "shown once, never retrievable again" (affichés une fois, impossibles à récupérer ensuite). Ce sont des codes de récupération pour un téléphone perdu.
 
 `setup` contient `{ secret, otpauthUri, qrDataUrl }` venant de l'API. Le QR code arrive sous forme d'URL `data:` (l'image elle-même, encodée dans la chaîne), affichée avec `<Image>`.
 
@@ -1351,7 +1351,7 @@ export function Flag({ lang, className }: { lang: Language; className?: string }
 - `force-dynamic` est mis sur chaque page qui montre les données d'une personne. La lecture de la session dans la nav rend déjà chaque page dynamique ; `force-dynamic` le dit explicitement.
 - Le formulaire de connexion a deux étapes dans un seul composant. Les deux `<form>` ont des `key` différentes pour que le mot de passe n'apparaisse jamais dans le champ du code.
 - L'étape de l'onboarding est **calculée à partir de l'API** (`resolveOnboardingStep`), pas gardée dans le state : un cours avec `level: null` veut dire "choisir un niveau ensuite". Cela survit aux rafraîchissements et aux examens abandonnés.
-- Le panneau 2FA sépare "chargement" et "échec" de "désactivée" (bug #216), et montre les codes de secours en premier car ils ne sont affichés qu'une fois. L'API refuse setup et enable tant que la 2FA est activée (PR #219), donc seul le mot de passe peut la désactiver.
+- Le panneau 2FA sépare "chargement" et "échec" de "désactivée" (bug #216), et montre les codes de récupération en premier car ils ne sont affichés qu'une fois. L'API refuse setup et enable tant que la 2FA est activée (PR #219), donc seul le mot de passe peut la désactiver.
 - Les boutons d'amis reçoivent un **nom** d'action de la page serveur, rafraîchissent la page après chaque écriture (même ratée), et restent désactivés jusqu'à l'arrivée de la page fraîche.
 - La recherche d'amis écrit seulement `?q=` dans l'URL ; c'est la page serveur qui fait la recherche, donc les rafraîchissements en direct gardent des résultats justes.
 - Seuls les amis voient un point de présence. Le point lit une map de présence commune à tout l'onglet, alimentée par le WebSocket, et revient à la valeur du serveur sinon.

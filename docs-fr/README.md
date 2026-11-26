@@ -22,7 +22,7 @@ ouvre son [index.html](index.html) depuis ton clone.
 | [operations/](operations/deployment.md)                         | Comment on la lance, la déploie, la surveille et la met à jour ?                               |
 | [content/](content/lessons.md)                                  | Que sont les leçons et les questions de placement, et comment sont-elles écrites et chargées ? |
 | [subject/](subject/summary.md)                                  | Que demande le sujet de 42 ?                                                                   |
-| [transcendence-course/](../docs/transcendence-course/README.md) | Qu'a construit chaque membre de l'équipe, expliqué avec ses propres mots pour la soutenance ?  |
+| [transcendence-course/](../docs/transcendence-course/README.md) | Qu'a construit chaque membre de l'équipe, expliqué avec ses propres mots pour la soutenance ? Seul endrit/ est écrit pour l'instant. |
 | [site/](../docs/site/milestone1-data-model.html)                | Les pages et le script derrière le site GitHub Pages                                           |
 
 ## Tous les documents
@@ -94,7 +94,7 @@ ouvre son [index.html](index.html) depuis ton clone.
 
 | Document                                                                 | Ce qu'il couvre                                                                                                                                                                                                                                                                                                                                    |
 | ------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [transcendence-course/README.md](../docs/transcendence-course/README.md) | Comment marche le dossier, et un dossier par membre : [victor/](../docs/transcendence-course/victor/README.md), [endrit/](../docs/transcendence-course/endrit/README.md), [anais/](../docs/transcendence-course/anais/README.md), [luca/](../docs/transcendence-course/luca/README.md), [bastian/](../docs/transcendence-course/bastian/README.md) |
+| [transcendence-course/README.md](../docs/transcendence-course/README.md) | Comment marche le dossier, et un dossier par membre : [victor/](../docs/transcendence-course/victor/README.md), [endrit/](../docs/transcendence-course/endrit/README.md), [anais/](../docs/transcendence-course/anais/README.md), [luca/](../docs/transcendence-course/luca/README.md), [bastian/](../docs/transcendence-course/bastian/README.md). Seul endrit/ est écrit pour l'instant ; les quatre autres disent « Not written yet » |
 
 ### site/
 

@@ -15,7 +15,7 @@ panneau, chaque règle, chaque réglage, comment les changer) est
 
 Le module est une ligne du tableau DevOps de [../subject/summary.md](../subject/summary.md) :
 
-> | Major | Prometheus + Grafana monitoring: exporters, custom dashboards, alerting rules, secured access |
+> | Major | Monitoring Prometheus + Grafana : exporters, tableaux de bord sur mesure, règles d'alerte, accès sécurisé |
 
 Le PDF ([../../docs/subject/ft_transcendence.pdf](../../docs/subject/ft_transcendence.pdf), chapitre IV, Devops) le formule ainsi :
 
@@ -142,7 +142,9 @@ flowchart LR
    `ft_transcendence` : montre **Learning** (la banque de questions du seed par niveau) et
    **API** (les requêtes et la latence par route).
 5. Ouvre **Alerting** et montre les 25 règles, regroupées comme dans `alerts.yml`.
-6. Montre ce qui est fermé, depuis un terminal :
+6. Montre ce qui est fermé, depuis un terminal. Dans le devcontainer, utilise `https://caddy`
+   au lieu de `https://localhost`. Depuis l'hôte, ajoute `:<HTTPS_PORT>` quand il n'est pas 443,
+   comme sur chaque machine de 42 :
 
    ```bash
    curl -sk -o /dev/null -w '%{http_code}\n' https://localhost/grafana/api/search    # 401
@@ -155,7 +157,9 @@ flowchart LR
    passe en pending, puis en firing après environ une minute. Avec `DISCORD_WEBHOOK_URL` défini,
    Discord reçoit "[FIRING:1] ApiDown".
 8. `docker compose start api`. L'alerte se résout en une ou deux minutes, et
-   Discord reçoit le message "[RESOLVED]".
+   Discord reçoit le message "[RESOLVED]". Dans les 15 minutes qui suivent `make`, `ApiRestarting`
+   (warning) se déclenche aussi quand l'API revient : le test Playwright de redémarrage l'a déjà
+   redémarrée une fois, et ce démarrage est le deuxième.
 
 Un petit changement en direct : modifie un seuil ou un `for` dans `alerts.yml` et son test, lance
 `./scripts/check-monitoring-config.sh` et `make up`, et montre la nouvelle règle sous
@@ -202,7 +206,7 @@ Ces limites viennent de la section 10 de
 
 | Membre | GitHub                                                                | Ce qu'il a construit                                                                                                                                                                                                                                                                                                           | Issues et PRs                                                                                                                                                                                                                                                    |
 | ------ | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Victor | [VictorBro](https://github.com/VictorBro)                             | Tout le module : Prometheus, Alertmanager, Grafana et les exporters, les quatre dashboards, les 25 règles et leurs tests, l'écoute des métriques de l'API, les vérifications et le guide. Plus tard, la vérification des ports publiés pour un déploiement derrière un autre proxy (#131), les métriques et panneaux WebSocket (dans #181, co-écrite par Endrit), et de nouvelles versions des images de monitoring. | [#129](https://github.com/VictorBro/ft_transcendence/issues/129), [#130](https://github.com/VictorBro/ft_transcendence/pull/130), [#131](https://github.com/VictorBro/ft_transcendence/pull/131), [#181](https://github.com/VictorBro/ft_transcendence/pull/181), [#198](https://github.com/VictorBro/ft_transcendence/pull/198) |
+| Victor | [VictorBro](https://github.com/VictorBro)                             | Tout le module : Prometheus, Alertmanager, Grafana et les exporters, les quatre dashboards, les 25 règles et leurs tests, l'écoute des métriques de l'API, les vérifications et le guide. Plus tard, la vérification des ports publiés pour un déploiement derrière un autre proxy (#131), les métriques et panneaux WebSocket (#181), et de nouvelles versions des images de monitoring. | [#129](https://github.com/VictorBro/ft_transcendence/issues/129), [#130](https://github.com/VictorBro/ft_transcendence/pull/130), [#131](https://github.com/VictorBro/ft_transcendence/pull/131), [#181](https://github.com/VictorBro/ft_transcendence/pull/181), [#198](https://github.com/VictorBro/ft_transcendence/pull/198) |
 | Luca   | [luca-mattei](https://github.com/luca-mattei)                         | La métrique de discussion des leçons (`ft_llm_discussion_limited_total`) et son panneau sur le dashboard Learning.                                                                                                                                                                                                             | [#201](https://github.com/VictorBro/ft_transcendence/pull/201)                                                                                                                                                                                                   |
 | Anaïs  | [avarrett](https://github.com/avarrett) (commits en tant que ninisse) | La métrique des tentatives de leçon, `ft_lesson_attempts_total`.                                                                                                                                                                                                                                                               | [#190](https://github.com/VictorBro/ft_transcendence/pull/190)                                                                                                                                                                                                   |
 

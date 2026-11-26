@@ -185,7 +185,8 @@ Dans le [package.json](../../package.json) racine, turbo lance le même script d
 | hook git pre-push                      | [.husky/pre-push](../../.husky/pre-push)                                                                   | Seulement lint et typecheck, **pas** les tests (pour rester rapide)                                                                                      |
 
 En CI, le job `unit-tests` fait le build de l'étape `ci` du Dockerfile et lance les tests **dans** cette image, donc
-"ça passe en CI" veut dire "ça passe dans le même environnement que la production". Le dossier de couverture est ensuite copié dehors
+"ça passe en CI" veut dire "ça passe sur la même image Node de base que la production" (`node:24.22.3-trixie-slim`).
+L'image de production elle-même est testée par Playwright ([e2e.yml](../../.github/workflows/e2e.yml)). Le dossier de couverture est ensuite copié dehors
 et envoyé comme un artifact nommé `coverage-web` (gardé 7 jours). Le commentaire de la CI ajoute : les seuils **bloquent le
 merge** — la commande de test elle-même sort avec une erreur en dessous de 60 %.
 

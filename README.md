@@ -54,12 +54,17 @@ with a second holder so no area stalls when one person is unavailable.
 
 - Docker and Docker Compose
 - `make`
+- VS Code with the Dev Containers extension
 - On Windows: WSL2, with the repository on the WSL2 filesystem
 
-Node and pnpm are only needed to run things outside the containers; the versions
-are pinned in `.nvmrc` and `package.json`.
+`make` runs inside the development container, which brings Node and pnpm at
+the versions pinned in `.nvmrc` and `package.json`. On the host, most targets
+refuse to run and say so.
 
 ### Run it
+
+Open the repository in VS Code and choose **Reopen in Container**. Then, in a
+terminal of the container:
 
 ```bash
 cp .env.example .env    # then edit the secrets, see the comments in that file
@@ -103,8 +108,9 @@ five in `e2e/tests/lesson.spec.ts` (one test and four `describe` blocks, three
 of which loop over the written French A1 lessons of one kind). The list and the
 reasons are in
 [docs/modules/browsers.md](docs/modules/browsers.md#limits-and-choices). `make`
-runs Chromium alone to stay quick. Run one engine with
-`pnpm --filter @ft/e2e run test:e2e --project=firefox`.
+runs Chromium alone to stay quick. Run one engine, with the stack up, with
+`make playwright BROWSERS=firefox`: after a green suite it also runs the API
+restart spec, on Chromium.
 
 Known limits:
 
@@ -114,7 +120,8 @@ Known limits:
 - **The listening reply in Functions lessons** always offers **Show the text**,
   so the exercise can still be done without a voice.
 
-- Mobile browsers are not tested.
+- Real mobile browsers are not tested. Every page is checked at a 360 px phone
+  width on the three engines (`e2e/tests/layout.spec.ts`).
 
 ---
 
@@ -208,13 +215,14 @@ scanned and published, and a server that updates itself. Full file:
 - **The value it adds.** `main` always works: every commit on it after the first
   is a squashed pull request. The rejection rules are tested on every
   change, on the build the evaluator runs. A merge reaches the live site with
-  nobody on the server, and every `main` commit has an image to roll back to.
+  nobody on the server, and every `main` commit since the #129 monitoring merge
+  has an image to roll back to, by pinning `IMAGE_TAG`.
 - **Why it deserves its size.** A trivial CI is one workflow that runs the tests.
   This one is 5 workflows, 1 shared action, 10 scripts and 3 git hooks; 41 checks
   on a typical pull request, 19 of them required; a full production stack started
   6 times per run for 3 browser engines; 18 image jobs per push; and a deploy
-  agent that handles half-published releases, failed migrations, retries and
-  rollback. It has run for the whole project.
+  agent that handles half-published releases, failed migrations and retries. It
+  has run for the whole project.
 
 ### Custom module: cloud deployment with DNS and Let's Encrypt (Minor, 1 point)
 
@@ -229,7 +237,7 @@ web server. Full file:
   the public server anyone gets a certificate the browser already trusts. A
   public address also lets the team test on real devices, and gives the images
   that CI/CD publishes a place to run.
-- **The technical challenges.** A very small server (most likely 1 GB of RAM),
+- **The technical challenges.** A very small server (1 GB of RAM in the runbook, not measured on the box yet),
   handled with memory limits on the monitoring services and a swapfile. Let's
   Encrypt's rate limits, handled by making sure DNS resolves before the first start and keeping
   the certificate in a volume. An IP address that can change. A server with no
@@ -257,6 +265,10 @@ TODO
 ---
 
 ## Resources
+
+The project docs start at [docs/README.md](docs/README.md), which says which
+document answers which question. A French copy, with the same layout and file
+names, is in [docs-fr/](docs-fr/README.md).
 
 <!-- TODO: references used, and a description of how AI was used, for which
      tasks and which parts of the project. The subject requires the AI part

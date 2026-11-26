@@ -136,7 +136,7 @@ sequenceDiagram
         A-->>B: 202 {twoFactorRequired:true}
         B->>C: POST /api/auth/2fa/verify {code}
         C->>A: proxy
-        A->>A: TOTP, ou consomme un code de secours
+        A->>A: TOTP, ou consomme un code de récupération
     end
     A->>R: régénère la session, stocke {userId}
     A-->>B: 200 SessionUser + Set-Cookie ft.sid
@@ -410,7 +410,7 @@ Les containers migrate et seed exécutent le stage `build` du Dockerfile de l'ap
 sous le nom `ft_transcendence/api-tooling` (`make tooling-image`), sur un serveur sous le nom
 `ghcr.io/victorbro/ft_transcendence/tooling`, buildée et poussée par images.yml.
 Ce stage est un `COPY . .` du repo moins `Dockerfile.dockerignore` (pas de `docs`,
-`infra`, `.git`, pas de `*.md`), donc il transporte la CLI Prisma, les migrations, le
+`docs-fr`, `infra`, `.git`, pas de `*.md`), donc il transporte la CLI Prisma, les migrations, le
 seed et chaque fichier écrit à la main sous `content/` :
 
 | Dossier             | Ce que le seed en fait                                                                                    |

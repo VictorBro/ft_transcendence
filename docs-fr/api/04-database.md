@@ -36,6 +36,10 @@ DATABASE_URL=postgresql://ft:ft_local_dev@db:5432/ft_transcendence?schema=public
 
 Lis-la comme ceci : utilisateur `ft`, mot de passe `ft_local_dev`, hôte `db`, port `5432`, base `ft_transcendence`.
 
+Ce sont des valeurs par défaut pour le développement local : [compose.yml](../../compose.yml) et le `Makefile`
+les utilisent quand rien n'est fourni. [compose.deploy.yml](../../compose.deploy.yml) n'a pas de valeur par défaut
+pour ces deux secrets : il refuse de démarrer si `POSTGRES_PASSWORD` ou `SESSION_SECRET` est absent ou vide.
+
 ### Tables, lignes et colonnes
 
 Imagine une base de données comme un **classeur de feuilles de calcul**.
@@ -66,7 +70,7 @@ Tu ne peux pas mettre le mot `"hello"` dans une colonne de nombres, et tu ne peu
 
 Une clé étrangère crée une **relation** entre deux tables :
 
-- **un-à-plusieurs** (one-to-many) : un utilisateur a plusieurs codes de secours, chaque code appartient à un seul utilisateur.
+- **un-à-plusieurs** (one-to-many) : un utilisateur a plusieurs codes de récupération, chaque code appartient à un seul utilisateur.
 - **plusieurs-à-plusieurs** (many-to-many) : les utilisateurs voient plusieurs questions, une question est vue par plusieurs utilisateurs.
   Il faut alors une troisième table au milieu (`UserSeenQuestion`), avec une ligne par paire (utilisateur, question).
 
@@ -379,8 +383,9 @@ Une ligne par compte.
 - `email` et `displayName` sont tous les deux `@unique` : deux comptes ne peuvent partager ni l'un ni l'autre. Le code d'inscription
   compte là-dessus (section 7, exemple 1).
 - `passwordHash` : jamais le mot de passe lui-même, seulement son hash argon2 (chapitre 5).
-- `locale` : la langue de l'interface (`en`, `fr`, `de`). Elle est fixée à l'inscription, et l'app web
-  l'enregistre à nouveau avec `PATCH /api/users/me` quand la langue de l'URL est différente (#211).
+- `locale` : la langue de l'interface (`en`, `fr`, `de`). Elle vaut `en` au départ, la valeur par défaut du schema :
+  l'API accepte un `locale` à l'inscription, mais le formulaire web n'en envoie pas. Ensuite, dès qu'une page
+  du dashboard se charge, l'app web enregistre la langue de l'URL avec `PATCH /api/users/me` si elle est différente (#211).
   Le tuteur des leçons la lit pour répondre dans cette langue. `activeLang` : le cours que l'utilisateur
   apprend en ce moment (null avant le premier cours).
 - `timeZone` : un nom IANA comme `Europe/Paris`, utilisé pour savoir quand « aujourd'hui » commence pour la série de jours (streak).
@@ -399,9 +404,10 @@ pas des colonnes. Remarque les noms dans `@relation("FriendshipRequester")` : `U
 
 ```prisma
 // Single-use fallback when the authenticator is lost. Stored as a SHA-256 digest
-// rather than argon2: the codes are 160 bits of randomness, so there is nothing
-// to brute force, and a plain digest lets a login check one indexed lookup
-// instead of ten argon2 verifications.
+// rather than argon2: the codes are about 99 bits of randomness (20 characters
+// from a 31-character alphabet), so there is nothing to brute force, and a plain
+// digest lets a login check one indexed lookup instead of ten argon2
+// verifications.
 model RecoveryCode {
   id        String    @id @default(uuid()) @db.Uuid
   userId    String    @db.Uuid
@@ -414,7 +420,7 @@ model RecoveryCode {
 }
 ```
 
-Les codes de secours pour la 2FA. `codeHash` est unique, donc vérifier un code est une seule recherche rapide dans l'index.
+Les codes de récupération pour la 2FA. `codeHash` est unique, donc vérifier un code est une seule recherche rapide dans l'index.
 `usedAt` est null tant que le code n'a pas été utilisé. `@@index([userId])` rend rapide « tous les codes de cet utilisateur ».
 `onDelete: Cascade` : si on supprime l'utilisateur, les codes partent aussi.
 
@@ -699,6 +705,9 @@ autre valeur.
 | `LessonKind`       | `grammar`, `vocabulary`, `functions`, `reading`                          | `Lesson.kind`                                                                               |
 | `Theme`            | 14 thèmes (`daily_life`, `travel`, `food_and_drink`, ...)                | `Lesson.theme`                                                                              |
 | `FriendshipStatus` | `pending`, `accepted`                                                    | `Friendship.status`                                                                         |
+
+`role` est enregistré et renvoyé avec l'utilisateur, mais aucune route ne le vérifie et rien ne met `ADMIN` :
+tous les comptes sont `USER` (la valeur par défaut), et `UpdateProfileSchema` n'accepte pas `role` (chapitre 5).
 
 `Locale` et `Language` ont les mêmes valeurs mais ne veulent pas dire la même chose (la langue de l'interface
 contre la langue du cours), donc ce sont deux types. Le schema explique pourquoi la liste est carrément dans la

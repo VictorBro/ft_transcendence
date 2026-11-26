@@ -410,7 +410,7 @@ The migrate and seed containers run the api Dockerfile's `build` stage: locally
 as `ft_transcendence/api-tooling` (`make tooling-image`), on a server as
 `ghcr.io/victorbro/ft_transcendence/tooling`, built and pushed by images.yml.
 That stage is `COPY . .` of the repo minus `Dockerfile.dockerignore` (no `docs`,
-`infra`, `.git`, no `*.md`), so it carries the Prisma CLI, the migrations, the
+`docs-fr`, `infra`, `.git`, no `*.md`), so it carries the Prisma CLI, the migrations, the
 seed and every authored file under `content/`:
 
 | Directory | What the seed does with it |

@@ -15,6 +15,7 @@ Un dossier par module où j'ai travaillé. Chaque dossier contient des diagramme
 | 7 | [llm-question-generation/](llm-question-generation/README.md) — questions générées par LLM | `apps/api/src/llm/`, `question-generation/` | #69, #111, #121 |
 | 8 | [lessons-author/](lessons-author/README.md) — outil `lessons:author` | `apps/api/scripts/lessons/` | #178 |
 | 9 | [demo/](demo/README.md) — apprenants de démo | `apps/api/src/demo/` | #143 |
+| 10 | presence/ — statut en ligne (`PresenceService`, compteur Redis, point vert) : **pas encore écrit** | `apps/api/src/presence/`, `apps/web/components/presence-dot.tsx` | #195 |
 
 ## Fichiers par dossier
 

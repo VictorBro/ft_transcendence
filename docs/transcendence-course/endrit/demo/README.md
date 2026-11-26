@@ -106,6 +106,13 @@ de la base.
 | eva | Europe/Berlin | Français A1 terminé, « Commencer A2 » |
 | felix | UTC | pas de français ; son cours d'anglais n'a pas de niveau → arrive à l'étape 2 de l'onboarding |
 
+Ces états supposent **48 leçons prêtes** en Français A1 (`SMALLEST_LEVEL`) : c'est ce que le test e2e
+crée (voir la section 6). Une stack `make` n'en a que **12** aujourd'hui (12 briefs pour les 120 entrées
+de `content/outlines/fr-a1.json`). Avec 12 leçons, ben, chloe et david finissent plus de leçons que le
+niveau n'en contient : ils ont tous le niveau terminé, comme eva. chloe n'a pas de leçon ratée
+aujourd'hui (son 40 tombe sur une leçon déjà réussie, et le meilleur score est gardé), et la leçon du
+jour de ben affiche 93, pas 75.
+
 Chaque cours d'un profil a : `lang`, `level` (ou `null`), `switches` (changements de niveau,
 « il y a N jours »), `goal` (objectif quotidien en minutes), `passRate` (part des leçons passées
 dans le passé), `days` (nombre de leçons finies chaque jour passé, hier en premier, **ou**

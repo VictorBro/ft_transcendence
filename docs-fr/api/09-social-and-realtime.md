@@ -114,7 +114,7 @@ sequenceDiagram
     participant M as express-session
     participant R as Redis
     participant G as SocketGateway.authenticate
-    B->>E: GET /ws (Upgrade: websocket, Cookie: sid=...)
+    B->>E: GET /ws (Upgrade: websocket, Cookie: ft.sid=...)
     E->>M: exécute le middleware de session (SessionIoAdapter)
     M->>R: charge la session par son id
     R-->>M: { userId }
@@ -1366,6 +1366,13 @@ profils et ce que chacun montre.
 | david     | Europe/London    | série de 6 toujours en vie, 0 aujourd'hui                                                                                                     |
 | eva       | Europe/Berlin    | français A1 terminé, « Start A2 » (commencer l'A2)                                                                                            |
 | felix     | UTC              | pas de français ; cours d'anglais sans niveau (arrive à l'étape 2 de l'onboarding)                                                            |
+
+Ces états supposent **48 leçons prêtes** en français A1 (`SMALLEST_LEVEL`), ce que crée
+[demo.e2e-spec.ts](../../apps/api/test/demo.e2e-spec.ts). Une stack `make` n'en a que **12**
+aujourd'hui (12 briefs pour les 120 entrées de `content/outlines/fr-a1.json`). Avec 12 leçons, ben,
+chloe et david finissent plus de leçons que le niveau n'en contient : ils ont tous le niveau
+terminé, comme eva. chloe n'a pas de leçon ratée aujourd'hui (son 40 tombe sur une leçon déjà
+réussie, et le meilleur score est gardé), et la leçon du jour de ben affiche 93, pas 75.
 
 Chaque `DemoCourse` a `lang`, `level` (ou `null`), `switches` (changements de niveau, en
 `daysAgo`), `goal`, `passRate`, `days` et `todayScores`. `days` est soit une liste (`[3, 0, 3]` =

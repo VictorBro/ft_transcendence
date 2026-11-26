@@ -165,6 +165,11 @@ Image de la base de données : `pgvector/pgvector:0.8.7-pg18-trixie` (le `postgr
 **Un simple `make` est le chemin de l'évaluateur** : il exécute les checks de la CI, builde les cibles prod, lance `compose.prod.yml`, migre,
 fait le seed, puis lance les tests dans le navigateur. C'est la commande unique notée, et elle exécute les mêmes artefacts que ceux que teste le contrôle de la console.
 
+`make` tourne dans le devcontainer (dans VS Code : Reopen in Container). Sur l'hôte, un garde-fou `check-devcontainer`
+arrête la plupart des cibles ; seuls le garde-fou lui-même, `help`, `doctor`, `clean`, les relais vers compose (`down`,
+`logs`, `ps`, `shell`), `tooling-image`, `migrate`, `seed` et `db-ready` y échappent
+([Makefile](../../Makefile), `check-devcontainer`).
+
 ```
 make            # evaluator: CI checks → build (prod) → up → migrate → seed → certs → monitoring-check → Playwright
 make dev        # dev stack (compose.override): hot reload, bind mounts

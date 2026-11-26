@@ -10,6 +10,9 @@ In this chapter:
     result is built
 - The **question bank**, and how the LLM refills it when a learner runs low (`question-generation/`)
 
+Routes in this chapter are written without the global `/api` prefix ([app.setup.ts](../../apps/api/src/app.setup.ts)):
+`POST /placement` is `POST /api/placement` on the wire.
+
 ---
 
 ## The big picture
@@ -723,12 +726,12 @@ again (same options, clock still running). It never changes anything.
 
 1. `checkEndedOrTimedOutAndSaveNullAnswerIfTimedOut` (a long but honest name): load the run; if it has ended,
    return the result; if the current question timed out, record a `null` answer for it and return what comes next.
-   In that case the learner's late answer is ignored, "even a right one".
+   In that case the learner's late answer is ignored, even a right one.
 2. Check the `questionId` is the current one (409 `placement.questionMismatch`), and that the `choice` is one of the
    options (400 `placement.invalidChoice`).
 3. `processAnswer`.
 
-If the bank runs dry mid-run (`placement.poolExhausted`), the run is deleted, "so the learner can start again".
+If the bank runs dry mid-run (`placement.poolExhausted`), the run is deleted, so the learner can start again.
 
 **`processAnswer`** does the work of one answer:
 

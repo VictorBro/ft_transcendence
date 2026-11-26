@@ -170,7 +170,8 @@ routes allow 5 tries a minute per IP address, so do the steps at a calm pace: if
 "Too many attempts. Try again in a minute", wait one minute.
 
 1. Start the app with `make run` (or `make all`) and open the address it prints,
-   `https://localhost`.
+   `https://localhost`. If port 443 was not free, that address has another port (for example
+   `https://localhost:8443` on a 42 machine).
 2. Create a new account at `/en/signup`: fill **Email**, **Display name**, **Password** and
    **Confirm password**, then click **Create account**. You land on `/en/onboarding`.
 3. Open `/en/profile`. Under **Security**, click **Two factor authentication**. The page
@@ -229,9 +230,8 @@ Run the unit tests with `make test`, the API tests against a real database and R
 - **SHA-256 for recovery codes, argon2 for passwords.** Passwords are chosen by people, so they
   need a slow hash. Recovery codes are random (20 characters from a 31-character alphabet, about
   99 bits), so a fast hash is enough, and a login finds the code with one indexed lookup instead
-  of ten slow checks. Note: the comment above `RecoveryCode` in `schema.prisma` and the text of
-  PR #5 say "160 bits"; the real figure from the code is about 99 bits, which is still far too
-  many to guess.
+  of ten slow checks. The text of PR #5 says "160 bits"; the real figure from the code is about
+  99 bits, which is still far too many to guess.
 - **The TOTP secret is stored as plain text** in `User.totpSecret`. The server needs the secret
   itself to check codes, so it cannot be hashed. It is not encrypted either: someone who can
   read the database can make valid codes.

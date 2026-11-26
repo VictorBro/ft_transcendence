@@ -113,7 +113,7 @@ sequenceDiagram
     participant M as express-session
     participant R as Redis
     participant G as SocketGateway.authenticate
-    B->>E: GET /ws (Upgrade: websocket, Cookie: sid=...)
+    B->>E: GET /ws (Upgrade: websocket, Cookie: ft.sid=...)
     E->>M: run session middleware (SessionIoAdapter)
     M->>R: load session by id
     R-->>M: { userId }
@@ -1362,6 +1362,13 @@ what each one shows.
 | david | Europe/London | streak 6 still alive, 0 today |
 | eva | Europe/Berlin | French A1 complete, "Start A2" |
 | felix | UTC | no French; English course with no level (lands on onboarding step 2) |
+
+These states assume **48 ready French A1 lessons** (`SMALLEST_LEVEL`), which is what
+[demo.e2e-spec.ts](../../apps/api/test/demo.e2e-spec.ts) creates. A `make` stack has **12**
+today (12 briefs for the 120 entries of `content/outlines/fr-a1.json`). With 12 lessons, ben,
+chloe and david finish more lessons than the level holds, so they all show the level complete,
+like eva. chloe has no failed lesson today (her 40 lands on a lesson she already passed, and the
+best score is kept), and ben's lesson today shows 93, not 75.
 
 Each `DemoCourse` has `lang`, `level` (or `null`), `switches` (level changes `daysAgo`),
 `goal`, `passRate`, `days` and `todayScores`. `days` is either a list (`[3, 0, 3]` = 3

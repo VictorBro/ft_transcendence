@@ -20,6 +20,7 @@
 .vscode
 .devcontainer
 docs
+docs-fr
 
 .env
 .env.*

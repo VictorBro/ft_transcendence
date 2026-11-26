@@ -10,6 +10,9 @@ Dans ce chapitre :
     niveau bouge, comment le résultat est construit
 - La **banque de questions**, et comment le LLM la remplit quand un apprenant en manque (`question-generation/`)
 
+Les routes de ce chapitre sont écrites sans le préfixe global `/api` ([app.setup.ts](../../apps/api/src/app.setup.ts)) :
+`POST /placement` est `POST /api/placement` sur le réseau.
+
 ---
 
 ## La vue d'ensemble
@@ -748,14 +751,14 @@ question en cours (mêmes options, chrono qui continue). Il ne change jamais rie
 
 1. `checkEndedOrTimedOutAndSaveNullAnswerIfTimedOut` (un nom long mais honnête) : charger le passage ; s'il est
    terminé, renvoyer le résultat ; si la question en cours a expiré, enregistrer une réponse `null` pour elle et
-   renvoyer la suite. Dans ce cas, la réponse en retard de l'apprenant est ignorée, "even a right one" (même une
-   bonne).
+   renvoyer la suite. Dans ce cas, la réponse en retard de l'apprenant est ignorée, même une
+   bonne.
 2. Vérifier que le `questionId` est celui en cours (409 `placement.questionMismatch`), et que le `choice` est une des
    options (400 `placement.invalidChoice`).
 3. `processAnswer`.
 
-Si la banque se vide en plein passage (`placement.poolExhausted`), le passage est supprimé, "so the learner can start
-again" (pour que l'apprenant puisse recommencer).
+Si la banque se vide en plein passage (`placement.poolExhausted`), le passage est supprimé, pour que l'apprenant
+puisse recommencer.
 
 **`processAnswer`** fait le travail d'une réponse :
 

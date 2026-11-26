@@ -14,10 +14,10 @@ CI veut dire « continuous integration » (intégration continue) : vérifier ch
 
 ## Ce que demande le sujet
 
-Le module est une ligne du tableau Modules of choice de
+Le module est une ligne du tableau Modules au choix de
 [../subject/summary.md](../subject/summary.md) :
 
-> | Major | Custom module, substantial and technically complex, justified in the README (why chosen, what challenges, what value, why 2 points). Trivial features = rejection |
+> | Major | Module sur mesure, conséquent et techniquement complexe, justifié dans le README (pourquoi ce choix, quelles difficultés, quelle valeur, pourquoi 2 points). Fonctionnalités triviales = refus |
 
 Le PDF ([../../docs/subject/ft_transcendence.pdf](../../docs/subject/ft_transcendence.pdf), chapitre IV.10, Modules of
 choice) le formule ainsi :
@@ -249,7 +249,8 @@ un autre reverse proxy ». Utilise celui qui est en marche.
 7. Ouvre un job `playwright (...)` du run `e2e`. Montre les étapes : démarrer la stack de
    production, attendre le proxy, appliquer les migrations, lancer la suite.
 8. Demande à un coéquipier d'approuver, puis **Squash and merge**. Montre les quatre workflows qui redémarrent
-   sur `main`, et le run `images` qui ajoute `main-<shortsha>` et `latest`.
+   sur `main`, et le run `images` qui ajoute `main-<shortsha>` et `latest`. Un cinquième run,
+   `pages build and deployment`, vient de GitHub lui-même : il publie `docs/` sur GitHub Pages.
 9. Sur le serveur, quelques minutes plus tard :
    ```bash
    journalctl -u ft-deploy.service -n 50
@@ -381,9 +382,12 @@ l'explique.
 - **Un merge arrive sur le site en ligne sans personne sur le serveur.** Environ 4 minutes
   d'`images`, puis au plus 5 minutes jusqu'au prochain tick du timer. Ça couvre aussi la
   config de monitoring : une nouvelle règle d'alerte mergée sur `main` est déployée comme du code.
-- **Chaque release peut être retrouvée et on peut revenir en arrière.** Chaque commit de `main` a une
-  image `main-<shortsha>`. Fixer `IMAGE_TAG` dessus dans le `.env` du serveur bloque le serveur sur cette version ou
-  le fait revenir en arrière.
+- **Chaque release peut être retrouvée, et on peut revenir aux récentes.** Chaque commit de `main` a une
+  image `main-<shortsha>`. Fixer `IMAGE_TAG` dessus dans le `.env` du serveur, à la main, bloque le serveur
+  sur cette version ou le fait revenir en arrière. Avec le fichier compose actuel, ça marche jusqu'au
+  merge du monitoring de #129 ; les tags plus anciens demandent le fichier compose de ce commit
+  ([`deployment.md`](../operations/deployment.md) « Redéployer »). Le schéma de la base ne revient
+  pas en arrière : les migrations vont seulement vers l'avant.
 - **Les mêmes images tournent sur les deux types de processeur.** Un seul nom d'image sert les machines `amd64` et
   `arm64`, donc le serveur peut être de l'un ou l'autre type sans changement.
 - **Les nouveaux coéquipiers ont un retour rapide, en local.** Les hooks et `make all` lancent les mêmes
@@ -401,7 +405,7 @@ machine du développeur jusqu'au serveur en ligne :
 - **18 jobs d'images par push** : 6 images sur 2 architectures, puis 6 manifest lists.
   Un scan de sécurité avec les résultats suivis dans l'onglet Security.
 - **Un agent de deploy** (`deploy.sh` avec un service et un timer systemd) qui gère une release
-  encore en cours de publication, les migrations ratées, les nouveaux essais et le retour en arrière, sans aucun identifiant dans
+  encore en cours de publication, les migrations ratées et les nouveaux essais, sans aucun identifiant dans
   GitHub.
 - **Il tourne depuis le début du projet :** plus de 600 runs chacun pour `ci`, `e2e`
   et `images` depuis le 2026-08-07.

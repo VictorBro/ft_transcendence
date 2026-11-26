@@ -165,6 +165,11 @@ Database image: `pgvector/pgvector:0.8.7-pg18-trixie` (plain `postgres` has no p
 **Bare `make` is the evaluator path**: runs the CI checks, builds prod targets, starts `compose.prod.yml`, migrates,
 seeds, then runs the browser tests. That is the graded single command, and it runs the same artifacts the console gate tests.
 
+`make` runs inside the devcontainer (in VS Code: Reopen in Container). On the host, a `check-devcontainer`
+guard stops most targets; only the guard itself, `help`, `doctor`, `clean`, the compose passthroughs (`down`,
+`logs`, `ps`, `shell`), `tooling-image`, `migrate`, `seed` and `db-ready` are exempt
+([Makefile](../../Makefile), `check-devcontainer`).
+
 ```
 make            # evaluator: CI checks → build (prod) → up → migrate → seed → certs → monitoring-check → Playwright
 make dev        # dev stack (compose.override): hot reload, bind mounts

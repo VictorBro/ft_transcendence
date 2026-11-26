@@ -455,7 +455,7 @@ flowchart TD
 
 Les modèles de noms de dossiers :
 
-- **Route group `(name)`** (groupe de routes) : les parenthèses veulent dire « ce dossier ne fait pas partie de l'URL ». Il sert seulement à regrouper des pages pour qu'elles partagent un layout. `(main)`, `(dashboard)` et `(messages)` ont chacun leur propre `layout.tsx` avec un header et un footer différents, mais `/fr/login` ne contient pas `main`.
+- **Route group `(name)`** (groupe de routes) : les parenthèses veulent dire « ce dossier ne fait pas partie de l'URL ». Il sert seulement à regrouper des pages pour qu'elles partagent un layout. `(main)`, `(dashboard)` et `(messages)` ont chacun leur propre `layout.tsx` avec un header différent (les trois utilisent le même `LegalFooter`), mais `/fr/login` ne contient pas `main`.
 - **Segment dynamique `[name]`** : correspond à n'importe quel morceau de l'URL et le donne à la page comme param. `[locale]` correspond à `fr`, `[id]` à un id d'utilisateur, `[lang]` à une langue de cours.
 - **Catch-all `[...name]`** (attrape-tout) : correspond à un ou plusieurs morceaux. [[...rest]/page.tsx](../../apps/web/app/[locale]/[...rest]/page.tsx) attrape chaque chemin inconnu et appelle `notFound()`, pour que le visiteur voie la 404 traduite au lieu de celle de Next, en anglais :
 
@@ -483,7 +483,7 @@ Une page ou un layout peut aussi exporter :
 
 - `generateMetadata()` ou `metadata` : le `<title>` et la description. La page de connexion utilise `generateMetadata` pour que le titre de l'onglet soit traduit.
 - `generateStaticParams()` : la liste des valeurs de param à construire à l'avance. Le layout racine renvoie les trois locales.
-- `export const dynamic = 'force-dynamic'` : « toujours faire le rendu à chaque requête, ne jamais mettre en cache ». Utilisé sur les pages dont le contenu dépend de qui demande, et sur les routes de santé (health). Sur les pages, il dit ce qui est déjà vrai : lire le cookie de session (`cookies()`, appelé par `currentUser()` et par la nav de chaque layout de groupe) rend à lui seul une route dynamique. Sur les routes de santé, qui ne lisent aucun cookie, c'est lui qui les empêche d'être construites une seule fois.
+- `export const dynamic = 'force-dynamic'` : « toujours faire le rendu à chaque requête, ne jamais mettre en cache ». Utilisé sur les pages dont le contenu dépend de qui demande, et sur les routes de santé (health). Sur les pages, il dit ce qui est déjà vrai : lire le cookie de session (`cookies()`, appelé par `currentUser()` et par la nav de chaque layout de groupe) rend à lui seul une route dynamique. Sur les routes de santé, c'est aussi une sécurité : depuis Next.js 15, un route handler `GET` s'exécute déjà à chaque requête, sauf s'il choisit d'être mis en cache (`force-static`).
 - `viewport` : les réglages du viewport mobile (layout racine).
 
 Le chapitre 2 passe en revue chaque fichier de `app/` en détail.
@@ -559,7 +559,7 @@ sequenceDiagram
   participant B as Navigateur
   participant N as Serveur Next.js
   participant A as API NestJS
-  B->>N: GET /fr/users/abc (cookie: session=...)
+  B->>N: GET /fr/users/abc (cookie: ft.sid=...)
   N->>A: GET /api/auth/me (même cookie)
   A-->>N: 200 JSON de l'utilisateur
   N->>A: GET profil + amis (même cookie)
@@ -893,7 +893,7 @@ const config = {
 
 ### next-env.d.ts
 
-[next-env.d.ts](../../apps/web/next-env.d.ts) est généré par Next.js. Il charge les types globaux de Next (par exemple pour que `import logo from './x.webp'` passe la vérification de types) et les types de routes générés. Ne le modifie pas ; le fichier le dit lui-même.
+`next-env.d.ts` est généré par Next.js, et le [.gitignore](../../.gitignore) de la racine le garde hors de git. Il charge les types globaux de Next (par exemple pour que `import logo from './x.webp'` passe la vérification de types) et les types de routes générés. Ne le modifie pas ; le fichier le dit lui-même.
 
 ### Dockerfile
 

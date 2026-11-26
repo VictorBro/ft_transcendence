@@ -761,7 +761,7 @@ possible: 100,
 
 ## Le timer de l'examen : [play/exam-timer.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/play/exam-timer.tsx>)
 
-Le serveur stocke quand chaque page d'examen a commencé, et donne `remainingMs` avec la vue. Le player calcule une **date limite** selon l'horloge de cet onglet : `receivedAt + view.remainingMs`, et la donne à `ExamTimer` :
+Le serveur stocke la date limite de la page d'examen au curseur (fixée quand le curseur l'atteint : maintenant plus son compte à rebours), et donne `remainingMs` (cette date limite moins maintenant) avec la vue. Le player calcule une **date limite** selon l'horloge de cet onglet : `receivedAt + view.remainingMs`, et la donne à `ExamTimer` :
 
 ```tsx
 export function ExamTimer({ deadline, ranOut, onZero, limitS }: { ... }) {

@@ -7,9 +7,9 @@ privés à un ami. Les messages arrivent en direct, sont stockés, et affichent 
 
 ## Ce que demande le sujet
 
-Le module est une ligne du tableau Web modules de [../subject/summary.md](../subject/summary.md) :
+Le module est une ligne du tableau Web de [../subject/summary.md](../subject/summary.md) :
 
-> | Major | User interaction: basic **chat** + **profiles** + **friends** |
+> | Major | Interaction entre utilisateurs : **chat** de base + **profils** + **amis** |
 
 Le PDF ([../../docs/subject/ft_transcendence.pdf](../../docs/subject/ft_transcendence.pdf), chapitre IV, Web) le formule ainsi :
 
@@ -304,7 +304,7 @@ Chromium, Firefox et WebKit, comme la CI.
   mais le serveur a peut-être stocké le message. L'envoyer de nouveau l'affiche alors deux fois
   ([send-message.ts](../../apps/web/lib/send-message.ts)).
 - **Une seule instance de l'API.** Les rooms des sockets vivent dans la mémoire du processus de l'API, donc tous les utilisateurs doivent être
-  sur la même instance ([../architecture/realtime.md](../architecture/realtime.md), "One API instance").
+  sur la même instance ([../architecture/realtime.md](../architecture/realtime.md), « Une seule instance de l'API »).
 
 ## Qui l'a construit
 

@@ -9,10 +9,10 @@ personne peut se connecter à la place avec un des dix codes de récupération �
 
 ## Ce que demande le sujet
 
-Le module est une ligne du tableau User Management modules de
+Le module est une ligne du tableau Gestion des utilisateurs de
 [../subject/summary.md](../subject/summary.md) :
 
-> | Minor | Complete 2FA |
+> | Minor | 2FA complète |
 
 Le PDF ([../../docs/subject/ft_transcendence.pdf](../../docs/subject/ft_transcendence.pdf), chapitre IV, User
 Management) le formule ainsi :
@@ -169,7 +169,8 @@ de connexion autorisent 5 essais par minute par adresse IP, donc fais les étape
 "Too many attempts. Try again in a minute", attends une minute.
 
 1. Lance l'app avec `make run` (ou `make all`) et ouvre l'adresse qu'elle affiche,
-   `https://localhost`.
+   `https://localhost`. Si le port 443 n'était pas libre, cette adresse a un autre port (par exemple
+   `https://localhost:8443` sur une machine de 42).
 2. Crée un nouveau compte sur `/en/signup` : remplis **Email**, **Display name**, **Password** et
    **Confirm password**, puis clique sur **Create account**. Tu arrives sur `/en/onboarding`.
 3. Ouvre `/en/profile`. Sous **Security**, clique sur **Two factor authentication**. La page
@@ -228,9 +229,8 @@ Lance les tests unitaires avec `make test`, les tests de l'API contre une vraie 
 - **SHA-256 pour les codes de récupération, argon2 pour les mots de passe.** Les mots de passe sont choisis par des gens, donc ils
   ont besoin d'un hash lent. Les codes de récupération sont aléatoires (20 caractères pris dans un alphabet de 31 caractères, environ
   99 bits), donc un hash rapide suffit, et une connexion trouve le code avec une seule recherche indexée au lieu
-  de dix vérifications lentes. À noter : le commentaire au-dessus de `RecoveryCode` dans `schema.prisma` et le texte de
-  la PR #5 disent "160 bits" ; le vrai chiffre d'après le code est d'environ 99 bits, ce qui reste beaucoup trop
-  pour être deviné.
+  de dix vérifications lentes. Le texte de la PR #5 dit "160 bits" ; le vrai chiffre d'après le code est d'environ
+  99 bits, ce qui reste beaucoup trop pour être deviné.
 - **Le secret TOTP est stocké en clair** dans `User.totpSecret`. Le serveur a besoin du secret
   lui-même pour vérifier les codes, donc il ne peut pas être hashé. Il n'est pas chiffré non plus : quelqu'un qui peut
   lire la base de données peut fabriquer des codes valides.

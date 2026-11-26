@@ -8,6 +8,8 @@ In this chapter:
 - Four sequence diagrams: signup, login without 2FA, login with 2FA, logout
 - The `users/` folder, file by file: module, controller (every route, with the avatar upload), DTOs, service, `public-user.ts`, `active-day.ts`
 
+Routes in this chapter are written without the global `/api` prefix ([app.setup.ts](../../apps/api/src/app.setup.ts)): `PATCH /users/me` is `PATCH /api/users/me` on the wire.
+
 ---
 
 ## The big picture

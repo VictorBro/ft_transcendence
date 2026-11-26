@@ -24,10 +24,10 @@ Accessibility and Internationalization) le formule comme ceci :
 > - Consistent UI/UX across all supported browsers.
 
 « Additional » veut dire en plus du navigateur que la partie obligatoire demande déjà. Le même fichier
-liste, sous « Partie obligatoire » :
+dit, au chapitre III.2, General requirements :
 
-> - Compatible avec la dernière version stable de **Google Chrome**.
-> - **Aucune erreur ni warning JS** dans la console du navigateur.
+> - Your website must be compatible with the latest stable version of Google Chrome.
+> - No warnings or errors about the Javascript code should appear in the browser console.
 
 Donc les deux navigateurs en plus ne doivent pas non plus afficher d'erreurs ou d'avertissements dans la console.
 
@@ -38,7 +38,7 @@ Donc les deux navigateurs en plus ne doivent pas non plus afficher d'erreurs ou 
 | Au moins 2 navigateurs en plus                    | Firefox et WebKit (le moteur de Safari), à côté de Chromium. Playwright (l'outil qui pilote un vrai navigateur dans nos tests) a un « project » par moteur : `chromium` (Desktop Chrome), `firefox` (Desktop Firefox) et `webkit` (Desktop Safari).                                                                                                                             | [e2e/playwright.config.ts](../../e2e/playwright.config.ts)                                                                       |
 | Entièrement supportés                             | L'app a des corrections pour des choses que seul un moteur fait (voir « Comment ça marche »). Le contrôle de la console (un test qui échoue à la moindre erreur ou au moindre avertissement dans la console) tourne sur les trois moteurs. Navigateurs de bureau seulement, voir [Limites et choix](#limites-et-choix).                                                         | [e2e/support/console-guard.ts](../../e2e/support/console-guard.ts), [e2e/tests/console.spec.ts](../../e2e/tests/console.spec.ts) |
 | Testés                                            | Chaque fichier de spec tourne sur les trois moteurs dans la CI : 3 moteurs × 2 parties = 6 jobs, chacun sur sa propre stack de production. Un dernier job, « playwright (production stack) », échoue si un des six n'a pas réussi. Quelques tests tournent seulement sur Chromium, chacun avec un `test.skip` qui donne la raison (voir [Limites et choix](#limites-et-choix)). | [.github/workflows/e2e.yml](../../.github/workflows/e2e.yml)                                                                     |
-| Documentés, avec les limites de chaque navigateur | Le README a une section « Browser support » : quels moteurs, comment la CI les lance, les tests qui tournent seulement sur Chromium (avec un lien vers la liste dans [Limites et choix](#limites-et-choix)), comment lancer un seul moteur, et les limites connues (pas de voix de lecture, navigateurs mobiles pas testés).                                                    | [README.md](../../README.md#browser-support)                                                                                     |
+| Documentés, avec les limites de chaque navigateur | Le README a une section « Browser support » : quels moteurs, comment la CI les lance, les tests qui tournent seulement sur Chromium (avec un lien vers la liste dans [Limites et choix](#limites-et-choix)), comment lancer un seul moteur, et les limites connues (pas de voix de lecture, vrais navigateurs mobiles pas testés, largeur de téléphone de 360 px vérifiée sur chaque moteur). | [README.md](../../README.md#browser-support)                                                                                     |
 | UI/UX cohérente entre les navigateurs             | Les trois moteurs reçoivent les mêmes pages, les mêmes styles et les mêmes tests, avec les mêmes vérifications de ce qui est à l'écran. La vérification de la mise en page en largeur de téléphone tourne aussi sur chaque moteur.                                                                                                                                              | [e2e/tests/layout.spec.ts](../../e2e/tests/layout.spec.ts), [e2e/tests/layout-gate.spec.ts](../../e2e/tests/layout-gate.spec.ts) |
 
 ## Comment ça marche
@@ -124,19 +124,25 @@ sans le son ([apps/web/components/lesson/kinds/functions.tsx](../../apps/web/com
    `playwright (firefox, lesson)`, `playwright (firefox, rest)`, `playwright (webkit, lesson)`,
    `playwright (webkit, rest)`, et le contrôle `playwright (production stack)`, tous verts.
 3. **Les tests, lancés en direct.** Dans le devcontainer, avec la stack lancée (après `make` ou
-   `make run`) :
+   `make run`), et avant le reste de la démo :
 
    ```bash
    make playwright BROWSERS="firefox webkit"   # the two additional engines
    make playwright-all                         # or all three, as CI does
-   make report                                 # serves the report on http://127.0.0.1:9323
    ```
 
-   Dans le rapport, filtre par project (`firefox`, `webkit`) et montre les tests réussis. Montre les
-   quelques tests sautés et leur raison. Un run complet prend du temps : lance-le avant les autres modules.
+   Attends la fin du run avant de montrer autre chose dans l'app. Après une suite verte, sa dernière
+   étape redémarre l'API ([e2e/tests/restart.spec.ts](../../e2e/tests/restart.spec.ts)), donc une page
+   ouverte à ce moment perd l'API pendant quelques secondes. Le terminal liste chaque test avec son moteur,
+   par exemple `[firefox] ›` : montre les tests réussis, et les quelques tests sautés (leurs raisons
+   sont dans [Limites et choix](#limites-et-choix)). `make report` ne sert que le rapport du dernier
+   run, et chaque run le remplace : après une suite verte, c'est le run du redémarrage seul, un test
+   Chromium. Pour les résultats de chaque moteur, utilise le terminal et les jobs CI de l'étape 2. La
+   CI n'envoie un rapport (`playwright-report-<browser>-<part>`) que pour un job qui a échoué.
 
 4. **À la main.** Sur la machine de l'évaluateur, ouvre l'adresse affichée par `make` (par exemple
-   <https://localhost>) dans Firefox, puis dans Safari s'il y a un Mac. Ouvre la console de développement
+   <https://localhost>, ou `https://localhost:8443` sur une machine de 42 où le port 443 n'était pas
+   libre) dans Firefox, puis dans Safari s'il y a un Mac. Ouvre la console de développement
    du navigateur. Va sur `/en/login`, clique sur **Create one**, inscris-toi et passe l'onboarding. Ouvre une
    leçon. La console reste vide. Dans Firefox, on peut jouer un plateau à glisser en faisant glisser les options.
 
