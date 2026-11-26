@@ -9,8 +9,8 @@ import { PrismaClient } from '../generated/prisma/client';
  * error naming localhost, which sends whoever is debugging a container to
  * entirely the wrong place.
  *
- * A free function because `super()` must be the first statement in a class that
- * has property initializers, so this cannot be inlined into the constructor.
+ * A free function because it runs inside the `super(...)` arguments, before
+ * `this` exists, so it cannot be an instance method.
  */
 function requireDatabaseUrl(): string {
   const url = process.env.DATABASE_URL;
@@ -19,6 +19,9 @@ function requireDatabaseUrl(): string {
   }
   return url;
 }
+
+/** Per new connection. Postgres on the compose network answers in milliseconds. */
+export const DATABASE_CONNECT_TIMEOUT_MS = 5_000;
 
 /**
  * The only place the Prisma client is instantiated. Everything that touches the
@@ -37,16 +40,30 @@ export class PrismaService extends PrismaClient implements OnModuleInit, OnModul
     // Read from the environment rather than through ConfigService: the client is
     // constructed before Nest resolves providers, and prisma.config.ts reads the
     // same variable for the CLI, so the two cannot point at different databases.
-    super({ adapter: new PrismaPg({ connectionString: requireDatabaseUrl() }) });
+    //
+    // node-postgres waits forever for a connection by default, so a host that
+    // drops packets would hang the start check below until the kernel gives up.
+    super({
+      adapter: new PrismaPg({
+        connectionString: requireDatabaseUrl(),
+        connectionTimeoutMillis: DATABASE_CONNECT_TIMEOUT_MS,
+      }),
+    });
   }
 
   /**
-   * Connecting during bootstrap rather than lazily on the first query: a bad
-   * DATABASE_URL then fails the container's start instead of the first request
-   * a user makes, which is what the compose healthcheck is there to catch.
+   * Checked during bootstrap rather than on the first query: a bad DATABASE_URL
+   * then stops the API at start instead of failing the first request a user
+   * makes.
+   *
+   * `$connect()` alone proves nothing: with the pg adapter it only builds a
+   * `pg.Pool`, and a pool opens no connection before its first query. The
+   * round-trip is what reaches Postgres. Its rejection propagates out of
+   * `app.listen`, so the process exits before it listens.
    */
   async onModuleInit(): Promise<void> {
     await this.$connect();
+    await this.$queryRaw`SELECT 1`;
     this.logger.log('database connected');
   }
 

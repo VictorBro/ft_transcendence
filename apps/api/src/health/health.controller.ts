@@ -20,8 +20,11 @@ export class HealthController {
   @ApiOperation({ summary: 'Liveness probe', security: [] })
   @ApiOkResponse({ type: HealthResponseDto })
   // Always 200, including when a dependency is down: the body carries the
-  // verdict. A non-2xx here would make Docker restart a container whose only
-  // problem is that Postgres is still starting.
+  // verdict. The image HEALTHCHECK only asks whether the API answers. Postgres
+  // and Redis have their own healthchecks, and a wrong URL already stops the
+  // API at start. Docker never restarts an unhealthy container, so a non-2xx
+  // would only mark the API unhealthy during a database outage and fail
+  // `docker compose up --wait`, which is not the API's fault.
   check(): Promise<HealthResponseDto> {
     return this.health.check();
   }

@@ -1,6 +1,20 @@
+import { createServer } from 'node:net';
+
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { PrismaService } from './prisma.service';
+
+/** A port that was free a moment ago and now refuses connections. */
+async function closedPort(): Promise<number> {
+  const server = createServer();
+  await new Promise<void>((resolve) => server.listen(0, '127.0.0.1', resolve));
+  const address = server.address();
+  await new Promise<void>((resolve) => server.close(() => resolve()));
+  if (address === null || typeof address === 'string') {
+    throw new Error('expected a TCP address');
+  }
+  return address.port;
+}
 
 /**
  * No database here: the connection itself is exercised by the Supertest suite in
@@ -25,12 +39,29 @@ describe('PrismaService', () => {
     process.env.DATABASE_URL = databaseUrl;
   });
 
-  it('connects during bootstrap rather than on the first query', async () => {
+  it('reaches the database during bootstrap rather than on the first query', async () => {
     const connect = vi.spyOn(service, '$connect').mockResolvedValue(undefined);
+    const query = vi.spyOn(service, '$queryRaw').mockResolvedValue([{ '?column?': 1 }]);
 
     await service.onModuleInit();
 
     expect(connect).toHaveBeenCalledOnce();
+    // $connect() only builds the pg pool; the query is what opens a connection.
+    expect(query).toHaveBeenCalledOnce();
+  });
+
+  // No mock: a real pool against a port nothing listens on. Before #221 this
+  // resolved, logged "database connected" and left the API listening.
+  it('fails the start when DATABASE_URL points at nothing', async () => {
+    const port = await closedPort();
+    process.env.DATABASE_URL = `postgresql://ft:ft@127.0.0.1:${port}/ft?schema=public`;
+    const unreachable = new PrismaService();
+
+    try {
+      await expect(unreachable.onModuleInit()).rejects.toThrow();
+    } finally {
+      await unreachable.onModuleDestroy();
+    }
   });
 
   it('disconnects on shutdown', async () => {
