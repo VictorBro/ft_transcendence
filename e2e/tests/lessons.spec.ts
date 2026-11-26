@@ -236,6 +236,34 @@ test.describe('the all lessons page', () => {
     await expect(vocabulary).toBeChecked();
   });
 
+  // #226. The fields used to stay on the old view until the link's landed, so
+  // this sent Grammar back with Vocabulary: Clear filters was undone.
+  test('a box checked while Clear filters is on its way starts from the cleared view', async ({
+    onboarded,
+  }) => {
+    await onboarded.goto(list('?kind=grammar'));
+    await slowNavigations(onboarded, 400);
+
+    await onboarded.getByRole('link', { name: 'Clear filters' }).click();
+    await onboarded.getByRole('checkbox', { name: 'Vocabulary' }).check();
+
+    await expect(onboarded).toHaveURL(/\/lessons\?kind=vocabulary$/);
+    await expect(onboarded.getByRole('checkbox', { name: 'Grammar' })).not.toBeChecked();
+  });
+
+  test('a box checked while a chip is on its way starts from the chip’s view', async ({
+    onboarded,
+  }) => {
+    await onboarded.goto(list('?kind=grammar,vocabulary'));
+    await slowNavigations(onboarded, 400);
+
+    await onboarded.getByRole('link', { name: 'Remove Vocabulary' }).click();
+    await onboarded.getByRole('checkbox', { name: 'Reading' }).check();
+
+    await expect(onboarded).toHaveURL(/\/lessons\?kind=grammar%2Creading$/);
+    await expect(onboarded.getByRole('checkbox', { name: 'Vocabulary' })).not.toBeChecked();
+  });
+
   test('Back while a change is on its way puts the boxes back on the view', async ({
     onboarded,
   }) => {
