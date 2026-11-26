@@ -9,6 +9,17 @@ function requireRedisUrl(): string {
   return url;
 }
 
+/** Per connection attempt. Redis on the compose network answers in milliseconds. */
+export const REDIS_CONNECT_TIMEOUT_MS = 5_000;
+
+/**
+ * node-redis's own default, which a custom strategy replaces: doubling from
+ * 50 ms up to 2 s, plus up to 200 ms of jitter so clients do not retry in step.
+ */
+export function reconnectDelayMs(retries: number): number {
+  return Math.min(2 ** retries * 50, 2_000) + Math.floor(Math.random() * 200);
+}
+
 /**
  * The one Redis connection. Sessions, presence, the placement run state, and
  * the lesson discussion's rate limits all share it rather than opening their own.
@@ -18,12 +29,26 @@ export class RedisService implements OnModuleInit, OnModuleDestroy {
   private readonly logger = new Logger(RedisService.name);
   readonly client: RedisClientType;
 
+  /** Set once the first connect succeeds. Before it, a failure is a bad setup. */
+  private connected = false;
+
   constructor() {
-    // A wrong host hangs instead of refusing, so bound it: five seconds turns a
-    // misconfiguration into a startup error rather than a stuck container.
     this.client = createClient({
       url: requireRedisUrl(),
-      socket: { connectTimeout: 5_000 },
+      socket: {
+        // A wrong host hangs instead of refusing, so each attempt is bounded.
+        connectTimeout: REDIS_CONNECT_TIMEOUT_MS,
+        // The timeout alone ends one attempt, and the default strategy then
+        // retries forever, so `connect()` would never settle and the API would
+        // hang before listening. Compose starts the API only once Redis is
+        // healthy, so a first connect that fails is a wrong REDIS_URL: give up
+        // and let `connect()` reject. After that, a dropped connection is an
+        // outage, and the client keeps reconnecting with a backoff.
+        reconnectStrategy: (retries, cause) =>
+          this.connected
+            ? reconnectDelayMs(retries)
+            : new Error(`redis: first connect failed: ${cause.message}`),
+      },
     });
     // Without a listener, a dropped connection raises an unhandled 'error' event
     // and takes the process down. Reconnection is automatic.
@@ -32,6 +57,7 @@ export class RedisService implements OnModuleInit, OnModuleDestroy {
 
   async onModuleInit(): Promise<void> {
     await this.client.connect();
+    this.connected = true;
     this.logger.log('redis connected');
   }
 
