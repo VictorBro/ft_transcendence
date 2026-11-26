@@ -1,13 +1,14 @@
 import {
   type Language,
   type LessonCard,
+  type LessonCounts,
   type LessonQuery,
   LESSON_PASS_MARK,
   LESSONS_PAGE_SIZE,
 } from '@ft/shared';
 import { describe, expect, it } from 'vitest';
 
-import { bareVowels, searchLessons } from './lesson-search';
+import { bareVowels, filterCounts, searchLessons } from './lesson-search';
 
 /** A todo grammar card; a score also sets day, finishedAt and the status that follows it. */
 const card = (position: number, overrides: Partial<LessonCard> = {}): LessonCard => ({
@@ -182,6 +183,11 @@ describe('searchLessons, filters', () => {
     expect(positions(cards, { theme: ['travel'] })).toEqual([6]);
   });
 
+  // A lesson has a topic or a theme, never both: an AND would always give 0 (#223).
+  it('keeps a lesson whose topic or theme is listed', () => {
+    expect(positions(cards, { topic: ['pronouns'], theme: ['travel'] })).toEqual([4, 6]);
+  });
+
   it('needs every filter to match', () => {
     expect(positions(cards, { status: ['todo'], topic: ['nouns_and_determiners'] })).toEqual([1]);
     expect(positions(cards, { kind: ['reading'], theme: ['daily_life'] })).toEqual([]);
@@ -351,5 +357,54 @@ describe('searchLessons, pages', () => {
 
   it('is page 1 with no matches', () => {
     expect(searchLessons([], query({ page: 4 }), 'fr')).toEqual({ items: [], total: 0, page: 1 });
+  });
+});
+
+describe('filterCounts', () => {
+  const cards = [
+    card(1),
+    scored(2, 90, '2026-10-10'),
+    scored(3, 40, '2026-10-11'),
+    card(4, { topic: 'pronouns', title: 'Les pronoms' }),
+    theme(5),
+    theme(6, { kind: 'reading', theme: 'travel' }),
+  ];
+  const counts = (q: Partial<LessonQuery> = {}) => filterCounts(cards, query(q), 'fr');
+
+  // The promise of the counts: each one is the total of the list its box gives.
+  it('gives each box the total of the list it would give', () => {
+    const checks: [keyof LessonCounts, Partial<LessonQuery>][] = [
+      ['status', { kind: ['grammar'] }],
+      ['kind', { status: ['todo'], q: 'lesson' }],
+      ['topic', { kind: ['grammar', 'reading'], theme: ['travel'] }],
+      ['theme', { topic: ['pronouns'] }],
+    ];
+    for (const [block, q] of checks) {
+      for (const [value, count] of Object.entries(counts(q)[block])) {
+        const only =
+          block === 'topic' || block === 'theme'
+            ? { topic: [], theme: [], [block]: [value] }
+            : { [block]: [value] };
+        const list = searchLessons(cards, query({ ...q, ...only }), 'fr');
+        expect({ block, value, count }).toEqual({ block, value, count: list.total });
+      }
+    }
+  });
+
+  it('counts a block as if only that box were checked in it', () => {
+    const result = counts({ kind: ['grammar'], status: ['done'] });
+    expect(result.kind).toEqual({ grammar: 1, vocabulary: 0, functions: 0, reading: 0 });
+    expect(result.status).toMatchObject({ todo: 2, done: 1, failed: 1, soon: 0 });
+  });
+
+  it('counts topics and themes as one block', () => {
+    const result = counts({ topic: ['pronouns'] });
+    expect(result.theme.travel).toBe(1);
+    expect(result.topic.nouns_and_determiners).toBe(3);
+  });
+
+  it('keeps the typed text in every count', () => {
+    const result = counts({ q: 'pronoms' });
+    expect(result.kind).toEqual({ grammar: 1, vocabulary: 0, functions: 0, reading: 0 });
   });
 });

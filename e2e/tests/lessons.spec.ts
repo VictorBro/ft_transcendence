@@ -30,6 +30,7 @@ interface LessonPage {
   page: number;
   pageSize: number;
   items: Card[];
+  counts: Record<'status' | 'kind' | 'topic' | 'theme', Record<string, number>>;
 }
 
 const LANG = ONBOARDED_COURSE.lang;
@@ -80,7 +81,8 @@ test.describe('the all lessons page', () => {
 
     await expect(page.getByRole('checkbox', { name: 'Not passed yet' })).toBeChecked();
     await expect(page.getByRole('checkbox', { name: 'Grammar' })).toBeChecked();
-    await expect(page.getByRole('checkbox', { name: 'Passed', exact: true })).not.toBeChecked();
+    // The count is part of the box's name (#223): "Passed 3".
+    await expect(page.getByRole('checkbox', { name: /^Passed \d+$/ })).not.toBeChecked();
     await expect(page.getByRole('combobox', { name: 'Sort' })).toHaveValue('finishedAt');
     await expect(page.getByRole('combobox', { name: 'Direction' })).toHaveValue('desc');
     expect(await rowIds(page)).toEqual(expected.items.map((card) => card.id));
@@ -255,16 +257,14 @@ test.describe('the all lessons page', () => {
     await onboarded.goto(list());
     await onboarded.getByRole('checkbox', { name: 'Grammar' }).check();
     await expect(onboarded).toHaveURL(/\/lessons\?kind=grammar$/);
-    await onboarded.getByRole('checkbox', { name: 'Passed', exact: true }).check();
-    await expect(onboarded).toHaveURL(/\/lessons\?status=done&kind=grammar$/);
+    await onboarded.getByRole('checkbox', { name: /^Not started \d+$/ }).check();
+    await expect(onboarded).toHaveURL(/\/lessons\?status=todo&kind=grammar$/);
 
     await onboarded.goBack();
 
     await expect(onboarded).toHaveURL(/\/lessons\?kind=grammar$/);
     await expect(onboarded.getByRole('checkbox', { name: 'Grammar' })).toBeChecked();
-    await expect(
-      onboarded.getByRole('checkbox', { name: 'Passed', exact: true }),
-    ).not.toBeChecked();
+    await expect(onboarded.getByRole('checkbox', { name: /^Not started \d+$/ })).not.toBeChecked();
   });
 
   test('a link taken while a search waits keeps the view it opened', async ({ onboarded }) => {
@@ -298,7 +298,10 @@ test.describe('the all lessons page', () => {
   test('a fold stays open when its last box is unticked', async ({ onboarded }) => {
     await onboarded.goto(list());
     await onboarded.locator('summary', { hasText: 'Topics' }).click();
-    const box = onboarded.getByRole('group', { name: 'Topics' }).getByRole('checkbox').first();
+    const box = onboarded
+      .getByRole('group', { name: 'Topics' })
+      .getByRole('checkbox', { disabled: false })
+      .first();
 
     await box.check();
     await expect(onboarded).toHaveURL(/\/lessons\?topic=/);
@@ -393,8 +396,8 @@ test.describe('the all lessons page', () => {
     await onboarded.getByRole('link', { name: 'Filters' }).click();
     await grammar.check();
     await expect(onboarded).toHaveURL(/\/lessons\?kind=grammar#filters$/);
-    await onboarded.getByRole('checkbox', { name: 'Passed', exact: true }).check();
-    await expect(onboarded).toHaveURL(/\/lessons\?status=done&kind=grammar#filters$/);
+    await onboarded.getByRole('checkbox', { name: /^Not started \d+$/ }).check();
+    await expect(onboarded).toHaveURL(/\/lessons\?status=todo&kind=grammar#filters$/);
 
     await onboarded.goBack();
     await onboarded.goBack();
@@ -511,6 +514,44 @@ test.describe('the all lessons page', () => {
 
     await expect(page).toHaveURL(/kind=grammar/);
     await expect(grammar).toBeHidden();
+    await context.close();
+  });
+
+  // #223: Vocabulary + a grammar point always gave 0. The server render greys
+  // those boxes out, so this holds without JavaScript.
+  test('without JavaScript, each box shows its count and a box at 0 is disabled', async ({
+    browser,
+    onboarded,
+  }) => {
+    const context = await browser.newContext({
+      storageState: await onboarded.context().storageState(),
+      javaScriptEnabled: false,
+    });
+    const page = await context.newPage();
+    const box = (block: string, value: string) =>
+      page.locator(`input[name="${block}"][value="${value}"]`);
+    const expected = await readPage(page, '?kind=vocabulary');
+    expect(expected.counts.topic.pronouns).toBe(0);
+
+    await page.goto(list('?kind=vocabulary'));
+    for (const [block, counts] of Object.entries(expected.counts)) {
+      for (const [value, count] of Object.entries(counts)) {
+        // The label ends with its count: "Pronouns 0", never mistaken for "Pronouns 10".
+        await expect(page.locator('label').filter({ has: box(block, value) })).toHaveText(
+          new RegExp(`(^|\\D)${count}$`),
+        );
+        if (count === 0) {
+          await expect(box(block, value)).toBeDisabled();
+        } else {
+          await expect(box(block, value)).toBeEnabled();
+        }
+      }
+    }
+
+    // Checked, a box at 0 stays enabled, so it can be unticked.
+    await page.goto(list('?kind=vocabulary&topic=pronouns'));
+    await expect(box('topic', 'pronouns')).toBeChecked();
+    await expect(box('topic', 'pronouns')).toBeEnabled();
     await context.close();
   });
 

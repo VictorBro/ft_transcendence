@@ -1,9 +1,11 @@
 import { describe, expect, it } from 'vitest';
 
-import { LEVELS } from './item';
+import { LEVELS, TOPICS } from './item';
 import { LEARNABLE_LANGUAGES } from './language';
 import {
   DISCUSSION_LIMITS,
+  LESSON_ROW_STATUSES,
+  THEMES,
   DiscussionTurnSchema,
   FinishResultSchema,
   foldText,
@@ -481,6 +483,8 @@ describe('TodaySchema', () => {
 });
 
 describe('LessonPageSchema', () => {
+  const zeros = <T extends string>(values: readonly T[]) =>
+    Object.fromEntries(values.map((value) => [value, 0])) as Record<T, number>;
   const page = {
     day: '2026-10-12',
     levelTotal: 120,
@@ -488,11 +492,24 @@ describe('LessonPageSchema', () => {
     total: 1,
     page: 1,
     pageSize: 20,
+    counts: {
+      status: zeros(LESSON_ROW_STATUSES),
+      kind: zeros(LESSON_KINDS),
+      topic: zeros(TOPICS),
+      theme: zeros(THEMES),
+    },
   };
 
   it('accepts a page of cards', () => {
     expect(LessonPageSchema.safeParse(page).success).toBe(true);
     expect(LessonPageSchema.safeParse({ ...page, items: [], total: 0 }).success).toBe(true);
+  });
+
+  it('needs a count for every value of every block', () => {
+    const { reading: _dropped, ...kind } = page.counts.kind;
+    expect(LessonPageSchema.safeParse({ ...page, counts: { ...page.counts, kind } }).success).toBe(
+      false,
+    );
   });
 
   it('rejects page 0 and a bad day', () => {

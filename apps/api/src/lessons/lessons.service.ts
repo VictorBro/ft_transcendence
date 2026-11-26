@@ -37,7 +37,7 @@ import { checkCourse, findLesson, LESSON_SELECT, LessonRow } from './course-look
 import { currentDay, dayOf, latestDay, lockCourse, meetGoal, storedStreak } from './goal';
 import { award } from './gamification';
 import { type AchievementStats, challengeFor, progress, rankOf } from './gamification.rules';
-import { searchLessons } from './lesson-search';
+import { filterCounts, searchLessons } from './lesson-search';
 
 /*
  * The 3 selects are shopping lists for Prisma: "from this table, bring me
@@ -293,6 +293,7 @@ export class LessonsService {
       levelTotal: lessons.length,
       ...search,
       pageSize: LESSONS_PAGE_SIZE,
+      counts: filterCounts(levelCards, query, lang),
     });
   }
 
