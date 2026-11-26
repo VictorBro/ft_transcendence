@@ -68,7 +68,9 @@ type Choice = { value: string; label: string; count: number; status?: LessonRowS
  *
  * A box that would give 0 lessons is disabled, unless it is already checked:
  * it must stay uncheckable. Both come from the server render, so this works
- * without JavaScript. A disabled box is never sent, and it is never checked.
+ * without JavaScript, where a disabled box is never checked. With it, an older
+ * view landing can disable a box the learner just checked: LiveForm reads the
+ * boxes themselves, not FormData, so that box is still sent.
  */
 function Choices({
   name,

@@ -214,6 +214,28 @@ test.describe('the all lessons page', () => {
     await expect(onboarded).toHaveURL(/\/lessons\?kind=grammar%2Creading$/);
   });
 
+  // #223. An older view of the form's own, landing while the learner is still
+  // clicking, can disable a box they just checked: its count there is 0. The
+  // race itself cannot be timed reliably, so this sets the state it leaves.
+  // FormData skips a disabled field: the box would stay checked on screen and
+  // drop out of the list.
+  test('a checked box an older view disabled is still sent with the next change', async ({
+    onboarded,
+  }) => {
+    await onboarded.goto(list());
+    const vocabulary = onboarded.getByRole('checkbox', { name: 'Vocabulary' });
+    await vocabulary.check();
+    await expect(onboarded).toHaveURL(/\/lessons\?kind=vocabulary$/);
+    await vocabulary.evaluate((box: HTMLInputElement) => {
+      box.disabled = true;
+    });
+
+    await onboarded.getByRole('checkbox', { name: 'Reading' }).check();
+
+    await expect(onboarded).toHaveURL(/\/lessons\?kind=vocabulary%2Creading$/);
+    await expect(vocabulary).toBeChecked();
+  });
+
   test('Back while a change is on its way puts the boxes back on the view', async ({
     onboarded,
   }) => {
