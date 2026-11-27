@@ -12,9 +12,9 @@ Garde les outils de développement du navigateur ouverts sur l'onglet Console pe
 | 2 | [Framework](modules/framework.md#comment-le-montrer-à-la-soutenance) | un nouveau compte | Victor | 5 min |
 | 3 | [ORM](modules/orm.md#comment-le-montrer-à-la-soutenance) | un nouveau compte, puis `make studio` | Victor, Anaïs | 5 min |
 | 4 | [Rendu côté serveur](modules/ssr.md#comment-le-montrer-à-la-soutenance) | un nouveau compte | Bastian | 5 min |
-| 5 | [Interface LLM](modules/llm-interface.md#comment-le-montrer-à-la-soutenance), étapes 1 à 13 | un nouveau compte | Luca | 5 min |
+| 5 | [Interface LLM](modules/llm-interface.md#comment-le-montrer-à-la-soutenance), étapes 1 à 13 | un nouveau compte | Luca, Endrit | 5 min |
 | 6 | [Recherche avancée](modules/advanced-search.md#comment-le-montrer-à-la-soutenance), dans une fenêtre privée | un nouveau compte | Luca, Endrit | 5 min |
-| 7 | [Interface LLM](modules/llm-interface.md#comment-le-montrer-à-la-soutenance), de l'étape 14 à la fin | le compte de la ligne 5 | Luca | 5 min |
+| 7 | [Interface LLM](modules/llm-interface.md#comment-le-montrer-à-la-soutenance), de l'étape 14 à la fin | le compte de la ligne 5 | Luca, Endrit | 5 min |
 | 8 | [Internationalisation](modules/i18n.md#comment-le-montrer-à-la-soutenance) | un nouveau compte | Luca | 5 min |
 | 9 | [Gamification](modules/gamification.md#comment-le-montrer-à-la-soutenance) | un nouveau compte, puis un apprenant de démo | Anaïs | 5 min |
 | 10 | [2FA](modules/two-factor-auth.md#comment-le-montrer-à-la-soutenance) | un nouveau compte | Victor | 5 min |

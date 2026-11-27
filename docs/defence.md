@@ -12,9 +12,9 @@ Keep the browser's developer tools open on the Console tab for the whole defence
 | 2 | [Framework](modules/framework.md#how-to-show-it-at-the-defence) | a new account | Victor | 5 min |
 | 3 | [ORM](modules/orm.md#how-to-show-it-at-the-defence) | a new account, then `make studio` | Victor, Anaïs | 5 min |
 | 4 | [Server-Side Rendering](modules/ssr.md#how-to-show-it-at-the-defence) | a new account | Bastian | 5 min |
-| 5 | [LLM interface](modules/llm-interface.md#how-to-show-it-at-the-defence), steps 1 to 13 | a new account | Luca | 5 min |
+| 5 | [LLM interface](modules/llm-interface.md#how-to-show-it-at-the-defence), steps 1 to 13 | a new account | Luca, Endrit | 5 min |
 | 6 | [Advanced search](modules/advanced-search.md#how-to-show-it-at-the-defence), in a private window | a new account | Luca, Endrit | 5 min |
-| 7 | [LLM interface](modules/llm-interface.md#how-to-show-it-at-the-defence), step 14 to the end | the account of row 5 | Luca | 5 min |
+| 7 | [LLM interface](modules/llm-interface.md#how-to-show-it-at-the-defence), step 14 to the end | the account of row 5 | Luca, Endrit | 5 min |
 | 8 | [Internationalization](modules/i18n.md#how-to-show-it-at-the-defence) | a new account | Luca | 5 min |
 | 9 | [Gamification](modules/gamification.md#how-to-show-it-at-the-defence) | a new account, then a demo learner | Anaïs | 5 min |
 | 10 | [2FA](modules/two-factor-auth.md#how-to-show-it-at-the-defence) | a new account | Victor | 5 min |
