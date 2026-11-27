@@ -11,15 +11,13 @@
 ## 1. Les mots à connaître
 
 - **Prompt** : le texte qu'on envoie au LLM pour lui dire quoi faire.
-- **Message `system`** : les règles du jeu et le rôle du modèle (« tu es un concepteur d'examens »).
-  Long, presque identique d'un appel à l'autre.
+- **Message `system`** : les règles du jeu et le rôle du modèle (« tu es un concepteur d'examens »). Long, presque identique d'un appel à l'autre.
 - **Message `user`** : la demande précise de cet appel (« écris 13 questions B1 »). Court.
 - **CECR / CEFR** : le cadre européen des niveaux de langue, A1 (débutant) à C2 (maîtrise).
 - **Distracteur** : une mauvaise réponse d'un QCM, qui doit être plausible.
 - **Lot (batch)** : l'ensemble des questions demandées en un seul appel.
 
-`buildQuestionBatchPrompt(cell)` ne fait **que du texte** : pas de réseau, pas de base. Il est
-donc facile à tester ([question-batch.prompt.spec.ts](../../../../apps/api/src/question-generation/prompts/question-batch.prompt.spec.ts)).
+`buildQuestionBatchPrompt(cell)` ne fait **que du texte** : pas de réseau, pas de base. Il est donc facile à tester ([question-batch.prompt.spec.ts](../../../../apps/api/src/question-generation/prompts/question-batch.prompt.spec.ts)).
 
 ---
 
@@ -42,8 +40,7 @@ flowchart TD
   User --> Out
 ```
 
-Taille des lots (constantes de `@ft/shared`, les **mêmes** que celles lues par le schéma Zod,
-donc le prompt et la validation ne peuvent pas se contredire) :
+Taille des lots (constantes de `@ft/shared`, les **mêmes** que celles lues par le schéma Zod, donc le prompt et la validation ne peuvent pas se contredire) :
 
 | Catégorie | Nombre | Règle spéciale |
 |---|---|---|
@@ -51,15 +48,13 @@ donc le prompt et la validation ne peuvent pas se contredire) :
 | `vocabulary` | 10 = `VOCABULARY_BATCH_SIZE` | tester le vocabulaire, pas la grammaire ; topic parmi `VOCABULARY_TOPICS` |
 | `reading` | 5 = `READING_BATCH_SIZE` | chaque question a **son propre** passage (`readText`) de 25 à 100 mots |
 
-Ce que le prompt ne dit **pas** : le format JSON. Il est envoyé à part, à Gemini, sous forme de
-JSON Schema (`responseJsonSchema`). Le prompt ne porte que les règles de **contenu**.
+Ce que le prompt ne dit **pas** : le format JSON. Il est envoyé à part, à Gemini, sous forme de JSON Schema (`responseJsonSchema`). Le prompt ne porte que les règles de **contenu**.
 
 ---
 
 ## 3. Le vrai prompt, raccourci (cellule `fr / B1 / grammar`)
 
-Texte produit par `buildQuestionBatchPrompt({ lang: 'fr', level: 'B1', category: 'grammar' })`.
-Les `[...]` marquent les coupures ; le reste est le texte exact du code.
+Texte produit par `buildQuestionBatchPrompt({ lang: 'fr', level: 'B1', category: 'grammar' })`. Les `[...]` marquent les coupures ; le reste est le texte exact du code.
 
 **`system`**
 
@@ -102,13 +97,9 @@ Write 13 B1 grammar questions in "fr", one per topic.
 
 Remarques à savoir dire :
 
-- La phrase « harder than typical A2 / nothing B2 or above » vient de `lower` et `upper`, calculés
-  avec `LEVELS.indexOf(level)`. Pour A1 il n'y a pas de `lower`, pour C2 pas de `upper` : la
-  phrase est simplement omise.
-- Les exemples de la référence CECR sont **en anglais** et le prompt dit de **ne pas les copier
-  ni les traduire**. Un seul texte sert donc pour les trois langues.
-- La « vérification interne » demande au modèle de se relire **en silence** : le raisonnement ne
-  doit pas apparaître dans la réponse JSON.
+- La phrase « harder than typical A2 / nothing B2 or above » vient de `lower` et `upper`, calculés avec `LEVELS.indexOf(level)`. Pour A1 il n'y a pas de `lower`, pour C2 pas de `upper` : la phrase est simplement omise.
+- Les exemples de la référence CECR sont **en anglais** et le prompt dit de **ne pas les copier ni les traduire**. Un seul texte sert donc pour les trois langues.
+- La « vérification interne » demande au modèle de se relire **en silence** : le raisonnement ne doit pas apparaître dans la réponse JSON.
 
 ---
 
@@ -124,10 +115,7 @@ const request = {
 } as const;
 ```
 
-Pour `fr / B1 / grammar` : `purpose` vaut `"question-batch:grammar"`, et le schéma attend 13 items,
-un par topic. `...` (spread) recopie les champs `system` et `user` dans l'objet. `as const` garde `purpose`
-comme le texte exact `"question-batch:grammar"` et pas juste `string`, pour qu'il corresponde au
-type `LlmPurpose`.
+Pour `fr / B1 / grammar` : `purpose` vaut `"question-batch:grammar"`, et le schéma attend 13 items, un par topic. `...` (spread) recopie les champs `system` et `user` dans l'objet. `as const` garde `purpose` comme le texte exact `"question-batch:grammar"` et pas juste `string`, pour qu'il corresponde au type `LlmPurpose`.
 
 ---
 
@@ -167,8 +155,7 @@ Ce que fait le provider, dans l'ordre (`replyText` puis `parseReply`) :
    - `answer` est **dans** `options` (mot pour mot).
 6. Log : `question-batch:grammar on gemini-3.6-flash: 5200 in, 1400 out, 300 thinking, 6900 total tokens, 8123 ms`.
 
-Le schéma n'est **pas strict** : si le modèle ajoute un champ (`"level": "B1"`), il est ignoré au
-lieu de faire échouer le lot. Le niveau et le temps viennent de toute façon du serveur.
+Le schéma n'est **pas strict** : si le modèle ajoute un champ (`"level": "B1"`), il est ignoré au lieu de faire échouer le lot. Le niveau et le temps viennent de toute façon du serveur.
 
 ---
 
@@ -185,9 +172,7 @@ flowchart LR
   Loop -->|"non"| Keep["on garde, et on ajoute la clé au Set"]
 ```
 
-`normalise` = `trim` + minuscules + plusieurs espaces → un seul. Donc
-`"Bien qu'il  ___ fatigué"` et `"bien qu'il ___ fatigué"` sont **le même** texte.
-Ajouter la clé au `Set` en gardant un item élimine aussi les doublons **à l'intérieur** du lot.
+`normalise` = `trim` + minuscules + plusieurs espaces → un seul. Donc `"Bien qu'il  ___ fatigué"` et `"bien qu'il ___ fatigué"` sont **le même** texte. Ajouter la clé au `Set` en gardant un item élimine aussi les doublons **à l'intérieur** du lot.
 
 ### 6.2 `toRows`
 
@@ -211,12 +196,11 @@ Une ligne réellement insérée, pour le premier item de l'exemple :
 }
 ```
 
-`id`, `createdAt`, `updatedAt` sont remplis par Postgres / Prisma (`@default(uuid())`,
-`@default(now())`, `@updatedAt`). `readText` est absent → `NULL` en base.
+`id`, `createdAt`, `updatedAt` sont remplis par Postgres / Prisma (`@default(uuid())`, `@default(now())`, `@updatedAt`). `readText` est absent → `NULL` en base.
 
 ### 6.3 `TIME_LIMIT_S` : le temps vient du serveur
 
-Secondes par question (tableau de [docs/content/item-bank.md](../../../content/item-bank.md), valeur haute de chaque fourchette) :
+Secondes par question (tableau de [docs/content/item-bank.md](../../../content/item-bank.md) ; seule la lecture y a des fourchettes, et le code prend leur valeur haute) :
 
 | | A1 | A2 | B1 | B2 | C1 | C2 |
 |---|---|---|---|---|---|---|
@@ -224,8 +208,7 @@ Secondes par question (tableau de [docs/content/item-bank.md](../../../content/i
 | grammar | 30 | 45 | 60 | 60 | 75 | 90 |
 | reading | 75 | 105 | 90 | 120 | 165 | 180 |
 
-`Record<QuestionCategory, Record<Level, number>>` : TypeScript vérifie qu'aucune catégorie et
-aucun niveau n'est oublié.
+`Record<QuestionCategory, Record<Level, number>>` : TypeScript vérifie qu'aucune catégorie et aucun niveau n'est oublié.
 
 ### 6.4 L'insertion
 
@@ -235,29 +218,28 @@ const { count } = await this.prisma.questionBank.createMany({
 });
 ```
 
-Une seule requête SQL pour toutes les lignes. `count` = nombre réellement inséré. Si `count` vaut
-0 (le modèle n'a écrit que des questions déjà connues), la cellule part en pause 10 minutes.
+Une seule requête SQL pour toutes les lignes. `count` = nombre réellement inséré. Si `count` vaut 0 (le modèle n'a écrit que des questions déjà connues), la cellule part en pause 10 minutes.
 
 ---
 
 ## 7. Questions d'oral sur cette partie
 
 **Q : Pourquoi séparer `system` et `user` ?**
-R : `system` = les règles, longues et stables. `user` = la demande courte de l'appel. C'est le
-format attendu par l'API Gemini (`systemInstruction` et `contents`).
+
+R : `system` = les règles, longues et stables. `user` = la demande courte de l'appel. C'est le format attendu par l'API Gemini (`systemInstruction` et `contents`).
 
 **Q : Pourquoi ne pas décrire le JSON dans le prompt ?**
-R : On l'envoie comme JSON Schema (`responseJsonSchema`), généré depuis le schéma Zod. Une seule
-source de vérité : le format ne peut pas diverger entre le prompt et la validation.
+
+R : On l'envoie comme JSON Schema (`responseJsonSchema`), généré depuis le schéma Zod. Une seule source de vérité : le format ne peut pas diverger entre le prompt et la validation.
 
 **Q : Pourquoi le niveau n'est pas demandé au modèle dans la réponse ?**
-R : Le modèle pourrait se tromper et ranger une question au mauvais niveau. `toRows` prend le
-niveau de la cellule, jamais celui du modèle.
+
+R : Le modèle pourrait se tromper et ranger une question au mauvais niveau. `toRows` prend le niveau de la cellule, jamais celui du modèle.
 
 **Q : Pourquoi une question par topic en grammaire ?**
-R : Pour couvrir tous les points de grammaire de façon équilibrée, et le schéma Zod le vérifie
-(`new Set(items.map((i) => i.topic)).size === TOPICS.length`).
+
+R : Pour couvrir tous les points de grammaire de façon équilibrée, et le schéma Zod le vérifie (`new Set(items.map((i) => i.topic)).size === TOPICS.length`).
 
 **Q : Pourquoi des exemples en anglais pour toutes les langues ?**
-R : Un seul texte à maintenir. Le prompt dit de ne pas les copier : ils montrent la **difficulté**,
-le modèle construit l'équivalent dans la langue cible.
+
+R : Un seul texte à maintenir. Le prompt dit de ne pas les copier : ils montrent la **difficulté**, le modèle construit l'équivalent dans la langue cible.

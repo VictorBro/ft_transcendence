@@ -9,12 +9,9 @@
 > [`readingLesson.ts`](../../../../packages/shared/src/lessons/domain/readingLesson.ts),
 > [`lessonCopy.ts`](../../../../packages/shared/src/lessons/domain/lessonCopy.ts).
 
-`domain/` contient des **fonctions pures** : elles prennent des données, renvoient un résultat, ne touchent ni au disque ni à la base.
-Elles ne vérifient rien elles-mêmes : les validateurs et le kit d'auteur s'en servent.
+`domain/` contient des **fonctions pures** : elles prennent des données, renvoient un résultat, ne touchent ni au disque ni à la base. Elles ne vérifient rien elles-mêmes : les validateurs et le kit d'auteur s'en servent.
 
-**Idée clé** : les durées ne sont **jamais choisies** par l'auteur. Elles sont **calculées** par ces fonctions,
-et le validateur recalcule pour comparer, **à la seconde près**. Le kit d'auteur ([`times.ts`](../../../../apps/api/scripts/lessons/times.ts)) utilise les **mêmes** fonctions pour écrire les durées.
-Comme les deux côtés appellent le même code, ils ne peuvent pas être en désaccord.
+**Idée clé** : les durées ne sont **jamais choisies** par l'auteur. Elles sont **calculées** par ces fonctions, et le validateur recalcule pour comparer, **à la seconde près**. Le kit d'auteur ([`times.ts`](../../../../apps/api/scripts/lessons/times.ts)) utilise les **mêmes** fonctions pour écrire les durées. Comme les deux côtés appellent le même code, ils ne peuvent pas être en désaccord.
 
 ---
 
@@ -22,11 +19,9 @@ Comme les deux côtés appellent le même code, ils ne peuvent pas être en dés
 
 Les longs textes (introduction d'un groupe de vocabulaire, explication de grammaire) sont écrits dans un **Markdown très réduit**.
 
-**Permis** : paragraphes (séparés par une ligne vide), listes `- ` et `1. `, `**gras**`, `` `forme` `` (un mot dans la langue apprise).
-**Interdit** : titres `#`, citations `>`, tableaux `|`, blocs de code, listes `*`/`+`, HTML, liens, images, `*italique*`, `_italique_`, le texte `\n` tapé en toutes lettres, et un balisage **dans** un autre.
+**Permis** : paragraphes (séparés par une ligne vide), listes `- ` et `1. `, `**gras**`, `` `forme` `` (un mot dans la langue apprise). **Interdit** : titres `#`, citations `>`, tableaux `|`, blocs de code, listes `*`/`+`, HTML, liens, images, `*italique*`, `_italique_`, le texte `\n` tapé en toutes lettres, et un balisage **dans** un autre.
 
-**Pourquoi si strict ?** Le texte est affiché par notre propre composant React ([`rich-text.tsx`](../../../../apps/web/components/lesson/rich-text.tsx)), sans `dangerouslySetInnerHTML`.
-Moins de syntaxe = moins de surprises, pas de HTML injecté, et on peut **comparer** les trois langues.
+**Pourquoi si strict ?** Le texte est affiché par notre propre composant React ([`rich-text.tsx`](../../../../apps/web/components/lesson/rich-text.tsx)), sans `dangerouslySetInnerHTML`. Moins de syntaxe = moins de surprises, pas de HTML injecté, et on peut **comparer** les trois langues.
 
 ### Les types
 
@@ -102,13 +97,11 @@ flowchart TD
 
 ### `richTextShape(blocks) → string`
 
-Le **squelette** du texte : `p` pour un paragraphe, `ul:N` ou `ol:N` pour une liste de N lignes, séparés par `|`.
-Exemple ci-dessus → `"p|ul:2|ol:2|p"`. Le validateur exige le **même** squelette en en, fr et de.
+Le **squelette** du texte : `p` pour un paragraphe, `ul:N` ou `ol:N` pour une liste de N lignes, séparés par `|`. Exemple ci-dessus → `"p|ul:2|ol:2|p"`. Le validateur exige le **même** squelette en en, fr et de.
 
 ### `learningForms(blocks) → string[]`
 
-Toutes les formes entre backticks, dans l'ordre. Exemple ci-dessus → `["je suis", "tu es"]`.
-Elles sont dans la langue apprise : elles doivent être **les mêmes** dans les trois versions.
+Toutes les formes entre backticks, dans l'ordre. Exemple ci-dessus → `["je suis", "tu es"]`. Elles sont dans la langue apprise : elles doivent être **les mêmes** dans les trois versions.
 
 ---
 
@@ -124,9 +117,7 @@ Elles sont dans la langue apprise : elles doivent être **les mêmes** dans les 
 | `startsWithArticle(lang, text)` | texte → commence par un article ? | `('fr', "l'école")` → `true` ; `('en', 'the book')` → `true` |
 | `isArticle(lang, text)` | texte → est-ce un article seul ? | `('fr', 'un')` → `true` |
 
-Détail : `lower()` met en minuscules et remplace les apostrophes typographiques `’` par `'`, pour que `l’école` soit reconnu comme `l'école`.
-Pour un article qui finit par `'` (`l'`), pas besoin d'espace après ; pour les autres, on cherche `"article "` avec un espace
-(sinon `"un"` serait vu au début de `"uniforme"`).
+Détail : `lower()` met en minuscules et remplace les apostrophes typographiques `’` par `'`, pour que `l’école` soit reconnu comme `l'école`. Pour un article qui finit par `'` (`l'`), pas besoin d'espace après ; pour les autres, on cherche `"article "` avec un espace (sinon `"un"` serait vu au début de `"uniforme"`).
 
 ---
 
@@ -154,13 +145,11 @@ chunk([1..7], 6)  → [[1,2,3,4], [5,6,7]]     (4 + 3, jamais 6 + 1)
 chunk([1..12], 6) → [[1..6], [7..12]]
 ```
 
-Calcul : `pages = ceil(n / size)`, puis la page `i` va de `round(i × n / pages)` à `round((i+1) × n / pages)`.
-Le `<T>` (générique) veut dire : marche pour une liste de n'importe quoi.
+Calcul : `pages = ceil(n / size)`, puis la page `i` va de `round(i × n / pages)` à `round((i+1) × n / pages)`. Le `<T>` (générique) veut dire : marche pour une liste de n'importe quoi.
 
 ### `matchingPages(brief) → string[][]`
 
-Tous les ids des mots, dans l'ordre des groupes, coupés par `chunk(..., 6)`.
-Utilisé par le constructeur **et** par le validateur (pour vérifier que deux mots d'une même page n'ont pas la même traduction).
+Tous les ids des mots, dans l'ordre des groupes, coupés par `chunk(..., 6)`. Utilisé par le constructeur **et** par le validateur (pour vérifier que deux mots d'une même page n'ont pas la même traduction).
 
 ### `vocabularyLesson(brief) → VocabularyContent`
 
@@ -176,8 +165,7 @@ La « recette » est toujours la même :
 | `listening` | **practice** | une par mot | 15 | `listeningOptionTargetIds` |
 | `exam` | exam | traductions puis dictées, 6 mots max par page, par groupe | `15 × mots` / `20 × mots` ; compte à rebours `20 × mots` / `30 × mots` | `examPrompt`, `examForms` |
 
-La question d'examen d'un mot = son `examPrompt`, sinon sa **1re traduction** dans chaque langue.
-Les réponses acceptées viennent de `vocabularyExamAnswers` (section 4).
+La question d'examen d'un mot = son `examPrompt`, sinon sa **1re traduction** dans chaque langue. Les réponses acceptées viennent de `vocabularyExamAnswers` (section 4).
 
 Exemple réel : `fr-classroom-objects`, 12 mots en 2 groupes de 6, tous noms genrés.
 
@@ -194,8 +182,7 @@ total        = 1236 s → round(1236 / 60) = 21 min
 
 Et le fichier réel dit bien `"estimatedMinutes": 21`.
 
-**Attention** : la fonction suppose un brief **valide**. Elle utilise `targets.get(id)!` ; le `!` dit à TypeScript « ce n'est jamais `undefined` », **sans vérifier**.
-C'est pourquoi `checkVocabularyBrief` ne l'appelle **que s'il n'y a aucun problème**.
+**Attention** : la fonction suppose un brief **valide**. Elle utilise `targets.get(id)!` ; le `!` dit à TypeScript « ce n'est jamais `undefined` », **sans vérifier**. C'est pourquoi `checkVocabularyBrief` ne l'appelle **que s'il n'y a aucun problème**.
 
 ### `vocabularyMinutes(steps) → number`
 
@@ -247,14 +234,15 @@ Exemples : 4 cartes d'expressions = 48 s ; un dialogue de 10 lignes = `20 + 120 
 
 `Math.round(estimate × 1.5)` : 100 s → 150 s. Arrondi **à la seconde** (différent de la lecture).
 
+Les deux fonctions suivantes ne sont pas de moi : Bastian les a ajoutées pour le lecteur (PR #174).
+
 ### `expressionDisplay(e) → string`
 
 `openEnd: true` → ajoute `" …"` : `"Je voudrais"` → `"Je voudrais …"`. Sinon le texte tel quel.
 
 ### `functionsTerms(brief) → Map<id, { display, translations, kind }>`
 
-Toutes les expressions et tous les mots par id, avec leur texte d'affichage (expression via `expressionDisplay`, mot via `teachingForm`).
-Utilisé par le lecteur (`player/`) pour les cartes et les associations.
+Toutes les expressions et tous les mots par id, avec leur texte d'affichage (expression via `expressionDisplay`, mot via `teachingForm`). Utilisé par le lecteur (`player/`) pour les cartes et les associations.
 
 ---
 
@@ -284,8 +272,7 @@ Dans `highlightRanges`, quand deux mots se chevauchent : celui qui commence **en
 `readingPageEstimate` : un document compte selon sa vue :
 - `skim` : son `skimSeconds` ;
 - `exam` : son temps de lecture au niveau ;
-- `open` : **0** (le temps des questions inclut la lecture).
-Questions : 30 s en détail, 20 s à l'examen.
+- `open` : **0** (le temps des questions inclut la lecture). Questions : 30 s en détail, 20 s à l'examen.
 
 Exemple réel (`fr-reading-a-magazine-portrait`, B1) : page d'examen estimée à 159 s → compte à rebours `ceil(238.5 / 5) × 5 = 240 s`.
 
@@ -293,8 +280,7 @@ Exemple réel (`fr-reading-a-magazine-portrait`, B1) : page d'examen estimée à
 
 ## 7. `lessonCopy.ts` : les textes fixes
 
-Les noms d'étapes (« Flashcards ») et les consignes (« Match each word with its translation. ») sont **les mêmes** dans toutes les leçons d'un type.
-Personne ne les réécrit : le code les met. Chaque texte existe en `{ en, fr, de }`.
+Les noms d'étapes (« Flashcards ») et les consignes (« Match each word with its translation. ») sont **les mêmes** dans toutes les leçons d'un type. Personne ne les réécrit : le code les met. Chaque texte existe en `{ en, fr, de }`.
 
 | Export | Contenu | Lu par |
 |---|---|---|
@@ -306,10 +292,7 @@ Personne ne les réécrit : le code les met. Chaque texte existe en `{ en, fr, d
 | `examInstruction(lang)` | consigne d'examen qui **nomme la langue du cours**, avec « with its article for nouns » seulement si `hasGender(lang)` | `vocabularyLesson` |
 | `dictationInstruction(lang)` | pareil pour la dictée | `vocabularyLesson` |
 
-Remarque : les fichiers de contenu réels contiennent déjà ces textes (par ex. « Connect each pronoun with its partner. » dans
-`fr-er-verbs-present`). Aucun code ne les copie lui-même : le kit d'auteur envoie le fichier `domain/lessonCopy.ts` entier
-au modèle, dans son prompt ([`prompt.ts`](../../../../apps/api/scripts/lessons/prompt.ts), liste `COMMON`), et c'est le modèle qui
-les recopie. Aucun validateur ne vérifie qu'une consigne égale ces textes.
+Remarque : les fichiers de contenu réels contiennent déjà ces textes (par ex. « Connect each pronoun with its partner. » dans `fr-er-verbs-present`). Aucun code ne les copie lui-même : le kit d'auteur envoie le fichier `domain/lessonCopy.ts` entier au modèle, dans son prompt ([`prompt.ts`](../../../../apps/api/scripts/lessons/prompt.ts), liste `COMMON`), et c'est le modèle qui les recopie. Aucun validateur ne vérifie qu'une consigne égale ces textes.
 
 ```
 examInstruction('de').en → "Translate each word into German, with its article for nouns."

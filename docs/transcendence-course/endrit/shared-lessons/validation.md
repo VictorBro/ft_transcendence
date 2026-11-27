@@ -13,8 +13,7 @@
 
 ## 0. L'idée en une phrase
 
-Le schéma vérifie la **forme** (« il y a bien un champ `ruleIds`, c'est une liste de textes »).
-Le validateur vérifie le **sens** (« chaque `ruleId` désigne une règle qui existe »).
+Le schéma vérifie la **forme** (« il y a bien un champ `ruleIds`, c'est une liste de textes »). Le validateur vérifie le **sens** (« chaque `ruleId` désigne une règle qui existe »).
 
 **Analogie.** Un contrôle de copie d'examen en deux temps :
 1. **le schéma** = la secrétaire vérifie que la copie a un nom, des pages numérotées, rien d'illisible. Si la copie est illisible, elle la rend tout de suite.
@@ -31,8 +30,7 @@ interface Issue { path: string; message: string; }
 // { path: 'targets.3.examForms', message: '"livre" must include the indefinite article…' }
 ```
 
-Le `path` est le **chemin** du champ dans le fichier : `targets.3.examForms` = le champ `examForms` du **4e** mot (on compte depuis 0).
-Parfois un chemin nomme une étape par son stade (`steps.flashcards`) quand c'est plus facile à retrouver.
+Le `path` est le **chemin** du champ dans le fichier : `targets.3.examForms` = le champ `examForms` du **4e** mot (on compte depuis 0). Parfois un chemin nomme une étape par son stade (`steps.flashcards`) quand c'est plus facile à retrouver.
 
 La classe **`Issues`** est un petit carnet qu'on remplit :
 
@@ -49,8 +47,7 @@ if (issues.check(answer !== undefined, path, 'answerOptionId must be one of the 
   // ici, on sait que la réponse existe
 ```
 
-**Pourquoi ne pas lancer une exception ?** Une exception s'arrête au premier problème.
-Ici, l'auteur (souvent un modèle de langue dans le kit d'auteur) reçoit **toute la liste** et corrige tout en un seul passage.
+**Pourquoi ne pas lancer une exception ?** Une exception s'arrête au premier problème. Ici, l'auteur (souvent un modèle de langue dans le kit d'auteur) reçoit **toute la liste** et corrige tout en un seul passage.
 
 ---
 
@@ -66,8 +63,7 @@ Ici, l'auteur (souvent un modèle de langue dans le kit d'auteur) reçoit **tout
 | `checkExplanations(items, path, issues)` | `checkMarkNamed` sur chaque `answerExplanation` | |
 | `checkRichText(text, path, issues)` | vérifie un long texte Markdown dans les 3 langues | voir dessous |
 
-`sameSet` utilise `'\u0000'` comme séparateur pour le `join` : un caractère qui n'apparaît jamais dans un id,
-ainsi `['a,b']` et `['a', 'b']` ne se confondent pas.
+`sameSet` utilise `'\u0000'` comme séparateur pour le `join` : un caractère qui n'apparaît jamais dans un id, ainsi `['a,b']` et `['a', 'b']` ne se confondent pas.
 
 ### `checkRichText` en détail
 
@@ -99,10 +95,8 @@ de: "Diese Nomen sind **maskulin**: `ein Buch`."   ✗ learning-language forms d
 
 ### 3.2 `validateBrief(data, ctx)`, dans l'ordre
 
-1. `isSupportedKind(ctx.entry.kind)` ? Sinon : `"<kind> lessons have no agreed brief schema yet"`.
-   (Le type vient de l'**entrée d'outline**, pas du fichier : on choisit le schéma selon ce qui est **prévu**.)
-2. `briefSchema(kind, lang).safeParse(data)`. Si ça échoue : **on s'arrête**, statut `invalid`,
-   chaque erreur Zod devient un `Issue` (son chemin est joint par des points).
+1. `isSupportedKind(ctx.entry.kind)` ? Sinon : `"<kind> lessons have no agreed brief schema yet"`. (Le type vient de l'**entrée d'outline**, pas du fichier : on choisit le schéma selon ce qui est **prévu**.)
+2. `briefSchema(kind, lang).safeParse(data)`. Si ça échoue : **on s'arrête**, statut `invalid`, chaque erreur Zod devient un `Issue` (son chemin est joint par des points).
 3. `checkEnvelope` : `id`, `kind`, `lang`, `level` et `topic` (grammaire) ou `theme` (les autres) doivent **égaler l'outline**.
 4. Les vérifications du type : `checkVocabularyBrief`, `checkGrammarBrief`, `checkReadingBrief` ou `checkFunctionsBrief`.
 5. Périmé ? Si `ctx.outlineHash` est donné et différent de `provenance.inputHashes.outline` : raison `stale`.
@@ -121,8 +115,7 @@ de: "Diese Nomen sind **maskulin**: `ein Buch`."   ✗ learning-language forms d
 7. Périmé ? `outlineHash` et `briefHash` comparés à `provenance.inputHashes`.
 8. `finish`.
 
-Important : **le même carnet `issues`** est passé à toutes les étapes 4 à 6.
-Donc une vérification de type qui dit « je m'arrête s'il y a déjà des problèmes » voit aussi les problèmes d'enveloppe (c'est le cas de la lecture, voir §8).
+Important : **le même carnet `issues`** est passé à toutes les étapes 4 à 6. Donc une vérification de type qui dit « je m'arrête s'il y a déjà des problèmes » voit aussi les problèmes d'enveloppe (c'est le cas de la lecture, voir §8).
 
 ---
 
@@ -141,18 +134,14 @@ Ce qu'elle ajoute par-dessus `validateBrief` et `validateContent` :
 
 - **les fichiers** : un fichier contenu est obligatoire pour tout sauf le vocabulaire ;
 - **les règles de longueur de grammaire** (`grammarLength.ts`), que les deux validateurs laissent de côté exprès ;
-- **ce que la base stocke** : le `title` du brief doit passer `LessonTitleSchema` (une ligne, ≤ 80), l'`objective[lang]` doit passer
-  `LessonSummarySchema` (une ligne, ≤ 200). Seule la version dans la **langue du cours** est limitée à 200 ;
-  les autres gardent la limite du schéma (300) ;
+- **ce que la base stocke** : le `title` du brief doit passer `LessonTitleSchema` (une ligne, ≤ 80), l'`objective[lang]` doit passer `LessonSummarySchema` (une ligne, ≤ 200). Seule la version dans la **langue du cours** est limitée à 200 ; les autres gardent la limite du schéma (300) ;
 - **la cohérence brief ↔ contenu** : le contenu répète le `title` et l'`objective` du brief **mot pour mot**.
 
 ### 4.1 Comment les problèmes sont agrégés
 
-- `inFile('brief', issues)` ajoute `brief.` devant chaque chemin ; `inFile('content', …)` ajoute `content.`.
-  Un chemin vide devient juste `brief` ou `content`.
+- `inFile('brief', issues)` ajoute `brief.` devant chaque chemin ; `inFile('content', …)` ajoute `content.`. Un chemin vide devient juste `brief` ou `content`.
 - **Si le brief est `invalid`** : on renvoie **seulement** ses problèmes. Sans brief valide, impossible de vérifier le contenu contre lui.
-- Sinon on calcule deux listes, `briefIssues` (titre, résumé, longueur grammaire) et `contentIssues`, puis :
-  `issues = [...brief…, ...content…]` → **le brief d'abord**.
+- Sinon on calcule deux listes, `briefIssues` (titre, résumé, longueur grammaire) et `contentIssues`, puis : `issues = [...brief…, ...content…]` → **le brief d'abord**.
 - Un brief `stale` n'est **pas** bloquant : seul `status === 'invalid'` arrête (le seed ne passe d'ailleurs pas de hash).
 
 ### 4.2 Le chemin complet
@@ -235,14 +224,12 @@ C'est **la seule** vérification d'une leçon de vocabulaire (pas de fichier con
   - langue à genre (fr, de) : au moins un genre, et seulement des genres de la langue (`fr` : masculin/féminin ; `de` : + neutre) ;
   - anglais : **aucun** genre (`en nouns have no gender`) ;
   - un nombre (`number` non nul) ;
-  - fr / de sans `articleException` : `examForms` et `teachingForm` **commencent par le bon article** (`articleIssue` : l'article doit aussi
-    correspondre au genre et au nombre) ; les `genderVariants` doivent seulement **commencer par un article** de la langue (`teachingArticle`), sans contrôle d'accord ;
+  - fr / de sans `articleException` : `examForms` et `teachingForm` **commencent par le bon article** (`articleIssue` : l'article doit aussi correspondre au genre et au nombre) ; les `genderVariants` doivent seulement **commencer par un article** de la langue (`teachingArticle`), sans contrôle d'accord ;
   - fr / de **avec** `articleException` : les `examForms` ne doivent **pas** avoir d'article (sinon l'exception est inutile) ;
   - anglais : `articleException` doit être `null` ;
   - `term` sans article (`"un livre"` refusé comme `term`).
 - **Non-nom** : pas de genre, pas de nombre, pas d'`articleException`.
-- **Tous** : `teachingForm` ∈ `examForms`, ou = `examForms.join(', ')` (cas de l'adjectif `"espagnol, espagnole"`).
-  Idée : « ce qu'on montre est ce qu'on examine ».
+- **Tous** : `teachingForm` ∈ `examForms`, ou = `examForms.join(', ')` (cas de l'adjectif `"espagnol, espagnole"`). Idée : « ce qu'on montre est ce qu'on examine ».
 
 **c) Les textes d'exercice** (`checkExerciseTexts`)
 - `genderExplanation` présent **si et seulement si** nom avec genre ;
@@ -251,13 +238,11 @@ C'est **la seule** vérification d'une leçon de vocabulaire (pas de fichier con
 - **une seule** des 4 références peut remplir le trou (aucune réponse n'égale le `term` d'un autre mot) ;
 - `listeningOptionTargetIds` : 4 distincts, dont le mot, tous connus ;
 - explications : nommer l'accent (`checkMarkNamed`) ;
-- `examPrompt` : si le mot a des `genderVariants` et un `examPrompt`, celui-ci doit **différer** de la 1re traduction dans **toutes** les langues
-  (sinon la question ne dit pas quel genre on veut).
+- `examPrompt` : si le mot a des `genderVariants` et un `examPrompt`, celui-ci doit **différer** de la 1re traduction dans **toutes** les langues (sinon la question ne dit pas quel genre on veut).
 - `checkRichText` sur l'introduction de chaque groupe.
 - `checkMatchingLabels` : sur chaque page d'association (calculée par `matchingPages`), deux mots ne montrent pas la même traduction.
 
-**d) La durée** : **seulement si aucun problème jusque-là**, on fabrique la leçon avec `vocabularyLesson(b)` et on vérifie `estimatedMinutes`.
-Pourquoi « seulement si » ? `vocabularyLesson` suppose un brief propre (il utilise `!` sur les ids) : sur un brief cassé, il planterait.
+**d) La durée** : **seulement si aucun problème jusque-là**, on fabrique la leçon avec `vocabularyLesson(b)` et on vérifie `estimatedMinutes`. Pourquoi « seulement si » ? `vocabularyLesson` suppose un brief propre (il utilise `!` sur les ids) : sur un brief cassé, il planterait.
 
 ---
 
@@ -266,8 +251,7 @@ Pourquoi « seulement si » ? `vocabularyLesson` suppose un brief propre (il uti
 ### 6.1 Le brief
 
 - ids uniques : règles, blocs, exercices, pages d'examen ;
-- chaque bloc cite des règles **connues** ; chaque exercice pratique des règles **de son bloc**
-  (exception : un `grammar_person_matching` peut **réviser** une règle d'un bloc **précédent**) ;
+- chaque bloc cite des règles **connues** ; chaque exercice pratique des règles **de son bloc** (exception : un `grammar_person_matching` peut **réviser** une règle d'un bloc **précédent**) ;
 - chaque règle est **enseignée** au moins une fois (`rule X is never taught`) ;
 - `checkPronounFormTopic` : les 3 exercices « par personne » seulement pour `pronouns`, `verbs_morphology`, `verb_usage` ;
 - si le topic est dans `PERSON_MATCHING_TOPICS[lang]` et la leçon pas exemptée : au moins un `grammar_person_matching` ;
@@ -288,10 +272,8 @@ puis : feedback, puis exam
 2. Pour chaque étape (`checkStep`) : bon `role` et bon `blockId` ;
    - `explanation` : que des `grammar_explanation`, avec des règles du bloc ;
    - `feedback` : exactement un `production_feedback_placeholder` ;
-   - `exercise` : que des items du `type` prévu, exactement `itemCount` items, un tableau `person_matching` par page,
-     et `checkRuleCoverage` (les items couvrent **exactement** les règles prévues : ni plus, ni moins).
-3. Pages d'examen (`checkExamPage`) : la page est dans le plan, même `timeLimitS`, même type, même nombre d'items, règles couvertes.
-   Les autres pages : `timeLimitS` doit être `null`.
+   - `exercise` : que des items du `type` prévu, exactement `itemCount` items, un tableau `person_matching` par page, et `checkRuleCoverage` (les items couvrent **exactement** les règles prévues : ni plus, ni moins).
+3. Pages d'examen (`checkExamPage`) : la page est dans le plan, même `timeLimitS`, même type, même nombre d'items, règles couvertes. Les autres pages : `timeLimitS` doit être `null`.
 4. Chaque item (`checkGrammarItem`) :
    - règles connues, `tokenId` uniques ;
    - `grammar_explanation` : `checkRichText` ;
@@ -299,18 +281,14 @@ puis : feedback, puis exam
    - `grammar_gap_typing` à l'examen : `hint` doit être `null` ;
    - `grammar_pronoun_form_match` : chaque ligne a au moins un token avec une forme valide ;
    - `grammar_word_order` : chaque ordre accepté utilise **chaque token une fois** ;
-   - `grammar_person_matching` (`checkPersonMatching`) : personnes dans l'ordre (`1sg,2sg,3sg`, `1pl,2pl,3pl` ou les 6), mode cohérent,
-     invites uniques ; **exception anglaise** : `you are` peut apparaître en 2sg et 2pl ;
+   - `grammar_person_matching` (`checkPersonMatching`) : personnes dans l'ordre (`1sg,2sg,3sg`, `1pl,2pl,3pl` ou les 6), mode cohérent, invites uniques ; **exception anglaise** : `you are` peut apparaître en 2sg et 2pl ;
    - `grammar_error_spotter` : le token fautif existe, la correction est différente du token fautif, mode `select` = 2 à 4 choix dont une bonne réponse, mode `type` = aucun choix.
 5. Les pages d'examen = celles du plan (`sameSet`).
-6. **Examen « frais »** (`checkFreshExam`) : aucune phrase d'examen ne répète un exemple ou une phrase d'entraînement.
-   Les phrases sont comparées **réponse remplie**, en minuscules, sans ponctuation (`comparable`).
+6. **Examen « frais »** (`checkFreshExam`) : aucune phrase d'examen ne répète un exemple ou une phrase d'entraînement. Les phrases sont comparées **réponse remplie**, en minuscules, sans ponctuation (`comparable`).
 
 ### 6.3 Les règles de longueur (`grammarLength.ts`)
 
-Pourquoi à part ? Une leçon courte reste **correcte**. Mais on ne veut pas qu'elle arrive en base.
-Donc `validateBrief`/`validateContent` ne les appellent pas ; **`validateLesson` les ajoute**.
-Le test `rejects the short … grammar fixture by the length rules` montre le piège : les fixtures courtes passent les validateurs seuls, mais pas `validateLesson`.
+Pourquoi à part ? Une leçon courte reste **correcte**. Mais on ne veut pas qu'elle arrive en base. Donc `validateBrief`/`validateContent` ne les appellent pas ; **`validateLesson` les ajoute**. Le test `rejects the short … grammar fixture by the length rules` montre le piège : les fixtures courtes passent les validateurs seuls, mais pas `validateLesson`.
 
 | Fonction | Vérifie |
 |---|---|
@@ -321,8 +299,7 @@ Le test `rejects the short … grammar fixture by the length rules` montre le pi
 
 ## 7. Fonctions : `checkFunctionsBrief`, `checkFunctionsContent`
 
-Outil clé : `plain(s)` met une phrase sous une forme comparable (minuscules, apostrophes normalisées, espaces normalisés, ponctuation finale enlevée).
-`contains(text, part)` compare avec `plain`.
+Outil clé : `plain(s)` met une phrase sous une forme comparable (minuscules, apostrophes normalisées, espaces normalisés, ponctuation finale enlevée). `contains(text, part)` compare avec `plain`.
 
 ### 7.1 Le brief
 
@@ -334,18 +311,15 @@ Outil clé : `plain(s)` met une phrase sous une forme comparable (minuscules, ap
 
 ### 7.2 Le contenu
 
-`checkFunctionsContent` construit un petit objet `Lesson` (les ids du brief, des raccourcis `pages(stage)`, `items(stage)`, `only(...)`, `role(...)`, `expression(...)`),
-puis :
+`checkFunctionsContent` construit un petit objet `Lesson` (les ids du brief, des raccourcis `pages(stage)`, `items(stage)`, `only(...)`, `role(...)`, `expression(...)`), puis :
 
-1. `checkStages` : une étape par stade, dans l'ordre de `FUNCTIONS_STAGES`, `gender` seulement s'il y a des noms genrés, bon `role`.
-   **Si ça échoue, on s'arrête** : impossible de chercher « la page de l'étape matching » si elle n'est pas à sa place.
+1. `checkStages` : une étape par stade, dans l'ordre de `FUNCTIONS_STAGES`, `gender` seulement s'il y a des noms genrés, bon `role`. **Si ça échoue, on s'arrête** : impossible de chercher « la page de l'étape matching » si elle n'est pas à sa place.
 2. `checkFlashcards` : une page avec tous les mots (s'il y en a), puis une page avec toutes les expressions.
 3. `checkGender` : une page avec tous les noms, dans l'ordre du brief.
 4. `checkModelDialogue` : un seul dialogue, rôles qui **alternent**, chaque ligne contient les expressions qu'elle cite, **toutes** les expressions utilisées.
 5. `checkMatching` : expressions en pages équilibrées de 6 max (`chunk`), puis les mots sur leur page.
 6. `checkWordOrders`, `checkDialogueGaps`, `checkListening` : **un item par page, un item par expression** ; rôles corrects ; 4 choix distincts incluant la réponse ; la bonne réponse contient l'expression.
-7. `checkExam` : (page de traduction de tous les mots si mots) → pages de réponses (4 à 8 `word_order`, pages équilibrées de 4 max) → **une** page de dialogue à trous (3 à 10 trous).
-   Chaque expression est examinée ; aucune phrase d'examen n'a été vue avant (`practiceSentences`) ; la traduction d'une ligne ne donne pas la réponse.
+7. `checkExam` : (page de traduction de tous les mots si mots) → pages de réponses (4 à 8 `word_order`, pages équilibrées de 4 max) → **une** page de dialogue à trous (3 à 10 trous). Chaque expression est examinée ; aucune phrase d'examen n'a été vue avant (`practiceSentences`) ; la traduction d'une ligne ne donne pas la réponse.
 8. `checkPageTimes` : `estimatedDurationS` = `functionsPageEstimate(...)` **à la seconde près** ; `timeLimitS` = `round(estimation × 1.5)` à l'examen, `null` ailleurs.
 
 ---
@@ -360,8 +334,7 @@ puis :
 
 ### 8.2 Le contenu
 
-1. `checkDocuments` : même `genre` que le brief ; un document `main` et un `exam` ; **vrai** nombre de mots dans la fourchette (`documentWords`) ;
-   les surlignages existent dans le texte comme **mots entiers** (`highlightRanges`) ; chaque mot clé est surligné dans `main` ; aucun surlignage dans `exam`.
+1. `checkDocuments` : même `genre` que le brief ; un document `main` et un `exam` ; **vrai** nombre de mots dans la fourchette (`documentWords`) ; les surlignages existent dans le texte comme **mots entiers** (`highlightRanges`) ; chaque mot clé est surligné dans `main` ; aucun surlignage dans `exam`.
 2. `checkSteps` : les 6 stades dans l'ordre, bon rôle ; les pages `skim`, `detail`, `structure`, `exam` montrent **un** document, **en premier**, dans la bonne vue (`VIEWS`) ; seule la vue `skim` a `skimSeconds`.
 3. **Si un problème existe déjà, on s'arrête** (y compris un problème d'enveloppe ou de minutes, car le carnet est partagé).
 4. `checkKeywordPages`, `checkSkim` (même `focus` que le brief), `checkDetail` (mêmes questions, même ordre, mêmes types), `checkStructure` (chaque ordre utilise chaque morceau une fois).
@@ -373,8 +346,7 @@ puis :
 
 ## 9. Différences FR / DE / EN (PR #162)
 
-Le prototype ne connaissait que le français. La PR #162 a rendu les règles dépendantes de la langue.
-Presque tout passe par [`domain/articles.ts`](../../../../packages/shared/src/lessons/domain/articles.ts) et deux tables de `schemas/grammar.ts`.
+Le prototype ne connaissait que le français. La PR #162 a rendu les règles dépendantes de la langue. Presque tout passe par [`domain/articles.ts`](../../../../packages/shared/src/lessons/domain/articles.ts) et deux tables de `schemas/grammar.ts`.
 
 | Règle | FR | DE | EN |
 |---|---|---|---|
@@ -390,8 +362,7 @@ Presque tout passe par [`domain/articles.ts`](../../../../packages/shared/src/le
 | Étape « genre » en vocabulaire | si noms | si noms | jamais (aucun nom genré) |
 | Consigne d'examen (`examInstruction`) | « … into French, with its article for nouns. » | « … into German, with its article for nouns. » | « … into English. » |
 
-Exemples tirés des tests (`German and English courses` dans
-[`validation/artifacts.test.ts`](../../../../packages/shared/src/lessons/validation/artifacts.test.ts)) :
+Exemples tirés des tests (`German and English courses` dans [`validation/artifacts.test.ts`](../../../../packages/shared/src/lessons/validation/artifacts.test.ts)) :
 
 ```
 de, "Tisch" en teachingForm   → "Tisch" must include the definite article der/die/das
@@ -401,14 +372,7 @@ fr, genre neuter              → fr nouns are masculine or feminine
 en, nom avec un genre         → en nouns have no gender
 ```
 
-Pourquoi l'article **indéfini** en français et **défini** en allemand ?
-Le code le décide dans `TEACHING_ARTICLES`. Le commentaire de `articles.ts` renvoie à la décision `D39` pour le français.
-Elle vient du prototype de Bastian (`bastian-schnitzler/lesson_prototype@928484d`, `docs/SPEC.md`, ligne D39,
-« Exam article policy ») : les noms sont enseignés et examinés avec l'article indéfini partout où il est grammatical,
-car `l'` (élidé devant une voyelle, `l'école`) cache le genre, alors que `un/une` le montre toujours.
-Seules les formes sans article indéfini possible ont une exception (noms propres comme les pays, verbes, nombres…).
-Pour l'allemand, D39 ne dit rien ; mon explication (elle n'est pas écrite dans le code) : `der/die/das` montre
-directement les trois genres.
+Pourquoi l'article **indéfini** en français et **défini** en allemand ? Le code le décide dans `TEACHING_ARTICLES`. Le commentaire de `articles.ts` renvoie à la décision `D39` pour le français. Elle vient du prototype de Bastian (`bastian-schnitzler/lesson_prototype@928484d`, `docs/SPEC.md`, ligne D39, « Exam article policy ») : les noms sont enseignés et examinés avec l'article indéfini partout où il est grammatical, car `l'` (élidé devant une voyelle, `l'école`) cache le genre, alors que `un/une` le montre toujours. Seules les formes sans article indéfini possible ont une exception (noms propres comme les pays, verbes, nombres…). Pour l'allemand, D39 ne dit rien ; mon explication (elle n'est pas écrite dans le code) : `der/die/das` montre directement les trois genres.
 
 ---
 
@@ -423,6 +387,4 @@ directement les trois genres.
 | [`domain/richText.test.ts`](../../../../packages/shared/src/lessons/domain/richText.test.ts) | Markdown simple : accepté et refusé |
 | [`domain/lessonCopy.test.ts`](../../../../packages/shared/src/lessons/domain/lessonCopy.test.ts) | les textes fixes en français tutoient l'apprenant (PR #208) |
 
-Les tests lisent des fixtures dans `packages/shared/test/fixtures/` :
-`samples/` (leçons complètes) et `content/` (leçons courtes, qui échouent exprès aux règles de longueur).
-On **modifie** un fichier valide dans le test (on casse un champ) et on vérifie le message attendu.
+Les tests lisent des fixtures dans `packages/shared/test/fixtures/` : `samples/` (leçons complètes) et `content/` (leçons courtes, qui échouent exprès aux règles de longueur). On **modifie** un fichier valide dans le test (on casse un champ) et on vérifie le message attendu.
