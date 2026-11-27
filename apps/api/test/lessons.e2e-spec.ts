@@ -484,14 +484,14 @@ describe('lessons (e2e)', () => {
 
       it('lists both the grammar point and the theme checked (#223)', async () => {
         const response = await agent
-          .get('/api/courses/fr/lessons?topic=nouns_and_determiners&theme=travel')
+          .get('/api/courses/fr/lessons?topic=nouns_and_determiners&theme=daily_life')
           .expect(200);
         const { topic, theme } = response.body.counts;
 
-        // Both kinds exist at fr A1, so an AND would give 0 here.
+        // The fixtures hold both at fr A1 (alpha, gamma), so an AND would give 0 here.
         expect(topic.nouns_and_determiners).toBeGreaterThan(0);
-        expect(theme.travel).toBeGreaterThan(0);
-        expect(response.body.total).toBe(topic.nouns_and_determiners + theme.travel);
+        expect(theme.daily_life).toBeGreaterThan(0);
+        expect(response.body.total).toBe(topic.nouns_and_determiners + theme.daily_life);
       });
 
       it('lists only the current level', async () => {
