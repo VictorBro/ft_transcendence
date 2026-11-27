@@ -180,7 +180,7 @@ services:
       - ft
     restart: unless-stopped
 
-  # The monitoring stack, see docs/MONITORING.md and the comments in
+  # The monitoring stack, see docs/operations/monitoring.md and the comments in
   # compose.yml. Always on here. None of these publishes a port: Grafana is
   # reached through caddy at /grafana. The configs are baked into the three
   # images images.yml publishes, so this host still needs only three files. The

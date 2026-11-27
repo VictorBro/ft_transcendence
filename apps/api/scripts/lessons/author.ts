@@ -10,7 +10,7 @@
  * Each lesson is written as soon as it passes, so an interrupted run loses
  * only the lessons in progress. An existing file is never touched: to redo
  * a lesson, delete its files. The /author-lessons skill does the same in a
- * Claude Code session, with lessons:check; see docs/LESSONS.md section 7.
+ * Claude Code session, with lessons:check; see docs/content/lessons.md section 7.
  *
  *   pnpm --filter @ft/api lessons:author fr a1
  *   pnpm --filter @ft/api lessons:author fr a1 --max 3

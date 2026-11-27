@@ -6,7 +6,7 @@ import { currentUser } from '@/lib/session';
 /**
  * The right of the header, the same in every shell. Passed to Shell as a
  * prop rather than rendered inside it, because SessionNav reads cookies and
- * Shell also serves error.tsx and the 404, which must not.
+ * Shell also serves error.tsx, a client component that cannot.
  *
  * Signed in, it folds into HeaderMenu. A visitor's three items fit one row,
  * and folding them would hide Sign in.

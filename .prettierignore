@@ -16,8 +16,10 @@ CHANGELOG.md
 generated
 
 # Authored prose with hand-aligned tables. Prettier rewraps markdown tables and
-# would churn these on every run.
+# would churn these on every run. docs-fr is its French translation: its code
+# blocks must stay exact copies of the code, like the ones in docs.
 docs
+docs-fr
 
 # pnpm rewrites this file itself (it appends to minimumReleaseAgeExclude) using
 # single-quoted scalars, which the yaml override would then fight on every run.

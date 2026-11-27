@@ -12,7 +12,7 @@ const item = (question: string, readText?: string): GeneratedItem => ({
 });
 
 /**
- * The table in docs/ITEM_BANK.md section 3, A1 to C2, reading at the top of each
+ * The table in docs/content/item-bank.md section 3, A1 to C2, reading at the top of each
  * range. Written out rather than read from the doc: the image CI tests in ships
  * no docs. Change both together.
  */
@@ -73,7 +73,7 @@ describe('toRows', () => {
   });
 
   it.each(Object.entries(DOCUMENTED_LIMITS))(
-    'gives %s the limits of docs/ITEM_BANK.md, reading at the top of each range',
+    'gives %s the limits of docs/content/item-bank.md, reading at the top of each range',
     (category, documented) => {
       const limits = LEVELS.map(
         (level) =>

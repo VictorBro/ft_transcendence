@@ -6,7 +6,7 @@ import { LanguageSchema } from './language';
  * Placement questions, as authored in `content/items/*.json` and seeded into
  * `QuestionBank`. One schema validates the files in CI and parses them at seed
  * time, so a malformed item is caught by whoever wrote it rather than by
- * whoever runs the migration. Authoring guide: docs/ITEM_BANK.md.
+ * whoever runs the migration. Authoring guide: docs/content/item-bank.md.
  *
  * The names below mirror the enums in schema.prisma, so a file, a row and a
  * type all describe a question in the same words.

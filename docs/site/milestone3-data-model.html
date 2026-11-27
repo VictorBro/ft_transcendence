@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Social data model · ft_transcendence</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
+<style>
+:root{
+  --m1-bg:#E8E7E1;
+  --surface-0:#FAFAF8;--surface-1:#F5F4EF;--surface-2:#FFFFFF;
+  --border:rgba(31,30,29,.15);--text-primary:#1F1E1D;--text-secondary:#5E5D59;--text-muted:#8A8983;--text-accent:#185FA5;
+  --font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --font-mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+}
+.k-f{--gb:#FAEEDA;--gd:#EF9F27;--gt:#633806}.k-c{--gb:#EEEDFE;--gd:#AFA9EC;--gt:#3C3489}.k-q{--gb:#E1F5EE;--gd:#5DCAA5;--gt:#085041}.k-d{--gb:#EAF3DE;--gd:#97C459;--gt:#27500A}.k-a{--gb:#FAECE7;--gd:#F0997B;--gt:#712B13}.gr{--cb:#F1EFE8}.k-e{--gb:#E6F1FB;--gd:#85B7EB;--gt:#0C447C}.k-n{--gb:#FBF3DB;--gd:#E0B84A;--gt:#5C4405}.k-s{--gb:#FBEAF0;--gd:#ED93B1;--gt:#72243E}.k-h{--gb:#F1EFE8;--gd:#B4B2A9;--gt:#444441}.k-p{--gb:#E4F4F8;--gd:#5BB8CF;--gt:#0B4A5A}
+@media (prefers-color-scheme:dark){
+  :root{--m1-bg:#3A3A37;--surface-0:#1F1E1D;--surface-1:#262624;--surface-2:#30302E;--border:rgba(222,220,209,.15);--text-primary:#F5F4EF;--text-secondary:#C2C0B6;--text-muted:#9C9A92;--text-accent:#85B7EB}
+  .k-f{--gb:#412402;--gd:#BA7517;--gt:#FAC775}.k-c{--gb:#26215C;--gd:#7F77DD;--gt:#CECBF6}.k-q{--gb:#04342C;--gd:#1D9E75;--gt:#9FE1CB}.k-d{--gb:#173404;--gd:#639922;--gt:#C0DD97}.k-a{--gb:#4A1B0C;--gd:#D85A30;--gt:#F5C4B3}.gr{--cb:#444441}.k-e{--gb:#042C53;--gd:#378ADD;--gt:#B5D4F4}.k-n{--gb:#3A2E06;--gd:#B08A1E;--gt:#F2DB94}.k-s{--gb:#4B1528;--gd:#D4537E;--gt:#F4C0D1}.k-h{--gb:#2C2C2A;--gd:#5F5E5A;--gt:#D3D1C7}.k-p{--gb:#08323C;--gd:#2A93AD;--gt:#A9E0EE}
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--font-sans)}
+main{max-width:1100px;margin:0 auto;padding:calc(24px + env(safe-area-inset-top,0px)) 20px calc(40px + env(safe-area-inset-bottom,0px))}
+h1{font-size:22px;font-weight:500;margin:0 0 6px}
+.intro{font-size:14px;line-height:1.6;color:var(--text-secondary);margin:0 0 18px;max-width:75ch}
+.g{background:var(--gb);border:0.5px solid var(--gd);border-radius:12px;padding:14px;margin:0 0 14px}
+.gh{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:500;margin:0 0 4px;color:var(--gt);flex-wrap:wrap}
+.gd{font-size:13px;line-height:1.5;color:var(--gt);opacity:.85;margin:0 0 10px}
+.def{font-size:11px;padding:2px 8px;border-radius:999px;border:0.5px solid var(--gd);background:var(--surface-2);color:var(--text-secondary);font-weight:400}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+.cards.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.c{background:var(--cb,var(--surface-2));border:0.5px solid var(--border);border-radius:8px;padding:10px 12px;display:flex;flex-direction:column}
+.ct{font-family:var(--font-mono);font-size:13px;font-weight:500;color:var(--text-primary);margin:0 0 2px}
+.cp{font-size:11px;color:var(--text-muted);margin:0 0 6px;font-family:var(--font-mono)}
+.f{font-family:var(--font-mono);font-size:12px;line-height:1.6;color:var(--text-secondary);flex:1}
+.en{list-style:none;margin:0;padding:0;counter-reset:en}
+.en li{counter-increment:en;display:flex;align-items:center;gap:7px;padding:1px 0}
+.en li::before{content:counter(en);flex-shrink:0;width:17px;height:17px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-sans);font-size:9.5px;font-weight:500;line-height:1;color:var(--gt);background:var(--gb);border:0.5px solid var(--gd)}
+.en li span{min-width:0;overflow-wrap:anywhere}
+.en-x{margin-top:6px;padding-top:5px;border-top:0.5px dashed var(--border)}
+.c.m1{background:var(--m1-bg)}
+.m1t{float:right;font-family:var(--font-sans);font-size:10px;font-weight:500;color:var(--text-secondary);background:var(--surface-2);border:0.5px solid var(--border);border-radius:999px;padding:1px 7px;text-decoration:none;margin-left:6px}
+.m1t:hover,.m1t:focus-visible{text-decoration:underline}
+.m1note{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-secondary);margin:-4px 0 14px}
+.m1note i{width:14px;height:14px;border-radius:3px;background:var(--m1-bg);border:0.5px solid var(--border)}
+.f b{font-weight:500;color:var(--text-primary)}
+.ref{margin-top:8px;padding-top:6px;border-top:0.5px solid var(--border);font-size:11px;color:var(--text-muted);display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.ref span{font-family:var(--font-mono);background:var(--surface-2);border:0.5px solid var(--border);border-radius:4px;padding:0 5px;color:var(--text-secondary)}
+a.il{color:var(--text-accent);text-decoration:none}a.il:hover,a.il:focus-visible{text-decoration:underline}
+.relwrap{overflow-x:auto}
+.rel{display:grid;grid-template-columns:minmax(140px,1fr) 20px minmax(140px,1fr) 2fr;gap:6px 10px;align-items:center;font-size:12px;min-width:640px}
+.m{font-family:var(--font-mono);background:var(--gb);border:0.5px solid var(--gd);color:var(--gt);border-radius:6px;padding:4px 8px}
+.rel .d{color:var(--text-secondary);line-height:1.5}
+.rel i{color:var(--text-muted);text-align:center}
+.leg{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px;font-size:12px}
+.leg .m{font-family:var(--font-sans)}
+.c.wide{grid-column:1/-1}
+.pt{float:right;font-family:var(--font-sans);font-size:10px;font-weight:500;color:var(--st-work);background:var(--surface-2);border:0.5px solid var(--st-work);border-radius:999px;padding:1px 7px;margin-left:6px}
+.c{scroll-margin-top:calc(12px + env(safe-area-inset-top,0px))}
+.c:target{outline:2px solid var(--text-accent);outline-offset:2px}
+.tw{overflow-x:auto}
+table.t{border-collapse:collapse;font-family:var(--font-mono);font-size:12px;width:100%;min-width:420px}
+table.t th,table.t td{text-align:right;padding:4px 10px;border-bottom:0.5px solid var(--border);color:var(--text-secondary)}
+table.t .pc{color:var(--text-muted)}
+table.t caption{caption-side:top;text-align:left;font-family:var(--font-sans);font-size:12px;font-weight:500;color:var(--text-primary);padding:10px 0 4px}
+table.t caption span{font-weight:400;color:var(--text-muted);margin-left:6px}
+.tw+.tw{margin-top:6px}
+table.t td.dif{color:var(--text-primary);font-weight:600}
+:root{--st-open:#3B6D11;--st-work:#BA7517;--st-closed:#534AB7}
+@media (prefers-color-scheme:dark){:root{--st-open:#97C459;--st-work:#EF9F27;--st-closed:#AFA9EC}}
+a.il.st-open,a.il.st-work,a.il.st-closed{white-space:nowrap}
+a.il.ready{border-radius:4px;padding:0 3px;box-shadow:0 0 0 1.5px var(--ready)}
+.ref span.ready{border-color:var(--ready);box-shadow:0 0 0 1px var(--ready)}
+.ref span.ready a.il.ready{box-shadow:none;padding:0}
+.stleg i.ready{width:12px;height:10px;border-radius:3px;background:none;box-shadow:0 0 0 1.5px var(--ready)}
+:root{--ready:#2B8A3E}@media (prefers-color-scheme:dark){:root{--ready:#7CC94A}}
+a.il.st-open::before,a.il.st-work::before,a.il.st-closed::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;margin:0 3px 1px 0;vertical-align:middle;background:var(--sc)}
+a.il.st-open{--sc:var(--st-open)}a.il.st-work{--sc:var(--st-work)}a.il.st-closed{--sc:var(--st-closed);text-decoration:line-through;text-decoration-thickness:1px}
+a.il.st-closed:hover{text-decoration:underline}
+.stleg{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;font-size:12px;color:var(--text-secondary);margin:-4px 0 14px}
+.stleg b{font-weight:500;color:var(--text-primary)}
+.stleg i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px;vertical-align:middle}
+table.t th{font-weight:500;color:var(--text-primary)}
+table.t th:first-child,table.t td:first-child{text-align:left;color:var(--text-primary);font-weight:500}
+.ct .n{font-weight:400;color:var(--text-muted);margin-left:4px}
+.jump{cursor:pointer}.jump:hover{filter:brightness(.96)}.jump:focus-visible{outline:2px solid var(--text-accent);outline-offset:2px}
+section.g{scroll-margin-top:calc(12px + env(safe-area-inset-top,0px))}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media (max-width:560px){.cards.two{grid-template-columns:1fr}}
+.topnav{display:flex;flex-wrap:wrap;gap:4px;margin:0 0 18px;padding:4px;border:0.5px solid var(--border);border-radius:10px;background:var(--surface-2);width:fit-content;max-width:100%}
+.topnav a{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-secondary);text-decoration:none;padding:5px 10px;border-radius:7px}
+.topnav a:hover{color:var(--text-primary);background:var(--surface-1)}
+.topnav a:focus-visible{outline:2px solid var(--text-accent);outline-offset:1px}
+.topnav a[aria-current="page"]{color:var(--surface-0);background:var(--text-primary);font-weight:500}
+.navrow{display:flex;flex-wrap:wrap;align-items:stretch;gap:12px;margin:0 0 18px}
+.navrow .topnav{margin:0}
+.prod{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--text-primary);text-decoration:none;padding:9px 14px;border:0.5px solid var(--border);border-radius:10px;background:var(--surface-2)}
+.prod:hover{background:var(--surface-1)}
+.prod:focus-visible{outline:2px solid var(--text-accent);outline-offset:1px}
+.prod .ti-arrow-up-right{color:var(--text-muted)}
+.topnav.repo .repo-l{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--text-primary);padding:5px 8px 5px 10px;border-right:0.5px solid var(--border);margin-right:2px}
+.f .md{font-family:var(--font-sans);color:var(--text-primary)}
+.c{position:relative}
+.ct span[id]:empty{position:absolute;top:0;left:0;width:1px;height:1px;scroll-margin-top:calc(12px + env(safe-area-inset-top,0px))}
+.c:has(.ct span[id]:target){outline:2px solid var(--text-accent);outline-offset:2px}
+</style>
+</head>
+<body>
+<main>
+<div class="navrow"><nav class="topnav" aria-label="Project docs"><a href="../index.html"><i class="ti ti-layout-dashboard" aria-hidden="true"></i>Overview</a><a href="milestone1-data-model.html"><i class="ti ti-git-compare" aria-hidden="true"></i>Data model · M1</a><a href="milestone2-data-model.html"><i class="ti ti-database" aria-hidden="true"></i>Data model · M2</a><a href="milestone3-data-model.html" aria-current="page"><i class="ti ti-plug-connected" aria-hidden="true"></i>Data model · M3</a></nav><a class="prod" href="https://transcendence.dpdns.org" title="Production, on the Oracle Cloud instance: transcendence.dpdns.org"><i class="ti ti-rocket" aria-hidden="true"></i>production<i class="ti ti-arrow-up-right" aria-hidden="true"></i></a><a class="prod" href="https://trans.vyantares.ch" title="A second copy, on a shared VPS: trans.vyantares.ch"><i class="ti ti-server" aria-hidden="true"></i>second copy<i class="ti ti-arrow-up-right" aria-hidden="true"></i></a><a class="prod" href="https://bastian-schnitzler.github.io/lesson_prototype/" title="The lesson prototype: bastian-schnitzler.github.io/lesson_prototype"><i class="ti ti-flask" aria-hidden="true"></i>prototype<i class="ti ti-arrow-up-right" aria-hidden="true"></i></a><nav class="topnav repo" aria-label="ft_transcendence on GitHub"><span class="repo-l"><i class="ti ti-brand-github" aria-hidden="true"></i>ft_transcendence</span><a href="https://github.com/VictorBro/ft_transcendence"><i class="ti ti-code" aria-hidden="true"></i>code</a><a href="https://github.com/VictorBro/ft_transcendence/pulls"><i class="ti ti-git-pull-request" aria-hidden="true"></i>PRs</a><a href="https://github.com/users/VictorBro/projects/1"><i class="ti ti-layout-kanban" aria-hidden="true"></i>Kanban</a><a href="https://github.com/VictorBro/ft_transcendence/milestones"><i class="ti ti-flag" aria-hidden="true"></i>milestones</a><a href="https://github.com/VictorBro/ft_transcendence/issues"><i class="ti ti-circle-dot" aria-hidden="true"></i>issues</a></nav></div>
+<h1>Social and real-time data model</h1>
+<p class="intro">Every format of the Real-time, social and defence milestone, grouped by layer: the enums and constants, the socket contract in packages/shared, the Prisma models, the presence state in Redis, the REST schemas, the web pieces that hold the connection, what the evaluation checks, and the modules. Each card lists the issues that reference it, and has an anchor named after its type, so issues can link to it. References cover #34 and #154 to #161. Cards marked "existing" are on main and reused or changed, cards marked "planned" are not on main yet. One WebSocket connection per browser tab, in a user:&lt;id&gt; room; the lesson discussion of Milestone 2 streams over SSE, not over the socket.</p>
+
+<div class="leg">
+<span class="m k-e jump" data-target="enums" role="link" tabindex="0">Enums + constants</span><span class="m k-c jump" data-target="socket" role="link" tabindex="0">Socket contract · #154</span><span class="m k-d jump" data-target="database" role="link" tabindex="0">Database · #155 / #158</span><span class="m k-q jump" data-target="redis" role="link" tabindex="0">Redis · #157</span><span class="m k-a jump" data-target="api" role="link" tabindex="0">REST schemas · #155 / #156 / #158</span><span class="m k-p jump" data-target="web" role="link" tabindex="0">Web · #154 to #158</span><span class="m k-h jump" data-target="evaluation" role="link" tabindex="0">Evaluation · #159 to #161</span>
+<span class="m k-n jump" data-target="modules" role="link" tabindex="0">NestJS modules</span></div>
+<p class="stleg" id="stleg"><b>Issue status</b><span><i style="background:var(--st-open)"></i>open</span><span><i style="background:var(--st-work)"></i>in work (assigned or a PR linked)</span><span><i style="background:var(--st-closed)"></i>closed</span><span><i class="ready"></i>green frame: ready, open and not blocked, nobody on it yet</span><span id="live">Snapshot of 20 November 2026, refreshed from GitHub on load.</span></p>
+<p class="m1note"><i aria-hidden="true"></i>Grey cards tagged "existing" are on main and reused or changed, not reimplemented.</p>
+
+<section class="g k-e" id="enums"><div class="gh"><i class="ti ti-list-details" aria-hidden="true"></i>Enums and constants<span class="def">packages/shared/src/events/socket.ts</span><span class="def">friendship in #155</span></div>
+<div class="gd">The fixed value sets and numbers the socket, the tables and the pages rely on.</div>
+<div class="cards">
+<div class="c m1" id="PresenceStatus"><div class="ct">PresenceStatus<span class="n">(2)</span><a class="m1t" href="https://github.com/VictorBro/ft_transcendence/blob/main/packages/shared/src/events/socket.ts" title="Existing enum on main, changed by #157">existing</a></div><div class="cp">PresenceStatusSchema</div><div class="f"><ol class="en"><li><span>online</span></li><li><span>offline</span></li></ol><div class="en-x">away is dropped (#157)<br>online on the first socket, offline 10 s after the last one closes</div></div><div class="ref">Referenced in <span>#156</span><span>#157</span><span>#158</span><span>#161</span></div></div>
+<div class="c m1" id="FriendshipStatus"><div class="ct">FriendshipStatus<span class="n">(2)</span><a class="m1t" href="https://github.com/VictorBro/ft_transcendence/blob/main/apps/api/prisma/schema.prisma" title="Built in #155">existing</a></div><div class="cp">Prisma enum FriendshipStatus · FriendshipStatusSchema, schemas/friend.ts</div><div class="f"><ol class="en"><li><span>pending</span></li><li><span>accepted</span></li></ol><div class="en-x">decline, cancel and remove delete the row<br>no blocked state: blocking is not built</div></div><div class="ref">Referenced in <span>#155</span></div></div>
+<div class="c" id="Limits"><div class="ct">Limits and timings</div><div class="cp">constants</div><div class="f"><b>message text</b>: 1 to 1,000 characters once trimmed, MESSAGE_MAX_LENGTH (#158)<br><b>history page</b>: 50 messages, MESSAGE_PAGE_SIZE (#158)<br><b>send ack</b>: the tab waits 10 s, SEND_TIMEOUT_MS, then says network.unreachable (#158)<br><b>socket events</b>: 20 of each event per 10 s per socket, each name in its own window and unknown names sharing one, EVENT_LIMIT and EVENT_WINDOW_MS, frames of 16 KiB at most (#154, #158)<br><b>dm:send</b>: also 30 a minute per account, in the HTTP throttler's storage, past it server.rateLimited through the ack (#158)<br><b>dm:read</b>: also 100 a minute per account, RATE_LIMITS.perAccount as an HTTP route, past it app:error server.rateLimited (#158)<br><b>offline grace</b>: 10 s after the last socket closes, PRESENCE_GRACE_MS (#157)<br><b>reconnect</b>: with backoff, a "Reconnecting" badge (#154)<br><b>signup</b>: @ThrottleByIp(RATE_LIMITS.signup), SIGNUP_LIMIT_PER_MINUTE, 20 a minute by default (#34 restored 10, #61 raised it to 20)</div><div class="ref">Referenced in <span>#34</span><span>#154</span><span>#157</span><span>#158</span></div></div>
+<div class="c" id="Metrics"><div class="ct">Metrics</div><div class="cp">Prometheus · docs/operations/monitoring.md</div><div class="f"><b>ft_ws_connections</b>: open sockets<br><b>ft_ws_events_total</b>: events handled</div><div class="ref">Referenced in <span>#154</span></div></div>
+</div></section>
+
+<section class="g k-c" id="socket"><div class="gh"><i class="ti ti-plug-connected" aria-hidden="true"></i>Socket contract<span class="def">packages/shared/src/events/socket.ts</span><span class="def">existing, changed by #154</span><span class="def">#155, #157 and #158 add their events</span></div>
+<div class="gd">Event names, payload schemas and the typed pairs socket.io is built with. Every client event is parsed with its zod schema before a handler touches it, and every emit goes to one user's room, or answers one socket. #154 removes the session:* and chat:* events, which belong to no plan.</div>
+<div class="cards">
+<div class="c m1" id="Events"><div class="ct">Event names<a class="m1t" href="https://github.com/VictorBro/ft_transcendence/blob/main/packages/shared/src/events/socket.ts" title="Built in #154, #155, #157 and #158">existing</a></div><div class="cp">CLIENT_EVENTS · SERVER_EVENTS</div><div class="f"><b>client → server</b>: dm:send with an ack, dm:read (#158)<br><b>server → client</b>: course:updated (#154); friend:request, friend:accepted, friend:removed (#155); presence:update (#157); dm:message, dm:unread (#158); app:error<br><b>− removed</b>: session:join, session:leave, chat:send, session:state, session:peer-joined, session:peer-left, chat:message (#154)</div><div class="ref">Referenced in <span>#154</span><span>#155</span><span>#157</span><span>#158</span></div></div>
+<div class="c m1" id="Rooms"><div class="ct">Rooms<a class="m1t" href="https://github.com/VictorBro/ft_transcendence/blob/main/packages/shared/src/events/socket.ts" title="Existing helper on main">existing</a></div><div class="cp">userRoom(userId) → user:&lt;id&gt;</div><div class="f">each socket joins user:&lt;id&gt; at the handshake<br>emits go to a user room only, never to everyone<br>a user's other tabs are in the same room<br>the api also joins session:&lt;sid&gt; (sessionRoom), private to it: to close a session's sockets, never to emit</div><div class="ref">Referenced in <span>#154</span><span>#155</span><span>#158</span></div></div>
+<div class="c m1" id="SocketData"><div class="ct">SocketData<a class="m1t" href="https://github.com/VictorBro/ft_transcendence/blob/main/packages/shared/src/events/socket.ts" title="Existing interface on main">existing</a></div><div class="cp">attached by the gateway once the handshake is verified</div><div class="f"><b>userId</b>, <b>sessionId</b><br>from the session cookie; anything else is rejected<br>the user's sockets close on logout, expiry and a 2FA change</div><div class="ref">Referenced in <span>#154</span></div></div>
+<div class="c m1" id="SocketAck"><div class="ct">SocketAck · AppError<span id="SocketError"></span><span id="SocketErrorCode"></span><a class="m1t" href="https://github.com/VictorBro/ft_transcendence/blob/main/packages/shared/src/events/socket.ts" title="AppError built in #154, SocketAck in #158">existing</a></div><div class="cp">socket.ts · how the server answers a client event</div><div class="f"><b>SocketAck&lt;T&gt;</b>: { ok: true, data: T } | { ok: false, code }, shaped like the web's ApiResult<br><b>AppError</b>: { code } on app:error, for an event sent without an ack<br><b>code</b>: an ERROR_CODES entry, as on every HTTP error, worded by the browser; #158 adds message.notFriends, message.empty, message.tooLong<br>dm:send answers with an ack, and a refused one gets it too, a rate limit included, so the caller never waits out its timeout</div><div class="ref">Referenced in <span>#154</span><span>#158</span></div></div>
+<div class="c m1" id="PresenceUpdate"><div class="ct">PresenceUpdate<a class="m1t" href="https://github.com/VictorBro/ft_transcendence/blob/main/packages/shared/src/events/socket.ts" title="Existing schema on main">existing</a></div><div class="cp">PresenceUpdateSchema · presence:update</div><div class="f"><b>userId</b>: uuid<br><b>status</b>: PresenceStatus, online or offline<br><b>at</b>: ISO datetime<br>to the user's friends only; on connect, the state of each friend</div><div class="ref">Referenced in <span>#157</span></div></div>
+<div class="c m1" id="CourseUpdated"><div class="ct">CourseUpdated<a class="m1t" href="https://github.com/VictorBro/ft_transcendence/blob/main/packages/shared/src/events/socket.ts" title="Built in #154">existing</a></div><div class="cp">CourseUpdatedSchema · course:updated</div><div class="f"><b>lang</b>: the course, none of its fields; the page reads it again<br>sent to user:&lt;id&gt; after the commit, when the goal or the level changes and when a lesson finishes<br>the course page in the user's other tabs refreshes</div><div class="ref">Referenced in <span>#154</span></div></div>
+<div class="c m1" id="FriendEvent"><div class="ct">FriendEvent<a class="m1t" href="https://github.com/VictorBro/ft_transcendence/blob/main/packages/shared/src/events/socket.ts" title="Built in #155">existing</a></div><div class="cp">FriendEventSchema · friend:request · friend:accepted · friend:removed</div><div class="f"><b>userId</b>: the other user, as seen from the room, and none of their fields<br>sent to both users' rooms, so the actor's other tabs follow too<br>friend:removed also when a request is declined or cancelled: the row is gone<br>/friends and /users/[id] refresh on any of them</div><div class="ref">Referenced in <span>#155</span></div></div>
+<div class="c m1" id="DmEvents"><div class="ct">DmSend · DmMessage · DmRead · DmUnread<span id="DmMessage"></span><span id="DmRead"></span><span id="DmUnread"></span><a class="m1t" href="https://github.com/VictorBro/ft_transcendence/blob/main/packages/shared/src/events/socket.ts" title="Built in #158">existing</a></div><div class="cp">dm:send · dm:message · dm:read · dm:unread</div><div class="f"><b>userId</b>, in each: the other person of the conversation, as seen from the room or the sender<br><b>dm:send</b>: { userId, text: 1 to 1,000 once trimmed }, ack SocketAck&lt;Message&gt;; friends only, else message.notFriends<br><b>dm:message</b>: { userId, message: Message }, to both rooms, the sending tab included; the thread dedupes by id<br><b>dm:read</b>: { userId }, no ack; sets readAt on what they sent you; 100 a minute per account<br><b>dm:unread</b>: { counts, at }, the unread messages per conversation, keyed by the other user; a conversation with nothing unread is left out; the whole picture, to the recipient after a message, to the reader after a dm:read, to each new socket; a tab keeps the latest at<br>after a reconnect, the open thread fetches the newest page over REST and merges it by id</div><div class="ref">Referenced in <span>#158</span></div></div>
+<div class="c m1" id="TypedPairs"><div class="ct">ServerToClientEvents · ClientToServerEvents<span id="ClientToServerEvents"></span><a class="m1t" href="https://github.com/VictorBro/ft_transcendence/blob/main/packages/shared/src/events/socket.ts" title="Existing interfaces on main, changed">existing</a></div><div class="cp">socket.ts · CLIENT_EVENT_SCHEMAS</div><div class="f">one entry per event, typed with its payload; dm:send with its ack, (answer: SocketAck&lt;Message&gt;) =&gt; void<br><b>CLIENT_EVENT_SCHEMAS</b>: the zod schema of each client event, parsed before the handler<br><b>InterServerEvents</b>: empty, no Redis adapter (one API instance)</div><div class="ref">Referenced in <span>#154</span><span>#155</span><span>#158</span></div></div>
+</div></section>
+
+<section class="g k-d" id="database"><div class="gh"><i class="ti ti-database" aria-hidden="true"></i>Database (Prisma)<span class="def">friendship in #155</span><span class="def">messages in #158</span></div>
+<div class="gd">The social state that outlives a connection. Every relation to User cascades, so deleting an account removes its friendships and conversations. Online status is not stored here: it lives in Redis.</div>
+<div class="cards">
+<div class="c m1" id="Friendship"><div class="ct">Friendship<a class="m1t" href="https://github.com/VictorBro/ft_transcendence/blob/main/apps/api/prisma/schema.prisma" title="Built in #155">existing</a></div><div class="cp">one row per pair · migration add_friendships</div><div class="f"><b>pairKey</b>: both user ids, smaller first, the primary key (pairKey()), so two requests that cross make one row<br><b>requesterId</b> → User, cascade<br><b>addresseeId</b> → User, cascade<br><b>status</b>: FriendshipStatus, pending by default<br><b>createdAt</b>, <b>updatedAt</b>: accepting is the only update<br>edge cases: yourself, a duplicate, already friends, two requests that cross</div><div class="ref">Referenced in <span>#155</span></div></div>
+<div class="c m1" id="Conversation"><div class="ct">Conversation<a class="m1t" href="https://github.com/VictorBro/ft_transcendence/blob/main/apps/api/prisma/schema.prisma" title="Built in #158">existing</a></div><div class="cp">one row per pair who have exchanged a message · migration add_messages</div><div class="f"><b>pairKey</b>: both user ids, smaller first, the primary key, as on Friendship (pairKey())<br><b>userAId</b>, the smaller, and <b>userBId</b> → User, cascade<br><b>createdAt</b><br><b>lastMessageAt</b>: set with each message, orders the list<br>outlives the friendship: the history stays readable by both; only friends can send</div><div class="ref">Referenced in <span>#158</span></div></div>
+<div class="c m1" id="Message"><div class="ct">Message<a class="m1t" href="https://github.com/VictorBro/ft_transcendence/blob/main/apps/api/prisma/schema.prisma" title="Built in #158">existing</a></div><div class="cp">belongs to a Conversation · migrations add_messages, add_message_unread_index</div><div class="f"><b>id</b>: uuid<br><b>pairKey</b> → Conversation, cascade<br><b>senderId</b> → User, cascade<br><b>text</b>: 1 to 1,000 characters, VarChar(1000)<br><b>createdAt</b><br><b>readAt</b>: null until the other user reads it, never sent<br>index (pairKey, createdAt, id): the history's keyset<br>index (pairKey, readAt): what a pair has unread, for the counts and dm:read</div><div class="ref">Referenced in <span>#158</span></div></div>
+<div class="c m1" id="User"><div class="ct">User<a class="m1t" href="milestone2-data-model.html#User" title="Existing model, gains relations">existing</a></div><div class="cp">existing, gains relations and lastActiveDay</div><div class="f">… existing fields<br><b>+</b> lastActiveDay: the UTC date, written by the socket handshake at most once a day; Recently active lists the last 7 days, by name; never sent<br><b>+</b> friendships sent and received<br><b>+</b> conversations as user A or B, and messages sent (#158)<br>email, 2FA and time zone never leave through a public route</div><div class="ref">Referenced in <span>#155</span><span>#156</span><span>#158</span><span>#160</span></div></div>
+</div></section>
+
+<section class="g k-q" id="redis"><div class="gh"><i class="ti ti-bolt" aria-hidden="true"></i>Redis<span class="def">presence in #157</span><span class="def">RedisModule is global, on main</span></div>
+<div class="gd">Short-lived state that must survive a page reload but not a restart: who is online. One API instance, so no socket.io adapter.</div>
+<div class="cards">
+<div class="c m1" id="PresenceCount"><div class="ct">Presence count<a class="m1t" href="https://github.com/VictorBro/ft_transcendence/blob/main/apps/api/src/presence/presence.service.ts" title="Built in #157">existing</a></div><div class="cp">a socket count per user · key presence:&lt;userId&gt;</div><div class="f">INCR on connect, DECR 10 s after a disconnect<br>online on the first socket<br>offline 10 s after the last one closes, so a reload does not flicker<br>every key deleted at boot (SCAN), one API instance assumed</div><div class="ref">Referenced in <span>#154</span><span>#157</span></div></div>
+<div class="c m1" id="isOnline"><div class="ct">isOnline(ids)<a class="m1t" href="https://github.com/VictorBro/ft_transcendence/blob/main/apps/api/src/presence/presence.service.ts" title="Built in #157">existing</a></div><div class="cp">for the REST routes</div><div class="f">ids → which of them are online<br>the friends list, the profile (#156) and messages (#158) show the dot</div><div class="ref">Referenced in <span>#157</span></div></div>
+</div></section>
+
+<section class="g k-a" id="api"><div class="gh"><i class="ti ti-world" aria-hidden="true"></i>REST schemas<span class="def">shared zod schemas</span><span class="def">behind the existing auth</span></div>
+<div class="gd">Request and response shapes between API and web, with their real paths and schemas.</div>
+<div class="cards">
+<div class="c m1" id="PublicUser"><div class="ct">PublicUser<a class="m1t" href="https://github.com/VictorBro/ft_transcendence/blob/main/packages/shared/src/schemas/user.ts" title="Existing schema on main">existing</a></div><div class="cp">PublicUserSchema = UserSchema.pick(…) · user.ts</div><div class="f"><b>id, displayName, avatarUrl</b><br>what search results, lists and events show of another user</div><div class="ref">Referenced in <span>#155</span><span>#156</span></div></div>
+<div class="c m1" id="Friends-routes"><div class="ct">Friends routes<a class="m1t" href="https://github.com/VictorBro/ft_transcendence/blob/main/apps/api/src/friends/friends.controller.ts" title="Built in #155">existing</a></div><div class="cp">FriendsController · schemas/friend.ts</div><div class="f"><b>GET /api/friends</b> → { friends, received, sent }, each newest first; a friend carries online (#157)<br><b>POST /api/friends/requests/:userId</b> → { status }: sends, or accepts theirs if it is already waiting; 10 a minute<br><b>POST /api/friends/requests/:userId/accept</b>, <b>DELETE /api/friends/requests/:userId</b> (decline or cancel), <b>DELETE /api/friends/:userId</b> (remove): 204<br>search by display name is GET /api/users?q=, in UsersController<br>remove asks first in the page</div><div class="ref">Referenced in <span>#155</span></div></div>
+<div class="c m1" id="PublicProfile"><div class="ct">PublicProfile<a class="m1t" href="https://github.com/VictorBro/ft_transcendence/blob/main/packages/shared/src/schemas/user.ts" title="Built in #156">existing</a></div><div class="cp">PublicProfileSchema · GET /api/users/:id · 404 user.notFound for an unknown id</div><div class="f">{ id, displayName, avatarUrl, courses: [{ lang, level, streak }] }<br>level null before placement, the current streak as the owner sees it<br><b>rank and XP</b>, <b>number of achievements</b> per course: not sent; #95 is closed and did not add them<br>never email, 2FA or time zone (checked by the API e2e)</div><div class="ref">Referenced in <span>#156</span></div></div>
+<div class="c m1" id="Conversations-routes"><div class="ct">Conversations routes<a class="m1t" href="https://github.com/VictorBro/ft_transcendence/blob/main/apps/api/src/messages/messages.controller.ts" title="Built in #158">existing</a></div><div class="cp">MessagesController · schemas/message.ts</div><div class="f"><b>GET /api/conversations</b> → { conversations: [{ user: PublicUser, lastMessageAt, unread }] }, the latest first<br><b>GET /api/conversations/:userId/messages?cursor=</b> → { messages, nextCursor }: 50 a page, oldest first; nextCursor asks for the page before, null once the first message is in; a cursor from another conversation is a 400<br><b>Message</b>: { id, senderId, text, createdAt }, readAt stays on the server<br>reading only, no friendship needed: sending is dm:send, friends only</div><div class="ref">Referenced in <span>#158</span></div></div>
+</div></section>
+
+<section class="g k-p" id="web"><div class="gh"><i class="ti ti-browser" aria-hidden="true"></i>Web<span class="def">apps/web</span><span class="def">strings in en, fr and de</span></div>
+<div class="gd">The pieces of the web app that hold the connection and show the social pages. /friends and /chat are in e2e/support/routes.ts, the list the console and layout checks walk. /users/[id] has no fixed id, so friends.spec.ts and messages.spec.ts check its console and its layout at 360 px.</div>
+<div class="cards">
+<div class="c m1" id="SocketProvider"><div class="ct">tab-socket.ts<a class="m1t" href="https://github.com/VictorBro/ft_transcendence/blob/main/apps/web/components/tab-socket.ts" title="Built in #154">existing</a></div><div class="cp">what #154 calls the SocketProvider · module scope, not a React provider</div><div class="f">one connection per signed-in tab, whatever page it shows, opened by SessionNav<br>reconnect with backoff, a "Reconnecting" badge<br>no console error while the API is down: each retry asks /healthz/api first<br>wss:// on the deployed site, path /ws through Caddy</div><div class="ref">Referenced in <span>#154</span></div></div>
+<div class="c" id="Pages"><div class="ct">Pages</div><div class="cp">app/[locale]</div><div class="f"><b>/friends</b>: Friends (Amis, Freunde): search, requests, the list (#155), Recently active (#156)<br><b>/users/[id]</b>: a profile by id, with Add or Remove friend (#156), and the online dot (#157)<br><b>/chat</b>: Messages (Messages, Nachrichten): the conversations with unread badges and online dots, the thread, the input; ?with=&lt;id&gt; opens a thread; replaces the tutor shell (#158)<br>Friends and Messages links in the account menu, session-nav.tsx; Messages carries the unread total<br>a Message link on each friend on /friends and on a friend's profile (#158)</div><div class="ref">Referenced in <span>#155</span><span>#156</span><span>#158</span></div></div>
+<div class="c" id="Privacy"><div class="ct">Privacy and terms</div><div class="cp">/privacy · /terms</div><div class="f">friends lists (#155)<br>profiles and the recently active list (#156)<br>who can see your online status (#157)<br>messages to friends are stored, kept while both accounts exist (#158)</div><div class="ref">Referenced in <span>#155</span><span>#156</span><span>#157</span><span>#158</span></div></div>
+</div></section>
+
+<section class="g k-h" id="evaluation"><div class="gh"><i class="ti ti-checklist" aria-hidden="true"></i>Evaluation<span class="def">#159 to #161, #34</span></div>
+<div class="gd">What the evaluation checks beyond features: the browsers, the README and the defence. The modules we claim add up to 22 points, of which 19 count.</div>
+<div class="cards">
+<div class="c m1" id="Browsers"><div class="ct">Playwright projects<a class="m1t" href="https://github.com/VictorBro/ft_transcendence/blob/main/e2e/playwright.config.ts" title="Built in #159">existing</a></div><div class="cp">e2e/playwright.config.ts</div><div class="f"><b>chromium</b>, <b>firefox</b>, <b>webkit</b><br>every spec on all three in CI and with make playwright-all; seven test.skip calls keep some tests on Chromium only, each with its reason (restart.spec.ts, level-complete.spec.ts, five in lesson.spec.ts)<br>known limits in the README: without a speech voice, Listen buttons hide and the functions listening reply shows its text</div><div class="ref">Referenced in <span>#159</span></div></div>
+<div class="c wide" id="Modules-table"><div class="ct">README modules</div><div class="cp">#160 checks the table · #152 writes the Milestone 2 and custom modules</div><div class="tw"><table class="t"><caption>Modules <span>22 points, 19 count</span></caption>
+<tr><th>Module</th><th>Type</th><th>Points</th></tr>
+<tr><td>Frameworks, front and back (Next.js, NestJS)</td><td>Major</td><td>2</td></tr>
+<tr><td>Monitoring (Prometheus, Grafana)</td><td>Major</td><td>2</td></tr>
+<tr><td>Custom: CI/CD</td><td>Major</td><td>2</td></tr>
+<tr><td>Standard user management</td><td>Major</td><td class="dif">2</td></tr>
+<tr><td>Real-time features with WebSockets</td><td>Major</td><td class="dif">2</td></tr>
+<tr><td>User interaction</td><td>Major</td><td class="dif">2</td></tr>
+<tr><td>LLM interface</td><td>Major</td><td>2</td></tr>
+<tr><td>ORM (Prisma)</td><td>Minor</td><td>1</td></tr>
+<tr><td>Server-side rendering</td><td>Minor</td><td>1</td></tr>
+<tr><td>3 languages</td><td>Minor</td><td>1</td></tr>
+<tr><td>2FA</td><td>Minor</td><td>1</td></tr>
+<tr><td>Advanced search</td><td>Minor</td><td>1</td></tr>
+<tr><td>Gamification</td><td>Minor</td><td>1</td></tr>
+<tr><td>Additional browsers</td><td>Minor</td><td class="dif">1</td></tr>
+<tr><td>Custom: cloud deployment with DNS and Let's Encrypt</td><td>Minor</td><td>1</td></tr>
+</table></div><div class="f" style="margin-top:6px">bold = earned in this milestone (7 points)</div><div class="ref">Referenced in <span>#160</span></div></div>
+<div class="c" id="Defence"><div class="ct">docs/defence.md<span class="pt" title="Planned in #161, not on main yet">planned</span></div><div class="cp">the runbook · #161</div><div class="f">one section per module of the README table: what to show, which account, which command, who shows it<br>the mandatory checks, the LLM error triggers, two browsers side by side<br>a full rehearsal, its time noted</div><div class="ref">Referenced in <span>#161</span></div></div>
+<div class="c m1" id="Signup-throttle"><div class="ct">Signup throttle<a class="m1t" href="https://github.com/VictorBro/ft_transcendence/blob/main/apps/api/src/auth/auth.controller.ts" title="Existing decorator on main">existing</a></div><div class="cp">auth.controller.ts · #34</div><div class="f">@ThrottleByIp(30) back to @ThrottleByIp(10) (#34), then <b>RATE_LIMITS.signup</b>: 20 by default, SIGNUP_LIMIT_PER_MINUTE in .env<br>one account per worker, and 20 removes most of the suite's signup queue</div><div class="ref">Referenced in <span>#34</span></div></div>
+</div></section>
+
+<section class="g" style="--gb:transparent;--gd:var(--border);--gt:var(--text-primary)"><div class="gh"><i class="ti ti-arrows-exchange" aria-hidden="true"></i>Relations between formats</div>
+<div class="gd">How one shape turns into another as data moves through the layers. Block color = the group it belongs to.</div>
+<div class="leg"><span class="m k-e">Enums + constants</span><span class="m k-c">Socket contract</span><span class="m k-d">Database</span><span class="m k-q">Redis</span><span class="m k-a">REST</span><span class="m k-p">Web</span></div>
+<div class="relwrap"><div class="rel">
+<span class="m k-p">session cookie</span><i class="ti ti-arrow-right" aria-hidden="true"></i><span class="m k-c">SocketData</span><span class="d">Verified at the handshake; the socket joins user:&lt;id&gt;. No session, no socket (#154).</span>
+<span class="m k-a">goal, level, finished lesson</span><i class="ti ti-arrow-right" aria-hidden="true"></i><span class="m k-c">course:updated</span><span class="d">Emitted to the user's room; the course page in the other tabs refreshes (#154).</span>
+<span class="m k-a">Friends routes</span><i class="ti ti-arrow-right" aria-hidden="true"></i><span class="m k-d">Friendship</span><span class="d">Send writes a pending row, accept sets it accepted, decline, cancel and remove delete it (#155).</span>
+<span class="m k-d">Friendship</span><i class="ti ti-arrow-right" aria-hidden="true"></i><span class="m k-c">friend:*</span><span class="d">Each change is pushed to both users' rooms, so both lists update live (#155).</span>
+<span class="m k-c">connect, disconnect</span><i class="ti ti-arrow-right" aria-hidden="true"></i><span class="m k-q">Presence count</span><span class="d">The count per user decides online and offline, with a 10 s grace (#157).</span>
+<span class="m k-q">Presence count</span><i class="ti ti-arrow-right" aria-hidden="true"></i><span class="m k-c">PresenceUpdate</span><span class="d">Sent to accepted friends only; isOnline(ids) answers the REST routes.</span>
+<span class="m k-c">dm:send</span><i class="ti ti-arrow-right" aria-hidden="true"></i><span class="m k-d">Message</span><span class="d">Stored first, only between friends; the ack carries the stored message (#158).</span>
+<span class="m k-d">Message</span><i class="ti ti-arrow-right" aria-hidden="true"></i><span class="m k-c">dm:message</span><span class="d">To both users' rooms, the sending tab included; the thread dedupes by id.</span>
+<span class="m k-d">Message.readAt</span><i class="ti ti-arrow-right" aria-hidden="true"></i><span class="m k-c">dm:unread</span><span class="d">The unread counts, whole and stamped: to the recipient after a message, to the reader after dm:read sets readAt, to each new socket (#158).</span>
+<span class="m k-d">User, UserLevel</span><i class="ti ti-arrow-right" aria-hidden="true"></i><span class="m k-a">PublicProfile</span><span class="d">Public fields only, with each course's level and streak; never email, 2FA or time zone (#156).</span>
+</div></div></section>
+
+<section class="g k-n" id="modules"><div class="gh"><i class="ti ti-box-model-2" aria-hidden="true"></i>NestJS modules<span class="def">apps/api/src</span><span class="def">PrismaModule and RedisModule are global, so no module imports them.</span></div>
+<div class="gd">The modules this milestone adds or changes in the API, with the issues that touch them. "existing" is built, "changed" existed before and gains code here.</div>
+<div class="cards two">
+<div class="c m1" id="EventsModule"><div class="ct">GatewayModule<span id="GatewayModule"></span><a class="m1t" href="https://github.com/VictorBro/ft_transcendence/tree/main/apps/api/src/gateway" title="Built in #154, changed by #157 and #158">existing</a></div><div class="cp">@nestjs/websockets, @nestjs/platform-socket.io · path '/ws' · apps/api/src/gateway</div><div class="f"><span class="md">The authenticated socket: handshake, rooms, per-socket rate limit, events parsed with their schemas, and the emit helpers the other modules call.</span><br><b>#154</b>: the gateway, course:updated, ft_ws_connections, ft_ws_events_total<br><b>#157</b>: the presence count and presence:update<br><b>#158</b>: a refused event answers its ack; SocketExceptionFilter, the catch-all for handlers; GATEWAY_OPTIONS, shared by every gateway; the dm:unread snapshot on connect<br><b>Versions</b>: as in docs/operations/versions.md</div><div class="ref">Referenced in <span>#154</span><span>#157</span><span>#158</span></div></div>
+<div class="c m1" id="FriendsModule"><div class="ct">FriendsModule<a class="m1t" href="https://github.com/VictorBro/ft_transcendence/tree/main/apps/api/src/friends" title="Built in #155">existing</a></div><div class="cp">apps/api/src/friends</div><div class="f"><span class="md">Friend requests and the friends list, with live pushes through the gateway.</span><br><b>#155</b>: the routes, Friendship, friend:* events<br><b>Used by</b>: #156 (the friend button); #157 and #158 through friend-ids.ts, functions rather than the service, which the module no longer exports: friendIds() for who sees whom, areFriends() for who may message</div><div class="ref">Referenced in <span>#155</span><span>#156</span><span>#157</span><span>#158</span></div></div>
+<div class="c m1" id="MessagesModule"><div class="ct">MessagesModule<a class="m1t" href="https://github.com/VictorBro/ft_transcendence/tree/main/apps/api/src/messages" title="Built in #158">existing</a></div><div class="cp">apps/api/src/messages · imports GatewayModule only</div><div class="f"><span class="md">Direct messages between friends: stored, then delivered live.</span><br><b>MessagesService</b>: send, read, the list and a page of history<br><b>MessagesController</b>: the two Conversations routes<br><b>MessagesGateway</b>: the dm:send and dm:read handlers, behind SocketGateway's screen and SocketExceptionFilter<br><b>unread.ts</b>: unreadCounts(), a function, since the gateway sends it on connect and cannot import this module</div><div class="ref">Referenced in <span>#158</span></div></div>
+<div class="c m1" id="UsersModule"><div class="ct">UsersModule<span class="pt" title="Existing module, changed in milestone 3">changed</span></div><div class="cp">apps/api/src/users · existing</div><div class="f"><span class="md">Gains the public profile.</span><br><b>#156</b>: GET /api/users/:id with public fields only</div><div class="ref">Referenced in <span>#156</span></div></div>
+<div class="c m1" id="AuthModule"><div class="ct">AuthModule<span class="pt" title="Existing module, changed in milestone 3">changed</span></div><div class="cp">apps/api/src/auth · existing</div><div class="f"><span class="md">Ends the user's sockets with the session, and restores the signup limit.</span><br><b>#154</b>: close the user's sockets on logout, expiry and a 2FA change<br><b>#34</b>: @ThrottleByIp(RATE_LIMITS.signup) on signup, 20 a minute by default</div><div class="ref">Referenced in <span>#34</span><span>#154</span></div></div>
+<div class="c m1" id="CoursesModule-m3"><div class="ct">CoursesModule · LessonsModule<span class="pt" title="Existing modules, changed in milestone 3">changed</span></div><div class="cp">apps/api/src/courses · apps/api/src/lessons · existing</div><div class="f"><span class="md">Tell the user's other tabs that the course changed.</span><br><b>#154</b>: a goal or level change emits course:updated; so does a finished lesson, added by whichever of #154 and #145 merges second</div><div class="ref">Referenced in <span>#154</span></div></div>
+</div></section>
+
+</main>
+<script src="gh-status.js"></script>
+<script>
+const base='https://github.com/VictorBro/ft_transcendence/issues/';
+/* Title, state, assignees and linked PR of each issue, as of 20 November 2026.
+   Replaced by the live state from GitHub (gh-status.js) when the page loads. */
+const ISSUES={34:{t:"Restore the signup rate limit to 10 per minute",s:"closed",a:["bastian-schnitzler"],b:0,pr:[172, "bastian-schnitzler", "merged"]},
+154:{t:"feat: the WebSocket gateway",s:"closed",a:["VictorBro"],b:0,pr:[181, "VictorBro", "merged"]},
+155:{t:"feat: friends",s:"closed",a:["VictorBro"],b:0,pr:[189, "VictorBro", "merged"]},
+156:{t:"feat: public profiles",s:"closed",a:["VictorBro"],b:0,pr:[193, "VictorBro", "merged"]},
+157:{t:"feat: online status",s:"closed",a:["VYAntares"],b:0,pr:[195, "VYAntares", "merged"]},
+158:{t:"feat: direct messages between friends",s:"closed",a:["VictorBro"],b:0,pr:[200, "VictorBro", "merged"]},
+159:{t:"test(e2e): Firefox and WebKit",s:"closed",a:["bastian-schnitzler"],b:0,pr:null},
+160:{t:"docs: the README for the evaluation",s:"open",a:["VYAntares"],b:1,pr:null},
+161:{t:"docs: defence runbook and rehearsal",s:"open",a:["VYAntares"],b:1,pr:null}};
+const STATUS_TEXT={open:'open',work:'in work',closed:'closed'};
+/* Closed, else in work when it has a PR or an assignee, else open. */
+const statusOf=i=>i.s==='closed'?'closed':((i.pr||i.a.length)?'work':'open');
+/* Ready to work on: open, none of its blocking issues open, nobody on it yet. */
+const isReady=i=>!!i&&statusOf(i)==='open'&&i.b===0;
+const blockText=i=>!i||i.s==='closed'||i.b==null?'':(i.b?', blocked by '+i.b+' open issue'+(i.b>1?'s':''):', not blocked');
+const hoverText=n=>{const i=ISSUES[n];if(!i)return '#'+n;return '#'+n+': '+i.t+', '+STATUS_TEXT[statusOf(i)]+blockText(i)+(i.pr?' (PR #'+i.pr[0]+' '+i.pr[2]+')':'');};
+const attr=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+document.querySelectorAll('.intro, .def, .ref span, .leg .m, .rel .d, .f, .gd').forEach(el=>{
+  el.innerHTML=el.innerHTML.replace(/(^|[^\w&])#(\d+)\b/g,(m,p,n)=>p+'<a class="il" data-n="'+n+'" href="'+base+n+'">#'+n+'</a>');
+});
+/* Colour every issue link by its state; PR numbers are left plain. */
+function paintIssues(){
+  document.querySelectorAll('a.il[data-n]').forEach(a=>{
+    const i=ISSUES[a.dataset.n];
+    a.classList.remove('st-open','st-work','st-closed');
+    a.classList.toggle('ready',isReady(i));
+    if(a.parentElement.matches('.ref span'))a.parentElement.classList.toggle('ready',isReady(i));
+    if(!i){a.title='#'+a.dataset.n;return;}
+    a.classList.add('st-'+statusOf(i));
+    a.title=hoverText(a.dataset.n);
+  });
+}
+paintIssues();
+(window.ghStatus||Promise.reject(new Error('gh-status.js not loaded'))).then(live=>{
+  Object.keys(live).forEach(n=>{const g=live[n];ISSUES[n]={t:g.t,s:g.s,a:g.a,b:g.b,pr:g.pr};});
+  paintIssues();
+  document.getElementById('live').textContent='Live from GitHub.';
+}).catch(()=>{document.getElementById('live').textContent='GitHub could not be reached: snapshot of 20 November 2026.';});
+document.querySelectorAll('.jump').forEach(el=>{
+  const go=()=>document.getElementById(el.dataset.target).scrollIntoView({block:'start'});
+  el.addEventListener('click',e=>{if(e.target.closest('a'))return;go();});
+  el.addEventListener('keydown',e=>{if(e.target!==el)return;if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});
+});
+</script>
+</body>
+</html>

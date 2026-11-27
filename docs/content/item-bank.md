@@ -1,0 +1,258 @@
+# Item bank: authoring spec
+
+What to write, in what shape, so placement questions can be seeded, served and never repeated for
+the same learner. See [architecture/product.md](../architecture/product.md) §1.2 for why the bank
+exists.
+
+Audience: whoever adds a language, or replaces a question that turned out to be wrong.
+
+---
+
+## 1. Two rules
+
+**Never copy items from a published test.** Goethe materials and sites like
+internationalenglishtest.com are protected. Imitate the *format* freely: short questions,
+four options each, difficulty rising through the set. The *sentences* must be ours.
+
+**Placement questions are multiple choice only.** No free text, no translation. Those make good
+lesson exercises and bad measurements: scoring them needs an LLM judge, which is slow while a
+learner waits, and gives the same answer different verdicts on different runs, so two tests stop
+being comparable. Free text belongs in lessons, where a judgement call is teaching rather than
+measuring.
+
+---
+
+## 2. What to write
+
+| | |
+|---|---|
+| Categories | `grammar`, `vocabulary`, `reading` |
+| Levels | `A1 A2 B1 B2 C1 C2` |
+| Items per cell | 5 |
+| **Total per language** | **90** |
+
+Five per cell is deliberately modest. A run probes at most three levels and asks two questions
+per category at each, so two or three runs drain a learner's cells and the app starts generating
+new questions, which is exactly the behaviour we want to demonstrate. A huge seed bank would hide
+that path rather than exercise it.
+
+**English, French and German are already complete**, 90 items each. What follows is for adding a
+fourth language, or for replacing an item that turned out to be wrong. Starting a new language,
+write `grammar` and `vocabulary` first, since they are one sentence each, and `reading` after,
+because every item there needs a passage written too.
+
+**Listening is out of scope.** It needs recorded audio or TTS, file storage, playback and its own
+accessibility story.
+
+---
+
+## 3. The shape of an item
+
+One file per language and category, under `content/items/`, named after the two it declares:
+`de-grammar.json`, `fr-reading.json`. The field names are the `QuestionBank` column names, so the
+seed copies each item into its row as it is, matched on `sourceId`.
+
+Every item is the same shape: a question, four options, one correct answer and a time limit.
+`content/items/de-grammar.json`:
+
+```jsonc
+{
+  "lang": "de",
+  "category": "grammar",
+  "items": [
+    {
+      "sourceId": "de-gram-0001",
+      "level": "A1",
+      "topic": "verbs_morphology",
+      "question": "Wir ___ heute Abend zu Hause.",
+      "options": ["bleiben", "bleibt", "bleibst", "bleibe"],
+      "answer": "bleiben",
+      "timeLimitS": 30
+    }
+  ]
+}
+```
+
+Reading is the one category that differs, and it differs by a single field: `readText`, the
+passage the question is about. It has its own file, so a reading item never sits next to a
+grammar one. `content/items/de-reading.json`:
+
+```jsonc
+{
+  "lang": "de",
+  "category": "reading",
+  "items": [
+    {
+      "sourceId": "de-read-0001",
+      "level": "A1",
+      "topic": "information_structure_and_pragmatics",
+      "readText": "Jonas wohnt in Leipzig. Er hat einen kleinen Hund, der Bruno heißt. Am Abend gehen die beiden zusammen im Park spazieren.",
+      "question": "Wann gehen Jonas und Bruno spazieren?",
+      "options": ["Am Abend", "Am Morgen", "Am Mittag", "Am Wochenende"],
+      "answer": "Am Abend",
+      "timeLimitS": 60
+    }
+  ]
+}
+```
+
+| Field | Rule |
+|---|---|
+| `sourceId` | `<language>-<gram\|voca\|read>-<4 digits>`, matching the file it lives in. Unique across every file and **permanent**: the seed matches on it, so reusing one overwrites another question |
+| `level` | `A1` to `C2` |
+| `topic` | From §4. Keeps a cell from being five questions about the same thing |
+| `readText` | Reading questions only, omit otherwise |
+| `question` | A fill-in-the-blank uses `___` |
+| `options` | Exactly 4, all different |
+| `answer` | The correct string, must appear verbatim in `options`. Text and not an index, so options can be shuffled when served |
+| `timeLimitS` | Seconds to answer. Long enough to read and think, short enough that looking it up does not fit |
+
+Time limits rise with the level and with how much there is to read. What the seeded set uses:
+
+| Category | A1 | A2 | B1 | B2 | C1 | C2 |
+|---|---|---|---|---|---|---|
+| `vocabulary` | 30 | 45 | 45 | 45 | 60 | 60 |
+| `grammar` | 30 | 45 | 60 | 60 | 75 | 90 |
+| `reading` | 60 to 75 | 90 to 105 | 90 | 105 to 120 | 120 to 165 | 150 to 180 |
+
+Reading is a range because the amount of text drives it: the passage and the four options, since
+long options take reading too. Match a neighbour with the same amount rather than picking a
+number, and compare characters rather than words: German compounds make a passage look shorter
+than it reads. A generated question gets its limit from this table, reading at the top of the
+range, never from the model.
+
+Write plausible wrong answers. A distractor nobody would pick makes the question free.
+
+---
+
+## 3b. Checking your work
+
+The files are validated by a test, so you get the answer in seconds rather than from CI:
+
+```bash
+pnpm --filter @ft/api test src/items/item-files.spec.ts   # just the item files
+make                                                      # everything, before the PR
+```
+
+It fails, with the offending id and a readable message, on: an answer that is not one of the
+options, options that are not exactly four or are not all different, a `sourceId` in the wrong
+format, reused by another file, or disagreeing with the language and category of the file it sits
+in, a reading question with no `readText` or a non-reading one with it, an unknown `level` or
+`topic`, a missing or non-positive `timeLimitS`, and any field that is not in the list above.
+
+Every file under `content/items/` is a working example of its shape, in three languages. Copy
+the nearest one and edit.
+
+## 4. Topics
+
+```
+nouns_and_determiners      pronouns                  verbs_morphology
+verb_usage                 syntax_and_sentence_structure
+subordinate_clauses        prepositions_and_case     adjectives
+adverbs                    agreement                 negation
+comparison_and_quantity    information_structure_and_pragmatics
+```
+
+Vocabulary and reading items use the closest fit, or
+`information_structure_and_pragmatics`. The same list labels grammar lessons (`Lesson.topic`), so a
+grammar item and the lesson that teaches it speak the same language. The other lesson kinds carry
+a `theme` instead (see [content/lessons.md](lessons.md)). Generated items are held to the list too:
+vocabulary under `VOCABULARY_TOPICS` in `packages/shared/src/schemas/item.ts` (the word classes,
+plus `information_structure_and_pragmatics` for set phrases), reading always under
+`information_structure_and_pragmatics`.
+
+---
+
+## 5. The database
+
+Two tables. The JSON files are the source of truth in git; the seed script loads them.
+
+```prisma
+model QuestionBank {
+  id         String           @id @default(uuid()) @db.Uuid
+  sourceId   String?          @unique
+  lang       Language
+  level      Level
+  topic      Topic
+  category   QuestionCategory
+  readText   String?
+  question   String
+  options    String[]
+  answer     String
+  timeLimitS Int
+  createdAt  DateTime         @default(now())
+  updatedAt  DateTime         @updatedAt
+
+  userSeenQuestions UserSeenQuestion[]
+
+  @@index([lang, level, category])
+}
+
+model UserSeenQuestion {
+  id           String       @id @default(uuid()) @db.Uuid
+  userId       String       @db.Uuid
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  questionId   String       @db.Uuid
+  questionBank QuestionBank @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+
+  @@unique([userId, questionId])
+}
+```
+
+Two ids on purpose. `id` is the internal key every other table points at, so nothing breaks when
+a question is re-seeded. `sourceId` is yours, it is how the seed finds the row to update, and
+editing a question in the JSON file changes the row instead of creating a second one. A question
+the LLM wrote at runtime has no `sourceId`: that is how the two are told apart, and it means no
+human reviewed it.
+
+A learner is not asked the same question twice: the draw excludes every question already tied to
+that user through `UserSeenQuestion`. It is keyed per user and not per run, so a retake cannot
+serve an old question either. The single exception is a cell the LLM could not refill in time
+(§6), step 3 of the cascade in [architecture/product.md](../architecture/product.md) §1.2. Table
+detail is in [architecture/data-model.md](../architecture/data-model.md) §5 (Learning).
+
+There is deliberately no difficulty score, no served/correct counters and no calibration. Those
+would need hundreds of answers per question before they meant anything, and this platform will
+never see that many. A column nobody can act on is worse than no column, because the next reader
+assumes it works.
+
+---
+
+## 6. When the bank runs dry
+
+A learner is never blocked. When a draw finds a learner down to 3 unseen questions in a cell
+(language, level, category), the API asks the LLM for a batch for that cell in the background, and
+the draw does not wait for it: 13 grammar questions, one per topic, 10 vocabulary questions, or 5
+reading questions, each on its own passage. The batch is checked against `generatedBatchSchema`,
+questions the cell already has are dropped, and the rest are saved with no `sourceId`, the cell's
+level and the time limit from §3. They stay, so the next learner to reach that cell gets them from
+the bank. **The bank grows as it is used**, which is why 90 authored questions per language is
+enough.
+
+A batch is retried once when a retry can help (rate limit, server error, a reply that breaks the
+schema), and a cell whose batch failed or added nothing is left alone for 10 minutes. A learner
+with nothing unseen left meanwhile gets the question they saw longest ago. The full cascade is in
+[architecture/product.md](../architecture/product.md) §1.2. The code is in
+`apps/api/src/question-generation/`.
+
+---
+
+## 7. Reviewing generated items
+
+Drafting a batch with the LLM and reviewing it is a fine way to fill the seed, and far faster
+than writing 90 by hand. Shipping unreviewed is not: a wrong question does not confuse one
+learner, it mislabels everyone who sees it. A reviewer checks that the answer is genuinely
+correct, that the other three are genuinely wrong, that the level is plausible, and that the
+sentence sounds natural rather than translated.
+
+The README's Resources section has to record that the LLM drafted them and who verified them.
+The subject requires it.
+
+To see what the model writes for one level, run a real restock in every language and read what it
+stored. It writes to `DATABASE_URL` and, with `gemini`, spends a call per cell:
+
+```bash
+LLM_PROVIDER=gemini pnpm --filter @ft/api generation:try b1 vocabulary grammar
+```

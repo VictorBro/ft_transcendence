@@ -166,7 +166,8 @@ tests:
               instance: node-exporter:9100
             exp_annotations:
               summary: "Less than 10% of memory and swap is available: the OOM killer is next"
-              description: "docker stats shows the largest container. docs/DEPLOYMENT.md covers
+              description:
+                "docker stats shows the largest container. docs/operations/deployment.md covers
                 memory and swap on the server."
 
   - name: The other critical rules fire after their minute, not before

@@ -10,8 +10,8 @@ import { Link } from '@/i18n/navigation';
  * so the header markup, the gutter and the max width live here once.
  *
  * Deliberately free of data fetching: `nav` is passed in rather than rendering
- * SessionNav directly, which keeps this usable from the error boundary (a
- * client component) and from a 404 that must not read cookies.
+ * SessionNav directly, which keeps this usable from the error boundary, a
+ * client component that cannot read the session.
  *
  * Everything that renders this lives under [locale], which is why Wordmark can
  * use the locale-aware Link. global-error.tsx deliberately does not: it answers

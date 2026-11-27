@@ -16,7 +16,7 @@ import { SkimOpen } from './reading';
 
 /**
  * The reading kind (#148) played on PR #142's sample, "Lire un SMS", the
- * lesson of the screens in docs/mockups/lessons/reading/. The attempt runs
+ * lesson of the reading mockups of the lesson prototype. The attempt runs
  * on the shared core, as the API runs it; each page is rendered with the
  * kind's renderers as the player renders it: open, with the learner's
  * answers, and checked with the feedback the core gives.
