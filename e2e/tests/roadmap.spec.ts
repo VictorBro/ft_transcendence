@@ -293,7 +293,7 @@ test.describe('the roadmap and lesson loop', () => {
 
     // Passed: the one lesson passed, and only it.
     await visit(page, list());
-    await page.getByRole('checkbox', { name: 'Passed', exact: true }).check();
+    await page.getByRole('checkbox', { name: /^Passed \d+$/ }).check();
     await expect(page).toHaveURL(/\/lessons\?status=done$/);
     await expect(page.locator('[data-lesson]')).toHaveCount(1);
     await expect(row(page, SHORTEST)).toContainText('Passed');

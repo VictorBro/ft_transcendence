@@ -11,6 +11,7 @@ import {
   type CourseDay,
   type Language,
   type LessonCard,
+  type LessonCounts,
   type LessonPage,
   type LessonQuery,
   type LessonRowStatus,
@@ -58,9 +59,18 @@ function Dot({ status }: { status: LessonRowStatus }) {
   );
 }
 
+/** One box: `count` is how many lessons the list would have with it (#223). */
+type Choice = { value: string; label: string; count: number; status?: LessonRowStatus };
+
 /**
  * One list filter as checkboxes: the form sends the key once per box, which
  * LessonQuerySchema reads like a comma list.
+ *
+ * A box that would give 0 lessons is disabled, unless it is already checked:
+ * it must stay uncheckable. Both come from the server render, so this works
+ * without JavaScript, where a disabled box is never checked. With it, an older
+ * view landing can disable a box the learner just checked: LiveForm reads the
+ * boxes themselves, not FormData, so that box is still sent.
  */
 function Choices({
   name,
@@ -69,26 +79,31 @@ function Choices({
 }: {
   name: string;
   checked: string[];
-  options: { value: string; label: string; status?: LessonRowStatus }[];
+  options: Choice[];
 }) {
   return (
     <div className="flex flex-col">
-      {options.map((option) => (
-        <label
-          key={option.value}
-          className="-mx-2 flex min-h-10 cursor-pointer items-center gap-3 rounded-md px-2 text-sm text-slate-300 transition-colors hover:bg-slate-800/60 has-checked:text-slate-100"
-        >
-          <input
-            type="checkbox"
-            name={name}
-            value={option.value}
-            defaultChecked={checked.includes(option.value)}
-            className="size-4 shrink-0 accent-slate-100"
-          />
-          {option.status === undefined ? null : <Dot status={option.status} />}
-          {option.label}
-        </label>
-      ))}
+      {options.map((option) => {
+        const isChecked = checked.includes(option.value);
+        return (
+          <label
+            key={option.value}
+            className="-mx-2 flex min-h-10 cursor-pointer items-center gap-3 rounded-md px-2 text-sm text-slate-300 transition-colors hover:bg-slate-800/60 has-checked:text-slate-100 has-disabled:cursor-not-allowed has-disabled:text-slate-600 has-disabled:hover:bg-transparent"
+          >
+            <input
+              type="checkbox"
+              name={name}
+              value={option.value}
+              defaultChecked={isChecked}
+              disabled={option.count === 0 && !isChecked}
+              className="size-4 shrink-0 accent-slate-100"
+            />
+            {option.status === undefined ? null : <Dot status={option.status} />}
+            {option.label}{' '}
+            <span className="ml-auto text-xs text-slate-500 tabular-nums">{option.count}</span>
+          </label>
+        );
+      })}
     </div>
   );
 }
@@ -103,7 +118,7 @@ function Fold({
   title: string;
   name: string;
   checked: string[];
-  options: { value: string; label: string }[];
+  options: Choice[];
 }) {
   return (
     <FoldDetails checked={checked.length > 0} className="group/fold border-t border-slate-800 pt-4">
@@ -136,14 +151,23 @@ function Fold({
  * phone it is a sheet over the page, opened by the #filters link: :target
  * needs no JavaScript, and LiveForm keeps the hash while the list updates.
  */
-export async function LessonFilters({ query }: { query: LessonQuery }) {
+export async function LessonFilters({
+  query,
+  counts,
+}: {
+  query: LessonQuery;
+  counts: LessonCounts;
+}) {
   const t = await getTranslations('Lessons');
   const statuses = await getTranslations('LessonStatus');
   const kinds = await getTranslations('LessonKinds');
   const topics = await getTranslations('Topics');
   const themes = await getTranslations('Themes');
-  const options = <T extends string>(values: readonly T[], label: (value: T) => string) =>
-    values.map((value) => ({ value, label: label(value) }));
+  const options = <T extends string>(
+    values: readonly T[],
+    label: (value: T) => string,
+    count: Record<T, number>,
+  ) => values.map((value) => ({ value, label: label(value), count: count[value] }));
 
   return (
     <aside
@@ -167,6 +191,7 @@ export async function LessonFilters({ query }: { query: LessonQuery }) {
             options={LESSON_ROW_STATUSES.map((status) => ({
               value: status,
               label: statuses(status),
+              count: counts.status[status],
               status,
             }))}
           />
@@ -177,7 +202,7 @@ export async function LessonFilters({ query }: { query: LessonQuery }) {
           <Choices
             name="kind"
             checked={query.kind}
-            options={options(LESSON_KINDS, (k) => kinds(k))}
+            options={options(LESSON_KINDS, (k) => kinds(k), counts.kind)}
           />
         </fieldset>
 
@@ -185,13 +210,13 @@ export async function LessonFilters({ query }: { query: LessonQuery }) {
           title={t('topics')}
           name="topic"
           checked={query.topic}
-          options={options(TOPICS, (x) => topics(x))}
+          options={options(TOPICS, (x) => topics(x), counts.topic)}
         />
         <Fold
           title={t('themes')}
           name="theme"
           checked={query.theme}
-          options={options(THEMES, (x) => themes(x))}
+          options={options(THEMES, (x) => themes(x), counts.theme)}
         />
 
         {/* A submit, so the sheet applies its boxes without JavaScript; with it, LiveForm only closes the sheet.

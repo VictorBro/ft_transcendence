@@ -132,13 +132,25 @@ export function LiveForm({
       timer.current = undefined;
       if (form.current === null) return;
       const data = new FormData(form.current);
-      // Repeated checkbox keys come as arrays, which the schema reads like comma lists.
+      // The checked boxes, read from the boxes rather than from FormData, which
+      // skips a disabled field. An older view of the form's own landing while
+      // the learner is still clicking can disable a box they just checked (its
+      // count there is 0, #223): it must still be sent, or it would stay checked
+      // on screen and drop out of the list. The view it lands on has it checked,
+      // which enables it again. As arrays, which the schema reads like comma lists.
+      const checked = (name: string) =>
+        Array.from(
+          form.current?.querySelectorAll<HTMLInputElement>(
+            `input[type="checkbox"][name="${name}"]:checked`,
+          ) ?? [],
+          (box) => box.value,
+        );
       const query = LessonQuerySchema.parse({
         q: data.get('q'),
-        status: data.getAll('status'),
-        kind: data.getAll('kind'),
-        topic: data.getAll('topic'),
-        theme: data.getAll('theme'),
+        status: checked('status'),
+        kind: checked('kind'),
+        topic: checked('topic'),
+        theme: checked('theme'),
         sort: data.get('sort'),
         dir: data.get('dir'),
         group: data.get('group'),

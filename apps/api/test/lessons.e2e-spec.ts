@@ -466,6 +466,34 @@ describe('lessons (e2e)', () => {
         });
       });
 
+      // #223. With no filter, every lesson has exactly one kind, and exactly one
+      // topic or theme: each block's counts add up to the whole level.
+      it('sends a count for every box, each block adding up to the level', async () => {
+        const response = await agent.get('/api/courses/fr/lessons').expect(200);
+        const { counts, levelTotal } = response.body as {
+          counts: Record<string, Record<string, number>>;
+          levelTotal: number;
+        };
+        const sum = (block: Record<string, number>) =>
+          Object.values(block).reduce((total, count) => total + count, 0);
+
+        expect(sum(counts.kind)).toBe(levelTotal);
+        expect(sum(counts.status)).toBe(levelTotal);
+        expect(sum(counts.topic) + sum(counts.theme)).toBe(levelTotal);
+      });
+
+      it('lists both the grammar point and the theme checked (#223)', async () => {
+        const response = await agent
+          .get('/api/courses/fr/lessons?topic=nouns_and_determiners&theme=daily_life')
+          .expect(200);
+        const { topic, theme } = response.body.counts;
+
+        // The fixtures hold both at fr A1 (alpha, gamma), so an AND would give 0 here.
+        expect(topic.nouns_and_determiners).toBeGreaterThan(0);
+        expect(theme.daily_life).toBeGreaterThan(0);
+        expect(response.body.total).toBe(topic.nouns_and_determiners + theme.daily_life);
+      });
+
       it('lists only the current level', async () => {
         const response = await agent.get('/api/courses/fr/lessons?q=testeur').expect(200);
 

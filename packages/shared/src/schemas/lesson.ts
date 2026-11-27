@@ -392,6 +392,22 @@ export const LessonQuerySchema = z.object({
 });
 export type LessonQuery = z.infer<typeof LessonQuerySchema>;
 
+/** value → lessons, for every value: a record keyed by an enum needs every key. */
+const countsOf = <T extends readonly [string, ...string[]]>(values: T) =>
+  z.record(z.enum(values), countSchema);
+
+/**
+ * How many lessons the list would have with only this box checked in its block,
+ * the other blocks and the text as they are. Topic and theme are one block.
+ */
+export const LessonCountsSchema = z.object({
+  status: countsOf(LESSON_ROW_STATUSES),
+  kind: countsOf(LESSON_KINDS),
+  topic: countsOf(TOPICS),
+  theme: countsOf(THEMES),
+});
+export type LessonCounts = z.infer<typeof LessonCountsSchema>;
+
 export const LessonPageSchema = z.object({
   /** The course day, so the page can label Today and Yesterday. */
   day: CourseDaySchema,
@@ -402,6 +418,8 @@ export const LessonPageSchema = z.object({
   total: countSchema,
   page: z.number().int().positive(),
   pageSize: z.number().int().positive(),
+  /** The number beside each filter box (#223): every value of every block. */
+  counts: LessonCountsSchema,
 });
 export type LessonPage = z.infer<typeof LessonPageSchema>;
 
