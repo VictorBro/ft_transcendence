@@ -9,30 +9,20 @@
 
 ## 1. À quoi sert ce module ?
 
-Notre application propose des **leçons** (vocabulaire, grammaire, « functions » = situations
-de communication, lecture). Chaque leçon est un **fichier JSON** dans `content/`. Il y en a
-des centaines : on ne peut pas toutes les écrire à la main.
+Notre application propose des **leçons** (vocabulaire, grammaire, « functions » = situations de communication, lecture). Chaque leçon est un **fichier JSON** dans `content/`. Il y en a des centaines : on ne peut pas toutes les écrire à la main.
 
-`lessons:author` est un **outil en ligne de commande** (un script, pas une route de l'API).
-Il demande à un modèle d'IA (Claude, via le programme `claude` installé sur la machine)
-d'écrire les leçons, **vérifie** chaque leçon avec nos validateurs, et **renvoie les erreurs**
-au modèle jusqu'à ce que la leçon soit valide.
+`lessons:author` est un **outil en ligne de commande** (un script, pas une route de l'API). Il demande à un modèle d'IA (Claude, via le programme `claude` installé sur la machine) d'écrire les leçons, **vérifie** chaque leçon avec nos validateurs, et **renvoie les erreurs** au modèle jusqu'à ce que la leçon soit valide.
 
 **Analogie : un élève et un correcteur automatique.**
 - L'élève (le modèle) rend une copie (le brouillon de leçon).
 - Le correcteur (nos validateurs zod de `packages/shared/src/lessons`) rend la liste des fautes.
 - L'élève corrige **sur la même copie**, dans la même conversation.
-- Au bout de 4 essais maximum, soit la copie est acceptée et rangée dans le classeur
-  (`content/`), soit elle part dans le bac « à revoir » (`failed/`).
+- Au bout de 4 essais maximum, soit la copie est acceptée et rangée dans le classeur (`content/`), soit elle part dans le bac « à revoir » (`failed/`).
 
 Points clés à retenir pour l'oral :
-- **Rien n'est généré au runtime ni au déploiement.** Les leçons sont écrites une fois, puis
-  committées dans le dépôt (`docs/content/lessons.md` §7).
-- **Pas de clé API.** Le script lance le binaire `claude` en mode non interactif (`claude -p`)
-  sur l'abonnement Claude Code du membre de l'équipe.
-- **Les règles ne sont pas recopiées dans le prompt « à la main »** : le prompt système contient
-  le **code source** des schémas et validateurs. Une règle qui change arrive donc
-  automatiquement au prochain lancement.
+- **Rien n'est généré au runtime ni au déploiement.** Les leçons sont écrites une fois, puis committées dans le dépôt (`docs/content/lessons.md` §7).
+- **Pas de clé API.** Le script lance le binaire `claude` en mode non interactif (`claude -p`) sur l'abonnement Claude Code du membre de l'équipe.
+- **Les règles ne sont pas recopiées dans le prompt « à la main »** : le prompt système contient le **code source** des schémas et validateurs. Une règle qui change arrive donc automatiquement au prochain lancement.
 - **Un fichier existant n'est jamais écrasé.** Pour refaire une leçon, on supprime ses fichiers.
 
 ---
@@ -46,9 +36,7 @@ Points clés à retenir pour l'oral :
 | **Sortie** : le contenu | `content/lessons/<id>.json` | La leçon jouable (pages, exercices). Pour grammaire, functions, lecture |
 | Fichiers de travail (pas committés) | `$TMPDIR/ft-lessons-author/` (`WORK_DIR`) | Prompts système par type, brouillons ratés (`failed/<id>.json`), rapports `report-<date>.json` |
 
-Chaque fichier écrit porte une **provenance** : quel outil, quel modèle, **quelle version du
-prompt**, quand, et un hash (empreinte sha256) de l'entrée de l'outline. Exemple réel dans
-[fr-re-verbs-present.json](../../../../content/briefs/fr-re-verbs-present.json) :
+Chaque fichier écrit porte une **provenance** : quel outil, quel modèle, **quelle version du prompt**, quand, et un hash (empreinte sha256) de l'entrée de l'outline. Exemple réel dans [fr-re-verbs-present.json](../../../../content/briefs/fr-re-verbs-present.json) :
 
 ```json
 "provenance": {
@@ -60,10 +48,7 @@ prompt**, quand, et un hash (empreinte sha256) de l'entrée de l'outline. Exempl
 }
 ```
 
-Aujourd'hui dans le dépôt : 144 briefs portent `author-2` et 72 portent `author-3`. La version
-actuelle de `PROMPT_VERSION` est `author-4` (depuis #208, qui demande le « tu » dans l'aide en
-français) : aucun fichier ne la porte encore. #208 a corrigé les fichiers existants à la main,
-sans changer leur provenance.
+Aujourd'hui dans le dépôt : 144 briefs portent `author-2` et 72 portent `author-3`. La version actuelle de `PROMPT_VERSION` est `author-4` (depuis #208, qui demande le « tu » dans l'aide en français) : aucun fichier ne la porte encore. #208 a corrigé les fichiers existants à la main, sans changer leur provenance.
 
 ---
 
@@ -76,11 +61,9 @@ Dans [apps/api/package.json](../../../../apps/api/package.json) :
 "lessons:check":  "pnpm --filter @ft/shared run build && tsx scripts/lessons/check.ts"
 ```
 
-- `pnpm --filter @ft/shared run build` : on **compile d'abord le paquet partagé**, car les
-  validateurs viennent de `@ft/shared`.
+- `pnpm --filter @ft/shared run build` : on **compile d'abord le paquet partagé**, car les validateurs viennent de `@ft/shared`.
 - `tsx` : exécute un fichier TypeScript directement, sans étape de compilation séparée.
-- Les scripts tournent depuis `apps/api` (c'est pnpm qui s'y place). C'est pour ça que
-  `files.ts` remonte de deux dossiers pour trouver `content/`.
+- Les scripts tournent depuis `apps/api` (c'est pnpm qui s'y place). C'est pour ça que `files.ts` remonte de deux dossiers pour trouver `content/`.
 
 ### `lessons:author` (mode automatique)
 
@@ -101,8 +84,7 @@ pnpm --filter @ft/api lessons:author fr a1 --only fr-subject-pronouns --model op
 | `--timeout <min>` | 15 | temps max d'une réponse |
 | `--claude-bin <path>` | trouvé tout seul | chemin du binaire `claude` |
 
-Les options sont lues avec `parseArgs` de Node en mode `strict` : une option inconnue est une
-**erreur**, pas ignorée.
+Les options sont lues avec `parseArgs` de Node en mode `strict` : une option inconnue est une **erreur**, pas ignorée.
 
 ### `lessons:check` (vérifier une leçon)
 
@@ -113,20 +95,13 @@ pnpm --filter @ft/api lessons:check <id> --draft draft.json --write  # et l'écr
 pnpm --filter @ft/api lessons:check <id>                             # vérifie les fichiers déjà committés
 ```
 
-C'est **le même contrôle** (`checkDraft`) que `lessons:author`, mais à la main. Il sert à la
-skill `author-lessons` et à quelqu'un qui écrit avec n'importe quel autre modèle (on colle le
-résultat de `--rules` dans ce modèle). Code de sortie 1 s'il reste un problème.
+C'est **le même contrôle** (`checkDraft`) que `lessons:author`, mais à la main. Il sert à la skill `author-lessons` et à quelqu'un qui écrit avec n'importe quel autre modèle (on colle le résultat de `--rules` dans ce modèle). Code de sortie 1 s'il reste un problème.
 
-Détail : `--draft` est lu depuis le dossier où on a **tapé** la commande (`INIT_CWD`, variable
-mise par pnpm), pas depuis `apps/api`.
+Détail : `--draft` est lu depuis le dossier où on a **tapé** la commande (`INIT_CWD`, variable mise par pnpm), pas depuis `apps/api`.
 
 ### La skill `author-lessons` (mode interactif)
 
-[.claude/skills/author-lessons/SKILL.md](../../../../.claude/skills/author-lessons/SKILL.md) : une
-**skill** est une fiche d'instructions pour une session Claude Code. On tape
-`/author-lessons fr a2` dans Claude Code. La session écrit elle-même chaque brouillon dans son
-dossier temporaire, lance `lessons:check --draft`, corrige (4 tours max), relit une fois pour les
-erreurs grossières, puis lance `--write`.
+[.claude/skills/author-lessons/SKILL.md](../../../../.claude/skills/author-lessons/SKILL.md) : une **skill** est une fiche d'instructions pour une session Claude Code. On tape `/author-lessons fr a2` dans Claude Code. La session écrit elle-même chaque brouillon dans son dossier temporaire, lance `lessons:check --draft`, corrige (4 tours max), relit une fois pour les erreurs grossières, puis lance `--write`.
 
 | | Skill `/author-lessons` | `lessons:author` |
 |---|---|---|
@@ -139,8 +114,7 @@ erreurs grossières, puis lance `--write`.
 
 ## 4. Les fichiers et leur rôle
 
-Tout est dans [apps/api/scripts/lessons/](../../../../apps/api/scripts/lessons/) (et pas dans
-`scripts/lessons/` à la racine).
+Tout est dans [apps/api/scripts/lessons/](../../../../apps/api/scripts/lessons/) (et pas dans `scripts/lessons/` à la racine).
 
 | Fichier | Rôle en une phrase |
 |---|---|
@@ -308,14 +282,10 @@ flowchart TD
 ```
 
 À retenir :
-- **RateLimitError** = refus **court** (HTTP 429). On attend et on renvoie **le même** prompt
-  dans **la même** session (rien n'a été ajouté à la conversation).
-- **QuotaError** = refus **qui dure** (la limite d'usage de l'abonnement). La leçon suivante
-  serait refusée aussi, donc **tout le lancement s'arrête proprement** au lieu de faire
-  échouer toutes les leçons restantes.
+- **RateLimitError** = refus **court** (HTTP 429). On attend et on renvoie **le même** prompt dans **la même** session (rien n'a été ajouté à la conversation).
+- **QuotaError** = refus **qui dure** (la limite d'usage de l'abonnement). La leçon suivante serait refusée aussi, donc **tout le lancement s'arrête proprement** au lieu de faire échouer toutes les leçons restantes.
 - Une **erreur ordinaire** (crash, timeout, réponse d'erreur) fait échouer **une seule leçon**.
-- Le code de sortie du processus est **1** si une leçon n'est pas écrite, si des leçons n'ont pas
-  démarré, ou si un quota a arrêté le lancement.
+- Le code de sortie du processus est **1** si une leçon n'est pas écrite, si des leçons n'ont pas démarré, ou si un quota a arrêté le lancement.
 
 ---
 
@@ -324,139 +294,93 @@ flowchart TD
 Commande : `pnpm --filter @ft/api lessons:author fr a2 --max 2`
 
 1. **pnpm** se place dans `apps/api`, compile `@ft/shared`, puis lance `tsx scripts/lessons/author.ts fr a2 --max 2`.
-2. **`readOptions`** valide `fr` (avec `LanguageSchema`) et `a2` → `A2` (avec `LevelSchema`).
-   Défauts : 2 en parallèle, 4 essais, `sonnet`, 15 min.
+2. **`readOptions`** valide `fr` (avec `LanguageSchema`) et `a2` → `A2` (avec `LevelSchema`). Défauts : 2 en parallèle, 4 essais, `sonnet`, 15 min.
 3. **`readOutline('fr', 'A2')`** lit `content/outlines/fr-a2.json` et le valide avec zod.
-4. **`pickLessons`** garde les entrées **sans aucun fichier**, dans l'ordre. Aujourd'hui, les 12
-   premières de fr A2 existent, donc il prend la 13e et la 14e : `fr-adverb-position-past`
-   (grammaire) et `fr-life-events` (vocabulaire). Si on avait demandé `--only fr-life-events`
-   seul, le script aurait **refusé** : la 13e resterait sans fichiers avant la 14e (un « trou »),
-   or les leçons d'un niveau doivent être les premières de l'outline (#84).
-5. **`claudeProvider`** trouve le binaire `claude` (dans le `PATH`, sinon celui de l'extension
-   VS Code), et écrit 4 fichiers `vocabulary.system.md`, `grammar.system.md`… dans
-   `$TMPDIR/ft-lessons-author/`. Chaque fichier contient le **code source** des schémas et
-   validateurs du type, plus **une leçon complète qui passe**, plus le format de réponse.
+4. **`pickLessons`** garde les entrées **sans aucun fichier**, dans l'ordre. Aujourd'hui, les 12 premières de fr A2 existent, donc il prend la 13e et la 14e : `fr-adverb-position-past` (grammaire) et `fr-life-events` (vocabulaire). Si on avait demandé `--only fr-life-events` seul, le script aurait **refusé** : la 13e resterait sans fichiers avant la 14e (un « trou »), or les leçons d'un niveau doivent être les premières de l'outline (#84).
+5. **`claudeProvider`** trouve le binaire `claude` (dans le `PATH`, sinon celui de l'extension VS Code), et écrit 4 fichiers `vocabulary.system.md`, `grammar.system.md`… dans `$TMPDIR/ft-lessons-author/`. Chaque fichier contient le **code source** des schémas et validateurs du type, plus **une leçon complète qui passe**, plus le format de réponse.
 6. Le **pool** lance les 2 leçons en même temps.
-7. Pour `fr-adverb-position-past`, **`lessonPrompt`** écrit : l'entrée de l'outline en JSON, les
-   5 leçons avant et après (pour ne pas les répéter), et tous les titres déjà pris en français.
-8. **Essai 1.** `runClaude` lance
-   `claude -p --output-format json --model sonnet --tools "" --setting-sources "" --strict-mcp-config --system-prompt-file …/grammar.system.md`,
-   écrit le prompt sur son **stdin**, et lit son **stdout**. Le modèle répond par un objet
-   `{"brief":{…},"content":{…}}` sur une ligne. Le JSON de sortie de `claude` donne aussi un
-   `session_id`, gardé pour la suite.
-9. **`applyReply`** extrait le premier objet JSON (même s'il est dans un bloc de code ou suivi de
-   texte) et remplace le brouillon.
-10. **`checkDraft`** : `complete()` ajoute `schemaVersion`, `id`, `lang`, `level`, `provenance`
-    (avec `promptVersion: "author-4"`), le barème (35 % pratique, 65 % examen), et calcule
-    `estimatedMinutes` et les `timeLimitS` des pages d'examen. Puis `validateLesson` répond, par
-    exemple, 3 problèmes du type `brief.blocks.1.exercises.0: …`.
-11. **`issuesPrompt`** liste ces 3 problèmes et propose de répondre seulement avec
-    `{"edits":[…]}`.
-12. **Essai 2.** Même commande, plus `--resume <session_id>` : le modèle **voit sa réponse
-    précédente** et corrige. Il répond
-    `{"edits":[{"file":"brief","path":"blocks.1.exercises.0.items.2","value":…}]}`.
-    `applyEdits` applique les remplacements dans l'ordre, puis les suppressions de l'index le plus
-    grand au plus petit.
-13. **`checkDraft`** ne trouve plus rien. Le titre est enregistré dans `usedTitles` (sans `await`
-    entre la vérification et l'enregistrement, pour que deux leçons en parallèle ne prennent pas
-    le même titre), puis **`writeLesson`** écrit `content/briefs/fr-adverb-position-past.json` et
-    `content/lessons/fr-adverb-position-past.json`, formatés par prettier.
-14. **`printProgress`** affiche par exemple :
-    `✓ [1/2] fr-adverb-position-past  grammar  2 attempts  5 min 10 s  out 9.3k tok`
-15. Quand les 2 leçons sont finies, **`printSummary`** affiche : écrites / ratées / non faites,
-    temps total et par type, jetons, « équivalent API en dollars » (pas facturé sur un abonnement,
-    c'est une mesure du quota consommé), et une estimation du temps pour le reste du niveau.
-    **`saveReport`** écrit `report-<date>.json` dans `WORK_DIR`.
-16. Le développeur relit quelques leçons, lance les tests (`lesson-files.spec.ts`), et ouvre une
-    PR avec les nouveaux fichiers de `content/`.
+7. Pour `fr-adverb-position-past`, **`lessonPrompt`** écrit : l'entrée de l'outline en JSON, les 5 leçons avant et après (pour ne pas les répéter), et tous les titres déjà pris en français.
+8. **Essai 1.** `runClaude` lance `claude -p --output-format json --model sonnet --tools "" --setting-sources "" --strict-mcp-config --system-prompt-file …/grammar.system.md`, écrit le prompt sur son **stdin**, et lit son **stdout**. Le modèle répond par un objet `{"brief":{…},"content":{…}}` sur une ligne. Le JSON de sortie de `claude` donne aussi un `session_id`, gardé pour la suite.
+9. **`applyReply`** extrait le premier objet JSON (même s'il est dans un bloc de code ou suivi de texte) et remplace le brouillon.
+10. **`checkDraft`** : `complete()` ajoute `schemaVersion`, `id`, `lang`, `level`, `provenance` (avec `promptVersion: "author-4"`), le barème (35 % pratique, 65 % examen), et calcule `estimatedMinutes` et les `timeLimitS` des pages d'examen. Puis `validateLesson` répond, par exemple, 3 problèmes du type `brief.blocks.1.exercises.0: …`.
+11. **`issuesPrompt`** liste ces 3 problèmes et propose de répondre seulement avec `{"edits":[…]}`.
+12. **Essai 2.** Même commande, plus `--resume <session_id>` : le modèle **voit sa réponse précédente** et corrige. Il répond `{"edits":[{"file":"brief","path":"blocks.1.exercises.0.items.2","value":…}]}`. `applyEdits` applique les remplacements dans l'ordre, puis les suppressions de l'index le plus grand au plus petit.
+13. **`checkDraft`** ne trouve plus rien. Le titre est enregistré dans `usedTitles` (sans `await` entre la vérification et l'enregistrement, pour que deux leçons en parallèle ne prennent pas le même titre), puis **`writeLesson`** écrit `content/briefs/fr-adverb-position-past.json` et `content/lessons/fr-adverb-position-past.json`, formatés par prettier.
+14. **`printProgress`** affiche par exemple : `✓ [1/2] fr-adverb-position-past  grammar  2 attempts  5 min 10 s  out 9.3k tok`
+15. Quand les 2 leçons sont finies, **`printSummary`** affiche : écrites / ratées / non faites, temps total et par type, jetons, « équivalent API en dollars » (pas facturé sur un abonnement, c'est une mesure du quota consommé), et une estimation du temps pour le reste du niveau. **`saveReport`** écrit `report-<date>.json` dans `WORK_DIR`.
+16. Le développeur relit quelques leçons, lance les tests (`lesson-files.spec.ts`), et ouvre une PR avec les nouveaux fichiers de `content/`.
 
-(Les durées et le nombre de problèmes de cet exemple sont illustratifs ; le déroulé, lui, suit
-exactement le code.)
+(Les durées et le nombre de problèmes de cet exemple sont illustratifs ; le déroulé, lui, suit exactement le code.)
 
 ---
 
 ## 7. Détails importants du code
 
-- **Une conversation par leçon** (`startChat`). Le premier message envoie la leçon, les suivants
-  envoient seulement les problèmes. Le modèle **corrige sa propre leçon** au lieu de recommencer.
-- **Le prompt système est le même pour toutes les leçons d'un type** : il est écrit une fois dans
-  un fichier, et Claude Code le **met en cache** à partir de la 2e leçon (moins de jetons).
-- **Le modèle est isolé** : `--tools ""` (aucun outil), `--setting-sources ""` (pas de réglages
-  ni de CLAUDE.md), `--strict-mcp-config` (aucun serveur MCP), notre prompt système à la place de
-  celui de Claude Code, et le processus tourne dans `WORK_DIR` (ses sessions ne polluent pas la
-  liste de sessions du membre).
-- **Le modèle n'écrit pas ce que le code sait calculer** (`complete.ts`, `times.ts`) : les
-  durées sont recalculées avec les formules de `@ft/shared`, donc une leçon complétée est
-  toujours d'accord avec son validateur.
-- **Ce que les validateurs ne voient pas** (une seule bonne réponse par trou, accords, etc.) est
-  écrit en toutes lettres dans le prompt système, section « What the checks cannot see ».
-- **Sécurité des edits** : les clés `__proto__`, `constructor`, `prototype` sont refusées
-  (pollution de prototype). Un chemin qui n'existe pas n'est **jamais deviné** : il est renvoyé
-  au modèle comme problème.
-- **Une leçon est écrite dès qu'elle passe** : si on coupe le script, on ne perd que les leçons
-  en cours. Le lancement suivant reprend là où on s'est arrêté (il saute les leçons qui ont des
-  fichiers).
-- **Une leçon « partial »** (un seul de ses deux fichiers) est laissée telle quelle, avec un
-  avertissement.
+- **Une conversation par leçon** (`startChat`). Le premier message envoie la leçon, les suivants envoient seulement les problèmes. Le modèle **corrige sa propre leçon** au lieu de recommencer.
+- **Le prompt système est le même pour toutes les leçons d'un type** : il est écrit une fois dans un fichier, et Claude Code le **met en cache** à partir de la 2e leçon (moins de jetons).
+- **Le modèle est isolé** : `--tools ""` (aucun outil), `--setting-sources ""` (pas de réglages ni de CLAUDE.md), `--strict-mcp-config` (aucun serveur MCP), notre prompt système à la place de celui de Claude Code, et le processus tourne dans `WORK_DIR` (ses sessions ne polluent pas la liste de sessions du membre).
+- **Le modèle n'écrit pas ce que le code sait calculer** (`complete.ts`, `times.ts`) : les durées sont recalculées avec les formules de `@ft/shared`, donc une leçon complétée est toujours d'accord avec son validateur.
+- **Ce que les validateurs ne voient pas** (une seule bonne réponse par trou, accords, etc.) est écrit en toutes lettres dans le prompt système, section « What the checks cannot see ».
+- **Sécurité des edits** : les clés `__proto__`, `constructor`, `prototype` sont refusées (pollution de prototype). Un chemin qui n'existe pas n'est **jamais deviné** : il est renvoyé au modèle comme problème.
+- **Une leçon est écrite dès qu'elle passe** : si on coupe le script, on ne perd que les leçons en cours. Le lancement suivant reprend là où on s'est arrêté (il saute les leçons qui ont des fichiers).
+- **Une leçon « partial »** (un seul de ses deux fichiers) est laissée telle quelle, avec un avertissement.
 
 ---
 
 ## 8. Questions possibles à l'oral
 
 **Q : Pourquoi ne pas générer les leçons à la volée quand l'utilisateur les demande ?**
-R : Parce qu'on veut un contenu **vérifié et stable** : chaque leçon passe les validateurs, est
-relue, puis committée. Pas de coût ni d'attente au runtime, et le jury voit toujours la même leçon.
+
+R : Parce qu'on veut un contenu **vérifié et stable** : chaque leçon passe les validateurs, est relue, puis committée. Pas de coût ni d'attente au runtime, et le jury voit toujours la même leçon.
 
 **Q : Comment ton script parle-t-il au modèle ?**
-R : Il lance le programme `claude` comme **processus enfant** avec `spawn`, écrit le prompt sur
-son entrée standard (stdin), et lit sa sortie standard (stdout) au format JSON.
+
+R : Il lance le programme `claude` comme **processus enfant** avec `spawn`, écrit le prompt sur son entrée standard (stdin), et lit sa sortie standard (stdout) au format JSON.
 
 **Q : Comment le modèle se souvient-il de sa réponse précédente ?**
+
 R : `claude` renvoie un `session_id`. Les appels suivants ajoutent `--resume <session_id>`.
 
 **Q : Que se passe-t-il si le modèle répond n'importe quoi ?**
-R : `parseReply` cherche le premier objet JSON. S'il n'y en a pas, c'est un problème renvoyé au
-modèle (« your reply is not one JSON object »). Ça compte comme un essai.
+
+R : `parseReply` cherche le premier objet JSON. S'il n'y en a pas, c'est un problème renvoyé au modèle (« your reply is not one JSON object »). Ça compte comme un essai.
 
 **Q : Combien d'essais ?**
-R : 4 par défaut (`--attempts`). Après, le dernier brouillon et ses problèmes vont dans
-`$TMPDIR/ft-lessons-author/failed/<id>.json`.
+
+R : 4 par défaut (`--attempts`). Après, le dernier brouillon et ses problèmes vont dans `$TMPDIR/ft-lessons-author/failed/<id>.json`.
 
 **Q : Différence entre `QuotaError` et `RateLimitError` ?**
-R : Rate limit = refus court (429) : on réessaie après 30 s, 1 min, 2 min. Quota = limite
-d'usage de l'abonnement : on arrête tout le lancement. Un rate limit qui dure après les 3 pauses
-devient un quota.
+
+R : Rate limit = refus court (429) : on réessaie après 30 s, 1 min, 2 min. Quota = limite d'usage de l'abonnement : on arrête tout le lancement. Un rate limit qui dure après les 3 pauses devient un quota.
 
 **Q : Pourquoi `PROMPT_VERSION` ?**
-R : Chaque fichier enregistre la version du prompt qui l'a écrit. Si une série de leçons a un
-défaut, on sait quel prompt l'a produit et lesquelles refaire.
+
+R : Chaque fichier enregistre la version du prompt qui l'a écrit. Si une série de leçons a un défaut, on sait quel prompt l'a produit et lesquelles refaire.
 
 **Q : Pourquoi mettre le code source des validateurs dans le prompt ?**
-R : C'est la **vérité** : pas de résumé qui pourrait être faux ou en retard. Si une règle change,
-le prochain lancement l'envoie automatiquement.
+
+R : C'est la **vérité** : pas de résumé qui pourrait être faux ou en retard. Si une règle change, le prochain lancement l'envoie automatiquement.
 
 **Q : Comment évites-tu deux leçons avec le même titre ?**
-R : `readUsedTitles` lit tous les titres de la langue, « pliés » (`foldText` : sans casse ni
-accents). `checkDraft` refuse un titre déjà pris. En parallèle, le titre est réservé sans `await`
-entre le test et l'enregistrement, donc sans course possible (Node exécute ce bout d'un seul trait).
+
+R : `readUsedTitles` lit tous les titres de la langue, « pliés » (`foldText` : sans casse ni accents). `checkDraft` refuse un titre déjà pris. En parallèle, le titre est réservé sans `await` entre le test et l'enregistrement, donc sans course possible (Node exécute ce bout d'un seul trait).
 
 **Q : Pourquoi le modèle n'écrit-il pas les durées ?**
-R : Parce que le validateur les recalcule à la seconde près avec des formules. Le code les calcule
-avec les **mêmes** formules (`times.ts`), donc elles sont toujours justes.
+
+R : Parce que le validateur les recalcule à la seconde près avec des formules. Le code les calcule avec les **mêmes** formules (`times.ts`), donc elles sont toujours justes.
 
 **Q : C'est quoi `lessons:check` ?**
-R : Le même contrôle, à la main, pour une leçon : afficher les règles (`--rules`), vérifier un
-brouillon (`--draft`), l'écrire s'il passe (`--write`). C'est l'outil de la skill
-`/author-lessons`.
+
+R : Le même contrôle, à la main, pour une leçon : afficher les règles (`--rules`), vérifier un brouillon (`--draft`), l'écrire s'il passe (`--write`). C'est l'outil de la skill `/author-lessons`.
 
 **Q : Pourquoi `--tools ""` ?**
-R : Le modèle n'a besoin que de répondre du texte. Sans outils, il ne peut ni lire ni modifier le
-dépôt : c'est plus sûr et plus reproductible.
+
+R : Le modèle n'a besoin que de répondre du texte. Sans outils, il ne peut ni lire ni modifier le dépôt : c'est plus sûr et plus reproductible.
 
 **Q : Que se passe-t-il si `claude` reste bloqué ?**
-R : Après 15 min, on envoie `SIGTERM`, puis `SIGKILL` 5 s plus tard s'il ne s'arrête pas. La
-leçon passe en `error`.
+
+R : Après 15 min, on envoie `SIGTERM`, puis `SIGKILL` 5 s plus tard s'il ne s'arrête pas. La leçon passe en `error`.
 
 **Q : Comment le parallélisme est-il géré ?**
-R : Une petite fonction `pool` lance N « workers » (2 par défaut) qui prennent la leçon suivante
-dans une file. Avant d'en prendre une, chacun vérifie qu'aucun quota n'a demandé l'arrêt.
+
+R : Une petite fonction `pool` lance N « workers » (2 par défaut) qui prennent la leçon suivante dans une file. Avant d'en prendre une, chacun vérifie qu'aucun quota n'a demandé l'arrêt.
