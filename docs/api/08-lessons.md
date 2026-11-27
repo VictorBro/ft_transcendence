@@ -325,9 +325,10 @@ flowchart LR
 - otherwise the card passes if it has **any** of the values;
 - a card must pass **every** filter.
 
-The status is the row status (`rowStatus`): a lesson not ready is `soon`, never `todo`. Topic and theme need a
-special case: grammar lessons have a topic and no theme, the others a theme and no topic, so a card without one
-never passes that filter.
+The status is the row status (`rowStatus`): a lesson not ready is `soon`, never `todo`. Topic and theme are **one**
+filter, an OR between the two lists (#223): grammar lessons have a topic and no theme, the others a theme and no
+topic, so with an AND between them, Pronouns + Travel would always give 0. A card passes if its topic is in `topic`
+**or** its theme is in `theme`; both lists empty means "no filter".
 
 **Text** (`matchesText`): the typed text is split into words. `foldText` makes text lowercase and removes accents,
 so `elephant` finds `Éléphant`. Each word must be found (any order) in the title or the summary. A part of a word

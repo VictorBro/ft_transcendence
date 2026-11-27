@@ -333,8 +333,10 @@ flowchart LR
 - une carte doit passer **chaque** filtre.
 
 Le statut est le statut de la ligne (`rowStatus`) : une leçon pas prête est `soon`, jamais `todo`. Topic et theme
-demandent un cas spécial : les leçons de grammaire ont un topic et pas de theme, les autres un theme et pas de
-topic, donc une carte sans l'un des deux ne passe jamais ce filtre.
+sont **un seul** filtre, un OU entre les deux listes (#223) : les leçons de grammaire ont un topic et pas de theme,
+les autres un theme et pas de topic, donc avec un ET entre les deux, Pronouns + Travel donnerait toujours 0. Une
+carte passe si son topic est dans `topic` **ou** son theme dans `theme` ; les deux listes vides veulent dire « pas
+de filtre ».
 
 **Le texte** (`matchesText`) : le texte tapé est coupé en mots. `foldText` met le texte en minuscules et enlève les
 accents, donc `elephant` trouve `Éléphant`. Chaque mot doit être trouvé (dans n'importe quel ordre) dans le titre
