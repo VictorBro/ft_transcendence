@@ -432,37 +432,49 @@ pnpm --filter @ft/e2e run test:e2e tests/auth.spec.ts   # un seul fichier, appli
 ## 8. Questions possibles à l'oral
 
 **Q : Qui a fait la 2FA ?**
+
 R : Victor, dans la PR #5. Moi, j'ai corrigé deux bugs : #216 (configurer et activer acceptés alors que la 2FA est activée) et #217 (mot de passe de désactivation pas vérifié dans le navigateur).
 
 **Q : Quel était le risque de #216 ?**
+
 R : « Configurer » ne demande qu'une session, et il coupait la 2FA. Quelqu'un devant un ordinateur resté connecté pouvait couper la 2FA, mettre son propre téléphone, et remplacer les codes de récupération. Le vrai propriétaire était bloqué dehors.
 
 **Q : Pourquoi la condition dans la requête, et pas un `if` après une lecture ?**
+
 R : Entre la lecture et l'écriture, une autre demande peut changer l'état. Dans la requête, la base vérifie et écrit d'un seul coup.
 
 **Q : Pourquoi 409 et pas 403 ?**
+
 R : L'utilisateur a le droit de gérer sa 2FA. Le problème n'est pas un droit, c'est l'état : elle est déjà activée. C'est le sens de 409. Le message dit quoi faire : la désactiver d'abord.
 
 **Q : Pourquoi `enable` reçoit le secret vérifié ?**
+
 R : Un autre onglet peut ranger un nouveau secret juste après la vérification. Sans ça, on activerait un secret que l'utilisateur n'a pas scanné.
 
 **Q : Et un double clic sur « Activer » ?**
+
 R : La première demande active. La seconde ne modifie rien et reçoit un 409, avant de créer des codes. Il n'y a qu'un seul jeu de codes.
 
 **Q : Comment change-t-on de téléphone maintenant ?**
+
 R : On désactive avec le mot de passe, puis on configure et on active de nouveau. Un test vérifie ce chemin.
 
 **Q : Pourquoi corriger aussi la page, si l'API refuse déjà ?**
+
 R : Afficher « désactivée » alors qu'on ne sait pas, c'est faux. Avant le correctif de l'API, ce bouton coupait vraiment la 2FA. Maintenant, la page ne propose « Configurer » que si elle sait que la 2FA est désactivée.
 
 **Q : Si le navigateur vérifie le mot de passe, faut-il encore vérifier sur le serveur ?**
+
 R : Oui. On peut contourner le navigateur (avec curl, par exemple). Le serveur applique la même règle. Le navigateur évite juste une requête inutile.
 
 **Q : Pourquoi la même règle des deux côtés ?**
+
 R : Elle est dans le paquet partagé. Les deux côtés ont exactement les mêmes règles et les mêmes codes d'erreur. Ils ne peuvent pas être en désaccord.
 
 **Q : Un intrus peut-il deviner des codes sur « Activer » ?**
+
 R : La route est limitée à 5 essais par minute par adresse IP, puis 429. Et si la 2FA est activée, elle répond 409 sans même regarder le code.
 
 **Q : Comment as-tu testé les courses ?**
+
 R : Avec une fausse base. Je lui fais répondre « 0 ligne modifiée », puis soit « pas activée » (secret changé), soit « activée » (double clic). Je vérifie l'erreur, et qu'aucun code de récupération n'est créé.

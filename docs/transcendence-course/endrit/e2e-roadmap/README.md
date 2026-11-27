@@ -445,37 +445,49 @@ Une leçon jouée page par page est longue. Le fichier donne donc 4 minutes à c
 ## 8. Questions possibles à l'oral
 
 **Q : Pourquoi Playwright et pas Cypress ou Selenium ?**
+
 R : Playwright pilote les trois moteurs (Chromium, Firefox, WebKit) avec le même code, et le sujet demande plusieurs navigateurs. Il réessaie ses vérifications tout seul et sait faire plusieurs onglets et une fausse horloge. Le choix a été fait au début du projet (config de VictorBro).
 
 **Q : Pourquoi les vraies leçons et pas une leçon de test ?**
+
 R : Ce sont celles que les apprenants jouent. Une fausse leçon pourrait marcher alors qu'une vraie casse l'écran. Et les nouvelles leçons sont testées sans liste à tenir.
 
 **Q : Le navigateur n'a pas les réponses. Comment le test répond juste ?**
+
 R : Il relit la leçon dans `content/` et construit le même plan que l'API, avec `buildPlan`. Il retrouve chaque question à l'écran par son texte.
 
 **Q : Pourquoi un compte neuf par cas ?**
+
 R : Jouer une leçon change l'objectif et la série. Le compte partagé doit garder les siens pour d'autres tests. Le seul cas qui ne fait que lire (« Coming soon ») utilise le compte partagé.
 
 **Q : Que prouve le cas des deux onglets ?**
+
 R : Que l'objectif n'est compté qu'une fois quand deux leçons finissent en même temps. Côté API, un verrou (`FOR UPDATE`) fait passer les deux fins l'une après l'autre.
 
 **Q : Pourquoi `playToLastPage` rend une fonction et pas une promesse ?**
+
 R : Une promesse part tout de suite. Une fonction attend qu'on l'appelle. Avec deux fonctions prêtes, on lance les deux dernières pages au même moment.
 
 **Q : Et la limite de 100 requêtes par minute ?**
+
 R : On joue les leçons les plus courtes. Et sur un 429, le test attend le temps indiqué, au maximum 3 fois.
 
 **Q : Pourquoi aucun nouvel essai quand un test échoue ?**
+
 R : Le test vérifie la console. S'il passe au deuxième essai, c'est l'application qui est instable. Un nouvel essai cacherait le bug.
 
 **Q : Pourquoi le site de production et pas le serveur de développement ?**
+
 R : Le serveur de développement écrit des avertissements dans la console. Le surveillant échouerait toujours, ou il faudrait ignorer des messages, et on raterait les vrais problèmes.
 
 **Q : Comment tu testes le compte à rebours sans attendre ?**
+
 R : Avec une fausse horloge : `page.clock.install()`, puis `fastForward` du temps restant. Un autre cas utilise le vrai temps, pour vérifier qu'un rechargement ne redonne pas de temps.
 
 **Q : À quoi sert `openMenu` ?**
+
 R : À ouvrir le menu de l'en-tête (#220). Un clic avant l'hydratation est perdu, donc la fonction réessaie jusqu'à voir `aria-expanded="true"`.
 
 **Q : Tout `lesson-play.ts` est de toi ?**
+
 R : Non. Bastian l'a créé (#192, #197) et Luca l'a modifié (#205). J'ai ajouté `playToLastPage` (#202) et `skimDocument` (#203).

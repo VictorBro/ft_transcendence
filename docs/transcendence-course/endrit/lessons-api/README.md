@@ -111,8 +111,7 @@ flowchart LR
 
 ## 3. Les routes HTTP
 
-Le préfixe global est `api` (posé dans [app.setup.ts](../../../../apps/api/src/app.setup.ts)), donc l'URL réelle commence par `/api`.
-`:lang` vaut `en`, `fr` ou `de` (`LEARNABLE_LANGUAGES`). Toutes les routes demandent une session (cookie `ft.sid`).
+Le préfixe global est `api` (posé dans [app.setup.ts](../../../../apps/api/src/app.setup.ts)), donc l'URL réelle commence par `/api`. `:lang` vaut `en`, `fr` ou `de` (`LEARNABLE_LANGUAGES`). Toutes les routes demandent une session (cookie `ft.sid`).
 
 ### Erreurs communes aux trois routes
 
@@ -390,8 +389,7 @@ export function foldText(s: string): string {
 - `ß`, `œ`, `æ` ne se décomposent pas : on les remplace à la main.
 - Résultat : `"Éléphant"` → `"elephant"`, `"Mädchen"` → `"madchen"`, `"cœur"` → `"coeur"`.
 
-`bareVowels` (allemand seulement) : `text.replace(/([aou])e/g, '$1')`. Quelqu'un sans clavier allemand tape `maedchen` pour `Mädchen`. `bareVowels("maedchen")` = `"madchen"` → trouvé.
-Pas en français : `coeur` deviendrait `cour`, un autre mot.
+`bareVowels` (allemand seulement) : `text.replace(/([aou])e/g, '$1')`. Quelqu'un sans clavier allemand tape `maedchen` pour `Mädchen`. `bareVowels("maedchen")` = `"madchen"` → trouvé. Pas en français : `coeur` deviendrait `cour`, un autre mot.
 
 ### 5.5 Tri et pages
 
@@ -451,37 +449,49 @@ Commandes (scripts de `apps/api/package.json`) : `pnpm --filter @ft/api test` po
 ## 8. Questions possibles à l'oral
 
 **Q : Pourquoi un `select` sur chaque requête Prisma ?**
+
 R : Sans `select`, Prisma lit toutes les colonnes, dont `brief` (le contenu complet de la leçon). Avec une liste explicite, une colonne non demandée ne peut pas fuiter. En plus, `LessonCardSchema` est strict : un champ en trop ferait échouer la réponse.
 
 **Q : Quelle différence entre 404 et 409 ici ?**
+
 R : 404 = pas de cours dans cette langue. 409 = le cours existe mais n'a pas de niveau (placement pas fait), donc on ne sait pas quelles leçons montrer.
 
 **Q : Pourquoi `lessons/:id` ne renvoie jamais 409 ?**
+
 R : Une leçon isolée peut être ouverte avant le placement. On appelle `checkCourse` sans `placed: true`.
 
 **Q : Comment marche la recherche sans accents ?**
+
 R : `foldText` met en minuscules, remplace `ß/œ/æ`, puis normalise en NFD (la lettre et l'accent sont séparés) et supprime les accents avec `\p{M}`. On plie le texte tapé et le titre/résumé de la même façon, puis on fait un `includes`.
 
 **Q : C'est quoi `bareVowels` et pourquoi seulement en allemand ?**
+
 R : Elle enlève le `e` après `a/o/u` : `maedchen` → `madchen`, pour trouver `Mädchen`. En français, `coeur` deviendrait `cour`, un autre mot.
 
 **Q : Pourquoi la recherche se fait en JavaScript et pas en SQL ?**
+
 R : Un niveau a au plus 320 leçons, déjà chargées pour calculer les statuts. Filtrer en mémoire permet d'utiliser exactement le même `foldText` que le reste du projet. *(C'est mon interprétation du code : il charge toutes les leçons du niveau puis appelle `searchLessons`.)*
 
 **Q : Que se passe-t-il avec `?page=0&sort=foo` ?**
+
 R : Rien de grave : chaque champ de `LessonQuerySchema` a un `.catch(...)`. `page` retombe à 1, `sort` à `position`. Jamais de 400.
 
 **Q : Pourquoi `checkCourse` et `findLesson` sont des fonctions et pas des méthodes de service ?**
+
 R : La fin de leçon les appelle dans une transaction avec `tx`. Une fonction qui reçoit le client Prisma en paramètre marche avec les deux.
 
 **Q : Pourquoi `checkCourse` avant `findLesson` ?**
+
 R : Sans cours, la bonne réponse est `course.notFound`. Si on cherchait la leçon d'abord, on pourrait répondre `lesson.notFound`.
 
 **Q : Le controller fait quoi exactement ?**
+
 R : Il lie une URL à une méthode, récupère l'utilisateur (`@CurrentUser`), la langue validée (`LangParam`) et les paramètres (`LessonQueryDto`), puis appelle le service. Il ne contient pas de logique.
 
 **Q : Pourquoi valider la réponse avec Zod avant de l'envoyer ?**
+
 R : Pour garantir que le front reçoit exactement la forme promise. Une carte invalide = donnée corrompue = 500 visible dans les logs, plutôt qu'une réponse fausse cachée.
 
 **Q : Qu'est-ce que tu n'as pas écrit dans ce dossier ?**
+
 R : Les règles de la feuille de route (`roadmap.rules.ts`), la fin de leçon et l'objectif (`goal.ts`, `applyFinish`, #141), la gamification (#132, #180), les tentatives (`attempts.*`, #190), le statut `soon` et `ready` sur les cartes (#196) et le tuteur (`discussion.*`, #201).

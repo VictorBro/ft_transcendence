@@ -569,46 +569,61 @@ make test-e2e
 ## 8. Questions possibles à l'oral
 
 **Q : Qu'est-ce qui est à toi, qu'est-ce qui est à Victor ?**
+
 R : Victor a fait la connexion temps réel (#181) : la passerelle, les rooms, `toUser`, le socket de l'onglet. Moi, dans #195, j'ai fait le compteur (`PresenceService`), `friendIds`, le carnet de l'onglet et le point. Et j'ai branché tout ça dans ses fichiers. Plus tard, dans #200, il a ajouté les messages non lus et `AvatarWithDot`.
 
 **Q : Pourquoi Redis, et pas une variable dans le serveur ?**
+
 R : Redis est déjà là pour les sessions. Et le compte reste juste même avec plusieurs serveurs, car Redis est partagé. Une variable n'existerait que dans un serveur.
 
 **Q : Pourquoi un compteur et pas juste « en ligne : oui/non » ?**
+
 R : À cause des onglets multiples. Fermer un onglet sur deux mettrait « non » alors que l'autre est ouvert.
 
 **Q : Pourquoi 10 secondes d'attente ?**
+
 R : Pour les rechargements. La page ferme sa connexion puis en rouvre une. Sans attente, les amis verraient gris puis vert.
 
 **Q : Pourquoi attendre **avant** de retirer 1 ? C'est un choix important.**
+
 R : Ma première version (commit `d5d409d`) retirait 1 tout de suite, puis attendait et relisait. Victor a demandé le changement en relecture (commit `f4f825b`). Avec l'ancienne façon, un rechargement faisait 1 → 0 → 1 : les amis recevaient un deuxième « en ligne ». Et une vieille fermeture pouvait répondre à la place d'une plus récente. Maintenant, l'onglet fermé compte pendant 10 s, et le départ tombe 10 s après la dernière fermeture, une seule fois.
 
 **Q : Et si le serveur plante ? Quelqu'un reste en ligne pour toujours ?**
+
 R : Non. Au démarrage, on efface toutes les clés `presence:*`. Aucun onglet ne survit à un redémarrage, donc tout le monde repart de 0.
 
 **Q : Comment es-tu sûr que seuls les amis voient le statut ?**
+
 R : Les messages ne partent que vers `friendIds`, qui ne garde que les amitiés acceptées. Dans la liste REST, seuls les amis ont `online`. Et un test e2e vérifie qu'un simple demandeur ne reçoit rien.
 
 **Q : À quoi sert la photo envoyée à la connexion ?**
+
 R : La page est préparée par le serveur juste avant l'ouverture du socket. Entre les deux, un ami a pu arriver ou partir. La photo remet tout à jour.
 
 **Q : Pourquoi le carnet est dans `tab-socket.ts` et pas dans le composant du point ?**
+
 R : Pour ne rien rater. Il écoute dès que le socket existe, même quand aucun point n'est à l'écran. Et une page retrouvée avec le bouton Retour montre le dernier état.
 
 **Q : Pourquoi le point part de la valeur de la page ?**
+
 R : Le serveur ne connaît pas le carnet de l'onglet. Si le navigateur affichait autre chose au premier coup, React verrait une différence. Donc on part de la même valeur des deux côtés, puis le carnet prend le relais.
 
 **Q : Pourquoi oublier un ami quand une demande est acceptée ?**
+
 R : Remarque de Bastian. Si le nouvel ami est déjà en ligne, aucun message ne viendra, car rien ne change pour lui. Il faut donc partir de la page rafraîchie, qui contient la bonne valeur.
 
 **Q : Pourquoi `friendIds` est une fonction, et pas dans le service des amis ?**
+
 R : Le module des amis importe la passerelle. Si la passerelle importait le module des amis, les deux dépendraient l'un de l'autre. Une fonction évite ce cercle.
 
 **Q : Pourquoi relire les amis au départ ?**
+
 R : Une amitié a pu commencer ou finir pendant que la personne était connectée. On prévient les amis actuels.
 
 **Q : Pourquoi pas d'état « absent » ?**
+
 R : Rien dans l'application ne permettait de le reconnaître. Je l'ai retiré, et un test vérifie qu'il est refusé.
 
 **Q : Que se passe-t-il si Redis tombe ?**
+
 R : L'erreur est attrapée et écrite dans les logs. Le serveur continue de tourner. Un test le vérifie.

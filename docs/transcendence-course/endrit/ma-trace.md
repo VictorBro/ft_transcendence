@@ -19,18 +19,13 @@ Seulement des chiffres que l'on peut refaire :
 | Fichiers touchés (créés ou modifiés, même d'une ligne)  |    701 | [docs/code-ownership.md](../../code-ownership.md), « En un coup d'œil », avec sa méthode de calcul (sans les 5 fichiers de #222) |
 | … dont code (`apps`, `packages`, `e2e`)                 |    263 | idem                                                                                                                |
 
-Les parts en lignes de l'ancienne analyse (total, par zone) ne sont plus données ici : personne ne
-peut les refaire sans ce fichier.
+Les parts en lignes de l'ancienne analyse (total, par zone) ne sont plus données ici : personne ne peut les refaire sans ce fichier.
 
 Mon rôle en une phrase : **je porte le domaine des leçons**, de la base de données au contenu : lecture et recherche via l'API, validateurs partagés, outil de génération avec Claude Code, seed, démo, codes d'erreur, génération de questions par LLM. J'ai aussi construit quelques pièces autour : le statut en ligne, la leçon de lecture, le tuteur et sa voix, le menu du header, les garde-fous de la 2FA et les vérifications au démarrage de l'API.
 
 ## 2. Mes zones du repo
 
-La liste des fichiers que j'ai touchés, dossier par dossier, est dans
-[docs/code-ownership.md](../../code-ownership.md). Les zones où je suis le plus présent : les schémas et
-validateurs de leçons de `packages/shared/src/lessons/` (portés du prototype de Bastian,
-`bastian-schnitzler/lesson_prototype@928484d`, dans #142, puis étendus dans #162), l'outillage de
-génération de contenu, et le backend des leçons, de l'objectif quotidien et de la démo.
+La liste des fichiers que j'ai touchés, dossier par dossier, est dans [docs/code-ownership.md](../../code-ownership.md). Les zones où je suis le plus présent : les schémas et validateurs de leçons de `packages/shared/src/lessons/` (portés du prototype de Bastian, `bastian-schnitzler/lesson_prototype@928484d`, dans #142, puis étendus dans #162), l'outillage de génération de contenu, et le backend des leçons, de l'objectif quotidien et de la démo.
 
 ## 3. Les modules backend où j'ai travaillé (`apps/api`)
 

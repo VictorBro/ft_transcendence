@@ -256,32 +256,22 @@ make test                                                    # tous les tests un
 
 ## 8. Questions possibles à l'oral
 
-1. **Pourquoi `$connect()` ne suffit pas ?**
-   Avec l'adaptateur `pg`, il crée seulement un `pg.Pool`. Le pool n'ouvre une connexion qu'à la première requête. `SELECT 1` est cette première requête.
+1. **Pourquoi `$connect()` ne suffit pas ?** Avec l'adaptateur `pg`, il crée seulement un `pg.Pool`. Le pool n'ouvre une connexion qu'à la première requête. `SELECT 1` est cette première requête.
 
-2. **Pourquoi `SELECT 1` et pas une vraie requête sur une table ?**
-   C'est la requête la plus simple : elle ne dépend d'aucune table ni d'aucune migration. Elle teste seulement que la base répond.
+2. **Pourquoi `SELECT 1` et pas une vraie requête sur une table ?** C'est la requête la plus simple : elle ne dépend d'aucune table ni d'aucune migration. Elle teste seulement que la base répond.
 
-3. **Que se passe-t-il exactement quand le `SELECT 1` échoue ?**
-   `onModuleInit` rejette, donc `NestFactory.create` rejette, donc `bootstrap()` rejette. Personne n'attrape cette promesse, donc Node arrête le processus. `app.listen` n'est jamais appelé.
+3. **Que se passe-t-il exactement quand le `SELECT 1` échoue ?** `onModuleInit` rejette, donc `NestFactory.create` rejette, donc `bootstrap()` rejette. Personne n'attrape cette promesse, donc Node arrête le processus. `app.listen` n'est jamais appelé.
 
-4. **Pourquoi un délai de 5 s sur PostgreSQL ?**
-   Par défaut, `node-postgres` attend sans limite. Si l'hôte laisse tomber les paquets au lieu de refuser, le démarrage resterait bloqué longtemps. Sur le réseau Compose, la base répond en quelques millisecondes : 5 s laisse beaucoup de marge.
+4. **Pourquoi un délai de 5 s sur PostgreSQL ?** Par défaut, `node-postgres` attend sans limite. Si l'hôte laisse tomber les paquets au lieu de refuser, le démarrage resterait bloqué longtemps. Sur le réseau Compose, la base répond en quelques millisecondes : 5 s laisse beaucoup de marge.
 
-5. **Pourquoi ne pas simplement abandonner Redis à chaque échec ?**
-   Parce qu'après le démarrage, une coupure est une panne passagère (Redis redémarre, le réseau saute). Là, il faut se reconnecter tout seul. On abandonne seulement si on n'a **jamais** réussi.
+5. **Pourquoi ne pas simplement abandonner Redis à chaque échec ?** Parce qu'après le démarrage, une coupure est une panne passagère (Redis redémarre, le réseau saute). Là, il faut se reconnecter tout seul. On abandonne seulement si on n'a **jamais** réussi.
 
-6. **Comment sait-on qu'un premier échec est une mauvaise adresse et pas Redis qui démarre lentement ?**
-   Compose démarre l'API seulement quand Redis est `service_healthy`. Donc au moment du premier `connect()`, Redis répond déjà. Si on n'arrive pas à le joindre, l'adresse est fausse.
+6. **Comment sait-on qu'un premier échec est une mauvaise adresse et pas Redis qui démarre lentement ?** Compose démarre l'API seulement quand Redis est `service_healthy`. Donc au moment du premier `connect()`, Redis répond déjà. Si on n'arrive pas à le joindre, l'adresse est fausse.
 
-7. **Pourquoi recopier le backoff par défaut dans `reconnectDelayMs` ?**
-   Dès qu'on donne une `reconnectStrategy`, elle remplace celle de `node-redis`. Pour garder le même comportement après la première connexion, il faut le réécrire nous-mêmes.
+7. **Pourquoi recopier le backoff par défaut dans `reconnectDelayMs` ?** Dès qu'on donne une `reconnectStrategy`, elle remplace celle de `node-redis`. Pour garder le même comportement après la première connexion, il faut le réécrire nous-mêmes.
 
-8. **À quoi sert le jitter ?**
-   Si plusieurs clients perdent Redis au même moment, sans jitter ils réessaient tous au même instant et le surchargent. Le hasard les étale.
+8. **À quoi sert le jitter ?** Si plusieurs clients perdent Redis au même moment, sans jitter ils réessaient tous au même instant et le surchargent. Le hasard les étale.
 
-9. **Pourquoi `/health` répond toujours 200, même si la base est en panne ?**
-   Le healthcheck de l'image demande seulement « l'API répond-elle ? ». Docker ne redémarre pas un conteneur malade, donc un 503 ne réparerait rien. Il marquerait juste l'API malade pendant une panne de la base et ferait échouer `docker compose up --wait`. L'état de la base et de Redis est dans le corps de la réponse.
+9. **Pourquoi `/health` répond toujours 200, même si la base est en panne ?** Le healthcheck de l'image demande seulement « l'API répond-elle ? ». Docker ne redémarre pas un conteneur malade, donc un 503 ne réparerait rien. Il marquerait juste l'API malade pendant une panne de la base et ferait échouer `docker compose up --wait`. L'état de la base et de Redis est dans le corps de la réponse.
 
-10. **Pourquoi les tests utilisent-ils un vrai port fermé au lieu d'un mock ?**
-    Le bug venait justement du comportement réel des bibliothèques (`pg.Pool` paresseux, stratégie de `node-redis` qui réessaie sans fin). Un mock aurait caché ce comportement. Avec un vrai port fermé, le test aurait échoué avant #222.
+10. **Pourquoi les tests utilisent-ils un vrai port fermé au lieu d'un mock ?** Le bug venait justement du comportement réel des bibliothèques (`pg.Pool` paresseux, stratégie de `node-redis` qui réessaie sans fin). Un mock aurait caché ce comportement. Avec un vrai port fermé, le test aurait échoué avant #222.

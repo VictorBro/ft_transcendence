@@ -25,8 +25,7 @@
 
 ## 1. C'est quoi une leçon ?
 
-Notre application apprend des langues (français, allemand, anglais).
-Une **leçon** est un petit cours de 8 à 37 minutes (les leçons de `content/` aujourd'hui) : on apprend, on s'entraîne, puis on passe un examen chronométré.
+Notre application apprend des langues (français, allemand, anglais). Une **leçon** est un petit cours de 8 à 37 minutes (les leçons de `content/` aujourd'hui) : on apprend, on s'entraîne, puis on passe un examen chronométré.
 
 Une leçon, c'est **un ou deux fichiers JSON**, écrits à l'avance et rangés dans le dépôt :
 
@@ -35,14 +34,9 @@ Une leçon, c'est **un ou deux fichiers JSON**, écrits à l'avance et rangés d
 | `content/briefs/<id>.json` | le **brief** | le **plan** de la leçon : quoi enseigner, combien d'exercices | les 4 types |
 | `content/lessons/<id>.json` | le **contenu** | la **leçon jouable** : étapes, pages, exercices, réponses | grammaire, fonctions, lecture |
 
-**Analogie.** Le brief, c'est la **recette** (« 3 œufs, 200 g de farine, 20 min au four »).
-Le contenu, c'est le **gâteau** fait en suivant la recette.
-Le validateur vérifie que le gâteau respecte bien la recette.
+**Analogie.** Le brief, c'est la **recette** (« 3 œufs, 200 g de farine, 20 min au four »). Le contenu, c'est le **gâteau** fait en suivant la recette. Le validateur vérifie que le gâteau respecte bien la recette.
 
-Exception : une leçon de **vocabulaire** n'a **pas** de fichier contenu.
-Le brief contient déjà tout (les mots, les phrases à trous…).
-Le code fabrique la leçon jouable tout seul avec
-[`vocabularyLesson()`](../../../../packages/shared/src/lessons/domain/vocabularyLesson.ts).
+Exception : une leçon de **vocabulaire** n'a **pas** de fichier contenu. Le brief contient déjà tout (les mots, les phrases à trous…). Le code fabrique la leçon jouable tout seul avec [`vocabularyLesson()`](../../../../packages/shared/src/lessons/domain/vocabularyLesson.ts).
 
 Exemples réels du dépôt :
 
@@ -62,9 +56,7 @@ Exemples réels du dépôt :
 
 ### Les deux fichiers ont la même « enveloppe »
 
-Tous les fichiers commencent par les **mêmes 9 champs** : l'enveloppe
-(`schemaVersion`, `id`, `lang`, `level`, `locales`, `title`, `objective`, `estimatedMinutes`, `provenance`).
-Ensuite vient `kind`, puis `topic` ou `theme`, puis le **corps** propre au type.
+Tous les fichiers commencent par les **mêmes 9 champs** : l'enveloppe (`schemaVersion`, `id`, `lang`, `level`, `locales`, `title`, `objective`, `estimatedMinutes`, `provenance`). Ensuite vient `kind`, puis `topic` ou `theme`, puis le **corps** propre au type.
 
 ```mermaid
 flowchart LR
@@ -89,20 +81,16 @@ flowchart LR
 ### Trois langues partout
 
 - Ce qu'on **apprend** (mots, phrases, réponses) est dans la **langue du cours** (`lang`).
-- L'**aide** (objectif, consignes, corrections) est écrite **en anglais, français et allemand** (`{ en, fr, de }`),
-  pour que la leçon marche quelle que soit la langue de l'interface.
-- Les **traductions** sont dans toutes les langues **sauf** celle du cours.
-  Un cours de français traduit en `{ en, de }`, un cours d'allemand en `{ en, fr }`.
+- L'**aide** (objectif, consignes, corrections) est écrite **en anglais, français et allemand** (`{ en, fr, de }`), pour que la leçon marche quelle que soit la langue de l'interface.
+- Les **traductions** sont dans toutes les langues **sauf** celle du cours. Un cours de français traduit en `{ en, de }`, un cours d'allemand en `{ en, fr }`.
 
 ---
 
 ## 2. À quoi sert ce package partagé ?
 
-`packages/shared` est une bibliothèque TypeScript commune au front (Next.js) et au back (NestJS).
-On l'importe avec `import { lessons } from '@ft/shared'`.
+`packages/shared` est une bibliothèque TypeScript commune au front (Next.js) et au back (NestJS). On l'importe avec `import { lessons } from '@ft/shared'`.
 
-Le dossier `lessons/` répond à une seule question : **« ce fichier de leçon est-il correct ? »**
-Il a trois parties :
+Le dossier `lessons/` répond à une seule question : **« ce fichier de leçon est-il correct ? »** Il a trois parties :
 
 | Dossier | Rôle | En une phrase |
 |---|---|---|
@@ -110,17 +98,13 @@ Il a trois parties :
 | [`validation/`](../../../../packages/shared/src/lessons/validation/) | le **sens** des fichiers | « chaque règle citée existe, l'examen couvre toutes les règles » |
 | [`domain/`](../../../../packages/shared/src/lessons/domain/) | les **calculs** | « une page de 4 cartes dure 40 s », « découper le Markdown » |
 
-Et un chef d'orchestre : [`validateLesson.ts`](../../../../packages/shared/src/lessons/validateLesson.ts),
-qui vérifie une leçon entière (brief + contenu) et renvoie soit `ok`, soit **la liste de tous les problèmes**.
+Et un chef d'orchestre : [`validateLesson.ts`](../../../../packages/shared/src/lessons/validateLesson.ts), qui vérifie une leçon entière (brief + contenu) et renvoie soit `ok`, soit **la liste de tous les problèmes**.
 
-**Pourquoi « partagé » ?** Parce que **plusieurs programmes** doivent appliquer **exactement les mêmes règles** :
-si le script d'écriture des leçons accepte une leçon, le seed doit l'accepter aussi.
-Une seule source de vérité, pas de copie.
+**Pourquoi « partagé » ?** Parce que **plusieurs programmes** doivent appliquer **exactement les mêmes règles** : si le script d'écriture des leçons accepte une leçon, le seed doit l'accepter aussi. Une seule source de vérité, pas de copie.
 
 ### Qui l'importe ?
 
-[`index.ts`](../../../../packages/shared/src/lessons/index.ts) n'exporte que ce dont les applis ont besoin, sous le nom `lessons`
-(jamais `export *`, car des noms comme `Issue` ou `Block` entreraient en conflit avec le reste du package).
+[`index.ts`](../../../../packages/shared/src/lessons/index.ts) n'exporte que ce dont les applis ont besoin, sous le nom `lessons` (jamais `export *`, car des noms comme `Issue` ou `Block` entreraient en conflit avec le reste du package).
 
 | Qui | Fichier | Ce qu'il utilise | Pourquoi |
 |---|---|---|---|
@@ -192,9 +176,7 @@ flowchart TD
 
 ## 4. Qui dépend de qui
 
-Une flèche `A --> B` veut dire « A importe B ».
-Pour garder le dessin lisible, il manque les flèches vers `schemas/` : chaque validateur importe le schéma de son type
-(`validation/grammar.ts` → `schemas/grammar.ts`…), et `domain/` importe aussi des types et constantes de `schemas/`.
+Une flèche `A --> B` veut dire « A importe B ». Pour garder le dessin lisible, il manque les flèches vers `schemas/` : chaque validateur importe le schéma de son type (`validation/grammar.ts` → `schemas/grammar.ts`…), et `domain/` importe aussi des types et constantes de `schemas/`.
 
 ```mermaid
 flowchart TD
@@ -237,11 +219,7 @@ flowchart TD
   DLC --> DART
 ```
 
-À retenir pour l'oral : **les flèches descendent toujours**.
-`schemas/` ne connaît pas `validation/`. `domain/` ne connaît pas `validation/`.
-Seul `validation/` utilise les deux. Il n'y a pas de dépendance circulaire à l'exécution :
-`validation/functions.ts` et `validation/vocabulary.ts` importent de `validation/artifacts.ts`
-seulement le type `OutlineContext` (`import type`, effacé à la compilation).
+À retenir pour l'oral : **les flèches descendent toujours**. `schemas/` ne connaît pas `validation/`. `domain/` ne connaît pas `validation/`. Seul `validation/` utilise les deux. Il n'y a pas de dépendance circulaire à l'exécution : `validation/functions.ts` et `validation/vocabulary.ts` importent de `validation/artifacts.ts` seulement le type `OutlineContext` (`import type`, effacé à la compilation).
 
 ---
 
@@ -249,12 +227,10 @@ seulement le type `OutlineContext` (`import type`, effacé à la compilation).
 
 1. On reçoit le brief et le contenu, déjà lus depuis le JSON, mais **pas encore vérifiés** (`unknown`).
 2. **Le schéma Zod** vérifie la **forme** du brief. S'il casse, on s'arrête : impossible d'aller plus loin.
-3. **Les vérifications du type** (grammaire, vocabulaire…) vérifient le **sens** du brief.
-   Elles **collectent tous les problèmes**, pas seulement le premier.
+3. **Les vérifications du type** (grammaire, vocabulaire…) vérifient le **sens** du brief. Elles **collectent tous les problèmes**, pas seulement le premier.
 4. Si le brief est bon, on fait pareil avec le contenu, **en le comparant au brief**.
 5. On ajoute quelques règles « base de données » : titre ≤ 80 caractères, résumé ≤ 200.
-6. Résultat : `{ ok: true, brief, content, title, summary }` ou `{ ok: false, issues: [...] }`,
-   chaque problème avec son chemin (`brief.targets.3.examForms`) et son message.
+6. Résultat : `{ ok: true, brief, content, title, summary }` ou `{ ok: false, issues: [...] }`, chaque problème avec son chemin (`brief.targets.3.examForms`) et son message.
 
 Détails dans [validation.md](validation.md).
 

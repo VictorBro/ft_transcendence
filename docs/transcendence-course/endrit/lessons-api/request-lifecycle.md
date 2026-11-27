@@ -137,13 +137,17 @@ Conséquence : un anonyme qui inonde une route privée est compté sur son adres
 ## 7. Questions possibles à l'oral
 
 **Q : Dans quel ordre passent middleware, guard, pipe et filtre ?**
+
 R : Middleware → guard → (interceptor) → pipe → handler. Le filtre d'exception n'intervient que si une exception est lancée, à n'importe quelle étape.
 
 **Q : Pourquoi `httpMetrics` est un middleware et pas un interceptor ?**
+
 R : Un interceptor tourne après les guards. Il ne verrait jamais les 401, les 429, les routes inconnues ou les erreurs du parseur. Le middleware voit tout.
 
 **Q : Pourquoi `configureApp` est une fonction séparée de `main.ts` ?**
+
 R : Pour que les tests e2e construisent l'app avec exactement les mêmes pipes, filtres et middlewares que la production.
 
 **Q : Une erreur dans un pipe atteint-elle le controller ?**
+
 R : Non. L'exception saute directement au filtre. Le controller et la base ne sont pas touchés.

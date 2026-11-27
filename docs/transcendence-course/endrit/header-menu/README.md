@@ -383,40 +383,53 @@ pnpm --filter @ft/e2e run test:e2e tests/messages.spec.ts   # un seul fichier
 ## 8. Questions possibles à l'oral
 
 **Q : Pourquoi un menu sur tous les écrans, pas seulement sur téléphone ?**
+
 R : Mon premier commit le faisait seulement sur téléphone. Le second l'a mis partout. Un seul header à maintenir et à tester, et de la place pour ajouter des liens.
 
 **Q : Pourquoi le visiteur n'a pas de menu ?**
+
 R : Il n'a que trois éléments, ils tiennent sur une ligne. Les cacher cacherait « Se connecter », son lien le plus important.
 
 **Q : Pourquoi retenir la page et pas juste « ouvert » ?**
+
 R : Le header reste en place quand on change de page. Avec un simple « ouvert », le menu resterait ouvert sur la page suivante. En retenant la page, il se ferme tout seul.
 
 **Q : Comment le menu se ferme-t-il ?**
+
 R : Reclic sur le bouton, appui en dehors du menu, touche Échap, ou changement de page.
 
 **Q : Pourquoi le panneau fermé est « invisible » et pas « caché » ?**
+
 R : La pastille « Reconnexion… » est dedans. Avec « caché », elle disparaîtrait aussi. Avec « invisible », elle peut rester visible.
 
 **Q : À quoi sert le compteur du verrou ?**
+
 R : Les deux menus partagent le même verrou. Quand on passe de l'un à l'autre, les deux le tiennent un instant. Sans compteur, le premier fermé débloquerait la page alors que l'autre est ouvert.
 
 **Q : Pourquoi une marge à droite quand on bloque la page ?**
+
 R : Sur ordinateur, bloquer la page cache la barre de défilement. La page s'élargit et tout saute. La marge remplace la barre.
 
 **Q : Pourquoi un portail pour « Mon cours » ?**
+
 R : Le bouton appartient à la page du cours, mais il doit s'afficher dans le header, qui vient du layout. Le portail l'affiche là-bas en le gardant relié à sa page.
 
 **Q : Pourquoi le nom de la case dans un fichier à part ?**
+
 R : Le layout tourne sur le serveur. Importé depuis un fichier `'use client'`, il recevrait un renvoi vers le navigateur et pas le texte. L'`id` serait faux.
 
 **Q : Comment le logo disparaît-il ?**
+
 R : Une règle CSS : sur écran étroit, si la page contient le bouton « Mon cours », le logo est caché. Avant que le bouton arrive, le logo reste.
 
 **Q : Pourquoi pas de test unitaire ?**
+
 R : Le comportement dépend du vrai navigateur : la mise en page, la visibilité, l'hydratation, la navigation. Playwright le teste dans un vrai navigateur, y compris « le header tient sur un téléphone ».
 
 **Q : Pourquoi `openMenu` réessaie ?**
+
 R : Le bouton arrive du serveur. Si le robot clique avant l'hydratation, rien ne se passe. Il reclique jusqu'à voir le menu ouvert.
 
 **Q : Tous ces fichiers sont à toi ?**
+
 R : Non. J'ai créé les six fichiers du menu (menu, icônes, verrou, « Mon cours », la case, l'aide de test). Le cadre, le header, les liens du compte, le layout et la page du cours ont été créés par Victor, et retouchés par Luca, Bastian et Anaïs. Je les ai modifiés pour brancher le menu.

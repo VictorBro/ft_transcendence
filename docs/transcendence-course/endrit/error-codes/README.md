@@ -324,34 +324,45 @@ Astuce du test : chaque cas de login ou d'inscription utilise sa propre adresse 
 ## 8. Questions possibles à l'oral
 
 **Q : Pourquoi renvoyer des codes et pas des phrases ?**
+
 R : L'API ne connaît pas la langue du lecteur. Le navigateur, si. Le code est traduit côté front dans `messages/{en,fr,de}.json`.
 
 **Q : Différence entre un pipe et un filtre ?**
+
 R : Le pipe agit **avant** le controller, sur les paramètres : il valide et peut refuser. Le filtre agit **après** une exception : il fabrique la réponse d'erreur.
 
 **Q : Pourquoi un filtre en plus du pipe ?**
+
 R : Certaines erreurs ne passent jamais par notre code : JSON cassé, corps trop gros (body-parser), route inconnue (routeur Nest), crash imprévu. Le filtre est le dernier filet.
 
 **Q : Pourquoi `@Catch()` sans argument ?**
+
 R : Pour attraper **toutes** les exceptions, pas seulement une classe.
 
 **Q : Pourquoi hériter de `BaseExceptionFilter` ?**
+
 R : Pour garder le format de réponse standard de Nest (`{ statusCode, message }`) et sa gestion des cas spéciaux. On ne change que le message.
 
 **Q : Pourquoi logger seulement les 500 ?**
+
 R : Un 500 est un bug : on veut la stack. Un 4xx est une erreur du client : pas besoin de remplir les logs.
 
 **Q : Pourquoi le `Set` dans le pipe ?**
+
 R : Pour ne pas répéter le même code. Trois champs mal typés donnent un seul `request.invalid`.
 
 **Q : Que fait `isCoded` avec `["email.invalid", "Some sentence"]` ?**
+
 R : Il renvoie faux : **tous** les éléments doivent être des codes, car le front peut lire n'importe lequel (il lit le premier). Le filtre remplace alors par le code de secours.
 
 **Q : Où sont branchés le pipe et le filtre ?**
+
 R : Dans `configureApp()` (`app.setup.ts`) : `useGlobalPipes` et `useGlobalFilters`. `main.ts` et les tests e2e appellent tous les deux `configureApp`.
 
 **Q : Comment éviter qu'un code n'ait pas de traduction ?**
+
 R : `apps/web/lib/messages.test.ts` compare les clés `Errors` des 3 fichiers de langue avec `ERROR_CODES`. S'il en manque une, le test échoue.
 
 **Q : Que se passe-t-il si le front reçoit un code inconnu ?**
+
 R : `useErrorMessage` utilise `unknown` : « Une erreur est survenue. Réessaie. » Jamais de texte anglais brut.

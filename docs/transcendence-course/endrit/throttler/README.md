@@ -123,8 +123,7 @@ protected override async handleRequest(request: ThrottlerRequest): Promise<boole
 }
 ```
 
-**Le problème** : `getTracker(req)` reçoit seulement la requête. Il ne sait pas quelle route est appelée, donc il ne peut pas lire le décorateur.
-**La solution** : `handleRequest` a le `context` (la route). Il lit la métadonnée avec le `Reflector`, la **range sur la requête** sous une clé `Symbol`, puis appelle le guard standard, qui appellera `getTracker`.
+**Le problème** : `getTracker(req)` reçoit seulement la requête. Il ne sait pas quelle route est appelée, donc il ne peut pas lire le décorateur. **La solution** : `handleRequest` a le `context` (la route). Il lit la métadonnée avec le `Reflector`, la **range sur la requête** sous une clé `Symbol`, puis appelle le guard standard, qui appellera `getTracker`.
 
 - **Pourquoi un `Symbol` ?** Une clé unique, qui ne peut pas entrer en collision avec un champ qu'Express met sur `req`.
 - **Pourquoi assigner à chaque passage (`?? false`) et pas seulement quand c'est vrai ?** `handleRequest` est appelé une fois par throttler configuré. Un drapeau posé seulement à `true` pourrait « fuir » d'un throttler au suivant dans la même requête.
@@ -208,23 +207,19 @@ flowchart TD
 
 ## 5. Que se passe-t-il concrètement ?
 
-**Scénario A — deux utilisateurs derrière la même adresse.**
-Alice et Bob sont connectés. Toutes leurs requêtes arrivent depuis le conteneur Next.js `172.18.0.5`.
+**Scénario A — deux utilisateurs derrière la même adresse.** Alice et Bob sont connectés. Toutes leurs requêtes arrivent depuis le conteneur Next.js `172.18.0.5`.
 
 1. Alice appelle `GET /api/courses/fr/today`. Pas de `@ThrottleByIp`. `userId = u1` → tracker `user:u1`.
 2. Bob appelle la même route. Tracker `user:u2`.
-3. Clés différentes → deux compteurs. Si Alice fait 100 requêtes, Bob n'est pas bloqué.
-   Avant #20, les deux auraient eu la clé `172.18.0.5` et partagé les 100 requêtes.
+3. Clés différentes → deux compteurs. Si Alice fait 100 requêtes, Bob n'est pas bloqué. Avant #20, les deux auraient eu la clé `172.18.0.5` et partagé les 100 requêtes.
 
-**Scénario B — un attaquant avec plusieurs comptes.**
-Il essaie de deviner un code 2FA sur `POST /api/auth/2fa/enable` (`@ThrottleByIp(5)`), avec 10 comptes.
+**Scénario B — un attaquant avec plusieurs comptes.** Il essaie de deviner un code 2FA sur `POST /api/auth/2fa/enable` (`@ThrottleByIp(5)`), avec 10 comptes.
 
 1. Par compte, il aurait 5 × 10 = 50 essais par minute.
 2. Mais la route a `@ThrottleByIp` : la clé est `ip:<son adresse>`, quel que soit le compte.
 3. Au 6ᵉ essai de la minute depuis sa machine → `429 server.rateLimited`.
 
-**Scénario C — une route qui fixe seulement une limite.**
-`friends.controller.ts` utilise `@Throttle({ default: { limit: 10, ttl: 60_000 } })`, **sans** `@ThrottleByIp`. Le comptage reste **par compte** (limite 10). Choisir l'IP doit être explicite, pour ne pas mettre tous les utilisateurs d'un même réseau (NAT) dans un seul compteur.
+**Scénario C — une route qui fixe seulement une limite.** `friends.controller.ts` utilise `@Throttle({ default: { limit: 10, ttl: 60_000 } })`, **sans** `@ThrottleByIp`. Le comptage reste **par compte** (limite 10). Choisir l'IP doit être explicite, pour ne pas mettre tous les utilisateurs d'un même réseau (NAT) dans un seul compteur.
 
 ## 6. Les tests (`identity-throttler.guard.spec.ts`)
 
@@ -250,31 +245,41 @@ Les tests e2e de [error-codes.e2e-spec.ts](../../../../apps/api/test/error-codes
 ## 7. Questions possibles à l'oral
 
 **Q : Pourquoi ne pas garder le guard par défaut (par IP) ?**
+
 R : Toutes les requêtes arrivent depuis Caddy ou le conteneur Next.js. Par IP, toute la plateforme partageait un seul compteur de 100 par minute.
 
 **Q : Pourquoi l'id utilisateur et pas l'id de session ?**
+
 R : À la connexion, la session est régénérée. Avec l'id de session, se reconnecter remettrait le compteur à zéro.
 
 **Q : Pourquoi certaines routes restent par IP ?**
+
 R : Elles vérifient un secret (mot de passe, code 2FA). Un attaquant peut créer plusieurs comptes ; par compte, une limite de 5 deviendrait 5 × N. Par IP, c'est 5 pour sa machine.
 
 **Q : Pourquoi `handleRequest` en plus de `getTracker` ?**
+
 R : `getTracker` ne reçoit que la requête, pas la route. `handleRequest` a le contexte : il lit le décorateur avec le `Reflector` et pose un drapeau sur la requête pour `getTracker`.
 
 **Q : L'IP peut être falsifiée avec `X-Forwarded-For`, non ?**
+
 R : En général oui. Ici, `trust proxy = 1` fait confiance à un seul saut, et Caddy est la seule entrée : il réécrit ce header. On lit donc l'adresse que Caddy a vue.
 
 **Q : La limite est globale ou par route ?**
+
 R : Par route : la clé contient le nom de la classe et de la méthode. 100 requêtes par minute sur chaque route, pour chaque appelant.
 
 **Q : Que voit l'utilisateur quand il est bloqué ?**
+
 R : Un 429 avec `message: "server.rateLimited"`. Le front affiche « Trop de tentatives. Nouvel essai possible dans une minute ».
 
 **Q : Qui a écrit `@ThrottleByIp` ?**
+
 R : VictorBro, dans sa PR #21 fusionnée dans ma #20. Moi, j'ai écrit le guard et ses tests ; dans la même PR #21, VictorBro les a adaptés pour que le guard lise sa métadonnée `THROTTLE_BY_IP`.
 
 **Q : Le throttler passe avant ou après l'authentification ?**
+
 R : Avant (il est déclaré dans `AppModule`, scanné en premier par Nest ; `AuthGuard` est dans `AuthModule`). Un anonyme qui inonde est donc compté sur son IP. *(Déduit de l'ordre d'enregistrement de Nest, pas testé explicitement.)*
 
 **Q : Où sont stockés les compteurs ?**
+
 R : Dans le stockage par défaut de `@nestjs/throttler`, en mémoire du processus API (aucun `storage` n'est passé à `ThrottlerModule.forRoot`). Avec plusieurs instances de l'API, chacune aurait ses propres compteurs.

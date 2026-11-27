@@ -436,34 +436,45 @@ Pour que Vitest lise les tests `.tsx`, #203 a ajouté `components/**/*.test.tsx`
 ## 8. Questions possibles à l'oral
 
 **Q : Qu'as-tu changé dans le lecteur de Bastian ?**
+
 R : Presque rien. Une ligne dans l'annuaire, une ligne dans `player.tsx`, l'examen qui utilise ma boîte `Countdown`, et `useOrderFocus` dans `controls.tsx`. Le reste est dans mes fichiers.
 
 **Q : Pourquoi une heure de fin et pas « secondes restantes » ?**
+
 R : Un onglet caché ralentit les minuteurs, et un rechargement remettrait le compteur à zéro. Avec une heure de fin, on recalcule le temps restant à chaque fois.
 
 **Q : Pourquoi le minuteur du survol n'est pas sur le serveur, comme celui de l'examen ?**
+
 R : #203 l'a choisi ainsi : le serveur ne garde pas d'heure de fin pour le survol. C'est une page d'entraînement : l'important est que le texte disparaisse avant la question. Le garder dans le navigateur suffit, sans changer l'API. *(Raison déduite du code, la PR ne la détaille pas.)*
 
 **Q : Que se passe-t-il si on recharge pendant le survol ? Et après ?**
+
 R : Pendant : on retrouve la même heure de fin, le temps continue de baisser. Après : la valeur gardée est « question », le texte ne revient pas.
 
 **Q : Pourquoi ne rien afficher avant l'hydratation ?**
+
 R : Le serveur ne sait pas si le survol est fini. S'il dessinait le texte, on le verrait un instant après un rechargement.
 
 **Q : Comment la question est cachée ? Pourquoi pas un état React partagé ?**
+
 R : Par une règle CSS avec `:has()`. Les deux blocs sont dessinés séparément par le lecteur. Un état partagé demandait de modifier le lecteur. Le CSS suffit, et marche même avant l'hydratation.
 
 **Q : Qu'est-ce qui empêche de cliquer Vérifier sans avoir lu ?**
+
 R : `hold('skim', { kind: 'block' })` : le lecteur désactive Vérifier tant que le texte est ouvert.
 
 **Q : Pourquoi ne pas montrer la situation sur la page de présentation ?**
+
 R : Elle donnait la réponse du survol. Exemple : « pour raconter ses trois jours à Marseille ».
 
 **Q : Comment surlignes-tu les mots clés ?**
+
 R : Toutes les fois où ils apparaissent, le plus long d'abord, mots entiers seulement, sans chevauchement. React affiche le texte comme du texte : pas d'injection HTML possible.
 
 **Q : Comment testes-tu des composants sans navigateur ?**
+
 R : Je les transforme en HTML et je joue toute la leçon sur le vrai cœur partagé. Limite : pas d'effets ni de CSS. Le vrai comportement est vérifié par Playwright.
 
 **Q : Qu'as-tu fait pour l'accessibilité ?**
+
 R : Le minuteur est lu avec le temps. La note a un texte caché « Bonne réponse ». Chaque groupe de choix est nommé par sa question. Le focus est déplacé quand un bouton disparaît. Plusieurs points viennent de la revue de Victor.

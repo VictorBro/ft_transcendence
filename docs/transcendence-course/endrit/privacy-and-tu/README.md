@@ -389,37 +389,49 @@ Si quelqu'un remettait « Choisissez… », le test de `lesson-files.spec.ts` tr
 ## 8. Questions possibles à l'oral
 
 **Q : Qu'est-ce qui était faux dans la politique de confidentialité ?**
+
 R : Elle promettait un fournisseur qui n'entraîne pas sur les messages, alors que la clé Gemini est gratuite. Elle parlait aussi de choses qui n'existent pas : RAG, sessions en direct, bouton d'export, e-mails, sauvegardes, logs de 30 jours.
 
 **Q : Qu'est-ce qui part exactement chez Google ?**
+
 R : Le message, les messages d'avant, le contenu de la leçon, sa langue et son niveau, la langue d'interface, et les fautes d'entraînement (exercice, réponse donnée, bonne réponse). Jamais l'e-mail, le nom ou le numéro de compte.
 
 **Q : Pourquoi une clé gratuite et pas payante ?**
+
 R : C’est la décision prise pour le projet (#204), écrite dans `docs/architecture/product.md` section 5. Une clé payante coûterait quelques dizaines d’euros pour tout le projet, mais ce n’est pas le point important. Le point important : une clé gratuite est acceptable **si on le dit**. Passer à une clé payante, c'est changer la politique dans la même PR.
 
 **Q : Pourquoi toucher à Docker dans une PR sur la politique ?**
+
 R : La politique dit que les logs avec des IP sont limités et effacés par rotation. Sans le bloc `x-logging`, Docker les gardait pour toujours. Soit on change le texte, soit on change le système : j'ai rendu le système vrai.
 
 **Q : Pourquoi deux copies du bloc `x-logging` ?**
+
 R : Une ancre YAML ne marche que dans son propre fichier. `compose.yml` et `compose.deploy.yml` ont donc chacun la leur.
 
 **Q : Les pages légales, c'est toi qui les as écrites ?**
+
 R : Non. Luca les a créées (#26), VictorBro les a beaucoup modifiées, et Luca a ajouté le paragraphe Gemini pour la discussion (#205). Moi, j'ai corrigé le contenu pour qu'il corresponde au code (#206).
 
 **Q : Pourquoi « tu » et pas « vous » ?**
+
 R : L'allemand disait déjà « du ». Une appli d'apprentissage parle comme un prof particulier, sur un ton proche. Et il faut **un seul** ton partout.
 
 **Q : Pourquoi la politique de confidentialité dit encore « vous » ?**
+
 R : C’est un texte officiel. #125 ne touche pas aux pages légales : son message de commit le dit (« Legal pages and the question bank stay unchanged »).
 
 **Q : Pourquoi ne pas simplement interdire le mot « vous » dans toutes les leçons ?**
+
 R : Parce que les leçons l'enseignent : « nous, vous, ils », « s'il vous plaît », le vous de politesse. Le test des leçons cherche seulement les signes sûrs : « votre », « vos », ou une consigne qui commence par un verbe en « -ez ».
 
 **Q : Et dans les textes fixes, pourquoi le test est plus strict ?**
+
 R : Ces textes n'enseignent jamais le français. Ils n'ont aucune raison de dire « vous ». Donc on interdit tout, sauf « chez » et « assez ».
 
 **Q : Comment tu empêches les prochaines leçons de revenir au « vous » ?**
+
 R : Le prompt de l'auteur de leçons demande le « tu », et sa version passe à `author-4`. Et si une leçon arrive quand même avec « Choisissez… », `lesson-files.spec.ts` échoue.
 
 **Q : Pourquoi changer des leçons d'allemand et d'anglais pour le « tu » français ?**
+
 R : Elles ont une aide en français pour les apprenants francophones. Seules les valeurs `"fr"` changent.

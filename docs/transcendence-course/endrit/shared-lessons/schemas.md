@@ -10,16 +10,11 @@
 
 ## 0. D'abord, c'est quoi Zod ?
 
-**Zod** est une bibliothèque TypeScript. Elle sert à décrire **la forme attendue** d'une donnée,
-puis à **vérifier** une vraie donnée contre cette forme, **pendant l'exécution**.
+**Zod** est une bibliothèque TypeScript. Elle sert à décrire **la forme attendue** d'une donnée, puis à **vérifier** une vraie donnée contre cette forme, **pendant l'exécution**.
 
-Pourquoi en a-t-on besoin ? TypeScript vérifie les types **à la compilation** seulement.
-Un fichier JSON lu sur le disque arrive en `unknown` : TypeScript ne sait rien de lui.
-Zod fait le contrôle à l'exécution, et **en plus** il donne le type TypeScript gratuitement (`z.infer<...>`).
+Pourquoi en a-t-on besoin ? TypeScript vérifie les types **à la compilation** seulement. Un fichier JSON lu sur le disque arrive en `unknown` : TypeScript ne sait rien de lui. Zod fait le contrôle à l'exécution, et **en plus** il donne le type TypeScript gratuitement (`z.infer<...>`).
 
-**Analogie.** Un schéma, c'est le **gabarit** d'une boîte aux lettres : « une fente de 32 cm, pas plus ».
-On présente la lettre ; si elle passe, elle est bonne pour la forme. Mais le gabarit ne lit pas la lettre.
-Lire la lettre (vérifier le sens), c'est le rôle de `validation/`.
+**Analogie.** Un schéma, c'est le **gabarit** d'une boîte aux lettres : « une fente de 32 cm, pas plus ». On présente la lettre ; si elle passe, elle est bonne pour la forme. Mais le gabarit ne lit pas la lettre. Lire la lettre (vérifier le sens), c'est le rôle de `validation/`.
 
 Les briques Zod utilisées ici :
 
@@ -39,19 +34,11 @@ Les briques Zod utilisées ici :
 
 ### Pourquoi `strictObject` partout ?
 
-Un objet normal de Zod **ignore** les champs inconnus. Un objet strict les **refuse**.
-Si un auteur (ou un modèle) écrit `"anwserExplanation"` avec une faute, un objet normal l'ignorerait,
-et le vrai champ manquerait sans bruit. Ici, le schéma dit : « champ inconnu ».
-Le test [`validation/artifacts.test.ts`](../../../../packages/shared/src/lessons/validation/artifacts.test.ts)
-vérifie par exemple qu'un ancien champ `nativeLanguage` est refusé.
+Un objet normal de Zod **ignore** les champs inconnus. Un objet strict les **refuse**. Si un auteur (ou un modèle) écrit `"anwserExplanation"` avec une faute, un objet normal l'ignorerait, et le vrai champ manquerait sans bruit. Ici, le schéma dit : « champ inconnu ». Le test [`validation/artifacts.test.ts`](../../../../packages/shared/src/lessons/validation/artifacts.test.ts) vérifie par exemple qu'un ancien champ `nativeLanguage` est refusé.
 
 ### Et `superRefine` / `refine` ?
 
-**Il n'y en a aucun dans `lessons/`.** C'est un choix.
-`refine` permet d'ajouter une règle « maison » dans un schéma (comparer deux champs, par exemple).
-Ici, **toutes** les règles qui comparent des champs, ou qui comparent le fichier avec son plan,
-sont rangées à part, dans [`validation/`](validation.md). Le commentaire en tête de `artifactCommon.ts` le dit :
-« These schemas check the shape of a file only ».
+**Il n'y en a aucun dans `lessons/`.** C'est un choix. `refine` permet d'ajouter une règle « maison » dans un schéma (comparer deux champs, par exemple). Ici, **toutes** les règles qui comparent des champs, ou qui comparent le fichier avec son plan, sont rangées à part, dans [`validation/`](validation.md). Le commentaire en tête de `artifactCommon.ts` le dit : « These schemas check the shape of a file only ».
 
 Avantages :
 
@@ -59,16 +46,11 @@ Avantages :
 - les vérifications de sens peuvent **supposer** que la forme est bonne (pas besoin de tester `undefined` partout) ;
 - on peut **collecter tous les problèmes** avec la classe `Issues`, avec des messages clairs.
 
-(Les `refine` liés aux leçons sont hors du dossier, dans
-[`packages/shared/src/schemas/lesson.ts`](../../../../packages/shared/src/schemas/lesson.ts) : par exemple
-`LessonTitleSchema` et `LessonSummarySchema`, que `validateLesson` réutilise pour le titre et le résumé.)
+(Les `refine` liés aux leçons sont hors du dossier, dans [`packages/shared/src/schemas/lesson.ts`](../../../../packages/shared/src/schemas/lesson.ts) : par exemple `LessonTitleSchema` et `LessonSummarySchema`, que `validateLesson` réutilise pour le titre et le résumé.)
 
 ### Pourquoi beaucoup de schémas sont des **fonctions** `(lang) => schema` ?
 
-Les traductions dépendent de la langue du cours. Un cours de **français** traduit en `{ en, de }`,
-un cours d'**allemand** en `{ en, fr }`, un cours d'**anglais** en `{ fr, de }`.
-Les clés de l'objet changent : le schéma doit donc être **construit** pour une langue donnée.
-D'où `vocabularyBriefSchema('fr')`, `grammarContentSchema('de')`, etc.
+Les traductions dépendent de la langue du cours. Un cours de **français** traduit en `{ en, de }`, un cours d'**allemand** en `{ en, fr }`, un cours d'**anglais** en `{ fr, de }`. Les clés de l'objet changent : le schéma doit donc être **construit** pour une langue donnée. D'où `vocabularyBriefSchema('fr')`, `grammarContentSchema('de')`, etc.
 
 ---
 
@@ -95,11 +77,7 @@ C'est la **boîte à outils**. Les quatre types de leçon construisent leurs sch
 | `LocalizedLabelSchema` | `localizedText(120)` : un petit titre | |
 | `LocalizedLongTextSchema` | `localizedText(1200)` : une longue explication | |
 
-**Attention au `trim()`.** Il ne fait pas que vérifier : il **modifie** la valeur (il enlève les espaces).
-C'est pour ça que `validateLesson` renvoie les fichiers **parsés**, et que le seed stocke ceux-là, pas le JSON brut.
-Le test `returns the parsed files, with their texts trimmed` de
-[`validateLesson.test.ts`](../../../../packages/shared/src/lessons/validateLesson.test.ts) le vérifie :
-`"  Lire un SMS  "` devient `"Lire un SMS"`.
+**Attention au `trim()`.** Il ne fait pas que vérifier : il **modifie** la valeur (il enlève les espaces). C'est pour ça que `validateLesson` renvoie les fichiers **parsés**, et que le seed stocke ceux-là, pas le JSON brut. Le test `returns the parsed files, with their texts trimmed` de [`validateLesson.test.ts`](../../../../packages/shared/src/lessons/validateLesson.test.ts) le vérifie : `"  Lire un SMS  "` devient `"Lire un SMS"`.
 
 Un texte localisé, exemple réel :
 
@@ -122,9 +100,7 @@ S'il manque `de`, le schéma refuse (objet strict avec trois clés obligatoires)
 | `nativeTranslationsSchema(lang)` | `{ en: [...], de: [...] }` pour `fr` | objet strict, une liste par langue maternelle |
 | `nativeTextSchema(lang)` | `{ en: "...", de: "..." }` pour `fr` | une phrase par langue maternelle |
 
-`nativeMap` (privé) construit l'objet avec `Object.fromEntries`. Le `as Record<Locale, T>` sert juste à TypeScript ;
-c'est Zod qui garantit que **seules** les bonnes clés existent. Donc un cours de français avec une traduction `fr`
-est **refusé** (testé dans `requires native translations for every mother tongue except the learning language`).
+`nativeMap` (privé) construit l'objet avec `Object.fromEntries`. Le `as Record<Locale, T>` sert juste à TypeScript ; c'est Zod qui garantit que **seules** les bonnes clés existent. Donc un cours de français avec une traduction `fr` est **refusé** (testé dans `requires native translations for every mother tongue except the learning language`).
 
 ```json
 "translations": { "en": ["book"], "de": ["Buch"] }
@@ -139,8 +115,7 @@ est **refusé** (testé dans `requires native translations for every mother tong
 | `TimeLimitSecondsSchema` | entier 5 à 900 | compte à rebours d'une page d'examen (max 15 min) |
 | `AcceptedAnswersSchema` | `{ answers: [1 à 8 textes] }` | les bonnes réponses quand l'apprenant **tape** ; la tolérance (accent manquant…) est décidée ailleurs, à la notation |
 
-Ne pas confondre `NestedIdSchema` (id **interne**, chiffres permis) et `LessonIdSchema`
-(id **de la leçon**, dans `schemas/lesson.ts`, de la forme `fr-classroom-objects`, sans chiffres, 64 max).
+Ne pas confondre `NestedIdSchema` (id **interne**, chiffres permis) et `LessonIdSchema` (id **de la leçon**, dans `schemas/lesson.ts`, de la forme `fr-classroom-objects`, sans chiffres, 64 max).
 
 ### 1.5 `ProvenanceSchema` : d'où vient le fichier
 
@@ -153,13 +128,11 @@ Ne pas confondre `NestedIdSchema` (id **interne**, chiffres permis) et `LessonId
 | `inputHashes.outline` | texte | ≥ 16 caractères | empreinte SHA-256 de l'entrée d'outline utilisée |
 | `inputHashes.brief` | texte, **optionnel** | ≥ 16 | seulement dans un **contenu** : empreinte du brief utilisé |
 
-**Analogie** : c'est l'étiquette « fabriqué le… à partir de la recette n°… ».
-Si la recette change, l'empreinte ne correspond plus : le fichier est **périmé** (`stale`, voir [validation.md](validation.md)).
+**Analogie** : c'est l'étiquette « fabriqué le… à partir de la recette n°… ». Si la recette change, l'empreinte ne correspond plus : le fichier est **périmé** (`stale`, voir [validation.md](validation.md)).
 
 ### 1.6 `envelopeShape` : l'enveloppe des 9 champs
 
-Ce n'est **pas** un schéma, c'est un **objet JavaScript simple**.
-Chaque type l'**étale** dans son propre schéma avec `...envelopeShape`, puis ajoute `kind` et `topic` ou `theme`.
+Ce n'est **pas** un schéma, c'est un **objet JavaScript simple**. Chaque type l'**étale** dans son propre schéma avec `...envelopeShape`, puis ajoute `kind` et `topic` ou `theme`.
 
 | Champ | Type | Règle | Pourquoi |
 |---|---|---|---|
@@ -179,9 +152,7 @@ Chaque type l'**étale** dans son propre schéma avec `...envelopeShape`, puis a
 "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
 ```
 
-Trois **littéraux** : l'entraînement compte pour 35 %, l'examen pour 65 %, une faute d'accent ou de majuscule rapporte un demi-point.
-C'est **la même** politique pour toutes les leçons. Elle est écrite dans chaque brief pour qu'un relecteur la voie.
-Aucun code de ce dossier ne calcule de score (c'est le rôle du lecteur, `player/`).
+Trois **littéraux** : l'entraînement compte pour 35 %, l'examen pour 65 %, une faute d'accent ou de majuscule rapporte un demi-point. C'est **la même** politique pour toutes les leçons. Elle est écrite dans chaque brief pour qu'un relecteur la voie. Aucun code de ce dossier ne calcule de score (c'est le rôle du lecteur, `player/`).
 
 ---
 
@@ -244,8 +215,7 @@ Une leçon de vocabulaire = **un seul fichier**, le brief. Le code fabrique les 
 | `gap.explanation` | localisé | | correction |
 | `listeningOptionTargetIds` | 4 ids | `.length(4)` | les 4 choix de l'exercice d'écoute |
 
-Ce que le schéma **ne** vérifie **pas** (c'est `validation/vocabulary.ts`) : seuls les noms ont un genre,
-l'article correspond au genre, les ids pointent vers de vrais mots, etc.
+Ce que le schéma **ne** vérifie **pas** (c'est `validation/vocabulary.ts`) : seuls les noms ont un genre, l'article correspond au genre, les ids pointent vers de vrais mots, etc.
 
 Exemple réel raccourci (`fr-classroom-objects`) :
 
@@ -312,18 +282,13 @@ Exemple réel raccourci (`fr-classroom-objects`) :
 
 Personne n'écrit ce fichier. Ce schéma décrit ce que `vocabularyLesson()` **doit renvoyer**. Les tests le vérifient.
 
-- `steps` : 6 ou 7 étapes (`.min(VOCABULARY_STAGES.length).max(VOCABULARY_STAGES.length + 1)`, donc 6 à 7). Pourquoi 7 pour 6 stades ? Le stade `practice` a **deux** étapes
-  (les trous, puis l'écoute). Une leçon sans nom genré n'a pas d'étape de genre : 6 étapes.
+- `steps` : 6 ou 7 étapes (`.min(VOCABULARY_STAGES.length).max(VOCABULARY_STAGES.length + 1)`, donc 6 à 7). Pourquoi 7 pour 6 stades ? Le stade `practice` a **deux** étapes (les trous, puis l'écoute). Une leçon sans nom genré n'a pas d'étape de genre : 6 étapes.
 - Chaque étape : `id`, `stage` (un des 6 stades), `role` (`introduction` / `exercise` / `overview` / `exam`), `label`, `pages` (1 à 60).
 - Chaque page : `pageId`, `estimatedDurationS`, `timeLimitS` (nullable : seulement l'examen), `instructions`, `items` (1 à 12).
-- Un item est une `discriminatedUnion` sur `type`, 8 formes :
-  `vocabulary_introduction`, `vocabulary_flashcards`, `vocabulary_matching` (2 à 12 paires),
-  `vocabulary_gender_select`, `vocabulary_typed_gap`, `vocabulary_listening_choice`,
-  `vocabulary_translation_exam`, `vocabulary_listening_dictation`.
+- Un item est une `discriminatedUnion` sur `type`, 8 formes : `vocabulary_introduction`, `vocabulary_flashcards`, `vocabulary_matching` (2 à 12 paires), `vocabulary_gender_select`, `vocabulary_typed_gap`, `vocabulary_listening_choice`, `vocabulary_translation_exam`, `vocabulary_listening_dictation`.
 - `unit = { answerExplanation }` est étalé (`...unit`) dans chaque exercice corrigé.
 
-**`discriminatedUnion`, en image** : une boîte de rangement avec une étiquette `type` sur chaque objet.
-Zod lit l'étiquette d'abord, puis vérifie l'objet avec la bonne forme. C'est plus rapide et les erreurs sont plus claires qu'une union simple.
+**`discriminatedUnion`, en image** : une boîte de rangement avec une étiquette `type` sur chaque objet. Zod lit l'étiquette d'abord, puis vérifie l'objet avec la bonne forme. C'est plus rapide et les erreurs sont plus claires qu'une union simple.
 
 ---
 
@@ -355,8 +320,7 @@ Deux fichiers. Le brief planifie **règles → blocs → exercices → examen**.
 | `secondsPerUnit` | `[6, 40]` | durée d'une page ÷ nombre de réponses |
 | `explanationSeconds` | `[45, 240]` | une page d'explication dure 45 à 240 s |
 
-Une « unité notée » = une réponse corrigée : un item, ou une **ligne** pour un item à lignes (un tableau de 6 personnes = 6 unités).
-Seul `exercisesPerBlock[1]` (le max 4) est dans le schéma. Le reste est vérifié par `grammarLength.ts`.
+Une « unité notée » = une réponse corrigée : un item, ou une **ligne** pour un item à lignes (un tableau de 6 personnes = 6 unités). Seul `exercisesPerBlock[1]` (le max 4) est dans le schéma. Le reste est vérifié par `grammarLength.ts`.
 
 ### 4.2 `grammarBriefSchema(lang)`
 
@@ -414,8 +378,7 @@ Exemple réel raccourci (`fr-er-verbs-present`) :
 
 - `scored = { ruleIds, answerExplanation }` est étalé dans les items à réponse unique.
 - `TokenSchema = { tokenId, text }` : chaque mot a son propre id, donc le **même** mot peut apparaître deux fois.
-- En mode `translation`, une ligne a `native` et `pronoun: null` ; en mode `forms`, l'inverse. **Le schéma accepte les deux**
-  (tout est `nullable`) ; c'est le validateur qui impose la cohérence.
+- En mode `translation`, une ligne a `native` et `pronoun: null` ; en mode `forms`, l'inverse. **Le schéma accepte les deux** (tout est `nullable`) ; c'est le validateur qui impose la cohérence.
 
 Exemple réel (une ligne d'un `grammar_person_matching` en mode `forms`) :
 
@@ -497,11 +460,9 @@ Exemple réel (`fr-greetings-and-goodbyes`) :
 | `function_translation_exam` | examen : lire la traduction d'un mot, taper le mot avec son article |
 | `function_dialogue_gap_typing` | examen, dernière page : un nouveau dialogue avec des trous à taper |
 
-`functionsContentSchema(lang)` : enveloppe + `kind`, `theme`, `steps` (7 à 8 ; `stage`, `role` = `presentation`/`exercise`/`exam`, `pages` 1 à 20).
-Une page a 1 à 6 items (la limite réutilise `FUNCTIONS_LIMITS.words[1]`, qui vaut aussi 6).
+`functionsContentSchema(lang)` : enveloppe + `kind`, `theme`, `steps` (7 à 8 ; `stage`, `role` = `presentation`/`exercise`/`exam`, `pages` 1 à 20). Une page a 1 à 6 items (la limite réutilise `FUNCTIONS_LIMITS.words[1]`, qui vaut aussi 6).
 
-Réel (`fr-greetings-and-goodbyes`, pas de mots, donc pas d'étape `gender`) :
-`flashcards, dialogue, matching, dialogue_gaps, word_order, listening, exam` = 7 étapes.
+Réel (`fr-greetings-and-goodbyes`, pas de mots, donc pas d'étape `gender`) : `flashcards, dialogue, matching, dialogue_gaps, word_order, listening, exam` = 7 étapes.
 
 ---
 
@@ -521,8 +482,7 @@ Apprendre 4 à 6 mots clés, puis lire un document réel (SMS, article…), puis
 | `READING_QUESTION_TYPES` | `reading_choice`, `reading_true_false` |
 | `TRUE_FALSE_LABELS` | `Vrai/Faux`, `Richtig/Falsch`, `True/False` ; lu seulement par le lecteur (`player/readingPlan.ts`) |
 
-**Règle importante** : les documents, questions et choix restent dans la **langue apprise**.
-Les traduire donnerait les réponses. Seules les consignes et les corrections sont en `{ en, fr, de }`.
+**Règle importante** : les documents, questions et choix restent dans la **langue apprise**. Les traduire donnerait les réponses. Seules les consignes et les corrections sont en `{ en, fr, de }`.
 
 ### 6.2 Le brief
 
@@ -555,14 +515,10 @@ Réel (`fr-reading-a-magazine-portrait`, B1, genre `article`) :
 
 ### 6.3 Le contenu
 
-- `ReadingDocumentSchema` : `documentId` (`main`/`exam`), `title` (nullable), `meta` (0 à 4 petites lignes : expéditeur, date…),
-  `paragraphs` (1 à 12, chacun ≤ 1200), `highlights` (0 à 24 `{ keywordId, text }`, vide pour l'examen).
-- `readingItemSchema` : 7 sortes : `reading_flashcards`, `reading_keyword_matching`, `reading_document` (`view` = `skim`/`open`/`exam`, `skimSeconds` nullable),
-  `reading_skim_choice`, `reading_choice`, `reading_true_false`, `reading_order`.
-  **Ce n'est pas une fonction de `lang`** : aucun item n'a de traduction.
+- `ReadingDocumentSchema` : `documentId` (`main`/`exam`), `title` (nullable), `meta` (0 à 4 petites lignes : expéditeur, date…), `paragraphs` (1 à 12, chacun ≤ 1200), `highlights` (0 à 24 `{ keywordId, text }`, vide pour l'examen).
+- `readingItemSchema` : 7 sortes : `reading_flashcards`, `reading_keyword_matching`, `reading_document` (`view` = `skim`/`open`/`exam`, `skimSeconds` nullable), `reading_skim_choice`, `reading_choice`, `reading_true_false`, `reading_order`. **Ce n'est pas une fonction de `lang`** : aucun item n'a de traduction.
 - Page : 1 à 6 items (le document + 5 questions à l'examen).
-- `readingContentSchema(_lang)` : enveloppe + `kind`, `theme`, `genre`, `documents` (exactement 2), `steps` (exactement 6, une page chacune).
-  Le `_` dans `_lang` veut dire « paramètre non utilisé » : il est là pour que les 4 types s'appellent pareil.
+- `readingContentSchema(_lang)` : enveloppe + `kind`, `theme`, `genre`, `documents` (exactement 2), `steps` (exactement 6, une page chacune). Le `_` dans `_lang` veut dire « paramètre non utilisé » : il est là pour que les 4 types s'appellent pareil.
 
 Réel (`fr-reading-a-magazine-portrait`) :
 

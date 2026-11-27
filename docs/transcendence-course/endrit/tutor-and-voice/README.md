@@ -384,37 +384,49 @@ Pour lancer seulement les miens : `cd apps/web && pnpm exec vitest run lib/voice
 ## 8. Questions possibles à l'oral
 
 **Q : Pourquoi afficher le Markdown du tuteur ?**
+
 R : Une vraie IA répond en Markdown. Sans ça, l'apprenant voyait des `**` et des `###` au lieu du gras et des titres.
 
 **Q : Afficher du texte d'une IA, ce n'est pas dangereux (XSS) ?**
+
 R : On s'en protège. `react-markdown` sans `rehype-raw` affiche le HTML comme du texte. Il retire les liens `javascript:`. Et on interdit les images. Un test vérifie qu'un `<script>` reste du texte.
 
 **Q : Pourquoi `react-markdown` et pas `marked` + `dangerouslySetInnerHTML` ?**
+
 R : `marked` produit une chaîne HTML. Il faudrait l'injecter telle quelle, et donc la nettoyer nous-mêmes. `react-markdown` produit des éléments React : le texte est toujours échappé, et on choisit nous-mêmes chaque balise.  *(Comparaison générale, la PR ne parle pas de `marked`.)*
 
 **Q : Pourquoi pas votre mini-Markdown `RichText` des leçons ?**
+
 R : Il ne connaît que paragraphes, listes, gras et formes. Une IA écrit aussi des titres, des tableaux, du code, du barré.
 
 **Q : Pourquoi interdire les images ?**
+
 R : Une image se charge depuis l'adresse choisie par l'IA. Ce serait une requête vers n'importe quel site, depuis le navigateur de l'apprenant.
 
 **Q : Pourquoi les messages de l'apprenant restent du texte simple ?**
+
 R : Il tape du texte normal. S'il écrit des étoiles, il veut les voir.
 
 **Q : Comment choisis-tu la voix ?**
+
 R : On garde les voix de la langue, puis on les classe : bonne région, voix naturelle, voix de femme, en ligne, par défaut. Le premier critère où deux voix diffèrent décide.
 
 **Q : Comment sais-tu qu'une voix est féminine ?**
+
 R : Par son nom, avec une liste de prénoms et de mots (« Female », « Amélie », « Anna »…). Le navigateur ne donne pas cette information.
 
 **Q : Pourquoi « naturelle » passe avant « femme » ?**
+
 R : Une bonne voix d'homme sonne mieux qu'une voix de femme robotique. Le but premier est une voix agréable à écouter.
 
 **Q : Et s'il n'y a aucune voix pour la langue ?**
+
 R : `pickVoice` renvoie `null`. Le bouton Écouter n'est pas affiché, et la leçon continue normalement.
 
 **Q : Pourquoi ralentir à 0,85 ?**
+
 R : L'apprenant découvre la langue. Un peu plus lent, il entend mieux chaque son.
 
 **Q : Qu'as-tu changé chez Luca et chez Bastian ?**
+
 R : Chez Luca : les réponses du tuteur passent par `TutorAnswer`, et j'ai retiré `whitespace-pre-wrap` pour elles. Chez Bastian : `voiceFor` appelle `pickVoice`, et `speak` nettoie le texte et règle la vitesse. Le reste de leurs fichiers est à eux.
