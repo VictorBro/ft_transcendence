@@ -53,8 +53,12 @@ export function LiveForm({
   // navigations leave the fields as typed, even when an older one lands while
   // the learner is still typing. A newer one makes Next drop the one on its
   // way, unless it is already landing, so one landing means no older one ever
-  // will: they go with it. A chip back to one of those is not the form's own.
+  // will: they go with it. A link of the list (a chip, Clear filters, the
+  // pager) counts as sent too, once followLink has put the fields on its view.
   const sent = useRef<string[]>([]);
+  // The view a link of the list is on its way to: it opens at the top, as a
+  // navigation the form did not send does.
+  const linkTarget = useRef<string | null>(null);
   // The query the fields were last put on. The page renders them from it, so
   // the first run has nothing to reset: resetting would wipe what was typed
   // before the page hydrated.
@@ -64,6 +68,7 @@ export function LiveForm({
   // rendered, and forgets what the form sent: none of it will land now.
   const putBack = useCallback(() => {
     sent.current = [];
+    linkTarget.current = null;
     // A search still waiting would read the reset form, which has no page,
     // and send the learner away from the view a link opened.
     clearTimeout(timer.current);
@@ -85,16 +90,21 @@ export function LiveForm({
     const now = searchParams.toString();
     if (now === shown.current) return;
     shown.current = now;
-    const own = sent.current.indexOf(now);
-    if (own !== -1) {
-      sent.current = sent.current.slice(own + 1);
-      return;
-    }
-    putBack();
     // From lg the page scrolls in a pane, which a query-only navigation
     // leaves where it was: Next at the bottom would open page 2 at its end.
     // Not after the form's own changes: the box under the pointer would move.
-    form.current?.closest('[data-scroll-pane]')?.scrollTo({ top: 0 });
+    const toTop = () => form.current?.closest('[data-scroll-pane]')?.scrollTo({ top: 0 });
+    const own = sent.current.indexOf(now);
+    if (own !== -1) {
+      sent.current = sent.current.slice(own + 1);
+      const link = linkTarget.current;
+      if (now === link) toTop();
+      // Landed, or older than what landed and dropped with it: it never lands now.
+      if (link !== null && !sent.current.includes(link)) linkTarget.current = null;
+      return;
+    }
+    putBack();
+    toTop();
   }, [searchParams, putBack]);
 
   // Back and Forward drop a change still on its way too, and can land on the
@@ -132,13 +142,25 @@ export function LiveForm({
       timer.current = undefined;
       if (form.current === null) return;
       const data = new FormData(form.current);
-      // Repeated checkbox keys come as arrays, which the schema reads like comma lists.
+      // The checked boxes, read from the boxes rather than from FormData, which
+      // skips a disabled field. An older view of the form's own landing while
+      // the learner is still clicking can disable a box they just checked (its
+      // count there is 0, #223): it must still be sent, or it would stay checked
+      // on screen and drop out of the list. The view it lands on has it checked,
+      // which enables it again. As arrays, which the schema reads like comma lists.
+      const checked = (name: string) =>
+        Array.from(
+          form.current?.querySelectorAll<HTMLInputElement>(
+            `input[type="checkbox"][name="${name}"]:checked`,
+          ) ?? [],
+          (box) => box.value,
+        );
       const query = LessonQuerySchema.parse({
         q: data.get('q'),
-        status: data.getAll('status'),
-        kind: data.getAll('kind'),
-        topic: data.getAll('topic'),
-        theme: data.getAll('theme'),
+        status: checked('status'),
+        kind: checked('kind'),
+        topic: checked('topic'),
+        theme: checked('theme'),
         sort: data.get('sort'),
         dir: data.get('dir'),
         group: data.get('group'),
@@ -154,6 +176,53 @@ export function LiveForm({
       // The hash keeps the phone's filter sheet open (#filters) while the list updates.
       startTransition(() => router.push(`${href}${window.location.hash}`, { scroll: false }));
     }, delay);
+  };
+
+  /**
+   * A chip, Clear filters or a page of the pager (#226). Until its view lands,
+   * the fields still show the old one, and a change made meanwhile would send
+   * them and undo the link: Clear filters, then Grammar, gave the old filters
+   * plus Grammar. So the fields move to the link's view at once, and its query
+   * counts as one the form sent: when it lands, the fields stay as they are
+   * then, with whatever changed since. A search still waiting is dropped, as
+   * the view it would have left is.
+   *
+   * Next's Link still does the navigation. A click that opens a new tab, or a
+   * link off the list (a lesson), changes nothing here.
+   */
+  const followLink = (event: MouseEvent, link: HTMLAnchorElement) => {
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+      return;
+    }
+    const url = new URL(link.href);
+    if (url.pathname !== window.location.pathname || form.current === null) return;
+    clearTimeout(timer.current);
+    timer.current = undefined;
+
+    const query = LessonQuerySchema.parse(Object.fromEntries(url.searchParams));
+    for (const field of Array.from(form.current.elements)) {
+      if (field instanceof HTMLInputElement && field.type === 'checkbox') {
+        const list: unknown = query[field.name as keyof typeof query];
+        if (Array.isArray(list)) field.checked = list.includes(field.value);
+      } else if (field instanceof HTMLInputElement && field.name === 'q') {
+        field.value = query.q;
+      } else if (
+        field instanceof HTMLSelectElement &&
+        (field.name === 'sort' || field.name === 'dir' || field.name === 'group')
+      ) {
+        field.value = query[field.name];
+      }
+    }
+
+    // The same rule as apply's: the view already shown never lands again.
+    const target = lessonsHref(lang, query).split('?')[1] ?? '';
+    if (target === shown.current) {
+      sent.current = [];
+      linkTarget.current = null;
+      return;
+    }
+    sent.current = [...sent.current.filter((query) => query !== target), target];
+    linkTarget.current = target;
   };
 
   // Filters, Close and Show the lessons. A change still on its way, or a
@@ -176,11 +245,15 @@ export function LiveForm({
         apply(search ? SEARCH_DELAY_MS : 0);
       }}
       onClick={(event) => {
+        const link = (event.target as Element).closest('a[href]');
+        if (!(link instanceof HTMLAnchorElement)) return;
         // Filters and Close: links to the sheet's hash.
-        const link = (event.target as Element).closest('a[href^="#"]');
-        if (link === null) return;
-        event.preventDefault();
-        moveSheet(link.getAttribute('href')!.slice(1));
+        if (link.getAttribute('href')!.startsWith('#')) {
+          event.preventDefault();
+          moveSheet(link.getAttribute('href')!.slice(1));
+          return;
+        }
+        followLink(event.nativeEvent, link);
       }}
       onSubmit={(event) => {
         event.preventDefault();

@@ -3,10 +3,14 @@ import {
   Language,
   LESSON_KINDS,
   LessonCard,
+  LessonCounts,
   LessonQuery,
+  LESSON_ROW_STATUSES,
   LESSONS_PAGE_SIZE,
   LessonRowStatus,
   rowStatus,
+  THEMES,
+  TOPICS,
 } from '@ft/shared';
 
 /**
@@ -43,11 +47,7 @@ export function searchLessons(
   lang: Language,
 ): LessonSearchResult {
   // Step 1 and 2: keep, then sort.
-  // "Coeur  testeur" → ["coeur", "testeur"]. Split on any run of spaces, and
-  // the filter drops the empty word a leading space would leave.
-  const words = foldText(query.q)
-    .split(/\s+/)
-    .filter((word) => word !== '');
+  const words = typedWords(query.q);
   const matches = cards
     .filter((card) => matchesFilters(card, query) && matchesText(card, words, lang))
     .sort(compareFor(query));
@@ -64,6 +64,7 @@ export function searchLessons(
 
 /**
  * Does this lesson pass all the filters? It must pass every one of them.
+ * There are 3: status, kind, and topic-or-theme (one filter, see below).
  *
  * Each filter is a list the user picked, and it follows 2 rules:
  *   - An empty list means "no filter": every lesson passes.
@@ -81,13 +82,60 @@ function matchesFilters(card: LessonCard, query: LessonQuery): boolean {
   return (
     anyOf(query.status, rowStatus(card)) &&
     anyOf(query.kind, card.kind) &&
-    // Topic and theme follow the same 2 rules, but a lesson can have none:
+    // Topic and theme are ONE filter, an OR between the two lists (#223):
     // grammar lessons have a topic and no theme, the others a theme and no
-    // topic. A lesson without a topic never passes a topic filter, and the
-    // same for themes. That is why they cannot just use anyOf.
-    (query.topic.length === 0 || (card.topic !== null && query.topic.includes(card.topic))) &&
-    (query.theme.length === 0 || (card.theme !== null && query.theme.includes(card.theme)))
+    // topic, so with an AND between them, Pronouns + Travel would always
+    // give 0. Pronouns + Travel keeps the grammar lessons on pronouns and
+    // the lessons on travel. Both lists empty → every lesson passes.
+    (query.topic.length + query.theme.length === 0 ||
+      (card.topic !== null && query.topic.includes(card.topic)) ||
+      (card.theme !== null && query.theme.includes(card.theme)))
   );
+}
+
+/**
+ * The number beside each box: how many lessons the list would have if this
+ * box were the only one checked in its block, the text and the other blocks
+ * staying as they are (#223). Topic and theme are one block, as in
+ * matchesFilters. A box at 0 is greyed out by the page.
+ *
+ * Example: Grammar is checked in Kind. Vocabulary's number is the lessons
+ * with kind = [vocabulary] and the same status, topic, theme and text.
+ *
+ * It uses the same matchesFilters and matchesText as the list, so a number
+ * can never disagree with the list the box gives.
+ */
+export function filterCounts(
+  cards: LessonCard[],
+  query: LessonQuery,
+  lang: Language,
+): LessonCounts {
+  const words = typedWords(query.q);
+  const found = cards.filter((card) => matchesText(card, words, lang));
+  const each = <T extends string>(values: readonly T[], only: (value: T) => Partial<LessonQuery>) =>
+    Object.fromEntries(
+      values.map((value) => [
+        value,
+        found.filter((card) => matchesFilters(card, { ...query, ...only(value) })).length,
+      ]),
+    ) as Record<T, number>;
+
+  return {
+    status: each(LESSON_ROW_STATUSES, (value) => ({ status: [value] })),
+    kind: each(LESSON_KINDS, (value) => ({ kind: [value] })),
+    topic: each(TOPICS, (value) => ({ topic: [value], theme: [] })),
+    theme: each(THEMES, (value) => ({ topic: [], theme: [value] })),
+  };
+}
+
+/**
+ * "Coeur  testeur" → ["coeur", "testeur"]. Split on any run of spaces, and
+ * the filter drops the empty word a leading space would leave.
+ */
+function typedWords(q: string): string[] {
+  return foldText(q)
+    .split(/\s+/)
+    .filter((word) => word !== '');
 }
 
 /**

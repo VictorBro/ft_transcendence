@@ -88,7 +88,7 @@ export default async function LessonsPage({
           lang={course.lang}
           className="group flex flex-col gap-6 lg:flex-row lg:items-start lg:gap-10"
         >
-          <LessonFilters query={shown} />
+          <LessonFilters query={shown} counts={page.counts} />
           <section aria-label={t('results')} className="flex min-w-0 flex-1 flex-col gap-4">
             <LessonToolbar query={shown} total={page.total} />
             <ActiveFilters lang={course.lang} query={shown} />
