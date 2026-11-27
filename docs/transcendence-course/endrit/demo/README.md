@@ -1,5 +1,9 @@
 # Module annexe · Les apprenants de démo (PR #143, issue #85)
 
+> Auteur : Endrit (#143). Ajouts d'autres depuis : Bastian (#171 : le replay ne prend que les leçons
+> « prêtes », et `slice(0, offered.length)` au lieu d'une erreur), Victor (#181 : `new SocketsService()` ;
+> #193 : `lastActiveDay`).
+
 > Fichiers de ce dossier :
 > - **README.md** (ce fichier) : le rôle, le déclenchement, les fichiers, les diagrammes, un
 >   exemple réel, les questions d'oral.

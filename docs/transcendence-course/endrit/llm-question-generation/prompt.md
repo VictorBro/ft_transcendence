@@ -216,7 +216,7 @@ Une ligne réellement insérée, pour le premier item de l'exemple :
 
 ### 6.3 `TIME_LIMIT_S` : le temps vient du serveur
 
-Secondes par question (tableau de [docs/content/item-bank.md](../../../content/item-bank.md), valeur haute de chaque fourchette) :
+Secondes par question (tableau de [docs/content/item-bank.md](../../../content/item-bank.md) ; seule la lecture y a des fourchettes, et le code prend leur valeur haute) :
 
 | | A1 | A2 | B1 | B2 | C1 | C2 |
 |---|---|---|---|---|---|---|

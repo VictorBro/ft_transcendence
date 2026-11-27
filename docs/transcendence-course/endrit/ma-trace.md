@@ -4,24 +4,25 @@
 > Les chiffres de la section 1 se refont avec les commandes du tableau. Les pourcentages par fichier des sections suivantes
 > viennent de l'ancienne analyse : ce sont des ordres de grandeur, que l'on ne peut pas refaire ici.
 > La liste à jour des fichiers touchés est [docs/code-ownership.md](../../code-ownership.md) :
-> depuis, 9 PR de plus sont à mon nom (#195, #202, #203, #206, #208, #214, #218, #219, #220), soit 27, et 28 avec cette PR de docs (#215).
+> depuis, 11 PR de plus sont à mon nom (#195, #202, #203, #206, #208, #214, #215, #218, #219, #220, #222), soit 29.
+> `code-ownership.md` a été calculé avant la fusion de #222 : il compte 28 PR, et ne liste pas encore les 5 fichiers de #222.
 > Identités Git : `VYAntares <endroahm@hotmail.com>` et `EA <endroahm@hotmail.com>` (même personne).
 
 ## 1. En chiffres
 
-Seulement des chiffres que l'on peut refaire, une fois #215 fusionnée :
+Seulement des chiffres que l'on peut refaire :
 
 | Indicateur                                              | Valeur | Comment le refaire                                                                                                  |
 | ------------------------------------------------------- | -----: | ------------------------------------------------------------------------------------------------------------------- |
-| PR fusionnées sur `main` que j'ai ouvertes              |     28 | `gh pr list --repo VictorBro/ft_transcendence --author VYAntares --state merged --base main --limit 300 --json number --jq length` |
-| Période (première et dernière de ces PR)                | 2026-08-22 → 2026-11-23 | la même commande avec `--json number,mergedAt`                                                     |
-| Fichiers touchés (créés ou modifiés, même d'une ligne)  |    701 | [docs/code-ownership.md](../../code-ownership.md), « En un coup d'œil », avec sa méthode de calcul                  |
+| PR fusionnées sur `main` que j'ai ouvertes              |     29 | `gh pr list --repo VictorBro/ft_transcendence --author VYAntares --state merged --base main --limit 300 --json number --jq length` |
+| Période (première et dernière de ces PR)                | 2026-08-22 → 2026-11-26 | la même commande avec `--json number,mergedAt`                                                     |
+| Fichiers touchés (créés ou modifiés, même d'une ligne)  |    701 | [docs/code-ownership.md](../../code-ownership.md), « En un coup d'œil », avec sa méthode de calcul (sans les 5 fichiers de #222) |
 | … dont code (`apps`, `packages`, `e2e`)                 |    263 | idem                                                                                                                |
 
 Les parts en lignes de l'ancienne analyse (total, par zone) ne sont plus données ici : personne ne
 peut les refaire sans ce fichier.
 
-Mon rôle en une phrase : **je porte le domaine des leçons**, de la base de données au contenu : lecture et recherche via l'API, validateurs partagés, outil de génération avec Claude Code, seed, démo, codes d'erreur, génération de questions par LLM.
+Mon rôle en une phrase : **je porte le domaine des leçons**, de la base de données au contenu : lecture et recherche via l'API, validateurs partagés, outil de génération avec Claude Code, seed, démo, codes d'erreur, génération de questions par LLM. J'ai aussi construit quelques pièces autour : le statut en ligne, la leçon de lecture, le tuteur et sa voix, le menu du header, les garde-fous de la 2FA et les vérifications au démarrage de l'API.
 
 ## 2. Mes zones du repo
 
@@ -72,6 +73,20 @@ génération de contenu, et le backend des leçons, de l'objectif quotidien et d
 - `author.ts`, `prompt.ts` (`systemPrompt`, `lessonPrompt`, `issuesPrompt`, `PROMPT_VERSION`), `providers/claude.ts`, `providers/chat.ts` (`QuotaError`, `RateLimitError`, `retryRateLimits`), `check.ts`, `check-draft.ts`, `edits.ts`, `reply.ts`, `times.ts`, `report.ts`, skill `author-lessons`.
 - Pilote la CLI Claude Code par `child_process` dans une boucle « écrire, valider, corriger ».
 
+### `src/presence/` — statut en ligne (#195)
+
+- `presence.service.ts` : un compteur Redis par utilisateur (`presence:<userId>`), +1 par onglet ouvert, −1 par onglet fermé après un délai de grâce. Les amis acceptés sont prévenus quand on passe de 0 à 1, et de 1 à 0.
+- Branché sur la gateway WebSocket de VictorBro (#181). Voir [presence/](presence/README.md).
+
+### `src/prisma/` et `src/redis/` — vérifications au démarrage (#222)
+
+- `PrismaService.onModuleInit` fait un vrai `SELECT 1`, avec 5 s maximum par connexion. `RedisService` abandonne si la première connexion échoue, et se reconnecte ensuite.
+- Les deux services sont de VictorBro (#3), je n'ai changé que leur démarrage. Voir [startup-checks/](startup-checks/README.md).
+
+### `src/auth/` — garde-fous de la 2FA (#219)
+
+- `two-factor.service.ts` : `setup` et `enable` refusent avec `twoFactor.alreadyEnabled` (409) quand la 2FA est déjà active. La 2FA elle-même est de VictorBro (#5). Voir [two-factor-guards/](two-factor-guards/README.md).
+
 ### Tests e2e API (`apps/api/test/`)
 
 - `lessons.e2e-spec.ts` (95 %), `demo.e2e-spec.ts` (94 %), `error-codes.e2e-spec.ts` (86 %), `seed.e2e-spec.ts` (68 %).
@@ -80,6 +95,9 @@ génération de contenu, et le backend des leçons, de l'objectif quotidien et d
 
 - **`packages/shared/src/lessons/`** (#142, #162) : `schemas/*` (vocabulaire, grammaire, lecture, fonctions, `artifactCommon`), `validation/*` (`validateBrief`, `validateContent`, `checkGrammarContent`…), `domain/*` (`parseRichText`, `vocabularyLesson`, `lessonCopy`…), `validateLesson`. Porté du prototype de Bastian (`bastian-schnitzler/lesson_prototype@928484d`), puis étendu à DE et EN.
 - **Frontend** (#20, #125) : page chat et coquille `(mode)` (supprimées depuis par VictorBro : les autres modes dans la #64, la page chat et la coquille dans la #200), `healthz/upstream`, parties de `lib/api.ts` et `lib/session.ts`, tutoiement en français.
+- **Frontend, depuis le 2026-11-05** : la leçon de lecture (#203, [reading-lesson/](reading-lesson/README.md)), le tuteur en Markdown et la voix « Écouter » (#214, [tutor-and-voice/](tutor-and-voice/README.md)), le menu du header et les écrans de téléphone (#220, [header-menu/](header-menu/README.md)), le point vert (#195), le mot de passe vérifié dans le navigateur pour couper la 2FA (#218).
+- **Tests navigateur** : la boucle parcours et leçon sur de vraies leçons (#202, [e2e-roadmap/](e2e-roadmap/README.md)).
+- **Textes** : la politique de confidentialité alignée sur ce que fait la plateforme (#206), le tutoiement partout en français (#125, #208). Voir [privacy-and-tu/](privacy-and-tu/README.md).
 - **Docs** : `docs/content/lessons.md` (98 %), décisions sur leçons, objectif et streak (#139).
 - **Contenu** : outlines FR A2–C2, briefs et leçons FR/EN/DE de A1 à C2.
 
@@ -105,6 +123,19 @@ génération de contenu, et le backend des leçons, de l'objectif quotidien et d
 | 11-02 | #183 | Briefs et leçons FR, A1 à C2                                                       |                    16 / 64 573 |
 | 11-03 | #184 | Briefs et leçons EN, A1 à C2                                                       |                     0 / 61 329 |
 | 11-03 | #185 | Briefs et leçons DE, A1 à C2                                                       |                     1 / 66 509 |
+| 11-12 | #195 | Statut en ligne : compteur Redis, point vert des amis                              |                              — |
+| 11-18 | #202 | Test navigateur du parcours et des leçons sur de vraies leçons                     |                              — |
+| 11-20 | #203 | La leçon de lecture dans le navigateur                                             |                              — |
+| 11-20 | #206 | Politique de confidentialité alignée sur ce que fait la plateforme                 |                              — |
+| 11-20 | #208 | Tutoiement cohérent en français dans les leçons et le prompt                       |                              — |
+| 11-23 | #214 | Le Markdown du tuteur et une voix naturelle pour « Écouter »                       |                              — |
+| 11-23 | #218 | Le mot de passe pour couper la 2FA vérifié dans le navigateur                      |                              — |
+| 11-23 | #219 | Refuser setup et enable quand la 2FA est déjà active                               |                              — |
+| 11-23 | #220 | Menu du header, cartes du cours, écrans de téléphone                               |                              — |
+| 11-26 | #215 | Réorganisation de `docs/`, une page par module                                     |                              — |
+| 11-26 | #222 | Arrêter l'API au démarrage sur une mauvaise `DATABASE_URL` ou `REDIS_URL`         |                              — |
+
+Les PR après #185 ne sont pas dans l'ancienne analyse : pas de compte de lignes pour elles.
 
 **Contributions dans les PR des autres** (cachées par le squash) : #104 placement (+178 lignes, dont 47 % de `change-level.tsx`), #29 migration onboarding (+145, avec `schemas/item.ts`), #24 et #27 (petites retouches).
 
@@ -126,3 +157,7 @@ génération de contenu, et le backend des leçons, de l'objectif quotidien et d
 6. Abstraction du fournisseur LLM et injection par token (`LLM_PROVIDER`).
 7. `lessons:author` : pilotage de la CLI par `child_process`, prompts versionnés, gestion des quotas et des 429.
 8. Ce qui vient du prototype (#142) et ce que j'ai adapté ensuite (#162).
+9. La présence : pourquoi un compteur Redis par personne, pourquoi attendre avant de retirer 1, pourquoi seuls les amis voient le point.
+10. Le démarrage de l'API : pourquoi `$connect()` ne suffit pas, et quand Redis doit abandonner ou réessayer.
+11. La leçon de lecture : le compte à rebours du survol, et comment un nouveau type de leçon se branche dans le lecteur de Bastian.
+12. Les garde-fous de la 2FA : quels états sont refusés, avec quel code d'erreur.

@@ -247,6 +247,8 @@ Exemples : 4 cartes d'expressions = 48 s ; un dialogue de 10 lignes = `20 + 120 
 
 `Math.round(estimate × 1.5)` : 100 s → 150 s. Arrondi **à la seconde** (différent de la lecture).
 
+Les deux fonctions suivantes ne sont pas de moi : Bastian les a ajoutées pour le lecteur (PR #174).
+
 ### `expressionDisplay(e) → string`
 
 `openEnd: true` → ajoute `" …"` : `"Je voudrais"` → `"Je voudrais …"`. Sinon le texte tel quel.

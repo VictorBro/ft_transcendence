@@ -184,7 +184,7 @@ Ce n'est pas du multithread : Node a un seul fil d'exécution, mais pendant qu'u
 
 ## 8. Provenance et hash
 
-`sha256(canonicalJson(...))` dans [json.ts](../../../../apps/api/scripts/lessons/json.ts) :
+`sha256(value)` dans [json.ts](../../../../apps/api/scripts/lessons/json.ts) hache `canonicalJson(value)` :
 - **`canonicalJson`** trie les clés : le même objet donne toujours le même texte ;
 - **sha256** transforme ce texte en empreinte unique de 64 caractères.
 

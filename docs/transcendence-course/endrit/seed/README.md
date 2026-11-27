@@ -45,7 +45,7 @@ C'est l'**idempotence** (voir §7.1).
 
 | PR | Auteur (git) | Ce qui a été fait |
 |---|---|---|
-| #58 | EA | Création de `seed.ts` : `seedQuestionBank`, `findItemsDir` (ancêtre de `findContentDir`), détection des `sourceId` en double **avant** la transaction, `upsert` sur `sourceId`, `$transaction`. Création de `seed.e2e-spec.ts`. |
+| #58 | EA | Création de `seed.ts` : `seedQuestionBank`, `findItemsDir` (ancêtre de `findContentDir`), détection des `sourceId` en double **avant** la transaction, `upsert` sur `sourceId`, `$transaction`. Création de `seed.e2e-spec.ts`. Dans la même PR, un commit de VictorBro ajoute `make db-ready` (seed à chaque démarrage), le nombre renvoyé par `seedQuestionBank`, le message d'erreur qui liste les deux chemins, et les tests « with every column mapped » et « loads all 270 authored items ». |
 | #123 | luca-mattei | Tables `Lesson` et `LessonResult` (migration `add_lessons`), première version de `seedLessons` (depuis des « drafts »), `findItemsDir` généralisé en `findContentDir(kind)`. |
 | #140 | EA | Les leçons sont seedées **depuis les outlines** (`content/outlines/<lang>-<level>.json`) : `LessonOutlineFileSchema`, `workingTitle` → `title`, `intent` → `summary`, `brief: {}`. |
 | #142 | EA | Migration `add_lesson_content` (colonne `content JSONB`). Le seed lit `briefs/` et `lessons/`, valide chaque leçon avec `lessons.validateLesson`, refuse les fichiers « orphelins ». |
@@ -358,7 +358,7 @@ ALTER TABLE "Lesson" ADD COLUMN     "content" JSONB;
 
 ### 8.1 Une question
 
-Extrait réel de [content/items/fr-grammar.json](../../../../content/items/fr-grammar.json) :
+Extrait réel de [content/items/fr-grammar.json](../../../../content/items/fr-grammar.json) (premier item seulement) :
 
 ```json
 {
@@ -405,7 +405,7 @@ Extrait réel de [content/items/fr-grammar.json](../../../../content/items/fr-gr
 
 ### 8.2 Une leçon
 
-Extrait réel de [content/outlines/fr-a1.json](../../../../content/outlines/fr-a1.json) :
+Extrait réel de [content/outlines/fr-a1.json](../../../../content/outlines/fr-a1.json) (première entrée seulement) :
 
 ```json
 {
@@ -488,7 +488,7 @@ erDiagram
 Ce sont des tests **e2e** : ils tournent sur une **vraie** base Postgres. Le commentaire du
 fichier explique pourquoi : les critères de l'issue #43 portent sur **ce qui reste dans
 `QuestionBank` après deux lancements**, ce qu'un faux client Prisma ne peut pas montrer.
-Lancer : `pnpm --filter @ft/api test:e2e`.
+Lancer : `pnpm --filter @ft/api test:e2e`. Le fichier a 27 tests ; voici les principaux.
 
 | Test | Ce qu'il prouve |
 |---|---|

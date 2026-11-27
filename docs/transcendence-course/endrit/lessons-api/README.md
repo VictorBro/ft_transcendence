@@ -55,10 +55,11 @@ Deux règles importantes :
 | Fichier | Auteur / PR | Lien avec mon code |
 |---|---|---|
 | [roadmap.rules.ts](../../../../apps/api/src/lessons/roadmap.rules.ts) | ninisse (#120, ticket #80) | `plan`, `levelProgress`, `courseDay`, `statusOf`… : les règles que `today` appelle. |
-| [goal.ts](../../../../apps/api/src/lessons/goal.ts) et `applyFinish` dans `lessons.service.ts` | luca-mattei (#141) | La fin de leçon et l'objectif quotidien. Ils réutilisent `checkCourse` et `findLesson`. |
-| [gamification.ts](../../../../apps/api/src/lessons/gamification.ts), [gamification.rules.ts](../../../../apps/api/src/lessons/gamification.rules.ts), route `GET achievements` | #95 / #180 | XP, rang, défi, succès. Ajoutés ensuite dans `today` (`xp`, `challenge`, `earnedToday`). |
+| [goal.ts](../../../../apps/api/src/lessons/goal.ts) et `applyFinish` dans `lessons.service.ts` | luca-mattei (#141) ; `applyFinish` sorti en fonction par ninisse (#190) | La fin de leçon et l'objectif quotidien. Ils réutilisent `checkCourse` et `findLesson`. |
+| [gamification.ts](../../../../apps/api/src/lessons/gamification.ts), [gamification.rules.ts](../../../../apps/api/src/lessons/gamification.rules.ts), route `GET achievements` | ninisse (#132 et #180, tickets #94 et #95) | XP, rang, défi, succès. Ajoutés ensuite dans `today` (`xp`, `challenge`, `earnedToday`). |
 | [attempts.controller.ts](../../../../apps/api/src/lessons/attempts.controller.ts) | ninisse (#190, ticket #145) | Le lecteur de leçon (tentatives), sous le même préfixe `courses/:lang`. |
 | Champ `ready` et option `readyOnly` | bastian-schnitzler (#171, ticket #84) | Une leçon pas encore prête est listée mais jamais proposée. |
+| `ready` dans `LESSON_SELECT` et sur les cartes, statut `soon` (filtre, groupes, tri) | luca-mattei (#196, ticket #87) | La liste montre aussi les leçons pas encore écrites. |
 | [discussion.controller.ts](../../../../apps/api/src/lessons/discussion.controller.ts), `discussion.service.ts` | luca-mattei (#201) | Le tuteur des leçons (questions au LLM avec `streamText`), sous le même préfixe `courses/:lang`. |
 
 ### Diagramme des fichiers et de leurs dépendances
@@ -149,7 +150,7 @@ Exemple (raccourci) :
   "streak": { "current": 4, "best": 9, "today": false },
   "progress": { "total": 120, "attempted": 12, "passed": 10, "needed": 96, "comingSoon": 0, "complete": false },
   "levelAfter": "A2",
-  "xp": { "total": 340, "rank": 2, "rankStart": 300, "nextRankAt": 600 },
+  "xp": { "total": 340, "rank": 3, "rankStart": 300, "nextRankAt": 600 },
   "challenge": { "code": "vocabulary", "done": false },
   "earnedToday": []
 }
@@ -483,4 +484,4 @@ R : Il lie une URL à une méthode, récupère l'utilisateur (`@CurrentUser`), l
 R : Pour garantir que le front reçoit exactement la forme promise. Une carte invalide = donnée corrompue = 500 visible dans les logs, plutôt qu'une réponse fausse cachée.
 
 **Q : Qu'est-ce que tu n'as pas écrit dans ce dossier ?**
-R : Les règles de la feuille de route (`roadmap.rules.ts`), la fin de leçon et l'objectif (`goal.ts`, `applyFinish`, #141), la gamification (#180), les tentatives (`attempts.*`, #190) et le tuteur (`discussion.*`, #201).
+R : Les règles de la feuille de route (`roadmap.rules.ts`), la fin de leçon et l'objectif (`goal.ts`, `applyFinish`, #141), la gamification (#132, #180), les tentatives (`attempts.*`, #190), le statut `soon` et `ready` sur les cartes (#196) et le tuteur (`discussion.*`, #201).

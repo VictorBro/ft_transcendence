@@ -33,12 +33,12 @@
 | Fichier | Rôle | Auteur |
 |---|---|---|
 | [error-code.filter.ts](../../../../apps/api/src/error-code.filter.ts) | `ErrorCodeFilter` + fonctions `messageOf`, `isCoded`, `statusOf`, `fallbackCode`. | moi (#126) |
-| [validation.pipe.ts](../../../../apps/api/src/validation.pipe.ts) | `CodeValidationPipe` (#126), `LangParam` (#126/#128). `UserIdParam` a été ajouté ensuite par VictorBro (#189, amis, ticket #155). | moi + VictorBro |
+| [validation.pipe.ts](../../../../apps/api/src/validation.pipe.ts) | `CodeValidationPipe` (#126), `LangParam`. `LangParam` a été créé par ninisse dans `courses.controller.ts` (#60) ; je l'ai passé sur `CodeValidationPipe` (#126), puis déplacé ici pour le partager (#128). `UserIdParam` a été ajouté ensuite par VictorBro (#189, amis, ticket #155). | moi + VictorBro |
 | [app.setup.ts](../../../../apps/api/src/app.setup.ts) | **Branche** le pipe et le filtre pour toute l'app : `app.useGlobalPipes(new CodeValidationPipe())` et `app.useGlobalFilters(new ErrorCodeFilter(app.getHttpAdapter()))`. | équipe |
 | [app.module.ts](../../../../apps/api/src/app.module.ts) | `ThrottlerModule.forRoot({ …, errorMessage: 'server.rateLimited' })` : le throttler envoie lui aussi un code (#126). | équipe |
 | [main.ts](../../../../apps/api/src/main.ts) | Crée l'app et appelle `configureApp(app)` (dans `app.setup.ts`). | équipe |
 | [packages/shared/src/schemas/errors.ts](../../../../packages/shared/src/schemas/errors.ts) | `ERROR_CODES` (la liste), le type `ErrorCode`, `isErrorCode()`. **Le contrat partagé** entre API et front. | équipe |
-| [packages/shared/src/schemas/language.ts](../../../../packages/shared/src/schemas/language.ts) | `LanguageSchema = z.enum(LEARNABLE_LANGUAGES, 'course.unknownLanguage')` : utilisé par `LangParam`. | équipe |
+| [packages/shared/src/schemas/language.ts](../../../../packages/shared/src/schemas/language.ts) | `LanguageSchema = z.enum(LEARNABLE_LANGUAGES, 'course.unknownLanguage')` : utilisé par `LangParam`. | moi (créé dans ma PR #32, fusionnée dans #29 ; le code d'erreur en #126) |
 | [apps/web/lib/api-client.ts](../../../../apps/web/lib/api-client.ts) | `readCode(body)` : lit `message` (ou `message[0]` si c'est un tableau). Sans corps JSON → `server.unexpected`. Réseau coupé → `network.unreachable`. | front |
 | [apps/web/lib/error-message.ts](../../../../apps/web/lib/error-message.ts) | `useErrorMessage()` : transforme un code en phrase traduite (`Errors.<code>`). Code inconnu → `unknown`. | front |
 | [apps/web/messages/fr.json](../../../../apps/web/messages/fr.json) (et `en.json`, `de.json`) | Les traductions, section `Errors`. | équipe |
@@ -319,7 +319,7 @@ Il démarre la vraie app avec `configureApp(app)` (comme `main.ts`) et ajoute un
 | 6ᵉ login en une minute depuis la même IP | 429 | `server.rateLimited` |
 | 21ᵉ inscription en une minute depuis la même IP | 429 | `server.rateLimited` |
 
-Astuce du test : chaque cas utilise sa propre adresse `X-Forwarded-For` (`198.51.100.x`, plage réservée à la documentation) pour ne pas consommer le quota des autres cas.
+Astuce du test : chaque cas de login ou d'inscription utilise sa propre adresse `X-Forwarded-For` (`198.51.100.x`, plage réservée à la documentation) pour ne pas consommer le quota des autres cas. Les cas avec session passent par un même `agent`, qui a une seule adresse.
 
 ## 8. Questions possibles à l'oral
 

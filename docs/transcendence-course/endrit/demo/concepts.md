@@ -20,11 +20,11 @@ Dans [demo.clock.ts](../../../../apps/api/src/demo/demo.clock.ts) :
 
 ```ts
 /** A 32-bit seed from a text: FNV-1a, so each email gets its own run of scores. */
-export function seedOf(text: string): number { … }
+export function seedOf(text: string): number { /* ... */ }
 
 /** A number in [0, 1), the same series for the same seed: mulberry32. */
 export type Random = () => number;
-export function randomFrom(seed: number): Random { … }
+export function randomFrom(seed: number): Random { /* ... */ }
 ```
 
 - **`seedOf`** transforme un texte (ex. `"demo-anna@example.com/fr"`) en nombre de 32 bits avec le

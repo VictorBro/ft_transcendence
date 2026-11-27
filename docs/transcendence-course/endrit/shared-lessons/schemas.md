@@ -342,7 +342,7 @@ Deux fichiers. Le brief planifie **règles → blocs → exercices → examen**.
 | `PERSON_MATCHING_EXEMPT` | `fr-imperative-mood`, `de-imperative-du-ihr`, `de-imperative-sie` | l'impératif a trop peu de personnes pour un tableau |
 | `PERSONS` | `1sg, 2sg, 3sg, 1pl, 2pl, 3pl` | les 6 personnes, dans l'ordre |
 | `GRAMMAR_LENGTH` | voir dessous | longueur minimale |
-| `GRAMMAR_EXAM_TYPES` | `gap_typing`, `pronoun_form_typing`, `word_order` | à l'examen, l'apprenant **produit** la réponse, pas de QCM |
+| `GRAMMAR_EXAM_TYPES` | `grammar_gap_typing`, `grammar_pronoun_form_typing`, `grammar_word_order` | à l'examen, l'apprenant **produit** la réponse, pas de QCM |
 
 `GRAMMAR_LENGTH` :
 

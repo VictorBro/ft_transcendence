@@ -4,6 +4,9 @@
 > [`packages/shared/src/lessons/`](../../../../packages/shared/src/lessons/), en français simple.
 > J'ai porté ce code dans le projet (PR #142 : portage depuis le prototype de Bastian,
 > `bastian-schnitzler/lesson_prototype@928484d` ; PR #162 : allemand et anglais).
+> Ce qui n'est pas de moi : dans `domain/functionsLesson.ts`, `expressionDisplay` et `functionsTerms`
+> (Bastian, PR #174) ; dans `index.ts`, les exports `player` et `parseRichText` (Bastian, PR #174 et #192)
+> et `isSupportedKind` (Luca, PR #201).
 > Le but : pouvoir l'expliquer à l'oral, avec mes mots.
 >
 > Le sous-dossier `player/` (le lecteur de leçon) n'est **pas** couvert ici.
@@ -127,7 +130,7 @@ Une seule source de vérité, pas de copie.
 | | [`apps/api/scripts/lessons/complete.ts`](../../../../apps/api/scripts/lessons/complete.ts), [`files.ts`](../../../../apps/api/scripts/lessons/files.ts), [`check.ts`](../../../../apps/api/scripts/lessons/check.ts) | `ARTIFACT_SCHEMA_VERSION`, `hasContentFile` | remplit l'enveloppe, sait si un fichier contenu est attendu |
 | Les **tests de l'API** | [`apps/api/src/lessons/lesson-files.spec.ts`](../../../../apps/api/src/lessons/lesson-files.spec.ts), [`lesson-complete.spec.ts`](../../../../apps/api/src/lessons/lesson-complete.spec.ts) | `validateLesson`, `hasContentFile` | vérifient **tous** les fichiers de `content/` en CI |
 | La **discussion** avec le tuteur (PR #201, Luca) | [`apps/api/src/lessons/discussion.service.ts`](../../../../apps/api/src/lessons/discussion.service.ts) | `lessons.isSupportedKind`, `lessons.briefSchema` | relit le brief stocké en base avant d'écrire le prompt du tuteur |
-| Le **front** | [`apps/web/components/lesson/rich-text.tsx`](../../../../apps/web/components/lesson/rich-text.tsx) | `lessons.parseRichText` | affiche les explications en Markdown simple |
+| Le **front** (PR #192, Bastian) | [`apps/web/components/lesson/rich-text.tsx`](../../../../apps/web/components/lesson/rich-text.tsx) | `lessons.parseRichText` | affiche les explications en Markdown simple |
 | Le lecteur de leçon | `packages/shared/src/lessons/player/` | types des schémas, quelques constantes (`GenderSchema`, `SKIM_FOCUS`, `TRUE_FALSE_LABELS`), `vocabularyLesson`, `functionsTerms`, `COPY` | (hors périmètre) |
 
 ```mermaid
