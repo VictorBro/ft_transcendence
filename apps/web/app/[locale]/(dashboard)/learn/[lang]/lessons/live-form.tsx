@@ -218,6 +218,7 @@ export function LiveForm({
     const target = lessonsHref(lang, query).split('?')[1] ?? '';
     if (target === shown.current) {
       sent.current = [];
+      linkTarget.current = null;
       return;
     }
     sent.current = [...sent.current.filter((query) => query !== target), target];
