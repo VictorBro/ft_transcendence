@@ -68,12 +68,12 @@ stays intact, and a name starting with `_` is not skipped.
 
 ### operations/
 
-| Document                                               | What it covers                                                                                                                                                     |
-| ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [operations/deployment.md](operations/deployment.md)   | The Oracle Cloud server, DNS, the `.env`, deploying and redeploying, automatic deploys, memory, monitoring on the server, and running behind another reverse proxy |
-| [operations/monitoring.md](operations/monitoring.md)   | Prometheus, Grafana, the dashboards, the alerts and every metric                                                                                                   |
-| [operations/versions.md](operations/versions.md)       | What has to move together, what is held back, and when to look again                                                                                               |
-| [operations/development.md](operations/development.md) | The shell shortcuts of the devcontainer, and the monitoring stack in development                                                                                   |
+| Document                                               | What it covers                                                                                                                                                                           |
+| ------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [operations/deployment.md](operations/deployment.md)   | The two servers (the primary behind another reverse proxy, with monitoring, and the Oracle Cloud copy without it), DNS, the `.env`, deploying and redeploying, automatic deploys, memory |
+| [operations/monitoring.md](operations/monitoring.md)   | Prometheus, Grafana, the dashboards, the alerts and every metric                                                                                                                         |
+| [operations/versions.md](operations/versions.md)       | What has to move together, what is held back, and when to look again                                                                                                                     |
+| [operations/development.md](operations/development.md) | The shell shortcuts of the devcontainer, and the monitoring stack in development                                                                                                         |
 
 ### content/
 
@@ -93,7 +93,7 @@ stays intact, and a name starting with `_` is not skipped.
 
 | Document                                                         | What it covers                                                                                                                                                                                                                                                                                        |
 | ---------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [transcendence-course/README.md](transcendence-course/README.md) | How the folder works, and one folder per member: [victor/](transcendence-course/victor/README.md), [endrit/](transcendence-course/endrit/README.md), [anais/](transcendence-course/anais/README.md), [luca/](transcendence-course/luca/README.md), [bastian/](transcendence-course/bastian/README.md). Only endrit/ is written so far; the other four say "Not written yet" |
+| [transcendence-course/README.md](transcendence-course/README.md) | How the folder works, and one folder per member: [victor/](transcendence-course/victor/README.md), [endrit/](transcendence-course/endrit/README.md), [anais/](transcendence-course/anais/README.md), [luca/](transcendence-course/luca/README.md), [bastian/](transcendence-course/bastian/README.md). Only endrit/ is written so far; victor/ lists the pages that already explain his code, and the other three say "Not written yet" |
 
 ### site/
 

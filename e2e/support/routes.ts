@@ -44,6 +44,10 @@ export const PAGE_ROUTES: PageRoute[] = [
   { path: '/en', name: 'home' },
   { path: '/en/privacy', name: 'privacy policy' },
   { path: '/en/terms', name: 'terms of service' },
+  // The Show password buttons are drawn once hydrated: a mismatch there would
+  // log a hydration warning on these two pages.
+  { path: '/en/login', name: 'login' },
+  { path: '/en/signup', name: 'signup' },
   { path: '/api/docs', name: 'api docs' },
   { path: '/grafana/login', name: 'grafana login' },
   { path: '/this-route-does-not-exist', name: 'not found', expectedStatus: 404 },

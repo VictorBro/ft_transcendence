@@ -343,11 +343,11 @@ discussion remplacent le budget (§5).
 `LLM_PROVIDER` choisit l'implémentation de `LlmProvider` une seule fois, au démarrage (`createLlmProvider` dans
 `apps/api/src/llm/llm.factory.ts`), et une mauvaise valeur empêche le démarrage :
 
-| `LLM_PROVIDER`         | Réapprovisionnement du placement                                                          | Discussion de leçon                                                                                                                            | Utilisé par                              |
-| ---------------------- | ----------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------- |
-| `fixture` (par défaut) | N'écrit aucune question : le tirage se rabat sur la question vue il y a le plus longtemps | Une réponse toute faite, en stream. Des messages spéciaux (`#fail-midstream`, `#timeout`, `#blocked`) déclenchent chaque échec, pour les specs | Développement, CI, chaque test           |
-| `gemini`               | Un appel structuré par case presque vide                                                  | La réponse de Gemini, en stream                                                                                                                | Un serveur avec une clé                  |
-| `disabled`             | Comme la fixture                                                                          | Chaque message se termine par `error { code: "llm.disabled" }`                                                                                 | Un serveur qui ne fait tourner aucun LLM |
+| `LLM_PROVIDER`         | Réapprovisionnement du placement                                                          | Discussion de leçon                                                                                                                                          | Utilisé par                              |
+| ---------------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------- |
+| `fixture` (par défaut) | N'écrit aucune question : le tirage se rabat sur la question vue il y a le plus longtemps | Une réponse toute faite, en stream. Des messages spéciaux (`#fail-midstream`, `#timeout`, `#blocked`, `#quota-day`) déclenchent chaque échec, pour les specs | Développement, CI, chaque test           |
+| `gemini`               | Un appel structuré par case presque vide                                                  | La réponse de Gemini, en stream                                                                                                                              | Un serveur avec une clé                  |
+| `disabled`             | Comme la fixture                                                                          | Chaque message se termine par `error { code: "llm.disabled" }`                                                                                               | Un serveur qui ne fait tourner aucun LLM |
 
 `LLM_API_KEY` est obligatoire avec `gemini`, et l'api refuse de démarrer sans elle. `LLM_MODEL` est
 l'id du modèle Gemini ; **vide veut dire `gemini-3.6-flash`** (`DEFAULT_GEMINI_MODEL`). Le provider et le
@@ -365,8 +365,10 @@ un id d'utilisateur.
 
 **Une clé gratuite, décidé le 2026-11-20 (#204).** Vérifié le 2026-08-22 : l'offre gratuite de Gemini permet environ
 30 requêtes par minute et 1 500 par jour par clé. En pratique, la clé a refusé des appels après moins de 10
-en deux minutes, c'est pourquoi `LLM_DISCUSSION_GLOBAL_PER_MINUTE` vaut 5 par défaut (Google AI Studio
-affiche le quota actuel). Sur l'offre gratuite, **Google peut utiliser les prompts et les réponses pour
+en deux minutes. `LLM_DISCUSSION_GLOBAL_PER_MINUTE` vaut 10 par défaut, ce qui demande un quota d'au moins
+12 par minute (Google AI Studio affiche le quota actuel). S'il affiche environ 5, mets la limite globale
+à 5 et `LLM_DISCUSSION_USER_PER_MINUTE` à 3.
+Sur l'offre gratuite, **Google peut utiliser les prompts et les réponses pour
 l'entraînement et la relecture humaine** ; les offres payantes ne sont pas utilisées pour l'entraînement. La Privacy Policy (politique de confidentialité) le dit
 (`/privacy`, section 4), et c'est un critère de rejet en soi. Passer à une clé payante,
 quelques dizaines d'euros pour tout le projet à notre volume, est donc un changement de politique : la section 4
@@ -375,7 +377,7 @@ en en, fr et de, et son `lastUpdated`, dans la même pull request que la clé.
 ### Deux formes d'appel
 
 La sortie structurée et le streaming tirent dans des directions opposées : on ne peut pas valider du JSON tant qu'il
-n'est pas complet. L'interface règle ça avec deux méthodes plutôt qu'à chaque endroit qui appelle. Tiré de
+n'est pas complet. L'interface règle ça avec deux de ses méthodes plutôt qu'à chaque endroit qui appelle. Tiré de
 [apps/api/src/llm/llm.provider.ts](../../apps/api/src/llm/llm.provider.ts), sans ses commentaires :
 
 ```ts
@@ -391,6 +393,10 @@ export interface LlmProvider {
   generateStructured<S extends z.ZodType>(request: StructuredRequest<S>): Promise<z.output<S>>;
 
   streamText(request: StreamRequest): AsyncIterable<string>;
+
+  readonly info: TutorInfo;
+
+  check(): Promise<LlmCheck>;
 }
 ```
 
@@ -439,8 +445,8 @@ sequenceDiagram
 1. `LLM_PROVIDER=fixture` dans la CI et dans chaque test unitaire et e2e. Aucun test ne dépense d'argent.
 2. **Les leçons sont écrites hors ligne**, avec Claude Code sur les abonnements personnels des membres
    ([content/lessons.md](../content/lessons.md) §7). La clé de l'app n'en écrit jamais une.
-3. **Les limites de la discussion**, comptées dans Redis avant tout appel au LLM : par apprenant 2 par minute et 60
-   par jour, et 5 par minute pour tout le monde ensemble, toutes modifiables dans `.env`. Au-dessus d'une limite : 429, avec
+3. **Les limites de la discussion**, comptées dans Redis avant tout appel au LLM : par apprenant 5 par minute et 150
+   par jour, et 10 par minute pour tout le monde ensemble, toutes modifiables dans `.env`. Au-dessus d'une limite : 429, avec
    `retryAfter`.
 4. **Des réponses plafonnées** : 1 000 tokens de sortie, un message de 500 caractères, les 10 derniers tours.
 5. **Des dépenses visibles** : `ft_llm_requests_total`, `ft_llm_tokens_total` et
@@ -456,12 +462,12 @@ test et casserait le §1.2. Leur mécanisme de réutilisation, c'est la banque d
 
 `@nestjs/throttler` est installé et appliqué globalement. Quatre rôles, et seul le premier est évident :
 
-| Où                         | Contre quoi                                                                                                                                                                                            | Comment                                                                                                                                                                                                                                                                                                 |
-| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Endpoints d'auth**       | Le credential stuffing (essai d'identifiants volés) et le brute force du TOTP                                                                                                                          | Par adresse : `LOGIN_LIMIT_PER_MINUTE` (5), `SIGNUP_LIMIT_PER_MINUTE` (20), plus strict que le `RATE_LIMIT_PER_MINUTE` global (100) par compte ou par adresse                                                                                                                                           |
-| **La discussion de leçon** | L'argent, et le quota de la clé partagée                                                                                                                                                               | Ses propres fenêtres Redis, après chaque vérification 404 et 409, donc une requête refusée ne consomme rien : `LLM_DISCUSSION_USER_PER_MINUTE` (2), `LLM_DISCUSSION_USER_PER_DAY` (60), `LLM_DISCUSSION_GLOBAL_PER_MINUTE` (5). Chaque dépassement compte dans `ft_llm_discussion_limited_total{limit}` |
-| **Événements du socket**   | `dm:send`, `dm:read`. **Le guard HTTP ne les couvre pas** : une connexion socket est un seul upgrade HTTP, donc un client peut émettre des milliers d'événements à travers une seule requête autorisée | Le filtre du gateway limite chaque socket à 20 de chaque événement par 10 s, et chacun a un budget par compte : 30 `dm:send` et 100 `dm:read` par minute ([architecture/realtime.md](realtime.md) §3)                                                                                                   |
-| **API publique**           | Le module _exige_ une limitation de débit                                                                                                                                                              | Pas revendiqué ([modules/README.md](../modules/README.md))                                                                                                                                                                                                                                              |
+| Où                         | Contre quoi                                                                                                                                                                                            | Comment                                                                                                                                                                                                                                                                                                   |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Endpoints d'auth**       | Le credential stuffing (essai d'identifiants volés) et le brute force du TOTP                                                                                                                          | Par adresse : `LOGIN_LIMIT_PER_MINUTE` (20), `SIGNUP_LIMIT_PER_MINUTE` (20), plus strict que le `RATE_LIMIT_PER_MINUTE` global (100) par compte ou par adresse                                                                                                                                            |
+| **La discussion de leçon** | L'argent, et le quota de la clé partagée                                                                                                                                                               | Ses propres fenêtres Redis, après chaque vérification 404 et 409, donc une requête refusée ne consomme rien : `LLM_DISCUSSION_USER_PER_MINUTE` (5), `LLM_DISCUSSION_USER_PER_DAY` (150), `LLM_DISCUSSION_GLOBAL_PER_MINUTE` (10). Chaque dépassement compte dans `ft_llm_discussion_limited_total{limit}` |
+| **Événements du socket**   | `dm:send`, `dm:read`. **Le guard HTTP ne les couvre pas** : une connexion socket est un seul upgrade HTTP, donc un client peut émettre des milliers d'événements à travers une seule requête autorisée | Le filtre du gateway limite chaque socket à 20 de chaque événement par 10 s, et chacun a un budget par compte : 30 `dm:send` et 100 `dm:read` par minute ([architecture/realtime.md](realtime.md) §3)                                                                                                     |
+| **API publique**           | Le module _exige_ une limitation de débit                                                                                                                                                              | Pas revendiqué ([modules/README.md](../modules/README.md))                                                                                                                                                                                                                                                |
 
 Chaque limite est lue une fois au démarrage ; tout ce qui n'est pas un nombre entier arrête l'api (les limites HTTP refusent aussi 0).
 

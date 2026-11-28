@@ -306,7 +306,7 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-  A["POST /api/auth/2fa/enable avec un code"] --> TH{"Plus de 5 essais par minute depuis cette adresse ?"}
+  A["POST /api/auth/2fa/enable avec un code"] --> TH{"Plus de 20 essais par minute depuis cette adresse ?"}
   TH -->|"oui"| E429["429 server.rateLimited"]
   TH -->|"non"| EN{"2FA déjà activée ?"}
   EN -->|"oui"| E409a["409 twoFactor.alreadyEnabled"]
@@ -473,7 +473,7 @@ R : Elle est dans le paquet partagé. Les deux côtés ont exactement les mêmes
 
 **Q : Un intrus peut-il deviner des codes sur « Activer » ?**
 
-R : La route est limitée à 5 essais par minute par adresse IP, puis 429. Et si la 2FA est activée, elle répond 409 sans même regarder le code.
+R : La route est limitée à 20 essais par minute par adresse IP (`LOGIN_LIMIT_PER_MINUTE`), puis 429. Et si la 2FA est activée, elle répond 409 sans même regarder le code.
 
 **Q : Comment as-tu testé les courses ?**
 

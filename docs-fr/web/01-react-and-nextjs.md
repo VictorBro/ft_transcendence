@@ -72,16 +72,17 @@ C'est le vrai arbre de la page de profil d'un utilisateur, [users/[id]/page.tsx]
 Un component est une fonction qui renvoie du **JSX**. Le JSX ressemble à du HTML, mais il vit dans du JavaScript. Un outil de build le transforme en simples appels de fonction. Voici la page 404, [not-found.tsx](../../apps/web/app/[locale]/not-found.tsx) :
 
 ```tsx
-export default function LocaleNotFound() {
-  const t = useTranslations('NotFoundPage');
+export default async function LocaleNotFound() {
+  const t = await getTranslations('NotFoundPage');
+  const home = (await currentUser()) === null ? '/' : '/learn';
 
   return (
-    <Shell brand={<Wordmark />} footer={<LegalFooter />}>
+    <Shell brand={<Wordmark href={home} />} footer={<LegalFooter />}>
       <div className="flex flex-col items-center gap-4 py-24 text-center">
         <h1 className="text-3xl font-semibold tracking-tight">{t('heading')}</h1>
         <p className="max-w-md text-slate-400">{t('intro')}</p>
         <Link
-          href="/"
+          href={home}
           className="mt-2 rounded-full bg-indigo-700 px-6 py-2 text-sm font-semibold text-white transition-colors hover:bg-indigo-800"
         >
           {t('goHome')}
@@ -91,6 +92,10 @@ export default function LocaleNotFound() {
   );
 }
 ```
+
+Il est `async` parce qu'il lit la session avant de dessiner : les liens d'un lecteur connecté
+mènent à `/learn`, ceux d'un visiteur à `/`. Les components async et `getTranslations` sont
+expliqués dans la section 3.
 
 Les règles du JSX à connaître :
 
@@ -128,9 +133,15 @@ export function Shell({ brand, nav, fill = false, footer, children }: ShellProps
 Et un parent qui l'utilise, [(main)/layout.tsx](<../../apps/web/app/[locale]/(main)/layout.tsx>) :
 
 ```tsx
-export default function MainLayout({ children }: { children: ReactNode }) {
+export default async function MainLayout({ children }: { children: ReactNode }) {
+  const user = await currentUser();
+
   return (
-    <Shell brand={<Wordmark />} nav={<HeaderNav />} footer={<LegalFooter />}>
+    <Shell
+      brand={<Wordmark href={user === null ? '/' : '/learn'} />}
+      nav={<HeaderNav />}
+      footer={<LegalFooter />}
+    >
       {children}
     </Shell>
   );
@@ -139,7 +150,8 @@ export default function MainLayout({ children }: { children: ReactNode }) {
 
 À remarquer :
 
-- Une prop peut être une chaîne, un nombre, une fonction, ou même du JSX (`brand={<Wordmark />}`). `ReactNode` est le type TypeScript pour « tout ce que React peut dessiner ».
+- Une prop peut être une chaîne, un nombre, une fonction, ou même du JSX (`brand={<Wordmark ... />}`). `ReactNode` est le type TypeScript pour « tout ce que React peut dessiner ».
+- `await currentUser()` lit la session sur le serveur (section 3). La valeur de `href` en dépend : `/learn` pour un utilisateur connecté, `/` pour un visiteur.
 - `children` est une prop spéciale : tout ce que tu mets _entre_ la balise ouvrante et la balise fermante.
 - `fill = false` est une valeur par défaut. `nav?` veut dire que la prop est optionnelle.
 - L'interface `ShellProps` est la façon dont TypeScript type les props (plus de détails dans la section 5).
@@ -254,24 +266,24 @@ Un effect peut renvoyer une fonction de **cleanup** (nettoyage). React l'appelle
 
 Une recherche dans `apps/web` (`app`, `components`, `lib`) trouve ces hooks. Chaque ligne dit à quoi il sert et donne un vrai endroit où il est utilisé.
 
-| Hook                   | Vient de         | Ce qu'il fait                                                                                    | Vrai exemple                                                                                                           |
-| ---------------------- | ---------------- | ------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------- |
-| `useState`             | react            | Mémoire du component qui déclenche un re-rendu                                                   | `pending` dans [log-out-button.tsx](../../apps/web/components/log-out-button.tsx)                                      |
-| `useEffect`            | react            | Lancer des effets de bord après le rendu, avec cleanup                                           | [time-zone-sync.tsx](../../apps/web/components/time-zone-sync.tsx)                                                     |
-| `useRef`               | react            | Mémoire qui ne déclenche **pas** de re-rendu ; peut aussi tenir un élément du DOM                | `inFlight`, `rejected` dans time-zone-sync ; `wasAway` dans [refresh-on.tsx](../../apps/web/components/refresh-on.tsx) |
-| `useId`                | react            | Un id unique, le même sur le serveur et dans le navigateur                                       | la paire label/input dans [form.tsx](../../apps/web/components/form.tsx)                                               |
-| `useMemo`              | react            | Retenir une valeur calculée jusqu'à ce que ses deps changent                                     | `keep` dans [player.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/play/player.tsx>)          |
-| `useCallback`          | react            | Retenir une fonction jusqu'à ce que ses deps changent                                            | `show` et `hold` dans player.tsx                                                                                       |
-| `useTransition`        | react            | Marquer une mise à jour comme « pas urgente » et obtenir un drapeau `pending`                    | [friend-search.tsx](<../../apps/web/app/[locale]/(main)/friends/friend-search.tsx>)                                    |
-| `useLayoutEffect`      | react            | Comme `useEffect`, mais tourne avant que le navigateur dessine                                   | garder la position du scroll dans [chat-thread.tsx](<../../apps/web/app/[locale]/(messages)/chat/chat-thread.tsx>)     |
-| `useSyncExternalStore` | react            | Lire une valeur qui vit hors de React et refaire le rendu quand elle change                      | état du socket, compteurs de non-lus dans [tab-socket.ts](../../apps/web/components/tab-socket.ts)                     |
-| `useEffectEvent`       | react            | Une fonction qu'un effect peut appeler, qui voit toujours les dernières props, sans être une dep | `zero` dans exam-timer.tsx                                                                                             |
+| Hook                   | Vient de                            | Ce qu'il fait                                                                                    | Vrai exemple                                                                                                           |
+| ---------------------- | ----------------------------------- | ------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------- |
+| `useState`             | react                               | Mémoire du component qui déclenche un re-rendu                                                   | `pending` dans [log-out-button.tsx](../../apps/web/components/log-out-button.tsx)                                      |
+| `useEffect`            | react                               | Lancer des effets de bord après le rendu, avec cleanup                                           | [time-zone-sync.tsx](../../apps/web/components/time-zone-sync.tsx)                                                     |
+| `useRef`               | react                               | Mémoire qui ne déclenche **pas** de re-rendu ; peut aussi tenir un élément du DOM                | `inFlight`, `rejected` dans time-zone-sync ; `wasAway` dans [refresh-on.tsx](../../apps/web/components/refresh-on.tsx) |
+| `useId`                | react                               | Un id unique, le même sur le serveur et dans le navigateur                                       | la paire label/input dans [form.tsx](../../apps/web/components/form.tsx)                                               |
+| `useMemo`              | react                               | Retenir une valeur calculée jusqu'à ce que ses deps changent                                     | `keep` dans [player.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/[id]/play/player.tsx>)          |
+| `useCallback`          | react                               | Retenir une fonction jusqu'à ce que ses deps changent                                            | `show` et `hold` dans player.tsx                                                                                       |
+| `useTransition`        | react                               | Marquer une mise à jour comme « pas urgente » et obtenir un drapeau `pending`                    | [friend-search.tsx](<../../apps/web/app/[locale]/(main)/friends/friend-search.tsx>)                                    |
+| `useLayoutEffect`      | react                               | Comme `useEffect`, mais tourne avant que le navigateur dessine                                   | garder la position du scroll dans [chat-thread.tsx](<../../apps/web/app/[locale]/(messages)/chat/chat-thread.tsx>)     |
+| `useSyncExternalStore` | react                               | Lire une valeur qui vit hors de React et refaire le rendu quand elle change                      | état du socket, compteurs de non-lus dans [tab-socket.ts](../../apps/web/components/tab-socket.ts)                     |
+| `useEffectEvent`       | react                               | Une fonction qu'un effect peut appeler, qui voit toujours les dernières props, sans être une dep | `zero` dans exam-timer.tsx                                                                                             |
 | `useRouter`            | next-intl (via `@/i18n/navigation`) | Aller sur une autre page ou rafraîchir les données du serveur depuis le code                     | `router.replace('/')` dans log-out-button.tsx                                                                          |
 | `usePathname`          | next-intl (via `@/i18n/navigation`) | Le chemin actuel de l'URL (sans la locale)                                                       | déclencheur dans time-zone-sync.tsx                                                                                    |
-| `useSearchParams`      | next/navigation  | Lire la partie `?a=b` de l'URL                                                                   | [live-form.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/live-form.tsx>)                          |
-| `useTranslations`      | next-intl        | Obtenir la fonction `t()` pour une partie du catalogue de textes                                 | presque tous les components                                                                                            |
-| `useLocale`            | next-intl        | La langue actuelle (`en`, `fr`, `de`)                                                            | [language-switcher.tsx](../../apps/web/components/language-switcher.tsx)                                               |
-| `useFormatter` | next-intl | Formater les dates et les nombres dans la langue actuelle | l'heure des messages dans [chat-thread.tsx](<../../apps/web/app/[locale]/(messages)/chat/chat-thread.tsx>) |
+| `useSearchParams`      | next/navigation                     | Lire la partie `?a=b` de l'URL                                                                   | [live-form.tsx](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/live-form.tsx>)                          |
+| `useTranslations`      | next-intl                           | Obtenir la fonction `t()` pour une partie du catalogue de textes                                 | presque tous les components                                                                                            |
+| `useLocale`            | next-intl                           | La langue actuelle (`en`, `fr`, `de`)                                                            | [language-switcher.tsx](../../apps/web/components/language-switcher.tsx)                                               |
+| `useFormatter`         | next-intl                           | Formater les dates et les nombres dans la langue actuelle                                        | l'heure des messages dans [chat-thread.tsx](<../../apps/web/app/[locale]/(messages)/chat/chat-thread.tsx>)             |
 
 `useActionState`, `useOptimistic`, `useFormStatus` et `use()` ne sont **pas** utilisés dans cette app.
 
@@ -495,7 +507,7 @@ C'est l'idée la plus importante du Next.js moderne. Chaque component tourne dan
 - Un **Server Component** tourne seulement sur le serveur (le container Next.js). Il peut être `async`, peut faire `await` sur des données, peut lire les cookies et les variables d'environnement secrètes. Son code n'est **jamais** envoyé au navigateur. Il ne peut pas utiliser de state, d'effects ou de gestionnaires d'événements, parce qu'il n'y a pas de navigateur là-bas, ni d'utilisateur pour cliquer.
 - Un **Client Component** est marqué avec `'use client'` en haut de son fichier. Son rendu est fait une fois sur le serveur aussi (pour produire le premier HTML), puis son code est envoyé au navigateur, où il devient interactif : state, effects, `onClick`, APIs du navigateur.
 
-**Par défaut, chaque component est un Server Component.** Tu ajoutes `'use client'` seulement là où tu as besoin d'interactivité. 57 fichiers de l'app l'ont (formulaires, boutons, le socket, le lecteur de leçon). Les pages et les layouts sont surtout des Server Components.
+**Par défaut, chaque component est un Server Component.** Tu ajoutes `'use client'` seulement là où tu as besoin d'interactivité. 58 fichiers de l'app l'ont (formulaires, boutons, le socket, le lecteur de leçon). Les pages et les layouts sont surtout des Server Components.
 
 Analogie : un Server Component est une photo imprimée au magasin et qu'on te donne. Un Client Component est une petite machine qu'on te donne avec son mode d'emploi (le JavaScript), pour qu'elle puisse encore bouger dans tes mains.
 

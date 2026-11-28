@@ -13,7 +13,7 @@ import { clientGet, type ApiResult } from '@/lib/api-client';
 import { beginTwoFactorSetup, disableTwoFactor, enableTwoFactor } from '@/lib/auth-client';
 
 import { useErrorMessage } from '@/lib/error-message';
-import { Field, FormError, SubmitButton } from '@/components/form';
+import { Field, FormError, PasswordField, SubmitButton } from '@/components/form';
 
 type Setup = { secret: string; otpauthUri: string; qrDataUrl: string };
 
@@ -195,10 +195,9 @@ export function TwoFactorPanel() {
         <p role="status" className="text-sm text-green-400">
           {t('enabledStatus', { count: status.recoveryCodesRemaining })}
         </p>
-        <Field
+        <PasswordField
           label={t('confirmPasswordToTurnOff')}
           name="password"
-          type="password"
           autoComplete="current-password"
           required
         />

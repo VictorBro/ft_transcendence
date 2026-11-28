@@ -9,10 +9,16 @@ import {
 } from '../support/console-guard';
 import { expectFitsTheScreen } from '../support/layout';
 import { liveConnection } from '../support/live';
+import { openMenu } from '../support/menu';
 import { expect, test } from '../support/session';
 
 const region = (page: Page, name: string) => page.getByRole('region', { name });
 const row = (scope: Locator, name: string) => scope.getByRole('listitem').filter({ hasText: name });
+/** The account links fold behind this button, which carries the counts. */
+const menuButton = (page: Page) => page.getByRole('button', { name: /^Menu/ });
+/** The account menu's link, named with its count while there is one. */
+const friendsLink = (page: Page) =>
+  page.getByRole('navigation', { name: 'Account' }).getByRole('link', { name: /^Friends/ });
 
 /** Neither account here has an avatar: see isRemovedAvatar. */
 const ours = (violations: ConsoleViolation[][]) =>
@@ -42,18 +48,41 @@ test('a request shows up live, is accepted, and both lists follow', async ({
     .click();
   await expect(region(asker, 'Requests sent')).toContainText(account.displayName);
 
-  // No reload on this side: the request arrives over the socket.
+  // No reload on this side: the request arrives over the socket, and so does its count.
   const received = row(region(friend, 'Requests received'), onboardedAccount.displayName);
   await expect(received).toBeVisible();
+  await expect(menuButton(friend)).toHaveAccessibleName('Menu 1 friend request');
+  // A request sent is not one waiting on you.
+  await expect(menuButton(asker)).toHaveAccessibleName('Menu');
 
-  // Measure a request row with the longest name here.
+  // The server renders the count too, so a fresh load has it before its socket.
+  expect(await (await friend.request.get('/en/profile')).text()).toContain('1 friend request');
+
+  // Another tab of the friend's, on a page with no RefreshOn: only the socket
+  // can take its count down once the request is answered.
+  const other = await friend.context().newPage();
+  violations.push(watchConsole(other));
+  const otherLive = liveConnection(other);
+  await other.goto('/en/profile');
+  await otherLive;
+  await expect(menuButton(other)).toHaveAccessibleName('Menu 1 friend request');
+
+  // Measure a request row with the longest name here, and the button with its count.
   await friend.setViewportSize({ width: 360, height: 800 });
   await expectFitsTheScreen(friend, '/en/friends');
+  await openMenu(friend);
+  await expect(friendsLink(friend)).toHaveAccessibleName('Friends 1 friend request');
+  await expectFitsTheScreen(friend, '/en/friends (menu open)');
+  await friend.keyboard.press('Escape');
+  await expect(menuButton(friend)).toHaveAttribute('aria-expanded', 'false');
 
   await received.getByRole('button', { name: 'Accept' }).click();
 
   await expect(region(friend, 'Your friends')).toContainText(onboardedAccount.displayName);
   await expect(region(asker, 'Your friends')).toContainText(account.displayName);
+  // Accepted: nothing waits any more, in either tab.
+  await expect(menuButton(friend)).toHaveAccessibleName('Menu');
+  await expect(menuButton(other)).toHaveAccessibleName('Menu');
 
   await row(region(asker, 'Your friends'), account.displayName)
     .getByRole('button', { name: 'Remove' })
@@ -65,7 +94,7 @@ test('a request shows up live, is accepted, and both lists follow', async ({
   await expect(region(asker, 'Your friends')).not.toContainText(account.displayName);
   await expect(region(friend, 'Your friends')).not.toContainText(onboardedAccount.displayName);
 
-  await Promise.all([settle(asker), settle(friend)]);
+  await Promise.all([settle(asker), settle(friend), settle(other)]);
   expect(ours(violations), `the pages logged:\n${formatViolations(ours(violations))}\n`).toEqual(
     [],
   );

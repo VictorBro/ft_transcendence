@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 
 import { usePathname } from '@/i18n/navigation';
 import { useScrollLock } from './scroll-lock';
-import { UnreadTotalBadge } from './unread-badge';
+import { MenuBadge } from './unread-badge';
 
 /**
  * The signed-in header's switchers and links, folded behind one button so the
@@ -22,7 +22,14 @@ import { UnreadTotalBadge } from './unread-badge';
  * For the same reason the panel takes no transform or filter: either would make
  * it the containing block of that fixed pill.
  */
-export function HeaderMenu({ children }: { children: ReactNode }) {
+export function HeaderMenu({
+  children,
+  requests,
+}: {
+  children: ReactNode;
+  /** Friend requests waiting, as the server rendered them. */
+  requests: number | undefined;
+}) {
   const t = useTranslations('SessionNav');
   const pathname = usePathname();
   const panelId = useId();
@@ -81,7 +88,7 @@ export function HeaderMenu({ children }: { children: ReactNode }) {
           {open ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 7h16M4 12h16M4 17h16" />}
         </svg>
         <span className="absolute -top-2 -right-2 flex">
-          <UnreadTotalBadge />
+          <MenuBadge requests={requests} />
         </span>
       </button>
 

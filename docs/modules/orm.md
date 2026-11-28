@@ -77,10 +77,10 @@ flowchart LR
 ```
 
 - [prisma.service.ts](../../apps/api/src/prisma/prisma.service.ts) is the only place the client
-  is created. It refuses to start if `DATABASE_URL` is empty. It calls `$connect()` when the api
-  starts, but with `@prisma/adapter-pg` that only builds a `pg.Pool`, which opens no connection
-  before its first query. So a wrong address is only seen on the first query, and `/api/health`
-  then reports `database` as `down` (#221, fixed by #222).
+  is created. It refuses to start if `DATABASE_URL` is empty. In `onModuleInit` it calls
+  `$connect()` and then runs `SELECT 1`. With `@prisma/adapter-pg`, `$connect()` only builds a
+  `pg.Pool`, which opens no connection before its first query, so the `SELECT 1` is what reaches
+  Postgres. A wrong address therefore stops the api before it listens (#221, fixed by #222).
 - Prisma 7's `prisma-client` generator makes a client with no query engine of its own. It needs an
   adapter to reach the database, so the service passes `new PrismaPg({ connectionString })`.
 - [prisma.module.ts](../../apps/api/src/prisma/prisma.module.ts) is marked `@Global()`, so every
@@ -168,7 +168,8 @@ The stack must be running: `make run` starts it, and `make` (the default target,
    example `20261116224104_add_messages`. Explain that Prisma wrote it from the schema.
 3. **One client, one place.** Open
    [apps/api/src/prisma/prisma.service.ts](../../apps/api/src/prisma/prisma.service.ts): the
-   `PrismaPg` adapter and `$connect()` in `onModuleInit` (it opens no connection yet, see #221).
+   `PrismaPg` adapter, and `$connect()` then `SELECT 1` in `onModuleInit` (the query is what
+   reaches Postgres, see #221).
 4. **A typed query.** Open [apps/api/src/auth/auth.service.ts](../../apps/api/src/auth/auth.service.ts),
    `signUp`: `this.prisma.user.create(...)`, and the `P2002` catch.
 5. **See the data.** Run `make studio` and open `http://127.0.0.1:5555`. This is Prisma Studio, a
@@ -189,7 +190,7 @@ Press Ctrl+C to stop Studio.
 
 | Test | What it checks |
 | --- | --- |
-| [prisma.service.spec.ts](../../apps/api/src/prisma/prisma.service.spec.ts) | The service calls `$connect()` on start and `$disconnect()` on shutdown; `ping` runs one query and reports the latency; a failing `ping` rejects, so the caller decides what it means. |
+| [prisma.service.spec.ts](../../apps/api/src/prisma/prisma.service.spec.ts) | The service calls `$connect()` and runs one query on start, and `$disconnect()` on shutdown; "fails the start when DATABASE_URL points at nothing" uses a real pool against a closed port, with no mock; `ping` runs one query and reports the latency; a failing `ping` rejects, so the caller decides what it means. |
 | [health.service.spec.ts](../../apps/api/src/health/health.service.spec.ts) | The health report says `down` without throwing when the database probe fails, and `degraded` when it is slow. |
 | [test/auth.e2e-spec.ts](../../apps/api/test/auth.e2e-spec.ts) | "refuses a duplicate email with 409": the unique key on `User.email`. |
 | [test/seed.e2e-spec.ts](../../apps/api/test/seed.e2e-spec.ts) | The seed upserts: "running it twice leaves the same row count and id (idempotent upsert)", "refuses to delete a lesson that has a result (Restrict)", "fails on an invalid lesson, names its id and the issue, and writes nothing". |

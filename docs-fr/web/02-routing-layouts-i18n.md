@@ -350,14 +350,25 @@ voit les éléments sur une seule ligne à la place. Le chapitre 3 les explique.
 du compte :
 
 ```tsx
-export default function MainLayout({ children }: { children: ReactNode }) {
+export default async function MainLayout({ children }: { children: ReactNode }) {
+  const user = await currentUser();
+
   return (
-    <Shell brand={<Wordmark />} nav={<HeaderNav />} footer={<LegalFooter />}>
+    <Shell
+      brand={<Wordmark href={user === null ? '/' : '/learn'} />}
+      nav={<HeaderNav />}
+      footer={<LegalFooter />}
+    >
       {children}
     </Shell>
   );
 }
 ```
+
+Le wordmark suit la session, comme dans les autres cadres (#224) : un utilisateur connecté revient à
+`/learn`, un visiteur à `/`. Le commentaire dit que ça ne coûte rien : `HeaderNav` lit déjà la
+session, et `loadSession` est mis en cache pour chaque rendu, donc ça n'ajoute aucune lecture et ne
+rend dynamique aucune page qui ne l'était pas déjà.
 
 **[(messages)/layout.tsx](<../../apps/web/app/[locale]/(messages)/layout.tsx>)** — le même, mais
 avec `fill` et le logo qui mène à `/learn`. Le commentaire explique pourquoi il n'a pas de sélecteur de cours :
@@ -463,8 +474,11 @@ passé), parce que c'est justement la lecture de la session qui a échoué.
 Fichiers : [not-found.tsx](../../apps/web/app/[locale]/not-found.tsx),
 [[...rest]/page.tsx](../../apps/web/app/[locale]/[...rest]/page.tsx)
 
-`not-found.tsx` dessine la 404 traduite, avec un lien "Go home" (« Retour à l'accueil ») et le footer juridique. Il n'a pas de
-nav de compte : lire les cookies ferait de chaque 404 un rendu dynamique (non mis en cache).
+`not-found.tsx` dessine la 404 traduite, avec un lien "Go home" (« Retour à l'accueil ») et le footer juridique. Il lit
+la session, donc les deux liens vers l'accueil (le wordmark et "Go home") mènent un utilisateur connecté à `/learn` et
+un visiteur à `/` (#224). Le commentaire dit que ça fait de chaque 404 un rendu dynamique (non mis en cache), exprès :
+un lien vers l'accueil qui met dehors un utilisateur connecté coûte plus cher qu'une 404 statique. Il ne passe
+pas de `nav`, donc la 404 n'a pas de liens de compte.
 
 Mais Next.js n'utilise ce fichier que quand une page _appelle_ `notFound()`. Une URL qui ne correspond à rien
 tomberait sur la 404 par défaut de Next.js, qui est au-dessus de `[locale]`, donc en anglais et
@@ -690,7 +704,7 @@ Fichiers : [en.json](../../apps/web/messages/en.json), [fr.json](../../apps/web/
 [de.json](../../apps/web/messages/de.json)
 
 Chaque fichier est un seul objet JSON. Les clés du premier niveau sont des **namespaces** (espaces de noms) : en général un par component ou
-par page. À l'intérieur, il y a les clés. Les trois fichiers ont les mêmes 37 namespaces et les mêmes clés.
+par page. À l'intérieur, il y a les clés. Les trois fichiers ont les mêmes 38 namespaces et les mêmes clés.
 
 | Namespace                         | Clés                        | Utilisé par                                       |
 | --------------------------------- | --------------------------- | ------------------------------------------------- |
@@ -710,17 +724,18 @@ par page. À l'intérieur, il y a les clés. Les trois fichiers ont les mêmes 3
 | `NotFoundPage`                    | 4                           | `not-found.tsx`                                   |
 | `LoginPage`, `LoginForm`          | 1, 8                        | connexion                                         |
 | `SignUpPage`, `SignUpForm`        | 1, 9                        | inscription                                       |
-| `Form`                            | 1                           | texte partagé des formulaires                     |
+| `Form`                            | 2                           | texte partagé des formulaires                     |
 | `Errors`                          | 19 (18 groupes + `unknown`) | les codes d'erreur de l'API sous forme de phrases |
 | `LogOutButton`                    | 2                           | déconnexion                                       |
 | `Connection`                      | 1                           | la pastille "Reconnecting…" (« Reconnexion… »)    |
 | `LegalArticle`                    | 1                           | confidentialité et conditions                     |
-| `ProfilePage`, `ProfileForm`      | 7, 8                        | profil                                            |
-| `FriendsPage`                     | 24                          | amis                                              |
+| `ProfilePage`, `ProfileForm`      | 9, 8                        | profil                                            |
+| `FriendsPage`                     | 25                          | amis                                              |
 | `UserPage`                        | 4                           | la page d'un autre utilisateur                    |
 | `TwoFactorPage`, `TwoFactorPanel` | 2, 17                       | réglages 2FA                                      |
+| `TutorCard`                       | 10                          | section du tuteur IA de /profile                  |
 | `Placement`                       | 30                          | examen de placement                               |
-| `Lesson`                          | 125                         | lecteur de leçon                                  |
+| `Lesson`                          | 126                         | lecteur de leçon                                  |
 | `Genders`                         | 3                           | genres grammaticaux                               |
 | `LessonKinds`                     | 4                           | grammaire, vocabulaire...                         |
 | `Gamification`                    | 42                          | XP, rangs, succès                                 |

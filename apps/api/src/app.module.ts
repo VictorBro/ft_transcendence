@@ -17,6 +17,7 @@ import { CoursesModule } from './courses/courses.module';
 import { PlacementModule } from './placement/placement.module';
 import { LessonsModule } from './lessons/lessons.module';
 import { MessagesModule } from './messages/messages.module';
+import { TutorModule } from './tutor/tutor.module';
 
 @Module({
   imports: [
@@ -39,6 +40,7 @@ import { MessagesModule } from './messages/messages.module';
     CoursesModule,
     PlacementModule,
     LessonsModule,
+    TutorModule,
     GatewayModule,
     MetricsModule,
   ],

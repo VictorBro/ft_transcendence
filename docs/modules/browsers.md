@@ -68,7 +68,10 @@ failure should not hide whether Chromium and Firefox pass".
 
 **On a developer machine.** In the [Makefile](../../Makefile), `BROWSERS ?= chromium`: `make` and
 `make playwright` run Chromium only, to stay quick. `make playwright-all` runs the three engines, "as
-CI runs it". The devcontainer image has the system libraries of the three browsers
+CI runs it". All run on the fixture tutor: `make`, `make test-e2e` and `make playwright-all` bring the api up
+with `LLM_PROVIDER=fixture` and no key, then back on the provider `.env` names, and `make playwright` refuses an
+api on a real provider unless `E2E_REAL_LLM=1`. The suite takes placement exams, and on a real key their
+question restocks would spend it. The devcontainer image has the system libraries of the three browsers
 ([.devcontainer/Dockerfile](../../.devcontainer/Dockerfile)).
 
 **The console gate on three engines.** Each engine reports things in its own words.
@@ -126,12 +129,14 @@ without sound ([apps/web/components/lesson/kinds/functions.tsx](../../apps/web/c
    `make run`), and before the rest of the demo:
 
    ```bash
-   make playwright BROWSERS="firefox webkit"   # the two additional engines
+   make test-e2e BROWSERS="firefox webkit"     # the two additional engines
    make playwright-all                         # or all three, as CI does
    ```
 
-   Let the run finish before showing anything else in the app. After a green suite, its last step
-   restarts the API ([e2e/tests/restart.spec.ts](../../e2e/tests/restart.spec.ts)), so a page
+   Each command starts the API on the fixture tutor first, and on the provider `.env` names at the end,
+   so the tutor and placement are the fixture's meanwhile. Let the run finish before showing anything
+   else in the app. After a green suite, its last step restarts the API
+   ([e2e/tests/restart.spec.ts](../../e2e/tests/restart.spec.ts)), so a page
    open at that moment loses the API for a few seconds. The terminal lists every test with its engine,
    for example `[firefox] ›`: show the passed ones, and point out the few skipped ones (their
    reasons are in [Limits and choices](#limits-and-choices)). `make report` serves only the last

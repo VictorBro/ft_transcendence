@@ -1,6 +1,8 @@
 import { setTimeout as sleep } from 'node:timers/promises';
 
-import { LlmError, LlmProvider, StreamRequest } from './llm.provider';
+import type { TutorInfo } from '@ft/shared';
+
+import { LlmCheck, LlmError, LlmProvider, StreamRequest } from './llm.provider';
 
 /**
  * The answer streamText always gives, cut in the pieces it sends one by one.
@@ -24,6 +26,8 @@ export const FIXTURE_FAILURES = {
   timeout: '#timeout',
   /** The prompt is refused before any text. */
   blocked: '#blocked',
+  /** The key is over its quota of the day, as Google's 429 says it. */
+  quotaDay: '#quota-day',
 } as const;
 
 /**
@@ -41,6 +45,14 @@ export class FixtureProvider implements LlmProvider {
    * a real one, and a test has the time to cancel it midway.
    */
   constructor(private readonly delayMs = 50) {}
+
+  /** No real model behind it, so no model name. */
+  readonly info: TutorInfo = { provider: 'fixture', model: null };
+
+  /** No key and no network: nothing to check. */
+  async check(): Promise<LlmCheck> {
+    return { status: 'fixture', latencyMs: null, httpStatus: null, retryAt: null };
+  }
 
   /**
    * Always fails: this provider never writes a question.
@@ -81,6 +93,13 @@ export class FixtureProvider implements LlmProvider {
     }
     if (last.includes(FIXTURE_FAILURES.timeout)) {
       throw new LlmError('Fixture timed out', true, 'unreachable');
+    }
+    // What GeminiProvider throws on a 429 for today's quota: back in an hour, here.
+    if (last.includes(FIXTURE_FAILURES.quotaDay)) {
+      throw new LlmError('Fixture is over its quota of the day', false, 'rate_limited', {
+        scope: 'day',
+        retryAfterS: 3600,
+      });
     }
     for (const [index, piece] of FIXTURE_ANSWER.entries()) {
       // Two pieces out, then the connection "drops": the caller has already sent part of the answer.

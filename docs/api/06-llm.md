@@ -7,9 +7,9 @@ In this chapter:
 - What streaming is, and why the tutor answer is streamed
 - [llm.provider.ts](../../apps/api/src/llm/llm.provider.ts): the contract and the error type
 - [llm.factory.ts](../../apps/api/src/llm/llm.factory.ts) and [llm.module.ts](../../apps/api/src/llm/llm.module.ts): how one provider is picked from the `.env` file
-- [gemini.provider.ts](../../apps/api/src/llm/gemini.provider.ts): the real one (HTTP requests, streaming, errors, timeouts, metrics)
+- [gemini.provider.ts](../../apps/api/src/llm/gemini.provider.ts): the real one (HTTP requests, streaming, errors, timeouts, metrics, the key check)
 - [fixture.provider.ts](../../apps/api/src/llm/fixture.provider.ts) and [disabled.provider.ts](../../apps/api/src/llm/disabled.provider.ts): the fake ones, for tests and for a stack with no key
-- Who uses the LLM in the rest of the API
+- Who uses the LLM in the rest of the API, including [src/tutor](../../apps/api/src/tutor/tutor.controller.ts): the routes that test the key
 
 ---
 
@@ -128,7 +128,7 @@ apps/api/src/llm/
 ├── fixture.provider.ts         fake provider: no network (default)
 ├── disabled.provider.ts        fake provider: everything fails
 ├── GEMINI_PROVIDER.md          long French explanation of gemini.provider.ts
-└── *.spec.ts                   unit tests (one per file but llm.provider.ts, two for Gemini)
+└── *.spec.ts                   unit tests (one per file but llm.provider.ts, three for Gemini)
 ```
 
 We read them in the order the app uses them: first the contract, then how the app picks a provider at boot,
@@ -141,16 +141,18 @@ then each provider.
 [llm.provider.ts](../../apps/api/src/llm/llm.provider.ts) holds no logic. It describes the "plug shape" that
 every provider must have. It exports:
 
-| Export              | Kind            | Role                                                        |
-| ------------------- | --------------- | ----------------------------------------------------------- |
-| `LLM_PROVIDER`      | `Symbol` value  | The name (token) other classes use to ask Nest for the provider |
-| `LlmPurpose`        | type            | What a call is for, used in logs and metrics                |
-| `StructuredRequest` | interface       | What we send to get JSON back                               |
-| `LlmMessage`        | interface       | One turn of a conversation                                  |
-| `StreamRequest`     | interface       | What we send to get a streamed text answer                  |
-| `LlmProvider`       | interface       | The contract: two methods                                   |
-| `LlmFailure`        | type            | The fixed list of failure reasons                           |
-| `LlmError`          | class           | The error every provider throws                             |
+| Export              | Kind           | Role                                                                                      |
+| ------------------- | -------------- | ----------------------------------------------------------------------------------------- |
+| `LLM_PROVIDER`      | `Symbol` value | The name (token) other classes use to ask Nest for the provider                           |
+| `LlmPurpose`        | type           | What a call is for, used in logs and metrics                                              |
+| `StructuredRequest` | interface      | What we send to get JSON back                                                             |
+| `LlmMessage`        | interface      | One turn of a conversation                                                                |
+| `StreamRequest`     | interface      | What we send to get a streamed text answer                                                |
+| `LlmCheck`          | type           | What a key check finds: a status, a time, Google's HTTP status, when the quota comes back |
+| `LlmProvider`       | interface      | The contract: three methods and an `info` field                                           |
+| `LlmFailure`        | type           | The fixed list of failure reasons                                                         |
+| `QuotaRefusal`      | interface      | Which quota a 429 hit (the day's or the minute's), and the wait                           |
+| `LlmError`          | class          | The error every provider throws                                                           |
 
 ### The injection token
 
@@ -225,6 +227,10 @@ export interface LlmProvider {
   generateStructured<S extends z.ZodType>(request: StructuredRequest<S>): Promise<z.output<S>>;
 
   streamText(request: StreamRequest): AsyncIterable<string>;
+
+  readonly info: TutorInfo;
+
+  check(): Promise<LlmCheck>;
 }
 ```
 
@@ -233,6 +239,14 @@ export interface LlmProvider {
 - `streamText` returns an `AsyncIterable<string>`: pieces of text, read with `for await`. A failure is thrown
   **from the loop**, maybe after some pieces were already sent. If the caller aborts the signal, the loop ends
   with an `AbortError`, not an `LlmError`: "the caller asked for it, the LLM did not fail".
+- `info` is `{ provider, model }`, for example `{ provider: 'gemini', model: 'gemini-3.6-flash' }`. The model is
+  `null` for the fixture and for `disabled`. It never holds the key, nor any part of it.
+- `check` tests the key and the model with the **smallest real request**: for Gemini, a one-word answer. It
+  spends one request of the key's quota, so a key over its quota reads as such. It never throws: every ending is a
+  status (`ok`, `invalid_key`, `quota`, `quota_day`...), as a health probe's is.
+  `LlmCheck` is `Pick<TutorCheck, 'status' | 'latencyMs' | 'httpStatus' | 'retryAt'>`: the fields of the shared
+  `TutorCheck` schema ([tutor.ts](../../packages/shared/src/schemas/tutor.ts)) that the provider knows.
+  [TutorService](#tutorservice-and-the-two-tutor-routes) adds the rest.
 
 ### `LlmFailure` and `LlmError`
 
@@ -247,6 +261,11 @@ export class LlmError extends Error {
     readonly retryable: boolean,
     /** Why it failed, for the metrics. The message says it to a person. */
     readonly reason: LlmFailure,
+    /**
+     * rate_limited only: which quota refused it. The reason stays rate_limited for
+     * both quotas, so the metrics count them as one; the error code tells them apart.
+     */
+    readonly quota?: QuotaRefusal,
   ) {
     super(message);
     this.name = 'LlmError';
@@ -254,26 +273,30 @@ export class LlmError extends Error {
 }
 ```
 
-Every provider failure is an `LlmError` with three things:
+Every provider failure is an `LlmError` with three things, and a fourth on a 429:
 
-| Field       | For whom         | Example                                  |
-| ----------- | ---------------- | ---------------------------------------- |
-| `message`   | a person reading logs | `Gemini 429: {"error": ...}`        |
-| `retryable` | the caller       | `true`: a second try may work            |
-| `reason`    | the metrics, the error codes | `rate_limited`               |
+| Field       | For whom                     | Example                                |
+| ----------- | ---------------------------- | -------------------------------------- |
+| `message`   | a person reading logs        | `Gemini 429: {"error": ...}`           |
+| `retryable` | the caller                   | `true`: a second try may work          |
+| `reason`    | the metrics, the error codes | `rate_limited`                         |
+| `quota`     | the error codes              | `{ scope: 'day', retryAfterS: 48933 }` |
+
+`quota` is a `QuotaRefusal`: `scope` is `'day'` for the quota of the day, which comes back tomorrow, or
+`'minute'`; `retryAfterS` is the wait Google gave, in seconds, or `null`. Only a `rate_limited` error has one.
 
 `reason` is a fixed list, never free text, because the metrics count failures by it: free text would make a new
 metric series for each message. The meaning of each reason:
 
-| Reason         | Meaning                                                                    |
-| -------------- | -------------------------------------------------------------------------- |
-| `unreachable`  | No HTTP answer at all (network, DNS, timeout), or the connection dropped midway |
-| `rate_limited` | HTTP 429: too many requests for our key                                    |
-| `http_error`   | Any other status outside 2xx                                               |
-| `blocked`      | Google's safety filters refused the prompt or stopped the reply            |
-| `incomplete`   | The reply was cut short for another reason                                 |
-| `invalid`      | The reply is not JSON, or fails the schema                                 |
-| `disabled`     | No real LLM behind the provider (fixture questions, `LLM_PROVIDER=disabled`) |
+| Reason         | Meaning                                                                              |
+| -------------- | ------------------------------------------------------------------------------------ |
+| `unreachable`  | No HTTP answer at all (network, DNS, timeout), or the connection dropped midway      |
+| `rate_limited` | HTTP 429: our key is over its quota of the minute or of the day (`quota` says which) |
+| `http_error`   | Any other status outside 2xx                                                         |
+| `blocked`      | Google's safety filters refused the prompt or stopped the reply                      |
+| `incomplete`   | The reply was cut short for another reason                                           |
+| `invalid`      | The reply is not JSON, or fails the schema                                           |
+| `disabled`     | No real LLM behind the provider (fixture questions, `LLM_PROVIDER=disabled`)         |
 
 `LlmError` is a **class**, not an interface, so it exists at runtime and callers can test
 `error instanceof LlmError`.
@@ -396,10 +419,12 @@ it line by line, with a history of the changes since PR #69. Here is the tour.
 The file has three parts:
 
 1. **At the top**: constants and the `GeminiReply` interface (the part of Google's JSON we read).
-2. **The class**: two public methods (`generateStructured`, `streamText`) and three private ones (`send`, `stream`,
-   `record`).
-3. **At the bottom**: small private helper functions (`requestBody`, `streamBody`, `unreachable`, `isRetryable`,
-   `replyText`, `answerText`, `parseReply`, `parseJson`, `sseData`, `eventData`).
+2. **The class**: three public methods (`generateStructured`, `streamText`, `check`), the `info` field, and three
+   private methods (`send`, `stream`, `record`).
+3. **At the bottom**: small helper functions (`requestBody`, `streamBody`, `unreachable`, `isRetryable`,
+   `httpError`, `quotaRefusal`, `checkVerdict`, `checkStatus`, `isGeminiReply`, `replyText`, `answerText`,
+   `parseReply`, `parseJson`, `sseData`, `eventData`). Only `quotaRefusal` is exported, so its spec can feed it
+   Google's bodies.
 
 ### The constants
 
@@ -409,12 +434,34 @@ const API = 'https://generativelanguage.googleapis.com/v1beta/models';
 // the "_" only makes the number easier to read. A free key waited 73 to 83 s for
 // its first word on 2026-11-18, where 2 to 40 s was usual before.
 const TIMEOUT_MS = 90_000;
+// How long a key check waits. It asks for one word, which usually comes in a second or
+// two, but a busy free key can take far longer (see TIMEOUT_MS). 30 s covers a slow day,
+// and the button never spins for the 90 s of a tutor's answer.
+const CHECK_TIMEOUT_MS = 30_000;
+// What a key check sends: the smallest real generation, so Google applies the same key,
+// model and quotas as for a tutor's answer. 16 tokens leave room for "OK". The thinking
+// setting is the tutor's (streamBody): a model that refuses to turn its thinking off
+// fails every tutor answer, so the check must fail on it too.
+const CHECK_BODY = {
+  contents: [{ role: 'user', parts: [{ text: 'Reply with the word OK.' }] }],
+  generationConfig: { maxOutputTokens: 16, thinkingConfig: { thinkingBudget: 0 } },
+};
+// The longest wait quotaRefusal accepts from a 429: two days, in seconds. Google's longest
+// quota is the day's, so a longer retryDelay is a broken body, and it would push retryAt
+// past the dates JavaScript can write.
+const MAX_RETRY_AFTER_S = 2 * 24 * 60 * 60;
 ```
 
-- `API` is the base address. Each call adds `/<model>:generateContent` (one answer) or
+- `API` is the base address. Each call adds `/<model>:generateContent` (one answer, and the key check) or
   `/<model>:streamGenerateContent?alt=sse` (streamed answer).
 - `TIMEOUT_MS`: we give up after 90 seconds. The comment gives the real reason for this big number: a free key
   was measured waiting more than 70 seconds.
+- `CHECK_TIMEOUT_MS`: the key check gives up after 30 seconds. One word is quick, but a person waits on the button.
+- `CHECK_BODY`: the one-word request of the key check. Its `thinkingConfig` is the tutor's (`thinkingBudget: 0`,
+  see `streamBody`): a model that refuses to turn its thinking off fails every tutor answer, and the check must
+  say so.
+- `MAX_RETRY_AFTER_S`: the longest wait `quotaRefusal` takes from a 429, two days. A longer one is a broken body,
+  and would give a `retryAt` past the last date JavaScript can write.
 - `OUTCOMES`, `TOKEN_TYPES`, `PURPOSES`: the lists of metric labels (see "The constructor: metrics start at zero" and "`record`" below).
 - `FILTERED`: the finish reasons that mean Google's filters stopped the answer (`SAFETY`, `PROHIBITED_CONTENT`,
   `BLOCKLIST`, `SPII`, `RECITATION`).
@@ -455,6 +502,7 @@ Google's envelope, one for the model's text.
 
 ```ts
 constructor(private readonly options: { apiKey: string; model: string }) {
+  this.info = { provider: 'gemini', model: options.model };
   // Every purpose, outcome and token type starts at 0. A counter that appears at 1
   // hides its first call from Prometheus' rate(), so the first failures would not
   // count, nor the first call's tokens.
@@ -470,7 +518,8 @@ constructor(private readonly options: { apiKey: string; model: string }) {
 ```
 
 `private readonly options` in the parameter list declares a field and fills it in one step. The class never reads
-the `.env` itself, so a test can build it with `new GeminiProvider({ apiKey: 'test', model: 'x' })`.
+the `.env` itself, so a test can build it with `new GeminiProvider({ apiKey: 'test', model: 'x' })`. `info` takes
+the model from the options, and leaves the key out.
 
 The loops create every metric series with the value 0. Prometheus (chapter 3) computes rates from the
 **difference** between two readings; a counter that appears directly at 1 has no "before", so its first call would
@@ -513,13 +562,7 @@ const response = await fetch(`${API}/${model}:generateContent`, {
   signal: AbortSignal.timeout(TIMEOUT_MS),
 }).catch(unreachable);
 const body = await response.text().catch(unreachable);
-if (!response.ok) {
-  throw new LlmError(
-    `Gemini ${response.status}: ${body}`,
-    isRetryable(response.status),
-    response.status === 429 ? 'rate_limited' : 'http_error',
-  );
-}
+if (!response.ok) throw httpError(response.status, body);
 
 const reply = parseJson(body, 'response') as GeminiReply;
 // Counted before the reply is checked: one that fails the check was still billed.
@@ -533,7 +576,7 @@ return parseReply(request.schema, replyText(reply));
    still an answer. `.catch(unreachable)` turns a rejection into a retryable `LlmError`.
 3. The body is read as **text**, not `response.json()`, so an error page can still be put in the message. The
    timeout also covers this step, so it has the same `.catch(unreachable)`.
-4. A status outside 200–299 throws. `isRetryable` decides if a second try makes sense.
+4. A status outside 200–299 throws the error `httpError` builds (see "Errors: retry or not?" below).
 5. Google's JSON is parsed, tokens are logged and counted (`record`), then the model's text is extracted
    (`replyText`) and checked against the schema (`parseReply`).
 
@@ -543,7 +586,7 @@ flowchart TD
     A --> B["response.text()"]
     B -->|"connection dropped"| U
     B --> C{"response.ok?"}
-    C -->|"no"| H["LlmError rate_limited / http_error<br/>retryable if 408, 429, 5xx"]
+    C -->|"no"| H["httpError: LlmError rate_limited / http_error<br/>retryable if 408, 5xx, 429 but the day's"]
     C -->|"yes"| D["parseJson(body)"]
     D -->|"not JSON"| I["LlmError invalid, retryable"]
     D --> E["record tokens + time"]
@@ -588,6 +631,54 @@ function isRetryable(status: number): boolean {
 408 (timeout), 429 (too many requests) and 5xx (Google's server failed) are temporary. A 400, 401, 403 or 404 fails
 the same way twice.
 
+Both calls build their error for a status outside 2xx the same way:
+
+```ts
+function httpError(status: number, body: string): LlmError {
+  const message = `Gemini ${status}: ${body}`;
+  if (status !== 429) return new LlmError(message, isRetryable(status), 'http_error');
+  const quota = quotaRefusal(body);
+  return new LlmError(message, quota.scope !== 'day', 'rate_limited', quota);
+}
+```
+
+A 429 is always `rate_limited`, whichever quota said no: the outcome series of `ft_llm_requests_total` and the
+`LlmErrorRateHigh` alert count both quotas as one. It also carries `quota`, read from Google's body by
+`quotaRefusal`, so the tutor route can tell the learner "tomorrow" instead of "in a minute"
+([08-lessons.md](08-lessons.md)). The quota of the day is the one 429 that is not retryable: a second try a moment
+later meets the same refusal, for hours.
+
+### `quotaRefusal`: which quota said no
+
+Google's 429 says which quota the call went over, and how long to wait. The body a free key got on 2026-11-27,
+once its 20 requests of the day on `gemini-3.6-flash` were spent, shortened:
+
+```text
+{"error": {"code": 429, "status": "RESOURCE_EXHAUSTED", "details": [
+  {"@type": "type.googleapis.com/google.rpc.QuotaFailure",
+   "violations": [{"quotaId": "GenerateRequestsPerDayPerProjectPerModel-FreeTier", "quotaValue": "20", ...}]},
+  {"@type": "type.googleapis.com/google.rpc.Help", ...},
+  {"@type": "type.googleapis.com/google.rpc.RetryInfo", "retryDelay": "48933s"}]}}
+```
+
+`quotaRefusal(body)` reads two of the `details`, each found by its `@type`:
+
+| Google's body                                                    | `quotaRefusal` gives                                         |
+| ---------------------------------------------------------------- | ------------------------------------------------------------ |
+| a `QuotaFailure` whose `quotaId` holds `PerDay` (the body above) | `{ scope: 'day', retryAfterS: 48933 }`                       |
+| a `quotaId` with `PerMinute`, and `retryDelay` `"21s"`           | `{ scope: 'minute', retryAfterS: 21 }`                       |
+| a `retryDelay` in fractions, `"21.5s"`                           | rounded up: `retryAfterS: 22`                                |
+| no `RetryInfo`                                                   | `retryAfterS: null`                                          |
+| not JSON                                                         | `{ scope: 'minute', retryAfterS: null }`                     |
+| JSON with no `QuotaFailure` (no quota named)                     | `scope: 'minute'`, `retryAfterS` still read from `RetryInfo` |
+| a `retryDelay` over two days (`MAX_RETRY_AFTER_S`)               | `retryAfterS: null`                                          |
+
+48933 s is about 13.6 hours: Google's quota of the day resets at midnight, Pacific time. When the body names no
+quota, the minute is the milder guess, and what the learner was told before. It never throws: every field is read
+as `unknown` and checked before use (`Array.isArray` for a list, `typeof` for a text, so a field that is not a
+text matches nothing), because it runs while an error is being built, and a `TypeError` there would hide Google's
+refusal. `String(...)` would not do: it throws on an object such as `{"toString": 1}`, and JSON can hold one.
+
 `replyText` checks the reply before using it:
 
 ```ts
@@ -620,18 +711,19 @@ body is not JSON is usually an error page from a proxy on the way.
 
 Summary of all errors:
 
-| Situation                                   | Reason         | Retryable |
-| ------------------------------------------- | -------------- | --------- |
-| No network, DNS, timeout, dropped connection | `unreachable`  | yes       |
-| HTTP 429                                    | `rate_limited` | yes       |
-| HTTP 408 or 5xx                             | `http_error`   | yes       |
-| Other non-2xx (400, 401, 403, 404...)       | `http_error`   | no        |
-| Body or model text is not JSON              | `invalid`      | yes       |
-| JSON fails the schema                       | `invalid`      | yes       |
-| Prompt blocked                              | `blocked`      | no        |
-| No candidate, or stopped before `STOP`      | `incomplete`   | no        |
-| Streamed: stopped by a filter               | `blocked`      | no        |
-| Streamed: other early stop, no `STOP`, empty answer | `incomplete` | no   |
+| Situation                                             | Reason         | Retryable |
+| ----------------------------------------------------- | -------------- | --------- |
+| No network, DNS, timeout, dropped connection          | `unreachable`  | yes       |
+| HTTP 429, the quota of the minute (or no quota named) | `rate_limited` | yes       |
+| HTTP 429, the quota of the day                        | `rate_limited` | no        |
+| HTTP 408 or 5xx                                       | `http_error`   | yes       |
+| Other non-2xx (400, 401, 403, 404...)                 | `http_error`   | no        |
+| Body or model text is not JSON                        | `invalid`      | yes       |
+| JSON fails the schema                                 | `invalid`      | yes       |
+| Prompt blocked                                        | `blocked`      | no        |
+| No candidate, or stopped before `STOP`                | `incomplete`   | no        |
+| Streamed: stopped by a filter                         | `blocked`      | no        |
+| Streamed: other early stop, no `STOP`, empty answer   | `incomplete`   | no        |
 
 The provider decides `retryable` because it knows Google best. The caller only reads the flag (see
 `QuestionStockService` in chapter 7).
@@ -788,14 +880,101 @@ try {
 `\n`. An event with no data (a comment line `: ...` that keeps the connection alive) gives `undefined` and is
 skipped.
 
+### `check`: one real request, as a learner's
+
+Every learner shares one key. When it is wrong, revoked or over its quota, a lesson only shows the tutor failing.
+`check` tells these apart, for the **Test connection** button of the profile page.
+
+```ts
+async check(): Promise<LlmCheck> {
+  const { apiKey, model } = this.options;
+  const started = Date.now();
+  try {
+    const response = await fetch(`${API}/${model}:generateContent`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', 'x-goog-api-key': apiKey },
+      body: JSON.stringify(CHECK_BODY),
+      signal: AbortSignal.timeout(CHECK_TIMEOUT_MS),
+    });
+    const body = await response.text();
+    const verdict = checkVerdict(response.status, body, Date.now());
+    // 500 characters: enough for Google's reason, short enough for one log line.
+    if (verdict.status !== 'ok') {
+      this.logger.warn(`key check on ${model}: Gemini ${response.status}: ${body.slice(0, 500)}`);
+    }
+    return { ...verdict, latencyMs: Date.now() - started, httpStatus: response.status };
+  } catch (error) {
+    // No HTTP answer (network, DNS, the timeout), or the body was cut while read.
+    const reason = error instanceof Error ? error.message : String(error);
+    this.logger.warn(`key check on ${model}: unreachable: ${reason}`);
+    return {
+      status: 'unreachable',
+      latencyMs: Date.now() - started,
+      httpStatus: null,
+      retryAt: null,
+    };
+  }
+}
+```
+
+- It `POST`s `CHECK_BODY` to `:generateContent`, the route `generateStructured` uses: "Reply with the word OK.",
+  at most 16 tokens, with the tutor's thinking setting. A real request is the only way to meet the key, the model
+  and the quotas as a learner's question does: Google applies its quotas to generations only, so a key over
+  today's quota still reads its model's description without trouble. The price is **one request of the key's
+  quota per check**, and a few tokens. The key goes in the same header as for a tutor's answer, never in the URL.
+- It never throws. `try`/`catch` turns every failure into the status `unreachable`, so the route always has a
+  verdict to show.
+- Google's body goes to the log, never into the answer. A `403` body can name the Google Cloud project.
+- It counts nothing in `ft_llm_requests_total` nor `ft_llm_tokens_total`: checks would dilute the error rate that
+  `LlmErrorRateHigh` alerts on, and their few tokens are no learner's. `TutorService` counts checks in their own
+  counter, `ft_llm_checks_total`.
+
+`checkVerdict` reads the status, and the body when it must:
+
+| Google answers                                                                 | Status            |
+| ------------------------------------------------------------------------------ | ----------------- |
+| `200` with Gemini's reply (`isGeminiReply`), with or without text              | `ok`              |
+| `200` that is not Gemini's reply, usually a proxy's page                       | `unexpected`      |
+| `400` with `API_KEY_INVALID`, `401` or `403`                                   | `invalid_key`     |
+| `404`                                                                          | `model_not_found` |
+| `429` for the quota of the minute, or one that names no quota (`quotaRefusal`) | `quota`           |
+| `429` for the quota of the day                                                 | `quota_day`       |
+| `408` or `5xx`, no answer, the 30 s timeout                                    | `unreachable`     |
+| anything else, for example a `400` about the region or a `402`                 | `unexpected`      |
+
+A `200` must be Gemini's reply, a JSON object with `candidates` or `usageMetadata` (`isGeminiReply`), but it needs
+no text: a model may stop at `MAX_TOKENS` before writing "OK", and Google still answered with this key and this
+model. A `200` with any other body is usually a proxy's page on the way, not Google, so it is `unexpected`, and
+the body goes to the log. A wrong key gets `400` with `API_KEY_INVALID` (checked by
+hand on 2026-11-27), not `401`. A `400` for another reason is not the key's fault, so it is `unexpected`, and
+`httpStatus` says which status came back.
+
+On a `429`, `retryAt` is when Google said the quota comes back: the time of the answer plus the `retryDelay`
+that `quotaRefusal` read, as an ISO date. It is `null` for every other status, and when Google gave no wait.
+
+Each check spends one of the key's requests (20 a day per model on a free key, on 2026-11-27): one more reason
+for `TutorService` to share one check between every account for 15 s, and for the route to allow 3 a minute per
+account.
+
 ### The Gemini tests
 
 - [gemini.provider.spec.ts](../../apps/api/src/llm/gemini.provider.spec.ts) mocks `fetch` and checks
   `generateStructured`: the key is in a header and never in the URL, the JSON schema is sent, the 90 s timeout,
-  joining parts without thoughts, logs, which errors are retryable, and the metrics.
+  joining parts without thoughts, logs, which errors are retryable, the quota a 429 names (`quotaRefusal`, with
+  the body a free key got on 2026-11-27, and bodies with fields missing or of the wrong type, objects that make
+  `String()` throw, or a wait too long for a date), and the metrics.
 - [gemini.provider.stream.spec.ts](../../apps/api/src/llm/gemini.provider.stream.spec.ts) checks `streamText`:
   the SSE endpoint, events cut across packets (even inside a character), comments skipped, every early stop, the
-  learner leaving (an `AbortError`, no outcome counted, body cancelled), and the metrics.
+  learner leaving (an `AbortError`, no outcome counted, body cancelled), a 429 for the quota of the day, and the
+  metrics.
+- [gemini.provider.check.spec.ts](../../apps/api/src/llm/gemini.provider.check.spec.ts) checks `check`: a `POST`
+  of the one-word body, with the tutor's thinking setting, to `:generateContent`, with the key in a header and not
+  in the URL, the 30 s timeout, the status of each answer in the table above (with the real `API_KEY_INVALID` body,
+  `200`s that are not Gemini's reply, and both `429` bodies with their `retryAt`, or none when the wait is too
+  long), no throw on a network failure, Google's body in the log but not in the answer, nothing counted in the
+  metrics of real calls, and `info` without the key.
+- The `429` bodies come from [gemini.fixtures.ts](../../apps/api/test/gemini.fixtures.ts): the one a free key got
+  on 2026-11-27 for the quota of the day, and the same written for the quota of the minute.
 
 ---
 
@@ -843,6 +1022,8 @@ export const FIXTURE_FAILURES = {
   timeout: '#timeout',
   /** The prompt is refused before any text. */
   blocked: '#blocked',
+  /** The key is over its quota of the day, as Google's 429 says it. */
+  quotaDay: '#quota-day',
 } as const;
 ```
 
@@ -857,6 +1038,13 @@ async *streamText({ messages, signal }: StreamRequest): AsyncIterable<string> {
   }
   if (last.includes(FIXTURE_FAILURES.timeout)) {
     throw new LlmError('Fixture timed out', true, 'unreachable');
+  }
+  // What GeminiProvider throws on a 429 for today's quota: back in an hour, here.
+  if (last.includes(FIXTURE_FAILURES.quotaDay)) {
+    throw new LlmError('Fixture is over its quota of the day', false, 'rate_limited', {
+      scope: 'day',
+      retryAfterS: 3600,
+    });
   }
   for (const [index, piece] of FIXTURE_ANSWER.entries()) {
     // Two pieces out, then the connection "drops": the caller has already sent part of the answer.
@@ -875,15 +1063,29 @@ async *streamText({ messages, signal }: StreamRequest): AsyncIterable<string> {
 - `sleep` gets the `signal`: when the route cancels, the pause rejects with an `AbortError` at once, like a real
   call whose connection is closed.
 
-| Learner's last message contains | What happens                                      |
-| ------------------------------- | ------------------------------------------------- |
-| `#blocked`                      | fails before any text, reason `blocked`           |
-| `#timeout`                      | fails before any text, reason `unreachable`       |
-| `#fail-midstream`               | sends 2 pieces, then fails with `unreachable`     |
-| anything else                   | sends the 3 pieces of `FIXTURE_ANSWER`            |
+| Learner's last message contains | What happens                                                           |
+| ------------------------------- | ---------------------------------------------------------------------- |
+| `#blocked`                      | fails before any text, reason `blocked`                                |
+| `#timeout`                      | fails before any text, reason `unreachable`                            |
+| `#fail-midstream`               | sends 2 pieces, then fails with `unreachable`                          |
+| `#quota-day`                    | fails before any text, reason `rate_limited` with the quota of the day |
+| anything else                   | sends the 3 pieces of `FIXTURE_ANSWER`                                 |
+
+There is no key and no network behind the fixture, so there is nothing to check:
+
+```ts
+/** No real model behind it, so no model name. */
+readonly info: TutorInfo = { provider: 'fixture', model: null };
+
+/** No key and no network: nothing to check. */
+async check(): Promise<LlmCheck> {
+  return { status: 'fixture', latencyMs: null, httpStatus: null, retryAt: null };
+}
+```
 
 [fixture.provider.spec.ts](../../apps/api/src/llm/fixture.provider.spec.ts) checks each row of this table, the
-abort, and that `generateStructured` always fails as not retryable.
+abort, that `generateStructured` always fails as not retryable, and that `check` answers `fixture` without calling
+`fetch`.
 
 ---
 
@@ -894,6 +1096,13 @@ even the fixture's canned tutor.
 
 ```ts
 export class DisabledProvider implements LlmProvider {
+  readonly info: TutorInfo = { provider: 'disabled', model: null };
+
+  /** No key to check: the setting itself says there is no LLM. */
+  async check(): Promise<LlmCheck> {
+    return { status: 'disabled', latencyMs: null, httpStatus: null, retryAt: null };
+  }
+
   async generateStructured(): Promise<never> {
     throw disabled();
   }
@@ -911,30 +1120,34 @@ const disabled = () => new LlmError('LLM_PROVIDER=disabled', false, 'disabled');
 
 Every call fails at once with reason `disabled`. The lesson discussion then ends with the error code
 `llm.disabled`, and a restock counts as `llm_disabled`, which the alert leaves out. `streamText` is an `async *`
-generator with no `yield`, so ESLint's `require-yield` rule is turned off for that line.
+generator with no `yield`, so ESLint's `require-yield` rule is turned off for that line. `check` does not fail: it
+answers the status `disabled`, because there is no key to test.
 
-[disabled.provider.spec.ts](../../apps/api/src/llm/disabled.provider.spec.ts) checks both methods fail.
+[disabled.provider.spec.ts](../../apps/api/src/llm/disabled.provider.spec.ts) checks both calls fail, and what
+`check` and `info` give.
 
 The three providers side by side:
 
-| Provider           | `generateStructured` (questions) | `streamText` (tutor)               | Network |
-| ------------------ | -------------------------------- | ---------------------------------- | ------- |
-| `GeminiProvider`   | real questions, checked by Zod   | real answer, piece by piece        | yes     |
-| `FixtureProvider`  | always fails (`disabled`)        | fixed answer, or a failure on demand | no    |
-| `DisabledProvider` | always fails (`disabled`)        | always fails (`disabled`)          | no      |
+| Provider           | `generateStructured` (questions) | `streamText` (tutor)                 | `check` (key test)                     | Network |
+| ------------------ | -------------------------------- | ------------------------------------ | -------------------------------------- | ------- |
+| `GeminiProvider`   | real questions, checked by Zod   | real answer, piece by piece          | one word from `:generateContent`, 30 s | yes     |
+| `FixtureProvider`  | always fails (`disabled`)        | fixed answer, or a failure on demand | `fixture`, no call                     | no      |
+| `DisabledProvider` | always fails (`disabled`)        | always fails (`disabled`)            | `disabled`, no call                    | no      |
 
 ---
 
 ## Who uses the LLM
 
-A search for `LLM_PROVIDER` outside `src/llm` finds exactly two users, each with one method:
+A search for `LLM_PROVIDER` outside `src/llm` finds exactly three users:
 
-| User | Module | Method | Purpose |
-| ---- | ------ | ------ | ------- |
-| [QuestionStockService](../../apps/api/src/question-generation/question-stock.service.ts) | `QuestionGenerationModule` imports `LlmModule` | `generateStructured` | `question-batch:<category>` |
-| [DiscussionService](../../apps/api/src/lessons/discussion.service.ts) | `LessonsModule` imports `LlmModule` | `streamText` | `lesson-discussion` |
+| User                                                                                     | Module                                         | Method               | Purpose                                         |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------- | -------------------- | ----------------------------------------------- |
+| [QuestionStockService](../../apps/api/src/question-generation/question-stock.service.ts) | `QuestionGenerationModule` imports `LlmModule` | `generateStructured` | `question-batch:<category>`                     |
+| [DiscussionService](../../apps/api/src/lessons/discussion.service.ts)                    | `LessonsModule` imports `LlmModule`            | `streamText`         | `lesson-discussion`                             |
+| [TutorService](../../apps/api/src/tutor/tutor.service.ts)                                | `TutorModule` imports `LlmModule`              | `info`, `check`      | none: the check's one word is no learner's call |
 
-Both ask for it the same way:
+`LlmModule` is a plain (static) module, so Nest builds its provider once: the three users share the same
+instance. All of them ask for it the same way:
 
 ```ts
 @Inject(LLM_PROVIDER) private readonly llm: LlmProvider,
@@ -955,9 +1168,78 @@ answer(system: string, body: LessonDiscussionInput, signal: AbortSignal): AsyncI
 ```
 
 [discussion.controller.ts](../../apps/api/src/lessons/discussion.controller.ts) catches an `LlmError` and turns its
-`reason` into an error code for the browser. The question stock reads `retryable` to decide on a second try. Both
+`reason` (and, on a 429, its `quota`) into an error code for the browser. The question stock reads `retryable` to decide on a second try. Both
 are explained in their own chapters: [07-courses-placement.md](07-courses-placement.md) and
 [08-lessons.md](08-lessons.md).
+
+### `TutorService` and the two tutor routes
+
+`src/tutor` lets a signed-in user see what the tutor runs on, and test the server's key from the **AI tutor**
+section of `/profile` ([web chapter 5](../web/05-account-pages.md)).
+
+```text
+apps/api/src/tutor/
+├── tutor.module.ts             imports LlmModule, declares the controller and the service
+├── tutor.controller.ts         GET /api/tutor and POST /api/tutor/check
+├── tutor.service.ts            shares one check between accounts, counts it, builds the answer
+├── tutor.dto.ts                the Swagger shapes, made from the shared schemas
+└── tutor.service.spec.ts       unit tests of the service
+```
+
+| Route                   | Answers                                                                             | Calls Google | Limit                   |
+| ----------------------- | ----------------------------------------------------------------------------------- | ------------ | ----------------------- |
+| `GET /api/tutor`        | `TutorInfo`: `{ provider, model }`                                                  | no           | the global 100 a minute |
+| `POST /api/tutor/check` | `TutorCheck`: the info, `status`, `latencyMs`, `httpStatus`, `retryAt`, `checkedAt` | maybe        | 3 a minute per account  |
+
+Both need a session, like every route that is not `@Public()`, so no visitor can make the API call Google. Both
+shapes are Zod schemas in [tutor.ts](../../packages/shared/src/schemas/tutor.ts), so the browser checks the answer
+with the same rules.
+
+The check route:
+
+```ts
+@Post('check')
+@HttpCode(HttpStatus.OK)
+@Throttle({ default: { limit: TUTOR_CHECKS_PER_MINUTE, ttl: 60_000 } })
+```
+
+- **POST, not GET.** It may call Google and spend a request of the key's quota, so nothing must prefetch or
+  cache it.
+- **Always `200` once the check ran**, like health: the body carries the verdict. A wrong key is a
+  `200` with `status: 'invalid_key'`. The only HTTP errors are `401 auth.sessionRequired` and
+  `429 server.rateLimited`.
+- **3 checks a minute per account.** `@Throttle` replaces the global 100 for this route only, as on the friend
+  requests (chapter 9). `IdentityThrottlerGuard` counts it per account.
+
+`TutorService` adds two things the provider does not do:
+
+```ts
+check(now = Date.now()): Promise<TutorCheck> {
+  if (this.last && now - this.last.startedAt < this.reuseMs) return this.last.result;
+  const result = this.run();
+  this.last = { startedAt: now, result };
+  return result;
+}
+```
+
+- **One check for everyone, for 15 seconds** (`reuseMs`). It keeps the **promise**, not the result, so a check
+  that is still running is shared too. Clicks from many accounts share one call: at most about 4 calls to Google a
+  minute, whatever the number of accounts, each one request of the key's quota. `reuseMs` is public so the e2e
+  suite can set it to 0.
+- **Known fields only.** `run()` builds the answer field by field, from `info` and the provider's `LlmCheck`, so
+  nothing else a provider returns can reach the browser. A provider whose `check` breaks its promise and throws
+  gives `unexpected`, and the error goes to the log.
+- **Its own counter.** Each check that reaches the provider adds 1 to
+  `ft_llm_checks_total{provider, model, status}`. The constructor starts every status at 0, as `GeminiProvider`
+  does for its own counters. A reused answer counts nothing: it reached nobody.
+
+The throttle storage and the reuse both live in the API's memory, so they are per process. The compose files run
+one API, so this is enough today.
+
+Tests: [tutor.service.spec.ts](../../apps/api/src/tutor/tutor.service.spec.ts) (the exact keys of the answer, the
+15 s reuse, a running check shared, a throwing provider, the counter) and
+[tutor.e2e-spec.ts](../../apps/api/test/tutor.e2e-spec.ts) (`401` without a session, `200` for every status, with
+`retryAt` on a `429`, one check shared between two accounts, the Swagger document, the `429` after 3 checks).
 
 ---
 
@@ -972,12 +1254,16 @@ are explained in their own chapters: [07-courses-placement.md](07-courses-placem
 - `streamText` returns an `AsyncIterable<string>`: the answer piece by piece, read from Google's SSE events. The
   learner's `AbortSignal` can stop it.
 - Every failure is an `LlmError` with `retryable` (try again?) and `reason` (a fixed word for metrics and error
-  codes).
+  codes). A 429 also has `quota`: the quota of the day or of the minute, read from Google's body.
 - Gemini waits at most 90 seconds; the key is in a header, never in the URL; tokens and time are logged and
   counted on every call.
 - The fixture writes no questions (so the bank stays clean) but answers the tutor with a fixed text, and fails on
-  demand with `#blocked`, `#timeout`, `#fail-midstream`.
+  demand with `#blocked`, `#timeout`, `#fail-midstream`, `#quota-day`.
 - `DisabledProvider` makes every call fail, for a stack with no LLM at all.
+- `check` tests the key with a one-word request: one request of the key's quota, never a throw, and a `429` that
+  says which quota (`quota` or `quota_day`) and when it comes back (`retryAt`). `POST /api/tutor/check` shares
+  one check between every account for 15 s, allows 3 a minute per account, and sends a status, never Google's body
+  or the key.
 
 ---
 

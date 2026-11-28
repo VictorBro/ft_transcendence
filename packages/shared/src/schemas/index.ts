@@ -9,5 +9,6 @@ export * from './lesson';
 export * from './locale';
 export * from './message';
 export * from './placement';
+export * from './tutor';
 export * from './two-factor';
 export * from './user';

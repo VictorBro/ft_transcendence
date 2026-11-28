@@ -1,4 +1,6 @@
-import { LlmError, LlmProvider } from './llm.provider';
+import type { TutorInfo } from '@ft/shared';
+
+import { LlmCheck, LlmError, LlmProvider } from './llm.provider';
 
 /**
  * LLM_PROVIDER=disabled: a stack that runs no LLM at all, not even the fixture's
@@ -7,6 +9,13 @@ import { LlmError, LlmProvider } from './llm.provider';
  * llm_disabled, which the restock alert leaves out, as with the fixture.
  */
 export class DisabledProvider implements LlmProvider {
+  readonly info: TutorInfo = { provider: 'disabled', model: null };
+
+  /** No key to check: the setting itself says there is no LLM. */
+  async check(): Promise<LlmCheck> {
+    return { status: 'disabled', latencyMs: null, httpStatus: null, retryAt: null };
+  }
+
   async generateStructured(): Promise<never> {
     throw disabled();
   }

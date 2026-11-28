@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
 
-import { badgeText, createUnreadStore, unreadTotal } from './unread';
+import { badgeText, createPendingStore, createUnreadStore, menuTotal, unreadTotal } from './unread';
 
 const BOB = '00000000-0000-4000-8000-000000000001';
 const ZOE = '00000000-0000-4000-8000-000000000002';
@@ -73,6 +73,68 @@ describe('createUnreadStore', () => {
     store.apply(snapshot({ [BOB]: 1 }, '2026-11-16T10:00:00.000Z'));
 
     expect(watch).not.toHaveBeenCalled();
+  });
+});
+
+describe('createPendingStore', () => {
+  const pending = (count: number, at: string) => ({ count, at });
+
+  it('knows nothing until the first snapshot, so the rendered count wins', () => {
+    expect(createPendingStore().get()).toBeUndefined();
+  });
+
+  it('replaces the count with each snapshot', () => {
+    const store = createPendingStore();
+
+    store.apply(pending(2, '2026-11-16T10:00:00.000Z'));
+    store.apply(pending(1, '2026-11-16T10:00:01.000Z'));
+
+    expect(store.get()).toBe(1);
+  });
+
+  // A request declined in one tab while another arrives: the later count wins.
+  it('keeps the later count when two snapshots arrive out of order', () => {
+    const store = createPendingStore();
+
+    store.apply(pending(0, '2026-11-16T10:00:01.000Z'));
+    store.apply(pending(1, '2026-11-16T10:00:00.000Z'));
+
+    expect(store.get()).toBe(0);
+  });
+
+  it('forgets the count on clear, and takes any snapshot after it', () => {
+    const store = createPendingStore();
+    store.apply(pending(3, '2026-11-16T10:00:00.000Z'));
+
+    store.clear();
+    expect(store.get()).toBeUndefined();
+
+    store.apply(pending(1, '2026-11-16T09:00:00.000Z'));
+    expect(store.get()).toBe(1);
+  });
+
+  it('tells its watchers only of the snapshots it keeps', () => {
+    const store = createPendingStore();
+    const watch = vi.fn();
+    store.subscribe(watch);
+
+    store.apply(pending(1, '2026-11-16T10:00:00.000Z'));
+    store.apply(pending(2, '2026-11-16T09:00:00.000Z'));
+
+    expect(watch).toHaveBeenCalledOnce();
+    expect(store.get()).toBe(1);
+  });
+});
+
+describe('menuTotal', () => {
+  it.each([
+    [undefined, undefined, undefined],
+    [undefined, 2, 2],
+    [3, undefined, 3],
+    [3, 2, 5],
+    [0, 0, 0],
+  ])('adds %s unread and %s requests to %s', (unread, requests, total) => {
+    expect(menuTotal(unread, requests)).toBe(total);
   });
 });
 

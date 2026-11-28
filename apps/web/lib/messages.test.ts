@@ -1,5 +1,11 @@
 import { describe, expect, it } from 'vitest';
-import { ACHIEVEMENTS, CHALLENGES, ERROR_CODES } from '@ft/shared';
+import {
+  ACHIEVEMENTS,
+  CHALLENGES,
+  ERROR_CODES,
+  LlmProviderNameSchema,
+  TUTOR_CHECK_STATUSES,
+} from '@ft/shared';
 
 import en from '../messages/en.json';
 import fr from '../messages/fr.json';
@@ -53,6 +59,33 @@ describe.each(Object.entries(CATALOGUES))('messages/%s.json', (locale, tree) => 
       expected(ACHIEVEMENTS.map((achievement) => achievement.code)),
     );
     expect(keyPaths(gamification.challenges as MessageTree).sort()).toEqual(expected(CHALLENGES));
+  });
+
+  /**
+   * Same contract for the AI tutor check: the API sends a status and a
+   * provider name, and the profile page owes each status a sentence and a
+   * hint, and each provider a name. Two extra sentences: unexpectedNoAnswer,
+   * for an unexpected check that got no HTTP status to name, and
+   * unreachableHttp, for an unreachable one that did (Google's 408 or 5xx).
+   */
+  it('gives every tutor check status a sentence and a hint, and every provider a name', () => {
+    const card = tree.TutorCard as MessageTree;
+
+    expect(keyPaths(card.status as MessageTree).sort()).toEqual(
+      [...TUTOR_CHECK_STATUSES, 'unexpectedNoAnswer', 'unreachableHttp'].sort(),
+    );
+    expect(keyPaths(card.hint as MessageTree).sort()).toEqual([...TUTOR_CHECK_STATUSES].sort());
+    expect(keyPaths(card.providers as MessageTree).sort()).toEqual(
+      [...LlmProviderNameSchema.options].sort(),
+    );
+  });
+
+  // The check and the lesson name today's used-up quota in the same words.
+  it('says quota_day as the lesson says llm.quotaExhausted', () => {
+    const card = tree.TutorCard as MessageTree;
+    const llm = (tree.Errors as MessageTree).llm as MessageTree;
+
+    expect((card.status as MessageTree).quota_day).toBe(llm.quotaExhausted);
   });
 
   it('has no empty translation', () => {

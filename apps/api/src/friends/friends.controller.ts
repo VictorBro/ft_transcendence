@@ -11,11 +11,11 @@ import {
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 import { Throttle } from '@nestjs/throttler';
-import type { FriendRequestResult, Friends, SessionUser } from '@ft/shared';
+import type { FriendPending, FriendRequestResult, Friends, SessionUser } from '@ft/shared';
 
 import { CurrentUser } from '../auth/auth.decorators';
 import { UserIdParam } from '../validation.pipe';
-import { FriendRequestResultDto, FriendsDto } from './friends.dto';
+import { FriendPendingDto, FriendRequestResultDto, FriendsDto } from './friends.dto';
 import { FriendsService } from './friends.service';
 
 // The other user is always named in the path, never a row id.
@@ -30,6 +30,15 @@ export class FriendsController {
   @ApiUnauthorizedResponse({ description: 'No valid session' })
   list(@CurrentUser() user: SessionUser): Promise<Friends> {
     return this.friends.list(user.id);
+  }
+
+  // For the header's first render; friend:pending keeps it current after that.
+  @Get('pending')
+  @ApiOperation({ summary: 'How many friend requests wait on you' })
+  @ApiOkResponse({ type: FriendPendingDto })
+  @ApiUnauthorizedResponse({ description: 'No valid session' })
+  pending(@CurrentUser() user: SessionUser): Promise<FriendPending> {
+    return this.friends.pending(user.id);
   }
 
   // Tighter than the global 100: a declined request can be sent again at once,

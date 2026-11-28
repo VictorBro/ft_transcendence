@@ -15,7 +15,7 @@
       }
     ]
   },
-  "description": "Learners, placement exams, the question bank and the LLM that restocks it.",
+  "description": "Learners, their lessons, courses, achievements and friends, placement exams, the question bank and the LLM that restocks it.",
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
@@ -239,6 +239,266 @@
         "x": 0,
         "y": 5
       },
+      "id": 23,
+      "panels": [],
+      "title": "Learners",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "description": "started: a new attempt, a retake included. completed: its last page locked, pass or fail.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "drawStyle": "bars",
+            "fillOpacity": 80,
+            "lineWidth": 1,
+            "showPoints": "never"
+          },
+          "decimals": 0,
+          "min": 0,
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 0,
+        "y": 6
+      },
+      "id": 24,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "editorMode": "code",
+          "expr": "sum by (event) (increase(ft_lesson_attempts_total{lang=~\"$lang\"}[1h]))",
+          "instant": false,
+          "interval": "1h",
+          "legendFormat": "{{event}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Lesson attempts per hour",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "description": "unplaced: the placement exam has not set a level yet.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "decimals": 0,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 8,
+        "y": 6
+      },
+      "id": 25,
+      "options": {
+        "displayMode": "gradient",
+        "namePlacement": "left",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "color"
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "editorMode": "code",
+          "expr": "sum by (level) (ft_courses{lang=~\"$lang\"})",
+          "instant": true,
+          "legendFormat": "{{level}}",
+          "range": false,
+          "refId": "A"
+        }
+      ],
+      "title": "Courses by level",
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "description": "Courses that earned each achievement, every language together. Codes nobody has earned are left out.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "decimals": 0,
+          "min": 0,
+          "noValue": "None yet",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 14,
+        "y": 6
+      },
+      "id": 26,
+      "options": {
+        "displayMode": "gradient",
+        "namePlacement": "left",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "color"
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "editorMode": "code",
+          "expr": "sort_desc(ft_achievements > 0)",
+          "instant": true,
+          "legendFormat": "{{code}}",
+          "range": false,
+          "refId": "A"
+        }
+      ],
+      "title": "Achievements earned",
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "description": "pending: a request waiting for an answer. Every language together.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "decimals": 0,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 4,
+        "x": 20,
+        "y": 6
+      },
+      "id": 27,
+      "options": {
+        "displayMode": "gradient",
+        "namePlacement": "left",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "color"
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "editorMode": "code",
+          "expr": "sum by (status) (ft_friendships)",
+          "instant": true,
+          "legendFormat": "{{status}}",
+          "range": false,
+          "refId": "A"
+        }
+      ],
+      "title": "Friendships",
+      "type": "bargauge"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 14
+      },
       "id": 5,
       "panels": [],
       "title": "Placement",
@@ -270,7 +530,7 @@
         "h": 8,
         "w": 8,
         "x": 0,
-        "y": 6
+        "y": 15
       },
       "id": 6,
       "options": {
@@ -331,7 +591,7 @@
         "h": 8,
         "w": 4,
         "x": 8,
-        "y": 6
+        "y": 15
       },
       "id": 7,
       "options": {
@@ -396,7 +656,7 @@
         "h": 8,
         "w": 6,
         "x": 12,
-        "y": 6
+        "y": 15
       },
       "id": 8,
       "options": {
@@ -452,7 +712,7 @@
         "h": 8,
         "w": 6,
         "x": 18,
-        "y": 6
+        "y": 15
       },
       "id": 9,
       "options": {
@@ -514,7 +774,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 14
+        "y": 23
       },
       "id": 10,
       "panels": [],
@@ -548,7 +808,7 @@
         "h": 11,
         "w": 10,
         "x": 0,
-        "y": 15
+        "y": 24
       },
       "id": 11,
       "options": {
@@ -604,7 +864,7 @@
         "h": 11,
         "w": 8,
         "x": 10,
-        "y": 15
+        "y": 24
       },
       "id": 12,
       "options": {
@@ -691,7 +951,7 @@
         "h": 11,
         "w": 6,
         "x": 18,
-        "y": 15
+        "y": 24
       },
       "id": 13,
       "options": {
@@ -752,7 +1012,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 26
+        "y": 35
       },
       "id": 14,
       "options": {
@@ -808,7 +1068,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 26
+        "y": 35
       },
       "id": 15,
       "options": {
@@ -846,7 +1106,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 34
+        "y": 43
       },
       "id": 16,
       "panels": [],
@@ -858,7 +1118,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 35
+        "y": 44
       },
       "id": 17,
       "options": {
@@ -896,7 +1156,7 @@
         "h": 8,
         "w": 4,
         "x": 0,
-        "y": 38
+        "y": 47
       },
       "id": 18,
       "options": {
@@ -972,7 +1232,7 @@
         "h": 8,
         "w": 7,
         "x": 4,
-        "y": 38
+        "y": 47
       },
       "id": 19,
       "options": {
@@ -1027,7 +1287,7 @@
         "h": 8,
         "w": 6,
         "x": 11,
-        "y": 38
+        "y": 47
       },
       "id": 20,
       "options": {
@@ -1082,7 +1342,7 @@
         "h": 8,
         "w": 7,
         "x": 17,
-        "y": 38
+        "y": 47
       },
       "id": 21,
       "options": {
@@ -1155,7 +1415,7 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 46
+        "y": 55
       },
       "id": 22,
       "options": {

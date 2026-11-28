@@ -25,4 +25,14 @@ describe('DisabledProvider', () => {
     await expect(reading).rejects.toEqual(failure);
     expect(pieces).toEqual([]);
   });
+
+  it('has no key to check, and shows no model', async () => {
+    await expect(provider.check()).resolves.toEqual({
+      status: 'disabled',
+      latencyMs: null,
+      httpStatus: null,
+      retryAt: null,
+    });
+    expect(provider.info).toStrictEqual({ provider: 'disabled', model: null });
+  });
 });

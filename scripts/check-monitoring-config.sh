@@ -24,7 +24,8 @@ MONITORING_SERVICES=(
   prometheus alertmanager grafana
   node-exporter postgres-exporter redis-exporter blackbox-exporter
 )
-# Upstream images that compose.deploy.yml repeats by hand.
+# Upstream images that compose.deploy.yml and compose.deploy.monitoring.yml
+# repeat by hand.
 PINNED_SERVICES=(caddy db redis node-exporter postgres-exporter redis-exporter blackbox-exporter)
 
 failures=0
@@ -165,21 +166,36 @@ prod_compose() {
   SESSION_SECRET=check GRAFANA_ADMIN_PASSWORD=check GRAFANA_SECRET_KEY=check \
     docker compose -f compose.yml -f compose.prod.yml "$@"
 }
+# What deploy.sh runs where compose.deploy.monitoring.yml sits next to it.
 deploy_compose() {
   SITE_DOMAIN=example.com ACME_EMAIL=ops@example.com POSTGRES_PASSWORD=check \
     SESSION_SECRET=check LLM_PROVIDER=fixture \
     GRAFANA_ADMIN_PASSWORD=check GRAFANA_SECRET_KEY=check \
-    docker compose -f compose.deploy.yml --profile migrate "$@"
+    docker compose -f compose.deploy.yml -f compose.deploy.monitoring.yml --profile migrate "$@"
+}
+# And where it does not: the app alone. Neither the local .env nor the shell
+# may supply a Grafana key, or a :? guard left in compose.deploy.yml would
+# pass here and stop the deploy on a host that has none.
+app_compose() {
+  env -u GRAFANA_ADMIN_PASSWORD -u GRAFANA_SECRET_KEY \
+    SITE_DOMAIN=example.com ACME_EMAIL=ops@example.com POSTGRES_PASSWORD=check \
+    SESSION_SECRET=check LLM_PROVIDER=fixture \
+    docker compose --env-file /dev/null -f compose.deploy.yml --profile migrate "$@"
 }
 
 # Never printed, on success or failure: see the header.
-prod_json='' deploy_json='' proxy_json='' dev_json=''
+prod_json='' deploy_json='' proxy_json='' app_json='' dev_json=''
 prod_json="$(prod_compose config --format json)" ||
   fail "compose.yml + compose.prod.yml do not resolve"
 deploy_json="$(deploy_compose config --format json)" ||
-  fail "compose.deploy.yml does not resolve"
+  fail "compose.deploy.yml + compose.deploy.monitoring.yml do not resolve"
 proxy_json="$(deploy_compose -f compose.deploy.proxy.yml config --format json)" ||
-  fail "compose.deploy.yml + compose.deploy.proxy.yml do not resolve"
+  fail "compose.deploy.yml + compose.deploy.monitoring.yml + compose.deploy.proxy.yml do not resolve"
+if app_json="$(app_compose config --format json)"; then
+  pass "deploy without monitoring: compose.deploy.yml resolves with no Grafana key"
+else
+  fail "deploy without monitoring: compose.deploy.yml does not resolve with no Grafana key"
+fi
 dev_json="$(docker compose --profile monitoring config --format json)" ||
   fail "compose.yml + compose.override.yml do not resolve with the monitoring profile"
 
@@ -212,6 +228,7 @@ expect_publishers() {
 
 expect_publishers "prod overlay" "$prod_json" "caddy"
 expect_publishers "deploy" "$deploy_json" "caddy"
+expect_publishers "deploy without monitoring" "$app_json" "caddy"
 
 # Behind a front proxy nothing publishes: caddy is reached over its network.
 if [ -n "$proxy_json" ]; then
@@ -228,6 +245,25 @@ if [ -n "$proxy_json" ]; then
     fail "deploy behind a proxy: caddy lacks the proxy network or the caddy label"
   fi
 fi
+
+# The Privacy Policy (section 5) promises capped, rotated logs on the server,
+# and compose.deploy.monitoring.yml repeats compose.deploy.yml's anchor by hand.
+LOGGING_CAPS='{"driver": "json-file", "options": {"max-size": "10m", "max-file": "3"}}'
+logging_capped() {
+  local name="$1" json="$2" uncapped
+  [ -n "$json" ] || return 0
+  uncapped="$(jq -r --argjson caps "$LOGGING_CAPS" \
+    '[.services | to_entries[] | select(.value.logging != $caps) | .key] | join(" ")' <<<"$json")"
+  if [ -z "$uncapped" ]; then
+    pass "$name: every service logs with the json-file caps"
+  else
+    fail "$name: not logging with three files of 10 MB: $uncapped"
+  fi
+}
+logging_capped "deploy" "$deploy_json"
+logging_capped "deploy behind a proxy" "$proxy_json"
+logging_capped "deploy without monitoring" "$app_json"
+
 # The stores keep their loopback ports in dev (compose.override.yml).
 expect_publishers "dev" "$dev_json" "caddy db redis"
 
@@ -240,7 +276,8 @@ failing_services() {
   done
 }
 
-# Always on in the prod overlay and the deploy file, opt-in in dev.
+# Always on in the prod overlay and with compose.deploy.monitoring.yml, opt-in
+# in dev, absent from compose.deploy.yml alone.
 always_on() {
   local name="$1" json="$2" missing
   [ -n "$json" ] || return 0
@@ -255,6 +292,15 @@ always_on() {
 always_on "prod overlay" "$prod_json"
 always_on "deploy" "$deploy_json"
 always_on "deploy behind a proxy" "$proxy_json"
+
+if [ -n "$app_json" ]; then
+  present="$(failing_services "$app_json" '. == null')"
+  if [ -z "$present" ]; then
+    pass "deploy without monitoring: none of the monitoring services"
+  else
+    fail "deploy without monitoring: still has $present"
+  fi
+fi
 
 if [ -n "$dev_json" ]; then
   missing="$(failing_services "$dev_json" '.profiles == ["monitoring"]')"
@@ -298,17 +344,50 @@ else
   fail "grafana entrypoint exits [$statuses], expected [1 1 1 127]: empty, admin, no key, valid"
 fi
 
+# Creates the container once and starts it twice: fails, with its last log
+# lines, unless both runs exit 0. Exit codes come from `docker wait`, never
+# `start -a`, whose attached stream the devcontainer's socket bridge can cut.
+starts_twice() {
+  local id run status
+  id="$(docker create --network none "$@")" || return 1
+  for run in first second; do
+    status="$(docker start "$id" >/dev/null && docker wait "$id")" || status='none'
+    if [ "$status" != 0 ]; then
+      printf '%s start exited %s\n' "$run" "$status"
+      docker logs --tail 5 "$id" 2>&1
+      break
+    fi
+  done
+  docker rm -f "$id" >/dev/null
+  [ "$status" = 0 ]
+}
+
 # CI sets no webhook, so nothing else runs this path before the server does.
 # --version after the entrypoint's flags exits 0 only if the binary knows every
-# one of them, and only after the webhook file was written as nobody.
-check "alertmanager entrypoint writes the webhook file and passes known flags" run \
-  --tmpfs /run/alertmanager \
-  -e DISCORD_WEBHOOK_URL=https://discord.invalid/check -e GRAFANA_URL=https://localhost/grafana \
-  -v "$mon/alertmanager:/etc/alertmanager:ro" -v "$mon/alertmanager/entrypoint.sh:/e.sh:ro" \
-  --entrypoint /bin/sh "$alertmanager_image" /e.sh --version
+# one of them, and only after the webhook file was written as nobody. On the
+# tmpfs entry each topology declares, and twice: a restart finds the mountpoint
+# its first start created, and Docker then mounts the tmpfs root-owned with
+# that directory's 0755, unless the entry names uid and gid.
+alertmanager_entrypoint() {
+  local name="$1" json="$2" tmpfs
+  [ -n "$json" ] || return 0
+  tmpfs="$(jq -r 'first(.services.alertmanager.tmpfs[]? | select(test("^/run/alertmanager(:|$)")))
+    // empty' <<<"$json")"
+  if [ -z "$tmpfs" ]; then
+    fail "$name: alertmanager has no tmpfs at /run/alertmanager"
+    return 0
+  fi
+  check "$name: alertmanager entrypoint writes the webhook file as nobody, restart included" \
+    starts_twice --tmpfs "$tmpfs" \
+    -e DISCORD_WEBHOOK_URL=https://discord.invalid/check -e GRAFANA_URL=https://localhost/grafana \
+    -v "$mon/alertmanager:/etc/alertmanager:ro" -v "$mon/alertmanager/entrypoint.sh:/e.sh:ro" \
+    --entrypoint /bin/sh "$alertmanager_image" /e.sh --version
+}
+alertmanager_entrypoint "prod overlay" "$prod_json"
+alertmanager_entrypoint "deploy" "$deploy_json"
 
 # --- 9. Pins in sync ---------------------------------------------------------
-# compose.deploy.yml repeats these by hand, and nothing else notices drift.
+# The deploy files repeat these by hand, and nothing else notices drift.
 shape() { jq -c --arg s "$1" '.services[$s] | {image, command}' <<<"$2"; }
 
 if [ -n "$prod_json" ] && [ -n "$deploy_json" ]; then
@@ -318,9 +397,9 @@ if [ -n "$prod_json" ] && [ -n "$deploy_json" ]; then
       drifted+="$service "
   done
   if [ -z "$drifted" ]; then
-    pass "compose.deploy.yml runs the same images and commands as compose.yml"
+    pass "the deploy files run the same images and commands as compose.yml"
   else
-    fail "image or command differs between compose.yml and compose.deploy.yml: $drifted"
+    fail "image or command differs between compose.yml and the deploy files: $drifted"
   fi
 fi
 

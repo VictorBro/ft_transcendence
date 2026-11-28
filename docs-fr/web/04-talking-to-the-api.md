@@ -908,9 +908,15 @@ avec `readCode`. Un 429 porte aussi `retryAfter` (les secondes à attendre), qui
 
 Appelant : `components/lesson/discussion.tsx` (chapitre 7).
 
+Le fichier exporte aussi `isThinking(asking)` : vrai depuis l'envoi jusqu'au premier mot de la réponse.
+Un heartbeat ou un morceau vide n'y met pas fin. La discussion s'en sert pour ses points « réfléchit »
+(chapitre 7).
+
 **Test :** [discussion-client.test.ts](../../apps/web/lib/discussion-client.test.ts) vérifie la route,
 des morceaux coupés n'importe où dans le body, du texte qui arrive avant la fin, un événement d'erreur, un
-stream coupé, un 429 avec `retryAfter`, un refus avec et sans JSON, et un échec réseau.
+stream coupé, un 429 avec `retryAfter`, un refus avec et sans JSON, et un échec réseau. Pour `isThinking`,
+il envoie un heartbeat, un morceau vide, puis le premier mot, et vérifie qu'il est faux après une erreur ou
+quand `asking` vaut `null`.
 
 ### `placement-client.ts` — l'examen de placement
 
@@ -1075,6 +1081,7 @@ Et les lecteurs côté serveur, pour comparer (tous en GET, appelés depuis `htt
 | friends.ts          | `requireFriends`              | `/api/friends`                        |
 | friends.ts          | `searchUsers`                 | `/api/users?q=...`                    |
 | friends.ts          | `recentlyActive`              | `/api/users/recently-active`          |
+| friends.ts          | `friendPending`               | `/api/friends/pending`                |
 | friends.ts          | `loadProfile`                 | `/api/users/:id` (404 = not-found)    |
 | conversations.ts    | `requireConversations`        | `/api/conversations`                  |
 | conversations.ts    | `loadMessagePage`             | `/api/conversations/:userId/messages` |

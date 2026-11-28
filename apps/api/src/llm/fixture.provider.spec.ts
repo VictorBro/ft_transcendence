@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import { FIXTURE_ANSWER, FIXTURE_FAILURES, FixtureProvider } from './fixture.provider';
 import { LlmError, StreamRequest } from './llm.provider';
@@ -39,6 +39,30 @@ describe('FixtureProvider', () => {
     });
   });
 
+  describe('check', () => {
+    afterEach(() => {
+      vi.unstubAllGlobals();
+    });
+
+    // No key and no network on a stack without a key: there is nothing to test.
+    it('answers fixture without calling anyone', async () => {
+      const fetchMock = vi.fn<typeof fetch>();
+      vi.stubGlobal('fetch', fetchMock);
+
+      await expect(new FixtureProvider().check()).resolves.toEqual({
+        status: 'fixture',
+        latencyMs: null,
+        httpStatus: null,
+        retryAt: null,
+      });
+      expect(fetchMock).not.toHaveBeenCalled();
+    });
+
+    it('shows no model', () => {
+      expect(new FixtureProvider().info).toStrictEqual({ provider: 'fixture', model: null });
+    });
+  });
+
   describe('streamText', () => {
     it('sends the fixed answer piece by piece', async () => {
       const { pieces, error } = await read(new FixtureProvider(0).streamText(request('Why "le"?')));
@@ -63,6 +87,21 @@ describe('FixtureProvider', () => {
 
       expect(pieces).toEqual([]);
       expect(error).toMatchObject({ reason: 'unreachable', retryable: true });
+    });
+
+    // What GeminiProvider throws on Google's 429 for the quota of the day.
+    it('fails before any text over the quota of the day, saying so', async () => {
+      const { pieces, error } = await read(
+        new FixtureProvider(0).streamText(request(`Hi ${FIXTURE_FAILURES.quotaDay}`)),
+      );
+
+      expect(pieces).toEqual([]);
+      expect(error).toBeInstanceOf(LlmError);
+      expect(error).toMatchObject({
+        reason: 'rate_limited',
+        retryable: false,
+        quota: { scope: 'day', retryAfterS: 3600 },
+      });
     });
 
     it('fails after part of the answer when the connection drops midway', async () => {

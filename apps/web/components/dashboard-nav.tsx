@@ -3,6 +3,7 @@ import { HeaderMenu } from './header-menu';
 import { LanguageSwitcher } from './language-switcher';
 import { SessionNav } from './session-nav';
 import { loadCourses } from '@/lib/courses';
+import { friendPending } from '@/lib/friends';
 import { currentUser } from '@/lib/session';
 
 /**
@@ -21,9 +22,8 @@ export async function DashboardNav() {
     </>
   );
 
-  return user === null ? (
-    <div className="flex min-w-0 flex-wrap items-center gap-x-4 gap-y-2">{items}</div>
-  ) : (
-    <HeaderMenu>{items}</HeaderMenu>
-  );
+  if (user === null) {
+    return <div className="flex min-w-0 flex-wrap items-center gap-x-4 gap-y-2">{items}</div>;
+  }
+  return <HeaderMenu requests={await friendPending()}>{items}</HeaderMenu>;
 }

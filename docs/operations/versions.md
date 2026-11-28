@@ -19,7 +19,7 @@ look again, and the lessons a bump should not have to learn twice. Last full rev
 | Zod | One version in `packages/shared`, `apps/api` and `apps/web`: the validation pipe relies on `instanceof ZodError` across packages. |
 | Vitest | `vitest`, `@vitest/coverage-v8` and `vite` (a required peer) in the four packages that test. |
 | Playwright | Compare the devcontainer's apt list with `playwright-core`'s `nativeDeps` for debian13. CI needs nothing: it runs the suite in `mcr.microsoft.com/playwright:v<version>-noble` (`scripts/playwright-in-image.sh`), whose tag follows `@playwright/test`, with the runner's Node. |
-| Upstream images | `compose.yml` and `compose.deploy.yml`: `scripts/check-monitoring-config.sh` fails when caddy, db, redis or an exporter differs. Nothing checks the other copies: pgvector in `ci.yml`, `hygiene.yml` and `docs/architecture/technical-plan.md`, redis in `ci.yml`. |
+| Upstream images | `compose.yml`, `compose.deploy.yml` and `compose.deploy.monitoring.yml`: `scripts/check-monitoring-config.sh` fails when caddy, db, redis or an exporter differs. Nothing checks the other copies: pgvector in `ci.yml`, `hygiene.yml` and `docs/architecture/technical-plan.md`, redis in `ci.yml`. |
 | Prometheus | `infra/monitoring/prometheus/Dockerfile` and `prometheusVersion` in `infra/monitoring/grafana/provisioning/datasources/datasources.yml`, which Grafana's query builder reads. Nothing checks that they match. |
 | GitHub Actions | Tags from each action's releases API, not from blog posts. `aquasecurity/trivy-action` is pinned by commit (76 of its 77 tags were force-pushed to malicious commits in March 2026), with the scanner's `version` set. |
 

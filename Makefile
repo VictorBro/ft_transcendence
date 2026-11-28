@@ -5,8 +5,11 @@
 # tests with coverage thresholds, builds, Supertest e2e), then the production
 # stack (build, up, migrate, seed, certs), then Playwright against it on
 # Chromium, console gate included. CI also runs Firefox and WebKit, and so does
-# `make playwright-all`: run it before a PR that touches the UI. It leaves the
-# app running, and works the same inside the devcontainer and on a host shell.
+# `make playwright-all`: run it before a PR that touches the UI. Every test runs
+# on the fixture tutor with no key, so no step spends the LLM key, and Prometheus
+# proves it before the end (llm-spend-check); it then leaves the app running
+# with the provider .env names. Run it inside the devcontainer: on a host shell
+# most targets refuse (check-devcontainer below).
 #
 # `make run` is the launch-only slice of that, no checks: what an evaluator
 # needs to see the app. `make dev` is the hot-reload development stack.
@@ -71,9 +74,13 @@ DB_HOST    := $(if $(IN_CONTAINER),db,127.0.0.1)
 REDIS_HOST := $(if $(IN_CONTAINER),redis,127.0.0.1)
 
 # Make does not read .env, so pull the two host ports out of it. A value already
-# in the environment wins.
-ENV_FILE := $(wildcard .env)
-env_get = $(strip $(if $(ENV_FILE),$(shell sed -n 's/^[[:space:]]*$(1)=//p' $(ENV_FILE) | tail -1)))
+# in the environment wins. Read at each use, not once at parse time: env-file
+# may create .env, or fill its SESSION_SECRET, after make has started.
+# Parsed as compose reads it, like env_get in .devcontainer/initialize.sh: an
+# optional `export`, the last line wins, a ` #` starts a comment, and quotes
+# are not part of the value. Otherwise make would build a DATABASE_URL with
+# another password than the one compose gave the db.
+env_get = $(strip $(shell sed -n 's/^[[:space:]]*\(export[[:space:]][[:space:]]*\)\{0,1\}$(1)=//p' .env 2>/dev/null | tail -1 | sed 's/[[:space:]]\#.*$$//' | tr -d "\"'\r"))
 POSTGRES_HOST_PORT ?= $(or $(call env_get,POSTGRES_HOST_PORT),5432)
 REDIS_HOST_PORT    ?= $(or $(call env_get,REDIS_HOST_PORT),6379)
 
@@ -90,26 +97,42 @@ PUBLIC_URL  := https://localhost$(PUBLIC_PORT)
 DB_PORT    := $(if $(IN_CONTAINER),5432,$(POSTGRES_HOST_PORT))
 REDIS_PORT := $(if $(IN_CONTAINER),6379,$(REDIS_HOST_PORT))
 
+# The database, as compose.yml builds the api's DATABASE_URL: POSTGRES_* from the
+# shell, then .env, then compose's defaults. .env holds no DATABASE_URL, so the
+# password lives in one place. Read once, at parse time: env-file only ever
+# writes the template's values, which are these defaults. := so the exported
+# DATABASE_URL below runs no sed on every recipe line.
+PG_USER     := $(or $(POSTGRES_USER),$(call env_get,POSTGRES_USER),ft)
+PG_PASSWORD := $(or $(POSTGRES_PASSWORD),$(call env_get,POSTGRES_PASSWORD),ft_local_dev)
+PG_DB       := $(or $(POSTGRES_DB),$(call env_get,POSTGRES_DB),ft_transcendence)
+pg_url       = postgresql://$(PG_USER):$(PG_PASSWORD)@$(1)/$(PG_DB)?schema=public
+
 # Exported so `pnpm test` and the Supertest suite see them without every recipe
 # repeating them. Existing values from the shell win.
-DATABASE_URL ?= postgresql://ft:ft_local_dev@$(DB_HOST):$(DB_PORT)/ft_transcendence?schema=public
+# SESSION_SECRET reaches every compose command too, and compose prefers the
+# shell over .env: so it takes the value .env holds, which env-file generates,
+# and falls back to the dev value only when .env has none.
+DATABASE_URL ?= $(call pg_url,$(DB_HOST):$(DB_PORT))
 REDIS_URL    ?= redis://$(REDIS_HOST):$(REDIS_PORT)
-SESSION_SECRET ?= dev-only-session-secret-change-me-at-least-32-chars
-export DATABASE_URL REDIS_URL SESSION_SECRET
+SESSION_SECRET ?= $(or $(call env_get,SESSION_SECRET),dev-only-session-secret-change-me-at-least-32-chars)
+# The `source` label on this stack's alerts, so a Discord alert from a laptop
+# names whose: `local (<git user.name>)`, unless .env sets ALERT_SOURCE.
+ALERT_SOURCE ?= $(or $(call env_get,ALERT_SOURCE),local ($(or $(shell git config user.name 2>/dev/null),unknown)))
+export DATABASE_URL REDIS_URL SESSION_SECRET ALERT_SOURCE
 
-# DATABASE_URL for the tooling container, which runs ON the compose network and
-# therefore always uses the service name. A local .env wins; without one the
-# compose defaults apply, which is what CI and a fresh clone use.
-DEFAULT_DATABASE_URL := postgresql://ft:ft_local_dev@db:5432/ft_transcendence?schema=public
-ifneq ($(wildcard .env),)
-DB_ENV := --env-file .env
-else
-DB_ENV := -e DATABASE_URL='$(DEFAULT_DATABASE_URL)'
-endif
+# The tooling container runs ON the compose network, so its database is db:5432
+# whatever DB_HOST says: migrate, seed and studio export that URL instead, which
+# also beats the one a parent make exported. .env goes in for the seed's
+# DEMO_PASSWORD, and DATABASE_URL after it, from the environment and never argv,
+# which `ps` shows every local user: a later -e wins over --env-file, so a
+# DATABASE_URL line left in an old .env never reaches the container. Without a
+# .env, the compose defaults apply, which is what CI and a fresh clone use.
+DB_ENV = $(if $(wildcard .env),--env-file .env) -e DATABASE_URL
+migrate seed studio: export DATABASE_URL = $(call pg_url,db:5432)
 
 .PHONY: all run dev up build down logs ps shell test test-e2e playwright playwright-all lint format typecheck report \
         migrate migrate-new seed db-ready studio redis-ui reset-db ci stores-up clean certs tooling-image doctor help \
-				check-devcontainer env-file monitoring-up monitoring-check
+				check-devcontainer env-file monitoring-up monitoring-check llm-spend-check
 
 # Building on the host uses the wrong Node, the wrong pnpm store and a bind
 # mount, so most targets refuse to run there. FT_DEVCONTAINER is set on the
@@ -149,21 +172,38 @@ db-ready: .EXTRA_PREREQS :=
 # --- the one command ---------------------------------------------------------
 
 ## all: every CI check, then the running app, then Playwright against it
-all:
+# env-file first, here and in run: the sub-makes inherit the SESSION_SECRET this
+# make exports, and `?=` never overrides the environment, so it must already be
+# the generated one.
+# The stack under test runs the fixture tutor with no key, whatever .env says:
+# the browser suite takes placement exams, which make the API generate
+# questions, and on a real key that spends its daily quota (20 requests a day on
+# a free Gemini key, Nov 2026). Both given on the command line, so they reach
+# every sub-make of `run` and, through the environment, compose, which prefers
+# the shell over .env: the api container never holds the key. playwright
+# refuses a real provider anyway. llm-spend-check then asks Prometheus whether
+# anything called the LLM since this make started (ALL_STARTED, := so it is
+# read when make reads this file). The last `up` puts the API back on the
+# provider .env names, so `make` still ends with the stack you configured.
+all: ALL_STARTED := $(shell date +%s)
+all: env-file
 	@$(MAKE) --no-print-directory ci
-	@$(MAKE) --no-print-directory run
+	@$(MAKE) --no-print-directory run LLM_PROVIDER=fixture LLM_API_KEY=
 	@$(MAKE) --no-print-directory monitoring-check
 	@$(MAKE) --no-print-directory playwright
-	@printf '\n  ALL GREEN: checks, build, e2e on Chromium (console gate included) all passed.\n'
-	@printf '  CI also runs Firefox and WebKit: `make playwright-all` does too.\n'
-	@printf '  The PRODUCTION stack is now running at $(PUBLIC_URL)\n'
+	@$(MAKE) --no-print-directory llm-spend-check SINCE=$(ALL_STARTED)
+	@$(MAKE) --no-print-directory up
+	@printf '\n  ALL GREEN: checks, build, e2e on Chromium (console gate included) all passed,\n'
+	@printf '  on the fixture tutor: Prometheus saw no LLM call during the run.\n'
+	@printf '  CI also runs Firefox and WebKit: `make playwright-all` does too, on the fixture as well.\n'
+	@printf '  The PRODUCTION stack is now running at $(PUBLIC_URL), on the LLM provider .env names.\n'
 	@printf '  `make dev` gets hot reload back, `make down` stops everything.\n'
 	@printf '  `make report` opens the Playwright report.\n\n'
 
 # --- the evaluator path ------------------------------------------------------
 
 ## run: build, start, migrate, seed, export the root CA (no checks)
-run:
+run: env-file
 	@$(MAKE) --no-print-directory up
 	@$(MAKE) --no-print-directory db-ready
 	@# certs runs last, not first: Caddy mints its internal CA on first boot, so
@@ -174,8 +214,8 @@ run:
 	@printf '  Grafana:                      $(PUBLIC_URL)/grafana  (admin, password: grep GRAFANA_ADMIN_PASSWORD .env)\n'
 	@printf '  Logs:                         make logs\n\n'
 
-# env-file: compose.prod.yml requires both Grafana keys, see the monitoring
-# section below.
+# env-file: compose.prod.yml requires SESSION_SECRET and both Grafana keys,
+# which env-file writes into .env (the monitoring section below).
 build: env-file ## Build the production images
 	$(COMPOSE_PROD) build
 
@@ -242,38 +282,70 @@ shell: ## Shell into a running service: make shell SERVICE=web
 
 # --- monitoring --------------------------------------------------------------
 
-# Grafana skips an empty GF_ variable and keeps admin/admin, and a value in
-# .env.example would be a password published in this repo. So make writes
-# random ones into .env, once, before anything starts Grafana. A fresh clone
-# gets .env from the template first, which is the README's first step anyway.
-# Not exported to the shell on purpose: compose prefers the shell over .env, so
-# an exported empty value would win over the real one.
-GENERATED_SECRETS := GRAFANA_ADMIN_PASSWORD GRAFANA_SECRET_KEY
+# compose.prod.yml has no fallback for these: Grafana skips an empty GF_
+# variable and keeps admin/admin, and the dev SESSION_SECRET in compose.yml is
+# public. A value in .env.example would be a secret published in this repo, so
+# make writes random ones into .env, once, before anything starts the stack.
+# A fresh clone has no .env yet: env-file copies the template first.
+# The Grafana keys are not exported to the shell on purpose: compose prefers the
+# shell over .env, so an exported empty value would win over the real one.
+# SESSION_SECRET is, above, with the value .env holds.
+GENERATED_SECRETS := SESSION_SECRET GRAFANA_ADMIN_PASSWORD GRAFANA_SECRET_KEY
+# Keys the template has dropped and nothing reads any more. env-file deletes
+# them, since check-env-example.sh fails on a .env key the template lacks.
+# DATABASE_URL: compose and make build it from POSTGRES_* now, and a stale copy
+# would still win in `generation:try`, which loads .env itself.
+RETIRED_ENV_KEYS := DATABASE_URL
 # The services behind the monitoring profile in compose.override.yml.
 MONITORING_SERVICES := prometheus alertmanager grafana node-exporter postgres-exporter \
                        redis-exporter blackbox-exporter
 
-env-file: ## Create .env if missing, generate the Grafana secrets, add new keys
+env-file: ## Create .env if missing, generate its empty secrets, add new keys, drop retired ones
 	@if [ ! -f .env ]; then cp .env.example .env; printf 'env-file: created .env from .env.example\n'; fi
 	@# A last line with no newline would swallow the first key appended below.
 	@[ -z "$$(tail -c1 .env)" ] || echo >> .env
+	@# Set or not is read as env_get reads it, so a CRLF line's \r is no value.
+	@# An empty line is filled through a copy, as the retired keys below are.
 	@for key in $(GENERATED_SECRETS); do \
-	  grep -qE "^$$key=.+" .env && continue; \
+	  [ -n "$$(sed -n "s/^[[:space:]]*\(export[[:space:]][[:space:]]*\)\{0,1\}$$key=//p" .env | tail -1 | sed 's/[[:space:]]#.*$$//' | tr -d "\"' \t\r")" ] && continue; \
 	  value=$$(od -An -N24 -tx1 /dev/urandom | tr -d ' \n'); \
 	  if grep -q "^$$key=" .env; then \
-	    sed -i.bak "s/^$$key=.*/$$key=$$value/" .env && rm -f .env.bak; \
+	    tmp=$$(mktemp); \
+	    awk -v k="$$key" -v v="$$value" 'index($$0, k "=") == 1 { print k "=" v; next } { print }' .env >"$$tmp" \
+	      || { echo "env-file: could not copy .env, left as it was" >&2; rm -f "$$tmp"; exit 1; }; \
+	    cat "$$tmp" >.env || { echo "env-file: could not write .env, its full content is in $$tmp" >&2; exit 1; }; \
+	    rm -f "$$tmp"; \
 	  else \
 	    printf '%s=%s\n' "$$key" "$$value" >> .env; \
 	  fi; \
 	  printf 'env-file: generated %s in .env\n' "$$key"; \
 	done
+	@# The key name only, never the line: it may hold a password. Written
+	@# through, not `sed -i`, which would turn a symlinked .env into a plain
+	@# file (initialize.sh writes through it too) and leave the key in the
+	@# link's target. mktemp makes the copy readable by its owner only. grep
+	@# exits 1 when .env held only that key, 2 on a failed write (a full /tmp).
+	@for key in $(RETIRED_ENV_KEYS); do \
+	  pattern="^[[:space:]]*(export[[:space:]]+)?$$key="; \
+	  grep -qE "$$pattern" .env || continue; \
+	  tmp=$$(mktemp); \
+	  grep -vE "$$pattern" .env >"$$tmp" || [ $$? -eq 1 ] \
+	    || { echo "env-file: could not copy .env, left as it was" >&2; rm -f "$$tmp"; exit 1; }; \
+	  cat "$$tmp" >.env || { echo "env-file: could not write .env, its full content is in $$tmp" >&2; exit 1; }; \
+	  rm -f "$$tmp"; \
+	  printf 'env-file: removed %s from .env: nothing reads it any more\n' "$$key"; \
+	done
 	@# check-env-example.sh wants every template key in .env, and an existing .env
 	@# predates the newer ones: append each missing line as the template has it.
-	@for key in $$(sed -nE 's/^([A-Za-z_][A-Za-z0-9_]*)=.*/\1/p' .env.example); do \
+	@# At the end, not in the template's place: align-env.sh does that.
+	@added=; \
+	for key in $$(sed -nE 's/^([A-Za-z_][A-Za-z0-9_]*)=.*/\1/p' .env.example); do \
 	  grep -q "^$$key=" .env && continue; \
 	  grep -m1 "^$$key=" .env.example >> .env; \
 	  printf 'env-file: added %s to .env from .env.example\n' "$$key"; \
-	done
+	  added=1; \
+	done; \
+	[ -z "$$added" ] || printf 'env-file: scripts/align-env.sh moves them to their place in the template\n'
 
 # Through `dev`, not a second `up`: that is what creates the masked dirs before
 # Docker can plant them root-owned in the repo, migrates and seeds (the
@@ -286,18 +358,53 @@ monitoring-up: env-file ## Dev stack plus Prometheus, Grafana, Alertmanager: htt
 monitoring-check: ## Every scrape target up, every rule healthy, Alertmanager found
 	COMPOSE="$(COMPOSE_DEV) --profile monitoring" ./scripts/check-monitoring.sh
 
+# `all` runs it after the suite, with SINCE at its own start. Alone:
+#   make llm-spend-check SINCE=$(date -d '1 hour ago' +%s)
+llm-spend-check: ## Fail if Prometheus counted an LLM call since SINCE (epoch seconds)
+	COMPOSE="$(COMPOSE_DEV) --profile monitoring" SINCE='$(SINCE)' ./scripts/check-llm-spend.sh
+
 # --- checks ------------------------------------------------------------------
 
 test: ## Unit tests across the workspace
 	pnpm run test
 
-test-e2e: ## Playwright against the production stack (starts it if needed)
-	@$(MAKE) --no-print-directory up
+# On the fixture tutor with no key, as in `all`, then back to the provider .env
+# names. A failed suite stops before that last `up`, so the stack stays the one
+# the suite saw; `make up` puts .env's provider back. env-file first, as for
+# `all`: the sub-makes inherit the SESSION_SECRET this make exports.
+test-e2e: env-file ## Playwright on Chromium against the production stack, on the fixture tutor, then back to .env's
+	@$(MAKE) --no-print-directory up LLM_PROVIDER=fixture LLM_API_KEY=
 	@$(MAKE) --no-print-directory playwright
+	@$(MAKE) --no-print-directory up
+
+# One variable of a service's container, as Docker holds it. Not `compose exec
+# printenv`: in the rootful devcontainer the socket is a socat bridge, and an
+# exec whose stdin is closed (make < /dev/null, an agent's shell) can end early
+# with no output and status 0. inspect is a plain API call. Only the value
+# leaves the pipe: the other lines hold the secrets. Empty when the service
+# does not run.
+service_env = $$({ docker inspect --format '{{range .Config.Env}}{{println .}}{{end}}' $$($(COMPOSE_DEV) ps -q $(1) 2>/dev/null) 2>/dev/null || true; } | sed -n 's/^$(2)=//p' | tail -1)
+api_env = $(call service_env,api,$(1))
 
 # The suite alone, for a caller that has just brought the stack up: `all` gets
 # it from `run`, and a second `up` is one more build and health wait.
-playwright:
+playwright: ## The browser suite on the stack already up; refuses a real LLM unless E2E_REAL_LLM=1
+	@# First, before any browser download: the suite takes placement exams, and
+	@# on a real provider their restocks spend the key. Unreadable (no api
+	@# running) counts as real. E2E_REAL_LLM=1, on the command line or in the
+	@# environment, is the deliberate run on a real key.
+	@provider="$(call api_env,LLM_PROVIDER)"; \
+	case "$$provider" in \
+	  fixture | disabled) ;; \
+	  *) if [ "$${E2E_REAL_LLM:-}" = 1 ]; then \
+	       printf 'playwright: E2E_REAL_LLM=1: running on LLM_PROVIDER=%s, which spends its key.\n' "$$provider" >&2; \
+	     else \
+	       printf 'playwright: the api runs LLM_PROVIDER=%s. The suite takes placement exams, and on a real provider\n' "$${provider:-(unreadable: is the stack up?)}" >&2; \
+	       printf '  their question restocks spend the key. `make test-e2e` and `make playwright-all` run it on the\n' >&2; \
+	       printf '  fixture, then put .env'"'"'s provider back. E2E_REAL_LLM=1 runs it on this api anyway.\n' >&2; \
+	       exit 1; \
+	     fi ;; \
+	esac
 	@# Chromium whatever BROWSERS says: the restart run below pins it.
 	pnpm --filter @ft/e2e exec playwright install $(sort chromium $(BROWSERS))
 	@# The accounts the browser suite signs up are real rows. Removing them keeps
@@ -307,29 +414,34 @@ playwright:
 	@# hint, which it gates on isTTY. The command it prints only works from e2e/;
 	@# `make report` works anywhere.
 	@# The Grafana password is the one the container got, not a second parse of
-	@# .env: compose strips dotenv quotes and make would not. A shell value still
-	@# wins, as it does for compose. Through the environment, never argv, which
-	@# `ps` shows every local user.
+	@# .env: env_get is simpler than compose's parser (quotes, ` #`), so the
+	@# container's value is the one the suite must use. Read with service_env,
+	@# as every value below. A shell value still wins, as it does for compose.
+	@# Through the environment, never argv, which `ps` shows every local user.
 	@# The signup, login and discussion limits come from the api container the same way, so
 	@# the suite queues to what the api really runs with
 	@# (e2e/support/signup-budget.ts). Empty means the default on both sides.
-	@# So does the tutor's provider: the two discussion tests that read the fixture
-	@# tutor's answer skip themselves on a stack that runs a real one, instead of
-	@# failing on whatever LLM_PROVIDER a developer keeps in .env. CI runs fixture.
+	@# So does the tutor's provider, through api_env as for the guard above: the
+	@# two discussion tests that read the fixture tutor's answer skip themselves
+	@# on a stack that runs a real one (E2E_REAL_LLM=1). CI runs fixture.
 	@# Then the restart run (e2e/tests/restart.spec.ts): it restarts the API of
-	@# the production stack once, on Chromium only, since two restarts in 15
-	@# minutes fire ApiRestarting. When `up` has just recreated a rebuilt api
-	@# container, as `test-e2e` and `all` can, this one is the second, and
-	@# ApiRestarting firing once is expected. Only after a green suite, as in CI:
-	@# it would overwrite the failed suite's report and traces.
+	@# the production stack once, on Chromium only, since two starts in 15
+	@# minutes fire ApiRestarting. It fires anyway after most runs of the callers
+	@# that bring the stack up. Their first `up` recreates the api when its image
+	@# was rebuilt, so this restart is the second start. With a provider or a key
+	@# in .env, `all`, `test-e2e` and `playwright-all` start it three times: on
+	@# the fixture, here, and back on .env's provider. Both are expected; on a
+	@# laptop the alert reaches Discord only with a webhook set. Only after a
+	@# green suite, as in CI: it would overwrite the failed suite's report and
+	@# traces.
 	@set +e; \
-	GRAFANA_ADMIN_PASSWORD="$${GRAFANA_ADMIN_PASSWORD:-$$($(COMPOSE_DEV) exec -T grafana printenv GF_SECURITY_ADMIN_PASSWORD 2>/dev/null)}"; \
+	GRAFANA_ADMIN_PASSWORD="$${GRAFANA_ADMIN_PASSWORD:-$(call service_env,grafana,GF_SECURITY_ADMIN_PASSWORD)}"; \
 	export GRAFANA_ADMIN_PASSWORD; \
-	SIGNUP_LIMIT_PER_MINUTE="$$($(COMPOSE_DEV) exec -T api printenv SIGNUP_LIMIT_PER_MINUTE 2>/dev/null)"; \
-	LOGIN_LIMIT_PER_MINUTE="$$($(COMPOSE_DEV) exec -T api printenv LOGIN_LIMIT_PER_MINUTE 2>/dev/null)"; \
-	LLM_DISCUSSION_GLOBAL_PER_MINUTE="$$($(COMPOSE_DEV) exec -T api printenv LLM_DISCUSSION_GLOBAL_PER_MINUTE 2>/dev/null)"; \
-	LLM_DISCUSSION_USER_PER_MINUTE="$$($(COMPOSE_DEV) exec -T api printenv LLM_DISCUSSION_USER_PER_MINUTE 2>/dev/null)"; \
-	LLM_PROVIDER="$$($(COMPOSE_DEV) exec -T api printenv LLM_PROVIDER 2>/dev/null)"; \
+	SIGNUP_LIMIT_PER_MINUTE="$(call api_env,SIGNUP_LIMIT_PER_MINUTE)"; \
+	LOGIN_LIMIT_PER_MINUTE="$(call api_env,LOGIN_LIMIT_PER_MINUTE)"; \
+	LLM_DISCUSSION_GLOBAL_PER_MINUTE="$(call api_env,LLM_DISCUSSION_GLOBAL_PER_MINUTE)"; \
+	LLM_DISCUSSION_USER_PER_MINUTE="$(call api_env,LLM_DISCUSSION_USER_PER_MINUTE)"; \
+	LLM_PROVIDER="$(call api_env,LLM_PROVIDER)"; \
 	export SIGNUP_LIMIT_PER_MINUTE LOGIN_LIMIT_PER_MINUTE LLM_DISCUSSION_GLOBAL_PER_MINUTE LLM_DISCUSSION_USER_PER_MINUTE LLM_PROVIDER; \
 	E2E_BASE_URL=$(E2E_BASE_URL) pnpm --filter @ft/e2e run test:e2e $(addprefix --project=,$(BROWSERS)) < /dev/null; \
 	status=$$?; \
@@ -337,12 +449,13 @@ playwright:
 	  E2E_BASE_URL=$(E2E_BASE_URL) pnpm --filter @ft/e2e run test:e2e:restart < /dev/null; \
 	  status=$$?; \
 	fi; \
-	$(COMPOSE_DEV) exec -T db psql -U ft -d ft_transcendence \
+	$(COMPOSE_DEV) exec -T db psql -U '$(PG_USER)' -d '$(PG_DB)' \
 	  -c "delete from \"User\" where email like '$(E2E_EMAIL_PREFIX)%@example.com';" >/dev/null; \
 	exit $$status
 
-playwright-all: ## Playwright on Chromium, Firefox and WebKit, as CI runs it (stack must be up)
-	@$(MAKE) --no-print-directory playwright BROWSERS="chromium firefox webkit"
+# env-file first too: test-e2e inherits the SESSION_SECRET this make exports.
+playwright-all: env-file ## test-e2e on Chromium, Firefox and WebKit, as CI runs it
+	@$(MAKE) --no-print-directory test-e2e BROWSERS="chromium firefox webkit"
 
 lint: ## ESLint across the workspace
 	pnpm run lint

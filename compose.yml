@@ -15,7 +15,8 @@ name: ft_transcendence
 # forever unless told otherwise. Caddy's access log holds each visitor's IP
 # address, and the Privacy Policy (section 5) says those logs are capped and
 # rotated out, oldest first: three files of 10 MB per container, at most.
-# compose.deploy.yml carries its own copy: anchors do not cross files.
+# compose.deploy.yml and compose.deploy.monitoring.yml carry their own copies:
+# anchors do not cross files.
 x-logging: &logging
   driver: json-file
   options:
@@ -110,7 +111,11 @@ services:
       PORT: 3001
       # Surfaced by GET /api/health so a running container can be identified.
       APP_VERSION: ${APP_VERSION:-0.0.0}
-      DATABASE_URL: ${DATABASE_URL:-postgresql://ft:ft_local_dev@db:5432/ft_transcendence?schema=public}
+      # Built from the db service's POSTGRES_* below, as compose.deploy.yml does,
+      # so the api always has the password the database was created with. Never
+      # from .env or the shell: make exports a DATABASE_URL for the natively run
+      # tests, whose host this network may not have.
+      DATABASE_URL: postgresql://${POSTGRES_USER:-ft}:${POSTGRES_PASSWORD:-ft_local_dev}@db:5432/${POSTGRES_DB:-ft_transcendence}?schema=public
       REDIS_URL: ${REDIS_URL:-redis://redis:6379}
       SESSION_SECRET: ${SESSION_SECRET:-dev-only-session-secret-change-me-at-least-32-chars}
       LLM_PROVIDER: ${LLM_PROVIDER:-fixture}
@@ -187,6 +192,9 @@ services:
     logging: *logging
     build:
       context: infra/monitoring/prometheus
+    environment:
+      # The `source` label on every alert. make sets `local (<git user.name>)`.
+      ALERT_SOURCE: ${ALERT_SOURCE:-local}
     volumes:
       - prometheus-data:/prometheus
     networks:
@@ -211,7 +219,10 @@ services:
       GRAFANA_URL: https://localhost:${HTTPS_PORT:-443}/grafana
     tmpfs:
       # The entrypoint writes the webhook here, so it never lands on a volume.
-      - /run/alertmanager
+      # Owned by nobody (65534), the user the entrypoint runs as: without the
+      # owner, the tmpfs is root's after a restart and the write fails, so
+      # alertmanager crash-loops whenever DISCORD_WEBHOOK_URL is set.
+      - /run/alertmanager:uid=65534,gid=65534,mode=0700
     volumes:
       - alertmanager-data:/alertmanager
     networks:

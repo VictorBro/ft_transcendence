@@ -260,7 +260,7 @@ The same file holds the constants `RECOVERY_CODE_COUNT = 10`, `RECOVERY_CODE_GRO
 | Method | Path | Guard | Rate limit (per IP) | What it does |
 |---|---|---|---|---|
 | POST | `/auth/signup` | `@Public` | signup (20/min) | Create account, start a session, return the user (201) |
-| POST | `/auth/login` | `@Public` | login (5/min) | Check password. No 2FA: session + user (200). With 2FA: pending session + `{ twoFactorRequired: true }` (202) |
+| POST | `/auth/login` | `@Public` | login (20/min) | Check password. No 2FA: session + user (200). With 2FA: pending session + `{ twoFactorRequired: true }` (202) |
 | POST | `/auth/2fa/verify` | `@Public` | login | Finish a pending login with a TOTP or recovery code |
 | GET | `/auth/2fa` | session | — | 2FA status of my account |
 | POST | `/auth/2fa/setup` | session | — | Start enrolment: new secret + QR code (409 if 2FA is already on) |

@@ -2,12 +2,15 @@
 
 **Type :** Minor (module custom). **Points :** 1. **Statut :** fait.
 
-L'app ne tourne pas seulement sur un ordinateur portable. Elle tourne sur un serveur dans Oracle Cloud, sous un
-vrai nom de domaine, avec un certificat de Let's Encrypt (une autorité de certification
+L'app ne tourne pas seulement sur un ordinateur portable. Elle tourne sur des serveurs publics, sous de vrais
+noms de domaine, avec des certificats de Let's Encrypt (une autorité de certification
 gratuite que tous les navigateurs acceptent). N'importe qui sur internet peut ouvrir
-<https://transcendence.dpdns.org> et voir un cadenas vert, sans avertissement à passer.
-Une deuxième copie tourne sur <https://trans.vyantares.ch>, sur un serveur où
-un autre serveur web occupe déjà les ports HTTPS.
+<https://trans.vyantares.ch>, le déploiement principal, et voir un cadenas vert, sans avertissement à passer.
+Ce serveur fait aussi tourner le monitoring, et un autre serveur web y occupe déjà les ports HTTPS.
+Une copie secondaire tourne sur une instance Oracle Cloud qu'on a mise en place, à
+<https://transcendence.dpdns.org>, derrière son propre pare-feu, où notre propre Caddy obtient le certificat.
+Cette copie est la preuve de ce module. Elle tourne sans monitoring : la petite VM gratuite n'a pas assez
+de mémoire pour ça.
 
 ## Ce que demande le sujet
 
@@ -63,20 +66,23 @@ navigateur accepte sans qu'on le lui dise.
 Un module custom n'a pas de liste d'exigences fixe, donc ce tableau liste ce qu'on annonce et
 où se trouve la preuve.
 
-| Ce qu'on annonce                                                              | Ce qu'on a construit                                                                                                                                                                                                      | Où                                                                                                                                                          |
-| ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Un serveur dans un cloud public                                               | Une instance Oracle Cloud (Ubuntu 24.04) dans la région `eu-zurich-1`, configurée avec les réglages du runbook et pilotée avec l'outil en ligne de commande OCI, avec Docker installé au premier démarrage par cloud-init | [`../operations/deployment.md`](../operations/deployment.md) sections 1 et 2                                                                                |
-| Un pare-feu qui ouvre seulement ce qui est nécessaire                         | La security list du cloud ouvre 22/tcp (SSH, pour l'équipe), 80/tcp, 443/tcp et 443/udp. Rien d'autre : Grafana, Prometheus et Alertmanager ne sont jamais ouverts (3000, 9090, 9093)                                     | [`../operations/deployment.md`](../operations/deployment.md) section 2                                                                                      |
-| Un vrai nom de domaine                                                        | Un enregistrement `A`, `transcendence.dpdns.org` vers `140.238.209.2`, TTL 300                                                                                                                                            | [`../operations/deployment.md`](../operations/deployment.md) section 4                                                                                      |
-| Un certificat de Let's Encrypt, obtenu et renouvelé sans étape manuelle       | Caddy l'obtient tout seul pour `SITE_DOMAIN`, avec `ACME_EMAIL` comme adresse de contact, et le stocke dans le volume `caddy-data`                                                                                        | [`infra/caddy/Caddyfile.prod`](../../infra/caddy/Caddyfile.prod), [`compose.deploy.yml`](../../compose.deploy.yml)                                          |
-| HTTPS seulement                                                               | Le HTTP simple répond `308 Permanent Redirect` vers `https://`. HSTS (un header qui dit au navigateur d'utiliser seulement HTTPS pendant un an) est envoyé dans chaque réponse                                            | `Strict-Transport-Security` dans [`Caddyfile.prod`](../../infra/caddy/Caddyfile.prod)                                                                       |
-| Un serveur qui n'a pas besoin d'une copie du dépôt                            | Trois fichiers sur l'hôte. Chaque image est récupérée depuis le registre public `ghcr.io`, donc il n'y a ni build ni connexion au registre sur le serveur                                                                 | [`compose.deploy.yml`](../../compose.deploy.yml) (commentaire en haut)                                                                                      |
-| Des secrets de production qui ne peuvent pas retomber sur une valeur publique | `SESSION_SECRET`, `POSTGRES_PASSWORD`, `LLM_PROVIDER` et les deux clés Grafana n'ont pas de valeur par défaut : compose refuse de démarrer sans eux                                                                       | `${...:?...}` dans [`compose.deploy.yml`](../../compose.deploy.yml), [`infra/deploy/.env.example`](../../infra/deploy/.env.example)                         |
-| Un deuxième hôte derrière un autre reverse proxy                              | Un fichier overlay : notre Caddy ne publie aucun port et reçoit les requêtes du proxy de l'hôte, qui a le certificat                                                                                                      | [`compose.deploy.proxy.yml`](../../compose.deploy.proxy.yml), [`deployment.md`](../operations/deployment.md) « Derrière un autre reverse proxy »            |
+| Ce qu'on annonce                                                              | Ce qu'on a construit                                                                                                                                                                                                                                                                                                                                           | Où                                                                                                                                                                                                                                                                                                                                       |
+| ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Un serveur dans un cloud public                                               | L'instance Oracle Cloud de la copie secondaire (Ubuntu 24.04) dans la région `eu-zurich-1`, configurée avec les réglages du runbook et pilotée avec l'outil en ligne de commande OCI, avec Docker installé au premier démarrage par cloud-init                                                                                                                 | [`../operations/deployment.md`](../operations/deployment.md) sections 1 et 2                                                                                                                                                                                                                                                             |
+| Un pare-feu qui ouvre seulement ce qui est nécessaire                         | La security list du cloud ouvre 22/tcp (SSH, pour l'équipe), 80/tcp, 443/tcp et 443/udp. Rien d'autre : Grafana, Prometheus et Alertmanager ne sont jamais ouverts (3000, 9090, 9093)                                                                                                                                                                          | [`../operations/deployment.md`](../operations/deployment.md) section 2                                                                                                                                                                                                                                                                   |
+| De vrais noms de domaine                                                      | Des enregistrements `A` : `transcendence.dpdns.org` vers `140.238.209.2`, TTL 300, pour la copie Oracle, et `trans.vyantares.ch` vers le VPS partagé, pour le principal                                                                                                                                                                                        | [`../operations/deployment.md`](../operations/deployment.md) section 4, et « Le principal, derrière un autre reverse proxy »                                                                                                                                                                                                             |
+| Un certificat de Let's Encrypt, obtenu et renouvelé sans étape manuelle       | Sur la copie Oracle, notre Caddy l'obtient tout seul pour `SITE_DOMAIN`, avec `ACME_EMAIL` comme adresse de contact, et le stocke dans le volume `caddy-data`. Sur le principal, c'est le proxy placé devant qui le fait                                                                                                                                       | [`infra/caddy/Caddyfile.prod`](../../infra/caddy/Caddyfile.prod), [`compose.deploy.yml`](../../compose.deploy.yml)                                                                                                                                                                                                                       |
+| HTTPS seulement                                                               | Le HTTP simple répond `308 Permanent Redirect` vers `https://`. HSTS (un header qui dit au navigateur d'utiliser seulement HTTPS pendant un an) est envoyé dans chaque réponse                                                                                                                                                                                 | `Strict-Transport-Security` dans [`Caddyfile.prod`](../../infra/caddy/Caddyfile.prod)                                                                                                                                                                                                                                                    |
+| Un serveur qui n'a pas besoin d'une copie du dépôt                            | Trois fichiers sur l'hôte. Chaque image est récupérée depuis le registre public `ghcr.io`, donc il n'y a ni build ni connexion au registre sur le serveur                                                                                                                                                                                                      | [`compose.deploy.yml`](../../compose.deploy.yml) (commentaire en haut)                                                                                                                                                                                                                                                                   |
+| Des secrets de production qui ne peuvent pas retomber sur une valeur publique | `SESSION_SECRET`, `POSTGRES_PASSWORD`, `LLM_PROVIDER` et, avec le monitoring, les deux clés Grafana n'ont pas de valeur par défaut : compose refuse de démarrer sans eux. Le seul modèle les laisse tous vides, et une vérification d'hygiène échoue si l'un d'eux reçoit une valeur. `deploy.sh` refuse aussi les valeurs de dev et de CI que ce dépôt publie | `${...:?...}` dans [`compose.deploy.yml`](../../compose.deploy.yml) et [`compose.deploy.monitoring.yml`](../../compose.deploy.monitoring.yml), [`.env.example`](../../.env.example), la vérification 5 de [`scripts/check-env-example.sh`](../../scripts/check-env-example.sh), [`infra/deploy/deploy.sh`](../../infra/deploy/deploy.sh) |
+| L'hôte principal, derrière un autre reverse proxy                             | Un fichier overlay : notre Caddy ne publie aucun port et reçoit les requêtes du proxy de l'hôte, qui a le certificat                                                                                                                                                                                                                                           | [`compose.deploy.proxy.yml`](../../compose.deploy.proxy.yml), [`deployment.md`](../operations/deployment.md) « Le principal, derrière un autre reverse proxy »                                                                                                                                                                           |
 
 ## Comment ça marche
 
 ### Le chemin d'une requête
+
+C'est une requête vers la copie Oracle, où chaque étape est à nous. Sur le principal, le proxy placé devant
+sur l'hôte passe avant notre Caddy (voir plus bas).
 
 ```mermaid
 flowchart LR
@@ -85,7 +91,7 @@ flowchart LR
     B -. "HTTP 80" .-> C
     C -. "308 vers https://" .-> B
     C -- "/api, /ws" --> A["api :3001"]
-    C -- "/grafana" --> G["grafana :3000"]
+    C -- "/grafana (principal seulement)" --> G["grafana :3000"]
     C -- "tout le reste" --> W["web :3000"]
 ```
 
@@ -102,10 +108,10 @@ flowchart LR
    avec `alt-svc: h3=":443"`.
 4. **Routing.** [`Caddyfile.prod`](../../infra/caddy/Caddyfile.prod) a un seul site,
    `{$SITE_DOMAIN}`. Il envoie `/api` et `/ws` à l'`api` NestJS, `/grafana` à
-   Grafana, et le reste au container `web` Next.js. Il ajoute aussi les headers de
-   sécurité (`X-Frame-Options DENY`, `X-Content-Type-Options nosniff`, une
-   `Referrer-Policy`, une `Permissions-Policy` et HSTS) et retire le header `Server`
-   des réponses HTTPS.
+   Grafana sur le principal (la copie Oracle, sans monitoring, répond 503), et le reste au
+   container `web` Next.js. Il ajoute aussi les headers de sécurité (`X-Frame-Options DENY`,
+   `X-Content-Type-Options nosniff`, une `Referrer-Policy`, une `Permissions-Policy` et
+   HSTS) et retire le header `Server` des réponses HTTPS.
 
 ### Le certificat
 
@@ -119,7 +125,7 @@ flowchart LR
   80 ou 443. C'est pour ça que l'enregistrement DNS doit pointer vers le serveur **avant** que la stack
   démarre : une vérification ratée compte quand même dans la limite de Let's Encrypt
   ([`deployment.md`](../operations/deployment.md) section 4, et le commentaire de `SITE_DOMAIN`
-  dans [`.env.example`](../../infra/deploy/.env.example)).
+  dans [`.env.example`](../../.env.example)).
 - Le certificat et le compte ACME sont gardés dans le volume `caddy-data`, monté sur
   `/data`. Le commentaire dans `compose.deploy.yml` donne la raison : « Lose it and every
   restart asks the CA again, which is rate limited to a handful per domain per week. » (si on le perd, chaque
@@ -131,15 +137,15 @@ flowchart LR
   proxy placé devant.
 
 Les deux noms publics ont un certificat Let's Encrypt qui dure 90 jours. Sur
-`transcendence.dpdns.org`, c'est notre Caddy qui le demande et le renouvelle. Sur `trans.vyantares.ch`, c'est le
-proxy placé devant sur l'hôte qui le fait (voir plus bas). Ni le dépôt ni
+`trans.vyantares.ch`, le principal, c'est le proxy placé devant sur l'hôte qui le demande et le renouvelle (voir
+plus bas). Sur `transcendence.dpdns.org`, la copie Oracle, c'est notre Caddy. Ni le dépôt ni
 [`deployment.md`](../operations/deployment.md) n'ont d'étape pour demander ou renouveler un
 certificat à la main. Les étapes de la soutenance montrent les dates du certificat en ligne.
 
-### Le deuxième hôte, derrière un autre reverse proxy
+### L'hôte principal, derrière un autre reverse proxy
 
-Le VPS Infomaniak partagé fait déjà tourner `caddy-docker-proxy`, qui occupe 80 et 443 pour
-plusieurs projets et route selon des labels Docker. [`compose.deploy.proxy.yml`](../../compose.deploy.proxy.yml)
+Le déploiement principal tourne sur un VPS Infomaniak partagé, avec le monitoring. Ce VPS fait déjà
+tourner `caddy-docker-proxy`, qui occupe 80 et 443 pour plusieurs projets et route selon des labels Docker. [`compose.deploy.proxy.yml`](../../compose.deploy.proxy.yml)
 adapte notre stack à ça :
 
 - `ports: !reset []` : notre Caddy ne publie rien.
@@ -154,20 +160,20 @@ adapte notre stack à ça :
   tous les visiteurs partageraient une seule limite de requêtes dans l'API et un seul blocage de connexion dans Grafana.
   C'est sûr seulement parce que ce Caddy ne publie aucun port.
 
-Le site en ligne montre les deux étapes : ses réponses contiennent deux fois `via: 1.1 Caddy`.
+Le principal montre les deux étapes : ses réponses contiennent deux fois `via: 1.1 Caddy`.
 [`infra/deploy/deploy.sh`](../../infra/deploy/deploy.sh) ajoute l'overlay tout seul
-quand le fichier est à côté de `compose.deploy.yml`.
+quand le fichier est à côté de `compose.deploy.yml`, et l'overlay de monitoring de la même façon.
 
 ### Où ce module s'arrête et où commence la CI/CD
 
 Les deux modules custom partagent des fichiers, donc la limite entre eux est tracée ici une fois pour toutes.
 
-| Ce module (déploiement cloud)                                                                                                       | Le module CI/CD ([custom-ci-cd.md](custom-ci-cd.md))                                     |
-| ----------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| L'instance Oracle, cloud-init, le pare-feu, l'IP                                                                                    | Les workflows dans [`.github/workflows/`](../../.github/workflows)                       |
-| L'enregistrement DNS                                                                                                                | Construire, scanner et publier les images sur `ghcr.io` (`images.yml`)                   |
-| Caddy, `Caddyfile.prod`, le certificat Let's Encrypt, HSTS                                                                          | Le deploy automatique : `deploy.sh`, `ft-deploy.service`, `ft-deploy.timer`              |
-| `compose.deploy.yml` et `compose.deploy.proxy.yml` : ce qui tourne sur le serveur, avec quels secrets et quelles limites de mémoire | Les tags d'images (`latest`, `main-<sha>`) et comment une release est bloquée ou annulée |
+| Ce module (déploiement cloud)                                                                                                                                        | Le module CI/CD ([custom-ci-cd.md](custom-ci-cd.md))                                     |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| L'instance Oracle, cloud-init, le pare-feu, l'IP                                                                                                                     | Les workflows dans [`.github/workflows/`](../../.github/workflows)                       |
+| L'enregistrement DNS                                                                                                                                                 | Construire, scanner et publier les images sur `ghcr.io` (`images.yml`)                   |
+| Caddy, `Caddyfile.prod`, le certificat Let's Encrypt, HSTS                                                                                                           | Le deploy automatique : `deploy.sh`, `ft-deploy.service`, `ft-deploy.timer`              |
+| `compose.deploy.yml`, `compose.deploy.monitoring.yml` et `compose.deploy.proxy.yml` : ce qui tourne sur le serveur, avec quels secrets et quelles limites de mémoire | Les tags d'images (`latest`, `main-<sha>`) et comment une release est bloquée ou annulée |
 
 Ce module compte le premier deploy manuel (les trois fichiers et les trois commandes `docker
 compose` de [`deployment.md`](../operations/deployment.md) section 5). Tout ce
@@ -175,22 +181,25 @@ qui se passe sans personne, après un merge, appartient à la CI/CD.
 
 ## Où est le code
 
-| Chemin                                                                           | Ce qu'il fait                                                                                                                                                                                                          |
-| -------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`compose.deploy.yml`](../../compose.deploy.yml)                                 | La stack du serveur : récupère les images publiées, ne fait jamais de build ; Caddy avec les ports 80, 443 et 443/udp et le volume `caddy-data` ; les secrets obligatoires ; les limites de mémoire pour le monitoring |
-| [`compose.deploy.proxy.yml`](../../compose.deploy.proxy.yml)                     | Overlay pour un hôte où un autre reverse proxy occupe 80 et 443                                                                                                                                                        |
-| [`infra/caddy/Caddyfile.prod`](../../infra/caddy/Caddyfile.prod)                 | La config Caddy de production : le domaine, l'email ACME, HSTS et les headers de sécurité, les routes, les proxies de confiance                                                                                        |
-| [`infra/caddy/Caddyfile`](../../infra/caddy/Caddyfile)                           | La config de dev, avec `local_certs`, pour comparer                                                                                                                                                                    |
-| [`infra/deploy/.env.example`](../../infra/deploy/.env.example)                   | Le modèle du `.env` du serveur : `SITE_DOMAIN`, `ACME_EMAIL`, `PROXY_NETWORK`, `COMPOSE_PROJECT_NAME`, les secrets                                                                                                     |
-| [`docs/operations/deployment.md`](../operations/deployment.md)                   | Le runbook : OCI CLI, l'instance, cloud-init, l'IP, le DNS, le premier deploy, la mémoire, le deuxième hôte                                                                                                            |
-| [`scripts/check-monitoring-config.sh`](../../scripts/check-monitoring-config.sh) | Valide les deux Caddyfiles et les deux façons de déployer (voir les tests)                                                                                                                                             |
+| Chemin                                                                           | Ce qu'il fait                                                                                                                                                                                     |
+| -------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`compose.deploy.yml`](../../compose.deploy.yml)                                 | La stack du serveur : récupère les images publiées, ne fait jamais de build ; Caddy avec les ports 80, 443 et 443/udp et le volume `caddy-data` ; les secrets obligatoires                        |
+| [`compose.deploy.monitoring.yml`](../../compose.deploy.monitoring.yml)           | Overlay pour un hôte qui fait tourner le monitoring : les sept services et leurs limites de mémoire                                                                                               |
+| [`compose.deploy.proxy.yml`](../../compose.deploy.proxy.yml)                     | Overlay pour un hôte où un autre reverse proxy occupe 80 et 443                                                                                                                                   |
+| [`infra/caddy/Caddyfile.prod`](../../infra/caddy/Caddyfile.prod)                 | La config Caddy de production : le domaine, l'email ACME, HSTS et les headers de sécurité, les routes, les proxies de confiance                                                                   |
+| [`infra/caddy/Caddyfile`](../../infra/caddy/Caddyfile)                           | La config de dev, avec `local_certs`, pour comparer                                                                                                                                               |
+| [`.env.example`](../../.env.example)                                             | Le seul modèle de `.env`, pour un checkout comme pour un serveur. Sa section serveur a `SITE_DOMAIN`, `ACME_EMAIL`, `IMAGE_TAG`, `PROXY_NETWORK`, `COMPOSE_PROJECT_NAME` ; chaque secret est vide |
+| [`scripts/align-env.sh`](../../scripts/align-env.sh)                             | Réécrit un `.env` existant dans l'ordre et avec les commentaires du modèle, en gardant chaque valeur                                                                                              |
+| [`docs/operations/deployment.md`](../operations/deployment.md)                   | Le runbook : les deux hôtes, OCI CLI, l'instance, cloud-init, l'IP, le DNS, le premier deploy, la mémoire, le monitoring sur un serveur, le principal derrière un autre proxy                     |
+| [`scripts/check-monitoring-config.sh`](../../scripts/check-monitoring-config.sh) | Valide les deux Caddyfiles et les trois façons de déployer (voir les tests)                                                                                                                       |
 
 ## Comment le montrer à la soutenance
 
 Depuis n'importe quelle machine avec un accès à internet. Les commandes ne font que lire. Les étapes 1 à 3 marchent sur
-les deux noms publics : mets `HOST=transcendence.dpdns.org` (l'instance Oracle, où notre
-Caddy a le certificat) ou `HOST=trans.vyantares.ch` (le VPS partagé, où c'est le proxy placé devant
-qui l'a). Montre les deux si les deux répondent, ou celui qui répond.
+les deux noms publics : mets `HOST=transcendence.dpdns.org` (la copie secondaire sur l'instance Oracle, où c'est
+notre propre Caddy qui a le certificat) ou `HOST=trans.vyantares.ch` (le principal, sur le VPS partagé, où c'est
+le proxy placé devant qui l'a). Montre d'abord la copie, puisque son certificat est celui que notre Caddy a
+obtenu lui-même, puis le principal.
 
 1. **L'enregistrement DNS.**
 
@@ -229,7 +238,7 @@ qui l'a). Montre les deux si les deux répondent, ou celui qui répond.
 
    Le premier répond `308 Permanent Redirect` vers `https://`. Le second affiche
    `strict-transport-security: max-age=31536000; includeSubDomains`, `via: 1.1 Caddy`
-   et `alt-svc: h3=":443"`. Sur `trans.vyantares.ch`, `via: 1.1 Caddy` apparaît deux fois : le
+   et `alt-svc: h3=":443"`. Sur le principal, `trans.vyantares.ch`, `via: 1.1 Caddy` apparaît deux fois : le
    proxy placé devant, puis le nôtre. Ouvre le site dans un navigateur et clique sur le cadenas : pas d'avertissement, et
    le certificat vient de Let's Encrypt.
 
@@ -237,10 +246,10 @@ qui l'a). Montre les deux si les deux répondent, ou celui qui répond.
    montre `email {$ACME_EMAIL}`, le site `{$SITE_DOMAIN}` et le header HSTS. Ouvre
    [`compose.deploy.yml`](../../compose.deploy.yml) : montre les trois ports et le
    volume `caddy-data`. C'est toute la configuration du certificat. Ouvre
-   [`compose.deploy.proxy.yml`](../../compose.deploy.proxy.yml) pour montrer en quoi le deuxième
-   hôte est différent : pas de ports, du HTTP simple derrière le proxy placé devant, les deux labels.
+   [`compose.deploy.proxy.yml`](../../compose.deploy.proxy.yml) pour montrer en quoi le principal
+   est différent : pas de ports, du HTTP simple derrière le proxy placé devant, les deux labels.
 
-5. **Le serveur** (un membre de l'équipe avec la clé SSH). Sur l'instance Oracle :
+5. **Les serveurs** (un membre de l'équipe avec la clé SSH). Sur la copie Oracle :
 
    ```bash
    ssh ubuntu@140.238.209.2
@@ -250,12 +259,14 @@ qui l'a). Montre les deux si les deux répondent, ou celui qui répond.
    docker compose -f compose.deploy.yml logs caddy | grep -i certificate
    ```
 
-   `ps` montre Caddy comme le seul service avec des ports publiés. `find` montre le
-   certificat que Caddy a stocké dans son volume. Sur le VPS partagé, les fichiers sont dans
-   `~/ft_transcendence`, et
-   `docker compose -f compose.deploy.yml -f compose.deploy.proxy.yml ps` ne montre
-   aucun port publié, puisque le proxy placé devant occupe 80 et 443
-   ([`deployment.md`](../operations/deployment.md) « Derrière un autre reverse proxy »).
+   `ps` montre Caddy comme le seul service avec des ports publiés, et aucun service de
+   monitoring. `find` montre le certificat que notre Caddy a stocké dans son volume. Sur le
+   principal, le VPS partagé, les fichiers sont dans `~/ft_transcendence`, et
+   `docker compose -f compose.deploy.yml -f compose.deploy.monitoring.yml -f compose.deploy.proxy.yml ps`
+   montre les sept services de monitoring à côté de l'app, et aucun port publié,
+   puisque le proxy placé devant occupe 80 et 443
+   ([`deployment.md`](../operations/deployment.md) « Le principal, derrière un autre reverse
+   proxy »).
 
 6. **Le côté cloud** (en option, il faut une session OCI, voir
    [`deployment.md`](../operations/deployment.md) section 1) : la commande qui liste les instances
@@ -267,15 +278,18 @@ qui l'a). Montre les deux si les deux répondent, ou celui qui répond.
 Il n'y a pas de test unitaire pour un enregistrement DNS ou un certificat. Le site en ligne est la preuve
 (étapes 1 à 3 plus haut). Ce qui peut être vérifié avant un deploy est vérifié dans la CI.
 
-| Test                                                                                        | Ce qu'il vérifie                                                                                                                                                                                                                                                          |
-| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`scripts/check-monitoring-config.sh`](../../scripts/check-monitoring-config.sh), section 5 | `caddy validate` sur `Caddyfile` et `Caddyfile.prod` avec l'image Caddy à version fixée, et encore sur `Caddyfile.prod` avec les valeurs que donne l'overlay du proxy (site `http://`, `CADDY_TRUSTED_PROXIES=private_ranges`)                                            |
-| même script, section 7                                                                      | `compose.deploy.yml` se résout, seul et avec `compose.deploy.proxy.yml`. Dans la stack de deploy, seul `caddy` publie des ports, et seulement 80 et 443. Derrière un proxy, aucun service ne publie de port, et `caddy` rejoint le réseau du proxy avec son label de site |
-| même script, `PINNED_SERVICES`                                                              | Les images `caddy`, `db`, `redis` et des exporters dans `compose.deploy.yml` ont les mêmes versions que dans `compose.yml`                                                                                                                                                |
+| Test                                                                                        | Ce qu'il vérifie                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [`scripts/check-monitoring-config.sh`](../../scripts/check-monitoring-config.sh), section 5 | `caddy validate` sur `Caddyfile` et `Caddyfile.prod` avec l'image Caddy à version fixée, et encore sur `Caddyfile.prod` avec les valeurs que donne l'overlay du proxy (site `http://`, `CADDY_TRUSTED_PROXIES=private_ranges`)                                                                                                                                                                                                                         |
+| même script, section 7                                                                      | `compose.deploy.yml` se résout seul, sans clé Grafana et sans service de monitoring, avec `compose.deploy.monitoring.yml`, et avec les deux overlays. Dans chaque stack de deploy sans l'overlay du proxy, seul `caddy` publie des ports, et seulement 80 et 443. Derrière un proxy, aucun service ne publie de port, et `caddy` rejoint le réseau du proxy avec son label de site. Chaque service de chaque stack de deploy garde les limites de logs |
+| même script, `PINNED_SERVICES`                                                              | Les images `caddy`, `db`, `redis` et des exporters dans les fichiers de deploy ont les mêmes versions que dans `compose.yml`                                                                                                                                                                                                                                                                                                                           |
+| [`scripts/check-env-example.sh`](../../scripts/check-env-example.sh), vérifications 3 et 5  | Chaque variable que lisent les fichiers de deploy est dans `.env.example`, et chacune qu'ils exigent avec `:?` y est vide, donc un serveur démarré sur une copie du modèle s'arrête au lieu de tourner avec une valeur publiée                                                                                                                                                                                                                         |
 
-Le script tourne dans le job `monitoring config` de
+Le premier script tourne dans le job `monitoring config` de
 [`.github/workflows/ci.yml`](../../.github/workflows/ci.yml), et dans `make`
-([`Makefile`](../../Makefile)).
+([`Makefile`](../../Makefile)). Le second tourne dans
+[`.github/workflows/hygiene.yml`](../../.github/workflows/hygiene.yml), dans `make` et dans le
+hook `pre-push`.
 
 ## Pourquoi on l'a choisi
 
@@ -293,14 +307,17 @@ Le script tourne dans le job `monitoring config` de
 
 ## Les défis techniques
 
-- **Un tout petit serveur.** Le modèle que le runbook met en place est `VM.Standard.E2.1.Micro` :
-  1 Go de RAM et une partie d'un seul cœur partagé. Le modèle et la RAM du serveur en ligne
-  ne sont pas encore mesurés. Le modèle plus grand `VM.Standard.A1.Flex` est
+- **Un tout petit serveur.** La copie Oracle tourne sur une petite instance gratuite. Le modèle que le runbook
+  met en place est `VM.Standard.E2.1.Micro` : 1 Go de RAM et une partie d'un seul cœur partagé. Le serveur en
+  ligne montre 954 Mio de RAM et 2 vCPU (mesurés le 2026-11-27). Le modèle plus grand `VM.Standard.A1.Flex` est
   « usually out of host capacity » (en général sans place disponible). L'app prend environ 450 Mo et le monitoring ajoute
-  environ 330 à 450 Mo selon l'estimation. On a répondu avec un `mem_limit` strict sur chaque service de monitoring
-  (800 Mo en tout), `cpu_shares: 256` pour Prometheus et Grafana pour qu'ils laissent la place
-  à l'app, et un fichier de swap de 2 Go ([`deployment.md`](../operations/deployment.md),
-  « Mémoire »). Le module CI/CD construit les images pour `amd64` et `arm64`
+  environ 330 à 450 Mo selon l'estimation, plus que cette VM ne peut donner. On a répondu avec un overlay
+  ([`compose.deploy.monitoring.yml`](../../compose.deploy.monitoring.yml)) que la copie
+  laisse de côté, pour faire tourner l'app seule, pendant que le principal le fait tourner. Là, chaque service de
+  monitoring a un `mem_limit` strict (800 Mo en tout), et Prometheus et Grafana reçoivent
+  `cpu_shares: 256` pour qu'ils laissent la place à l'app. Un fichier de swap de 2 Go couvre le reste
+  ([`deployment.md`](../operations/deployment.md), « Mémoire »). Le module CI/CD construit
+  les images pour `amd64` et `arm64`
   ([`images.yml`](../../.github/workflows/images.yml)), donc les deux modèles peuvent les faire tourner.
 - **Une autorité de certification avec des limites.** Let's Encrypt n'accepte que quelques
   certificats par domaine et par semaine. Deux règles nous protègent : l'enregistrement DNS doit marcher
@@ -317,12 +334,15 @@ Le script tourne dans le job `monitoring config` de
   code source, donc il ne peut pas servir de base sur le serveur. `compose.deploy.yml` est
   autonome et récupère tout. Aucun secret de production n'a de valeur de secours, et le
   mot de passe de la base de données doit être en hexadécimal, parce qu'un `/` venant du base64 casse `DATABASE_URL`.
-- **Un hôte où les ports HTTPS sont déjà pris.** Sur le VPS partagé, notre Caddy ne peut pas écouter sur
+  Le serveur et un checkout partagent un seul `.env.example`, donc il laisse chaque secret vide :
+  un checkout retombe sur ses valeurs locales, un serveur refuse de démarrer.
+- **Un hôte où les ports HTTPS sont déjà pris.** Sur le VPS partagé du principal, notre Caddy ne peut pas écouter sur
   80 et 443, et une deuxième couche HTTPS tournerait en boucle. L'overlay transforme notre Caddy en
   simple backend HTTP et fait confiance seulement aux plages privées, donc l'adresse du visiteur arrive quand même
-  aux limites de requêtes de l'API et au blocage de Grafana. Un deuxième piège là-bas : une copie
+  aux limites de requêtes de l'API et au blocage de Grafana. Un deuxième piège là-bas : un checkout
   du dépôt sur le même hôte partagerait le nom de projet compose et ses volumes,
-  base de données comprise, donc `.env.example` documente `COMPOSE_PROJECT_NAME`.
+  base de données comprise. Donc chaque serveur décommente `COMPOSE_PROJECT_NAME=ft_transcendence_prod`
+  dans la section serveur de `.env.example`, et nos deux hôtes partagent un seul `.env`, à part `SITE_DOMAIN`.
 - **Un monitoring qui doit rester privé sur un serveur public.** On arrive à Grafana seulement
   via Caddy sur `/grafana`, son chemin de métriques est refusé avec `404`, et le site de métriques
   de Caddy lui-même (`:2020`) n'est pas publié ([`Caddyfile.prod`](../../infra/caddy/Caddyfile.prod)).
@@ -330,14 +350,17 @@ Le script tourne dans le job `monitoring config` de
 ## Ce que ça apporte
 
 - L'évaluateur peut ouvrir l'app sur n'importe quel appareil, avec un certificat accepté, sur
+  <https://trans.vyantares.ch>, le principal, et sur la copie,
   <https://transcendence.dpdns.org>.
 - On dit au navigateur d'utiliser seulement HTTPS (HSTS), et les headers de sécurité sont dans chaque
   réponse du site public.
 - HTTP/3 marche, parce que 443/udp est ouvert et publié.
-- Un nouveau serveur a besoin de trois fichiers et de trois commandes. Les mêmes fichiers tournent sur deux hôtes très
-  différents : une instance cloud vide, et un VPS partagé derrière un autre proxy.
-- Le module de monitoring voit du vrai trafic, pas seulement du trafic de test, parce que la stack
-  tourne en public avec le monitoring toujours actif.
+- Un nouveau serveur a besoin de trois fichiers et de trois commandes, et d'un fichier de plus pour faire
+  tourner le monitoring. Les mêmes fichiers tournent sur deux hôtes très
+  différents : le principal sur un VPS partagé derrière un autre proxy, avec le monitoring, et la copie
+  sur une instance cloud vide, sans.
+- Le module de monitoring voit du vrai trafic, pas seulement du trafic de test, parce que le principal
+  le fait tourner en public, toujours actif, depuis l'overlay de monitoring.
 
 ## Pourquoi il mérite sa taille
 
@@ -366,9 +389,9 @@ Pourquoi ce n'est pas un Major :
 
 ## Limites et choix
 
-- **Un seul serveur, pas de bascule.** Si l'instance Oracle s'arrête, le site est en panne jusqu'à ce qu'elle
-  soit redémarrée, et son IP peut changer. Le deuxième hôte sur `trans.vyantares.ch` est une
-  copie séparée avec sa propre base de données, pas une sauvegarde.
+- **Pas de bascule.** Si le principal s'arrête, `trans.vyantares.ch` est en panne jusqu'à son retour.
+  La copie sur `transcendence.dpdns.org` est séparée, avec sa propre base de données et sans monitoring,
+  pas une sauvegarde. Si son instance Oracle s'arrête, son IP peut changer.
 - **L'IP est éphémère.** On a choisi de ne pas en réserver une, parce qu'OCI ne peut pas la convertir sur
   place et qu'une IP réservée est une autre adresse. La solution, c'est de mettre à jour l'enregistrement `A`.
 - **IPv4 seulement.** Il n'y a pas d'enregistrement `AAAA`.
@@ -376,14 +399,14 @@ Pourquoi ce n'est pas un Major :
   le renouvellement de Caddy et sur le contact `ACME_EMAIL`. Le blackbox exporter teste les
   containers en HTTP simple dans Docker, pas le nom public en HTTPS
   ([`prometheus.yml`](../../infra/monitoring/prometheus/prometheus.yml)).
-- **Les changements des fichiers du serveur sont manuels.** Un changement de `compose.deploy.yml` ou de
-  `Caddyfile.prod` demande `scp`, `up -d`, et un redémarrage de Caddy, parce que Caddy lit sa
-  config seulement au démarrage ([`deployment.md`](../operations/deployment.md),
-  « Les deploys automatiques »).
+- **Les changements des fichiers du serveur sont manuels.** Un changement de `compose.deploy.yml`, de
+  `compose.deploy.monitoring.yml` ou de `Caddyfile.prod` demande `scp`, `up -d`, et un redémarrage de
+  Caddy, parce que Caddy lit sa config seulement au démarrage
+  ([`deployment.md`](../operations/deployment.md), « Les deploys automatiques »).
 - **L'instance n'est pas décrite en code.** Le runbook donne un tableau de réglages et
   le fichier cloud-init ; il n'y a pas de Terraform ni d'autre infrastructure-as-code pour
   la reconstruire en une commande.
-- **Sur le VPS partagé, le certificat n'est pas le nôtre.** C'est le proxy placé devant qui le demande, et
+- **Sur le principal, le certificat n'est pas le nôtre.** C'est le proxy placé devant qui le demande, et
   `ACME_EMAIL` est toujours obligatoire mais pas utilisé là-bas.
 
 ## Qui l'a construit

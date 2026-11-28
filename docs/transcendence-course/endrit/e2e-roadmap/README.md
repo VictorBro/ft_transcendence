@@ -416,9 +416,9 @@ Ce dossier **est** un test. Voici comment le lancer.
 
 | Commande | Ce qu'elle fait |
 |---|---|
-| `make test-e2e` | Démarre le site, puis lance tous les tests navigateur. |
-| `make playwright` | Le site doit déjà tourner. Lance les tests sur Chromium, puis efface les comptes de test de la base. |
-| `make playwright-all` | Pareil, sur les trois navigateurs, comme la CI. |
+| `make test-e2e` | Démarre le site sur le tuteur fixture, sans clé LLM, lance tous les tests navigateur, puis remet le provider que nomme `.env`. |
+| `make playwright` | Le site doit déjà tourner. Lance les tests sur Chromium, puis efface les comptes de test de la base. Refuse une api sur un vrai provider LLM, sauf avec `E2E_REAL_LLM=1`. |
+| `make playwright-all` | Comme `make test-e2e`, sur les trois navigateurs, comme la CI. |
 | `pnpm --filter @ft/e2e run test:e2e roadmap.spec.ts --project=chromium` | Seulement ce fichier, sur Chromium (le site doit tourner). |
 | `make report` | Montre le dernier rapport de Playwright sur le port 9323. |
 

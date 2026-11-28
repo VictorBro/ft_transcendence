@@ -5,7 +5,9 @@ import { previousDay } from '../lessons/roadmap.rules';
 /*
  * The time and chance of the demo learners (#85). Pure: the replay injects
  * the run instant, and every score comes from a generator seeded by the
- * learner's email, so two seeds on the same day write the same rows.
+ * learner's email, so two seeds on the same day write the same scores, days,
+ * streaks and results. Not the same XP: the daily challenge hashes the
+ * course's id, a new uuid on each seed.
  */
 
 /** The day `count` days before `day`. 0 is `day` itself. */

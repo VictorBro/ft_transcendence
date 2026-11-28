@@ -7,7 +7,7 @@ import { LoginSchema, SecondFactorSchema } from '@ft/shared';
 
 import { logIn, verifySecondFactor } from '@/lib/auth-client';
 import { useErrorMessage } from '@/lib/error-message';
-import { Field, FormError, SubmitButton } from '@/components/form';
+import { Field, FormError, PasswordField, SubmitButton } from '@/components/form';
 
 export function LoginForm() {
   const router = useRouter();
@@ -77,8 +77,8 @@ export function LoginForm() {
 
   if (secondFactor) {
     return (
-      // Distinct key from the password form. Both render a <form> holding
-      // <Field>, so without it React reuses the password input's DOM node for
+      // Distinct key from the password form. Both render a <form> holding an
+      // input, so without it React reuses the password input's DOM node for
       // the code input and the typed password reappears, in clear text.
       <form key="second-factor" onSubmit={onSubmit} className="flex flex-col gap-6" noValidate>
         <p className="text-sm text-slate-300">{t('twoFactorPrompt')}</p>
@@ -97,12 +97,20 @@ export function LoginForm() {
   }
 
   return (
-    <form key="password" onSubmit={onSubmit} className="flex flex-col gap-6" noValidate>
+    // method="post": an Enter pressed before hydration, or without JavaScript,
+    // would otherwise send a GET with the password in the URL, where the
+    // browser history and Caddy's access log keep it.
+    <form
+      key="password"
+      method="post"
+      onSubmit={onSubmit}
+      className="flex flex-col gap-6"
+      noValidate
+    >
       <Field label={t('email')} name="email" type="email" autoComplete="email" required />
-      <Field
+      <PasswordField
         label={t('password')}
         name="password"
-        type="password"
         autoComplete="current-password"
         required
       />

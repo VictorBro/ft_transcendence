@@ -35,16 +35,17 @@ rules, and access that is protected.
 | The subject asks | What we built | Where |
 | ---------------- | ------------- | ----- |
 | Prometheus | Prometheus 3.13.5 (the LTS line). It reads 10 targets every 30 s, checks the rules every 30 s, and keeps 15 days or 1 GB of data. | [`prometheus.yml`](../../infra/monitoring/prometheus/prometheus.yml), [`Dockerfile`](../../infra/monitoring/prometheus/Dockerfile) |
-| Exporters | Four exporters: node (the server: CPU, memory, disk), postgres, redis, and blackbox (it calls web's `/healthz`, `/healthz/upstream` and Grafana's health page from outside). The API and Caddy publish their own metrics too: the API has 18 metrics of its own in `metrics.ts`, plus 3 gauges filled when Prometheus asks (accounts and the question bank, read from the database, and signed-in users, counted in memory), plus the Node.js defaults. | [`compose.yml`](../../compose.yml), [`apps/api/src/metrics/`](../../apps/api/src/metrics) |
-| Custom dashboards | Four dashboards we wrote ourselves, with 79 panels in all: Overview (18), API (17), Learning (18), Infrastructure (26). They are loaded from the repo when Grafana starts. | [`grafana/dashboards/`](../../infra/monitoring/grafana/dashboards), [`dashboards.yml`](../../infra/monitoring/grafana/provisioning/dashboards/dashboards.yml) |
-| Alerting rules | 25 rules in 6 groups (availability, api, learning, stores, host, monitoring): 7 critical, 18 warning. 10 unit tests run with `promtool`. Alertmanager groups the alerts and posts them to Discord. | [`alerts.yml`](../../infra/monitoring/prometheus/rules/alerts.yml), [`alerts.test.yml`](../../infra/monitoring/prometheus/tests/alerts.test.yml), [`alertmanager.yml`](../../infra/monitoring/alertmanager/alertmanager.yml) |
+| Exporters | Four exporters: node (the server: CPU, memory, disk), postgres, redis, and blackbox (it calls web's `/healthz`, `/healthz/upstream` and Grafana's health page from outside). The API and Caddy publish their own metrics too: the API has 19 metrics of its own in `metrics.ts`, plus 6 gauges filled when Prometheus asks (accounts, courses, achievements, friendships and the question bank, read from the database, and signed-in users, counted in memory), plus the Node.js defaults. | [`compose.yml`](../../compose.yml), [`apps/api/src/metrics/`](../../apps/api/src/metrics) |
+| Custom dashboards | Four dashboards we wrote ourselves, with 83 panels in all: Overview (18), API (17), Learning (22), Infrastructure (26). They are loaded from the repo when Grafana starts. | [`grafana/dashboards/`](../../infra/monitoring/grafana/dashboards), [`dashboards.yml`](../../infra/monitoring/grafana/provisioning/dashboards/dashboards.yml) |
+| Alerting rules | 25 rules in 6 groups (availability, api, learning, stores, host, monitoring): 7 critical, 18 warning. 10 unit tests run with `promtool`. Alertmanager groups the alerts and posts them to Discord, each title starting with the stack that sent it. | [`alerts.yml`](../../infra/monitoring/prometheus/rules/alerts.yml), [`alerts.test.yml`](../../infra/monitoring/prometheus/tests/alerts.test.yml), [`alertmanager.yml`](../../infra/monitoring/alertmanager/alertmanager.yml) |
 | Secured access | Grafana is the only monitoring service you can reach, at `/grafana`, and only with its login. No sign-up, no anonymous access, no default password, a lock after 5 wrong passwords in 5 minutes from one address. Prometheus, Alertmanager, the exporters and the API's metrics port have no route from outside and publish no port. | [`grafana.ini`](../../infra/monitoring/grafana/grafana.ini), [`entrypoint.sh`](../../infra/monitoring/grafana/entrypoint.sh), [`Caddyfile`](../../infra/caddy/Caddyfile) |
 
 ### Why it is worth 2 points
 
 - **The dashboards are about our app, not only the machine.** Next to CPU and
   memory, they show sign-ins by result, latency per API route, WebSocket events,
-  placement exams, the question bank per level, and the calls to the AI model.
+  lesson attempts, courses per level, achievements, friendships, placement exams,
+  the question bank per level, and the calls to the AI model.
   The API counts these itself
   ([`metrics.ts`](../../apps/api/src/metrics/metrics.ts)).
 - **The alert rules are tested.** Each critical rule has a test that proves it
@@ -53,9 +54,12 @@ rules, and access that is protected.
 - **Access is closed by default, and checked.** A script fails CI if any service
   other than Caddy publishes a port in the production or server stack, and a Playwright test checks the login, the
   401 for anonymous reads and the 404 for the metrics paths.
-- **It runs in production too.** The same three images run on the server
-  ([`compose.deploy.yml`](../../compose.deploy.yml)), so the deployed app is
-  monitored, not only a laptop.
+- **It runs in production too.** The same three images run on the primary deployment,
+  with Grafana at <https://trans.vyantares.ch/grafana>, from
+  [`compose.deploy.monitoring.yml`](../../compose.deploy.monitoring.yml), an overlay
+  on [`compose.deploy.yml`](../../compose.deploy.yml), so the deployed app is
+  monitored, not only a laptop. The Oracle copy at transcendence.dpdns.org does not have
+  the memory for it: it leaves the overlay out and runs the app alone.
 
 ## How it works
 
@@ -83,8 +87,9 @@ flowchart LR
   [`main.ts`](../../apps/api/src/main.ts)). Caddy has no route to it, so
   `/api/metrics` does not exist. A middleware times every request by route
   ([`http-metrics.middleware.ts`](../../apps/api/src/metrics/http-metrics.middleware.ts)).
-  `MetricsCollector` reads the number of users and the size of the question bank
-  from the database, at most once a minute
+  `MetricsCollector` reads the number of users, courses, achievements and
+  friendships, and the size of the question bank, from the database, at most once a
+  minute
   ([`metrics.collector.ts`](../../apps/api/src/metrics/metrics.collector.ts)).
 - **Caddy's metrics** are on a second site, `http://:2020`, that only the internal
   network can reach ([`Caddyfile`](../../infra/caddy/Caddyfile)).
@@ -101,15 +106,22 @@ flowchart LR
   `DISCORD_WEBHOOK_URL`. The Alertmanager entrypoint writes it to a file in memory
   and the config reads that file. When it is empty, Alertmanager loads
   [`silent.yml`](../../infra/monitoring/alertmanager/silent.yml) and sends nothing.
-- **When it runs.** `make`, `make up` and the server always run monitoring. `make dev`
-  leaves it off to keep laptops light; `make monitoring-up` turns it on
-  ([`compose.override.yml`](../../compose.override.yml), `monitoring` profile).
+- **Each alert says where it comes from.** One webhook serves the servers and the
+  laptops. Prometheus puts a `source` label on every alert (`external_labels` in
+  [`prometheus.yml`](../../infra/monitoring/prometheus/prometheus.yml)): the server's
+  `SITE_DOMAIN`, or `local (<git user.name>)`, which make sets on a laptop. The Discord
+  title starts with it, as in `trans.vyantares.ch: [FIRING:1] ApiDown`
+  ([`discord.tmpl`](../../infra/monitoring/alertmanager/templates/discord.tmpl)).
+- **When it runs.** `make`, `make up` and a server with the overlay, the primary, always
+  run monitoring. `make dev` leaves it off to keep laptops light; `make monitoring-up`
+  turns it on ([`compose.override.yml`](../../compose.override.yml), `monitoring`
+  profile). A server without the overlay, the Oracle copy, answers 503 at `/grafana`.
 
 ## Where the code is
 
 | Path | What it does |
 | ---- | ------------ |
-| [`infra/monitoring/prometheus/prometheus.yml`](../../infra/monitoring/prometheus/prometheus.yml) | The 8 scrape jobs (7 single targets and the blackbox job with 3 probes), intervals, retention |
+| [`infra/monitoring/prometheus/prometheus.yml`](../../infra/monitoring/prometheus/prometheus.yml) | The 8 scrape jobs (7 single targets and the blackbox job with 3 probes), intervals, retention, the `source` label |
 | [`infra/monitoring/prometheus/rules/alerts.yml`](../../infra/monitoring/prometheus/rules/alerts.yml) | The 25 alert rules |
 | [`infra/monitoring/prometheus/tests/alerts.test.yml`](../../infra/monitoring/prometheus/tests/alerts.test.yml) | The 10 rule unit tests |
 | [`infra/monitoring/alertmanager/`](../../infra/monitoring/alertmanager) | Routing to Discord, inhibitions, the silent fallback, the message template, the entrypoint that hides the webhook |
@@ -120,9 +132,9 @@ flowchart LR
 | [`apps/api/src/metrics/metrics.ts`](../../apps/api/src/metrics/metrics.ts) | Every API metric, on the API's own registry |
 | [`apps/api/src/metrics/metrics-server.ts`](../../apps/api/src/metrics/metrics-server.ts) | The internal listener on port 9464 |
 | [`apps/api/src/metrics/http-metrics.middleware.ts`](../../apps/api/src/metrics/http-metrics.middleware.ts) | Times every HTTP request by method, route and status |
-| [`apps/api/src/metrics/metrics.collector.ts`](../../apps/api/src/metrics/metrics.collector.ts) | Users, active users and the question bank, read when Prometheus scrapes |
-| [`compose.yml`](../../compose.yml), [`compose.deploy.yml`](../../compose.deploy.yml) | The seven monitoring services, with no published port |
-| [`infra/caddy/Caddyfile`](../../infra/caddy/Caddyfile) | `/grafana` to Grafana, 404 for `/grafana/metrics`, the `:2020` metrics site |
+| [`apps/api/src/metrics/metrics.collector.ts`](../../apps/api/src/metrics/metrics.collector.ts) | Users, courses, achievements, friendships, active users and the question bank, read when Prometheus scrapes |
+| [`compose.yml`](../../compose.yml), [`compose.deploy.monitoring.yml`](../../compose.deploy.monitoring.yml) | The seven monitoring services, with no published port |
+| [`infra/caddy/Caddyfile`](../../infra/caddy/Caddyfile), [`Caddyfile.prod`](../../infra/caddy/Caddyfile.prod) | `/grafana` to Grafana, 404 for `/grafana/metrics`, the `:2020` metrics site; on a server without monitoring, 503 at `/grafana` |
 | [`scripts/check-monitoring-config.sh`](../../scripts/check-monitoring-config.sh) | Static checks: config, rules, tests, routes, dashboards, published ports |
 | [`scripts/check-monitoring.sh`](../../scripts/check-monitoring.sh) | Live checks on a running stack: targets up, rules healthy, series present |
 | [`Makefile`](../../Makefile) | `monitoring-up`, `monitoring-check`, and `env-file`, which writes the Grafana secrets into `.env` |
@@ -139,32 +151,38 @@ flowchart LR
    `HTTPS_PORT` is not 443) and log in as `admin`. There is no other account.
 4. The home page is the **Overview** dashboard: every "Is it up" stat is green, and
    there is traffic from the Playwright run. Open **Dashboards**, folder
-   `ft_transcendence`: show **Learning** (the seeded question bank by level) and
-   **API** (requests and latency by route).
+   `ft_transcendence`: show **Learning** (the seeded question bank by level and, when
+   `DEMO_PASSWORD` was set in `.env` before `make`, the demo learners' courses,
+   achievements and friendships) and **API** (requests and latency by route).
 5. Open **Alerting** and show the 25 rules, grouped as in `alerts.yml`.
-6. Show what is closed, from a terminal. Inside the devcontainer, use `https://caddy`
-   instead of `https://localhost`. From the host, add `:<HTTPS_PORT>` when it is not 443, as
-   on every 42 machine:
+6. Show what is closed, from a terminal. The first line sets `BASE`: keep `https://caddy`
+   inside the devcontainer. From the host, use `https://localhost:<HTTPS_PORT>`, as on every 42
+   machine, or `https://localhost` when the port is 443:
 
    ```bash
-   curl -sk -o /dev/null -w '%{http_code}\n' https://localhost/grafana/api/search    # 401
-   curl -sk -o /dev/null -w '%{http_code}\n' https://localhost/grafana/metrics       # 404
-   curl -sk -o /dev/null -w '%{http_code}\n' https://localhost/api/metrics           # 404
-   docker ps --format '{{.Names}}\t{{.Ports}}'                                       # only caddy publishes ports
+   BASE=https://caddy    # inside the devcontainer; from the host: https://localhost:<HTTPS_PORT>
+   curl -sk -o /dev/null -w '%{http_code}\n' $BASE/grafana/api/search    # 401
+   curl -sk -o /dev/null -w '%{http_code}\n' $BASE/grafana/metrics       # 404
+   curl -sk -o /dev/null -w '%{http_code}\n' $BASE/api/metrics           # 404
+   docker ps --format '{{.Names}}\t{{.Ports}}'                           # only caddy publishes ports
    ```
 
 7. Make an alert fire: `docker compose stop api`. Under **Alerting**, `ApiDown`
    goes pending, then firing after about a minute. With `DISCORD_WEBHOOK_URL` set,
-   Discord gets "[FIRING:1] ApiDown".
+   Discord gets `local (<git user.name>): [FIRING:1] ApiDown`: your git name tells the
+   team it is your laptop, not the server.
 8. `docker compose start api`. The alert resolves within a minute or two, and
    Discord gets the "[RESOLVED]" message. Within 15 minutes of `make`, `ApiRestarting`
-   (warning) fires too once the API is back: the Playwright restart test already restarted it
-   once, and this start is the second.
+   (warning) fires too once the API is back, if `make` has not fired it already: the Playwright
+   restart test already restarted it once, and this start is the second.
 
 A small live change: edit a threshold or a `for` in `alerts.yml` and its test, run
 `./scripts/check-monitoring-config.sh` and `make up`, and show the new rule under
 **Alerting**. The other demo checks are in section 8 of
 [../operations/monitoring.md](../operations/monitoring.md).
+
+To show real traffic, open the primary's Grafana at <https://trans.vyantares.ch/grafana>
+with its password (section 2 of the same file).
 
 ## Tests that prove it
 
@@ -173,8 +191,9 @@ A small live change: edit a threshold or a `for` in `alerts.yml` and its test, r
 | [`infra/monitoring/prometheus/tests/alerts.test.yml`](../../infra/monitoring/prometheus/tests/alerts.test.yml) | 10 `promtool` tests: `ApiDown` fires after a minute and not before, the error rate needs real traffic, the fixture's restock failures stay quiet, low RAM with free swap stays quiet, and the other critical rules fire after their minute |
 | [`scripts/check-monitoring-config.sh`](../../scripts/check-monitoring-config.sh) | `promtool check config` and `promtool test rules`, `amtool check-config` on both Alertmanager configs and the Discord route, `caddy validate`, checks on the dashboard JSON, and only Caddy publishing ports in the production and server stacks. Runs in [`ci.yml`](../../.github/workflows/ci.yml) (job `monitoring config`) and in `make ci` |
 | [`scripts/check-monitoring.sh`](../../scripts/check-monitoring.sh) | On a running stack: every target up, every rule healthy, an Alertmanager found, every series in `REQUIRED_SERIES` present. Runs in [`e2e.yml`](../../.github/workflows/e2e.yml) and in `make` |
+| [`scripts/check-llm-spend.sh`](../../scripts/check-llm-spend.sh) | After the browser suite: Prometheus counted no LLM call and no key check on a real provider since `make` started, since every test runs on the fixture tutor with no key. Runs in `make` (`make llm-spend-check`) |
 | [`e2e/tests/monitoring.spec.ts`](../../e2e/tests/monitoring.spec.ts) | Through Caddy: "an anonymous visitor only gets the login page", "the Grafana API refuses anonymous reads", "sign-up is off", "metrics endpoints stay internal", "the four dashboards are provisioned", "Prometheus feeds Grafana" |
-| [`apps/api/test/metrics.e2e-spec.ts`](../../apps/api/test/metrics.e2e-spec.ts) | The real NestJS pipeline: a request is counted under its route template, never its URL; "serves no metrics at /api/metrics"; the bank and accounts are collected at scrape time |
+| [`apps/api/test/metrics.e2e-spec.ts`](../../apps/api/test/metrics.e2e-spec.ts) | The real NestJS pipeline: a request is counted under its route template, never its URL; "serves no metrics at /api/metrics"; the bank, accounts, courses, achievements and friendships are collected at scrape time |
 | [`apps/api/src/metrics/*.spec.ts`](../../apps/api/src/metrics) | Unit tests of the listener, the middleware, the collector (it keeps its last values when the database fails or hangs) and the series that must exist at 0 from the start |
 
 ## Limits and choices

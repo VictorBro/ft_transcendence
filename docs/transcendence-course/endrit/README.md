@@ -55,7 +55,7 @@ flowchart LR
   FILES --> SEED["prisma/seed.ts"]
   SEED -->|"valide avec"| SH
   SEED --> DB[("PostgreSQL")]
-  SEED -->|"si dev"| DEMO["demo"]
+  SEED -->|"si DEMO_PASSWORD"| DEMO["demo"]
   DEMO --> DB
   START["startup-checks"] -.->|"SELECT 1 au démarrage"| DB
   START -.->|"première connexion"| REDIS[("Redis")]

@@ -4,8 +4,8 @@ In this chapter:
 
 - The `(main)` route group: the pages that are not about lessons. That means the home page, sign up, log in, onboarding, profile, two-factor settings, friends, other people's profiles, and the legal pages.
 - For each page: its URL, whether it is a server or client component, what data it loads, what the user can do, and which API call it makes.
-- The small shared components these pages are built from: form parts, avatar, flag, friend buttons, user rows, the online dot, the message link and the legal article.
-- The helper files in `lib/` that hold the logic these pages need: `onboarding.ts`, `avatar.ts`, `presence.ts`, `legal.ts` and `legal-content/`.
+- The small shared components these pages are built from: form parts, avatar, flag, friend buttons, user rows, the online dot, the message link, the legal article and the AI tutor check.
+- The helper files in `lib/` that hold the logic these pages need: `onboarding.ts`, `avatar.ts`, `presence.ts`, `legal.ts`, `legal-content/`, `tutor-client.ts` and `tutor-status.ts`.
 
 ---
 
@@ -83,7 +83,7 @@ Most pages also have `export const dynamic = 'force-dynamic'`. It tells Next.js:
 | `/login` | `login/page.tsx` | `LoginForm` | none | `POST /api/auth/login`, `POST /api/auth/2fa/verify` |
 | `/signup` | `signup/page.tsx` | `SignUpForm` | none | `POST /api/auth/signup` |
 | `/onboarding` | `onboarding/page.tsx` | `ChooseCourse`, `ChooseLevel` | `requireCourses()` | `POST /api/courses`, `PATCH /api/courses/:lang/level` |
-| `/profile` | `profile/page.tsx` | none | `requireUser()` | none |
+| `/profile` | `profile/page.tsx` | `TutorCheck` | `requireUser()` | `GET /api/tutor`, `POST /api/tutor/check` |
 | `/profile/edit` | `profile/edit/page.tsx` | `ProfileForm` | `requireUser()` | `PATCH /api/users/me`, `POST` / `DELETE /api/users/me/avatar` |
 | `/settings/2fa` | `settings/2fa/page.tsx` | `TwoFactorPanel` | `requireUser()` | `GET /api/auth/2fa`, `POST .../2fa/setup`, `POST .../2fa/enable`, `DELETE /api/auth/2fa` |
 | `/friends` | `friends/page.tsx` | `FriendSearch`, friend buttons | `requireFriends()`, `searchUsers()`, `recentlyActive()` | friend request endpoints |
@@ -100,10 +100,21 @@ Most pages also have `export const dynamic = 'force-dynamic'`. It tells Next.js:
 /**
  * The marketing and account shell. Not `fill`: these are documents that may run
  * past the viewport, so the footer sits after the content rather than pinned.
+ *
+ * The wordmark follows the session, as in the other shells: a signed-in user
+ * goes back to the app, a visitor to the marketing page. HeaderNav already
+ * reads the session, and loadSession is cached per render, so this adds no
+ * lookup and makes no page dynamic that was not already.
  */
-export default function MainLayout({ children }: { children: ReactNode }) {
+export default async function MainLayout({ children }: { children: ReactNode }) {
+  const user = await currentUser();
+
   return (
-    <Shell brand={<Wordmark />} nav={<HeaderNav />} footer={<LegalFooter />}>
+    <Shell
+      brand={<Wordmark href={user === null ? '/' : '/learn'} />}
+      nav={<HeaderNav />}
+      footer={<LegalFooter />}
+    >
       {children}
     </Shell>
   );
@@ -111,6 +122,8 @@ export default function MainLayout({ children }: { children: ReactNode }) {
 ```
 
 It gives `Shell` three slots: the app name on the left (`Wordmark`), the header links (`HeaderNav`), and the footer with links to the legal pages (`LegalFooter`). Those components are explained in [03-shell-components.md](03-shell-components.md).
+
+The layout is `async` because it reads the session with `currentUser()` (chapter 4), which returns the signed-in user or `null`. The wordmark then leads a signed-in user to `/learn` and a visitor to `/`.
 
 `HeaderNav` has two looks. A visitor sees one row: the language switcher, "Sign in" and "Create account". A signed-in user sees one menu button (`HeaderMenu`). It opens a panel with the language switcher, a link to `/profile` (avatar and name), "Friends", "Messages" and "Sign out". The language switcher changes the URL's locale. This layout does not save it: only the `(dashboard)` layout renders `LocaleSync`, which stores it in `User.locale` (chapter 3).
 
@@ -154,37 +167,60 @@ Before the login and signup forms, we need the small pieces they are built from.
 | Export | What it is |
 |---|---|
 | `Field` | a label + `<input>` + optional hint |
+| `PasswordField` | a `Field` for a password, with a Show password toggle (`aria-pressed`) drawn once hydrated; a plain password input without JavaScript |
 | `FormError` | a red error line, or nothing |
 | `SubmitButton` | the main submit button, which says "Working..." while busy |
 | `PRIMARY_BUTTON`, `SECONDARY_BUTTON`, `GO_BUTTON`, `WARN_BUTTON` | Tailwind class strings, for links and buttons that must look like buttons |
 
 ```tsx
-export function Field({ label, hint, ...input }: FieldProps) {
-  const id = useId();
-  const hintId = hint ? `${id}-hint` : undefined;
-
+/**
+ * The label is tied to the input by a generated id rather than by wrapping,
+ * because screen readers announce the association and the accessibility module
+ * depends on every control having one.
+ */
+function Labelled({
+  id,
+  label,
+  hint,
+  children,
+}: {
+  id: string;
+  label: string;
+  hint?: string;
+  children: ReactNode;
+}) {
   return (
     <div className="flex flex-col gap-2">
       <label htmlFor={id} className="text-sm font-medium">
         {label}
       </label>
-      <input
-        id={id}
-        aria-describedby={hintId}
-        className="..."
-        {...input}
-      />
+      {children}
       {hint ? (
-        <p id={hintId} className="text-xs text-slate-400">
+        <p id={`${id}-hint`} className="text-xs text-slate-400">
           {hint}
         </p>
       ) : null}
     </div>
   );
 }
+
+export function Field({ label, hint, ...input }: FieldProps) {
+  const id = useId();
+
+  return (
+    <Labelled id={id} label={label} hint={hint}>
+      <input
+        id={id}
+        aria-describedby={hint ? `${id}-hint` : undefined}
+        className={INPUT}
+        {...input}
+      />
+    </Labelled>
+  );
+}
 ```
 
-`Field` takes all the normal `<input>` props (`name`, `type`, `autoComplete`, ...) plus a `label` and a `hint`. `useId()` is a React hook that makes a unique id, so the `<label htmlFor>` points to the right input. The comment says why: screen readers announce this link, and the accessibility module needs every input to have a label. The hint is linked with `aria-describedby`, so a screen reader also reads it.
+`Field` takes all the normal `<input>` props (`name`, `type`, `autoComplete`, ...) plus a `label` and a `hint`. `useId()` is a React hook that makes a unique id, so the `<label htmlFor>` points to the right input. The comment says why: screen readers announce this link, and the accessibility module needs every input to have a label. The hint is linked with `aria-describedby`, so a screen reader also reads it. `Labelled` is the frame `Field` and `PasswordField` share: the label, the input it is given, and the hint. It is not exported. `INPUT` is the class string of the input.
 
 ```tsx
 /** role="alert" so a failed submit is announced, not just repainted. */
@@ -217,6 +253,71 @@ export function SubmitButton({ pending, disabled = false, children }: {...}) {
 While `pending` is true, the button is disabled (no double submit) and its text changes to "Working". `disabled` alone is for a form that is not complete yet: the button cannot be clicked, but it does not say "Working".
 
 The class constants all start from one `BUTTON` string. It sets `min-h-11` (44 px, "a thumb's width", the minimum size for a touch target) and a visible focus ring. The four variants only change colours: `PRIMARY` is filled, the others are outlined, `GO` turns green on hover, `WARN` turns red.
+
+### `PasswordField` — the Show password button
+
+The four password inputs use `PasswordField`: the password on the login page, the password and its confirmation on the signup page, and the password that turns 2FA off. It is a `Field` with a button at the right edge of the input. The button shows the password as plain text, and a second press hides it again.
+
+```tsx
+type PasswordFieldProps = Omit<FieldProps, 'type' | 'autoComplete'> & {
+  /** Required: it is what lets a password manager fill the field or offer to save it. */
+  autoComplete: 'current-password' | 'new-password';
+};
+```
+
+There is no `type` prop: the component sets it. `autoComplete` is required, so a password manager always knows if the field is the current password or a new one.
+
+```tsx
+  const hydrated = useSyncExternalStore(
+    noSubscription,
+    () => true,
+    () => false,
+  );
+```
+
+`useSyncExternalStore` reads a value from outside React. Its third function gives the value on the server, here `false`. In the browser, React first uses that server value while it hydrates (attaches to the server HTML), then renders again with `true`. So the server HTML has no button, and a page without JavaScript keeps a plain password field instead of a button that does nothing. The browser HTML matches the server HTML at hydration, so React logs no hydration warning. `useSpeech` in the lesson player uses the same trick for the Listen buttons.
+
+```tsx
+          <button
+            type="button"
+            aria-controls={id}
+            aria-pressed={shown}
+            disabled={input.disabled}
+            // The focus stays in the field, so typing goes on after a click.
+            onMouseDown={(event) => event.preventDefault()}
+            onClick={toggle}
+            className="..."
+          >
+            <span className="sr-only">{t('showPassword')}</span>
+            <EyeIcon crossed={shown} />
+          </button>
+```
+
+- `type="button"`: a button in a form submits it by default. This one never does.
+- One name, "Show password" (`Form.showPassword`), and `aria-pressed` says if it is on. A toggle's name must not change with its state, so the name never becomes "Hide password". The "Show the text" button of the lesson player works the same way.
+- The name is `sr-only` text, not `aria-label`. Playwright's `getByLabel` reads `aria-label`, so `getByLabel('Password')` would also find the button. Also, page translation tools translate text but not attributes.
+- `aria-controls` points at the input. The signup page has two buttons with the same name, and the e2e tests tell them apart this way.
+- The eye icon is `aria-hidden`: the text names the button. A crossed eye means the password is shown.
+
+`toggle()` keeps the caret where it was. Changing `type` can move the caret, so the function saves the selection, commits the change at once with `flushSync`, then puts the selection back with `setSelectionRange`. `onMouseDown` with `preventDefault` stops a click from taking the focus away from the field. From the keyboard (Enter or Space on the button), the focus stays on the button.
+
+```tsx
+  // Hidden again when the form is sent: what leaves, and what a password
+  // manager sees leave, is a password field.
+  useEffect(() => {
+    const form = field.current?.form;
+    if (!form) return;
+    const hide = () => setShown(false);
+    form.addEventListener('submit', hide);
+    return () => form.removeEventListener('submit', hide);
+  }, []);
+```
+
+The password is hidden again when its form is sent, even when the browser check then refuses the form (for example, two signup passwords that do not match).
+
+The input also gets `spellCheck={false}`, `autoCorrect="off"` and `autoCapitalize="none"`. Once shown, the field is a text field: without these, a cloud spellchecker could receive the password, and a phone could capitalise or correct it while it is typed. Once hydrated, the class `[&::-ms-reveal]:hidden` hides Edge's own eye button, so there are not two. `pr-11` leaves room for the button, so nothing moves when it appears.
+
+An ESLint rule in [eslint.config.mjs](../../apps/web/eslint.config.mjs) refuses `type="password"` anywhere in `app/` and `components/` except `form.tsx`, so a new password input has to use `PasswordField`.
 
 ---
 
@@ -288,6 +389,10 @@ Step by step:
 7. `finally` always turns `pending` off, even if something threw.
 
 The form has `noValidate`: this turns off the browser's own error bubbles, so the user sees only our translated messages.
+
+It also has `method="post"`. Once the page is hydrated, `onSubmit` handles every submit, so the method changes nothing. But an Enter pressed before hydration, or with JavaScript off, makes the browser send the form itself. A form with no method sends a GET, so the password would be in the URL (`/en/signup?...&password=...`), and the browser history and Caddy's access log would keep it. With `post`, the values go in the request body. The page answers 200 to a POST, so the user sees the form again.
+
+The password and its confirmation are each a `PasswordField`, each with its own Show password button.
 
 ---
 
@@ -388,13 +493,15 @@ There is an important detail in the render:
 ```tsx
   if (secondFactor) {
     return (
-      // Distinct key from the password form. Both render a <form> holding
-      // <Field>, so without it React reuses the password input's DOM node for
+      // Distinct key from the password form. Both render a <form> holding an
+      // input, so without it React reuses the password input's DOM node for
       // the code input and the typed password reappears, in clear text.
       <form key="second-factor" onSubmit={onSubmit} className="flex flex-col gap-6" noValidate>
 ```
 
-React compares the old and new tree. If both have a `<form>` with a `<Field>` in the same place, React keeps the same `<input>` in the page and only changes its props. The input would keep its value: the password, now shown as plain text in the code field. Giving each form a different `key` tells React "this is a new form", so it throws away the old inputs. The code field uses `autoComplete="one-time-code"` so phones can fill it from an SMS or an app.
+React compares the old and new tree. If both have a `<form>` with an input in the same place, React keeps the same `<input>` in the page and only changes its props. The input would keep its value: the password, now shown as plain text in the code field. Giving each form a different `key` tells React "this is a new form", so it throws away the old inputs. The code field uses `autoComplete="one-time-code"` so phones can fill it from an SMS or an app.
+
+The password form (step 1) uses `PasswordField` for the password, and has `method="post"` for the same reason as the signup form. The code form needs no method: it only appears after a client render, never in the server HTML.
 
 After success, `done()` goes to `/learn`. That page reads the session on the server. If the cookie was not saved, it would send the user back to `/login`, so reaching `/learn` proves the login worked.
 
@@ -675,7 +782,7 @@ export function Avatar({ src, name, size }: { src: string | null; name: string; 
 
 ## Your profile (`/profile`)
 
-[profile/page.tsx](<../../apps/web/app/[locale]/(main)/profile/page.tsx>) is an async **server component**, `force-dynamic`. It has no client part.
+[profile/page.tsx](<../../apps/web/app/[locale]/(main)/profile/page.tsx>) is an async **server component**, `force-dynamic`. Its one client part is `TutorCheck`, in the "AI tutor" section (below).
 
 ```tsx
 export default async function ProfilePage() {
@@ -687,9 +794,61 @@ export default async function ProfilePage() {
 
 - **Data:** `requireUser()` (`GET /api/auth/me` through `loadSession`, chapter 4). A signed-out visitor is redirected to `/login`.
 - **Shows:** the display name, email, the date the account was made (formatted for the page's language with `toLocaleDateString(locale)`), and a 128 px avatar.
-- **What the user can do:** follow two links: "Edit profile" (`/profile/edit`) and, in a "Security" section, "Two factor authentication" (`/settings/2fa`).
+- **What the user can do:** follow two links: "Edit profile" (`/profile/edit`) and, in a "Security" section, "Two factor authentication" (`/settings/2fa`). In the "AI tutor" section after it, see what the lesson tutor runs on and test the server's key.
 
 The `max-sm:flex-col-reverse` classes put the avatar above the name on phones.
+
+### `components/tutor-check.tsx` — the AI tutor section
+
+Every learner shares the server's one LLM key. A wrong key, a wrong model and a Google outage all read "The tutor cannot answer right now" in a lesson. This section tells them apart. The page renders the heading "AI tutor" and its prompt on the server, then `<TutorCheck />`, a **client component**:
+
+```tsx
+<section
+  aria-labelledby="tutor-heading"
+  className="flex flex-col gap-3 border-t border-slate-800 pt-8"
+>
+  <h2 id="tutor-heading" className="text-lg font-medium">
+    {t('tutor')}
+  </h2>
+  <p className="text-sm text-slate-300">{t('tutorPrompt')}</p>
+  <TutorCheck />
+</section>
+```
+
+Like the 2FA panel, it loads its data in the browser, once, with `useEffect`: `loadTutorInfo()` calls `GET /api/tutor` ([lib/tutor-client.ts](../../apps/web/lib/tutor-client.ts)). A `<dl>` then shows the **Provider** ("Google Gemini", "Practice tutor (fixture), no key needed" or "None, the tutor is off") and, when there is one, the **Model** in `<code>`. Its state is `TutorInfo | 'loading' | 'failed'`. When the load fails, the `<dl>` is hidden, and the test still works: its answer fills in the provider and the model.
+
+The **Test connection** button calls `checkTutor()`, which is `POST /api/tutor/check`:
+
+```tsx
+  async function test() {
+    // aria-disabled keeps the button focusable, so it still gets clicks: ignore them.
+    if (pending) {
+      return;
+    }
+    setPending(true);
+    // Cleared first, so the live region changes and a reused result is announced again.
+    setResult(null);
+    setError(null);
+```
+
+- **`aria-disabled`, not `disabled`.** A disabled button loses the focus of whoever pressed it. While pending, the button reads "Testing…", keeps the focus, and ignores clicks.
+- **A live region that is always there.** `<div role="status">` is in the page from the first render, empty. A screen reader may skip a live region that arrives together with its text. The result is cleared on each click, so the same result is read out again.
+- **Request errors** (`429` after 3 tests a minute, `401` after the session ended, no network) go through `useErrorMessage` into `FormError`, a `role="alert"`.
+
+`TutorCheckResult` draws one answer. It is a plain component with no state, so its test renders it directly:
+
+| Part | What it shows |
+|---|---|
+| Icon | An `aria-hidden` 24 px SVG: a circle with a check (good), a clock (warn), an x (bad) or an i (info). The shape tells the tone apart, not only the colour. |
+| Sentence | `TutorCard.status.<status>`, in the tone's colour, for example "Google refused the key." in `text-red-400`. It names the model for `model_not_found`, and the HTTP status for `unexpected`; an `unexpected` with no HTTP status (the check failed before Google answered) uses `status.unexpectedNoAnswer` instead, and an `unreachable` with one (Google's 408 or 5xx) uses `status.unreachableHttp`, which names it. |
+| Hint | `TutorCard.hint.<status>`, what to do, for example "Whoever runs this server must set a new LLM_API_KEY in .env and restart the api." The `quota_day` hint is an ICU `select` on `hasTime`: "Google resets it around 9:00 AM." from the answer's `retryAt`, formatted in the page's locale to the minute, or "Google resets it at midnight Pacific time." when Google gave no wait. |
+| Time | "Answered in 171 ms, at 10:42:07 AM." when Google answered (an HTTP status came back), or "Checked at 10:42:07 AM." for the fixture, `disabled` and a check Google never answered. |
+
+The tone of each status is in [lib/tutor-status.ts](../../apps/web/lib/tutor-status.ts): `ok` is good; `quota` and `unreachable` are warn (they pass on their own within a minute); `invalid_key`, `model_not_found` and `unexpected` are bad (they need whoever runs the server), and so is `quota_day` (the tutor is gone until Google resets the quota); `fixture` and `disabled` are info. `TONE_CLASS` maps each tone to a colour the app already uses (`text-green-400`, `text-amber-300`, `text-red-400`, `text-slate-300`).
+
+The test asks the model for one word, as a learner's question would, so `ok` reads "Working: Google answered a test message." and its hint says what that costs: "Each test uses one request of the key's quota for today." A key over its quota tells the two quotas apart: `quota` is the quota of the minute ("The key is over its per-minute quota."), `quota_day` the quota of the day, in the very sentence a learner reads in a lesson, `Errors.llm.quotaExhausted`: "The tutor has used up today's quota. It's back tomorrow." The times are the browser's, with `toLocaleTimeString`. The result only appears after a click, so the server never renders it, and the two cannot differ.
+
+Tests: [tutor-client.test.ts](../../apps/web/lib/tutor-client.test.ts) (the two requests, a `429`, a status outside the contract, no network), [tutor-status.test.ts](../../apps/web/lib/tutor-status.test.ts) (a tone for every status, four distinct colours) and [tutor-check.test.tsx](../../apps/web/components/tutor-check.test.tsx) (the first render, a sentence and a hint for every status, the `ok` wording, the quota of the minute and of the day, with and without the time Google gave, an `unreachable` with and without an HTTP status). [messages.test.ts](../../apps/web/lib/messages.test.ts) checks that every status has a sentence and a hint, and every provider a name, in all three languages, and that `quota_day` says what `llm.quotaExhausted` says.
 
 ---
 
@@ -850,7 +1009,7 @@ Two small helpers handle results:
 
 Despite its name, `fail()` returns `true` when the call **succeeded**; it sets or clears the error message. `staleOnConflict` runs after "Set up" and after the code: if 2FA was turned on in another tab, the API answers `409 twoFactor.alreadyEnabled`, and the panel closes the QR screen and reloads the real status.
 
-The code and password are checked in the browser first with `EnableTwoFactorSchema` and `DisableTwoFactorSchema` (from `@ft/shared`), so an empty password is caught before any request (#217, PR #218). The API checks the password again before it turns 2FA off.
+The code and password are checked in the browser first with `EnableTwoFactorSchema` and `DisableTwoFactorSchema` (from `@ft/shared`), so an empty password is caught before any request (#217, PR #218). The API checks the password again before it turns 2FA off. The password is a `PasswordField`. The panel is drawn in the browser after the status fetch, so its Show password button is there at once.
 
 ---
 
@@ -1350,8 +1509,10 @@ export function Flag({ lang, className }: { lang: Language; className?: string }
 - The usual shape is a **server page** that loads data (`requireUser`, `requireCourses`, `requireFriends`) and a **client form** that validates with the shared Zod schema, calls a `*-client.ts` function, then calls `router.refresh()`.
 - `force-dynamic` is on every page that shows one person's data. The session read in the nav already makes every page dynamic; `force-dynamic` states it explicitly.
 - The login form has two steps in one component. The two `<form>`s have different `key`s so the password never shows up in the code field.
+- Every password input is a `PasswordField`: a Show password button with one name and `aria-pressed`, drawn once hydrated. The password is hidden again when the form is sent. The login password form and the signup form have `method="post"`, so a submit before hydration never puts the password in the URL.
 - Onboarding's step is **computed from the API** (`resolveOnboardingStep`), not kept in state: a course with `level: null` means "pick a level next". This survives refreshes and abandoned exams.
 - The 2FA panel keeps "loading" and "failed" separate from "off" (bug #216), and shows recovery codes first because they are shown only once. The API refuses setup and enable while 2FA is on (PR #219), so only the password can turn it off.
+- The AI tutor section of `/profile` shows the provider and the model, and tests the server's key with `POST /api/tutor/check`, a one-word request that spends one of the key's requests and tells the quota of the minute from the quota of the day. Its button uses `aria-disabled` so it keeps the focus, and its `role="status"` region is always in the page.
 - Friend buttons get an action **name** from the server page, refresh the page after every write (even failed ones), and stay disabled until the fresh page arrives.
 - The friends search only writes `?q=` in the URL; the server page does the search, so live refreshes keep the results correct.
 - Only friends see a presence dot. The dot reads a tab-wide presence map fed by the WebSocket, and falls back to the server's value.

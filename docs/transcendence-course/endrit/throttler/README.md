@@ -6,7 +6,7 @@
 
 ## 1. À quoi ça sert
 
-Le **rate limiting** (limitation de débit) empêche un même appelant d'envoyer trop de requêtes. Chez nous : **100 requêtes par minute et par route** pour un appelant, et moins sur les routes sensibles (login : 5, inscription : 20). Ce sont les valeurs par défaut de [rate-limits.ts](../../../../apps/api/src/throttler/rate-limits.ts) ; le `.env` peut les changer (`RATE_LIMIT_PER_MINUTE`, `LOGIN_LIMIT_PER_MINUTE`, `SIGNUP_LIMIT_PER_MINUTE`).
+Le **rate limiting** (limitation de débit) empêche un même appelant d'envoyer trop de requêtes. Chez nous : **100 requêtes par minute et par route** pour un appelant, et moins sur les routes sensibles (login : 20, inscription : 20). Ce sont les valeurs par défaut de [rate-limits.ts](../../../../apps/api/src/throttler/rate-limits.ts) ; le `.env` peut les changer (`RATE_LIMIT_PER_MINUTE`, `LOGIN_LIMIT_PER_MINUTE`, `SIGNUP_LIMIT_PER_MINUTE`).
 
 La vraie question est : **qui est « un appelant » ?**
 
@@ -45,10 +45,10 @@ La vraie question est : **qui est « un appelant » ?**
 | [identity-throttler.guard.spec.ts](../../../../apps/api/src/throttler/identity-throttler.guard.spec.ts) | Tests unitaires : 5 sur `getTracker`, 7 sur `canActivate`, avec de vrais décorateurs et un vrai `Reflector`. | moi (#20), retouché par VictorBro (#21) |
 | [throttle-by-ip.decorator.ts](../../../../apps/api/src/throttler/throttle-by-ip.decorator.ts) | `@ThrottleByIp(limit, ttl)` : pose une limite **et** la métadonnée `throttle:by-ip`. | VictorBro (#21) |
 | [throttler-storage.spec.ts](../../../../apps/api/src/throttler/throttler-storage.spec.ts) | Test du stockage des compteurs. | bastian-schnitzler (#192) |
-| [rate-limits.ts](../../../../apps/api/src/throttler/rate-limits.ts) | `RATE_LIMITS` : `perAccount` (100), `signup` (20), `login` (5), lus une fois dans le `.env` au démarrage. Une valeur qui n'est pas un entier positif arrête l'API. | VictorBro (#198) |
+| [rate-limits.ts](../../../../apps/api/src/throttler/rate-limits.ts) | `RATE_LIMITS` : `perAccount` (100), `signup` (20), `login` (20), lus une fois dans le `.env` au démarrage. Une valeur qui n'est pas un entier positif arrête l'API. | VictorBro (#198) |
 | [app.module.ts](../../../../apps/api/src/app.module.ts) | `ThrottlerModule.forRoot({ throttlers: [{ ttl: 60_000, limit: RATE_LIMITS.perAccount }], errorMessage: 'server.rateLimited' })` + enregistrement global du guard. | équipe (#20, #126, #198) |
 | [app.setup.ts](../../../../apps/api/src/app.setup.ts) | `set('trust proxy', 1)` : sans ça, `req.ip` serait l'adresse de Caddy. | équipe |
-| [auth.controller.ts](../../../../apps/api/src/auth/auth.controller.ts) | Utilise `@ThrottleByIp` : `signup` (`RATE_LIMITS.signup`, 20), et `RATE_LIMITS.login` (5) sur `login`, `2fa/verify`, `2fa/enable` et `DELETE 2fa`. | équipe |
+| [auth.controller.ts](../../../../apps/api/src/auth/auth.controller.ts) | Utilise `@ThrottleByIp` : `signup` (`RATE_LIMITS.signup`, 20), et `RATE_LIMITS.login` (20) sur `login`, `2fa/verify`, `2fa/enable` et `DELETE 2fa`. | équipe |
 
 ### Diagramme des fichiers et dépendances
 
@@ -66,7 +66,7 @@ flowchart LR
   GUARD -->|"lit la clé THROTTLE_BY_IP"| DECO
   MOD -->|"enregistre en global"| GUARD
   MOD --> LIB
-  AUTHC -->|"@ThrottleByIp(5 ou 20)"| DECO
+  AUTHC -->|"@ThrottleByIp(20)"| DECO
   DECO -->|"@Throttle"| LIB
   SETUP -.->|"req.ip et req.session"| GUARD
   SPEC --> GUARD
@@ -141,7 +141,7 @@ Le message du 429 est `server.rateLimited` (option `errorMessage` dans `app.modu
 
 ## 4. Diagrammes
 
-### 4.1 Séquence : `POST /api/auth/login` (route `@ThrottleByIp(5)`)
+### 4.1 Séquence : `POST /api/auth/login` (route `@ThrottleByIp(20)`)
 
 ```mermaid
 sequenceDiagram
@@ -161,8 +161,8 @@ sequenceDiagram
   CA->>EX: ajoute X-Forwarded-For = IP du client
   EX->>EX: req.ip = IP du client, session chargée
   EX->>G: canActivate (hérité)
-  G->>TG: canActivate lit la limite de la route (5)
-  TG->>G: handleRequest(context, limit 5, ttl 60 s)
+  G->>TG: canActivate lit la limite de la route (20)
+  TG->>G: handleRequest(context, limit 20, ttl 60 s)
   G->>R: getAllAndOverride(THROTTLE_BY_IP)
   R-->>G: true
   G->>G: req[BY_IP] = true
@@ -170,9 +170,9 @@ sequenceDiagram
   TG->>G: getTracker(req)
   G-->>TG: ip:203.0.113.7
   TG->>TG: clé = sha256(AuthController-login-default-ip:203.0.113.7)
-  TG->>ST: increment(clé, 60 s, limite 5)
+  TG->>ST: increment(clé, 60 s, limite 20)
   ST-->>TG: totalHits, isBlocked
-  alt isBlocked (6e essai dans la minute)
+  alt isBlocked (21e essai dans la minute)
     TG-->>F: ThrottlerException(server.rateLimited)
     F-->>C: 429, message server.rateLimited, Retry-After
   else sous la limite
@@ -213,11 +213,11 @@ flowchart TD
 2. Bob appelle la même route. Tracker `user:u2`.
 3. Clés différentes → deux compteurs. Si Alice fait 100 requêtes, Bob n'est pas bloqué. Avant #20, les deux auraient eu la clé `172.18.0.5` et partagé les 100 requêtes.
 
-**Scénario B — un attaquant avec plusieurs comptes.** Il essaie de deviner un code 2FA sur `POST /api/auth/2fa/enable` (`@ThrottleByIp(5)`), avec 10 comptes.
+**Scénario B — un attaquant avec plusieurs comptes.** Il essaie de deviner un code 2FA sur `POST /api/auth/2fa/enable` (`@ThrottleByIp(20)`), avec 10 comptes.
 
-1. Par compte, il aurait 5 × 10 = 50 essais par minute.
+1. Par compte, il aurait 20 × 10 = 200 essais par minute.
 2. Mais la route a `@ThrottleByIp` : la clé est `ip:<son adresse>`, quel que soit le compte.
-3. Au 6ᵉ essai de la minute depuis sa machine → `429 server.rateLimited`.
+3. Au 21ᵉ essai de la minute depuis sa machine → `429 server.rateLimited`.
 
 **Scénario C — une route qui fixe seulement une limite.** `friends.controller.ts` utilise `@Throttle({ default: { limit: 10, ttl: 60_000 } })`, **sans** `@ThrottleByIp`. Le comptage reste **par compte** (limite 10). Choisir l'IP doit être explicite, pour ne pas mettre tous les utilisateurs d'un même réseau (NAT) dans un seul compteur.
 
@@ -240,7 +240,7 @@ Ils utilisent de **vrais** décorateurs (`@ThrottleByIp`, `@Throttle`) sur une c
 | route `@Throttle` seul → par compte | choisir l'IP est explicite |
 | route sans décorateur → limite 100 | la limite globale s'applique |
 
-Les tests e2e de [error-codes.e2e-spec.ts](../../../../apps/api/test/error-codes.e2e-spec.ts) vérifient aussi le vrai 429 : 6ᵉ login et 21ᵉ inscription dans la minute depuis la même adresse.
+Les tests e2e de [error-codes.e2e-spec.ts](../../../../apps/api/test/error-codes.e2e-spec.ts) vérifient aussi le vrai 429 : 21ᵉ login et 21ᵉ inscription dans la minute depuis la même adresse.
 
 ## 7. Questions possibles à l'oral
 
@@ -254,7 +254,7 @@ R : À la connexion, la session est régénérée. Avec l'id de session, se reco
 
 **Q : Pourquoi certaines routes restent par IP ?**
 
-R : Elles vérifient un secret (mot de passe, code 2FA). Un attaquant peut créer plusieurs comptes ; par compte, une limite de 5 deviendrait 5 × N. Par IP, c'est 5 pour sa machine.
+R : Elles vérifient un secret (mot de passe, code 2FA). Un attaquant peut créer plusieurs comptes ; par compte, une limite de 20 deviendrait 20 × N. Par IP, c'est 20 pour sa machine.
 
 **Q : Pourquoi `handleRequest` en plus de `getTracker` ?**
 

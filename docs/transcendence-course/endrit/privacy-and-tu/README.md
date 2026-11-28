@@ -1,7 +1,7 @@
 # Dire la vérité dans la politique de confidentialité, et tutoyer l'apprenant
 
 > PR concernées : **#206** « fix: #204 the privacy policy says what the platform does, on a free Gemini key » (squash `32fe3a8`), **#125** « fix(web): #106 address French learners with tu » (squash `b5b0734`), **#208** « fix(shared): consistently address French learners with tu » (squash `843e160`).
-> Fichiers à moi : les changements de ces trois PR. #206 : le texte de [en.ts](../../../../apps/web/lib/legal-content/en.ts), [fr.ts](../../../../apps/web/lib/legal-content/fr.ts), [de.ts](../../../../apps/web/lib/legal-content/de.ts), le bloc `x-logging` de [compose.yml](../../../../compose.yml) et [compose.deploy.yml](../../../../compose.deploy.yml), les commentaires de [.env.example](../../../../.env.example), [infra/deploy/.env.example](../../../../infra/deploy/.env.example) et le [README.md](../../../../README.md). #125 : [fr.json](../../../../apps/web/messages/fr.json) et deux lignes de [i18n.spec.ts](../../../../e2e/tests/i18n.spec.ts). #208 : [prompt.ts](../../../../apps/api/scripts/lessons/prompt.ts), le test de [lesson-files.spec.ts](../../../../apps/api/src/lessons/lesson-files.spec.ts), [lessonCopy.ts](../../../../packages/shared/src/lessons/domain/lessonCopy.ts), [lessonCopy.test.ts](../../../../packages/shared/src/lessons/domain/lessonCopy.test.ts), [copy.ts](../../../../packages/shared/src/lessons/player/copy.ts), et 192 fichiers de `content/briefs` et `content/lessons`.
+> Fichiers à moi : les changements de ces trois PR. #206 : le texte de [en.ts](../../../../apps/web/lib/legal-content/en.ts), [fr.ts](../../../../apps/web/lib/legal-content/fr.ts), [de.ts](../../../../apps/web/lib/legal-content/de.ts), le bloc `x-logging` de [compose.yml](../../../../compose.yml) et [compose.deploy.yml](../../../../compose.deploy.yml), les commentaires de [.env.example](../../../../.env.example), de `infra/deploy/.env.example` (supprimé depuis : un seul `.env.example`, à la racine, sert au checkout et au serveur) et le [README.md](../../../../README.md). #125 : [fr.json](../../../../apps/web/messages/fr.json) et deux lignes de [i18n.spec.ts](../../../../e2e/tests/i18n.spec.ts). #208 : [prompt.ts](../../../../apps/api/scripts/lessons/prompt.ts), le test de [lesson-files.spec.ts](../../../../apps/api/src/lessons/lesson-files.spec.ts), [lessonCopy.ts](../../../../packages/shared/src/lessons/domain/lessonCopy.ts), [lessonCopy.test.ts](../../../../packages/shared/src/lessons/domain/lessonCopy.test.ts), [copy.ts](../../../../packages/shared/src/lessons/player/copy.ts), et 192 fichiers de `content/briefs` et `content/lessons`.
 > **Pas à moi** : les pages légales elles-mêmes sont **de Luca et de Victor**. Luca a créé `legal-content/` (#26), [legal.ts](../../../../apps/web/lib/legal.ts) et son test. VictorBro les a beaucoup modifiés ensuite (#27, #64, #189, #193, #200). Le paragraphe sur Gemini pour la discussion avec le tuteur a été ajouté par **Luca** (#205). Moi, j'ai corrigé le texte pour qu'il dise ce que le code fait vraiment. Dans #125, VictorBro est co-auteur (il a fusionné `main` dans ma branche).
 
 ## 1. À quoi ça sert
@@ -25,7 +25,7 @@
 1. La section 4 dit maintenant **exactement** ce qui part chez Google quand on parle au tuteur, et que la clé est gratuite.
 2. Le reste du texte correspond au code (fuseau horaire et photo de profil collectés, stockage local du navigateur pour les brouillons de leçon, pas d'e-mail, pas de sauvegarde…).
 3. Les journaux des conteneurs sont maintenant **limités et tournants**, pour que la section 5 soit vraie.
-4. Les fichiers `.env.example` et le README préviennent : passer à une clé payante ou à un autre fournisseur, c'est **changer la politique d'abord**.
+4. Le `.env.example` (il y en avait deux à l'époque, un pour le serveur) et le README préviennent : passer à une clé payante ou à un autre fournisseur, c'est **changer la politique d'abord**.
 
 Le tout en anglais, français et allemand, avec la date `lastUpdated: '2026-11-20'`.
 
@@ -72,8 +72,8 @@ Le tout en anglais, français et allemand, avec la date `lastUpdated: '2026-11-2
 | [apps/web/lib/legal-content/en.ts](../../../../apps/web/lib/legal-content/en.ts), [fr.ts](../../../../apps/web/lib/legal-content/fr.ts), [de.ts](../../../../apps/web/lib/legal-content/de.ts) | Le texte de la politique et des conditions, dans chaque langue. | **Luca** (création #26), **VictorBro**, Luca (#205) ; moi (#195, #206) |
 | [apps/web/lib/legal-content/index.ts](../../../../apps/web/lib/legal-content/index.ts) | Choisit le texte selon la langue. | Luca, VictorBro |
 | [apps/web/lib/legal.ts](../../../../apps/web/lib/legal.ts), [legal.test.ts](../../../../apps/web/lib/legal.test.ts) | Le type `LegalDocument` et ses tests (longueur, sections). | Luca |
-| [compose.yml](../../../../compose.yml), [compose.deploy.yml](../../../../compose.deploy.yml) | Le bloc `x-logging` : logs limités à 3 fichiers de 10 Mo par conteneur. | moi (#206) pour ce bloc |
-| [.env.example](../../../../.env.example), [infra/deploy/.env.example](../../../../infra/deploy/.env.example), [README.md](../../../../README.md) | Préviennent que la clé est gratuite et ce que ça implique. | moi (#206) pour ces lignes |
+| [compose.yml](../../../../compose.yml), [compose.deploy.yml](../../../../compose.deploy.yml), [compose.deploy.monitoring.yml](../../../../compose.deploy.monitoring.yml) | Le bloc `x-logging` : logs limités à 3 fichiers de 10 Mo par conteneur. | moi (#206) pour ce bloc ; la copie de `compose.deploy.monitoring.yml` vient de Victor, quand le monitoring du serveur est devenu un overlay |
+| [.env.example](../../../../.env.example), [README.md](../../../../README.md) | Préviennent que la clé est gratuite et ce que ça implique. (`infra/deploy/.env.example` le disait aussi, jusqu'à sa fusion dans `.env.example`.) | moi (#206) pour ces lignes |
 | [apps/web/messages/fr.json](../../../../apps/web/messages/fr.json) | Tous les textes français de l'interface. | équipe ; moi (#125) pour le « tu » |
 | [e2e/tests/i18n.spec.ts](../../../../e2e/tests/i18n.spec.ts) | Test navigateur des langues. J'ai changé le titre attendu en français. | Luca, VictorBro ; moi (#125) |
 | [packages/shared/src/lessons/domain/lessonCopy.ts](../../../../packages/shared/src/lessons/domain/lessonCopy.ts) | Les consignes fixes des leçons (cartes mémoire, dictée, examen…). | moi (#142, #162, #208) |
@@ -172,8 +172,8 @@ services:
 ```
 
 - `&logging` donne un nom au bloc. `*logging` le recopie.
-- C'est sur les 12 services de `compose.yml` et les 13 de `compose.deploy.yml` (qui a en plus `migrate`).
-- Il y a **deux copies** du bloc : une ancre YAML ne passe pas d'un fichier à l'autre.
+- C'est sur les 12 services de `compose.yml`, et sur les 13 d'un serveur : 6 dans `compose.deploy.yml` (qui a en plus `migrate`) et 7 dans l'overlay `compose.deploy.monitoring.yml` (le monitoring).
+- Il y a **trois copies** du bloc, une par fichier : une ancre YAML ne passe pas d'un fichier à l'autre.
 
 La politique dit maintenant : journaux « limités en taille et supprimés par rotation, les plus anciens d'abord, jamais archivés ».
 
@@ -404,9 +404,9 @@ R : C’est la décision prise pour le projet (#204), écrite dans `docs/archite
 
 R : La politique dit que les logs avec des IP sont limités et effacés par rotation. Sans le bloc `x-logging`, Docker les gardait pour toujours. Soit on change le texte, soit on change le système : j'ai rendu le système vrai.
 
-**Q : Pourquoi deux copies du bloc `x-logging` ?**
+**Q : Pourquoi trois copies du bloc `x-logging` ?**
 
-R : Une ancre YAML ne marche que dans son propre fichier. `compose.yml` et `compose.deploy.yml` ont donc chacun la leur.
+R : Une ancre YAML ne marche que dans son propre fichier. `compose.yml`, `compose.deploy.yml` et `compose.deploy.monitoring.yml` ont donc chacun la leur. (Dans #206, il y en avait deux : le monitoring du serveur était encore dans `compose.deploy.yml`.)
 
 **Q : Les pages légales, c'est toi qui les as écrites ?**
 

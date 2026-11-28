@@ -28,7 +28,7 @@ whose only job is to store data safely and find it fast.
 We use **PostgreSQL** (often called "Postgres"). It is a free, very common **relational** database.
 It runs in its own Docker container, the `db` service in [compose.yml](../../compose.yml)
 (the image is `pgvector/pgvector`, a Postgres build that also has the pgvector extension).
-The API connects to it with a URL like this one from `.env.example`:
+The API connects to it with this URL, which [compose.yml](../../compose.yml) gives the api container:
 
 ```
 DATABASE_URL=postgresql://ft:ft_local_dev@db:5432/ft_transcendence?schema=public
@@ -36,9 +36,12 @@ DATABASE_URL=postgresql://ft:ft_local_dev@db:5432/ft_transcendence?schema=public
 
 Read it as: user `ft`, password `ft_local_dev`, host `db`, port `5432`, database `ft_transcendence`.
 
-These are local development defaults: [compose.yml](../../compose.yml) and the `Makefile` fall back
-to them. [compose.deploy.yml](../../compose.deploy.yml) has no default for these two secrets: it refuses to start
-if `POSTGRES_PASSWORD` or `SESSION_SECRET` is unset or empty.
+Nobody writes it by hand, and `.env` has no `DATABASE_URL`: compose.yml builds it from `POSTGRES_USER`,
+`POSTGRES_PASSWORD` and `POSTGRES_DB`, the values the `db` service creates the database with, so the two
+cannot disagree. The `Makefile` builds the same URL for the migrations, the seed and the tests. The values
+above are the local development defaults, which both fall back to when `.env` leaves a key empty.
+[compose.deploy.yml](../../compose.deploy.yml) builds the URL the same way, with no default for the secrets: it
+refuses to start if `POSTGRES_PASSWORD` or `SESSION_SECRET` is unset or empty.
 
 ### Tables, rows and columns
 
@@ -960,8 +963,10 @@ if (require.main === module) {
         console.log(`demo learners skipped: ${skip}`);
         return;
       }
-      // Loaded here only, so the public server never even reads the demo code.
+      // Loaded here only: a seed without DEMO_PASSWORD never reads the demo code.
       const { seedDemo } = await import('../src/demo/demo');
+      // A learner that fails is logged and skipped, never a failed seed: on a
+      // server this seed runs before every release (infra/deploy/deploy.sh).
       await seedDemo(prisma, { runNow: new Date(), password });
     })
     .catch((err) => {
@@ -976,12 +981,14 @@ if (require.main === module) {
   [test/seed.e2e-spec.ts](../../apps/api/test/seed.e2e-spec.ts) imports the functions, and this guard
   stops the import from seeding the real database.
 - It uses `PrismaService` (chapter 3), not a bare `PrismaClient`, because the demo part reuses API services.
-- Three steps: questions, lessons, then (only in development) demo learners.
-- Any error prints and exits with code 1, so `make` and the deploy stop.
+- Three steps: questions, lessons, then the demo learners when `DEMO_PASSWORD` is set, in a
+  checkout and on a server alike.
+- Any error prints and exits with code 1, so `make` and the deploy stop, except a demo learner's:
+  that one is logged and skipped (`buildLearners`, chapter 9), so it never blocks a release.
 
 ```mermaid
 flowchart TD
-    S["pnpm db:seed"] --> P{"demoSkipReason:<br/>NODE_ENV=development<br/>and DEMO_PASSWORD set?"}
+    S["pnpm db:seed"] --> P{"demoSkipReason:<br/>DEMO_PASSWORD set?"}
     P -- "yes" --> PW["demoPassword:<br/>check signup rules<br/>(fail now if weak)"]
     P -- "no" --> Q
     PW --> Q["seedQuestionBank<br/>content/items/*.json"]
@@ -1048,7 +1055,7 @@ For each `.json` file in `content/items`:
     }
   }
 
-  await prisma.$transaction(operations);
+  await prisma.$transaction(operations, SEED_TRANSACTION);
   return operations.length;
 ```
 
@@ -1056,6 +1063,10 @@ All the upserts go in **one transaction**: a group of writes that succeed all to
 If item 200 fails, items 1 to 199 are not written either, so the database is never half-seeded.
 This is why `sourceId` had to become unique (migration `question_bank_source_id_unique`):
 `upsert` needs a unique column to find the existing row.
+
+Both transactions pass `SEED_TRANSACTION` (60 s to start one, 10 minutes to run it) instead of Prisma's
+defaults of 2 s and 5 s, which are sized for a request. On the 1 GB Oracle host the seed failed every
+deploy with `P2028` ("Unable to start a transaction in the given time") until it had them.
 
 ### `seedLessons`
 
@@ -1099,19 +1110,23 @@ Step by step:
    from the old version and would point to pages that no longer exist. Those are deleted.
 
 ```ts
-  await prisma.$transaction([
-    ...writes.map(({ content, ...fields }) => {
-      const row = { ...fields, content: content ?? Prisma.DbNull };
-      return prisma.lesson.upsert({ where: { id: row.id }, create: row, update: row });
-    }),
-    ...(edited.length > 0
-      ? [
-          prisma.lessonAttempt.deleteMany({
-            where: { lessonId: { in: edited }, completedAt: null },
-          }),
-        ]
-      : []),
-  ]);
+  await prisma.$transaction(
+    [
+      ...writes.map(({ content, ...fields }) => {
+        const row = { ...fields, content: content ?? Prisma.DbNull };
+        return prisma.lesson.upsert({ where: { id: row.id }, create: row, update: row });
+      }),
+      ...(edited.length > 0
+        ? [
+            prisma.lessonAttempt.deleteMany({
+              where: { lessonId: { in: edited }, completedAt: null },
+            }),
+          ]
+        : []),
+    ],
+    SEED_TRANSACTION,
+  );
+
 ```
 
 Again one transaction. `Prisma.DbNull` is how you say "SQL NULL" for a `Json?` column (a plain `null`
@@ -1125,10 +1140,6 @@ them, it stops being ready. No migration needed.
 
 ```ts
 export function demoSkipReason(env: NodeJS.ProcessEnv): string | null {
-  // An allowlist: the public server seeds with only DATABASE_URL, NODE_ENV unset.
-  if (env.NODE_ENV !== 'development') {
-    return `NODE_ENV is ${env.NODE_ENV ?? 'unset'}, not development`;
-  }
   // Every .env has the key (make env-file adds it empty), so empty means skip.
   if ((env.DEMO_PASSWORD ?? '').trim() === '') {
     return 'DEMO_PASSWORD is empty';
@@ -1137,9 +1148,10 @@ export function demoSkipReason(env: NodeJS.ProcessEnv): string | null {
 }
 ```
 
-Demo learners (fake users with friends and progress, chapter 9) are created only when
-`NODE_ENV` is exactly `development` **and** `DEMO_PASSWORD` is set. The check is an allowlist:
-anything else, including "unset" on the public server, means no demo users.
+Demo learners (fake users with friends and progress, chapter 9) are created whenever
+`DEMO_PASSWORD` is set, a server included: `make seed` hands `.env` to the tooling container,
+and the deploy's one-shot `migrate` service passes the key, the only service that gets it.
+`NODE_ENV` plays no part. Empty, the seed logs `demo learners skipped: DEMO_PASSWORD is empty`.
 `demoPassword` checks the password against the same `PasswordSchema` as sign-up, so a weak demo
 password fails before anything is written. It never prints the password.
 
@@ -1325,7 +1337,7 @@ message, both or neither. And loading the history, one page at a time:
   applies the missing ones. Never edit an old migration. The drift check catches a forgotten migration.
 - The **seed** loads `content/items` into `QuestionBank` and `content/outlines` + `briefs` + `lessons` into `Lesson`.
   It validates everything first, writes in one transaction, only writes changes, and never deletes a lesson.
-- `ready` is computed from the files on each seed. Demo learners only appear with `NODE_ENV=development` and a `DEMO_PASSWORD`.
+- `ready` is computed from the files on each seed. Demo learners appear wherever `DEMO_PASSWORD` is set, a server included.
 - `src/generated/prisma` is generated by `prisma generate`, **not committed**, and regenerated by turbo, Docker and the dev container.
 
 Previous: [03-infrastructure.md](03-infrastructure.md) · Next: [05-auth-and-users.md](05-auth-and-users.md) · [Back to index](README.md)

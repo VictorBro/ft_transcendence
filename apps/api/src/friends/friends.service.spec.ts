@@ -1,4 +1,4 @@
-import { BadRequestException, NotFoundException } from '@nestjs/common';
+import { BadRequestException, Logger, NotFoundException } from '@nestjs/common';
 import { describe, expect, it, vi } from 'vitest';
 
 import type { SocketsService } from '../gateway/sockets.service';
@@ -18,19 +18,23 @@ const OTHER = 'c0000000-0000-4000-8000-000000000000';
 
 const prismaError = (code: string) => Object.assign(new Error(code), { code });
 const person = (id: string) => ({ id, displayName: `user-${id[0]}`, avatarUrl: null });
+const pending = (count: number) => ({ count, at: expect.any(String) });
+const waitingOn = (userId: string) => [{ where: { addresseeId: userId, status: 'pending' } }];
 
+/** No request waits on anyone unless a test says otherwise. */
 function serviceWith(
   friendship: Record<string, unknown>,
   sockets = { toUser: vi.fn() },
   // Nobody online unless a test says otherwise.
   presence = { isOnline: vi.fn().mockResolvedValue(new Set<string>()) },
 ) {
+  const count = vi.fn().mockResolvedValue(0);
   const service = new FriendsService(
-    { friendship } as unknown as PrismaService,
+    { friendship: { count, ...friendship } } as unknown as PrismaService,
     sockets as unknown as SocketsService,
     presence as unknown as PresenceService,
   );
-  return { service, toUser: sockets.toUser };
+  return { service, toUser: sockets.toUser, count };
 }
 
 describe('pairKey', () => {
@@ -49,9 +53,9 @@ describe('FriendsService send', () => {
     expect(findUnique).not.toHaveBeenCalled();
   });
 
-  it('creates a request under the pair key and tells both users', async () => {
+  it('creates a request under the pair key, tells both users, and counts theirs', async () => {
     const create = vi.fn().mockResolvedValue({});
-    const { service, toUser } = serviceWith({
+    const { service, toUser, count } = serviceWith({
       findUnique: vi.fn().mockResolvedValue(null),
       create,
     });
@@ -60,10 +64,31 @@ describe('FriendsService send', () => {
     expect(create).toHaveBeenCalledWith({
       data: { pairKey: pairKey(ME, THEM), requesterId: ME, addresseeId: THEM },
     });
+    // Only the addressee's count moves: a request I sent is not mine to answer.
     expect(toUser.mock.calls).toEqual([
       [THEM, 'friend:request', { userId: ME }],
       [ME, 'friend:request', { userId: THEM }],
+      [THEM, 'friend:pending', pending(0)],
     ]);
+    expect(count.mock.calls).toEqual([waitingOn(THEM)]);
+  });
+
+  it('answers when the pending count fails, logs it, and sends no count', async () => {
+    const error = vi.spyOn(Logger.prototype, 'error').mockImplementation(() => undefined);
+    const { service, toUser, count } = serviceWith({
+      findUnique: vi.fn().mockResolvedValue(null),
+      create: vi.fn().mockResolvedValue({}),
+    });
+    count.mockRejectedValue(new Error('P1001'));
+
+    await expect(service.send(ME, THEM)).resolves.toEqual({ status: 'pending' });
+
+    expect(toUser.mock.calls.map(([, event]) => event)).toEqual([
+      'friend:request',
+      'friend:request',
+    ]);
+    expect(error).toHaveBeenCalledWith('pending count failed: Error: P1001');
+    error.mockRestore();
   });
 
   it('accepts their request when it got in first, after our insert lost', async () => {
@@ -83,9 +108,11 @@ describe('FriendsService send', () => {
       where: { pairKey: pairKey(ME, THEM), requesterId: THEM, status: 'pending' },
       data: { status: 'accepted' },
     });
+    // Their request to me was the one waiting: my count moves.
     expect(toUser.mock.calls).toEqual([
       [THEM, 'friend:accepted', { userId: ME }],
       [ME, 'friend:accepted', { userId: THEM }],
+      [ME, 'friend:pending', pending(0)],
     ]);
   });
 
@@ -130,6 +157,32 @@ describe('FriendsService writes that find nothing', () => {
       [{ where: { pairKey: pairKey(ME, THEM), status: 'accepted' } }],
     ]);
     expect(toUser).toHaveBeenCalledWith(THEM, 'friend:removed', { userId: ME });
+  });
+
+  // A decline moves my count and a cancel theirs, and the delete cannot tell
+  // which it was. A friend removed was never counted.
+  it('counts again for both users after a request is gone, and for nobody after a friend is', async () => {
+    const { service, toUser, count } = serviceWith({
+      deleteMany: vi.fn().mockResolvedValue({ count: 1 }),
+    });
+
+    await service.deleteRequest(ME, THEM);
+    expect(toUser.mock.calls).toEqual([
+      [THEM, 'friend:removed', { userId: ME }],
+      [ME, 'friend:removed', { userId: THEM }],
+      [ME, 'friend:pending', pending(0)],
+      [THEM, 'friend:pending', pending(0)],
+    ]);
+    expect(count.mock.calls).toEqual([waitingOn(ME), waitingOn(THEM)]);
+
+    toUser.mockClear();
+    count.mockClear();
+    await service.remove(ME, THEM);
+    expect(toUser.mock.calls.map(([, event]) => event)).toEqual([
+      'friend:removed',
+      'friend:removed',
+    ]);
+    expect(count).not.toHaveBeenCalled();
   });
 });
 

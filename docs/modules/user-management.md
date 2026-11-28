@@ -112,8 +112,8 @@ in full. In short:
   ([schema.prisma](../../apps/api/prisma/schema.prisma)). The key is built from both ids, smaller
   first, so two requests that cross cannot make two rows.
 - The routes are in [friends.controller.ts](../../apps/api/src/friends/friends.controller.ts):
-  `GET /api/friends`, `POST /api/friends/requests/:userId` (send, or accept if they already asked
-  you), `POST /api/friends/requests/:userId/accept`, `DELETE /api/friends/requests/:userId`
+  `GET /api/friends`, `GET /api/friends/pending` (how many requests wait on you, for the header
+  badge), `POST /api/friends/requests/:userId` (send, or accept if they already asked you), `POST /api/friends/requests/:userId/accept`, `DELETE /api/friends/requests/:userId`
   (decline or cancel), `DELETE /api/friends/:userId` (remove). Sending is limited to 10 a minute.
 - To find people: `GET /api/users?q=` searches display names (part of the name, any case, 20
   results at most), and `GET /api/users/recently-active` lists up to 20 users who opened the app

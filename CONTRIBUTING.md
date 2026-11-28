@@ -66,7 +66,8 @@ make          # every check, then the running app, then the browser suite on Chr
 `make` is the one command. It runs everything CI runs, natively, then starts the
 production stack and drives Playwright against it on Chromium. CI also runs
 Firefox and WebKit; `make playwright-all` does the same here, worth it before a
-PR that touches the UI.
+PR that touches the UI. Both run the suite on the fixture tutor with no key, then
+put the api back on the LLM provider `.env` names: no test spends the key.
 
 Day to day:
 
@@ -74,7 +75,7 @@ Day to day:
 | --------------------- | ----------------------------------------------------------------------------------------- |
 | `make dev`            | Development stack: bind-mounted source, hot reload, migrations applied, TLS cert exported |
 | `make`                | Every check, then build, then run, then browser tests on Chromium. Before every PR        |
-| `make playwright-all` | The browser tests on Chromium, Firefox and WebKit, as CI runs them (stack up)             |
+| `make playwright-all` | The browser tests on Chromium, Firefox and WebKit, as CI runs them, on the fixture tutor  |
 | `make format`         | Rewrites everything with Prettier. The answer to "make complains about formatting"        |
 | `make down`           | Stops the stack, keeps the data                                                           |
 | `make help`           | Every target                                                                              |
@@ -199,7 +200,7 @@ messages.
 | `commit-msg` | commitlint on your message                                             | instant after the first run |
 | `pre-push`   | TypeScript version, `.env` hygiene, app boundaries, lint and typecheck | about four seconds warm     |
 
-They are a fast subset of `make`, not a replacement for it. Two things worth
+They are a fast subset of `make`, not a replacement for it. Three things worth
 knowing:
 
 - The **first** `commit-msg` run downloads commitlint into the pnpm store and
@@ -207,6 +208,9 @@ knowing:
 - `git commit --no-verify` skips them. If you find yourself reaching for it
   regularly, the hook is too slow and that is a bug worth reporting, not a habit
   worth forming.
+- When a pull adds a key to `.env.example`, `pre-push` names it as missing from
+  your `.env`. `make env-file` appends it; `scripts/align-env.sh` then puts
+  `.env` in the template's order and comments, and keeps every value.
 
 ---
 
@@ -246,7 +250,7 @@ dismissed when you push again, so ask for re-review after changes.
 | Legal pages check         | Privacy Policy and Terms present with real content, also a rejection criterion |
 | `gitleaks`                | A credential reaching the repository                                           |
 | `commitlint`, `pr title`  | Commit history nobody can grade                                                |
-| `.env` hygiene            | A committed `.env`, and an `.env.example` that has drifted                     |
+| `.env` hygiene            | A committed `.env`, an `.env.example` that has drifted or that fills a secret  |
 | `check-app-boundaries.sh` | `apps/web` and `apps/api` compiling each other's source                        |
 | `assert-ts-version.sh`    | `pnpm up --latest` quietly reintroducing TypeScript 7                          |
 | Prisma drift              | `schema.prisma` and `prisma/migrations` disagreeing                            |
@@ -255,8 +259,8 @@ dismissed when you push again, so ask for re-review after changes.
 
 ## Rules that are not negotiable
 
-- **Never commit a `.env`.** Only `.env.example`, and it carries names, never
-  values. A published credential fails the whole project.
+- **Never commit a `.env`.** Only `.env.example`, and every secret in it stays
+  empty. A published credential fails the whole project.
 - **Never commit an API key**, anywhere, including in documentation or a code
   comment. A key that has been pasted into a chat is already burned: rotate it.
 - **`apps/web` never imports from `apps/api`.** Shared contracts go in

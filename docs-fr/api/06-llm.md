@@ -7,9 +7,9 @@ Dans ce chapitre :
 - Ce qu'est le streaming, et pourquoi la réponse du tuteur est streamée
 - [llm.provider.ts](../../apps/api/src/llm/llm.provider.ts) : le contrat et le type d'erreur
 - [llm.factory.ts](../../apps/api/src/llm/llm.factory.ts) et [llm.module.ts](../../apps/api/src/llm/llm.module.ts) : comment un provider est choisi à partir du fichier `.env`
-- [gemini.provider.ts](../../apps/api/src/llm/gemini.provider.ts) : le vrai (requêtes HTTP, streaming, erreurs, timeouts, métriques)
+- [gemini.provider.ts](../../apps/api/src/llm/gemini.provider.ts) : le vrai (requêtes HTTP, streaming, erreurs, timeouts, métriques, le test de la clé)
 - [fixture.provider.ts](../../apps/api/src/llm/fixture.provider.ts) et [disabled.provider.ts](../../apps/api/src/llm/disabled.provider.ts) : les faux, pour les tests et pour une stack sans clé
-- Qui utilise le LLM dans le reste de l'API
+- Qui utilise le LLM dans le reste de l'API, dont [src/tutor](../../apps/api/src/tutor/tutor.controller.ts) : les routes qui testent la clé
 
 ---
 
@@ -132,7 +132,7 @@ apps/api/src/llm/
 ├── fixture.provider.ts         fake provider: no network (default)
 ├── disabled.provider.ts        fake provider: everything fails
 ├── GEMINI_PROVIDER.md          long French explanation of gemini.provider.ts
-└── *.spec.ts                   unit tests (one per file but llm.provider.ts, two for Gemini)
+└── *.spec.ts                   unit tests (one per file but llm.provider.ts, three for Gemini)
 ```
 
 On les lit dans l'ordre où l'app les utilise : d'abord le contrat, puis comment l'app choisit un provider au
@@ -145,16 +145,18 @@ démarrage, puis chaque provider.
 [llm.provider.ts](../../apps/api/src/llm/llm.provider.ts) ne contient aucune logique. Il décrit la "forme de
 prise" que chaque provider doit avoir. Il exporte :
 
-| Export              | Genre           | Rôle                                                                             |
-| ------------------- | --------------- | -------------------------------------------------------------------------------- |
-| `LLM_PROVIDER`      | valeur `Symbol` | Le nom (token) que les autres classes utilisent pour demander le provider à Nest |
-| `LlmPurpose`        | type            | À quoi sert un appel, utilisé dans les logs et les métriques                     |
-| `StructuredRequest` | interface       | Ce qu'on envoie pour recevoir du JSON                                            |
-| `LlmMessage`        | interface       | Un tour d'une conversation                                                       |
-| `StreamRequest`     | interface       | Ce qu'on envoie pour recevoir une réponse texte streamée                         |
-| `LlmProvider`       | interface       | Le contrat : deux méthodes                                                       |
-| `LlmFailure`        | type            | La liste fixe des raisons d'échec                                                |
-| `LlmError`          | classe          | L'erreur que chaque provider lance                                               |
+| Export              | Genre           | Rôle                                                                                                |
+| ------------------- | --------------- | --------------------------------------------------------------------------------------------------- |
+| `LLM_PROVIDER`      | valeur `Symbol` | Le nom (token) que les autres classes utilisent pour demander le provider à Nest                    |
+| `LlmPurpose`        | type            | À quoi sert un appel, utilisé dans les logs et les métriques                                        |
+| `StructuredRequest` | interface       | Ce qu'on envoie pour recevoir du JSON                                                               |
+| `LlmMessage`        | interface       | Un tour d'une conversation                                                                          |
+| `StreamRequest`     | interface       | Ce qu'on envoie pour recevoir une réponse texte streamée                                            |
+| `LlmCheck`          | type            | Ce que trouve un test de la clé : un statut, un temps, le statut HTTP de Google, le retour du quota |
+| `LlmProvider`       | interface       | Le contrat : trois méthodes et un champ `info`                                                      |
+| `LlmFailure`        | type            | La liste fixe des raisons d'échec                                                                   |
+| `QuotaRefusal`      | interface       | Quel quota un 429 a touché (celui du jour ou de la minute), et l'attente                            |
+| `LlmError`          | classe          | L'erreur que chaque provider lance                                                                  |
 
 ### Le token d'injection
 
@@ -231,6 +233,10 @@ export interface LlmProvider {
   generateStructured<S extends z.ZodType>(request: StructuredRequest<S>): Promise<z.output<S>>;
 
   streamText(request: StreamRequest): AsyncIterable<string>;
+
+  readonly info: TutorInfo;
+
+  check(): Promise<LlmCheck>;
 }
 ```
 
@@ -241,6 +247,14 @@ export interface LlmProvider {
   **depuis la boucle**, peut-être après que quelques morceaux ont déjà été envoyés. Si l'appelant annule le signal,
   la boucle se termine avec une `AbortError`, pas une `LlmError` : "the caller asked for it, the LLM did not fail"
   (c'est l'appelant qui l'a demandé, le LLM n'a pas échoué).
+- `info` vaut `{ provider, model }`, par exemple `{ provider: 'gemini', model: 'gemini-3.6-flash' }`. Le modèle
+  vaut `null` pour la fixture et pour `disabled`. Il ne contient jamais la clé, ni aucun morceau de la clé.
+- `check` teste la clé et le modèle avec la **plus petite vraie requête** : pour Gemini, une réponse d'un mot. Il
+  dépense une requête du quota de la clé, donc une clé au-delà de son quota se voit comme telle. Il ne lance jamais
+  d'erreur : chaque fin est un statut (`ok`, `invalid_key`, `quota`, `quota_day`...), comme pour une sonde de
+  santé. `LlmCheck` vaut `Pick<TutorCheck, 'status' | 'latencyMs' | 'httpStatus' | 'retryAt'>` : les champs du
+  schema partagé `TutorCheck` ([tutor.ts](../../packages/shared/src/schemas/tutor.ts)) que le provider connaît.
+  [TutorService](#tutorservice-et-les-deux-routes-du-tuteur) ajoute le reste.
 
 ### `LlmFailure` et `LlmError`
 
@@ -255,6 +269,11 @@ export class LlmError extends Error {
     readonly retryable: boolean,
     /** Why it failed, for the metrics. The message says it to a person. */
     readonly reason: LlmFailure,
+    /**
+     * rate_limited only: which quota refused it. The reason stays rate_limited for
+     * both quotas, so the metrics count them as one; the error code tells them apart.
+     */
+    readonly quota?: QuotaRefusal,
   ) {
     super(message);
     this.name = 'LlmError';
@@ -262,13 +281,17 @@ export class LlmError extends Error {
 }
 ```
 
-Chaque échec d'un provider est une `LlmError` avec trois choses :
+Chaque échec d'un provider est une `LlmError` avec trois choses, et une quatrième sur un 429 :
 
 | Champ       | Pour qui                          | Exemple                                 |
 | ----------- | --------------------------------- | --------------------------------------- |
 | `message`   | une personne qui lit les logs     | `Gemini 429: {"error": ...}`            |
 | `retryable` | l'appelant                        | `true` : un deuxième essai peut marcher |
 | `reason`    | les métriques, les codes d'erreur | `rate_limited`                          |
+| `quota`     | les codes d'erreur                | `{ scope: 'day', retryAfterS: 48933 }`  |
+
+`quota` est un `QuotaRefusal` : `scope` vaut `'day'` pour le quota du jour, qui revient demain, ou `'minute'` ;
+`retryAfterS` est l'attente donnée par Google, en secondes, ou `null`. Seule une erreur `rate_limited` en a un.
 
 `reason` est une liste fixe, jamais du texte libre, parce que les métriques comptent les échecs par raison : du texte
 libre créerait une nouvelle série de métriques pour chaque message. Le sens de chaque raison :
@@ -276,7 +299,7 @@ libre créerait une nouvelle série de métriques pour chaque message. Le sens d
 | Raison         | Sens                                                                                          |
 | -------------- | --------------------------------------------------------------------------------------------- |
 | `unreachable`  | Aucune réponse HTTP du tout (réseau, DNS, timeout), ou la connexion a coupé en cours de route |
-| `rate_limited` | HTTP 429 : trop de requêtes pour notre clé                                                    |
+| `rate_limited` | HTTP 429 : notre clé a dépassé son quota de la minute ou du jour (`quota` dit lequel)         |
 | `http_error`   | Tout autre statut hors 2xx                                                                    |
 | `blocked`      | Les filtres de sécurité de Google ont refusé le prompt ou arrêté la réponse                   |
 | `incomplete`   | La réponse a été coupée pour une autre raison                                                 |
@@ -405,10 +428,12 @@ côté l'explique ligne par ligne, avec un historique des changements depuis la 
 Le fichier a trois parties :
 
 1. **En haut** : des constantes et l'interface `GeminiReply` (la partie du JSON de Google qu'on lit).
-2. **La classe** : deux méthodes publiques (`generateStructured`, `streamText`) et trois privées (`send`, `stream`,
-   `record`).
-3. **En bas** : de petites fonctions d'aide privées (`requestBody`, `streamBody`, `unreachable`, `isRetryable`,
-   `replyText`, `answerText`, `parseReply`, `parseJson`, `sseData`, `eventData`).
+2. **La classe** : trois méthodes publiques (`generateStructured`, `streamText`, `check`), le champ `info`, et trois
+   méthodes privées (`send`, `stream`, `record`).
+3. **En bas** : de petites fonctions d'aide (`requestBody`, `streamBody`, `unreachable`, `isRetryable`,
+   `httpError`, `quotaRefusal`, `checkVerdict`, `checkStatus`, `isGeminiReply`, `replyText`, `answerText`,
+   `parseReply`, `parseJson`, `sseData`, `eventData`). Seule `quotaRefusal` est exportée, pour que sa spec puisse
+   lui donner les bodies de Google.
 
 ### Les constantes
 
@@ -418,12 +443,35 @@ const API = 'https://generativelanguage.googleapis.com/v1beta/models';
 // the "_" only makes the number easier to read. A free key waited 73 to 83 s for
 // its first word on 2026-11-18, where 2 to 40 s was usual before.
 const TIMEOUT_MS = 90_000;
+// How long a key check waits. It asks for one word, which usually comes in a second or
+// two, but a busy free key can take far longer (see TIMEOUT_MS). 30 s covers a slow day,
+// and the button never spins for the 90 s of a tutor's answer.
+const CHECK_TIMEOUT_MS = 30_000;
+// What a key check sends: the smallest real generation, so Google applies the same key,
+// model and quotas as for a tutor's answer. 16 tokens leave room for "OK". The thinking
+// setting is the tutor's (streamBody): a model that refuses to turn its thinking off
+// fails every tutor answer, so the check must fail on it too.
+const CHECK_BODY = {
+  contents: [{ role: 'user', parts: [{ text: 'Reply with the word OK.' }] }],
+  generationConfig: { maxOutputTokens: 16, thinkingConfig: { thinkingBudget: 0 } },
+};
+// The longest wait quotaRefusal accepts from a 429: two days, in seconds. Google's longest
+// quota is the day's, so a longer retryDelay is a broken body, and it would push retryAt
+// past the dates JavaScript can write.
+const MAX_RETRY_AFTER_S = 2 * 24 * 60 * 60;
 ```
 
-- `API` est l'adresse de base. Chaque appel ajoute `/<model>:generateContent` (une réponse) ou
-  `/<model>:streamGenerateContent?alt=sse` (réponse streamée).
+- `API` est l'adresse de base. Chaque appel ajoute `/<model>:generateContent` (une réponse, et le test de la clé)
+  ou `/<model>:streamGenerateContent?alt=sse` (réponse streamée).
 - `TIMEOUT_MS` : on abandonne après 90 secondes. Le commentaire donne la vraie raison de ce grand nombre : on a
   mesuré une clé gratuite qui attendait plus de 70 secondes.
+- `CHECK_TIMEOUT_MS` : le test de la clé abandonne après 30 secondes. Un mot vient vite, mais une personne attend
+  devant le bouton.
+- `CHECK_BODY` : la requête d'un mot du test de la clé. Son `thinkingConfig` est celui du tuteur
+  (`thinkingBudget: 0`, voir `streamBody`) : un modèle qui refuse d'éteindre sa réflexion fait échouer chaque
+  réponse du tuteur, et le test doit le dire.
+- `MAX_RETRY_AFTER_S` : la plus longue attente que `quotaRefusal` accepte d'un 429, deux jours. Une plus longue
+  vient d'un body cassé, et donnerait un `retryAt` après la dernière date que JavaScript sait écrire.
 - `OUTCOMES`, `TOKEN_TYPES`, `PURPOSES` : les listes d'étiquettes des métriques (voir "Le constructeur : les métriques démarrent à zéro" et "`record`" plus bas).
 - `FILTERED` : les finish reasons qui veulent dire que les filtres de Google ont arrêté la réponse (`SAFETY`,
   `PROHIBITED_CONTENT`, `BLOCKLIST`, `SPII`, `RECITATION`).
@@ -464,6 +512,7 @@ Note : pour `generateStructured`, le texte du modèle est **lui-même une chaîn
 
 ```ts
 constructor(private readonly options: { apiKey: string; model: string }) {
+  this.info = { provider: 'gemini', model: options.model };
   // Every purpose, outcome and token type starts at 0. A counter that appears at 1
   // hides its first call from Prometheus' rate(), so the first failures would not
   // count, nor the first call's tokens.
@@ -480,7 +529,8 @@ constructor(private readonly options: { apiKey: string; model: string }) {
 
 `private readonly options` dans la liste des paramètres déclare un champ et le remplit en une seule étape. La classe
 ne lit jamais le `.env` elle-même, donc un test peut la construire avec
-`new GeminiProvider({ apiKey: 'test', model: 'x' })`.
+`new GeminiProvider({ apiKey: 'test', model: 'x' })`. `info` prend le modèle dans les options, et laisse la clé de
+côté.
 
 Les boucles créent chaque série de métriques avec la valeur 0. Prometheus (chapitre 3) calcule des taux à partir de
 la **différence** entre deux lectures ; un compteur qui apparaît directement à 1 n'a pas d'"avant", donc son premier
@@ -524,13 +574,7 @@ const response = await fetch(`${API}/${model}:generateContent`, {
   signal: AbortSignal.timeout(TIMEOUT_MS),
 }).catch(unreachable);
 const body = await response.text().catch(unreachable);
-if (!response.ok) {
-  throw new LlmError(
-    `Gemini ${response.status}: ${body}`,
-    isRetryable(response.status),
-    response.status === 429 ? 'rate_limited' : 'http_error',
-  );
-}
+if (!response.ok) throw httpError(response.status, body);
 
 const reply = parseJson(body, 'response') as GeminiReply;
 // Counted before the reply is checked: one that fails the check was still billed.
@@ -545,7 +589,8 @@ return parseReply(request.schema, replyText(reply));
    réessayer).
 3. Le body est lu comme **texte**, pas avec `response.json()`, pour qu'une page d'erreur puisse quand même être mise
    dans le message. Le timeout couvre aussi cette étape, donc elle a le même `.catch(unreachable)`.
-4. Un statut hors de 200–299 lance une erreur. `isRetryable` décide si un deuxième essai a du sens.
+4. Un statut hors de 200–299 lance l'erreur que construit `httpError` (voir "Les erreurs : réessayer ou pas ?"
+   plus bas).
 5. Le JSON de Google est parsé, les tokens sont loggés et comptés (`record`), puis le texte du modèle est extrait
    (`replyText`) et vérifié avec le schema (`parseReply`).
 
@@ -555,7 +600,7 @@ flowchart TD
     A --> B["response.text()"]
     B -->|"connexion coupée"| U
     B --> C{"response.ok?"}
-    C -->|"non"| H["LlmError rate_limited / http_error<br/>retryable si 408, 429, 5xx"]
+    C -->|"non"| H["httpError : LlmError rate_limited / http_error<br/>retryable si 408, 5xx, 429 sauf celui du jour"]
     C -->|"oui"| D["parseJson(body)"]
     D -->|"pas du JSON"| I["LlmError invalid, retryable"]
     D --> E["record tokens + temps"]
@@ -601,6 +646,55 @@ function isRetryable(status: number): boolean {
 408 (timeout), 429 (trop de requêtes) et 5xx (le serveur de Google a échoué) sont temporaires. Un 400, 401, 403 ou
 404 échoue de la même façon deux fois.
 
+Les deux appels construisent leur erreur pour un statut hors 2xx de la même façon :
+
+```ts
+function httpError(status: number, body: string): LlmError {
+  const message = `Gemini ${status}: ${body}`;
+  if (status !== 429) return new LlmError(message, isRetryable(status), 'http_error');
+  const quota = quotaRefusal(body);
+  return new LlmError(message, quota.scope !== 'day', 'rate_limited', quota);
+}
+```
+
+Un 429 est toujours `rate_limited`, quel que soit le quota qui a dit non : la série des résultats de
+`ft_llm_requests_total` et l'alerte `LlmErrorRateHigh` comptent les deux quotas comme un seul. Il porte aussi
+`quota`, lu dans le body de Google par `quotaRefusal`, pour que la route du tuteur puisse dire à l'apprenant
+"demain" au lieu de "dans une minute" ([08-lessons.md](08-lessons.md)). Le quota du jour est le seul 429 qui n'est
+pas retryable : un deuxième essai un instant plus tard reçoit le même refus, pendant des heures.
+
+### `quotaRefusal` : quel quota a dit non
+
+Le 429 de Google dit quel quota l'appel a dépassé, et combien de temps attendre. Le body qu'une clé gratuite a reçu
+le 2026-11-27, une fois ses 20 requêtes du jour sur `gemini-3.6-flash` dépensées, raccourci :
+
+```text
+{"error": {"code": 429, "status": "RESOURCE_EXHAUSTED", "details": [
+  {"@type": "type.googleapis.com/google.rpc.QuotaFailure",
+   "violations": [{"quotaId": "GenerateRequestsPerDayPerProjectPerModel-FreeTier", "quotaValue": "20", ...}]},
+  {"@type": "type.googleapis.com/google.rpc.Help", ...},
+  {"@type": "type.googleapis.com/google.rpc.RetryInfo", "retryDelay": "48933s"}]}}
+```
+
+`quotaRefusal(body)` lit deux des `details`, chacun trouvé par son `@type` :
+
+| Le body de Google                                                         | `quotaRefusal` donne                                          |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------- |
+| un `QuotaFailure` dont le `quotaId` contient `PerDay` (le body plus haut) | `{ scope: 'day', retryAfterS: 48933 }`                        |
+| un `quotaId` avec `PerMinute`, et le `retryDelay` `"21s"`                 | `{ scope: 'minute', retryAfterS: 21 }`                        |
+| un `retryDelay` avec des fractions, `"21.5s"`                             | arrondi au-dessus : `retryAfterS: 22`                         |
+| pas de `RetryInfo`                                                        | `retryAfterS: null`                                           |
+| pas du JSON                                                               | `{ scope: 'minute', retryAfterS: null }`                      |
+| du JSON sans `QuotaFailure` (aucun quota nommé)                           | `scope: 'minute'`, `retryAfterS` toujours lu dans `RetryInfo` |
+| un `retryDelay` de plus de deux jours (`MAX_RETRY_AFTER_S`)               | `retryAfterS: null`                                           |
+
+48933 s font environ 13,6 heures : le quota du jour de Google se remet à zéro à minuit, heure du Pacifique. Quand le
+body ne nomme aucun quota, la minute est la supposition la plus douce, et ce que l'apprenant lisait avant. Elle ne
+lance jamais d'erreur : chaque champ est lu comme `unknown` et vérifié avant usage (`Array.isArray` pour une
+liste, `typeof` pour un texte, donc un champ qui n'est pas un texte ne correspond à rien), parce qu'elle tourne
+pendant qu'une erreur se construit, et une `TypeError` à cet endroit cacherait le refus de Google. `String(...)`
+ne suffirait pas : il lance une erreur sur un objet comme `{"toString": 1}`, et le JSON peut en contenir un.
+
 `replyText` vérifie la réponse avant de l'utiliser :
 
 ```ts
@@ -636,7 +730,8 @@ Résumé de toutes les erreurs :
 | Situation                                                  | Raison         | Retryable |
 | ---------------------------------------------------------- | -------------- | --------- |
 | Pas de réseau, DNS, timeout, connexion coupée              | `unreachable`  | oui       |
-| HTTP 429                                                   | `rate_limited` | oui       |
+| HTTP 429, le quota de la minute (ou aucun quota nommé)     | `rate_limited` | oui       |
+| HTTP 429, le quota du jour                                 | `rate_limited` | non       |
 | HTTP 408 ou 5xx                                            | `http_error`   | oui       |
 | Autre non-2xx (400, 401, 403, 404...)                      | `http_error`   | non       |
 | Le body ou le texte du modèle n'est pas du JSON            | `invalid`      | oui       |
@@ -802,15 +897,105 @@ try {
 Un événement sans data (une ligne de commentaire `: ...` qui garde la connexion en vie) donne `undefined` et est
 ignoré.
 
+### `check` : une vraie requête, comme celle d'un apprenant
+
+Tous les apprenants partagent une seule clé. Quand elle est fausse, révoquée ou au-delà de son quota, une leçon
+montre seulement que le tuteur échoue. `check` fait la différence, pour le bouton **Test connection** de la page de
+profil.
+
+```ts
+async check(): Promise<LlmCheck> {
+  const { apiKey, model } = this.options;
+  const started = Date.now();
+  try {
+    const response = await fetch(`${API}/${model}:generateContent`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', 'x-goog-api-key': apiKey },
+      body: JSON.stringify(CHECK_BODY),
+      signal: AbortSignal.timeout(CHECK_TIMEOUT_MS),
+    });
+    const body = await response.text();
+    const verdict = checkVerdict(response.status, body, Date.now());
+    // 500 characters: enough for Google's reason, short enough for one log line.
+    if (verdict.status !== 'ok') {
+      this.logger.warn(`key check on ${model}: Gemini ${response.status}: ${body.slice(0, 500)}`);
+    }
+    return { ...verdict, latencyMs: Date.now() - started, httpStatus: response.status };
+  } catch (error) {
+    // No HTTP answer (network, DNS, the timeout), or the body was cut while read.
+    const reason = error instanceof Error ? error.message : String(error);
+    this.logger.warn(`key check on ${model}: unreachable: ${reason}`);
+    return {
+      status: 'unreachable',
+      latencyMs: Date.now() - started,
+      httpStatus: null,
+      retryAt: null,
+    };
+  }
+}
+```
+
+- Il envoie `CHECK_BODY` en `POST` à `:generateContent`, la route qu'utilise `generateStructured` : "Reply with
+  the word OK." (réponds par le mot OK), 16 tokens au plus, avec le réglage de réflexion du tuteur. Une vraie
+  requête est la seule façon de rencontrer la clé, le modèle et les quotas comme la question d'un apprenant :
+  Google n'applique ses quotas qu'aux générations, donc une clé au-delà du quota du jour lit encore la description
+  de son modèle sans problème. Le prix : **une requête du quota de la clé par test**, et quelques tokens. La clé
+  va dans le même header que pour une réponse du tuteur, jamais dans l'URL.
+- Il ne lance jamais d'erreur. Le `try`/`catch` transforme chaque échec en statut `unreachable`, donc la route a
+  toujours un verdict à montrer.
+- Le body de Google va dans le log, jamais dans la réponse. Un body de `403` peut nommer le projet Google Cloud.
+- Il ne compte rien dans `ft_llm_requests_total` ni dans `ft_llm_tokens_total` : les tests dilueraient le taux
+  d'erreur sur lequel l'alerte `LlmErrorRateHigh` se déclenche, et leurs quelques tokens ne sont ceux d'aucun
+  apprenant. `TutorService` compte les tests dans leur propre compteur, `ft_llm_checks_total`.
+
+`checkVerdict` lit le statut, et le body quand il le faut :
+
+| Google répond                                                                     | Statut            |
+| --------------------------------------------------------------------------------- | ----------------- |
+| `200` avec une réponse de Gemini (`isGeminiReply`), avec ou sans texte            | `ok`              |
+| `200` qui n'est pas une réponse de Gemini, en général la page d'un proxy          | `unexpected`      |
+| `400` avec `API_KEY_INVALID`, `401` ou `403`                                      | `invalid_key`     |
+| `404`                                                                             | `model_not_found` |
+| `429` pour le quota de la minute, ou un qui ne nomme aucun quota (`quotaRefusal`) | `quota`           |
+| `429` pour le quota du jour                                                       | `quota_day`       |
+| `408` ou `5xx`, pas de réponse, le timeout de 30 s                                | `unreachable`     |
+| n'importe quoi d'autre, par exemple un `400` à cause de la région ou un `402`     | `unexpected`      |
+
+Un `200` doit être une réponse de Gemini, un objet JSON avec `candidates` ou `usageMetadata` (`isGeminiReply`),
+mais il n'a pas besoin de texte : un modèle peut s'arrêter sur `MAX_TOKENS` avant d'écrire "OK", et Google a quand
+même répondu avec cette clé et ce modèle. Un `200` avec un autre body vient en général de la page d'un proxy sur
+le chemin, pas de Google : c'est donc `unexpected`, et le body va dans le log. Une mauvaise clé reçoit un
+`400` avec `API_KEY_INVALID` (vérifié à la main le 2026-11-27), pas un `401`. Un `400` pour une autre raison
+n'est pas la faute de la clé, donc c'est `unexpected`, et `httpStatus` dit quel statut est revenu.
+
+Sur un `429`, `retryAt` est le moment où Google a dit que le quota revient : l'heure de la réponse plus le
+`retryDelay` que `quotaRefusal` a lu, en date ISO. Il vaut `null` pour tous les autres statuts, et quand Google
+n'a donné aucune attente.
+
+Chaque test dépense une des requêtes de la clé (20 par jour et par modèle pour une clé gratuite, le 2026-11-27) :
+une raison de plus pour que `TutorService` partage un test entre tous les comptes pendant 15 s, et que la route en
+permette 3 par minute par compte.
+
 ### Les tests de Gemini
 
 - [gemini.provider.spec.ts](../../apps/api/src/llm/gemini.provider.spec.ts) mocke `fetch` et vérifie
   `generateStructured` : la clé est dans un header et jamais dans l'URL, le JSON Schema est envoyé, le timeout de
-  90 s, l'assemblage des parties sans les réflexions, les logs, quelles erreurs sont retryable, et les métriques.
+  90 s, l'assemblage des parties sans les réflexions, les logs, quelles erreurs sont retryable, le quota que nomme
+  un 429 (`quotaRefusal`, avec le body qu'une clé gratuite a reçu le 2026-11-27, et des bodies aux champs manquants
+  ou du mauvais type, des objets qui font lancer `String()`, ou une attente trop longue pour une date), et les
+  métriques.
 - [gemini.provider.stream.spec.ts](../../apps/api/src/llm/gemini.provider.stream.spec.ts) vérifie `streamText` :
   l'endpoint SSE, les événements coupés entre des paquets (même au milieu d'un caractère), les commentaires ignorés,
-  chaque arrêt précoce, l'apprenant qui part (une `AbortError`, aucun résultat compté, body annulé), et les
-  métriques.
+  chaque arrêt précoce, l'apprenant qui part (une `AbortError`, aucun résultat compté, body annulé), un 429 pour
+  le quota du jour, et les métriques.
+- [gemini.provider.check.spec.ts](../../apps/api/src/llm/gemini.provider.check.spec.ts) vérifie `check` : un `POST`
+  du body d'un mot, avec le réglage de réflexion du tuteur, vers `:generateContent`, avec la clé dans un header et
+  pas dans l'URL, le timeout de 30 s, le statut de chaque réponse du tableau plus haut (avec le vrai body
+  `API_KEY_INVALID`, des `200` qui ne sont pas une réponse de Gemini, et les deux bodies de `429` avec leur
+  `retryAt`, ou aucun quand l'attente est trop longue), aucune erreur lancée sur un échec réseau, le body de Google
+  dans le log mais pas dans la réponse, rien de compté dans les métriques des vrais appels, et `info` sans la clé.
+- Les bodies de `429` viennent de [gemini.fixtures.ts](../../apps/api/test/gemini.fixtures.ts) : celui qu'une clé
+  gratuite a reçu le 2026-11-27 pour le quota du jour, et le même écrit pour le quota de la minute.
 
 ---
 
@@ -861,6 +1046,8 @@ export const FIXTURE_FAILURES = {
   timeout: '#timeout',
   /** The prompt is refused before any text. */
   blocked: '#blocked',
+  /** The key is over its quota of the day, as Google's 429 says it. */
+  quotaDay: '#quota-day',
 } as const;
 ```
 
@@ -876,6 +1063,13 @@ async *streamText({ messages, signal }: StreamRequest): AsyncIterable<string> {
   }
   if (last.includes(FIXTURE_FAILURES.timeout)) {
     throw new LlmError('Fixture timed out', true, 'unreachable');
+  }
+  // What GeminiProvider throws on a 429 for today's quota: back in an hour, here.
+  if (last.includes(FIXTURE_FAILURES.quotaDay)) {
+    throw new LlmError('Fixture is over its quota of the day', false, 'rate_limited', {
+      scope: 'day',
+      retryAfterS: 3600,
+    });
   }
   for (const [index, piece] of FIXTURE_ANSWER.entries()) {
     // Two pieces out, then the connection "drops": the caller has already sent part of the answer.
@@ -895,15 +1089,29 @@ async *streamText({ messages, signal }: StreamRequest): AsyncIterable<string> {
 - `sleep` reçoit le `signal` : quand la route annule, la pause rejette tout de suite avec une `AbortError`, comme un
   vrai appel dont la connexion est fermée.
 
-| Le dernier message de l'apprenant contient | Ce qui se passe                                   |
-| ------------------------------------------ | ------------------------------------------------- |
-| `#blocked`                                 | échoue avant tout texte, raison `blocked`         |
-| `#timeout`                                 | échoue avant tout texte, raison `unreachable`     |
-| `#fail-midstream`                          | envoie 2 morceaux, puis échoue avec `unreachable` |
-| n'importe quoi d'autre                     | envoie les 3 morceaux de `FIXTURE_ANSWER`         |
+| Le dernier message de l'apprenant contient | Ce qui se passe                                                      |
+| ------------------------------------------ | -------------------------------------------------------------------- |
+| `#blocked`                                 | échoue avant tout texte, raison `blocked`                            |
+| `#timeout`                                 | échoue avant tout texte, raison `unreachable`                        |
+| `#fail-midstream`                          | envoie 2 morceaux, puis échoue avec `unreachable`                    |
+| `#quota-day`                               | échoue avant tout texte, raison `rate_limited` avec le quota du jour |
+| n'importe quoi d'autre                     | envoie les 3 morceaux de `FIXTURE_ANSWER`                            |
+
+Il n'y a ni clé ni réseau derrière la fixture, donc il n'y a rien à tester :
+
+```ts
+/** No real model behind it, so no model name. */
+readonly info: TutorInfo = { provider: 'fixture', model: null };
+
+/** No key and no network: nothing to check. */
+async check(): Promise<LlmCheck> {
+  return { status: 'fixture', latencyMs: null, httpStatus: null, retryAt: null };
+}
+```
 
 [fixture.provider.spec.ts](../../apps/api/src/llm/fixture.provider.spec.ts) vérifie chaque ligne de ce tableau,
-l'annulation, et que `generateStructured` échoue toujours de façon non retryable.
+l'annulation, que `generateStructured` échoue toujours de façon non retryable, et que `check` répond `fixture`
+sans appeler `fetch`.
 
 ---
 
@@ -914,6 +1122,13 @@ l'annulation, et que `generateStructured` échoue toujours de façon non retryab
 
 ```ts
 export class DisabledProvider implements LlmProvider {
+  readonly info: TutorInfo = { provider: 'disabled', model: null };
+
+  /** No key to check: the setting itself says there is no LLM. */
+  async check(): Promise<LlmCheck> {
+    return { status: 'disabled', latencyMs: null, httpStatus: null, retryAt: null };
+  }
+
   async generateStructured(): Promise<never> {
     throw disabled();
   }
@@ -931,31 +1146,34 @@ const disabled = () => new LlmError('LLM_PROVIDER=disabled', false, 'disabled');
 
 Chaque appel échoue tout de suite avec la raison `disabled`. La discussion de la leçon se termine alors avec le code
 d'erreur `llm.disabled`, et un restock compte comme `llm_disabled`, que l'alerte ignore. `streamText` est un
-générateur `async *` sans `yield`, donc la règle ESLint `require-yield` est désactivée pour cette ligne.
+générateur `async *` sans `yield`, donc la règle ESLint `require-yield` est désactivée pour cette ligne. `check`
+n'échoue pas : il répond le statut `disabled`, parce qu'il n'y a pas de clé à tester.
 
-[disabled.provider.spec.ts](../../apps/api/src/llm/disabled.provider.spec.ts) vérifie que les deux méthodes
-échouent.
+[disabled.provider.spec.ts](../../apps/api/src/llm/disabled.provider.spec.ts) vérifie que les deux appels
+échouent, et ce que donnent `check` et `info`.
 
 Les trois providers côte à côte :
 
-| Provider           | `generateStructured` (questions)    | `streamText` (tuteur)                  | Réseau |
-| ------------------ | ----------------------------------- | -------------------------------------- | ------ |
-| `GeminiProvider`   | vraies questions, vérifiées par Zod | vraie réponse, morceau par morceau     | oui    |
-| `FixtureProvider`  | échoue toujours (`disabled`)        | réponse fixe, ou un échec à la demande | non    |
-| `DisabledProvider` | échoue toujours (`disabled`)        | échoue toujours (`disabled`)           | non    |
+| Provider           | `generateStructured` (questions)    | `streamText` (tuteur)                  | `check` (test de la clé)           | Réseau |
+| ------------------ | ----------------------------------- | -------------------------------------- | ---------------------------------- | ------ |
+| `GeminiProvider`   | vraies questions, vérifiées par Zod | vraie réponse, morceau par morceau     | un mot de `:generateContent`, 30 s | oui    |
+| `FixtureProvider`  | échoue toujours (`disabled`)        | réponse fixe, ou un échec à la demande | `fixture`, aucun appel             | non    |
+| `DisabledProvider` | échoue toujours (`disabled`)        | échoue toujours (`disabled`)           | `disabled`, aucun appel            | non    |
 
 ---
 
 ## Qui utilise le LLM
 
-Une recherche de `LLM_PROVIDER` en dehors de `src/llm` trouve exactement deux utilisateurs, chacun avec une méthode :
+Une recherche de `LLM_PROVIDER` en dehors de `src/llm` trouve exactement trois utilisateurs :
 
-| Utilisateur                                                                              | Module                                         | Méthode              | Purpose                     |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------- | -------------------- | --------------------------- |
-| [QuestionStockService](../../apps/api/src/question-generation/question-stock.service.ts) | `QuestionGenerationModule` importe `LlmModule` | `generateStructured` | `question-batch:<category>` |
-| [DiscussionService](../../apps/api/src/lessons/discussion.service.ts)                    | `LessonsModule` importe `LlmModule`            | `streamText`         | `lesson-discussion`         |
+| Utilisateur                                                                              | Module                                         | Méthode              | Purpose                                                |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------- | -------------------- | ------------------------------------------------------ |
+| [QuestionStockService](../../apps/api/src/question-generation/question-stock.service.ts) | `QuestionGenerationModule` importe `LlmModule` | `generateStructured` | `question-batch:<category>`                            |
+| [DiscussionService](../../apps/api/src/lessons/discussion.service.ts)                    | `LessonsModule` importe `LlmModule`            | `streamText`         | `lesson-discussion`                                    |
+| [TutorService](../../apps/api/src/tutor/tutor.service.ts)                                | `TutorModule` importe `LlmModule`              | `info`, `check`      | aucun : le mot du test n'est l'appel d'aucun apprenant |
 
-Les deux le demandent de la même façon :
+`LlmModule` est un module simple (statique), donc Nest construit son provider une seule fois : les trois
+utilisateurs partagent la même instance. Tous le demandent de la même façon :
 
 ```ts
 @Inject(LLM_PROVIDER) private readonly llm: LlmProvider,
@@ -976,9 +1194,80 @@ answer(system: string, body: LessonDiscussionInput, signal: AbortSignal): AsyncI
 ```
 
 [discussion.controller.ts](../../apps/api/src/lessons/discussion.controller.ts) attrape une `LlmError` et
-transforme sa `reason` en code d'erreur pour le navigateur. Le stock de questions lit `retryable` pour décider d'un
+transforme sa `reason` (et, sur un 429, son `quota`) en code d'erreur pour le navigateur. Le stock de questions lit `retryable` pour décider d'un
 deuxième essai. Les deux sont expliqués dans leurs propres chapitres : [07-courses-placement.md](07-courses-placement.md)
 et [08-lessons.md](08-lessons.md).
+
+### `TutorService` et les deux routes du tuteur
+
+`src/tutor` permet à un utilisateur connecté de voir sur quoi tourne le tuteur, et de tester la clé du serveur
+depuis la section **AI tutor** de `/profile` ([chapitre web 5](../web/05-account-pages.md)).
+
+```text
+apps/api/src/tutor/
+├── tutor.module.ts             imports LlmModule, declares the controller and the service
+├── tutor.controller.ts         GET /api/tutor and POST /api/tutor/check
+├── tutor.service.ts            shares one check between accounts, counts it, builds the answer
+├── tutor.dto.ts                the Swagger shapes, made from the shared schemas
+└── tutor.service.spec.ts       unit tests of the service
+```
+
+| Route                   | Répond                                                                             | Appelle Google | Limite                      |
+| ----------------------- | ---------------------------------------------------------------------------------- | -------------- | --------------------------- |
+| `GET /api/tutor`        | `TutorInfo` : `{ provider, model }`                                                | non            | les 100 par minute globales |
+| `POST /api/tutor/check` | `TutorCheck` : l'info, `status`, `latencyMs`, `httpStatus`, `retryAt`, `checkedAt` | peut-être      | 3 par minute par compte     |
+
+Les deux demandent une session, comme chaque route qui n'est pas `@Public()`, donc aucun visiteur ne peut faire
+appeler Google par l'API. Les deux formes sont des schemas Zod dans
+[tutor.ts](../../packages/shared/src/schemas/tutor.ts), donc le navigateur vérifie la réponse avec les mêmes
+règles.
+
+La route du test :
+
+```ts
+@Post('check')
+@HttpCode(HttpStatus.OK)
+@Throttle({ default: { limit: TUTOR_CHECKS_PER_MINUTE, ttl: 60_000 } })
+```
+
+- **POST, pas GET.** Elle peut appeler Google et dépenser une requête du quota de la clé, donc rien ne doit la
+  précharger ni la mettre en cache.
+- **Toujours `200` une fois le test lancé**, comme health : le body porte le verdict. Une mauvaise clé est un
+  `200` avec `status: 'invalid_key'`. Les seules erreurs HTTP sont `401 auth.sessionRequired` et
+  `429 server.rateLimited`.
+- **3 tests par minute par compte.** `@Throttle` remplace les 100 globales pour cette route seulement, comme sur
+  les demandes d'ami (chapitre 9). `IdentityThrottlerGuard` la compte par compte.
+
+`TutorService` ajoute deux choses que le provider ne fait pas :
+
+```ts
+check(now = Date.now()): Promise<TutorCheck> {
+  if (this.last && now - this.last.startedAt < this.reuseMs) return this.last.result;
+  const result = this.run();
+  this.last = { startedAt: now, result };
+  return result;
+}
+```
+
+- **Un test pour tout le monde, pendant 15 secondes** (`reuseMs`). Il garde la **promesse**, pas le résultat,
+  donc un test encore en cours est partagé aussi. Les clics de nombreux comptes partagent un seul appel : au plus
+  environ 4 appels à Google par minute, quel que soit le nombre de comptes, chacun une requête du quota de la clé.
+  `reuseMs` est public pour que la suite e2e puisse le mettre à 0.
+- **Seulement des champs connus.** `run()` construit la réponse champ par champ, à partir de `info` et du
+  `LlmCheck` du provider, donc rien d'autre de ce que renvoie un provider ne peut arriver au navigateur. Un
+  provider dont le `check` ne tient pas sa promesse et lance une erreur donne `unexpected`, et l'erreur va dans le
+  log.
+- **Son propre compteur.** Chaque test qui atteint le provider ajoute 1 à
+  `ft_llm_checks_total{provider, model, status}`. Le constructeur démarre chaque statut à 0, comme `GeminiProvider`
+  le fait pour ses propres compteurs. Une réponse réutilisée ne compte rien : elle n'a atteint personne.
+
+Le stockage du throttle et la réutilisation vivent tous les deux dans la mémoire de l'API, donc ils sont par
+processus. Les fichiers compose font tourner une seule API, donc ça suffit aujourd'hui.
+
+Tests : [tutor.service.spec.ts](../../apps/api/src/tutor/tutor.service.spec.ts) (les clés exactes de la réponse,
+la réutilisation de 15 s, un test en cours partagé, un provider qui lance une erreur, le compteur) et
+[tutor.e2e-spec.ts](../../apps/api/test/tutor.e2e-spec.ts) (`401` sans session, `200` pour chaque statut, avec
+`retryAt` sur un `429`, un test partagé entre deux comptes, le document Swagger, le `429` après 3 tests).
 
 ---
 
@@ -993,12 +1282,16 @@ et [08-lessons.md](08-lessons.md).
 - `streamText` renvoie un `AsyncIterable<string>` : la réponse morceau par morceau, lue à partir des événements SSE
   de Google. L'`AbortSignal` de l'apprenant peut l'arrêter.
 - Chaque échec est une `LlmError` avec `retryable` (réessayer ?) et `reason` (un mot fixe pour les métriques et les
-  codes d'erreur).
+  codes d'erreur). Un 429 a aussi `quota` : le quota du jour ou de la minute, lu dans le body de Google.
 - Gemini attend au maximum 90 secondes ; la clé est dans un header, jamais dans l'URL ; les tokens et le temps sont
   loggés et comptés à chaque appel.
 - La fixture n'écrit aucune question (pour que la banque reste propre) mais répond au tuteur avec un texte fixe, et
-  échoue à la demande avec `#blocked`, `#timeout`, `#fail-midstream`.
+  échoue à la demande avec `#blocked`, `#timeout`, `#fail-midstream`, `#quota-day`.
 - `DisabledProvider` fait échouer chaque appel, pour une stack sans aucun LLM.
+- `check` teste la clé avec une requête d'un mot : une requête du quota de la clé, jamais d'erreur lancée, et un
+  `429` qui dit quel quota (`quota` ou `quota_day`) et quand il revient (`retryAt`). `POST /api/tutor/check`
+  partage un test entre tous les comptes pendant 15 s, en permet 3 par minute par compte, et envoie un statut, jamais
+  le body de Google ni la clé.
 
 ---
 

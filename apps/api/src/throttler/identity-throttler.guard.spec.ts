@@ -171,8 +171,8 @@ describe('IdentityThrottlerGuard', () => {
     });
 
     // The regression that matters. Counting login or 2fa/verify per account
-    // would let an attacker open a fresh 5/min budget per account he controls,
-    // so a limit that reads 5 would behave like 5N.
+    // would let an attacker open a fresh budget (20/min by default) per account
+    // he controls, so a limit that reads 20 would behave like 20N.
     it('counts a @ThrottleByIp route against the address, session or not', async () => {
       await expect(
         keyCountedFor(

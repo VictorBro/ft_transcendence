@@ -15,7 +15,7 @@ import { PrismaClient } from '../generated/prisma/client';
 function requireDatabaseUrl(): string {
   const url = process.env.DATABASE_URL;
   if (url === undefined || url.trim() === '') {
-    throw new Error('DATABASE_URL is unset: the api cannot start. See .env.example.');
+    throw new Error('DATABASE_URL is unset: the api cannot start. See compose.yml.');
   }
   return url;
 }

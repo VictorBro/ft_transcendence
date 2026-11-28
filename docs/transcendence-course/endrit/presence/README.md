@@ -3,7 +3,7 @@
 > PR concernée : **#195** (« feat: #157 online status », squash `477b3d4`). Les 10 commits d'origine de la PR sont de moi (`VYAntares`). Deux d'entre eux répondent aux relectures de Victor et de Bastian.
 > **Fichiers à moi (créés dans #195)** : [presence.service.ts](../../../../apps/api/src/presence/presence.service.ts) et son [test](../../../../apps/api/src/presence/presence.service.spec.ts), [presence.module.ts](../../../../apps/api/src/presence/presence.module.ts), [friend-ids.ts](../../../../apps/api/src/friends/friend-ids.ts) (la fonction `friendIds`), [presence-dot.tsx](../../../../apps/web/components/presence-dot.tsx) (le composant `PresenceDot`), [lib/presence.ts](../../../../apps/web/lib/presence.ts) et son [test](../../../../apps/web/lib/presence.test.ts).
 > **Pas à moi** : la connexion temps réel (WebSocket) est de **Victor** (VictorBro), PR **#181** : [socket.gateway.ts](../../../../apps/api/src/gateway/socket.gateway.ts), [sockets.service.ts](../../../../apps/api/src/gateway/sockets.service.ts), [tab-socket.ts](../../../../apps/web/components/tab-socket.ts), les événements de [socket.ts](../../../../packages/shared/src/events/socket.ts). Les amis aussi sont à lui (#189, #193) : [friends.service.ts](../../../../apps/api/src/friends/friends.service.ts), [user-row.tsx](../../../../apps/web/components/user-row.tsx), les pages `/friends` et `/users/[id]`. **Moi, j'ai ajouté la présence dans ces fichiers.**
-> **Après moi** : dans sa PR **#200** (messages privés), Victor a ajouté `areFriends` dans `friend-ids.ts`, `AvatarWithDot` dans `presence-dot.tsx`, et les messages non lus dans `arrived()`. Ces parties sont à lui.
+> **Après moi** : dans sa PR **#200** (messages privés), Victor a ajouté `areFriends` dans `friend-ids.ts`, `AvatarWithDot` dans `presence-dot.tsx`, et les messages non lus dans `arrived()`. Puis, pour le badge des demandes d'ami, `pendingRequests` dans `friend-ids.ts` et l'envoi de `friend:pending` dans `arrived()`, juste avant les messages non lus. Ces parties sont à lui.
 
 ## 1. À quoi ça sert
 
@@ -51,7 +51,7 @@ Ce compteur est rangé dans **Redis**. Il n'y a que deux états : `online` et `o
 | [presence.service.ts](../../../../apps/api/src/presence/presence.service.ts) | Le compteur dans Redis : +1, −1 après 10 s, « qui est en ligne ? », remise à zéro au démarrage. | moi (#195) |
 | [presence.module.ts](../../../../apps/api/src/presence/presence.module.ts) | Rend `PresenceService` utilisable par les autres modules Nest. | moi (#195) |
 | [presence.service.spec.ts](../../../../apps/api/src/presence/presence.service.spec.ts) | 11 tests du compteur, avec un faux Redis et une fausse horloge. | moi (#195) |
-| [friend-ids.ts](../../../../apps/api/src/friends/friend-ids.ts) | `friendIds` : la liste des amis **acceptés** d'une personne. | moi (#195), `areFriends` par Victor (#200) |
+| [friend-ids.ts](../../../../apps/api/src/friends/friend-ids.ts) | `friendIds` : la liste des amis **acceptés** d'une personne. | moi (#195), `areFriends` par Victor (#200), `pendingRequests` par Victor (badge des demandes) |
 | [socket.gateway.ts](../../../../apps/api/src/gateway/socket.gateway.ts) | La passerelle. J'y ai ajouté : quand un onglet s'ouvre ou se ferme, prévenir les amis. | Victor (#181), présence par moi |
 | [socket.gateway.spec.ts](../../../../apps/api/src/gateway/socket.gateway.spec.ts) | J'y ai ajouté 6 tests de présence. | Victor (#181), moi |
 | [gateway.module.ts](../../../../apps/api/src/gateway/gateway.module.ts) | J'y ai ajouté l'import de `PresenceModule`. | Victor (#181), moi |
@@ -537,7 +537,7 @@ Alice et Bob sont amis. Karim a seulement envoyé une demande à Alice. J'écris
 **Commandes :**
 
 ```bash
-# Tests du serveur liés à la présence (lancés : 3 fichiers, 58 tests, tout passe)
+# Tests du serveur liés à la présence (lancés : 3 fichiers, 62 tests, tout passe)
 pnpm --filter @ft/api exec vitest run src/presence src/gateway/socket.gateway.spec.ts src/friends
 
 # Test du carnet côté navigateur (lancé : 6 tests, tout passe)

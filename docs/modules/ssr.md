@@ -106,7 +106,7 @@ Some pages were built so that the server's HTML is enough on its own:
 | [`apps/web/lib/session.ts`](../../apps/web/lib/session.ts) | `loadSession` (cached per render), `currentUser`, `requireUser` |
 | [`apps/web/lib/courses.ts`](../../apps/web/lib/courses.ts) | `requireCourses`, `findCourse`: the courses a page needs |
 | [`apps/web/lib/lessons.ts`](../../apps/web/lib/lessons.ts) | `loadToday` and `loadLessonPage`, read on the server |
-| [`apps/web/lib/friends.ts`](../../apps/web/lib/friends.ts) | `requireFriends`, `searchUsers`, `loadProfile`, read on the server |
+| [`apps/web/lib/friends.ts`](../../apps/web/lib/friends.ts) | `requireFriends`, `searchUsers`, `loadProfile`, `friendPending`, read on the server |
 | [`apps/web/app/[locale]/(dashboard)/learn/[lang]/page.tsx`](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/page.tsx>) | The course page: courses and the day's lessons loaded on the server |
 | [`apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/page.tsx`](<../../apps/web/app/[locale]/(dashboard)/learn/[lang]/lessons/page.tsx>) | The all lessons page: reads its search from the URL on the server |
 | [`apps/web/components/refresh-on.tsx`](../../apps/web/components/refresh-on.tsx) | Asks the server to render the page again when a live event arrives |

@@ -3,7 +3,7 @@
 > PR concernée : **#220** (« fix(web): header menu, course cards and phone layouts », squash `8586314`). Les deux commits de la PR sont à moi (`VYAntares`).
 > **Créés par moi** : [header-menu.tsx](../../../../apps/web/components/header-menu.tsx), [menu-icon.tsx](../../../../apps/web/components/menu-icon.tsx), [scroll-lock.ts](../../../../apps/web/components/scroll-lock.ts), [course-menu.tsx](../../../../apps/web/app/[locale]/(dashboard)/learn/[lang]/course-menu.tsx), [course-menu-slot.ts](../../../../apps/web/lib/course-menu-slot.ts), [e2e/support/menu.ts](../../../../e2e/support/menu.ts).
 > **Pas à moi** (je les ai seulement modifiés) : `header-nav.tsx` (créé par Victor, #27), `session-nav.tsx` (Victor, #5, puis Luca et Anaïs), `shell.tsx` et `(dashboard)/layout.tsx` (Victor, dans sa #21 fusionnée dans ma #20 ; le layout a été déplacé sous `[locale]` par Luca, #26), `dashboard-nav.tsx` et la page du cours `learn/[lang]/page.tsx` (Victor, #64, puis Luca, Bastian, Anaïs), `course-switcher.tsx` (Victor), `language-switcher.tsx` (Luca), `log-out-button.tsx` (Victor), `connection-status.tsx` (Victor, #181). Les tests e2e touchés ont été écrits par d'autres : j'y ai seulement ajouté l'ouverture du menu.
-> Après moi, Luca a retouché `header-nav.tsx` et `shell.tsx` (#225, le lien du logo). Les extraits ci-dessous sont le code **actuel**.
+> Après moi, Luca a retouché `header-nav.tsx` et `shell.tsx` (#225, le lien du logo). Puis Victor a ajouté le badge des demandes d'ami : `HeaderMenu` reçoit `requests`, son bouton montre `MenuBadge`, et la ligne « Amis » du menu a son propre badge. Les extraits ci-dessous sont le code **actuel**.
 
 ## 1. À quoi ça sert
 
@@ -13,7 +13,7 @@ Deuxième problème, sur la page d'un cours. La colonne de droite (réglages, ra
 
 **Ma solution, en trois pièces :**
 
-1. **Le menu du compte (`HeaderMenu`).** Tous ces éléments vont derrière **un seul bouton** ☰. Sur tous les écrans. Le bouton montre aussi le nombre de messages non lus.
+1. **Le menu du compte (`HeaderMenu`).** Tous ces éléments vont derrière **un seul bouton** ☰. Sur tous les écrans. Le bouton montre aussi le nombre de messages non lus (et, depuis, de demandes d'ami en attente).
 2. **Le menu « Mon cours » (`CourseMenu`).** Sur un écran étroit, les cartes du cours vont derrière un bouton « Mon cours ». Ce bouton prend la place du logo. Sur un grand écran, rien ne change : les cartes restent en colonne à droite.
 3. **Le blocage du défilement (`useScrollLock`).** Quand un menu est ouvert, la page derrière ne bouge plus.
 
@@ -106,13 +106,15 @@ export async function HeaderNav() {
     </>
   );
 
-  return user === null ? (
-    <div className="flex ...">{items}</div>
-  ) : (
-    <HeaderMenu>{items}</HeaderMenu>
-  );
+  if (user === null) {
+    return <div className="flex ...">{items}</div>;
+  }
+  // Signed in only, so a visitor costs no extra call.
+  return <HeaderMenu requests={await friendPending()}>{items}</HeaderMenu>;
 }
 ```
+
+`requests` (ajouté après moi, pour le badge des demandes d'ami) : le nombre de demandes en attente, lu par le serveur pour le premier affichage. Ensuite l'onglet le tient à jour avec l'événement `friend:pending`.
 
 `DashboardNav` fait la même chose pour les pages de cours, avec en plus le choix du cours.
 
@@ -154,7 +156,7 @@ useEffect(() => {
 **En mots simples.** Il y a trois choses à l'écran :
 
 - **Le fond sombre** couvre toute la page. Mais il est rangé *dans* le header, juste derrière lui. Résultat : la page est assombrie, le logo et le bouton restent bien visibles. Pour ça, j'ai mis le header sur un calque au-dessus de la page (`relative z-50` dans `shell.tsx`).
-- **Le bouton** ☰ porte le badge rouge des messages non lus. Un lecteur d'écran l'entend comme « Menu 1 message non lu ».
+- **Le bouton** ☰ porte le badge rouge des messages non lus et, depuis, des demandes d'ami en attente, en un seul nombre (`MenuBadge`). Un lecteur d'écran l'entend comme « Menu 1 message non lu », ou « Menu 1 demande d'ami et 1 message non lu ».
 - **Le panneau** contient les liens. Fermé, il est **invisible** mais toujours là.
 
 ```tsx
@@ -163,7 +165,7 @@ useEffect(() => {
 <button aria-expanded={open} /* ... */>
   <span className="sr-only">{t('menu')}</span>
   {/* ... icône ☰ ou ✕ */}
-  <UnreadTotalBadge />
+  <MenuBadge requests={requests} />
 </button>
 
 <div data-header-menu className={`${open ? '' : 'invisible'} absolute top-full ...`}>
@@ -185,6 +187,9 @@ export const MENU_ROW = 'flex min-h-11 w-full ... items-center gap-3 rounded-lg 
 <Link href="/friends" className={MENU_ROW}>
   <MenuIcon name="friends" />
   {friends('title')}
+  <span className="ml-auto flex">
+    <FriendPendingBadge rendered={requests} />
+  </span>
 </Link>
 ```
 
@@ -364,8 +369,8 @@ Il n'y a **pas de test unitaire** pour ces menus. Ils sont testés dans un vrai 
 **Commandes** (depuis la racine du dépôt) :
 
 ```bash
-make test-e2e                      # démarre l'application si besoin, puis tous les tests Playwright
-make playwright                    # si l'application tourne déjà (make up)
+make test-e2e                      # l'application sur le tuteur fixture, puis tous les tests Playwright
+make playwright                    # si l'application tourne déjà sur le tuteur fixture
 pnpm --filter @ft/e2e run test:e2e tests/messages.spec.ts   # un seul fichier
 ```
 

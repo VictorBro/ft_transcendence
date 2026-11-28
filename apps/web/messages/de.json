@@ -177,7 +177,8 @@
     "signIn": "Anmelden"
   },
   "Form": {
-    "working": "Wird bearbeitet…"
+    "working": "Wird bearbeitet…",
+    "showPassword": "Passwort anzeigen"
   },
   "Errors": {
     "displayName": {
@@ -239,6 +240,7 @@
     "llm": {
       "unavailable": "Der Tutor kann gerade nicht antworten. Versuche es gleich noch einmal.",
       "rateLimited": "Der Tutor ist gerade ausgelastet. Versuche es in einer Minute erneut.",
+      "quotaExhausted": "Der Tutor hat sein Kontingent für heute aufgebraucht. Morgen ist er wieder da.",
       "tooManyMessages": "Du hast dem Tutor viele Nachrichten geschickt. Versuche es später erneut.",
       "blocked": "Der Tutor kann auf diese Nachricht nicht antworten. Formuliere sie anders.",
       "incomplete": "Die Antwort brach vor dem Ende ab. Stell deine Frage noch einmal.",
@@ -299,6 +301,8 @@
     "security": "Sicherheit",
     "twoFactorPrompt": "Füge einen zweiten Faktor hinzu, damit ein gestohlenes Passwort nicht zur Anmeldung ausreicht.",
     "twoFactorAuthentication": "Zwei-Faktor-Authentifizierung",
+    "tutor": "KI-Tutor",
+    "tutorPrompt": "Der Tutor der Lektionsgespräche läuft mit einem Schlüssel für den ganzen Server. Prüfe, ob er funktioniert.",
     "backToProfile": "Zurück zum Profil"
   },
   "ProfileForm": {
@@ -335,7 +339,8 @@
     "cancel": "Abbrechen",
     "online": "Online",
     "offline": "Offline",
-    "message": "Schreiben"
+    "message": "Schreiben",
+    "pending": "{count, plural, one {# Freundschaftsanfrage} other {# Freundschaftsanfragen}}"
   },
   "UserPage": {
     "courses": "Kurse",
@@ -365,6 +370,44 @@
     "loading": "Zwei-Faktor-Authentifizierung wird geprüft…",
     "statusUnavailable": "Die Zwei-Faktor-Authentifizierung konnte nicht geprüft werden.",
     "retry": "Erneut versuchen"
+  },
+  "TutorCard": {
+    "provider": "Anbieter",
+    "model": "Modell",
+    "loading": "Wird geladen…",
+    "test": "Verbindung testen",
+    "testing": "Wird getestet…",
+    "answeredIn": "Antwort in {ms} ms, um {time}.",
+    "checkedAt": "Geprüft um {time}.",
+    "providers": {
+      "gemini": "Google Gemini",
+      "fixture": "Übungstutor (fixture), ohne Schlüssel",
+      "disabled": "Keiner, der Tutor ist aus"
+    },
+    "status": {
+      "ok": "Funktioniert: Google hat auf eine Testnachricht geantwortet.",
+      "invalid_key": "Google hat den Schlüssel abgelehnt.",
+      "model_not_found": "Google hat den Schlüssel angenommen, aber das Modell {model} gibt es nicht oder es kann keinen Text schreiben.",
+      "quota": "Der Schlüssel hat sein Kontingent pro Minute überschritten.",
+      "quota_day": "Der Tutor hat sein Kontingent für heute aufgebraucht. Morgen ist er wieder da.",
+      "unreachable": "Google hat nicht rechtzeitig geantwortet.",
+      "unreachableHttp": "Google hat den Test mit HTTP {status} beantwortet: ein Problem auf seiner Seite.",
+      "unexpected": "Google hat den Test mit HTTP {status} beantwortet.",
+      "unexpectedNoAnswer": "Der Test schlug fehl, bevor Google antwortete.",
+      "fixture": "Dieser Server nutzt den Übungstutor: Er gibt eine feste Antwort und braucht keinen Schlüssel.",
+      "disabled": "Der Tutor ist auf diesem Server deaktiviert."
+    },
+    "hint": {
+      "ok": "Jeder Test verbraucht eine Anfrage vom heutigen Kontingent des Schlüssels.",
+      "invalid_key": "Er ist falsch, widerrufen oder gesperrt. Wer diesen Server betreibt, muss in .env einen neuen LLM_API_KEY setzen und die API neu starten.",
+      "model_not_found": "Wer diesen Server betreibt, muss LLM_MODEL in .env korrigieren und die API neu starten.",
+      "quota": "Der Tutor antwortet innerhalb einer Minute wieder.",
+      "quota_day": "{hasTime, select, yes {Google setzt es gegen {time} zurück.} other {Google setzt es um Mitternacht pazifischer Zeit zurück.}}",
+      "unreachable": "Versuche es gleich noch einmal.",
+      "unexpected": "Die Logs der API nennen den Grund.",
+      "fixture": "Für den echten Tutor setze LLM_PROVIDER=gemini und LLM_API_KEY in .env.",
+      "disabled": "LLM_PROVIDER ist disabled: Es gibt keinen Schlüssel zu testen."
+    }
   },
   "Placement": {
     "title": "Einstufungstest",
@@ -469,6 +512,7 @@
     "stop": "Stopp",
     "you": "Du",
     "tutor": "Tutor",
+    "tutorThinking": "Der Tutor denkt nach…",
     "tooManyQuestions": "Zu viele Fragen. Versuche es in {seconds} s erneut.",
     "tutorBusy": "Der Tutor ist gerade ausgelastet. Versuche es in {seconds} s erneut.",
     "comeBackTomorrow": "Du hast dem Tutor heute viele Fragen gestellt. Komm morgen wieder.",

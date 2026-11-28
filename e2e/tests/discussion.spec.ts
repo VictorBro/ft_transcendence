@@ -21,7 +21,7 @@ const plan = lessonPlan(LESSON, 'en');
 const DISCUSSION = plan.pages.findIndex((p) => p.role === 'discussion');
 
 /** The per-learner limit a minute, as make reads it from the api container; the default in CI. */
-const USER_PER_MINUTE = Number(process.env.LLM_DISCUSSION_USER_PER_MINUTE || 2);
+const USER_PER_MINUTE = Number(process.env.LLM_DISCUSSION_USER_PER_MINUTE || 5);
 
 /**
  * The provider the api container runs, as make reads it from there; fixture in
@@ -60,6 +60,7 @@ test.describe('the discussion page', () => {
     const tutor = await openDiscussion(learner);
     const box = tutor.getByRole('textbox', { name: 'Your question' });
     const answers = tutor.locator('[data-turn="assistant"]');
+    const thinking = tutor.locator('[data-slot="tutor-thinking"]');
 
     // A suggested prompt sends at once; the answer comes piece by piece, then the box is free.
     await discussionSlot();
@@ -67,18 +68,26 @@ test.describe('the discussion page', () => {
     await expect(answers).toHaveCount(1);
     await expect(answers).toContainText(ANSWER);
     await expect(box).toBeEnabled();
+    // The answer came: no dots left.
+    await expect(thinking).toHaveCount(0);
 
     // Stop while the answer is on its way. The request is held here, so no
     // word comes first, and the API never sees it: it uses up no limit.
     await learner.route('**/discussion', () => {});
     await box.fill('Why is it tu and not vous?');
     await tutor.getByRole('button', { name: 'Send' }).click();
+    // Held, so no word comes: the tutor thinks, said once to a screen reader.
+    await expect(thinking).toBeVisible();
+    await expect(tutor.getByText('The tutor is thinking…')).toBeAttached();
     await tutor.getByRole('button', { name: 'Stop' }).click();
     // Stopped before any word: the message goes back to the box, and nothing is sent again.
     await expect(box).toHaveValue('Why is it tu and not vous?');
     await expect(box).toBeEnabled();
     await expect(answers).toHaveCount(1);
     await expect(tutor.getByRole('alert')).toHaveCount(0);
+    // Stopped: the dots go, and so does their text.
+    await expect(thinking).toHaveCount(0);
+    await expect(tutor.getByText('The tutor is thinking…')).toHaveCount(0);
     await learner.unrouteAll({ behavior: 'ignoreErrors' });
 
     // The learner's other messages of the minute are answered, the next one is refused.
@@ -108,7 +117,9 @@ test.describe('the discussion page', () => {
     expect(unexpected, formatViolations(unexpected)).toEqual([]);
   });
 
-  test('keeps the answer so far when it fails, with Try again', async ({ freshLearner }) => {
+  test('keeps the answer so far when it fails, with Try again, and names the quota of the day', async ({
+    freshLearner,
+  }) => {
     test.skip(!FIXTURE_TUTOR, NEEDS_FIXTURE);
     const learner = freshLearner;
     const violations = watchConsole(learner);
@@ -120,6 +131,8 @@ test.describe('the discussion page', () => {
     await tutor.getByRole('textbox', { name: 'Your question' }).fill('#fail-midstream');
     await tutor.getByRole('button', { name: 'Send' }).click();
     await expect(tutor.getByRole('alert')).toHaveText(failed);
+    // Failed: no dots left, the words so far stand in their place.
+    await expect(tutor.locator('[data-slot="tutor-thinking"]')).toHaveCount(0);
     await expect(tutor.locator('[data-turn="assistant"]')).toContainText(
       'This is the fixture tutor. It gives the same answer to every question.',
     );
@@ -133,6 +146,16 @@ test.describe('the discussion page', () => {
     await sent;
     await expect(tutor.getByRole('alert')).toHaveText(failed);
     await expect(tutor.locator('[data-turn="user"]')).toHaveCount(1);
+
+    // The key over its quota of the day: tomorrow, not "in a minute". The learner's
+    // third message of the minute, under the limit (5, or the 3 discussion-limits.ts
+    // suggests for a small key).
+    await discussionSlot();
+    await tutor.getByRole('textbox', { name: 'Your question' }).fill('#quota-day');
+    await tutor.getByRole('button', { name: 'Send' }).click();
+    await expect(tutor.getByRole('alert')).toHaveText(
+      "The tutor has used up today's quota. It's back tomorrow.",
+    );
 
     expect(violations, formatViolations(violations)).toEqual([]);
   });
@@ -160,6 +183,8 @@ test.describe('the discussion page', () => {
     await refuse('llm.rateLimited', 2);
     await tutor.getByRole('button', { name: 'Explain my mistakes' }).click();
     await expect(wait).toHaveText(/^The tutor is busy\. Try again in \d s\.$/);
+    // Refused: nothing was asked, so the tutor does not think.
+    await expect(tutor.locator('[data-slot="tutor-thinking"]')).toHaveCount(0);
     // The countdown ends, and the learner may ask again.
     await expect(wait).toBeHidden({ timeout: 5_000 });
 

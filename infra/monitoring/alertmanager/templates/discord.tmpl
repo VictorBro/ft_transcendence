@@ -1,6 +1,9 @@
 {{/* The default message lists every label and links to Prometheus, which
      nobody outside the network can open. This links to Grafana instead. */}}
+{{/* The title starts with the stack that sent it (the `source` external label
+     in prometheus.yml): one webhook serves the servers and the laptops. */}}
 {{ define "ft.discord.title" -}}
+{{ with .CommonLabels.source }}{{ . }}: {{ end -}}
 [{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] {{ .CommonLabels.alertname }}
 {{- end }}
 

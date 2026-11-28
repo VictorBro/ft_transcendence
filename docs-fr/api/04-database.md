@@ -28,7 +28,7 @@ dont le seul travail est de stocker les données en sécurité et de les retrouv
 On utilise **PostgreSQL** (souvent appelé « Postgres »). C'est une base de données **relationnelle** gratuite et très répandue.
 Elle tourne dans son propre container Docker, le service `db` dans [compose.yml](../../compose.yml)
 (l'image est `pgvector/pgvector`, une version de Postgres qui a aussi l'extension pgvector).
-L'API s'y connecte avec une URL comme celle-ci, tirée de `.env.example` :
+L'API s'y connecte avec cette URL, que [compose.yml](../../compose.yml) donne au container de l'api :
 
 ```
 DATABASE_URL=postgresql://ft:ft_local_dev@db:5432/ft_transcendence?schema=public
@@ -36,9 +36,12 @@ DATABASE_URL=postgresql://ft:ft_local_dev@db:5432/ft_transcendence?schema=public
 
 Lis-la comme ceci : utilisateur `ft`, mot de passe `ft_local_dev`, hôte `db`, port `5432`, base `ft_transcendence`.
 
-Ce sont des valeurs par défaut pour le développement local : [compose.yml](../../compose.yml) et le `Makefile`
-les utilisent quand rien n'est fourni. [compose.deploy.yml](../../compose.deploy.yml) n'a pas de valeur par défaut
-pour ces deux secrets : il refuse de démarrer si `POSTGRES_PASSWORD` ou `SESSION_SECRET` est absent ou vide.
+Personne ne l'écrit à la main, et `.env` n'a pas de `DATABASE_URL` : compose.yml la construit à partir de
+`POSTGRES_USER`, `POSTGRES_PASSWORD` et `POSTGRES_DB`, les valeurs avec lesquelles le service `db` crée la base,
+donc les deux ne peuvent pas diverger. Le `Makefile` construit la même URL pour les migrations, le seed et les
+tests. Les valeurs ci-dessus sont celles du développement local, que les deux utilisent quand `.env` laisse une
+clé vide. [compose.deploy.yml](../../compose.deploy.yml) construit l'URL de la même façon, sans valeur par défaut
+pour les secrets : il refuse de démarrer si `POSTGRES_PASSWORD` ou `SESSION_SECRET` est absent ou vide.
 
 ### Tables, lignes et colonnes
 
@@ -960,8 +963,10 @@ if (require.main === module) {
         console.log(`demo learners skipped: ${skip}`);
         return;
       }
-      // Loaded here only, so the public server never even reads the demo code.
+      // Loaded here only: a seed without DEMO_PASSWORD never reads the demo code.
       const { seedDemo } = await import('../src/demo/demo');
+      // A learner that fails is logged and skipped, never a failed seed: on a
+      // server this seed runs before every release (infra/deploy/deploy.sh).
       await seedDemo(prisma, { runNow: new Date(), password });
     })
     .catch((err) => {
@@ -976,12 +981,15 @@ if (require.main === module) {
   [test/seed.e2e-spec.ts](../../apps/api/test/seed.e2e-spec.ts) importe les fonctions, et cette garde
   empêche l'import de faire le seed de la vraie base.
 - Il utilise `PrismaService` (chapitre 3), pas un simple `PrismaClient`, parce que la partie démo réutilise des services de l'API.
-- Trois étapes : les questions, les leçons, puis (seulement en développement) les apprenants de démo.
-- Toute erreur est affichée et le programme sort avec le code 1, donc `make` et le déploiement s'arrêtent.
+- Trois étapes : les questions, les leçons, puis les apprenants de démo quand `DEMO_PASSWORD` est
+  défini, dans un checkout comme sur un serveur.
+- Toute erreur est affichée et le programme sort avec le code 1, donc `make` et le déploiement
+  s'arrêtent, sauf celle d'un apprenant de démo : elle est notée dans le log et l'apprenant est
+  sauté (`buildLearners`, chapitre 9), donc elle ne bloque jamais une release.
 
 ```mermaid
 flowchart TD
-    S["pnpm db:seed"] --> P{"demoSkipReason :<br/>NODE_ENV=development<br/>et DEMO_PASSWORD défini ?"}
+    S["pnpm db:seed"] --> P{"demoSkipReason :<br/>DEMO_PASSWORD défini ?"}
     P -- "oui" --> PW["demoPassword :<br/>vérifie les règles du signup<br/>(échoue tout de suite si faible)"]
     P -- "non" --> Q
     PW --> Q["seedQuestionBank<br/>content/items/*.json"]
@@ -1048,7 +1056,7 @@ Pour chaque fichier `.json` de `content/items` :
     }
   }
 
-  await prisma.$transaction(operations);
+  await prisma.$transaction(operations, SEED_TRANSACTION);
   return operations.length;
 ```
 
@@ -1056,6 +1064,11 @@ Tous les upserts vont dans **une seule transaction** : un groupe d'écritures qu
 Si l'item 200 échoue, les items 1 à 199 ne sont pas écrits non plus, donc la base n'est jamais à moitié remplie.
 C'est pour ça que `sourceId` a dû devenir unique (migration `question_bank_source_id_unique`) :
 `upsert` a besoin d'une colonne unique pour trouver la ligne existante.
+
+Les deux transactions passent `SEED_TRANSACTION` (60 s pour en démarrer une, 10 minutes pour la faire)
+au lieu des valeurs par défaut de Prisma, 2 s et 5 s, prévues pour une requête. Sur l'hôte Oracle à 1 Go, le
+seed échouait à chaque deploy avec `P2028` ("Unable to start a transaction in the given time") tant qu'il ne les
+avait pas.
 
 ### `seedLessons`
 
@@ -1099,19 +1112,23 @@ C'est la plus grosse. Son commentaire de doc explique les règles :
    à partir de l'ancienne version et pointerait vers des pages qui n'existent plus. Celles-là sont supprimées.
 
 ```ts
-  await prisma.$transaction([
-    ...writes.map(({ content, ...fields }) => {
-      const row = { ...fields, content: content ?? Prisma.DbNull };
-      return prisma.lesson.upsert({ where: { id: row.id }, create: row, update: row });
-    }),
-    ...(edited.length > 0
-      ? [
-          prisma.lessonAttempt.deleteMany({
-            where: { lessonId: { in: edited }, completedAt: null },
-          }),
-        ]
-      : []),
-  ]);
+  await prisma.$transaction(
+    [
+      ...writes.map(({ content, ...fields }) => {
+        const row = { ...fields, content: content ?? Prisma.DbNull };
+        return prisma.lesson.upsert({ where: { id: row.id }, create: row, update: row });
+      }),
+      ...(edited.length > 0
+        ? [
+            prisma.lessonAttempt.deleteMany({
+              where: { lessonId: { in: edited }, completedAt: null },
+            }),
+          ]
+        : []),
+    ],
+    SEED_TRANSACTION,
+  );
+
 ```
 
 Encore une seule transaction. `Prisma.DbNull` est la façon de dire « NULL SQL » pour une colonne `Json?` (un simple `null`
@@ -1125,10 +1142,6 @@ elle n'est plus prête. Pas besoin de migration.
 
 ```ts
 export function demoSkipReason(env: NodeJS.ProcessEnv): string | null {
-  // An allowlist: the public server seeds with only DATABASE_URL, NODE_ENV unset.
-  if (env.NODE_ENV !== 'development') {
-    return `NODE_ENV is ${env.NODE_ENV ?? 'unset'}, not development`;
-  }
   // Every .env has the key (make env-file adds it empty), so empty means skip.
   if ((env.DEMO_PASSWORD ?? '').trim() === '') {
     return 'DEMO_PASSWORD is empty';
@@ -1137,9 +1150,10 @@ export function demoSkipReason(env: NodeJS.ProcessEnv): string | null {
 }
 ```
 
-Les apprenants de démo (faux utilisateurs avec des amis et de la progression, chapitre 9) sont créés seulement quand
-`NODE_ENV` vaut exactement `development` **et** que `DEMO_PASSWORD` est défini. La vérification est une liste blanche (allowlist) :
-tout le reste, y compris « non défini » sur le serveur public, veut dire pas d'utilisateurs de démo.
+Les apprenants de démo (faux utilisateurs avec des amis et de la progression, chapitre 9) sont créés
+dès que `DEMO_PASSWORD` est défini, un serveur compris : `make seed` passe `.env` au conteneur
+tooling, et le service ponctuel `migrate` du déploiement transmet la clé, le seul service qui la
+reçoit. `NODE_ENV` ne joue aucun rôle. Vide, le seed note `demo learners skipped: DEMO_PASSWORD is empty`.
 `demoPassword` vérifie le mot de passe avec le même `PasswordSchema` que l'inscription, donc un mot de passe de démo
 faible échoue avant que quoi que ce soit soit écrit. Il n'affiche jamais le mot de passe.
 
@@ -1325,7 +1339,7 @@ message : les deux ou aucun. Et charger l'historique, une page à la fois :
   applique celles qui manquent. Ne modifie jamais une ancienne migration. La vérification de drift attrape une migration oubliée.
 - Le **seed** charge `content/items` dans `QuestionBank` et `content/outlines` + `briefs` + `lessons` dans `Lesson`.
   Il valide tout d'abord, écrit dans une seule transaction, n'écrit que les changements, et ne supprime jamais une leçon.
-- `ready` est calculé à partir des fichiers à chaque seed. Les apprenants de démo n'apparaissent qu'avec `NODE_ENV=development` et un `DEMO_PASSWORD`.
+- `ready` est calculé à partir des fichiers à chaque seed. Les apprenants de démo apparaissent partout où `DEMO_PASSWORD` est défini, un serveur compris.
 - `src/generated/prisma` est généré par `prisma generate`, **pas commité**, et régénéré par turbo, Docker et le container de dev.
 
 Précédent : [03-infrastructure.md](03-infrastructure.md) · Suivant : [05-auth-and-users.md](05-auth-and-users.md) · [Retour à l'index](README.md)

@@ -32,8 +32,10 @@ classDiagram
 
   class LlmProvider {
     <<interface>>
+    +info TutorInfo
     +generateStructured(request) Promise
     +streamText(request) AsyncIterable
+    +check() Promise
   }
 
   class StructuredRequest {
@@ -49,22 +51,26 @@ classDiagram
     -options apiKey et model
     +generateStructured(request) Promise
     +streamText(request) AsyncIterable
+    +check() Promise
     -send(request) Promise
   }
 
   class FixtureProvider {
     +generateStructured() Promise never
     +streamText(request) AsyncIterable
+    +check() Promise
   }
 
   class DisabledProvider {
     +generateStructured() Promise never
     +streamText() AsyncIterable
+    +check() Promise
   }
 
   class LlmError {
     +retryable boolean
     +reason LlmFailure
+    +quota QuotaRefusal
   }
 
   class Error
@@ -96,7 +102,7 @@ classDiagram
   Error <|-- LlmError : extends
   GeminiProvider ..> LlmError : lance
   FixtureProvider ..> LlmError : lance (generateStructured)
-  DisabledProvider ..> LlmError : lance toujours
+  DisabledProvider ..> LlmError : lance (generateStructured, streamText)
   createLlmProvider ..> GeminiProvider : new si gemini
   createLlmProvider ..> FixtureProvider : new si fixture
   createLlmProvider ..> DisabledProvider : new si disabled
@@ -121,10 +127,14 @@ Lecture :
 export interface LlmProvider {
   generateStructured<S extends z.ZodType>(request: StructuredRequest<S>): Promise<z.output<S>>;
   streamText(request: StreamRequest): AsyncIterable<string>;
+  readonly info: TutorInfo;
+  check(): Promise<LlmCheck>;
 }
 ```
 
 `streamText` (ajouté en #201) sert au tuteur des leçons : il renvoie la réponse morceau par morceau. Les questions de placement n'utilisent que `generateStructured`.
+
+`info` et `check` (ajoutés après, pour la section « Tuteur IA » de `/profile`) : `info` dit quel provider et quel modèle tournent, jamais la clé ; `check` teste la clé avec la plus petite vraie requête (pour Gemini, une réponse d'un mot), donc il dépense une requête du quota de la clé. Il ne lance jamais d'erreur : chaque fin est un statut (`ok`, `invalid_key`, `quota`, `quota_day`…). Le Fixture répond `fixture` et le `DisabledProvider` `disabled`, sans aucun appel.
 
 - `<S extends z.ZodType>` : un **générique**. `S` est le type du schéma Zod passé dans la requête.
 - `Promise<z.output<S>>` : la réponse arrivera plus tard (`await`) et aura **la forme décrite par le schéma**. Si on passe le schéma de grammaire, TypeScript sait que le résultat a `items`.
@@ -164,7 +174,7 @@ Où sont les valeurs :
 
 | Endroit | `LLM_PROVIDER` | Commentaire |
 |---|---|---|
-| [.env.example](../../../../.env.example) | `fixture` | Clé vide exprès : une vraie clé commitée serait une fuite. |
+| [.env.example](../../../../.env.example) | vide | Vide exprès : `compose.yml` en fait `fixture` en local, et un serveur doit choisir. La clé aussi est vide : une vraie clé commitée serait une fuite. |
 | [compose.yml](../../../../compose.yml) (dev) | `${LLM_PROVIDER:-fixture}` | Défaut `fixture`. |
 | [compose.deploy.yml](../../../../compose.deploy.yml) (prod) | `${LLM_PROVIDER:?set LLM_PROVIDER to fixture, gemini or disabled}` | Obligatoire : docker compose refuse de lancer sans. |
 | [llm.factory.ts](../../../../apps/api/src/llm/llm.factory.ts) | `LLM_PROVIDER = 'fixture'` (défaut du paramètre) | Dernier filet de sécurité. |
@@ -190,7 +200,7 @@ sequenceDiagram
   alt pas de réponse HTTP (réseau, DNS, timeout)
     G-->>S: LlmError unreachable, retryable
   else statut hors 2xx
-    G-->>S: LlmError rate_limited si 429 sinon http_error, retryable si 408, 429 ou 5xx
+    G-->>S: LlmError rate_limited si 429 sinon http_error, retryable si 408, 429 de la minute ou 5xx
   else 200
     API-->>G: JSON avec candidates, usageMetadata
     G->>G: log des tokens + compteurs
@@ -231,7 +241,7 @@ Attention : les règles écrites avec `.refine()` (réponse dans les options, op
 | `reason` | Quand | `retryable` |
 |---|---|---|
 | `unreachable` | Pas de réponse HTTP : réseau, DNS, timeout 90 s | oui |
-| `rate_limited` | HTTP 429 | oui |
+| `rate_limited` | HTTP 429, quota de la minute ou du jour (`LlmError.quota` dit lequel) | oui pour la minute, non pour le jour |
 | `http_error` | Autre statut hors 2xx. 408 et 5xx : oui. 400, 401, 403, 404 : non | dépend |
 | `blocked` | Gemini refuse le prompt (filtres de sécurité) | non |
 | `incomplete` | `finishReason` n'est pas `STOP` (ex. `MAX_TOKENS`) | non |

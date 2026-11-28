@@ -10,7 +10,7 @@ import {
 /**
  * Where a signed-in learner lands. Login and the home page both go to /learn,
  * which only picks the page, so these visit it directly instead of logging in:
- * POST /auth/login allows 5 a minute per address and every test shares one.
+ * POST /auth/login allows 20 a minute per address and every test shares one.
  * auth.spec.ts proves both login steps go through it.
  */
 test.describe('post-auth landing', () => {

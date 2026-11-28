@@ -316,7 +316,7 @@ Il démarre la vraie app avec `configureApp(app)` (comme `main.ts`) et ajoute un
 | Corps > 100 kB | 413 | `request.tooLarge` |
 | Route inconnue | 404 | `server.unexpected` |
 | Crash | 500 | `server.unexpected` + `Logger.error` appelé avec `boom` |
-| 6ᵉ login en une minute depuis la même IP | 429 | `server.rateLimited` |
+| 21ᵉ login en une minute depuis la même IP | 429 | `server.rateLimited` |
 | 21ᵉ inscription en une minute depuis la même IP | 429 | `server.rateLimited` |
 
 Astuce du test : chaque cas de login ou d'inscription utilise sa propre adresse `X-Forwarded-For` (`198.51.100.x`, plage réservée à la documentation) pour ne pas consommer le quota des autres cas. Les cas avec session passent par un même `agent`, qui a une seule adresse.

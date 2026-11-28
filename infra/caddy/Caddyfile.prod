@@ -80,6 +80,8 @@
 	}
 
 	# Grafana serves itself under /grafana, prefix intact, like /api above.
+	# Without compose.deploy.monitoring.yml the upstream does not resolve: see
+	# handle_errors below.
 	@grafana path /grafana /grafana/*
 	handle @grafana {
 		reverse_proxy grafana:3000 {
@@ -90,6 +92,14 @@
 			# one visitor's failed logins would lock out everyone.
 			header_up X-Real-IP {client_ip}
 		}
+	}
+
+	# The proxy's 502 when grafana is absent, said in words. 503, not 404: with
+	# monitoring the same error means Grafana is restarting. Only /grafana: a
+	# 502 from api or web matches nothing here and keeps its empty body.
+	handle_errors 502 {
+		@grafana_down path /grafana /grafana/*
+		respond @grafana_down "Monitoring is not running on this host." 503
 	}
 
 	handle {

@@ -177,7 +177,7 @@ In the root [package.json](../../package.json), turbo runs the same script in **
 | Your machine, one app | `pnpm --filter @ft/web test` (or `test:cov`) | Vitest in `apps/web` |
 | Your machine, all | `make test` → `pnpm run test` | Every package's unit tests |
 | Your machine, CI checks | `make ci` | The repo checks in `scripts/`, then `pnpm run ci` (format, lint, typecheck, `test:cov`, build), `prisma migrate deploy` and the API e2e |
-| Your machine, everything | `make` (target `all`) | `make ci`, then the production stack (`make run`), `make monitoring-check` and Playwright on Chromium |
+| Your machine, everything | `make` (target `all`) | `make ci`, then the production stack on the fixture tutor (`make run`), `make monitoring-check`, Playwright on Chromium and `make llm-spend-check`, then `make up` back on the provider `.env` names |
 | Docker `ci` stage | [apps/web/Dockerfile](../../apps/web/Dockerfile) `CMD`: `pnpm lint && pnpm typecheck && pnpm test:cov` | The same, inside the image |
 | GitHub CI | [ci.yml](../../.github/workflows/ci.yml), job `unit tests (web)` | `pnpm --filter @ft/web run test:cov` inside the `ci` Docker stage |
 | git pre-push hook | [.husky/pre-push](../../.husky/pre-push) | Only lint and typecheck, **not** tests (kept fast) |
@@ -343,7 +343,7 @@ The test, [tutor-answer.test.tsx](../../apps/web/components/lesson/tutor-answer.
 import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 
-import { TutorAnswer } from './tutor-answer';
+import { TutorAnswer, TutorThinking } from './tutor-answer';
 
 /** The answer as the server draws it: no DOM, as the other component tests. */
 const html = (text: string, cut = false) =>
@@ -418,14 +418,18 @@ What this style of test **cannot** do: click, type, or run effects (`useEffect` 
 
 ## Every test file in `apps/web`
 
-37 files: 35 in `lib/`, 2 in `components/`.
+43 files: 37 in `lib/`, 6 in `components/`.
 
 ### `components/`
 
 | File | What it checks |
 |---|---|
-| [lesson/tutor-answer.test.tsx](../../apps/web/components/lesson/tutor-answer.test.tsx) | The tutor's Markdown renders as styled HTML (bold, lists, tables, strikethrough), links are safe, raw HTML/images/`javascript:` never render, a cut answer ends with `…`. |
+| [form.test.tsx](../../apps/web/components/form.test.tsx) | `PasswordField` as the server draws it: a plain `type="password"` input with its `autocomplete`, no button (the button is drawn once hydrated), label and hint tied by id, no spellcheck, autocorrect or autocapitalize. `Field` keeps its exact markup. |
+| [lesson/discussion.test.tsx](../../apps/web/components/lesson/discussion.test.tsx) | Before any message, the tutor panel already has its empty `aria-live` region for "The tutor is thinking…", with no dots and no `role="status"`. |
+| [lesson/tutor-answer.test.tsx](../../apps/web/components/lesson/tutor-answer.test.tsx) | The tutor's Markdown renders as styled HTML (bold, lists, tables, strikethrough), links are safe, raw HTML/images/`javascript:` never render, a cut answer ends with `…`. The thinking dots are `aria-hidden`, bounce only under `motion-safe:`, and have no `data-turn`. |
 | [lesson/kinds/reading.test.tsx](../../apps/web/components/lesson/kinds/reading.test.tsx) | Plays the sample reading lesson "Lire un SMS" through the shared lesson core and renders each page: key word cards, matching board, skim countdown, detail questions, ordering, exam page; wrong answers marked, with the right answer beside them; score 100 when all right, 0 when all wrong. |
+| [tutor-check.test.tsx](../../apps/web/components/tutor-check.test.tsx) | The **AI tutor** section of `/profile` as the server draws it (Test connection, an empty `role="status"`, Loading…), and the result of each check status: its sentence, hint, tone and icon, the model name and HTTP code when they matter, no raw message key; the `ok` wording, the quota of the minute (amber) and of the day (red, the lesson's sentence, with Google's reset time or midnight Pacific time); an `unreachable` with no HTTP status gives no answer time, and one with a 5xx names it. |
+| [unread-badge.test.tsx](../../apps/web/components/unread-badge.test.tsx) | The header badges as the server renders them, in English, French and German: the friend request count and its phrase, nothing at 0, `99+`, the menu button with only the requests known, the unread badge unchanged. |
 
 ### `lib/` — API layer and session
 
@@ -442,7 +446,9 @@ What this style of test **cannot** do: click, type, or run effects (`useEffect` 
 | [placement-client.test.ts](../../apps/web/lib/placement-client.test.ts) | Start, answer (including `null` when time ran out), result, quit the placement exam; conflict and onboarding codes; bad payloads refused. |
 | [placement-schema.test.ts](../../apps/web/lib/placement-schema.test.ts) | The placement state schema accepts/refuses shapes, keeps reading passages; `isPlacementResult` tells a result from a question. |
 | [lesson-client.test.ts](../../apps/web/lib/lesson-client.test.ts) | Attempt routes (start, post a page, stale page, no answer key leaked), the tab's memory of attempts, and the saved drafts in storage. |
-| [discussion-client.test.ts](../../apps/web/lib/discussion-client.test.ts) | The tutor discussion stream: pieces handed over as they come, error events, cut connection, 429 with wait time, refusals, network failure. |
+| [discussion-client.test.ts](../../apps/web/lib/discussion-client.test.ts) | The tutor discussion stream: pieces handed over as they come, error events, cut connection, 429 with wait time, refusals, network failure. `isThinking` from the send to the first word, through a heartbeat and an empty piece. |
+| [tutor-client.test.ts](../../apps/web/lib/tutor-client.test.ts) | `GET /api/tutor` and `POST /api/tutor/check`: same-origin credentials, no body, a `429` as `server.rateLimited`, a `quota_day` answer with its `retryAt`, an unknown status refused, a dead network as a code. |
+| [tutor-status.test.ts](../../apps/web/lib/tutor-status.test.ts) | Every key check status has a tone (good, warn, bad, info; `quota_day` is bad), and each tone its own colour. |
 
 ### `lib/` — chat and socket
 
@@ -450,7 +456,7 @@ What this style of test **cannot** do: click, type, or run effects (`useEffect` 
 |---|---|
 | [send-message.test.ts](../../apps/web/lib/send-message.test.ts) | `sendMessageOver` with a fake socket: stored message back, refused at once offline, timeout as unreachable, refusal codes, `server.unexpected` reworded, bad acks. |
 | [thread.test.ts](../../apps/web/lib/thread.test.ts) | `mergeMessages` (dedupe, order by id in the same millisecond), `catchUp` (meets or restarts, messages heard during the fetch), `addEarlier` (drops a stale page), `timeFormat` (today, older, reader's zone, fallback zone). |
-| [unread.test.ts](../../apps/web/lib/unread.test.ts) | Unread store: nothing before the first snapshot, replace not merge, the later snapshot wins, watchers told every time, clear, unsubscribe; `badgeText` 99+; `unreadTotal`. |
+| [unread.test.ts](../../apps/web/lib/unread.test.ts) | Unread store: nothing before the first snapshot, replace not merge, the later snapshot wins, watchers told every time, clear, unsubscribe; the same for the friend request store; `badgeText` 99+; `unreadTotal`; `menuTotal`. |
 | [presence.test.ts](../../apps/web/lib/presence.test.ts) | Presence map: unknown until heard, latest status kept, watchers told only on change, forget, clear, unsubscribe. |
 | [reconnect.test.ts](../../apps/web/lib/reconnect.test.ts) | `backoffMs` (doubling, spread, cap), `afterDisconnect`, `afterConnectError`, `apiIsUp` (up, down, bad body, failed request, no cache). |
 
@@ -476,7 +482,7 @@ What this style of test **cannot** do: click, type, or run effects (`useEffect` 
 
 | File | What it checks |
 |---|---|
-| [messages.test.ts](../../apps/web/lib/messages.test.ts) | `messages/en.json`, `fr.json`, `de.json` have exactly the same keys, translate every error code, every achievement/challenge, and no empty text. |
+| [messages.test.ts](../../apps/web/lib/messages.test.ts) | `messages/en.json`, `fr.json`, `de.json` have exactly the same keys, translate every error code, every achievement/challenge, every tutor check status, and no empty text; `TutorCard.status.quota_day` is the same sentence as `Errors.llm.quotaExhausted`. |
 | [legal.test.ts](../../apps/web/lib/legal.test.ts) | Privacy and terms pages: long enough, unique stable anchors, no empty section, fixed date, metadata, same anchors in every language. |
 | [localized.test.ts](../../apps/web/lib/localized.test.ts) | `pick`: the text in the interface language, with fallbacks. |
 | [avatar.test.ts](../../apps/web/lib/avatar.test.ts) | Avatar initial (upper case, never half a character, fallback) and colour (stable per name, in range). |
@@ -552,14 +558,14 @@ How to run them:
 
 | Where | Command |
 |---|---|
-| Local, stack already up | `make playwright` (Chromium) or `make playwright-all` (three browsers) |
-| Local, start the stack too | `make test-e2e` |
+| Local, on the fixture tutor, then back on the provider `.env` names | `make test-e2e` (Chromium) or `make playwright-all` (three browsers) |
+| Local, stack already up | `make playwright` (Chromium); it refuses an api on a real LLM provider unless `E2E_REAL_LLM=1` |
 | Last report | `make report` (serves `e2e/playwright-report` on port 9323) |
 | GitHub | [e2e.yml](../../.github/workflows/e2e.yml): 3 browsers x 2 parts (`lesson.spec.ts` alone, and the rest), each on its own stack; the chromium "rest" job also runs `restart.spec.ts`; a final `playwright (production stack)` gate job |
 
 On failure, CI uploads `e2e/playwright-report` and `e2e/test-results` (traces and screenshots).
 
-Note: the API has its own tests too (Jest unit tests and Supertest e2e), explained in
+Note: the API has its own tests too (Vitest unit tests and Supertest e2e), explained in
 [API chapter 10](../api/10-tests.md).
 
 ---

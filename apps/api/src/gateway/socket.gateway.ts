@@ -22,7 +22,7 @@ import {
 } from '@ft/shared';
 
 import { SESSION_KEY_PREFIX } from '../app.setup';
-import { friendIds } from '../friends/friend-ids';
+import { friendIds, pendingRequests } from '../friends/friend-ids';
 import { unreadCounts } from '../messages/unread';
 import { wsConnections, wsEvents } from '../metrics/metrics';
 import { PresenceService } from '../presence/presence.service';
@@ -206,13 +206,18 @@ export class SocketGateway
 
   /**
    * Tells the friends when this is the user's first socket, and tells this
-   * socket where each friend stands and what is unread: the page may have been
-   * rendered a moment before a friend came or went, or a message arrived.
+   * socket where each friend stands, how many friend requests wait and what is
+   * unread: the page may have been rendered a moment before a friend came or
+   * went, a request arrived, or a message.
    */
   private async arrived(socket: AppSocket): Promise<void> {
     const { userId } = socket.data;
-    // Started with the rest, settled on its own: a failed count must not keep
+    // Started with the rest, settled on their own: a failed count must not keep
     // the friends from hearing this user came online.
+    const pending = pendingRequests(this.prisma, userId).catch((error: unknown) => {
+      this.logger.error(`pending on connect failed: ${String(error)}`);
+      return undefined;
+    });
     const unread = unreadCounts(this.prisma, userId).catch((error: unknown) => {
       this.logger.error(`unread on connect failed: ${String(error)}`);
       return undefined;
@@ -233,6 +238,12 @@ export class SocketGateway
       }
     } catch (error) {
       this.logger.error(`presence on connect failed: ${String(error)}`);
+    }
+    // Before dm:unread, which stays last.
+    const requests = await pending;
+    if (requests) {
+      socket.emit(SERVER_EVENTS.FRIEND_PENDING, requests);
+      wsEvents.inc({ direction: 'out', event: SERVER_EVENTS.FRIEND_PENDING, outcome: 'ok' });
     }
     // Last, so a socket that has it has heard the rest of the snapshot. Sent
     // when empty too: the tab can tell "nothing unread" from "not heard yet".

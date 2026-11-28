@@ -177,7 +177,8 @@
     "signIn": "Sign in"
   },
   "Form": {
-    "working": "Working…"
+    "working": "Working…",
+    "showPassword": "Show password"
   },
   "Errors": {
     "displayName": {
@@ -239,6 +240,7 @@
     "llm": {
       "unavailable": "The tutor cannot answer right now. Try again in a moment.",
       "rateLimited": "The tutor is busy. Try again in a minute.",
+      "quotaExhausted": "The tutor has used up today's quota. It's back tomorrow.",
       "tooManyMessages": "You have sent the tutor a lot of messages. Try again later.",
       "blocked": "The tutor cannot answer this message. Try asking it another way.",
       "incomplete": "The answer stopped before the end. Ask again.",
@@ -299,6 +301,8 @@
     "security": "Security",
     "twoFactorPrompt": "Add a second factor so a stolen password is not enough to sign in.",
     "twoFactorAuthentication": "Two factor authentication",
+    "tutor": "AI tutor",
+    "tutorPrompt": "The tutor of the lesson discussions runs on one key for the whole server. Check that it works.",
     "backToProfile": "Back to profile"
   },
   "ProfileForm": {
@@ -335,7 +339,8 @@
     "cancel": "Cancel",
     "online": "Online",
     "offline": "Offline",
-    "message": "Message"
+    "message": "Message",
+    "pending": "{count, plural, one {# friend request} other {# friend requests}}"
   },
   "UserPage": {
     "courses": "Courses",
@@ -365,6 +370,44 @@
     "loading": "Checking two factor authentication…",
     "statusUnavailable": "Could not check two factor authentication.",
     "retry": "Try again"
+  },
+  "TutorCard": {
+    "provider": "Provider",
+    "model": "Model",
+    "loading": "Loading…",
+    "test": "Test connection",
+    "testing": "Testing…",
+    "answeredIn": "Answered in {ms} ms, at {time}.",
+    "checkedAt": "Checked at {time}.",
+    "providers": {
+      "gemini": "Google Gemini",
+      "fixture": "Practice tutor (fixture), no key needed",
+      "disabled": "None, the tutor is off"
+    },
+    "status": {
+      "ok": "Working: Google answered a test message.",
+      "invalid_key": "Google refused the key.",
+      "model_not_found": "Google accepted the key, but the model {model} does not exist or cannot write text.",
+      "quota": "The key is over its per-minute quota.",
+      "quota_day": "The tutor has used up today's quota. It's back tomorrow.",
+      "unreachable": "Google did not answer in time.",
+      "unreachableHttp": "Google answered the test with HTTP {status}: trouble on its side.",
+      "unexpected": "Google answered the test with HTTP {status}.",
+      "unexpectedNoAnswer": "The test failed before Google answered.",
+      "fixture": "This server runs the practice tutor: it gives one fixed answer and needs no key.",
+      "disabled": "The tutor is turned off on this server."
+    },
+    "hint": {
+      "ok": "Each test uses one request of the key's quota for today.",
+      "invalid_key": "It is wrong, revoked or blocked. Whoever runs this server must set a new LLM_API_KEY in .env and restart the api.",
+      "model_not_found": "Whoever runs this server must fix LLM_MODEL in .env and restart the api.",
+      "quota": "The tutor answers again within a minute.",
+      "quota_day": "{hasTime, select, yes {Google resets it around {time}.} other {Google resets it at midnight Pacific time.}}",
+      "unreachable": "Try again in a moment.",
+      "unexpected": "The api logs say why.",
+      "fixture": "For the real tutor, set LLM_PROVIDER=gemini and LLM_API_KEY in .env.",
+      "disabled": "LLM_PROVIDER is disabled: there is no key to test."
+    }
   },
   "Placement": {
     "title": "Placement test",
@@ -469,6 +512,7 @@
     "stop": "Stop",
     "you": "You",
     "tutor": "Tutor",
+    "tutorThinking": "The tutor is thinking…",
     "tooManyQuestions": "Too many questions. Try again in {seconds} s.",
     "tutorBusy": "The tutor is busy. Try again in {seconds} s.",
     "comeBackTomorrow": "You have asked the tutor a lot today. Come back tomorrow.",

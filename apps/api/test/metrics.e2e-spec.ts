@@ -69,4 +69,14 @@ describe('metrics (e2e)', () => {
     expect(scrape).toMatch(/^ft_active_users \d+$/m);
     expect(scrape).toContain('ft_question_bank_questions{');
   });
+
+  // The groupBy queries the collector's spec can only fake. A query that fails
+  // leaves its gauge without a single series.
+  it('collects the courses, achievements and friendships at scrape time', async () => {
+    const scrape = await registry.metrics();
+
+    expect(scrape).toMatch(/^ft_courses\{lang="fr",level="unplaced"\} \d+$/m);
+    expect(scrape).toMatch(/^ft_achievements\{code="firstLesson"\} \d+$/m);
+    expect(scrape).toMatch(/^ft_friendships\{status="pending"\} \d+$/m);
+  });
 });

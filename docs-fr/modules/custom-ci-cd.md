@@ -128,7 +128,8 @@ ne lance pas les mêmes vérifications deux fois.
   seul commit, ou à partir d'un nom de branche comme `ci/lint-pr-title`. `.env hygiene`
   échoue si un fichier `.env` est suivi par git, et
   [`scripts/check-env-example.sh`](../../scripts/check-env-example.sh) vérifie que
-  `.env.example`, les fichiers compose et le code citent les mêmes variables.
+  `.env.example`, les fichiers compose et le code citent les mêmes variables, et que le
+  modèle laisse vide chaque secret qu'un serveur exige.
   `prisma migration drift` rejoue les migrations dans une base de données jetable et échoue si
   elles ne correspondent pas à `schema.prisma`.
 - **[`devcontainer.yml`](../../.github/workflows/devcontainer.yml).** Seulement quand
@@ -214,11 +215,11 @@ de deploy stocké dans GitHub.
 ## Comment le montrer à la soutenance
 
 Il te faut un coéquipier avec un accès en écriture au dépôt, et un accès SSH à un des deux
-serveurs pour les étapes 9 et 10. Les deux font tourner le même timer : l'instance Oracle derrière
-<https://transcendence.dpdns.org> (fichiers dans `/home/ubuntu`) et le VPS partagé derrière
-<https://trans.vyantares.ch> (fichiers dans `~/ft_transcendence`), voir
-[../operations/deployment.md](../operations/deployment.md) « Les deploys automatiques » et « Derrière
-un autre reverse proxy ». Utilise celui qui est en marche.
+serveurs pour les étapes 9 et 10. Les deux font tourner le même timer : le principal, le VPS partagé derrière
+<https://trans.vyantares.ch> (fichiers dans `~/ft_transcendence`), et la copie secondaire, l'instance Oracle
+derrière <https://transcendence.dpdns.org> (fichiers dans `/home/ubuntu`), voir
+[../operations/deployment.md](../operations/deployment.md) « Les deploys automatiques » et « Le principal,
+derrière un autre reverse proxy ». Utilise le principal ; la copie marche de la même façon.
 
 1. Fais un petit changement sans risque sur une branche. Le nom de la branche suit la règle `type/slug` :
    ```bash
@@ -309,8 +310,8 @@ merge de #212 (commit `e0ba88c`), `hygiene` a pris environ 1 minute, `ci` et `im
 - **Les commits sont notés.** Le sujet note les commits de chaque membre avec des messages
   clairs. commitlint, la vérification du titre de pull request et les merges en squash seulement gardent
   l'historique de `main` lisible.
-- **L'app tourne sur de vrais serveurs.** Elle tourne sur <https://transcendence.dpdns.org> et
-  <https://trans.vyantares.ch> (voir [custom-cloud-deploy.md](custom-cloud-deploy.md)). La mettre à jour à la main après chaque merge
+- **L'app tourne sur de vrais serveurs.** Elle tourne sur <https://trans.vyantares.ch>, le principal,
+  et sur <https://transcendence.dpdns.org>, une copie secondaire (voir [custom-cloud-deploy.md](custom-cloud-deploy.md)). La mettre à jour à la main après chaque merge
   serait lent et finirait mal. La CD fait de `main` et du site en ligne la même chose.
 
 ## Les défis techniques
@@ -398,7 +399,7 @@ l'explique.
 Une CI triviale, c'est un workflow qui lance `npm test`. Ce module est un pipeline qui va de la
 machine du développeur jusqu'au serveur en ligne :
 
-- **5 workflows et 1 action partagée**, plus **10 scripts** dans [`scripts/`](../../scripts)
+- **5 workflows et 1 action partagée**, plus **12 scripts** dans [`scripts/`](../../scripts)
   partagés par la CI, `make` et **3 hooks git**.
 - **41 vérifications** sur une pull request typique (#212), dont le ruleset en **exige 19**.
 - **Une stack de production complète démarrée 6 fois par run**, pour **3 moteurs de navigateur**.
@@ -430,10 +431,10 @@ vérifie exactement ces choses à chaque changement.
 - **Les vieilles images s'accumulent.** Chaque push sur n'importe quelle branche publie des images. Un nettoyage
   programmé des images sans tag et des tags dont la branche n'existe plus est encore un `TODO` à la fin de
   `images.yml`.
-- **Certains fichiers du serveur sont copiés à la main.** Un changement de `compose.deploy.yml` ou de
-  `Caddyfile.prod` n'est pas déployé par le timer : il faut un `scp` et un redémarrage
-  ([`../operations/deployment.md`](../operations/deployment.md) « Les deploys automatiques »).
-  Seules les images bougent automatiquement.
+- **Certains fichiers du serveur sont copiés à la main.** Un changement de `compose.deploy.yml`, de
+  `compose.deploy.monitoring.yml` ou de `Caddyfile.prod` n'est pas déployé par le timer : il
+  faut un `scp` et un redémarrage ([`../operations/deployment.md`](../operations/deployment.md)
+  « Les deploys automatiques »). Seules les images bougent automatiquement.
 - **La review est obligatoire, les code owners non.** CODEOWNERS demande toute l'équipe sur chaque
   chemin, et le ruleset demande une approbation de n'importe qui. « Require review from Code
   Owners » est désactivé (`require_code_owner_review: false`). Le fichier CODEOWNERS garde en

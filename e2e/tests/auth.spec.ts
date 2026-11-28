@@ -109,6 +109,106 @@ test.describe('authentication in the browser', () => {
     await expect(page).toHaveURL(/\/signup$/);
   });
 
+  // No account and no login. The email stays empty, so a submit would show the
+  // form's alert: none proves the toggle is type="button". Caret handling after
+  // a type change differs between the three engines, hence the selection check.
+  test('shows and hides the password, keeping the focus and the caret', async ({ page }) => {
+    await page.goto('/en/login');
+    const password = page.getByLabel('Password', { exact: true });
+    const toggle = page.getByRole('button', { name: 'Show password' });
+
+    await password.fill(PASSWORD);
+    await password.evaluate((el) => (el as HTMLInputElement).setSelectionRange(3, 3));
+    await toggle.click();
+
+    await expect(toggle).toHaveAttribute('aria-pressed', 'true');
+    await expect(password).toHaveAttribute('type', 'text');
+    await expect(password).toHaveAttribute('autocomplete', 'current-password');
+    await expect(password).toHaveValue(PASSWORD);
+    await expect(password).toBeFocused();
+    expect(
+      await password.evaluate((el) => {
+        const input = el as HTMLInputElement;
+        return [input.selectionStart, input.selectionEnd];
+      }),
+    ).toEqual([3, 3]);
+    await expect(page.locator('form').getByRole('alert')).toHaveCount(0);
+
+    await toggle.click();
+    await expect(password).toHaveAttribute('type', 'password');
+    await expect(toggle).toHaveAttribute('aria-pressed', 'false');
+  });
+
+  // focus() rather than Tab: WebKit's Tab can skip buttons.
+  test('works from the keyboard and never sends the form', async ({ page }) => {
+    await page.goto('/en/login');
+    const password = page.getByLabel('Password', { exact: true });
+    const toggle = page.getByRole('button', { name: 'Show password' });
+
+    await password.fill(PASSWORD);
+    await toggle.focus();
+    await page.keyboard.press('Enter');
+    await expect(password).toHaveAttribute('type', 'text');
+    await expect(toggle).toBeFocused();
+
+    await page.keyboard.press('Space');
+    await expect(password).toHaveAttribute('type', 'password');
+    await expect(page.locator('form').getByRole('alert')).toHaveCount(0);
+  });
+
+  // LoginSchema refuses the empty email in the browser, so no login request is
+  // made and no logInSlot is needed.
+  test('hides the password again when the form is sent', async ({ page }) => {
+    await page.goto('/en/login');
+    const password = page.getByLabel('Password', { exact: true });
+
+    await password.fill(PASSWORD);
+    await page.getByRole('button', { name: 'Show password' }).click();
+    await expect(password).toHaveAttribute('type', 'text');
+    await page.getByRole('button', { name: 'Sign in' }).click();
+
+    await expect(page.locator('form').getByRole('alert')).toBeVisible();
+    await expect(password).toHaveAttribute('type', 'password');
+    await expect(page.getByRole('button', { name: 'Show password', pressed: false })).toBeVisible();
+  });
+
+  // Both buttons have the same name, so each is found by the field it controls.
+  test('each signup password has its own toggle', async ({ page }) => {
+    await page.goto('/en/signup');
+    const password = page.getByLabel('Password', { exact: true });
+    const confirm = page.getByLabel('Confirm password', { exact: true });
+
+    await expect(page.getByRole('button', { name: 'Show password' })).toHaveCount(2);
+    await page.locator(`button[aria-controls="${await confirm.getAttribute('id')}"]`).click();
+
+    await expect(confirm).toHaveAttribute('type', 'text');
+    await expect(password).toHaveAttribute('type', 'password');
+  });
+
+  // The button is drawn once hydrated: without JavaScript it would do nothing.
+  // The form posts, so Enter before hydration keeps the password out of the URL.
+  test('without JavaScript the field is a plain password field', async ({ browser }) => {
+    const context = await browser.newContext({ javaScriptEnabled: false });
+    try {
+      const page = await context.newPage();
+      await page.goto('/en/login');
+      const password = page.getByLabel('Password', { exact: true });
+
+      await expect(password).toHaveAttribute('type', 'password');
+      await expect(page.getByRole('button', { name: 'Show password' })).toHaveCount(0);
+
+      await password.fill(PASSWORD);
+      const sent = page.waitForRequest((request) => request.isNavigationRequest());
+      await password.press('Enter');
+      const request = await sent;
+      expect(request.method()).toBe('POST');
+      expect(new URL(request.url()).search).toBe('');
+      await expect(page.getByLabel('Password', { exact: true })).toBeVisible();
+    } finally {
+      await context.close();
+    }
+  });
+
   test('signs out and loses access to the profile', async ({ page }) => {
     await signUp(page);
     await page.goto('/en/onboarding');
@@ -121,7 +221,7 @@ test.describe('authentication in the browser', () => {
 
   /**
    * The login form only goes to /learn, which picks the page. landing.spec.ts
-   * covers its other cases by visiting it directly: POST /auth/login allows 5 a
+   * covers its other cases by visiting it directly: POST /auth/login allows 20 a
    * minute per address, and every login in the suite comes from the same one.
    */
   test('signs back in with the password and, with no course, lands on onboarding', async ({
@@ -278,6 +378,8 @@ test.describe('authentication in the browser', () => {
     await page.getByRole('button', { name: 'Turn on' }).click();
     await page.getByRole('button', { name: 'I have saved them' }).click();
     await expect(page.getByText(/Two factor authentication is on/)).toBeVisible();
+    // Drawn by the client after the status fetch, so the button is there at once.
+    await expect(page.getByRole('button', { name: 'Show password', pressed: false })).toBeVisible();
 
     // The same schema as the API, so an empty password is caught without a request.
     const deletes: string[] = [];

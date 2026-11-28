@@ -1,6 +1,7 @@
 /** Server half of the friends API, like courses.ts. */
 import { cache } from 'react';
 import {
+  FriendPendingSchema,
   FriendsSchema,
   PublicProfileSchema,
   RecentlyActiveSchema,
@@ -26,6 +27,16 @@ export const FRIEND_EVENTS = [
 export async function requireFriends(): Promise<Friends> {
   return settle(await apiGet(FriendsSchema, '/api/friends'), 'friends');
 }
+
+/**
+ * Requests waiting on the signed-in user, for the header's counts. Memoised per
+ * request: the menu button and its Friends link both ask. Undefined when the API
+ * cannot say: the badge then waits for the socket, rather than failing the page.
+ */
+export const friendPending = cache(async function friendPending(): Promise<number | undefined> {
+  const result = await apiGet(FriendPendingSchema, '/api/friends/pending');
+  return result.status === 'ok' ? result.data.count : undefined;
+});
 
 /** Only called with a query UserSearchQuerySchema accepted, so a 400 never happens. */
 export async function searchUsers(q: string): Promise<PublicUser[]> {

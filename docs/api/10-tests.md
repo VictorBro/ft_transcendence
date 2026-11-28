@@ -57,8 +57,8 @@ A **fixture** is prepared test data (a JSON file, a user row, a helper that buil
 
 ```mermaid
 flowchart TB
-    E2E["e2e tests<br/>18 files in test/<br/>slow, real Postgres + Redis"]
-    UNIT["unit tests<br/>53 files *.spec.ts in src/<br/>fast, no database"]
+    E2E["e2e tests<br/>19 files in test/<br/>slow, real Postgres + Redis"]
+    UNIT["unit tests<br/>56 files *.spec.ts in src/<br/>fast, no database"]
     E2E --- UNIT
     style E2E fill:#f6d5a8,stroke:#a0522d
     style UNIT fill:#bfe3c0,stroke:#2e7d32
@@ -236,7 +236,7 @@ Higher up, the tools call the same scripts:
 | [turbo.json](../../turbo.json) | `test`, `test:cov` | depend on `^build` (build `@ft/shared` first) and `db:generate` (the Prisma client) |
 | [Makefile](../../Makefile) | `make test` | `pnpm run test` (unit tests of the whole workspace) |
 | [Makefile](../../Makefile) | `make ci` | makes `.env` (`env-file`), starts Postgres and Redis (`stores-up`), runs the `scripts/` checks, then `pnpm run ci`, applies migrations, then `pnpm --filter @ft/api run test:e2e` |
-| [Makefile](../../Makefile) | `make` (= `make all`) | `make ci`, then the production stack (`make run`), `make monitoring-check`, then Playwright |
+| [Makefile](../../Makefile) | `make` (= `make all`) | `make ci`, then the production stack on the fixture tutor (`make run`), `make monitoring-check`, Playwright, `make llm-spend-check`, then `make up` back on the provider `.env` names |
 
 Note: `make test-e2e` in the Makefile is the **Playwright** browser suite, not the Supertest
 suite of this chapter. The Supertest suite runs inside `make ci`.
@@ -249,9 +249,9 @@ migrations applied. The connection comes from environment variables:
 
 | Variable | Used by | Who sets it |
 | --- | --- | --- |
-| `DATABASE_URL` | `PrismaService` | the Makefile exports a default; CI passes it to `docker run` |
-| `REDIS_URL` | `RedisService` | same |
-| `SESSION_SECRET` | `configureApp` (cookie signing) | same |
+| `DATABASE_URL` | `PrismaService` | the Makefile builds it from `.env`'s `POSTGRES_*` and exports it; CI passes it to `docker run` |
+| `REDIS_URL` | `RedisService` | the Makefile exports a default; CI passes it to `docker run` |
+| `SESSION_SECRET` | `configureApp` (cookie signing) | the Makefile exports the one in `.env`, else a default; CI passes it to `docker run` |
 
 The Makefile says it plainly:
 
@@ -368,7 +368,7 @@ flowchart LR
 ```
 
 Only 4 unit specs use `Test.createTestingModule` (auth.service, health.controller,
-health.service, llm.module). The other 49 just call `new TheService(fakeA, fakeB)` by hand,
+health.service, llm.module). The other 52 just call `new TheService(fakeA, fakeB)` by hand,
 which is simpler when you do not need Nest to wire anything. For example
 [auth.guard.spec.ts](../../apps/api/src/auth/auth.guard.spec.ts):
 `const auth = { findById: vi.fn() } as unknown as AuthService;`.
@@ -548,8 +548,9 @@ against "session fixation"), and `/api/health` still public.
 
 ```
 apps/api/test/
-├── *.e2e-spec.ts          18 spec files (run by test:e2e)
+├── *.e2e-spec.ts          19 spec files (run by test:e2e)
 ├── attempts.fixtures.ts   play a lesson attempt through the routes
+├── gemini.fixtures.ts     Google's 429 bodies, the day's and the minute's
 ├── metrics.fixtures.ts    read one Prometheus series
 ├── placement.fixtures.ts  exam run, bank rows, fakeRedis, bankPrisma
 ├── socket.fixtures.ts     open and listen to a socket.io client
@@ -573,21 +574,23 @@ apps/api/test/
 | [attempts.e2e-spec.ts](../../apps/api/test/attempts.e2e-spec.ts) | The lesson attempt (#145): start (one attempt for two parallel starts), practice pages and stale cursors, the exam timer with its 2 s grace, closing once, retakes, attempts deleted when a reseed changes the lesson. |
 | [finish.e2e-spec.ts](../../apps/api/test/finish.e2e-spec.ts) | Finishing lessons through the attempt routes: who may play, first finish, best score kept, goal met on the third lesson and the streak, one meet for two parallel finishes, goal changes, level switches. |
 | [gamification.e2e-spec.ts](../../apps/api/test/gamification.e2e-spec.ts) | XP, the daily challenge and achievements (#95): exact XP numbers, challenge awarded once, GOAL_XP, streak7, levelA1, the achievements route, Swagger. |
-| [discussion.e2e-spec.ts](../../apps/api/test/discussion.e2e-spec.ts) | The AI tutor stream on the fixture provider: checks before the stream (session, course, stale attempt), `delta` then `done` events, practice mistakes in the prompt, error codes, cancel when the learner leaves, the per-minute and per-day limits. |
-| [friends.e2e-spec.ts](../../apps/api/test/friends.e2e-spec.ts) | User search, "recently active", the request / accept / remove flow heard on real sockets, online events for friends only, crossing requests, account deletion, 10 requests a minute. |
+| [discussion.e2e-spec.ts](../../apps/api/test/discussion.e2e-spec.ts) | The AI tutor stream on the fixture provider: checks before the stream (session, course, stale attempt), `delta` then `done` events, practice mistakes in the prompt, error codes (`llm.quotaExhausted` for the fixture's `#quota-day` and for a `429` of the day), cancel when the learner leaves, the per-minute and per-day limits. |
+| [tutor.e2e-spec.ts](../../apps/api/test/tutor.e2e-spec.ts) | The tutor key test (`GET /api/tutor`, `POST /api/tutor/check`) on the fixture, with the provider's `check` stubbed: 401 without a session, the fixture's provider and no model, 200 for every status, `quota_day` included, with `retryAt` on a 429 (and `unexpected` when the provider throws), one check shared by two accounts, both routes in Swagger under the tag `tutor`, the 429 after 3 checks a minute. |
+| [friends.e2e-spec.ts](../../apps/api/test/friends.e2e-spec.ts) | User search, "recently active", the request / accept / remove flow heard on real sockets, online events for friends only, the pending request count (route, pushes, on connect before `dm:unread`), crossing requests, account deletion, 10 requests a minute. |
 | [messages.e2e-spec.ts](../../apps/api/test/messages.e2e-spec.ts) | Message history paging, who may send, `dm:send` and `dm:read` on real sockets, unread counts, conversation list, acks for refused events, the per-minute budget, unfriending. |
 | [gateway.e2e-spec.ts](../../apps/api/test/gateway.e2e-spec.ts) | The socket handshake (session, forged cookie, origin, sockets per session), sockets closed when the session ends (logout, new login, expiry, 2FA change), `course:updated` events, unknown events and flood limits. |
 | [error-codes.e2e-spec.ts](../../apps/api/test/error-codes.e2e-spec.ts) | Every error `message` is an `ERROR_CODES` entry (#108): Zod codes, unknown `:lang`, no session, bad or huge JSON body, unknown route, a crash, rate limits on login and signup. |
 | [metrics.e2e-spec.ts](../../apps/api/test/metrics.e2e-spec.ts) | HTTP metrics through the real Express pipeline: route template (never the URL), unmatched paths, no `/api/metrics`, bank and account gauges at scrape time. |
 | [seed.e2e-spec.ts](../../apps/api/test/seed.e2e-spec.ts) | The seed (chapter 4) on a real Postgres: `seedQuestionBank` (load, idempotent, update keeps id, fails on bad or duplicate files, the 270 real items) and `seedLessons` (outline mapping, no rewrite, ids kept, Restrict, ready flags, invalid lessons refused); `demoSkipReason` and `demoPassword`. |
-| [demo.e2e-spec.ts](../../apps/api/test/demo.e2e-spec.ts) | The demo learners' replay (#85) for ben and chloe under test identities: streaks, today's finishes, a finish just after local midnight in Tokyo. |
+| [demo.e2e-spec.ts](../../apps/api/test/demo.e2e-spec.ts) | The demo learners' replay (#85) for anna, ben, chloe, david and eva under test identities, French A1 padded to 12 ready lessons: streaks, goal changes, today's finishes and cards, levels complete or not, achievements, a finish just after local midnight in Tokyo; a failing learner skipped and cleaned up; the friendships, request and unread messages of `seedDemoSocial`. |
 
 ### The fixtures
 
 | File / folder | What it gives | Used by |
 | --- | --- | --- |
 | [attempts.fixtures.ts](../../apps/api/test/attempts.fixtures.ts) | `shortLesson(id, position, level, lang)`: a ready lesson row built on the short vocabulary brief of `@ft/shared`. `openAttempt`: starts an attempt and rebuilds the plan and the answer refs as the server does. `playToLast`, `playLesson`: play every page right or blank. | attempts, finish, gamification, discussion, gateway e2e specs |
-| [metrics.fixtures.ts](../../apps/api/test/metrics.fixtures.ts) | `seriesValue(metric, labels, suffix)`: the value of one Prometheus series, or `undefined` if it does not exist. | many unit specs (metrics, gateway, llm/gemini, placement, question-stock) and the metrics, attempts, friends, messages and gateway e2e specs |
+| [gemini.fixtures.ts](../../apps/api/test/gemini.fixtures.ts) | `DAY_QUOTA_BODY`: the `429` a free key got on 2026-11-27 once its requests of the day were spent (`PerDay` quota, `retryDelay` `"48933s"`); `MINUTE_QUOTA_BODY`: the same for the quota of the minute (`"21s"`). | the three llm/gemini unit specs |
+| [metrics.fixtures.ts](../../apps/api/test/metrics.fixtures.ts) | `seriesValue(metric, labels, suffix)`: the value of one Prometheus series, or `undefined` if it does not exist. | many unit specs (metrics, gateway, llm/gemini, tutor, placement, question-stock) and the metrics, attempts, friends, messages and gateway e2e specs |
 | [placement.fixtures.ts](../../apps/api/test/placement.fixtures.ts) | `examSession()` (a run as it starts), `questionRow()` (a German B1 bank row), `placementBank()` (3 rows per level and category), `wrongChoice()`, `fakeRedis()` (an in-memory Redis with `set NX`, hashes, lists, `multi`, the lock-release script), `bankPrisma(rows)` (a fake Prisma for the bank). | the four placement unit specs, placement e2e |
 | [socket.fixtures.ts](../../apps/api/test/socket.fixtures.ts) | `sessionCookie(res)`, `connect(port, cookie)` (websocket-only client on `/ws`), `nextEvent`, `connected`, `ready` (waits for `dm:unread`), `refusal`, `collect`. | gateway, friends, messages e2e specs |
 | [fixtures/seed-valid/](../../apps/api/test/fixtures/seed-valid) | `en-grammar.json` with one correct item (`en-gram-9001`). | seed e2e: loads and maps every column |
@@ -602,7 +605,7 @@ so neither config runs them as tests.
 
 ## 6. Every unit spec in [apps/api/src](../../apps/api/src)
 
-53 files. Each one sits next to the file it tests (`x.service.ts` → `x.service.spec.ts`).
+56 files. Each one sits next to the file it tests (`x.service.ts` → `x.service.spec.ts`).
 
 ### auth (chapter 5)
 
@@ -624,8 +627,8 @@ so neither config runs them as tests.
 
 | Spec | What it checks |
 | --- | --- |
-| [prisma.service.spec.ts](../../apps/api/src/prisma/prisma.service.spec.ts) | Connects at bootstrap, disconnects on shutdown, `ping` latency, refuses an empty `DATABASE_URL`. |
-| [redis.service.spec.ts](../../apps/api/src/redis/redis.service.spec.ts) | Connects on init, closes on shutdown, `ping`, refuses an empty `REDIS_URL`. |
+| [prisma.service.spec.ts](../../apps/api/src/prisma/prisma.service.spec.ts) | Connects at bootstrap with a `SELECT 1`, fails the start against a closed port (no mock), disconnects on shutdown, `ping` latency, refuses an empty `DATABASE_URL`. |
+| [redis.service.spec.ts](../../apps/api/src/redis/redis.service.spec.ts) | Connects on init, fails the start against a closed port (no mock), gives up before the first connect and backs off after it, closes on shutdown, `ping`, refuses an empty `REDIS_URL`. |
 | [identity-throttler.guard.spec.ts](../../apps/api/src/throttler/identity-throttler.guard.spec.ts) | Keys a signed-in caller on the user, anonymous on the IP; `@ThrottleByIp` routes; route limits and the default ceiling. |
 | [rate-limits.spec.ts](../../apps/api/src/throttler/rate-limits.spec.ts) | `readLimit`: default when unset, positive integer, error naming the variable. |
 | [throttler-storage.spec.ts](../../apps/api/src/throttler/throttler-storage.spec.ts) | Signup hits expire on their own, even after another route's block. |
@@ -641,11 +644,18 @@ so neither config runs them as tests.
 | Spec | What it checks |
 | --- | --- |
 | [disabled.provider.spec.ts](../../apps/api/src/llm/disabled.provider.spec.ts) | Writes no questions; the discussion stream fails before its first piece. |
-| [fixture.provider.spec.ts](../../apps/api/src/llm/fixture.provider.spec.ts) | Declines question requests; `streamText` sends a fixed answer and simulates blocked, timeout, dropped and aborted streams. |
-| [gemini.provider.spec.ts](../../apps/api/src/llm/gemini.provider.spec.ts) | The request (schema, key in a header), 90 s timeout, parsing, logging, which failures retry and which do not, metrics. |
-| [gemini.provider.stream.spec.ts](../../apps/api/src/llm/gemini.provider.stream.spec.ts) | `streamText` over SSE: events split across packets, finish reasons, broken streams, the learner leaving, metrics. |
+| [fixture.provider.spec.ts](../../apps/api/src/llm/fixture.provider.spec.ts) | Declines question requests; `streamText` sends a fixed answer and simulates blocked, timeout, dropped and aborted streams, and the quota of the day (`#quota-day`). |
+| [gemini.provider.spec.ts](../../apps/api/src/llm/gemini.provider.spec.ts) | The request (schema, key in a header), 90 s timeout, parsing, logging, which failures retry and which do not (a `429` of the day does not), `quotaRefusal` on Google's `429` bodies, metrics. |
+| [gemini.provider.stream.spec.ts](../../apps/api/src/llm/gemini.provider.stream.spec.ts) | `streamText` over SSE: events split across packets, finish reasons, broken streams, a `429` of the day, the learner leaving, metrics. |
+| [gemini.provider.check.spec.ts](../../apps/api/src/llm/gemini.provider.check.spec.ts) | `check`: a one-word `POST` to `:generateContent` with the tutor's thinking setting, the key in a header and never in the URL, 30 s timeout, the status of each answer (with the real `API_KEY_INVALID` body, a `200` that is not Gemini's reply as `unexpected`, and `quota` or `quota_day` with `retryAt` for the two `429` bodies), no answer or the timeout gives `unreachable` instead of a throw, Google's body logged on a failure but never the key, nothing counted in the metrics of real calls, `info`. |
 | [llm.factory.spec.ts](../../apps/api/src/llm/llm.factory.spec.ts) | `createLlmProvider` picks fixture / disabled / Gemini, default model, refuses a missing key or an unknown name. |
 | [llm.module.spec.ts](../../apps/api/src/llm/llm.module.spec.ts) | The module builds the provider `LLM_PROVIDER` names, or the fixture by default. |
+
+### tutor (chapter 6)
+
+| Spec | What it checks |
+| --- | --- |
+| [tutor.service.spec.ts](../../apps/api/src/tutor/tutor.service.spec.ts) | `info`; the answer built from exactly the known fields; one check reused for 15 s and shared while it runs, a fresh one each time with `reuseMs` at 0; `unexpected` when the check rejects; `retryAt` passed through; `ft_llm_checks_total` starts at 0 and counts fresh checks only. |
 
 ### courses, placement, question-generation (chapter 7)
 
@@ -666,6 +676,7 @@ so neither config runs them as tests.
 | --- | --- |
 | [attempt-ref.spec.ts](../../apps/api/src/lessons/attempt-ref.spec.ts) | `refOf` gives stable, secret-dependent refs. |
 | [course-lookup.spec.ts](../../apps/api/src/lessons/course-lookup.spec.ts) | `checkCourse` (404 / 409) and `findLesson` (404, bad ids). |
+| [discussion.controller.spec.ts](../../apps/api/src/lessons/discussion.controller.spec.ts) | `errorCode`: the code of each failure reason, `llm.quotaExhausted` for a `429` of the day, `unknown` for a bug. |
 | [discussion-limits.spec.ts](../../apps/api/src/lessons/discussion-limits.spec.ts) | `readDiscussionLimits` defaults and bad values. |
 | [discussion-prompt.spec.ts](../../apps/api/src/lessons/discussion-prompt.spec.ts) | The tutor's system prompt: no exam document, teaching facts as JSON, practice mistakes (never exam answers, at most `MAX_MISTAKES`). |
 | [event-stream.spec.ts](../../apps/api/src/lessons/event-stream.spec.ts) | SSE headers, event format, 15 s heartbeat, abort when the browser leaves. |
@@ -688,14 +699,14 @@ so neither config runs them as tests.
 
 | Spec | What it checks |
 | --- | --- |
-| [socket.gateway.spec.ts](../../apps/api/src/gateway/socket.gateway.spec.ts) | `sameOrigin`, `fixedWindow`, the handshake, event screening and limits, acks, presence and unread on connect, closing ended sessions. |
+| [socket.gateway.spec.ts](../../apps/api/src/gateway/socket.gateway.spec.ts) | `sameOrigin`, `fixedWindow`, the handshake, event screening and limits, acks, presence, pending requests and unread on connect, closing ended sessions. |
 | [sockets.service.spec.ts](../../apps/api/src/gateway/sockets.service.spec.ts) | Emits to the user's room only; closes one session's sockets. |
 | [socket-exception.filter.spec.ts](../../apps/api/src/gateway/socket-exception.filter.spec.ts) | Error codes go to the ack, or to `app:error` when there is no ack. |
 | [presence.service.spec.ts](../../apps/api/src/presence/presence.service.spec.ts) | Online on the first socket, offline after the grace period, counts kept per user, reset at boot. |
-| [friends.service.spec.ts](../../apps/api/src/friends/friends.service.spec.ts) | `pairKey`, sending requests (self, crossing requests, 404), writes that find nothing, the list with online flags. |
+| [friends.service.spec.ts](../../apps/api/src/friends/friends.service.spec.ts) | `pairKey`, sending requests (self, crossing requests, 404), writes that find nothing, who gets `friend:pending` after each write, the list with online flags. |
 | [messages.service.spec.ts](../../apps/api/src/messages/messages.service.spec.ts) | Send (one transaction, both rooms told, budget), read, paging with a cursor, conversation list. |
 | [unread.spec.ts](../../apps/api/src/messages/unread.spec.ts) | `unreadCounts` per conversation. |
-| [demo.planner.spec.ts](../../apps/api/src/demo/demo.planner.spec.ts) | `atLocalTime`, `daysBefore`, `pastScore`, `planCourse`, `daysToAttemptAll`, the six demo profiles. |
+| [demo.planner.spec.ts](../../apps/api/src/demo/demo.planner.spec.ts) | `atLocalTime`, `daysBefore`, `pastScore`, `planCourse` with its goal changes, `daysToAttemptAll`, the six demo profiles and the exact emails the seed deletes, `content/` French A1 holding `SMALLEST_LEVEL` ready lessons, the demo friendships and messages. |
 
 Three of these specs read **real files**, not code: `outline-files`, `lesson-files` and
 `item-files`. The comment in `item-files.spec.ts` says why they are tests and not scripts:

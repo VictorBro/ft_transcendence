@@ -101,4 +101,4 @@ La fonction rejoue les **vraies** règles (`plan`, `merge` de `roadmap.rules.ts`
 
 **Idempotent** = on peut relancer sans casser : le résultat final est le même.
 
-`seedDemo` commence par `prisma.user.deleteMany({ where: { email: DEMO_EMAIL_FILTER } })` (`startsWith: 'demo-'`, `endsWith: '@example.com'`). La suppression **en cascade** enlève aussi les cours et résultats. Puis il recrée tout. Le filtre est choisi pour ne toucher **aucun** compte de test e2e (`browser-`, `learner-`, `replay-`… ne commencent jamais par `demo-`).
+`seedDemo` commence par `prisma.user.deleteMany({ where: { email: { in: DEMO_EMAILS } } })` : les six adresses exactes (`demo-anna@example.com` … `demo-felix@example.com`), pas un motif `demo-*`. La suppression **en cascade** enlève aussi les cours et résultats, les amitiés et les conversations (messages de l'autre côté compris). Puis il recrée tout. Des adresses exactes ne touchent **aucun** autre compte : ni un compte de test e2e (`browser-`, `learner-`, `replay-`…), ni quelqu'un qui s'inscrit en `demo-me@example.com` sur un serveur, où le seed tourne à chaque déploiement.

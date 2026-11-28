@@ -696,7 +696,7 @@ L'horodatage `at` décide qui gagne :
 ```ts
     apply(snapshot) {
       if (kept !== undefined && Date.parse(snapshot.at) < Date.parse(kept.at)) return;
-      kept = snapshot;
+      kept = { at: snapshot.at, value: pick(snapshot) };
       changed();
     },
 ```
@@ -706,7 +706,9 @@ L'horodatage `at` décide qui gagne :
   « marquer comme lu » du fil (voir plus haut).
 - `clear()` à la déconnexion : la prochaine personne qui utilise cet onglet ne doit pas voir ces compteurs.
 
-Il exporte aussi `badgeText` (`"99+"` au-dessus de 99) et `unreadTotal` (la somme de toutes les conversations).
+Il exporte aussi `badgeText` (`"99+"` au-dessus de 99) et `unreadTotal` (la somme de toutes les conversations). Le store
+est générique, `createSnapshotStore(pick)` : `createUnreadStore` garde les `counts` d'un `dm:unread`, et
+`createPendingStore` garde le `count` d'un `friend:pending`, les demandes d'ami en attente (chapitre 3).
 
 ### Les hooks dans `tab-socket.ts`
 
@@ -743,12 +745,7 @@ export function UnreadBadge({ count }: { count: number | undefined }) {
   const t = useTranslations('MessagesPage');
 
   if (count === undefined || count === 0) return null;
-  return (
-    <span className="inline-flex h-5 min-w-5 ...">
-      <span aria-hidden>{badgeText(count)}</span>
-      <span className="sr-only">{t('unread', { count })}</span>
-    </span>
-  );
+  return <CountBadge count={count} label={t('unread', { count })} />;
 }
 
 export function UnreadTotalBadge() {
@@ -758,9 +755,11 @@ export function UnreadTotalBadge() {
 
 - Rien à 0, et rien avant que l'onglet ait entendu quelque chose. Donc un « 0 » ne clignote jamais au premier affichage.
 - L'œil voit `99+` ; un lecteur d'écran entend la phrase complète avec le nombre exact.
-- `UnreadBadge` est utilisé pour chaque ligne de la liste des conversations. `UnreadTotalBadge` est utilisé deux fois dans l'en-tête : sur le
-  bouton du menu, pour que le nombre se voie quand le menu est fermé ([header-menu.tsx](../../apps/web/components/header-menu.tsx)),
-  et sur la ligne Messages dans le menu ([session-nav.tsx](../../apps/web/components/session-nav.tsx)).
+- `CountBadge` est la pastille rouge : les chiffres pour l'œil, la phrase en `sr-only`.
+- `UnreadBadge` est utilisé pour chaque ligne de la liste des conversations. `UnreadTotalBadge` est sur la ligne Messages dans le
+  menu ([session-nav.tsx](../../apps/web/components/session-nav.tsx)). Le bouton du menu affiche `MenuBadge` : le même total
+  plus les demandes d'ami en attente, pour que le nombre se voie quand le menu est fermé
+  ([header-menu.tsx](../../apps/web/components/header-menu.tsx), chapitre 3).
 
 ```mermaid
 flowchart LR
@@ -768,13 +767,14 @@ flowchart LR
   SO -->|"unread.apply"| ST["UnreadStore"]
   ST -->|"useUnreadCounts"| CT["ChatThread : markRead ?"]
   ST -->|"useUnread(id)"| ROW["badge de ConversationRow"]
-  ST -->|"useUnreadTotal"| HDR["UnreadTotalBadge de l'en-tête"]
+  ST -->|"useUnreadTotal"| HDR["MenuBadge, UnreadTotalBadge de l'en-tête"]
   CT -->|"dm:read"| SO
   SO -->|"dm:read"| API
 ```
 
 Tests : [unread.test.ts](../../apps/web/lib/unread.test.ts) — rien avant le premier snapshot, remplacer et pas fusionner,
-snapshots dans le désordre, ceux qui écoutent prévenus même sans changement, clear, `badgeText`, `unreadTotal`.
+snapshots dans le désordre, ceux qui écoutent prévenus même sans changement, clear, `badgeText`, `unreadTotal`, le store des
+demandes d'ami et `menuTotal`.
 
 ---
 

@@ -21,7 +21,7 @@ socket contract is in
 | --- | --- | --- |
 | **Everything CRUD** | REST, Nest controllers, documented in Swagger | `POST /api/courses`, `GET /api/courses/:lang/today`, `GET /api/courses/:lang/lessons`, `GET` and `POST /api/courses/:lang/lessons/:id/attempt`, `POST …/attempt/pages/:index`, `GET /api/friends`, `GET /api/conversations` |
 | **One answer, streamed** | Server-Sent Events on a `POST` | `POST /api/courses/:lang/lessons/:id/discussion`: `delta`, `done` or `error`, and a heartbeat |
-| **Everything live** | socket.io on `/ws` | `course:updated`, `friend:request`, `friend:accepted`, `friend:removed`, `presence:update`, `dm:message`, `dm:unread` and `app:error` from the server; `dm:send` (with an ack) and `dm:read` from the browser |
+| **Everything live** | socket.io on `/ws` | `course:updated`, `friend:request`, `friend:accepted`, `friend:removed`, `friend:pending`, `presence:update`, `dm:message`, `dm:unread` and `app:error` from the server; `dm:send` (with an ack) and `dm:read` from the browser |
 
 ### Why most of it is REST
 
@@ -146,7 +146,8 @@ sequenceDiagram
 - **Rooms, never a broadcast.** Each socket joins `user:<id>` and `session:<sid>` before its
   CONNECT reply. `SocketsService.toUser()` is the only way to reach a user. Acks aside, the gateway
   writes to one socket only twice: to the socket that sent a bad event, and to a socket that just
-  connected, with the presence of each friend and the unread counts (below).
+  connected, with the presence of each friend, the friend requests waiting and the unread counts
+  (below).
 - **Sockets close with their session**: on logout (that session's sockets only), on every session
   id change (signup, login, 2FA verify, 2FA enable and disable), and when a session ends any other
   way, through a sweep every 60 s that asks Redis for each open socket's `sess:<sid>` (known keys,
@@ -183,6 +184,15 @@ sequenceDiagram
   pair, so the actor's other tabs follow too. They carry `{ userId }`, the other user, and /friends,
   /users/[id] and /chat refresh on any of them. Decline and cancel send `friend:removed`: the row between
   the two is gone.
+- **Friend requests waiting** (`friend:pending { count, at }`) is a snapshot, like `dm:unread`: the
+  number of requests waiting on one user, to that user's room only. It goes to the addressee after
+  a request is sent or accepted, to both users after a decline or a cancel (the delete cannot tell
+  which), and to each new socket after the presence snapshot, before `dm:unread`. Nothing goes out
+  when a friend is removed: accepted rows are not counted. `at` is taken before the count, and the
+  tab keeps the latest. `GET /api/friends/pending` answers the same for the header's server render,
+  so the count is in the HTML before any socket. The tab keeps the snapshot like the unread counts
+  (below), and drops it on sign-out. The header menu's Friends link shows the count, and its button
+  shows it added to the unread total.
 - **Presence** (`presence:update { userId, status, at }`, `online` or `offline`), in
   `PresenceService` ([apps/api/src/presence/](../../apps/api/src/presence/)):
   - **A counter per user** in Redis, `presence:<id>`: `INCR` when a socket opens, `DECR` when it
@@ -226,10 +236,11 @@ sequenceDiagram
     with unread messages, keyed by the other user (one with none is left out): always the whole
     picture, never a change to apply. It goes to the recipient after each message,
     without holding up the ack (a failure is logged); to the reader after each `dm:read`, changed
-    or not, so a read always converges; and to each new socket after the presence snapshot, empty
-    included, so the tab can tell "nothing unread" from "not heard yet". `at` is taken before the
-    count, so of two snapshots that cross (a read and a new message at once) the later stamp
-    counted every write the other saw: the tab keeps the latest `at`, whatever order they land in.
+    or not, so a read always converges; and to each new socket last, after the presence snapshot
+    and `friend:pending`, empty included, so the tab can tell "nothing unread" from "not heard
+    yet". `at` is taken before the count, so of two snapshots that cross (a read and a new
+    message at once) the later stamp counted every write the other saw: the tab keeps the latest
+    `at`, whatever order they land in.
   - **`dm:read { userId }`** sets `readAt` on what that user sent you. No ack: the answer is the
     snapshot, to every tab of the reader. The open thread sends it while the tab is visible and
     connected and the conversation has unread messages, and each snapshot re-arms it. An account
@@ -239,8 +250,9 @@ sequenceDiagram
     snapshot. `readAt` never leaves the server. The index on `(pairKey, readAt)` keeps the counts
     and a read at the cost of what is unread, not of the whole history.
   - **In the tab**: `tab-socket.ts` keeps the last snapshot for as long as the socket, like the
-    presence map, and drops it on sign-out. The badge on the header menu's button and on its Messages
-    link shows its total (#220), 99+ past 99, and nothing before the first snapshot. `sendMessage()` refuses at once with
+    presence map, and drops it on sign-out. The badge on the header menu's Messages link shows its
+    total (#220), 99+ past 99, and nothing before the first snapshot. The menu's button shows that
+    total plus the friend requests waiting. `sendMessage()` refuses at once with
     `network.unreachable` when not connected: socket.io would buffer the event and deliver it long
     after the thread said it failed. A lost ack (10 s, or the socket closing) says the same, though
     the message may have been stored: sending it again can then show it twice, accepted, as nothing
@@ -314,7 +326,8 @@ sequenceDiagram
   ([event-stream.ts](../../apps/api/src/lessons/event-stream.ts)) send the 200 and its headers.
   After that a failure can only be an event: `error { code }`, with an `llm.*` code from the
   `LlmError`'s reason (`llm.unavailable`, `llm.rateLimited`, `llm.blocked`, `llm.incomplete`,
-  `llm.disabled`), or `unknown` for a bug.
+  `llm.disabled`, and `llm.quotaExhausted` for a `429` that names the key's quota of the day), or
+  `unknown` for a bug.
 - **Cancelled with the page.** When the browser closes the response, an `AbortSignal` cancels the
   Gemini call, also when it left during the checks. Stop in the window does the same.
 - **Stateless.** The body carries the last 10 turns; the server builds the system prompt from the

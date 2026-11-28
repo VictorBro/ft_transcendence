@@ -128,7 +128,8 @@ does not run the same checks twice.
   commit's subject, or from a branch name such as `ci/lint-pr-title`. `.env hygiene`
   fails if any `.env` file is tracked, and
   [`scripts/check-env-example.sh`](../../scripts/check-env-example.sh) checks that
-  `.env.example`, the compose files and the code name the same variables.
+  `.env.example`, the compose files and the code name the same variables, and that the
+  template leaves empty every secret a server requires.
   `prisma migration drift` replays the migrations into a throwaway database and fails if
   they do not match `schema.prisma`.
 - **[`devcontainer.yml`](../../.github/workflows/devcontainer.yml).** Only when
@@ -214,11 +215,11 @@ password stored in GitHub.
 ## How to show it at the defence
 
 You need a teammate with write access to the repository, and SSH access to one of the two
-servers for steps 9 and 10. Both run the same timer: the Oracle instance behind
-<https://transcendence.dpdns.org> (files in `/home/ubuntu`) and the shared VPS behind
-<https://trans.vyantares.ch> (files in `~/ft_transcendence`), see
-[../operations/deployment.md](../operations/deployment.md) "Automatic deploys" and "Behind
-another reverse proxy". Use whichever one is up.
+servers for steps 9 and 10. Both run the same timer: the primary, the shared VPS behind
+<https://trans.vyantares.ch> (files in `~/ft_transcendence`), and the secondary copy, the
+Oracle instance behind <https://transcendence.dpdns.org> (files in `/home/ubuntu`), see
+[../operations/deployment.md](../operations/deployment.md) "Automatic deploys" and "The
+primary, behind another reverse proxy". Use the primary; the copy works the same way.
 
 1. Make a small, safe change on a branch. The branch name follows the `type/slug` rule:
    ```bash
@@ -309,8 +310,8 @@ merge of #212 (commit `e0ba88c`), `hygiene` took about 1 minute, `ci` and `image
 - **Commits are graded.** The subject grades commits from every member with clear
   messages. commitlint, the pull request title check and squash-only merges keep the
   history of `main` readable.
-- **The app runs on real servers.** It runs at <https://transcendence.dpdns.org> and
-  <https://trans.vyantares.ch> (see [custom-cloud-deploy.md](custom-cloud-deploy.md)). Updating it by hand after each merge
+- **The app runs on real servers.** It runs at <https://trans.vyantares.ch>, the primary,
+  and at <https://transcendence.dpdns.org>, a secondary copy (see [custom-cloud-deploy.md](custom-cloud-deploy.md)). Updating it by hand after each merge
   would be slow and would go wrong. CD makes `main` and the live site the same thing.
 
 ## The technical challenges
@@ -398,7 +399,7 @@ it.
 A trivial CI is one workflow that runs `npm test`. This module is a pipeline from the
 developer's machine to the live server:
 
-- **5 workflows and 1 shared action**, plus **10 scripts** in [`scripts/`](../../scripts)
+- **5 workflows and 1 shared action**, plus **12 scripts** in [`scripts/`](../../scripts)
   shared by CI, `make` and **3 git hooks**.
 - **41 checks** on a typical pull request (#212), of which the ruleset **requires 19**.
 - **A full production stack started 6 times per run**, for **3 browser engines**.
@@ -430,10 +431,10 @@ checks exactly those things on every change.
 - **Old images pile up.** Every push to any branch publishes images. A scheduled clean-up
   of untagged images and of tags whose branch is gone is still a `TODO` at the end of
   `images.yml`.
-- **Some server files are copied by hand.** A change to `compose.deploy.yml` or
-  `Caddyfile.prod` is not deployed by the timer: it needs `scp` and a restart
-  ([`../operations/deployment.md`](../operations/deployment.md) "Automatic deploys").
-  Only images move automatically.
+- **Some server files are copied by hand.** A change to `compose.deploy.yml`,
+  `compose.deploy.monitoring.yml` or `Caddyfile.prod` is not deployed by the timer: it
+  needs `scp` and a restart ([`../operations/deployment.md`](../operations/deployment.md)
+  "Automatic deploys"). Only images move automatically.
 - **Review is required, code owners are not.** CODEOWNERS asks the whole team on every
   path, and the ruleset needs one approval from anyone. "Require review from Code
   Owners" is off (`require_code_owner_review: false`). The CODEOWNERS file keeps a

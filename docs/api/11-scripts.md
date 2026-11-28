@@ -197,6 +197,10 @@ Its header warns: "WRITES to DATABASE_URL and, with Gemini, spends tokens".
 
 ```ts
   const categories = picked.data.length > 0 ? picked.data : QUESTION_CATEGORIES;
+  // .env holds no DATABASE_URL: compose and make build it from POSTGRES_*, and a
+  // devcontainer shell has none exported. The same URL, with compose's defaults,
+  // `||` because compose's `:-` replaces an empty value too.
+  process.env.DATABASE_URL ??= `postgresql://${process.env.POSTGRES_USER || 'ft'}:${process.env.POSTGRES_PASSWORD || 'ft_local_dev'}@db:5432/${process.env.POSTGRES_DB || 'ft_transcendence'}?schema=public`;
   const prisma = new PrismaService();
   const stock = new QuestionStockService(prisma, createLlmProvider(process.env));
 
@@ -213,7 +217,9 @@ Its header warns: "WRITES to DATABASE_URL and, with Gemini, spends tokens".
 For one level, every language, and the chosen categories (or all three), it calls
 `QuestionStockService.restock` (the same code the placement exam uses), then reads back the
 new generated rows (`sourceId: null`, created after `started`) and prints them as JSON with the
-status and the time. `finally` disconnects Prisma.
+status and the time. `finally` disconnects Prisma. With no `DATABASE_URL` in the environment
+(`.env` holds none), it builds the one compose builds from `POSTGRES_*`, on host `db`: it runs from
+the devcontainer.
 
 **Who calls it**: a developer, to see real output of a provider, as shown in
 [docs/content/item-bank.md](../content/item-bank.md).

@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
-import { sendDiscussion } from './discussion-client';
+import { isThinking, sendDiscussion } from './discussion-client';
 
 const BODY = {
   attemptId: '11111111-1111-4111-8111-111111111111',
@@ -137,5 +137,48 @@ describe('sendDiscussion', () => {
   it('says the network is unreachable when fetch fails', async () => {
     const { result } = await send(new TypeError('Failed to fetch'));
     expect(result).toEqual({ ok: false, code: 'network.unreachable', status: 0 });
+  });
+});
+
+describe('isThinking', () => {
+  it('thinks from the send until the first word, through heartbeats and empty pieces', async () => {
+    const encoder = new TextEncoder();
+    let server!: ReadableStreamDefaultController<Uint8Array>;
+    const body = new ReadableStream<Uint8Array>({ start: (c) => void (server = c) });
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async () => new Response(body, { status: 200 })),
+    );
+    // As discussion.tsx keeps it: set on send, each piece added to the answer.
+    let asking: { answer: string; error: string | null } | null = { answer: '', error: null };
+    const pieces: string[] = [];
+    const sent = sendDiscussion(
+      'fr',
+      'fr-avoir',
+      BODY,
+      (text) => {
+        pieces.push(text);
+        asking = asking && { ...asking, answer: asking.answer + text };
+      },
+      new AbortController().signal,
+    );
+
+    expect(isThinking(asking)).toBe(true);
+    server.enqueue(encoder.encode(': heartbeat\n\nevent: delta\ndata: {"text":""}\n\n'));
+    await vi.waitFor(() => expect(pieces).toEqual(['']));
+    expect(isThinking(asking)).toBe(true);
+    // The first word comes later: the dots go.
+    server.enqueue(encoder.encode('event: delta\ndata: {"text":"Avoir "}\n\n'));
+    await vi.waitFor(() => expect(pieces).toEqual(['', 'Avoir ']));
+    expect(isThinking(asking)).toBe(false);
+    server.enqueue(encoder.encode('event: done\ndata: {}\n\n'));
+    server.close();
+    await expect(sent).resolves.toEqual({ ok: true });
+  });
+
+  it('stops thinking on an error, and once stopped, refused or done', () => {
+    expect(isThinking({ answer: '', error: null })).toBe(true);
+    expect(isThinking({ answer: '', error: 'The tutor cannot answer right now.' })).toBe(false);
+    expect(isThinking(null)).toBe(false);
   });
 });

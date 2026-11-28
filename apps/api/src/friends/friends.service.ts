@@ -2,11 +2,13 @@ import {
   BadRequestException,
   ConflictException,
   Injectable,
+  Logger,
   NotFoundException,
 } from '@nestjs/common';
 import { SERVER_EVENTS } from '@ft/shared';
 import type {
   ErrorCode,
+  FriendPending,
   FriendRequestResult,
   Friends,
   FriendshipStatus,
@@ -17,6 +19,7 @@ import { SocketsService } from '../gateway/sockets.service';
 import { PresenceService } from '../presence/presence.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { PUBLIC_USER_SELECT } from '../users/public-user';
+import { pendingRequests } from './friend-ids';
 import { pairKey } from './pair';
 
 type FriendEventName =
@@ -35,6 +38,8 @@ function hasCode(error: unknown, code: string): boolean {
  */
 @Injectable()
 export class FriendsService {
+  private readonly logger = new Logger(FriendsService.name);
+
   constructor(
     private readonly prisma: PrismaService,
     private readonly sockets: SocketsService,
@@ -65,6 +70,10 @@ export class FriendsService {
     return lists;
   }
 
+  pending(me: string): Promise<FriendPending> {
+    return pendingRequests(this.prisma, me);
+  }
+
   async send(me: string, them: string): Promise<FriendRequestResult> {
     if (them === me) {
       throw new BadRequestException('friend.self');
@@ -89,11 +98,16 @@ export class FriendsService {
       throw new NotFoundException('friend.requestNotFound');
     }
     this.notify(me, them, SERVER_EVENTS.FRIEND_ACCEPTED);
+    // It was their request to me: only my count moves.
+    await this.tellPending(me);
   }
 
   /** Declines theirs or cancels yours: there is at most one request between two people. */
   async deleteRequest(me: string, them: string): Promise<void> {
     await this.drop(me, them, 'pending', 'friend.requestNotFound');
+    // The delete cannot tell a decline (mine moves) from a cancel (theirs moves);
+    // an unchanged count does no harm.
+    await this.tellPending(me, them);
   }
 
   async remove(me: string, them: string): Promise<void> {
@@ -109,6 +123,7 @@ export class FriendsService {
     if (row === null) {
       await this.create(key, me, them);
       this.notify(me, them, SERVER_EVENTS.FRIEND_REQUEST);
+      await this.tellPending(them);
       return { status: 'pending' };
     }
     if (row.status === 'accepted') throw new ConflictException('friend.alreadyFriends');
@@ -149,5 +164,26 @@ export class FriendsService {
   private notify(me: string, them: string, event: FriendEventName): void {
     this.sockets.toUser(them, event, { userId: me });
     this.sockets.toUser(me, event, { userId: them });
+  }
+
+  /**
+   * Each user's own count, to every tab of theirs. Awaited, so it is out before
+   * the answer and the acting tab's refresh. Logged, never thrown: the write is
+   * committed.
+   */
+  private async tellPending(...userIds: string[]): Promise<void> {
+    await Promise.all(
+      userIds.map(async (userId) => {
+        try {
+          this.sockets.toUser(
+            userId,
+            SERVER_EVENTS.FRIEND_PENDING,
+            await pendingRequests(this.prisma, userId),
+          );
+        } catch (error) {
+          this.logger.error(`pending count failed: ${String(error)}`);
+        }
+      }),
+    );
   }
 }

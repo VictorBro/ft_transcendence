@@ -22,17 +22,33 @@ cd "$repo_root"
 
 SHADOW_DB=ft_drift_shadow
 
-# Prisma reads .env itself, this script has to parse it to build the shadow URL.
-if [ -z "${DATABASE_URL:-}" ]; then
-  DATABASE_URL="$(grep -E '^DATABASE_URL=' .env 2>/dev/null | head -1 | cut -d= -f2-)"
-fi
-if [ -z "$DATABASE_URL" ]; then
-  printf 'FAIL  prisma drift: no DATABASE_URL in the environment or .env\n' >&2
-  exit 1
-fi
-
-db_user="$(grep -E '^POSTGRES_USER=' .env 2>/dev/null | head -1 | cut -d= -f2-)"
+# .env holds no DATABASE_URL: compose and make build it from POSTGRES_*. Under
+# make it is exported already. Run alone, this builds the same one: each key
+# from the environment, then .env, then compose's default. .env is read as
+# compose reads it, like env_get in the Makefile: an optional `export`, the last
+# line wins, a ` #` starts a comment, quotes are not part of the value, and
+# neither is the whitespace around it (the Makefile's $(strip)).
+env_get() {
+  [ -f .env ] || return 0
+  sed -n "s/^[[:space:]]*\(export[[:space:]][[:space:]]*\)\{0,1\}$1=//p" .env | tail -1 |
+    sed 's/[[:space:]]#.*$//' | tr -d "\"'\r" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//'
+}
+db_user="${POSTGRES_USER:-$(env_get POSTGRES_USER)}"
 db_user="${db_user:-ft}"
+if [ -z "${DATABASE_URL:-}" ]; then
+  db_password="${POSTGRES_PASSWORD:-$(env_get POSTGRES_PASSWORD)}"
+  db_name="${POSTGRES_DB:-$(env_get POSTGRES_DB)}"
+  # The compose network inside the devcontainer, the published port elsewhere.
+  if [ -f /.dockerenv ]; then
+    db_address=db:5432
+  else
+    db_port="${POSTGRES_HOST_PORT:-$(env_get POSTGRES_HOST_PORT)}"
+    db_address="127.0.0.1:${db_port:-5432}"
+  fi
+  DATABASE_URL="postgresql://$db_user:${db_password:-ft_local_dev}@$db_address/${db_name:-ft_transcendence}?schema=public"
+  # prisma.config.ts reads it, and some subcommands reject the empty fallback.
+  export DATABASE_URL
+fi
 
 # Swap only the database name, keeping any query string: the URL carries
 # ?schema=public, and trimming at the last slash would drop it.

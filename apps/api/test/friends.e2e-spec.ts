@@ -5,7 +5,12 @@ import type { AddressInfo } from 'node:net';
 import request from 'supertest';
 import type TestAgent from 'supertest/lib/agent';
 import { afterAll, afterEach, beforeAll, describe, expect, it, vi } from 'vitest';
-import { RECENTLY_ACTIVE_LIMIT, USER_SEARCH_LIMIT, type FriendEvent } from '@ft/shared';
+import {
+  RECENTLY_ACTIVE_LIMIT,
+  USER_SEARCH_LIMIT,
+  type FriendEvent,
+  type FriendPending,
+} from '@ft/shared';
 
 import { AppModule } from '../src/app.module';
 import { configureApp } from '../src/app.setup';
@@ -13,7 +18,14 @@ import { wsConnections } from '../src/metrics/metrics';
 import { PrismaService } from '../src/prisma/prisma.service';
 import { ACTIVE_DAYS, activeDay } from '../src/users/active-day';
 import { seriesValue } from './metrics.fixtures';
-import { type ClientSocket, connect, nextEvent, ready, sessionCookie } from './socket.fixtures';
+import {
+  type ClientSocket,
+  connect,
+  connected,
+  nextEvent,
+  ready,
+  sessionCookie,
+} from './socket.fixtures';
 
 type Account = { agent: TestAgent; cookie: string; id: string; name: string };
 
@@ -50,6 +62,9 @@ describe('friends (e2e)', () => {
   let k: Account;
   let l: Account;
   let m: Account;
+  // The connect count: K and M ask N, and N asks L. Their own row for N, so the
+  // count is the test's alone.
+  let n: Account;
   // The recently active: their own people, named to sort first, so no other
   // test's rows get in the way.
   let h: Account;
@@ -89,6 +104,9 @@ describe('friends (e2e)', () => {
 
   const friendsOf = async (account: Account) =>
     (await account.agent.get('/api/friends').expect(200)).body;
+  const pendingOf = async (account: Account) =>
+    (await account.agent.get('/api/friends/pending').expect(200)).body;
+  const pending = (count: number) => ({ count, at: expect.any(String) });
   const recentIds = async (account: Account) =>
     (await account.agent.get('/api/users/recently-active').expect(200)).body.users.map(
       (user: { id: string }) => user.id,
@@ -121,6 +139,7 @@ describe('friends (e2e)', () => {
     k = await signUp('k', `frk${stamp}`);
     l = await signUp('l', `frl${stamp}`);
     m = await signUp('m', `frm${stamp}`);
+    n = await signUp('n', `frn${stamp}`);
   });
 
   // Until the server has seen every close, so each test starts with no socket open.
@@ -136,7 +155,9 @@ describe('friends (e2e)', () => {
         OR: [
           {
             email: {
-              in: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm'].map(emailOf),
+              in: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n'].map(
+                emailOf,
+              ),
             },
           },
           { displayName: { startsWith: crowd } },
@@ -155,6 +176,7 @@ describe('friends (e2e)', () => {
       server.get('/api/users/recently-active'),
       server.get(`/api/users/${someone}`),
       server.get('/api/friends'),
+      server.get('/api/friends/pending'),
       server.post(`/api/friends/requests/${someone}`),
       server.post(`/api/friends/requests/${someone}/accept`),
       server.delete(`/api/friends/requests/${someone}`),
@@ -305,11 +327,17 @@ describe('friends (e2e)', () => {
     const aHeard = heard(aTab);
     const cHeard = heard(cTab);
 
-    // Sent: one event to each side, naming the other.
-    let arrived = [nextEvent(bTab, 'friend:request'), nextEvent(aTab, 'friend:request')];
+    // Sent: one event to each side, naming the other, and B's count, not A's.
+    let arrived = [
+      nextEvent(bTab, 'friend:request'),
+      nextEvent(aTab, 'friend:request'),
+      nextEvent(bTab, 'friend:pending'),
+    ];
     const sent = await a.agent.post(`/api/friends/requests/${b.id}`).expect(201);
     expect(sent.body).toEqual({ status: 'pending' });
-    expect(await Promise.all(arrived)).toEqual([{ userId: a.id }, { userId: b.id }]);
+    expect(await Promise.all(arrived)).toEqual([{ userId: a.id }, { userId: b.id }, pending(1)]);
+    expect(await pendingOf(b)).toEqual(pending(1));
+    expect(await pendingOf(a)).toEqual(pending(0));
     expect(await friendsOf(a)).toMatchObject({ friends: [], received: [], sent: [{ id: b.id }] });
     expect(await friendsOf(b)).toMatchObject({ friends: [], received: [{ id: a.id }], sent: [] });
 
@@ -330,13 +358,20 @@ describe('friends (e2e)', () => {
     expect(await friendsOf(b)).toMatchObject({ received: [{ id: a.id }] });
 
     // Accepted: the 409 and the 404s above sent nothing, or B would have heard it first.
-    arrived = [nextEvent(bTab, 'friend:accepted'), nextEvent(aTab, 'friend:accepted')];
+    arrived = [
+      nextEvent(bTab, 'friend:accepted'),
+      nextEvent(aTab, 'friend:accepted'),
+      nextEvent(bTab, 'friend:pending'),
+    ];
     await b.agent.post(`/api/friends/requests/${a.id}/accept`).expect(204);
-    expect(await Promise.all(arrived)).toEqual([{ userId: a.id }, { userId: b.id }]);
+    expect(await Promise.all(arrived)).toEqual([{ userId: a.id }, { userId: b.id }, pending(0)]);
     expect(bHeard).toEqual([
       ['friend:request', { userId: a.id }],
+      ['friend:pending', pending(1)],
       ['friend:accepted', { userId: a.id }],
+      ['friend:pending', pending(0)],
     ]);
+    expect(await pendingOf(b)).toEqual(pending(0));
     expect(await friendsOf(a)).toMatchObject({ friends: [{ id: b.id }], received: [], sent: [] });
     expect(await friendsOf(b)).toMatchObject({ friends: [{ id: a.id }], received: [], sent: [] });
 
@@ -392,19 +427,51 @@ describe('friends (e2e)', () => {
     expect(kHeard).toEqual([['friend:request', { userId: m.id }]]);
   });
 
+  // The header was rendered a moment before: a request may have arrived since.
+  it('a new tab hears how many requests wait on it, before what is unread', async () => {
+    await k.agent.post(`/api/friends/requests/${n.id}`).expect(201);
+    await m.agent.post(`/api/friends/requests/${n.id}`).expect(201);
+    // N's own request waits on L, not on N.
+    await n.agent.post(`/api/friends/requests/${l.id}`).expect(201);
+
+    // Both armed before it connects: the snapshot comes at once.
+    const socket = connect(port, n.cookie);
+    opened.push(socket);
+    const nHeard = heard(socket);
+    const [, count] = await Promise.all([
+      connected(socket),
+      nextEvent<FriendPending>(socket, 'friend:pending'),
+      nextEvent(socket, 'dm:unread'),
+    ]);
+
+    expect(count).toEqual(pending(2));
+    // No friends, so no presence: the count, then dm:unread last.
+    expect(nHeard.map(([event]) => event)).toEqual(['friend:pending', 'dm:unread']);
+    expect(await pendingOf(n)).toEqual(pending(2));
+  });
+
   it('a declined request is gone, and can be sent again', async () => {
     await a.agent.post(`/api/friends/requests/${b.id}`).expect(201);
+    expect(await pendingOf(b)).toEqual(pending(1));
+    const [aTab, bTab] = await Promise.all([tab(a), tab(b)]);
+    // The delete cannot tell a decline from a cancel: both users are counted again.
+    const counted = [nextEvent(aTab, 'friend:pending'), nextEvent(bTab, 'friend:pending')];
 
     await b.agent.delete(`/api/friends/requests/${a.id}`).expect(204);
 
+    expect(await Promise.all(counted)).toEqual([pending(0), pending(0)]);
+    expect(await pendingOf(b)).toEqual(pending(0));
     expect(await rowsNaming(a.id)).toEqual([]);
     await a.agent.post(`/api/friends/requests/${b.id}`).expect(201);
   });
 
   it('a request can be cancelled by its sender', async () => {
+    expect(await pendingOf(b)).toEqual(pending(1));
+
     await a.agent.delete(`/api/friends/requests/${b.id}`).expect(204);
 
     expect(await friendsOf(b)).toMatchObject({ received: [] });
+    expect(await pendingOf(b)).toEqual(pending(0));
   });
 
   it('refuses yourself, even with your id in upper case', async () => {

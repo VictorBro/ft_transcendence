@@ -23,6 +23,9 @@ describe('MetricsCollector', () => {
   let prisma: {
     questionBank: { groupBy: MockInstance };
     user: { count: MockInstance };
+    userLevel: { groupBy: MockInstance };
+    userAchievement: { groupBy: MockInstance };
+    friendship: { groupBy: MockInstance };
   };
   let collector: MetricsCollector;
   let warn: MockInstance;
@@ -42,6 +45,23 @@ describe('MetricsCollector', () => {
         ),
       },
       user: { count: vi.fn(async () => 3) },
+      userLevel: {
+        groupBy: vi.fn(async () => [
+          { lang: 'fr', level: 'A1', _count: { _all: 4 } },
+          { lang: 'fr', level: null, _count: { _all: 1 } },
+          { lang: 'de', level: 'B2', _count: { _all: 2 } },
+        ]),
+      },
+      userAchievement: {
+        groupBy: vi.fn(async () => [
+          { code: 'firstLesson', _count: { _all: 5 } },
+          { code: 'streak7', _count: { _all: 2 } },
+          { code: 'retired', _count: { _all: 9 } },
+        ]),
+      },
+      friendship: {
+        groupBy: vi.fn(async () => [{ status: 'accepted', _count: { _all: 6 } }]),
+      },
     };
     collector = new MetricsCollector(prisma as unknown as PrismaService);
     collector.onModuleInit();
@@ -90,6 +110,48 @@ describe('MetricsCollector', () => {
     expect(await seriesValue(gauge('ft_active_users'))).toBe(2);
   });
 
+  it('counts the courses by language and level, one before its placement as unplaced', async () => {
+    const { values } = await gauge('ft_courses').get();
+
+    expect(prisma.userLevel.groupBy).toHaveBeenCalledWith({
+      by: ['lang', 'level'],
+      _count: { _all: true },
+    });
+    // 3 languages, 6 levels and unplaced, an empty pair at 0.
+    expect(values).toHaveLength(3 * 7);
+    expect(await seriesValue(gauge('ft_courses'), { lang: 'fr', level: 'A1' })).toBe(4);
+    expect(await seriesValue(gauge('ft_courses'), { lang: 'fr', level: 'unplaced' })).toBe(1);
+    expect(await seriesValue(gauge('ft_courses'), { lang: 'de', level: 'B2' })).toBe(2);
+    expect(await seriesValue(gauge('ft_courses'), { lang: 'en', level: 'unplaced' })).toBe(0);
+  });
+
+  // The label stays a closed set whatever the column holds.
+  it('counts the achievements earned by code, every code at 0 first, an unknown one left out', async () => {
+    const { values } = await gauge('ft_achievements').get();
+
+    expect(prisma.userAchievement.groupBy).toHaveBeenCalledWith({
+      by: ['code'],
+      _count: { _all: true },
+    });
+    expect(values).toHaveLength(16);
+    expect(await seriesValue(gauge('ft_achievements'), { code: 'firstLesson' })).toBe(5);
+    expect(await seriesValue(gauge('ft_achievements'), { code: 'streak7' })).toBe(2);
+    expect(await seriesValue(gauge('ft_achievements'), { code: 'levelC2' })).toBe(0);
+    expect(await seriesValue(gauge('ft_achievements'), { code: 'retired' })).toBeUndefined();
+  });
+
+  it('counts the friendships by status, both at 0 first', async () => {
+    const { values } = await gauge('ft_friendships').get();
+
+    expect(prisma.friendship.groupBy).toHaveBeenCalledWith({
+      by: ['status'],
+      _count: { _all: true },
+    });
+    expect(values).toHaveLength(2);
+    expect(await seriesValue(gauge('ft_friendships'), { status: 'accepted' })).toBe(6);
+    expect(await seriesValue(gauge('ft_friendships'), { status: 'pending' })).toBe(0);
+  });
+
   // A 30 s scrape must not cost two queries a minute.
   it('queries the database at most once a minute', async () => {
     await registry.metrics();
@@ -98,6 +160,9 @@ describe('MetricsCollector', () => {
     await registry.metrics();
 
     expect(prisma.questionBank.groupBy).toHaveBeenCalledTimes(2);
+    for (const model of [prisma.userLevel, prisma.userAchievement, prisma.friendship]) {
+      expect(model.groupBy).toHaveBeenCalledTimes(1);
+    }
     expect(await seriesValue(gauge('ft_users'))).toBe(3);
 
     vi.advanceTimersByTime(1);
@@ -109,9 +174,11 @@ describe('MetricsCollector', () => {
   it('puts a cell emptied since the last query back to 0', async () => {
     await registry.metrics();
     prisma.questionBank.groupBy.mockResolvedValue([]);
+    prisma.friendship.groupBy.mockResolvedValue([]);
     vi.advanceTimersByTime(60_000);
 
     expect(await bank({ lang: 'de', level: 'B1', category: 'grammar', source: 'written' })).toBe(0);
+    expect(await seriesValue(gauge('ft_friendships'), { status: 'accepted' })).toBe(0);
   });
 
   // Otherwise Prometheus would report "Postgres hiccupped" as "the API is down".
@@ -120,10 +187,12 @@ describe('MetricsCollector', () => {
     vi.advanceTimersByTime(60_000);
     prisma.questionBank.groupBy.mockRejectedValueOnce(new Error('connection lost'));
     prisma.user.count.mockRejectedValueOnce(new Error('connection lost'));
+    prisma.friendship.groupBy.mockRejectedValueOnce(new Error('connection lost'));
 
     const scrape = await registry.metrics();
 
     expect(scrape).toContain('ft_users 3');
+    expect(scrape).toContain('ft_friendships{status="accepted"} 6');
     expect(scrape).toContain(
       'ft_question_bank_questions{lang="de",level="B1",category="grammar",source="written"} 5',
     );
@@ -131,6 +200,7 @@ describe('MetricsCollector', () => {
       'ft_question_bank_questions not collected: Error: connection lost',
     );
     expect(warn).toHaveBeenCalledWith('ft_users not collected: Error: connection lost');
+    expect(warn).toHaveBeenCalledWith('ft_friendships not collected: Error: connection lost');
 
     prisma.user.count.mockResolvedValue(4);
     expect(await seriesValue(gauge('ft_users'))).toBe(4);
@@ -161,7 +231,14 @@ describe('MetricsCollector', () => {
   it('unregisters its gauges when the module is destroyed', () => {
     collector.onModuleDestroy();
 
-    for (const name of ['ft_question_bank_questions', 'ft_users', 'ft_active_users']) {
+    for (const name of [
+      'ft_question_bank_questions',
+      'ft_users',
+      'ft_courses',
+      'ft_achievements',
+      'ft_friendships',
+      'ft_active_users',
+    ]) {
       expect(registry.getSingleMetric(name)).toBeUndefined();
     }
     collector.onModuleInit();

@@ -917,17 +917,23 @@ vérifier les headers, le format des événements, le timer du heartbeat, et les
 ```
 
 Avant le stream, une erreur lancée passe encore par le filtre d'erreurs normal de Nest (erreur JSON). Après, un
-échec devient un événement `error` avec un code. `ERROR_CODE` relie la raison de l'échec du LLM à un code sur
-lequel l'apprenant peut agir :
+échec devient un événement `error` avec un code. `errorCode` relie la raison de l'échec du LLM à un code sur
+lequel l'apprenant peut agir, avec le tableau `ERROR_CODE` et un cas à lui :
 
-| Échec du LLM                                  | Code de l'événement |
-| --------------------------------------------- | ------------------- |
-| `unreachable`, `http_error`, `invalid`        | `llm.unavailable`   |
-| `rate_limited`                                | `llm.rateLimited`   |
-| `blocked`                                     | `llm.blocked`       |
-| `incomplete`                                  | `llm.incomplete`    |
-| `disabled`                                    | `llm.disabled`      |
-| tout ce qui n'est pas une `LlmError` (un bug) | `unknown`           |
+| Échec du LLM                                                                  | Code de l'événement  |
+| ----------------------------------------------------------------------------- | -------------------- |
+| `unreachable`, `http_error`, `invalid`                                        | `llm.unavailable`    |
+| `rate_limited`, le quota de la minute de la clé (ou Google ne dit pas lequel) | `llm.rateLimited`    |
+| `rate_limited` avec `quota.scope` `day` : le quota du jour de la clé          | `llm.quotaExhausted` |
+| `blocked`                                                                     | `llm.blocked`        |
+| `incomplete`                                                                  | `llm.incomplete`     |
+| `disabled`                                                                    | `llm.disabled`       |
+| tout ce qui n'est pas une `LlmError` (un bug)                                 | `unknown`            |
+
+Les deux lignes `rate_limited` partagent une raison, donc les métriques et l'alerte `LlmErrorRateHigh` les comptent
+comme une seule. Le code les distingue parce que l'apprenant ne les vit pas pareil : celui de la minute passe en une
+minute, celui du jour pas avant minuit heure du Pacifique chez Google ("The tutor has used up today's quota. It's
+back tomorrow."). Quel quota c'était vient du body de Google ([06-llm.md](06-llm.md), `quotaRefusal`).
 
 Si l'apprenant est déjà parti (`signal.aborted`), rien n'est envoyé. `finally` termine toujours le stream.
 
@@ -1028,9 +1034,9 @@ vérifie aussi les faits de chaque type et la liste des erreurs.
 
 | Fenêtre                   | Par défaut | Variable d'env                     | Code de refus         |
 | ------------------------- | ---------- | ---------------------------------- | --------------------- |
-| par apprenant, par minute | 2          | `LLM_DISCUSSION_USER_PER_MINUTE`   | `llm.tooManyMessages` |
-| par apprenant, par jour   | 60         | `LLM_DISCUSSION_USER_PER_DAY`      | `llm.tooManyMessages` |
-| tout le monde, par minute | 5          | `LLM_DISCUSSION_GLOBAL_PER_MINUTE` | `llm.rateLimited`     |
+| par apprenant, par minute | 5          | `LLM_DISCUSSION_USER_PER_MINUTE`   | `llm.tooManyMessages` |
+| par apprenant, par jour   | 150        | `LLM_DISCUSSION_USER_PER_DAY`      | `llm.tooManyMessages` |
+| tout le monde, par minute | 10         | `LLM_DISCUSSION_GLOBAL_PER_MINUTE` | `llm.rateLimited`     |
 
 `readDiscussionLimits(env)` les lit une fois au démarrage. Une valeur qui n'est pas un nombre entier empêche le
 démarrage (une faute de frappe ne doit pas désactiver une limite).

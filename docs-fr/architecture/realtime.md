@@ -17,11 +17,11 @@ contrat du socket est dans
 
 ## 1. La répartition
 
-|                               | Transport                                       | Exemples                                                                                                                                                                                                                   |
-| ----------------------------- | ----------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Tout le CRUD**              | REST, controllers Nest, documentés dans Swagger | `POST /api/courses`, `GET /api/courses/:lang/today`, `GET /api/courses/:lang/lessons`, `GET` et `POST /api/courses/:lang/lessons/:id/attempt`, `POST …/attempt/pages/:index`, `GET /api/friends`, `GET /api/conversations` |
-| **Une réponse, en stream**    | Server-Sent Events sur un `POST`                | `POST /api/courses/:lang/lessons/:id/discussion` : `delta`, `done` ou `error`, et un heartbeat (signal de vie)                                                                                                             |
-| **Tout ce qui est en direct** | socket.io sur `/ws`                             | `course:updated`, `friend:request`, `friend:accepted`, `friend:removed`, `presence:update`, `dm:message`, `dm:unread` et `app:error` depuis le serveur ; `dm:send` (avec un ack) et `dm:read` depuis le navigateur         |
+|                               | Transport                                       | Exemples                                                                                                                                                                                                                             |
+| ----------------------------- | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Tout le CRUD**              | REST, controllers Nest, documentés dans Swagger | `POST /api/courses`, `GET /api/courses/:lang/today`, `GET /api/courses/:lang/lessons`, `GET` et `POST /api/courses/:lang/lessons/:id/attempt`, `POST …/attempt/pages/:index`, `GET /api/friends`, `GET /api/conversations`           |
+| **Une réponse, en stream**    | Server-Sent Events sur un `POST`                | `POST /api/courses/:lang/lessons/:id/discussion` : `delta`, `done` ou `error`, et un heartbeat (signal de vie)                                                                                                                       |
+| **Tout ce qui est en direct** | socket.io sur `/ws`                             | `course:updated`, `friend:request`, `friend:accepted`, `friend:removed`, `friend:pending`, `presence:update`, `dm:message`, `dm:unread` et `app:error` depuis le serveur ; `dm:send` (avec un ack) et `dm:read` depuis le navigateur |
 
 ### Pourquoi presque tout est en REST
 
@@ -146,7 +146,7 @@ sequenceDiagram
 - **Des rooms, jamais de broadcast.** Chaque socket rejoint `user:<id>` et `session:<sid>` avant sa
   réponse CONNECT. `SocketsService.toUser()` est le seul moyen de joindre un utilisateur. À part les acks, le gateway
   écrit à un seul socket seulement dans deux cas : au socket qui a envoyé un mauvais événement, et à un socket qui vient de
-  se connecter, avec la présence de chaque ami et les compteurs de non-lus (plus bas).
+  se connecter, avec la présence de chaque ami, les demandes d'ami en attente et les compteurs de non-lus (plus bas).
 - **Les sockets se ferment avec leur session** : à la déconnexion (seulement les sockets de cette session), à chaque changement
   d'id de session (inscription, connexion, vérification 2FA, activation et désactivation de la 2FA), et quand une session se termine
   d'une autre façon, grâce à un balayage toutes les 60 s qui demande à Redis le `sess:<sid>` de chaque socket ouvert (des clés connues,
@@ -183,6 +183,15 @@ sequenceDiagram
   paire, donc les autres onglets de celui qui agit suivent aussi. Ils transportent `{ userId }`, l'autre utilisateur, et /friends,
   /users/[id] et /chat se rafraîchissent sur n'importe lequel. Refuser et annuler envoient `friend:removed` : la ligne entre
   les deux a disparu.
+- **Les demandes d'ami en attente** (`friend:pending { count, at }`) : un instantané, comme `dm:unread`, du
+  nombre de demandes qui attendent un utilisateur, envoyé à la room de cet utilisateur seulement. Il va au destinataire après
+  l'envoi ou l'acceptation d'une demande, aux deux utilisateurs après un refus ou une annulation (la suppression ne sait pas
+  lequel des deux), et à chaque nouveau socket après l'instantané de présence, avant `dm:unread`. Rien ne part
+  quand un ami est retiré : les lignes acceptées ne sont pas comptées. `at` est pris avant le comptage, et
+  l'onglet garde le plus récent. `GET /api/friends/pending` répond la même chose pour le rendu serveur de l'en-tête,
+  donc le compteur est dans le HTML avant tout socket. L'onglet garde l'instantané comme les compteurs de non-lus
+  (plus bas), et le supprime à la déconnexion du compte. Le lien Amis du menu de l'en-tête affiche le compteur, et son bouton
+  l'affiche ajouté au total des non-lus.
 - **La présence** (`presence:update { userId, status, at }`, `online` ou `offline`), dans
   `PresenceService` ([apps/api/src/presence/](../../apps/api/src/presence/)) :
   - **Un compteur par utilisateur** dans Redis, `presence:<id>` : `INCR` quand un socket s'ouvre, `DECR` quand il
@@ -226,8 +235,8 @@ sequenceDiagram
     qui a des messages non lus, avec pour clé l'autre utilisateur (une conversation sans non-lus n'y figure pas) :
     toujours l'état complet, jamais un changement à appliquer. Il va au destinataire après chaque message,
     sans retarder l'ack (un échec est loggé) ; au lecteur après chaque `dm:read`, qu'il y ait un changement
-    ou non, pour qu'une lecture finisse toujours par converger ; et à chaque nouveau socket après l'instantané de présence, vide
-    compris, pour que l'onglet puisse distinguer « rien de non lu » de « pas encore de nouvelles ». `at` est pris avant le
+    ou non, pour qu'une lecture finisse toujours par converger ; et à chaque nouveau socket en dernier, après l'instantané de présence
+    et `friend:pending`, vide compris, pour que l'onglet puisse distinguer « rien de non lu » de « pas encore de nouvelles ». `at` est pris avant le
     comptage, donc de deux instantanés qui se croisent (une lecture et un nouveau message en même temps) celui avec la date la plus récente
     a compté chaque écriture que l'autre a vue : l'onglet garde le `at` le plus récent, quel que soit l'ordre d'arrivée.
   - **`dm:read { userId }`** remplit `readAt` sur ce que cet utilisateur t'a envoyé. Pas d'ack : la réponse est
@@ -239,8 +248,9 @@ sequenceDiagram
     instantané. `readAt` ne quitte jamais le serveur. L'index sur `(pairKey, readAt)` garde le coût des compteurs
     et d'une lecture proportionnel à ce qui n'est pas lu, pas à tout l'historique.
   - **Dans l'onglet** : `tab-socket.ts` garde le dernier instantané aussi longtemps que le socket, comme la
-    table de présence, et le supprime à la déconnexion du compte. Le badge du bouton du menu de l'en-tête et de son lien
-    Messages affiche son total (#220), 99+ au-delà de 99, et rien avant le premier instantané. `sendMessage()` refuse tout de suite avec
+    table de présence, et le supprime à la déconnexion du compte. Le badge du lien Messages du menu de l'en-tête
+    affiche son total (#220), 99+ au-delà de 99, et rien avant le premier instantané. Le bouton du menu affiche ce
+    total plus les demandes d'ami en attente. `sendMessage()` refuse tout de suite avec
     `network.unreachable` quand il n'y a pas de connexion : socket.io mettrait l'événement en attente et le livrerait longtemps
     après que le fil a dit que l'envoi avait échoué. Un ack perdu (10 s, ou le socket qui se ferme) dit la même chose, même si
     le message a peut-être été stocké : le renvoyer peut alors l'afficher deux fois, c'est accepté, car rien ne
@@ -314,7 +324,8 @@ sequenceDiagram
   ([event-stream.ts](../../apps/api/src/lessons/event-stream.ts)) envoie le 200 et ses headers.
   Après ça, un échec ne peut être qu'un événement : `error { code }`, avec un code `llm.*` tiré de la
   raison de la `LlmError` (`llm.unavailable`, `llm.rateLimited`, `llm.blocked`, `llm.incomplete`,
-  `llm.disabled`), ou `unknown` pour un bug.
+  `llm.disabled`, et `llm.quotaExhausted` pour un `429` qui nomme le quota du jour de la clé), ou
+  `unknown` pour un bug.
 - **Annulé avec la page.** Quand le navigateur ferme la réponse, un `AbortSignal` annule
   l'appel à Gemini, même s'il est parti pendant les vérifications. Stop dans la fenêtre fait la même chose.
 - **Sans état.** Le body contient les 10 derniers tours ; le serveur construit le prompt système depuis le
