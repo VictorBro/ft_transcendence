@@ -86,7 +86,8 @@ flowchart LR
 | `make dev` | `compose.yml` + `compose.override.yml` | off: the override puts the seven services behind the `monitoring` profile, so laptops stay light, and `make dev` removes the ones `make` left running |
 | `make monitoring-up` | the same, with `--profile monitoring` | on, built from `infra/monitoring/*` |
 | `make`, `make up`, e2e.yml, evaluators | `-f compose.yml -f compose.prod.yml` | always on: the override is not loaded, so there is no profile |
-| The server | `compose.deploy.yml` | always on, images pulled from GHCR |
+| A server with monitoring: the primary, trans.vyantares.ch | `compose.deploy.yml` + `compose.deploy.monitoring.yml` | always on, images pulled from GHCR |
+| A server without it: the Oracle copy, transcendence.dpdns.org | `compose.deploy.yml` alone | off: the free-tier VM does not have the memory. The seven services are not in the file, and `/grafana` answers 503 |
 
 ### Where the config lives
 
@@ -96,9 +97,10 @@ flowchart LR
 | `alertmanager.yml`, `silent.yml`, `templates/`, `entrypoint.sh` | `infra/monitoring/alertmanager/` | `COPY` in its Dockerfile |
 | `grafana.ini`, `provisioning/`, `dashboards/`, `entrypoint.sh` | `infra/monitoring/grafana/` | `COPY` in its Dockerfile |
 | Root URL, Grafana secrets, Discord webhook | `.env` | compose `environment:` |
+| The alerts' `source` label | `ALERT_SOURCE` from make or `.env`; `SITE_DOMAIN` on a server | compose `environment:`, expanded in `prometheus.yml` |
 | The `/grafana` route and the `:2020` site | `infra/caddy/Caddyfile`, `Caddyfile.prod` | the existing bind mount, the server's `Caddyfile` |
 
-Baked rather than bind-mounted, because the server has no checkout and holds exactly three files
+Baked rather than bind-mounted, because a server has no checkout and holds only its deploy files
 (operations/deployment.md). images.yml publishes the three images with the same revision label as `api` and
 `web`, so `deploy.sh` rolls out a rule or dashboard change like any code change, and dev, CI and
 the server run the same config. The cost: a config edit in dev needs a rebuild, which
@@ -112,14 +114,16 @@ the server run the same config. The cost: a config edit in dev needs a rebuild, 
 |---|---|---|
 | Your browser | <https://localhost/grafana> (`https://localhost:<HTTPS_PORT>/grafana` when `HTTPS_PORT` in `.env` is not 443, as on every 42 machine) | `grep GRAFANA_ADMIN_PASSWORD .env` |
 | A terminal inside the devcontainer | `https://caddy/grafana` | the same |
-| The server | <https://transcendence.dpdns.org/grafana> | `grep GRAFANA_ADMIN_PASSWORD ~/.env` on the server |
+| The primary server | <https://trans.vyantares.ch/grafana> | `grep GRAFANA_ADMIN_PASSWORD ~/ft_transcendence/.env` on the server |
 
 The user is `admin`. There is no other account and no sign-up.
 
 `make`, `make up` and `make monitoring-up` run `make env-file` first. It creates `.env` from
 `.env.example` if there is none, and writes 48 random hex characters into
-`GRAFANA_ADMIN_PASSWORD` and `GRAFANA_SECRET_KEY` when they are empty. It never changes a value
-that is set. The server's `.env` is filled by hand (operations/deployment.md).
+`GRAFANA_ADMIN_PASSWORD`, `GRAFANA_SECRET_KEY` and `SESSION_SECRET` when they are empty. It never
+changes a value that is set, and drops the keys nothing reads any more (today `DATABASE_URL`, which
+compose and make build from `POSTGRES_*`). The server's `.env` is filled by hand
+(operations/deployment.md).
 
 ### The password is applied once
 
@@ -133,8 +137,8 @@ docker compose exec grafana sh -c 'grafana cli --homepath /usr/share/grafana adm
 
 Single quotes on purpose: the container expands the variable, so `.env` stays the only source and
 the password never lands in your shell history. On the server, use
-`docker compose -f compose.deploy.yml exec grafana ...`. Locally, `make clean` also works, by
-dropping `grafana-data` with every other volume.
+`docker compose -f compose.deploy.yml -f compose.deploy.monitoring.yml exec grafana ...`. Locally,
+`make clean` also works, by dropping `grafana-data` with every other volume.
 
 `GRAFANA_SECRET_KEY` replaces the key Grafana ships with, which is published in its source. Set it
 once: changing it later breaks whatever Grafana has encrypted.
@@ -191,9 +195,16 @@ What learners do, and whether the question bank keeps up. Variable: `lang` (mult
 | Row | Panels |
 |---|---|
 | People | accounts; signed in over the last 5 minutes; stored sessions |
+| Learners | lesson attempts per hour (started, completed); courses by level, `unplaced` before the placement exam; achievements earned, by code; friendships by status (pending, accepted). The last two ignore `lang` |
 | Placement | exams per hour by event (started, completed, quit); completion rate over 24 h; questions served by source; levels whose pool ran out in the last hour |
 | Question bank | questions by level and source; the 10 thinnest cells, empty ones included; restocks by outcome; restock failures by reason; questions generated in 24 h |
 | LLM | provider and model; calls by outcome; latency p95; tokens per hour; lesson discussion: its calls by outcome and its messages refused by a limit |
+
+Accounts, Courses by level, Achievements earned and Friendships read the database, so with
+`DEMO_PASSWORD` set they show the seeded demo learners about a minute after the seed (the
+collector caches 60 s). Questions by level and source and Thinnest cells read it too, and show the
+seeded bank the same way; Provider shows the provider the api started on. The rest, Lesson
+attempts per hour and the Placement row included, moves only when someone uses the app.
 
 "Questions served by source" shows `written`, `generated` and `seen_fallback`. The last one is a
 learner who has seen every question at that level and gets an old one again.
@@ -209,7 +220,11 @@ learner who has seen every question at that level and gets an old one again.
 A steady `global_minute` means the shared key's budget is too small for the traffic: raise
 `LLM_DISCUSSION_GLOBAL_PER_MINUTE` only if the key's quota allows it ([operations/deployment.md](deployment.md)
 §5). `rate_limited` among the outcomes means Google refused despite our own limit, so ours is set
-above the key's quota. A learner who closes the page mid-answer shows in neither: no outcome is
+above the key's quota. It counts both of Google's quotas: the quota of the minute, which our global
+limit is there to stay under, and the quota of the day, which no limit of ours sees coming (20 requests
+a day per model on a free key, on 2026-11-27, shared with the question restocks and the key checks).
+The learner reads `llm.rateLimited` for the first and `llm.quotaExhausted` for the second; the api log
+of each failure holds Google's body, whose `quotaId` says which. A learner who closes the page mid-answer shows in neither: no outcome is
 counted for a cancelled stream.
 
 Under `LLM_PROVIDER=fixture`, the default wherever evaluators run, the LLM row shows "fixture"
@@ -239,7 +254,8 @@ its own panel. `docker stats` covers the rest.
 Prometheus evaluates `infra/monitoring/prometheus/rules/alerts.yml` every 30 s and sends firing
 alerts to Alertmanager. Alertmanager groups them by name, applies the inhibitions below, and posts
 to Discord when `DISCORD_WEBHOOK_URL` is set. Without a webhook it loads `silent.yml` and sends
-nothing. Either way, Grafana shows every rule and alert behind its login.
+nothing. Either way, Grafana shows every rule and alert behind its login. Each Discord title starts
+with the stack that sent it, such as `trans.vyantares.ch: [FIRING:1] ApiDown` (below).
 
 Two severities. **critical**: learners see an outage. **warning**: degraded, or about to be.
 
@@ -284,11 +300,14 @@ Why some rules look the way they do:
   the default where evaluators run.
 - **14 and 15** read series the API creates at 0 on start (section 5), so the first failure counts.
   With the fixture, rule 14 has no series at all and never fires.
-- **19** counts swap. The OOM killer acts when RAM and swap are both gone, and the 1 GB server is
+- **19** counts swap. The OOM killer acts when RAM and swap are both gone, and a small server is
   expected to sit near 90% of RAM with a swapfile. A RAM-only rule would post a critical alert
   every hour while nothing is wrong. Without swap (laptops, CI) the two are the same.
-- **None should fire during a normal `make`.** The Playwright suite produces a handful of 401s,
-  not 20 a minute for 5 minutes, and every rate-based rule waits 5 minutes or more.
+- **None should fire during a normal `make`, `ApiRestarting` aside.** The Playwright suite produces a
+  handful of 401s, not 20 a minute for 5 minutes, and every rate-based rule waits 5 minutes or more.
+  `ApiRestarting` wants two API starts in 15 minutes, and `make` can make three: the stack on the
+  fixture tutor (a new container when `.env` names another provider or a key, or the image changed),
+  the Playwright restart test, and the stack back on the provider `.env` names.
 
 ### Routing
 
@@ -310,27 +329,46 @@ From `docker compose stop api`, `ApiDown` reaches Discord in about 2 to 2.5 minu
 to the failed scrape, up to 30 s to the evaluation, the 1 minute `for`, and 30 s `group_wait`. The
 resolved message follows `docker compose start api` within about 1 to 2 minutes.
 
+### Which stack sent it
+
+One webhook serves the servers and every teammate's laptop, so each alert says where it comes
+from. Prometheus puts a `source` label on every alert it sends (`external_labels` in
+`prometheus.yml`, from the `ALERT_SOURCE` variable compose passes it), and the Discord title
+starts with it:
+
+| Stack | `source` | A title |
+|---|---|---|
+| A server with monitoring | its `SITE_DOMAIN`, passed by `compose.deploy.monitoring.yml` | `trans.vyantares.ch: [FIRING:1] ApiDown` |
+| A laptop, through `make` | `local (<git user.name>)`, or `ALERT_SOURCE` from `.env` when set | `local (VictorBro): [FIRING:1] ApiRestarting` |
+| A laptop, plain `docker compose` | `ALERT_SOURCE` from `.env`, else `local` | `local: [FIRING:1] ApiDown` |
+
+A server needs no new key: `SITE_DOMAIN` is already required. An alert added with `amtool` skips
+Prometheus, so it has no `source`, and its title starts at `[FIRING:1]`. The `Grafana:` link at
+the end of each message points at the sender's own Grafana: from a laptop, `https://localhost`.
+
 ### The Discord webhook
 
 The webhook is a credential: anyone holding the URL can post to the channel. So:
 
-- It lives only in `.env`, as `DISCORD_WEBHOOK_URL`. Both templates keep it empty, and nothing in
-  the repo holds a real one.
+- It lives only in `.env`, as `DISCORD_WEBHOOK_URL`. The template, `.env.example`, keeps it empty,
+  and nothing in the repo holds a real one.
 - Alertmanager never expands environment variables in its config (upstream issue #504), so the
-  image's entrypoint writes the variable to a file on a tmpfs, mode 0600, unsets it, and the
-  config reads the file with `webhook_url_file`. It never lands on a volume.
+  image's entrypoint writes the variable to a file on a tmpfs owned by nobody, the user it runs
+  as (`uid=65534,gid=65534` in the compose files), mode 0600, unsets it, and the config reads
+  the file with `webhook_url_file`. It never lands on a volume.
 - Empty means `silent.yml`, and the container log says
   `alertmanager: DISCORD_WEBHOOK_URL is empty, alerts are not sent anywhere`. It never means one
   failed notification per alert.
 - Keep it empty on a laptop, so `make` does not post its test runs to the team. Set it on the
-  server.
+  server. A laptop that does post, for a test, signs its titles `local (<git user.name>)`, so
+  nobody takes them for the server's.
 - Like every value in `.env`, it is visible to anyone who can run `docker inspect` on the host.
 
 To create one in Discord: Server Settings, Integrations, Webhooks, New Webhook, pick the channel,
 Copy Webhook URL. Then add it to `.env` (on the server, with the `read -rs` line in
 operations/deployment.md, so it stays out of your shell history) and run `make up`, `make monitoring-up`, or
-on the server `docker compose -f compose.deploy.yml up -d`. Compose recreates alertmanager because
-its environment changed.
+on the server `docker compose -f compose.deploy.yml -f compose.deploy.monitoring.yml up -d alertmanager`.
+Compose recreates alertmanager because its environment changed.
 
 ### Testing that an alert reaches Discord
 
@@ -345,7 +383,8 @@ its environment changed.
    ```
 
 3. **A synthetic alert, through Alertmanager.** A "[FIRING:1] DiscordTest" message arrives after
-   30 s. It resolves by itself after 5 minutes, and a green "[RESOLVED]" message follows.
+   30 s, with no source in front: `amtool` skips Prometheus. It resolves by itself after
+   5 minutes, and a green "[RESOLVED]" message follows.
 
    ```bash
    docker compose exec alertmanager amtool --alertmanager.url=http://127.0.0.1:9093 \
@@ -354,10 +393,12 @@ its environment changed.
    ```
 
 4. **A real alert, from a scrape.** `docker compose stop api`. Under Alerting, `ApiDown` goes
-   pending, then firing after a minute, and Discord gets "[FIRING:1] ApiDown" within about
-   2.5 minutes. `docker compose start api`, and "[RESOLVED]" follows within 1 to 2 minutes.
-   Within 15 minutes of `make`, "[FIRING:1] ApiRestarting" follows too: the Playwright restart
-   test already restarted the API once, and this start is the second.
+   pending, then firing after a minute, and within about 2.5 minutes Discord gets
+   `local (<git user.name>): [FIRING:1] ApiDown`, with the domain in front on a server.
+   `docker compose start api`, and "[RESOLVED]" follows within 1 to 2 minutes.
+   Within 15 minutes of `make`, "[FIRING:1] ApiRestarting" follows too, if `make` has not fired it
+   already (above): the Playwright restart test already restarted the API once, and this start is
+   the second.
 5. **Delivery health.** On Infrastructure, "Notifications sent and failed" shows failures for
    `discord` flat at 0. A wrong URL fires `AlertNotificationsFailing`, which shows in Grafana,
    with a `reason` label such as `authError`, `rateLimited` or `clientError`.
@@ -381,6 +422,7 @@ Labels are always bounded: never a user id, an email, a session id, a lesson id 
 | `ft_llm_tokens_total` | counter | `provider`, `model`, `purpose`, `type` (`prompt`, `output`, `total`) | the same, from the usage Gemini reports |
 | `ft_llm_discussion_limited_total` | counter | `limit` (`user_minute`, `user_day`, `global_minute`) | `countMessage` (discussion-limits.ts), a lesson discussion message refused before any LLM call |
 | `ft_llm_provider_info` | gauge, always 1 | `provider`, `model` (`none` for the fixture and for `disabled`) | `createLlmProvider` |
+| `ft_llm_checks_total` | counter | `provider`, `model` (`none` for the fixture and for `disabled`), `status` (`ok`, `invalid_key`, `model_not_found`, `quota`, `quota_day`, `unreachable`, `unexpected`, `fixture`, `disabled`) | `TutorService`, each key check that reaches the provider (`POST /api/tutor/check`). A check reused by another account counts nothing. A Gemini check is a real one-word request, so it spends one of the key's requests, but it is kept apart from `ft_llm_requests_total` and `ft_llm_tokens_total`: it is no learner's call, and must not dilute `LlmErrorRateHigh` |
 | `ft_question_restocks_total` | counter | `lang`, `level`, `category`, `status` (`busy`, `cooling`, `filled`, `empty`, `failed`) | `QuestionStockService` |
 | `ft_question_restock_failures_total` | counter | `category`, `reason` (`llm`, `llm_disabled`, `other`) | the same, when a fill throws |
 | `ft_question_restock_inserted_total` | counter | `lang`, `level`, `category` | the same, rows inserted |
@@ -389,8 +431,11 @@ Labels are always bounded: never a user id, an email, a session id, a lesson id 
 | `ft_placement_draws_total` | counter | `lang`, `level`, `category`, `source` (`written`, `generated`, `seen_fallback`) | `PlacementQuestionService` |
 | `ft_placement_pool_exhausted_total` | counter | `lang`, `level` | the same, when no question is left |
 | `ft_placement_exams_total` | counter | `lang`, `event` (`started`, `completed`, `quit`) | `PlacementService` |
-| `ft_lesson_attempts_total` | counter | `lang`, `event` (`started`, `completed`) | `AttemptsService`: a new attempt (a retake too), its last page locked. No panel reads it yet (section 5, "Reading the lesson metrics") |
+| `ft_lesson_attempts_total` | counter | `lang`, `event` (`started`, `completed`) | `AttemptsService`: a new attempt (a retake too), its last page locked. Learning, "Lesson attempts per hour" |
 | `ft_users` | gauge, read at scrape | none | `MetricsCollector`, cached 60 s |
+| `ft_courses` | gauge, read at scrape | `lang`, `level` (`A1` to `C2`, `unplaced` before the placement exam) | `MetricsCollector`, cached 60 s. 21 series, empty ones at 0 |
+| `ft_achievements` | gauge, read at scrape | `code` (the 16 codes of `ACHIEVEMENTS` in `@ft/shared`) | `MetricsCollector`, cached 60 s: the courses that earned each one. 16 series, empty ones at 0; a code the list does not know is left out |
+| `ft_friendships` | gauge, read at scrape | `status` (`pending`, `accepted`) | `MetricsCollector`, cached 60 s. A pending row is a request waiting for an answer |
 | `ft_active_users` | gauge, read at scrape | none | signed-in users seen by `AuthGuard` in the last 5 minutes |
 | `ft_ws_connections` | gauge | none | `SocketGateway`, accepted sockets only |
 | `ft_ws_events_total` | counter | `direction` (`in`, `out`); `event` (a known name, else `unknown`); `outcome` (`ok`, `invalid`, `rate_limited`) | `SocketGateway` (in, the `app:error` it answers, and the `presence:update` and `dm:unread` snapshots a new socket gets) and `SocketsService.toUser` (out) |
@@ -398,10 +443,10 @@ Labels are always bounded: never a user id, an email, a session id, a lesson id 
 | Node defaults | various | none | `collectDefaultMetrics`: event loop lag, heap, GC, `process_*` |
 
 All of them are on the API's own registry, so nothing a dependency registers leaks into the
-scrape. Most are defined in `apps/api/src/metrics/metrics.ts`. The three gauges read at scrape
-(`ft_question_bank_questions`, `ft_users`, `ft_active_users`) are defined in
-`apps/api/src/metrics/metrics.collector.ts`, because they need Prisma. Sessions are counted by
-redis-exporter, not by the API, so the API never scans Redis.
+scrape. Most are defined in `apps/api/src/metrics/metrics.ts`. The six gauges read at scrape
+(`ft_question_bank_questions`, `ft_users`, `ft_courses`, `ft_achievements`, `ft_friendships`,
+`ft_active_users`) are defined in `apps/api/src/metrics/metrics.collector.ts`, because they need
+Prisma. Sessions are counted by redis-exporter, not by the API, so the API never scans Redis.
 
 `increase()` cannot see a counter's first increment when the series is born at 1. So every label
 set an alert or a panel reads exists at 0 from the start: `ft_placement_exams_total` and
@@ -411,6 +456,7 @@ set an alert or a panel reads exists at 0 from the start: `ft_placement_exams_to
 `ft_question_restock_failures_total` for every category and reason; `ft_llm_discussion_limited_total`
 for every limit; `ft_llm_requests_total` and
 `ft_llm_tokens_total` for every purpose, outcome and token type of the configured Gemini model;
+`ft_llm_checks_total` for every status of the configured provider;
 `ft_ws_events_total` for every server event going out and every client event (and `unknown`)
 coming in, by outcome;
 and `http_request_duration_seconds` for the results the Auth row reads (`POST` sign-up 201,
@@ -430,14 +476,16 @@ attempt id.
 
 | Question | Query (Explore, or a panel) | Notes |
 |---|---|---|
-| How many lessons are started and finished? | `sum by (lang, event) (increase(ft_lesson_attempts_total[1h]))` | `started` counts every new attempt, a retake included; resuming one in progress counts nothing. `completed` counts attempts whose last page locked, pass or fail |
+| How many lessons are started and finished? | `sum by (lang, event) (increase(ft_lesson_attempts_total[1h]))` | Learning's Lesson attempts per hour panel shows it by event, for the languages picked in `lang`. `started` counts every new attempt, a retake included; resuming one in progress counts nothing. `completed` counts attempts whose last page locked, pass or fail |
 | How many started attempts finish? | `sum(increase(ft_lesson_attempts_total{event="completed"}[24h])) / sum(increase(ft_lesson_attempts_total{event="started"}[24h]))` | A rough completion rate: an attempt started late yesterday and finished today skews one day. No dashboard panel shows this yet; it is Explore-only |
 | Does the tutor answer? | `sum by (outcome) (increase(ft_llm_requests_total{purpose="lesson-discussion"}[1h]))` | The Lesson discussion panel. Empty under the fixture, where no Gemini series exists |
 | Do learners hit the limits? | `sum by (limit) (increase(ft_llm_discussion_limited_total[1h]))` | Same panel, `refused: …`. Exists at 0 for every limit from the start, with any provider |
 | What does the tutor cost? | `sum(increase(ft_llm_tokens_total{purpose="lesson-discussion", type="total"}[24h]))` | Tokens as Gemini reports them; the Tokens per hour panel shows every purpose |
 
 `LlmErrorRateHigh` (rule 14) covers the discussion too: it reads every purpose of
-`ft_llm_requests_total`. No rule watches `ft_lesson_attempts_total` or the discussion limits: a
+`ft_llm_requests_total`. A `429` is `rate_limited` whichever quota Google names, so the rule counts a key
+whose quota of the day is spent as it counts a busy minute; the api log, or a **Test connection** on
+`/profile` (`quota_day` in `ft_llm_checks_total`), tells which. No rule watches `ft_lesson_attempts_total` or the discussion limits: a
 learner who is refused is told how long to wait, which is the intended behaviour, not an incident.
 
 ### Exporters and integrations
@@ -465,8 +513,9 @@ The rules this setup keeps:
 1. **Only caddy publishes ports** (80, 443, 443/udp). No monitoring service, and neither
    `api:9464` nor `caddy:2020`, ever gets a `ports:` entry. In dev, db and redis also publish a
    port on loopback (`compose.override.yml`). `scripts/check-monitoring-config.sh` checks this on
-   the resolved config of four stacks: dev, the prod overlay, the server, and the server behind
-   another reverse proxy, where no service publishes a port.
+   the resolved config of five stacks: dev, the prod overlay, the server with monitoring, the
+   same behind another reverse proxy, where no service publishes a port, and the server without
+   monitoring.
 2. **Caddy routes only `/grafana` and `/grafana/*` to the monitoring stack.** Prometheus and
    Alertmanager have no login of their own, so they have no route either. Grafana shows their
    rules, alerts and silences behind its login.
@@ -507,16 +556,18 @@ subdomain.
 
 ### Checking it by hand
 
-Against the stack `make` started (`-k`: the certificate is Caddy's local CA). Inside the
-devcontainer, use `https://caddy` instead of `https://localhost`. From the host, add
-`:<HTTPS_PORT>` when it is not 443, as on every 42 machine (section 2):
+Against the stack `make` started (`-k`: the certificate is Caddy's local CA). The first line
+sets `BASE`: keep `https://caddy` inside the devcontainer. From the host, use
+`https://localhost:<HTTPS_PORT>`, as on every 42 machine (section 2), or `https://localhost`
+when the port is 443:
 
 ```bash
-curl -sk https://localhost/grafana/api/health                                     # 200, "database": "ok"
-curl -sk -o /dev/null -w '%{http_code}\n' https://localhost/grafana/api/search    # 401
-curl -sk -o /dev/null -w '%{http_code}\n' https://localhost/grafana/metrics       # 404
-curl -sk -o /dev/null -w '%{http_code}\n' https://localhost/api/metrics           # 404
-curl -sk -o /dev/null -w '%{http_code}\n' https://localhost/grafana/login \
+BASE=https://caddy    # inside the devcontainer; from the host: https://localhost:<HTTPS_PORT>
+curl -sk $BASE/grafana/api/health                                                 # 200, "database": "ok"
+curl -sk -o /dev/null -w '%{http_code}\n' $BASE/grafana/api/search                # 401
+curl -sk -o /dev/null -w '%{http_code}\n' $BASE/grafana/metrics                   # 404
+curl -sk -o /dev/null -w '%{http_code}\n' $BASE/api/metrics                       # 404
+curl -sk -o /dev/null -w '%{http_code}\n' $BASE/grafana/login \
   -H 'Content-Type: application/json' -d '{"user":"admin","password":"admin"}'    # 401
 docker ps --format '{{.Names}}\t{{.Ports}}'                                       # only caddy has a ->
 ```
@@ -569,8 +620,9 @@ first three.
 
 | Check | Runs in | Proves |
 |---|---|---|
-| `scripts/check-monitoring-config.sh` | ci.yml (`monitoring config`), `make ci` | promtool on the config and rules, the rule unit tests, amtool on both Alertmanager configs and the Discord route, `caddy validate` on both Caddyfiles, dashboard lint, both entrypoints in the pinned image, the exposure rule on four stacks (section 6), and the same caddy, db, redis and exporter images and commands in `compose.yml` and `compose.deploy.yml` |
+| `scripts/check-monitoring-config.sh` | ci.yml (`monitoring config`), `make ci` | promtool on the config and rules, the rule unit tests, amtool on both Alertmanager configs and the Discord route, `caddy validate` on both Caddyfiles, dashboard lint, both entrypoints in the pinned image (Alertmanager's started twice, as a restart does, on each topology's own tmpfs entry), the exposure rule on five stacks (section 6), the log caps on every server service, `compose.deploy.yml` resolving alone with no Grafana key, and the same caddy, db, redis and exporter images and commands in `compose.yml` and the deploy files |
 | `scripts/check-monitoring.sh`, `make monitoring-check` | e2e.yml, `make` | every target up, every rule healthy, an Alertmanager found, every probe succeeding, and every series a rule or panel reads present. A misspelt metric does not make a rule unhealthy; it silently matches nothing, and only this sees it |
+| `scripts/check-llm-spend.sh`, `make llm-spend-check` | `make` | after the suite, once Prometheus has scraped the api again: no increase of `ft_llm_requests_total` or `ft_llm_checks_total` on a real provider since `make` started (the window opens one scrape earlier, so its baseline is a sample from before the start, and a call just after the start still counts). `make` runs every test on the fixture tutor with no key, so any call is a step that spent the key, or someone using the stack meanwhile |
 | `e2e/tests/monitoring.spec.ts` | e2e.yml, `make` | Grafana through Caddy: login only, no sign-up, 401 for anonymous reads, 404 for both metrics paths, the four dashboards provisioned, data from the API and the seeded bank |
 
 The static check uses the validators shipped in the pinned images, so the check and the runtime
@@ -580,18 +632,22 @@ agree on the syntax. It never prints a resolved compose config: that would carry
 
 ## 8. Evaluation demo
 
-1. `make`. Its `run` step prints the Grafana URL and how to read the password.
+1. `make`, inside the devcontainer. Its `run` step prints the Grafana URL and how to read the
+   password.
 2. `make monitoring-check` prints all 10 targets up, every rule healthy and one Alertmanager.
-3. Open <https://localhost/grafana> and log in as `admin`. Overview shows every stat green, the
-   version, and traffic from the Playwright run. Learning shows the seeded question bank by level.
+3. Open <https://localhost/grafana> (or `https://localhost:<HTTPS_PORT>/grafana`, the address
+   `make` printed) and log in as `admin`. Overview shows every stat green, the
+   version, and traffic from the Playwright run. Learning shows the seeded question bank by level
+   and, with `DEMO_PASSWORD` set in `.env` before step 1, the demo learners in Accounts, Courses
+   by level, Achievements earned and Friendships.
 4. Show what is not reachable: the `curl` lines in section 6.
 5. `docker compose stop api`. Within about 1.5 minutes, Overview's firing alerts and Alerting
    show `ApiDown`, with `WebCannotReachApi` muted in Discord. With a webhook set, Discord gets
-   the message.
+   the message, titled `local (<git user.name>): [FIRING:1] ApiDown`.
 6. `docker compose start api`. The alert resolves, and Discord gets the resolved message within
-   about 1 to 2 minutes. Within 15 minutes of step 1, `ApiRestarting` (warning) fires too once
-   the API is back: the Playwright restart test already restarted it once, and this start is the
-   second.
+   about 1 to 2 minutes. Within 15 minutes of step 1, `ApiRestarting` (warning) fires too, if step 1
+   has not fired it already, once the API is back: the Playwright restart test already restarted it
+   once, and this start is the second.
 
 For "a small live modification": change a threshold or a `for` in `alerts.yml` and its test, run
 `./scripts/check-monitoring-config.sh` and `make up`, and show the changed rule under Alerting.
@@ -618,6 +674,11 @@ match grafana-data" rather than locking your IP out. After 5 failures, wait 5 mi
 **`/grafana` answers 502 under `make dev`.** The monitoring profile is off, so `grafana` does not
 resolve. `make monitoring-up`.
 
+**`/grafana` answers 503 on a server, with "Monitoring is not running on this host."** No
+`compose.deploy.monitoring.yml` sits next to `compose.deploy.yml`, so `grafana` does not resolve.
+That is the intent on a host without the memory for it, such as the Oracle copy. Otherwise,
+[operations/deployment.md](deployment.md), "Monitoring on a server".
+
 **`/grafana` shows the web app's 404, or the `caddy` target is down.** caddy is still running the
 Caddyfile from before monitoring: Caddy reads it only at start, and compose does not recreate
 caddy for a change to a bind-mounted file. `docker compose restart caddy`, once.
@@ -640,6 +701,21 @@ have no `_total` suffix. Harmless: the values are right.
 means the webhook is empty in the environment alertmanager got. Otherwise, check
 `AlertNotificationsFailing` and the "Notifications sent and failed" panel on Infrastructure,
 whose `reason` label says why.
+
+**A Discord title has no source in front.** From `amtool`, that is expected: it skips
+Prometheus. From a server, its Prometheus image or its `compose.deploy.monitoring.yml` predates
+the `source` label. The image comes with the next release. The old file passes no
+`ALERT_SOURCE`, and Prometheus drops an empty label: copy the current file and run
+`docker compose -f compose.deploy.yml -f compose.deploy.monitoring.yml up -d prometheus`, with
+`-f compose.deploy.proxy.yml` too behind a front proxy.
+
+**alertmanager restarts in a loop, and its log says `can't create /run/alertmanager/discord_webhook: Permission denied`.**
+Only with `DISCORD_WEBHOOK_URL` set, and only after a restart. The tmpfs entry in the compose
+file has lost its `uid=65534,gid=65534`: a restarted container finds the mountpoint its first
+start created, and Docker mounts the tmpfs as root's, with that directory's 0755, while the
+entrypoint runs as nobody. On a server, copy the current `compose.deploy.monitoring.yml` and run
+`docker compose -f compose.deploy.yml -f compose.deploy.monitoring.yml up -d alertmanager`:
+compose recreates it because the tmpfs changed.
 
 **Containers restart on the server, or `HostMemoryLow` fires.** Memory. `free -m` and
 `docker stats --no-stream`, then [operations/deployment.md](deployment.md), Memory. Each monitoring service

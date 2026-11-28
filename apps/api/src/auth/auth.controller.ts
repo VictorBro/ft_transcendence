@@ -120,7 +120,7 @@ export class AuthController {
   @Public()
   @Post('login')
   @HttpCode(HttpStatus.OK)
-  // Tighter than signup: this is the endpoint a password guesser hammers.
+  // Per address, like signup: this is the endpoint a password guesser hammers.
   @ThrottleByIp(RATE_LIMITS.login)
   @ApiOperation({ summary: 'Sign in with email and password', security: [] })
   @ApiOkResponse({ type: SessionUserDto })

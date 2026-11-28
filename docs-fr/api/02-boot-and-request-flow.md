@@ -339,6 +339,7 @@ Chaque import :
 | `CoursesModule`                            | Les cours par langue.                                                                                      | [07](07-courses-placement.md)                    |
 | `PlacementModule`                          | Le test de placement.                                                                                      | [07](07-courses-placement.md)                    |
 | `LessonsModule`                            | Leçons, tentatives, roadmap, discussion.                                                                   | [08](08-lessons.md)                              |
+| `TutorModule`                              | `GET /api/tutor` et `POST /api/tutor/check` : fournisseur et modèle du tuteur IA, test de sa clé.          | [06](06-llm.md)                                  |
 | `GatewayModule`                            | La gateway Socket.IO (`/ws`).                                                                              | [09](09-social-and-realtime.md)                  |
 | `MetricsModule`                            | `MetricsCollector`, les métriques basées sur la base de données.                                           | [03](03-infrastructure.md)                       |
 
@@ -581,7 +582,7 @@ La route dans [auth.controller.ts](../../apps/api/src/auth/auth.controller.ts) :
   @Public()
   @Post('login')
   @HttpCode(HttpStatus.OK)
-  // Tighter than signup: this is the endpoint a password guesser hammers.
+  // Per address, like signup: this is the endpoint a password guesser hammers.
   @ThrottleByIp(RATE_LIMITS.login)
   ...
   async login(
@@ -617,7 +618,7 @@ sequenceDiagram
     R-->>MW: session ou rien
     Note over MW: le body parser JSON remplit req.body
     MW->>TG: route trouvée, lance les guards
-    TG->>TG: "@ThrottleByIp: clé = IP du client, limite 5/min"
+    TG->>TG: "@ThrottleByIp: clé = IP du client, limite 20/min"
     TG->>AG: sous la limite
     AG->>AG: "@Public(): laisse passer"
     AG->>P: guards OK
@@ -640,7 +641,7 @@ sequenceDiagram
 3. L'URL n'est pas un avatar, donc **express-session** s'exécute. Si le navigateur a envoyé un cookie `ft.sid`, la session est chargée depuis Redis. Une première visite n'en a pas.
 4. Le **body parser** transforme le texte JSON en `req.body`.
 5. Nest trouve la route (`AuthController.login`) et lance les **guards globaux** :
-   - `IdentityThrottlerGuard` : la route a `@ThrottleByIp(RATE_LIMITS.login)` (5 par défaut, `LOGIN_LIMIT_PER_MINUTE`), donc la clé est l'IP du client, avec une limite de 5 par minute. Sous la limite : on continue.
+   - `IdentityThrottlerGuard` : la route a `@ThrottleByIp(RATE_LIMITS.login)` (20 par défaut, `LOGIN_LIMIT_PER_MINUTE`), donc la clé est l'IP du client, avec une limite de 20 par minute. Sous la limite : on continue.
    - `AuthGuard` : la route est `@Public()`, donc il la laisse passer.
 6. Le **pipe global** vérifie `req.body` avec `LoginSchema` (parce que le type du paramètre est `LoginDto`).
 7. Le **controller** appelle `AuthService.validateCredentials`, qui appelle **Prisma** pour trouver l'utilisateur (email en minuscules), puis vérifie le hash du mot de passe avec argon2. Un email inconnu lance quand même argon2 sur un faux hash, pour que la réponse prenne le même temps.
@@ -662,7 +663,7 @@ sequenceDiagram
     participant S as AuthService
     participant F as ErrorCodeFilter
 
-    alt 6e essai en une minute
+    alt 21e essai en une minute
         TG->>F: "ThrottlerException('server.rateLimited')"
         F-->>B: "429 { message: 'server.rateLimited' }"
     else le body a un email invalide

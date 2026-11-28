@@ -70,6 +70,7 @@ Profile editing, the avatar upload and the online status belong only to
   | Route | What it does |
   | --- | --- |
   | `GET /api/friends` | Your friends (each with `online`), the requests you received, the requests you sent |
+  | `GET /api/friends/pending` | How many requests wait on you, for the header's badge |
   | `POST /api/friends/requests/:userId` | Send a request. If they already asked you, this accepts theirs. Limited to 10 a minute. |
   | `POST /api/friends/requests/:userId/accept` | Accept their request |
   | `DELETE /api/friends/requests/:userId` | Decline their request, or cancel yours |
@@ -80,6 +81,12 @@ Profile editing, the avatar upload and the online status belong only to
   over the WebSocket to both users ([friends.service.ts](../../apps/api/src/friends/friends.service.ts)).
   The friends page, the profile page and the messages page listen for these events and reload
   their data ([refresh-on.tsx](../../apps/web/components/refresh-on.tsx)).
+- The header counts the requests waiting on you, on every page: a red badge on the **Friends** row
+  of the menu, added to the **Menu** button's badge. The server renders the count, then
+  `friend:pending { count, at }` keeps it current: it goes to the user whose count moved after a
+  request is sent, accepted, declined or cancelled, and to each new socket
+  ([unread-badge.tsx](../../apps/web/components/unread-badge.tsx)). A screen reader hears, for
+  example, "1 friend request".
 - To find people: `GET /api/users?q=` searches display names, and `GET /api/users/recently-active`
   lists learners who opened the app in the last 7 days. Both are explained in
   [user-management.md](./user-management.md).
@@ -173,8 +180,8 @@ sequenceDiagram
   `dm:read { userId }`. The server sets `readAt` and sends a new count. Reads are limited per account
   to the API's general limit: 100 a minute unless `RATE_LIMIT_PER_MINUTE` in `.env` changes it
   (`READ_LIMIT_PER_MINUTE` in [messages.service.ts](../../apps/api/src/messages/messages.service.ts)).
-- The header shows the total in a badge, and 99+ above 99: on the **Menu** button, and on the
-  **Messages** row inside that menu
+- The header shows the total in a badge, and 99+ above 99: on the **Menu** button, where the
+  friend requests waiting are added to it, and on the **Messages** row inside that menu
   ([unread-badge.tsx](../../apps/web/components/unread-badge.tsx),
   [header-menu.tsx](../../apps/web/components/header-menu.tsx),
   [session-nav.tsx](../../apps/web/components/session-nav.tsx)). A screen reader hears the exact
@@ -266,12 +273,12 @@ normal window (window 1) and a private window (window 2).
 | Test | What it checks |
 | --- | --- |
 | [e2e/tests/messages.spec.ts](../../e2e/tests/messages.spec.ts) | Two browsers: "a message arrives live, is counted, is read by opening the thread, and stays"; "a friend written to for the first time is listed, as the open conversation"; "a long thread scrolls in its own pane on a desktop, and the screens fit a phone" (with the 1,000 character limit refused before sending); "in German, the header fits a phone with a count, which the conversation clears"; "a message sent while the socket was down arrives when it is back"; "a thread with an ex-friend stays readable, without a box"; "a message shows its time in Paris, as sent and as rendered". |
-| [e2e/tests/friends.spec.ts](../../e2e/tests/friends.spec.ts) | "a request shows up live, is accepted, and both lists follow"; "a stranger found by search is added from their profile, then visited as a friend"; "a profile needs a session"; "an unknown or malformed profile is a 404". |
+| [e2e/tests/friends.spec.ts](../../e2e/tests/friends.spec.ts) | "a request shows up live, is accepted, and both lists follow" (with the friend request count on the menu, live, in the server's HTML and in a second tab); "a stranger found by search is added from their profile, then visited as a friend"; "a profile needs a session"; "an unknown or malformed profile is a 404". |
 | [apps/api/test/messages.e2e-spec.ts](../../apps/api/test/messages.e2e-spec.ts) | Against a real database and Redis: "refuses both routes without a session"; 400 for a bad user id or cursor; "pages the history back from the newest, each page oldest first, with no overlap"; "a stranger, a pending request and yourself cannot send, and nothing is stored"; "a friend's message reaches the recipient and every tab of the sender, and is counted"; the unread count on connect, after a message and after a read; the conversation list order; "answers the ack of an event it refuses, never app:error as well, and stores nothing"; "refuses a send past the budget of a minute, from any tab of the account"; "after unfriending, both still read the history, and neither can send". |
-| [apps/api/test/friends.e2e-spec.ts](../../apps/api/test/friends.e2e-spec.ts) | Search and recently active; "a request reaches both users, is accepted, then removed, and a stranger hears none of it"; declined and cancelled requests; two requests that cross; "limits sending to 10 a minute per account". |
+| [apps/api/test/friends.e2e-spec.ts](../../apps/api/test/friends.e2e-spec.ts) | Search and recently active; "a request reaches both users, is accepted, then removed, and a stranger hears none of it"; declined and cancelled requests; "a new tab hears how many requests wait on it, before what is unread"; two requests that cross; "limits sending to 10 a minute per account". |
 | [apps/api/test/users.e2e-spec.ts](../../apps/api/test/users.e2e-spec.ts) | The public profile: "shows the public fields and nothing else", "answers 404 for an unknown id and 400 for a malformed one". |
 | [apps/api/src/messages/messages.service.spec.ts](../../apps/api/src/messages/messages.service.spec.ts), [apps/api/src/messages/unread.spec.ts](../../apps/api/src/messages/unread.spec.ts) | Send in one transaction, events to both rooms, the rate limits, read, paging by cursor, the conversation list; the unread count per conversation. |
-| [apps/api/src/friends/friends.service.spec.ts](../../apps/api/src/friends/friends.service.spec.ts) | `pairKey`, sending, accepting a crossed request, sorting the lists, each friend's online status. |
+| [apps/api/src/friends/friends.service.spec.ts](../../apps/api/src/friends/friends.service.spec.ts) | `pairKey`, sending, accepting a crossed request, the `friend:pending` count after each write, sorting the lists, each friend's online status. |
 | [packages/shared/src/events/socket.test.ts](../../packages/shared/src/events/socket.test.ts) | "direct messages": the payload schemas, "sends trimmed text of 1 to 1,000 characters", and the refused cases (empty, spaces only, too long, not text, a NUL). |
 | [apps/web/lib/thread.test.ts](../../apps/web/lib/thread.test.ts), [apps/web/lib/send-message.test.ts](../../apps/web/lib/send-message.test.ts), [apps/web/lib/unread.test.ts](../../apps/web/lib/unread.test.ts), [apps/web/lib/conversations-client.test.ts](../../apps/web/lib/conversations-client.test.ts) | Merging messages and pages in the thread; the send and its ack; the unread store and the 99+ badge; the history requests. |
 

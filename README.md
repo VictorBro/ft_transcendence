@@ -67,14 +67,23 @@ Open the repository in VS Code and choose **Reopen in Container**. Then, in a
 terminal of the container:
 
 ```bash
-cp .env.example .env    # then edit the secrets, see the comments in that file
+make env-file           # creates .env from .env.example, or completes yours
 make                    # checks, build, run, browser tests
 ```
 
-To get the six demo learners (streaks, results, a finished level), set
-`DEMO_PASSWORD` in `.env` before `make`, then sign in as
+`make env-file` never overwrites a `.env`, such as the one the devcontainer
+writes on a school machine: it only adds missing keys, generates the empty
+secrets and drops retired ones (today `DATABASE_URL`, which compose and make
+now build from `POSTGRES_*`). After a pull that changes `.env.example`,
+`scripts/align-env.sh` puts `.env` back in the template's order and keeps every
+value.
+
+To get the six demo learners (streaks, results, a finished level, friends and
+unread messages), set `DEMO_PASSWORD` in `.env` before `make`, then sign in as
 `demo-anna@example.com` to `demo-felix@example.com` with that password. Every
-seed rebuilds them, on development stacks only.
+seed rebuilds them: `make` and `make seed` here, and every deploy on a server
+whose `.env` sets it
+([docs/operations/deployment.md](docs/operations/deployment.md)).
 
 The app is served at <https://localhost>, or at `https://localhost:<HTTPS_PORT>`
 on a machine that cannot publish port 443, such as a 42 school computer: `make`
@@ -83,9 +92,9 @@ documentation is under `/api/docs`. Grafana, with the monitoring dashboards and
 alerts, is under `/grafana`: user `admin`, and the password `make` generated is
 in `.env` (`grep GRAFANA_ADMIN_PASSWORD .env`).
 
-The lesson tutor and the question generator use Gemini. With the default
-`LLM_PROVIDER=fixture` they call nothing: the tutor gives one canned answer and
-no question is generated. To use Gemini, create a key at
+The lesson tutor and the question generator use Gemini. With `LLM_PROVIDER`
+empty, which means `fixture`, they call nothing: the tutor gives one canned
+answer and no question is generated. To use Gemini, create a key at
 <https://aistudio.google.com/apikey>, set `LLM_PROVIDER=gemini` and
 `LLM_API_KEY=<your key>` in `.env`, then run `make` again. The key goes in
 `.env` only, which git ignores. The tutor's rate limits are in `.env.example`.
@@ -108,9 +117,10 @@ five in `e2e/tests/lesson.spec.ts` (one test and four `describe` blocks, three
 of which loop over the written French A1 lessons of one kind). The list and the
 reasons are in
 [docs/modules/browsers.md](docs/modules/browsers.md#limits-and-choices). `make`
-runs Chromium alone to stay quick. Run one engine, with the stack up, with
-`make playwright BROWSERS=firefox`: after a green suite it also runs the API
-restart spec, on Chromium.
+runs Chromium alone to stay quick. Run one engine with
+`make test-e2e BROWSERS=firefox`: after a green suite it also runs the API
+restart spec, on Chromium. Like `make`, it runs the suite on the fixture tutor
+with no key, then puts the api back on the LLM provider `.env` names.
 
 Known limits:
 
@@ -163,24 +173,24 @@ A Major module is worth 2 points and a Minor module 1 point. The subject require
 in [docs/modules/](docs/modules/README.md): what the subject asks, how we meet it,
 where the code is, how to show it, the tests, and who built it.
 
-| Module                                                                             | Type           | Points | Why we chose it, and how we built it                                                                                                                                                                                 | Who built it                               |
-| ---------------------------------------------------------------------------------- | -------------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
-| [Framework for frontend and backend](docs/modules/framework.md)                    | Major          | 2      | Two frameworks with one language, TypeScript: Next.js (React) for the pages, NestJS for the API, and one shared package of Zod schemas between them.                                                                 | Victor (with Bastian, Endrit, Anaïs, Luca) |
-| [ORM for the database](docs/modules/orm.md)                                        | Minor          | 1      | Typed queries instead of hand-written SQL: Prisma 7 talks to PostgreSQL, and every schema change ships as a migration.                                                                                               | Victor (with Anaïs, Luca, Endrit, Bastian) |
-| [Standard user management](docs/modules/user-management.md)                        | Major          | 2      | Accounts need a face: an editable profile, an avatar upload with a default, friends with a live online status, and a public profile page.                                                                            | Victor (with Anaïs, Endrit, Luca)          |
-| [Complete 2FA](docs/modules/two-factor-auth.md)                                    | Minor          | 1      | A password alone is not enough to protect an account: TOTP codes from an authenticator app, a QR code to set it up, and ten single-use recovery codes.                                                               | Victor (with Luca, Endrit, Bastian)        |
-| [User interaction: chat, profiles and friends](docs/modules/user-interaction.md)   | Major          | 2      | Learners can practise together: friends, profile pages, and private messages that arrive live, are stored, and show an unread count.                                                                                 | Victor (with Endrit)                       |
-| [Real-time features via WebSockets](docs/modules/websockets.md)                    | Major          | 2      | Nobody has to reload: one Socket.IO connection per tab pushes messages, friend requests, online status and course changes the moment they happen.                                                                    | Victor (with Endrit, Anaïs, Bastian)       |
-| [Complete LLM interface](docs/modules/llm-interface.md)                            | Major          | 2      | A tutor that answers questions about each lesson, word by word, and new placement questions written when a learner runs low. Gemini behind one provider interface, with clear errors and rate limits.                | Luca and Endrit (with Victor)              |
-| [Internationalization: 3 languages](docs/modules/i18n.md)                          | Minor          | 1      | A language app must speak its learners' language: the whole site in English, French and German with next-intl, the language in the address, and a menu to switch.                                                    | Luca (with Victor, Endrit, Anaïs, Bastian) |
-| [Support for 2 additional browsers](docs/modules/browsers.md)                      | Minor          | 1      | Learners do not all use Chrome: every browser test runs on Chromium, Firefox and WebKit (the engine behind Safari) in CI.                                                                                            | Bastian (with Victor, Endrit, Luca)        |
-| [Server-Side Rendering](docs/modules/ssr.md)                                       | Minor          | 1      | Pages arrive full, not empty: the server builds each page with its data, so it shows even with JavaScript turned off.                                                                                                | Victor (with Bastian, Luca, Anaïs, Endrit) |
-| [Advanced search](docs/modules/advanced-search.md)                                 | Minor          | 1      | A level has hundreds of lessons: search by words, filter, sort, group and page through them, and every view is a shareable address.                                                                                  | Endrit and Luca                            |
-| [Gamification](docs/modules/gamification.md)                                       | Minor          | 1      | The subject suggests it for a language learning platform (chapter V.6): XP and ranks, a daily challenge and 16 achievements, stored per course.                                                                      | Anaïs (with Victor)                        |
-| [Monitoring with Prometheus and Grafana](docs/modules/monitoring.md)               | Major          | 2      | We need to see problems before users report them: Prometheus collects metrics from the app, the databases and the server, Grafana shows four dashboards, and alert rules can notify Discord.                         | Victor (with Luca, Anaïs)                  |
-| [CI/CD](docs/modules/custom-ci-cd.md)                                              | Major (custom) | 2      | The subject's rejection rules are easy to break and hard to see in a diff: GitHub Actions checks every pull request, then builds and scans the images, and the server deploys them itself. Full justification below. | Victor (with Bastian, Endrit, Anaïs, Luca) |
-| [Cloud deployment with DNS and Let's Encrypt](docs/modules/custom-cloud-deploy.md) | Minor (custom) | 1      | HTTPS proven for real, not with a local certificate: an Oracle Cloud server, a real domain name, and a Let's Encrypt certificate every browser trusts. Full justification below.                                     | Victor (with Endrit, Luca, Bastian)        |
-| **Total**                                                                          |                | **22** |                                                                                                                                                                                                                      |                                            |
+| Module                                                                             | Type           | Points | Why we chose it, and how we built it                                                                                                                                                                                                                                                     | Who built it                               |
+| ---------------------------------------------------------------------------------- | -------------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| [Framework for frontend and backend](docs/modules/framework.md)                    | Major          | 2      | Two frameworks with one language, TypeScript: Next.js (React) for the pages, NestJS for the API, and one shared package of Zod schemas between them.                                                                                                                                     | Victor (with Bastian, Endrit, Anaïs, Luca) |
+| [ORM for the database](docs/modules/orm.md)                                        | Minor          | 1      | Typed queries instead of hand-written SQL: Prisma 7 talks to PostgreSQL, and every schema change ships as a migration.                                                                                                                                                                   | Victor (with Anaïs, Luca, Endrit, Bastian) |
+| [Standard user management](docs/modules/user-management.md)                        | Major          | 2      | Accounts need a face: an editable profile, an avatar upload with a default, friends with a live online status, and a public profile page.                                                                                                                                                | Victor (with Anaïs, Endrit, Luca)          |
+| [Complete 2FA](docs/modules/two-factor-auth.md)                                    | Minor          | 1      | A password alone is not enough to protect an account: TOTP codes from an authenticator app, a QR code to set it up, and ten single-use recovery codes.                                                                                                                                   | Victor (with Luca, Endrit, Bastian)        |
+| [User interaction: chat, profiles and friends](docs/modules/user-interaction.md)   | Major          | 2      | Learners can practise together: friends, profile pages, and private messages that arrive live, are stored, and show an unread count.                                                                                                                                                     | Victor (with Endrit)                       |
+| [Real-time features via WebSockets](docs/modules/websockets.md)                    | Major          | 2      | Nobody has to reload: one Socket.IO connection per tab pushes messages, friend requests, online status and course changes the moment they happen.                                                                                                                                        | Victor (with Endrit, Anaïs, Bastian)       |
+| [Complete LLM interface](docs/modules/llm-interface.md)                            | Major          | 2      | A tutor that answers questions about each lesson, word by word, and new placement questions written when a learner runs low. Gemini behind one provider interface, with clear errors and rate limits.                                                                                    | Luca and Endrit (with Victor)              |
+| [Internationalization: 3 languages](docs/modules/i18n.md)                          | Minor          | 1      | A language app must speak its learners' language: the whole site in English, French and German with next-intl, the language in the address, and a menu to switch.                                                                                                                        | Luca (with Victor, Endrit, Anaïs, Bastian) |
+| [Support for 2 additional browsers](docs/modules/browsers.md)                      | Minor          | 1      | Learners do not all use Chrome: every browser test runs on Chromium, Firefox and WebKit (the engine behind Safari) in CI.                                                                                                                                                                | Bastian (with Victor, Endrit, Luca)        |
+| [Server-Side Rendering](docs/modules/ssr.md)                                       | Minor          | 1      | Pages arrive full, not empty: the server builds each page with its data, so it shows even with JavaScript turned off.                                                                                                                                                                    | Victor (with Bastian, Luca, Anaïs, Endrit) |
+| [Advanced search](docs/modules/advanced-search.md)                                 | Minor          | 1      | A level has hundreds of lessons: search by words, filter, sort, group and page through them, and every view is a shareable address.                                                                                                                                                      | Endrit and Luca                            |
+| [Gamification](docs/modules/gamification.md)                                       | Minor          | 1      | The subject suggests it for a language learning platform (chapter V.6): XP and ranks, a daily challenge and 16 achievements, stored per course.                                                                                                                                          | Anaïs (with Victor)                        |
+| [Monitoring with Prometheus and Grafana](docs/modules/monitoring.md)               | Major          | 2      | We need to see problems before users report them: Prometheus collects metrics from the app, the databases and the server, Grafana shows four dashboards, and alert rules can notify Discord.                                                                                             | Victor (with Luca, Anaïs)                  |
+| [CI/CD](docs/modules/custom-ci-cd.md)                                              | Major (custom) | 2      | The subject's rejection rules are easy to break and hard to see in a diff: GitHub Actions checks every pull request, then builds and scans the images, and the server deploys them itself. Full justification below.                                                                     | Victor (with Bastian, Endrit, Anaïs, Luca) |
+| [Cloud deployment with DNS and Let's Encrypt](docs/modules/custom-cloud-deploy.md) | Minor (custom) | 1      | HTTPS proven for real, not with a local certificate: two public servers with real domain names and Let's Encrypt certificates every browser trusts, the primary behind another web server and a copy on Oracle Cloud where our own Caddy gets the certificate. Full justification below. | Victor (with Endrit, Luca, Bastian)        |
+| **Total**                                                                          |                | **22** |                                                                                                                                                                                                                                                                                          |                                            |
 
 "Who built it" names the main author first, then the others who added to the module. Each
 module file gives the details and the pull requests.
@@ -218,7 +228,7 @@ scanned and published, and a server that updates itself. Full file:
   nobody on the server, and every `main` commit since the #129 monitoring merge
   has an image to roll back to, by pinning `IMAGE_TAG`.
 - **Why it deserves its size.** A trivial CI is one workflow that runs the tests.
-  This one is 5 workflows, 1 shared action, 10 scripts and 3 git hooks; 41 checks
+  This one is 5 workflows, 1 shared action, 12 scripts and 3 git hooks; 41 checks
   on a typical pull request, 19 of them required; a full production stack started
   6 times per run for 3 browser engines; 18 image jobs per push; and a deploy
   agent that handles half-published releases, failed migrations and retries. It
@@ -226,10 +236,13 @@ scanned and published, and a server that updates itself. Full file:
 
 ### Custom module: cloud deployment with DNS and Let's Encrypt (Minor, 1 point)
 
-The app runs on an Oracle Cloud server under a real domain,
-<https://transcendence.dpdns.org>, with a Let's Encrypt certificate that every
-browser trusts. A second copy runs at <https://trans.vyantares.ch>, behind another
-web server. Full file:
+The app runs under a real domain at <https://trans.vyantares.ch>, our primary
+deployment: a shared VPS behind another web server, with monitoring (Grafana at
+`/grafana`) and a Let's Encrypt certificate that every browser trusts. A secondary
+copy runs on an Oracle Cloud server we set up, at <https://transcendence.dpdns.org>,
+where our own Caddy gets the certificate: that copy is this module's proof. It runs
+without monitoring, because that small free-tier VM does not have the memory for it.
+Full file:
 [docs/modules/custom-cloud-deploy.md](docs/modules/custom-cloud-deploy.md).
 
 - **Why we chose it.** The subject asks for HTTPS. On a laptop our certificate
@@ -237,18 +250,19 @@ web server. Full file:
   the public server anyone gets a certificate the browser already trusts. A
   public address also lets the team test on real devices, and gives the images
   that CI/CD publishes a place to run.
-- **The technical challenges.** A very small server (1 GB of RAM in the runbook, not measured on the box yet),
-  handled with memory limits on the monitoring services and a swapfile. Let's
+- **The technical challenges.** A very small Oracle server (1 GB of RAM: 954 MiB usable, 2 vCPUs),
+  too small to run monitoring next to the app: it runs the app alone, with a swapfile,
+  and monitoring runs only on the primary, with a memory limit on every service. Let's
   Encrypt's rate limits, handled by making sure DNS resolves before the first start and keeping
   the certificate in a volume. An IP address that can change. A server with no
   checkout of the code, so a standalone compose file that only pulls images, and
-  secrets with no defaults. A second host where another web server owns the HTTPS
+  secrets with no defaults. A primary host where another web server owns the HTTPS
   ports, so our Caddy becomes a plain HTTP backend that still sees the visitor's
   real address. Monitoring that stays private on a public server.
 - **The value it adds.** The evaluator can open the app on any device with a
   trusted certificate. HSTS and the security headers are on every answer, and
-  HTTP/3 works. A fresh server needs three files and three commands. Monitoring
-  sees real traffic.
+  HTTP/3 works. A fresh server needs three files and three commands, and one more
+  file where monitoring runs. Monitoring sees the primary's real traffic.
 - **Why it deserves its size.** It is real infrastructure outside the repo (a
   cloud instance, a firewall, a DNS zone, a trusted certificate), live and
   checkable from outside in a minute, on two hosts that work differently. It is a

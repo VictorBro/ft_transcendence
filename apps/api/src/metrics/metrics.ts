@@ -79,6 +79,15 @@ export const llmProviderInfo = new Gauge({
   registers: [registry],
 });
 
+// Kept apart from ft_llm_requests_total: the key checks (one real request each)
+// must not dilute the ratio LlmErrorRateHigh alerts on.
+export const llmChecks = new Counter({
+  name: 'ft_llm_checks_total',
+  help: 'LLM key checks that reached the provider (POST /api/tutor/check), by status',
+  labelNames: ['provider', 'model', 'status'] as const,
+  registers: [registry],
+});
+
 export const RESTOCK_STATUSES = ['busy', 'cooling', 'filled', 'empty', 'failed'] as const;
 export type RestockStatus = (typeof RESTOCK_STATUSES)[number];
 

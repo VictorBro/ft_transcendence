@@ -67,8 +67,10 @@ ft_transcendence/
 ├── compose.prod.yml               # prod targets, no mounts, restart policies
 ├── compose.deploy.yml             # deployments: pulls the released images, never builds
 ├── compose.deploy.proxy.yml       # overlay for a host where another reverse proxy owns 80 and 443
+├── compose.deploy.monitoring.yml  # overlay for a host that runs monitoring
+├── .env.example                   # the one .env template, for a checkout and for a server
 ├── Makefile
-├── turbo.json · pnpm-workspace.yaml · .env.example · README.md
+├── turbo.json · pnpm-workspace.yaml · README.md
 ```
 
 Note sur le scaffold : `create-next-app` / `nest new` génèrent des projets autonomes (avec leur propre `.git` et leur
@@ -88,11 +90,12 @@ apps/api/src/
 ├── items/                # the spec that checks content/items/
 ├── question-generation/  # restocking the bank with the LLM
 ├── lessons/              # catalogue, daily view, search, attempts, discussion, gamification
-├── llm/                  # LlmProvider: fixture, gemini, disabled; generateStructured, streamText
+├── llm/                  # LlmProvider: fixture, gemini, disabled; generateStructured, streamText, check
+├── tutor/                # GET /api/tutor, POST /api/tutor/check: what the tutor runs on, a key check
 ├── gateway/              # socket.io on /ws: handshake, screen, rooms
 ├── friends/  presence/  messages/   # Milestone 3 social features
 ├── metrics/              # Prometheus registry and the :9464 listener
-├── demo/                 # demo learners, seeded on development stacks only
+├── demo/                 # demo learners, seeded wherever DEMO_PASSWORD is set
 ├── throttler/  prisma/  redis/  health/
 └── validation.pipe.ts, error-code.filter.ts   # Zod validation, error codes
 ```
@@ -192,7 +195,7 @@ là où il compte et garde un retour rapide là où il ne compte pas.
 | ------------------ | --------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `ci.yml`           | PR, push sur `main`                                                                                             | Natif : vérif du format, lint, typecheck, vérif de la version TS (operations/versions.md, retenu : TypeScript), les apps compilent séparément, config du monitoring. Stage Docker `ci` : tests unitaires + couverture, e2e Supertest (Postgres et Redis tournent comme services du job). Puis tests des packages et build. |
 | `e2e.yml`          | PR, push sur `main`                                                                                             | Deux jobs par navigateur (`lesson`, `rest`), chacun avec un compose up des cibles prod, puis Playwright dans sa propre image (navigateurs et leurs paquets système compris) : parcours utilisateur, **contrôle de la console**, **pages légales** (`/privacy`, `/terms` répondent 200 avec un vrai contenu).               |
-| `hygiene.yml`      | PR, push sur `main`                                                                                             | gitleaks, commitlint, titre de la PR, dérive de `.env.example`, échec si `.env` est indexé, `prisma migrate diff`.                                                                                                                                                                                                         |
+| `hygiene.yml`      | PR, push sur `main`                                                                                             | gitleaks, commitlint, titre de la PR, dérive de `.env.example` (chaque fichier compose, ceux du déploiement compris) et un secret rempli dedans, échec si `.env` est indexé, `prisma migrate diff`.                                                                                                                        |
 | `images.yml`       | push sur n'importe quelle branche ; tags `v*`                                                                   | Build multi-arch à chaque commit ; tags selon le tableau plus bas.                                                                                                                                                                                                                                                         |
 | `devcontainer.yml` | PR qui touche `.devcontainer/`, `.nvmrc`, `package.json`, `compose.yml`, `compose.override.yml`, `.env.example` | Builde l'image du devcontainer ; Node et pnpm doivent correspondre aux versions fixées ; compose lance le service workspace en root et en node ; la vérification préalable de l'hôte s'adapte à un daemon rootless.                                                                                                        |
 

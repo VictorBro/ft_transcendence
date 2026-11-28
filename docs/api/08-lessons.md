@@ -889,16 +889,23 @@ headers, the event format, the heartbeat timer, and the abort cases.
 ```
 
 Before the stream, a thrown error still goes through Nest's normal error filter (JSON error). After it, a failure
-becomes an `error` event with a code. `ERROR_CODE` maps the LLM failure reason to a code the learner can act on:
+becomes an `error` event with a code. `errorCode` maps the LLM failure reason to a code the learner can act on,
+with the table `ERROR_CODE` and one case of its own:
 
 | LLM failure | Event code |
 | --- | --- |
 | `unreachable`, `http_error`, `invalid` | `llm.unavailable` |
-| `rate_limited` | `llm.rateLimited` |
+| `rate_limited`, the key's quota of the minute (or Google does not say which) | `llm.rateLimited` |
+| `rate_limited` with `quota.scope` `day`: the key's quota of the day | `llm.quotaExhausted` |
 | `blocked` | `llm.blocked` |
 | `incomplete` | `llm.incomplete` |
 | `disabled` | `llm.disabled` |
 | anything that is not an `LlmError` (a bug) | `unknown` |
+
+Both `rate_limited` rows share one reason, so the metrics and the `LlmErrorRateHigh` alert count them as one. The code
+tells them apart because the learner meets them differently: the minute's passes in a minute, the day's not
+before Google's midnight, Pacific time ("The tutor has used up today's quota. It's back tomorrow."). Which quota
+it was comes from Google's body ([06-llm.md](06-llm.md), `quotaRefusal`).
 
 If the learner already left (`signal.aborted`), nothing is sent. `finally` always ends the stream.
 
@@ -997,9 +1004,9 @@ of each kind and the mistakes list.
 
 | Window | Default | Env variable | Refusal code |
 | --- | --- | --- | --- |
-| per learner, per minute | 2 | `LLM_DISCUSSION_USER_PER_MINUTE` | `llm.tooManyMessages` |
-| per learner, per day | 60 | `LLM_DISCUSSION_USER_PER_DAY` | `llm.tooManyMessages` |
-| everyone, per minute | 5 | `LLM_DISCUSSION_GLOBAL_PER_MINUTE` | `llm.rateLimited` |
+| per learner, per minute | 5 | `LLM_DISCUSSION_USER_PER_MINUTE` | `llm.tooManyMessages` |
+| per learner, per day | 150 | `LLM_DISCUSSION_USER_PER_DAY` | `llm.tooManyMessages` |
+| everyone, per minute | 10 | `LLM_DISCUSSION_GLOBAL_PER_MINUTE` | `llm.rateLimited` |
 
 `readDiscussionLimits(env)` reads them once at start. A value that is not a whole number stops the start (a typo
 must not turn a limit off).

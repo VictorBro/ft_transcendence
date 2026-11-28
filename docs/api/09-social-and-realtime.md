@@ -8,7 +8,7 @@ In this chapter:
 - What "presence" (online / offline) means, and how Redis counts it
 - The friends module: routes, the friend request life cycle, `pair.ts`, `friend-ids.ts`
 - The messages module: reading over HTTP, sending over the socket, unread counts
-- The `demo/` folder: the fake learners the seed builds for local development
+- The `demo/` folder: the fake learners the seed builds wherever `DEMO_PASSWORD` is set
 - A table of every socket event
 
 ---
@@ -157,7 +157,7 @@ apps/api/src/
 │   ├── friends.dto.ts
 │   ├── friends.service.ts
 │   ├── pair.ts                   pairKey(a, b)
-│   └── friend-ids.ts             friendIds(), areFriends()
+│   └── friend-ids.ts             friendIds(), areFriends(), pendingRequests()
 ├── messages/
 │   ├── messages.module.ts
 │   ├── messages.controller.ts    /api/conversations routes (read only)
@@ -452,7 +452,7 @@ with presence.
 ### `arrived`: the snapshot for a new tab
 
 When a socket connects, the page was maybe rendered a moment ago. A friend may have come
-online since, or a message arrived. So the gateway sends this new socket a full
+online since, a friend request or a message arrived. So the gateway sends this new socket a full
 **snapshot**:
 
 ```ts
@@ -472,9 +472,12 @@ online since, or a message arrived. So the gateway sends this new socket a full
 1. `presence.connected()` adds 1 to the user's count. If it is the **first** socket,
    every friend gets `presence:update { status: 'online' }`.
 2. The new socket (only it, with `socket.emit`) gets one `presence:update` per friend.
-3. Last, it gets `dm:unread` with the unread counts — **even if empty**, so the tab can
-   tell "nothing unread" from "not heard yet". The unread count is started at the
-   beginning but awaited at the end, and a failure there does not stop the presence part.
+3. Then it gets `friend:pending { count, at }`: how many friend requests wait on this user.
+4. Last, it gets `dm:unread` with the unread counts — **even if empty**, so the tab can
+   tell "nothing unread" from "not heard yet". Both counts are started at the beginning
+   but awaited at the end, each with its own `.catch`, so a failure in one does not stop the
+   presence part or the other count. `dm:unread` stays last: the tests wait for it to know
+   the snapshot is over.
 
 ### `left`: going offline after the grace period
 
@@ -571,8 +574,8 @@ sockets and closes those whose key is gone.
 
 **Spec:** [socket.gateway.spec.ts](../../apps/api/src/gateway/socket.gateway.spec.ts)
 tests `sameOrigin`, `fixedWindow`, every refusal of `authenticate`, the rate limit and
-validation in `screen`, the presence messages on connect / disconnect, the unread
-snapshot, and the sweep.
+validation in `screen`, the presence messages on connect / disconnect, the friend request
+and unread snapshots (`friend:pending` before `dm:unread`), and the sweep.
 
 ## gateway/sockets.service.ts
 
@@ -777,12 +780,13 @@ the primary key of `Friendship` and of `Conversation`. This means:
 
 ## friends/friend-ids.ts
 
-[friend-ids.ts](../../apps/api/src/friends/friend-ids.ts) has two plain functions (not
+[friend-ids.ts](../../apps/api/src/friends/friend-ids.ts) has three plain functions (not
 service methods):
 
 ```ts
-// Functions, not FriendsService methods: the gateway cannot import
-// FriendsModule, which imports it, and messages need no more than these.
+// Functions, not FriendsService methods: the gateway, which reads friendIds and
+// pendingRequests on connect, cannot import FriendsModule, which imports it; and
+// messages need no more than these.
 
 /** The ids of everyone `me` is friends with. */
 export async function friendIds(prisma: PrismaService, me: string): Promise<string[]> {
@@ -798,10 +802,21 @@ export async function areFriends(prisma: PrismaService, a: string, b: string): P
   ...
   return row?.status === 'accepted';
 }
+
+/** How many requests wait on `me`. The stamp is taken before the count, as in unreadCounts. */
+export async function pendingRequests(prisma: PrismaService, me: string): Promise<FriendPending> {
+  const at = new Date().toISOString();
+  const count = await prisma.friendship.count({ where: { addresseeId: me, status: 'pending' } });
+  return { count, at };
+}
 ```
 
 - `friendIds` — used by `SocketGateway` to know whom to tell about presence.
 - `areFriends` — used by `MessagesService.send`: you can only message a friend.
+- `pendingRequests` — the friend requests waiting on `me`: pending rows where `me` is the
+  addressee. A request I sent is not counted. Used by `SocketGateway` on connect and by
+  `FriendsService` after each change. The index on `addresseeId` keeps it cheap. Like
+  `unreadCounts`, `at` is taken before the count, and the browser keeps the latest.
 
 Why functions? `FriendsModule` imports `GatewayModule`. If the gateway imported
 `FriendsModule` back, Nest would have a circular import. A function that takes `prisma`
@@ -815,14 +830,14 @@ as a parameter avoids that.
 
 ## friends/friends.dto.ts
 
-[friends.dto.ts](../../apps/api/src/friends/friends.dto.ts) turns two Zod schemas from
+[friends.dto.ts](../../apps/api/src/friends/friends.dto.ts) turns three Zod schemas from
 `@ft/shared` into classes with `createZodDto`. They are only used to **document the
 answers** in Swagger (`/api/docs`); no request body is validated here, because every
 friend route takes only a user id in the path.
 
 ## friends/friends.controller.ts
 
-[friends.controller.ts](../../apps/api/src/friends/friends.controller.ts) defines five
+[friends.controller.ts](../../apps/api/src/friends/friends.controller.ts) defines six
 routes under `/api/friends`. All need a session (the global `AuthGuard`, Chapter 5).
 The other user is always in the path, checked by `UserIdParam` (Chapter 2): a path that is not a
 user id gets 400.
@@ -830,6 +845,7 @@ user id gets 400.
 | Method and path | Service call | Success | Errors |
 | --- | --- | --- | --- |
 | `GET /api/friends` | `list(me)` | 200 `{ friends, received, sent }` | 401 |
+| `GET /api/friends/pending` | `pending(me)` | 200 `{ count, at }`: requests waiting | 401 |
 | `POST /api/friends/requests/:userId` | `send(me, them)` | 201 `{ status: 'pending' \| 'accepted' }` | 400 `friend.self`, 404 `user.notFound` (or `friend.requestNotFound` if their request was cancelled meanwhile), 409 `friend.alreadyRequested` / `friend.alreadyFriends` |
 | `POST /api/friends/requests/:userId/accept` | `accept(me, them)` | 204 | 404 `friend.requestNotFound` |
 | `DELETE /api/friends/requests/:userId` | `deleteRequest(me, them)` | 204 (declined or cancelled) | 404 `friend.requestNotFound` |
@@ -865,7 +881,9 @@ stateDiagram-v2
 ```
 
 Each arrow that changes something sends an event to **both** users
-(`friend:request`, `friend:accepted` or `friend:removed`).
+(`friend:request`, `friend:accepted` or `friend:removed`). Each arrow into or out of
+`Pending` also sends `friend:pending`, a fresh count, to the user whose count moved
+(see `tellPending` below).
 
 ### `list`
 
@@ -897,6 +915,7 @@ them in three lists: `friends` (accepted), `sent` (pending, you asked) and `rece
     if (row === null) {
       await this.create(key, me, them);
       this.notify(me, them, SERVER_EVENTS.FRIEND_REQUEST);
+      await this.tellPending(them);
       return { status: 'pending' };
     }
     if (row.status === 'accepted') throw new ConflictException('friend.alreadyFriends');
@@ -906,7 +925,8 @@ them in three lists: `friends` (accepted), `sent` (pending, you asked) and `rece
   }
 ```
 
-- No row: create a pending request, notify, answer `pending`.
+- No row: create a pending request, notify, send the addressee their new count, answer
+  `pending`.
 - Already friends, or you already asked: 409.
 - **They** already asked you: sending back simply **accepts** their request.
 
@@ -941,6 +961,8 @@ importing Prisma's classes, so plain mocks work in tests.
       throw new NotFoundException('friend.requestNotFound');
     }
     this.notify(me, them, SERVER_EVENTS.FRIEND_ACCEPTED);
+    // It was their request to me: only my count moves.
+    await this.tellPending(me);
   }
 ```
 
@@ -964,9 +986,46 @@ The event only carries the **other** user's id. It means "your friends list chan
 read it again with `GET /api/friends`". There is one source of truth (the HTTP route),
 and the socket only says "look again".
 
+### `tellPending`
+
+```ts
+  private async tellPending(...userIds: string[]): Promise<void> {
+    await Promise.all(
+      userIds.map(async (userId) => {
+        try {
+          this.sockets.toUser(
+            userId,
+            SERVER_EVENTS.FRIEND_PENDING,
+            await pendingRequests(this.prisma, userId),
+          );
+        } catch (error) {
+          this.logger.error(`pending count failed: ${String(error)}`);
+        }
+      }),
+    );
+  }
+```
+
+The header shows how many friend requests wait on you. Unlike the friend events, this one
+carries the data: `friend:pending { count, at }`, the whole count, like `dm:unread`. Each
+user gets their **own** count, in their own room:
+
+- After a request is sent: the addressee (`them`).
+- After an accept: `me`, since it was their request to me. Two requests that cross go
+  through `accept` too.
+- After `deleteRequest`: both users. The delete cannot tell a decline (my count moves) from a
+  cancel (theirs moves), and an unchanged count does no harm.
+- After `remove`: nobody. Accepted rows are not counted.
+
+It is **awaited**, so the count is out before the HTTP answer, and the acting tab has it
+before its `router.refresh()`. A failed count is logged, never thrown: the write is already
+committed. `GET /api/friends/pending` gives the same count for the server render of the
+header.
+
 **Spec:** [friends.service.spec.ts](../../apps/api/src/friends/friends.service.spec.ts)
 tests `pairKey`, sending (self, new request, the race, a deleted account), conditional
-deletes, and the sorting and `online` flag of `list`.
+deletes, who gets a `friend:pending` after each write (and that a failed count is only
+logged), and the sorting and `online` flag of `list`.
 
 ---
 
@@ -1263,6 +1322,7 @@ with a Zod schema for each payload. The browser and the API import the same file
 | `friend:request` | server → client | `{ userId }` | `FriendsService` | A request was sent between you and `userId`: reload friends |
 | `friend:accepted` | server → client | `{ userId }` | `FriendsService` | You and `userId` are now friends |
 | `friend:removed` | server → client | `{ userId }` | `FriendsService` | The row between you is gone (declined, cancelled or unfriended) |
+| `friend:pending` | server → client | `{ count, at }` | `SocketGateway.arrived`, `FriendsService` | Full snapshot: how many friend requests wait on you |
 | `course:updated` | server → client | `{ lang }` | `CoursesService`, `AttemptsService` | "Read this course again" (chapters 7 and 8) |
 | `app:error` | server → client | `{ code }` | `refuse()` | An event without ack was refused (rate limit, bad payload, error) |
 
@@ -1281,8 +1341,9 @@ Socket.IO's own events are also used: the handshake refusal arrives in the brows
 
 The `demo/` folder has **nothing to do with real time**. It sits in this chapter because
 of the folder plan. It builds the **demo learners**: six fake accounts with a realistic
-history (streaks, results, levels), so that a developer who runs the seed locally sees
-the app "in use" instead of empty pages (issue #85).
+history (streaks, results, levels), friends and messages, so that a developer who runs the
+seed locally, or an evaluator on a server, sees the app "in use" instead of empty pages
+(issue #85).
 
 ### Who calls it
 
@@ -1292,11 +1353,14 @@ Nobody in the running API. Only the **seed** script, and one e2e test:
 pnpm db:seed  (apps/api/package.json: "tsx prisma/seed.ts")
   └── prisma/seed.ts
         ├── seedQuestionBank()  seedLessons()       (Chapter 4)
-        └── if NODE_ENV=development and DEMO_PASSWORD is set:
+        └── if DEMO_PASSWORD is set:
               await import('../src/demo/demo') → seedDemo(prisma, { runNow, password })
+                    ├── buildLearners()   the six, each replayed by replayLearner()
+                    └── seedDemoSocial()  their friendships, requests and messages
 
-apps/api/test/demo.e2e-spec.ts  → replayLearner() with replay-<stamp> identities
-apps/api/src/demo/demo.planner.spec.ts → unit tests of the planner and clock
+apps/api/test/demo.e2e-spec.ts  → replayLearner(), buildLearners(), seedDemoSocial()
+                                  with replay-<stamp> identities
+apps/api/src/demo/demo.planner.spec.ts → unit tests of the planner, clock and data
 ```
 
 `prisma.config.ts` also sets `seed: 'pnpm db:seed'`, the command `prisma db seed`
@@ -1308,15 +1372,20 @@ runs (Prisma 7 no longer seeds after `migrate reset`). From [seed.ts](../../apps
         console.log(`demo learners skipped: ${skip}`);
         return;
       }
-      // Loaded here only, so the public server never even reads the demo code.
+      // Loaded here only: a seed without DEMO_PASSWORD never reads the demo code.
       const { seedDemo } = await import('../src/demo/demo');
+      // A learner that fails is logged and skipped, never a failed seed: on a
+      // server this seed runs before every release (infra/deploy/deploy.sh).
       await seedDemo(prisma, { runNow: new Date(), password });
     })
 ```
 
-`demoSkipReason()` in the seed skips the demo unless `NODE_ENV` is exactly
-`development` **and** `DEMO_PASSWORD` is not empty. So the public server never gets fake
-users. The password is checked with the normal signup rules first.
+`demoSkipReason()` in the seed skips the demo only when `DEMO_PASSWORD` is empty, in a
+checkout and on a server alike: `make seed` hands `.env` to the tooling container, and on a
+server the deploy's one-shot `migrate` service passes it, the only service that gets it. The
+password is checked with the normal signup rules first, before anything is written: a bad one
+fails the seed. A learner that fails later is logged and skipped instead, so a demo learner
+never blocks a release.
 
 ### The idea: replay, don't fake
 
@@ -1325,60 +1394,83 @@ The comment at the top of `demo.ts` says it best:
 ```ts
 /*
  * The demo learners (#85), replayed through the real services day by day
- * with an injected clock. Never progress rows written by hand: finish and
- * setLevel decide every streak and result, so the learners follow every
- * rule, and whatever finish gains later (XP, #95) they gain too.
+ * with an injected clock. Never progress rows written by hand: finish,
+ * setLevel and setGoal decide every streak and result, so the learners
+ * follow every rule, and whatever finish gains later (XP, #95) they gain too.
+ * Their friendships and messages are rows (seedDemoSocial): nothing derives
+ * from them.
  */
 ```
 
 Instead of inserting rows like "streak = 12", the seed **plays the past**: it signs up
-each learner with the real `AuthService`, creates courses with `CoursesService`, and
-finishes lessons day by day with `LessonsService.finish`, passing a fake date. The real
-rules then compute streaks and results. If the rules change, the demo stays correct.
+each learner with the real `AuthService`, creates courses and changes their goal with
+`CoursesService`, and finishes lessons day by day with `LessonsService.finish`, passing a
+fake date. The real rules then compute streaks and results. If the rules change, the demo
+stays correct. Only the friendships and messages are written as rows: no rule reads them back.
 
 ```mermaid
 flowchart LR
     DATA["demo.data.ts: 6 profiles"] --> PLAN["demo.planner.ts: planCourse()"]
     CLOCK["demo.clock.ts: dates, seeded random scores"] --> PLAN
-    PLAN -->|"days: switches + finishes (at, score)"| REPLAY["demo.ts: replayCourse()"]
+    PLAN -->|"days: switches, goal changes, finishes (at, score)"| REPLAY["demo.ts: replayCourse()"]
     REPLAY --> AUTH["AuthService.signUp"]
-    REPLAY --> COURSES["CoursesService.createCourse / setLevel"]
+    REPLAY --> COURSES["CoursesService.createCourse / setLevel / setGoal"]
     REPLAY --> LESSONS["LessonsService.today / finish"]
+    DATA -->|"friendships, messages"| SOCIAL["demo.ts: seedDemoSocial()"]
     AUTH --> DB[("Postgres")]
     COURSES --> DB
     LESSONS --> DB
+    SOCIAL --> DB
 ```
 
 ### demo/demo.data.ts
 
-[demo.data.ts](../../apps/api/src/demo/demo.data.ts) is pure data: the six profiles and
-what each one shows.
+[demo.data.ts](../../apps/api/src/demo/demo.data.ts) is pure data: the six profiles, what
+each one shows, and what they share.
 
 | Learner | Time zone | What the pages show on French A1 |
 | --- | --- | --- |
-| anna | Europe/Zurich | streak 3, today's goal met |
-| ben | America/New_York | streak 12, "Reach today's goal to keep it", 1 of 3 today; switched to A2 and back |
-| chloe | Asia/Tokyo | streak 0, best 12; today 2 of 3, one failed |
+| anna | Europe/Zurich | streak 3, today's goal met (1 of 1), `streak3` earned today |
+| ben | America/New_York | streak 10, "Reach today's goal to keep it", 1 of 3 today: 10 minutes a day until this morning, 30 since; switched to A2 and back |
+| chloe | Asia/Tokyo | streak 0, best 7: raised her goal to 30 two days ago and missed it; today 2 of 3, one failed |
 | david | Europe/London | streak 6 still alive, 0 today |
 | eva | Europe/Berlin | French A1 complete, "Start A2" |
 | felix | UTC | no French; English course with no level (lands on onboarding step 2) |
 
-These states assume **48 ready French A1 lessons** (`SMALLEST_LEVEL`), which is what
-[demo.e2e-spec.ts](../../apps/api/test/demo.e2e-spec.ts) creates. A `make` stack has **12**
-today (12 briefs for the 120 entries of `content/outlines/fr-a1.json`). With 12 lessons, ben,
-chloe and david finish more lessons than the level holds, so they all show the level complete,
-like eva. chloe has no failed lesson today (her 40 lands on a lesson she already passed, and the
-best score is kept), and ben's lesson today shows 93, not 75.
+Every level has **12 ready lessons** in `content/`, and `SMALLEST_LEVEL = 12` says so; a unit
+spec holds French A1 to it. A level is complete once every lesson is attempted and 80% pass,
+and a failed lesson is offered again first. So every French profile but eva's finishes
+**fewer than 12 lessons in all**, past days and today (anna 3, ben 11, chloe 10, david 6): a
+lesson stays untried, so the level is never complete, and today's fixed scores land on lessons
+not passed yet, so each of today's cards shows the score written in the data. A streak of N
+days at 30 minutes costs 3N finishes, so ben and chloe build theirs at 10 minutes, one lesson a
+day, and raise the goal later.
 
 Each `DemoCourse` has `lang`, `level` (or `null`), `switches` (level changes `daysAgo`),
-`goal`, `passRate`, `days` and `todayScores`. `days` is either a list (`[3, 0, 3]` = 3
-finishes yesterday, none the day before, 3 the day before that) or
+`goal`, `goalChanges`, `passRate`, `days` and `todayScores`. `days` is either a list
+(`[3, 0, 3]` = 3 finishes yesterday, none the day before, 3 the day before that) or
 `{ untilAllAttempted: 6 }` (keep going back until every lesson of the level has a
-result — used for eva). Today's scores are fixed so today's state never depends on chance.
+result — used for eva). `goalChanges` (`[{ daysAgo: 0, goal: 30 }]` for ben) is a `setGoal`
+at that day's local midnight, after its switches and before its finishes, at most one a day,
+never with `untilAllAttempted`. Today's scores are fixed so today's state never depends on
+chance.
+
+Between them, `DEMO_FRIENDSHIPS` and `DEMO_MESSAGES`, requester or sender first:
+
+- anna is friends with ben and chloe, has a request from felix waiting on her (the Friends
+  badge) and one she sent to david;
+- chloe and anna exchanged three messages a day before the seed, all read; ben sent anna two
+  in the hour before it, unread (the chat badge shows 2);
+- ben and david, and eva and chloe, are friends too.
+
+anna's "Recently active" list then shows eva alone: it leaves out anyone she has a request or a
+friendship with.
 
 It also exports `demoEmail(name)` → `demo-<name>@example.com`, `demoDisplayName(name)` →
-`demo.<name>`, `SMALLEST_LEVEL = 48`, and `DEMO_EMAIL_FILTER` (`startsWith: 'demo-'`,
-`endsWith: '@example.com'`), which the seed uses to delete old demo users.
+`demo.<name>`, `SMALLEST_LEVEL = 12`, and `DEMO_EMAILS`, the six addresses the seed deletes
+before rebuilding them. The exact addresses, not a `demo-*` pattern: the seed runs on every
+deploy of a server with `DEMO_PASSWORD` set, and anyone can sign up there as
+`demo-me@example.com`.
 
 ### demo/demo.clock.ts
 
@@ -1397,7 +1489,8 @@ demo. All functions are **pure** (no database, same input → same output):
   probability `passRate`, else a fail. Always draws twice so changing the pass rate does
   not shift every later score.
 
-Result: two seeds on the same day write the same rows.
+Result: two seeds on the same day write the same scores, days, streaks and results. Not the
+same XP: the daily challenge hashes the course's id (`challengeFor`), a new uuid on each seed.
 
 ### demo/demo.planner.ts
 
@@ -1409,6 +1502,8 @@ export type PlannedDay = {
   day: CourseDay;
   /** setLevel calls, in order, before the day's finishes. */
   switches: Level[];
+  /** A setGoal at the day's local midnight, after the switches, before the finishes. */
+  goal: { at: Date; dailyGoal: DailyGoal } | null;
   finishes: PlannedFinish[];
 };
 ```
@@ -1416,6 +1511,9 @@ export type PlannedDay = {
 - Past days' finishes start at **19:00 local time**, one lesson length apart.
 - Today's finishes are spread evenly between local midnight and `runNow`, so none is in
   the future.
+- A goal change is planned at its day's local midnight: after that day's switches, before
+  its first finish, never after the run. Two on one day, or one with `untilAllAttempted`
+  (`daysToAttemptAll` plans at the first goal), throw.
 - For `untilAllAttempted`, `daysToAttemptAll()` simulates the real `plan` and `merge`
   rules on made-up days to know how many days are needed (a failed lesson comes back
   first, so it depends on the scores). It stops with an error after 365 days, so a bad
@@ -1431,41 +1529,63 @@ them, like a learner following the daily page.
 [demo.ts](../../apps/api/src/demo/demo.ts) runs the replay. It exports:
 
 - `seedDemo(prisma, { runNow, password })` — builds the services **by hand** (the seed
-  runs outside Nest, so there is no dependency injection), deletes all old demo users
-  (the database cascade removes their courses and results), then replays each profile:
+  runs outside Nest, so there is no dependency injection), deletes the six demo learners
+  (the database cascade removes their courses and results, their friendships, and their
+  whole conversations, the other side's messages included), then builds the learners and
+  their friendships and messages:
 
 ```ts
   const services: DemoServices = {
     prisma,
     auth: new AuthService(prisma),
-    // Never attached outside Nest: the replay's level changes reach no socket.
+    // Never attached outside Nest: the replay's level and goal changes reach no socket.
     courses: new CoursesService(prisma, new SocketsService()),
     lessons: new LessonsService(prisma),
   };
 
-  await prisma.user.deleteMany({ where: { email: DEMO_EMAIL_FILTER } });
+  await prisma.user.deleteMany({ where: { email: { in: DEMO_EMAILS } } });
 ```
 
   This is the link to this chapter: `CoursesService` needs a `SocketsService`, and an
   unattached one simply sends nothing.
 
+- `buildLearners(services, learners, runNow)` — replays each learner in turn and returns
+  their ids by profile name. One that throws is logged (`demo learner … skipped:`), what
+  it wrote is deleted by its email, and the next one is built: on a server the seed runs
+  before every release, and a demo learner must never block one. The known causes are
+  `auth.identityTaken`, when an account outside the demo emails holds `demo.<name>`, and
+  P2028 on a host too slow for the replay's transactions. The seed then logs
+  `seeded 6 of 6 demo learners: …`.
 - `replayLearner(services, identity, profile, runNow)` — signs up, writes the time zone
   and `lastActiveDay` (a seeded learner never opens a socket, so this makes them show in
-  "Recently active"), reads the user again, then replays each course.
+  "Recently active"), reads the user again, replays each course, and returns the user's id.
 - `replayCourse` (private) — creates the course, sets the level, then for each planned
-  day: applies the level switches, asks `lessons.today(...)` for the lessons offered
-  that day, and calls `lessons.finish(...)` with the planned date and score.
-- Types `DemoServices` and `DemoIdentity`.
+  day: applies the level switches and the goal change (`courses.setGoal` at the planned
+  instant), asks `lessons.today(...)` for the lessons offered that day, and calls
+  `lessons.finish(...)` with the planned date and score.
+- `seedDemoSocial(prisma, ids, runNow)` — writes `DEMO_FRIENDSHIPS` and `DEMO_MESSAGES` as
+  rows in one transaction, each message `minutesAgo` before the run. Keys and conversations
+  are built as `MessagesService.send` builds them: `pairKey`, the smaller id first. Rows,
+  not the services: nothing derives from them, `FriendsService` wants Redis for presence,
+  and `MessagesService.send` stamps the real time and spends a rate limit. A row with a
+  skipped learner on either side is left out; a failed transaction is logged, and the seed
+  goes on.
+- Types `DemoServices`, `DemoIdentity` and `DemoLearner`.
 
 The file is in `src/` on purpose: if a service gains a new constructor argument, the
 TypeScript check fails here, not only when someone runs the seed.
 
 **Specs:** [demo.planner.spec.ts](../../apps/api/src/demo/demo.planner.spec.ts) tests
-`atLocalTime`, `daysBefore`, `pastScore`, `planCourse` (time zones, 19:00 finishes,
-today's spread, same plan on a second run, switches), `daysToAttemptAll`, and the
-profiles themselves. [demo.e2e-spec.ts](../../apps/api/test/demo.e2e-spec.ts) replays
-ben's and chloe's profiles against a real Postgres under `replay-<stamp>` emails (see
-[10-tests.md](10-tests.md)).
+`atLocalTime`, `daysBefore`, `pastScore`, `planCourse` (time zones, 19:00 finishes, today's
+spread, same plan on a second run, switches, goal changes), `daysToAttemptAll`, the profiles
+themselves and the exact emails the seed deletes, that `content/` holds at least
+`SMALLEST_LEVEL` ready French A1 lessons, and the friendships and messages (demo learners only,
+one row a pair, messages between accepted friends, anna's two badges).
+[demo.e2e-spec.ts](../../apps/api/test/demo.e2e-spec.ts) replays anna's, ben's, chloe's,
+david's and eva's French courses against a real Postgres under `replay-…` emails, with French
+A1 padded to 12 ready lessons where the database has fewer; checks that `buildLearners` skips a
+failing learner and builds the next; and checks the rows of `seedDemoSocial` through
+`pendingRequests`, `unreadCounts` and `areFriends` (see [10-tests.md](10-tests.md)).
 
 ---
 
@@ -1485,11 +1605,12 @@ ben's and chloe's profiles against a real Postgres under `replay-<stamp>` emails
   subtract, so reloads never show offline.
 - `pairKey(a, b)` gives one key per pair: one friendship row, one conversation, and no
   way to reach someone else's rows.
-- Friend events and `course:updated` only say "read again"; `dm:unread` is always the
-  whole picture, stamped with `at` before the query.
+- Friend events and `course:updated` only say "read again"; `dm:unread` and
+  `friend:pending` are always the whole picture, stamped with `at` before the query.
 - `friend-ids.ts` and `unread.ts` are plain functions to avoid circular module imports.
 - `demo/` is not real time: the seed replays six fake learners through the real services
-  with a fake clock, only in development with `DEMO_PASSWORD` set.
+  with a fake clock, and writes their friendships and messages, wherever `DEMO_PASSWORD` is
+  set, a server included.
 
 ---
 

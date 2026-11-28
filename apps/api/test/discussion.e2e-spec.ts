@@ -133,7 +133,7 @@ describe('lesson discussion (e2e)', () => {
     await app.init();
     prisma = app.get(PrismaService);
     llm = app.get(LLM_PROVIDER);
-    // The default limits would refuse agent, who sends more than 2 messages a minute.
+    // The default limits would refuse agent, who sends more than 5 messages a minute.
     limits = app.get(DiscussionService).limits;
     Object.assign(limits, ROOMY);
 
@@ -329,6 +329,7 @@ describe('lesson discussion (e2e)', () => {
     it.each([
       [FIXTURE_FAILURES.blocked, 'llm.blocked'],
       [FIXTURE_FAILURES.timeout, 'llm.unavailable'],
+      [FIXTURE_FAILURES.quotaDay, 'llm.quotaExhausted'],
     ])(
       'sends only an error event when the LLM fails before any text (%s → %s)',
       async (failure, code) => {
@@ -360,6 +361,16 @@ describe('lesson discussion (e2e)', () => {
         expect(await codeOf(failing(new LlmError('upstream', false, reason)))).toEqual([
           { event: 'error', data: { code } },
         ]);
+      });
+
+      // The reason alone does not tell the quotas apart: LlmError.quota does.
+      it.each([
+        ['the minute', 'minute', 'llm.rateLimited'],
+        ['the day', 'day', 'llm.quotaExhausted'],
+      ] as const)('a 429 for the quota of %s → %s', async (_, scope, code) => {
+        const error = new LlmError('upstream', true, 'rate_limited', { scope, retryAfterS: 60 });
+
+        expect(await codeOf(failing(error))).toEqual([{ event: 'error', data: { code } }]);
       });
 
       it('LLM_PROVIDER=disabled → llm.disabled', async () => {
@@ -426,7 +437,7 @@ describe('lesson discussion (e2e)', () => {
 
     /**
      * A new learner on the discussion page, and a function sending a message
-     * from them. Few of them: signup allows 5 per address per minute.
+     * from them. Few of them: signup allows 20 per address per minute.
      */
     const fresh = async (name: string) => {
       const learner = await other(name);

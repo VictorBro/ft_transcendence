@@ -37,8 +37,8 @@ L'issue #213 avait deux problèmes, tous les deux dans le lecteur de leçon.
 
 | Fichier | Rôle | Auteur |
 |---|---|---|
-| [tutor-answer.tsx](../../../../apps/web/components/lesson/tutor-answer.tsx) | `TutorAnswer` : affiche une réponse du tuteur en Markdown, de façon sûre | moi (#214) |
-| [tutor-answer.test.tsx](../../../../apps/web/components/lesson/tutor-answer.test.tsx) | 6 tests : Markdown, tableaux, liens, HTML brut, images, réponse coupée | moi (#214) |
+| [tutor-answer.tsx](../../../../apps/web/components/lesson/tutor-answer.tsx) | `TutorAnswer` : affiche une réponse du tuteur en Markdown, de façon sûre. Depuis, le fichier a aussi `TutorThinking`, les trois points pendant que le tuteur prépare sa réponse | moi (#214) ; `TutorThinking` : Victor |
+| [tutor-answer.test.tsx](../../../../apps/web/components/lesson/tutor-answer.test.tsx) | 7 tests : Markdown, tableaux, liens, HTML brut, images, réponse coupée (mes 6), et les trois points de `TutorThinking` | moi (#214) ; le 7ᵉ : Victor |
 | [lib/voice.ts](../../../../apps/web/lib/voice.ts) | `pickVoice` (choisir la voix), `spokenText` (nettoyer le texte), `SPEECH_RATE` (0,85) | moi (#214) |
 | [lib/voice.test.ts](../../../../apps/web/lib/voice.test.ts) | 19 tests sur le choix de voix et le nettoyage | moi (#214) |
 | [discussion.tsx](../../../../apps/web/components/lesson/discussion.tsx) | La fenêtre du tuteur. J'ai remplacé `{turn.text}` par `<TutorAnswer>` pour les réponses du tuteur. | Luca (#205), retouché par moi |
@@ -355,7 +355,7 @@ Puis l'apprenant clique Écouter sur « Je ___ français. ». `spokenText` donne
 
 | Fichier | Ce qu'il vérifie |
 |---|---|
-| [tutor-answer.test.tsx](../../../../apps/web/components/lesson/tutor-answer.test.tsx) (6 tests) | Le Markdown est rendu (gras, italique, listes, titre), sans `*` ni `#` qui restent. Les tableaux et le texte barré (GFM). Un lien normal s'ouvre dans un nouvel onglet, une note reste sur la page. Le HTML brut reste du texte. Pas d'image, pas de `javascript:`. La réponse coupée finit par « … ». |
+| [tutor-answer.test.tsx](../../../../apps/web/components/lesson/tutor-answer.test.tsx) (7 tests) | Le Markdown est rendu (gras, italique, listes, titre), sans `*` ni `#` qui restent. Les tableaux et le texte barré (GFM). Un lien normal s'ouvre dans un nouvel onglet, une note reste sur la page. Le HTML brut reste du texte. Pas d'image, pas de `javascript:`. La réponse coupée finit par « … ». Le 7ᵉ, ajouté après moi : `TutorThinking` dessine trois points, cachés aux lecteurs d'écran, animés seulement si le système accepte les animations. |
 | [lib/voice.test.ts](../../../../apps/web/lib/voice.test.ts) (19 tests) | `pickVoice` : `null` sans voix de la langue ; la région principale d'abord ; `en-GB` avant `en-US` ; une autre région si besoin ; `fr`, `fr-FR`, `fr_FR` acceptés ; naturelle avant basique ; femme parmi les naturelles ; naturelle d'homme avant basique de femme ; en ligne puis défaut ; sinon la première. `spokenText` : phrase normale inchangée, trou → pause, Markdown retiré, `/` → virgule, texte vide si rien à dire. |
 
 Les tests de composants utilisent `renderToStaticMarkup` : ils transforment le composant en HTML, sans navigateur. C'est suffisant ici, car `TutorAnswer` n'a ni état ni effet. `pickVoice` est testé avec de fausses voix (un simple objet `lang`, `name`, `localService`, `default`) : pas besoin d'un vrai navigateur.

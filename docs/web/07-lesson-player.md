@@ -453,6 +453,7 @@ flowchart TD
   ET --> CNT["Countdown"]
   LP --> DIS["Discussion (discussion page)"]
   DIS --> TA["TutorAnswer (Markdown)"]
+  DIS --> TT["TutorThinking (dots before the first word)"]
   LP --> IT["Item × n"]
   IT --> REG{"ITEM_RENDERERS[item.type]"}
   REG --> GR["grammar renderers"]
@@ -1138,6 +1139,18 @@ There are three suggested prompts (explain my mistakes, a summary, an example). 
 
 The answers list has `aria-live="polite"` and `aria-busy={streaming}`: a screen reader waits until the answer is complete and reads it once.
 
+#### While the tutor thinks
+
+Between the send and the first word, there is no answer to show yet. With Gemini this often takes several seconds, sometimes more than a minute (the timeout is 90 s). During that time the page shows three dots where the answer will start, and tells a screen reader "The tutor is thinking…".
+
+There is no new state for it. `thinking = isThinking(asking)` (from `discussion-client.ts`) is read from `asking`: set, with no error, and an answer still `''`. A heartbeat or an empty piece does not end it. The first word ends it. So do Stop, a 409, a 429, an error and the end of the answer, because each one sets `asking` to `null` or sets its error.
+
+- **Seen:** `TutorThinking` (in `tutor-answer.tsx`) is the last item of the list while `thinking` is true. It is a small rounded bubble on the left, with three dots. The dots bounce only under `motion-safe:`, so they stand still for a learner who asked for reduced motion. The bubble is `aria-hidden` and has no `data-turn`: it is not a turn, and the browser tests count the turns.
+- **Heard:** a `<p aria-live="polite" className="sr-only">` after the list holds `t('tutorThinking')` while `thinking` is true, and nothing otherwise. It is always on the page, because a screen reader announces a live region that was already there more reliably than one added with its text. It is outside the list, which is `aria-busy` while the answer comes. It uses `aria-live`, not `role="status"`: the 429 countdown keeps the section's only status role. Its text goes at the first word, so it is said once per message, not once per piece.
+- The dots show at once, with no delay. On the fixture they last about 50 ms. With Gemini they last until the model's first word.
+
+Tested in `lib/discussion-client.test.ts` (`isThinking` through a heartbeat, an empty piece and the first word), `components/lesson/discussion.test.tsx` (the empty live region is on the page before any message, with no dots and no `role="status"`), `tutor-answer.test.tsx` (the dots), and `e2e/tests/discussion.spec.ts` (the dots and their text while a held request waits; no dots after Stop, an answer, an error or a 429).
+
 ### Sequence: asking the tutor a question
 
 ```mermaid
@@ -1150,6 +1163,7 @@ sequenceDiagram
   L->>D: types a question, presses Enter
   D->>D: LessonDiscussionSchema.safeParse
   D->>C: ask(body, onText, signal)
+  D-->>L: three dots, "The tutor is thinking…" (until the first word)
   C->>API: POST /discussion (accept: text/event-stream)
   alt refused before the stream
     API-->>C: 409 / 429 JSON error
@@ -1189,7 +1203,9 @@ The model writes Markdown (bold, lists, headings, tables). `TutorAnswer` renders
 - `components` maps each Markdown element to a styled one. Headings become a bold `<p>` (the page already has its own `<h1>`). Tables get a scroll wrapper for phones. External links open in a new tab with `rel="noopener noreferrer nofollow"`.
 - `cut`: an answer stopped by an error ends with "…" on its last block.
 
-`tutor-answer.test.tsx` renders it to static HTML and checks that no `*` or `#` is left, that tables and strikethrough render, that links open in a new tab (footnote links stay), that raw HTML, images and `javascript:` links never come through, and that a cut answer ends with "…".
+The same file has `TutorThinking`, the three dots shown before the first word (see "While the tutor thinks" above). Its class names are written whole, because Tailwind only finds classes in literal strings.
+
+`tutor-answer.test.tsx` renders it to static HTML and checks that no `*` or `#` is left, that tables and strikethrough render, that links open in a new tab (footnote links stay), that raw HTML, images and `javascript:` links never come through, and that a cut answer ends with "…". For `TutorThinking`, it checks the three dots, that the bubble is `aria-hidden`, that they bounce only under `motion-safe:`, and that there is no `data-turn`.
 
 ---
 

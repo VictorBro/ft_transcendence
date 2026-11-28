@@ -260,7 +260,7 @@ Le même fichier contient les constantes `RECOVERY_CODE_COUNT = 10`, `RECOVERY_C
 | Méthode | Chemin             | Guard     | Limite de débit (par IP) | Ce qu'elle fait                                                                                                                      |
 | ------- | ------------------ | --------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
 | POST    | `/auth/signup`     | `@Public` | signup (20/min)          | Crée le compte, démarre une session, renvoie l'utilisateur (201)                                                                     |
-| POST    | `/auth/login`      | `@Public` | login (5/min)            | Vérifie le mot de passe. Sans 2FA : session + utilisateur (200). Avec 2FA : session en attente + `{ twoFactorRequired: true }` (202) |
+| POST    | `/auth/login`      | `@Public` | login (20/min)           | Vérifie le mot de passe. Sans 2FA : session + utilisateur (200). Avec 2FA : session en attente + `{ twoFactorRequired: true }` (202) |
 | POST    | `/auth/2fa/verify` | `@Public` | login                    | Termine une connexion en attente avec un code TOTP ou un code de récupération                                                        |
 | GET     | `/auth/2fa`        | session   | —                        | État de la 2FA de mon compte                                                                                                         |
 | POST    | `/auth/2fa/setup`  | session   | —                        | Commence l'inscription : nouveau secret + QR code (409 si la 2FA est déjà active)                                                    |

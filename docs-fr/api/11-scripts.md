@@ -202,6 +202,10 @@ dans DATABASE_URL et, avec Gemini, dépense des tokens).
 
 ```ts
   const categories = picked.data.length > 0 ? picked.data : QUESTION_CATEGORIES;
+  // .env holds no DATABASE_URL: compose and make build it from POSTGRES_*, and a
+  // devcontainer shell has none exported. The same URL, with compose's defaults,
+  // `||` because compose's `:-` replaces an empty value too.
+  process.env.DATABASE_URL ??= `postgresql://${process.env.POSTGRES_USER || 'ft'}:${process.env.POSTGRES_PASSWORD || 'ft_local_dev'}@db:5432/${process.env.POSTGRES_DB || 'ft_transcendence'}?schema=public`;
   const prisma = new PrismaService();
   const stock = new QuestionStockService(prisma, createLlmProvider(process.env));
 
@@ -218,7 +222,9 @@ dans DATABASE_URL et, avec Gemini, dépense des tokens).
 Pour un niveau, toutes les langues, et les catégories choisies (ou les trois), il appelle
 `QuestionStockService.restock` (le même code que celui de l'examen de placement), puis relit les
 nouvelles lignes générées (`sourceId: null`, créées après `started`) et les affiche en JSON avec le
-statut et le temps. `finally` déconnecte Prisma.
+statut et le temps. `finally` déconnecte Prisma. Sans `DATABASE_URL` dans l'environnement (`.env` n'en
+a pas), il construit celle que compose construit à partir des `POSTGRES_*`, sur l'hôte `db` : il tourne depuis
+le devcontainer.
 
 **Qui l'appelle** : un développeur, pour voir la vraie sortie d'un provider, comme montré dans
 [docs/content/item-bank.md](../content/item-bank.md).

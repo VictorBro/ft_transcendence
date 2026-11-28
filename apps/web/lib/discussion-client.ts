@@ -107,3 +107,12 @@ function readEvent(block: string): { name: string; data: Record<string, unknown>
     return { name, data: {} };
   }
 }
+
+/**
+ * The tutor is thinking: the message is sent and no word of the answer has
+ * come (a heartbeat or an empty piece is none). Not once it failed (error),
+ * nor once it ended, was stopped or refused (asking is null then).
+ */
+export function isThinking(asking: { answer: string; error: string | null } | null): boolean {
+  return asking !== null && asking.error === null && asking.answer === '';
+}

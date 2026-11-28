@@ -8,7 +8,7 @@ In this chapter:
 - Small invisible helpers: `LocaleSync`, `TimeZoneSync`, `useScrollLock`
 - The live connection: **one socket per browser tab** (`tab-socket.ts`, `lib/reconnect.ts`)
 - How `RefreshOn` re-renders a page when the server sends an event
-- The unread badge and the "Reconnecting…" pill
+- The unread and friend request badges, and the "Reconnecting…" pill
 
 ---
 
@@ -28,7 +28,7 @@ flowchart TD
     DL["(dashboard)/layout.tsx"] --> TZ["TimeZoneSync"]
     DL --> LS["LocaleSync"]
     DL --> S3["Shell fill"]
-    S1 --> W1["Wordmark href=/"]
+    S1 --> W1["Wordmark href=/ or /learn"]
     S1 --> HN1["HeaderNav"]
     S2 --> W2["Wordmark href=/learn"]
     S2 --> HN2["HeaderNav"]
@@ -46,12 +46,12 @@ flowchart TD
     HN["HeaderNav / DashboardNav<br/>(server)"] --> Q{"signed in?"}
     Q -- no --> ROW["one row: LanguageSwitcher + SessionNav<br/>(DashboardNav: + CourseSwitcher)"]
     Q -- yes --> HM["HeaderMenu (client)<br/>button + panel"]
-    HM --> UB1["UnreadTotalBadge on the button"]
+    HM --> UB1["MenuBadge on the button<br/>unread + friend requests"]
     HM --> CS["CourseSwitcher (DashboardNav only)"]
     HM --> LSW["LanguageSwitcher"]
     HM --> SN["SessionNav (server)"]
     SN --> CON["ConnectionStatus<br/>opens the tab socket"]
-    SN --> LINKS["Profile, Friends, Messages + UnreadTotalBadge"]
+    SN --> LINKS["Profile, Friends + FriendPendingBadge,<br/>Messages + UnreadTotalBadge"]
     SN --> LO["LogOutButton"]
 ```
 
@@ -131,8 +131,8 @@ export function Shell({ brand, nav, fill = false, footer, children }: ShellProps
 - `CONTAINER` = `mx-auto w-full max-w-6xl px-4 sm:px-6`: centered, max width, side space.
 
 **Why `nav` is a prop and not inside Shell?** `SessionNav` reads cookies. `Shell` is also used by
-`error.tsx` (a client component) and by the 404 page (which must not read cookies). Those pass no
-`nav`. So `Shell` itself fetches no data.
+`error.tsx`, a client component that cannot read the session. It passes no `nav`. So `Shell`
+itself fetches no data.
 
 `Wordmark` is the product name as a link home:
 
@@ -152,8 +152,9 @@ export function Wordmark({ href = '/' }: { href?: '/' | '/learn' }) {
 }
 ```
 
-"Home" is `/` for the marketing pages and `/learn` inside the app, so a signed-in learner is not
-sent back to the landing page. The long class means: on small screens, *if the page contains a
+"Home" is `/learn` inside the app. On the marketing pages and the 404 it follows the session:
+`/learn` for a signed-in user, `/` for a visitor. So a signed-in learner is not sent back to the
+landing page. The long class means: on small screens, *if the page contains a
 `[data-course-menu-button]`*, hide the wordmark. The course page puts that button in the
 course-menu slot (see `lib/course-menu-slot.ts` below), so the button takes the logo's place.
 
@@ -191,11 +192,11 @@ export async function HeaderNav() {
     </>
   );
 
-  return user === null ? (
-    <div className="flex min-w-0 flex-wrap items-center gap-x-4 gap-y-2">{items}</div>
-  ) : (
-    <HeaderMenu>{items}</HeaderMenu>
-  );
+  if (user === null) {
+    return <div className="flex min-w-0 flex-wrap items-center gap-x-4 gap-y-2">{items}</div>;
+  }
+  // Signed in only, so a visitor costs no extra call.
+  return <HeaderMenu requests={await friendPending()}>{items}</HeaderMenu>;
 }
 ```
 
@@ -203,10 +204,15 @@ A server component. Same items in both cases, different wrapping:
 
 - **Visitor** (not signed in): language select, "Sign in", "Create account" in one row. Folding
   them into a menu would hide "Sign in".
-- **Signed in**: everything goes into the `HeaderMenu` (one button that opens a panel).
+- **Signed in**: everything goes into the `HeaderMenu` (one button that opens a panel). It gets
+  `requests`, the number of friend requests waiting, from `friendPending()`
+  ([lib/friends.ts](../../apps/web/lib/friends.ts), `GET /api/friends/pending`). So the count is in
+  the first HTML, before any socket. `friendPending()` returns `undefined` when the API cannot
+  answer: the badge then waits for the socket, and the page does not fail.
 
 `currentUser()` is cached per render (React `cache`, chapter 4), so the layout, this nav and
-`SessionNav` share one session lookup.
+`SessionNav` share one session lookup. `friendPending()` is cached the same way: the menu button
+and the Friends row ask once.
 
 ### `dashboard-nav.tsx`
 
@@ -228,7 +234,8 @@ export async function DashboardNav() {
 
 `HeaderNav` plus the `CourseSwitcher` (the list of the learner's courses; chapter 6). It is a
 separate component because in `(main)` it would load courses for anonymous visitors, and in
-`(messages)` no course is open. `Promise.all` runs the two requests at the same time.
+`(messages)` no course is open. `Promise.all` runs the two requests at the same time. Signed in,
+it ends like `HeaderNav`: `<HeaderMenu requests={await friendPending()}>`.
 
 ---
 
@@ -282,8 +289,9 @@ How it closes:
   placed.
 - `data-header-menu` lets children change their look when they are inside the menu: Tailwind's
   `in-data-header-menu:` variant (used by `LanguageSwitcher` and `CourseSwitcher`).
-- The button shows `<UnreadTotalBadge />` in its corner, so you see new messages without opening
-  the menu.
+- The button shows `<MenuBadge requests={requests} />` in its corner: unread messages plus friend
+  requests waiting, so you see them without opening the menu (section 11). `requests` is the count
+  the server rendered.
 - The backdrop is `fixed inset-0 -z-10`: inside the header's `z-50` stacking context, so it dims
   the page while the wordmark and the button stay bright.
 
@@ -376,8 +384,10 @@ Signed in, it returns:
 
 1. `<ConnectionStatus />` — opens the tab's live connection (section 8).
 2. A `<nav>` with: the avatar and display name (link to `/profile`, the name is cut with
-   `truncate` because a 32-letter name with no space would break the row), "Friends", "Messages"
-   with the `UnreadTotalBadge` at the end, a line, and `LogOutButton`.
+   `truncate` because a 32-letter name with no space would break the row), "Friends" with the
+   `FriendPendingBadge` at the end, "Messages" with the `UnreadTotalBadge` at the end, a line, and
+   `LogOutButton`. The Friends badge starts from `friendPending()`, the same cached call as the
+   menu button's.
 
 **Why is `ConnectionStatus` here?** `SessionNav` is in every shell's header but never on an error
 page or the 404. And only the signed-in branch renders it. So the socket opens exactly on
@@ -600,6 +610,7 @@ The event names are shared between API and web in `@ft/shared`:
 | --- | --- |
 | `course:updated` | A course changed; read it again |
 | `friend:request`, `friend:accepted`, `friend:removed` | Friend list changed |
+| `friend:pending` | How many friend requests wait on you |
 | `presence:update` | A friend went online or offline |
 | `dm:message` | A new direct message |
 | `dm:unread` | The unread counts per conversation |
@@ -628,6 +639,8 @@ const watchers = new Set<() => void>();
 const presence = createPresenceMap();
 // The same for the unread counts, so the account menu's badge is right on any page.
 const unread = createUnreadStore();
+// The same for friend requests waiting on this user, for the account menu's counts.
+const pending = createPendingStore();
 ```
 
 | Variable | Holds |
@@ -639,6 +652,7 @@ const unread = createUnreadStore();
 | `watchers` | React components that want to know when `status` changes |
 | `presence` | Who is online (from [lib/presence.ts](../../apps/web/lib/presence.ts), chapter 8) |
 | `unread` | Unread counts per conversation (from [lib/unread.ts](../../apps/web/lib/unread.ts), chapter 8) |
+| `pending` | How many friend requests wait on this user (also from `lib/unread.ts`) |
 
 Nothing runs during the server render: the socket is only created when browser code first calls
 `socket()`.
@@ -679,6 +693,7 @@ function socket(): TabSocket {
     // carries their `online`. Forgotten, so no older entry can stand above it.
     created.on(SERVER_EVENTS.FRIEND_ACCEPTED, ({ userId }) => presence.forget(userId));
     created.on(SERVER_EVENTS.DM_UNREAD, (snapshot) => unread.apply(snapshot));
+    created.on(SERVER_EVENTS.FRIEND_PENDING, (snapshot) => pending.apply(snapshot));
     tab = created;
   }
   return tab;
@@ -696,8 +711,8 @@ The options, with the reasons from the comments:
   otherwise).
 
 The listeners: on `connect`, reset the retry counter and clear the presence map (every connect
-brings a full fresh snapshot of friends). Presence and unread events go straight into their stores,
-so nothing is missed even when no component is listening.
+brings a full fresh snapshot of friends). Presence, unread and friend request events go straight
+into their stores, so nothing is missed even when no component is listening.
 
 ### The rules: `lib/reconnect.ts`
 
@@ -793,6 +808,7 @@ function follow(step: NextStep): void {
   } else if (step === 'signedOut') {
     // The session is over: its counts must not outlive it on this tab.
     unread.clear();
+    pending.clear();
     setStatus('signedOut');
   }
 }
@@ -825,11 +841,12 @@ stateDiagram-v2
 | Export | Who calls it | What it does |
 | --- | --- | --- |
 | `connectSocket()` | `ConnectionStatus` | Dials if not connected and not already trying (`active`). Cancels a pending retry. After `signedOut`, resets to `closed` so a new sign-in in the same tab gets a socket. |
-| `closeSocket()` | `LogOutButton` | Cancels retries, disconnects, clears presence and unread, status `closed`. |
+| `closeSocket()` | `LogOutButton` | Cancels retries, disconnects, clears presence, unread and friend requests, status `closed`. |
 | `useSocketStatus()` | `ConnectionStatus`, `RefreshOn` | Hook: the current status. |
 | `useServerEvent(event, handler)` | `RefreshOn`, chat | Hook: listen to one server event while the component is on screen. |
 | `useFriendOnline(id, rendered)` | presence dots (chapter 8) | Is this friend online? |
 | `useUnreadCounts()`, `useUnreadTotal()`, `useUnread(id, rendered)` | badges, chat (chapter 8) | Unread counts. |
+| `useFriendPending(rendered)` | badges (section 11) | Friend requests waiting: the last `friend:pending`, or `rendered`, the server's count, until the first one. |
 | `sendMessage(userId, text)` | chat (chapter 8) | Sends a message over the socket, through `lib/send-message.ts`. |
 | `markRead(userId)` | chat thread (chapter 8) | Says "I read it", only while connected. |
 
@@ -853,8 +870,8 @@ export function useSocketStatus(): SocketStatus {
 
 Three arguments: how to subscribe (add a callback to `watchers`), how to read the value now, and
 the value for the server render (`'closed'`). `setStatus()` changes `status` and calls every
-watcher, and React re-renders the components that use the hook. The presence and unread hooks
-work the same way with their own stores.
+watcher, and React re-renders the components that use the hook. The presence, unread and friend
+request hooks work the same way with their own stores.
 
 `useServerEvent` uses two effects:
 
@@ -996,35 +1013,84 @@ sequenceDiagram
 
 ## 11. `unread-badge.tsx`
 
-File: [unread-badge.tsx](../../apps/web/components/unread-badge.tsx) — exports `UnreadBadge` and
-`UnreadTotalBadge`.
+File: [unread-badge.tsx](../../apps/web/components/unread-badge.tsx) — exports `UnreadBadge`,
+`UnreadTotalBadge`, `FriendPendingBadge` and `MenuBadge`. They all draw the same red pill:
 
 ```tsx
-export function UnreadBadge({ count }: { count: number | undefined }) {
-  const t = useTranslations('MessagesPage');
-
-  if (count === undefined || count === 0) return null;
+function CountBadge({ count, label }: { count: number; label: string }) {
   return (
     // inline-flex, so the underline of a link around it does not run through it.
     <span className="inline-flex h-5 min-w-5 shrink-0 items-center justify-center rounded-full bg-red-500 px-1.5 text-xs font-semibold text-white">
       <span aria-hidden>{badgeText(count)}</span>
-      <span className="sr-only">{t('unread', { count })}</span>
+      <span className="sr-only">{label}</span>
     </span>
   );
+}
+
+/** How many messages wait unread. */
+export function UnreadBadge({ count }: { count: number | undefined }) {
+  const t = useTranslations('MessagesPage');
+
+  if (count === undefined || count === 0) return null;
+  return <CountBadge count={count} label={t('unread', { count })} />;
 }
 
 /** Every conversation's, for the account menu's Messages link. */
 export function UnreadTotalBadge() {
   return <UnreadBadge count={useUnreadTotal()} />;
 }
+
+/** Requests waiting on you, for the account menu's Friends link. */
+export function FriendPendingBadge({ rendered }: { rendered: number | undefined }) {
+  const t = useTranslations('FriendsPage');
+  const count = useFriendPending(rendered);
+
+  if (count === undefined || count === 0) return null;
+  return <CountBadge count={count} label={t('pending', { count })} />;
+}
 ```
 
-- A red circle with the count. Nothing at 0, and nothing before the tab has heard
+- A red circle with the count. Nothing at 0, and nothing before anything is known
   (`undefined`), so a "0" never flashes on first paint.
 - The eye sees `badgeText(count)` (`99+` at most, from `lib/unread.ts`). A screen reader hears the
   full sentence with the exact number: `"3 unread messages"` (an ICU plural, chapter 2).
-- `UnreadTotalBadge` sums all conversations from the tab socket's unread store. It appears twice:
-  on the menu button and on the "Messages" row. Chapter 8 uses `UnreadBadge` per conversation.
+- `UnreadTotalBadge` sums all conversations from the tab socket's unread store. It is on the
+  "Messages" row. Chapter 8 uses `UnreadBadge` per conversation.
+- `FriendPendingBadge` is on the "Friends" row: `"2 friend requests"` (`FriendsPage.pending`).
+  Unlike the unread count, the server renders it: `rendered` comes from `friendPending()`, and
+  `useFriendPending` keeps it until the first `friend:pending`. The count stays until each request
+  is accepted, declined or cancelled: opening /friends does not clear it.
+
+The menu button shows everything behind it in one badge:
+
+```tsx
+export function MenuBadge({ requests: rendered }: { requests: number | undefined }) {
+  const messages = useTranslations('MessagesPage');
+  const friends = useTranslations('FriendsPage');
+  const format = useFormatter();
+  const unread = useUnreadTotal();
+  const requests = useFriendPending(rendered);
+  const total = menuTotal(unread, requests);
+
+  if (total === undefined || total === 0) return null;
+  const parts = [
+    requests ? friends('pending', { count: requests }) : null,
+    unread ? messages('unread', { count: unread }) : null,
+  ].filter((part): part is string => part !== null);
+  return <CountBadge count={total} label={format.list(parts)} />;
+}
+```
+
+- The digits are the sum (`menuTotal` in `lib/unread.ts`: `undefined` only while neither count is
+  known).
+- The screen reader label names each part, joined by `format.list` in the page's language:
+  `"1 friend request and 2 unread messages"`. With no request it is exactly `"1 unread message"`,
+  as before.
+- On first paint only the friend requests are known: unread messages still come from the socket
+  only. So the number can grow a moment later, when `dm:unread` arrives.
+
+Tests: [unread-badge.test.tsx](../../apps/web/components/unread-badge.test.tsx) renders the
+badges as the server does (`renderToStaticMarkup`), in English, French and German.
 
 ---
 
@@ -1056,8 +1122,8 @@ It turns seconds into `m:ss`. It is **not** used by the shell: only the lesson c
   provider, so navigation and language switches do not drop it.
 - Retries wait 1 → 10 s with random spread, and first ask `/healthz/api`, so a down API makes no
   console errors. The rules live in `lib/reconnect.ts` and are unit tested.
-- React reads the module state through `useSyncExternalStore` (`useSocketStatus`, unread and
-  presence hooks).
+- React reads the module state through `useSyncExternalStore` (`useSocketStatus`, unread, friend
+  request and presence hooks).
 - `ConnectionStatus` (only in the signed-in `SessionNav`) opens the socket and shows
   "Reconnecting…".
 - `RefreshOn` calls `router.refresh()` on chosen server events and once after a reconnect, so

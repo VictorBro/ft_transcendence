@@ -106,7 +106,7 @@ First, a check before anything else:
 function requireDatabaseUrl(): string {
   const url = process.env.DATABASE_URL;
   if (url === undefined || url.trim() === '') {
-    throw new Error('DATABASE_URL is unset: the api cannot start. See .env.example.');
+    throw new Error('DATABASE_URL is unset: the api cannot start. See compose.yml.');
   }
   return url;
 }
@@ -123,16 +123,36 @@ export class PrismaService extends PrismaClient implements OnModuleInit, OnModul
     // Read from the environment rather than through ConfigService: the client is
     // constructed before Nest resolves providers, and prisma.config.ts reads the
     // same variable for the CLI, so the two cannot point at different databases.
-    super({ adapter: new PrismaPg({ connectionString: requireDatabaseUrl() }) });
+    //
+    // node-postgres waits forever for a connection by default, so a host that
+    // drops packets would hang the start check below until the kernel gives up.
+    super({
+      adapter: new PrismaPg({
+        connectionString: requireDatabaseUrl(),
+        connectionTimeoutMillis: DATABASE_CONNECT_TIMEOUT_MS,
+      }),
+    });
   }
 ```
 
 - `PrismaClient` comes from `../generated/prisma/client` (code generated from the schema, see [04-database.md](04-database.md)).
 - `adapter: new PrismaPg(...)`: this version of Prisma has no engine of its own; it uses the `pg` (node-postgres) driver through this adapter. The comment says it is required: without an adapter, `new PrismaClient()` throws.
+- `connectionTimeoutMillis`: `DATABASE_CONNECT_TIMEOUT_MS` (5 000 ms, exported above the class) bounds each new connection. node-postgres waits forever by default, so a host that drops packets would hang the start check below.
 
 ```ts
+  /**
+   * Checked during bootstrap rather than on the first query: a bad DATABASE_URL
+   * then stops the API at start instead of failing the first request a user
+   * makes.
+   *
+   * `$connect()` alone proves nothing: with the pg adapter it only builds a
+   * `pg.Pool`, and a pool opens no connection before its first query. The
+   * round-trip is what reaches Postgres. Its rejection propagates out of
+   * `app.listen`, so the process exits before it listens.
+   */
   async onModuleInit(): Promise<void> {
     await this.$connect();
+    await this.$queryRaw`SELECT 1`;
     this.logger.log('database connected');
   }
 
@@ -141,7 +161,7 @@ export class PrismaService extends PrismaClient implements OnModuleInit, OnModul
   }
 ```
 
-The comment says this connects at start so that a wrong `DATABASE_URL` fails the container's start. That is not what happens: with `@prisma/adapter-pg`, `$connect()` only builds a `pg.Pool`, and a pool opens no connection before its first query. So with a wrong `DATABASE_URL`, `$connect()` resolves, the API logs "database connected", and the first query is what fails (`/api/health` then reports `database` as `down`). Issue #221 tracks this.
+`onModuleInit` runs `$connect()` and then `SELECT 1`. The comment says why both: with `@prisma/adapter-pg`, `$connect()` only builds a `pg.Pool`, and a pool opens no connection before its first query. So `$connect()` alone resolves even with a wrong address. The `SELECT 1` is the first real round-trip. With a wrong `DATABASE_URL` it rejects, the error comes out of `app.listen`, and the process exits before it listens (#221, fixed by #222).
 
 ```ts
   async ping(): Promise<number> {
@@ -155,7 +175,7 @@ The comment says this connects at start so that a wrong `DATABASE_URL` fails the
 
 **Who uses it:** almost every service (`AuthService`, `LessonsService`, `MetricsCollector`, `HealthService`...).
 
-**Spec** ([prisma.service.spec.ts](../../apps/api/src/prisma/prisma.service.spec.ts)): checks it connects on init, disconnects on shutdown, that `ping` reports a latency, that a failing ping rejects, and that it refuses to build when `DATABASE_URL` is unset, empty or blank.
+**Spec** ([prisma.service.spec.ts](../../apps/api/src/prisma/prisma.service.spec.ts)): checks that init calls `$connect()` and runs one query, that it disconnects on shutdown, that `ping` reports a latency, that a failing ping rejects, and that it refuses to build when `DATABASE_URL` is unset, empty or blank. One test uses no mock: "fails the start when DATABASE_URL points at nothing" builds a real service against a closed port and expects `onModuleInit()` to reject.
 
 ## redis/ — the shared fast memory
 
@@ -182,7 +202,22 @@ The socket gateway uses it too: it checks that the `sess:<id>` key of a socket s
 
 ### redis.service.ts
 
-[redis.service.ts](../../apps/api/src/redis/redis.service.ts) exports `RedisService`. It starts with `requireRedisUrl()`, the same "fail at start if `REDIS_URL` is missing" check as Prisma.
+[redis.service.ts](../../apps/api/src/redis/redis.service.ts) exports `RedisService`. It starts with `requireRedisUrl()`, the same "fail at start if `REDIS_URL` is missing" check as Prisma. Then two helpers:
+
+```ts
+/** Per connection attempt. Redis on the compose network answers in milliseconds. */
+export const REDIS_CONNECT_TIMEOUT_MS = 5_000;
+
+/**
+ * node-redis's own default, which a custom strategy replaces: doubling from
+ * 50 ms up to 2 s, plus up to 200 ms of jitter so clients do not retry in step.
+ */
+export function reconnectDelayMs(retries: number): number {
+  return Math.min(2 ** retries * 50, 2_000) + Math.floor(Math.random() * 200);
+}
+```
+
+`reconnectDelayMs` waits 50 ms, then 100, 200, and so on up to 2 s, plus a random 0 to 199 ms. That is the library's own default wait. It is copied here because the service replaces the library's strategy (below), and the replacement still needs a wait.
 
 ```ts
 /**
@@ -194,12 +229,26 @@ export class RedisService implements OnModuleInit, OnModuleDestroy {
   private readonly logger = new Logger(RedisService.name);
   readonly client: RedisClientType;
 
+  /** Set once the first connect succeeds. Before it, a failure is a bad setup. */
+  private connected = false;
+
   constructor() {
-    // A wrong host hangs instead of refusing, so bound it: five seconds turns a
-    // misconfiguration into a startup error rather than a stuck container.
     this.client = createClient({
       url: requireRedisUrl(),
-      socket: { connectTimeout: 5_000 },
+      socket: {
+        // A wrong host hangs instead of refusing, so each attempt is bounded.
+        connectTimeout: REDIS_CONNECT_TIMEOUT_MS,
+        // The timeout alone ends one attempt, and the default strategy then
+        // retries forever, so `connect()` would never settle and the API would
+        // hang before listening. Compose starts the API only once Redis is
+        // healthy, so a first connect that fails is a wrong REDIS_URL: give up
+        // and let `connect()` reject. After that, a dropped connection is an
+        // outage, and the client keeps reconnecting with a backoff.
+        reconnectStrategy: (retries, cause) =>
+          this.connected
+            ? reconnectDelayMs(retries)
+            : new Error(`redis: first connect failed: ${cause.message}`),
+      },
     });
     // Without a listener, a dropped connection raises an unhandled 'error' event
     // and takes the process down. Reconnection is automatic.
@@ -208,12 +257,22 @@ export class RedisService implements OnModuleInit, OnModuleDestroy {
 ```
 
 - Unlike Prisma, it does not *extend* the client. It holds it in a public field, `client`. Other code writes `this.redis.client.incr(...)`.
-- `connectTimeout: 5_000`: ends one connection attempt after five seconds. The comment says this turns a wrong host into a start error, but it does not: the `redis` library then retries (its default strategy retries after every error except a socket timeout, waiting up to about 2 seconds between tries), so `client.connect()` never settles and the API hangs before `listen` instead of stopping. Issue #221 tracks this.
+- `connected`: `false` until the first connect succeeds. The comment says why it matters: before it, a failure is a bad setup.
+- `connectTimeout`: `REDIS_CONNECT_TIMEOUT_MS` (5 s) ends one connection attempt. A wrong host often drops packets instead of refusing, so without it one attempt could hang.
+- `reconnectStrategy`: the library calls it after each failed attempt, with the number of tries so far and the error. A number means "wait this many milliseconds and try again". An `Error` means "stop". Before the first connect, it returns an `Error`, so `client.connect()` rejects, the error comes out of `app.listen`, and the API stops before it listens. The comment gives the reason: Compose starts the API only once Redis is healthy, so a first connect that fails means a wrong `REDIS_URL`. After the first connect, a dropped connection is an outage, and the client keeps trying with `reconnectDelayMs`. Without it, the library's default strategy keeps retrying a failed first connect (a connect timeout included), so `connect()` would never settle and the API would hang (#221, fixed by #222).
 - `client.on('error', ...)`: in Node, an `'error'` event with no listener crashes the process. Here it is only logged, and the `redis` library reconnects by itself.
 
-`onModuleInit` calls `client.connect()`, `onModuleDestroy` calls `client.close()`, and `ping()` measures `client.ping()` in milliseconds, exactly like Prisma's.
+```ts
+  async onModuleInit(): Promise<void> {
+    await this.client.connect();
+    this.connected = true;
+    this.logger.log('redis connected');
+  }
+```
 
-**Spec** ([redis.service.spec.ts](../../apps/api/src/redis/redis.service.spec.ts)): connect on init, close on shutdown, `ping` returns a finite latency, a failing ping rejects, and it refuses to build when `REDIS_URL` is unset, empty or blank.
+`onModuleInit` sets `connected` only after `connect()` resolves, and that switches the strategy from "stop" to "reconnect". `onModuleDestroy` calls `client.close()`, and `ping()` measures `client.ping()` in milliseconds, exactly like Prisma's.
+
+**Spec** ([redis.service.spec.ts](../../apps/api/src/redis/redis.service.spec.ts)): connect on init, close on shutdown, `ping` returns a finite latency, a failing ping rejects, and it refuses to build when `REDIS_URL` is unset, empty or blank. It also checks that the strategy gives up before the first connect and returns a wait after it, and that the wait stays between 50 ms and 2.2 s. One test uses no mock: "fails the start when REDIS_URL points at nothing" expects `onModuleInit()` to reject with "first connect failed".
 
 ## throttler/ — rate limiting
 
@@ -233,9 +292,9 @@ The library is `@nestjs/throttler`. For each request it builds a **tracker** (a 
 ```mermaid
 flowchart TD
     R["Request"] --> BYIP{"Route has @ThrottleByIp?"}
-    BYIP -- yes --> IP["key = ip:<client address>"]
+    BYIP -- yes --> IP["key = ip:#lt;client address#gt;"]
     BYIP -- no --> SES{"req.session.userId set?"}
-    SES -- yes --> U["key = user:<userId>"]
+    SES -- yes --> U["key = user:#lt;userId#gt;"]
     SES -- no --> IP
     IP --> CNT["count hits for key in 60 s"]
     U --> CNT
@@ -256,16 +315,20 @@ export const RATE_LIMITS = {
   perAccount: readLimit(process.env, 'RATE_LIMIT_PER_MINUTE', 100),
   /** ... */
   signup: readLimit(process.env, 'SIGNUP_LIMIT_PER_MINUTE', 20),
-  /** Password or 2FA code checks a minute per address, on each route that makes one. */
-  login: readLimit(process.env, 'LOGIN_LIMIT_PER_MINUTE', 5),
+  /**
+   * Password or 2FA code checks a minute per address, on each route that makes
+   * one. 20, not 5: every browser on one machine reaches the API as one
+   * address (the docker gateway), so 5 was a budget for the whole machine.
+   */
+  login: readLimit(process.env, 'LOGIN_LIMIT_PER_MINUTE', 20),
 } as const;
 ```
 
 | Limit | Env variable | Default | Counted per |
 |---|---|---|---|
-| `perAccount` | `RATE_LIMIT_PER_MINUTE` | 100 | account, or address if signed out |
+| `perAccount` | `RATE_LIMIT_PER_MINUTE` | 100 | account, or address if signed out; each route apart |
 | `signup` | `SIGNUP_LIMIT_PER_MINUTE` | 20 | address |
-| `login` | `LOGIN_LIMIT_PER_MINUTE` | 5 | address |
+| `login` | `LOGIN_LIMIT_PER_MINUTE` | 20 | address; each route apart |
 
 `readLimit` reads one variable:
 
@@ -305,11 +368,11 @@ export function ThrottleByIp(limit: number, ttl = 60_000) {
 - `Throttle({ default: {...} })` (from the library) changes the limit of the `default` throttler for this route.
 - `SetMetadata(THROTTLE_BY_IP, true)` sticks a label on the route: "count me by IP". The guard reads it.
 
-**Why count by IP on these routes?** The comment explains with an attack: on a route that checks a password, if we counted per account, an attacker with N accounts would get N budgets, so "5 per minute" would become 5×N. Counting by machine gives one budget whatever account is used.
+**Why count by IP on these routes?** The comment explains with an attack: on a route that checks a password, if we counted per account, an attacker with N accounts would get N budgets, so "20 per minute" would become 20×N. Counting by machine gives one budget whatever account is used.
 
 It is used on the five routes that check a secret: `POST /api/auth/signup` (limit `signup`), and `POST /api/auth/login`, `POST /api/auth/2fa/verify`, `POST /api/auth/2fa/enable`, `DELETE /api/auth/2fa` (limit `login`). See [05-auth-and-users.md](05-auth-and-users.md).
 
-One other route sets its own limit with the library's plain `@Throttle`, so it is still counted per account: `POST /api/friends/requests/:userId`, 10 a minute.
+Two other routes set their own limit with the library's plain `@Throttle`, so they are still counted per account: `POST /api/friends/requests/:userId`, 10 a minute, and `POST /api/tutor/check`, 3 a minute (chapter 6).
 
 Why its own metadata key and not the library's? The comment lists three ways the library's key could silently fail (its name depends on the throttler name, it is not exported, and it is missing when only a ttl is set).
 
@@ -464,6 +527,7 @@ The exported metrics:
 | `llmRequestDuration` | Histogram (0.5 s to 90 s) | provider, model, purpose | `gemini.provider.ts` |
 | `llmTokens` | Counter | provider, model, purpose, type | `gemini.provider.ts` |
 | `llmProviderInfo` | Gauge (always 1) | provider, model | `llm.factory.ts` |
+| `llmChecks` | Counter | provider, model, status | `tutor.service.ts` ([06](06-llm.md)) |
 | `discussionLimited` | Counter | limit | lesson discussion ([08](08-lessons.md)) |
 | `questionRestocks` | Counter | lang, level, category, status | question generation ([07](07-courses-placement.md)) |
 | `questionRestockFailures` | Counter | category, reason | question generation |
@@ -591,12 +655,15 @@ It uses Node's plain `http` module, not Nest. Only `GET /metrics` works; everyth
 
 ### metrics.collector.ts — numbers read from the database
 
-[metrics.collector.ts](../../apps/api/src/metrics/metrics.collector.ts) exports `MetricsCollector`, a Nest service (it needs `PrismaService`). In `onModuleInit` it creates three gauges whose value is computed **when Prometheus scrapes** (the `collect` function), instead of being updated when something happens:
+[metrics.collector.ts](../../apps/api/src/metrics/metrics.collector.ts) exports `MetricsCollector`, a Nest service (it needs `PrismaService`). In `onModuleInit` it creates six gauges whose value is computed **when Prometheus scrapes** (the `collect` function), instead of being updated when something happens:
 
 | Gauge | Value |
 |---|---|
 | `ft_question_bank_questions` | Number of questions in the bank, per lang, level, category and source (`written` or `generated`). |
 | `ft_users` | Number of accounts (`prisma.user.count()`). |
+| `ft_courses` | Number of courses (`UserLevel` rows), per lang and level; `unplaced` while the placement exam has not set one. |
+| `ft_achievements` | Number of courses that earned each achievement, per code (the 16 of `ACHIEVEMENTS`). |
+| `ft_friendships` | Number of `Friendship` rows, per status (`pending` or `accepted`). |
 | `ft_active_users` | `countActiveUsers()` from metrics.ts. |
 
 ```ts
@@ -611,9 +678,9 @@ It uses Node's plain `http` module, not Nest. Only `GET /metrics` works; everyth
     });
 ```
 
-Two wrappers protect the database queries of the first two gauges (`ft_active_users` only reads memory, so it has none):
+Two wrappers protect the database queries of the first five gauges (`ft_active_users` only reads memory, so it has none):
 
-- `cached(ttlMs, collect)`: runs the query at most once per minute (`CACHE_MS = 60_000`), and never twice at the same time. Between, the gauge keeps its last value. Questions and accounts change slowly, so one query a minute is enough.
+- `cached(ttlMs, collect)`: runs the query at most once per minute (`CACHE_MS = 60_000`), and never twice at the same time. Between, the gauge keeps its last value. Questions, accounts, courses, achievements and friendships change slowly, so one query a minute is enough.
 - `guarded(name, collect)`: if the query fails or takes more than 3 s (`COLLECT_TIMEOUT_MS`), it logs a warning and keeps the last value. The comment explains: a failing `collect` would fail the *whole* scrape, and Prometheus would think the API is down when only Postgres had a small problem.
 
 ```mermaid
@@ -629,9 +696,11 @@ flowchart TD
 
 `countBank` runs two `groupBy` queries (written questions have a `sourceId`, generated ones do not). After both succeed, it resets the gauge, sets every cell (each language × level × category × source) to 0, then fills the real counts. So an empty cell shows as 0 instead of missing.
 
-`onModuleDestroy` removes the three gauges from the registry. The comment says why: an e2e test that builds two apps would otherwise get "metric already registered".
+`countCourses`, `countAchievements` and `countFriendships` each run one `groupBy` and do the same through `zero()`: reset, every label set at 0 (3 languages × 7 levels, the 16 codes, the 2 statuses), then the real counts. Every label is a closed set, and an achievement code the list does not know is left out rather than becoming a new series.
 
-**Spec** ([metrics.collector.spec.ts](../../apps/api/src/metrics/metrics.collector.spec.ts)): counts by cell and source, empty cells at 0, at most one query a minute, keeps last values when the database fails, answers within 3 s when it hangs, unregisters on destroy.
+`onModuleDestroy` removes the six gauges from the registry. The comment says why: an e2e test that builds two apps would otherwise get "metric already registered".
+
+**Spec** ([metrics.collector.spec.ts](../../apps/api/src/metrics/metrics.collector.spec.ts)): counts by cell and source, empty cells at 0, courses by language and level with `unplaced`, achievements by code with an unknown code left out, friendships by status, at most one query a minute, keeps last values when the database fails, answers within 3 s when it hangs, unregisters on destroy.
 
 ### metrics.module.ts
 
@@ -672,8 +741,11 @@ export class HealthController {
   @ApiOperation({ summary: 'Liveness probe', security: [] })
   @ApiOkResponse({ type: HealthResponseDto })
   // Always 200, including when a dependency is down: the body carries the
-  // verdict. A non-2xx here would make Docker restart a container whose only
-  // problem is that Postgres is still starting.
+  // verdict. The image HEALTHCHECK only asks whether the API answers. Postgres
+  // and Redis have their own healthchecks, and a wrong URL already stops the
+  // API at start. Docker never restarts an unhealthy container, so a non-2xx
+  // would only mark the API unhealthy during a database outage and fail
+  // `docker compose up --wait`, which is not the API's fault.
   check(): Promise<HealthResponseDto> {
     return this.health.check();
   }
@@ -683,7 +755,7 @@ export class HealthController {
 - `@Public()`: no login needed, so `AuthGuard` lets it pass.
 - `@SkipThrottle()`: the rate limiter ignores this route. Otherwise a busy site could make the health check fail with 429.
 - `security: []`: in Swagger, this route needs no cookie.
-- It **always answers 200**. The real state is in the body. The comment says a non-2xx would make Docker restart the container, but Docker and Compose never restart an `unhealthy` container (only Swarm does): a non-2xx would only mark it `unhealthy` and make `docker compose up --wait` fail. Issue #221 tracks this.
+- It **always answers 200**. The real state is in the body. The comment gives the reasons. The image `HEALTHCHECK` only asks whether the API answers. Postgres and Redis have their own healthchecks, and a wrong URL already stops the API at start. Docker and Compose never restart an `unhealthy` container (only Swarm does), so a non-2xx would only mark the API `unhealthy` during a database outage and make `docker compose up --wait` fail, which is not the API's fault.
 
 **Spec** ([health.controller.spec.ts](../../apps/api/src/health/health.controller.spec.ts)): the reply matches the shared Zod contract.
 
@@ -818,7 +890,7 @@ export class DependencyHealthDto implements DependencyHealth {
 ## Key ideas to remember
 
 - `PrismaModule` and `RedisModule` are the only `@Global` modules: one shared database client, one shared Redis connection.
-- Both services check their URL variable at construction, connect in `onModuleInit` (meant to fail a bad setup at start, but neither does: Prisma's `$connect()` opens nothing, and Redis retries forever), close in `onModuleDestroy`, and offer a `ping()` that returns milliseconds.
+- Both services check their URL variable at construction, connect in `onModuleInit` and fail the start on a wrong URL (Prisma with a `SELECT 1`, because `$connect()` alone opens nothing; Redis with a strategy that gives up before the first connect), close in `onModuleDestroy`, and offer a `ping()` that returns milliseconds.
 - Redis is fast in-memory key/value storage: here for sessions, presence, placement state and discussion limits.
 - Rate limiting gives each caller a budget per minute. `IdentityThrottlerGuard` counts per account (or per address when signed out), and `@ThrottleByIp` routes count per address, so an attacker cannot multiply budgets with many accounts.
 - Limits come from env variables, read once at import, and a bad value stops the API.

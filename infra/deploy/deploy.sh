@@ -6,8 +6,24 @@
 set -euo pipefail
 
 cd "$(dirname "$0")"
-# The overlay next to this script means another proxy owns 80 and 443 here.
+
+# compose's `:?` stops an empty secret, not a published one: a dev .env, or the
+# template filled in with the repo's local defaults, passes it. So refuse the
+# values this repo publishes (compose.yml, the Makefile, ci.yml, e2e.yml), and
+# name the key, never the value. These four keys cover it: compose.deploy.yml
+# builds DATABASE_URL from POSTGRES_PASSWORD.
+for key in SESSION_SECRET POSTGRES_PASSWORD GRAFANA_ADMIN_PASSWORD GRAFANA_SECRET_KEY; do
+  if grep -qsE "^[[:space:]]*(export[[:space:]]+)?$key=[[:space:]]*[\"']?(ft_local_dev|dev-only-|ci-only-)" .env; then
+    echo "deploy.sh: $key in .env is a value this repo publishes, not deploying (docs/operations/deployment.md)" >&2
+    exit 1
+  fi
+done
+
+# Each overlay next to this script changes the host: monitoring runs here, and
+# another proxy owns 80 and 443 here. Every command below takes both, so the
+# pull, the revision check and the deployed state cover the monitoring images.
 COMPOSE=(-f compose.deploy.yml)
+[ ! -f compose.deploy.monitoring.yml ] || COMPOSE+=(-f compose.deploy.monitoring.yml)
 [ ! -f compose.deploy.proxy.yml ] || COMPOSE+=(-f compose.deploy.proxy.yml)
 # What was last deployed *successfully*. Comparing against the pre-pull state
 # instead would mark a failed deploy as done and never retry it.
@@ -30,6 +46,12 @@ resolve() {
 revision() {
   docker image inspect -f '{{index .Config.Labels "org.opencontainers.image.revision"}}' "$1" 2>/dev/null || true
 }
+
+# Every tick, before the pull, not only after a good deploy: while migrate kept
+# failing (Nov 2026), each release pulled ~3 GB that the prune at the end never
+# reached, and 11 days of retries filled the disk. Dangling images only: an
+# image a container still runs is kept.
+docker image prune -f >/dev/null
 
 dc pull --quiet
 

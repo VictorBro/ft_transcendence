@@ -17,7 +17,7 @@ Dans notre projet, deux choses sont écrites par des humains, **dans des fichier
 - les **questions du test de placement** (`content/items/*.json`, 270 questions) → table `QuestionBank` ;
 - les **leçons** (`content/outlines/*.json` + `content/briefs/*.json` + `content/lessons/*.json`) → table `Lesson`.
 
-Le script `seed.ts` lit ces fichiers, les **vérifie**, puis les **copie** dans PostgreSQL. En plus, sur une stack de développement, il crée des **apprenants de démo** (#143).
+Le script `seed.ts` lit ces fichiers, les **vérifie**, puis les **copie** dans PostgreSQL. En plus, quand `DEMO_PASSWORD` est rempli, il crée des **apprenants de démo** (#143).
 
 ### L'analogie : la bibliothèque et le catalogue officiel
 
@@ -43,7 +43,7 @@ Le bibliothécaire peut passer **autant de fois qu'on veut** : le résultat est 
 | #123 | luca-mattei | Tables `Lesson` et `LessonResult` (migration `add_lessons`), première version de `seedLessons` (depuis des « drafts »), `findItemsDir` généralisé en `findContentDir(kind)`. |
 | #140 | EA | Les leçons sont seedées **depuis les outlines** (`content/outlines/<lang>-<level>.json`) : `LessonOutlineFileSchema`, `workingTitle` → `title`, `intent` → `summary`, `brief: {}`. |
 | #142 | EA | Migration `add_lesson_content` (colonne `content JSONB`). Le seed lit `briefs/` et `lessons/`, valide chaque leçon avec `lessons.validateLesson`, refuse les fichiers « orphelins ». |
-| #143 | EA | Apprenants de démo, seulement si `NODE_ENV=development` **et** `DEMO_PASSWORD` rempli (`demoSkipReason`, `demoPassword`). |
+| #143 | EA | Apprenants de démo, seulement si `NODE_ENV=development` **et** `DEMO_PASSWORD` rempli (`demoSkipReason`, `demoPassword`). Depuis : `DEMO_PASSWORD` seul décide, un serveur compris. |
 | #171 | bastian-schnitzler | Colonne `ready` (migration `add_lesson_ready`) mise à jour par le seed à chaque passage. |
 | #190 | ninisse | Quand le brief ou le contenu d'une leçon change, le seed supprime les **tentatives non finies** de cette leçon, dans la même transaction. |
 
@@ -63,7 +63,7 @@ Le bibliothécaire peut passer **autant de fois qu'on veut** : le résultat est 
 | [packages/shared/src/schemas/lesson.ts](../../../../packages/shared/src/schemas/lesson.ts) | `LessonOutlineFileSchema` : valide un fichier d'outline. |
 | [packages/shared/src/lessons/validateLesson.ts](../../../../packages/shared/src/lessons/validateLesson.ts) | `validateLesson(brief, content, context)` : valide une leçon écrite. |
 | [src/prisma/prisma.service.ts](../../../../apps/api/src/prisma/prisma.service.ts) | Le client Prisma. Le seed l'utilise hors de Nest. Vérifie `DATABASE_URL`. |
-| [src/demo/demo.ts](../../../../apps/api/src/demo/demo.ts) | `seedDemo` : les apprenants de démo, importé **seulement** en dev. |
+| [src/demo/demo.ts](../../../../apps/api/src/demo/demo.ts) | `seedDemo` : les apprenants de démo, importé **seulement** quand `DEMO_PASSWORD` est rempli. |
 | [test/seed.e2e-spec.ts](../../../../apps/api/test/seed.e2e-spec.ts) | Tests sur une **vraie** base Postgres. |
 | [test/fixtures/seed-valid, seed-invalid, seed-duplicate](../../../../apps/api/test/fixtures/) | Petits dossiers de faux fichiers pour les tests. |
 
@@ -134,7 +134,7 @@ sequenceDiagram
   S->>DB: $transaction(upserts + deleteMany des tentatives non finies)
   end
 
-  alt NODE_ENV=development et DEMO_PASSWORD rempli
+  alt DEMO_PASSWORD rempli
     S->>DB: seedDemo (import dynamique de src/demo/demo)
   else sinon
     S->>S: log demo learners skipped
@@ -142,7 +142,7 @@ sequenceDiagram
   S->>DB: $disconnect
 ```
 
-Les étapes sont enchaînées avec `.then(...)`. Une erreur dans cette chaîne va dans `.catch` : `console.error` puis `process.exit(1)`. Les erreurs d'avant la chaîne (`demoPassword`, `new PrismaService()` sans `DATABASE_URL`, le premier `findContentDir('items')`) sont lancées tout de suite et arrêtent aussi Node avec le code 1. Le code de sortie 1 fait échouer `make` ou le déploiement.
+Les étapes sont enchaînées avec `.then(...)`. Une erreur dans cette chaîne va dans `.catch` : `console.error` puis `process.exit(1)`. Sauf l'échec d'un apprenant de démo : `seedDemo` le note dans le log et passe au suivant (`buildLearners`), donc il ne bloque jamais un déploiement. Les erreurs d'avant la chaîne (`demoPassword`, `new PrismaService()` sans `DATABASE_URL`, le premier `findContentDir('items')`) sont lancées tout de suite et arrêtent aussi Node avec le code 1. Le code de sortie 1 fait échouer `make` ou le déploiement.
 
 ---
 
@@ -423,7 +423,7 @@ erDiagram
 
 ## 10. Les tests (`seed.e2e-spec.ts`)
 
-Ce sont des tests **e2e** : ils tournent sur une **vraie** base Postgres. Le commentaire du fichier explique pourquoi : les critères de l'issue #43 portent sur **ce qui reste dans `QuestionBank` après deux lancements**, ce qu'un faux client Prisma ne peut pas montrer. Lancer : `pnpm --filter @ft/api test:e2e`. Le fichier a 27 tests ; voici les principaux.
+Ce sont des tests **e2e** : ils tournent sur une **vraie** base Postgres. Le commentaire du fichier explique pourquoi : les critères de l'issue #43 portent sur **ce qui reste dans `QuestionBank` après deux lancements**, ce qu'un faux client Prisma ne peut pas montrer. Lancer : `pnpm --filter @ft/api test:e2e`. Le fichier a 38 tests ; voici les principaux.
 
 | Test | Ce qu'il prouve |
 |---|---|
@@ -437,7 +437,7 @@ Ce sont des tests **e2e** : ils tournent sur une **vraie** base Postgres. Le com
 | fails on an entry removed from the outlines, names it, and writes nothing | Pas de suppression silencieuse. |
 | deletes the unfinished attempts on a lesson whose brief changes, and keeps the rest | La règle de #190. |
 | makes a lesson not ready when its files are removed, and ready again when they are back | Le flag `ready`. |
-| demoSkipReason / demoPassword | Les démos seulement en `development` avec un mot de passe valide. |
+| demoSkipReason / demoPassword | Les démos dès que `DEMO_PASSWORD` est rempli, quel que soit `NODE_ENV` (un serveur aussi), avec un mot de passe valide. |
 
 ---
 
@@ -499,6 +499,6 @@ R : Non. Il travaille par `sourceId`, et les questions générées ont `sourceId
 
 R : Pour que le seed ne s'exécute que si on lance le fichier. Les tests l'importent sans seeder la vraie base.
 
-**Q : Pourquoi les apprenants de démo ne sont pas créés en production ?**
+**Q : Les apprenants de démo sont-ils créés en production ?**
 
-R : `demoSkipReason` exige `NODE_ENV === 'development'` (une liste blanche) et un `DEMO_PASSWORD` non vide. Le serveur public n'a pas `NODE_ENV` à `development`, donc il saute cette étape.
+R : Oui, sur un serveur dont le `.env` a `DEMO_PASSWORD` : `demoSkipReason` ne regarde que ce mot de passe (plus `NODE_ENV`), et le service `migrate` du déploiement le passe au seed. Sans lui, le seed saute cette étape.

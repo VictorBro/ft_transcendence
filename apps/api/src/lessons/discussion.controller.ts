@@ -45,7 +45,7 @@ import { LessonDiscussionDto } from './lessons.dto';
  *   event: delta   data: {"text":"…"}    one per piece of the answer
  *   event: done    data: {}              the answer is complete
  *   event: error   data: {"code":"…"}    instead of done, after any pieces already sent:
- *                                         an llm.* code (ERROR_CODE below), or unknown
+ *                                         an llm.* code (errorCode below), or unknown
  * and a ": heartbeat" comment every 15 s (event-stream.ts).
  */
 
@@ -53,8 +53,7 @@ import { LessonDiscussionDto } from './lessons.dto';
  * The code an error event carries, by why the LLM failed. The reason is what
  * the logs and the metrics keep; the code is what the learner can act on, so
  * failures the learner meets the same way share one: a timeout, a dropped
- * connection and a 503 all say "try again in a moment". Anything that is not
- * an LlmError is a bug, and gets "unknown".
+ * connection and a 503 all say "try again in a moment".
  */
 const ERROR_CODE: Record<LlmFailure, ErrorCode> = {
   unreachable: 'llm.unavailable',
@@ -66,6 +65,20 @@ const ERROR_CODE: Record<LlmFailure, ErrorCode> = {
   incomplete: 'llm.incomplete',
   disabled: 'llm.disabled',
 };
+
+/**
+ * ERROR_CODE, with one failure the reason alone cannot tell: a 429 for the
+ * quota of the day. The metrics count it as rate_limited, like the minute's,
+ * but "try again in a minute" would be wrong for hours, so the learner gets
+ * llm.quotaExhausted, "back tomorrow". Anything that is not an LlmError is a
+ * bug, and gets "unknown".
+ */
+export function errorCode(error: unknown): ErrorCode {
+  if (!(error instanceof LlmError)) return 'unknown';
+  if (error.reason === 'rate_limited' && error.quota?.scope === 'day') return 'llm.quotaExhausted';
+  return ERROR_CODE[error.reason];
+}
+
 @ApiTags('lessons')
 @ApiParam({ name: 'lang', enum: [...LEARNABLE_LANGUAGES] })
 @Controller('courses/:lang')
@@ -128,8 +141,7 @@ export class DiscussionController {
         // An LlmError is an LLM failure, already counted in the metrics; anything else is a bug.
         if (error instanceof LlmError) this.logger.warn(`lesson-discussion: ${error.message}`);
         else this.logger.error(error);
-        const code: ErrorCode = error instanceof LlmError ? ERROR_CODE[error.reason] : 'unknown';
-        stream.send('error', { code });
+        stream.send('error', { code: errorCode(error) });
       }
     } finally {
       stream.end();

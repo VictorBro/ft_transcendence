@@ -1,4 +1,4 @@
-import { type CourseDay, LESSON_MINUTES, type Level } from '@ft/shared';
+import { type CourseDay, type DailyGoal, LESSON_MINUTES, type Level } from '@ft/shared';
 
 import { localDay, merge, plan, type RuleLesson, type RuleResult } from '../lessons/roadmap.rules';
 import { atLocalTime, daysBefore, pastScore, type Random, randomFrom, seedOf } from './demo.clock';
@@ -23,6 +23,8 @@ export type PlannedDay = {
   day: CourseDay;
   /** setLevel calls, in order, before the day's finishes. */
   switches: Level[];
+  /** A setGoal at the day's local midnight, after the switches, before the finishes. */
+  goal: { at: Date; dailyGoal: DailyGoal } | null;
   finishes: PlannedFinish[];
 };
 
@@ -81,6 +83,10 @@ function pastDays(email: string, course: DemoCourse, lessons: RuleLesson[]): num
     return course.days;
   }
   const { untilAllAttempted: perDay } = course.days;
+  if (course.goalChanges.length > 0) {
+    // daysToAttemptAll plans at course.goal, and so would not see the change.
+    throw new Error(`demo: ${course.lang} ${course.level} has untilAllAttempted and goalChanges`);
+  }
   const count = daysToAttemptAll(lessons, perDay, course, randomOf(email, course));
   return Array<number>(count).fill(perDay);
 }
@@ -118,7 +124,11 @@ export function planCourse(
 ): PlannedDay[] {
   const today = localDay(runNow, timeZone);
   const past = pastDays(email, course, lessons);
-  const oldest = Math.max(past.length, ...course.switches.map((change) => change.daysAgo));
+  const oldest = Math.max(
+    past.length,
+    ...course.switches.map((change) => change.daysAgo),
+    ...course.goalChanges.map((change) => change.daysAgo),
+  );
   // A fresh series: daysToAttemptAll drew from its own, so the replay gets
   // the very scores the count was worked out with.
   const random = randomOf(email, course);
@@ -130,6 +140,7 @@ export function planCourse(
     days.push({
       day,
       switches: switchesOn(course, daysAgo),
+      goal: goalOn(course, day, daysAgo, timeZone),
       finishes: Array.from({ length: count }, (_, i) => ({
         at: atLocalTime(day, EVENING + i * LESSON_MINUTES, timeZone),
         score: pastScore(random, course.passRate),
@@ -139,6 +150,7 @@ export function planCourse(
   days.push({
     day: today,
     switches: switchesOn(course, 0),
+    goal: goalOn(course, today, 0, timeZone),
     finishes: todayFinishes(today, timeZone, runNow, course.todayScores),
   });
   return days;
@@ -148,4 +160,23 @@ function switchesOn(course: DemoCourse, daysAgo: number): Level[] {
   return course.switches
     .filter((change) => change.daysAgo === daysAgo)
     .map((change) => change.level);
+}
+
+/**
+ * The day's goal change, at its local midnight: on that day, before its
+ * first finish, and never after the run, which is later on today.
+ */
+function goalOn(
+  course: DemoCourse,
+  day: CourseDay,
+  daysAgo: number,
+  timeZone: string,
+): PlannedDay['goal'] {
+  const changes = course.goalChanges.filter((change) => change.daysAgo === daysAgo);
+  if (changes.length > 1) {
+    throw new Error(`demo: ${course.lang} ${course.level} changes its goal twice on one day`);
+  }
+  return changes.length === 0
+    ? null
+    : { at: atLocalTime(day, 0, timeZone), dailyGoal: changes[0].goal };
 }

@@ -72,16 +72,17 @@ This is the real tree of the user profile page, [users/[id]/page.tsx](<../../app
 A component is a function that returns **JSX**. JSX looks like HTML, but it lives inside JavaScript. A build tool turns it into plain function calls. Here is the 404 page, [not-found.tsx](<../../apps/web/app/[locale]/not-found.tsx>):
 
 ```tsx
-export default function LocaleNotFound() {
-  const t = useTranslations('NotFoundPage');
+export default async function LocaleNotFound() {
+  const t = await getTranslations('NotFoundPage');
+  const home = (await currentUser()) === null ? '/' : '/learn';
 
   return (
-    <Shell brand={<Wordmark />} footer={<LegalFooter />}>
+    <Shell brand={<Wordmark href={home} />} footer={<LegalFooter />}>
       <div className="flex flex-col items-center gap-4 py-24 text-center">
         <h1 className="text-3xl font-semibold tracking-tight">{t('heading')}</h1>
         <p className="max-w-md text-slate-400">{t('intro')}</p>
         <Link
-          href="/"
+          href={home}
           className="mt-2 rounded-full bg-indigo-700 px-6 py-2 text-sm font-semibold text-white transition-colors hover:bg-indigo-800"
         >
           {t('goHome')}
@@ -91,6 +92,9 @@ export default function LocaleNotFound() {
   );
 }
 ```
+
+It is `async` because it reads the session before it draws: a signed-in reader's links go to
+`/learn`, a visitor's to `/`. Async components and `getTranslations` are explained in section 3.
 
 JSX rules to know:
 
@@ -128,9 +132,15 @@ export function Shell({ brand, nav, fill = false, footer, children }: ShellProps
 And a parent using it, [(main)/layout.tsx](<../../apps/web/app/[locale]/(main)/layout.tsx>):
 
 ```tsx
-export default function MainLayout({ children }: { children: ReactNode }) {
+export default async function MainLayout({ children }: { children: ReactNode }) {
+  const user = await currentUser();
+
   return (
-    <Shell brand={<Wordmark />} nav={<HeaderNav />} footer={<LegalFooter />}>
+    <Shell
+      brand={<Wordmark href={user === null ? '/' : '/learn'} />}
+      nav={<HeaderNav />}
+      footer={<LegalFooter />}
+    >
       {children}
     </Shell>
   );
@@ -139,7 +149,8 @@ export default function MainLayout({ children }: { children: ReactNode }) {
 
 Things to notice:
 
-- A prop can be a string, a number, a function, or even other JSX (`brand={<Wordmark />}`). `ReactNode` is the TypeScript type for "anything React can draw".
+- A prop can be a string, a number, a function, or even other JSX (`brand={<Wordmark ... />}`). `ReactNode` is the TypeScript type for "anything React can draw".
+- `await currentUser()` reads the session on the server (section 3). The value of `href` depends on it: `/learn` for a signed-in user, `/` for a visitor.
 - `children` is a special prop: whatever you put *between* the opening and closing tags.
 - `fill = false` is a default value. `nav?` means the prop is optional.
 - The interface `ShellProps` is how TypeScript types props (more in section 5).
@@ -495,7 +506,7 @@ This is the most important idea of modern Next.js. Every component runs in one o
 - A **Server Component** runs only on the server (the Next.js container). It can be `async`, can `await` data, can read cookies and secret environment variables. Its code is **never** sent to the browser. It cannot use state, effects or event handlers, because there is no browser there and no user to click.
 - A **Client Component** is marked with `'use client'` at the top of its file. It is rendered once on the server too (to make the first HTML), and then its code is sent to the browser, where it becomes interactive: state, effects, `onClick`, browser APIs.
 
-**By default, every component is a Server Component.** You add `'use client'` only where you need interactivity. 57 files in the app have it (forms, buttons, the socket, the lesson player). Pages and layouts are mostly Server Components.
+**By default, every component is a Server Component.** You add `'use client'` only where you need interactivity. 58 files in the app have it (forms, buttons, the socket, the lesson player). Pages and layouts are mostly Server Components.
 
 Analogy: a Server Component is a photo printed at the shop and handed to you. A Client Component is a small machine handed to you with its instruction manual (the JavaScript), so it can still move in your hands.
 

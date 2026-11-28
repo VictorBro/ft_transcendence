@@ -56,6 +56,22 @@ describe('createLlmProvider', () => {
     expect(values).toEqual([expect.objectContaining({ value: 1, labels })]);
   });
 
+  // What GET /api/tutor shows: the model the factory chose, never the key.
+  it.each([
+    [{}, { provider: 'fixture', model: null }],
+    [{ LLM_PROVIDER: 'disabled' }, { provider: 'disabled', model: null }],
+    [
+      { LLM_PROVIDER: 'gemini', LLM_API_KEY: 'k' },
+      { provider: 'gemini', model: 'gemini-3.6-flash' },
+    ],
+    [
+      { LLM_PROVIDER: 'gemini', LLM_API_KEY: 'k', LLM_MODEL: 'gemini-x' },
+      { provider: 'gemini', model: 'gemini-x' },
+    ],
+  ])('gives %j the info %j', (env, info) => {
+    expect(createLlmProvider(env).info).toStrictEqual(info);
+  });
+
   it.each(['real', 'gemni', ''])('refuses LLM_PROVIDER=%j', (name) => {
     expect(() => createLlmProvider({ LLM_PROVIDER: name })).toThrow(
       `LLM_PROVIDER must be "fixture", "gemini" or "disabled", got "${name}"`,

@@ -855,9 +855,14 @@ If the API refuses **before** the stream starts (400, 404, 409, 429), it is a no
 
 Caller: `components/lesson/discussion.tsx` (chapter 7).
 
+The file also exports `isThinking(asking)`: true from the send until the first word of the answer. A
+heartbeat or an empty piece does not end it. The discussion shows its "thinking" dots with it (chapter 7).
+
 **Test:** [discussion-client.test.ts](../../apps/web/lib/discussion-client.test.ts) checks the route,
 pieces cut anywhere in the body, text arriving before the end, an error event, a cut stream, a 429 with
-`retryAfter`, a refusal with and without JSON, and a network failure.
+`retryAfter`, a refusal with and without JSON, and a network failure. For `isThinking`, it feeds a
+heartbeat, an empty piece, then the first word, and checks it is false after an error or when `asking`
+is `null`.
 
 ### `placement-client.ts` — the placement exam
 
@@ -1018,6 +1023,7 @@ And the server readers, for comparison (all GET, called from `http://api:3001`):
 | friends.ts | `requireFriends` | `/api/friends` |
 | friends.ts | `searchUsers` | `/api/users?q=...` |
 | friends.ts | `recentlyActive` | `/api/users/recently-active` |
+| friends.ts | `friendPending` | `/api/friends/pending` |
 | friends.ts | `loadProfile` | `/api/users/:id` (404 = not-found) |
 | conversations.ts | `requireConversations` | `/api/conversations` |
 | conversations.ts | `loadMessagePage` | `/api/conversations/:userId/messages` |

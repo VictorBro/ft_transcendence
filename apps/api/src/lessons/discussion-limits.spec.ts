@@ -4,7 +4,7 @@ import { readDiscussionLimits } from './discussion-limits';
 
 describe('readDiscussionLimits', () => {
   it('gives the defaults when nothing is set, or set empty', () => {
-    const defaults = { userPerMinute: 2, userPerDay: 60, globalPerMinute: 5 };
+    const defaults = { userPerMinute: 5, userPerDay: 150, globalPerMinute: 10 };
     expect(readDiscussionLimits({})).toEqual(defaults);
     expect(readDiscussionLimits({ LLM_DISCUSSION_USER_PER_DAY: ' ' })).toEqual(defaults);
   });

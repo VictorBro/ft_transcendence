@@ -2,9 +2,10 @@ import { Logger } from '@nestjs/common';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { z } from 'zod';
 
+import { DAY_QUOTA_BODY, MINUTE_QUOTA_BODY } from '../../test/gemini.fixtures';
 import { seriesValue } from '../../test/metrics.fixtures';
 import { llmRequestDuration, llmRequests, llmTokens, registry } from '../metrics/metrics';
-import { GeminiProvider } from './gemini.provider';
+import { GeminiProvider, quotaRefusal } from './gemini.provider';
 import { LlmError } from './llm.provider';
 
 const schema = z.object({ answer: z.string() });
@@ -138,6 +139,25 @@ describe('GeminiProvider', () => {
     const error = await failure(new Response('quota exceeded', { status }));
 
     expect(error).toMatchObject({ message: `Gemini ${status}: quota exceeded`, retryable });
+  });
+
+  it.each([
+    ['day', DAY_QUOTA_BODY, { scope: 'day', retryAfterS: 48_933 }, false],
+    ['minute', MINUTE_QUOTA_BODY, { scope: 'minute', retryAfterS: 21 }, true],
+  ] as const)(
+    "reads which quota a 429 hit (%s), and retries only the minute's",
+    async (_, body, quota, retryable) => {
+      const error = await failure(json(body, 429));
+
+      expect(error).toMatchObject({ reason: 'rate_limited', retryable, quota });
+      expect(error.message).toBe(`Gemini 429: ${JSON.stringify(body)}`);
+    },
+  );
+
+  it('carries no quota on an error that is no 429', async () => {
+    const error = await failure(new Response('oops', { status: 503 }));
+
+    expect(error.quota).toBeUndefined();
   });
 
   it.each([
@@ -307,6 +327,8 @@ describe('GeminiProvider', () => {
 
     it.each([
       ['rate_limited', 'a 429', () => new Response('quota exceeded', { status: 429 })],
+      // One outcome for both quotas: the error rate and its alert stay as they were.
+      ['rate_limited', 'a 429 for the quota of the day', () => json(DAY_QUOTA_BODY, 429)],
       ['http_error', 'a 500', () => new Response('oops', { status: 500 })],
       ['http_error', 'a 403', () => new Response('denied', { status: 403 })],
       ['unreachable', 'no answer', () => new TypeError('fetch failed')],
@@ -323,5 +345,106 @@ describe('GeminiProvider', () => {
       expect(await seriesValue(llmRequests, { ...labels, outcome: 'ok' })).toBe(0);
       expect(await seriesValue(llmRequestDuration, labels, '_count')).toBe(1);
     });
+  });
+});
+
+/** Reads Google's 429 body: which quota refused the call, and how long it asks to wait. */
+describe('quotaRefusal', () => {
+  const body = (details: unknown) => JSON.stringify({ error: { code: 429, details } });
+  const retryInfo = (retryDelay: unknown) => ({
+    '@type': 'type.googleapis.com/google.rpc.RetryInfo',
+    retryDelay,
+  });
+
+  it('reads the quota of the day from the body a free key got on 2026-11-27', () => {
+    expect(quotaRefusal(JSON.stringify(DAY_QUOTA_BODY))).toStrictEqual({
+      scope: 'day',
+      retryAfterS: 48_933,
+    });
+  });
+
+  it('reads the quota of the minute', () => {
+    expect(quotaRefusal(JSON.stringify(MINUTE_QUOTA_BODY))).toStrictEqual({
+      scope: 'minute',
+      retryAfterS: 21,
+    });
+  });
+
+  // Waiting a minute cannot help when the day's quota is one of those hit.
+  it('says day when any quota hit is a daily one', () => {
+    const [quota] = DAY_QUOTA_BODY.error.details;
+    const both = {
+      ...quota,
+      violations: [
+        { quotaId: 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier' },
+        { quotaId: 'GenerateRequestsPerDayPerProjectPerModel-FreeTier' },
+      ],
+    };
+
+    expect(quotaRefusal(body([both, retryInfo('30s')]))).toStrictEqual({
+      scope: 'day',
+      retryAfterS: 30,
+    });
+  });
+
+  // No QuotaFailure names the quota: the minute, the milder guess, but Google's wait still counts.
+  it('reads the wait even when no quota is named', () => {
+    expect(quotaRefusal(body([retryInfo('21s')]))).toStrictEqual({
+      scope: 'minute',
+      retryAfterS: 21,
+    });
+  });
+
+  // Google's longest quota is the day's: a longer wait is a broken body, and would
+  // push retryAt past the dates JavaScript can write.
+  it('keeps a wait of up to two days, and drops a longer one', () => {
+    expect(quotaRefusal(body([retryInfo('172800s')])).retryAfterS).toBe(172_800);
+    expect(quotaRefusal(body([retryInfo('172800.5s')])).retryAfterS).toBeNull();
+  });
+
+  it('rounds a wait in fractions of a second up', () => {
+    expect(quotaRefusal(body([retryInfo('21.5s')]))).toStrictEqual({
+      scope: 'minute',
+      retryAfterS: 22,
+    });
+    expect(quotaRefusal(body([retryInfo('0.000340s')])).retryAfterS).toBe(1);
+  });
+
+  it('gives no wait when Google gives no RetryInfo', () => {
+    const [quota] = DAY_QUOTA_BODY.error.details;
+
+    expect(quotaRefusal(body([quota]))).toStrictEqual({ scope: 'day', retryAfterS: null });
+  });
+
+  it.each([
+    ['a body that is not JSON', 'quota exceeded'],
+    ['an empty body', ''],
+    ['JSON null', 'null'],
+    ['no details', JSON.stringify({ error: { code: 429 } })],
+    ['details that are not a list', body('PerDay')],
+    [
+      'violations that are not a list',
+      body([{ '@type': 'google.rpc.QuotaFailure', violations: 'PerDay' }]),
+    ],
+    ['a wait that is not in seconds', body([retryInfo('13h35m')])],
+    ['a wait that is not a text', body([retryInfo(21)])],
+    ['a null detail', body([null])],
+    // String() throws on these: an object whose toString is not a function.
+    ['an @type that is an object', body([{ '@type': { toString: 1 } }])],
+    [
+      'a quotaId that is an object',
+      body([
+        {
+          '@type': 'type.googleapis.com/google.rpc.QuotaFailure',
+          violations: [{ quotaId: { toString: 1 } }],
+        },
+      ]),
+    ],
+    ['a wait that is an object', body([retryInfo({ toString: 1 })])],
+    // Far past two days: as a date, it would come after the last one JavaScript can write.
+    ['a wait of millions of years', body([retryInfo('99999999999999s')])],
+    ['a wait too long for a number', body([retryInfo(`${'9'.repeat(400)}s`)])],
+  ])('reads %s as the minute, with no wait, without throwing', (_, text) => {
+    expect(quotaRefusal(text)).toStrictEqual({ scope: 'minute', retryAfterS: null });
   });
 });

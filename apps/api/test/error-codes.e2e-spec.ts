@@ -164,7 +164,9 @@ describe('error codes (e2e)', () => {
     }
   });
 
-  it('sends server.rateLimited on the sixth login in a minute from one address', async () => {
+  /** Pins the default too, like the signup test below. */
+  it('sends server.rateLimited on the twenty-first login in a minute from one address', async () => {
+    expect(RATE_LIMITS.login, 'the default: run with LOGIN_LIMIT_PER_MINUTE unset').toBe(20);
     const address = fromNewAddress();
     const login = () =>
       request(server())
@@ -172,7 +174,7 @@ describe('error codes (e2e)', () => {
         .set('X-Forwarded-For', address)
         .send({ email, password: 'Wrong-Horse-9' });
 
-    for (let attempt = 1; attempt <= 5; attempt++) {
+    for (let attempt = 1; attempt <= RATE_LIMITS.login; attempt++) {
       await login().expect(401);
     }
     const response = await login().expect(429);

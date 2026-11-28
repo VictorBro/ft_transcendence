@@ -8,6 +8,13 @@ global:
   scrape_interval: 30s
   scrape_timeout: 10s
   evaluation_interval: 30s
+  # Which stack an alert comes from: the server's domain, or `local (<git
+  # user.name>)` from make. Every alert carries it, and the Discord title
+  # starts with it, so a teammate's laptop is told apart from a server.
+  # Prometheus 3 expands environment variables here; an empty one drops the
+  # label.
+  external_labels:
+    source: ${ALERT_SOURCE}
 
 storage:
   tsdb:

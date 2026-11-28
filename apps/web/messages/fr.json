@@ -177,7 +177,8 @@
     "signIn": "Se connecter"
   },
   "Form": {
-    "working": "En cours…"
+    "working": "En cours…",
+    "showPassword": "Afficher le mot de passe"
   },
   "Errors": {
     "displayName": {
@@ -239,6 +240,7 @@
     "llm": {
       "unavailable": "Le tuteur ne peut pas répondre pour le moment. Réessaie dans un instant.",
       "rateLimited": "Le tuteur est très sollicité. Réessaie dans une minute.",
+      "quotaExhausted": "Le tuteur a épuisé son quota du jour. Il revient demain.",
       "tooManyMessages": "Tu as envoyé beaucoup de messages au tuteur. Réessaie plus tard.",
       "blocked": "Le tuteur ne peut pas répondre à ce message. Formule-le autrement.",
       "incomplete": "La réponse s'est arrêtée avant la fin. Repose ta question.",
@@ -299,6 +301,8 @@
     "security": "Sécurité",
     "twoFactorPrompt": "Ajoute un second facteur pour qu'un mot de passe volé ne suffise pas à se connecter.",
     "twoFactorAuthentication": "Authentification à deux facteurs",
+    "tutor": "Tuteur IA",
+    "tutorPrompt": "Le tuteur des discussions de leçon fonctionne avec une seule clé pour tout le serveur. Vérifie qu'elle marche.",
     "backToProfile": "Retour au profil"
   },
   "ProfileForm": {
@@ -335,7 +339,8 @@
     "cancel": "Annuler",
     "online": "En ligne",
     "offline": "Hors ligne",
-    "message": "Écrire"
+    "message": "Écrire",
+    "pending": "{count, plural, one {# demande d'ami} other {# demandes d'ami}}"
   },
   "UserPage": {
     "courses": "Cours",
@@ -365,6 +370,44 @@
     "loading": "Vérification de l'authentification à deux facteurs…",
     "statusUnavailable": "Impossible de vérifier l'authentification à deux facteurs.",
     "retry": "Réessayer"
+  },
+  "TutorCard": {
+    "provider": "Fournisseur",
+    "model": "Modèle",
+    "loading": "Chargement…",
+    "test": "Tester la connexion",
+    "testing": "Test en cours…",
+    "answeredIn": "Réponse en {ms} ms, à {time}.",
+    "checkedAt": "Vérifié à {time}.",
+    "providers": {
+      "gemini": "Google Gemini",
+      "fixture": "Tuteur d'entraînement (fixture), sans clé",
+      "disabled": "Aucun, le tuteur est désactivé"
+    },
+    "status": {
+      "ok": "Ça marche : Google a répondu à un message de test.",
+      "invalid_key": "Google a refusé la clé.",
+      "model_not_found": "Google a accepté la clé, mais le modèle {model} n'existe pas ou ne sait pas écrire de texte.",
+      "quota": "La clé a dépassé son quota par minute.",
+      "quota_day": "Le tuteur a épuisé son quota du jour. Il revient demain.",
+      "unreachable": "Google n'a pas répondu à temps.",
+      "unreachableHttp": "Google a répondu au test par HTTP {status} : un souci de son côté.",
+      "unexpected": "Google a répondu au test par HTTP {status}.",
+      "unexpectedNoAnswer": "Le test a échoué avant que Google réponde.",
+      "fixture": "Ce serveur utilise le tuteur d'entraînement : il donne une réponse fixe et n'a pas besoin de clé.",
+      "disabled": "Le tuteur est désactivé sur ce serveur."
+    },
+    "hint": {
+      "ok": "Chaque test utilise une requête du quota de la clé pour aujourd'hui.",
+      "invalid_key": "Elle est fausse, révoquée ou bloquée. La personne qui gère ce serveur doit mettre une nouvelle LLM_API_KEY dans .env et redémarrer l'api.",
+      "model_not_found": "La personne qui gère ce serveur doit corriger LLM_MODEL dans .env et redémarrer l'api.",
+      "quota": "Le tuteur répond de nouveau d'ici une minute.",
+      "quota_day": "{hasTime, select, yes {Google le remet à zéro vers {time}.} other {Google le remet à zéro à minuit, heure du Pacifique.}}",
+      "unreachable": "Réessaie dans un instant.",
+      "unexpected": "Les journaux de l'api disent pourquoi.",
+      "fixture": "Pour le vrai tuteur, mets LLM_PROVIDER=gemini et LLM_API_KEY dans .env.",
+      "disabled": "LLM_PROVIDER vaut disabled : il n'y a pas de clé à tester."
+    }
   },
   "Placement": {
     "title": "Test de positionnement",
@@ -469,6 +512,7 @@
     "stop": "Arrêter",
     "you": "Toi",
     "tutor": "Tuteur",
+    "tutorThinking": "Le tuteur réfléchit…",
     "tooManyQuestions": "Trop de questions. Réessaie dans {seconds} s.",
     "tutorBusy": "Le tuteur est très sollicité. Réessaie dans {seconds} s.",
     "comeBackTomorrow": "Tu as posé beaucoup de questions au tuteur aujourd'hui. Reviens demain.",

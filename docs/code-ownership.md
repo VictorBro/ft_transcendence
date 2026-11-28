@@ -6,7 +6,7 @@ chaque dossier doit couvrir le code de cette liste.
 
 ## Comment c'est calculé
 
-- On part des 92 PR fusionnées sur `main`.
+- On part des 93 PR fusionnées sur `main` jusqu'à #215 (2026-11-26).
 - Six autres PR ont été fusionnées dans la branche d'une autre PR, pas dans `main` : #21 (dans #20),
   #32 et #33 (dans #29), #100 et #101 (dans #71), #127 (dans #122). Leurs commits arrivent sur `main`
   avec le squash de cette autre PR, et sont comptés avec elle.
@@ -19,7 +19,7 @@ chaque dossier doit couvrir le code de cette liste.
   commentaires ou des messages (surtout des chemins vers la doc), ce qui ne fait pas de quelqu'un un
   auteur. Seules exceptions : `.prettierignore` et les quatre `.dockerignore` de `apps/api` et `apps/web`,
   où elle ajoute une vraie règle (`docs-fr`).
-- Seuls les fichiers qui existent aujourd'hui sont listés. Les fichiers renommés sont suivis jusqu'à leur
+- Seuls les fichiers qui existent sur `main` après #237 sont listés (les PR, elles, s'arrêtent à #215 : `infra/deploy/.env.example`, supprimé par #237, n'y est donc plus). Les fichiers renommés sont suivis jusqu'à leur
   nom actuel.
 - « Touché » veut dire créé ou modifié, même d'une ligne. Ce n'est pas un pourcentage de lignes.
 - Entre parenthèses : les autres personnes qui ont aussi touché le fichier.
@@ -45,11 +45,11 @@ Pour refaire le calcul : `git fetch origin '+refs/pull/*/head:refs/pr/*'`, puis 
 
 | Personne | PR (auteur) | PR (a aidé) | Fichiers touchés | dont code (`apps`, `packages`, `e2e`) |
 | --- | ---: | ---: | ---: | ---: |
-| Victor | 23 | 11 | 448 | 333 |
-| Endrit | 28 | 5 | 701 | 263 |
+| Victor | 23 | 11 | 447 | 333 |
+| Endrit | 29 | 5 | 704 | 267 |
 | Bastian | 21 | 1 | 212 | 165 |
 | Anaïs | 9 | 0 | 88 | 79 |
-| Luca | 11 | 0 | 171 | 159 |
+| Luca | 11 | 0 | 170 | 159 |
 
 ## Victor (`VictorBro`)
 
@@ -94,7 +94,7 @@ A aussi écrit des commits dans les PR des autres :
 - #104 feat: 50 placement and result
 - #107 feat: 105 fr outline A1
 
-### Ses fichiers (448)
+### Ses fichiers (447)
 
 #### API (`apps/api`)
 
@@ -108,7 +108,7 @@ A aussi écrit des commits dans les PR des autres :
 - `apps/api/src/demo/` : `demo.ts` (Endrit, Bastian)
 - `apps/api/src/friends/` : `friend-ids.ts` (Endrit), `friends.controller.ts`, `friends.dto.ts`, `friends.module.ts` (Endrit), `friends.service.spec.ts` (Endrit), `friends.service.ts` (Endrit), `pair.ts`
 - `apps/api/src/gateway/` : `gateway.module.ts` (Endrit), `session-io.adapter.ts`, `socket-exception.filter.spec.ts`, `socket-exception.filter.ts`, `socket.gateway.spec.ts` (Endrit), `socket.gateway.ts` (Endrit), `sockets.service.spec.ts`, `sockets.service.ts`
-- `apps/api/src/health/` : `health.controller.spec.ts`, `health.controller.ts`, `health.module.ts`, `health.service.spec.ts`, `health.service.ts`
+- `apps/api/src/health/` : `health.controller.spec.ts`, `health.controller.ts` (Endrit), `health.module.ts`, `health.service.spec.ts`, `health.service.ts`
 - `apps/api/src/health/dto/` : `health-response.dto.ts`
 - `apps/api/src/items/` : `item-files.spec.ts` (Endrit)
 - `apps/api/src/lessons/` : `goal.ts` (Luca), `lessons.service.ts` (Endrit, Luca, Bastian, Anaïs), `outline-files.spec.ts` (Bastian)
@@ -116,10 +116,10 @@ A aussi écrit des commits dans les PR des autres :
 - `apps/api/src/messages/` : `messages.controller.ts`, `messages.dto.ts`, `messages.gateway.ts`, `messages.module.ts`, `messages.service.spec.ts`, `messages.service.ts`, `unread.spec.ts`, `unread.ts`
 - `apps/api/src/metrics/` : `http-metrics.middleware.spec.ts`, `http-metrics.middleware.ts`, `metrics-server.spec.ts`, `metrics-server.ts`, `metrics.collector.spec.ts`, `metrics.collector.ts`, `metrics.module.ts`, `metrics.spec.ts` (Anaïs), `metrics.ts` (Anaïs, Luca)
 - `apps/api/src/placement/` : `placement-progress.service.spec.ts` (Bastian), `placement-progress.service.ts` (Bastian), `placement-question.service.spec.ts` (Bastian, Endrit), `placement-question.service.ts` (Bastian, Endrit), `placement-session.service.spec.ts` (Bastian), `placement-session.service.ts` (Bastian), `placement.module.ts` (Bastian, Endrit), `placement.schema.ts` (Bastian), `placement.service.spec.ts` (Bastian, Endrit), `placement.service.ts` (Bastian, Endrit)
-- `apps/api/src/prisma/` : `prisma.module.ts`, `prisma.service.spec.ts`, `prisma.service.ts`
+- `apps/api/src/prisma/` : `prisma.module.ts`, `prisma.service.spec.ts` (Endrit), `prisma.service.ts` (Endrit)
 - `apps/api/src/question-generation/` : `QUESTION_GENERATION.md` (Endrit), `question-batch.spec.ts`, `question-batch.ts` (Endrit), `question-generation.module.ts` (Endrit), `question-stock.service.spec.ts`, `question-stock.service.ts` (Endrit)
 - `apps/api/src/question-generation/prompts/` : `question-batch.prompt.spec.ts`, `question-batch.prompt.ts` (Endrit)
-- `apps/api/src/redis/` : `redis.module.ts`, `redis.service.spec.ts`, `redis.service.ts` (Endrit)
+- `apps/api/src/redis/` : `redis.module.ts`, `redis.service.spec.ts` (Endrit), `redis.service.ts` (Endrit)
 - `apps/api/src/throttler/` : `identity-throttler.guard.spec.ts` (Endrit), `identity-throttler.guard.ts` (Endrit), `rate-limits.spec.ts`, `rate-limits.ts`, `throttle-by-ip.decorator.ts`
 - `apps/api/src/users/` : `active-day.spec.ts`, `active-day.ts`, `public-user.ts`, `users.controller.ts` (Anaïs), `users.dto.ts`, `users.module.ts`, `users.service.spec.ts` (Luca), `users.service.ts` (Luca, Anaïs)
 - `apps/api/test/` : `app.e2e-spec.ts`, `auth.e2e-spec.ts` (Luca), `courses.e2e-spec.ts` (Anaïs), `demo.e2e-spec.ts` (Endrit, Bastian), `error-codes.e2e-spec.ts` (Endrit, Bastian), `friends.e2e-spec.ts` (Endrit), `gateway.e2e-spec.ts` (Anaïs), `messages.e2e-spec.ts`, `metrics.e2e-spec.ts`, `metrics.fixtures.ts`, `placement.e2e-spec.ts` (Bastian), `placement.fixtures.ts`, `seed.e2e-spec.ts` (Endrit, Luca, Bastian, Anaïs), `socket.fixtures.ts`, `two-factor.e2e-spec.ts` (Endrit), `users.e2e-spec.ts` (Luca, Endrit)
@@ -200,7 +200,7 @@ A aussi écrit des commits dans les PR des autres :
 - `.vscode/` : `extensions.json`, `settings.json`
 - `/` : `.editorconfig`, `.env.example` (Endrit, Luca, Anaïs), `.gitattributes`, `.gitignore` (Endrit, Bastian), `.nvmrc`, `.prettierignore` (Endrit), `.prettierrc`, `CONTRIBUTING.md`, `Makefile` (Bastian, Endrit, Luca), `README.md` (Endrit, Bastian, Luca), `compose.deploy.proxy.yml`, `compose.deploy.yml` (Endrit, Luca), `compose.override.yml` (Bastian), `compose.prod.yml`, `compose.yml` (Anaïs, Luca, Endrit), `package.json`, `pnpm-lock.yaml` (Luca, Anaïs, Bastian, Endrit), `pnpm-workspace.yaml` (Luca, Endrit), `turbo.json`
 - `infra/caddy/` : `Caddyfile` (Bastian), `Caddyfile.prod` (Bastian)
-- `infra/deploy/` : `.env.example` (Endrit, Luca), `deploy.sh`, `ft-deploy.service`, `ft-deploy.timer`
+- `infra/deploy/` : `deploy.sh`, `ft-deploy.service`, `ft-deploy.timer`
 - `infra/monitoring/alertmanager/` : `Dockerfile`, `alertmanager.yml`, `entrypoint.sh`, `silent.yml`
 - `infra/monitoring/alertmanager/templates/` : `discord.tmpl`
 - `infra/monitoring/grafana/` : `Dockerfile`, `entrypoint.sh`, `grafana.ini`
@@ -243,6 +243,7 @@ A aussi écrit des commits dans les PR des autres :
 - #218 fix(web): #217 check the 2FA turn-off password in the browser
 - #219 fix: #216 refuse 2FA setup and enable while 2FA is on
 - #220 fix(web): header menu, course cards and phone layouts
+- #222 fix(api): #221 fail the start on a wrong DATABASE_URL or REDIS_URL
 - #215 docs: #152 reorganise docs/, match Milestone 2, one file per module
 
 A aussi écrit des commits dans les PR des autres :
@@ -253,7 +254,7 @@ A aussi écrit des commits dans les PR des autres :
 - #104 feat: 50 placement and result
 - #107 feat: 105 fr outline A1
 
-### Ses fichiers (701)
+### Ses fichiers (704)
 
 #### API (`apps/api`)
 
@@ -269,14 +270,16 @@ A aussi écrit des commits dans les PR des autres :
 - `apps/api/src/demo/` : `demo.clock.ts`, `demo.data.ts`, `demo.planner.spec.ts` (Bastian), `demo.planner.ts`, `demo.ts` (Bastian, Victor)
 - `apps/api/src/friends/` : `friend-ids.ts` (Victor), `friends.module.ts` (Victor), `friends.service.spec.ts` (Victor), `friends.service.ts` (Victor)
 - `apps/api/src/gateway/` : `gateway.module.ts` (Victor), `socket.gateway.spec.ts` (Victor), `socket.gateway.ts` (Victor)
+- `apps/api/src/health/` : `health.controller.ts` (Victor)
 - `apps/api/src/items/` : `item-files.spec.ts` (Victor)
 - `apps/api/src/lessons/` : `course-lookup.spec.ts` (Luca), `course-lookup.ts` (Bastian, Luca), `lesson-complete.spec.ts`, `lesson-edits.spec.ts`, `lesson-files.spec.ts` (Bastian), `lesson-search.spec.ts` (Luca), `lesson-search.ts` (Luca), `lessons.controller.ts` (Luca, Bastian, Anaïs), `lessons.dto.ts` (Luca, Anaïs), `lessons.module.ts` (Anaïs, Luca), `lessons.service.ts` (Luca, Bastian, Anaïs, Victor)
 - `apps/api/src/llm/` : `GEMINI_PROVIDER.md` (Victor, Luca), `fixture.provider.spec.ts` (Victor, Luca), `fixture.provider.ts` (Victor, Luca), `gemini.provider.spec.ts` (Victor, Luca), `gemini.provider.ts` (Victor, Luca), `llm.factory.spec.ts` (Victor, Luca), `llm.factory.ts` (Victor, Luca), `llm.module.spec.ts` (Victor), `llm.module.ts` (Victor), `llm.provider.ts` (Victor, Luca)
 - `apps/api/src/placement/` : `placement-question.service.spec.ts` (Victor, Bastian), `placement-question.service.ts` (Victor, Bastian), `placement.module.ts` (Bastian, Victor), `placement.service.spec.ts` (Victor, Bastian), `placement.service.ts` (Bastian, Victor)
 - `apps/api/src/presence/` : `presence.module.ts`, `presence.service.spec.ts`, `presence.service.ts`
+- `apps/api/src/prisma/` : `prisma.service.spec.ts` (Victor), `prisma.service.ts` (Victor)
 - `apps/api/src/question-generation/` : `QUESTION_GENERATION.md` (Victor), `question-batch.ts` (Victor), `question-generation.module.ts` (Victor), `question-stock.service.ts` (Victor)
 - `apps/api/src/question-generation/prompts/` : `question-batch.prompt.ts` (Victor)
-- `apps/api/src/redis/` : `redis.service.ts` (Victor)
+- `apps/api/src/redis/` : `redis.service.spec.ts` (Victor), `redis.service.ts` (Victor)
 - `apps/api/src/throttler/` : `identity-throttler.guard.spec.ts` (Victor), `identity-throttler.guard.ts` (Victor)
 - `apps/api/test/` : `demo.e2e-spec.ts` (Bastian, Victor), `error-codes.e2e-spec.ts` (Bastian, Victor), `friends.e2e-spec.ts` (Victor), `lessons.e2e-spec.ts` (Bastian, Luca), `seed.e2e-spec.ts` (Victor, Luca, Bastian, Anaïs), `two-factor.e2e-spec.ts` (Victor), `users.e2e-spec.ts` (Victor, Luca)
 - `apps/api/test/fixtures/` : 4 fichiers
@@ -369,7 +372,6 @@ A aussi écrit des commits dans les PR des autres :
 - `.claude/skills/outline-language/` : `SKILL.md` (Victor)
 - `.github/` : `pull_request_template.md` (Victor)
 - `/` : `.env.example` (Victor, Luca, Anaïs), `.gitignore` (Victor, Bastian), `.prettierignore` (Victor), `Makefile` (Victor, Bastian, Luca), `README.md` (Victor, Bastian, Luca), `compose.deploy.yml` (Victor, Luca), `compose.yml` (Victor, Anaïs, Luca), `pnpm-lock.yaml` (Victor, Luca, Anaïs, Bastian), `pnpm-workspace.yaml` (Victor, Luca)
-- `infra/deploy/` : `.env.example` (Victor, Luca)
 - `scripts/` : `check-env-example.sh` (Victor)
 
 ## Bastian (`bastian-schnitzler`)
@@ -553,7 +555,7 @@ A aussi écrit des commits dans les PR des autres :
 - #205 feat: 151 discussion window
 - #212 fix(web): #211 store the interface language in User.locale
 
-### Ses fichiers (171)
+### Ses fichiers (170)
 
 #### API (`apps/api`)
 
@@ -617,6 +619,5 @@ A aussi écrit des commits dans les PR des autres :
 
 - `.github/workflows/` : `ci.yml` (Victor, Anaïs)
 - `/` : `.env.example` (Victor, Endrit, Anaïs), `Makefile` (Victor, Bastian, Endrit), `README.md` (Victor, Endrit, Bastian), `compose.deploy.yml` (Victor, Endrit), `compose.yml` (Victor, Anaïs, Endrit), `pnpm-lock.yaml` (Victor, Anaïs, Bastian, Endrit), `pnpm-workspace.yaml` (Victor, Endrit)
-- `infra/deploy/` : `.env.example` (Victor, Endrit)
 - `infra/monitoring/grafana/dashboards/` : 1 fichiers (aussi : Victor)
 

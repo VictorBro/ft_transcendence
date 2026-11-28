@@ -32,6 +32,10 @@ export const RATE_LIMITS = {
    * tests the default the servers run.
    */
   signup: readLimit(process.env, 'SIGNUP_LIMIT_PER_MINUTE', 20),
-  /** Password or 2FA code checks a minute per address, on each route that makes one. */
-  login: readLimit(process.env, 'LOGIN_LIMIT_PER_MINUTE', 5),
+  /**
+   * Password or 2FA code checks a minute per address, on each route that makes
+   * one. 20, not 5: every browser on one machine reaches the API as one
+   * address (the docker gateway), so 5 was a budget for the whole machine.
+   */
+  login: readLimit(process.env, 'LOGIN_LIMIT_PER_MINUTE', 20),
 } as const;

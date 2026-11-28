@@ -63,12 +63,12 @@ Ce que `git log` montre sur ces deux dossiers :
 
 | Fichier | Rôle |
 |---|---|
-| [llm.provider.ts](../../../../apps/api/src/llm/llm.provider.ts) | Le **contrat**. Le token `LLM_PROVIDER` (un `Symbol`), l'interface `LlmProvider` (deux méthodes : `generateStructured` pour les questions, `streamText` pour le tuteur des leçons), le type `StructuredRequest` (purpose, system, user, schema), la classe d'erreur `LlmError` (`retryable`, `reason`). |
+| [llm.provider.ts](../../../../apps/api/src/llm/llm.provider.ts) | Le **contrat**. Le token `LLM_PROVIDER` (un `Symbol`), l'interface `LlmProvider` (`generateStructured` pour les questions, `streamText` pour le tuteur des leçons, et depuis `info` et `check`, le test de la clé de `/profile`), le type `StructuredRequest` (purpose, system, user, schema), la classe d'erreur `LlmError` (`retryable`, `reason`, et `quota` pour un 429 : minute ou jour). |
 | [llm.factory.ts](../../../../apps/api/src/llm/llm.factory.ts) | `createLlmProvider` : lit `LLM_PROVIDER`, `LLM_API_KEY`, `LLM_MODEL` et construit **le bon** provider. Plante au démarrage si la config est fausse. |
 | [llm.module.ts](../../../../apps/api/src/llm/llm.module.ts) | Le module NestJS. Enregistre le token `LLM_PROVIDER` avec `useFactory` et l'**exporte**. |
 | [gemini.provider.ts](../../../../apps/api/src/llm/gemini.provider.ts) | Le vrai provider : un appel HTTP `fetch` à l'API Gemini, timeout 90 s, lecture de la réponse, validation Zod, erreurs `LlmError`, métriques. |
 | [fixture.provider.ts](../../../../apps/api/src/llm/fixture.provider.ts) | Le provider « sans clé » : `generateStructured` **échoue toujours** (`LlmError`, `retryable: false`, `reason: 'disabled'`). `streamText` (le tuteur) renvoie un texte fixe. Aucun réseau, aucun coût. |
-| [disabled.provider.ts](../../../../apps/api/src/llm/disabled.provider.ts) | `LLM_PROVIDER=disabled` : aucun LLM, même pas le tuteur fixe. Les deux méthodes échouent tout de suite avec `reason: 'disabled'` (#201). |
+| [disabled.provider.ts](../../../../apps/api/src/llm/disabled.provider.ts) | `LLM_PROVIDER=disabled` : aucun LLM, même pas le tuteur fixe. `generateStructured` et `streamText` échouent tout de suite avec `reason: 'disabled'` (#201) ; `check` répond le statut `disabled`. |
 | `*.spec.ts` | Les tests unitaires (Vitest) de chaque fichier. |
 
 ### `question-generation/` : remplir la banque
@@ -165,11 +165,11 @@ sequenceDiagram
   ST->>L: generateStructured(request)
   alt succès
     L-->>ST: items validés par Zod
-  else LlmError retryable (réseau, 429, 5xx, JSON invalide)
+  else LlmError retryable (réseau, 429 de la minute, 5xx, JSON invalide)
     L-->>ST: LlmError retryable true
     ST->>L: 2e et dernier essai
     L-->>ST: items, ou une erreur
-  else LlmError non retryable (Fixture, prompt bloqué, 400)
+  else LlmError non retryable (Fixture, prompt bloqué, 400, 429 du jour)
     L-->>ST: LlmError retryable false
   end
   alt items reçus
@@ -338,7 +338,7 @@ En déploiement, [compose.deploy.yml](../../../../compose.deploy.yml) **exige** 
 
 ### 8.4 Retry, cooldown, `inFlight` : les garde-fous
 
-- **Retry (un seul).** Seulement si l'erreur est une `LlmError` avec `retryable: true`. C'est le **provider** qui décide, car c'est lui qui sait : un 429 ou un 503 peut passer au 2e essai, une clé invalide (401) ou un prompt bloqué non.
+- **Retry (un seul).** Seulement si l'erreur est une `LlmError` avec `retryable: true`. C'est le **provider** qui décide, car c'est lui qui sait : un 429 de la minute ou un 503 peut passer au 2e essai, une clé invalide (401), un prompt bloqué ou un 429 du quota du jour (refusé pendant des heures) non.
 - **Cooldown de 10 min.** Après un échec, ou un lot sans rien de nouveau. Sans ça, un LLM en panne serait appelé **à chaque question tirée** de chaque apprenant : coût et logs inutiles.
 - **`inFlight` (une `Map` cellule → promesse).** Empêche deux restocks de la même cellule en même temps, même si 50 apprenants tirent au même moment. C'est sûr parce que JavaScript exécute une chose à la fois : entre `inFlight.has` et `inFlight.set` il n'y a pas d'`await`.
 - **`restock` ne rejette jamais.** `fill` attrape toutes les erreurs. C'est obligatoire : la promesse n'est pas attendue (`void`), et une promesse rejetée sans `catch` (« unhandled rejection ») peut faire planter le processus Node.
@@ -372,8 +372,9 @@ L'insertion est **un seul** `createMany` : une seule requête SQL, donc atomique
 | [llm.module.spec.ts](../../../../apps/api/src/llm/llm.module.spec.ts) | Le token `LLM_PROVIDER` est bien fourni par le module. |
 | [gemini.provider.spec.ts](../../../../apps/api/src/llm/gemini.provider.spec.ts) | `fetch` simulé : corps envoyé, header de clé, erreurs HTTP, blocage, réponse coupée, JSON invalide. |
 | [gemini.provider.stream.spec.ts](../../../../apps/api/src/llm/gemini.provider.stream.spec.ts) | `streamText` avec un faux `fetch` (le tuteur, #201). |
-| [fixture.provider.spec.ts](../../../../apps/api/src/llm/fixture.provider.spec.ts) | `generateStructured` rejette toujours, non retryable ; `streamText` envoie le texte fixe, ou échoue sur `#blocked`, `#timeout`, `#fail-midstream`. |
-| [disabled.provider.spec.ts](../../../../apps/api/src/llm/disabled.provider.spec.ts) | Les deux méthodes échouent avec `disabled`. |
+| [gemini.provider.check.spec.ts](../../../../apps/api/src/llm/gemini.provider.check.spec.ts) | `check`, le test de la clé (ajouté après) : un `POST` d'un mot, la clé dans le header, le statut de chaque réponse de Google. |
+| [fixture.provider.spec.ts](../../../../apps/api/src/llm/fixture.provider.spec.ts) | `generateStructured` rejette toujours, non retryable ; `check` répond `fixture` sans appel ; `streamText` envoie le texte fixe, ou échoue sur `#blocked`, `#timeout`, `#quota-day`, `#fail-midstream`. |
+| [disabled.provider.spec.ts](../../../../apps/api/src/llm/disabled.provider.spec.ts) | `generateStructured` et `streamText` échouent avec `disabled` ; `check` répond le statut `disabled`. |
 | [question-stock.service.spec.ts](../../../../apps/api/src/question-generation/question-stock.service.spec.ts) | stocked / busy / cooling / filled / failed, le retry, la pause. |
 | [question-batch.spec.ts](../../../../apps/api/src/question-generation/question-batch.spec.ts) | `freshItems` et `toRows`. |
 | [question-batch.prompt.spec.ts](../../../../apps/api/src/question-generation/prompts/question-batch.prompt.spec.ts) | Le contenu du prompt selon la cellule. |
@@ -410,7 +411,7 @@ R : `LlmError` retryable → un 2e essai. S'il échoue aussi : log, pause de 10 
 
 **Q : Pourquoi ne réessayer qu'une fois, et pas toujours ?**
 
-R : Chaque appel coûte des tokens. Un prompt bloqué ou une clé invalide donnera le même résultat à chaque fois. Le provider marque `retryable` uniquement les erreurs passagères (réseau, 408, 429, 5xx, JSON invalide).
+R : Chaque appel coûte des tokens. Un prompt bloqué ou une clé invalide donnera le même résultat à chaque fois. Le provider marque `retryable` uniquement les erreurs passagères (réseau, 408, 429 de la minute, 5xx, JSON invalide).
 
 **Q : Comment éviter que 50 apprenants déclenchent 50 appels ?**
 

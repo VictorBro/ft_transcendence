@@ -56,8 +56,10 @@ function gatewayWith(
   // The session is still in Redis unless a test says otherwise.
   const exists = vi.fn().mockResolvedValue(1);
   const update = vi.fn().mockResolvedValue({});
-  // No friends, nothing unread, and no socket ever the first or the last, unless a test says otherwise.
+  // No friends, no request waiting, nothing unread, and no socket ever the
+  // first or the last, unless a test says otherwise.
   const findMany = vi.fn().mockResolvedValue([]);
+  const count = vi.fn().mockResolvedValue(0);
   const groupBy = vi.fn().mockResolvedValue([]);
   const sockets = { closeSession: vi.fn(), attach: vi.fn(), toUser: vi.fn() };
   const presence = {
@@ -68,14 +70,14 @@ function gatewayWith(
   const gateway = new SocketGateway(
     {
       user: { findUnique, update },
-      friendship: { findMany },
+      friendship: { findMany, count },
       message: { groupBy },
     } as unknown as PrismaService,
     { client: { exists } } as unknown as RedisService,
     sockets as unknown as SocketsService,
     presence as unknown as PresenceService,
   );
-  return { gateway, findUnique, update, findMany, groupBy, exists, sockets, presence };
+  return { gateway, findUnique, update, findMany, count, groupBy, exists, sockets, presence };
 }
 
 /** A connected socket of u1, who is friends with f1 (who asked) and f2 (who was asked). */
@@ -94,6 +96,7 @@ function connectedSocket() {
 const settle = () => new Promise((resolve) => setImmediate(resolve));
 
 const unread = (counts: Record<string, number>) => ({ counts, at: expect.any(String) });
+const pending = (count: number) => ({ count, at: expect.any(String) });
 
 describe('sameOrigin', () => {
   it('lets a client with no Origin through: it is not a browser', () => {
@@ -471,6 +474,7 @@ describe('SocketGateway presence', () => {
     expect(emit.mock.calls).toEqual([
       ['presence:update', update('f1', 'offline')],
       ['presence:update', update('f2', 'online')],
+      ['friend:pending', pending(0)],
       ['dm:unread', unread({})],
     ]);
     expect(sockets.toUser).not.toHaveBeenCalled();
@@ -516,8 +520,11 @@ describe('SocketGateway presence', () => {
 
     expect(error).toHaveBeenCalledWith('presence on connect failed: Error: ECONNREFUSED');
     expect(error).toHaveBeenCalledWith('presence on disconnect failed: Error: ECONNREFUSED');
-    // The count settles on its own.
-    expect(emit.mock.calls).toEqual([['dm:unread', unread({})]]);
+    // The counts settle on their own.
+    expect(emit.mock.calls).toEqual([
+      ['friend:pending', pending(0)],
+      ['dm:unread', unread({})],
+    ]);
     error.mockRestore();
   });
 });
@@ -537,6 +544,7 @@ describe('SocketGateway unread on connect', () => {
     expect(emit.mock.calls.map(([event]) => event)).toEqual([
       'presence:update',
       'presence:update',
+      'friend:pending',
       'dm:unread',
     ]);
     expect(emit).toHaveBeenLastCalledWith('dm:unread', unread({ f1: 3 }));
@@ -553,7 +561,10 @@ describe('SocketGateway unread on connect', () => {
     gateway.handleConnection(socket);
     await settle();
 
-    expect(emit.mock.calls).toEqual([['dm:unread', unread({})]]);
+    expect(emit.mock.calls).toEqual([
+      ['friend:pending', pending(0)],
+      ['dm:unread', unread({})],
+    ]);
   });
 
   // The friends still hear this user came online, and the socket where each stands.
@@ -571,8 +582,59 @@ describe('SocketGateway unread on connect', () => {
       ['f1', 'presence:update', online],
       ['f2', 'presence:update', online],
     ]);
-    expect(emit.mock.calls.map(([event]) => event)).toEqual(['presence:update', 'presence:update']);
+    expect(emit.mock.calls.map(([event]) => event)).toEqual([
+      'presence:update',
+      'presence:update',
+      'friend:pending',
+    ]);
     expect(error).toHaveBeenCalledWith('unread on connect failed: Error: P1001');
+    error.mockRestore();
+  });
+});
+
+describe('SocketGateway pending requests on connect', () => {
+  const out = { direction: 'out', event: 'friend:pending', outcome: 'ok' };
+
+  // The header was rendered a moment before: a request may have arrived since.
+  it('tells the new socket, and only it, how many requests wait, before what is unread', async () => {
+    const { gateway, socket, emit, count, sockets } = connectedSocket();
+    count.mockResolvedValue(2);
+    const before = (await seriesValue(wsEvents, out)) ?? 0;
+
+    gateway.handleConnection(socket);
+    await settle();
+
+    expect(count).toHaveBeenCalledExactlyOnceWith({
+      where: { addresseeId: 'u1', status: 'pending' },
+    });
+    expect(emit.mock.calls.slice(-2)).toEqual([
+      ['friend:pending', pending(2)],
+      ['dm:unread', unread({})],
+    ]);
+    expect(sockets.toUser).not.toHaveBeenCalled();
+    expect(await seriesValue(wsEvents, out)).toBe(before + 1);
+  });
+
+  // The friends still hear this user came online, and the socket the rest.
+  it('logs a failed count and carries on', async () => {
+    const error = vi.spyOn(Logger.prototype, 'error').mockImplementation(() => undefined);
+    const { gateway, socket, emit, count, presence, sockets } = connectedSocket();
+    count.mockRejectedValue(new Error('P1001'));
+    presence.connected.mockResolvedValue(true);
+
+    gateway.handleConnection(socket);
+    await settle();
+
+    expect(sockets.toUser.mock.calls.map(([, event]) => event)).toEqual([
+      'presence:update',
+      'presence:update',
+    ]);
+    expect(emit.mock.calls.map(([event]) => event)).toEqual([
+      'presence:update',
+      'presence:update',
+      'dm:unread',
+    ]);
+    expect(error).toHaveBeenCalledWith('pending on connect failed: Error: P1001');
     error.mockRestore();
   });
 });

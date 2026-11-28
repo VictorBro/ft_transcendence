@@ -50,8 +50,8 @@ Et dans le PDF, les modules Tournament, Game customization et Spectator autour d
 « This module requires you to have implemented at least one game ». Le module Gamification n'a pas
 cette phrase. Ses propres mots, « reward users for their actions » (récompenser les utilisateurs pour leurs actions), vont avec n'importe quelle app. Donc on l'annonce, et
 les « actions des utilisateurs » sont finir des leçons et atteindre l'objectif du jour. C'est notre lecture du
-sujet. L'équipe a noté que ça doit être confirmé avec le staff avant la soutenance
-([README.md](README.md#la-gamification-en-dehors-dun-jeu), « La gamification en dehors d'un jeu »).
+sujet, aussi donnée dans [README.md](README.md#la-gamification-en-dehors-dun-jeu) (« La gamification en dehors
+d'un jeu »).
 
 ## Comment on y répond
 
@@ -197,11 +197,14 @@ La stack doit tourner (`make run`, ou `make` pour lancer toutes les vérificatio
 **Un apprenant avec plus d'historique (en option)**
 
 Si `DEMO_PASSWORD` est défini dans `.env`, le seed construit des apprenants de démo
-([`.env.example`](../../.env.example), [`demo.data.ts`](../../apps/api/src/demo/demo.data.ts)).
+([`.env.example`](../../.env.example), [`demo.data.ts`](../../apps/api/src/demo/demo.data.ts)),
+dans un checkout et sur un serveur dont le `.env` le définit (alors sur `https://<SITE_DOMAIN>/en/login`).
 Ils sont rejoués à travers les vrais services, donc ils ont gagné leurs XP et leurs succès avec les mêmes
 règles. Connecte-toi sur `https://localhost/en/login` avec `demo-eva@example.com` : son français A1 est
-terminé, donc `/en/learn/fr/achievements` affiche **A1 complete** comme gagné. `demo-ben@example.com`
-a une série de 12 jours.
+terminé, donc `/en/learn/fr/achievements` affiche **A1 complete** comme gagné. `demo-anna@example.com`
+a gagné **streak3** aujourd'hui, le troisième jour d'affilée. `demo-ben@example.com` a une série de
+10 jours et **streak7** ; `demo-chloe@example.com` a perdu la sienne, mais garde **streak7**
+(meilleure 7).
 
 ## Les tests qui le prouvent
 
@@ -219,8 +222,7 @@ a une série de 12 jours.
 - **Trois fonctionnalités, pas six.** Pas de badges, pas de classements, pas de récompenses
   ([../architecture/product.md](../architecture/product.md)). Le sujet en demande trois et dit que
   trois bien faites valent mieux que six mal faites.
-- **Pas de jeu.** Le module est annoncé sur une app sans jeu, comme expliqué plus haut. Ça doit être
-  confirmé avec le staff avant la soutenance.
+- **Pas de jeu.** Le module est annoncé sur une app sans jeu, comme expliqué plus haut.
 - **Par cours, pas par utilisateur.** Les XP, le défi et les succès appartiennent à un cours. Un
   apprenant avec le français et l'allemand a deux rangs et deux séries de succès.
 - **Le défi est calculé, pas stocké.** Seuls le jour où il a été fait et son code sont enregistrés. Un

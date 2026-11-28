@@ -36,10 +36,14 @@ REQUIRED_SERIES=(
   'ft_llm_provider_info'
   'ft_users'
   'ft_active_users'
-  # After the migrations: the collector reads the bank's table. It caches
-  # for 60 s, well inside the timeout.
+  # After the migrations: the collector reads these tables. It caches for
+  # 60 s, well inside the timeout, and reports every label set, empty ones at 0.
   'ft_question_bank_questions'
+  'ft_courses'
+  'ft_achievements'
+  'ft_friendships'
   'ft_placement_exams_total'
+  'ft_lesson_attempts_total'
   'ft_placement_draws_total'
   'ft_placement_pool_exhausted_total'
   'ft_question_restocks_total'

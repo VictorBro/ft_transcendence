@@ -930,17 +930,17 @@
         </nav>
         <a
           class="prod"
-          href="https://transcendence.dpdns.org"
-          title="Production, sur l'instance Oracle Cloud : transcendence.dpdns.org"
+          href="https://trans.vyantares.ch"
+          title="Production, le déploiement principal, avec le monitoring : trans.vyantares.ch"
           ><i class="ti ti-rocket" aria-hidden="true"></i>production<i
             class="ti ti-arrow-up-right"
             aria-hidden="true"
           ></i></a
         ><a
           class="prod"
-          href="https://trans.vyantares.ch"
-          title="Une deuxième copie, sur un VPS partagé : trans.vyantares.ch"
-          ><i class="ti ti-server" aria-hidden="true"></i>deuxième copie<i
+          href="https://transcendence.dpdns.org"
+          title="Une copie secondaire, sur l'instance Oracle Cloud, sans monitoring : transcendence.dpdns.org"
+          ><i class="ti ti-server" aria-hidden="true"></i>copie secondaire<i
             class="ti ti-arrow-up-right"
             aria-hidden="true"
           ></i></a
@@ -1292,7 +1292,7 @@
               <li>
                 <b>D'abord les vérifications, en erreurs JSON.</b> Une leçon prête, le curseur de la
                 tentative sur sa page de discussion (sinon 409 <code>attempt.stale</code>), puis les
-                limites dans Redis : 2 par minute et 60 par jour par apprenant, 5 par minute pour
+                limites dans Redis : 5 par minute et 150 par jour par apprenant, 10 par minute pour
                 tout le monde (sinon 429 avec <code>retryAfter</code>).
               </li>
               <li>

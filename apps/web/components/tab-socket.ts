@@ -23,7 +23,12 @@ import {
   type SocketStatus,
 } from '@/lib/reconnect';
 import { sendMessageOver } from '@/lib/send-message';
-import { createUnreadStore, unreadTotal, type UnreadCounts } from '@/lib/unread';
+import {
+  createPendingStore,
+  createUnreadStore,
+  unreadTotal,
+  type UnreadCounts,
+} from '@/lib/unread';
 
 type TabSocket = Socket<ServerToClientEvents, ClientToServerEvents>;
 type Payload<E extends ServerEventName> = Parameters<ServerToClientEvents[E]>[0];
@@ -48,6 +53,8 @@ const watchers = new Set<() => void>();
 const presence = createPresenceMap();
 // The same for the unread counts, so the account menu's badge is right on any page.
 const unread = createUnreadStore();
+// The same for friend requests waiting on this user, for the account menu's counts.
+const pending = createPendingStore();
 
 function setStatus(next: SocketStatus): void {
   status = next;
@@ -91,6 +98,7 @@ function follow(step: NextStep): void {
   } else if (step === 'signedOut') {
     // The session is over: its counts must not outlive it on this tab.
     unread.clear();
+    pending.clear();
     setStatus('signedOut');
   }
 }
@@ -128,6 +136,7 @@ function socket(): TabSocket {
     // carries their `online`. Forgotten, so no older entry can stand above it.
     created.on(SERVER_EVENTS.FRIEND_ACCEPTED, ({ userId }) => presence.forget(userId));
     created.on(SERVER_EVENTS.DM_UNREAD, (snapshot) => unread.apply(snapshot));
+    created.on(SERVER_EVENTS.FRIEND_PENDING, (snapshot) => pending.apply(snapshot));
     tab = created;
   }
   return tab;
@@ -159,6 +168,7 @@ export function closeSocket(): void {
   tab?.disconnect();
   presence.clear();
   unread.clear();
+  pending.clear();
   setStatus('closed');
 }
 
@@ -198,6 +208,16 @@ export function useUnreadTotal(): number | undefined {
 export function useUnread(userId: string, rendered: number): number {
   const counts = useUnreadCounts();
   return counts === undefined ? rendered : (counts[userId] ?? 0);
+}
+
+/**
+ * Friend requests waiting on this user, as the tab last heard; until the first
+ * friend:pending (sent with every connect) the count the header was rendered
+ * with. The server render and hydration use `rendered` too, so they agree.
+ */
+export function useFriendPending(rendered: number | undefined): number | undefined {
+  const heard = useSyncExternalStore(pending.subscribe, pending.get, () => undefined);
+  return heard ?? rendered;
 }
 
 /** The stored message or a code; never queued while offline, see lib/send-message.ts. */

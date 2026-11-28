@@ -138,7 +138,7 @@ isn't fully functional at evaluation counts as **0**.
 | Minor | Advanced chat: blocking, game invites from chat, game and tournament notifications in chat, profile access, history, typing indicators and read receipts |
 | Minor | Tournament system: brackets, matchup order, matchmaking, registration and management |
 | Minor | Game customization: power-ups, maps/themes, settings, defaults available |
-| Minor | Gamification: ≥3 of achievements / badges / leaderboards / XP / daily challenges / rewards, persisted, with visual feedback |
+| Minor | Gamification: ≥3 of achievements / badges / leaderboards / XP / daily challenges / rewards, persisted, with visual feedback, clear rules and progression |
 | Minor | Spectator mode with real-time updates (optional spectator chat) |
 
 ### DevOps

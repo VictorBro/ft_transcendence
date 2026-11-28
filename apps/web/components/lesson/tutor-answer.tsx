@@ -98,3 +98,23 @@ export function TutorAnswer({ text, cut = false }: { text: string; cut?: boolean
     </div>
   );
 }
+
+/**
+ * The tutor's turn before its first word (discussion.tsx): three dots where
+ * the answer will start. Only seen: the discussion announces it in its own
+ * live region. Still under prefers-reduced-motion. No data-turn: not a turn.
+ * Class names written whole: Tailwind only sees literal strings.
+ */
+export function TutorThinking() {
+  return (
+    <li
+      data-slot="tutor-thinking"
+      aria-hidden="true"
+      className="flex items-center gap-1.5 self-start rounded-2xl bg-slate-800/60 px-4 py-3"
+    >
+      <span className="size-2 rounded-full bg-slate-400 motion-safe:animate-bounce motion-safe:[animation-delay:-0.3s]" />
+      <span className="size-2 rounded-full bg-slate-400 motion-safe:animate-bounce motion-safe:[animation-delay:-0.15s]" />
+      <span className="size-2 rounded-full bg-slate-400 motion-safe:animate-bounce" />
+    </li>
+  );
+}

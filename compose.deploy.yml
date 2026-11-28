@@ -1,6 +1,6 @@
 # Deployment topology: pulls released images, never builds.
 #
-#   docker compose -f compose.deploy.yml pull
+#   docker compose -f compose.deploy.yml --profile migrate pull
 #   docker compose -f compose.deploy.yml --profile migrate run --rm migrate
 #   docker compose -f compose.deploy.yml up -d
 #
@@ -10,7 +10,13 @@
 #
 #   compose.deploy.yml   this file
 #   Caddyfile            infra/caddy/Caddyfile.prod, renamed
-#   .env                 see infra/deploy/.env.example
+#   .env                 .env.example from the repo root, filled in
+#
+# This file is the app alone. Two overlays go next to it when the host needs
+# them, and deploy.sh adds each one it finds:
+#
+#   compose.deploy.monitoring.yml   Prometheus, Alertmanager, Grafana, exporters
+#   compose.deploy.proxy.yml        another reverse proxy owns 80 and 443
 #
 # Everything else arrives from ghcr.io, which serves these packages publicly, so
 # the host needs no registry login.
@@ -21,6 +27,7 @@ name: ft_transcendence
 # forever unless told otherwise. Caddy's access log holds each visitor's IP
 # address, and the Privacy Policy (section 5) says those logs are capped and
 # rotated out, oldest first: three files of 10 MB per container, at most.
+# compose.deploy.monitoring.yml carries its own copy: anchors do not cross files.
 x-logging: &logging
   driver: json-file
   options:
@@ -123,7 +130,10 @@ services:
   #
   # Seeds after migrating: the question bank and the lessons ship as files in
   # content/, which the tooling image carries. Both upsert on the authored ids,
-  # so running the seed on every deploy is safe.
+  # so running the seed on every deploy is safe. With DEMO_PASSWORD set, the
+  # seed then deletes the six demo learners and builds them again, so each
+  # deploy resets them and their today is the deploy's. A learner that fails
+  # is logged and skipped: it never fails the deploy.
   migrate:
     logging: *logging
     image: ghcr.io/victorbro/ft_transcendence/tooling:${IMAGE_TAG:-latest}
@@ -139,6 +149,9 @@ services:
         condition: service_healthy
     environment:
       DATABASE_URL: postgresql://${POSTGRES_USER:-ft}:${POSTGRES_PASSWORD:?set a real database password}@db:5432/${POSTGRES_DB:-ft_transcendence}?schema=public
+      # Empty: no demo learners. Only this one-shot service gets it, never the
+      # api (SEED_ONLY in scripts/check-env-example.sh).
+      DEMO_PASSWORD: ${DEMO_PASSWORD:-}
     networks:
       - ft
     restart: "no"
@@ -180,134 +193,12 @@ services:
       - ft
     restart: unless-stopped
 
-  # The monitoring stack, see docs/operations/monitoring.md and the comments in
-  # compose.yml. Always on here. None of these publishes a port: Grafana is
-  # reached through caddy at /grafana. The configs are baked into the three
-  # images images.yml publishes, so this host still needs only three files. The
-  # exporter pins are copied from compose.yml by hand, like caddy's:
-  # scripts/check-monitoring-config.sh fails when the two drift.
-  prometheus:
-    logging: *logging
-    image: ghcr.io/victorbro/ft_transcendence/prometheus:${IMAGE_TAG:-latest}
-    volumes:
-      - prometheus-data:/prometheus
-    networks:
-      - ft
-    mem_limit: 256m
-    # A quarter of the default CPU weight: on a shared core, compaction and
-    # Grafana's first-boot migration yield to the app. Weight only, never a cap
-    # (`cpus` is a hard error on rootless hosts without cpu delegation), and only
-    # here, where the daemon is rootful.
-    cpu_shares: 256
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1:9090/-/ready"]
-      interval: 30s
-      timeout: 5s
-      start_period: 30s
-      retries: 3
-
-  alertmanager:
-    logging: *logging
-    image: ghcr.io/victorbro/ft_transcendence/alertmanager:${IMAGE_TAG:-latest}
-    environment:
-      # Optional on purpose: an interpolation error here would stop the whole
-      # deploy, app included (deploy.sh runs under set -e). Empty only means
-      # alerts are not sent; the container logs say so at start.
-      DISCORD_WEBHOOK_URL: ${DISCORD_WEBHOOK_URL:-}
-      GRAFANA_URL: https://${SITE_DOMAIN:?set the public hostname, e.g. ft.example.com}/grafana
-    tmpfs:
-      - /run/alertmanager
-    volumes:
-      - alertmanager-data:/alertmanager
-    networks:
-      - ft
-    mem_limit: 64m
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1:9093/-/ready"]
-      interval: 30s
-      timeout: 5s
-      start_period: 10s
-      retries: 3
-
-  grafana:
-    logging: *logging
-    image: ghcr.io/victorbro/ft_transcendence/grafana:${IMAGE_TAG:-latest}
-    environment:
-      GF_SERVER_ROOT_URL: https://${SITE_DOMAIN:?set the public hostname, e.g. ft.example.com}/grafana/
-      # No fallback: a default would be a password published in this repo.
-      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD:?set GRAFANA_ADMIN_PASSWORD, see infra/deploy/.env.example}
-      GF_SECURITY_SECRET_KEY: ${GRAFANA_SECRET_KEY:?set GRAFANA_SECRET_KEY, see infra/deploy/.env.example}
-      GOMEMLIMIT: 256MiB
-    volumes:
-      - grafana-data:/var/lib/grafana
-    networks:
-      - ft
-    mem_limit: 320m
-    # Same reason as prometheus.
-    cpu_shares: 256
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1:3000/grafana/api/health"]
-      interval: 30s
-      timeout: 5s
-      start_period: 60s
-      retries: 3
-
-  node-exporter:
-    logging: *logging
-    image: ghcr.io/prometheus/node-exporter:v1.12.1
-    command:
-      - --path.rootfs=/rootfs
-      - --collector.filesystem.mount-points-exclude=^/(dev|proc|sys|run|etc|var/lib/(docker|containers|containerd)/.+)($$|/)
-    volumes:
-      - /:/rootfs:ro
-    networks:
-      - ft
-    mem_limit: 48m
-    restart: unless-stopped
-
-  postgres-exporter:
-    logging: *logging
-    image: ghcr.io/prometheus-community/postgres-exporter:v0.20.1
-    environment:
-      DATA_SOURCE_URI: db:5432/${POSTGRES_DB:-ft_transcendence}?sslmode=disable
-      DATA_SOURCE_USER: ${POSTGRES_USER:-ft}
-      DATA_SOURCE_PASS: ${POSTGRES_PASSWORD:?set a real database password}
-    networks:
-      - ft
-    mem_limit: 48m
-    restart: unless-stopped
-
-  redis-exporter:
-    logging: *logging
-    image: ghcr.io/oliver006/redis_exporter:v1.97.0
-    environment:
-      REDIS_ADDR: redis://redis:6379
-      REDIS_EXPORTER_COUNT_KEYS: db0=sess:*
-    networks:
-      - ft
-    mem_limit: 32m
-    restart: unless-stopped
-
-  blackbox-exporter:
-    logging: *logging
-    image: ghcr.io/prometheus/blackbox-exporter:v0.29.1
-    networks:
-      - ft
-    mem_limit: 32m
-    restart: unless-stopped
-
 volumes:
   pg-data:
   redis-data:
   caddy-data:
   caddy-config:
   avatars-data:
-  prometheus-data:
-  alertmanager-data:
-  grafana-data:
 
 networks:
   ft:

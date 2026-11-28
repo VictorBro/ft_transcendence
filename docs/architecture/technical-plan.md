@@ -67,8 +67,10 @@ ft_transcendence/
 ├── compose.prod.yml               # prod targets, no mounts, restart policies
 ├── compose.deploy.yml             # deployments: pulls the released images, never builds
 ├── compose.deploy.proxy.yml       # overlay for a host where another reverse proxy owns 80 and 443
+├── compose.deploy.monitoring.yml  # overlay for a host that runs monitoring
+├── .env.example                   # the one .env template, for a checkout and for a server
 ├── Makefile
-├── turbo.json · pnpm-workspace.yaml · .env.example · README.md
+├── turbo.json · pnpm-workspace.yaml · README.md
 ```
 
 Scaffolding note: `create-next-app` / `nest new` generate standalone projects (own `.git`,
@@ -88,11 +90,12 @@ apps/api/src/
 ├── items/                # the spec that checks content/items/
 ├── question-generation/  # restocking the bank with the LLM
 ├── lessons/              # catalogue, daily view, search, attempts, discussion, gamification
-├── llm/                  # LlmProvider: fixture, gemini, disabled; generateStructured, streamText
+├── llm/                  # LlmProvider: fixture, gemini, disabled; generateStructured, streamText, check
+├── tutor/                # GET /api/tutor, POST /api/tutor/check: what the tutor runs on, a key check
 ├── gateway/              # socket.io on /ws: handshake, screen, rooms
 ├── friends/  presence/  messages/   # Milestone 3 social features
 ├── metrics/              # Prometheus registry and the :9464 listener
-├── demo/                 # demo learners, seeded on development stacks only
+├── demo/                 # demo learners, seeded wherever DEMO_PASSWORD is set
 ├── throttler/  prisma/  redis/  health/
 └── validation.pipe.ts, error-code.filter.ts   # Zod validation, error codes
 ```
@@ -192,7 +195,7 @@ where it matters and keeps feedback fast where it doesn't.
 |---|---|---|
 | `ci.yml` | PR, push to `main` | Native: format check, lint, typecheck, TS-version assert (operations/versions.md, held back: TypeScript), apps compile separately, monitoring config. Docker `ci` stage: unit tests + coverage, Supertest e2e (Postgres and Redis run as job services). Then package tests and build. |
 | `e2e.yml` | PR, push to `main` | Two jobs per browser (`lesson`, `rest`), each with a prod-target compose up, then Playwright in its own image (browsers and their system packages included): user flows, **console gate**, **legal pages** (`/privacy`, `/terms` return 200 with real content). |
-| `hygiene.yml` | PR, push to `main` | gitleaks, commitlint, PR title, `.env.example` drift, fail if `.env` staged, `prisma migrate diff`. |
+| `hygiene.yml` | PR, push to `main` | gitleaks, commitlint, PR title, `.env.example` drift (every compose file, deploy files included) and a secret filled in it, fail if `.env` staged, `prisma migrate diff`. |
 | `images.yml` | push to any branch; `v*` tags | Multi-arch build on every commit; tags per table below. |
 | `devcontainer.yml` | PR touching `.devcontainer/`, `.nvmrc`, `package.json`, `compose.yml`, `compose.override.yml`, `.env.example` | Builds the devcontainer image; Node and pnpm must match the pins; compose starts the workspace service as root and as node; the host preflight fits a rootless daemon. |
 

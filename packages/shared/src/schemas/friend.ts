@@ -25,3 +25,15 @@ export type Friends = z.infer<typeof FriendsSchema>;
 /** Accepted when their request was already waiting: two requests that cross. */
 export const FriendRequestResultSchema = z.object({ status: FriendshipStatusSchema });
 export type FriendRequestResult = z.infer<typeof FriendRequestResultSchema>;
+
+/**
+ * How many friend requests wait on you: the account menu's count. Always the
+ * whole picture, like DmUnread: `at` is taken before the count, so a tab keeps
+ * the latest whatever order two arrive in. GET /api/friends/pending answers it
+ * for the server render; friend:pending pushes it after that.
+ */
+export const FriendPendingSchema = z.object({
+  count: z.number().int().nonnegative(),
+  at: z.iso.datetime(),
+});
+export type FriendPending = z.infer<typeof FriendPendingSchema>;

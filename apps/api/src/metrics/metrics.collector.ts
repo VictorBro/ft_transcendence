@@ -1,19 +1,36 @@
 import { Injectable, Logger, OnModuleDestroy, OnModuleInit } from '@nestjs/common';
-import { LEARNABLE_LANGUAGES, LEVELS, QUESTION_CATEGORIES } from '@ft/shared';
+import {
+  ACHIEVEMENTS,
+  FriendshipStatusSchema,
+  LEARNABLE_LANGUAGES,
+  LEVELS,
+  QUESTION_CATEGORIES,
+} from '@ft/shared';
 import { Gauge } from '@prometheus-io/client';
 
 import type { Prisma } from '../generated/prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
 import { countActiveUsers, registry } from './metrics';
 
-/** The bank and the accounts move slowly: one query a minute, whatever the scrape rate. */
+/**
+ * The bank, the accounts and the learners' rows move slowly: one query a
+ * minute, whatever the scrape rate.
+ */
 const CACHE_MS = 60_000;
 /** Well inside Prometheus' 10 s scrape timeout, so a stuck database cannot drop the scrape. */
 const COLLECT_TIMEOUT_MS = 3_000;
 
 const BANK = 'ft_question_bank_questions';
 const USERS = 'ft_users';
+const COURSES = 'ft_courses';
+const EARNED = 'ft_achievements';
+const FRIENDSHIPS = 'ft_friendships';
 const ACTIVE_USERS = 'ft_active_users';
+
+/** The level label of a course whose placement exam has not set one yet. */
+const UNPLACED = 'unplaced';
+const COURSE_LEVELS = [...LEVELS, UNPLACED] as const;
+const ACHIEVEMENT_CODES: readonly string[] = ACHIEVEMENTS.map(({ code }) => code);
 
 type BankLabel = 'lang' | 'level' | 'category' | 'source';
 
@@ -47,6 +64,38 @@ export class MetricsCollector implements OnModuleInit, OnModuleDestroy {
         cached(CACHE_MS, async (gauge: Gauge) => gauge.set(await this.prisma.user.count())),
       ),
     });
+    // Learners' state rather than traffic, so seeded accounts show without anyone
+    // signed in. Every label is a closed set: 21, 16 and 2 series.
+    new Gauge({
+      name: COURSES,
+      help: `Courses by language and level (${UNPLACED} before the placement exam)`,
+      labelNames: ['lang', 'level'] as const,
+      registers: [registry],
+      collect: this.guarded(
+        COURSES,
+        cached(CACHE_MS, (gauge: Gauge<'lang' | 'level'>) => this.countCourses(gauge)),
+      ),
+    });
+    new Gauge({
+      name: EARNED,
+      help: 'Achievements earned, by code',
+      labelNames: ['code'] as const,
+      registers: [registry],
+      collect: this.guarded(
+        EARNED,
+        cached(CACHE_MS, (gauge: Gauge<'code'>) => this.countAchievements(gauge)),
+      ),
+    });
+    new Gauge({
+      name: FRIENDSHIPS,
+      help: 'Friendships by status (pending, accepted)',
+      labelNames: ['status'] as const,
+      registers: [registry],
+      collect: this.guarded(
+        FRIENDSHIPS,
+        cached(CACHE_MS, (gauge: Gauge<'status'>) => this.countFriendships(gauge)),
+      ),
+    });
     new Gauge({
       name: ACTIVE_USERS,
       help: 'Distinct signed-in users seen in the last 5 minutes',
@@ -59,7 +108,9 @@ export class MetricsCollector implements OnModuleInit, OnModuleDestroy {
 
   // An e2e file that builds two apps would otherwise hit "already registered".
   onModuleDestroy(): void {
-    for (const name of [BANK, USERS, ACTIVE_USERS]) registry.removeSingleMetric(name);
+    for (const name of [BANK, USERS, COURSES, EARNED, FRIENDSHIPS, ACTIVE_USERS]) {
+      registry.removeSingleMetric(name);
+    }
   }
 
   /**
@@ -118,6 +169,58 @@ export class MetricsCollector implements OnModuleInit, OnModuleDestroy {
       _count: { _all: true },
     });
   }
+
+  private async countCourses(gauge: Gauge<'lang' | 'level'>): Promise<void> {
+    const rows = await this.prisma.userLevel.groupBy({
+      by: ['lang', 'level'],
+      _count: { _all: true },
+    });
+    zero(
+      gauge,
+      LEARNABLE_LANGUAGES.flatMap((lang) => COURSE_LEVELS.map((level) => ({ lang, level }))),
+    );
+    for (const { lang, level, _count } of rows) {
+      gauge.set({ lang, level: level ?? UNPLACED }, _count._all);
+    }
+  }
+
+  private async countAchievements(gauge: Gauge<'code'>): Promise<void> {
+    const rows = await this.prisma.userAchievement.groupBy({
+      by: ['code'],
+      _count: { _all: true },
+    });
+    zero(
+      gauge,
+      ACHIEVEMENT_CODES.map((code) => ({ code })),
+    );
+    // The column is a plain string: a code ACHIEVEMENTS does not know would be
+    // a label outside the closed set.
+    for (const { code, _count } of rows) {
+      if (ACHIEVEMENT_CODES.includes(code)) gauge.set({ code }, _count._all);
+    }
+  }
+
+  private async countFriendships(gauge: Gauge<'status'>): Promise<void> {
+    const rows = await this.prisma.friendship.groupBy({
+      by: ['status'],
+      _count: { _all: true },
+    });
+    zero(
+      gauge,
+      FriendshipStatusSchema.options.map((status) => ({ status })),
+    );
+    for (const { status, _count } of rows) gauge.set({ status }, _count._all);
+  }
+}
+
+/**
+ * Every label set back to 0, so one emptied since the last query reads 0 and
+ * an empty one shows rather than nothing. Called after the query: a failed one
+ * must leave the last values, not zeros.
+ */
+function zero(gauge: Gauge<string>, labelSets: Record<string, string>[]): void {
+  gauge.reset();
+  for (const labels of labelSets) gauge.set(labels, 0);
 }
 
 /**

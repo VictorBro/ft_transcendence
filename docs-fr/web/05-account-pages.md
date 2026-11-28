@@ -4,8 +4,8 @@ Dans ce chapitre :
 
 - Le route group `(main)` : les pages qui ne parlent pas des leçons. C'est-à-dire la page d'accueil, l'inscription, la connexion, l'onboarding (la prise en main au début), le profil, les réglages de double authentification, les amis, les profils des autres personnes et les pages légales.
 - Pour chaque page : son URL, si c'est un server component ou un client component, les données qu'elle charge, ce que l'utilisateur peut faire, et quel appel à l'API elle fait.
-- Les petits composants partagés qui servent à construire ces pages : les morceaux de formulaire, l'avatar, le drapeau, les boutons d'amis, les lignes d'utilisateur, le point "en ligne", le lien vers les messages et l'article légal.
-- Les fichiers d'aide dans `lib/` qui contiennent la logique dont ces pages ont besoin : `onboarding.ts`, `avatar.ts`, `presence.ts`, `legal.ts` et `legal-content/`.
+- Les petits composants partagés qui servent à construire ces pages : les morceaux de formulaire, l'avatar, le drapeau, les boutons d'amis, les lignes d'utilisateur, le point "en ligne", le lien vers les messages, l'article légal et le test du tuteur IA.
+- Les fichiers d'aide dans `lib/` qui contiennent la logique dont ces pages ont besoin : `onboarding.ts`, `avatar.ts`, `presence.ts`, `legal.ts`, `legal-content/`, `tutor-client.ts` et `tutor-status.ts`.
 
 ---
 
@@ -83,7 +83,7 @@ La plupart des pages ont aussi `export const dynamic = 'force-dynamic'`. Cela di
 | `/login`             | `login/page.tsx`                     | `LoginForm`                    | aucune                                                  | `POST /api/auth/login`, `POST /api/auth/2fa/verify`                                      |
 | `/signup`            | `signup/page.tsx`                    | `SignUpForm`                   | aucune                                                  | `POST /api/auth/signup`                                                                  |
 | `/onboarding`        | `onboarding/page.tsx`                | `ChooseCourse`, `ChooseLevel`  | `requireCourses()`                                      | `POST /api/courses`, `PATCH /api/courses/:lang/level`                                    |
-| `/profile`           | `profile/page.tsx`                   | aucune                         | `requireUser()`                                         | aucun                                                                                    |
+| `/profile`           | `profile/page.tsx`                   | `TutorCheck`                   | `requireUser()`                                         | `GET /api/tutor`, `POST /api/tutor/check`                                                |
 | `/profile/edit`      | `profile/edit/page.tsx`              | `ProfileForm`                  | `requireUser()`                                         | `PATCH /api/users/me`, `POST` / `DELETE /api/users/me/avatar`                            |
 | `/settings/2fa`      | `settings/2fa/page.tsx`              | `TwoFactorPanel`               | `requireUser()`                                         | `GET /api/auth/2fa`, `POST .../2fa/setup`, `POST .../2fa/enable`, `DELETE /api/auth/2fa` |
 | `/friends`           | `friends/page.tsx`                   | `FriendSearch`, boutons d'amis | `requireFriends()`, `searchUsers()`, `recentlyActive()` | endpoints des demandes d'amis                                                            |
@@ -100,10 +100,21 @@ La plupart des pages ont aussi `export const dynamic = 'force-dynamic'`. Cela di
 /**
  * The marketing and account shell. Not `fill`: these are documents that may run
  * past the viewport, so the footer sits after the content rather than pinned.
+ *
+ * The wordmark follows the session, as in the other shells: a signed-in user
+ * goes back to the app, a visitor to the marketing page. HeaderNav already
+ * reads the session, and loadSession is cached per render, so this adds no
+ * lookup and makes no page dynamic that was not already.
  */
-export default function MainLayout({ children }: { children: ReactNode }) {
+export default async function MainLayout({ children }: { children: ReactNode }) {
+  const user = await currentUser();
+
   return (
-    <Shell brand={<Wordmark />} nav={<HeaderNav />} footer={<LegalFooter />}>
+    <Shell
+      brand={<Wordmark href={user === null ? '/' : '/learn'} />}
+      nav={<HeaderNav />}
+      footer={<LegalFooter />}
+    >
       {children}
     </Shell>
   );
@@ -111,6 +122,8 @@ export default function MainLayout({ children }: { children: ReactNode }) {
 ```
 
 Il donne trois emplacements à `Shell` : le nom de l'app à gauche (`Wordmark`), les liens de l'en-tête (`HeaderNav`), et le pied de page avec les liens vers les pages légales (`LegalFooter`). Ces composants sont expliqués dans [03-shell-components.md](03-shell-components.md).
+
+Le layout est `async` parce qu'il lit la session avec `currentUser()` (chapitre 4), qui renvoie l'utilisateur connecté ou `null`. Le wordmark mène alors un utilisateur connecté à `/learn` et un visiteur à `/`.
 
 `HeaderNav` a deux formes. Un visiteur voit une seule ligne : le sélecteur de langue, "Sign in" (Se connecter) et "Create account" (Créer un compte). Un utilisateur connecté voit un seul bouton de menu (`HeaderMenu`). Il ouvre un panneau avec le sélecteur de langue, un lien vers `/profile` (avatar et nom), "Friends" (Amis), "Messages" et "Sign out" (Se déconnecter). Le sélecteur de langue change la locale de l'URL. Ce layout ne l'enregistre pas : seul le layout `(dashboard)` affiche `LocaleSync`, qui la stocke dans `User.locale` (chapitre 3).
 
@@ -151,40 +164,63 @@ Le logo utilise le `<Image>` de Next avec `width={896}` (deux fois la plus grand
 
 Avant les formulaires de connexion et d'inscription, il nous faut les petites pièces qui servent à les construire. [form.tsx](../../apps/web/components/form.tsx) est un fichier de **client component** (`'use client'`) qui exporte :
 
-| Export                                                           | Ce que c'est                                                                                        |
-| ---------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| `Field`                                                          | un label + un `<input>` + une aide facultative                                                      |
-| `FormError`                                                      | une ligne d'erreur rouge, ou rien                                                                   |
-| `SubmitButton`                                                   | le bouton d'envoi principal, qui affiche "Working..." (En cours...) pendant le travail              |
-| `PRIMARY_BUTTON`, `SECONDARY_BUTTON`, `GO_BUTTON`, `WARN_BUTTON` | des chaînes de classes Tailwind, pour les liens et les boutons qui doivent ressembler à des boutons |
+| Export                                                           | Ce que c'est                                                                                                                                                                        |
+| ---------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Field`                                                          | un label + un `<input>` + une aide facultative                                                                                                                                      |
+| `PasswordField`                                                  | un `Field` pour un mot de passe, avec un bouton "Show password" (Afficher le mot de passe, `aria-pressed`) dessiné une fois hydraté ; sans JavaScript, un champ mot de passe simple |
+| `FormError`                                                      | une ligne d'erreur rouge, ou rien                                                                                                                                                   |
+| `SubmitButton`                                                   | le bouton d'envoi principal, qui affiche "Working..." (En cours...) pendant le travail                                                                                              |
+| `PRIMARY_BUTTON`, `SECONDARY_BUTTON`, `GO_BUTTON`, `WARN_BUTTON` | des chaînes de classes Tailwind, pour les liens et les boutons qui doivent ressembler à des boutons                                                                                 |
 
 ```tsx
-export function Field({ label, hint, ...input }: FieldProps) {
-  const id = useId();
-  const hintId = hint ? `${id}-hint` : undefined;
-
+/**
+ * The label is tied to the input by a generated id rather than by wrapping,
+ * because screen readers announce the association and the accessibility module
+ * depends on every control having one.
+ */
+function Labelled({
+  id,
+  label,
+  hint,
+  children,
+}: {
+  id: string;
+  label: string;
+  hint?: string;
+  children: ReactNode;
+}) {
   return (
     <div className="flex flex-col gap-2">
       <label htmlFor={id} className="text-sm font-medium">
         {label}
       </label>
-      <input
-        id={id}
-        aria-describedby={hintId}
-        className="..."
-        {...input}
-      />
+      {children}
       {hint ? (
-        <p id={hintId} className="text-xs text-slate-400">
+        <p id={`${id}-hint`} className="text-xs text-slate-400">
           {hint}
         </p>
       ) : null}
     </div>
   );
 }
+
+export function Field({ label, hint, ...input }: FieldProps) {
+  const id = useId();
+
+  return (
+    <Labelled id={id} label={label} hint={hint}>
+      <input
+        id={id}
+        aria-describedby={hint ? `${id}-hint` : undefined}
+        className={INPUT}
+        {...input}
+      />
+    </Labelled>
+  );
+}
 ```
 
-`Field` prend toutes les props normales d'un `<input>` (`name`, `type`, `autoComplete`, ...) plus un `label` et un `hint`. `useId()` est un hook React qui crée un id unique, pour que le `<label htmlFor>` pointe vers le bon input. Le commentaire dit pourquoi : les lecteurs d'écran annoncent ce lien, et le module d'accessibilité demande que chaque input ait un label. L'aide est reliée avec `aria-describedby`, donc un lecteur d'écran la lit aussi.
+`Field` prend toutes les props normales d'un `<input>` (`name`, `type`, `autoComplete`, ...) plus un `label` et un `hint`. `useId()` est un hook React qui crée un id unique, pour que le `<label htmlFor>` pointe vers le bon input. Le commentaire dit pourquoi : les lecteurs d'écran annoncent ce lien, et le module d'accessibilité demande que chaque input ait un label. L'aide est reliée avec `aria-describedby`, donc un lecteur d'écran la lit aussi. `Labelled` est le cadre que `Field` et `PasswordField` partagent : le label, l'input qu'on lui donne, et l'aide. Il n'est pas exporté. `INPUT` est la chaîne de classes de l'input.
 
 ```tsx
 /** role="alert" so a failed submit is announced, not just repainted. */
@@ -217,6 +253,71 @@ export function SubmitButton({ pending, disabled = false, children }: {...}) {
 Tant que `pending` est vrai, le bouton est désactivé (pas de double envoi) et son texte devient "Working". `disabled` seul sert pour un formulaire qui n'est pas encore complet : on ne peut pas cliquer sur le bouton, mais il n'affiche pas "Working".
 
 Les constantes de classes partent toutes d'une seule chaîne `BUTTON`. Elle met `min-h-11` (44 px, "la largeur d'un pouce", la taille minimale d'une zone tactile) et un anneau de focus visible. Les quatre variantes ne changent que les couleurs : `PRIMARY` est plein, les autres n'ont qu'un contour, `GO` devient vert au survol, `WARN` devient rouge.
+
+### `PasswordField` — le bouton "Show password"
+
+Les quatre champs de mot de passe utilisent `PasswordField` : le mot de passe de la page de connexion, le mot de passe et sa confirmation sur la page d'inscription, et le mot de passe qui désactive la 2FA. C'est un `Field` avec un bouton au bord droit de l'input. Le bouton affiche le mot de passe en clair, et un deuxième appui le cache à nouveau.
+
+```tsx
+type PasswordFieldProps = Omit<FieldProps, 'type' | 'autoComplete'> & {
+  /** Required: it is what lets a password manager fill the field or offer to save it. */
+  autoComplete: 'current-password' | 'new-password';
+};
+```
+
+Il n'y a pas de prop `type` : le composant la fixe. `autoComplete` est obligatoire, donc un gestionnaire de mots de passe sait toujours si le champ est le mot de passe actuel ou un nouveau.
+
+```tsx
+  const hydrated = useSyncExternalStore(
+    noSubscription,
+    () => true,
+    () => false,
+  );
+```
+
+`useSyncExternalStore` lit une valeur qui vient de l'extérieur de React. Sa troisième fonction donne la valeur sur le serveur, ici `false`. Dans le navigateur, React utilise d'abord cette valeur du serveur pendant l'hydratation (quand il s'attache au HTML du serveur), puis refait le rendu avec `true`. Donc le HTML du serveur n'a pas de bouton, et une page sans JavaScript garde un champ mot de passe simple au lieu d'un bouton qui ne fait rien. Le HTML du navigateur est le même que celui du serveur à l'hydratation, donc React n'affiche aucun avertissement d'hydratation. `useSpeech` dans le lecteur de leçon utilise la même astuce pour les boutons Listen (Écouter).
+
+```tsx
+          <button
+            type="button"
+            aria-controls={id}
+            aria-pressed={shown}
+            disabled={input.disabled}
+            // The focus stays in the field, so typing goes on after a click.
+            onMouseDown={(event) => event.preventDefault()}
+            onClick={toggle}
+            className="..."
+          >
+            <span className="sr-only">{t('showPassword')}</span>
+            <EyeIcon crossed={shown} />
+          </button>
+```
+
+- `type="button"` : dans un formulaire, un bouton envoie le formulaire par défaut. Celui-ci ne l'envoie jamais.
+- Un seul nom, "Show password" (`Form.showPassword`), et `aria-pressed` dit s'il est activé. Le nom d'un bouton à bascule ne doit pas changer avec son état, donc le nom ne devient jamais "Hide password" (Masquer le mot de passe). Le bouton "Show the text" (Afficher le texte) du lecteur de leçon marche de la même façon.
+- Le nom est un texte `sr-only`, pas un `aria-label`. Le `getByLabel` de Playwright lit `aria-label`, donc `getByLabel('Password')` trouverait aussi le bouton. Autre raison : les outils de traduction de page traduisent le texte, mais pas les attributs.
+- `aria-controls` pointe vers l'input. La page d'inscription a deux boutons avec le même nom, et les tests e2e les distinguent de cette façon.
+- L'icône d'œil est `aria-hidden` : le texte nomme le bouton. Un œil barré veut dire que le mot de passe est affiché.
+
+`toggle()` garde le curseur où il était. Changer le `type` peut déplacer le curseur, donc la fonction garde la sélection, applique le changement tout de suite avec `flushSync`, puis remet la sélection avec `setSelectionRange`. `onMouseDown` avec `preventDefault` empêche un clic de retirer le focus du champ. Au clavier (Entrée ou Espace sur le bouton), le focus reste sur le bouton.
+
+```tsx
+  // Hidden again when the form is sent: what leaves, and what a password
+  // manager sees leave, is a password field.
+  useEffect(() => {
+    const form = field.current?.form;
+    if (!form) return;
+    const hide = () => setShown(false);
+    form.addEventListener('submit', hide);
+    return () => form.removeEventListener('submit', hide);
+  }, []);
+```
+
+Le mot de passe est caché à nouveau quand son formulaire est envoyé, même quand la vérification du navigateur refuse ensuite le formulaire (par exemple, deux mots de passe d'inscription qui ne sont pas les mêmes).
+
+L'input reçoit aussi `spellCheck={false}`, `autoCorrect="off"` et `autoCapitalize="none"`. Une fois affiché, le champ est un champ texte : sans ces attributs, un correcteur dans le cloud pourrait recevoir le mot de passe, et un téléphone pourrait mettre une majuscule ou le corriger pendant la saisie. Une fois hydraté, la classe `[&::-ms-reveal]:hidden` cache le bouton œil d'Edge, pour ne pas en avoir deux. `pr-11` laisse la place du bouton, donc rien ne bouge quand il apparaît.
+
+Une règle ESLint dans [eslint.config.mjs](../../apps/web/eslint.config.mjs) refuse `type="password"` partout dans `app/` et `components/` sauf `form.tsx`, donc un nouveau champ de mot de passe doit utiliser `PasswordField`.
 
 ---
 
@@ -288,6 +389,10 @@ export async function generateMetadata(): Promise<Metadata> {
 7. `finally` remet toujours `pending` à faux, même si quelque chose a lancé une erreur.
 
 Le formulaire a `noValidate` : cela coupe les bulles d'erreur du navigateur, pour que l'utilisateur ne voie que nos messages traduits.
+
+Il a aussi `method="post"`. Une fois la page hydratée, `onSubmit` gère chaque envoi, donc la méthode ne change rien. Mais un appui sur Entrée avant l'hydratation, ou sans JavaScript, fait envoyer le formulaire par le navigateur lui-même. Un formulaire sans méthode envoie un GET, donc le mot de passe serait dans l'URL (`/en/signup?...&password=...`), et l'historique du navigateur et le journal d'accès de Caddy le garderaient. Avec `post`, les valeurs vont dans le corps de la requête. La page répond 200 à un POST, donc l'utilisateur revoit le formulaire.
+
+Le mot de passe et sa confirmation sont chacun un `PasswordField`, chacun avec son propre bouton "Show password".
 
 ---
 
@@ -388,13 +493,15 @@ Il y a un détail important dans l'affichage :
 ```tsx
   if (secondFactor) {
     return (
-      // Distinct key from the password form. Both render a <form> holding
-      // <Field>, so without it React reuses the password input's DOM node for
+      // Distinct key from the password form. Both render a <form> holding an
+      // input, so without it React reuses the password input's DOM node for
       // the code input and the typed password reappears, in clear text.
       <form key="second-factor" onSubmit={onSubmit} className="flex flex-col gap-6" noValidate>
 ```
 
-React compare l'ancien arbre et le nouveau. Si les deux ont un `<form>` avec un `<Field>` au même endroit, React garde le même `<input>` dans la page et change seulement ses props. L'input garderait sa valeur : le mot de passe, maintenant affiché en clair dans le champ du code. Donner une `key` différente à chaque formulaire dit à React "c'est un nouveau formulaire", donc il jette les anciens inputs. Le champ du code utilise `autoComplete="one-time-code"` pour que les téléphones puissent le remplir depuis un SMS ou une app.
+React compare l'ancien arbre et le nouveau. Si les deux ont un `<form>` avec un input au même endroit, React garde le même `<input>` dans la page et change seulement ses props. L'input garderait sa valeur : le mot de passe, maintenant affiché en clair dans le champ du code. Donner une `key` différente à chaque formulaire dit à React "c'est un nouveau formulaire", donc il jette les anciens inputs. Le champ du code utilise `autoComplete="one-time-code"` pour que les téléphones puissent le remplir depuis un SMS ou une app.
+
+Le formulaire du mot de passe (étape 1) utilise `PasswordField` pour le mot de passe, et a `method="post"` pour la même raison que le formulaire d'inscription. Le formulaire du code n'a pas besoin de méthode : il n'apparaît qu'après un rendu dans le navigateur, jamais dans le HTML du serveur.
 
 Après un succès, `done()` va sur `/learn`. Cette page lit la session sur le serveur. Si le cookie n'avait pas été enregistré, elle renverrait l'utilisateur vers `/login`, donc arriver sur `/learn` prouve que la connexion a marché.
 
@@ -675,7 +782,7 @@ export function Avatar({ src, name, size }: { src: string | null; name: string; 
 
 ## Ton profil (`/profile`)
 
-[profile/page.tsx](<../../apps/web/app/[locale]/(main)/profile/page.tsx>) est un **server component** async, `force-dynamic`. Il n'a pas de partie client.
+[profile/page.tsx](<../../apps/web/app/[locale]/(main)/profile/page.tsx>) est un **server component** async, `force-dynamic`. Sa seule partie client est `TutorCheck`, dans la section "AI tutor" (plus bas).
 
 ```tsx
 export default async function ProfilePage() {
@@ -687,9 +794,61 @@ export default async function ProfilePage() {
 
 - **Données :** `requireUser()` (`GET /api/auth/me` via `loadSession`, chapitre 4). Un visiteur non connecté est redirigé vers `/login`.
 - **Affiche :** le nom affiché, l'e-mail, la date de création du compte (mise en forme pour la langue de la page avec `toLocaleDateString(locale)`), et un avatar de 128 px.
-- **Ce que l'utilisateur peut faire :** suivre deux liens : "Edit profile" (Modifier le profil, `/profile/edit`) et, dans une section "Security" (Sécurité), "Two factor authentication" (Double authentification, `/settings/2fa`).
+- **Ce que l'utilisateur peut faire :** suivre deux liens : "Edit profile" (Modifier le profil, `/profile/edit`) et, dans une section "Security" (Sécurité), "Two factor authentication" (Double authentification, `/settings/2fa`). Dans la section "AI tutor" (Tuteur IA) qui suit, voir sur quoi tourne le tuteur des leçons et tester la clé du serveur.
 
 Les classes `max-sm:flex-col-reverse` mettent l'avatar au-dessus du nom sur les téléphones.
+
+### `components/tutor-check.tsx` — la section du tuteur IA
+
+Tous les apprenants partagent l'unique clé LLM du serveur. Une mauvaise clé, un mauvais modèle et une panne de Google s'affichent tous "The tutor cannot answer right now" dans une leçon. Cette section fait la différence. La page affiche le titre "AI tutor" et sa phrase sur le serveur, puis `<TutorCheck />`, un **client component** :
+
+```tsx
+<section
+  aria-labelledby="tutor-heading"
+  className="flex flex-col gap-3 border-t border-slate-800 pt-8"
+>
+  <h2 id="tutor-heading" className="text-lg font-medium">
+    {t('tutor')}
+  </h2>
+  <p className="text-sm text-slate-300">{t('tutorPrompt')}</p>
+  <TutorCheck />
+</section>
+```
+
+Comme le panneau 2FA, il charge ses données dans le navigateur, une seule fois, avec `useEffect` : `loadTutorInfo()` appelle `GET /api/tutor` ([lib/tutor-client.ts](../../apps/web/lib/tutor-client.ts)). Un `<dl>` montre ensuite le **Provider** (fournisseur : "Google Gemini", "Practice tutor (fixture), no key needed" ou "None, the tutor is off") et, quand il y en a un, le **Model** (modèle) dans un `<code>`. Son state vaut `TutorInfo | 'loading' | 'failed'`. Quand le chargement échoue, le `<dl>` est caché, et le test marche quand même : sa réponse remplit le fournisseur et le modèle.
+
+Le bouton **Test connection** (Tester la connexion) appelle `checkTutor()`, c'est-à-dire `POST /api/tutor/check` :
+
+```tsx
+  async function test() {
+    // aria-disabled keeps the button focusable, so it still gets clicks: ignore them.
+    if (pending) {
+      return;
+    }
+    setPending(true);
+    // Cleared first, so the live region changes and a reused result is announced again.
+    setResult(null);
+    setError(null);
+```
+
+- **`aria-disabled`, pas `disabled`.** Un bouton désactivé perd le focus de la personne qui l'a pressé. Pendant l'attente, le bouton affiche "Testing…", garde le focus, et ignore les clics.
+- **Une zone live toujours présente.** `<div role="status">` est dans la page dès le premier rendu, vide. Un lecteur d'écran peut ignorer une zone live qui arrive en même temps que son texte. Le résultat est vidé à chaque clic, donc le même résultat est relu.
+- **Les erreurs de requête** (`429` après 3 tests par minute, `401` après la fin de la session, pas de réseau) passent par `useErrorMessage` vers `FormError`, un `role="alert"`.
+
+`TutorCheckResult` dessine une réponse. C'est un composant simple sans state, donc son test l'affiche directement :
+
+| Partie  | Ce qu'elle montre                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Icône   | Un SVG de 24 px en `aria-hidden` : un cercle avec une coche (bon), une horloge (attente), un x (mauvais) ou un i (info). La forme distingue le ton, pas seulement la couleur.                                                                                                                                                                                                                                                                      |
+| Phrase  | `TutorCard.status.<status>`, dans la couleur du ton, par exemple "Google refused the key." en `text-red-400`. Elle nomme le modèle pour `model_not_found`, et le statut HTTP pour `unexpected` ; un `unexpected` sans statut HTTP (le test a échoué avant que Google réponde) utilise `status.unexpectedNoAnswer` à la place, et un `unreachable` avec un statut HTTP (le 408 ou un 5xx de Google) utilise `status.unreachableHttp`, qui le nomme. |
+| Conseil | `TutorCard.hint.<status>`, ce qu'il faut faire, par exemple "Whoever runs this server must set a new LLM_API_KEY in .env and restart the api." Le conseil de `quota_day` est un `select` ICU sur `hasTime` : "Google resets it around 9:00 AM." à partir du `retryAt` de la réponse, formaté dans la langue de la page à la minute près, ou "Google resets it at midnight Pacific time." quand Google n'a donné aucune attente.                    |
+| Heure   | "Answered in 171 ms, at 10:42:07 AM." quand Google a répondu (un statut HTTP est revenu), ou "Checked at 10:42:07 AM." pour la fixture, `disabled` et un test auquel Google n'a jamais répondu.                                                                                                                                                                                                                                                    |
+
+Le ton de chaque statut est dans [lib/tutor-status.ts](../../apps/web/lib/tutor-status.ts) : `ok` est bon ; `quota` et `unreachable` sont en attente (ils passent tout seuls en une minute) ; `invalid_key`, `model_not_found` et `unexpected` sont mauvais (il faut la personne qui gère le serveur), et `quota_day` aussi (le tuteur est absent jusqu'à ce que Google remette le quota à zéro) ; `fixture` et `disabled` sont de l'info. `TONE_CLASS` associe chaque ton à une couleur que l'app utilise déjà (`text-green-400`, `text-amber-300`, `text-red-400`, `text-slate-300`).
+
+Le test demande un mot au modèle, comme le ferait la question d'un apprenant, donc `ok` affiche "Working: Google answered a test message." et son conseil dit ce que ça coûte : "Each test uses one request of the key's quota for today." Une clé au-delà de son quota distingue les deux quotas : `quota` est le quota de la minute ("The key is over its per-minute quota."), `quota_day` le quota du jour, avec la phrase même qu'un apprenant lit dans une leçon, `Errors.llm.quotaExhausted` : "The tutor has used up today's quota. It's back tomorrow." Les heures sont celles du navigateur, avec `toLocaleTimeString`. Le résultat n'apparaît qu'après un clic, donc le serveur ne l'affiche jamais, et les deux ne peuvent pas différer.
+
+Tests : [tutor-client.test.ts](../../apps/web/lib/tutor-client.test.ts) (les deux requêtes, un `429`, un statut hors du contrat, pas de réseau), [tutor-status.test.ts](../../apps/web/lib/tutor-status.test.ts) (un ton pour chaque statut, quatre couleurs différentes) et [tutor-check.test.tsx](../../apps/web/components/tutor-check.test.tsx) (le premier rendu, une phrase et un conseil pour chaque statut, la formulation de `ok`, le quota de la minute et celui du jour, avec et sans l'heure donnée par Google, un `unreachable` avec et sans statut HTTP). [messages.test.ts](../../apps/web/lib/messages.test.ts) vérifie que chaque statut a une phrase et un conseil, et chaque fournisseur un nom, dans les trois langues, et que `quota_day` dit ce que dit `llm.quotaExhausted`.
 
 ---
 
@@ -850,7 +1009,7 @@ Deux petits helpers gèrent les résultats :
 
 Malgré son nom, `fail()` renvoie `true` quand l'appel a **réussi** ; il met ou efface le message d'erreur. `staleOnConflict` tourne après "Set up" et après le code : si la 2FA a été activée dans un autre onglet, l'API répond `409 twoFactor.alreadyEnabled`, et le panneau ferme l'écran du QR code et recharge le vrai statut.
 
-Le code et le mot de passe sont d'abord vérifiés dans le navigateur avec `EnableTwoFactorSchema` et `DisableTwoFactorSchema` (de `@ft/shared`), donc un mot de passe vide est repéré avant toute requête (#217, PR #218). L'API vérifie à nouveau le mot de passe avant de désactiver la 2FA.
+Le code et le mot de passe sont d'abord vérifiés dans le navigateur avec `EnableTwoFactorSchema` et `DisableTwoFactorSchema` (de `@ft/shared`), donc un mot de passe vide est repéré avant toute requête (#217, PR #218). L'API vérifie à nouveau le mot de passe avant de désactiver la 2FA. Le mot de passe est un `PasswordField`. Le panneau est dessiné dans le navigateur après la lecture du statut, donc son bouton "Show password" est là tout de suite.
 
 ---
 
@@ -1191,13 +1350,13 @@ L'ordre des vérifications compte :
 
 `ProfileAction` (dans le même fichier) choisit les boutons selon la relation :
 
-| Relation   | Ce qui est affiché                                                         |
-| ---------- | -------------------------------------------------------------------------- |
-| `self`     | lien "Edit profile" (Modifier le profil)                                   |
-| `none`     | "Add friend" (Ajouter en ami)                                               |
-| `sent`     | "Request sent" (Demande envoyée) + "Cancel request" (Annuler la demande) |
+| Relation   | Ce qui est affiché                                                             |
+| ---------- | ------------------------------------------------------------------------------ |
+| `self`     | lien "Edit profile" (Modifier le profil)                                       |
+| `none`     | "Add friend" (Ajouter en ami)                                                  |
+| `sent`     | "Request sent" (Demande envoyée) + "Cancel request" (Annuler la demande)       |
 | `received` | "Request received" (Demande reçue) + "Accept" / "Decline" (Accepter / Refuser) |
-| `friend`   | "Already friends" (Déjà amis) + "Message" + "Remove" (Retirer)          |
+| `friend`   | "Already friends" (Déjà amis) + "Message" + "Remove" (Retirer)                 |
 
 Ce sont les mêmes composants que sur la page des amis, donc les appels à l'API sont les mêmes. La page a aussi `<RefreshOn events={FRIEND_EVENTS} />`, donc les boutons changent en direct quand l'autre personne agit.
 
@@ -1350,8 +1509,10 @@ export function Flag({ lang, className }: { lang: Language; className?: string }
 - La forme habituelle est une **page serveur** qui charge les données (`requireUser`, `requireCourses`, `requireFriends`) et un **formulaire client** qui valide avec le schema Zod partagé, appelle une fonction `*-client.ts`, puis appelle `router.refresh()`.
 - `force-dynamic` est mis sur chaque page qui montre les données d'une personne. La lecture de la session dans la nav rend déjà chaque page dynamique ; `force-dynamic` le dit explicitement.
 - Le formulaire de connexion a deux étapes dans un seul composant. Les deux `<form>` ont des `key` différentes pour que le mot de passe n'apparaisse jamais dans le champ du code.
+- Chaque champ de mot de passe est un `PasswordField` : un bouton "Show password" avec un seul nom et `aria-pressed`, dessiné une fois hydraté. Le mot de passe est caché à nouveau quand le formulaire est envoyé. Le formulaire du mot de passe de la connexion et celui de l'inscription ont `method="post"`, donc un envoi avant l'hydratation ne met jamais le mot de passe dans l'URL.
 - L'étape de l'onboarding est **calculée à partir de l'API** (`resolveOnboardingStep`), pas gardée dans le state : un cours avec `level: null` veut dire "choisir un niveau ensuite". Cela survit aux rafraîchissements et aux examens abandonnés.
 - Le panneau 2FA sépare "chargement" et "échec" de "désactivée" (bug #216), et montre les codes de récupération en premier car ils ne sont affichés qu'une fois. L'API refuse setup et enable tant que la 2FA est activée (PR #219), donc seul le mot de passe peut la désactiver.
+- La section du tuteur IA de `/profile` montre le fournisseur et le modèle, et teste la clé du serveur avec `POST /api/tutor/check`, une requête d'un mot qui dépense une des requêtes de la clé et distingue le quota de la minute de celui du jour. Son bouton utilise `aria-disabled` pour garder le focus, et sa zone `role="status"` est toujours dans la page.
 - Les boutons d'amis reçoivent un **nom** d'action de la page serveur, rafraîchissent la page après chaque écriture (même ratée), et restent désactivés jusqu'à l'arrivée de la page fraîche.
 - La recherche d'amis écrit seulement `?q=` dans l'URL ; c'est la page serveur qui fait la recherche, donc les rafraîchissements en direct gardent des résultats justes.
 - Seuls les amis voient un point de présence. Le point lit une map de présence commune à tout l'onglet, alimentée par le WebSocket, et revient à la valeur du serveur sinon.

@@ -7,7 +7,7 @@ import { SignUpFormSchema } from '@ft/shared';
 
 import { signUp } from '@/lib/auth-client';
 import { useErrorMessage } from '@/lib/error-message';
-import { Field, FormError, SubmitButton } from '@/components/form';
+import { Field, FormError, PasswordField, SubmitButton } from '@/components/form';
 
 export function SignUpForm() {
   const router = useRouter();
@@ -52,7 +52,10 @@ export function SignUpForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="flex flex-col gap-6" noValidate>
+    // method="post": an Enter pressed before hydration, or without JavaScript,
+    // would otherwise send a GET with the password in the URL, where the
+    // browser history and Caddy's access log keep it.
+    <form method="post" onSubmit={onSubmit} className="flex flex-col gap-6" noValidate>
       <Field label={t('email')} name="email" type="email" autoComplete="email" required />
       <Field
         label={t('displayName')}
@@ -61,18 +64,16 @@ export function SignUpForm() {
         hint={t('displayNameHint')}
         required
       />
-      <Field
+      <PasswordField
         label={t('password')}
         name="password"
-        type="password"
         autoComplete="new-password"
         hint={t('passwordHint')}
         required
       />
-      <Field
+      <PasswordField
         label={t('confirmPassword')}
         name="confirmPassword"
-        type="password"
         autoComplete="new-password"
         required
       />

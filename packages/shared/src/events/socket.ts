@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
 import { ERROR_CODES, type ErrorCode } from '../schemas/errors';
+import type { FriendPending } from '../schemas/friend';
 import { LanguageSchema } from '../schemas/language';
 import { MessageSchema, MessageTextSchema, type Message } from '../schemas/message';
 import { UserIdInputSchema } from '../schemas/user';
@@ -23,6 +24,7 @@ export const SERVER_EVENTS = {
   FRIEND_REQUEST: 'friend:request',
   FRIEND_ACCEPTED: 'friend:accepted',
   FRIEND_REMOVED: 'friend:removed',
+  FRIEND_PENDING: 'friend:pending',
   PRESENCE_UPDATE: 'presence:update',
   DM_MESSAGE: 'dm:message',
   DM_UNREAD: 'dm:unread',
@@ -52,6 +54,10 @@ export type CourseUpdated = z.infer<typeof CourseUpdatedSchema>;
  */
 export const FriendEventSchema = z.object({ userId: z.uuid() });
 export type FriendEvent = z.infer<typeof FriendEventSchema>;
+
+// friend:pending carries FriendPending (schemas/friend.ts): the count of requests
+// waiting on the user it reaches, sent on connect and after each request created,
+// accepted, declined or cancelled (declined or cancelled tells both users).
 
 /**
  * Online while at least one tab holds a socket, offline once the last one has
@@ -130,6 +136,7 @@ export interface ServerToClientEvents {
   [SERVER_EVENTS.FRIEND_REQUEST]: (payload: FriendEvent) => void;
   [SERVER_EVENTS.FRIEND_ACCEPTED]: (payload: FriendEvent) => void;
   [SERVER_EVENTS.FRIEND_REMOVED]: (payload: FriendEvent) => void;
+  [SERVER_EVENTS.FRIEND_PENDING]: (payload: FriendPending) => void;
   [SERVER_EVENTS.PRESENCE_UPDATE]: (payload: PresenceUpdate) => void;
   [SERVER_EVENTS.DM_MESSAGE]: (payload: DmMessage) => void;
   [SERVER_EVENTS.DM_UNREAD]: (payload: DmUnread) => void;

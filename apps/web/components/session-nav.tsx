@@ -1,12 +1,13 @@
 import { getTranslations } from 'next-intl/server';
 
 import { Link } from '@/i18n/navigation';
+import { friendPending } from '@/lib/friends';
 import { currentUser } from '@/lib/session';
 import { Avatar } from './avatar';
 import { ConnectionStatus } from './connection-status';
 import { LogOutButton } from './log-out-button';
 import { MENU_ROW, MenuIcon } from './menu-icon';
-import { UnreadTotalBadge } from './unread-badge';
+import { FriendPendingBadge, UnreadTotalBadge } from './unread-badge';
 
 /**
  * Server component, so the first paint already knows who is signed in. Doing
@@ -35,6 +36,8 @@ export async function SessionNav() {
 
   const friends = await getTranslations('FriendsPage');
   const messages = await getTranslations('MessagesPage');
+  // The same call as the menu button's: cache() makes it one per render.
+  const requests = await friendPending();
 
   return (
     <>
@@ -49,11 +52,14 @@ export async function SessionNav() {
             nothing to break on, and the row is as wide as the menu. */}
           <span className="truncate">{user.displayName}</span>
         </Link>
+        {/* Each count at its row's end, where a menu shows one. */}
         <Link href="/friends" className={MENU_ROW}>
           <MenuIcon name="friends" />
           {friends('title')}
+          <span className="ml-auto flex">
+            <FriendPendingBadge rendered={requests} />
+          </span>
         </Link>
-        {/* The count at the row's end, where a menu shows one. */}
         <Link href="/chat" className={MENU_ROW}>
           <MenuIcon name="messages" />
           {messages('title')}

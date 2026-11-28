@@ -62,8 +62,13 @@ export const ERROR_CODES = [
   'lesson.notFound',
   /** The lesson discussion's LLM failed: no answer, a 4xx or 5xx, a timeout, a cut connection. */
   'llm.unavailable',
-  /** The shared LLM key is over its quota: a 429 from the provider, or the API's global limit. */
+  /**
+   * The shared LLM key is busy: a 429 from the provider for its quota of the minute (or one
+   * that does not say which quota), or the API's global limit.
+   */
   'llm.rateLimited',
+  /** The shared LLM key is over its quota of the day: a 429 that says so. Back tomorrow. */
+  'llm.quotaExhausted',
   /** Over the learner's own limit, per minute or per day (discussion-limits.ts). */
   'llm.tooManyMessages',
   /** The LLM's safety filters refused this prompt, or stopped its answer. */

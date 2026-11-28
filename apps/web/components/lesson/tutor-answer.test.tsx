@@ -1,7 +1,7 @@
 import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 
-import { TutorAnswer } from './tutor-answer';
+import { TutorAnswer, TutorThinking } from './tutor-answer';
 
 /** The answer as the server draws it: no DOM, as the other component tests. */
 const html = (text: string, cut = false) =>
@@ -75,5 +75,20 @@ describe('TutorAnswer', () => {
       '[&amp;&gt;:last-child]:after:content-[&#x27;…&#x27;]',
     );
     expect(html('A whole answer')).not.toContain('after:content');
+  });
+});
+
+describe('TutorThinking', () => {
+  it('shows three dots where the answer will start, seen only, still under reduced motion', () => {
+    const out = renderToStaticMarkup(
+      <ol>
+        <TutorThinking />
+      </ol>,
+    );
+    expect(out).toContain('data-slot="tutor-thinking" aria-hidden="true"');
+    expect(out.match(/<span class="size-2 rounded-full/g)).toHaveLength(3);
+    expect(out.match(/motion-safe:animate-bounce/g)).toHaveLength(3);
+    expect(out).not.toMatch(/[\s"]animate-bounce/); // never animated without motion-safe:
+    expect(out).not.toContain('data-turn'); // e2e counts [data-turn="assistant"]
   });
 });

@@ -34,7 +34,7 @@ services:
       NODE_ENV: production
       # No dev fallback here: compose.yml has one, and inheriting it would sign
       # production cookies with a secret that is public in this repo.
-      SESSION_SECRET: ${SESSION_SECRET:?set an explicit SESSION_SECRET for production}
+      SESSION_SECRET: ${SESSION_SECRET:?run make, which writes one into .env, or set SESSION_SECRET}
     restart: unless-stopped
 
   db:
@@ -53,8 +53,8 @@ services:
 
   grafana:
     environment:
-      # No fallback, like SESSION_SECRET. `make` writes both into .env on the
-      # first run; CI sets its own in e2e.yml.
+      # No fallback, like SESSION_SECRET. `make` writes these and SESSION_SECRET
+      # into .env on the first run; CI sets its own in e2e.yml.
       GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD:?run make, which writes one into .env, or set GRAFANA_ADMIN_PASSWORD}
       GF_SECURITY_SECRET_KEY: ${GRAFANA_SECRET_KEY:?run make, which writes one into .env, or set GRAFANA_SECRET_KEY}
     restart: unless-stopped

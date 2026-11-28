@@ -1,13 +1,15 @@
 import { Logger } from '@nestjs/common';
-import { QUESTION_CATEGORIES } from '@ft/shared';
+import { QUESTION_CATEGORIES, type TutorCheckStatus, type TutorInfo } from '@ft/shared';
 import { z } from 'zod';
 
 import { llmRequestDuration, llmRequests, llmTokens } from '../metrics/metrics';
 import {
+  LlmCheck,
   LlmError,
   LlmFailure,
   LlmProvider,
   LlmPurpose,
+  QuotaRefusal,
   StreamRequest,
   StructuredRequest,
 } from './llm.provider';
@@ -18,6 +20,22 @@ const API = 'https://generativelanguage.googleapis.com/v1beta/models';
 // the "_" only makes the number easier to read. A free key waited 73 to 83 s for
 // its first word on 2026-11-18, where 2 to 40 s was usual before.
 const TIMEOUT_MS = 90_000;
+// How long a key check waits. It asks for one word, which usually comes in a second or
+// two, but a busy free key can take far longer (see TIMEOUT_MS). 30 s covers a slow day,
+// and the button never spins for the 90 s of a tutor's answer.
+const CHECK_TIMEOUT_MS = 30_000;
+// What a key check sends: the smallest real generation, so Google applies the same key,
+// model and quotas as for a tutor's answer. 16 tokens leave room for "OK". The thinking
+// setting is the tutor's (streamBody): a model that refuses to turn its thinking off
+// fails every tutor answer, so the check must fail on it too.
+const CHECK_BODY = {
+  contents: [{ role: 'user', parts: [{ text: 'Reply with the word OK.' }] }],
+  generationConfig: { maxOutputTokens: 16, thinkingConfig: { thinkingBudget: 0 } },
+};
+// The longest wait quotaRefusal accepts from a 429: two days, in seconds. Google's longest
+// quota is the day's, so a longer retryDelay is a broken body, and it would push retryAt
+// past the dates JavaScript can write.
+const MAX_RETRY_AFTER_S = 2 * 24 * 60 * 60;
 // How a call can end, as the metrics count it: "ok", or the reason of its LlmError.
 // Exclude<...> takes 'disabled' out of the reasons: only the fixture uses it.
 const OUTCOMES: ('ok' | Exclude<LlmFailure, 'disabled'>)[] = [
@@ -82,10 +100,13 @@ interface GeminiReply {
 export class GeminiProvider implements LlmProvider {
   // Nest's logger. Passing the class name puts "[GeminiProvider]" in front of each line.
   private readonly logger = new Logger(GeminiProvider.name);
+  // What GET /api/tutor shows: the provider and the model, never the key.
+  readonly info: TutorInfo;
 
   // "private readonly options" in the parameter list declares a field and fills it,
   // in one step. The factory gives the key and the model; this class never reads the .env.
   constructor(private readonly options: { apiKey: string; model: string }) {
+    this.info = { provider: 'gemini', model: options.model };
     // Every purpose, outcome and token type starts at 0. A counter that appears at 1
     // hides its first call from Prometheus' rate(), so the first failures would not
     // count, nor the first call's tokens.
@@ -151,14 +172,8 @@ export class GeminiProvider implements LlmProvider {
     // we can still put its text in the error message.
     const body = await response.text().catch(unreachable);
     // response.ok is true for a status from 200 to 299. Anything else is an error,
-    // and isRetryable decides from the status if a second try makes sense.
-    if (!response.ok) {
-      throw new LlmError(
-        `Gemini ${response.status}: ${body}`,
-        isRetryable(response.status),
-        response.status === 429 ? 'rate_limited' : 'http_error',
-      );
-    }
+    // which httpError builds from the status and the body.
+    if (!response.ok) throw httpError(response.status, body);
 
     // parseJson returns "unknown" (we do not know the shape yet).
     // "as GeminiReply" tells TypeScript to treat it as GeminiReply. It checks nothing,
@@ -196,6 +211,52 @@ export class GeminiProvider implements LlmProvider {
   }
 
   /**
+   * Asks the model for one word (CHECK_BODY), through the same generateContent as
+   * generateStructured, with the tutor's thinking setting. A real request is the only
+   * way to meet the key, the model and the quotas as a learner's question does: Google
+   * applies its quotas to generations only, so a key over today's quota still reads
+   * its model's description without trouble. The price is one request of the key's
+   * quota per check, and a few tokens.
+   *
+   * It never throws: a failure is a status, so the route always has a verdict to show.
+   * Google's body goes to the log only, never into the answer: a 403 can name the
+   * Cloud project. The key stays in the header, as for a tutor's answer.
+   *
+   * It counts nothing in ft_llm_requests_total nor ft_llm_tokens_total: checks would
+   * dilute the error rate of the learners' calls. TutorService counts them in
+   * ft_llm_checks_total.
+   */
+  async check(): Promise<LlmCheck> {
+    const { apiKey, model } = this.options;
+    const started = Date.now();
+    try {
+      const response = await fetch(`${API}/${model}:generateContent`, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json', 'x-goog-api-key': apiKey },
+        body: JSON.stringify(CHECK_BODY),
+        signal: AbortSignal.timeout(CHECK_TIMEOUT_MS),
+      });
+      const body = await response.text();
+      const verdict = checkVerdict(response.status, body, Date.now());
+      // 500 characters: enough for Google's reason, short enough for one log line.
+      if (verdict.status !== 'ok') {
+        this.logger.warn(`key check on ${model}: Gemini ${response.status}: ${body.slice(0, 500)}`);
+      }
+      return { ...verdict, latencyMs: Date.now() - started, httpStatus: response.status };
+    } catch (error) {
+      // No HTTP answer (network, DNS, the timeout), or the body was cut while read.
+      const reason = error instanceof Error ? error.message : String(error);
+      this.logger.warn(`key check on ${model}: unreachable: ${reason}`);
+      return {
+        status: 'unreachable',
+        latencyMs: Date.now() - started,
+        httpStatus: null,
+        retryAt: null,
+      };
+    }
+  }
+
+  /**
    * The streamed call itself. Steps:
    * 1. Send the HTTP request to streamGenerateContent with alt=sse: Google then keeps
    *    the response open and writes the answer in Server-Sent Events, a few words each.
@@ -226,11 +287,7 @@ export class GeminiProvider implements LlmProvider {
     // An error status comes with a normal body (no events): read it whole for the message.
     if (!response.ok || !response.body) {
       const body = await response.text().catch(lost);
-      throw new LlmError(
-        `Gemini ${response.status}: ${body}`,
-        isRetryable(response.status),
-        response.status === 429 ? 'rate_limited' : 'http_error',
-      );
+      throw httpError(response.status, body);
     }
 
     let finished = false;
@@ -300,8 +357,9 @@ export class GeminiProvider implements LlmProvider {
   }
 }
 
-// The functions below are not exported: they are private helpers of this file.
-// They are outside the class because they do not need "this".
+// The functions below are private helpers of this file, except quotaRefusal, exported
+// so its spec can feed it Google's bodies. They are outside the class because they do
+// not need "this".
 
 /**
  * Builds the JSON body Gemini expects, from our request.
@@ -367,12 +425,155 @@ function unreachable(error: Error): never {
 /**
  * Decides if an HTTP error status is worth a second try.
  * - 408 (request timeout), 429 (too many requests), 5xx (Google's server failed):
- *   temporary, so yes.
+ *   temporary, so yes. httpError makes one exception: a 429 for today's quota.
  * - Any other status (400 bad request, 401/403 bad key, 404 unknown model...):
  *   the same request fails the same way twice, so no.
  */
 function isRetryable(status: number): boolean {
   return status === 408 || status === 429 || status >= 500;
+}
+
+/**
+ * The LlmError for an HTTP status outside 2xx, used by both calls.
+ * A 429 is rate_limited, whichever quota refused it, and carries what quotaRefusal
+ * reads in the body. Today's quota is not retryable: a second try a moment later
+ * meets the same refusal, for hours.
+ */
+function httpError(status: number, body: string): LlmError {
+  const message = `Gemini ${status}: ${body}`;
+  if (status !== 429) return new LlmError(message, isRetryable(status), 'http_error');
+  const quota = quotaRefusal(body);
+  return new LlmError(message, quota.scope !== 'day', 'rate_limited', quota);
+}
+
+/**
+ * The parts of Google's error body that quotaRefusal reads. Every field is
+ * optional and "unknown": this JSON comes from outside, and a field of the wrong
+ * type must not crash the code that builds the error.
+ */
+interface GoogleError {
+  error?: { details?: unknown };
+}
+
+/** One entry of error.details, or null: Google's list could hold anything. */
+type GoogleErrorDetail = {
+  '@type'?: unknown;
+  violations?: unknown;
+  retryDelay?: unknown;
+} | null;
+
+/**
+ * What a 429's body says about the quota Google refused. Its error.details is a
+ * list of objects, each named by its "@type":
+ * - QuotaFailure lists the quotas the call went over (violations), each with a
+ *   quotaId such as "GenerateRequestsPerDayPerProjectPerModel-FreeTier" (a free
+ *   key's 429 on 2026-11-27) or "GenerateRequestsPerMinutePerProjectPerModel-FreeTier".
+ * - RetryInfo says how long to wait, as a text in seconds: "48933s", "21.5s".
+ *
+ * scope is 'day' when any quota named is a daily one: waiting a minute cannot help
+ * then. Anything else, a body that is not JSON or names no quota included, reads as
+ * the minute's: the milder guess, and what the learner was told before. retryAfterS
+ * is the delay in whole seconds, rounded up, or null when Google gives none, or one
+ * longer than MAX_RETRY_AFTER_S. RetryInfo is read even when no QuotaFailure names
+ * the quota.
+ *
+ * It never throws, whatever the body: it runs while an error is being built, and a
+ * TypeError there would hide Google's refusal.
+ */
+export function quotaRefusal(body: string): QuotaRefusal {
+  let details: unknown;
+  try {
+    details = (JSON.parse(body) as GoogleError | null)?.error?.details;
+  } catch {
+    return { scope: 'minute', retryAfterS: null };
+  }
+  // Array.isArray before any list method: details could be a text, or missing.
+  const list: GoogleErrorDetail[] = Array.isArray(details) ? details : [];
+  // A field that is not a text reads as "", which matches nothing. Not String(): it
+  // throws on an object such as {"toString": 1}, and JSON can hold one.
+  const text = (value: unknown) => (typeof value === 'string' ? value : '');
+  const ofType = (name: string) =>
+    list.filter((detail) => text(detail?.['@type']).endsWith(`google.rpc.${name}`));
+
+  const daily = ofType('QuotaFailure').some((failure) => {
+    const violations = failure?.violations;
+    return (
+      Array.isArray(violations) &&
+      violations.some((violation: { quotaId?: unknown } | null) =>
+        /PerDay/i.test(text(violation?.quotaId)),
+      )
+    );
+  });
+  // "48933s" or "21.5s": a number, then "s". Anything else gives no delay.
+  const delay = /^(\d+(?:\.\d+)?)s$/.exec(text(ofType('RetryInfo')[0]?.retryDelay));
+  // NaN when there is no delay; NaN <= anything is false, so it gives null too.
+  const seconds = delay ? Math.ceil(Number(delay[1])) : NaN;
+  return {
+    scope: daily ? 'day' : 'minute',
+    retryAfterS: seconds <= MAX_RETRY_AFTER_S ? seconds : null,
+  };
+}
+
+/**
+ * The verdict of a key check, from the HTTP status and body of its one-word request.
+ * Checked by hand on 2026-11-27: a wrong key gets 400 INVALID_ARGUMENT with the
+ * reason API_KEY_INVALID. Google's error page also lists 401 for an invalid or
+ * expired key, and 403 for a blocked or leaked one. A 400 for anything else
+ * (an unsupported region) is not the key's fault, so it stays "unexpected".
+ *
+ * A 200 is "ok" when its body is Gemini's reply, whatever its text: a model may stop
+ * at MAX_TOKENS before writing "OK", and Google still answered with the key and the
+ * model. A 200 that is not Gemini's reply, usually a proxy's page, is "unexpected".
+ * A 429 names the quota (quotaRefusal), and retryAt is when Google said it comes back,
+ * counted from `now`. For the day's quota, a wait under an hour is the minute's wait
+ * of a 429 that hit both quotas, not the day's reset: no time then, and the card says
+ * "midnight Pacific time" rather than a time that is hours early.
+ */
+function checkVerdict(
+  status: number,
+  body: string,
+  now: number,
+): { status: TutorCheckStatus; retryAt: string | null } {
+  if (status === 429) {
+    const { scope, retryAfterS } = quotaRefusal(body);
+    const minDayWaitS = 60 * 60;
+    const wait =
+      scope === 'day' && retryAfterS !== null && retryAfterS < minDayWaitS ? null : retryAfterS;
+    return {
+      status: scope === 'day' ? 'quota_day' : 'quota',
+      retryAt: wait === null ? null : new Date(now + wait * 1000).toISOString(),
+    };
+  }
+  return { status: checkStatus(status, body), retryAt: null };
+}
+
+/** The verdict of any status but 429, which checkVerdict reads first. */
+function checkStatus(status: number, body: string): TutorCheckStatus {
+  if (status === 200) return isGeminiReply(body) ? 'ok' : 'unexpected';
+  if (status === 401 || status === 403) return 'invalid_key';
+  if (status === 400 && body.includes('API_KEY_INVALID')) return 'invalid_key';
+  if (status === 404) return 'model_not_found';
+  // 408 and 5xx: Google's own trouble, worth trying again later.
+  if (status === 408 || status >= 500) return 'unreachable';
+  return 'unexpected';
+}
+
+/**
+ * True when a 200's body is Gemini's reply: a JSON object with candidates or
+ * usageMetadata, the two fields every generateContent answer has. The text is not
+ * needed (see checkVerdict).
+ */
+function isGeminiReply(body: string): boolean {
+  try {
+    const reply: unknown = JSON.parse(body);
+    return (
+      typeof reply === 'object' &&
+      reply !== null &&
+      ('candidates' in reply || 'usageMetadata' in reply)
+    );
+  } catch {
+    return false;
+  }
 }
 
 /**

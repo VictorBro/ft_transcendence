@@ -46,7 +46,7 @@ mandatory part also applies to every form, so it has a row too:
 | A way in when the phone is lost | Ten recovery codes, made when 2FA is turned on and shown once. Each has 20 characters in four groups of five (`xxxxx-xxxxx-xxxxx-xxxxx`), from an alphabet without look-alike characters (no `i`, `l`, `o`, `0`, `1`). The login step takes either a six-digit code or a recovery code. Each recovery code works once. | [two-factor.service.ts](../../apps/api/src/auth/two-factor.service.ts) (`issueRecoveryCodes`, `consumeRecoveryCode`), [two-factor.ts](../../packages/shared/src/schemas/two-factor.ts) |
 | Recovery codes kept safely | The database keeps only a SHA-256 hash of each code, in the `RecoveryCode` table, never the code itself. A code is marked used in the same database statement that finds it, so two logins at the same moment cannot both use one code. | [schema.prisma](../../apps/api/prisma/schema.prisma) (`RecoveryCode`), [migration](../../apps/api/prisma/migrations/20260809004816_two_factor/migration.sql) |
 | Turning it off | `DELETE /api/auth/2fa` asks for the password again, not only a valid session, so that a browser left open is not enough. It clears the secret and deletes the recovery codes in one transaction. It is the only way to turn 2FA off: setup and enable are refused while 2FA is on. | [auth.controller.ts](../../apps/api/src/auth/auth.controller.ts) (`disableTwoFactor`), [two-factor.service.ts](../../apps/api/src/auth/two-factor.service.ts) (`disable`) |
-| Codes cannot be guessed quickly | Every route that checks a code or a password (`login`, `2fa/verify`, `2fa/enable`, `DELETE 2fa`) allows 5 tries a minute per IP address (`LOGIN_LIMIT_PER_MINUTE`). After that the API answers `429`. | [auth.controller.ts](../../apps/api/src/auth/auth.controller.ts), [rate-limits.ts](../../apps/api/src/throttler/rate-limits.ts), [../operations/deployment.md](../operations/deployment.md) |
+| Codes cannot be guessed quickly | Every route that checks a code or a password (`login`, `2fa/verify`, `2fa/enable`, `DELETE 2fa`) allows 20 tries a minute per IP address (`LOGIN_LIMIT_PER_MINUTE`). After that the API answers `429`. | [auth.controller.ts](../../apps/api/src/auth/auth.controller.ts), [rate-limits.ts](../../apps/api/src/throttler/rate-limits.ts), [../operations/deployment.md](../operations/deployment.md) |
 | (Mandatory part) Forms validated in the browser and on the server | One set of Zod schemas in `@ft/shared` checks the code fields on both sides: `TotpCodeSchema` (six digits), `RecoveryCodeSchema` (hyphens and spaces removed, then 20 letters or digits) and `SecondFactorSchema` (either one). The "turn off" form uses `DisableTwoFactorSchema` (the password, 1 to 128 characters). The API applies them through `nestjs-zod`, and the login form, the setup form and the turn-off form apply them before they send anything ([#218](https://github.com/VictorBro/ft_transcendence/pull/218) for the turn-off form). | [two-factor.ts](../../packages/shared/src/schemas/two-factor.ts), [auth.dto.ts](../../apps/api/src/auth/auth.dto.ts), [two-factor-panel.tsx](../../apps/web/app/%5Blocale%5D/%28main%29/settings/2fa/two-factor-panel.tsx) |
 
 ## How it works
@@ -152,7 +152,7 @@ dashboard has a "2FA failures" panel. The `SignInFailuresSpike` alert counts fai
 | [apps/api/src/auth/session.d.ts](../../apps/api/src/auth/session.d.ts) | The two session keys, `userId` and `pendingUserId` |
 | [apps/api/src/auth/auth.guard.ts](../../apps/api/src/auth/auth.guard.ts) | The global guard; it reads only `userId` |
 | [apps/api/src/auth/auth.dto.ts](../../apps/api/src/auth/auth.dto.ts) | Wraps the shared schemas so NestJS validates the bodies and Swagger documents them |
-| [apps/api/src/throttler/rate-limits.ts](../../apps/api/src/throttler/rate-limits.ts), [throttle-by-ip.decorator.ts](../../apps/api/src/throttler/throttle-by-ip.decorator.ts) | The 5-a-minute limit per IP address |
+| [apps/api/src/throttler/rate-limits.ts](../../apps/api/src/throttler/rate-limits.ts), [throttle-by-ip.decorator.ts](../../apps/api/src/throttler/throttle-by-ip.decorator.ts) | The 20-a-minute limit per IP address |
 | [apps/api/prisma/schema.prisma](../../apps/api/prisma/schema.prisma) | `User.totpSecret`, `User.totpEnabledAt`, the `RecoveryCode` model |
 | [apps/api/prisma/migrations/20260809004816_two_factor/](../../apps/api/prisma/migrations/20260809004816_two_factor/migration.sql) | The migration that added them |
 | [packages/shared/src/schemas/two-factor.ts](../../packages/shared/src/schemas/two-factor.ts) | Zod schemas for codes and answers, shared by the browser and the API |
@@ -166,7 +166,8 @@ dashboard has a "2FA failures" panel. The `SignInFailuresSpike` alert counts fai
 ## How to show it at the defence
 
 You need an authenticator app on a phone (any app that scans `otpauth://` QR codes). The login
-routes allow 5 tries a minute per IP address, so do the steps at a calm pace: if the page says
+routes allow 20 tries a minute per IP address, and every browser on one machine counts as one
+address, so do the steps at a calm pace: if the page says
 "Too many attempts. Try again in a minute", wait one minute.
 
 1. Start the app with `make run` (or `make all`) and open the address it prints,
@@ -236,7 +237,7 @@ Run the unit tests with `make test`, the API tests against a real database and R
   itself to check codes, so it cannot be hashed. It is not encrypted either: someone who can
   read the database can make valid codes.
 - **A TOTP code can be used more than once** while it is valid (about 30 to 90 seconds, with the
-  window of one step either side). The server does not store the last code used. The 5-a-minute
+  window of one step either side). The server does not store the last code used. The 20-a-minute
   limit per address still applies.
 - **No route to make new recovery codes.** When a user has used them all, the only way to get
   new ones is to turn 2FA off and on again. `issueRecoveryCodes` already replaces the whole set,

@@ -339,6 +339,7 @@ Every import:
 | `CoursesModule` | Courses per language. | [07](07-courses-placement.md) |
 | `PlacementModule` | The placement exam. | [07](07-courses-placement.md) |
 | `LessonsModule` | Lessons, attempts, roadmap, discussion. | [08](08-lessons.md) |
+| `TutorModule` | `GET /api/tutor` and `POST /api/tutor/check`: the AI tutor's provider and model, and a test of its key. | [06](06-llm.md) |
 | `GatewayModule` | The Socket.IO gateway (`/ws`). | [09](09-social-and-realtime.md) |
 | `MetricsModule` | `MetricsCollector`, the database-based metrics. | [03](03-infrastructure.md) |
 
@@ -581,7 +582,7 @@ The route in [auth.controller.ts](../../apps/api/src/auth/auth.controller.ts):
   @Public()
   @Post('login')
   @HttpCode(HttpStatus.OK)
-  // Tighter than signup: this is the endpoint a password guesser hammers.
+  // Per address, like signup: this is the endpoint a password guesser hammers.
   @ThrottleByIp(RATE_LIMITS.login)
   ...
   async login(
@@ -617,7 +618,7 @@ sequenceDiagram
     R-->>MW: session or nothing
     Note over MW: JSON body parser fills req.body
     MW->>TG: route found: run guards
-    TG->>TG: "@ThrottleByIp: key = client IP, limit 5/min"
+    TG->>TG: "@ThrottleByIp: key = client IP, limit 20/min"
     TG->>AG: under the limit
     AG->>AG: "@Public(): let it pass"
     AG->>P: guards OK
@@ -640,7 +641,7 @@ Step by step:
 3. The URL is not an avatar, so **express-session** runs. If the browser sent a `ft.sid` cookie, the session is loaded from Redis. A first visit has none.
 4. **Body parser** turns the JSON text into `req.body`.
 5. Nest finds the route (`AuthController.login`) and runs the **global guards**:
-   - `IdentityThrottlerGuard`: the route has `@ThrottleByIp(RATE_LIMITS.login)` (5 by default, `LOGIN_LIMIT_PER_MINUTE`), so the key is the client IP, limit 5 per minute. Under the limit: go on.
+   - `IdentityThrottlerGuard`: the route has `@ThrottleByIp(RATE_LIMITS.login)` (20 by default, `LOGIN_LIMIT_PER_MINUTE`), so the key is the client IP, limit 20 per minute. Under the limit: go on.
    - `AuthGuard`: the route is `@Public()`, so it lets it pass.
 6. The **global pipe** checks `req.body` against `LoginSchema` (because the parameter type is `LoginDto`).
 7. The **controller** calls `AuthService.validateCredentials`, which calls **Prisma** to find the user (email in lower case), then checks the password hash with argon2. An unknown email still runs argon2 on a dummy hash, so the answer takes the same time.
@@ -662,7 +663,7 @@ sequenceDiagram
     participant S as AuthService
     participant F as ErrorCodeFilter
 
-    alt 6th try in one minute
+    alt 21st try in one minute
         TG->>F: "ThrottlerException('server.rateLimited')"
         F-->>B: "429 { message: 'server.rateLimited' }"
     else body has a bad email

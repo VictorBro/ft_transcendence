@@ -81,24 +81,26 @@ flowchart LR
 
 ### Quand il tourne
 
-| Stack                                       | Fichiers                               | Monitoring                                                                                                                                                               |
-| ------------------------------------------- | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `make dev`                                  | `compose.yml` + `compose.override.yml` | éteint : l'override met les sept services derrière le profil `monitoring`, pour que les laptops restent légers, et `make dev` supprime ceux que `make` a laissés tourner |
-| `make monitoring-up`                        | les mêmes, avec `--profile monitoring` | allumé, construit depuis `infra/monitoring/*`                                                                                                                            |
-| `make`, `make up`, e2e.yml, les évaluateurs | `-f compose.yml -f compose.prod.yml`   | toujours allumé : l'override n'est pas chargé, donc il n'y a pas de profil                                                                                               |
-| Le serveur                                  | `compose.deploy.yml`                   | toujours allumé, images tirées depuis GHCR                                                                                                                               |
+| Stack                                                            | Fichiers                                               | Monitoring                                                                                                                                                               |
+| ---------------------------------------------------------------- | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `make dev`                                                       | `compose.yml` + `compose.override.yml`                 | éteint : l'override met les sept services derrière le profil `monitoring`, pour que les laptops restent légers, et `make dev` supprime ceux que `make` a laissés tourner |
+| `make monitoring-up`                                             | les mêmes, avec `--profile monitoring`                 | allumé, construit depuis `infra/monitoring/*`                                                                                                                            |
+| `make`, `make up`, e2e.yml, les évaluateurs                      | `-f compose.yml -f compose.prod.yml`                   | toujours allumé : l'override n'est pas chargé, donc il n'y a pas de profil                                                                                               |
+| Un serveur avec le monitoring : le principal, trans.vyantares.ch | `compose.deploy.yml` + `compose.deploy.monitoring.yml` | toujours allumé, images tirées depuis GHCR                                                                                                                               |
+| Un serveur sans : la copie Oracle, transcendence.dpdns.org       | `compose.deploy.yml` seul                              | éteint : la VM gratuite n'a pas assez de mémoire. Les sept services ne sont pas dans le fichier, et `/grafana` répond 503                                                |
 
 ### Où vit la config
 
-| Config                                                          | Dans                                      | Arrive dans le container par                      |
-| --------------------------------------------------------------- | ----------------------------------------- | ------------------------------------------------- |
-| `prometheus.yml`, `rules/alerts.yml`                            | `infra/monitoring/prometheus/`            | un `COPY` dans son Dockerfile                     |
-| `alertmanager.yml`, `silent.yml`, `templates/`, `entrypoint.sh` | `infra/monitoring/alertmanager/`          | un `COPY` dans son Dockerfile                     |
-| `grafana.ini`, `provisioning/`, `dashboards/`, `entrypoint.sh`  | `infra/monitoring/grafana/`               | un `COPY` dans son Dockerfile                     |
-| L'URL racine, les secrets de Grafana, le webhook Discord        | `.env`                                    | `environment:` de compose                         |
-| La route `/grafana` et le site `:2020`                          | `infra/caddy/Caddyfile`, `Caddyfile.prod` | le bind mount existant, le `Caddyfile` du serveur |
+| Config                                                          | Dans                                                                      | Arrive dans le container par                              |
+| --------------------------------------------------------------- | ------------------------------------------------------------------------- | --------------------------------------------------------- |
+| `prometheus.yml`, `rules/alerts.yml`                            | `infra/monitoring/prometheus/`                                            | un `COPY` dans son Dockerfile                             |
+| `alertmanager.yml`, `silent.yml`, `templates/`, `entrypoint.sh` | `infra/monitoring/alertmanager/`                                          | un `COPY` dans son Dockerfile                             |
+| `grafana.ini`, `provisioning/`, `dashboards/`, `entrypoint.sh`  | `infra/monitoring/grafana/`                                               | un `COPY` dans son Dockerfile                             |
+| L'URL racine, les secrets de Grafana, le webhook Discord        | `.env`                                                                    | `environment:` de compose                                 |
+| Le label `source` des alertes                                   | `ALERT_SOURCE` venant de make ou de `.env` ; `SITE_DOMAIN` sur un serveur | `environment:` de compose, remplacé dans `prometheus.yml` |
+| La route `/grafana` et le site `:2020`                          | `infra/caddy/Caddyfile`, `Caddyfile.prod`                                 | le bind mount existant, le `Caddyfile` du serveur         |
 
-Intégrée dans les images plutôt que montée en bind mount, parce que le serveur n'a pas de checkout et contient exactement trois fichiers
+Intégrée dans les images plutôt que montée en bind mount, parce qu'un serveur n'a pas de checkout et ne contient que ses fichiers de deploy
 (operations/deployment.md). images.yml publie les trois images avec le même label de révision que `api` et
 `web`, donc `deploy.sh` déploie un changement de règle ou de dashboard comme n'importe quel changement de code, et le dev, la CI et
 le serveur font tourner la même config. Le prix à payer : une modification de config en dev demande une reconstruction, que
@@ -108,18 +110,20 @@ le serveur font tourner la même config. Le prix à payer : une modification de 
 
 ## 2. Ouvrir Grafana
 
-| Depuis                           | URL                                                                                                                                                   | Mot de passe                                        |
-| -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- |
-| Ton navigateur                   | <https://localhost/grafana> (`https://localhost:<HTTPS_PORT>/grafana` quand `HTTPS_PORT` dans `.env` n'est pas 443, comme sur toutes les machines 42) | `grep GRAFANA_ADMIN_PASSWORD .env`                  |
-| Un terminal dans le devcontainer | `https://caddy/grafana`                                                                                                                               | le même                                             |
-| Le serveur                       | <https://transcendence.dpdns.org/grafana>                                                                                                             | `grep GRAFANA_ADMIN_PASSWORD ~/.env` sur le serveur |
+| Depuis                           | URL                                                                                                                                                   | Mot de passe                                                         |
+| -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| Ton navigateur                   | <https://localhost/grafana> (`https://localhost:<HTTPS_PORT>/grafana` quand `HTTPS_PORT` dans `.env` n'est pas 443, comme sur toutes les machines 42) | `grep GRAFANA_ADMIN_PASSWORD .env`                                   |
+| Un terminal dans le devcontainer | `https://caddy/grafana`                                                                                                                               | le même                                                              |
+| Le serveur principal             | <https://trans.vyantares.ch/grafana>                                                                                                                  | `grep GRAFANA_ADMIN_PASSWORD ~/ft_transcendence/.env` sur le serveur |
 
 L'utilisateur est `admin`. Il n'y a pas d'autre compte et pas d'inscription.
 
 `make`, `make up` et `make monitoring-up` lancent d'abord `make env-file`. Il crée `.env` à partir de
 `.env.example` s'il n'existe pas, et écrit 48 caractères hex aléatoires dans
-`GRAFANA_ADMIN_PASSWORD` et `GRAFANA_SECRET_KEY` quand ils sont vides. Il ne change jamais une valeur
-déjà définie. Le `.env` du serveur se remplit à la main (operations/deployment.md).
+`GRAFANA_ADMIN_PASSWORD`, `GRAFANA_SECRET_KEY` et `SESSION_SECRET` quand ils sont vides. Il ne change jamais
+une valeur déjà définie, et retire les clés que plus rien ne lit (aujourd'hui `DATABASE_URL`, que
+compose et make construisent à partir de `POSTGRES_*`). Le `.env` du serveur se remplit à la main
+(operations/deployment.md).
 
 ### Le mot de passe est appliqué une seule fois
 
@@ -133,8 +137,8 @@ docker compose exec grafana sh -c 'grafana cli --homepath /usr/share/grafana adm
 
 Les guillemets simples sont voulus : c'est le container qui remplace la variable, donc `.env` reste la seule source et
 le mot de passe n'arrive jamais dans l'historique de ton shell. Sur le serveur, utilise
-`docker compose -f compose.deploy.yml exec grafana ...`. En local, `make clean` marche aussi, en
-supprimant `grafana-data` avec tous les autres volumes.
+`docker compose -f compose.deploy.yml -f compose.deploy.monitoring.yml exec grafana ...`. En local,
+`make clean` marche aussi, en supprimant `grafana-data` avec tous les autres volumes.
 
 `GRAFANA_SECRET_KEY` remplace la clé fournie avec Grafana, qui est publiée dans son code source. Définis-la
 une seule fois : la changer plus tard casse tout ce que Grafana a chiffré.
@@ -188,12 +192,20 @@ Comment se comporte l'API NestJS, route par route. Variable : `route` (choix mul
 
 Ce que font les apprenants, et si la banque de questions suit. Variable : `lang` (choix multiple).
 
-| Ligne         | Panels                                                                                                                                                                                                 |
-| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| People        | comptes ; connectés sur les 5 dernières minutes ; sessions stockées                                                                                                                                    |
-| Placement     | examens par heure par événement (started, completed, quit) ; taux de complétion sur 24 h ; questions servies par source ; niveaux dont le stock s'est vidé sur la dernière heure                       |
-| Question bank | questions par niveau et par source ; les 10 cases les plus pauvres, cases vides comprises ; réapprovisionnements par résultat ; échecs de réapprovisionnement par raison ; questions générées sur 24 h |
-| LLM           | fournisseur et modèle ; appels par résultat ; latence p95 ; tokens par heure ; discussion de leçon : ses appels par résultat et ses messages refusés par une limite                                    |
+| Ligne         | Panels                                                                                                                                                                                                              |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| People        | comptes ; connectés sur les 5 dernières minutes ; sessions stockées                                                                                                                                                 |
+| Learners      | tentatives de leçon par heure (started, completed) ; cours par niveau, `unplaced` avant l'examen de placement ; succès gagnés, par code ; amitiés par statut (pending, accepted). Les deux derniers ignorent `lang` |
+| Placement     | examens par heure par événement (started, completed, quit) ; taux de complétion sur 24 h ; questions servies par source ; niveaux dont le stock s'est vidé sur la dernière heure                                    |
+| Question bank | questions par niveau et par source ; les 10 cases les plus pauvres, cases vides comprises ; réapprovisionnements par résultat ; échecs de réapprovisionnement par raison ; questions générées sur 24 h              |
+| LLM           | fournisseur et modèle ; appels par résultat ; latence p95 ; tokens par heure ; discussion de leçon : ses appels par résultat et ses messages refusés par une limite                                                 |
+
+Accounts, Courses by level, Achievements earned et Friendships lisent la base de données, donc,
+avec `DEMO_PASSWORD` défini, ils montrent les apprenants de démo seedés environ une minute après le
+seed (le collector garde 60 s en cache). Questions by level and source et Thinnest cells la lisent
+aussi, et montrent la banque seedée de la même façon ; Provider montre le provider avec lequel l'api
+a démarré. Le reste, Lesson attempts per hour et la ligne Placement compris, ne bouge que quand
+quelqu'un utilise l'app.
 
 "Questions served by source" (questions servies par source) montre `written`, `generated` et `seen_fallback`. Le dernier, c'est un
 apprenant qui a vu toutes les questions de ce niveau et en reçoit une ancienne à nouveau.
@@ -209,7 +221,11 @@ apprenant qui a vu toutes les questions de ce niveau et en reçoit une ancienne 
 Un `global_minute` constant veut dire que le budget de la clé partagée est trop petit pour le trafic : augmente
 `LLM_DISCUSSION_GLOBAL_PER_MINUTE` seulement si le quota de la clé le permet ([operations/deployment.md](deployment.md)
 §5). `rate_limited` parmi les résultats veut dire que Google a refusé malgré notre propre limite, donc la nôtre est réglée
-au-dessus du quota de la clé. Un apprenant qui ferme la page au milieu d'une réponse n'apparaît dans aucune des deux : aucun résultat n'est
+au-dessus du quota de la clé. Il compte les deux quotas de Google : le quota de la minute, sous lequel notre limite
+globale doit rester, et le quota du jour, qu'aucune de nos limites ne voit venir (20 requêtes par jour et par modèle
+pour une clé gratuite, le 2026-11-27, partagées avec les réapprovisionnements de questions et les tests de la clé).
+L'apprenant lit `llm.rateLimited` pour le premier et `llm.quotaExhausted` pour le second ; le log de l'api de chaque
+échec contient le body de Google, dont le `quotaId` dit lequel. Un apprenant qui ferme la page au milieu d'une réponse n'apparaît dans aucune des deux : aucun résultat n'est
 compté pour un stream annulé.
 
 Avec `LLM_PROVIDER=fixture`, le défaut partout où les évaluateurs lancent le projet, la ligne LLM affiche "fixture"
@@ -239,7 +255,8 @@ son propre panel. `docker stats` couvre le reste.
 Prometheus évalue `infra/monitoring/prometheus/rules/alerts.yml` toutes les 30 s et envoie les
 alertes actives à Alertmanager. Alertmanager les regroupe par nom, applique les inhibitions ci-dessous, et poste
 sur Discord quand `DISCORD_WEBHOOK_URL` est défini. Sans webhook, il charge `silent.yml` et n'envoie
-rien. Dans les deux cas, Grafana montre chaque règle et chaque alerte derrière son login.
+rien. Dans les deux cas, Grafana montre chaque règle et chaque alerte derrière son login. Chaque titre Discord
+commence par la stack qui l'a envoyé, par exemple `trans.vyantares.ch: [FIRING:1] ApiDown` (plus bas).
 
 Deux niveaux de gravité. **critical** : les apprenants voient une panne. **warning** : dégradé, ou sur le point de l'être.
 
@@ -284,11 +301,14 @@ Pourquoi certaines règles ont cette forme :
   le défaut là où les évaluateurs lancent le projet.
 - **14 et 15** lisent des séries que l'API crée à 0 au démarrage (section 5), donc le premier échec compte.
   Avec la fixture, la règle 14 n'a aucune série et ne se déclenche jamais.
-- **19** compte le swap. L'OOM killer agit quand la RAM et le swap sont tous les deux épuisés, et le serveur de 1 GB est
+- **19** compte le swap. L'OOM killer agit quand la RAM et le swap sont tous les deux épuisés, et un petit serveur est
   censé rester près de 90 % de RAM avec un fichier de swap. Une règle sur la RAM seule posterait une alerte critical
   toutes les heures alors que tout va bien. Sans swap (laptops, CI), les deux reviennent au même.
-- **Aucune ne devrait se déclencher pendant un `make` normal.** La suite Playwright produit quelques 401,
-  pas 20 par minute pendant 5 minutes, et chaque règle basée sur un taux attend 5 minutes ou plus.
+- **Aucune ne devrait se déclencher pendant un `make` normal, sauf `ApiRestarting`.** La suite Playwright
+  produit quelques 401, pas 20 par minute pendant 5 minutes, et chaque règle basée sur un taux attend 5 minutes
+  ou plus. `ApiRestarting` demande deux démarrages de l'API en 15 minutes, et `make` peut en faire trois : la
+  stack sur le tuteur fixture (un nouveau container quand `.env` nomme un autre provider ou une clé, ou que
+  l'image a changé), le test Playwright de redémarrage, et la stack remise sur le provider que nomme `.env`.
 
 ### Le routage
 
@@ -310,27 +330,47 @@ Après `docker compose stop api`, `ApiDown` arrive sur Discord en environ 2 à 2
 avant le scrape raté, jusqu'à 30 s avant l'évaluation, la minute du `for`, et les 30 s de `group_wait`. Le
 message de résolution suit `docker compose start api` en environ 1 à 2 minutes.
 
+### Quelle stack l'a envoyée
+
+Un seul webhook sert les serveurs et le laptop de chaque membre de l'équipe, donc chaque alerte dit d'où elle
+vient. Prometheus met un label `source` sur chaque alerte qu'il envoie (`external_labels` dans
+`prometheus.yml`, depuis la variable `ALERT_SOURCE` que compose lui passe), et le titre Discord commence
+par lui :
+
+| Stack                                 | `source`                                                               | Un titre                                      |
+| ------------------------------------- | ---------------------------------------------------------------------- | --------------------------------------------- |
+| Un serveur avec le monitoring         | son `SITE_DOMAIN`, passé par `compose.deploy.monitoring.yml`           | `trans.vyantares.ch: [FIRING:1] ApiDown`      |
+| Un laptop, via `make`                 | `local (<git user.name>)`, ou `ALERT_SOURCE` de `.env` s'il est défini | `local (VictorBro): [FIRING:1] ApiRestarting` |
+| Un laptop, avec `docker compose` seul | `ALERT_SOURCE` de `.env`, sinon `local`                                | `local: [FIRING:1] ApiDown`                   |
+
+Un serveur n'a besoin d'aucune nouvelle clé : `SITE_DOMAIN` est déjà obligatoire. Une alerte ajoutée avec
+`amtool` ne passe pas par Prometheus, donc elle n'a pas de `source`, et son titre commence à `[FIRING:1]`. Le
+lien `Grafana:` à la fin de chaque message pointe vers le Grafana de l'expéditeur : depuis un laptop,
+`https://localhost`.
+
 ### Le webhook Discord
 
 Le webhook est un identifiant secret : toute personne qui a l'URL peut poster dans le channel. Donc :
 
-- Il vit seulement dans `.env`, sous le nom `DISCORD_WEBHOOK_URL`. Les deux modèles le laissent vide, et rien dans
-  le dépôt n'en contient un vrai.
+- Il vit seulement dans `.env`, sous le nom `DISCORD_WEBHOOK_URL`. Le modèle, `.env.example`, le laisse vide, et
+  rien dans le dépôt n'en contient un vrai.
 - Alertmanager ne remplace jamais les variables d'environnement dans sa config (issue upstream #504), donc
-  l'entrypoint de l'image écrit la variable dans un fichier sur un tmpfs, en mode 0600, la supprime, et la
+  l'entrypoint de l'image écrit la variable dans un fichier sur un tmpfs qui appartient à nobody, l'utilisateur
+  sous lequel il tourne (`uid=65534,gid=65534` dans les fichiers compose), en mode 0600, la supprime, et la
   config lit le fichier avec `webhook_url_file`. Elle n'arrive jamais sur un volume.
 - Vide veut dire `silent.yml`, et le log du container dit
   `alertmanager: DISCORD_WEBHOOK_URL is empty, alerts are not sent anywhere`. Ça ne veut jamais dire une
   notification en échec par alerte.
 - Garde-le vide sur un laptop, pour que `make` ne poste pas ses lancements de test à l'équipe. Définis-le sur le
-  serveur.
+  serveur. Un laptop qui poste quand même, pour un test, signe ses titres `local (<git user.name>)`, donc
+  personne ne les prend pour ceux du serveur.
 - Comme toutes les valeurs de `.env`, il est visible par toute personne qui peut lancer `docker inspect` sur l'hôte.
 
 Pour en créer un dans Discord : Server Settings, Integrations, Webhooks, New Webhook, choisis le channel,
 Copy Webhook URL. Puis ajoute-le dans `.env` (sur le serveur, avec la ligne `read -rs` de
 operations/deployment.md, pour qu'il reste hors de l'historique de ton shell) et lance `make up`, `make monitoring-up`, ou
-sur le serveur `docker compose -f compose.deploy.yml up -d`. Compose recrée alertmanager parce que
-son environnement a changé.
+sur le serveur `docker compose -f compose.deploy.yml -f compose.deploy.monitoring.yml up -d alertmanager`.
+Compose recrée alertmanager parce que son environnement a changé.
 
 ### Tester qu'une alerte arrive sur Discord
 
@@ -345,7 +385,8 @@ son environnement a changé.
    ```
 
 3. **Une alerte synthétique, à travers Alertmanager.** Un message "[FIRING:1] DiscordTest" arrive après
-   30 s. Elle se résout toute seule après 5 minutes, et un message vert "[RESOLVED]" suit.
+   30 s, sans source devant : `amtool` ne passe pas par Prometheus. Elle se résout toute seule après
+   5 minutes, et un message vert "[RESOLVED]" suit.
 
    ```bash
    docker compose exec alertmanager amtool --alertmanager.url=http://127.0.0.1:9093 \
@@ -354,10 +395,12 @@ son environnement a changé.
    ```
 
 4. **Une vraie alerte, depuis un scrape.** `docker compose stop api`. Sous Alerting, `ApiDown` passe
-   en attente (pending), puis active (firing) après une minute, et Discord reçoit "[FIRING:1] ApiDown" en environ
-   2,5 minutes. `docker compose start api`, et "[RESOLVED]" suit en 1 à 2 minutes.
-   Dans les 15 minutes qui suivent `make`, "[FIRING:1] ApiRestarting" suit aussi : le test Playwright
-   de redémarrage a déjà redémarré l'API une fois, et ce démarrage est le deuxième.
+   en attente (pending), puis active (firing) après une minute, et en environ 2,5 minutes Discord reçoit
+   `local (<git user.name>): [FIRING:1] ApiDown`, avec le domaine devant sur un serveur.
+   `docker compose start api`, et "[RESOLVED]" suit en 1 à 2 minutes.
+   Dans les 15 minutes qui suivent `make`, "[FIRING:1] ApiRestarting" suit aussi, si `make` ne l'a pas
+   déjà déclenchée (plus haut) : le test Playwright de redémarrage a déjà redémarré l'API une fois, et
+   ce démarrage est le deuxième.
 5. **La santé de la livraison.** Sur Infrastructure, "Notifications sent and failed" montre les échecs pour
    `discord` à plat sur 0. Une mauvaise URL déclenche `AlertNotificationsFailing`, qui apparaît dans Grafana,
    avec un label `reason` comme `authError`, `rateLimited` ou `clientError`.
@@ -372,36 +415,41 @@ Ensuite, vide à nouveau la variable si c'était un laptop.
 
 Les labels sont toujours bornés : jamais un id d'utilisateur, un email, un id de session, un id de leçon ou une URL brute.
 
-| Métrique                               | Type                     | Labels                                                                                                                                                                                                                                | Enregistrée dans                                                                                                                                                                                                                                          |
-| -------------------------------------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `http_request_duration_seconds`        | histogram, 5 ms à 10 s   | `method` (les 7 habituelles, sinon `OTHER`) ; `route` (le modèle Express avec son préfixe, comme `/api/courses/:lang/lessons/:id`, sinon `static` en dessous de 400 ou `unmatched`) ; `status_code` (`499` quand le client est parti) | le middleware `httpMetrics`, le premier dans `configureApp`                                                                                                                                                                                               |
-| `http_requests_in_flight`              | gauge                    | aucun                                                                                                                                                                                                                                 | le même middleware                                                                                                                                                                                                                                        |
-| `ft_llm_requests_total`                | counter                  | `provider`, `model`, `purpose`, `outcome` (`ok`, `unreachable`, `rate_limited`, `http_error`, `blocked`, `incomplete`, `invalid`)                                                                                                     | `GeminiProvider.generateStructured` et `GeminiProvider.streamText`. `purpose` vaut `question-batch:<category>` ou `lesson-discussion`. Un stream compte `ok` seulement quand toute la réponse est passée ; un apprenant qui part ne compte aucun résultat |
-| `ft_llm_request_duration_seconds`      | histogram, 0,5 s à 90 s  | `provider`, `model`, `purpose`                                                                                                                                                                                                        | les mêmes, un stream de sa requête à son dernier morceau                                                                                                                                                                                                  |
-| `ft_llm_tokens_total`                  | counter                  | `provider`, `model`, `purpose`, `type` (`prompt`, `output`, `total`)                                                                                                                                                                  | les mêmes, à partir de l'utilisation que Gemini indique                                                                                                                                                                                                   |
-| `ft_llm_discussion_limited_total`      | counter                  | `limit` (`user_minute`, `user_day`, `global_minute`)                                                                                                                                                                                  | `countMessage` (discussion-limits.ts), un message de discussion de leçon refusé avant tout appel au LLM                                                                                                                                                   |
-| `ft_llm_provider_info`                 | gauge, toujours 1        | `provider`, `model` (`none` pour la fixture et pour `disabled`)                                                                                                                                                                       | `createLlmProvider`                                                                                                                                                                                                                                       |
-| `ft_question_restocks_total`           | counter                  | `lang`, `level`, `category`, `status` (`busy`, `cooling`, `filled`, `empty`, `failed`)                                                                                                                                                | `QuestionStockService`                                                                                                                                                                                                                                    |
-| `ft_question_restock_failures_total`   | counter                  | `category`, `reason` (`llm`, `llm_disabled`, `other`)                                                                                                                                                                                 | le même, quand un remplissage lève une erreur                                                                                                                                                                                                             |
-| `ft_question_restock_inserted_total`   | counter                  | `lang`, `level`, `category`                                                                                                                                                                                                           | le même, les lignes insérées                                                                                                                                                                                                                              |
-| `ft_question_restock_duration_seconds` | histogram, 0,5 s à 120 s | `category`                                                                                                                                                                                                                            | le même, de l'appel au LLM à l'insertion                                                                                                                                                                                                                  |
-| `ft_question_bank_questions`           | gauge, lue au scrape     | `lang`, `level`, `category`, `source` (`written`, `generated`)                                                                                                                                                                        | `MetricsCollector`, en cache 60 s. Les 54 cases (3 langues, 6 niveaux, 3 catégories), chacune avec les deux sources : 108 séries, les vides à 0                                                                                                           |
-| `ft_placement_draws_total`             | counter                  | `lang`, `level`, `category`, `source` (`written`, `generated`, `seen_fallback`)                                                                                                                                                       | `PlacementQuestionService`                                                                                                                                                                                                                                |
-| `ft_placement_pool_exhausted_total`    | counter                  | `lang`, `level`                                                                                                                                                                                                                       | le même, quand il ne reste aucune question                                                                                                                                                                                                                |
-| `ft_placement_exams_total`             | counter                  | `lang`, `event` (`started`, `completed`, `quit`)                                                                                                                                                                                      | `PlacementService`                                                                                                                                                                                                                                        |
-| `ft_lesson_attempts_total`             | counter                  | `lang`, `event` (`started`, `completed`)                                                                                                                                                                                              | `AttemptsService` : une nouvelle tentative (un nouvel essai aussi), sa dernière page verrouillée. Aucun panel ne la lit encore (section 5, "Lire les métriques des leçons")                                                                               |
-| `ft_users`                             | gauge, lue au scrape     | aucun                                                                                                                                                                                                                                 | `MetricsCollector`, en cache 60 s                                                                                                                                                                                                                         |
-| `ft_active_users`                      | gauge, lue au scrape     | aucun                                                                                                                                                                                                                                 | les utilisateurs connectés vus par `AuthGuard` dans les 5 dernières minutes                                                                                                                                                                               |
-| `ft_ws_connections`                    | gauge                    | aucun                                                                                                                                                                                                                                 | `SocketGateway`, seulement les sockets acceptés                                                                                                                                                                                                           |
-| `ft_ws_events_total`                   | counter                  | `direction` (`in`, `out`) ; `event` (un nom connu, sinon `unknown`) ; `outcome` (`ok`, `invalid`, `rate_limited`)                                                                                                                     | `SocketGateway` (in, le `app:error` qu'il répond, et les instantanés `presence:update` et `dm:unread` que reçoit un nouveau socket) et `SocketsService.toUser` (out)                                                                                      |
-| `ft_app_info`                          | gauge, toujours 1        | `version` (`APP_VERSION`)                                                                                                                                                                                                             | `main.ts`                                                                                                                                                                                                                                                 |
-| Les défauts de Node                    | divers                   | aucun                                                                                                                                                                                                                                 | `collectDefaultMetrics` : lag de l'event loop, heap, GC, `process_*`                                                                                                                                                                                      |
+| Métrique                               | Type                     | Labels                                                                                                                                                                                                                                | Enregistrée dans                                                                                                                                                                                                                                                                                                                                                                                      |
+| -------------------------------------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `http_request_duration_seconds`        | histogram, 5 ms à 10 s   | `method` (les 7 habituelles, sinon `OTHER`) ; `route` (le modèle Express avec son préfixe, comme `/api/courses/:lang/lessons/:id`, sinon `static` en dessous de 400 ou `unmatched`) ; `status_code` (`499` quand le client est parti) | le middleware `httpMetrics`, le premier dans `configureApp`                                                                                                                                                                                                                                                                                                                                           |
+| `http_requests_in_flight`              | gauge                    | aucun                                                                                                                                                                                                                                 | le même middleware                                                                                                                                                                                                                                                                                                                                                                                    |
+| `ft_llm_requests_total`                | counter                  | `provider`, `model`, `purpose`, `outcome` (`ok`, `unreachable`, `rate_limited`, `http_error`, `blocked`, `incomplete`, `invalid`)                                                                                                     | `GeminiProvider.generateStructured` et `GeminiProvider.streamText`. `purpose` vaut `question-batch:<category>` ou `lesson-discussion`. Un stream compte `ok` seulement quand toute la réponse est passée ; un apprenant qui part ne compte aucun résultat                                                                                                                                             |
+| `ft_llm_request_duration_seconds`      | histogram, 0,5 s à 90 s  | `provider`, `model`, `purpose`                                                                                                                                                                                                        | les mêmes, un stream de sa requête à son dernier morceau                                                                                                                                                                                                                                                                                                                                              |
+| `ft_llm_tokens_total`                  | counter                  | `provider`, `model`, `purpose`, `type` (`prompt`, `output`, `total`)                                                                                                                                                                  | les mêmes, à partir de l'utilisation que Gemini indique                                                                                                                                                                                                                                                                                                                                               |
+| `ft_llm_discussion_limited_total`      | counter                  | `limit` (`user_minute`, `user_day`, `global_minute`)                                                                                                                                                                                  | `countMessage` (discussion-limits.ts), un message de discussion de leçon refusé avant tout appel au LLM                                                                                                                                                                                                                                                                                               |
+| `ft_llm_provider_info`                 | gauge, toujours 1        | `provider`, `model` (`none` pour la fixture et pour `disabled`)                                                                                                                                                                       | `createLlmProvider`                                                                                                                                                                                                                                                                                                                                                                                   |
+| `ft_llm_checks_total`                  | counter                  | `provider`, `model` (`none` pour la fixture et pour `disabled`), `status` (`ok`, `invalid_key`, `model_not_found`, `quota`, `quota_day`, `unreachable`, `unexpected`, `fixture`, `disabled`)                                          | `TutorService`, chaque test de la clé qui atteint le provider (`POST /api/tutor/check`). Un test réutilisé par un autre compte ne compte rien. Un test Gemini est une vraie requête d'un mot, donc il dépense une des requêtes de la clé, mais il est séparé de `ft_llm_requests_total` et de `ft_llm_tokens_total` : ce n'est l'appel d'aucun apprenant, et il ne doit pas diluer `LlmErrorRateHigh` |
+| `ft_question_restocks_total`           | counter                  | `lang`, `level`, `category`, `status` (`busy`, `cooling`, `filled`, `empty`, `failed`)                                                                                                                                                | `QuestionStockService`                                                                                                                                                                                                                                                                                                                                                                                |
+| `ft_question_restock_failures_total`   | counter                  | `category`, `reason` (`llm`, `llm_disabled`, `other`)                                                                                                                                                                                 | le même, quand un remplissage lève une erreur                                                                                                                                                                                                                                                                                                                                                         |
+| `ft_question_restock_inserted_total`   | counter                  | `lang`, `level`, `category`                                                                                                                                                                                                           | le même, les lignes insérées                                                                                                                                                                                                                                                                                                                                                                          |
+| `ft_question_restock_duration_seconds` | histogram, 0,5 s à 120 s | `category`                                                                                                                                                                                                                            | le même, de l'appel au LLM à l'insertion                                                                                                                                                                                                                                                                                                                                                              |
+| `ft_question_bank_questions`           | gauge, lue au scrape     | `lang`, `level`, `category`, `source` (`written`, `generated`)                                                                                                                                                                        | `MetricsCollector`, en cache 60 s. Les 54 cases (3 langues, 6 niveaux, 3 catégories), chacune avec les deux sources : 108 séries, les vides à 0                                                                                                                                                                                                                                                       |
+| `ft_placement_draws_total`             | counter                  | `lang`, `level`, `category`, `source` (`written`, `generated`, `seen_fallback`)                                                                                                                                                       | `PlacementQuestionService`                                                                                                                                                                                                                                                                                                                                                                            |
+| `ft_placement_pool_exhausted_total`    | counter                  | `lang`, `level`                                                                                                                                                                                                                       | le même, quand il ne reste aucune question                                                                                                                                                                                                                                                                                                                                                            |
+| `ft_placement_exams_total`             | counter                  | `lang`, `event` (`started`, `completed`, `quit`)                                                                                                                                                                                      | `PlacementService`                                                                                                                                                                                                                                                                                                                                                                                    |
+| `ft_lesson_attempts_total`             | counter                  | `lang`, `event` (`started`, `completed`)                                                                                                                                                                                              | `AttemptsService` : une nouvelle tentative (un nouvel essai aussi), sa dernière page verrouillée. Learning, "Lesson attempts per hour"                                                                                                                                                                                                                                                                |
+| `ft_users`                             | gauge, lue au scrape     | aucun                                                                                                                                                                                                                                 | `MetricsCollector`, en cache 60 s                                                                                                                                                                                                                                                                                                                                                                     |
+| `ft_courses`                           | gauge, lue au scrape     | `lang`, `level` (`A1` à `C2`, `unplaced` avant l'examen de placement)                                                                                                                                                                 | `MetricsCollector`, en cache 60 s. 21 séries, les vides à 0                                                                                                                                                                                                                                                                                                                                           |
+| `ft_achievements`                      | gauge, lue au scrape     | `code` (les 16 codes de `ACHIEVEMENTS` dans `@ft/shared`)                                                                                                                                                                             | `MetricsCollector`, en cache 60 s : les cours qui ont gagné chacun. 16 séries, les vides à 0 ; un code que la liste ne connaît pas est laissé de côté                                                                                                                                                                                                                                                 |
+| `ft_friendships`                       | gauge, lue au scrape     | `status` (`pending`, `accepted`)                                                                                                                                                                                                      | `MetricsCollector`, en cache 60 s. Une ligne pending est une demande qui attend une réponse                                                                                                                                                                                                                                                                                                           |
+| `ft_active_users`                      | gauge, lue au scrape     | aucun                                                                                                                                                                                                                                 | les utilisateurs connectés vus par `AuthGuard` dans les 5 dernières minutes                                                                                                                                                                                                                                                                                                                           |
+| `ft_ws_connections`                    | gauge                    | aucun                                                                                                                                                                                                                                 | `SocketGateway`, seulement les sockets acceptés                                                                                                                                                                                                                                                                                                                                                       |
+| `ft_ws_events_total`                   | counter                  | `direction` (`in`, `out`) ; `event` (un nom connu, sinon `unknown`) ; `outcome` (`ok`, `invalid`, `rate_limited`)                                                                                                                     | `SocketGateway` (in, le `app:error` qu'il répond, et les instantanés `presence:update` et `dm:unread` que reçoit un nouveau socket) et `SocketsService.toUser` (out)                                                                                                                                                                                                                                  |
+| `ft_app_info`                          | gauge, toujours 1        | `version` (`APP_VERSION`)                                                                                                                                                                                                             | `main.ts`                                                                                                                                                                                                                                                                                                                                                                                             |
+| Les défauts de Node                    | divers                   | aucun                                                                                                                                                                                                                                 | `collectDefaultMetrics` : lag de l'event loop, heap, GC, `process_*`                                                                                                                                                                                                                                                                                                                                  |
 
 Elles sont toutes dans le registry propre à l'API, donc rien de ce qu'enregistre une dépendance ne fuit dans le
-scrape. La plupart sont définies dans `apps/api/src/metrics/metrics.ts`. Les trois gauges lues au scrape
-(`ft_question_bank_questions`, `ft_users`, `ft_active_users`) sont définies dans
-`apps/api/src/metrics/metrics.collector.ts`, parce qu'elles ont besoin de Prisma. Les sessions sont comptées par
-redis-exporter, pas par l'API, donc l'API ne parcourt jamais Redis.
+scrape. La plupart sont définies dans `apps/api/src/metrics/metrics.ts`. Les six gauges lues au scrape
+(`ft_question_bank_questions`, `ft_users`, `ft_courses`, `ft_achievements`, `ft_friendships`,
+`ft_active_users`) sont définies dans `apps/api/src/metrics/metrics.collector.ts`, parce qu'elles ont
+besoin de Prisma. Les sessions sont comptées par redis-exporter, pas par l'API, donc l'API ne parcourt
+jamais Redis.
 
 `increase()` ne peut pas voir le premier incrément d'un counter quand la série naît à 1. Donc chaque ensemble de
 labels qu'une alerte ou un panel lit existe à 0 dès le départ : `ft_placement_exams_total` et
@@ -411,6 +459,7 @@ labels qu'une alerte ou un panel lit existe à 0 dès le départ : `ft_placement
 `ft_question_restock_failures_total` pour chaque catégorie et chaque raison ; `ft_llm_discussion_limited_total`
 pour chaque limite ; `ft_llm_requests_total` et
 `ft_llm_tokens_total` pour chaque purpose, chaque résultat et chaque type de token du modèle Gemini configuré ;
+`ft_llm_checks_total` pour chaque statut du provider configuré ;
 `ft_ws_events_total` pour chaque événement serveur qui sort et chaque événement client (et `unknown`)
 qui entre, par résultat ;
 et `http_request_duration_seconds` pour les résultats que lit la ligne Auth (`POST` inscription 201,
@@ -428,16 +477,18 @@ down".
 Quatre métriques couvrent la boucle des leçons du Milestone 2. Aucune ne porte un utilisateur, un id de leçon ou un
 id de tentative.
 
-| Question                                           | Requête (Explore, ou un panel)                                                                                                    | Notes                                                                                                                                                                                                             |
-| -------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Combien de leçons sont commencées et finies ?      | `sum by (lang, event) (increase(ft_lesson_attempts_total[1h]))`                                                                   | `started` compte chaque nouvelle tentative, nouvel essai compris ; reprendre une tentative en cours ne compte rien. `completed` compte les tentatives dont la dernière page s'est verrouillée, réussies ou ratées |
-| Combien de tentatives commencées se terminent ?    | `sum(increase(ft_lesson_attempts_total{event="completed"}[24h])) / sum(increase(ft_lesson_attempts_total{event="started"}[24h]))` | Un taux de complétion approximatif : une tentative commencée tard hier et finie aujourd'hui fausse un jour. Aucun panel de dashboard ne le montre encore ; c'est seulement dans Explore                           |
-| Est-ce que le tuteur répond ?                      | `sum by (outcome) (increase(ft_llm_requests_total{purpose="lesson-discussion"}[1h]))`                                             | Le panel Lesson discussion. Vide avec la fixture, où aucune série Gemini n'existe                                                                                                                                 |
-| Est-ce que les apprenants atteignent les limites ? | `sum by (limit) (increase(ft_llm_discussion_limited_total[1h]))`                                                                  | Même panel, `refused: …`. Existe à 0 pour chaque limite dès le départ, avec n'importe quel fournisseur                                                                                                            |
-| Combien coûte le tuteur ?                          | `sum(increase(ft_llm_tokens_total{purpose="lesson-discussion", type="total"}[24h]))`                                              | Les tokens tels que Gemini les indique ; le panel Tokens per hour montre chaque purpose                                                                                                                           |
+| Question                                           | Requête (Explore, ou un panel)                                                                                                    | Notes                                                                                                                                                                                                                                                                                                                           |
+| -------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Combien de leçons sont commencées et finies ?      | `sum by (lang, event) (increase(ft_lesson_attempts_total[1h]))`                                                                   | Le panel Lesson attempts per hour de Learning la montre par événement, pour les langues choisies dans `lang`. `started` compte chaque nouvelle tentative, nouvel essai compris ; reprendre une tentative en cours ne compte rien. `completed` compte les tentatives dont la dernière page s'est verrouillée, réussies ou ratées |
+| Combien de tentatives commencées se terminent ?    | `sum(increase(ft_lesson_attempts_total{event="completed"}[24h])) / sum(increase(ft_lesson_attempts_total{event="started"}[24h]))` | Un taux de complétion approximatif : une tentative commencée tard hier et finie aujourd'hui fausse un jour. Aucun panel de dashboard ne le montre encore ; c'est seulement dans Explore                                                                                                                                         |
+| Est-ce que le tuteur répond ?                      | `sum by (outcome) (increase(ft_llm_requests_total{purpose="lesson-discussion"}[1h]))`                                             | Le panel Lesson discussion. Vide avec la fixture, où aucune série Gemini n'existe                                                                                                                                                                                                                                               |
+| Est-ce que les apprenants atteignent les limites ? | `sum by (limit) (increase(ft_llm_discussion_limited_total[1h]))`                                                                  | Même panel, `refused: …`. Existe à 0 pour chaque limite dès le départ, avec n'importe quel fournisseur                                                                                                                                                                                                                          |
+| Combien coûte le tuteur ?                          | `sum(increase(ft_llm_tokens_total{purpose="lesson-discussion", type="total"}[24h]))`                                              | Les tokens tels que Gemini les indique ; le panel Tokens per hour montre chaque purpose                                                                                                                                                                                                                                         |
 
 `LlmErrorRateHigh` (règle 14) couvre aussi la discussion : elle lit chaque purpose de
-`ft_llm_requests_total`. Aucune règle ne surveille `ft_lesson_attempts_total` ni les limites de discussion : un
+`ft_llm_requests_total`. Un `429` est `rate_limited` quel que soit le quota que nomme Google, donc la règle compte
+une clé dont le quota du jour est dépensé comme une minute chargée ; le log de l'api, ou un **Test connection** sur
+`/profile` (`quota_day` dans `ft_llm_checks_total`), dit lequel. Aucune règle ne surveille `ft_lesson_attempts_total` ni les limites de discussion : un
 apprenant refusé est informé du temps à attendre, c'est le comportement voulu, pas un incident.
 
 ### Exporters et intégrations
@@ -465,8 +516,9 @@ Les règles que suit cette installation :
 1. **Seul caddy publie des ports** (80, 443, 443/udp). Aucun service de monitoring, ni
    `api:9464` ni `caddy:2020`, n'a jamais d'entrée `ports:`. En dev, db et redis publient aussi un
    port sur loopback (`compose.override.yml`). `scripts/check-monitoring-config.sh` vérifie ça sur
-   la config résolue de quatre stacks : dev, l'overlay de prod, le serveur, et le serveur derrière
-   un autre reverse proxy, où aucun service ne publie de port.
+   la config résolue de cinq stacks : dev, l'overlay de prod, le serveur avec le monitoring, le même
+   derrière un autre reverse proxy, où aucun service ne publie de port, et le serveur sans
+   monitoring.
 2. **Caddy route seulement `/grafana` et `/grafana/*` vers la stack de monitoring.** Prometheus et
    Alertmanager n'ont pas de login à eux, donc ils n'ont pas de route non plus. Grafana montre leurs
    règles, alertes et silences derrière son login.
@@ -507,16 +559,18 @@ anonyme et un seul compte. Si ça devient important un jour, la solution est un 
 
 ### Le vérifier à la main
 
-Sur la stack que `make` a lancée (`-k` : le certificat vient de la CA locale de Caddy). Dans le
-devcontainer, utilise `https://caddy` au lieu de `https://localhost`. Depuis l'hôte, ajoute
-`:<HTTPS_PORT>` quand il n'est pas 443, comme sur chaque machine de 42 (section 2) :
+Sur la stack que `make` a lancée (`-k` : le certificat vient de la CA locale de Caddy). La première
+ligne fixe `BASE` : garde `https://caddy` dans le devcontainer. Depuis l'hôte, utilise
+`https://localhost:<HTTPS_PORT>`, comme sur chaque machine de 42 (section 2), ou `https://localhost`
+quand le port est 443 :
 
 ```bash
-curl -sk https://localhost/grafana/api/health                                     # 200, "database": "ok"
-curl -sk -o /dev/null -w '%{http_code}\n' https://localhost/grafana/api/search    # 401
-curl -sk -o /dev/null -w '%{http_code}\n' https://localhost/grafana/metrics       # 404
-curl -sk -o /dev/null -w '%{http_code}\n' https://localhost/api/metrics           # 404
-curl -sk -o /dev/null -w '%{http_code}\n' https://localhost/grafana/login \
+BASE=https://caddy    # inside the devcontainer; from the host: https://localhost:<HTTPS_PORT>
+curl -sk $BASE/grafana/api/health                                                 # 200, "database": "ok"
+curl -sk -o /dev/null -w '%{http_code}\n' $BASE/grafana/api/search                # 401
+curl -sk -o /dev/null -w '%{http_code}\n' $BASE/grafana/metrics                   # 404
+curl -sk -o /dev/null -w '%{http_code}\n' $BASE/api/metrics                       # 404
+curl -sk -o /dev/null -w '%{http_code}\n' $BASE/grafana/login \
   -H 'Content-Type: application/json' -d '{"user":"admin","password":"admin"}'    # 401
 docker ps --format '{{.Names}}\t{{.Ports}}'                                       # only caddy has a ->
 ```
@@ -567,11 +621,12 @@ trois premières.
 
 ### Les vérifications
 
-| Vérification                                           | Tourne dans                             | Prouve                                                                                                                                                                                                                                                                                                                                                                                                          |
-| ------------------------------------------------------ | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `scripts/check-monitoring-config.sh`                   | ci.yml (`monitoring config`), `make ci` | promtool sur la config et les règles, les tests unitaires des règles, amtool sur les deux configs d'Alertmanager et la route Discord, `caddy validate` sur les deux Caddyfiles, le lint des dashboards, les deux entrypoints dans l'image fixée, la règle d'exposition sur quatre stacks (section 6), et les mêmes images et commandes caddy, db, redis et exporters dans `compose.yml` et `compose.deploy.yml` |
-| `scripts/check-monitoring.sh`, `make monitoring-check` | e2e.yml, `make`                         | chaque cible up, chaque règle saine, un Alertmanager trouvé, chaque probe qui réussit, et chaque série qu'une règle ou un panel lit présente. Une métrique mal écrite ne rend pas une règle malsaine ; elle ne correspond simplement à rien, sans rien dire, et seule cette vérification le voit                                                                                                                |
-| `e2e/tests/monitoring.spec.ts`                         | e2e.yml, `make`                         | Grafana à travers Caddy : login seulement, pas d'inscription, 401 pour les lectures anonymes, 404 pour les deux chemins de métriques, les quatre dashboards provisionnés, des données de l'API et de la banque seedée                                                                                                                                                                                           |
+| Vérification                                           | Tourne dans                             | Prouve                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| ------------------------------------------------------ | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `scripts/check-monitoring-config.sh`                   | ci.yml (`monitoring config`), `make ci` | promtool sur la config et les règles, les tests unitaires des règles, amtool sur les deux configs d'Alertmanager et la route Discord, `caddy validate` sur les deux Caddyfiles, le lint des dashboards, les deux entrypoints dans l'image fixée (celui d'Alertmanager démarré deux fois, comme le fait un redémarrage, sur l'entrée tmpfs propre à chaque topologie), la règle d'exposition sur cinq stacks (section 6), les limites de logs sur chaque service du serveur, `compose.deploy.yml` qui se résout seul sans clé Grafana, et les mêmes images et commandes caddy, db, redis et exporters dans `compose.yml` et les fichiers de deploy |
+| `scripts/check-monitoring.sh`, `make monitoring-check` | e2e.yml, `make`                         | chaque cible up, chaque règle saine, un Alertmanager trouvé, chaque probe qui réussit, et chaque série qu'une règle ou un panel lit présente. Une métrique mal écrite ne rend pas une règle malsaine ; elle ne correspond simplement à rien, sans rien dire, et seule cette vérification le voit                                                                                                                                                                                                                                                                                                                                                  |
+| `scripts/check-llm-spend.sh`, `make llm-spend-check`   | `make`                                  | après la suite, une fois que Prometheus a scrapé l'api à nouveau : aucune hausse de `ft_llm_requests_total` ni de `ft_llm_checks_total` sur un vrai provider depuis le début de `make` (la fenêtre s'ouvre un scrape plus tôt, donc sa référence est un échantillon d'avant le début, et un appel juste après le début compte quand même). `make` lance chaque test sur le tuteur fixture sans clé, donc tout appel est une étape qui a dépensé la clé, ou quelqu'un qui utilisait la stack pendant ce temps                                                                                                                                      |
+| `e2e/tests/monitoring.spec.ts`                         | e2e.yml, `make`                         | Grafana à travers Caddy : login seulement, pas d'inscription, 401 pour les lectures anonymes, 404 pour les deux chemins de métriques, les quatre dashboards provisionnés, des données de l'API et de la banque seedée                                                                                                                                                                                                                                                                                                                                                                                                                             |
 
 La vérification statique utilise les validateurs fournis dans les images fixées, donc la vérification et le runtime
 sont d'accord sur la syntaxe. Elle n'affiche jamais une config compose résolue : elle contiendrait ton `.env`.
@@ -580,18 +635,22 @@ sont d'accord sur la syntaxe. Elle n'affiche jamais une config compose résolue 
 
 ## 8. Démo pour l'évaluation
 
-1. `make`. Son étape `run` affiche l'URL de Grafana et comment lire le mot de passe.
+1. `make`, dans le devcontainer. Son étape `run` affiche l'URL de Grafana et comment lire le mot
+   de passe.
 2. `make monitoring-check` affiche les 10 cibles up, chaque règle saine et un Alertmanager.
-3. Ouvre <https://localhost/grafana> et connecte-toi en `admin`. Overview montre chaque stat en vert, la
-   version, et le trafic du lancement Playwright. Learning montre la banque de questions seedée par niveau.
+3. Ouvre <https://localhost/grafana> (ou `https://localhost:<HTTPS_PORT>/grafana`, l'adresse que
+   `make` a affichée) et connecte-toi en `admin`. Overview montre chaque stat en vert, la
+   version, et le trafic du lancement Playwright. Learning montre la banque de questions seedée par
+   niveau et, avec `DEMO_PASSWORD` défini dans `.env` avant l'étape 1, les apprenants de démo dans
+   Accounts, Courses by level, Achievements earned et Friendships.
 4. Montre ce qui n'est pas accessible : les lignes `curl` de la section 6.
 5. `docker compose stop api`. En environ 1,5 minute, les alertes actives d'Overview et Alerting
    montrent `ApiDown`, avec `WebCannotReachApi` muet sur Discord. Si un webhook est défini, Discord reçoit
-   le message.
+   le message, avec le titre `local (<git user.name>): [FIRING:1] ApiDown`.
 6. `docker compose start api`. L'alerte se résout, et Discord reçoit le message de résolution en
    environ 1 à 2 minutes. Dans les 15 minutes qui suivent l'étape 1, `ApiRestarting` (warning) se
-   déclenche aussi quand l'API revient : le test Playwright de redémarrage l'a déjà redémarrée une
-   fois, et ce démarrage est le deuxième.
+   déclenche aussi quand l'API revient, si l'étape 1 ne l'a pas déjà déclenchée :
+   le test Playwright de redémarrage l'a déjà redémarrée une fois, et ce démarrage est le deuxième.
 
 Pour "une petite modification en direct" : change un seuil ou un `for` dans `alerts.yml` et son test, lance
 `./scripts/check-monitoring-config.sh` et `make up`, et montre la règle modifiée sous Alerting.
@@ -618,6 +677,11 @@ match grafana-data" plutôt que de verrouiller ton IP. Après 5 échecs, attends
 **`/grafana` répond 502 avec `make dev`.** Le profil monitoring est éteint, donc `grafana` ne se
 résout pas. `make monitoring-up`.
 
+**`/grafana` répond 503 sur un serveur, avec "Monitoring is not running on this host."** Aucun
+`compose.deploy.monitoring.yml` n'est à côté de `compose.deploy.yml`, donc `grafana` ne se résout pas.
+C'est voulu sur un hôte qui n'a pas la mémoire pour lui, comme la copie Oracle. Sinon,
+[operations/deployment.md](deployment.md), section « Le monitoring sur un serveur ».
+
 **`/grafana` affiche la 404 de l'app web, ou la cible `caddy` est down.** caddy tourne encore avec le
 Caddyfile d'avant le monitoring : Caddy le lit seulement au démarrage, et compose ne recrée pas
 caddy pour un changement dans un fichier monté en bind mount. `docker compose restart caddy`, une fois.
@@ -640,6 +704,21 @@ n'ont pas le suffixe `_total`. Sans conséquence : les valeurs sont justes.
 veut dire que le webhook est vide dans l'environnement qu'a reçu alertmanager. Sinon, regarde
 `AlertNotificationsFailing` et le panel "Notifications sent and failed" sur Infrastructure,
 dont le label `reason` dit pourquoi.
+
+**Un titre Discord n'a pas de source devant.** Depuis `amtool`, c'est normal : il ne passe pas par
+Prometheus. Depuis un serveur, son image Prometheus ou son `compose.deploy.monitoring.yml` date d'avant le
+label `source`. L'image arrive avec la prochaine release. L'ancien fichier ne passe pas `ALERT_SOURCE`, et
+Prometheus retire un label vide : copie le fichier actuel et lance
+`docker compose -f compose.deploy.yml -f compose.deploy.monitoring.yml up -d prometheus`, avec
+`-f compose.deploy.proxy.yml` en plus derrière un proxy placé devant.
+
+**alertmanager redémarre en boucle, et son log dit `can't create /run/alertmanager/discord_webhook: Permission denied`.**
+Seulement avec `DISCORD_WEBHOOK_URL` défini, et seulement après un redémarrage. L'entrée tmpfs du fichier
+compose a perdu son `uid=65534,gid=65534` : un container redémarré trouve le point de montage que son premier
+démarrage a créé, et Docker monte le tmpfs comme appartenant à root, avec le 0755 de ce dossier, alors que
+l'entrypoint tourne en tant que nobody. Sur un serveur, copie le `compose.deploy.monitoring.yml` actuel et lance
+`docker compose -f compose.deploy.yml -f compose.deploy.monitoring.yml up -d alertmanager` :
+compose le recrée parce que le tmpfs a changé.
 
 **Des containers redémarrent sur le serveur, ou `HostMemoryLow` se déclenche.** La mémoire. `free -m` et
 `docker stats --no-stream`, puis [operations/deployment.md](deployment.md), section Mémoire. Chaque service de monitoring

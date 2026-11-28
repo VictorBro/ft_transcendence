@@ -343,7 +343,7 @@ limits stand in for the budget (§5).
 
 | `LLM_PROVIDER` | Placement restock | Lesson discussion | Used by |
 |---|---|---|---|
-| `fixture` (default) | Writes no question: the draw falls back to the oldest question seen | One canned answer, streamed. Special messages (`#fail-midstream`, `#timeout`, `#blocked`) trigger each failure, for the specs | Development, CI, every test |
+| `fixture` (default) | Writes no question: the draw falls back to the oldest question seen | One canned answer, streamed. Special messages (`#fail-midstream`, `#timeout`, `#blocked`, `#quota-day`) trigger each failure, for the specs | Development, CI, every test |
 | `gemini` | One structured call per cell running low | Gemini's answer, streamed | A server with a key |
 | `disabled` | Like the fixture | Every message ends with `error { code: "llm.disabled" }` | A server that runs no LLM at all |
 
@@ -363,8 +363,10 @@ a user id.
 
 **A free key, decided 2026-11-20 (#204).** Verified 2026-08-22: Gemini's free tier allows roughly
 30 requests a minute and 1,500 a day per key. In practice the key refused calls after fewer than 10
-in two minutes, which is why `LLM_DISCUSSION_GLOBAL_PER_MINUTE` defaults to 5 (Google AI Studio
-shows the current quota). On the free tier **Google may use prompts and outputs for
+in two minutes. `LLM_DISCUSSION_GLOBAL_PER_MINUTE` defaults to 10, which needs a quota of at least
+12 a minute (Google AI Studio shows the current quota). If it shows about 5, set the global limit
+to 5 and `LLM_DISCUSSION_USER_PER_MINUTE` to 3.
+On the free tier **Google may use prompts and outputs for
 training and human review**; paid tiers are not used for training. The Privacy Policy says so
 (`/privacy`, section 4), and it is a rejection criterion in its own right. Moving to a paid key,
 a few tens of euros for the whole project at our volume, is therefore a policy change: section 4
@@ -373,7 +375,7 @@ in en, fr and de, and its `lastUpdated`, in the same pull request as the key.
 ### Two call shapes
 
 Structured output and streaming pull in opposite directions: you cannot validate JSON until it
-is complete. The interface resolves it with two methods rather than in every call site. From
+is complete. The interface resolves it with two of its methods rather than in every call site. From
 [apps/api/src/llm/llm.provider.ts](../../apps/api/src/llm/llm.provider.ts), without its comments:
 
 ```ts
@@ -389,6 +391,10 @@ export interface LlmProvider {
   generateStructured<S extends z.ZodType>(request: StructuredRequest<S>): Promise<z.output<S>>;
 
   streamText(request: StreamRequest): AsyncIterable<string>;
+
+  readonly info: TutorInfo;
+
+  check(): Promise<LlmCheck>;
 }
 ```
 
@@ -437,8 +443,8 @@ sequenceDiagram
 1. `LLM_PROVIDER=fixture` in CI and in every unit and e2e test. No test spends money.
 2. **Lessons are authored offline**, with Claude Code on members' own subscriptions
    ([content/lessons.md](../content/lessons.md) §7). The app's key never writes one.
-3. **The discussion's limits**, counted in Redis before any LLM call: per learner 2 a minute and 60
-   a day, and 5 a minute for everyone together, all changeable in `.env`. Over one: 429, with
+3. **The discussion's limits**, counted in Redis before any LLM call: per learner 5 a minute and 150
+   a day, and 10 a minute for everyone together, all changeable in `.env`. Over one: 429, with
    `retryAfter`.
 4. **Capped answers**: 1,000 output tokens, a 500-character message, the last 10 turns.
 5. **Visible spend**: `ft_llm_requests_total`, `ft_llm_tokens_total` and
@@ -456,8 +462,8 @@ test and break §1.2. Their reuse mechanism is the item bank plus per-user exclu
 
 | Where | Against what | How |
 |---|---|---|
-| **Auth endpoints** | Credential stuffing and TOTP brute force | Per address: `LOGIN_LIMIT_PER_MINUTE` (5), `SIGNUP_LIMIT_PER_MINUTE` (20), tighter than the global `RATE_LIMIT_PER_MINUTE` (100) per account or address |
-| **The lesson discussion** | Money, and the shared key's quota | Its own Redis windows, after every 404 and 409 check, so a refused request uses up nothing: `LLM_DISCUSSION_USER_PER_MINUTE` (2), `LLM_DISCUSSION_USER_PER_DAY` (60), `LLM_DISCUSSION_GLOBAL_PER_MINUTE` (5). Each hit counts in `ft_llm_discussion_limited_total{limit}` |
+| **Auth endpoints** | Credential stuffing and TOTP brute force | Per address: `LOGIN_LIMIT_PER_MINUTE` (20), `SIGNUP_LIMIT_PER_MINUTE` (20), tighter than the global `RATE_LIMIT_PER_MINUTE` (100) per account or address |
+| **The lesson discussion** | Money, and the shared key's quota | Its own Redis windows, after every 404 and 409 check, so a refused request uses up nothing: `LLM_DISCUSSION_USER_PER_MINUTE` (5), `LLM_DISCUSSION_USER_PER_DAY` (150), `LLM_DISCUSSION_GLOBAL_PER_MINUTE` (10). Each hit counts in `ft_llm_discussion_limited_total{limit}` |
 | **Socket events** | `dm:send`, `dm:read`. **The HTTP guard does not cover these**: a socket connection is one HTTP upgrade, so a client can emit thousands of events through a single allowed request | The gateway's own screen limits each socket to 20 of each event per 10 s, and each has a budget per account: 30 `dm:send` and 100 `dm:read` a minute ([architecture/realtime.md](realtime.md) §3) |
 | **Public API** | The module *requires* rate limiting | Not claimed ([modules/README.md](../modules/README.md)) |
 

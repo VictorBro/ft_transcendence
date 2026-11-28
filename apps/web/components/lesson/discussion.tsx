@@ -10,10 +10,10 @@ import {
 } from '@ft/shared';
 
 import { FormError, PRIMARY_BUTTON, SECONDARY_BUTTON } from '@/components/form';
-import { sendDiscussion } from '@/lib/discussion-client';
+import { isThinking, sendDiscussion } from '@/lib/discussion-client';
 import { useErrorMessage } from '@/lib/error-message';
 
-import { TutorAnswer } from './tutor-answer';
+import { TutorAnswer, TutorThinking } from './tutor-answer';
 
 /** One earlier turn: the learner's or the tutor's. */
 type DiscussionTurn = LessonDiscussionInput['history'][number];
@@ -77,6 +77,8 @@ export function Discussion({
   }, [waitUntil]);
 
   const streaming = asking !== null && asking.error === null;
+  // Sent, and no word of the answer yet: the dots, announced once.
+  const thinking = isThinking(asking);
   const waiting = waitUntil !== null;
   const busy = streaming || waiting;
 
@@ -194,7 +196,7 @@ export function Discussion({
         // Busy while the answer comes: a screen reader reads it once, whole.
         <ol className="flex flex-col gap-3" aria-live="polite" aria-busy={streaming}>
           {shown.map((turn, n) =>
-            // The answer not started yet: nothing to show but Stop.
+            // The answer not started yet: the dots after the list stand in for it.
             turn.text === '' ? null : (
               <li
                 key={n}
@@ -221,8 +223,20 @@ export function Discussion({
               </li>
             ),
           )}
+          {/* Where the answer will start: seen only, announced by the region below. */}
+          {thinking ? <TutorThinking /> : null}
         </ol>
       ) : null}
+
+      {/*
+        Always there, so a screen reader announces its text when it comes; outside
+        the list, which is aria-busy while the answer comes. aria-live, not
+        role="status": the 429 countdown keeps the region's one status role.
+        Emptied at the first word: said once a message, never once a piece.
+      */}
+      <p aria-live="polite" className="sr-only" data-slot="tutor-thinking-status">
+        {thinking ? t('tutorThinking') : ''}
+      </p>
 
       {asking?.error ? (
         <div className="flex flex-wrap items-center gap-3">

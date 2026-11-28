@@ -24,6 +24,9 @@ import {
   SubmitAnswerSchema,
   SUPPORTED_LOCALES,
   TimeZoneSchema,
+  TUTOR_CHECK_STATUSES,
+  TutorCheckSchema,
+  TutorCheckStatusSchema,
   UpdateProfileSchema,
   UserIdInputSchema,
   UserSchema,
@@ -103,6 +106,67 @@ describe('HealthResponseSchema', () => {
         checkedAt: '2026-08-01T10:00:00.000Z',
       }).success,
     ).toBe(false);
+  });
+});
+
+describe('TutorCheckSchema', () => {
+  const fixture = {
+    provider: 'fixture',
+    model: null,
+    status: 'fixture',
+    latencyMs: null,
+    httpStatus: null,
+    retryAt: null,
+    checkedAt: new Date().toISOString(),
+  };
+  const working = {
+    ...fixture,
+    provider: 'gemini',
+    model: 'gemini-3.6-flash',
+    status: 'ok',
+    latencyMs: 171,
+    httpStatus: 200,
+  };
+
+  it('accepts a check that made no call, and one Google answered', () => {
+    expect(TutorCheckSchema.parse(fixture)).toEqual(fixture);
+    expect(TutorCheckSchema.parse(working)).toEqual(working);
+  });
+
+  it("accepts the quota of the day, with or without Google's time", () => {
+    const day = { ...working, status: 'quota_day', httpStatus: 429 };
+
+    expect(TutorCheckSchema.parse({ ...day, retryAt: '2026-11-28T08:00:00.000Z' })).toEqual({
+      ...day,
+      retryAt: '2026-11-28T08:00:00.000Z',
+    });
+    expect(TutorCheckSchema.parse({ ...day, retryAt: null }).retryAt).toBeNull();
+  });
+
+  it.each([
+    ['an unknown status', { status: 'broken' }],
+    ['an unknown provider', { provider: 'openai' }],
+    ['a negative latency', { latencyMs: -1 }],
+    ['a latency that is not whole', { latencyMs: 1.5 }],
+    ['a number that is no HTTP status', { httpStatus: 42 }],
+    ['an empty model', { model: '' }],
+    ['a retryAt that is no date', { retryAt: 'tomorrow' }],
+    ['no retryAt', { retryAt: undefined }],
+  ])('rejects %s', (_, change) => {
+    expect(TutorCheckSchema.safeParse({ ...working, ...change }).success).toBe(false);
+  });
+
+  // The web's sentences and hints are keyed by this list (apps/web/lib/messages.test.ts).
+  it('lists every status in TUTOR_CHECK_STATUSES', () => {
+    expect(TutorCheckStatusSchema.options).toEqual([...TUTOR_CHECK_STATUSES]);
+  });
+});
+
+describe('ERROR_CODES', () => {
+  // The discussion's error event tells the two quotas apart (discussion.controller.ts).
+  it('has a code for the quota of the minute and one for the quota of the day', () => {
+    expect(isErrorCode('llm.rateLimited')).toBe(true);
+    expect(isErrorCode('llm.quotaExhausted')).toBe(true);
   });
 });
 

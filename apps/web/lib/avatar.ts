@@ -14,7 +14,7 @@ export function avatarHue(name: string): number {
 
 /**
  * Spread over code points, not sliced by index: display names allow any unicode
- * letter, and an emoji or CJK character is two code units.
+ * letter, and an emoji (or any character outside the BMP) is two code units.
  */
 export function avatarInitial(name: string): string {
   return [...name][0]?.toUpperCase() ?? '?';

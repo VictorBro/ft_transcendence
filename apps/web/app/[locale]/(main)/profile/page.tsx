@@ -4,6 +4,7 @@ import { getLocale, getTranslations } from 'next-intl/server';
 import { requireUser } from '@/lib/session';
 import { Link } from '@/i18n/navigation';
 import { Avatar } from '@/components/avatar';
+import { TutorCheck } from '@/components/tutor-check';
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('ProfilePage');
@@ -40,6 +41,17 @@ export default async function ProfilePage() {
         <Link href="/settings/2fa" className="text-sm underline underline-offset-4">
           {t('twoFactorAuthentication')}
         </Link>
+      </section>
+
+      <section
+        aria-labelledby="tutor-heading"
+        className="flex flex-col gap-3 border-t border-slate-800 pt-8"
+      >
+        <h2 id="tutor-heading" className="text-lg font-medium">
+          {t('tutor')}
+        </h2>
+        <p className="text-sm text-slate-300">{t('tutorPrompt')}</p>
+        <TutorCheck />
       </section>
     </div>
   );

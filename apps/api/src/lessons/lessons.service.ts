@@ -446,7 +446,7 @@ export class LessonsService {
 
   /**
    * Finishes a lesson with a given score, for the demo replay of #85 only
-   * (the seed, dev only): no route calls it. One transaction under the course
+   * (the seed, when DEMO_PASSWORD is set): no route calls it. One transaction under the course
    * lock, then applyFinish.
    */
   finish(user: SessionUser, lang: Language, id: LessonId, score: number, now: Date) {

@@ -6,6 +6,15 @@ import { Prisma, PrismaClient } from '../src/generated/prisma/client';
 import { ItemFileSchema, LessonOutlineFileSchema, lessons, PasswordSchema } from '@ft/shared';
 import { PrismaService } from '../src/prisma/prisma.service';
 
+/**
+ * Each seed write is one batch transaction of thousands of upserts. Prisma's
+ * defaults (2 s to start one, 5 s to run it) are sized for a request, not for
+ * this: on the 1 GB Oracle host, with the old stack still up and swapping, a
+ * database round-trip took ~1.7 s and the seed failed every deploy with P2028
+ * "Unable to start a transaction in the given time" (Nov 2026).
+ */
+export const SEED_TRANSACTION = { maxWait: 60_000, timeout: 600_000 } as const;
+
 export function findContentDir(kind: 'items' | 'lessons' | 'outlines'): string {
   const candidateFromRoot = resolve(process.cwd(), 'content', kind);
   if (existsSync(candidateFromRoot)) {
@@ -79,7 +88,7 @@ export async function seedQuestionBank(dir: string, prisma: PrismaClient): Promi
     }
   }
 
-  await prisma.$transaction(operations);
+  await prisma.$transaction(operations, SEED_TRANSACTION);
   return operations.length;
 }
 
@@ -245,28 +254,31 @@ export async function seedLessons(contentDir: string, prisma: PrismaClient): Pro
     })
     .map((row) => row.id);
 
-  await prisma.$transaction([
-    ...writes.map(({ content, ...fields }) => {
-      const row = { ...fields, content: content ?? Prisma.DbNull };
-      return prisma.lesson.upsert({ where: { id: row.id }, create: row, update: row });
-    }),
-    ...(edited.length > 0
-      ? [
-          prisma.lessonAttempt.deleteMany({
-            where: { lessonId: { in: edited }, completedAt: null },
-          }),
-        ]
-      : []),
-  ]);
+  await prisma.$transaction(
+    [
+      ...writes.map(({ content, ...fields }) => {
+        const row = { ...fields, content: content ?? Prisma.DbNull };
+        return prisma.lesson.upsert({ where: { id: row.id }, create: row, update: row });
+      }),
+      ...(edited.length > 0
+        ? [
+            prisma.lessonAttempt.deleteMany({
+              where: { lessonId: { in: edited }, completedAt: null },
+            }),
+          ]
+        : []),
+    ],
+    SEED_TRANSACTION,
+  );
   return writes.length;
 }
 
-/** Null when the demo learners should be seeded, else why not. */
+/**
+ * Null when the demo learners should be seeded, else why not. DEMO_PASSWORD
+ * alone decides, in a checkout (`make seed`) and on a server (the migrate
+ * service of compose.deploy.yml) alike: NODE_ENV plays no part.
+ */
 export function demoSkipReason(env: NodeJS.ProcessEnv): string | null {
-  // An allowlist: the public server seeds with only DATABASE_URL, NODE_ENV unset.
-  if (env.NODE_ENV !== 'development') {
-    return `NODE_ENV is ${env.NODE_ENV ?? 'unset'}, not development`;
-  }
   // Every .env has the key (make env-file adds it empty), so empty means skip.
   if ((env.DEMO_PASSWORD ?? '').trim() === '') {
     return 'DEMO_PASSWORD is empty';
@@ -308,8 +320,10 @@ if (require.main === module) {
         console.log(`demo learners skipped: ${skip}`);
         return;
       }
-      // Loaded here only, so the public server never even reads the demo code.
+      // Loaded here only: a seed without DEMO_PASSWORD never reads the demo code.
       const { seedDemo } = await import('../src/demo/demo');
+      // A learner that fails is logged and skipped, never a failed seed: on a
+      // server this seed runs before every release (infra/deploy/deploy.sh).
       await seedDemo(prisma, { runNow: new Date(), password });
     })
     .catch((err) => {

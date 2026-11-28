@@ -30,6 +30,10 @@ async function main() {
     return;
   }
   const categories = picked.data.length > 0 ? picked.data : QUESTION_CATEGORIES;
+  // .env holds no DATABASE_URL: compose and make build it from POSTGRES_*, and a
+  // devcontainer shell has none exported. The same URL, with compose's defaults,
+  // `||` because compose's `:-` replaces an empty value too.
+  process.env.DATABASE_URL ??= `postgresql://${process.env.POSTGRES_USER || 'ft'}:${process.env.POSTGRES_PASSWORD || 'ft_local_dev'}@db:5432/${process.env.POSTGRES_DB || 'ft_transcendence'}?schema=public`;
   const prisma = new PrismaService();
   const stock = new QuestionStockService(prisma, createLlmProvider(process.env));
 

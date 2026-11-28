@@ -453,6 +453,7 @@ flowchart TD
   ET --> CNT["Countdown"]
   LP --> DIS["Discussion (page de discussion)"]
   DIS --> TA["TutorAnswer (Markdown)"]
+  DIS --> TT["TutorThinking (points avant le premier mot)"]
   LP --> IT["Item × n"]
   IT --> REG{"ITEM_RENDERERS[item.type]"}
   REG --> GR["composants grammaire"]
@@ -1138,6 +1139,18 @@ Il y a trois questions suggérées (explique mes erreurs, un résumé, un exempl
 
 La liste des réponses a `aria-live="polite"` et `aria-busy={streaming}` : un lecteur d'écran attend que la réponse soit complète et la lit une seule fois.
 
+#### Pendant que le tuteur réfléchit
+
+Entre l'envoi et le premier mot, il n'y a pas encore de réponse à montrer. Avec Gemini, ça prend souvent plusieurs secondes, parfois plus d'une minute (le timeout est de 90 s). Pendant ce temps, la page montre trois points là où la réponse va commencer, et dit à un lecteur d'écran « Le tuteur réfléchit… » (« The tutor is thinking… » en anglais).
+
+Il n'y a pas de nouveau state pour ça. `thinking = isThinking(asking)` (de `discussion-client.ts`) se lit dans `asking` : présent, sans erreur, et avec une réponse encore `''`. Un heartbeat ou un morceau vide n'y met pas fin. Le premier mot y met fin. Stop, un 409, un 429, une erreur et la fin de la réponse aussi, parce que chacun met `asking` à `null` ou remplit son erreur.
+
+- **Vu :** `TutorThinking` (dans `tutor-answer.tsx`) est le dernier élément de la liste tant que `thinking` est vrai. C'est une petite bulle arrondie à gauche, avec trois points. Les points rebondissent seulement sous `motion-safe:`, donc ils restent immobiles pour un apprenant qui a demandé moins de mouvement. La bulle est `aria-hidden` et n'a pas de `data-turn` : ce n'est pas un tour, et les tests navigateur comptent les tours.
+- **Entendu :** un `<p aria-live="polite" className="sr-only">` après la liste contient `t('tutorThinking')` tant que `thinking` est vrai, et rien sinon. Il est toujours sur la page, parce qu'un lecteur d'écran annonce plus sûrement une région live déjà là qu'une région ajoutée avec son texte. Il est hors de la liste, qui est `aria-busy` pendant que la réponse arrive. Il utilise `aria-live`, pas `role="status"` : le compte à rebours du 429 garde le seul rôle status de la section. Son texte part au premier mot, donc il est dit une fois par message, pas une fois par morceau.
+- Les points s'affichent tout de suite, sans délai. Sur la fixture, ils durent environ 50 ms. Avec Gemini, ils durent jusqu'au premier mot du modèle.
+
+Testé dans `lib/discussion-client.test.ts` (`isThinking` à travers un heartbeat, un morceau vide et le premier mot), `components/lesson/discussion.test.tsx` (la région live vide est sur la page avant tout message, sans points et sans `role="status"`), `tutor-answer.test.tsx` (les points), et `e2e/tests/discussion.spec.ts` (les points et leur texte pendant qu'une requête retenue attend ; plus de points après Stop, une réponse, une erreur ou un 429).
+
 ### Séquence : poser une question au tuteur
 
 ```mermaid
@@ -1150,6 +1163,7 @@ sequenceDiagram
   L->>D: tape une question, appuie sur Entrée
   D->>D: LessonDiscussionSchema.safeParse
   D->>C: ask(body, onText, signal)
+  D-->>L: trois points, "Le tuteur réfléchit…" (jusqu'au premier mot)
   C->>API: POST /discussion (accept: text/event-stream)
   alt refusé avant le stream
     API-->>C: erreur JSON 409 / 429
@@ -1189,7 +1203,9 @@ Le modèle écrit du Markdown (gras, listes, titres, tableaux). `TutorAnswer` le
 - `components` associe chaque élément Markdown à un élément stylé. Les titres deviennent un `<p>` en gras (la page a déjà son propre `<h1>`). Les tableaux reçoivent une enveloppe qui défile pour les téléphones. Les liens externes s'ouvrent dans un nouvel onglet avec `rel="noopener noreferrer nofollow"`.
 - `cut` : une réponse arrêtée par une erreur finit par « … » sur son dernier bloc.
 
-`tutor-answer.test.tsx` le rend en HTML statique et vérifie qu'il ne reste aucun `*` ou `#`, que les tableaux et le texte barré s'affichent, que les liens s'ouvrent dans un nouvel onglet (les liens de notes de bas de page restent), que le HTML brut, les images et les liens `javascript:` ne passent jamais, et qu'une réponse coupée finit par « … ».
+Le même fichier contient `TutorThinking`, les trois points montrés avant le premier mot (voir « Pendant que le tuteur réfléchit » plus haut). Ses noms de classes sont écrits en entier, parce que Tailwind ne trouve les classes que dans des chaînes littérales.
+
+`tutor-answer.test.tsx` le rend en HTML statique et vérifie qu'il ne reste aucun `*` ou `#`, que les tableaux et le texte barré s'affichent, que les liens s'ouvrent dans un nouvel onglet (les liens de notes de bas de page restent), que le HTML brut, les images et les liens `javascript:` ne passent jamais, et qu'une réponse coupée finit par « … ». Pour `TutorThinking`, il vérifie les trois points, que la bulle est `aria-hidden`, qu'ils rebondissent seulement sous `motion-safe:`, et qu'il n'y a pas de `data-turn`.
 
 ---
 

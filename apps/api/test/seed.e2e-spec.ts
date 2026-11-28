@@ -713,24 +713,28 @@ describe('seedLessons (e2e)', () => {
 describe('demoSkipReason', () => {
   const PASSWORD = 'Correct-Horse-9';
 
-  it('seeds them on development with a password', () => {
+  it('seeds them in a checkout: make seed hands .env over, NODE_ENV development', () => {
     expect(demoSkipReason({ NODE_ENV: 'development', DEMO_PASSWORD: PASSWORD })).toBeNull();
   });
 
-  // An allowlist: the deploy's migrate service seeds with only DATABASE_URL.
-  it('skips them when NODE_ENV is unset, like on the public server', () => {
-    expect(demoSkipReason({ DATABASE_URL: 'postgresql://x', DEMO_PASSWORD: PASSWORD })).toBe(
-      'NODE_ENV is unset, not development',
-    );
+  // The deploy's migrate service passes DATABASE_URL and DEMO_PASSWORD, nothing else.
+  it('seeds them on a server, NODE_ENV unset', () => {
+    expect(demoSkipReason({ DATABASE_URL: 'postgresql://x', DEMO_PASSWORD: PASSWORD })).toBeNull();
   });
 
-  it.each(['production', 'test', 'Development', ''])('skips them when NODE_ENV is "%s"', (env) => {
-    expect(demoSkipReason({ NODE_ENV: env, DEMO_PASSWORD: PASSWORD })).toMatch(/not development$/);
+  it.each(['production', 'test', 'Development', ''])('ignores NODE_ENV "%s"', (env) => {
+    expect(demoSkipReason({ NODE_ENV: env, DEMO_PASSWORD: PASSWORD })).toBeNull();
   });
 
   // Every .env has the key, empty by default: empty is a skip, never a failure.
   it.each([undefined, '', '   '])('skips them when DEMO_PASSWORD is %j', (password) => {
     expect(demoSkipReason({ NODE_ENV: 'development', DEMO_PASSWORD: password })).toBe(
+      'DEMO_PASSWORD is empty',
+    );
+  });
+
+  it('skips them without a password, NODE_ENV unset, like a server without one', () => {
+    expect(demoSkipReason({ DATABASE_URL: 'postgresql://x', DEMO_PASSWORD: '' })).toBe(
       'DEMO_PASSWORD is empty',
     );
   });

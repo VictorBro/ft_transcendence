@@ -1,6 +1,7 @@
 import { Logger } from '@nestjs/common';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
+import { DAY_QUOTA_BODY } from '../../test/gemini.fixtures';
 import { seriesValue } from '../../test/metrics.fixtures';
 import { llmRequestDuration, llmRequests, llmTokens, registry } from '../metrics/metrics';
 import { GeminiProvider } from './gemini.provider';
@@ -260,6 +261,20 @@ describe('GeminiProvider.streamText', () => {
 
     expect(pieces).toEqual([]);
     expect(error).toMatchObject({ message: `Gemini ${status}: quota exceeded`, reason, retryable });
+  });
+
+  it('fails before any text on a 429 for the quota of the day, saying so', async () => {
+    fetchMock.mockResolvedValueOnce(new Response(JSON.stringify(DAY_QUOTA_BODY), { status: 429 }));
+
+    const { pieces, error } = await read(provider.streamText(request()));
+
+    expect(pieces).toEqual([]);
+    expect(error).toBeInstanceOf(LlmError);
+    expect(error).toMatchObject({
+      reason: 'rate_limited',
+      retryable: false,
+      quota: { scope: 'day', retryAfterS: 48_933 },
+    });
   });
 
   it('fails as unreachable when Gemini cannot be reached', async () => {

@@ -14,8 +14,9 @@ yarn-error.log*
 lerna-debug.log*
 
 # dotenv environment variable files. The wildcard is for the copies tools make
-# next to it (.env.bak from make, .env.tmp.<pid> from .devcontainer/
-# initialize.sh): each holds every secret in .env.
+# next to it (.env.bak from scripts/align-env.sh, .env.tmp.<pid> from
+# .devcontainer/initialize.sh, .env.align.<pid> from align-env.sh): each holds
+# every secret in .env.
 .env
 .env.*
 !.env.example

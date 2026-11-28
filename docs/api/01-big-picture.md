@@ -138,6 +138,7 @@ The code in [apps/api/src](../../apps/api/src) is split into **modules** (sectio
 | [question-generation/](../../apps/api/src/question-generation) | `QuestionGenerationModule` | Writes new placement questions with the LLM when the stock runs low | none (used by placement) |
 | [placement/](../../apps/api/src/placement) | `PlacementModule` | The placement exam that finds your level | `/api/placement`, `/api/placement/answers` |
 | [lessons/](../../apps/api/src/lessons) | `LessonsModule` | Today's lesson, the lesson list, one lesson, achievements, attempts (answering pages), XP, the AI tutor discussion | `/api/courses/:lang/today`, `.../lessons`, `.../lessons/:id`, `.../achievements`, `.../lessons/:id/attempt`, `.../attempt/pages/:index`, `.../lessons/:id/discussion` |
+| [tutor/](../../apps/api/src/tutor) | `TutorModule` | What the AI tutor runs on (provider and model), and a test of the server's LLM key | `GET /api/tutor`, `POST /api/tutor/check` |
 | [gateway/](../../apps/api/src/gateway) | `GatewayModule` | The socket.io server on `/ws`; `SocketsService` lets other modules push events to a user | WebSocket `/ws` |
 | [presence/](../../apps/api/src/presence) | `PresenceModule` | Who is online right now (kept in Redis) | none |
 | [friends/](../../apps/api/src/friends) | `FriendsModule` | Friend list, send, accept, refuse requests, remove a friend | `/api/friends`, `/api/friends/requests/:userId`, `.../accept`, `/api/friends/:userId` |

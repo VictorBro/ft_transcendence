@@ -61,10 +61,11 @@ const SIGNUPS: Budget = {
 
 /**
  * Only auth.spec.ts signs in through the form, three times per browser: nine
- * on one stack under `make playwright-all`, against a default limit of five.
+ * on one stack under `make playwright-all`, against a default limit of twenty,
+ * so the queue only waits when .env sets a lower one.
  */
 const LOGINS: Budget = {
-  perWindow: perMinute('LOGIN_LIMIT_PER_MINUTE', 5),
+  perWindow: perMinute('LOGIN_LIMIT_PER_MINUTE', 20),
   log: join(tmpdir(), 'ft-e2e-logins.json'),
 };
 
@@ -74,7 +75,7 @@ const LOGINS: Budget = {
  * every learner of the run counts against it, whatever their address.
  */
 const DISCUSSIONS: Budget = {
-  perWindow: perMinute('LLM_DISCUSSION_GLOBAL_PER_MINUTE', 5),
+  perWindow: perMinute('LLM_DISCUSSION_GLOBAL_PER_MINUTE', 10),
   log: join(tmpdir(), 'ft-e2e-discussions.json'),
 };
 

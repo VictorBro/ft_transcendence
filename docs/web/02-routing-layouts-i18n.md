@@ -350,14 +350,25 @@ sees the items in one row instead. Chapter 3 explains them.
 account frame:
 
 ```tsx
-export default function MainLayout({ children }: { children: ReactNode }) {
+export default async function MainLayout({ children }: { children: ReactNode }) {
+  const user = await currentUser();
+
   return (
-    <Shell brand={<Wordmark />} nav={<HeaderNav />} footer={<LegalFooter />}>
+    <Shell
+      brand={<Wordmark href={user === null ? '/' : '/learn'} />}
+      nav={<HeaderNav />}
+      footer={<LegalFooter />}
+    >
       {children}
     </Shell>
   );
 }
 ```
+
+The wordmark follows the session, as in the other shells (#224): a signed-in user goes back to
+`/learn`, a visitor to `/`. The comment says this costs nothing: `HeaderNav` already reads the
+session, and `loadSession` is cached per render, so it adds no lookup and makes no page dynamic
+that was not already.
 
 **[(messages)/layout.tsx](<../../apps/web/app/[locale]/(messages)/layout.tsx>)** — the same, but
 with `fill` and the logo going to `/learn`. The comment explains why it has no course switcher:
@@ -463,8 +474,11 @@ passed), because the session lookup is exactly what failed.
 Files: [not-found.tsx](<../../apps/web/app/[locale]/not-found.tsx>),
 [[...rest]/page.tsx](<../../apps/web/app/[locale]/[...rest]/page.tsx>)
 
-`not-found.tsx` draws the translated 404, with a "Go home" link and the legal footer. It has no
-account nav: reading cookies would make every 404 a dynamic (non-cached) render.
+`not-found.tsx` draws the translated 404, with a "Go home" link and the legal footer. It reads
+the session, so both links home (the wordmark and "Go home") lead a signed-in user to `/learn` and
+a visitor to `/` (#224). The comment says this makes every 404 a dynamic (non-cached) render, on
+purpose: a link home that throws a signed-in user out is worth more than a static 404. It passes
+no `nav`, so the 404 has no account links.
 
 But Next.js only uses this file when a page *calls* `notFound()`. A URL that matches nothing
 would fall to the default Next.js 404, which sits above `[locale]`, so it is in English and has
@@ -690,7 +704,7 @@ Files: [en.json](../../apps/web/messages/en.json), [fr.json](../../apps/web/mess
 [de.json](../../apps/web/messages/de.json)
 
 Each file is one JSON object. The top-level keys are **namespaces**: usually one per component or
-page. Inside are the keys. All three files have the same 37 namespaces and the same keys.
+page. Inside are the keys. All three files have the same 38 namespaces and the same keys.
 
 | Namespace | Keys | Used by |
 | --- | --- | --- |
@@ -710,17 +724,18 @@ page. Inside are the keys. All three files have the same 37 namespaces and the s
 | `NotFoundPage` | 4 | `not-found.tsx` |
 | `LoginPage`, `LoginForm` | 1, 8 | log in |
 | `SignUpPage`, `SignUpForm` | 1, 9 | sign up |
-| `Form` | 1 | shared form text |
+| `Form` | 2 | shared form text |
 | `Errors` | 19 (18 groups + `unknown`) | API error codes as sentences |
 | `LogOutButton` | 2 | sign out |
 | `Connection` | 1 | "Reconnecting…" pill |
 | `LegalArticle` | 1 | privacy and terms |
-| `ProfilePage`, `ProfileForm` | 7, 8 | profile |
-| `FriendsPage` | 24 | friends |
+| `ProfilePage`, `ProfileForm` | 9, 8 | profile |
+| `FriendsPage` | 25 | friends |
 | `UserPage` | 4 | another user's page |
 | `TwoFactorPage`, `TwoFactorPanel` | 2, 17 | 2FA settings |
+| `TutorCard` | 10 | AI tutor section of /profile |
 | `Placement` | 30 | placement exam |
-| `Lesson` | 125 | lesson player |
+| `Lesson` | 126 | lesson player |
 | `Genders` | 3 | grammar genders |
 | `LessonKinds` | 4 | grammar, vocabulary... |
 | `Gamification` | 42 | XP, ranks, achievements |

@@ -2,13 +2,17 @@ import type { Language, SessionUser } from '@ft/shared';
 
 import { AuthService } from '../auth/auth.service';
 import { CoursesService } from '../courses/courses.service';
+import { pairKey } from '../friends/pair';
 import { SocketsService } from '../gateway/sockets.service';
+import type { Prisma } from '../generated/prisma/client';
 import { LessonsService } from '../lessons/lessons.service';
 import type { RuleLesson } from '../lessons/roadmap.rules';
 import { PrismaService } from '../prisma/prisma.service';
 import { activeDay } from '../users/active-day';
 import {
-  DEMO_EMAIL_FILTER,
+  DEMO_EMAILS,
+  DEMO_FRIENDSHIPS,
+  DEMO_MESSAGES,
   DEMO_PROFILES,
   type DemoCourse,
   type DemoProfile,
@@ -19,9 +23,11 @@ import { planCourse } from './demo.planner';
 
 /*
  * The demo learners (#85), replayed through the real services day by day
- * with an injected clock. Never progress rows written by hand: finish and
- * setLevel decide every streak and result, so the learners follow every
- * rule, and whatever finish gains later (XP, #95) they gain too.
+ * with an injected clock. Never progress rows written by hand: finish,
+ * setLevel and setGoal decide every streak and result, so the learners
+ * follow every rule, and whatever finish gains later (XP, #95) they gain too.
+ * Their friendships and messages are rows (seedDemoSocial): nothing derives
+ * from them.
  *
  * Runs in the seed, under tsx, so outside Nest: the services are built by
  * hand. This file is in src/, so a service that gains a dependency fails the
@@ -44,6 +50,9 @@ export type DemoServices = {
 /** Who the replay signs up: the demo learners in the seed, replay-<stamp> in the e2e spec. */
 export type DemoIdentity = { email: string; displayName: string; password: string };
 
+/** One learner to build: who signs up, and the story they replay. */
+export type DemoLearner = { identity: DemoIdentity; profile: DemoProfile };
+
 /**
  * The level's ready lessons as the rules see them, in order: the plan offers
  * no other (#84), so "every lesson attempted" means every ready one.
@@ -60,9 +69,9 @@ function levelLessons(prisma: PrismaService, course: DemoCourse): Promise<RuleLe
 }
 
 /**
- * One course, from its creation to today. Each day: its level switches, then
- * the lessons today's page proposes (then its extra), as many as the plan
- * finishes that day.
+ * One course, from its creation to today. Each day: its level switches, its
+ * goal change, then the lessons today's page proposes (then its extra), as
+ * many as the plan finishes that day.
  *
  * One read of today a day is enough: a lesson finished today leaves the
  * queue and the others keep their order, so the first N ids are the ones a
@@ -87,14 +96,17 @@ async function replayCourse(
     for (const switchTo of day.switches) {
       await courses.setLevel(user.id, lang, { level: switchTo });
     }
+    if (day.goal !== null) {
+      await courses.setGoal(user, lang, { dailyGoal: day.goal.dailyGoal }, day.goal.at);
+    }
     // No finish, no read: a course without a level would answer 409.
     if (day.finishes.length === 0) {
       continue;
     }
 
-    // Only ready lessons are offered (#84), and until #91 to #93 only French
-    // A1 has any: an extra course on another level finishes what its level
-    // offers, often nothing, rather than failing the seed.
+    // Only ready lessons are offered (#84): 12 a level in content/, none on a
+    // database without lessons. A course finishes what its level offers
+    // rather than failing the seed.
     const today = await lessons.today(user.id, lang, user.timeZone, day.finishes[0].at);
     const offered = [...today.proposed, ...today.extra];
     for (const [i, finish] of day.finishes.slice(0, offered.length).entries()) {
@@ -105,14 +117,15 @@ async function replayCourse(
 
 /**
  * Builds one learner: signs up, sets the time zone, replays each course in
- * the profile's order. Deletes nothing: the caller clears the old ones.
+ * the profile's order. Returns the user's id. Deletes nothing: the caller
+ * clears the old ones.
  */
 export async function replayLearner(
   services: DemoServices,
   identity: DemoIdentity,
   profile: DemoProfile,
   runNow: Date,
-): Promise<void> {
+): Promise<string> {
   const created = await services.auth.signUp(identity);
   await services.prisma.user.update({
     where: { id: created.id },
@@ -129,12 +142,110 @@ export async function replayLearner(
   for (const course of profile.courses) {
     await replayCourse(services, user, course, runNow);
   }
+  return user.id;
+}
+
+/**
+ * Builds each learner in turn, and returns the ids of those built by profile
+ * name. One that fails is logged and skipped, and whatever of it was written
+ * is deleted: on a server the seed runs before every release
+ * (infra/deploy/deploy.sh), and a demo learner must never block one (only a DEMO_PASSWORD
+ * that fails the signup rules does, in seed.ts, before any write). Two
+ * known causes: auth.identityTaken, when an account outside the demo emails
+ * holds demo.<name>, and P2028 on a host too slow for the replay's
+ * transactions.
+ */
+export async function buildLearners(
+  services: DemoServices,
+  learners: DemoLearner[],
+  runNow: Date,
+): Promise<Map<string, string>> {
+  const ids = new Map<string, string>();
+  for (const { identity, profile } of learners) {
+    try {
+      ids.set(profile.name, await replayLearner(services, identity, profile, runNow));
+    } catch (err) {
+      console.error(`demo learner ${identity.email} skipped:`, err);
+      // By its email alone: the signup may have gone through before the
+      // replay failed. Should this fail too, the next seed deletes it.
+      await services.prisma.user
+        .deleteMany({ where: { email: identity.email } })
+        .catch((cleanup: unknown) => console.error(`${identity.email} not deleted:`, cleanup));
+    }
+  }
+  return ids;
+}
+
+/**
+ * The friendships, requests and messages between the learners built (`ids`,
+ * by profile name), in one transaction. Rows, not FriendsService and
+ * MessagesService: nothing derives from them, and the services would stamp
+ * the real time, want Redis for presence and spend a rate limit. A row with a
+ * skipped learner on either side is left out. Keys and conversations are
+ * built as MessagesService.send builds them: pairKey, the smaller id first.
+ */
+export async function seedDemoSocial(
+  prisma: PrismaService,
+  ids: ReadonlyMap<string, string>,
+  runNow: Date,
+): Promise<void> {
+  const at = (minutesAgo: number) => new Date(runNow.getTime() - minutesAgo * 60_000);
+  const between = <T extends { from: string; to: string }>(rows: T[]) =>
+    rows.flatMap((row) => {
+      const from = ids.get(row.from);
+      const to = ids.get(row.to);
+      return from === undefined || to === undefined ? [] : [{ ...row, from, to }];
+    });
+
+  const friendships = between(DEMO_FRIENDSHIPS).map(({ from, to, status }) => ({
+    pairKey: pairKey(from, to),
+    requesterId: from,
+    addresseeId: to,
+    status,
+  }));
+  const sent = between(DEMO_MESSAGES);
+  const messages = sent.map(({ from, to, minutesAgo, read, text }) => ({
+    pairKey: pairKey(from, to),
+    senderId: from,
+    text,
+    createdAt: at(minutesAgo),
+    readAt: read ? at(minutesAgo - 1) : null,
+  }));
+  // One conversation a pair, from its first message to its last.
+  const conversations = new Map<string, Prisma.ConversationCreateManyInput>();
+  for (const { from, to, minutesAgo } of sent) {
+    const key = pairKey(from, to);
+    const [userAId, userBId] = [from, to].sort();
+    const last = at(minutesAgo);
+    const first = conversations.get(key)?.createdAt ?? last;
+    conversations.set(key, {
+      pairKey: key,
+      userAId,
+      userBId,
+      createdAt: first,
+      lastMessageAt: last,
+    });
+  }
+
+  await prisma.$transaction([
+    prisma.friendship.createMany({ data: friendships }),
+    prisma.conversation.createMany({ data: [...conversations.values()] }),
+    prisma.message.createMany({ data: messages }),
+  ]);
+  console.log(
+    `seeded ${friendships.length} demo friendships and requests, ${messages.length} messages`,
+  );
 }
 
 /**
  * Deletes the demo learners and builds them again, so their today is always
  * the run's and their lessons the catalogue's. The cascade takes their
- * courses and results. A teammate signed in as one is signed out: new ids.
+ * courses and results, their friendships and requests, and their whole
+ * conversations, the other side's messages included. A teammate signed in as
+ * one is signed out: new ids.
+ *
+ * Throws only if the delete does: a learner that fails is skipped
+ * (buildLearners), and so are the friendships and messages.
  */
 export async function seedDemo(
   prisma: PrismaService,
@@ -143,27 +254,31 @@ export async function seedDemo(
   const services: DemoServices = {
     prisma,
     auth: new AuthService(prisma),
-    // Never attached outside Nest: the replay's level changes reach no socket.
+    // Never attached outside Nest: the replay's level and goal changes reach no socket.
     courses: new CoursesService(prisma, new SocketsService()),
     lessons: new LessonsService(prisma),
   };
 
-  await prisma.user.deleteMany({ where: { email: DEMO_EMAIL_FILTER } });
+  await prisma.user.deleteMany({ where: { email: { in: DEMO_EMAILS } } });
 
-  for (const profile of DEMO_PROFILES) {
-    const identity = {
+  const learners = DEMO_PROFILES.map((profile) => ({
+    identity: {
       email: demoEmail(profile.name),
       displayName: demoDisplayName(profile.name),
       password: options.password,
-    };
-    try {
-      await replayLearner(services, identity, profile, options.runNow);
-    } catch (err) {
-      // auth.identityTaken here: someone took demo.<name> by hand.
-      throw new Error(`demo learner ${identity.email} failed`, { cause: err });
-    }
-  }
+    },
+    profile,
+  }));
+  const ids = await buildLearners(services, learners, options.runNow);
+  const built = DEMO_PROFILES.filter((profile) => ids.has(profile.name)).map((profile) =>
+    demoEmail(profile.name),
+  );
+  console.log(`seeded ${built.length} of ${learners.length} demo learners: ${built.join(', ')}`);
 
-  const emails = DEMO_PROFILES.map((profile) => demoEmail(profile.name));
-  console.log(`seeded ${emails.length} demo learners: ${emails.join(', ')}`);
+  try {
+    await seedDemoSocial(prisma, ids, options.runNow);
+  } catch (err) {
+    // One transaction: nothing of it was written.
+    console.error('demo friendships and messages skipped:', err);
+  }
 }

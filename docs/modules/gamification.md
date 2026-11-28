@@ -50,8 +50,8 @@ And in the PDF, the Tournament, Game customization and Spectator modules around 
 "This module requires you to have implemented at least one game". The Gamification module has no
 such sentence. Its own words, "reward users for their actions", fit any app. So we claim it, and
 the "user actions" are finishing lessons and reaching the daily goal. This is our reading of the
-subject. The team has written down that it must be confirmed with staff before the defence
-([README.md](README.md#gamification-outside-a-game), "Gamification outside a game").
+subject, also given in [README.md](README.md#gamification-outside-a-game) ("Gamification outside a
+game").
 
 ## How we meet it
 
@@ -197,11 +197,13 @@ The stack must be running (`make run`, or `make` to run every check first). The 
 **A learner with more history (optional)**
 
 If `DEMO_PASSWORD` is set in `.env`, the seed builds demo learners
-([`.env.example`](../../.env.example), [`demo.data.ts`](../../apps/api/src/demo/demo.data.ts)).
+([`.env.example`](../../.env.example), [`demo.data.ts`](../../apps/api/src/demo/demo.data.ts)),
+in a checkout and on a server whose `.env` sets it (then at `https://<SITE_DOMAIN>/en/login`).
 They are replayed through the real services, so they earned their XP and achievements by the same
 rules. Sign in at `https://localhost/en/login` as `demo-eva@example.com`: her French A1 is
-complete, so `/en/learn/fr/achievements` shows **A1 complete** as earned. `demo-ben@example.com`
-has a 12-day streak.
+complete, so `/en/learn/fr/achievements` shows **A1 complete** as earned. `demo-anna@example.com`
+earned **streak3** today, on the third day in a row. `demo-ben@example.com` has a 10-day streak
+and **streak7**; `demo-chloe@example.com` lost hers, but keeps **streak7** (best 7).
 
 ## Tests that prove it
 
@@ -219,8 +221,7 @@ has a 12-day streak.
 - **Three features, not six.** No badges, no leaderboards, no rewards
   ([../architecture/product.md](../architecture/product.md)). The subject asks for three and says
   three done well are better than six done poorly.
-- **No game.** The module is claimed on an app without a game, as explained above. It must be
-  confirmed with staff before the defence.
+- **No game.** The module is claimed on an app without a game, as explained above.
 - **Per course, not per user.** XP, the challenge and the achievements belong to one course. A
   learner with French and German has two ranks and two sets of achievements.
 - **The challenge is derived, not stored.** Only the day it was done and its code are saved. A

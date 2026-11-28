@@ -129,18 +129,18 @@ ne marche pas complètement à l'évaluation compte pour **0**.
 
 ### Jeu et expérience utilisateur
 
-| Type  | Module                                                                                                                                                            |
-| ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Major | Jeu web complet, joueurs contre joueurs, règles claires et conditions de victoire/défaite, en 2D ou 3D                                                            |
-| Major | Joueurs à distance sur des machines différentes, gestion de la latence et des déconnexions, logique de reconnexion                                                |
-| Major | Multijoueur à 3+ joueurs, mécaniques équitables, synchronisation                                                                                                  |
-| Major | Un deuxième jeu différent avec historique et matchmaking                                                                                                          |
-| Major | Graphismes 3D avancés (Three.js, Babylon.js) : environnement immersif, rendu avancé, performances fluides                                                         |
+| Type  | Module                                                                                                                                                                                 |
+| ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Major | Jeu web complet, joueurs contre joueurs, règles claires et conditions de victoire/défaite, en 2D ou 3D                                                                                 |
+| Major | Joueurs à distance sur des machines différentes, gestion de la latence et des déconnexions, logique de reconnexion                                                                     |
+| Major | Multijoueur à 3+ joueurs, mécaniques équitables, synchronisation                                                                                                                       |
+| Major | Un deuxième jeu différent avec historique et matchmaking                                                                                                                               |
+| Major | Graphismes 3D avancés (Three.js, Babylon.js) : environnement immersif, rendu avancé, performances fluides                                                                              |
 | Minor | Chat avancé : blocage, invitations à jouer depuis le chat, notifications de jeu et de tournoi dans le chat, accès aux profils, historique, indicateurs de frappe et accusés de lecture |
-| Minor | Système de tournoi : tableaux, ordre des matchs, matchmaking, inscription et gestion                                                                              |
-| Minor | Personnalisation du jeu : power-ups, cartes/thèmes, réglages, valeurs par défaut disponibles                                                                      |
-| Minor | Gamification : ≥3 parmi succès / badges / classements / XP / défis du jour / récompenses, sauvegardés, avec un retour visuel                                      |
-| Minor | Mode spectateur avec mises à jour en temps réel (chat des spectateurs en option)                                                                                  |
+| Minor | Système de tournoi : tableaux, ordre des matchs, matchmaking, inscription et gestion                                                                                                   |
+| Minor | Personnalisation du jeu : power-ups, cartes/thèmes, réglages, valeurs par défaut disponibles                                                                                           |
+| Minor | Gamification : ≥3 parmi succès / badges / classements / XP / défis du jour / récompenses, sauvegardés, avec un retour visuel, des règles claires et une progression                    |
+| Minor | Mode spectateur avec mises à jour en temps réel (chat des spectateurs en option)                                                                                                       |
 
 ### DevOps
 

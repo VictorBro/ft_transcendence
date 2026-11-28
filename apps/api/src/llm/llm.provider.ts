@@ -1,4 +1,4 @@
-import type { QuestionCategory } from '@ft/shared';
+import type { QuestionCategory, TutorCheck, TutorInfo } from '@ft/shared';
 import type { z } from 'zod';
 
 // The name other classes use to ask Nest for the LLM provider.
@@ -61,6 +61,12 @@ export interface StreamRequest {
 }
 
 /**
+ * What a provider's check() finds. TutorService adds who (info) and when (checkedAt).
+ * Pick<T, keys> keeps only these fields of TutorCheck, with their types.
+ */
+export type LlmCheck = Pick<TutorCheck, 'status' | 'latencyMs' | 'httpStatus' | 'retryAt'>;
+
+/**
  * The contract every LLM provider must follow (Gemini, Fixture...).
  * The rest of the code only knows this interface, so it does not care which
  * provider is behind it. To add a new provider, write a class that
@@ -97,6 +103,17 @@ export interface LlmProvider {
    * AbortError), not an LlmError: the caller asked for it, the LLM did not fail.
    */
   streamText(request: StreamRequest): AsyncIterable<string>;
+
+  /** Which provider this is, and its model, for GET /api/tutor. Never the key. */
+  readonly info: TutorInfo;
+
+  /**
+   * Tests the key and the model with the smallest real request: for Gemini, a
+   * one-word answer. It spends one request of the key's quota, so a key over
+   * its quota reads as such. Never throws: every ending is a status, as a
+   * health probe's is.
+   */
+  check(): Promise<LlmCheck>;
 }
 
 /**
@@ -104,7 +121,8 @@ export interface LlmProvider {
  * it (src/metrics/metrics.ts), so it must never be free text like the message.
  * - unreachable: no HTTP answer at all (network, DNS, timeout), or the connection
  *   dropped while the answer was still coming.
- * - rate_limited: HTTP 429. http_error: any other status outside 2xx.
+ * - rate_limited: HTTP 429, over the quota of the minute or of the day (LlmError.quota
+ *   says which). http_error: any other status outside 2xx.
  * - blocked: the safety filters refused the prompt, or stopped the reply.
  *   incomplete: the reply was cut short for any other reason.
  * - invalid: the reply is not JSON, or fails the schema.
@@ -112,6 +130,16 @@ export interface LlmProvider {
  */
 export type LlmFailure =
   'unreachable' | 'rate_limited' | 'http_error' | 'blocked' | 'incomplete' | 'invalid' | 'disabled';
+
+/**
+ * What a 429 says about the quota that refused the call:
+ * - scope: today's quota ('day'), which comes back tomorrow, or this minute's ('minute').
+ * - retryAfterS: the seconds the provider asks to wait; null when it does not say.
+ */
+export interface QuotaRefusal {
+  scope: 'day' | 'minute';
+  retryAfterS: number | null;
+}
 
 /**
  * The error a provider throws when a call fails.
@@ -130,6 +158,11 @@ export class LlmError extends Error {
     readonly retryable: boolean,
     /** Why it failed, for the metrics. The message says it to a person. */
     readonly reason: LlmFailure,
+    /**
+     * rate_limited only: which quota refused it. The reason stays rate_limited for
+     * both quotas, so the metrics count them as one; the error code tells them apart.
+     */
+    readonly quota?: QuotaRefusal,
   ) {
     super(message);
     this.name = 'LlmError';

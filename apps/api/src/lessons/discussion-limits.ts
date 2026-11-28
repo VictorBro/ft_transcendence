@@ -14,7 +14,11 @@ export interface DiscussionLimits {
   globalPerMinute: number;
 }
 
-const DEFAULTS: DiscussionLimits = { userPerMinute: 2, userPerDay: 60, globalPerMinute: 5 };
+/**
+ * Global 10 assumes the key's per-minute quota in Google AI Studio is at
+ * least 12. If it is about 5, set the global to 5 and 3 per learner in .env.
+ */
+const DEFAULTS: DiscussionLimits = { userPerMinute: 5, userPerDay: 150, globalPerMinute: 10 };
 
 const ENV_NAMES: Record<keyof DiscussionLimits, string> = {
   userPerMinute: 'LLM_DISCUSSION_USER_PER_MINUTE',

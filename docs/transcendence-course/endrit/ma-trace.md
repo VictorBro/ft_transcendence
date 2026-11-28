@@ -5,7 +5,7 @@
 > viennent de l'ancienne analyse : ce sont des ordres de grandeur, que l'on ne peut pas refaire ici.
 > La liste à jour des fichiers touchés est [docs/code-ownership.md](../../code-ownership.md) :
 > depuis, 11 PR de plus sont à mon nom (#195, #202, #203, #206, #208, #214, #215, #218, #219, #220, #222), soit 29.
-> `code-ownership.md` a été calculé avant la fusion de #222 : il compte 28 PR, et ne liste pas encore les 5 fichiers de #222.
+> `code-ownership.md` a été calculé après la fusion de #222 : il compte 29 PR, et liste les 5 fichiers de #222.
 > Identités Git : `VYAntares <endroahm@hotmail.com>` et `EA <endroahm@hotmail.com>` (même personne).
 
 ## 1. En chiffres
@@ -14,10 +14,10 @@ Seulement des chiffres que l'on peut refaire :
 
 | Indicateur                                              | Valeur | Comment le refaire                                                                                                  |
 | ------------------------------------------------------- | -----: | ------------------------------------------------------------------------------------------------------------------- |
-| PR fusionnées sur `main` que j'ai ouvertes              |     29 | `gh pr list --repo VictorBro/ft_transcendence --author VYAntares --state merged --base main --limit 300 --json number --jq length` |
+| PR fusionnées sur `main` que j'ai ouvertes, jusqu'à #215 |     29 | `gh pr list --repo VictorBro/ft_transcendence --author VYAntares --state merged --base main --limit 300 --search 'merged:<2026-11-27' --json number --jq length` |
 | Période (première et dernière de ces PR)                | 2026-08-22 → 2026-11-26 | la même commande avec `--json number,mergedAt`                                                     |
-| Fichiers touchés (créés ou modifiés, même d'une ligne)  |    701 | [docs/code-ownership.md](../../code-ownership.md), « En un coup d'œil », avec sa méthode de calcul (sans les 5 fichiers de #222) |
-| … dont code (`apps`, `packages`, `e2e`)                 |    263 | idem                                                                                                                |
+| Fichiers touchés (créés ou modifiés, même d'une ligne)  |    704 | [docs/code-ownership.md](../../code-ownership.md), « En un coup d'œil », avec sa méthode de calcul |
+| … dont code (`apps`, `packages`, `e2e`)                 |    267 | idem                                                                                                                |
 
 Les parts en lignes de l'ancienne analyse (total, par zone) ne sont plus données ici : personne ne peut les refaire sans ce fichier.
 

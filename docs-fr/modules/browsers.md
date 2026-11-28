@@ -69,7 +69,11 @@ failure should not hide whether Chromium and Firefox pass » (un échec sur WebK
 
 **Sur la machine d'un développeur.** Dans le [Makefile](../../Makefile), `BROWSERS ?= chromium` : `make` et
 `make playwright` lancent seulement Chromium, pour rester rapides. `make playwright-all` lance les trois moteurs, « as
-CI runs it » (comme la CI). L'image du devcontainer a les bibliothèques système des trois navigateurs
+CI runs it » (comme la CI). Tous tournent sur le tuteur fixture : `make`, `make test-e2e` et `make playwright-all`
+démarrent l'api avec `LLM_PROVIDER=fixture` et sans clé, puis la remettent sur le provider que nomme `.env`, et
+`make playwright` refuse une api sur un vrai provider, sauf avec `E2E_REAL_LLM=1`. La suite passe des examens de
+placement, et sur une vraie clé leurs réassorts de questions la dépenseraient.
+L'image du devcontainer a les bibliothèques système des trois navigateurs
 ([.devcontainer/Dockerfile](../../.devcontainer/Dockerfile)).
 
 **Le contrôle de la console sur trois moteurs.** Chaque moteur décrit les choses avec ses propres mots.
@@ -127,12 +131,14 @@ sans le son ([apps/web/components/lesson/kinds/functions.tsx](../../apps/web/com
    `make run`), et avant le reste de la démo :
 
    ```bash
-   make playwright BROWSERS="firefox webkit"   # the two additional engines
+   make test-e2e BROWSERS="firefox webkit"     # the two additional engines
    make playwright-all                         # or all three, as CI does
    ```
 
-   Attends la fin du run avant de montrer autre chose dans l'app. Après une suite verte, sa dernière
-   étape redémarre l'API ([e2e/tests/restart.spec.ts](../../e2e/tests/restart.spec.ts)), donc une page
+   Chaque commande démarre d'abord l'API sur le tuteur fixture, et à la fin sur le provider que nomme
+   `.env` : pendant ce temps, le tuteur et le placement sont ceux du fixture. Attends la fin du run avant de
+   montrer autre chose dans l'app. Après une suite verte, sa dernière étape redémarre l'API
+   ([e2e/tests/restart.spec.ts](../../e2e/tests/restart.spec.ts)), donc une page
    ouverte à ce moment perd l'API pendant quelques secondes. Le terminal liste chaque test avec son moteur,
    par exemple `[firefox] ›` : montre les tests réussis, et les quelques tests sautés (leurs raisons
    sont dans [Limites et choix](#limites-et-choix)). `make report` ne sert que le rapport du dernier

@@ -33,7 +33,7 @@ Avant d'ouvrir un magasin, on vérifie que le téléphone marche : on **appelle 
 
 | Mot | Explication simple |
 |---|---|
-| **Variable d'environnement** | Une valeur donnée au programme de l'extérieur (par Docker Compose, par le `.env`). Ici `DATABASE_URL` et `REDIS_URL`. |
+| **Variable d'environnement** | Une valeur donnée au programme de l'extérieur (par Docker Compose, par le `.env`). Ici `DATABASE_URL`, que Compose construit à partir des `POSTGRES_*` du `.env`, et `REDIS_URL`. |
 | **`onModuleInit`** | Une méthode que NestJS appelle sur chaque service pendant le démarrage, avant que l'API écoute. Si elle lance une erreur, le démarrage échoue. |
 | **Pool de connexions** | Un groupe de connexions ouvertes à l'avance et réutilisées. `pg.Pool` les ouvre seulement quand une requête en a besoin. |
 | **Adaptateur (`PrismaPg`)** | Le morceau qui relie Prisma au pilote PostgreSQL `node-postgres` (`pg`). Notre client Prisma n'a pas de moteur à lui, l'adaptateur est obligatoire. |
@@ -97,7 +97,7 @@ export const DATABASE_CONNECT_TIMEOUT_MS = 5_000;
     });
 ```
 
-- `requireDatabaseUrl()` existait déjà (VictorBro) : si `DATABASE_URL` est vide, l'API s'arrête avec `DATABASE_URL is unset: the api cannot start. See .env.example.`
+- `requireDatabaseUrl()` existait déjà (VictorBro) : si `DATABASE_URL` est vide, l'API s'arrête avec `DATABASE_URL is unset: the api cannot start. See compose.yml.`
 - `connectionTimeoutMillis` est nouveau. Par défaut, `node-postgres` attend **sans limite** une connexion. Un hôte qui ne répond pas du tout (les paquets se perdent) ferait donc attendre le démarrage jusqu'à ce que le système abandonne. Avec 5 s, l'erreur arrive vite.
 
 ```ts

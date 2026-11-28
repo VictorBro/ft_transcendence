@@ -112,7 +112,8 @@ en entier. En bref :
   ([schema.prisma](../../apps/api/prisma/schema.prisma)). La clé est faite des deux ids, le plus petit
   en premier, donc deux demandes qui se croisent ne peuvent pas créer deux lignes.
 - Les routes sont dans [friends.controller.ts](../../apps/api/src/friends/friends.controller.ts) :
-  `GET /api/friends`, `POST /api/friends/requests/:userId` (envoyer, ou accepter si l'autre t'a déjà
+  `GET /api/friends`, `GET /api/friends/pending` (combien de demandes t'attendent, pour le badge
+  du header), `POST /api/friends/requests/:userId` (envoyer, ou accepter si l'autre t'a déjà
   demandé), `POST /api/friends/requests/:userId/accept`, `DELETE /api/friends/requests/:userId`
   (refuser ou annuler), `DELETE /api/friends/:userId` (retirer). L'envoi est limité à 10 par minute.
 - Pour trouver des gens : `GET /api/users?q=` cherche dans les display names (une partie du nom, majuscules ou minuscules, 20
