@@ -149,7 +149,8 @@ export async function replayLearner(
  * Builds each learner in turn, and returns the ids of those built by profile
  * name. One that fails is logged and skipped, and whatever of it was written
  * is deleted: on a server the seed runs before every release
- * (infra/deploy/deploy.sh), and a demo learner must never block one. Two
+ * (infra/deploy/deploy.sh), and a demo learner must never block one (only a DEMO_PASSWORD
+ * that fails the signup rules does, in seed.ts, before any write). Two
  * known causes: auth.identityTaken, when an account outside the demo emails
  * holds demo.<name>, and P2028 on a host too slow for the replay's
  * transactions.

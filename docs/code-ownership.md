@@ -19,7 +19,7 @@ chaque dossier doit couvrir le code de cette liste.
   commentaires ou des messages (surtout des chemins vers la doc), ce qui ne fait pas de quelqu'un un
   auteur. Seules exceptions : `.prettierignore` et les quatre `.dockerignore` de `apps/api` et `apps/web`,
   où elle ajoute une vraie règle (`docs-fr`).
-- Seuls les fichiers qui existent aujourd'hui sont listés. Les fichiers renommés sont suivis jusqu'à leur
+- Seuls les fichiers qui existent sur `main` après #237 sont listés (les PR, elles, s'arrêtent à #215 : `infra/deploy/.env.example`, supprimé par #237, n'y est donc plus). Les fichiers renommés sont suivis jusqu'à leur
   nom actuel.
 - « Touché » veut dire créé ou modifié, même d'une ligne. Ce n'est pas un pourcentage de lignes.
 - Entre parenthèses : les autres personnes qui ont aussi touché le fichier.

@@ -46,7 +46,7 @@ renvoie les données validées, du type z.output<S>
 
 Le fichier est organisé ainsi :
 
-- **en haut**, huit constantes et une interface (`GeminiReply`) ;
+- **en haut**, neuf constantes et une interface (`GeminiReply`) ;
 - **au milieu**, la classe, avec trois méthodes publiques (`generateStructured`, `streamText`, `check`), le champ `info`, et trois privées (`send`, `stream`, `record`) ;
 - **en bas**, quinze petites fonctions : `requestBody`, `streamBody`, `unreachable`, `isRetryable`, `httpError`, `quotaRefusal`, `checkVerdict`, `checkStatus`, `isGeminiReply`, `replyText`, `answerText`, `parseReply`, `parseJson`, `sseData` et `eventData`. Toutes sont privées au fichier, sauf `quotaRefusal`, exportée pour que sa spec puisse lui donner les bodies de Google.
 
@@ -496,7 +496,7 @@ Tous les apprenants partagent une seule clé. Le bouton **Test connection** de `
 
 - **Un `200` sans texte** reste `ok`, s'il est bien une réponse de Gemini, un objet JSON avec `candidates` ou `usageMetadata` (`isGeminiReply`) : un modèle peut s'arrêter sur `MAX_TOKENS` avant d'écrire « OK », et Google a quand même répondu avec cette clé et ce modèle. Un `200` avec un autre corps vient en général de la page d'un proxy sur le chemin, pas de Google : il donne `unexpected`, et le corps va dans le log.
 - **Le `thinkingConfig`** est celui du tuteur (`thinkingBudget: 0`, section 6b) : un modèle qui refuse d'éteindre sa réflexion fait échouer chaque réponse du tuteur, et le test doit le dire. Il donne alors `unexpected`, avec le statut de Google, en général un `400`, dans `httpStatus`.
-- **Sur un `429`**, `retryAt` est l'heure à laquelle Google a dit que le quota revient : maintenant plus le `retryDelay` que lit `quotaRefusal` (section 8), en date ISO ; `null` sinon.
+- **Sur un `429`**, `retryAt` est l'heure à laquelle Google a dit que le quota revient : maintenant plus le `retryDelay` que lit `quotaRefusal` (section 8), en date ISO ; `null` sinon. Pour le quota du jour, une attente de moins d'une heure est celle de la minute (un `429` qui touche les deux quotas), pas la remise à zéro du jour : `retryAt` vaut alors `null`, et la carte dit « minuit, heure du Pacifique » plutôt qu'une heure fausse de plusieurs heures.
 - **Jamais d'erreur lancée** : un `try`/`catch` transforme l'absence de réponse en `unreachable`.
 - **Le corps de Google** va dans le log (500 caractères), jamais dans la réponse : un 403 peut nommer le projet Google Cloud. La clé ne va ni dans l'URL ni dans le log.
 - **Rien n'est compté** dans `ft_llm_requests_total` ni `ft_llm_tokens_total` : un test n'est l'appel d'aucun apprenant, et diluerait le taux d'erreur de `LlmErrorRateHigh`. `TutorService` compte les tests dans `ft_llm_checks_total`.

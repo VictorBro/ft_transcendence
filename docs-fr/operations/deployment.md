@@ -309,7 +309,8 @@ read -rs pw && sed -i "s|^DEMO_PASSWORD=.*|DEMO_PASSWORD=$pw|" .env && unset pw
 ```
 
 Il doit passer les règles de l'inscription (12 à 128 caractères, une minuscule, une majuscule et
-un chiffre), sinon le seed échoue avant d'écrire quoi que ce soit. Garde des lettres et des
+un chiffre), sinon le seed échoue avant d'écrire quoi que ce soit, et la release avec lui : le seul
+cas où les apprenants de démo arrêtent un déploiement. Garde des lettres et des
 chiffres : compose lit un `$` comme une variable. Un apprenant qui échoue ensuite (quelqu'un a pris
 son `demo.<name>`, ou l'hôte est trop lent pour les transactions du replay) est noté
 `demo learner … skipped:`, et la release continue. Quand les six sont construits, le seed note
@@ -329,6 +330,10 @@ son `demo.<name>`, ou l'hôte est trop lent pour les transactions du replay) est
 - un compte que quelqu'un a créé sous l'une de ces six adresses est supprimé aussi, et aucun
   autre : `demo-me@example.com` reste. Rien d'autre d'un vrai utilisateur n'est touché : les
   leçons sont seulement lues.
+- la ligne Learning → Learners de Grafana les montre dans Courses by level, Achievements earned et
+  Friendships, mais pas dans Lesson attempts per hour : le seed tourne dans `migrate`, pas dans
+  l'api, donc ses leçons rejouées n'atteignent jamais `ft_lesson_attempts_total`. Ce panneau bouge
+  dès que quelqu'un termine une leçon dans l'app.
 
 Vider `DEMO_PASSWORD` empêche les seeds suivants de les construire, mais ne supprime rien : les
 apprenants qu'un seed précédent a construits restent, toujours ouverts avec ce mot de passe. Pour
@@ -366,7 +371,8 @@ ajoutées depuis. `scripts/align-env.sh` le réécrit dans l'ordre et avec les c
 chaque valeur, et ajoute les nouvelles clés avec la valeur par défaut du modèle. Une clé que le modèle n'a plus
 reste à la fin, sous `# Not in the template`, et son nom est affiché sur stderr. Le script n'affiche que des noms
 de clés, jamais une valeur, et refuse un `.env` où une clé est définie deux fois. L'ancien fichier reste en
-`.env.bak`, en mode 600, secrets compris. Depuis le dépôt (`AntaresVps:ft_transcendence/` sur le principal) :
+`.env.bak`, en mode 600, secrets compris. Depuis le dépôt, vers le secondaire (pour le principal, copie
+les deux mêmes fichiers vers `AntaresVps:ft_transcendence/`) :
 
 ```bash
 scp .env.example scripts/align-env.sh ubuntu@140.238.209.2:~/

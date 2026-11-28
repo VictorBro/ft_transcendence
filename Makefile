@@ -340,7 +340,7 @@ env-file: ## Create .env if missing, generate its empty secrets, add new keys, d
 	@# At the end, not in the template's place: align-env.sh does that.
 	@added=; \
 	for key in $$(sed -nE 's/^([A-Za-z_][A-Za-z0-9_]*)=.*/\1/p' .env.example); do \
-	  grep -q "^$$key=" .env && continue; \
+	  grep -qE "^[[:space:]]*(export[[:space:]]+)?$$key=" .env && continue; \
 	  grep -m1 "^$$key=" .env.example >> .env; \
 	  printf 'env-file: added %s to .env from .env.example\n' "$$key"; \
 	  added=1; \

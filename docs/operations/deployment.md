@@ -309,7 +309,8 @@ read -rs pw && sed -i "s|^DEMO_PASSWORD=.*|DEMO_PASSWORD=$pw|" .env && unset pw
 ```
 
 It must pass the signup rules (12 to 128 characters, a lowercase letter, an uppercase letter and
-a digit), or the seed fails before it writes anything. Keep to letters and digits: compose reads
+a digit), or the seed fails before it writes anything, and the release with it: the one case where
+the demo learners stop a deploy. Keep to letters and digits: compose reads
 a `$` as a variable. A learner that fails later (someone took its `demo.<name>`, or the host is
 too slow for the replay's transactions) is logged as `demo learner … skipped:`, and the release
 goes on. With all six built, the seed logs `seeded 6 of 6 demo learners: …`. Because it runs on
@@ -326,6 +327,10 @@ every release:
   conversations, a real user's messages to them included;
 - an account someone signed up under one of those six addresses is deleted too, and no other:
   `demo-me@example.com` stays. Nothing else of a real user is touched: the lessons are only read.
+- Grafana's Learning → Learners row shows them in Courses by level, Achievements earned and
+  Friendships, but not in Lesson attempts per hour: the seed runs in `migrate`, not in the api,
+  so its replayed lessons never reach `ft_lesson_attempts_total`. That panel moves once someone
+  finishes a lesson in the app.
 
 Emptying `DEMO_PASSWORD` stops the next seeds from building them, but deletes nothing: the
 learners an earlier seed built stay, still open with that password. To remove them, and what
@@ -362,8 +367,8 @@ keys added since. `scripts/align-env.sh` rewrites it in the current template's o
 keeps every value, and brings new keys in with the template's default. A key the template no
 longer has stays at the end, under `# Not in the template`, and is named on stderr. It prints key
 names only, never a value, and refuses a `.env` with a key set twice. The previous file stays as
-`.env.bak`, mode 600, secrets included. From the repo (`AntaresVps:ft_transcendence/` on the
-primary):
+`.env.bak`, mode 600, secrets included. From the repo, to the secondary (for the primary, copy
+the same two files to `AntaresVps:ft_transcendence/`):
 
 ```bash
 scp .env.example scripts/align-env.sh ubuntu@140.238.209.2:~/

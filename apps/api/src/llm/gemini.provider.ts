@@ -525,7 +525,9 @@ export function quotaRefusal(body: string): QuotaRefusal {
  * at MAX_TOKENS before writing "OK", and Google still answered with the key and the
  * model. A 200 that is not Gemini's reply, usually a proxy's page, is "unexpected".
  * A 429 names the quota (quotaRefusal), and retryAt is when Google said it comes back,
- * counted from `now`.
+ * counted from `now`. For the day's quota, a wait under an hour is the minute's wait
+ * of a 429 that hit both quotas, not the day's reset: no time then, and the card says
+ * "midnight Pacific time" rather than a time that is hours early.
  */
 function checkVerdict(
   status: number,
@@ -534,9 +536,12 @@ function checkVerdict(
 ): { status: TutorCheckStatus; retryAt: string | null } {
   if (status === 429) {
     const { scope, retryAfterS } = quotaRefusal(body);
+    const minDayWaitS = 60 * 60;
+    const wait =
+      scope === 'day' && retryAfterS !== null && retryAfterS < minDayWaitS ? null : retryAfterS;
     return {
       status: scope === 'day' ? 'quota_day' : 'quota',
-      retryAt: retryAfterS === null ? null : new Date(now + retryAfterS * 1000).toISOString(),
+      retryAt: wait === null ? null : new Date(now + wait * 1000).toISOString(),
     };
   }
   return { status: checkStatus(status, body), retryAt: null };

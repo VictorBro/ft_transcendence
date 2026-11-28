@@ -249,7 +249,7 @@
         "type": "prometheus",
         "uid": "prometheus"
       },
-      "description": "started: a new attempt, a retake included. completed: its last page locked, pass or fail.",
+      "description": "started: a new attempt, a retake included. completed: its last page locked, pass or fail. Counted by the api as learners play: the demo seed's replayed lessons never show here.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -434,7 +434,7 @@
         "type": "prometheus",
         "uid": "prometheus"
       },
-      "description": "pending: a request waiting for an answer. Every language together.",
+      "description": "pending: a request waiting for an answer. accepted: two friends.",
       "fieldConfig": {
         "defaults": {
           "color": {

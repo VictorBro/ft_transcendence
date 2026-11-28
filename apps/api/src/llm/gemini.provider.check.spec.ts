@@ -179,6 +179,23 @@ describe('GeminiProvider.check', () => {
       });
     });
 
+    // Both quotas hit: Google's short wait is the minute's, and the day's reset is hours away.
+    it('gives no time for the quota of the day when Google gave a wait under an hour', async () => {
+      const { details } = DAY_QUOTA_BODY.error;
+      const shortWait = {
+        error: {
+          ...DAY_QUOTA_BODY.error,
+          details: details.map((d) => ('retryDelay' in d ? { ...d, retryDelay: '37s' } : d)),
+        },
+      };
+      fetchMock.mockResolvedValueOnce(json(shortWait, 429));
+
+      await expect(provider.check()).resolves.toMatchObject({
+        status: 'quota_day',
+        retryAt: null,
+      });
+    });
+
     it('gives no time when Google gave no wait', async () => {
       const { details } = DAY_QUOTA_BODY.error;
       const noWait = {

@@ -951,6 +951,8 @@ hand on 2026-11-27), not `401`. A `400` for another reason is not the key's faul
 
 On a `429`, `retryAt` is when Google said the quota comes back: the time of the answer plus the `retryDelay`
 that `quotaRefusal` read, as an ISO date. It is `null` for every other status, and when Google gave no wait.
+For the quota of the day it is also `null` when the wait is under an hour: that is the minute's wait of a `429`
+that hit both quotas, not the day's reset, and the card then says midnight Pacific time.
 
 Each check spends one of the key's requests (20 a day per model on a free key, on 2026-11-27): one more reason
 for `TutorService` to share one check between every account for 15 s, and for the route to allow 3 a minute per

@@ -55,8 +55,9 @@ export type CourseUpdated = z.infer<typeof CourseUpdatedSchema>;
 export const FriendEventSchema = z.object({ userId: z.uuid() });
 export type FriendEvent = z.infer<typeof FriendEventSchema>;
 
-// friend:pending carries FriendPending (schemas/friend.ts): the addressee's count,
-// sent on connect and after each request created, accepted, declined or cancelled.
+// friend:pending carries FriendPending (schemas/friend.ts): the count of requests
+// waiting on the user it reaches, sent on connect and after each request created,
+// accepted, declined or cancelled (declined or cancelled tells both users).
 
 /**
  * Online while at least one tab holds a socket, offline once the last one has

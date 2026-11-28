@@ -453,4 +453,5 @@ vérifie exactement ces choses à chaque changement.
 
 Le nombre de commits vient de `git shortlog -sn --no-merges origin/main -- .github
 infra/deploy scripts` le 2026-11-22 (Endrit commit sous le nom « EA »). Chaque membre utilise le
-pipeline : toutes ses pull requests sont passées par là.
+pipeline : toutes ses pull requests sont passées par là. `infra/deploy/.env.example`, cité dans le
+tableau, a été fusionné dans le `.env.example` de la racine par #237.

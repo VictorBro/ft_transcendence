@@ -191,7 +191,7 @@ export function TwoFactorPanel() {
 
   if (status.enabled) {
     return (
-      <form onSubmit={turnOff} className="flex flex-col gap-5" noValidate>
+      <form method="post" onSubmit={turnOff} className="flex flex-col gap-5" noValidate>
         <p role="status" className="text-sm text-green-400">
           {t('enabledStatus', { count: status.recoveryCodesRemaining })}
         </p>

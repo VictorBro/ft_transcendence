@@ -14,6 +14,12 @@ export default [
           selector: "JSXAttribute[name.name='type'][value.value='password']",
           message: 'Use PasswordField from @/components/form: it carries the Show password toggle.',
         },
+        {
+          // The same input written in braces: type={'password'}.
+          selector:
+            "JSXAttribute[name.name='type'] > JSXExpressionContainer > Literal[value='password']",
+          message: 'Use PasswordField from @/components/form: it carries the Show password toggle.',
+        },
       ],
     },
   },

@@ -453,4 +453,5 @@ checks exactly those things on every change.
 
 The commit counts come from `git shortlog -sn --no-merges origin/main -- .github
 infra/deploy scripts` on 2026-11-22 (Endrit commits as "EA"). Every member uses the
-pipeline: all of their pull requests went through it.
+pipeline: all of their pull requests went through it. `infra/deploy/.env.example`, named in the table,
+was merged into the root `.env.example` in #237.

@@ -970,7 +970,9 @@ n'est pas la faute de la clé, donc c'est `unexpected`, et `httpStatus` dit quel
 
 Sur un `429`, `retryAt` est le moment où Google a dit que le quota revient : l'heure de la réponse plus le
 `retryDelay` que `quotaRefusal` a lu, en date ISO. Il vaut `null` pour tous les autres statuts, et quand Google
-n'a donné aucune attente.
+n'a donné aucune attente. Pour le quota du jour, il vaut aussi `null` quand l'attente fait moins d'une heure :
+c'est l'attente de la minute d'un `429` qui touche les deux quotas, pas la remise à zéro du jour, et la carte dit
+alors minuit, heure du Pacifique.
 
 Chaque test dépense une des requêtes de la clé (20 par jour et par modèle pour une clé gratuite, le 2026-11-27) :
 une raison de plus pour que `TutorService` partage un test entre tous les comptes pendant 15 s, et que la route en

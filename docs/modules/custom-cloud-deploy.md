@@ -421,6 +421,6 @@ Why it is not a Major:
 | Bastian | [bastian-schnitzler](https://github.com/bastian-schnitzler) | The `keepalive 4s` setting on the `/api` and `/ws` routes of `Caddyfile.prod`, shorter than Node's keep-alive timeout. | [#192](https://github.com/VictorBro/ft_transcendence/pull/192) |
 
 From `git log --follow` on `compose.deploy.yml`, `infra/caddy/Caddyfile.prod`,
-`compose.deploy.proxy.yml` and `infra/deploy/.env.example`, and `gh pr view` for the
-pull requests. Anaïs ([avarrett](https://github.com/avarrett), commits as ninisse) changed only
+`compose.deploy.proxy.yml` and `infra/deploy/.env.example` (merged into the root `.env.example` in
+#237: `git log --follow` reads it from a commit before that), and `gh pr view` for the pull requests. Anaïs ([avarrett](https://github.com/avarrett), commits as ninisse) changed only
 comments in these files ([#104](https://github.com/VictorBro/ft_transcendence/pull/104)).
