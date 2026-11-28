@@ -31,6 +31,7 @@ stays intact, and a name starting with `_` is not skipped.
 | Document                               | What it covers                                                                                                                |
 | -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
 | [index.html](index.html)               | The home page of the GitHub Pages site: the product on one page, the milestones and their issues with live states from GitHub |
+| [defence.md](defence.md)               | The order of the defence: which module, which account, who shows it, the mandatory checks and what to prepare |
 | [backlog.md](backlog.md)               | Work we know we owe, not scheduled yet                                                                                        |
 | [code-ownership.md](code-ownership.md) | Who touched which file, and in which pull requests, in French: the starting point of each folder in transcendence-course/     |
 
