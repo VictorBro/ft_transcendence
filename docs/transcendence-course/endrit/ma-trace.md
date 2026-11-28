@@ -14,7 +14,7 @@ Seulement des chiffres que l'on peut refaire :
 
 | Indicateur                                              | Valeur | Comment le refaire                                                                                                  |
 | ------------------------------------------------------- | -----: | ------------------------------------------------------------------------------------------------------------------- |
-| PR fusionnées sur `main` que j'ai ouvertes              |     29 | `gh pr list --repo VictorBro/ft_transcendence --author VYAntares --state merged --base main --limit 300 --json number --jq length` |
+| PR fusionnées sur `main` que j'ai ouvertes, jusqu'à #215 |     29 | `gh pr list --repo VictorBro/ft_transcendence --author VYAntares --state merged --base main --limit 300 --search 'merged:<2026-11-27' --json number --jq length` |
 | Période (première et dernière de ces PR)                | 2026-08-22 → 2026-11-26 | la même commande avec `--json number,mergedAt`                                                     |
 | Fichiers touchés (créés ou modifiés, même d'une ligne)  |    704 | [docs/code-ownership.md](../../code-ownership.md), « En un coup d'œil », avec sa méthode de calcul |
 | … dont code (`apps`, `packages`, `e2e`)                 |    267 | idem                                                                                                                |
